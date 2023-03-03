@@ -1,0 +1,24 @@
+// ---------------------- FORM - COMPONENTS ---------------------- //
+
+.form-control {
+  display: block;
+  width: 100%;
+  font-size: var(--dds-font-size-sm);
+  height: 4rem;
+  border-radius: 0.4rem;
+  padding: var(--spacing-xxs) var(--spacing-xs);
+  border: solid 1px var(--dds-color-border-form);
+  background-color: var(--dds-color-bg-form);
+  background-clip: padding-box;
+  appearance: none; // Fix appearance for date inputs in Safari
+
+  &::placeholder {
+    color: var(--dds-color-text-form-placeholder);
+    // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+    opacity: 1;
+  }
+}
+
+input {
+
+}

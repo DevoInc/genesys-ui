@@ -1,0 +1,50 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './ChipGroup.stories';
+
+<Meta of={Stories} />
+
+# ChipGroup
+
+## Overview
+
+Input elements of type checkbox are rendered by default as boxes that are checked (ticked) when activated.
+A checkbox allows you to select single values for submission in a form (or not).
+
+## How to import
+
+<Source
+  code={`
+import { Badge } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Multiple selection
+
+When multiple selection is used (form checkboxes behavior) you will get a controlled
+ChipGroup with rendered form checkbox inputs as HTML and their keyboard utility.
+
+<Canvas of={Stories.MultipleSelection} />
+
+## Single selection
+
+When a single selection is needed (form radios behavior), then you have to
+add the `selectionScheme` prop to 'single' and assign the prop `name`
+with the same value to every Chip. This way you will get a controlled
+ChipGroup with rendered form radio inputs as HTML and their keyboard utility.
+
+<Canvas of={Stories.SingleSelection} />
+
+## API
+
+Props of the Badge component
+
+<ArgTypes of={Stories} />
+
+## Related components
+
+- [Chip](?path=/components-core-navigation-stepper-doc--page)

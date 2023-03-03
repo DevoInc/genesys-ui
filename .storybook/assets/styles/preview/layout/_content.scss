@@ -1,0 +1,26 @@
+// ---------------------- CONTENT - LAYOUT ---------------------- //
+
+.dali-wrapper {
+  $parent: &;
+
+  .sbdocs-content {
+    max-width: var(--dds-max-width-md);
+  }
+
+  &--large .sbdocs-content {
+    max-width: var(--dds-max-width-lg);
+  }
+
+  &--wide .sbdocs-content {
+    max-width: none;
+  }
+
+  @media (min-width: 992px) {
+    .sbdocs-wrapper {
+      padding: 6.4rem;
+    }
+  }
+}
+
+
+

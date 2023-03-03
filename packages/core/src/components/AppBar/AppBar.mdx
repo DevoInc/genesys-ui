@@ -1,0 +1,23 @@
+import { Meta, Canvas, Source } from '@storybook/blocks';
+
+import * as Stories from './AppBar.stories';
+
+<Meta of={Stories} />
+
+# AppBar
+
+## How to import
+
+<Source
+  code={`
+import { AppBar } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Straight content
+
+<Canvas of={Stories.StraightContent} />
+
+# Custom content
+
+<Canvas of={Stories.CustomContent} />

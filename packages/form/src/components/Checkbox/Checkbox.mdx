@@ -1,0 +1,27 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Checkbox.stories';
+
+<Meta of={Stories} />
+
+# Checkbox
+
+Input elements of type checkbox are rendered by default as boxes that are
+checked (ticked) when activated. A checkbox allows you to select single
+values for submission in a form (or not).
+
+## How to import
+
+<Source
+  code={`
+import { Checkbox } from '@devo/genesys-ui-form';
+`}
+/>
+
+## Basic Usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

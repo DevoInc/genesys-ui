@@ -1,0 +1,53 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './ProgressBar.stories';
+
+<Meta of={Stories} />
+
+# ProgressBar
+
+## Overview
+
+## How to import
+
+<Source
+  code={`
+import { ProgressBar } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+You can use the `ProgressBar` in mode circular.
+
+<Source
+  code={`
+<ProgressBar 
+  percent={75}
+  type='circular'
+  showInfo={true}
+  progress='warning'
+/>
+`}
+/>
+
+Showing info
+
+<Source
+  code={`
+<ProgressBar 
+  percent={75}
+  customInfo={{
+    startInfo: 'This is the start info',
+    endInfo: 'This is the end info',
+  }}
+  showInfo={true}
+/>
+`}
+/>
+
+## API
+
+<ArgTypes of={Stories} />

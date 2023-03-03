@@ -1,0 +1,52 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './Thumbnail.stories';
+
+<Meta of={Stories} />
+
+# Thumbnail
+
+## Overview
+
+Using the _fullWidth_ value for the _size_ parameter needs the component instance to be wrapped
+inside an element with it CSS width property defined. Otherwise the Thumbnail won't be visible,
+as this size value applies the 100% of the DOM parent width.
+
+Without a wrapper
+
+<Source
+  code={`
+<Thumbnail size={'fullWidth'} img={'https://picsum.photos/200/300'} />
+`}
+/>
+
+With a wrapper
+
+<Source
+  code={`
+<div
+  style={{
+    width: '90px',
+    height: '90px',
+  }}
+>
+  <Thumbnail size={'fullWidth'} img={'https://picsum.photos/200/300'} />
+</div>
+`}
+/>
+
+## How to import
+
+<Source
+  code={`
+import { Thumbnail } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

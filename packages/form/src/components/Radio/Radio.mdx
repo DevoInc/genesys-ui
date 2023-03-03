@@ -1,0 +1,30 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Radio.stories';
+
+<Meta of={Stories} />
+
+# Radio
+
+Input elements of type radio are generally used in radio groups—collections
+of radio buttons describing a set of related options.
+
+Only one radio button in a given group can be selected at the same time.
+Radio buttons are typically rendered as small circles,
+which are filled or highlighted when selected.
+
+## How to import
+
+<Source
+  code={`
+import { Radio } from '@devoinc/genesys-ui-form';
+`}
+/>
+
+## Base
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

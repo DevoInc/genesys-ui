@@ -1,0 +1,25 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './ColorPicker.stories';
+
+<Meta of={Stories} />
+
+# ColorPicker
+
+Graphical tool that allows users to select a color from a range of available colors.
+
+## How to import
+
+<Source
+  code={`
+import { ColorPicker } from '@devoinc/genesys-ui-form';
+`}
+/>
+
+## Basic Usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

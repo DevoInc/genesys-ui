@@ -1,0 +1,31 @@
+import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+
+import * as Stories from './FormButtons.stories';
+
+<Meta of={Stories} />
+
+# Form.Buttons
+
+## Overview
+
+Component to create a row with a buttons block and a helper block in the opposite side.
+
+## How to import
+
+<Source
+  code={`
+import { Form } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+### Simple form
+
+<Canvas of={Stories.Base} />
+
+## API
+
+Props of the Form.Buttons component
+
+<ArgTypes of={Stories} />

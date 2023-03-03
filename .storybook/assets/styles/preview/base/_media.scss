@@ -1,0 +1,35 @@
+// ---------------------- MEDIA - BASE ---------------------- //
+
+
+img, video {
+  width: 100%;
+}
+
+img {
+  display: block;
+  height: auto;
+  -webkit-backface-visibility: hidden;
+  -ms-transform: translateZ(0); /* IE 9 */
+  -webkit-transform: translateZ(0); /* Chrome, Safari, Opera */
+  transform: translateZ(0);
+}
+
+.sbdocs-img--centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ratio {
+  &-6x5::before {
+    padding-top: 84%;
+  }
+
+  &-1x2::before {
+    padding-top: 200%;
+  }
+
+  &-3x4::before {
+    padding-top: 133%;
+  }
+}
+

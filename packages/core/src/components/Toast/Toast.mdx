@@ -1,0 +1,34 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './Toast.stories';
+
+<Meta of={Stories} />
+
+# Toast
+
+## How to import
+
+<Source
+  code={`
+import { Toast } from '@devoinc/genesys-ui';
+`}
+/>
+
+**IMPORTANT!**
+
+Remember to render the `ToastContainer` once in your application tree. If you
+can't figure out where to put it, rendering it in the application root would be
+the best bet.
+[https://fkhadra.github.io/react-toastify/installation#the-gist](https://fkhadra.github.io/react-toastify/installation#the-gist)
+
+`toast` is a wrapper around react-toastify emitter with some custom props to
+improve styles and configure the content
+[https://fkhadra.github.io/react-toastify/introduction/](https://fkhadra.github.io/react-toastify/introduction/)
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

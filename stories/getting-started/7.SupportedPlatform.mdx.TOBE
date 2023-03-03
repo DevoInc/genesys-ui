@@ -1,0 +1,11 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Getting started/Supported platforms' />
+
+- Soporte a ts
+- Navegadores soportados
+- Versiones de librerías soportadas (React, style-components, etc)
+- Mencionar soporte a SSR
+
+Genesys-ui is a React component library that is built on top of styled-components. 
+It is designed to be used in any React application, including those that use Next.js, Gatsby, or any other framework that supports SSR.

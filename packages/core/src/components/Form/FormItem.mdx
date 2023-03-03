@@ -1,0 +1,33 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './FormItem.stories';
+
+<Meta of={Stories} />
+
+# Form.Item
+
+## Overview
+
+Component to get specific distribution for each child of a Form or FormGroup.
+
+## How to import
+
+<Source
+  code={`
+import { Form } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+### Complex case
+
+<Canvas of={Stories.Complex} />
+
+## API
+
+Props of the Form component
+
+<ArgTypes of={Stories} />

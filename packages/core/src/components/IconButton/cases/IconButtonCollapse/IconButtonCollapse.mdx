@@ -1,0 +1,25 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './IconButtonCollapse.stories';
+
+<Meta of={Stories} />
+
+# IconButtonCollapse
+
+## Overview
+
+This is an IconButton which is used to collapse/uncollapse a block of content.
+
+<Source
+  code={`
+import { IconButtonCollapse } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

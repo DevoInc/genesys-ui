@@ -1,0 +1,28 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './IconButtonGoToDocs.stories';
+
+<Meta of={Stories} />
+
+# IconButtonGoToDocs
+
+## Overview
+
+This is an IconButton which is used to link with any of our Documentation Pages.
+It's an `<a>` HTML tag with `target` to `_blank` by default.
+
+## How to import
+
+<Source
+  code={`
+import { IconButtonClose } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

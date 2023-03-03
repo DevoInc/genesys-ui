@@ -1,0 +1,40 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './RadioControl.stories';
+
+<Meta of={Stories} />
+
+# RadioControl
+
+## Overview
+
+Input elements of type radio are generally used in radio groups—collections
+of radio buttons describing a set of related options.
+
+Only one radio button in a given group can be selected at the same time.
+Radio buttons are typically rendered as small circles, which are filled or highlighted
+when selected.
+
+## How to import
+
+<Source
+  code={`
+import { RadioControl } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Base
+
+<Canvas of={Stories.Base} />
+
+Uncontrolled
+
+<Canvas of={Stories.Uncontrolled} />
+
+Controlled
+
+<Canvas of={Stories.Controlled} />
+
+## API
+
+<ArgTypes of={Stories} />

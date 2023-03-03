@@ -1,0 +1,36 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './Overlay.stories';
+
+<Meta of={Stories} />
+
+# IconButtonClose
+
+## Overview
+
+The **Overlay** component provides an additional layer to the interface in order
+to add another level of navigation into the app or blocking the screen to allow
+an internal process to be ended.
+
+The main properties of Overlay are:
+
+- its area can occupy the whole page if it is **fixed** or contextual to a container
+  (with relative position).
+- it can be **opacity** or totally **opaque**.
+- two main **scheme colors**: dark and light
+
+## How to import
+
+<Source
+  code={`
+import { Overlay } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

@@ -1,0 +1,91 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Getting started/Installation' />
+
+# Integrating genesys-ui into a React project with styled-components
+
+This guide provides instructions for integrating the `genesys-ui` library into a _React_ project that uses `styled-components`. It also covers how to add a custom brand to your project.
+
+As an alternative, you can use the `genesys-ui-demo-app` package, which includes a working app that implements the steps described in this guide.
+
+## Adding Genesys-ui to your project
+
+Install genesys-ui core using npm:
+
+```bash
+npm i @devoinc/genesys-ui
+```
+
+Depending on your specific needs you might also need to install one or more of the following packages:
+
+```bash
+npm i @devoinc/genesys-ui-form
+npm i @devoinc/genesys-ui-datetime
+```
+
+Visit [Overview](/docs/getting-started-overview--docs) for a description of the different packages.
+
+## Adding required base styles
+
+Genesys-ui components rely on a set of base styles to ensure a consistent look and feel across your application. To add these styles to your project, install @devoinc/genesys-base-styles using npm:
+
+```bash
+npm i @devoinc/genesys-base-styles
+```
+
+In the entry point of your app (e.g., index.js(x), index.ts(x), main.js(x), or main.ts(x)), import the following _genesys-base-styles_ CSS stylesheet:
+
+```ts
+import '@devoinc/genesys-base-styles/dist/styles.css';
+```
+
+This stylesheet provides a set of default styles that help ensure a consistent look and feel across your application.
+
+## Adding support for icons
+
+Some Genesys-ui components rely on an icon font to display icons. To add this font to your project, install @devoinc/genesys-icons using npm:
+
+```bash
+npm i @devoinc/genesys-icons
+```
+
+Although some components in _genesys-ui_ are in the process of being updated to remove the need for an icon font, some still rely on it. To import the icon font, add the following import statement right below the _genesys-base-styles_ import:
+
+```ts
+import '@devoinc/genesys-icons/dist/gi-styles.css';
+```
+
+This imports the necessary requirements to display the icons in genesys-ui.
+
+A template for a React project that uses styled-components and includes the above steps is available in the `genesys-ui-demo-app` package.
+
+## Adding a custom brand
+
+Genesys-ui components rely on a set of tokens to define their appearance.
+These tokens are defined in a brand package, which is a set of key-values that define the tokens for a specific brand. To add a custom brand to your project,
+Install a brand package, such as _@devoinc/genesys-brand-devo_, using npm:
+
+```bash
+npm i @devoinc/genesys-brand-devo
+```
+
+To make _styled-components_ aware of your custom theme schema, you can use module augmentation. To do so:
+
+- Create a `styled.d.ts`ﬁ file in `src/`.
+
+- Add the following code to the file:
+
+  ```ts
+  import 'styled-components';
+  import { Brand } from '@devoinc/genesys-brand-devo';
+
+  declare module 'styled-components' {
+    export interface DefaultTheme {
+      tokens: Brand;
+    }
+  }
+  ```
+
+This code augments the _DefaultTheme_ interface provided by _styled-components_ with our tokens schema (_Brand_ interface), which is defined in the _@devoinc/genesys-brand-devo_ package.
+
+With these steps, you should be able to use genesys-ui components and styles in your React project with styled-components and a custom brand. All the above is exemplified in `genesys-ui-consumer`.

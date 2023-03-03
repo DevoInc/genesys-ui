@@ -1,0 +1,91 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from '../Toolbar.stories';
+import * as GroupStories from './ToolbarGroup/ToolbarGroup.stories';
+import * as ItemStories from './ToolbarItem/ToolbarItem.stories';
+import * as SeparatorStories from './ToolbarSeparator/ToolbarSeparator.stories';
+
+<Meta
+  title="Components/Core/Layout/Toolbar/Subcomponents/Docs"
+  of={GroupStories}
+/>
+
+# Subcomponents
+
+# How to import
+
+<Source
+  code={`
+import { Toolbar } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Group
+
+### How to use
+
+<Source
+  code={`
+<Toolbar>
+  <Toolbar.Group {...args}>
+    <Toolbar.Item>One</Toolbar.Item>
+  </Toolbar.Group>
+  <Toolbar.Group>
+    <Toolbar.Item>Two</Toolbar.Item>
+  </Toolbar.Group>
+</Toolbar>
+`}
+/>
+
+### Basic usage
+
+<Canvas of={GroupStories.Group} />
+
+### API
+
+<ArgTypes of={GroupStories} />
+
+## Item
+
+### How to use
+
+<Source
+  code={`
+<Toolbar>
+  <Toolbar.Group {...args}>
+    <Toolbar.Item>One</Toolbar.Item>
+    <Toolbar.Item>One</Toolbar.Item>
+  </Toolbar.Group>
+</Toolbar>
+`}
+/>
+
+### Basic usage
+
+<Canvas of={ItemStories.Item} />
+
+### API
+
+<ArgTypes of={ItemStories} />
+
+## Separator
+
+### How to use
+
+<Source
+  code={`
+<Toolbar>
+  <Toolbar.Group>
+    <Toolbar.Separator />
+  </Toolbar.Group>
+</Toolbar>
+`}
+/>
+
+### Basic usage
+
+<Canvas of={SeparatorStories.Separator} />
+
+### API
+
+<ArgTypes of={SeparatorStories} />

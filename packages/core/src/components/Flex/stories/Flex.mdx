@@ -1,0 +1,51 @@
+import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+
+import flexComponent from './partials/flexComponent.md?raw';
+import * as Stories from './Flex.stories';
+
+<Meta of={Stories} />
+
+# Flex
+
+<Markdown>{flexComponent}</Markdown>
+
+## How to import
+
+<Source
+  code={`
+import { Flex } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## as
+
+Likewise, its `as` property allow this component to be rendered as any HTML tag:
+'div', 'li', 'section'... etc.
+
+<Source
+  code={`
+import * as React from 'react';
+import { Flex, FlexItem } from '@devoinc/genesys-ui';
+
+const MyFlexCmp = () => (
+
+{' '}
+
+<Flex as={'ul'}>
+  <FlexItem as={'li'}>Child 1</FlexItem>
+  <FlexItem as={'li'}>Child 2</FlexItem>
+  <FlexItem as={'li'}>Child 3</FlexItem>
+</Flex>
+); `} />
+
+## FlexItem props
+
+In a flex structure we use each `FlexItem` props to assign `flex`, `order`
+and `align-self` css styles to each child. This is an example with different
+css `flex` and `align-self` for each child of a `Flex` component:
+
+<Canvas of={Stories.FlexAndFlexItems} />

@@ -1,0 +1,344 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { useState } from 'react';
+import { ChoiceGroup } from './ChoiceGroup';
+import { IconButtonSelectable } from '../../';
+import { Divider, HFlex } from '../../';
+
+<Meta
+  title="Components/Core/Form/ChoiceGroup"
+  component={ChoiceGroup}
+  args={{
+    hasLegendLabelFormat: true,
+    legendPosition: 'top',
+    status: 'base',
+  }}
+  argTypes={{
+    helper: {
+      control: {
+        type: 'text',
+      },
+    },
+  }}
+/>
+
+# ChoiceGroup
+
+Input elements of type checkbox are rendered by default as boxes that are checked (ticked) when activated.
+A checkbox allows you to select single values for submission in a form (or not).
+
+## How to import
+
+```
+import { ChoiceGroup } from '@devo/genesys-ui-form';
+```
+
+## Base
+
+<Preview withToolbar={true}>
+  <Story name="Base">
+    {(args) => (
+      <ChoiceGroup {...args}>
+        <IconButtonSelectable
+          colorScheme="quiet"
+          icon="play_full"
+          htmlAttrs={{ title: 'Play' }}
+        />
+        <IconButtonSelectable
+          colorScheme="quiet"
+          icon="pause_full"
+          htmlAttrs={{ title: 'Pause' }}
+        />
+        <IconButtonSelectable
+          colorScheme="quiet"
+          icon="arrows_play_shuffle"
+          htmlAttrs={{ title: 'Shuffle' }}
+        />
+        <IconButtonSelectable
+          colorScheme="quiet"
+          icon="arrows_play_repeat"
+          htmlAttrs={{ title: 'Repeat' }}
+        />
+      </ChoiceGroup>
+    )}
+  </Story>
+</Preview>
+
+## Multiple selection
+
+When multiple selection is used (form checkboxes behavior) you will get a controlled
+ChoiceGroup with rendered form checkbox inputs as HTML and their keyboard utility.
+
+<Preview withToolbar={true}>
+  <Story name="Multiple selection ::: controlled">
+    {() => {
+      const [selectedButtons, setSelectedButtons] = useState({});
+      return (
+        <ChoiceGroup>
+          <IconButtonSelectable
+            colorScheme="quiet"
+            icon={
+              selectedButtons.one
+                ? 'heart_full'
+                : 'like_heart_favorite_rating_love'
+            }
+            onChange={() => {
+              setSelectedButtons({
+                ...selectedButtons,
+                one: !selectedButtons?.one,
+              });
+            }}
+            state={selectedButtons.one ? 'selected' : 'enabled'}
+          />
+          <IconButtonSelectable
+            colorScheme="quiet"
+            icon={selectedButtons.two ? 'bookmark_tag_solid' : 'bookmark_tag'}
+            onChange={() => {
+              setSelectedButtons({
+                ...selectedButtons,
+                two: !selectedButtons?.two,
+              });
+            }}
+            state={selectedButtons.two ? 'selected' : 'enabled'}
+          />
+          <IconButtonSelectable
+            colorScheme="quiet"
+            icon={selectedButtons.three ? 'pin_bookmark_solid' : 'pin_bookmark'}
+            onChange={() => {
+              setSelectedButtons({
+                ...selectedButtons,
+                three: !selectedButtons?.three,
+              });
+            }}
+            state={selectedButtons.three ? 'selected' : 'enabled'}
+          />
+        </ChoiceGroup>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Multiple selection uncontrolled
+
+If you need an uncontrolled behavior then you can't use onChange so you can get the
+native behavior of a checkbox. This way you will get an uncontrolled
+ChoiceGroup with rendered form checkbox inputs as HTML and their keyboard utility.
+With uncontrolled way you can't manage the change of the icon depending on
+the internal checkbox is checked or not.
+
+<Preview withToolbar={true}>
+  <Story name="Multiple selection ::: uncontrolled">
+    {() => {
+      return (
+        <ChoiceGroup>
+          <IconButtonSelectable
+            colorScheme="quiet"
+            icon="like_heart_favorite_rating_love"
+          />
+          <IconButtonSelectable colorScheme="quiet" icon="bookmark_tag" />
+        </ChoiceGroup>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Single selection
+
+When a single selection is needed (form radios behavior), then you have to
+add the `selectionScheme` prop to 'single'. This way you will get a controlled
+ChoiceGroup with rendered form radio inputs as HTML and their keyboard utility.
+
+<Preview withToolbar={true}>
+  <Story name="Single selection ::: controlled">
+    {() => {
+      const [selectedButton, setSelectedButton] = useState(0);
+      return (
+        <ChoiceGroup>
+          <IconButtonSelectable
+            colorScheme="quiet"
+            icon="chart"
+            onChange={() => {
+              setSelectedButton(1);
+            }}
+            selectionScheme="single"
+            state={selectedButton === 1 ? 'selected' : 'enabled'}
+          />
+          <IconButtonSelectable
+            colorScheme="quiet"
+            icon="chart_agg"
+            onChange={() => {
+              setSelectedButton(2);
+            }}
+            selectionScheme="single"
+            state={selectedButton === 2 ? 'selected' : 'enabled'}
+          />
+          <IconButtonSelectable
+            colorScheme="quiet"
+            icon="chart_donut"
+            onChange={() => {
+              setSelectedButton(3);
+            }}
+            selectionScheme="single"
+            state={selectedButton === 3 ? 'selected' : 'enabled'}
+          />
+          <IconButtonSelectable
+            colorScheme="quiet"
+            icon="chart_sankey"
+            onChange={() => {
+              setSelectedButton(4);
+            }}
+            selectionScheme="single"
+            state={selectedButton === 4 ? 'selected' : 'enabled'}
+          />
+        </ChoiceGroup>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Single selection uncontrolled
+
+If you need an uncontrolled behavior, then you have to assign the prop `name`
+with the same value to every IconButton. You can't use onChange so you can get the
+native behavior of a radio group. This way you will get an uncontrolled
+ChoiceGroup with rendered form radio inputs as HTML and their keyboard utility.
+
+<Preview withToolbar={true}>
+  <Story name="Single selection ::: uncontrolled">
+    {() => {
+      return (
+        <ChoiceGroup>
+          <IconButtonSelectable
+            colorScheme="quiet"
+            icon="chart"
+            radioName="uncontrolled"
+            selectionScheme="single"
+          />
+          <IconButtonSelectable
+            colorScheme="quiet"
+            icon="chart_agg"
+            radioName="uncontrolled"
+            selectionScheme="single"
+          />
+          <IconButtonSelectable
+            colorScheme="quiet"
+            icon="chart_donut"
+            radioName="uncontrolled"
+            selectionScheme="single"
+          />
+          <IconButtonSelectable
+            colorScheme="quiet"
+            icon="chart_sankey"
+            radioName="uncontrolled"
+            selectionScheme="single"
+          />
+        </ChoiceGroup>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Size and color scheme
+
+These prop has to be defined in each choice component. Obviously all the choices (IconButtons, Buttons... etc.)
+has to have the same `size` prop, and it's recommended to use the same `colorScheme` prop too.
+
+<Preview withToolbar={true}>
+  <Story name="Size and colorScheme">
+    {() => {
+      return (
+        <>
+          <HFlex spacing="0">
+            <ChoiceGroup>
+              <IconButtonSelectable
+                colorScheme="quiet"
+                icon="chart"
+                radioName="uncontrolled"
+                size="sm"
+              />
+              <IconButtonSelectable
+                colorScheme="quiet"
+                icon="chart_agg"
+                radioName="uncontrolled"
+                size="sm"
+              />
+              <IconButtonSelectable
+                colorScheme="quiet"
+                icon="chart_donut"
+                radioName="uncontrolled"
+                size="sm"
+              />
+              <IconButtonSelectable
+                colorScheme="quiet"
+                icon="chart_sankey"
+                radioName="uncontrolled"
+                size="sm"
+                state="selected"
+              />
+            </ChoiceGroup>
+            <Divider vertical />
+            <ChoiceGroup>
+              <IconButtonSelectable
+                icon="chart"
+                radioName="uncontrolled"
+                size="sm"
+              />
+              <IconButtonSelectable
+                icon="chart_agg"
+                radioName="uncontrolled"
+                size="sm"
+              />
+              <IconButtonSelectable
+                icon="chart_donut"
+                radioName="uncontrolled"
+                size="sm"
+              />
+              <IconButtonSelectable
+                icon="chart_sankey"
+                radioName="uncontrolled"
+                size="sm"
+                state="selected"
+              />
+            </ChoiceGroup>
+          </HFlex>
+          <Divider />
+          <ChoiceGroup>
+            <IconButtonSelectable icon="chart" radioName="uncontrolled" />
+            <IconButtonSelectable icon="chart_agg" radioName="uncontrolled" />
+            <IconButtonSelectable icon="chart_donut" radioName="uncontrolled" />
+            <IconButtonSelectable
+              icon="chart_sankey"
+              radioName="uncontrolled"
+            />
+          </ChoiceGroup>
+          <Divider />
+          <ChoiceGroup>
+            <IconButtonSelectable
+              colorScheme="blend-base"
+              icon="chart"
+              radioName="uncontrolled"
+              size="lg"
+            />
+            <IconButtonSelectable
+              colorScheme="blend-base"
+              icon="chart_agg"
+              radioName="uncontrolled"
+              size="lg"
+            />
+            <IconButtonSelectable
+              colorScheme="blend-base"
+              icon="chart_donut"
+              radioName="uncontrolled"
+              size="lg"
+            />
+            <IconButtonSelectable
+              colorScheme="blend-base"
+              icon="chart_sankey"
+              radioName="uncontrolled"
+              size="lg"
+            />
+          </ChoiceGroup>
+        </>
+      );
+    }}
+  </Story>
+</Preview>

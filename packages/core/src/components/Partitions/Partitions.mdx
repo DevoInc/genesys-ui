@@ -1,0 +1,23 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './Partitions.stories';
+
+<Meta of={Stories} />
+
+# Partitions
+
+## How to import
+
+<Source
+  code={`
+import { Partitions } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

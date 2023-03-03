@@ -1,0 +1,29 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './IconButtonClose.stories';
+
+<Meta of={Stories} />
+
+# IconButtonClose
+
+## Overview
+
+This is an IconButton which is used to close a block of content, but which is
+not included in the regular flow of the DOM. E.g. Modals, Toasts,
+Poppers... etc.
+
+## How to import
+
+<Source
+  code={`
+import { IconButtonClose } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

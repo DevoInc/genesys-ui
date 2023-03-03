@@ -1,0 +1,31 @@
+import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+
+import * as Stories from './FormGroup.stories';
+
+<Meta of={Stories} />
+
+# Form.Group
+
+## Overview
+
+Component to create an HTML fieldset and distribute the form groups and fields inside it.
+
+## How to import
+
+<Source
+  code={`
+import { Form } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+### Simple form
+
+<Canvas of={Stories.Base} />
+
+## API
+
+Props of the Form component
+
+<ArgTypes of={Stories} />

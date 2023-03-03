@@ -1,0 +1,27 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './StatusMessage.stories';
+
+<Meta of={Stories} />
+
+# StatusMessage
+
+## Overview
+
+It's used to give feedback to the user when there is a status context as error, empty, warning... etc. in an area or block.
+
+## How to import
+
+<Source
+  code={`
+import { StatusMessage } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

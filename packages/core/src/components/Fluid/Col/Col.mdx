@@ -1,0 +1,25 @@
+import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+
+import * as Stories from './Col.stories';
+
+<Meta of={Stories} />
+
+# Col
+
+## How to import
+
+<Source
+  code={`
+import { Col } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+Props of the Col component
+
+<ArgTypes of={Stories} />

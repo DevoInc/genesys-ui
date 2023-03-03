@@ -1,0 +1,6 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Getting started/Support" />
+
+- Apuntar a cómo contribuir desde github
+- Como reportar bugs, vulns, etc

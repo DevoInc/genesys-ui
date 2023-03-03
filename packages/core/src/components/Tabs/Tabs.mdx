@@ -1,0 +1,29 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Tabs.stories';
+
+<Meta of={Stories} />
+
+# Tabs
+
+## Overview
+
+## How to import
+
+<Source
+  code={`
+import { Tabs } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Subcomponents
+
+- [TabsItem](?path=/docs/components-core-navigation-tabs-tabsitem--docs)
+
+## API
+
+<ArgTypes of={Stories} />

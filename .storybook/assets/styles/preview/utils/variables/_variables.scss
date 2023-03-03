@@ -1,0 +1,35 @@
+// ---------------------- UTILS - VARIABLES ---------------------- //
+
+// SIZE - SPACING - VARIABLES ------------------------------------ //
+
+$spacing-xxxs: 0.4rem;
+$spacing-xxs: 0.8rem;
+$spacing-xs: 1.2rem;
+$spacing-sm: 1.6rem;
+$spacing-md: 2.4rem;
+$spacing-lg: 3.2rem;
+$spacing-xl: 4rem;
+$spacing-xxl: 4.8rem;
+$spacing-xxxl: 6.4rem;
+$spacing-xxxxl: 9.6rem;
+
+$spacing-size-list: xxs, xs, sm, md, lg, xl, xxl, xxxl;
+$spacing-props: padding, margin, gap;
+$directions: top, right, bottom, left;
+
+$spacing-size-map: (
+  xxxs:  $spacing-xxxs,
+  xxs:  $spacing-xxs,
+  xs: $spacing-xs,
+  sm: $spacing-sm,
+  md: $spacing-md,
+  lg: $spacing-lg,
+  xl: $spacing-xl,
+  xxl: $spacing-xxl,
+  xxxl: $spacing-xxxl,
+  xxxxl: $spacing-xxxxl,
+);
+
+// TEXT - VARIABLES ------------------------------------ //
+
+$font-size-base: 1.6rem;

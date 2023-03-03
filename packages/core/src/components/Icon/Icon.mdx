@@ -1,0 +1,27 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './Icon.stories';
+
+<Meta of={Stories} />
+
+# Icon
+
+## Overview
+
+## How to import
+
+<Source
+  code={`
+import { Icon } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+Props of the VFlex component
+
+<ArgTypes of={Stories} />

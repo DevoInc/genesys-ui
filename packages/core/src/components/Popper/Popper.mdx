@@ -1,0 +1,66 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './Popper.stories';
+
+<Meta of={Stories} />
+
+# Popper
+
+## Overview
+
+`Popper` is an internal component that positions a container with respect to a
+trigger.
+
+To achieve this behavior, it is built with the popular external library
+[React Popper](https://popper.js.org/react-popper/v2/).
+
+`Popper` is composed of a trigger and a content.
+Trigger is a prop that can be any clickable component built with forwardRef,
+while the content is passed as children.
+
+If we talk about the content elevation, the `Popper` component defines the value
+of `zIndex` prop of its children. If its own `zIndex` prop is defined, then
+the value for its children is set to 'auto', so the elevation is mainly defined
+by itself.
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Hooks
+
+If you need a custom or more complex behavior, you can directly use the hooks
+provided by the library in your code. If you wish, you can see more information
+in the documentation of [React Popper](https://popper.js.org/react-popper/v2/).
+
+Here is a small example of its use with hooks:
+
+<Source
+  code={`
+import * as React from 'react';
+import { usePopper } from 'react-popper';
+
+const Example = () => {
+const [referenceElement, setReferenceElement] = React.useState(null);
+const [popperElement, setPopperElement] = React.useState(null);
+const [arrowElement, setArrowElement] = React.useState(null);
+const { styles, attributes } = usePopper(referenceElement, popperElement, {
+modifiers: [{ name: 'arrow', options: { element: arrowElement } }],
+});
+
+return (
+
+<>
+  <button type="button" ref={setReferenceElement}>
+    Reference element
+  </button>
+  <div ref={setPopperElement} style={styles.popper} {...attributes.popper}>
+    Popper element
+    <div ref={setArrowElement} style={styles.arrow} />
+  </div>
+</>
+); }; `} />
+
+## API
+
+<ArgTypes of={Stories} />

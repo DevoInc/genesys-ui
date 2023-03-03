@@ -1,0 +1,98 @@
+import { Meta, Source, Canvas, ArgTypes } from '@storybook/addon-docs';
+
+import * as Stories from './Presets.stories';
+
+<Meta of={Stories} />
+
+# Presets
+
+Component used to display a list of preset date ranges that can be selected by the user.
+The preset date ranges can be organized into categories, with each category having a label and a list of preset ranges.
+
+## How to import
+
+<Source
+  code={`
+import { Presets } from '@devoinc/genesys-ui-datetime';
+`}
+/>
+
+## Basic Usage
+
+<Canvas of={Stories.Base} />
+
+## How to use
+
+The Presets component accepts a prop called `presets` shaped as an array of objects that defines the list of preset ranges that are displayed.
+
+The list can be either a one-level structure:
+
+<Source
+  code={`
+[
+    {
+      value: {
+        from: 'now() - 30s',
+        to: 'now()',
+      },
+      label: 'Last 30 seconds',
+    },
+    {
+      value: {
+        from: 'now() - 1m',
+        to: 'now()',
+      },
+      label: 'Last minute',
+    },
+],
+      
+`}
+/>
+
+or multi-level if categories are required:
+
+<Source
+  code={`
+[
+      {
+        label: 'Relative to',
+        options: [
+          {
+            value: {
+              from: 'now() - 30s',
+              to: 'now()',
+            },
+            label: 'Last 30 seconds',
+          },
+          {
+            value: {
+              from: 'now() - 1m',
+              to: 'now()',
+            },
+            label: 'Last minute',
+          },
+        ],
+      },
+      {
+        label: 'Snap to',
+        options: [
+          {
+            value: {
+              from: 'now() @ 1m',
+              to: 'now()',
+            },
+            label: 'Minute',
+          },
+         
+        ],
+      },
+    ]
+`}
+/>
+
+The Presets component also accepts a prop called `value` which is an object representing the currently selected date range.
+The value object has a `from` and a `to` property.
+
+## API
+
+<ArgTypes of={Stories} />

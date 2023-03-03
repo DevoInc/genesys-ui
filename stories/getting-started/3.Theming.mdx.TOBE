@@ -1,0 +1,6 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Getting started/Theming" />
+
+- Cómo tematizar los componentes
+- Presentar el tema por defecto

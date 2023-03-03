@@ -1,0 +1,27 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Switch.stories';
+
+<Meta of={Stories} />
+
+# Switch
+
+Component used to create a customizable toggle switch for user input. 
+It provides a range of customization options to control the appearance and behavior of the switch, 
+as well as additional props for accessibility and guidance.
+
+## How to import
+
+<Source
+  code={`
+import { Switch } from '@devoinc/genesys-ui-form';
+`}
+/>
+
+## Basic Usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

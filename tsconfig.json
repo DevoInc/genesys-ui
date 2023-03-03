@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "esnext"],
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "target": "ES6",
+    "types": ["jest", "node", "@testing-library/jest-dom"],
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "jsx": "react",
+    "strictBindCallApply": true,
+    "paths": {
+      "test-utils": ["./test/test-utils.tsx"]
+    }
+  },
+  "references": [
+    {
+      "path": "packages/core"
+    },
+    {
+      "path": "packages/form"
+    },
+    {
+      "path": "packages/datetime"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './GridItem.stories';
+
+<Meta of={Stories} />
+
+# GridItem
+
+The `Grid` component is based on **CSS Grid Layout** which offers a grid-based
+layout system, with rows and columns, making it easier the way we design
+grid-based user interfaces.
+
+If you need any additional information about this CSS functionality, you can
+consult it in the following links:
+
+- [A Complete Guide to Grid | CSS-Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/).
+- [CSS Grid | w3school](https://www.w3schools.com/css/css_grid.asp).
+
+There are two components that have to do with CSS Grid Layout: **Grid** and
+**GridItem**. These components must always be used together, it is useless to
+use them separately.
+
+- **Grid**: this is a grid container and establishes a new grid formatting
+  context for its contents. This
+- **GridItem**: a Grid (grid container) contains GridItems. This component
+  represents the columns or rows of the Grid. GridItems can be set to span
+  multiple columns and/or rows.
+
+Grid and GridItem are built from the
+[Box](/?path=/docs/public-atoms-box--box) component to provide them with some
+basic layout props such as: margin, padding, width, height, etc.
+
+# How to import
+
+<Source
+  code={`
+import { GridItem } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+Props of the GridItem component
+
+<ArgTypes of={Stories} />

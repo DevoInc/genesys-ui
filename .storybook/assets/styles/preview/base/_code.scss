@@ -1,0 +1,12 @@
+// ---------------------- BASE - CODE ---------------------- //
+
+// to overwrite the styles from Dali tag component
+.os-host * .token.tag {
+  display: inline;
+  background-color: transparent;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  font-size: inherit;
+}

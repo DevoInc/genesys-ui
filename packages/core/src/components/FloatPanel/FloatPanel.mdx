@@ -1,0 +1,27 @@
+import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+
+import * as Stories from './FloatPanel.stories';
+import spacingProps from '../../../stories/partials/spacingProps.md?raw';
+import { StyledLayoutContentHelper } from '../../../stories/components/styled';
+
+<Meta of={Stories} />
+
+# FloatPanel
+
+## How to import
+
+<Source
+  code={`
+import { FloatPanel } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+Props of the FloatPanel component
+
+<ArgTypes of={Stories} />

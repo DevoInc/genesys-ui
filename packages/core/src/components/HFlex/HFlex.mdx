@@ -1,0 +1,58 @@
+import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+
+import * as Stories from './HFlex.stories';
+import spacingProps from '../../../stories/partials/spacingProps.md?raw';
+import { StyledLayoutContentHelper } from '../../../stories/components/styled';
+
+<Meta of={Stories} />
+
+# HFlex
+
+## Overview
+
+Use `HFlex` to create a stacked group of children components distributed
+in a single row. You can separate each child horizontally with the prop `spacing`.
+
+# How to import
+
+<Source
+  code={`
+import { HFlex } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+### as
+
+Likewise, its `as` property allow this component to be rendered as any HTML tag:
+'div', 'li', 'section'... etc.
+
+<Source
+  code={`
+import * as React from 'react';
+import { HFlex, FlexItem } from '@devoinc/genesys-ui';
+
+const MyFlexCmp = () => (
+
+<HFlex as={'ul'} spacing={'cmp-lg'}>
+  <FlexItem as={'li'}>Child 1</FlexItem>
+  <FlexItem as={'li'}>Child 2</FlexItem>
+  <FlexItem as={'li'}>Child 3</FlexItem>
+</HFlex>
+); `} />
+
+### childrenFitFullWidth
+
+You can use prop `childrenFitFullWidth` to get the same width for each child and
+make them to fit the full width of the `HFlex` parent component:
+
+<Markdown>{spacingProps}</Markdown>
+
+## API
+
+Props of the HFlex component
+
+<ArgTypes of={Stories} />

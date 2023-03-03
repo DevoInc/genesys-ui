@@ -1,0 +1,91 @@
+// ---------------------- TABLE - COMPONENTS ---------------------- //
+.dIgeMu svg {
+  all: unset;
+}
+.card {
+  $parent: &;
+  $heading-fs: 1.8rem;
+  position: relative;
+  transition: box-shadow 0.1s ease-out;
+  overflow: hidden;
+  box-shadow: 0 0.1rem 0.4rem 0 rgba(24, 43, 66, 0.15), 0 0.1rem 0.1rem 0 rgba(24, 43, 66, 0.1);
+  border-radius: var(--dds-br-surface);
+  height: 100%;
+  background: var(--dds-bg-base);
+  text-decoration: none;
+
+  &--horizontal {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  &__media {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    transition: background-color 0.1s ease-out;
+    font-size: 3.2rem;
+    padding: 3.2rem;
+
+    #{$parent}--horizontal & {
+      height: auto;
+      flex: 0 0 30%;
+    }
+
+    &-img, &-icon {
+      transition: transform 0.1s ease-out;
+    }
+
+    &-img {
+      height: auto;
+      max-width: 100%;
+    }
+  }
+
+  &__content {
+    padding: 1.6rem 2.4rem;
+  }
+
+  &__heading {
+    align-items: center;
+    display: flex;
+    font-size: $heading-fs;
+    line-height: 2.4rem;
+    font-weight: 600;
+    letter-spacing: -0.01925em;
+    color: #1F282E;
+    margin-bottom: 0.8rem;
+
+    &-icon {
+      color: var(--dds-color-blue-05);
+      width: $heading-fs;
+      height: $heading-fs;
+      transition: opacity 0.1s ease-out, margin-left 0.15s ease-out;
+      margin-left: 0;
+      opacity: 0;
+    }
+  }
+
+  &__description {
+    color: #888;
+  }
+
+  &:hover {
+    box-shadow: 0 0.4rem 0.8rem 0 rgba(24, 43, 66, 0.15), 0 0.1rem 0.1rem 0 rgba(24, 43, 66, 0.10);
+
+    #{$parent}__media {
+      &-img {
+        transform: scale(1.08);
+      }
+
+      &-icon {
+        transform: scale(1.16);
+      }
+    }
+
+    #{$parent}__heading-icon {
+      margin-left: 0.4rem;
+      opacity: 1;
+    }
+  }
+}

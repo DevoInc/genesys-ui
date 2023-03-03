@@ -1,0 +1,49 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './Select2Control.stories';
+
+<Meta of={Stories} />
+
+# Select2Control
+
+## Overview
+
+## How to import
+
+<Source
+  code={`
+import { Select2Control } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+Single - with option groups
+
+<Canvas of={Stories.SingleWithOptionsGroups} />
+
+Multiple - basic
+
+<Canvas of={Stories.MultipleBasic} />
+
+Multiple - sortable
+
+<Canvas of={Stories.MultipleSortable} />
+
+Multiple - creatable (custom new options)
+
+<Canvas of={Stories.MultipleCreatable} />
+
+Multiple - 'Select all' mode
+
+<Canvas of={Stories.MultipleSelectAll} />
+
+Multiple - Fixed options and sortable
+
+<Canvas of={Stories.MultipleFixedOptions} />
+
+## API
+
+<ArgTypes of={Stories} />

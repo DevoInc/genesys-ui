@@ -1,0 +1,26 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './DateTimeRange.stories';
+
+<Meta of={Stories} />
+
+# DateTimeRange
+
+Component used to allow users to select date and time ranges. 
+It is a composition of two DateTime components placed side by side. 
+
+## How to import
+
+<Source
+  code={`
+import { DateTimeRange } from '@devo/genesys-ui-datetime';
+`}
+/>
+
+## Basic Usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

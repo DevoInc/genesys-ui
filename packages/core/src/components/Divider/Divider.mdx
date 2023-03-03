@@ -1,0 +1,27 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './Divider.stories';
+
+<Meta of={Stories} />
+
+# Divider
+
+Use `Divider` component to separate components, content and text blocks with an HTML `<hr>`.
+
+## How to import
+
+<Source
+  code={`
+import { Divider } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+Props of the Divider component
+
+<ArgTypes of={Stories} />

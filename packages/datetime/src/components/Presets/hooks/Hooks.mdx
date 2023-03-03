@@ -1,0 +1,32 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs';
+
+import * as Stories from './Hooks.stories';
+
+<Meta of={Stories} />
+
+# Presets Hooks
+
+These hooks provide a pre-defined set of presets to be used in the Preset component.
+Each hook returns a list of preset date ranges.
+
+## Default Presets Hook
+
+Defines an array of default presets.
+This hook returns a set of time ranges for two given categories: "Relative to" and "Snap to".
+
+#### Usage
+
+<Source
+  code={`
+import { useDefaultPresets } from '@devoinc/genesys-ui-datetime';
+  
+const presets = useDefaultPresets();
+
+return <Presets presets={presets} />;
+
+`}
+/>
+
+<Canvas of={Stories.DefaultPresets} />
+
+#### Returns

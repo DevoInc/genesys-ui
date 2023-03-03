@@ -1,0 +1,29 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './Stepper.stories';
+
+<Meta of={Stories} />
+
+# Stepper
+
+## Overview
+
+## How to import
+
+<Source
+  code={`
+import { Stepper } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+Advance
+
+<Canvas of={Stories.Advanced} />
+
+## API
+
+<ArgTypes of={Stories} />

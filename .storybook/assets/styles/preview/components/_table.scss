@@ -1,0 +1,44 @@
+// ---------------------- TABLE - COMPONENTS ---------------------- //
+
+.sbdocs .sbdocs-table {
+  width: 100%;
+  text-align: left;
+
+  #docs-root & {
+    thead tr {
+      background-color: #eee;
+      color: var(--dds-color-heading);
+      border: none;
+    }
+
+    tr th {
+      font-weight: 600;
+    }
+
+    tr th, tr td {
+      border: none;
+      padding: 1rem 1.6rem;
+    }
+
+    &--reduced {
+      margin: $spacing-lg 0;
+
+      tr {
+        border-top: 1px solid rgba(0,0,0,.1);;
+
+        &:nth-of-type(2n) {
+          background-color: transparent;
+        }
+
+        th, td  {
+          padding: 0.6rem 1.2rem;
+
+          &,
+          > * {
+            font-size: var(--dds-font-size-sm);
+          }
+        }
+      }
+    }
+  }
+}

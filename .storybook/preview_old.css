@@ -1,0 +1,162 @@
+/* POPPINS - FONTS - BASE ------------------------------------------- */
+@font-face {
+  font-family: 'Poppins';
+  src: url(./static/fonts/poppins/poppins.woff2) format('woff2');
+}
+
+/* JET BRAINS MONO - FONTS - BASE ------------------------------------------- */
+
+@font-face {
+  font-family: 'Mono Font';
+  src: url(./static/fonts/jet-brains-mono-font/JetBrainsMono-Regular.woff2),
+    url(./static/fonts/jet-brains-mono-font/JetBrainsMono-Regular.ttf)
+      format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mono Font';
+  src: url(./static/fonts/jet-brains-mono-font/JetBrainsMono-Medium.woff2),
+    url(./static/fonts/jet-brains-mono-font/JetBrainsMono-Medium.ttf)
+      format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mono Font';
+  src: url(./static/fonts/jet-brains-mono-font/JetBrainsMono-Bold.woff2),
+    url(./static/fonts/jet-brains-mono-font/JetBrainsMono-Bold.ttf)
+      format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  height: 100vh;
+}
+
+#root {
+  height: 100%;
+}
+
+/** TEMPORARY PAGE TITLE ** ----------------------------------------------------
+------------------------------------------------------------------------------*/
+
+h1[style] {
+  color: #667580;
+  font-size: 18px !important;
+}
+
+h2[style] {
+  color: #1f282e;
+  font-weight: bold !important;
+  font-size: 30px !important;
+}
+
+/** DOCS ** --------------------------------------------------------------------
+------------------------------------------------------------------------------*/
+
+:root {
+  --body-color: #5b6870;
+  --heading-color: #1f282e;
+}
+
+.sbdocs {
+  color: var(--body-color);
+}
+
+.sbdocs .sbdocs-content {
+  max-width: 768px;
+}
+
+.sbdocs [class*='sbdocs-h'] {
+  color: var(--heading-color);
+  font-weight: bold;
+  letter-spacing: -0.01925em;
+}
+
+.sbdocs .sbdocs-h1 {
+  margin-bottom: 40px;
+}
+
+.sbdocs .sbdocs-h2,
+.sbdocs .sbdocs-h2:first-of-type {
+  border: none;
+  margin-top: 36px;
+}
+
+.sbdocs .sbdocs-h3,
+.sbdocs .sbdocs-h3:first-of-type {
+  margin-top: 32px;
+}
+
+.sbdocs .sbdocs-h4,
+.sbdocs .sbdocs-h4:first-of-type {
+  margin-top: 28px;
+}
+
+.sbdocs .sbdocs-h5,
+.sbdocs .sbdocs-h5:first-of-type {
+  margin-top: 20px;
+}
+
+.sbdocs .sbdocs-h6,
+.sbdocs .sbdocs-h6:first-of-type {
+  margin-top: 16px;
+}
+
+.sbdocs em {
+  font-style: italic;
+}
+
+.sbdocs strong {
+  font-weight: bold;
+}
+
+.sbdocs-a:hover,
+.sbdocs-a:focus,
+.sbdocs-a:active {
+  text-decoration: underline;
+}
+
+.sbdocs code,
+.sbdocs pre {
+  font-family: 'Mono Font', monospace;
+}
+
+.sbdocs .sbdocs-ul,
+.sbdocs .sbdocs-ul:first-of-type,
+.sbdocs .sbdocs-ul:last-child {
+  margin: 12px 0;
+}
+
+.sbdocs .sbdocs-ul .sbdocs-li + .sbdocs-li {
+  margin-top: 8px;
+}
+
+/** TABLE **/
+
+.sbdocs-table {
+  width: 100%;
+  text-align: left;
+}
+
+#docs-root .sbdocs-table tr th,
+#docs-root .sbdocs-table tr td {
+  border: none;
+}
+
+#docs-root .sbdocs-table thead tr {
+  background-color: #eee;
+  color: var(--heading-color);
+}
+
+#docs-root .sbdocs-table thead tr {
+  border: none;
+}

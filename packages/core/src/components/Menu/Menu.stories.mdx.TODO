@@ -1,0 +1,15 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Components/Core/Navigation/Menu/ Docs" />
+
+## How to import
+
+```
+import {
+  Menu,
+  MenuLinkType,
+  MenuItem,
+  MenuLink,
+  MenuList,
+} from '@devoinc/genesys-ui';
+```

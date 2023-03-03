@@ -1,0 +1,28 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './IconButtonRemove.stories';
+
+<Meta of={Stories} />
+
+# IconButtonRemove
+
+## Overview
+
+This is an IconButton which is used to remove a block of content, but which is
+included in the regular flow of the DOM. E.g. Banners, Filter Chips... etc.
+
+## How to import
+
+<Source
+  code={`
+import { IconButtonRemove } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

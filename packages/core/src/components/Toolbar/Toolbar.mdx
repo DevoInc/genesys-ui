@@ -1,0 +1,29 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './Toolbar.stories';
+
+<Meta of={Stories} />
+
+# Toolbar
+
+## How to import
+
+<Source
+  code={`
+import { Toolbar  } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Subcomponents
+
+- [Group](?path=/docs/components-core-layout-toolbar-subcomponents--docs)
+- [Item](?path=/docs/components-core-layout-toolbar-subcomponents--docs)
+- [Separator](?path=/docs/components-core-layout-toolbar-subcomponents--docs)
+
+## API
+
+<ArgTypes of={Stories} />

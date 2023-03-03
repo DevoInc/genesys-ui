@@ -1,0 +1,29 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './ContextualScrollLoader.stories';
+
+<Meta of={Stories} />
+
+# ContextualScrollLoader
+
+## Overview
+
+The **ContextualScrollLoader** is a case component of the Loader which should be
+used with the infinite scroll functionality. E.g. in a Table which loads new
+rows from the backend in scrolling and needs some time to do it.
+
+## How to import
+
+<Source
+  code={`
+import { ContextualScrollLoader } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

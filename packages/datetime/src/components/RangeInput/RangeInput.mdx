@@ -1,0 +1,27 @@
+import { Meta, Source, Canvas, ArgTypes } from '@storybook/addon-docs';
+
+import * as Stories from './RangeInput.stories';
+
+<Meta of={Stories} />
+
+# RangeInput
+
+Datetime input component used for selecting a range of time values. 
+The component provides options for specifying the format of the range, including real-time control and shift modifiers. 
+The component also allows for the specification of labels and status messages to provide additional information and feedback to the user. 
+
+## How to import
+
+<Source
+  code={`
+import { RangeInput } from '@devoinc/genesys-ui-datetime';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

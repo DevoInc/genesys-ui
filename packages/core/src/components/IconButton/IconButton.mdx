@@ -1,0 +1,136 @@
+import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+
+import * as Stories from './IconButton.stories';
+
+<Meta of={Stories} />
+
+# IconButton
+
+## Overview
+
+Icon buttons are commonly found in app bars, toolbars, items, rows and cells.
+
+Icons are also appropriate for toggle buttons that allow a single choice to be
+selected or deselected, such as adding or removing a star to an item.
+
+## How to import
+
+<Source
+  code={`
+import { IconButton } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+### Combined with dropdown
+
+Sometimes you might need to use an IconButton and communicate that it controls
+a dropdown too, so the dropdown icon is added. You only have to add the `hasDropdown` prop.
+
+<Source
+  code={`
+<IconButton icon="time_edit" hasDropdown />
+`}
+/>
+
+### As link
+
+To get a link you only have to add the `href` prop, and then you will get an `<a>` html tag
+instead of a `<button>` one.
+
+<Source
+  code={`
+<IconButton
+  href="https://www.devo.com"
+  icon="connections_links"
+  rel="noopener noreferrer"
+  target="_blank"
+  title="Go to Devo"
+/>
+`}
+/>
+
+### With children
+
+It's not the common use of an `IconButton`, but sometimes you might need to add
+`children`, as in this example with a `SpinnerLoader` component.
+
+<Canvas of={Stories.WithChildren} />
+
+### Selectable
+
+This is a IconButton which can be used as a form Radio or as a form Checkbox.
+In fact, the generated HTML is a `<label>` with a `<input type='radio'>` or
+`<input type='checkbox'>` inside. At the same way, to use as a Radio group it
+must be used only as part of a group with the same value for `name` prop.
+This allows to unselect automatically the previous selected option when another
+one is selected, because this type of selection is always unique.
+
+Multiple uncontrolled
+
+<Source
+  code={`
+<IconButton
+  selectionScheme="multiple"
+  value="option"
+  icon="like_heart_favorite_rating_love"
+/>
+`}
+/>
+
+Multiple controlled
+
+<Source
+  code={`
+const [selected, setSelected] = React.useState(false);
+return (
+  <IconButton
+    icon={selected ? 'heart_full' : 'like_heart_favorite_rating_love'}
+    selectionScheme="multiple"
+    state={selected ? 'selected' : 'enabled'}
+    onChange={() => setSelected(!selected)}
+    value="Option"
+  />
+);
+`}
+/>
+
+Single uncontrolled
+
+<Source
+  code={`
+<IconButton
+  name="option"
+  selectionScheme="single"
+  value="option"
+  icon="like_heart_favorite_rating_love"
+/>
+`}
+/>
+
+Single controlled
+
+<Source
+  code={`
+const [selected, setSelected] = React.useState(false);
+return (
+  <IconButton
+    icon={selected ? 'heart_full' : 'like_heart_favorite_rating_love'}
+    name="option"
+    selectionScheme="single"
+    state={selected ? 'selected' : 'enabled'}
+    onChange={() => setSelected(!selected)}
+    value="Option"
+  />
+);
+`}
+/>
+
+## API
+
+Props of the IconButton component
+
+<ArgTypes of={Stories} />

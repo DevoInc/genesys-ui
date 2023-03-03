@@ -1,0 +1,28 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './ContextualLoader.stories';
+
+<Meta of={Stories} />
+
+# ContextualLoader
+
+## Overview
+
+The **ContextualLoader** is a case component of the Loader which should be used
+for loads relative to a component, for example: the content of a Panel.
+
+## How to import
+
+<Source
+  code={`
+import { IconButtonClose } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

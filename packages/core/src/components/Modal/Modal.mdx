@@ -1,0 +1,33 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './Modal.stories';
+
+<Meta of={Stories} />
+
+# IconButtonClose
+
+## Overview
+
+## How to import
+
+<Source
+  code={`
+import { IconButtonClose } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+### About animating
+
+It is possible to animate the display of the modal window by using a third-party
+animation library.
+In this case, the Modal is animated using framer-motion and a simple fade animation.
+
+<Canvas of={Stories.Animated} />
+
+## API
+
+<ArgTypes of={Stories} />

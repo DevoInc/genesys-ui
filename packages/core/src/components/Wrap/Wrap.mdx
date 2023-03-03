@@ -1,0 +1,68 @@
+import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+
+import * as Stories from './Wrap.stories';
+import spacingProps from '../../../stories/partials/spacingProps.md?raw';
+import { StyledLayoutContentHelper } from '../../../stories/components/styled';
+
+<Meta of={Stories} />
+
+# Wrap
+
+## Overview
+
+Use `Wrap` to create a stacked group of children components distributed
+in columns and rows. You can separate each child vertically with the prop `vSpacing`
+and horizontally with `hSpacing`.
+
+## How to import
+
+<Source
+  code={`
+import { Wrap } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+### childrenByRow
+
+You can use prop `childrenByRow` to define columns with the same width for each child:
+
+<Source
+  code={`
+<Wrap childrenByRow={4}>
+  ...
+</Wrap>
+`}
+/>
+
+### as
+
+Likewise, its `as` property allow this component to be rendered as any HTML tag:
+'div', 'li', 'section'... etc.
+
+<Source
+  code={`
+import * as React from 'react';
+import { Wrap, FlexItem } from '@devoinc/genesys-ui';
+
+const MyFlexCmp = () => (
+
+{' '}
+
+<Wrap as={'ul'} vSpacing={'cmp-lg'} hSpacing={'cmp-md'}>
+  <FlexItem as={'li'}>Child 1</FlexItem>
+  <FlexItem as={'li'}>Child 2</FlexItem>
+  <FlexItem as={'li'}>Child 3</FlexItem>
+</Wrap>
+); `} />
+
+<Markdown>{spacingProps}</Markdown>
+
+## API
+
+Props of the Wrap component
+
+<ArgTypes of={Stories} />

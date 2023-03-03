@@ -1,0 +1,28 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Calendar.stories';
+
+<Meta of={Stories} />
+
+## Calendar
+
+The Calendar component is a form to work with dates.
+It let the user select a date or a range of days of a particular month.
+
+## How to import
+
+<Source
+  code={`
+import { Calendar } from '@devo/genesys-ui-datetime';
+`}
+/>
+
+## Basic Usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+Props of the Calendar component
+
+<ArgTypes of={Stories} />

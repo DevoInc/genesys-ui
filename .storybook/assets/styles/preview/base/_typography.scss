@@ -1,0 +1,179 @@
+// ---------------------- TYPOGRAPHY - BASE ---------------------- //
+
+
+@font-face {
+  font-family: 'Poppins';
+  src: url(../../fonts/poppins/poppins-300.woff2) format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url(../../fonts/poppins/poppins-regular.woff2) format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url(../../fonts/poppins/poppins-600.woff2) format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url(../../fonts/poppins/poppins-700.woff2) format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mono Font';
+  src: url(../../fonts/jet-brains-mono-font/JetBrainsMono-Regular.woff2),
+  url(../../fonts/jet-brains-mono-font/JetBrainsMono-Regular.ttf) format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mono Font';
+  src: url(../../fonts/jet-brains-mono-font/JetBrainsMono-Medium.woff2),
+  url(../../fonts/jet-brains-mono-font/JetBrainsMono-Medium.ttf) format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mono Font';
+  src: url(../../fonts/jet-brains-mono-font/JetBrainsMono-Bold.woff2),
+  url(../../fonts/jet-brains-mono-font/JetBrainsMono-Bold.ttf) format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+$doc-base-class-name: sbdocs;
+
+.sbdocs {
+  $parent: &;
+  font-family: 'Poppins', sans-serif;
+  font-size: $font-size-base;
+  line-height: 2.8rem;
+  color: var(--dds-color-body-base);
+
+  [class*="#{$doc-base-class-name}-h"] {
+    border: none;
+    max-width: var(--dds-max-width-md);
+    font-weight: bold;
+    letter-spacing: -0.01925em;
+    color: var(--dds-color-heading);
+  }
+
+  [class*="#{$doc-base-class-name}-h1"] + [class*="#{$doc-base-class-name}-h2"] {
+      font-weight: 300;
+  }
+
+  .#{$doc-base-class-name} {
+    &-table,
+    &-pre,
+    &-p {
+      font-size: var(--dds-font-size-base);
+      line-height: 2.8rem;
+    }
+
+    &-p {
+      margin: 2.4rem 0;
+    }
+
+    &-h1 {
+      margin-bottom: 4rem;
+
+      + #{$parent}-h2 {
+        font-size: 2rem;
+        line-height: 2.8rem;
+        font-weight: 300;
+        margin-top: -2.4rem;
+        margin-bottom: 4rem;
+      }
+    }
+
+    &-h2 {
+      border: none;
+      margin-top: 5.2rem;
+
+      + #{$parent}-h3 {
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+        margin-top: 0.8rem;
+      }
+    }
+
+    &-h3 {
+      margin-top: 3.2rem;
+
+      + #{$parent}-h4 {
+        font-size: 1.6rem;
+        line-height: 2rem;
+        margin-top: 0.4rem;
+      }
+    }
+
+    &-h4 {
+      margin-top: 2.8rem;
+    }
+
+    &-h5 {
+      margin-top: 2rem;
+    }
+
+    &-h6 {
+      margin-top: 1.6rem;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    div + .#{$doc-base-class-name}-img,
+    [class*="#{$doc-base-class-name}-h"] + .#{$doc-base-class-name}-img,
+    .#{$doc-base-class-name}-img + div,
+    [class*="#{$doc-base-class-name}-h"] + div,
+    [id*="story"] + [id*="story"] {
+      margin-top: 2.4rem;
+    }
+
+    &-a:hover,
+    &-a:focus,
+    &-a:active {
+      text-decoration: underline;
+    }
+
+    code,
+    pre {
+      font-family: 'Mono Font', monospace;
+    }
+
+    pre {
+      font-size: 1em;
+    }
+
+    &-ul,
+    &-ul:first-of-type,
+    &-ul:last-child {
+      margin: 2.4rem 0;
+    }
+
+    &-ul .#{$doc-base-class-name}-li + .#{$doc-base-class-name}-li {
+      margin-top: 0.8rem;
+    }
+  }
+}
+
+.docs-story {
+  font-family: "Devo Font", sans-serif;
+}

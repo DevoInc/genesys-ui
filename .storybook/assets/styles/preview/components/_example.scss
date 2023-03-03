@@ -1,0 +1,73 @@
+// ---------------------- TABLE - COMPONENTS ---------------------- //
+
+.example {
+  $parent: &;
+  margin-bottom: $spacing-xxl;
+
+  &__box {
+    position: relative;
+    overflow: hidden;
+    border: solid 0.1rem var(--dds-color-border-base);
+
+    // to hide Figma embed footer
+    .ratio {
+      margin-bottom: -4.8rem;
+    }
+    .figma-mdx-embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__description {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    margin-top: $spacing-xs;
+    color: var(--dds-color-body-weak);
+  }
+
+  &--do,
+  &--dont {
+    #{$parent}__box {
+      padding: 1.6rem;
+    }
+
+    #{$parent}__icon-wrapper {
+      align-items: center;
+      justify-content: center;
+      display: inline-flex;
+      width: var(--dds-size-icon-md);
+      height: var(--dds-size-icon-md);
+      border-radius: var(--dds-br-circle);
+      color: #fff;
+    }
+
+    #{$parent}__icon-svg {
+      width: var(--dds-size-icon-sm);
+      height: var(--dds-size-icon-sm);
+    }
+  }
+
+  &--do {
+    #{$parent}__box {
+      border-left: solid 6px var(--dds-color-success-04);
+    }
+
+    #{$parent}__icon-wrapper {
+      background-color: var(--dds-color-success-04);
+    }
+  }
+
+  &--dont {
+    #{$parent}__box {
+      border-left: solid 6px var(--dds-color-error-05);
+    }
+
+    #{$parent}__icon-wrapper {
+      background-color: var(--dds-color-error-05);
+    }
+  }
+}

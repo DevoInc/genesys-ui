@@ -1,0 +1,39 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './ContentSwitcher.stories';
+
+<Meta of={Stories} />
+
+# ContentSwitcher
+
+Description of the component.
+
+## How to import
+
+<Source
+  code={`
+import { ContentSwitcher } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Basic} />
+
+## Real accessible example with content
+
+To make the component fully accessible we have to consider several aspects:
+
+- Add as value of prop `aria-controls` of each tab, the value of the `id` attribute of the block whose contents
+  or presence are controlled by the tab. Therefore we have to add that `id` attribute to the content block
+- Add `id` prop value to each tab to be used after by the controlled content blocks as `aria-labelledby` prop value.
+- Add `role='tabpanel'` to the controlled content blocks.
+- Add `tabIndex=0` to the controlled content blocks to maintain the tabbibg focus order.
+
+<Canvas of={Stories.AccesibleWithContent} />
+
+## API
+
+Props of the ContentSwitcher component
+
+<ArgTypes of={Stories} />

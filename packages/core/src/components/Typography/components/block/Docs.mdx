@@ -1,0 +1,163 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as BlockQuoteStories from './BlockQuote.stories';
+import * as CaptionStories from './Caption.stories';
+import * as CodeStories from './Code.stories';
+import * as HeadingStories from './Heading.stories';
+import * as LeadStories from './Lead.stories';
+import * as ListStories from './List.stories';
+import * as ListItemStories from './ListItem.stories';
+import * as ParagraphStories from './Paragraph.stories';
+
+<Meta
+  title="Components/Core/Layout/Toolbar/Subcomponents/Block/Docs"
+  of={BlockQuoteStories}
+/>
+
+# Subcomponents Block
+
+The block typographic components are used inside another components or as a
+base of them: `HelperMessage`, `ValidationMessage`, `FieldLabel`... etc.
+
+<Source
+  code={`
+import { Typography } from '@devoinc/genesys-ui';
+const { 
+  BlockQuote, 
+  Caption, 
+  Code, 
+  Heading, 
+  Lead,
+  List, 
+  ListItem, 
+  Paragraph 
+} = Typography;
+`}
+/>
+
+## BlockQuote
+
+`Typography.BlockQuote` renders an HTML Block Quotation Element: indicates that
+the enclosed text is an extended quotation. A URL for the source of the quotation
+may be given using the 'cite' attribute.
+
+### Basic usage
+
+<Canvas of={BlockQuoteStories.BlockQuote} />
+
+### API
+
+<ArgTypes of={BlockQuoteStories} />
+
+## Code
+
+`Typography.Code` displays its contents styled in a fashion intended to indicate
+that the text is a fragment of computer code.
+
+### Basic usage
+
+<Canvas of={CodeStories.Code} />
+
+### API
+
+<ArgTypes of={CodeStories} />
+
+## List and ListItem
+
+`Typography.List` can render an HTML `<ul>` (by default) or `<ol>` which represents an
+unordered/ordered list of items, typically rendered as a bulleted list.
+Each child has to be a `Typography.ListItem` component, which renders an
+HTML `<li>` element.
+
+### List - Basic usage
+
+<Canvas of={ListStories.List} />
+
+### List - API
+
+<ArgTypes of={ListStories} />
+
+### ListItem - Basic usage
+
+<Canvas of={ListItemStories.ListItem} />
+
+### ListItem - API
+
+<ArgTypes of={ListItemStories} />
+
+## Paragraph
+
+`Typography.Paragraph` renders an HTML `<p>`. Paragraphs are usually represented
+in visual media as blocks of text separated from adjacent blocks by blank lines,
+but paragraphs can be any structural grouping of related content.
+
+### Basic usage
+
+<Canvas of={ParagraphStories.Paragraph} />
+
+### API
+
+<ArgTypes of={ParagraphStories} />
+
+## Caption
+
+`Typography.Caption` component is similar to `Paragraph` component, but it's oriented
+to be used in short text blocks, so it's limited by default to one line and
+'sm' size prop value.
+
+### Basic usage
+
+<Canvas of={CaptionStories.Caption} />
+
+### API
+
+<ArgTypes of={CaptionStories} />
+
+## Lead
+
+`Typography.Caption` component is oriented to be used as a subtitle or a
+summary block next to a `Heading` component.
+
+### Basic usage
+
+<Canvas of={LeadStories.Lead} />
+
+### API
+
+<ArgTypes of={LeadStories} />
+
+## Heading
+
+`Typography.Heading` generates HTML headings which are the titles or subtitles
+of our components: Panel Header titles, BoxMessage titles, Grouping titles
+in Menus and forms... etc.
+
+If we want the standard HTML headings (h1-h6) we have to use any 'h-' value for
+type prop. They render an HTML `div` by default, but it's possible to use any
+`h1` to `h6`, using the 'as' prop.
+
+### Basic usage
+
+<Canvas of={HeadingStories.Heading} />
+
+If we need extra-big headings for commercial or on boarding contexts, we can use
+any 'hero-' value for 'type' prop:
+
+<Source
+  code={`
+<Typography.Heading type={'hero-md'} >Heading</ Typography.Heading>
+`}
+/>
+
+If we need a subtle heading to group menu items, form fields... etc. we can
+use any 'overline-' value for 'type' prop:
+
+<Source
+  code={`
+<Typography.Heading type={'overline-md'} >Heading</ Typography.Heading>
+`}
+/>
+
+### API
+
+<ArgTypes of={HeadingStories} />

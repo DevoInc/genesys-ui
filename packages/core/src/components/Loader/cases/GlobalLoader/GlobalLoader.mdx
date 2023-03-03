@@ -1,0 +1,29 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './GlobalLoader.stories';
+
+<Meta of={Stories} />
+
+# GlobalLoader
+
+## Overview
+
+The **GlobalLoader** is a case component of the Loader which should be used
+for global loads, such as when refreshing the browser, when doing login / logout,
+when changing sections on the platform, etc.
+
+## How to import
+
+<Source
+  code={`
+import { GlobalLoader } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

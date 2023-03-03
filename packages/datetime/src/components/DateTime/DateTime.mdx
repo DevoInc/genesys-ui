@@ -1,0 +1,28 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './DateTime.stories';
+
+<Meta of={Stories} />
+
+# DateTime
+
+Component used to select dates and times. 
+It allows the user to choose a date and time using a graphical interface and returns a Unix timestamp in milliseconds for the selected date and time.
+The component provides various options and customizations, such as enabling or disabling time selection,
+enabling or disabling seconds and milliseconds, customizing the week day labels, setting minimum and maximum selectable dates, and disabling specific dates.
+
+## How to import
+
+<Source
+  code={`
+import { DateTime } from '@devo/genesys-ui-datetime';
+`}
+/>
+
+## Basic Usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

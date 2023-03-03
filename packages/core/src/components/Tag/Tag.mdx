@@ -1,0 +1,27 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './Tag.stories';
+
+<Meta of={Stories} />
+
+# Tag
+
+## Overview
+
+Use tags to label, categorize, or organize items using keywords that describe them.
+
+## How to import
+
+<Source
+  code={`
+import { Tag } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

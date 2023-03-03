@@ -1,0 +1,53 @@
+import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+
+import * as Stories from './VFlex.stories';
+import spacingProps from '../../../stories/partials/spacingProps.md?raw';
+import { StyledLayoutContentHelper } from '../../../stories/components/styled';
+
+<Meta of={Stories} />
+
+# VFlex
+
+## Overview
+
+Use `VFlex` to create a stacked group of children components distributed
+in a single column. You can separate each child vertically with the prop `spacing`.
+
+## How to import
+
+<Source
+  code={`
+import { VFlex } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+### as
+
+Likewise, its `as` property allow this component to be rendered as any HTML tag:
+'div', 'li', 'section'... etc.
+
+<Source
+  code={`
+import * as React from 'react';
+import { VFlex, FlexItem } from '@devoinc/genesys-ui';
+
+const MyFlexCmp = () => (
+
+<VFlex as={'ul'} spacing={'cmp-lg'}>
+  <FlexItem as={'li'}>Child 1</FlexItem>
+  <FlexItem as={'li'}>Child 2</FlexItem>
+  <FlexItem as={'li'}>Child 3</FlexItem>
+</VFlex>
+); ); `} />
+
+<Markdown>{spacingProps}</Markdown>
+
+## API
+
+Props of the VFlex component
+
+<ArgTypes of={Stories} />

@@ -1,0 +1,27 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './IconButtonStop.stories';
+
+<Meta of={Stories} />
+
+# IconButtonStop
+
+## Overview
+
+This is an IconButton which is used to stop processes.
+
+## How to import
+
+<Source
+  code={`
+import { IconButtonClose } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

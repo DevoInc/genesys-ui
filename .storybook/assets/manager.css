@@ -1,0 +1,109 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url(./fonts/poppins/poppins.woff2) format('woff2');
+}
+
+.sidebar-container {
+  font-family: 'Poppins', sans-serif;
+  padding: 0;
+}
+
+.sidebar-container .sidebar-subheading,
+.sidebar-container .search-result-recentlyOpened {
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.1325em;
+  text-transform: uppercase;
+  color: #5b6870;
+}
+
+.sidebar-container .sidebar-subheading {
+  display: flex;
+  align-items: center;
+  padding-right: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bold;
+  text-transform: none;
+  letter-spacing: -0.01925em;
+  color: #1f282e;
+}
+
+.sidebar-container .sidebar-subheading > *:first-child {
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+
+.sidebar-container .sidebar-subheading > *:first-child span:first-of-type {
+  margin: 0 8px 0 6px;
+}
+
+.sidebar-container .sidebar-subheading-action {
+  display: none;
+}
+
+.sidebar-header {
+  margin: 8px 0 24px 0 !important;
+}
+
+.sidebar-header a img {
+  height: auto;
+  max-height: 32px;
+}
+
+.sidebar-container #storybook-explorer-tree a,
+.sidebar-container #storybook-explorer-tree button {
+  transition: background-color ease-out 0.1s;
+  border-radius: 0;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-right: 12px;
+  line-height: 20px;
+}
+
+.sidebar-container
+  #storybook-explorer-tree
+  button:not([data-selected='true']):hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.sidebar-container #storybook-explorer-tree a:not([data-selected='true']):hover,
+.sidebar-container
+  #storybook-explorer-tree
+  button:not([data-selected='true']):hover,
+.sidebar-container #storybook-explorer-tree a:not([data-selected='true']):focus,
+.sidebar-container
+  #storybook-explorer-tree
+  button:not([data-selected='true']):focus {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.sidebar-container #storybook-explorer-tree a:focus,
+.sidebar-container #storybook-explorer-tree button:focus {
+  color: inherit;
+}
+
+.sidebar-container #storybook-explorer-tree [data-selected='true'] {
+  background: #a4c8f5;
+  color: #182b42;
+  font-weight: 600;
+}
+
+.sidebar-container #storybook-explorer-tree a svg,
+.sidebar-container #storybook-explorer-tree button svg {
+  display: none;
+}
+
+.sidebar-container #storybook-explorer-tree a + a {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

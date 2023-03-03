@@ -1,0 +1,49 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './InlineMessage.stories';
+
+<Meta of={Stories} />
+
+# InlineMessage
+
+`InlineMessage` is a component that positions a container with respect to a
+trigger. To achieve this behavior, it is built internally with the new component
+[Popper](/?path=/story/internal-atoms-popper--example).
+
+- The **container** has a custom style with a colored arrow and border based on
+  the prop status.
+- The **trigger** is set by default like an ActionStatus taking into account the
+  prop status. Furthermore, the trigger can have a title and a subtitle.
+
+**Status** can be: base, success, warning, error, help and info.
+
+If you want to use base status, you have to use a custom **trigger** with the
+prop trigger because ActionStatus with base status does not exist. Trigger can
+be any clickable component built with forwardRef.
+
+The **content** is passed as children.
+
+## How to import
+
+<Source
+  code={`
+import { InlineMessage } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+The most common use of the InlineMessage is to pass an **InlineMessage.Panel** as a child.
+
+<Canvas of={Stories.CustomTriggerIcon} />
+
+Another less typical use of the InlineMessage is to pass it an
+**InlineMessage.Banner** as a child.
+
+<Canvas of={Stories.CustomTriggerIcon} />
+
+## API
+
+<ArgTypes of={Stories} />

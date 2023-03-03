@@ -1,0 +1,25 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './Row.stories';
+
+<Meta of={Stories} />
+
+# Row
+
+## How to import
+
+<Source
+  code={`
+import { Row } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+Props of the Row component
+
+<ArgTypes of={Stories} />

@@ -1,0 +1,16 @@
+// ---------------------- SPACING - LAYOUT ---------------------- //
+
+
+@each $spacing-prop in $spacing-props {
+  @each $direction in $directions {
+    @each $size in $spacing-size-list {
+      .#{$spacing-prop}-#{$direction}--#{$size} {
+        #{$spacing-prop}-#{$direction}:  map-get($spacing-size-map, $size);
+      }
+    }
+  }
+}
+
+
+
+

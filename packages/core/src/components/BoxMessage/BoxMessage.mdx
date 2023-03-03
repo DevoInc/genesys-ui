@@ -1,0 +1,25 @@
+import { Meta, Canvas, Source, Markdown } from '@storybook/blocks';
+
+import * as Stories from './BoxMessage.stories';
+
+<Meta of={Stories} />
+
+# BoxMessage
+
+## How to import
+
+<Source
+  code={`
+import { BoxMessage } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Examples
+
+### Using cookie
+
+<Canvas of={Stories.Cookie} />

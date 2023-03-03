@@ -1,0 +1,27 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Select2.stories';
+
+<Meta of={Stories} />
+
+# Select2
+
+Component based on `react-select` used to create a customizable select menu for user input. 
+It provides a range of customization options to control the appearance and behavior of the menu, 
+as well as advanced customization options for more complex use cases.
+
+## How to import
+
+<Source
+  code={`
+import { Select } from '@devoinc/genesys-ui-form';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

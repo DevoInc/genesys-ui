@@ -1,0 +1,25 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './Container.stories';
+
+<Meta of={Stories} />
+
+# Fluid components
+
+## How to import
+
+<Source
+  code={`
+import { Fluid } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+Props of the Container component
+
+<ArgTypes of={Stories} />
