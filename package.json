@@ -69,6 +69,7 @@
     "react-dom": "^18.2.0",
     "react-syntax-highlighter": "^15.5.0",
     "release-it": "^15.7.0",
+    "react-textarea-autosize": "^8.4.0",
     "rollup-plugin-visualizer": "^5.9.0",
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0",

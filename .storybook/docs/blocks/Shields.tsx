@@ -15,7 +15,8 @@ export const Shields: React.FC<ShieldsProps> = ({ badges }) => {
         textDecoration: 'none',
       }}
     >
-      <Badge status='neutral'>{badge.title}</Badge>&nbsp;&nbsp;
+      <Badge status='neutral' />
+      &nbsp;&nbsp;
     </a>
   ));
 
