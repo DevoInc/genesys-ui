@@ -3,9 +3,14 @@ name: release
 on:
   workflow_dispatch:
     inputs:
+      dry:
+        type: boolean
+        description: Dry-mode (simulate publish)?
+        default: true
+        required: true
       version:
         type: choice
-        description: Select version to release (dry-mode)
+        description: Select version to release
         options:
           - major
           - minor
@@ -25,7 +30,7 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-        
+
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v3
@@ -33,35 +38,32 @@ jobs:
           cache-name: cache-node-modules
         with:
           path: |
-            **/node_modules
+            node_modules
             ~/.npm
-            dist
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-      
+            **/dist
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ github.sha }}
+
       - name: Set Node v18
         uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: npm
           registry-url: https://registry.npmjs.org/
-          
-      - name: Set NPM version
-        run: npm i -g npm@8
-        
+
       - name: Install dependencies
         run: npm ci
-        
+
       - name: Generate dist
-        run: npm run dist
+        run: npm run build
 
   lint:
     needs: [build]
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-        
+
       - name: Use node modules cache
         id: cache-npm
         uses: actions/cache@v3
@@ -69,22 +71,22 @@ jobs:
           cache-name: cache-node-modules
         with:
           path: |
-            **/node_modules
+            node_modules
             ~/.npm
-            dist
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        
-      - name: Run Eslint  
+            **/dist
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ github.sha }}
+
+      - name: Run linter
         run: npm run lint
-        
+
   unit-test:
     needs: [build]
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-        
+
       - name: Use node modules cache
         id: cache-npm
         uses: actions/cache@v3
@@ -92,13 +94,13 @@ jobs:
           cache-name: cache-node-modules
         with:
           path: |
-            **/node_modules
+            node_modules
             ~/.npm
-            dist
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          
-      - name: Run Jest
-        run: npm run test
+            **/dist
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ github.sha }}
+
+      - name: Run tests
+        run: npm t
 
   release:
     needs: [lint, unit-test]
@@ -113,11 +115,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: "npm"
+          cache: 'npm'
           registry-url: https://registry.npmjs.org/
-
-      - name: Set npm version
-        run: npm i -g npm@8
 
       - name: Use node modules cache
         id: cache-npm
@@ -126,28 +125,28 @@ jobs:
           cache-name: cache-node-modules
         with:
           path: |
-            **/node_modules
+            node_modules
             ~/.npm
-            dist
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        
+            **/dist
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ github.sha }}
+
       - name: Setup Git config
         run: |
           git config --global user.name 'Devo GitHub Action'
           git config --global user.email 'desa@devo.com'
 
-      - name: Publish major (if applicable)
-        if: ${{ github.event.inputs.version == 'major' }}
-        run: npm run release:ci -- major
+      - name: Publish ${{ github.event.inputs.version }} (dry-run)
+        if: ${{ github.event.inputs.version != 'auto' && github.event.inputs.dry == true }}
+        run: npm run release:ci -- ${{ github.event.inputs.version }} --dry-run
 
-      - name: Publish minor (if applicable)
-        if: ${{ github.event.inputs.version == 'minor' }}
-        run: npm run release:ci -- minor
+      - name: Publish 'auto' (dry-run)
+        if: ${{ github.event.inputs.version == 'auto' && github.event.inputs.dry == true }}
+        run: npm run release:ci --dry-run
 
-      - name: Publish patch (if applicable)
-        if: ${{ github.event.inputs.version == 'patch' }}
-        run: npm run release:ci -- patch
+      - name: Publish ${{ github.event.inputs.version }}
+        if: ${{ github.event.inputs.version != 'auto' && github.event.inputs.dry == false }}
+        run: npm run release:ci -- ${{ github.event.inputs.version }}
 
-      - name: Publish auto (if applicable)
-        if: ${{ github.event.inputs.version == 'auto' }}
+      - name: Publish 'auto'
+        if: ${{ github.event.inputs.version == 'auto' && github.event.inputs.dry == false }}
         run: npm run release:ci

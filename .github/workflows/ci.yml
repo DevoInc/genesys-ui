@@ -39,7 +39,7 @@ jobs:
           path: |
             node_modules
             ~/.npm
-            dist
+            **/dist
           key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
 
       - name: Set Node v18
@@ -73,7 +73,7 @@ jobs:
           path: |
             node_modules
             ~/.npm
-            dist
+            **/dist
           key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
 
       - name: Run linter
@@ -96,7 +96,7 @@ jobs:
           path: |
             node_modules
             ~/.npm
-            dist
+            **/dist
           key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
 
       - name: Run unit tests
@@ -125,7 +125,7 @@ jobs:
           path: |
             node_modules
             ~/.npm
-            dist
+            **/dist
           key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
 
       - name: Build Storybook
