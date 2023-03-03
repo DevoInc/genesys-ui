@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 import { mergeConfig } from 'vite';
-import viteconf from '../../vite.config';
+
+import viteconf from '../../vite.template.config';
 
 /** @type {import('vite').UserConfig} */
 export default mergeConfig(viteconf, {
