@@ -6,7 +6,7 @@ module.exports = {
     context: true,
   },
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'cypress'],
+  plugins: ['@typescript-eslint'],
   settings: {
     react: {
       version: 'detect',
@@ -15,7 +15,6 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    'cypress/globals': true,
   },
   extends: [
     'plugin:@typescript-eslint/recommended',
@@ -24,7 +23,6 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
     'plugin:storybook/recommended',
-    'plugin:cypress/recommended',
   ],
   rules: {
     quotes: ['error', 'single', { avoidEscape: true }],
