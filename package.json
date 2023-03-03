@@ -9,7 +9,7 @@
     "npm": ">=7"
   },
   "scripts": {
-    "clean": "rm -rf node_modules storybook-static .storybook/static/{doc,coverage} packages/*/{dist,node_modules}",
+    "clean": "rm -rf storybook-static coverage packages/*/dist",
     "build": "npm run build -ws --if-present",
     "depcruise": "npm run depcruise -ws --if-present",
     "lint": "npm run lint -ws --if-present",
@@ -17,7 +17,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "stryker": "npm run stryker -ws --if-present",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "release": "release-it --dry-run",
+    "release:ci": "release-it --ci"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +29,7 @@
     "@devoinc/genesys-brand-devo": "^5.1.0",
     "@devoinc/prettier-config": "^1.0.0",
     "@mdx-js/react": "^2.1.5",
+    "@release-it/conventional-changelog": "^5.1.1",
     "@storybook/addon-a11y": "^7.0.0-beta.54",
     "@storybook/addon-actions": "^7.0.0-beta.54",
     "@storybook/addon-essentials": "^7.0.0-beta.54",
@@ -65,6 +68,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-syntax-highlighter": "^15.5.0",
+    "release-it": "^15.7.0",
     "rollup-plugin-visualizer": "^5.9.0",
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0",

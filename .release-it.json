@@ -1,0 +1,20 @@
+{
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "conventionalcommits",
+      "infile": "CHANGELOG.md",
+      "header": "# Changelog"
+    }
+  },
+  "github": {
+    "release": true
+  },
+  "git": {
+    "tagName": "v${version}",
+    "tagAnnotation": "Release v${version}",
+    "commitMessage": "Release: v${version}"
+  },
+  "npm": {
+    "allowSameVersion": true
+  }
+}
