@@ -4,19 +4,12 @@ import spacingProps from '../../../../stories/partials/spacingProps.md?raw';
 import flexComponent from './partials/flexComponent.md?raw';
 
 import * as FlexStories from './Flex.stories';
+import * as CaseFlexStories from './Flex.cases.stories';
 import * as HFlexStories from '../../HFlex/HFlex.stories';
 import * as VFlexStories from '../../VFlex/VFlex.stories';
 import * as WrapStories from '../../Wrap/Wrap.stories';
 
-<Meta title="Components/Core/Layout/Flex" />
-
-## How to import
-
-<Source
-  code={`
-import { Flex, HFlex, VFlex, FlexItem, Wrap } from '@devoinc/genesys-ui';
-`}
-/>
+<Meta title="Components/Core/Layout/Flex/Docs" />
 
 # Flex components
 
@@ -32,6 +25,14 @@ stack structure, but with its versions we can create specific stack structures m
 - **`HFlex`:** One single row stack type.
 - **`VFlex`:** One single column stack type.
 - **`Wrap`:** Mixed columns-rows stack type.
+
+## How to import
+
+<Source
+  code={`
+import { Flex, HFlex, VFlex, FlexItem, Wrap } from '@devoinc/genesys-ui';
+`}
+/>
 
 Likewise, their `as` property allow these components to be rendered as any HTML tag:
 'div', 'li', 'section'... etc.
@@ -115,11 +116,9 @@ In a flex structure we can use each `FlexItem` props to assign `flex`, `order`
 and `align-self` css styles to each child. This is an example with different
 css `flex` and `align-self` for each child of a `Flex` component:
 
-<Canvas of={FlexStories.FlexAndFlexItems} />
+<Canvas of={CaseFlexStories.FlexAndFlexItems} />
 
 ## Component use cases
-
-###
 
 ### Flex
 

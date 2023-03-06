@@ -22,7 +22,6 @@ export * from './FloatPanel';
 export * from './Fluid';
 export * from './Form';
 export * from './Grid';
-export * from './GridItem';
 export * from './Helper';
 export * from './Helper/cases';
 export * from './HFlex';

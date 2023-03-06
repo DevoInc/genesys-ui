@@ -8,7 +8,7 @@ Core package for the Genesys UI component library. It contains the base componen
 Among others, this package contains the following components:
 
 ```
-AppBar, Fluid, RadioControl, Avatar, Form, Select2Control, Badge, Grid, SpinnerLoader, Box, GridItem, SplitPanel, BoxMessage, HFlex, StatusMessage, Button, Helper, Stepper, ButtonGroup, Icon, SwitchControl, CheckboxControl, IconButton, Tabs, Chip, InlineMessage, Tag, ChipGroup, InputControl, TagGroup, ChoiceGroup, Label, TextareaControl, CollapseLink, Thumbnail, ContentSwitcher, Loader, Toast, DecoratorBar, Menu, Toolbar, DevoLogoLoader, Modal, Tooltip, Divider, Overlay, Typography, DropdownA11yMenuPagination, VFlex, Field, Panel, Wrap, Flex, Partitions, , FlexItemPopper, FloatPanel, ProgressBar, ...
+AppBar, Fluid, RadioControl, Avatar, Form, Select2Control, Badge, Grid, SpinnerLoader, Box, Grid.Item, SplitPanel, BoxMessage, HFlex, StatusMessage, Button, Helper, Stepper, ButtonGroup, Icon, SwitchControl, CheckboxControl, IconButton, Tabs, Chip, InlineMessage, Tag, ChipGroup, InputControl, TagGroup, ChoiceGroup, Label, TextareaControl, CollapseLink, Thumbnail, ContentSwitcher, Loader, Toast, DecoratorBar, Menu, Toolbar, DevoLogoLoader, Modal, Tooltip, Divider, Overlay, Typography, DropdownA11yMenuPagination, VFlex, Field, Panel, Wrap, Flex, Partitions, , FlexItemPopper, FloatPanel, ProgressBar, ...
 ```
 
 More information about the components can be found in [Genesys UI Storybook]().
