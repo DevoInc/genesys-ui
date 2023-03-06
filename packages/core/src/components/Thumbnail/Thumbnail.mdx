@@ -8,9 +8,24 @@ import * as Stories from './Thumbnail.stories';
 
 ## Overview
 
-Using the _fullWidth_ value for the _size_ parameter needs the component instance to be wrapped
-inside an element with it CSS width property defined. Otherwise the Thumbnail won't be visible,
-as this size value applies the 100% of the DOM parent width.
+Component used for displaying a thumbnail image.
+
+## How to import
+
+<Source
+  code={`
+import { Thumbnail } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Cases
+
+When using `size="fullWidth"` the component instance needs to be wrapped
+inside an element with it CSS width property defined. Otherwise the Thumbnail won't be visible.
 
 Without a wrapper
 
@@ -34,18 +49,6 @@ With a wrapper
 </div>
 `}
 />
-
-## How to import
-
-<Source
-  code={`
-import { Thumbnail } from '@devoinc/genesys-ui';
-`}
-/>
-
-## Basic usage
-
-<Canvas of={Stories.Base} />
 
 ## API
 
