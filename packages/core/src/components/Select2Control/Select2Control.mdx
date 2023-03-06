@@ -1,12 +1,16 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './Select2Control.stories';
+import * as CaseStories from './Select2Control.cases.stories';
 
 <Meta of={Stories} />
 
 # Select2Control
 
 ## Overview
+
+Select components are employed to gather information provided by the user from a selection of options.
+This component use [react-select](https://react-select.com/home) library.
 
 ## How to import
 
@@ -20,29 +24,31 @@ import { Select2Control } from '@devoinc/genesys-ui';
 
 <Canvas of={Stories.Base} />
 
-Single - with option groups
+## Cases
+
+### Single with option groups
 
 <Canvas of={Stories.SingleWithOptionsGroups} />
 
-Multiple - basic
+### Multiple basic
 
-<Canvas of={Stories.MultipleBasic} />
+<Canvas of={CaseStories.MultipleBasic} />
 
-Multiple - sortable
+### Multiple sortable
 
-<Canvas of={Stories.MultipleSortable} />
+<Canvas of={CaseStories.MultipleSortable} />
 
-Multiple - creatable (custom new options)
+### Multiple creatable (custom new options)
 
-<Canvas of={Stories.MultipleCreatable} />
+<Canvas of={CaseStories.MultipleCreatable} />
 
-Multiple - 'Select all' mode
+### Multiple 'Select all' mode
 
-<Canvas of={Stories.MultipleSelectAll} />
+<Canvas of={CaseStories.MultipleSelectAll} />
 
-Multiple - Fixed options and sortable
+### Multiple fixed options and sortable
 
-<Canvas of={Stories.MultipleFixedOptions} />
+<Canvas of={CaseStories.MultipleFixedOptions} />
 
 ## API
 
