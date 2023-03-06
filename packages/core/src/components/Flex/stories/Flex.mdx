@@ -2,6 +2,7 @@ import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
 
 import flexComponent from './partials/flexComponent.md?raw';
 import * as Stories from './Flex.stories';
+import * as CaseStories from './Flex.cases.stories';
 
 <Meta of={Stories} />
 
@@ -22,6 +23,8 @@ import { Flex } from '@devoinc/genesys-ui';
 ## Basic usage
 
 <Canvas of={Stories.Base} />
+
+## Cases
 
 ### as
 
@@ -50,8 +53,12 @@ In a flex structure we use each `FlexItem` props to assign `flex`, `order`
 and `align-self` css styles to each child. This is an example with different
 css `flex` and `align-self` for each child of a `Flex` component:
 
-<Canvas of={Stories.FlexAndFlexItems} />
+<Canvas of={CaseStories.FlexAndFlexItems} />
 
 ## API
 
 <ArgTypes of={Stories} />
+
+## Related components
+
+- [FlexItem](?path=/docs/components-core-layout-flex-flexitem--docs)
