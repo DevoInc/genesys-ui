@@ -1,10 +1,13 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './PanelSection.stories';
+import * as CaseStories from './PanelSection.cases.stories';
 
 <Meta of={Stories} />
 
 # PanelSection
+
+## Overview
 
 ## How to import
 
@@ -18,13 +21,15 @@ import { PanelSection } from '@devoinc/genesys-ui';
 
 <Canvas of={Stories.Base} />
 
-With scroll and remove space
+## Cases
 
-<Canvas of={Stories.WithScroll} />
+### With scroll and remove space
 
-With footer actions
+<Canvas of={CaseStories.WithScroll} />
 
-<Canvas of={Stories.WithFooterActions} />
+### With footer actions
+
+<Canvas of={CaseStories.WithFooterActions} />
 
 ## API
 

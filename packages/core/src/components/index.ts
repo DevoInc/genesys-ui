@@ -37,6 +37,7 @@ export * from './Modal';
 export * from './Overlay';
 export * from './Pagination';
 export * from './Panel';
+export * from './PanelSection';
 export * from './Partitions';
 export * from './Popper';
 export * from './ProgressBar';

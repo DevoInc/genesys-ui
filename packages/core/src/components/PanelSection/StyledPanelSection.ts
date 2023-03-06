@@ -4,15 +4,15 @@ import {
   PanelContentSettings,
   PanelHasScroll,
   PanelHeaderSettings,
-} from '../../declarations';
+} from '../Panel/declarations';
 
 import {
   StyledPanelHeaderContent,
   StyledPanelHeaderContentPrepend,
   StyledPanelHeaderContentMiddle,
-} from '../../components/PanelHeaderContent/StyledPanelHeaderContent';
+} from '../Panel/components/PanelHeaderContent/StyledPanelHeaderContent';
 
-import { StyledPanelContent } from '../../StyledPanel';
+import { StyledPanelContent } from '../Panel/StyledPanel';
 
 export interface StyledPanelSectionProps {
   contentSettings?: PanelContentSettings;
