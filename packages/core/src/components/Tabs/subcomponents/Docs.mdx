@@ -1,6 +1,5 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
-import * as Stories from '../Tabs.stories';
 import * as ItemStories from './TabsItem/Item.stories';
 import * as AsideStories from './TabsAside/Aside.stories';
 
@@ -11,27 +10,11 @@ import * as AsideStories from './TabsAside/Aside.stories';
 
 # Subcomponents
 
-# How to import
-
-<Source
-  code={`
-import { Tabs } from '@devoinc/genesys-ui';
-`}
-/>
+Set of subcomponents that can be used to build a `Tabs` component.
 
 ## Item
 
-### How to use
-
-<Source
-  code={`
-<Tabs {...tabsArgs}>
-  <Tabs.Item
-    {...tabsItemArgs}
-  />
-</Tabs>
-`}
-/>
+The `Tabs.Item` component is used to define the individual tabs.
 
 ### Basic usage
 
@@ -43,17 +26,7 @@ import { Tabs } from '@devoinc/genesys-ui';
 
 ## Aside
 
-### How to use
-
-<Source
-  code={`
-<Tabs {...tabsArgs}>
-  <Tabs.Aside
-    {...tabsAsideArgs}
-  />
-</Tabs>
-`}
-/>
+The `Tabs.Aside` component is used to add custom content to the right-hand side of the tabs.
 
 ### Basic usage
 

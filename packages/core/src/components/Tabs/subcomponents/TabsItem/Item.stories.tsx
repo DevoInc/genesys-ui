@@ -1,6 +1,7 @@
+import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { TabsItem } from '../../..';
+import { Tabs, TabsItem } from '../../..';
 
 const meta: Meta<typeof TabsItem> = {
   title: 'Components/Core/Navigation/Tabs/Subcomponents',
@@ -12,8 +13,11 @@ export default meta;
 type Story = StoryObj<typeof TabsItem>;
 
 export const Item: Story = {
-  args: {
-    label: 'Default tab',
-    onActionClick: null,
-  },
+  render: (args) =>
+    ((args) => (
+      <Tabs>
+        <Tabs.Item {...args} state="selected" label="Tab 1" />
+        <Tabs.Item {...args} label="Tab 2" />
+      </Tabs>
+    ))(args),
 };

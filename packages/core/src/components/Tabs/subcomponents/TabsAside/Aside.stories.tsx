@@ -1,6 +1,7 @@
+import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { TabsAside } from '../../..';
+import { Tabs, TabsAside } from '../../..';
 
 const meta: Meta<typeof TabsAside> = {
   title: 'Components/Core/Navigation/Tabs/Subcomponents',
@@ -12,5 +13,12 @@ export default meta;
 type Story = StoryObj<typeof TabsAside>;
 
 export const Aside: Story = {
-  args: { children: 'Aside area' },
+  render: (args) =>
+    ((args) => (
+      <Tabs>
+        <Tabs.Item {...args} state="selected" label="Tab 1" />
+        <Tabs.Item {...args} label="Tab 2" />
+        <Tabs.Aside>Tabs Aside</Tabs.Aside>
+      </Tabs>
+    ))(args),
 };
