@@ -1,7 +1,6 @@
-import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Stepper, HFlex, Button, StepperProps } from '..';
+import { Stepper, StepperProps } from '..';
 
 const meta: Meta<typeof Stepper> = {
   title: 'Components/Core/Navigation/Stepper',
@@ -23,48 +22,4 @@ const initialSteps: StepperProps['steps'] = [
 
 export const Base: Story = {
   args: { steps: initialSteps, 'aria-label': 'Stepper aria-label' },
-};
-
-export const Advanced: Story = {
-  render: () =>
-    (() => {
-      const [steps, setSteps] = React.useState<StepperProps['steps']>([
-        ...initialSteps,
-      ]);
-      const [current, setCurrent] = React.useState(1);
-
-      const updateSteps = React.useCallback((steps, current) => {
-        const newSteps = [...steps];
-        newSteps.forEach((step, idx) => {
-          if (step.status !== 'disabled') step.status = 'pending';
-          if (idx + 1 < current) step.status = 'completed';
-          if (idx + 1 === current) step.status = 'current';
-        });
-        return newSteps;
-      }, []);
-
-      const goNext = () =>
-        setCurrent(() => (current <= steps.length ? current + 1 : current));
-      const goPrevious = () =>
-        setCurrent(() => (current > 1 ? current - 1 : current));
-
-      const buttonLabel = current >= steps.length ? 'Finish' : 'Next';
-
-      React.useEffect(
-        () => setSteps((preSteps) => updateSteps(preSteps, current)),
-        [current, updateSteps]
-      );
-
-      return (
-        <>
-          <Stepper id="stepper" aria-label="Hi" steps={steps} />
-          <HFlex marginTop="cmp-lg">
-            <Button onClick={goPrevious}>Previous</Button>
-            <Button onClick={goNext} colorScheme="accent">
-              {buttonLabel}
-            </Button>
-          </HFlex>
-        </>
-      );
-    })(),
 };
