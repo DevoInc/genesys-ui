@@ -23,7 +23,7 @@ export * from './Fluid';
 export * from './Form';
 export * from './Grid';
 export * from './Helper';
-export * from './Helper/cases';
+export * from './FloatingHelper';
 export * from './HFlex';
 export * from './Icon';
 export * from './IconButton';

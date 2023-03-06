@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { Typography, InlineMessage, HelperProps } from '../../';
-import { HELPER_ICON_BUTTON_SIZE_MAP } from '../constants';
-import { hasStatus } from '../../../utils/validations';
+import { Typography, InlineMessage, HelperProps } from '..';
+import { HELPER_ICON_BUTTON_SIZE_MAP } from '../Helper/constants';
+import { hasStatus } from '../../utils/validations';
 
 export interface FloatingHelperProps extends HelperProps {
   visible?: boolean;
