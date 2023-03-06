@@ -1,6 +1,7 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './Link.stories';
+import * as CaseStories from './Link.cases.stories';
 
 <Meta of={Stories} />
 
@@ -8,9 +9,9 @@ import * as Stories from './Link.stories';
 
 ## Overview
 
-The `Link` component is used for users to navigate to another place. This place
-could be a different page, another section of the same page,
-a different view... etc.
+The `Link` component facilitates user navigation to different destinations such as a different page, another section of the same page, or a different view. 
+To make the navigation possible, several props such as `href` or `onClick` are available.
+
 
 # How to import
 
@@ -24,40 +25,14 @@ import { Link } from '@devoinc/genesys-ui';
 
 <Canvas of={Stories.Base} />
 
-To make possible this navigation we can use the 'href' or 'onClick' props.
+## Cases
 
-<Source
-  code={`
-const [counter, setCounter] = React.useState(0);
-const increaseCounter = () => setCounter((prevCounter) => prevCounter + 1);
-const [counterNav, setCounterNav] = React.useState(0);
-const increaseCounterNav = () =>
-  setCounterNav((prevCounter) => prevCounter + 1);
-  
-return (
-  <Box marginBottom={'cmp-xxs'}>
-    <Link href={null} onClick={increaseCounter}>
-      This is a link with no href provided but with onClick.
-    </Link>
-  </Box>
-);
-`}
-/>
+### Block behavior
+The Link component can be utilized as either an inline or block element. 
+By default, the component is displayed as inline-flex and is integrated with the flow of its parent content.
+However, by using the `wide` prop, the Link is displayed as flex and becomes a block element that is separate from the surrounding content.
 
-We can use the `Link` component as inline or block element. By default, the
-component is displayed as 'inline-flex', and it's integrated with the flow of
-its parent content. However if we use the 'wide' prop, the `Link` is displayed as 'flex', and it's
-a block element separated from the rest of contents:
-
-<Source
-  code={`
-<Link wide>Star light muse</Link> about extraordinary claims require
-extraordinary evidence hydrogen atoms astonishment Hypatia. Descended from
-astronomers dream of the mind&apos;s eye cosmic fugue something incredible
-is waiting to be known rings of Uranus inconspicuous motes of rock and
-gas.
-`}
-/>
+<Canvas of={CaseStories.Base} />
 
 ## API
 

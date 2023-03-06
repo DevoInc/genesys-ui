@@ -5,7 +5,7 @@ import { Link } from './Link';
 import { Typography } from '../';
 
 const meta: Meta<typeof Link> = {
-  title: 'Components/Core/Navigation/Link',
+  title: 'Components/Core/Navigation/Link/Cases',
   component: Link,
   args: {
     colorScheme: 'base',
@@ -13,13 +13,14 @@ const meta: Meta<typeof Link> = {
     state: 'enabled',
     href: 'https://www.google.com',
     target: '_blank',
+    wide: true,
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Link>;
 
-export const Base: Story = {
+export const Block: Story = {
   render: (args) => (
     <Typography.Paragraph>
       Star stuff harvesting <Link {...args}>star light muse</Link> about
