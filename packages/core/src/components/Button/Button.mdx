@@ -1,6 +1,9 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './Button.stories';
+import * as CaseStories from './Button.cases.stories';
+import * as LoadingStories from './ButtonLoading.stories';
+import * as SelectionStories from './ButtonSelection.stories';
 
 <Meta of={Stories} />
 
@@ -29,13 +32,76 @@ import { Button } from '@devoinc/genesys-ui';
 
 <Canvas of={Stories.Base} />
 
+## Cases
+
 ### Button as dropdown trigger
 
-<Canvas of={Stories.AsDropdown} />
+<Canvas of={CaseStories.AsDropdown} />
 
 ### Button as link
 
-<Canvas of={Stories.AsLink} />
+<Canvas of={CaseStories.AsLink} />
+
+### Button Loading
+
+The `Button` component has loading states to communicate that the process which
+has been launched with its action is currently running, or it's been finished
+successfully or with errors.
+
+When the `state` prop value is `loading` always is rendered a spinner at the
+left of the `Button`. If there is an icon at the left, it will be replaced by
+this spinner.
+
+We can use different values for `children` and `icon` based in each `state` loading
+values to inform better about the process to the user. We can see examples of
+this in the next stories.
+
+<Canvas of={LoadingStories.Loading} />
+
+### Button Loading success
+
+When the `state` prop value is `loading-success` always is rendered a check icon
+at the left of the `Button`. If there is an icon at the left, it will be
+replaced by this icon, but only for a seconds. In the same way, there is an
+animation from original color scheme to success scheme, to come back again a few
+seconds later to the original one.
+
+<Canvas of={LoadingStories.Success} />
+
+### Button Loading error
+
+When the `state` prop value is `loading-success` always is rendered a check icon
+at the left of the `Button`. If there is an icon at the left, it will be
+replaced by this spinner, but only for a seconds. In the same way, there is an
+animation from original color scheme to error scheme, to come back again a few
+seconds later to the original one.
+
+<Canvas of={LoadingStories.Error} />
+
+### Selectable
+
+Buttons can be used as a form Radio or as a form Checkbox.
+In fact, the generated HTML is a `<label>` with a `<input type='radio'>` or
+`<input type='checkbox'>` inside. At the same way, to use as a Radio group it
+must be used only as part of a group with the same value for `name` prop.
+This allows to unselect automatically the previous selected option when another
+one is selected, because this type of selection is always unique.
+
+### Selectable multiple uncontrolled
+
+<Canvas of={SelectionStories.MultipleUncontrolled} />
+
+### Selectable multiple controlled
+
+<Canvas of={SelectionStories.MultipleControlled} />
+
+### Selectable single uncontrolled
+
+<Canvas of={SelectionStories.SingleUncontrolled} />
+
+### Selectable single controlled
+
+<Canvas of={SelectionStories.SingleControlled} />
 
 ## API
 

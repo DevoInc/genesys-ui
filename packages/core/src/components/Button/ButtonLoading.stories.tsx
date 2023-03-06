@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Button, ButtonProps, Typography } from '../..';
 
 const meta: Meta<typeof Button> = {
-  title: 'Components/Core/Button/Button/Load',
+  title: 'Components/Core/Button/Button/Cases',
   component: Button,
 };
 
@@ -19,7 +19,7 @@ export const Loading: Story = {
   },
 };
 
-export const Success: Story = {
+export const LoadSuccess: Story = {
   args: {
     icon: 'cloud_download_2',
     state: 'loading',
@@ -55,7 +55,7 @@ export const Success: Story = {
     })(),
 };
 
-export const Error: Story = {
+export const LoadError: Story = {
   args: {
     icon: 'cloud_download_2',
     state: 'loading',
