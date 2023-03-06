@@ -1,6 +1,7 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './ContentSwitcherItem.stories';
+import * as CaseStories from './ContentSwitcherItem.cases.stories';
 
 <Meta of={Stories} />
 
@@ -22,7 +23,7 @@ import { ContentSwitcherItem } from '@devoinc/genesys-ui';
 
 Example of an uncontrolled `ContentSwitcher.Item` .
 
-<Canvas of={Stories.ItemUncontrolled} />
+<Canvas of={Stories.Base} />
 
 ## Cases
 
@@ -30,7 +31,7 @@ Example of an uncontrolled `ContentSwitcher.Item` .
 
 Example of a controlled `ContentSwitcher.Item` .
 
-<Canvas of={Stories.ItemControlled} />
+<Canvas of={CaseStories.Controlled} />
 
 ## API
 
