@@ -1,12 +1,15 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './AppBar.stories';
+import * as CaseStories from './AppBar.cases.stories';
 
 <Meta of={Stories} />
 
 # AppBar
 
 ## Overview
+
+Component used for creating a navigation bar. It can be customized to fit various use cases. 
 
 ## How to import
 
@@ -20,9 +23,10 @@ import { AppBar } from '@devoinc/genesys-ui';
 
 <Canvas of={Stories.Base} />
 
+## Cases
 ### Custom content
 
-<Canvas of={Stories.CustomContent} />
+<Canvas of={CaseStories.CustomContent} />
 
 ## API
 
