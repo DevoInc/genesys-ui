@@ -16,7 +16,7 @@ const meta: Meta<typeof AppBar> = {
 export default meta;
 type Story = StoryObj<typeof AppBar>;
 
-export const StraightContent: Story = {
+export const Base: Story = {
   args: {
     mainActions,
     tabs,

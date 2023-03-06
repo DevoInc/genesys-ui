@@ -1,10 +1,12 @@
-import { Meta, Canvas, Source, Markdown } from '@storybook/blocks';
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './BoxMessage.stories';
 
 <Meta of={Stories} />
 
 # BoxMessage
+
+## Overview
 
 ## How to import
 
@@ -18,8 +20,10 @@ import { BoxMessage } from '@devoinc/genesys-ui';
 
 <Canvas of={Stories.Base} />
 
-## Examples
-
 ### Using cookie
 
 <Canvas of={Stories.Cookie} />
+
+## API
+
+<ArgTypes of={Stories} />

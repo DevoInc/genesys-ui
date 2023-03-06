@@ -1,4 +1,4 @@
-import { Meta, Canvas, Source, Markdown } from '@storybook/blocks';
+import { Meta, Canvas, Source, Markdown, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './Box.stories';
 
@@ -8,6 +8,13 @@ import spacingProps from '../../../stories/partials/spacingProps.md?raw';
 
 # Box
 
+## Overview
+
+Use `Box` component to wrap a functional component and apply
+layout styles to it: margin, position, padding, overflow... etc.
+Definitely it provides a shorthand way to pass layout styles via props to
+another component.
+
 ## How to import
 
 <Source
@@ -16,28 +23,23 @@ import { Box } from '@devoinc/genesys-ui';
 `}
 />
 
-Use `Box` component to wrap a functional component and apply
-layout styles to it: margin, position, padding, overflow... etc.
-Definitely it provides a shorthand way to pass layout styles via props to
-another component.
-
-This is an example of `Box`:
+## Basic usage
 
 <Canvas of={Stories.Base} />
 
-## as
+### as
 
 Likewise, its `as` property allow this component to be rendered as any HTML tag:
 'div', 'li', 'section'... etc.
 
-```
+<Source
+  code={`
 import * as React from 'react';
 import { Box } from '@devoinc/genesys-ui';
 
 const MyFlexCmp = () => <Box as={'span'}>Box content</Box>;
-```
-
-## Examples
+`}
+/>
 
 This is an example with `Button` and `Badge`. We place the `Badge` in absolute
 way, relative to the `Button`:
@@ -51,3 +53,7 @@ and 'overflow' to auto:
 <Canvas of={Stories.Scrolled} />
 
 <Markdown>{spacingProps}</Markdown>
+
+## API
+
+<ArgTypes of={Stories} />

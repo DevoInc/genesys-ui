@@ -1,4 +1,4 @@
-import { Meta, Canvas, Source } from '@storybook/blocks';
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './CheckboxControl.stories';
 
@@ -22,14 +22,18 @@ import { CheckboxControl } from '@devoinc/genesys-ui';
 
 <Canvas of={Stories.Base} />
 
-## Uncontrolled
+### Uncontrolled
 
 <Canvas of={Stories.Uncontrolled} />
 
-## Controlled
+### Controlled
 
 <Canvas of={Stories.Controlled} />
 
-## Indeterminate
+### Indeterminate
 
 <Canvas of={Stories.Indeterminate} />
+
+## API
+
+<ArgTypes of={Stories} />

@@ -1,9 +1,11 @@
-import { Meta, Canvas, Source } from '@storybook/blocks';
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 import * as Stories from './Avatar.stories';
 
 <Meta of={Stories} />
 
 # Avatar
+
+## Overview
 
 ## How to import
 
@@ -77,7 +79,7 @@ version, so the `initials` are rendered.
 
 <Canvas of={Stories.WithColorScheme} />
 
-## As button
+### As button
 
 By defining the _onClick_ property, the avatar behaves as a button.
 
@@ -89,7 +91,7 @@ Clickable as a button which would open a Lightbox to expand the image:
 
 <Canvas of={Stories.ButtonExpandable} />
 
-## Clickable
+### Clickable
 
 You can use the Avatar as a clickable element. E.g. when it opens a Modal (button)
 or when it allows navigating to another page (link).
@@ -104,9 +106,13 @@ accessibility reasons: `aria-controls` (id of the controlled component),
 
 <Canvas of={Stories.Clickable} />
 
-## As Link
+### As Link
 
 By defining the _href_ property, the avatar behaves as a link. Additionally, it is possible
 to set the _target_ mode for the URL to open.
 
 <Canvas of={Stories.Link} />
+
+## API
+
+<ArgTypes of={Stories} />

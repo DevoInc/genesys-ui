@@ -26,7 +26,7 @@ export const Base: Story = {
   },
 };
 
-export const Complex: Story = {
+export const MultipleForms: Story = {
   args: {
     children: (
       <>

@@ -1,10 +1,12 @@
-import { Meta, Canvas, Source } from '@storybook/blocks';
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './AppBar.stories';
 
 <Meta of={Stories} />
 
 # AppBar
+
+## Overview
 
 ## How to import
 
@@ -14,10 +16,14 @@ import { AppBar } from '@devoinc/genesys-ui';
 `}
 />
 
-## Straight content
+## Basic usage
 
-<Canvas of={Stories.StraightContent} />
+<Canvas of={Stories.Base} />
 
-# Custom content
+### Custom content
 
 <Canvas of={Stories.CustomContent} />
+
+## API
+
+<ArgTypes of={Stories} />

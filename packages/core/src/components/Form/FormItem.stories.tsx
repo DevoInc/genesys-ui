@@ -17,7 +17,7 @@ export const Base: Story = {
   },
 };
 
-export const Complex: Story = {
+export const SeveralItems: Story = {
   render: () => (
     <Form>
       <Form.Group direction="row">
