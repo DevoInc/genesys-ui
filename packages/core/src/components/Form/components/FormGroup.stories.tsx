@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { InputControl, Form } from '..';
+import { InputControl, Form } from '../..';
 
 const meta: Meta<typeof Form.Group> = {
-  title: 'Components/Core/Form/Form/Group',
+  title: 'Components/Core/Form/Form/Subcomponents',
   component: Form.Group,
   args: {
     direction: 'column',
@@ -14,7 +14,7 @@ const meta: Meta<typeof Form.Group> = {
 export default meta;
 type Story = StoryObj<typeof Form.Group>;
 
-export const Base: Story = {
+export const Group: Story = {
   args: {
     children: (
       <>

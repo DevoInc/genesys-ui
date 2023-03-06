@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { ChoiceGroup, IconButton } from '..';
 
 const meta: Meta<typeof ChoiceGroup> = {
-  title: 'Components/Core/Form/ChoiceGroup/Docs',
+  title: 'Components/Core/Form/ChoiceGroup/Cases',
   component: ChoiceGroup,
   args: {
     hasLegendLabelFormat: true,

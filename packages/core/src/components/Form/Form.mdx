@@ -1,6 +1,7 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './Form.stories';
+import * as CasesStories from './Form.cases.stories';
 
 <Meta of={Stories} />
 
@@ -22,9 +23,17 @@ import { Form } from '@devoinc/genesys-ui';
 
 <Canvas of={Stories.Base} />
 
+## Cases
+
 ### Multiple forms
 
-<Canvas of={Stories.MultipleForms} />
+<Canvas of={CasesStories.MultipleForms} />
+
+## Subcomponents
+
+- [Buttons](?path=/story/components-core-form-form-subcomponents--docs#buttons)
+- [Group](?path=/story/components-core-form-form-subcomponents--docs#group)
+- [Item](?path=/story/components-core-form-form-subcomponents--docs#item)
 
 ## API
 

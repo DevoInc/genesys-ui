@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Button, Form } from '../';
+import { Button, Form } from '../../';
 
 const meta: Meta<typeof Form.Buttons> = {
-  title: 'Components/Core/Form/Form/Buttons',
+  title: 'Components/Core/Form/Form/Subcomponents',
   component: Form.Buttons,
   args: {
     buttonsPosition: 'right',
@@ -15,7 +15,7 @@ const meta: Meta<typeof Form.Buttons> = {
 export default meta;
 type Story = StoryObj<typeof Form.Buttons>;
 
-export const Base: Story = {
+export const Buttons: Story = {
   args: {
     children: (
       <>

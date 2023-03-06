@@ -1,0 +1,56 @@
+import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+
+import * as FormStories from './FormButtons.stories';
+import * as GroupStories from './FormGroup.stories';
+import * as ItemStories from './FormItem.stories';
+
+<Meta of={FormStories} />
+
+# Subcomponents
+
+Use each subcomponent as a dot notation component.
+
+<Source
+  code={`
+import { Form } from '@devoinc/genesys-ui';
+
+<Form.Group />
+<Form.Buttons />
+<Form.Item />
+`} />
+
+## Form.Buttons
+
+Component to create a row with a buttons block and a helper block in the opposite side.
+
+### Basic usage
+
+<Canvas of={FormStories.Base} />
+
+### API
+
+<ArgTypes of={FormStories} />
+
+## Form.Group
+
+Component to create an HTML fieldset and distribute the form groups and fields inside it.
+
+### Basic usage
+
+<Canvas of={GroupStories.Base} />
+
+### API
+
+<ArgTypes of={GroupStories} />
+
+## Form.Item
+
+Component to get specific distribution for each child of a Form or FormGroup.
+
+### Basic usage
+
+<Canvas of={ItemStories.Base} />
+
+### API
+
+<ArgTypes of={ItemStories} />
