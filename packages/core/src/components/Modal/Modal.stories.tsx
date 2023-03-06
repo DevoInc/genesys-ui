@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { AnimatePresence, motion } from 'framer-motion';
 
 import { Button, Modal } from '../';
 
