@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { ContentSwitcherItem } from './ContentSwitcherItem';
 
 const meta: Meta<typeof ContentSwitcherItem> = {
-  title: 'Components/Core/Navigation/ContentSwitcher/Subcomponents/Cases',
+  title: 'Components/Core/Navigation/ContentSwitcher/Subcomponents/Item/Cases',
   component: ContentSwitcherItem,
   args: {},
 };

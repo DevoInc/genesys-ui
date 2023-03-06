@@ -1,10 +1,9 @@
-import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { ContentSwitcherItem } from './ContentSwitcherItem';
 
 const meta: Meta<typeof ContentSwitcherItem> = {
-  title: 'Components/Core/Navigation/ContentSwitcher/Subcomponents',
+  title: 'Components/Core/Navigation/ContentSwitcher/Subcomponents/Item',
   component: ContentSwitcherItem,
   args: {},
 };
