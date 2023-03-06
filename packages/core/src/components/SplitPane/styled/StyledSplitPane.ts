@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-export interface StyledSplitPanelProps {
+export interface StyledSplitPaneProps {
   vertical?: boolean;
 }
 
-export const StyledSplitPanel = styled.div<StyledSplitPanelProps>`
+export const StyledSplitPane = styled.div<StyledSplitPaneProps>`
   ${({ vertical = false }) => css`
     position: absolute;
     display: flex;

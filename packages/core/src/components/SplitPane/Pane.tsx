@@ -3,10 +3,10 @@
 
 import * as React from 'react';
 
-import { StyledSplitPanelPane, StyledSplitPanelPaneProps } from './styled';
+import { StyledSplitPanePane, StyledSplitPanePaneProps } from './styled';
 
 export interface PaneProps
-  extends Pick<StyledSplitPanelPaneProps, 'vertical' | 'primary' | 'padding'> {
+  extends Pick<StyledSplitPanePaneProps, 'vertical' | 'primary' | 'padding'> {
   size?: number | string;
   percentage?: boolean;
   children?: React.ReactNode;
@@ -40,14 +40,14 @@ const PaneBase: React.FC<PaneProps> = ({
   });
 
   return (
-    <StyledSplitPanelPane
+    <StyledSplitPanePane
       ref={ref}
       primary={primary}
       vertical={vertical}
       padding={padding}
     >
       {children}
-    </StyledSplitPanelPane>
+    </StyledSplitPanePane>
   );
 };
 

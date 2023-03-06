@@ -1,0 +1,35 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './SplitPane.stories';
+import * as CaseStories from './SplitPane.cases.stories';
+
+<Meta of={Stories} />
+
+# SplitPane
+
+## Overview
+
+`SplitPane` component allow divide the screen in different panes.
+It can be nested or split vertically or horizontally.
+
+## How to import
+
+<Source
+  code={`
+import { SplitPane } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Cases
+
+## Nested
+
+<Canvas of={CaseStories.Nested} />
+
+## API
+
+<ArgTypes of={Stories} />

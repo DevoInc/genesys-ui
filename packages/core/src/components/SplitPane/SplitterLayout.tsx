@@ -4,7 +4,7 @@
 import * as React from 'react';
 import type { GlobalAriaProps, GlobalAttrProps } from '../../declarations';
 import { Pane, PaneProps } from './Pane';
-import { StyledSplitPanel, StyledSplitPanelSeparator } from './styled';
+import { StyledSplitPane, StyledSplitPaneSeparator } from './styled';
 
 // TODO: maybe this need a refactor or improve
 const clearSelection = () => {
@@ -285,10 +285,10 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
   }
 
   return (
-    <StyledSplitPanel {...nativeProps} vertical={vertical} ref={containerRef}>
+    <StyledSplitPane {...nativeProps} vertical={vertical} ref={containerRef}>
       {wrappedChildren[0]}
       {wrappedChildren.length > 1 && (
-        <StyledSplitPanelSeparator
+        <StyledSplitPaneSeparator
           style={{ display: child.length === 1 ? 'none' : 'flex' }}
           role="separator"
           layoutChanging={resizing}
@@ -297,9 +297,9 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
           onMouseDown={handleSplitterMouseDown}
         >
           <i className={'gi-row_drag_drop'} />
-        </StyledSplitPanelSeparator>
+        </StyledSplitPaneSeparator>
       )}
       {wrappedChildren.length > 1 && wrappedChildren[1]}
-    </StyledSplitPanel>
+    </StyledSplitPane>
   );
 };

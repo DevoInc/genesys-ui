@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as React from 'react';
 
-export interface StyledSplitPanelPaneProps {
+export interface StyledSplitPanePaneProps {
   flex?: React.CSSProperties['flex'];
   height?: React.CSSProperties['height'];
   horizontal?: boolean;
@@ -12,7 +12,7 @@ export interface StyledSplitPanelPaneProps {
   width?: React.CSSProperties['width'];
 }
 
-export const StyledSplitPanelPane = styled.div.attrs<StyledSplitPanelPaneProps>(
+export const StyledSplitPanePane = styled.div.attrs<StyledSplitPanePaneProps>(
   ({
     flex,
     height,
@@ -30,7 +30,7 @@ export const StyledSplitPanelPane = styled.div.attrs<StyledSplitPanelPaneProps>(
       padding: padding ? padding : null,
     },
   })
-)<StyledSplitPanelPaneProps>`
+)<StyledSplitPanePaneProps>`
   position: relative;
   flex: 0 0 auto;
   overflow: auto;

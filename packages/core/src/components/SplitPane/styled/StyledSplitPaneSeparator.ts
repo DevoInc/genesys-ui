@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 import { pseudoElementOverlayMixin } from '../../../styled/mixins/utilsMixins';
 
-export interface StyledSplitPanelSeparatorProps {
+export interface StyledSplitPaneSeparatorProps {
   vertical?: boolean;
   layoutChanging?: boolean;
 }
 
-export const StyledSplitPanelSeparator = styled.div<StyledSplitPanelSeparatorProps>`
+export const StyledSplitPaneSeparator = styled.div<StyledSplitPaneSeparatorProps>`
   ${({ vertical = false, layoutChanging = false, theme }) => {
     const aliasTokens = theme.tokens.alias;
     const separatorSize = '1rem';

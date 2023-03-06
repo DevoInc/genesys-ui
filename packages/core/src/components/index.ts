@@ -43,7 +43,7 @@ export * from './ProgressBar';
 export * from './RadioControl';
 export * from './Select2Control';
 export * from './SpinnerLoader';
-export * from './SplitPanel';
+export * from './SplitPane';
 export * from './StatusMessage';
 export * from './Stepper';
 export * from './SwitchControl';
