@@ -1,7 +1,7 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './ChoiceGroup.stories';
-import { Shields } from '../../../../../.storybook/docs/blocks';
+import * as CasesStories from './ChoiceGroup.stories';
 
 <Meta of={Stories} />
 
@@ -9,8 +9,8 @@ import { Shields } from '../../../../../.storybook/docs/blocks';
 
 ## Overview
 
-Input elements of type checkbox are rendered by default as boxes that are checked (ticked) when activated.
-A checkbox allows you to select single values for submission in a form (or not).
+The `ChoiceGroup` component permits the user to pick a single choice from a collection.
+Utilize this component when it's necessary for the user to view all the choices that are available.
 
 ## How to import
 
@@ -24,12 +24,14 @@ import { ChoiceGroup } from '@devoinc/genesys-ui';
 
 <Canvas of={Stories.Base} />
 
+## Cases
+
 ### Multiple selection
 
 When multiple selection is used (form checkboxes behavior) you will get a controlled
 ChoiceGroup with rendered form checkbox inputs as HTML and their keyboard utility.
 
-<Canvas of={Stories.MultipleSelectionControlled} />
+<Canvas of={CasesStories.MultipleSelectionControlled} />
 
 ### Multiple selection uncontrolled
 
@@ -39,24 +41,24 @@ ChoiceGroup with rendered form checkbox inputs as HTML and their keyboard utilit
 With uncontrolled way you can't manage the change of the icon depending on
 the internal checkbox is checked or not.
 
-<Canvas of={Stories.MultipleSelectionUncontrolled} />
+<Canvas of={CasesStories.MultipleSelectionUncontrolled} />
 
-## Single selection
+### Single selection
 
 When a single selection is needed (form radios behavior), then you have to
 add the `selectionScheme` prop to 'single'. This way you will get a controlled
 ChoiceGroup with rendered form radio inputs as HTML and their keyboard utility.
 
-<Canvas of={Stories.SingleSelectionControlled} />
+<Canvas of={CasesStories.SingleSelectionControlled} />
 
-## Single selection uncontrolled
+### Single selection uncontrolled
 
 If you need an uncontrolled behavior, then you have to assign the prop `name`
 with the same value to every IconButton. You can't use onChange so you can get the
 native behavior of a radio group. This way you will get an uncontrolled
 ChoiceGroup with rendered form radio inputs as HTML and their keyboard utility.
 
-<Canvas of={Stories.SingleSelectionUncontrolled} />
+<Canvas of={CasesStories.SingleSelectionUncontrolled} />
 
 ## API
 
