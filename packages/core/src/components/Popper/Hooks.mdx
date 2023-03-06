@@ -1,0 +1,38 @@
+import { Meta, Source } from '@storybook/blocks';
+import * as Stories from './Popper.stories';
+
+<Meta title="Components/Core/Popper/Hooks/Docs" />
+
+# Hooks
+
+If you need a custom or more complex behavior, you can directly use the hooks
+provided by the library in your code. If you wish, you can see more information
+in the documentation of [React Popper](https://popper.js.org/react-popper/v2/).
+
+Here is a small example of its use with hooks:
+
+<Source
+  code={`
+import * as React from 'react';
+import { usePopper } from 'react-popper';
+
+const Example = () => {
+const [referenceElement, setReferenceElement] = React.useState(null);
+const [popperElement, setPopperElement] = React.useState(null);
+const [arrowElement, setArrowElement] = React.useState(null);
+const { styles, attributes } = usePopper(referenceElement, popperElement, {
+modifiers: [{ name: 'arrow', options: { element: arrowElement } }],
+});
+
+return (
+
+<>
+  <button type="button" ref={setReferenceElement}>
+    Reference element
+  </button>
+  <div ref={setPopperElement} style={styles.popper} {...attributes.popper}>
+    Popper element
+    <div ref={setArrowElement} style={styles.arrow} />
+  </div>
+</>
+); }; `} />
