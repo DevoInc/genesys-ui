@@ -1,0 +1,89 @@
+import { Meta, Source, Canvas } from '@storybook/addon-docs';
+
+import * as Stories from './Hooks.stories';
+
+<Meta of={Stories} />
+
+# Pagination Behaviour Hooks
+
+These hook provides a pre-defined behavior to be applied in the Pagination component.
+It returns an object with the following values:
+
+<Source
+  code={`
+{
+  page, // Current page
+  lastPage, // Last page
+  pageFirstItem, // First item of the current page
+  pageLastItem, // Last item of the current page
+  totalItems, // Total number of items
+  pageData, // Data of the current page
+  pageSize, // Current page size
+  pageSizeOptions, // Page size options
+  setPageSize, // Set page size function
+  goToNextPage, //  Go to next page function
+  goToPreviousPage, // Go to previous page function
+  goToFirstPage, // Go to first page function
+  goToLastPage, // Go to last page function
+  goToPage, // Go to page function
+}
+`}
+/>
+
+## Use Pagination
+
+<Canvas of={Stories.UsePagination} />
+
+#### Parameters
+
+It receives the following parameters:
+
+<Source
+  code={`
+{
+  list, // List of items
+  conf: {
+    initialPageSize, // Initial page size
+    initialPage, // Initial page number
+    pageSizeOptions, // Page size options
+  }
+}
+`}
+/>
+
+#### Usage
+
+<Source
+code={`
+const list = [...Array(22).keys()];
+    const paginationHook = usePagination({
+      list,
+      conf: {
+        initialPageSize: 5,
+      },
+    });
+
+    return (
+      <>
+        <Pagination {...args} paginationHook={paginationHook} />
+        {paginationHook.pageData.map((data, idx) => (
+          <p
+            key={idx}
+            style={{
+              margin: '1rem 0',
+              padding: '1rem',
+              color: '#484848',
+              fontSize: '1.4rem',
+              textAlign: 'center',
+              backgroundColor: 'rgba(210,210,210,0.45)',
+              borderRadius: '0.4rem',
+            }}
+          >
+            Item {Number(data) + 1}
+          </p>
+        ))}
+      </>
+    );
+
+`}
+/>

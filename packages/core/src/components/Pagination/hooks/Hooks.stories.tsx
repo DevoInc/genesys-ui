@@ -1,22 +1,18 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-
-import { Pagination, Tooltip } from '../';
-import { usePagination } from './hooks';
-import { Item } from './declarations';
+import { Pagination } from '../Pagination';
+import { usePagination } from './';
 
 const meta: Meta<typeof Pagination> = {
-  title: 'Components/Core/Navigation/Pagination',
+  title: 'Components/Core/Navigation/Pagination/Hooks',
   component: Pagination,
-  args: {
-    size: 'md',
-  },
+  args: {},
 };
 
 export default meta;
 type Story = StoryObj<typeof Pagination>;
 
-export const Base: Story = {
+export const UsePagination: Story = {
   render: (args) =>
     (() => {
       const list = [...Array(22).keys()];
@@ -29,9 +25,8 @@ export const Base: Story = {
 
       return (
         <>
-          <Tooltip place={'bottom'} delayShow={150} />
           <Pagination {...args} paginationHook={paginationHook} />
-          {paginationHook.pageData.map((data: Item, idx: number) => (
+          {paginationHook.pageData.map((data, idx) => (
             <p
               key={idx}
               style={{
@@ -44,10 +39,11 @@ export const Base: Story = {
                 borderRadius: '0.4rem',
               }}
             >
-              Item {(data as number) + 1}
+              Item {Number(data) + 1}
             </p>
           ))}
         </>
       );
     })(),
+  parameters: { controls: false },
 };
