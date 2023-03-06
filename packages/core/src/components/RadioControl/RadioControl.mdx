@@ -1,6 +1,7 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './RadioControl.stories';
+import * as CasesStories from './RadioControl.cases.stories';
 
 <Meta of={Stories} />
 
@@ -23,17 +24,19 @@ import { RadioControl } from '@devoinc/genesys-ui';
 `}
 />
 
-## Base
+## Basic usage
 
 <Canvas of={Stories.Base} />
 
-Uncontrolled
+## Cases
 
-<Canvas of={Stories.Uncontrolled} />
+### Uncontrolled
 
-Controlled
+<Canvas of={CasesStories.Uncontrolled} />
 
-<Canvas of={Stories.Controlled} />
+### Controlled
+
+<Canvas of={CasesStories.Controlled} />
 
 ## API
 
