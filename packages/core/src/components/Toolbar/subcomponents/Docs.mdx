@@ -12,7 +12,7 @@ import * as SeparatorStories from './ToolbarSeparator/ToolbarSeparator.stories';
 
 # Subcomponents
 
-# How to import
+## How to import
 
 <Source
   code={`
@@ -20,7 +20,9 @@ import { Toolbar } from '@devoinc/genesys-ui';
 `}
 />
 
-## Group
+## Toolbar.Group
+
+Split the toolbar component in different sections.
 
 ### How to use
 
@@ -45,7 +47,9 @@ import { Toolbar } from '@devoinc/genesys-ui';
 
 <ArgTypes of={GroupStories} />
 
-## Item
+## Toolbar.Item
+
+A `Toolbar.Item` is an element into a `Toolbar.Group`
 
 ### How to use
 
@@ -68,7 +72,9 @@ import { Toolbar } from '@devoinc/genesys-ui';
 
 <ArgTypes of={ItemStories} />
 
-## Separator
+## Toolbar.Separator
+
+Creates a mark indicating a separation.
 
 ### How to use
 
@@ -85,7 +91,3 @@ import { Toolbar } from '@devoinc/genesys-ui';
 ### Basic usage
 
 <Canvas of={SeparatorStories.Separator} />
-
-### API
-
-<ArgTypes of={SeparatorStories} />
