@@ -12,7 +12,7 @@ import {
 } from '../';
 import { usePaginationStyles } from './usePaginationStyles';
 import { defaultTexts, HideParts, TextProps } from './declarations';
-import { PaginationInfo } from '../../hooks';
+import { PaginationInfo } from './hooks';
 import { BaseSize, GlobalAriaProps, GlobalAttrProps } from '../../declarations';
 
 const defaultHideParts = {

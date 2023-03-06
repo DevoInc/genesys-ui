@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Pagination, Tooltip } from '../';
-import { usePagination } from './hooks';
+import { Pagination, Tooltip, usePagination } from '../';
 import { Item } from './declarations';
 
 const meta: Meta<typeof Pagination> = {
