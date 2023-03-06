@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { ContentSwitcherItem } from './ContentSwitcherItem';
 
 const meta: Meta<typeof ContentSwitcherItem> = {
-  title: 'Components/Core/Navigation/ContentSwitcher/Item',
+  title: 'Components/Core/Navigation/ContentSwitcher/Subcomponents/Cases',
   component: ContentSwitcherItem,
   args: {},
 };
@@ -12,17 +12,7 @@ const meta: Meta<typeof ContentSwitcherItem> = {
 export default meta;
 type Story = StoryObj<typeof ContentSwitcherItem>;
 
-export const ItemUncontrolled: Story = {
-  args: {
-    size: 'md',
-    icon: 'heart_full',
-    state: 'enabled',
-    onChange: null,
-    children: 'ContentSwitcher item',
-  },
-};
-
-export const ItemControlled: Story = {
+export const Controlled: Story = {
   args: { size: 'md', icon: 'heart_full', state: 'enabled' },
   render: (args) =>
     ((args) => {

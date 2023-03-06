@@ -2,7 +2,7 @@ import * as React from 'react';
 
 // declarations and components
 import { GlobalAriaProps, GlobalAttrProps } from '../../declarations';
-import { ContentSwitcherItem, ContentSwitcherItemProps } from './components';
+import { ContentSwitcherItem, ContentSwitcherItemProps } from './subcomponents';
 
 // styled
 import {

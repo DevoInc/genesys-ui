@@ -4,7 +4,7 @@ import * as React from 'react';
 import { CONTENT_SWITCHER_ITEM_SIZE_MAP } from '../../constants';
 
 // declarations
-import { Button, ButtonProps } from '../../../';
+import { Button, ButtonProps } from '../../..';
 import {
   BaseSize,
   FocusEventAttrProps,

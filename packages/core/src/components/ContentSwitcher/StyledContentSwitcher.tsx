@@ -9,7 +9,7 @@ import { BaseSize } from '@devoinc/genesys-ui';
 
 // styled
 import { StyledFlex } from '../Flex/StyledFlex';
-import { StyledContentSwitcherItemProps } from './components/ContentSwitcherItem/StyledContentSwitcherItem';
+import { StyledContentSwitcherItemProps } from './subcomponents/ContentSwitcherItem/StyledContentSwitcherItem';
 
 export interface StyledContentSwitcherProps
   extends Pick<StyledContentSwitcherItemProps, 'wide'> {

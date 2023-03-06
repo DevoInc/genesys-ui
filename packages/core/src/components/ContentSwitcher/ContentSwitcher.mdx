@@ -1,6 +1,7 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './ContentSwitcher.stories';
+import * as CaseStories from './ContentSwitcher.cases.stories';
 
 <Meta of={Stories} />
 
@@ -8,7 +9,7 @@ import * as Stories from './ContentSwitcher.stories';
 
 ## Overview
 
-Description of the component.
+Component that allows users to switch between different content sections within a single UI element, typically within a navigation context.
 
 ## How to import
 
@@ -22,18 +23,26 @@ import { ContentSwitcher } from '@devoinc/genesys-ui';
 
 <Canvas of={Stories.Basic} />
 
-### Real accessible example with content
+## Cases
 
-To make the component fully accessible we have to consider several aspects:
+### Accessible example with content
 
-- Add as value of prop `aria-controls` of each tab, the value of the `id` attribute of the block whose contents
-  or presence are controlled by the tab. Therefore we have to add that `id` attribute to the content block
-- Add `id` prop value to each tab to be used after by the controlled content blocks as `aria-labelledby` prop value.
-- Add `role='tabpanel'` to the controlled content blocks.
-- Add `tabIndex=0` to the controlled content blocks to maintain the tabbibg focus order.
+To ensure full accessibility of the component, we need to consider multiple aspects. These include:
 
-<Canvas of={Stories.AccesibleWithContent} />
+- Adding the value of the id attribute of the block controlled by each tab as the value of the `aria-controls` prop. To do this, we must first add the `id` prop to the content block.
+- Assigning an `id` prop value to each tab so that it can be used by the controlled content blocks as the `aria-labelledby` prop value.
+- Including `role='tabpanel'` in the controlled content blocks.
+- Setting the `tabIndex` of the controlled content blocks to `0` in order to maintain the tabbing focus order.
+
+<Canvas of={CaseStories.AccesibleWithContent} />
+
+## Subcomponents
+- [Item](?path=/docs/components-core-navigation-contentswitcher-subcomponents--docs)
 
 ## API
 
 <ArgTypes of={Stories} />
+
+## Related components
+
+- [Tabs](?path=/docs/components-core-navigation-tabs--docs)
