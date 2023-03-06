@@ -19,16 +19,16 @@ consult it in the following links:
 - [CSS Grid | w3school](https://www.w3schools.com/css/css_grid.asp).
 
 There are two components that have to do with CSS Grid Layout: **Grid** and
-**GridItem**. These components must always be used together, it is useless to
+**Grid.Item**. These components must always be used together, it is useless to
 use them separately.
 
 - **Grid**: this is a grid container and establishes a new grid formatting
   context for its contents. This
-- **GridItem**: a Grid (grid container) contains GridItems. This component
-  represents the columns or rows of the Grid. GridItems can be set to span
+- **Grid.Item**: a Grid (grid container) contains Grid.Items. This component
+  represents the columns or rows of the Grid. Grid.Items can be set to span
   multiple columns and/or rows.
 
-Grid and GridItem are built from the
+Grid and Grid.Item are built from the
 [Box](/?path=/docs/public-atoms-box--box) component to provide them with some
 basic layout props such as: margin, padding, width, height, etc.
 
@@ -43,6 +43,12 @@ import { Grid } from '@devoinc/genesys-ui';
 ## Basic usage
 
 <Canvas of={Stories.Base} />
+
+<ArgTypes of={Stories} />
+
+## Subcomponents
+
+- [Item](?path=/story/components-core-layout-grid-subcomponents--docs#item)
 
 ## API
 

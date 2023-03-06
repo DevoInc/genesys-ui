@@ -1,0 +1,30 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './GridItem.stories';
+
+<Meta of={Stories} />
+
+# Grid.Item
+
+## Overview
+
+`Grid.Item` component must always be used with `Grid`, it is useless to
+use them separately.
+This component represents the columns or rows of the Grid. Items can be set to span
+multiple columns and/or rows.
+
+# How to import
+
+<Source
+  code={`
+import { Grid } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## API
+
+<ArgTypes of={Stories} />

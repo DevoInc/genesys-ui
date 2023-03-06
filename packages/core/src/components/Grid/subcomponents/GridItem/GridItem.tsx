@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { LayoutTransientProps } from '../../declarations';
+import { LayoutTransientProps } from '../../../../declarations';
 import { StyledGridItem, StyledGridItemProps } from './StyledGridItem';
 
 export interface GridItemProps

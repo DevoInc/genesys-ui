@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { GridItem } from '..';
-import { StyledLayoutGridContent } from '../../../stories/components/styled';
+import { Grid } from '../..';
+import { StyledLayoutGridContent } from '../../../../../stories/components/styled';
 
-const meta: Meta<typeof GridItem> = {
-  title: 'Components/Core/Layout/Grid/GridItem',
-  component: GridItem,
+const meta: Meta<typeof Grid.Item> = {
+  title: 'Components/Core/Layout/Grid/Subcomponents',
+  component: Grid.Item,
 };
 
 export default meta;
-type Story = StoryObj<typeof GridItem>;
+type Story = StoryObj<typeof Grid.Item>;
 
-export const Base: Story = {
+export const Item: Story = {
   args: {
     alignSelf: 'center',
     justifySelf: 'center',

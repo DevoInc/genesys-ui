@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
-import { LayoutGridItemProps } from '../../declarations';
-import { Box, BoxProps } from '../Box';
+
+import { LayoutGridItemProps } from '../../../../declarations';
+import { Box, BoxProps } from '../../../';
 
 export interface StyledGridItemProps
   extends Omit<BoxProps, 'display'>,

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Grid, GridItem } from '..';
+import { Grid } from '..';
 import { StyledLayoutGridContent } from '../../../stories/components/styled';
 
 const meta: Meta<typeof Grid> = {
-  title: 'Components/Core/Layout/Grid/Grid',
+  title: 'Components/Core/Layout/Grid',
   component: Grid,
-  subcomponents: { GridItem },
+  subcomponents: { 'Grid.Item': Grid.Item },
   args: {
     inline: false,
   },
@@ -23,25 +23,25 @@ export const Base: Story = {
     gridTemplateRows: '40px calc(100vh - 40px)',
     children: (
       <>
-        <GridItem
+        <Grid.Item
           gridArea="header"
           as="header"
           gridColumn="2 / 3"
           gridRow="1 / 2"
         >
           <StyledLayoutGridContent>Header</StyledLayoutGridContent>
-        </GridItem>
-        <GridItem
+        </Grid.Item>
+        <Grid.Item
           gridArea="sidebar"
           as="aside"
           gridColumn="1 / 2"
           gridRow="1 / 3"
         >
           <StyledLayoutGridContent>Sidebar</StyledLayoutGridContent>
-        </GridItem>
-        <GridItem gridArea="main" as="main" gridColumn="2 / 3" gridRow="2 / 3">
+        </Grid.Item>
+        <Grid.Item gridArea="main" as="main" gridColumn="2 / 3" gridRow="2 / 3">
           <StyledLayoutGridContent>Main</StyledLayoutGridContent>
-        </GridItem>
+        </Grid.Item>
       </>
     ),
   },
