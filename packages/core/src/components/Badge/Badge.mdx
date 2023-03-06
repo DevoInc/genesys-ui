@@ -1,22 +1,14 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './Badge.stories';
-import { Shields } from '../../../../../.storybook/docs/blocks';
 
 <Meta of={Stories} />
 
 # Badge
 
-<Shields
-  badges={[
-    { link: 'https://google.com', title: 'source code' },
-    { link: 'https://google.com', title: 'accessibility' },
-  ]}
-/>
-
 ## Overview
 
-Badge generates a small mark to the top-right.
+Component used to display a small piece of information, either as icon or text.
 
 ## How to import
 
@@ -29,10 +21,6 @@ import { Badge } from '@devoinc/genesys-ui';
 ## Basic usage
 
 <Canvas of={Stories.Base} />
-
-## Examples
-
-Others stories
 
 ## API
 
