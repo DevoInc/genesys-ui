@@ -1,7 +1,7 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './ChipGroup.stories';
-import * as CasesStories from './ChipGroup.cases.stories';
+import * as CaseStories from './ChipGroup.cases.stories';
 
 <Meta of={Stories} />
 
@@ -30,7 +30,7 @@ import { Badge } from '@devoinc/genesys-ui';
 When multiple selection is used (form checkboxes behavior) you will get a controlled
 ChipGroup with rendered form checkbox inputs as HTML and their keyboard utility.
 
-<Canvas of={CasesStories.MultipleSelection} />
+<Canvas of={CaseStories.MultipleSelection} />
 
 ### Single selection
 
@@ -39,7 +39,7 @@ add the `selectionScheme` prop to 'single' and assign the prop `name`
 with the same value to every Chip. This way you will get a controlled
 ChipGroup with rendered form radio inputs as HTML and their keyboard utility.
 
-<Canvas of={CasesStories.SingleSelection} />
+<Canvas of={CaseStories.SingleSelection} />
 
 ## API
 

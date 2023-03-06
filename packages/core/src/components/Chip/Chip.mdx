@@ -1,7 +1,7 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './Chip.stories';
-import * as CasesStories from './Chip.cases.stories';
+import * as CaseStories from './Chip.cases.stories';
 
 <Meta of={Stories} />
 
@@ -30,7 +30,7 @@ import { Chip } from '@devoinc/genesys-ui';
 When multiple selection is used (form checkbox behavior) you will get a controlled
 Chip with rendered form checkbox input as HTML and its keyboard utility.
 
-<Canvas of={CasesStories.MultipleControlled} />
+<Canvas of={CaseStories.MultipleControlled} />
 
 ### Multiple selection uncontrolled
 
@@ -40,7 +40,7 @@ Chip with rendered form checkbox input as HTML and its keyboard utility.
 With uncontrolled way you can't manage the change of the icon depending on
 the internal checkbox is checked or not.
 
-<Canvas of={CasesStories.MultipleUncontrolled} />
+<Canvas of={CaseStories.MultipleUncontrolled} />
 
 ### Single selection controlled
 
@@ -48,7 +48,7 @@ When a single selection is needed (form radio behavior), then you have to
 add the `selectionScheme` prop to 'single'. This way you will get a controlled
 ChoiceGroup with rendered form radio input as HTML and its keyboard utility.
 
-<Canvas of={CasesStories.SingleControlled} />
+<Canvas of={CaseStories.SingleControlled} />
 
 ### Single selection uncontrolled
 
@@ -57,7 +57,7 @@ with the same value to every Chip. You can't use onChange so you can get the
 native behavior of a radio group. This way you will get an uncontrolled
 Chip with rendered form radio input as HTML and its keyboard utility.
 
-<Canvas of={CasesStories.SingleUncontrolled} />
+<Canvas of={CaseStories.SingleUncontrolled} />
 
 ## API
 
