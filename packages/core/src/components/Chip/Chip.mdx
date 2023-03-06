@@ -1,12 +1,15 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './Chip.stories';
+import * as CasesStories from './Chip.cases.stories';
 
 <Meta of={Stories} />
 
 # Chip
 
 ## Overview
+
+Chips are small units that can stand for an input, a characteristic, or an activity. They enable users to input data, choose options, sift through content, or activate certain functions.
 
 ## How to import
 
@@ -20,14 +23,16 @@ import { Chip } from '@devoinc/genesys-ui';
 
 <Canvas of={Stories.Base} />
 
-### Multiple selection ::: controlled
+## Cases
+
+### Multiple selection controlled
 
 When multiple selection is used (form checkbox behavior) you will get a controlled
 Chip with rendered form checkbox input as HTML and its keyboard utility.
 
-<Canvas of={Stories.MultipleControlled} />
+<Canvas of={CasesStories.MultipleControlled} />
 
-### Multiple selection ::: uncontrolled
+### Multiple selection uncontrolled
 
 If you need an uncontrolled behavior then you can't use onChange so you can get the
 native behavior of a checkbox. This way you will get an uncontrolled
@@ -35,24 +40,24 @@ Chip with rendered form checkbox input as HTML and its keyboard utility.
 With uncontrolled way you can't manage the change of the icon depending on
 the internal checkbox is checked or not.
 
-<Canvas of={Stories.MultipleUncontrolled} />
+<Canvas of={CasesStories.MultipleUncontrolled} />
 
-### Single selection ::: controlled
+### Single selection controlled
 
 When a single selection is needed (form radio behavior), then you have to
 add the `selectionScheme` prop to 'single'. This way you will get a controlled
 ChoiceGroup with rendered form radio input as HTML and its keyboard utility.
 
-<Canvas of={Stories.SingleControlled} />
+<Canvas of={CasesStories.SingleControlled} />
 
-### Single selection ::: uncontrolled
+### Single selection uncontrolled
 
 If you need an uncontrolled behavior, then you have to assign the prop `name`
 with the same value to every Chip. You can't use onChange so you can get the
 native behavior of a radio group. This way you will get an uncontrolled
 Chip with rendered form radio input as HTML and its keyboard utility.
 
-<Canvas of={Stories.SingleUncontrolled} />
+<Canvas of={CasesStories.SingleUncontrolled} />
 
 ## API
 
