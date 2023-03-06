@@ -1,7 +1,6 @@
-import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box, SpinnerLoader, IconButton } from '../..';
+import { IconButton } from '../..';
 
 const meta: Meta<typeof IconButton> = {
   title: 'Components/Core/Button/IconButton',
@@ -17,14 +16,3 @@ export default meta;
 type Story = StoryObj<typeof IconButton>;
 
 export const Base: Story = { args: { icon: 'heart_full', title: 'Favourite' } };
-export const WithChildren: Story = {
-  args: {
-    circular: true,
-    icon: 'real_time',
-    children: (
-      <Box position="absolute" width="100%" height="100%">
-        <SpinnerLoader />
-      </Box>
-    ),
-  },
-};

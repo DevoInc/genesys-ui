@@ -1,6 +1,7 @@
 import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
 
 import * as Stories from './IconButton.stories';
+import * as CaseStories from './IconButton.cases.stories';
 
 <Meta of={Stories} />
 
@@ -24,6 +25,8 @@ import { IconButton } from '@devoinc/genesys-ui';
 ## Basic usage
 
 <Canvas of={Stories.Base} />
+
+## Cases
 
 ### Combined with dropdown
 
@@ -58,7 +61,7 @@ instead of a `<button>` one.
 It's not the common use of an `IconButton`, but sometimes you might need to add
 `children`, as in this example with a `SpinnerLoader` component.
 
-<Canvas of={Stories.WithChildren} />
+<Canvas of={CaseStories.WithChildren} />
 
 ### Selectable
 
