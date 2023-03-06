@@ -1,12 +1,15 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './BoxMessage.stories';
+import * as CaseStories from './BoxMessage.cases.stories';
 
 <Meta of={Stories} />
 
 # BoxMessage
 
 ## Overview
+
+The Box element acts as a container component for fulfilling various CSS utility requirements.
 
 ## How to import
 
@@ -20,9 +23,11 @@ import { BoxMessage } from '@devoinc/genesys-ui';
 
 <Canvas of={Stories.Base} />
 
+## Cases
+
 ### Using cookie
 
-<Canvas of={Stories.Cookie} />
+<Canvas of={CaseStories.Cookie} />
 
 ## API
 
