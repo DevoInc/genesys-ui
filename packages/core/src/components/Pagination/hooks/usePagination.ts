@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { Item } from '../components/Pagination/declarations';
-import { useIsMounted } from './useIsMounted';
+import { Item } from '../declarations';
+import { useIsMounted } from '../../../hooks/useIsMounted';
 export interface PaginationInfo {
   page: number;
   lastPage: number;
