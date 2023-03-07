@@ -3,6 +3,7 @@ import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
 import * as FormStories from './FormButtons.stories';
 import * as GroupStories from './FormGroup.stories';
 import * as ItemStories from './FormItem.stories';
+import * as LegendStories from './FormLegend.stories';
 
 <Meta of={FormStories} />
 
@@ -25,7 +26,7 @@ Component to create a row with a buttons block and a helper block in the opposit
 
 ### [Basic usage](#basic-usage)
 
-<Canvas of={FormStories.Base} />
+<Canvas of={FormStories.Buttons} />
 
 ### [API](#api)
 
@@ -37,7 +38,7 @@ Component to create an HTML fieldset and distribute the form groups and fields i
 
 ### [Basic usage](#basic-usage)
 
-<Canvas of={GroupStories.Base} />
+<Canvas of={GroupStories.Group} />
 
 ### [API](#api)
 
@@ -49,8 +50,20 @@ Component to get specific distribution for each child of a Form or FormGroup.
 
 ### [Basic usage](#basic-usage)
 
-<Canvas of={ItemStories.Base} />
+<Canvas of={ItemStories.Item} />
 
 ### [API](#api)
 
 <ArgTypes of={ItemStories} />
+
+## Form.Legend
+
+Component that provides a legend to the form.
+
+### Basic usage
+
+<Canvas of={LegendStories.Legend} />
+
+### API
+
+<ArgTypes of={LegendStories} />
