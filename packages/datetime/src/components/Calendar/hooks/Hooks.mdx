@@ -4,7 +4,7 @@ import * as Stories from './Hooks.stories';
 
 <Meta of={Stories} />
 
-# Calendar Behaviour Hooks
+# [Calendar Behaviour Hooks](#calendar-behaviour-hooks)
 
 These hooks provide pre-defined behaviors to be applied in the Calendar component.
 Each hook returns an object with values that can be passed to the Calendar component.
@@ -44,9 +44,9 @@ code={`
 import { useCalendarSingleDayBehavior } from '@devoinc/genesys-ui-datetime';
 
 const { handleDateChange, hasLeftHoverEffect, hasRightHoverEffect, selectedDates } =
-    useCalendarSingleDayBehavior({
-        day: null,
-    });
+useCalendarSingleDayBehavior({
+day: null,
+});
 `}
 />
 
@@ -76,10 +76,10 @@ Otherwise, the range of days to be selected will be restarted.
 code={`import { useCalendarForwardBehavior } from '@devoinc/genesys-ui-datetime';
 
 const { handleDateChange, hasLeftHoverEffect, hasRightHoverEffect, selectedDates } =
-    useCalendarForwardBehavior({
-        from: null,
-        to: null,
-    });
+useCalendarForwardBehavior({
+from: null,
+to: null,
+});
 `}
 />
 
@@ -110,10 +110,10 @@ code={`
 import { useCalendarForwardBackwardBehavior } from '@devoinc/genesys-ui-datetime';
 
 const { handleDateChange, hasLeftHoverEffect, hasRightHoverEffect, selectedDates } =
-    useCalendarForwardBackwardBehavior({
-        from: null,
-        to: null,
-        initialBehavior: 'backward',
-    });
+useCalendarForwardBackwardBehavior({
+from: null,
+to: null,
+initialBehavior: 'backward',
+});
 `}
 />
