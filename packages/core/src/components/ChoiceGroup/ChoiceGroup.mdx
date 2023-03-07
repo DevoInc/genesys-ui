@@ -26,14 +26,14 @@ import { ChoiceGroup } from '@devoinc/genesys-ui';
 
 ## [Cases](#cases)
 
-### Multiple selection
+### [Multiple selection](#multiple-selection)
 
 When multiple selection is used (form checkboxes behavior) you will get a controlled
 ChoiceGroup with rendered form checkbox inputs as HTML and their keyboard utility.
 
 <Canvas of={CaseStories.MultipleSelectionControlled} />
 
-### Multiple selection uncontrolled
+### [Multiple selection uncontrolled](#multiple-selection-uncontrolled)
 
 If you need an uncontrolled behavior then you can't use onChange so you can get the
 native behavior of a checkbox. This way you will get an uncontrolled
@@ -43,7 +43,7 @@ the internal checkbox is checked or not.
 
 <Canvas of={CaseStories.MultipleSelectionUncontrolled} />
 
-### Single selection
+### [Single selection](#single-selection)
 
 When a single selection is needed (form radios behavior), then you have to
 add the `selectionScheme` prop to 'single'. This way you will get a controlled
@@ -51,7 +51,7 @@ ChoiceGroup with rendered form radio inputs as HTML and their keyboard utility.
 
 <Canvas of={CaseStories.SingleSelectionControlled} />
 
-### Single selection uncontrolled
+### [Single selection uncontrolled](#single-selection-uncontrolled)
 
 If you need an uncontrolled behavior, then you have to assign the prop `name`
 with the same value to every IconButton. You can't use onChange so you can get the

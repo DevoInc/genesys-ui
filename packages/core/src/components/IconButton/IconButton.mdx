@@ -28,7 +28,7 @@ import { IconButton } from '@devoinc/genesys-ui';
 
 ## [Cases](#cases)
 
-### Combined with dropdown
+### [Combined with dropdown](#combined-with-dropdown)
 
 Sometimes you might need to use an IconButton and communicate that it controls
 a dropdown too, so the dropdown icon is added. You only have to add the `hasDropdown` prop.
@@ -39,7 +39,7 @@ a dropdown too, so the dropdown icon is added. You only have to add the `hasDrop
 `}
 />
 
-### As link
+### [As link](#as-link)
 
 To get a link you only have to add the `href` prop, and then you will get an `<a>` html tag
 instead of a `<button>` one.
@@ -56,14 +56,14 @@ instead of a `<button>` one.
 `}
 />
 
-### With children
+### [With children](#with-children)
 
 It's not the common use of an `IconButton`, but sometimes you might need to add
 `children`, as in this example with a `SpinnerLoader` component.
 
 <Canvas of={CaseStories.WithChildren} />
 
-### Selectable
+### [Selectable](#selectable)
 
 This is a IconButton which can be used as a form Radio or as a form Checkbox.
 In fact, the generated HTML is a `<label>` with a `<input type='radio'>` or

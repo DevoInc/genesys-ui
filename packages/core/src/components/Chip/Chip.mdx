@@ -25,14 +25,14 @@ import { Chip } from '@devoinc/genesys-ui';
 
 ## [Cases](#cases)
 
-### Multiple selection controlled
+### [Multiple selection controlled](#multiple-selection-controlled)
 
 When multiple selection is used (form checkbox behavior) you will get a controlled
 Chip with rendered form checkbox input as HTML and its keyboard utility.
 
 <Canvas of={CaseStories.MultipleControlled} />
 
-### Multiple selection uncontrolled
+### [Multiple selection uncontrolled](#multiple-selection-uncontrolled)
 
 If you need an uncontrolled behavior then you can't use onChange so you can get the
 native behavior of a checkbox. This way you will get an uncontrolled
@@ -42,7 +42,7 @@ the internal checkbox is checked or not.
 
 <Canvas of={CaseStories.MultipleUncontrolled} />
 
-### Single selection controlled
+### [Single selection controlled](#single-selection-controlled)
 
 When a single selection is needed (form radio behavior), then you have to
 add the `selectionScheme` prop to 'single'. This way you will get a controlled
@@ -50,7 +50,7 @@ ChoiceGroup with rendered form radio input as HTML and its keyboard utility.
 
 <Canvas of={CaseStories.SingleControlled} />
 
-### Single selection uncontrolled
+### [Single selection uncontrolled](#single-selection-uncontrolled)
 
 If you need an uncontrolled behavior, then you have to assign the prop `name`
 with the same value to every Chip. You can't use onChange so you can get the
