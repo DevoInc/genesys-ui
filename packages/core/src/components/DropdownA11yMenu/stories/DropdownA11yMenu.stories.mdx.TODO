@@ -2,7 +2,7 @@ import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Components/Core/Navigation/DropdownA11yMenu/ Docs" />
 
-## How to import
+## [How to import](#how-to-import)
 
 ```
 import { DropdownA11yMenu } from '@devoinc/genesys-ui';

@@ -7,11 +7,10 @@ import * as CaseStories from './Link.cases.stories';
 
 # Link
 
-## Overview
+## [Overview](#overview)
 
-The `Link` component facilitates user navigation to different destinations such as a different page, another section of the same page, or a different view. 
+The `Link` component facilitates user navigation to different destinations such as a different page, another section of the same page, or a different view.
 To make the navigation possible, several props such as `href` or `onClick` are available.
-
 
 # How to import
 
@@ -21,19 +20,20 @@ import { Link } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+## [Basic usage](#basic-usage)
 
 <Canvas of={Stories.Base} />
 
-## Cases
+## [Cases](#cases)
 
 ### Block behavior
-The Link component can be utilized as either an inline or block element. 
+
+The Link component can be utilized as either an inline or block element.
 By default, the component is displayed as inline-flex and is integrated with the flow of its parent content.
 However, by using the `wide` prop, the Link is displayed as flex and becomes a block element that is separate from the surrounding content.
 
 <Canvas of={CaseStories.Base} />
 
-## API
+## [API](#api)
 
 <ArgTypes of={Stories} />

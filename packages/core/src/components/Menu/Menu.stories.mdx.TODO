@@ -2,7 +2,7 @@ import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Components/Core/Navigation/Menu/ Docs" />
 
-## How to import
+## [How to import](#how-to-import)
 
 ```
 import {
