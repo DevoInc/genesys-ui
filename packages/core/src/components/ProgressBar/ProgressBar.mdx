@@ -1,6 +1,7 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './ProgressBar.stories';
+import * as CaseStories from './ProgressBar.cases.stories';
 
 <Meta of={Stories} />
 
@@ -8,8 +9,10 @@ import * as Stories from './ProgressBar.stories';
 
 ## [Overview](#overview)
 
-The `ProgressBar` component communicate either an undefined waiting time or the duration of a process.
-It inform users about the progress of ongoing tasks.
+The ProgressBar component is used to display the progress of an ongoing task,
+and to communicate either an undefined waiting time or the duration of a process to users.
+It is an important visual indicator that informs users about the status of long-running or complex tasks,
+and helps to improve the user experience by giving them a sense of how much time is left before the task is completed.
 
 ## [How to import](#how-to-import)
 
@@ -23,33 +26,15 @@ import { ProgressBar } from '@devoinc/genesys-ui';
 
 <Canvas of={Stories.Base} />
 
-You can use the `ProgressBar` in mode circular.
+## [Cases](#cases)
 
-<Source
-  code={`
-<ProgressBar 
-  percent={75}
-  type='circular'
-  showInfo={true}
-  progress='warning'
-/>
-`}
-/>
+ProgressBar can be used in circular mode.
 
-Showing info
+<Canvas of={CaseStories.Circular} />
 
-<Source
-  code={`
-<ProgressBar 
-  percent={75}
-  customInfo={{
-    startInfo: 'This is the start info',
-    endInfo: 'This is the end info',
-  }}
-  showInfo={true}
-/>
-`}
-/>
+Or in linear mode with extra information.
+
+<Canvas of={CaseStories.WithInfo} />
 
 ## [Props](#props)
 
