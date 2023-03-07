@@ -67,11 +67,12 @@ const preview: Preview = {
     },
     options: {
       storySort: {
+        method: 'alphabetical',
         order: [
           'Getting started',
           ['Overview', 'Installation', 'Usage', 'Design resources'],
-          'Core',
-          'Form',
+          'Components',
+          ['Core', ['Form', ['Chip', ['Docs', 'Base']]], 'Form', 'Datetime'],
         ],
       },
     },
