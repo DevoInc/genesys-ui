@@ -9,10 +9,10 @@ import * as CaseStories from './IconButton.cases.stories';
 
 ## [Overview](#overview)
 
+The IconButton component is a button component that displays an icon instead of text.
+Its purpose is to provide a more visually appealing and compact way to represent actions or functionality within a user interface.
 Icon buttons are commonly found in app bars, toolbars, items, rows and cells.
-
-Icons are also appropriate for toggle buttons that allow a single choice to be
-selected or deselected, such as adding or removing a star to an item.
+They are also appropriate for toggle buttons that allow a single choice to be selected or deselected, such as marking or unmarking an item as favorite.
 
 ## [How to import](#how-to-import)
 
@@ -30,8 +30,8 @@ import { IconButton } from '@devoinc/genesys-ui';
 
 ### [Combined with dropdown](#combined-with-dropdown)
 
-Sometimes you might need to use an IconButton and communicate that it controls
-a dropdown too, so the dropdown icon is added. You only have to add the `hasDropdown` prop.
+In some cases, you may need to use an IconButton to control a dropdown as well.
+To indicate that the IconButton has a dropdown, you can use the hasDropdown prop.
 
 <Source
   code={`
@@ -41,8 +41,8 @@ a dropdown too, so the dropdown icon is added. You only have to add the `hasDrop
 
 ### [As link](#as-link)
 
-To get a link you only have to add the `href` prop, and then you will get an `<a>` html tag
-instead of a `<button>` one.
+To use the IconButton as a link, simply add the href prop.
+This will generate an `<a>` HTML tag instead of a `<button>` tag.
 
 <Source
   code={`
@@ -58,21 +58,19 @@ instead of a `<button>` one.
 
 ### [With children](#with-children)
 
-It's not the common use of an `IconButton`, but sometimes you might need to add
-`children`, as in this example with a `SpinnerLoader` component.
+Although it is not a common use case, you can add children to the IconButton,
+as shown in this example using the SpinnerLoader component.
 
 <Canvas of={CaseStories.WithChildren} />
 
-### [Selectable](#selectable)
+### [Selectable multiple](#selectable-multiple)
 
-This is a IconButton which can be used as a form Radio or as a form Checkbox.
-In fact, the generated HTML is a `<label>` with a `<input type='radio'>` or
-`<input type='checkbox'>` inside. At the same way, to use as a Radio group it
-must be used only as part of a group with the same value for `name` prop.
-This allows to unselect automatically the previous selected option when another
-one is selected, because this type of selection is always unique.
+The IconButton component can also be used as a form Radio or Checkbox.
+When used this way, the generated HTML is a `<label>` with an `<input type='radio'>` or `<input type='checkbox'>` inside.
+To use the IconButton as a Radio group, it must be used only as part of a group with the same value for the name prop.
+This allows the previously selected option to be automatically deselected when a new option is selected.
 
-Multiple uncontrolled
+#### [Uncontrolled](#selectable-multiple-uncontrolled)
 
 <Source
   code={`
@@ -84,7 +82,7 @@ Multiple uncontrolled
 `}
 />
 
-Multiple controlled
+#### [Controlled](#selectable-multiple-controlled)
 
 <Source
   code={`
@@ -101,7 +99,9 @@ return (
 `}
 />
 
-Single uncontrolled
+### [Selectable single](#selectable-single)
+
+#### [Uncontrolled](#selectable-single-uncontrolled)
 
 <Source
   code={`
@@ -114,7 +114,7 @@ Single uncontrolled
 `}
 />
 
-Single controlled
+#### [Controlled](#selectable-single-controlled)
 
 <Source
   code={`
