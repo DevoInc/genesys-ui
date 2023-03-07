@@ -12,7 +12,7 @@ const meta: Meta<typeof ContentSwitcher> = {
 export default meta;
 type Story = StoryObj<typeof ContentSwitcher>;
 
-export const Basic: Story = {
+export const Base: Story = {
   args: {
     size: 'md',
   },

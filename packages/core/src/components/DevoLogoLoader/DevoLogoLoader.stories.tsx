@@ -11,4 +11,4 @@ const meta: Meta<typeof DevoLogoLoader> = {
 export default meta;
 type Story = StoryObj<typeof DevoLogoLoader>;
 
-export const Basic: Story = {};
+export const Base: Story = {};
