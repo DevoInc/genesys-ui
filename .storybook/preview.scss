@@ -1,0 +1,17 @@
+.sbdocs.sbdocs-h1 {
+  margin-bottom: 20px;
+}
+
+.sbdocs.sbdocs-a {
+  text-decoration: none;
+}
+
+strong {
+  font-weight: 700;
+}
+
+h2.sbdocs.sbdocs-h2 {
+  + h3.sbdocs.sbdocs-h3 {
+    margin-top: 20px;
+  }
+}

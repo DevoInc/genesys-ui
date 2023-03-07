@@ -12,7 +12,7 @@ import '@devoinc/genesys-icons/dist/gi-styles.css';
 // Styles
 // import './assets/styles/preview/preview.scss'; // This styles should only apply in the documentation
 // import { DocsContainerDefault } from '../components/DocsContainer';
-import './preview.css';
+import './preview.scss';
 
 import { Box } from '../packages/core/src/';
 
