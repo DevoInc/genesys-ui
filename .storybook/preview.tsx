@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Preview } from '@storybook/react';
-import { DocsContainer } from '@storybook/addon-docs';
+import { DocsContainer, DocsContainerProps } from '@storybook/addon-docs';
 import { create } from '@storybook/theming';
 import { ThemeProvider } from 'styled-components';
 
@@ -41,8 +41,7 @@ const preview: Preview = {
       },
     },
     docs: {
-      container: ({ children, ...rest }: any) => {
-        console.log('rest', rest);
+      container: ({ children, ...rest }: DocsContainerProps) => {
         return (
           <React.Fragment>
             <DocsContainer {...rest}>
