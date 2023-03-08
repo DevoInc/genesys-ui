@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
 const slugify = (str: string) =>
   str
@@ -13,26 +14,33 @@ interface AnchorProps {
   children: string;
 }
 
+const AnchorStyles = styled.a.attrs({
+  className: 'sbdocs sbdocs-a',
+})`
+  margin-left: 3px;
+  font-size: 10px;
+`;
+
 const Anchor: React.FC<AnchorProps> = ({ id, children }) => (
-  <a href={`#${id}`} className='sbdocs sbdocs-a' target={'_self'}>
+  <AnchorStyles id={`#${id}`} href={`#${id}`}>
     {children}
-  </a>
+  </AnchorStyles>
 );
 
 interface HProps {
   children: string;
 }
 
-export const H1: React.FC<HProps> = ({ children }) => {
+const H1: React.FC<HProps> = ({ children }) => {
   const id = slugify(children);
   return (
-    <h1 id={id} className='sbdocs sbdocs-h1'>
+    <h1 id={id} className='sbdocs sbdocs-h1' style={{ marginRight: '5px' }}>
       <Anchor id={id}>{children}</Anchor>
     </h1>
   );
 };
 
-export const H2: React.FC<HProps> = ({ children }) => {
+const H2: React.FC<HProps> = ({ children }) => {
   const id = slugify(children);
   return (
     <h2 id={id} className='sbdocs sbdocs-h2'>
@@ -41,7 +49,7 @@ export const H2: React.FC<HProps> = ({ children }) => {
   );
 };
 
-export const H3: React.FC<HProps> = ({ children }) => {
+const H3: React.FC<HProps> = ({ children }) => {
   const id = slugify(children);
   return (
     <h3 id={id} className='sbdocs sbdocs-h3'>
@@ -50,7 +58,7 @@ export const H3: React.FC<HProps> = ({ children }) => {
   );
 };
 
-export const H4: React.FC<HProps> = ({ children }) => {
+const H4: React.FC<HProps> = ({ children }) => {
   const id = slugify(children);
   return (
     <h4 id={id} className='sbdocs sbdocs-h4'>
@@ -59,11 +67,19 @@ export const H4: React.FC<HProps> = ({ children }) => {
   );
 };
 
-export const H5: React.FC<HProps> = ({ children }) => {
+const H5: React.FC<HProps> = ({ children }) => {
   const id = slugify(children);
   return (
     <h5 id={id} className='sbdocs sbdocs-h5'>
       <Anchor id={id}>{children}</Anchor>
     </h5>
   );
+};
+
+export const Heading = {
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
 };
