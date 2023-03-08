@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Preview } from '@storybook/react';
-// import { DocsContainer } from '@storybook/addon-docs';
-// import { BackToTop, TableOfContents } from 'storybook-docs-toc';
+import { DocsContainer } from '@storybook/addon-docs';
 import { create } from '@storybook/theming';
 import { ThemeProvider } from 'styled-components';
 
@@ -9,12 +8,12 @@ import { light, dark } from '@devoinc/genesys-brand-devo';
 import '@devoinc/genesys-base-styles/dist/styles.css';
 import '@devoinc/genesys-icons/dist/gi-styles.css';
 
+import { BackToTop, TableOfContents } from '../.storybook/docs/blocks';
+import { Box } from '../packages/core/src/';
 // Styles
 // import './assets/styles/preview/preview.scss'; // This styles should only apply in the documentation
 // import { DocsContainerDefault } from '../components/DocsContainer';
 import './preview.scss';
-
-import { Box } from '../packages/core/src/';
 
 // Ad-hoc styles for SB documentation
 const customTheme = create({
@@ -42,15 +41,18 @@ const preview: Preview = {
       },
     },
     docs: {
-      // container: ({ children, ...rest }) => (
-      //   <React.Fragment>
-      //     <DocsContainer {...rest}>
-      //       <TableOfContents config={{ headingSelector: '#docContent h2' }} />
-      //       <div id='docContent'>{children}</div>
-      //       <BackToTop />
-      //     </DocsContainer>
-      //   </React.Fragment>
-      // ),
+      container: ({ children, ...rest }: any) => {
+        console.log('rest', rest);
+        return (
+          <React.Fragment>
+            <DocsContainer {...rest}>
+              <TableOfContents />
+              {children}
+              <BackToTop />
+            </DocsContainer>
+          </React.Fragment>
+        );
+      },
       previewSource: 'open',
       source: {
         excludeDecorators: true,

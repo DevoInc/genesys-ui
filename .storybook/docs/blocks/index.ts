@@ -1,2 +1,4 @@
 export * from './Shields';
-export * from './TableContent';
+export * from './Headings';
+export * from './TableOfContents';
+export * from './BackToTop';
