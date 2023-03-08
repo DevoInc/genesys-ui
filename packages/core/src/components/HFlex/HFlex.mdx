@@ -11,7 +11,7 @@ import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 ## [Overview](#overview)
 
 Use `HFlex` to create a stacked group of children components distributed
-in a single row. You can separate each child horizontally with the prop `spacing`.
+in a single row. Each children can be separated horizontally using the prop `spacing`.
 
 ## [How to import](#how-to-import)
 
@@ -27,29 +27,34 @@ import { HFlex } from '@devoinc/genesys-ui';
 
 ## [Cases](#cases)
 
-### [as](#as)
-
-Likewise, its `as` property allow this component to be rendered as any HTML tag:
-'div', 'li', 'section'... etc.
-
-<Source
-  code={`
-import * as React from 'react';
-import { HFlex, FlexItem } from '@devoinc/genesys-ui';
-
-const MyFlexCmp = () => (
-
-<HFlex as={'ul'} spacing={'cmp-lg'}>
-  <FlexItem as={'li'}>Child 1</FlexItem>
-  <FlexItem as={'li'}>Child 2</FlexItem>
-  <FlexItem as={'li'}>Child 3</FlexItem>
-</HFlex>
-); `} />
-
 ### [childrenFitFullWidth](#childrenfitfullwidth)
 
 You can use prop `childrenFitFullWidth` to get the same width for each child and
 make them to fit the full width of the `HFlex` parent component:
+
+### [Using the as property](#using-the-as-property)
+
+The `as` property allow these components to be rendered as any HTML tag:
+'div', 'li', 'section'... etc.
+
+If you want to use the `Flex` component rendered with a different HTML tag, you can use the `as` property.
+It allows these components to be rendered as any HTML tag, such as div, li, section, and so on.
+
+<Source
+  code={`
+import * as React from 'react';
+import { Flex, FlexItem } from '@devoinc/genesys-ui';
+
+const MyFlexCmp = () => (
+
+{' '}
+
+<Flex as={'ul'}>
+  <FlexItem as={'li'}>Child 1</FlexItem>
+  <FlexItem as={'li'}>Child 2</FlexItem>
+  <FlexItem as={'li'}>Child 3</FlexItem>
+</Flex>
+); `} />
 
 <Markdown>{spacingProps}</Markdown>
 

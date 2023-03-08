@@ -8,29 +8,21 @@ import * as Stories from './Grid.stories';
 
 ## [Overview](#overview)
 
-The `Grid` component is based on **CSS Grid Layout** which offers a grid-based
-layout system, with rows and columns, making it easier the way we design
-grid-based user interfaces.
+The Grid component provides a powerful grid-based layout system for designing
+user interfaces with rows and columns. It is based on the *CSS Grid Layout*,
+and includes two components: __Grid__ and __Grid.Item__. Grid and Grid.Item must always be used together.
 
-If you need any additional information about this CSS functionality, you can
-consult it in the following links:
+The Grid component is a grid container that establishes a new grid formatting
+context for its contents, while the Grid.Item component represents the columns
+or rows of the grid and can be set to span multiple columns and/or rows.
+Both components are built from the [Box](?path=/docs/components-core-layout-box--docs)
+component, providing them with basic
+layout props such as margin, padding, width, and height.
+
+If you need more information on the CSS Grid Layout, you can visit the following links:
 
 - [A Complete Guide to Grid | CSS-Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/).
 - [CSS Grid | w3school](https://www.w3schools.com/css/css_grid.asp).
-
-There are two components that have to do with CSS Grid Layout: **Grid** and
-**Grid.Item**. These components must always be used together, it is useless to
-use them separately.
-
-- **Grid**: this is a grid container and establishes a new grid formatting
-  context for its contents. This
-- **Grid.Item**: a Grid (grid container) contains Grid.Items. This component
-  represents the columns or rows of the Grid. Grid.Items can be set to span
-  multiple columns and/or rows.
-
-Grid and Grid.Item are built from the
-[Box](/?path=/docs/public-atoms-box--box) component to provide them with some
-basic layout props such as: margin, padding, width, height, etc.
 
 ## [How to import](#how-to-import)
 

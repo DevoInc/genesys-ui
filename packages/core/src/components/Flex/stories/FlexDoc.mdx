@@ -13,18 +13,19 @@ import * as WrapStories from '../../Wrap/Wrap.stories';
 
 # [Flex components](#flex-components)
 
-Use Flex container components to create stacked groups of children components.
-These stacks can distribute the children in a row, in a column with the children
-one under the other or in a mixed wrapped structure with rows and columns.
+Flex container components are a powerful tool for creating stacked groups of child components.
+These stacks can be arranged in various configurations, including a row,
+a column with children stacked vertically, or a mixed wrapped structure with rows and columns.
 
-`Flex` component is the base component and `HFlex`, `VFlex` and `Wrap` are based
-on it. With `Flex` component and using `FlexItem` as children we can have any
-stack structure, but with its versions we can create specific stack structures more easily.
+The `Flex` component is the foundation, while `HFlex`, `VFlex`, and `Wrap`
+are variations built upon it. Using `Flex` with `FlexItem` children allows
+for complete control over the stack structure, while the other versions
+offer simplified solutions for specific stack configurations:
 
-- **`Flex`:** Any stack type: one single row, one single column or columns-rows.
-- **`HFlex`:** One single row stack type.
-- **`VFlex`:** One single column stack type.
-- **`Wrap`:** Mixed columns-rows stack type.
+- **Flex**: Allows for any stack type, including a single row, a single column, or a mixed configuration of rows and columns.
+- **HFlex**: Creates a single row stack.
+- **VFlex**: Creates a single column stack.
+- **Wrap**: Creates a mixed stack of columns and rows.
 
 ## [How to import](#how-to-import)
 
@@ -36,6 +37,9 @@ import { Flex, HFlex, VFlex, FlexItem, Wrap } from '@devoinc/genesys-ui';
 
 Likewise, their `as` property allow these components to be rendered as any HTML tag:
 'div', 'li', 'section'... etc.
+
+If you want to use the `Flex` component rendered with a different HTML tag, you can use the `as` property.
+It allows these components to be rendered as any HTML tag, such as div, li, section, and so on.
 
 <Source
   code={`
@@ -53,9 +57,9 @@ const MyFlexCmp = () => (
 </Flex>
 ); `} />
 
-You can assign basic layout styles to flex components: margin and all its variants,
-padding and all its variants, width, min-width, max-width, height, min-height
-and max-height; you only have to use the props with the equivalent name on the component:
+You can easily apply basic layout styles to flex components
+such as margin, padding, width, height, min-width, max-width, min-height, and max-height.
+To do so, simply use the props with the corresponding names on the component.
 
 <Source
   code={`
@@ -75,10 +79,10 @@ const MyFlexCmp = () => (
 
 ## [Structure](#structure)
 
-Any Flex component is a container, so we need to pass its content as children.
-If you need to assign spacing (margin or padding) or layout styles (flex, height,
-width... etc.) to the children, you should use the `FlexItem` component as wrapper
-of each child.
+Flex components are containers that require their content
+to be passed as children. If you want to apply spacing (margin or padding)
+or layout styles (flex, height, width, etc.) to the children,
+you can use the FlexItem component as a wrapper for each child.
 
 <Source
   code={`
@@ -96,25 +100,24 @@ const MyFlexCmp = () => (
 </Flex>
 );`} />
 
-In the same way, if you are using `HFlex`, `VFlex` or `Wrap` components,
-then you must wrap each child with `FlexItem` component if you want the
-'spacing', 'hSpacing', 'vSpacing', 'childrenFitFullHeight' and
-'childrenFitFullWidth' props to work. Definitely, if you want to get the parent
-distribution functionality for your children, then you have to wrap children
-with `FlexItem`.
+Similarly, when using HFlex, VFlex, or Wrap components,
+it's necessary to wrap each child with FlexItem component
+to enable the use of spacing, hSpacing, vSpacing, childrenFitFullHeight,
+and childrenFitFullWidth props. In case you want the parent distribution
+functionality for your children, then you must wrap children with FlexItem.
 
-If you don't use `FlexItem` to wrap each child, then you will need your children to be
-components with layout styles or props.
+If you avoid using FlexItem to wrap each child, you'll require
+your children to be components with layout styles or props.
 
-This is an example of simple Flex structure with children and without `FlexItem` wrapping
-another components, because we only have to use those when we need a specific configuration
-(width, height, flex...) for any child:
+Here's an example of a simple Flex structure with children without
+FlexItem wrapping another component, as we only use them when
+we need a specific configuration (width, height, flex...) for any child:
 
 <Canvas of={FlexStories.Base} />
 
-In a flex structure we can use each `FlexItem` props to assign `flex`, `order`
-and `align-self` css styles to each child. This is an example with different
-css `flex` and `align-self` for each child of a `Flex` component:
+With a flex structure, we can customize the flex, order, and align-self
+CSS styles for each child using the corresponding props of FlexItem.
+Below is an example of a Flex component with each child having different flex and align-self styles:
 
 <Canvas of={CaseFlexStories.FlexAndFlexItems} />
 
@@ -128,23 +131,23 @@ css `flex` and `align-self` for each child of a `Flex` component:
 
 ### [HFlex](#hflex)
 
-Use `HFlex` to create a stacked group of children components distributed
-in a single row. You can use the prop `spacing` to separate each child.
+HFlex creates a group of children components distributed in a single row.
+Use the spacing prop to adjust the space between each child.
 
 <Canvas of={HFlexStories.Base} />
 
 ### [VFlex](#vflex)
 
-Use `VFlex` to create a stacked group of children components distributed
-in a single column. You can use the prop `spacing` to separate each child.
+VFlex creates a group of children components distributed in a
+single column. Use the spacing prop to adjust the space between each child.
 
 <Canvas of={VFlexStories.Base} />
 
 ### [Wrap](#wrap)
 
-Use `Wrap` to create a stacked group of children components distributed
-in columns and rows. You can separate each child vertically with the prop `vSpacing`
-and horizontally with `hSpacing`.
+Wrap creates a stacked group of children components distributed
+in columns and rows. Use the vSpacing prop to adjust the vertical
+spacing between each child and hSpacing to adjust the horizontal spacing.
 
 <Canvas of={WrapStories.Base} />
 

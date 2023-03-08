@@ -9,7 +9,9 @@ import * as CaseStories from './Modal.cases.stories';
 
 ## [Overview](#overview)
 
-The `Modal` component create dialog forms.
+Component designed to display content or messages in a pop-up window that appears on top of the current screen.
+It provides a flexible and customizable way to display important information or prompt the user for
+input in a separate pop-up window without disrupting the main flow of the application.
 
 ## [How to import](#how-to-import)
 
@@ -25,15 +27,17 @@ import { Modal } from '@devoinc/genesys-ui';
 
 ## [Cases](#cases)
 
-### [About animating](#about-animating)
+### [With header actions](#with-header-actions)
 
-It is possible to animate the display of the modal window by using a third-party
-animation library.
-In this case, the Modal is animated using framer-motion and a simple fade animation.
+The Modal component can also be used to display a header with actions.
+
+### [Adding animations](#about-animating)
+
+If you want to add animations to your Modal component,
+you can use a third-party animation library to achieve this effect.
+For example, you can use `framer-motion` library along with a simple fade animation to create a more visually appealing display of the modal window.
 
 <Canvas of={CaseStories.Animated} />
-
-### [With header actions](#with-header-actions)
 
 <Canvas of={CaseStories.WithHeaderActions} />
 

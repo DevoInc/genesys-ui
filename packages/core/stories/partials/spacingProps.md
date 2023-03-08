@@ -1,11 +1,14 @@
 ## [Spacing props](#spacing-props)
 
-The spacing scale can be applied to margin or padding properties, in any edge
-(top, right, bottom and left).
+In a flex structure, we can apply spacing to margin or padding properties on any edge (top, right, bottom, and left).
 
-When we assign values to spacing props of our flex container components as 'spacing',
-'vSpacing' or 'hSpacing', or when we assign layout style props to our `FlexItem`,
-`Box` or any layout component, we have to pick the value from a predefined list:
+When assigning values to spacing props, such as 'spacing', 'vSpacing', or 'hSpacing' of flex
+container components or assigning layout style props to FlexItem, Box,
+or any layout component, values must be selected from a predefined list.
+
+This list includes values such as '0', 'auto', 'inherit', 'cmp-xxs', 'cmp-xs',
+'cmp-sm', 'cmp-md', 'cmp-lg', 'cmp-xl', 'cmp-xxl', 'cmp-xxxl', 'ly-xxs',
+'ly-xs', 'ly-sm', 'ly-md', 'ly-lg', 'ly-xl', 'ly-xxl', and 'ly-xxxl'.
 
 ```js
 const SPACING_PROP_VALUES = [
@@ -31,19 +34,11 @@ const SPACING_PROP_VALUES = [
 ];
 ```
 
-The reason is we use a 4px grid and to maintain the consistence of the UI we need
-to limit the possible values to be assigned. Anyway, if you have to select a
-spacing value for your prop, you have to know we have two types of spacing values:
-component values (`cmp-`) and layout values (`ly-`).
+To maintain the consistency of the UI, this list uses a 4px grid, which limits the possible values that can be assigned.
 
-- `cmp-` should be used when we create spaces inside components e.g. the
-  space between label and input, the separation between a heading and a paragraph,
-  or the space between chips in a chip group.
+When selecting a spacing value for a prop, it is important to note that there are two types of spacing values: component values ('cmp-') and layout values ('ly-'). 
 
-- `ly-` should be used when we create spaces between layout blocks such as
-  organisms in a page or molecules inside organisms e.g. the space between a Tabs
-  component and its contents, or the space between main app toolbar, left main menu
-  and main content of the page.
+- `cmp-` should be used when creating spaces inside components, such as the space between a label and input or the separation between a heading and a paragraph. 
+- `ly-` should be used when creating spaces between layout blocks, such as the space between a Tabs component and its contents or the space between the main app toolbar, left main menu, and main content of the page. 
 
-IMPORTANT: we always recommend to use `padding` properties to separate `Flex`
-component children, because it maintains the same width or height for all.
+Note: It is always recommended to use 'padding' properties to separate Flex component children because it maintains the same width or height for all.
