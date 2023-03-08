@@ -16,10 +16,10 @@ import * as UnderlinedStories from './Underlined.stories';
 
 <H1>Inline components</H1>
 
-The inline typographic components are used inside another typographic block components.
+Inline typographic components are typically used within other typographic block components.
 
-They inherit the main text styles from those block components except their inline
-specific styles: text-decoration, font-weight, vertical-align... etc.
+They inherit the main text styles from those block components,
+but they also have their own inline-specific styles, such as text-decoration, font-weight, and vertical-align.
 
 <Source
   code={`
@@ -44,8 +44,8 @@ const {
 <H2>Abbr</H2>
 
 `Typography.Abbr` renders an HTML Abbreviation element (`<abbr>`) which represents an
-abbreviation or acronym; the optional 'tooltip' prop can provide an expansion
-or description for the abbreviation. If present, 'tooltip' must contain this
+abbreviation or acronym. The optional 'tooltip' prop can provide an expansion
+or description for the abbreviation. If tooltip is present, it must contain this
 full description and nothing else.
 
 <H3>Basic usage</H3>

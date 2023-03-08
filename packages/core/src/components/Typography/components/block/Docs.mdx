@@ -16,8 +16,7 @@ import * as ParagraphStories from './Paragraph.stories';
 
 <H1>Block components</H1>
 
-The block typographic components are used inside another components or as a
-base of them: `HelperMessage`, `ValidationMessage`, `FieldLabel`... etc.
+Typographic block components are used either within other components such as `HelperMessage`, `ValidationMessage`, `FieldLabel`, or as a base for them.
 
 <Source
   code={`
@@ -37,7 +36,7 @@ const {
 
 <H2>BlockQuote</H2>
 
-`Typography.BlockQuote` renders an HTML Block Quotation Element: indicates that
+`Typography.BlockQuote` renders an HTML Block Quotation Element. It indicates that
 the enclosed text is an extended quotation. A URL for the source of the quotation
 may be given using the 'cite' attribute.
 
@@ -64,10 +63,10 @@ that the text is a fragment of computer code.
 
 <H2>List and ListItem</H2>
 
-`Typography.List` can render an HTML `<ul>` (by default) or `<ol>` which represents an
-unordered/ordered list of items, typically rendered as a bulleted list.
-Each child has to be a `Typography.ListItem` component, which renders an
-HTML `<li>` element.
+`Typography.List` component can render an unordered list (by default, represented as an HTML `<ul>`)
+or an ordered list (represented as an HTML `<ol>`). These lists typically display items as bullets or numbered items.
+
+To render a list with `Typography.List`, each child component must be a Typography.ListItem, which renders an HTML `<li>`ﬁ element.
 
 <H3>List - Basic usage</H3>
 
@@ -89,7 +88,7 @@ HTML `<li>` element.
 
 `Typography.Paragraph` renders an HTML `<p>`. Paragraphs are usually represented
 in visual media as blocks of text separated from adjacent blocks by blank lines,
-but paragraphs can be any structural grouping of related content.
+although they can be any structural grouping of related content.
 
 <H3>Basic usage</H3>
 
@@ -101,9 +100,8 @@ but paragraphs can be any structural grouping of related content.
 
 <H2>Caption</H2>
 
-`Typography.Caption` component is similar to `Paragraph` component, but it's oriented
-to be used in short text blocks, so it's limited by default to one line and
-'sm' size prop value.
+`Typography.Caption` component is similar to `Paragraph`, but it is intended to be used for short text blocks.
+Therefore, by default, it is limited to one line and the 'sm' size prop value.
 
 <H3>Basic usage</H3>
 
@@ -115,8 +113,8 @@ to be used in short text blocks, so it's limited by default to one line and
 
 <H2>Lead</H2>
 
-`Typography.Caption` component is oriented to be used as a subtitle or a
-summary block next to a `Heading` component.
+The `Typography.Lead` component is designed to be used as a
+subtitle or summary block alongside a Heading component.
 
 <H3>Basic usage</H3>
 
@@ -128,20 +126,22 @@ summary block next to a `Heading` component.
 
 <H2>Heading</H2>
 
-`Typography.Heading` generates HTML headings which are the titles or subtitles
-of our components: Panel Header titles, BoxMessage titles, Grouping titles
-in Menus and forms... etc.
+`Typography.Heading` component generates HTML headings that serve
+as titles or subtitles for various components, such as Panel Header titles,
+BoxMessage titles, and Grouping titles in menus and forms.
 
-If we want the standard HTML headings (h1-h6) we have to use any 'h-' value for
-type prop. They render an HTML `div` by default, but it's possible to use any
-`h1` to `h6`, using the 'as' prop.
+To use standard HTML headings (h1-h6) with Typography.Heading,
+set the type prop to any 'h-' value. By default, they render as an HTML div.
+However, it's possible to render them as any h1 to h6 element by using the 'as' prop.
 
 <H3>Basic usage</H3>
 
 <Canvas of={HeadingStories.Heading} />
 
-If we need extra-big headings for commercial or on boarding contexts, we can use
-any 'hero-' value for 'type' prop:
+## [Cases](#cases)
+
+For commercial or onboarding contexts that require extra-large headings,
+we can use any 'hero-' value for the 'type' prop. Here's an example:
 
 <Source
   code={`
@@ -149,8 +149,8 @@ any 'hero-' value for 'type' prop:
 `}
 />
 
-If we need a subtle heading to group menu items, form fields... etc. we can
-use any 'overline-' value for 'type' prop:
+For a subtle heading to group menu items,
+form fields, and similar items, we can use any 'overline-' value for the 'type' prop.
 
 <Source
   code={`
