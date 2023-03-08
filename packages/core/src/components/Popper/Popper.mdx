@@ -1,5 +1,5 @@
-import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import { H1, H2 } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Popper.stories';
 
@@ -9,20 +9,17 @@ import * as Stories from './Popper.stories';
 
 <H2>Overview</H2>
 
-`Popper` is an internal component that positions a container with respect to a
-trigger.
+The Popper component is designed to position a container in relation to a trigger.
+This is achieved through the use of the external library `React Popper`.
 
-To achieve this behavior, it is built with the popular external library
-[React Popper](https://popper.js.org/react-popper/v2/).
+Popper consists of a trigger and content.
+The trigger is a prop that can be any clickable component
+built with forwardRef, while the content is passed as a child.
 
-`Popper` is composed of a trigger and a content.
-Trigger is a prop that can be any clickable component built with forwardRef,
-while the content is passed as children.
-
-If we talk about the content elevation, the `Popper` component defines the value
-of `zIndex` prop of its children. If its own `zIndex` prop is defined, then
-the value for its children is set to 'auto', so the elevation is mainly defined
-by itself.
+Regarding content elevation, the Popper component determines
+the zIndex value of its children.
+If its own zIndex prop is defined, the value for its children is set to 'auto',
+thereby allowing the elevation to be primarily defined by the component itself.
 
 <H2>Basic usage</H2>
 
@@ -30,7 +27,7 @@ by itself.
 
 <H2>Hooks</H2>
 
-For custom or complex behavior read the [Hooks](?path=/docs/components-core-popper-hooks-docs--docs) section.
+- [usePopper](?path=/docs/components-core-popper-hooks-docs--docs)
 
 <H2>Props</H2>
 
