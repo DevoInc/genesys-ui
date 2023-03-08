@@ -5,14 +5,14 @@ import * as CaseStories from './ChoiceGroup.stories';
 
 <Meta of={Stories} />
 
-# [ChoiceGroup](#choicegroup)
+<H1>ChoiceGroup</H1>
 
-## [Overview](#overview)
+<H2>Overview</H2>
 
 Component designed to allow the user to select a single choice from a collection of options.
 Use this component when it's necessary to display all available options to the user.
 
-## [How to import](#how-to-import)
+<H2>How to import</H2>
 
 <Source
   code={`
@@ -20,20 +20,20 @@ import { ChoiceGroup } from '@devoinc/genesys-ui';
 `}
 />
 
-## [Basic usage](#basic-usage)
+<H2>Basic usage</H2>
 
 <Canvas of={Stories.Base} />
 
-## [Cases](#cases)
+<H2>Cases</H2>
 
-### [Multiple selection controlled](#multiple-selection-controlled)
+<H3>Multiple selection controlled</H3>
 
 In scenarios where multiple selections are allowed (using a form checkbox behavior),
 you can use a controlled ChoiceGroup with a rendered form checkbox input as HTML and its corresponding keyboard utility.
 
 <Canvas of={CaseStories.MultipleSelectionControlled} />
 
-### [Multiple selection uncontrolled](#multiple-selection-uncontrolled)
+<H3>Multiple selection uncontrolled</H3>
 
 If you need an uncontrolled behavior, you cannot use the onChange event handler and must use the native behavior of a checkbox.
 This way you will get an uncontrolled ChoiceGroup with rendered form checkbox input as HTML and its corresponding keyboard utility.
@@ -41,14 +41,14 @@ However, with an uncontrolled behavior, you cannot manage the change of the icon
 
 <Canvas of={CaseStories.MultipleSelectionUncontrolled} />
 
-### [Single selection controlled](#single-selection-controlled)
+<H3>Single selection controlled</H3>
 
 When a single selection is required (using a form radio behavior), you must add the selectionScheme prop and set it to 'single'.
 This way, you will get a controlled ChoiceGroup with rendered form radio input as HTML and its corresponding keyboard utility.
 
 <Canvas of={CaseStories.SingleSelectionControlled} />
 
-### [Single selection uncontrolled](#single-selection-uncontrolled)
+<H3>Single selection uncontrolled</H3>
 
 If you need an uncontrolled behavior, you must assign the name prop with the same value for every IconButton.
 You cannot use the onChange event handler and must use the native behavior of a radio group.
@@ -56,6 +56,6 @@ This way you will get an uncontrolled ChoiceGroup with rendered form radio input
 
 <Canvas of={CaseStories.SingleSelectionUncontrolled} />
 
-## [Props](#props)
+<H2>Props</H2>
 
 <ArgTypes of={Stories} />

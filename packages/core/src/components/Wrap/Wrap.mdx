@@ -6,15 +6,15 @@ import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 <Meta of={Stories} />
 
-# [Wrap](#wrap)
+<H1>Wrap</H1>
 
-## [Overview](#overview)
+<H2>Overview</H2>
 
 Use `Wrap` to create a stacked group of children components distributed
 in columns and rows. Each children can be separated horizontally using
 the prop `hSpacing` and vertically using `vSpacing`.
 
-## [How to import](#how-to-import)
+<H2>How to import</H2>
 
 <Source
   code={`
@@ -22,13 +22,13 @@ import { Wrap } from '@devoinc/genesys-ui';
 `}
 />
 
-## [Basic usage](#basic-usage)
+<H2>Basic usage</H2>
 
 <Canvas of={Stories.Base} />
 
-## [Cases](#cases)
+<H2>Cases</H2>
 
-### [childrenByRow](#childrenbyrow)
+<H3>childrenByRow</H3>
 
 You can use prop `childrenByRow` to define columns with the same width for each child:
 
@@ -40,7 +40,7 @@ You can use prop `childrenByRow` to define columns with the same width for each 
 `}
 />
 
-### [Using the as property](#using-the-as-property)
+<H3>Using the as property</H3>
 
 The `as` property allow these components to be rendered as any HTML tag:
 'div', 'li', 'section'... etc.
@@ -66,6 +66,6 @@ const MyFlexCmp = () => (
 
 <Markdown>{spacingProps}</Markdown>
 
-## [Props](#props)
+<H2>Props</H2>
 
 <ArgTypes of={Stories} />

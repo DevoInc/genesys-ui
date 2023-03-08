@@ -5,14 +5,14 @@ import * as CaseStories from './Chip.cases.stories';
 
 <Meta of={Stories} />
 
-# [Chip](#chip)
+<H1>Chip</H1>
 
-## [Overview](#overview)
+<H2>Overview</H2>
 
 Chips are small, versatile components that can represent various types of input, characteristics, or activities.
 They enable users to enter data, select options, filter content, or trigger specific functions within an application.
 
-## [How to import](#how-to-import)
+<H2>How to import</H2>
 
 <Source
   code={`
@@ -20,19 +20,19 @@ import { Chip } from '@devoinc/genesys-ui';
 `}
 />
 
-## [Basic usage](#basic-usage)
+<H2>Basic usage</H2>
 
 <Canvas of={Stories.Base} />
 
-## [Cases](#cases)
+<H2>Cases</H2>
 
-### [Multiple selection controlled](#multiple-selection-controlled)
+<H3>Multiple selection controlled</H3>
 
 In scenarios where multiple selections are allowed (using a form checkbox behavior), you can use a controlled Chip with a rendered form checkbox input as HTML and its corresponding keyboard utility.
 
 <Canvas of={CaseStories.MultipleControlled} />
 
-### [Multiple selection uncontrolled](#multiple-selection-uncontrolled)
+<H3>Multiple selection uncontrolled</H3>
 
 If you need an uncontrolled behavior, you cannot use the onChange event handler and must use the native behavior of a checkbox.
 This way you will get an uncontrolled Chip with rendered form checkbox input as HTML and its corresponding keyboard utility.
@@ -40,14 +40,14 @@ However, with an uncontrolled behavior, you cannot manage the change of the icon
 
 <Canvas of={CaseStories.MultipleUncontrolled} />
 
-### [Single selection controlled](#single-selection-controlled)
+<H3>Single selection controlled</H3>
 
 When a single selection is required (using a form radio behavior), you must add the selectionScheme prop and set it to 'single'.
 This way, you will get a controlled Chip with rendered form radio input as HTML and its corresponding keyboard utility.
 
 <Canvas of={CaseStories.SingleControlled} />
 
-### [Single selection uncontrolled](#single-selection-uncontrolled)
+<H3>Single selection uncontrolled</H3>
 
 If you need an uncontrolled behavior, you must assign the name prop with the same value for every Chip.
 You cannot use the onChange event handler and must use the native behavior of a radio group.
@@ -55,10 +55,10 @@ This way you will get an uncontrolled Chip with rendered form radio input as HTM
 
 <Canvas of={CaseStories.SingleUncontrolled} />
 
-## [Props](#props)
+<H2>Props</H2>
 
 <ArgTypes of={Stories} />
 
-## [Related components](#related-components)
+<H2>Related components</H2>
 
 - [ChipGroup](?path=/story/components-core-form-chipgroup--base)

@@ -5,16 +5,16 @@ import * as CaseStories from './IconButton.cases.stories';
 
 <Meta of={Stories} />
 
-# [IconButton](#iconbutton)
+<H1>IconButton</H1>
 
-## [Overview](#overview)
+<H2>Overview</H2>
 
 The IconButton component is a button component that displays an icon instead of text.
 Its purpose is to provide a more visually appealing and compact way to represent actions or functionality within a user interface.
 Icon buttons are commonly found in app bars, toolbars, items, rows and cells.
 They are also appropriate for toggle buttons that allow a single choice to be selected or deselected, such as marking or unmarking an item as favorite.
 
-## [How to import](#how-to-import)
+<H2>How to import</H2>
 
 <Source
   code={`
@@ -22,13 +22,13 @@ import { IconButton } from '@devoinc/genesys-ui';
 `}
 />
 
-## [Basic usage](#basic-usage)
+<H2>Basic usage</H2>
 
 <Canvas of={Stories.Base} />
 
-## [Cases](#cases)
+<H2>Cases</H2>
 
-### [Combined with dropdown](#combined-with-dropdown)
+<H3>Combined with dropdown</H3>
 
 In some cases, you may need to use an IconButton to control a dropdown as well.
 To indicate that the IconButton has a dropdown, you can use the hasDropdown prop.
@@ -39,7 +39,7 @@ To indicate that the IconButton has a dropdown, you can use the hasDropdown prop
 `}
 />
 
-### [As link](#as-link)
+<H3>As link</H3>
 
 To use the IconButton as a link, simply add the href prop.
 This will generate an `<a>` HTML tag instead of a `<button>` tag.
@@ -56,21 +56,21 @@ This will generate an `<a>` HTML tag instead of a `<button>` tag.
 `}
 />
 
-### [With children](#with-children)
+<H3>With children</H3>
 
 Although it is not a common use case, you can add children to the IconButton,
 as shown in this example using the SpinnerLoader component.
 
 <Canvas of={CaseStories.WithChildren} />
 
-### [Selectable multiple](#selectable-multiple)
+<H3>Selectable multiple</H3>
 
 The IconButton component can also be used as a form Radio or Checkbox.
 When used this way, the generated HTML is a `<label>` with an `<input type='radio'>` or `<input type='checkbox'>` inside.
 To use the IconButton as a Radio group, it must be used only as part of a group with the same value for the name prop.
 This allows the previously selected option to be automatically deselected when a new option is selected.
 
-#### [Uncontrolled](#selectable-multiple-uncontrolled)
+<H4>Uncontrolled</H4>
 
 <Source
   code={`
@@ -82,7 +82,7 @@ This allows the previously selected option to be automatically deselected when a
 `}
 />
 
-#### [Controlled](#selectable-multiple-controlled)
+<H4>Controlled</H4>
 
 <Source
   code={`
@@ -99,9 +99,9 @@ return (
 `}
 />
 
-### [Selectable single](#selectable-single)
+<H3>Selectable single</H3>
 
-#### [Uncontrolled](#selectable-single-uncontrolled)
+<H4>Uncontrolled</H4>
 
 <Source
   code={`
@@ -114,7 +114,7 @@ return (
 `}
 />
 
-#### [Controlled](#selectable-single-controlled)
+<H4>Controlled</H4>
 
 <Source
   code={`
@@ -132,6 +132,6 @@ return (
 `}
 />
 
-## [Props](#props)
+<H2>Props</H2>
 
 <ArgTypes of={Stories} />

@@ -4,12 +4,12 @@ import * as Stories from './Presets.stories';
 
 <Meta of={Stories} />
 
-# [Presets](#presets)
+<H1>Presets</H1>
 
 Component used to display a list of preset date ranges that can be selected by the user.
 The preset date ranges can be organized into categories, with each category having a label and a list of preset ranges.
 
-## [How to import](#how-to-import)
+<H2>How to import</H2>
 
 <Source
   code={`
@@ -17,11 +17,11 @@ import { Presets } from '@devoinc/genesys-ui-datetime';
 `}
 />
 
-## [Basic usage](#basic-usage)
+<H2>Basic usage</H2>
 
 <Canvas of={Stories.Base} />
 
-## [How to use](#how-to-use)
+<H2>How to use</H2>
 
 The Presets component accepts a prop called `presets` shaped as an array of objects that defines the list of preset ranges that are displayed.
 
@@ -93,6 +93,6 @@ or multi-level if categories are required:
 The Presets component also accepts a prop called `value` which is an object representing the currently selected date range.
 The value object has a `from` and a `to` property.
 
-## [Props](#props)
+<H2>Props</H2>
 
 <ArgTypes of={Stories} />
