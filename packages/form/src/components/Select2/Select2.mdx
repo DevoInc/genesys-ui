@@ -1,11 +1,11 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Select2.stories';
 
 <Meta of={Stories} />
 
-<H1>Select2</H1>
+<Heading.H1>Select2</Heading.H1>
 
 The Select component provides a way for users to select an option from a dropdown list.
 It allows users to choose from a set of predefined options, which can be customized to suit the needs of the application.
@@ -16,7 +16,7 @@ Select2 is a wrapper over the [Select2Control](?path=/docs/components-core-form-
 component, and uses the [Field](?path=/docs/components-core-form-field--docs)
 component to provide additional functionality such as labelling, helper error messages, and validation.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -24,11 +24,11 @@ import { Select } from '@devoinc/genesys-ui-form';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 

@@ -1,21 +1,21 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './ProgressBar.stories';
 import * as CaseStories from './ProgressBar.cases.stories';
 
 <Meta of={Stories} />
 
-<H1>ProgressBar</H1>
+<Heading.H1>ProgressBar</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 The ProgressBar component is used to display the progress of an ongoing task,
 and to communicate either an undefined waiting time or the duration of a process to users.
 It is an important visual indicator that informs users about the status of long-running or complex tasks,
 and helps to improve the user experience by giving them a sense of how much time is left before the task is completed.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -23,11 +23,11 @@ import { ProgressBar } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Cases</H2>
+<Heading.H2>Cases</Heading.H2>
 
 ProgressBar can be used in circular mode.
 
@@ -37,6 +37,6 @@ Or in linear mode with extra information.
 
 <Canvas of={CaseStories.WithInfo} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

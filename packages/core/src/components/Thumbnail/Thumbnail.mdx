@@ -1,17 +1,17 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Thumbnail.stories';
 
 <Meta of={Stories} />
 
-<H1>Thumbnail</H1>
+<Heading.H1>Thumbnail</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 Component used for displaying a thumbnail image.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -19,11 +19,11 @@ import { Thumbnail } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Cases</H2>
+<Heading.H2>Cases</Heading.H2>
 
 When using `size="fullWidth"` the component instance needs to be wrapped
 inside an element with it CSS width property defined. Otherwise the Thumbnail won't be visible.
@@ -51,6 +51,6 @@ With a wrapper
 `}
 />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

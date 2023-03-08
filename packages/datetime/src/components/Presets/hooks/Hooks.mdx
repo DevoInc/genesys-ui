@@ -1,21 +1,21 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs';
-import { H1, H2, H3, H4 } from '../../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Hooks.stories';
 
 <Meta of={Stories} />
 
-<H1>Presets Hooks</H1>
+<Heading.H1>Presets Hooks</Heading.H1>
 
 These hooks provide a pre-defined set of presets to be used in the Preset component.
 Each hook returns a list of preset date ranges.
 
-<H2>Default Presets Hook</H2>
+<Heading.H2>Default Presets Hook</Heading.H2>
 
 Defines an array of default presets.
 This hook returns a set of time ranges for two given categories: "Relative to" and "Snap to".
 
-<H4>Usage</H4>
+<Heading.H4>Usage</Heading.H4>
 
 <Source
   code={`

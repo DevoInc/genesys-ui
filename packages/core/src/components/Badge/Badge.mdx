@@ -1,17 +1,17 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Badge.stories';
 
 <Meta of={Stories} />
 
-<H1>Badge</H1>
+<Heading.H1>Badge</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 Component used to display a small piece of information, either as icon or text.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -19,15 +19,15 @@ import { Badge } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 
-<H2>Related components</H2>
+<Heading.H2>Related components</Heading.H2>
 
 - [Avatar](?path=/components-core-navigation-stepper-doc--page)
 - [ButtonBadge](/?path=/components-core-navigation-stepper-doc--page)

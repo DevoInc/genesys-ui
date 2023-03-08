@@ -1,18 +1,18 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
-import { H1, H2, H3, H4 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Tabs.stories';
 
 <Meta of={Stories} />
 
-<H1>Tabs</H1>
+<Heading.H1>Tabs</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 Navigation component that allows users to switch between different sections of content in a tabbed interface.
 It can be used to create a horizontal set of tabs, with each tab corresponding to a different section of content.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -20,23 +20,23 @@ import { Tabs } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Hooks</H2>
+<Heading.H2>Hooks</Heading.H2>
 
 - [useTabsConfig](?path=/docs/components-core-navigation-tabs-hooks--docs)
 
-<H2>Subcomponents</H2>
+<Heading.H2>Subcomponents</Heading.H2>
 
 - [Item](?path=/docs/components-core-navigation-tabs-subcomponents--docs)
 - [Aside](?path=/docs/components-core-navigation-tabs-subcomponents--docs)
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 
-<H2>Related components</H2>
+<Heading.H2>Related components</Heading.H2>
 
 - [ContentSwitcher](?path=/docs/components-core-navigation-contentswitcher--docs)

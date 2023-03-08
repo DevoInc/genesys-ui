@@ -1,13 +1,13 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Toast.stories';
 
 <Meta of={Stories} />
 
-<H1>Toast</H1>
+<Heading.H1>Toast</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 The Toast component is a wrapper around the [react-toastify](https://fkhadra.github.io/react-toastify/introduction/) library's
 emitter that provides additional custom props to configure its styles and content.
@@ -21,7 +21,7 @@ If it is unclear where to place it,
 rendering it at the application root is recommended.
 For more information on installation and usage, refer to the [react-toastify documentation](https://fkhadra.github.io/react-toastify/installation#the-gist).
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -29,10 +29,10 @@ import { Toast } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

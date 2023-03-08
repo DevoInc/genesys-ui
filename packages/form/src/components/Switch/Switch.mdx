@@ -1,11 +1,11 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Switch.stories';
 
 <Meta of={Stories} />
 
-<H1>Switch</H1>
+<Heading.H1>Switch</Heading.H1>
 
 A Switch component provides a visual toggle between two states, typically an on/off or enabled/disabled state.
 It's an intuitive and compact way for users to quickly switch between two options. It provides a range of customization
@@ -16,7 +16,7 @@ Switch is a wrapper over the [SwitchControl](?path=/docs/components-core-form-sw
 component, and uses the [Field](?path=/docs/components-core-form-field--docs)
 component to provide additional functionality such as labelling, helper error messages, and validation.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -24,11 +24,11 @@ import { Switch } from '@devoinc/genesys-ui-form';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 

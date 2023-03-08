@@ -1,17 +1,17 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3, H4 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './InlineMessage.stories';
 
 <Meta of={Stories} />
 
-<H1>InlineMessage</H1>
+<Heading.H1>InlineMessage</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 Component designed to position a container in relation to a trigger. It uses the Popper component under the hood.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -19,28 +19,28 @@ import { InlineMessage } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 The most frequent use of the InlineMessage component is to include an `InlineMessage.Panel` as a child.
 
 <Canvas of={Stories.Base} />
 
-<H2>Cases</H2>
+<Heading.H2>Cases</Heading.H2>
 
-<H3>With content</H3>
+<Heading.H3>With content</Heading.H3>
 
 <Canvas of={Stories.WithContent} />
 
-<H3>Custom trigger</H3>
+<Heading.H3>Custom trigger</Heading.H3>
 
 <Canvas of={Stories.CustomTriggerIcon} />
 
-<H3>Banner</H3>
+<Heading.H3>Banner</Heading.H3>
 
 Another atypical use of the InlineMessage component is to include an `InlineMessage.Banner` as a child.
 
 <Canvas of={Stories.Banner} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

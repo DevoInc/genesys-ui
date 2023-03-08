@@ -1,21 +1,21 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
-import { H1, H2, H3, H4 } from '../../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Hooks.stories';
 
 <Meta of={Stories} />
 
-<H1>Tabs Hooks</H1>
+<Heading.H1>Tabs Hooks</Heading.H1>
 
 Hook to build a TabsItem list.
 Given an array of tabs config and common config props,
 it returns an array of children to be rendered by the TabsContainer.
 
-<H2>UseTabsConfig</H2>
+<Heading.H2>UseTabsConfig</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H4>Parameters</H4>
+<Heading.H4>Parameters</Heading.H4>
 
 <Source
   code={`
@@ -32,7 +32,7 @@ it returns an array of children to be rendered by the TabsContainer.
 `}
 />
 
-<H4>Usage</H4>
+<Heading.H4>Usage</Heading.H4>
 
 <Source
 code={`

@@ -1,16 +1,16 @@
 import { Meta, Source, Canvas, ArgTypes } from '@storybook/addon-docs';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Presets.stories';
 
 <Meta of={Stories} />
 
-<H1>Presets</H1>
+<Heading.H1>Presets</Heading.H1>
 
 Component used to display a list of preset date ranges that can be selected by the user.
 The preset date ranges can be organized into categories, with each category having a label and a list of preset ranges.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -18,11 +18,11 @@ import { Presets } from '@devoinc/genesys-ui-datetime';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>How to use</H2>
+<Heading.H2>How to use</Heading.H2>
 
 The Presets component accepts a prop called `presets` shaped as an array of objects that defines the list of preset ranges that are displayed.
 
@@ -94,6 +94,6 @@ or multi-level if categories are required:
 The Presets component also accepts a prop called `value` which is an object representing the currently selected date range.
 The value object has a `from` and a `to` property.
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

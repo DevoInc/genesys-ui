@@ -1,20 +1,20 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../../../.storybook/docs/blocks';
 
 import * as Stories from './IconButtonClose.stories';
 
 <Meta of={Stories} />
 
-<H1>IconButtonClose</H1>
+<Heading.H1>IconButtonClose</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 The IconButtonClose is a special type of IconButton designed to be used
 in contexts where it is necessary to close a block of content that is not included in the regular flow of the DOM.
 It is commonly used in Modals, Toasts, Poppers, and similar elements where a close button is required.
 By clicking on the IconButtonClose, users can easily dismiss or close the content without disrupting the layout or flow of the page.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -22,10 +22,10 @@ import { IconButtonClose } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

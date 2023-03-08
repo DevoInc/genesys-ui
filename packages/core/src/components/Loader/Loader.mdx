@@ -1,13 +1,13 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3, H4 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Loader.stories';
 
 <Meta of={Stories} />
 
-<H1>Loader</H1>
+<Heading.H1>Loader</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 The Loader component serves to notify the user of a waiting period, temporarily halting their interaction with the application.
 The Loader is comprised of several elements, including an Overlay which fills a designated area, and a visually engaging component that captures the user's attention.
@@ -15,7 +15,7 @@ This can take the form of an animated logo, spinner, or progress bar (determined
 
 There are established usage patterns for the Loader, which fall into two categories: global loading and contextual loading.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -23,15 +23,15 @@ import { Loader } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 
-<H2>Related components</H2>
+<Heading.H2>Related components</Heading.H2>
 
 - [GlobalLoader](?path=/story/components-core-feedback-loader-globalloader--docs)
 - [ContextualLoader](?path=/docs/components-core-feedback-loader-contextualloader--docs)

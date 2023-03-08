@@ -1,20 +1,20 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Select2Control.stories';
 import * as CaseStories from './Select2Control.cases.stories';
 
 <Meta of={Stories} />
 
-<H1>Select2Control</H1>
+<Heading.H1>Select2Control</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 The Select component provides a way for users to select an option from a dropdown list.
 It allows users to choose from a set of predefined options, which can be customized to suit the needs of the application.
 The Select component is implemented using the [react-select](https://react-select.com/home) library, which provides a flexible and powerful API for creating customized dropdown menus.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -22,37 +22,37 @@ import { Select2Control } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Cases</H2>
+<Heading.H2>Cases</Heading.H2>
 
-<H3>Single with option groups</H3>
+<Heading.H3>Single with option groups</Heading.H3>
 
 <Canvas of={Stories.SingleWithOptionsGroups} />
 
-<H3>Multiple basic</H3>
+<Heading.H3>Multiple basic</Heading.H3>
 
 <Canvas of={CaseStories.MultipleBasic} />
 
-<H3>Multiple sortable</H3>
+<Heading.H3>Multiple sortable</Heading.H3>
 
 <Canvas of={CaseStories.MultipleSortable} />
 
-<H3>Multiple creatable (custom new options)</H3>
+<Heading.H3>Multiple creatable (custom new options)</Heading.H3>
 
 <Canvas of={CaseStories.MultipleCreatable} />
 
-<H3>Multiple 'Select all' mode</H3>
+<Heading.H3>Multiple 'Select all' mode</Heading.H3>
 
 <Canvas of={CaseStories.MultipleSelectAll} />
 
-<H3>Multiple fixed options and sortable</H3>
+<Heading.H3>Multiple fixed options and sortable</Heading.H3>
 
 <Canvas of={CaseStories.MultipleFixedOptions} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 

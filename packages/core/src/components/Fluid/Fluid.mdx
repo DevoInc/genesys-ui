@@ -1,13 +1,13 @@
 import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Fluid.stories';
 
 <Meta of={Stories} />
 
-<H1>Fluid components</H1>
+<Heading.H1>Fluid components</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 The Fluid components (Container, Row, and Col) are part of a layout system and are used to create responsive, flexible layouts.
 
@@ -17,7 +17,7 @@ The Fluid components (Container, Row, and Col) are part of a layout system and a
 
 See below for more details.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -25,7 +25,7 @@ import { Container, Row, Col } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 

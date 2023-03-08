@@ -1,15 +1,15 @@
 import { Meta } from '@storybook/addon-docs';
-import { H1, H2 } from '../../.storybook/docs/blocks';
+import { Heading } from '../../.storybook/docs/blocks';
 
 <Meta title='Getting started/Installation' />
 
-<H1>Integrating genesys-ui into a React project with styled-components</H1>
+<Heading.H1>Integrating genesys-ui into a React project</Heading.H1>
 
 This guide provides instructions for integrating the `genesys-ui` library into a _React_ project that uses `styled-components`. It also covers how to add a custom brand to your project.
 
 As an alternative, you can use the `genesys-ui-demo-app` package, which includes a working app that implements the steps described in this guide.
 
-<H2>Adding Genesys-ui to your project</H2>
+<Heading.H2>Adding Genesys-ui to your project</Heading.H2>
 
 Install genesys-ui core using npm:
 
@@ -26,7 +26,7 @@ npm i @devoinc/genesys-ui-datetime
 
 Visit [Overview](/docs/getting-started-overview--docs) for a description of the different packages.
 
-<H2>Adding required base styles</H2>
+<Heading.H2>Adding required base styles</Heading.H2>
 
 Genesys-ui components rely on a set of base styles to ensure a consistent look and feel across your application. To add these styles to your project, install @devoinc/genesys-base-styles using npm:
 
@@ -42,7 +42,7 @@ import '@devoinc/genesys-base-styles/dist/styles.css';
 
 This stylesheet provides a set of default styles that help ensure a consistent look and feel across your application.
 
-<H2>Adding support for icons</H2>
+<Heading.H2>Adding support for icons</Heading.H2>
 
 Some Genesys-ui components rely on an icon font to display icons. To add this font to your project, install @devoinc/genesys-icons using npm:
 
@@ -60,7 +60,7 @@ This imports the necessary requirements to display the icons in genesys-ui.
 
 A template for a React project that uses styled-components and includes the above steps is available in the `genesys-ui-demo-app` package.
 
-<H2>Adding a custom brand</H2>
+<Heading.H2>Adding a custom brand</Heading.H2>
 
 Genesys-ui components rely on a set of tokens to define their appearance.
 These tokens are defined in a brand package, which is a set of key-values that define the tokens for a specific brand. To add a custom brand to your project,

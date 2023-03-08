@@ -1,18 +1,18 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Field.stories';
 
 <Meta of={Stories} />
 
-<H1>Field</H1>
+<Heading.H1>Field</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 Component designed to wrap form controls such as Input, Select, Checkbox, and Textarea, providing additional functionality such as labeling, helper messages, and validation messages.
 It also manages the layout and distribution of these elements within the field control.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -20,10 +20,10 @@ import { Field } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

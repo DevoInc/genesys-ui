@@ -1,19 +1,19 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './CheckboxControl.stories';
 import * as CaseStories from './CheckboxControl.cases.stories';
 
 <Meta of={Stories} />
 
-<H1>CheckboxControl</H1>
+<Heading.H1>CheckboxControl</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 Form element that allows users to make a binary choice, i.e. a choice between one of two possible mutually exclusive options.
 By default, when a checkbox is selected, it displays a checkmark or a tick inside a square or a circle, indicating that the option has been chosen.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -21,25 +21,25 @@ import { CheckboxControl } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Cases</H2>
+<Heading.H2>Cases</Heading.H2>
 
-<H3>Uncontrolled</H3>
+<Heading.H3>Uncontrolled</Heading.H3>
 
 <Canvas of={CaseStories.Uncontrolled} />
 
-<H3>Controlled</H3>
+<Heading.H3>Controlled</Heading.H3>
 
 <Canvas of={CaseStories.Controlled} />
 
-<H3>Indeterminate</H3>
+<Heading.H3>Indeterminate</Heading.H3>
 
 <Canvas of={CaseStories.Indeterminate} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 

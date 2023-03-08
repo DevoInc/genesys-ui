@@ -1,20 +1,20 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './PanelSection.stories';
 import * as CaseStories from './PanelSection.cases.stories';
 
 <Meta of={Stories} />
 
-<H1>PanelSection</H1>
+<Heading.H1>PanelSection</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 The PanelSection component is a layout element that is
 used to create sections within a Panel component.
 It can be used to group related content together and create a more structured layout.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -22,20 +22,20 @@ import { PanelSection } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Cases</H2>
+<Heading.H2>Cases</Heading.H2>
 
-<H3>With scroll and remove space</H3>
+<Heading.H3>With scroll and remove space</Heading.H3>
 
 <Canvas of={CaseStories.WithScroll} />
 
-<H3>With footer actions</H3>
+<Heading.H3>With footer actions</Heading.H3>
 
 <Canvas of={CaseStories.WithFooterActions} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

@@ -1,11 +1,11 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Checkbox.stories';
 
 <Meta of={Stories} />
 
-<H1>Checkbox</H1>
+<Heading.H1>Checkbox</Heading.H1>
 
 Form element that allows users to make a binary choice, i.e.
 a choice between one of two possible mutually exclusive options. It provides a range of customization
@@ -16,7 +16,7 @@ Checkbox is a wrapper over the [CheckboxControl](?path=/docs/components-core-for
 component, and uses the [Field](?path=/docs/components-core-form-field--docs)
 component to provide additional functionality such as labelling, helper error messages, and validation.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -24,11 +24,11 @@ import { Checkbox } from '@devo/genesys-ui-form';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 

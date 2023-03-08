@@ -1,13 +1,14 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-const slugify = (str: string) =>
-  str
-    .toLowerCase()
+const slugify = (str: string) => {
+  return str
     .trim()
     .replace(/[^\w\s-]/g, '')
     .replace(/[\s_-]+/g, '-')
-    .replace(/^-+|-+$/g, '');
+    .replace(/^-+|-+$/g, '')
+    .toLowerCase();
+};
 
 interface AnchorProps {
   id: string;

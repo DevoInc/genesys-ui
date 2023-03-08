@@ -1,11 +1,11 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Textarea.stories';
 
 <Meta of={Stories} />
 
-<H1>Textarea</H1>
+<Heading.H1>Textarea</Heading.H1>
 
 Component used to create a customizable text area for user input.
 It provides a range of customization options to control the appearance and behavior of the text area,
@@ -15,7 +15,7 @@ Textarea is a wrapper over the [TextareaControl](?path=/docs/components-core-for
 component, and uses the [Field](?path=/docs/components-core-form-field--docs)
 component to provide additional functionality such as labelling, helper error messages, and validation.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -23,11 +23,11 @@ import { Textarea } from '@devo/genesys-ui-form';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 

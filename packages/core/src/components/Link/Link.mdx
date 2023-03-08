@@ -1,19 +1,19 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Link.stories';
 import * as CaseStories from './Link.cases.stories';
 
 <Meta of={Stories} />
 
-<H1>Link</H1>
+<Heading.H1>Link</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 The `Link` component facilitates user navigation to different destinations such as a different page, another section of the same page, or a different view.
 To make the navigation possible, several props such as `href` or `onClick` are available.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -21,13 +21,13 @@ import { Link } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Cases</H2>
+<Heading.H2>Cases</Heading.H2>
 
-<H3>Block behavior</H3>
+<Heading.H3>Block behavior</Heading.H3>
 
 The Link component can be utilized as either an inline or block element.
 By default, the component is displayed as inline-flex and is integrated with the flow of its parent content.
@@ -35,6 +35,6 @@ However, by using the `wide` prop, the Link is displayed as flex and becomes a b
 
 <Canvas of={CaseStories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

@@ -1,5 +1,5 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../../.storybook/docs/blocks';
 
 import * as Stories from '../Toolbar.stories';
 import * as GroupStories from './ToolbarGroup/ToolbarGroup.stories';
@@ -11,9 +11,9 @@ import * as SeparatorStories from './ToolbarSeparator/ToolbarSeparator.stories';
   of={GroupStories}
 />
 
-<H1>Subcomponents</H1>
+<Heading.H1>Subcomponents</Heading.H1>
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -21,11 +21,11 @@ import { Toolbar } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Toolbar.Group</H2>
+<Heading.H2>Toolbar.Group</Heading.H2>
 
 The `Toolbar.Group` component is used to split the toolbar component in different sections.
 
-<H3>How to use</H3>
+<Heading.H3>How to use</Heading.H3>
 
 <Source
   code={`
@@ -40,19 +40,19 @@ The `Toolbar.Group` component is used to split the toolbar component in differen
 `}
 />
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={GroupStories.Group} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={GroupStories} />
 
-<H2>Toolbar.Item</H2>
+<Heading.H2>Toolbar.Item</Heading.H2>
 
 The `Toolbar.Item` component is used to create items to be used inside a `Toolbar.Group`.
 
-<H3>How to use</H3>
+<Heading.H3>How to use</Heading.H3>
 
 <Source
   code={`
@@ -65,19 +65,19 @@ The `Toolbar.Item` component is used to create items to be used inside a `Toolba
 `}
 />
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={ItemStories.Item} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={ItemStories} />
 
-<H2>Toolbar.Separator</H2>
+<Heading.H2>Toolbar.Separator</Heading.H2>
 
 The `Toolbar.Separator` component is used to create a separator mark between items.
 
-<H3>How to use</H3>
+<Heading.H3>How to use</Heading.H3>
 
 <Source
   code={`
@@ -89,6 +89,6 @@ The `Toolbar.Separator` component is used to create a separator mark between ite
 `}
 />
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={SeparatorStories.Separator} />

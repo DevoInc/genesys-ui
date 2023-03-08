@@ -1,19 +1,19 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './ChipGroup.stories';
 import * as CaseStories from './ChipGroup.cases.stories';
 
 <Meta of={Stories} />
 
-<H1>ChipGroup</H1>
+<Heading.H1>ChipGroup</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 Component that groups together multiple Chip components and provides additional functionality and styling.
 This can be useful when presenting a set of related options or for allowing users to select multiple items from a list.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -21,30 +21,30 @@ import { Badge } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Cases</H2>
+<Heading.H2>Cases</Heading.H2>
 
-<H3>Multiple selection</H3>
+<Heading.H3>Multiple selection</Heading.H3>
 
 When multiple selection is needed (form checkboxes behavior), you can use the ChipGroup component to
 get a controlled ChipGroup with rendered form checkbox inputs as HTML and their keyboard utility.
 
 <Canvas of={CaseStories.MultipleSelection} />
 
-<H3>Single selection</H3>
+<Heading.H3>Single selection</Heading.H3>
 
 When a single selection is needed (form radios behavior), you can add the selectionScheme prop to 'single' and assign
 the name prop with the same value to every Chip to get a controlled ChipGroup with rendered form radio inputs as HTML and their keyboard utility.
 
 <Canvas of={CaseStories.SingleSelection} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 
-<H2>Related components</H2>
+<Heading.H2>Related components</Heading.H2>
 
 - [Chip](?path=/docs/components-core-form-chip--docs)

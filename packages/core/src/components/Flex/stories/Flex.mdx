@@ -1,5 +1,5 @@
 import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../../.storybook/docs/blocks';
 
 import flexComponent from './partials/flexComponent.md?raw';
 import * as Stories from './Flex.stories';
@@ -7,13 +7,13 @@ import * as CaseStories from './Flex.cases.stories';
 
 <Meta of={Stories} />
 
-<H1>Flex</H1>
+<Heading.H1>Flex</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 <Markdown>{flexComponent}</Markdown>
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -21,13 +21,13 @@ import { Flex } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Cases</H2>
+<Heading.H2>Cases</Heading.H2>
 
-<H3>Using the as property</H3>
+<Heading.H3>Using the as property</Heading.H3>
 
 The `as` property allow these components to be rendered as any HTML tag:
 'div', 'li', 'section'... etc.
@@ -51,7 +51,7 @@ const MyFlexCmp = () => (
 </Flex>
 ); `} />
 
-<H3>FlexItem props</H3>
+<Heading.H3>FlexItem props</Heading.H3>
 
 We use each FlexItem prop in a flex structure to assign flex,
 order, and align-self CSS styles to each child component.
@@ -60,10 +60,10 @@ settings for each child component of a Flex component:
 
 <Canvas of={CaseStories.FlexAndFlexItems} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 
-<H2>Related components</H2>
+<Heading.H2>Related components</Heading.H2>
 
 - [FlexItem](?path=/docs/components-core-layout-flex-flexitem--docs)

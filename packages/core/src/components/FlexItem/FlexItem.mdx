@@ -1,5 +1,5 @@
 import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
-import { H1, H2, H3, H4 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import spacingProps from '../../../stories/partials/spacingProps.md?raw';
 import * as Stories from './FlexItem.stories';
@@ -7,14 +7,14 @@ import * as FlexStories from '../Flex/stories/Flex.stories';
 
 <Meta of={Stories} />
 
-<H1>FlexItem</H1>
+<Heading.H1>FlexItem</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 To achieve specific layout behaviors for individual child components in
 Flex container components such as Flex, HFlex, VFlex, and Wrap, you can use FlexItem to wrap each child.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -22,7 +22,7 @@ import { FlexItem } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
@@ -62,11 +62,11 @@ const MyFlexCmp = () => (
 
 <Markdown>{spacingProps}</Markdown>
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 
-<H2>Related components</H2>
+<Heading.H2>Related components</Heading.H2>
 
 - [Flex](?path=/docs/components-core-layout-flex-flex--docs)
 - [HFlex](?path=/docs/components-core-layout-flex-hflex--docs)

@@ -1,5 +1,5 @@
 import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
-import { H1, H2, H3, H4 } from '../../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../../.storybook/docs/blocks';
 
 import * as FormStories from './FormButtons.stories';
 import * as GroupStories from './FormGroup.stories';
@@ -8,7 +8,7 @@ import * as LegendStories from './FormLegend.stories';
 
 <Meta of={FormStories} />
 
-<H1>Subcomponents</H1>
+<Heading.H1>Subcomponents</Heading.H1>
 
 Use each subcomponent as a dot notation component.
 
@@ -21,39 +21,39 @@ import { Form } from '@devoinc/genesys-ui';
 <Form.Item />
 `} />
 
-<H2>Form.Buttons</H2>
+<Heading.H2>Form.Buttons</Heading.H2>
 
 Component to create a row with a buttons block and a helper block in the opposite side.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={FormStories.Buttons} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={FormStories} />
 
-<H2>Form.Group</H2>
+<Heading.H2>Form.Group</Heading.H2>
 
 Component to create an HTML fieldset and distribute the form groups and fields inside it.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={GroupStories.Group} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={GroupStories} />
 
-<H2>Form.Item</H2>
+<Heading.H2>Form.Item</Heading.H2>
 
 Component to get specific distribution for each child of a Form or FormGroup.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={ItemStories.Item} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={ItemStories} />
 

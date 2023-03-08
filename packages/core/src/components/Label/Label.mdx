@@ -1,19 +1,19 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Label.stories';
 
 <Meta of={Stories} />
 
-<H1>Label</H1>
+<Heading.H1>Label</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 Component used to provide textual labels for other components, helping to identify their purpose or provide additional context to users.
 By associating a label with a specific form control, users can more easily understand what type of data should be entered and why.
 The Label component can be used in conjunction with a variety of other components, such as input fields, checkboxes, or radio buttons, to create a complete form element.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -21,10 +21,10 @@ import { Label } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

@@ -1,5 +1,5 @@
 import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
-import { H1, H2, H3, H4 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Wrap.stories';
 import spacingProps from '../../../stories/partials/spacingProps.md?raw';
@@ -7,15 +7,15 @@ import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 <Meta of={Stories} />
 
-<H1>Wrap</H1>
+<Heading.H1>Wrap</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 Use `Wrap` to create a stacked group of children components distributed
 in columns and rows. Each children can be separated horizontally using
 the prop `hSpacing` and vertically using `vSpacing`.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -23,13 +23,13 @@ import { Wrap } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Cases</H2>
+<Heading.H2>Cases</Heading.H2>
 
-<H3>childrenByRow</H3>
+<Heading.H3>childrenByRow</Heading.H3>
 
 You can use prop `childrenByRow` to define columns with the same width for each child:
 
@@ -41,7 +41,7 @@ You can use prop `childrenByRow` to define columns with the same width for each 
 `}
 />
 
-<H3>Using the as property</H3>
+<Heading.H3>Using the as property</Heading.H3>
 
 The `as` property allow these components to be rendered as any HTML tag:
 'div', 'li', 'section'... etc.
@@ -67,6 +67,6 @@ const MyFlexCmp = () => (
 
 <Markdown>{spacingProps}</Markdown>
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

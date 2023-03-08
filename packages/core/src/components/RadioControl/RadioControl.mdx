@@ -1,20 +1,20 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './RadioControl.stories';
 import * as CaseStories from './RadioControl.cases.stories';
 
 <Meta of={Stories} />
 
-<H1>RadioControl</H1>
+<Heading.H1>RadioControl</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 Component used to create radio buttons, which are part of radio groups that describe a set of related options.
 Radio buttons are typically represented as small circles, which are filled or highlighted when selected.
 A radio group allows only one radio button to be selected at a time, making it useful for options where the user can make only one selection.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -22,21 +22,21 @@ import { RadioControl } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Cases</H2>
+<Heading.H2>Cases</Heading.H2>
 
-<H3>Uncontrolled</H3>
+<Heading.H3>Uncontrolled</Heading.H3>
 
 <Canvas of={CaseStories.Uncontrolled} />
 
-<H3>Controlled</H3>
+<Heading.H3>Controlled</Heading.H3>
 
 <Canvas of={CaseStories.Controlled} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 

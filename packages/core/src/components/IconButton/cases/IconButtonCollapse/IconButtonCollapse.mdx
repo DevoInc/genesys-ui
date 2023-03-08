@@ -1,13 +1,13 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../../../.storybook/docs/blocks';
 
 import * as Stories from './IconButtonCollapse.stories';
 
 <Meta of={Stories} />
 
-<H1>IconButtonCollapse</H1>
+<Heading.H1>IconButtonCollapse</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 The IconButtonCollapse is a special type of IconButton
 used to toggle the visibility
@@ -17,7 +17,7 @@ want to show or hide a section of content based on user interaction.
 The IconButtonCollapse component displays an arrow facing up or down
 to indicate the state of the content block.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -25,10 +25,10 @@ import { IconButtonCollapse } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

@@ -1,13 +1,13 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './TagGroup.stories';
 
 <Meta of={Stories} />
 
-<H1>TagGroup</H1>
+<Heading.H1>TagGroup</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 The TagGroup component is used to group and display multiple
 Tag components together in a horizontal layout.
@@ -17,7 +17,7 @@ The TagGroup component takes care of aligning the tags and
 providing a consistent look and feel across all of them.
 It also provides the ability to set a label for the group and adjust the size of the tags.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -25,10 +25,10 @@ import { TagGroup } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

@@ -1,5 +1,5 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
-import { H1, H2, H3, H4 } from '../../../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../../../.storybook/docs/blocks';
 
 import * as BlockQuoteStories from './BlockQuote.stories';
 import * as CaptionStories from './Caption.stories';
@@ -15,7 +15,7 @@ import * as ParagraphStories from './Paragraph.stories';
   of={BlockQuoteStories}
 />
 
-<H1>Block components</H1>
+<Heading.H1>Block components</Heading.H1>
 
 Typographic block components are used either within other components such as `HelperMessage`, `ValidationMessage`, `FieldLabel`, or as a base for them.
 
@@ -26,97 +26,97 @@ import { Typography } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>BlockQuote</H2>
+<Heading.H2>BlockQuote</Heading.H2>
 
 `Typography.BlockQuote` renders an HTML Block Quotation Element. It indicates that
 the enclosed text is an extended quotation. A URL for the source of the quotation
 may be given using the 'cite' attribute.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={BlockQuoteStories.BlockQuote} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={BlockQuoteStories} />
 
-<H2>Code</H2>
+<Heading.H2>Code</Heading.H2>
 
 `Typography.Code` displays its contents styled in a fashion intended to indicate
 that the text is a fragment of computer code.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={CodeStories.Code} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={CodeStories} />
 
-<H2>List and ListItem</H2>
+<Heading.H2>List and ListItem</Heading.H2>
 
 `Typography.List` component can render an unordered list (by default, represented as an HTML `<ul>`)
 or an ordered list (represented as an HTML `<ol>`). These lists typically display items as bullets or numbered items.
 
 To render a list with `Typography.List`, each child component must be a Typography.ListItem, which renders an HTML `<li>`ﬁ element.
 
-<H3>List - Basic usage</H3>
+<Heading.H3>List - Basic usage</Heading.H3>
 
 <Canvas of={ListStories.List} />
 
-<H3>List - API</H3>
+<Heading.H3>List - API</Heading.H3>
 
 <ArgTypes of={ListStories} />
 
-<H3>ListItem - Basic usage</H3>
+<Heading.H3>ListItem - Basic usage</Heading.H3>
 
 <Canvas of={ListItemStories.ListItem} />
 
-<H3>ListItem - API</H3>
+<Heading.H3>ListItem - API</Heading.H3>
 
 <ArgTypes of={ListItemStories} />
 
-<H2>Paragraph</H2>
+<Heading.H2>Paragraph</Heading.H2>
 
 `Typography.Paragraph` renders an HTML `<p>`. Paragraphs are usually represented
 in visual media as blocks of text separated from adjacent blocks by blank lines,
 although they can be any structural grouping of related content.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={ParagraphStories.Paragraph} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={ParagraphStories} />
 
-<H2>Caption</H2>
+<Heading.H2>Caption</Heading.H2>
 
 `Typography.Caption` component is similar to `Paragraph`, but it is intended to be used for short text blocks.
 Therefore, by default, it is limited to one line and the 'sm' size prop value.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={CaptionStories.Caption} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={CaptionStories} />
 
-<H2>Lead</H2>
+<Heading.H2>Lead</Heading.H2>
 
 The `Typography.Lead` component is designed to be used as a
 subtitle or summary block alongside a Heading component.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={LeadStories.Lead} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={LeadStories} />
 
-<H2>Heading</H2>
+<Heading.H2>Heading</Heading.H2>
 
 `Typography.Heading` component generates HTML headings that serve
 as titles or subtitles for various components, such as Panel Header titles,
@@ -126,7 +126,7 @@ To use standard HTML headings (h1-h6) with Typography.Heading,
 set the type prop to any 'h-' value. By default, they render as an HTML div.
 However, it's possible to render them as any h1 to h6 element by using the 'as' prop.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={HeadingStories.Heading} />
 
@@ -150,6 +150,6 @@ form fields, and similar items, we can use any 'overline-' value for the 'type' 
 `}
 />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={HeadingStories} />

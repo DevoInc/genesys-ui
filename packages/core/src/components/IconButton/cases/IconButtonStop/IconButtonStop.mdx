@@ -1,18 +1,18 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../../../.storybook/docs/blocks';
 
 import * as Stories from './IconButtonStop.stories';
 
 <Meta of={Stories} />
 
-<H1>IconButtonStop</H1>
+<Heading.H1>IconButtonStop</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 The IconButtonStop is a special type of IconButton that is used to stop processes. It is typically used in situations
 where the user needs to quickly halt an action or process. The IconButtonStop is usually included in the regular flow of the DOM.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -20,10 +20,10 @@ import { IconButtonClose } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

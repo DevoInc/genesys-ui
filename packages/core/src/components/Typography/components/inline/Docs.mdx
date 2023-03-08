@@ -1,5 +1,5 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
-import { H1, H2, H3, H4 } from '../../../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../../../.storybook/docs/blocks';
 
 import * as AbbrStories from './Abbr.stories';
 import * as CodeInlineStories from './CodeInline.stories';
@@ -15,7 +15,7 @@ import * as UnderlinedStories from './Underlined.stories';
 
 <Meta title="Components/Core/Text/Typography/Inline" component={AbbrStories} />
 
-<H1>Inline components</H1>
+<Heading.H1>Inline components</Heading.H1>
 
 Inline typographic components are typically used within other typographic block components.
 
@@ -29,153 +29,153 @@ import { Typography } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Abbr</H2>
+<Heading.H2>Abbr</Heading.H2>
 
 `Typography.Abbr` renders an HTML Abbreviation element (`<abbr>`) which represents an
 abbreviation or acronym. The optional 'tooltip' prop can provide an expansion
 or description for the abbreviation. If tooltip is present, it must contain this
 full description and nothing else.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={AbbrStories.Abbr} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={AbbrStories} />
 
-<H2>CodeInline</H2>
+<Heading.H2>CodeInline</Heading.H2>
 
 `Typography.CodeInline` Displays its contents styled in a fashion intended to indicate that the text
 is a short (and inline) fragment of computer code.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={CodeInlineStories.CodeInline} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={CodeInlineStories} />
 
-<H2>Deleted</H2>
+<Heading.H2>Deleted</Heading.H2>
 
 `Typography.Deleted` renders an HTML `<del>` element, which represents a range of text that has
 been deleted from a document. This can be used when rendering "track changes"
 or source code diff information, for example.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={DeletedStories.Deleted} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={DeletedStories} />
 
-<H2>Highlighted</H2>
+<Heading.H2>Highlighted</Heading.H2>
 
 `Typography.Highlighted` renders an HTML Mark Text element `<mark>` which represents text which is
 marked or highlighted for reference or notation purposes, due to the marked
 passage's relevance or importance in the enclosing context.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={HighlightedStories.Highlighted} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={HighlightedStories} />
 
-<H2>Inserted</H2>
+<Heading.H2>Inserted</Heading.H2>
 
 `Typography.Inserted` renders an HTML `<ins>` element, which represents a range of text that has
 been inserted or added to a document. This can be used when rendering
 "track changes"or source code diff information, for example.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={InsertedStories.Inserted} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={InsertedStories} />
 
-<H2>Italic</H2>
+<Heading.H2>Italic</Heading.H2>
 
 `Typography.Italic` renders an HTML `<em>` element which marks text that has stress emphasis.
 The `Italic` component can be nested, with each level of nesting indicating a
 greater degree of emphasis.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={ItalicStories.Italic} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={ItalicStories} />
 
-<H2>Small</H2>
+<Heading.H2>Small</Heading.H2>
 
 `Typography.Small` renders an HTML `<small>` element which represents side-comments and small
 print, like copyright and legal text, independent of its styled presentation.
 It's also used as complementary info added to another typographic components.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={SmallStories.Small} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={SmallStories} />
 
-<H2>Strong</H2>
+<Heading.H2>Strong</Heading.H2>
 
 `Typography.Strong` renders an HTML Strong Importance Element `<strong>` which indicates that its
 contents have strong importance, seriousness, or urgency.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={StrongStories.Strong} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={StrongStories} />
 
-<H2>Sub</H2>
+<Heading.H2>Sub</Heading.H2>
 
 `Typography.Sub` renders an HTML Subscript element `<sub>`, which specifies inline text which
 is to be displayed as subscript for solely typographical reasons.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={SubStories.Sub} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={SubStories} />
 
-<H2>Sup</H2>
+<Heading.H2>Sup</Heading.H2>
 
 `Typography.Sup` renders an HTML Superscript element `<sup>`, which specifies inline text which
 is to be displayed as superscript for solely typographical reasons.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={SupStories.Sup} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={SupStories} />
 
-<H2>Underlined</H2>
+<Heading.H2>Underlined</Heading.H2>
 
 `Typography.Underlined` renders as HTML Unarticulated Annotation element `<u>`,
 which represents a span of inline text which should be rendered in a way that
 indicates that it has a non-textual annotation.
 
-<H3>Basic usage</H3>
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={UnderlinedStories.Underlined} />
 
-<H3>Props</H3>
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={UnderlinedStories} />

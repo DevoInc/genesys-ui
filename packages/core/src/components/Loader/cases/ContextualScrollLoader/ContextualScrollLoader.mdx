@@ -1,18 +1,18 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3, H4 } from '../../../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../../../.storybook/docs/blocks';
 
 import * as Stories from './ContextualScrollLoader.stories';
 
 <Meta of={Stories} />
 
-<H1>ContextualScrollLoader</H1>
+<Heading.H1>ContextualScrollLoader</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 The ContextualScrollLoader is a specific type of Loader component designed to be used with the infinite scroll functionality, such as in a Table that loads new rows from the backend while scrolling.
 It provides a temporary overlay that is positioned relative to a container and offers the same options for loading indicators as the Contextual Loader - including both spinner and progress bar types.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -20,15 +20,15 @@ import { ContextualScrollLoader } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 
-<H2>Related components</H2>
+<Heading.H2>Related components</Heading.H2>
 
 - [Loader](?path=/docs/components-core-feedback-loader--docs)
 - [GlobalLoader](?path=/story/components-core-feedback-loader-globalloader--docs)

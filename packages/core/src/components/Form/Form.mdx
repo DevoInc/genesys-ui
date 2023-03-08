@@ -1,14 +1,14 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3, H4 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Form.stories';
 import * as CaseStories from './Form.cases.stories';
 
 <Meta of={Stories} />
 
-<H1>Form</H1>
+<Heading.H1>Form</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 Component that creates an HTML form and manages the distribution of form groups and fields within it.
 It can be used to simplify the process of creating forms in your application, by allowing you to easily organize and manage form controls.
@@ -16,7 +16,7 @@ It can be used to simplify the process of creating forms in your application, by
 The Form component includes subcomponents that can be used to further customize your forms, including Buttons, Group, Legend and Item.
 These subcomponents can be accessed through the Form component and allow you to add additional functionality and styling to your forms.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -24,13 +24,13 @@ import { Form } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Cases</H2>
+<Heading.H2>Cases</Heading.H2>
 
-<H3>Multiple forms</H3>
+<Heading.H3>Multiple forms</Heading.H3>
 
 <Canvas of={CaseStories.MultipleForms} />
 
@@ -41,6 +41,6 @@ import { Form } from '@devoinc/genesys-ui';
 - [Item](?path=/story/components-core-form-form-subcomponents--docs#item)
 - [Legend](?path=/story/components-core-form-form-subcomponents--docs#legend)
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

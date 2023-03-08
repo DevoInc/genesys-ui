@@ -1,13 +1,13 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../../../.storybook/docs/blocks';
 
 import * as Stories from './GridItem.stories';
 
 <Meta of={Stories} />
 
-<H1>Grid.Item</H1>
+<Heading.H1>Grid.Item</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 Grid.Item is a subcomponent and integral part of the Grid component and must always be used in conjunction with it.
 It represents the individual columns or rows of the Grid layout.
@@ -15,7 +15,7 @@ By setting the appropriate attributes, Items can be configured to span across mu
 
 It is important to note that using the Grid.Item component on its own without the Grid component is meaningless, as its purpose is to serve as a subcomponent of the Grid layout.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -23,10 +23,10 @@ import { Grid } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

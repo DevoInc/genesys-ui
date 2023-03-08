@@ -1,20 +1,20 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Modal.stories';
 import * as CaseStories from './Modal.cases.stories';
 
 <Meta of={Stories} />
 
-<H1>Modal</H1>
+<Heading.H1>Modal</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 Component designed to display content or messages in a pop-up window that appears on top of the current screen.
 It provides a flexible and customizable way to display important information or prompt the user for
 input in a separate pop-up window without disrupting the main flow of the application.
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -22,19 +22,19 @@ import { Modal } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Cases</H2>
+<Heading.H2>Cases</Heading.H2>
 
-<H3>With header actions</H3>
+<Heading.H3>With header actions</Heading.H3>
 
 The Modal component can also be used to display a header with actions.
 
 <Canvas of={CaseStories.WithHeaderActions} />
 
-<H3>Adding animations</H3>
+<Heading.H3>Adding animations</Heading.H3>
 
 If you want to add animations to your Modal component,
 you can use a third-party animation library to achieve this effect.
@@ -42,6 +42,6 @@ For example, you can use `framer-motion` library along with a simple fade animat
 
 <Canvas of={CaseStories.Animated} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

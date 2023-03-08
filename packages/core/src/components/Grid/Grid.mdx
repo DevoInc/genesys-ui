@@ -1,13 +1,13 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
-import { H1, H2, H3, H4 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Grid.stories';
 
 <Meta of={Stories} />
 
-<H1>Grid</H1>
+<Heading.H1>Grid</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 The Grid component provides a powerful grid-based layout system for designing
 user interfaces with rows and columns. It is based on the _CSS Grid Layout_,
@@ -25,7 +25,7 @@ If you need more information on the CSS Grid Layout, you can visit the following
 - [A Complete Guide to Grid | CSS-Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/).
 - [CSS Grid | w3school](https://www.w3schools.com/css/css_grid.asp).
 
-<H2>How to import</H2>
+<Heading.H2>How to import</Heading.H2>
 
 There are two components that have to do with CSS Grid Layout: **Grid** and **Grid.Item**.
 These components must always be used together, it is useless to use them separately.
@@ -46,14 +46,14 @@ import { Grid } from '@devoinc/genesys-ui';
 `}
 />
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 
-<H2>Subcomponents</H2>
+<Heading.H2>Subcomponents</Heading.H2>
 
 - [Item](?path=/story/components-core-layout-grid-subcomponents--docs#item)

@@ -1,13 +1,13 @@
 import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
-import { H1, H2 } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Popper.stories';
 
 <Meta of={Stories} />
 
-<H1>Popper</H1>
+<Heading.H1>Popper</Heading.H1>
 
-<H2>Overview</H2>
+<Heading.H2>Overview</Heading.H2>
 
 The Popper component is designed to position a container in relation to a trigger.
 This is achieved through the use of the external library `React Popper`.
@@ -21,14 +21,14 @@ the zIndex value of its children.
 If its own zIndex prop is defined, the value for its children is set to 'auto',
 thereby allowing the elevation to be primarily defined by the component itself.
 
-<H2>Basic usage</H2>
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-<H2>Hooks</H2>
+<Heading.H2>Hooks</Heading.H2>
 
 - [usePopper](?path=/docs/components-core-popper-hooks-docs--docs)
 
-<H2>Props</H2>
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
