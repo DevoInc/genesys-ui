@@ -14,6 +14,8 @@ import { Box } from '../packages/core/src/';
 // import './assets/styles/preview/preview.scss'; // This styles should only apply in the documentation
 // import { DocsContainerDefault } from '../components/DocsContainer';
 import './preview.scss';
+import { useMutationObserver } from './docs/blocks/TOC/useMutationObserver';
+import { useHeadsObserver } from './docs/blocks/TOC/useHeadsObserver';
 
 // Ad-hoc styles for SB documentation
 const customTheme = create({
