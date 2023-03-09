@@ -2,9 +2,9 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 const Button = styled.button.attrs({
-  className: 'sbdocs sbdocs-top',
+  className: 'sbdocs sbdocs-toc',
 })`
-  --color: var(--toc-button-color, inherit);
+  --color: #5b6870;
   --color--hover: var(--toc-button-color--hover, var(--color));
   --color--active: var(--toc-button-color--active, var(--color));
   --background: var(--toc-button-background, transparent);
@@ -36,6 +36,7 @@ const Button = styled.button.attrs({
 
   span {
     padding: 5px;
+    font-size: 14px;
   }
 `;
 
