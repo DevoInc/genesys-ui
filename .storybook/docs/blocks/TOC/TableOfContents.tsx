@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyledNav } from './StyledNav';
 import { StyledNavHeader } from './StyledNavHeader';
 import { useHeadsObserver } from './useHeadsObserver';
-import { useMutationObserver } from './useMutationObserver';
+import { useDOMMutationObserver } from './useDOMMutationObserver';
 
 const CONF = {
   tocSelector: '.js-toc',
@@ -20,7 +20,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
   // Mutation observer to observe for changes in the DOM.
   // This is necessary to detect navigation between stories
   // due to the Storybook not unmounting the component.
-  const { headings } = useMutationObserver(
+  const { headings } = useDOMMutationObserver(
     CONF.contentSelector,
     CONF.headingSelector
   );

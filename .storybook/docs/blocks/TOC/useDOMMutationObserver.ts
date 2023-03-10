@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const useMutationObserver = (
+export const useDOMMutationObserver = (
   contentSelector: string,
   headingsSelector: string
 ) => {
