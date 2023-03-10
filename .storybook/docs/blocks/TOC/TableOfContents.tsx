@@ -47,7 +47,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
         {headings.map((h) => (
           <li
             key={h.id}
-            id={h.id}
+            id={`${h.id}-toc`}
             className={`toc-list-item ${
               selectedHeadings.includes(h.id) ? 'is-active-li' : ''
             }`}
