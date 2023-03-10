@@ -23,7 +23,7 @@ const AnchorStyles = styled.a.attrs({
 `;
 
 const Anchor: React.FC<AnchorProps> = ({ id, children }) => (
-  <AnchorStyles id={`#${id}`} href={`#${id}`}>
+  <AnchorStyles id={`#${id}`} href={`#${id}`} target="_self">
     {children}
   </AnchorStyles>
 );
