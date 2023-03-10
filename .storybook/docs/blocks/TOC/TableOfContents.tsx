@@ -17,6 +17,9 @@ interface TableOfContentsProps {
 export const TableOfContents: React.FC<TableOfContentsProps> = ({
   title = 'Table of contents',
 }) => {
+  // Mutation observer to observe for changes in the DOM.
+  // This is necessary to detect navigation between stories
+  // due to the Storybook not unmounting the component.
   const { headings } = useMutationObserver(
     CONF.contentSelector,
     CONF.headingSelector

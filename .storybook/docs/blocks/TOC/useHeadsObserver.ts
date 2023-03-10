@@ -5,6 +5,7 @@ export const useHeadsObserver = (headings: HTMLHeadingElement[]) => {
   // List of visible headings
   const [selectedHeadings, setSelectedHeadings] = React.useState<string[]>([]);
 
+  // Check if element is visible.
   const isInViewport = (container, element) => {
     const rect = element.getBoundingClientRect();
     return (
@@ -16,18 +17,21 @@ export const useHeadsObserver = (headings: HTMLHeadingElement[]) => {
     );
   };
 
-  const handleScroll = () => {
-    console.log('handleScroll');
+  // Return list of visible headings
+  const getVisibleHeadings = React.useCallback(() => {
     setSelectedHeadings((selectedHeadingIds) => {
       let newSelectedHeadings = [...selectedHeadingIds];
       headings.forEach((heading) => {
         const viewport = document.querySelector('.sbdocs-content');
         if (isInViewport(viewport, heading)) {
           if (!selectedHeadingIds.includes(heading.id)) {
+            // If heading is in viewport and not in list of visible headings, add it
             newSelectedHeadings.push(heading.id);
           }
         } else {
           if (newSelectedHeadings.length > 1) {
+            // If heading is not in viewport and in list of visible headings, remove it.
+            // Only remove if there is more than one visible heading
             newSelectedHeadings = newSelectedHeadings.filter(
               (id) => id !== heading.id
             );
@@ -36,21 +40,22 @@ export const useHeadsObserver = (headings: HTMLHeadingElement[]) => {
       });
       return newSelectedHeadings;
     });
-  };
-
-  const handleScrollDebounced = _.debounce(() => {
-    handleScroll();
-  }, 10);
-
-  React.useEffect(() => {
-    setSelectedHeadings([]);
-    handleScroll();
   }, [headings]);
 
+  // Debounce function to avoid performance issues
+  const getVisibleHeadingsDebounced = _.debounce(getVisibleHeadings, 10);
+
+  // Update list of visible headings headings change
   React.useEffect(() => {
-    document?.addEventListener('scroll', handleScrollDebounced);
+    setSelectedHeadings([]);
+    getVisibleHeadings();
+  }, [headings]);
+
+  // Add event listener to update list of visible headings on scroll
+  React.useEffect(() => {
+    document?.addEventListener('scroll', getVisibleHeadingsDebounced);
     return () => {
-      document?.removeEventListener('scroll', handleScrollDebounced);
+      document?.removeEventListener('scroll', getVisibleHeadingsDebounced);
     };
   }, [headings]);
 

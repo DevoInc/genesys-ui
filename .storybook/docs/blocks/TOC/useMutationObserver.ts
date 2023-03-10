@@ -14,13 +14,12 @@ export const useMutationObserver = (
       headings.map((h) => h.id).toString() !==
       TOCEntries.map((h) => h.id).toString()
     ) {
-      console.log('mutation detected', TOCEntries.map((h) => h.id).toString());
       setHeadings([...TOCEntries] as HTMLHeadingElement[]);
     }
   }, []);
 
+  // Observe changes in the content container
   React.useEffect(() => {
-    console.log('useMutationObserver', contentSelector, headingsSelector);
     observer.current = new MutationObserver(handleMutation);
 
     const container = document.querySelector(contentSelector);
