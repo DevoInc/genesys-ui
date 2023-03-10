@@ -4,10 +4,6 @@
   "description": "",
   "main": "index.js",
   "private": true,
-  "engines": {
-    "node": ">=14",
-    "npm": ">=7"
-  },
   "scripts": {
     "clean": "rm -rf storybook-static coverage packages/*/dist",
     "build": "npm run build -ws --if-present",
