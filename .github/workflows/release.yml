@@ -137,17 +137,17 @@ jobs:
           git config --global user.email 'desa@devo.com'
 
       - name: Publish ${{ github.event.inputs.version }} (dry-run)
-        if: ${{ github.event.inputs.version }} != 'auto' && ${{ github.event.inputs.dry }} == true
+        if: ${{ github.event.inputs.version != 'auto' && github.event.inputs.dry == true }}
         run: npm run release:ci -- ${{ github.event.inputs.version }} --dry-run
 
       - name: Publish 'auto' (dry-run)
-        if: ${{ github.event.inputs.version }} == 'auto' && ${{ github.event.inputs.dry }} == true
+        if: ${{ github.event.inputs.version == 'auto' && github.event.inputs.dry == true }}
         run: npm run release:ci --dry-run
 
       - name: Publish ${{ github.event.inputs.version }}
-        if: ${{ github.event.inputs.version }} != 'auto' && ${{ github.event.inputs.dry }} == false
+        if: ${{ github.event.inputs.version != 'auto' && github.event.inputs.dry == false }}
         run: npm run release:ci -- ${{ github.event.inputs.version }}
 
       - name: Publish 'auto'
-        if: ${{ github.event.inputs.version }} == 'auto' && ${{ github.event.inputs.dry }} == false
+        if: ${{ github.event.inputs.version == 'auto' && github.event.inputs.dry == false }}
         run: npm run release:ci
