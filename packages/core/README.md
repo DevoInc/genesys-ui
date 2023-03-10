@@ -11,7 +11,12 @@ Among others, this package contains the following components:
 AppBar, Fluid, RadioControl, Avatar, Form, Select2Control, Badge, Grid, SpinnerLoader, Box, Grid.Item, SplitPane, BoxMessage, HFlex, StatusMessage, Button, Helper, Stepper, ButtonGroup, Icon, SwitchControl, CheckboxControl, IconButton, Tabs, Chip, InlineMessage, Tag, ChipGroup, InputControl, TagGroup, ChoiceGroup, Label, TextareaControl, CollapseLink, Thumbnail, ContentSwitcher, Loader, Toast, DecoratorBar, Menu, Toolbar, DevoLogoLoader, Modal, Tooltip, Divider, Overlay, Typography, DropdownA11yMenuPagination, VFlex, Field, Panel, Wrap, Flex, Partitions, , FlexItemPopper, FloatPanel, ProgressBar, ...
 ```
 
-More information about the components can be found in [Genesys UI Storybook]().
+## Preview
+
+The available components can be previewed in the [Genesys UI Storybook](https://devoinc.github.io/genesys-ui/).
+The Storybook includes a live preview of the components, as well as their documentation and code examples.
+
+To visit the components comprised in this package, please refer to the __Components > Core__ section of the Storybook.
 
 ## Installation
 

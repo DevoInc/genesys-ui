@@ -8,8 +8,6 @@
 
 Monorepo containing the codebase for the Genesys UI components library.
 
-👉 [Storybook]()
-
 The project is built using `npm workspaces` and includes the following packages:
 
 [![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui?label=%40devoinc%2Fgenesys-ui)](https://www.npmjs.com/package/@devoinc/genesys-ui)

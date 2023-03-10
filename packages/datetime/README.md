@@ -11,7 +11,12 @@ Among others, this package contains the following components:
 Calendar, DateTimeRangePicker, DateTime, Presets, DateTimePicker, RangeInput, DateTimeRange, ...
 ```
 
-More information about the components can be found in [Genesys UI Storybook]().
+## Preview
+
+The available components can be previewed in the [Genesys UI Storybook](https://devoinc.github.io/genesys-ui/).
+The Storybook includes a live preview of the components, as well as their documentation and code examples.
+
+To visit the components comprised in this package, please refer to the **Components > Datetime** section of the Storybook.
 
 ## Installation
 

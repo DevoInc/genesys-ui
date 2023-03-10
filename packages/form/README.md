@@ -11,7 +11,12 @@ Among others, this package contains the following components:
 Checkbox, FieldsCombiner, RadioGroupTextarea, CheckboxGroup, Input, Select2, UploadFiles, ColorPicker, Radio, Switch, ...
 ```
 
-More information about the components can be found in [Genesys UI Storybook]().
+## Preview
+
+The available components can be previewed in the [Genesys UI Storybook](https://devoinc.github.io/genesys-ui/).
+The Storybook includes a live preview of the components, as well as their documentation and code examples.
+
+To visit the components comprised in this package, please refer to the __Components > Form__ section of the Storybook.
 
 ## Installation
 
