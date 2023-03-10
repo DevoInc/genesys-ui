@@ -36,7 +36,9 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
     const timer = setTimeout(() => {
       element?.focus();
       element?.scrollIntoView({ behavior: 'smooth' });
+      window.location.hash = element.id;
     }, 50);
+
     return () => clearTimeout(timer);
   };
 
