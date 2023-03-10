@@ -25,7 +25,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
     CONF.headingSelector
   );
 
-  // Intersection observer to observe for changes in the viewport
+  // Scroll observer to track titles changes in the viewport
   const { selectedHeadings } = useHeadsObserver(
     headings as HTMLHeadingElement[]
   );
