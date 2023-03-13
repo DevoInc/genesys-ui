@@ -15,7 +15,5 @@
     "tagAnnotation": "Release v${version}",
     "commitMessage": "Release: v${version}"
   },
-  "npm": {
-    "allowSameVersion": true
-  }
+  "npm": false
 }
