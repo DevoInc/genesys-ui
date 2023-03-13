@@ -5,9 +5,8 @@ import { useHeadsObserver } from './useHeadsObserver';
 import { useDOMMutationObserver } from './useDOMMutationObserver';
 
 const CONF = {
-  tocSelector: '.js-toc',
   contentSelector: '.sbdocs-content',
-  headingSelector: '.sbdocs-h2',
+  headingSelectors: ['.sbdocs-h2'],
 };
 
 interface TableOfContentsProps {
@@ -22,7 +21,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
   // due to the Storybook not unmounting the component.
   const { headings } = useDOMMutationObserver(
     CONF.contentSelector,
-    CONF.headingSelector
+    CONF.headingSelectors
   );
 
   // Scroll observer to track titles changes in the viewport
@@ -46,23 +45,30 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
     <StyledNav data-show={headings.length > 1}>
       <StyledNavHeader>{title}</StyledNavHeader>
       <ul className='toc-list'>
-        {headings.map((h) => (
-          <li
-            key={h.id}
-            id={`${h.id}-toc`}
-            className={`toc-list-item ${
-              selectedHeadings.includes(h.id) ? 'is-active-li' : ''
-            }`}
-          >
-            <a
-              className='toc-link'
-              href={`#${h.id}`}
-              onClick={(e) => handleClick(e, h)}
+        {headings.map((h, idx) => {
+          const weight = Number(h.tagName.substring(1)) - 2;
+          return (
+            <li
+              key={`${h.tagName}-${h.id}-${idx}`}
+              id={`${h.tagName}-${h.id}-${idx}-toc`}
+              className={`toc-list-item ${
+                selectedHeadings.includes(h.id) ? 'is-active-li' : ''
+              }`}
+              style={{
+                marginLeft: weight * 10 + 'px',
+                fontWeight: 500 - weight * 100,
+              }}
             >
-              {h.innerText}
-            </a>
-          </li>
-        ))}
+              <a
+                className='toc-link'
+                href={`#${h.id}`}
+                onClick={(e) => handleClick(e, h)}
+              >
+                {h.innerText}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </StyledNav>
   ) : null;
