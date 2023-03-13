@@ -14,8 +14,10 @@
     "build-storybook": "storybook build",
     "stryker": "npm run stryker -ws --if-present",
     "test": "jest --coverage",
-    "release": "release-it --dry-run",
-    "release:ci": "release-it --ci"
+    "_release": "release-it --dry-run",
+    "release": "npm run _release --verbose",
+    "_release:ci": "release-it --ci",
+    "release:ci": "npm run _release:ci --verbose"
   },
   "keywords": [],
   "author": "",
