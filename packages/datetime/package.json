@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-datetime",
-  "version": "1.0.3-alpha.6",
+  "version": "1.0.3-alpha.7",
   "description": "",
   "scripts": {
     "build": "vite build",
@@ -29,7 +29,7 @@
     "styled-components": "5.x",
     "react-popper": "^2.3.0",
     "date-fns": "^2.29.3",
-    "@devoinc/genesys-ui": "^1.0.3-alpha.6"
+    "@devoinc/genesys-ui": "^1.0.3-alpha.7"
   },
   "engine": {
     "node": ">=16",
