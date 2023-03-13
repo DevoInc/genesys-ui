@@ -16,6 +16,7 @@
     "commitMessage": "Release: v${version}"
   },
   "npm": {
-    "allowSameVersion": true
+    "allowSameVersion": true,
+    "verbose": true
   }
 }
