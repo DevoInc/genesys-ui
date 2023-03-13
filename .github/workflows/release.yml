@@ -140,6 +140,10 @@ jobs:
         if: ${{ github.event.inputs.version != 'auto' && github.event.inputs.dry == 'true' }}
         run: npm run release:ci -- ${{ github.event.inputs.version }} --dry-run
 
+      - name: Publish prerelease (dry-run)
+        if: ${{ github.event.inputs.version == 'prerelease' && github.event.inputs.dry == 'true' }}
+        run: npm run release:ci -- --preRelease --dry-run
+
       - name: Publish 'auto' (dry-run)
         if: ${{ github.event.inputs.version == 'auto' && github.event.inputs.dry == 'true' }}
         run: npm run release:ci --dry-run
@@ -147,6 +151,10 @@ jobs:
       - name: Publish ${{ github.event.inputs.version }}
         if: ${{ github.event.inputs.version != 'auto' && github.event.inputs.dry == 'false' }}
         run: npm run release:ci -- ${{ github.event.inputs.version }}
+
+      - name: Publish prerelease
+        if: ${{ github.event.inputs.version == 'prerelease' && github.event.inputs.dry == 'false' }}
+        run: npm run release:ci -- --preRelease
 
       - name: Publish 'auto'
         if: ${{ github.event.inputs.version == 'auto' && github.event.inputs.dry == 'false' }}
