@@ -1,5 +1,7 @@
 # Changelog
 
+### [1.0.3-alpha.5](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.4...v1.0.3-alpha.5) (2023-03-13)
+
 ### [1.0.3-alpha.4](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.3...v1.0.3-alpha.4) (2023-03-13)
 
 ### [1.0.3-alpha.3](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.2...v1.0.3-alpha.3) (2023-03-13)
