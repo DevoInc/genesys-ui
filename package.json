@@ -15,7 +15,7 @@
     "stryker": "npm run stryker -ws --if-present",
     "test": "jest --coverage",
     "release": "release-it --dry-run",
-    "release:ci": "release-it --ci"
+    "release:ci": "NODE_DEBUG=release-it:* release-it --ci"
   },
   "keywords": [],
   "author": "",
