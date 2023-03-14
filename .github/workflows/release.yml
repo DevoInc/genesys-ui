@@ -17,7 +17,7 @@ on:
           - patch
           - prerelease
           - auto
-        default: auto
+        default: prerelease
         required: true
 
 env:
