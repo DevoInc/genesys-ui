@@ -3,7 +3,7 @@
 > **Warning**
 > This is an `alpha` version and it is not yet production ready.
 
-Package containing a set of components for date and time selection. It belongs to the [Genesys UI]() component library and is built on top of the [core]() package.
+Package containing a set of components for date and time selection. It belongs to the [Genesys UI](https://github.com/DevoInc/genesys-ui) component library and is built on top of the [core](https://github.com/DevoInc/genesys-ui/tree/master/packages/core) package.
 
 Among others, this package contains the following components:
 
@@ -26,13 +26,13 @@ To install the package, run the following command:
 npm install @devoinc/genesys-ui-datetime
 ```
 
-This package needs [genesys-ui]() to work. If you don't have it already, you can install it with the following command:
+This package needs [genesys-ui](https://www.npmjs.com/package/@devoinc/genesys-ui) to work. If you don't have it already, you can install it with the following command:
 
 ```sh
 npm install @devoinc/genesys-ui
 ```
 
-**Note:** Make sure you have followed the [Installation](path=/docs/getting-started-installation--docs) steps in the Storybook of the repository before installing the package. This will ensure that you have all the necessary dependencies and stylesheets in place.
+**Note:** Make sure you have followed the [Installation](https://devoinc.github.io/genesys-ui/?path=/docs/getting-started-installation--docs) steps in the Storybook of the repository before installing the package. This will ensure that you have all the necessary dependencies and stylesheets in place.
 
 ## Usage
 
@@ -51,4 +51,4 @@ export const DateTimeRangePickerExample = () => <DateTimeRangePicker />;
 
 ## Development
 
-Please refer to the main [README]() for information on how to contribute to the library.
+Please refer to the main [README](https://github.com/DevoInc/genesys-ui#readme) for information on how to contribute to the library.

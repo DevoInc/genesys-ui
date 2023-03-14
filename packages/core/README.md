@@ -16,7 +16,7 @@ AppBar, Fluid, RadioControl, Avatar, Form, Select2Control, Badge, Grid, SpinnerL
 The available components can be previewed in the [Genesys UI Storybook](https://devoinc.github.io/genesys-ui/).
 The Storybook includes a live preview of the components, as well as their documentation and code examples.
 
-To visit the components comprised in this package, please refer to the __Components > Core__ section of the Storybook.
+To visit the components comprised in this package, please refer to the **Components > Core** section of the Storybook.
 
 ## Installation
 
@@ -26,7 +26,7 @@ To install the package, run the following command:
 npm install @devoinc/genesys-ui
 ```
 
-**Note:** Make sure you have followed the [Installation](path=/docs/getting-started-installation--docs) steps in the Storybook of the repository before installing the package. This will ensure that you have all the necessary dependencies and stylesheets in place.
+**Note:** Make sure you have followed the [Installation](https://devoinc.github.io/genesys-ui/?path=/docs/getting-started-installation--docs) steps in the Storybook of the repository before installing the package. This will ensure that you have all the necessary dependencies and stylesheets in place.
 
 ## Usage
 
@@ -46,4 +46,4 @@ export const MyView: React.FC = () => {
 
 ## Development
 
-Please refer to the main [README]() for information on how to contribute to the library.
+Please refer to the main [README](https://github.com/DevoInc/genesys-ui#readme) for information on how to contribute to the library.
