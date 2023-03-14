@@ -178,11 +178,11 @@ export const PartField: React.FC<FieldProps> = ({
   );
 };
 
-export const Field: typeof PartField & {
-  Label?: typeof FieldLabel;
-  Addon?: typeof FieldAddon;
-  RequiredMark?: typeof FieldRequiredMark;
-} = PartField;
+export const Field = PartField as typeof PartField & {
+  Label: typeof FieldLabel;
+  Addon: typeof FieldAddon;
+  RequiredMark: typeof FieldRequiredMark;
+};
 
 Field.Label = FieldLabel;
 Field.Addon = FieldAddon;

@@ -35,8 +35,9 @@ const InternalContentSwitcher: React.FC<ContentSwitcherProps> = ({
   </StyledContentSwitcher>
 );
 
-export const ContentSwitcher: typeof InternalContentSwitcher & {
-  Item?: typeof ContentSwitcherItem;
-} = InternalContentSwitcher;
+export const ContentSwitcher =
+  InternalContentSwitcher as typeof InternalContentSwitcher & {
+    Item: typeof ContentSwitcherItem;
+  };
 
 ContentSwitcher.Item = ContentSwitcherItem;

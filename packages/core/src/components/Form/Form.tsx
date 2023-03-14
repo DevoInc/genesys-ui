@@ -51,12 +51,12 @@ const PartForm: React.FC<FormProps> = ({
   );
 };
 
-export const Form: typeof PartForm & {
-  Buttons?: typeof FormButtons;
-  Group?: typeof FormGroup;
-  Item?: typeof FlexItem;
-  Legend?: typeof FormLegend;
-} = PartForm;
+export const Form = PartForm as typeof PartForm & {
+  Buttons: typeof FormButtons;
+  Group: typeof FormGroup;
+  Item: typeof FlexItem;
+  Legend: typeof FormLegend;
+};
 
 Form.Buttons = FormButtons;
 Form.Group = FormGroup;

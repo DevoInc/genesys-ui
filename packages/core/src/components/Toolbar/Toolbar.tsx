@@ -36,11 +36,11 @@ const InternalToolbar: React.FC<ToolbarProps> = ({
   );
 };
 
-export const Toolbar: typeof InternalToolbar & {
-  Group?: typeof ToolbarGroup;
-  Item?: typeof ToolbarItem;
-  Separator?: typeof ToolbarSeparator;
-} = InternalToolbar;
+export const Toolbar = InternalToolbar as typeof InternalToolbar & {
+  Group: typeof ToolbarGroup;
+  Item: typeof ToolbarItem;
+  Separator: typeof ToolbarSeparator;
+};
 
 Toolbar.Item = ToolbarItem;
 Toolbar.Group = ToolbarGroup;
