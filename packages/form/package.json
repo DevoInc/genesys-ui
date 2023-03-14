@@ -22,7 +22,7 @@
   ],
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "peerDependencies": {
     "react": "17.x || 18.x",
     "styled-components": "5.x",

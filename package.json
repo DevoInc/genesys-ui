@@ -19,7 +19,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@devoinc/genesys-base-styles": "^1.2.1",
     "@devoinc/genesys-brand-devo": "^5.1.0",
