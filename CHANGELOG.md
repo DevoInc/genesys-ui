@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.3-alpha.10](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.9...v1.0.3-alpha.10) (2023-03-14)
+
+
+### Bug Fixes
+
+* fix type declaration for dot notation cmps ([14ec61e](https://github.com/DevoInc/genesys-ui/commit/14ec61e379e9b7015946a76efcafc6457385d130))
+
 ### [1.0.3-alpha.9](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.8...v1.0.3-alpha.9) (2023-03-14)
 
 ### [1.0.3-alpha.8](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.7...v1.0.3-alpha.8) (2023-03-13)
