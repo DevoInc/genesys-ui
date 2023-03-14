@@ -48,5 +48,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/DevoInc/genesys-ui.git"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
