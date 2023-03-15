@@ -1,13 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Select2Control } from '..';
+import { SelectControl } from './SelectControl';
 
-const meta: Meta<typeof Select2Control> = {
-  title: 'Components/Core/Form/Select2Control',
-  component: Select2Control,
+const meta: Meta<typeof SelectControl> = {
+  title: 'Components/Core/Form/SelectControl',
+  component: SelectControl,
   args: {
-    menuLevel: 3,
-    menuPlacement: 'auto',
+    menuAppendToBody: true,
     options: [
       { value: 1, label: 'Option one' },
       { value: 2, label: 'Option two' },
@@ -17,16 +16,10 @@ const meta: Meta<typeof Select2Control> = {
       { value: 6, label: 'Option six' },
       { value: 7, label: 'Option seven' },
     ],
-    size: 'md',
-    status: 'base',
-  },
-  argTypes: {
-    addonToLeft: { control: { type: 'text' } },
-    addonToRight: { control: { type: 'text' } },
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Select2Control>;
+type Story = StoryObj<typeof SelectControl>;
 
 export const Base: Story = {};
