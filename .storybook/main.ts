@@ -38,15 +38,17 @@ const config: StorybookConfig = {
     });
   },
   typescript: {
-    //   /**
-    //    * Solves TS extended declarations coming from node_modules not showing in SB
-    //    * https://github.com/storybookjs/storybook/issues/12129
-    //    * */
-    //   reactDocgen: 'react-docgen-typescript',
-    //   reactDocgenTypescriptOptions: {
-    //     // this is required to show values from type declarations
-    //     shouldExtractLiteralValuesFromEnum: true,
-    //   },
+    // @ts-ignore
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+      savePropValueAsString: true,
+      // Required to show values from type declarations coming from node_modules.
+      // Overrides the default value of `react-docgen-typescript` which is
+      // '(prop) => prop.parent ? !/node_modules/.test(prop.parent.fileName) : true'
+      propFilter: () => true,
+    },
     check: true,
   },
   staticDirs: ['assets'],
