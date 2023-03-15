@@ -10,5 +10,7 @@
   "github": {
     "release": true
   },
-  "npm": false
+  "npm": {
+    "tag": "latest"
+  }
 }
