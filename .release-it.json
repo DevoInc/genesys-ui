@@ -10,8 +10,5 @@
   "github": {
     "release": true
   },
-  "npm": {
-    "allowSameVersion": true,
-    "tag": "latest"
-  }
+  "npm": false
 }
