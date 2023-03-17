@@ -1,4 +1,4 @@
-import { ChipSize } from '@devoinc/genesys-ui/src/components/Chip/declarations';
+import { ChipSize } from '../../../src/components/Chip/declarations';
 import { FieldSize } from '../../declarations';
 
 import { SelectOption, SelectValue } from './declarations';

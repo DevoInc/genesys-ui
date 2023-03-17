@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import { CONTENT_SWITCHER_ITEM_SIZE_MAP } from './constants';
 
 // declarations
-import { BaseSize } from '@devoinc/genesys-ui';
+import { BaseSize } from '../../';
 
 // styled
 import { StyledFlex } from '../Flex/StyledFlex';

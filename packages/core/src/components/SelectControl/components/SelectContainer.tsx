@@ -7,7 +7,7 @@ import { useTheme } from 'styled-components';
 
 import { CommonSelectCmpsProps } from '../declarations';
 
-import { Field, Flex } from '@devoinc/genesys-ui';
+import { Field, Flex } from '../../';
 
 interface SelectContainerProps extends DefaultSelectContainerProps {
   id: any;
