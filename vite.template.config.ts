@@ -3,7 +3,6 @@ import { defineConfig } from 'vite';
 
 import dts from 'vite-plugin-dts';
 import { visualizer } from 'rollup-plugin-visualizer';
-import reactDocgenTypescript from '@joshwooding/vite-plugin-react-docgen-typescript';
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
@@ -26,6 +25,5 @@ export default defineConfig({
     visualizer({
       filename: 'dist/stats.html',
     }),
-    reactDocgenTypescript(),
   ],
 });
