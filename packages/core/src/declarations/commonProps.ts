@@ -125,6 +125,8 @@ export type SelectedState = 'selected';
 
 export type ExpandedState = 'expanded';
 
+export type FeaturedState = 'featured';
+
 export type ReadonlyState = 'readonly';
 
 /** ---------------------------------------------
