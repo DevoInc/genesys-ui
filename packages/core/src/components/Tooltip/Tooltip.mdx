@@ -1,14 +1,22 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Tooltip.stories';
 
 <Meta of={Stories} />
 
-# Tooltip
+<Heading.H1>Tooltip</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-## How to import
+The Tooltip component is used to provide additional information
+or context to users when they interact with an element.
+When the user hovers over, focuses on, or touches the element,
+a small popup containing text appears.
+This text can be used to provide helpful hints, explain functionality,
+or give additional details about the element.
+
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -16,10 +24,10 @@ import { Tooltip } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

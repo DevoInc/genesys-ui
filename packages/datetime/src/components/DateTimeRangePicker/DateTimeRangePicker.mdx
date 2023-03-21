@@ -1,15 +1,16 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './DateTimeRangePicker.stories';
 
 <Meta of={Stories} />
 
-# DateTimeRangePicker
+<Heading.H1>DateTimeRangePicker</Heading.H1>
 
-The DateTimeRangePicker is an extension of the DateTimeRange component. 
-It renders a date type input which shows the aforementioned DateTimeRange component when clicked, allowing users to select a date and time range in several ways. 
+The DateTimeRangePicker is an extension of the DateTimeRange component.
+It renders a date type input which shows the aforementioned DateTimeRange component when clicked, allowing users to select a date and time range in several ways.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -17,10 +18,10 @@ import { DateTimeRangePicker } from '@devo/genesys-ui-datetime';
 `}
 />
 
-## Basic Usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

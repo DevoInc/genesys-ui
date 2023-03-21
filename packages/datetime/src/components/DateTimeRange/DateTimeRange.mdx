@@ -1,15 +1,16 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './DateTimeRange.stories';
 
 <Meta of={Stories} />
 
-# DateTimeRange
+<Heading.H1>DateTimeRange</Heading.H1>
 
-Component used to allow users to select date and time ranges. 
-It is a composition of two DateTime components placed side by side. 
+Component used to allow users to select date and time ranges.
+It is a composition of two DateTime components placed side by side.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -17,10 +18,10 @@ import { DateTimeRange } from '@devo/genesys-ui-datetime';
 `}
 />
 
-## Basic Usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

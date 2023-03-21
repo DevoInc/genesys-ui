@@ -1,14 +1,14 @@
 # Genesys UI
 
-> **Warning**
-> This is an `alpha` version and it is not yet production ready.
-
 ![license](https://img.shields.io/github/license/devoinc/genesys-ui)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/devoinc/genesys-ui/ci.yml)
 
 Monorepo containing the codebase for the Genesys UI components library.
 
-👉 [Storybook]()
+
+> **Warning**
+> This is an `alpha` version and it is not yet production ready.
+
 
 The project is built using `npm workspaces` and includes the following packages:
 
@@ -29,6 +29,11 @@ The packages have the following interdependencies:
 │ ├── @devoinc/genesys-ui
 ├─┬ @devoinc/genesys-ui
 ```
+
+## Preview
+
+The available components can be previewed in the [Genesys UI Storybook](https://devoinc.github.io/genesys-ui/).
+The Storybook includes a live preview of the components, as well as their documentation and code examples.
 
 ## Quick start
 

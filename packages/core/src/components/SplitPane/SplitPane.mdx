@@ -1,18 +1,21 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './SplitPane.stories';
 import * as CaseStories from './SplitPane.cases.stories';
 
 <Meta of={Stories} />
 
-# SplitPane
+<Heading.H1>SplitPane</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-`SplitPane` component allow divide the screen in different panes.
-It can be nested or split vertically or horizontally.
+The SplitPane component is a layout element that enables the division of the screen into multiple panes.
+With SplitPane, you can easily create a split view layout, allowing users to view multiple pieces of content simultaneously.
 
-## How to import
+It can also be nested, allowing for the creation of more complex layouts, and split vertically or horizontally, depending on the needs of the user interface.
+
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -20,16 +23,16 @@ import { SplitPane } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## Cases
+<Heading.H2>Cases</Heading.H2>
 
-## Nested
+### [Nested](#nested)
 
 <Canvas of={CaseStories.Nested} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

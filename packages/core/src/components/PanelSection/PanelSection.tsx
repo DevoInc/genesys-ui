@@ -5,9 +5,9 @@ import {
   PanelActions,
   PanelHelpTooltip,
   PanelHelpUrl,
-} from '../../declarations';
+} from '../Panel/declarations';
 
-import { IconButton, Box, Divider, FlexItem, Panel } from '../../../';
+import { IconButton, Box, Divider, FlexItem, Panel } from '..';
 
 import { StyledPanelSection } from './StyledPanelSection';
 

@@ -1,4 +1,5 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../../.storybook/docs/blocks';
 
 import * as Stories from '../Toolbar.stories';
 import * as GroupStories from './ToolbarGroup/ToolbarGroup.stories';
@@ -10,9 +11,9 @@ import * as SeparatorStories from './ToolbarSeparator/ToolbarSeparator.stories';
   of={GroupStories}
 />
 
-# Subcomponents
+<Heading.H1>Subcomponents</Heading.H1>
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -20,11 +21,11 @@ import { Toolbar } from '@devoinc/genesys-ui';
 `}
 />
 
-## Toolbar.Group
+<Heading.H2>Toolbar.Group</Heading.H2>
 
-Split the toolbar component in different sections.
+The `Toolbar.Group` component is used to split the toolbar component in different sections.
 
-### How to use
+<Heading.H3>How to use</Heading.H3>
 
 <Source
   code={`
@@ -39,19 +40,19 @@ Split the toolbar component in different sections.
 `}
 />
 
-### Basic usage
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={GroupStories.Group} />
 
-### API
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={GroupStories} />
 
-## Toolbar.Item
+<Heading.H2>Toolbar.Item</Heading.H2>
 
-A `Toolbar.Item` is an element into a `Toolbar.Group`
+The `Toolbar.Item` component is used to create items to be used inside a `Toolbar.Group`.
 
-### How to use
+<Heading.H3>How to use</Heading.H3>
 
 <Source
   code={`
@@ -64,19 +65,19 @@ A `Toolbar.Item` is an element into a `Toolbar.Group`
 `}
 />
 
-### Basic usage
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={ItemStories.Item} />
 
-### API
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={ItemStories} />
 
-## Toolbar.Separator
+<Heading.H2>Toolbar.Separator</Heading.H2>
 
-Creates a mark indicating a separation.
+The `Toolbar.Separator` component is used to create a separator mark between items.
 
-### How to use
+<Heading.H3>How to use</Heading.H3>
 
 <Source
   code={`
@@ -88,6 +89,6 @@ Creates a mark indicating a separation.
 `}
 />
 
-### Basic usage
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={SeparatorStories.Separator} />

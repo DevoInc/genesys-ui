@@ -1,14 +1,21 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Row.stories';
 
 <Meta of={Stories} />
 
-# Row
+<Heading.H1>Row</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-## How to import
+Layout component used for creating responsive grid layouts. It has a similar purpose
+to the Col component, but is used for defining rows in the grid layout.
+
+By using the Row component along with other components such as Col and Container,
+one can easily create flexible and responsive layouts that adapt to different screen sizes and device types.
+
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -16,10 +23,15 @@ import { Row } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
+
+## [Related components](#related-components)
+
+- [Container](?path=/docs/components-core-layout-fluid-container--docs)
+- [Col](?path=/docs/components-core-layout-fluid-col--docs)

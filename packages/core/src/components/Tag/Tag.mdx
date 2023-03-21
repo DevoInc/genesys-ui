@@ -1,16 +1,18 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Tag.stories';
 
 <Meta of={Stories} />
 
-# Tag
+<Heading.H1>Tag</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-Use tags to label, categorize, or organize items using keywords that describe them.
+The Tag component is a small, visual element used to label, categorize, or organize items using keywords that describe them.
+Tags are typically displayed as text within a colored background and can be interactive or static.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -18,10 +20,10 @@ import { Tag } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

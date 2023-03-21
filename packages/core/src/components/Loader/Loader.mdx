@@ -1,32 +1,21 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Loader.stories';
 
 <Meta of={Stories} />
 
-# Loader
+<Heading.H1>Loader</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-The **Loader** component informs about a waiting time capturing the user’s
-attention while pausing their interaction with the app.
+The Loader component serves to notify the user of a waiting period, temporarily halting their interaction with the application.
+The Loader is comprised of several elements, including an Overlay which fills a designated area, and a visually engaging component that captures the user's attention.
+This can take the form of an animated logo, spinner, or progress bar (determined by the prop type).
 
-The Loader is composed by the following elements:
+There are established usage patterns for the Loader, which fall into two categories: global loading and contextual loading.
 
-- **Overlay**: it is a background (opaque or not) which fills a specific area.
-- Element that captures the user’s attention. This can be: **animated logo**,
-  **spinner** or **progress bar** (managed with the prop type).
-
-Loader usage patterns have been established that can be grouped into:
-**global loading** and **contextual loading**.
-
-- **GlobalLoader**: case always display a fixed dark overlay that takes up the
-  whole page and animated logo as loading type. In the case of reseller, the logo
-  must be replaced by the spinner. See [case](/?path=/story/public-feedback-loader-cases--global-loader).
-- **ContextualLoader**: case is based on a light overlay relative to some
-  container and spinner or progress loading types. See [case](/?path=/story/public-feedback-loader-cases--contextual-loader).
-
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -34,10 +23,16 @@ import { Loader } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
+
+<Heading.H2>Related components</Heading.H2>
+
+- [GlobalLoader](?path=/story/components-core-feedback-loader-globalloader--docs)
+- [ContextualLoader](?path=/docs/components-core-feedback-loader-contextualloader--docs)
+- [ContextualScrollLoader](?path=/docs/components-core-feedback-loader-contextualscrollloader--docs)

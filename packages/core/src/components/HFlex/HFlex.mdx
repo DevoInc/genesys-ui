@@ -1,4 +1,5 @@
 import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './HFlex.stories';
 import spacingProps from '../../../stories/partials/spacingProps.md?raw';
@@ -6,14 +7,14 @@ import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 <Meta of={Stories} />
 
-# HFlex
+<Heading.H1>HFlex</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
 Use `HFlex` to create a stacked group of children components distributed
-in a single row. You can separate each child horizontally with the prop `spacing`.
+in a single row. Each children can be separated horizontally using the prop `spacing`.
 
-# How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -21,42 +22,49 @@ import { HFlex } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## Cases
+<Heading.H2>Cases</Heading.H2>
 
-### as
+### [childrenFitFullWidth](#childrenfitfullwidth)
 
-Likewise, its `as` property allow this component to be rendered as any HTML tag:
-'div', 'li', 'section'... etc.
-
-<Source
-  code={`
-import * as React from 'react';
-import { HFlex, FlexItem } from '@devoinc/genesys-ui';
-
-const MyFlexCmp = () => (
-
-<HFlex as={'ul'} spacing={'cmp-lg'}>
-  <FlexItem as={'li'}>Child 1</FlexItem>
-  <FlexItem as={'li'}>Child 2</FlexItem>
-  <FlexItem as={'li'}>Child 3</FlexItem>
-</HFlex>
-); `} />
-
-### childrenFitFullWidth
+<Heading.H3>childrenFitFullWidth</Heading.H3>
 
 You can use prop `childrenFitFullWidth` to get the same width for each child and
 make them to fit the full width of the `HFlex` parent component:
 
+### [Using the as property](#using-the-as-property)
+
+The `as` property allow these components to be rendered as any HTML tag:
+'div', 'li', 'section'... etc.
+
+If you want to use the `Flex` component rendered with a different HTML tag, you can use the `as` property.
+It allows these components to be rendered as any HTML tag, such as div, li, section, and so on.
+
+<Source
+  code={`
+import * as React from 'react';
+import { Flex, FlexItem } from '@devoinc/genesys-ui';
+
+const MyFlexCmp = () => (
+
+{' '}
+
+<Flex as={'ul'}>
+  <FlexItem as={'li'}>Child 1</FlexItem>
+  <FlexItem as={'li'}>Child 2</FlexItem>
+  <FlexItem as={'li'}>Child 3</FlexItem>
+</Flex>
+); `} />
+
 <Markdown>{spacingProps}</Markdown>
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 
-## Related components
+<Heading.H2>Related components</Heading.H2>
 
 - [FlexItem](?path=/docs/components-core-layout-flex-flexitem--docs)

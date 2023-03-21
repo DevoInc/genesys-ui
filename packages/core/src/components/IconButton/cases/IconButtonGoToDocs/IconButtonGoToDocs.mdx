@@ -1,17 +1,18 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../../../.storybook/docs/blocks';
 
 import * as Stories from './IconButtonGoToDocs.stories';
 
 <Meta of={Stories} />
 
-# IconButtonGoToDocs
+<Heading.H1>IconButtonGoToDocs</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-This is an IconButton which is used to link with any of our Documentation Pages.
-It's an `<a>` HTML tag with `target` to `_blank` by default.
+The IconButtonGoToDocs is a special type of IconButton used to link to any of our documentation pages.
+It renders as an HTML `<a>` tag by default with its target attribute set to \_blank to open the link in a new tab.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -19,10 +20,10 @@ import { IconButtonClose } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

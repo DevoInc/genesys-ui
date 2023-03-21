@@ -1,4 +1,5 @@
 import { Meta, Canvas, Source, Markdown, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Box.stories';
 import * as CaseStories from './Box.cases.stories';
@@ -7,16 +8,14 @@ import spacingProps from '../../../stories/partials/spacingProps.md?raw';
 
 <Meta of={Stories} />
 
-# Box
+<Heading.H1>Box</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-Use `Box` component to wrap a functional component and apply
-layout styles to it: margin, position, padding, overflow... etc.
-Definitely it provides a shorthand way to pass layout styles via props to
-another component.
+Box is a layout component designed to simplify the application of layout styles such as margin, position, padding, and overflow to a functional component.
+By wrapping another component with the Box component, you can easily pass layout styles via props, providing a shorthand approach to styling.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -24,13 +23,13 @@ import { Box } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## Cases
+<Heading.H2>Cases</Heading.H2>
 
-### as
+<Heading.H3>as</Heading.H3>
 
 Likewise, its `as` property allow this component to be rendered as any HTML tag:
 'div', 'li', 'section'... etc.
@@ -57,6 +56,6 @@ and 'overflow' to auto:
 
 <Markdown>{spacingProps}</Markdown>
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

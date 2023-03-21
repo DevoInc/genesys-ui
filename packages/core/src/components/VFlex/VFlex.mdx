@@ -1,4 +1,5 @@
 import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './VFlex.stories';
 import spacingProps from '../../../stories/partials/spacingProps.md?raw';
@@ -6,14 +7,14 @@ import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 <Meta of={Stories} />
 
-# VFlex
+<Heading.H1>VFlex</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
 Use `VFlex` to create a stacked group of children components distributed
-in a single column. You can separate each child vertically with the prop `spacing`.
+in a single column. Each children can be separated horizontally using the prop `spacing`.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -21,37 +22,42 @@ import { VFlex } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## Cases
+<Heading.H2>Cases</Heading.H2>
 
-### as
+<Heading.H3>Using the as property</Heading.H3>
 
-Likewise, its `as` property allow this component to be rendered as any HTML tag:
+The `as` property allow these components to be rendered as any HTML tag:
 'div', 'li', 'section'... etc.
+
+If you want to use the `Flex` component rendered with a different HTML tag, you can use the `as` property.
+It allows these components to be rendered as any HTML tag, such as div, li, section, and so on.
 
 <Source
   code={`
 import * as React from 'react';
-import { VFlex, FlexItem } from '@devoinc/genesys-ui';
+import { Flex, FlexItem } from '@devoinc/genesys-ui';
 
 const MyFlexCmp = () => (
 
-<VFlex as={'ul'} spacing={'cmp-lg'}>
+{' '}
+
+<Flex as={'ul'}>
   <FlexItem as={'li'}>Child 1</FlexItem>
   <FlexItem as={'li'}>Child 2</FlexItem>
   <FlexItem as={'li'}>Child 3</FlexItem>
-</VFlex>
-); ); `} />
+</Flex>
+); `} />
 
 <Markdown>{spacingProps}</Markdown>
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 
-## Related components
+<Heading.H2>Related components</Heading.H2>
 
 - [FlexItem](?path=/docs/components-core-layout-flex-flexitem--docs)

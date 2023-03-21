@@ -1,14 +1,27 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Toast.stories';
 
 <Meta of={Stories} />
 
-# Toast
+<Heading.H1>Toast</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-## How to import
+The Toast component is a wrapper around the [react-toastify](https://fkhadra.github.io/react-toastify/introduction/) library's
+emitter that provides additional custom props to configure its styles and content.
+It is used to display non-intrusive, temporary messages to the user, such as notifications, success messages, or errors.
+
+**Important:**
+
+It is important to note that the ToastContainer component must
+be rendered only once in the application tree to properly display the toasts.
+If it is unclear where to place it,
+rendering it at the application root is recommended.
+For more information on installation and usage, refer to the [react-toastify documentation](https://fkhadra.github.io/react-toastify/installation#the-gist).
+
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -16,21 +29,10 @@ import { Toast } from '@devoinc/genesys-ui';
 `}
 />
 
-**IMPORTANT!**
-
-Remember to render the `ToastContainer` once in your application tree. If you
-can't figure out where to put it, rendering it in the application root would be
-the best bet.
-[https://fkhadra.github.io/react-toastify/installation#the-gist](https://fkhadra.github.io/react-toastify/installation#the-gist)
-
-`toast` is a wrapper around react-toastify emitter with some custom props to
-improve styles and configure the content
-[https://fkhadra.github.io/react-toastify/introduction/](https://fkhadra.github.io/react-toastify/introduction/)
-
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

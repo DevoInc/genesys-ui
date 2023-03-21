@@ -1,14 +1,20 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Container.stories';
 
 <Meta of={Stories} />
 
-# Container
+<Heading.H1>Container</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-## How to import
+Layout component which provides a layout container with styling capabilities that can be used to arrange child components in a specific way.
+
+By using the Container component along with other components such as Col and Row,
+one can easily create flexible and responsive layouts that adapt to different screen sizes and device types.
+
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -16,10 +22,15 @@ import { Fluid } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
+
+## [Related components](#related-components)
+
+- [Row](?path=/docs/components-core-layout-fluid-row--docs)
+- [Col](?path=/docs/components-core-layout-fluid-col--docs)

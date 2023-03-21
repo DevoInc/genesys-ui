@@ -1,14 +1,19 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Partitions.stories';
 
 <Meta of={Stories} />
 
-# Partitions
+<Heading.H1>Partitions</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-## How to import
+The Partitions component is used to render a set of partitions with varying sizes and colors.
+Each partition can be assigned a tooltip that is displayed when the user hovers over it,
+providing additional information or context.
+
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -16,10 +21,10 @@ import { Partitions } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

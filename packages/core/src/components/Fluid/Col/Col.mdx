@@ -1,14 +1,21 @@
 import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+import { Heading } from '../../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Col.stories';
 
 <Meta of={Stories} />
 
-# Col
+<Heading.H1>Col</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-## How to import
+Layout component that represents a column in a grid system.
+It takes a number of props that can be used to customize its behavior and appearance.
+
+By using the Col component along with other components such as Row and Container,
+one can easily create flexible and responsive layouts that adapt to different screen sizes and device types.
+
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -16,10 +23,15 @@ import { Col } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
+
+## [Related components](#related-components)
+
+- [Container](?path=/docs/components-core-layout-fluid-container--docs)
+- [Row](?path=/docs/components-core-layout-fluid-row--docs)

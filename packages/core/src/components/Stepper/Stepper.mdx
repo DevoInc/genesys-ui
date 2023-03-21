@@ -1,18 +1,19 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Stepper.stories';
 import * as CaseStories from './Stepper.cases.stories';
 
 <Meta of={Stories} />
 
-# Stepper
+<Heading.H1>Stepper</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
 The purpose of the Stepper component is to provide a visual representation of a multi-step process.
 The component can display the status of each step, indicating whether it is completed, in progress, or disabled, and allows the user to navigate between steps using buttons.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -20,19 +21,19 @@ import { Stepper } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## Cases
+<Heading.H2>Cases</Heading.H2>
 
-### Navigation between steps
+<Heading.H3>Navigation between steps</Heading.H3>
 
-More complex usage of the Stepper component, where the state of the steps is managed by the parent component. 
+More complex usage of the Stepper component, where the state of the steps is managed by the parent component.
 It demonstrates how to handle navigation between steps.
 
 <Canvas of={CaseStories.WithNavigation} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

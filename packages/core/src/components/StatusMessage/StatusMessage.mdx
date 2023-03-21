@@ -1,16 +1,18 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './StatusMessage.stories';
 
 <Meta of={Stories} />
 
-# StatusMessage
+<Heading.H1>StatusMessage</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-It's used to give feedback to the user when there is a status context as error, empty, warning... etc. in an area or block.
+The StatusMessage component is used to provide feedback to the user in a status context, such as error, empty, warning, etc.
+It is typically used within an area or block to communicate the state or outcome of a particular action or process.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -18,10 +20,10 @@ import { StatusMessage } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

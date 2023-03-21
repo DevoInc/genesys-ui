@@ -65,10 +65,10 @@ const InternalTabs: React.FC<TabsProps> = ({
   );
 };
 
-export const Tabs: typeof InternalTabs & {
-  Aside?: typeof TabsAside;
-  Item?: typeof TabsItem;
-} = InternalTabs;
+export const Tabs = InternalTabs as typeof InternalTabs & {
+  Aside: typeof TabsAside;
+  Item: typeof TabsItem;
+};
 
 Tabs.Item = TabsItem;
 Tabs.Aside = TabsAside;

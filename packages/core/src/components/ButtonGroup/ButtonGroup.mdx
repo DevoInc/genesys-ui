@@ -1,15 +1,18 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 import * as Stories from './ButtonGroup.stories';
 
 <Meta of={Stories} />
 
-# ButtonGroup
+<Heading.H1>ButtonGroup</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-The ButtonGroup component is useful for assembling associated buttons.
+The ButtonGroup component is designed to group together related buttons.
+It provides a convenient way to organize buttons that are used together,
+such as a set of actions that are all related to a specific feature or task.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -17,10 +20,10 @@ import { ButtonGroup } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

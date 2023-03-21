@@ -1,19 +1,19 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './CheckboxControl.stories';
 import * as CaseStories from './CheckboxControl.cases.stories';
 
 <Meta of={Stories} />
 
-# CheckboxControl
+<Heading.H1>CheckboxControl</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-Input elements of type checkbox are rendered by default as boxes that are
-checked (ticked) when activated. A checkbox allows you to select single
-values for submission in a form (or not).
+Form element that allows users to make a binary choice, i.e. a choice between one of two possible mutually exclusive options.
+By default, when a checkbox is selected, it displays a checkmark or a tick inside a square or a circle, indicating that the option has been chosen.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -21,24 +21,28 @@ import { CheckboxControl } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## Cases
+<Heading.H2>Cases</Heading.H2>
 
-### Uncontrolled
+<Heading.H3>Uncontrolled</Heading.H3>
 
 <Canvas of={CaseStories.Uncontrolled} />
 
-### Controlled
+<Heading.H3>Controlled</Heading.H3>
 
 <Canvas of={CaseStories.Controlled} />
 
-### Indeterminate
+<Heading.H3>Indeterminate</Heading.H3>
 
 <Canvas of={CaseStories.Indeterminate} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
+
+## Related components
+
+- [Checkbox](?path=/docs/components-form-checkbox--docs)

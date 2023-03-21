@@ -1,17 +1,21 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../../../.storybook/docs/blocks';
 
 import * as Stories from './IconButtonRemove.stories';
 
 <Meta of={Stories} />
 
-# IconButtonRemove
+<Heading.H1>IconButtonRemove</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-This is an IconButton which is used to remove a block of content, but which is
-included in the regular flow of the DOM. E.g. Banners, Filter Chips... etc.
+The IconButtonRemove is a special type of IconButton used to
+remove a block of content that is included in the regular flow of the DOM, such as banners, filter chips, and other similar components.
+It provides an easy way for users to remove the content with a single click.
+The IconButtonRemove is rendered as an icon button with cross icon,
+and it typically appears next to or within the content it is associated with.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -19,10 +23,10 @@ import { IconButtonRemove } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

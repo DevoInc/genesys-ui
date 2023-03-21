@@ -1,5 +1,6 @@
 {
   "plugins": {
+    "@release-it-plugins/workspaces": true,
     "@release-it/conventional-changelog": {
       "preset": "conventionalcommits",
       "infile": "CHANGELOG.md",
@@ -9,12 +10,5 @@
   "github": {
     "release": true
   },
-  "git": {
-    "tagName": "v${version}",
-    "tagAnnotation": "Release v${version}",
-    "commitMessage": "Release: v${version}"
-  },
-  "npm": {
-    "allowSameVersion": true
-  }
+  "npm": false
 }

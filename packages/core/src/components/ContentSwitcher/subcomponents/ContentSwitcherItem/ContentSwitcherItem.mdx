@@ -1,17 +1,18 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../../../.storybook/docs/blocks';
 
 import * as Stories from './ContentSwitcherItem.stories';
 import * as CaseStories from './ContentSwitcherItem.cases.stories';
 
 <Meta of={Stories} />
 
-# ContentSwitcher.Item
+<Heading.H1>ContentSwitcher.Item</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
 Content entry to be switched. This component is a child of `ContentSwitcher`.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -19,20 +20,20 @@ import { ContentSwitcherItem } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic Usage
+<Heading.H2>Basic usage</Heading.H2>
 
 Example of an uncontrolled `ContentSwitcher.Item` .
 
 <Canvas of={Stories.Base} />
 
-## Cases
+<Heading.H2>Cases</Heading.H2>
 
-### Controlled
+<Heading.H3>Controlled</Heading.H3>
 
 Example of a controlled `ContentSwitcher.Item` .
 
 <Canvas of={CaseStories.Controlled} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

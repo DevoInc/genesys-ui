@@ -1,17 +1,19 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Chip.stories';
 import * as CaseStories from './Chip.cases.stories';
 
 <Meta of={Stories} />
 
-# Chip
+<Heading.H1>Chip</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-Chips are small units that can stand for an input, a characteristic, or an activity. They enable users to input data, choose options, sift through content, or activate certain functions.
+Chips are small, versatile components that can represent various types of input, characteristics, or activities.
+They enable users to enter data, select options, filter content, or trigger specific functions within an application.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -19,50 +21,45 @@ import { Chip } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## Cases
+<Heading.H2>Cases</Heading.H2>
 
-### Multiple selection controlled
+<Heading.H3>Multiple selection controlled</Heading.H3>
 
-When multiple selection is used (form checkbox behavior) you will get a controlled
-Chip with rendered form checkbox input as HTML and its keyboard utility.
+In scenarios where multiple selections are allowed (using a form checkbox behavior), you can use a controlled Chip with a rendered form checkbox input as HTML and its corresponding keyboard utility.
 
 <Canvas of={CaseStories.MultipleControlled} />
 
-### Multiple selection uncontrolled
+<Heading.H3>Multiple selection uncontrolled</Heading.H3>
 
-If you need an uncontrolled behavior then you can't use onChange so you can get the
-native behavior of a checkbox. This way you will get an uncontrolled
-Chip with rendered form checkbox input as HTML and its keyboard utility.
-With uncontrolled way you can't manage the change of the icon depending on
-the internal checkbox is checked or not.
+If you need an uncontrolled behavior, you cannot use the onChange event handler and must use the native behavior of a checkbox.
+This way you will get an uncontrolled Chip with rendered form checkbox input as HTML and its corresponding keyboard utility.
+However, with an uncontrolled behavior, you cannot manage the change of the icon depending on whether the internal checkbox is checked or not.
 
 <Canvas of={CaseStories.MultipleUncontrolled} />
 
-### Single selection controlled
+<Heading.H3>Single selection controlled</Heading.H3>
 
-When a single selection is needed (form radio behavior), then you have to
-add the `selectionScheme` prop to 'single'. This way you will get a controlled
-ChoiceGroup with rendered form radio input as HTML and its keyboard utility.
+When a single selection is required (using a form radio behavior), you must add the selectionScheme prop and set it to 'single'.
+This way, you will get a controlled Chip with rendered form radio input as HTML and its corresponding keyboard utility.
 
 <Canvas of={CaseStories.SingleControlled} />
 
-### Single selection uncontrolled
+<Heading.H3>Single selection uncontrolled</Heading.H3>
 
-If you need an uncontrolled behavior, then you have to assign the prop `name`
-with the same value to every Chip. You can't use onChange so you can get the
-native behavior of a radio group. This way you will get an uncontrolled
-Chip with rendered form radio input as HTML and its keyboard utility.
+If you need an uncontrolled behavior, you must assign the name prop with the same value for every Chip.
+You cannot use the onChange event handler and must use the native behavior of a radio group.
+This way you will get an uncontrolled Chip with rendered form radio input as HTML and its corresponding keyboard utility.
 
 <Canvas of={CaseStories.SingleUncontrolled} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 
-## Related components
+<Heading.H2>Related components</Heading.H2>
 
 - [ChipGroup](?path=/story/components-core-form-chipgroup--base)

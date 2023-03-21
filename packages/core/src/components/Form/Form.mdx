@@ -1,17 +1,22 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Form.stories';
 import * as CaseStories from './Form.cases.stories';
 
 <Meta of={Stories} />
 
-# Form
+<Heading.H1>Form</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-Component to create an HTML form and distribute the form groups and fields inside it.
+Component that creates an HTML form and manages the distribution of form groups and fields within it.
+It can be used to simplify the process of creating forms in your application, by allowing you to easily organize and manage form controls.
 
-## How to import
+The Form component includes subcomponents that can be used to further customize your forms, including Buttons, Group, Legend and Item.
+These subcomponents can be accessed through the Form component and allow you to add additional functionality and styling to your forms.
+
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -19,13 +24,13 @@ import { Form } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## Cases
+<Heading.H2>Cases</Heading.H2>
 
-### Multiple forms
+<Heading.H3>Multiple forms</Heading.H3>
 
 <Canvas of={CaseStories.MultipleForms} />
 
@@ -34,7 +39,8 @@ import { Form } from '@devoinc/genesys-ui';
 - [Buttons](?path=/story/components-core-form-form-subcomponents--docs#buttons)
 - [Group](?path=/story/components-core-form-form-subcomponents--docs#group)
 - [Item](?path=/story/components-core-form-form-subcomponents--docs#item)
+- [Legend](?path=/story/components-core-form-form-subcomponents--docs#legend)
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

@@ -1,17 +1,18 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './DateTime.stories';
 
 <Meta of={Stories} />
 
-# DateTime
+<Heading.H1>DateTime</Heading.H1>
 
-Component used to select dates and times. 
+Component used to select dates and times.
 It allows the user to choose a date and time using a graphical interface and returns a Unix timestamp in milliseconds for the selected date and time.
 The component provides various options and customizations, such as enabling or disabling time selection,
 enabling or disabling seconds and milliseconds, customizing the week day labels, setting minimum and maximum selectable dates, and disabling specific dates.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -19,10 +20,10 @@ import { DateTime } from '@devo/genesys-ui-datetime';
 `}
 />
 
-## Basic Usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

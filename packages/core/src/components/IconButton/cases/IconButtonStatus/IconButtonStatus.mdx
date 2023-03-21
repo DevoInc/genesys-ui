@@ -1,17 +1,18 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../../../.storybook/docs/blocks';
 
 import * as Stories from './IconButtonStatus.stories';
 
 <Meta of={Stories} />
 
-# IconButtonStatus
+<Heading.H1>IconButtonStatus</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-This is an IconButton which is used to trigger info popper blocks, usually in
-help contexts to expand information about a functionality.
+The IconButtonButtonStatus is a special type of IconButton used to trigger information pop-up blocks,
+typically in help contexts, to expand information about a functionality.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -19,10 +20,10 @@ import { IconButtonClose } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

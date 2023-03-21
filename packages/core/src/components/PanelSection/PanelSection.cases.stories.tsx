@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { PanelSection, Button } from '../../../';
-import { TextBlock } from '../../__stories__/helpers';
+import { PanelSection, Button } from '..';
+import { TextBlock } from '../Panel/__stories__/helpers';
 
 const meta: Meta<typeof PanelSection> = {
-  title: 'Components/Core/Layout/Panel/PanelSection',
+  title: 'Components/Core/Layout/PanelSection/Cases',
   component: PanelSection,
   args: {
     backwardTooltip: 'Back',
@@ -17,12 +17,6 @@ const meta: Meta<typeof PanelSection> = {
 
 export default meta;
 type Story = StoryObj<typeof PanelSection>;
-
-export const Base: Story = {
-  args: {
-    children: TextBlock,
-  },
-};
 
 export const WithScroll: Story = {
   args: {

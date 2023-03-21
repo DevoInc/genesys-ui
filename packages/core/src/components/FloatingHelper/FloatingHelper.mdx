@@ -1,16 +1,17 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './FloatingHelper.stories';
 
 <Meta of={Stories} />
 
-# FloatingHelper
+<Heading.H1>FloatingHelper</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
 Component that provides a floating message to assist the user with a particular task or input.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -18,14 +19,14 @@ import { FloatingHelper } from '@devoinc/genesys-ui';
 `}
 />
 
-## Default
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 
-## Related components
+<Heading.H2>Related components</Heading.H2>
 
 - [Helper](?path=/docs/components-core-feedback-helper--docs)

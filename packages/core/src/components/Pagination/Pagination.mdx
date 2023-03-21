@@ -1,16 +1,17 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Pagination.stories';
 
 <Meta of={Stories} />
 
-# Pagination
+<Heading.H1>Pagination</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
 Component that provides a set of controls to navigate through a large set of data that is divided into pages.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -18,14 +19,14 @@ import { Pagination } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## Hooks
+<Heading.H2>Hooks</Heading.H2>
 
 - [usePagination](?path=/docs/components-core-navigation-pagination-hooks--docs)
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

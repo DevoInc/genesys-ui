@@ -1,16 +1,22 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Checkbox.stories';
 
 <Meta of={Stories} />
 
-# Checkbox
+<Heading.H1>Checkbox</Heading.H1>
 
-Input elements of type checkbox are rendered by default as boxes that are
-checked (ticked) when activated. A checkbox allows you to select single
-values for submission in a form (or not).
+Form element that allows users to make a binary choice, i.e.
+a choice between one of two possible mutually exclusive options. It provides a range of customization
+options to control the appearance and behavior of the switch,
+as well as additional props for accessibility and guidance.
 
-## How to import
+Checkbox is a wrapper over the [CheckboxControl](?path=/docs/components-core-form-checkboxcontrol--docs)
+component, and uses the [Field](?path=/docs/components-core-form-field--docs)
+component to provide additional functionality such as labelling, helper error messages, and validation.
+
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -18,10 +24,14 @@ import { Checkbox } from '@devo/genesys-ui-form';
 `}
 />
 
-## Basic Usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
+
+## Related components
+
+- [Checkbox](?path=/docs/components-core-form-checkboxcontrol--docs)

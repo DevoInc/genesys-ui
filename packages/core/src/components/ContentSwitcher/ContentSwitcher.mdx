@@ -1,17 +1,18 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './ContentSwitcher.stories';
 import * as CaseStories from './ContentSwitcher.cases.stories';
 
 <Meta of={Stories} />
 
-# ContentSwitcher
+<Heading.H1>ContentSwitcher</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
 Component that allows users to switch between different content sections within a single UI element, typically within a navigation context.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -19,13 +20,13 @@ import { ContentSwitcher } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
-<Canvas of={Stories.Basic} />
+<Canvas of={Stories.Base} />
 
-## Cases
+<Heading.H2>Cases</Heading.H2>
 
-### Accessible example with content
+<Heading.H3>Accessible example with content</Heading.H3>
 
 To ensure full accessibility of the component, we need to consider multiple aspects. These include:
 
@@ -36,13 +37,14 @@ To ensure full accessibility of the component, we need to consider multiple aspe
 
 <Canvas of={CaseStories.AccesibleWithContent} />
 
-## Subcomponents
+<Heading.H2>Subcomponents</Heading.H2>
+
 - [Item](?path=/docs/components-core-navigation-contentswitcher-subcomponents--docs)
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 
-## Related components
+<Heading.H2>Related components</Heading.H2>
 
 - [Tabs](?path=/docs/components-core-navigation-tabs--docs)

@@ -94,10 +94,10 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
   );
 };
 
-export const InlineMessage: typeof PartInlineMessage & {
-  Banner?: typeof InlineMessageBanner;
-  Panel?: typeof InlineMessagePanel;
-} = PartInlineMessage;
+export const InlineMessage = PartInlineMessage as typeof PartInlineMessage & {
+  Banner: typeof InlineMessageBanner;
+  Panel: typeof InlineMessagePanel;
+};
 
 InlineMessage.Banner = InlineMessageBanner;
 InlineMessage.Panel = InlineMessagePanel;

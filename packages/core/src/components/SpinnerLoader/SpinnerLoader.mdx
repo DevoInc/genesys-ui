@@ -1,20 +1,21 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './SpinnerLoader.stories';
 
 <Meta of={Stories} />
 
-# SpinnerLoader
+<Heading.H1>SpinnerLoader</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-The **SpinnerLoader** component is a loading type element that shows to the user
-that a time should be waited while an underlying action is being processed.
+The SpinnerLoader component is used to indicate to the user
+that a process or action is being processed and they should wait for it to complete.
+It is often used as a loading indicator within other components such as buttons,
+icon buttons, or overlays. The SpinnerLoader typically consists of a circular
+animation that rotates indefinitely until the underlying action is complete.
 
-This element is always used within a component, such as: Buttons, IconButtons or
-Overlays.
-
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -22,10 +23,10 @@ import { SpinnerLoader } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

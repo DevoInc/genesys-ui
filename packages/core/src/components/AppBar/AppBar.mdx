@@ -1,17 +1,18 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './AppBar.stories';
 import * as CaseStories from './AppBar.cases.stories';
 
 <Meta of={Stories} />
 
-# AppBar
+<Heading.H1>AppBar</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-Component used for creating a navigation bar. It can be customized to fit various use cases. 
+Component used for creating a navigation bar. It can be customized to fit various use cases.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -19,15 +20,16 @@ import { AppBar } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## Cases
-### Custom content
+<Heading.H2>Cases</Heading.H2>
+
+<Heading.H3>Custom content</Heading.H3>
 
 <Canvas of={CaseStories.CustomContent} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

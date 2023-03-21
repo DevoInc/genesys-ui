@@ -1,17 +1,18 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './CheckboxGroup.stories';
 
 <Meta of={Stories} />
 
-# CheckboxGroup
+<Heading.H1>CheckboxGroup</Heading.H1>
 
 Component used to render a group of checkboxes with customizable properties.
 The component takes in a set of child Checkbox components as its children prop,
 and allows for additional customization through props like direction (which determines whether the checkboxes are arranged vertically or horizontally),
 legend (which provides a label for the group of checkboxes), or status.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -19,10 +20,10 @@ import { CheckboxGroup } from '@devo/genesys-ui-form';
 `}
 />
 
-## Basic Usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

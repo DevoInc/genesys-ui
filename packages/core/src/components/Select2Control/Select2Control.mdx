@@ -1,18 +1,20 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Select2Control.stories';
 import * as CaseStories from './Select2Control.cases.stories';
 
 <Meta of={Stories} />
 
-# Select2Control
+<Heading.H1>Select2Control</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-Select components are employed to gather information provided by the user from a selection of options.
-This component use [react-select](https://react-select.com/home) library.
+The Select component provides a way for users to select an option from a dropdown list.
+It allows users to choose from a set of predefined options, which can be customized to suit the needs of the application.
+The Select component is implemented using the [react-select](https://react-select.com/home) library, which provides a flexible and powerful API for creating customized dropdown menus.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -20,36 +22,40 @@ import { Select2Control } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## Cases
+<Heading.H2>Cases</Heading.H2>
 
-### Single with option groups
+<Heading.H3>Single with option groups</Heading.H3>
 
 <Canvas of={Stories.SingleWithOptionsGroups} />
 
-### Multiple basic
+<Heading.H3>Multiple basic</Heading.H3>
 
 <Canvas of={CaseStories.MultipleBasic} />
 
-### Multiple sortable
+<Heading.H3>Multiple sortable</Heading.H3>
 
 <Canvas of={CaseStories.MultipleSortable} />
 
-### Multiple creatable (custom new options)
+<Heading.H3>Multiple creatable (custom new options)</Heading.H3>
 
 <Canvas of={CaseStories.MultipleCreatable} />
 
-### Multiple 'Select all' mode
+<Heading.H3>Multiple 'Select all' mode</Heading.H3>
 
 <Canvas of={CaseStories.MultipleSelectAll} />
 
-### Multiple fixed options and sortable
+<Heading.H3>Multiple fixed options and sortable</Heading.H3>
 
 <Canvas of={CaseStories.MultipleFixedOptions} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
+
+## Related components
+
+- [Select2](?path=/docs/components-form-select2--docs)

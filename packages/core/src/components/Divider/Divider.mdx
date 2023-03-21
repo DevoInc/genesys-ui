@@ -1,16 +1,17 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Divider.stories';
 
 <Meta of={Stories} />
 
-# Divider
+<Heading.H1>Divider</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-Use `Divider` component to separate components, content and text blocks with an HTML `<hr>`.
+Component designed to visually separate different components, content, or text blocks with a horizontal or vertical line. It translates to an HTML `<hr>` element.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -18,10 +19,10 @@ import { Divider } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

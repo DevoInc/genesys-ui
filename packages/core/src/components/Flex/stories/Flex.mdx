@@ -1,4 +1,5 @@
 import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+import { Heading } from '../../../../../../.storybook/docs/blocks';
 
 import flexComponent from './partials/flexComponent.md?raw';
 import * as Stories from './Flex.stories';
@@ -6,13 +7,13 @@ import * as CaseStories from './Flex.cases.stories';
 
 <Meta of={Stories} />
 
-# Flex
+<Heading.H1>Flex</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
 <Markdown>{flexComponent}</Markdown>
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -20,16 +21,19 @@ import { Flex } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## Cases
+<Heading.H2>Cases</Heading.H2>
 
-### as
+<Heading.H3>Using the as property</Heading.H3>
 
-Likewise, its `as` property allow this component to be rendered as any HTML tag:
+The `as` property allow these components to be rendered as any HTML tag:
 'div', 'li', 'section'... etc.
+
+If you want to use the `Flex` component rendered with a different HTML tag, you can use the `as` property.
+It allows these components to be rendered as any HTML tag, such as div, li, section, and so on.
 
 <Source
   code={`
@@ -47,18 +51,19 @@ const MyFlexCmp = () => (
 </Flex>
 ); `} />
 
-### FlexItem props
+<Heading.H3>FlexItem props</Heading.H3>
 
-In a flex structure we use each `FlexItem` props to assign `flex`, `order`
-and `align-self` css styles to each child. This is an example with different
-css `flex` and `align-self` for each child of a `Flex` component:
+We use each FlexItem prop in a flex structure to assign flex,
+order, and align-self CSS styles to each child component.
+Here is an example that demonstrates different CSS flex and align-self
+settings for each child component of a Flex component:
 
 <Canvas of={CaseStories.FlexAndFlexItems} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 
-## Related components
+<Heading.H2>Related components</Heading.H2>
 
 - [FlexItem](?path=/docs/components-core-layout-flex-flexitem--docs)

@@ -22,3 +22,6 @@ test-report.xml
 # stryker temp files
 .stryker-tmp
 reports
+
+# reports
+depcruise.*

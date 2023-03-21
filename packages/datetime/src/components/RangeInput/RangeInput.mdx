@@ -1,16 +1,17 @@
 import { Meta, Source, Canvas, ArgTypes } from '@storybook/addon-docs';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './RangeInput.stories';
 
 <Meta of={Stories} />
 
-# RangeInput
+<Heading.H1>RangeInput</Heading.H1>
 
-Datetime input component used for selecting a range of time values. 
-The component provides options for specifying the format of the range, including real-time control and shift modifiers. 
-The component also allows for the specification of labels and status messages to provide additional information and feedback to the user. 
+Datetime input component used for selecting a range of time values.
+The component provides options for specifying the format of the range, including real-time control and shift modifiers.
+The component also allows for the specification of labels and status messages to provide additional information and feedback to the user.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -18,10 +19,10 @@ import { RangeInput } from '@devoinc/genesys-ui-datetime';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

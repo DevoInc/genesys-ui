@@ -8,7 +8,7 @@ import {
 } from '../../declarations';
 import { ButtonProps, ButtonSize, IconButtonProps } from '../';
 
-// TODO add the DropDownMenuProps to the possible types for children
+// TODO: add the DropDownMenuProps to the possible types for children
 //import DropDownMenu from '../DropDownMenu';
 
 // styled

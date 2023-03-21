@@ -1,16 +1,17 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Collapse.stories';
 
 <Meta of={Stories} />
 
-# Collapse
+<Heading.H1>Collapse</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-Collapsible container that hides or reveals its `children` on demand. 
+Collapsible container that hides or reveals its `children` on demand.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -18,10 +19,10 @@ import { Collapse } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

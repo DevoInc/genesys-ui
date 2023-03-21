@@ -1,10 +1,11 @@
 import { Meta, Source, Canvas } from '@storybook/addon-docs';
+import { Heading } from '../../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Hooks.stories';
 
 <Meta of={Stories} />
 
-# Pagination Behaviour Hooks
+<Heading.H2>Pagination Behaviour Hooks</Heading.H2>
 
 These hook provides a pre-defined behavior to be applied in the Pagination component.
 It returns an object with the following values:
@@ -30,11 +31,11 @@ It returns an object with the following values:
 `}
 />
 
-## Use Pagination
+<Heading.H2>Use Pagination</Heading.H2>
 
 <Canvas of={Stories.UsePagination} />
 
-#### Parameters
+<Heading.H4>Parameters</Heading.H4>
 
 It receives the following parameters:
 
@@ -51,7 +52,7 @@ It receives the following parameters:
 `}
 />
 
-#### Usage
+<Heading.H4>Usage</Heading.H4>
 
 <Source
 code={`

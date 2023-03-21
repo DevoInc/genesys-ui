@@ -1,17 +1,18 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/addon-docs/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Icon.stories';
 
 <Meta of={Stories} />
 
-# Icon
+<Heading.H1>Icon</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-Component used to display an icon associated with different states or actions. 
+Component used to display an icon associated with different states or actions.
 It can be used as a standalone component or as a child of another component.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -19,10 +20,10 @@ import { Icon } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

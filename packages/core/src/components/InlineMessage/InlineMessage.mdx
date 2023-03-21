@@ -1,31 +1,17 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './InlineMessage.stories';
 
 <Meta of={Stories} />
 
-# InlineMessage
+<Heading.H1>InlineMessage</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-`InlineMessage` is a component that positions a container with respect to a
-trigger. To achieve this behavior, it is built internally with the new component
-[Popper](/?path=/story/internal-atoms-popper--example).
+Component designed to position a container in relation to a trigger. It uses the Popper component under the hood.
 
-- The **container** has a custom style with a colored arrow and border based on
-  the prop status.
-- The **trigger** is set by default like an ActionStatus taking into account the
-  prop status. Furthermore, the trigger can have a title and a subtitle.
-
-**Status** can be: base, success, warning, error, help and info.
-
-If you want to use base status, you have to use a custom **trigger** with the
-prop trigger because ActionStatus with base status does not exist. Trigger can
-be any clickable component built with forwardRef.
-
-The **content** is passed as children.
-
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -33,19 +19,28 @@ import { InlineMessage } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
+
+The most frequent use of the InlineMessage component is to include an `InlineMessage.Panel` as a child.
 
 <Canvas of={Stories.Base} />
 
-The most common use of the InlineMessage is to pass an **InlineMessage.Panel** as a child.
+<Heading.H2>Cases</Heading.H2>
+
+<Heading.H3>With content</Heading.H3>
+
+<Canvas of={Stories.WithContent} />
+
+<Heading.H3>Custom trigger</Heading.H3>
 
 <Canvas of={Stories.CustomTriggerIcon} />
 
-Another less typical use of the InlineMessage is to pass it an
-**InlineMessage.Banner** as a child.
+<Heading.H3>Banner</Heading.H3>
 
-<Canvas of={Stories.CustomTriggerIcon} />
+Another atypical use of the InlineMessage component is to include an `InlineMessage.Banner` as a child.
 
-## API
+<Canvas of={Stories.Banner} />
+
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

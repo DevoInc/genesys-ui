@@ -1,17 +1,18 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './BoxMessage.stories';
 import * as CaseStories from './BoxMessage.cases.stories';
 
 <Meta of={Stories} />
 
-# BoxMessage
+<Heading.H1>BoxMessage</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-The Box element acts as a container component for fulfilling various CSS utility requirements.
+Component designed to display a message or notification to the user, with customizable content, title, and status.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -19,16 +20,16 @@ import { BoxMessage } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## Cases
+<Heading.H2>Cases</Heading.H2>
 
-### Using cookie
+<Heading.H3>Using cookie</Heading.H3>
 
 <Canvas of={CaseStories.Cookie} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

@@ -1,18 +1,19 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Panel.stories';
 import * as CaseStories from './Panel.cases.stories';
 
 <Meta of={Stories} />
 
-# Panel
+<Heading.H1>Panel</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-A `Panel` is a bordered container that allows you to position text, lists, tables, and other types of content within it.
-In addition, it lets set a custom header and footer.
+The Panel component is a container element that provides a bordered layout for displaying various types of content, such as text, lists, tables, and more.
+It also also allows for customization of its header and footer, which can be used to display titles, icons, or other relevant information.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -20,16 +21,16 @@ import { Panel } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## Cases
+<Heading.H2>Cases</Heading.H2>
 
-### Closable and backward navigation
+<Heading.H3>Closable and backward navigation</Heading.H3>
 
 <Canvas of={CaseStories.ClosableBackwardNavigation} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

@@ -1,15 +1,16 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './FieldsCombiner.stories';
 
 <Meta of={Stories} />
 
-# FieldsCombiner
+<Heading.H1>FieldsCombiner</Heading.H1>
 
-Component used to create complex form layouts by combining different types of form fields in a single row or column. 
+Component used to create complex form layouts by combining different types of form fields in a single row or column.
 It provides customization options through props to control the appearance and behavior of the combined fields.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -17,10 +18,10 @@ import { FieldsCombiner } from '@devoinc/genesys-ui-form';
 `}
 />
 
-## Basic Usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

@@ -1,4 +1,5 @@
 import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './FloatPanel.stories';
 import spacingProps from '../../../stories/partials/spacingProps.md?raw';
@@ -6,13 +7,13 @@ import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 <Meta of={Stories} />
 
-# FloatPanel
+<Heading.H1>FloatPanel</Heading.H1>
 
-## Overview
+<Heading.H2>Overview</Heading.H2>
 
-The `FloatPanel` component appears in front of all screen content, wrapping its content in a panel layout.
+Component designed display content in a panel layout that appears in front of all other screen content.
 
-## How to import
+<Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
@@ -20,10 +21,10 @@ import { FloatPanel } from '@devoinc/genesys-ui';
 `}
 />
 
-## Basic usage
+<Heading.H2>Basic usage</Heading.H2>
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />

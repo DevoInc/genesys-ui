@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-form",
-  "version": "1.0.0",
+  "version": "1.0.3-alpha.12",
   "description": "",
   "scripts": {
     "build": "vite build",
@@ -17,13 +17,16 @@
       "require": "./dist/index.umd.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "peerDependencies": {
     "react": "17.x || 18.x",
     "styled-components": "5.x",
-    "@devoinc/genesys-ui": "^1.0.0",
+    "@devoinc/genesys-ui": "^1.0.3-alpha.12",
     "react-filepond": "^7.1.2",
     "filepond-plugin-file-validate-size": "^2.2.8",
     "filepond-plugin-file-validate-type": "^1.2.8",
@@ -35,5 +38,12 @@
   "engine": {
     "node": ">=16",
     "npm": ">=7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DevoInc/genesys-ui.git"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

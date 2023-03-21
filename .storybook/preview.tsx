@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Preview } from '@storybook/react';
-// import { DocsContainer } from '@storybook/addon-docs';
-// import { BackToTop, TableOfContents } from 'storybook-docs-toc';
+import { DocsContainer, DocsContainerProps } from '@storybook/addon-docs';
 import { create } from '@storybook/theming';
 import { ThemeProvider } from 'styled-components';
 
@@ -9,12 +8,14 @@ import { light, dark } from '@devoinc/genesys-brand-devo';
 import '@devoinc/genesys-base-styles/dist/styles.css';
 import '@devoinc/genesys-icons/dist/gi-styles.css';
 
+import { BackToTop, TableOfContents } from '../.storybook/docs/blocks';
+import { Box } from '../packages/core/src/';
 // Styles
 // import './assets/styles/preview/preview.scss'; // This styles should only apply in the documentation
 // import { DocsContainerDefault } from '../components/DocsContainer';
-import './preview.css';
-
-import { Box } from '../packages/core/src/';
+import './preview.scss';
+import { useMutationObserver } from './docs/blocks/TOC/useMutationObserver';
+import { useHeadsObserver } from './docs/blocks/TOC/useHeadsObserver';
 
 // Ad-hoc styles for SB documentation
 const customTheme = create({
@@ -42,15 +43,17 @@ const preview: Preview = {
       },
     },
     docs: {
-      // container: ({ children, ...rest }) => (
-      //   <React.Fragment>
-      //     <DocsContainer {...rest}>
-      //       <TableOfContents config={{ headingSelector: '#docContent h2' }} />
-      //       <div id='docContent'>{children}</div>
-      //       <BackToTop />
-      //     </DocsContainer>
-      //   </React.Fragment>
-      // ),
+      container: ({ children, ...rest }: DocsContainerProps) => {
+        return (
+          <React.Fragment>
+            <DocsContainer {...rest}>
+              <TableOfContents />
+              {children}
+              <BackToTop />
+            </DocsContainer>
+          </React.Fragment>
+        );
+      },
       previewSource: 'open',
       source: {
         excludeDecorators: true,
@@ -66,13 +69,31 @@ const preview: Preview = {
       disable: true,
     },
     options: {
-      storySort: {
-        order: [
-          'Getting started',
-          ['Overview', 'Installation', 'Usage', 'Design resources'],
-          'Core',
-          'Form',
-        ],
+      storySort: (a, b) => {
+        const storySortOrder = [
+          'Docs',
+          'Base',
+          'Cases',
+          'Hooks',
+          'Subcomponents',
+        ];
+
+        // Lower depth goes first
+        const aDepth = a.title.split('/').length;
+        const bDepth = b.title.split('/').length;
+
+        if (aDepth > bDepth) return 1;
+        if (aDepth < bDepth) return -1;
+
+        // Then sort by storySortOrder
+        const aMatch = storySortOrder.indexOf(a.name);
+        const bMatch = storySortOrder.indexOf(b.name);
+
+        const aPriority = aMatch === -1 ? Infinity : aMatch;
+        const bPriority = bMatch === -1 ? Infinity : bMatch;
+
+        if (aPriority < bPriority) return -1;
+        return 1;
       },
     },
   },

@@ -1,4 +1,5 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../../.storybook/docs/blocks';
 
 import * as ItemStories from './TabsItem/Item.stories';
 import * as AsideStories from './TabsAside/Aside.stories';
@@ -8,30 +9,30 @@ import * as AsideStories from './TabsAside/Aside.stories';
   of={ItemStories}
 />
 
-# Subcomponents
+<Heading.H1>Subcomponents</Heading.H1>
 
 Set of subcomponents that can be used to build a `Tabs` component.
 
-## Item
+<Heading.H2>Item</Heading.H2>
 
 The `Tabs.Item` component is used to define the individual tabs.
 
-### Basic usage
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={ItemStories.Item} />
 
-### API
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={ItemStories} />
 
-## Aside
+<Heading.H2>Aside</Heading.H2>
 
 The `Tabs.Aside` component is used to add custom content to the right-hand side of the tabs.
 
-### Basic usage
+<Heading.H3>Basic usage</Heading.H3>
 
 <Canvas of={AsideStories.Aside} />
 
-### API
+<Heading.H3>Props</Heading.H3>
 
 <ArgTypes of={AsideStories} />
