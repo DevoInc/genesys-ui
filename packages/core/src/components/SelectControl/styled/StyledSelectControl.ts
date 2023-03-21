@@ -1,10 +1,5 @@
 import styled, { css } from 'styled-components';
-import ReactSelect, { Props } from 'react-select';
-import {
-  CommonSelectCmpsProps,
-  SelectGroupOption,
-  SelectSingleOption,
-} from '../declarations';
+import ReactSelect, { MultiValue } from 'react-select';
 import {
   getFieldState,
   getFieldStatus,
@@ -13,25 +8,17 @@ import {
 import { hasStatus } from '../../../utils/validations';
 import { scrollbars } from '../../../styled/mixins/scrollbars';
 import { flexMixin } from '../../../styled/mixins';
+import { SelectOption } from '../declarations';
 
-export interface StyledSelectControlProps
-  extends Props<SelectSingleOption, boolean, SelectGroupOption>,
-    Pick<
-      CommonSelectCmpsProps,
-      | 'addonToLeft'
-      | 'addonToRight'
-      | 'sortable'
-      | 'status'
-      | 'size'
-      | 'readOnly'
-    > {}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface StyledSelectControlProps extends ReactSelect {}
 
 export const StyledSelectControl = styled(ReactSelect).attrs(
   ({ className, classNamePrefix }) => ({
     classNamePrefix: classNamePrefix || 'react-select',
     className: className || 'react-select__container',
   })
-)<StyledSelectControlProps>`
+)`
   ${({
     addonToLeft,
     addonToRight,
@@ -64,7 +51,8 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
       ? 0
       : (isMulti &&
           hideSelectedOptions &&
-          (value && value.length) !== (options && options.length)) ||
+          (value && (value as MultiValue<SelectOption>).length) !==
+            (options && options.length)) ||
         !isMulti ||
         !hideSelectedOptions
       ? 1

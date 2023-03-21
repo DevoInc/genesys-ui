@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components';
-import { SelectSize } from '../declarations';
+import { CommonSelectCmpsProps } from '../declarations';
 
-export interface StyledSelectAllProps {
-  size: SelectSize;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface StyledSelectAllProps extends CommonSelectCmpsProps {}
 
 export const StyledSelectAll = styled.div<StyledSelectAllProps>`
   ${({ size, theme }) => {

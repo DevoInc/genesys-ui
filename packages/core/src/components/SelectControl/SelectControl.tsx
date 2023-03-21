@@ -14,6 +14,9 @@ import type {
   GlobalAriaProps,
   GlobalAttrProps,
 } from '../../declarations';
+import { SelectComponents } from 'react-select/dist/declarations/src/components';
+import { SelectOption } from './declarations';
+import { GroupBase } from 'react-select';
 
 interface SelectControlProps
   extends InnerSelectControlProps,
@@ -58,7 +61,7 @@ export const SelectControl: React.FC<SelectControlProps> = ({
       rest.selectAllBtn,
       rest.size,
     ]
-  );
+  ) as React.CSSProperties;
 
   const areThereFixedOptions = React.useMemo(
     () => Array.isArray(value) && value.some(({ fixed }) => fixed),
@@ -108,7 +111,11 @@ export const SelectControl: React.FC<SelectControlProps> = ({
       {...(onChange && { onChange })}
       styles={{ ...defaultStyles, ...styles }}
       value={findValue(value, rest.options, rest.isMulti)}
-      components={{ ...defaultComponents, ...components }}
+      components={
+        { ...defaultComponents, ...components } as Partial<
+          SelectComponents<SelectOption, boolean, GroupBase<SelectOption>>
+        >
+      }
       closeMenuOnScroll={handleCloseMenuOnScroll}
     />
   );

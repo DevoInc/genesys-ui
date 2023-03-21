@@ -1,16 +1,15 @@
 import * as React from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { MultiValueProps as DefaultMultiValuesProps } from 'react-select';
+import { MultiValueProps as RSMultiValueProps } from 'react-select';
 
 import { StyledSelectChip, StyledDraggableContainer } from '../styled';
-import { CommonSelectCmpsProps } from '../declarations';
-import { getChipContainerSize } from '../utils';
+import { getChipSize } from '../utils';
+import { SelectOption } from '../declarations';
 
-export interface MultiValueContainerProps extends DefaultMultiValuesProps {
-  selectProps: DefaultMultiValuesProps['selectProps'] & CommonSelectCmpsProps;
-  data: any;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface MultiValueContainerProps
+  extends RSMultiValueProps<SelectOption> {}
 
 export const MultiValueContainer: React.FC<MultiValueContainerProps> = ({
   data,
@@ -36,13 +35,13 @@ export const MultiValueContainer: React.FC<MultiValueContainerProps> = ({
     <div style={style} {...attributes} ref={setNodeRef} tabIndex={-1}>
       <StyledSelectChip
         sortable={selectProps.sortable}
-        size={getChipContainerSize({
-          size: selectProps.size,
+        size={getChipSize({
+          size: selectProps.size || 'xs',
           chipSize: selectProps.chipSize,
         })}
       >
         <StyledDraggableContainer
-          id={id}
+          id={id.toString()}
           isDragging={isDragging}
           ref={setActivatorNodeRef}
           {...listeners}

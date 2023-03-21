@@ -2,17 +2,12 @@ import type { ChipProps } from '..';
 import * as React from 'react';
 
 import { BaseSize, FieldControlWidth, FieldStatus } from '../../declarations';
-import { GroupBase, PropsValue } from 'react-select';
 
-export type SelectSingleOption = {
+export type SelectOption = {
   value: string | number;
   label: string;
   [key: string]: any;
 };
-export type SelectGroupOption = GroupBase<SelectSingleOption>;
-export type SelectOption = SelectSingleOption | SelectGroupOption;
-
-export type SelectValue = PropsValue<SelectOption>;
 
 export interface CommonSelectCmpsProps {
   /** Fixed block of content at the beginning of the select */
@@ -43,4 +38,11 @@ export interface CommonSelectCmpsProps {
   status?: FieldStatus;
   /** This property defines whether the component is read-only */
   readOnly?: boolean;
+  /** If it's set to true then the portal for dropdown menu is appended
+   * to body*/
+  menuAppendToBody?: boolean;
+  /** Tooltip text */
+  'data-tip'?: string;
+  /** Allow the user to edit values */
+  creatable?: boolean;
 }

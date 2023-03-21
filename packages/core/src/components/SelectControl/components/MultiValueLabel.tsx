@@ -1,16 +1,14 @@
 import * as React from 'react';
-import { MultiValueProps } from 'react-select';
+import { MultiValueProps as RSMultiValueProps } from 'react-select';
+import { SelectOption } from '../declarations';
 
 import { StyledSelectChipIcon } from '../styled';
-import { CommonSelectCmpsProps } from '../declarations';
-import { getChipContainerSize } from '../utils';
+import { getChipSize } from '../utils';
 
-export interface MultiValueLabelProps {
-  selectProps: MultiValueProps['selectProps'] & CommonSelectCmpsProps;
-  data: any;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface MultiValueProps extends RSMultiValueProps<SelectOption> {}
 
-export const MultiValueLabel: React.FC<MultiValueLabelProps> = ({
+export const MultiValueLabel: React.FC<MultiValueProps> = ({
   data,
   selectProps,
 }) => {
@@ -19,8 +17,8 @@ export const MultiValueLabel: React.FC<MultiValueLabelProps> = ({
       {data.icon && (
         <StyledSelectChipIcon
           hasBoldIcon={data.bold}
-          size={getChipContainerSize({
-            size: selectProps.size,
+          size={getChipSize({
+            size: selectProps.size || 'xs',
             chipSize: selectProps.chipSize,
           })}
         />

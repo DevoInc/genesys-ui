@@ -1,10 +1,7 @@
 import * as React from 'react';
+import { GroupBase } from 'react-select';
 import CreatableSelect, { CreatableProps } from 'react-select/creatable';
-import {
-  CommonSelectCmpsProps,
-  SelectGroupOption,
-  SelectSingleOption,
-} from './declarations';
+import { CommonSelectCmpsProps, SelectOption } from './declarations';
 import {
   StyledSelectControl,
   StyledSelectControlProps,
@@ -14,28 +11,17 @@ import {
 export interface InnerSelectControlProps
   extends Omit<StyledSelectControlProps, 'theme'>,
     Omit<
-      CreatableProps<SelectSingleOption, boolean, SelectGroupOption>,
+      CreatableProps<SelectOption, boolean, GroupBase<SelectOption>>,
       'theme'
     >,
-    CommonSelectCmpsProps {
-  /** HTML required prop */
-  required?: boolean;
-  /** Allow the user to edit values */
-  creatable?: boolean;
-  /** If it's set to true then the portal for dropdown menu is appended
-   * to body*/
-  menuAppendToBody?: boolean;
-  /** Tooltip text */
-  'data-tip'?: string;
-}
+    CommonSelectCmpsProps {}
 
-export const InnerSelectControl: React.FC<InnerSelectControlProps> = ({
-  creatable,
-  ...restProps
-}) => {
-  return creatable ? (
-    <StyledSelectControl as={CreatableSelect} {...restProps} />
+export const InnerSelectControl: React.FC<InnerSelectControlProps> = (
+  props
+) => {
+  return props.creatable ? (
+    <StyledSelectControl as={CreatableSelect} {...props} />
   ) : (
-    <StyledSelectControl {...restProps} />
+    <StyledSelectControl {...props} />
   );
 };

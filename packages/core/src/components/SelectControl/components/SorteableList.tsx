@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { DndContext } from '@dnd-kit/core';
+import { DndContext, DragEndEvent, DragStartEvent } from '@dnd-kit/core';
 import {
   horizontalListSortingStrategy,
   SortableContext,
 } from '@dnd-kit/sortable';
 
 export interface SortableListProps {
-  items: any;
-  onSortEnd?: any;
-  onSortStart?: any;
+  items: React.ReactElement[];
+  onSortEnd?: (event: DragEndEvent) => void;
+  onSortStart?: (event: DragStartEvent) => void;
 }
 
 export const SortableList: React.FC<SortableListProps> = ({
@@ -21,7 +21,7 @@ export const SortableList: React.FC<SortableListProps> = ({
     flexWrap: 'wrap',
     padding: '0.4rem',
   };
-
+  console.log(items);
   return (
     <DndContext onDragStart={onSortStart} onDragEnd={onSortEnd}>
       <SortableContext

@@ -1,21 +1,13 @@
 import * as React from 'react';
-import {
-  components,
-  ContainerProps as DefaultSelectContainerProps,
-} from 'react-select';
+import { components, ContainerProps as RSContainerProps } from 'react-select';
 import { useTheme } from 'styled-components';
-
-import { CommonSelectCmpsProps } from '../declarations';
 
 import { Field, Flex } from '../../';
 
-interface SelectContainerProps extends DefaultSelectContainerProps {
-  id: any;
-  selectProps: DefaultSelectContainerProps['selectProps'] &
-    CommonSelectCmpsProps;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface ContainerProps extends RSContainerProps {}
 
-export const SelectContainer: React.FC<SelectContainerProps> = (props) => {
+export const SelectContainer: React.FC<ContainerProps> = (props) => {
   const theme = useTheme();
   return (
     <components.SelectContainer {...props}>

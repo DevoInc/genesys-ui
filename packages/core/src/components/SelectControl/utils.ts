@@ -1,7 +1,14 @@
+import { ActionMeta, Props, PropsValue } from 'react-select';
 import { ChipSize } from '../../../src/components/Chip/declarations';
 import { FieldSize } from '../../declarations';
+import { SelectOption } from './declarations';
 
-import { SelectOption, SelectValue } from './declarations';
+/** A map of field sizes to chip sizes. */
+export const fieldSizeToChipSize: { [key in FieldSize]: ChipSize } = {
+  sm: 'xs',
+  md: 'sm',
+  lg: 'md',
+} as const;
 
 /**
  * A function that takes an object with onChange and value properties as input
@@ -9,17 +16,28 @@ import { SelectOption, SelectValue } from './declarations';
  * The returned function filters the change action based on if it is a remove or clear action
  * and the value of fixed before calling the original onChange function if it exists."
  */
+
 export const wrapperOnChange =
-  ({ onChange, value }) =>
-  (opts: any, actionMeta: any) => {
-    const isRemoveAction =
-      actionMeta.action === 'remove-value' || actionMeta.action === 'pop-value';
+  ({
+    onChange,
+    value,
+  }: {
+    onChange: Props<SelectOption>['onChange'];
+    value: Props<SelectOption>['value'];
+  }) =>
+  (
+    newValue: PropsValue<SelectOption>,
+    actionMeta: ActionMeta<SelectOption>
+  ): void => {
+    const REMOVE_ACTIONS = ['remove-value', 'pop-value'];
+    const isRemoveAction = REMOVE_ACTIONS.includes(actionMeta.action);
     const isClearAction = actionMeta.action === 'clear';
 
     if (isRemoveAction && actionMeta.removedValue.fixed) return;
-    if (isClearAction) opts = value.filter(({ fixed }) => fixed);
 
-    onChange?.(opts, actionMeta);
+    if (isClearAction) newValue = value.filter(({ fixed }) => fixed);
+
+    onChange?.(newValue, actionMeta);
   };
 
 /**
@@ -28,12 +46,13 @@ export const wrapperOnChange =
  * or not based on the values of its properties such as isMulti, hideSelectedOptions,
  * creatable, value, and options."
  */
-export const showMenuAndDropDown = (selectProps: any) => {
+export const showMenuAndDropDown = (selectProps: Props): boolean => {
   return (
     (selectProps.isMulti &&
       selectProps.hideSelectedOptions &&
       (selectProps.creatable ||
-        selectProps.value.length !== selectProps.options.length)) ||
+        (Array.isArray(selectProps.value) &&
+          selectProps.value.length !== selectProps.options.length))) ||
     !selectProps.isMulti ||
     !selectProps.hideSelectedOptions
   );
@@ -44,10 +63,11 @@ export const showMenuAndDropDown = (selectProps: any) => {
  * a single-level array by either concatenating
  * the nested options or adding the option to the accumulator."
  */
-const flattenOptionsFn = (acc, option) => {
-  if (option.options)
+const flattenOptionsFn = (acc: SelectOption[], option: Props<SelectOption>) => {
+  if (option.options && Array.isArray(option.options)) {
     return [...acc, ...option.options.reduce(flattenOptionsFn, [])];
-  else return [...acc, option];
+  }
+  return [...acc, option];
 };
 
 /**
@@ -58,8 +78,8 @@ const flattenOptionsFn = (acc, option) => {
  * Values are always initialized as '' when undefined inputs are found
  */
 export const findValue = (
-  value: SelectValue = '',
-  options: SelectOption[],
+  value: PropsValue<SelectOption>,
+  options: Props<SelectOption>['options'],
   isMulti: boolean
 ) => {
   const defaultValue = value || '';
@@ -109,9 +129,9 @@ export const findValue = (
  * A function that takes an object with size and chipSize properties as input
  * and returns the ChipSize based on the values of chipSize and size.
  * If chipSize is present, it returns chipSize, otherwise,
- * it returns the ChipSize based on the value of size with a default of 'xs' if no match is found."
+ * it returns the ChipSize based on the value of size."
  */
-export const getChipContainerSize = ({
+export const getChipSize = ({
   size,
   chipSize,
 }: {
@@ -119,50 +139,5 @@ export const getChipContainerSize = ({
   chipSize?: ChipSize;
 }): ChipSize => {
   if (chipSize) return chipSize;
-
-  switch (size) {
-    case 'xxs':
-      return 'xxs';
-    case 'xs':
-      return 'xxs';
-    case 'sm':
-      return 'xs';
-    case 'md':
-      return 'sm';
-    case 'lg':
-      return 'md';
-    default:
-      return 'xs';
-  }
-};
-
-/**
- * A function that takes an object with size and chipSize properties as input
- * and returns the ChipSize for the remove button based on the values of chipSize and size.
- * If chipSize is present, it returns chipSize, otherwise,
- * it returns the ChipSize based on the value of size with a default of 'xxs' if no match is found."
- */
-export const getChipRemoveSize = ({
-  size,
-  chipSize,
-}: {
-  size?: FieldSize | ChipSize;
-  chipSize?: ChipSize;
-}): ChipSize => {
-  if (chipSize) return chipSize;
-
-  switch (size) {
-    case 'xxs':
-      return 'xxs';
-    case 'xs':
-      return 'xxs';
-    case 'sm':
-      return 'xxs';
-    case 'md':
-      return 'xs';
-    case 'lg':
-      return 'sm';
-    default:
-      return 'xxs';
-  }
+  return fieldSizeToChipSize[size];
 };

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { components, OptionProps as DefaultOptionProps } from 'react-select';
+import { components, OptionProps as RSOptionProps } from 'react-select';
 
 import { Icon } from '../..';
+import { SelectOption } from '../declarations';
 
-export interface OptionProps extends DefaultOptionProps {
-  data: any;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface OptionProps extends RSOptionProps<SelectOption> {}
 
 export const Option: React.FC<OptionProps> = (props) => {
   return (

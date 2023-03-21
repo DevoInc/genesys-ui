@@ -1,25 +1,24 @@
 import * as React from 'react';
 import {
   components,
-  ValueContainerProps as DefaultValueContainerProps,
+  ValueContainerProps as RSValueContainerProps,
 } from 'react-select';
 import { arrayMove } from '@dnd-kit/sortable';
 
 import { SortableList } from '.';
-import { CommonSelectCmpsProps } from '../declarations';
+import { DragEndEvent } from '@dnd-kit/core';
+import { SelectOption } from '../declarations';
 
-export interface ValueContainerProps extends DefaultValueContainerProps {
-  selectProps: DefaultValueContainerProps['selectProps'] & CommonSelectCmpsProps;
-  setValue: (value: any) => void;
-  children: React.ReactNode[];
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface ValueContainerProps extends RSValueContainerProps {}
 
 export const ValueContainer: React.FC<ValueContainerProps> = ({
   children,
   ...props
 }) => {
-  const containerRef = React.createRef<any>();
-  const [containerClass, setContainerClass] = React.useState<any>();
+  const containerRef = React.createRef<HTMLDivElement>();
+  const [containerClass, setContainerClass] =
+    React.useState<React.AllHTMLAttributes<HTMLDivElement>['className']>();
 
   React.useEffect(() => {
     const container = containerRef.current;
@@ -42,16 +41,16 @@ export const ValueContainer: React.FC<ValueContainerProps> = ({
     props.selectProps.isMulti &&
     Array.isArray(children[0])
   ) {
-    const handleDragEnd = (event) => {
+    const handleDragEnd = (event: DragEndEvent) => {
       const { active, over } = event;
 
       if (over && active.id !== over.id) {
-        const pp = props.getValue().map((e: any) => e.value);
+        const pp = props.getValue().map((e: SelectOption) => e.value);
         const oldIndex = pp.indexOf(active.id);
         const newIndex = pp.indexOf(over.id);
 
         const newItems = arrayMove(pp, oldIndex, newIndex);
-        props.setValue(newItems);
+        props.setValue(newItems, 'select-option');
       }
     };
 

@@ -1,19 +1,21 @@
 import * as React from 'react';
-import { components, MenuProps as ReactSelectMenuProps } from 'react-select';
+import { components, MenuProps as RSMenuProps } from 'react-select';
 
 import { Button } from '../..';
 import { showMenuAndDropDown } from '../utils';
 import { StyledSelectMenu, StyledSelectAll } from '../styled';
-import { CommonSelectCmpsProps } from '../declarations';
 
-export interface MenuProps extends ReactSelectMenuProps {
-  selectProps: ReactSelectMenuProps['selectProps'] & CommonSelectCmpsProps;
-  setValue: (value: any) => void;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface MenuProps extends RSMenuProps {}
 
 export const Menu: React.FC<MenuProps> = (props) => {
+  const handleSelectAll = React.useCallback(
+    () => props.setValue(props.options, 'select-option'),
+    [props]
+  );
+
   return (
-    showMenuAndDropDown(props) &&
+    showMenuAndDropDown(props.selectProps) &&
     components.Menu && (
       <StyledSelectMenu
         alignOptions={props.selectProps.alignOptions}
@@ -31,7 +33,7 @@ export const Menu: React.FC<MenuProps> = (props) => {
           {props.selectProps.isMulti && props.selectProps.selectAllBtn && (
             <StyledSelectAll size={props.selectProps.size}>
               <Button
-                onClick={() => props.setValue(props.selectProps.options)}
+                onClick={handleSelectAll}
                 size={'sm'}
                 colorScheme={'quiet'}
               >

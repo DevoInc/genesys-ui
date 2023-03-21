@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {
   components,
-  SingleValueProps as DefaultSingleValueProps,
+  SingleValueProps as RSSingleValueProps,
 } from 'react-select';
 
 import { Icon } from '../..';
+import { SelectOption } from '../declarations';
 
-export interface SingleValueProps extends DefaultSingleValueProps {
-  data: any;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface SingleValueProps extends RSSingleValueProps<SelectOption> {}
 
 export const SingleValue: React.FC<SingleValueProps> = (props) => {
   return (

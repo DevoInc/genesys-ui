@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
   components,
-  ClearIndicatorProps as ReactSelectClearIndicatorProps,
+  ClearIndicatorProps as RSClearIndicatorProps,
 } from 'react-select';
 
 import { Icon } from '../..';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface ClearIndicatorProps extends ReactSelectClearIndicatorProps {}
+export interface ClearIndicatorProps extends RSClearIndicatorProps {}
 
 export const ClearIndicator: React.FC<ClearIndicatorProps> = (props) => {
   return (
