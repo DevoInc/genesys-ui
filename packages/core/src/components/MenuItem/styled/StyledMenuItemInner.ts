@@ -114,6 +114,12 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
           ${focusedStyles};
         }
       `}
+
+        // get the selected and activated styles in uncontrolled way too
+      &&&:has(:checked) {
+        background-color: ${tokens.color.background.selected};
+        color: ${tokens.color.text.selected};
+      }
     `;
   }}
 `;

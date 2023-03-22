@@ -1,4 +1,9 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
+
+// constants
+import { Icon } from '../Icon';
+import { menuItemSizeConfig } from './constants';
 
 // declarations
 import {
@@ -21,9 +26,7 @@ import {
   StyledMenuItemMarker,
   StyledMenuItemInnerProps,
 } from './styled';
-import { Icon } from '../Icon';
-import { useTheme } from 'styled-components';
-import { menuItemSizeConfig } from './constants';
+import { StyledHiddenInput } from '../../styled/';
 
 export interface MenuItemProps
   extends StyledPolymorphicProps,
@@ -86,6 +89,9 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         tabIndex={tabIndex}
         target={target}
       >
+        {isSelectable && (
+          <StyledHiddenInput selectionScheme={selectionScheme} />
+        )}
         {children || (
           <>
             {(icon || isSelected) && (

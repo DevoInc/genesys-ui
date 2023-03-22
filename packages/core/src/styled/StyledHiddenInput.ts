@@ -8,11 +8,11 @@ import {
   GlobalAttrProps,
   InputAttrProps,
   SelectionScheme,
-} from '../../../declarations';
+} from '../declarations';
 
-import { srOnlyMixin } from '../../../styled/mixins/utilsMixins';
+import { srOnlyMixin } from './mixins/utilsMixins';
 
-export interface StyledChipHiddenInputProps
+export interface StyledHiddenInputProps
   extends Pick<GlobalAriaProps, 'aria-label'>,
     Pick<GlobalAttrProps, 'id'>,
     Pick<FocusEventAttrProps, 'onBlur' | 'onFocus'>,
@@ -22,10 +22,10 @@ export interface StyledChipHiddenInputProps
   selectionScheme?: SelectionScheme;
 }
 
-export const StyledChipHiddenInput = styled.input.attrs(
-  ({ selectionScheme }: StyledChipHiddenInputProps) => ({
+export const StyledHiddenInput = styled.input.attrs(
+  ({ selectionScheme }: StyledHiddenInputProps) => ({
     type: selectionScheme === 'single' ? 'radio' : 'checkbox',
   })
-)<StyledChipHiddenInputProps>`
+)<StyledHiddenInputProps>`
   ${srOnlyMixin}
 `;
