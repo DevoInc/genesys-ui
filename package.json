@@ -5,6 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
+    "clean:cache": "rm -rf node_modules/.cache",
     "clean": "rm -rf storybook-static coverage packages/*/dist",
     "build": "npm run build -ws --if-present",
     "depcruise": "npm run depcruise -ws --if-present",
