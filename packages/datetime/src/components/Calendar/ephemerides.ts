@@ -7,6 +7,7 @@ import {
   endOfMonth,
   startOfDay,
   subDays,
+  lastDayOfMonth,
 } from 'date-fns';
 import * as locales from 'date-fns/locale';
 
@@ -151,26 +152,32 @@ const getClassesForDay = ({
 }: ClassConditionParams & {
   validateDate: (ts: number) => boolean;
   invalidDates: number[];
-}): string[] => [
-  ...(hasDisabled({ dayTime, validateDate, invalidDates }) ? ['disabled'] : []),
-  ...(dayTime === from || dayTime === to ? ['selected'] : []),
-  ...(dayTime === from && to ? ['from-selected'] : []),
-  ...(dayTime === to && from ? ['to-selected'] : []),
-  ...(dayTime >= from && dayTime <= to ? ['highlight'] : []),
-  ...(hasBoxShadowRight({ hover, from, to, dayTime, hasRightHoverEffect })
-    ? ['box-shadow']
-    : []),
-  ...(hasBoxShadowLeft({ hover, from, to, dayTime, hasLeftHoverEffect })
-    ? ['box-shadow']
-    : []),
-  ...(hasNextBoxShadow({ hover, from, to, dayTime, hasRightHoverEffect })
-    ? ['next-box-shadow']
-    : []),
-  ...(hasPrevBoxShadow({ hover, from, to, dayTime, hasLeftHoverEffect })
-    ? ['prev-box-shadow']
-    : []),
-  ...(rightHover({ hover, from, to, dayTime }) ? ['rightmost'] : []),
-];
+}): string[] => {
+  const lastMonthDay = lastDayOfMonth(dayTime).getTime();
+  return [
+    ...(hasDisabled({ dayTime, validateDate, invalidDates })
+      ? ['disabled']
+      : []),
+    ...(dayTime === from || dayTime === to ? ['selected'] : []),
+    ...(dayTime === lastMonthDay ? ['month-last-day'] : []),
+    ...(dayTime === from && to ? ['from-selected'] : []),
+    ...(dayTime === to && from ? ['to-selected'] : []),
+    ...(dayTime >= from && dayTime <= to ? ['highlight'] : []),
+    ...(hasBoxShadowRight({ hover, from, to, dayTime, hasRightHoverEffect })
+      ? ['box-shadow']
+      : []),
+    ...(hasBoxShadowLeft({ hover, from, to, dayTime, hasLeftHoverEffect })
+      ? ['box-shadow']
+      : []),
+    ...(hasNextBoxShadow({ hover, from, to, dayTime, hasRightHoverEffect })
+      ? ['next-box-shadow']
+      : []),
+    ...(hasPrevBoxShadow({ hover, from, to, dayTime, hasLeftHoverEffect })
+      ? ['prev-box-shadow']
+      : []),
+    ...(rightHover({ hover, from, to, dayTime }) ? ['rightmost'] : []),
+  ];
+};
 
 /**
  * Parser for the month days
