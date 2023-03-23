@@ -4,7 +4,7 @@ import {
   Button,
   IconButton,
   InputControl,
-  Select2Control,
+  SelectControl,
   CheckboxControl,
 } from '@devoinc/genesys-ui';
 
@@ -17,7 +17,7 @@ export const ElemIconButton = (
 export const ElemCheckbox = <CheckboxControl aria-label="Maintain activated" />;
 
 export const ElemSelect = (
-  <Select2Control
+  <SelectControl
     id="test-2"
     size="sm"
     options={[

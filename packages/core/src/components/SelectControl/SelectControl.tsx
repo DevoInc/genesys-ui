@@ -18,7 +18,7 @@ import { SelectComponents } from 'react-select/dist/declarations/src/components'
 import { SelectOption } from './declarations';
 import { GroupBase, MultiValue } from 'react-select';
 
-interface SelectControlProps<
+export interface SelectControlProps<
   Option = SelectOption,
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>
