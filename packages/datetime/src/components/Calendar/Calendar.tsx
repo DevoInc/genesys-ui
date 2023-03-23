@@ -12,6 +12,7 @@ import { checkValidDate } from './validations';
 import { GlobalAriaProps, GlobalAttrProps } from '@devoinc/genesys-ui';
 import { Datetime } from '../declarations';
 import { toTimestamp } from '../utils';
+import { lastDayOfMonth as lastDayOfMonthFNS } from 'date-fns';
 
 export interface CalendarProps
   extends Pick<CellProps, 'onClick' | 'onMouseEnter' | 'onMouseLeave'>,
@@ -68,6 +69,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   };
   const customHoverDay = toTimestamp(mouseHoverDay);
   const invalidDates = notValidDates.map((date) => toTimestamp(date));
+  const lastDayOfMonth = lastDayOfMonthFNS(dateForMonth).getTime();
 
   const [hoverDay, setHoverDay] = React.useState(null);
 
@@ -120,9 +122,10 @@ export const Calendar: React.FC<CalendarProps> = ({
         hasLeftHoverEffect,
         hasRightHoverEffect,
         hover: hoverDay,
+        invalidDates,
+        lastDayOfMonth,
         to: selectedDates?.to ?? 0,
         validateDate: validateDateCallback,
-        invalidDates,
       }).map((day) => (
         <Cell
           key={`day${day.value}`}

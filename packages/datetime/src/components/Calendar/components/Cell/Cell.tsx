@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { format } from 'date-fns';
 
 import { StyledCalendarCell } from './StyledCalendarCell';
 
@@ -26,6 +27,7 @@ const InternalCell: React.FC<CellProps> = ({
   ts,
 }) => {
   const disabled = className && className.includes('disabled');
+  const dateFormated = ts ? format(new Date(ts), 'PPPP') : null;
   return (
     <StyledCalendarCell
       onClick={() => {
@@ -43,9 +45,12 @@ const InternalCell: React.FC<CellProps> = ({
           onMouseLeave();
         }
       }}
+      aria-label={dateFormated}
+      aria-selected={className && className.includes('selected')}
       className={`day ${className}`}
       data-cell={value}
       data-ts={ts}
+      title={dateFormated}
     >
       {value && <span>{value}</span>}
     </StyledCalendarCell>
