@@ -63,7 +63,7 @@ npm run lint
 
 This project uses ['Vite'](https://vitejs.dev/) for development. Vite is a build tool that serves the code via native ES Module imports during development. Therefore, Vite converts all dependencies that are shipped as CommonJS modules to ES modules. To improve the performance, it pre-bundles and caches them inside the `node_modules/.cache` directory.
 
-If you want to link an external package to the project, you need to make sure that the package is available in **ESM format**. Besides, you have to ensure that the package is **not listed in the `optimizeDeps.include` section** of the `main.ts` file. If the package is listed there, Vite will pre-bundle it and will always use the cached version, even if you link a local version of the package. In that case, you will have to temporarily remove the package from the `optimizeDeps.include` section and restart the development server.
+If you want to link an external package to the project, you need to make sure that the package is available in **ESM format**. Besides, you have to ensure that the package is **not listed in the `optimizeDeps.include` section** of the `main.ts` file. If the package is listed there, Vite will pre-bundle it and will always use the cached version, even if you link a local version of the package. In that case, you will have to temporarily remove or comment the package from the `optimizeDeps.include` section.
 
 Once the above conditions are met, you can link the package to the project by running the following commands:
 
@@ -73,17 +73,19 @@ cd <package-name>
 npm link
 
 # Link the package to the project
-cd <genesys-ui>
+cd genesys-ui
 npm link <package-name>
 
-# Clean the cache
-cd <genesys-ui>
+# Clean the cache 
+cd genesys-ui
 npm run clean:cache
 
 # Restart the development server
 npm start
 
 ```
+
+Note: You might have to reload the browser o every change you make to the linked package to see the changes.
 
 
 ## Documentation
