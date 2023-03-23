@@ -5,9 +5,11 @@ import { Icon } from '../..';
 import { SelectOption } from '../declarations';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface OptionProps extends RSOptionProps<SelectOption> {}
+export interface OptionProps<Option> extends RSOptionProps<Option> {}
 
-export const Option: React.FC<OptionProps> = (props) => {
+export const Option = <Option extends SelectOption>(
+  props: OptionProps<Option>
+): React.ReactElement<OptionProps<Option>> => {
   return (
     <components.Option {...props}>
       {props.data.icon && <Icon iconId={props.data.icon} />}

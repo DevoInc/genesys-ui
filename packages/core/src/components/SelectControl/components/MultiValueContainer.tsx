@@ -8,14 +8,16 @@ import { getChipSize } from '../utils';
 import { SelectOption } from '../declarations';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface MultiValueContainerProps
-  extends RSMultiValueProps<SelectOption> {}
+export interface MultiValueContainerProps<Option>
+  extends RSMultiValueProps<Option> {}
 
-export const MultiValueContainer: React.FC<MultiValueContainerProps> = ({
+export const MultiValueContainer = <Option extends SelectOption>({
   data,
   selectProps,
   children,
-}) => {
+}: MultiValueContainerProps<Option>): React.ReactElement<
+  MultiValueContainerProps<Option>
+> => {
   const id = data.value;
   const {
     attributes,
