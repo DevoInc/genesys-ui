@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 // declarations
-import { ButtonSelectableState } from '@devoinc/genesys-ui';
+import { ButtonSelectableState } from '../../../';
 
 // styled
 import { StyledButton } from '../../../Button/StyledButton';
