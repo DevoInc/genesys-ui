@@ -61,7 +61,7 @@ npm run lint
 
 ### Linking external packages
 
-This project uses [Vite](https://vitejs.dev/) for development. Vite is a build tool that serves the code via native ES Module imports during development. Therefore, Vite converts all dependencies that are shipped as CommonJS modules to ES modules. To improve the performance, it [pre-bundles](https://vitejs.dev/guide/dep-pre-bundling.html) and caches them inside the `node_modules/.cache` directory.
+This project uses [Vite](https://vitejs.dev/) for development. Vite serves the code via native ES Module imports during development. Therefore, Vite converts all dependencies that are shipped as CommonJS modules to ES modules. To improve the performance, it [pre-bundles](https://vitejs.dev/guide/dep-pre-bundling.html) and caches them inside the `node_modules/.cache` directory.
 
 If you want to link an external package to the project, you need to make sure that the package is available in **ESM format**. Besides, you have to ensure that the package is **not listed in the `optimizeDeps.include` section** of the `main.ts` file. If the package is listed there, Vite will pre-bundle it and will always use the cached version, even if you link a local version of the package. In that case, you will have to temporarily remove or comment the package from the `optimizeDeps.include` section.
 
