@@ -13,7 +13,7 @@ export const StyledPopperArrow = styled.div<StyledPopperArrowProps>`
     --arrow-position: calc(100% - 0.1rem);
 
     z-index: calc(
-      ${zIndex ? 0 : theme.tokens.alias.elevation.zIndex.depth.activated} + 1
+      ${zIndex ? 0 : theme.alias.elevation.zIndex.depth.activated} + 1
     );
 
     ${placement?.includes('top') &&

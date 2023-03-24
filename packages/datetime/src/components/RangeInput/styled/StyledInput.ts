@@ -5,7 +5,7 @@ import { InputControl, InputControlProps } from '@devoinc/genesys-ui';
 export interface StyledInputProps extends Pick<InputControlProps, 'status'> {}
 
 export const StyledInput = styled(InputControl).attrs(({ theme }) => ({
-  pickerInput: theme.tokens.cmp.dateRange.pickerInput,
+  pickerInput: theme.cmp.dateRange.pickerInput,
 }))<StyledInputProps>`
   border: ${({ status }) => (!status || status === 'base') && 'none'};
 `;

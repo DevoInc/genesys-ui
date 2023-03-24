@@ -22,18 +22,14 @@ export const SelectContainer: React.FC<ContainerProps> = (props) => {
           flex={
             props.selectProps.selectWidth
               ? `0 1 ${
-                  theme.tokens.alias.fields.size.width[
-                    props.selectProps.selectWidth
-                  ]
+                  theme.alias.fields.size.width[props.selectProps.selectWidth]
                 }`
               : '1 1 100%'
           }
           position="relative"
           width={
             props.selectProps.selectWidth
-              ? theme.tokens.alias.fields.size.width[
-                  props.selectProps.selectWidth
-                ]
+              ? theme.alias.fields.size.width[props.selectProps.selectWidth]
               : '100%'
           }
         >

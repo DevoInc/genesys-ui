@@ -8,7 +8,7 @@ interface StyledDropdownProps {
 
 export const StyledDropdown = styled.ul<StyledDropdownProps>`
   ${({ maxWidth, zIndex, theme }) => {
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
     return css`
       position: relative;
       list-style: none;
@@ -18,7 +18,7 @@ export const StyledDropdown = styled.ul<StyledDropdownProps>`
       font-size: 1.3rem;
       border-radius: 0.6rem;
       background-color: ${aliasTokens.color.background.surface.base.base};
-      z-index: ${zIndex + theme.tokens.alias.elevation.zIndex.depth.activated};
+      z-index: ${zIndex + theme.alias.elevation.zIndex.depth.activated};
       max-width: ${maxWidth ?? '24rem'};
     `;
   }}

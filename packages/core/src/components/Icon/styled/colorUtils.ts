@@ -11,7 +11,7 @@ export const getColor = ({
   status?: GlobalStatus;
   theme: DefaultTheme;
 }) => {
-  if (status) return theme.tokens.alias.color.text.feedback[status].base;
+  if (status) return theme.alias.color.text.feedback[status].base;
   if (color) return color;
   return 'inherit';
 };

@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 
 const AllTheProviders: React.FC<{ children: React.ReactNode }> = ({
   children,
-}) => <ThemeProvider theme={{ tokens: light }}>{children}</ThemeProvider>;
+}) => <ThemeProvider theme={{ ...light }}>{children}</ThemeProvider>;
 
 const customRender = (
   ui: React.ReactElement,

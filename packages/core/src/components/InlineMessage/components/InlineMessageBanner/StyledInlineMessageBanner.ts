@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const StyledInlineMessageBanner = styled.div`
   ${({ theme }) => {
-    const tokens = theme.tokens.cmp.inlineMessageBanner;
+    const tokens = theme.cmp.inlineMessageBanner;
     return css`
       margin: 0;
       border-left: none;

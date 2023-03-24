@@ -12,7 +12,7 @@ interface StyledInputIconProps {
 export const StyledInputIcon = styled.i<StyledInputIconProps>`
   ${({ combined, fadeEffect, size, status, theme }) => {
     const statusEval = getFieldStatus(status);
-    const utilTokens = theme.tokens.alias.fields;
+    const utilTokens = theme.alias.fields;
     const utilIconTokens = utilTokens.icon;
     const position = utilTokens.space.padding.hor[size];
     const fs = utilIconTokens.size.square[size];

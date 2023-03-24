@@ -5,7 +5,7 @@ import { StyledModalProps } from '../declarations';
 
 export const StyledModalContent = styled.div<StyledModalProps>`
   ${({ theme, hasScroll, contentPadding }) => {
-    const tokens = theme.tokens.cmp.modal.content;
+    const tokens = theme.cmp.modal.content;
 
     return css`
       ${scrollbars({ theme })};

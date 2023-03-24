@@ -19,7 +19,5 @@ export const StyledMenuItemAsSeparator = styled.hr<StyledMenuItemAsSeparatorProp
   border-style: solid;
   border-width: 0 0 1px 0;
   border-color: ${({ separators, theme }) =>
-    separators
-      ? 'transparent'
-      : theme.tokens.alias.color.border.separator.base.base};
+    separators ? 'transparent' : theme.alias.color.border.separator.base.base};
 `;

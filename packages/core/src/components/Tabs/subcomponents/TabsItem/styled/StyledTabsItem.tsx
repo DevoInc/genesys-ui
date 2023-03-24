@@ -16,7 +16,7 @@ export const StyledTabsItem = styled((props) => (
   <StyledBox {...props} as="li" role="tab" />
 ))<StyledTabsItemProps>`
   ${({ size, theme, wide }) => {
-    const tokens = theme.tokens.cmp.tabs;
+    const tokens = theme.cmp.tabs;
     const { container } = tokens;
     const { content } = tokens;
 

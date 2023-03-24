@@ -104,9 +104,7 @@ const preview: Preview = {
       </Box>
     ),
     (Story, { globals }) => (
-      <ThemeProvider
-        theme={{ tokens: globals.theme === 'light' ? light : dark }}
-      >
+      <ThemeProvider theme={{ ...(globals.theme === 'light' ? light : dark) }}>
         <Story />
       </ThemeProvider>
     ),

@@ -10,7 +10,7 @@ interface StyledInlineMessageArrowProps {
 
 export const StyledInlineMessageArrow = styled.div<StyledInlineMessageArrowProps>`
   ${({ placement, status = 'help', theme }) => {
-    const tokens = theme.tokens.cmp.inlineMessage;
+    const tokens = theme.cmp.inlineMessage;
     const bgColor = tokens.color.border[status];
     const arrowSize = tokens.arrow.size.square;
 

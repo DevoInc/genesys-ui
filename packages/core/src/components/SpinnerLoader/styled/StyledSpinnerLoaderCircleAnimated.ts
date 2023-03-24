@@ -9,9 +9,7 @@ interface StyledSpinnerLoaderCircleAnimatedProps {
 export const StyledSpinnerLoaderCircleAnimated = styled.circle<StyledSpinnerLoaderCircleAnimatedProps>`
   ${({ colorScheme, theme }) => {
     const strokeColor =
-      theme.tokens.cmp.loader.spinnerAnimatedStroke.color.background[
-        colorScheme
-      ];
+      theme.cmp.loader.spinnerAnimatedStroke.color.background[colorScheme];
     return css`
       transform-origin: center;
       animation: ${DASH_ANIMATION} 1.5s ease-in-out infinite;

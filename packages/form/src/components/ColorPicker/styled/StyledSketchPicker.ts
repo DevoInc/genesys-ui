@@ -5,10 +5,10 @@ import { getFieldControlTypoObj } from '@devoinc/genesys-ui';
 
 export const StyledSketchPicker = styled(SketchPicker)`
   ${({ theme }) => {
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
     const fieldTokens = aliasTokens.fields;
     const spacingTokens = aliasTokens.space;
-    const sketchPickerTokens = theme.tokens.cmp.colorPicker.sketchPicker;
+    const sketchPickerTokens = theme.cmp.colorPicker.sketchPicker;
 
     const typoObj = getFieldControlTypoObj({ theme, size: 'sm' });
     const transitionDuration = fieldTokens.mutation.transitionDuration;

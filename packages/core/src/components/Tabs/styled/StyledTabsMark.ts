@@ -10,7 +10,7 @@ export interface StyledTabsMarkProps {
 export const StyledTabsMark = styled.div<StyledTabsMarkProps>`
   ${utils.transitionDefault}
   ${({ colorScheme, theme }) => {
-    const tokens = theme.tokens.cmp.tabs.mark;
+    const tokens = theme.cmp.tabs.mark;
     return css`
       position: absolute;
       bottom: 0;

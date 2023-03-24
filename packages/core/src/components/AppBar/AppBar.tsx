@@ -33,7 +33,7 @@ export const AppBar: React.FC<AppBarProps> = ({
   ...nativeProps
 }) => {
   const elevation = sticky ? 'stickyBottom' : 'ground';
-  const tabsContainerTokens = useTheme().tokens.cmp.tabs.container;
+  const tabsContainerTokens = useTheme().cmp.tabs.container;
 
   return (
     <StyledAppBarContainer

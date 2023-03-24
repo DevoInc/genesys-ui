@@ -9,8 +9,8 @@ export interface StyledBoxMessageProps {
 
 export const StyledBoxMessage = styled.div<StyledBoxMessageProps>`
   ${({ status = 'info', theme }) => {
-    const aliasTokens = theme.tokens.alias;
-    const cmpTokens = theme.tokens.cmp.boxMessage;
+    const aliasTokens = theme.alias;
+    const cmpTokens = theme.cmp.boxMessage;
     const spacingTokens = aliasTokens.space;
 
     return css`

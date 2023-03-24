@@ -12,7 +12,7 @@ export interface StyledDecoratorBarProps {
 
 export const StyledDecoratorBar = styled.div<StyledDecoratorBarProps>`
   ${({ direction, size, theme }) => {
-    const tokensDecoratorBar = theme.tokens.cmp.decoratorBar;
+    const tokensDecoratorBar = theme.cmp.decoratorBar;
 
     return css`
       width: ${direction === 'horizontal'

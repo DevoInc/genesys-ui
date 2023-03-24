@@ -19,7 +19,7 @@ export const StyledMenuItem = styled.li<StyledMenuItemProps>`
     border-top: ${({ boxed, separators, theme }) =>
       !boxed &&
       separators &&
-      '1px solid' + theme.tokens.alias.color.border.separator.base.base};
+      '1px solid' + theme.alias.color.border.separator.base.base};
     margin-top: ${({ boxed, size }) =>
       boxed && getMenuSizes(size).itemBoxedSpace};
   }

@@ -12,7 +12,7 @@ interface StyledInlineMessageProps {
 
 export const StyledInlineMessage = styled(StyledBox)<StyledInlineMessageProps>`
   ${({ placement, status, theme }) => {
-    const tokens = theme.tokens.cmp.inlineMessage;
+    const tokens = theme.cmp.inlineMessage;
 
     return css`
       position: relative;

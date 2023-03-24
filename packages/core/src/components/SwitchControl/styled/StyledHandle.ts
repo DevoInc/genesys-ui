@@ -9,7 +9,7 @@ interface StyledHandleProps {
 
 export const StyledHandle = styled.span<StyledHandleProps>`
   ${({ $disabled = false, $checked, switchHeight, diameter, theme }) => {
-    const switchTokens = theme.tokens.cmp.switchControl;
+    const switchTokens = theme.cmp.switchControl;
     const handlerTokens = switchTokens.handler;
     const offset = +((switchHeight - diameter) / 2).toFixed(2);
     const checkedCss = css`

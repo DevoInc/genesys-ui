@@ -28,7 +28,7 @@ export const StyledCheckboxControl = styled.input.attrs({
     status = 'base',
     theme,
   }) => {
-    const cmpTokens = theme.tokens.cmp.checkbox;
+    const cmpTokens = theme.cmp.checkbox;
     const controlTokens = cmpTokens.control;
     const markerTokens = cmpTokens.controlMarker;
     const cmpMarkerWidth = markerTokens.size.square[$size];

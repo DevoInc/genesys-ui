@@ -8,7 +8,7 @@ export interface StyledSplitPaneSeparatorProps {
 
 export const StyledSplitPaneSeparator = styled.div<StyledSplitPaneSeparatorProps>`
   ${({ vertical = false, layoutChanging = false, theme }) => {
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
     const separatorSize = '1rem';
     return css`
       position: relative;

@@ -20,7 +20,7 @@ export interface StyledButtonAddonProps {
 
 export const StyledButtonAddon = styled.span<StyledButtonAddonProps>`
   ${({ hasSpace, isDropdown, position, size, theme }) => {
-    const spacingTokens = theme.tokens.cmp.button.icon.space;
+    const spacingTokens = theme.cmp.button.icon.space;
     const marginTokens = spacingTokens.margin;
     const offsetTokens = spacingTokens.offset;
     return css`

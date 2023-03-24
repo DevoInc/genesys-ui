@@ -6,8 +6,8 @@ export interface StyledDraggableContainerProps {
 
 export const StyledDraggableContainer = styled.div<StyledDraggableContainerProps>`
   ${({ isDragging, theme }) => {
-    const colorTokens = theme?.tokens?.alias?.color;
-    const elevationTokens = theme?.tokens?.alias?.elevation;
+    const colorTokens = theme?.alias?.color;
+    const elevationTokens = theme?.alias?.elevation;
 
     return css`
       all: unset;

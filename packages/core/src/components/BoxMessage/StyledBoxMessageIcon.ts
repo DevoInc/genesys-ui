@@ -8,7 +8,7 @@ export interface StyledBoxMessageIconProps
 
 export const StyledBoxMessageIcon = styled.i<StyledBoxMessageIconProps>`
   ${({ status = 'info', theme }) => {
-    const cmpTokens = theme.tokens.cmp.boxMessage;
+    const cmpTokens = theme.cmp.boxMessage;
     const colorTokens = cmpTokens.icon.color.text;
 
     return css`

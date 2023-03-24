@@ -8,7 +8,7 @@ export interface StyledToolbarGroupProps {
 
 export const StyledToolbarGroup = styled.ul<StyledToolbarGroupProps>`
   ${({ padding, theme, zIndex }) => {
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
     return css`
       display: flex;
       align-items: center;

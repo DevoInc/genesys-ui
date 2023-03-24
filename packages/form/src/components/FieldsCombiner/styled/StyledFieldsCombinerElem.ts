@@ -22,9 +22,9 @@ export interface StyledFieldsCombinerElemProps {
 export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps>`
   ${({ size, elemWidth, first, theme, typeProp, status }) => {
     const isCheckOrButtonType = typeProp === 'button' || typeProp === 'check';
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
     const fieldTokens = aliasTokens.fields;
-    const btnTokens = theme.tokens.cmp.button;
+    const btnTokens = theme.cmp.button;
     const height = btnTokens.size.height[size];
     const width = btnTokens.size.square[size];
     const borderRadius = fieldTokens.shape.borderRadius;

@@ -49,7 +49,7 @@ export const StyledBox = styled.div<StyledBoxProps>`
     $width,
     zIndex,
   }) => {
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
     const elevationTokens = aliasTokens.elevation;
     const hasBorder =
       elevation && elevation !== 'ground' && !elevation.includes('sticky');

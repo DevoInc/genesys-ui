@@ -46,7 +46,7 @@ export const StyledAvatar = styled.span<StyledAvatarProps>`
   }) => {
     // TODO: Use a type for Genesys themes (theme.contrast1600)
     const colorSchemeForTokens = _.camelCase(colorScheme);
-    const aliasTokens = theme?.tokens?.alias;
+    const aliasTokens = theme?.alias;
     const bgColor =
       aliasTokens.color.background.feedback[colorSchemeForTokens].weak;
     const color = aliasTokens.color.text.feedback[colorSchemeForTokens].base;

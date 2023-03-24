@@ -88,13 +88,11 @@ export const InputControl: React.FC<InputControlProps> = ({
       <Flex
         flex={
           inputWidth
-            ? `0 1 ${theme.tokens.alias.fields.size.width[inputWidth]}`
+            ? `0 1 ${theme.alias.fields.size.width[inputWidth]}`
             : '1 1 100%'
         }
         position="relative"
-        width={
-          inputWidth ? theme.tokens.alias.fields.size.width[inputWidth] : '100%'
-        }
+        width={inputWidth ? theme.alias.fields.size.width[inputWidth] : '100%'}
       >
         {typeIcon && (
           <StyledInputControlIcon

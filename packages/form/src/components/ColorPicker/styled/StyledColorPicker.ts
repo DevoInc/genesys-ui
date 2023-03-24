@@ -29,8 +29,8 @@ export const StyledColorPicker = styled.button<StyledColorPickerProps>`
       colorIndicatorType === 'square' || colorIndicatorType === 'circle';
     const isCircle = colorIndicatorType === 'circle';
 
-    const fieldTokens = theme.tokens.alias.fields;
-    const colorPickerTokens = theme.tokens.cmp.colorPicker;
+    const fieldTokens = theme.alias.fields;
+    const colorPickerTokens = theme.cmp.colorPicker;
 
     const transitionDuration = fieldTokens.mutation.transitionDuration;
     const height = colorPickerTokens.size.height[size];

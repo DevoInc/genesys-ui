@@ -8,7 +8,7 @@ interface StyledIconProps {
 
 export const StyledIcon = styled.i<StyledIconProps>`
   ${({ status, theme }) => {
-    const tokensToast = theme.tokens.cmp.toast;
+    const tokensToast = theme.cmp.toast;
     return css`
       font-size: ${tokensToast.headerIcon.typo.fontSize.md};
       color: ${tokensToast.headerIcon.color.text[status]};

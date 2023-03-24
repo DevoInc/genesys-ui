@@ -61,7 +61,7 @@ export const Loader: React.FC<LoaderProps> = ({
 }) => {
   const contentColor = colorScheme === 'dark' ? 'light' : 'dark';
   const contentSize = size;
-  const { tokens } = useTheme();
+  const tokens = useTheme();
   const gradientColor = tokens.alias.color.background.surface.base.base;
   const getContent = () => {
     if (type === 'progress' || loadPercent) {

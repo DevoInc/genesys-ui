@@ -4,8 +4,8 @@ import { StyledModalWithStatusProps } from '../declarations';
 
 export const StyledModalIcon = styled.i<StyledModalWithStatusProps>`
   ${({ theme, status }) => {
-    const modalHeaderIconTokens = theme.tokens.cmp.modal.headerIcon;
-    const dialogHeaderIconTokens = theme.tokens.cmp.dialog.headerIcon;
+    const modalHeaderIconTokens = theme.cmp.modal.headerIcon;
+    const dialogHeaderIconTokens = theme.cmp.dialog.headerIcon;
 
     return css`
       margin-right: ${modalHeaderIconTokens.space.marginRight};

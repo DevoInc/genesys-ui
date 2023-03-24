@@ -78,7 +78,7 @@ export const StyledAvatarWrapperClickable = styled.button.attrs<StyledAvatarWrap
 
         &:focus,
         &:focus-visible {
-          box-shadow: ${theme.tokens.alias.elevation.boxShadow.base.focused};
+          box-shadow: ${theme.alias.elevation.boxShadow.base.focused};
         }
       `}
     `;
