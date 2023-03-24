@@ -108,7 +108,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   // Functions
   const onChangeRangeSelect = React.useCallback(
-    (e: HTMLSelectElement) => setPageSize(parseInt(e.value)),
+    (option) => setPageSize(parseInt(option.value)),
     [setPageSize]
   );
   const onInputChange = React.useCallback(
@@ -214,7 +214,7 @@ export const Pagination: React.FC<PaginationProps> = ({
                 <SelectControl
                   aria-label={pageSelectorLabel}
                   data-tip={isMenuOpen ? '' : pageTooltip}
-                  disabled={lastPage === 0}
+                  isDisabled={lastPage === 0}
                   id={id ? `${id}-page-selector` : null}
                   noOptionsMessage={noOptionsMessage}
                   onChange={onChange}

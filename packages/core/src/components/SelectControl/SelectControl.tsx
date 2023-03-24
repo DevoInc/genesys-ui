@@ -16,20 +16,26 @@ import type {
 } from '../../declarations';
 import { SelectComponents } from 'react-select/dist/declarations/src/components';
 import { SelectOption } from './declarations';
-import { GroupBase, MultiValue } from 'react-select';
+import { GroupBase, MultiValue, PropsValue } from 'react-select';
 
 export interface SelectControlProps<
-  Option = SelectOption,
+  Option extends SelectOption = SelectOption,
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>
-> extends InnerSelectControlProps<Option, IsMulti, Group>,
+> extends Omit<
+      InnerSelectControlProps<Option, IsMulti, Group>,
+      'value' | 'option'
+    >,
     //native
     FieldAriaProps,
     GlobalAriaProps,
-    GlobalAttrProps {}
+    GlobalAttrProps {
+  value?: PropsValue<Option> | Option['value'];
+  onChange?: (value: PropsValue<Option>) => void;
+}
 
 export const SelectControl = <
-  Option extends SelectOption,
+  Option extends SelectOption = SelectOption,
   IsMulti extends boolean = boolean,
   Group extends GroupBase<Option> = GroupBase<Option>
 >({
@@ -38,7 +44,7 @@ export const SelectControl = <
   value,
   isClearable,
   ...rest
-}: SelectControlProps<Option, IsMulti, Group>): React.ReactElement => {
+}: SelectControlProps<Option, IsMulti, Group>) => {
   const defaultStyles = React.useMemo(
     () => ({
       menuPortal: (base: React.CSSProperties) => ({
@@ -119,7 +125,7 @@ export const SelectControl = <
       isClearable={clearable}
       {...(onChange && { onChange })}
       styles={{ ...defaultStyles, ...styles }}
-      value={findValue<Option>(value, rest.options, rest.isMulti)}
+      value={findValue(value, rest.options, rest.isMulti)}
       components={
         { ...defaultComponents, ...components } as Partial<
           SelectComponents<Option, IsMulti, Group>

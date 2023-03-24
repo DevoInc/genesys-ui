@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { SelectControl } from '..';
+import { SelectControl, SelectControlProps } from '..';
 import { Props, PropsValue } from 'react-select';
 import { SelectOption } from './declarations';
 
@@ -10,7 +10,7 @@ interface SelectControlOption extends SelectOption {
   fixed?: boolean;
 }
 
-const meta: Meta<Props<SelectControlOption>> = {
+const meta: Meta<SelectControlProps<SelectControlOption>> = {
   title: 'Components/Core/Form/SelectControl/Cases',
   component: SelectControl,
   args: {
@@ -36,15 +36,14 @@ const meta: Meta<Props<SelectControlOption>> = {
 };
 
 export default meta;
-type Story = StoryObj<Props<SelectControlOption>>;
+type Story = StoryObj<SelectControlProps>;
 
 export const SingleOption: Story = {
   render: (args) =>
     ((args) => {
-      const [value, setValue] =
-        React.useState<PropsValue<SelectControlOption>>();
+      const [value, setValue] = React.useState<SelectControlProps['value']>();
       return (
-        <SelectControl<SelectControlOption>
+        <SelectControl
           {...args}
           onChange={(opt) => setValue(opt)}
           options={[

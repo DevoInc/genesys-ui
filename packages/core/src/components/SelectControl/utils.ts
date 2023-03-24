@@ -2,6 +2,7 @@ import { ActionMeta, MultiValue, Props, PropsValue } from 'react-select';
 import { ChipSize } from '../../../src/components/Chip/declarations';
 import { FieldSize } from '../../declarations';
 import { SelectOption } from './declarations';
+import { SelectControlProps } from './SelectControl';
 
 /** A map of field sizes to chip sizes. */
 export const fieldSizeToChipSize: { [key in FieldSize]: ChipSize } = {
@@ -80,7 +81,7 @@ const flattenOptionsFn = <Option extends SelectOption>(
  * Values are always initialized as '' when undefined inputs are found
  */
 export const findValue = <Option extends SelectOption>(
-  value: PropsValue<Option>,
+  value: SelectControlProps<Option>['value'],
   options: Props<Option>['options'],
   isMulti: boolean
 ) => {
@@ -116,7 +117,7 @@ export const findValue = <Option extends SelectOption>(
        * be the previous one, so it can lead to a misunderstanding.
        */
       const found = flattenedOptions.find((option) =>
-        value && 'value' in value
+        value && typeof value === 'object' && 'value' in value
           ? option.value === value.value || ''
           : option.value === value || ''
       );

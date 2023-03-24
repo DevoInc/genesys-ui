@@ -34,8 +34,8 @@ const InternalPresets: React.FC<PresetsProps> = ({
   ...restSelectAttrs
 }) => {
   const handleChange = React.useCallback(
-    ({ value }) => {
-      onChange?.(JSON.parse(value));
+    (option) => {
+      onChange?.(JSON.parse(option.value));
     },
     [onChange]
   );
