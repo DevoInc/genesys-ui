@@ -21,7 +21,6 @@ export const SortableList: React.FC<SortableListProps> = ({
     flexWrap: 'wrap',
     padding: '0.4rem',
   };
-  console.log(items);
   return (
     <DndContext onDragStart={onSortStart} onDragEnd={onSortEnd}>
       <SortableContext

@@ -16,29 +16,36 @@ import type {
 } from '../../declarations';
 import { SelectComponents } from 'react-select/dist/declarations/src/components';
 import { SelectOption } from './declarations';
-import { GroupBase } from 'react-select';
+import { GroupBase, MultiValue } from 'react-select';
 
-interface SelectControlProps
-  extends InnerSelectControlProps,
+export interface SelectControlProps<
+  Option = SelectOption,
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> extends InnerSelectControlProps<Option, IsMulti, Group>,
     //native
     FieldAriaProps,
     GlobalAriaProps,
     GlobalAttrProps {}
 
-export const SelectControl: React.FC<SelectControlProps> = ({
+export const SelectControl = <
+  Option extends SelectOption,
+  IsMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>({
   components,
   styles,
   value,
   isClearable,
   ...rest
-}) => {
+}: SelectControlProps<Option, IsMulti, Group>): React.ReactElement => {
   const defaultStyles = React.useMemo(
     () => ({
-      menuPortal: (base) => ({
+      menuPortal: (base: React.CSSProperties) => ({
         ...base,
         zIndex: rest.menuAppendToBody ? 10000 : '',
       }),
-      menuList: (base) => ({
+      menuList: (base: React.CSSProperties) => ({
         ...base,
         maxHeight: rest.maxMenuHeight
           ? rest.selectAllBtn
@@ -63,21 +70,24 @@ export const SelectControl: React.FC<SelectControlProps> = ({
     ]
   ) as React.CSSProperties;
 
-  const areThereFixedOptions = React.useMemo(
+  const hasFixedOptions = React.useMemo(
     () => Array.isArray(value) && value.some(({ fixed }) => fixed),
     [value]
   );
 
   const onChange =
-    areThereFixedOptions &&
-    wrapperOnChange({ onChange: rest.onChange, value: value });
+    hasFixedOptions &&
+    wrapperOnChange({
+      onChange: rest.onChange,
+      value: value as MultiValue<Option>,
+    });
 
   const clearable = React.useMemo(
     () =>
-      isClearable === undefined && areThereFixedOptions
-        ? value.some(({ fixed }) => !fixed)
+      isClearable === undefined && hasFixedOptions
+        ? (value as MultiValue<Option>).some(({ fixed }) => !fixed)
         : isClearable,
-    [areThereFixedOptions, isClearable, value]
+    [hasFixedOptions, isClearable, value]
   );
 
   const menuPortalTarget = React.useMemo(
@@ -102,18 +112,17 @@ export const SelectControl: React.FC<SelectControlProps> = ({
   );
 
   return (
-    <InnerSelectControl
+    <InnerSelectControl<Option, IsMulti, Group>
       {...rest}
       minMenuHeight={0}
-      size="sm"
       menuPortalTarget={menuPortalTarget}
       isClearable={clearable}
       {...(onChange && { onChange })}
       styles={{ ...defaultStyles, ...styles }}
-      value={findValue(value, rest.options, rest.isMulti)}
+      value={findValue<Option>(value, rest.options, rest.isMulti)}
       components={
         { ...defaultComponents, ...components } as Partial<
-          SelectComponents<SelectOption, boolean, GroupBase<SelectOption>>
+          SelectComponents<Option, IsMulti, Group>
         >
       }
       closeMenuOnScroll={handleCloseMenuOnScroll}

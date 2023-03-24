@@ -10,9 +10,6 @@ import { scrollbars } from '../../../styled/mixins/scrollbars';
 import { flexMixin } from '../../../styled/mixins';
 import { SelectOption } from '../declarations';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface StyledSelectControlProps extends ReactSelect {}
-
 export const StyledSelectControl = styled(ReactSelect).attrs(
   ({ className, classNamePrefix }) => ({
     classNamePrefix: classNamePrefix || 'react-select',
@@ -29,7 +26,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
     isMulti,
     menuIsOpen,
     readOnly,
-    size,
+    size = 'md',
     sortable,
     status,
     theme,

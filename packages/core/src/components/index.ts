@@ -42,7 +42,6 @@ export * from './Partitions';
 export * from './Popper';
 export * from './ProgressBar';
 export * from './RadioControl';
-export * from './Select2Control';
 export * from './SelectControl';
 export * from './SpinnerLoader';
 export * from './SplitPane';

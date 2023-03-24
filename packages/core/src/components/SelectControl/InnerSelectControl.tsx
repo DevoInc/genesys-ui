@@ -1,26 +1,30 @@
 import * as React from 'react';
-import { GroupBase } from 'react-select';
-import CreatableSelect, { CreatableProps } from 'react-select/creatable';
+import { GroupBase, Props } from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 import { CommonSelectCmpsProps, SelectOption } from './declarations';
-import {
-  StyledSelectControl,
-  StyledSelectControlProps,
-} from './styled/StyledSelectControl';
+import { StyledSelectControl } from './styled/StyledSelectControl';
 
-// React-select requires a concrete theme schema which is not compatible with ours.
-export interface InnerSelectControlProps
-  extends Omit<StyledSelectControlProps, 'theme'>,
-    Omit<
-      CreatableProps<SelectOption, boolean, GroupBase<SelectOption>>,
-      'theme'
-    >,
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface InnerSelectControlProps<
+  Option = SelectOption,
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+  // React-select requires a concrete theme schema which is not compatible with ours.
+> extends Omit<Props<Option, IsMulti, Group>, 'theme'>,
     CommonSelectCmpsProps {}
 
-export const InnerSelectControl: React.FC<InnerSelectControlProps> = (
-  props
-) => {
+export const InnerSelectControl = <
+  Option extends SelectOption,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option>
+>(
+  props: InnerSelectControlProps<Option, IsMulti, Group>
+): React.ReactElement => {
   return props.creatable ? (
-    <StyledSelectControl as={CreatableSelect} {...props} />
+    <StyledSelectControl
+      as={CreatableSelect<Option, IsMulti, Group>}
+      {...props}
+    />
   ) : (
     <StyledSelectControl {...props} />
   );

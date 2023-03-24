@@ -18,7 +18,7 @@ The Select component is implemented using the [react-select](https://react-selec
 
 <Source
   code={`
-import { Select2Control } from '@devoinc/genesys-ui';
+import { SelectControl } from '@devoinc/genesys-ui';
 `}
 />
 
@@ -56,10 +56,14 @@ import { Select2Control } from '@devoinc/genesys-ui';
 
 <Canvas of={CaseStories.MultipleFixedOptions} />
 
+<Heading.H3>With type constraints</Heading.H3>
+
+<Canvas of={CaseStories.WithTypeConstraints} />
+
 <Heading.H2>Props</Heading.H2>
 
 <ArgTypes of={Stories} />
 
 ## Related components
 
-- [Select2](?path=/docs/components-form-select2--docs)
+- [Select](?path=/docs/components-form-select--docs)

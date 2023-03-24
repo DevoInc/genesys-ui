@@ -8,9 +8,11 @@ import { Icon } from '../..';
 import { SelectOption } from '../declarations';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface SingleValueProps extends RSSingleValueProps<SelectOption> {}
+export interface SingleValueProps<Option> extends RSSingleValueProps<Option> {}
 
-export const SingleValue: React.FC<SingleValueProps> = (props) => {
+export const SingleValue = <Option extends SelectOption>(
+  props: SingleValueProps<Option>
+): React.ReactElement<SingleValueProps<Option>> => {
   return (
     components.SingleValue && (
       <components.SingleValue {...props}>
