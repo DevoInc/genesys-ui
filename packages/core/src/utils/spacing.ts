@@ -6,7 +6,6 @@ import { GLOBAL_SPACING } from '../constants/spacing';
  * based in the theme object.
  */
 export const getSpacingValuesMap = (theme: DefaultTheme) => {
-  debugger;
   const spacingTks = theme.alias.space;
   return Object.fromEntries(
     GLOBAL_SPACING.map((valueName) => {
