@@ -142,7 +142,7 @@ jobs:
 
       - name: Publish 'auto' (dry-run)
         if: ${{ github.event.inputs.version == 'auto' && github.event.inputs.dry == 'true' }}
-        run: npm run release:ci --dry-run
+        run: npm run release:ci -- --dry-run
 
       - name: Publish ${{ github.event.inputs.version }}
         if: ${{ github.event.inputs.version != 'auto' && github.event.inputs.dry == 'false' }}
