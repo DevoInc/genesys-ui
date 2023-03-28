@@ -97,6 +97,9 @@ export const StyledSelectMenu = styled.div.attrs({
               : listTokens.size.maxHeight};
             min-height: ${minMenuHeight && `${minMenuHeight}px`};
             padding: 0;
+
+            // Override react-select's style to fix issue with scroll bar.
+            width: auto !important;
           }
         }
 

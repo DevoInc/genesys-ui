@@ -48,4 +48,6 @@ export interface CommonSelectCmpsProps {
   'data-tip'?: string;
   /** Allow the user to edit values */
   creatable?: boolean;
+  /** Enable virtualization for select options. Useful for large lists */
+  virtualizeOptions?: boolean;
 }

@@ -51,20 +51,22 @@ export const SelectControl = <
         ...base,
         zIndex: rest.menuAppendToBody ? 10000 : '',
       }),
-      menuList: (base: React.CSSProperties) => ({
-        ...base,
-        maxHeight: rest.maxMenuHeight
-          ? rest.selectAllBtn
-            ? `calc(${rest.maxMenuHeight}px - ${CUSTOM_HEIGHT[rest.size]}px)`
-            : rest.maxMenuHeight
-          : rest.selectAllBtn
-          ? `calc(200px - ${CUSTOM_HEIGHT[rest.size]}px)`
-          : '200px',
-        minHeight:
-          rest.minMenuHeight && rest.selectAllBtn
-            ? `calc(${rest.minMenuHeight}px - ${CUSTOM_HEIGHT[rest.size]}px)`
-            : rest.minMenuHeight,
-      }),
+      menuList: (base: React.CSSProperties) => {
+        return {
+          ...base,
+          maxHeight: rest.maxMenuHeight
+            ? rest.selectAllBtn
+              ? rest.maxMenuHeight - CUSTOM_HEIGHT[rest.size]
+              : rest.maxMenuHeight
+            : rest.selectAllBtn
+            ? 200 - CUSTOM_HEIGHT[rest.size]
+            : 200,
+          minHeight:
+            rest.minMenuHeight && rest.selectAllBtn
+              ? rest.minMenuHeight - CUSTOM_HEIGHT[rest.size]
+              : rest.minMenuHeight,
+        };
+      },
       multiValueRemove: () => '',
     }),
     [

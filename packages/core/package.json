@@ -21,20 +21,21 @@
     "stryker": "npx stryker run"
   },
   "peerDependencies": {
-    "react": "17.x || 18.x",
-    "styled-components": "5.x",
+    "@dnd-kit/core": "^6.0.6",
+    "@dnd-kit/sortable": "^7.0.1",
     "@popperjs/core": "^2.11.6",
+    "lodash": "^4.17.21",
+    "polished": "^4.2.2",
+    "prop-types": "15.x",
+    "react": "17.x || 18.x",
     "react-dock": "^0.6.0",
     "react-grid-system": "^8.1.6",
     "react-popper": "^2.3.0",
+    "react-select": "^5.7.0",
     "react-toastify": "^9.1.1",
     "react-tooltip": "3.11.2",
-    "@dnd-kit/core": "^6.0.6",
-    "@dnd-kit/sortable": "^7.0.1",
-    "react-select": "^5.7.0",
-    "lodash": "^4.17.21",
-    "polished": "^4.2.2",
-    "prop-types": "15.x"
+    "react-windowed-select": "^5.1.0",
+    "styled-components": "5.x"
   },
   "dependencies": {
     "@devoinc/genesys-icons": "^2.1.3"

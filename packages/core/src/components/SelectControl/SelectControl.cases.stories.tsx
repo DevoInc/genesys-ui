@@ -239,22 +239,24 @@ export const MultipleFixedOptions: Story = {
     })(args),
 };
 
-export const WithTypeConstraints: Story = {
+export const VirtualizedOptions: Story = {
   render: (args) =>
     ((args) => {
+      const options: Props<SelectControlOption>['options'] = Array(20000)
+        .fill(null)
+        .map((el, idx) => ({
+          value: `item${idx}`,
+          label: `Item ${idx}`,
+        }));
       const [value, setValue] = React.useState();
       const onChange = (opts) => setValue(opts);
       return (
         <SelectControl<SelectControlOption>
           {...args}
           onChange={onChange}
-          options={[
-            { value: 'ONE', label: 'one' },
-            { value: 'TWO', label: 'two' },
-          ]}
+          options={options}
           value={value}
-          isMulti
-          sortable
+          virtualizeOptions={true}
         />
       );
     })(args),
