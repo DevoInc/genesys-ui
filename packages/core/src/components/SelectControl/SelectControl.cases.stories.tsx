@@ -45,7 +45,7 @@ export const SingleOption: Story = {
       return (
         <SelectControl
           {...args}
-          onChange={(opt) => setValue(opt)}
+          onChange={(opt: SelectOption) => setValue(opt.value)}
           options={[
             { value: 1, label: 'Option one' },
             { value: 2, label: 'Option two' },

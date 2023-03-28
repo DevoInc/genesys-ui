@@ -125,7 +125,7 @@ export const SelectControl = <
       isClearable={clearable}
       {...(onChange && { onChange })}
       styles={{ ...defaultStyles, ...styles }}
-      value={findValue(value, rest.options, rest.isMulti)}
+      {...(value && { value: findValue(value, rest.options, rest.isMulti) })}
       components={
         { ...defaultComponents, ...components } as Partial<
           SelectComponents<Option, IsMulti, Group>

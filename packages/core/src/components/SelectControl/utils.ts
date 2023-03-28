@@ -68,7 +68,7 @@ const flattenOptionsFn = <Option extends SelectOption>(
   option: Props<Option>
 ) => {
   if ('options' in option && Array.isArray(option.options)) {
-    return [...acc, ...option.options.reduce(flattenOptionsFn, [] as Option[])];
+    return [...acc, ...option.options.reduce<Option[]>(flattenOptionsFn, [])];
   }
   return [...acc, option];
 };
