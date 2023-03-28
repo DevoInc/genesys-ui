@@ -1,5 +1,19 @@
 # Changelog
 
+### [1.0.3-alpha.13](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.12...v1.0.3-alpha.13) (2023-03-28)
+
+
+### Features
+
+* **core/SelectControl:** allow options virtualization ([56c2d24](https://github.com/DevoInc/genesys-ui/commit/56c2d24a7c135b27c5abb854033ac136661b68c8))
+* **datetime:** added aacesibility props ([e7e232f](https://github.com/DevoInc/genesys-ui/commit/e7e232f63a2a23f7800dff626b5e9407e9c3369d))
+
+
+### Bug Fixes
+
+* **form/Select:** solve ts errors using new control ([25f55da](https://github.com/DevoInc/genesys-ui/commit/25f55daae35c7c9e0b8ab028e2db01304b7f96b1))
+* removed token level ([e96943a](https://github.com/DevoInc/genesys-ui/commit/e96943abbe1c01ad9a0885e970c1215361ff1521))
+
 ### [1.0.3-alpha.12](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.11...v1.0.3-alpha.12) (2023-03-15)
 
 ### [1.0.3-alpha.11](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.10...v1.0.3-alpha.11) (2023-03-15)
