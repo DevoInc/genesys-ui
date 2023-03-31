@@ -8,20 +8,20 @@ import {
   LinkAttrProps,
   MouseState,
   SelectedState,
-} from '../../../declarations';
+  UIState,
+} from '../../../../../declarations';
 import {
   btnResetMixin,
   disabledMixin,
   flexMixin,
   pseudoElementOverlayMixin,
   typoMixin,
-} from '../../../styled/';
+} from '../../../../../styled/';
 import { menuItemBackdropMixin } from '../helpers';
 import { menuItemSizeConfig } from '../constants';
 
 export interface StyledMenuItemInnerProps
-  extends GlobalAttrProps,
-    Pick<ButtonAttrProps, 'tabIndex' | 'value'>,
+  extends Pick<ButtonAttrProps, 'tabIndex' | 'value'>,
     LinkAttrProps {
   /** If the menu item has a reserved left space for markers: icon, selection mark... etc. */
   hasExtraLeftSpace?: boolean;
@@ -31,7 +31,8 @@ export interface StyledMenuItemInnerProps
     | MouseState
     | FeaturedState
     | SelectedState
-    | ExpandedState;
+    | ExpandedState
+    | UIState;
 }
 
 export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
@@ -43,11 +44,12 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
     const iconSpace = menuItemSizeConfig(theme).iconSpace;
     const focusedStyles = css`
       ${menuItemBackdropMixin({ tokens, state: 'focused' })};
-      box-shadow: ${aliasTokens.elevation.boxShadow.base.focused};
+      box-shadow: inset ${aliasTokens.elevation.boxShadow.base.focused};
+      outline: none;
     `;
     return css`
       ${btnResetMixin};
-      ${flexMixin({ dis: 'flex', ai: 'center' })};
+      ${flexMixin({ dis: 'flex', ai: 'center', jc: 'flex-start' })};
       ${typoMixin({ theme })};
       width: 100%;
       appearance: none;
@@ -86,7 +88,8 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
           ${menuItemBackdropMixin({ tokens, state: 'pressed' })};
         }
 
-        &:focus-visible {
+        &:focus-visible,
+        &:focus-within {
           ${focusedStyles};
         }
 

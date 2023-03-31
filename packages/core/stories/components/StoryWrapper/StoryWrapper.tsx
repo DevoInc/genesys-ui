@@ -19,7 +19,7 @@ export interface StoryWrapperProps extends StyledStoryWrapperProps {
   /** Css height */
   height?: React.CSSProperties['height'];
   /** Css width */
-  width: React.CSSProperties['width'];
+  width?: React.CSSProperties['width'];
 }
 
 export const StoryWrapper: React.FC<StoryWrapperProps> = ({

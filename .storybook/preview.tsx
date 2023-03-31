@@ -16,6 +16,7 @@ import { Box } from '../packages/core/src/';
 import './preview.scss';
 import { useMutationObserver } from './docs/blocks/TOC/useMutationObserver';
 import { useHeadsObserver } from './docs/blocks/TOC/useHeadsObserver';
+import { StoryWrapper } from '../packages/core/stories/components/StoryWrapper';
 
 // Ad-hoc styles for SB documentation
 const customTheme = create({
@@ -99,9 +100,9 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <Box padding={'cmp-md'}>
+      <StoryWrapper padding={'cmp-md'}>
         <Story />
-      </Box>
+      </StoryWrapper>
     ),
     (Story, { globals }) => (
       <ThemeProvider
