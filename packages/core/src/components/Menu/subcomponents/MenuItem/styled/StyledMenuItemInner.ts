@@ -4,7 +4,6 @@ import {
   ButtonAttrProps,
   ExpandedState,
   FeaturedState,
-  GlobalAttrProps,
   LinkAttrProps,
   MouseState,
   SelectedState,

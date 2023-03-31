@@ -49,7 +49,6 @@ export interface MenuItemProps
     StyledMenuItemInnerProps {
   appendContent?: React.ReactNode;
   children?: React.ReactNode;
-  description?: string;
   expandable?: boolean;
   icon?: string;
   label?: string;
@@ -63,7 +62,6 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   as,
   forwardedAs,
   children,
-  description,
   download,
   expandable,
   href,

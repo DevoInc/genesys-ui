@@ -1,5 +1,3 @@
-import { css } from 'styled-components';
-
 /**
  * Get the width and height of the marker icon of the menu item
  *
