@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import {
   GlobalAttrProps,
-  Select2Control,
-  Select2ControlProps,
+  SelectControl,
+  SelectControlProps,
 } from '@devoinc/genesys-ui';
 
 import type { Preset, PresetRange, PresetGroup } from './declarations';
@@ -13,7 +13,7 @@ export interface PresetsProps
   extends WithRequired<GlobalAttrProps, 'id'>,
     Pick<GlobalAttrProps, 'title'>,
     Partial<Pick<HTMLInputElement, 'placeholder'>>,
-    Partial<Pick<Select2ControlProps, 'maxMenuHeight' | 'size'>> {
+    Partial<Pick<SelectControlProps, 'maxMenuHeight' | 'size'>> {
   /** Function called when selected a preset. */
   onChange: (preset: PresetRange) => void;
   /** Custom list of presets values. */
@@ -34,8 +34,8 @@ const InternalPresets: React.FC<PresetsProps> = ({
   ...restSelectAttrs
 }) => {
   const handleChange = React.useCallback(
-    ({ value }) => {
-      onChange?.(JSON.parse(value));
+    (option) => {
+      onChange?.(JSON.parse(option.value));
     },
     [onChange]
   );
@@ -64,7 +64,7 @@ const InternalPresets: React.FC<PresetsProps> = ({
   }, [presets]);
 
   return (
-    <Select2Control
+    <SelectControl
       {...restSelectAttrs}
       controlShouldRenderValue={false}
       hideSelectedOptions={false}

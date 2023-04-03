@@ -43,7 +43,7 @@ export const getColor = ({
   progress?: ProgressBarStatus;
   theme: DefaultTheme;
 }): string => {
-  const colorTextAliasTokens = theme.tokens.alias.color.text;
+  const colorTextAliasTokens = theme.alias.color.text;
 
   if (progress === 'warning') {
     return colorScheme === 'light'
@@ -72,7 +72,7 @@ export const getProgressBgColor = ({
   tokens,
 }: {
   progress: ProgressBarStatus;
-  tokens: DefaultTheme['tokens']['cmp']['progressBar'];
+  tokens: DefaultTheme['cmp']['progressBar'];
 }): string => {
   const status = STATUS_MAP[progress];
   return tokens?.progress?.color?.background[status];
@@ -88,7 +88,7 @@ export const getTrackBgColor = ({
 }: {
   colorScheme: ProgressBarColorScheme;
   progress: ProgressBarStatus;
-  tokens: DefaultTheme['tokens']['cmp']['progressBar'];
+  tokens: DefaultTheme['cmp']['progressBar'];
 }): string => {
   const status = STATUS_MAP[progress];
 

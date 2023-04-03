@@ -19,7 +19,7 @@ export const StyledTabsLink = styled(({ state, ...props }) => {
 })<StyledTabsLinkProps>`
   ${utils.transitionDefault}
   ${({ theme, size, state }) => {
-    const tokens = theme.tokens.cmp.tabs.item;
+    const tokens = theme.cmp.tabs.item;
     const borderRadius = tokens.shape.borderRadius;
     const fontSize = typoMixin({ theme, size });
 

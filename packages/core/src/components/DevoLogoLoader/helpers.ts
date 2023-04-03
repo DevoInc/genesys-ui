@@ -19,4 +19,4 @@ export const getColor = (
   colorScheme: DevoLogoColorScheme,
   theme: DefaultTheme,
   type: DevoLogoPathType
-) => theme.tokens.cmp.loader[type].color.background[colorScheme];
+) => theme.cmp.loader[type].color.background[colorScheme];

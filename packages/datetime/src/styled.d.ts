@@ -2,7 +2,6 @@ import 'styled-components';
 import { Brand } from '@devoinc/genesys-brand-devo';
 
 declare module 'styled-components' {
-  export interface DefaultTheme {
-    tokens: Brand;
-  }
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  export interface DefaultTheme extends Brand {}
 }

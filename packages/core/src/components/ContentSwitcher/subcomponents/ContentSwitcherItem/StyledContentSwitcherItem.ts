@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 // declarations
-import { ButtonSelectableState } from '@devoinc/genesys-ui';
+import { ButtonSelectableState } from '../../../';
 
 // styled
 import { StyledButton } from '../../../Button/StyledButton';
@@ -18,7 +18,7 @@ export const StyledContentSwitcherItem = styled(
   StyledButton
 )<StyledContentSwitcherItemProps>`
   ${({ state, theme, wide }) => {
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
     return css`
       ${wide &&
       css`
@@ -42,7 +42,7 @@ export const StyledContentSwitcherItem = styled(
       state !== 'selected' &&
       css`
         &:hover {
-          background-color: ${theme.tokens.cmp.button.color.background.blendBase
+          background-color: ${theme.cmp.button.color.background.blendBase
             .hovered};
         }
       `}

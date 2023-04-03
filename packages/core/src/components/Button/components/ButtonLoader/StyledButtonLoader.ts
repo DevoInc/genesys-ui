@@ -11,7 +11,7 @@ export const StyledButtonLoader = styled.svg.attrs(() => ({
   viewBox: '0 0 50 50',
 }))<StyledButtonLoaderProps>`
   ${({ size, theme }) => {
-    const tokens = theme.tokens.cmp.button.loader;
+    const tokens = theme.cmp.button.loader;
     const square = tokens.size.width[size];
     return css`
       width: ${square};

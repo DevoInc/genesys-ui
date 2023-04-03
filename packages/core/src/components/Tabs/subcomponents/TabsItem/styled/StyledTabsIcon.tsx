@@ -8,7 +8,7 @@ export interface StyledTabsIconProps extends IconProps {}
 export const StyledTabsIcon = styled(Icon)`
   ${({ theme }) => {
     return css`
-      margin-right: ${theme.tokens.cmp.tabs.item.space.margin.iconToText};
+      margin-right: ${theme.cmp.tabs.item.space.margin.iconToText};
     `;
   }}
 `;

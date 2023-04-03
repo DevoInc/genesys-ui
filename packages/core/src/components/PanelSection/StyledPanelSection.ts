@@ -22,7 +22,7 @@ export interface StyledPanelSectionProps {
 
 export const StyledPanelSection = styled.section<StyledPanelSectionProps>`
   ${({ contentSettings, hasScroll, headerSettings, theme }) => {
-    const tokensPanelSection = theme.tokens.cmp.panelSection;
+    const tokensPanelSection = theme.cmp.panelSection;
     const contentSpacing = tokensPanelSection.content.space;
     const headerPadding = tokensPanelSection.header.space.padding;
 

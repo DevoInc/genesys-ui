@@ -23,7 +23,7 @@ export const StyledProgressBarCustomInfoText = styled.span<StyledProgressBarCust
     })};
 
     & + & {
-      margin-left: ${theme.tokens.alias.space.cmp.sm};
+      margin-left: ${theme.alias.space.cmp.sm};
     }
   `};
 `;

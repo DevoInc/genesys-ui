@@ -12,7 +12,7 @@ const spacingSizeMap: { [key in ButtonSize]: ButtonSize } = {
 
 const getSpacingSize = (itemsGap: ButtonSize, theme: DefaultTheme) => {
   const sizeForSpacing = spacingSizeMap[itemsGap];
-  return theme.tokens.alias.space.cmp[sizeForSpacing];
+  return theme.alias.space.cmp[sizeForSpacing];
 };
 
 export interface StyledButtonGroupProps {
@@ -32,8 +32,7 @@ export const StyledButtonGroup = styled.ul<StyledButtonGroupProps>`
       align-items: center;
       gap: ${getSpacingSize(itemsGap, theme)};
       opacity: ${hidden ? '0' : null};
-      transition: all ease
-        ${theme.tokens.cmp.button.mutation.transitionDuration};
+      transition: all ease ${theme.cmp.button.mutation.transitionDuration};
       padding: 0;
       list-style: none;
 

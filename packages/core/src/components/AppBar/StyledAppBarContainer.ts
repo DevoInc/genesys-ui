@@ -5,7 +5,7 @@ import { Box } from '../Box';
 export const StyledAppBarContainer = styled(Box)`
   ${({ theme }) => {
     return css`
-      background-color: ${theme.tokens.cmp.appBar.color.background};
+      background-color: ${theme.cmp.appBar.color.background};
     `;
   }}
 `;

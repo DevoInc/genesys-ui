@@ -36,7 +36,7 @@ export const StyledContainer = styled(Container)<StyledContainerProps>`
     $removeHorizontalSpace = false,
     theme,
   }) => {
-    const layoutSpaceTokens = theme.tokens.alias.space.layout;
+    const layoutSpaceTokens = theme.alias.space.layout;
     const GUTTER_SIZE = layoutSpaceTokens[gutter.replace('layout-', '')];
     console.log(`${$marginTop && getSpacingPropCss($marginTop, theme)}`);
     return css`

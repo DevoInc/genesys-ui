@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import { CONTENT_SWITCHER_ITEM_SIZE_MAP } from './constants';
 
 // declarations
-import { BaseSize } from '@devoinc/genesys-ui';
+import { BaseSize } from '../../';
 
 // styled
 import { StyledFlex } from '../Flex/StyledFlex';
@@ -27,8 +27,8 @@ export const StyledContentSwitcher = styled((props) => (
   />
 ))<StyledContentSwitcherProps>`
   ${({ size, theme }) => {
-    const aliasTokens = theme.tokens.alias;
-    const buttonTokens = theme.tokens.cmp.button;
+    const aliasTokens = theme.alias;
+    const buttonTokens = theme.cmp.button;
     const baseSpace = aliasTokens.space.cmp.xs;
     const height = css`calc(${
       buttonTokens.size.height[CONTENT_SWITCHER_ITEM_SIZE_MAP[size]]

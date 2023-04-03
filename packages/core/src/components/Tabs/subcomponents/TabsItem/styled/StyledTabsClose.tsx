@@ -24,7 +24,7 @@ export const StyledTabsClose = styled(({ state, tooltip, ...props }) => {
 })<StyledTabsCloseProps>`
   ${({ theme }) => {
     return css`
-      margin-left: ${theme.tokens.cmp.tabs.item.space.margin.iconToText};
+      margin-left: ${theme.cmp.tabs.item.space.margin.iconToText};
     `;
   }}
 `;

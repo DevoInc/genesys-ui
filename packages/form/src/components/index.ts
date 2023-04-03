@@ -4,7 +4,7 @@ export * from './ColorPicker';
 export * from './FieldsCombiner';
 export * from './Input';
 export * from './Radio';
-export * from './Select2';
+export * from './Select';
 export * from './Switch';
 export * from './Textarea';
 export * from './UploadFiles';

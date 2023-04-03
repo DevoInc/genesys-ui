@@ -11,6 +11,6 @@ export const StyledToolbar = styled(Box)<StyledToolbar>`
     justify-content: space-between;
     align-items: center;
     position: relative;
-    background-color: ${theme.tokens.alias.color.background.surface.base.base};
+    background-color: ${theme.alias.color.background.surface.base.base};
   `}
 `;

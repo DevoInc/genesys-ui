@@ -13,7 +13,7 @@ export interface StyledInputControlIconProps {
 
 export const StyledInputControlIcon = styled.span<StyledInputControlIconProps>`
   ${({ size, status, theme, typeIcon }) => {
-    const fieldTokens = theme.tokens.alias.fields;
+    const fieldTokens = theme.alias.fields;
     const fieldIconTokens = fieldTokens.icon;
     const position = fieldTokens.space.padding.hor[size];
     const fs = fieldIconTokens.size.square[size];

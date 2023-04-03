@@ -8,7 +8,7 @@ import { useTheme } from 'styled-components';
 const LINK_LABEL = 'Link label';
 
 describe('Link', () => {
-  const { tokens } = useTheme();
+  const tokens = useTheme();
   const linkTokens = tokens.cmp.link;
 
   test('base, underlined, wide, lg, enabled, truncated', () => {

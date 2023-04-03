@@ -8,7 +8,7 @@ export interface StyledToolbarItemProps {
 
 export const StyledToolbarItem = styled.li<StyledToolbarItemProps>`
   ${({ $height, asSeparator, theme }) => {
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
     return css`
       margin: 0 ${aliasTokens.space.cmp.xs};
       height: ${$height};

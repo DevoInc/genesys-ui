@@ -12,7 +12,7 @@ interface StyledInlineMessagePanelProps {
 
 export const StyledInlineMessagePanel = styled.div<StyledInlineMessagePanelProps>`
   ${({ hasScroll = false, theme }) => {
-    const tokens = theme.tokens.cmp.inlineMessage;
+    const tokens = theme.cmp.inlineMessage;
 
     return css`
       ${StyledPanelHeaderContent} {

@@ -4,6 +4,6 @@ export const StyledItem = styled.li`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
-    gap: ${theme.tokens.cmp.stepper.item.space.gap};
+    gap: ${theme.cmp.stepper.item.space.gap};
   `};
 `;

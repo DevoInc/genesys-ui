@@ -10,11 +10,11 @@ export const StyledCalendarCell = styled.div`
   span {
     ${flexMixin({ dis: 'flex', ai: 'center', jc: 'center' })};
     ${({ theme }) => {
-      const cellSquare = theme.tokens.alias.size.square.handler.lg;
+      const cellSquare = theme.alias.size.square.handler.lg;
       return css`
         width: ${cellSquare};
         height: ${cellSquare};
-        border-radius: ${theme.tokens.alias.shape.borderRadius.full};
+        border-radius: ${theme.alias.shape.borderRadius.full};
       `;
     }};
     box-sizing: content-box;
@@ -32,7 +32,7 @@ export const StyledCalendarCell = styled.div`
 
   // range marker
   ${({ theme }) => {
-    const rangeMarkerBR = theme.tokens.alias.shape.borderRadius.pill;
+    const rangeMarkerBR = theme.alias.shape.borderRadius.pill;
     const rangeMarkerCss = css`
       content: '';
       position: absolute;
@@ -88,7 +88,7 @@ export const StyledCalendarCell = styled.div`
       week: weekTokens,
       day: dayTokens,
       interval: intervalTokens,
-    } = theme.tokens.cmp.calendar;
+    } = theme.cmp.calendar;
 
     return css`
       color: ${dayTokens.color.text.base};

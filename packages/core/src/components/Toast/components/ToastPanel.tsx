@@ -48,7 +48,7 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
   const showCollapsed = collapsable && collapsed;
   const theme = useTheme();
   const backgroundColor = accent
-    ? theme.tokens.cmp.toast.color.background[status]
+    ? theme.cmp.toast.color.background[status]
     : undefined;
 
   const headerContent = getHeaderContent({

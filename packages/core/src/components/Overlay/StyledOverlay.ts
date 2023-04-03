@@ -36,7 +36,7 @@ export const StyledOverlay = styled(Flex)<StyledOverlayProps>`
       bgColorScheme,
       bgGradient,
       opacity,
-      overlayBgTokens: theme.tokens.cmp.overlay.color.background,
+      overlayBgTokens: theme.cmp.overlay.color.background,
     });
 
     return css`

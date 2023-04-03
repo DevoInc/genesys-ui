@@ -5,6 +5,6 @@ export const StyledCalendar = styled.div`
   grid-template-columns: repeat(7, 1fr);
   align-items: center;
   justify-content: center;
-  row-gap: ${({ theme }) => theme.tokens.alias.space.cmp.xxs};
+  row-gap: ${({ theme }) => theme.alias.space.cmp.xxs};
   min-width: 21rem;
 `;

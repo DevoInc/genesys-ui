@@ -44,8 +44,8 @@ export const StyledButton = styled.button<StyledButtonProps>`
   }) => {
     const isIconButtonDropdown = icon && squared && hasDropdown;
     const colorSchemeForTokens = _.camelCase(colorScheme);
-    const buttonTokens = theme.tokens.cmp.button;
-    const IconButtonDropdownTokens = theme.tokens.cmp.iconButtonDropdown;
+    const buttonTokens = theme.cmp.button;
+    const IconButtonDropdownTokens = theme.cmp.iconButtonDropdown;
     const boxShadowTokens = buttonTokens.elevation.boxShadow;
     const boxShadowFocused = (
       boxShadowTokens[colorSchemeForTokens] || boxShadowTokens.base

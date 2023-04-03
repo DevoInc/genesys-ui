@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import {
   FieldSize,
   FieldStatus,
-  StyledSelect2Control,
+  StyledSelectControl,
   StyledInputControl,
   StyledButton,
 } from '@devoinc/genesys-ui';
@@ -22,9 +22,9 @@ export interface StyledFieldsCombinerElemProps {
 export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps>`
   ${({ size, elemWidth, first, theme, typeProp, status }) => {
     const isCheckOrButtonType = typeProp === 'button' || typeProp === 'check';
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
     const fieldTokens = aliasTokens.fields;
-    const btnTokens = theme.tokens.cmp.button;
+    const btnTokens = theme.cmp.button;
     const height = btnTokens.size.height[size];
     const width = btnTokens.size.square[size];
     const borderRadius = fieldTokens.shape.borderRadius;
@@ -35,7 +35,7 @@ export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps
       width: ${elemWidth};
 
       // Input, Select, Button and IconButton
-      ${StyledSelect2Control} .react-select__control,
+      ${StyledSelectControl} .react-select__control,
       ${StyledInputControl},
       ${StyledButton} {
         min-height: ${height};
@@ -50,17 +50,17 @@ export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps
 
       // Input, Select and Checkbox
       *:enabled:focus,
-      ${StyledSelect2Control} [class*='--is-focused'],
-      ${StyledSelect2Control} *:enabled:focus {
+      ${StyledSelectControl} [class*='--is-focused'],
+      ${StyledSelectControl} *:enabled:focus {
         box-shadow: none;
         z-index: 3;
       }
 
       // Input, Select, Button and IconButton
-      ${StyledSelect2Control},
-      ${StyledSelect2Control} ${StyledInputControl},
+      ${StyledSelectControl},
+      ${StyledSelectControl} ${StyledInputControl},
       ${StyledInputControl},
-      ${StyledSelect2Control} .react-select__control,
+      ${StyledSelectControl} .react-select__control,
       ${StyledButton},
       ${StyledButton}::before {
         ${first
@@ -80,7 +80,7 @@ export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps
             z-index: 1;
             flex: 0 auto;
 
-            ${StyledSelect2Control},
+            ${StyledSelectControl},
             ${StyledButton} {
               position: relative;
               z-index: 1;
@@ -155,7 +155,7 @@ export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps
       ${StyledFieldsCombinerWrapper}:hover > & {
         ${isCheckOrButtonType &&
         css`
-          ${StyledSelect2Control},
+          ${StyledSelectControl},
           ${StyledButton} {
             border-color: ${fieldTokens.color.border.base.hovered};
           }

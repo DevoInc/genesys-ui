@@ -45,7 +45,7 @@ export const StyledProgressBarCircularCircleInner = styled.circle.attrs(
   })
 )<StyledProgressBarCircularCircleInnerProps>`
   ${({ indeterminate, progress, percent, rad, theme }) => {
-    const progressBarTokens = theme.tokens.cmp.progressBar;
+    const progressBarTokens = theme.cmp.progressBar;
 
     return css`
       transition: stroke-dashoffset ease 0.3s;

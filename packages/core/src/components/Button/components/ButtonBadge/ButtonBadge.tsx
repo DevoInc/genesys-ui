@@ -28,7 +28,7 @@ export const ButtonBadge: React.FC<ButtonBadgeProps> = ({
   size = 'sm',
   text,
 }) => {
-  const { tokens } = useTheme();
+  const tokens = useTheme();
   return (
     <Box
       position="absolute"

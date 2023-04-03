@@ -18,7 +18,7 @@ export const StyledRadioControl = styled.input.attrs({
   type: 'radio',
 })<StyledRadioControlProps>`
   ${({ disabled = false, $size = 'md', status = 'base', theme }) => {
-    const cmpTokens = theme.tokens.cmp.radio;
+    const cmpTokens = theme.cmp.radio;
     const controlTokens = cmpTokens.control;
     const markerTokens = cmpTokens.controlMarker;
     const checkRadioTokens = getCheckRadioTokens({ status, theme });

@@ -20,10 +20,10 @@ export const StyledWrapper = styled.label<StyledWrapperProps>`
     status,
     theme,
   }) => {
-    const switchTokens = theme.tokens.cmp.switchControl;
+    const switchTokens = theme.cmp.switchControl;
     const textTokens = switchTokens.text;
     const trackTokens = switchTokens.track;
-    const focusBoxShadow = theme.tokens.alias.elevation.boxShadow.base.focused;
+    const focusBoxShadow = theme.alias.elevation.boxShadow.base.focused;
     const transitionDuration = trackTokens.mutation.transitionDuration;
     const minWidth = getPxFromRem(trackTokens.size.width[size]);
     const offset = +((heightProp - handleDiameter) / 2).toFixed(2);

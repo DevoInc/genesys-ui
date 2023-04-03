@@ -7,7 +7,7 @@ interface StyledModalActionsProps {
 
 export const StyledModalActions = styled.ul<StyledModalActionsProps>`
   ${({ theme, headerStyle }) => {
-    const tokensModal = theme.tokens.cmp.modal;
+    const tokensModal = theme.cmp.modal;
 
     return css`
       display: flex;
@@ -15,7 +15,7 @@ export const StyledModalActions = styled.ul<StyledModalActionsProps>`
       gap: ${tokensModal.headerButtons.space.gap};
       margin-left: auto;
       height: ${getLineHeight({
-        tokens: theme.tokens,
+        tokens: theme,
         variant: 'heading',
         size: headerStyle !== 'dialog' ? 'h4' : 'h5',
       })};

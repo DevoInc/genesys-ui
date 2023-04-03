@@ -12,9 +12,9 @@ const windowSizeMap: { [key in WindowSize]: string } = {
 
 export const StyledModal = styled.div<StyledModalProps>`
   ${({ theme, height, headerStyle, windowSize }) => {
-    const aliasTokens = theme.tokens.alias;
-    const tokensDialog = theme.tokens.cmp.dialog;
-    const tokensModal = theme.tokens.cmp.modal;
+    const aliasTokens = theme.alias;
+    const tokensDialog = theme.cmp.dialog;
+    const tokensModal = theme.cmp.modal;
 
     const getMaxWidth = () => {
       if (windowSize === 'fullscreen') {

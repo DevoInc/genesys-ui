@@ -5,9 +5,9 @@ import { StyledModalWithStatusProps } from '../declarations';
 
 export const StyledModalHeader = styled.header<StyledModalWithStatusProps>`
   ${({ theme, hasScroll, headerStyle, status }) => {
-    const modalTokens = theme.tokens.cmp.modal;
-    const modalHeaderTokens = theme.tokens.cmp.modal.header;
-    const aliasTokens = theme.tokens.alias;
+    const modalTokens = theme.cmp.modal;
+    const modalHeaderTokens = theme.cmp.modal.header;
+    const aliasTokens = theme.alias;
 
     return css`
       display: flex;
@@ -25,7 +25,7 @@ export const StyledModalHeader = styled.header<StyledModalWithStatusProps>`
         ${modalHeaderTokens.space.padding.left};
       padding-right: ${aliasTokens.space.cmp.sm};
       background-color: ${headerStyle === 'dialog' && status
-        ? theme.tokens.cmp.dialog.header.color.background[status]
+        ? theme.cmp.dialog.header.color.background[status]
         : 'inherit'};
 
       ${StyledDecoratorBar} {
