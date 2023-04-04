@@ -8,7 +8,7 @@ Package containing a set of components for form handling. It belongs to the [Gen
 Among others, this package contains the following components:
 
 ```
-Checkbox, FieldsCombiner, RadioGroupTextarea, CheckboxGroup, Input, Select2, UploadFiles, ColorPicker, Radio, Switch, ...
+Checkbox, FieldsCombiner, RadioGroupTextarea, CheckboxGroup, Input, Select, UploadFiles, ColorPicker, Radio, Switch, ...
 ```
 
 ## Preview

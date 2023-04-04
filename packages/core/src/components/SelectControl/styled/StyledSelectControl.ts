@@ -10,9 +10,6 @@ import { scrollbars } from '../../../styled/mixins/scrollbars';
 import { flexMixin } from '../../../styled/mixins';
 import { SelectOption } from '../declarations';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface StyledSelectControlProps extends ReactSelect {}
-
 export const StyledSelectControl = styled(ReactSelect).attrs(
   ({ className, classNamePrefix }) => ({
     classNamePrefix: classNamePrefix || 'react-select',
@@ -29,7 +26,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
     isMulti,
     menuIsOpen,
     readOnly,
-    size,
+    size = 'md',
     sortable,
     status,
     theme,
@@ -38,11 +35,11 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
   }) => {
     const state = getFieldState({ readOnly });
     const statusEval = getFieldStatus(status);
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
     const spacingTokens = aliasTokens.space;
     const fieldTokens = aliasTokens.fields;
     const fieldTransitionDuration = fieldTokens.mutation.transitionDuration;
-    const selectTokens = theme.tokens.cmp.select;
+    const selectTokens = theme.cmp.select;
     const defaultHorPadding = fieldTokens.space.padding.hor[size];
     const scrollSpacing = selectTokens.space.padding.scroll;
     const scrollOffset = spacingTokens.cmp.xxs;

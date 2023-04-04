@@ -36,7 +36,7 @@ export interface StyledMenuItemInnerProps
 
 export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
   ${({ hasExtraLeftSpace, state = 'enabled', theme }) => {
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
     const tokens = aliasTokens.menus.item;
     const horPadding = menuItemSizeConfig(theme).horPadding;
     const iconSize = menuItemSizeConfig(theme).iconSize;

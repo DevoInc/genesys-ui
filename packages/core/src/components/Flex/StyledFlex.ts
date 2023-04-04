@@ -3,7 +3,6 @@ import { LayoutFlexProps } from '../../declarations';
 
 import { getSpacingPropCss } from '../../utils/spacing';
 import { Box, BoxProps } from '../Box';
-import { StyledBox } from '../Box/StyledBox';
 
 export interface StyledFlexProps
   extends Omit<BoxProps, 'display'>,

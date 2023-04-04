@@ -22,7 +22,7 @@ export interface StyledFieldAddonProps
 
 export const StyledFieldAddon = styled.span<StyledFieldAddonProps>`
   ${({ position, size, theme }) => {
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
     const fieldTokens = aliasTokens.fields;
     const borderWidth = fieldTokens.shape.borderSize.base;
 

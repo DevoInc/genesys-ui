@@ -7,7 +7,7 @@ export interface StyledTabsProps {
 
 export const StyledTabs = styled.nav<StyledTabsProps>`
   ${({ contained, theme }) => {
-    const tokens = theme.tokens.cmp.tabs.container;
+    const tokens = theme.cmp.tabs.container;
     const boxShadow = `inset 0 ${tokens.shape.borderSize} 0 ${tokens.color.border},
                        inset 0 -${tokens.shape.borderSize} 0 ${tokens.color.border}`;
 

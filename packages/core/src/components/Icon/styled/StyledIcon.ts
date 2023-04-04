@@ -28,7 +28,7 @@ export const StyledIcon = styled.i.attrs(
 )<StyledIconProps>`
   ${({ color, size, status, strong, theme }) => {
     const validStatus = hasStatus(status) ? status : undefined;
-    const sizeTokens = theme.tokens.alias.size.square.icon.base;
+    const sizeTokens = theme.alias.size.square.icon.base;
     const sizeEval = (size && sizeTokens[size]) || size;
     return css`
       ${flexMixin({ dis: 'inline-flex', ai: 'center', jc: 'center' })}

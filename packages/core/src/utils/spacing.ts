@@ -6,7 +6,7 @@ import { GLOBAL_SPACING } from '../constants/spacing';
  * based in the theme object.
  */
 export const getSpacingValuesMap = (theme: DefaultTheme) => {
-  const spacingTks = theme.tokens.alias.space;
+  const spacingTks = theme.alias.space;
   return Object.fromEntries(
     GLOBAL_SPACING.map((valueName) => {
       const hyphenPos = valueName.indexOf('-');

@@ -1,7 +1,8 @@
-import { ActionMeta, Props, PropsValue } from 'react-select';
+import { ActionMeta, MultiValue, Props, PropsValue } from 'react-select';
 import { ChipSize } from '../../../src/components/Chip/declarations';
 import { FieldSize } from '../../declarations';
 import { SelectOption } from './declarations';
+import { SelectControlProps } from './SelectControl';
 
 /** A map of field sizes to chip sizes. */
 export const fieldSizeToChipSize: { [key in FieldSize]: ChipSize } = {
@@ -18,17 +19,14 @@ export const fieldSizeToChipSize: { [key in FieldSize]: ChipSize } = {
  */
 
 export const wrapperOnChange =
-  ({
+  <Option extends SelectOption>({
     onChange,
     value,
   }: {
-    onChange: Props<SelectOption>['onChange'];
-    value: Props<SelectOption>['value'];
+    onChange: Props<Option>['onChange'];
+    value: MultiValue<Option>;
   }) =>
-  (
-    newValue: PropsValue<SelectOption>,
-    actionMeta: ActionMeta<SelectOption>
-  ): void => {
+  (newValue: PropsValue<Option>, actionMeta: ActionMeta<Option>): void => {
     const REMOVE_ACTIONS = ['remove-value', 'pop-value'];
     const isRemoveAction = REMOVE_ACTIONS.includes(actionMeta.action);
     const isClearAction = actionMeta.action === 'clear';
@@ -46,7 +44,9 @@ export const wrapperOnChange =
  * or not based on the values of its properties such as isMulti, hideSelectedOptions,
  * creatable, value, and options."
  */
-export const showMenuAndDropDown = (selectProps: Props): boolean => {
+export const showMenuAndDropDown = <Option extends SelectOption>(
+  selectProps: Props<Option>
+): boolean => {
   return (
     (selectProps.isMulti &&
       selectProps.hideSelectedOptions &&
@@ -63,9 +63,12 @@ export const showMenuAndDropDown = (selectProps: Props): boolean => {
  * a single-level array by either concatenating
  * the nested options or adding the option to the accumulator."
  */
-const flattenOptionsFn = (acc: SelectOption[], option: Props<SelectOption>) => {
-  if (option.options && Array.isArray(option.options)) {
-    return [...acc, ...option.options.reduce(flattenOptionsFn, [])];
+const flattenOptionsFn = <Option extends SelectOption>(
+  acc: Option[],
+  option: Props<Option>
+) => {
+  if ('options' in option && Array.isArray(option.options)) {
+    return [...acc, ...option.options.reduce<Option[]>(flattenOptionsFn, [])];
   }
   return [...acc, option];
 };
@@ -77,9 +80,9 @@ const flattenOptionsFn = (acc: SelectOption[], option: Props<SelectOption>) => {
  * It takes into account multi valued inputs.
  * Values are always initialized as '' when undefined inputs are found
  */
-export const findValue = (
-  value: PropsValue<SelectOption>,
-  options: Props<SelectOption>['options'],
+export const findValue = <Option extends SelectOption>(
+  value: SelectControlProps<Option>['value'],
+  options: Props<Option>['options'],
   isMulti: boolean
 ) => {
   const defaultValue = value || '';
@@ -93,7 +96,7 @@ export const findValue = (
         .map((val) => {
           if (val?.__isNew__) return val;
 
-          return options.find((option) =>
+          return (options as Option[]).find((option) =>
             val instanceof Object
               ? option.value === val.value
               : option.value === val
@@ -114,7 +117,7 @@ export const findValue = (
        * be the previous one, so it can lead to a misunderstanding.
        */
       const found = flattenedOptions.find((option) =>
-        value instanceof Object
+        value && typeof value === 'object' && 'value' in value
           ? option.value === value.value || ''
           : option.value === value || ''
       );

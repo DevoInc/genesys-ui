@@ -23,7 +23,7 @@ export interface StyledTagGroupLabelProps extends Pick<StyledTagProps, 'size'> {
 
 export const StyledTagGroupLabel = styled.div<StyledTagGroupLabelProps>`
   ${({ labelPosition, size, theme }) => {
-    const tokens = theme.tokens.cmp.tagGroup.label;
+    const tokens = theme.cmp.tagGroup.label;
     return css`
       display: flex;
       align-items: center;
@@ -44,7 +44,7 @@ export interface StyledTagGroupListProps extends Pick<StyledTagProps, 'size'> {}
 
 export const StyledTagGroupList = styled.div<StyledTagGroupListProps>`
   ${({ size, theme }) => {
-    const tokens = theme.tokens.cmp.tagGroup.item;
+    const tokens = theme.cmp.tagGroup.item;
     return css`
       display: inline-flex;
       align-items: center;

@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Select2 } from './Select2';
+import { Select } from './Select';
 
-const meta: Meta<typeof Select2> = {
-  title: 'Components/Form/Select2',
-  component: Select2,
+const meta: Meta<typeof Select> = {
+  title: 'Components/Form/Select',
+  component: Select,
   args: {
     hasWideControl: true,
     id: 'select-id',
@@ -31,6 +31,6 @@ const meta: Meta<typeof Select2> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Select2>;
+type Story = StoryObj<typeof Select>;
 
 export const Base: Story = {};

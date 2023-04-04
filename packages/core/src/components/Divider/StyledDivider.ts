@@ -30,12 +30,12 @@ export const StyledDivider = styled.hr<StyledDividerProps>`
     vertical = false,
     $width,
   }) => {
-    const defaultSpacing = theme.tokens.alias.space.cmp.md;
+    const defaultSpacing = theme.alias.space.cmp.md;
     const spacing = margin ? getSpacingPropCss(margin, theme) : defaultSpacing;
-    const borderSize = theme.tokens.alias.shape.borderSize.separator.md;
+    const borderSize = theme.alias.shape.borderSize.separator.md;
     const bgColor =
       customColor ||
-      getDividerColorTokens(theme.tokens.alias.color.border)[colorScheme];
+      getDividerColorTokens(theme.alias.color.border)[colorScheme];
     return css`
       position: relative;
       flex-shrink: 0;
@@ -46,7 +46,7 @@ export const StyledDivider = styled.hr<StyledDividerProps>`
       border: none;
       width: ${$width || vertical ? borderSize : '100%'};
       height: ${$height || vertical
-        ? theme.tokens.alias.size.height.surface.xxs
+        ? theme.alias.size.height.surface.xxs
         : borderSize};
       background: ${bgColor};
     `;

@@ -5,8 +5,8 @@ import { StyledButton } from '../../../Button/StyledButton';
 
 export const StyledIconButtonStop = styled(StyledButton)`
   ${({ size, state, theme }) => {
-    const tokens = theme.tokens.cmp.button;
-    const iconTokens = theme.tokens.cmp.iconButtonStop;
+    const tokens = theme.cmp.button;
+    const iconTokens = theme.cmp.iconButtonStop;
     const circle = `calc(${tokens.size.height[size]} - 0.8rem)`;
     return css`
       -webkit-font-smoothing: antialiased;

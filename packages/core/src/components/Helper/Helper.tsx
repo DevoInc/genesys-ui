@@ -28,7 +28,7 @@ export const Helper: React.FC<HelperProps> = ({
   status = 'base',
   ...restNativeProps
 }) => {
-  const { tokens } = useTheme();
+  const tokens = useTheme();
   const iconColorTokens = tokens.alias.color.background.feedback;
 
   return (

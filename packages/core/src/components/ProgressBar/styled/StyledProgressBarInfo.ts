@@ -18,12 +18,12 @@ export interface StyledProgressBarInfoProps
 
 export const StyledProgressBarInfo = styled.div<StyledProgressBarInfoProps>`
   ${({ colorScheme, progress, size, theme, typeProp }) => {
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
 
     return css`
       --icon-size: ${typeProp === 'circular'
-        ? theme.tokens.alias.typo.fontSize.icon[ICON_CIRCULAR_SIZE[size]]
-        : theme.tokens.alias.typo.fontSize.icon[size]};
+        ? theme.alias.typo.fontSize.icon[ICON_CIRCULAR_SIZE[size]]
+        : theme.alias.typo.fontSize.icon[size]};
       --items-color: ${getColor({
         colorScheme,
         progress,

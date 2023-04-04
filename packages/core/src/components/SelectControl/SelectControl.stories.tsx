@@ -1,8 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { SelectOption } from './declarations';
 
-import { SelectControl } from './SelectControl';
+import { SelectControl, SelectControlProps } from './SelectControl';
 
-const meta: Meta<typeof SelectControl> = {
+interface SelectControlOption extends SelectOption {
+  isDisabled?: boolean;
+}
+
+const meta: Meta<SelectControlProps<SelectControlOption>> = {
   title: 'Components/Core/Form/SelectControl',
   component: SelectControl,
   args: {
@@ -20,6 +25,6 @@ const meta: Meta<typeof SelectControl> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof SelectControl>;
+type Story = StoryObj<SelectControlProps<SelectControlOption>>;
 
 export const Base: Story = {};

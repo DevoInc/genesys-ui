@@ -8,7 +8,7 @@ export const getPadding = ({
 }: {
   size: ChipSize;
   sortable?: boolean;
-  tokens: DefaultTheme['tokens']['cmp']['chip'];
+  tokens: DefaultTheme['cmp']['chip'];
 }) => {
   const symmetricPadding = `0 ${tokens.space.padding.hor[size]}`;
   const asymmetricPadding = `${symmetricPadding} 0 2rem`;

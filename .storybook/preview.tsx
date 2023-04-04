@@ -10,13 +10,12 @@ import '@devoinc/genesys-icons/dist/gi-styles.css';
 
 import { BackToTop, TableOfContents } from '../.storybook/docs/blocks';
 import { Box } from '../packages/core/src/';
+import { StoryWrapper } from '../packages/core/stories/components/StoryWrapper';
+
 // Styles
 // import './assets/styles/preview/preview.scss'; // This styles should only apply in the documentation
 // import { DocsContainerDefault } from '../components/DocsContainer';
 import './preview.scss';
-import { useMutationObserver } from './docs/blocks/TOC/useMutationObserver';
-import { useHeadsObserver } from './docs/blocks/TOC/useHeadsObserver';
-import { StoryWrapper } from '../packages/core/stories/components/StoryWrapper';
 
 // Ad-hoc styles for SB documentation
 const customTheme = create({
@@ -105,9 +104,7 @@ const preview: Preview = {
       </StoryWrapper>
     ),
     (Story, { globals }) => (
-      <ThemeProvider
-        theme={{ tokens: globals.theme === 'light' ? light : dark }}
-      >
+      <ThemeProvider theme={{ ...(globals.theme === 'light' ? light : dark) }}>
         <Story />
       </ThemeProvider>
     ),

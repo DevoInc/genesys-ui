@@ -12,7 +12,7 @@ export interface StyledStoryWrapperProps extends StyledBoxProps {
 
 export const StyledStoryWrapper = styled(StyledBox)<StyledStoryWrapperProps>`
   ${({ bgColor, theme }) => {
-    const defaultColor = theme.tokens.alias.color.background.surface.base.base;
+    const defaultColor = theme.alias.color.background.surface.base.base;
     return css`
       background-color: ${bgColor || defaultColor};
     `;

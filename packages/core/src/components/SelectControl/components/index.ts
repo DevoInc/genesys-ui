@@ -1,6 +1,7 @@
 export * from './ClearIndicator';
 export * from './DropdownIndicator';
 export * from './Menu';
+export * from './MenuList';
 export * from './MultiValueContainer';
 export * from './MultiValueLabel';
 export * from './MultiValueRemove';

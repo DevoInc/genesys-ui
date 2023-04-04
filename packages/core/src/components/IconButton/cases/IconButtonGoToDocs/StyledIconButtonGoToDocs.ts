@@ -9,8 +9,8 @@ import { StyledButton } from '../../../Button/StyledButton';
 
 export const StyledIconButtonGoToDocs = styled(StyledButton)`
   ${({ colorScheme, size, state, theme }) => {
-    const statusTokens = theme.tokens.cmp.iconButtonStatus;
-    const markerTokens = theme.tokens.cmp.iconButtonGoToDocs.marker;
+    const statusTokens = theme.cmp.iconButtonStatus;
+    const markerTokens = theme.cmp.iconButtonGoToDocs.marker;
     const fontSize =
       size && getMarkerSize({ tokens: markerTokens, size }).fontSize;
     const offset = size && getMarkerSize({ tokens: markerTokens, size }).offset;

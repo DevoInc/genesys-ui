@@ -123,7 +123,7 @@ export const truncateTypoMixin = (
  */
 export const getTypoObject = ({
   variant = 'body',
-  theme: { tokens },
+  theme: tokens,
   size = 'md',
 }: {
   variant?: TypoVariant;
@@ -167,7 +167,7 @@ export const typoMixin = ({
   bold = false,
   variant = 'body',
   textAlign,
-  theme: { tokens },
+  theme: tokens,
   size = 'md',
 }: {
   bold?: boolean;
@@ -178,7 +178,7 @@ export const typoMixin = ({
 }): FlattenSimpleInterpolation => {
   const typoObject = getTypoObject({
     variant,
-    theme: { tokens },
+    theme: tokens,
     size,
   });
   return css`
@@ -222,7 +222,7 @@ const getUiTokenValueByColorScheme = (uiTokens, uiColorScheme) => {
 export const typoColorMixin = ({
   variant = 'body',
   colorScheme = 'base',
-  theme: { tokens },
+  theme: tokens,
 }: {
   variant?: TypoVariant;
   colorScheme?: TypoColorScheme;

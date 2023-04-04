@@ -20,7 +20,7 @@ ForwardedStyledComponent.displayName = 'ForwardedStyledComponent';
 
 export const StyledTabsContent = styled(ForwardedStyledComponent)`
   ${({ theme }) => {
-    const tokens = theme.tokens.cmp.tabs.content;
+    const tokens = theme.cmp.tabs.content;
     return css`
       width: 100%;
       margin: 0 -${tokens.space.padding};

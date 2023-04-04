@@ -40,8 +40,8 @@ interface StyledSelectChipProps {
 
 export const StyledSelectChip = styled(StyledChip)<StyledSelectChipProps>`
   ${({ theme, sortable }) => {
-    const selectTokens = theme.tokens.cmp.select;
-    const aliasTokens = theme.tokens.alias;
+    const selectTokens = theme.cmp.select;
+    const aliasTokens = theme.alias;
     const chipTokens = selectTokens.chip;
     const chipRemoveTokens = selectTokens.chipRemove;
     return css`

@@ -7,7 +7,7 @@ export const StyledSeparator = styled((props) => (
   <Icon {...props} aria-label="Steps separator" iconId="arrow_right" />
 ))`
   ${({ theme }) => css`
-    color: ${theme.tokens.cmp.stepper.separator.color.background};
-    margin-right: ${theme.tokens.cmp.stepper.separator.space.marginHor};
+    color: ${theme.cmp.stepper.separator.color.background};
+    margin-right: ${theme.cmp.stepper.separator.space.marginHor};
   `};
 `;

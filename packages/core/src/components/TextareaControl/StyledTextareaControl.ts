@@ -25,9 +25,8 @@ export const StyledTextareaControl = styled.textarea.attrs({
   forwardedAs: 'textarea',
 })<StyledTextareaControlProps>`
   ${({ disabled, readOnly, resize = 'both', $size, theme }) => {
-    const { tokens } = theme;
-    const fieldTokens = tokens.alias.fields;
-    const fieldLineHeight = getLineHeight({ tokens, size: $size });
+    const fieldTokens = theme.alias.fields;
+    const fieldLineHeight = getLineHeight({ tokens: theme, size: $size });
 
     const fieldHeight = fieldTokens.size.height[$size];
     const verPadding = css`calc((${fieldHeight} - ${fieldLineHeight}) / 2)`;

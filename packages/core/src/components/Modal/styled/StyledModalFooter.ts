@@ -4,7 +4,7 @@ import { StyledModalProps } from '../declarations';
 
 export const StyledModalFooter = styled.footer<StyledModalProps>`
   ${({ theme, hasScroll, headerStyle }) => {
-    const modalTokens = theme.tokens.cmp.modal;
+    const modalTokens = theme.cmp.modal;
     const footerTokens = modalTokens.footer;
     const footerButtonTokens = modalTokens.footerButtons;
 

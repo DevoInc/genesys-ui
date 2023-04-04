@@ -12,9 +12,9 @@ export interface StyledContentProps {
 
 export const StyledContent = styled(Panel)<StyledContentProps>`
   ${({ expanded, showProgressBar, status, theme }) => {
-    const tokensPanel = theme.tokens.cmp.panel;
-    const tokensPanelHeader = theme.tokens.cmp.panel.header;
-    const tokensToast = theme.tokens.cmp.toast;
+    const tokensPanel = theme.cmp.panel;
+    const tokensPanelHeader = theme.cmp.panel.header;
+    const tokensToast = theme.cmp.toast;
 
     const getHeaderShadowCss = `
       ${StyledPanelHeader} {

@@ -50,7 +50,7 @@ export const StyledSelectMenu = styled.div.attrs({
     size = 'sm',
     theme,
   }) => {
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
     const elevationTokens = aliasTokens.elevation;
     const surfaceTokens = aliasTokens.color.background.surface;
     const fieldTokens = aliasTokens.fields;
@@ -97,6 +97,9 @@ export const StyledSelectMenu = styled.div.attrs({
               : listTokens.size.maxHeight};
             min-height: ${minMenuHeight && `${minMenuHeight}px`};
             padding: 0;
+
+            // Override react-select's style to fix issue with scroll bar.
+            width: auto !important;
           }
         }
 

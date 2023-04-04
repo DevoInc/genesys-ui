@@ -23,12 +23,12 @@ export const StyledMenuItem = styled.li<StyledMenuItemProps>`
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
   letter-spacing: 0;
-  color: ${({ theme }) => theme.tokens.alias.menus.item.color.text.enabled};
+  color: ${({ theme }) => theme.alias.menus.item.color.text.enabled};
 
   background-color: ${({ selected, highlighted, theme }) =>
     selected
-      ? theme.tokens.alias.menus.item.color.background.activated
-      : checkIsHighlighted(highlighted, theme.tokens.alias.menus.item.color)};
+      ? theme.alias.menus.item.color.background.activated
+      : checkIsHighlighted(highlighted, theme.alias.menus.item.color)};
 
   ${({ disabled, theme }) =>
     disabled
@@ -39,12 +39,10 @@ export const StyledMenuItem = styled.li<StyledMenuItemProps>`
       : css`
           cursor: pointer;
           > div:hover {
-            background-color: ${theme.tokens.alias.menus.item.color.backdrop
-              .hovered};
+            background-color: ${theme.alias.menus.item.color.backdrop.hovered};
           }
           > div:focus {
-            background-color: ${theme.tokens.alias.menus.item.color.backdrop
-              .hovered};
+            background-color: ${theme.alias.menus.item.color.backdrop.hovered};
           }
         `}
 `;

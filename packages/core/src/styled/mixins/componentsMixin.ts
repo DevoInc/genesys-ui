@@ -26,7 +26,7 @@ export const getCheckRadioTokens = ({
   status = 'base',
   theme,
 }: CheckRadioProps) => {
-  const fieldTokens = theme.tokens.alias.fields;
+  const fieldTokens = theme.alias.fields;
   return {
     borderColor: fieldTokens.color.border[status].enabled,
     borderColorChecked: fieldTokens.color.border[status].checked,

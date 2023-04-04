@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components';
 
 export const StyledHeaderButton = styled.button`
   ${({ theme }) => {
-    const colorTokens = theme?.tokens?.alias?.color;
-    const elevationTokens = theme?.tokens?.alias?.elevation;
+    const colorTokens = theme?.alias?.color;
+    const elevationTokens = theme?.alias?.elevation;
 
     return css`
       all: unset;

@@ -6,7 +6,7 @@ export interface StyledHeaderProps {
 
 export const StyledHeader = styled.div<StyledHeaderProps>`
   ${({ expanded, theme }) => {
-    const colorTokens = theme?.tokens?.alias?.color;
+    const colorTokens = theme?.alias?.color;
 
     return css`
       position: relative;

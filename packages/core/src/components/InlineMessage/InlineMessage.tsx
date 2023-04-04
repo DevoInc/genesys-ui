@@ -52,7 +52,7 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
   trigger,
   zIndex,
 }) => {
-  const { tokens } = useTheme();
+  const tokens = useTheme();
   const zIndexDefault = tokens.alias.elevation.zIndex.depth.activated;
   return (
     <Popper

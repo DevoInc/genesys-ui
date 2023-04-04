@@ -15,7 +15,7 @@ export interface StyledButtonIconProps {
 
 export const StyledButtonIcon = styled.i<StyledButtonIconProps>`
   ${({ hasBoldIcon, size, theme }) => {
-    const tokens = theme.tokens.cmp.button.icon;
+    const tokens = theme.cmp.button.icon;
     return css`
       position: relative;
       transition: transform ease 0.15s;

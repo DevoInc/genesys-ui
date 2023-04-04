@@ -6,7 +6,7 @@ import {
   Label,
   IconButton,
   InputControl,
-  Select2Control,
+  SelectControl,
   FlexItem,
   Box,
 } from '../';
@@ -108,7 +108,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   // Functions
   const onChangeRangeSelect = React.useCallback(
-    (e: HTMLSelectElement) => setPageSize(parseInt(e.value)),
+    (option) => setPageSize(parseInt(option.value)),
     [setPageSize]
   );
   const onInputChange = React.useCallback(
@@ -145,7 +145,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           <FlexItem as="li">
             <HFlex spacing="cmp-xxs">
               <FlexItem>
-                <Select2Control
+                <SelectControl
                   id={id ? `${id}-page-range-selector` : null}
                   noOptionsMessage={noOptionsMessage}
                   onChange={onChangeRangeSelect}
@@ -211,10 +211,10 @@ export const Pagination: React.FC<PaginationProps> = ({
               </FlexItem>
             ) : (
               <FlexItem as="li">
-                <Select2Control
+                <SelectControl
                   aria-label={pageSelectorLabel}
                   data-tip={isMenuOpen ? '' : pageTooltip}
-                  disabled={lastPage === 0}
+                  isDisabled={lastPage === 0}
                   id={id ? `${id}-page-selector` : null}
                   noOptionsMessage={noOptionsMessage}
                   onChange={onChange}

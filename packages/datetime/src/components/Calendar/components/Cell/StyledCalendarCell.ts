@@ -90,7 +90,7 @@ export const StyledCalendarCell = styled.div`
       week: weekTokens,
       day: dayTokens,
       interval: intervalTokens,
-    } = theme.tokens.cmp.calendar;
+    } = theme.cmp.calendar;
 
     return css`
       color: ${dayTokens.color.text.base};

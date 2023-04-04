@@ -72,7 +72,7 @@ export const StyledProgressBarStandard = styled.div.attrs(
     size,
     theme,
   }) => {
-    const progressBarTokens = theme.tokens.cmp.progressBar;
+    const progressBarTokens = theme.cmp.progressBar;
 
     return css`
       --height: ${progressBarTokens.size.height[size]};

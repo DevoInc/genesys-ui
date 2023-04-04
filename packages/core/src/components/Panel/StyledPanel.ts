@@ -114,7 +114,7 @@ export interface StyledPanelFooterProps {
 export const StyledPanelFooter = styled.footer<StyledPanelFooterProps>`
   ${({ footerSettings, hasScroll, theme }) => {
     const panelTokensFooter = getPanelTokens(theme).footer;
-    const footerModalTokens = theme.tokens.cmp.modal.footer;
+    const footerModalTokens = theme.cmp.modal.footer;
 
     return css`
       z-index: 1;

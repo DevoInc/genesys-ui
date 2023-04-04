@@ -146,15 +146,18 @@ const getClassesForDay = ({
   hasRightHoverEffect,
   hover,
   invalidDates = [],
+  lastDayOfMonth,
   to,
   validateDate,
 }: ClassConditionParams & {
-  validateDate: (ts: number) => boolean;
   invalidDates: number[];
+  lastDayOfMonth: number;
+  validateDate: (ts: number) => boolean;
 }): string[] => [
   ...(hasDisabled({ dayTime, validateDate, invalidDates }) ? ['disabled'] : []),
   ...(dayTime === from || dayTime === to ? ['selected'] : []),
   ...(dayTime === from && to ? ['from-selected'] : []),
+  ...(dayTime === lastDayOfMonth ? ['month-last-day'] : []),
   ...(dayTime === to && from ? ['to-selected'] : []),
   ...(dayTime >= from && dayTime <= to ? ['highlight'] : []),
   ...(hasBoxShadowRight({ hover, from, to, dayTime, hasRightHoverEffect })
@@ -181,18 +184,20 @@ export const parseDays = ({
   hasLeftHoverEffect,
   hasRightHoverEffect,
   hover,
+  invalidDates = [],
+  lastDayOfMonth,
   to,
   validateDate,
-  invalidDates = [],
 }: {
   days: Date[];
   from: number;
   hasLeftHoverEffect: boolean;
   hasRightHoverEffect: boolean;
   hover: number;
+  invalidDates: number[];
+  lastDayOfMonth: number;
   to: number;
   validateDate: (ts: number) => boolean;
-  invalidDates: number[];
 }): { value: string; ts: number; classes: string }[] =>
   days.map((day) => {
     const dayTime = day.getTime();
@@ -204,12 +209,13 @@ export const parseDays = ({
     const classes: string[] = getClassesForDay({
       dayTime,
       from: startOfFrom,
-      to: startOfTo,
-      hover,
       hasLeftHoverEffect,
       hasRightHoverEffect,
-      validateDate,
+      hover,
       invalidDates,
+      lastDayOfMonth,
+      to: startOfTo,
+      validateDate,
     });
 
     return {

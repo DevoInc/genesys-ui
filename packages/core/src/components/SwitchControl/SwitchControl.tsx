@@ -55,7 +55,7 @@ export const SwitchControl: React.FC<SwitchControlProps> = ({
   uncheckedContent,
   ...restNativeProps
 }) => {
-  const { tokens } = useTheme();
+  const tokens = useTheme();
   const switchTokens = tokens.cmp.switchControl;
   const trackTokens = switchTokens.track;
   const handlerTokens = switchTokens.handler;

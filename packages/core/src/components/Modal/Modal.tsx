@@ -79,7 +79,7 @@ export const Modal: React.FC<ModalProps> = ({
   shouldCloseOnOverlayClick = true,
   windowSize = 'medium',
 }) => {
-  const { tokens } = useTheme();
+  const tokens = useTheme();
   const { setRef: modalContentRef, size: measures } = useContainerDimensions();
   const [hasScroll, setHasScroll] = React.useState(false);
   React.useLayoutEffect(

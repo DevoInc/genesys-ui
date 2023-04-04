@@ -5,7 +5,7 @@ import { StyledButton } from '../../../Button/StyledButton';
 
 export const StyledIconButtonStatus = styled(StyledButton)`
   ${({ state, colorScheme, theme }) => {
-    const tokens = theme.tokens.cmp.iconButtonStatus;
+    const tokens = theme.cmp.iconButtonStatus;
     return iconButtonStatusMixin({ state, tokens, colorScheme });
   }};
 `;

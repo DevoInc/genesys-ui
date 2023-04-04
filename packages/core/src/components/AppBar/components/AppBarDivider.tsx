@@ -9,7 +9,7 @@ export interface AppBarDividerProps {
 }
 
 export const AppBarDivider: React.FC<AppBarDividerProps> = ({ id }) => {
-  const appBarDividerTokens = useTheme().tokens.cmp.appBar.divider;
+  const appBarDividerTokens = useTheme().cmp.appBar.divider;
 
   return (
     <FlexItem id={`${id}__divider`}>

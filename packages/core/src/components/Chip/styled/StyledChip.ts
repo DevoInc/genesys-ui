@@ -21,7 +21,7 @@ export interface StyledChipProps {
 
 export const StyledChip = styled.label<StyledChipProps>`
   ${({ size = 'md', sortable = false, state = 'enabled', theme }) => {
-    const chipTokens = theme.tokens.cmp.chip;
+    const chipTokens = theme.cmp.chip;
     const backdropHovered = chipTokens.color.backdrop.hovered;
     const backdropFocused = chipTokens.color.backdrop.focused;
     const backdropPressed = chipTokens.color.backdrop.pressed;

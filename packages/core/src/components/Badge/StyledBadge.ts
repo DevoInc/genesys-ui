@@ -39,7 +39,7 @@ export const StyledBadge = styled.span<StyledBadgeProps>`
   }) => {
     const colorSchemeForTokens = _.camelCase(colorScheme);
     const contentType = text || iconName ? 'hasContent' : 'isEmpty';
-    const cmpTokens = theme.tokens.cmp.badge;
+    const cmpTokens = theme.cmp.badge;
     const squareSize = cmpTokens.size.square[contentType][size];
     const bgColor = isValidColor(colorScheme)
       ? colorScheme
@@ -88,7 +88,7 @@ interface StyledBadgeIconProps {
 
 export const StyledBadgeIcon = styled.i<StyledBadgeIconProps>`
   ${({ hasBoldIcon, size, theme }) => {
-    const cmpTokens = theme.tokens.cmp.badge.icon;
+    const cmpTokens = theme.cmp.badge.icon;
     const squareSize = cmpTokens.size.square[size];
     return css`
       position: relative;

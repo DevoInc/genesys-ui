@@ -41,7 +41,7 @@ export const scrollbars = ({
   trackRadius,
   theme,
 }: ScrollbarsProps) => {
-  const scrollbarTokens = theme.tokens.alias.scrollbars;
+  const scrollbarTokens = theme.alias.scrollbars;
   const sizeEval = size || scrollbarTokens.size.square.md || '0.8rem';
   return css`
     // For Google Chrome

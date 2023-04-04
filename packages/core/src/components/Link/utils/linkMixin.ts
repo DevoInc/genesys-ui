@@ -25,7 +25,7 @@ export const linkMixin = ({
   const getLinkColorByState = (linkState = state) =>
     getLinkColor({
       colorScheme,
-      themeScheme: theme.tokens.meta.scheme,
+      themeScheme: theme.meta.scheme,
       state: linkState,
       colorTokens: linkTokens.color.text,
     });

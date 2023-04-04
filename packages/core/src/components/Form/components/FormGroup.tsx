@@ -72,7 +72,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   ...restNativeAttrProps
 }) => {
   // to get vertically aligned the label with the control block anyway
-  const labelLineHeight = useTheme().tokens.alias.typo.lineHeight.body.md;
+  const labelLineHeight = useTheme().alias.typo.lineHeight.body.md;
   const FloatingHelperBlock = (
     <Flex
       inline

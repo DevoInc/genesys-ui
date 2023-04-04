@@ -16,42 +16,57 @@ import type {
 } from '../../declarations';
 import { SelectComponents } from 'react-select/dist/declarations/src/components';
 import { SelectOption } from './declarations';
-import { GroupBase } from 'react-select';
+import { GroupBase, MultiValue, PropsValue } from 'react-select';
 
-interface SelectControlProps
-  extends InnerSelectControlProps,
+export interface SelectControlProps<
+  Option extends SelectOption = SelectOption,
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> extends Omit<
+      InnerSelectControlProps<Option, IsMulti, Group>,
+      'value' | 'option'
+    >,
     //native
     FieldAriaProps,
     GlobalAriaProps,
-    GlobalAttrProps {}
+    GlobalAttrProps {
+  value?: PropsValue<Option> | Option['value'];
+  onChange?: (value: PropsValue<Option>) => void;
+}
 
-export const SelectControl: React.FC<SelectControlProps> = ({
+export const SelectControl = <
+  Option extends SelectOption = SelectOption,
+  IsMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>({
   components,
   styles,
   value,
   isClearable,
   ...rest
-}) => {
+}: SelectControlProps<Option, IsMulti, Group>) => {
   const defaultStyles = React.useMemo(
     () => ({
-      menuPortal: (base) => ({
+      menuPortal: (base: React.CSSProperties) => ({
         ...base,
         zIndex: rest.menuAppendToBody ? 10000 : '',
       }),
-      menuList: (base) => ({
-        ...base,
-        maxHeight: rest.maxMenuHeight
-          ? rest.selectAllBtn
-            ? `calc(${rest.maxMenuHeight}px - ${CUSTOM_HEIGHT[rest.size]}px)`
-            : rest.maxMenuHeight
-          : rest.selectAllBtn
-          ? `calc(200px - ${CUSTOM_HEIGHT[rest.size]}px)`
-          : '200px',
-        minHeight:
-          rest.minMenuHeight && rest.selectAllBtn
-            ? `calc(${rest.minMenuHeight}px - ${CUSTOM_HEIGHT[rest.size]}px)`
-            : rest.minMenuHeight,
-      }),
+      menuList: (base: React.CSSProperties) => {
+        return {
+          ...base,
+          maxHeight: rest.maxMenuHeight
+            ? rest.selectAllBtn
+              ? rest.maxMenuHeight - CUSTOM_HEIGHT[rest.size]
+              : rest.maxMenuHeight
+            : rest.selectAllBtn
+            ? 200 - CUSTOM_HEIGHT[rest.size]
+            : 200,
+          minHeight:
+            rest.minMenuHeight && rest.selectAllBtn
+              ? rest.minMenuHeight - CUSTOM_HEIGHT[rest.size]
+              : rest.minMenuHeight,
+        };
+      },
       multiValueRemove: () => '',
     }),
     [
@@ -63,21 +78,24 @@ export const SelectControl: React.FC<SelectControlProps> = ({
     ]
   ) as React.CSSProperties;
 
-  const areThereFixedOptions = React.useMemo(
+  const hasFixedOptions = React.useMemo(
     () => Array.isArray(value) && value.some(({ fixed }) => fixed),
     [value]
   );
 
   const onChange =
-    areThereFixedOptions &&
-    wrapperOnChange({ onChange: rest.onChange, value: value });
+    hasFixedOptions &&
+    wrapperOnChange({
+      onChange: rest.onChange,
+      value: value as MultiValue<Option>,
+    });
 
   const clearable = React.useMemo(
     () =>
-      isClearable === undefined && areThereFixedOptions
-        ? value.some(({ fixed }) => !fixed)
+      isClearable === undefined && hasFixedOptions
+        ? (value as MultiValue<Option>).some(({ fixed }) => !fixed)
         : isClearable,
-    [areThereFixedOptions, isClearable, value]
+    [hasFixedOptions, isClearable, value]
   );
 
   const menuPortalTarget = React.useMemo(
@@ -102,18 +120,17 @@ export const SelectControl: React.FC<SelectControlProps> = ({
   );
 
   return (
-    <InnerSelectControl
+    <InnerSelectControl<Option, IsMulti, Group>
       {...rest}
       minMenuHeight={0}
-      size="sm"
       menuPortalTarget={menuPortalTarget}
       isClearable={clearable}
       {...(onChange && { onChange })}
       styles={{ ...defaultStyles, ...styles }}
-      value={findValue(value, rest.options, rest.isMulti)}
+      {...(value && { value: findValue(value, rest.options, rest.isMulti) })}
       components={
         { ...defaultComponents, ...components } as Partial<
-          SelectComponents<SelectOption, boolean, GroupBase<SelectOption>>
+          SelectComponents<Option, IsMulti, Group>
         >
       }
       closeMenuOnScroll={handleCloseMenuOnScroll}

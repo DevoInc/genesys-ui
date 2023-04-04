@@ -4,9 +4,12 @@ import * as React from 'react';
 import { BaseSize, FieldControlWidth, FieldStatus } from '../../declarations';
 
 export type SelectOption = {
-  value: string | number;
-  label: string;
-  [key: string]: any;
+  readonly value: string | number;
+  readonly label: string;
+
+  readonly icon?: string;
+  readonly bold?: boolean;
+  readonly fixed?: boolean;
 };
 
 export interface CommonSelectCmpsProps {
@@ -31,7 +34,7 @@ export interface CommonSelectCmpsProps {
   /** Predefined width of the select. It should reflect the length of the content you expect the user to enter */
   selectWidth?: FieldControlWidth;
   /** Size of the input: height, padding, font-size... etc. */
-  size: BaseSize;
+  size?: BaseSize;
   /** Allow sorting options in a multivalue select */
   sortable?: boolean;
   /** This property defines the status color schema for the input */
@@ -45,4 +48,6 @@ export interface CommonSelectCmpsProps {
   'data-tip'?: string;
   /** Allow the user to edit values */
   creatable?: boolean;
+  /** Enable virtualization for select options. Useful for large lists */
+  virtualizeOptions?: boolean;
 }

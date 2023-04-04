@@ -4,18 +4,18 @@ import {
   Field,
   FieldProps,
   GlobalAriaProps,
-  Select2Control,
-  Select2ControlProps,
+  SelectControl,
+  SelectControlProps,
 } from '@devoinc/genesys-ui';
 
-export interface Select2Props
+export interface SelectProps
   extends Omit<FieldProps, 'children'>,
-    Omit<Select2ControlProps, 'id' | 'size' | 'aria-label'>,
+    Omit<SelectControlProps, 'id' | 'size' | 'aria-label'>,
     // native
     // TODO: add the rest
     GlobalAriaProps {}
 
-export const Select2: React.FC<Select2Props> = ({
+export const Select: React.FC<SelectProps> = ({
   // COMMON ---------------------------------
   'aria-describedby': ariaDescribedBy,
   'aria-errormessage': ariaErrorMessage,
@@ -31,7 +31,7 @@ export const Select2: React.FC<Select2Props> = ({
   hideLabel,
   label,
   labelPosition = 'top',
-  // SELECT2 ----------------------------------
+  // SELECT ----------------------------------
   ...props
 }) => (
   <Field
@@ -51,7 +51,7 @@ export const Select2: React.FC<Select2Props> = ({
     label={label}
     labelPosition={labelPosition}
   >
-    <Select2Control
+    <SelectControl
       // Common
       aria-invalid={ariaInvalid}
       aria-describedby={ariaDescribedBy}

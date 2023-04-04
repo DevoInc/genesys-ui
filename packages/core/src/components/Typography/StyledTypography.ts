@@ -34,7 +34,7 @@ export interface StyledBlockQuoteProps {
 
 export const StyledBlockQuote = styled.blockquote<StyledBlockQuoteProps>`
   ${({ gutterBottom, size, textAlign, theme }) => {
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
     const spacingTokens = aliasTokens.space;
     return css`
       ${getTypoCss({ variant: 'lead', textAlign, theme, size })};
@@ -71,7 +71,7 @@ export interface StyledCodeBlockWrapperProps {
 
 export const StyledCodeBlockWrapper = styled.div<StyledCodeBlockWrapperProps>`
   ${({ gutterBottom, theme }) => {
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
     const spacingTokens = aliasTokens.space;
     return css`
       margin-bottom: ${getSpacingPropCss(gutterBottom, theme)};
@@ -113,10 +113,10 @@ export const StyledCodeBlock = styled.code<StyledCodeBlockProps>`
 
 export const StyledCodeInline = styled.code`
   ${({ theme }) => {
-    const cmpTokens = theme.tokens.cmp.codeInline;
-    const typoTokens = theme.tokens.alias.typographies.typo;
+    const cmpTokens = theme.cmp.codeInline;
+    const typoTokens = theme.alias.typographies.typo;
     return css`
-      padding: 0 ${theme.tokens.alias.space.cmp.xxs};
+      padding: 0 ${theme.alias.space.cmp.xxs};
       border-radius: ${cmpTokens.shape.borderRadius};
       border: ${cmpTokens.shape.border} solid ${cmpTokens.color.border};
       background: ${cmpTokens.color.background};
@@ -131,7 +131,7 @@ export const StyledDeleted = styled.del`
 
 export const StyledInserted = styled.ins`
   ${({ theme }) => css`
-    background: ${theme.tokens.cmp.inserted.color.background};
+    background: ${theme.cmp.inserted.color.background};
     color: inherit;
     text-decoration: none;
   `}
@@ -139,7 +139,7 @@ export const StyledInserted = styled.ins`
 
 export const StyledHighlighted = styled.mark`
   ${({ theme }) => css`
-    background: ${theme.tokens.cmp.highlighted.color.background};
+    background: ${theme.cmp.highlighted.color.background};
     color: inherit;
   `}
 `;
@@ -164,7 +164,7 @@ export interface StyledListProps {
 export const StyledList = styled.ul<StyledListProps>`
   ${({ colorScheme, gutterBottom, listStyle, size, textAlign, theme }) => css`
     margin-bottom: ${getSpacingPropCss(gutterBottom, theme)};
-    padding-left: ${theme.tokens.alias.space.cmp.md};
+    padding-left: ${theme.alias.space.cmp.md};
     ${() => {
       if (listStyle === 'ordered')
         return css`
@@ -196,7 +196,7 @@ export const StyledList = styled.ul<StyledListProps>`
 
 export const StyledListItem = styled.li`
   & + & {
-    margin-top: ${({ theme }) => theme.tokens.alias.space.cmp.xxs};
+    margin-top: ${({ theme }) => theme.alias.space.cmp.xxs};
   }
 `;
 
@@ -359,7 +359,7 @@ interface StyledStringProps {
 
 export const StyledStrong = styled.strong<StyledStringProps>`
   ${({ bolder, theme }) => {
-    const cmpTokens = theme.tokens.cmp.strong;
+    const cmpTokens = theme.cmp.strong;
     return css`
       font-weight: ${bolder
         ? cmpTokens.typo.fontWeight.strong

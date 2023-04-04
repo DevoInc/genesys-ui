@@ -7,6 +7,7 @@ import {
 import { Icon } from '../..';
 import { showMenuAndDropDown } from '../utils';
 import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
+import { SelectOption } from '../declarations';
 
 const mapStatusIcon: {
   [key in RSDropdownIndicatorProps['selectProps']['status']]: keyof typeof iconDictionary;
@@ -18,14 +19,17 @@ const mapStatusIcon: {
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface DropdownIndicatorProps extends RSDropdownIndicatorProps {}
+export interface DropdownIndicatorProps<Option>
+  extends RSDropdownIndicatorProps<Option> {}
 
-export const DropdownIndicator: React.FC<DropdownIndicatorProps> = ({
+export const DropdownIndicator = <Option extends SelectOption>({
   selectProps,
   ...props
-}) => {
+}: DropdownIndicatorProps<Option>): React.ReactElement<
+  DropdownIndicatorProps<Option>
+> => {
   return (
-    showMenuAndDropDown(selectProps) &&
+    showMenuAndDropDown<Option>(selectProps) &&
     components.DropdownIndicator && (
       <components.DropdownIndicator selectProps={selectProps} {...props}>
         {selectProps.status && selectProps.status !== 'base' && (

@@ -94,7 +94,7 @@ export const PartField: React.FC<FieldProps> = ({
       : FIELD_LABEL_POS_DIRECTION_MAP[labelPositionUpper];
   const directionUpper = direction.toUpperCase();
   // to get vertically aligned the label with the control block anyway
-  const labelLineHeight = useTheme().tokens.alias.typo.lineHeight.body[size];
+  const labelLineHeight = useTheme().alias.typo.lineHeight.body[size];
   const RequiredMarkerBlock = (
     <Field.RequiredMark
       colorScheme={status as UIColorScheme}

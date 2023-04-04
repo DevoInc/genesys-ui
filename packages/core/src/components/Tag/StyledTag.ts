@@ -31,7 +31,7 @@ export const StyledTag = styled.div<StyledTagProps>`
     const isBlendColorScheme =
       colorScheme === 'blend-base' || colorScheme === 'blend-inverse';
     const quietColorScheme = isBlendColorScheme ? colorScheme : 'neutral';
-    const cmpTokens = theme.tokens.cmp.tag;
+    const cmpTokens = theme.cmp.tag;
 
     const colorBackground = quiet ? 'quiet' : colorSchemeForTokens;
     const colorText = quiet ? quietColorScheme : colorSchemeForTokens;
@@ -68,7 +68,7 @@ export const StyledTag = styled.div<StyledTagProps>`
 
 export const StyledTagBadge = styled(Badge)`
   ${({ size, theme }) => {
-    const cmpTokens = theme.tokens.cmp.tag.badge;
+    const cmpTokens = theme.cmp.tag.badge;
     return css`
       margin-right: ${cmpTokens.space.marginRight[size]};
     `;
@@ -81,7 +81,7 @@ export interface StyledTagIconProps
 
 export const StyledTagIcon = styled.i<StyledTagIconProps>`
   ${({ bold, size, theme }) => {
-    const cmpTokens = theme.tokens.cmp.tag.icon;
+    const cmpTokens = theme.cmp.tag.icon;
     const square = cmpTokens.size.square[size];
     const marginRight = cmpTokens.space.marginRight[size];
     return css`

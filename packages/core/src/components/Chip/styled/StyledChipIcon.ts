@@ -8,7 +8,7 @@ export interface StyledChipIconProps {
 
 export const StyledChipIcon = styled.i<StyledChipIconProps>`
   ${({ hasBoldIcon, size, theme }) => {
-    const tokens = theme.tokens.cmp.chip.icon;
+    const tokens = theme.cmp.chip.icon;
     return css`
       position: relative;
       font-size: ${tokens.typo.fontSize[size]};

@@ -28,7 +28,7 @@ export const WithAppendAndPrependContent: Story = {
     label: 'Menu item content',
     appendContent: (
       <Flex
-        as="span"
+        forwardedAs="span"
         alignItems="center"
         marginLeft="auto"
         paddingLeft="cmp-xs"
@@ -39,8 +39,8 @@ export const WithAppendAndPrependContent: Story = {
       </Flex>
     ),
     prependContent: (
-      <Flex paddingRight="cmp-xs">
-        <Badge colorScheme="info" size="sm" text="9" />
+      <Flex forwardedAs="span" paddingRight="cmp-xs">
+        <Badge as="span" colorScheme="info" size="sm" text="9" />
       </Flex>
     ),
   },

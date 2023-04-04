@@ -4,7 +4,7 @@ import { Divider } from '../../Divider';
 
 export const StyledTabsDivider = styled(Divider)`
   ${({ theme }) => {
-    const tokens = theme.tokens.cmp.tabs.divider;
+    const tokens = theme.cmp.tabs.divider;
     return css`
       margin: 0 ${tokens.space.margin};
       background: ${tokens.color.background};

@@ -12,7 +12,7 @@ export interface StyledFieldProps {
 }
 
 export const StyledField = styled.div.attrs((props) => ({
-  pickerInput: props.theme.tokens.cmp.dateRange.pickerInput,
+  pickerInput: props.theme.cmp.dateRange.pickerInput,
 }))<StyledFieldProps>`
   /* default variables ------------------------ */
   --height: 3.6rem;

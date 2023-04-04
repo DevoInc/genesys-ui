@@ -11,7 +11,7 @@ export const StyledTooltip = styled((props) => (
   <ReactToolTip {...props} />
 ))<StyledTooltipProps>`
   ${({ theme }) => {
-    const { tokens } = theme;
+    const tokens = theme;
     const aliasTokens = tokens.alias;
     return css`
       &&& {
@@ -19,26 +19,26 @@ export const StyledTooltip = styled((props) => (
         font-size: ${getFontSize({ tokens, size: 'xs' })};
         color: ${aliasTokens.color.text.body.base};
         background-color: ${aliasTokens.color.background.surface.base[
-          theme.tokens.meta.scheme === 'dark' ? 'raised' : 'base'
+          theme.meta.scheme === 'dark' ? 'raised' : 'base'
         ]};
         border-radius: 0;
         box-shadow: ${aliasTokens.elevation.boxShadow.depth.activated};
 
         &.type-dark {
-          background-color: ${theme.tokens.meta.scheme === 'dark'
+          background-color: ${theme.meta.scheme === 'dark'
             ? aliasTokens.color.background.surface.base.raised
             : aliasTokens.color.background.surface.inverse.base};
           color: ${aliasTokens.color.text.body[
-            theme.tokens.meta.scheme === 'dark' ? 'base' : 'inverse'
+            theme.meta.scheme === 'dark' ? 'base' : 'inverse'
           ]};
         }
 
         &.type-light {
-          background-color: ${theme.tokens.meta.scheme === 'dark'
+          background-color: ${theme.meta.scheme === 'dark'
             ? aliasTokens.color.background.surface.inverse.base
             : aliasTokens.color.background.surface.base.base};
           color: ${aliasTokens.color.text.body[
-            theme.tokens.meta.scheme === 'dark' ? 'inverse' : 'base'
+            theme.meta.scheme === 'dark' ? 'inverse' : 'base'
           ]};
         }
 
@@ -50,7 +50,7 @@ export const StyledTooltip = styled((props) => (
 
         &.type-warning {
           background-color: ${aliasTokens.color.background.feedback.warning[
-            theme.tokens.meta.scheme === 'dark' ? 'strong' : 'weak'
+            theme.meta.scheme === 'dark' ? 'strong' : 'weak'
           ]};
           color: ${aliasTokens.color.text.feedback.warning.strong};
         }

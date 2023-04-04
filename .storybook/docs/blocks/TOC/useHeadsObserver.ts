@@ -43,7 +43,7 @@ export const useHeadsObserver = (headings: HTMLHeadingElement[]) => {
   }, [headings]);
 
   // Debounce function to avoid performance issues
-  const getVisibleHeadingsDebounced = _.debounce(getVisibleHeadings, 10);
+  const getVisibleHeadingsDebounced = _.debounce(getVisibleHeadings, 5);
 
   // Update list of visible headings headings change
   React.useEffect(() => {

@@ -6,12 +6,12 @@ import {
   FieldProps,
   IconButton,
   InputControl,
-  Select2Control,
+  SelectControl,
   CheckboxControl,
   InputControlProps,
   ButtonProps,
   IconButtonProps,
-  Select2ControlProps,
+  SelectControlProps,
   CheckboxControlProps,
 } from '@devoinc/genesys-ui';
 
@@ -29,7 +29,7 @@ export interface FieldsCombinerProps extends Omit<FieldProps, 'children'> {
     | IconButtonProps
     | InputControlProps
     | InputProps
-    | Select2ControlProps
+    | SelectControlProps
     | CheckboxControlProps
   >;
   leftElemWidth?: string;
@@ -40,7 +40,7 @@ export interface FieldsCombinerProps extends Omit<FieldProps, 'children'> {
     | IconButtonProps
     | InputControlProps
     | InputProps
-    | Select2ControlProps
+    | SelectControlProps
     | CheckboxControlProps
   >;
   /** Width of the Field/component to the left of the group */
@@ -76,7 +76,7 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
     ) {
       return 'button';
     } else if (
-      elem.type === Select2Control ||
+      elem.type === SelectControl ||
       elem.type === Input ||
       elem.type === InputControl
     ) {

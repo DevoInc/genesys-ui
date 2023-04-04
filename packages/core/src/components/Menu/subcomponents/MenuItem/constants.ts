@@ -5,7 +5,7 @@
  * @return object with the css.
  */
 export const menuItemSizeConfig = (theme) => ({
-  iconSize: theme.tokens.alias.size.square.icon.base.xxs,
-  iconSpace: theme.tokens.alias.space.cmp.xs,
-  horPadding: theme.tokens.alias.menus.item.space.marginHor,
+  iconSize: theme.alias.size.square.icon.base.xxs,
+  iconSpace: theme.alias.space.cmp.xs,
+  horPadding: theme.alias.menus.item.space.marginHor,
 });

@@ -6,12 +6,12 @@ import { StyledSelectChipIcon } from '../styled';
 import { getChipSize } from '../utils';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface MultiValueProps extends RSMultiValueProps<SelectOption> {}
+export interface MultiValueProps<Option> extends RSMultiValueProps<Option> {}
 
-export const MultiValueLabel: React.FC<MultiValueProps> = ({
+export const MultiValueLabel = <Option extends SelectOption>({
   data,
   selectProps,
-}) => {
+}: MultiValueProps<Option>): React.ReactElement<MultiValueProps<Option>> => {
   return (
     <React.Fragment>
       {data.icon && (

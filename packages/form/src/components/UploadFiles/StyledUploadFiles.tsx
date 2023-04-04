@@ -38,15 +38,15 @@ export const StyledUploadFiles = styled((props) => (
   <FilePond {...props} />
 ))<StyledUploadFilesProps>`
   ${({ disabled, height, maxHeight, showLabelIcon, theme }) => {
-    const aliasTokens = theme.tokens.alias;
+    const aliasTokens = theme.alias;
     const typoTokens = aliasTokens.typographies.typo;
     const spacingTokens = aliasTokens.space;
     const minHeight = aliasTokens.size.height.surface.md;
     const bgTokens = aliasTokens.color.background.feedback;
     const colorTokens = aliasTokens.color.text;
     const bgSurface = aliasTokens.color.background.surface.base.base;
-    const linkTokens = theme.tokens.cmp.link;
-    const cmpTokens = theme.tokens.cmp.uploadFiles;
+    const linkTokens = theme.cmp.link;
+    const cmpTokens = theme.cmp.uploadFiles;
     const borderWidth = cmpTokens.shape.border;
     const borderRadius = cmpTokens.shape.borderRadius;
 
