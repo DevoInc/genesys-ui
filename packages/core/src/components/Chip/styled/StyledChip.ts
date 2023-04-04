@@ -5,7 +5,12 @@ import { SelectionScheme } from '../../../';
 import { ChipSize, ChipState } from '../declarations';
 
 // helpers
-import { flexMixin, pseudoElementOverlayMixin, disabledMixin, btnResetMixin } from '../../../';
+import {
+  flexMixin,
+  pseudoElementOverlayMixin,
+  disabledMixin,
+  btnResetMixin,
+} from '../../../';
 import { getPadding } from '../helpers';
 
 export interface StyledChipProps {

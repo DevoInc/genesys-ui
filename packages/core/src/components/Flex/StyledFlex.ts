@@ -2,13 +2,13 @@ import styled, { css } from 'styled-components';
 import { LayoutFlexProps } from '../../declarations';
 
 import { getSpacingPropCss } from '../../utils/spacing';
-import { Box, BoxProps } from '../Box';
+import { StyledBox, StyledBoxProps } from '../Box/StyledBox';
 
 export interface StyledFlexProps
-  extends Omit<BoxProps, 'display'>,
+  extends Omit<StyledBoxProps, '$display'>,
     LayoutFlexProps {}
 
-export const StyledFlex = styled(Box)<StyledFlexProps>`
+export const StyledFlex = styled(StyledBox)<StyledFlexProps>`
   ${({
     alignContent,
     alignItems,

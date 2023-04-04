@@ -1,13 +1,14 @@
 import styled, { css } from 'styled-components';
 
 import { LayoutGridItemProps } from '../../../../declarations';
-import { Box, BoxProps } from '../../../';
+import { StyledBox, StyledBoxProps } from '../../../Box/StyledBox';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledGridItemProps
-  extends Omit<BoxProps, 'display'>,
+  extends Omit<StyledBoxProps, '$display'>,
     LayoutGridItemProps {}
 
-export const StyledGridItem = styled(Box)<StyledGridItemProps>`
+export const StyledGridItem = styled(StyledBox)<StyledGridItemProps>`
   ${({
     alignSelf,
     gridArea,

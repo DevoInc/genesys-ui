@@ -7,7 +7,7 @@ import { ButtonColorScheme, ButtonState, ButtonSize } from './declarations';
 import { typoMixin } from '../../styled/mixins/baseMixins';
 import { btnResetMixin } from '../../styled/mixins/componentsMixin';
 import { pseudoElementOverlayMixin } from '../../styled/mixins/utilsMixins';
-import {loadingAnimationMixin } from './helpers';
+import { loadingAnimationMixin } from './helpers';
 
 export interface StyledButtonProps {
   /** Color scheme: background color, text color, backdrop... etc. */

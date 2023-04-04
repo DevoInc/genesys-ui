@@ -15,7 +15,7 @@ import {
 } from './declarations';
 import { StyledBox, StyledBoxProps } from '../Box/StyledBox';
 
-export interface StyledPanelProps extends Omit<StyledBoxProps, 'title'> {
+export interface StyledPanelProps extends StyledBoxProps {
   borderSettings?: PanelBorderSettings;
   colorScheme?: React.CSSProperties['backgroundColor'];
   heightScheme?: PanelHeightScheme;

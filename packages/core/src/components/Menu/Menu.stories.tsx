@@ -70,43 +70,44 @@ export const Base: Story = {
 };
 
 export const Selectable: Story = {
-  render: () => {
-    const [selected, setSelected] = React.useState('one');
-    const onOptionChange = (e) => {
-      const target = e.target;
-      if (target.checked) {
-        setSelected(target.value);
-      }
-    };
-    return (
-      <Menu>
-        <Menu.Item
-          label="Option one"
-          selectionScheme="single"
-          onChange={onOptionChange}
-          state={selected === 'one' ? 'selected' : 'enabled'}
-          name="options"
-          value="one"
-        />
-        <Menu.Item
-          label="Option two"
-          selectionScheme="single"
-          onChange={onOptionChange}
-          state={selected === 'two' ? 'selected' : 'enabled'}
-          name="options"
-          value="two"
-        />
-        <Menu.Item
-          label="Option three"
-          selectionScheme="single"
-          onChange={onOptionChange}
-          state={selected === 'three' ? 'selected' : 'enabled'}
-          name="options"
-          value="three"
-        />
-      </Menu>
-    );
-  },
+  render: () =>
+    (() => {
+      const [selected, setSelected] = React.useState('one');
+      const onOptionChange = (e) => {
+        const target = e.target;
+        if (target.checked) {
+          setSelected(target.value);
+        }
+      };
+      return (
+        <Menu>
+          <Menu.Item
+            label="Option one"
+            selectionScheme="single"
+            onChange={onOptionChange}
+            state={selected === 'one' ? 'selected' : 'enabled'}
+            name="options"
+            value="one"
+          />
+          <Menu.Item
+            label="Option two"
+            selectionScheme="single"
+            onChange={onOptionChange}
+            state={selected === 'two' ? 'selected' : 'enabled'}
+            name="options"
+            value="two"
+          />
+          <Menu.Item
+            label="Option three"
+            selectionScheme="single"
+            onChange={onOptionChange}
+            state={selected === 'three' ? 'selected' : 'enabled'}
+            name="options"
+            value="three"
+          />
+        </Menu>
+      );
+    })(),
 };
 
 export const AsNavigation: Story = {

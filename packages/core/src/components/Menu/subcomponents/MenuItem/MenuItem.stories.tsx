@@ -5,7 +5,6 @@ import { Tag } from '../../../Tag';
 import { Flex } from '../../../Flex';
 import { Badge } from '../../../Badge';
 import { Typography } from '../../../Typography';
-import { Box } from '../../../Box';
 import { VFlex } from '../../../VFlex';
 
 const meta: Meta<typeof MenuItem> = {
@@ -28,7 +27,7 @@ export const WithAppendAndPrependContent: Story = {
     label: 'Menu item content',
     appendContent: (
       <Flex
-        forwardedAs="span"
+        as="span"
         alignItems="center"
         marginLeft="auto"
         paddingLeft="cmp-xs"
@@ -39,7 +38,7 @@ export const WithAppendAndPrependContent: Story = {
       </Flex>
     ),
     prependContent: (
-      <Flex forwardedAs="span" paddingRight="cmp-xs">
+      <Flex as="span" paddingRight="cmp-xs">
         <Badge as="span" colorScheme="info" size="sm" text="9" />
       </Flex>
     ),
@@ -47,38 +46,40 @@ export const WithAppendAndPrependContent: Story = {
 };
 
 export const Selectable: Story = {
-  render: () => {
-    const [selected, setSelected] = React.useState(false);
-    const onOptionChange = () => setSelected(!selected);
-    return (
-      <Menu.Item
-        label="Option one"
-        selectionScheme="multiple"
-        onChange={onOptionChange}
-        state={selected ? 'selected' : 'enabled'}
-      />
-    );
-  },
+  render: () =>
+    (() => {
+      const [selected, setSelected] = React.useState(false);
+      const onOptionChange = () => setSelected(!selected);
+      return (
+        <Menu.Item
+          label="Option one"
+          selectionScheme="multiple"
+          onChange={onOptionChange}
+          state={selected ? 'selected' : 'enabled'}
+        />
+      );
+    })(),
 };
 
 export const CustomContent: Story = {
-  render: () => {
-    const [selected, setSelected] = React.useState(false);
-    const onOptionChange = () => setSelected(!selected);
-    return (
-      <Menu.Item
-        selectionScheme="multiple"
-        onChange={onOptionChange}
-        state={selected ? 'selected' : 'enabled'}
-      >
-        <VFlex spacing="cmp-xxs" padding="cmp-xs">
-          <Typography.Heading size="h6">Menu item heading</Typography.Heading>
-          <Typography.Paragraph colorScheme="weak">
-            Colonies as a patch of light radio telescope billions upon billions
-            Tunguska event prime number
-          </Typography.Paragraph>
-        </VFlex>
-      </Menu.Item>
-    );
-  },
+  render: () =>
+    (() => {
+      const [selected, setSelected] = React.useState(false);
+      const onOptionChange = () => setSelected(!selected);
+      return (
+        <Menu.Item
+          selectionScheme="multiple"
+          onChange={onOptionChange}
+          state={selected ? 'selected' : 'enabled'}
+        >
+          <VFlex spacing="cmp-xxs" padding="cmp-xs">
+            <Typography.Heading size="h6">Menu item heading</Typography.Heading>
+            <Typography.Paragraph colorScheme="weak">
+              Colonies as a patch of light radio telescope billions upon
+              billions Tunguska event prime number
+            </Typography.Paragraph>
+          </VFlex>
+        </Menu.Item>
+      );
+    })(),
 };
