@@ -203,6 +203,7 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
           {...attributes.popper}
         >
           <Panel
+            elevation="activated"
             footerSettings={{
               actions: [
                 <Button key={'cancel'} onClick={onCancelCallback}>
@@ -217,8 +218,9 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
                   {applyButtonText}
                 </Button>,
               ],
+              bordered: true,
             }}
-            widthScheme={{ minWidth: '600px' }}
+            //widthScheme={{ minWidth: '600px' }}
           >
             <DateTimeRange
               {...restDateTimeRangeProps}

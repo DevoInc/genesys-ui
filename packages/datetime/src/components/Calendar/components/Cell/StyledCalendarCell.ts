@@ -279,8 +279,8 @@ export const StyledCalendarCell = styled.div`
             content: none;
           }
         }
-        &:last-child {
-          &::before {
+        &.month-last-day {
+          &::after {
             background: linear-gradient(
               to right,
               ${intervalTokens.color.background.activated} 0%,
@@ -292,7 +292,7 @@ export const StyledCalendarCell = styled.div`
       }
 
       // Esto parece ser para el sombreado del primer y ultimo dia del mes cuando hay rango
-      &.highlight:not(.selected) {
+      &.highlight {
         &[data-cell='1'] {
           &::before {
             border-radius: 0;
@@ -314,7 +314,7 @@ export const StyledCalendarCell = styled.div`
             }
           }
         }
-        &[data-cell='28'] {
+        &.month-last-day {
           &:before {
             background: linear-gradient(
               to right,

@@ -130,6 +130,8 @@ export const DateTime: React.FC<DateTimeProps> = ({
     <VFlex>
       <Month
         aria-label={ariaLabelMonth}
+        hasNextMonthButton
+        hasPrevMonthButton
         maxDate={maxDate}
         minDate={minDate}
         onChange={onChangeMonth}

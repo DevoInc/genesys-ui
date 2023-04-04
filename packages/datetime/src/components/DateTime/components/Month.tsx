@@ -12,6 +12,7 @@ import {
 } from 'date-fns';
 
 import {
+  FlexItem,
   GlobalAriaProps,
   GlobalAttrProps,
   HFlex,
@@ -88,7 +89,7 @@ export const Month: React.FC<MonthProps> = ({
   );
 
   return (
-    <HFlex>
+    <HFlex justifyContent="space-between">
       {hasPrevMonthButton && (
         <IconButton
           colorScheme={'quiet'}
@@ -100,15 +101,44 @@ export const Month: React.FC<MonthProps> = ({
           title={'prev-month'}
         />
       )}
-      <InputControl
-        aria-label={ariaLabel}
-        id={id}
-        max={max}
-        min={min}
-        onChange={onChangeMonth}
-        type={'month'}
-        value={format(value, 'yyyy-MM')}
-      />
+      <FlexItem
+        position="relative"
+        flex="0 0 auto"
+        paddingLeft={hasPrevMonthButton ? 'cmp-xs' : null}
+        paddingRight={hasNextMonthButton ? 'cmp-xs' : null}
+        positionRight={
+          hasPrevMonthButton && hasNextMonthButton
+            ? null
+            : hasPrevMonthButton
+            ? '50%'
+            : null
+        }
+        positionLeft={
+          hasPrevMonthButton && hasNextMonthButton
+            ? null
+            : hasNextMonthButton
+            ? '50%'
+            : null
+        }
+        cssTranslate={
+          hasPrevMonthButton && hasNextMonthButton
+            ? null
+            : hasPrevMonthButton
+            ? '50%, 0'
+            : '-50%, 0'
+        }
+        minWidth="18rem"
+      >
+        <InputControl
+          aria-label={ariaLabel}
+          id={id}
+          max={max}
+          min={min}
+          onChange={onChangeMonth}
+          type={'month'}
+          value={format(value, 'yyyy-MM')}
+        />
+      </FlexItem>
       {hasNextMonthButton && (
         <IconButton
           colorScheme={'quiet'}

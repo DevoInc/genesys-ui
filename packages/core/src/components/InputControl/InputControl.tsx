@@ -117,7 +117,7 @@ export const InputControl: React.FC<InputControlProps> = ({
           addonToRight={addonToRight}
           aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
           aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
-          hasIcon={!iconEval}
+          hasIcon={Boolean(iconEval)}
           hasTypeIcon={Boolean(typeIcon)}
           $size={size}
           status={status}

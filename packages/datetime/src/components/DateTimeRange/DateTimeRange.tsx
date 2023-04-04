@@ -242,7 +242,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
 
   return (
     <HFlex alignItems={'flex-start'}>
-      <VFlex flex={`1 1 ${hasTime ? '40%' : '50%'}`}>
+      <VFlex flex={`1 1 ${hasTime ? '40%' : '50%'}`} alignItems="stretch">
         <Month
           aria-label={ariaLabelFromMonth}
           hasNextMonthButton={false}
@@ -280,7 +280,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
           />
         )}
       </VFlex>
-      <VFlex flex={`1 1 ${hasTime ? '40%' : '50%'}`}>
+      <VFlex flex={`1 1 ${hasTime ? '40%' : '50%'}`} alignItems="stretch">
         <Month
           aria-label={ariaLabelToMonth}
           hasPrevMonthButton={false}

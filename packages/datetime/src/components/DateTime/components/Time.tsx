@@ -4,6 +4,7 @@ import { format, set } from 'date-fns';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  HFlex,
   InputControl,
 } from '@devoinc/genesys-ui';
 
@@ -60,39 +61,43 @@ export const Time: React.FC<TimeProps> = ({
   }, [tmpValue, hasMillis, hasSeconds, maxDate, minDate]);
 
   return (
-    <InputControl
-      aria-label={ariaLabel}
-      id={id}
-      max={max}
-      min={min}
-      onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-        const target = event.target;
-        const isValid = target.validity.valid;
-        const isOverflow = target.validity.rangeOverflow;
+    <HFlex justifyContent="center">
+      <HFlex flex="0 0 auto" minWidth="10rem">
+        <InputControl
+          aria-label={ariaLabel}
+          id={id}
+          max={max}
+          min={min}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            const target = event.target;
+            const isValid = target.validity.valid;
+            const isOverflow = target.validity.rangeOverflow;
 
-        const currentValue = (
-          isValid ? target.value : isOverflow ? max : min
-        ).split(':');
+            const currentValue = (
+              isValid ? target.value : isOverflow ? max : min
+            ).split(':');
 
-        const time = {
-          hours: Number(currentValue[0]),
-          minutes: Number(currentValue[1]),
-          seconds: 0,
-          milliseconds: 0,
-        };
+            const time = {
+              hours: Number(currentValue[0]),
+              minutes: Number(currentValue[1]),
+              seconds: 0,
+              milliseconds: 0,
+            };
 
-        if (hasSeconds && currentValue[2]) {
-          const secs = currentValue[2].split('.');
-          time.seconds = Number(secs[0]);
-          if (hasMillis) {
-            time.milliseconds = Number(secs[1]);
-          }
-        }
-        onChange(set(new Date(tmpValue), time).getTime());
-      }}
-      step={hasSeconds ? 1 : null}
-      type={'time'}
-      value={format(tmpValue, getFormatTimeStr(hasSeconds, hasMillis))}
-    />
+            if (hasSeconds && currentValue[2]) {
+              const secs = currentValue[2].split('.');
+              time.seconds = Number(secs[0]);
+              if (hasMillis) {
+                time.milliseconds = Number(secs[1]);
+              }
+            }
+            onChange(set(new Date(tmpValue), time).getTime());
+          }}
+          step={hasSeconds ? 1 : null}
+          type={'time'}
+          value={format(tmpValue, getFormatTimeStr(hasSeconds, hasMillis))}
+        />
+      </HFlex>
+    </HFlex>
   );
 };
