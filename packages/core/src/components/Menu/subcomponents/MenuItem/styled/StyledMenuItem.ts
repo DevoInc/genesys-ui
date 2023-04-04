@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledMenuList = styled.ul`
+export const StyledMenuItem = styled.li`
   position: relative;
-  width: 100%;
   list-style: none;
 `;

@@ -7,8 +7,9 @@ import { StyledToolbar } from './StyledToolbar';
 import { ToolbarGroup } from './subcomponents/ToolbarGroup';
 import { ToolbarItem } from './subcomponents/ToolbarItem';
 import { ToolbarSeparator } from './subcomponents/ToolbarSeparator';
+import { CommonBoxProps } from '../Box';
 
-export interface ToolbarProps extends StyledToolbar {
+export interface ToolbarProps extends CommonBoxProps, StyledToolbar {
   /** Size of the component */
   size?: OmitUnion<BaseSize, 'lg'>;
   /** Children of the toolbar */

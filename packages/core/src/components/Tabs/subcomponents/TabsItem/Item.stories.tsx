@@ -9,7 +9,6 @@ const meta: Meta<typeof TabsItem> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof TabsItem>;
 
 export const Item: Story = {

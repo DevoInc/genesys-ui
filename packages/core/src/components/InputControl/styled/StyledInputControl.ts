@@ -9,7 +9,7 @@ import { INPUT_CONTROL_PSEUDO_ACTIONS_SIZE_MAP } from '../constants';
 import { disabledMixin, flexMixin, typoMixin } from '../../../';
 import { getFieldControlTypo, getFieldState } from '../../Field/helpers';
 import { hasStatus } from '../../../utils/validations';
-import { btnResetMixin } from '../../Button/helpers';
+import { btnResetMixin } from '../../../styled/';
 
 export interface StyledInputControlProps {
   /** Fixed block of content at the beginning of the input */

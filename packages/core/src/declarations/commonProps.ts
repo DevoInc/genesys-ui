@@ -125,7 +125,11 @@ export type SelectedState = 'selected';
 
 export type ExpandedState = 'expanded';
 
+export type FeaturedState = 'featured';
+
 export type ReadonlyState = 'readonly';
+
+export type UIState = 'created' | 'deleted';
 
 /** ---------------------------------------------
  * Selection behavior: checkbox (multiple) or radio (single)

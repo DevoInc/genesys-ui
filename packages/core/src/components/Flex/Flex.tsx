@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { CommonBoxProps } from '../Box';
 import { StyledFlex, StyledFlexProps } from './StyledFlex';
 
-export interface FlexProps extends StyledFlexProps {
+export interface FlexProps extends CommonBoxProps, StyledFlexProps {
   children?: React.ReactNode;
 }
 

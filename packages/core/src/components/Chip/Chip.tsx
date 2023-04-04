@@ -21,10 +21,7 @@ import {
   StyledChipLabel,
   StyledChipProps,
 } from './styled';
-import {
-  StyledChipHiddenInput,
-  StyledChipHiddenInputProps,
-} from './styled/StyledChipHiddenInput';
+import { StyledHiddenInput, StyledHiddenInputProps } from '../../styled/';
 
 export interface ChipProps
   extends GlobalAttrProps,
@@ -37,7 +34,7 @@ export interface ChipProps
     FieldEventAttrProps,
     ContainerEventAttrProps,
     Pick<InputAttrProps, 'value'>,
-    Omit<StyledChipHiddenInputProps, 'checked' | 'defaultChecked' | 'disabled'>,
+    Omit<StyledHiddenInputProps, 'checked' | 'defaultChecked' | 'disabled'>,
     StyledChipProps {
   children: React.ReactNode;
   /** It's equivalent to the native defaultChecked prop, and it has to be used only in uncontrolled mode.*/
@@ -78,7 +75,7 @@ export const Chip: React.FC<ChipProps> = ({
       size={size}
       state={state}
     >
-      <StyledChipHiddenInput
+      <StyledHiddenInput
         aria-label={ariaLabel || children?.toString()}
         checked={onChange ? isSelected : null}
         defaultChecked={defaultSelected}

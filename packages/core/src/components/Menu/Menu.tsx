@@ -1,58 +1,54 @@
 import * as React from 'react';
 
-import { StyledMenuNav, StyledMenuNavProps } from './styled';
-import { MenuList, MenuLink, MenuListProps } from './elements';
+// declarations
+import {
+  GlobalAriaProps,
+  GlobalAttrProps,
+  StyledPolymorphicProps,
+} from '../../declarations';
+
+// components
+import { VFlex } from '../VFlex';
+import { MenuHeading, MenuItem, MenuSeparator } from './subcomponents';
 
 export interface MenuProps
-  extends Partial<
-      Pick<
-        MenuListProps,
-        | 'boxed'
-        | 'data'
-        | 'expand'
-        | 'expandIconFade'
-        | 'leftSpaced'
-        | 'menuLinkCmp'
-        | 'menuLinkContent'
-        | 'onChange'
-        | 'separators'
-        | 'size'
-        | 'titleLinkStyle'
-      >
-    >,
-    Partial<Pick<StyledMenuNavProps, 'margin' | 'flex'>> {}
+  extends Pick<StyledPolymorphicProps, 'forwardedAs'>,
+    Pick<GlobalAttrProps, 'id'>,
+    GlobalAriaProps {
+  children?: React.ReactNode;
+  cmpRole?: 'menu' | 'nav';
+}
 
-export const Menu: React.FC<MenuProps> = ({
-  boxed,
-  data,
-  expand,
-  expandIconFade,
-  flex,
-  leftSpaced,
-  margin,
-  menuLinkCmp,
-  menuLinkContent,
-  onChange,
-  separators,
-  size,
-  titleLinkStyle,
+const InternalMenu: React.FC<MenuProps> = ({
+  children,
+  cmpRole = 'menu',
+  ...restNativeProps
 }) => {
-  const MenuLinkCmp = menuLinkCmp || MenuLink;
-  return (
-    <StyledMenuNav margin={margin} flex={flex}>
-      <MenuList
-        boxed={boxed}
-        data={data}
-        expand={expand}
-        expandIconFade={expandIconFade}
-        leftSpaced={leftSpaced}
-        menuLinkCmp={MenuLinkCmp}
-        menuLinkContent={menuLinkContent}
-        onChange={onChange}
-        separators={separators}
-        size={size}
-        titleLinkStyle={titleLinkStyle}
-      />
-    </StyledMenuNav>
+  return cmpRole === 'nav' ? (
+    <VFlex {...restNativeProps} as="nav" spacing="0" childrenFitFullWidth>
+      <VFlex as="ul" spacing="0" childrenFitFullWidth>
+        {children}
+      </VFlex>
+    </VFlex>
+  ) : (
+    <VFlex
+      {...restNativeProps}
+      as="ul"
+      role="menu"
+      spacing="0"
+      childrenFitFullWidth
+    >
+      {children}
+    </VFlex>
   );
 };
+
+export const Menu = InternalMenu as typeof InternalMenu & {
+  Heading: typeof MenuHeading;
+  Item: typeof MenuItem;
+  Separator: typeof MenuSeparator;
+};
+
+Menu.Heading = MenuHeading;
+Menu.Item = MenuItem;
+Menu.Separator = MenuSeparator;

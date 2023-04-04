@@ -1,10 +1,13 @@
 import styled, { css } from 'styled-components';
 import { LayoutFlexItemProps } from '../../declarations';
-import { Box, BoxProps } from '../Box';
+import { StyledBox, StyledBoxProps } from '../Box/StyledBox';
 
-export interface StyledFlexItemProps extends BoxProps, LayoutFlexItemProps {}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface StyledFlexItemProps
+  extends StyledBoxProps,
+    LayoutFlexItemProps {}
 
-export const StyledFlexItem = styled(Box)<StyledFlexItemProps>`
+export const StyledFlexItem = styled(StyledBox)<StyledFlexItemProps>`
   ${({ alignSelf, flex, order }) => css`
     flex: ${flex};
     align-self: ${alignSelf};

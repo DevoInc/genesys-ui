@@ -1,11 +1,10 @@
 import * as React from 'react';
 
 import { StyledFlexItem, StyledFlexItemProps } from './StyledFlexItem';
+import { CommonBoxProps } from '../Box';
 
-export interface FlexItemProps extends StyledFlexItemProps {
-  /** Children */
-  children?: React.ReactNode;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface FlexItemProps extends CommonBoxProps, StyledFlexItemProps {}
 
 export const FlexItem: React.FC<FlexItemProps> = ({
   children,

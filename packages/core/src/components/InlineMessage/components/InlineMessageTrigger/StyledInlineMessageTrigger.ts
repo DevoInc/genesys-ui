@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { ButtonExpandableState } from '../../../Button';
 
 import { StyledParagraph } from '../../../Typography/StyledTypography';
-import { btnResetMixin } from '../../../Button/helpers';
+import { btnResetMixin } from '../../../../styled/';
 
 export interface StyledInlineMessageTriggerProps {
   state?: ButtonExpandableState;
