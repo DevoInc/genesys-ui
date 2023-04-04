@@ -10,6 +10,8 @@ import '@devoinc/genesys-icons/dist/gi-styles.css';
 
 import { BackToTop, TableOfContents } from '../.storybook/docs/blocks';
 import { Box } from '../packages/core/src/';
+import { StoryWrapper } from '../packages/core/stories/components/StoryWrapper';
+
 // Styles
 // import './assets/styles/preview/preview.scss'; // This styles should only apply in the documentation
 // import { DocsContainerDefault } from '../components/DocsContainer';
@@ -97,9 +99,9 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <Box padding={'cmp-md'}>
+      <StoryWrapper padding={'cmp-md'}>
         <Story />
-      </Box>
+      </StoryWrapper>
     ),
     (Story, { globals }) => (
       <ThemeProvider theme={{ ...(globals.theme === 'light' ? light : dark) }}>

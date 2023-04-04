@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 import { LayoutGridProps } from '../../declarations';
-import { Box, BoxProps } from '../Box';
+import { StyledBox, StyledBoxProps } from '../Box/StyledBox';
 
 export interface StyledGridProps
-  extends Omit<BoxProps, 'display'>,
+  extends Omit<StyledBoxProps, '$display'>,
     LayoutGridProps {}
 
-export const StyledGrid = styled(Box)<StyledGridProps>`
+export const StyledGrid = styled(StyledBox)<StyledGridProps>`
   ${({
     alignContent,
     alignItems,

@@ -1,14 +1,10 @@
 import * as React from 'react';
 
-import { LayoutTransientProps } from '../../../../declarations';
+import { CommonBoxProps } from '../../../Box';
 import { StyledGridItem, StyledGridItemProps } from './StyledGridItem';
 
-export interface GridItemProps
-  extends StyledGridItemProps,
-    LayoutTransientProps {
-  /** Children */
-  children?: React.ReactNode;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface GridItemProps extends StyledGridItemProps, CommonBoxProps {}
 
 export const GridItem: React.FC<GridItemProps> = ({
   children,

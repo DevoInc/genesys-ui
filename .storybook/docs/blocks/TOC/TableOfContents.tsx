@@ -14,7 +14,7 @@ interface TableOfContentsProps {
 }
 
 export const TableOfContents: React.FC<TableOfContentsProps> = ({
-  title = 'Table of contents',
+  title = 'On this page',
 }) => {
   // Mutation observer to observe for changes in the DOM.
   // This is necessary to detect navigation between stories

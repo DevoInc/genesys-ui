@@ -1,0 +1,60 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../.storybook/docs/blocks';
+
+import * as Stories from './Menu.stories';
+
+<Meta of={Stories} />
+
+<Heading.H1>Menu</Heading.H1>
+
+<Heading.H2>Overview</Heading.H2>
+
+A `Menu` generally represents a grouping of common actions or functions that the user can invoke.
+It can be also used to create navigation menu based in links, so in this case it's better to use
+the prop `cmpRole` to `nav`.
+
+<Heading.H2>How to import</Heading.H2>
+
+<Source code={`import { Menu } from '@devoinc/genesys-ui';`} />
+
+<Heading.H2>Basic usage</Heading.H2>
+
+The `Menu` is used as a container of a group of `Menu.Item` and these can be separated or grouped by
+`Menu.Heading` or `Menu.Separator`.
+
+<Canvas of={Stories.Base} />
+
+<Heading.H2>Selectable options</Heading.H2>
+
+The menu items can be used as selectable options. The role `menuitemcheckbox` or `menuitemradio`
+is added automatically based in the `selectionScheme` prop value. In addition, a checkbox or radio
+is rendered inside the menu item, but it's not visible, its purpose is manage the selection behavior.
+
+<Canvas of={Stories.Selectable} />
+
+<Heading.H2>As navigation</Heading.H2>
+
+If the `Menu` is used as navigation we have to use the prop `cmpRole` to `nav`. This way we get
+an HTML5 `nav` tag as container without `role` attribute because it's implicit. In this case
+it's important that all the `Menu.Item` are links.
+
+The `Menu.Item` is rendered automatically as a link (`<a>`) if it has defined the `href` prop.
+In addition, as a link, the `Menu.Item` has no role because it's not allowed to have any of
+the pre-defined roles (menuitem, menuitemcheckbox and menuitemradio) if it's not a child of
+a `role="menu"` component.
+
+<Canvas of={Stories.AsNavigation} />
+
+<Heading.H2>Subcomponents</Heading.H2>
+
+- [Item](?path=/story/components-core-navigation-menu-subcomponents-item--base)
+- [Heading](?path=/story/components-core-navigation-menu-subcomponents--heading)
+- [Separator](?path=/story/components-core-navigation-menu-subcomponents--separator)
+
+<Heading.H2>Props</Heading.H2>
+
+<ArgTypes of={Stories} />
+
+<Heading.H2>Related components</Heading.H2>
+
+- [DropdownMenu](?path=/docs/components-core-navigation-contentswitcher--docs)

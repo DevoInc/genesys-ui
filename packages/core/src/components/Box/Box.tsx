@@ -16,10 +16,8 @@ import {
 
 import { StyledBox, StyledBoxProps } from './StyledBox';
 
-export interface BoxProps
-  extends Omit<StyledBoxProps, '$display' | '$height' | '$width'>,
-    LayoutTransientProps,
-    // native props
+export interface CommonBoxProps
+  extends LayoutTransientProps,
     StyledPolymorphicProps,
     GlobalAttrProps,
     GlobalAriaProps,
@@ -31,10 +29,15 @@ export interface BoxProps
     FocusEventAttrProps,
     DragDropEventAttrProps,
     MouseEventAttrProps {
-  /** Css display */
-  display?: React.CSSProperties['display'];
   /** Children */
   children?: React.ReactNode;
+}
+
+export interface BoxProps
+  extends CommonBoxProps,
+    Omit<StyledBoxProps, '$display' | '$height' | '$width'> {
+  /** Css display */
+  display?: React.CSSProperties['display'];
 }
 
 export const Box: React.FC<BoxProps> = ({
