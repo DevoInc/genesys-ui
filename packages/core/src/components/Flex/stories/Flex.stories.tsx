@@ -9,7 +9,6 @@ const meta: Meta<typeof Flex> = {
   component: Flex,
   args: {
     gap: 'cmp-md',
-    as: 'span',
   },
 };
 
