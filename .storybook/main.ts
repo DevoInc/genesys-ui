@@ -27,6 +27,7 @@ const config: StorybookConfig = {
       optimizeDeps: {
         include: [
           '@storybook/theming',
+          '@storybook/components',
           '@devoinc/genesys-brand-devo',
           '@storybook/addon-essentials/docs/mdx-react-shim',
           '@storybook/blocks',
