@@ -7,7 +7,6 @@ import {
 } from '../../Field';
 import { hasStatus } from '../../../utils/validations';
 import { scrollbars } from '../../../styled/mixins/scrollbars';
-import { flexMixin } from '../../../styled/mixins';
 import { SelectOption } from '../declarations';
 
 export const StyledSelectControl = styled(ReactSelect).attrs(
@@ -212,7 +211,8 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
             }
 
             &__single-value {
-              ${flexMixin({ dis: 'flex', ai: 'center' })};
+              display: flex;
+              align-items: center;
               margin: 0;
               color: ${fieldTokens.color.text[statusEval][state]};
 

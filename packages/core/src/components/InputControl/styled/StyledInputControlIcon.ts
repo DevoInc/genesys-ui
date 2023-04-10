@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { FieldSize, FieldStatus } from '../../../';
-import { flexMixin } from '../../../styled/mixins/utilsMixins';
 
 export interface StyledInputControlIconProps {
   /** Size of the input: height, padding, font-size... etc. */
@@ -19,7 +18,9 @@ export const StyledInputControlIcon = styled.span<StyledInputControlIconProps>`
     const fs = fieldIconTokens.size.square[size];
 
     return css`
-      ${flexMixin({ ai: 'center', dis: 'flex', jc: 'center' })};
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: absolute;
       bottom: 0;
       z-index: 2;

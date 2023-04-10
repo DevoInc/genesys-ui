@@ -6,7 +6,6 @@ import { ChipSize, ChipState } from '../declarations';
 
 // helpers
 import {
-  flexMixin,
   pseudoElementOverlayMixin,
   disabledMixin,
   btnResetMixin,
@@ -32,7 +31,9 @@ export const StyledChip = styled.label<StyledChipProps>`
     const backdropPressed = chipTokens.color.backdrop.pressed;
     return css`
       ${btnResetMixin};
-      ${flexMixin({ dis: 'inline-flex', jc: 'center', ai: 'center' })};
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
       flex: 0 0 auto;
       transition: all ${chipTokens.mutation.transitionDuration} ease;

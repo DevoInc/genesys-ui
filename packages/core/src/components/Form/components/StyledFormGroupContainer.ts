@@ -9,7 +9,6 @@ import {
 } from '../../../';
 
 import { getSpacingPropCss } from '../../../utils/spacing';
-import { flexMixin } from '../../../styled/mixins/utilsMixins';
 
 export interface StyledFormGroupContainerProps
   extends StyledPolymorphicProps,
@@ -24,11 +23,9 @@ export interface StyledFormGroupContainerProps
 export const StyledFormGroupContainer = styled.div<StyledFormGroupContainerProps>`
   ${({ legendPosition, marginLeft, marginTop, theme }) => {
     return css`
-      ${flexMixin({
-        dis: 'flex',
-        dir: legendPosition === 'left' ? 'row' : 'column',
-        ai: legendPosition === 'left' ? 'center' : 'stretch',
-      })}
+      display: flex;
+      flex-direction: ${legendPosition === 'left' ? 'row' : 'column'};
+      align-items: ${legendPosition === 'left' ? 'center' : 'stretch'};
       position: relative;
       gap: ${getSpacingPropCss('cmp-xs', theme)};
       margin-top: ${marginTop && getSpacingPropCss(marginTop, theme)};
