@@ -4,7 +4,7 @@ import { AppBarTabsType } from '../declarations';
 
 import { useTabsConfig } from '../../Tabs/hooks/useTabsConfig';
 
-import { FlexItem } from '../../FlexItem';
+import { Flex } from '../../Flex';
 import { Tabs } from '../../Tabs';
 
 export interface AppBarTabsProps {
@@ -16,7 +16,7 @@ export const AppBarTabs: React.FC<AppBarTabsProps> = ({ id, tabs }) => {
   const tabsConfig = useTabsConfig({ tabs, size: 'lg' });
 
   return (
-    <FlexItem id={`${id}__tabs`} flex="1 0 auto" paddingLeft="cmp-xs">
+    <Flex.Item id={`${id}__tabs`} flex="1 0 auto" paddingLeft="cmp-xs">
       <Tabs aria-label="main-nav" colorScheme="primary" contained={false}>
         {tabsConfig.map(
           (
@@ -48,6 +48,6 @@ export const AppBarTabs: React.FC<AppBarTabsProps> = ({ id, tabs }) => {
           )
         )}
       </Tabs>
-    </FlexItem>
+    </Flex.Item>
   );
 };

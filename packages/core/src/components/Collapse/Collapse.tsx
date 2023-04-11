@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IconButtonCollapse, Flex, FlexItem, Typography } from '../';
+import { IconButtonCollapse, Flex, Typography } from '../';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
@@ -37,7 +37,7 @@ export const Collapse: React.FC<CollapseProps> = ({
       aria-description={expanded ? 'Collapse' : 'Expand'}
     />
     <Flex alignItems={'center'} height={'100%'} padding={'cmp-xs cmp-sm'}>
-      <FlexItem flex={'0 0 auto'} marginRight={'cmp-sm'}>
+      <Flex.Item flex={'0 0 auto'} marginRight={'cmp-sm'}>
         <IconButtonCollapse
           state={expanded ? 'expanded' : 'enabled'}
           size={'sm'}
@@ -47,14 +47,14 @@ export const Collapse: React.FC<CollapseProps> = ({
           }}
           title={expanded ? 'Collapse' : 'Expand'}
         />
-      </FlexItem>
-      <FlexItem flex={'1 1 auto'} minWidth={'0'}>
+      </Flex.Item>
+      <Flex.Item flex={'1 1 auto'} minWidth={'0'}>
         <Flex alignItems={'center'}>
           <Typography.Heading truncateLine={truncateLine} size={'h6'}>
             {name}
           </Typography.Heading>
         </Flex>
-      </FlexItem>
+      </Flex.Item>
     </Flex>
   </StyledHeader>
 );

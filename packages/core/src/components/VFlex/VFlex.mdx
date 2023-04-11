@@ -39,16 +39,16 @@ It allows these components to be rendered as any HTML tag, such as div, li, sect
 <Source
   code={`
 import * as React from 'react';
-import { Flex, FlexItem } from '@devoinc/genesys-ui';
+import { Flex } from '@devoinc/genesys-ui';
 
 const MyFlexCmp = () => (
 
 {' '}
 
 <Flex as={'ul'}>
-  <FlexItem as={'li'}>Child 1</FlexItem>
-  <FlexItem as={'li'}>Child 2</FlexItem>
-  <FlexItem as={'li'}>Child 3</FlexItem>
+  <Flex.Item as={'li'}>Child 1</Flex.Item>
+  <Flex.Item as={'li'}>Child 2</Flex.Item>
+  <Flex.Item as={'li'}>Child 3</Flex.Item>
 </Flex>
 ); `} />
 
@@ -60,4 +60,4 @@ const MyFlexCmp = () => (
 
 <Heading.H2>Related components</Heading.H2>
 
-- [FlexItem](?path=/docs/components-core-layout-flex-flexitem--docs)
+- [Flex.Item](?path=/docs/components-core-layout-flex-subcomponents--docs)

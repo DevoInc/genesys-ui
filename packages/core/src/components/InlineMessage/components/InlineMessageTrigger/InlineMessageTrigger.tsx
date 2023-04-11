@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { IconButtonStatus, IconButtonStatusProps } from '../../../IconButton';
-import { FlexItem } from '../../../FlexItem';
+import { Flex } from '../../../Flex';
 import { Typography } from '../../../Typography';
 import { useAddPropsToChildren } from '../../../../hooks';
 import {
@@ -84,7 +84,7 @@ export const InlineMessageTrigger = React.forwardRef<
             />
           )}
           {text && (
-            <FlexItem as="span" marginLeft="cmp-xxs">
+            <Flex.Item as="span" marginLeft="cmp-xxs">
               <Typography.Paragraph
                 as="span"
                 colorScheme={'strong'}
@@ -93,10 +93,10 @@ export const InlineMessageTrigger = React.forwardRef<
               >
                 {text}
               </Typography.Paragraph>
-            </FlexItem>
+            </Flex.Item>
           )}
           {secondaryText && (
-            <FlexItem as="span" marginLeft="cmp-xxs">
+            <Flex.Item as="span" marginLeft="cmp-xxs">
               <Typography.Paragraph
                 as="span"
                 colorScheme={'weak'}
@@ -105,7 +105,7 @@ export const InlineMessageTrigger = React.forwardRef<
               >
                 {secondaryText}
               </Typography.Paragraph>
-            </FlexItem>
+            </Flex.Item>
           )}
         </StyledInlineMessageTrigger>
       );

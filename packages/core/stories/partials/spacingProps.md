@@ -3,7 +3,7 @@
 In a flex structure, we can apply spacing to margin or padding properties on any edge (top, right, bottom, and left).
 
 When assigning values to spacing props, such as 'spacing', 'vSpacing', or 'hSpacing' of flex
-container components or assigning layout style props to FlexItem, Box,
+container components or assigning layout style props to Flex.Item, Box,
 or any layout component, values must be selected from a predefined list.
 
 This list includes values such as '0', 'auto', 'inherit', 'cmp-xxs', 'cmp-xs',
@@ -36,9 +36,9 @@ const SPACING_PROP_VALUES = [
 
 To maintain the consistency of the UI, this list uses a 4px grid, which limits the possible values that can be assigned.
 
-When selecting a spacing value for a prop, it is important to note that there are two types of spacing values: component values ('cmp-') and layout values ('ly-'). 
+When selecting a spacing value for a prop, it is important to note that there are two types of spacing values: component values ('cmp-') and layout values ('ly-').
 
-- `cmp-` should be used when creating spaces inside components, such as the space between a label and input or the separation between a heading and a paragraph. 
-- `ly-` should be used when creating spaces between layout blocks, such as the space between a Tabs component and its contents or the space between the main app toolbar, left main menu, and main content of the page. 
+- `cmp-` should be used when creating spaces inside components, such as the space between a label and input or the separation between a heading and a paragraph.
+- `ly-` should be used when creating spaces between layout blocks, such as the space between a Tabs component and its contents or the space between the main app toolbar, left main menu, and main content of the page.
 
 Note: It is always recommended to use 'padding' properties to separate Flex component children because it maintains the same width or height for all.

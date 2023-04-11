@@ -17,7 +17,6 @@ export * from './Divider';
 export * from './DropdownA11yMenu';
 export * from './Field';
 export * from './Flex';
-export * from './FlexItem';
 export * from './FloatingHelper';
 export * from './FloatPanel';
 export * from './Fluid';

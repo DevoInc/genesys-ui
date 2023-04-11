@@ -7,7 +7,7 @@ import {
   IconButton,
   InputControl,
   SelectControl,
-  FlexItem,
+  Flex,
   Box,
 } from '../';
 import { usePaginationStyles } from './usePaginationStyles';
@@ -135,16 +135,16 @@ export const Pagination: React.FC<PaginationProps> = ({
       <HFlex as="ul" spacing={`cmp-${size}`}>
         {/* PAGINATION INFO */}
         {!hideParts?.infoLabel && (
-          <FlexItem as="li">
+          <Flex.Item as="li">
             <Label size={size}>{paginationInfoText}</Label>
-          </FlexItem>
+          </Flex.Item>
         )}
 
         {/* PAGINATION RANGE */}
         {!hideParts?.rangeSelector && (
-          <FlexItem as="li">
+          <Flex.Item as="li">
             <HFlex spacing="cmp-xxs">
-              <FlexItem>
+              <Flex.Item>
                 <SelectControl
                   id={id ? `${id}-page-range-selector` : null}
                   noOptionsMessage={noOptionsMessage}
@@ -156,23 +156,23 @@ export const Pagination: React.FC<PaginationProps> = ({
                   size={size}
                   value={{ value: pageSize, label: String(pageSize) }}
                 />
-              </FlexItem>
-              <FlexItem>
+              </Flex.Item>
+              <Flex.Item>
                 <Label size={size}>{rangeText}</Label>
-              </FlexItem>
+              </Flex.Item>
             </HFlex>
-          </FlexItem>
+          </Flex.Item>
         )}
 
         {/* PAGINATION NAV */}
-        <FlexItem as="li">
+        <Flex.Item as="li">
           <HFlex
             as="ul"
             id={id ? `${id}-page-navigation` : null}
             spacing={size === 'lg' ? 'cmp-sm' : 'cmp-xs'}
           >
             {!hideParts?.firstPageBtn && (
-              <FlexItem as="li">
+              <Flex.Item as="li">
                 <IconButton
                   hasBoldIcon
                   icon="arrow_double_left"
@@ -181,10 +181,10 @@ export const Pagination: React.FC<PaginationProps> = ({
                   state={page === 0 ? 'disabled' : 'enabled'}
                   title={firstPageTooltipText}
                 />
-              </FlexItem>
+              </Flex.Item>
             )}
             {!hideParts?.prevPageBtn && (
-              <FlexItem as="li">
+              <Flex.Item as="li">
                 <IconButton
                   hasBoldIcon
                   icon="arrow_left"
@@ -193,10 +193,10 @@ export const Pagination: React.FC<PaginationProps> = ({
                   state={page === 0 ? 'disabled' : 'enabled'}
                   title={prevPageTooltipText}
                 />
-              </FlexItem>
+              </Flex.Item>
             )}
             {lastPage > 9 ? (
-              <FlexItem as="li">
+              <Flex.Item as="li">
                 <InputControl
                   aria-label={pageSelectorLabel}
                   data-tip={pageTooltip}
@@ -208,9 +208,9 @@ export const Pagination: React.FC<PaginationProps> = ({
                   type="number"
                   value={String(page + 1)}
                 />
-              </FlexItem>
+              </Flex.Item>
             ) : (
-              <FlexItem as="li">
+              <Flex.Item as="li">
                 <SelectControl
                   aria-label={pageSelectorLabel}
                   data-tip={isMenuOpen ? '' : pageTooltip}
@@ -224,10 +224,10 @@ export const Pagination: React.FC<PaginationProps> = ({
                   size={size}
                   value={{ value: page, label: String(page + 1) }}
                 />
-              </FlexItem>
+              </Flex.Item>
             )}
             {!hideParts?.nextPageBtn && (
-              <FlexItem as="li">
+              <Flex.Item as="li">
                 <IconButton
                   aria-label={nextPageTooltipText}
                   hasBoldIcon
@@ -237,10 +237,10 @@ export const Pagination: React.FC<PaginationProps> = ({
                   state={page === lastPage ? 'disabled' : 'enabled'}
                   title={nextPageTooltipText}
                 />
-              </FlexItem>
+              </Flex.Item>
             )}
             {!hideParts?.lastPageBtn && (
-              <FlexItem as="li">
+              <Flex.Item as="li">
                 <IconButton
                   aria-label={lastPageTooltipText}
                   hasBoldIcon
@@ -250,10 +250,10 @@ export const Pagination: React.FC<PaginationProps> = ({
                   state={page === lastPage ? 'disabled' : 'enabled'}
                   title={lastPageTooltipText}
                 />
-              </FlexItem>
+              </Flex.Item>
             )}
           </HFlex>
-        </FlexItem>
+        </Flex.Item>
       </HFlex>
     </Box>
   );

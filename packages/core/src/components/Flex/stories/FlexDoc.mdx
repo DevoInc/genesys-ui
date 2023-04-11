@@ -19,7 +19,7 @@ These stacks can be arranged in various configurations, including a row,
 a column with children stacked vertically, or a mixed wrapped structure with rows and columns.
 
 The `Flex` component is the foundation, while `HFlex`, `VFlex`, and `Wrap`
-are variations built upon it. Using `Flex` with `FlexItem` children allows
+are variations built upon it. Using `Flex` with `Flex.Item` children allows
 for complete control over the stack structure, while the other versions
 offer simplified solutions for specific stack configurations:
 
@@ -32,7 +32,7 @@ offer simplified solutions for specific stack configurations:
 
 <Source
   code={`
-import { Flex, HFlex, VFlex, FlexItem, Wrap } from '@devoinc/genesys-ui';
+import { Flex, HFlex, VFlex, Wrap } from '@devoinc/genesys-ui';
 `}
 />
 
@@ -45,16 +45,16 @@ It allows these components to be rendered as any HTML tag, such as div, li, sect
 <Source
   code={`
 import * as React from 'react';
-import { Flex, FlexItem } from '@devoinc/genesys-ui';
+import { Flex } from '@devoinc/genesys-ui';
 
 const MyFlexCmp = () => (
 
 {' '}
 
 <Flex as={'ul'}>
-  <FlexItem as={'li'}>Child 1</FlexItem>
-  <FlexItem as={'li'}>Child 2</FlexItem>
-  <FlexItem as={'li'}>Child 3</FlexItem>
+  <Flex.Item as={'li'}>Child 1</Flex.Item>
+  <Flex.Item as={'li'}>Child 2</Flex.Item>
+  <Flex.Item as={'li'}>Child 3</Flex.Item>
 </Flex>
 ); `} />
 
@@ -65,16 +65,16 @@ To do so, simply use the props with the corresponding names on the component.
 <Source
   code={`
 import * as React from 'react';
-import { Flex, FlexItem } from '@devoinc/genesys-ui';
+import { Flex } from '@devoinc/genesys-ui';
 
 const MyFlexCmp = () => (
 
 {' '}
 
 <Flex marginBottom={'cmp-lg'} height={'100vh'} width={'100%'}>
-  <FlexItem>Child 1</FlexItem>
-  <FlexItem>Child 2</FlexItem>
-  <FlexItem>Child 3</FlexItem>
+  <Flex.Item>Child 1</Flex.Item>
+  <Flex.Item>Child 2</Flex.Item>
+  <Flex.Item>Child 3</Flex.Item>
 </Flex>
 ); `} />
 
@@ -83,41 +83,41 @@ const MyFlexCmp = () => (
 Flex components are containers that require their content
 to be passed as children. If you want to apply spacing (margin or padding)
 or layout styles (flex, height, width, etc.) to the children,
-you can use the FlexItem component as a wrapper for each child.
+you can use the Flex.Item component as a wrapper for each child.
 
 <Source
   code={`
 import * as React from 'react';
-import { Flex, FlexItem } from '@devoinc/genesys-ui';
+import { Flex } from '@devoinc/genesys-ui';
 
 const MyFlexCmp = () => (
 
 {' '}
 
 <Flex>
-  <FlexItem>Child 1</FlexItem>
-  <FlexItem>Child 2</FlexItem>
-  <FlexItem>Child 3</FlexItem>
+  <Flex.Item>Child 1</Flex.Item>
+  <Flex.Item>Child 2</Flex.Item>
+  <Flex.Item>Child 3</Flex.Item>
 </Flex>
 );`} />
 
 Similarly, when using HFlex, VFlex, or Wrap components,
-it's necessary to wrap each child with FlexItem component
+it's necessary to wrap each child with Flex.Item component
 to enable the use of spacing, hSpacing, vSpacing, childrenFitFullHeight,
 and childrenFitFullWidth props. In case you want the parent distribution
-functionality for your children, then you must wrap children with FlexItem.
+functionality for your children, then you must wrap children with Flex.Item.
 
-If you avoid using FlexItem to wrap each child, you'll require
+If you avoid using Flex.Item to wrap each child, you'll require
 your children to be components with layout styles or props.
 
 Here's an example of a simple Flex structure with children without
-FlexItem wrapping another component, as we only use them when
+Flex.Item wrapping another component, as we only use them when
 we need a specific configuration (width, height, flex...) for any child:
 
 <Canvas of={FlexStories.Base} />
 
 With a flex structure, we can customize the flex, order, and align-self
-CSS styles for each child using the corresponding props of FlexItem.
+CSS styles for each child using the corresponding props of Flex.Item.
 Below is an example of a Flex component with each child having different flex and align-self styles:
 
 <Canvas of={CaseFlexStories.FlexAndFlexItems} />

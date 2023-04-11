@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import {
   // VFlex,
-  FlexItem,
+  Flex,
   Button,
   // Typography,
   // ToastContainer,
@@ -52,7 +52,7 @@ export const Base: Story = {
   },
   render: (args) =>
     ((args) => (
-      <FlexItem key={'default-toast--info'} id={'default-toast--info'}>
+      <Flex.Item key={'default-toast--info'} id={'default-toast--info'}>
         <Button
           colorScheme={'info'}
           onClick={() => {
@@ -73,7 +73,7 @@ export const Base: Story = {
         >
           Open info notification
         </Button>
-      </FlexItem>
+      </Flex.Item>
     ))(args),
 };
 

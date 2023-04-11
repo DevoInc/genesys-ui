@@ -1,36 +1,36 @@
 import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
-import { Heading } from '../../../../../.storybook/docs/blocks';
+import { Heading } from '../../../../../../../.storybook/docs/blocks';
 
-import spacingProps from '../../../stories/partials/spacingProps.md?raw';
+import spacingProps from '../../../../../stories/partials/spacingProps.md?raw';
 import * as Stories from './FlexItem.stories';
-import * as FlexStories from '../Flex/stories/Flex.stories';
+import * as FlexStories from '../../stories/Flex.stories';
 
 <Meta of={Stories} />
 
-<Heading.H1>FlexItem</Heading.H1>
+<Heading.H1>Flex.Item</Heading.H1>
 
 <Heading.H2>Overview</Heading.H2>
 
 To achieve specific layout behaviors for individual child components in
-Flex container components such as Flex, HFlex, VFlex, and Wrap, you can use FlexItem to wrap each child.
+Flex container components such as Flex, HFlex, VFlex, and Wrap, you can use Flex.Item to wrap each child.
 
 <Heading.H2>How to import</Heading.H2>
 
 <Source
   code={`
-import { FlexItem } from '@devoinc/genesys-ui';
+import { Flex} from '@devoinc/genesys-ui';
 `}
 />
 
 <Heading.H2>Basic usage</Heading.H2>
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Item} />
 
-To apply spacing and flex styles such as flex, align-self, order, width, and margin, you can use FlexItem props.
+To apply spacing and flex styles such as flex, align-self, order, width, and margin, you can use Flex.Item props.
 
-<Canvas of={FlexStories.FlexAndFlexItems} />
+<Canvas of={FlexStories.Base} />
 
-For more information on using FlexItem components
+For more information on using Flex.Item components
 as children of Flex container components,
 refer to the Structure section in [Flex](?path=/docs/components-core-layout-flex-docs--docs).
 
@@ -47,16 +47,16 @@ It allows these components to be rendered as any HTML tag, such as div, li, sect
 <Source
   code={`
 import * as React from 'react';
-import { Flex, FlexItem } from '@devoinc/genesys-ui';
+import { Flex } from '@devoinc/genesys-ui';
 
 const MyFlexCmp = () => (
 
 {' '}
 
 <Flex as={'ul'}>
-  <FlexItem as={'li'}>Child 1</FlexItem>
-  <FlexItem as={'li'}>Child 2</FlexItem>
-  <FlexItem as={'li'}>Child 3</FlexItem>
+  <Flex.Item as={'li'}>Child 1</Flex.Item>
+  <Flex.Item as={'li'}>Child 2</Flex.Item>
+  <Flex.Item as={'li'}>Child 3</Flex.Item>
 </Flex>
 ); `} />
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { FlexItem, HFlex } from '..';
+import { Flex, HFlex } from '..';
 import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 const meta: Meta<typeof HFlex> = {
@@ -22,18 +22,18 @@ export const Base: Story = {
   args: {
     children: (
       <>
-        <FlexItem>
+        <Flex.Item>
           <StyledLayoutContentHelper>1. HFlex item</StyledLayoutContentHelper>
-        </FlexItem>
-        <FlexItem>
+        </Flex.Item>
+        <Flex.Item>
           <StyledLayoutContentHelper>2. HFlex item</StyledLayoutContentHelper>
-        </FlexItem>
-        <FlexItem>
+        </Flex.Item>
+        <Flex.Item>
           <StyledLayoutContentHelper>3. HFlex item</StyledLayoutContentHelper>
-        </FlexItem>
-        <FlexItem>
+        </Flex.Item>
+        <Flex.Item>
           <StyledLayoutContentHelper>4. HFlex item</StyledLayoutContentHelper>
-        </FlexItem>
+        </Flex.Item>
       </>
     ),
   },

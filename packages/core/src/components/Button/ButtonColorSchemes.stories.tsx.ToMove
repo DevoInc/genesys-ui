@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Button, HFlex, FlexItem } from '..';
+import { Button, HFlex, Flex} from '..';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Core/Button/Button/ColorSchemes',
@@ -35,14 +35,14 @@ export const Neutral: Story = {
 export const Blend: Story = {
   render: () => (
     <HFlex spacing="cmp-md">
-      <FlexItem flex="1 1 50%">
+      <Flex.Item flex="1 1 50%">
         <Button colorScheme="blend-base">Blend base</Button>
-      </FlexItem>
-      <FlexItem flex="1 1 50%">
+      </Flex.Item>
+      <Flex.Item flex="1 1 50%">
         <div style={{ backgroundColor: '#222', padding: '2rem' }}>
           <Button colorScheme="blend-inverse">Blend inverse</Button>
         </div>
-      </FlexItem>
+      </Flex.Item>
     </HFlex>
   ),
 };
@@ -50,21 +50,21 @@ export const Blend: Story = {
 export const UI: Story = {
   render: () => (
     <HFlex spacing="cmp-md">
-      <FlexItem>
+      <Flex.Item>
         <Button colorScheme={'error'}>Error</Button>
-      </FlexItem>
-      <FlexItem>
+      </Flex.Item>
+      <Flex.Item>
         <Button colorScheme={'success'}>Success</Button>
-      </FlexItem>
-      <FlexItem>
+      </Flex.Item>
+      <Flex.Item>
         <Button colorScheme={'warning'}>Warning</Button>
-      </FlexItem>
-      <FlexItem>
+      </Flex.Item>
+      <Flex.Item>
         <Button colorScheme={'help'}>Help</Button>
-      </FlexItem>
-      <FlexItem>
+      </Flex.Item>
+      <Flex.Item>
         <Button colorScheme={'info'}>Info</Button>
-      </FlexItem>
+      </Flex.Item>
     </HFlex>
   ),
 };

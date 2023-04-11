@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { HFlex, FlexItem, Typography } from '../..';
+import { HFlex, Flex, Typography } from '../..';
 
 export interface ToastContentProps {
   /** Return panel content if not collapsed */
@@ -17,14 +17,14 @@ export const ToastContent: React.FC<ToastContentProps> = ({
 
   return (
     <HFlex spacing={'cmp-sm'}>
-      <FlexItem width="2rem" flex="0 0 auto" />
-      <FlexItem>
+      <Flex.Item width="2rem" flex="0 0 auto" />
+      <Flex.Item>
         {typeof content === 'string' ? (
           <Typography.Paragraph size={'md'}>{content}</Typography.Paragraph>
         ) : (
           content
         )}
-      </FlexItem>
+      </Flex.Item>
     </HFlex>
   );
 };

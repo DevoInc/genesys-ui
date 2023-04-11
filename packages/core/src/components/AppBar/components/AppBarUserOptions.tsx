@@ -3,7 +3,7 @@ import * as React from 'react';
 import { AppBarActionsType } from '../declarations';
 
 import { ButtonGroup } from '../../ButtonGroup';
-import { FlexItem } from '../../FlexItem';
+import { Flex } from '../../Flex';
 import { HFlex } from '../../HFlex';
 import { AppBarDivider } from './';
 
@@ -24,9 +24,9 @@ export const AppBarUserOptions: React.FC<AppBarUserOptionsProps> = ({
       padding="0 cmp-md"
     >
       <AppBarDivider id={id} />
-      <FlexItem>
+      <Flex.Item>
         <ButtonGroup size="md">{userOptions}</ButtonGroup>
-      </FlexItem>
+      </Flex.Item>
     </HFlex>
   );
 };

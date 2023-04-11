@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { FlexItem } from '../../FlexItem';
+import { Flex } from '../../Flex';
 import { Typography } from '../../Typography';
 
 export interface AppBarHeadingProps {
@@ -9,9 +9,9 @@ export interface AppBarHeadingProps {
 }
 
 export const AppBarHeading: React.FC<AppBarHeadingProps> = ({ id, title }) => (
-  <FlexItem id={`${id}__heading`} padding="0 cmp-md">
+  <Flex.Item id={`${id}__heading`} padding="0 cmp-md">
     <Typography.Heading colorScheme="weaker" size="overline-md">
       {title}
     </Typography.Heading>
-  </FlexItem>
+  </Flex.Item>
 );
