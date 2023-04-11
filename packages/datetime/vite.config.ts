@@ -1,13 +1,17 @@
 import { resolve } from 'path';
-import { mergeConfig } from 'vite';
-
-import viteconf from '../../vite.config';
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
+import { visualizer } from 'rollup-plugin-visualizer';
+// Used from @storybook/react-vite dependencies
+import react from '@vitejs/plugin-react';
 
 /** @type {import('vite').UserConfig} */
-export default mergeConfig(viteconf, {
+export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
+      name: 'index',
+      fileName: 'index',
     },
     rollupOptions: {
       external: [
@@ -32,4 +36,25 @@ export default mergeConfig(viteconf, {
       },
     },
   },
+  plugins: [
+    react({
+      babel: {
+        plugins: [
+          [
+            'babel-plugin-styled-components',
+            {
+              ssr: false,
+              pure: true,
+              displayName: true,
+              fileName: false,
+            },
+          ],
+        ],
+      },
+    }),
+    dts(),
+    visualizer({
+      filename: 'dist/stats.html',
+    }),
+  ],
 });
