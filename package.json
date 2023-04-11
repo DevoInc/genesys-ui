@@ -67,7 +67,7 @@
     "react-textarea-autosize": "^8.4.0",
     "release-it": "^15.10.1",
     "rollup-plugin-visualizer": "^5.9.0",
-    "sass": "^1.61.0",
+    "sass": "^1.62.0",
     "sass-loader": "^13.2.2",
     "storybook": "^7.0.2",
     "tocbot": "^4.21.0",
