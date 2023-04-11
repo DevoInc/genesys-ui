@@ -12,7 +12,7 @@
     "lint": "npm run lint -ws --if-present",
     "start": "npm run storybook",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build-storybook": "NODE_OPTIONS=\"--max_old_space_size=4096\" storybook build",
     "stryker": "npm run stryker -ws --if-present",
     "test": "jest --coverage",
     "release": "release-it --dry-run",
