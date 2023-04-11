@@ -14,5 +14,4 @@ updates:
       interval: "weekly"
     commit-message:
       prefix: "vuln"
-      prefix-development: "vuln[dev]"
       include: "scope"
