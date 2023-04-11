@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 import { getColor } from '../utils';
-import { flexMixin } from '../../../styled/mixins/utilsMixins';
 import { StyledIcon } from '../../Icon/styled';
 import { StyledProgressBarPercent } from './StyledProgressBarPercent';
 import { ICON_CIRCULAR_SIZE } from '../declarations';
@@ -30,12 +29,10 @@ export const StyledProgressBarInfo = styled.div<StyledProgressBarInfoProps>`
         theme,
       })};
 
-      ${flexMixin({
-        dis: 'flex',
-        dir: typeProp === 'circular' ? 'column' : 'row',
-        jc: 'center',
-        ai: 'center',
-      })};
+      display: flex;
+      flex-direction: ${typeProp === 'circular' ? 'column' : 'row'};
+      align-items: center;
+      justify-content: center;
       flex: 0 0 auto;
       margin-left: ${typeProp === 'circular' ? '0' : aliasTokens.space.cmp.md};
       position: ${typeProp === 'circular' ? 'absolute' : ''};

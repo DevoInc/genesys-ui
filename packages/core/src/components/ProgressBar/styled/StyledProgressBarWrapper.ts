@@ -1,7 +1,6 @@
 import { GlobalAriaProps, GlobalAttrProps } from '../../../declarations';
 import styled, { css } from 'styled-components';
 
-import { flexMixin } from '../../../styled/mixins/utilsMixins';
 import { BaseStyledProgressBarProps } from './declarations';
 
 export interface StyledProgressBarWrapperProps
@@ -12,12 +11,10 @@ export interface StyledProgressBarWrapperProps
 export const StyledProgressBarWrapper = styled.div<StyledProgressBarWrapperProps>`
   ${({ typeProp }) => css`
     position: relative;
-    ${flexMixin({
-      dis: 'flex',
-      dir: typeProp === 'circular' ? 'column' : 'row',
-      jc: typeProp === 'circular' ? 'center' : 'space-between',
-      ai: 'center',
-      wrap: 'wrap',
-    })};
+    display: flex;
+    flex-direction: ${typeProp === 'circular' ? 'column' : 'row'};
+    jc: ${typeProp === 'circular' ? 'center' : 'space-between'};
+    align-items: 'center';
+    wrap: 'wrap';
   `}
 `;

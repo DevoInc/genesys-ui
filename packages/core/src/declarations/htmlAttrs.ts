@@ -96,6 +96,8 @@ export interface TextareaAttrProps<T = HTMLTextAreaElement>
   cols?: AllHTMLAttributes<T>['cols'];
   /** The number of visible text lines in the text area */
   rows?: AllHTMLAttributes<T>['rows'];
+  /** The current value of the input field  */
+  value?: AllHTMLAttributes<T>['value'];
 }
 
 /** ---------------------------------------------

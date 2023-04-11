@@ -27,10 +27,11 @@ const config: StorybookConfig = {
       optimizeDeps: {
         include: [
           '@storybook/theming',
-          //'@devoinc/genesys-brand-devo',
+          '@storybook/components',
+          '@devoinc/genesys-brand-devo',
           '@storybook/addon-essentials/docs/mdx-react-shim',
           '@storybook/blocks',
-          //'@devoinc/genesys-ui',
+          '@devoinc/genesys-ui',
           '@devoinc/genesys-ui-datetime',
           '@devoinc/genesys-ui-form',
         ],

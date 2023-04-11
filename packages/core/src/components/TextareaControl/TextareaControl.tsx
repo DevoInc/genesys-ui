@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { CSSProp } from 'styled-components';
 
 // declarations
 import {
@@ -28,6 +29,8 @@ export interface TextareaControlProps
     Omit<StyledTextareaControlProps, '$size'> {
   /** The size for the textarea. It affects to its padding, font-size... etc. */
   size?: FieldSize;
+  /** Custom styles */
+  css?: CSSProp;
 }
 
 export const TextareaControl: React.FC<TextareaControlProps> = ({
@@ -36,16 +39,16 @@ export const TextareaControl: React.FC<TextareaControlProps> = ({
   rows = 4,
   size = 'md',
   status = 'base',
+  css,
   ...restNativeProps
-}) => {
-  return (
-    <StyledTextareaControl
-      {...restNativeProps}
-      aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
-      aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
-      rows={rows}
-      $size={size}
-      status={status}
-    />
-  );
-};
+}) => (
+  <StyledTextareaControl
+    {...restNativeProps}
+    aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
+    aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
+    rows={rows}
+    $size={size}
+    status={status}
+    css={css}
+  />
+);

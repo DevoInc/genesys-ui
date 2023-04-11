@@ -31,7 +31,6 @@ const customTheme = create({
 const preview: Preview = {
   parameters: {
     a11y: {
-      element: '#root',
       manual: false,
     },
     controls: {

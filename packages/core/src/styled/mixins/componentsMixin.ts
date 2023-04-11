@@ -3,8 +3,6 @@ import { DefaultTheme } from 'styled-components';
 
 import { FieldSize, FieldStatus } from '../../';
 
-import { flexMixin } from './utilsMixins';
-
 interface CheckRadioProps {
   disabled?: boolean;
   size?: FieldSize;
@@ -64,7 +62,9 @@ export const checkRadioMixin = ({
   });
   const square = checkRadioTokens.square;
   return css`
-    ${flexMixin({ dis: 'inline-flex', jc: 'center', ai: 'center' })}
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     transition: border-color ease-in-out ${checkRadioTokens.animationTime};
     width: ${square};

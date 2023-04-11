@@ -12,7 +12,6 @@ import {
 import {
   btnResetMixin,
   disabledMixin,
-  flexMixin,
   pseudoElementOverlayMixin,
   typoMixin,
 } from '../../../../../styled/';
@@ -48,7 +47,9 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
     `;
     return css`
       ${btnResetMixin};
-      ${flexMixin({ dis: 'flex', ai: 'center', jc: 'flex-start' })};
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
       ${typoMixin({ theme })};
       width: 100%;
       appearance: none;

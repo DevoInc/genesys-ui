@@ -6,7 +6,7 @@ import { FieldSize, FieldStatus } from '../../../';
 import { INPUT_CONTROL_PSEUDO_ACTIONS_SIZE_MAP } from '../constants';
 
 // utils and helpers
-import { disabledMixin, flexMixin, typoMixin } from '../../../';
+import { disabledMixin, typoMixin } from '../../../';
 import { getFieldControlTypo, getFieldState } from '../../Field/helpers';
 import { hasStatus } from '../../../utils/validations';
 import { btnResetMixin } from '../../../styled/';
@@ -150,12 +150,10 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
       // type date-time and search pseudo elements
       &::-webkit-search-cancel-button,
       &::-webkit-calendar-picker-indicator {
-        ${flexMixin({
-          dis: 'inline-flex',
-          dir: 'row',
-          jc: 'center',
-          ai: 'center',
-        })};
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
         appearance: none;
         position: relative;
         transition: background-color ease
@@ -208,12 +206,10 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
 
         &::-webkit-file-upload-button {
           ${btnResetMixin};
-          ${flexMixin({
-            dis: 'inline-flex',
-            dir: 'row',
-            jc: 'center',
-            ai: 'center',
-          })};
+          display: inline-flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
           ${typoMixin({
             variant: 'action',
             theme,

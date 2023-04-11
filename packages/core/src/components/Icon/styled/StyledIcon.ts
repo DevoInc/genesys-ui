@@ -5,7 +5,6 @@ import { IconSize } from '../declarations';
 import { GlobalStatus } from '../../../declarations';
 
 import { hasStatus } from '../../../utils/validations';
-import { flexMixin } from '../../../styled/mixins/utilsMixins';
 import { getColor } from './colorUtils';
 
 export interface StyledIconProps {
@@ -31,7 +30,9 @@ export const StyledIcon = styled.i.attrs(
     const sizeTokens = theme.alias.size.square.icon.base;
     const sizeEval = (size && sizeTokens[size]) || size;
     return css`
-      ${flexMixin({ dis: 'inline-flex', ai: 'center', jc: 'center' })}
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
       font-weight: ${strong && 'bold'};
       font-size: ${sizeEval};

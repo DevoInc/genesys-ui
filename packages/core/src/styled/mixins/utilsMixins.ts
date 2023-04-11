@@ -1,40 +1,8 @@
-import * as React from 'react';
 import { css } from 'styled-components';
 
 /* -------------------------------------------------------------------------- */
 /*                                UTILS - MIXINS                              */
 /* -------------------------------------------------------------------------- */
-
-// Flex - Utils - Mixin ------------------------------------------------------ /
-/**
- * Get the flex styles based in a scheme object.
- *
- * @param {Object} scheme Object with display, flex-direction, justify-content,
- * align-items, align-content and flex-wrap.
- * @return {css} the css flex styles.
- */
-export const flexMixin = ({
-  dis,
-  dir,
-  jc,
-  ai,
-  ac,
-  wrap,
-}: {
-  dis?: React.CSSProperties['display'];
-  dir?: React.CSSProperties['flexDirection'];
-  jc?: React.CSSProperties['justifyContent'];
-  ai?: React.CSSProperties['alignItems'];
-  ac?: React.CSSProperties['alignContent'];
-  wrap?: React.CSSProperties['flexWrap'];
-} = {}) => css`
-  display: ${dis};
-  flex-direction: ${dir};
-  justify-content: ${jc};
-  align-items: ${ai};
-  align-content: ${ac};
-  flex-wrap: ${wrap};
-`;
 
 // Width and Height scheme - Utils - Mixin ----------------------------------- /
 /**

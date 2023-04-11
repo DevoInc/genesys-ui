@@ -14,9 +14,8 @@ const meta: Meta<typeof TextareaControl> = {
   },
   argTypes: {
     // because the storybook doesn't recognize the WithRequired utility
-    'aria-label': {
-      type: { required: true } as never,
-    },
+    'aria-label': { type: { required: true } as never },
+    onChange: { action: 'onChange' },
   },
 };
 
@@ -30,4 +29,7 @@ export const Base: Story = {
         <TextareaControl {...args} />
       </VFlex>
     ))(args),
+  args: {
+    value: 'Content of the textarea ...',
+  },
 };

@@ -6,7 +6,7 @@ import {
   StyledPolymorphicProps,
 } from '../../../declarations';
 
-import { flexMixin, srOnlyMixin } from '../../../styled/mixins/utilsMixins';
+import { srOnlyMixin } from '../../../styled/mixins/utilsMixins';
 
 export interface StyledFormLegendContainerProps
   extends StyledPolymorphicProps,
@@ -20,7 +20,8 @@ export const StyledFormLegendContainer = styled.div<StyledFormLegendContainerPro
   ${({ srOnly = false, theme }) => {
     const labelLineHeight = theme.alias.typo.lineHeight.body.md;
     return css`
-      ${flexMixin({ dis: 'flex', ai: 'center' })};
+      display: flex;
+      align-items: center;
       min-height: ${labelLineHeight};
       margin: 0;
 

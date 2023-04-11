@@ -1,5 +1,7 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
+// Used from @storybook/react-vite dependencies
+import react from '@vitejs/plugin-react';
 
 import dts from 'vite-plugin-dts';
 import { visualizer } from 'rollup-plugin-visualizer';
@@ -21,9 +23,30 @@ export default defineConfig({
     sourcemap: true,
   },
   plugins: [
-    dts(),
-    visualizer({
-      filename: 'dist/stats.html',
+    react({
+      babel: {
+        plugins: [
+          [
+            'babel-plugin-styled-components',
+            {
+              ssr: false,
+              pure: true,
+              displayName: true,
+              fileName: false,
+            },
+          ],
+        ],
+      },
     }),
+    {
+      ...dts(),
+      apply: 'build',
+    },
+    {
+      ...visualizer({
+        filename: 'dist/stats.html',
+      }),
+      apply: 'build',
+    },
   ],
 });
