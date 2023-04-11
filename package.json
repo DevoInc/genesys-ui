@@ -9,7 +9,7 @@
     "clean": "rm -rf storybook-static coverage packages/*/dist",
     "build": "npm run build -ws --if-present",
     "depcruise": "npm run depcruise -ws --if-present",
-    "lint": "npm run lint -ws --if-present",
+    "lint": "npx eslint packages/**/src",
     "start": "npm run storybook",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "NODE_OPTIONS=\"--max_old_space_size=4096\" storybook build",
