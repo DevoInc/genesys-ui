@@ -42,7 +42,7 @@ export const FieldLabel: React.FC<FieldLabelProps> = ({
   // to get vertically aligned the label with the field control block anyway
   const labelLineHeight = useTheme().alias.typo.lineHeight.body[size];
 
-  return !(labelPosition === 'right') && helper ? (
+  return !(labelPosition === 'right') && helper && !srOnly ? (
     <Flex {...nativeProps} alignItems="center" maxWidth="100%" gap="cmp-xxs">
       <Label
         cursor={cursor}

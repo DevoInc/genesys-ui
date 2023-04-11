@@ -81,8 +81,9 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
     <>
       <div ref={setReferenceElement}>
         <InputControl
-          id={id}
           aria-label={ariaLabel}
+          icon="calendar_month_day_planner_events2"
+          id={id}
           value={value && format(value, datetimeFormat)}
           onChange={onChange}
           onClick={onClickInputCallback}
@@ -96,6 +97,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
           {...attributes.popper}
         >
           <Panel
+            elevation="activated"
             footerSettings={{
               actions: [
                 <Button key={'cancel'} onClick={onCancelCallback}>
@@ -109,6 +111,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
                   {applyButtonText}
                 </Button>,
               ],
+              bordered: true,
             }}
           >
             <DateTime

@@ -14,6 +14,7 @@ const meta: Meta<typeof DateTimeRangePicker> = {
       from: subMonths(new Date(), 1).getTime(),
       to: new Date().getTime(),
     },
+    size: 'md',
   },
 };
 

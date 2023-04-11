@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-// types
+// types and constants
 import {
   FieldAttrProps,
   FieldSize,
@@ -9,12 +9,12 @@ import {
   GlobalAttrProps,
   MouseEventAttrProps,
 } from '../../declarations';
+import { LabelPosition } from './declarations';
 import {
   FIELD_FLEX_CONFIG,
   FIELD_HELPER_SIZE_MAP,
   FIELD_LABEL_POS_DIRECTION_MAP,
-  LabelPosition,
-} from './declarations';
+} from './constants';
 
 // utils
 import { hasStatus } from '../../utils/validations';

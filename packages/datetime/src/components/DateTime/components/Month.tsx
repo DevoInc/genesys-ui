@@ -12,6 +12,7 @@ import {
 } from 'date-fns';
 
 import {
+  FieldSize,
   FlexItem,
   GlobalAriaProps,
   GlobalAttrProps,
@@ -37,6 +38,8 @@ export interface MonthProps
   onClickPrevMonth?: () => void;
   /** Function called when click on next month button. */
   onClickNextMonth?: () => void;
+  /** The size of the different elements of the Month: inputs, buttons... etc. */
+  size?: FieldSize;
   /** Initial value. One of `number` or `Date`. */
   value?: Datetime;
 }
@@ -52,6 +55,7 @@ export const Month: React.FC<MonthProps> = ({
   onChange,
   onClickPrevMonth,
   onClickNextMonth,
+  size = 'md',
 }) => {
   const value = toTimestamp(defaultValue);
   const minDate = toTimestamp(minMonth);
@@ -89,14 +93,14 @@ export const Month: React.FC<MonthProps> = ({
   );
 
   return (
-    <HFlex justifyContent="space-between">
+    <HFlex justifyContent="space-between" spacing="0">
       {hasPrevMonthButton && (
         <IconButton
           colorScheme={'quiet'}
           hasBoldIcon
           icon="arrow_left"
           onClick={onClickPrevMonth}
-          size="sm"
+          size={size}
           state={stateMin}
           title={'prev-month'}
         />
@@ -127,7 +131,7 @@ export const Month: React.FC<MonthProps> = ({
             ? '50%, 0'
             : '-50%, 0'
         }
-        minWidth="18rem"
+        width={'16.8rem'}
       >
         <InputControl
           aria-label={ariaLabel}
@@ -135,6 +139,7 @@ export const Month: React.FC<MonthProps> = ({
           max={max}
           min={min}
           onChange={onChangeMonth}
+          size={size}
           type={'month'}
           value={format(value, 'yyyy-MM')}
         />
@@ -145,7 +150,7 @@ export const Month: React.FC<MonthProps> = ({
           hasBoldIcon
           icon="arrow_right"
           onClick={onClickNextMonth}
-          size="sm"
+          size={size}
           state={stateMax}
           title={'next-month'}
         />

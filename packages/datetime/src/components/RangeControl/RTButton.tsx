@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { ButtonProps, SpinnerLoader } from '@devoinc/genesys-ui';
 
-import { StyledRTButton } from './styled';
+import { StyledRangeControlRTButton } from './styled';
 import { RealtimeState } from './declarations';
 import { getButtonStateFromRealTimeState, getRealTimeDataTip } from './util';
 
@@ -19,10 +19,10 @@ export const RTButton: React.FC<RTButtonProps> = ({
   <div style={{ position: 'relative' }}>
     {state === 'activated' && (
       <div style={{ position: 'absolute', zIndex: 10 }}>
-        <SpinnerLoader />
+        <SpinnerLoader colorScheme="darkTrans" />
       </div>
     )}
-    <StyledRTButton
+    <StyledRangeControlRTButton
       circular={true}
       icon={'real_time'}
       onClick={onClick}

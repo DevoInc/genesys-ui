@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 import { addMonths, set, subMonths } from 'date-fns';
 
 import { GlobalAriaProps, VFlex } from '@devoinc/genesys-ui';
@@ -125,9 +126,9 @@ export const DateTime: React.FC<DateTimeProps> = ({
     },
     [handleDateChange]
   );
-
+  const theme = useTheme();
   return (
-    <VFlex>
+    <VFlex alignItems="stretch" minWidth={theme.cmp.calendar.size.minWidth}>
       <Month
         aria-label={ariaLabelMonth}
         hasNextMonthButton
@@ -137,6 +138,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
         onChange={onChangeMonth}
         onClickPrevMonth={onClickPrevMonthCallback}
         onClickNextMonth={onClickNextMonthCallback}
+        size="sm"
         value={tmpMonth}
       />
       <Calendar
@@ -159,6 +161,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
           hasMillis={hasMillis}
           hasSeconds={hasSeconds}
           onChange={onChangeTime}
+          size="sm"
           value={tmpTime}
         />
       )}

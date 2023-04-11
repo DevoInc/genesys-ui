@@ -2,9 +2,11 @@ import * as React from 'react';
 import { format, set } from 'date-fns';
 
 import {
+  FieldSize,
+  Flex,
+  FlexItem,
   GlobalAriaProps,
   GlobalAttrProps,
-  HFlex,
   InputControl,
 } from '@devoinc/genesys-ui';
 
@@ -24,6 +26,8 @@ export interface TimeProps
   hasSeconds?: boolean;
   /** Function called when change the time value.  */
   onChange: (ts: number) => void;
+  /** The size of the Time, specially the input. */
+  size?: FieldSize;
   /** Initial value. One of `number` or `Date`. */
   value?: Datetime;
 }
@@ -35,6 +39,7 @@ export const Time: React.FC<TimeProps> = ({
   maxDate: maxMonth,
   minDate: minMonth,
   onChange,
+  size = 'md',
   value: defaultValue = new Date().getTime(),
   id,
 }) => {
@@ -61,8 +66,8 @@ export const Time: React.FC<TimeProps> = ({
   }, [tmpValue, hasMillis, hasSeconds, maxDate, minDate]);
 
   return (
-    <HFlex justifyContent="center">
-      <HFlex flex="0 0 auto" minWidth="10rem">
+    <Flex justifyContent="center">
+      <FlexItem flex="0 0 auto" minWidth="9.2rem">
         <InputControl
           aria-label={ariaLabel}
           id={id}
@@ -93,11 +98,12 @@ export const Time: React.FC<TimeProps> = ({
             }
             onChange(set(new Date(tmpValue), time).getTime());
           }}
+          size={size}
           step={hasSeconds ? 1 : null}
           type={'time'}
           value={format(tmpValue, getFormatTimeStr(hasSeconds, hasMillis))}
         />
-      </HFlex>
-    </HFlex>
+      </FlexItem>
+    </Flex>
   );
 };

@@ -3,7 +3,7 @@ import { usePopper } from 'react-popper';
 
 import { Panel, Button, GlobalAttrProps } from '@devoinc/genesys-ui';
 
-import { RangeInput, RangeInputProps } from '../RangeInput';
+import { RangeControl, RangeControlProps } from '../RangeControl';
 import { DateTimeRange, DateTimeRangeProps } from '../DateTimeRange';
 import { getFormatTimeStr } from '../DateTime/utils/format';
 import { format } from 'date-fns';
@@ -26,7 +26,7 @@ export interface DateTimeRangePickerProps
       | 'presets'
     >,
     Pick<
-      RangeInputProps,
+      RangeControlProps,
       | 'className'
       | 'size'
       | 'ariaLabelFrom'
@@ -69,6 +69,7 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
   onBlur,
   onCancel,
   onChange,
+  size = 'md',
   value: customValue = { from: null, to: null },
   ...restDateTimeRangeProps
 }) => {
@@ -178,8 +179,11 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
   return (
     <>
       <div ref={setReferenceElement}>
-        <RangeInput
+        <RangeControl
           {...restDateTimeRangeProps}
+          hasMillis={hasMillis}
+          hasSeconds={hasSeconds}
+          hasTime={hasTime}
           id={`${id}_range_input`}
           from={
             isManageableFromDate
@@ -194,6 +198,7 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
           onClick={onClickInputCallback}
           onChange={onChangeCallback}
           onBlur={onBlurCallback}
+          size={size}
         />
       </div>
       {visible && (

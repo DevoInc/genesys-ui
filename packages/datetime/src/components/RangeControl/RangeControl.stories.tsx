@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { RangeInput } from './RangeInput';
+import { RangeControl } from './RangeControl';
 
-const meta: Meta<typeof RangeInput> = {
-  title: 'Components/Datetime/RangeInput',
-  component: RangeInput,
+const meta: Meta<typeof RangeControl> = {
+  title: 'Components/Datetime/RangeControl',
+  component: RangeControl,
   args: {
     ariaLabelFrom: 'from',
     ariaLabelTo: 'to',
@@ -19,15 +19,16 @@ const meta: Meta<typeof RangeInput> = {
       console.log('RT button clicked');
     },
     realTime: 'hidden',
-    withShift: false,
     isOpen: false,
-    statusFrom: 'base',
+    size: 'md',
+    statusFrom: 'error',
+    helperFrom: 'This is an invalid format for the date',
     statusTo: 'base',
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof RangeInput>;
+type Story = StoryObj<typeof RangeControl>;
 
 export const Base: Story = {
   render: (args) =>
@@ -46,7 +47,7 @@ export const Base: Story = {
       }, []);
 
       return (
-        <RangeInput
+        <RangeControl
           {...args}
           from={from}
           to={to}

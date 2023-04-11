@@ -250,6 +250,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
           minDate={minDate}
           onChange={onChangeMonthFrom}
           onClickPrevMonth={onClickPrevMonthCallback}
+          size="sm"
           value={previewDate.from}
         />
         <Calendar
@@ -276,6 +277,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
             maxDate={maxDate}
             minDate={minDate}
             onChange={onChangeTimeFrom}
+            size="sm"
             value={timeValue.from}
           />
         )}
@@ -288,6 +290,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
           minDate={minDate}
           onChange={onChangeMonthTo}
           onClickNextMonth={onClickNextMonthCallback}
+          size="sm"
           value={previewDate.to}
         />
         <Calendar
@@ -314,6 +317,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
             maxDate={maxDate}
             minDate={minDate}
             onChange={onChangeTimeTo}
+            size="sm"
             value={timeValue.to}
           />
         )}

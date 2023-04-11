@@ -9,17 +9,18 @@ import type {
   MouseEventAttrProps,
 } from '@devoinc/genesys-ui';
 import {
-  StyledInput,
-  StyledField,
-  StyledFieldProps,
-  StyledInputProps,
+  StyledRangeControl,
+  StyledRangeControlProps,
+  StyledRangeControlInput,
+  StyledRangeControlInputProps,
 } from './styled';
 import { RTButton, RTButtonProps } from './RTButton';
 import { RealtimeState } from './declarations';
 
-export interface RangeInputProps
+export interface RangeControlProps
   extends Pick<GlobalAttrProps, 'id'>,
-    Pick<StyledFieldProps, 'isOpen' | 'width' | 'withShift'> {
+    Pick<StyledRangeControlInputProps, 'hasMillis' | 'hasSeconds' | 'hasTime'>,
+    Pick<StyledRangeControlProps, 'isOpen' | 'width'> {
   /** aria-label attribute for `from` input */
   ariaLabelFrom?: GlobalAriaProps['aria-label'];
   /** aria-label attribute for `to` input */
@@ -28,6 +29,10 @@ export interface RangeInputProps
   className?: string;
   /** Value for the first input. */
   from?: InputControlProps['value'];
+  /** Floating status message or helper for `from` input field */
+  helperFrom?: React.ReactNode;
+  /** Floating status message or helper for `to` input field */
+  helperTo?: React.ReactNode;
   /** Handler method after either 'from' or 'to' inputs field cliked  */
   onClick?: MouseEventAttrProps['onClick'];
   /** Handler method after either 'from' or 'to' inputs lost focus. */
@@ -52,19 +57,21 @@ export interface RangeInputProps
   /** Size for the HTML input elements. */
   size?: FieldSize;
   /** Status for `from` input field */
-  statusFrom?: StyledInputProps['status'];
+  statusFrom?: StyledRangeControlInputProps['status'];
   /** Status for `from` input field */
-  statusTo?: StyledInputProps['status'];
+  statusTo?: StyledRangeControlInputProps['status'];
   /** Value for the second input. If such value is not set, its input will not be shown. */
   to?: InputControlProps['value'];
 }
 
 const hasRealTime = (realTime: RealtimeState) => realTime !== 'hidden';
 
-export const RangeInput: React.FC<RangeInputProps> = ({
+export const RangeControl: React.FC<RangeControlProps> = ({
   ariaLabelFrom = 'from',
   ariaLabelTo = 'to',
   from,
+  helperFrom,
+  helperTo,
   id = 'range',
   onBlur,
   onChange,
@@ -76,10 +83,9 @@ export const RangeInput: React.FC<RangeInputProps> = ({
   to,
   isOpen = false,
   width,
-  withShift = false,
   statusFrom = 'base',
   statusTo = 'base',
-  size,
+  size = 'md',
   ...props
 }) => {
   const onBlurFromCallback = React.useCallback(
@@ -110,18 +116,27 @@ export const RangeInput: React.FC<RangeInputProps> = ({
     [from, onChange]
   );
 
+  const arrowSizeMap = {
+    sm: 14,
+    md: 18,
+    lg: 22,
+  };
+
   return (
-    <StyledField
+    <StyledRangeControl
       onClick={onClick}
       hideRealTime={hasRealTime(realTime)}
       isOpen={isOpen}
+      size={size}
       width={width}
-      withShift={withShift}
     >
-      <StyledInput
+      <StyledRangeControlInput
         {...props}
-        aria-label={ariaLabelFrom}
+        hasFloatingHelper
+        helper={helperFrom}
+        hideLabel
         id={`${id}_input_from`}
+        label={ariaLabelFrom}
         placeholder={placeholderFrom}
         status={statusFrom}
         value={from}
@@ -129,11 +144,14 @@ export const RangeInput: React.FC<RangeInputProps> = ({
         onBlur={onBlurFromCallback}
         onChange={onChangeFromCallback}
       />
-      <GIArrowRight size={32} color={'#1f282e'} />
-      <StyledInput
+      <GIArrowRight size={arrowSizeMap[size]} color={'#1f282e'} />
+      <StyledRangeControlInput
         {...props}
-        aria-label={ariaLabelTo}
+        hasFloatingHelper
+        helper={helperTo}
+        hideLabel
         id={`${id}_input_to`}
+        label={ariaLabelTo}
         placeholder={placeholderTo}
         status={statusTo}
         value={to}
@@ -144,6 +162,6 @@ export const RangeInput: React.FC<RangeInputProps> = ({
       {hasRealTime(realTime) && (
         <RTButton onClick={onRealTimeClick} state={realTime} size={size} />
       )}
-    </StyledField>
+    </StyledRangeControl>
   );
 };

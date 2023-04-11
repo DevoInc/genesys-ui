@@ -6,5 +6,5 @@ export const StyledCalendar = styled.div`
   align-items: center;
   justify-content: center;
   row-gap: ${({ theme }) => theme.alias.space.cmp.xxs};
-  min-width: 21rem;
+  min-width: ${({ theme }) => theme.cmp.calendar.size.minWidth};
 `;

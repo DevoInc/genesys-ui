@@ -28,6 +28,9 @@ import {
   StyledInputControlProps,
 } from './styled';
 
+// styled
+import { StyledFlex } from '../Flex/StyledFlex';
+
 export interface InputControlProps
   extends FieldControlCommonProps,
     Pick<TextBoxAriaProps, 'aria-invalid' | 'aria-activedescendant'>,
@@ -94,6 +97,19 @@ export const InputControl: React.FC<InputControlProps> = ({
         position="relative"
         width={inputWidth ? theme.alias.fields.size.width[inputWidth] : '100%'}
       >
+        <StyledInputControl
+          {...restInputNativeProps}
+          addonToLeft={addonToLeft}
+          addonToRight={addonToRight}
+          aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
+          aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
+          hasIcon={Boolean(iconEval)}
+          hasTypeIcon={Boolean(typeIcon)}
+          $size={size}
+          status={status}
+          type={type}
+        />
+        <StyledFlex {...restInputNativeProps}>pepepepep</StyledFlex>
         {typeIcon && (
           <StyledInputControlIcon
             aria-hidden
@@ -111,18 +127,6 @@ export const InputControl: React.FC<InputControlProps> = ({
             status={status}
           />
         )}
-        <StyledInputControl
-          {...restInputNativeProps}
-          addonToLeft={addonToLeft}
-          addonToRight={addonToRight}
-          aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
-          aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
-          hasIcon={Boolean(iconEval)}
-          hasTypeIcon={Boolean(typeIcon)}
-          $size={size}
-          status={status}
-          type={type}
-        />
       </Flex>
       {addonToRight && (
         <Field.Addon position="right" size={size}>
