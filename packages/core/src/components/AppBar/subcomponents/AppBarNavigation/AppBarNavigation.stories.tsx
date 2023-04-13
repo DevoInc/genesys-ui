@@ -1,17 +1,16 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { AppBarNavigation } from '..';
 import { tabs } from '../../__stories__/content';
-import { Tabs } from '../../../Tabs';
+import { Tabs, AppBar } from '../../../';
 
-const meta: Meta<typeof AppBarNavigation> = {
+const meta: Meta<typeof AppBar.Navigation> = {
   title: 'Components/Core/Navigation/AppBar/Subcomponents',
-  component: AppBarNavigation,
+  component: AppBar.Navigation,
 };
 
 export default meta;
-type Story = StoryObj<typeof AppBarNavigation>;
+type Story = StoryObj<typeof AppBar.Navigation>;
 
 export const Navigation: Story = {
   args: {

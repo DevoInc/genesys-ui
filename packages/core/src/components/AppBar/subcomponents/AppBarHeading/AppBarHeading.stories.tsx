@@ -1,14 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { AppBarHeading } from '..';
+import { AppBar } from '../..';
 
-const meta: Meta<typeof AppBarHeading> = {
+const meta: Meta<typeof AppBar.Heading> = {
   title: 'Components/Core/Navigation/AppBar/Subcomponents',
-  component: AppBarHeading,
+  component: AppBar.Heading,
 };
 
 export default meta;
-type Story = StoryObj<typeof AppBarHeading>;
+type Story = StoryObj<typeof AppBar.Heading>;
 
 export const Heading: Story = {
   args: { children: 'Title' },

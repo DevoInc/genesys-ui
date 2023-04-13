@@ -1,17 +1,16 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { AppBarOptions } from '..';
 import { userOptions } from '../../__stories__/content';
-import { ButtonGroup } from '../../../ButtonGroup';
+import { ButtonGroup, AppBar } from '../../../';
 
-const meta: Meta<typeof AppBarOptions> = {
+const meta: Meta<typeof AppBar.Options> = {
   title: 'Components/Core/Navigation/AppBar/Subcomponents',
-  component: AppBarOptions,
+  component: AppBar.Options,
 };
 
 export default meta;
-type Story = StoryObj<typeof AppBarOptions>;
+type Story = StoryObj<typeof AppBar.Options>;
 
 export const Options: Story = {
   args: { children: <ButtonGroup size="md">{userOptions}</ButtonGroup> },
