@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
-import { LayoutFlexItemProps } from '../../declarations';
-import { StyledBox, StyledBoxProps } from '../Box/StyledBox';
+
+import { LayoutFlexItemProps } from '../../../../declarations';
+import { StyledBox, StyledBoxProps } from '../../../Box/StyledBox';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledFlexItemProps

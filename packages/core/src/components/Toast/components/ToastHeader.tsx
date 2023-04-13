@@ -4,7 +4,6 @@ import * as React from 'react';
 import {
   Divider,
   Flex,
-  FlexItem,
   HFlex,
   IconButtonClose,
   IconButtonCollapse,
@@ -57,14 +56,14 @@ export const ToastHeader: React.FC<ToastHeaderProps> = ({
   >
     {collapsable && (
       <>
-        <FlexItem alignSelf="center" flex="0 0 auto">
+        <Flex.Item alignSelf="center" flex="0 0 auto">
           <IconButtonCollapse
             title={collapsed ? expandTooltip : collapseTooltip}
             onClick={onCollapse}
             size="md"
             state={collapsed ? undefined : 'expanded'}
           />
-        </FlexItem>
+        </Flex.Item>
         <Divider height="auto" margin="0" vertical />
       </>
     )}
@@ -83,8 +82,8 @@ export const ToastHeader: React.FC<ToastHeaderProps> = ({
         {subtitle}
       </Typography.Heading>
     </VFlex>
-    <FlexItem marginLeft="auto" flex="0 0 auto">
+    <Flex.Item marginLeft="auto" flex="0 0 auto">
       <IconButtonClose title={closeTooltip} onClick={closeToast} size="md" />
-    </FlexItem>
+    </Flex.Item>
   </HFlex>
 );

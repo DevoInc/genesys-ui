@@ -256,28 +256,6 @@ export const StyledCalendarCell = styled.div`
       /* Shadow within an interval ------------------------------------------ */
       /* -------------------------------------------------------------------- */
 
-      // TODO: que cazzo es esto: es para marcar el rango dentro de otro rango ya seleccionado previamente
-      // &.highlight.box-shadow {
-      //   color: ${intervalTokens.color.text.mixed};
-      //   &::before {
-      //     background: ${intervalTokens.color.background.mixed};
-      //   }
-      //   + div:hover {
-      //     &::before {
-      //       background: linear-gradient(
-      //         to right,
-      //         ${intervalTokens.color.background.mixed} 0%,
-      //         ${intervalTokens.color.background.selected} 100%
-      //       );
-      //     }
-      //     + div:not(:nth-child(7n
-      //           + 1)):not(:nth-child(7n)):not(:first-child):not(:last-child):before {
-      //       width: calc(200%);
-      //       left: -50%;
-      //     }
-      //   }
-      // }
-
       // Esto parece ser para el sombreado del primer y ultimo dia del mes cuando esta por seleccionar
       &.box-shadow:not(.selected) {
         &[data-cell='1'] {

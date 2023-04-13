@@ -9,7 +9,6 @@ import '@devoinc/genesys-base-styles/dist/styles.css';
 import '@devoinc/genesys-icons/dist/gi-styles.css';
 
 import { BackToTop, TableOfContents } from '../.storybook/docs/blocks';
-import { Box } from '../packages/core/src/';
 import { StoryWrapper } from '../packages/core/stories/components/StoryWrapper';
 
 // Styles
@@ -42,15 +41,16 @@ const preview: Preview = {
       },
     },
     docs: {
-      container: ({ children, ...rest }: DocsContainerProps) => {
+      container: ({
+        children,
+        ...rest
+      }: DocsContainerProps & { children: React.ReactNode }) => {
         return (
-          <React.Fragment>
-            <DocsContainer {...rest}>
-              <TableOfContents />
-              {children}
-              <BackToTop />
-            </DocsContainer>
-          </React.Fragment>
+          <DocsContainer {...rest}>
+            <TableOfContents />
+            {children}
+            <BackToTop />
+          </DocsContainer>
         );
       },
       previewSource: 'open',

@@ -2,6 +2,7 @@ import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Menu.stories';
+import * as CaseStories from './Menu.cases.stories';
 
 <Meta of={Stories} />
 
@@ -24,15 +25,17 @@ The `Menu` is used as a container of a group of `Menu.Item` and these can be sep
 
 <Canvas of={Stories.Base} />
 
-<Heading.H2>Selectable options</Heading.H2>
+<Heading.H2>Cases</Heading.H2>
+
+<Heading.H3>Selectable options</Heading.H3>
 
 The menu items can be used as selectable options. The role `menuitemcheckbox` or `menuitemradio`
 is added automatically based in the `selectionScheme` prop value. In addition, a checkbox or radio
 is rendered inside the menu item, but it's not visible, its purpose is manage the selection behavior.
 
-<Canvas of={Stories.Selectable} />
+<Canvas of={CaseStories.Selectable} />
 
-<Heading.H2>As navigation</Heading.H2>
+<Heading.H3>As navigation</Heading.H3>
 
 If the `Menu` is used as navigation we have to use the prop `cmpRole` to `nav`. This way we get
 an HTML5 `nav` tag as container without `role` attribute because it's implicit. In this case
@@ -43,7 +46,7 @@ In addition, as a link, the `Menu.Item` has no role because it's not allowed to 
 the pre-defined roles (menuitem, menuitemcheckbox and menuitemradio) if it's not a child of
 a `role="menu"` component.
 
-<Canvas of={Stories.AsNavigation} />
+<Canvas of={CaseStories.AsNavigation} />
 
 <Heading.H2>Subcomponents</Heading.H2>
 

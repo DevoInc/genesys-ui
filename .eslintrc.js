@@ -6,6 +6,10 @@ module.exports = {
     context: true,
   },
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+    project: ['./packages/*/tsconfig.json'],
+  },
   plugins: ['@typescript-eslint'],
   settings: {
     react: {
@@ -27,13 +31,6 @@ module.exports = {
   rules: {
     quotes: ['error', 'single', { avoidEscape: true }],
     '@typescript-eslint/no-explicit-any': 'off',
+    'react/jsx-no-useless-fragment': ['error', { allowExpressions: false }],
   },
-  overrides: [
-    {
-      files: ['*.cy.js'],
-      rules: {
-        'jest/expect-expect': 'off',
-      },
-    },
-  ],
 };

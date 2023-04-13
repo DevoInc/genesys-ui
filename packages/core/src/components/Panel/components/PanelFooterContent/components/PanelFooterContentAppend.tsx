@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 
-import { Flex, FlexItem } from '../../../../';
+import { Flex } from '../../../../';
 import { PanelActions, PanelSize } from '../../../declarations';
 
 export interface PanelFooterContentAppendProps {
@@ -20,18 +20,18 @@ export const PanelFooterContentAppend: React.FC<
 
   if (appendContent)
     return (
-      <FlexItem flex="0 1 auto" marginLeft="auto" minWidth="0">
+      <Flex.Item flex="0 1 auto" marginLeft="auto" minWidth="0">
         <Flex alignItems="center" width="100%">
           {appendContent}
         </Flex>
-      </FlexItem>
+      </Flex.Item>
     );
 
   return (
-    <FlexItem flex="0 1 auto" marginLeft="auto" minWidth="0">
+    <Flex.Item flex="0 1 auto" marginLeft="auto" minWidth="0">
       <Flex alignItems="center" width="100%" forwardedAs="ul">
         {filteredActions.map((action, idx) => (
-          <FlexItem
+          <Flex.Item
             marginLeft={`cmp-${size === 'md' || size === 'sm' ? 'sm' : 'xs'}`}
             minWidth="0"
             flex="0 1 auto"
@@ -42,9 +42,9 @@ export const PanelFooterContentAppend: React.FC<
               key: idx,
               onClick: action.props?.onClick || close,
             })}
-          </FlexItem>
+          </Flex.Item>
         ))}
       </Flex>
-    </FlexItem>
+    </Flex.Item>
   );
 };

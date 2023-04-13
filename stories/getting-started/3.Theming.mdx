@@ -1,0 +1,29 @@
+import { Meta, Source } from '@storybook/blocks';
+import { Heading } from '../../.storybook/docs/blocks';
+
+<Meta title="Getting started/Theming" />
+
+<Heading.H1>Theming</Heading.H1>
+
+For theming we are using the [styled-component](https://styled-components.com/)
+[ThemeProvider](https://styled-components.com/docs/api#themeprovider) so, any
+use of our components should be wrapped on the *ThemeProvider*
+
+<Source code={`
+import { ThemeProvider } from 'styled-components';
+import { light } from '@devoinc/genesys-brand-devo';
+
+export const App = () => (
+  <ThemeProvider theme={light}>
+    ...
+  </ThemeProvider>
+);
+`} />
+
+Here, in the example, you could see that we are using *light* from
+*genesy-brand-devo* as the theme for our application, you could see how these
+theme is structured in the
+[genesys-tokens](https://github.com/DevoInc/genesys-tokens) project, there is
+also a list of all the tokens generated in this theme in the
+[page of the project](https://devoinc.github.io/genesys-tokens/), you could also
+read about how to create your own [here](TODO).

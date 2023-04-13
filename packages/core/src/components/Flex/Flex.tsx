@@ -1,4 +1,6 @@
 import * as React from 'react';
+
+import { FlexItem } from './subcomponents';
 import { CommonBoxProps } from '../Box';
 import { StyledFlex, StyledFlexProps } from './StyledFlex';
 
@@ -8,7 +10,7 @@ export interface FlexProps
   children?: React.ReactNode;
 }
 
-export const Flex: React.FC<FlexProps> = ({
+export const InternalFlex: React.FC<FlexProps> = ({
   children,
   width,
   height,
@@ -20,3 +22,9 @@ export const Flex: React.FC<FlexProps> = ({
     </StyledFlex>
   );
 };
+
+export const Flex = InternalFlex as typeof InternalFlex & {
+  Item: typeof FlexItem;
+};
+
+Flex.Item = FlexItem;

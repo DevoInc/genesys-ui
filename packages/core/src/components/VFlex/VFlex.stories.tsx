@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { FlexItem, VFlex } from '..';
+import { Flex, VFlex } from '..';
 import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 const meta: Meta<typeof VFlex> = {
@@ -24,24 +24,24 @@ export const Base: Story = {
   args: {
     children: (
       <>
-        <FlexItem>
+        <Flex.Item>
           <StyledLayoutContentHelper>
             1. Rogue from which.
           </StyledLayoutContentHelper>
-        </FlexItem>
-        <FlexItem>
+        </Flex.Item>
+        <Flex.Item>
           <StyledLayoutContentHelper>
             2. Rogue from which we spring.
           </StyledLayoutContentHelper>
-        </FlexItem>
-        <FlexItem>
+        </Flex.Item>
+        <Flex.Item>
           <StyledLayoutContentHelper>
             3. Rogue from which we spring galaxies.
           </StyledLayoutContentHelper>
-        </FlexItem>
-        <FlexItem>
+        </Flex.Item>
+        <Flex.Item>
           <StyledLayoutContentHelper>4. Rogue.</StyledLayoutContentHelper>
-        </FlexItem>
+        </Flex.Item>
       </>
     ),
   },

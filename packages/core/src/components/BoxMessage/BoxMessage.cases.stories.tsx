@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import Cookies from 'js-cookie';
 
-import { BoxMessage, Button, FlexItem, VFlex } from '..';
+import { BoxMessage, Button, Flex, VFlex } from '..';
 import { lorem } from '../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof BoxMessage> = {
@@ -28,7 +28,7 @@ export const Cookie: Story = {
       return (
         <VFlex>
           {show && (
-            <FlexItem>
+            <Flex.Item>
               <BoxMessage
                 {...args}
                 actions={[
@@ -46,9 +46,9 @@ export const Cookie: Story = {
                   setShow(false);
                 }}
               />
-            </FlexItem>
+            </Flex.Item>
           )}
-          <FlexItem>
+          <Flex.Item>
             <Button
               onClick={() => {
                 Cookies.remove(cookieId);
@@ -57,7 +57,7 @@ export const Cookie: Story = {
             >
               Clear the example cookie
             </Button>
-          </FlexItem>
+          </Flex.Item>
         </VFlex>
       );
     })(args),

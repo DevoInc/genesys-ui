@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Flex, FlexItem, Icon } from '../';
+import { Flex, Icon } from '../';
 import { StyledIconProps } from '../Icon/styled';
 import {
   BaseStyledProgressBarProps,
@@ -172,18 +172,18 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
           marginTop={size === 'sm' ? 'cmp-xs' : 'cmp-sm'}
         >
           {customInfo?.startInfo && (
-            <FlexItem>
+            <Flex.Item>
               <StyledProgressBarCustomInfoText size={size} progress={progress}>
                 {customInfo.startInfo}
               </StyledProgressBarCustomInfoText>
-            </FlexItem>
+            </Flex.Item>
           )}
           {customInfo?.endInfo && (
-            <FlexItem>
+            <Flex.Item>
               <StyledProgressBarCustomInfoText size={size} progress={progress}>
                 {customInfo.endInfo}
               </StyledProgressBarCustomInfoText>
-            </FlexItem>
+            </Flex.Item>
           )}
         </Flex>
       )}

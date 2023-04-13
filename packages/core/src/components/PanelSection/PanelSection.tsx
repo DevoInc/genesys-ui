@@ -7,7 +7,7 @@ import {
   PanelHelpUrl,
 } from '../Panel/declarations';
 
-import { IconButton, Box, Divider, FlexItem, Panel } from '..';
+import { IconButton, Box, Divider, Flex, Panel } from '..';
 
 import { StyledPanelSection } from './StyledPanelSection';
 
@@ -21,14 +21,14 @@ export const renderBackwardNavigation = ({
   if (onClickBackwardNav)
     return (
       <>
-        <FlexItem alignSelf={'flex-start'}>
+        <Flex.Item alignSelf={'flex-start'}>
           <IconButton
             hasBoldIcon
             icon="arrow_left1"
             onClick={onClickBackwardNav}
             title={backwardTooltip}
           />
-        </FlexItem>
+        </Flex.Item>
         <Box height="100%" marginLeft="cmp-md">
           <Divider height="100%" margin="0" vertical />
         </Box>

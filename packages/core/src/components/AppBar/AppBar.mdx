@@ -16,8 +16,7 @@ Component used for creating a navigation bar. It can be customized to fit variou
 
 <Source
   code={`
-import { AppBar } from '@devoinc/genesys-ui';
-`}
+import { AppBar } from '@devoinc/genesys-ui';`}
 />
 
 <Heading.H2>Basic usage</Heading.H2>
@@ -26,9 +25,42 @@ import { AppBar } from '@devoinc/genesys-ui';
 
 <Heading.H2>Cases</Heading.H2>
 
+<Heading.H3>With heading and actions</Heading.H3>
+
+You can specify a custom heading using the `heading` prop or add custom
+actions at the right side of the `AppBar`. `actions` prop receive an array
+of `Buttons`or `IconButton`.
+
+<Canvas of={CaseStories.WithHeadingAndActions} />
+
+<Heading.H3>With options</Heading.H3>
+
+`options` are the same of `actions` prop but adding a `Divider` at the beging.
+`options` prop receive an array of `Buttons`or `IconButton`.
+
+<Canvas of={CaseStories.WithOptions} />
+
 <Heading.H3>Custom content</Heading.H3>
 
-<Canvas of={CaseStories.CustomContent} />
+You can create a custom `AppBar`content using the subcomponents:
+
+- `AppBar.Container`
+- `AppBar.Navigation`
+- `AppBar.Actions`
+- `AppBar.Options`
+- `AppBar.Heading`
+- `AppBar.Divider`
+
+<Canvas of={CaseStories.Custom} />
+
+<Heading.H2>Subcomponents</Heading.H2>
+
+- [Actions](?path=/docs/components-core-navigation-appbar-subcomponents--actions)
+- [Container](?path=/docs/components-core-navigation-tabs-subcomponents--container)
+- [Divider](?path=/docs/components-core-navigation-tabs-subcomponents--divider)
+- [Heading](?path=/docs/components-core-navigation-tabs-subcomponents--heading)
+- [Navigation](?path=/docs/components-core-navigation-tabs-subcomponents--navigation)
+- [Options](?path=/docs/components-core-navigation-tabs-subcomponents--options)
 
 <Heading.H2>Props</Heading.H2>
 

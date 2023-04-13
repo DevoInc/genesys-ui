@@ -14,7 +14,7 @@ import { IconSize } from '../Icon';
 // components
 import { VFlex } from '../VFlex/';
 import { HFlex } from '../HFlex/';
-import { FlexItem } from '../FlexItem/';
+import { Flex } from '../Flex';
 import { Icon } from '../Icon/';
 import { Button } from '../Button/';
 import { Heading, Paragraph } from '../Typography/components/block';
@@ -110,14 +110,14 @@ export const StatusMessage = ({
           )}
         </VFlex>
         {msgButton && (
-          <FlexItem flex="1 0 auto" alignSelf="center">
+          <Flex.Item flex="1 0 auto" alignSelf="center">
             <Button
               colorScheme={status === 'base' ? 'neutral' : status}
               onClick={onClick}
             >
               {msgButton}
             </Button>
-          </FlexItem>
+          </Flex.Item>
         )}
       </FlexWrapper>
     </StyledStatusMessage>

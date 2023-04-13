@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, FlexItem, HFlex, IconButtonRemove, Typography } from '../';
+import { Box, Flex, HFlex, IconButtonRemove, Typography } from '../';
 import { StyledBoxMessage, StyledBoxMessageProps } from './StyledBoxMessage';
 import { statusIconMap } from '../../styled/functions/utils';
 import { StyledBoxMessageIcon } from './StyledBoxMessageIcon';
@@ -40,15 +40,15 @@ export const BoxMessage: React.FC<BoxMessageProps> = ({
 }) => (
   <StyledBoxMessage {...nativeProps} title={title} status={status}>
     {!hideIcon && (
-      <FlexItem alignSelf="flex-start" flex="0 0 auto" marginRight="cmp-sm">
+      <Flex.Item alignSelf="flex-start" flex="0 0 auto" marginRight="cmp-sm">
         <StyledBoxMessageIcon
           status={status}
           className={`gi-${statusIconMap.filled[status]}` || ''}
           aria-hidden
         />
-      </FlexItem>
+      </Flex.Item>
     )}
-    <FlexItem flex="1 1 auto">
+    <Flex.Item flex="1 1 auto">
       {title && (
         <Typography.Heading gutterBottom="cmp-sm" size="h5">
           {title}
@@ -81,7 +81,7 @@ export const BoxMessage: React.FC<BoxMessageProps> = ({
           )}
         </HFlex>
       )}
-    </FlexItem>
+    </Flex.Item>
 
     {close && (
       <Box position="absolute" positionRight="1.2rem" positionTop="1rem">
