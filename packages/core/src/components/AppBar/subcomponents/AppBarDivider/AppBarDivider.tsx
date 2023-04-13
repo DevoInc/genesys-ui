@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { Divider } from '../../Divider';
-import { Flex } from '../../Flex';
+import { Divider as UIDivider, Flex } from '../../..';
 
 export interface AppBarDividerProps {
   id: string;
@@ -13,7 +12,7 @@ export const AppBarDivider: React.FC<AppBarDividerProps> = ({ id }) => {
 
   return (
     <Flex.Item id={`${id}__divider`}>
-      <Divider
+      <UIDivider
         vertical
         customColor={appBarDividerTokens.color.border}
         height={appBarDividerTokens.size.height}

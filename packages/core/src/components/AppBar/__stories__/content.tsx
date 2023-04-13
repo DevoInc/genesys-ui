@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Button } from '../../Button';
 import { IconButton } from '../../IconButton';
 import { Divider } from '../../Divider';
+import { Tabs } from '../../Tabs';
 
 export const mainActions = [
   <IconButton
@@ -38,11 +39,10 @@ export const userOptions = [
   </Button>,
 ];
 
-export const tabs = [
-  { label: 'Aggregation tasks' },
-  { label: 'Injections' },
-  { label: 'Permalinks' },
-  { label: 'API & Odata feed' },
+export const tabs: React.ReactElement<any>[] = [
+  <Tabs.Item state="selected" key="item-1" label="Aggregation tasks" />,
+  <Tabs.Item key="item-4" label="Injections" />,
+  <Tabs.Item key="item-3" label="Permalinks" />,
 ];
 
 export const customBlock = (
