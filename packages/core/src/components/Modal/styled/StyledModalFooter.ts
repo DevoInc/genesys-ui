@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components';
-
-import { StyledModalProps } from '../declarations';
+import { StyledModalProps } from './StyledModal';
 
 export const StyledModalFooter = styled.footer<StyledModalProps>`
-  ${({ theme, hasScroll, headerStyle }) => {
+  ${({ theme, hasBoxShadow, headerStyle }) => {
     const modalTokens = theme.cmp.modal;
     const footerTokens = modalTokens.footer;
     const footerButtonTokens = modalTokens.footerButtons;
@@ -14,7 +13,7 @@ export const StyledModalFooter = styled.footer<StyledModalProps>`
       justify-content: flex-end;
       flex-shrink: 0;
       gap: ${footerButtonTokens.space.gap};
-      box-shadow: ${hasScroll && footerTokens.elevation.boxShadow};
+      box-shadow: ${hasBoxShadow && footerTokens.elevation.boxShadow};
       padding: ${footerTokens.space.padding.ver}
         ${footerTokens.space.padding.hor};
       background-color: ${headerStyle !== 'dialog' &&

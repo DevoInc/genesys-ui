@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import { StyledModalProps, WindowSize } from '../declarations';
+import { WindowSize } from '../declarations';
+import { CSSProperties } from 'react';
 
 const windowSizeMap: { [key in WindowSize]: string } = {
   small: 'sm',
@@ -9,6 +10,14 @@ const windowSizeMap: { [key in WindowSize]: string } = {
   fullscreen: 'full',
   default: 'md',
 } as const;
+
+export interface StyledModalProps {
+  headerStyle?: string;
+  hasBoxShadow?: boolean;
+  contentPadding?: string;
+  height?: CSSProperties['height'];
+  windowSize?: string;
+}
 
 export const StyledModal = styled.div<StyledModalProps>`
   ${({ theme, height, headerStyle, windowSize }) => {

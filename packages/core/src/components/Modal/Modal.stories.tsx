@@ -8,7 +8,7 @@ const meta: Meta<typeof Modal> = {
   title: 'Components/Core/Layout/Modal',
   component: Modal,
   args: {
-    headerStyle: 'default',
+    status: 'base',
     shouldCloseOnOverlayClick: true,
     windowSize: 'medium',
   },

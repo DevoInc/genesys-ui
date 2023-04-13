@@ -8,8 +8,11 @@ import { Button, Modal } from '..';
 const meta: Meta<typeof Modal> = {
   title: 'Components/Core/Layout/Modal/Cases',
   component: Modal,
+  parameters: {
+    controls: false,
+  },
   args: {
-    headerStyle: 'default',
+    status: 'base',
     shouldCloseOnOverlayClick: true,
     windowSize: 'medium',
   },
@@ -104,6 +107,28 @@ export const Animated: Story = {
             Open modal
           </Button>
         </AnimatePresence>
+      );
+    })(),
+};
+
+export const Custom: Story = {
+  render: () =>
+    (() => {
+      const [isOpen, setOpen] = React.useState<boolean>(false);
+
+      return (
+        <>
+          {isOpen && (
+            <Modal.Container onRequestClose={() => setOpen(false)}>
+              <Modal.Header>Header Content</Modal.Header>
+              <Modal.Body>Body Content</Modal.Body>
+              <Modal.Footer>Footer Content</Modal.Footer>
+            </Modal.Container>
+          )}
+          <Button onClick={() => setOpen(true)} colorScheme="accent-high">
+            Open modal
+          </Button>
+        </>
       );
     })(),
 };

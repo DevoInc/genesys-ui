@@ -4,7 +4,7 @@ import { StyledDecoratorBar } from '../../DecoratorBar/StyledDecoratorBar';
 import { StyledModalWithStatusProps } from '../declarations';
 
 export const StyledModalHeader = styled.header<StyledModalWithStatusProps>`
-  ${({ theme, hasScroll, headerStyle, status }) => {
+  ${({ theme, hasBoxShadow, headerStyle, status }) => {
     const modalTokens = theme.cmp.modal;
     const modalHeaderTokens = theme.cmp.modal.header;
     const aliasTokens = theme.alias;
@@ -15,7 +15,7 @@ export const StyledModalHeader = styled.header<StyledModalWithStatusProps>`
       justify-content: space-between;
       align-items: center;
       flex-shrink: 0;
-      box-shadow: ${hasScroll && modalHeaderTokens.elevation.boxShadow};
+      box-shadow: ${hasBoxShadow && modalHeaderTokens.elevation.boxShadow};
       border-bottom: ${headerStyle !== 'dialog'
         ? modalHeaderTokens.shape.border
         : 'unset'};
