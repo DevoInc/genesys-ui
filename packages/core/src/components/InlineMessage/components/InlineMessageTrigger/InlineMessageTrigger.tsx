@@ -111,8 +111,8 @@ export const InlineMessageTrigger = React.forwardRef<
       );
     }
 
-    if (Trigger) {
-      return <>{TriggerCmp}</>;
+    {
+      Trigger && TriggerCmp;
     }
 
     return (

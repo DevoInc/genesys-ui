@@ -31,5 +31,6 @@ module.exports = {
   rules: {
     quotes: ['error', 'single', { avoidEscape: true }],
     '@typescript-eslint/no-explicit-any': 'off',
+    'react/jsx-no-useless-fragment': ['error', { allowExpressions: false }],
   },
 };
