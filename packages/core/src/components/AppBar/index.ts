@@ -1,3 +1,10 @@
 export * from './AppBar';
 
-export type * from './subcomponents';
+export type {
+  AppBarActionsProps,
+  AppBarContainerProps,
+  AppBarDividerProps,
+  AppBarHeadingProps,
+  AppBarNavigationProps,
+  AppBarOptionsProps,
+} from './subcomponents';
