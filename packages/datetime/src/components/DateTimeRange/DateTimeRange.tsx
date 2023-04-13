@@ -41,7 +41,7 @@ export interface DateTimeRangeProps
     >,
     Pick<TimeProps, 'hasMillis' | 'hasSeconds'>,
     Pick<PresetsProps, 'presets'>,
-    Pick<GlobalAttrProps, 'id'> {
+    Required<Pick<GlobalAttrProps, 'id'>> {
   /** aria-label attribute for from month input. */
   ariaLabelFromMonth?: GlobalAriaProps['aria-label'];
   /** aria-label attribute for from time input. */

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { flexMixin, typoMixin } from '@devoinc/genesys-ui';
+import { typoMixin } from '@devoinc/genesys-ui';
 
 export const StyledCalendarCell = styled.div`
   ${({ theme }) => typoMixin({ theme, size: 'sm' })};
@@ -8,7 +8,6 @@ export const StyledCalendarCell = styled.div`
 
   // day container
   span {
-    ${flexMixin({ dis: 'flex', ai: 'center', jc: 'center' })};
     ${({ theme }) => {
       const cellSquare = theme.alias.size.square.handler.lg;
       return css`
@@ -17,6 +16,9 @@ export const StyledCalendarCell = styled.div`
         border-radius: ${theme.alias.shape.borderRadius.full};
       `;
     }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-sizing: content-box;
     position: relative;
     z-index: 1;
@@ -132,8 +134,20 @@ export const StyledCalendarCell = styled.div`
       /* First and last selected days */
       /* -------------------------------------------------------------------- */
 
-      &.selected,
+      span {
+        transition: background-color ease
+            ${dayTokens.mutation.transitionDuration},
+          color ease ${dayTokens.mutation.transitionDuration};
+      }
+
       &:hover {
+        span {
+          color: ${dayTokens.color.text.hovered};
+          background-color: ${dayTokens.color.background.hovered};
+        }
+      }
+
+      &.selected {
         span {
           color: ${dayTokens.color.text.selected};
           background-color: ${dayTokens.color.background.selected};

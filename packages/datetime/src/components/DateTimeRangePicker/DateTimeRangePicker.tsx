@@ -3,7 +3,10 @@ import { usePopper } from 'react-popper';
 
 import { Panel, Button, GlobalAttrProps } from '@devoinc/genesys-ui';
 
-import { RangeControl, RangeControlProps } from '../RangeControl';
+import {
+  DateTimeRangeControl,
+  DateTimeRangeControlProps,
+} from '../DateTimeRangeControl';
 import { DateTimeRange, DateTimeRangeProps } from '../DateTimeRange';
 import { getFormatTimeStr } from '../DateTime/utils/format';
 import { format } from 'date-fns';
@@ -26,7 +29,7 @@ export interface DateTimeRangePickerProps
       | 'presets'
     >,
     Pick<
-      RangeControlProps,
+      DateTimeRangeControlProps,
       | 'className'
       | 'size'
       | 'ariaLabelFrom'
@@ -38,8 +41,9 @@ export interface DateTimeRangePickerProps
       | 'statusTo'
       | 'onChange'
       | 'onBlur'
+      | 'wide'
     >,
-    Pick<GlobalAttrProps, 'id'> {
+    Required<Pick<GlobalAttrProps, 'id'>> {
   /** Initial value for the input. */
   value: { from: string | number | Date; to: string | number | Date };
   /** Apply button text. */
@@ -179,12 +183,13 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
   return (
     <>
       <div ref={setReferenceElement}>
-        <RangeControl
+        <DateTimeRangeControl
           {...restDateTimeRangeProps}
+          aria-controls={`${id}-range-selector`}
           hasMillis={hasMillis}
           hasSeconds={hasSeconds}
           hasTime={hasTime}
-          id={`${id}_range_input`}
+          id={id ? `${id}-range-control` : null}
           from={
             isManageableFromDate
               ? format(value.from as number, datetimeFormat)
@@ -203,7 +208,10 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
       </div>
       {visible && (
         <div
+          aria-modal
+          id={id ? `${id}-range-selector` : null}
           ref={setPopperElement}
+          role="dialog"
           style={styles.popper}
           {...attributes.popper}
         >
@@ -225,14 +233,13 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
               ],
               bordered: true,
             }}
-            //widthScheme={{ minWidth: '600px' }}
           >
             <DateTimeRange
               {...restDateTimeRangeProps}
               hasMillis={hasMillis}
               hasSeconds={hasSeconds}
               hasTime={hasTime}
-              id={`${id}_datetime_range`}
+              id={id ? `${id}-datetime-range` : null}
               selectedDates={date}
               selectedPreset={preset}
               onChange={onChangeDateTimeCallback}

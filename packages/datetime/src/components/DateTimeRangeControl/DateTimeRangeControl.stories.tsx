@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { RangeControl } from './RangeControl';
+import { DateTimeRangeControl } from './DateTimeRangeControl';
 
-const meta: Meta<typeof RangeControl> = {
-  title: 'Components/Datetime/RangeControl',
-  component: RangeControl,
+const meta: Meta<typeof DateTimeRangeControl> = {
+  title: 'Components/Datetime/DateTimeRangeControl',
+  component: DateTimeRangeControl,
   args: {
     ariaLabelFrom: 'from',
     ariaLabelTo: 'to',
@@ -18,17 +18,15 @@ const meta: Meta<typeof RangeControl> = {
     onRealTimeClick: () => {
       console.log('RT button clicked');
     },
-    realTime: 'hidden',
+    id: 'story-demo',
     isOpen: false,
+    realTime: 'hidden',
     size: 'md',
-    statusFrom: 'error',
-    helperFrom: 'This is an invalid format for the date',
-    statusTo: 'base',
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof RangeControl>;
+type Story = StoryObj<typeof DateTimeRangeControl>;
 
 export const Base: Story = {
   render: (args) =>
@@ -47,7 +45,7 @@ export const Base: Story = {
       }, []);
 
       return (
-        <RangeControl
+        <DateTimeRangeControl
           {...args}
           from={from}
           to={to}

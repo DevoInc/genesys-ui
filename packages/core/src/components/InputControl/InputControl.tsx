@@ -28,9 +28,6 @@ import {
   StyledInputControlProps,
 } from './styled';
 
-// styled
-import { StyledFlex } from '../Flex/StyledFlex';
-
 export interface InputControlProps
   extends FieldControlCommonProps,
     Pick<TextBoxAriaProps, 'aria-invalid' | 'aria-activedescendant'>,
@@ -109,7 +106,6 @@ export const InputControl: React.FC<InputControlProps> = ({
           status={status}
           type={type}
         />
-        <StyledFlex {...restInputNativeProps}>pepepepep</StyledFlex>
         {typeIcon && (
           <StyledInputControlIcon
             aria-hidden

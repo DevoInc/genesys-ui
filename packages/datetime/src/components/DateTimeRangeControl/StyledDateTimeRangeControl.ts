@@ -1,29 +1,30 @@
 import styled, { css } from 'styled-components';
 import { InputProps } from '@devoinc/genesys-ui-form';
 
-export interface StyledRangeControlProps extends Pick<InputProps, 'size'> {
+export interface StyledDateTimeRangeControlProps
+  extends Pick<InputProps, 'size'> {
   /** Set styles when is open a component */
   isOpen?: boolean;
-  /** Input width value*/
-  width?: string;
   /** Set styles when RT is visible */
   hideRealTime?: boolean;
+  /** If the DateTimeRangeControl fills the whole space of the parent container. */
+  wide?: boolean;
 }
 
-export const StyledRangeControl = styled.div.attrs((props) => ({
-  rangeControlTokens: props.theme.cmp.rangeInput,
+export const StyledDateTimeRangeControl = styled.div.attrs((props) => ({
+  rangeControlTokens: props.theme.cmp.dateTimeRangeControl,
   aliasTokens: props.theme.alias,
-}))<StyledRangeControlProps>`
+}))<StyledDateTimeRangeControlProps>`
   position: relative;
   flex-wrap: nowrap;
   align-items: center;
-  display: inline-flex;
   border-style: solid;
 
-  ${({ aliasTokens, isOpen, rangeControlTokens, size }) => {
+  ${({ aliasTokens, isOpen, rangeControlTokens, size, wide }) => {
     const borderColor = rangeControlTokens.color.border.base;
     const activeBorderColor = rangeControlTokens.color.border.active;
     return css`
+      display: ${wide ? 'flex' : 'inline-flex'};
       transition: border-color ease
           ${rangeControlTokens.mutation.transitionDuration},
         width ease ${rangeControlTokens.mutation.transitionDuration};
