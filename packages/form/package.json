@@ -24,16 +24,17 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "react": "17.x || 18.x",
-    "styled-components": "5.x",
+    "@devoinc/genesys-icons": "^2.2.0",
     "@devoinc/genesys-ui": "^1.0.3-alpha.13",
-    "react-filepond": "^7.1.2",
     "filepond-plugin-file-validate-size": "^2.2.8",
     "filepond-plugin-file-validate-type": "^1.2.8",
     "filepond-plugin-image-preview": "^4.6.11",
-    "react-color": "^2.19.3",
     "lodash": "^4.17.21",
-    "polished": "^4.2.2"
+    "polished": "^4.2.2",
+    "react": "17.x || 18.x",
+    "react-color": "^2.19.3",
+    "react-filepond": "^7.1.2",
+    "styled-components": "5.x"
   },
   "engine": {
     "node": ">=16",
