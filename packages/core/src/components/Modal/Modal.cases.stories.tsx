@@ -8,10 +8,12 @@ import {
   Button,
   ButtonGroup,
   Flex,
+  IconButton,
   IconButtonClose,
   IconButtonGoToDocs,
   IconButtonStatus,
   Modal,
+  ModalProps,
   useDetectBodyScroll,
 } from '..';
 import { GIOkSuccessfulCheckFilled } from '@devoinc/genesys-icons';
@@ -29,70 +31,80 @@ const meta: Meta<typeof Modal> = {
     status: 'base',
     shouldCloseOnOverlayClick: true,
     windowSize: 'medium',
+    zIndex: 100,
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Modal>;
 
+const ModalWithHeaderActions = (props: ModalProps) => {
+  const [isOpen, setOpen] = React.useState<boolean>(false);
+  const closeModal = (msg: string) => {
+    action(msg);
+    setOpen(false);
+  };
+
+  return (
+    <>
+      {isOpen && (
+        <Modal
+          {...props}
+          footerButtons={[
+            <Button
+              colorScheme={'quiet'}
+              key={'cancel'}
+              onClick={() => {
+                closeModal('cancel');
+              }}
+            >
+              Cancel
+            </Button>,
+            <Button
+              colorScheme={'accent'}
+              key={'apply'}
+              onClick={() => {
+                closeModal('apply');
+              }}
+            >
+              Apply
+            </Button>,
+          ]}
+          onRequestClose={() => closeModal('onRequestClose')}
+        >
+          Your modal content goes here
+        </Modal>
+      )}
+      <Button onClick={() => setOpen(true)} colorScheme="accent-high">
+        Open modal
+      </Button>
+    </>
+  );
+};
+
 export const WithHeaderActions: Story = {
   args: {
     headerTitle: 'Modal window',
     headerActions: [
-      {
-        icon: 'to_back',
-        onClick: () => action('clicked'),
-        tooltip: 'Back',
-      },
-      {
-        icon: 'auto_layers',
-        onClick: () => action('clicked'),
-        tooltip: 'Layers',
-      },
+      <IconButton
+        key={'back'}
+        title={'Back'}
+        icon={'to_back'}
+        onClick={() => {
+          action('back clicked');
+        }}
+      />,
+      <IconButton
+        key={'layers'}
+        title={'Layers'}
+        icon={'auto_layers'}
+        onClick={() => {
+          action('layers clicked');
+        }}
+      />,
     ],
   },
-  render: (args) =>
-    ((args) => {
-      const [isOpen, setOpen] = React.useState<boolean>(false);
-      const closeModal = (msg: string) => {
-        action(msg);
-        setOpen(false);
-      };
-
-      return (
-        <>
-          {isOpen && (
-            <Modal
-              {...args}
-              buttons={
-                <>
-                  <Button
-                    colorScheme={'quiet'}
-                    key={0}
-                    onClick={() => closeModal('cancel')}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    colorScheme={'accent'}
-                    key={1}
-                    onClick={() => closeModal('apply')}
-                  >
-                    Apply
-                  </Button>
-                </>
-              }
-              onRequestClose={() => closeModal('onRequestClose')}
-            >
-              Your modal content goes here
-            </Modal>
-          )}
-          <Button onClick={() => setOpen(true)} colorScheme="accent-high">
-            Open modal
-          </Button>
-        </>
-      );
-    })(args),
+  render: (args) => <ModalWithHeaderActions {...args} />,
 };
 
 export const Animated: Story = {
@@ -111,8 +123,11 @@ export const Animated: Story = {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
               exit={{ opacity: 0 }}
+              style={{
+                zIndex: '100',
+              }}
             >
-              <Modal onRequestClose={() => setOpen(false)}>
+              <Modal onRequestClose={() => setOpen(false)} zIndex={100}>
                 Your modal content goes here
               </Modal>
             </motion.div>
@@ -137,7 +152,7 @@ export const Custom: Story = {
       return (
         <>
           {isOpen && (
-            <Modal.Container onRequestClose={() => setOpen(false)}>
+            <Modal.Container onRequestClose={() => setOpen(false)} zIndex={100}>
               <Modal.Header>
                 <Flex alignItems="center" gap="cmp-sm">
                   <GIOkSuccessfulCheckFilled

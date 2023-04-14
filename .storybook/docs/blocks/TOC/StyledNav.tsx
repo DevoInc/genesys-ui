@@ -13,7 +13,7 @@ export const StyledNav = styled.nav.attrs({ className: 'sbdocs sbdocs-toc' })`
   padding: 10px;
   width: 250px;
   background: var(--background);
-  z-index: 9999;
+  z-index: 1;
   transition: all 0.3s ease-in;
 
   &[data-show='true'] {

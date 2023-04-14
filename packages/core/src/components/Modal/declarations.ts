@@ -13,12 +13,6 @@ export interface StyledModalWithStatusProps extends StyledModalProps {
   status?: GlobalStatus;
 }
 
-export type HeaderAction = {
-  icon: string;
-  onClick: DOMAttributes<any>['onClick'];
-  tooltip: string;
-};
-
 export type WindowSize =
   | 'small'
   | 'medium'

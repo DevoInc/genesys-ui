@@ -17,6 +17,8 @@ export interface ModalContainerProps {
   onRequestClose?: () => void;
   /** Content of the Modal */
   children: React.ReactNode;
+  /** zIndex of the Modal */
+  zIndex?: React.CSSProperties['zIndex'];
 }
 
 export const ModalContainer: React.FC<ModalContainerProps> = ({
@@ -26,10 +28,11 @@ export const ModalContainer: React.FC<ModalContainerProps> = ({
   onRequestClose,
   shouldCloseOnOverlayClick = true,
   children,
+  zIndex = 1,
 }) => {
   return (
     <Overlay
-      zIndex={1}
+      zIndex={zIndex}
       bgColorScheme={'dark'}
       fixed
       onClick={shouldCloseOnOverlayClick ? () => onRequestClose?.() : undefined}

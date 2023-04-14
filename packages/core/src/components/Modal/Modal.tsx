@@ -17,7 +17,6 @@ import {
   ModalIcon,
 } from './components';
 
-import type { HeaderAction } from './declarations';
 import type { GlobalStatus } from '../../declarations';
 import type {
   ModalFooterProps,
@@ -35,11 +34,11 @@ export interface ModalProps
     Omit<ModalBodyProps, 'children' | 'hasScroll'>,
     Omit<ModalFooterProps, 'children' | 'hasScroll'> {
   /** Sets array of buttons displayed on the bottom */
-  buttons?: React.ReactNode;
+  footerButtons?: React.ReactElement[];
   /** Modal content */
   children?: React.ReactNode;
   /** Set window options button (close button excluded) */
-  headerActions?: HeaderAction[];
+  headerActions?: React.ReactElement[];
   /** Defines the header Title */
   headerTitle?: string;
   /** Height */
@@ -61,10 +60,10 @@ export interface ModalProps
 }
 
 export const InternalModal: React.FC<ModalProps> = ({
-  buttons,
+  footerButtons,
   children,
   contentPadding,
-  headerActions,
+  headerActions = [],
   headerTitle,
   height,
   helpTitle = 'Go to Docs',
@@ -75,32 +74,21 @@ export const InternalModal: React.FC<ModalProps> = ({
   status = 'base',
   windowSize = 'medium',
   shouldCloseOnOverlayClick,
+  zIndex = 1,
 }) => {
   const { hasScroll, targetElRef } = useDetectBodyScroll();
 
-  const actions = React.useMemo(() => {
-    return [
-      ...(headerActions
-        ? headerActions.map((el) => (
-            <IconButton
-              key={el.icon}
-              title={el.tooltip}
-              icon={el.icon}
-              onClick={el.onClick}
-            />
-          ))
-        : []),
-      ...(!hideCloseButton
-        ? [
-            <IconButtonClose
-              size="md"
-              key="close"
-              onClick={onRequestClose}
-              title="Close"
-            />,
-          ]
-        : []),
-    ];
+  const actions = React.useMemo<React.ReactElement[]>(() => {
+    return hideCloseButton
+      ? headerActions
+      : headerActions.concat([
+          <IconButtonClose
+            size="md"
+            key="close"
+            onClick={onRequestClose}
+            title="Close"
+          />,
+        ]);
   }, [headerActions, hideCloseButton, onRequestClose]);
 
   return (
@@ -110,6 +98,7 @@ export const InternalModal: React.FC<ModalProps> = ({
       height={height}
       windowSize={windowSize}
       onRequestClose={onRequestClose}
+      zIndex={zIndex}
     >
       <ModalHeader hasBoxShadow={hasScroll} status={status}>
         {headerTitle && (
@@ -138,14 +127,14 @@ export const InternalModal: React.FC<ModalProps> = ({
         {children}
       </ModalBody>
 
-      {buttons && (
+      {footerButtons && (
         <ModalFooter hasBoxShadow={hasScroll}>
           {helpUrl && (
             <Box marginRight="auto">
               <IconButtonGoToDocs href={helpUrl} title={helpTitle} />
             </Box>
           )}
-          {buttons}
+          {footerButtons}
         </ModalFooter>
       )}
     </ModalContainer>
