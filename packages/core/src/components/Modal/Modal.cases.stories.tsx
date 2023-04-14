@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { Button, Modal } from '..';
+import { Button, Modal, useDetectBodyScroll } from '..';
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/Core/Layout/Modal/Cases',
@@ -114,15 +114,22 @@ export const Animated: Story = {
 export const Custom: Story = {
   render: () =>
     (() => {
+      const { hasScroll, targetElRef } = useDetectBodyScroll();
       const [isOpen, setOpen] = React.useState<boolean>(false);
 
       return (
         <>
           {isOpen && (
             <Modal.Container onRequestClose={() => setOpen(false)}>
-              <Modal.Header>Header Content</Modal.Header>
-              <Modal.Body>Body Content</Modal.Body>
-              <Modal.Footer>Footer Content</Modal.Footer>
+              <Modal.Header hasBoxShadow={hasScroll}>
+                Header Content
+              </Modal.Header>
+              <Modal.Body height="3000px" modalBodyRef={targetElRef}>
+                Body Content
+              </Modal.Body>
+              <Modal.Footer hasBoxShadow={hasScroll}>
+                Footer Content
+              </Modal.Footer>
             </Modal.Container>
           )}
           <Button onClick={() => setOpen(true)} colorScheme="accent-high">
