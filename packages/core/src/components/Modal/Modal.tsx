@@ -15,7 +15,7 @@ import {
   ModalHeader,
   ModalContainer,
   ModalIcon,
-} from './subcomponents';
+} from './components';
 
 import type { HeaderAction } from './declarations';
 import type { GlobalStatus } from '../../declarations';
@@ -25,7 +25,7 @@ import type {
   ModalHeaderProps,
   ModalContainerProps,
   ModalIconProps,
-} from './subcomponents';
+} from './components';
 import { useDetectBodyScroll } from './hooks';
 
 export interface ModalProps
@@ -74,6 +74,7 @@ export const InternalModal: React.FC<ModalProps> = ({
   onRequestClose,
   status = 'base',
   windowSize = 'medium',
+  shouldCloseOnOverlayClick,
 }) => {
   const { hasScroll, targetElRef } = useDetectBodyScroll();
 
@@ -103,7 +104,13 @@ export const InternalModal: React.FC<ModalProps> = ({
   }, [headerActions, hideCloseButton, onRequestClose]);
 
   return (
-    <ModalContainer id={id} height={height} windowSize={windowSize}>
+    <ModalContainer
+      shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
+      id={id}
+      height={height}
+      windowSize={windowSize}
+      onRequestClose={onRequestClose}
+    >
       <ModalHeader hasBoxShadow={hasScroll} status={status}>
         {headerTitle && (
           <Flex alignItems="inherit">

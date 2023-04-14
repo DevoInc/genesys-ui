@@ -1,3 +1,3 @@
 export * from './Modal';
 export * from './hooks';
-export type * from './subcomponents';
+export type * from './components';
