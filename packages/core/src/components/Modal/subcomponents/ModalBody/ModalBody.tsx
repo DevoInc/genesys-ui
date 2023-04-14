@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyledModalBody } from '../styled';
+import { StyledModalBody } from '../../styled';
 
 export interface ModalBodyProps {
   /** Whether the container has scroll */

@@ -3,7 +3,7 @@ import type {
   ActiveStatus,
   GlobalStatus,
 } from 'packages/core/src/declarations';
-import { DecoratorBar } from '../../DecoratorBar';
+import { DecoratorBar } from '../../../DecoratorBar';
 import { useTheme } from 'styled-components';
 import {
   GIAboutQuestionFaqHelpFilled,

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { StyledModal } from '../styled';
-import { Overlay } from '../../Overlay';
-import { WindowSize } from '../declarations';
+import { StyledModal } from '../../styled';
+import { Overlay } from '../../../Overlay';
+import { WindowSize } from '../../declarations';
 
 export interface ModalContainerProps {
   /** Custom id */

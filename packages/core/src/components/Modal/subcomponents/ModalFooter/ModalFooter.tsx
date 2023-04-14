@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { StyledModalFooter } from '../styled';
+import { StyledModalFooter } from '../../styled';
 
 export interface ModalFooterProps {
-  /** Whether the modal has scroll */
+  /** Whether the modal has a box shadow */
   hasBoxShadow?: boolean;
   /** Sets array of buttons displayed on the bottom */
   children: React.ReactNode;
