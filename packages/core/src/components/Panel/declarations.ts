@@ -53,6 +53,10 @@ export type PanelHeaderSettings = {
   bordered?: boolean;
   renderContent?: PanelStructuredContent | React.ReactElement;
   hasShadowStyle?: boolean;
+  append?: any;
+  bottom?: any;
+  prepend?: any;
+  top?: any;
 };
 
 export type PanelHasScroll = boolean;

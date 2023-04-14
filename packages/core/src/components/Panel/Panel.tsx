@@ -13,14 +13,16 @@ import {
   PanelSize,
 } from './declarations';
 import { useContainerDimensions } from '../../hooks';
-import { PanelHeaderContent, PanelFooterContent } from './components';
+
 import {
-  StyledPanel,
-  StyledPanelHeader,
-  StyledPanelContent,
-  StyledPanelFooter,
-  StyledPanelProps,
-} from './StyledPanel';
+  PanelContainer,
+  PanelHeader,
+  PanelBody,
+  PanelFooter,
+} from './subcomponents';
+
+import { StyledPanelProps } from './StyledPanel';
+import { PanelHeaderContent, PanelFooterContent } from './components';
 
 export interface PanelProps extends StyledPanelProps {
   as?: string | React.ComponentType<any>;
@@ -45,7 +47,7 @@ export interface PanelProps extends StyledPanelProps {
   visibility?: React.CSSProperties['visibility'];
 }
 
-export const Panel: React.FC<PanelProps> = ({
+const InternalPanel: React.FC<PanelProps> = ({
   as,
   borderSettings,
   colorScheme,
@@ -85,135 +87,81 @@ export const Panel: React.FC<PanelProps> = ({
 
   React.useEffect(updateHasScroll, [measures, hasScroll, setHasScroll]);
 
-  const renderPanelHeader = () => {
-    const renderHeaderContent = headerSettings?.renderContent;
-    const hasHeader =
-      icon ||
-      title ||
-      subtitle ||
-      headerSettings?.actions ||
-      renderHeaderContent;
-    if (hasHeader) {
-      if (React.isValidElement(renderHeaderContent)) {
-        return (
-          <StyledPanelHeader
-            hasScroll={hasScroll}
-            headerSettings={headerSettings}
-          >
-            {renderHeaderContent}
-          </StyledPanelHeader>
-        );
-      } else {
-        return (
-          <StyledPanelHeader
-            hasScroll={hasScroll}
-            headerSettings={headerSettings}
-          >
-            <PanelHeaderContent
-              actions={headerSettings?.actions}
-              appendContent={renderHeaderContent?.append}
-              bottomContent={renderHeaderContent?.bottom}
-              closeSettings={closeSettings}
-              collapseSettings={collapseSettings}
-              hasScroll={hasScroll}
-              helpUrl={!footerSettings ? helpUrl : ''}
-              helpTooltip={!footerSettings ? helpTooltip : ''}
-              icon={icon}
-              legend={legend}
-              prependContent={renderHeaderContent?.prepend}
-              size={size}
-              subtitle={subtitle}
-              title={title}
-              topContent={renderHeaderContent?.top}
-            >
-              {renderHeaderContent?.middle}
-            </PanelHeaderContent>
-          </StyledPanelHeader>
-        );
-      }
-    } else {
-      return null;
-    }
-  };
-
-  const renderPanelFooter = () => {
-    const renderFooterContent = footerSettings?.renderContent;
-    const hasFooter = footerSettings?.actions || renderFooterContent;
-    if (hasFooter) {
-      if (React.isValidElement(renderFooterContent)) {
-        return (
-          <StyledPanelFooter
-            hasScroll={hasScroll}
-            footerSettings={footerSettings}
-          >
-            {renderFooterContent}
-          </StyledPanelFooter>
-        );
-      } else {
-        return (
-          <StyledPanelFooter
-            hasScroll={hasScroll}
-            footerSettings={footerSettings}
-          >
-            <PanelFooterContent
-              actions={footerSettings?.actions}
-              appendContent={renderFooterContent?.append}
-              bottomContent={renderFooterContent?.bottom}
-              hasScroll={hasScroll}
-              helpUrl={helpUrl}
-              helpTooltip={helpTooltip}
-              prependContent={renderFooterContent?.prepend}
-              size={size}
-              topContent={renderFooterContent?.top}
-            >
-              {renderFooterContent?.middle}
-            </PanelFooterContent>
-          </StyledPanelFooter>
-        );
-      }
-    } else {
-      return null;
-    }
-  };
-
   return (
-    <StyledPanel
+    <PanelContainer
+      $display={display}
       as={as}
       borderSettings={borderSettings}
-      colorScheme={colorScheme}
       className={className}
-      contentSettings={contentSettings}
-      $display={display}
+      colorScheme={colorScheme}
       elevation={elevation}
       forwardedAs={forwardedAs}
-      hasScroll={hasScroll}
-      headerSettings={headerSettings}
-      $height={heightScheme?.height}
       id={id}
-      maxHeight={heightScheme?.maxHeight}
-      maxWidth={widthScheme?.maxWidth}
-      minHeight={heightScheme?.minHeight}
-      minWidth={widthScheme?.minWidth}
       position={position}
-      size={size}
-      status={status}
       visibility={visibility}
-      $width={widthScheme?.width}
+      widthScheme={widthScheme}
+      heightScheme={heightScheme}
     >
-      {renderPanelHeader()}
-      <StyledPanelContent
-        contentSettings={contentSettings}
+      <PanelHeader hasBoxShadow={hasScroll} bordered={headerSettings?.bordered}>
+        <PanelHeaderContent
+          actions={headerSettings?.actions}
+          appendContent={headerSettings?.renderContent?.append}
+          bottomContent={headerSettings?.renderContent?.bottom}
+          closeSettings={closeSettings}
+          collapseSettings={collapseSettings}
+          hasScroll={hasScroll}
+          helpUrl={!footerSettings ? helpUrl : ''}
+          helpTooltip={!footerSettings ? helpTooltip : ''}
+          icon={icon}
+          legend={legend}
+          prependContent={headerSettings?.renderContent?.prepend}
+          size={size}
+          subtitle={subtitle}
+          title={title}
+          topContent={headerSettings?.renderContent?.top}
+        >
+          {headerSettings?.renderContent?.middle}
+        </PanelHeaderContent>
+      </PanelHeader>
+      <PanelBody
+        bodySettings={contentSettings}
         hasScroll={hasScroll}
-        ref={panelContentRef}
+        panelBodyRef={panelContentRef}
         size={size}
       >
-        {typeof children === 'string' ? (
-          <Typography.Paragraph size={size}>{children}</Typography.Paragraph>
-        ) : (
-          children
-        )}
-      </StyledPanelContent>
-      {renderPanelFooter()}
-    </StyledPanel>
+        {children}
+      </PanelBody>
+      <PanelFooter
+        hasBoxShadow={hasScroll}
+        hasBackground={footerSettings?.hasBackground}
+        bordered={footerSettings?.bordered}
+      >
+        <PanelFooterContent
+          actions={footerSettings?.actions}
+          appendContent={footerSettings?.renderContent?.append}
+          bottomContent={footerSettings?.renderContent?.bottom}
+          hasScroll={hasScroll}
+          helpUrl={helpUrl}
+          helpTooltip={helpTooltip}
+          prependContent={footerSettings?.renderContent?.prepend}
+          size={size}
+          topContent={footerSettings?.renderContent?.top}
+        >
+          {footerSettings?.renderContent?.middle}
+        </PanelFooterContent>
+      </PanelFooter>
+    </PanelContainer>
   );
 };
+
+export const Panel = InternalPanel as typeof InternalPanel & {
+  Container: typeof PanelContainer;
+  Header: typeof PanelHeader;
+  Body: typeof PanelBody;
+  Footer: typeof PanelFooter;
+};
+
+Panel.Container = PanelContainer;
+Panel.Header = PanelHeader;
+Panel.Body = PanelBody;
+Panel.Footer = PanelFooter;
