@@ -124,9 +124,7 @@ export const Custom: Story = {
               <Modal.Header hasBoxShadow={hasScroll}>
                 Header Content
               </Modal.Header>
-              <Modal.Body height="3000px" modalBodyRef={targetElRef}>
-                Body Content
-              </Modal.Body>
+              <Modal.Body modalBodyRef={targetElRef}>Body Content</Modal.Body>
               <Modal.Footer hasBoxShadow={hasScroll}>
                 Footer Content
               </Modal.Footer>

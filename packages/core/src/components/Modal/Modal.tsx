@@ -1,7 +1,13 @@
 import * as React from 'react';
 
-import { Box, IconButton, IconButtonClose, IconButtonGoToDocs } from '../';
-import { StyledModalActions } from './styled';
+import {
+  Box,
+  ButtonGroup,
+  Flex,
+  IconButton,
+  IconButtonClose,
+  IconButtonGoToDocs,
+} from '../';
 import { Heading } from '../Typography/components/block';
 import {
   ModalFooter,
@@ -71,41 +77,55 @@ export const InternalModal: React.FC<ModalProps> = ({
 }) => {
   const { hasScroll, targetElRef } = useDetectBodyScroll();
 
+  const actions = React.useMemo(() => {
+    return [
+      ...(headerActions
+        ? headerActions.map((el) => (
+            <IconButton
+              key={el.icon}
+              title={el.tooltip}
+              icon={el.icon}
+              onClick={el.onClick}
+            />
+          ))
+        : []),
+      ...(!hideCloseButton
+        ? [
+            <IconButtonClose
+              size="md"
+              key="close"
+              onClick={onRequestClose}
+              title="Close"
+            />,
+          ]
+        : []),
+    ];
+  }, [headerActions, hideCloseButton, onRequestClose]);
+
   return (
     <ModalContainer id={id} height={height} windowSize={windowSize}>
       <ModalHeader hasBoxShadow={hasScroll} status={status}>
         {headerTitle && (
-          <>
+          <Flex alignItems="inherit">
             <ModalIcon status={status} />
             <Heading size={status === 'base' ? 'h4' : 'h5'} truncateLine={1}>
               {headerTitle}
             </Heading>
-          </>
+          </Flex>
         )}
-        <StyledModalActions>
-          {headerActions &&
-            headerActions.map((el, idx) => (
-              <li key={idx}>
-                <IconButton
-                  size="sm"
-                  title={el.tooltip}
-                  icon={el.icon}
-                  onClick={el.onClick}
-                />
-              </li>
-            ))}
-          {!hideCloseButton && (
-            <li>
-              <IconButtonClose onClick={onRequestClose} title="Close" />
-            </li>
-          )}
-        </StyledModalActions>
+
+        {actions && (
+          <Flex marginLeft="auto">
+            <ButtonGroup size="sm" itemsGap="lg">
+              {actions}
+            </ButtonGroup>
+          </Flex>
+        )}
       </ModalHeader>
 
       <ModalBody
         modalBodyRef={targetElRef}
         contentPadding={contentPadding}
-        height={height}
         hasScroll={hasScroll}
       >
         {children}

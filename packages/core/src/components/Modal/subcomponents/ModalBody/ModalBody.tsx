@@ -4,8 +4,6 @@ import { StyledModalBody } from '../../styled';
 export interface ModalBodyProps {
   /** Whether the container has scroll */
   hasScroll?: boolean;
-  /** Height */
-  height?: string;
   /** Hide Close Button (Show by default) */
   contentPadding?: string;
   /** Ref for the modal content */
@@ -15,7 +13,6 @@ export interface ModalBodyProps {
 }
 
 export const ModalBody: React.FC<ModalBodyProps> = ({
-  height,
   hasScroll,
   modalBodyRef,
   contentPadding,
@@ -25,7 +22,6 @@ export const ModalBody: React.FC<ModalBodyProps> = ({
     <StyledModalBody
       ref={modalBodyRef}
       contentPadding={contentPadding}
-      height={height}
       hasBoxShadow={hasScroll}
     >
       {children}
