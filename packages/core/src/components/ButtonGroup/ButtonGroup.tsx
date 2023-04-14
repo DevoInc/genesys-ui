@@ -57,7 +57,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
         >
           {React.cloneElement(child, {
             key: idx,
-            size: size,
+            size: child.props.size || size,
           })}
         </StyledButtonGroupItem>
       ))}
