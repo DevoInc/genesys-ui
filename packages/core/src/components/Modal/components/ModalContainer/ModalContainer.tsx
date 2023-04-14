@@ -34,7 +34,15 @@ export const ModalContainer: React.FC<ModalContainerProps> = ({
       fixed
       onClick={shouldCloseOnOverlayClick ? () => onRequestClose?.() : undefined}
     >
-      <StyledModal id={id} height={height} windowSize={windowSize}>
+      <StyledModal
+        id={id}
+        height={height}
+        windowSize={windowSize}
+        onClick={(event) => {
+          // For avoid click inside close overlay
+          event.stopPropagation();
+        }}
+      >
         {children}
       </StyledModal>
     </Overlay>
