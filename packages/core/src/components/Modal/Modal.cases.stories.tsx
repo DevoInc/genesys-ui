@@ -124,7 +124,7 @@ export const Animated: Story = {
               transition={{ duration: 0.2 }}
               exit={{ opacity: 0 }}
               style={{
-                zIndex: '100',
+                zIndex: 100,
               }}
             >
               <Modal onRequestClose={() => setOpen(false)} zIndex={100}>
