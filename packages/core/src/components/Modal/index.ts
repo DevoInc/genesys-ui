@@ -1,3 +1,9 @@
 export * from './Modal';
 export * from './hooks';
-export type * from './components';
+
+export type {
+  ModalBodyProps,
+  ModalFooterProps,
+  ModalHeaderProps,
+  ModalContainerProps,
+} from './components';

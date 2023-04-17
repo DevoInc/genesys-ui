@@ -7,7 +7,7 @@ export interface ModalBodyProps {
   /** Hide Close Button (Show by default) */
   contentPadding?: string;
   /** Ref for the modal content */
-  modalBodyRef?: React.RefObject<HTMLDivElement>;
+  modalBodyRef?: (node: HTMLDivElement) => void;
   /** Children of the modal content */
   children: React.ReactNode;
 }

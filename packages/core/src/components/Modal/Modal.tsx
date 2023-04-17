@@ -146,11 +146,9 @@ export const Modal = InternalModal as typeof InternalModal & {
   Header: typeof ModalHeader;
   Body: typeof ModalBody;
   Footer: typeof ModalFooter;
-  Icon: typeof ModalIcon;
 };
 
 Modal.Container = ModalContainer;
 Modal.Header = ModalHeader;
 Modal.Body = ModalBody;
 Modal.Footer = ModalFooter;
-Modal.Icon = ModalIcon;
