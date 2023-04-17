@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { rgba } from 'polished';
-
-import { Brand } from '@devoinc/genesys-brand-devo';
+import { DefaultTheme } from 'styled-components';
 
 import { isValidColor } from '../../styled/functions';
 import { OverlayBgColorScheme } from './declarations';
@@ -28,7 +27,7 @@ export const getOverlayBg = ({
   bgColorScheme: OverlayBgColorScheme;
   bgGradient: React.CSSProperties['background'];
   opacity: number;
-  overlayBgTokens: Brand['cmp']['overlay']['color']['background'];
+  overlayBgTokens: DefaultTheme['cmp']['overlay']['color']['background'];
 }) => {
   if (bgGradient) {
     return bgGradient;
