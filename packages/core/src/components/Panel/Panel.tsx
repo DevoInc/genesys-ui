@@ -11,6 +11,7 @@ import {
   PanelHelpTooltip,
   PanelHelpUrl,
   PanelSize,
+  PanelStructuredContent,
 } from './declarations';
 import { useContainerDimensions } from '../../hooks';
 import { PanelHeaderContent, PanelFooterContent } from './components';
@@ -111,8 +112,12 @@ export const Panel: React.FC<PanelProps> = ({
           >
             <PanelHeaderContent
               actions={headerSettings?.actions}
-              appendContent={renderHeaderContent?.append}
-              bottomContent={renderHeaderContent?.bottom}
+              appendContent={
+                (renderHeaderContent as PanelStructuredContent)?.append
+              }
+              bottomContent={
+                (renderHeaderContent as PanelStructuredContent)?.bottom
+              }
               closeSettings={closeSettings}
               collapseSettings={collapseSettings}
               hasScroll={hasScroll}
@@ -120,13 +125,15 @@ export const Panel: React.FC<PanelProps> = ({
               helpTooltip={!footerSettings ? helpTooltip : ''}
               icon={icon}
               legend={legend}
-              prependContent={renderHeaderContent?.prepend}
+              prependContent={
+                (renderHeaderContent as PanelStructuredContent)?.prepend
+              }
               size={size}
               subtitle={subtitle}
               title={title}
-              topContent={renderHeaderContent?.top}
+              topContent={(renderHeaderContent as PanelStructuredContent)?.top}
             >
-              {renderHeaderContent?.middle}
+              {(renderHeaderContent as PanelStructuredContent)?.middle}
             </PanelHeaderContent>
           </StyledPanelHeader>
         );
@@ -157,16 +164,22 @@ export const Panel: React.FC<PanelProps> = ({
           >
             <PanelFooterContent
               actions={footerSettings?.actions}
-              appendContent={renderFooterContent?.append}
-              bottomContent={renderFooterContent?.bottom}
+              appendContent={
+                (renderFooterContent as PanelStructuredContent)?.append
+              }
+              bottomContent={
+                (renderFooterContent as PanelStructuredContent)?.bottom
+              }
               hasScroll={hasScroll}
               helpUrl={helpUrl}
               helpTooltip={helpTooltip}
-              prependContent={renderFooterContent?.prepend}
+              prependContent={
+                (renderFooterContent as PanelStructuredContent)?.prepend
+              }
               size={size}
-              topContent={renderFooterContent?.top}
+              topContent={(renderFooterContent as PanelStructuredContent)?.top}
             >
-              {renderFooterContent?.middle}
+              {(renderFooterContent as PanelStructuredContent)?.middle}
             </PanelFooterContent>
           </StyledPanelFooter>
         );
