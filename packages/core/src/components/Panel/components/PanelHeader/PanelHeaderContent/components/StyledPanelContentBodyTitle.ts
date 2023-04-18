@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-import { BaseSize } from '../../../../../../declarations';
 import { getPanelTokens } from '../../../../helpers';
+import { PanelSize } from '../../../../declarations';
 
 export interface StyledPanelHeaderContentLegendProps {
-  size: BaseSize;
+  size: PanelSize;
 }
 
 export const StyledPanelHeaderContentLegend = styled.div<StyledPanelHeaderContentLegendProps>`

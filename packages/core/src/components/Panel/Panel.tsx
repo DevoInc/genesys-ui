@@ -15,8 +15,12 @@ import {
   PanelFooterContentProps,
 } from './components';
 
-import { FooterSettings, HeaderSettings, RenderContent } from './declarations';
-import { BaseSize } from '../../declarations';
+import {
+  FooterSettings,
+  HeaderSettings,
+  PanelSize,
+  RenderContent,
+} from './declarations';
 
 export interface PanelProps
   extends Pick<
@@ -48,7 +52,8 @@ export interface PanelProps
   className?: string;
   footerSettings?: FooterSettings;
   headerSettings?: HeaderSettings;
-  size?: BaseSize;
+  /** Set size for Panel components */
+  size?: PanelSize;
 }
 
 const InternalPanel: React.FC<PanelProps> = ({

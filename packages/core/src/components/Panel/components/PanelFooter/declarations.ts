@@ -1,10 +1,10 @@
-import { BaseSize } from 'packages/core/src/declarations';
 import { ButtonProps } from '../../../Button';
 import { IconButtonProps } from '../../../IconButton';
+import { PanelSize } from '../../declarations';
 
 export type PanelFooterActions = (
   | React.ReactElement<ButtonProps>
   | React.ReactElement<IconButtonProps>
 )[];
 
-export type PanelFooterSize = BaseSize;
+export type PanelFooterSize = PanelSize;

@@ -2,9 +2,8 @@ import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './Panel.stories';
-import * as CaseStories from './Panel.cases.stories';
 
-<Meta of={Stories} />
+<Meta title="Components/Core/Layout/Panel" />
 
 <Heading.H1>Panel</Heading.H1>
 
@@ -21,15 +20,15 @@ import { Panel } from '@devoinc/genesys-ui';
 `}
 />
 
-<Heading.H2>Basic usage</Heading.H2>
+<Heading.H2>Examples</Heading.H2>
+
+<Heading.H3>Base</Heading.H3>
 
 <Canvas of={Stories.Base} />
 
-<Heading.H2>Cases</Heading.H2>
-
 <Heading.H3>Closable and backward navigation</Heading.H3>
 
-<Canvas of={CaseStories.ClosableBackwardNavigation} />
+<Canvas of={Stories.ClosableBackwardNavigation} />
 
 <Heading.H2>Props</Heading.H2>
 

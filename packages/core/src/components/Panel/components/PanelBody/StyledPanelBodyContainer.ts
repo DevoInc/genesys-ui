@@ -1,15 +1,15 @@
 import styled, { css } from 'styled-components';
 
 import { getPanelTokens } from '../../helpers';
-import { BaseSize } from '../../../../declarations';
 import { scrollbars } from '../../../../styled/mixins/scrollbars';
+import { PanelSize } from '../../declarations';
 
 export interface StyledPanelBodyContainerProps {
   hasScroll?: boolean;
   bodySettings?: {
     removeSpace?: boolean;
   };
-  size?: BaseSize;
+  size?: PanelSize;
 }
 
 export const StyledPanelBodyContainer = styled.div<StyledPanelBodyContainerProps>`

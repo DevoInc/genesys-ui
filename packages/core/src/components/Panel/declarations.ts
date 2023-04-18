@@ -1,6 +1,8 @@
 import * as React from 'react';
 
 import { ButtonProps, IconButtonProps } from '../';
+import { GlobalSize } from '../../declarations';
+import { PickUnion } from '../../typeFunctions';
 
 export interface RenderContent {
   append?: React.ReactElement;
@@ -30,3 +32,5 @@ export interface FooterSettings {
   hasBackground?: boolean;
   hasShadowStyle?: boolean;
 }
+
+export type PanelSize = PickUnion<GlobalSize, 'xs' | 'sm' | 'md'>;
