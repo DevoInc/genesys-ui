@@ -1,12 +1,12 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import { PanelSize } from '../../../declarations';
 import { getPanelTokens } from '../../../helpers';
+import { PanelHeaderSize } from '../declarations';
 
 export interface StyledPanelHeaderContentProps {
   bottomContent: React.ReactElement;
-  size: PanelSize;
+  size: PanelHeaderSize;
   subtitle: string;
   topContent: React.ReactElement;
 }
@@ -32,7 +32,7 @@ export const StyledPanelHeaderContent = styled.div<StyledPanelHeaderContentProps
 export const StyledPanelHeaderContentTop = styled.div``;
 
 export interface StyledPanelHeaderContentMiddleProps {
-  size: PanelSize;
+  size: PanelHeaderSize;
 }
 
 export const StyledPanelHeaderContentMiddle = styled.div<StyledPanelHeaderContentMiddleProps>`

@@ -44,11 +44,11 @@ export interface PanelProps
     >,
     Pick<PanelBodyContainerProps, 'bodySettings'>,
     Pick<PanelFooterContentProps, 'helpTooltip' | 'helpUrl'> {
-  children: React.ReactNode;
-  className: string;
-  footerSettings: FooterSettings;
-  headerSettings: HeaderSettings;
-  size: BaseSize;
+  children?: React.ReactNode;
+  className?: string;
+  footerSettings?: FooterSettings;
+  headerSettings?: HeaderSettings;
+  size?: BaseSize;
 }
 
 const InternalPanel: React.FC<PanelProps> = ({

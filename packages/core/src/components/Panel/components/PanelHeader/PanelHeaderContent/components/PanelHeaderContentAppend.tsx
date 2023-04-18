@@ -17,7 +17,7 @@ import { PanelHeaderActions, PanelHeaderSize } from '../../declarations';
 export interface PanelHeaderContentAppendProps {
   actions?: PanelHeaderActions;
   appendContent?: React.ReactNode;
-  closeSettings: {
+  closeSettings?: {
     cssTranslate?: string;
     onClick?: IconButtonCloseProps['onClick'];
     tooltip?: IconButtonCloseProps['title'];

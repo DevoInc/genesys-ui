@@ -9,7 +9,7 @@ import {
 
 export interface PanelBodyContainerProps extends StyledPanelBodyContainerProps {
   children?: React.ReactNode;
-  panelBodyRef?: React.RefObject<HTMLDivElement>;
+  panelBodyRef?: (node: HTMLDivElement) => void;
 }
 
 export const PanelBodyContainer: React.FC<PanelBodyContainerProps> = ({

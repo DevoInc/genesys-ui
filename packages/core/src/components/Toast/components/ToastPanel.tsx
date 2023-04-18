@@ -79,7 +79,7 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
       <ToastBadge status={status} updates={updates} />
       <StyledContent
         colorScheme={backgroundColor}
-        contentSettings={{ removeSpace: showCollapsed }}
+        bodySettings={{ removeSpace: showCollapsed }}
         elevation="popOut"
         footerSettings={{ hasShadowStyle: true, actions: footerActions }}
         headerSettings={{ hasShadowStyle: true, renderContent: headerContent }}

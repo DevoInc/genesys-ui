@@ -2,9 +2,9 @@ import styled, { css } from 'styled-components';
 
 import { imgResponsiveMixin } from '../../../../styled/mixins/utilsMixins';
 
-import { StyledPanelContent } from '../../../Panel/StyledPanel';
-import { StyledPanelHeaderContent } from '../../../Panel/components/PanelHeaderContent/StyledPanelHeaderContent';
-import { StyledPanelFooterContent } from '../../../Panel/components/PanelFooterContent/StyledPanelFooterContent';
+import { StyledPanelBodyContainer } from '../../../Panel/components/PanelBody/StyledPanelBodyContainer';
+import { StyledPanelHeaderContent } from '../../../Panel/components/PanelHeader/PanelHeaderContent/StyledPanelHeaderContent';
+import { StyledPanelFooterContent } from '../../../Panel/components/PanelFooter/PanelFooterContent/StyledPanelFooterContent';
 
 interface StyledInlineMessagePanelProps {
   hasScroll?: boolean;
@@ -21,7 +21,7 @@ export const StyledInlineMessagePanel = styled.div<StyledInlineMessagePanelProps
         ]};
       }
 
-      ${StyledPanelContent} {
+      ${StyledPanelBodyContainer} {
         padding: ${hasScroll
           ? tokens.content.space.padding.hasScroll
           : tokens.content.space.padding.noHasScroll};
