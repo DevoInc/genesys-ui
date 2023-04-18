@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { updateHasScroll } from '../scroll';
-import { useContainerDimensions } from '../../../hooks';
+import { updateHasScroll } from '../components/Modal/scroll';
+import { useContainerDimensions } from '.';
 
-export const useDetectBodyScroll = () => {
+export const useDetectScroll = () => {
   const { setRef: targetElRef, size: measures } = useContainerDimensions();
 
   const [hasScroll, setHasScroll] = React.useState(false);

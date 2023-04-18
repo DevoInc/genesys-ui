@@ -20,7 +20,7 @@ import type {
   ModalContainerProps,
   ModalIconProps,
 } from './subcomponents';
-import { useDetectBodyScroll } from './hooks';
+import { useDetectScroll } from '../../hooks';
 
 export interface ModalProps
   extends Omit<ModalContainerProps, 'children'>,
@@ -69,7 +69,7 @@ export const InternalModal: React.FC<ModalProps> = ({
   status = 'base',
   windowSize = 'medium',
 }) => {
-  const { hasScroll, targetElRef } = useDetectBodyScroll();
+  const { hasScroll, targetElRef } = useDetectScroll();
 
   return (
     <ModalContainer id={id} height={height} windowSize={windowSize}>

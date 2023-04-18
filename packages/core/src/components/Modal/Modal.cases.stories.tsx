@@ -3,7 +3,8 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { Button, Modal, useDetectBodyScroll } from '..';
+import { Button, Modal } from '..';
+import { useDetectScroll } from '../../hooks';
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/Core/Layout/Modal/Cases',
@@ -114,7 +115,7 @@ export const Animated: Story = {
 export const Custom: Story = {
   render: () =>
     (() => {
-      const { hasScroll, targetElRef } = useDetectBodyScroll();
+      const { hasScroll, targetElRef } = useDetectScroll();
       const [isOpen, setOpen] = React.useState<boolean>(false);
 
       return (
