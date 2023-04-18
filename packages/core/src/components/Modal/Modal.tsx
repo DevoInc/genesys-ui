@@ -25,7 +25,7 @@ import type {
   ModalContainerProps,
   ModalIconProps,
 } from './components';
-import { useDetectBodyScroll } from './hooks';
+import { useDetectScroll } from '../../hooks';
 
 export interface ModalProps
   extends Omit<ModalContainerProps, 'children'>,
@@ -76,7 +76,7 @@ export const InternalModal: React.FC<ModalProps> = ({
   shouldCloseOnOverlayClick,
   zIndex = 1,
 }) => {
-  const { hasScroll, targetElRef } = useDetectBodyScroll();
+  const { hasScroll, targetElRef } = useDetectScroll();
 
   const actions = React.useMemo<React.ReactElement[]>(() => {
     return hideCloseButton

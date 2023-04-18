@@ -10,7 +10,7 @@ import {
   StyledPanelHeaderContent,
   StyledPanelHeaderContentPrepend,
   StyledPanelHeaderContentMiddle,
-} from '../Panel/components/PanelHeaderContent/StyledPanelHeaderContent';
+} from '../Panel/components/PanelHeader/PanelHeaderContent/StyledPanelHeaderContent';
 
 import { StyledPanelContent } from '../Panel/StyledPanel';
 

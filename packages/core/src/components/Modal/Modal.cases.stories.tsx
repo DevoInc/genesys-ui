@@ -14,12 +14,12 @@ import {
   IconButtonStatus,
   Modal,
   ModalProps,
-  useDetectBodyScroll,
 } from '..';
 import { GIOkSuccessfulCheckFilled } from '@devoinc/genesys-icons';
 import { Heading } from '../Typography/components/block';
 import { useTheme } from 'styled-components';
 import { lorem } from '../../../stories/utils/fillerTexts';
+import { useDetectScroll } from '../../hooks';
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/Core/Layout/Modal/Cases',
@@ -143,7 +143,7 @@ export const Animated: Story = {
 export const Custom: Story = {
   render: () =>
     (() => {
-      const { hasScroll, targetElRef } = useDetectBodyScroll();
+      const { hasScroll, targetElRef } = useDetectScroll();
       const [isOpen, setOpen] = React.useState<boolean>(false);
 
       const tokens = useTheme();
