@@ -10,7 +10,6 @@ const meta: Meta<typeof Panel> = {
   args: {
     elevation: 'raised',
     size: 'md',
-    status: 'base',
   },
 };
 
@@ -19,7 +18,7 @@ type Story = StoryObj<typeof Panel>;
 
 export const ClosableBackwardNavigation: Story = {
   args: {
-    contentSettings: {
+    bodySettings: {
       removeSpace: false,
     },
     footerSettings: {
