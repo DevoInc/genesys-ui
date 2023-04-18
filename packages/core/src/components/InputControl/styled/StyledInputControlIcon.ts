@@ -6,12 +6,12 @@ export interface StyledInputControlIconProps {
   size: FieldSize;
   /** This property defines the status color schema for the input */
   status: FieldStatus;
-  /** Icon type */
-  typeIcon?: string; //TODO: review this type
+  /** If the icon is related with the input type */
+  isTypeIcon?: boolean;
 }
 
 export const StyledInputControlIcon = styled.span<StyledInputControlIconProps>`
-  ${({ size, status, theme, typeIcon }) => {
+  ${({ isTypeIcon, size, status, theme }) => {
     const fieldTokens = theme.alias.fields;
     const fieldIconTokens = fieldTokens.icon;
     const position = fieldTokens.space.padding.hor[size];
@@ -32,7 +32,7 @@ export const StyledInputControlIcon = styled.span<StyledInputControlIconProps>`
         : status && fieldTokens.color.border[status].enabled};
       pointer-events: none;
 
-      ${typeIcon
+      ${isTypeIcon
         ? css`
             left: ${position};
           `

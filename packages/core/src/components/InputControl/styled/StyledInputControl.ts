@@ -2,7 +2,12 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 
 // declarations
-import { FieldSize, FieldStatus } from '../../../';
+import {
+  commonInputControlMixin,
+  FieldControlWidth,
+  FieldSize,
+  FieldStatus,
+} from '../../../';
 import { INPUT_CONTROL_PSEUDO_ACTIONS_SIZE_MAP } from '../constants';
 
 // utils and helpers
@@ -18,8 +23,10 @@ export interface StyledInputControlProps {
   addonToRight?: React.ReactNode;
   /** Whether the component displays an icon. */
   hasIcon?: boolean;
-  /** Whether the component has an icon type. */
+  /** Whether the component displays an icon related with type. */
   hasTypeIcon?: boolean;
+  /** Predefined width of the input. It should reflect the length of the content you expect the user to enter */
+  inputWidth?: FieldControlWidth;
   /** Size of the input: height, padding, font-size... etc. */
   $size?: FieldSize;
   /** This property defines the status color schema for the input */
@@ -33,6 +40,7 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
     disabled = false,
     hasIcon = false,
     hasTypeIcon = false,
+    inputWidth,
     readOnly = false,
     $size = 'md',
     status = 'base',
@@ -41,14 +49,14 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
   }) => {
     const state = getFieldState({ readOnly });
     const aliasTokens = theme.alias;
-    const fieldTokens = theme.alias.fields;
+    const fieldTokens = aliasTokens.fields;
     const fieldIconTokens = fieldTokens.icon;
-    const position = fieldTokens.space.padding.hor[$size];
-    const fs = fieldIconTokens.size.square[$size];
+    const iconSize = fieldIconTokens.size.square[$size];
     const inputBorderRadius = fieldTokens.shape.borderRadius;
+    const inputWidthEval = fieldTokens.size.width[inputWidth];
     const inputHeight = fieldTokens.size.height[$size];
     const inputHorPadding = fieldTokens.space.padding.hor[$size];
-    const inputWithIconPadding = css`calc(${fs} + ${position} * 2)`;
+    const inputWithIconPadding = css`calc(${iconSize} + ${inputHorPadding} * 2)`;
     const buttonTokens = theme.cmp.button;
     const clearSearchButtonSize = buttonTokens.size.square.xxs;
     const pseudoButtonSize =
@@ -65,6 +73,7 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
     const inputRangeHandlerSize = aliasTokens.handlers.size.square.md;
 
     return css`
+      ${commonInputControlMixin({ disabled, readOnly, $size, status, theme })};
       ${getFieldControlTypo({ theme, size: $size })};
       display: flex;
       appearance: none;
@@ -76,7 +85,7 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
       border-style: solid;
       border-color: ${fieldTokens.color.border[status][state]};
       border-radius: ${inputBorderRadius};
-      width: 100%;
+      width: ${inputWidthEval || '100%'};
       height: ${inputHeight};
       padding: 0 ${inputHorPadding};
       background-color: ${fieldTokens.color.background[status][state]};

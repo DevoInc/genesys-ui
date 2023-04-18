@@ -1,65 +1,134 @@
 import * as React from 'react';
 
-// constants
-import { INPUT_CONTROL_ICON_STATUS_MAP } from '../constants';
-
 // declarations
 import {
   ContainerEventAttrProps,
   FieldControlCommonProps,
-  FieldControlWidth,
   FieldSize,
   InputAttrProps,
   InputEventAttrs,
   TextBoxAriaProps,
 } from '../../../declarations';
 
-// utils
-import { hasStatus } from '../../../utils/validations';
-
 // styled
 import { StyledInputControl, StyledInputControlProps } from '../styled';
 
 export interface InputControlInputProps
   extends FieldControlCommonProps,
-    Pick<TextBoxAriaProps, 'aria-invalid' | 'aria-activedescendant'>,
+    Pick<TextBoxAriaProps, 'aria-invalid'>,
     Omit<InputAttrProps, 'size' | 'multiple'>,
     InputEventAttrs,
     Pick<
       ContainerEventAttrProps,
       'onKeyDown' | 'onKeyUp' | 'onPaste' | 'onWheel'
     >,
-    Omit<StyledInputControlProps, 'hasIcon' | 'hasTypeIcon' | '$size'> {
-  /** Name of the Icon from icon library font */
-  icon?: string;
-  /** Predefined width of the input. It should reflect the length of the content you expect the user to enter */
-  inputWidth?: FieldControlWidth;
+    Omit<StyledInputControlProps, '$size'> {
   /** Size of the input: height, padding, font-size... etc. */
   size?: FieldSize;
 }
 
 export const InputControlInput: React.FC<InputControlInputProps> = ({
   'aria-errormessage': ariaErrorMessage,
+  'aria-describedby': ariaDescribedBy,
   'aria-invalid': ariaInvalid,
-  icon,
+  'aria-label': ariaLabel,
+  accept,
+  addonToLeft,
+  addonToRight,
+  autoComplete,
+  autoFocus,
+  defaultValue,
+  disabled,
+  form,
+  formAction,
+  hasIcon,
+  hasTypeIcon,
+  id,
+  inputWidth,
+  max,
+  maxLength,
+  min,
+  minLength,
+  name,
+  onBlur,
+  onChange,
+  onClick,
+  onFocus,
+  onInput,
+  onInvalid,
+  onKeyDown,
+  onKeyUp,
+  onLoad,
+  onMouseDown,
+  onMouseLeave,
+  onMouseMove,
+  onMouseOut,
+  onMouseOver,
+  onMouseUp,
+  onPaste,
+  onWheel,
+  pattern,
+  placeholder,
+  readOnly,
+  required,
   size = 'md',
   status = 'base',
+  step,
+  title,
   type = 'text',
-  ...restInputNativeProps
+  value,
 }) => {
-  const typeIcon = type === 'search' ? 'search_find_zoom' : null;
-  const iconEval =
-    icon || (hasStatus(status) ? INPUT_CONTROL_ICON_STATUS_MAP[status] : icon);
   return (
     <StyledInputControl
-      {...restInputNativeProps}
+      addonToLeft={addonToLeft}
+      addonToRight={addonToRight}
+      aria-describedby={ariaDescribedBy}
       aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
       aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
-      hasIcon={!iconEval}
-      hasTypeIcon={Boolean(typeIcon)}
+      aria-label={ariaLabel}
+      accept={accept}
+      autoComplete={autoComplete}
+      autoFocus={autoFocus}
+      defaultValue={defaultValue}
+      disabled={disabled}
+      form={form}
+      formAction={formAction}
+      hasIcon={hasIcon}
+      hasTypeIcon={hasTypeIcon}
+      id={id}
+      inputWidth={inputWidth}
+      max={max}
+      maxLength={maxLength}
+      min={min}
+      minLength={minLength}
+      name={name}
+      onBlur={onBlur}
+      onChange={onChange}
+      onClick={onClick}
+      onFocus={onFocus}
+      onInput={onInput}
+      onInvalid={onInvalid}
+      onKeyDown={onKeyDown}
+      onKeyUp={onKeyUp}
+      onLoad={onLoad}
+      onMouseDown={onMouseDown}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
+      onMouseOut={onMouseOut}
+      onMouseOver={onMouseOver}
+      onMouseUp={onMouseUp}
+      onPaste={onPaste}
+      onWheel={onWheel}
+      pattern={pattern}
+      placeholder={placeholder}
+      readOnly={readOnly}
+      required={required}
       $size={size}
       status={status}
+      step={step}
+      title={title}
       type={type}
+      value={value}
     />
   );
 };

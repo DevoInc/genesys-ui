@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { Resize } from './declarations';
 
-import { getLineHeight, scrollbars } from '../../';
+import { commonInputControlMixin, getLineHeight, scrollbars } from '../../';
 
 import {
   StyledInputControl,
@@ -20,11 +20,8 @@ export interface StyledTextareaControlProps
   resize?: Resize;
 }
 
-export const StyledTextareaControl = styled.textarea.attrs({
-  as: StyledInputControl,
-  forwardedAs: 'textarea',
-})<StyledTextareaControlProps>`
-  ${({ disabled, readOnly, resize = 'both', $size, theme }) => {
+export const StyledTextareaControl = styled.textarea<StyledTextareaControlProps>`
+  ${({ disabled, readOnly, resize = 'both', $size, status, theme }) => {
     const fieldTokens = theme.alias.fields;
     const fieldLineHeight = getLineHeight({ tokens: theme, size: $size });
 
@@ -32,6 +29,7 @@ export const StyledTextareaControl = styled.textarea.attrs({
     const verPadding = css`calc((${fieldHeight} - ${fieldLineHeight}) / 2)`;
 
     return css`
+      ${commonInputControlMixin({ disabled, readOnly, $size, status, theme })};
       ${scrollbars({ theme })};
       resize: ${!(disabled || readOnly) ? resize : 'none'};
       height: auto;

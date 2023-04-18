@@ -18,6 +18,6 @@ type Story = StoryObj<typeof Form>;
 
 export const Base: Story = {
   args: {
-    children: <InputControl aria-label="Input label" />,
+    children: <InputControL aria-label="Input label" />,
   },
 };
