@@ -53,28 +53,10 @@ export const PanelHeaderContentAppend: React.FC<
       </StyledPanelHeaderContentAppend>
     );
 
-  const renderAction = (action, idx) => {
-    const getActionCmp = (close) =>
-      action.children ? (
-        <Button {...action} key={idx} onClick={action.onClick || close}>
-          {action.children}
-        </Button>
-      ) : (
-        <IconButton {...action} key={idx} size={action.size || size} />
-      );
-
-    return !action.items
-      ? getActionCmp(undefined)
-      : {
-          /* TODO add this component when it's ready */
-          /* <DropDownMenu items={action.items} key={idx} trigger={getActionCmp} />*/
-        };
-  };
-
   return (
     filteredActions && (
       <StyledPanelHeaderContentAppend size={size}>
-        <>{filteredActions.map(renderAction)}</>
+        <>{filteredActions.map((action) => action)}</>
       </StyledPanelHeaderContentAppend>
     )
   );

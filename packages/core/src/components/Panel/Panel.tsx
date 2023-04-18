@@ -23,20 +23,7 @@ import {
 } from './declarations';
 
 export interface PanelProps
-  extends Pick<
-      PanelContainerProps,
-      | 'as'
-      | 'borderSettings'
-      | 'colorScheme'
-      | 'display'
-      | 'elevation'
-      | 'forwardedAs'
-      | 'heightScheme'
-      | 'id'
-      | 'position'
-      | 'visibility'
-      | 'widthScheme'
-    >,
+  extends Omit<PanelContainerProps, 'children'>,
     Pick<
       PanelHeaderContentProps,
       | 'closeSettings'
@@ -87,6 +74,7 @@ const InternalPanel: React.FC<PanelProps> = ({
   // commons
   size = 'md',
   children,
+  ...boxProps
 }) => {
   const { hasScroll, targetElRef } = useDetectScroll();
   const headerRenderContent = headerSettings?.renderContent as RenderContent;
@@ -106,6 +94,7 @@ const InternalPanel: React.FC<PanelProps> = ({
       visibility={visibility}
       widthScheme={widthScheme}
       heightScheme={heightScheme}
+      {...boxProps}
     >
       <PanelHeaderContainer
         hasBoxShadow={hasScroll}
