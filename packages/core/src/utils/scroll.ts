@@ -1,4 +1,4 @@
-import { ClientSize } from '../../declarations/dom';
+import { ClientSize } from '../declarations/dom';
 
 export const updateHasScroll = (
   measures: ClientSize,

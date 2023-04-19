@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { updateHasScroll } from '../components/Modal/scroll';
+import { updateHasScroll } from '../utils/scroll';
 import { useContainerDimensions } from '.';
 
 export const useDetectScroll = () => {
