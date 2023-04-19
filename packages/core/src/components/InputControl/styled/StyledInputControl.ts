@@ -17,10 +17,10 @@ import { hasStatus } from '../../../utils/validations';
 import { btnResetMixin } from '../../../styled/';
 
 export interface StyledInputControlProps {
-  /** Fixed block of content at the beginning of the input */
-  addonToLeft?: React.ReactNode;
-  /** Fixed block of content at the end of the input */
-  addonToRight?: React.ReactNode;
+  /** If the Input has an addon to its left, so it needs special styles. */
+  hasAddonToLeft?: boolean;
+  /** If the Input has an addon to its right, so it needs special styles. */
+  hasAddonToRight?: boolean;
   /** Whether the component displays an icon. */
   hasIcon?: boolean;
   /** Whether the component displays an icon related with type. */
@@ -35,13 +35,13 @@ export interface StyledInputControlProps {
 
 export const StyledInputControl = styled.input<StyledInputControlProps>`
   ${({
-    addonToLeft,
-    addonToRight,
-    disabled = false,
-    hasIcon = false,
-    hasTypeIcon = false,
+    disabled,
+    hasAddonToLeft,
+    hasAddonToRight,
+    hasIcon,
+    hasTypeIcon,
     inputWidth,
-    readOnly = false,
+    readOnly,
     $size = 'md',
     status = 'base',
     theme,
@@ -101,7 +101,7 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
         padding-right: ${inputWithIconPadding};
       `};
 
-      ${addonToLeft &&
+      ${hasAddonToLeft &&
       css`
         border-bottom-left-radius: 0;
         border-top-left-radius: 0;
@@ -111,7 +111,7 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
         `}
       `}
 
-      ${addonToRight &&
+      ${hasAddonToRight &&
       css`
         z-index: 1;
         border-bottom-right-radius: 0;

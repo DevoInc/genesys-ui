@@ -33,14 +33,14 @@ export const InputControlInput: React.FC<InputControlInputProps> = ({
   'aria-invalid': ariaInvalid,
   'aria-label': ariaLabel,
   accept,
-  addonToLeft,
-  addonToRight,
   autoComplete,
   autoFocus,
   defaultValue,
   disabled,
   form,
   formAction,
+  hasAddonToLeft,
+  hasAddonToRight,
   hasIcon,
   hasTypeIcon,
   id,
@@ -80,8 +80,8 @@ export const InputControlInput: React.FC<InputControlInputProps> = ({
 }) => {
   return (
     <StyledInputControl
-      addonToLeft={addonToLeft}
-      addonToRight={addonToRight}
+      hasAddonToLeft={hasAddonToLeft}
+      hasAddonToRight={hasAddonToRight}
       aria-describedby={ariaDescribedBy}
       aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
       aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}

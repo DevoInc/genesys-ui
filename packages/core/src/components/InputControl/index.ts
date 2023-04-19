@@ -1,3 +1,9 @@
 export * from './InputControl';
-export * from './components';
 export * from './styled';
+
+export type {
+  InputControlContainerProps,
+  InputControlInnerContainerProps,
+  InputControlInnerContainer,
+  InputControlIconProps,
+} from './components';

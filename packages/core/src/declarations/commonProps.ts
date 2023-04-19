@@ -239,10 +239,8 @@ export type RowHeight = 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
  * --------------------------------------------- */
 export interface FieldControlCommonProps<T = Element>
   extends Omit<GlobalAttrProps<T>, 'role'>,
-    WithRequired<
-      Pick<GlobalAriaProps, 'aria-label' | 'aria-describedby'>,
-      'aria-label'
-    >,
+    Pick<GlobalAriaProps, 'aria-describedby'>,
+    Required<Pick<GlobalAriaProps, 'aria-label'>>,
     Omit<FieldAriaProps, 'aria-required'>,
     FieldAttrProps<T>,
     FieldEventAttrProps<T>,

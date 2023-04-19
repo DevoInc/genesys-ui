@@ -17,11 +17,11 @@ export interface StyledFieldAddonProps
   /** The position on the form field */
   position?: FieldAddonPosition;
   /** Size of the input: height, padding, font-size... etc. */
-  size: FieldSize;
+  size?: FieldSize;
 }
 
 export const StyledFieldAddon = styled.span<StyledFieldAddonProps>`
-  ${({ position, size, theme }) => {
+  ${({ position, size = 'md', theme }) => {
     const aliasTokens = theme.alias;
     const fieldTokens = aliasTokens.fields;
     const borderWidth = fieldTokens.shape.borderSize.base;

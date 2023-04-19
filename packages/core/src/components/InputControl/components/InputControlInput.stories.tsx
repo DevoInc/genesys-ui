@@ -1,10 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { InputControlInput } from '.';
+import { InputControl } from '../';
+import * as React from 'react';
 
-const meta: Meta<typeof InputControlInput> = {
-  title: 'Components/Core/Form/InputControlInput',
-  component: InputControlInput,
+const meta: Meta<typeof InputControl> = {
+  title: 'Components/Core/Form/InputControl/subcomponents',
+  component: InputControl,
   args: { size: 'md', status: 'base', type: 'text' },
   argTypes: {
     // because the storybook doesn't recognize the WithRequired utility
@@ -15,6 +16,19 @@ const meta: Meta<typeof InputControlInput> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof InputControlInput>;
-
-export const Base: Story = {};
+type Story = StoryObj<typeof InputControl>;
+export const AsNavigation: Story = {
+  render: () => (
+    <InputControl.Container>
+      <InputControl.Addon position="left">Addon to left</InputControl.Addon>
+      <InputControl.InnerContainer>
+        <InputControl.Input
+          hasAddonToLeft
+          hasAddonToRight
+          aria-label="story example"
+        />
+      </InputControl.InnerContainer>
+      <InputControl.Addon position="right">Addon to right</InputControl.Addon>
+    </InputControl.Container>
+  ),
+};

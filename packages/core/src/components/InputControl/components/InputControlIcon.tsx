@@ -1,14 +1,8 @@
 import * as React from 'react';
 
-import {
-  StyledInputControlIcon,
-  StyledInputControlIconProps,
-  StyledInputControlProps,
-} from '../../';
+import { StyledInputControlIcon, StyledInputControlIconProps } from '../../';
 
-export interface InputControlIconProps
-  extends Pick<StyledInputControlProps, 'inputWidth' | 'status'>,
-    StyledInputControlIconProps {
+export interface InputControlIconProps extends StyledInputControlIconProps {
   /** Name of the Icon from icon library font */
   icon?: string;
 }

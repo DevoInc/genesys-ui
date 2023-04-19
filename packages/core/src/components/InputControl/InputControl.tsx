@@ -6,20 +6,29 @@ import { INPUT_CONTROL_ICON_STATUS_MAP } from './constants';
 // utils
 import { hasStatus } from '../../utils/validations';
 
+// declarations
+import type {
+  InputControlIconProps,
+  InputControlInputProps,
+} from './components';
+
 // components
+import { Field } from '../Field';
 import {
-  Field,
   InputControlContainer,
+  InputControlIcon,
   InputControlInnerContainer,
   InputControlInput,
-  InputControlInputProps,
-} from '../';
+} from './components';
 
-// styled
-import { InputControlIcon } from './components/InputControlIcon';
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface InputControlProps extends InputControlInputProps {}
+export interface InputControlProps
+  extends InputControlInputProps,
+    Pick<InputControlIconProps, 'icon'> {
+  /** Fixed block of content at the beginning of the input */
+  addonToLeft?: React.ReactNode;
+  /** Fixed block of content at the end of the input */
+  addonToRight?: React.ReactNode;
+}
 
 const InternalInputControl: React.FC<InputControlProps> = ({
   addonToLeft,
@@ -99,8 +108,6 @@ const InternalInputControl: React.FC<InputControlProps> = ({
           <InputControlIcon icon={iconEval} size={size} status={status} />
         )}
         <InputControlInput
-          addonToLeft={addonToLeft}
-          addonToRight={addonToRight}
           aria-describedby={ariaDescribedBy}
           aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
           aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
@@ -112,6 +119,8 @@ const InternalInputControl: React.FC<InputControlProps> = ({
           disabled={disabled}
           form={form}
           formAction={formAction}
+          hasAddonToLeft={Boolean(addonToLeft)}
+          hasAddonToRight={Boolean(addonToRight)}
           id={id}
           max={max}
           maxLength={maxLength}
@@ -134,7 +143,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
           required={required}
           hasIcon={Boolean(iconEval)}
           hasTypeIcon={Boolean(typeIcon)}
-          $size={size}
+          size={size}
           status={status}
           step={step}
           type={type}
@@ -158,3 +167,9 @@ export const InputControl =
     Input: typeof InputControlInput;
     InnerContainer: typeof InputControlInnerContainer;
   };
+
+InputControl.Addon = Field.Addon;
+InputControl.Container = InputControlContainer;
+InputControl.Icon = InputControlIcon;
+InputControl.Input = InputControlInput;
+InputControl.InnerContainer = InputControlInnerContainer;
