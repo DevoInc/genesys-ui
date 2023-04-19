@@ -9,7 +9,7 @@ import {
 } from '../../../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Loader.Global> = {
-  title: 'Components/Core/feedback/Loader/GlobalLoader',
+  title: 'Components/Core/feedback/Loader/Global',
   component: Loader.Global,
   args: {
     zIndex: 999999,
