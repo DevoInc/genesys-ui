@@ -3,7 +3,9 @@ import styled, { css } from 'styled-components';
 import { scrollbars } from '../../../styled/mixins/scrollbars';
 
 export interface StyledModalBodyProps {
+  /** Whether the body has a box shadow */
   hasBoxShadow?: boolean;
+  /** The padding of the body */
   contentPadding?: string;
 }
 

@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { StyledModalBody } from '../../styled';
+import { StyledModalBody, StyledModalBodyProps } from '../../styled';
 
-export interface ModalBodyProps {
+export interface ModalBodyProps
+  extends Omit<StyledModalBodyProps, 'hasBoxShadow'> {
   /** Whether the container has scroll */
-  hasScroll?: boolean;
-  /** Hide Close Button (Show by default) */
-  contentPadding?: string;
+  hasScroll?: StyledModalBodyProps['hasBoxShadow'];
   /** Ref for the modal content */
   modalBodyRef?: (node: HTMLDivElement) => void;
   /** Children of the modal content */
