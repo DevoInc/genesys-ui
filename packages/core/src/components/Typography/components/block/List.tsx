@@ -8,8 +8,6 @@ import * as React from 'react';
 import { StyledList, StyledListProps } from '../../StyledTypography';
 import { ListItem } from './ListItem';
 
-export { ListItemProps } from './ListItem';
-
 export interface ListProps
   extends StyledListProps,
     // native
