@@ -2,11 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Heading } from '../../../Typography/components/block';
 import { GIOkSuccessfulCheckFilled } from '@devoinc/genesys-icons';
-import {
-  IconButtonClose,
-  IconButtonGoToDocs,
-  IconButtonStatus,
-} from '../../../IconButton';
+import { IconButtonClose, IconButtonStatus } from '../../../IconButton';
 import { Flex } from '../../../Flex';
 import { Modal } from '../../Modal';
 import { useTheme } from 'styled-components';

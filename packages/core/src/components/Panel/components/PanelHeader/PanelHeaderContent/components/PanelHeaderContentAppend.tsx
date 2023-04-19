@@ -1,13 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 
-import {
-  IconButton,
-  IconButtonClose,
-  Button,
-  Box,
-  IconButtonCloseProps,
-} from '../../../../..';
+import { IconButtonClose, Box, IconButtonCloseProps } from '../../../../..';
 
 // TODO ad the component when it's ready
 //const DropDownMenu = require('../../../../../react/molecules/DropDownMenu');
