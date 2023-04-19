@@ -6,6 +6,9 @@ import {
 import * as React from 'react';
 
 import { StyledList, StyledListProps } from '../../StyledTypography';
+import { ListItem } from './ListItem';
+
+export { ListItemProps } from './ListItem';
 
 export interface ListProps
   extends StyledListProps,
@@ -17,7 +20,7 @@ export interface ListProps
   children?: React.ReactNode;
 }
 
-export const List: React.FC<ListProps> = ({
+const InternalList: React.FC<ListProps> = ({
   as,
   colorScheme = 'base',
   gutterBottom = 'cmp-md',
@@ -39,3 +42,9 @@ export const List: React.FC<ListProps> = ({
     {children}
   </StyledList>
 );
+
+export const List = InternalList as typeof InternalList & {
+  Item: typeof ListItem;
+};
+
+List.Item = ListItem;
