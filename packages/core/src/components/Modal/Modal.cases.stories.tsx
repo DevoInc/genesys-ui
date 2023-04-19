@@ -82,7 +82,7 @@ const ModalWithHeaderActions = (props: ModalProps) => {
   );
 };
 
-export const WithHeaderActions: Story = {
+export const WithActions: Story = {
   args: {
     headerTitle: 'Modal window',
     headerActions: [
@@ -127,7 +127,11 @@ export const Animated: Story = {
                 zIndex: 100,
               }}
             >
-              <Modal onRequestClose={() => setOpen(false)} zIndex={100}>
+              <Modal
+                headerTitle="Animated modal"
+                onRequestClose={() => setOpen(false)}
+                zIndex={100}
+              >
                 Your modal content goes here
               </Modal>
             </motion.div>
