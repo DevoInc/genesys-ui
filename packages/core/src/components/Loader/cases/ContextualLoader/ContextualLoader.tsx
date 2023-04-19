@@ -6,7 +6,7 @@ import { Loader, LoaderProps } from '../../Loader';
 export interface ContextualLoaderProps
   extends Omit<LoaderProps, 'gradientConfig'> {}
 
-export const ContextualLoader = ({
+export const ContextualLoader: React.FC<ContextualLoaderProps> = ({
   alignItems,
   className,
   colorScheme = 'light',
@@ -20,7 +20,7 @@ export const ContextualLoader = ({
   type = 'spinner',
   zIndex,
   ...nativeProps
-}: ContextualLoaderProps) => {
+}) => {
   return (
     <Loader
       {...nativeProps}

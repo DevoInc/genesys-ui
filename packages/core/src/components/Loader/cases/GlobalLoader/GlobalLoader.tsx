@@ -8,12 +8,12 @@ export interface GlobalLoaderProps
     GlobalAttrProps,
     GlobalAriaProps {}
 
-export const GlobalLoader = ({
+export const GlobalLoader: React.FC<GlobalLoaderProps> = ({
   className,
   type = 'logo',
   zIndex = 999999,
   ...nativeProps
-}: GlobalLoaderProps) => (
+}) => (
   <Loader
     {...nativeProps}
     className={className}

@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box, Typography, ContextualLoader } from '../../..';
+import { Box, Typography, Loader } from '../../..';
 import {
   lorem,
   lorem2,
   lorem3,
 } from '../../../../../stories/utils/fillerTexts';
 
-const meta: Meta<typeof ContextualLoader> = {
+const meta: Meta<typeof Loader.Contextual> = {
   title: 'Components/Core/feedback/Loader/ContextualLoader',
-  component: ContextualLoader,
+  component: Loader.Contextual,
   args: {
     colorScheme: 'light',
     size: 'md',
@@ -19,7 +19,7 @@ const meta: Meta<typeof ContextualLoader> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ContextualLoader>;
+type Story = StoryObj<typeof Loader.Contextual>;
 
 export const Base: Story = {
   render: (args) => (
@@ -32,7 +32,7 @@ export const Base: Story = {
         <Typography.Paragraph>{lorem2}</Typography.Paragraph>
         <Typography.Paragraph>{lorem}</Typography.Paragraph>
       </Box>
-      <ContextualLoader {...args} />
+      <Loader.Contextual {...args} />
     </Box>
   ),
 };

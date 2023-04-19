@@ -19,7 +19,7 @@ export interface ContextualScrollLoaderProps
   type: ContextualScrollLoaderType;
 }
 
-export const ContextualScrollLoader = ({
+export const ContextualScrollLoader: React.FC<ContextualScrollLoaderProps> = ({
   className,
   fixed,
   gradientHeight,
@@ -30,7 +30,7 @@ export const ContextualScrollLoader = ({
   type = 'spinner',
   zIndex,
   ...nativeProps
-}: ContextualScrollLoaderProps) => {
+}) => {
   const typeDef = loadPercent ? 'progress' : type;
   return (
     <Loader
