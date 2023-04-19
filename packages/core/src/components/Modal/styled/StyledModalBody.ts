@@ -1,9 +1,13 @@
 import styled, { css } from 'styled-components';
 
 import { scrollbars } from '../../../styled/mixins/scrollbars';
-import { StyledModalProps } from '../declarations';
 
-export const StyledModalBody = styled.div<StyledModalProps>`
+export interface StyledModalBodyProps {
+  hasBoxShadow?: boolean;
+  contentPadding?: string;
+}
+
+export const StyledModalBody = styled.div<StyledModalBodyProps>`
   ${({ theme, hasBoxShadow, contentPadding }) => {
     const tokens = theme.cmp.modal.content;
 

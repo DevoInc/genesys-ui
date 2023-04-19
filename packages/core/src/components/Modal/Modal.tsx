@@ -4,7 +4,6 @@ import {
   Box,
   ButtonGroup,
   Flex,
-  IconButton,
   IconButtonClose,
   IconButtonGoToDocs,
 } from '../';
@@ -29,10 +28,10 @@ import { useDetectScroll } from '../../hooks';
 
 export interface ModalProps
   extends Omit<ModalContainerProps, 'children'>,
-    Omit<ModalHeaderProps, 'children' | 'hasScroll'>,
-    Omit<ModalIconProps, 'children' | 'hasScroll'>,
+    Omit<ModalHeaderProps, 'children' | 'hasBoxShadow'>,
+    Omit<ModalIconProps, 'children'>,
     Omit<ModalBodyProps, 'children' | 'hasScroll'>,
-    Omit<ModalFooterProps, 'children' | 'hasScroll'> {
+    Omit<ModalFooterProps, 'children' | 'hasBoxShadow'> {
   /** Sets array of buttons displayed on the bottom */
   footerButtons?: React.ReactElement[];
   /** Modal content */
@@ -66,13 +65,14 @@ export const InternalModal: React.FC<ModalProps> = ({
   headerActions = [],
   headerTitle,
   height,
+  width,
   helpTitle = 'Go to Docs',
   helpUrl,
   hideCloseButton,
   id,
   onRequestClose,
   status = 'base',
-  windowSize = 'medium',
+  windowSize = 'default',
   shouldCloseOnOverlayClick,
   zIndex = 1,
 }) => {
@@ -96,9 +96,11 @@ export const InternalModal: React.FC<ModalProps> = ({
       shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
       id={id}
       height={height}
+      width={width}
       windowSize={windowSize}
       onRequestClose={onRequestClose}
       zIndex={zIndex}
+      status={status}
     >
       <ModalHeader hasBoxShadow={hasScroll} status={status}>
         {headerTitle && (
@@ -128,7 +130,7 @@ export const InternalModal: React.FC<ModalProps> = ({
       </ModalBody>
 
       {footerButtons && (
-        <ModalFooter hasBoxShadow={hasScroll}>
+        <ModalFooter hasBoxShadow={hasScroll} status={status}>
           {helpUrl && (
             <Box marginRight="auto">
               <IconButtonGoToDocs href={helpUrl} title={helpTitle} />
