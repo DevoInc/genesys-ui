@@ -46,8 +46,6 @@ export interface ModalProps
   helpTitle?: string;
   /** The URL for the docs help link on the footer of the Modal */
   helpUrl?: string;
-  /** Hides close button (x), displayed by default */
-  hideCloseButton?: boolean;
   /** Function that will be called right after the modal is open */
   onAfterOpen?: () => void;
   /** Manages closing action by pressing close button*/
@@ -68,7 +66,6 @@ export const InternalModal: React.FC<ModalProps> = ({
   width,
   helpTitle = 'Go to Docs',
   helpUrl,
-  hideCloseButton,
   id,
   onRequestClose,
   status = 'base',
@@ -77,19 +74,6 @@ export const InternalModal: React.FC<ModalProps> = ({
   zIndex = 1,
 }) => {
   const { hasScroll, targetElRef } = useDetectScroll();
-
-  const actions = React.useMemo<React.ReactElement[]>(() => {
-    return hideCloseButton
-      ? headerActions
-      : headerActions.concat([
-          <IconButtonClose
-            size="md"
-            key="close"
-            onClick={onRequestClose}
-            title="Close"
-          />,
-        ]);
-  }, [headerActions, hideCloseButton, onRequestClose]);
 
   return (
     <ModalContainer
@@ -112,13 +96,19 @@ export const InternalModal: React.FC<ModalProps> = ({
           </Flex>
         )}
 
-        {actions && (
-          <Flex marginLeft="auto">
-            <ButtonGroup size="sm" itemsGap="lg">
-              {actions}
-            </ButtonGroup>
-          </Flex>
-        )}
+        <Flex marginLeft="auto">
+          <ButtonGroup size="sm" itemsGap="lg">
+            {[
+              ...headerActions,
+              <IconButtonClose
+                size="md"
+                key="close"
+                onClick={onRequestClose}
+                title="Close"
+              />,
+            ]}
+          </ButtonGroup>
+        </Flex>
       </ModalHeader>
 
       <ModalBody
