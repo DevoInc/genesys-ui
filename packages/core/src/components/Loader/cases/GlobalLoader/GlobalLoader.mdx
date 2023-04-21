@@ -5,11 +5,11 @@ import * as Stories from './GlobalLoader.stories';
 
 <Meta of={Stories} />
 
-<Heading.H1>GlobalLoader</Heading.H1>
+<Heading.H1>Loader.Global</Heading.H1>
 
 <Heading.H2>Overview</Heading.H2>
 
-The GlobalLoader is a type of Loader component intended for global loading scenarios such as refreshing the browser, performing login/logout actions, or switching between different sections of the platform.
+The `Loader.Global` is a type of `Loader` component intended for global loading scenarios such as refreshing the browser, performing login/logout actions, or switching between different sections of the platform.
 
 When active, the Global Loader displays a dark, fixed overlay that covers the entire page and utilizes an animated logo as the loading indicator.
 
@@ -17,7 +17,7 @@ When active, the Global Loader displays a dark, fixed overlay that covers the en
 
 <Source
   code={`
-import { GlobalLoader } from '@devoinc/genesys-ui';
+import { Loader } from '@devoinc/genesys-ui';
 `}
 />
 
@@ -32,5 +32,5 @@ import { GlobalLoader } from '@devoinc/genesys-ui';
 <Heading.H2>Related components</Heading.H2>
 
 - [Loader](?path=/docs/components-core-feedback-loader--docs)
-- [ContextualLoader](?path=/docs/components-core-feedback-loader-contextualloader--docs)
-- [ContextualScrollLoader](?path=/docs/components-core-feedback-loader-contextualscrollloader--docs)
+- [Loader.Contextual](?path=/docs/components-core-feedback-loader-contextualloader--docs)
+- [Loader.ContextualScroll](?path=/docs/components-core-feedback-loader-contextualscrollloader--docs)

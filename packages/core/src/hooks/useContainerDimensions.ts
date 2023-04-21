@@ -6,7 +6,7 @@ const DEFAULT_PROPS = { delay: 0 };
 
 export const useContainerDimensions = ({ delay } = DEFAULT_PROPS): {
   size: ClientSize;
-  setRef: React.RefObject<HTMLDivElement>;
+  setRef: (node: HTMLDivElement) => void;
   nodeRef: React.RefObject<HTMLDivElement>;
 } => {
   const [size, setSize] = React.useState<ClientSize>(null);

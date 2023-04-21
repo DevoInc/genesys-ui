@@ -24,14 +24,14 @@ import type {
   ModalContainerProps,
   ModalIconProps,
 } from './components';
-import { useDetectBodyScroll } from './hooks';
+import { useDetectScroll } from '../../hooks';
 
 export interface ModalProps
   extends Omit<ModalContainerProps, 'children'>,
-    Omit<ModalHeaderProps, 'children' | 'hasScroll'>,
-    Omit<ModalIconProps, 'children' | 'hasScroll'>,
+    Omit<ModalHeaderProps, 'children' | 'hasBoxShadow'>,
+    Omit<ModalIconProps, 'children'>,
     Omit<ModalBodyProps, 'children' | 'hasScroll'>,
-    Omit<ModalFooterProps, 'children' | 'hasScroll'> {
+    Omit<ModalFooterProps, 'children' | 'hasBoxShadow'> {
   /** Sets array of buttons displayed on the bottom */
   footerButtons?: React.ReactElement[];
   /** Modal content */
@@ -46,8 +46,6 @@ export interface ModalProps
   helpTitle?: string;
   /** The URL for the docs help link on the footer of the Modal */
   helpUrl?: string;
-  /** Hides close button (x), displayed by default */
-  hideCloseButton?: boolean;
   /** Function that will be called right after the modal is open */
   onAfterOpen?: () => void;
   /** Manages closing action by pressing close button*/
@@ -65,39 +63,28 @@ export const InternalModal: React.FC<ModalProps> = ({
   headerActions = [],
   headerTitle,
   height,
+  width,
   helpTitle = 'Go to Docs',
   helpUrl,
-  hideCloseButton,
   id,
   onRequestClose,
   status = 'base',
-  windowSize = 'medium',
+  windowSize = 'default',
   shouldCloseOnOverlayClick,
   zIndex = 1,
 }) => {
-  const { hasScroll, targetElRef } = useDetectBodyScroll();
-
-  const actions = React.useMemo<React.ReactElement[]>(() => {
-    return hideCloseButton
-      ? headerActions
-      : headerActions.concat([
-          <IconButtonClose
-            size="md"
-            key="close"
-            onClick={onRequestClose}
-            title="Close"
-          />,
-        ]);
-  }, [headerActions, hideCloseButton, onRequestClose]);
+  const { hasScroll, targetElRef } = useDetectScroll();
 
   return (
     <ModalContainer
       shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
       id={id}
       height={height}
+      width={width}
       windowSize={windowSize}
       onRequestClose={onRequestClose}
       zIndex={zIndex}
+      status={status}
     >
       <ModalHeader hasBoxShadow={hasScroll} status={status}>
         {headerTitle && (
@@ -109,13 +96,19 @@ export const InternalModal: React.FC<ModalProps> = ({
           </Flex>
         )}
 
-        {actions && (
-          <Flex marginLeft="auto">
-            <ButtonGroup size="sm" itemsGap="lg">
-              {actions}
-            </ButtonGroup>
-          </Flex>
-        )}
+        <Flex marginLeft="auto">
+          <ButtonGroup size="sm" itemsGap="lg">
+            {[
+              ...headerActions,
+              <IconButtonClose
+                size="md"
+                key="close"
+                onClick={onRequestClose}
+                title="Close"
+              />,
+            ]}
+          </ButtonGroup>
+        </Flex>
       </ModalHeader>
 
       <ModalBody
@@ -127,7 +120,7 @@ export const InternalModal: React.FC<ModalProps> = ({
       </ModalBody>
 
       {footerButtons && (
-        <ModalFooter hasBoxShadow={hasScroll}>
+        <ModalFooter hasBoxShadow={hasScroll} status={status}>
           {helpUrl && (
             <Box marginRight="auto">
               <IconButtonGoToDocs href={helpUrl} title={helpTitle} />
@@ -145,11 +138,9 @@ export const Modal = InternalModal as typeof InternalModal & {
   Header: typeof ModalHeader;
   Body: typeof ModalBody;
   Footer: typeof ModalFooter;
-  Icon: typeof ModalIcon;
 };
 
 Modal.Container = ModalContainer;
 Modal.Header = ModalHeader;
 Modal.Body = ModalBody;
 Modal.Footer = ModalFooter;
-Modal.Icon = ModalIcon;

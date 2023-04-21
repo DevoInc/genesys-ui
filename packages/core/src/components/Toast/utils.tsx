@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { Button } from '../';
-import { PanelActions } from '../Panel/declarations';
+import { Button, ButtonProps } from '../';
 import { ToastHeader, ToastHeaderProps } from './components/ToastHeader';
 import { ToastAction, ToastStatus } from './declarations';
 
@@ -45,7 +44,7 @@ export const getFooterActions = ({
   actionReject?: ToastAction;
   closeToast: () => void;
   status: ToastStatus;
-}): PanelActions => {
+}): React.ReactElement<ButtonProps>[] => {
   const footerActions = [];
 
   if (actionReject?.label && actionReject?.action) {

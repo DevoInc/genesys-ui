@@ -1,35 +1,36 @@
 import styled, { css } from 'styled-components';
 
 import {
-  PanelContentSettings,
-  PanelHasScroll,
-  PanelHeaderSettings,
+  HeaderSettings as PanelHeaderSettings,
+  RenderContent,
 } from '../Panel/declarations';
 
 import {
   StyledPanelHeaderContent,
-  StyledPanelHeaderContentPrepend,
   StyledPanelHeaderContentMiddle,
-} from '../Panel/components/PanelHeaderContent/StyledPanelHeaderContent';
+} from '../Panel/components/PanelHeader/PanelHeaderContent/StyledPanelHeaderContent';
+import { StyledPanelHeaderContentPrepend } from '../Panel/components/PanelHeader/PanelHeaderContent/components/StyledPanelHeaderContentPrepend';
 
-import { StyledPanelContent } from '../Panel/StyledPanel';
+import { StyledPanelBodyContainer } from '../Panel/components/PanelBody/StyledPanelBodyContainer';
+import { PanelBodyContainerProps } from '../Panel/components';
 
 export interface StyledPanelSectionProps {
-  contentSettings?: PanelContentSettings;
-  hasScroll?: PanelHasScroll;
+  bodySettings?: PanelBodyContainerProps['bodySettings'];
+  hasScroll?: boolean;
   headerSettings?: PanelHeaderSettings;
 }
 
 export const StyledPanelSection = styled.section<StyledPanelSectionProps>`
-  ${({ contentSettings, hasScroll, headerSettings, theme }) => {
+  ${({ bodySettings, hasScroll, headerSettings, theme }) => {
     const tokensPanelSection = theme.cmp.panelSection;
     const contentSpacing = tokensPanelSection.content.space;
     const headerPadding = tokensPanelSection.header.space.padding;
+    const panelHeaderContent = headerSettings?.renderContent as RenderContent;
 
     let contentMargin;
     let contentPadding = contentSpacing.padding.noHasScroll;
 
-    if (contentSettings?.removeSpace) {
+    if (bodySettings?.removeSpace) {
       contentMargin = contentSpacing.margin.removeSpace;
       contentPadding = contentSpacing.padding.removeSpace;
     }
@@ -39,15 +40,15 @@ export const StyledPanelSection = styled.section<StyledPanelSectionProps>`
       contentPadding = undefined;
     }
 
-    if (contentSettings?.removeSpace && hasScroll) {
+    if (bodySettings?.removeSpace && hasScroll) {
       contentMargin = contentSpacing.margin.removeSpaceHasScroll;
       contentPadding = contentSpacing.padding.removeSpaceHasScroll;
     }
 
     return css`
       > ${StyledPanelHeaderContent} {
-        padding: ${!('bottom' in headerSettings?.renderContent) &&
-        !('top' in headerSettings?.renderContent) &&
+        padding: ${!('bottom' in panelHeaderContent) &&
+        !('top' in panelHeaderContent) &&
         headerPadding};
 
         ${StyledPanelHeaderContentPrepend} {
@@ -61,7 +62,7 @@ export const StyledPanelSection = styled.section<StyledPanelSectionProps>`
         }
       }
 
-      > ${StyledPanelContent} {
+      > ${StyledPanelBodyContainer} {
         padding: ${contentPadding};
         margin: ${contentMargin};
       }

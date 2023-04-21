@@ -10,7 +10,7 @@ const meta: Meta<typeof Modal> = {
   args: {
     status: 'base',
     shouldCloseOnOverlayClick: true,
-    windowSize: 'medium',
+    windowSize: 'default',
     zIndex: 100,
   },
 };

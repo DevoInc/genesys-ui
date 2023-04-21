@@ -1,4 +1,3 @@
-import { Brand } from '@devoinc/genesys-brand-devo';
 import { css, DefaultTheme } from 'styled-components';
 
 import {
@@ -20,7 +19,7 @@ export const linkMixin = ({
   lineClamp,
 }: StyledLinkProps & {
   theme: DefaultTheme;
-  linkTokens: Brand['cmp']['link'];
+  linkTokens: DefaultTheme['cmp']['link'];
 }) => {
   const getLinkColorByState = (linkState = state) =>
     getLinkColor({

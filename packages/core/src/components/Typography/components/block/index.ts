@@ -4,5 +4,4 @@ export * from './Code';
 export * from './Heading';
 export * from './Lead';
 export * from './List';
-export * from './ListItem';
 export * from './Paragraph';

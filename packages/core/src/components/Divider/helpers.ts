@@ -1,7 +1,7 @@
-import { Brand } from '@devoinc/genesys-brand-devo';
+import { DefaultTheme } from 'styled-components';
 
 export const getDividerColorTokens = (
-  aliasColorBorderTokens: Brand['alias']['color']['border']
+  aliasColorBorderTokens: DefaultTheme['alias']['color']['border']
 ) => {
   const colorBorderFeedbackTokens = aliasColorBorderTokens.feedback;
   const colorBorderSeparatorTokens = aliasColorBorderTokens.separator;

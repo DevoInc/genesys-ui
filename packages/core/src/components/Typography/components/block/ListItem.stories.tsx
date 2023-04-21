@@ -2,13 +2,13 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Typography } from '../../..';
 
-const meta: Meta<typeof Typography.ListItem> = {
-  title: 'Components/Core/Text/Typography/Block',
-  component: Typography.ListItem,
+const meta: Meta<typeof Typography.List.Item> = {
+  title: 'Components/Core/Text/Typography/Block/List',
+  component: Typography.List.Item,
 };
 
 export default meta;
-type Story = StoryObj<typeof Typography.ListItem>;
+type Story = StoryObj<typeof Typography.List.Item>;
 
 export const ListItem: Story = {
   args: {

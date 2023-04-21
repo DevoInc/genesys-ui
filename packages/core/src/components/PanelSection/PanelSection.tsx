@@ -2,9 +2,8 @@ import * as React from 'react';
 import { DOMAttributes } from 'react';
 
 import {
-  PanelActions,
-  PanelHelpTooltip,
-  PanelHelpUrl,
+  HeaderSettings as PanelHeaderSettings,
+  FooterSettings as PanelFooterSettings,
 } from '../Panel/declarations';
 
 import { IconButton, Box, Divider, Flex, Panel } from '..';
@@ -42,13 +41,13 @@ export interface PanelSectionProps {
   backwardTooltip?: string;
   children?: React.ReactElement;
   display?: React.CSSProperties['display'];
-  footerActions?: PanelActions;
+  footerActions?: PanelFooterSettings['actions'];
   footerContent?: React.ReactElement;
   footerHasBackground?: boolean;
-  headerActions?: PanelActions;
+  headerActions?: PanelHeaderSettings['actions'];
   height?: React.CSSProperties['height'];
-  helpTooltip?: PanelHelpTooltip;
-  helpUrl?: PanelHelpUrl;
+  helpTooltip?: string;
+  helpUrl?: string;
   id?: string;
   navigation?: React.ReactElement;
   onClickBackwardNav?: DOMAttributes<any>['onClick'];
@@ -82,7 +81,7 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
   return (
     <Panel
       display={display}
-      contentSettings={{ removeSpace: removeContentSpace }}
+      bodySettings={{ removeSpace: removeContentSpace }}
       id={id}
       forwardedAs={StyledPanelSection}
       headerSettings={{
