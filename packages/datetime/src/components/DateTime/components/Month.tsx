@@ -13,7 +13,7 @@ import {
 
 import {
   FieldSize,
-  FlexItem,
+  Flex,
   GlobalAriaProps,
   GlobalAttrProps,
   HFlex,
@@ -105,7 +105,7 @@ export const Month: React.FC<MonthProps> = ({
           title={'prev-month'}
         />
       )}
-      <FlexItem
+      <Flex.Item
         position="relative"
         flex="0 0 auto"
         paddingLeft={hasPrevMonthButton ? 'cmp-xs' : null}
@@ -143,7 +143,7 @@ export const Month: React.FC<MonthProps> = ({
           type={'month'}
           value={format(value, 'yyyy-MM')}
         />
-      </FlexItem>
+      </Flex.Item>
       {hasNextMonthButton && (
         <IconButton
           colorScheme={'quiet'}

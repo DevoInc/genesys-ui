@@ -4,7 +4,6 @@ import { format, set } from 'date-fns';
 import {
   FieldSize,
   Flex,
-  FlexItem,
   GlobalAriaProps,
   GlobalAttrProps,
   InputControl,
@@ -67,7 +66,7 @@ export const Time: React.FC<TimeProps> = ({
 
   return (
     <Flex justifyContent="center">
-      <FlexItem flex="0 0 auto" minWidth="9.2rem">
+      <Flex.Item flex="0 0 auto" minWidth="9.2rem">
         <InputControl
           aria-label={ariaLabel}
           id={id}
@@ -103,7 +102,7 @@ export const Time: React.FC<TimeProps> = ({
           type={'time'}
           value={format(tmpValue, getFormatTimeStr(hasSeconds, hasMillis))}
         />
-      </FlexItem>
+      </Flex.Item>
     </Flex>
   );
 };
