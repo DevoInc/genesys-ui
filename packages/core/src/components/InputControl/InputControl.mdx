@@ -2,6 +2,7 @@ import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './InputControl.stories';
+import * as casesStories from './InputControl.cases.stories';
 
 <Meta of={Stories} />
 
@@ -26,10 +27,31 @@ import { InputControl } from '@devoinc/genesys-ui';
 
 <Canvas of={Stories.Base} />
 
-## API
+<Heading.H2>Advanced usage</Heading.H2>
+
+We can get any case of the component using only `InputControl` and its props as in this example with addons and icon:
+
+<Canvas sourceState="shown" of={casesStories.WithAddonsAndIcons} />
+
+But if we need a customization, or simply we want to use a specific piece of the component we have its subcomponents
+available following dot notation.
+
+- `InputControl.Container`: the outermost container which distributes the addons and the inner container (input and icon).
+- `InputControl.Addon`: the content block at the right or/and the left of the inner container.
+- `InputControl.InnerContainer`: the inner container which distributes the input and icon.
+- `InputControl.Input`: the input control.
+- `InputControl.Icon`: the icon which can be a custom/status icon (to the right) or type icon (e.g. the 'magnifying glass' for type search) to the left.
+
+This way, we can get the previous example, but using these subcomponents:
+
+<Canvas sourceState="shown" of={casesStories.AdvancedUsage} />
+
+<Heading.H2>API</Heading.H2>
 
 <ArgTypes of={Stories} />
 
-## Related components
+<Heading.H2>Related components</Heading.H2>
 
 - [Input](?path=/docs/components-form-input--docs)
+- [Pagination](?path=/docs/components-core-navigation-pagination--docs)
+- [Month & Time](?path=/docs/components-datetime-datetimerange--docs): they are used in DateTimeRange component.

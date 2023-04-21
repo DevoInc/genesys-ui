@@ -1,5 +1,6 @@
+import { DefaultTheme } from 'styled-components';
+
 import { LinkColorScheme, LinkState } from '../declarations';
-import { Brand } from '@devoinc/genesys-brand-devo';
 
 import { darken, lighten } from 'polished';
 
@@ -10,9 +11,9 @@ export const getLinkColor = ({
   colorTokens,
 }: {
   colorScheme: LinkColorScheme;
-  themeScheme: Brand['meta']['scheme'];
+  themeScheme: DefaultTheme['meta']['scheme'];
   state: LinkState;
-  colorTokens: Brand['cmp']['link']['color']['text'];
+  colorTokens: DefaultTheme['cmp']['link']['color']['text'];
 }): string => {
   if (state === 'hovered')
     return themeScheme === 'dark'

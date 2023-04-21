@@ -1,23 +1,26 @@
 import * as React from 'react';
 
+import { StyledOverloadCssProps } from '../../declarations';
 import { FlexItem } from './subcomponents';
 import { CommonBoxProps } from '../Box';
 import { StyledFlex, StyledFlexProps } from './StyledFlex';
 
 export interface FlexProps
   extends CommonBoxProps,
-    Omit<StyledFlexProps, '$width' | '$height'> {
+    Omit<StyledFlexProps, '$width' | '$height'>,
+    StyledOverloadCssProps {
   children?: React.ReactNode;
 }
 
-export const InternalFlex: React.FC<FlexProps> = ({
+const InternalFlex: React.FC<FlexProps> = ({
   children,
-  width,
   height,
+  styles,
+  width,
   ...styledProps
 }) => {
   return (
-    <StyledFlex {...styledProps} $height={height} $width={width}>
+    <StyledFlex {...styledProps} css={styles} $height={height} $width={width}>
       {children}
     </StyledFlex>
   );

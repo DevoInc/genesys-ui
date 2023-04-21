@@ -4,9 +4,13 @@ import { ClientSize } from '../declarations/dom';
 
 const DEFAULT_PROPS = { delay: 0 };
 
-export const useContainerDimensions = ({ delay } = DEFAULT_PROPS) => {
+export const useContainerDimensions = ({ delay } = DEFAULT_PROPS): {
+  size: ClientSize;
+  setRef: (node: HTMLDivElement) => void;
+  nodeRef: React.RefObject<HTMLDivElement>;
+} => {
   const [size, setSize] = React.useState<ClientSize>(null);
-  const nodeRef = React.useRef<Element | null>(null);
+  const nodeRef = React.useRef<HTMLDivElement>(null);
 
   const updateSize = React.useCallback(() => {
     if (nodeRef?.current) {
@@ -40,7 +44,7 @@ export const useContainerDimensions = ({ delay } = DEFAULT_PROPS) => {
    * unnecessarily.
    */
   const setRef = React.useCallback(
-    (node) => {
+    (node: HTMLDivElement) => {
       //Component unmount
       if (nodeRef.current) {
         setSize(null);

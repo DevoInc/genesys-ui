@@ -8,9 +8,10 @@ const meta: Meta<typeof Modal> = {
   title: 'Components/Core/Layout/Modal',
   component: Modal,
   args: {
-    headerStyle: 'default',
+    status: 'base',
     shouldCloseOnOverlayClick: true,
-    windowSize: 'medium',
+    windowSize: 'default',
+    zIndex: 100,
   },
 };
 
@@ -34,7 +35,6 @@ export const Base: Story = {
           {isOpen && (
             <Modal
               {...args}
-              buttons={undefined}
               onRequestClose={() => closeModal('onRequestClose')}
             >
               Your modal content goes here

@@ -1,0 +1,61 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import { Heading } from '../../../../../../.storybook/docs/blocks';
+
+import * as ContainerStories from './PanelContainer/PanelContainer.stories';
+import * as HeaderStories from './PanelHeader/PanelHeaderContainer/PanelHeaderContainer.stories';
+import * as BodyStories from './PanelBody/PanelBodyContainer.stories';
+import * as FooterStories from './PanelFooter/PanelFooterContainer/PanelFooterContainer.stories';
+
+<Meta title="Components/Core/Layout/Panel/Subcomponents/Docs" />
+
+<Heading.H1>Subcomponents</Heading.H1>
+
+Set of subcomponents that can be used to build a custom `Panel` component.
+
+<Heading.H2>Container</Heading.H2>
+
+Container for the `Panel` component.
+
+<Heading.H3>Basic usage</Heading.H3>
+
+<Canvas of={ContainerStories.Container} />
+
+<Heading.H3>Props</Heading.H3>
+
+<ArgTypes of={ContainerStories} />
+
+<Heading.H2>Header</Heading.H2>
+
+Header of the `Panel` component.
+
+<Heading.H3>Basic usage</Heading.H3>
+
+<Canvas of={HeaderStories.Header} />
+
+<Heading.H3>Props</Heading.H3>
+
+<ArgTypes of={HeaderStories} />
+
+<Heading.H2>Body</Heading.H2>
+
+Body of the `Panel` component.
+
+<Heading.H3>Basic usage</Heading.H3>
+
+<Canvas of={BodyStories.Body} />
+
+<Heading.H3>Props</Heading.H3>
+
+<ArgTypes of={BodyStories} />
+
+<Heading.H2>Footer</Heading.H2>
+
+Footer of the `Panel` component.
+
+<Heading.H3>Basic usage</Heading.H3>
+
+<Canvas of={FooterStories.Footer} />
+
+<Heading.H3>Props</Heading.H3>
+
+<ArgTypes of={FooterStories} />

@@ -6,10 +6,7 @@ import {
   GlobalAttrProps,
   StyledPolymorphicProps,
 } from '../../declarations';
-import { ButtonProps, ButtonSize, IconButtonProps } from '../';
-
-// TODO: add the DropDownMenuProps to the possible types for children
-//import DropDownMenu from '../DropDownMenu';
+import { ButtonSize } from '../';
 
 // styled
 import {
@@ -23,10 +20,7 @@ export interface ButtonGroupProps
     GlobalAttrProps,
     GlobalAriaProps,
     StyledButtonGroupProps {
-  children: (
-    | React.ReactElement<ButtonProps>
-    | React.ReactElement<IconButtonProps>
-  )[];
+  children: React.ReactElement[];
   /** The size of the buttons */
   size?: ButtonSize;
 }
@@ -39,28 +33,26 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   size = 'md',
   visibilityTrigger,
   ...restNativeProps
-}) => {
-  return (
-    <StyledButtonGroup
-      {...restNativeProps}
-      hidden={hidden}
-      itemsGap={itemsGap}
-      role={role}
-      size={size}
-      visibilityTrigger={visibilityTrigger}
-    >
-      {children?.map((child, idx) => (
-        <StyledButtonGroupItem
-          key={idx}
-          quietChildButton={child.props.colorScheme === 'quiet'}
-          size={size}
-        >
-          {React.cloneElement(child, {
-            key: idx,
-            size: size,
-          })}
-        </StyledButtonGroupItem>
-      ))}
-    </StyledButtonGroup>
-  );
-};
+}) => (
+  <StyledButtonGroup
+    {...restNativeProps}
+    hidden={hidden}
+    itemsGap={itemsGap}
+    role={role}
+    size={size}
+    visibilityTrigger={visibilityTrigger}
+  >
+    {children?.map((child, idx) => (
+      <StyledButtonGroupItem
+        key={idx}
+        quietChildButton={child.props?.colorScheme === 'quiet'}
+        size={size}
+      >
+        {React.cloneElement(child, {
+          key: idx,
+          size: child.props?.size || size,
+        })}
+      </StyledButtonGroupItem>
+    ))}
+  </StyledButtonGroup>
+);

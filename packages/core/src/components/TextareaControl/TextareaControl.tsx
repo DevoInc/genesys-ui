@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { CSSProp } from 'styled-components';
 
 // declarations
 import {
   ContainerEventAttrProps,
   FieldControlCommonProps,
   FieldSize,
+  StyledOverloadCssProps,
   TextareaAttrProps,
   TextareaEventAttrs,
   TextBoxAriaProps,
@@ -19,6 +19,7 @@ import {
 
 export interface TextareaControlProps
   extends FieldControlCommonProps,
+    StyledOverloadCssProps,
     Pick<TextBoxAriaProps, 'aria-invalid' | 'aria-activedescendant'>,
     Omit<TextareaAttrProps, 'cols'>,
     TextareaEventAttrs,
@@ -29,8 +30,6 @@ export interface TextareaControlProps
     Omit<StyledTextareaControlProps, '$size'> {
   /** The size for the textarea. It affects to its padding, font-size... etc. */
   size?: FieldSize;
-  /** Custom styles */
-  css?: CSSProp;
 }
 
 export const TextareaControl: React.FC<TextareaControlProps> = ({
@@ -39,7 +38,7 @@ export const TextareaControl: React.FC<TextareaControlProps> = ({
   rows = 4,
   size = 'md',
   status = 'base',
-  css,
+  styles,
   ...restNativeProps
 }) => (
   <StyledTextareaControl
@@ -49,6 +48,6 @@ export const TextareaControl: React.FC<TextareaControlProps> = ({
     rows={rows}
     $size={size}
     status={status}
-    css={css}
+    css={styles}
   />
 );

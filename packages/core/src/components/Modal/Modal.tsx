@@ -1,173 +1,146 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import {
   Box,
-  DecoratorBar,
-  IconButton,
+  ButtonGroup,
+  Flex,
   IconButtonClose,
   IconButtonGoToDocs,
-  Overlay,
 } from '../';
-import { useContainerDimensions } from '../../hooks';
-import {
-  StyledModal,
-  StyledModalActions,
-  StyledModalContent,
-  StyledModalFooter,
-  StyledModalHeader,
-  StyledModalIcon,
-} from './styled';
-import { statusIconMap } from './icons';
 import { Heading } from '../Typography/components/block';
-import { updateHasScroll } from './scroll';
-import { HeaderAction, WindowSize } from './declarations';
-import { ActiveStatus } from '../../declarations';
+import {
+  ModalFooter,
+  ModalBody,
+  ModalHeader,
+  ModalContainer,
+  ModalIcon,
+} from './components';
 
-export interface ModalProps {
+import type { GlobalStatus } from '../../declarations';
+import type {
+  ModalFooterProps,
+  ModalBodyProps,
+  ModalHeaderProps,
+  ModalContainerProps,
+  ModalIconProps,
+} from './components';
+import { useDetectScroll } from '../../hooks';
+
+export interface ModalProps
+  extends Omit<ModalContainerProps, 'children'>,
+    Omit<ModalHeaderProps, 'children' | 'hasBoxShadow'>,
+    Omit<ModalIconProps, 'children'>,
+    Omit<ModalBodyProps, 'children' | 'hasScroll'>,
+    Omit<ModalFooterProps, 'children' | 'hasBoxShadow'> {
   /** Sets array of buttons displayed on the bottom */
-  buttons?: React.ReactNode;
+  footerButtons?: React.ReactElement[];
   /** Modal content */
   children?: React.ReactNode;
-  /** Hide Close Button (Show by default) */
-  contentPadding?: string;
   /** Set window options button (close button excluded) */
-  headerActions?: HeaderAction[];
+  headerActions?: React.ReactElement[];
   /** Defines the header Title */
   headerTitle?: string;
-  /** Define the header Style */
-  headerStyle?: 'default' | 'dialog';
   /** Height */
   height?: string;
   /** The title for the docs help link on the footer of the Modal */
   helpTitle?: string;
   /** The URL for the docs help link on the footer of the Modal */
   helpUrl?: string;
-  /** Hides close button (x), displayed by default */
-  hideCloseButton?: boolean;
-  /** Custom id */
-  id?: string;
   /** Function that will be called right after the modal is open */
   onAfterOpen?: () => void;
   /** Manages closing action by pressing close button*/
   onRequestClose?: () => void;
-  /** Disabling overlay exit click */
-  shouldCloseOnOverlayClick?: boolean;
   /** Manages dialog status **/
-  status?: ActiveStatus;
+  status?: GlobalStatus;
   /** Custom size */
   width?: string;
-  /** Set the Window Size between one of the following presets */
-  /** Aurea proportion size */
-  windowSize?: WindowSize;
 }
 
-export const Modal: React.FC<ModalProps> = ({
-  buttons,
+export const InternalModal: React.FC<ModalProps> = ({
+  footerButtons,
   children,
   contentPadding,
-  headerActions,
+  headerActions = [],
   headerTitle,
-  headerStyle = 'default',
   height,
+  width,
   helpTitle = 'Go to Docs',
   helpUrl,
-  hideCloseButton,
   id,
   onRequestClose,
-  status,
-  shouldCloseOnOverlayClick = true,
-  windowSize = 'medium',
+  status = 'base',
+  windowSize = 'default',
+  shouldCloseOnOverlayClick,
+  zIndex = 1,
 }) => {
-  const tokens = useTheme();
-  const { setRef: modalContentRef, size: measures } = useContainerDimensions();
-  const [hasScroll, setHasScroll] = React.useState(false);
-  React.useLayoutEffect(
-    () => updateHasScroll(measures, hasScroll, setHasScroll),
-    [measures, hasScroll, setHasScroll]
-  );
+  const { hasScroll, targetElRef } = useDetectScroll();
 
   return (
-    // Modal overlay needs a DIV wrapper to set the onClick handler, as Overlay component does
-    //    not support it and the DIV allows the overlay to expand over the entire screen.
-    <div
-      onClick={shouldCloseOnOverlayClick ? () => onRequestClose?.() : undefined}
-      style={{
-        position: 'fixed',
-        width: '100%',
-        height: '100%',
-        top: 0,
-        left: 0,
-        zIndex: 1,
-      }}
+    <ModalContainer
+      shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
+      id={id}
+      height={height}
+      width={width}
+      windowSize={windowSize}
+      onRequestClose={onRequestClose}
+      zIndex={zIndex}
+      status={status}
     >
-      <Overlay bgColorScheme={'dark'}>
-        <StyledModal id={id} height={height} windowSize={windowSize}>
-          <StyledModalHeader hasScroll={hasScroll} status={status}>
-            {headerTitle &&
-              (headerStyle !== 'dialog' ? (
-                <>
-                  <DecoratorBar
-                    size={tokens.cmp.modal.headerDecoratorBar.size.height}
-                  />
-                  <Heading size="h4" truncateLine={1}>
-                    {headerTitle}
-                  </Heading>
-                </>
-              ) : (
-                <>
-                  {status && (
-                    <StyledModalIcon
-                      status={status}
-                      className={statusIconMap[status]}
-                    />
-                  )}
-                  <Heading size="h5" truncateLine={1}>
-                    {headerTitle}
-                  </Heading>
-                </>
-              ))}
-            <StyledModalActions>
-              {headerActions &&
-                headerActions.map((el, idx) => (
-                  <li key={idx}>
-                    <IconButton
-                      size="sm"
-                      title={el.tooltip}
-                      icon={el.icon}
-                      onClick={el.onClick}
-                    />
-                  </li>
-                ))}
-              {!hideCloseButton && (
-                <li>
-                  <IconButtonClose onClick={onRequestClose} title="Close" />
-                </li>
-              )}
-            </StyledModalActions>
-          </StyledModalHeader>
+      <ModalHeader hasBoxShadow={hasScroll} status={status}>
+        {headerTitle && (
+          <Flex alignItems="inherit">
+            <ModalIcon status={status} />
+            <Heading size={status === 'base' ? 'h4' : 'h5'} truncateLine={1}>
+              {headerTitle}
+            </Heading>
+          </Flex>
+        )}
 
-          <StyledModalContent
-            ref={modalContentRef}
-            contentPadding={contentPadding}
-            height={height}
-            hasScroll={hasScroll}
-          >
-            {children}
-          </StyledModalContent>
+        <Flex marginLeft="auto">
+          <ButtonGroup size="sm" itemsGap="lg">
+            {[
+              ...headerActions,
+              <IconButtonClose
+                size="md"
+                key="close"
+                onClick={onRequestClose}
+                title="Close"
+              />,
+            ]}
+          </ButtonGroup>
+        </Flex>
+      </ModalHeader>
 
-          {buttons && (
-            <StyledModalFooter hasScroll={hasScroll}>
-              {helpUrl && (
-                <Box marginRight="auto">
-                  <IconButtonGoToDocs href={helpUrl} title={helpTitle} />
-                </Box>
-              )}
-              {buttons}
-            </StyledModalFooter>
+      <ModalBody
+        modalBodyRef={targetElRef}
+        contentPadding={contentPadding}
+        hasScroll={hasScroll}
+      >
+        {children}
+      </ModalBody>
+
+      {footerButtons && (
+        <ModalFooter hasBoxShadow={hasScroll} status={status}>
+          {helpUrl && (
+            <Box marginRight="auto">
+              <IconButtonGoToDocs href={helpUrl} title={helpTitle} />
+            </Box>
           )}
-        </StyledModal>
-      </Overlay>
-    </div>
+          {footerButtons}
+        </ModalFooter>
+      )}
+    </ModalContainer>
   );
 };
+
+export const Modal = InternalModal as typeof InternalModal & {
+  Container: typeof ModalContainer;
+  Header: typeof ModalHeader;
+  Body: typeof ModalBody;
+  Footer: typeof ModalFooter;
+};
+
+Modal.Container = ModalContainer;
+Modal.Header = ModalHeader;
+Modal.Body = ModalBody;
+Modal.Footer = ModalFooter;

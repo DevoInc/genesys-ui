@@ -1,9 +1,16 @@
 import * as React from 'react';
 
 import { StyledOverlay, StyledOverlayProps } from './StyledOverlay';
+import {
+  ContainerEventAttrProps,
+  MouseEventAttrProps,
+} from '../../declarations';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface OverlayProps extends StyledOverlayProps {}
+export interface OverlayProps
+  extends StyledOverlayProps,
+    //native props
+    MouseEventAttrProps,
+    Pick<ContainerEventAttrProps, 'onKeyUp' | 'onKeyDown'> {}
 
 export const Overlay: React.FC<OverlayProps> = ({
   alignItems = 'center',

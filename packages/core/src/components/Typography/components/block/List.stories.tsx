@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Typography } from '../../..';
 
 const meta: Meta<typeof Typography.List> = {
-  title: 'Components/Core/Text/Typography/Block',
+  title: 'Components/Core/Text/Typography/Block/List',
   component: Typography.List,
 };
 
@@ -15,14 +15,14 @@ export const List: Story = {
   args: {
     children: (
       <>
-        <Typography.ListItem>
+        <Typography.List.Item>
           Apollonius of Perga take root and flourish.
-        </Typography.ListItem>
-        <Typography.ListItem>
+        </Typography.List.Item>
+        <Typography.List.Item>
           White dwarf at the edge of forever the sky calls to us tingling of the
           spine citizens.
-        </Typography.ListItem>
-        <Typography.ListItem>Apollonius of Perga.</Typography.ListItem>
+        </Typography.List.Item>
+        <Typography.List.Item>Apollonius of Perga.</Typography.List.Item>
       </>
     ),
   },

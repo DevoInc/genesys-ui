@@ -10,6 +10,13 @@ import {
   ProgressBarProps,
   SpinnerLoader,
 } from '../';
+
+import {
+  ContextualLoader,
+  ContextualScrollLoader,
+  GlobalLoader,
+} from './cases';
+
 import { GlobalAriaProps, GlobalAttrProps } from '../../declarations';
 import {
   LoaderSize,
@@ -41,7 +48,7 @@ export interface LoaderProps
   type?: LoaderType;
 }
 
-export const Loader: React.FC<LoaderProps> = ({
+const InternalLoader: React.FC<LoaderProps> = ({
   alignItems,
   className,
   colorScheme = 'light',
@@ -139,3 +146,13 @@ export const Loader: React.FC<LoaderProps> = ({
     </Overlay>
   );
 };
+
+export const Loader = InternalLoader as typeof InternalLoader & {
+  Contextual: typeof ContextualLoader;
+  ContextualScroll: typeof ContextualScrollLoader;
+  Global: typeof GlobalLoader;
+};
+
+Loader.Contextual = ContextualLoader;
+Loader.ContextualScroll = ContextualScrollLoader;
+Loader.Global = GlobalLoader;

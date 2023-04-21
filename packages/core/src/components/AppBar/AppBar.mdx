@@ -2,9 +2,8 @@ import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 import { Heading } from '../../../../../.storybook/docs/blocks';
 
 import * as Stories from './AppBar.stories';
-import * as CaseStories from './AppBar.cases.stories';
 
-<Meta of={Stories} />
+<Meta title="Components/Core/Navigation/AppBar" />
 
 <Heading.H1>AppBar</Heading.H1>
 
@@ -14,16 +13,15 @@ Component used for creating a navigation bar. It can be customized to fit variou
 
 <Heading.H2>How to import</Heading.H2>
 
-<Source
-  code={`
-import { AppBar } from '@devoinc/genesys-ui';`}
-/>
+<Source code={`
+import { AppBar } from '@devoinc/genesys-ui';
+`} />
 
-<Heading.H2>Basic usage</Heading.H2>
+<Heading.H2>Examples</Heading.H2>
+
+<Heading.H3>Base</Heading.H3>
 
 <Canvas of={Stories.Base} />
-
-<Heading.H2>Cases</Heading.H2>
 
 <Heading.H3>With heading and actions</Heading.H3>
 
@@ -31,14 +29,14 @@ You can specify a custom heading using the `heading` prop or add custom
 actions at the right side of the `AppBar`. `actions` prop receive an array
 of `Buttons`or `IconButton`.
 
-<Canvas of={CaseStories.WithHeadingAndActions} />
+<Canvas of={Stories.WithHeadingAndActions} />
 
 <Heading.H3>With options</Heading.H3>
 
 `options` are the same of `actions` prop but adding a `Divider` at the beging.
 `options` prop receive an array of `Buttons`or `IconButton`.
 
-<Canvas of={CaseStories.WithOptions} />
+<Canvas of={Stories.WithOptions} />
 
 <Heading.H3>Custom content</Heading.H3>
 
@@ -51,7 +49,7 @@ You can create a custom `AppBar`content using the subcomponents:
 - `AppBar.Heading`
 - `AppBar.Divider`
 
-<Canvas of={CaseStories.Custom} />
+<Canvas of={Stories.Custom} />
 
 <Heading.H2>Subcomponents</Heading.H2>
 

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { Panel } from '../..';
-import { StyledPanelHeader } from '../../Panel/StyledPanel';
+import { StyledPanelHeaderContainer } from '../../Panel/components/PanelHeader/PanelHeaderContainer/StyledPanelHeaderContainer';
 import { ToastStatus } from '../declarations';
 
 export interface StyledContentProps {
@@ -17,7 +17,7 @@ export const StyledContent = styled(Panel)<StyledContentProps>`
     const tokensToast = theme.cmp.toast;
 
     const getHeaderShadowCss = `
-      ${StyledPanelHeader} {
+      ${StyledPanelHeaderContainer} {
           box-shadow: ${tokensPanelHeader.elevation.boxShadow};
       }`;
 

@@ -20,6 +20,6 @@ export interface StyledPolymorphicProps<T = any> {
  * Css overload props for styled components
  * --------------------------------------------- */
 export interface StyledOverloadCssProps {
-  /** Sometimes you don't want to create an extra component just to apply a bit of styling. The css prop is a convenient way to iterate on your components without settling on fixed component boundaries yet. */
-  css?: CSSProp<DefaultTheme>;
+  /** Sometimes you don't want to create an extra component just to apply a bit of styling. The styles prop is a convenient way to iterate on your components without settling on fixed component boundaries yet. */
+  styles?: CSSProp<DefaultTheme>;
 }
