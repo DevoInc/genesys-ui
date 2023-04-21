@@ -7,6 +7,7 @@ import {
   GlobalAttrProps,
   StyledPolymorphicProps,
 } from '../../../declarations';
+import { disabledMixin } from '../../../styled/';
 
 export interface StyledFieldAddonProps
   extends StyledPolymorphicProps,
@@ -14,14 +15,16 @@ export interface StyledFieldAddonProps
     GlobalAriaProps {
   /** Class name html attribute of the tag */
   children: React.ReactNode;
+  /** If the addon belongs to a disabled field (transient prop version) */
+  $disabled?: boolean;
   /** The position on the form field */
   position?: FieldAddonPosition;
   /** Size of the input: height, padding, font-size... etc. */
-  size: FieldSize;
+  size?: FieldSize;
 }
 
 export const StyledFieldAddon = styled.span<StyledFieldAddonProps>`
-  ${({ position, size, theme }) => {
+  ${({ $disabled, position, size = 'md', theme }) => {
     const aliasTokens = theme.alias;
     const fieldTokens = aliasTokens.fields;
     const borderWidth = fieldTokens.shape.borderSize.base;
@@ -41,6 +44,11 @@ export const StyledFieldAddon = styled.span<StyledFieldAddonProps>`
       padding: 0 ${fieldTokens.space.padding.hor[size]};
       background: ${aliasTokens.color.background.surface.base.raised};
       color: ${fieldTokens.color.text.base.enabled};
+
+      ${$disabled &&
+      css`
+        ${disabledMixin(theme)};
+      `}
 
       ${position === 'left'
         ? css`

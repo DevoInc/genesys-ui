@@ -26,7 +26,7 @@ export const Base: Story = {
   render: (args) =>
     ((args) => (
       <VFlex maxWidth="72rem">
-        <TextareaControl {...args} />
+        <TextareaControl {...args} css={'border-color: red'} />
       </VFlex>
     ))(args),
   args: {

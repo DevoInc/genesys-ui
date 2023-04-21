@@ -1,79 +1,90 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 // constants
 import { INPUT_CONTROL_ICON_STATUS_MAP } from './constants';
 
-// declarations
-import {
-  ContainerEventAttrProps,
-  FieldControlCommonProps,
-  FieldControlWidth,
-  FieldSize,
-  InputAttrProps,
-  InputEventAttrs,
-  TextBoxAriaProps,
-} from '../../declarations';
-
 // utils
 import { hasStatus } from '../../utils/validations';
 
-// components
-import { Field, Flex } from '../';
+// declarations
+import type {
+  InputControlIconProps,
+  InputControlInputProps,
+} from './components';
 
-// styled
+// components
+import { Field } from '../Field';
 import {
-  StyledInputControl,
-  StyledInputControlIcon,
-  StyledInputControlProps,
-} from './styled';
+  InputControlContainer,
+  InputControlIcon,
+  InputControlInnerContainer,
+  InputControlInput,
+} from './components';
 
 export interface InputControlProps
-  extends FieldControlCommonProps,
-    Pick<TextBoxAriaProps, 'aria-invalid' | 'aria-activedescendant'>,
-    Omit<InputAttrProps, 'size' | 'multiple'>,
-    InputEventAttrs,
-    Pick<
-      ContainerEventAttrProps,
-      'onKeyDown' | 'onKeyUp' | 'onPaste' | 'onWheel'
-    >,
-    Omit<StyledInputControlProps, 'hasIcon' | 'hasTypeIcon' | '$size'> {
-  /** Name of the Icon from icon library font */
-  icon?: string;
-  /** Predefined width of the input. It should reflect the length of the content you expect the user to enter */
-  inputWidth?: FieldControlWidth;
-  /** Size of the input: height, padding, font-size... etc. */
-  size?: FieldSize;
+  extends Omit<InputControlInputProps, 'hasIcon' | 'hasTypeIcon'>,
+    Pick<InputControlIconProps, 'icon'> {
+  /** Fixed block of content at the beginning of the input */
+  addonToLeft?: React.ReactNode;
+  /** Fixed block of content at the end of the input */
+  addonToRight?: React.ReactNode;
 }
 
-export const InputControl: React.FC<InputControlProps> = ({
+const InternalInputControl: React.FC<InputControlProps> = ({
   addonToLeft,
   addonToRight,
   'aria-errormessage': ariaErrorMessage,
+  'aria-describedby': ariaDescribedBy,
   'aria-invalid': ariaInvalid,
+  'aria-label': ariaLabel,
+  accept,
+  autoComplete,
+  autoFocus,
+  defaultValue,
+  disabled,
+  form,
+  formAction,
   icon,
+  id,
   inputWidth,
+  max,
+  maxLength,
+  min,
+  minLength,
+  name,
+  onBlur,
+  onChange,
   onClick,
+  onFocus,
+  onInput,
+  onInvalid,
+  onKeyDown,
+  onKeyUp,
+  onLoad,
   onMouseDown,
   onMouseLeave,
   onMouseMove,
   onMouseOut,
   onMouseOver,
   onMouseUp,
+  onPaste,
+  onWheel,
+  pattern,
+  placeholder,
+  readOnly,
+  required,
   size = 'md',
   status = 'base',
+  step,
   title,
   type = 'text',
-  ...restInputNativeProps
+  value,
 }) => {
-  const theme = useTheme();
   const typeIcon = type === 'search' ? 'search_find_zoom' : null;
   const iconEval =
     icon || (hasStatus(status) ? INPUT_CONTROL_ICON_STATUS_MAP[status] : icon);
   return (
-    <Flex
-      alignItems="stretch"
-      flex="1 1 auto"
+    <InputControlContainer
       onClick={onClick}
       onMouseDown={onMouseDown}
       onMouseLeave={onMouseLeave}
@@ -81,54 +92,88 @@ export const InputControl: React.FC<InputControlProps> = ({
       onMouseOut={onMouseOut}
       onMouseOver={onMouseOver}
       onMouseUp={onMouseUp}
-      position="relative"
       title={title}
     >
-      {addonToLeft && <Field.Addon size={size}>{addonToLeft}</Field.Addon>}
-      <Flex
-        flex={
-          inputWidth
-            ? `0 1 ${theme.alias.fields.size.width[inputWidth]}`
-            : '1 1 100%'
-        }
-        position="relative"
-        width={inputWidth ? theme.alias.fields.size.width[inputWidth] : '100%'}
-      >
+      {addonToLeft && (
+        <Field.Addon disabled={disabled} size={size}>
+          {addonToLeft}
+        </Field.Addon>
+      )}
+      <InputControlInnerContainer inputWidth={inputWidth}>
         {typeIcon && (
-          <StyledInputControlIcon
-            aria-hidden
-            className={`gi-${typeIcon}`}
+          <InputControlIcon
+            icon={typeIcon}
             size={size}
             status={status}
-            typeIcon={typeIcon}
+            isTypeIcon
           />
         )}
         {iconEval && (
-          <StyledInputControlIcon
-            aria-hidden
-            className={`gi-${iconEval}`}
-            size={size}
-            status={status}
-          />
+          <InputControlIcon icon={iconEval} size={size} status={status} />
         )}
-        <StyledInputControl
-          {...restInputNativeProps}
-          addonToLeft={addonToLeft}
-          addonToRight={addonToRight}
+        <InputControlInput
+          aria-describedby={ariaDescribedBy}
           aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
           aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
-          hasIcon={!iconEval}
+          aria-label={ariaLabel}
+          accept={accept}
+          autoComplete={autoComplete}
+          autoFocus={autoFocus}
+          defaultValue={defaultValue}
+          disabled={disabled}
+          form={form}
+          formAction={formAction}
+          hasAddonToLeft={Boolean(addonToLeft)}
+          hasAddonToRight={Boolean(addonToRight)}
+          id={id}
+          max={max}
+          maxLength={maxLength}
+          min={min}
+          minLength={minLength}
+          name={name}
+          onBlur={onBlur}
+          onChange={onChange}
+          onFocus={onFocus}
+          onInput={onInput}
+          onInvalid={onInvalid}
+          onKeyDown={onKeyDown}
+          onKeyUp={onKeyUp}
+          onLoad={onLoad}
+          onPaste={onPaste}
+          onWheel={onWheel}
+          pattern={pattern}
+          placeholder={placeholder}
+          readOnly={readOnly}
+          required={required}
+          hasIcon={Boolean(iconEval)}
           hasTypeIcon={Boolean(typeIcon)}
-          $size={size}
+          size={size}
           status={status}
+          step={step}
           type={type}
+          value={value}
         />
-      </Flex>
+      </InputControlInnerContainer>
       {addonToRight && (
-        <Field.Addon position="right" size={size}>
+        <Field.Addon disabled={disabled} position="right" size={size}>
           {addonToRight}
         </Field.Addon>
       )}
-    </Flex>
+    </InputControlContainer>
   );
 };
+
+export const InputControl =
+  InternalInputControl as typeof InternalInputControl & {
+    Addon: typeof Field.Addon;
+    Container: typeof InputControlContainer;
+    Icon: typeof InputControlIcon;
+    Input: typeof InputControlInput;
+    InnerContainer: typeof InputControlInnerContainer;
+  };
+
+InputControl.Addon = Field.Addon;
+InputControl.Container = InputControlContainer;
+InputControl.Icon = InputControlIcon;
+InputControl.Input = InputControlInput;
+InputControl.InnerContainer = InputControlInnerContainer;
