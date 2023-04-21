@@ -4,10 +4,7 @@ import { Resize } from './declarations';
 
 import { commonInputControlMixin, getLineHeight, scrollbars } from '../../';
 
-import {
-  StyledInputControl,
-  StyledInputControlProps,
-} from '../InputControl/styled';
+import { StyledInputControlProps } from '../InputControl/styled';
 
 export interface StyledTextareaControlProps
   extends Omit<

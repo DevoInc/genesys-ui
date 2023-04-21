@@ -1,4 +1,4 @@
-import { PickUnion, WithRequired } from '../typeFunctions';
+import { PickUnion } from '../typeFunctions';
 import { GLOBAL_SPACING } from '../constants';
 import { FieldAttrProps, GlobalAttrProps } from './htmlAttrs';
 import { FieldAriaProps, GlobalAriaProps } from './ariaAttrs';
