@@ -4,7 +4,6 @@ import {
   Box,
   ButtonGroup,
   Flex,
-  IconButton,
   IconButtonClose,
   IconButtonGoToDocs,
 } from '../';

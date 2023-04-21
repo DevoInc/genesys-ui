@@ -1,7 +1,10 @@
 import * as React from 'react';
 
 // declarations
-import { FieldControlCommonProps } from '../../../declarations';
+import {
+  FieldControlCommonProps,
+  StyledOverloadCssProps,
+} from '../../../declarations';
 
 // components
 import { Flex } from '../../';
@@ -17,7 +20,8 @@ export interface InputControlContainerProps
       | 'onMouseOut'
       | 'onMouseOver'
       | 'onMouseUp'
-    > {
+    >,
+    StyledOverloadCssProps {
   children: React.ReactNode;
 }
 
@@ -30,6 +34,7 @@ export const InputControlContainer: React.FC<InputControlContainerProps> = ({
   onMouseOut,
   onMouseOver,
   onMouseUp,
+  styles,
   title,
 }) => (
   <Flex
@@ -43,6 +48,7 @@ export const InputControlContainer: React.FC<InputControlContainerProps> = ({
     onMouseOver={onMouseOver}
     onMouseUp={onMouseUp}
     position="relative"
+    styles={styles}
     title={title}
   >
     {children}

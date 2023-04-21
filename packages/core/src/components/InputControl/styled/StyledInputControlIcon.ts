@@ -3,15 +3,15 @@ import { FieldSize, FieldStatus } from '../../../';
 
 export interface StyledInputControlIconProps {
   /** Size of the input: height, padding, font-size... etc. */
-  size: FieldSize;
+  size?: FieldSize;
   /** This property defines the status color schema for the input */
-  status: FieldStatus;
+  status?: FieldStatus;
   /** If the icon is related with the input type */
   isTypeIcon?: boolean;
 }
 
 export const StyledInputControlIcon = styled.span<StyledInputControlIconProps>`
-  ${({ isTypeIcon, size, status, theme }) => {
+  ${({ isTypeIcon, size = 'md', status = 'base', theme }) => {
     const fieldTokens = theme.alias.fields;
     const fieldIconTokens = fieldTokens.icon;
     const position = fieldTokens.space.padding.hor[size];

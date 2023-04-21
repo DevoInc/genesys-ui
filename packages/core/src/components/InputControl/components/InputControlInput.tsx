@@ -7,6 +7,7 @@ import {
   FieldSize,
   InputAttrProps,
   InputEventAttrs,
+  StyledOverloadCssProps,
   TextBoxAriaProps,
 } from '../../../declarations';
 
@@ -15,6 +16,7 @@ import { StyledInputControl, StyledInputControlProps } from '../styled';
 
 export interface InputControlInputProps
   extends FieldControlCommonProps,
+    StyledOverloadCssProps,
     Pick<TextBoxAriaProps, 'aria-invalid'>,
     Omit<InputAttrProps, 'size' | 'multiple'>,
     InputEventAttrs,
@@ -35,6 +37,7 @@ export const InputControlInput: React.FC<InputControlInputProps> = ({
   accept,
   autoComplete,
   autoFocus,
+  styles,
   defaultValue,
   disabled,
   form,
@@ -89,6 +92,7 @@ export const InputControlInput: React.FC<InputControlInputProps> = ({
       accept={accept}
       autoComplete={autoComplete}
       autoFocus={autoFocus}
+      css={styles}
       defaultValue={defaultValue}
       disabled={disabled}
       form={form}

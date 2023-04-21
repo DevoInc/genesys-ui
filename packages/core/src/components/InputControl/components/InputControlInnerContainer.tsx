@@ -2,16 +2,19 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 // components
-import { Flex, StyledInputControlProps } from '../../';
+import { Flex } from '../../Flex';
+import { StyledInputControlProps } from '../styled';
+import { StyledOverloadCssProps } from '../../../declarations';
 
 export interface InputControlInnerContainerProps
-  extends Pick<StyledInputControlProps, 'inputWidth'> {
+  extends Pick<StyledInputControlProps, 'inputWidth'>,
+    StyledOverloadCssProps {
   children: React.ReactNode;
 }
 
 export const InputControlInnerContainer: React.FC<
   InputControlInnerContainerProps
-> = ({ children, inputWidth }) => {
+> = ({ children, inputWidth, styles }) => {
   const theme = useTheme();
   return (
     <Flex
@@ -21,6 +24,7 @@ export const InputControlInnerContainer: React.FC<
           : '1 1 100%'
       }
       position="relative"
+      styles={styles}
       width={inputWidth ? theme.alias.fields.size.width[inputWidth] : '100%'}
     >
       {children}

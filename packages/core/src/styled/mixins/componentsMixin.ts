@@ -1,8 +1,14 @@
 import { css } from 'styled-components';
 import { DefaultTheme } from 'styled-components';
 
-import { disabledMixin, FieldSize, FieldStatus, getFieldState } from '../../';
-import { getFieldControlTypo } from '../../components/Field/helpers';
+import {
+  disabledMixin,
+  FieldControlWidth,
+  FieldSize,
+  FieldStatus,
+  getFieldState,
+} from '../../';
+import { getFieldControlTypo } from '../../components';
 
 interface CheckRadioProps {
   disabled?: boolean;
@@ -138,6 +144,7 @@ export const btnResetMixin = css`
 
 interface commonInputControlMixinProps {
   disabled?: boolean;
+  inputWidth?: FieldControlWidth;
   readOnly?: boolean;
   $size?: FieldSize;
   status?: FieldStatus;
@@ -149,6 +156,7 @@ interface commonInputControlMixinProps {
  *
  * @param props The object param
  * @param props.disabled If the state of the element is disabled
+ * @param props.inputWidth Predefined width of the input. It should reflect the length of the content you expect the user to enter.
  * @param props.readOnly If the state of the element is readonly
  * @param props.$size The size of the element
  * @param props.status The status of the component: error, success... etc.
@@ -157,6 +165,7 @@ interface commonInputControlMixinProps {
  */
 export const commonInputControlMixin = ({
   disabled,
+  inputWidth,
   readOnly,
   $size = 'md',
   status = 'base',
@@ -166,6 +175,7 @@ export const commonInputControlMixin = ({
   const aliasTokens = theme.alias;
   const fieldTokens = aliasTokens.fields;
   const inputBorderRadius = fieldTokens.shape.borderRadius;
+  const inputWidthEval = fieldTokens.size.width[inputWidth];
   const inputHeight = fieldTokens.size.height[$size];
   const inputHorPadding = fieldTokens.space.padding.hor[$size];
   return css`
@@ -180,7 +190,7 @@ export const commonInputControlMixin = ({
     border-style: solid;
     border-color: ${fieldTokens.color.border[status][state]};
     border-radius: ${inputBorderRadius};
-    width: 100%;
+    width: ${inputWidthEval || '100%'};
     height: ${inputHeight};
     padding: 0 ${inputHorPadding};
     background-color: ${fieldTokens.color.background[status][state]};

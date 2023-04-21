@@ -5,7 +5,11 @@ import { InputControl } from '..';
 const meta: Meta<typeof InputControl> = {
   title: 'Components/Core/Form/InputControl',
   component: InputControl,
-  args: { size: 'md', status: 'base', type: 'text' },
+  args: {
+    size: 'md',
+    status: 'base',
+    type: 'text',
+  },
   argTypes: {
     addonToLeft: { control: { type: 'text' } },
     addonToRight: { control: { type: 'text' } },

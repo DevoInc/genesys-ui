@@ -1,5 +1,7 @@
-import * as React from 'react';
 import styled, { css } from 'styled-components';
+
+// constants
+import { INPUT_CONTROL_PSEUDO_ACTIONS_SIZE_MAP } from '../constants';
 
 // declarations
 import {
@@ -8,11 +10,9 @@ import {
   FieldSize,
   FieldStatus,
 } from '../../../';
-import { INPUT_CONTROL_PSEUDO_ACTIONS_SIZE_MAP } from '../constants';
 
 // utils and helpers
-import { disabledMixin, typoMixin } from '../../../';
-import { getFieldControlTypo, getFieldState } from '../../Field/helpers';
+import { typoMixin } from '../../../';
 import { hasStatus } from '../../../utils/validations';
 import { btnResetMixin } from '../../../styled/';
 
@@ -47,13 +47,11 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
     theme,
     type = 'text',
   }) => {
-    const state = getFieldState({ readOnly });
     const aliasTokens = theme.alias;
     const fieldTokens = aliasTokens.fields;
     const fieldIconTokens = fieldTokens.icon;
     const iconSize = fieldIconTokens.size.square[$size];
     const inputBorderRadius = fieldTokens.shape.borderRadius;
-    const inputWidthEval = fieldTokens.size.width[inputWidth];
     const inputHeight = fieldTokens.size.height[$size];
     const inputHorPadding = fieldTokens.space.padding.hor[$size];
     const inputWithIconPadding = css`calc(${iconSize} + ${inputHorPadding} * 2)`;
@@ -73,33 +71,24 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
     const inputRangeHandlerSize = aliasTokens.handlers.size.square.md;
 
     return css`
-      ${commonInputControlMixin({ disabled, readOnly, $size, status, theme })};
-      ${getFieldControlTypo({ theme, size: $size })};
-      display: flex;
-      appearance: none;
-      position: relative;
-      transition: border ${fieldTokens.mutation.transitionDuration} ease-in-out,
-        box-shadow ${fieldTokens.mutation.transitionDuration} ease-in-out;
-      outline: none;
-      border-width: ${fieldTokens.shape.borderSize.base};
-      border-style: solid;
-      border-color: ${fieldTokens.color.border[status][state]};
-      border-radius: ${inputBorderRadius};
-      width: ${inputWidthEval || '100%'};
-      height: ${inputHeight};
-      padding: 0 ${inputHorPadding};
-      background-color: ${fieldTokens.color.background[status][state]};
-      color: ${fieldTokens.color.text[status][state]};
-
-      ${disabled &&
-      css`
-        ${disabledMixin(theme)};
-      `};
+      ${commonInputControlMixin({
+        disabled,
+        inputWidth,
+        readOnly,
+        $size,
+        status,
+        theme,
+      })};
 
       ${hasIcon &&
       css`
         padding-right: ${inputWithIconPadding};
       `};
+
+      ${hasTypeIcon &&
+      css`
+        padding-left: ${inputWithIconPadding};
+      `}
 
       ${hasAddonToLeft &&
       css`
@@ -121,26 +110,7 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
           border-right-width: 0;
         `}
       `}
-
-        ${!disabled &&
-      !readOnly &&
-      css`
-        &:hover {
-          border-color: ${fieldTokens.color.border[status].hovered};
-          color: ${fieldTokens.color.text[status].hovered};
-        }
-
-        &:focus {
-          box-shadow: ${fieldTokens.elevation.boxShadow[status].focused};
-          border-color: ${fieldTokens.color.border[status].focused};
-          color: ${fieldTokens.color.text[status].focused};
-        }
-      `}
-
-      &::placeholder {
-        color: ${fieldTokens.color.text[status].placeholder};
-      }
-
+      
       // type color
       ${type === 'color' &&
       css`
@@ -201,11 +171,6 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
           background-image: url(data:image/svg+xml;base64,PCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMjQiIGhlaWdodD0iMTAyNCIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCI+Cjx0aXRsZT48L3RpdGxlPgo8ZyBpZD0iaWNvbW9vbi1pZ25vcmUiPgo8L2c+CjxwYXRoIGZpbGw9IiMwMDAiIGQ9Ik04MTkuNSA4NjcuNWMtMTMuMyAwLTI0LTQuNS0zMy43LTE0LjJsLTI3My44LTI3My45LTI3My45IDI3My45Yy05LjcgOS43LTIwLjQgMTQuMi0zMy43IDE0LjJzLTI0LTQuNS0zMy43LTE0LjJjLTE4LjktMTguOS0xOC45LTQ4LjUgMC02Ny40bDI3My44LTI3My45LTI3My44LTI3My44Yy0xOC45LTE4LjktMTguOS00OC41IDAtNjcuNCA5LjItOS4yIDIxLjItMTQuMiAzMy43LTE0LjIgMTIuNiAwIDI0LjUgNS4xIDMzLjcgMTQuMmwyNzMuOSAyNzMuOCAyNzMuOC0yNzMuOGM5LjItOS4yIDIxLjItMTQuMiAzMy43LTE0LjIgMTIuNiAwIDI0LjUgNS4xIDMzLjcgMTQuMiA5LjIgOS4yIDE0LjIgMjEuMiAxNC4yIDMzLjdzLTUuMSAyNC41LTE0LjIgMzMuN2wtMjc2LjUgMjczLjggMjc2LjQgMjczLjhjMTkgMTkgMTkgNDguNiAwLjEgNjcuNS04LjYgOC42LTIxLjkgMTQuMi0zMy43IDE0LjJ6Ij48L3BhdGg+Cjwvc3ZnPgo=);
           background-color: ${buttonTokens.color.background.neutral.enabled};
         }
-
-        ${hasTypeIcon &&
-        css`
-          padding-left: ${inputWithIconPadding};
-        `}
       `};
 
       // type file

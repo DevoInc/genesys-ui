@@ -22,7 +22,7 @@ import {
 } from './components';
 
 export interface InputControlProps
-  extends InputControlInputProps,
+  extends Omit<InputControlInputProps, 'hasIcon' | 'hasTypeIcon'>,
     Pick<InputControlIconProps, 'icon'> {
   /** Fixed block of content at the beginning of the input */
   addonToLeft?: React.ReactNode;
@@ -94,7 +94,11 @@ const InternalInputControl: React.FC<InputControlProps> = ({
       onMouseUp={onMouseUp}
       title={title}
     >
-      {addonToLeft && <Field.Addon size={size}>{addonToLeft}</Field.Addon>}
+      {addonToLeft && (
+        <Field.Addon disabled={disabled} size={size}>
+          {addonToLeft}
+        </Field.Addon>
+      )}
       <InputControlInnerContainer inputWidth={inputWidth}>
         {typeIcon && (
           <InputControlIcon
@@ -151,7 +155,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
         />
       </InputControlInnerContainer>
       {addonToRight && (
-        <Field.Addon position="right" size={size}>
+        <Field.Addon disabled={disabled} position="right" size={size}>
           {addonToRight}
         </Field.Addon>
       )}
