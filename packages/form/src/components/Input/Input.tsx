@@ -25,6 +25,7 @@ export const Input: React.FC<InputProps> = ({
   hideLabel,
   id,
   inputControlIcon,
+  inputWidth,
   label,
   labelPosition = 'top',
   onClick,
@@ -44,6 +45,7 @@ export const Input: React.FC<InputProps> = ({
 }) => (
   <Field
     disabled={disabled}
+    fieldControlWidth={inputWidth}
     hasFloatingHelper={hasFloatingHelper}
     helper={helper}
     hideLabel={hideLabel}

@@ -221,3 +221,23 @@ export const commonInputControlMixin = ({
     }
   `;
 };
+
+interface GetFieldControlWidthProps {
+  fieldControlWidth: FieldControlWidth;
+  theme: DefaultTheme;
+}
+
+/**
+ * Get the css value with the pre-defined width of a field control (input, select...).
+ *
+ * @param props The object param
+ * @param props.fieldControlWidth The pre-defined value of the field control width.
+ * @param props.theme The common theme object with all the tokens
+ * @return css value based in a design token from theme.
+ */
+export const getFieldControlWidth = ({
+  theme,
+  fieldControlWidth,
+}: GetFieldControlWidthProps) => {
+  return theme.alias.fields.size.width[fieldControlWidth];
+};

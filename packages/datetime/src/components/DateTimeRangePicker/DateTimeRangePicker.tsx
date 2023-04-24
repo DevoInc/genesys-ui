@@ -30,7 +30,6 @@ export interface DateTimeRangePickerProps
     >,
     Pick<
       DateTimeRangeControlProps,
-      | 'className'
       | 'size'
       | 'ariaLabelFrom'
       | 'ariaLabelTo'

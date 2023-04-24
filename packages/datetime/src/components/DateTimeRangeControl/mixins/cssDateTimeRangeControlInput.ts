@@ -24,10 +24,6 @@ export const cssDateTimeRangeControlInput = ({
         &:focus {
           box-shadow: inset ${fieldTokens.elevation.boxShadow[status].focused};
         }
-
-        & + span {
-          display: none;
-        }
       `;
     }};
   `;

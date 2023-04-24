@@ -4,6 +4,7 @@ import { useTheme } from 'styled-components';
 // types and constants
 import {
   FieldAttrProps,
+  FieldControlWidth,
   FieldSize,
   FieldStatus,
   GlobalAttrProps,
@@ -20,7 +21,7 @@ import {
 import { hasStatus } from '../../utils/validations';
 
 // components
-import { Flex, FloatingHelper, Helper } from '../../';
+import { Flex, FloatingHelper, getFieldControlWidth, Helper } from '../../';
 import {
   FieldAddon,
   FieldLabel,
@@ -47,6 +48,8 @@ export interface FieldProps
     MouseEventAttrProps {
   /** Children to be passed */
   children: FieldChildrenProps;
+  /** Field control predefined width for Input, Select… etc. */
+  fieldControlWidth?: FieldControlWidth;
   /** If the Helper is rendered as a floating element displayed by clicking a trigger. */
   hasFloatingHelper?: boolean;
   /** If the field control is rendered filling all the available space (e.g. Input component) or only its own width (e.g. Switch component). */
@@ -70,6 +73,7 @@ export interface FieldProps
 export const PartField: React.FC<FieldProps> = ({
   children,
   disabled = false,
+  fieldControlWidth,
   hasFloatingHelper,
   hasWideControl = true,
   helper,
@@ -85,6 +89,7 @@ export const PartField: React.FC<FieldProps> = ({
   title,
   ...mouseEventAttrProps
 }) => {
+  const theme = useTheme();
   const helperId = helper ? `${id}-field-helper` : undefined;
   const showFloatingHelper = helper && hasFloatingHelper;
   const labelPositionUpper = labelPosition.toUpperCase();
@@ -94,7 +99,7 @@ export const PartField: React.FC<FieldProps> = ({
       : FIELD_LABEL_POS_DIRECTION_MAP[labelPositionUpper];
   const directionUpper = direction.toUpperCase();
   // to get vertically aligned the label with the control block anyway
-  const labelLineHeight = useTheme().alias.typo.lineHeight.body[size];
+  const labelLineHeight = theme.alias.typo.lineHeight.body[size];
   const RequiredMarkerBlock = (
     <Field.RequiredMark
       colorScheme={status as UIColorScheme}
@@ -123,6 +128,7 @@ export const PartField: React.FC<FieldProps> = ({
         flexDirection={FIELD_FLEX_CONFIG[directionUpper].FD}
         gap={FIELD_FLEX_CONFIG[directionUpper].GAP}
         justifyContent={FIELD_FLEX_CONFIG[directionUpper].JC}
+        width={getFieldControlWidth({ theme, fieldControlWidth })}
       >
         {label && (
           <Field.Label
@@ -165,15 +171,15 @@ export const PartField: React.FC<FieldProps> = ({
             status={hasStatus(status) ? status : 'help'}
           />
         )}
+        {helper && helperId && !hasFloatingHelper && (
+          <Helper
+            id={helperId}
+            message={helper}
+            size={FIELD_HELPER_SIZE_MAP[size]}
+            status={status}
+          />
+        )}
       </Flex>
-      {helper && helperId && !hasFloatingHelper && (
-        <Helper
-          id={helperId}
-          message={helper}
-          size={FIELD_HELPER_SIZE_MAP[size]}
-          status={status}
-        />
-      )}
     </Flex>
   );
 };

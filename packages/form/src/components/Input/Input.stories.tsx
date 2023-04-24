@@ -16,7 +16,11 @@ const meta: Meta<typeof Input> = {
     hasWideControl: true,
     labelPosition: 'top',
     size: 'md',
-    status: 'base',
+    status: 'error',
+    helper: 'pepepe',
+    hasFloatingHelper: true,
+    hideLabel: true,
+    inputWidth: 'xs',
     type: 'text',
     // Meant for the story
     id: 'input-id',

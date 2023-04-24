@@ -12,7 +12,7 @@ import type {
   MouseEventAttrProps,
   TriggerAriaProps,
 } from '@devoinc/genesys-ui';
-import { HFlex } from '@devoinc/genesys-ui';
+import { Field, HFlex, InputControl } from '@devoinc/genesys-ui';
 
 // form
 import { Input, InputProps } from '@devoinc/genesys-ui-form';
@@ -46,8 +46,6 @@ export interface DateTimeRangeControlProps
   ariaLabelFrom?: GlobalAriaProps['aria-label'];
   /** aria-label attribute for `to` input */
   ariaLabelTo?: GlobalAriaProps['aria-label'];
-  /** Class name for the HTML input elements. */
-  className?: string;
   /** Value for the first input. */
   from?: InputProps['value'];
   /** Floating status message or helper for `from` input field */
@@ -92,6 +90,9 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
   ariaLabelFrom = 'from',
   ariaLabelTo = 'to',
   from,
+  hasMillis,
+  hasSeconds,
+  hasTime,
   helperFrom,
   helperTo,
   id,
@@ -108,7 +109,6 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
   statusFrom = 'base',
   statusTo = 'base',
   size = 'md',
-  ...props
 }) => {
   const onBlurFromCallback = React.useCallback(
     (event: React.FocusEvent<HTMLInputElement>) => {
@@ -165,54 +165,44 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
       tabIndex={0}
       wide={wide}
     >
-      <HFlex
-        width={getInputWidth({
-          hasMillis: props.hasMillis,
-          hasSeconds: props.hasSeconds,
-          hasTime: props.hasTime,
-          size,
-        })}
-      >
-        <Input
-          {...props}
-          css={cssDateTimeRangeControlInput({
-            hasMillis: props.hasMillis,
-            hasSeconds: props.hasSeconds,
-            hasTime: props.hasTime,
-            size,
-            status: statusFrom,
-          })}
+      <HFlex width={getInputWidth({ hasMillis, hasSeconds, hasTime, size })}>
+        <Field
+          label={ariaLabelFrom}
+          id={`${id}-input-from`}
           hasFloatingHelper
           helper={helperFrom}
           hideLabel
-          id={`${id}-input-from`}
-          label={ariaLabelFrom}
-          placeholder={placeholderFrom}
           status={statusFrom}
-          value={from}
-          size={size}
-          onBlur={onBlurFromCallback}
-          onChange={onChangeFromCallback}
-        />
+        >
+          <InputControl.Input
+            styles={cssDateTimeRangeControlInput({
+              hasMillis,
+              hasSeconds,
+              hasTime,
+              size,
+              status: statusFrom,
+            })}
+            aria-label={ariaLabelFrom}
+            id={`${id}-input-from`}
+            placeholder={placeholderFrom}
+            status={statusFrom}
+            value={from}
+            size={size}
+            onBlur={onBlurFromCallback}
+            onChange={onChangeFromCallback}
+          />
+        </Field>
       </HFlex>
       <GIArrowRight
         size={dateTimeRangeControlTokens.arrow.size.square[size]}
         color={dateTimeRangeControlTokens.arrow.color.fill}
       />
-      <HFlex
-        width={getInputWidth({
-          hasMillis: props.hasMillis,
-          hasSeconds: props.hasSeconds,
-          hasTime: props.hasTime,
-          size,
-        })}
-      >
+      <HFlex width={getInputWidth({ hasMillis, hasSeconds, hasTime, size })}>
         <Input
-          {...props}
           css={cssDateTimeRangeControlInput({
-            hasMillis: props.hasMillis,
-            hasSeconds: props.hasSeconds,
-            hasTime: props.hasTime,
+            hasMillis,
+            hasSeconds,
+            hasTime,
             size,
             status: statusTo,
           })}
