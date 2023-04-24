@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Menu, MenuHeading, MenuItem, MenuSeparator } from '.';
+import { Menu } from '.';
 
 const meta: Meta<typeof Menu> = {
   title: 'Components/Core/Navigation/Menu/Cases',
   component: Menu,
-  subcomponents: { MenuHeading, MenuItem, MenuSeparator },
+  subcomponents: {
+    Heading: Menu.Heading,
+    Item: Menu.Item,
+    Separator: Menu.Separator,
+  },
   args: {
     cmpRole: 'menu',
   },

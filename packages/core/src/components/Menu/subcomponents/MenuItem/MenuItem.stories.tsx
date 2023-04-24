@@ -1,19 +1,19 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Menu, MenuItem } from '../..';
+import { Menu } from '../..';
 import { Tag } from '../../../Tag';
 import { Flex } from '../../../Flex';
 import { Badge } from '../../../Badge';
 import { Typography } from '../../../Typography';
 import { VFlex } from '../../../VFlex';
 
-const meta: Meta<typeof MenuItem> = {
+const meta: Meta<typeof Menu.Item> = {
   title: 'Components/Core/Navigation/Menu/Subcomponents/Item',
-  component: MenuItem,
+  component: Menu.Item,
 };
 
 export default meta;
-type Story = StoryObj<typeof MenuItem>;
+type Story = StoryObj<typeof Menu.Item>;
 
 export const Base: Story = {
   args: {
