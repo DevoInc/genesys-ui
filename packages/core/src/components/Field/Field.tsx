@@ -171,15 +171,15 @@ export const PartField: React.FC<FieldProps> = ({
             status={hasStatus(status) ? status : 'help'}
           />
         )}
-        {helper && helperId && !hasFloatingHelper && (
-          <Helper
-            id={helperId}
-            message={helper}
-            size={FIELD_HELPER_SIZE_MAP[size]}
-            status={status}
-          />
-        )}
       </Flex>
+      {helper && helperId && !hasFloatingHelper && (
+        <Helper
+          id={helperId}
+          message={helper}
+          size={FIELD_HELPER_SIZE_MAP[size]}
+          status={status}
+        />
+      )}
     </Flex>
   );
 };

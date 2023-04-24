@@ -17,7 +17,7 @@ const meta: Meta<typeof Input> = {
     labelPosition: 'top',
     size: 'md',
     status: 'error',
-    helper: 'pepepe',
+    helper: 'manolo',
     hasFloatingHelper: true,
     hideLabel: true,
     inputWidth: 'xs',
