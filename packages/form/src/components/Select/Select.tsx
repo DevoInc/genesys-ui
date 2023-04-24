@@ -5,12 +5,20 @@ import {
   FieldProps,
   GlobalAriaProps,
   SelectControl,
+  SelectOption,
   SelectControlProps,
 } from '@devoinc/genesys-ui';
 
+export interface ExtendedSelectOption extends SelectOption {
+  isDisabled?: boolean;
+}
+
 export interface SelectProps
   extends Omit<FieldProps, 'children'>,
-    Omit<SelectControlProps, 'id' | 'size' | 'aria-label'>,
+    Omit<
+      SelectControlProps<ExtendedSelectOption>,
+      'id' | 'size' | 'aria-label'
+    >,
     // native
     // TODO: add the rest
     GlobalAriaProps {}
