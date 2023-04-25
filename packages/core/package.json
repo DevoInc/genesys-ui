@@ -35,7 +35,7 @@
     "react-toastify": "^9.1.2",
     "react-tooltip": "3.11.2",
     "react-windowed-select": "^5.1.0",
-    "styled-components": "5.x"
+    "styled-components": "^5.3.10"
   },
   "dependencies": {
     "@devoinc/genesys-icons": "^2.2.0"
