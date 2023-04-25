@@ -165,52 +165,56 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
       tabIndex={0}
       wide={wide}
     >
-      <HFlex width={getInputWidth({ hasMillis, hasSeconds, hasTime, size })}>
-        <Field
-          label={ariaLabelFrom}
+      <Field
+        controlWidth={getInputWidth({ hasMillis, hasSeconds, hasTime, size })}
+        label={ariaLabelFrom}
+        id={`${id}-input-from`}
+        hasFloatingHelper
+        helper={helperFrom}
+        hideLabel
+        status={statusFrom}
+      >
+        <InputControl.Input
+          styles={cssDateTimeRangeControlInput({
+            hasMillis,
+            hasSeconds,
+            hasTime,
+            size,
+            status: statusFrom,
+          })}
+          aria-label={ariaLabelFrom}
           id={`${id}-input-from`}
-          hasFloatingHelper
-          helper={helperFrom}
-          hideLabel
+          placeholder={placeholderFrom}
           status={statusFrom}
-        >
-          <InputControl.Input
-            styles={cssDateTimeRangeControlInput({
-              hasMillis,
-              hasSeconds,
-              hasTime,
-              size,
-              status: statusFrom,
-            })}
-            aria-label={ariaLabelFrom}
-            id={`${id}-input-from`}
-            placeholder={placeholderFrom}
-            status={statusFrom}
-            value={from}
-            size={size}
-            onBlur={onBlurFromCallback}
-            onChange={onChangeFromCallback}
-          />
-        </Field>
-      </HFlex>
+          value={from}
+          size={size}
+          onBlur={onBlurFromCallback}
+          onChange={onChangeFromCallback}
+        />
+      </Field>
       <GIArrowRight
         size={dateTimeRangeControlTokens.arrow.size.square[size]}
         color={dateTimeRangeControlTokens.arrow.color.fill}
       />
-      <HFlex width={getInputWidth({ hasMillis, hasSeconds, hasTime, size })}>
-        <Input
-          css={cssDateTimeRangeControlInput({
+      <Field
+        controlWidth={getInputWidth({ hasMillis, hasSeconds, hasTime, size })}
+        label={ariaLabelFrom}
+        id={`${id}-input-to`}
+        hasFloatingHelper
+        helper={helperTo}
+        hideLabel
+        status={statusTo}
+      >
+        <InputControl.Input
+          styles={cssDateTimeRangeControlInput({
             hasMillis,
             hasSeconds,
             hasTime,
             size,
             status: statusTo,
           })}
-          hasFloatingHelper
-          helper={helperTo}
-          hideLabel
+          aria-label={ariaLabelTo}
           id={`${id}-input-to`}
-          label={ariaLabelTo}
           placeholder={placeholderTo}
           status={statusTo}
           value={to}
@@ -218,7 +222,7 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
           onBlur={onBlurToCallback}
           onChange={onChangeToCallback}
         />
-      </HFlex>
+      </Field>
       {hasRealTime(realTime) && (
         <DateTimeRangeControlRTButton
           onClick={onRealTimeClick}

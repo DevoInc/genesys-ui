@@ -45,7 +45,7 @@ export const Input: React.FC<InputProps> = ({
 }) => (
   <Field
     disabled={disabled}
-    fieldControlWidth={inputWidth}
+    controlWidth={inputWidth}
     hasFloatingHelper={hasFloatingHelper}
     helper={helper}
     hideLabel={hideLabel}

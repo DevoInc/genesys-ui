@@ -6,7 +6,7 @@ import { INPUT_CONTROL_PSEUDO_ACTIONS_SIZE_MAP } from '../constants';
 // declarations
 import {
   commonInputControlMixin,
-  controlWidth,
+  ControlWidth,
   FieldSize,
   FieldStatus,
 } from '../../../';
@@ -25,8 +25,8 @@ export interface StyledInputControlProps {
   hasIcon?: boolean;
   /** Whether the component displays an icon related with type. */
   hasTypeIcon?: boolean;
-  /** Predefined width of the input. It should reflect the length of the content you expect the user to enter */
-  inputWidth?: controlWidth;
+  /** Width of the input control based in predefined values as 'xxs', 'xs', 'sm'... etc. or directly in a css value. It should reflect the length of the content you expect the user to enter. */
+  inputWidth?: ControlWidth;
   /** Size of the input: height, padding, font-size... etc. */
   $size?: FieldSize;
   /** This property defines the status color schema for the input */

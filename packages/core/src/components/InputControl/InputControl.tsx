@@ -18,12 +18,14 @@ import {
   InputControlContainer,
   InputControlIcon,
   InputControlInnerContainer,
+  InputControlInnerContainerProps,
   InputControlInput,
 } from './components';
 
 export interface InputControlProps
   extends Omit<InputControlInputProps, 'hasIcon' | 'hasTypeIcon'>,
-    Pick<InputControlIconProps, 'icon'> {
+    Pick<InputControlIconProps, 'icon'>,
+    Pick<InputControlInnerContainerProps, 'inputWidth'> {
   /** Fixed block of content at the beginning of the input */
   addonToLeft?: React.ReactNode;
   /** Fixed block of content at the end of the input */

@@ -39,7 +39,7 @@ export const FieldControlDistributor: React.FC<
       alignItems={hasFloatingHelper ? 'center' : null}
       flex={
         inputWidthEval
-          ? `0 1 ${inputWidthEval}`
+          ? `0 1 auto`
           : !wide || labelPosition === 'between' || labelPosition === 'right'
           ? '0 0 auto'
           : '1 1 auto'

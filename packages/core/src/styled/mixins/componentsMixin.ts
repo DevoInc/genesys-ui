@@ -3,7 +3,7 @@ import { DefaultTheme } from 'styled-components';
 
 import {
   disabledMixin,
-  controlWidth,
+  ControlWidth,
   FieldSize,
   FieldStatus,
   getFieldState,
@@ -144,7 +144,7 @@ export const btnResetMixin = css`
 
 interface commonInputControlMixinProps {
   disabled?: boolean;
-  inputWidth?: controlWidth;
+  inputWidth?: ControlWidth;
   readOnly?: boolean;
   $size?: FieldSize;
   status?: FieldStatus;
@@ -175,7 +175,7 @@ export const commonInputControlMixin = ({
   const aliasTokens = theme.alias;
   const fieldTokens = aliasTokens.fields;
   const inputBorderRadius = fieldTokens.shape.borderRadius;
-  const inputWidthEval = fieldTokens.size.width[inputWidth];
+  const inputWidthEval = getControlWidth({ theme, controlWidth: inputWidth });
   const inputHeight = fieldTokens.size.height[$size];
   const inputHorPadding = fieldTokens.space.padding.hor[$size];
   return css`
@@ -223,7 +223,7 @@ export const commonInputControlMixin = ({
 };
 
 interface GetControlWidthProps {
-  controlWidth: controlWidth;
+  controlWidth: ControlWidth;
   theme: DefaultTheme;
 }
 
@@ -231,7 +231,7 @@ interface GetControlWidthProps {
  * Get the css value with the pre-defined width of a field control (input, select...).
  *
  * @param props The object param
- * @param props.controlWidth The pre-defined value of the field control width.
+ * @param props.controlWidth The pre-defined or defined directly value of the field control width.
  * @param props.theme The common theme object with all the tokens
  * @return css value based in a design token from theme.
  */
@@ -239,5 +239,5 @@ export const getControlWidth = ({
   theme,
   controlWidth,
 }: GetControlWidthProps) => {
-  return theme.alias.fields.size.width[controlWidth];
+  return theme.alias.fields.size.width[controlWidth] || controlWidth;
 };

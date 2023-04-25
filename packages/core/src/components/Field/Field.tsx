@@ -3,7 +3,7 @@ import * as React from 'react';
 // types and constants
 import {
   FieldAttrProps,
-  controlWidth,
+  ControlWidth,
   FieldSize,
   FieldStatus,
   GlobalAttrProps,
@@ -51,7 +51,7 @@ export interface FieldProps
   /** Children to be passed */
   children: FieldChildrenProps;
   /** Field control predefined width for Input, Select… etc. */
-  controlWidth?: controlWidth;
+  controlWidth?: ControlWidth;
   /** If the Helper is rendered as a floating element displayed by clicking a trigger. */
   hasFloatingHelper?: boolean;
   /** If the field control is rendered filling all the available space (e.g. Input component) or only its own width (e.g. Switch component). */
