@@ -3,7 +3,7 @@ import { DefaultTheme } from 'styled-components';
 
 import {
   disabledMixin,
-  FieldControlWidth,
+  controlWidth,
   FieldSize,
   FieldStatus,
   getFieldState,
@@ -144,7 +144,7 @@ export const btnResetMixin = css`
 
 interface commonInputControlMixinProps {
   disabled?: boolean;
-  inputWidth?: FieldControlWidth;
+  inputWidth?: controlWidth;
   readOnly?: boolean;
   $size?: FieldSize;
   status?: FieldStatus;
@@ -222,8 +222,8 @@ export const commonInputControlMixin = ({
   `;
 };
 
-interface GetFieldControlWidthProps {
-  fieldControlWidth: FieldControlWidth;
+interface GetControlWidthProps {
+  controlWidth: controlWidth;
   theme: DefaultTheme;
 }
 
@@ -231,13 +231,13 @@ interface GetFieldControlWidthProps {
  * Get the css value with the pre-defined width of a field control (input, select...).
  *
  * @param props The object param
- * @param props.fieldControlWidth The pre-defined value of the field control width.
+ * @param props.controlWidth The pre-defined value of the field control width.
  * @param props.theme The common theme object with all the tokens
  * @return css value based in a design token from theme.
  */
-export const getFieldControlWidth = ({
+export const getControlWidth = ({
   theme,
-  fieldControlWidth,
-}: GetFieldControlWidthProps) => {
-  return theme.alias.fields.size.width[fieldControlWidth];
+  controlWidth,
+}: GetControlWidthProps) => {
+  return theme.alias.fields.size.width[controlWidth];
 };

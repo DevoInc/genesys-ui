@@ -62,7 +62,7 @@ export type FieldStatus = PickUnion<
 /** ---------------------------------------------
  * Field control predefined width for Input, Select... etc.
  * --------------------------------------------- */
-export type FieldControlWidth = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type controlWidth = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 /** ---------------------------------------------
  * Feedback components size declaration: tag, Badge... etc.

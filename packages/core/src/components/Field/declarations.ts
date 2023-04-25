@@ -5,6 +5,7 @@ import { BasicState, ReadonlyState, BaseSize } from '../../';
 export type FieldSize = BaseSize;
 
 export type LabelPosition = 'top' | 'left' | 'between' | 'right';
+export type FieldDirection = 'between' | 'row' | 'column' | 'reverse';
 
 // FIELD STATE - PROP VALUES - CONSTANTS --------------------------------- //
 export type FieldState = BasicState | ReadonlyState;

@@ -3,7 +3,7 @@ export const FIELD_LABEL_POS_DIRECTION_MAP = {
   BETWEEN: 'between',
   LEFT: 'row',
   TOP: 'column',
-  RIGHT: 'Reverse',
+  RIGHT: 'reverse',
 } as const;
 
 // FIELD - FLEX CONFIGURATION - MAP - CONSTANTS ----------------------------------- //
