@@ -1,9 +1,14 @@
 import * as React from 'react';
-import { GlobalAttrProps, MouseEventAttrProps } from '../../../declarations';
+import {
+  GlobalAttrProps,
+  MouseEventAttrProps,
+  StyledOverloadCssProps,
+} from '../../../declarations';
 import { Flex } from '../../Flex';
 
 export interface FieldContainerProps
   extends MouseEventAttrProps,
+    StyledOverloadCssProps,
     Pick<GlobalAttrProps, 'title' | 'role'> {
   children: React.ReactNode;
 }
@@ -18,6 +23,7 @@ export const FieldContainer: React.FC<FieldContainerProps> = ({
   onMouseOver,
   onMouseUp,
   role,
+  styles,
   title,
 }) => (
   <Flex
@@ -32,6 +38,7 @@ export const FieldContainer: React.FC<FieldContainerProps> = ({
     flexDirection={'column'}
     gap={'cmp-xxs'}
     role={role}
+    styles={styles}
     title={title}
   >
     {children}

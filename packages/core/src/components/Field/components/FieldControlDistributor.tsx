@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { FIELD_FLEX_CONFIG } from '../constants';
-import { GlobalAttrProps, MouseEventAttrProps } from '../../../declarations';
+import {
+  GlobalAttrProps,
+  MouseEventAttrProps,
+  StyledOverloadCssProps,
+} from '../../../declarations';
 import { Flex } from '../../Flex';
 import { FieldDirection } from '../declarations';
 import { FieldProps } from '../Field';
@@ -8,7 +12,8 @@ import { useTheme } from 'styled-components';
 import { getControlWidth } from '../../../styled/';
 
 export interface FieldControlDistributorProps
-  extends Pick<FieldProps, 'hasFloatingHelper' | 'size' | 'labelPosition'> {
+  extends StyledOverloadCssProps,
+    Pick<FieldProps, 'hasFloatingHelper' | 'size' | 'labelPosition'> {
   children?: React.ReactNode;
   wide?: FieldProps['hasWideControl'];
   width?: FieldProps['controlWidth'];
@@ -16,7 +21,15 @@ export interface FieldControlDistributorProps
 
 export const FieldControlDistributor: React.FC<
   FieldControlDistributorProps
-> = ({ children, hasFloatingHelper, labelPosition, size, wide, width }) => {
+> = ({
+  children,
+  hasFloatingHelper,
+  labelPosition,
+  size,
+  styles,
+  wide,
+  width,
+}) => {
   const theme = useTheme();
   // to get vertically aligned the label with the control block anyway
   const labelLineHeight = theme.alias.typo.lineHeight.body[size];
@@ -33,6 +46,7 @@ export const FieldControlDistributor: React.FC<
       }
       gap="cmp-xxs"
       minHeight={labelLineHeight}
+      styles={styles}
       width={inputWidthEval}
     >
       {children}
