@@ -17,7 +17,7 @@ const meta: Meta<typeof Select> = {
     options: [
       { value: 1, label: 'Option one' },
       { value: 2, label: 'Option two' },
-      { value: 3, label: 'Option three', disabled: true },
+      { value: 3, label: 'Option three', isDisabled: true },
     ],
     helper: 'This is the helper',
   },
