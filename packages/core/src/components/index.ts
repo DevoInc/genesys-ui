@@ -58,3 +58,5 @@ export * from './Tooltip';
 export * from './Typography';
 export * from './VFlex';
 export * from './Wrap';
+// TODO: to be removed, because we don't want to expose the styled components
+export * from './InputControl/styled/StyledInputControl';

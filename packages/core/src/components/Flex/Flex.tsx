@@ -7,18 +7,20 @@ import { StyledFlex, StyledFlexProps } from './StyledFlex';
 
 export interface FlexProps
   extends CommonBoxProps,
-    StyledFlexProps,
+    Omit<StyledFlexProps, '$width' | '$height'>,
     StyledOverloadCssProps {
   children?: React.ReactNode;
 }
 
 const InternalFlex: React.FC<FlexProps> = ({
   children,
+  height,
   styles,
+  width,
   ...styledProps
 }) => {
   return (
-    <StyledFlex {...styledProps} css={styles}>
+    <StyledFlex {...styledProps} css={styles} $height={height} $width={width}>
       {children}
     </StyledFlex>
   );

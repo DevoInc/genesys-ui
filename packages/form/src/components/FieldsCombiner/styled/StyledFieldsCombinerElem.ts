@@ -140,13 +140,13 @@ export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps
         }
       `}
 
-      // Right elem
-        ${!first &&
+        // Right elem
+      ${!first &&
       css`
         margin-left: -1px;
       `}
 
-      // states
+        // states
       &:hover {
         z-index: 2;
       }

@@ -25,6 +25,7 @@ export const Input: React.FC<InputProps> = ({
   hideLabel,
   id,
   inputControlIcon,
+  inputWidth,
   label,
   labelPosition = 'top',
   onClick,
@@ -44,6 +45,7 @@ export const Input: React.FC<InputProps> = ({
 }) => (
   <Field
     disabled={disabled}
+    controlWidth={inputWidth}
     hasFloatingHelper={hasFloatingHelper}
     helper={helper}
     hideLabel={hideLabel}
@@ -65,6 +67,7 @@ export const Input: React.FC<InputProps> = ({
   >
     <InputControl
       {...restNativeInputProps}
+      manolo={true}
       aria-label={label}
       disabled={disabled}
       icon={helper && hasStatus(status) ? undefined : inputControlIcon}

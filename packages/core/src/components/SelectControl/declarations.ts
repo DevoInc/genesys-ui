@@ -1,7 +1,7 @@
 import type { ChipProps } from '..';
 import * as React from 'react';
 
-import { BaseSize, FieldControlWidth, FieldStatus } from '../../declarations';
+import { BaseSize, ControlWidth, FieldStatus } from '../../declarations';
 
 export type SelectOption = {
   readonly value: string | number;
@@ -32,7 +32,7 @@ export interface CommonSelectCmpsProps {
   /** Show select all button when select is multi */
   selectAllBtn?: boolean;
   /** Predefined width of the select. It should reflect the length of the content you expect the user to enter */
-  selectWidth?: FieldControlWidth;
+  selectWidth?: ControlWidth;
   /** Size of the input: height, padding, font-size... etc. */
   size?: BaseSize;
   /** Allow sorting options in a multivalue select */

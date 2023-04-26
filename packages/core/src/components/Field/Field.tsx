@@ -1,29 +1,32 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
-// types
+// types and constants
 import {
   FieldAttrProps,
+  ControlWidth,
   FieldSize,
   FieldStatus,
   GlobalAttrProps,
   MouseEventAttrProps,
 } from '../../declarations';
+import { LabelPosition } from './declarations';
 import {
-  FIELD_FLEX_CONFIG,
   FIELD_HELPER_SIZE_MAP,
   FIELD_LABEL_POS_DIRECTION_MAP,
-  LabelPosition,
-} from './declarations';
+} from './constants';
 
 // utils
 import { hasStatus } from '../../utils/validations';
 
 // components
-import { Flex, FloatingHelper, Helper } from '../../';
+import { Helper } from '../Helper';
+import { FloatingHelper } from '../FloatingHelper';
 import {
   FieldAddon,
+  FieldContainer,
+  FieldControlDistributor,
   FieldLabel,
+  FieldLabelDistributor,
   FieldRequiredMark,
   FieldRequiredMarkProps,
 } from './components';
@@ -47,6 +50,8 @@ export interface FieldProps
     MouseEventAttrProps {
   /** Children to be passed */
   children: FieldChildrenProps;
+  /** Field control predefined width for Input, Select… etc. */
+  controlWidth?: ControlWidth;
   /** If the Helper is rendered as a floating element displayed by clicking a trigger. */
   hasFloatingHelper?: boolean;
   /** If the field control is rendered filling all the available space (e.g. Input component) or only its own width (e.g. Switch component). */
@@ -70,6 +75,7 @@ export interface FieldProps
 export const PartField: React.FC<FieldProps> = ({
   children,
   disabled = false,
+  controlWidth,
   hasFloatingHelper,
   hasWideControl = true,
   helper,
@@ -88,13 +94,7 @@ export const PartField: React.FC<FieldProps> = ({
   const helperId = helper ? `${id}-field-helper` : undefined;
   const showFloatingHelper = helper && hasFloatingHelper;
   const labelPositionUpper = labelPosition.toUpperCase();
-  const direction =
-    hasFloatingHelper && hideLabel
-      ? 'row'
-      : FIELD_LABEL_POS_DIRECTION_MAP[labelPositionUpper];
-  const directionUpper = direction.toUpperCase();
-  // to get vertically aligned the label with the control block anyway
-  const labelLineHeight = useTheme().alias.typo.lineHeight.body[size];
+  const direction = FIELD_LABEL_POS_DIRECTION_MAP[labelPositionUpper];
   const RequiredMarkerBlock = (
     <Field.RequiredMark
       colorScheme={status as UIColorScheme}
@@ -108,22 +108,9 @@ export const PartField: React.FC<FieldProps> = ({
       status={hasStatus(status) ? status : 'help'}
     />
   );
-
   return (
-    <Flex
-      {...mouseEventAttrProps}
-      alignItems={'stretch'}
-      flexDirection={'column'}
-      gap={'cmp-xxs'}
-      role={role}
-      title={title}
-    >
-      <Flex
-        alignItems={FIELD_FLEX_CONFIG[directionUpper].AI}
-        flexDirection={FIELD_FLEX_CONFIG[directionUpper].FD}
-        gap={FIELD_FLEX_CONFIG[directionUpper].GAP}
-        justifyContent={FIELD_FLEX_CONFIG[directionUpper].JC}
-      >
+    <Field.Container {...mouseEventAttrProps} role={role} title={title}>
+      <Field.LabelDistributor direction={direction}>
         {label && (
           <Field.Label
             cursor={disabled ? 'not-allowed' : undefined}
@@ -137,17 +124,12 @@ export const PartField: React.FC<FieldProps> = ({
             {label}
           </Field.Label>
         )}
-        <Flex
-          flexDirection={hasWideControl ? 'column' : 'row'}
-          alignItems={hasWideControl ? 'stretch' : 'center'}
-          flex={
-            !hasWideControl ||
-            labelPosition === 'between' ||
-            labelPosition === 'right'
-              ? '0 0 auto'
-              : '1 1 auto'
-          }
-          minHeight={labelLineHeight}
+        <Field.ControlDistributor
+          hasFloatingHelper={hasFloatingHelper}
+          labelPosition={labelPosition}
+          size={size}
+          wide={hasWideControl}
+          width={controlWidth}
         >
           {React.cloneElement(children, {
             'aria-describedby':
@@ -157,15 +139,15 @@ export const PartField: React.FC<FieldProps> = ({
                 ? children.props['aria-errormessage'] || helperId
                 : undefined,
           })}
-        </Flex>
-        {hideLabel && showFloatingHelper && (
-          <FloatingHelper
-            message={helper}
-            id={helperId}
-            status={hasStatus(status) ? status : 'help'}
-          />
-        )}
-      </Flex>
+          {hideLabel && showFloatingHelper && (
+            <FloatingHelper
+              message={helper}
+              id={helperId}
+              status={hasStatus(status) ? status : 'help'}
+            />
+          )}
+        </Field.ControlDistributor>
+      </Field.LabelDistributor>
       {helper && helperId && !hasFloatingHelper && (
         <Helper
           id={helperId}
@@ -174,16 +156,26 @@ export const PartField: React.FC<FieldProps> = ({
           status={status}
         />
       )}
-    </Flex>
+    </Field.Container>
   );
 };
 
 export const Field = PartField as typeof PartField & {
-  Label: typeof FieldLabel;
   Addon: typeof FieldAddon;
+  Container: typeof FieldContainer;
+  ControlDistributor: typeof FieldControlDistributor;
+  FloatingHelper: typeof FloatingHelper;
+  Helper: typeof Helper;
+  Label: typeof FieldLabel;
+  LabelDistributor: typeof FieldLabelDistributor;
   RequiredMark: typeof FieldRequiredMark;
 };
 
-Field.Label = FieldLabel;
 Field.Addon = FieldAddon;
+Field.Container = FieldContainer;
+Field.ControlDistributor = FieldControlDistributor;
+Field.Helper = Helper;
+Field.FloatingHelper = FloatingHelper;
+Field.Label = FieldLabel;
+Field.LabelDistributor = FieldLabelDistributor;
 Field.RequiredMark = FieldRequiredMark;

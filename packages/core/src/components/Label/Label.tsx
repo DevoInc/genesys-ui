@@ -4,6 +4,7 @@ import {
   GlobalAriaProps,
   GlobalAttrProps,
   LabelAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../declarations';
 
@@ -11,6 +12,7 @@ import { StyledLabel, StyledLabelProps } from './StyledLabel';
 
 export interface LabelProps
   extends StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps,
     Pick<LabelAttrProps, 'form'>,
@@ -25,6 +27,7 @@ export const Label: React.FC<LabelProps> = ({
   colorScheme = 'strong',
   htmlFor,
   size = 'md',
+  styles,
   truncated = true,
   ...restNativeProps
 }) => {
@@ -33,6 +36,7 @@ export const Label: React.FC<LabelProps> = ({
       {...restNativeProps}
       as={as || (htmlFor ? 'label' : 'span')}
       colorScheme={colorScheme}
+      css={styles}
       htmlFor={htmlFor}
       size={size}
       truncated={truncated}

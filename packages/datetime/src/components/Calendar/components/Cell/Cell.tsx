@@ -46,7 +46,7 @@ const InternalCell: React.FC<CellProps> = ({
         }
       }}
       aria-label={dateFormated}
-      aria-selected={className && className.includes('selected')}
+      aria-selected={className && className.includes('selected') ? true : null}
       className={`day ${className}`}
       data-cell={value}
       data-ts={ts}

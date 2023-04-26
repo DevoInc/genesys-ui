@@ -3,7 +3,10 @@ import { usePopper } from 'react-popper';
 
 import { Panel, Button, GlobalAttrProps } from '@devoinc/genesys-ui';
 
-import { RangeInput, RangeInputProps } from '../RangeInput';
+import {
+  DateTimeRangeControl,
+  DateTimeRangeControlProps,
+} from '../DateTimeRangeControl';
 import { DateTimeRange, DateTimeRangeProps } from '../DateTimeRange';
 import { getFormatTimeStr } from '../DateTime/utils/format';
 import { format } from 'date-fns';
@@ -13,6 +16,12 @@ import { PresetRange } from '../Presets/declarations';
 export interface DateTimeRangePickerProps
   extends Pick<
       DateTimeRangeProps,
+      | 'ariaLabelNextMonth'
+      | 'ariaLabelPrevMonth'
+      | 'ariaLabelFromMonth'
+      | 'ariaLabelFromTime'
+      | 'ariaLabelToMonth'
+      | 'ariaLabelToTime'
       | 'dateForMonth'
       | 'invalidDates'
       | 'maxDate'
@@ -26,8 +35,7 @@ export interface DateTimeRangePickerProps
       | 'presets'
     >,
     Pick<
-      RangeInputProps,
-      | 'className'
+      DateTimeRangeControlProps,
       | 'size'
       | 'ariaLabelFrom'
       | 'ariaLabelTo'
@@ -38,8 +46,9 @@ export interface DateTimeRangePickerProps
       | 'statusTo'
       | 'onChange'
       | 'onBlur'
+      | 'wide'
     >,
-    Pick<GlobalAttrProps, 'id'> {
+    Required<Pick<GlobalAttrProps, 'id'>> {
   /** Initial value for the input. */
   value: { from: string | number | Date; to: string | number | Date };
   /** Apply button text. */
@@ -57,6 +66,8 @@ export interface DateTimeRangePickerProps
 }
 
 export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
+  ariaLabelNextMonth = 'Go to the next month',
+  ariaLabelPrevMonth = 'Go to the previous month',
   applyButtonText = 'Apply',
   cancelButtonText = 'Cancel',
   disableApplyButton = false,
@@ -69,6 +80,7 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
   onBlur,
   onCancel,
   onChange,
+  size = 'md',
   value: customValue = { from: null, to: null },
   ...restDateTimeRangeProps
 }) => {
@@ -178,9 +190,14 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
   return (
     <>
       <div ref={setReferenceElement}>
-        <RangeInput
+        <DateTimeRangeControl
           {...restDateTimeRangeProps}
-          id={`${id}_range_input`}
+          aria-controls={`${id}-range-selector`}
+          hasMillis={hasMillis}
+          hasSeconds={hasSeconds}
+          hasTime={hasTime}
+          id={id ? `${id}-range-control` : null}
+          isOpen={visible}
           from={
             isManageableFromDate
               ? format(value.from as number, datetimeFormat)
@@ -194,15 +211,20 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
           onClick={onClickInputCallback}
           onChange={onChangeCallback}
           onBlur={onBlurCallback}
+          size={size}
         />
       </div>
       {visible && (
         <div
+          aria-modal
+          id={id ? `${id}-range-selector` : null}
           ref={setPopperElement}
+          role="dialog"
           style={styles.popper}
           {...attributes.popper}
         >
           <Panel
+            elevation="activated"
             footerSettings={{
               actions: [
                 <Button key={'cancel'} onClick={onCancelCallback}>
@@ -217,15 +239,17 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
                   {applyButtonText}
                 </Button>,
               ],
+              bordered: true,
             }}
-            widthScheme={{ minWidth: '600px' }}
           >
             <DateTimeRange
               {...restDateTimeRangeProps}
+              ariaLabelNextMonth={ariaLabelNextMonth}
+              ariaLabelPrevMonth={ariaLabelPrevMonth}
               hasMillis={hasMillis}
               hasSeconds={hasSeconds}
               hasTime={hasTime}
-              id={`${id}_datetime_range`}
+              id={id ? `${id}-datetime-range` : null}
               selectedDates={date}
               selectedPreset={preset}
               onChange={onChangeDateTimeCallback}

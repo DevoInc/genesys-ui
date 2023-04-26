@@ -32,6 +32,7 @@ export const Base: Story = {
     label: 'Label for story',
     children: (
       <StyledInputControl
+        id="story-id"
         readOnly
         style={{
           alignItems: 'center',

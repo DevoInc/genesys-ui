@@ -6,6 +6,7 @@ import {
   FieldSize,
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
 } from '../../../declarations';
 
 import { Flex, Label, LabelProps } from '../../';
@@ -16,7 +17,8 @@ export interface FieldLabelProps
       'as' | 'className' | 'forwardedAs' | 'size' | 'textAlign' | 'truncated'
     >,
     GlobalAttrProps,
-    GlobalAriaProps {
+    GlobalAriaProps,
+    StyledOverloadCssProps {
   /** The helper block: extra info or validation message to fill the form displayed as a floating message. */
   helper?: React.ReactNode;
   /** The mark to add at the beginnig of the label when the field is required. */
@@ -37,12 +39,13 @@ export const FieldLabel: React.FC<FieldLabelProps> = ({
   requiredMark,
   size = 'md',
   srOnly = false,
+  styles,
   ...nativeProps
 }) => {
   // to get vertically aligned the label with the field control block anyway
   const labelLineHeight = useTheme().alias.typo.lineHeight.body[size];
 
-  return !(labelPosition === 'right') && helper ? (
+  return !(labelPosition === 'right') && helper && !srOnly ? (
     <Flex {...nativeProps} alignItems="center" maxWidth="100%" gap="cmp-xxs">
       <Label
         cursor={cursor}
@@ -50,6 +53,7 @@ export const FieldLabel: React.FC<FieldLabelProps> = ({
         id={id}
         size={size}
         srOnly={srOnly}
+        styles={styles}
       >
         {requiredMark}
         {children}
@@ -72,6 +76,7 @@ export const FieldLabel: React.FC<FieldLabelProps> = ({
       id={id}
       size={size}
       srOnly={srOnly}
+      styles={styles}
       truncated={false}
     >
       {requiredMark}

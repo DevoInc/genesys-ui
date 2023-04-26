@@ -14,6 +14,8 @@ const meta: Meta<typeof DateTimeRangePicker> = {
       from: subMonths(new Date(), 1).getTime(),
       to: new Date().getTime(),
     },
+    id: 'story-demo',
+    size: 'md',
   },
 };
 

@@ -12,6 +12,8 @@ import {
 } from 'date-fns';
 
 import {
+  FieldSize,
+  Flex,
   GlobalAriaProps,
   GlobalAttrProps,
   HFlex,
@@ -24,8 +26,13 @@ import { toTimestamp } from '../../utils';
 
 export interface MonthProps
   extends Pick<CalendarProps, 'maxDate' | 'minDate'>,
-    Required<Pick<GlobalAriaProps, 'aria-label'>>,
     Pick<GlobalAttrProps, 'id'> {
+  /** The aria-label attribute for the icon button to go to the next month. */
+  ariaLabelInput: GlobalAriaProps['aria-label'];
+  /** The aria-label attribute for the icon button to go to the next month. */
+  ariaLabelNextMonth?: string;
+  /** The aria-label attribute for the icon button to go to the previous month. */
+  ariaLabelPrevMonth?: string;
   /** Show the prev month button. */
   hasPrevMonthButton?: boolean;
   /** Show the next month button. */
@@ -36,12 +43,16 @@ export interface MonthProps
   onClickPrevMonth?: () => void;
   /** Function called when click on next month button. */
   onClickNextMonth?: () => void;
+  /** The size of the different elements of the Month: inputs, buttons... etc. */
+  size?: FieldSize;
   /** Initial value. One of `number` or `Date`. */
   value?: Datetime;
 }
 
 export const Month: React.FC<MonthProps> = ({
-  'aria-label': ariaLabel,
+  ariaLabelInput = 'Select the month',
+  ariaLabelNextMonth = 'Go to the next month',
+  ariaLabelPrevMonth = 'Go to the previous month',
   hasPrevMonthButton = true,
   hasNextMonthButton = true,
   id,
@@ -51,6 +62,7 @@ export const Month: React.FC<MonthProps> = ({
   onChange,
   onClickPrevMonth,
   onClickNextMonth,
+  size = 'md',
 }) => {
   const value = toTimestamp(defaultValue);
   const minDate = toTimestamp(minMonth);
@@ -88,36 +100,68 @@ export const Month: React.FC<MonthProps> = ({
   );
 
   return (
-    <HFlex>
+    <HFlex justifyContent="space-between" spacing="0">
       {hasPrevMonthButton && (
         <IconButton
+          aria-label={ariaLabelPrevMonth}
           colorScheme={'quiet'}
           hasBoldIcon
           icon="arrow_left"
           onClick={onClickPrevMonth}
-          size="sm"
+          size={size}
           state={stateMin}
-          title={'prev-month'}
+          title={ariaLabelPrevMonth}
         />
       )}
-      <InputControl
-        aria-label={ariaLabel}
-        id={id}
-        max={max}
-        min={min}
-        onChange={onChangeMonth}
-        type={'month'}
-        value={format(value, 'yyyy-MM')}
-      />
+      <Flex.Item
+        position="relative"
+        flex="0 0 auto"
+        paddingLeft={hasPrevMonthButton ? 'cmp-xs' : null}
+        paddingRight={hasNextMonthButton ? 'cmp-xs' : null}
+        positionRight={
+          hasPrevMonthButton && hasNextMonthButton
+            ? null
+            : hasPrevMonthButton
+            ? '50%'
+            : null
+        }
+        positionLeft={
+          hasPrevMonthButton && hasNextMonthButton
+            ? null
+            : hasNextMonthButton
+            ? '50%'
+            : null
+        }
+        cssTranslate={
+          hasPrevMonthButton && hasNextMonthButton
+            ? null
+            : hasPrevMonthButton
+            ? '50%, 0'
+            : '-50%, 0'
+        }
+        width={'16.8rem'}
+      >
+        <InputControl
+          aria-label={ariaLabelInput}
+          id={id}
+          max={max}
+          min={min}
+          onChange={onChangeMonth}
+          size={size}
+          type={'month'}
+          value={format(value, 'yyyy-MM')}
+        />
+      </Flex.Item>
       {hasNextMonthButton && (
         <IconButton
+          aria-label={ariaLabelNextMonth}
           colorScheme={'quiet'}
           hasBoldIcon
           icon="arrow_right"
           onClick={onClickNextMonth}
-          size="sm"
+          size={size}
           state={stateMax}
-          title={'next-month'}
+          title={ariaLabelNextMonth}
         />
       )}
     </HFlex>

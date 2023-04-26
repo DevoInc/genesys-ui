@@ -5,8 +5,10 @@ export const getButtonStateFromRealTimeState = (state) => {
   switch (state) {
     case 'inactive':
       return 'enabled';
+    case 'activated':
+      return 'selected';
     case 'selected':
-      return 'focused';
+      return 'selected';
     default:
       return state;
   }

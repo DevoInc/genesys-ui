@@ -17,6 +17,7 @@ const meta: Meta<typeof DateTimeRange> = {
     hasMillis: false,
     hasSeconds: true,
     hasTime: true,
+    id: 'story-demo',
     onChange: (dates) => {
       console.log('new range ', new Date(dates.from), new Date(dates.to));
     },
