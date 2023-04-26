@@ -16,6 +16,12 @@ import { PresetRange } from '../Presets/declarations';
 export interface DateTimeRangePickerProps
   extends Pick<
       DateTimeRangeProps,
+      | 'ariaLabelNextMonth'
+      | 'ariaLabelPrevMonth'
+      | 'ariaLabelFromMonth'
+      | 'ariaLabelFromTime'
+      | 'ariaLabelToMonth'
+      | 'ariaLabelToTime'
       | 'dateForMonth'
       | 'invalidDates'
       | 'maxDate'
@@ -60,6 +66,8 @@ export interface DateTimeRangePickerProps
 }
 
 export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
+  ariaLabelNextMonth = 'Go to the next month',
+  ariaLabelPrevMonth = 'Go to the previous month',
   applyButtonText = 'Apply',
   cancelButtonText = 'Cancel',
   disableApplyButton = false,
@@ -189,6 +197,7 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
           hasSeconds={hasSeconds}
           hasTime={hasTime}
           id={id ? `${id}-range-control` : null}
+          isOpen={visible}
           from={
             isManageableFromDate
               ? format(value.from as number, datetimeFormat)
@@ -235,6 +244,8 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
           >
             <DateTimeRange
               {...restDateTimeRangeProps}
+              ariaLabelNextMonth={ariaLabelNextMonth}
+              ariaLabelPrevMonth={ariaLabelPrevMonth}
               hasMillis={hasMillis}
               hasSeconds={hasSeconds}
               hasTime={hasTime}

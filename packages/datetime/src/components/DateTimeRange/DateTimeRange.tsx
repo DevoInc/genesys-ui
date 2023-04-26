@@ -24,7 +24,7 @@ import {
   useCalendarForwardBackwardBehavior,
 } from '../Calendar';
 import { Presets, PresetsProps } from '../Presets';
-import { Month, Time, TimeProps } from '../DateTime/components';
+import { Month, MonthProps, Time, TimeProps } from '../DateTime/components';
 import { PresetRange } from '../Presets/declarations';
 import { toTimestamp } from '../utils';
 
@@ -40,6 +40,7 @@ export interface DateTimeRangeProps
       | 'weekDays'
     >,
     Pick<TimeProps, 'hasMillis' | 'hasSeconds'>,
+    Pick<MonthProps, 'ariaLabelNextMonth' | 'ariaLabelPrevMonth'>,
     Pick<PresetsProps, 'presets'>,
     Required<Pick<GlobalAttrProps, 'id'>> {
   /** aria-label attribute for from month input. */
@@ -63,10 +64,12 @@ export interface DateTimeRangeProps
 }
 
 export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
-  ariaLabelFromMonth = 'from month',
-  ariaLabelFromTime = 'from time',
-  ariaLabelToMonth = 'to month',
-  ariaLabelToTime = 'to time',
+  ariaLabelNextMonth = 'Go to the next month',
+  ariaLabelPrevMonth = 'Go to the previous month',
+  ariaLabelFromMonth = 'From month',
+  ariaLabelFromTime = 'From time',
+  ariaLabelToMonth = 'To month',
+  ariaLabelToTime = 'To time',
   dateForMonth: monthToShow,
   hasMillis = false,
   hasSeconds = true,
@@ -244,8 +247,10 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
     <HFlex alignItems={'flex-start'}>
       <VFlex flex={`1 1 ${hasTime ? '40%' : '50%'}`} alignItems="stretch">
         <Month
-          aria-label={ariaLabelFromMonth}
+          ariaLabelInput={ariaLabelFromMonth}
+          ariaLabelPrevMonth={ariaLabelPrevMonth}
           hasNextMonthButton={false}
+          id={`${id}-month-from`}
           maxDate={maxDate}
           minDate={minDate}
           onChange={onChangeMonthFrom}
@@ -274,6 +279,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
             aria-label={ariaLabelFromTime}
             hasMillis={hasMillis}
             hasSeconds={hasSeconds}
+            id={`${id}-time-from`}
             maxDate={maxDate}
             minDate={minDate}
             onChange={onChangeTimeFrom}
@@ -284,8 +290,10 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
       </VFlex>
       <VFlex flex={`1 1 ${hasTime ? '40%' : '50%'}`} alignItems="stretch">
         <Month
-          aria-label={ariaLabelToMonth}
+          ariaLabelInput={ariaLabelToMonth}
+          ariaLabelNextMonth={ariaLabelNextMonth}
           hasPrevMonthButton={false}
+          id={`${id}-month-to`}
           maxDate={maxDate}
           minDate={minDate}
           onChange={onChangeMonthTo}
@@ -314,6 +322,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
             aria-label={ariaLabelToTime}
             hasMillis={hasMillis}
             hasSeconds={hasSeconds}
+            id={`${id}-time-to`}
             maxDate={maxDate}
             minDate={minDate}
             onChange={onChangeTimeTo}
@@ -326,7 +335,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
         <VFlex flex={'1 1 20%'}>
           <Presets
             value={selectedPreset}
-            id={`${id}_presets`}
+            id={`${id}-presets`}
             placeholder={presetsPlaceholder}
             presets={presets}
             onChange={onChangePresetDateCallback}

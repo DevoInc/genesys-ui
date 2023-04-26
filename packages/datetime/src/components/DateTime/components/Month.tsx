@@ -26,8 +26,13 @@ import { toTimestamp } from '../../utils';
 
 export interface MonthProps
   extends Pick<CalendarProps, 'maxDate' | 'minDate'>,
-    Required<Pick<GlobalAriaProps, 'aria-label'>>,
     Pick<GlobalAttrProps, 'id'> {
+  /** The aria-label attribute for the icon button to go to the next month. */
+  ariaLabelInput: GlobalAriaProps['aria-label'];
+  /** The aria-label attribute for the icon button to go to the next month. */
+  ariaLabelNextMonth?: string;
+  /** The aria-label attribute for the icon button to go to the previous month. */
+  ariaLabelPrevMonth?: string;
   /** Show the prev month button. */
   hasPrevMonthButton?: boolean;
   /** Show the next month button. */
@@ -45,7 +50,9 @@ export interface MonthProps
 }
 
 export const Month: React.FC<MonthProps> = ({
-  'aria-label': ariaLabel,
+  ariaLabelInput = 'Select the month',
+  ariaLabelNextMonth = 'Go to the next month',
+  ariaLabelPrevMonth = 'Go to the previous month',
   hasPrevMonthButton = true,
   hasNextMonthButton = true,
   id,
@@ -96,13 +103,14 @@ export const Month: React.FC<MonthProps> = ({
     <HFlex justifyContent="space-between" spacing="0">
       {hasPrevMonthButton && (
         <IconButton
+          aria-label={ariaLabelPrevMonth}
           colorScheme={'quiet'}
           hasBoldIcon
           icon="arrow_left"
           onClick={onClickPrevMonth}
           size={size}
           state={stateMin}
-          title={'prev-month'}
+          title={ariaLabelPrevMonth}
         />
       )}
       <Flex.Item
@@ -134,7 +142,7 @@ export const Month: React.FC<MonthProps> = ({
         width={'16.8rem'}
       >
         <InputControl
-          aria-label={ariaLabel}
+          aria-label={ariaLabelInput}
           id={id}
           max={max}
           min={min}
@@ -146,13 +154,14 @@ export const Month: React.FC<MonthProps> = ({
       </Flex.Item>
       {hasNextMonthButton && (
         <IconButton
+          aria-label={ariaLabelNextMonth}
           colorScheme={'quiet'}
           hasBoldIcon
           icon="arrow_right"
           onClick={onClickNextMonth}
           size={size}
           state={stateMax}
-          title={'next-month'}
+          title={ariaLabelNextMonth}
         />
       )}
     </HFlex>

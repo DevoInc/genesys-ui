@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components';
 // components
 import { Flex } from '../../Flex';
 import { StyledInputControlProps } from '../styled';
-import { ControlWidth, StyledOverloadCssProps } from '../../../declarations';
+import { StyledOverloadCssProps } from '../../../declarations';
 
 export interface InputControlInnerContainerProps
   extends StyledOverloadCssProps,

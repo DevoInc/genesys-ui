@@ -5,7 +5,7 @@ import {
   FieldSize,
   FieldStatus,
   StyledSelectControl,
-  //StyledInputControl,
+  StyledInputControl,
   StyledButton,
 } from '@devoinc/genesys-ui';
 import { StyledFieldsCombinerWrapper } from './';
@@ -36,6 +36,7 @@ export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps
 
       // Input, Select, Button and IconButton
       ${StyledSelectControl} .react-select__control,
+      ${StyledInputControl},
       ${StyledButton} {
         min-height: ${height};
         height: 100%;
@@ -57,6 +58,8 @@ export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps
 
       // Input, Select, Button and IconButton
       ${StyledSelectControl},
+      ${StyledSelectControl} ${StyledInputControl},
+      ${StyledInputControl},
       ${StyledSelectControl} .react-select__control,
       ${StyledButton},
       ${StyledButton}::before {
@@ -137,13 +140,13 @@ export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps
         }
       `}
 
-      // Right elem
-        ${!first &&
+        // Right elem
+      ${!first &&
       css`
         margin-left: -1px;
       `}
 
-      // states
+        // states
       &:hover {
         z-index: 2;
       }

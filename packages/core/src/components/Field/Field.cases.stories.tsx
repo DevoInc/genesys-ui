@@ -54,7 +54,17 @@ export const AdvancedUsageWithValidation: Story = {
     (() => (
       <Field.Container>
         <Field.LabelDistributor>
-          <Field.Label htmlFor="story-field">Field label</Field.Label>
+          <Field.Label
+            requiredMark={
+              <Field.RequiredMark
+                colorScheme="error"
+                title="This field is required"
+              />
+            }
+            htmlFor="story-field"
+          >
+            Field label
+          </Field.Label>
           <InputControl
             aria-label="Field label"
             id="story-field"
@@ -77,6 +87,12 @@ export const AdvancedUsageWithFloatingValidation: Story = {
         <Field.LabelDistributor>
           <Field.Label
             htmlFor="story-field"
+            requiredMark={
+              <Field.RequiredMark
+                colorScheme="error"
+                title="This field is required"
+              />
+            }
             helper={
               <Field.FloatingHelper
                 status="error"

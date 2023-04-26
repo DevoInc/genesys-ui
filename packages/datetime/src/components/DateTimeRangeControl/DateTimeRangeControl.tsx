@@ -12,10 +12,10 @@ import type {
   MouseEventAttrProps,
   TriggerAriaProps,
 } from '@devoinc/genesys-ui';
-import { Field, HFlex, InputControl } from '@devoinc/genesys-ui';
+import { Field, InputControl } from '@devoinc/genesys-ui';
 
 // form
-import { Input, InputProps } from '@devoinc/genesys-ui-form';
+import { InputProps } from '@devoinc/genesys-ui-form';
 
 // styles
 import {
@@ -154,13 +154,12 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
 
   return (
     <StyledDateTimeRangeControl
-      aria-controls={ariaControls}
+      aria-controls={isOpen ? ariaControls : null}
       aria-haspopup
       hideRealTime={hasRealTime(realTime)}
       id={id}
       isOpen={isOpen}
       onClick={onClick}
-      role="button"
       size={size}
       tabIndex={0}
       wide={wide}

@@ -22,8 +22,6 @@ const meta: Meta<typeof DateTimeRangeControl> = {
     isOpen: false,
     realTime: 'hidden',
     size: 'md',
-    statusFrom: 'error',
-    helperFrom: 'This date format is not the desired',
   },
 };
 

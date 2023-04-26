@@ -134,7 +134,8 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
         align-items: center;
         justify-content: center;
         appearance: none;
-        position: relative;
+        position: absolute;
+        right: ${inputHorPadding};
         transition: background-color ease
           ${buttonTokens.mutation.transitionDuration};
         margin: 0;

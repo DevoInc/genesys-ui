@@ -1,15 +1,10 @@
 import * as React from 'react';
-import { FIELD_FLEX_CONFIG } from '../constants';
-import {
-  GlobalAttrProps,
-  MouseEventAttrProps,
-  StyledOverloadCssProps,
-} from '../../../declarations';
-import { Flex } from '../../Flex';
-import { FieldDirection } from '../declarations';
-import { FieldProps } from '../Field';
 import { useTheme } from 'styled-components';
+
+import { StyledOverloadCssProps } from '../../../declarations';
 import { getControlWidth } from '../../../styled/';
+import { Flex } from '../../Flex';
+import { FieldProps } from '../Field';
 
 export interface FieldControlDistributorProps
   extends StyledOverloadCssProps,
@@ -39,7 +34,7 @@ export const FieldControlDistributor: React.FC<
       alignItems={hasFloatingHelper ? 'center' : null}
       flex={
         inputWidthEval
-          ? `0 1 auto`
+          ? '0 1 auto'
           : !wide || labelPosition === 'between' || labelPosition === 'right'
           ? '0 0 auto'
           : '1 1 auto'

@@ -25,6 +25,10 @@ export const StyledPanelHeaderContent = styled.div<StyledPanelHeaderContentProps
       padding: ${!bottomContent &&
       !topContent &&
       tokensPanelHeader.space.padding[size]};
+
+      &:empty {
+        display: none;
+      }
     `;
   }};
 `;
