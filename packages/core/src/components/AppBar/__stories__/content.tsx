@@ -7,20 +7,45 @@ import { Tabs } from '../../Tabs';
 
 export const mainActions = [
   <IconButton
+    aria-label="avatar"
+    title="Avatar"
     key={1}
     icon="user_profile_avatar_man_male2"
     circular
     colorScheme="quiet"
   />,
-  <IconButton key={2} icon="search_thicker" circular colorScheme="quiet" />,
-  <IconButton key={3} icon="bell_solid" circular colorScheme="quiet" />,
   <IconButton
+    aria-label="Search"
+    title="Search"
+    key={2}
+    icon="search_thicker"
+    circular
+    colorScheme="quiet"
+  />,
+  <IconButton
+    aria-label="Notifications"
+    title="Notifications"
+    key={3}
+    icon="bell_solid"
+    circular
+    colorScheme="quiet"
+  />,
+  <IconButton
+    aria-label="Help"
+    title="Help"
     key={4}
     icon="about_question_faq_help_filled"
     circular
     colorScheme="quiet"
   />,
-  <IconButton key={5} icon="time_zone" circular colorScheme="quiet" />,
+  <IconButton
+    aria-label="Time zone"
+    title="Time zone"
+    key={5}
+    icon="time_zone"
+    circular
+    colorScheme="quiet"
+  />,
 ];
 
 export const userOptions = [
@@ -40,9 +65,14 @@ export const userOptions = [
 ];
 
 export const tabs: React.ReactElement<any>[] = [
-  <Tabs.Item state="selected" key="item-1" label="Aggregation tasks" />,
-  <Tabs.Item key="item-4" label="Injections" />,
-  <Tabs.Item key="item-3" label="Permalinks" />,
+  <Tabs.Item
+    size="lg"
+    state="selected"
+    key="item-1"
+    label="Aggregation tasks"
+  />,
+  <Tabs.Item size="lg" key="item-4" label="Injections" />,
+  <Tabs.Item size="lg" key="item-3" label="Permalinks" />,
 ];
 
 export const customBlock = (

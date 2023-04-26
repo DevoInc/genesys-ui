@@ -29,7 +29,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   children,
   hidden = false,
   itemsGap = 'md',
-  role = 'group',
+  role,
   size = 'md',
   visibilityTrigger,
   ...restNativeProps

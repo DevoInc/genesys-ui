@@ -14,12 +14,7 @@ export const AppBarOptions: React.FC<AppBarOptionsProps> = ({
   id,
 }) => {
   return (
-    <HFlex
-      id={`${id}__user-options`}
-      alignItems="center"
-      marginLeft="auto"
-      padding="0 cmp-md"
-    >
+    <HFlex id={`${id}__user-options`} alignItems="center" marginLeft="auto">
       <AppBarDivider id={id} />
       <Flex.Item>{children}</Flex.Item>
     </HFlex>

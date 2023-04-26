@@ -13,7 +13,7 @@ export const AppBarNavigation: React.FC<AppBarNavigationProps> = ({
   children,
 }) => {
   return (
-    <Flex.Item id={`${id}__tabs`} flex="1 0 auto" paddingLeft="cmp-xs">
+    <Flex.Item id={`${id}__tabs`} flex="1 0 auto">
       {children}
     </Flex.Item>
   );
