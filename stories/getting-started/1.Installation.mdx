@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs';
 import { Heading } from '../../.storybook/docs/blocks';
 
-<Meta title='Getting started/Installation' />
+<Meta title="Getting started/Installation" />
 
 <Heading.H1>Integrating genesys-ui into a React project</Heading.H1>
 
@@ -9,7 +9,7 @@ This guide provides instructions for integrating the `genesys-ui` library into a
 
 As an alternative, you can use the `genesys-ui-demo-app` package, which includes a working app that implements the steps described in this guide.
 
-<Heading.H2>Adding Genesys-ui to your project</Heading.H2>
+<Heading.H2>Installing Genesys-ui into your application</Heading.H2>
 
 Install genesys-ui core using npm:
 
@@ -60,17 +60,38 @@ This imports the necessary requirements to display the icons in genesys-ui.
 
 A template for a React project that uses styled-components and includes the above steps is available in the `genesys-ui-demo-app` package.
 
-<Heading.H2>Adding a custom brand</Heading.H2>
+<Heading.H2>Adding a theme</Heading.H2>
 
-Genesys-ui components rely on a set of tokens to define their appearance.
-These tokens are defined in a brand package, which is a set of key-values that define the tokens for a specific brand. To add a custom brand to your project,
-Install a brand package, such as _@devoinc/genesys-brand-devo_, using npm:
+Genesys-ui requires a theme to be provided.
+This theme is a set of key-values, also known as tokens, that define the appearance of the components.
+
+These tokens are defined in a brand package. To add the Devo's brand to your project,
+install _@devoinc/genesys-brand-devo_, using npm:
 
 ```bash
 npm i @devoinc/genesys-brand-devo
 ```
 
-To make _styled-components_ aware of your custom theme schema, you can use module augmentation. To do so:
+You can also create your own brand package. For more information, see [@devoinc/genesys-tokens](https://www.npmjs.com/package/@devoinc/genesys-tokens).
+
+Once the theme is installed, you can add it to your project by wrapping your app with the _ThemeProvider_ component provided by _styled-components_:
+
+```tsx
+import { ThemeProvider } from 'styled-components';
+import brand from '@devoinc/genesys-brand-devo';
+
+const App = () => {
+  return (
+    <ThemeProvider theme={brand.light}>
+      <YourApp />
+    </ThemeProvider>
+  );
+};
+```
+
+<Heading.H2>Making styled-components aware of the theme's schema</Heading.H2>
+
+If you need to work with styled components on your application, you can make them aware of your theme by using module augmentation. To do so:
 
 - Create a `styled.d.ts` file in `src/`.
 
@@ -81,9 +102,7 @@ To make _styled-components_ aware of your custom theme schema, you can use modul
   import { Brand } from '@devoinc/genesys-brand-devo';
 
   declare module 'styled-components' {
-    export interface DefaultTheme {
-      tokens: Brand;
-    }
+    export interface DefaultTheme extends Brand {}
   }
   ```
 
