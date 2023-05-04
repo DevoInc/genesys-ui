@@ -6,7 +6,7 @@ import {
   FooterSettings as PanelFooterSettings,
 } from '../Panel/declarations';
 
-import { IconButton, Box, Divider, Flex, Panel } from '..';
+import { IconButton, Divider, Panel, HFlex } from '..';
 
 import { StyledPanelSection } from './StyledPanelSection';
 
@@ -19,19 +19,15 @@ export const renderBackwardNavigation = ({
 }) => {
   if (onClickBackwardNav)
     return (
-      <>
-        <Flex.Item alignSelf={'flex-start'}>
-          <IconButton
-            hasBoldIcon
-            icon="arrow_left1"
-            onClick={onClickBackwardNav}
-            title={backwardTooltip}
-          />
-        </Flex.Item>
-        <Box height="100%" marginLeft="cmp-md">
-          <Divider height="100%" margin="0" vertical />
-        </Box>
-      </>
+      <HFlex alignItems="stretch" height="100%" spacing="cmp-sm">
+        <IconButton
+          hasBoldIcon
+          icon="arrow_left1"
+          onClick={onClickBackwardNav}
+          title={backwardTooltip}
+        />
+        <Divider height="auto" margin="0" vertical />
+      </HFlex>
     );
 
   return null;

@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
+import * as React from 'react';
 
 import {
+  FooterSettings,
   HeaderSettings as PanelHeaderSettings,
   RenderContent,
 } from '../Panel/declarations';
@@ -13,19 +15,25 @@ import { StyledPanelHeaderContentPrepend } from '../Panel/components/PanelHeader
 
 import { StyledPanelBodyContainer } from '../Panel/components/PanelBody/StyledPanelBodyContainer';
 import { PanelBodyContainerProps } from '../Panel/components';
+import { StyledPanelFooterContent } from '../Panel/components/PanelFooter/PanelFooterContent/StyledPanelFooterContent';
 
 export interface StyledPanelSectionProps {
   bodySettings?: PanelBodyContainerProps['bodySettings'];
   hasScroll?: boolean;
   headerSettings?: PanelHeaderSettings;
+  footerSettings?: FooterSettings;
 }
 
 export const StyledPanelSection = styled.section<StyledPanelSectionProps>`
-  ${({ bodySettings, hasScroll, headerSettings, theme }) => {
+  ${({ bodySettings, footerSettings, hasScroll, headerSettings, theme }) => {
     const tokensPanelSection = theme.cmp.panelSection;
     const contentSpacing = tokensPanelSection.content.space;
     const headerPadding = tokensPanelSection.header.space.padding;
     const panelHeaderContent = headerSettings?.renderContent as RenderContent;
+
+    const spacingCmp = theme.alias.space.cmp;
+    const footerPaddingLarge = `${spacingCmp.md} ${spacingCmp.lg}`;
+    const footerPaddingSmall = `${spacingCmp.xxs} ${spacingCmp.xs}`;
 
     let contentMargin;
     let contentPadding = contentSpacing.padding.noHasScroll;
@@ -44,6 +52,10 @@ export const StyledPanelSection = styled.section<StyledPanelSectionProps>`
       contentMargin = contentSpacing.margin.removeSpaceHasScroll;
       contentPadding = contentSpacing.padding.removeSpaceHasScroll;
     }
+
+    const isFullReactFooter = React.isValidElement(
+      footerSettings?.renderContent
+    );
 
     return css`
       > ${StyledPanelHeaderContent} {
@@ -65,6 +77,10 @@ export const StyledPanelSection = styled.section<StyledPanelSectionProps>`
       > ${StyledPanelBodyContainer} {
         padding: ${contentPadding};
         margin: ${contentMargin};
+      }
+
+      > ${StyledPanelFooterContent} {
+        padding: ${isFullReactFooter ? footerPaddingLarge : footerPaddingSmall};
       }
     `;
   }}

@@ -12,6 +12,7 @@ export const StyledPanelHeaderContentPrepend = styled.div<StyledPanelHeaderConte
     const tokensPanelHeaderPrepend = getPanelTokens(theme).headerPrepend;
 
     return css`
+      align-self: stretch;
       display: flex;
       align-items: center;
       flex-shrink: 0;

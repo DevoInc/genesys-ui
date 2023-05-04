@@ -44,10 +44,9 @@ export const StyledDivider = styled.hr<StyledDividerProps>`
       margin: ${margin && getSpacingPropCss(margin, theme)};
       margin: ${vertical ? `0 ${spacing}` : `${spacing} 0`};
       border: none;
-      width: ${$width || vertical ? borderSize : '100%'};
-      height: ${$height || vertical
-        ? theme.alias.size.height.surface.xxs
-        : borderSize};
+      width: ${$width || (vertical ? borderSize : '100%')};
+      height: ${$height ||
+      (vertical ? theme.alias.size.height.surface.xxs : borderSize)};
       background: ${bgColor};
     `;
   }};
