@@ -109,6 +109,7 @@ export const StyledProgressBarStandard = styled.div.attrs(
       &::after {
         content: '';
         position: absolute;
+        left: 0;
         top: 0;
         bottom: 0;
         height: 100%;

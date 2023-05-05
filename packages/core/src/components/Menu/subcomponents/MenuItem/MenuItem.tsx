@@ -23,6 +23,7 @@ import {
 
 // components
 import { Flex } from '../../../Flex';
+import { VFlex } from '../../../VFlex';
 
 // styled
 import {
@@ -48,6 +49,7 @@ export interface MenuItemProps
     Pick<ButtonAttrProps, 'name' | 'value'>,
     StyledMenuItemInnerProps {
   appendContent?: React.ReactNode;
+  bottomContent?: React.ReactNode;
   children?: React.ReactNode;
   expandable?: boolean;
   icon?: string;
@@ -60,6 +62,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   appendContent,
   'aria-label': ariaLabel,
   as,
+  bottomContent,
   forwardedAs,
   children,
   download,
@@ -136,19 +139,28 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         )}
         {children || (
           <>
-            <Flex as="span" flex="1" alignItems="center" minWidth="0">
-              {(icon || isSelected) && (
-                <StyledMenuItemMarker>
-                  <Icon
-                    iconId={isSelected ? 'check_thick' : icon}
-                    size={iconSize}
-                  />
-                </StyledMenuItemMarker>
-              )}
-              {prependContent}
-              <StyledMenuItemLabel>{label}</StyledMenuItemLabel>
-              {appendContent}
-            </Flex>
+            <VFlex
+              as="span"
+              flex="1"
+              justifyContent="center"
+              childrenFitFullWidth
+              spacing="0"
+            >
+              <Flex as="span" flex="1" alignItems="center" minWidth="0">
+                {(icon || isSelected) && (
+                  <StyledMenuItemMarker>
+                    <Icon
+                      iconId={isSelected ? 'check_thick' : icon}
+                      size={iconSize}
+                    />
+                  </StyledMenuItemMarker>
+                )}
+                {prependContent}
+                <StyledMenuItemLabel>{label}</StyledMenuItemLabel>
+                {appendContent}
+              </Flex>
+              {bottomContent}
+            </VFlex>
             {expandable && (
               <Flex flex="0" marginLeft="auto" paddingLeft="cmp-xs">
                 <Icon size="xxs" iconId="arrow_right" />

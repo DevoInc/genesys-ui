@@ -6,6 +6,7 @@ import { Flex } from '../../../Flex';
 import { Badge } from '../../../Badge';
 import { Typography } from '../../../Typography';
 import { VFlex } from '../../../VFlex';
+import { ProgressBar } from '../../../ProgressBar';
 
 const meta: Meta<typeof Menu.Item> = {
   title: 'Components/Core/Navigation/Menu/Subcomponents/Item',
@@ -35,6 +36,36 @@ export const WithAppendAndPrependContent: Story = {
       >
         <Typography.Caption>⌘ + D</Typography.Caption>
         <Tag colorScheme="success" size="sm" text="NEW" />
+      </Flex>
+    ),
+    prependContent: (
+      <Flex as="span" paddingRight="cmp-xs">
+        <Badge as="span" colorScheme="info" size="sm" text="9" />
+      </Flex>
+    ),
+  },
+};
+
+export const WithAppendPrependAndBottomContent: Story = {
+  name: 'With append, prepend and bottom content',
+  args: {
+    label: 'Menu item content',
+    unlimitedHeight: true,
+    appendContent: (
+      <Flex
+        as="span"
+        alignItems="center"
+        marginLeft="auto"
+        paddingLeft="cmp-xs"
+        gap="cmp-xs"
+      >
+        <Typography.Caption>⌘ + D</Typography.Caption>
+        <Tag colorScheme="success" size="sm" text="NEW" />
+      </Flex>
+    ),
+    bottomContent: (
+      <Flex as="span" paddingTop="cmp-xs">
+        <ProgressBar percent={48} />
       </Flex>
     ),
     prependContent: (

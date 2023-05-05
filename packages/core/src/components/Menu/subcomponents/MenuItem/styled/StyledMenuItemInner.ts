@@ -23,6 +23,8 @@ export interface StyledMenuItemInnerProps
     LinkAttrProps {
   /** If the menu item has a reserved left space for markers: icon, selection mark... etc. */
   hasExtraLeftSpace?: boolean;
+  /** If the menu item has unlimited height, and it's added a vertical padding. */
+  unlimitedHeight?: boolean;
   /** State of the menu item */
   state?:
     | BasicState
@@ -34,7 +36,7 @@ export interface StyledMenuItemInnerProps
 }
 
 export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
-  ${({ hasExtraLeftSpace, state = 'enabled', theme }) => {
+  ${({ hasExtraLeftSpace, state = 'enabled', theme, unlimitedHeight }) => {
     const aliasTokens = theme.alias;
     const tokens = aliasTokens.menus.item;
     const horPadding = menuItemSizeConfig(theme).horPadding;
@@ -56,8 +58,8 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
       position: relative;
       transition: all ease-in-out
         ${aliasTokens.mutation.transitionDuration.action};
-      min-height: ${tokens.size.minHeight};
-      padding: 0 ${horPadding};
+      height: ${unlimitedHeight ? 'auto' : tokens.size.minHeight};
+      padding: ${unlimitedHeight ? horPadding : `0 ${horPadding}`};
       background-color: ${tokens.color.background[state]};
       color: ${tokens.color.text[state]};
       cursor: pointer;
