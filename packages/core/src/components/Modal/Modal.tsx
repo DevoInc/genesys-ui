@@ -90,7 +90,11 @@ export const InternalModal: React.FC<ModalProps> = ({
         {headerTitle && (
           <Flex alignItems="inherit">
             <ModalIcon status={status} />
-            <Heading size={status === 'base' ? 'h4' : 'h5'} truncateLine={1}>
+            <Heading
+              size={status === 'base' ? 'h4' : 'h5'}
+              truncateLine={1}
+              title={headerTitle}
+            >
               {headerTitle}
             </Heading>
           </Flex>
