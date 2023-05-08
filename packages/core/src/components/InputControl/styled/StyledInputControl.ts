@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { lighten } from 'polished';
 
 // constants
 import { INPUT_CONTROL_PSEUDO_ACTIONS_SIZE_MAP } from '../constants';
@@ -169,8 +170,20 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
           height: ${clearSearchButtonSize};
           width: ${clearSearchButtonSize};
           background-size: ${buttonTokens.icon.typo.fontSize.xxs};
-          background-image: ${fieldTokens.shape.backgroundImage.search};
+          background-image: ${fieldTokens.shape.backgroundImage.searchCancel
+            .base};
           background-color: ${buttonTokens.color.background.neutral.enabled};
+
+          // Here it's not possible to use the same way based in pseudo-element ::before as in buttons
+          &:hover {
+            background-color: ${lighten(
+              theme.meta.scheme === 'dark' ? 0.1 : 0.03,
+              buttonTokens.color.background.neutral.hovered
+            )};
+
+            background-image: ${fieldTokens.shape.backgroundImage.searchCancel
+              .hovered};
+          }
         }
       `};
 
