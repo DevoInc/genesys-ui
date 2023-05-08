@@ -1,5 +1,5 @@
 import { ActionMeta, MultiValue, Props, PropsValue } from 'react-select';
-import { ChipSize } from '../../../src/components/Chip/declarations';
+import { ChipSize } from '../Chip/declarations';
 import { FieldSize } from '../../declarations';
 import { SelectOption } from './declarations';
 import { SelectControlProps } from './SelectControl';

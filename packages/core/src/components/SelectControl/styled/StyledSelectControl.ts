@@ -185,6 +185,16 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
         }
         ////////////////////////////////// END VALUE WRAPPER & VALUE CONTAINER
 
+        // INPUT CONTAINER ///////////////////////////////////////////////////
+        &__input-container {
+          overflow-y: hidden;
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+        }
+        ////////////////////////////////////////////////// END INPUT CONTAINER
+
         // VALUE CONTAINER ///////////////////////////////////////////////////
         &__value-container {
           padding: 0 0 0 ${defaultHorPadding};
