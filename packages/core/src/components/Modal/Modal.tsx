@@ -39,7 +39,7 @@ export interface ModalProps
   /** Set window options button (close button excluded) */
   headerActions?: React.ReactElement[];
   /** Defines the header Title */
-  headerTitle?: string;
+  headerTitle?: React.ReactNode;
   /** Height */
   height?: string;
   /** The title for the docs help link on the footer of the Modal */
