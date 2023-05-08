@@ -46,7 +46,7 @@ export interface PanelProps
 const InternalPanel: React.FC<PanelProps> = ({
   // PanelContainerProps
   as,
-  borderSettings,
+  bordered,
   className,
   colorScheme,
   display,
@@ -84,7 +84,7 @@ const InternalPanel: React.FC<PanelProps> = ({
     <PanelContainer
       $display={display}
       as={as}
-      borderSettings={borderSettings}
+      bordered={bordered}
       className={className}
       colorScheme={colorScheme}
       elevation={elevation}

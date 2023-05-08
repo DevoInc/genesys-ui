@@ -16,7 +16,7 @@ export interface PanelContainerProps extends StyledPanelContainerProps {
 
 export const PanelContainer: React.FC<PanelContainerProps> = ({
   as,
-  borderSettings,
+  bordered,
   children,
   className,
   colorScheme,
@@ -35,7 +35,7 @@ export const PanelContainer: React.FC<PanelContainerProps> = ({
       $height={heightScheme?.height}
       $width={widthScheme?.width}
       as={as}
-      borderSettings={borderSettings}
+      bordered={bordered}
       className={className}
       colorScheme={colorScheme}
       elevation={elevation}
