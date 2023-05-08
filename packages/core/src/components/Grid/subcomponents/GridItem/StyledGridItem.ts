@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components';
 
 import { LayoutGridItemProps } from '../../../../declarations';
-import { StyledBox, StyledBoxProps } from '../../../Box/StyledBox';
+import { boxMixin, BoxMixinProps } from '../../../../styled/';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledGridItemProps
-  extends Omit<StyledBoxProps, '$display'>,
+  extends Omit<BoxMixinProps, '$display'>,
     LayoutGridItemProps {}
 
-export const StyledGridItem = styled(StyledBox)<StyledGridItemProps>`
+export const StyledGridItem = styled.div<StyledGridItemProps>`
   ${({
     alignSelf,
     gridArea,
@@ -19,7 +19,9 @@ export const StyledGridItem = styled(StyledBox)<StyledGridItemProps>`
     gridRowEnd,
     gridRowStart,
     justifySelf,
+    ...boxMixinProps
   }) => css`
+    ${boxMixin({ ...boxMixinProps })};
     align-self: ${alignSelf};
     grid-area: ${gridArea};
     grid-column: ${gridColumn};

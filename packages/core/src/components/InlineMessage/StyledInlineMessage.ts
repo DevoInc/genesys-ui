@@ -1,20 +1,20 @@
 import styled, { css } from 'styled-components';
 import * as PopperJS from '@popperjs/core';
 
-import { StyledBox } from '../Box/StyledBox';
 import { getBorderPlacement } from './utils';
-import { IconButtonStatusProps } from '../../';
+import { boxMixin, BoxMixinProps, IconButtonStatusProps } from '../../';
 
-interface StyledInlineMessageProps {
+interface StyledInlineMessageProps extends Omit<BoxMixinProps, '$display'> {
   placement?: PopperJS.Placement;
   status?: IconButtonStatusProps['colorScheme'];
 }
 
-export const StyledInlineMessage = styled(StyledBox)<StyledInlineMessageProps>`
-  ${({ placement, status, theme }) => {
+export const StyledInlineMessage = styled.div<StyledInlineMessageProps>`
+  ${({ placement, status, theme, ...boxMixinProps }) => {
     const tokens = theme.cmp.inlineMessage;
 
     return css`
+      ${boxMixin({ theme, ...boxMixinProps })};
       position: relative;
       background-color: ${tokens.color.background};
 

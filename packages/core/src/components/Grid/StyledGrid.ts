@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 import { LayoutGridProps } from '../../declarations';
-import { StyledBox, StyledBoxProps } from '../Box/StyledBox';
+import { boxMixin, BoxMixinProps } from '../../styled/';
 
 export interface StyledGridProps
-  extends Omit<StyledBoxProps, '$display'>,
+  extends Omit<BoxMixinProps, '$display'>,
     LayoutGridProps {}
 
-export const StyledGrid = styled(StyledBox)<StyledGridProps>`
+export const StyledGrid = styled.div<StyledGridProps>`
   ${({
     alignContent,
     alignItems,
@@ -20,7 +20,9 @@ export const StyledGrid = styled(StyledBox)<StyledGridProps>`
     justifyItems,
     gridTemplateRows,
     rowGap,
+    ...boxMixinProps
   }) => css`
+    ${boxMixin({ ...boxMixinProps })};
     display: ${inline ? 'inline-grid' : 'grid'};
     align-content: ${alignContent};
     align-items: ${alignItems};

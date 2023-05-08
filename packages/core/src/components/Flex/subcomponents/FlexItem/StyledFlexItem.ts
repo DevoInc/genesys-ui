@@ -1,16 +1,16 @@
 import styled, { css } from 'styled-components';
 
 import { LayoutFlexItemProps } from '../../../../declarations';
-import { StyledBox, StyledBoxProps } from '../../../Box/StyledBox';
+import { boxMixin, BoxMixinProps } from '../../../../styled/';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledFlexItemProps
-  extends StyledBoxProps,
+  extends BoxMixinProps,
     LayoutFlexItemProps {}
 
-export const StyledFlexItem = styled(StyledBox)<StyledFlexItemProps>`
-  ${({ alignSelf, flex, order }) => css`
-    flex: ${flex};
+export const StyledFlexItem = styled.div<StyledFlexItemProps>`
+  ${({ alignSelf, order, ...boxMixinProps }) => css`
+    ${boxMixin({ ...boxMixinProps })};
     align-self: ${alignSelf};
     order: ${order};
   `};

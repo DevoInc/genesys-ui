@@ -1,3 +1,4 @@
+import { ReactHTML } from 'react';
 import { PickUnion } from '../typeFunctions';
 import { GLOBAL_SPACING } from '../constants';
 import { FieldAttrProps, GlobalAttrProps } from './htmlAttrs';
@@ -11,7 +12,7 @@ import {
 /** ---------------------------------------------
  * COMMON PROPS
  * --------------------------------------------- */
-
+export type HTMLTag = keyof ReactHTML;
 export type GlobalSize =
   | 'xxxxs'
   | 'xxxs'

@@ -2,13 +2,13 @@ import styled, { css } from 'styled-components';
 import { LayoutFlexProps } from '../../declarations';
 
 import { getSpacingPropCss } from '../../utils/spacing';
-import { StyledBox, StyledBoxProps } from '../Box/StyledBox';
+import { boxMixin, BoxMixinProps } from '../../styled/';
 
 export interface StyledFlexProps
-  extends Omit<StyledBoxProps, '$display'>,
+  extends Omit<BoxMixinProps, '$display'>,
     LayoutFlexProps {}
 
-export const StyledFlex = styled(StyledBox)<StyledFlexProps>`
+export const StyledFlex = styled.div<StyledFlexProps>`
   ${({
     alignContent,
     alignItems,
@@ -22,7 +22,9 @@ export const StyledFlex = styled(StyledBox)<StyledFlexProps>`
     inline = false,
     rowGap,
     theme,
+    ...boxMixinProps
   }) => css`
+    ${boxMixin({ theme, ...boxMixinProps })};
     display: ${inline ? 'inline-flex' : 'flex'};
     align-content: ${alignContent};
     align-items: ${alignItems};

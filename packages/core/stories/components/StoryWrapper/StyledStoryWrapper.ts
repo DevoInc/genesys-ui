@@ -1,19 +1,17 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import {
-  StyledBox,
-  StyledBoxProps,
-} from '../../../src/components/Box/StyledBox';
+import { boxMixin, BoxMixinProps } from '../../../src';
 
-export interface StyledStoryWrapperProps extends StyledBoxProps {
+export interface StyledStoryWrapperProps extends BoxMixinProps {
   bgColor?: React.CSSProperties['backgroundColor'];
 }
 
-export const StyledStoryWrapper = styled(StyledBox)<StyledStoryWrapperProps>`
-  ${({ bgColor, theme }) => {
+export const StyledStoryWrapper = styled.div<StyledStoryWrapperProps>`
+  ${({ bgColor, theme, ...boxMixinProps }) => {
     const defaultColor = theme.alias.color.background.surface.base.base;
     return css`
+      ${boxMixin({ theme, ...boxMixinProps })};
       background-color: ${bgColor || defaultColor};
     `;
   }};
