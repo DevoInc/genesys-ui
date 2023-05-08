@@ -6,10 +6,12 @@ import { FieldSize, FieldStatus } from '../../';
 import {
   checkRadioMixin,
   getCheckRadioTokens,
-} from '../../styled/mixins/componentsMixin';
-import { iconFontMixin } from '../../styled/mixins/baseMixins';
+  iconFontMixin,
+} from '../../styled/';
 
 export interface StyledCheckboxControlProps {
+  /** Icon inside the checkbox when it's selected */
+  checkedIcon: string;
   /** If the checkbox has indeterminate format and state: instead of a check mark, it contains an intermediate one.*/
   indeterminate?: HTMLInputElement['indeterminate'];
   /** The size for the checkbox. It affects to its width, height, font-size... etc. */
@@ -22,6 +24,7 @@ export const StyledCheckboxControl = styled.input.attrs({
   type: 'checkbox',
 })<StyledCheckboxControlProps>`
   ${({
+    checkedIcon,
     disabled = false,
     indeterminate = false,
     $size = 'md',
@@ -33,6 +36,7 @@ export const StyledCheckboxControl = styled.input.attrs({
     const markerTokens = cmpTokens.controlMarker;
     const cmpMarkerWidth = markerTokens.size.square[$size];
     const checkRadioTokens = getCheckRadioTokens({ status, theme });
+    const evalCheckedIcon = icons[checkedIcon] || icons.check_thick;
 
     return css`
       ${checkRadioMixin({ disabled, size: $size, status, theme })};
@@ -55,7 +59,7 @@ export const StyledCheckboxControl = styled.input.attrs({
             `
           : css`
               ${iconFontMixin()};
-              content: '${icons.check_thick}';
+              content: '${evalCheckedIcon}';
               font-size: ${cmpMarkerWidth};
               color: ${checkRadioTokens.textColor};
               transform: scale(0.5);
