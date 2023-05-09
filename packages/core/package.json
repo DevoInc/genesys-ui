@@ -31,7 +31,7 @@
     "react-dock": "^0.6.0",
     "react-grid-system": "^8.1.6",
     "react-popper": "^2.3.0",
-    "react-select": "^5.7.2",
+    "react-select": "^5.7.3",
     "react-toastify": "^9.1.2",
     "react-tooltip": "3.11.2",
     "react-windowed-select": "^5.1.0",
