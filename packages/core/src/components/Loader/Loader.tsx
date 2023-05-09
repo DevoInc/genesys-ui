@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
+import { LOADER_SIZE_MAP } from './constants';
+
 import {
   Box,
   DevoLogoLoader,
@@ -23,6 +25,7 @@ import {
   LoaderType,
   LoaderColorScheme,
   GradientConfig,
+  LoaderBasicColorScheme,
 } from './declarations';
 import { getSize } from './utils';
 
@@ -40,6 +43,7 @@ export interface LoaderProps
     // native
     GlobalAttrProps,
     GlobalAriaProps {
+  /** The definition of color scheme: based in the scheme of the theme (inherited), light, dark... etc. It defines if the overlay is dark and the content light or vice versa.*/
   colorScheme?: LoaderColorScheme;
   gradientConfig?: GradientConfig;
   loadPercent?: ProgressBarProps['percent'];
@@ -51,7 +55,7 @@ export interface LoaderProps
 const InternalLoader: React.FC<LoaderProps> = ({
   alignItems,
   className,
-  colorScheme = 'light',
+  colorScheme = 'inherited',
   fixed,
   gradientConfig,
   iconComplete,
@@ -66,7 +70,12 @@ const InternalLoader: React.FC<LoaderProps> = ({
   role,
   ...nativeProps
 }) => {
-  const contentColor = colorScheme === 'dark' ? 'light' : 'dark';
+  const theme = useTheme();
+  const evalColorScheme =
+    colorScheme === 'inherited'
+      ? (theme.meta.scheme as LoaderBasicColorScheme)
+      : colorScheme;
+  const contentColor = evalColorScheme === 'dark' ? 'light' : 'dark';
   const contentSize = size;
   const tokens = useTheme();
   const gradientColor = tokens.alias.color.background.surface.base.base;
@@ -79,7 +88,7 @@ const InternalLoader: React.FC<LoaderProps> = ({
           iconComplete={iconComplete}
           percent={loadPercent}
           showInfo
-          size={'md'}
+          size={LOADER_SIZE_MAP[size].progress}
           type="circular"
         />
       );
@@ -131,12 +140,11 @@ const InternalLoader: React.FC<LoaderProps> = ({
   return (
     <Overlay
       alignItems={alignItems}
-      bgColorScheme={colorScheme}
+      bgColorScheme={evalColorScheme}
       bgColor={gradientConfig && 'transparent'}
       className={className}
       fixed={fixed}
-      /* hasInteractionBehind={gradientConfig} */
-      hasInteractionBehind={true}
+      hasInteractionBehind={Boolean(gradientConfig)}
       justifyContent={gradientConfig ? 'flex-end' : justifyContent}
       opacity={opaque ? 1 : 0.8}
       padding={gradientConfig ? '0' : String(padding)}

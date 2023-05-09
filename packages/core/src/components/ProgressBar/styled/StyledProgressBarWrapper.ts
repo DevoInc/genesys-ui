@@ -13,8 +13,8 @@ export const StyledProgressBarWrapper = styled.div<StyledProgressBarWrapperProps
     position: relative;
     display: flex;
     flex-direction: ${typeProp === 'circular' ? 'column' : 'row'};
-    jc: ${typeProp === 'circular' ? 'center' : 'space-between'};
-    align-items: 'center';
-    wrap: 'wrap';
+    justify-content: ${typeProp === 'circular' ? 'center' : 'space-between'};
+    align-items: center;
+    flex-wrap: wrap;
   `}
 `;

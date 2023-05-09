@@ -4,13 +4,13 @@ import * as React from 'react';
 import { Loader, LoaderProps } from '../../Loader';
 
 export interface GlobalLoaderProps
-  extends Pick<LoaderProps, 'zIndex' | 'type' | 'className'>, // native
+  extends Pick<LoaderProps, 'zIndex' | 'className' | 'fixed'>, // native
     GlobalAttrProps,
     GlobalAriaProps {}
 
 export const GlobalLoader: React.FC<GlobalLoaderProps> = ({
   className,
-  type = 'logo',
+  fixed = true,
   zIndex = 999999,
   ...nativeProps
 }) => (
@@ -18,9 +18,7 @@ export const GlobalLoader: React.FC<GlobalLoaderProps> = ({
     {...nativeProps}
     className={className}
     colorScheme={'dark'}
-    fixed
-    size={type === 'logo' ? 'md' : 'lg'}
-    type={type}
+    fixed={fixed}
     zIndex={zIndex}
   />
 );

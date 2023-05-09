@@ -8,7 +8,7 @@ const meta: Meta<typeof Loader> = {
   title: 'Components/Core/Feedback/Loader',
   component: Loader,
   args: {
-    colorScheme: 'light',
+    colorScheme: 'inherited',
     size: 'md',
     zIndex: 10,
     type: 'spinner',
