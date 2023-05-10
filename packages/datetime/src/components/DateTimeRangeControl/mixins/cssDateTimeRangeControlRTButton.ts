@@ -1,9 +1,10 @@
 import { css, CSSProp } from 'styled-components';
-import { InputProps } from '@devoinc/genesys-ui-form';
+
+import { InputControlProps } from '@devoinc/genesys-ui';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface cssDateTimeRangeControlRTButtonProps
-  extends Pick<InputProps, 'size'> {}
+  extends Pick<InputControlProps, 'size'> {}
 
 export const cssDateTimeRangeControlRTButton: CSSProp = css`
   ${({ size }: cssDateTimeRangeControlRTButtonProps): CSSProp => {

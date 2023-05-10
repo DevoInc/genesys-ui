@@ -28,10 +28,10 @@ import { useDetectScroll } from '../../hooks';
 
 export interface ModalProps
   extends Omit<ModalContainerProps, 'children'>,
-    Omit<ModalHeaderProps, 'children' | 'hasBoxShadow'>,
-    Omit<ModalIconProps, 'children'>,
-    Omit<ModalBodyProps, 'children' | 'hasScroll'>,
-    Omit<ModalFooterProps, 'children' | 'hasBoxShadow'> {
+  Omit<ModalHeaderProps, 'children' | 'hasBoxShadow'>,
+  Omit<ModalIconProps, 'children'>,
+  Omit<ModalBodyProps, 'children' | 'hasScroll'>,
+  Omit<ModalFooterProps, 'children' | 'hasBoxShadow'> {
   /** Sets array of buttons displayed on the bottom */
   footerButtons?: React.ReactElement[];
   /** Modal content */
@@ -93,7 +93,7 @@ export const InternalModal: React.FC<ModalProps> = ({
             <Heading
               size={status === 'base' ? 'h4' : 'h5'}
               truncateLine={1}
-              title={headerTitle}
+              title={typeof headerTitle === 'string' ? headerTitle : null}
             >
               {headerTitle}
             </Heading>

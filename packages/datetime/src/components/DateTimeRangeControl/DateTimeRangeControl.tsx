@@ -6,16 +6,15 @@ import { GIArrowRight } from '@devoinc/genesys-icons';
 
 // core
 import type {
+  FieldProps,
   FieldSize,
   GlobalAriaProps,
   GlobalAttrProps,
+  InputControlProps,
   MouseEventAttrProps,
   TriggerAriaProps,
 } from '@devoinc/genesys-ui';
 import { Field, InputControl } from '@devoinc/genesys-ui';
-
-// form
-import { InputProps } from '@devoinc/genesys-ui-form';
 
 // styles
 import {
@@ -47,40 +46,40 @@ export interface DateTimeRangeControlProps
   /** aria-label attribute for `to` input */
   ariaLabelTo?: GlobalAriaProps['aria-label'];
   /** Value for the first input. */
-  from?: InputProps['value'];
+  from?: InputControlProps['value'];
   /** Floating status message or helper for `from` input field */
-  helperFrom?: InputProps['helper'];
+  helperFrom?: FieldProps['helper'];
   /** Floating status message or helper for `to` input field */
-  helperTo?: InputProps['helper'];
+  helperTo?: FieldProps['helper'];
   /** Handler method after either 'from' or 'to' inputs field cliked  */
   onClick?: MouseEventAttrProps['onClick'];
   /** Handler method after either 'from' or 'to' inputs lost focus. */
   onBlur?: (range: {
-    from: InputProps['value'];
-    to: InputProps['value'];
+    from: InputControlProps['value'];
+    to: InputControlProps['value'];
   }) => void;
   /** Handler method after either 'from' or 'to' inputs values change. */
   onChange?: (range: {
-    from: InputProps['value'];
-    to: InputProps['value'];
+    from: InputControlProps['value'];
+    to: InputControlProps['value'];
   }) => void;
   /** handler method after realTime button is clicked. */
   onRealTimeClick?: DateTimeRangeControlRTButtonProps['onClick'];
   /** A text hint that describes the expected value of the `from` field */
-  placeholderFrom?: InputProps['placeholder'];
+  placeholderFrom?: InputControlProps['placeholder'];
   /** A text hint that describes the expected value of the `to` field */
-  placeholderTo?: InputProps['placeholder'];
+  placeholderTo?: InputControlProps['placeholder'];
   /** Defines the realTime state. If the value is 'hidden', realTime button will
    * not be shown. */
   realTime?: DateTimeRangeControlRTButtonProps['state'];
   /** Size for the HTML input elements. */
   size?: FieldSize;
   /** Status for `from` input field */
-  statusFrom?: InputProps['status'];
+  statusFrom?: FieldProps['status'];
   /** Status for `from` input field */
-  statusTo?: InputProps['status'];
+  statusTo?: FieldProps['status'];
   /** Value for the second input. If such value is not set, its input will not be shown. */
-  to?: InputProps['value'];
+  to?: InputControlProps['value'];
 }
 
 const hasRealTime = (realTime: RealtimeState) => realTime !== 'hidden';

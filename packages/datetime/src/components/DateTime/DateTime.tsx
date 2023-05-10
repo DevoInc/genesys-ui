@@ -130,7 +130,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
   return (
     <VFlex alignItems="stretch" minWidth={theme.cmp.calendar.size.minWidth}>
       <Month
-        aria-label={ariaLabelMonth}
+        ariaLabelInput={ariaLabelMonth}
         hasNextMonthButton
         hasPrevMonthButton
         maxDate={maxDate}

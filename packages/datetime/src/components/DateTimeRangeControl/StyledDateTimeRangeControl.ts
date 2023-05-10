@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
-import { InputProps } from '@devoinc/genesys-ui-form';
+
+import { InputControlProps } from '@devoinc/genesys-ui';
 
 export interface StyledDateTimeRangeControlProps
-  extends Pick<InputProps, 'size'> {
+  extends Pick<InputControlProps, 'size'> {
   /** Set styles when is open a component */
   isOpen?: boolean;
   /** Set styles when RT is visible */
