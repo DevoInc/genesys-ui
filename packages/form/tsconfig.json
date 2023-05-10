@@ -8,11 +8,6 @@
     "outDir": "./dist"
   },
   "include": ["src"],
-  "exclude": [
-    "src/**/*.test.*",
-    "src/**/*.stories.tsx",
-    "src/**/__stories__/*"
-  ],
   "references": [
     {
       "path": "../core"

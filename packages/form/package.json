@@ -3,7 +3,7 @@
   "version": "1.0.3-alpha.13",
   "description": "",
   "scripts": {
-    "build": "vite build && tsc --declaration --emitDeclarationOnly",
+    "build": "vite build && tsc --project tsconfig.build.json",
     "depcruise": ". ../../depcruise.sh",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "stryker": "npx stryker run"

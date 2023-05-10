@@ -4,13 +4,21 @@
     "composite": true,
     "declaration": true,
     "declarationMap": true,
+    "declarationDir": "./dist/types",
+    "emitDeclarationOnly": true,
     "incremental": true,
     "outDir": "./dist"
   },
   "include": ["src"],
+  "exclude": [
+    "src/**/*.test.*",
+    "src/**/*.stories.tsx",
+    "src/**/__stories__/*"
+  ],
   "references": [
     {
-      "path": "../core"
+      "path": "../core/tsconfig.build.json"
     }
   ]
 }
+
