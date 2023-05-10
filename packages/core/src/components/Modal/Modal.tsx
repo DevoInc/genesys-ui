@@ -28,10 +28,10 @@ import { useDetectScroll } from '../../hooks';
 
 export interface ModalProps
   extends Omit<ModalContainerProps, 'children'>,
-  Omit<ModalHeaderProps, 'children' | 'hasBoxShadow'>,
-  Omit<ModalIconProps, 'children'>,
-  Omit<ModalBodyProps, 'children' | 'hasScroll'>,
-  Omit<ModalFooterProps, 'children' | 'hasBoxShadow'> {
+    Omit<ModalHeaderProps, 'children' | 'hasBoxShadow'>,
+    Omit<ModalIconProps, 'children'>,
+    Omit<ModalBodyProps, 'children' | 'hasScroll'>,
+    Omit<ModalFooterProps, 'children' | 'hasBoxShadow'> {
   /** Sets array of buttons displayed on the bottom */
   footerButtons?: React.ReactElement[];
   /** Modal content */
