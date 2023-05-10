@@ -9,7 +9,7 @@ import {
   CustomSize,
 } from '../declarations';
 import { AVATAR_SIZE_BORDER_MAP } from '../constants';
-import { typoMixin } from '../../../styled/mixins/baseMixins';
+import { typoMixin } from '../../../styled/';
 import { getAvatarSizeConfig } from '../utils';
 
 export interface StyledAvatarProps {
@@ -44,7 +44,6 @@ export const StyledAvatar = styled.span<StyledAvatarProps>`
     theme,
     variant,
   }) => {
-    // TODO: Use a type for Genesys themes (theme.contrast1600)
     const colorSchemeForTokens = _.camelCase(colorScheme);
     const aliasTokens = theme?.alias;
     const bgColor =
@@ -57,12 +56,10 @@ export const StyledAvatar = styled.span<StyledAvatarProps>`
       rounded: '0.4rem',
     };
     return css`
+      ${typoMixin({ theme })};
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      ${typoMixin({
-        theme,
-      })};
       flex-shrink: 0;
       position: relative;
       opacity: ${$disabled && '0.4'};

@@ -3,8 +3,7 @@ import styled, { css } from 'styled-components';
 
 import icons from '@devoinc/genesys-icons/dist/icon-variables.js';
 
-import { pseudoElementOverlayMixin } from '../../../styled/mixins/utilsMixins';
-import { iconFontMixin } from '../../../styled/mixins/baseMixins';
+import { iconFontMixin, pseudoElementOverlayMixin } from '../../../styled/';
 import { getAvatarSizeConfig, getVariantValue } from '../utils';
 import { REL_FOR_BLANK_TARGET } from '../constants';
 import { AvatarSize, AvatarVariant, CustomSize } from '../declarations';
