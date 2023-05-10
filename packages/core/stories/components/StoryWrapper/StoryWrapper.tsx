@@ -49,6 +49,7 @@ export const StoryWrapper: React.FC<StoryWrapperProps> = ({
   width,
   zIndex,
 }) => {
+  console.info('height: ', height);
   return (
     <StyledStoryWrapper
       as={as}

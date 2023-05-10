@@ -11,11 +11,11 @@ import {
   // ToastProps,
 } from '../';
 import { lorem } from '../../../stories/utils/fillerTexts';
-// import { ToastStatus } from './declarations';
+import { ToastPanel } from './components/ToastPanel';
 
 const meta: Meta<typeof toast> = {
   title: 'Components/Core/Feedback/Toast',
-  component: Button,
+  component: ToastPanel,
   args: {
     alignItems: 'flex-start',
     childrenFitFullWidth: true,
@@ -23,6 +23,11 @@ const meta: Meta<typeof toast> = {
     inline: false,
     justifyContent: 'flex-start',
     spacing: 'cmp-md',
+  },
+  parameters: {
+    storyWrapper: {
+      height: '100vh',
+    },
   },
 };
 

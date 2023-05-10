@@ -98,7 +98,7 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <StoryWrapper padding={'cmp-md'}>
+      <StoryWrapper padding={'cmp-md'} minHeight={'calc(100vh - 1.6rem)'}>
         <Story />
       </StoryWrapper>
     ),

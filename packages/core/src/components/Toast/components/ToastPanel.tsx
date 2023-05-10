@@ -12,9 +12,7 @@ export interface ToastPanelProps
   extends ToastHeaderProps,
     Pick<ToastBadgeProps, 'updates'>,
     Pick<ToastContentProps, 'content'>,
-    Pick<StyledContentProps, 'showProgressBar'> {
-  /** Accent color schema */
-  accent?: boolean;
+    Pick<StyledContentProps, 'accent' | 'showProgressBar'> {
   /** Apply action */
   actionApply?: ToastAction;
   /** Reject action */
@@ -78,6 +76,7 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
     <>
       <ToastBadge status={status} updates={updates} />
       <StyledContent
+        accent={accent}
         colorScheme={backgroundColor}
         bodySettings={{ removeSpace: showCollapsed }}
         elevation="popOut"
