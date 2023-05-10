@@ -31,13 +31,11 @@ export interface FormGroupProps
       'alignItems' | 'direction' | 'flexWrap' | 'itemsGap' | 'justifyContent'
     >,
     Omit<FieldAttrProps, 'required'> {
-  /** It defines if the group is rendered as a fieldset, and therefore it can get its related html attributes.*/
-  asFieldset?: boolean;
   /** If the form group legend has label format. Usually when the form group is a checkbox or radio group. */
   hasLegendLabelFormat?: boolean;
   /** You can hide the legend, but maintaining it accessible by this prop. */
   hideLegend?: boolean;
-  /** If the form group acts as a field and it's required. Usually when the form group is a checkbox or radio group. */
+  /** If the form group acts as a field, and it's required. Usually when the form group is a checkbox or radio group. */
   required?: boolean;
   /** Text as legend for the group of fields. You can add it, but maintaining it hidden and accessible by the 'hideLegend' prop. */
   legend?: string;
