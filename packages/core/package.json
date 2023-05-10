@@ -17,7 +17,6 @@
   "scripts": {
     "build": "vite build && tsc --project tsconfig.build.json",
     "depcruise": ". ../../depcruise.sh",
-    "lint": "eslint 'src/**/*.{ts,tsx}'",
     "stryker": "npx stryker run"
   },
   "peerDependencies": {
