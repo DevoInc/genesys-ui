@@ -73,7 +73,6 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4",
     "vite": "^4.3.5",
-    "vite-plugin-dts": "^2.3.0",
     "vite-tsconfig-paths": "^4.2.0",
     "viz.js": "^2.1.2"
   },

@@ -4,8 +4,14 @@
     "composite": true,
     "declaration": true,
     "declarationMap": true,
+    "declarationDir": "./dist/types",
     "incremental": true,
     "outDir": "./dist"
   },
-  "include": ["src", "stories"]
+  "include": ["src"],
+  "exclude": [
+    "src/**/*.test.*",
+    "src/**/*.stories.tsx",
+    "src/**/__stories__/**/*"
+  ]
 }

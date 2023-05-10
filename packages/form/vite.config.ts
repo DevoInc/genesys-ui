@@ -1,6 +1,5 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
 import { visualizer } from 'rollup-plugin-visualizer';
 // Used from @storybook/react-vite dependencies
 import react from '@vitejs/plugin-react';
@@ -62,7 +61,6 @@ export default defineConfig({
         ],
       },
     }),
-    dts(),
     visualizer({
       filename: 'dist/stats.html',
     }),

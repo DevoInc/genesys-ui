@@ -2,7 +2,7 @@
   "name": "@devoinc/genesys-ui",
   "version": "1.0.3-alpha.13",
   "description": "",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/types/src/index.d.ts",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.mjs",
   "exports": {
@@ -15,7 +15,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && tsc --declaration --emitDeclarationOnly",
     "depcruise": ". ../../depcruise.sh",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "stryker": "npx stryker run"
