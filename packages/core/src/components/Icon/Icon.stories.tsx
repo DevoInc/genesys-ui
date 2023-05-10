@@ -5,7 +5,7 @@ import { Icon } from './Icon';
 const meta: Meta<typeof Icon> = {
   title: 'Components/Core/Feedback/Icon',
   component: Icon,
-  args: { status: 'base' },
+  args: { colorScheme: 'base' },
 };
 
 export default meta;

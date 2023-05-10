@@ -5,7 +5,7 @@ import {
   StyledPolymorphicProps,
 } from '../../declarations';
 
-import { StyledIcon, StyledIconProps } from './styled';
+import { StyledIcon, StyledIconProps } from './StyledIcon';
 
 export interface IconProps
   extends StyledIconProps,
@@ -16,9 +16,9 @@ export interface IconProps
 
 export const Icon: React.FC<IconProps> = ({
   color,
+  colorScheme,
   iconId,
   size,
-  status = 'base',
   strong,
   ...nativeProps
 }) => (
@@ -26,6 +26,7 @@ export const Icon: React.FC<IconProps> = ({
     {...nativeProps}
     aria-hidden
     color={color}
+    colorScheme={colorScheme}
     iconId={iconId}
     role="img"
     size={size}
