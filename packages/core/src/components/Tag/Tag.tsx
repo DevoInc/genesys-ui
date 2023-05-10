@@ -35,6 +35,7 @@ export const Tag: React.FC<TagProps> = ({
   wide,
   size = 'md',
   text,
+  tooltip,
   ...restNativeProps
 }) => {
   return (
@@ -45,6 +46,7 @@ export const Tag: React.FC<TagProps> = ({
       quiet={quiet}
       wide={wide}
       size={size}
+      title={tooltip}
     >
       {quiet && (
         <StyledTagBadge
