@@ -10,6 +10,7 @@ const meta: Meta<typeof Grid> = {
   subcomponents: { 'Grid.Item': Grid.Item },
   args: {
     inline: false,
+    as: 'span',
   },
 };
 

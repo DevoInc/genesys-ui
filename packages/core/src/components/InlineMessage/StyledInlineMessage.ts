@@ -4,7 +4,8 @@ import * as PopperJS from '@popperjs/core';
 import { getBorderPlacement } from './utils';
 import { boxMixin, BoxMixinProps, IconButtonStatusProps } from '../../';
 
-interface StyledInlineMessageProps extends Omit<BoxMixinProps, '$display'> {
+interface StyledInlineMessageProps
+  extends Omit<BoxMixinProps, '$display' | 'theme'> {
   placement?: PopperJS.Placement;
   status?: IconButtonStatusProps['colorScheme'];
 }

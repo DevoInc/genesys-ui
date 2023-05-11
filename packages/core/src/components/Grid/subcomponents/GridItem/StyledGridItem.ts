@@ -5,7 +5,7 @@ import { boxMixin, BoxMixinProps } from '../../../../styled/';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledGridItemProps
-  extends Omit<BoxMixinProps, '$display'>,
+  extends Omit<BoxMixinProps, '$display' | 'theme'>,
     LayoutGridItemProps {}
 
 export const StyledGridItem = styled.div<StyledGridItemProps>`

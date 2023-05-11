@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 import { boxMixin, BoxMixinProps } from '../../../src';
 
-export interface StyledStoryWrapperProps extends BoxMixinProps {
+export interface StyledStoryWrapperProps extends Omit<BoxMixinProps, 'theme'> {
   bgColor?: React.CSSProperties['backgroundColor'];
 }
 

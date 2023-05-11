@@ -5,7 +5,7 @@ import { getSpacingPropCss } from '../../utils/spacing';
 import { boxMixin, BoxMixinProps } from '../../styled/';
 
 export interface StyledFlexProps
-  extends Omit<BoxMixinProps, '$display'>,
+  extends Omit<BoxMixinProps, '$display' | 'theme'>,
     LayoutFlexProps {}
 
 export const StyledFlex = styled.div<StyledFlexProps>`

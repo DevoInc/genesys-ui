@@ -4,7 +4,7 @@ import { getSpacingPropCss } from '../../../../utils/spacing';
 import { boxMixin, BoxMixinProps } from '../../../../styled/';
 
 export interface StyledAppBarContainerProps
-  extends Omit<BoxMixinProps, '$display'> {}
+  extends Omit<BoxMixinProps, '$display' | 'theme'> {}
 
 export const StyledAppBarContainer = styled.div<StyledAppBarContainerProps>`
   ${({ theme, ...boxMixinProps }) => {

@@ -2,7 +2,8 @@ import styled, { css } from 'styled-components';
 import { boxMixin, BoxMixinProps } from '../../styled/';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface StyledToolbar extends Omit<BoxMixinProps, '$display'> {}
+export interface StyledToolbar
+  extends Omit<BoxMixinProps, '$display' | 'theme'> {}
 
 export const StyledToolbar = styled.div<StyledToolbar>`
   ${({ theme, ...boxMixinProps }) => css`

@@ -3,7 +3,7 @@ import { LayoutGridProps } from '../../declarations';
 import { boxMixin, BoxMixinProps } from '../../styled/';
 
 export interface StyledGridProps
-  extends Omit<BoxMixinProps, '$display'>,
+  extends Omit<BoxMixinProps, '$display' | 'theme'>,
     LayoutGridProps {}
 
 export const StyledGrid = styled.div<StyledGridProps>`
