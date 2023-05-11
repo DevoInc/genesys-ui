@@ -6,6 +6,13 @@ import { Typography } from '../../..';
 const meta: Meta<typeof Typography.List> = {
   title: 'Components/Core/Text/Typography/Block/List',
   component: Typography.List,
+  args: {
+    colorScheme: 'base',
+    gutterBottom: 'cmp-md',
+    listStyle: 'unordered',
+    size: 'md',
+    textAlign: 'left',
+  },
 };
 
 export default meta;
