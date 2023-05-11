@@ -5,25 +5,27 @@ import * as Stories from './AppBar.stories';
 
 <Meta title="Components/Core/Navigation/AppBar" />
 
-<Heading.H1>AppBar</Heading.H1>
+# AppBar
 
-<Heading.H2>Overview</Heading.H2>
+## Overview
 
 Component used for creating a navigation bar. It can be customized to fit various use cases.
 
-<Heading.H2>How to import</Heading.H2>
+## How to import
 
-<Source code={`
+<Source
+  code={`
 import { AppBar } from '@devoinc/genesys-ui';
-`} />
+`}
+/>
 
-<Heading.H2>Examples</Heading.H2>
+## Examples
 
-<Heading.H3>Base</Heading.H3>
+### Base
 
 <Canvas of={Stories.Base} />
 
-<Heading.H3>With heading and actions</Heading.H3>
+### With heading and actions
 
 You can specify a custom heading using the `heading` prop or add custom
 actions at the right side of the `AppBar`. `actions` prop receive an array
@@ -31,14 +33,14 @@ of `Buttons`or `IconButton`.
 
 <Canvas of={Stories.WithHeadingAndActions} />
 
-<Heading.H3>With options</Heading.H3>
+### With options
 
 `options` are the same of `actions` prop but adding a `Divider` at the beging.
 `options` prop receive an array of `Buttons`or `IconButton`.
 
 <Canvas of={Stories.WithOptions} />
 
-<Heading.H3>Custom content</Heading.H3>
+### Custom content
 
 You can create a custom `AppBar`content using the subcomponents:
 
@@ -51,7 +53,7 @@ You can create a custom `AppBar`content using the subcomponents:
 
 <Canvas of={Stories.Custom} />
 
-<Heading.H2>Subcomponents</Heading.H2>
+## Subcomponents
 
 - [Actions](?path=/docs/components-core-navigation-appbar-subcomponents--actions)
 - [Container](?path=/docs/components-core-navigation-tabs-subcomponents--container)
@@ -60,6 +62,6 @@ You can create a custom `AppBar`content using the subcomponents:
 - [Navigation](?path=/docs/components-core-navigation-tabs-subcomponents--navigation)
 - [Options](?path=/docs/components-core-navigation-tabs-subcomponents--options)
 
-<Heading.H2>Props</Heading.H2>
+## Props
 
 <ArgTypes of={Stories} />

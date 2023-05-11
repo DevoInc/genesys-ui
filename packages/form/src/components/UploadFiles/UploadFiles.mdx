@@ -5,13 +5,13 @@ import * as Stories from './UploadFiles.stories';
 
 <Meta of={Stories} />
 
-<Heading.H1>UploadFiles</Heading.H1>
+# UploadFiles
 
 Component that handles upload of files. It is based on [FilePond](https://github.com/pqina/filepond) library
 and some of its plugins. However, not all of its properties are can use
 inside UploadFiles component.
 
-<Heading.H2>How to import</Heading.H2>
+## How to import
 
 <Source
   code={`
@@ -19,15 +19,15 @@ import { UploadFiles } from '@devoinc/genesys-ui-form';
 `}
 />
 
-<Heading.H2>Basic usage</Heading.H2>
+## Basic usage
 
 Basic example allowing upload multiple files.
 
 <Canvas of={Stories.Base} />
 
-<Heading.H2>Cases</Heading.H2>
+## Cases
 
-<Heading.H3>Custom files extension</Heading.H3>
+### Custom files extension
 
 To specify the extension file allowed to upload you should use
 `acceptedExtensions` property.
@@ -36,13 +36,13 @@ This property must be an array with the extension files allowed.
 
 _Note_: note that the extensions _must_ have the dot at the beginning.
 
-<Heading.H3>Custom files size</Heading.H3>
+### Custom files size
 
 To limit the size of the files to be uploaded there exist following properties: `minFileSize`,
 `maxFileSize` and `maxTotalFileSize`. They are based on
 [File size validation](https://pqina.nl/filepond/docs/api/plugins/file-validate-size/)
 plugin.
 
-<Heading.H2>Props</Heading.H2>
+## Props
 
 <ArgTypes of={Stories} />

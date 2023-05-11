@@ -1,11 +1,11 @@
 import { Meta } from '@storybook/addon-docs';
 import { Heading } from '../../.storybook/docs/blocks';
 
-<Meta title='Getting started/Usage' />
+<Meta title="Getting started/Usage" />
 
-<Heading.H1>Usage</Heading.H1>
+# Usage
 
-<Heading.H2>Consuming the library</Heading.H2>
+## Consuming the library
 
 Importing the `genesys-ui` package into your project will give you access to all of the components and utilities that are available in the library.
 
@@ -18,15 +18,15 @@ import { Flex, Typography, Avatar } from '@devoinc/genesys-ui';
 
 export const MyView: React.FC = () => {
   return (
-    <Flex flexDirection='column' gap='cmp-xxl' justifyContent='center'>
-      <Typography.Heading size='h1'>
+    <Flex flexDirection="column" gap="cmp-xxl" justifyContent="center">
+      <Typography.Heading size="h1">
         Welcome to <Typography.CodeInline>genesys-ui</Typography.CodeInline>
       </Typography.Heading>
       <Avatar
-        size='xxl'
-        name='Rick Sanchez'
-        variant='circle'
-        imageSrc='https://i.pravatar.cc/300'
+        size="xxl"
+        name="Rick Sanchez"
+        variant="circle"
+        imageSrc="https://i.pravatar.cc/300"
       />
     </Flex>
   );
@@ -35,9 +35,9 @@ export const MyView: React.FC = () => {
 
 **Note:** If you happen to run into styles inconsistencies, make sure that you have gone through the [Installation](/docs/getting-started-installation--docs) steps.
 
-<Heading.H2>Building the layout of a vertical app</Heading.H2>
+## Building the layout of a vertical app
 
 Genesys-ui provides the required components to build the layout of a vertical app. To learn how to build the scaffolding of a vertical app that can be seamlessly integrated into the web app we recommend using the `genesys-ui-demo-app` package as a starting point for your project.
 It contains a comprehensive example that you can follow to create the required layout. The vertical app layout should start at the `<Grid.App>` (`App.tsx`) level and include all its children, which you can then customize to fit your needs.
 
-<img src='./images/demo-vapp.png' alt='genesys-ui-demo-app' />
+<img src="./images/demo-vapp.png" alt="genesys-ui-demo-app" />

@@ -6,14 +6,14 @@ import * as CaseStories from './ChipGroup.cases.stories';
 
 <Meta of={Stories} />
 
-<Heading.H1>ChipGroup</Heading.H1>
+# ChipGroup
 
-<Heading.H2>Overview</Heading.H2>
+## Overview
 
 Component that groups together multiple Chip components and provides additional functionality and styling.
 This can be useful when presenting a set of related options or for allowing users to select multiple items from a list.
 
-<Heading.H2>How to import</Heading.H2>
+## How to import
 
 <Source
   code={`
@@ -21,30 +21,30 @@ import { Badge } from '@devoinc/genesys-ui';
 `}
 />
 
-<Heading.H2>Basic usage</Heading.H2>
+## Basic usage
 
 <Canvas of={Stories.Base} />
 
-<Heading.H2>Cases</Heading.H2>
+## Cases
 
-<Heading.H3>Multiple selection</Heading.H3>
+### Multiple selection
 
 When multiple selection is needed (form checkboxes behavior), you can use the ChipGroup component to
 get a controlled ChipGroup with rendered form checkbox inputs as HTML and their keyboard utility.
 
 <Canvas of={CaseStories.MultipleSelection} />
 
-<Heading.H3>Single selection</Heading.H3>
+### Single selection
 
 When a single selection is needed (form radios behavior), you can add the selectionScheme prop to 'single' and assign
 the name prop with the same value to every Chip to get a controlled ChipGroup with rendered form radio inputs as HTML and their keyboard utility.
 
 <Canvas of={CaseStories.SingleSelection} />
 
-<Heading.H2>Props</Heading.H2>
+## Props
 
 <ArgTypes of={Stories} />
 
-<Heading.H2>Related components</Heading.H2>
+## Related components
 
 - [Chip](?path=/docs/components-core-form-chip--docs)

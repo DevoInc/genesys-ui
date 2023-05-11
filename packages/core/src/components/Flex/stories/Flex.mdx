@@ -7,13 +7,13 @@ import * as CaseStories from './Flex.cases.stories';
 
 <Meta of={Stories} />
 
-<Heading.H1>Flex</Heading.H1>
+# Flex
 
-<Heading.H2>Overview</Heading.H2>
+## Overview
 
 <Markdown>{flexComponent}</Markdown>
 
-<Heading.H2>How to import</Heading.H2>
+## How to import
 
 <Source
   code={`
@@ -21,13 +21,13 @@ import { Flex } from '@devoinc/genesys-ui';
 `}
 />
 
-<Heading.H2>Basic usage</Heading.H2>
+## Basic usage
 
 <Canvas of={Stories.Base} />
 
-<Heading.H2>Cases</Heading.H2>
+## Cases
 
-<Heading.H3>Using the as property</Heading.H3>
+### Using the as property
 
 The `as` property allow these components to be rendered as any HTML tag:
 'div', 'li', 'section'... etc.
@@ -51,7 +51,7 @@ const MyFlexCmp = () => (
 </Flex>
 ); `} />
 
-<Heading.H3>Flex.Item props</Heading.H3>
+### Flex.Item props
 
 We use each Flex.Item prop in a flex structure to assign flex,
 order, and align-self CSS styles to each child component.
@@ -60,10 +60,10 @@ settings for each child component of a Flex component:
 
 <Canvas of={CaseStories.FlexAndFlexItems} />
 
-<Heading.H2>Props</Heading.H2>
+## Props
 
 <ArgTypes of={Stories} />
 
-<Heading.H2>Related components</Heading.H2>
+## Related components
 
 - [Flex.Item](?path=/docs/components-core-layout-flex-subcomponents--docs)

@@ -6,15 +6,15 @@ import * as CaseStories from './SelectControl.cases.stories';
 
 <Meta of={Stories} />
 
-<Heading.H1>SelectControl</Heading.H1>
+# SelectControl
 
-<Heading.H2>Overview</Heading.H2>
+## Overview
 
 The Select component provides a way for users to select an option from a dropdown list.
 It allows users to choose from a set of predefined options, which can be customized to suit the needs of the application.
 The Select component is implemented using the [react-select](https://react-select.com/home) library, which provides a flexible and powerful API for creating customized dropdown menus.
 
-<Heading.H2>How to import</Heading.H2>
+## How to import
 
 <Source
   code={`
@@ -22,45 +22,45 @@ import { SelectControl } from '@devoinc/genesys-ui';
 `}
 />
 
-<Heading.H2>Basic usage</Heading.H2>
+## Basic usage
 
 <Canvas of={Stories.Base} />
 
-<Heading.H2>Cases</Heading.H2>
+## Cases
 
-<Heading.H3>Single option </Heading.H3>
+### Single option
 
 <Canvas of={CaseStories.SingleOption} />
 
-<Heading.H3>Single with option groups</Heading.H3>
+### Single with option groups
 
 <Canvas of={CaseStories.SingleWithOptionsGroups} />
 
-<Heading.H3>Multiple basic</Heading.H3>
+### Multiple basic
 
 <Canvas of={CaseStories.MultipleBasic} />
 
-<Heading.H3>Multiple sortable</Heading.H3>
+### Multiple sortable
 
 <Canvas of={CaseStories.MultipleSortable} />
 
-<Heading.H3>Multiple creatable (custom new options)</Heading.H3>
+### Multiple creatable (custom new options)
 
 <Canvas of={CaseStories.MultipleCreatable} />
 
-<Heading.H3>Multiple 'Select all' mode</Heading.H3>
+### Multiple 'Select all' mode
 
 <Canvas of={CaseStories.MultipleSelectAll} />
 
-<Heading.H3>Multiple fixed options and sortable</Heading.H3>
+### Multiple fixed options and sortable
 
 <Canvas of={CaseStories.MultipleFixedOptions} />
 
-<Heading.H3>With options virtualization for large sets</Heading.H3>
+### With options virtualization for large sets
 
 <Canvas of={CaseStories.VirtualizedOptions} />
 
-<Heading.H2>Props</Heading.H2>
+## Props
 
 <ArgTypes of={Stories} />
 

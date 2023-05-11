@@ -8,14 +8,14 @@ import * as SelectionStories from './ButtonSelection.stories';
 
 <Meta of={Stories} />
 
-<Heading.H1>Button</Heading.H1>
+# Button
 
-<Heading.H2>Overview</Heading.H2>
+## Overview
 
 Buttons enable users to take actions or make choices with a single tap.
 They are typically placed throughout your UI, including in dialogs, modal windows, forms, cards, or toolbars.
 
-<Heading.H2>How to import</Heading.H2>
+## How to import
 
 <Source
   code={`
@@ -23,25 +23,25 @@ import { Button } from '@devoinc/genesys-ui';
 `}
 />
 
-<Heading.H2>Basic usage</Heading.H2>
+## Basic usage
 
 <Canvas of={Stories.Base} />
 
-<Heading.H2>Cases</Heading.H2>
+## Cases
 
-<Heading.H3>Button as dropdown trigger</Heading.H3>
+### Button as dropdown trigger
 
 The `Button` component can be used as a dropdown trigger.
 
 <Canvas of={CaseStories.AsDropdown} />
 
-<Heading.H3>Button as link</Heading.H3>
+### Button as link
 
 It can also be used as a link. In this case, the `href` prop must be used instead of the `onClick` prop.
 
 <Canvas of={CaseStories.AsLink} />
 
-<Heading.H3>Button Loading</Heading.H3>
+### Button Loading
 
 The `Button` component has loading states to indicate that a process launched with its action
 is currently running, or has finished successfully or with errors.
@@ -55,7 +55,7 @@ Here are some examples:
 
 <Canvas of={LoadingStories.Loading} />
 
-<Heading.H3>Button Loading success</Heading.H3>
+### Button Loading success
 
 When the `state` prop value is `loading-success`, a check icon is always rendered at the left of the `Button`.
 If there is an icon at the left, it will be replaced by the check icon, but only for a few seconds.
@@ -64,7 +64,7 @@ the success scheme and back again a few seconds later.
 
 <Canvas of={LoadingStories.Success} />
 
-<Heading.H3>Button Loading error</Heading.H3>
+### Button Loading error
 
 When the `state` prop value is `loading-error`, an error icon is always rendered
 at the left of the `Button`. If there is an icon at the left, it will be replaced
@@ -73,7 +73,7 @@ that changes the color scheme from the original to the error scheme and back aga
 
 <Canvas of={LoadingStories.Error} />
 
-<Heading.H3>Selectable</Heading.H3>
+### Selectable
 
 Buttons can be used as form radio or form checkbox.
 In fact, the generated HTML is a `<label>` with an `<input type='radio'>` or `<input type='checkbox'>` inside.
@@ -81,31 +81,31 @@ To use as a radio group, it must be used only as part of a group with the same v
 This allows the previous selected option to be automatically deselected when another one
 is selected because this type of selection is always unique.
 
-<Heading.H3>Selectable multiple</Heading.H3>
+### Selectable multiple
 
 When selectionScheme is `multiple`, the `Button` component is used as a form checkbox.
 It can either be uncontrolled or controlled.
 
-<Heading.H4>Uncontrolled</Heading.H4>
+#### Uncontrolled
 
 <Canvas of={SelectionStories.MultipleUncontrolled} />
 
-<Heading.H4>Controlled</Heading.H4>
+#### Controlled
 
 <Canvas of={SelectionStories.MultipleControlled} />
 
-<Heading.H3>Selectable single</Heading.H3>
+### Selectable single
 
 When selectionScheme is `single`, the `Button` component is used as a form radio.
 
-<Heading.H4>Uncontrolled</Heading.H4>
+#### Uncontrolled
 
 <Canvas of={SelectionStories.SingleUncontrolled} />
 
-<Heading.H4>Controlled</Heading.H4>
+#### Controlled
 
 <Canvas of={SelectionStories.SingleControlled} />
 
-<Heading.H2>Props</Heading.H2>
+## Props
 
 <ArgTypes of={Stories} />

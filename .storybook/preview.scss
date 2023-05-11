@@ -9,7 +9,8 @@
 @font-face {
   font-family: 'Mono Font';
   src: url(./fonts/jet-brains-mono-font/JetBrainsMono-Regular.woff2),
-  url(./fonts/jet-brains-mono-font/JetBrainsMono-Regular.ttf) format('truetype');
+    url(./fonts/jet-brains-mono-font/JetBrainsMono-Regular.ttf)
+      format('truetype');
   font-weight: 400;
   font-style: normal;
 }
@@ -17,7 +18,8 @@
 @font-face {
   font-family: 'Mono Font';
   src: url(./fonts/jet-brains-mono-font/JetBrainsMono-Medium.woff2),
-  url(./fonts/jet-brains-mono-font/JetBrainsMono-Medium.ttf) format('truetype');
+    url(./fonts/jet-brains-mono-font/JetBrainsMono-Medium.ttf)
+      format('truetype');
   font-weight: 500;
   font-style: normal;
 }
@@ -25,7 +27,7 @@
 @font-face {
   font-family: 'Mono Font';
   src: url(./fonts/jet-brains-mono-font/JetBrainsMono-Bold.woff2),
-  url(./fonts/jet-brains-mono-font/JetBrainsMono-Bold.ttf) format('truetype');
+    url(./fonts/jet-brains-mono-font/JetBrainsMono-Bold.ttf) format('truetype');
   font-weight: 700;
   font-style: normal;
 }
@@ -38,14 +40,13 @@ body {
   height: 100%;
 }
 
-
 /** DOCS ** --------------------------------------------------------------------
 ------------------------------------------------------------------------------*/
 
 :root {
-  --body-color: #5B6870;
+  --body-color: #5b6870;
   --body-color-weak: #667580;
-  --heading-color: #1F282E;
+  --heading-color: #1f282e;
   --link-color: #2a6cbd;
   --content-width: 72rem;
   --content-left-space: 6rem;
@@ -64,63 +65,49 @@ body {
   }
 }
 
-
-.sbdocs [class*="sbdocs-h"] {
-  color: var(--heading-color);
-  font-weight: bold;
-  letter-spacing: -0.01925em;
-}
-
-.sbdocs [class*="sbdocs-h"] {
-  > a {
-    color: inherit;
-    position: relative;
-
-    &::after {
-      content: '\eafc';
-      opacity: 0;
-      transition: opacity 0.1s ease;
-      margin-left: 0.8rem;
-      vertical-align: middle;
-      font-family: 'gi', sans-serif !important;
-      font-style: normal;
-      font-weight: normal;
-      font-variant: normal;
-      text-transform: none;
-      line-height: 1;
-      font-size: calc(100% * 0.8);
-      -webkit-font-smoothing: antialiased;
+.sbdocs {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: var(--heading-color);
+    font-weight: bold;
+    letter-spacing: -0.01925em;
+    > a {
       color: var(--link-color);
-    }
+      position: relative;
+      width: 0;
 
-    &:hover,
-    &:focus {
-      text-decoration: none;
+      &:hover,
+      &:focus {
+        text-decoration: none;
 
-      &::after {
-        opacity: 1;
+        &::after {
+          opacity: 1;
+        }
       }
     }
   }
 }
 
-.sbdocs .sbdocs-h1 {
+.sbdocs h1 {
   margin-bottom: 40px;
 }
 
-.sbdocs .sbdocs-h2,
-.sbdocs .sbdocs-h2:first-of-type {
+.sbdocs h2,
+.sbdocs h2:first-of-type {
   border: none;
   margin-top: 36px;
 }
 
-.sbdocs .sbdocs-h3,
-.sbdocs .sbdocs-h3:first-of-type {
+.sbdocs h3,
+.sbdocs h3:first-of-type {
   margin-top: 32px;
 }
 
-.sbdocs .sbdocs-h4,
-.sbdocs .sbdocs-h4:first-of-type {
+.sbdocs h4,
+.sbdocs h4:first-of-type {
   margin-top: 28px;
 }
 
@@ -163,7 +150,6 @@ body {
   margin-top: 8px;
 }
 
-
 /** TABLE **/
 
 .sbdocs-table {
@@ -184,7 +170,6 @@ body {
 #docs-root .sbdocs-table thead tr {
   border: none;
 }
-
 
 /** TABLE OF CONTENTS **/
 

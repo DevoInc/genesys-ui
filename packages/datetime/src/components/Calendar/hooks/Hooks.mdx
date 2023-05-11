@@ -5,7 +5,7 @@ import * as Stories from './Hooks.stories';
 
 <Meta of={Stories} />
 
-<Heading.H1>Calendar Behaviour Hooks</Heading.H1>
+# Calendar Behaviour Hooks
 
 These hooks provide pre-defined behaviors to be applied in the Calendar component.
 Each hook returns an object with values that can be passed to the Calendar component.
@@ -21,14 +21,14 @@ Each hook returns an object with values that can be passed to the Calendar compo
 `}
 />
 
-<Heading.H2>Single Day Behaviour</Heading.H2>
+## Single Day Behaviour
 
 Defines a single day selection in the calendar.
 Accepts a timestamp with the default day selected.
 
 <Canvas of={Stories.SingleDayBehavior} />
 
-<Heading.H4>Parameters</Heading.H4>
+#### Parameters
 
 <Source
   code={`
@@ -38,7 +38,7 @@ Accepts a timestamp with the default day selected.
 `}
 />
 
-<Heading.H4>Usage</Heading.H4>
+#### Usage
 
 <Source
 code={`
@@ -51,7 +51,7 @@ day: null,
 `}
 />
 
-<Heading.H2>Forward Behaviour</Heading.H2>
+## Forward Behaviour
 
 Defines a way to select a range of days in which the range can only be expanded forward.
 Once the range has been selected, the range can only be expanded forward by selecting cells.
@@ -60,7 +60,7 @@ Otherwise, the range of days to be selected will be restarted.
 
 <Canvas of={Stories.ForwardBehavior} />
 
-<Heading.H4>Parameters</Heading.H4>
+#### Parameters
 
 <Source
   code={`
@@ -71,7 +71,7 @@ Otherwise, the range of days to be selected will be restarted.
 `}
 />
 
-<Heading.H4>Usage</Heading.H4>
+#### Usage
 
 <Source
 code={`import { useCalendarForwardBehavior } from '@devoinc/genesys-ui-datetime';
@@ -84,7 +84,7 @@ to: null,
 `}
 />
 
-<Heading.H2>Forward Backward Behaviour</Heading.H2>
+## Forward Backward Behaviour
 
 Defines a way to select a range of days in which the range can be expanded either forward or backward.
 Once the range has been selected, to expand the range it must be done in a cell opposite the last selection.
@@ -93,7 +93,7 @@ Otherwise, the range of days to be selected will be restarted.
 
 <Canvas of={Stories.ForwardBackwardBehavior} />
 
-<Heading.H4>Parameters</Heading.H4>
+#### Parameters
 
 <Source
   code={`
@@ -104,7 +104,7 @@ Otherwise, the range of days to be selected will be restarted.
 `}
 />
 
-<Heading.H4>Usage</Heading.H4>
+#### Usage
 
 <Source
 code={`

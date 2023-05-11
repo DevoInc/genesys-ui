@@ -12,7 +12,7 @@ import * as WrapStories from '../../Wrap/Wrap.stories';
 
 <Meta title="Components/Core/Layout/Flex/Docs" />
 
-<Heading.H1>Flex components</Heading.H1>
+# Flex components
 
 Flex container components are a powerful tool for creating stacked groups of child components.
 These stacks can be arranged in various configurations, including a row,
@@ -28,7 +28,7 @@ offer simplified solutions for specific stack configurations:
 - **VFlex**: Creates a single column stack.
 - **Wrap**: Creates a mixed stack of columns and rows.
 
-<Heading.H2>How to import</Heading.H2>
+## How to import
 
 <Source
   code={`
@@ -78,7 +78,7 @@ const MyFlexCmp = () => (
 </Flex>
 ); `} />
 
-<Heading.H2>Structure</Heading.H2>
+## Structure
 
 Flex components are containers that require their content
 to be passed as children. If you want to apply spacing (margin or padding)
@@ -122,29 +122,29 @@ Below is an example of a Flex component with each child having different flex an
 
 <Canvas of={CaseFlexStories.FlexAndFlexItems} />
 
-<Heading.H2>Component use cases</Heading.H2>
+## Component use cases
 
-<Heading.H3>Flex</Heading.H3>
+### Flex
 
 <Markdown>{flexComponent}</Markdown>
 
 <Canvas of={FlexStories.Base} />
 
-<Heading.H3>HFlex</Heading.H3>
+### HFlex
 
 HFlex creates a group of children components distributed in a single row.
 Use the spacing prop to adjust the space between each child.
 
 <Canvas of={HFlexStories.Base} />
 
-<Heading.H3>VFlex</Heading.H3>
+### VFlex
 
 VFlex creates a group of children components distributed in a
 single column. Use the spacing prop to adjust the space between each child.
 
 <Canvas of={VFlexStories.Base} />
 
-<Heading.H3>Wrap</Heading.H3>
+### Wrap
 
 Wrap creates a stacked group of children components distributed
 in columns and rows. Use the vSpacing prop to adjust the vertical

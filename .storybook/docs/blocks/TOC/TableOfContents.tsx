@@ -6,7 +6,7 @@ import { useDOMMutationObserver } from './useDOMMutationObserver';
 
 const CONF = {
   contentSelector: '.sbdocs-content',
-  headingSelectors: ['.sbdocs-h2'],
+  headingSelectors: ['h2'],
 };
 
 interface TableOfContentsProps {
@@ -44,7 +44,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
   return headings.length > 1 ? (
     <StyledNav data-show={headings.length > 1}>
       <StyledNavHeader>{title}</StyledNavHeader>
-      <ul className='toc-list'>
+      <ul className="toc-list">
         {headings.map((h, idx) => {
           const weight = Number(h.tagName.substring(1)) - 2;
           return (
@@ -60,7 +60,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
               }}
             >
               <a
-                className='toc-link'
+                className="toc-link"
                 href={`#${h.id}`}
                 onClick={(e) => handleClick(e, h)}
               >

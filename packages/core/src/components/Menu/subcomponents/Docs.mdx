@@ -7,26 +7,26 @@ import * as SeparatorStories from './MenuSeparator/MenuSeparator.stories';
 
 <Meta title="Components/Core/Navigation/Menu/Subcomponents/Docs" />
 
-<Heading.H1>Subcomponents</Heading.H1>
+# Subcomponents
 
 Set of subcomponents that can be used to build a `Menu` component.
 
-<Heading.H2>Item</Heading.H2>
+## Item
 
 The `Menu.Item` component is used to define each interactive and actionable menu element.
 
-<Heading.H3>Basic usage</Heading.H3>
+### Basic usage
 
 <Canvas of={ItemStories.Base} />
 
-<Heading.H3>Append and prepend content</Heading.H3>
+### Append and prepend content
 
 You can add at the beginning and at the end of the menu item custom content, in addition to
 the available icon and label blocks.
 
 <Canvas of={ItemStories.WithAppendAndPrependContent} />
 
-<Heading.H3>Selectable</Heading.H3>
+### Selectable
 
 The `Menu.Item` can be used as a selectable option. The role `menuitemcheckbox` or `menuitemradio`
 is added automatically based in the `selectionScheme` prop value. In addition, a checkbox or radio
@@ -34,7 +34,7 @@ is rendered inside the item, but it's not visible, because its purpose is manage
 
 <Canvas of={ItemStories.Selectable} />
 
-<Heading.H3>Custom content</Heading.H3>
+### Custom content
 
 You can add all the content of the `Menu.Item` by its prop `children`. You have to keep in mind
 that the content probably will weed some extra space, specially vertical one. This way the mouse
@@ -42,30 +42,30 @@ events and selectable behavior still work.
 
 <Canvas of={ItemStories.CustomContent} />
 
-<Heading.H3>Props</Heading.H3>
+### Props
 
 <ArgTypes of={ItemStories} />
 
-<Heading.H2>Separator</Heading.H2>
+## Separator
 
 The `Menu.Separator` component is used to define a menu separator between menu items.
 
-<Heading.H3>Basic usage</Heading.H3>
+### Basic usage
 
 <Canvas of={SeparatorStories.Separator} />
 
-<Heading.H3>Props</Heading.H3>
+### Props
 
 <ArgTypes of={SeparatorStories} />
 
-<Heading.H2>Heading</Heading.H2>
+## Heading
 
 The `Menu.Heading` component is used to define a menu heading to group menu items.
 
-<Heading.H3>Basic usage</Heading.H3>
+### Basic usage
 
 <Canvas of={HeadingStories.Heading} />
 
-<Heading.H3>Props</Heading.H3>
+### Props
 
 <ArgTypes of={HeadingStories} />
