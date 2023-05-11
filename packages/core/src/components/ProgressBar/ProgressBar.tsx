@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Flex, Icon } from '../';
-import { StyledIconProps } from '../Icon/styled';
+import { StyledIconProps } from '../Icon/StyledIcon';
 import {
   BaseStyledProgressBarProps,
   StyledProgressBarCircular,

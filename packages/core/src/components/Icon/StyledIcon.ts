@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
 
-import { IconColorScheme, IconSize } from './declarations';
+import { AllColorScheme, GlobalSize } from '../../declarations';
 
 import { getColor } from './helpers';
 
@@ -11,9 +11,9 @@ export interface StyledIconProps {
   /** This property defines the custom icon color */
   color?: string;
   /** It defines the color scheme for the icon color. There are predefined types: primary, secondary... etc. auto-generated for the text based on this one to maintain AA accessible contrast.*/
-  colorScheme?: IconColorScheme;
+  colorScheme?: AllColorScheme;
   /** This property defines the custom icon font size */
-  size?: string | IconSize;
+  size?: string | GlobalSize;
   /** If the icon has this property its font-weight changes to bold */
   strong?: boolean;
 }

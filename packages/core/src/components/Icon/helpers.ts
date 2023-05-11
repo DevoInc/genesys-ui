@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components';
-import { IconColorScheme } from './declarations';
 import { isValidColor } from '../../styled/functions';
+import { IconProps } from './Icon';
 
 /**
  * Get the icon color token value based in the theme
@@ -66,7 +66,7 @@ export const getColor = ({
   theme,
 }: {
   color?: string;
-  colorScheme?: IconColorScheme;
+  colorScheme?: IconProps['colorScheme'];
   theme: DefaultTheme;
 }) => {
   if (isValidColor(color)) return color;
