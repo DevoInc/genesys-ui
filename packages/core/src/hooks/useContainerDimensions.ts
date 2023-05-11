@@ -30,10 +30,12 @@ export const useContainerDimensions = ({ delay } = DEFAULT_PROPS): {
     [updateSize, delay]
   );
 
-  const resizeObserver = React.useMemo(
-    () => new ResizeObserver(handleResize),
-    [handleResize]
-  );
+  // eslint-disable-next-line consistent-return
+  const resizeObserver = React.useMemo(() => {
+    if (typeof window !== 'undefined') {
+      return new ResizeObserver(handleResize);
+    }
+  }, [handleResize]);
 
   /**
    * The callback ref will be called only when the component mounts and
@@ -44,19 +46,21 @@ export const useContainerDimensions = ({ delay } = DEFAULT_PROPS): {
    * unnecessarily.
    */
   const setRef = React.useCallback(
-    (node: HTMLDivElement) => {
-      //Component unmount
-      if (nodeRef.current) {
-        setSize(null);
-        resizeObserver.unobserve(nodeRef.current);
-      }
+    (node) => {
+      if (typeof window !== 'undefined') {
+        //Component unmount
+        if (nodeRef.current) {
+          setSize(null);
+          resizeObserver.unobserve(nodeRef.current);
+        }
 
-      nodeRef.current = node;
+        nodeRef.current = node;
 
-      //Component mount
-      if (nodeRef.current) {
-        updateSize();
-        resizeObserver.observe(nodeRef.current);
+        //Component mount
+        if (nodeRef.current) {
+          updateSize();
+          resizeObserver.observe(nodeRef.current);
+        }
       }
     },
     [updateSize, resizeObserver]

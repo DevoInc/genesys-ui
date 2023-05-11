@@ -8,20 +8,22 @@ import { StyledSplitPane, StyledSplitPaneSeparator } from './styled';
 
 // TODO: maybe this need a refactor or improve
 const clearSelection = () => {
-  const body = document.body as any;
-  if (body.createTextRange) {
-    // https://github.com/zesik/react-splitter-layout/issues/16
-    // https://stackoverflow.com/questions/22914075/#37580789
-    const range = body.createTextRange();
-    range.collapse();
-    range.select();
-  } else if (window.getSelection) {
-    // Chrome
-    if (window.getSelection()?.empty) {
-      window.getSelection()?.empty();
-    } else if (window.getSelection()?.removeAllRanges) {
-      // Firefox
-      window.getSelection()?.removeAllRanges();
+  if (typeof window !== 'undefined') {
+    const body = document.body as any;
+    if (body.createTextRange) {
+      // https://github.com/zesik/react-splitter-layout/issues/16
+      // https://stackoverflow.com/questions/22914075/#37580789
+      const range = body.createTextRange();
+      range.collapse();
+      range.select();
+    } else if (window.getSelection) {
+      // Chrome
+      if (window.getSelection()?.empty) {
+        window.getSelection()?.empty();
+      } else if (window.getSelection()?.removeAllRanges) {
+        // Firefox
+        window.getSelection()?.removeAllRanges();
+      }
     }
   }
 };
@@ -175,21 +177,27 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
 
   const handleMouseUp = () => {
     setResizing(false);
-    document.removeEventListener('mouseup', handleMouseUp);
-    document.removeEventListener('mouseleave', handleMouseUp);
-    document.removeEventListener('mousemove', handleMouseMove);
+    if (typeof window !== 'undefined') {
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('mouseleave', handleMouseUp);
+      document.removeEventListener('mousemove', handleMouseMove);
+    }
   };
 
   const handleSplitterMouseDown = () => {
     clearSelection();
     setResizing(true);
-    document.addEventListener('mouseup', handleMouseUp);
-    document.addEventListener('mouseleave', handleMouseUp);
-    document.addEventListener('mousemove', handleMouseMove);
+    if (typeof window !== 'undefined') {
+      document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener('mouseleave', handleMouseUp);
+      document.addEventListener('mousemove', handleMouseMove);
+    }
   };
 
   React.useEffect(() => {
-    window.addEventListener('resize', handleResize);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+    }
 
     let secPaneSize;
     if (typeof secondaryInitialSize !== 'undefined') {
@@ -223,7 +231,9 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
     setSecondaryPaneSize(secPaneSize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize);
+      }
     };
   }, [getSecondaryPaneSize, handleResize, secondaryInitialSize]);
 

@@ -14,20 +14,25 @@ const throttle = (fn: (...args) => void, delay: number) => {
 };
 
 export const useWindowSize = (delay = 0) => {
-  const [size, setSize] = React.useState<number[]>([
-    window.innerWidth,
-    window.innerHeight,
-  ]);
+  const [size, setSize] = React.useState([0, 0]);
 
-  const handleResizeWithThrottle = React.useMemo(
-    () =>
-      throttle(() => setSize([window.innerWidth, window.innerHeight]), delay),
-    [delay]
-  );
+  // eslint-disable-next-line consistent-return
+  const handleResizeWithThrottle = React.useMemo(() => {
+    if (typeof window !== 'undefined') {
+      return throttle(
+        () => setSize([window.innerWidth, window.innerHeight]),
+        delay
+      );
+    }
+  }, [delay]);
 
+  // eslint-disable-next-line consistent-return
   React.useLayoutEffect(() => {
-    window.addEventListener('resize', handleResizeWithThrottle);
-    return () => window.removeEventListener('resize', handleResizeWithThrottle);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResizeWithThrottle);
+      return () =>
+        window.removeEventListener('resize', handleResizeWithThrottle);
+    }
   }, [handleResizeWithThrottle]);
 
   return size;
