@@ -6,19 +6,22 @@ export interface StyledHeaderProps {
 
 export const StyledHeader = styled.div<StyledHeaderProps>`
   ${({ expanded, theme }) => {
-    const colorTokens = theme?.alias?.color;
+    const aliasTokens = theme.alias;
 
     return css`
       position: relative;
-      transition: border-color 0.15s ease;
-      border-bottom: solid 1px
-        ${expanded ? 'transparent' : colorTokens?.border?.separator?.base.weak};
-      min-height: 3.6rem;
-      background-color: #f5f8fa;
+      transition: border-color ${aliasTokens.mutation.transitionDuration.action}
+        ease;
+      border-bottom: solid ${aliasTokens.shape.borderSize.separator.md}
+        ${expanded
+          ? 'transparent'
+          : aliasTokens.color.border.separator.base.weak};
+      min-height: ${aliasTokens.size.height.surface.xs};
+      background-color: ${aliasTokens.color.background.surface.base.raised};
 
       ${expanded &&
       css`
-        background-color: #f5f8fa;
+        background-color: ${aliasTokens.color.background.surface.base.expanded};
       `}
     `;
   }}

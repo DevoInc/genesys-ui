@@ -1,13 +1,13 @@
+import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import { heightMixin, widthMixin } from '../../../../styled/mixins/utilsMixins';
+import {
+  heightMixin,
+  pseudoElementOverlayMixin,
+  widthMixin,
+} from '../../../../styled/';
 import { getPanelTokens } from '../../helpers';
 import { StyledBox, StyledBoxProps } from '../../../Box/StyledBox';
-
-interface PanelBorderSettings {
-  color?: React.CSSProperties['color'];
-  width?: React.CSSProperties['borderWidth'];
-}
 
 interface PanelHeightScheme {
   height?: React.CSSProperties['height'];
@@ -22,7 +22,7 @@ interface PanelWidthScheme {
 }
 
 export interface StyledPanelContainerProps extends StyledBoxProps {
-  borderSettings?: PanelBorderSettings;
+  bordered?: boolean;
   colorScheme?: React.CSSProperties['backgroundColor'];
   heightScheme?: PanelHeightScheme;
   widthScheme?: PanelWidthScheme;
@@ -32,7 +32,7 @@ export const StyledPanelContainer = styled(
   StyledBox
 )<StyledPanelContainerProps>`
   ${({
-    // borderSettings,
+    bordered,
     colorScheme,
     $display,
     elevation,
@@ -40,7 +40,15 @@ export const StyledPanelContainer = styled(
     theme,
     widthScheme,
   }) => {
+    const aliasTokens = theme.alias;
+    const borderColor = aliasTokens.color.border.surface.base.weak;
+    const borderWidth = aliasTokens.shape.borderSize.panel.base;
     const panelTokens = getPanelTokens(theme);
+    const borderRadius =
+      elevation &&
+      elevation !== 'ground' &&
+      !elevation.includes('sticky') &&
+      panelTokens.shape.borderRadius;
     return css`
       ${$display !== 'none' &&
       css`
@@ -51,11 +59,16 @@ export const StyledPanelContainer = styled(
       ${widthScheme && widthMixin(widthScheme)};
       ${heightScheme && heightMixin(heightScheme)};
       overflow: hidden;
-      border-radius: ${elevation &&
-      elevation !== 'ground' &&
-      !elevation.includes('sticky') &&
-      panelTokens.shape.borderRadius};
-      background-color: ${colorScheme || panelTokens.color.background};
+      border: ${bordered && `solid ${borderWidth} ${borderColor}`};
+      border-radius: ${borderRadius};
+      // to maintain always a solid background to avoid overlapping problems
+      background-color: ${panelTokens.color.background};
+
+      &::before {
+        ${pseudoElementOverlayMixin};
+        border-radius: ${borderRadius};
+        background-color: ${colorScheme};
+      }
     `;
   }};
 `;

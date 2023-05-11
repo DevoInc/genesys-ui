@@ -12,8 +12,11 @@ import type { AllHTMLAttributes } from 'react';
 export interface GlobalAttrProps<T = Element> {
   /** A unique identifier for the element */
   id?: AllHTMLAttributes<T>['id'];
+  // TODO: We have to use 'tooltip' instead of 'title', so once this name is not used, we have to remove this prop
   /** A title or description of the element, typically displayed as a tooltip when hovering over the element */
   title?: AllHTMLAttributes<T>['title'];
+  /** A title or description of the element, typically displayed as a tooltip when hovering over the element */
+  tooltip?: AllHTMLAttributes<T>['title'];
   /** Defines the role of an element in the context of the document, such as "button" or "navigation" */
   role?: AllHTMLAttributes<T>['role'];
 }

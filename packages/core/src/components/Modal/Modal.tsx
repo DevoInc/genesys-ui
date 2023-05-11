@@ -39,7 +39,7 @@ export interface ModalProps
   /** Set window options button (close button excluded) */
   headerActions?: React.ReactElement[];
   /** Defines the header Title */
-  headerTitle?: string;
+  headerTitle?: React.ReactNode;
   /** Height */
   height?: string;
   /** The title for the docs help link on the footer of the Modal */
@@ -90,7 +90,11 @@ export const InternalModal: React.FC<ModalProps> = ({
         {headerTitle && (
           <Flex alignItems="inherit">
             <ModalIcon status={status} />
-            <Heading size={status === 'base' ? 'h4' : 'h5'} truncateLine={1}>
+            <Heading
+              size={status === 'base' ? 'h4' : 'h5'}
+              truncateLine={1}
+              title={typeof headerTitle === 'string' ? headerTitle : null}
+            >
               {headerTitle}
             </Heading>
           </Flex>

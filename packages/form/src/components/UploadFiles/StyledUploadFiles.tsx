@@ -1,11 +1,8 @@
 import * as React from 'react';
-import styled, { css } from 'styled-components';
-import { rgba } from 'polished';
+import styled, { css, keyframes } from 'styled-components';
 
 import icons from '@devoinc/genesys-icons/dist/icon-variables';
 import { linkMixin, scrollbars, disabledMixin } from '@devoinc/genesys-ui';
-
-import { spin, fall, shake } from './keyframes';
 
 import {
   FilePond,
@@ -21,6 +18,55 @@ import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 registerPlugin(FilePondPluginImagePreview);
 registerPlugin(FilePondPluginFileValidateType);
 registerPlugin(FilePondPluginFileValidateSize);
+
+/* Spin - Keyframes */
+const spin = keyframes`
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(359deg);
+  }
+`;
+
+/* Fall - Keyframes */
+const fall = keyframes`
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+    animation-timing-function: ease-out;
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.1);
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
+`;
+
+/* Shake - Keyframes */
+const shake = keyframes`
+  10%,
+  90% {
+    transform: translateX(-0.0625em);
+  }
+  20%,
+  80% {
+    transform: translateX(0.125em);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-0.25em);
+  }
+  40%,
+  60% {
+    transform: translateX(0.25em);
+  }
+`;
 
 export interface StyledUploadFilesProps {
   /** Height for the box */
@@ -47,6 +93,7 @@ export const StyledUploadFiles = styled((props) => (
     const bgSurface = aliasTokens.color.background.surface.base.base;
     const linkTokens = theme.cmp.link;
     const cmpTokens = theme.cmp.uploadFiles;
+    const buttonTokens = theme.cmp.button;
     const borderWidth = cmpTokens.shape.border;
     const borderRadius = cmpTokens.shape.borderRadius;
 
@@ -112,16 +159,20 @@ export const StyledUploadFiles = styled((props) => (
 ----------------------------------------------------------------------------- */
 
   .filepond {
+    &--credits {
+      display: none;
+    }
+    
     /* Assistant - FilePond */
 
     &--assistant {
       position: absolute;
       overflow: hidden;
-      height: 1px;
-      width: 1px;
+      height: 0.1rem;
+      width: 0.1rem;
       padding: 0;
       border: 0;
-      clip: rect(1px, 1px, 1px, 1px);
+      clip: rect(0.1rem, 0.1rem, 0.1rem, 0.1rem);
       clip-path: inset(50%);
       white-space: nowrap;
     }
@@ -176,6 +227,13 @@ export const StyledUploadFiles = styled((props) => (
       will-change: transform, opacity;
     }
 
+    ${
+      disabled &&
+      css`
+        ${disabledMixin(theme)};
+      `
+    }
+
     /* Drop - FilePond */
 
     &--drop-label {
@@ -192,12 +250,11 @@ export const StyledUploadFiles = styled((props) => (
         display: block;
         padding: 1em 0;
         margin: 0;
-        cursor: default;
-        font-size: 1em;
+        font-size: ${aliasTokens.typo.fontSize.body.md};
+        line-height: ${aliasTokens.typo.lineHeight.body.md};
         font-weight: normal;
         text-align: center;
-        line-height: 1.5;
-        cursor: ${disabled && 'not-allowed'};
+        cursor: ${disabled ? 'not-allowed' : 'pointer'};
         
         ${
           showLabelIcon &&
@@ -219,6 +276,18 @@ export const StyledUploadFiles = styled((props) => (
 
     &--label-action {
       ${linkMixin({ theme: theme, linkTokens })};
+      ${
+        disabled &&
+        css`
+          cursor: not-allowed;
+
+          &:hover,
+          &:focus,
+          &:active {
+            text-decoration: none;
+          }
+        `
+      }
     }
 
     /* File Action Button - FilePond */
@@ -233,20 +302,22 @@ export const StyledUploadFiles = styled((props) => (
       height: 1.625em;
       font-size: 1em;
       font-family: inherit;
-      color: ${theme.onSurface}; 
       line-height: inherit;
-      background-color: ${rgba(bgSurface, 0.75)};
+      background-color: ${buttonTokens.color.background.blendBase.enabled};
       background-image: none;
       outline: none;
       border: none;
-      border-radius: 50%;
+      border-radius: ${buttonTokens.shape.borderRadius.full};
       will-change: transform, opacity;
-      transition: background-color ease-in-out 0.3s;
+      transition: background-color ease-in-out ${
+        buttonTokens.mutation.transitionDuration
+      };
+      color: ${buttonTokens.color.text.blendBase.enabled};
       cursor: pointer;
 
       svg {
-        width: 100%;
-        height: 100%;
+        width: 1.625em;
+        height: 1.625em;
       }
 
       i {
@@ -259,7 +330,8 @@ export const StyledUploadFiles = styled((props) => (
 
       &:hover,
       &:focus {
-        background-color: ${bgSurface};
+        background-color: ${buttonTokens.color.background.blendBase.hovered};
+        color: ${buttonTokens.color.text.blendBase.hovered};
       }
     }
 
@@ -282,19 +354,17 @@ export const StyledUploadFiles = styled((props) => (
       }
 
       .filepond--file-info-main {
-        font-size: 0.75em;
+        font-size: 0.9em;
         line-height: 1.2;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
         width: 100%;
+        color: ${colorTokens.heading.base};
       }
 
       .filepond--file-info-sub {
-        //margin-top: 0.2em;
-        font-size: 0.625em;
-        opacity: 0.5;
-        transition: opacity 0.25s ease-in-out;
+        font-size: 0.75em;
         white-space: nowrap;
       }
 
@@ -325,15 +395,14 @@ export const StyledUploadFiles = styled((props) => (
       }
 
       .filepond--file-status-main {
-        font-size: 0.75em;
+        font-size: 0.9em;
         line-height: 1.2;
+        color: ${colorTokens.heading.base};
       }
 
       .filepond--file-status-sub {
-        //margin-top: 0.2em;
-        font-size: 0.625em;
-        opacity: 0.5;
-        transition: opacity 0.25s ease-in-out;
+        font-size: 0.75em;
+        opacity: 1;
       }
     }
 
@@ -349,11 +418,11 @@ export const StyledUploadFiles = styled((props) => (
       > legend {
         position: absolute;
         overflow: hidden;
-        height: 1px;
-        width: 1px;
+        height: 0.1rem;
+        width: 0.1rem;
         padding: 0;
         border: 0;
-        clip: rect(1px, 1px, 1px, 1px);
+        clip: rect(0.1rem, 0.1rem, 0.1rem, 0.1rem);
         clip-path: inset(50%);
         white-space: nowrap;
       }
@@ -367,7 +436,7 @@ export const StyledUploadFiles = styled((props) => (
       height: 100%;
       align-items: flex-start;
       padding: 0.5625em 0.5625em;
-      color: ${aliasTokens.color.text.body.inverse};
+      color: ${aliasTokens.color.text.body.base};
       border-radius: ${borderRadius};
 
       .filepond--file-status {
@@ -384,14 +453,19 @@ export const StyledUploadFiles = styled((props) => (
       .filepond--processing-complete-indicator,
       .filepond--file-action-button {
         position: absolute;
+
+        span {
+          line-height: 1;
+        }
       }
 
       .filepond--progress-indicator {
         position: absolute;
-        top: 0.85em;
-        right: 0.9em;
+        top: 0.74em;
+        right: 0.7em;
         font-size: 0.9em;
-        color: ${colorTokens.feedback.primary.base};
+        color: ${colorTokens.feedback.secondary.base};
+        transform: scale(1.5);
       }
 
       .filepond--action-remove-item {
@@ -450,7 +524,7 @@ export const StyledUploadFiles = styled((props) => (
       }
 
       > .filepond--panel .filepond--panel-bottom {
-        box-shadow: 0 0.0625em 0.125em -0.0625em rgba(0, 0, 0, 0.25);
+        box-shadow: ${aliasTokens.elevation.boxShadow.depth.raised};
       }
 
       > .filepond--file-wrapper {
@@ -510,8 +584,10 @@ export const StyledUploadFiles = styled((props) => (
       }
 
       // SCROLLBAR
-      ${scrollbars({ theme })}; //TODO: Fix this styles
-
+      ${scrollbars({
+        cornerColor: cmpTokens.color.background,
+        theme,
+      })}; //TODO: Fix this styles
     }
 
     /* List - FilePond */
@@ -583,10 +659,10 @@ export const StyledUploadFiles = styled((props) => (
         &::after {
           content: '';
           position: absolute;
-          height: 2px;
+          height: 0.2rem;
           left: 0;
           right: 0;
-          bottom: -1px;
+          bottom: -0.1rem;
           background-color: inherit;
         }
       }
@@ -607,16 +683,16 @@ export const StyledUploadFiles = styled((props) => (
         &::before {
           content: '';
           position: absolute;
-          height: 2px;
+          height: 0.2rem;
           left: 0;
           right: 0;
-          top: -1px;
+          top: -0.1rem;
           background-color: inherit;
         }
       }
 
       &-center {
-        height: 100px !important;
+        height: 10rem !important;
         border-top: none !important;
         border-bottom: none !important;
         border-radius: 0 !important;
@@ -631,8 +707,8 @@ export const StyledUploadFiles = styled((props) => (
 
     &--progress-indicator {
       position: static;
-      width: 1.25em;
-      height: 1.25em;
+      width: 1.625em;
+      height: 1.625em;
       color: ${aliasTokens.color.text.body.inverse};
       margin: 0;
       pointer-events: none;
@@ -672,7 +748,7 @@ export const StyledUploadFiles = styled((props) => (
 
       ~ .filepond--file-info .filepond--file-info-sub,
       ~ .filepond--file-status .filepond--file-status-sub {
-        opacity: 0.5;
+        opacity: 1;
       }
     }
 
@@ -699,13 +775,39 @@ export const StyledUploadFiles = styled((props) => (
 
   /* Item Panel - Data - FilePond */
 
-  [data-filepond-item-state='processing-complete'] .filepond--item-panel {
-    background-color: ${bgTokens.success.strong};
+  .filepond--item-panel {
+    background-color: ${bgSurface};
   }
 
-  [data-filepond-item-state*='invalid'] .filepond--item-panel,
-  [data-filepond-item-state*='error'] .filepond--item-panel {
-    background-color: ${bgTokens.error.strong};
+  [data-filepond-item-state*='complete'] {
+    .filepond--item-panel {
+      background-color: ${bgTokens.success.weaker};
+    }
+    .filepond--file-info .filepond--file-info-main,
+    .filepond--file-status .filepond--file-status-main {
+      color: ${colorTokens.feedback.success.strong}
+    }
+
+    .filepond--file-info .filepond--file-info-sub,
+    .filepond--file-status .filepond--file-status-sub {
+      color: ${colorTokens.feedback.success.base}
+    }
+  }
+
+  [data-filepond-item-state*='invalid'],
+  [data-filepond-item-state*='error'] {
+    .filepond--item-panel {
+      background-color: ${bgTokens.error.weak};
+    }
+    .filepond--file-info .filepond--file-info-main,
+    .filepond--file-status .filepond--file-status-main {
+      color: ${colorTokens.feedback.error.strong}
+    }
+
+    .filepond--file-info .filepond--file-info-sub,
+    .filepond--file-status .filepond--file-status-sub {
+      color: ${colorTokens.feedback.error.base}
+    }
   }
 
   /* -----------------------------------------------------------------------------
@@ -730,8 +832,8 @@ export const StyledUploadFiles = styled((props) => (
     left: 0;
     top: 0;
     width: 100%;
-    min-height: 5rem;
-    max-height: 7rem;
+    min-height: 7rem;
+    max-height: 9rem;
     margin: 0;
     opacity: 0;
     z-index: 2;
@@ -749,20 +851,23 @@ export const StyledUploadFiles = styled((props) => (
     }
 
     &-idle {
-      mix-blend-mode: multiply;
-      color: rgba(40, 40, 40, 0.85);
+      opacity: 1 !important;
+      color: ${
+        theme.meta.scheme === 'dark'
+          ? aliasTokens.color.background.surface.blend.dark.stronger
+          : aliasTokens.color.background.surface.blend.light.strongest
+      };
     }
 
     &-success {
       mix-blend-mode: normal;
-      color: ${colorTokens.feedback.success.strong};
+      color: ${aliasTokens.color.background.feedback.error.stronger};
     }
 
     &-failure {
       mix-blend-mode: normal;
-      color: ${colorTokens.feedback.error.strong};
+      color: ${aliasTokens.color.background.feedback.error.weak};
     }
-
   }
 
   /* disable for Safari as mix-blend-mode causes the overflow:hidden of the parent container to not work */
@@ -811,7 +916,7 @@ export const StyledUploadFiles = styled((props) => (
     height: 100%;
     width: 100%;
     pointer-events: none;
-    background: #222;
+    background: ${bgSurface};
 
     /* will be animated */
     will-change: transform, opacity;
@@ -828,7 +933,7 @@ export const StyledUploadFiles = styled((props) => (
 
     &[data-transparency-indicator='grid'] img,
     &[data-transparency-indicator='grid'] canvas {
-      background-color: #fff;
+      background-color: ${bgSurface};
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' fill='%23eee'%3E%3Cpath d='M0 0 H50 V50 H0'/%3E%3Cpath d='M50 50 H100 V100 H50'/%3E%3C/svg%3E");
       background-size: 1.25em 1.25em;
     }

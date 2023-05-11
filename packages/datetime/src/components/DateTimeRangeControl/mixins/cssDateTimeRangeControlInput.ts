@@ -1,10 +1,10 @@
 import { css, CSSProp } from 'styled-components';
 
-import { InputProps } from '@devoinc/genesys-ui-form';
+import { InputControlProps } from '@devoinc/genesys-ui';
 import { DateTimeRangeProps } from '../../DateTimeRange';
 
 export interface CssDateTimeRangeControlInputProps
-  extends Pick<InputProps, 'size' | 'status'>,
+  extends Pick<InputControlProps, 'size' | 'status'>,
     Pick<DateTimeRangeProps, 'hasMillis' | 'hasSeconds' | 'hasTime'> {}
 
 export const cssDateTimeRangeControlInput = ({

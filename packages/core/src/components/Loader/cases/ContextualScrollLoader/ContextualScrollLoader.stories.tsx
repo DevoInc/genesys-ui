@@ -14,7 +14,6 @@ const meta: Meta<typeof Loader.ContextualScroll> = {
   args: {
     spinnerOffset: 'cmp-xs',
     size: 'md',
-    type: 'spinner',
   },
 };
 

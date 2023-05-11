@@ -12,7 +12,7 @@ const meta: Meta<typeof Loader.Contextual> = {
   title: 'Components/Core/feedback/Loader/Contextual',
   component: Loader.Contextual,
   args: {
-    colorScheme: 'light',
+    colorScheme: 'inherited',
     size: 'md',
     type: 'spinner',
   },

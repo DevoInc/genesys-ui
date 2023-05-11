@@ -11,3 +11,9 @@ export const INPUT_CONTROL_PSEUDO_ACTIONS_SIZE_MAP = {
   md: 'xs',
   lg: 'sm',
 } as const;
+
+export const INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP = {
+  sm: 'xxs',
+  md: 'xs',
+  lg: 'sm',
+} as const;

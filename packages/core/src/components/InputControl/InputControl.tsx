@@ -20,6 +20,7 @@ import {
   InputControlInnerContainer,
   InputControlInnerContainerProps,
   InputControlInput,
+  InputControlShowPassword,
 } from './components';
 
 export interface InputControlProps
@@ -83,6 +84,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
   type = 'text',
   value,
 }) => {
+  const [showPassword, setShowPassword] = React.useState(false);
   const typeIcon = type === 'search' ? 'search_find_zoom' : null;
   const iconEval =
     icon || (hasStatus(status) ? INPUT_CONTROL_ICON_STATUS_MAP[status] : icon);
@@ -113,6 +115,13 @@ const InternalInputControl: React.FC<InputControlProps> = ({
         )}
         {iconEval && (
           <InputControlIcon icon={iconEval} size={size} status={status} />
+        )}
+        {type === 'password' && (
+          <InputControlShowPassword
+            onClick={() => setShowPassword(!showPassword)}
+            showPassword={showPassword}
+            size={size}
+          />
         )}
         <InputControlInput
           aria-describedby={ariaDescribedBy}
@@ -153,7 +162,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
           size={size}
           status={status}
           step={step}
-          type={type}
+          type={showPassword ? 'text' : type}
           value={value}
         />
       </InputControlInnerContainer>
@@ -173,6 +182,7 @@ export const InputControl =
     Icon: typeof InputControlIcon;
     Input: typeof InputControlInput;
     InnerContainer: typeof InputControlInnerContainer;
+    ShowPassword: typeof InputControlShowPassword;
   };
 
 InputControl.Addon = Field.Addon;
@@ -180,3 +190,4 @@ InputControl.Container = InputControlContainer;
 InputControl.Icon = InputControlIcon;
 InputControl.Input = InputControlInput;
 InputControl.InnerContainer = InputControlInnerContainer;
+InputControl.ShowPassword = InputControlShowPassword;

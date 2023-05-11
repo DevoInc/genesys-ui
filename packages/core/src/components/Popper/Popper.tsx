@@ -15,6 +15,8 @@ import {
   GlobalAttrProps,
   TriggerAriaProps,
 } from '../../declarations';
+const defaultAppendToProp =
+  typeof window !== 'undefined' ? document.body : null;
 
 export interface PopperProps
   extends StyledPopperArrowProps,
@@ -48,7 +50,7 @@ export interface PopperProps
 }
 
 export const Popper: React.FC<PopperProps> = ({
-  appendTo = document.body,
+  appendTo = defaultAppendToProp,
   'aria-expanded': ariaExpanded,
   arrow,
   children,

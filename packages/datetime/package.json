@@ -3,14 +3,13 @@
   "version": "1.0.3-alpha.13",
   "description": "",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && tsc --project tsconfig.build.json",
     "depcruise": ". ../../depcruise.sh",
-    "lint": "eslint 'src/**/*.{ts,tsx}'",
     "stryker": "npx stryker run"
   },
   "main": "./dist/index.umd.js",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/types/src/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -26,7 +25,7 @@
   "peerDependencies": {
     "@devoinc/genesys-icons": "^2.2.0",
     "@devoinc/genesys-ui": "^1.0.3-alpha.13",
-    "date-fns": "^2.29.3",
+    "date-fns": "^2.30.0",
     "react": "17.x || 18.x",
     "react-popper": "^2.3.0",
     "styled-components": "^5.3.10"

@@ -1,10 +1,7 @@
 import * as React from 'react';
 
 import { Loader, LoaderProps } from '../../Loader';
-import {
-  ContextualScrollLoaderSize,
-  ContextualScrollLoaderType,
-} from '../../declarations';
+import { ContextualScrollLoaderSize } from '../../declarations';
 import { getSizeByType } from '../../utils';
 import { CmpSpacing } from '../../../../declarations';
 
@@ -16,7 +13,6 @@ export interface ContextualScrollLoaderProps
   gradientHeight?: string;
   spinnerOffset?: CmpSpacing;
   size: ContextualScrollLoaderSize;
-  type: ContextualScrollLoaderType;
 }
 
 export const ContextualScrollLoader: React.FC<ContextualScrollLoaderProps> = ({
@@ -27,11 +23,9 @@ export const ContextualScrollLoader: React.FC<ContextualScrollLoaderProps> = ({
   loadPercent,
   spinnerOffset = 'cmp-xs',
   size = 'md',
-  type = 'spinner',
   zIndex,
   ...nativeProps
 }) => {
-  const typeDef = loadPercent ? 'progress' : type;
   return (
     <Loader
       {...nativeProps}
@@ -44,8 +38,8 @@ export const ContextualScrollLoader: React.FC<ContextualScrollLoaderProps> = ({
       justifyContent="flex-end"
       loadPercent={loadPercent}
       padding={`0 0 ${spinnerOffset} 0`}
-      size={getSizeByType(typeDef, size)}
-      type={typeDef}
+      size={getSizeByType('spinner', size)}
+      type="spinner"
       zIndex={zIndex}
     />
   );

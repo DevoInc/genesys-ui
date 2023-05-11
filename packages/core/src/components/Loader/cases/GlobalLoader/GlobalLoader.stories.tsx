@@ -12,8 +12,8 @@ const meta: Meta<typeof Loader.Global> = {
   title: 'Components/Core/feedback/Loader/Global',
   component: Loader.Global,
   args: {
+    fixed: false,
     zIndex: 999999,
-    type: 'logo',
   },
 };
 

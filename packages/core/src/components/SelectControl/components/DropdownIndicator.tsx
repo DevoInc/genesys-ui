@@ -35,7 +35,7 @@ export const DropdownIndicator = <Option extends SelectOption>({
         {selectProps.status && selectProps.status !== 'base' && (
           <Icon
             iconId={mapStatusIcon[selectProps.status]}
-            status={selectProps.status}
+            colorScheme={selectProps.status}
             className={`${selectProps.classNamePrefix}__status-icon`}
           />
         )}

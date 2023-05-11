@@ -1,21 +1,19 @@
 import styled, { css } from 'styled-components';
 import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
 
-import { IconSize } from '../declarations';
-import { GlobalStatus } from '../../../declarations';
+import { AllColorScheme, GlobalSize } from '../../declarations';
 
-import { hasStatus } from '../../../utils/validations';
-import { getColor } from './colorUtils';
+import { getColor } from './helpers';
 
 export interface StyledIconProps {
   /** This property defines the icon type */
   iconId: keyof typeof iconDictionary; // TODO: replace with genesys-icon type
   /** This property defines the custom icon color */
   color?: string;
+  /** It defines the color scheme for the icon color. There are predefined types: primary, secondary... etc. auto-generated for the text based on this one to maintain AA accessible contrast.*/
+  colorScheme?: AllColorScheme;
   /** This property defines the custom icon font size */
-  size?: string | IconSize;
-  /** This property defines the status color schema for the icon */
-  status?: GlobalStatus;
+  size?: string | GlobalSize;
   /** If the icon has this property its font-weight changes to bold */
   strong?: boolean;
 }
@@ -25,8 +23,7 @@ export const StyledIcon = styled.i.attrs(
     className: `gi-${iconId.toString()}` as string,
   })
 )<StyledIconProps>`
-  ${({ color, size, status, strong, theme }) => {
-    const validStatus = hasStatus(status) ? status : undefined;
+  ${({ color, colorScheme, size, strong, theme }) => {
     const sizeTokens = theme.alias.size.square.icon.base;
     const sizeEval = (size && sizeTokens[size]) || size;
     return css`
@@ -38,7 +35,7 @@ export const StyledIcon = styled.i.attrs(
       font-size: ${sizeEval};
       color: ${getColor({
         color,
-        status: validStatus,
+        colorScheme,
         theme,
       })};
     `;

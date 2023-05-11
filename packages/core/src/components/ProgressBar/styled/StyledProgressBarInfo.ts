@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { getColor } from '../utils';
-import { StyledIcon } from '../../Icon/styled';
+import { StyledIcon } from '../../Icon/StyledIcon';
 import { StyledProgressBarPercent } from './StyledProgressBarPercent';
 import { ICON_CIRCULAR_SIZE } from '../declarations';
 import { GlobalAriaProps, GlobalAttrProps } from '../../../declarations';

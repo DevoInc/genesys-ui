@@ -1,7 +1,11 @@
 import styled, { css } from 'styled-components';
+import { lighten } from 'polished';
 
 // constants
-import { INPUT_CONTROL_PSEUDO_ACTIONS_SIZE_MAP } from '../constants';
+import {
+  INPUT_CONTROL_PSEUDO_ACTIONS_SIZE_MAP,
+  INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP,
+} from '../constants';
 
 // declarations
 import {
@@ -51,10 +55,18 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
     const fieldTokens = aliasTokens.fields;
     const fieldIconTokens = fieldTokens.icon;
     const iconSize = fieldIconTokens.size.square[$size];
+    const showPasswordSize =
+      theme.cmp.button.size.square[INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP[$size]];
     const inputBorderRadius = fieldTokens.shape.borderRadius;
     const inputHeight = fieldTokens.size.height[$size];
     const inputHorPadding = fieldTokens.space.padding.hor[$size];
-    const inputWithIconPadding = css`calc(${iconSize} + ${inputHorPadding} * 2)`;
+    const inputWithIconPadding = hasIcon
+      ? css`calc(${iconSize} + ${inputHorPadding} * 2)`
+      : '0rem';
+    const inputWithShowPasswordPadding =
+      type === 'password'
+        ? css`calc(${showPasswordSize} + ${inputHorPadding} * 2)`
+        : '0rem';
     const buttonTokens = theme.cmp.button;
     const clearSearchButtonSize = buttonTokens.size.square.xxs;
     const pseudoButtonSize =
@@ -80,14 +92,21 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
         theme,
       })};
 
-      ${hasIcon &&
-      css`
-        padding-right: ${inputWithIconPadding};
-      `};
+      padding-right: calc(
+        ${inputWithIconPadding} + ${inputWithShowPasswordPadding}
+      );
 
       ${hasTypeIcon &&
       css`
         padding-left: ${inputWithIconPadding};
+      `}
+
+      ${type === 'password' &&
+      css`
+        // only to avoid collision with third part plugins
+        background-position: calc(
+          100% - ${inputWithShowPasswordPadding}
+        ) !important;
       `}
 
       ${hasAddonToLeft &&
@@ -169,8 +188,20 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
           height: ${clearSearchButtonSize};
           width: ${clearSearchButtonSize};
           background-size: ${buttonTokens.icon.typo.fontSize.xxs};
-          background-image: ${fieldTokens.shape.backgroundImage.search};
+          background-image: ${fieldTokens.shape.backgroundImage.searchCancel
+            .base};
           background-color: ${buttonTokens.color.background.neutral.enabled};
+
+          // Here it's not possible to use the same way based in pseudo-element ::before as in buttons
+          &:hover {
+            background-color: ${lighten(
+              theme.meta.scheme === 'dark' ? 0.1 : 0.03,
+              buttonTokens.color.background.neutral.hovered
+            )};
+
+            background-image: ${fieldTokens.shape.backgroundImage.searchCancel
+              .hovered};
+          }
         }
       `};
 

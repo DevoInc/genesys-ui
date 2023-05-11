@@ -7,6 +7,7 @@ import { css, DefaultTheme } from 'styled-components';
 // Scrollbars - Utils - Mixin ------------------------------------------------ /
 
 interface ScrollbarsProps {
+  cornerColor?: string;
   size?: string;
   thumbColor?: string;
   thumbHoverColor?: string;
@@ -22,6 +23,7 @@ interface ScrollbarsProps {
  *
  * @param props The object param
  * @param props.size The width (vertical) or height (horizontal) of the scrollbar.
+ * @param props.cornerColor Color of the corner.
  * @param props.thumbColor Color of the thumb.
  * @param props.thumbHoverColor Color of the thumb in :hover state.
  * @param props.thumbRadius Border radius of the thumb.
@@ -32,6 +34,7 @@ interface ScrollbarsProps {
  * @return the css with the styles object.
  */
 export const scrollbars = ({
+  cornerColor,
   size,
   thumbColor,
   thumbHoverColor,
@@ -45,6 +48,10 @@ export const scrollbars = ({
   const sizeEval = size || scrollbarTokens.size.square.md || '0.8rem';
   return css`
     // For Google Chrome
+    &::-webkit-scrollbar-corner {
+      background-color: ${cornerColor || 'transparent'};
+    }
+
     &::-webkit-scrollbar {
       width: ${sizeEval};
 

@@ -9,7 +9,7 @@ import {
   StyledPolymorphicProps,
   TriggerEventAttrProps,
 } from '../../declarations';
-import { IconSize } from '../Icon';
+import { IconProps } from '../Icon';
 
 // components
 import { VFlex } from '../VFlex/';
@@ -34,7 +34,7 @@ export interface StatusMessageProps
     StyledStatusMessageProps {
   padding?: GlobalSpacing;
   /** This property defines the font size of the icon */
-  iconSize?: IconSize;
+  iconSize?: IconProps['size'];
   /** Title block of the status message */
   msgTitle: string;
   /** Description block of status message */

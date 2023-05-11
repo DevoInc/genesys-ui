@@ -176,7 +176,7 @@ export const StyledList = styled.ul<StyledListProps>`
           padding-left: 0;
         `;
       return css`
-        list-style: square none outside;
+        list-style: disc none outside;
       `;
     }};
 

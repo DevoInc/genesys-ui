@@ -1,15 +1,18 @@
 import * as React from 'react';
 
 import { Loader, LoaderProps } from '../../Loader';
+import { ContextualLoaderType } from '../../declarations';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ContextualLoaderProps
-  extends Omit<LoaderProps, 'gradientConfig'> {}
+  extends Omit<LoaderProps, 'gradientConfig' | 'type'> {
+  type?: ContextualLoaderType;
+}
 
 export const ContextualLoader: React.FC<ContextualLoaderProps> = ({
   alignItems,
   className,
-  colorScheme = 'light',
+  colorScheme = 'inherited',
   fixed,
   iconComplete,
   justifyContent,

@@ -46,7 +46,7 @@ export interface PanelProps
 const InternalPanel: React.FC<PanelProps> = ({
   // PanelContainerProps
   as,
-  borderSettings,
+  bordered,
   className,
   colorScheme,
   display,
@@ -84,7 +84,7 @@ const InternalPanel: React.FC<PanelProps> = ({
     <PanelContainer
       $display={display}
       as={as}
-      borderSettings={borderSettings}
+      bordered={bordered}
       className={className}
       colorScheme={colorScheme}
       elevation={elevation}
@@ -100,25 +100,30 @@ const InternalPanel: React.FC<PanelProps> = ({
         hasBoxShadow={hasScroll}
         bordered={headerSettings?.bordered}
       >
-        <PanelHeaderContent
-          actions={headerSettings?.actions}
-          appendContent={headerRenderContent?.append}
-          as={as}
-          bottomContent={headerRenderContent?.bottom}
-          closeSettings={closeSettings}
-          collapseSettings={collapseSettings}
-          helpUrl={!footerSettings ? helpUrl : undefined}
-          helpTooltip={!footerSettings ? helpTooltip : undefined}
-          icon={icon}
-          legend={legend}
-          prependContent={headerRenderContent?.prepend}
-          size={size}
-          subtitle={subtitle}
-          title={title}
-          topContent={headerRenderContent?.top}
-        >
-          {headerRenderContent?.middle}
-        </PanelHeaderContent>
+        {/** TODO: consider removal when Toast is refactored to not use Panel as styled */}
+        {React.isValidElement(headerSettings?.renderContent) ? (
+          headerSettings.renderContent
+        ) : (
+          <PanelHeaderContent
+            actions={headerSettings?.actions}
+            appendContent={headerRenderContent?.append}
+            as={as}
+            bottomContent={headerRenderContent?.bottom}
+            closeSettings={closeSettings}
+            collapseSettings={collapseSettings}
+            helpUrl={!footerSettings ? helpUrl : undefined}
+            helpTooltip={!footerSettings ? helpTooltip : undefined}
+            icon={icon}
+            legend={legend}
+            prependContent={headerRenderContent?.prepend}
+            size={size}
+            subtitle={subtitle}
+            title={title}
+            topContent={headerRenderContent?.top}
+          >
+            {headerRenderContent?.middle}
+          </PanelHeaderContent>
+        )}
       </PanelHeaderContainer>
       <PanelBodyContainer
         bodySettings={bodySettings}
