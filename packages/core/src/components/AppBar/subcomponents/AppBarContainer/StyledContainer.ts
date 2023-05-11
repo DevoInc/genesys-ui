@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { getSpacingPropCss } from '../../../../utils/spacing';
 import { boxMixin, BoxMixinProps } from '../../../../styled/';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledAppBarContainerProps
   extends Omit<BoxMixinProps, '$display' | 'theme'> {}
 

@@ -9,7 +9,6 @@ import {
   FieldStatus,
   getFieldState,
   LayoutCommonProps,
-  LayoutTransientProps,
   scrollbars,
 } from '../../';
 import { getFieldControlTypo } from '../../components';
