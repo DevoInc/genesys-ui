@@ -5,10 +5,7 @@ import { INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP } from '../constants';
 
 import { IconButton, IconButtonProps } from '../../IconButton';
 
-import {
-  StyledInputControlShowPassword,
-  StyledInputControlShowPasswordProps,
-} from '../styled/StyledInputControlShowPassword';
+import { StyledInputControlShowPassword } from '../styled/StyledInputControlShowPassword';
 
 export interface InputControlShowPasswordProps
   extends Pick<InputControlProps, 'size'>,

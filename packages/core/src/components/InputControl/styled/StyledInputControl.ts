@@ -101,6 +101,14 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
         padding-left: ${inputWithIconPadding};
       `}
 
+      ${type === 'password' &&
+      css`
+        // only to avoid collision with third part plugins
+        background-position: calc(
+          100% - ${inputWithShowPasswordPadding}
+        ) !important;
+      `}
+
       ${hasAddonToLeft &&
       css`
         border-bottom-left-radius: 0;
