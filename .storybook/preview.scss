@@ -76,8 +76,26 @@ body {
     letter-spacing: -0.01925em;
     > a {
       color: var(--link-color);
-      position: relative;
+      position: absolute;
+      left: -4px;
       width: 0;
+
+      &::after {
+        content: '\eafc';
+        opacity: 0;
+        transition: opacity 0.1s ease;
+        margin-right: -0.8rem;
+        vertical-align: middle;
+        font-family: 'gi', sans-serif !important;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        font-size: 24px;
+        -webkit-font-smoothing: antialiased;
+        color: var(--link-color);
+      }
 
       &:hover,
       &:focus {
@@ -86,6 +104,10 @@ body {
         &::after {
           opacity: 1;
         }
+      }
+
+      > svg {
+        display: none;
       }
     }
   }
