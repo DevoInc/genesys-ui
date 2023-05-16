@@ -25,7 +25,7 @@ export interface TagGroupProps
     GlobalAttrProps,
     GlobalAriaProps,
     StyledTagGroupProps,
-    StyledTagGroupLabelProps {
+    Omit<StyledTagGroupLabelProps, 'labelPosition'> {
   /** Polymorphic prop to create a different tag or styled component
    * https://styled-components.com/docs/api#as-polymorphic-prop */
   children: React.ReactElement<TagProps>[];

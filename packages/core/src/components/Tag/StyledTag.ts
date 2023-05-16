@@ -52,7 +52,7 @@ export const StyledTag = styled.div<StyledTagProps>`
       border-radius: ${cmpTokens.shape.borderRadius};
       max-width: 100%;
       height: ${cmpTokens.size.height[size]};
-      padding: 0 ${cmpTokens.space.padding.hor[size]};
+      padding: ${quiet ? '0' : `0 ${cmpTokens.space.padding.hor[size]}`};
       background-color: ${bgColor};
       ${typoMixin({ bold: bold, theme, size })};
       color: ${textColor};
