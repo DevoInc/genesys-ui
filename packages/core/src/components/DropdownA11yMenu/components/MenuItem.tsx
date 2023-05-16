@@ -11,7 +11,7 @@ interface MenuItemProps extends StyledMenuItemProps, MenuAccessibilityProps {
   /** Label of the item */
   label?: string;
   /** Tooltip on item hover. This is object with the tooltip confg: Label, position, ... */
-  tooltip?: { label: string; config: any }; // TODO add config types
+  tooltip?: string;
   children?: React.ReactNode;
 }
 
@@ -30,36 +30,16 @@ export const MenuItem: React.FC<MenuItemProps> = ({
     config: {},
   };
 
-  if (tooltip?.label) {
-    tooltipProps.target = {
-      'data-for': label,
-      'data-tip': tooltip.label,
-    };
-
-    tooltipProps.config = {
-      effect: 'solid',
-      delayShow: 150,
-      offset: { top: -15 },
-      ...tooltip.config,
-      place: 'top',
-    };
-  }
-
   return (
     <StyledMenuItem
       role={'none'}
       disabled={disabled}
       highlighted={highlighted}
       selected={selected}
+      title={tooltip}
     >
-      <MenuAccessibility
-        disabled={disabled}
-        ref={forwardedRef}
-        {...tooltipProps.target}
-        {...rest}
-      >
+      <MenuAccessibility disabled={disabled} ref={forwardedRef} {...rest}>
         {children}
-        {tooltip?.label && <Tooltip id={label} {...tooltipProps.config} />}
       </MenuAccessibility>
     </StyledMenuItem>
   );

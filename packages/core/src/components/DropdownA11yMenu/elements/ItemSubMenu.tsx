@@ -3,16 +3,12 @@ import { usePopper } from 'react-popper';
 
 import { MenuItem } from '../components/MenuItem';
 import { StyledItemSubmenu, StyledExpandedIcon } from '../styled';
+import { Menu } from '../../Menu';
+import { MenuItemProps } from '../../Menu/subcomponents';
 
-interface ItemSubMenuProps {
-  /** Forward item reference to manage the item's accessibility actions */
-  forwardedRef: React.Ref<HTMLElement> | null;
-  /** Label of the item submenu */
-  label: string;
-  /** Tooltip on item hover. This is object with the tooltip confg: Label, position, ... */
-  tooltip?: { label: string; config: { [key: string]: any } }; // TODO add config types
+interface ItemSubMenuProps extends MenuItemProps {
   /** Items for sub-menu: array of objects with items of the submenu config. */
-  subMenu: { [key: string]: any }[];
+  subMenuConfig: { [key: string]: any }[];
   /** subMenu component. Dropdown component */
   subMenuComponent: React.ComponentType<any>; // TODO especify component type
   /** If the item is disabled */
@@ -26,11 +22,13 @@ interface ItemSubMenuProps {
 export const ItemSubMenu = ({
   forwardedRef,
   label,
-  subMenu,
+  subMenuConfig,
   subMenuComponent: SubMenuComponent,
   disabled,
   highlighted,
   deepLevel,
+  state,
+  ...restProps
 }: ItemSubMenuProps) => {
   const [referenceElement, setReferenceElement] =
     React.useState<HTMLLabelElement | null>(null);
@@ -58,32 +56,59 @@ export const ItemSubMenu = ({
   }, []);
 
   return (
-    <MenuItem
-      disabled={disabled}
-      highlighted={highlighted}
-      role={'menuitem'}
-      forwardedRef={forwardedRef}
-      aria-haspopup
-      aria-expanded={isVisible}
-      action={action}
-      actionOver={actionOver}
-      actionLeave={actionLeave}
-    >
-      <StyledItemSubmenu ref={setReferenceElement}>
-        <span>{label}</span>
-        <StyledExpandedIcon iconId={'caret_right_solid'} />
-      </StyledItemSubmenu>
-      {isVisible && (
-        <SubMenuComponent
-          keyboardOpened={keyboardOpened}
-          deepLevel={deepLevel}
-          label={label}
-          items={subMenu}
-          styles={styles}
-          attributes={attributes}
-          setPopperElement={setPopperElement}
-        />
-      )}
-    </MenuItem>
+    <>
+      <Menu.Item
+        {...restProps}
+        aria-haspopup
+        expandable
+        forwardedRef={forwardedRef}
+        label={label}
+        onClick={action}
+        onMouseLeave={actionLeave}
+        onMouseOver={actionOver}
+        ref={setReferenceElement}
+        state={isVisible ? 'expanded' : state}
+        subMenu={
+          isVisible && (
+            <SubMenuComponent
+              keyboardOpened={keyboardOpened}
+              deepLevel={deepLevel}
+              label={label}
+              items={subMenuConfig}
+              styles={styles}
+              attributes={attributes}
+              setPopperElement={setPopperElement}
+            />
+          )
+        }
+      />
+      <MenuItem
+        disabled={disabled}
+        highlighted={highlighted}
+        role={'menuitem'}
+        forwardedRef={forwardedRef}
+        aria-haspopup
+        aria-expanded={isVisible}
+        action={action}
+        actionOver={actionOver}
+        actionLeave={actionLeave}
+      >
+        <StyledItemSubmenu ref={setReferenceElement}>
+          <span>{label}</span>
+          <StyledExpandedIcon iconId={'caret_right_solid'} />
+        </StyledItemSubmenu>
+        {isVisible && (
+          <SubMenuComponent
+            keyboardOpened={keyboardOpened}
+            deepLevel={deepLevel}
+            label={label}
+            items={subMenuConfig}
+            styles={styles}
+            attributes={attributes}
+            setPopperElement={setPopperElement}
+          />
+        )}
+      </MenuItem>
+    </>
   );
 };

@@ -1,101 +1,61 @@
 import * as React from 'react';
 
 import { MenuAccessibility } from './MenuAccessibility';
-import { Item, ItemSubMenu, ItemLink, ItemCheckbox } from '../elements';
-import { StyledDropdown, StyledSeparator } from '../styled';
+import { Item, ItemSubMenu, ItemSelectable } from '../elements';
+import { StyledDropdown } from '../styled';
 import { KeyboardEventsMove, TypesProp } from '../declarations';
+import { Menu } from '../../Menu';
 
 const TYPES: { [key: string]: TypesProp } = {
   item: 'item',
   itemSubMenu: 'itemSubMenu',
   itemLink: 'itemLink',
   asSeparator: 'asSeparator',
-  itemCheckbox: 'itemCheckbox',
+  itemSelectable: 'itemSelectable',
 };
 
 const buildItemsMenu = (items: any, listItemsRef: any[], deepLevel: number) => {
   const elements: React.ReactElement[] = [];
+  const checkLeftSpace = (dataItem) =>
+    dataItem.checked ||
+    dataItem.icon ||
+    (dataItem.icon && !dataItem.prependContent);
+  const leftSpaced =
+    items.length > 0 && items.filter(checkLeftSpace).length > 0;
   items.forEach((item, index) => {
     if (item.hidden) return;
-    let builtComponent: any;
-    const disabled =
-      typeof item.disabled === 'function' ? item.disabled() : item.disabled;
+    let builtComponent: any = <Item {...item} hasExtraLeftSpace={leftSpaced} />;
     const ref = React.createRef<HTMLElement>();
-    switch (item.type) {
-      case TYPES.item:
-        builtComponent = (
-          <Item
-            action={item.action}
-            appendTag={item.appendTag}
-            disabled={disabled}
-            forwardedRef={ref}
-            highlighted={item.highlighted}
-            // hidden={item.hidden} // TODO: is it used?
-            icon={item.icon}
-            key={item.label}
-            label={item.label}
-            shortcut={item.shortcut}
-            tooltip={item.tooltip}
-          />
-        );
-        break;
-      case TYPES.itemSubMenu:
-        builtComponent = (
-          <ItemSubMenu
-            deepLevel={deepLevel}
-            forwardedRef={ref}
-            key={item.label}
-            subMenu={item.subMenu}
-            subMenuComponent={Dropdown}
-            label={item.label}
-            disabled={disabled}
-            highlighted={item.highlighted}
-            // hidden={item.hidden}
-          />
-        );
-        break;
-      case TYPES.itemLink:
-        builtComponent = (
-          <ItemLink
-            forwardedRef={ref}
-            key={item.label}
-            label={item.label}
-            tooltip={item.tooltip}
-            href={item.href}
-            action={item.action}
-            target={item.target}
-            icon={item.icon}
-            shortcut={item.shortcut}
-            appendTag={item.appendTag}
-            disabled={disabled}
-            highlighted={item.highlighted}
-            // hidden={item.hidden}
-          />
-        );
-        break;
-      case TYPES.asSeparator:
-        builtComponent = (
-          <StyledSeparator key={`separator_${deepLevel}_${index}`} />
-        );
-        break;
-      case TYPES.itemCheckbox:
-        builtComponent = (
-          <ItemCheckbox
-            forwardedRef={ref}
-            key={item.label}
-            tooltip={item.tooltip}
-            checked={item.checked}
-            label={item.label}
-            shortcut={item.shortcut}
-            appendTag={item.appendTag}
-            onChange={item.onChange}
-            disabled={disabled}
-            highlighted={item.highlighted}
-            // hidden={item.hidden}
-          />
-        );
-        break;
-    }
+
+    if (item.type === TYPES.item)
+      builtComponent = <Item {...item} hasExtraLeftSpace={leftSpaced} />;
+    if (item.type === TYPES.itemSubMenu)
+      builtComponent = (
+        <ItemSubMenu
+          {...item}
+          deepLevel={deepLevel}
+          forwardedRef={ref}
+          hasExtraLeftSpace={leftSpaced}
+          key={item.label}
+          subMenuConfig={item.subMenu}
+          subMenuComponent={Dropdown}
+          // hidden={item.hidden}
+        />
+      );
+    if (item.type === TYPES.asSeparator)
+      builtComponent = (
+        <Menu.Separator key={`separator_${deepLevel}_${index}`} />
+      );
+    if (item.type === TYPES.itemSelectable)
+      builtComponent = (
+        <ItemSelectable
+          {...item}
+          forwardedRef={ref}
+          key={item.label}
+          hasExtraLeftSpace={leftSpaced}
+        />
+      );
+
     elements.push(builtComponent);
     if (item.type !== TYPES.asSeparator) listItemsRef.push(ref);
   });
@@ -163,7 +123,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   return (
     <MenuAccessibility
       role={'menu'}
-      aria-label={`${label}_submenu_${deepLevel}`}
+      aria-label={`${label} submenu ${deepLevel}`}
       action={updateActiveItem}
     >
       <StyledDropdown

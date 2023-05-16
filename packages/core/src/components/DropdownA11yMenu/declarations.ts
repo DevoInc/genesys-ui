@@ -12,7 +12,7 @@ export type TypesProp =
   | 'itemSubMenu'
   | 'itemLink'
   | 'asSeparator'
-  | 'itemCheckbox';
+  | 'itemSelectable';
 
 export type AccessibilityRolesProp = 'menu' | 'menuitem' | 'menuitemcheckbox';
 

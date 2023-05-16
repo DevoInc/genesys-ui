@@ -112,6 +112,7 @@ export interface TriggerAriaProps
     | 'aria-controls'
     | 'aria-expanded'
     | 'aria-haspopup'
+    | 'aria-keyshortcuts'
     | 'aria-pressed'
     | 'aria-selected'
   > {}

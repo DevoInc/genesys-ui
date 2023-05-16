@@ -34,6 +34,9 @@ import {
   StyledMenuItemInnerProps,
 } from './styled';
 import { StyledHiddenInput } from '../../../../styled/';
+import { Typography } from '../../../Typography';
+import { Box } from '../../../Box';
+import { HFlex } from '../../../HFlex';
 
 export interface MenuItemProps
   extends StyledPolymorphicProps,
@@ -52,10 +55,17 @@ export interface MenuItemProps
   bottomContent?: React.ReactNode;
   children?: React.ReactNode;
   expandable?: boolean;
+  /** Forward item reference to manage the item's accessibility actions */
+  forwardedRef?: React.Ref<HTMLElement>;
   icon?: string;
   label?: string;
   prependContent?: React.ReactNode;
+  ref: React.ForwardedRef<HTMLElement>;
   selectionScheme?: SelectionScheme;
+  /** Shortcut text for the item. */
+  shortcut?: string;
+  /** Component used as sub-menu child of the <li> element. */
+  subMenu?: React.ReactNode;
 }
 
 export const MenuItem: React.FC<MenuItemProps> = ({
@@ -77,10 +87,13 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   onChange,
   onFocus,
   prependContent,
+  ref,
   rel,
   selectionScheme,
+  shortcut,
   state = 'enabled',
   tabIndex,
+  subMenu,
   target,
   value,
   ...restNativeProps
@@ -103,6 +116,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
     <StyledMenuItem as={as} forwardedAs={forwardedAs}>
       <StyledMenuItemInner
         {...restNativeProps}
+        aria-keyshortcuts={shortcut}
         aria-expanded={isExpanded || null}
         aria-label={label}
         aria-checked={(Boolean(selectionScheme) && isSelected) || null}
@@ -116,6 +130,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         href={isDisabled ? null : href}
         id={id}
         name={isSelectable ? null : name}
+        ref={ref}
         rel={rel}
         role={roleEval}
         state={state}
@@ -146,7 +161,13 @@ export const MenuItem: React.FC<MenuItemProps> = ({
               childrenFitFullWidth
               spacing="0"
             >
-              <Flex as="span" flex="1" alignItems="center" minWidth="0">
+              <HFlex
+                as="span"
+                flex="1"
+                alignItems="center"
+                minWidth="0"
+                spacing="cmp-xs"
+              >
                 {(icon || isSelected) && (
                   <StyledMenuItemMarker>
                     <Icon
@@ -157,18 +178,26 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                 )}
                 {prependContent}
                 <StyledMenuItemLabel>{label}</StyledMenuItemLabel>
+                {shortcut && (
+                  <Flex marginLeft="auto" alignItems="center" as="span">
+                    <Typography.Caption colorScheme="weak">
+                      {shortcut}
+                    </Typography.Caption>
+                  </Flex>
+                )}
                 {appendContent}
-              </Flex>
+              </HFlex>
               {bottomContent}
             </VFlex>
             {expandable && (
-              <Flex flex="0" marginLeft="auto" paddingLeft="cmp-xs">
+              <Flex as="span" flex="0" marginLeft="auto" paddingLeft="cmp-xs">
                 <Icon size="xxs" iconId="arrow_right" />
               </Flex>
             )}
           </>
         )}
       </StyledMenuItemInner>
+      {subMenu}
     </StyledMenuItem>
   );
 };

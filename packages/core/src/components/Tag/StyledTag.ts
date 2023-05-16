@@ -24,7 +24,7 @@ export interface StyledTagProps {
   size?: FeedbackSize;
 }
 
-export const StyledTag = styled.div<StyledTagProps>`
+export const StyledTag = styled.span<StyledTagProps>`
   ${({ colorScheme = 'neutral', bold, quiet, wide, size = 'md', theme }) => {
     const colorSchemeForTokens = _.camelCase(colorScheme);
 
