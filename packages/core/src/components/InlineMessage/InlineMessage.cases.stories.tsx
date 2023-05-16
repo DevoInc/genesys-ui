@@ -85,7 +85,7 @@ export const CustomTriggerIcon: Story = {
           visible={visible}
           setVisible={setVisible}
           trigger={{
-            icon: 'rocket_space_nasa',
+            icon: 'gi-rocket_space_nasa',
             text: 'Text',
             secondaryText: 'secondary text',
           }}

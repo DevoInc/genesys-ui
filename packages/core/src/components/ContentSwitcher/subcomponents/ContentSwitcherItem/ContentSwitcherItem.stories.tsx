@@ -14,7 +14,7 @@ type Story = StoryObj<typeof ContentSwitcherItem>;
 export const Base: Story = {
   args: {
     size: 'md',
-    icon: 'heart_full',
+    icon: 'gi-heart_full',
     state: 'enabled',
     onChange: null,
     children: 'ContentSwitcher item',

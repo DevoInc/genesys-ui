@@ -38,7 +38,7 @@ export const data: DropdownItem[] = [
   {
     type: 'item',
     label: 'Delete Layout',
-    icon: 'bin_trash_recycle_delete_garbage_empty',
+    icon: 'gi-bin_trash_recycle_delete_garbage_empty',
     shortcut: '⌘ E',
     action: () => {
       action('DropdownA11yMenu Item')('Clicked in Delete');

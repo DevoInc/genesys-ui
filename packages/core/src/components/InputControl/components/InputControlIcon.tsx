@@ -19,7 +19,7 @@ export const InputControlIcon: React.FC<InputControlIconProps> = ({
 }) => (
   <StyledInputControlIcon
     aria-hidden
-    className={`gi-${icon}`}
+    className={icon}
     size={size}
     status={status}
     isTypeIcon={isTypeIcon}

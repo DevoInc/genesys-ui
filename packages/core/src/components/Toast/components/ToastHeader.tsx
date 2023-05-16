@@ -70,7 +70,7 @@ export const ToastHeader: React.FC<ToastHeaderProps> = ({
     <StyledIcon
       status={status}
       aria-hidden={true}
-      className={status ? `gi-${toastStatusToIconMap[status]}` : ''}
+      className={status ? toastStatusToIconMap[status] : ''}
     />
     <VFlex spacing={'cmp-xs'}>
       <Flex alignItems="center" minHeight="2rem">

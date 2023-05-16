@@ -71,7 +71,7 @@ export const ItemSubMenu = ({
     >
       <StyledItemSubmenu ref={setReferenceElement}>
         <span>{label}</span>
-        <StyledExpandedIcon iconId={'caret_right_solid'} />
+        <StyledExpandedIcon iconId={'gi-caret_right_solid'} />
       </StyledItemSubmenu>
       {isVisible && (
         <SubMenuComponent

@@ -74,9 +74,9 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   colorScheme = 'dark',
   customInfo,
   iconComplete = 'check_thick',
-  iconError = 'error_warning_danger_stop',
+  iconError = 'gi-error_warning_danger_stop',
   iconProgressing,
-  iconWarning = 'error_warning_alert_attention',
+  iconWarning = 'gi-error_warning_alert_attention',
   indeterminate,
   percent,
   progress = 'progressing',
@@ -97,7 +97,6 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       : progress === 'error' && iconError
       ? iconError
       : null;
-
   return (
     <StyledProgressBarContainer {...nativeProps} wide={wide}>
       <StyledProgressBarWrapper typeProp={type}>

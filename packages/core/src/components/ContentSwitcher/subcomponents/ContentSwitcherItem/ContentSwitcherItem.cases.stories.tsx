@@ -13,7 +13,7 @@ export default meta;
 type Story = StoryObj<typeof ContentSwitcherItem>;
 
 export const Controlled: Story = {
-  args: { size: 'md', icon: 'heart_full', state: 'enabled' },
+  args: { size: 'md', icon: 'gi-heart_full', state: 'enabled' },
   render: (args) =>
     ((args) => {
       const [selected, setSelected] = React.useState(false);

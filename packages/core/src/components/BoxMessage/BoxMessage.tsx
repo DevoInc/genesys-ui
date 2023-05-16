@@ -43,7 +43,7 @@ export const BoxMessage: React.FC<BoxMessageProps> = ({
       <Flex.Item alignSelf="flex-start" flex="0 0 auto" marginRight="cmp-sm">
         <StyledBoxMessageIcon
           status={status}
-          className={`gi-${statusIconMap.filled[status]}` || ''}
+          className={statusIconMap.filled[status] || ''}
           aria-hidden
         />
       </Flex.Item>

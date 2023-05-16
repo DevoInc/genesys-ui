@@ -18,7 +18,7 @@ export const StyledIndicator = styled(
       <Badge
         {...props}
         colorScheme={BADGE_COLOR[status]}
-        iconName={isCompletedStep ? 'check_thick' : undefined}
+        icon={isCompletedStep ? 'gi-check_thick' : undefined}
         inverse={status === 'current'}
         size={size}
         text={!isCompletedStep ? (idx + 1).toString() : undefined}

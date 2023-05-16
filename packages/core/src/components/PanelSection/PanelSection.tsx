@@ -22,7 +22,7 @@ export const renderBackwardNavigation = ({
       <HFlex alignItems="stretch" height="100%" spacing="cmp-sm">
         <IconButton
           hasBoldIcon
-          icon="arrow_left1"
+          icon="gi-arrow_left1"
           onClick={onClickBackwardNav}
           title={backwardTooltip}
         />

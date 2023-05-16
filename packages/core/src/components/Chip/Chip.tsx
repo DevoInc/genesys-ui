@@ -53,7 +53,7 @@ export const Chip: React.FC<ChipProps> = ({
   defaultSelected = false,
   hasBoldIcon = false,
   icon,
-  iconSelected = false,
+  iconSelected,
   id,
   name,
   onBlur,
@@ -66,7 +66,7 @@ export const Chip: React.FC<ChipProps> = ({
   ...restStyledProps
 }) => {
   const isSelected = state === 'selected';
-  const iconValue = state === 'selected' ? iconSelected : icon;
+  const iconValue = isSelected ? iconSelected : icon;
   return (
     <StyledChip
       {...restStyledProps}
@@ -92,7 +92,7 @@ export const Chip: React.FC<ChipProps> = ({
         <StyledChipIcon
           aria-hidden
           hasBoldIcon={hasBoldIcon}
-          className={'gi-' + iconValue}
+          className={iconValue}
           size={size}
         />
       )}

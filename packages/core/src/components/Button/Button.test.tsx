@@ -32,7 +32,7 @@ describe('BaseButton', () => {
     });
 
     test('When has icon', () => {
-      render(<Button data-testid={TEST_ID} icon={'heart_full'} />);
+      render(<Button data-testid={TEST_ID} icon={'gi-heart_full'} />);
       const button = screen.getByTestId(TEST_ID);
       expect(button.getElementsByTagName('i')[0]).toHaveClass('gi-heart_full');
     });

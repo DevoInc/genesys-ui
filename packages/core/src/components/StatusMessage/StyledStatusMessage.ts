@@ -13,20 +13,14 @@ export interface StyledStatusMessageProps {
 }
 
 export const StyledStatusMessage = styled.div<StyledStatusMessageProps>`
-  ${({ bordered, margin = '', status = 'base', theme, width = '100%' }) => {
-    const borderColor = settingColors.borderColor({ theme, status });
+  ${({ bordered, status = 'base', theme }) => {
+    const aliasTokens = theme.alias;
+    const borderColor = aliasTokens.color.border.feedback.base.base;
+    const borderSize = aliasTokens.shape.borderSize.separator.md;
+    const borderRadius = aliasTokens.shape.borderRadius.elevated;
     return css`
-      margin: ${margin};
-      width: ${width};
-      border: ${bordered && `solid 1px ${borderColor}`};
-
-      i.status-icon {
-        ${typoColorMixin({
-          variant: 'body',
-          colorScheme: status,
-          theme,
-        })};
-      }
+      border: ${bordered && `solid ${borderSize} ${borderColor}`};
+      border-radius: ${bordered && borderRadius};
     `;
   }}
 `;

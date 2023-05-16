@@ -20,7 +20,7 @@ export const WithChildren: Story = {
   name: 'With children',
   args: {
     circular: true,
-    icon: 'real_time',
+    icon: 'gi-real_time',
     children: (
       <Box position="absolute" width="100%" height="100%">
         <SpinnerLoader />
@@ -35,7 +35,7 @@ export const AsLink: Story = {
     href: 'https://www.devo.com',
     target: '_blank',
     rel: 'noopener noreferrer',
-    icon: 'connections_links',
+    icon: 'gi-connections_links',
   },
 };
 
@@ -44,7 +44,7 @@ export const MultipleUncontrolled: Story = {
   args: {
     selectionScheme: 'multiple',
     value: 'option',
-    icon: 'text_style_bold',
+    icon: 'gi-text_style_bold',
   },
 };
 
@@ -59,7 +59,9 @@ export const MultipleControlled: Story = {
       return (
         <IconButton
           {...args}
-          icon={selected ? 'heart_full' : 'like_heart_favorite_rating_love'}
+          icon={
+            selected ? 'gi-heart_full' : 'gi-like_heart_favorite_rating_love'
+          }
           onChange={() => setSelected(!selected)}
           state={selected ? 'selected' : 'enabled'}
         />
@@ -73,7 +75,7 @@ export const SingleUncontrolled: Story = {
     selectionScheme: 'single',
     name: 'option',
     value: 'option',
-    icon: 'bookmark_tag',
+    icon: 'gi-bookmark_tag',
   },
 };
 
@@ -90,7 +92,7 @@ export const SingleControlled: Story = {
       return (
         <IconButton
           {...args}
-          icon={selected ? 'bookmark_tag_solid' : 'bookmark_tag'}
+          icon={selected ? 'gi-bookmark_tag_solid' : 'gi-bookmark_tag'}
           onChange={() => setSelected(!selected)}
           state={selected ? 'selected' : 'enabled'}
         />

@@ -34,7 +34,7 @@ export interface StyledPanelHeaderContentIconProps {
 
 export const StyledPanelHeaderContentIcon = styled.i.attrs<StyledPanelHeaderContentIconProps>(
   ({ icon }) => ({
-    className: (icon && `gi-${icon}`) || '',
+    className: icon || '',
     'aria-hidden': true,
   })
 )<StyledPanelHeaderContentIconProps>`

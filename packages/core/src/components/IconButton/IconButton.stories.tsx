@@ -15,4 +15,6 @@ const meta: Meta<typeof IconButton> = {
 export default meta;
 type Story = StoryObj<typeof IconButton>;
 
-export const Base: Story = { args: { icon: 'heart_full', title: 'Favourite' } };
+export const Base: Story = {
+  args: { icon: 'gi-heart_full', title: 'Favourite' },
+};

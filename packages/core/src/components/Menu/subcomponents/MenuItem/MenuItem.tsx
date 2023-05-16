@@ -150,7 +150,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                 {(icon || isSelected) && (
                   <StyledMenuItemMarker>
                     <Icon
-                      iconId={isSelected ? 'check_thick' : icon}
+                      iconId={isSelected ? 'gi-check_thick' : icon}
                       size={iconSize}
                     />
                   </StyledMenuItemMarker>
@@ -163,7 +163,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
             </VFlex>
             {expandable && (
               <Flex flex="0" marginLeft="auto" paddingLeft="cmp-xs">
-                <Icon size="xxs" iconId="arrow_right" />
+                <Icon size="xxs" iconId="gi-arrow_right" />
               </Flex>
             )}
           </>

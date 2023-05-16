@@ -30,7 +30,6 @@ export const Icon: React.FC<IconProps> = ({
     iconId={iconId}
     role="img"
     size={size}
-    status={status}
     strong={strong}
   />
 );

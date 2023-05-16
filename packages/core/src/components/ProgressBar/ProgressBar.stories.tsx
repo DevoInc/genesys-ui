@@ -7,9 +7,9 @@ const meta: Meta<typeof ProgressBar> = {
   component: ProgressBar,
   args: {
     colorScheme: 'dark',
-    iconComplete: 'check_thick',
-    iconError: 'error_warning_danger_stop',
-    iconWarning: 'error_warning_alert_attention',
+    iconComplete: 'gi-check_thick',
+    iconError: 'gi-error_warning_danger_stop',
+    iconWarning: 'gi-error_warning_alert_attention',
     progress: 'progressing',
     size: 'md',
     type: 'standard',

@@ -56,7 +56,7 @@ export const IconButtonGoToDocs = React.forwardRef<
         as={StyledIconButtonGoToDocs}
         colorScheme={'help'}
         forwardedAs={forwardedAs || 'a'}
-        icon="about_question_faq_help_filled"
+        icon="gi-about_question_faq_help_filled"
         circular
         ref={ref}
         size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}

@@ -23,14 +23,14 @@ export const Base: Story = {
       return (
         <Tabs {...args}>
           <Tabs.Item
-            icon="check_thick"
+            icon="gi-check_thick"
             label="Tiny"
             onTabClick={() => setActiveTab(0)}
             state={activeTab === 0 ? 'selected' : undefined}
             wide={false}
           />
           <Tabs.Item
-            icon="check_thick"
+            icon="gi-check_thick"
             label="Tab with a very very long title"
             onTabClick={() => setActiveTab(1)}
             state={activeTab === 1 ? 'selected' : undefined}

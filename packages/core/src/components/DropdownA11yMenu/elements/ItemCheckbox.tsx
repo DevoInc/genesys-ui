@@ -64,7 +64,7 @@ export const ItemCheckbox = ({
       <StyledItem>
         <StyledCheckIcon
           selected={checked}
-          iconId="check_thick"
+          iconId="gi-check_thick"
           aria-keyshortcuts={shortcut}
         />
         <span>{label}</span>

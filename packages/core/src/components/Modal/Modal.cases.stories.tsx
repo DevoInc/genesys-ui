@@ -89,7 +89,7 @@ export const WithActions: Story = {
       <IconButton
         key={'back'}
         title={'Back'}
-        icon={'to_back'}
+        icon={'gi-to_back'}
         onClick={() => {
           action('back clicked');
         }}
@@ -97,7 +97,7 @@ export const WithActions: Story = {
       <IconButton
         key={'layers'}
         title={'Layers'}
-        icon={'auto_layers'}
+        icon={'gi-auto_layers'}
         onClick={() => {
           action('layers clicked');
         }}

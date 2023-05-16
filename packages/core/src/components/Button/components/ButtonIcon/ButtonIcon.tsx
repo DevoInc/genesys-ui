@@ -21,7 +21,7 @@ export const ButtonIcon: React.FC<ButtonIconProps> = ({
   <StyledButtonIcon
     aria-hidden={true}
     as={as}
-    className={`gi-${icon || '-check_thick'}`}
+    className={icon || 'gi-check_thick'}
     icon={icon}
     hasBoldIcon={hasBoldIcon}
     size={size}
