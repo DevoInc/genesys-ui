@@ -1,4 +1,5 @@
 import type { AllHTMLAttributes } from 'react';
+import { DOMAttributes } from 'react';
 
 /** ---------------------------------------------------------------------------------------
  * ----------------------------------------------------------------------------------------
@@ -271,4 +272,17 @@ export interface AreaAttrProps<T = HTMLAreaElement> {
   shape?: AllHTMLAttributes<T>['shape'];
   /** A string that specifies where to open the linked resource (e.g. "_blank" or "_self") */
   target?: AllHTMLAttributes<T>['target'];
+}
+
+/** ---------------------------------------------
+ * Common declarations for content editable components (usually typographic components)
+ * - Heading
+ * - Paragraph
+ * - ...
+ * --------------------------------------------- */
+export interface ContentEditableAttrProps<T = Element> {
+  /** The contenteditable global attribute is an enumerated attribute indicating if the element should be editable by the user. If so, the browser modifies its widget to allow editing.*/
+  contentEditable?: AllHTMLAttributes<T>['contentEditable'];
+  /** A function that is called when the element is changed */
+  onChange?: DOMAttributes<T>['onChange'];
 }

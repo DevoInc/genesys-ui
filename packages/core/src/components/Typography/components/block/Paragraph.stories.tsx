@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Typography } from '../../..';
 import { lorem } from '../../../../../stories/utils/fillerTexts';
+import * as React from 'react';
 
 const meta: Meta<typeof Typography.Paragraph> = {
   title: 'Components/Core/Text/Typography/Block',

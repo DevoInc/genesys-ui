@@ -1,4 +1,6 @@
 import {
+  ContentEditableAttrProps,
+  FocusEventAttrProps,
   GlobalAriaProps,
   GlobalAttrProps,
   StyledPolymorphicProps,
@@ -13,15 +15,19 @@ export interface HeadingProps
     // native
     StyledPolymorphicProps,
     GlobalAttrProps,
-    GlobalAriaProps {
+    ContentEditableAttrProps,
+    GlobalAriaProps,
+    FocusEventAttrProps {
   /** Type of the Heading: h1-h8, hero, caps... which defines the specific styles of the heading: bold, uppercase... etc. */
   size?: HeadingType;
   /** Content of the heading */
   children?: React.ReactNode;
+  forwardedRef?: React.Ref<HTMLElement> | null;
 }
 
 export const Heading: React.FC<HeadingProps> = ({
   colorScheme = 'base',
+  forwardedRef,
   gutterBottom = '0',
   textAlign = 'left',
   truncateLine,
@@ -34,6 +40,7 @@ export const Heading: React.FC<HeadingProps> = ({
     colorScheme={colorScheme}
     truncateLine={truncateLine}
     gutterBottom={gutterBottom}
+    ref={forwardedRef}
     size={size}
     textAlign={textAlign}
   >
