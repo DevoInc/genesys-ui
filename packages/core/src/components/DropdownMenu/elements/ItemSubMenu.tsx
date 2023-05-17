@@ -55,7 +55,7 @@ export const ItemSubMenu = ({
       onClick={action}
       onMouseLeave={actionLeave}
       onMouseOver={actionOver}
-      ref={setReferenceElement}
+      //ref={setReferenceElement}
       state={isVisible ? 'expanded' : state}
       subMenu={
         isVisible && (
