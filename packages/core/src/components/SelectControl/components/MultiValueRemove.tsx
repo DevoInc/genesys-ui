@@ -25,7 +25,7 @@ export const MultiValueRemove = <Option extends SelectOption>(
           size: props.selectProps.size || 'xxs',
           chipSize: props.selectProps.chipSize,
         })}
-        title="Remove"
+        tooltip="Remove"
       />
     </components.MultiValueRemove>
   );

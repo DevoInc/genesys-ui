@@ -50,7 +50,7 @@ export const Base: Story = {
             wide={false}
           />
           <Tabs.Aside>
-            <IconButtonRemove size="sm" title="Close all tabs" />
+            <IconButtonRemove size="sm" tooltip="Close all tabs" />
           </Tabs.Aside>
         </Tabs>
       );

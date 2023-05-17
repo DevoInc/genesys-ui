@@ -38,7 +38,6 @@ export const Partitions: React.FC<PartitionsProps> = ({
             hasSeparators={hasSeparators}
             key={idx}
             size={size}
-            tooltip={part.tooltip}
             title={part.tooltip}
             $color={part.color}
             $width={part.value}

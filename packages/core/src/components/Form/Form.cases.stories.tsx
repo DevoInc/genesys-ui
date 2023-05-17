@@ -57,7 +57,7 @@ export const MultipleForms: Story = {
             <IconButtonGoToDocs
               size="sm"
               href="https://www.devo.com"
-              title="Go to Devo"
+              tooltip="Go to Devo"
             />
           }
         >

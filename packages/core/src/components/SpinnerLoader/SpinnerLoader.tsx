@@ -25,6 +25,7 @@ export interface SpinnerLoaderProps
 export const SpinnerLoader: React.FC<SpinnerLoaderProps> = ({
   colorScheme = 'dark',
   size = 'md',
+  tooltip,
   ...restNativeProps
 }) => {
   return (
@@ -32,6 +33,7 @@ export const SpinnerLoader: React.FC<SpinnerLoaderProps> = ({
       {...restNativeProps}
       colorScheme={colorScheme}
       size={size}
+      title={tooltip}
       viewBox={'0 0 50 50'}
     >
       <StyledSpinnerLoaderCircle

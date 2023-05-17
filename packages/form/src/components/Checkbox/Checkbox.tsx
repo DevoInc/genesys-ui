@@ -36,7 +36,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   requiredMarkTooltip,
   size = 'md',
   status = 'base',
-  title,
+  tooltip,
   ...restNativeInputProps
 }) => (
   <Field
@@ -59,7 +59,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     requiredMarkTooltip={requiredMarkTooltip}
     size={size}
     status={status}
-    title={title}
+    tooltip={tooltip}
   >
     <CheckboxControl
       {...restNativeInputProps}

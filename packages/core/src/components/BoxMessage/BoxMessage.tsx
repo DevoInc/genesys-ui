@@ -86,7 +86,7 @@ export const BoxMessage: React.FC<BoxMessageProps> = ({
 
     {close && (
       <Box position="absolute" positionRight="1.2rem" positionTop="1rem">
-        <IconButtonRemove onClick={close} title={closeTooltip} size={'sm'} />
+        <IconButtonRemove onClick={close} tooltip={closeTooltip} size={'sm'} />
       </Box>
     )}
   </StyledBoxMessage>

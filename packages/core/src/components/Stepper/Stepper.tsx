@@ -25,7 +25,7 @@ import {
 } from './styled';
 
 export interface StepperProps
-  extends WithRequired<Pick<GlobalAttrProps, 'id' | 'title'>, 'id'>,
+  extends WithRequired<Pick<GlobalAttrProps, 'id' | 'tooltip'>, 'id'>,
     WithRequired<
       Pick<GlobalAriaProps, 'aria-label' | 'aria-describedby'>,
       'aria-label'
@@ -40,9 +40,10 @@ export interface StepperProps
 export const Stepper: React.FC<StepperProps> = ({
   size = 'sm',
   steps = [],
+  tooltip,
   ...nativeProps
 }) => (
-  <StyledContainer {...nativeProps} size={size}>
+  <StyledContainer {...nativeProps} size={size} title={tooltip}>
     {steps.map((el, idx) => (
       <StyledItem
         key={el.name}

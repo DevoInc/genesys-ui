@@ -20,6 +20,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   size = 'md',
   disabled,
   img,
+  tooltip,
   ...nativeProps
 }) => (
   <StyledThumbnail
@@ -29,5 +30,6 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
     disabled={disabled}
     img={img}
     size={size}
+    title={tooltip}
   />
 );

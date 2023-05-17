@@ -51,7 +51,7 @@ export const SwitchControl: React.FC<SwitchControlProps> = ({
   onMouseUp,
   size = 'md',
   status = 'base',
-  title,
+  tooltip,
   uncheckedContent,
   ...restNativeProps
 }) => {
@@ -91,7 +91,7 @@ export const SwitchControl: React.FC<SwitchControlProps> = ({
       onMouseUp={onMouseUp}
       size={size}
       status={status}
-      title={title}
+      title={tooltip}
     >
       <StyledInput
         {...restNativeProps}

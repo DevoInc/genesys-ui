@@ -29,6 +29,7 @@ const InternalTabs: React.FC<TabsProps> = ({
   children = [],
   colorScheme = 'default',
   contained,
+  tooltip,
   ...nativeProps
 }) => {
   const [windowWidth] = useWindowSize();
@@ -58,7 +59,12 @@ const InternalTabs: React.FC<TabsProps> = ({
   React.useEffect(moveActiveMarkerUnderline, [windowWidth, tabs]);
 
   return (
-    <StyledTabs {...nativeProps} contained={contained} ref={navContainerRef}>
+    <StyledTabs
+      {...nativeProps}
+      contained={contained}
+      ref={navContainerRef}
+      title={tooltip}
+    >
       <StyledTabsContent ref={navTabItemRef}>{tabs}</StyledTabsContent>
       <StyledTabsMark ref={activeMarkRef} colorScheme={colorScheme} />
     </StyledTabs>

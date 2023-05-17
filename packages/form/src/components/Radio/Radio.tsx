@@ -36,7 +36,7 @@ export const Radio: React.FC<RadioProps> = ({
   requiredMarkTooltip,
   size = 'md',
   status = 'base',
-  title,
+  tooltip,
   ...restNativeInputProps
 }) => (
   <Field
@@ -59,7 +59,7 @@ export const Radio: React.FC<RadioProps> = ({
     requiredMarkTooltip={requiredMarkTooltip}
     size={size}
     status={status}
-    title={title}
+    tooltip={tooltip}
   >
     <RadioControl
       {...restNativeInputProps}

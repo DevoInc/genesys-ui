@@ -82,6 +82,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   progress = 'progressing',
   showInfo,
   size = 'md',
+  tooltip,
   type = 'standard',
   wide = true,
   ...nativeProps
@@ -98,7 +99,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       ? iconError
       : null;
   return (
-    <StyledProgressBarContainer {...nativeProps} wide={wide}>
+    <StyledProgressBarContainer {...nativeProps} title={tooltip} wide={wide}>
       <StyledProgressBarWrapper typeProp={type}>
         {(type === 'standard' || !type) && (
           <StyledProgressBarStandard

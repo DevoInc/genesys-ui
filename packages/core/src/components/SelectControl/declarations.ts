@@ -45,7 +45,7 @@ export interface CommonSelectCmpsProps {
    * to body*/
   menuAppendToBody?: boolean;
   /** Tooltip text */
-  'data-tip'?: string;
+  tooltip?: string;
   /** Allow the user to edit values */
   creatable?: boolean;
   /** Enable virtualization for select options. Useful for large lists */

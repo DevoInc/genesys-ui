@@ -36,7 +36,7 @@ export const Base: Story = {
                 aria-controls="story-id"
                 aria-haspopup="true"
                 icon="gi-menu_alt_bold"
-                title="Open Popper"
+                tooltip="Open Popper"
               />
             }
           >

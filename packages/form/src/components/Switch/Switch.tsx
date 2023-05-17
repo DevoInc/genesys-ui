@@ -29,7 +29,7 @@ export const Switch: React.FC<SwitchProps> = ({
   requiredMarkTooltip,
   size = 'md',
   status = 'base',
-  title,
+  tooltip,
   ...restSwitchControlProps
 }) => {
   return (
@@ -53,7 +53,7 @@ export const Switch: React.FC<SwitchProps> = ({
       requiredMarkTooltip={requiredMarkTooltip}
       size={size}
       status={status}
-      title={title}
+      tooltip={tooltip}
     >
       <SwitchControl
         {...restSwitchControlProps}

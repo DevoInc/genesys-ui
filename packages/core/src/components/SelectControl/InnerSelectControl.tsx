@@ -3,6 +3,7 @@ import { GroupBase, Props } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import { CommonSelectCmpsProps, SelectOption } from './declarations';
 import { StyledSelectControl } from './styled/StyledSelectControl';
+import { GlobalAttrProps } from '../../declarations';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface InnerSelectControlProps<
@@ -23,9 +24,10 @@ export const InnerSelectControl = <
   return props.creatable ? (
     <StyledSelectControl
       as={CreatableSelect<Option, IsMulti, Group>}
+      tooltip={props.tooltip}
       {...props}
     />
   ) : (
-    <StyledSelectControl {...props} />
+    <StyledSelectControl {...props} tooltip={props.tooltip} />
   );
 };

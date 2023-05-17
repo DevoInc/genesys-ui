@@ -110,7 +110,7 @@ export const Month: React.FC<MonthProps> = ({
           onClick={onClickPrevMonth}
           size={size}
           state={stateMin}
-          title={ariaLabelPrevMonth}
+          tooltip={ariaLabelPrevMonth}
         />
       )}
       <Flex.Item
@@ -161,7 +161,7 @@ export const Month: React.FC<MonthProps> = ({
           onClick={onClickNextMonth}
           size={size}
           state={stateMax}
-          title={ariaLabelNextMonth}
+          tooltip={ariaLabelNextMonth}
         />
       )}
     </HFlex>

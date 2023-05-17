@@ -62,6 +62,7 @@ export const StatusMessage = ({
   onClick,
   padding,
   status,
+  tooltip,
   width,
   ...restNativeProps
 }: StatusMessageProps) => {
@@ -85,6 +86,7 @@ export const StatusMessage = ({
       bordered={bordered}
       margin={margin}
       status={status}
+      title={tooltip}
       width={width}
     >
       <FlexWrapper

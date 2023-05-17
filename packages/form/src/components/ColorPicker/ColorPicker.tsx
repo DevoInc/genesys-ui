@@ -46,7 +46,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
   requiredMarkTooltip,
   size = 'md',
   status = 'base',
-  title,
+  tooltip,
   value,
 }) => {
   const [color, setColor] = React.useState(
@@ -89,7 +89,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
       requiredMarkTooltip={requiredMarkTooltip}
       size={size}
       status={status}
-      title={title}
+      tooltip={tooltip}
     >
       <Popper
         visible={visible}
