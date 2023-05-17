@@ -1,7 +1,5 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { settingColors } from '../../styled/settingColors';
-import { typoColorMixin } from '../../styled/mixins/baseMixins';
 import { GlobalStatus } from '../../declarations';
 
 export interface StyledStatusMessageProps {
@@ -13,7 +11,7 @@ export interface StyledStatusMessageProps {
 }
 
 export const StyledStatusMessage = styled.div<StyledStatusMessageProps>`
-  ${({ bordered, status = 'base', theme }) => {
+  ${({ bordered, theme }) => {
     const aliasTokens = theme.alias;
     const borderColor = aliasTokens.color.border.feedback.base.base;
     const borderSize = aliasTokens.shape.borderSize.separator.md;

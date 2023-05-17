@@ -11,7 +11,7 @@ export interface StyledTabsCloseProps extends Pick<GlobalAttrProps, 'tooltip'> {
   state?: TabsItemState;
 }
 
-export const StyledTabsClose = styled(({ state, tooltip, ...props }) => {
+export const StyledTabsClose = styled(({ state, ...props }) => {
   return (
     <IconButtonRemove {...props} size={'xs'} state={buttonStateMap[state]} />
   );
