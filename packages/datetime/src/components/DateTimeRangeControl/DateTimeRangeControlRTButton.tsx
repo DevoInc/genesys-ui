@@ -46,7 +46,7 @@ export const DateTimeRangeControlRTButton: React.FC<
         onClick={onClick}
         size={size}
         state={getButtonStateFromRealTimeState(state)}
-        title={getRealTimeDataTip(state)}
+        tooltip={getRealTimeDataTip(state)}
       />
     </Box>
   );

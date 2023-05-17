@@ -88,16 +88,16 @@ export const WithActions: Story = {
     headerActions: [
       <IconButton
         key={'back'}
-        title={'Back'}
-        icon={'to_back'}
+        tooltip={'Back'}
+        icon={'gi-to_back'}
         onClick={() => {
           action('back clicked');
         }}
       />,
       <IconButton
         key={'layers'}
-        title={'Layers'}
-        icon={'auto_layers'}
+        tooltip={'Layers'}
+        icon={'gi-auto_layers'}
         onClick={() => {
           action('layers clicked');
         }}
@@ -168,8 +168,8 @@ export const Custom: Story = {
                 </Flex>
                 <Flex marginLeft="auto">
                   <ButtonGroup size="md" itemsGap="lg">
-                    <IconButtonStatus title="Info" />
-                    <IconButtonClose title="Close" />
+                    <IconButtonStatus tooltip="Info" />
+                    <IconButtonClose tooltip="Close" />
                   </ButtonGroup>
                 </Flex>
               </Modal.Header>
@@ -178,7 +178,7 @@ export const Custom: Story = {
                 <Box marginRight="auto">
                   <IconButtonGoToDocs
                     href="https://www.google.com/"
-                    title="Go to Docs"
+                    tooltip="Go to Docs"
                   />
                 </Box>
 

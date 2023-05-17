@@ -14,8 +14,8 @@ export interface StyledBadgeProps {
   text?: string;
   /** Size to define padding, line-height, font-size... etc. of the Badge. */
   size?: BadgeSize;
-  /** The name of the icon for the Badge */
-  iconName?: string;
+  /** The icon for the Badge */
+  icon?: string;
   /** If the color scheme is inverse: text color becomes background color and vice versa */
   inverse?: boolean;
   /** If the badge is used with position absolute inside another component
@@ -32,13 +32,13 @@ export const StyledBadge = styled.span<StyledBadgeProps>`
     colorScheme,
     hasAbsolutePosition,
     inverse,
-    iconName,
+    icon,
     size,
     text,
     theme,
   }) => {
     const colorSchemeForTokens = _.camelCase(colorScheme);
-    const contentType = text || iconName ? 'hasContent' : 'isEmpty';
+    const contentType = text || icon ? 'hasContent' : 'isEmpty';
     const cmpTokens = theme.cmp.badge;
     const squareSize = cmpTokens.size.square[contentType][size];
     const bgColor = isValidColor(colorScheme)

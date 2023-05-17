@@ -25,6 +25,7 @@ export const BlockQuote: React.FC<BlockQuoteProps> = ({
   gutterBottom = 'cmp-md',
   size = 'md',
   textAlign = 'left',
+  tooltip,
   ...nativeProps
 }) => (
   <StyledBlockQuote
@@ -32,6 +33,7 @@ export const BlockQuote: React.FC<BlockQuoteProps> = ({
     gutterBottom={gutterBottom}
     size={size}
     textAlign={textAlign}
+    title={tooltip}
   >
     {children}
   </StyledBlockQuote>

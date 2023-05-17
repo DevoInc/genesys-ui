@@ -10,6 +10,12 @@ export interface SmallProps
   children?: React.ReactNode;
 }
 
-export const Small: React.FC<SmallProps> = ({ children, ...nativeProps }) => (
-  <StyledSmall {...nativeProps}>{children}</StyledSmall>
+export const Small: React.FC<SmallProps> = ({
+  children,
+  tooltip,
+  ...nativeProps
+}) => (
+  <StyledSmall {...nativeProps} title={tooltip}>
+    {children}
+  </StyledSmall>
 );

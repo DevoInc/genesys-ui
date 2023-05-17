@@ -11,7 +11,7 @@ import { WithRequired } from '../../typeFunctions';
 
 export interface PresetsProps
   extends WithRequired<GlobalAttrProps, 'id'>,
-    Pick<GlobalAttrProps, 'title'>,
+    Pick<GlobalAttrProps, 'tooltip'>,
     Partial<Pick<HTMLInputElement, 'placeholder'>>,
     Partial<Pick<SelectControlProps, 'maxMenuHeight' | 'size'>> {
   /** Function called when selected a preset. */

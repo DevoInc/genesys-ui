@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-import { LinkProps } from '../../../index';
+import { GlobalAttrProps } from '../../../../declarations';
+
+import { LinkProps } from '../../../Link';
 
 import {
   StyledTabsClose,
@@ -16,6 +18,8 @@ export interface TabsItemProps
   extends Pick<StyledTabsCloseProps, 'state' | 'tooltip'>,
     Pick<LinkProps, 'href' | 'target'>,
     StyledTabsItemProps {
+  /** A title or description of the element, typically displayed as a tooltip when hovering over the element */
+  closeTooltip?: GlobalAttrProps['tooltip'];
   /** This property defines the icon type */
   icon?: StyledTabsIconProps['iconId'];
   /** Tab label */
@@ -27,6 +31,7 @@ export interface TabsItemProps
 }
 
 export const TabsItem: React.FC<TabsItemProps> = ({
+  closeTooltip,
   href,
   icon,
   label,
@@ -51,6 +56,7 @@ export const TabsItem: React.FC<TabsItemProps> = ({
       aria-selected={state === 'selected'}
       size={size}
       wide={wide}
+      title={tooltip}
     >
       <StyledTabsLink
         state={state}
@@ -64,7 +70,7 @@ export const TabsItem: React.FC<TabsItemProps> = ({
         {onActionClick && (
           <StyledTabsClose
             state={state}
-            tooltip={tooltip}
+            tooltip={closeTooltip}
             onClick={tunedOnActionClick}
           />
         )}

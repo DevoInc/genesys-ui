@@ -67,6 +67,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   marginTop,
   name,
   status = 'base',
+  tooltip,
   ...restNativeAttrProps
 }) => {
   // to get vertically aligned the label with the control block anyway
@@ -98,6 +99,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
       legendPosition={legendPosition}
       marginLeft={marginLeft}
       marginTop={marginTop}
+      title={tooltip}
     >
       {legend && (
         <FormLegend

@@ -77,7 +77,7 @@ export const InputControlInput: React.FC<InputControlInputProps> = ({
   size = 'md',
   status = 'base',
   step,
-  title,
+  tooltip,
   type = 'text',
   value,
 }) => {
@@ -130,7 +130,7 @@ export const InputControlInput: React.FC<InputControlInputProps> = ({
       $size={size}
       status={status}
       step={step}
-      title={title}
+      title={tooltip}
       type={type}
       value={value}
     />

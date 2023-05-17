@@ -40,7 +40,7 @@ export const IconButtonRemove = React.forwardRef<
   <IconButton
     {...restIconButtonProps}
     colorScheme={'blend-base'}
-    icon="exit_close"
+    icon="gi-exit_close"
     circular
     hasBoldIcon
     ref={ref}

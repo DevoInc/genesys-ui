@@ -15,7 +15,10 @@ export const Base: Story = {
   render: (args) => (
     <div>
       <div style={{ padding: '2rem' }}>
-        <Icon iconId="star_favorite_rating_active" data-tip="Set as default" />
+        <Icon
+          iconId="gi-star_favorite_rating_active"
+          data-tip="Set as default"
+        />
       </div>
 
       <Tooltip effect="solid" delayShow={150} offset={{ top: 2 }} {...args} />

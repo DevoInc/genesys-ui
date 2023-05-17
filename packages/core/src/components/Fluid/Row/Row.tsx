@@ -31,8 +31,12 @@ export interface RowProps
   children?: React.ReactNode;
 }
 
-export const Row: React.FC<RowProps> = ({ children, ...styledProps }) => (
-  <StyledRow {...styledProps} style={RESET_STYLES.MARGIN}>
+export const Row: React.FC<RowProps> = ({
+  children,
+  tooltip,
+  ...styledProps
+}) => (
+  <StyledRow {...styledProps} style={RESET_STYLES.MARGIN} title={tooltip}>
     {children}
   </StyledRow>
 );

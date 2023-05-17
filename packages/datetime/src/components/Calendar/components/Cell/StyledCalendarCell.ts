@@ -140,13 +140,6 @@ export const StyledCalendarCell = styled.div`
           color ease ${dayTokens.mutation.transitionDuration};
       }
 
-      &:hover {
-        span {
-          color: ${dayTokens.color.text.hovered};
-          background-color: ${dayTokens.color.background.hovered};
-        }
-      }
-
       &.selected {
         span {
           color: ${dayTokens.color.text.selected};
@@ -180,6 +173,22 @@ export const StyledCalendarCell = styled.div`
       &.selected.from-selected.to-selected {
         &::before {
           width: 0;
+        }
+      }
+
+      &:not(.selected):not(.highlight):not(.box-shadow):hover {
+        span {
+          color: ${dayTokens.color.text.hovered};
+          background-color: ${dayTokens.color.background.hovered};
+        }
+      }
+
+      &.selected:hover,
+      &.highlight:hover,
+      &.box-shadow:hover {
+        span {
+          color: ${dayTokens.color.text.selected};
+          background-color: ${dayTokens.color.background.selected};
         }
       }
 

@@ -35,7 +35,7 @@ export interface InlineMessageProps
     size?: ButtonSize;
     secondaryText?: string;
     text?: string;
-    title?: string;
+    tooltip?: string;
   };
   zIndex?: React.CSSProperties['zIndex'];
 }
@@ -49,6 +49,7 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
   state = 'enabled',
   status = 'help',
   strategy,
+  tooltip,
   trigger,
   zIndex,
 }) => {
@@ -75,7 +76,7 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
           status={status}
           secondaryText={trigger?.secondaryText}
           text={trigger?.text}
-          title={trigger?.title}
+          tooltip={trigger?.tooltip || tooltip}
           Trigger={trigger?.Component}
         />
       }

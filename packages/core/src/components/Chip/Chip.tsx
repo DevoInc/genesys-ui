@@ -53,7 +53,7 @@ export const Chip: React.FC<ChipProps> = ({
   defaultSelected = false,
   hasBoldIcon = false,
   icon,
-  iconSelected = false,
+  iconSelected,
   id,
   name,
   onBlur,
@@ -62,11 +62,12 @@ export const Chip: React.FC<ChipProps> = ({
   selectionScheme = 'multiple',
   size = 'md',
   state,
+  tooltip,
   value,
   ...restStyledProps
 }) => {
   const isSelected = state === 'selected';
-  const iconValue = state === 'selected' ? iconSelected : icon;
+  const iconValue = isSelected ? iconSelected : icon;
   return (
     <StyledChip
       {...restStyledProps}
@@ -74,6 +75,7 @@ export const Chip: React.FC<ChipProps> = ({
       selectionScheme={selectionScheme}
       size={size}
       state={state}
+      title={tooltip}
     >
       <StyledHiddenInput
         aria-label={ariaLabel || children?.toString()}
@@ -92,7 +94,7 @@ export const Chip: React.FC<ChipProps> = ({
         <StyledChipIcon
           aria-hidden
           hasBoldIcon={hasBoldIcon}
-          className={'gi-' + iconValue}
+          className={iconValue}
           size={size}
         />
       )}

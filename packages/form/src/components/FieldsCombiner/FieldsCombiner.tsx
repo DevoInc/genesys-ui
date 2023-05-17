@@ -66,6 +66,7 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
   leftElemWidth,
   rightElem,
   rightElemWidth,
+  tooltip,
   ...props
 }) => {
   const elemType = (elem) => {
@@ -102,6 +103,7 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
       required={required}
       size={size}
       status={status}
+      tooltip={tooltip}
     >
       <StyledFieldsCombinerWrapper>
         <StyledFieldsCombinerElem

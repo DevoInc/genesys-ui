@@ -34,10 +34,11 @@ const PartForm: React.FC<FormProps> = ({
   heading,
   itemsGap = 'md',
   justifyContent,
+  tooltip,
   ...formNativeProps
 }) => {
   return (
-    <form {...formNativeProps}>
+    <form {...formNativeProps} title={tooltip}>
       {heading && <FormLegend text={heading} />}
       <FormDistributor
         alignItems={alignItems}

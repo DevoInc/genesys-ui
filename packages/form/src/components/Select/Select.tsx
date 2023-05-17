@@ -39,6 +39,7 @@ export const Select: React.FC<SelectProps> = ({
   hideLabel,
   label,
   labelPosition = 'top',
+  tooltip,
   // SELECT ----------------------------------
   ...props
 }) => (
@@ -58,6 +59,7 @@ export const Select: React.FC<SelectProps> = ({
     hideLabel={hideLabel}
     label={label}
     labelPosition={labelPosition}
+    tooltip={tooltip}
   >
     <SelectControl
       // Common

@@ -38,12 +38,14 @@ export interface ModalProps
   children?: React.ReactNode;
   /** Set window options button (close button excluded) */
   headerActions?: React.ReactElement[];
-  /** Defines the header Title */
+  /** Defines the header Title content */
   headerTitle?: React.ReactNode;
+  /** The tooltip for the Header */
+  headerTooltip?: string;
   /** Height */
   height?: string;
-  /** The title for the docs help link on the footer of the Modal */
-  helpTitle?: string;
+  /** The tooltip for the docs help link on the footer of the Modal */
+  helpTooltip?: string;
   /** The URL for the docs help link on the footer of the Modal */
   helpUrl?: string;
   /** Function that will be called right after the modal is open */
@@ -62,9 +64,10 @@ export const InternalModal: React.FC<ModalProps> = ({
   contentPadding,
   headerActions = [],
   headerTitle,
+  headerTooltip,
   height,
   width,
-  helpTitle = 'Go to Docs',
+  helpTooltip = 'Go to Docs',
   helpUrl,
   id,
   onRequestClose,
@@ -93,7 +96,10 @@ export const InternalModal: React.FC<ModalProps> = ({
             <Heading
               size={status === 'base' ? 'h4' : 'h5'}
               truncateLine={1}
-              title={typeof headerTitle === 'string' ? headerTitle : null}
+              tooltip={
+                headerTooltip ||
+                (typeof headerTitle === 'string' ? headerTitle : null)
+              }
             >
               {headerTitle}
             </Heading>
@@ -108,7 +114,7 @@ export const InternalModal: React.FC<ModalProps> = ({
                 size="md"
                 key="close"
                 onClick={onRequestClose}
-                title="Close"
+                tooltip="Close"
               />,
             ]}
           </ButtonGroup>
@@ -127,7 +133,7 @@ export const InternalModal: React.FC<ModalProps> = ({
         <ModalFooter hasBoxShadow={hasScroll} status={status}>
           {helpUrl && (
             <Box marginRight="auto">
-              <IconButtonGoToDocs href={helpUrl} title={helpTitle} />
+              <IconButtonGoToDocs href={helpUrl} tooltip={helpTooltip} />
             </Box>
           )}
           {footerButtons}

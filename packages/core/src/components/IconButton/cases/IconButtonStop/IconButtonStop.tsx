@@ -40,7 +40,7 @@ export const IconButtonStop = React.forwardRef<
     {...restIconButtonProps}
     as={StyledIconButtonStop}
     colorScheme="neutral"
-    icon="stop_square"
+    icon="gi-stop_square"
     ref={ref}
     size={size}
     state={state}

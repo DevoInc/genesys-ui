@@ -40,7 +40,7 @@ import { HFlex } from '../../../HFlex';
 
 export interface MenuItemProps
   extends StyledPolymorphicProps,
-    Pick<GlobalAttrProps, 'id' | 'title'>,
+    Pick<GlobalAttrProps, 'id' | 'tooltip'>,
     GlobalAriaProps,
     Pick<TriggerAriaProps, 'aria-controls' | 'aria-expanded' | 'aria-haspopup'>,
     LayoutAttrProps,
@@ -95,6 +95,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   tabIndex,
   subMenu,
   target,
+  tooltip,
   value,
   ...restNativeProps
 }) => {
@@ -134,6 +135,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         rel={rel}
         role={roleEval}
         state={state}
+        title={tooltip}
         tabIndex={tabIndex}
         target={target}
         value={isSelectable ? null : value}
@@ -171,7 +173,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                 {(icon || isSelected) && (
                   <StyledMenuItemMarker>
                     <Icon
-                      iconId={isSelected ? 'check_thick' : icon}
+                      iconId={isSelected ? 'gi-check_thick' : icon}
                       size={iconSize}
                     />
                   </StyledMenuItemMarker>
@@ -191,7 +193,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
             </VFlex>
             {expandable && (
               <Flex as="span" flex="0" marginLeft="auto" paddingLeft="cmp-xs">
-                <Icon size="xxs" iconId="arrow_right" />
+                <Icon size="xxs" iconId="gi-arrow_right" />
               </Flex>
             )}
           </>

@@ -23,6 +23,7 @@ export const Caption: React.FC<CaptionProps> = ({
   textAlign = 'left',
   truncateLine = 1,
   children,
+  tooltip,
   ...nativeProps
 }) => (
   <StyledCaption
@@ -32,6 +33,7 @@ export const Caption: React.FC<CaptionProps> = ({
     gutterBottom={gutterBottom}
     size={size}
     textAlign={textAlign}
+    title={tooltip}
   >
     {children}
   </StyledCaption>

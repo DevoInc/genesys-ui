@@ -14,8 +14,6 @@ export interface StyledPartitionsItemProps {
   hasSeparators?: boolean;
   /** The size of the partition item. */
   size: BaseSize | PickUnion<GlobalSize, 'xs'>;
-  /** The title of the partition item rendered when it's hovered. */
-  tooltip?: string;
   /** The background color of the partition item. */
   $color?: string;
   /** The width in percentage [0-1]. The sum of all item widths must be one. */
@@ -41,8 +39,8 @@ export const StyledPartitionsItem = styled.li<StyledPartitionsItemProps>`
     `};
 
   // hover on its parent
-  ${({ tooltip }) =>
-    tooltip &&
+  ${({ title }) =>
+    title &&
     css`
       ${StyledPartitionsWrapper}:hover > & {
         opacity: 0.4;

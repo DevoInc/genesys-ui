@@ -58,10 +58,10 @@ export const ToastHeader: React.FC<ToastHeaderProps> = ({
       <>
         <Flex.Item alignSelf="center" flex="0 0 auto">
           <IconButtonCollapse
-            title={collapsed ? expandTooltip : collapseTooltip}
             onClick={onCollapse}
             size="md"
             state={collapsed ? undefined : 'expanded'}
+            tooltip={collapsed ? expandTooltip : collapseTooltip}
           />
         </Flex.Item>
         <Divider height="auto" margin="0" vertical />
@@ -70,7 +70,7 @@ export const ToastHeader: React.FC<ToastHeaderProps> = ({
     <StyledIcon
       status={status}
       aria-hidden={true}
-      className={status ? `gi-${toastStatusToIconMap[status]}` : ''}
+      className={status ? toastStatusToIconMap[status] : ''}
     />
     <VFlex spacing={'cmp-xs'}>
       <Flex alignItems="center" minHeight="2rem">
@@ -83,7 +83,7 @@ export const ToastHeader: React.FC<ToastHeaderProps> = ({
       </Typography.Heading>
     </VFlex>
     <Flex.Item marginLeft="auto" flex="0 0 auto">
-      <IconButtonClose title={closeTooltip} onClick={closeToast} size="md" />
+      <IconButtonClose tooltip={closeTooltip} onClick={closeToast} size="md" />
     </Flex.Item>
   </HFlex>
 );

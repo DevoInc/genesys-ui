@@ -37,8 +37,8 @@ export const MultipleSelectionControlled: Story = {
             colorScheme="quiet"
             icon={
               selectedButtons?.one
-                ? 'heart_full'
-                : 'like_heart_favorite_rating_love'
+                ? 'gi-heart_full'
+                : 'gi-like_heart_favorite_rating_love'
             }
             onChange={() => {
               setSelectedButtons({
@@ -46,28 +46,37 @@ export const MultipleSelectionControlled: Story = {
                 one: !selectedButtons?.one,
               });
             }}
+            selectionScheme="multiple"
             state={selectedButtons.one ? 'selected' : 'enabled'}
           />
           <IconButton
             colorScheme="quiet"
-            icon={selectedButtons.two ? 'bookmark_tag_solid' : 'bookmark_tag'}
+            icon={
+              selectedButtons.two ? 'gi-bookmark_tag_solid' : 'gi-bookmark_tag'
+            }
             onChange={() => {
               setSelectedButtons({
                 ...selectedButtons,
                 two: !selectedButtons?.two,
               });
             }}
+            selectionScheme="multiple"
             state={selectedButtons.two ? 'selected' : 'enabled'}
           />
           <IconButton
             colorScheme="quiet"
-            icon={selectedButtons.three ? 'pin_bookmark_solid' : 'pin_bookmark'}
+            icon={
+              selectedButtons.three
+                ? 'gi-pin_bookmark_solid'
+                : 'gi-pin_bookmark'
+            }
             onChange={() => {
               setSelectedButtons({
                 ...selectedButtons,
                 three: !selectedButtons?.three,
               });
             }}
+            selectionScheme="multiple"
             state={selectedButtons.three ? 'selected' : 'enabled'}
           />
         </ChoiceGroup>
@@ -81,9 +90,14 @@ export const MultipleSelectionUncontrolled: Story = {
       <>
         <IconButton
           colorScheme="quiet"
-          icon="like_heart_favorite_rating_love"
+          icon="gi-like_heart_favorite_rating_love"
+          selectionScheme="multiple"
         />
-        <IconButton colorScheme="quiet" icon="bookmark_tag" />
+        <IconButton
+          colorScheme="quiet"
+          icon="gi-bookmark_tag"
+          selectionScheme="multiple"
+        />
       </>
     ),
   },
@@ -97,7 +111,7 @@ export const SingleSelectionControlled: Story = {
         <ChoiceGroup>
           <IconButton
             colorScheme="quiet"
-            icon="chart"
+            icon="gi-chart"
             onChange={() => {
               setSelectedButton(1);
             }}
@@ -106,7 +120,7 @@ export const SingleSelectionControlled: Story = {
           />
           <IconButton
             colorScheme="quiet"
-            icon="chart_agg"
+            icon="gi-chart_agg"
             onChange={() => {
               setSelectedButton(2);
             }}
@@ -115,7 +129,7 @@ export const SingleSelectionControlled: Story = {
           />
           <IconButton
             colorScheme="quiet"
-            icon="chart_donut"
+            icon="gi-chart_donut"
             onChange={() => {
               setSelectedButton(3);
             }}
@@ -124,7 +138,7 @@ export const SingleSelectionControlled: Story = {
           />
           <IconButton
             colorScheme="quiet"
-            icon="chart_sankey"
+            icon="gi-chart_sankey"
             onChange={() => {
               setSelectedButton(4);
             }}
@@ -142,25 +156,25 @@ export const SingleSelectionUncontrolled: Story = {
       <>
         <IconButton
           colorScheme="quiet"
-          icon="chart"
+          icon="gi-chart"
           name="uncontrolled"
           selectionScheme="single"
         />
         <IconButton
           colorScheme="quiet"
-          icon="chart_agg"
+          icon="gi-chart_agg"
           name="uncontrolled"
           selectionScheme="single"
         />
         <IconButton
           colorScheme="quiet"
-          icon="chart_donut"
+          icon="gi-chart_donut"
           name="uncontrolled"
           selectionScheme="single"
         />
         <IconButton
           colorScheme="quiet"
-          icon="chart_sankey"
+          icon="gi-chart_sankey"
           name="uncontrolled"
           selectionScheme="single"
         />

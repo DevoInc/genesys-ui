@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Badge>;
 
 export const Base: Story = {
   args: {
-    iconName: 'check_thick',
+    icon: 'gi-check_thick',
     size: 'md',
     text: '',
   },

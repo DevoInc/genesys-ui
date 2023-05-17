@@ -17,13 +17,85 @@ export default meta;
 type Story = StoryObj<typeof IconButton>;
 
 export const WithChildren: Story = {
+  name: 'With children',
   args: {
     circular: true,
-    icon: 'real_time',
+    icon: 'gi-real_time',
     children: (
       <Box position="absolute" width="100%" height="100%">
         <SpinnerLoader />
       </Box>
     ),
   },
+};
+
+export const AsLink: Story = {
+  name: 'As link',
+  args: {
+    href: 'https://www.devo.com',
+    target: '_blank',
+    rel: 'noopener noreferrer',
+    icon: 'gi-connections_links',
+  },
+};
+
+export const MultipleUncontrolled: Story = {
+  name: 'Multiple uncontrolled',
+  args: {
+    selectionScheme: 'multiple',
+    value: 'option',
+    icon: 'gi-text_style_bold',
+  },
+};
+
+export const MultipleControlled: Story = {
+  name: 'Multiple controlled',
+  args: {
+    selectionScheme: 'multiple',
+  },
+  render: (args) =>
+    ((args) => {
+      const [selected, setSelected] = React.useState(false);
+      return (
+        <IconButton
+          {...args}
+          icon={
+            selected ? 'gi-heart_full' : 'gi-like_heart_favorite_rating_love'
+          }
+          onChange={() => setSelected(!selected)}
+          state={selected ? 'selected' : 'enabled'}
+        />
+      );
+    })(args),
+};
+
+export const SingleUncontrolled: Story = {
+  name: 'Single uncontrolled',
+  args: {
+    selectionScheme: 'single',
+    name: 'option',
+    value: 'option',
+    icon: 'gi-bookmark_tag',
+  },
+};
+
+export const SingleControlled: Story = {
+  name: 'Single controlled',
+  args: {
+    selectionScheme: 'single',
+    value: 'Option',
+    name: 'option',
+  },
+  render: (args) =>
+    ((args) => {
+      const [selected, setSelected] = React.useState(false);
+      return (
+        <IconButton
+          {...args}
+          icon={selected ? 'gi-bookmark_tag_solid' : 'gi-bookmark_tag'}
+          onChange={() => setSelected(!selected)}
+          state={selected ? 'selected' : 'enabled'}
+        />
+      );
+    })(args),
 };

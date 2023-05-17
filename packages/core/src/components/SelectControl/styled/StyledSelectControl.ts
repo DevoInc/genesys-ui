@@ -10,9 +10,10 @@ import { scrollbars } from '../../../styled/mixins/scrollbars';
 import { SelectOption } from '../declarations';
 
 export const StyledSelectControl = styled(ReactSelect).attrs(
-  ({ className, classNamePrefix }) => ({
+  ({ className, classNamePrefix, tooltip }) => ({
     classNamePrefix: classNamePrefix || 'react-select',
     className: className || 'react-select__container',
+    title: tooltip,
   })
 )`
   ${({

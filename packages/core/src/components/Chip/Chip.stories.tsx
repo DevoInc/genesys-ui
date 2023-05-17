@@ -7,8 +7,8 @@ const meta: Meta<typeof Chip> = {
   component: Chip,
   args: {
     children: 'Favorite',
-    icon: 'like_heart_favorite_rating_love',
-    iconSelected: 'heart_full',
+    icon: 'gi-like_heart_favorite_rating_love',
+    iconSelected: 'gi-heart_full',
     selectionScheme: 'multiple',
     size: 'md',
   },

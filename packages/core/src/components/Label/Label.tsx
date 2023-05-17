@@ -28,6 +28,7 @@ export const Label: React.FC<LabelProps> = ({
   htmlFor,
   size = 'md',
   styles,
+  tooltip,
   truncated = true,
   ...restNativeProps
 }) => {
@@ -39,6 +40,7 @@ export const Label: React.FC<LabelProps> = ({
       css={styles}
       htmlFor={htmlFor}
       size={size}
+      title={tooltip}
       truncated={truncated}
     >
       {children}

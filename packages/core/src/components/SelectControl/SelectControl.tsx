@@ -29,7 +29,7 @@ export interface SelectControlProps<
     //native
     FieldAriaProps,
     GlobalAriaProps,
-    GlobalAttrProps {
+    Omit<GlobalAttrProps, 'tooltip'> {
   value?: PropsValue<Option> | Option['value'];
   onChange?: (value: PropsValue<Option>) => void;
 }

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Box, Flex, HFlex, IconButtonRemove, Typography } from '../';
 import { StyledBoxMessage, StyledBoxMessageProps } from './StyledBoxMessage';
-import { statusIconMap } from '../../styled/functions/utils';
+import { statusIconMap } from '../../styled/functions';
 import { StyledBoxMessageIcon } from './StyledBoxMessageIcon';
 import {
   GlobalAriaProps,
@@ -23,9 +23,11 @@ export interface BoxMessageProps
   /** Tooltip for close button */
   closeTooltip?: string;
   /** BoxMessage content */
-  content?: string | React.ReactNode;
+  content?: React.ReactNode;
   /** This prop hides the BoxMessage icon */
   hideIcon?: boolean;
+  /** BoxMessage title content */
+  title?: React.ReactNode;
 }
 
 export const BoxMessage: React.FC<BoxMessageProps> = ({
@@ -36,14 +38,15 @@ export const BoxMessage: React.FC<BoxMessageProps> = ({
   hideIcon,
   title,
   status = 'info',
+  tooltip,
   ...nativeProps
 }) => (
-  <StyledBoxMessage {...nativeProps} title={title} status={status}>
+  <StyledBoxMessage {...nativeProps} title={tooltip} status={status}>
     {!hideIcon && (
       <Flex.Item alignSelf="flex-start" flex="0 0 auto" marginRight="cmp-sm">
         <StyledBoxMessageIcon
           status={status}
-          className={`gi-${statusIconMap.filled[status]}` || ''}
+          className={statusIconMap.filled[status] || ''}
           aria-hidden
         />
       </Flex.Item>
@@ -85,7 +88,7 @@ export const BoxMessage: React.FC<BoxMessageProps> = ({
 
     {close && (
       <Box position="absolute" positionRight="1.2rem" positionTop="1rem">
-        <IconButtonRemove onClick={close} title={closeTooltip} size={'sm'} />
+        <IconButtonRemove onClick={close} tooltip={closeTooltip} size={'sm'} />
       </Box>
     )}
   </StyledBoxMessage>

@@ -12,5 +12,10 @@ export interface InsertedProps
 
 export const Inserted: React.FC<InsertedProps> = ({
   children,
+  tooltip,
   ...nativeProps
-}) => <StyledInserted {...nativeProps}>{children}</StyledInserted>;
+}) => (
+  <StyledInserted {...nativeProps} title={tooltip}>
+    {children}
+  </StyledInserted>
+);

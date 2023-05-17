@@ -20,10 +20,10 @@ export const Base: Story = {
   render: (args) =>
     ((args) => (
       <ButtonGroup {...args}>
-        <IconButton icon="custom_date" />
-        <IconButton icon="reload_refresh_update" />
-        <IconButton icon="pin_bookmark_solid" />
-        <Button icon="heart_full">Add to favorites</Button>
+        <IconButton icon="gi-custom_date" />
+        <IconButton icon="gi-reload_refresh_update" />
+        <IconButton icon="gi-pin_bookmark_solid" />
+        <Button icon="gi-heart_full">Add to favorites</Button>
       </ButtonGroup>
     ))(args),
 };

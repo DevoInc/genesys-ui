@@ -21,8 +21,11 @@ export const ChoiceGroup: React.FC<ChoiceGroupProps> = ({
   marginLeft,
   marginTop,
   status = 'base',
+  tooltip,
+  ...restFormGroupProps
 }) => (
   <Form.Group
+    {...restFormGroupProps}
     direction="row"
     hasLegendLabelFormat={hasLegendLabelFormat}
     hasFloatingHelper={hasFloatingHelper}
@@ -35,6 +38,7 @@ export const ChoiceGroup: React.FC<ChoiceGroupProps> = ({
     marginLeft={marginLeft}
     marginTop={marginTop}
     status={status}
+    tooltip={tooltip}
   >
     {children}
   </Form.Group>

@@ -64,6 +64,7 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
   onDragStart = null,
   onSecondaryPaneSizeChange = null,
   padding,
+  tooltip,
   ...nativeProps
 }) => {
   const [secondaryPaneSize, setSecondaryPaneSize] = React.useState(0);
@@ -285,7 +286,7 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
         vertical={vertical}
         padding={padding}
         percentage={percentage}
-        primary={primaryIdx === 0 ? true : false}
+        primary={primaryIdx === 0}
         size={undefined}
       ></Pane>
     );
@@ -295,7 +296,12 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
   }
 
   return (
-    <StyledSplitPane {...nativeProps} vertical={vertical} ref={containerRef}>
+    <StyledSplitPane
+      {...nativeProps}
+      vertical={vertical}
+      ref={containerRef}
+      title={tooltip}
+    >
       {wrappedChildren[0]}
       {wrappedChildren.length > 1 && (
         <StyledSplitPaneSeparator

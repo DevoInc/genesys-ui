@@ -32,6 +32,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   role,
   size = 'md',
   visibilityTrigger,
+  tooltip,
   ...restNativeProps
 }) => (
   <StyledButtonGroup
@@ -40,6 +41,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
     itemsGap={itemsGap}
     role={role}
     size={size}
+    title={tooltip}
     visibilityTrigger={visibilityTrigger}
   >
     {children?.map((child, idx) => (

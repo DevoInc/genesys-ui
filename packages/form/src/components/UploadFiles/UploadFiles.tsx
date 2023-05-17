@@ -4,7 +4,7 @@ import * as React from 'react';
 import { buildErrorMessage, detectUnknownTypes } from './utils';
 
 // components and declarations
-import { Field, FieldAttrProps, FieldProps } from '@devoinc/genesys-ui';
+import { Box, Field, FieldAttrProps, FieldProps } from '@devoinc/genesys-ui';
 
 // styled and filepond
 import {
@@ -56,10 +56,10 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
     onMouseOver,
     onMouseUp,
     required,
-    requiredMarkTitle,
+    requiredMarkTooltip,
     size = 'md',
     status = 'base',
-    title,
+    tooltip,
     // FilePondProps
     acceptedFileTypes,
     allowFileSizeValidation,
@@ -99,44 +99,46 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
       onMouseOver={onMouseOver}
       onMouseUp={onMouseUp}
       required={required}
-      requiredMarkTitle={requiredMarkTitle}
+      requiredMarkTooltip={requiredMarkTooltip}
       size={size}
       status={status}
-      title={title}
+      tooltip={tooltip}
     >
-      <StyledUploadFiles
-        //TODO: review accessibility props
-        {...restNativeProps}
-        acceptedFileTypes={acceptedFileTypes}
-        allowFileSizeValidation={allowFileSizeValidation}
-        allowFileTypeValidation={(acceptedFileTypes || []).length > 0}
-        allowImagePreview={allowImagePreview}
-        allowMultiple={allowMultiple}
-        disabled={disabled}
-        fileValidateTypeDetectType={detectType}
-        fileValidateTypeLabelExpectedTypes={errorMessage}
-        height={height}
-        iconProcess='<i class="gi-upload_load_share" />'
-        iconRemove='<i class="gi-exit_close" />'
-        iconRetry='<i class="gi-rotate_sync" />'
-        iconUndo='<i class="gi-undo_reset" />'
-        id={id}
-        imagePreviewHeight={imagePreviewHeight}
-        imagePreviewMaxFileSize={imagePreviewMaxFileSize}
-        imagePreviewMaxHeight={imagePreviewMaxHeight}
-        imagePreviewMinHeight={imagePreviewMinHeight}
-        imagePreviewTransparencyIndicator={imagePreviewTransparencyIndicator}
-        labelButtonAbortItemProcessing='<i class="gi-exit_close" />'
-        labelButtonRemoveItem=""
-        labelButtonRetryItemProcessing=""
-        maxFileSize={maxFileSize}
-        maxHeight={maxHeight}
-        maxTotalFileSize={maxTotalFileSize}
-        minFileSize={minFileSize}
-        name={name}
-        required={required}
-        showLabelIcon={showLabelIcon}
-      />
+      <Box flex="1 1 100%">
+        <StyledUploadFiles
+          //TODO: review accessibility props
+          {...restNativeProps}
+          acceptedFileTypes={acceptedFileTypes}
+          allowFileSizeValidation={allowFileSizeValidation}
+          allowFileTypeValidation={(acceptedFileTypes || []).length > 0}
+          allowImagePreview={allowImagePreview}
+          allowMultiple={allowMultiple}
+          disabled={disabled}
+          fileValidateTypeDetectType={detectType}
+          fileValidateTypeLabelExpectedTypes={errorMessage}
+          height={height}
+          iconProcess='<i class="gi-upload_load_share" />'
+          iconRemove='<i class="gi-exit_close" />'
+          iconRetry='<i class="gi-rotate_sync" />'
+          iconUndo='<i class="gi-undo_reset" />'
+          id={id}
+          imagePreviewHeight={imagePreviewHeight}
+          imagePreviewMaxFileSize={imagePreviewMaxFileSize}
+          imagePreviewMaxHeight={imagePreviewMaxHeight}
+          imagePreviewMinHeight={imagePreviewMinHeight}
+          imagePreviewTransparencyIndicator={imagePreviewTransparencyIndicator}
+          labelButtonAbortItemProcessing='<i class="gi-exit_close" />'
+          labelButtonRemoveItem=""
+          labelButtonRetryItemProcessing=""
+          maxFileSize={maxFileSize}
+          maxHeight={maxHeight}
+          maxTotalFileSize={maxTotalFileSize}
+          minFileSize={minFileSize}
+          name={name}
+          required={required}
+          showLabelIcon={showLabelIcon}
+        />
+      </Box>
     </Field>
   );
 };

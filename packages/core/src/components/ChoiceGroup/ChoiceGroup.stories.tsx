@@ -30,26 +30,26 @@ export const Base: Story = {
         <IconButton
           selectionScheme="multiple"
           colorScheme="quiet"
-          icon="play_full"
-          title="Play"
+          icon="gi-play_full"
+          tooltip="Play"
         />
         <IconButton
           selectionScheme="multiple"
           colorScheme="quiet"
-          title="Pause"
-          icon="pause_full"
+          tooltip="Pause"
+          icon="gi-pause_full"
         />
         <IconButton
           selectionScheme="multiple"
           colorScheme="quiet"
-          icon="arrows_play_shuffle"
-          title="Shuffle"
+          icon="gi-arrows_play_shuffle"
+          tooltip="Shuffle"
         />
         <IconButton
           selectionScheme="multiple"
           colorScheme="quiet"
-          icon="arrows_play_repeat"
-          title="Repeat"
+          icon="gi-arrows_play_repeat"
+          tooltip="Repeat"
         />
       </>
     ),

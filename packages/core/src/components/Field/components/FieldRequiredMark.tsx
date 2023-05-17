@@ -9,20 +9,20 @@ import { StyledOverloadCssProps } from '../../../declarations';
 export interface FieldRequiredMarkProps
   extends StyledFieldRequiredMarkProps,
     StyledOverloadCssProps {
-  /** Title (message when it's hovered) for the required mark */
-  title?: string;
+  /** A title or description of the element, typically displayed as a tooltip when hovering over the element */
+  tooltip?: string;
 }
 
 export const FieldRequiredMark: React.FC<FieldRequiredMarkProps> = ({
   colorScheme = 'info',
   styles,
-  title,
+  tooltip,
 }) => {
   return (
     <StyledFieldRequiredMark
       colorScheme={colorScheme}
       css={styles}
-      title={title}
+      title={tooltip}
     >
       *
     </StyledFieldRequiredMark>

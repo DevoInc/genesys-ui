@@ -13,9 +13,9 @@ const mapStatusIcon: {
   [key in RSDropdownIndicatorProps['selectProps']['status']]: keyof typeof iconDictionary;
 } = {
   base: '' as RSDropdownIndicatorProps['selectProps']['status'],
-  error: 'error_warning_danger_stop_filled',
-  success: 'ok_successful_check_filled',
-  warning: 'attention_error_alert_caution_filled',
+  error: 'gi-error_warning_danger_stop_filled',
+  success: 'gi-ok_successful_check_filled',
+  warning: 'gi-attention_error_alert_caution_filled',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -39,7 +39,7 @@ export const DropdownIndicator = <Option extends SelectOption>({
             className={`${selectProps.classNamePrefix}__status-icon`}
           />
         )}
-        <Icon iconId="arrow_down_fat" />
+        <Icon iconId="gi-arrow_down_fat" />
       </components.DropdownIndicator>
     )
   );

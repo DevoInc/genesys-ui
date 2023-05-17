@@ -22,7 +22,7 @@ export const BasicUsageWithHelper: Story = {
           label={label}
           helper="This is the Field helper"
           required
-          requiredMarkTitle="This field is required"
+          requiredMarkTooltip="This field is required"
         >
           <InputControl aria-label={label} />
         </Field>
@@ -37,7 +37,9 @@ export const AdvancedUsage: Story = {
         <Field.LabelDistributor>
           <Field.Label
             htmlFor="story-field"
-            requiredMark={<Field.RequiredMark title="This field is required" />}
+            requiredMark={
+              <Field.RequiredMark tooltip="This field is required" />
+            }
           >
             Field label
           </Field.Label>
@@ -58,7 +60,7 @@ export const AdvancedUsageWithValidation: Story = {
             requiredMark={
               <Field.RequiredMark
                 colorScheme="error"
-                title="This field is required"
+                tooltip="This field is required"
               />
             }
             htmlFor="story-field"
@@ -90,7 +92,7 @@ export const AdvancedUsageWithFloatingValidation: Story = {
             requiredMark={
               <Field.RequiredMark
                 colorScheme="error"
-                title="This field is required"
+                tooltip="This field is required"
               />
             }
             helper={

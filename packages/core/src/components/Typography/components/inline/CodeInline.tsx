@@ -12,5 +12,10 @@ export interface CodeInlineProps
 
 export const CodeInline: React.FC<CodeInlineProps> = ({
   children,
+  tooltip,
   ...nativeProps
-}) => <StyledCodeInline {...nativeProps}>{children}</StyledCodeInline>;
+}) => (
+  <StyledCodeInline {...nativeProps} title={tooltip}>
+    {children}
+  </StyledCodeInline>
+);

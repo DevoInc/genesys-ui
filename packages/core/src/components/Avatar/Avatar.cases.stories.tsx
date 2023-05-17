@@ -66,7 +66,7 @@ export const WithBadgeText: Story = {
 export const WithBadgeIcon: Story = {
   args: {
     name: 'Rick Sanchez :: version 9',
-    badge: <Badge iconName="diamond_prize_award_jewellery_ring" />,
+    badge: <Badge icon="gi-diamond_prize_award_jewellery_ring" />,
   },
 };
 

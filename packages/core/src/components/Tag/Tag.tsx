@@ -22,14 +22,14 @@ export interface TagProps
     GlobalAriaProps,
     StyledTagProps {
   /** The name of the icon for the tag */
-  iconName?: string;
+  icon?: string;
   /** Text for the tag */
   text: string;
 }
 
 export const Tag: React.FC<TagProps> = ({
   colorScheme = 'neutral',
-  iconName,
+  icon,
   bold,
   quiet,
   wide,
@@ -49,15 +49,11 @@ export const Tag: React.FC<TagProps> = ({
       title={tooltip}
     >
       {quiet && (
-        <StyledTagBadge
-          colorScheme={colorScheme}
-          iconName={iconName}
-          size={size}
-        />
+        <StyledTagBadge colorScheme={colorScheme} icon={icon} size={size} />
       )}
-      {text && iconName && !quiet && (
+      {text && icon && !quiet && (
         <StyledTagIcon
-          className={iconName && 'gi-' + iconName}
+          className={icon}
           aria-hidden={true}
           bold={bold}
           size={size}

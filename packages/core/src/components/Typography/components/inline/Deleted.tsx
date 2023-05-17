@@ -12,5 +12,10 @@ export interface DeletedProps
 
 export const Deleted: React.FC<DeletedProps> = ({
   children,
+  tooltip,
   ...nativeProps
-}) => <StyledDeleted {...nativeProps}>{children}</StyledDeleted>;
+}) => (
+  <StyledDeleted {...nativeProps} title={tooltip}>
+    {children}
+  </StyledDeleted>
+);

@@ -61,7 +61,7 @@ export interface FieldProps
   /** Make the label not visible, but still accessible. Anyway aria-label always exits in input control. */
   hideLabel?: boolean;
   /** The title to be shown on hover of the required marker of the field. */
-  requiredMarkTitle?: FieldRequiredMarkProps['title'];
+  requiredMarkTooltip?: FieldRequiredMarkProps['tooltip'];
   /** Label for the input (aria-label is the same as Label) */
   label: string;
   /** Position of the label text relative to the input control. The position 'right' for the label is only recommended for checkbox and radio controls. */
@@ -84,11 +84,11 @@ export const PartField: React.FC<FieldProps> = ({
   label,
   labelPosition = 'top',
   required,
-  requiredMarkTitle,
+  requiredMarkTooltip,
   role,
   size = 'md',
   status = 'base',
-  title,
+  tooltip,
   ...mouseEventAttrProps
 }) => {
   const helperId = helper ? `${id}-field-helper` : undefined;
@@ -98,7 +98,7 @@ export const PartField: React.FC<FieldProps> = ({
   const RequiredMarkerBlock = (
     <Field.RequiredMark
       colorScheme={status as UIColorScheme}
-      title={requiredMarkTitle}
+      tooltip={requiredMarkTooltip}
     />
   );
   const FloatingHelperBlock = (
@@ -109,7 +109,7 @@ export const PartField: React.FC<FieldProps> = ({
     />
   );
   return (
-    <Field.Container {...mouseEventAttrProps} role={role} title={title}>
+    <Field.Container {...mouseEventAttrProps} role={role} tooltip={tooltip}>
       <Field.LabelDistributor direction={direction}>
         {label && (
           <Field.Label

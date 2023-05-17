@@ -80,7 +80,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
   size = 'md',
   status = 'base',
   step,
-  title,
+  tooltip,
   type = 'text',
   value,
 }) => {
@@ -97,7 +97,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
       onMouseOut={onMouseOut}
       onMouseOver={onMouseOver}
       onMouseUp={onMouseUp}
-      title={title}
+      tooltip={tooltip}
     >
       {addonToLeft && (
         <Field.Addon disabled={disabled} size={size}>

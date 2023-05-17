@@ -68,6 +68,7 @@ const InternalLoader: React.FC<LoaderProps> = ({
   zIndex = 10,
   //native
   role,
+  tooltip,
   ...nativeProps
 }) => {
   const theme = useTheme();
@@ -148,6 +149,7 @@ const InternalLoader: React.FC<LoaderProps> = ({
       justifyContent={gradientConfig ? 'flex-end' : justifyContent}
       opacity={opaque ? 1 : 0.8}
       padding={gradientConfig ? '0' : String(padding)}
+      tooltip={tooltip}
       zIndex={zIndex}
     >
       {renderContent()}

@@ -22,9 +22,15 @@ const InternalContentSwitcher: React.FC<ContentSwitcherProps> = ({
   size = 'md',
   children,
   wide,
+  tooltip,
   ...nativeProps
 }) => (
-  <StyledContentSwitcher {...nativeProps} size={size} wide={wide}>
+  <StyledContentSwitcher
+    {...nativeProps}
+    size={size}
+    title={tooltip}
+    wide={wide}
+  >
     {React.Children.map(children, (child, idx) => {
       return React.cloneElement(child, {
         key: idx,

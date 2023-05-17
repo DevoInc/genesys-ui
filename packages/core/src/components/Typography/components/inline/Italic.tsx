@@ -10,6 +10,12 @@ export interface ItalicProps
   children?: React.ReactNode;
 }
 
-export const Italic: React.FC<ItalicProps> = ({ children, ...nativeProps }) => (
-  <StyledItalic {...nativeProps}>{children}</StyledItalic>
+export const Italic: React.FC<ItalicProps> = ({
+  children,
+  tooltip,
+  ...nativeProps
+}) => (
+  <StyledItalic {...nativeProps} title={tooltip}>
+    {children}
+  </StyledItalic>
 );

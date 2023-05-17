@@ -31,6 +31,7 @@ export const Code: React.FC<CodeProps> = ({
   onClick,
   size = 'md',
   textAlign = 'left',
+  tooltip,
   truncateLine,
   ...nativeProps
 }) => (
@@ -38,6 +39,7 @@ export const Code: React.FC<CodeProps> = ({
     {...nativeProps}
     gutterBottom={gutterBottom}
     onClick={onClick}
+    title={tooltip}
   >
     <StyledCodeBlock
       size={size}

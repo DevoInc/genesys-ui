@@ -30,25 +30,27 @@ export const Badge: React.FC<BadgeProps> = ({
   colorScheme = 'neutral',
   hasAbsolutePosition = false,
   hasBoldIcon = false,
-  iconName,
+  icon,
   inverse = false,
   size = 'md',
   text,
+  tooltip,
   ...nativeProps
 }) => (
   <StyledBadge
     {...nativeProps}
     colorScheme={colorScheme}
-    iconName={iconName}
+    icon={icon}
     hasAbsolutePosition={hasAbsolutePosition}
     inverse={inverse}
     size={size}
     text={text}
+    title={tooltip}
   >
-    {!text && iconName && (
+    {!text && icon && (
       <StyledBadgeIcon
         aria-hidden={true}
-        className={iconName ? `gi-${iconName}` : 'check_thick'}
+        className={icon || 'gi-check_thick'}
         hasBoldIcon={hasBoldIcon}
         size={size}
       />

@@ -32,6 +32,7 @@ export const CheckboxControl: React.FC<CheckboxControlProps> = ({
   onChange,
   size = 'md',
   status = 'base',
+  tooltip,
   ...restNativeProps
 }) => (
   <StyledCheckboxControl
@@ -44,5 +45,6 @@ export const CheckboxControl: React.FC<CheckboxControlProps> = ({
     indeterminate={indeterminate}
     $size={size}
     status={status}
+    title={tooltip}
   />
 );

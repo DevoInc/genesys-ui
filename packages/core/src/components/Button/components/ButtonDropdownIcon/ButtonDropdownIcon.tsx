@@ -20,7 +20,7 @@ export const ButtonDropdownIcon: React.FC<ButtonDropdownIconProps> = ({
 }) => (
   <ButtonIcon
     as={StyledButtonDropdownIcon}
-    icon="arrow_down_fat"
+    icon="gi-arrow_down_fat"
     hasBoldIcon
     size={size}
     state={state}

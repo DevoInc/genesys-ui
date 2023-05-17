@@ -23,7 +23,7 @@ export interface PanelFooterContentBodyProps
   /** URL for the help icon */
   helpUrl?: IconButtonGoToDocsProps['href'];
   /** Title attribute for the help icon */
-  helpTooltip?: IconButtonGoToDocsProps['title'];
+  helpTooltip?: IconButtonGoToDocsProps['tooltip'];
   children?: React.ReactNode;
   /** Content to add at the begining of the footer.  */
   prependContent?: React.ReactNode;
@@ -52,7 +52,7 @@ export const PanelFooterContentBody: React.FC<PanelFooterContentBodyProps> = ({
             <IconButtonGoToDocs
               href={helpUrl}
               size={size}
-              title={helpTooltip}
+              tooltip={helpTooltip}
             />
           )}
         </PanelFooterContentBodyPrepend>

@@ -5,7 +5,7 @@ import { StyledTagProps } from '../Tag/StyledTag';
 
 export interface StyledTagGroupProps {
   /** Position of the label text relative to the tags */
-  labelPosition: LabelPosition;
+  labelPosition?: LabelPosition;
 }
 
 export const StyledTagGroup = styled.div<StyledTagGroupProps>`

@@ -3,14 +3,14 @@ import { Link } from '../../Link';
 
 export const storiesData = [
   {
-    icon: 'activity',
+    icon: 'gi-activity',
     id: 'first',
     label: 'First content',
     content:
       'Tesseract great turbulent clouds globular star cluster trillion citizens of distant epochs Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
   },
   {
-    icon: 'gauge_dashboard_full_fuel',
+    icon: 'gi-gauge_dashboard_full_fuel',
     id: 'second',
     label: 'Second large content',
     content: (
@@ -27,7 +27,7 @@ export const storiesData = [
     ),
   },
   {
-    icon: 'fingerprint_scan_security_access',
+    icon: 'gi-fingerprint_scan_security_access',
     id: 'third',
     label: 'Third content',
     content:

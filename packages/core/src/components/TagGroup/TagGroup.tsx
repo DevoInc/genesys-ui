@@ -25,7 +25,7 @@ export interface TagGroupProps
     GlobalAttrProps,
     GlobalAriaProps,
     StyledTagGroupProps,
-    StyledTagGroupLabelProps {
+    Omit<StyledTagGroupLabelProps, 'labelPosition'> {
   /** Polymorphic prop to create a different tag or styled component
    * https://styled-components.com/docs/api#as-polymorphic-prop */
   children: React.ReactElement<TagProps>[];
@@ -39,6 +39,7 @@ export const TagGroup: React.FC<TagGroupProps> = ({
   labelText,
   role = 'group',
   size = 'md',
+  tooltip,
   ...restNativeProps
 }) => {
   return (
@@ -46,6 +47,7 @@ export const TagGroup: React.FC<TagGroupProps> = ({
       {...restNativeProps}
       labelPosition={labelPosition}
       role={role}
+      title={tooltip}
     >
       {labelText && (
         <StyledTagGroupLabel

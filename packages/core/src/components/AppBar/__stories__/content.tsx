@@ -8,58 +8,58 @@ import { Tabs } from '../../Tabs';
 export const mainActions = [
   <IconButton
     aria-label="avatar"
-    title="Avatar"
+    tooltip="Avatar"
     key={1}
-    icon="user_profile_avatar_man_male2"
+    icon="gi-user_profile_avatar_man_male2"
     circular
     colorScheme="quiet"
   />,
   <IconButton
     aria-label="Search"
-    title="Search"
+    tooltip="Search"
     key={2}
-    icon="search_thicker"
+    icon="gi-search_thicker"
     circular
     colorScheme="quiet"
   />,
   <IconButton
     aria-label="Notifications"
-    title="Notifications"
+    tooltip="Notifications"
     key={3}
-    icon="bell_solid"
+    icon="gi-bell_solid"
     circular
     colorScheme="quiet"
   />,
   <IconButton
     aria-label="Help"
-    title="Help"
+    tooltip="Help"
     key={4}
-    icon="about_question_faq_help_filled"
+    icon="gi-about_question_faq_help_filled"
     circular
     colorScheme="quiet"
   />,
   <IconButton
     aria-label="Time zone"
-    title="Time zone"
+    tooltip="Time zone"
     key={5}
-    icon="time_zone"
+    icon="gi-time_zone"
     circular
     colorScheme="quiet"
   />,
 ];
 
 export const userOptions = [
-  <Button key={1} icon="user_profile_avatar_man_male2">
+  <Button key={1} icon="gi-user_profile_avatar_man_male2">
     Preferences
   </Button>,
-  <Button key={2} icon="folder_documents_revert_history">
+  <Button key={2} icon="gi-folder_documents_revert_history">
     History
   </Button>,
-  <Button key={3} icon="settings_gear_preferences_strong">
+  <Button key={3} icon="gi-settings_gear_preferences_strong">
     Other
   </Button>,
   <Divider key={4} vertical />,
-  <Button key={5} icon="power_on_off">
+  <Button key={5} icon="gi-power_on_off">
     Logout
   </Button>,
 ];

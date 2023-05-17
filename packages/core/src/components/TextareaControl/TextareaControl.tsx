@@ -39,15 +39,17 @@ export const TextareaControl: React.FC<TextareaControlProps> = ({
   size = 'md',
   status = 'base',
   styles,
+  tooltip,
   ...restNativeProps
 }) => (
   <StyledTextareaControl
     {...restNativeProps}
     aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
     aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
+    css={styles}
     rows={rows}
     $size={size}
     status={status}
-    css={styles}
+    title={tooltip}
   />
 );

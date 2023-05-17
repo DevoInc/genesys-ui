@@ -42,6 +42,7 @@ export interface BoxProps
 
 export const Box: React.FC<BoxProps> = ({
   children,
+  cssTranslate,
   display,
   elevation,
   flex,
@@ -68,7 +69,7 @@ export const Box: React.FC<BoxProps> = ({
   positionLeft,
   positionRight,
   positionTop,
-  cssTranslate,
+  tooltip,
   verticalAlign,
   visibility,
   width,
@@ -78,6 +79,7 @@ export const Box: React.FC<BoxProps> = ({
   return (
     <StyledBox
       {...nativeProps}
+      cssTranslate={cssTranslate}
       $display={display}
       elevation={elevation}
       flex={flex}
@@ -104,7 +106,7 @@ export const Box: React.FC<BoxProps> = ({
       positionLeft={positionLeft}
       positionRight={positionRight}
       positionTop={positionTop}
-      cssTranslate={cssTranslate}
+      title={tooltip}
       verticalAlign={verticalAlign}
       visibility={visibility}
       $width={width}
