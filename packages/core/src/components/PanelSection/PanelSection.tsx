@@ -24,7 +24,7 @@ export const renderBackwardNavigation = ({
           hasBoldIcon
           icon="gi-arrow_left1"
           onClick={onClickBackwardNav}
-          title={backwardTooltip}
+          tooltip={backwardTooltip}
         />
         <Divider height="auto" margin="0" vertical />
       </HFlex>

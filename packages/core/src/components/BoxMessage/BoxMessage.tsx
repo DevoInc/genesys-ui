@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Box, Flex, HFlex, IconButtonRemove, Typography } from '../';
 import { StyledBoxMessage, StyledBoxMessageProps } from './StyledBoxMessage';
-import { statusIconMap } from '../../styled/functions/utils';
+import { statusIconMap } from '../../styled/functions';
 import { StyledBoxMessageIcon } from './StyledBoxMessageIcon';
 import {
   GlobalAriaProps,
@@ -23,9 +23,11 @@ export interface BoxMessageProps
   /** Tooltip for close button */
   closeTooltip?: string;
   /** BoxMessage content */
-  content?: string | React.ReactNode;
+  content?: React.ReactNode;
   /** This prop hides the BoxMessage icon */
   hideIcon?: boolean;
+  /** BoxMessage title content */
+  title?: React.ReactNode;
 }
 
 export const BoxMessage: React.FC<BoxMessageProps> = ({

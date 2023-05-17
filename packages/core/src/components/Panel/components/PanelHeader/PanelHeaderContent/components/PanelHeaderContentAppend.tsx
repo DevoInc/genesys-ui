@@ -14,7 +14,7 @@ export interface PanelHeaderContentAppendProps {
   closeSettings?: {
     cssTranslate?: string;
     onClick?: IconButtonCloseProps['onClick'];
-    tooltip?: IconButtonCloseProps['title'];
+    tooltip?: IconButtonCloseProps['tooltip'];
   };
   size: PanelHeaderSize;
 }
