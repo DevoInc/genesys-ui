@@ -48,7 +48,7 @@ export const InlineMessageTrigger = React.forwardRef<
       status,
       secondaryText,
       text,
-      title,
+      tooltip,
       Trigger,
     },
     ref
@@ -59,7 +59,7 @@ export const InlineMessageTrigger = React.forwardRef<
       onClick: onClick,
       ref: ref,
       size: size,
-      title,
+      tooltip,
       type: 'button',
     });
     if (text || secondaryText) {
@@ -75,12 +75,12 @@ export const InlineMessageTrigger = React.forwardRef<
         >
           {Trigger || (
             <IconButtonStatus
+              colorScheme={status}
               forwardedAs="span"
               icon={icon}
               state={state}
               size={size}
-              title={title}
-              colorScheme={status}
+              tooltip={tooltip}
             />
           )}
           {text && (
@@ -125,7 +125,7 @@ export const InlineMessageTrigger = React.forwardRef<
           onClick={onClick}
           size={size}
           state={state}
-          title={title}
+          tooltip={tooltip}
           type="button"
         />
       </span>

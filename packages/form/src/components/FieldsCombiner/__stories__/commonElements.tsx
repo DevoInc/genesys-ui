@@ -11,7 +11,7 @@ import {
 export const ElemButton = <Button>Apply</Button>;
 
 export const ElemIconButton = (
-  <IconButton title="Refresh" icon="reload_refresh_update" />
+  <IconButton tooltip="Refresh" icon="gi-reload_refresh_update" />
 );
 
 export const ElemCheckbox = <CheckboxControl aria-label="Maintain activated" />;

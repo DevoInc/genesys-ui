@@ -5,7 +5,7 @@ import { StyledSrOnly } from '../../StyledTypography';
 
 export interface SrOnlyProps
   // native
-  extends GlobalAttrProps,
+  extends Pick<GlobalAttrProps, 'role' | 'id'>,
     GlobalAriaProps {
   children?: React.ReactNode;
 }

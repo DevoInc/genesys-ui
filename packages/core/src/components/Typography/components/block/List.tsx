@@ -26,6 +26,7 @@ const InternalList: React.FC<ListProps> = ({
   size = 'md',
   textAlign = 'left',
   children,
+  tooltip,
   ...nativeProps
 }) => (
   <StyledList
@@ -36,6 +37,7 @@ const InternalList: React.FC<ListProps> = ({
     listStyle={listStyle}
     size={size}
     textAlign={textAlign}
+    title={tooltip}
   >
     {children}
   </StyledList>

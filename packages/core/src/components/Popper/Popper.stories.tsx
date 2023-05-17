@@ -35,8 +35,8 @@ export const Base: Story = {
                 aria-expanded={isVisible}
                 aria-controls="story-id"
                 aria-haspopup="true"
-                icon="menu_alt_bold"
-                title="Open Popper"
+                icon="gi-menu_alt_bold"
+                tooltip="Open Popper"
               />
             }
           >

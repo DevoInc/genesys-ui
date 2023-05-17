@@ -9,7 +9,7 @@ import {
   PopperCoordsProps,
 } from './declarations';
 
-export interface DropdownA11yMenuProps {
+export interface DropdownMenuProps {
   /** Label of the menu trigger component. */
   label?: string;
   /** Items for menu: array of objects with items config. */
@@ -19,9 +19,6 @@ export interface DropdownA11yMenuProps {
    * (role, aria-hashpopup, ...) for the accessibility to work correctly.
    * Built with forwardRef while the content is passed as children. */
   triggerComponent?: string | React.ComponentType<any>;
-
-  /** Customizable drop-down menu style (max-width, ...) */
-  customStyled?: React.CSSProperties;
   /** Placement of the Popper with respect to the trigger. */
   placement?: PopperCoordsProps;
   /** Allow to open  the drop-down menu when the mouse is over the triggerComponent */
@@ -32,11 +29,10 @@ export interface DropdownA11yMenuProps {
   triggerDropdownMenuVisibility?: (args) => void;
 }
 
-export const DropdownA11yMenu: React.FC<DropdownA11yMenuProps> = ({
+export const DropdownMenu: React.FC<DropdownMenuProps> = ({
   label,
   items,
   triggerComponent: TriggerComponent = 'button',
-  customStyled,
   placement = 'bottom-start',
   openOnHover,
   dropdownVisible,
@@ -139,7 +135,6 @@ export const DropdownA11yMenu: React.FC<DropdownA11yMenuProps> = ({
             styles={styles}
             attributes={attributes}
             setPopperElement={setPopperElement}
-            customStyled={customStyled}
           />
         </div>
       )}

@@ -10,6 +10,12 @@ export interface SubProps
   children?: React.ReactNode;
 }
 
-export const Sub: React.FC<SubProps> = ({ children, ...nativeProps }) => (
-  <StyledSub {...nativeProps}>{children}</StyledSub>
+export const Sub: React.FC<SubProps> = ({
+  children,
+  tooltip,
+  ...nativeProps
+}) => (
+  <StyledSub {...nativeProps} title={tooltip}>
+    {children}
+  </StyledSub>
 );

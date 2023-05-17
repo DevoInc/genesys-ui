@@ -35,8 +35,8 @@ export const Header: Story = {
           </Flex>
           <Flex marginLeft="auto">
             <ButtonGroup size="md" itemsGap="lg">
-              <IconButtonStatus title="Info" />
-              <IconButtonClose title="Close" />
+              <IconButtonStatus tooltip="Info" />
+              <IconButtonClose tooltip="Close" />
             </ButtonGroup>
           </Flex>
         </Modal.Header>

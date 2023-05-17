@@ -39,6 +39,7 @@ export const TagGroup: React.FC<TagGroupProps> = ({
   labelText,
   role = 'group',
   size = 'md',
+  tooltip,
   ...restNativeProps
 }) => {
   return (
@@ -46,6 +47,7 @@ export const TagGroup: React.FC<TagGroupProps> = ({
       {...restNativeProps}
       labelPosition={labelPosition}
       role={role}
+      title={tooltip}
     >
       {labelText && (
         <StyledTagGroupLabel

@@ -1,0 +1,9 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Components/Core/Navigation/DropdownMenu/ Docs" />
+
+## [How to import](#how-to-import)
+
+```
+import { DropdownMenu } from '@devoinc/genesys-ui';
+```

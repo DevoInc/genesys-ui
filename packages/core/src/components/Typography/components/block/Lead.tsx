@@ -24,6 +24,7 @@ export const Lead: React.FC<LeadProps> = ({
   textAlign = 'left',
   truncateLine,
   children,
+  tooltip,
   ...nativeProps
 }) => (
   <StyledLead
@@ -33,6 +34,7 @@ export const Lead: React.FC<LeadProps> = ({
     gutterBottom={gutterBottom}
     size={size}
     textAlign={textAlign}
+    title={tooltip}
   >
     {children}
   </StyledLead>

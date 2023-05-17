@@ -6,7 +6,7 @@ import {
   FooterSettings as PanelFooterSettings,
 } from '../Panel/declarations';
 
-import { IconButton, Divider, Panel, HFlex } from '..';
+import { IconButton, Divider, Panel, HFlex, PanelProps } from '..';
 
 import { StyledPanelSection } from './StyledPanelSection';
 
@@ -22,9 +22,9 @@ export const renderBackwardNavigation = ({
       <HFlex alignItems="stretch" height="100%" spacing="cmp-sm">
         <IconButton
           hasBoldIcon
-          icon="arrow_left1"
+          icon="gi-arrow_left1"
           onClick={onClickBackwardNav}
-          title={backwardTooltip}
+          tooltip={backwardTooltip}
         />
         <Divider height="auto" margin="0" vertical />
       </HFlex>
@@ -33,25 +33,29 @@ export const renderBackwardNavigation = ({
   return null;
 };
 
-export interface PanelSectionProps {
+export interface PanelSectionProps
+  extends Pick<
+    PanelProps,
+    | 'children'
+    | 'display'
+    | 'helpTooltip'
+    | 'helpUrl'
+    | 'id'
+    | 'subtitle'
+    | 'title'
+    | 'visibility'
+  > {
   backwardTooltip?: string;
   children?: React.ReactElement;
-  display?: React.CSSProperties['display'];
   footerActions?: PanelFooterSettings['actions'];
   footerContent?: React.ReactElement;
   footerHasBackground?: boolean;
   headerActions?: PanelHeaderSettings['actions'];
   height?: React.CSSProperties['height'];
-  helpTooltip?: string;
-  helpUrl?: string;
-  id?: string;
   navigation?: React.ReactElement;
   onClickBackwardNav?: DOMAttributes<any>['onClick'];
   renderActions?: React.ReactElement;
   removeContentSpace?: boolean;
-  subtitle?: string;
-  title?: React.ReactNode;
-  visibility?: React.CSSProperties['visibility'];
 }
 
 export const PanelSection: React.FC<PanelSectionProps> = ({

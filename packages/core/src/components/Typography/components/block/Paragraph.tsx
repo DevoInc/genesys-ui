@@ -24,6 +24,7 @@ export const Paragraph: React.FC<ParagraphProps> = ({
   textAlign = 'left',
   truncateLine,
   children,
+  tooltip,
   ...nativeProps
 }) => (
   <StyledParagraph
@@ -33,6 +34,7 @@ export const Paragraph: React.FC<ParagraphProps> = ({
     gutterBottom={gutterBottom}
     size={size}
     textAlign={textAlign}
+    title={tooltip}
   >
     {children}
   </StyledParagraph>

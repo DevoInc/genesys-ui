@@ -10,7 +10,7 @@ import {
 import { Flex } from '../../';
 
 export interface InputControlContainerProps
-  extends Pick<FieldControlCommonProps, 'title'>,
+  extends Pick<FieldControlCommonProps, 'tooltip'>,
     Pick<
       FieldControlCommonProps,
       | 'onClick'
@@ -35,7 +35,7 @@ export const InputControlContainer: React.FC<InputControlContainerProps> = ({
   onMouseOver,
   onMouseUp,
   styles,
-  title,
+  tooltip,
 }) => (
   <Flex
     alignItems="stretch"
@@ -49,7 +49,7 @@ export const InputControlContainer: React.FC<InputControlContainerProps> = ({
     onMouseUp={onMouseUp}
     position="relative"
     styles={styles}
-    title={title}
+    tooltip={tooltip}
   >
     {children}
   </Flex>

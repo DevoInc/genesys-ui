@@ -13,6 +13,6 @@ type Story = StoryObj<typeof Icon>;
 
 export const Base: Story = {
   args: {
-    iconId: 'activity',
+    iconId: 'gi-activity',
   },
 };

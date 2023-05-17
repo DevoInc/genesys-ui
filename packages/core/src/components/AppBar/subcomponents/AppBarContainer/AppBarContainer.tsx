@@ -16,6 +16,7 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
   children,
   id,
   sticky = false,
+  tooltip,
   ...nativeProps
 }) => {
   const elevation = sticky ? 'stickyBottom' : 'ground';
@@ -26,6 +27,7 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
       {...nativeProps}
       id={`${id}__container`}
       elevation={elevation}
+      title={tooltip}
     >
       <HFlex alignItems="center" height={tabsContainerTokens.size.height.lg}>
         {children}

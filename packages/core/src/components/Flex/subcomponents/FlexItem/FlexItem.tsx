@@ -8,7 +8,12 @@ export interface FlexItemProps extends CommonBoxProps, StyledFlexItemProps {}
 
 export const FlexItem: React.FC<FlexItemProps> = ({
   children,
+  tooltip,
   ...styledProps
 }) => {
-  return <StyledFlexItem {...styledProps}>{children}</StyledFlexItem>;
+  return (
+    <StyledFlexItem {...styledProps} title={tooltip}>
+      {children}
+    </StyledFlexItem>
+  );
 };

@@ -26,9 +26,10 @@ export const Collapse: React.FC<CollapseProps> = ({
   onClick,
   truncateLine = 1,
   'aria-controls': ariaControls,
+  tooltip,
   ...nativeProps
 }) => (
-  <StyledHeader {...nativeProps} expanded={expanded}>
+  <StyledHeader {...nativeProps} expanded={expanded} title={tooltip}>
     <StyledHeaderButton
       aria-controls={ariaControls}
       aria-expanded={expanded}
@@ -45,7 +46,7 @@ export const Collapse: React.FC<CollapseProps> = ({
             e.stopPropagation();
             onClick();
           }}
-          title={expanded ? 'Collapse' : 'Expand'}
+          tooltip={expanded ? 'Collapse' : 'Expand'}
         />
       </Flex.Item>
       <Flex.Item flex={'1 1 auto'} minWidth={'0'}>

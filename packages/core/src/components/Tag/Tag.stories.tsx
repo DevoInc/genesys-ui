@@ -16,7 +16,7 @@ type Story = StoryObj<typeof Tag>;
 
 export const Base: Story = {
   args: {
-    iconName: 'tag_price_sale',
+    icon: 'gi-tag_price_sale',
     text: 'Category',
   },
 };

@@ -72,7 +72,7 @@ export const FloatPanel: React.FC<FloatPanelProps> = ({
         >
           {hasClose && (
             <div className="close" style={closeStyle} onClick={onClose}>
-              <Icon iconId="exit_close" />
+              <Icon iconId="gi-exit_close" />
             </div>
           )}
           <div className={contentClass}>{children}</div>

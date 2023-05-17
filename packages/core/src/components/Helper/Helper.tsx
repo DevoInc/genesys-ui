@@ -9,7 +9,7 @@ import {
 } from './constants';
 import { GlobalAttrProps, GlobalStatus } from '../../declarations';
 import { HelperSize } from './declarations';
-import { getLineHeight } from '../../styled/mixins/baseMixins';
+import { getLineHeight } from '../../styled';
 import { hasStatus } from '../../utils/validations';
 
 export interface HelperProps extends GlobalAttrProps {
@@ -26,6 +26,7 @@ export const Helper: React.FC<HelperProps> = ({
   role,
   size = 'md',
   status = 'base',
+  tooltip,
   ...restNativeProps
 }) => {
   const tokens = useTheme();
@@ -37,6 +38,7 @@ export const Helper: React.FC<HelperProps> = ({
       alignItems={'flex-start'}
       role={role || (status === 'error' ? 'alert' : undefined)}
       spacing={HELPER_SIZE_SPACE_MAP[size]}
+      tooltip={tooltip}
     >
       {hasStatus(status) && (
         <Flex height={getLineHeight({ tokens, size })}>

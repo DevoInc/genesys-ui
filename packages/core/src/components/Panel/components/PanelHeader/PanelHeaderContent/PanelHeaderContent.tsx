@@ -40,6 +40,7 @@ export const PanelHeaderContent: React.FC<PanelHeaderContentProps> = ({
   size = 'md',
   subtitle,
   title,
+  titleTooltip,
   topContent,
 }) => (
   <StyledPanelHeaderContent
@@ -87,6 +88,7 @@ export const PanelHeaderContent: React.FC<PanelHeaderContentProps> = ({
             size={size}
             subtitle={subtitle}
             title={title}
+            titleTooltip={titleTooltip}
           >
             {children}
           </PanelHeaderContentBody>

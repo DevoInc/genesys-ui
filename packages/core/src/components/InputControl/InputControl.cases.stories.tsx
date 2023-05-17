@@ -44,6 +44,6 @@ export const WithAddonsAndIcons: Story = {
   args: {
     addonToLeft: 'Addon to left',
     addonToRight: 'Addon to right',
-    icon: 'check_thick',
+    icon: 'gi-check_thick',
   },
 };

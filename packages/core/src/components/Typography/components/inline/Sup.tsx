@@ -10,6 +10,12 @@ export interface SupProps
   children?: React.ReactNode;
 }
 
-export const Sup: React.FC<SupProps> = ({ children, ...nativeProps }) => (
-  <StyledSup {...nativeProps}>{children}</StyledSup>
+export const Sup: React.FC<SupProps> = ({
+  children,
+  tooltip,
+  ...nativeProps
+}) => (
+  <StyledSup {...nativeProps} title={tooltip}>
+    {children}
+  </StyledSup>
 );

@@ -23,9 +23,10 @@ export const InnerSelectControl = <
   return props.creatable ? (
     <StyledSelectControl
       as={CreatableSelect<Option, IsMulti, Group>}
+      tooltip={props.tooltip}
       {...props}
     />
   ) : (
-    <StyledSelectControl {...props} />
+    <StyledSelectControl {...props} tooltip={props.tooltip} />
   );
 };

@@ -47,7 +47,7 @@ export const Base: Story = {
           key="btn-1"
           hasBoldIcon
           circular
-          icon="heart_full"
+          icon="gi-heart_full"
           onClick={() => alert('Clicked!')}
           size="sm"
         />,
@@ -57,7 +57,7 @@ export const Base: Story = {
     },
     heightScheme: { height: '50rem' },
     helpUrl: 'https://docs.devo.com/confluence/ndt',
-    icon: 'chart_flame',
+    icon: 'gi-chart_flame',
     subtitle:
       'Intelligent beings from which we spring bits of moving fluff paroxysm of global death.',
     title: 'Intelligent beings',
@@ -95,7 +95,7 @@ export const ClosableBackwardNavigation: Story = {
               <IconButton
                 hasBoldIcon
                 circular
-                icon="arrow_left1"
+                icon="gi-arrow_left1"
                 onClick={() => alert('Close Panel!')}
                 colorScheme="quiet"
                 size="sm"
@@ -104,7 +104,7 @@ export const ClosableBackwardNavigation: Story = {
             <Flex.Item>
               <IconButtonClose
                 onClick={() => alert('Back to previous Panel!')}
-                title="Back to previous Panel"
+                tooltip="Back to previous Panel"
               />
             </Flex.Item>
           </HFlex>

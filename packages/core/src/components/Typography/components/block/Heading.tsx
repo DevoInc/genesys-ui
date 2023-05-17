@@ -33,6 +33,7 @@ export const Heading: React.FC<HeadingProps> = ({
   truncateLine,
   size = 'h4',
   children,
+  tooltip,
   ...nativeProps
 }) => (
   <StyledHeading
@@ -43,6 +44,7 @@ export const Heading: React.FC<HeadingProps> = ({
     ref={forwardedRef}
     size={size}
     textAlign={textAlign}
+    title={tooltip}
   >
     {children}
   </StyledHeading>

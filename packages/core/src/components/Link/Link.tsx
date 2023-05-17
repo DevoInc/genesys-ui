@@ -23,8 +23,6 @@ export interface LinkProps
     StyledLinkProps {
   /** Children to be passed */
   children?: React.ReactNode;
-  /** Tooltip value */
-  tooltip?: string;
 }
 
 export const Link: React.FC<LinkProps> = ({
@@ -52,13 +50,13 @@ export const Link: React.FC<LinkProps> = ({
     <StyledLink
       {...restNativeProps}
       colorScheme={colorScheme}
-      data-tip={tooltip}
       href={href || (onClick && '#')}
       lineClamp={lineClamp}
       onClick={onLinkClick}
       size={size}
       state={state}
       tabIndex={state === 'disabled' ? -1 : 0}
+      title={tooltip}
       underlined={underlined}
     >
       {children}

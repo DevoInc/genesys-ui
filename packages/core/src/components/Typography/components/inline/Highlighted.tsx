@@ -12,5 +12,10 @@ export interface HighlightedProps
 
 export const Highlighted: React.FC<HighlightedProps> = ({
   children,
+  tooltip,
   ...nativeProps
-}) => <StyledHighlighted {...nativeProps}>{children}</StyledHighlighted>;
+}) => (
+  <StyledHighlighted {...nativeProps} title={tooltip}>
+    {children}
+  </StyledHighlighted>
+);

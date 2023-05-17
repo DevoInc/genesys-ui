@@ -8,8 +8,8 @@ const meta: Meta<typeof Chip> = {
   component: Chip,
   args: {
     children: 'Favorite',
-    icon: 'like_heart_favorite_rating_love',
-    iconSelected: 'heart_full',
+    icon: 'gi-like_heart_favorite_rating_love',
+    iconSelected: 'gi-heart_full',
     selectionScheme: 'multiple',
     size: 'md',
   },
@@ -24,8 +24,8 @@ export const MultipleControlled: Story = {
       const [selected, setSelected] = React.useState(false);
       return (
         <Chip
-          icon="like_heart_favorite_rating_love"
-          iconSelected="heart_full"
+          icon="gi-like_heart_favorite_rating_love"
+          iconSelected="gi-heart_full"
           onChange={() => setSelected(!selected)}
           state={selected ? 'selected' : 'enabled'}
           value="favorite"
@@ -38,7 +38,7 @@ export const MultipleControlled: Story = {
 
 export const MultipleUncontrolled: Story = {
   args: {
-    icon: 'like_heart_favorite_rating_love',
+    icon: 'gi-like_heart_favorite_rating_love',
     children: 'Favorite',
   },
 };
@@ -49,8 +49,8 @@ export const SingleControlled: Story = {
       const [selected, setSelected] = React.useState(false);
       return (
         <Chip
-          icon="like_heart_favorite_rating_love"
-          iconSelected="heart_full"
+          icon="gi-like_heart_favorite_rating_love"
+          iconSelected="gi-heart_full"
           name="single"
           onChange={() => setSelected(!selected)}
           selectionScheme="single"
@@ -64,7 +64,7 @@ export const SingleControlled: Story = {
 
 export const SingleUncontrolled: Story = {
   args: {
-    icon: 'like_heart_favorite_rating_love',
+    icon: 'gi-like_heart_favorite_rating_love',
     children: 'Favorite',
     selectionScheme: 'single',
     name: 'single',

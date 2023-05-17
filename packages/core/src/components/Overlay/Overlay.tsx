@@ -25,6 +25,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   justifyContent = 'center',
   opacity,
   padding = 'cmp-md cmp-lg',
+  tooltip,
   zIndex = 0,
   ...restNativeProps
 }) => (
@@ -41,6 +42,7 @@ export const Overlay: React.FC<OverlayProps> = ({
     justifyContent={justifyContent}
     opacity={opacity > 1 ? 1 : opacity}
     padding={padding}
+    title={tooltip}
     zIndex={zIndex}
   >
     {children}

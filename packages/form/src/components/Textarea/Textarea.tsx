@@ -31,10 +31,10 @@ export const Textarea: React.FC<TextareaProps> = ({
   onMouseOver,
   onMouseUp,
   required,
-  requiredMarkTitle,
+  requiredMarkTooltip,
   size = 'md',
   status = 'base',
-  title,
+  tooltip,
   ...restNativeTextareaProps
 }) => (
   <Field
@@ -53,10 +53,10 @@ export const Textarea: React.FC<TextareaProps> = ({
     onMouseOver={onMouseOver}
     onMouseUp={onMouseUp}
     required={required}
-    requiredMarkTitle={requiredMarkTitle}
+    requiredMarkTooltip={requiredMarkTooltip}
     size={size}
     status={status}
-    title={title}
+    tooltip={tooltip}
   >
     <TextareaControl
       {...restNativeTextareaProps}

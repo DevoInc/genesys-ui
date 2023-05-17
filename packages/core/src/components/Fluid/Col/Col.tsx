@@ -38,6 +38,7 @@ export interface ColProps
 export const Col: React.FC<ColProps> = ({
   alignSelf,
   children,
+  tooltip,
   ...styledProps
 }) => {
   return (
@@ -45,6 +46,7 @@ export const Col: React.FC<ColProps> = ({
       {...styledProps}
       $alignSelf={alignSelf}
       style={RESET_STYLES.PADDING}
+      title={tooltip}
     >
       {children}
     </StyledCol>

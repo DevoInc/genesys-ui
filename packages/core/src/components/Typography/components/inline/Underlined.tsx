@@ -12,5 +12,10 @@ export interface UnderlinedProps
 
 export const Underlined: React.FC<UnderlinedProps> = ({
   children,
+  tooltip,
   ...nativeProps
-}) => <StyledUnderlined {...nativeProps}>{children}</StyledUnderlined>;
+}) => (
+  <StyledUnderlined {...nativeProps} title={tooltip}>
+    {children}
+  </StyledUnderlined>
+);

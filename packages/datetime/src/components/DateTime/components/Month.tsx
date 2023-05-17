@@ -106,11 +106,11 @@ export const Month: React.FC<MonthProps> = ({
           aria-label={ariaLabelPrevMonth}
           colorScheme={'quiet'}
           hasBoldIcon
-          icon="arrow_left"
+          icon="gi-arrow_left"
           onClick={onClickPrevMonth}
           size={size}
           state={stateMin}
-          title={ariaLabelPrevMonth}
+          tooltip={ariaLabelPrevMonth}
         />
       )}
       <Flex.Item
@@ -157,11 +157,11 @@ export const Month: React.FC<MonthProps> = ({
           aria-label={ariaLabelNextMonth}
           colorScheme={'quiet'}
           hasBoldIcon
-          icon="arrow_right"
+          icon="gi-arrow_right"
           onClick={onClickNextMonth}
           size={size}
           state={stateMax}
-          title={ariaLabelNextMonth}
+          tooltip={ariaLabelNextMonth}
         />
       )}
     </HFlex>

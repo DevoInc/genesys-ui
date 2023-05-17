@@ -14,7 +14,7 @@ export interface PanelHeaderContentAppendProps {
   closeSettings?: {
     cssTranslate?: string;
     onClick?: IconButtonCloseProps['onClick'];
-    tooltip?: IconButtonCloseProps['title'];
+    tooltip?: IconButtonCloseProps['tooltip'];
   };
   size: PanelHeaderSize;
 }
@@ -41,7 +41,7 @@ export const PanelHeaderContentAppend: React.FC<
           <IconButtonClose
             onClick={closeSettings?.onClick}
             size={size}
-            title={closeSettings?.tooltip}
+            tooltip={closeSettings?.tooltip}
           />
         </Box>
       </StyledPanelHeaderContentAppend>

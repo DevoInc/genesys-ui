@@ -13,7 +13,7 @@ export const ClearIndicator: React.FC<ClearIndicatorProps> = (props) => {
   return (
     components.ClearIndicator && (
       <components.ClearIndicator {...props}>
-        <Icon iconId="exit_close" />
+        <Icon iconId="gi-exit_close" />
       </components.ClearIndicator>
     )
   );

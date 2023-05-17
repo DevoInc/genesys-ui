@@ -42,7 +42,7 @@ export const IconButtonClose = React.forwardRef<
       {...restIconButtonProps}
       as={StyledIconButtonClose}
       colorScheme={'blend-base'}
-      icon="exit_close"
+      icon="gi-exit_close"
       circular
       hasBoldIcon
       ref={ref}

@@ -32,6 +32,7 @@ export const PanelHeaderContentBody: React.FC<PanelHeaderContentBodyProps> = ({
   size = 'md',
   subtitle,
   title,
+  titleTooltip,
 }) => (
   <>
     {(collapseSettings || prependContent) && (
@@ -50,6 +51,7 @@ export const PanelHeaderContentBody: React.FC<PanelHeaderContentBodyProps> = ({
         size={size}
         subtitle={subtitle}
         title={title}
+        titleTooltip={titleTooltip}
       >
         {children}
       </PanelHeaderContentBodyHeader>

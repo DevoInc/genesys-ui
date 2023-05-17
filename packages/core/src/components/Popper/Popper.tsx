@@ -21,7 +21,7 @@ const defaultAppendToProp =
 export interface PopperProps
   extends StyledPopperArrowProps,
     //native
-    GlobalAttrProps,
+    Pick<GlobalAttrProps, 'id' | 'role'>,
     GlobalAriaProps,
     Pick<TriggerAriaProps, 'aria-expanded'> {
   /** DOM element where the popper is appended. It is appended to the body

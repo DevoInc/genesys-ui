@@ -12,23 +12,33 @@ export interface PanelHeaderContentBodyHeaderTitleProps {
   helpUrl?: string;
   legend?: React.ReactNode;
   helpTooltip?: string;
+  /** The tooltip for the header title block */
+  titleTooltip?: string;
 }
 
 export const PanelHeaderContentBodyHeaderTitle: React.FC<
   PanelHeaderContentBodyHeaderTitleProps
-> = ({ size, children, helpUrl, legend, helpTooltip }) =>
+> = ({ size, children, helpUrl, legend, helpTooltip, titleTooltip }) =>
   !helpUrl && !legend ? (
     <Typography.Heading truncateLine={2} size={HEADER_SIZES[size].title}>
       {children}
     </Typography.Heading>
   ) : (
     <Flex alignItems="center" inline width="100%">
-      <Typography.Heading truncateLine={2} size={HEADER_SIZES[size].title}>
+      <Typography.Heading
+        truncateLine={2}
+        size={HEADER_SIZES[size].title}
+        tooltip={titleTooltip}
+      >
         {children}
       </Typography.Heading>
       {helpUrl && (
         <StyledPanelHeaderContentLegend size={size}>
-          <IconButtonGoToDocs href={helpUrl} size={size} title={helpTooltip} />
+          <IconButtonGoToDocs
+            href={helpUrl}
+            size={size}
+            tooltip={helpTooltip}
+          />
         </StyledPanelHeaderContentLegend>
       )}
       {legend && (

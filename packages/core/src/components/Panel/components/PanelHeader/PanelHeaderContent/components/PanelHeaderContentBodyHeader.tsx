@@ -33,6 +33,7 @@ export const PanelHeaderContentBodyHeader: React.FC<
   size,
   subtitle,
   title,
+  titleTooltip,
 }) => (
   <StyledPanelHeaderContentBodyHeader>
     {children ? (
@@ -51,6 +52,7 @@ export const PanelHeaderContentBodyHeader: React.FC<
               helpUrl={helpUrl}
               legend={legend}
               size={size}
+              titleTooltip={titleTooltip}
             >
               {title}
             </PanelHeaderContentBodyHeaderTitle>

@@ -1,60 +1,46 @@
+import * as React from 'react';
 import { action } from '@storybook/addon-actions';
 import { DropdownItem } from '../declarations';
+import { Tag } from '../../Tag';
 
 export const data: DropdownItem[] = [
   {
-    type: 'itemCheckbox',
+    type: 'itemSelectable',
     label: 'Pixel grid',
     shortcut: "⌘ '",
-    tooltip: {
-      label: 'Text tooltip!!!',
-      config: {
-        effect: 'solid',
-      },
-    },
-    highlighted: true,
-    appendTag: { label: 'NEW', colorScheme: 'success' },
-
+    title: 'Tooltip',
+    state: 'featured',
+    appendContent: <Tag text="Warning" colorScheme="warning" size="sm" />,
     onChange: () => {
       action('checkbox has changed');
     },
-    checked: false,
+    defaultChecked: true,
   },
   {
-    type: 'item',
     label: 'Layout Grids',
-    tooltip: {
-      label: 'Text tooltip!!!',
-      config: {
-        effect: 'solid',
-      },
-    },
+    title: 'Tooltip',
     shortcut: '^ G',
-    appendTag: { label: 'NEW', colorScheme: 'success' },
-    action: () => {
+    appendContent: <Tag text="NEW" colorScheme="success" size="sm" />,
+    onClick: () => {
       action('DropdownA11yMenu Item')('Clicked in Layout Grids!');
     },
   },
   {
-    type: 'item',
     label: 'Delete Layout',
-    icon: 'bin_trash_recycle_delete_garbage_empty',
+    icon: 'gi-bin_trash_recycle_delete_garbage_empty',
     shortcut: '⌘ E',
-    action: () => {
+    onClick: () => {
       action('DropdownA11yMenu Item')('Clicked in Delete');
     },
   },
   {
-    type: 'item',
     label: 'Mask Outlines',
-    disabled: true,
-    highlighted: true,
-    action: () => {
+    state: 'disabled',
+    onClick: () => {
       action('DropdownA11yMenu Item')('Clicked in Mask Outlines');
     },
   },
   {
-    type: 'item',
     label: 'Frame Outlines',
     highlighted: true,
     hidden: true,
@@ -63,33 +49,29 @@ export const data: DropdownItem[] = [
     },
   },
   {
-    type: 'item',
     label: 'Resource Use',
-    disabled: true,
-    action: () => {
+    state: 'disabled',
+    onClick: () => {
       action('DropdownA11yMenu Item')('Clicked in Resource');
     },
   },
   {
-    type: 'item',
     label: 'Rulers',
     shortcut: '⇧ R',
-    action: () => {
+    onClick: () => {
       action('DropdownA11yMenu Item')('Clicked in Rulers');
     },
   },
   {
-    type: 'item',
     label: 'Outlines',
     shortcut: '⌘ Y',
-    action: () => {
+    onClick: () => {
       action('DropdownA11yMenu Item')('Clicked in Outlines');
     },
   },
   {
     type: 'itemSubMenu',
     label: 'Copy as',
-    subMenuDirection: 'right',
     subMenu: [
       {
         type: 'itemSubMenu',
@@ -97,66 +79,61 @@ export const data: DropdownItem[] = [
         shortcut: '⌘ + s',
         subMenu: [
           {
-            type: 'item',
             label: 'Template 2',
             shortcut: '⌘ + s',
-            action: () => {
+            onClick: () => {
               action('DropdownA11yMenu Item')('Clicked in Template2');
             },
           },
           {
-            type: 'item',
             label: 'Outlines 2.1',
             shortcut: '⌘ Y',
-            action: () => {
+            onClick: () => {
               action('DropdownA11yMenu Item')('Clicked in 2.1');
             },
           },
         ],
       },
       {
-        type: 'item',
         label: 'Outlines 1',
         shortcut: '⌘ Y',
-        action: () => {
+        onClick: () => {
           action('DropdownA11yMenu Item')('Clicked outlines1');
         },
       },
       {
-        type: 'item',
         label: 'Outlines 1.1',
         shortcut: '⌘ Y',
-        action: () => {
+        onClick: () => {
           action('DropdownA11yMenu Item')('Clicked in 1.1');
         },
       },
     ],
   },
-  { type: 'separator' },
+  { type: 'asSeparator' },
   {
-    type: 'itemCheckbox',
+    type: 'itemSelectable',
     label: 'Show/Hide UI 1',
     shortcut: '⌘ \\',
     checked: false,
     onChange: () => ({}),
   },
   {
-    type: 'itemCheckbox',
+    type: 'itemSelectable',
     label: 'Show/Hide UI 2',
     shortcut: '⇧ ⌘ \\',
     checked: false,
     onChange: () => ({}),
   },
   {
-    type: 'itemCheckbox',
+    type: 'itemSelectable',
     label: 'Show/Hide UI 3',
     shortcut: '⌥ ⌘ \\',
     checked: false,
     onChange: () => ({}),
   },
-  { type: 'separator' } as any,
+  { type: 'asSeparator' } as any,
   {
-    type: 'item',
     label: 'Zoom In',
     shortcut: '+',
     action: () => {
@@ -164,7 +141,6 @@ export const data: DropdownItem[] = [
     },
   },
   {
-    type: 'item',
     label: 'Zoom out',
     shortcut: '-',
     action: () => {
@@ -172,7 +148,6 @@ export const data: DropdownItem[] = [
     },
   },
   {
-    type: 'itemLink',
     label: 'Help',
     href: '/help',
     tooltip: {

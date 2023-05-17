@@ -31,7 +31,7 @@ export const PanelHeaderContentPrepend: React.FC<
         onClick={collapseSettings?.onClick}
         size={size}
         state={collapseSettings?.expanded ? 'expanded' : 'enabled'}
-        title={collapseSettings?.tooltip}
+        tooltip={collapseSettings?.tooltip}
       />
     </StyledPanelHeaderContentPrepend>
   );

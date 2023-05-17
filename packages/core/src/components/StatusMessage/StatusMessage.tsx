@@ -62,6 +62,7 @@ export const StatusMessage = ({
   onClick,
   padding,
   status,
+  tooltip,
   width,
   ...restNativeProps
 }: StatusMessageProps) => {
@@ -85,6 +86,7 @@ export const StatusMessage = ({
       bordered={bordered}
       margin={margin}
       status={status}
+      title={tooltip}
       width={width}
     >
       <FlexWrapper
@@ -93,13 +95,13 @@ export const StatusMessage = ({
         margin={String(margin)}
         padding={getWrapperPadding()}
       >
-        <VFlex>
-          <Icon iconId={icon || 'no_data'} size={getIconSize()} />
-          {msgTitle && (
-            <Heading colorScheme={status} textAlign="center">
-              {msgTitle}
-            </Heading>
-          )}
+        <VFlex alignItems="center">
+          <Icon
+            colorScheme={status || 'stronger'}
+            iconId={icon || 'gi-no_data'}
+            size={getIconSize()}
+          />
+          {msgTitle && <Heading textAlign="center">{msgTitle}</Heading>}
           {msgDescription && (
             <Paragraph
               colorScheme="weak"

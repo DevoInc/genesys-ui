@@ -29,10 +29,11 @@ export const FormLegend: React.FC<FormLegendProps> = ({
   requiredMark,
   helper,
   srOnly = false,
+  tooltip,
   ...styledProps
 }) => {
   return (
-    <StyledFormLegendContainer {...styledProps} srOnly={srOnly}>
+    <StyledFormLegendContainer {...styledProps} srOnly={srOnly} title={tooltip}>
       <Flex
         alignItems="center"
         role={!asLegend ? 'group' : null}

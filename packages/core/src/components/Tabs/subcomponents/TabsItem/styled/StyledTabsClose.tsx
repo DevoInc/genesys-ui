@@ -5,21 +5,15 @@ import { IconButtonRemove } from '../../../../IconButton';
 
 import { TabsItemState } from '../../../declarations';
 import { buttonStateMap } from '../../../utils';
-export interface StyledTabsCloseProps {
+import { GlobalAttrProps } from '../../../../../declarations';
+export interface StyledTabsCloseProps extends Pick<GlobalAttrProps, 'tooltip'> {
   /** Possible states */
   state?: TabsItemState;
-  /** Tooltip for icon accessibility */
-  tooltip?: string;
 }
 
-export const StyledTabsClose = styled(({ state, tooltip, ...props }) => {
+export const StyledTabsClose = styled(({ state, ...props }) => {
   return (
-    <IconButtonRemove
-      {...props}
-      title={tooltip}
-      size={'xs'}
-      state={buttonStateMap[state]}
-    />
+    <IconButtonRemove {...props} size={'xs'} state={buttonStateMap[state]} />
   );
 })<StyledTabsCloseProps>`
   ${({ theme }) => {

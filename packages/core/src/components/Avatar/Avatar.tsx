@@ -38,8 +38,6 @@ export interface AvatarProps
   name?: string;
   /** The function to be triggered on click event. */
   onClick?: () => void;
-  /** Specific text to be shown on hover */
-  tooltip?: string;
   /** If avatar disabled*/
   disabled?: boolean;
 }

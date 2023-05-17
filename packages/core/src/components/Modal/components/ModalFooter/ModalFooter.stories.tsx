@@ -21,7 +21,7 @@ export const Footer: Story = {
         <Box marginRight="auto">
           <IconButtonGoToDocs
             href="https://www.google.com/"
-            title="Go to Docs"
+            tooltip="Go to Docs"
           />
         </Box>
 

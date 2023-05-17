@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components';
 
 import { Link } from '../../../../Link';
 
-import { utils } from '../../../../../styled/functions/utils';
-import { typoMixin } from '../../../../../styled/mixins/baseMixins';
+import { utils } from '../../../../../styled/functions';
+import { typoMixin } from '../../../../../styled';
 import { TabsItemSize, TabsItemState } from '../../../declarations';
 import { linkStateMap } from '../../../utils';
 

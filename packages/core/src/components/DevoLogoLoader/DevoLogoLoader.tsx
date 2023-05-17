@@ -19,6 +19,7 @@ export const DevoLogoLoader: React.FC<DevoLogoLoaderProps> = ({
   className,
   colorScheme = 'dark',
   size = 'md',
+  tooltip,
   ...nativeProps
 }) => (
   <StyledDevoLogoLoader
@@ -27,6 +28,7 @@ export const DevoLogoLoader: React.FC<DevoLogoLoaderProps> = ({
     className={className}
     colorScheme={colorScheme}
     size={size}
+    title={tooltip}
   >
     <svg className="devo-logo-svg" x="0" y="0" viewBox="0 0 130 75">
       <g className="devo-logo-svg__group">
