@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { usePopper } from 'react-popper';
 
-import { MenuItem } from '../components/MenuItem';
-import { StyledItemSubmenu, StyledExpandedIcon } from '../styled';
 import { Menu } from '../../Menu';
 import { MenuItemProps } from '../../Menu/subcomponents';
 
@@ -11,21 +9,14 @@ interface ItemSubMenuProps extends MenuItemProps {
   subMenuConfig: { [key: string]: any }[];
   /** subMenu component. Dropdown component */
   subMenuComponent: React.ComponentType<any>; // TODO especify component type
-  /** If the item is disabled */
-  disabled: boolean;
-  /** If the item is highlighted */
-  highlighted: boolean;
   /** Number of menu/submenu depths. */
   deepLevel: number;
 }
 
 export const ItemSubMenu = ({
-  forwardedRef,
   label,
   subMenuConfig,
   subMenuComponent: SubMenuComponent,
-  disabled,
-  highlighted,
   deepLevel,
   state,
   ...restProps
@@ -56,48 +47,18 @@ export const ItemSubMenu = ({
   }, []);
 
   return (
-    <>
-      <Menu.Item
-        {...restProps}
-        aria-haspopup
-        expandable
-        forwardedRef={forwardedRef}
-        label={label}
-        onClick={action}
-        onMouseLeave={actionLeave}
-        onMouseOver={actionOver}
-        ref={setReferenceElement}
-        state={isVisible ? 'expanded' : state}
-        subMenu={
-          isVisible && (
-            <SubMenuComponent
-              keyboardOpened={keyboardOpened}
-              deepLevel={deepLevel}
-              label={label}
-              items={subMenuConfig}
-              styles={styles}
-              attributes={attributes}
-              setPopperElement={setPopperElement}
-            />
-          )
-        }
-      />
-      <MenuItem
-        disabled={disabled}
-        highlighted={highlighted}
-        role={'menuitem'}
-        forwardedRef={forwardedRef}
-        aria-haspopup
-        aria-expanded={isVisible}
-        action={action}
-        actionOver={actionOver}
-        actionLeave={actionLeave}
-      >
-        <StyledItemSubmenu ref={setReferenceElement}>
-          <span>{label}</span>
-          <StyledExpandedIcon iconId={'caret_right_solid'} />
-        </StyledItemSubmenu>
-        {isVisible && (
+    <Menu.Item
+      {...restProps}
+      aria-haspopup
+      expandable
+      label={label}
+      onClick={action}
+      onMouseLeave={actionLeave}
+      onMouseOver={actionOver}
+      ref={setReferenceElement}
+      state={isVisible ? 'expanded' : state}
+      subMenu={
+        isVisible && (
           <SubMenuComponent
             keyboardOpened={keyboardOpened}
             deepLevel={deepLevel}
@@ -107,8 +68,8 @@ export const ItemSubMenu = ({
             attributes={attributes}
             setPopperElement={setPopperElement}
           />
-        )}
-      </MenuItem>
-    </>
+        )
+      }
+    />
   );
 };

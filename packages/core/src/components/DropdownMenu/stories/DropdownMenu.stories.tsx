@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Button, DropdownA11yMenu } from '../../../index';
+import { Button, DropdownMenu } from '../../../index';
 import { data } from './data';
 import { TYPES } from '../constants';
 
-const meta: Meta<typeof DropdownA11yMenu> = {
-  title: 'Components/Core/Navigation/DropdownA11yMenu',
-  component: DropdownA11yMenu,
+const meta: Meta<typeof DropdownMenu> = {
+  title: 'Components/Core/Navigation/DropdownMenu',
+  component: DropdownMenu,
 };
 
 export default meta;
-type Story = StoryObj<typeof DropdownA11yMenu>;
+type Story = StoryObj<typeof DropdownMenu>;
 
 export const Base: Story = {
   args: {
@@ -43,7 +43,7 @@ export const Base: Story = {
         return item;
       });
       return (
-        <DropdownA11yMenu
+        <DropdownMenu
           items={mappedItems}
           label="Show options"
           triggerComponent={Button}

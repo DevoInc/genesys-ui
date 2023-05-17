@@ -35,7 +35,6 @@ import {
 } from './styled';
 import { StyledHiddenInput } from '../../../../styled/';
 import { Typography } from '../../../Typography';
-import { Box } from '../../../Box';
 import { HFlex } from '../../../HFlex';
 
 export interface MenuItemProps
@@ -55,12 +54,10 @@ export interface MenuItemProps
   bottomContent?: React.ReactNode;
   children?: React.ReactNode;
   expandable?: boolean;
-  /** Forward item reference to manage the item's accessibility actions */
-  forwardedRef?: React.Ref<HTMLElement>;
   icon?: string;
   label?: string;
   prependContent?: React.ReactNode;
-  ref: React.ForwardedRef<HTMLElement>;
+  ref: React.Ref<HTMLElement>;
   selectionScheme?: SelectionScheme;
   /** Shortcut text for the item. */
   shortcut?: string;

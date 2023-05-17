@@ -14,7 +14,7 @@ export * from './ContentSwitcher';
 export * from './DecoratorBar';
 export * from './DevoLogoLoader';
 export * from './Divider';
-export * from './DropdownA11yMenu';
+export * from './DropdownMenu';
 export * from './Field';
 export * from './Flex';
 export * from './FloatingHelper';

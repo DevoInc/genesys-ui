@@ -11,8 +11,7 @@ interface ItemSelectableProps extends MenuItemProps {
 export const ItemSelectable = ({
   checked,
   onChange,
-  onClick,
-  selectionScheme = 'multiple',
+  //selectionScheme = 'multiple',
   state,
   ...restMenuItemProps
 }: ItemSelectableProps) => {

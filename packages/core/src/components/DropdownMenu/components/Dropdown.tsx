@@ -2,9 +2,10 @@ import * as React from 'react';
 
 import { MenuAccessibility } from './MenuAccessibility';
 import { Item, ItemSubMenu, ItemSelectable } from '../elements';
-import { StyledDropdown } from '../styled';
 import { KeyboardEventsMove, TypesProp } from '../declarations';
 import { Menu } from '../../Menu';
+import { BoxProps } from '../../Box';
+import { DropdownMenuContainer } from './DropdownMenuContainer';
 
 const TYPES: { [key: string]: TypesProp } = {
   item: 'item',
@@ -62,7 +63,7 @@ const buildItemsMenu = (items: any, listItemsRef: any[], deepLevel: number) => {
   return elements;
 };
 
-interface DropdownProps {
+interface DropdownProps extends BoxProps {
   /** Label of the menu trigger component. */
   label?: string;
   /** Items for menu: array of objects with item config. */
@@ -77,8 +78,6 @@ interface DropdownProps {
   deepLevel?: number;
   /** This property defines whether or not to open the menu with the keyboard to manage accessibility actions. */
   keyboardOpened?: boolean;
-  /** Customizable drop-down menu style (max-width, ...) */
-  customStyled?: React.CSSProperties;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
@@ -89,7 +88,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   setPopperElement,
   deepLevel = 0,
   keyboardOpened,
-  customStyled,
+  ...boxProps
 }) => {
   const listItemsRef: any = [];
   const previousRef = React.useRef<any>();
@@ -126,16 +125,15 @@ export const Dropdown: React.FC<DropdownProps> = ({
       aria-label={`${label} submenu ${deepLevel}`}
       action={updateActiveItem}
     >
-      <StyledDropdown
+      <DropdownMenuContainer
         zIndex={deepLevel}
         ref={setPopperElement}
         style={styles.popper}
-        role={'group'}
         {...attributes.popper}
-        {...customStyled}
+        {...boxProps}
       >
         {buildItemsMenu(items, listItemsRef, deepLevel)}
-      </StyledDropdown>
+      </DropdownMenuContainer>
     </MenuAccessibility>
   );
 };
