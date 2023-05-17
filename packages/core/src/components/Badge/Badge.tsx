@@ -34,6 +34,7 @@ export const Badge: React.FC<BadgeProps> = ({
   inverse = false,
   size = 'md',
   text,
+  tooltip,
   ...nativeProps
 }) => (
   <StyledBadge
@@ -44,6 +45,7 @@ export const Badge: React.FC<BadgeProps> = ({
     inverse={inverse}
     size={size}
     text={text}
+    title={tooltip}
   >
     {!text && icon && (
       <StyledBadgeIcon

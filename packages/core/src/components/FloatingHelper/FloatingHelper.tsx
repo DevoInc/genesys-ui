@@ -16,6 +16,7 @@ export const FloatingHelper: React.FC<FloatingHelperProps> = ({
   size = 'md',
   setVisible,
   status = 'base',
+  tooltip,
 }) => {
   const onClose = React.useCallback(() => setVisible(false), [setVisible]);
   return (
@@ -24,6 +25,7 @@ export const FloatingHelper: React.FC<FloatingHelperProps> = ({
       setVisible={setVisible}
       trigger={{ size: HELPER_ICON_BUTTON_SIZE_MAP[size] }}
       status={hasStatus(status) ? status : 'help'}
+      tooltip={tooltip}
       visible={visible}
     >
       <InlineMessage.Panel onClose={onClose}>

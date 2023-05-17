@@ -33,7 +33,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   onMouseOver,
   onMouseUp,
   required,
-  requiredMarkTitle,
+  requiredMarkTooltip,
   size = 'md',
   status = 'base',
   title,
@@ -56,7 +56,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     onMouseOver={onMouseOver}
     onMouseUp={onMouseUp}
     required={required}
-    requiredMarkTitle={requiredMarkTitle}
+    requiredMarkTooltip={requiredMarkTooltip}
     size={size}
     status={status}
     title={title}

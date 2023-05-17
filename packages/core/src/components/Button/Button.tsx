@@ -79,7 +79,7 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
       selectionScheme,
       size = 'md',
       state = 'enabled',
-      title,
+      tooltip,
       value,
       ...restNativeProps
     },
@@ -100,7 +100,7 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
       <StyledButton
         {...restNativeProps}
         aria-expanded={state === 'expanded' || ariaExpanded}
-        aria-label={title || ariaLabel}
+        aria-label={tooltip || ariaLabel}
         aria-selected={isSelected || ariaSelected}
         as={as || (selectionScheme && 'label') || (href && 'a')}
         colorScheme={colorScheme}
@@ -119,14 +119,14 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
         selectionScheme={selectionScheme}
         size={size}
         state={state}
-        title={title}
+        title={tooltip}
       >
         {selectionScheme && (
           <ButtonSelection
             id={id}
             disabled={state === 'disabled'}
             checked={onChange ? isSelected : null}
-            label={ariaLabel || title || children?.toString()}
+            label={ariaLabel || tooltip || children?.toString()}
             name={name}
             onBlur={onBlur}
             onChange={onChange}

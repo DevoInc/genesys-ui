@@ -14,9 +14,10 @@ export interface StrongProps
 export const Strong: React.FC<StrongProps> = ({
   bolder = false,
   children,
+  tooltip,
   ...nativeProps
 }) => (
-  <StyledStrong {...nativeProps} bolder={bolder}>
+  <StyledStrong {...nativeProps} bolder={bolder} title={tooltip}>
     {children}
   </StyledStrong>
 );

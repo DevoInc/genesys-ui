@@ -37,7 +37,7 @@ import { StyledHiddenInput } from '../../../../styled/';
 
 export interface MenuItemProps
   extends StyledPolymorphicProps,
-    Pick<GlobalAttrProps, 'id' | 'title'>,
+    Pick<GlobalAttrProps, 'id' | 'tooltip'>,
     GlobalAriaProps,
     Pick<TriggerAriaProps, 'aria-controls' | 'aria-expanded' | 'aria-haspopup'>,
     LayoutAttrProps,
@@ -82,6 +82,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   state = 'enabled',
   tabIndex,
   target,
+  tooltip,
   value,
   ...restNativeProps
 }) => {
@@ -119,6 +120,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         rel={rel}
         role={roleEval}
         state={state}
+        title={tooltip}
         tabIndex={tabIndex}
         target={target}
         value={isSelectable ? null : value}

@@ -52,7 +52,7 @@ export const PanelFooterContentBody: React.FC<PanelFooterContentBodyProps> = ({
             <IconButtonGoToDocs
               href={helpUrl}
               size={size}
-              title={helpTooltip}
+              tooltip={helpTooltip}
             />
           )}
         </PanelFooterContentBodyPrepend>

@@ -16,11 +16,18 @@ const InternalFlex: React.FC<FlexProps> = ({
   children,
   height,
   styles,
+  tooltip,
   width,
   ...styledProps
 }) => {
   return (
-    <StyledFlex {...styledProps} css={styles} $height={height} $width={width}>
+    <StyledFlex
+      {...styledProps}
+      css={styles}
+      title={tooltip}
+      $height={height}
+      $width={width}
+    >
       {children}
     </StyledFlex>
   );

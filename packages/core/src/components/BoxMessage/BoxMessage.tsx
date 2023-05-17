@@ -36,9 +36,10 @@ export const BoxMessage: React.FC<BoxMessageProps> = ({
   hideIcon,
   title,
   status = 'info',
+  tooltip,
   ...nativeProps
 }) => (
-  <StyledBoxMessage {...nativeProps} title={title} status={status}>
+  <StyledBoxMessage {...nativeProps} title={tooltip} status={status}>
     {!hideIcon && (
       <Flex.Item alignSelf="flex-start" flex="0 0 auto" marginRight="cmp-sm">
         <StyledBoxMessageIcon

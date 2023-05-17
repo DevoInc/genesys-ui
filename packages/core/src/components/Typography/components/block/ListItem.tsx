@@ -9,5 +9,10 @@ export interface ListItemProps extends GlobalAttrProps, GlobalAriaProps {
 
 export const ListItem: React.FC<ListItemProps> = ({
   children,
+  tooltip,
   ...nativeProps
-}) => <StyledListItem {...nativeProps}>{children}</StyledListItem>;
+}) => (
+  <StyledListItem {...nativeProps} title={tooltip}>
+    {children}
+  </StyledListItem>
+);

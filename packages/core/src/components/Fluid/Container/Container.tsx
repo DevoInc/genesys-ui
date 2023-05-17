@@ -68,6 +68,7 @@ export const Container: React.FC<ContainerExtendedProps> = ({
   paddingBottom,
   paddingTop,
   removeHorizontalSpace = false,
+  tooltip,
   ...styledProps
 }) => {
   const hasFluidObject = typeof fluidProp === 'object';
@@ -96,6 +97,7 @@ export const Container: React.FC<ContainerExtendedProps> = ({
       $removeHorizontalSpace={removeHorizontalSpace}
       sm={hasFluidObject ? fluidProp?.sm : null}
       style={RESET_STYLES.PADDING}
+      title={tooltip}
       xl={hasFluidObject ? fluidProp?.xl : null}
       xs={hasFluidObject ? fluidProp?.xs : null}
       xxl={hasFluidObject ? fluidProp?.xxl : null}

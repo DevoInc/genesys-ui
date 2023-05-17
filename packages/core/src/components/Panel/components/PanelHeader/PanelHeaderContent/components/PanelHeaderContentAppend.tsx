@@ -41,7 +41,7 @@ export const PanelHeaderContentAppend: React.FC<
           <IconButtonClose
             onClick={closeSettings?.onClick}
             size={size}
-            title={closeSettings?.tooltip}
+            tooltip={closeSettings?.tooltip}
           />
         </Box>
       </StyledPanelHeaderContentAppend>

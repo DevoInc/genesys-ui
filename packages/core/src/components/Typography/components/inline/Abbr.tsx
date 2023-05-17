@@ -7,18 +7,16 @@ export interface AbbrProps
   // native
   extends GlobalAttrProps,
     GlobalAriaProps {
-  /** Tooltip to be shown */
-  tooltip?: string;
   /** Content of the Abbr */
   children?: React.ReactNode;
 }
 
 export const Abbr: React.FC<AbbrProps> = ({
   children,
-  tooltip = null,
+  tooltip,
   ...nativeProps
 }) => (
-  <StyledAbbr {...nativeProps} data-tip={tooltip}>
+  <StyledAbbr {...nativeProps} title={tooltip}>
     {children}
   </StyledAbbr>
 );

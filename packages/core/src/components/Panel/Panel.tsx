@@ -32,6 +32,7 @@ export interface PanelProps
       | 'legend'
       | 'subtitle'
       | 'title'
+      | 'titleTooltip'
     >,
     Pick<PanelBodyContainerProps, 'bodySettings'>,
     Pick<PanelFooterContentProps, 'helpTooltip' | 'helpUrl'> {
@@ -63,6 +64,7 @@ const InternalPanel: React.FC<PanelProps> = ({
   collapseSettings,
   subtitle,
   title,
+  titleTooltip,
   legend,
   icon,
   // PanelBodyContainerProps
@@ -119,6 +121,7 @@ const InternalPanel: React.FC<PanelProps> = ({
             size={size}
             subtitle={subtitle}
             title={title}
+            titleTooltip={titleTooltip}
             topContent={headerRenderContent?.top}
           >
             {headerRenderContent?.middle}

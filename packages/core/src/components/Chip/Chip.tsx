@@ -62,6 +62,7 @@ export const Chip: React.FC<ChipProps> = ({
   selectionScheme = 'multiple',
   size = 'md',
   state,
+  tooltip,
   value,
   ...restStyledProps
 }) => {
@@ -74,6 +75,7 @@ export const Chip: React.FC<ChipProps> = ({
       selectionScheme={selectionScheme}
       size={size}
       state={state}
+      title={tooltip}
     >
       <StyledHiddenInput
         aria-label={ariaLabel || children?.toString()}

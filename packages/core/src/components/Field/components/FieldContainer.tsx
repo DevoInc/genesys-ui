@@ -9,7 +9,7 @@ import { Flex } from '../../Flex';
 export interface FieldContainerProps
   extends MouseEventAttrProps,
     StyledOverloadCssProps,
-    Pick<GlobalAttrProps, 'title' | 'role'> {
+    Pick<GlobalAttrProps, 'tooltip' | 'role'> {
   children: React.ReactNode;
 }
 
@@ -24,7 +24,7 @@ export const FieldContainer: React.FC<FieldContainerProps> = ({
   onMouseUp,
   role,
   styles,
-  title,
+  tooltip,
 }) => (
   <Flex
     onClick={onClick}
@@ -39,7 +39,7 @@ export const FieldContainer: React.FC<FieldContainerProps> = ({
     gap={'cmp-xxs'}
     role={role}
     styles={styles}
-    title={title}
+    tooltip={tooltip}
   >
     {children}
   </Flex>

@@ -39,7 +39,7 @@ export const ContentSwitcherItem: React.FC<ContentSwitcherItemProps> = ({
   onClick,
   size = 'md',
   state = 'enabled',
-  title,
+  tooltip,
   wide,
 }) => {
   const selected = state === 'selected';
@@ -58,7 +58,7 @@ export const ContentSwitcherItem: React.FC<ContentSwitcherItemProps> = ({
       selectionScheme="single"
       size={CONTENT_SWITCHER_ITEM_SIZE_MAP[size]}
       state={selected ? 'selected' : state}
-      title={title}
+      tooltip={tooltip}
       type="button"
       wide={wide}
     >

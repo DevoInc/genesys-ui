@@ -7,8 +7,16 @@ import { StyledGrid, StyledGridProps } from './StyledGrid';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface GridProps extends StyledGridProps, CommonBoxProps {}
 
-const InternalGrid: React.FC<GridProps> = ({ children, ...styledProps }) => {
-  return <StyledGrid {...styledProps}>{children}</StyledGrid>;
+const InternalGrid: React.FC<GridProps> = ({
+  children,
+  tooltip,
+  ...styledProps
+}) => {
+  return (
+    <StyledGrid {...styledProps} title={tooltip}>
+      {children}
+    </StyledGrid>
+  );
 };
 
 export const Grid = InternalGrid as typeof InternalGrid & {

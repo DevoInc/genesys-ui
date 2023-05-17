@@ -20,6 +20,7 @@ export const Icon: React.FC<IconProps> = ({
   iconId,
   size,
   strong,
+  tooltip,
   ...nativeProps
 }) => (
   <StyledIcon
@@ -31,5 +32,6 @@ export const Icon: React.FC<IconProps> = ({
     role="img"
     size={size}
     strong={strong}
+    title={tooltip}
   />
 );

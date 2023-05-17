@@ -8,7 +8,12 @@ export interface GridItemProps extends StyledGridItemProps, CommonBoxProps {}
 
 export const GridItem: React.FC<GridItemProps> = ({
   children,
+  tooltip,
   ...styledProps
 }) => {
-  return <StyledGridItem {...styledProps}>{children}</StyledGridItem>;
+  return (
+    <StyledGridItem {...styledProps} title={tooltip}>
+      {children}
+    </StyledGridItem>
+  );
 };

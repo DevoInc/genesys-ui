@@ -104,7 +104,7 @@ export const ClosableBackwardNavigation: Story = {
             <Flex.Item>
               <IconButtonClose
                 onClick={() => alert('Back to previous Panel!')}
-                title="Back to previous Panel"
+                tooltip="Back to previous Panel"
               />
             </Flex.Item>
           </HFlex>

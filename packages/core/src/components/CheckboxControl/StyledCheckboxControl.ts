@@ -11,7 +11,7 @@ import {
 
 export interface StyledCheckboxControlProps {
   /** Icon inside the checkbox when it's selected */
-  checkedIcon: string;
+  checkedIcon?: string;
   /** If the checkbox has indeterminate format and state: instead of a check mark, it contains an intermediate one.*/
   indeterminate?: HTMLInputElement['indeterminate'];
   /** The size for the checkbox. It affects to its width, height, font-size... etc. */

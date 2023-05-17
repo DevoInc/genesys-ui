@@ -179,7 +179,7 @@ export const Pagination: React.FC<PaginationProps> = ({
                   onClick={goToFirstPage}
                   size={actionsSize}
                   state={page === 0 ? 'disabled' : 'enabled'}
-                  title={firstPageTooltipText}
+                  tooltip={firstPageTooltipText}
                 />
               </Flex.Item>
             )}
@@ -191,7 +191,7 @@ export const Pagination: React.FC<PaginationProps> = ({
                   onClick={goToPreviousPage}
                   size={actionsSize}
                   state={page === 0 ? 'disabled' : 'enabled'}
-                  title={prevPageTooltipText}
+                  tooltip={prevPageTooltipText}
                 />
               </Flex.Item>
             )}
@@ -235,7 +235,7 @@ export const Pagination: React.FC<PaginationProps> = ({
                   onClick={goToNextPage}
                   size={actionsSize}
                   state={page === lastPage ? 'disabled' : 'enabled'}
-                  title={nextPageTooltipText}
+                  tooltip={nextPageTooltipText}
                 />
               </Flex.Item>
             )}
@@ -248,7 +248,7 @@ export const Pagination: React.FC<PaginationProps> = ({
                   onClick={goToLastPage}
                   size={actionsSize}
                   state={page === lastPage ? 'disabled' : 'enabled'}
-                  title={lastPageTooltipText}
+                  tooltip={lastPageTooltipText}
                 />
               </Flex.Item>
             )}

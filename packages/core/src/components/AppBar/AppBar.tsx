@@ -43,10 +43,11 @@ const InternalAppBar: React.FC<AppBarProps> = ({
   sticky = false,
   tabItems,
   heading,
+  tooltip,
   ...nativeProps
 }) => {
   return (
-    <AppBarContainer {...nativeProps} id={id} sticky={sticky}>
+    <AppBarContainer {...nativeProps} id={id} sticky={sticky} title={tooltip}>
       <>
         {heading && <AppBarHeading id={id}>{heading}</AppBarHeading>}
         {heading && <AppBarDivider id={id} />}

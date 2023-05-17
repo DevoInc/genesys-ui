@@ -8,7 +8,7 @@ import { Tabs } from '../../Tabs';
 export const mainActions = [
   <IconButton
     aria-label="avatar"
-    title="Avatar"
+    tooltip="Avatar"
     key={1}
     icon="gi-user_profile_avatar_man_male2"
     circular
@@ -16,7 +16,7 @@ export const mainActions = [
   />,
   <IconButton
     aria-label="Search"
-    title="Search"
+    tooltip="Search"
     key={2}
     icon="gi-search_thicker"
     circular
@@ -24,7 +24,7 @@ export const mainActions = [
   />,
   <IconButton
     aria-label="Notifications"
-    title="Notifications"
+    tooltip="Notifications"
     key={3}
     icon="gi-bell_solid"
     circular
@@ -32,7 +32,7 @@ export const mainActions = [
   />,
   <IconButton
     aria-label="Help"
-    title="Help"
+    tooltip="Help"
     key={4}
     icon="gi-about_question_faq_help_filled"
     circular
@@ -40,7 +40,7 @@ export const mainActions = [
   />,
   <IconButton
     aria-label="Time zone"
-    title="Time zone"
+    tooltip="Time zone"
     key={5}
     icon="gi-time_zone"
     circular

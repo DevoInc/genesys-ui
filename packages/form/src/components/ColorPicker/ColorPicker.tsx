@@ -43,7 +43,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
   presetColors,
   readOnly,
   required,
-  requiredMarkTitle,
+  requiredMarkTooltip,
   size = 'md',
   status = 'base',
   title,
@@ -86,7 +86,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
       label={label}
       labelPosition={labelPosition}
       required={required}
-      requiredMarkTitle={requiredMarkTitle}
+      requiredMarkTooltip={requiredMarkTooltip}
       size={size}
       status={status}
       title={title}
