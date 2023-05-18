@@ -8,26 +8,24 @@ import {
 } from '../../declarations';
 
 // styled
-import {
-  StyledTag,
-  StyledTagBadge,
-  StyledTagIcon,
-  StyledTagProps,
-  StyledTagText,
-} from './StyledTag';
+import { StyledTagContainerProps } from './components/StyledTagContainer';
+
+// components
+import { TagBadge, TagContainer, TagIcon, TagLabel } from './components';
+import { useTheme } from 'styled-components';
 
 export interface TagProps
   extends StyledPolymorphicProps,
     GlobalAttrProps,
     GlobalAriaProps,
-    StyledTagProps {
+    StyledTagContainerProps {
   /** The name of the icon for the tag */
   icon?: string;
   /** Text for the tag */
   text: string;
 }
 
-export const Tag: React.FC<TagProps> = ({
+export const InternalTag: React.FC<TagProps> = ({
   colorScheme = 'neutral',
   icon,
   bold,
@@ -39,27 +37,32 @@ export const Tag: React.FC<TagProps> = ({
   ...restNativeProps
 }) => {
   return (
-    <StyledTag
+    <TagContainer
       {...restNativeProps}
       colorScheme={colorScheme}
       bold={bold}
       quiet={quiet}
       wide={wide}
       size={size}
-      title={tooltip}
+      tooltip={tooltip}
     >
-      {quiet && (
-        <StyledTagBadge colorScheme={colorScheme} icon={icon} size={size} />
-      )}
+      {quiet && <TagBadge colorScheme={colorScheme} icon={icon} size={size} />}
       {text && icon && !quiet && (
-        <StyledTagIcon
-          className={icon}
-          aria-hidden={true}
-          bold={bold}
-          size={size}
-        />
+        <TagIcon iconId={icon} strong={bold} size={size} />
       )}
-      {text && <StyledTagText>{text}</StyledTagText>}
-    </StyledTag>
+      {text && <TagLabel>{text}</TagLabel>}
+    </TagContainer>
   );
 };
+
+export const Tag = InternalTag as typeof InternalTag & {
+  Badge: typeof TagBadge;
+  Container: typeof TagContainer;
+  Icon: typeof TagIcon;
+  Label: typeof TagLabel;
+};
+
+Tag.Badge = TagBadge;
+Tag.Container = TagContainer;
+Tag.Icon = TagIcon;
+Tag.Label = TagLabel;

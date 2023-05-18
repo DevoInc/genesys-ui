@@ -4,6 +4,7 @@ import * as React from 'react';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../declarations';
 
@@ -17,6 +18,7 @@ import {
 
 export interface BadgeProps
   extends StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps,
     StyledBadgeProps {
@@ -35,11 +37,13 @@ export const Badge: React.FC<BadgeProps> = ({
   size = 'md',
   text,
   tooltip,
+  styles,
   ...nativeProps
 }) => (
   <StyledBadge
     {...nativeProps}
     colorScheme={colorScheme}
+    css={styles}
     icon={icon}
     hasAbsolutePosition={hasAbsolutePosition}
     inverse={inverse}

@@ -1,14 +1,12 @@
 import styled, { css } from 'styled-components';
 import * as _ from 'lodash';
 
-import { FeedbackColorScheme, FeedbackSize } from '../../declarations';
+import { FeedbackColorScheme, FeedbackSize } from '../../../declarations';
 
-import { truncateTypoMixin, typoMixin } from '../../styled/mixins/baseMixins';
-import { getAccTextColor, isValidColor } from '../../styled/functions';
+import { typoMixin } from '../../../styled';
+import { getAccTextColor, isValidColor } from '../../../styled/functions';
 
-import { Badge } from '../Badge/';
-
-export interface StyledTagProps {
+export interface StyledTagContainerProps {
   /** It defines the color scheme for the background and text color.
    * There are predefined types: primary, secondary... etc.
    * It's possible to use a custom color used for the background color and
@@ -24,7 +22,7 @@ export interface StyledTagProps {
   size?: FeedbackSize;
 }
 
-export const StyledTag = styled.span<StyledTagProps>`
+export const StyledTagContainer = styled.span<StyledTagContainerProps>`
   ${({ colorScheme = 'neutral', bold, quiet, wide, size = 'md', theme }) => {
     const colorSchemeForTokens = _.camelCase(colorScheme);
 
@@ -64,42 +62,4 @@ export const StyledTag = styled.span<StyledTagProps>`
       `};
     `;
   }}
-`;
-
-export const StyledTagBadge = styled(Badge)`
-  ${({ size, theme }) => {
-    const cmpTokens = theme.cmp.tag.badge;
-    return css`
-      margin-right: ${cmpTokens.space.marginRight[size]};
-    `;
-  }}
-`;
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface StyledTagIconProps
-  extends Pick<StyledTagProps, 'bold' | 'size'> {}
-
-export const StyledTagIcon = styled.i<StyledTagIconProps>`
-  ${({ bold, size, theme }) => {
-    const cmpTokens = theme.cmp.tag.icon;
-    const square = cmpTokens.size.square[size];
-    const marginRight = cmpTokens.space.marginRight[size];
-    return css`
-      position: relative;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      flex: 0 0 auto;
-      margin-right: ${marginRight};
-      width: ${square};
-      height: ${square};
-      user-select: none;
-      font-weight: ${bold ? 'bold' : ''};
-      font-size: ${`calc(${square} - 0.2rem)`};
-    `;
-  }}
-`;
-
-export const StyledTagText = styled.span`
-  ${truncateTypoMixin()};
 `;

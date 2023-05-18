@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { LabelPosition } from './declarations';
-import { StyledTagProps } from '../Tag/StyledTag';
+import { StyledTagProps } from '../Tag/components/StyledTagContainer';
 
 export interface StyledTagGroupProps {
   /** Position of the label text relative to the tags */
