@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { LabelPosition } from './declarations';
-import { StyledTagProps } from '../Tag/components/StyledTagContainer';
+import { StyledTagContainerProps } from '../Tag/components/StyledTagContainer';
 
 export interface StyledTagGroupProps {
   /** Position of the label text relative to the tags */
@@ -16,7 +16,8 @@ export const StyledTagGroup = styled.div<StyledTagGroupProps>`
   `}
 `;
 
-export interface StyledTagGroupLabelProps extends Pick<StyledTagProps, 'size'> {
+export interface StyledTagGroupLabelProps
+  extends Pick<StyledTagContainerProps, 'size'> {
   /** Position of the label text relative to the tags */
   labelPosition: LabelPosition;
 }
@@ -40,7 +41,8 @@ export const StyledTagGroupLabel = styled.div<StyledTagGroupLabelProps>`
 `;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface StyledTagGroupListProps extends Pick<StyledTagProps, 'size'> {}
+export interface StyledTagGroupListProps
+  extends Pick<StyledTagContainerProps, 'size'> {}
 
 export const StyledTagGroupList = styled.div<StyledTagGroupListProps>`
   ${({ size, theme }) => {
