@@ -1,59 +1,27 @@
-import { Meta, Canvas, Source, Markdown, ArgTypes } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
-import * as Stories from './Box.stories';
-import * as CaseStories from './Box.cases.stories';
-
-import spacingProps from '../../../stories/partials/spacingProps.md?raw';
+import * as Stories from './EditableContent.stories';
 
 <Meta of={Stories} />
 
-# Box
+# EditableContent
 
 ## Overview
 
-Box is a layout component designed to simplify the application of layout styles such as margin, position, padding, and overflow to a functional component.
-By wrapping another component with the Box component, you can easily pass layout styles via props, providing a shorthand approach to styling.
+Component created to wrap another typographic components and convert them into editable contents.
+You only have to wrap the content and save the changes through a state or another mechanism based in
+events as `onFocus`, `onBlur`...etc.
+
+Depending on the needs of your content, you can use the `as` prop to wrap with a specific
+HTML tag as `<span>`, `<div>`, `<ins>`... etc.
 
 ## How to import
 
-<Source
-  code={`
-import { Box } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { EditableContent } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
 <Canvas of={Stories.Base} />
-
-## Cases
-
-### as
-
-Likewise, its `as` property allow this component to be rendered as any HTML tag:
-'div', 'li', 'section'... etc.
-
-<Source
-  code={`
-import * as React from 'react';
-import { Box } from '@devoinc/genesys-ui';
-
-const MyFlexCmp = () => <Box as={'span'}>Box content</Box>;
-`}
-/>
-
-This is an example with `Button` and `Badge`. We place the `Badge` in absolute
-way, relative to the `Button`:
-
-<Canvas of={CaseStories.PlacingFunctionalComponents} />
-
-This is another typical use case: to generate vertical scroll in a content.
-A group of `Paragraph` components wrapped by a `Box` with specific 'max-height'
-and 'overflow' to auto:
-
-<Canvas of={CaseStories.Scrolled} />
-
-<Markdown>{spacingProps}</Markdown>
 
 ## Props
 

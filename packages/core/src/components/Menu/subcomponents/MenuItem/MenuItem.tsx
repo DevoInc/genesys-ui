@@ -57,7 +57,7 @@ export interface MenuItemProps
   icon?: string;
   label?: string;
   prependContent?: React.ReactNode;
-  ref: React.Ref<HTMLElement>;
+  //ref: React.Ref<HTMLElement>;
   selectionScheme?: SelectionScheme;
   /** Shortcut text for the item. */
   shortcut?: string;
@@ -84,7 +84,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   onChange,
   onFocus,
   prependContent,
-  ref,
+  //ref,
   rel,
   selectionScheme,
   shortcut,

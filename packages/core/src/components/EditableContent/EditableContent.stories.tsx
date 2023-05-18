@@ -1,21 +1,43 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box } from '../';
-import { StyledLayoutContentHelper } from '../../../stories/components/styled';
+import { EditableContent } from './';
+import { lorem } from '../../../stories/utils/fillerTexts';
+import { Typography } from '../Typography';
 
-const meta: Meta<typeof Box> = {
-  title: 'Components/Core/Layout/Box',
-  component: Box,
+const meta: Meta<typeof EditableContent> = {
+  title: 'Components/Core/Layout/EditableContent',
+  component: EditableContent,
 };
 
 export default meta;
-type Story = StoryObj<typeof Box>;
+type Story = StoryObj<typeof EditableContent>;
 
 export const Base: Story = {
-  args: {
-    children: (
-      <StyledLayoutContentHelper>Box content</StyledLayoutContentHelper>
-    ),
-  },
+  render: () =>
+    (() => {
+      const [editConfig, setEditConfig] = React.useState({
+        editing: false,
+        content: lorem,
+      });
+      return (
+        <EditableContent
+          onBlur={(e) =>
+            setEditConfig({
+              editing: false,
+              content: e.currentTarget.textContent,
+            })
+          }
+          onFocus={() =>
+            setEditConfig({
+              ...editConfig,
+              editing: true,
+            })
+          }
+          tooltip="Click to edit this paragraph"
+        >
+          <Typography.Paragraph>{lorem}</Typography.Paragraph>
+        </EditableContent>
+      );
+    })(),
 };

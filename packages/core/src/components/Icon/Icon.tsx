@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../declarations';
 
@@ -11,6 +12,7 @@ export interface IconProps
   extends StyledIconProps,
     //native
     StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps {}
 
@@ -20,6 +22,7 @@ export const Icon: React.FC<IconProps> = ({
   iconId,
   size,
   strong,
+  styles,
   tooltip,
   ...nativeProps
 }) => (
@@ -27,6 +30,7 @@ export const Icon: React.FC<IconProps> = ({
     {...nativeProps}
     aria-hidden
     color={color}
+    css={styles}
     colorScheme={colorScheme}
     iconId={iconId}
     role="img"

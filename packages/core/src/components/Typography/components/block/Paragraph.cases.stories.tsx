@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { HFlex, IconButton, TextareaControl, Typography } from '../../..';
+import { EditableContent, Typography } from '../../..';
 import { lorem } from '../../../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Typography.Paragraph> = {
@@ -20,32 +20,23 @@ export const Editable: Story = {
         content: lorem,
       });
       return (
-        <HFlex spacing="cmp-xxs" alignItems="flex-start">
-          {editConfig.editing ? (
-            <TextareaControl
-              aria-label="Editing this paragraph"
-              value={editConfig.content}
-              onChange={(e) =>
-                setEditConfig({ ...editConfig, content: e.target.value })
-              }
-            />
-          ) : (
-            <Typography.Paragraph>{editConfig.content}</Typography.Paragraph>
-          )}
-          <IconButton
-            colorScheme="quiet"
-            icon={editConfig.editing ? 'check_thick' : 'write_pencil_new_edit'}
-            onClick={(e) =>
-              setEditConfig({ ...editConfig, editing: !editConfig.editing })
-            }
-            size="sm"
-            title={
-              editConfig.editing
-                ? 'Save changes'
-                : 'Edit this paragraph content'
-            }
-          />
-        </HFlex>
+        <EditableContent
+          onBlur={(e) =>
+            setEditConfig({
+              editing: false,
+              content: e.currentTarget.textContent,
+            })
+          }
+          onFocus={() =>
+            setEditConfig({
+              ...editConfig,
+              editing: true,
+            })
+          }
+          tooltip="Click to edit this paragraph"
+        >
+          <Typography.Paragraph>{lorem}</Typography.Paragraph>
+        </EditableContent>
       );
     })(),
 };

@@ -1,15 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import {
-  Box,
-  HFlex,
-  Icon,
-  IconButton,
-  InputControl,
-  TextareaControl,
-  Typography,
-} from '../../..';
+import { EditableContent, Typography } from '../../..';
 import { lorem } from '../../../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Typography.Heading> = {
@@ -25,55 +17,28 @@ export const Editable: Story = {
     (() => {
       const [editConfig, setEditConfig] = React.useState({
         editing: false,
-        content: 'This an editable heading',
+        content: lorem,
       });
-      const contentReference = React.useRef(null);
       return (
-        <HFlex spacing="cmp-xs" inline>
-          <Typography.Heading
-            forwardedRef={contentReference}
-            size="h5"
-            contentEditable
-            onBlur={(e) =>
-              setEditConfig({
-                editing: false,
-                content: e.currentTarget.textContent,
-              })
-            }
-            onFocus={(e) =>
-              setEditConfig({
-                ...editConfig,
-                editing: true,
-              })
-            }
-          >
-            {editConfig.content}
+        <EditableContent
+          onBlur={(e) =>
+            setEditConfig({
+              editing: false,
+              content: e.currentTarget.textContent,
+            })
+          }
+          onFocus={() =>
+            setEditConfig({
+              ...editConfig,
+              editing: true,
+            })
+          }
+          tooltip="Click to edit this heading"
+        >
+          <Typography.Heading>
+            This a heading with edition available
           </Typography.Heading>
-          {!editConfig.editing && (
-            <Box
-              onClick={() => {
-                !editConfig.editing ? contentReference.current.focus() : null;
-                setEditConfig({
-                  ...editConfig,
-                  editing: !editConfig.editing,
-                });
-              }}
-            >
-              <Icon
-                colorScheme="weak"
-                iconId={
-                  editConfig.editing ? 'check_thick' : 'write_pencil_new_edit'
-                }
-                size="xxxs"
-                title={
-                  editConfig.editing
-                    ? 'Save changes'
-                    : 'Edit this heading content'
-                }
-              />
-            </Box>
-          )}
-        </HFlex>
+        </EditableContent>
       );
     })(),
 };

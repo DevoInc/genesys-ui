@@ -15,6 +15,7 @@ export * from './DecoratorBar';
 export * from './DevoLogoLoader';
 export * from './Divider';
 export * from './DropdownMenu';
+export * from './EditableContent';
 export * from './Field';
 export * from './Flex';
 export * from './FloatingHelper';
