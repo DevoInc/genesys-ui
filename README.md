@@ -37,7 +37,7 @@ The Storybook includes a live preview of the components, as well as their docume
 
 ### Quick start
 
-\* Ensure you are using `npm` version 7 or higher and `Node.js` version 16 or higher
+Ensure you are using npm &ge; v7 and Node.js &ge; v18.
 
 ```sh
 ## Clone the repository

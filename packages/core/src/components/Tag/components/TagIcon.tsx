@@ -7,7 +7,6 @@ import { Icon, IconProps } from '../../Icon';
 export interface TagIconProps extends IconProps {}
 
 export const TagIcon: React.FC<TagIconProps> = ({
-  colorScheme = 'neutral',
   size = 'md',
   styles,
   ...restIconProps
