@@ -38,14 +38,14 @@ export const IconButtonClose = React.forwardRef<
   return (
     <IconButton
       {...restIconButtonProps}
-      colorScheme={'blend-base'}
+      colorScheme="blend-base"
       icon="gi-exit_close"
       circular
       hasBoldIcon
       ref={ref}
       size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
       state={state}
-      styles={styles || `background-color: transparent;`}
+      styles={styles || 'background-color: transparent;'}
     />
   );
 });
