@@ -4,7 +4,8 @@ import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 
 import { IconButton, IconButtonProps } from '../../';
 
-import { StyledIconButtonGoToDocs } from './StyledIconButtonGoToDocs';
+import { iconButtonGoToDocsMixin } from './helpers';
+import { useTheme } from 'styled-components';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IconButtonGoToDocsProps
@@ -14,7 +15,6 @@ export interface IconButtonGoToDocsProps
     | 'aria-haspopup'
     | 'aria-selected'
     | 'autoFocus'
-    | 'as'
     | 'badgeText'
     | 'children'
     | 'colorScheme'
@@ -29,7 +29,6 @@ export interface IconButtonGoToDocsProps
     | 'wide'
     | 'onChange'
     | 'selectionScheme'
-    | 'state'
     | 'type'
     | 'value'
   > {}
@@ -40,26 +39,29 @@ export const IconButtonGoToDocs = React.forwardRef<
 >(
   (
     {
-      forwardedAs,
+      as = 'a',
       rel = 'noreferrer noopener',
       size = 'md',
+      state = 'enabled',
+      styles,
       target = '_blank',
       ...restIconButtonProps
     },
     ref
   ) => {
+    const theme = useTheme();
     return (
       <IconButton
         {...restIconButtonProps}
+        as={as}
         rel={rel}
         target={target}
-        as={StyledIconButtonGoToDocs}
         colorScheme={'help'}
-        forwardedAs={forwardedAs || 'a'}
         icon="gi-about_question_faq_help_filled"
         circular
         ref={ref}
         size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
+        styles={styles || iconButtonGoToDocsMixin({ size, state, theme })}
       />
     );
   }

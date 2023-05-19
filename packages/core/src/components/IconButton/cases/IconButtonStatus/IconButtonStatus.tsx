@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 import { ButtonExpandableState } from '../../../Button';
@@ -7,9 +8,9 @@ import {
   IconButtonStatusColorScheme,
 } from './constants';
 
-import { IconButton, IconButtonProps } from '../../';
+import { iconButtonStatusMixin } from './helpers';
 
-import { StyledIconButtonStatus } from './StyledIconButtonStatus';
+import { IconButton, IconButtonProps } from '../../';
 
 export interface IconButtonStatusProps
   extends Omit<
@@ -46,21 +47,25 @@ export const IconButtonStatus = React.forwardRef<
       icon = ICON_BUTTON_STATUS_ICON_PROP_MAP[colorScheme],
       size = 'md',
       state = 'enabled',
+      styles,
       ...restIconButtonProps
     },
     ref
-  ) => (
-    <IconButton
-      {...restIconButtonProps}
-      as={StyledIconButtonStatus}
-      colorScheme={colorScheme}
-      icon={icon}
-      circular
-      ref={ref}
-      size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
-      state={state}
-    />
-  )
+  ) => {
+    const theme = useTheme();
+    return (
+      <IconButton
+        {...restIconButtonProps}
+        colorScheme={colorScheme}
+        icon={icon}
+        circular
+        ref={ref}
+        size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
+        state={state}
+        styles={styles || iconButtonStatusMixin({ state, colorScheme, theme })}
+      />
+    );
+  }
 );
 
 IconButtonStatus.displayName = 'IconButtonStatus';

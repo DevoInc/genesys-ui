@@ -4,8 +4,6 @@ import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 
 import { IconButton, IconButtonProps } from '../../';
 
-import { StyledIconButtonClose } from './StyledIconButtonClose';
-
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IconButtonCloseProps
   extends Omit<
@@ -36,11 +34,10 @@ export interface IconButtonCloseProps
 export const IconButtonClose = React.forwardRef<
   HTMLElement,
   IconButtonCloseProps
->(({ size = 'md', state = 'enabled', ...restIconButtonProps }, ref) => {
+>(({ size = 'md', state = 'enabled', styles, ...restIconButtonProps }, ref) => {
   return (
     <IconButton
       {...restIconButtonProps}
-      as={StyledIconButtonClose}
       colorScheme={'blend-base'}
       icon="gi-exit_close"
       circular
@@ -48,6 +45,7 @@ export const IconButtonClose = React.forwardRef<
       ref={ref}
       size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
       state={state}
+      styles={styles || `background-color: transparent;`}
     />
   );
 });

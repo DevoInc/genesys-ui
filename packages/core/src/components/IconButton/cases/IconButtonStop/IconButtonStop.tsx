@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
 import { ButtonActionState } from '../../../Button';
 
 import { IconButton, IconButtonProps } from '../../';
 
-import { StyledIconButtonStop } from './StyledIconButtonStop';
+import { iconButtonStopMixin } from './helpers';
 
 export interface IconButtonStopProps
   extends Omit<
@@ -35,16 +36,19 @@ export interface IconButtonStopProps
 export const IconButtonStop = React.forwardRef<
   HTMLElement,
   IconButtonStopProps
->(({ size = 'md', state = 'enabled', ...restIconButtonProps }, ref) => (
-  <IconButton
-    {...restIconButtonProps}
-    as={StyledIconButtonStop}
-    colorScheme="neutral"
-    icon="gi-stop_square"
-    ref={ref}
-    size={size}
-    state={state}
-  />
-));
+>(({ size = 'md', state = 'enabled', styles, ...restIconButtonProps }, ref) => {
+  const theme = useTheme();
+  return (
+    <IconButton
+      {...restIconButtonProps}
+      colorScheme="neutral"
+      icon="gi-stop_square"
+      ref={ref}
+      size={size}
+      state={state}
+      styles={styles || iconButtonStopMixin({ size, state, theme })}
+    />
+  );
+});
 
 IconButtonStop.displayName = 'IconButtonStop';
