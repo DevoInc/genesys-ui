@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
 // constants
 import { CONTENT_SWITCHER_ITEM_SIZE_MAP } from '../../constants';
@@ -10,14 +11,15 @@ import {
   FocusEventAttrProps,
   GlobalAttrProps,
   MouseEventAttrProps,
+  StyledOverloadCssProps,
   TriggerAriaProps,
 } from '../../../../declarations';
 
-// styled
+// helpers
 import {
-  StyledContentSwitcherItem,
-  StyledContentSwitcherItemProps,
-} from './StyledContentSwitcherItem';
+  contentSwitcherItemMixin,
+  ContentSwitcherItemMixinProps,
+} from './contentSwitcherItemMixin';
 
 export interface ContentSwitcherItemProps
   extends FocusEventAttrProps,
@@ -25,7 +27,8 @@ export interface ContentSwitcherItemProps
     Pick<TriggerAriaProps, 'aria-controls'>,
     Omit<GlobalAttrProps, 'role'>,
     Pick<ButtonProps, 'children' | 'icon' | 'onChange'>,
-    StyledContentSwitcherItemProps {
+    StyledOverloadCssProps,
+    Omit<ContentSwitcherItemMixinProps, 'theme'> {
   /** Size options for icon, text, padding... etc. */
   size?: BaseSize;
 }
@@ -39,15 +42,16 @@ export const ContentSwitcherItem: React.FC<ContentSwitcherItemProps> = ({
   onClick,
   size = 'md',
   state = 'enabled',
+  styles,
   tooltip,
   wide,
 }) => {
+  const theme = useTheme();
   const selected = state === 'selected';
   return (
     <Button
       aria-controls={ariaControls}
       aria-selected={selected}
-      as={StyledContentSwitcherItem}
       forwardedAs={'label'}
       colorScheme="quiet"
       icon={icon}
@@ -58,6 +62,7 @@ export const ContentSwitcherItem: React.FC<ContentSwitcherItemProps> = ({
       selectionScheme="single"
       size={CONTENT_SWITCHER_ITEM_SIZE_MAP[size]}
       state={selected ? 'selected' : state}
+      styles={styles || contentSwitcherItemMixin({ state, theme, wide })}
       tooltip={tooltip}
       type="button"
       wide={wide}

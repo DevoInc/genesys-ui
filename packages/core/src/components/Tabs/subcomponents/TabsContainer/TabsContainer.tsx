@@ -25,6 +25,7 @@ export const TabsContainer = React.forwardRef<HTMLElement, TabsContainerProps>(
       <Flex
         {...restFlexProps}
         as="nav"
+        role="tablist"
         position="relative"
         ref={ref}
         styles={styles || defaultStyles}
@@ -35,4 +36,4 @@ export const TabsContainer = React.forwardRef<HTMLElement, TabsContainerProps>(
   }
 );
 
-TabsContainer.displayName = 'TabsList';
+TabsContainer.displayName = 'TabsContainer';
