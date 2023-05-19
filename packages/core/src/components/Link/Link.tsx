@@ -6,6 +6,7 @@ import {
   GlobalAttrProps,
   LinkAttrProps,
   MouseEventAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
   TriggerAriaProps,
 } from '../../declarations';
@@ -14,6 +15,7 @@ import { StyledLink, StyledLinkProps } from './StyledLink';
 
 export interface LinkProps
   extends StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps,
     LinkAttrProps,
@@ -33,6 +35,7 @@ export const Link: React.FC<LinkProps> = ({
   onClick,
   size = 'md',
   state = 'enabled',
+  styles,
   tooltip,
   underlined,
   ...restNativeProps
@@ -50,6 +53,7 @@ export const Link: React.FC<LinkProps> = ({
     <StyledLink
       {...restNativeProps}
       colorScheme={colorScheme}
+      css={styles}
       href={href || (onClick && '#')}
       lineClamp={lineClamp}
       onClick={onLinkClick}

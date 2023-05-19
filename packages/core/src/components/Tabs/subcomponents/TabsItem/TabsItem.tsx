@@ -5,23 +5,23 @@ import { GlobalAttrProps } from '../../../../declarations';
 import { LinkProps } from '../../../Link';
 
 import {
-  StyledTabsClose,
-  StyledTabsCloseProps,
-  StyledTabsItem,
-  StyledTabsLink,
-  StyledTabsIcon,
-  StyledTabsItemProps,
-  StyledTabsIconProps,
-} from './styled';
+  TabsItemClose,
+  TabsItemCloseProps,
+  TabsItemContainer,
+  TabsItemContainerProps,
+  TabsItemIcon,
+  TabsItemIconProps,
+  TabsItemLink,
+} from './components';
 
 export interface TabsItemProps
-  extends Pick<StyledTabsCloseProps, 'state' | 'tooltip'>,
+  extends Pick<TabsItemCloseProps, 'state' | 'tooltip'>,
     Pick<LinkProps, 'href' | 'target'>,
-    StyledTabsItemProps {
+    TabsItemContainerProps {
   /** A title or description of the element, typically displayed as a tooltip when hovering over the element */
   closeTooltip?: GlobalAttrProps['tooltip'];
   /** This property defines the icon type */
-  icon?: StyledTabsIconProps['iconId'];
+  icon?: TabsItemIconProps['iconId'];
   /** Tab label */
   label: string;
   /** Action when click on close tab button */
@@ -30,7 +30,7 @@ export interface TabsItemProps
   onTabClick?: () => void;
 }
 
-export const TabsItem: React.FC<TabsItemProps> = ({
+export const InternalTabsItem: React.FC<TabsItemProps> = ({
   closeTooltip,
   href,
   icon,
@@ -52,29 +52,41 @@ export const TabsItem: React.FC<TabsItemProps> = ({
   const disabled: boolean = state === 'disabled';
 
   return (
-    <StyledTabsItem
+    <TabsItemContainer
       aria-selected={state === 'selected'}
       size={size}
       wide={wide}
-      title={tooltip}
+      tooltip={tooltip}
     >
-      <StyledTabsLink
+      <TabsItemLink
         state={state}
         size={size}
-        onClick={disabled ? undefined : onTabClick}
+        onClick={disabled ? null : onTabClick}
         href={href}
         target={target}
       >
-        {icon && <StyledTabsIcon iconId={icon} />}
+        {icon && <TabsItemIcon iconId={icon} />}
         {label}
         {onActionClick && (
-          <StyledTabsClose
+          <TabsItemClose
             state={state}
             tooltip={closeTooltip}
             onClick={tunedOnActionClick}
           />
         )}
-      </StyledTabsLink>
-    </StyledTabsItem>
+      </TabsItemLink>
+    </TabsItemContainer>
   );
 };
+
+export const TabsItem = InternalTabsItem as typeof InternalTabsItem & {
+  Close: typeof TabsItemClose;
+  Container: typeof TabsItemContainer;
+  Icon: typeof TabsItemIcon;
+  Link: typeof TabsItemLink;
+};
+
+TabsItem.Close = TabsItemClose;
+TabsItem.Container = TabsItemContainer;
+TabsItem.Icon = TabsItemIcon;
+TabsItem.Link = TabsItemLink;

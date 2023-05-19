@@ -11,6 +11,7 @@ import {
   GlobalAttrProps,
   LinkAttrProps,
   MouseEventAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
   TriggerAriaProps,
   TriggerEventAttrProps,
@@ -31,6 +32,7 @@ import { StyledButton, StyledButtonProps } from './StyledButton';
 
 export interface ButtonProps
   extends StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps,
     TriggerAriaProps,
@@ -79,6 +81,7 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
       selectionScheme,
       size = 'md',
       state = 'enabled',
+      styles,
       tooltip,
       value,
       ...restNativeProps
@@ -119,6 +122,7 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
         selectionScheme={selectionScheme}
         size={size}
         state={state}
+        css={styles}
         title={tooltip}
       >
         {selectionScheme && (
