@@ -1,9 +1,11 @@
 import * as React from 'react';
 
 import { StyledDivider, StyledDividerProps } from './StyledDivider';
+import { StyledOverloadCssProps } from '../../declarations';
 
 export interface DividerProps
-  extends Omit<StyledDividerProps, '$height' | '$width'> {
+  extends Omit<StyledDividerProps, '$height' | '$width'>,
+    StyledOverloadCssProps {
   /** Css height */
   height?: React.CSSProperties['height'];
   /** Css width */
@@ -15,11 +17,13 @@ export const Divider: React.FC<DividerProps> = ({
   customColor,
   height,
   margin,
+  styles,
   vertical = false,
   width,
 }) => (
   <StyledDivider
     colorScheme={colorScheme}
+    css={styles}
     customColor={customColor}
     $height={height}
     margin={margin}

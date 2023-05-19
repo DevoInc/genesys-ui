@@ -5,22 +5,22 @@ import { GlobalAriaProps, GlobalAttrProps } from '../../declarations';
 import { useWindowSize } from '../../hooks';
 
 // components
-import { TabsAside, TabsItem } from './subcomponents';
-
-// styled
 import {
-  StyledTabs,
-  StyledTabsProps,
-  StyledTabsContent,
-  StyledTabsContentProps,
-  StyledTabsMark,
-  StyledTabsMarkProps,
-} from './styled';
+  TabsAside,
+  TabsContainer,
+  TabsContainerProps,
+  TabsDivider,
+  TabsItem,
+  TabsList,
+  TabsListProps,
+  TabsMark,
+  TabsMarkProps,
+} from './subcomponents';
 
 export interface TabsProps
-  extends StyledTabsProps,
-    StyledTabsMarkProps,
-    StyledTabsContentProps,
+  extends Omit<TabsContainerProps, 'children'>,
+    TabsListProps,
+    TabsMarkProps,
     // native
     GlobalAttrProps,
     GlobalAriaProps {}
@@ -59,22 +59,30 @@ const InternalTabs: React.FC<TabsProps> = ({
   React.useEffect(moveActiveMarkerUnderline, [windowWidth, tabs]);
 
   return (
-    <StyledTabs
+    <TabsContainer
       {...nativeProps}
       contained={contained}
       ref={navContainerRef}
-      title={tooltip}
+      tooltip={tooltip}
     >
-      <StyledTabsContent ref={navTabItemRef}>{tabs}</StyledTabsContent>
-      <StyledTabsMark ref={activeMarkRef} colorScheme={colorScheme} />
-    </StyledTabs>
+      <TabsList ref={navTabItemRef}>{tabs}</TabsList>
+      <TabsMark ref={activeMarkRef} colorScheme={colorScheme} />
+    </TabsContainer>
   );
 };
 
 export const Tabs = InternalTabs as typeof InternalTabs & {
   Aside: typeof TabsAside;
+  Container: typeof TabsContainer;
+  Divider: typeof TabsDivider;
   Item: typeof TabsItem;
+  List: typeof TabsList;
+  Mark: typeof TabsMark;
 };
 
-Tabs.Item = TabsItem;
 Tabs.Aside = TabsAside;
+Tabs.Container = TabsContainer;
+Tabs.Divider = TabsDivider;
+Tabs.Item = TabsItem;
+Tabs.List = TabsList;
+Tabs.Mark = TabsMark;

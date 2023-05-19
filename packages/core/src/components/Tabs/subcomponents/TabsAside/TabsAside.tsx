@@ -1,19 +1,20 @@
 import * as React from 'react';
-import { GlobalAriaProps, GlobalAttrProps } from '../../../../declarations';
 
-import { StyledTabsAside, StyledTabsDivider } from '../../styled';
+import { TabsDivider } from '../TabsDivider';
 
-export interface TabsAsideProps extends GlobalAttrProps, GlobalAriaProps {
-  /** Array of TabItems */
-  children?: React.ReactNode;
-}
+import { Flex, FlexProps } from '../../../Flex';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface TabsAsideProps extends FlexProps {}
 
 export const TabsAside: React.FC<TabsAsideProps> = ({
+  alignItems = 'center',
   children,
-  ...nativeProps
+  marginLeft = 'auto',
+  ...restFlexProps
 }) => (
-  <StyledTabsAside {...nativeProps}>
-    <StyledTabsDivider vertical height="100%" />
+  <Flex {...restFlexProps} marginLeft={marginLeft} alignItems={alignItems}>
+    <TabsDivider vertical height="100%" />
     {children}
-  </StyledTabsAside>
+  </Flex>
 );

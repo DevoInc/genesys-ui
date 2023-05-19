@@ -12,7 +12,6 @@ import { StyledTagContainerProps } from './components/StyledTagContainer';
 
 // components
 import { TagBadge, TagContainer, TagIcon, TagLabel } from './components';
-import { useTheme } from 'styled-components';
 
 export interface TagProps
   extends StyledPolymorphicProps,

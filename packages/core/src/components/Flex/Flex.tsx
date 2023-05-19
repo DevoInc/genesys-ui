@@ -12,29 +12,27 @@ export interface FlexProps
   children?: React.ReactNode;
 }
 
-const InternalFlex: React.FC<FlexProps> = ({
-  children,
-  height,
-  styles,
-  tooltip,
-  width,
-  ...styledProps
-}) => {
-  return (
-    <StyledFlex
-      {...styledProps}
-      css={styles}
-      title={tooltip}
-      $height={height}
-      $width={width}
-    >
-      {children}
-    </StyledFlex>
-  );
-};
+const InternalFlex = React.forwardRef<HTMLElement, FlexProps>(
+  ({ children, height, styles, tooltip, width, ...styledProps }, ref) => {
+    return (
+      <StyledFlex
+        {...styledProps}
+        css={styles}
+        ref={ref}
+        title={tooltip}
+        $height={height}
+        $width={width}
+      >
+        {children}
+      </StyledFlex>
+    );
+  }
+);
 
 export const Flex = InternalFlex as typeof InternalFlex & {
   Item: typeof FlexItem;
 };
 
 Flex.Item = FlexItem;
+
+InternalFlex.displayName = 'Flex';

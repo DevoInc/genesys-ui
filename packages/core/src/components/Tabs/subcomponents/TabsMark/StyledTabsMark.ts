@@ -1,19 +1,20 @@
 import styled, { css } from 'styled-components';
 
-import { utils } from '../../../styled/functions/utils';
-import { TabsColorScheme } from '../declarations';
+import { TabsColorScheme } from '../../declarations';
 
 export interface StyledTabsMarkProps {
   colorScheme?: TabsColorScheme;
 }
 
 export const StyledTabsMark = styled.div<StyledTabsMarkProps>`
-  ${utils.transitionDefault}
   ${({ colorScheme, theme }) => {
     const tokens = theme.cmp.tabs.mark;
+    const transitionDuration =
+      theme.alias.mutation.transitionDuration.translation.hor.sm;
     return css`
       position: absolute;
       bottom: 0;
+      transition: all ease-in-out ${transitionDuration};
       padding: 0 ${tokens.space.padding};
 
       ::before {

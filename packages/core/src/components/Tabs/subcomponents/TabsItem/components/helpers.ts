@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { css, DefaultTheme } from 'styled-components';
 
 import { TabsItemSize, TabsItemState } from '../../../declarations';

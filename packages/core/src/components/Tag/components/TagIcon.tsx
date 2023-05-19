@@ -19,6 +19,7 @@ export const TagIcon: React.FC<TagIconProps> = ({
   return (
     <Icon
       {...restIconProps}
+      colorScheme={colorScheme}
       size={square}
       styles={styles || `margin-right: ${marginRight}`}
     />
