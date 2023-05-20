@@ -10,6 +10,7 @@ export const StepperItemContainer: React.FC<StepperItemContainerProps> = ({
   alignItems = 'center',
   as = 'li',
   children,
+  styles,
   ...restFlexProps
 }) => {
   const theme = useTheme();
@@ -19,7 +20,7 @@ export const StepperItemContainer: React.FC<StepperItemContainerProps> = ({
       {...restFlexProps}
       alignItems={alignItems}
       as={as}
-      styles={`gap: ${itemTokens.space.gap}`}
+      styles={styles || `gap: ${itemTokens.space.gap}`}
     >
       {children}
     </Flex>
