@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { rgba } from 'polished';
-import { DefaultTheme } from 'styled-components';
+import { css, DefaultTheme } from 'styled-components';
+
+import { OverlayBgColorScheme } from './declarations';
 
 import { isValidColor } from '../../styled/functions';
-import { OverlayBgColorScheme } from './declarations';
 
 /**
  * Get background for the Overlay
@@ -46,4 +47,52 @@ export const getOverlayBg = ({
   return typeof opacity === 'number'
     ? rgba(overlayBgTokens.light.opaque, opacity)
     : overlayBgTokens.light.opacity;
+};
+
+export interface OverlayMixinProps {
+  /** Specific background color of the overlay */
+  bgColor?: React.CSSProperties['backgroundColor'];
+  /** Predefined the color scheme for the background */
+  bgColorScheme?: OverlayBgColorScheme;
+  /** Specific gradient background */
+  bgGradient?: React.CSSProperties['background'];
+  /** It defines if the position overlay is fixed  */
+  fixed?: boolean;
+  /** If the Overlay allows to interact with the elements behind it */
+  hasInteractionBehind?: boolean;
+  /** Opacity of the overlay (value between 0 and 1) */
+  opacity?: number;
+  theme: DefaultTheme;
+}
+
+/**
+ * Get the custom Overlay styles applied to a Flex component.
+ *
+ * @return object with the css.
+ */
+export const overlayMixin = ({
+  bgColor,
+  bgColorScheme,
+  bgGradient,
+  fixed = false,
+  hasInteractionBehind = false,
+  opacity,
+  theme,
+}: OverlayMixinProps) => {
+  const bgColorEval = getOverlayBg({
+    bgColor,
+    bgColorScheme,
+    bgGradient,
+    opacity,
+    overlayBgTokens: theme.cmp.overlay.color.background,
+  });
+
+  return css`
+    position: ${fixed ? 'fixed' : 'absolute'};
+    inset: 0 0 0 0;
+    width: 100%;
+    height: 100%;
+    background: ${bgColorEval};
+    pointer-events: ${hasInteractionBehind && 'none'};
+  `;
 };

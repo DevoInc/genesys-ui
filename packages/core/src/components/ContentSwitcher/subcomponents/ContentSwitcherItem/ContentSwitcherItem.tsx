@@ -52,7 +52,7 @@ export const ContentSwitcherItem: React.FC<ContentSwitcherItemProps> = ({
     <Button
       aria-controls={ariaControls}
       aria-selected={selected}
-      forwardedAs={'label'}
+      as="label"
       colorScheme="quiet"
       icon={icon}
       id={id}
@@ -64,7 +64,6 @@ export const ContentSwitcherItem: React.FC<ContentSwitcherItemProps> = ({
       state={selected ? 'selected' : state}
       styles={styles || contentSwitcherItemMixin({ state, theme, wide })}
       tooltip={tooltip}
-      type="button"
       wide={wide}
     >
       {children}

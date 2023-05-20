@@ -1,13 +1,18 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
-import { StyledOverlay, StyledOverlayProps } from './StyledOverlay';
 import {
   ContainerEventAttrProps,
   MouseEventAttrProps,
 } from '../../declarations';
 
+import { overlayMixin, OverlayMixinProps } from './helpers';
+
+import { Flex, FlexProps } from '../Flex';
+
 export interface OverlayProps
-  extends StyledOverlayProps,
+  extends FlexProps,
+    Omit<OverlayMixinProps, 'theme'>,
     //native props
     MouseEventAttrProps,
     Pick<ContainerEventAttrProps, 'onKeyUp' | 'onKeyDown'> {}
@@ -25,26 +30,36 @@ export const Overlay: React.FC<OverlayProps> = ({
   justifyContent = 'center',
   opacity,
   padding = 'cmp-md cmp-lg',
+  styles,
   tooltip,
   zIndex = 0,
-  ...restNativeProps
-}) => (
-  <StyledOverlay
-    {...restNativeProps}
-    alignItems={alignItems}
-    bgColor={bgColor}
-    bgColorScheme={bgColorScheme}
-    bgGradient={bgGradient}
-    fixed={fixed}
-    flexDirection={flexDirection}
-    flexWrap={flexWrap}
-    hasInteractionBehind={hasInteractionBehind}
-    justifyContent={justifyContent}
-    opacity={opacity > 1 ? 1 : opacity}
-    padding={padding}
-    title={tooltip}
-    zIndex={zIndex}
-  >
-    {children}
-  </StyledOverlay>
-);
+  ...restFlexProps
+}) => {
+  const theme = useTheme();
+  return (
+    <Flex
+      {...restFlexProps}
+      alignItems={alignItems}
+      flexDirection={flexDirection}
+      flexWrap={flexWrap}
+      justifyContent={justifyContent}
+      padding={padding}
+      styles={
+        styles ||
+        overlayMixin({
+          bgColor,
+          bgColorScheme,
+          bgGradient,
+          fixed,
+          hasInteractionBehind,
+          opacity: opacity > 1 ? 1 : opacity,
+          theme,
+        })
+      }
+      tooltip={tooltip}
+      zIndex={zIndex}
+    >
+      {children}
+    </Flex>
+  );
+};
