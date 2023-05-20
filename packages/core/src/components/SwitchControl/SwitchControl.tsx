@@ -12,13 +12,11 @@ import {
 import { getPxFromRem } from '../../styled/functions';
 
 import {
-  StyledHandle,
-  StyledInput,
-  StyledTextChecked,
-  StyledTextUnchecked,
-  StyledTextWrapper,
-  StyledWrapper,
-} from './styled';
+  SwitchControlContainer,
+  SwitchControlHandle,
+  SwitchControlInput,
+  SwitchControlText,
+} from './components';
 
 export interface SwitchControlProps
   extends FieldControlCommonProps,
@@ -34,7 +32,7 @@ export interface SwitchControlProps
   uncheckedContent?: React.ReactNode;
 }
 
-export const SwitchControl: React.FC<SwitchControlProps> = ({
+export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
   'aria-errormessage': ariaErrorMessage,
   'aria-invalid': ariaInvalid,
   checked,
@@ -59,27 +57,14 @@ export const SwitchControl: React.FC<SwitchControlProps> = ({
   const switchTokens = tokens.cmp.switchControl;
   const trackTokens = switchTokens.track;
   const handlerTokens = switchTokens.handler;
-
-  const refUnchecked = React.useRef<any>();
-  const refChecked = React.useRef<any>();
-  const [width, setWidth] = React.useState(0);
-  React.useEffect(() => {
-    setWidth(
-      Math.max(
-        refUnchecked?.current?.offsetWidth,
-        refChecked?.current?.offsetWidth
-      )
-    );
-  }, [checkedContent, uncheckedContent]);
-
   const handleDiameter = getPxFromRem(handlerTokens.size.square[size]);
   const switchHeight = getPxFromRem(trackTokens.size.height[size]);
 
   return (
-    <StyledWrapper
-      $disabled={disabled}
-      $checked={checked}
-      heightProp={switchHeight}
+    <SwitchControlContainer
+      disabled={disabled}
+      checked={checked}
+      heightPx={switchHeight}
       handleDiameter={handleDiameter}
       id={id}
       onClick={onClick}
@@ -91,9 +76,9 @@ export const SwitchControl: React.FC<SwitchControlProps> = ({
       onMouseUp={onMouseUp}
       size={size}
       status={status}
-      title={tooltip}
+      tooltip={tooltip}
     >
-      <StyledInput
+      <SwitchControlInput
         {...restNativeProps}
         aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
         aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
@@ -104,21 +89,31 @@ export const SwitchControl: React.FC<SwitchControlProps> = ({
         role="switch"
         type="checkbox"
       />
-      <StyledTextWrapper widthProp={width} $checked={checked}>
-        <StyledTextUnchecked $checked={checked} ref={refUnchecked}>
-          {uncheckedContent}
-        </StyledTextUnchecked>
-        <StyledTextChecked $checked={checked} ref={refChecked}>
-          {checkedContent}
-        </StyledTextChecked>
-      </StyledTextWrapper>
-      <StyledHandle
+      <SwitchControlText
+        checked={checked}
+        checkedContent={checkedContent}
+        uncheckedContent={uncheckedContent}
+      />
+      <SwitchControlHandle
         aria-hidden
-        $disabled={disabled}
-        $checked={checked}
+        disabled={disabled}
+        checked={checked}
         switchHeight={switchHeight}
         diameter={handleDiameter}
       />
-    </StyledWrapper>
+    </SwitchControlContainer>
   );
 };
+
+export const SwitchControl =
+  InternalSwitchControl as typeof InternalSwitchControl & {
+    Container: typeof SwitchControlContainer;
+    Handle: typeof SwitchControlHandle;
+    Input: typeof SwitchControlInput;
+    Text: typeof SwitchControlText;
+  };
+
+SwitchControl.Container = SwitchControlContainer;
+SwitchControl.Handle = SwitchControlHandle;
+SwitchControl.Input = SwitchControlInput;
+SwitchControl.Text = SwitchControlText;

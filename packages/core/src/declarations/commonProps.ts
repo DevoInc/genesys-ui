@@ -239,7 +239,7 @@ export type RowHeight = 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
  * Form field controls: InputControl, CheckboxControl... etc. common interface
  * --------------------------------------------- */
 export interface FieldControlCommonProps<T = Element>
-  extends Omit<GlobalAttrProps<T>, 'role'>,
+  extends GlobalAttrProps<T>,
     Pick<GlobalAriaProps, 'aria-describedby'>,
     Required<Pick<GlobalAriaProps, 'aria-label'>>,
     Omit<FieldAriaProps, 'aria-required'>,

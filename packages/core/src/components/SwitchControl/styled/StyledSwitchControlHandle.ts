@@ -1,13 +1,13 @@
 import styled, { css } from 'styled-components';
 
-interface StyledHandleProps {
+export interface StyledSwitchControlHandleProps {
   $disabled?: boolean;
   $checked?: boolean;
   switchHeight: number;
   diameter: number;
 }
 
-export const StyledHandle = styled.span<StyledHandleProps>`
+export const StyledSwitchControlHandle = styled.span<StyledSwitchControlHandleProps>`
   ${({ $disabled = false, $checked, switchHeight, diameter, theme }) => {
     const switchTokens = theme.cmp.switchControl;
     const handlerTokens = switchTokens.handler;
