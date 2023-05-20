@@ -1,18 +1,12 @@
 import * as React from 'react';
+import { Typography } from '../../Typography';
+import { lorem, lorem2, lorem3 } from '../../../../stories/utils/fillerTexts';
 
 export const TextBlock = (
-  <div style={{ width: '200px' }}>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at purus
-      lacinia, sollicitudin eros sit amet, tempor nulla. Nullam felis odio,
-      tincidunt et nulla ut, pharetra vulputate velit. Lorem ipsum dolor sit
-      amet, consectetur adipiscing elit. Nullam at purus lacinia, sollicitudin
-      eros sit amet, tempor nulla.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at purus
-      lacinia, sollicitudin eros sit amet, tempor nulla. Nullam felis odio,
-      tincidunt et nulla ut, pharetra vulputate velit.
-    </p>
-  </div>
+  <>
+    <Typography.Paragraph>{lorem}</Typography.Paragraph>
+    <Typography.Paragraph>{lorem2}</Typography.Paragraph>
+    <Typography.Paragraph>{lorem3}</Typography.Paragraph>
+    <Typography.Paragraph>{lorem2}</Typography.Paragraph>
+  </>
 );

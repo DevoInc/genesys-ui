@@ -116,5 +116,6 @@ export const ClosableBackwardNavigation: Story = {
     icon: null,
     widthScheme: { width: '36rem' },
     children: TextBlock,
+    title: 'Intelligent beings',
   },
 };
