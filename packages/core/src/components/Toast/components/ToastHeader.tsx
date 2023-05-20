@@ -1,6 +1,9 @@
 import { MouseEventAttrProps } from '../../../declarations';
 import * as React from 'react';
 
+import { toastStatusToIconMap } from '../constants';
+import { ToastStatus } from '../declarations';
+
 import {
   Divider,
   Flex,
@@ -10,9 +13,8 @@ import {
   Typography,
   VFlex,
 } from '../..';
-import { toastStatusToIconMap } from '../constants';
-import { ToastStatus } from '../declarations';
-import { StyledIcon } from '../styled';
+
+import { ToastHeaderIcon } from './ToastHeaderIcon';
 
 export interface ToastHeaderProps {
   /** react-toastify's function to close itself */
@@ -67,10 +69,9 @@ export const ToastHeader: React.FC<ToastHeaderProps> = ({
         <Divider height="auto" margin="0" vertical />
       </>
     )}
-    <StyledIcon
-      status={status}
-      aria-hidden={true}
-      className={status ? toastStatusToIconMap[status] : ''}
+    <ToastHeaderIcon
+      colorScheme={status}
+      iconId={status ? toastStatusToIconMap[status] : ''}
     />
     <VFlex spacing={'cmp-xs'}>
       <Flex alignItems="center" minHeight="2rem">

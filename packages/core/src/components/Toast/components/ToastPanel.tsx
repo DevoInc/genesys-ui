@@ -3,16 +3,19 @@ import * as React from 'react';
 import { ToastAction } from '../declarations';
 import { ToastBadge, ToastBadgeProps } from './ToastBadge';
 import { ToastContent, ToastContentProps } from './ToastContent';
-import { StyledContent, StyledContentProps } from '../styled';
 import { getHeaderContent, getFooterActions } from '../utils';
 import { ToastHeaderProps } from './ToastHeader';
 import { useTheme } from 'styled-components';
+import { Panel } from '../../Panel';
+import { ToastPanelMixinProps, toastPanelMixinProps } from './helpers';
+import { StyledOverloadCssProps } from '../../../declarations';
 
 export interface ToastPanelProps
-  extends ToastHeaderProps,
+  extends StyledOverloadCssProps,
+    ToastHeaderProps,
     Pick<ToastBadgeProps, 'updates'>,
     Pick<ToastContentProps, 'content'>,
-    Pick<StyledContentProps, 'accent' | 'showProgressBar'> {
+    Pick<ToastPanelMixinProps, 'accent' | 'showProgressBar'> {
   /** Apply action */
   actionApply?: ToastAction;
   /** Reject action */
@@ -38,6 +41,7 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
   subtitle,
   title,
   status,
+  styles,
   updates,
 }) => {
   const [collapsed, setCollapsed] = React.useState(true);
@@ -71,24 +75,29 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
         closeToast,
         status,
       });
-
   return (
     <>
       <ToastBadge status={status} updates={updates} />
-      <StyledContent
-        accent={accent}
+      <Panel
         colorScheme={backgroundColor}
         bodySettings={{ removeSpace: showCollapsed }}
         elevation="popOut"
         footerSettings={{ hasShadowStyle: true, actions: footerActions }}
         headerSettings={{ hasShadowStyle: true, renderContent: headerContent }}
-        expanded={collapsable && !collapsed}
         heightScheme={{ maxHeight }}
-        showProgressBar={showProgressBar}
-        status={status}
+        styles={
+          styles ||
+          toastPanelMixinProps({
+            accent,
+            expanded: collapsable && !collapsed,
+            showProgressBar,
+            status,
+            theme,
+          })
+        }
       >
         <ToastContent content={content} collapsed={showCollapsed} />
-      </StyledContent>
+      </Panel>
     </>
   );
 };

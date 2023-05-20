@@ -21,9 +21,11 @@ import {
   PanelSize,
   RenderContent,
 } from './declarations';
+import { StyledOverloadCssProps } from '../../declarations';
 
 export interface PanelProps
-  extends Omit<PanelContainerProps, 'children'>,
+  extends StyledOverloadCssProps,
+    Omit<PanelContainerProps, 'children'>,
     Pick<
       PanelHeaderContentProps,
       | 'closeSettings'
@@ -63,6 +65,7 @@ const InternalPanel: React.FC<PanelProps> = ({
   closeSettings,
   collapseSettings,
   subtitle,
+  styles,
   title,
   titleTooltip,
   legend,
@@ -96,6 +99,7 @@ const InternalPanel: React.FC<PanelProps> = ({
       visibility={visibility}
       widthScheme={widthScheme}
       heightScheme={heightScheme}
+      styles={styles}
       {...boxProps}
     >
       <PanelHeaderContainer

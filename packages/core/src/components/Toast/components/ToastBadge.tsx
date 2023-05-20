@@ -1,21 +1,33 @@
 import * as React from 'react';
 
-import { StyledBadge } from '../styled';
 import { ToastStatus } from '../declarations';
 
-export interface ToastBadgeProps {
+import { Badge, BadgeProps } from '../../Badge';
+
+export interface ToastBadgeProps extends BadgeProps {
   /** Status of notification */
   status?: ToastStatus;
   /** Number of instances for the same notification */
   updates?: number;
 }
 
-export const ToastBadge: React.FC<ToastBadgeProps> = ({ status, updates }) =>
+export const ToastBadge: React.FC<ToastBadgeProps> = ({
+  colorScheme,
+  status,
+  styles,
+  text,
+  updates,
+  ...restBadgeProps
+}) =>
   updates > 1 && (
-    <StyledBadge
+    <Badge
+      {...restBadgeProps}
       className={`${status}-updates`}
       hasAbsolutePosition
-      colorScheme={status}
-      text={updates.toString()}
+      colorScheme={colorScheme || status}
+      text={text || updates.toString()}
+      styles={
+        styles || 'left: 0; right: auto; transform: translate(-50%, -50%);'
+      }
     />
   );

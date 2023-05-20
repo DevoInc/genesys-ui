@@ -3,8 +3,11 @@ import {
   StyledPanelContainer,
   StyledPanelContainerProps,
 } from './StyledPanelContainer';
+import { StyledOverloadCssProps } from '../../../../declarations';
 
-export interface PanelContainerProps extends StyledPanelContainerProps {
+export interface PanelContainerProps
+  extends StyledOverloadCssProps,
+    StyledPanelContainerProps {
   as?: string | React.ComponentType<any>;
   children?: React.ReactNode;
   className?: string;
@@ -26,6 +29,7 @@ export const PanelContainer: React.FC<PanelContainerProps> = ({
   heightScheme,
   id,
   position,
+  styles,
   visibility,
   widthScheme,
 }) => {
@@ -38,6 +42,7 @@ export const PanelContainer: React.FC<PanelContainerProps> = ({
       bordered={bordered}
       className={className}
       colorScheme={colorScheme}
+      css={styles}
       elevation={elevation}
       forwardedAs={forwardedAs}
       id={id}
