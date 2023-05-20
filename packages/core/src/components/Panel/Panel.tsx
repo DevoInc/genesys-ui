@@ -87,7 +87,7 @@ const InternalPanel: React.FC<PanelProps> = ({
 
   return (
     <PanelContainer
-      $display={display}
+      display={display}
       as={as}
       bordered={bordered}
       className={className}

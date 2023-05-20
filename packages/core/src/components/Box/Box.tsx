@@ -10,6 +10,7 @@ import {
   LayoutAttrProps,
   LayoutTransientProps,
   MouseEventAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
   TriggerAriaProps,
 } from '../../declarations';
@@ -34,7 +35,8 @@ export interface CommonBoxProps
 }
 
 export interface BoxProps
-  extends CommonBoxProps,
+  extends StyledOverloadCssProps,
+    CommonBoxProps,
     Omit<StyledBoxProps, '$display' | '$height' | '$width'> {
   /** Css display */
   display?: React.CSSProperties['display'];
@@ -69,6 +71,7 @@ export const Box: React.FC<BoxProps> = ({
   positionLeft,
   positionRight,
   positionTop,
+  styles,
   tooltip,
   verticalAlign,
   visibility,
@@ -79,6 +82,7 @@ export const Box: React.FC<BoxProps> = ({
   return (
     <StyledBox
       {...nativeProps}
+      css={styles}
       cssTranslate={cssTranslate}
       $display={display}
       elevation={elevation}

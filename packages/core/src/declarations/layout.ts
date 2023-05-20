@@ -22,13 +22,13 @@ export interface LayoutCommonProps {
   /** Css margin-top */
   marginTop?: GlobalSpacing;
   /** Css max-height */
-  maxHeight?: string;
+  maxHeight?: CSSProperties['maxHeight'];
   /** Css max-width */
-  maxWidth?: string;
+  maxWidth?: CSSProperties['maxWidth'];
   /** Css min-height */
-  minHeight?: string;
+  minHeight?: CSSProperties['minHeight'];
   /** Css min-width */
-  minWidth?: string;
+  minWidth?: CSSProperties['minWidth'];
   /** Css overflow */
   overflow?: CSSProperties['overflow'];
   /** Css overflow-x */

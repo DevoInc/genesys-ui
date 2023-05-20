@@ -1,13 +1,14 @@
 import * as React from 'react';
-import {
-  StyledPanelContainer,
-  StyledPanelContainerProps,
-} from './StyledPanelContainer';
+import { useTheme } from 'styled-components';
+
 import { StyledOverloadCssProps } from '../../../../declarations';
+
+import { Box } from '../../../Box';
+import { panelContainerMixin, PanelContainerMixinProps } from './helpers';
 
 export interface PanelContainerProps
   extends StyledOverloadCssProps,
-    StyledPanelContainerProps {
+    Omit<PanelContainerMixinProps, 'theme'> {
   as?: string | React.ComponentType<any>;
   children?: React.ReactNode;
   className?: string;
@@ -33,27 +34,37 @@ export const PanelContainer: React.FC<PanelContainerProps> = ({
   visibility,
   widthScheme,
 }) => {
+  const theme = useTheme();
   return (
-    <StyledPanelContainer
-      $display={display}
-      $height={heightScheme?.height}
-      $width={widthScheme?.width}
+    <Box
       as={as}
-      bordered={bordered}
       className={className}
-      colorScheme={colorScheme}
-      css={styles}
+      display={display}
       elevation={elevation}
       forwardedAs={forwardedAs}
+      height={heightScheme?.height}
       id={id}
       maxHeight={heightScheme?.maxHeight}
       maxWidth={widthScheme?.maxWidth}
       minHeight={heightScheme?.minHeight}
       minWidth={widthScheme?.minWidth}
       position={position}
+      styles={
+        styles ||
+        panelContainerMixin({
+          bordered,
+          colorScheme,
+          display,
+          elevation,
+          heightScheme,
+          theme,
+          widthScheme,
+        })
+      }
       visibility={visibility}
+      width={widthScheme?.width}
     >
       {children}
-    </StyledPanelContainer>
+    </Box>
   );
 };
