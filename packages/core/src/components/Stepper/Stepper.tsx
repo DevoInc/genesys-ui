@@ -14,15 +14,7 @@ import { WithRequired } from '../../typeFunctions';
 import { StepperStatus, StepperSize } from './declarations';
 import { HIDDEN_TEXT } from './constants';
 
-// styled
-import {
-  StyledContainer,
-  StyledHiddenStatus,
-  StyledIndicator,
-  StyledItem,
-  StyledLabel,
-  StyledSeparator,
-} from './styled';
+import { StepperContainer, StepperItem } from './components';
 
 export interface StepperProps
   extends WithRequired<Pick<GlobalAttrProps, 'id' | 'tooltip'>, 'id'>,
@@ -37,26 +29,33 @@ export interface StepperProps
   steps: { name: string; label: string; status: StepperStatus }[];
 }
 
-export const Stepper: React.FC<StepperProps> = ({
+export const InternalStepper: React.FC<StepperProps> = ({
   size = 'sm',
   steps = [],
   tooltip,
   ...nativeProps
 }) => (
-  <StyledContainer {...nativeProps} size={size} title={tooltip}>
+  <StepperContainer {...nativeProps} size={size} tooltip={tooltip}>
     {steps.map((el, idx) => (
-      <StyledItem
+      <StepperItem
         key={el.name}
         aria-label={`${el.status} ${el.name}`}
         aria-current={el.status === 'current' ? true : undefined}
+        hasDivider={idx !== 0}
+        hiddenStatusText={HIDDEN_TEXT[el.status]}
+        size={size}
+        status={el.status}
+        stepNumberPos={idx}
       >
-        {idx !== 0 && <StyledSeparator />}
-        <StyledIndicator idx={idx} size={size} status={el.status} />
-        <StyledHiddenStatus>{HIDDEN_TEXT[el.status]}</StyledHiddenStatus>
-        <StyledLabel size={size} status={el.status}>
-          {el.label}
-        </StyledLabel>
-      </StyledItem>
+        {el.label}
+      </StepperItem>
     ))}
-  </StyledContainer>
+  </StepperContainer>
 );
+
+export const Stepper = InternalStepper as typeof InternalStepper & {
+  Container: typeof StepperContainer;
+  Item: typeof StepperItem;
+};
+
+Stepper.Container = StepperContainer;
