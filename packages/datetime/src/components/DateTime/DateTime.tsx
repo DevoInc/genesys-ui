@@ -109,6 +109,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
 
   const onChangeTime = React.useCallback((ts: number) => {
     const tmp = new Date(ts);
+    setFirsTime(false);
     setTmpTime((oldValues) =>
       set(oldValues, {
         hours: tmp.getHours(),
