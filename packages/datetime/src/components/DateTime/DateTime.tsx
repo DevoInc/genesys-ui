@@ -82,17 +82,17 @@ export const DateTime: React.FC<DateTimeProps> = ({
   }, [value]);
 
   React.useEffect(() => {
-    if (!firstTime) {
-      const tmp = new Date(tmpTime);
-      onChange(
-        set(selectedDates.from, {
-          hours: tmp.getHours(),
-          minutes: tmp.getMinutes(),
-          seconds: tmp.getSeconds(),
-          milliseconds: tmp.getMilliseconds(),
-        }).getTime()
-      );
-    }
+    if (firstTime) return;
+
+    const tmp = new Date(tmpTime);
+    onChange(
+      set(selectedDates.from, {
+        hours: tmp.getHours(),
+        minutes: tmp.getMinutes(),
+        seconds: tmp.getSeconds(),
+        milliseconds: tmp.getMilliseconds(),
+      }).getTime()
+    );
   }, [selectedDates, tmpTime, firstTime, onChange]);
 
   const onClickNextMonthCallback = React.useCallback(() => {
