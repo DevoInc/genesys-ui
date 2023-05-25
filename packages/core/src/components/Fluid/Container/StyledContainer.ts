@@ -38,7 +38,6 @@ export const StyledContainer = styled(Container)<StyledContainerProps>`
   }) => {
     const layoutSpaceTokens = theme.alias.space.layout;
     const GUTTER_SIZE = layoutSpaceTokens[gutter.replace('layout-', '')];
-    console.log(`${$marginTop && getSpacingPropCss($marginTop, theme)}`);
     return css`
       --gutter: ${gutter === '0' ? 0 : `calc(${GUTTER_SIZE} / 2)`};
 

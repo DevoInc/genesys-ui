@@ -21,8 +21,7 @@ export const ItemSubMenu = ({
   state,
   ...restProps
 }: ItemSubMenuProps) => {
-  const [referenceElement, setReferenceElement] =
-    React.useState<HTMLLabelElement | null>(null);
+  const [referenceElement] = React.useState<HTMLLabelElement | null>(null);
   const [popperElement, setPopperElement] = React.useState<HTMLElement | null>(
     null
   );
