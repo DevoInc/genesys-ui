@@ -4,33 +4,33 @@ import { ButtonProps, IconButtonProps } from '../';
 import { GlobalSize } from '../../declarations';
 import { PickUnion } from '../../typeFunctions';
 
-export interface RenderContent {
-  append?: React.ReactElement;
-  bottom?: React.ReactElement;
-  middle?: React.ReactElement;
-  prepend?: React.ReactElement;
-  top?: React.ReactElement;
-}
-
-export interface HeaderSettings {
+export interface HeaderSettingsProps {
   actions?: (
     | React.ReactElement<ButtonProps>
     | React.ReactElement<IconButtonProps>
   )[];
   bordered?: boolean;
-  renderContent?: RenderContent | React.ReactNode;
-  hasShadowStyle?: boolean;
+  renderContent?: React.ReactNode;
+  hasBoxShadow?: boolean;
 }
 
-export interface FooterSettings {
+export interface FooterSettingsProps {
   actions?: (
     | React.ReactElement<ButtonProps>
     | React.ReactElement<IconButtonProps>
   )[];
+  /** Apply border at the top of the footer */
   bordered?: boolean;
-  renderContent?: RenderContent | React.ReactElement;
+  /** Configuration for the footer content */
+  renderContent?: React.ReactNode;
+  /** Apply the background color to the footer */
   hasBackground?: boolean;
-  hasShadowStyle?: boolean;
+  /** Apply box-shadow to the footer */
+  hasBoxShadow?: boolean;
+}
+
+export interface BodySettingsProps {
+  removeSpace?: boolean;
 }
 
 export type PanelSize = PickUnion<GlobalSize, 'xs' | 'sm' | 'md'>;

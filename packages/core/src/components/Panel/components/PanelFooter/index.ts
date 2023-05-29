@@ -1,2 +1,1 @@
-export * from './PanelFooterContainer';
-export * from './PanelFooterContent';
+export * from './PanelFooter';

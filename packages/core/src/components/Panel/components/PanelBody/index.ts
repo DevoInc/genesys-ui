@@ -1,1 +1,1 @@
-export * from './PanelBodyContainer';
+export * from './PanelBody';

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { css, useTheme } from 'styled-components';
+import { concat } from 'lodash';
 
 import { Flex, FlexProps } from '../../../Flex';
 
@@ -12,7 +13,7 @@ export interface TabsContainerProps extends Omit<FlexProps, 'children'> {
 export const TabsContainer = React.forwardRef<HTMLElement, TabsContainerProps>(
   ({ children, contained, styles, ...restFlexProps }, ref) => {
     const tokens = useTheme().cmp.tabs.container;
-    const defaultStyles = css`
+    const baseStyles = css`
       ${contained &&
       css`
         padding: 0 ${tokens.space.padding};
@@ -28,7 +29,7 @@ export const TabsContainer = React.forwardRef<HTMLElement, TabsContainerProps>(
         role="tablist"
         position="relative"
         ref={ref}
-        styles={styles || defaultStyles}
+        styles={concat(baseStyles, styles)}
       >
         {children}
       </Flex>

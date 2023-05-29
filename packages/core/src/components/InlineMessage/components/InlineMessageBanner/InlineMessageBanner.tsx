@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
 import { BoxMessage, BoxMessageProps } from '../../../BoxMessage';
-import { StyledInlineMessageBanner } from './StyledInlineMessageBanner';
+import { inlineMessageBannerMixin } from './helpers';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface InlineMessageBannerProps extends BoxMessageProps {}
@@ -12,17 +13,19 @@ export const InlineMessageBanner: React.FC<InlineMessageBannerProps> = ({
   content,
   id,
   status,
+  styles,
   title,
 }) => {
+  const theme = useTheme();
   return (
     <BoxMessage
       actions={actions}
-      as={StyledInlineMessageBanner}
       className={className}
       content={content}
       hideIcon
       id={id}
       status={status}
+      styles={styles || inlineMessageBannerMixin({ theme })}
       title={title}
     />
   );

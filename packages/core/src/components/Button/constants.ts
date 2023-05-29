@@ -16,10 +16,10 @@ export const BUTTON_BADGE_SIZE_MAP: { [key in ButtonSize]: BadgeSize } = {
 
 export const BUTTON_LOADER_SIZE_MAP: { [key in ButtonSize]: SpinnerSize } = {
   xxs: 'xxxs',
-  xs: 'xxxs',
-  sm: 'xxxs',
-  md: 'xxs',
-  lg: 'xs',
+  xs: 'xxs',
+  sm: 'xs',
+  md: 'sm',
+  lg: 'md',
 } as const;
 
 export const BUTTON_LOADER_COLOR_SCHEME_MAP: {

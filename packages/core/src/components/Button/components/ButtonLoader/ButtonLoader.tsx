@@ -1,26 +1,29 @@
 import * as React from 'react';
+import { css, useTheme } from 'styled-components';
+import { concat } from 'lodash';
 
-import { SpinnerColorScheme } from '../../../SpinnerLoader/constants';
+import { SpinnerLoader, SpinnerLoaderProps } from '../../../../';
 
-import { SpinnerLoader } from '../../../../';
-
-import {
-  StyledButtonLoader,
-  StyledButtonLoaderProps,
-} from './StyledButtonLoader';
-
-export interface ButtonLoaderProps extends StyledButtonLoaderProps {
-  /** ColorScheme */
-  colorScheme?: SpinnerColorScheme;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface ButtonLoaderProps extends SpinnerLoaderProps {}
 
 export const ButtonLoader: React.FC<ButtonLoaderProps> = ({
   colorScheme = 'dark',
   size = 'md',
-}) => (
-  <SpinnerLoader
-    as={StyledButtonLoader}
-    colorScheme={colorScheme}
-    size={size}
-  />
-);
+  styles,
+  ...restSpinnerLoaderProps
+}) => {
+  const square = useTheme().cmp.button.loader.size.width[size];
+  const baseStyles = css`
+    width: ${square};
+    height: ${square};
+  `;
+  return (
+    <SpinnerLoader
+      {...restSpinnerLoaderProps}
+      colorScheme={colorScheme}
+      size={size}
+      styles={concat(baseStyles, styles)}
+    />
+  );
+};

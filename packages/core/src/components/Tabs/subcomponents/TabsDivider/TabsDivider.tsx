@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
+import { concat } from 'lodash';
 
 import { StyledOverloadCssProps } from '../../../../declarations';
 
@@ -15,9 +16,9 @@ export const TabsDivider: React.FC<TabsDividerProps> = ({
   ...dividerProps
 }) => {
   const tokens = useTheme().cmp.tabs.divider;
-  const defaultStyles = `
+  const baseStyles = `
       margin: 0 ${tokens.space.margin};
       background: ${tokens.color.background};
     `;
-  return <Divider {...dividerProps} styles={styles || defaultStyles} />;
+  return <Divider {...dividerProps} styles={concat(baseStyles, styles)} />;
 };

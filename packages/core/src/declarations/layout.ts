@@ -2,6 +2,8 @@ import type { CSSProperties } from 'react';
 import { Elevation, GlobalSpacing } from './';
 
 export interface LayoutCommonProps {
+  /** The align-self CSS property overrides a flex item's align-items value. In Flexbox, it aligns the item on the cross axis.*/
+  alignSelf?: CSSProperties['alignSelf'];
   /** The elevation level of the element, related with its box-shadow, shape... etc. */
   elevation?: Elevation;
   /** This is the shorthand for flex-grow, flex-shrink and flex-basis combined.
@@ -92,8 +94,6 @@ export interface LayoutFlexProps {
 }
 
 export interface LayoutFlexItemProps {
-  /** The align-self CSS property overrides a flex item's align-items value. In Flexbox, it aligns the item on the cross axis.*/
-  alignSelf?: CSSProperties['alignSelf'];
   /** The order CSS property sets the order to lay out an item in a flex or grid container. Items in a container are sorted by ascending order value and then by their source code order.*/
   order?: CSSProperties['order'];
 }

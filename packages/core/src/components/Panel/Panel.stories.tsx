@@ -39,7 +39,7 @@ export const Base: Story = {
         </Button>,
       ],
       bordered: false,
-      hasShadowStyle: true,
+      hasBoxShadow: true,
     },
     headerSettings: {
       actions: [
@@ -53,7 +53,7 @@ export const Base: Story = {
         />,
       ],
       bordered: false,
-      hasShadowStyle: true,
+      hasBoxShadow: true,
     },
     heightScheme: { height: '50rem' },
     helpUrl: 'https://docs.devo.com/confluence/ndt',
@@ -85,33 +85,25 @@ export const ClosableBackwardNavigation: Story = {
         </Button>,
       ],
       bordered: false,
-      hasShadowStyle: true,
+      hasBoxShadow: true,
     },
     headerSettings: {
-      renderContent: {
-        append: (
-          <HFlex spacing="cmp-xxs" alignItems="center">
-            <Flex.Item>
-              <IconButton
-                hasBoldIcon
-                circular
-                icon="gi-arrow_left1"
-                onClick={() => alert('Close Panel!')}
-                colorScheme="quiet"
-                size="sm"
-              />
-            </Flex.Item>
-            <Flex.Item>
-              <IconButtonClose
-                onClick={() => alert('Back to previous Panel!')}
-                tooltip="Back to previous Panel"
-              />
-            </Flex.Item>
-          </HFlex>
-        ),
-      },
+      actions: [
+        <IconButton
+          hasBoldIcon
+          circular
+          icon="gi-arrow_left1"
+          onClick={() => alert('Close Panel!')}
+          colorScheme="quiet"
+          size="sm"
+        />,
+        <IconButtonClose
+          onClick={() => alert('Back to previous Panel!')}
+          tooltip="Back to previous Panel"
+        />,
+      ],
       bordered: false,
-      hasShadowStyle: true,
+      hasBoxShadow: true,
     },
     icon: null,
     widthScheme: { width: '36rem' },

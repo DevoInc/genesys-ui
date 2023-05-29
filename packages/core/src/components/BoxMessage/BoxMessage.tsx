@@ -7,6 +7,7 @@ import { StyledBoxMessageIcon } from './StyledBoxMessageIcon';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../declarations';
 
@@ -14,6 +15,7 @@ export interface BoxMessageProps
   extends StyledBoxMessageProps,
     // native
     StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps {
   /** BoxMessage actions */
@@ -38,10 +40,16 @@ export const BoxMessage: React.FC<BoxMessageProps> = ({
   hideIcon,
   title,
   status = 'info',
+  styles,
   tooltip,
   ...nativeProps
 }) => (
-  <StyledBoxMessage {...nativeProps} title={tooltip} status={status}>
+  <StyledBoxMessage
+    {...nativeProps}
+    title={tooltip}
+    status={status}
+    css={styles}
+  >
     {!hideIcon && (
       <Flex.Item alignSelf="flex-start" flex="0 0 auto" marginRight="cmp-sm">
         <StyledBoxMessageIcon

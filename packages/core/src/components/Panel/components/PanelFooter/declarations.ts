@@ -1,8 +1,9 @@
+import * as React from 'react';
 import { ButtonProps } from '../../../Button';
 import { IconButtonProps } from '../../../IconButton';
 import { PanelSize } from '../../declarations';
 
-export type PanelFooterActions = (
+export type PanelFooterActionsType = (
   | React.ReactElement<ButtonProps>
   | React.ReactElement<IconButtonProps>
 )[];

@@ -54,6 +54,7 @@ export const panelContainerMixin = ({
     !elevation.includes('sticky') &&
     panelTokens.shape.borderRadius;
   return css`
+    position: relative;
     ${display !== 'none' &&
     css`
       display: flex;

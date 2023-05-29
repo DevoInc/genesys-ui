@@ -3,6 +3,7 @@ import * as React from 'react';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../declarations';
 
@@ -17,6 +18,7 @@ import {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface SpinnerLoaderProps
   extends StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps,
     StyledSpinnerLoaderSvgProps,
@@ -25,6 +27,7 @@ export interface SpinnerLoaderProps
 export const SpinnerLoader: React.FC<SpinnerLoaderProps> = ({
   colorScheme = 'dark',
   size = 'md',
+  styles,
   tooltip,
   ...restNativeProps
 }) => {
@@ -32,6 +35,7 @@ export const SpinnerLoader: React.FC<SpinnerLoaderProps> = ({
     <StyledSpinnerLoaderSvg
       {...restNativeProps}
       colorScheme={colorScheme}
+      css={styles}
       size={size}
       title={tooltip}
       viewBox={'0 0 50 50'}

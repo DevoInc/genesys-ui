@@ -3,31 +3,28 @@ import * as React from 'react';
 import { useDetectScroll } from '../../hooks';
 
 import {
-  PanelContainer,
-  PanelHeaderContainer,
-  PanelBodyContainer,
-  PanelFooterContainer,
-  PanelFooterContent,
-  PanelContainerProps,
-  PanelBodyContainerProps,
-  PanelHeaderContent,
-  PanelHeaderContentProps,
-  PanelFooterContentProps,
-} from './components';
-
-import {
-  FooterSettings,
-  HeaderSettings,
+  BodySettingsProps,
+  FooterSettingsProps,
+  HeaderSettingsProps,
   PanelSize,
-  RenderContent,
 } from './declarations';
 import { StyledOverloadCssProps } from '../../declarations';
+
+import {
+  PanelContainer,
+  PanelBody,
+  PanelContainerProps,
+  PanelFooter,
+  PanelHeader,
+  PanelFooterProps,
+  PanelHeaderProps,
+} from './components';
 
 export interface PanelProps
   extends StyledOverloadCssProps,
     Omit<PanelContainerProps, 'children'>,
     Pick<
-      PanelHeaderContentProps,
+      PanelHeaderProps,
       | 'closeSettings'
       | 'collapseSettings'
       | 'icon'
@@ -36,12 +33,12 @@ export interface PanelProps
       | 'title'
       | 'titleTooltip'
     >,
-    Pick<PanelBodyContainerProps, 'bodySettings'>,
-    Pick<PanelFooterContentProps, 'helpTooltip' | 'helpUrl'> {
+    Pick<PanelFooterProps, 'helpTooltip' | 'helpUrl'> {
   children?: React.ReactNode;
   className?: string;
-  footerSettings?: FooterSettings;
-  headerSettings?: HeaderSettings;
+  bodySettings?: BodySettingsProps;
+  footerSettings?: FooterSettingsProps;
+  headerSettings?: HeaderSettingsProps;
   /** Set size for Panel components */
   size?: PanelSize;
 }
@@ -60,7 +57,7 @@ const InternalPanel: React.FC<PanelProps> = ({
   visibility,
   widthScheme,
   position,
-  // PanelHeaderContentProps
+  // PanelHeaderProps
   headerSettings,
   closeSettings,
   collapseSettings,
@@ -70,9 +67,9 @@ const InternalPanel: React.FC<PanelProps> = ({
   titleTooltip,
   legend,
   icon,
-  // PanelBodyContainerProps
+  // PanelBodyProps
   bodySettings,
-  // PanelFooterContentProps
+  // PanelFooterProps
   footerSettings,
   helpUrl,
   helpTooltip,
@@ -82,9 +79,6 @@ const InternalPanel: React.FC<PanelProps> = ({
   ...boxProps
 }) => {
   const { hasScroll, targetElRef } = useDetectScroll();
-  const headerRenderContent = headerSettings?.renderContent as RenderContent;
-  const footerRenderContent = footerSettings?.renderContent as RenderContent;
-
   return (
     <PanelContainer
       display={display}
@@ -102,74 +96,55 @@ const InternalPanel: React.FC<PanelProps> = ({
       styles={styles}
       {...boxProps}
     >
-      <PanelHeaderContainer
+      <PanelHeader
         hasBoxShadow={hasScroll}
+        actions={headerSettings?.actions}
         bordered={headerSettings?.bordered}
+        closeSettings={closeSettings}
+        collapseSettings={collapseSettings}
+        helpUrl={!footerSettings ? helpUrl : undefined}
+        helpTooltip={!footerSettings ? helpTooltip : undefined}
+        icon={icon}
+        legend={legend}
+        renderContent={headerSettings.renderContent}
+        size={size}
+        subtitle={subtitle}
+        title={title}
+        titleTooltip={titleTooltip}
       >
-        {/** TODO: consider removal when Toast is refactored to not use Panel as styled */}
-        {React.isValidElement(headerSettings?.renderContent) ? (
-          headerSettings.renderContent
-        ) : (
-          <PanelHeaderContent
-            actions={headerSettings?.actions}
-            appendContent={headerRenderContent?.append}
-            as={as}
-            bottomContent={headerRenderContent?.bottom}
-            closeSettings={closeSettings}
-            collapseSettings={collapseSettings}
-            helpUrl={!footerSettings ? helpUrl : undefined}
-            helpTooltip={!footerSettings ? helpTooltip : undefined}
-            icon={icon}
-            legend={legend}
-            prependContent={headerRenderContent?.prepend}
-            size={size}
-            subtitle={subtitle}
-            title={title}
-            titleTooltip={titleTooltip}
-            topContent={headerRenderContent?.top}
-          >
-            {headerRenderContent?.middle}
-          </PanelHeaderContent>
-        )}
-      </PanelHeaderContainer>
-      <PanelBodyContainer
-        bodySettings={bodySettings}
+        {headerSettings?.renderContent}
+      </PanelHeader>
+      <PanelBody
+        removeSpace={bodySettings.removeSpace}
         hasScroll={hasScroll}
         panelBodyRef={targetElRef}
         size={size}
       >
         {children}
-      </PanelBodyContainer>
-      <PanelFooterContainer
+      </PanelBody>
+      <PanelFooter
+        actions={footerSettings?.actions}
+        bordered={footerSettings?.bordered}
         hasBoxShadow={hasScroll}
         hasBackground={footerSettings?.hasBackground}
-        bordered={footerSettings?.bordered}
+        helpUrl={helpUrl}
+        helpTooltip={helpTooltip}
+        size={size}
       >
-        <PanelFooterContent
-          actions={footerSettings?.actions}
-          appendContent={footerRenderContent?.append}
-          bottomContent={footerRenderContent?.bottom}
-          helpUrl={helpUrl}
-          helpTooltip={helpTooltip}
-          prependContent={footerRenderContent?.prepend}
-          size={size}
-          topContent={footerRenderContent?.top}
-        >
-          {footerRenderContent?.middle}
-        </PanelFooterContent>
-      </PanelFooterContainer>
+        {footerSettings?.renderContent}
+      </PanelFooter>
     </PanelContainer>
   );
 };
 
 export const Panel = InternalPanel as typeof InternalPanel & {
   Container: typeof PanelContainer;
-  Header: typeof PanelHeaderContainer;
-  Body: typeof PanelBodyContainer;
-  Footer: typeof PanelFooterContainer;
+  Header: typeof PanelHeader;
+  Body: typeof PanelBody;
+  Footer: typeof PanelFooter;
 };
 
 Panel.Container = PanelContainer;
-Panel.Header = PanelHeaderContainer;
-Panel.Body = PanelBodyContainer;
-Panel.Footer = PanelFooterContainer;
+Panel.Header = PanelHeader;
+Panel.Body = PanelBody;
+Panel.Footer = PanelFooter;

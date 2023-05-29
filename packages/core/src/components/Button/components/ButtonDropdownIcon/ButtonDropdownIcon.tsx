@@ -1,15 +1,12 @@
 import * as React from 'react';
+import { css } from 'styled-components';
+import { concat } from 'lodash';
 
 import { ButtonSize } from '../../declarations';
 
-import { ButtonIcon } from '../ButtonIcon';
+import { ButtonIcon, ButtonIconProps } from '../ButtonIcon';
 
-import {
-  StyledButtonDropdownIcon,
-  StyledButtonDropdownIconProps,
-} from './StyledButtonDropdownIcon';
-
-export interface ButtonDropdownIconProps extends StyledButtonDropdownIconProps {
+export interface ButtonDropdownIconProps extends ButtonIconProps {
   /** Sets padding, line-height, font-size, etc. */
   size?: ButtonSize;
 }
@@ -17,12 +14,19 @@ export interface ButtonDropdownIconProps extends StyledButtonDropdownIconProps {
 export const ButtonDropdownIcon: React.FC<ButtonDropdownIconProps> = ({
   size = 'md',
   state = 'enabled',
-}) => (
-  <ButtonIcon
-    as={StyledButtonDropdownIcon}
-    icon="gi-arrow_down_fat"
-    hasBoldIcon
-    size={size}
-    state={state}
-  />
-);
+  styles,
+}) => {
+  const baseStyles = css`
+    display: block;
+    transform: ${state === 'expanded' ? 'rotate(180deg)' : 'rotate(0deg)'};
+  `;
+  return (
+    <ButtonIcon
+      icon="gi-arrow_down_fat"
+      hasBoldIcon
+      size={size}
+      state={state}
+      styles={concat(baseStyles, styles)}
+    />
+  );
+};

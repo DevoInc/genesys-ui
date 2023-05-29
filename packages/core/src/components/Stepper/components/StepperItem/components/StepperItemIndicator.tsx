@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { css } from 'styled-components';
+import { concat } from 'lodash';
 
 import { BADGE_COLOR } from '../../../constants';
 import { StepperSize, StepperStatus } from '../../../declarations';
@@ -23,7 +24,7 @@ export const StepperItemIndicator: React.FC<StepperItemIndicatorProps> = ({
   text,
   ...restBadgeProps
 }) => {
-  const defaultStyles = css`
+  const baseStyles = css`
     opacity: ${status === 'disabled' ? '0.4' : undefined};
   `;
   const isCompletedStep = status === 'completed';
@@ -34,7 +35,7 @@ export const StepperItemIndicator: React.FC<StepperItemIndicatorProps> = ({
       icon={isCompletedStep ? 'gi-check_thick' : icon}
       inverse={inverse || status === 'current'}
       size={size}
-      styles={styles || defaultStyles}
+      styles={concat(baseStyles, styles)}
       text={!isCompletedStep ? (stepNumberPos + 1).toString() : text}
     />
   );

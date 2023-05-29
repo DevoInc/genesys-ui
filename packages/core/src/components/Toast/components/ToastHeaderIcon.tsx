@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { concat } from 'lodash';
 import { css, useTheme } from 'styled-components';
 
 import { Icon, IconProps } from '../../Icon';
@@ -13,12 +14,16 @@ export const ToastHeaderIcon: React.FC<ToastHeaderIconProps> = ({
   ...restIconProps
 }) => {
   const tokensToast = useTheme().cmp.toast;
-  const defaultStyles = css`
+  const baseStyles = css`
     align-items: flex-start;
     font-size: ${tokensToast.headerIcon.typo.fontSize.md};
     color: ${tokensToast.headerIcon.color.text[colorScheme]};
   `;
   return (
-    <Icon {...restIconProps} iconId={iconId} styles={styles || defaultStyles} />
+    <Icon
+      {...restIconProps}
+      iconId={iconId}
+      styles={concat(baseStyles, styles)}
+    />
   );
 };

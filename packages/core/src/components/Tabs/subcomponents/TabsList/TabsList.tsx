@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
+import { concat } from 'lodash';
 
 import { Flex, FlexProps } from '../../../Flex';
-import { useTheme } from 'styled-components';
 import { TabsItemProps } from '../TabsItem';
 
 export interface TabsListProps extends Omit<FlexProps, 'children'> {
@@ -11,7 +12,7 @@ export interface TabsListProps extends Omit<FlexProps, 'children'> {
 
 export const TabsList = React.forwardRef<HTMLElement, TabsListProps>(
   ({ children, styles, width = '100%', ...restFlexProps }, ref) => {
-    const defaultStyles = `margin: 0 -${
+    const baseStyles = `margin: 0 -${
       useTheme().cmp.tabs.content.space.padding
     };`;
     return (
@@ -20,7 +21,7 @@ export const TabsList = React.forwardRef<HTMLElement, TabsListProps>(
         as="ul"
         role="tablist"
         ref={ref}
-        styles={styles || defaultStyles}
+        styles={concat(baseStyles, styles)}
         width={width}
       >
         {children}

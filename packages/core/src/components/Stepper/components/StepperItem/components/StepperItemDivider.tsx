@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useTheme, css } from 'styled-components';
+import { concat } from 'lodash';
 
 import { Icon, IconProps } from '../../../../Icon';
 
@@ -11,7 +12,7 @@ export const StepperItemDivider: React.FC<StepperItemDividerProps> = ({
   ...restIconProps
 }) => {
   const theme = useTheme();
-  const defaultStyles = css`
+  const baseStyles = css`
     color: ${theme.cmp.stepper.separator.color.background};
     margin-right: ${theme.cmp.stepper.separator.space.marginHor};
   `;
@@ -19,7 +20,7 @@ export const StepperItemDivider: React.FC<StepperItemDividerProps> = ({
     <Icon
       {...restIconProps}
       iconId="gi-arrow_right"
-      styles={styles || defaultStyles}
+      styles={concat(baseStyles, styles)}
     />
   );
 };

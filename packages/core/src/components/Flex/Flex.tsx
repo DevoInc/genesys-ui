@@ -1,6 +1,9 @@
 import * as React from 'react';
 
-import { StyledOverloadCssProps } from '../../declarations';
+import {
+  LayoutFlexItemProps,
+  StyledOverloadCssProps,
+} from '../../declarations';
 import { FlexItem } from './subcomponents';
 import { CommonBoxProps } from '../Box';
 import { StyledFlex, StyledFlexProps } from './StyledFlex';

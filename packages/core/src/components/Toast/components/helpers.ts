@@ -1,6 +1,6 @@
 import { css, DefaultTheme } from 'styled-components';
 import { ToastStatus } from '../declarations';
-import { StyledPanelHeaderContainer } from '../../Panel/components/PanelHeader/PanelHeaderContainer/StyledPanelHeaderContainer';
+import { StyledPanelHeaderContainer } from '../../Panel/components/PanelHeader/components/StyledPanelHeaderContainer';
 
 export interface ToastPanelMixinProps {
   /** Accent color schema */

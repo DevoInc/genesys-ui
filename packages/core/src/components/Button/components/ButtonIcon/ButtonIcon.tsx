@@ -3,8 +3,11 @@ import * as React from 'react';
 import { ButtonState } from '../../declarations';
 
 import { StyledButtonIcon, StyledButtonIconProps } from './StyledButtonIcon';
+import { StyledOverloadCssProps } from '../../../../declarations';
 
-export interface ButtonIconProps extends StyledButtonIconProps {
+export interface ButtonIconProps
+  extends StyledButtonIconProps,
+    StyledOverloadCssProps {
   /** Icon name/id  */
   icon?: string;
   /** Sets the color scheme according to component state */
@@ -17,11 +20,13 @@ export const ButtonIcon: React.FC<ButtonIconProps> = ({
   hasBoldIcon,
   size = 'md',
   state = 'enabled',
+  styles,
 }) => (
   <StyledButtonIcon
     aria-hidden={true}
     as={as}
     className={icon || 'gi-check_thick'}
+    css={styles}
     icon={icon}
     hasBoldIcon={hasBoldIcon}
     size={size}

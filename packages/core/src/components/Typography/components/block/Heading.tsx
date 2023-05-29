@@ -3,6 +3,7 @@ import {
   FocusEventAttrProps,
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../../../declarations';
 import * as React from 'react';
@@ -14,6 +15,7 @@ export interface HeadingProps
   extends StyledHeadingProps,
     // native
     StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     ContentEditableAttrProps,
     GlobalAriaProps,
@@ -33,12 +35,14 @@ export const Heading: React.FC<HeadingProps> = ({
   truncateLine,
   size = 'h4',
   children,
+  styles,
   tooltip,
   ...nativeProps
 }) => (
   <StyledHeading
     {...nativeProps}
     colorScheme={colorScheme}
+    css={styles}
     truncateLine={truncateLine}
     gutterBottom={gutterBottom}
     ref={forwardedRef}

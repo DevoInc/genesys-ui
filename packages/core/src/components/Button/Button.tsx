@@ -185,6 +185,7 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
         {hasDropdown && (
           <ButtonAddon
             colorScheme={colorScheme}
+            hasSpace={addonHasSpace}
             isDropdown
             squared={squared}
             position={'right'}

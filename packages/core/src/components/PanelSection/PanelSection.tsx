@@ -2,13 +2,18 @@ import * as React from 'react';
 import { DOMAttributes } from 'react';
 
 import {
-  HeaderSettings as PanelHeaderSettings,
-  FooterSettings as PanelFooterSettings,
+  HeaderSettingsProps as PanelHeaderSettings,
+  FooterSettingsProps as PanelFooterSettingsProps,
 } from '../Panel/declarations';
 
-import { IconButton, Divider, Panel, HFlex, PanelProps } from '..';
-
-import { StyledPanelSection } from './StyledPanelSection';
+import { IconButton, Divider, Panel, HFlex, PanelProps, Flex } from '..';
+import { useDetectScroll } from '../../hooks';
+import {
+  panelSectionBodyMixin,
+  panelSectionFooterMixin,
+  panelSectionHeaderMixin,
+} from './helpers';
+import { useTheme } from 'styled-components';
 
 export const renderBackwardNavigation = ({
   backwardTooltip,
@@ -19,7 +24,12 @@ export const renderBackwardNavigation = ({
 }) => {
   if (onClickBackwardNav)
     return (
-      <HFlex alignItems="stretch" height="100%" spacing="cmp-sm">
+      <HFlex
+        alignItems="stretch"
+        height="100%"
+        spacing="cmp-sm"
+        marginRight="cmp-sm"
+      >
         <IconButton
           hasBoldIcon
           icon="gi-arrow_left1"
@@ -47,7 +57,7 @@ export interface PanelSectionProps
   > {
   backwardTooltip?: string;
   children?: React.ReactElement;
-  footerActions?: PanelFooterSettings['actions'];
+  footerActions?: PanelFooterSettingsProps['actions'];
   footerContent?: React.ReactElement;
   footerHasBackground?: boolean;
   headerActions?: PanelHeaderSettings['actions'];
@@ -59,62 +69,79 @@ export interface PanelSectionProps
 }
 
 export const PanelSection: React.FC<PanelSectionProps> = ({
-  headerActions,
   backwardTooltip = 'Back',
   children,
   display,
   footerActions,
   footerContent,
   footerHasBackground = false,
+  headerActions,
   height = '100%',
-  helpUrl,
   helpTooltip,
+  helpUrl,
   id,
   navigation,
   onClickBackwardNav,
-  renderActions,
   removeContentSpace = false,
+  renderActions,
   subtitle,
   title,
   visibility,
 }) => {
+  const theme = useTheme();
+  const { hasScroll, targetElRef } = useDetectScroll();
   return (
-    <Panel
+    <Panel.Container
       display={display}
-      bodySettings={{ removeSpace: removeContentSpace }}
       id={id}
-      forwardedAs={StyledPanelSection}
-      headerSettings={{
-        bordered: !navigation,
-        actions: headerActions,
-        hasShadowStyle: true,
-        renderContent: {
-          append: renderActions,
-          prepend: renderBackwardNavigation({
-            backwardTooltip,
-            onClickBackwardNav,
-          }),
-          bottom: navigation,
-        },
-      }}
-      footerSettings={
-        footerActions || footerContent
-          ? {
-              actions: footerActions,
-              hasBackground: footerHasBackground,
-              hasShadowStyle: true,
-              renderContent: footerContent,
-            }
-          : null
-      }
       heightScheme={{ height }}
-      helpUrl={helpUrl}
-      helpTooltip={helpTooltip}
-      subtitle={subtitle}
-      title={title}
       visibility={visibility}
     >
-      {children}
-    </Panel>
+      <Panel.Header.Container
+        bordered={!navigation}
+        hasBoxShadow
+        styles="padding: 0;"
+      >
+        <Panel.Header.Container
+          as="div"
+          bordered={false}
+          hasBoxShadow={false}
+          styles={panelSectionHeaderMixin({ theme })}
+        >
+          {renderBackwardNavigation({
+            backwardTooltip,
+            onClickBackwardNav,
+          })}
+          <Panel.Header.Heading
+            subtitle={subtitle}
+            title={title}
+            helpUrl={helpUrl}
+            helpTooltip={helpTooltip}
+          />
+          <Panel.Header.Actions actions={headerActions} />
+          {renderActions}
+        </Panel.Header.Container>
+      </Panel.Header.Container>
+      <Panel.Body
+        hasScroll={hasScroll}
+        removeSpace={removeContentSpace}
+        panelBodyRef={targetElRef}
+        styles={panelSectionBodyMixin({
+          hasScroll,
+          removeSpace: removeContentSpace,
+          theme,
+        })}
+      >
+        {children}
+      </Panel.Body>
+      <Panel.Footer
+        actions={footerActions}
+        hasBackground={footerHasBackground}
+        hasBoxShadow
+        styles={panelSectionFooterMixin({ theme })}
+      >
+        {footerContent}
+      </Panel.Footer>
+    </Panel.Container>
   );
 };

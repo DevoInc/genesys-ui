@@ -1,6 +1,7 @@
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../../../declarations';
 import * as React from 'react';
@@ -11,6 +12,7 @@ export interface ParagraphProps
   extends StyledParagraphProps,
     // native
     StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps {
   /** Content of the Paragraph */
@@ -24,12 +26,14 @@ export const Paragraph: React.FC<ParagraphProps> = ({
   textAlign = 'left',
   truncateLine,
   children,
+  styles,
   tooltip,
   ...nativeProps
 }) => (
   <StyledParagraph
     {...nativeProps}
     colorScheme={colorScheme}
+    css={styles}
     truncateLine={truncateLine}
     gutterBottom={gutterBottom}
     size={size}

@@ -1,7 +1,7 @@
 import { DefaultTheme } from 'styled-components';
 
 /**
- * Get the
+ * Get the panel component tokens
  *
  * @param theme Object with all the design tokens
  * @return object with Panel component design tokens

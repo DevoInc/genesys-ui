@@ -82,8 +82,8 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
         colorScheme={backgroundColor}
         bodySettings={{ removeSpace: showCollapsed }}
         elevation="popOut"
-        footerSettings={{ hasShadowStyle: true, actions: footerActions }}
-        headerSettings={{ hasShadowStyle: true, renderContent: headerContent }}
+        footerSettings={{ hasBoxShadow: true, actions: footerActions }}
+        headerSettings={{ hasBoxShadow: true, renderContent: headerContent }}
         heightScheme={{ maxHeight }}
         styles={
           styles ||

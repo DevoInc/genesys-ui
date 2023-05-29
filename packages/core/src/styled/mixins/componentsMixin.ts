@@ -262,6 +262,7 @@ export interface BoxMixinProps extends LayoutCommonProps {
  * @return object with the css.
  */
 export const boxMixin = ({
+  alignSelf,
   $display,
   flex,
   elevation,
@@ -355,10 +356,11 @@ export const boxMixin = ({
     })}
 
     // elevation
-      box-shadow: ${getBoxShadow(elevation)};
+    box-shadow: ${getBoxShadow(elevation)};
     border-radius: ${hasBorder && aliasTokens.shape.borderRadius.elevated};
 
     // box model
+    align-self: ${alignSelf};
     margin: ${margin && getSpacingPropCss(margin, theme)};
     margin-top: ${marginTop && getSpacingPropCss(marginTop, theme)};
     margin-right: ${marginRight && getSpacingPropCss(marginRight, theme)};

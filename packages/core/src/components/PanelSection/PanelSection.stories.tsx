@@ -9,7 +9,7 @@ const meta: Meta<typeof PanelSection> = {
   args: {
     backwardTooltip: 'Back',
     footerHasBackground: false,
-    height: '100%',
+    height: '100vh',
     removeContentSpace: false,
   },
 };
@@ -20,5 +20,6 @@ type Story = StoryObj<typeof PanelSection>;
 export const Base: Story = {
   args: {
     children: TextBlock,
+    title: 'PanelSection title',
   },
 };

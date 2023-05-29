@@ -1,2 +1,2 @@
-export * from './PanelHeaderContainer';
-export * from './PanelHeaderContent';
+export * from './components';
+export * from './PanelHeader';
