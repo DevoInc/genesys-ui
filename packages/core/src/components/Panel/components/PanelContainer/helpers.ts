@@ -3,7 +3,6 @@ import { css, DefaultTheme } from 'styled-components';
 
 import { BoxProps } from '../../../Box';
 
-import { getPanelTokens } from '../../helpers';
 import {
   heightMixin,
   pseudoElementOverlayMixin,
@@ -47,7 +46,7 @@ export const panelContainerMixin = ({
   const aliasTokens = theme.alias;
   const borderColor = aliasTokens.color.border.surface.base.weak;
   const borderWidth = aliasTokens.shape.borderSize.panel.base;
-  const panelTokens = getPanelTokens(theme);
+  const panelTokens = theme.cmp.panel;
   const borderRadius =
     elevation &&
     elevation !== 'ground' &&

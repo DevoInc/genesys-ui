@@ -3,8 +3,8 @@ import { PanelSize } from '../../declarations';
 import { scrollbars } from '../../../../styled';
 
 export interface PanelBodyMixinProps {
-  removeSpace: boolean;
-  hasScroll: boolean;
+  removeSpace?: boolean;
+  hasScroll?: boolean;
   size?: PanelSize;
   theme: DefaultTheme;
 }

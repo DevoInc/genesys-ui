@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { getPanelTokens } from '../../../helpers';
-import * as React from 'react';
 import { PanelHeaderSize } from '../declarations';
 
 export interface StyledPanelHeaderContainerProps {
@@ -15,7 +13,7 @@ export interface StyledPanelHeaderContainerProps {
 
 export const StyledPanelHeaderContainer = styled.header<StyledPanelHeaderContainerProps>`
   ${({ hasBoxShadow, bordered, size = 'md', hasSubtitle, theme }) => {
-    const panelHeaderTokens = getPanelTokens(theme).header;
+    const panelHeaderTokens = theme.cmp.panel.header;
 
     return css`
       display: flex;

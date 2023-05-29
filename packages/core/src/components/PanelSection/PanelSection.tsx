@@ -6,7 +6,7 @@ import {
   FooterSettingsProps as PanelFooterSettingsProps,
 } from '../Panel/declarations';
 
-import { IconButton, Divider, Panel, HFlex, PanelProps, Flex } from '..';
+import { IconButton, Divider, Panel, HFlex, PanelProps } from '..';
 import { useDetectScroll } from '../../hooks';
 import {
   panelSectionBodyMixin,

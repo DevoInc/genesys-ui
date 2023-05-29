@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
 import {

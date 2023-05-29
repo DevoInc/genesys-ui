@@ -45,50 +45,48 @@ export const InlineMessagePanel: React.FC<InlineMessagePanelProps> = ({
   const theme = useTheme();
   const { hasScroll, targetElRef } = useDetectScroll();
   return (
-    <>
-      <Panel.Container
-        elevation={'ground'}
-        heightScheme={{ maxHeight: '40rem' }}
-        id={id}
-        styles={styles}
-        widthScheme={{
-          width: 'fit-content',
-          minWidth: '30rem',
-          maxWidth: '40rem',
+    <Panel.Container
+      elevation={'ground'}
+      heightScheme={{ maxHeight: '40rem' }}
+      id={id}
+      styles={styles}
+      widthScheme={{
+        width: 'fit-content',
+        minWidth: '30rem',
+        maxWidth: '40rem',
+      }}
+    >
+      <Panel.Header
+        closeSettings={{
+          cssTranslate: '1.8rem, -1rem',
+          onClick: onClose,
+          tooltip: onCloseTooltip,
         }}
+        hasBoxShadow={hasScroll}
+        subtitle={subtitle}
+        title={title}
+        size="sm"
+        helpUrl={helpUrl}
+        icon={icon}
+        styles={inlineMessagePanelHeaderMixin({ hasScroll, theme })}
+      />
+      <Panel.Body
+        hasScroll={hasScroll}
+        panelBodyRef={targetElRef}
+        styles={inlineMessagePanelBodyMixin({ hasScroll, theme })}
       >
-        <Panel.Header
-          closeSettings={{
-            cssTranslate: '1.8rem, -1rem',
-            onClick: onClose,
-            tooltip: onCloseTooltip,
-          }}
-          hasBoxShadow={hasScroll}
-          subtitle={subtitle}
-          title={title}
-          size="sm"
-          helpUrl={helpUrl}
-          icon={icon}
-          styles={inlineMessagePanelHeaderMixin({ hasScroll, theme })}
-        />
-        <Panel.Body
-          hasScroll={hasScroll}
-          panelBodyRef={targetElRef}
-          styles={inlineMessagePanelBodyMixin({ hasScroll, theme })}
-        >
-          {typeof children === 'string' ? (
-            <Typography.Paragraph>{children}</Typography.Paragraph>
-          ) : (
-            children
-          )}
-        </Panel.Body>
-        <Panel.Footer
-          hasBoxShadow={hasScroll}
-          size="sm"
-          styles={inlineMessagePanelFooterMixin({ hasScroll, theme })}
-          actions={actions}
-        />
-      </Panel.Container>
-    </>
+        {typeof children === 'string' ? (
+          <Typography.Paragraph>{children}</Typography.Paragraph>
+        ) : (
+          children
+        )}
+      </Panel.Body>
+      <Panel.Footer
+        hasBoxShadow={hasScroll}
+        size="sm"
+        styles={inlineMessagePanelFooterMixin({ hasScroll, theme })}
+        actions={actions}
+      />
+    </Panel.Container>
   );
 };

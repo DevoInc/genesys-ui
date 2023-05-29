@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { concat, get } from 'lodash';
+import { get } from 'lodash';
 
 import * as defaultComponents from './components';
 import { wrapperOnChange, findValue } from './utils';
@@ -126,7 +126,7 @@ export const SelectControl = <
       menuPortalTarget={menuPortalTarget}
       isClearable={clearable}
       {...(onChange && { onChange })}
-      styles={concat(defaultStyles, styles)}
+      styles={{ ...defaultStyles, ...styles }}
       {...(value && { value: findValue(value, rest.options, rest.isMulti) })}
       components={
         { ...defaultComponents, ...components } as Partial<

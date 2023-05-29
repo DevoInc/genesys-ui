@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { PanelSection, Button, VFlex, IconButton, IconButtonClose } from '..';
+import { PanelSection, Button } from '..';
 import { TextBlock } from '../Panel/__stories__/helpers';
 
 const meta: Meta<typeof PanelSection> = {

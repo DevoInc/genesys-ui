@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { getPanelTokens } from '../../helpers';
 import { scrollbars } from '../../../../styled';
 import { PanelSize } from '../../declarations';
 
@@ -14,7 +13,7 @@ export interface StyledPanelBodyProps {
 
 export const StyledPanelBody = styled.div<StyledPanelBodyProps>`
   ${({ bodySettings, hasScroll, size, theme }) => {
-    const panelContentTokens = getPanelTokens(theme).content;
+    const panelContentTokens = theme.cmp.panel.content;
 
     let trackRadius;
     let padding = panelContentTokens.space.padding[size];

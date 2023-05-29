@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Panel, Button, HFlex, Flex, IconButton, IconButtonClose } from '..';
+import { Panel, Button, IconButton, IconButtonClose } from '..';
 import { TextBlock } from './__stories__/helpers';
 
 const meta: Meta<typeof Panel> = {
@@ -90,6 +90,7 @@ export const ClosableBackwardNavigation: Story = {
     headerSettings: {
       actions: [
         <IconButton
+          key="btn-back"
           hasBoldIcon
           circular
           icon="gi-arrow_left1"
@@ -98,6 +99,7 @@ export const ClosableBackwardNavigation: Story = {
           size="sm"
         />,
         <IconButtonClose
+          key="btn-close"
           onClick={() => alert('Back to previous Panel!')}
           tooltip="Back to previous Panel"
         />,

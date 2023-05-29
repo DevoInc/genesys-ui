@@ -36,7 +36,7 @@ export const PanelHeaderActions: React.FC<PanelHeaderActionsProps> = ({
       flex="0 0 auto"
       marginLeft="auto"
     >
-      <>{filteredActions?.map((action) => action)}</>
+      {filteredActions?.map((action) => action)}
     </Flex>
   );
 };

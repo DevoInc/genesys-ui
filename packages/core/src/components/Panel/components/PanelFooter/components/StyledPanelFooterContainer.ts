@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { getPanelTokens } from '../../../helpers';
 import { PanelFooterSize } from '../declarations';
 import { FooterSettingsProps } from '../../../declarations';
 
@@ -10,7 +9,7 @@ export interface StyledPanelFooterContainerProps extends FooterSettingsProps {
 
 export const StyledPanelFooterContainer = styled.footer<StyledPanelFooterContainerProps>`
   ${({ bordered, hasBoxShadow, hasBackground, size, theme }) => {
-    const panelFooterTokens = getPanelTokens(theme).footer;
+    const panelFooterTokens = theme.cmp.panel.footer;
     const footerModalTokens = theme.cmp.modal.footer;
 
     return css`
