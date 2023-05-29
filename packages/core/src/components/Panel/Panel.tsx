@@ -97,7 +97,7 @@ const InternalPanel: React.FC<PanelProps> = ({
       {...boxProps}
     >
       <PanelHeader
-        hasBoxShadow={hasScroll}
+        hasBoxShadow={headerSettings?.hasBoxShadow ?? hasScroll}
         actions={headerSettings?.actions}
         bordered={headerSettings?.bordered}
         closeSettings={closeSettings}
@@ -106,7 +106,7 @@ const InternalPanel: React.FC<PanelProps> = ({
         helpTooltip={!footerSettings ? helpTooltip : undefined}
         icon={icon}
         legend={legend}
-        renderContent={headerSettings.renderContent}
+        removeSpace={headerSettings?.removeSpace}
         size={size}
         subtitle={subtitle}
         title={title}
@@ -115,9 +115,9 @@ const InternalPanel: React.FC<PanelProps> = ({
         {headerSettings?.renderContent}
       </PanelHeader>
       <PanelBody
-        removeSpace={bodySettings.removeSpace}
         hasScroll={hasScroll}
         panelBodyRef={targetElRef}
+        removeSpace={bodySettings.removeSpace}
         size={size}
       >
         {children}
@@ -129,6 +129,7 @@ const InternalPanel: React.FC<PanelProps> = ({
         hasBackground={footerSettings?.hasBackground}
         helpUrl={helpUrl}
         helpTooltip={helpTooltip}
+        removeSpace={footerSettings?.removeSpace}
         size={size}
       >
         {footerSettings?.renderContent}

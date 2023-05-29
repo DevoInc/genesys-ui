@@ -1,11 +1,13 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
+import { concat } from 'lodash';
 
 import { ToastAction } from '../declarations';
+import { TOAST_ELEVATION_LEVEL } from '../constants';
 import { ToastBadge, ToastBadgeProps } from './ToastBadge';
 import { ToastContent, ToastContentProps } from './ToastContent';
 import { getHeaderContent, getFooterActions } from '../utils';
 import { ToastHeaderProps } from './ToastHeader';
-import { useTheme } from 'styled-components';
 import { Panel } from '../../Panel';
 import { ToastPanelMixinProps, toastPanelMixinProps } from './helpers';
 import { StyledOverloadCssProps } from '../../../declarations';
@@ -81,20 +83,23 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
       <Panel
         colorScheme={backgroundColor}
         bodySettings={{ removeSpace: showCollapsed }}
-        elevation="popOut"
+        elevation={TOAST_ELEVATION_LEVEL}
         footerSettings={{ hasBoxShadow: true, actions: footerActions }}
-        headerSettings={{ hasBoxShadow: true, renderContent: headerContent }}
+        headerSettings={{
+          hasBoxShadow: collapsable ? collapsable && !collapsed : undefined,
+          removeSpace: true,
+          renderContent: headerContent,
+        }}
         heightScheme={{ maxHeight }}
-        styles={
-          styles ||
+        styles={concat(
           toastPanelMixinProps({
             accent,
-            expanded: collapsable && !collapsed,
             showProgressBar,
             status,
             theme,
-          })
-        }
+          }),
+          styles
+        )}
       >
         <ToastContent content={content} collapsed={showCollapsed} />
       </Panel>

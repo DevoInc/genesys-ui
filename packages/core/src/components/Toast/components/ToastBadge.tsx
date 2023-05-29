@@ -3,6 +3,9 @@ import * as React from 'react';
 import { ToastStatus } from '../declarations';
 
 import { Badge, BadgeProps } from '../../Badge';
+import { concat } from 'lodash';
+import { css, useTheme } from 'styled-components';
+import { TOAST_ELEVATION_LEVEL } from '../constants';
 
 export interface ToastBadgeProps extends BadgeProps {
   /** Status of notification */
@@ -18,16 +21,26 @@ export const ToastBadge: React.FC<ToastBadgeProps> = ({
   text,
   updates,
   ...restBadgeProps
-}) =>
-  updates > 1 && (
-    <Badge
-      {...restBadgeProps}
-      className={`${status}-updates`}
-      hasAbsolutePosition
-      colorScheme={colorScheme || status}
-      text={text || updates.toString()}
-      styles={
-        styles || 'left: 0; right: auto; transform: translate(-50%, -50%);'
-      }
-    />
+}) => {
+  const theme = useTheme();
+  const baseStyles = css`
+    left: 0;
+    right: auto;
+    transform: translate(-50%, -50%);
+    z-index: calc(
+      ${theme.alias.elevation.zIndex.depth[TOAST_ELEVATION_LEVEL]} + 1
+    );
+  `;
+  return (
+    updates > 1 && (
+      <Badge
+        {...restBadgeProps}
+        className={`${status}-updates`}
+        hasAbsolutePosition
+        colorScheme={colorScheme || status}
+        text={text || updates.toString()}
+        styles={concat(baseStyles, styles)}
+      />
+    )
   );
+};

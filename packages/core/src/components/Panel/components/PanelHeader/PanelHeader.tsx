@@ -20,7 +20,7 @@ import {
 
 export interface PanelHeaderProps
   extends StyledOverloadCssProps,
-    HeaderSettingsProps,
+    Omit<HeaderSettingsProps, 'renderContent'>,
     Pick<PanelHeaderContainerProps, 'hasBoxShadow'>,
     Pick<
       PanelHeaderHeadingProps,
@@ -38,6 +38,7 @@ export interface PanelHeaderProps
     onClick: PanelHeaderCollapseProps['onClick'];
     tooltip?: PanelHeaderCollapseProps['tooltip'];
   };
+  removeSpace?: boolean;
   /** Set size for Panel header components */
   size?: PanelSize;
   icon?: string;
@@ -54,6 +55,7 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
   helpUrl,
   icon,
   legend,
+  removeSpace,
   size = 'md',
   styles,
   subtitle,
@@ -65,6 +67,7 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
       hasBoxShadow={hasBoxShadow}
       bordered={bordered}
       hasSubtitle={Boolean(subtitle)}
+      removeSpace={removeSpace}
       size={size}
       styles={styles}
     >

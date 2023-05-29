@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { concat } from 'lodash';
 
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 
@@ -45,7 +46,7 @@ export const IconButtonClose = React.forwardRef<
       ref={ref}
       size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
       state={state}
-      styles={styles || 'background-color: transparent;'}
+      styles={concat('background-color: transparent;', styles)}
     />
   );
 });

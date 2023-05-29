@@ -5,6 +5,7 @@ import { StyledOverloadCssProps } from '../../../../declarations';
 
 import { Box } from '../../../Box';
 import { panelContainerMixin, PanelContainerMixinProps } from './helpers';
+import { concat } from 'lodash';
 
 export interface PanelContainerProps
   extends StyledOverloadCssProps,
@@ -49,8 +50,7 @@ export const PanelContainer: React.FC<PanelContainerProps> = ({
       minHeight={heightScheme?.minHeight}
       minWidth={widthScheme?.minWidth}
       position={position}
-      styles={
-        styles ||
+      styles={concat(
         panelContainerMixin({
           bordered,
           colorScheme,
@@ -59,8 +59,9 @@ export const PanelContainer: React.FC<PanelContainerProps> = ({
           heightScheme,
           theme,
           widthScheme,
-        })
-      }
+        }),
+        styles
+      )}
       visibility={visibility}
       width={widthScheme?.width}
     >

@@ -8,7 +8,7 @@ export interface StyledPanelFooterContainerProps extends FooterSettingsProps {
 }
 
 export const StyledPanelFooterContainer = styled.footer<StyledPanelFooterContainerProps>`
-  ${({ bordered, hasBoxShadow, hasBackground, size, theme }) => {
+  ${({ bordered, hasBoxShadow, hasBackground, removeSpace, size, theme }) => {
     const panelFooterTokens = theme.cmp.panel.footer;
     const footerModalTokens = theme.cmp.modal.footer;
 
@@ -20,7 +20,7 @@ export const StyledPanelFooterContainer = styled.footer<StyledPanelFooterContain
       background-color: ${hasBackground && footerModalTokens.color.background};
       display: flex;
       align-items: center;
-      padding: ${panelFooterTokens.space.padding[size]};
+      padding: ${removeSpace ? '0' : panelFooterTokens.space.padding[size]};
 
       &:empty {
         display: none;

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
+import { concat } from 'lodash';
 
 import { BoxMessage, BoxMessageProps } from '../../../BoxMessage';
 import { inlineMessageBannerMixin } from './helpers';
@@ -25,7 +26,7 @@ export const InlineMessageBanner: React.FC<InlineMessageBannerProps> = ({
       hideIcon
       id={id}
       status={status}
-      styles={styles || inlineMessageBannerMixin({ theme })}
+      styles={concat(inlineMessageBannerMixin({ theme }), styles)}
       title={title}
     />
   );

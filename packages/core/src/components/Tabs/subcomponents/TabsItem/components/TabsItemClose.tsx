@@ -8,6 +8,7 @@ import {
   IconButtonRemoveProps,
 } from '../../../../IconButton';
 import { TabsItemState } from '../../../declarations';
+import { concat } from 'lodash';
 
 export interface TabsItemCloseProps
   extends Omit<IconButtonRemoveProps, 'state'> {
@@ -26,7 +27,7 @@ export const TabsItemClose: React.FC<TabsItemCloseProps> = ({
       {...restIconButtonRemoveProps}
       size={'xs'}
       state={buttonStateMap[state]}
-      styles={styles || `margin-left: ${marginLeft}`}
+      styles={concat(`margin-left: ${marginLeft}`, styles)}
     />
   );
 };

@@ -6,6 +6,7 @@ import { IconButton, IconButtonProps } from '../../';
 
 import { iconButtonGoToDocsMixin } from './helpers';
 import { useTheme } from 'styled-components';
+import { concat } from 'lodash';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IconButtonGoToDocsProps
@@ -61,7 +62,7 @@ export const IconButtonGoToDocs = React.forwardRef<
         circular
         ref={ref}
         size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
-        styles={styles || iconButtonGoToDocsMixin({ size, state, theme })}
+        styles={concat(iconButtonGoToDocsMixin({ size, state, theme }), styles)}
       />
     );
   }

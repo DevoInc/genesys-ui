@@ -25,6 +25,7 @@ export const InternalPanelFooter: React.FC<PanelFooterProps> = ({
   hasBoxShadow = false,
   helpTooltip = 'Go to Docs to get help',
   helpUrl,
+  removeSpace,
   size = 'md',
   styles,
 }) => {
@@ -34,6 +35,7 @@ export const InternalPanelFooter: React.FC<PanelFooterProps> = ({
       hasBoxShadow={hasBoxShadow}
       hasBackground={hasBackground}
       bordered={bordered}
+      removeSpace={removeSpace}
       styles={styles}
       size={size}
     >

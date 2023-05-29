@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
+import { concat } from 'lodash';
 
 import { ContentSwitcherItemProps } from '../ContentSwitcherItem';
 import { Flex, FlexProps } from '../../../Flex';
@@ -36,7 +37,7 @@ export const ContentSwitcherContainer: React.FC<
       role="tablist"
       inline={inline || !wide}
       width={wide ? '100%' : width}
-      styles={styles || contentSwitcherContainerMixin({ size, theme })}
+      styles={concat(contentSwitcherContainerMixin({ size, theme }), styles)}
     >
       {children}
     </Flex>

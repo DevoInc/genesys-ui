@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
+import { concat } from 'lodash';
 
 import { ButtonActionState } from '../../../Button';
 
@@ -46,7 +47,7 @@ export const IconButtonStop = React.forwardRef<
       ref={ref}
       size={size}
       state={state}
-      styles={styles || iconButtonStopMixin({ size, state, theme })}
+      styles={concat(iconButtonStopMixin({ size, state, theme }), styles)}
     />
   );
 });

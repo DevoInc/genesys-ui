@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import { Icon, IconProps } from '../../Icon';
+import { concat } from 'lodash';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TagIconProps extends IconProps {}
@@ -21,7 +22,7 @@ export const TagIcon: React.FC<TagIconProps> = ({
       {...restIconProps}
       colorScheme={colorScheme}
       size={square}
-      styles={styles || `margin-right: ${marginRight}`}
+      styles={concat(`margin-right: ${marginRight}`, styles)}
     />
   );
 };

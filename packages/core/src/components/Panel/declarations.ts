@@ -4,7 +4,11 @@ import { ButtonProps, IconButtonProps } from '../';
 import { GlobalSize } from '../../declarations';
 import { PickUnion } from '../../typeFunctions';
 
-export interface HeaderSettingsProps {
+export interface commonSettingsProps {
+  removeSpace?: boolean;
+}
+
+export interface HeaderSettingsProps extends commonSettingsProps {
   actions?: (
     | React.ReactElement<ButtonProps>
     | React.ReactElement<IconButtonProps>
@@ -14,7 +18,7 @@ export interface HeaderSettingsProps {
   hasBoxShadow?: boolean;
 }
 
-export interface FooterSettingsProps {
+export interface FooterSettingsProps extends commonSettingsProps {
   actions?: (
     | React.ReactElement<ButtonProps>
     | React.ReactElement<IconButtonProps>
@@ -29,8 +33,7 @@ export interface FooterSettingsProps {
   hasBoxShadow?: boolean;
 }
 
-export interface BodySettingsProps {
-  removeSpace?: boolean;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface BodySettingsProps extends commonSettingsProps {}
 
 export type PanelSize = PickUnion<GlobalSize, 'xs' | 'sm' | 'md'>;

@@ -19,6 +19,7 @@ export interface PanelHeaderContainerProps
   /** Apply shadow styles */
   hasBoxShadow?: boolean;
   hasSubtitle?: boolean;
+  removeSpace?: boolean;
   size?: PanelHeaderSize;
   children: React.ReactNode;
 }
@@ -29,6 +30,7 @@ export const PanelHeaderContainer: React.FC<PanelHeaderContainerProps> = ({
   children,
   hasBoxShadow,
   hasSubtitle,
+  removeSpace,
   size = 'md',
   styles,
   ...restFlexProps
@@ -37,6 +39,7 @@ export const PanelHeaderContainer: React.FC<PanelHeaderContainerProps> = ({
   const baseStyles = panelHeaderContainerMixin({
     bordered,
     hasBoxShadow,
+    removeSpace,
     size,
     theme,
   });

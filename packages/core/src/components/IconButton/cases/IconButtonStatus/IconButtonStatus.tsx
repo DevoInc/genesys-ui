@@ -11,6 +11,7 @@ import {
 import { iconButtonStatusMixin } from './helpers';
 
 import { IconButton, IconButtonProps } from '../../';
+import { concat } from 'lodash';
 
 export interface IconButtonStatusProps
   extends Omit<
@@ -62,7 +63,10 @@ export const IconButtonStatus = React.forwardRef<
         ref={ref}
         size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
         state={state}
-        styles={styles || iconButtonStatusMixin({ state, colorScheme, theme })}
+        styles={concat(
+          iconButtonStatusMixin({ state, colorScheme, theme }),
+          styles
+        )}
       />
     );
   }

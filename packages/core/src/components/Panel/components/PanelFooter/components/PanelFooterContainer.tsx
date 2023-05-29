@@ -24,6 +24,7 @@ export const PanelFooterContainer: React.FC<PanelFooterContainerProps> = ({
   bordered,
   children,
   hasBackground,
+  removeSpace,
   size = 'md',
   styles,
 }) => {
@@ -34,6 +35,7 @@ export const PanelFooterContainer: React.FC<PanelFooterContainerProps> = ({
       hasBackground={hasBackground}
       bordered={bordered}
       css={styles}
+      removeSpace={removeSpace}
       size={size}
     >
       {children}

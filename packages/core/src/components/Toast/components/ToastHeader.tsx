@@ -53,6 +53,7 @@ export const ToastHeader: React.FC<ToastHeaderProps> = ({
 }) => (
   <HFlex
     alignItems="stretch"
+    flex="1 1 auto"
     padding="cmp-sm cmp-xs cmp-sm cmp-md"
     spacing="cmp-sm"
   >

@@ -1,6 +1,7 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './Toast.stories';
+import * as CasesStories from './Toast.cases.stories';
 
 <Meta of={Stories} />
 
@@ -16,21 +17,36 @@ It is used to display non-intrusive, temporary messages to the user, such as not
 
 It is important to note that the ToastContainer component must
 be rendered only once in the application tree to properly display the toasts.
-If it is unclear where to place it,
-rendering it at the application root is recommended.
+If it is unclear where to place it, rendering it at the application root is recommended.
 For more information on installation and usage, refer to the [react-toastify documentation](https://fkhadra.github.io/react-toastify/installation#the-gist).
 
 ## How to import
 
-<Source
-  code={`
-import { Toast } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Toast } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
 <Canvas of={Stories.Base} />
+
+## Scrolled content
+
+The Toast panel has a `maxHeight` prop value of '30rem' by default, so if the content is longer
+than the available space, we get scrolled content.
+
+<Canvas of={CasesStories.WithScroll} />
+
+## With actions
+
+You can add a `applyAction` and `cancelAction` prop to get actions at the footer of the
+Toast panel.
+
+<Canvas of={CasesStories.WithActions} />
+
+## Collapsable content
+
+With the `collapsable` prop you can get the content collapsable, to get a more compact notification.
+
+<Canvas of={CasesStories.CollapsableContent} />
 
 ## Props
 

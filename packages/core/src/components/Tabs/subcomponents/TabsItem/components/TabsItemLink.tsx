@@ -5,6 +5,7 @@ import { linkStateMap } from '../../../utils';
 import { tabsLinkMixin, TabsLinkMixinProps } from './helpers';
 
 import { Link, LinkProps } from '../../../../Link';
+import { concat } from 'lodash';
 
 export interface TabsItemLinkProps
   extends Omit<LinkProps, 'size' | 'state'>,
@@ -24,7 +25,7 @@ export const TabsItemLink: React.FC<TabsItemLinkProps> = ({
     <Link
       {...restLinkProps}
       state={linkStateMap[state]}
-      styles={styles || tabsLinkMixin({ theme, size, state })}
+      styles={concat(tabsLinkMixin({ theme, size, state }), styles)}
     >
       {children}
     </Link>

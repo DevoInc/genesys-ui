@@ -1,28 +1,19 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import {
-  // VFlex,
-  Flex,
-  Button,
-  // Typography,
-  ToastContainer,
-  toast,
-  // ToastProps,
-} from '../';
+import { Button, ToastContainer, toast } from '../';
 import { lorem } from '../../../stories/utils/fillerTexts';
-import { ToastPanel } from './components/ToastPanel';
+import { ToastPanel } from './components';
 
 const meta: Meta<typeof toast> = {
   title: 'Components/Core/Feedback/Toast',
   component: ToastPanel,
   args: {
-    alignItems: 'flex-start',
-    childrenFitFullWidth: true,
-    childrenFitFullHeight: false,
-    inline: false,
-    justifyContent: 'flex-start',
-    spacing: 'cmp-md',
+    id: 'default-toast',
+    content: lorem,
+    subtitle: 'Toasts notifications are useful',
+    title: 'Notification title',
+    status: 'info',
   },
   parameters: {
     storyWrapper: {
@@ -35,39 +26,15 @@ export default meta;
 type Story = StoryObj<typeof toast>;
 
 export const Base: Story = {
-  args: {
-    accent: false,
-    collapsable: false,
-    id: 'default-toast',
-    maxHeight: undefined,
-    content: lorem,
-    subtitle: 'Toasts notifications are useful',
-    title: 'Notification title',
-    status: 'info',
-  },
   render: (args) =>
     ((args) => (
-      <Flex.Item key={'default-toast--info'} id={'default-toast--info'}>
+      <>
         <Button
+          aria-controls="base-toast"
           colorScheme={'info'}
           onClick={() => {
             toast({
-              status: 'info',
-              id: 'default-toast--info',
-              accent: false,
-              actionApply: {
-                label: 'Apply',
-                action: () => alert('Action applied'),
-              },
-              actionReject: {
-                label: 'Cancel',
-                action: () => alert('Action rejected'),
-              },
-              collapsable: false,
-              maxHeight: undefined,
-              content: lorem,
-              subtitle: 'Toasts notifications are useful',
-              title: 'Notification title',
+              id: 'base-toast',
               ...args,
             });
           }}
@@ -75,6 +42,6 @@ export const Base: Story = {
           Open notification
         </Button>
         <ToastContainer />
-      </Flex.Item>
+      </>
     ))(args),
 };

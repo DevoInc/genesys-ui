@@ -8,3 +8,5 @@ export const toastStatusToIconMap: { [key in ActiveStatus]: string } = {
   success: 'gi-ok_successful_check_filled',
   warning: 'gi-attention_error_alert_caution_filled',
 };
+
+export const TOAST_ELEVATION_LEVEL = 'popOut';

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
+import { concat } from 'lodash';
 
 import { StepperSize } from '../../declarations';
 
@@ -30,7 +31,7 @@ export const StepperContainer: React.FC<StepperContainerProps> = ({
       gap={containerTokens.space.gap}
       height={theme.cmp.stepper.container.size.height[size]}
       padding={`0 ${containerTokens.space.padding}`}
-      styles={styles || stepperContainerMixin({ size, theme })}
+      styles={concat(stepperContainerMixin({ size, theme }), styles)}
     >
       {children}
     </Flex>

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
+import { concat } from 'lodash';
 
 // constants
 import { CONTENT_SWITCHER_ITEM_SIZE_MAP } from '../../constants';
@@ -62,7 +63,7 @@ export const ContentSwitcherItem: React.FC<ContentSwitcherItemProps> = ({
       selectionScheme="single"
       size={CONTENT_SWITCHER_ITEM_SIZE_MAP[size]}
       state={selected ? 'selected' : state}
-      styles={styles || contentSwitcherItemMixin({ state, theme, wide })}
+      styles={concat(contentSwitcherItemMixin({ state, theme, wide }), styles)}
       tooltip={tooltip}
       wide={wide}
     >

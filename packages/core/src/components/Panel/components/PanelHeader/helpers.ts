@@ -26,11 +26,13 @@ export const panelHeaderAppendMixin = ({
 export const panelHeaderContainerMixin = ({
   bordered,
   hasBoxShadow,
+  removeSpace,
   size,
   theme,
 }: {
   bordered: PanelHeaderProps['bordered'];
   hasBoxShadow: PanelHeaderProps['hasBoxShadow'];
+  removeSpace: PanelHeaderProps['removeSpace'];
   size: PanelHeaderSize;
   theme: DefaultTheme;
 }) => {
@@ -38,7 +40,7 @@ export const panelHeaderContainerMixin = ({
   return css`
     box-shadow: ${hasBoxShadow && panelHeaderTokens.elevation.boxShadow};
     border-bottom: ${bordered && `1px solid ${panelHeaderTokens.color.border}`};
-    padding: ${theme.cmp.panel.header.space.padding[size]};
+    padding: ${removeSpace ? '0' : theme.cmp.panel.header.space.padding[size]};
 
     &:empty {
       display: none;

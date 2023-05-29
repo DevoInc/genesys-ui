@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import { Badge, BadgeProps } from '../../Badge';
+import { concat } from 'lodash';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TagBadgeProps extends BadgeProps {}
@@ -18,7 +19,7 @@ export const TagBadge: React.FC<TagBadgeProps> = ({
       {...restBadgeProps}
       colorScheme={colorScheme}
       size={size}
-      styles={styles || `margin-right: ${marginRight}`}
+      styles={concat(`margin-right: ${marginRight}`, styles)}
     />
   );
 };
