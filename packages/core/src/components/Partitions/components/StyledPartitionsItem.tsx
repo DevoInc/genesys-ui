@@ -1,19 +1,10 @@
 import styled, { css } from 'styled-components';
 
-// declarations
-import { BaseSize, GlobalSize } from '../../../declarations';
-
-// utils
-import { PickUnion } from '../../../typeFunctions';
-
-// styled
-import { StyledPartitionsWrapper } from './StyledPartitionsWrapper';
+import { BaseSize } from '../../../declarations';
 
 export interface StyledPartitionsItemProps {
-  /** If there is visual separators between the partition items. */
-  hasSeparators?: boolean;
   /** The size of the partition item. */
-  size: BaseSize | PickUnion<GlobalSize, 'xs'>;
+  size: BaseSize;
   /** The background color of the partition item. */
   $color?: string;
   /** The width in percentage [0-1]. The sum of all item widths must be one. */
@@ -28,21 +19,11 @@ export const StyledPartitionsItem = styled.li<StyledPartitionsItemProps>`
   height: 100%;
   cursor: help;
 
-  // separators
-  ${({ hasSeparators, size }) =>
-    hasSeparators &&
-    css`
-      --margin: ${size === 'lg' ? '.4rem' : size === 'sm' ? '.1rem' : '.2rem'};
-      & + & {
-        margin-left: var(--margin);
-      }
-    `};
-
   // hover on its parent
   ${({ title }) =>
     title &&
     css`
-      ${StyledPartitionsWrapper}:hover > & {
+      *:hover > & {
         opacity: 0.4;
       }
     `}

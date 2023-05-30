@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { StyledDecoratorBar } from '../../DecoratorBar/StyledDecoratorBar';
-import { GlobalStatus } from '../../../../src/declarations';
+import { GlobalStatus } from '../../../declarations';
 
 export interface StyledModalHeaderProps {
   /** Whether the header has a box shadow */
@@ -12,7 +11,6 @@ export interface StyledModalHeaderProps {
 
 export const StyledModalHeader = styled.header<StyledModalHeaderProps>`
   ${({ theme, hasBoxShadow, status }) => {
-    const modalTokens = theme.cmp.modal;
     const modalHeaderTokens = theme.cmp.modal.header;
     const aliasTokens = theme.alias;
 
@@ -34,10 +32,6 @@ export const StyledModalHeader = styled.header<StyledModalHeaderProps>`
       background-color: ${status && status !== 'base'
         ? theme.cmp.dialog.header.color.background[status]
         : 'inherit'};
-
-      ${StyledDecoratorBar} {
-        margin-right: ${modalTokens.headerDecoratorBar.space.marginRight};
-      }
     `;
   }}
 `;

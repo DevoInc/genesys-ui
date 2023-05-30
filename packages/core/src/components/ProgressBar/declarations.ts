@@ -1,4 +1,4 @@
-import { BodyColorScheme, UIColorScheme } from '../../declarations';
+import { UIColorScheme } from '../../declarations';
 import { PickUnion } from '../../typeFunctions';
 
 export type ProgressBarStatus =
@@ -14,26 +14,21 @@ export type ProgressBarSize = 'sm' | 'md';
 
 export type ProgressBarType = 'standard' | 'circular';
 
-export const DIRECTION = {
-  HORIZONTAL: 'horizontal',
-  VERTICAL: 'vertical',
-} as const;
-
-export const ICON_CIRCULAR_SIZE = {
-  sm: 'lg',
-  md: 'xl',
-} as const;
-
-export const STATUS_MAP: {
-  [key: string]: UIColorScheme | BodyColorScheme;
-} = {
-  progressing: 'base',
-  complete: 'success',
-  error: 'error',
-  warning: 'warning',
-} as const;
-
-export const SQUARE = {
-  sm: 80,
-  md: 100,
-} as const;
+export interface BaseProgressBarProps {
+  /** Color scheme of the progressbar */
+  colorScheme: ProgressBarColorScheme;
+  /** This property defines the status of the progress */
+  status: ProgressBarStatus;
+  /** The size of the progress bar */
+  size: ProgressBarSize;
+  /** If the percent quantity is indeterminate */
+  indeterminate?: boolean;
+  /** Percent loaded. The value is a number between 0 and 100 */
+  percent: number;
+  /** If the default and custom info are shown or not */
+  showInfo?: boolean;
+  /** The type of the progress bar: standard or circular */
+  type: ProgressBarType;
+  /** If the progress bar has an animated stripped background */
+  animated?: boolean;
+}

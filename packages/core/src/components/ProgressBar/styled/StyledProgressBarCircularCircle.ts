@@ -1,13 +1,12 @@
-import { GlobalAriaProps, GlobalAttrProps } from '../../../declarations';
 import styled, { css } from 'styled-components';
 
-import { getCxy, getStroke, getRadio, getTrackBgColor } from '../utils';
-import { BaseStyledProgressBarProps } from './declarations';
+import { BaseProgressBarProps } from '../declarations';
 
+import { getCxy, getStroke, getRadio, getTrackBgColor } from '../utils';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledProgressBarCircularProps
-  extends GlobalAttrProps,
-    GlobalAriaProps,
-    Pick<BaseStyledProgressBarProps, 'colorScheme' | 'progress' | 'size'> {}
+  extends Pick<BaseProgressBarProps, 'colorScheme' | 'status' | 'size'> {}
 
 export const StyledProgressBarCircular = styled.circle.attrs(
   ({ size }: StyledProgressBarCircularProps) => ({
@@ -19,13 +18,13 @@ export const StyledProgressBarCircular = styled.circle.attrs(
     fill: 'none',
   })
 )<StyledProgressBarCircularProps>`
-  ${({ colorScheme, progress, theme }) => {
+  ${({ colorScheme, status, theme }) => {
     const progressBarTokens = theme.cmp.progressBar;
 
     return css`
       stroke: ${getTrackBgColor({
         colorScheme,
-        progress,
+        status,
         tokens: progressBarTokens,
       })};
     `;

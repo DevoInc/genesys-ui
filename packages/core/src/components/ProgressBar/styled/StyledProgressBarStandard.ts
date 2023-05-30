@@ -1,7 +1,8 @@
-import { GlobalAriaProps, GlobalAttrProps } from '../../../declarations';
 import styled, { css, keyframes } from 'styled-components';
+
+import { BaseProgressBarProps } from '../declarations';
+
 import { getProgressBgColor, getTrackBgColor } from '../utils';
-import { BaseStyledProgressBarProps } from './declarations';
 
 const movingBar = keyframes`
   0% {
@@ -44,65 +45,58 @@ const movingStripes = (height) => keyframes`
   }
 `;
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledProgressBarStandardProps
-  extends GlobalAttrProps,
-    GlobalAriaProps,
-    Pick<
-      BaseStyledProgressBarProps,
-      | 'animated'
-      | 'colorScheme'
-      | 'indeterminate'
-      | 'percent'
-      | 'progress'
-      | 'showInfo'
-      | 'size'
-    > {}
+  extends Pick<
+    BaseProgressBarProps,
+    | 'animated'
+    | 'colorScheme'
+    | 'indeterminate'
+    | 'percent'
+    | 'status'
+    | 'showInfo'
+    | 'size'
+  > {}
 
-export const StyledProgressBarStandard = styled.div.attrs(
-  ({ percent, showInfo }: StyledProgressBarStandardProps) => ({
-    'data-tip': !showInfo ? percent + '%' : null,
-  })
-)<StyledProgressBarStandardProps>`
+export const StyledProgressBarStandard = styled.div<StyledProgressBarStandardProps>`
   ${({
     animated,
     colorScheme,
     indeterminate,
     percent,
-    progress,
     size,
+    status,
     theme,
   }) => {
     const progressBarTokens = theme.cmp.progressBar;
-
+    const height = progressBarTokens.size.height[size];
+    const progressBgColor = getProgressBgColor({
+      status,
+      tokens: progressBarTokens,
+    });
+    const percentBarWidth =
+      indeterminate && status === 'progressing'
+        ? '30%'
+        : indeterminate
+        ? '100%'
+        : percent
+        ? `${percent}%`
+        : null;
+    const percentMinorBarWidth =
+      indeterminate && status === 'progressing'
+        ? '15%'
+        : indeterminate
+        ? '0'
+        : null;
     return css`
-      --height: ${progressBarTokens.size.height[size]};
-      --progress-bg-color: ${getProgressBgColor({
-        progress,
-        tokens: progressBarTokens,
-      })};
-      ${() => {
-        if (indeterminate && progress === 'progressing') {
-          return '--width-percent-bar: 30%; --width-percent-minor-bar: 15%';
-        }
-        if (indeterminate) {
-          return '--width-percent-bar: 100%; --width-percent-minor-bar: 0';
-        } else if (percent) {
-          return `--width-percent-bar: ${percent}%`;
-        } else {
-          return '0';
-        }
-      }};
-
-      // percent bar width depends on props percent and indeterminate ----------
-
       flex: 1 1 auto;
       background-color: ${getTrackBgColor({
         colorScheme,
-        progress,
+        status,
         tokens: progressBarTokens,
       })};
       position: relative;
-      height: var(--height);
+      height: ${height};
       border-radius: ${progressBarTokens.shape.borderRadius};
       overflow: hidden;
 
@@ -114,12 +108,12 @@ export const StyledProgressBarStandard = styled.div.attrs(
         bottom: 0;
         height: 100%;
         border-radius: ${progressBarTokens.progress.shape.borderRadius};
-        background-color: var(--progress-bg-color);
+        background-color: ${progressBgColor};
         transition: all ease 0.3s;
-        width: var(--width-percent-bar);
+        width: ${percentBarWidth};
         ${animated &&
         css`
-          animation: ${movingStripes('var(--height)')} 0.5s linear infinite;
+          animation: ${movingStripes(height)} 0.5s linear infinite;
           transform: translate3d(0, 0, 0);
           background-image: linear-gradient(
             45deg,
@@ -131,10 +125,10 @@ export const StyledProgressBarStandard = styled.div.attrs(
             transparent 75%,
             transparent
           );
-          background-size: var(--height) var(--height);
+          background-size: ${`${height} ${height}`};
         `};
         ${indeterminate &&
-        (!progress || progress === 'progressing') &&
+        (!status || status === 'progressing') &&
         css`
           animation: ${movingBar} 1.5s infinite ease-out;
           transform: translate3d(0, 0, 0);
@@ -142,7 +136,7 @@ export const StyledProgressBarStandard = styled.div.attrs(
       }
 
       ${indeterminate &&
-      (!progress || progress === 'progressing') &&
+      (!status || status === 'progressing') &&
       css`
         &::before,
         &::after {
@@ -153,7 +147,7 @@ export const StyledProgressBarStandard = styled.div.attrs(
           left: -100%;
           height: 100%;
           border-radius: ${progressBarTokens.shape.borderRadius};
-          background-color: var(--progress-bg-color);
+          background-color: ${progressBgColor};
           transition: all ease 0.3s;
         }
 
@@ -163,7 +157,7 @@ export const StyledProgressBarStandard = styled.div.attrs(
         }
 
         &::before {
-          width: var(--width-percent-minor-bar);
+          width: ${percentMinorBarWidth};
           animation: ${movingMinorBar} 1.5s infinite ease-out 0.12s;
           transform: translate3d(0, 0, 0);
         }

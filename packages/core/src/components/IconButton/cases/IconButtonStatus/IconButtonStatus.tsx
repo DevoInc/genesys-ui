@@ -17,7 +17,6 @@ export interface IconButtonStatusProps
   extends Omit<
     IconButtonProps,
     | 'aria-selected'
-    | 'as'
     | 'autoFocus'
     | 'children'
     | 'download'

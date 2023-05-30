@@ -46,13 +46,17 @@ export const ModalIcon: React.FC<ModalIconProps> = ({ status }) => {
       );
     } else {
       return (
-        <DecoratorBar size={tokens.cmp.modal.headerDecoratorBar.size.height} />
+        <DecoratorBar
+          size={tokens.cmp.modal.headerDecoratorBar.size.height}
+          styles={`margin-right: ${tokens.cmp.modal.headerDecoratorBar.space.marginRight}`}
+        />
       );
     }
   }, [
     status,
     tokens.cmp.dialog.headerIcon,
     tokens.cmp.modal.headerDecoratorBar.size.height,
+    tokens.cmp.modal.headerDecoratorBar.space.marginRight,
     tokens.cmp.modal.headerIcon,
   ]);
 

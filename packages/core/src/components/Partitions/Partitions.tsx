@@ -1,23 +1,14 @@
 import * as React from 'react';
 
-// styled
-import {
-  StyledPartitionsWrapper,
-  StyledPartitionsItem,
-  StyledPartitionsItemProps,
-  StyledPartitionsWrapperProps,
-} from './styled';
+import { PartitionsContainerProps } from './components';
+import { PartitionsContainer, PartitionsItem } from './components';
 
-export interface PartitionsProps
-  extends StyledPartitionsWrapperProps,
-    Pick<StyledPartitionsItemProps, 'hasSeparators'> {
+export interface PartitionsProps extends PartitionsContainerProps {
   /** Data for the partitions: array of objects with value (0-1) and color. */
   data: { value: number; color: string; tooltip: string }[];
-  /** If there are separators between the partition items */
-  hasSeparators?: boolean;
 }
 
-export const Partitions: React.FC<PartitionsProps> = ({
+const InternalPartitions: React.FC<PartitionsProps> = ({
   size = 'md',
   hasSeparators,
   data = [
@@ -29,20 +20,31 @@ export const Partitions: React.FC<PartitionsProps> = ({
   ...nativeProps
 }) => {
   return (
-    <StyledPartitionsWrapper {...nativeProps} size={size}>
+    <PartitionsContainer
+      {...nativeProps}
+      hasSeparators={hasSeparators}
+      size={size}
+    >
       {data &&
         data.length > 0 &&
         data.map((part, idx) => (
-          <StyledPartitionsItem
+          <PartitionsItem
             aria-label={part.tooltip || part.value}
-            hasSeparators={hasSeparators}
             key={idx}
             size={size}
-            title={part.tooltip}
-            $color={part.color}
-            $width={part.value}
+            tooltip={part.tooltip}
+            color={part.color}
+            width={part.value}
           />
         ))}
-    </StyledPartitionsWrapper>
+    </PartitionsContainer>
   );
 };
+
+export const Partitions = InternalPartitions as typeof InternalPartitions & {
+  Container: typeof PartitionsContainer;
+  Item: typeof PartitionsItem;
+};
+
+Partitions.Container = PartitionsContainer;
+Partitions.Item = PartitionsItem;

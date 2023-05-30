@@ -1,13 +1,39 @@
 import { lighten } from 'polished';
 import { DefaultTheme } from 'styled-components';
 
+import { MAX_PERCENT, STATUS_ICON_MAP } from './constants';
+
 import {
   ProgressBarColorScheme,
   ProgressBarSize,
   ProgressBarStatus,
-  SQUARE,
-  STATUS_MAP,
 } from './declarations';
+
+import { SQUARE, STATUS_COLOR_SCHEME_MAP } from './constants';
+
+/**
+ * Get the x & y coordinates for svg circle.
+ * */
+export const getStatus = ({ percent, status }) =>
+  percent >= MAX_PERCENT ? 'completed' : status;
+
+export const getColorScheme = ({ percent, status }) =>
+  STATUS_COLOR_SCHEME_MAP[percent >= MAX_PERCENT ? 'complete' : status];
+
+export const getPercent = ({ percent, status }) =>
+  getStatus({ percent, status }) === 'success' || percent > 100 ? 100 : percent;
+
+export const hasCustomInfo = (customInfo) =>
+  customInfo && (customInfo.startInfo || customInfo.endInfo);
+
+export const getIcon = ({ icon, percent, status }) => {
+  if (icon) return icon;
+  if (getStatus({ percent, status }) === 'complete')
+    return STATUS_ICON_MAP['complete'];
+  if (status === 'warning') return STATUS_ICON_MAP['warning'];
+  if (status === 'error') return STATUS_ICON_MAP['error'];
+  return null;
+};
 
 /**
  * Get the x & y coordinates for svg circle.
@@ -36,24 +62,24 @@ export const getRadiant = (size: ProgressBarSize): number =>
  * */
 export const getColor = ({
   colorScheme,
-  progress,
+  status,
   theme,
 }: {
   colorScheme?: ProgressBarColorScheme;
-  progress?: ProgressBarStatus;
+  status?: ProgressBarStatus;
   theme: DefaultTheme;
 }): string => {
   const colorTextAliasTokens = theme.alias.color.text;
 
-  if (progress === 'warning') {
+  if (status === 'warning') {
     return colorScheme === 'light'
       ? lighten(0.1, colorTextAliasTokens.feedback.warning.base)
       : colorTextAliasTokens.feedback.warning.base;
-  } else if (progress === 'error') {
+  } else if (status === 'error') {
     return colorScheme === 'light'
       ? lighten(0.15, colorTextAliasTokens.feedback.error.base)
       : colorTextAliasTokens.feedback.error.base;
-  } else if (progress === 'complete') {
+  } else if (status === 'complete') {
     return colorScheme === 'light'
       ? lighten(0.1, colorTextAliasTokens.feedback.success.base)
       : colorTextAliasTokens.feedback.success.base;
@@ -68,14 +94,14 @@ export const getColor = ({
  * Get the background color for ProgressBar track.
  * */
 export const getProgressBgColor = ({
-  progress,
+  status,
   tokens,
 }: {
-  progress: ProgressBarStatus;
+  status: ProgressBarStatus;
   tokens: DefaultTheme['cmp']['progressBar'];
 }): string => {
-  const status = STATUS_MAP[progress];
-  return tokens?.progress?.color?.background[status];
+  const statusEval = STATUS_COLOR_SCHEME_MAP[status];
+  return tokens?.progress?.color?.background[statusEval];
 };
 
 /**
@@ -83,16 +109,16 @@ export const getProgressBgColor = ({
  * */
 export const getTrackBgColor = ({
   colorScheme,
-  progress,
+  status,
   tokens,
 }: {
   colorScheme: ProgressBarColorScheme;
-  progress: ProgressBarStatus;
+  status: ProgressBarStatus;
   tokens: DefaultTheme['cmp']['progressBar'];
 }): string => {
-  const status = STATUS_MAP[progress];
+  const statusEval = STATUS_COLOR_SCHEME_MAP[status];
 
   return colorScheme === 'light'
     ? 'rgba(255,255,255,0.08)' // this color because gets the same contrast (4.09) with dark theme overlay than p.theme.feedbackSecondary with light theme one
-    : tokens?.track?.color?.background[status];
+    : tokens?.track?.color?.background[statusEval];
 };

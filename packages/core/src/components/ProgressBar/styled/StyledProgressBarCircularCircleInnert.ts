@@ -1,5 +1,6 @@
-import { GlobalAriaProps, GlobalAttrProps } from '../../../declarations';
 import styled, { css, keyframes } from 'styled-components';
+
+import { BaseProgressBarProps } from '../declarations';
 
 import {
   getProgressBgColor,
@@ -8,7 +9,6 @@ import {
   getRadio,
   getRadiant,
 } from '../utils';
-import { BaseStyledProgressBarProps } from './declarations';
 
 const sizeStroke = keyframes`
   0% {
@@ -25,13 +25,12 @@ const sizeStroke = keyframes`
   }
 `;
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledProgressBarCircularCircleInnerProps
-  extends GlobalAttrProps,
-    GlobalAriaProps,
-    Pick<
-      BaseStyledProgressBarProps,
-      'indeterminate' | 'percent' | 'progress' | 'size'
-    > {}
+  extends Pick<
+    BaseProgressBarProps,
+    'indeterminate' | 'percent' | 'status' | 'size'
+  > {}
 
 export const StyledProgressBarCircularCircleInner = styled.circle.attrs(
   ({ size }: StyledProgressBarCircularCircleInnerProps) => ({
@@ -44,32 +43,35 @@ export const StyledProgressBarCircularCircleInner = styled.circle.attrs(
     fill: 'none',
   })
 )<StyledProgressBarCircularCircleInnerProps>`
-  ${({ indeterminate, progress, percent, rad, theme }) => {
+  ${({ indeterminate, status, percent, rad, theme }) => {
     const progressBarTokens = theme.cmp.progressBar;
 
     return css`
       transition: stroke-dashoffset ease 0.3s;
       stroke: ${getProgressBgColor({
-        progress: progress,
+        status,
         tokens: progressBarTokens,
       })};
+      stroke-dasharray: ${rad};
+      stroke-linecap: round;
+
       ${!indeterminate &&
       css`
         stroke-dashoffset: ${rad * ((100 - percent) / 100)};
       `};
+
       ${indeterminate &&
-      (!progress || progress === 'progressing') &&
+      (!status || status === 'progressing') &&
       css`
         animation: ${sizeStroke} ease 1s infinite;
         transform: translate3d(0, 0, 0);
       `};
+
       ${indeterminate &&
-      progress !== 'progressing' &&
+      status !== 'progressing' &&
       css`
         stroke-dashoffset: 0;
       `};
-      stroke-dasharray: ${rad};
-      stroke-linecap: round;
     `;
   }};
 `;

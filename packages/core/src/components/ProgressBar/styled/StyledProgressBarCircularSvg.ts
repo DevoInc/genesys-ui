@@ -1,8 +1,7 @@
-import { GlobalAriaProps, GlobalAttrProps } from '../../../declarations';
 import styled, { css, keyframes } from 'styled-components';
 
-import { SQUARE } from '../declarations';
-import { BaseStyledProgressBarProps } from './declarations';
+import { SQUARE } from '../constants';
+import { BaseProgressBarProps } from '../declarations';
 
 const rotationInfinite = keyframes`
   from {
@@ -13,13 +12,12 @@ const rotationInfinite = keyframes`
   }
 `;
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledProgressBarCircularSVGProps
-  extends GlobalAttrProps,
-    GlobalAriaProps,
-    Pick<
-      BaseStyledProgressBarProps,
-      'indeterminate' | 'percent' | 'progress' | 'size' | 'showInfo'
-    > {}
+  extends Pick<
+    BaseProgressBarProps,
+    'indeterminate' | 'percent' | 'status' | 'size' | 'showInfo'
+  > {}
 
 export const StyledProgressBarCircularSVG = styled.svg.attrs(
   ({ percent, showInfo, size }: StyledProgressBarCircularSVGProps) => ({
@@ -29,14 +27,14 @@ export const StyledProgressBarCircularSVG = styled.svg.attrs(
     'data-tip': !showInfo ? percent + '%' : null,
   })
 )<StyledProgressBarCircularSVGProps>`
-  ${({ indeterminate, progress }) => css`
+  ${({ indeterminate, status }) => css`
     ${!indeterminate &&
     css`
       transform: rotate(-90deg);
     `};
 
     ${indeterminate &&
-    (!progress || progress === 'progressing') &&
+    (!status || status === 'progressing') &&
     css`
       animation: ${rotationInfinite} linear 0.6s infinite;
     `};

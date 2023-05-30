@@ -1,51 +1,32 @@
 import * as React from 'react';
 
-import { Flex, Icon } from '../';
-import { StyledIconProps } from '../Icon/StyledIcon';
-import {
-  BaseStyledProgressBarProps,
-  StyledProgressBarCircular,
-  StyledProgressBarCircularCircleInner,
-  StyledProgressBarCircularSVG,
-  StyledProgressBarContainer,
-  StyledProgressBarCustomInfoText,
-  StyledProgressBarInfo,
-  StyledProgressBarPercent,
-  StyledProgressBarStandard,
-  StyledProgressBarWrapper,
-} from './styled';
-import { ProgressBarType } from './declarations';
+import { IconProps } from '../';
+import { BaseProgressBarProps, ProgressBarType } from './declarations';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
   StyledPolymorphicProps,
 } from '../../declarations';
 
-const MAX_PERCENT = 100;
-const COMPLETE_PROGRESS = 'complete';
+import { getIcon, getPercent, getStatus, hasCustomInfo } from './utils';
 
-const getProgress = ({ iconComplete, percent, progress }) =>
-  iconComplete && percent >= MAX_PERCENT ? COMPLETE_PROGRESS : progress;
-
-const getPercent = ({ iconComplete, percent, progress }) =>
-  getProgress({ iconComplete, percent, progress }) === COMPLETE_PROGRESS
-    ? MAX_PERCENT
-    : percent > MAX_PERCENT
-    ? MAX_PERCENT
-    : percent;
-
-const hasCustomInfo = (customInfo) =>
-  customInfo && (customInfo.startInfo || customInfo.endInfo);
+import {
+  ProgressBarCircularBar,
+  ProgressBarContainer,
+  ProgressBarCustomInfo,
+  ProgressBarInfo,
+  ProgressBarInnerContainer,
+  ProgressBarStandardBar,
+} from './components';
 
 export interface ProgressBarProps
   extends Omit<GlobalAttrProps, 'role'>,
     GlobalAriaProps,
     StyledPolymorphicProps,
     Pick<
-      Partial<BaseStyledProgressBarProps>,
-      | 'wide'
+      Partial<BaseProgressBarProps>,
       | 'colorScheme'
-      | 'progress'
+      | 'status'
       | 'size'
       | 'indeterminate'
       | 'percent'
@@ -57,136 +38,91 @@ export interface ProgressBarProps
     startInfo: string;
     endInfo: string;
   };
-  /** Icon for progress status 'complete' */
-  iconComplete?: StyledIconProps['iconId'];
-  /** Icon for progress status 'error' */
-  iconError?: StyledIconProps['iconId'];
-  /** Icon for progress status 'progressing' */
-  iconProgressing?: StyledIconProps['iconId'];
-  /** Icon for progress status 'warning' */
-  iconWarning?: StyledIconProps['iconId'];
+  /** Custom icon for progress info */
+  icon?: IconProps['iconId'];
   /** The type of the progress bar: standard or circular */
   type?: ProgressBarType;
 }
 
-export const ProgressBar: React.FC<ProgressBarProps> = ({
+const InternalProgressBar: React.FC<ProgressBarProps> = ({
   animated,
   colorScheme = 'dark',
   customInfo,
-  iconComplete = 'check_thick',
-  iconError = 'gi-error_warning_danger_stop',
-  iconProgressing,
-  iconWarning = 'gi-error_warning_alert_attention',
+  icon,
   indeterminate,
   percent,
-  progress = 'progressing',
+  status = 'progressing',
   showInfo,
   size = 'md',
-  tooltip,
   type = 'standard',
-  wide = true,
   ...nativeProps
 }) => {
-  const icon =
-    (progress === 'progressing' || !progress) && iconProgressing
-      ? iconProgressing
-      : getProgress({ iconComplete, percent, progress }) ===
-          COMPLETE_PROGRESS && iconComplete
-      ? iconComplete
-      : progress === 'warning' && iconWarning
-      ? iconWarning
-      : progress === 'error' && iconError
-      ? iconError
-      : null;
   return (
-    <StyledProgressBarContainer {...nativeProps} title={tooltip} wide={wide}>
-      <StyledProgressBarWrapper typeProp={type}>
+    <ProgressBarContainer {...nativeProps} size={size}>
+      <ProgressBarInnerContainer type={type}>
         {(type === 'standard' || !type) && (
-          <StyledProgressBarStandard
+          <ProgressBarStandardBar
             role="progressbar"
             aria-valuenow={
-              indeterminate
-                ? null
-                : getPercent({ iconComplete, percent, progress })
+              indeterminate ? null : getPercent({ percent, status })
             }
             animated={animated}
             colorScheme={colorScheme}
             indeterminate={indeterminate}
-            percent={getPercent({ iconComplete, percent, progress })}
-            progress={getProgress({ iconComplete, percent, progress })}
+            percent={getPercent({ percent, status })}
+            status={getStatus({ percent, status })}
             showInfo={showInfo}
             size={size}
           />
         )}
         {type === 'circular' && (
-          <StyledProgressBarCircularSVG
-            role="progressbar"
+          <ProgressBarCircularBar
             aria-valuenow={
-              indeterminate
-                ? null
-                : getPercent({ iconComplete, percent, progress })
+              indeterminate ? null : getPercent({ percent, status })
             }
+            role="progressbar"
+            colorScheme={colorScheme}
             indeterminate={indeterminate}
-            percent={getPercent({ iconComplete, percent, progress })}
-            progress={getProgress({ iconComplete, percent, progress })}
+            percent={getPercent({ percent, status })}
+            status={getStatus({ percent, status })}
             showInfo={showInfo}
             size={size}
-          >
-            <StyledProgressBarCircular
-              colorScheme={colorScheme}
-              progress={progress}
-              size={size}
-            />
-            <StyledProgressBarCircularCircleInner
-              indeterminate={indeterminate}
-              percent={getPercent({ iconComplete, percent, progress })}
-              progress={getProgress({ iconComplete, percent, progress })}
-              size={size}
-            />
-          </StyledProgressBarCircularSVG>
+          />
         )}
-        {showInfo && !hasCustomInfo(customInfo) && (
-          <StyledProgressBarInfo
-            // percent={getPercent({ iconComplete, percent, progress })}
-            colorScheme={colorScheme}
-            progress={getProgress({ iconComplete, percent, progress })}
+        {showInfo && (
+          <ProgressBarInfo
+            icon={getIcon({ icon, percent, status })}
+            percent={percent}
+            status={status}
             size={size}
-            typeProp={type}
-          >
-            {icon && <Icon iconId={icon} />}
-            {!indeterminate && (
-              <StyledProgressBarPercent
-                progress={getProgress({ iconComplete, percent, progress })}
-                size={size}
-                typeProp={type}
-              >
-                {getPercent({ iconComplete, percent, progress })}%
-              </StyledProgressBarPercent>
-            )}
-          </StyledProgressBarInfo>
+            type={type}
+          />
         )}
-      </StyledProgressBarWrapper>
+      </ProgressBarInnerContainer>
       {showInfo && hasCustomInfo(customInfo) && (
-        <Flex
-          justifyContent={!customInfo?.startInfo ? 'flex-end' : 'space-between'}
-          marginTop={size === 'sm' ? 'cmp-xs' : 'cmp-sm'}
-        >
-          {customInfo?.startInfo && (
-            <Flex.Item>
-              <StyledProgressBarCustomInfoText size={size} progress={progress}>
-                {customInfo.startInfo}
-              </StyledProgressBarCustomInfoText>
-            </Flex.Item>
-          )}
-          {customInfo?.endInfo && (
-            <Flex.Item>
-              <StyledProgressBarCustomInfoText size={size} progress={progress}>
-                {customInfo.endInfo}
-              </StyledProgressBarCustomInfoText>
-            </Flex.Item>
-          )}
-        </Flex>
+        <ProgressBarCustomInfo
+          endInfo={customInfo.endInfo}
+          status={status}
+          size={size}
+          startInfo={customInfo.startInfo}
+        />
       )}
-    </StyledProgressBarContainer>
+    </ProgressBarContainer>
   );
 };
+
+export const ProgressBar = InternalProgressBar as typeof InternalProgressBar & {
+  Container: typeof ProgressBarContainer;
+  CustomInfo: typeof ProgressBarCustomInfo;
+  Info: typeof ProgressBarInfo;
+  InnerContainer: typeof ProgressBarInnerContainer;
+  StandardBar: typeof ProgressBarStandardBar;
+  CircularBar: typeof ProgressBarCircularBar;
+};
+
+ProgressBar.Container = ProgressBarContainer;
+ProgressBar.CustomInfo = ProgressBarCustomInfo;
+ProgressBar.Info = ProgressBarInfo;
+ProgressBar.InnerContainer = ProgressBarInnerContainer;
+ProgressBar.StandardBar = ProgressBarStandardBar;
+ProgressBar.CircularBar = ProgressBarCircularBar;
