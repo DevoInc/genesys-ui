@@ -1,6 +1,7 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './FieldsCombiner.stories';
+import * as CasesStories from './FieldsCombiner.cases.stories';
 
 <Meta of={Stories} />
 
@@ -20,6 +21,20 @@ import { FieldsCombiner } from '@devoinc/genesys-ui-form';
 ## Basic usage
 
 <Canvas of={Stories.Base} />
+
+## Cases
+
+### Input and Button
+
+<Canvas of={CasesStories.InputAndButton} />
+
+### Input and IconButton
+
+<Canvas of={CasesStories.InputAndIconButton} />
+
+### Select and Input
+
+<Canvas of={CasesStories.SelectAndInput} />
 
 ## Props
 

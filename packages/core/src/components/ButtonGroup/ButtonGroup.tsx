@@ -26,6 +26,7 @@ export interface ButtonGroupProps
 }
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
+  as,
   children,
   hidden = false,
   itemsGap = 'md',
@@ -40,7 +41,6 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
     hidden={hidden}
     itemsGap={itemsGap}
     role={role}
-    size={size}
     title={tooltip}
     visibilityTrigger={visibilityTrigger}
   >

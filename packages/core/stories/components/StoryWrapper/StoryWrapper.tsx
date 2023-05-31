@@ -12,10 +12,6 @@ export interface StoryWrapperProps extends StyledStoryWrapperProps {
   children?: React.ReactNode;
   className?: string;
   display?: React.CSSProperties['display'];
-  /** If you choose to wrap another component with the styled() HOC that also accepts an "as" prop,
-   * use "forwardedAs" to pass along the desired prop to the wrapped component. */
-  /* https://styled-components.com/docs/api#forwardedas-prop */
-  forwardedAs?: string | React.ComponentType<any>;
   /** Css height */
   height?: React.CSSProperties['height'];
   /** Css width */
@@ -28,7 +24,6 @@ export const StoryWrapper: React.FC<StoryWrapperProps> = ({
   children,
   className,
   display = 'block',
-  forwardedAs,
   height = '100%',
   margin,
   maxHeight,
@@ -55,7 +50,6 @@ export const StoryWrapper: React.FC<StoryWrapperProps> = ({
       bgColor={bgColor}
       className={className}
       $display={display}
-      forwardedAs={forwardedAs}
       $height={height}
       margin={margin}
       maxHeight={maxHeight}

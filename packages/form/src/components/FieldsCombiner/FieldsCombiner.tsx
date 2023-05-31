@@ -149,14 +149,14 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
               size,
               status,
               styles:
-                elemType(leftElem) === 'field'
+                elemType(rightElem) === 'field'
                   ? fieldsCombinerInputAndSelectMixin({
                       first: false,
                       size,
                       status,
                       theme,
                     })
-                  : elemType(leftElem) === 'button'
+                  : elemType(rightElem) === 'button'
                   ? fieldsCombinerButtonMixin({
                       first: false,
                       size,
