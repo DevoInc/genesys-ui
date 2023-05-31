@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import {
+  FieldAriaProps,
   GlobalAriaProps,
   GlobalAttrProps,
   StyledOverloadCssProps,
@@ -20,6 +21,7 @@ import { getPercent, getStatus } from '../utils';
 export interface ProgressBarCircularBarProps
   extends GlobalAttrProps,
     GlobalAriaProps,
+    Pick<FieldAriaProps, 'aria-errormessage' | 'aria-invalid'>,
     StyledPolymorphicProps,
     StyledOverloadCssProps,
     StyledProgressBarCircularSVGProps,
@@ -30,7 +32,7 @@ export const ProgressBarCircularBar: React.FC<ProgressBarCircularBarProps> = ({
   colorScheme,
   indeterminate,
   percent,
-  showInfo,
+  showStatus,
   size,
   status,
   styles,
@@ -43,7 +45,7 @@ export const ProgressBarCircularBar: React.FC<ProgressBarCircularBarProps> = ({
       indeterminate={indeterminate}
       percent={getPercent({ percent, status })}
       status={getStatus({ percent, status })}
-      showInfo={showInfo}
+      showStatus={showStatus}
       size={size}
     >
       <StyledProgressBarCircular

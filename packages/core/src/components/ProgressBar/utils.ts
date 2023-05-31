@@ -1,4 +1,3 @@
-import { lighten } from 'polished';
 import { DefaultTheme } from 'styled-components';
 
 import {
@@ -8,29 +7,72 @@ import {
 } from './constants';
 
 import {
+  BaseProgressBarProps,
   ProgressBarColorScheme,
   ProgressBarSize,
   ProgressBarStatus,
 } from './declarations';
 
 import { SQUARE, STATUS_COLOR_SCHEME_MAP } from './constants';
+import { ProgressBarProps } from './ProgressBar';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface ProgressBarBaseUtilsProps
+  extends Pick<BaseProgressBarProps, 'percent' | 'status'> {}
+
+interface ProgressBarUtilsProps
+  extends ProgressBarBaseUtilsProps,
+    Pick<BaseProgressBarProps, 'type'>,
+    Pick<ProgressBarProps, 'icon'> {}
 
 /**
- * Get the x & y coordinates for svg circle.
- * */
-export const getStatus = ({ percent, status }) =>
+ * Get the status based also in the percent prop
+ *
+ * @return ProgressBar status value
+ */
+export const getStatus = ({ percent, status }: ProgressBarBaseUtilsProps) =>
   percent >= MAX_PERCENT ? 'complete' : status;
 
-export const getColorScheme = ({ percent, status }) =>
+/**
+ * Get the colorScheme value (for internal components which use that prop) based in the status prop
+ *
+ * @return colorScheme value
+ */
+export const getColorSchemeFromStatus = ({
+  percent,
+  status,
+}: ProgressBarBaseUtilsProps) =>
   STATUS_COLOR_SCHEME_MAP[percent >= MAX_PERCENT ? 'complete' : status];
 
-export const getPercent = ({ percent, status }) =>
-  getStatus({ percent, status }) === 'success' || percent > 100 ? 100 : percent;
+/**
+ * Get the percent also based in the status prop and restricting it to 100
+ *
+ * @return percent value
+ */
+export const getPercent = ({ percent, status }: ProgressBarBaseUtilsProps) =>
+  getStatus({ percent, status }) === 'complete' || percent > 100
+    ? 100
+    : percent;
 
-export const hasCustomInfo = (customInfo) =>
+/**
+ * If the ProgressBar has customInfo defined
+ *
+ * @return boolean
+ */
+export const hasCustomInfo = (customInfo: ProgressBarProps['customInfo']) =>
   customInfo && (customInfo.startInfo || customInfo.endInfo);
 
-export const getIcon = ({ type, icon, percent, status }) => {
+/**
+ * Get the icon for the ProgressBar not only based in the icon prop, but also in type, percent and status
+ *
+ * @return icon name
+ */
+export const getIcon = ({
+  type,
+  icon,
+  percent,
+  status,
+}: ProgressBarUtilsProps) => {
   if (icon) return icon;
   if (getStatus({ percent, status }) === 'complete')
     return type === 'circular'
@@ -68,39 +110,6 @@ export const getRadio = (size: ProgressBarSize): number =>
  * */
 export const getRadiant = (size: ProgressBarSize): number =>
   getRadio(size) * Math.PI * 2;
-
-/**
- * Get the color for ProgressBar icons and texts.
- * */
-export const getColor = ({
-  colorScheme,
-  status,
-  theme,
-}: {
-  colorScheme?: ProgressBarColorScheme;
-  status?: ProgressBarStatus;
-  theme: DefaultTheme;
-}): string => {
-  const colorTextAliasTokens = theme.alias.color.text;
-
-  if (status === 'warning') {
-    return colorScheme === 'light'
-      ? lighten(0.1, colorTextAliasTokens.feedback.warning.base)
-      : colorTextAliasTokens.feedback.warning.base;
-  } else if (status === 'error') {
-    return colorScheme === 'light'
-      ? lighten(0.15, colorTextAliasTokens.feedback.error.base)
-      : colorTextAliasTokens.feedback.error.base;
-  } else if (status === 'complete') {
-    return colorScheme === 'light'
-      ? lighten(0.1, colorTextAliasTokens.feedback.success.base)
-      : colorTextAliasTokens.feedback.success.base;
-  } else {
-    return colorScheme === 'light'
-      ? '#DEDEDE' // this color because gets the same contrast (4.09) with dark theme overlay than settingColors.textColor with light theme one
-      : colorTextAliasTokens.body.base;
-  }
-};
 
 /**
  * Get the background color for ProgressBar track.

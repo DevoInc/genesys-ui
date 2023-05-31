@@ -16,15 +16,15 @@ const rotationInfinite = keyframes`
 export interface StyledProgressBarCircularSVGProps
   extends Pick<
     BaseProgressBarProps,
-    'indeterminate' | 'percent' | 'status' | 'size' | 'showInfo'
+    'indeterminate' | 'percent' | 'status' | 'size' | 'showStatus'
   > {}
 
 export const StyledProgressBarCircularSVG = styled.svg.attrs(
-  ({ percent, showInfo, size }: StyledProgressBarCircularSVGProps) => ({
+  ({ percent, showStatus, size }: StyledProgressBarCircularSVGProps) => ({
     // width and height depends on prop 'size'
     width: SQUARE[size],
     height: SQUARE[size],
-    'data-tip': !showInfo ? percent + '%' : null,
+    'data-tip': !showStatus ? percent + '%' : null,
   })
 )<StyledProgressBarCircularSVGProps>`
   ${({ indeterminate, status }) => css`

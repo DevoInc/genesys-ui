@@ -1,5 +1,5 @@
 import { ProgressBarStatus } from './declarations';
-import { BodyColorScheme, UIColorScheme } from '../../declarations';
+import { GlobalStatus } from '../../declarations';
 
 export const MAX_PERCENT = 100;
 
@@ -27,12 +27,12 @@ export const ICON_CIRCULAR_SIZE_MAP = {
 } as const;
 
 export const ICON_STANDARD_SIZE_MAP = {
-  sm: 'xs',
-  md: 'sm',
+  sm: 'xxxs',
+  md: 'xxs',
 } as const;
 
 export const STATUS_COLOR_SCHEME_MAP: {
-  [key: string]: UIColorScheme | BodyColorScheme;
+  [key: string]: GlobalStatus;
 } = {
   progressing: 'base',
   complete: 'success',

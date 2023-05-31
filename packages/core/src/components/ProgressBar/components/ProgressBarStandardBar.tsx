@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import {
+  FieldAriaProps,
   GlobalAriaProps,
   GlobalAttrProps,
   StyledOverloadCssProps,
@@ -15,6 +16,7 @@ import {
 export interface ProgressBarStandardBarProps
   extends GlobalAttrProps,
     GlobalAriaProps,
+    Pick<FieldAriaProps, 'aria-errormessage' | 'aria-invalid'>,
     StyledPolymorphicProps,
     StyledOverloadCssProps,
     StyledProgressBarStandardProps {}
@@ -24,7 +26,7 @@ export const ProgressBarStandardBar: React.FC<ProgressBarStandardBarProps> = ({
   colorScheme,
   indeterminate,
   percent,
-  showInfo,
+  showStatus,
   size,
   status,
   styles,
@@ -38,7 +40,7 @@ export const ProgressBarStandardBar: React.FC<ProgressBarStandardBarProps> = ({
       css={styles}
       indeterminate={indeterminate}
       percent={percent}
-      showInfo={showInfo}
+      showStatus={showStatus}
       size={size}
       status={status}
       title={`${percent}%`}

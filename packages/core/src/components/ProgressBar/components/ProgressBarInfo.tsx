@@ -3,15 +3,31 @@ import * as React from 'react';
 import { ICON_CIRCULAR_SIZE_MAP, ICON_STANDARD_SIZE_MAP } from '../constants';
 import { BaseProgressBarProps } from '../declarations';
 
-import { getPercent, getColorScheme } from '../utils';
+import { getPercent, getColorSchemeFromStatus } from '../utils';
 
-import { Box, Flex, FlexProps, Icon, IconProps, Typography } from '../../';
+import {
+  Box,
+  Flex,
+  FlexProps,
+  FloatingHelper,
+  Icon,
+  IconProps,
+  Typography,
+} from '../../';
 
 export interface ProgressBarInfoProps
   extends FlexProps,
     Pick<
       BaseProgressBarProps,
-      'indeterminate' | 'size' | 'percent' | 'status' | 'type'
+      | 'floatingStatusHelperTooltip'
+      | 'floatingStatusHelperId'
+      | 'hasFloatingStatusHelper'
+      | 'indeterminate'
+      | 'percent'
+      | 'size'
+      | 'status'
+      | 'statusHelper'
+      | 'type'
     > {
   icon?: IconProps['iconId'];
 }
@@ -21,6 +37,9 @@ export const ProgressBarInfo: React.FC<ProgressBarInfoProps> = ({
   children,
   flexDirection,
   flexWrap = 'wrap',
+  floatingStatusHelperId,
+  floatingStatusHelperTooltip,
+  hasFloatingStatusHelper,
   icon,
   indeterminate,
   justifyContent,
@@ -29,10 +48,11 @@ export const ProgressBarInfo: React.FC<ProgressBarInfoProps> = ({
   position,
   size,
   status,
+  statusHelper,
   type,
   ...restFlexProps
 }) => {
-  const colorSchemeEval = getColorScheme({ percent, status });
+  const colorSchemeEval = getColorSchemeFromStatus({ percent, status });
   return (
     <Flex
       {...restFlexProps}
@@ -55,7 +75,7 @@ export const ProgressBarInfo: React.FC<ProgressBarInfoProps> = ({
         )
       ) : (
         <>
-          {icon && (
+          {icon && !Boolean(statusHelper) && (
             <Box
               as="span"
               margin={type === 'circular' ? 'cmp-xxs 0 0 0' : '0 cmp-xs 0 0'}
@@ -74,7 +94,8 @@ export const ProgressBarInfo: React.FC<ProgressBarInfoProps> = ({
           {!indeterminate && (
             <Typography.Paragraph
               as="span"
-              colorScheme={colorSchemeEval}
+              colorScheme={status === 'error' ? colorSchemeEval : 'base'}
+              gutterBottom="0"
               size={size}
               styles={
                 type === 'circular' && status === 'complete'
@@ -84,6 +105,20 @@ export const ProgressBarInfo: React.FC<ProgressBarInfoProps> = ({
             >
               {getPercent({ percent, status })}%
             </Typography.Paragraph>
+          )}
+          {statusHelper && hasFloatingStatusHelper && (
+            <Box
+              as="span"
+              margin={type === 'circular' ? 'cmp-xxs 0 0 0' : '0 0 0 cmp-xs'}
+            >
+              <FloatingHelper
+                id={floatingStatusHelperId}
+                message={statusHelper}
+                status={colorSchemeEval}
+                size={size}
+                tooltip={floatingStatusHelperTooltip}
+              />
+            </Box>
           )}
         </>
       )}

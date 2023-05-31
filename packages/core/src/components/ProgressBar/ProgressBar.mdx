@@ -28,13 +28,34 @@ import { ProgressBar } from '@devoinc/genesys-ui';
 
 ## Cases
 
+### Circular
+
 ProgressBar can be used in circular mode.
 
 <Canvas of={CaseStories.Circular} />
 
+### With custom info
+
 Or in linear mode with extra information.
 
-<Canvas of={CaseStories.WithInfo} />
+<Canvas of={CaseStories.WithCustomInfo} />
+
+### With validation helper and accessible
+
+In case you need to add a validation/status helper, you can make the component more
+accessible if you add an `id` value. This way, not only a `aria-invalid` is added to
+the progress, but also we connect this one with its validation helper message through
+the `aria-errormessage` attribute which is automatically added.
+
+<Canvas of={CaseStories.AccessibleValidation} />
+
+### With floating validation helper and accessible
+
+Sometimes you might need to offer the validation helper to the user, but you don't have
+enough space or the location of the progress doesn't allow to do that. In these cases
+you can use the `hasFloatingValidation` prop to include that info in a floating `InlineMessage`.
+
+<Canvas of={CaseStories.AccessibleFloatingValidation} />
 
 ## Props
 

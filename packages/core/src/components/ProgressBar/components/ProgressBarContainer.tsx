@@ -2,15 +2,12 @@ import * as React from 'react';
 
 import { VFlex, VFlexProps } from '../../';
 
-import { BaseProgressBarProps } from '../declarations';
-
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ProgressBarContainerProps
-  extends Omit<VFlexProps, 'childrenFitFullWidth' | 'position' | 'spacing'>,
-    Pick<Partial<BaseProgressBarProps>, 'size'> {}
+  extends Omit<VFlexProps, 'childrenFitFullWidth' | 'position' | 'spacing'> {}
 
 export const ProgressBarContainer: React.FC<ProgressBarContainerProps> = ({
   children,
-  size,
   ...VFlexProps
 }) => {
   return (
@@ -18,7 +15,7 @@ export const ProgressBarContainer: React.FC<ProgressBarContainerProps> = ({
       {...VFlexProps}
       childrenFitFullWidth
       position="relative"
-      spacing={size === 'sm' ? 'cmp-xxs' : 'cmp-xs'}
+      spacing="cmp-xxs"
     >
       {children}
     </VFlex>

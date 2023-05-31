@@ -54,7 +54,7 @@ export interface StyledProgressBarStandardProps
     | 'indeterminate'
     | 'percent'
     | 'status'
-    | 'showInfo'
+    | 'showStatus'
     | 'size'
   > {}
 

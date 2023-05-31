@@ -83,6 +83,7 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
       zIndex={zIndex || zIndexDefault}
     >
       <StyledInlineMessage
+        id={id}
         elevation={'activated'}
         placement={placement}
         role={status === 'error' ? 'alert' : null}

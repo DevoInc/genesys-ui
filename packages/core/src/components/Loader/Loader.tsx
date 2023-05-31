@@ -88,7 +88,7 @@ const InternalLoader: React.FC<LoaderProps> = ({
           colorScheme={contentColor}
           icon={progressIcon}
           percent={loadPercent}
-          showInfo
+          showStatus
           size={LOADER_SIZE_MAP[size].progress}
           type="circular"
         />
