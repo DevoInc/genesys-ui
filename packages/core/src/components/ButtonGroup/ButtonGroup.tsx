@@ -26,7 +26,6 @@ export interface ButtonGroupProps
 }
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
-  as,
   children,
   hidden = false,
   itemsGap = 'md',
