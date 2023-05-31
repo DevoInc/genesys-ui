@@ -39,7 +39,6 @@ export interface LoaderProps
       | 'justifyContent'
       | 'padding'
     >,
-    Pick<ProgressBarProps, 'iconComplete'>,
     // native
     GlobalAttrProps,
     GlobalAriaProps {
@@ -48,6 +47,7 @@ export interface LoaderProps
   gradientConfig?: GradientConfig;
   loadPercent?: ProgressBarProps['percent'];
   opaque?: boolean;
+  progressIcon?: ProgressBarProps['icon'];
   size?: LoaderSize;
   type?: LoaderType;
 }
@@ -58,7 +58,7 @@ const InternalLoader: React.FC<LoaderProps> = ({
   colorScheme = 'inherited',
   fixed,
   gradientConfig,
-  iconComplete,
+  progressIcon,
   justifyContent,
   loadPercent,
   opaque,
@@ -86,7 +86,7 @@ const InternalLoader: React.FC<LoaderProps> = ({
         <ProgressBar
           {...nativeProps}
           colorScheme={contentColor}
-          iconComplete={iconComplete}
+          icon={progressIcon}
           percent={loadPercent}
           showInfo
           size={LOADER_SIZE_MAP[size].progress}

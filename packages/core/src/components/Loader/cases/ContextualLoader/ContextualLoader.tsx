@@ -14,11 +14,11 @@ export const ContextualLoader: React.FC<ContextualLoaderProps> = ({
   className,
   colorScheme = 'inherited',
   fixed,
-  iconComplete,
   justifyContent,
   loadPercent,
   opaque,
   padding,
+  progressIcon,
   size = 'md',
   type = 'spinner',
   zIndex,
@@ -31,7 +31,7 @@ export const ContextualLoader: React.FC<ContextualLoaderProps> = ({
       className={className}
       colorScheme={colorScheme}
       fixed={fixed}
-      iconComplete={iconComplete}
+      progressIcon={progressIcon}
       justifyContent={justifyContent}
       loadPercent={loadPercent}
       opaque={opaque}

@@ -12,9 +12,13 @@ export const STATUS_ICON_MAP: {
   complete: 'gi-ok_successful_check_filled',
 } as const;
 
-export const DIRECTION = {
-  HORIZONTAL: 'horizontal',
-  VERTICAL: 'vertical',
+export const STATUS_ICON_CIRCULAR_MAP: {
+  [key in ProgressBarStatus]: string;
+} = {
+  error: 'gi-error_warning_danger_stop',
+  warning: 'gi-error_warning_alert_attention',
+  progressing: null,
+  complete: 'gi-check_thick',
 } as const;
 
 export const ICON_CIRCULAR_SIZE_MAP = {

@@ -91,7 +91,7 @@ const InternalProgressBar: React.FC<ProgressBarProps> = ({
         )}
         {showInfo && (
           <ProgressBarInfo
-            icon={getIcon({ icon, percent, status })}
+            icon={getIcon({ type, icon, percent, status })}
             percent={percent}
             status={status}
             size={size}

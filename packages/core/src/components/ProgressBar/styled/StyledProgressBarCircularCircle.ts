@@ -20,7 +20,6 @@ export const StyledProgressBarCircular = styled.circle.attrs(
 )<StyledProgressBarCircularProps>`
   ${({ colorScheme, status, theme }) => {
     const progressBarTokens = theme.cmp.progressBar;
-
     return css`
       stroke: ${getTrackBgColor({
         colorScheme,

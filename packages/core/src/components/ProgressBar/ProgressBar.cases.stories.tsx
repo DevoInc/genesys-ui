@@ -7,13 +7,9 @@ const meta: Meta<typeof ProgressBar> = {
   component: ProgressBar,
   args: {
     colorScheme: 'dark',
-    iconComplete: 'gi-check_thick',
-    iconError: 'gi-error_warning_danger_stop',
-    iconWarning: 'gi-error_warning_alert_attention',
-    progress: 'progressing',
+    status: 'progressing',
     size: 'md',
     type: 'standard',
-    wide: true,
   },
 };
 
@@ -25,7 +21,7 @@ export const Circular: Story = {
     percent: 75,
     type: 'circular',
     showInfo: true,
-    progress: 'warning',
+    status: 'warning',
   },
 };
 

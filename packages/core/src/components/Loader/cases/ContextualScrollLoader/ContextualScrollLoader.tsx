@@ -8,7 +8,7 @@ import { CmpSpacing } from '../../../../declarations';
 export interface ContextualScrollLoaderProps
   extends Pick<
     LoaderProps,
-    'className' | 'fixed' | 'iconComplete' | 'loadPercent' | 'zIndex'
+    'className' | 'fixed' | 'progressIcon' | 'loadPercent' | 'zIndex'
   > {
   gradientHeight?: string;
   spinnerOffset?: CmpSpacing;
@@ -19,7 +19,7 @@ export const ContextualScrollLoader: React.FC<ContextualScrollLoaderProps> = ({
   className,
   fixed,
   gradientHeight,
-  iconComplete,
+  progressIcon,
   loadPercent,
   spinnerOffset = 'cmp-xs',
   size = 'md',
@@ -34,7 +34,7 @@ export const ContextualScrollLoader: React.FC<ContextualScrollLoaderProps> = ({
       gradientConfig={{
         height: gradientHeight,
       }}
-      iconComplete={iconComplete}
+      progressIcon={progressIcon}
       justifyContent="flex-end"
       loadPercent={loadPercent}
       padding={`0 0 ${spinnerOffset} 0`}

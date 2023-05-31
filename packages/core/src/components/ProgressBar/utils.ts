@@ -1,7 +1,11 @@
 import { lighten } from 'polished';
 import { DefaultTheme } from 'styled-components';
 
-import { MAX_PERCENT, STATUS_ICON_MAP } from './constants';
+import {
+  MAX_PERCENT,
+  STATUS_ICON_CIRCULAR_MAP,
+  STATUS_ICON_MAP,
+} from './constants';
 
 import {
   ProgressBarColorScheme,
@@ -15,7 +19,7 @@ import { SQUARE, STATUS_COLOR_SCHEME_MAP } from './constants';
  * Get the x & y coordinates for svg circle.
  * */
 export const getStatus = ({ percent, status }) =>
-  percent >= MAX_PERCENT ? 'completed' : status;
+  percent >= MAX_PERCENT ? 'complete' : status;
 
 export const getColorScheme = ({ percent, status }) =>
   STATUS_COLOR_SCHEME_MAP[percent >= MAX_PERCENT ? 'complete' : status];
@@ -26,12 +30,20 @@ export const getPercent = ({ percent, status }) =>
 export const hasCustomInfo = (customInfo) =>
   customInfo && (customInfo.startInfo || customInfo.endInfo);
 
-export const getIcon = ({ icon, percent, status }) => {
+export const getIcon = ({ type, icon, percent, status }) => {
   if (icon) return icon;
   if (getStatus({ percent, status }) === 'complete')
-    return STATUS_ICON_MAP['complete'];
-  if (status === 'warning') return STATUS_ICON_MAP['warning'];
-  if (status === 'error') return STATUS_ICON_MAP['error'];
+    return type === 'circular'
+      ? STATUS_ICON_CIRCULAR_MAP['complete']
+      : STATUS_ICON_MAP['complete'];
+  if (status === 'warning')
+    return type === 'circular'
+      ? STATUS_ICON_CIRCULAR_MAP['warning']
+      : STATUS_ICON_MAP['warning'];
+  if (status === 'error')
+    return type === 'circular'
+      ? STATUS_ICON_CIRCULAR_MAP['error']
+      : STATUS_ICON_MAP['error'];
   return null;
 };
 
@@ -117,7 +129,6 @@ export const getTrackBgColor = ({
   tokens: DefaultTheme['cmp']['progressBar'];
 }): string => {
   const statusEval = STATUS_COLOR_SCHEME_MAP[status];
-
   return colorScheme === 'light'
     ? 'rgba(255,255,255,0.08)' // this color because gets the same contrast (4.09) with dark theme overlay than p.theme.feedbackSecondary with light theme one
     : tokens?.track?.color?.background[statusEval];
