@@ -14,7 +14,7 @@ import { Flex, Label, LabelProps } from '../../';
 export interface FieldLabelProps
   extends Omit<
       LabelProps,
-      'as' | 'className' | 'forwardedAs' | 'size' | 'textAlign' | 'truncated'
+      'as' | 'className' | 'size' | 'textAlign' | 'truncated'
     >,
     GlobalAttrProps,
     GlobalAriaProps,

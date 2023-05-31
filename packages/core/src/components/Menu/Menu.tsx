@@ -12,7 +12,7 @@ import { VFlex } from '../VFlex';
 import { MenuHeading, MenuItem, MenuSeparator } from './subcomponents';
 
 export interface MenuProps
-  extends Pick<StyledPolymorphicProps, 'forwardedAs'>,
+  extends StyledPolymorphicProps,
     Pick<GlobalAttrProps, 'id'>,
     GlobalAriaProps {
   children?: React.ReactNode;
@@ -20,12 +20,13 @@ export interface MenuProps
 }
 
 const InternalMenu: React.FC<MenuProps> = ({
+  as = 'nav',
   children,
   cmpRole = 'menu',
   ...restNativeProps
 }) => {
   return cmpRole === 'nav' ? (
-    <VFlex {...restNativeProps} as="nav" spacing="0" childrenFitFullWidth>
+    <VFlex {...restNativeProps} as={as} spacing="0" childrenFitFullWidth>
       <VFlex as="ul" spacing="0" childrenFitFullWidth>
         {children}
       </VFlex>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Box } from '../';
-import { StyledScreenReadersOnly } from '../../styled/StyledScreenReaderOnly';
+import { StyledScreenReadersOnly } from '../../styled';
 import { getAvatarInitials } from './utils';
 import {
   StyledAvatar,
@@ -51,7 +51,6 @@ export const Avatar: React.FC<AvatarProps> = ({
   className,
   colorScheme = 'neutral',
   customSize,
-  forwardedAs,
   href,
   iconOnHover,
   imageFit = 'cover',
@@ -77,7 +76,6 @@ export const Avatar: React.FC<AvatarProps> = ({
       className={className && `${className}__img`}
       colorScheme={colorScheme}
       customSize={customSize}
-      forwardedAs={forwardedAs}
       imageFit={imageFit}
       imageSrc={imageSrc}
       bordered={bordered}
@@ -115,7 +113,6 @@ export const Avatar: React.FC<AvatarProps> = ({
       as={as || (href ? 'a' : 'button')}
       className={className}
       customSize={customSize}
-      forwardedAs={forwardedAs}
       href={href}
       iconOnHover={iconOnHover}
       disabled={disabled}

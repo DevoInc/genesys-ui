@@ -70,7 +70,6 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   'aria-label': ariaLabel,
   as,
   bottomContent,
-  forwardedAs,
   children,
   download,
   expandable,
@@ -111,7 +110,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
     ? 'menuitemcheckbox'
     : 'menuitem';
   return (
-    <StyledMenuItem as={as} forwardedAs={forwardedAs}>
+    <StyledMenuItem as={as}>
       <StyledMenuItemInner
         {...restNativeProps}
         aria-keyshortcuts={shortcut}

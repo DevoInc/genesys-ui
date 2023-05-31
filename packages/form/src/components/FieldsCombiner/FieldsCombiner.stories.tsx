@@ -1,7 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import { FieldsCombiner } from '..';
-import { ElemIconButton, ElemSelect } from './__stories__/commonElements';
+import {
+  ElemIconButton,
+  ElemButton,
+  ElemSelect,
+  ElemCheckbox,
+  ElemInputControl,
+} from './__stories__/commonElements';
 
 const meta: Meta<typeof FieldsCombiner> = {
   title: 'Components/Form/FieldsCombiner',
@@ -21,6 +27,6 @@ export const Base: Story = {
     id: 'fields-1',
     label: 'Button to right with status',
     leftElem: ElemSelect,
-    rightElem: ElemIconButton,
+    rightElem: ElemCheckbox,
   },
 };

@@ -13,7 +13,12 @@ import {
 import { usePaginationStyles } from './usePaginationStyles';
 import { defaultTexts, HideParts, TextProps } from './declarations';
 import { PaginationInfo } from './hooks';
-import { BaseSize, GlobalAriaProps, GlobalAttrProps } from '../../declarations';
+import {
+  BaseSize,
+  GlobalAriaProps,
+  GlobalAttrProps,
+  StyledPolymorphicProps,
+} from '../../declarations';
 
 const defaultHideParts = {
   infoLabel: false,
@@ -26,7 +31,8 @@ const defaultHideParts = {
 
 export interface PaginationProps
   extends Pick<GlobalAttrProps, 'id'>,
-    Pick<GlobalAriaProps, 'aria-label' | 'aria-describedby'> {
+    Pick<GlobalAriaProps, 'aria-label' | 'aria-describedby'>,
+    StyledPolymorphicProps {
   /** Tooltip text of the first last button */
   texts?: TextProps;
   /**
@@ -35,11 +41,12 @@ export interface PaginationProps
    */
   paginationHook?: PaginationInfo;
   hideParts?: HideParts;
-  WrapperComponent?: string | React.ComponentType<any>;
+  WrapperComponent?: React.ComponentType<any>;
   size?: BaseSize;
 }
 
 export const Pagination: React.FC<PaginationProps> = ({
+  as = 'nav',
   'aria-label': ariaLabel,
   'aria-describedby': ariaDescribedBy,
   hideParts = defaultHideParts,
@@ -123,13 +130,13 @@ export const Pagination: React.FC<PaginationProps> = ({
     setMenuOpen(true);
   }, []);
   const onMenuClose = React.useCallback(() => setMenuOpen(false), []);
+  const WrapperComponentEval = WrapperComponent || Box;
 
   return (
-    <Box
+    <WrapperComponentEval
+      as={WrapperComponent ? null : as}
       aria-label={ariaLabel}
       aria-describedby={ariaDescribedBy}
-      as="nav"
-      forwardedAs={WrapperComponent}
       id={id}
     >
       <HFlex as="ul" spacing={`cmp-${size}`}>
@@ -255,6 +262,6 @@ export const Pagination: React.FC<PaginationProps> = ({
           </HFlex>
         </Flex.Item>
       </HFlex>
-    </Box>
+    </WrapperComponentEval>
   );
 };

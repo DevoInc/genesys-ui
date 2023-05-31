@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { StyledOverloadCssProps } from '../../../../declarations';
+import {
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '../../../../declarations';
 
 import { Box } from '../../../Box';
 import { panelContainerMixin, PanelContainerMixinProps } from './helpers';
@@ -9,12 +12,11 @@ import { concat } from 'lodash';
 
 export interface PanelContainerProps
   extends StyledOverloadCssProps,
+    StyledPolymorphicProps,
     Omit<PanelContainerMixinProps, 'theme'> {
-  as?: string | React.ComponentType<any>;
   children?: React.ReactNode;
   className?: string;
   display?: React.CSSProperties['display'];
-  forwardedAs?: string | React.ComponentType<any>;
   id?: string;
   visibility?: React.CSSProperties['visibility'];
 }
@@ -27,7 +29,6 @@ export const PanelContainer: React.FC<PanelContainerProps> = ({
   colorScheme,
   display,
   elevation = 'raised',
-  forwardedAs,
   heightScheme,
   id,
   position,
@@ -42,7 +43,6 @@ export const PanelContainer: React.FC<PanelContainerProps> = ({
       className={className}
       display={display}
       elevation={elevation}
-      forwardedAs={forwardedAs}
       height={heightScheme?.height}
       id={id}
       maxHeight={heightScheme?.maxHeight}

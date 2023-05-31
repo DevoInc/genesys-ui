@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
 import {
   Button,
@@ -8,14 +9,16 @@ import {
   InputControl,
   SelectControl,
   CheckboxControl,
-  InputControlProps,
   ButtonProps,
   IconButtonProps,
   SelectControlProps,
   CheckboxControlProps,
 } from '@devoinc/genesys-ui';
 
-import { Input, InputProps } from '../';
+import {
+  fieldsCombinerButtonMixin,
+  fieldsCombinerInputAndSelectMixin,
+} from './helpers';
 
 import {
   StyledFieldsCombinerElem,
@@ -27,8 +30,7 @@ export interface FieldsCombinerProps extends Omit<FieldProps, 'children'> {
   leftElem: React.ReactElement<
     | ButtonProps
     | IconButtonProps
-    | InputControlProps
-    | InputProps
+    | React.ComponentPropsWithoutRef<typeof InputControl.Input>
     | SelectControlProps
     | CheckboxControlProps
   >;
@@ -38,8 +40,7 @@ export interface FieldsCombinerProps extends Omit<FieldProps, 'children'> {
   rightElem: React.ReactElement<
     | ButtonProps
     | IconButtonProps
-    | InputControlProps
-    | InputProps
+    | React.ComponentPropsWithoutRef<typeof InputControl.Input>
     | SelectControlProps
     | CheckboxControlProps
   >;
@@ -69,6 +70,9 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
   tooltip,
   ...props
 }) => {
+  const RightElement = rightElem;
+  const LeftElement = leftElem;
+
   const elemType = (elem) => {
     const elemTypeName = elem?.type?.displayName;
     if (
@@ -78,8 +82,7 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
       return 'button';
     } else if (
       elem.type === SelectControl ||
-      elem.type === Input ||
-      elem.type === InputControl
+      elem.type === InputControl.Input
     ) {
       return 'field';
     } else if (elem.type === CheckboxControl) {
@@ -88,10 +91,7 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
       return 'other';
     }
   };
-
-  const RightElement = rightElem;
-  const LeftElement = leftElem;
-
+  const theme = useTheme();
   return (
     <Field
       hasFloatingHelper={hasFloatingHelper}
@@ -116,9 +116,24 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
         >
           {LeftElement &&
             React.cloneElement(LeftElement, {
-              hideLabel: true,
               size,
               status,
+              styles:
+                elemType(leftElem) === 'field'
+                  ? fieldsCombinerInputAndSelectMixin({
+                      first: true,
+                      size,
+                      status,
+                      theme,
+                    })
+                  : elemType(leftElem) === 'button'
+                  ? fieldsCombinerButtonMixin({
+                      first: true,
+                      size,
+                      status,
+                      theme,
+                    })
+                  : null,
               ...props,
             })}
         </StyledFieldsCombinerElem>
@@ -131,9 +146,24 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
         >
           {RightElement &&
             React.cloneElement(RightElement, {
-              hideLabel: true,
               size,
               status,
+              styles:
+                elemType(leftElem) === 'field'
+                  ? fieldsCombinerInputAndSelectMixin({
+                      first: false,
+                      size,
+                      status,
+                      theme,
+                    })
+                  : elemType(leftElem) === 'button'
+                  ? fieldsCombinerButtonMixin({
+                      first: false,
+                      size,
+                      status,
+                      theme,
+                    })
+                  : null,
               ...props,
             })}
         </StyledFieldsCombinerElem>

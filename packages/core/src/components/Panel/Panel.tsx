@@ -51,7 +51,6 @@ const InternalPanel: React.FC<PanelProps> = ({
   colorScheme,
   display,
   elevation = 'raised',
-  forwardedAs,
   heightScheme,
   id,
   visibility,
@@ -87,7 +86,6 @@ const InternalPanel: React.FC<PanelProps> = ({
       className={className}
       colorScheme={colorScheme}
       elevation={elevation}
-      forwardedAs={forwardedAs}
       id={id}
       position={position}
       visibility={visibility}

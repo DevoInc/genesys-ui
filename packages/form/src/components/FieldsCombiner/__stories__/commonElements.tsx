@@ -28,7 +28,7 @@ export const ElemSelect = (
 );
 
 export const ElemInputControl = (
-  <InputControl
+  <InputControl.Input
     id="test-3"
     aria-label="Label for story"
     onChange={() => console.log('change')}

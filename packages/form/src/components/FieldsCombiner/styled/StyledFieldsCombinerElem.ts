@@ -1,16 +1,9 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import {
-  FieldSize,
-  FieldStatus,
-  StyledSelectControl,
-  StyledInputControl,
-  StyledButton,
-} from '@devoinc/genesys-ui';
-import { StyledFieldsCombinerWrapper } from './';
-
 import { FieldsCombinerType } from '../declarations';
+import { FieldSize, FieldStatus } from '@devoinc/genesys-ui';
+
 export interface StyledFieldsCombinerElemProps {
   elemWidth?: React.CSSProperties['width'];
   first?: boolean;
@@ -21,9 +14,7 @@ export interface StyledFieldsCombinerElemProps {
 
 export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps>`
   ${({ size, elemWidth, first, theme, typeProp, status }) => {
-    const isCheckOrButtonType = typeProp === 'button' || typeProp === 'check';
-    const aliasTokens = theme.alias;
-    const fieldTokens = aliasTokens.fields;
+    const fieldTokens = theme.alias.fields;
     const btnTokens = theme.cmp.button;
     const height = btnTokens.size.height[size];
     const width = btnTokens.size.square[size];
@@ -34,75 +25,10 @@ export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps
       height: ${height};
       width: ${elemWidth};
 
-      // Input, Select, Button and IconButton
-      ${StyledSelectControl} .react-select__control,
-      ${StyledInputControl},
-      ${StyledButton} {
-        min-height: ${height};
-        height: 100%;
-        transition: all ease ${btnTokens.mutation.transitionDuration};
-      }
-
-      // IconButton
-      ${StyledButton}${'[data-squared]'} {
-        width: ${height};
-      }
-
-      // Input, Select and Checkbox
-      *:enabled:focus,
-      ${StyledSelectControl} [class*='--is-focused'],
-      ${StyledSelectControl} *:enabled:focus {
-        box-shadow: none;
-        z-index: 3;
-      }
-
-      // Input, Select, Button and IconButton
-      ${StyledSelectControl},
-      ${StyledSelectControl} ${StyledInputControl},
-      ${StyledInputControl},
-      ${StyledSelectControl} .react-select__control,
-      ${StyledButton},
-      ${StyledButton}::before {
-        ${first
-          ? css`
-              border-top-right-radius: 0;
-              border-bottom-right-radius: 0;
-            `
-          : css`
-              border-top-left-radius: 0;
-              border-bottom-left-radius: 0;
-            `}
-      }
-
-      // type button and check
-      ${isCheckOrButtonType
+      ${typeProp === 'button' || typeProp === 'check'
         ? css`
             z-index: 1;
             flex: 0 auto;
-
-            ${StyledSelectControl},
-            ${StyledButton} {
-              position: relative;
-              z-index: 1;
-              border-style: solid;
-              border-color: ${fieldTokens.color.border[status]?.enabled};
-              border-width: ${fieldTokens.shape.borderSize.base};
-              ${first
-                ? css`
-                    border-top-right-radius: 0;
-                    border-bottom-right-radius: 0;
-                    border-right-width: 0;
-                  `
-                : css`
-                    border-top-left-radius: 0;
-                    border-bottom-left-radius: 0;
-                    border-left-width: 0;
-                  `}
-
-              &:focus {
-                box-shadow: none;
-              }
-            }
           `
         : css`
             flex: ${!elemWidth && '1 1 auto'};
@@ -121,7 +47,7 @@ export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps
         border-radius: ${borderRadius};
         width: ${width};
         padding: 0;
-        background-color: ${aliasTokens.color.background.surface.base.raised};
+        background-color: ${theme.alias.color.background.surface.base.raised};
 
         ${first
           ? css`
@@ -143,7 +69,7 @@ export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps
         // Right elem
       ${!first &&
       css`
-        margin-left: -1px;
+        margin-left: -0.1rem;
       `}
 
         // states
@@ -152,26 +78,10 @@ export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps
       }
 
       // parent hover state
-      ${StyledFieldsCombinerWrapper}:hover > & {
-        ${isCheckOrButtonType &&
-        css`
-          ${StyledSelectControl},
-          ${StyledButton} {
-            border-color: ${fieldTokens.color.border.base.hovered};
-          }
-        `}
-
+      *:hover > & {
         ${typeProp === 'check' &&
         css`
           border-color: ${fieldTokens.color.border.base.hovered};
-        `}
-
-        ${typeProp !== 'check' &&
-        css`
-          .react-select__control,
-          *:enabled {
-            border-color: ${fieldTokens.color.border.base.hovered};
-          }
         `}
       }
     `;
