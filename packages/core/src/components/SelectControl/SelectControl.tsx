@@ -13,10 +13,17 @@ import type {
   FieldAriaProps,
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
 } from '../../declarations';
 import { SelectComponents } from 'react-select/dist/declarations/src/components';
 import { SelectOption } from './declarations';
-import { GroupBase, MultiValue, PropsValue } from 'react-select';
+import {
+  GroupBase,
+  mergeStyles,
+  MultiValue,
+  PropsValue,
+  StylesConfig,
+} from 'react-select';
 
 export interface SelectControlProps<
   Option extends SelectOption = SelectOption,
@@ -29,6 +36,7 @@ export interface SelectControlProps<
     //native
     FieldAriaProps,
     GlobalAriaProps,
+    StyledOverloadCssProps,
     Omit<GlobalAttrProps, 'tooltip'> {
   value?: PropsValue<Option> | Option['value'];
   onChange?: (value: PropsValue<Option>) => void;
@@ -40,18 +48,19 @@ export const SelectControl = <
   Group extends GroupBase<Option> = GroupBase<Option>
 >({
   components,
+  componentStyles,
   styles,
   value,
   isClearable,
   ...rest
 }: SelectControlProps<Option, IsMulti, Group>) => {
-  const defaultStyles = React.useMemo(
+  const defaultStyles: StylesConfig<Option, IsMulti, Group> = React.useMemo(
     () => ({
-      menuPortal: (base: React.CSSProperties) => ({
+      menuPortal: (base) => ({
         ...base,
         zIndex: rest.menuAppendToBody ? 10000 : '',
       }),
-      menuList: (base: React.CSSProperties) => {
+      menuList: (base) => {
         return {
           ...base,
           maxHeight: rest.maxMenuHeight
@@ -67,7 +76,7 @@ export const SelectControl = <
               : rest.minMenuHeight,
         };
       },
-      multiValueRemove: () => '',
+      multiValueRemove: () => ({}),
     }),
     [
       rest.maxMenuHeight,
@@ -76,7 +85,7 @@ export const SelectControl = <
       rest.selectAllBtn,
       rest.size,
     ]
-  ) as React.CSSProperties;
+  );
 
   const hasFixedOptions = React.useMemo(
     () => Array.isArray(value) && value.some(({ fixed }) => fixed),
@@ -126,7 +135,7 @@ export const SelectControl = <
       menuPortalTarget={menuPortalTarget}
       isClearable={clearable}
       {...(onChange && { onChange })}
-      styles={{ ...defaultStyles, ...styles }}
+      componentStyles={mergeStyles(defaultStyles, componentStyles)}
       {...(value && { value: findValue(value, rest.options, rest.isMulti) })}
       components={
         { ...defaultComponents, ...components } as Partial<
@@ -134,6 +143,7 @@ export const SelectControl = <
         >
       }
       closeMenuOnScroll={handleCloseMenuOnScroll}
+      styles={styles}
     />
   );
 };

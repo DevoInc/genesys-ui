@@ -3,7 +3,7 @@ import { CSSProp, DefaultTheme } from 'styled-components';
 import { HTMLTag } from './commonProps';
 
 /** ---------------------------------------------
- * Polimorphic props for styled components
+ * Polymorphic props for styled components
  * --------------------------------------------- */
 export interface StyledPolymorphicProps<T = any> {
   /** Polymorphic prop to create a different HTML tag based in the styled components one:
