@@ -1,6 +1,7 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './InlineMessage.stories';
+import * as CaseStories from './InlineMessage.cases.stories';
 
 <Meta of={Stories} />
 
@@ -28,17 +29,17 @@ The most frequent use of the InlineMessage component is to include an `InlineMes
 
 ### With content
 
-<Canvas of={Stories.WithContent} />
+<Canvas of={CaseStories.WithContent} />
 
 ### Custom trigger
 
-<Canvas of={Stories.CustomTriggerIcon} />
+<Canvas of={CaseStories.CustomTriggerIcon} />
 
 ### Banner
 
 Another atypical use of the InlineMessage component is to include an `InlineMessage.Banner` as a child.
 
-<Canvas of={Stories.Banner} />
+<Canvas of={CaseStories.Banner} />
 
 ## Props
 
