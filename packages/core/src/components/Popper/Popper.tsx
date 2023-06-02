@@ -70,10 +70,12 @@ export const Popper: React.FC<PopperProps> = ({
     setIsVisibleExternalState
   );
   const setIsVisibleFalse = () => setIsVisible(false);
-  // Elements - States
-  const [triggerRef, setTriggerRef] = React.useState();
-  const popperRef = React.useRef<HTMLDivElement>();
-  const arrowRef = React.useRef<HTMLDivElement>();
+
+  // ElementRefs - States
+  const [triggerRef, setTriggerRef] = React.useState<HTMLElement>();
+  const [popperRef, setPopperRef] = React.useState<HTMLElement>();
+  const [arrowRef, setArrowRef] = React.useState<HTMLElement>();
+
   // Modifiers settings - Popper
   const modifiers = React.useMemo(() => {
     const options: Array<Partial<PopperJS.Modifier<any, any>>> = [
@@ -101,22 +103,26 @@ export const Popper: React.FC<PopperProps> = ({
     }
     return options;
   }, [arrow, arrowRef, hasGpuAcceleration, offset]);
+
   // Popper - Hook
-  const { styles, attributes } = usePopper(triggerRef, popperRef.current, {
+  const { styles, attributes } = usePopper(triggerRef, popperRef, {
     placement,
     strategy,
     modifiers,
   });
+
   // Click Outside - Hook
   useOnEventOutside({
     references: [triggerRef, popperRef],
     handler: setIsVisibleFalse,
   });
+
   // Attributes and Styles - Popper
   const isTriggerHidden = attributes?.popper?.['data-popper-reference-hidden'];
   const placementPopper = attributes?.popper?.[
     'data-popper-placement'
   ] as PopperJS.Placement;
+
   // Cloned - Components
   const wrappedClick = (event: MouseEvent) => {
     event.stopPropagation();
@@ -141,22 +147,14 @@ export const Popper: React.FC<PopperProps> = ({
       {...nativeProps}
       aria-expanded={ariaExpanded || isVisible}
       hiddenTrigger={!!isTriggerHidden}
-      ref={(instance) => {
-        if (instance) {
-          popperRef.current = instance;
-        }
-      }}
+      ref={setPopperRef}
       style={styles.popper}
       zIndex={zIndex}
     >
       {childrenCmp}
       {arrow && (
         <StyledPopperArrow
-          ref={(instance) => {
-            if (instance) {
-              arrowRef.current = instance;
-            }
-          }}
+          ref={setArrowRef}
           placement={placementPopper}
           style={styles.arrow}
           zIndex={zIndex}
