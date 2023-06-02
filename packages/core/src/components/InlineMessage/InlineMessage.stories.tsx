@@ -1,6 +1,8 @@
+import * as React from 'react';
+
 import { Meta, StoryObj } from '@storybook/react';
 
-import { InlineMessage } from '..';
+import { Box, InlineMessage, Typography } from '..';
 
 const meta: Meta<typeof InlineMessage> = {
   title: 'Components/Core/Feedback/InlineMessage',
@@ -23,5 +25,11 @@ export default meta;
 type Story = StoryObj<typeof InlineMessage>;
 
 export const Base: Story = {
-  args: { children: 'Hi!' },
+  args: {
+    children: (
+      <Box margin="cmp-xs">
+        <Typography.Paragraph>This is an inline message</Typography.Paragraph>
+      </Box>
+    ),
+  },
 };
