@@ -139,7 +139,10 @@ export const Popper: React.FC<PopperProps> = ({
     zIndex: zIndex && 'auto',
   });
   const arrowCmp = useAddPropsToChildren(arrow, {
-    placement: placementPopper,
+    // At an early stage, the placement of the popper is not yet known.
+    // Therefore, the arrow is temporarily positioned with the placement
+    // of the prop.
+    placement: placementPopper || placement,
   });
 
   const PopperCmp = (
