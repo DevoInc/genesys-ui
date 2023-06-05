@@ -1,38 +1,31 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Col, Container, Row } from '../../';
-import { StyledFluidBox } from '../__stories__/StyledFluidBox';
+import { Container } from '../../';
+import { StoryCol as Col, StoryRow as Row } from '../__stories__';
 
 const meta: Meta<typeof Container> = {
   title: 'Components/Core/Layout/Fluid/Container',
   component: Container,
+  args: {
+    gutter: 'layout-sm',
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Container>;
 
 export const Base: Story = {
-  render: () => (
-    <Row>
-      <Col sm={4} md={2} lg={1}>
-        <StyledFluidBox>Col</StyledFluidBox>
-      </Col>
-      <Col sm={4} md={2} lg={1}>
-        <StyledFluidBox>Col</StyledFluidBox>
-      </Col>
-      <Col sm={4} md={2} lg={1}>
-        <StyledFluidBox>Col</StyledFluidBox>
-      </Col>
-      <Col sm={4} md={2} lg={1}>
-        <StyledFluidBox>Col</StyledFluidBox>
-      </Col>
-      <Col sm={4} md={2} lg={1}>
-        <StyledFluidBox>Col</StyledFluidBox>
-      </Col>
-      <Col sm={4} md={2} lg={1}>
-        <StyledFluidBox>Col</StyledFluidBox>
-      </Col>
-    </Row>
-  ),
+  args: {
+    children: (
+      <Row>
+        <Col>Col</Col>
+        <Col>Col</Col>
+        <Col>Col</Col>
+        <Col>Col</Col>
+        <Col>Col</Col>
+        <Col>Col</Col>
+      </Row>
+    ),
+  },
 };

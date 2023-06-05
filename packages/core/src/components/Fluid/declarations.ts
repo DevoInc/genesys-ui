@@ -1,6 +1,7 @@
-import { CommonSpacing, LayoutSpacing } from '../../declarations';
+import { GlobalSpacing, HTMLTag, LayoutSpacing } from '../../declarations';
+import { PickUnion } from '../../typeFunctions';
 
-export type ContainerSpacing = CommonSpacing | LayoutSpacing;
+export type ContainerSpacing = PickUnion<GlobalSpacing, '0'> | LayoutSpacing;
 
 export type FluidProp =
   | boolean
@@ -12,3 +13,5 @@ export type FluidProp =
       xl: boolean;
       xxl: boolean;
     };
+
+export type FluidAs = HTMLTag;

@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Col, Row } from '../..';
-import { StyledFluidBox } from '../__stories__/StyledFluidBox';
+import { StoryCol as Col, StoryRow as Row } from '../__stories__';
 
 const meta: Meta<typeof Row> = {
   title: 'Components/Core/Layout/Fluid/Row',
@@ -16,24 +15,12 @@ export const Base: Story = {
   args: {
     children: (
       <>
-        <Col sm={4} md={2} lg={1}>
-          <StyledFluidBox>Col</StyledFluidBox>
-        </Col>
-        <Col sm={4} md={2} lg={1}>
-          <StyledFluidBox>Col</StyledFluidBox>
-        </Col>
-        <Col sm={4} md={2} lg={1}>
-          <StyledFluidBox>Col</StyledFluidBox>
-        </Col>
-        <Col sm={4} md={2} lg={1}>
-          <StyledFluidBox>Col</StyledFluidBox>
-        </Col>
-        <Col sm={4} md={2} lg={1}>
-          <StyledFluidBox>Col</StyledFluidBox>
-        </Col>
-        <Col sm={4} md={2} lg={1}>
-          <StyledFluidBox>Col</StyledFluidBox>
-        </Col>
+        <Col>Col</Col>
+        <Col>Col</Col>
+        <Col>Col</Col>
+        <Col>Col</Col>
+        <Col>Col</Col>
+        <Col>Col</Col>
       </>
     ),
   },

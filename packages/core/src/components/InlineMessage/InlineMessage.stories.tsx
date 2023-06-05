@@ -27,7 +27,7 @@ type Story = StoryObj<typeof InlineMessage>;
 export const Base: Story = {
   args: {
     children: (
-      <Box margin="cmp-xs">
+      <Box padding="cmp-xs">
         <Typography.Paragraph>This is an inline message</Typography.Paragraph>
       </Box>
     ),

@@ -18,7 +18,6 @@ export const FloatingHelper: React.FC<FloatingHelperProps> = ({
   status = 'base',
   tooltip,
 }) => {
-  const onClose = React.useCallback(() => setVisible(false), [setVisible]);
   return (
     <InlineMessage
       id={id}
@@ -28,10 +27,8 @@ export const FloatingHelper: React.FC<FloatingHelperProps> = ({
       tooltip={tooltip}
       visible={visible}
     >
-      <InlineMessage.Panel onClose={onClose}>
-        <div>
-          <Typography.Paragraph>{message}</Typography.Paragraph>
-        </div>
+      <InlineMessage.Panel>
+        <Typography.Paragraph>{message}</Typography.Paragraph>
       </InlineMessage.Panel>
     </InlineMessage>
   );

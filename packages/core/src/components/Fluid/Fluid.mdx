@@ -1,8 +1,8 @@
-import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+import { Meta, Canvas, Source } from '@storybook/blocks';
 
-import * as Stories from './Fluid.stories';
+import * as CasesStories from './Fluid.cases.stories';
 
-<Meta of={Stories} />
+<Meta of={CasesStories} />
 
 # Fluid components
 
@@ -11,22 +11,81 @@ import * as Stories from './Fluid.stories';
 The Fluid components (Container, Row, and Col) are part of a layout system and are used to create responsive, flexible layouts.
 
 - Container acts as a wrapper that centers its child elements horizontally and sets a maximum width for them.
+  In addition, it defines the gutter between the cols.
 - Row is a container for a group of Col components and defines a horizontal row.
 - Col is a component that defines a column within a Row.
 
-See below for more details.
+These components are based in the **React Grid System** library, so you can find more info in its [Documentation page](https://sealninja.github.io/react-grid-system/).
+
+See below for more details about our components, because they are not identical to the library ones.
 
 ## How to import
 
-<Source
-  code={`
-import { Container, Row, Col } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Container, Row, Col } from '@devoinc/genesys-ui';`} />
 
-## Basic usage
+## Examples
 
-<Canvas of={Stories.Base} />
+### Equal width
+
+If you don't assign any distribution prop to the `Col` components, then each one fills the same space.
+
+<Canvas of={CasesStories.EqualWidth} />
+
+### Stacked to horizontal
+
+Resize your browser or load on different devices to test the grid system.
+
+<Canvas of={CasesStories.Stacked} />
+
+### Column wrapping
+
+If the sum of the widths of the columns is greater than the col numbers defined in the main configuration
+(by default 12), then the last column gets wrapped onto a new line as one contiguous unit.
+
+<Canvas of={CasesStories.ColumnWrapping} />
+
+### Vertical alignment
+
+<Canvas of={CasesStories.VerticalAlignment} />
+
+### Horizontal alignment
+
+<Canvas of={CasesStories.HorizontalAlignment} />
+
+### Direction prop for order and orientation
+
+<Canvas of={CasesStories.Order} />
+
+### Offsetting
+
+<Canvas of={CasesStories.Offsetting} />
+
+### Nesting columns
+
+<Canvas of={CasesStories.NestingColumns} />
+
+### Column width adapted to content
+
+If you want that one of the columns get its width based in its own content, you only need to assign
+'content' value to any of the breakpoints (xs, sm, md... etc.) to define the width.
+
+<Canvas of={CasesStories.AdaptedContent} />
+
+### Gutter definition by Container
+
+You should define the 'gutter' prop by the `Container` parent component, because it's better
+that all the child `Row` components inherit the same gutter from its parent. The parent container
+automatically assigns the necessary props to the `Row` and `Col` components to get a group
+with the adjusted margins and paddings.
+
+<Canvas of={CasesStories.GutterDefinition} />
+
+### Gutter definition by each Row
+
+Anyway you can define a specific 'gutter' in the `Row` component level, but the padding of the
+parent `Container` won't adjust to all the rows.
+
+<Canvas of={CasesStories.GutterDefinitionByRow} />
 
 ## [Components](#subcomponents)
 

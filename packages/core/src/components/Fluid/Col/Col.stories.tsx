@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { StyledFluidBox } from '../__stories__/StyledFluidBox';
-import { Col } from '..';
+import { StoryCol as Col } from '../__stories__';
 
 const meta: Meta<typeof Col> = {
   title: 'Components/Core/Layout/Fluid/Col',
@@ -15,6 +14,10 @@ type Story = StoryObj<typeof Col>;
 export const Base: Story = {
   args: {
     sm: 12,
-    children: <StyledFluidBox>Col</StyledFluidBox>,
+    children: 'Col',
   },
+  render: (args) =>
+    ((args) => {
+      return <Col {...args} />;
+    })(args),
 };

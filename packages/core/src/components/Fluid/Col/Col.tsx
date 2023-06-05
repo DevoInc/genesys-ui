@@ -1,54 +1,37 @@
 import * as React from 'react';
+import {
+  Col as ReactGridCol,
+  ColProps as ReactGridColProps,
+} from 'react-grid-system';
 
-import { RESET_STYLES } from '../constants';
-import { StyledCol, StyledColProps } from './StyledCol';
-import type {
-  ContainerEventAttrProps,
-  DragAndDropAriaProps,
-  DragDropEventAttrProps,
-  FocusEventAttrProps,
-  GlobalAriaProps,
-  GlobalAttrProps,
-  LayoutAriaProps,
-  LayoutAttrProps,
-  MouseEventAttrProps,
-  StyledPolymorphicProps,
-} from '../../../declarations';
+import { FluidAs } from '../declarations';
+import { GlobalAttrProps } from '../../../declarations';
 
 export interface ColProps
-  extends Omit<StyledColProps, '$alignSelf'>,
-    // native props
-    StyledPolymorphicProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    DragAndDropAriaProps,
-    LayoutAttrProps,
-    LayoutAriaProps,
-    ContainerEventAttrProps<HTMLDivElement>,
-    FocusEventAttrProps<HTMLDivElement>,
-    DragDropEventAttrProps<HTMLDivElement>,
-    MouseEventAttrProps<HTMLDivElement>,
-    Pick<React.CSSProperties, 'alignSelf'> {
-  // /** Number of children by row. This will generate a grid of child elements with same width columns.*/
-  // alignSelf?: React.CSSProperties['alignSelf'];
-  /** Content of column */
+  extends Omit<ReactGridColProps, 'component'>,
+    Pick<GlobalAttrProps<HTMLDivElement>, 'tooltip'> {
+  /** The HTML tag used to render the component: aside, section, span... etc. It's used a 'div' by default. */
+  as?: FluidAs;
+  alignSelf?: React.CSSProperties['alignSelf'];
   children?: React.ReactNode;
 }
 
-export const Col: React.FC<ColProps> = ({
-  alignSelf,
-  children,
-  tooltip,
-  ...styledProps
-}) => {
-  return (
-    <StyledCol
-      {...styledProps}
-      $alignSelf={alignSelf}
-      style={RESET_STYLES.PADDING}
-      title={tooltip}
-    >
-      {children}
-    </StyledCol>
-  );
-};
+export const Col = React.forwardRef<HTMLDivElement, ColProps>(
+  ({ as, alignSelf, children, style, tooltip, ...reactGridColProps }, ref) => {
+    return (
+      <ReactGridCol
+        {...reactGridColProps}
+        component={as}
+        ref={
+          ref as React.LegacyRef<ReactGridCol> & React.LegacyRef<HTMLDivElement>
+        }
+        style={{ ...style, alignSelf: alignSelf }}
+        title={tooltip}
+      >
+        {children}
+      </ReactGridCol>
+    );
+  }
+);
+
+Col.displayName = 'Col';

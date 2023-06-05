@@ -8,7 +8,7 @@ import { light, dark } from '@devoinc/genesys-brand-devo';
 import '@devoinc/genesys-base-styles/dist/styles.css';
 import '@devoinc/genesys-icons/dist/gi-styles.css';
 
-import { BackToTop, TableOfContents } from '../.storybook/docs/blocks';
+import { BackToTop, TableOfContents } from './docs/blocks';
 import { StoryWrapper } from '../packages/core/stories/components/StoryWrapper';
 
 // Styles
@@ -98,7 +98,7 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <StoryWrapper padding={'cmp-md'} minHeight={'calc(100vh - 1.6rem)'}>
+      <StoryWrapper padding={'cmp-md'}>
         <Story />
       </StoryWrapper>
     ),

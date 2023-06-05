@@ -56,20 +56,26 @@ export const InlineMessagePanel: React.FC<InlineMessagePanelProps> = ({
         maxWidth: '40rem',
       }}
     >
-      <Panel.Header
-        closeSettings={{
-          cssTranslate: '1.8rem, -1rem',
-          onClick: onClose,
-          tooltip: onCloseTooltip,
-        }}
-        hasBoxShadow={hasScroll}
-        subtitle={subtitle}
-        title={title}
-        size="sm"
-        helpUrl={helpUrl}
-        icon={icon}
-        styles={inlineMessagePanelHeaderMixin({ hasScroll, theme })}
-      />
+      {
+        <Panel.Header
+          closeSettings={
+            onClose
+              ? {
+                  cssTranslate: '1.8rem, -1rem',
+                  onClick: onClose,
+                  tooltip: onCloseTooltip,
+                }
+              : null
+          }
+          hasBoxShadow={hasScroll}
+          subtitle={subtitle}
+          title={title}
+          size="sm"
+          helpUrl={helpUrl}
+          icon={icon}
+          styles={inlineMessagePanelHeaderMixin({ hasScroll, theme })}
+        />
+      }
       <Panel.Body
         hasScroll={hasScroll}
         panelBodyRef={targetElRef}

@@ -1,42 +1,28 @@
 import * as React from 'react';
-import { ScreenClass, setConfiguration } from 'react-grid-system';
+import { useTheme } from 'styled-components';
 
-import { ContainerSpacing, FluidProp } from '../declarations';
+import {
+  Container as ReactGridContainer,
+  ContainerProps as ReactGridContainerProps,
+  ScreenClass,
+  setConfiguration,
+} from 'react-grid-system';
+
 import {
   BREAKPOINTS_DEFAULT_VALUES,
   CONTAINER_WIDTH_DEFAULT_VALUES,
-  RESET_STYLES,
 } from '../constants';
-import { StyledContainer, StyledContainerProps } from './StyledContainer';
-import {
-  ContainerEventAttrProps,
-  DragAndDropAriaProps,
-  DragDropEventAttrProps,
-  FocusEventAttrProps,
-  GlobalAriaProps,
-  GlobalAttrProps,
-  LayoutAriaProps,
-  LayoutAttrProps,
-  MouseEventAttrProps,
-  StyledPolymorphicProps,
-} from '../../../declarations';
+import { ContainerSpacing } from '../declarations';
+import { GlobalAttrProps } from '../../../declarations';
 
-export interface ContainerExtendedProps
-  extends StyledContainerProps,
-    // native props
-    StyledPolymorphicProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    DragAndDropAriaProps,
-    LayoutAttrProps,
-    LayoutAriaProps,
-    ContainerEventAttrProps<HTMLDivElement>,
-    FocusEventAttrProps<HTMLDivElement>,
-    DragDropEventAttrProps<HTMLDivElement>,
-    MouseEventAttrProps<HTMLDivElement> {
-  /** Fluid */
-  fluidProp?: FluidProp;
-  /** Number of children by row. This will generate a grid of child elements with same width columns.*/
+import { getSpacingPropCss } from '../../../utils/spacing';
+import { getPxFromRem } from '../../../styled/functions';
+import { RowProps } from '../Row';
+
+export interface ContainerProps
+  extends Omit<ReactGridContainerProps, 'component'>,
+    Pick<GlobalAttrProps<HTMLDivElement>, 'tooltip'> {
+  /** The gutter between the different cols.*/
   gutter?: ContainerSpacing;
   /** Css margin-bottom. More info about spacing values in
    * [Spacing tokens page](?path=/story/docs-design-tokens-spacing-tokens--page) */
@@ -51,58 +37,69 @@ export interface ContainerExtendedProps
   /** Css padding-top. More info about spacing values in
    * [Spacing tokens page](?path=/story/docs-design-tokens-spacing-tokens--page) */
   paddingTop?: ContainerSpacing;
-  /** This prop remove the horizontal padding set by default taking into account
-   * the gutter size. */
-  removeHorizontalSpace?: boolean;
-  /** Content of the container */
-  children?: React.ReactNode;
+  /** Content of the container (Rows) */
+  children?: React.ReactElement<RowProps> | React.ReactElement<RowProps>[];
 }
 
-export const Container: React.FC<ContainerExtendedProps> = ({
-  children,
-  fluidProp = false,
-  gutter = 'layout-sm',
-  marginBottom,
-  marginTop,
-  maxScreen = 'xxl',
-  paddingBottom,
-  paddingTop,
-  removeHorizontalSpace = false,
-  tooltip,
-  ...styledProps
-}) => {
-  const hasFluidObject = typeof fluidProp === 'object';
-  const getConfig = () => {
+export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
+  (
+    {
+      children,
+      gutter = 'layout-sm',
+      marginBottom,
+      marginTop,
+      maxScreen = 'xxl',
+      paddingBottom,
+      paddingTop,
+      style,
+      tooltip,
+      ...reactGridContainerProps
+    },
+    ref
+  ) => {
+    const theme = useTheme();
+    const layoutSpaceTokens = theme.alias.space.layout;
+    const gutterSizeNumber =
+      gutter === '0'
+        ? 0
+        : getPxFromRem(layoutSpaceTokens[gutter.replace('layout-', '')]);
+
     setConfiguration({
       breakpoints: Object.values(BREAKPOINTS_DEFAULT_VALUES),
       containerWidths: Object.values(CONTAINER_WIDTH_DEFAULT_VALUES),
       gridColumns: 12,
       maxScreenClass: maxScreen,
     });
-  };
+    console.info('gutter: ', gutter);
+    console.info('gutterNumber: ', gutterSizeNumber);
+    return (
+      <ReactGridContainer
+        {...reactGridContainerProps}
+        ref={
+          ref as React.LegacyRef<ReactGridContainer> &
+            React.LegacyRef<HTMLDivElement>
+        }
+        style={{
+          ...style,
+          marginBottom: marginBottom && getSpacingPropCss(marginBottom, theme),
+          marginTop: marginTop && getSpacingPropCss(marginTop, theme),
+          paddingBottom:
+            paddingBottom && getSpacingPropCss(paddingBottom, theme),
+          paddingLeft: `${gutterSizeNumber / 2}px`,
+          paddingRight: `${gutterSizeNumber / 2}px`,
+          paddingTop: marginTop && getSpacingPropCss(paddingTop, theme),
+        }}
+        title={tooltip}
+      >
+        {React.Children.map(children, (child, idx) => {
+          return React.cloneElement(child, {
+            key: idx,
+            gutter: child.props.gutter || gutter,
+          });
+        })}
+      </ReactGridContainer>
+    );
+  }
+);
 
-  React.useEffect(getConfig, [maxScreen]);
-
-  return (
-    <StyledContainer
-      {...styledProps}
-      fluid={typeof fluidProp === 'boolean' && fluidProp}
-      gutter={gutter}
-      lg={hasFluidObject ? fluidProp?.lg : null}
-      $marginBottom={marginBottom}
-      $marginTop={marginTop}
-      md={hasFluidObject ? fluidProp?.md : null}
-      $paddingBottom={paddingBottom}
-      $paddingTop={paddingTop}
-      $removeHorizontalSpace={removeHorizontalSpace}
-      sm={hasFluidObject ? fluidProp?.sm : null}
-      style={RESET_STYLES.PADDING}
-      title={tooltip}
-      xl={hasFluidObject ? fluidProp?.xl : null}
-      xs={hasFluidObject ? fluidProp?.xs : null}
-      xxl={hasFluidObject ? fluidProp?.xxl : null}
-    >
-      {children}
-    </StyledContainer>
-  );
-};
+Container.displayName = 'Container';
