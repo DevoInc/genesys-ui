@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui",
-  "version": "1.0.3-alpha.13",
+  "version": "1.0.3-alpha.14",
   "description": "",
   "types": "./dist/types/src/index.d.ts",
   "main": "./dist/index.umd.js",
