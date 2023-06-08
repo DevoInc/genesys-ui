@@ -35,10 +35,12 @@ export const PanelContainer: React.FC<PanelContainerProps> = ({
   styles,
   visibility,
   widthScheme,
+  ...boxProps
 }) => {
   const theme = useTheme();
   return (
     <Box
+      {...boxProps}
       as={as}
       className={className}
       display={display}
