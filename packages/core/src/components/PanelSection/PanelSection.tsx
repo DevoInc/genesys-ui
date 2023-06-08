@@ -22,25 +22,22 @@ export const renderBackwardNavigation = ({
   backwardTooltip: string;
   onClickBackwardNav: DOMAttributes<any>['onClick'];
 }) => {
-  if (onClickBackwardNav)
-    return (
-      <HFlex
-        alignItems="stretch"
-        height="100%"
-        spacing="cmp-sm"
-        marginRight="cmp-sm"
-      >
-        <IconButton
-          hasBoldIcon
-          icon="gi-arrow_left1"
-          onClick={onClickBackwardNav}
-          tooltip={backwardTooltip}
-        />
-        <Divider height="auto" margin="0" vertical />
-      </HFlex>
-    );
-
-  return null;
+  return (
+    <HFlex
+      alignItems="stretch"
+      height="100%"
+      spacing="cmp-sm"
+      marginRight="cmp-sm"
+    >
+      <IconButton
+        hasBoldIcon
+        icon="gi-arrow_left1"
+        onClick={onClickBackwardNav}
+        tooltip={backwardTooltip}
+      />
+      <Divider height="auto" margin="0" vertical />
+    </HFlex>
+  );
 };
 
 export interface PanelSectionProps
@@ -97,31 +94,36 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
       heightScheme={{ height }}
       visibility={visibility}
     >
-      <Panel.Header.Container
-        bordered={!navigation}
-        hasBoxShadow
-        styles="padding: 0;"
-      >
+      {(onClickBackwardNav || title || headerActions || renderActions) && (
         <Panel.Header.Container
-          as="div"
-          bordered={false}
-          hasBoxShadow={false}
-          styles={panelSectionHeaderMixin({ theme })}
+          bordered={!navigation}
+          hasBoxShadow
+          styles="padding: 0;"
         >
-          {renderBackwardNavigation({
-            backwardTooltip,
-            onClickBackwardNav,
-          })}
-          <Panel.Header.Heading
-            subtitle={subtitle}
-            title={title}
-            helpUrl={helpUrl}
-            helpTooltip={helpTooltip}
-          />
-          <Panel.Header.Actions actions={headerActions} />
-          {renderActions}
+          <Panel.Header.Container
+            as="div"
+            bordered={false}
+            hasBoxShadow={false}
+            styles={panelSectionHeaderMixin({ theme })}
+          >
+            {onClickBackwardNav &&
+              renderBackwardNavigation({
+                backwardTooltip,
+                onClickBackwardNav,
+              })}
+            {title && (
+              <Panel.Header.Heading
+                subtitle={subtitle}
+                title={title}
+                helpUrl={helpUrl}
+                helpTooltip={helpTooltip}
+              />
+            )}
+            {headerActions && <Panel.Header.Actions actions={headerActions} />}
+            {renderActions}
+          </Panel.Header.Container>
         </Panel.Header.Container>
-      </Panel.Header.Container>
+      )}
       <Panel.Body
         hasScroll={hasScroll}
         removeSpace={removeContentSpace}
@@ -134,14 +136,16 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
       >
         {children}
       </Panel.Body>
-      <Panel.Footer
-        actions={footerActions}
-        hasBackground={footerHasBackground}
-        hasBoxShadow
-        styles={panelSectionFooterMixin({ theme })}
-      >
-        {footerContent}
-      </Panel.Footer>
+      {(footerContent || footerActions) && (
+        <Panel.Footer
+          actions={footerActions}
+          hasBackground={footerHasBackground}
+          hasBoxShadow
+          styles={panelSectionFooterMixin({ theme })}
+        >
+          {footerContent}
+        </Panel.Footer>
+      )}
     </Panel.Container>
   );
 };
