@@ -12,12 +12,20 @@ export interface FlexItemProps
 
 export const FlexItem: React.FC<FlexItemProps> = ({
   children,
+  height,
   styles,
   tooltip,
+  width,
   ...styledProps
 }) => {
   return (
-    <StyledFlexItem {...styledProps} title={tooltip} css={styles}>
+    <StyledFlexItem
+      {...styledProps}
+      $height={height}
+      $width={width}
+      title={tooltip}
+      css={styles}
+    >
       {children}
     </StyledFlexItem>
   );
