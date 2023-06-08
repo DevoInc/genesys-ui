@@ -128,6 +128,8 @@ export type ExpandedState = 'expanded';
 
 export type FeaturedState = 'featured';
 
+export type ActiveState = 'active';
+
 export type ReadonlyState = 'readonly';
 
 export type UIState = 'created' | 'deleted';

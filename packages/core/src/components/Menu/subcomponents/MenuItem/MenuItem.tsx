@@ -109,6 +109,13 @@ export const MenuItem: React.FC<MenuItemProps> = ({
     : selectionScheme === 'multiple'
     ? 'menuitemcheckbox'
     : 'menuitem';
+  const hasExtraLeftSpaceEval =
+    (hasExtraLeftSpace ||
+      Boolean(icon) ||
+      isSelectable ||
+      Boolean(selectionScheme)) &&
+    !Boolean(children);
+
   return (
     <StyledMenuItem as={as}>
       <StyledMenuItemInner
@@ -120,10 +127,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         as={isLink ? 'a' : isSelectable ? 'label' : 'button'}
         disabled={!isLink && !isSelectable && isDisabled}
         download={download}
-        hasExtraLeftSpace={
-          (hasExtraLeftSpace || Boolean(icon) || isSelectable) &&
-          !Boolean(children)
-        }
+        hasExtraLeftSpace={hasExtraLeftSpaceEval}
         href={isDisabled ? null : href}
         id={id}
         name={isSelectable ? null : name}

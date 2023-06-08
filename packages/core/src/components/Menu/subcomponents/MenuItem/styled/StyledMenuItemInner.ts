@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import {
+  ActiveState,
   BasicState,
   ButtonAttrProps,
   ExpandedState,
@@ -28,6 +29,7 @@ export interface StyledMenuItemInnerProps
   /** State of the menu item */
   state?:
     | BasicState
+    | ActiveState
     | MouseState
     | FeaturedState
     | SelectedState
@@ -37,6 +39,7 @@ export interface StyledMenuItemInnerProps
 
 export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
   ${({ hasExtraLeftSpace, state = 'enabled', theme, unlimitedHeight }) => {
+    const stateForTokens = state === 'active' ? 'activated' : state;
     const aliasTokens = theme.alias;
     const tokens = aliasTokens.menus.item;
     const horPadding = menuItemSizeConfig(theme).horPadding;
@@ -60,8 +63,8 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
         ${aliasTokens.mutation.transitionDuration.action};
       height: ${unlimitedHeight ? 'auto' : tokens.size.minHeight};
       padding: ${unlimitedHeight ? horPadding : `0 ${horPadding}`};
-      background-color: ${tokens.color.background[state]};
-      color: ${tokens.color.text[state]};
+      background-color: ${tokens.color.background[stateForTokens]};
+      color: ${tokens.color.text[stateForTokens]};
       cursor: pointer;
       text-decoration: none;
 
@@ -109,7 +112,7 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
       ${(state === 'expanded' || state === 'hovered' || state === 'pressed') &&
       css`
         &&& {
-          ${menuItemBackdropMixin({ tokens, state })};
+          ${menuItemBackdropMixin({ tokens, state: stateForTokens })};
         }
       `}
 

@@ -92,6 +92,22 @@ export const Selectable: Story = {
     })(),
 };
 
+export const ActiveForNavigation: Story = {
+  name: 'Active for navigation',
+  render: () =>
+    (() => {
+      const [active, setActive] = React.useState(false);
+      const onOptionClick = () => setActive(!active);
+      return (
+        <Menu.Item
+          label="Option one"
+          onClick={onOptionClick}
+          state={active ? 'active' : 'enabled'}
+        />
+      );
+    })(),
+};
+
 export const CustomContent: Story = {
   render: () =>
     (() => {
