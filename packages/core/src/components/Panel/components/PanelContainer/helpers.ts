@@ -3,29 +3,11 @@ import { css, DefaultTheme } from 'styled-components';
 
 import { BoxProps } from '../../../Box';
 
-import {
-  heightMixin,
-  pseudoElementOverlayMixin,
-  widthMixin,
-} from '../../../../styled';
-
-interface PanelHeightScheme {
-  height?: BoxProps['height'];
-  minHeight?: BoxProps['minHeight'];
-  maxHeight?: BoxProps['maxHeight'];
-}
-
-interface PanelWidthScheme {
-  width?: BoxProps['width'];
-  minWidth?: BoxProps['minWidth'];
-  maxWidth?: BoxProps['maxWidth'];
-}
+import { pseudoElementOverlayMixin } from '../../../../styled';
 
 export interface PanelContainerMixinProps extends BoxProps {
   bordered?: boolean;
   colorScheme?: React.CSSProperties['backgroundColor'];
-  heightScheme?: PanelHeightScheme;
-  widthScheme?: PanelWidthScheme;
   theme: DefaultTheme;
 }
 
@@ -39,9 +21,7 @@ export const panelContainerMixin = ({
   colorScheme,
   display,
   elevation,
-  heightScheme,
   theme,
-  widthScheme,
 }: PanelContainerMixinProps) => {
   const aliasTokens = theme.alias;
   const borderColor = aliasTokens.color.border.surface.base.weak;
@@ -60,8 +40,6 @@ export const panelContainerMixin = ({
       flex-direction: column;
       justify-content: space-between;
     `};
-    ${widthScheme && widthMixin(widthScheme)};
-    ${heightScheme && heightMixin(heightScheme)};
     overflow: hidden;
     border: ${bordered && `solid ${borderWidth} ${borderColor}`};
     border-radius: ${borderRadius};

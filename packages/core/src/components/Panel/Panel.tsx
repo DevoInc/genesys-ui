@@ -51,10 +51,8 @@ const InternalPanel: React.FC<PanelProps> = ({
   colorScheme,
   display,
   elevation = 'raised',
-  heightScheme,
   id,
   visibility,
-  widthScheme,
   position,
   // PanelHeaderProps
   headerSettings,
@@ -89,8 +87,6 @@ const InternalPanel: React.FC<PanelProps> = ({
       id={id}
       position={position}
       visibility={visibility}
-      widthScheme={widthScheme}
-      heightScheme={heightScheme}
       styles={styles}
       {...boxProps}
     >
