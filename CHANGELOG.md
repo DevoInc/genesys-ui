@@ -1,5 +1,14 @@
 # Changelog
 
+### [1.0.3-alpha.15](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.14...v1.0.3-alpha.15) (2023-06-08)
+
+
+### Bug Fixes
+
+* **AppBar:** QUV-1107 Fixed alignment of the AppBar actions to the right ([13a74d8](https://github.com/DevoInc/genesys-ui/commit/13a74d8b4dad84eda0f34bdcd8121afb8a95010c))
+* **IconButtonCollapse:** QUV-1104 Avoid extra space for the icon ([d15c974](https://github.com/DevoInc/genesys-ui/commit/d15c97436d265bd9a3184f51003ab8b9cf896361))
+* **Layout items:** QUV-1105 Fixed layout items passing style props as attrs to the HTML and not applying styles ([d45bd09](https://github.com/DevoInc/genesys-ui/commit/d45bd090e77d8fa5703011dd2fbc2f86587f5ff8))
+
 ### [1.0.3-alpha.14](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.13...v1.0.3-alpha.14) (2023-06-06)
 
 

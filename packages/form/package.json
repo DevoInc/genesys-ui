@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-form",
-  "version": "1.0.3-alpha.14",
+  "version": "1.0.3-alpha.15",
   "description": "",
   "scripts": {
     "build": "vite build && tsc --project tsconfig.build.json",
@@ -24,7 +24,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@devoinc/genesys-icons": "^3.0.1",
-    "@devoinc/genesys-ui": "^1.0.3-alpha.14",
+    "@devoinc/genesys-ui": "^1.0.3-alpha.15",
     "filepond-plugin-file-validate-size": "^2.2.8",
     "filepond-plugin-file-validate-type": "^1.2.8",
     "filepond-plugin-image-preview": "^4.6.11",

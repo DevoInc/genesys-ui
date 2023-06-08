@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-datetime",
-  "version": "1.0.3-alpha.14",
+  "version": "1.0.3-alpha.15",
   "description": "",
   "scripts": {
     "build": "vite build && tsc --project tsconfig.build.json",
@@ -24,7 +24,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@devoinc/genesys-icons": "^3.0.1",
-    "@devoinc/genesys-ui": "^1.0.3-alpha.14",
+    "@devoinc/genesys-ui": "^1.0.3-alpha.15",
     "date-fns": "^2.30.0",
     "react": "17.x || 18.x",
     "react-popper": "^2.3.0",
