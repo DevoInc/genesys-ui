@@ -96,9 +96,9 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
       state === 'loading-error';
     const isSelected = state === 'selected';
     const addonHasSpace =
-      !(!squared && iconPosition) ||
-      !(!squared && isLoading) ||
-      !(icon && squared && hasDropdown);
+      Boolean(!squared && iconPosition) ||
+      Boolean(!squared && isLoading) ||
+      Boolean(icon && squared && hasDropdown);
     return (
       <StyledButton
         {...restNativeProps}

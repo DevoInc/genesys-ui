@@ -115,7 +115,7 @@ const InternalPanel: React.FC<PanelProps> = ({
       <PanelBody
         hasScroll={hasScroll}
         panelBodyRef={targetElRef}
-        removeSpace={bodySettings.removeSpace}
+        removeSpace={bodySettings?.removeSpace}
         size={size}
       >
         {children}
