@@ -11,4 +11,8 @@ export interface AppBarActionsProps {
 export const AppBarActions: React.FC<AppBarActionsProps> = ({
   id,
   children,
-}) => <Flex.Item id={`${id}__actions`}>{children}</Flex.Item>;
+}) => (
+  <Flex.Item id={`${id}__actions`} marginLeft="auto">
+    {children}
+  </Flex.Item>
+);

@@ -49,7 +49,7 @@ const InternalAppBar: React.FC<AppBarProps> = ({
     <AppBarContainer {...nativeProps} id={id} sticky={sticky}>
       <>
         {heading && <AppBarHeading id={id}>{heading}</AppBarHeading>}
-        {heading && <AppBarDivider id={id} />}
+        {heading && tabItems && <AppBarDivider id={id} />}
         {tabItems && (
           <AppBarNavigation id={id}>
             <Tabs aria-label="main-nav" colorScheme="primary" contained={false}>
