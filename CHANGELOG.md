@@ -1,5 +1,17 @@
 # Changelog
 
+### [1.0.3-alpha.17](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.16...v1.0.3-alpha.17) (2023-06-08)
+
+
+### Features
+
+* **Panel:** use of Box props instead of complex objects as widthScheme and heightScheme ([2c7d2f3](https://github.com/DevoInc/genesys-ui/commit/2c7d2f37ecdc846e3bb05d36627066927215fdf7))
+
+
+### Bug Fixes
+
+* **Panel:** adapted usage of removed props widthScheme and heightScheme in components based in Panel one ([a26c0fe](https://github.com/DevoInc/genesys-ui/commit/a26c0feb0ac46a46429db026de4380c1768f2074))
+
 ### [1.0.3-alpha.16](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.15...v1.0.3-alpha.16) (2023-06-08)
 
 
