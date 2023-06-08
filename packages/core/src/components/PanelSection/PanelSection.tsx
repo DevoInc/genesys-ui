@@ -91,7 +91,7 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
     <Panel.Container
       display={display}
       id={id}
-      heightScheme={{ height }}
+      height={height}
       visibility={visibility}
     >
       {(onClickBackwardNav || title || headerActions || renderActions) && (

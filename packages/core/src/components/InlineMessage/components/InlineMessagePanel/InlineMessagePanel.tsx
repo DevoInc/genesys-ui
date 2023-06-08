@@ -47,14 +47,12 @@ export const InlineMessagePanel: React.FC<InlineMessagePanelProps> = ({
   return (
     <Panel.Container
       elevation={'ground'}
-      heightScheme={{ maxHeight: '40rem' }}
+      maxHeight="40rem"
       id={id}
       styles={styles}
-      widthScheme={{
-        width: 'fit-content',
-        minWidth: '30rem',
-        maxWidth: '40rem',
-      }}
+      width="fit-content"
+      minWidth="30rem"
+      maxWidth="40rem"
     >
       {
         <Panel.Header

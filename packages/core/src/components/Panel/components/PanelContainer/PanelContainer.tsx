@@ -16,7 +16,6 @@ export interface PanelContainerProps
     Omit<PanelContainerMixinProps, 'theme'> {}
 
 export const PanelContainer: React.FC<PanelContainerProps> = ({
-  as,
   bordered,
   children,
   display,

@@ -90,7 +90,7 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
           removeSpace: true,
           renderContent: headerContent,
         }}
-        heightScheme={{ maxHeight }}
+        maxHeight={maxHeight}
         styles={concat(
           toastPanelMixinProps({
             accent,
