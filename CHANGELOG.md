@@ -1,5 +1,14 @@
 # Changelog
 
+### [1.0.3-alpha.16](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.15...v1.0.3-alpha.16) (2023-06-08)
+
+
+### Bug Fixes
+
+* **MenuItem:** QUV-1108 Avoid adding extra space to the left, based in a new state 'active' and in presence of selectionScheme prop ([82d1b99](https://github.com/DevoInc/genesys-ui/commit/82d1b99b7f699135b38883c2ce209b76ee9faaa5))
+* **PanelContainer:** passed Box props to the Box internal component to get the styles ([4457ae2](https://github.com/DevoInc/genesys-ui/commit/4457ae211cef415b5965e15b72adfa299414909f))
+* **PanelSection:** avoid rendering Header or Footer of the Panel when there are not defined content props ([de2830f](https://github.com/DevoInc/genesys-ui/commit/de2830f2226d61d740dda0b5439ffa73b2edc929))
+
 ### [1.0.3-alpha.15](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.14...v1.0.3-alpha.15) (2023-06-08)
 
 
