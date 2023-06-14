@@ -31,7 +31,6 @@ export interface InputControlProps
   addonToLeft?: React.ReactNode;
   /** Fixed block of content at the end of the input */
   addonToRight?: React.ReactNode;
-  manolo?: boolean;
 }
 
 const InternalInputControl: React.FC<InputControlProps> = ({

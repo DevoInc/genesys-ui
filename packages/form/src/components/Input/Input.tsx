@@ -67,7 +67,6 @@ export const Input: React.FC<InputProps> = ({
   >
     <InputControl
       {...restNativeInputProps}
-      manolo={true}
       aria-label={label}
       disabled={disabled}
       icon={helper && hasStatus(status) ? undefined : inputControlIcon}
