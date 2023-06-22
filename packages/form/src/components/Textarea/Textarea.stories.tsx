@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Textarea } from './Textarea';
-import { FlexItem, HFlex, Typography } from '@devoinc/genesys-ui';
+import { Flex, HFlex, Typography } from '@devoinc/genesys-ui';
 
 const meta: Meta<typeof Textarea> = {
   title: 'Components/Form/Textarea',
@@ -55,20 +55,20 @@ export const UsingACharacterCounter: Story = {
           onChange={onChange}
           helper={
             <HFlex justifyContent={'space-between'} width={'100%'}>
-              <FlexItem alignSelf={'flex-start'}>
+              <Flex.Item alignSelf={'flex-start'}>
                 <Typography.Paragraph
                   colorScheme={counter < 0 ? 'error' : 'weak'}
                 >
                   {args.helper || `Max ${MAX_CHARACTERS} characters`}
                 </Typography.Paragraph>
-              </FlexItem>
-              <FlexItem alignSelf={'flex-end'}>
+              </Flex.Item>
+              <Flex.Item alignSelf={'flex-end'}>
                 <Typography.Paragraph
                   colorScheme={counter < 0 ? 'error' : 'weak'}
                 >
                   {counter < 0 ? 0 : counter}
                 </Typography.Paragraph>
-              </FlexItem>
+              </Flex.Item>
             </HFlex>
           }
           status={counter < 0 ? 'error' : 'base'}
