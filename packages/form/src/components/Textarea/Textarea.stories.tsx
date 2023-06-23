@@ -35,18 +35,19 @@ export default meta;
 type Story = StoryObj<typeof Textarea>;
 
 export const Base: Story = {};
-export const UsingACharacterCounter: Story = {
+
+export const WithCharacterCounter: Story = {
+  args: {
+    label:
+      'It is possible to add a character counter to keep track of the text length and inform of a possible limit',
+  },
   render: (args) =>
     ((args) => {
       const MAX_CHARACTERS = 10;
-      const [counter, setCounter] = React.useState<number>(MAX_CHARACTERS);
-      const [value, setValue] = React.useState('');
-
-      const getFixedValue = (newValue: string) =>
-        newValue.length > MAX_CHARACTERS ? value : newValue;
+      const [counter, setCounter] = React.useState<number>(0);
+      const errorMessage = `The max character length permitted is ${MAX_CHARACTERS}.`;
       const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(getFixedValue(event.target.value));
-        setCounter(MAX_CHARACTERS - event.target.value.length);
+        setCounter(event.target.value.length);
       };
 
       return (
@@ -57,22 +58,21 @@ export const UsingACharacterCounter: Story = {
             <HFlex justifyContent={'space-between'} width={'100%'}>
               <Flex.Item alignSelf={'flex-start'}>
                 <Typography.Paragraph
-                  colorScheme={counter < 0 ? 'error' : 'weak'}
+                  colorScheme={counter > MAX_CHARACTERS ? 'error' : 'weak'}
                 >
-                  {args.helper || `Max ${MAX_CHARACTERS} characters`}
+                  {counter > MAX_CHARACTERS ? errorMessage : args.helper}
                 </Typography.Paragraph>
               </Flex.Item>
               <Flex.Item alignSelf={'flex-end'}>
                 <Typography.Paragraph
-                  colorScheme={counter < 0 ? 'error' : 'weak'}
+                  colorScheme={counter > MAX_CHARACTERS ? 'error' : 'weak'}
                 >
-                  {counter < 0 ? 0 : counter}
+                  {`${counter}/${MAX_CHARACTERS}`}
                 </Typography.Paragraph>
               </Flex.Item>
             </HFlex>
           }
-          status={counter < 0 ? 'error' : 'base'}
-          value={value}
+          status={counter > MAX_CHARACTERS ? 'error' : 'base'}
         />
       );
     })(args),
