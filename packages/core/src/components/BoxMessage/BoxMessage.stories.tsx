@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { BoxMessage } from '../';
 
 const meta: Meta<typeof BoxMessage> = {
-  title: 'Components/Core/Layout/BoxMessage',
+  title: 'Components/Core/Feedback/BoxMessage',
   component: BoxMessage,
   args: {
     status: 'info',
