@@ -5,6 +5,10 @@ import {
   BUTTON_LOADER_COLOR_SCHEME_MAP,
   BUTTON_LOADER_SIZE_MAP,
 } from '../../constants';
+import {
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '../../../../declarations';
 import { ButtonState, ButtonColorScheme } from '../../declarations';
 
 import { ButtonDropdownIcon } from '../ButtonDropdownIcon';
@@ -13,7 +17,10 @@ import { ButtonLoader } from '../ButtonLoader';
 
 import { StyledButtonAddon, StyledButtonAddonProps } from './StyledButtonAddon';
 
-export interface ButtonAddonProps<T = Element> extends StyledButtonAddonProps {
+export interface ButtonAddonProps<T = Element>
+  extends StyledButtonAddonProps,
+    StyledPolymorphicProps,
+    StyledOverloadCssProps {
   /** Color scheme context */
   colorScheme?: ButtonColorScheme;
   id?: AllHTMLAttributes<T>['id'];
@@ -26,6 +33,7 @@ export interface ButtonAddonProps<T = Element> extends StyledButtonAddonProps {
 }
 
 export const ButtonAddon: React.FC<ButtonAddonProps> = ({
+  as,
   colorScheme = 'neutral',
   hasSpace,
   icon,
@@ -36,13 +44,16 @@ export const ButtonAddon: React.FC<ButtonAddonProps> = ({
   position,
   size = 'md',
   state = 'enabled',
+  styles,
 }) => (
   <StyledButtonAddon
+    as={as}
     hasSpace={hasSpace}
     id={id ? `button-addon-${id}` : null}
     isDropdown={isDropdown}
     position={position}
     size={size}
+    css={styles}
   >
     {isLoader ? (
       <ButtonLoader

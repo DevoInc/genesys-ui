@@ -3,10 +3,14 @@ import * as React from 'react';
 import { ButtonState } from '../../declarations';
 
 import { StyledButtonIcon, StyledButtonIconProps } from './StyledButtonIcon';
-import { StyledOverloadCssProps } from '../../../../declarations';
+import {
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '../../../../declarations';
 
 export interface ButtonIconProps
   extends StyledButtonIconProps,
+    StyledPolymorphicProps,
     StyledOverloadCssProps {
   /** Icon name/id  */
   icon?: string;
