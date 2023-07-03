@@ -24,6 +24,9 @@
     },
     {
       "path": "packages/datetime"
+    },
+    {
+      "path": "packages/table"
     }
   ]
 }
