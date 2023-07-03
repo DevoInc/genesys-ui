@@ -1,19 +1,28 @@
 import * as React from 'react';
 
+import {
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '../../../../declarations';
+
 import { Flex } from '../../../Flex';
 
-export interface AppBarNavigationProps {
+export interface AppBarNavigationProps
+  extends StyledPolymorphicProps,
+    StyledOverloadCssProps {
   id: string;
   /** Left content */
   children: React.ReactNode;
 }
 
 export const AppBarNavigation: React.FC<AppBarNavigationProps> = ({
-  id,
+  as,
   children,
+  id,
+  styles,
 }) => {
   return (
-    <Flex.Item id={`${id}__tabs`} flex="1 0 auto">
+    <Flex.Item as={as} id={`${id}__tabs`} flex="1 0 auto" styles={styles}>
       {children}
     </Flex.Item>
   );

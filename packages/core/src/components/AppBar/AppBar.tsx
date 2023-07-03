@@ -47,27 +47,25 @@ const InternalAppBar: React.FC<AppBarProps> = ({
 }) => {
   return (
     <AppBarContainer {...nativeProps} id={id} sticky={sticky}>
-      <>
-        {heading && <AppBarHeading id={id}>{heading}</AppBarHeading>}
-        {heading && tabItems && <AppBarDivider id={id} />}
-        {tabItems && (
-          <AppBarNavigation id={id}>
-            <Tabs aria-label="main-nav" colorScheme="primary" contained={false}>
-              {React.Children.map(tabItems, (tab) => React.cloneElement(tab))}
-            </Tabs>
-          </AppBarNavigation>
-        )}
-        {actions && (
-          <AppBarActions id={id}>
-            <ButtonGroup size="md">{actions}</ButtonGroup>
-          </AppBarActions>
-        )}
-        {options && (
-          <AppBarOptions id={id}>
-            <ButtonGroup size="md">{options}</ButtonGroup>
-          </AppBarOptions>
-        )}
-      </>
+      {heading && <AppBarHeading id={id}>{heading}</AppBarHeading>}
+      {heading && tabItems && <AppBarDivider id={id} />}
+      {tabItems && (
+        <AppBarNavigation id={id}>
+          <Tabs aria-label="main-nav" colorScheme="primary" contained={false}>
+            {React.Children.map(tabItems, (tab) => React.cloneElement(tab))}
+          </Tabs>
+        </AppBarNavigation>
+      )}
+      {actions && (
+        <AppBarActions id={id}>
+          <ButtonGroup size="md">{actions}</ButtonGroup>
+        </AppBarActions>
+      )}
+      {options && (
+        <AppBarOptions id={id}>
+          <ButtonGroup size="md">{options}</ButtonGroup>
+        </AppBarOptions>
+      )}
     </AppBarContainer>
   );
 };
