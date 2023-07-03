@@ -13,7 +13,6 @@ import {
   StyledUploadFilesProps,
 } from './StyledUploadFiles';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface UploadFilesProps
   extends Omit<FieldProps, 'children' | 'role'>,
     Pick<FieldAttrProps, 'name'>,

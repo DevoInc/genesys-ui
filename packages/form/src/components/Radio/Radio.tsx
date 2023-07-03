@@ -7,7 +7,6 @@ import {
   RadioControlProps,
 } from '@devoinc/genesys-ui';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface RadioProps
   extends Omit<
       FieldProps,

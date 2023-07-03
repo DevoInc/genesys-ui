@@ -7,7 +7,6 @@ import { StyledOverloadCssProps } from '../../declarations';
 
 import { StyledSelectControl } from './styled';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface InnerSelectControlProps<
   Option = SelectOption,
   IsMulti extends boolean = false,

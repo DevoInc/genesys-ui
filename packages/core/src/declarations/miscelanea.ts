@@ -6,8 +6,6 @@ import type { AllHTMLAttributes, AriaAttributes } from 'react';
  * Miscelanea
  * ----------------------------------------------------------------------------------------
  * ---------------------------------------------------------------------------------------- */
-// TODO: Analyze how dir works;
-// TODO: Analyze how lang works;
 export interface MiscelaneaProps<T = Element> {
   /** A boolean attribute indicating whether or not the element's contents are editable by the user */
   contentEditable: AllHTMLAttributes<T>['contentEditable'];
