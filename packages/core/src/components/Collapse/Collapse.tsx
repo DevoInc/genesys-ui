@@ -4,6 +4,8 @@ import { IconButtonCollapse, Flex, Typography } from '../';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
   TriggerAriaProps,
 } from '../../declarations';
 import { PickUnion } from '../../typeFunctions';
@@ -12,6 +14,8 @@ import { StyledHeader, StyledHeaderButton, StyledHeaderProps } from './styled';
 
 export interface CollapseProps
   extends StyledHeaderProps,
+    StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps,
     Pick<TriggerAriaProps, 'aria-controls'> {
@@ -21,15 +25,21 @@ export interface CollapseProps
 }
 
 export const Collapse: React.FC<CollapseProps> = ({
-  name,
-  expanded,
-  onClick,
-  truncateLine = 1,
   'aria-controls': ariaControls,
+  expanded,
+  name,
+  onClick,
+  styles,
   tooltip,
+  truncateLine = 1,
   ...nativeProps
 }) => (
-  <StyledHeader {...nativeProps} expanded={expanded} title={tooltip}>
+  <StyledHeader
+    {...nativeProps}
+    css={styles}
+    expanded={expanded}
+    title={tooltip}
+  >
     <StyledHeaderButton
       aria-controls={ariaControls}
       aria-expanded={expanded}

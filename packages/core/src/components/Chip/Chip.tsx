@@ -11,6 +11,7 @@ import {
   GlobalAttrProps,
   InputAttrProps,
   MouseEventAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../declarations';
 
@@ -27,6 +28,7 @@ export interface ChipProps
   extends GlobalAttrProps,
     GlobalAriaProps,
     StyledPolymorphicProps,
+    StyledOverloadCssProps,
     Pick<ButtonAttrProps, 'name'>,
     FocusEventAttrProps,
     MouseEventAttrProps,
@@ -62,6 +64,7 @@ export const Chip: React.FC<ChipProps> = ({
   selectionScheme = 'multiple',
   size = 'md',
   state,
+  styles,
   tooltip,
   value,
   ...restStyledProps
@@ -71,6 +74,7 @@ export const Chip: React.FC<ChipProps> = ({
   return (
     <StyledChip
       {...restStyledProps}
+      css={styles}
       id={id}
       selectionScheme={selectionScheme}
       size={size}
