@@ -19,7 +19,12 @@ import {
   GlobalLoader,
 } from './cases';
 
-import { GlobalAriaProps, GlobalAttrProps } from '../../declarations';
+import {
+  GlobalAriaProps,
+  GlobalAttrProps,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '../../declarations';
 import {
   LoaderSize,
   LoaderType,
@@ -41,7 +46,9 @@ export interface LoaderProps
     >,
     // native
     GlobalAttrProps,
-    GlobalAriaProps {
+    GlobalAriaProps,
+    StyledPolymorphicProps,
+    StyledOverloadCssProps {
   /** The definition of color scheme: based in the scheme of the theme (inherited), light, dark... etc. It defines if the overlay is dark and the content light or vice versa.*/
   colorScheme?: LoaderColorScheme;
   gradientConfig?: GradientConfig;
@@ -54,6 +61,7 @@ export interface LoaderProps
 
 const InternalLoader: React.FC<LoaderProps> = ({
   alignItems,
+  as,
   className,
   colorScheme = 'inherited',
   fixed,
@@ -68,6 +76,7 @@ const InternalLoader: React.FC<LoaderProps> = ({
   zIndex = 10,
   //native
   role,
+  styles,
   tooltip,
   ...nativeProps
 }) => {
@@ -119,9 +128,11 @@ const InternalLoader: React.FC<LoaderProps> = ({
     if (gradientConfig) {
       return (
         <Box
+          as={as}
           height={gradientConfig.height || '16rem'}
           width="100%"
           position="relative"
+          styles={styles}
         >
           <Overlay
             alignItems="center"

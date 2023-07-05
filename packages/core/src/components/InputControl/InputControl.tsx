@@ -7,6 +7,7 @@ import { INPUT_CONTROL_ICON_STATUS_MAP } from './constants';
 import { hasStatus } from '../../utils/validations';
 
 // declarations
+import { StyledOverloadCssProps } from '../../declarations';
 import type {
   InputControlIconProps,
   InputControlInputProps,
@@ -26,7 +27,8 @@ import {
 export interface InputControlProps
   extends Omit<InputControlInputProps, 'hasIcon' | 'hasTypeIcon'>,
     Pick<InputControlIconProps, 'icon'>,
-    Pick<InputControlInnerContainerProps, 'inputWidth'> {
+    Pick<InputControlInnerContainerProps, 'inputWidth'>,
+    StyledOverloadCssProps {
   /** Fixed block of content at the beginning of the input */
   addonToLeft?: React.ReactNode;
   /** Fixed block of content at the end of the input */
@@ -79,6 +81,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
   size = 'md',
   status = 'base',
   step,
+  styles,
   tooltip,
   type = 'text',
   value,
@@ -96,6 +99,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
       onMouseOut={onMouseOut}
       onMouseOver={onMouseOver}
       onMouseUp={onMouseUp}
+      styles={styles}
       tooltip={tooltip}
     >
       {addonToLeft && (

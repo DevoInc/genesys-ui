@@ -24,6 +24,7 @@ const InternalToolbar: React.FC<ToolbarProps> = ({
   size = 'md',
   height,
   elevation = 'stickyBottom',
+  styles,
   ...restBoxProps
 }) => {
   const surfaceHeightTokens = useTheme().alias.size.height.surface;
@@ -31,6 +32,7 @@ const InternalToolbar: React.FC<ToolbarProps> = ({
     <StyledToolbar
       {...restBoxProps}
       className={className}
+      css={styles}
       elevation={elevation}
       height={height || surfaceHeightTokens[size]}
     >

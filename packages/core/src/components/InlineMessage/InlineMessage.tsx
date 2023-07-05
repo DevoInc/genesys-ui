@@ -2,6 +2,14 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import * as PopperJS from '@popperjs/core';
 
+import {
+  GlobalAttrProps,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '../../declarations';
+
+import { WithRequired } from '../../typeFunctions';
+
 import { IconButtonStatusProps, Popper } from '../';
 import { ButtonExpandableState, ButtonSize } from '../Button';
 import {
@@ -12,11 +20,11 @@ import {
 
 import { StyledInlineMessage } from './StyledInlineMessage';
 import { StyledInlineMessageArrow } from './StyledInlineMessageArrow';
-import { GlobalAttrProps } from '../../declarations';
-import { WithRequired } from '../../typeFunctions';
 
 export interface InlineMessageProps
-  extends WithRequired<Omit<GlobalAttrProps, 'title'>, 'id'> {
+  extends WithRequired<Omit<GlobalAttrProps, 'title'>, 'id'>,
+    StyledOverloadCssProps,
+    StyledPolymorphicProps {
   appendTo?: HTMLElement;
   children?: React.ReactNode;
   disabled?: boolean;
@@ -41,6 +49,7 @@ export interface InlineMessageProps
 }
 const PartInlineMessage: React.FC<InlineMessageProps> = ({
   appendTo,
+  as,
   children,
   id,
   visible,
@@ -49,6 +58,7 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
   state = 'enabled',
   status = 'help',
   strategy,
+  styles,
   tooltip,
   trigger,
   zIndex,
@@ -83,6 +93,8 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
       zIndex={zIndex || zIndexDefault}
     >
       <StyledInlineMessage
+        as={as}
+        css={styles}
         id={id}
         elevation={'activated'}
         placement={placement}

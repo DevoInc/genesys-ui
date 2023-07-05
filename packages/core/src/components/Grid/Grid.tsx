@@ -9,11 +9,12 @@ export interface GridProps extends StyledGridProps, CommonBoxProps {}
 
 const InternalGrid: React.FC<GridProps> = ({
   children,
+  styles,
   tooltip,
   ...styledProps
 }) => {
   return (
-    <StyledGrid {...styledProps} title={tooltip}>
+    <StyledGrid {...styledProps} css={styles} title={tooltip}>
       {children}
     </StyledGrid>
   );

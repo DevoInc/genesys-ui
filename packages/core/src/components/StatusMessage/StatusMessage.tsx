@@ -6,6 +6,7 @@ import {
   GlobalAttrProps,
   GlobalSpacing,
   MouseEventAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
   TriggerEventAttrProps,
 } from '../../declarations';
@@ -27,6 +28,7 @@ import {
 
 export interface StatusMessageProps
   extends StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps,
     MouseEventAttrProps,
@@ -62,6 +64,7 @@ export const StatusMessage = ({
   onClick,
   padding,
   status,
+  styles,
   tooltip,
   width,
   ...restNativeProps
@@ -84,6 +87,7 @@ export const StatusMessage = ({
     <StyledStatusMessage
       {...restNativeProps}
       bordered={bordered}
+      css={styles}
       margin={margin}
       status={status}
       title={tooltip}

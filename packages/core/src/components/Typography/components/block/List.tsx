@@ -1,6 +1,7 @@
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../../../declarations';
 import * as React from 'react';
@@ -12,6 +13,7 @@ export interface ListProps
   extends StyledListProps,
     // native
     StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps {
   /** Content of the list */
@@ -20,12 +22,13 @@ export interface ListProps
 
 const InternalList: React.FC<ListProps> = ({
   as,
+  children,
   colorScheme = 'base',
   gutterBottom = 'cmp-md',
   listStyle = 'unordered',
   size = 'md',
+  styles,
   textAlign = 'left',
-  children,
   tooltip,
   ...nativeProps
 }) => (
@@ -33,6 +36,7 @@ const InternalList: React.FC<ListProps> = ({
     {...nativeProps}
     as={as || (listStyle === 'ordered' ? 'ol' : undefined)}
     colorScheme={colorScheme}
+    css={styles}
     gutterBottom={gutterBottom}
     listStyle={listStyle}
     size={size}

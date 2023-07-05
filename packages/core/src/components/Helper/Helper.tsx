@@ -7,12 +7,20 @@ import {
   HELPER_ICON_STATUS_MAP,
   HELPER_SIZE_SPACE_MAP,
 } from './constants';
-import { GlobalAttrProps, GlobalStatus } from '../../declarations';
+import {
+  GlobalAttrProps,
+  GlobalStatus,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '../../declarations';
 import { HelperSize } from './declarations';
 import { getLineHeight } from '../../styled';
 import { hasStatus } from '../../utils/validations';
 
-export interface HelperProps extends GlobalAttrProps {
+export interface HelperProps
+  extends GlobalAttrProps,
+    StyledPolymorphicProps,
+    StyledOverloadCssProps {
   /** Content of the helper message. */
   message: React.ReactNode;
   /** Size of the helper: spacing, font-size... etc. */

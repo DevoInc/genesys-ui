@@ -8,6 +8,7 @@ import {
   switchControlContainerMixin,
   SwitchControlContainerMixinProps,
 } from '../helpers';
+import { concat } from 'lodash';
 
 export interface SwitchControlContainerProps
   extends FlexProps,
@@ -58,16 +59,16 @@ export const SwitchControlContainer: React.FC<SwitchControlContainerProps> = ({
         (checked ? `0 ${spaceForHandler}px 0 0` : `0 0 0 ${spaceForHandler}px`)
       }
       position={position}
-      styles={
-        styles ||
+      styles={concat(
         switchControlContainerMixin({
           checked,
           disabled,
           handleDiameter,
           status,
           theme,
-        })
-      }
+        }),
+        styles
+      )}
     >
       {children}
     </Flex>
