@@ -90,7 +90,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
       requiredMarkTooltip={requiredMarkTooltip}
       size={size}
       status={status}
-      styled={styles}
+      styles={styles}
       tooltip={tooltip}
     >
       <Popper
