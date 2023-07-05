@@ -14,7 +14,12 @@ import type {
   MouseEventAttrProps,
   TriggerAriaProps,
 } from '@devoinc/genesys-ui';
-import { Field, InputControl } from '@devoinc/genesys-ui';
+import {
+  Field,
+  InputControl,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '@devoinc/genesys-ui';
 
 // styles
 import {
@@ -40,7 +45,9 @@ export interface DateTimeRangeControlProps
       CssDateTimeRangeControlInputProps,
       'hasMillis' | 'hasSeconds' | 'hasTime'
     >,
-    Pick<StyledDateTimeRangeControlProps, 'isOpen' | 'wide'> {
+    Pick<StyledDateTimeRangeControlProps, 'isOpen' | 'wide'>,
+    StyledOverloadCssProps,
+    StyledPolymorphicProps {
   /** aria-label attribute for `from` input */
   ariaLabelFrom?: GlobalAriaProps['aria-label'];
   /** aria-label attribute for `to` input */
@@ -88,6 +95,7 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
   'aria-controls': ariaControls,
   ariaLabelFrom = 'from',
   ariaLabelTo = 'to',
+  as,
   from,
   hasMillis,
   hasSeconds,
@@ -108,6 +116,7 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
   statusFrom = 'base',
   statusTo = 'base',
   size = 'md',
+  styles,
 }) => {
   const onBlurFromCallback = React.useCallback(
     (event: React.FocusEvent<HTMLInputElement>) => {
@@ -155,6 +164,8 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
     <StyledDateTimeRangeControl
       aria-controls={isOpen ? ariaControls : null}
       aria-haspopup
+      as={as}
+      css={styles}
       hideRealTime={hasRealTime(realTime)}
       id={id}
       isOpen={isOpen}

@@ -4,6 +4,7 @@ import {
   GlobalAttrProps,
   SelectControl,
   SelectControlProps,
+  StyledOverloadCssProps,
 } from '@devoinc/genesys-ui';
 
 import type { Preset, PresetRange, PresetGroup } from './declarations';
@@ -13,7 +14,8 @@ export interface PresetsProps
   extends WithRequired<GlobalAttrProps, 'id'>,
     Pick<GlobalAttrProps, 'tooltip'>,
     Partial<Pick<HTMLInputElement, 'placeholder'>>,
-    Partial<Pick<SelectControlProps, 'maxMenuHeight' | 'size'>> {
+    Partial<Pick<SelectControlProps, 'maxMenuHeight' | 'size'>>,
+    StyledOverloadCssProps {
   /** Function called when selected a preset. */
   onChange: (preset: PresetRange) => void;
   /** Custom list of presets values. */
