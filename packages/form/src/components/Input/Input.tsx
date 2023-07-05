@@ -39,6 +39,7 @@ export const Input: React.FC<InputProps> = ({
   requiredMarkTooltip,
   size = 'md',
   status = 'base',
+  styles,
   tooltip,
   type = 'text',
   ...restNativeInputProps
@@ -63,6 +64,7 @@ export const Input: React.FC<InputProps> = ({
     requiredMarkTooltip={requiredMarkTooltip}
     size={size}
     status={status}
+    styles={styles}
     tooltip={tooltip}
   >
     <InputControl
