@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Flex, HFlex, IconButtonRemove, Typography } from '../';
+import { Box, Flex, HFlex, Icon, IconButtonRemove, Typography } from '../';
 import { StyledBoxMessage, StyledBoxMessageProps } from './StyledBoxMessage';
 import { statusIconMap } from '../../styled/functions';
 import { StyledBoxMessageIcon } from './StyledBoxMessageIcon';
@@ -10,6 +10,7 @@ import {
   StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../declarations';
+import { useTheme } from 'styled-components';
 
 export interface BoxMessageProps
   extends StyledBoxMessageProps,
@@ -43,61 +44,73 @@ export const BoxMessage: React.FC<BoxMessageProps> = ({
   styles,
   tooltip,
   ...nativeProps
-}) => (
-  <StyledBoxMessage
-    {...nativeProps}
-    title={tooltip}
-    status={status}
-    css={styles}
-  >
-    {!hideIcon && (
-      <Flex.Item alignSelf="flex-start" flex="0 0 auto" marginRight="cmp-sm">
-        <StyledBoxMessageIcon
-          status={status}
-          className={statusIconMap.filled[status] || ''}
-          aria-hidden
-        />
+}) => {
+  const theme = useTheme();
+  return (
+    <StyledBoxMessage
+      {...nativeProps}
+      title={tooltip}
+      status={status}
+      css={styles}
+    >
+      {!hideIcon && (
+        <Flex.Item alignSelf="flex-start" flex="0 0 auto" marginRight="cmp-sm">
+          <StyledBoxMessageIcon
+            status={status}
+            className={statusIconMap.filled[status] || ''}
+            aria-hidden
+          />
+          <Icon
+            iconId={statusIconMap.filled[status] || ''}
+            color={theme.cmp.boxMessage.icon.color.text[status]}
+            size="xxs"
+          />
+        </Flex.Item>
+      )}
+      <Flex.Item flex="1 1 auto">
+        {title && (
+          <Typography.Heading gutterBottom="cmp-sm" size="h5">
+            {title}
+          </Typography.Heading>
+        )}
+        {content &&
+          (typeof content === 'string' ? (
+            <Typography.Paragraph gutterBottom="0">
+              {content}
+            </Typography.Paragraph>
+          ) : (
+            content
+          ))}
+        {actions && (
+          <HFlex
+            alignItems="center"
+            justifyContent="flex-end"
+            marginTop="cmp-sm"
+            spacing="cmp-xs"
+          >
+            {React.Children.map(
+              actions,
+              (action, idx) =>
+                action &&
+                React.cloneElement(action, {
+                  key: idx,
+                  size: action.props.size || 'sm',
+                  colorScheme: action.props.colorScheme || status,
+                })
+            )}
+          </HFlex>
+        )}
       </Flex.Item>
-    )}
-    <Flex.Item flex="1 1 auto">
-      {title && (
-        <Typography.Heading gutterBottom="cmp-sm" size="h5">
-          {title}
-        </Typography.Heading>
-      )}
-      {content &&
-        (typeof content === 'string' ? (
-          <Typography.Paragraph gutterBottom="0">
-            {content}
-          </Typography.Paragraph>
-        ) : (
-          content
-        ))}
-      {actions && (
-        <HFlex
-          alignItems="center"
-          justifyContent="flex-end"
-          marginTop="cmp-sm"
-          spacing="cmp-xs"
-        >
-          {React.Children.map(
-            actions,
-            (action, idx) =>
-              action &&
-              React.cloneElement(action, {
-                key: idx,
-                size: action.props.size || 'sm',
-                colorScheme: action.props.colorScheme || status,
-              })
-          )}
-        </HFlex>
-      )}
-    </Flex.Item>
 
-    {close && (
-      <Box position="absolute" positionRight="1.2rem" positionTop="1rem">
-        <IconButtonRemove onClick={close} tooltip={closeTooltip} size={'sm'} />
-      </Box>
-    )}
-  </StyledBoxMessage>
-);
+      {close && (
+        <Box position="absolute" positionRight="1.2rem" positionTop="1rem">
+          <IconButtonRemove
+            onClick={close}
+            tooltip={closeTooltip}
+            size={'sm'}
+          />
+        </Box>
+      )}
+    </StyledBoxMessage>
+  );
+};
