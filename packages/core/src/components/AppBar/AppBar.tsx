@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import type { StyledOverloadCssPropsWithRecord } from '../../declarations';
+
 import {
   ButtonGroup,
   ButtonProps,
@@ -19,7 +21,7 @@ import {
   AppBarOptions,
 } from './subcomponents';
 
-export interface AppBarProps extends AppBarContainerProps {
+interface BaseAppBarProps extends AppBarContainerProps {
   /** List of actions elements. */
   actions?: (
     | React.ReactElement<ButtonProps>
@@ -36,6 +38,9 @@ export interface AppBarProps extends AppBarContainerProps {
   tabItems?: React.ReactElement<TabsItemProps>[];
 }
 
+export type AppBarProps = BaseAppBarProps &
+  StyledOverloadCssPropsWithRecord<'container' | 'heading'>;
+
 const InternalAppBar: React.FC<AppBarProps> = ({
   actions,
   id,
@@ -43,6 +48,8 @@ const InternalAppBar: React.FC<AppBarProps> = ({
   sticky = false,
   tabItems,
   heading,
+  // styles,
+  // subcomponentStyles,
   ...nativeProps
 }) => {
   return (

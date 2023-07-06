@@ -4,7 +4,6 @@ import { StyledFlexItem, StyledFlexItemProps } from './StyledFlexItem';
 import { CommonBoxProps } from '../../../Box';
 import { StyledOverloadCssProps } from '../../../../declarations';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface FlexItemProps
   extends CommonBoxProps,
     StyledFlexItemProps,

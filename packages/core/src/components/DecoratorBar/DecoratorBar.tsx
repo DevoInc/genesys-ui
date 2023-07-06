@@ -10,7 +10,6 @@ import {
   StyledDecoratorBarProps,
 } from './StyledDecoratorBar';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface DecoratorBarProps
   extends StyledDecoratorBarProps,
     StyledPolymorphicProps,

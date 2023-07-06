@@ -7,7 +7,6 @@ interface ItemSelectableProps extends MenuItemProps {
   checked?: boolean;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export const ItemSelectable = ({
   checked,
   onChange,

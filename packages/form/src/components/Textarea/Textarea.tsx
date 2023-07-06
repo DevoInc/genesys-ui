@@ -7,7 +7,6 @@ import {
   TextareaControlProps,
 } from '@devoinc/genesys-ui';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TextareaProps
   extends Omit<FieldProps, 'children' | 'role'>,
     Omit<

@@ -4,7 +4,6 @@ import { CommonBoxProps } from '../Box';
 import { GridItem } from './subcomponents';
 import { StyledGrid, StyledGridProps } from './StyledGrid';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface GridProps extends StyledGridProps, CommonBoxProps {}
 
 const InternalGrid: React.FC<GridProps> = ({

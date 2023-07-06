@@ -3,7 +3,6 @@ import * as React from 'react';
 import {
   Field,
   FieldProps,
-  GlobalAriaProps,
   SelectControl,
   SelectOption,
   SelectControlProps,
@@ -18,10 +17,7 @@ export interface SelectProps
     Omit<
       SelectControlProps<ExtendedSelectOption>,
       'id' | 'size' | 'aria-label'
-    >,
-    // native
-    // TODO: add the rest
-    GlobalAriaProps {}
+    > {}
 
 export const Select: React.FC<SelectProps> = ({
   // COMMON ---------------------------------
