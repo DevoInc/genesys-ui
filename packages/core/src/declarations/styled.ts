@@ -31,8 +31,8 @@ type StyledOverloadRecordCssProp<T extends string = string> = {
 /**
  * Union of the two possible ways to pass css to a dot notation component.
  * @example
- * <AppBar styles={{ color: 'red' }} />
- * <AppBar subcomponentStyles={{ container: { color: 'red' } }} />
+ * <AppBar styles={{ color: 'red' }} /> or <AppBar styles='color: red; height: auto' />
+ * <AppBar subcomponentStyles={{ container: { color: 'red' } }} /> or <AppBar subcomponentStyles={{ container: 'color: red'}} />
  */
 export type StyledOverloadCssPropsWithRecord<T extends string> =
   | {

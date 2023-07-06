@@ -39,7 +39,9 @@ interface BaseAppBarProps extends AppBarContainerProps {
 }
 
 export type AppBarProps = BaseAppBarProps &
-  StyledOverloadCssPropsWithRecord<'container' | 'heading'>;
+  StyledOverloadCssPropsWithRecord<
+    'container' | 'heading' | 'divider' | 'navigation' | 'actions' | 'options'
+  >;
 
 const InternalAppBar: React.FC<AppBarProps> = ({
   actions,
@@ -48,28 +50,39 @@ const InternalAppBar: React.FC<AppBarProps> = ({
   sticky = false,
   tabItems,
   heading,
-  // styles,
-  // subcomponentStyles,
+  styles,
+  subcomponentStyles,
   ...nativeProps
 }) => {
   return (
-    <AppBarContainer {...nativeProps} id={id} sticky={sticky}>
-      {heading && <AppBarHeading id={id}>{heading}</AppBarHeading>}
-      {heading && tabItems && <AppBarDivider id={id} />}
+    <AppBarContainer
+      {...nativeProps}
+      styles={subcomponentStyles?.container || styles}
+      id={id}
+      sticky={sticky}
+    >
+      {heading && (
+        <AppBarHeading id={id} styles={subcomponentStyles?.heading}>
+          {heading}
+        </AppBarHeading>
+      )}
+      {heading && tabItems && (
+        <AppBarDivider id={id} styles={subcomponentStyles?.divider} />
+      )}
       {tabItems && (
-        <AppBarNavigation id={id}>
+        <AppBarNavigation id={id} styles={subcomponentStyles?.navigation}>
           <Tabs aria-label="main-nav" colorScheme="primary" contained={false}>
             {React.Children.map(tabItems, (tab) => React.cloneElement(tab))}
           </Tabs>
         </AppBarNavigation>
       )}
       {actions && (
-        <AppBarActions id={id}>
+        <AppBarActions id={id} styles={subcomponentStyles?.actions}>
           <ButtonGroup size="md">{actions}</ButtonGroup>
         </AppBarActions>
       )}
       {options && (
-        <AppBarOptions id={id}>
+        <AppBarOptions id={id} styles={subcomponentStyles?.options}>
           <ButtonGroup size="md">{options}</ButtonGroup>
         </AppBarOptions>
       )}
