@@ -48,8 +48,8 @@ const InternalAppBar: React.FC<AppBarProps> = ({
   sticky = false,
   tabItems,
   heading,
-  styles,
-  subcomponentStyles,
+  // styles,
+  // subcomponentStyles,
   ...nativeProps
 }) => {
   return (

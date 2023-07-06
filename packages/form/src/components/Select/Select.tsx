@@ -3,7 +3,6 @@ import * as React from 'react';
 import {
   Field,
   FieldProps,
-  GlobalAriaProps,
   SelectControl,
   SelectOption,
   SelectControlProps,
