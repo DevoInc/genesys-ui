@@ -1,116 +1,90 @@
 import * as React from 'react';
 
-import { Box, Flex, HFlex, Icon, IconButtonRemove, Typography } from '../';
-import { StyledBoxMessage, StyledBoxMessageProps } from './StyledBoxMessage';
-import { statusIconMap } from '../../styled/functions';
-import { StyledBoxMessageIcon } from './StyledBoxMessageIcon';
+import { BoxMessageHeadingProps } from './components';
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-} from '../../declarations';
-import { useTheme } from 'styled-components';
+  BoxMessageActions,
+  BoxMessageActionsProps,
+  BoxMessageClose,
+  BoxMessageCloseProps,
+  BoxMessageContainer,
+  BoxMessageContainerProps,
+  BoxMessageContent,
+  BoxMessageContentProps,
+  BoxMessageHeading,
+  BoxMessageIcon,
+} from './components';
+import { Flex } from '../';
 
 export interface BoxMessageProps
-  extends StyledBoxMessageProps,
-    // native
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps {
-  /** BoxMessage actions */
-  actions?: React.ReactElement[];
+  extends Omit<BoxMessageContainerProps, 'children'>,
+    Pick<BoxMessageActionsProps, 'actions'> {
   /** onClick function for close button */
-  close?: () => void;
+  close?: BoxMessageCloseProps['onClick'];
   /** Tooltip for close button */
-  closeTooltip?: string;
+  closeTooltip?: BoxMessageCloseProps['tooltip'];
   /** BoxMessage content */
-  content?: React.ReactNode;
+  content?: BoxMessageContentProps['children'];
   /** This prop hides the BoxMessage icon */
   hideIcon?: boolean;
   /** BoxMessage title content */
-  title?: React.ReactNode;
+  title?: BoxMessageHeadingProps['children'];
 }
 
-export const BoxMessage: React.FC<BoxMessageProps> = ({
+export const InternalBoxMessage: React.FC<BoxMessageProps> = ({
   actions,
+  as,
+  className,
   close,
   closeTooltip = 'Remove message',
   content,
   hideIcon,
-  title,
+  id,
+  role,
   status = 'info',
   styles,
+  title,
   tooltip,
-  ...nativeProps
+  ...ariaProps
 }) => {
-  const theme = useTheme();
   return (
-    <StyledBoxMessage
-      {...nativeProps}
-      title={tooltip}
+    <BoxMessageContainer
+      {...ariaProps}
+      as={as}
+      className={className}
+      id={id}
+      role={role}
       status={status}
-      css={styles}
+      styles={styles}
+      tooltip={tooltip}
     >
       {!hideIcon && (
-        <Flex.Item alignSelf="flex-start" flex="0 0 auto" marginRight="cmp-sm">
-          <StyledBoxMessageIcon
-            status={status}
-            className={statusIconMap.filled[status] || ''}
-            aria-hidden
-          />
-          <Icon
-            iconId={statusIconMap.filled[status] || ''}
-            color={theme.cmp.boxMessage.icon.color.text[status]}
-            size="xxs"
-          />
+        <Flex.Item alignSelf="flex-start" flex="0 0 auto">
+          <BoxMessageIcon status={status} />
         </Flex.Item>
       )}
       <Flex.Item flex="1 1 auto">
-        {title && (
-          <Typography.Heading gutterBottom="cmp-sm" size="h5">
-            {title}
-          </Typography.Heading>
-        )}
-        {content &&
-          (typeof content === 'string' ? (
-            <Typography.Paragraph gutterBottom="0">
-              {content}
-            </Typography.Paragraph>
-          ) : (
-            content
-          ))}
-        {actions && (
-          <HFlex
-            alignItems="center"
-            justifyContent="flex-end"
-            marginTop="cmp-sm"
-            spacing="cmp-xs"
-          >
-            {React.Children.map(
-              actions,
-              (action, idx) =>
-                action &&
-                React.cloneElement(action, {
-                  key: idx,
-                  size: action.props.size || 'sm',
-                  colorScheme: action.props.colorScheme || status,
-                })
-            )}
-          </HFlex>
-        )}
+        {title && <BoxMessageHeading>{title}</BoxMessageHeading>}
+        {content && <BoxMessageContent>{content}</BoxMessageContent>}
+        {actions && <BoxMessageActions actions={actions} status={status} />}
       </Flex.Item>
 
-      {close && (
-        <Box position="absolute" positionRight="1.2rem" positionTop="1rem">
-          <IconButtonRemove
-            onClick={close}
-            tooltip={closeTooltip}
-            size={'sm'}
-          />
-        </Box>
-      )}
-    </StyledBoxMessage>
+      {close && <BoxMessageClose onClick={close} tooltip={closeTooltip} />}
+    </BoxMessageContainer>
   );
 };
+
+export const BoxMessage = InternalBoxMessage as typeof InternalBoxMessage & {
+  Actions: typeof BoxMessageActions;
+  Close: typeof BoxMessageClose;
+  Container: typeof BoxMessageContainer;
+  Content: typeof BoxMessageContent;
+  Heading: typeof BoxMessageHeading;
+  Icon: typeof BoxMessageIcon;
+};
+
+BoxMessage.Actions = BoxMessageActions;
+BoxMessage.Close = BoxMessageClose;
+BoxMessage.Container = BoxMessageContainer;
+BoxMessage.Content = BoxMessageContent;
+BoxMessage.Heading = BoxMessageHeading;
+BoxMessage.Icon = BoxMessageIcon;

@@ -9,16 +9,16 @@ export interface StyledBoxMessageProps {
 
 export const StyledBoxMessage = styled.div<StyledBoxMessageProps>`
   ${({ status = 'info', theme }) => {
-    const aliasTokens = theme.alias;
     const cmpTokens = theme.cmp.boxMessage;
-    const spacingTokens = aliasTokens.space;
 
     return css`
       position: relative;
       display: flex;
-      border: 0.1rem solid ${cmpTokens.color.border[status]};
-      border-radius: 0.4rem;
-      padding: ${spacingTokens.cmp.sm};
+      gap: ${cmpTokens.space.padding};
+      border: ${cmpTokens.shape.borderSize} solid
+        ${cmpTokens.color.border[status]};
+      border-radius: ${cmpTokens.shape.borderRadius};
+      padding: ${cmpTokens.space.padding};
       background-color: ${cmpTokens.color.background[status]};
     `;
   }}
