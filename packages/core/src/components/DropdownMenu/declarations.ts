@@ -43,7 +43,7 @@ export interface DropdownItem {
   highlighted?: boolean;
   href?: string;
   label: string;
-  onChange?: DOMAttributes<any>['onChange'];
+  onChange?: DOMAttributes<HTMLElement>['onChange'];
   shortcut?: string;
   subMenu?: object[];
   subMenuDirection?: string;

@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Button } from '../../Button';
 import { IconButton } from '../../IconButton';
 import { Divider } from '../../Divider';
+import { Tabs, TabsItemProps } from '../../Tabs';
 import { STATUS_ICON_MAP } from '../../../constants';
 
 export const mainActions = [
@@ -64,7 +65,7 @@ export const userOptions = [
   </Button>,
 ];
 
-export const tabs: React.ReactElement<any>[] = [
+export const tabs: React.ReactElement<TabsItemProps>[] = [
   <Tabs.Item
     size="lg"
     state="selected"

@@ -86,7 +86,7 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
       containerRect: DOMRect,
       splitterRect: DOMRect,
       clientPosition: ClientPositionProps, // TODO: this value can be extracted from splitterRect
-      offsetMouse: any
+      offsetMouse: boolean
     ) => {
       let totalSize;
       let splitterSize;
