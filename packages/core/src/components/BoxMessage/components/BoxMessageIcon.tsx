@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { statusIconMap } from '../../../styled/functions';
 import { BoxMessageProps, Icon } from '../../index';
+import { STATUS_ICON_MAP } from '../../../../src/constants';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface BoxMessageIconProps
@@ -15,7 +15,7 @@ export const BoxMessageIcon: React.FC<BoxMessageIconProps> = ({
   const theme = useTheme();
   return (
     <Icon
-      iconId={statusIconMap.filled[status] || ''}
+      iconId={STATUS_ICON_MAP.filled[status] || ''}
       color={theme.cmp.boxMessage.icon.color.text[status]}
       size="xs"
       styles={styles}

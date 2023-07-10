@@ -1,12 +1,9 @@
-import { ActiveStatus } from '../../declarations';
+import { STATUS_ICON_MAP } from '../../constants';
+import { ToastStatus } from './declarations';
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
 
-// TODO: string should be one of icons
-export const toastStatusToIconMap: { [key in ActiveStatus]: string } = {
-  help: 'gi-about_question_faq_help_filled',
-  info: 'gi-info_about_round_filled',
-  error: 'gi-error_warning_danger_stop_filled',
-  success: 'gi-ok_successful_check_filled',
-  warning: 'gi-attention_error_alert_caution_filled',
-};
+export const toastStatusToIconMap: {
+  [key in ToastStatus]: keyof typeof iconDictionary;
+} = STATUS_ICON_MAP.filled;
 
-export const TOAST_ELEVATION_LEVEL = 'popOut';
+export const TOAST_ELEVATION_LEVEL = 'popOut' as const;

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Button } from '../../Button';
 import { IconButton } from '../../IconButton';
 import { Divider } from '../../Divider';
-import { Tabs } from '../../Tabs';
+import { STATUS_ICON_MAP } from '../../../constants';
 
 export const mainActions = [
   <IconButton
@@ -34,7 +34,7 @@ export const mainActions = [
     aria-label="Help"
     tooltip="Help"
     key={4}
-    icon="gi-about_question_faq_help_filled"
+    icon={STATUS_ICON_MAP.filled.help}
     circular
     colorScheme="quiet"
   />,
