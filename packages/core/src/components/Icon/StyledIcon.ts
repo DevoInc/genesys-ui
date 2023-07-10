@@ -20,7 +20,7 @@ export interface StyledIconProps {
 
 export const StyledIcon = styled.i.attrs(
   ({ iconId }: Pick<StyledIconProps, 'iconId'>) => ({
-    className: iconId.toString() as string,
+    className: iconId as string,
   })
 )<StyledIconProps>`
   ${({ color, colorScheme, size, strong, theme }) => {

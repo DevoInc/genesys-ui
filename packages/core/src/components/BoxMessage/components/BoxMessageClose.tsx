@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
+// import { useTheme } from 'styled-components';
 
 import {
   MouseEventAttrProps,
@@ -19,12 +19,12 @@ export const BoxMessageClose: React.FC<BoxMessageCloseProps> = ({
   tooltip,
   styles,
 }) => {
-  const theme = useTheme();
+  // const theme = useTheme();
   return (
     <Box
       position="absolute"
-      positionRight={theme.cmp.boxMessage.close.space.offset.right}
-      positionTop={theme.cmp.boxMessage.close.space.offset.top}
+      // positionRight={theme.cmp.boxMessage.close.space.offset.right}
+      // positionTop={theme.cmp.boxMessage.close.space.offset.top}
       styles={styles}
     >
       <IconButtonRemove onClick={onClick} tooltip={tooltip} size={'sm'} />

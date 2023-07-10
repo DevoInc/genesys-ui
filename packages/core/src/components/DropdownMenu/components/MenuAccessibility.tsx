@@ -7,17 +7,15 @@ import {
   killEvent,
   navigateBetweenMenuItemByKeyboard,
 } from '../helpers';
+import { StyledPolymorphicProps } from 'packages/core/src/declarations';
 
-export interface MenuAccessibilityProps {
+export interface MenuAccessibilityProps extends StyledPolymorphicProps {
   /** Tabindex item */
   tabIndex?: number;
-  /** Polymorphic prop to create a different tag or styled component
-   * https://styled-components.com/docs/api#as-polymorphic-prop */
-  as?: any; //TODO
   /** item's accessibility role: (menuitem, menucheckbox, ...) */
   role: AccessibilityRolesProp;
   /** action to be performed by the item when pressed on it (Mouse click and keyboard). */
-  action: (event: React.MouseEvent<HTMLElement>) => void;
+  action: (event: React.MouseEvent | React.KeyboardEvent) => void;
   /** The function when the item is hovered */
   actionOver?: (event: React.MouseEvent<HTMLElement>) => void;
   /** The function when the mouse leaves the item */
@@ -65,7 +63,7 @@ export const MenuAccessibility = React.forwardRef<
           submenuitem: (event) => {
             if (
               event.target.closest(["[role='menuitem']"]) ===
-              (ref as any).current // TODO: to refact
+              (ref as React.RefObject<HTMLElement>).current
             ) {
               event.stopPropagation();
             }
@@ -100,7 +98,7 @@ export const MenuAccessibility = React.forwardRef<
     );
 
     const actionKeyBoard = React.useCallback(
-      (event) => {
+      (event: React.KeyboardEvent) => {
         const keydownActionsTypes = {
           menu: (event) => navigateBetweenMenuItemByKeyboard(event, action),
           submenuitem: (event) =>
@@ -108,7 +106,7 @@ export const MenuAccessibility = React.forwardRef<
               event,
               action,
               rest['aria-expanded'],
-              ref
+              ref as React.RefObject<HTMLElement>
             ),
           item: (event) => actionItemByKeyBoard(event, action),
         };
