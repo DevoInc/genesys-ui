@@ -10,6 +10,7 @@
     "clean:cache": "rm -rf node_modules/.cache",
     "clean": "rm -rf storybook-static coverage packages/*/dist",
     "build": "npm run build -ws --if-present",
+    "build:watch": "npm run build:watch -ws --if-present",
     "depcruise": "npm run depcruise -ws --if-present",
     "lint": "npx eslint --max-warnings 0 packages/**/src",
     "start": "npm run storybook",
