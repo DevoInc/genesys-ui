@@ -5,6 +5,8 @@
   "main": "index.js",
   "private": true,
   "scripts": {
+    "compile": "npm run compile -ws --if-present",
+    "compile:watch": "npm run compile:watch -ws --if-present",
     "clean:cache": "rm -rf node_modules/.cache",
     "clean": "rm -rf storybook-static coverage packages/*/dist",
     "build": "npm run build -ws --if-present",
