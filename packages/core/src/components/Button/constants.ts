@@ -1,7 +1,12 @@
 import { BadgeSize, ButtonColorScheme, ButtonSize } from '../../';
 import { SpinnerColorScheme, SpinnerSize } from '../SpinnerLoader/constants';
 
-export const BUTTON_LOADING_ICON_NAME = {
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
+
+export const BUTTON_LOADING_ICON_NAME: Record<
+  string,
+  keyof typeof iconDictionary
+> = {
   'loading-success': 'check_thick',
   'loading-error': 'exit_close',
 } as const;

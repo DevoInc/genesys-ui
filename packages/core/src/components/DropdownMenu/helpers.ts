@@ -1,6 +1,9 @@
 import { KeyboardEventsAction, KeyboardEventsMove } from './declarations';
 
-export const actionItemByKeyBoard = (event: any, action: any) => {
+export const actionItemByKeyBoard = (
+  event: React.KeyboardEvent,
+  action: (event: React.KeyboardEvent) => void
+) => {
   const { key } = event;
   const enter: KeyboardEventsAction = 'Enter';
   const space: KeyboardEventsAction = ' ';
@@ -11,10 +14,10 @@ export const actionItemByKeyBoard = (event: any, action: any) => {
 };
 
 export const navigateBetweenSubMenuByKeyBoard = (
-  event: any,
-  action: any,
-  expanded: any,
-  ref: any
+  event: React.KeyboardEvent,
+  action: (event: any) => void,
+  expanded: boolean,
+  ref: React.RefObject<HTMLElement>
 ) => {
   const { key } = event;
   const enter: KeyboardEventsAction = 'Enter';
@@ -41,7 +44,7 @@ export const navigateBetweenSubMenuByKeyBoard = (
   }
 };
 
-export const killEvent = (event: any) => {
+export const killEvent = (event: React.KeyboardEvent) => {
   const { key, type } = event;
   const enter: KeyboardEventsAction = 'Enter';
   const space: KeyboardEventsAction = ' ';
@@ -50,7 +53,10 @@ export const killEvent = (event: any) => {
   }
 };
 
-export const navigateBetweenMenuItemByKeyboard = (event: any, action: any) => {
+export const navigateBetweenMenuItemByKeyboard = (
+  event: React.KeyboardEvent,
+  action: (event: any) => void
+) => {
   const { key } = event;
   const up: KeyboardEventsMove = 'ArrowUp';
   const down: KeyboardEventsMove = 'ArrowDown';

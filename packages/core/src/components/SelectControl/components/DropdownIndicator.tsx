@@ -8,14 +8,15 @@ import { Icon } from '../..';
 import { showMenuAndDropDown } from '../utils';
 import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
 import { SelectOption } from '../declarations';
+import { STATUS_ICON_MAP } from '../../../constants';
 
 const mapStatusIcon: {
   [key in RSDropdownIndicatorProps['selectProps']['status']]: keyof typeof iconDictionary;
 } = {
   base: '' as RSDropdownIndicatorProps['selectProps']['status'],
-  error: 'gi-error_warning_danger_stop_filled',
-  success: 'gi-ok_successful_check_filled',
-  warning: 'gi-attention_error_alert_caution_filled',
+  error: STATUS_ICON_MAP.filled.error,
+  success: STATUS_ICON_MAP.filled.error,
+  warning: STATUS_ICON_MAP.filled.warning,
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

@@ -1,17 +1,12 @@
+import type { UIColorScheme } from '../../../../';
+import { STATUS_ICON_MAP } from '../../../../constants';
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
+
 // ICON BUTTON STATUS - ICON PROP VALUES ------------------------------------ //
 
-import { ActiveStatus, UIColorScheme } from '../../../../';
-
-// TODO: the string should be one of icon
 export const ICON_BUTTON_STATUS_ICON_PROP_MAP: {
-  [key in ActiveStatus]: string;
-} = {
-  error: 'gi-error_warning_danger_stop_filled',
-  help: 'gi-about_question_faq_help_filled',
-  info: 'gi-info_about_round_filled',
-  success: 'gi-ok_successful_check_filled',
-  warning: 'gi-attention_error_alert_caution_filled',
-} as const;
+  [key in IconButtonStatusColorScheme]: keyof typeof iconDictionary;
+} = STATUS_ICON_MAP.filled;
 
 // ICON BUTTON - COLOR SCHEME - PROP VALUES --------------------------------- //
 

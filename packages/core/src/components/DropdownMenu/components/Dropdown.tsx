@@ -6,6 +6,7 @@ import { KeyboardEventsMove, TypesProp } from '../declarations';
 import { Menu } from '../../Menu';
 import { BoxProps } from '../../Box';
 import { DropdownMenuContainer } from './DropdownMenuContainer';
+import { MenuItemProps } from '../../Menu/subcomponents';
 
 const TYPES: { [key: string]: TypesProp } = {
   item: 'item',
@@ -15,7 +16,11 @@ const TYPES: { [key: string]: TypesProp } = {
   itemSelectable: 'itemSelectable',
 };
 
-const buildItemsMenu = (items: any, listItemsRef: any[], deepLevel: number) => {
+const buildItemsMenu = (
+  items: Record<string, any>[],
+  listItemsRef: React.RefObject<HTMLElement>[],
+  deepLevel: number
+) => {
   const elements: React.ReactElement[] = [];
   const checkLeftSpace = (dataItem) =>
     dataItem.checked ||
@@ -25,7 +30,9 @@ const buildItemsMenu = (items: any, listItemsRef: any[], deepLevel: number) => {
     items.length > 0 && items.filter(checkLeftSpace).length > 0;
   items.forEach((item, index) => {
     if (item.hidden) return;
-    let builtComponent: any = <Item {...item} hasExtraLeftSpace={leftSpaced} />;
+    let builtComponent: React.ReactElement<MenuItemProps> = (
+      <Item {...item} hasExtraLeftSpace={leftSpaced} />
+    );
     const ref = React.createRef<HTMLElement>();
 
     if (item.type === TYPES.item)
@@ -35,7 +42,7 @@ const buildItemsMenu = (items: any, listItemsRef: any[], deepLevel: number) => {
         <ItemSubMenu
           {...item}
           deepLevel={deepLevel}
-          forwardedRef={ref}
+          // forwardedRef={ref}
           hasExtraLeftSpace={leftSpaced}
           key={item.label}
           subMenuConfig={item.subMenu}
@@ -51,7 +58,7 @@ const buildItemsMenu = (items: any, listItemsRef: any[], deepLevel: number) => {
       builtComponent = (
         <ItemSelectable
           {...item}
-          forwardedRef={ref}
+          // forwardedRef={ref}
           key={item.label}
           hasExtraLeftSpace={leftSpaced}
         />
@@ -67,13 +74,13 @@ interface DropdownProps extends BoxProps {
   /** Label of the menu trigger component. */
   label?: string;
   /** Items for menu: array of objects with item config. */
-  items?: { [key: string]: any }[];
+  items?: Record<string, any>[];
   /** This prop defines the Popper styles. */
-  styles: { [key: string]: any }; // TODO: is this used?
+  styles: Record<string, any>; // TODO: is this used?
   /** This prop defines the Popper attributes. */
-  attributes: { [key: string]: any }; // TODO: is this used?
+  attributes: Record<string, any>; // TODO: is this used?
   /** Function to set the Popper element reference. */
-  setPopperElement?: any;
+  setPopperElement?: (ref: React.RefObject<HTMLElement>) => void;
   /** Number of menu/submenu depths. */
   deepLevel?: number;
   /** This property defines whether or not to open the menu with the keyboard to manage accessibility actions. */
@@ -90,17 +97,17 @@ export const Dropdown: React.FC<DropdownProps> = ({
   keyboardOpened,
   ...boxProps
 }) => {
-  const listItemsRef: any = [];
-  const previousRef = React.useRef<any>();
+  const listItemsRef: React.RefObject<HTMLElement>[] = [];
+  const previousRef = React.useRef<HTMLElement>();
   const [activeItem, setActiveItem] = React.useState(0);
   deepLevel = deepLevel + 1;
   React.useLayoutEffect(() => {
-    previousRef.current = document.activeElement;
+    previousRef.current = document.activeElement as HTMLElement;
   }, []);
   React.useLayoutEffect(() => {
     if (keyboardOpened) listItemsRef[activeItem]?.current?.focus();
     return () => {
-      if (keyboardOpened) previousRef.current.focus();
+      if (keyboardOpened) previousRef.current?.focus();
     };
   });
 

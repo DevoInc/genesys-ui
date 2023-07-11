@@ -6,7 +6,7 @@ import { MenuItemProps } from '../../Menu/subcomponents';
 
 interface ItemSubMenuProps extends MenuItemProps {
   /** Items for sub-menu: array of objects with items of the submenu config. */
-  subMenuConfig: { [key: string]: any }[];
+  subMenuConfig: Record<string, any>[];
   /** subMenu component. Dropdown component */
   subMenuComponent: React.ComponentType<any>; // TODO especify component type
   /** Number of menu/submenu depths. */

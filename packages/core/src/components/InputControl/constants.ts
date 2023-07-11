@@ -1,9 +1,14 @@
-export const INPUT_CONTROL_ICON_STATUS_MAP = {
-  error: 'gi-error_warning_danger_stop_filled',
-  success: 'gi-ok_successful_check_filled',
-  warning: 'gi-attention_error_alert_caution_filled',
-  help: 'gi-about_question_faq_help_filled',
-  info: 'gi-about_question_faq_help_filled',
+import { STATUS_ICON_MAP } from '../../constants';
+import type { FieldStatus } from '../../declarations';
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
+import { OmitUnion } from '../../typeFunctions/omitUnion';
+
+export const INPUT_CONTROL_ICON_STATUS_MAP: {
+  [key in OmitUnion<FieldStatus, 'base'>]: keyof typeof iconDictionary;
+} = {
+  error: STATUS_ICON_MAP.filled.error,
+  success: STATUS_ICON_MAP.filled.success,
+  warning: STATUS_ICON_MAP.filled.warning,
 } as const;
 
 export const INPUT_CONTROL_PSEUDO_ACTIONS_SIZE_MAP = {
