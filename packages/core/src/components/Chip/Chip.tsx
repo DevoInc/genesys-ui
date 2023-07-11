@@ -1,37 +1,25 @@
 import * as React from 'react';
 
-// declarations
 import {
-  ButtonAttrProps,
-  FieldEventAttrProps,
-  FocusEventAttrProps,
-  InputAttrProps,
-  SelectionScheme,
-} from '../../declarations';
+  ChipContainer,
+  ChipContainerProps,
+  ChipHiddenInput,
+  ChipHiddenInputProps,
+  ChipIcon,
+} from './components';
 
-// styled
-import { StyledChipIcon, StyledChipLabel } from './styled';
-import { StyledHiddenInput, StyledHiddenInputProps } from '../../styled/';
-import { ChipContainer, ChipContainerProps } from './components';
+import { ChipContent, ChipContentProps } from './components/ChipContent';
 
 export interface ChipProps
-  extends ChipContainerProps,
-    Pick<ButtonAttrProps, 'name'>,
-    FocusEventAttrProps,
-    FieldEventAttrProps,
-    Pick<InputAttrProps, 'value'>,
-    Omit<StyledHiddenInputProps, 'checked' | 'defaultChecked' | 'disabled'> {
-  children: React.ReactNode;
-  /** It's equivalent to the native defaultChecked prop, and it has to be used only in uncontrolled mode.*/
-  defaultSelected?: boolean;
+  extends Omit<ChipContainerProps, 'children'>,
+    Pick<ChipContentProps, 'children'>,
+    ChipHiddenInputProps {
   /** The icon name-id to be rendered at the left of the content.*/
   icon?: string;
   /** If the icon is rendered with bold style.*/
   hasBoldIcon?: boolean;
   /** The icon when the Chip is selected. It doesn't work in uncontrolled mode. */
   iconSelected?: string;
-  /** If it's multiple the selection behavior is as a checkbox and if it's single as a radio */
-  selectionScheme?: SelectionScheme;
 }
 
 export const InternalChip: React.FC<ChipProps> = ({
@@ -81,7 +69,7 @@ export const InternalChip: React.FC<ChipProps> = ({
   value,
 }) => {
   const isSelected = state === 'selected';
-  const iconValue = isSelected ? iconSelected : icon;
+  const iconId = isSelected ? iconSelected : icon;
   return (
     <ChipContainer
       as={as}
@@ -117,10 +105,9 @@ export const InternalChip: React.FC<ChipProps> = ({
       styles={styles}
       tooltip={tooltip}
     >
-      <StyledHiddenInput
+      <ChipHiddenInput
         aria-label={ariaLabel || children?.toString()}
-        checked={onChange ? isSelected : null}
-        defaultChecked={defaultSelected}
+        defaultSelected={defaultSelected}
         disabled={state === 'disabled'}
         id={id ? `chip-input-${id}` : null}
         name={name}
@@ -128,23 +115,23 @@ export const InternalChip: React.FC<ChipProps> = ({
         onChange={onChange}
         onFocus={onFocus}
         selectionScheme={selectionScheme}
+        state={state}
         value={value}
       />
-      {iconValue && (
-        <StyledChipIcon
-          aria-hidden
-          hasBoldIcon={hasBoldIcon}
-          className={iconValue}
-          size={size}
-        />
-      )}
-      <StyledChipLabel>{children}</StyledChipLabel>
+      {iconId && <ChipIcon iconId={iconId} strong={hasBoldIcon} size={size} />}
+      <ChipContent>{children}</ChipContent>
     </ChipContainer>
   );
 };
 
 export const Chip = InternalChip as typeof InternalChip & {
   Container: typeof ChipContainer;
+  Content: typeof ChipContent;
+  HiddenInput: typeof ChipHiddenInput;
+  Icon: typeof ChipIcon;
 };
 
 Chip.Container = ChipContainer;
+Chip.Content = ChipContent;
+Chip.HiddenInput = ChipHiddenInput;
+Chip.Icon = ChipIcon;

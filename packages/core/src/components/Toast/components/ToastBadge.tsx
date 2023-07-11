@@ -1,9 +1,9 @@
 import * as React from 'react';
+import { concat } from 'lodash';
 
 import { ToastStatus } from '../declarations';
 
 import { Badge, BadgeProps } from '../../Badge';
-import { concat } from 'lodash';
 import { css, useTheme } from 'styled-components';
 import { TOAST_ELEVATION_LEVEL } from '../constants';
 

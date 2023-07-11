@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
 import { buttonStateMap } from '../../../utils';
@@ -8,7 +9,6 @@ import {
   IconButtonRemoveProps,
 } from '../../../../IconButton';
 import { TabsItemState } from '../../../declarations';
-import { concat } from 'lodash';
 
 export interface TabsItemCloseProps
   extends Omit<IconButtonRemoveProps, 'state'> {

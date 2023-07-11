@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
 import { Flex, FlexProps } from '../../Flex';
@@ -8,7 +9,6 @@ import {
   switchControlContainerMixin,
   SwitchControlContainerMixinProps,
 } from '../helpers';
-import { concat } from 'lodash';
 
 export interface SwitchControlContainerProps
   extends FlexProps,

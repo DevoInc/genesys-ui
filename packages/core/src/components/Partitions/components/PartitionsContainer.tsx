@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
 import {
@@ -12,7 +13,6 @@ import {
 } from './helpers';
 
 import { Flex } from '../../Flex';
-import { concat } from 'lodash';
 
 export interface PartitionsContainerProps
   extends Pick<GlobalAttrProps, 'id' | 'role'>,

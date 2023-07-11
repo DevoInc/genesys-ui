@@ -104,6 +104,7 @@ export const MultipleBasic: Story = {
           .map((_el, idx) => ({
             value: `item${idx}`,
             label: `Item ${idx}`,
+            icon: 'gi-folder',
           }));
       };
       const [value, setValue] =
