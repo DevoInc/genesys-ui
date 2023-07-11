@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 // declarations
-import { SelectionScheme } from '../../../';
 import { ChipSize, ChipState } from '../declarations';
 
 // helpers
@@ -13,8 +12,6 @@ import {
 import { getPadding } from '../helpers';
 
 export interface StyledChipProps {
-  /** If it's multiple the selection behavior is as a checkbox and if it's single as a radio */
-  selectionScheme?: SelectionScheme;
   /** It sets padding, line-height, font-size, etc. */
   size?: ChipSize;
   /** It sets the color scheme and the selection behavior. */

@@ -3,41 +3,24 @@ import * as React from 'react';
 // declarations
 import {
   ButtonAttrProps,
-  ContainerEventAttrProps,
-  DragDropEventAttrProps,
   FieldEventAttrProps,
   FocusEventAttrProps,
-  GlobalAriaProps,
-  GlobalAttrProps,
   InputAttrProps,
-  MouseEventAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  SelectionScheme,
 } from '../../declarations';
 
 // styled
-import {
-  StyledChip,
-  StyledChipIcon,
-  StyledChipLabel,
-  StyledChipProps,
-} from './styled';
+import { StyledChipIcon, StyledChipLabel } from './styled';
 import { StyledHiddenInput, StyledHiddenInputProps } from '../../styled/';
+import { ChipContainer, ChipContainerProps } from './components';
 
 export interface ChipProps
-  extends GlobalAttrProps,
-    GlobalAriaProps,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
+  extends ChipContainerProps,
     Pick<ButtonAttrProps, 'name'>,
     FocusEventAttrProps,
-    MouseEventAttrProps,
-    DragDropEventAttrProps,
     FieldEventAttrProps,
-    ContainerEventAttrProps,
     Pick<InputAttrProps, 'value'>,
-    Omit<StyledHiddenInputProps, 'checked' | 'defaultChecked' | 'disabled'>,
-    StyledChipProps {
+    Omit<StyledHiddenInputProps, 'checked' | 'defaultChecked' | 'disabled'> {
   children: React.ReactNode;
   /** It's equivalent to the native defaultChecked prop, and it has to be used only in uncontrolled mode.*/
   defaultSelected?: boolean;
@@ -47,39 +30,92 @@ export interface ChipProps
   hasBoldIcon?: boolean;
   /** The icon when the Chip is selected. It doesn't work in uncontrolled mode. */
   iconSelected?: string;
+  /** If it's multiple the selection behavior is as a checkbox and if it's single as a radio */
+  selectionScheme?: SelectionScheme;
 }
 
-export const Chip: React.FC<ChipProps> = ({
+export const InternalChip: React.FC<ChipProps> = ({
   'aria-label': ariaLabel,
+  as,
   children,
+  className,
   defaultSelected = false,
   hasBoldIcon = false,
   icon,
   iconSelected,
   id,
   name,
+  onClick,
+  onContextMenu,
+  onCopy,
+  onCut,
+  onDoubleClick,
+  onDrag,
+  onDragEnd,
+  onDragEnter,
+  onDragLeave,
+  onDragOver,
+  onDragStart,
+  onDrop,
+  onKeyDown,
+  onKeyUp,
+  onMouseDown,
+  onMouseLeave,
+  onMouseMove,
+  onMouseOut,
+  onMouseOver,
+  onMouseUp,
+  onPaste,
+  onScroll,
+  onWheel,
   onBlur,
   onChange,
   onFocus,
+  role,
   selectionScheme = 'multiple',
   size = 'md',
+  sortable,
   state,
   styles,
   tooltip,
   value,
-  ...restStyledProps
 }) => {
   const isSelected = state === 'selected';
   const iconValue = isSelected ? iconSelected : icon;
   return (
-    <StyledChip
-      {...restStyledProps}
-      css={styles}
+    <ChipContainer
+      as={as}
+      className={className}
       id={id}
-      selectionScheme={selectionScheme}
+      onClick={onClick}
+      onContextMenu={onContextMenu}
+      onCopy={onCopy}
+      onCut={onCut}
+      onDoubleClick={onDoubleClick}
+      onDrag={onDrag}
+      onDragEnd={onDragEnd}
+      onDragEnter={onDragEnter}
+      onDragLeave={onDragLeave}
+      onDragOver={onDragOver}
+      onDragStart={onDragStart}
+      onDrop={onDrop}
+      onKeyDown={onKeyDown}
+      onKeyUp={onKeyUp}
+      onMouseDown={onMouseDown}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
+      onMouseOut={onMouseOut}
+      onMouseOver={onMouseOver}
+      onMouseUp={onMouseUp}
+      onPaste={onPaste}
+      onScroll={onScroll}
+      onWheel={onWheel}
+      role={role}
       size={size}
+      sortable={sortable}
       state={state}
-      title={tooltip}
+      styles={styles}
+      tooltip={tooltip}
     >
       <StyledHiddenInput
         aria-label={ariaLabel || children?.toString()}
@@ -103,6 +139,12 @@ export const Chip: React.FC<ChipProps> = ({
         />
       )}
       <StyledChipLabel>{children}</StyledChipLabel>
-    </StyledChip>
+    </ChipContainer>
   );
 };
+
+export const Chip = InternalChip as typeof InternalChip & {
+  Container: typeof ChipContainer;
+};
+
+Chip.Container = ChipContainer;
