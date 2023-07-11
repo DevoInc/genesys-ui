@@ -1,11 +1,11 @@
 import * as React from 'react';
+import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
 import { linkStateMap } from '../../../utils';
 import { tabsLinkMixin, TabsLinkMixinProps } from './helpers';
 
 import { Link, LinkProps } from '../../../../Link';
-import { concat } from 'lodash';
 
 export interface TabsItemLinkProps
   extends Omit<LinkProps, 'size' | 'state'>,

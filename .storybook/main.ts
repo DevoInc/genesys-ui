@@ -33,6 +33,7 @@ const config: StorybookConfig = {
           '@devoinc/genesys-ui',
           '@devoinc/genesys-ui-datetime',
           '@devoinc/genesys-ui-form',
+          '@devoinc/genesys-ui-table',
         ],
       },
     });

@@ -5,7 +5,6 @@ import { FieldSize, GlobalState, GlobalStatus } from '../../declarations';
 import { typoMixin } from '../../styled/mixins/baseMixins';
 import { getTypoObject } from '../../styled/mixins/baseMixins';
 
-//TODO: this should probably be moved to a generic place.
 export const getFieldControlTypo = ({
   textAlign,
   theme,
@@ -21,7 +20,6 @@ export const getFieldControlTypo = ({
     size,
   });
 
-//TODO: this should probably be moved to a generic place.
 export const getFieldState = ({
   readOnly,
   state,

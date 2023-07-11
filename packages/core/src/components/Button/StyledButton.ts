@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import _ from 'lodash';
 
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
+
 import { SelectionScheme } from '../../declarations';
 import { ButtonColorScheme, ButtonState, ButtonSize } from './declarations';
 
@@ -13,7 +15,7 @@ export interface StyledButtonProps {
   /** Color scheme: background color, text color, backdrop... etc. */
   colorScheme?: ButtonColorScheme;
   /** Icon Name */
-  icon?: string;
+  icon?: keyof typeof iconDictionary;
   /** Border Radius 50% */
   circular?: boolean;
   /** The button has the dropdown marker. */

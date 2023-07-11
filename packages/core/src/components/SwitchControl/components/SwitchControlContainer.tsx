@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
 import { Flex, FlexProps } from '../../Flex';
@@ -58,16 +59,16 @@ export const SwitchControlContainer: React.FC<SwitchControlContainerProps> = ({
         (checked ? `0 ${spaceForHandler}px 0 0` : `0 0 0 ${spaceForHandler}px`)
       }
       position={position}
-      styles={
-        styles ||
+      styles={concat(
         switchControlContainerMixin({
           checked,
           disabled,
           handleDiameter,
           status,
           theme,
-        })
-      }
+        }),
+        styles
+      )}
     >
       {children}
     </Flex>

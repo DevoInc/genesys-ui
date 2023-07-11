@@ -16,6 +16,8 @@ import {
   VFlex,
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
 } from '@devoinc/genesys-ui';
 
 import {
@@ -42,7 +44,9 @@ export interface DateTimeRangeProps
     Pick<TimeProps, 'hasMillis' | 'hasSeconds'>,
     Pick<MonthProps, 'ariaLabelNextMonth' | 'ariaLabelPrevMonth'>,
     Pick<PresetsProps, 'presets'>,
-    Required<Pick<GlobalAttrProps, 'id'>> {
+    Required<Pick<GlobalAttrProps, 'id'>>,
+    StyledOverloadCssProps,
+    StyledPolymorphicProps {
   /** aria-label attribute for from month input. */
   ariaLabelFromMonth?: GlobalAriaProps['aria-label'];
   /** aria-label attribute for from time input. */
@@ -70,6 +74,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   ariaLabelFromTime = 'From time',
   ariaLabelToMonth = 'To month',
   ariaLabelToTime = 'To time',
+  as,
   dateForMonth: monthToShow,
   hasMillis = false,
   hasSeconds = true,
@@ -86,6 +91,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   presetsPlaceholder,
   presets,
   selectedPreset,
+  styles,
 }) => {
   const value = React.useMemo(
     () => ({
@@ -244,7 +250,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   );
 
   return (
-    <HFlex alignItems={'flex-start'}>
+    <HFlex as={as} alignItems={'flex-start'} styles={styles}>
       <VFlex flex={`1 1 ${hasTime ? '40%' : '50%'}`} alignItems="stretch">
         <Month
           ariaLabelInput={ariaLabelFromMonth}

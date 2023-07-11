@@ -14,6 +14,7 @@ import {
   GlobalAriaProps,
   GlobalAttrProps,
   ImageAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
   TriggerAriaProps,
 } from '../../declarations';
@@ -23,6 +24,7 @@ export interface AvatarProps
     StyledAvatarWrapperClickableProps,
     //native
     StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps,
     ImageAttrProps,

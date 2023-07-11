@@ -8,6 +8,8 @@ import {
   FieldStatus,
   GlobalAttrProps,
   MouseEventAttrProps,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
 } from '../../declarations';
 import { LabelPosition } from './declarations';
 import {
@@ -47,7 +49,9 @@ export type FieldChildrenProps = React.ReactElement<{
 export interface FieldProps
   extends WithRequired<GlobalAttrProps, 'id'>,
     Pick<FieldAttrProps, 'disabled' | 'required'>,
-    MouseEventAttrProps {
+    MouseEventAttrProps,
+    StyledOverloadCssProps,
+    StyledPolymorphicProps {
   /** Children to be passed */
   children: FieldChildrenProps;
   /** Field control predefined width for Input, Select… etc. */
@@ -73,6 +77,7 @@ export interface FieldProps
 }
 
 export const PartField: React.FC<FieldProps> = ({
+  as,
   children,
   disabled = false,
   controlWidth,
@@ -88,6 +93,7 @@ export const PartField: React.FC<FieldProps> = ({
   role,
   size = 'md',
   status = 'base',
+  styles,
   tooltip,
   ...mouseEventAttrProps
 }) => {
@@ -109,7 +115,13 @@ export const PartField: React.FC<FieldProps> = ({
     />
   );
   return (
-    <Field.Container {...mouseEventAttrProps} role={role} tooltip={tooltip}>
+    <Field.Container
+      {...mouseEventAttrProps}
+      as={as}
+      role={role}
+      styles={styles}
+      tooltip={tooltip}
+    >
       <Field.LabelDistributor direction={direction}>
         {label && (
           <Field.Label

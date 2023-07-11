@@ -4,6 +4,7 @@ import * as React from 'react';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../declarations';
 import { ButtonSize } from '../';
@@ -17,6 +18,7 @@ import {
 
 export interface ButtonGroupProps
   extends StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps,
     StyledButtonGroupProps {
@@ -26,17 +28,21 @@ export interface ButtonGroupProps
 }
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
+  as,
   children,
   hidden = false,
   itemsGap = 'md',
   role,
   size = 'md',
-  visibilityTrigger,
+  styles,
   tooltip,
+  visibilityTrigger,
   ...restNativeProps
 }) => (
   <StyledButtonGroup
     {...restNativeProps}
+    as={as}
+    css={styles}
     hidden={hidden}
     itemsGap={itemsGap}
     role={role}

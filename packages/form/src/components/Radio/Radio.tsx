@@ -7,7 +7,6 @@ import {
   RadioControlProps,
 } from '@devoinc/genesys-ui';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface RadioProps
   extends Omit<
       FieldProps,
@@ -36,6 +35,7 @@ export const Radio: React.FC<RadioProps> = ({
   requiredMarkTooltip,
   size = 'md',
   status = 'base',
+  styles,
   tooltip,
   ...restNativeInputProps
 }) => (
@@ -59,6 +59,7 @@ export const Radio: React.FC<RadioProps> = ({
     requiredMarkTooltip={requiredMarkTooltip}
     size={size}
     status={status}
+    styles={styles}
     tooltip={tooltip}
   >
     <RadioControl

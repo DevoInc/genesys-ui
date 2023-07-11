@@ -7,7 +7,7 @@ import { getColor } from './helpers';
 
 export interface StyledIconProps {
   /** This property defines the icon type */
-  iconId: keyof typeof iconDictionary; // TODO: replace with genesys-icon type
+  iconId: keyof typeof iconDictionary;
   /** This property defines the custom icon color */
   color?: string;
   /** It defines the color scheme for the icon color. There are predefined types: primary, secondary... etc. auto-generated for the text based on this one to maintain AA accessible contrast.*/
@@ -20,7 +20,7 @@ export interface StyledIconProps {
 
 export const StyledIcon = styled.i.attrs(
   ({ iconId }: Pick<StyledIconProps, 'iconId'>) => ({
-    className: iconId.toString() as string,
+    className: iconId as string,
   })
 )<StyledIconProps>`
   ${({ color, colorScheme, size, strong, theme }) => {

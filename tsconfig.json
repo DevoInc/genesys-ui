@@ -10,6 +10,7 @@
     "baseUrl": ".",
     "jsx": "react",
     "strictBindCallApply": true,
+    "noUncheckedIndexedAccess": true,
     "paths": {
       "test-utils": ["./test/test-utils.tsx"]
     }
@@ -23,6 +24,9 @@
     },
     {
       "path": "packages/datetime"
+    },
+    {
+      "path": "packages/table"
     }
   ]
 }

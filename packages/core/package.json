@@ -15,7 +15,10 @@
     "dist"
   ],
   "scripts": {
+    "compile": "tsc --project tsconfig.build.json",
+    "compile:watch": "npm run compile -- --watch",
     "build": "vite build && tsc --project tsconfig.build.json",
+    "build:watch": "vite build --watch && tsc --project tsconfig.build.json",
     "depcruise": ". ../../depcruise.sh",
     "stryker": "npx stryker run"
   },

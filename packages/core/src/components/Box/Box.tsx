@@ -22,6 +22,7 @@ export interface CommonBoxProps
   extends LayoutTransientProps,
     LayoutCommonProps,
     StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps,
     DragAndDropAriaProps,

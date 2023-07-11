@@ -3,18 +3,21 @@ import { GlobalAriaProps, GlobalAttrProps } from '../../declarations';
 
 import { StyledTooltip, StyledTooltipProps } from './StyledTooltip';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TooltipProps
   extends StyledTooltipProps,
     // native
     GlobalAttrProps,
     GlobalAriaProps {
-  //TODO: this should extend from library when upgraded.
   effect?: 'float' | 'solid';
   place?: 'right' | 'bottom' | 'left' | 'top';
   delayShow?: number;
   id?: string;
-  offset?: any;
+  offset?: {
+    top: number | string;
+    left: number | string;
+    right: number | string;
+    bottom: number | string;
+  };
   children?: React.ReactNode;
 }
 

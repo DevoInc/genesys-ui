@@ -7,7 +7,6 @@ import {
   TextareaControlProps,
 } from '@devoinc/genesys-ui';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TextareaProps
   extends Omit<FieldProps, 'children' | 'role'>,
     Omit<
@@ -34,6 +33,7 @@ export const Textarea: React.FC<TextareaProps> = ({
   requiredMarkTooltip,
   size = 'md',
   status = 'base',
+  styles,
   tooltip,
   ...restNativeTextareaProps
 }) => (
@@ -56,6 +56,7 @@ export const Textarea: React.FC<TextareaProps> = ({
     requiredMarkTooltip={requiredMarkTooltip}
     size={size}
     status={status}
+    styles={styles}
     tooltip={tooltip}
   >
     <TextareaControl

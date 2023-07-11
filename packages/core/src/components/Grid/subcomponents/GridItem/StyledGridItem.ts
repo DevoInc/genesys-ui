@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 import { LayoutGridItemProps } from '../../../../declarations';
 import { boxMixin, BoxMixinProps } from '../../../../styled/';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledGridItemProps
   extends Omit<BoxMixinProps, '$display' | '$height' | '$width' | 'theme'>,
     LayoutGridItemProps {}

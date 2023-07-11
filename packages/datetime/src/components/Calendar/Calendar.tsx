@@ -9,7 +9,12 @@ import {
 import { StyledCalendar } from './StyledCalendar';
 import { Cell, CellProps } from './components';
 import { checkValidDate } from './validations';
-import { GlobalAriaProps, GlobalAttrProps } from '@devoinc/genesys-ui';
+import {
+  GlobalAriaProps,
+  GlobalAttrProps,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '@devoinc/genesys-ui';
 import { Datetime } from '../declarations';
 import { toTimestamp } from '../utils';
 import { lastDayOfMonth as lastDayOfMonthFNS } from 'date-fns';
@@ -18,7 +23,9 @@ export interface CalendarProps
   extends Pick<CellProps, 'onClick' | 'onMouseEnter' | 'onMouseLeave'>,
     //native
     GlobalAttrProps,
-    GlobalAriaProps {
+    GlobalAriaProps,
+    StyledOverloadCssProps,
+    StyledPolymorphicProps {
   /** The date for the month. One of `number` or `Date`. */
   dateForMonth?: Datetime;
   /** Disable hover effect. It could be combined with hoverDay, onMouseEnter and onMouseLeave properties for custom control. */
@@ -58,6 +65,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   weekDays = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
   disableHoverDay = false,
   hoverDay: mouseHoverDay,
+  styles,
   ...nativeProps
 }) => {
   const dateForMonth = toTimestamp(monthToShow);
@@ -107,7 +115,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   }, [customHoverDay]);
 
   return (
-    <StyledCalendar {...nativeProps}>
+    <StyledCalendar {...nativeProps} css={styles}>
       {weekDays.map((day) => (
         <Cell key={day} value={day} className="weekDayName" />
       ))}

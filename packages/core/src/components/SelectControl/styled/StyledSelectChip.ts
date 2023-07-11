@@ -5,7 +5,7 @@ import icons from '@devoinc/genesys-icons/dist/icon-variables';
 import { iconFontMixin } from '../../../styled/mixins/baseMixins';
 import { pseudoElementMixin } from '../../../styled/mixins/utilsMixins';
 import { StyledButton } from '../../Button/StyledButton';
-import { StyledChip, StyledChipIcon } from '../../Chip/styled';
+import { StyledChip } from '../../Chip/styled';
 
 const getSortable = (sortable?: boolean) => {
   if (!sortable) return null;
@@ -31,8 +31,6 @@ const getSortable = (sortable?: boolean) => {
     }
   `;
 };
-
-export const StyledSelectChipIcon = styled(StyledChipIcon)``;
 
 interface StyledSelectChipProps {
   sortable?: boolean;

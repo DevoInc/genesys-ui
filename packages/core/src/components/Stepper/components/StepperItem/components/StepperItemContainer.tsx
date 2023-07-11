@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
 import { Flex, FlexProps } from '../../../../Flex';
-import { concat } from 'lodash';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StepperItemContainerProps extends FlexProps {}

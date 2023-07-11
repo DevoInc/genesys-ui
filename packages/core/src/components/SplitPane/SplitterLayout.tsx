@@ -2,7 +2,12 @@
 // https://github.com/zesik/react-splitter-layout
 
 import * as React from 'react';
-import type { GlobalAriaProps, GlobalAttrProps } from '../../declarations';
+import type {
+  GlobalAriaProps,
+  GlobalAttrProps,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '../../declarations';
 import { Pane, PaneProps } from './Pane';
 import { StyledSplitPane, StyledSplitPaneSeparator } from './styled';
 
@@ -39,7 +44,9 @@ export interface SplitterLayoutProps
   extends Pick<PaneProps, 'vertical' | 'padding' | 'percentage'>,
     // native
     GlobalAttrProps,
-    GlobalAriaProps {
+    GlobalAriaProps,
+    StyledPolymorphicProps,
+    StyledOverloadCssProps {
   primaryIndex?: number;
   primaryMinSize?: number;
   secondaryInitialSize?: number;
@@ -64,6 +71,7 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
   onDragStart = null,
   onSecondaryPaneSizeChange = null,
   padding,
+  styles,
   tooltip,
   ...nativeProps
 }) => {
@@ -78,7 +86,7 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
       containerRect: DOMRect,
       splitterRect: DOMRect,
       clientPosition: ClientPositionProps, // TODO: this value can be extracted from splitterRect
-      offsetMouse: any
+      offsetMouse: boolean
     ) => {
       let totalSize;
       let splitterSize;
@@ -298,6 +306,7 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
   return (
     <StyledSplitPane
       {...nativeProps}
+      css={styles}
       vertical={vertical}
       ref={containerRef}
       title={tooltip}

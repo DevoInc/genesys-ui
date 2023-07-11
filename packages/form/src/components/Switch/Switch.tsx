@@ -29,6 +29,7 @@ export const Switch: React.FC<SwitchProps> = ({
   requiredMarkTooltip,
   size = 'md',
   status = 'base',
+  styles,
   tooltip,
   ...restSwitchControlProps
 }) => {
@@ -53,6 +54,7 @@ export const Switch: React.FC<SwitchProps> = ({
       requiredMarkTooltip={requiredMarkTooltip}
       size={size}
       status={status}
+      styles={styles}
       tooltip={tooltip}
     >
       <SwitchControl

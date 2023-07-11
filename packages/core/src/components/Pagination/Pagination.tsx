@@ -17,6 +17,7 @@ import {
   BaseSize,
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../declarations';
 
@@ -32,7 +33,8 @@ const defaultHideParts = {
 export interface PaginationProps
   extends Pick<GlobalAttrProps, 'id'>,
     Pick<GlobalAriaProps, 'aria-label' | 'aria-describedby'>,
-    StyledPolymorphicProps {
+    StyledPolymorphicProps,
+    StyledOverloadCssProps {
   /** Tooltip text of the first last button */
   texts?: TextProps;
   /**
@@ -53,6 +55,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   id,
   paginationHook,
   size = 'md',
+  styles,
   texts,
   WrapperComponent,
 }) => {
@@ -138,6 +141,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       aria-label={ariaLabel}
       aria-describedby={ariaDescribedBy}
       id={id}
+      styles={styles}
     >
       <HFlex as="ul" spacing={`cmp-${size}`}>
         {/* PAGINATION INFO */}

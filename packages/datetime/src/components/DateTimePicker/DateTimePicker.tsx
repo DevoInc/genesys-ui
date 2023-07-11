@@ -32,6 +32,7 @@ export interface DateTimePickerProps
 
 export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   'aria-label': ariaLabel = 'datetime',
+  as,
   applyButtonText = 'Apply',
   cancelButtonText = 'Cancel',
   hasMillis = false,
@@ -42,6 +43,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   onCancel,
   onChange,
   placeholder,
+  styles: customStyles,
   value: customValue,
   ...restDateTimeProps
 }) => {
@@ -97,6 +99,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
           {...attributes.popper}
         >
           <Panel
+            as={as}
             elevation="activated"
             footerSettings={{
               actions: [
@@ -113,6 +116,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
               ],
               bordered: true,
             }}
+            styles={customStyles}
           >
             <DateTime
               {...restDateTimeProps}

@@ -8,6 +8,7 @@ import {
   FocusEventAttrProps,
   MouseEventAttrProps,
 } from './htmlEventAttrs';
+import { StyledOverloadCssProps, StyledPolymorphicProps } from './styled';
 
 /** ---------------------------------------------
  * COMMON PROPS
@@ -248,4 +249,6 @@ export interface FieldControlCommonProps<T = Element>
     FieldAttrProps<T>,
     FieldEventAttrProps<T>,
     FocusEventAttrProps<T>,
-    MouseEventAttrProps<T> {}
+    MouseEventAttrProps<T>,
+    StyledPolymorphicProps,
+    StyledOverloadCssProps {}

@@ -30,15 +30,17 @@ export const RadioControl: React.FC<RadioControlProps> = ({
   onChange,
   size = 'md',
   status = 'base',
+  styles,
   tooltip,
   ...restNativeProps
 }) => (
   <StyledRadioControl
     {...restNativeProps}
-    onChange={onChange}
     aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
     aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
     checked={onChange ? checked : undefined}
+    css={styles}
+    onChange={onChange}
     $size={size}
     title={tooltip}
     status={status}

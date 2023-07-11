@@ -5,7 +5,6 @@ import {
   ContainerEventAttrProps,
   FieldControlCommonProps,
   FieldSize,
-  StyledOverloadCssProps,
   TextareaAttrProps,
   TextareaEventAttrs,
   TextBoxAriaProps,
@@ -19,7 +18,6 @@ import {
 
 export interface TextareaControlProps
   extends FieldControlCommonProps,
-    StyledOverloadCssProps,
     Pick<TextBoxAriaProps, 'aria-invalid' | 'aria-activedescendant'>,
     Omit<TextareaAttrProps, 'cols'>,
     TextareaEventAttrs,

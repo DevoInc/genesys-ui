@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { StyledModal, StyledModalProps } from '../../styled';
 import { Overlay } from '../../../Overlay';
+import { StyledOverloadCssProps } from '../../../../declarations';
 
-export interface ModalContainerProps extends StyledModalProps {
+export interface ModalContainerProps
+  extends StyledModalProps,
+    StyledOverloadCssProps {
   /** Custom id */
   id?: string;
   /** Disabling overlay exit click */
@@ -24,6 +27,7 @@ export const ModalContainer: React.FC<ModalContainerProps> = ({
   shouldCloseOnOverlayClick = true,
   zIndex = 1,
   status,
+  styles,
   children,
 }) => {
   return (
@@ -32,6 +36,7 @@ export const ModalContainer: React.FC<ModalContainerProps> = ({
       bgColorScheme={'dark'}
       fixed
       onClick={shouldCloseOnOverlayClick ? () => onRequestClose?.() : undefined}
+      styles={styles}
     >
       <StyledModal
         id={id}

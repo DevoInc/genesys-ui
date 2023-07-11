@@ -6,5 +6,3 @@ export const FIELDS_COMBINER_TYPE_PROP = {
 };
 
 export type FieldsCombinerType = 'button' | 'check' | 'field' | 'other';
-
-export type FieldCombinerAddOn = { left?: any; right?: any };

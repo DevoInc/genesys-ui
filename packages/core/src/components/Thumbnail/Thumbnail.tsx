@@ -3,7 +3,7 @@ import {
   GlobalAriaProps,
   GlobalAttrProps,
   LayoutTransientProps,
-  StyledPolymorphicProps,
+  StyledOverloadCssProps,
 } from '../../declarations';
 
 import { StyledThumbnail, StyledThumbnailProps } from './styled';
@@ -14,22 +14,24 @@ export interface ThumbnailProps
     GlobalAttrProps,
     GlobalAriaProps,
     LayoutTransientProps,
-    Pick<StyledPolymorphicProps, 'className'> {}
+    StyledOverloadCssProps {}
 
 export const Thumbnail: React.FC<ThumbnailProps> = ({
   size = 'md',
   disabled,
   img,
+  styles,
   tooltip,
   ...nativeProps
 }) => (
   <StyledThumbnail
     {...nativeProps}
-    src={img}
     alt={img ? img : 'Thumbnail image'}
+    css={styles}
     disabled={disabled}
     img={img}
     size={size}
+    src={img}
     title={tooltip}
   />
 );
