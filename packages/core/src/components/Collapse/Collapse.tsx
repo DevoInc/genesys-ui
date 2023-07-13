@@ -1,71 +1,50 @@
 import * as React from 'react';
 
 import { IconButtonCollapse, Flex, Typography } from '../';
-import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-  TriggerAriaProps,
-} from '../../declarations';
 import { PickUnion } from '../../typeFunctions';
 import { HeadingProps } from '../Typography/components/block';
-import { StyledHeader, StyledHeaderButton, StyledHeaderProps } from './styled';
+import {
+  CollapseButton,
+  CollapseContainer,
+  CollapseContainerProps,
+  CollapseHeading,
+  CollapseHeadingProps,
+} from './components';
 
 export interface CollapseProps
-  extends StyledHeaderProps,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    Pick<TriggerAriaProps, 'aria-controls'> {
-  truncateLine?: PickUnion<HeadingProps['truncateLine'], 1 | 2>;
-  name?: string;
-  onClick: () => void;
+  extends CollapseContainerProps,
+    Pick<CollapseHeadingProps, 'truncateLine'> {
+  heading?: CollapseHeadingProps['children'];
 }
 
-export const Collapse: React.FC<CollapseProps> = ({
-  'aria-controls': ariaControls,
+export const InternalCollapse: React.FC<CollapseProps> = ({
   expanded,
-  name,
+  heading,
   onClick,
   styles,
   tooltip,
   truncateLine = 1,
   ...nativeProps
 }) => (
-  <StyledHeader
+  <CollapseContainer
     {...nativeProps}
+    aria-expanded={expanded}
     css={styles}
     expanded={expanded}
-    title={tooltip}
+    onClick={onClick}
+    tooltip={tooltip}
   >
-    <StyledHeaderButton
-      aria-controls={ariaControls}
-      aria-expanded={expanded}
-      onClick={onClick}
-      aria-label={'Collapsible header'}
-      aria-description={expanded ? 'Collapse' : 'Expand'}
-    />
-    <Flex alignItems={'center'} height={'100%'} padding={'cmp-xs cmp-sm'}>
-      <Flex.Item flex={'0 0 auto'} marginRight={'cmp-sm'}>
-        <IconButtonCollapse
-          state={expanded ? 'expanded' : 'enabled'}
-          size={'sm'}
-          onClick={(e) => {
-            e.stopPropagation();
-            onClick();
-          }}
-          tooltip={expanded ? 'Collapse' : 'Expand'}
-        />
-      </Flex.Item>
-      <Flex.Item flex={'1 1 auto'} minWidth={'0'}>
-        <Flex alignItems={'center'}>
-          <Typography.Heading truncateLine={truncateLine} size={'h6'}>
-            {name}
-          </Typography.Heading>
-        </Flex>
-      </Flex.Item>
-    </Flex>
-  </StyledHeader>
+    <CollapseButton expanded={expanded} onClick={onClick} tooltip={tooltip} />
+    <CollapseHeading truncateLine={truncateLine}>{heading}</CollapseHeading>
+  </CollapseContainer>
 );
+
+export const Collapse = InternalCollapse as typeof InternalCollapse & {
+  Button: typeof CollapseButton;
+  Container: typeof CollapseContainer;
+  Heading: typeof CollapseHeading;
+};
+
+Collapse.Button = CollapseButton;
+Collapse.Container = CollapseContainer;
+Collapse.Heading = CollapseHeading;
