@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import {
-  ButtonAttrProps,
   GlobalAriaProps,
   GlobalAttrProps,
   StyledOverloadCssProps,
@@ -10,8 +9,9 @@ import {
   TriggerEventAttrProps,
 } from '../../../declarations';
 
-import { StyledHeader, StyledHeaderButton, StyledHeaderProps } from '../styled';
 import { Flex } from '../../Flex';
+
+import { StyledHeader, StyledHeaderButton, StyledHeaderProps } from '../styled';
 
 export interface CollapseContainerProps
   extends StyledHeaderProps,
@@ -19,7 +19,6 @@ export interface CollapseContainerProps
     StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps,
-    Pick<ButtonAttrProps, 'name'>,
     Pick<TriggerAriaProps, 'aria-controls'>,
     Pick<TriggerEventAttrProps, 'onClick'> {
   children?: React.ReactNode;
@@ -30,7 +29,6 @@ export const CollapseContainer: React.FC<CollapseContainerProps> = ({
   'aria-label': ariaLabel = 'Collapsible header',
   children,
   expanded,
-  name,
   onClick,
   styles,
   tooltip,

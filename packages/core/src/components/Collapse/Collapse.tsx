@@ -1,8 +1,5 @@
 import * as React from 'react';
 
-import { IconButtonCollapse, Flex, Typography } from '../';
-import { PickUnion } from '../../typeFunctions';
-import { HeadingProps } from '../Typography/components/block';
 import {
   CollapseButton,
   CollapseContainer,
