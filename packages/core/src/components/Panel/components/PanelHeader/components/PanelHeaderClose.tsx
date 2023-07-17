@@ -14,9 +14,6 @@ import {
 } from '../../../../../index';
 import { Flex } from '../../../../Flex';
 
-// TODO ad the component when it's ready
-//const DropDownMenu = require('../../../../../react/molecules/DropDownMenu');
-
 export interface PanelHeaderCloseProps
   extends Pick<BoxProps, 'cssTranslate'>,
     Omit<IconButtonCloseProps, 'size'> {

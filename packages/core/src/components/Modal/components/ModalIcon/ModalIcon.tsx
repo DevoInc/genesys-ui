@@ -14,7 +14,6 @@ import {
 } from '@devoinc/genesys-icons';
 import type { IconType } from '@devoinc/genesys-icons';
 
-// TODO: Unify with constants/STATUS_ICON_MAP when replacing old icons with react icons
 export const statusIconMap: { [key in ActiveStatus]: IconType } = {
   success: GIOkSuccessfulCheckFilled,
   help: GIAboutQuestionFaqHelpFilled,
