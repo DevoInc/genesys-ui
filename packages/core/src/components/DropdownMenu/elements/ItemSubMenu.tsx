@@ -8,7 +8,7 @@ interface ItemSubMenuProps extends MenuItemProps {
   /** Items for sub-menu: array of objects with items of the submenu config. */
   subMenuConfig: Record<string, any>[];
   /** subMenu component. Dropdown component */
-  subMenuComponent: React.ComponentType<any>; // TODO especify component type
+  subMenuComponent: React.ComponentType<any>;
   /** Number of menu/submenu depths. */
   deepLevel: number;
 }

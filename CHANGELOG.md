@@ -1,5 +1,37 @@
 # Changelog
 
+### [1.0.3-alpha.18](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.17...v1.0.3-alpha.18) (2023-07-17)
+
+
+### Features
+
+* **AppBar:** added subcomponentStyles to the component to apply custom styles to each subcomponent in complex components ([35c9614](https://github.com/DevoInc/genesys-ui/commit/35c9614aad036ad0466e21b01b27c1e4a951a5a0))
+* **BoxMessage:** converted to dot notation ([0662a7a](https://github.com/DevoInc/genesys-ui/commit/0662a7a48bafc37277b638e7dd521c997a23c4ff))
+* **Chip:** dot notation for Chip and small adjujstments ([6f32e1c](https://github.com/DevoInc/genesys-ui/commit/6f32e1cd7b5fd7cb58dfc1c372183602830e855a))
+* **Collapse:** dot notation ([607e456](https://github.com/DevoInc/genesys-ui/commit/607e4568aee36bb14bda498cc39c81563b8f2756))
+* css overlapping for AppBar and Avatar components ([3d98097](https://github.com/DevoInc/genesys-ui/commit/3d9809784937f127bafc29cf91f7590b317d7060))
+* css overlapping for Button and ButtonGroup components ([c0549a5](https://github.com/DevoInc/genesys-ui/commit/c0549a5b30f4082f92e7f90c6801f77dab94d58d))
+* css overlapping for CheckboxControl, Chip, ChipGroup, Collapse, DecoratorBar, DevoLogoLoader and FormGroup ([eb2c545](https://github.com/DevoInc/genesys-ui/commit/eb2c545fadba3b512e2c0f9aa7fc03df2f040a15))
+* css overlapping for datetime package components ([f986506](https://github.com/DevoInc/genesys-ui/commit/f986506f82a1ebbdc64b497ecf4dbcefd1f9f6e2))
+* css overlapping for form package components ([bb90400](https://github.com/DevoInc/genesys-ui/commit/bb90400e44b627218570feac5a512e9e7f3e1d04))
+* css overlapping for Grid, Helper, InlineMessage, InputControl, Loader, Menu, Modal, Pagination, Partitions, ProgressBar, RadioControl, Splitter, StatusMessage, Switch, Tag, TextareaControl, Thumbnail, Toolbar and Typography components ([372a706](https://github.com/DevoInc/genesys-ui/commit/372a7064e55befa6e372a08111b4f0737e2fa8b8))
+* styled-components are not exported anymore ([e3cfcc9](https://github.com/DevoInc/genesys-ui/commit/e3cfcc9ca6c6b1c352b86fc39f4733652367f06c))
+* **styles:** Initial use of styles configuration ([9c936a1](https://github.com/DevoInc/genesys-ui/commit/9c936a18d14f7080b68c732e02803ef29c8d9ff7))
+* **tokens:** updated to the last version of genesys-brand-devo to get the new tokens for BoxMessage component and its elements ([db64ce4](https://github.com/DevoInc/genesys-ui/commit/db64ce43529653df8d3c780957c6a55654e74f42))
+
+
+### Bug Fixes
+
+* **BoxMessage:** comment crashing code ([ed94682](https://github.com/DevoInc/genesys-ui/commit/ed9468230436a0e3c4775946b8bbc8ac82af70b0))
+* fixed character in prop name ([cbc1f2c](https://github.com/DevoInc/genesys-ui/commit/cbc1f2cbb29e7e314a281dd03481a3f6932916cd))
+* **stories:** Moved component pages to their correct group in storybook navigation tree ([86d8f53](https://github.com/DevoInc/genesys-ui/commit/86d8f53faf3a35e3e3540ff3b716f0ca1f2fd804))
+* uncommented code because now there are available the component tokens ([ddaa712](https://github.com/DevoInc/genesys-ui/commit/ddaa712d4c2164e9cb242b744fa12a1d37b4a8bb))
+
+
+### Vulnerabilities
+
+* **deps:** bump tough-cookie from 4.1.2 to 4.1.3 ([#18](https://github.com/DevoInc/genesys-ui/issues/18)) ([64589e6](https://github.com/DevoInc/genesys-ui/commit/64589e6752354e0dcaa991d0c0591f46a77e7c81))
+
 ### [1.0.3-alpha.17](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.16...v1.0.3-alpha.17) (2023-06-08)
 
 

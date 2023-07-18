@@ -76,9 +76,9 @@ interface DropdownProps extends BoxProps {
   /** Items for menu: array of objects with item config. */
   items?: Record<string, any>[];
   /** This prop defines the Popper styles. */
-  styles: Record<string, any>; // TODO: is this used?
+  styles: Record<string, any>;
   /** This prop defines the Popper attributes. */
-  attributes: Record<string, any>; // TODO: is this used?
+  attributes: Record<string, any>;
   /** Function to set the Popper element reference. */
   setPopperElement?: (ref: React.RefObject<HTMLElement>) => void;
   /** Number of menu/submenu depths. */

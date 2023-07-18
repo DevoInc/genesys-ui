@@ -25,7 +25,6 @@ export interface GlobalAttrProps<T = Element> {
  * - Flex
  * - ...
  * --------------------------------------------- */
-// TODO: Review if draggable should be here.
 export interface LayoutAttrProps<T = Element> {
   /** A shortcut key to activate or focus the element */
   accessKey?: AllHTMLAttributes<T>['accessKey'];

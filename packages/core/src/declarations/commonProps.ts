@@ -233,12 +233,6 @@ export type Elevation =
   | 'popOut';
 
 /** ---------------------------------------------
- * Table
- * --------------------------------------------- */
-// TODO: Is it used in Table?
-export type RowHeight = 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
-
-/** ---------------------------------------------
  * Form field controls: InputControl, CheckboxControl... etc. common interface
  * --------------------------------------------- */
 export interface FieldControlCommonProps<T = Element>
