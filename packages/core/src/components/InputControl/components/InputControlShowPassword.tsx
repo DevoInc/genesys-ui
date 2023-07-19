@@ -8,15 +8,15 @@ import { IconButton, IconButtonProps } from '../../IconButton';
 import { StyledInputControlShowPassword } from '../styled/StyledInputControlShowPassword';
 
 export interface InputControlShowPasswordProps
-  extends Pick<InputControlProps, 'size'>,
+  extends Pick<InputControlProps, 'size' | 'styles'>,
     Pick<IconButtonProps, 'onClick'> {
   showPassword?: boolean;
 }
 
 export const InputControlShowPassword: React.FC<
   InputControlShowPasswordProps
-> = ({ onClick, showPassword, size }) => (
-  <StyledInputControlShowPassword $size={size}>
+> = ({ onClick, showPassword, size, styles }) => (
+  <StyledInputControlShowPassword $size={size} css={styles}>
     <IconButton
       icon={showPassword ? 'eye_view_filled' : 'eye_visibility_show_visible'}
       circular

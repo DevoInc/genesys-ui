@@ -4,7 +4,6 @@ import { useTheme } from 'styled-components';
 import { LOADER_SIZE_MAP } from './constants';
 
 import {
-  Box,
   DevoLogoLoader,
   Overlay,
   OverlayProps,
@@ -22,7 +21,7 @@ import {
 import {
   GlobalAriaProps,
   GlobalAttrProps,
-  StyledOverloadCssProps,
+  StyledOverloadCssPropsWithRecord,
   StyledPolymorphicProps,
 } from '../../declarations';
 import {
@@ -33,8 +32,9 @@ import {
   LoaderBasicColorScheme,
 } from './declarations';
 import { getSize } from './utils';
+import { LoaderGradientContainer, LoaderGradientOverlay } from './components';
 
-export interface LoaderProps
+export interface BaseLoaderProps
   extends Pick<
       OverlayProps,
       | 'alignItems'
@@ -47,8 +47,7 @@ export interface LoaderProps
     // native
     GlobalAttrProps,
     GlobalAriaProps,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps {
+    StyledPolymorphicProps {
   /** The definition of color scheme: based in the scheme of the theme (inherited), light, dark... etc. It defines if the overlay is dark and the content light or vice versa.*/
   colorScheme?: LoaderColorScheme;
   gradientConfig?: GradientConfig;
@@ -58,6 +57,16 @@ export interface LoaderProps
   size?: LoaderSize;
   type?: LoaderType;
 }
+
+export type LoaderProps = BaseLoaderProps &
+  StyledOverloadCssPropsWithRecord<
+    | 'gradientContainer'
+    | 'gradientOverlay'
+    | 'overlay'
+    | 'progress'
+    | 'logo'
+    | 'spinner'
+  >;
 
 const InternalLoader: React.FC<LoaderProps> = ({
   alignItems,
@@ -77,6 +86,7 @@ const InternalLoader: React.FC<LoaderProps> = ({
   //native
   role,
   styles,
+  subcomponentStyles,
   tooltip,
   ...nativeProps
 }) => {
@@ -87,8 +97,7 @@ const InternalLoader: React.FC<LoaderProps> = ({
       : colorScheme;
   const contentColor = evalColorScheme === 'dark' ? 'light' : 'dark';
   const contentSize = size;
-  const tokens = useTheme();
-  const gradientColor = tokens.alias.color.background.surface.base.base;
+
   const getContent = () => {
     if (type === 'progress' || loadPercent) {
       return (
@@ -99,6 +108,7 @@ const InternalLoader: React.FC<LoaderProps> = ({
           percent={loadPercent}
           showStatus
           size={LOADER_SIZE_MAP[size].progress}
+          styles={subcomponentStyles?.progress}
           type="circular"
         />
       );
@@ -111,6 +121,7 @@ const InternalLoader: React.FC<LoaderProps> = ({
           role={role}
           colorScheme={contentColor}
           size={size}
+          styles={subcomponentStyles?.logo}
         />
       );
     }
@@ -121,29 +132,22 @@ const InternalLoader: React.FC<LoaderProps> = ({
         role={role}
         colorScheme={contentColor}
         size={getSize(contentSize).spinner}
+        styles={subcomponentStyles?.spinner}
       />
     );
   };
   const renderContent = () => {
     if (gradientConfig) {
       return (
-        <Box
+        <LoaderGradientContainer
           as={as}
-          height={gradientConfig.height || '16rem'}
-          width="100%"
-          position="relative"
-          styles={styles}
+          height={gradientConfig.height}
+          styles={subcomponentStyles?.gradientContainer}
         >
-          <Overlay
-            alignItems="center"
-            bgGradient={`linear-gradient(to top, ${gradientColor} 0%, ${gradientColor} 3.2rem,rgba(0,0,0,0) 100%)`}
-            hasInteractionBehind
-            justifyContent="flex-end"
-            padding={String(padding)}
-          >
+          <LoaderGradientOverlay styles={subcomponentStyles?.gradientOverlay}>
             {getContent()}
-          </Overlay>
-        </Box>
+          </LoaderGradientOverlay>
+        </LoaderGradientContainer>
       );
     } else {
       return getContent();
@@ -160,6 +164,7 @@ const InternalLoader: React.FC<LoaderProps> = ({
       justifyContent={gradientConfig ? 'flex-end' : justifyContent}
       opacity={opaque ? 1 : 0.8}
       padding={gradientConfig ? '0' : String(padding)}
+      styles={subcomponentStyles?.overlay || styles}
       tooltip={tooltip}
       zIndex={zIndex}
     >
@@ -174,6 +179,7 @@ export const Loader = InternalLoader as typeof InternalLoader & {
   Global: typeof GlobalLoader;
 };
 
+Loader.Contextual = ContextualLoader;
 Loader.Contextual = ContextualLoader;
 Loader.ContextualScroll = ContextualScrollLoader;
 Loader.Global = GlobalLoader;

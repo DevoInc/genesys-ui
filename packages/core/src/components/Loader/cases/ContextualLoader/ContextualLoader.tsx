@@ -22,11 +22,14 @@ export const ContextualLoader: React.FC<ContextualLoaderProps> = ({
   size = 'md',
   type = 'spinner',
   zIndex,
+  styles,
+  subcomponentStyles,
   ...nativeProps
 }) => {
   return (
     <Loader
       {...nativeProps}
+      {...(styles ? { styles } : { subcomponentStyles })}
       alignItems={alignItems}
       className={className}
       colorScheme={colorScheme}

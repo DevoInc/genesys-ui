@@ -14,8 +14,9 @@ import {
   BoxMessageIcon,
 } from './components';
 import { Flex } from '../';
+import { StyledOverloadCssPropsWithRecord } from '../../declarations';
 
-export interface BoxMessageProps
+export interface BaseBoxMessageProps
   extends Omit<BoxMessageContainerProps, 'children'>,
     Pick<BoxMessageActionsProps, 'actions'> {
   /** onClick function for close button */
@@ -30,6 +31,11 @@ export interface BoxMessageProps
   title?: BoxMessageHeadingProps['children'];
 }
 
+export type BoxMessageProps = BaseBoxMessageProps &
+  StyledOverloadCssPropsWithRecord<
+    'container' | 'actions' | 'close' | 'content' | 'heading' | 'icon'
+  >;
+
 export const InternalBoxMessage: React.FC<BoxMessageProps> = ({
   actions,
   as,
@@ -42,6 +48,7 @@ export const InternalBoxMessage: React.FC<BoxMessageProps> = ({
   role,
   status = 'info',
   styles,
+  subcomponentStyles,
   title,
   tooltip,
   ...ariaProps
@@ -54,21 +61,41 @@ export const InternalBoxMessage: React.FC<BoxMessageProps> = ({
       id={id}
       role={role}
       status={status}
-      styles={styles}
+      styles={subcomponentStyles?.container || styles}
       tooltip={tooltip}
     >
       {!hideIcon && (
         <Flex.Item alignSelf="flex-start" flex="0 0 auto">
-          <BoxMessageIcon status={status} />
+          <BoxMessageIcon status={status} styles={subcomponentStyles?.icon} />
         </Flex.Item>
       )}
       <Flex.Item flex="1 1 auto">
-        {title && <BoxMessageHeading>{title}</BoxMessageHeading>}
-        {content && <BoxMessageContent>{content}</BoxMessageContent>}
-        {actions && <BoxMessageActions actions={actions} status={status} />}
+        {title && (
+          <BoxMessageHeading styles={subcomponentStyles?.heading}>
+            {title}
+          </BoxMessageHeading>
+        )}
+        {content && (
+          <BoxMessageContent styles={subcomponentStyles?.content}>
+            {content}
+          </BoxMessageContent>
+        )}
+        {actions && (
+          <BoxMessageActions
+            actions={actions}
+            status={status}
+            styles={subcomponentStyles?.actions}
+          />
+        )}
       </Flex.Item>
 
-      {close && <BoxMessageClose onClick={close} tooltip={closeTooltip} />}
+      {close && (
+        <BoxMessageClose
+          onClick={close}
+          tooltip={closeTooltip}
+          styles={subcomponentStyles?.close}
+        />
+      )}
     </BoxMessageContainer>
   );
 };

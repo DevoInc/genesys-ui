@@ -7,33 +7,48 @@ import {
   CollapseHeading,
   CollapseHeadingProps,
 } from './components';
+import { StyledOverloadCssPropsWithRecord } from '../../declarations';
 
-export interface CollapseProps
+export interface BaseCollapseProps
   extends CollapseContainerProps,
     Pick<CollapseHeadingProps, 'truncateLine'> {
   heading?: CollapseHeadingProps['children'];
 }
+
+export type CollapseProps = BaseCollapseProps &
+  StyledOverloadCssPropsWithRecord<'button' | 'container' | 'heading'>;
 
 export const InternalCollapse: React.FC<CollapseProps> = ({
   expanded,
   heading,
   onClick,
   styles,
+  subcomponentStyles,
   tooltip,
   truncateLine = 1,
   ...nativeProps
 }) => (
-  <CollapseContainer
+  <Collapse.Container
     {...nativeProps}
     aria-expanded={expanded}
-    css={styles}
     expanded={expanded}
     onClick={onClick}
+    styles={subcomponentStyles?.container || styles}
     tooltip={tooltip}
   >
-    <CollapseButton expanded={expanded} onClick={onClick} tooltip={tooltip} />
-    <CollapseHeading truncateLine={truncateLine}>{heading}</CollapseHeading>
-  </CollapseContainer>
+    <Collapse.Button
+      expanded={expanded}
+      onClick={onClick}
+      styles={subcomponentStyles?.button}
+      tooltip={tooltip}
+    />
+    <Collapse.Heading
+      styles={subcomponentStyles?.heading}
+      truncateLine={truncateLine}
+    >
+      {heading}
+    </Collapse.Heading>
+  </Collapse.Container>
 );
 
 export const Collapse = InternalCollapse as typeof InternalCollapse & {
