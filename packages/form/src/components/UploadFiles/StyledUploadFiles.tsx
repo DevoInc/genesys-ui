@@ -587,7 +587,7 @@ export const StyledUploadFiles = styled((props) => (
       ${scrollbars({
         cornerColor: cmpTokens.color.background,
         theme,
-      })}; //TODO: Fix this styles
+      })};
     }
 
     /* List - FilePond */

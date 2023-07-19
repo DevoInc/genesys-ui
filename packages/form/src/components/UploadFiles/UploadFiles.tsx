@@ -107,7 +107,6 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
     >
       <Box flex="1 1 100%">
         <StyledUploadFiles
-          //TODO: review accessibility props
           {...restNativeProps}
           acceptedFileTypes={acceptedFileTypes}
           allowFileSizeValidation={allowFileSizeValidation}
