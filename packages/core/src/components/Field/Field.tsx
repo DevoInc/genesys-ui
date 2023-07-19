@@ -10,6 +10,7 @@ import {
   MouseEventAttrProps,
   StyledOverloadCssProps,
   StyledPolymorphicProps,
+  StyledOverloadCssPropsWithRecord,
 } from '../../declarations';
 import { LabelPosition } from './declarations';
 import {
@@ -46,7 +47,7 @@ export type FieldChildrenProps = React.ReactElement<{
   [key: string]: unknown;
 }>;
 
-export interface FieldProps
+export interface BaseFieldProps
   extends WithRequired<GlobalAttrProps, 'id'>,
     Pick<FieldAttrProps, 'disabled' | 'required'>,
     MouseEventAttrProps,
@@ -76,6 +77,18 @@ export interface FieldProps
   status?: FieldStatus;
 }
 
+export type FieldProps = BaseFieldProps &
+  StyledOverloadCssPropsWithRecord<
+    | 'addon'
+    | 'container'
+    | 'controlDistributor'
+    | 'helper'
+    | 'floatingHelper'
+    | 'label'
+    | 'labelDistributor'
+    | 'requiredMark'
+  >;
+
 export const PartField: React.FC<FieldProps> = ({
   as,
   children,
@@ -94,6 +107,7 @@ export const PartField: React.FC<FieldProps> = ({
   size = 'md',
   status = 'base',
   styles,
+  subcomponentStyles,
   tooltip,
   ...mouseEventAttrProps
 }) => {
@@ -105,6 +119,7 @@ export const PartField: React.FC<FieldProps> = ({
     <Field.RequiredMark
       colorScheme={status as UIColorScheme}
       tooltip={requiredMarkTooltip}
+      styles={subcomponentStyles?.requiredMark}
     />
   );
   const FloatingHelperBlock = (
@@ -112,6 +127,7 @@ export const PartField: React.FC<FieldProps> = ({
       message={helper}
       id={helperId}
       status={hasStatus(status) ? status : 'help'}
+      styles={subcomponentStyles?.floatingHelper}
     />
   );
   return (
@@ -119,10 +135,13 @@ export const PartField: React.FC<FieldProps> = ({
       {...mouseEventAttrProps}
       as={as}
       role={role}
-      styles={styles}
+      styles={subcomponentStyles?.container || styles}
       tooltip={tooltip}
     >
-      <Field.LabelDistributor direction={direction}>
+      <Field.LabelDistributor
+        direction={direction}
+        styles={subcomponentStyles?.labelDistributor}
+      >
         {label && (
           <Field.Label
             cursor={disabled ? 'not-allowed' : undefined}
@@ -132,6 +151,7 @@ export const PartField: React.FC<FieldProps> = ({
             htmlFor={disabled ? null : id}
             requiredMark={required ? RequiredMarkerBlock : null}
             size={size}
+            styles={subcomponentStyles?.label}
           >
             {label}
           </Field.Label>
@@ -140,6 +160,7 @@ export const PartField: React.FC<FieldProps> = ({
           hasFloatingHelper={hasFloatingHelper}
           labelPosition={labelPosition}
           size={size}
+          styles={subcomponentStyles?.controlDistributor}
           wide={hasWideControl}
           width={controlWidth}
         >
@@ -156,6 +177,7 @@ export const PartField: React.FC<FieldProps> = ({
               message={helper}
               id={helperId}
               status={hasStatus(status) ? status : 'help'}
+              styles={subcomponentStyles?.floatingHelper}
             />
           )}
         </Field.ControlDistributor>
@@ -165,6 +187,7 @@ export const PartField: React.FC<FieldProps> = ({
           id={helperId}
           message={helper}
           size={FIELD_HELPER_SIZE_MAP[size]}
+          styles={subcomponentStyles?.helper}
           status={status}
         />
       )}

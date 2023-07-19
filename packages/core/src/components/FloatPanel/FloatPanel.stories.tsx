@@ -6,6 +6,9 @@ import { FloatPanel, Typography, VFlex } from '..';
 const meta: Meta<typeof FloatPanel> = {
   title: 'Components/Core/Layout/FloatPanel',
   component: FloatPanel,
+  args: {
+    position: 'left',
+  },
 };
 
 export default meta;

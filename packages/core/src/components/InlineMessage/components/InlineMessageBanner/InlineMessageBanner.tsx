@@ -6,7 +6,8 @@ import { BoxMessage, BoxMessageProps } from '../../../BoxMessage';
 import { inlineMessageBannerMixin } from './helpers';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface InlineMessageBannerProps extends BoxMessageProps {}
+export interface InlineMessageBannerProps
+  extends Omit<BoxMessageProps, 'subcomponentStyles'> {}
 
 export const InlineMessageBanner: React.FC<InlineMessageBannerProps> = ({
   actions,

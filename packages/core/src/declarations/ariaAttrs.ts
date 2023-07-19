@@ -29,6 +29,7 @@ export interface GlobalAriaProps
 export interface LayoutAriaProps
   extends Pick<
     AriaAttributes,
+    | 'aria-expanded'
     | 'aria-live'
     | 'aria-modal'
     | 'aria-atomic'

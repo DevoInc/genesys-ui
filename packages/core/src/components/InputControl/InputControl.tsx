@@ -7,7 +7,10 @@ import { INPUT_CONTROL_ICON_STATUS_MAP } from './constants';
 import { hasStatus } from '../../utils/validations';
 
 // declarations
-import { StyledOverloadCssProps } from '../../declarations';
+import {
+  StyledOverloadCssProps,
+  StyledOverloadCssPropsWithRecord,
+} from '../../declarations';
 import type {
   InputControlIconProps,
   InputControlInputProps,
@@ -24,7 +27,7 @@ import {
   InputControlShowPassword,
 } from './components';
 
-export interface InputControlProps
+export interface BaseInputControlProps
   extends Omit<InputControlInputProps, 'hasIcon' | 'hasTypeIcon'>,
     Pick<InputControlIconProps, 'icon'>,
     Pick<InputControlInnerContainerProps, 'inputWidth'>,
@@ -34,6 +37,11 @@ export interface InputControlProps
   /** Fixed block of content at the end of the input */
   addonToRight?: React.ReactNode;
 }
+
+export type InputControlProps = BaseInputControlProps &
+  StyledOverloadCssPropsWithRecord<
+    'addon' | 'container' | 'icon' | 'input' | 'innerContainer' | 'showPassword'
+  >;
 
 const InternalInputControl: React.FC<InputControlProps> = ({
   addonToLeft,
@@ -82,6 +90,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
   status = 'base',
   step,
   styles,
+  subcomponentStyles,
   tooltip,
   type = 'text',
   value,
@@ -99,31 +108,45 @@ const InternalInputControl: React.FC<InputControlProps> = ({
       onMouseOut={onMouseOut}
       onMouseOver={onMouseOver}
       onMouseUp={onMouseUp}
-      styles={styles}
+      styles={subcomponentStyles?.container || styles}
       tooltip={tooltip}
     >
       {addonToLeft && (
-        <Field.Addon disabled={disabled} size={size}>
+        <Field.Addon
+          disabled={disabled}
+          size={size}
+          styles={subcomponentStyles?.addon}
+        >
           {addonToLeft}
         </Field.Addon>
       )}
-      <InputControlInnerContainer inputWidth={inputWidth}>
+      <InputControlInnerContainer
+        inputWidth={inputWidth}
+        styles={subcomponentStyles?.innerContainer}
+      >
         {typeIcon && (
           <InputControlIcon
             icon={typeIcon}
             size={size}
             status={status}
+            styles={subcomponentStyles?.icon}
             isTypeIcon
           />
         )}
         {iconEval && (
-          <InputControlIcon icon={iconEval} size={size} status={status} />
+          <InputControlIcon
+            icon={iconEval}
+            size={size}
+            status={status}
+            styles={subcomponentStyles?.icon}
+          />
         )}
         {type === 'password' && (
           <InputControlShowPassword
             onClick={() => setShowPassword(!showPassword)}
             showPassword={showPassword}
             size={size}
+            styles={subcomponentStyles?.showPassword}
           />
         )}
         <InputControlInput
@@ -164,13 +187,19 @@ const InternalInputControl: React.FC<InputControlProps> = ({
           hasTypeIcon={Boolean(typeIcon)}
           size={size}
           status={status}
+          styles={subcomponentStyles?.input}
           step={step}
           type={showPassword ? 'text' : type}
           value={value}
         />
       </InputControlInnerContainer>
       {addonToRight && (
-        <Field.Addon disabled={disabled} position="right" size={size}>
+        <Field.Addon
+          disabled={disabled}
+          position="right"
+          size={size}
+          styles={subcomponentStyles?.addon}
+        >
           {addonToRight}
         </Field.Addon>
       )}
