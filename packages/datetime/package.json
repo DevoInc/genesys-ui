@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-datetime",
-  "version": "1.0.3-alpha.18",
+  "version": "1.0.3-alpha.19",
   "description": "",
   "scripts": {
     "compile": "tsc --project tsconfig.build.json",
@@ -27,7 +27,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@devoinc/genesys-icons": "^3.0.1",
-    "@devoinc/genesys-ui": "^1.0.3-alpha.18",
+    "@devoinc/genesys-ui": "^1.0.3-alpha.19",
     "date-fns": "^2.30.0",
     "react": "17.x || 18.x",
     "react-popper": "^2.3.0",
