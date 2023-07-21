@@ -5,7 +5,7 @@ import { BoxMessageContainerProps } from './BoxMessageContainer';
 
 export interface BoxMessageActionsProps
   extends Pick<BoxMessageContainerProps, 'status' | 'styles'> {
-  actions: React.ReactElement<ButtonProps>[];
+  actions?: React.ReactElement<ButtonProps>[];
 }
 
 export const BoxMessageActions: React.FC<BoxMessageActionsProps> = ({
