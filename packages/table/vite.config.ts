@@ -12,6 +12,16 @@ export default defineConfig({
       name: 'index',
       fileName: 'index',
     },
+    rollupOptions: {
+      external: ['react', '@devoinc/genesys-ui', 'styled-components'],
+      output: {
+        globals: {
+          react: 'React',
+          'styled-components': 'styled',
+          '@devoinc/genesys-ui': 'genesysUi',
+        },
+      },
+    },
   },
   plugins: [
     react({
