@@ -1,0 +1,10 @@
+export const AUX_LEFT_COLUMN_TYPE = {
+  AFTER_ROW: 'AFTER_ROW',
+  BULK_ACTIONS: 'BULK_ACTIONS',
+  INDEXES: 'INDEXES',
+} as const;
+
+export const AUX_COLUMN_TYPE = {
+  ...AUX_LEFT_COLUMN_TYPE,
+  ACTIONS: 'ACTIONS',
+} as const;

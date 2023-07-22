@@ -8,4 +8,9 @@
     "outDir": "./dist"
   },
   "include": ["src"],
+  "references": [
+    {
+      "path": "../core"
+    }
+  ]
 }
