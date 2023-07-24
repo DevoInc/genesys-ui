@@ -7,6 +7,7 @@ export interface ColDef {
   // { name: santi, medal: { gold: 2 }}
   field?: string;
   type?:
+    | 'default'
     | 'boolean'
     | 'custom'
     | 'date'
@@ -42,6 +43,8 @@ export interface ColDef {
   };
   tooltipField?: string;
   expandedRow?: boolean;
+  boxShadow?: 'base' | 'strong';
+  isDragging?: boolean;
 }
 
 export type DefaultColDef = ColDef;
