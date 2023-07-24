@@ -4,18 +4,21 @@ import * as React from 'react';
 import { Loader, LoaderProps } from '../../Loader';
 
 export interface GlobalLoaderProps
-  extends Pick<LoaderProps, 'zIndex' | 'className' | 'fixed'>, // native
+  extends Omit<LoaderProps, 'gradientConfig' | 'type'>, // native
     GlobalAttrProps,
     GlobalAriaProps {}
 
 export const GlobalLoader: React.FC<GlobalLoaderProps> = ({
   className,
   fixed = true,
+  styles,
+  subcomponentStyles,
   zIndex = 999999,
   ...nativeProps
 }) => (
   <Loader
     {...nativeProps}
+    {...(styles ? { styles } : { subcomponentStyles })}
     className={className}
     colorScheme={'dark'}
     fixed={fixed}

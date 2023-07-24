@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import {
+  BaseLoaderProps,
   Box,
   ButtonGroup,
   Flex,
@@ -16,7 +17,10 @@ import {
   ModalIcon,
 } from './components';
 
+import { useDetectScroll } from '../../hooks';
+
 import type { GlobalStatus } from '../../declarations';
+import { StyledOverloadCssPropsWithRecord } from '../../declarations';
 import type {
   ModalFooterProps,
   ModalBodyProps,
@@ -24,9 +28,8 @@ import type {
   ModalContainerProps,
   ModalIconProps,
 } from './components';
-import { useDetectScroll } from '../../hooks';
 
-export interface ModalProps
+export interface BaseModalProps
   extends Omit<ModalContainerProps, 'children'>,
     Omit<ModalHeaderProps, 'children' | 'hasBoxShadow'>,
     Omit<ModalIconProps, 'children'>,
@@ -58,6 +61,9 @@ export interface ModalProps
   width?: string;
 }
 
+export type ModalProps = BaseModalProps &
+  StyledOverloadCssPropsWithRecord<'container' | 'header' | 'body' | 'footer'>;
+
 export const InternalModal: React.FC<ModalProps> = ({
   footerButtons,
   children,
@@ -74,6 +80,8 @@ export const InternalModal: React.FC<ModalProps> = ({
   status = 'base',
   windowSize = 'default',
   shouldCloseOnOverlayClick,
+  styles,
+  subcomponentStyles,
   zIndex = 1,
 }) => {
   const { hasScroll, targetElRef } = useDetectScroll();
@@ -88,8 +96,13 @@ export const InternalModal: React.FC<ModalProps> = ({
       onRequestClose={onRequestClose}
       zIndex={zIndex}
       status={status}
+      styles={subcomponentStyles?.container || styles}
     >
-      <ModalHeader hasBoxShadow={hasScroll} status={status}>
+      <ModalHeader
+        hasBoxShadow={hasScroll}
+        status={status}
+        styles={subcomponentStyles?.header}
+      >
         {headerTitle && (
           <Flex alignItems="inherit">
             <ModalIcon status={status} />
@@ -125,12 +138,17 @@ export const InternalModal: React.FC<ModalProps> = ({
         modalBodyRef={targetElRef}
         contentPadding={contentPadding}
         hasScroll={hasScroll}
+        styles={subcomponentStyles?.body}
       >
         {children}
       </ModalBody>
 
       {footerButtons && (
-        <ModalFooter hasBoxShadow={hasScroll} status={status}>
+        <ModalFooter
+          hasBoxShadow={hasScroll}
+          status={status}
+          styles={subcomponentStyles?.footer}
+        >
           {helpUrl && (
             <Box marginRight="auto">
               <IconButtonGoToDocs href={helpUrl} tooltip={helpTooltip} />
