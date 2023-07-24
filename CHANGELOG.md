@@ -1,5 +1,17 @@
 # Changelog
 
+### [1.0.3-alpha.19](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.18...v1.0.3-alpha.19) (2023-07-21)
+
+
+### Bug Fixes
+
+* **build:** recover sourcemaps for bundles ([9b9cade](https://github.com/DevoInc/genesys-ui/commit/9b9cade98633a1ba091f83782ef0c2f20997345b))
+
+
+### Vulnerabilities
+
+* **deps-dev:** bump word-wrap from 1.2.3 to 1.2.4 ([#20](https://github.com/DevoInc/genesys-ui/issues/20)) ([d2e4ab8](https://github.com/DevoInc/genesys-ui/commit/d2e4ab82a38e1ca45f3d07da3d3144fe410ddd68))
+
 ### [1.0.3-alpha.18](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.17...v1.0.3-alpha.18) (2023-07-17)
 
 
