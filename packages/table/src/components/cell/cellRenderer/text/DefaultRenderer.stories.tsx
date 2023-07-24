@@ -2,13 +2,14 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Cell } from '../../Cell';
-import { StylesCellProps } from '../../declarationsfake';
 import { ColDef } from '../../declarations';
+import { data } from '../../../../stories/data';
 
 const column: ColDef = {
   colId: 'name',
   field: 'name',
   headerName: 'Name',
+  type: 'default',
   cellStyle: {
     align: {
       horizontal: 'left',
@@ -29,10 +30,6 @@ type Story = StoryObj<typeof Cell>;
 export const Base: Story = {
   render: () =>
     (() => {
-      return (
-        <Cell column={column} renderer={'default'}>
-          <p>Hola</p>
-        </Cell>
-      );
+      return <Cell column={column} data={data[0]} />;
     })(),
 };

@@ -250,7 +250,6 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
     onSecondaryPaneSizeChange?.();
   }, [secondaryPaneSize, onSecondaryPaneSizeChange]);
 
-  // TODO: This can be moved to handleMouseUp and handleSplitterMouseDown
   React.useEffect(() => {
     if (resizing) {
       onDragStart?.();

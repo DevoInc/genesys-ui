@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat, isEmpty } from 'lodash';
 
-// TODO ad the component when it's ready
+//TODO: ad the component when it's ready
 //const DropDownMenu = require('../../../../../react/molecules/DropDownMenu');
 
 import { PanelHeaderActionsType, PanelHeaderSize } from '../declarations';

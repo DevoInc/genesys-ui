@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 
 // components
 import { Label } from '../Label';
@@ -11,6 +11,7 @@ import {
   Flex,
   GlobalAriaProps,
   GlobalAttrProps,
+  GlobalSpacing,
   StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../';
@@ -62,11 +63,8 @@ export const TagGroup: React.FC<TagGroupProps> = ({
         flexWrap="wrap"
         inline
         role="group"
-        // TODO: improve the genesys-tokens types to allow using the same types for space props (and many others), so we can pass a design token as a prop value
-        styles={css`
-          row-gap: ${itemTokens.space.margin.ver[size]};
-          column-gap: ${itemTokens.space.margin.hor[size]};
-        `}
+        rowGap={itemTokens.space.margin.ver[size] as GlobalSpacing}
+        columnGap={itemTokens.space.margin.hor[size] as GlobalSpacing}
       >
         {children?.map((child, idx) =>
           React.cloneElement(child, {

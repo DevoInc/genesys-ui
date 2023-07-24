@@ -12,7 +12,13 @@ export interface InputProps
   extends Omit<FieldProps, 'children' | 'role'>,
     Omit<
       InputControlProps,
-      'id' | 'size' | 'aria-label' | 'status' | 'disabled' | 'required'
+      | 'id'
+      | 'size'
+      | 'aria-label'
+      | 'status'
+      | 'disabled'
+      | 'required'
+      | 'subcomponentStyles'
     > {
   /** Name of the Icon from icon library font to be included in the input control. */
   inputControlIcon?: string;

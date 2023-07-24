@@ -14,25 +14,26 @@ import { getRenderer } from './cellRenderer';
 import { ColDef } from './declarations';
 
 interface CellProps {
-  children?: React.ReactNode;
+  data?: object;
   column?: ColDef;
   renderer?: 'default' | 'popper' | 'link' | 'tag' | 'groupTags';
 }
 
 export const Cell: React.FC<CellProps> = ({
-  children,
+  data,
   column,
-  renderer,
   expanded,
+  boxShadow,
+  onClick,
+  isDragging,
+
   // hasComplexContent,
   // hasStripedRows,
   // isAfterRow,
   // isAfterRowOpen,
-  // isDragging,
   // isEvenRow,
   // isExpanded,
-  // onClick,
-  //rowLength,
+  // rowLength,
   // uso la propiedad para pasar estilos y no tener que usar el contexto (density, tallRows)
   // styles,
   // width,
@@ -41,7 +42,7 @@ export const Cell: React.FC<CellProps> = ({
   // renderer,
   // hasPopper,
 }) => {
-  const renderContent = getRenderer(renderer);
+  const renderContent = getRenderer(column.type);
   // const { setRef: contentRef, size: measures } = useContainerDimensions();
   // const tableTokens = useTheme().cmp.tabs.container;
 
@@ -131,7 +132,6 @@ export const Cell: React.FC<CellProps> = ({
   //   }
   //   return width + extraWidth;
   // };
-  debugger;
   return (
     <StyledTableCellWrapper
       cellStyle={column.cellStyle}
@@ -139,23 +139,27 @@ export const Cell: React.FC<CellProps> = ({
       editable={column.editable}
       data-tip={!expanded ? column.tooltipField : null}
       expandedRow={column.expandedRow}
+      // pinta una celda si y otra no lo convertimos en box-shadow: base o strong
+      // isEvenRow={isEvenRow}
+      // striped={hasStripedRows}
+      boxShadow={boxShadow}
+      onClick={onClick}
+      isDragging={isDragging}
+
+      // sacar a los renderer
       // para contenido de mas de 120 caracteres???
       // tall={hasLongContent}
       // para que no tenga padding
       // toEdge={column.styleConf?.toEdge}
+      // toLeftEdge={column.styleConf?.toLeftEdge}
 
       // actionsCell={column.auxType === AUX_COLUMN_TYPE.ACTIONS}
       // hasComplexContent={hasComplexContent}
       // innerActions={column.cellActions}
       // innerActionsWidth={getCellActionsWidth(column, tableTokens)}
       // innerEllipsis={innerEllipsis}
-      // isEvenRow={isEvenRow}
-      // isDragging={isDragging}
-      // onClick={onClickInnerCell}
-      // striped={hasStripedRows}
-      // toLeftEdge={column.styleConf?.toLeftEdge}
     >
-      {renderContent({ value: children, columnDef: column })}
+      {renderContent({ value: data[column.field], columnDef: column })}
     </StyledTableCellWrapper>
   );
 };
