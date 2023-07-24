@@ -51,12 +51,13 @@ export const Row: React.FC<RowProps> = ({
       opacity={afterRowManager?.getOpacity(decoratedRow.id)}
       style={{ top: top + rowHeight + 'px' }}
     >
-      <Cell column={{}}>
-        {afterRowManager.function({
+      <Cell
+        column={{}}
+        data={afterRowManager.function({
           row: decoratedRow.row,
           onUpdateRow,
         })}
-      </Cell>
+      />
     </StyledTableRow>
   );
 

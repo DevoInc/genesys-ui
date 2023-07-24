@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { DefaultTheme } from 'styled-components';
 import { ColDef } from '../cell/declarations';
 
@@ -20,7 +19,7 @@ interface AfterRowManager {
   }: {
     row: RowObject;
     onUpdateRow: (row: RowObject) => void;
-  }) => string | number | ReactNode;
+  }) => object;
 }
 
 export interface RowObject {
