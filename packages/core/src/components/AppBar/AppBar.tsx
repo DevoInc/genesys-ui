@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import type { StyledOverloadCssPropsWithRecord } from '../../declarations';
+
 import {
   ButtonGroup,
   ButtonProps,
@@ -19,7 +21,7 @@ import {
   AppBarOptions,
 } from './subcomponents';
 
-export interface AppBarProps extends AppBarContainerProps {
+interface BaseAppBarProps extends AppBarContainerProps {
   /** List of actions elements. */
   actions?: (
     | React.ReactElement<ButtonProps>
@@ -36,6 +38,11 @@ export interface AppBarProps extends AppBarContainerProps {
   tabItems?: React.ReactElement<TabsItemProps>[];
 }
 
+export type AppBarProps = BaseAppBarProps &
+  StyledOverloadCssPropsWithRecord<
+    'container' | 'heading' | 'divider' | 'navigation' | 'actions' | 'options'
+  >;
+
 const InternalAppBar: React.FC<AppBarProps> = ({
   actions,
   id,
@@ -43,31 +50,42 @@ const InternalAppBar: React.FC<AppBarProps> = ({
   sticky = false,
   tabItems,
   heading,
+  styles,
+  subcomponentStyles,
   ...nativeProps
 }) => {
   return (
-    <AppBarContainer {...nativeProps} id={id} sticky={sticky}>
-      <>
-        {heading && <AppBarHeading id={id}>{heading}</AppBarHeading>}
-        {heading && tabItems && <AppBarDivider id={id} />}
-        {tabItems && (
-          <AppBarNavigation id={id}>
-            <Tabs aria-label="main-nav" colorScheme="primary" contained={false}>
-              {React.Children.map(tabItems, (tab) => React.cloneElement(tab))}
-            </Tabs>
-          </AppBarNavigation>
-        )}
-        {actions && (
-          <AppBarActions id={id}>
-            <ButtonGroup size="md">{actions}</ButtonGroup>
-          </AppBarActions>
-        )}
-        {options && (
-          <AppBarOptions id={id}>
-            <ButtonGroup size="md">{options}</ButtonGroup>
-          </AppBarOptions>
-        )}
-      </>
+    <AppBarContainer
+      {...nativeProps}
+      styles={subcomponentStyles?.container || styles}
+      id={id}
+      sticky={sticky}
+    >
+      {heading && (
+        <AppBarHeading id={id} styles={subcomponentStyles?.heading}>
+          {heading}
+        </AppBarHeading>
+      )}
+      {heading && tabItems && (
+        <AppBarDivider id={id} styles={subcomponentStyles?.divider} />
+      )}
+      {tabItems && (
+        <AppBarNavigation id={id} styles={subcomponentStyles?.navigation}>
+          <Tabs aria-label="main-nav" colorScheme="primary" contained={false}>
+            {React.Children.map(tabItems, (tab) => React.cloneElement(tab))}
+          </Tabs>
+        </AppBarNavigation>
+      )}
+      {actions && (
+        <AppBarActions id={id} styles={subcomponentStyles?.actions}>
+          <ButtonGroup size="md">{actions}</ButtonGroup>
+        </AppBarActions>
+      )}
+      {options && (
+        <AppBarOptions id={id} styles={subcomponentStyles?.options}>
+          <ButtonGroup size="md">{options}</ButtonGroup>
+        </AppBarOptions>
+      )}
     </AppBarContainer>
   );
 };

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
@@ -11,7 +12,6 @@ import {
 import { iconButtonStatusMixin } from './helpers';
 
 import { IconButton, IconButtonProps } from '../../';
-import { concat } from 'lodash';
 
 export interface IconButtonStatusProps
   extends Omit<

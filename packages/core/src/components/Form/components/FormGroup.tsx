@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { FieldAttrProps, FieldProps } from '../../../';
+import { FieldAttrProps, FieldProps, StyledOverloadCssProps } from '../../../';
 
 import {
   Field,
@@ -24,6 +24,7 @@ import {
 export interface FormGroupProps
   extends StyledFormGroupContainerProps,
     StyledFormGroupProps,
+    StyledOverloadCssProps,
     Pick<FieldProps, 'helper' | 'hasFloatingHelper' | 'status'>,
     Pick<FlexProps, 'marginLeft' | 'marginTop'>,
     Pick<
@@ -67,6 +68,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   marginTop,
   name,
   status = 'base',
+  styles,
   tooltip,
   ...restNativeAttrProps
 }) => {
@@ -92,6 +94,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   return (
     <StyledFormGroupContainer
       {...restNativeAttrProps}
+      css={styles}
       form={asFieldset ? form : null}
       disabled={asFieldset ? disabled : null}
       name={asFieldset ? name : null}

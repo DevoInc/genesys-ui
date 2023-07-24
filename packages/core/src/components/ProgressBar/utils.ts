@@ -74,19 +74,10 @@ export const getIcon = ({
   status,
 }: ProgressBarUtilsProps) => {
   if (icon) return icon;
-  if (getStatus({ percent, status }) === 'complete')
-    return type === 'circular'
-      ? STATUS_ICON_CIRCULAR_MAP['complete']
-      : STATUS_ICON_MAP['complete'];
-  if (status === 'warning')
-    return type === 'circular'
-      ? STATUS_ICON_CIRCULAR_MAP['warning']
-      : STATUS_ICON_MAP['warning'];
-  if (status === 'error')
-    return type === 'circular'
-      ? STATUS_ICON_CIRCULAR_MAP['error']
-      : STATUS_ICON_MAP['error'];
-  return null;
+  const iconMap =
+    type === 'circular' ? STATUS_ICON_CIRCULAR_MAP : STATUS_ICON_MAP;
+  if (getStatus({ percent, status }) === 'complete') return iconMap['complete'];
+  return iconMap[status] || null;
 };
 
 /**

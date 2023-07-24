@@ -5,6 +5,8 @@ import {
   FocusEventAttrProps,
   GlobalAttrProps,
   MouseEventAttrProps,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
 } from '../../declarations';
 
 import { StyledEditableContent } from './StyledEditableContent';
@@ -14,17 +16,20 @@ export interface EditableContentProps
     MouseEventAttrProps,
     FocusEventAttrProps,
     ContainerEventAttrProps,
-    FieldEventAttrProps {
+    FieldEventAttrProps,
+    StyledPolymorphicProps,
+    StyledOverloadCssProps {
   children?: React.ReactNode;
 }
 
 export const EditableContent: React.FC<EditableContentProps> = React.forwardRef<
   HTMLDivElement,
   EditableContentProps
->(({ children, tooltip, ...nativeProps }, ref) => {
+>(({ children, tooltip, styles, ...nativeProps }, ref) => {
   return (
     <StyledEditableContent
       {...nativeProps}
+      css={styles}
       contentEditable
       ref={ref}
       title={tooltip}

@@ -4,6 +4,7 @@ import * as React from 'react';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../declarations';
 
@@ -15,6 +16,7 @@ import { TagBadge, TagContainer, TagIcon, TagLabel } from './components';
 
 export interface TagProps
   extends StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps,
     StyledTagContainerProps {
@@ -31,6 +33,7 @@ export const InternalTag: React.FC<TagProps> = ({
   quiet,
   wide,
   size = 'md',
+  styles,
   text,
   tooltip,
   ...restNativeProps
@@ -43,6 +46,7 @@ export const InternalTag: React.FC<TagProps> = ({
       quiet={quiet}
       wide={wide}
       size={size}
+      styles={styles}
       tooltip={tooltip}
     >
       {quiet && <TagBadge colorScheme={colorScheme} icon={icon} size={size} />}

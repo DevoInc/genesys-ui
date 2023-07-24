@@ -19,7 +19,10 @@ export const strColorToRGBAColor = (v = '', d: string): RgbaColor => {
  * Alpha always presents, even if it is equal to 1.
  */
 export const colorFromColorPickerValue = (c: {
-  [key: string]: any;
+  r: number;
+  g: number;
+  b: number;
+  a?: number;
 }): RgbaColor => {
   return { red: c.r, green: c.g, blue: c.b, alpha: c.a || 1 };
 };

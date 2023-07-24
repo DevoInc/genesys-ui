@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { GlobalAriaProps, GlobalAttrProps } from '../../declarations';
+import {
+  GlobalAriaProps,
+  GlobalAttrProps,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '../../declarations';
 
 import {
   StyledDevoLogoLoader,
@@ -9,6 +14,8 @@ import {
 export interface DevoLogoLoaderProps
   extends StyledDevoLogoLoaderProps,
     // native
+    StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps {
   className?: string;
@@ -19,6 +26,7 @@ export const DevoLogoLoader: React.FC<DevoLogoLoaderProps> = ({
   className,
   colorScheme = 'dark',
   size = 'md',
+  styles,
   tooltip,
   ...nativeProps
 }) => (
@@ -27,6 +35,7 @@ export const DevoLogoLoader: React.FC<DevoLogoLoaderProps> = ({
     animation={animation}
     className={className}
     colorScheme={colorScheme}
+    css={styles}
     size={size}
     title={tooltip}
   >

@@ -59,6 +59,7 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
   hideLabel,
   labelPosition,
   label,
+  styles,
   // Common
   id,
   size = 'md',
@@ -103,6 +104,7 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
       required={required}
       size={size}
       status={status}
+      styles={styles}
       tooltip={tooltip}
     >
       <StyledFieldsCombinerWrapper>

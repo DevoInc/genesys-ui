@@ -1,18 +1,29 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { Divider as UIDivider, Flex } from '../../..';
+import {
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '../../../../declarations';
 
-export interface AppBarDividerProps {
+import { Divider, Flex } from '../../..';
+
+export interface AppBarDividerProps
+  extends StyledPolymorphicProps,
+    StyledOverloadCssProps {
   id: string;
 }
 
-export const AppBarDivider: React.FC<AppBarDividerProps> = ({ id }) => {
+export const AppBarDivider: React.FC<AppBarDividerProps> = ({
+  as,
+  id,
+  styles,
+}) => {
   const appBarDividerTokens = useTheme().cmp.appBar.divider;
 
   return (
-    <Flex.Item id={`${id}__divider`}>
-      <UIDivider
+    <Flex.Item id={`${id}__divider`} as={as} styles={styles}>
+      <Divider
         vertical
         customColor={appBarDividerTokens.color.border}
         height={appBarDividerTokens.size.height}

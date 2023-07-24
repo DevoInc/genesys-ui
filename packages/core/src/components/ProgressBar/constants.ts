@@ -1,24 +1,27 @@
-import { ProgressBarStatus } from './declarations';
-import { GlobalStatus } from '../../declarations';
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
+
+import type { ProgressBarStatus } from './declarations';
+import type { GlobalStatus } from '../../declarations';
+import { STATUS_ICON_MAP as BASE_STATUS_ICON_MAP } from '../../constants';
 
 export const MAX_PERCENT = 100;
 
 export const STATUS_ICON_MAP: {
-  [key in ProgressBarStatus]: string;
+  [key in ProgressBarStatus]: keyof typeof iconDictionary;
 } = {
-  error: 'gi-error_warning_danger_stop_filled',
-  warning: 'gi-attention_error_alert_caution_filled',
   progressing: null,
-  complete: 'gi-ok_successful_check_filled',
+  error: BASE_STATUS_ICON_MAP.filled.error,
+  warning: BASE_STATUS_ICON_MAP.filled.warning,
+  complete: BASE_STATUS_ICON_MAP.filled.success,
 } as const;
 
 export const STATUS_ICON_CIRCULAR_MAP: {
-  [key in ProgressBarStatus]: string;
+  [key in ProgressBarStatus]: keyof typeof iconDictionary;
 } = {
-  error: 'gi-error_warning_danger_stop',
-  warning: 'gi-error_warning_alert_attention',
   progressing: null,
-  complete: 'gi-check_thick',
+  error: BASE_STATUS_ICON_MAP.stroke.error,
+  warning: BASE_STATUS_ICON_MAP.stroke.warning,
+  complete: BASE_STATUS_ICON_MAP.stroke.success,
 } as const;
 
 export const ICON_CIRCULAR_SIZE_MAP = {

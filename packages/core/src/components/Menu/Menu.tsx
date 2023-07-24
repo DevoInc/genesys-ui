@@ -4,6 +4,7 @@ import * as React from 'react';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../declarations';
 
@@ -13,6 +14,7 @@ import { MenuHeading, MenuItem, MenuSeparator } from './subcomponents';
 
 export interface MenuProps
   extends StyledPolymorphicProps,
+    StyledOverloadCssProps,
     Pick<GlobalAttrProps, 'id'>,
     GlobalAriaProps {
   children?: React.ReactNode;

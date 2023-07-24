@@ -32,6 +32,7 @@ export const CheckboxControl: React.FC<CheckboxControlProps> = ({
   onChange,
   size = 'md',
   status = 'base',
+  styles,
   tooltip,
   ...restNativeProps
 }) => (
@@ -42,6 +43,7 @@ export const CheckboxControl: React.FC<CheckboxControlProps> = ({
     aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
     aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
     checked={onChange ? checked : undefined}
+    css={styles}
     indeterminate={indeterminate}
     $size={size}
     status={status}

@@ -13,7 +13,7 @@ export interface DropdownMenuProps {
   /** Label of the menu trigger component. */
   label?: string;
   /** Items for menu: array of objects with items config. */
-  items?: object[];
+  items?: Record<string, any>[];
   /** This is the component that triggers the drop-down menu.
    * This component must allow to propagate the accessibility properties
    * (role, aria-hashpopup, ...) for the accessibility to work correctly.

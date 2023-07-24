@@ -8,6 +8,8 @@ import {
   GlobalAttrProps,
   InputAttrProps,
   SelectionScheme,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
   TriggerEventAttrProps,
 } from '../../../../';
 
@@ -20,7 +22,9 @@ export interface ButtonSelectionProps
     Pick<FieldAttrProps, 'disabled' | 'name'>,
     Pick<InputAttrProps, 'value'>,
     FocusEventAttrProps,
-    TriggerEventAttrProps {
+    TriggerEventAttrProps,
+    StyledPolymorphicProps,
+    StyledOverloadCssProps {
   /** Label for input (checkbox or radio type) */
   label?: string;
   /** If it's multiple we use a checkbox and if it's single we use a radio */
@@ -28,6 +32,7 @@ export interface ButtonSelectionProps
 }
 
 export const ButtonSelection: React.FC<ButtonSelectionProps> = ({
+  as,
   id,
   checked,
   defaultChecked,
@@ -38,11 +43,14 @@ export const ButtonSelection: React.FC<ButtonSelectionProps> = ({
   onChange,
   onFocus,
   selectionScheme = 'multiple',
+  styles,
   value,
 }) => (
   <StyledButtonSelection
+    as={as}
     aria-label={label}
     checked={checked}
+    css={styles}
     defaultChecked={defaultChecked}
     disabled={disabled}
     id={id ? `${id}-button-input` : null}

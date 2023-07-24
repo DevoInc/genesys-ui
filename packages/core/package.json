@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui",
-  "version": "1.0.3-alpha.17",
+  "version": "1.0.3-alpha.19",
   "description": "",
   "types": "./dist/types/src/index.d.ts",
   "main": "./dist/index.umd.js",
@@ -15,7 +15,10 @@
     "dist"
   ],
   "scripts": {
+    "compile": "tsc --project tsconfig.build.json",
+    "compile:watch": "npm run compile -- --watch",
     "build": "vite build && tsc --project tsconfig.build.json",
+    "build:watch": "vite build --watch && tsc --project tsconfig.build.json",
     "depcruise": ". ../../depcruise.sh",
     "stryker": "npx stryker run"
   },

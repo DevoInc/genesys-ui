@@ -12,7 +12,13 @@ export interface InputProps
   extends Omit<FieldProps, 'children' | 'role'>,
     Omit<
       InputControlProps,
-      'id' | 'size' | 'aria-label' | 'status' | 'disabled' | 'required'
+      | 'id'
+      | 'size'
+      | 'aria-label'
+      | 'status'
+      | 'disabled'
+      | 'required'
+      | 'subcomponentStyles'
     > {
   /** Name of the Icon from icon library font to be included in the input control. */
   inputControlIcon?: string;
@@ -39,6 +45,7 @@ export const Input: React.FC<InputProps> = ({
   requiredMarkTooltip,
   size = 'md',
   status = 'base',
+  styles,
   tooltip,
   type = 'text',
   ...restNativeInputProps
@@ -63,6 +70,7 @@ export const Input: React.FC<InputProps> = ({
     requiredMarkTooltip={requiredMarkTooltip}
     size={size}
     status={status}
+    styles={styles}
     tooltip={tooltip}
   >
     <InputControl

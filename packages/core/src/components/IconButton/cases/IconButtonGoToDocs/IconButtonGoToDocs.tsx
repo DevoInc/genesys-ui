@@ -7,6 +7,7 @@ import { IconButton, IconButtonProps } from '../../';
 import { iconButtonGoToDocsMixin } from './helpers';
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
+import { STATUS_ICON_MAP } from '../../../../constants';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IconButtonGoToDocsProps
@@ -58,7 +59,7 @@ export const IconButtonGoToDocs = React.forwardRef<
         rel={rel}
         target={target}
         colorScheme={'help'}
-        icon="gi-about_question_faq_help_filled"
+        icon={STATUS_ICON_MAP.filled.help}
         circular
         ref={ref}
         size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}

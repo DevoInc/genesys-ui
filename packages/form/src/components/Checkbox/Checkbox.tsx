@@ -7,7 +7,6 @@ import {
   FieldProps,
 } from '@devoinc/genesys-ui';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface CheckboxProps
   extends Omit<
       FieldProps,
@@ -36,6 +35,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   requiredMarkTooltip,
   size = 'md',
   status = 'base',
+  styles,
   tooltip,
   ...restNativeInputProps
 }) => (
@@ -59,6 +59,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     requiredMarkTooltip={requiredMarkTooltip}
     size={size}
     status={status}
+    styles={styles}
     tooltip={tooltip}
   >
     <CheckboxControl

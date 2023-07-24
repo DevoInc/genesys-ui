@@ -1,61 +1,62 @@
 import * as React from 'react';
 
-import { IconButtonCollapse, Flex, Typography } from '../';
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  TriggerAriaProps,
-} from '../../declarations';
-import { PickUnion } from '../../typeFunctions';
-import { HeadingProps } from '../Typography/components/block';
-import { StyledHeader, StyledHeaderButton, StyledHeaderProps } from './styled';
+  CollapseButton,
+  CollapseContainer,
+  CollapseContainerProps,
+  CollapseHeading,
+  CollapseHeadingProps,
+} from './components';
+import { StyledOverloadCssPropsWithRecord } from '../../declarations';
 
-export interface CollapseProps
-  extends StyledHeaderProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    Pick<TriggerAriaProps, 'aria-controls'> {
-  truncateLine?: PickUnion<HeadingProps['truncateLine'], 1 | 2>;
-  name?: string;
-  onClick: () => void;
+export interface BaseCollapseProps
+  extends CollapseContainerProps,
+    Pick<CollapseHeadingProps, 'truncateLine'> {
+  heading?: CollapseHeadingProps['children'];
 }
 
-export const Collapse: React.FC<CollapseProps> = ({
-  name,
+export type CollapseProps = BaseCollapseProps &
+  StyledOverloadCssPropsWithRecord<'button' | 'container' | 'heading'>;
+
+export const InternalCollapse: React.FC<CollapseProps> = ({
   expanded,
+  heading,
   onClick,
-  truncateLine = 1,
-  'aria-controls': ariaControls,
+  styles,
+  subcomponentStyles,
   tooltip,
+  truncateLine = 1,
   ...nativeProps
 }) => (
-  <StyledHeader {...nativeProps} expanded={expanded} title={tooltip}>
-    <StyledHeaderButton
-      aria-controls={ariaControls}
-      aria-expanded={expanded}
+  <Collapse.Container
+    {...nativeProps}
+    aria-expanded={expanded}
+    expanded={expanded}
+    onClick={onClick}
+    styles={subcomponentStyles?.container || styles}
+    tooltip={tooltip}
+  >
+    <Collapse.Button
+      expanded={expanded}
       onClick={onClick}
-      aria-label={'Collapsible header'}
-      aria-description={expanded ? 'Collapse' : 'Expand'}
+      styles={subcomponentStyles?.button}
+      tooltip={tooltip}
     />
-    <Flex alignItems={'center'} height={'100%'} padding={'cmp-xs cmp-sm'}>
-      <Flex.Item flex={'0 0 auto'} marginRight={'cmp-sm'}>
-        <IconButtonCollapse
-          state={expanded ? 'expanded' : 'enabled'}
-          size={'sm'}
-          onClick={(e) => {
-            e.stopPropagation();
-            onClick();
-          }}
-          tooltip={expanded ? 'Collapse' : 'Expand'}
-        />
-      </Flex.Item>
-      <Flex.Item flex={'1 1 auto'} minWidth={'0'}>
-        <Flex alignItems={'center'}>
-          <Typography.Heading truncateLine={truncateLine} size={'h6'}>
-            {name}
-          </Typography.Heading>
-        </Flex>
-      </Flex.Item>
-    </Flex>
-  </StyledHeader>
+    <Collapse.Heading
+      styles={subcomponentStyles?.heading}
+      truncateLine={truncateLine}
+    >
+      {heading}
+    </Collapse.Heading>
+  </Collapse.Container>
 );
+
+export const Collapse = InternalCollapse as typeof InternalCollapse & {
+  Button: typeof CollapseButton;
+  Container: typeof CollapseContainer;
+  Heading: typeof CollapseHeading;
+};
+
+Collapse.Button = CollapseButton;
+Collapse.Container = CollapseContainer;
+Collapse.Heading = CollapseHeading;

@@ -3,6 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { AppBar } from './AppBar';
 import { mainActions, userOptions, tabs } from './__stories__/content';
+import { css } from 'styled-components';
 
 const meta: Meta<typeof AppBar> = {
   title: 'Components/Core/Navigation/AppBar/Examples',
@@ -25,7 +26,18 @@ export const Base: Story = {
 };
 
 export const WithHeadingAndActions: Story = {
-  args: { tabItems: tabs, heading: 'App', actions: mainActions },
+  args: {
+    tabItems: tabs,
+    heading: 'App',
+    actions: mainActions,
+    subcomponentStyles: {
+      heading: css`
+        > div {
+          color: red;
+        }
+      `,
+    },
+  },
 };
 
 export const WithOptions: Story = {
@@ -44,4 +56,20 @@ export const Custom: Story = {
         </AppBar.Container>
       );
     })(),
+};
+
+export const CustomStyles: Story = {
+  args: {
+    tabItems: tabs,
+    heading: 'App',
+    actions: mainActions,
+    subcomponentStyles: {
+      heading: css`
+        > div {
+          color: orange;
+        }
+      `,
+      actions: 'background-color: #eee; border-radius: 0.4rem;',
+    },
+  },
 };

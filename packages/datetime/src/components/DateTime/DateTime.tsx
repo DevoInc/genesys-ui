@@ -2,7 +2,12 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { addMonths, set, subMonths } from 'date-fns';
 
-import { GlobalAriaProps, VFlex } from '@devoinc/genesys-ui';
+import {
+  GlobalAriaProps,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+  VFlex,
+} from '@devoinc/genesys-ui';
 
 import {
   Calendar,
@@ -23,7 +28,9 @@ export interface DateTimeProps
       | 'validateDate'
       | 'weekDays'
     >,
-    Pick<TimeProps, 'hasMillis' | 'hasSeconds'> {
+    Pick<TimeProps, 'hasMillis' | 'hasSeconds'>,
+    StyledOverloadCssProps,
+    StyledPolymorphicProps {
   /** aria-label attribute for month input. */
   ariaLabelMonth?: GlobalAriaProps['aria-label'];
   /** aria-label attribute for time input. */
@@ -39,6 +46,7 @@ export interface DateTimeProps
 export const DateTime: React.FC<DateTimeProps> = ({
   ariaLabelMonth = 'month',
   ariaLabelTime = 'time',
+  as,
   dateForMonth: monthToShow,
   hasMillis = false,
   hasSeconds = true,
@@ -47,6 +55,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
   maxDate: maximunDae,
   minDate: minimunDate,
   onChange,
+  styles,
   validateDate = (ts) => ts < new Date().getTime(),
   value: customValue,
   weekDays,
@@ -129,7 +138,12 @@ export const DateTime: React.FC<DateTimeProps> = ({
   );
   const theme = useTheme();
   return (
-    <VFlex alignItems="stretch" minWidth={theme.cmp.calendar.size.minWidth}>
+    <VFlex
+      as={as}
+      alignItems="stretch"
+      minWidth={theme.cmp.calendar.size.minWidth}
+      styles={styles}
+    >
       <Month
         ariaLabelInput={ariaLabelMonth}
         hasNextMonthButton

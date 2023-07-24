@@ -3,17 +3,20 @@ import {
   GlobalAttrProps,
   MouseEventAttrProps,
   StyledOverloadCssProps,
+  StyledPolymorphicProps,
 } from '../../../declarations';
 import { Flex } from '../../Flex';
 
 export interface FieldContainerProps
   extends MouseEventAttrProps,
     StyledOverloadCssProps,
+    StyledPolymorphicProps,
     Pick<GlobalAttrProps, 'tooltip' | 'role'> {
   children: React.ReactNode;
 }
 
 export const FieldContainer: React.FC<FieldContainerProps> = ({
+  as,
   children,
   onClick,
   onMouseDown,
@@ -27,6 +30,7 @@ export const FieldContainer: React.FC<FieldContainerProps> = ({
   tooltip,
 }) => (
   <Flex
+    as={as}
     onClick={onClick}
     onMouseDown={onMouseDown}
     onMouseLeave={onMouseLeave}

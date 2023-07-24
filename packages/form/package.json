@@ -1,9 +1,12 @@
 {
   "name": "@devoinc/genesys-ui-form",
-  "version": "1.0.3-alpha.17",
+  "version": "1.0.3-alpha.19",
   "description": "",
   "scripts": {
+    "compile": "tsc --project tsconfig.build.json",
+    "compile:watch": "npm run compile -- --watch",
     "build": "vite build && tsc --project tsconfig.build.json",
+    "build:watch": "vite build --watch && tsc --project tsconfig.build.json",
     "depcruise": ". ../../depcruise.sh",
     "stryker": "npx stryker run"
   },
@@ -24,7 +27,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@devoinc/genesys-icons": "^3.0.1",
-    "@devoinc/genesys-ui": "^1.0.3-alpha.17",
+    "@devoinc/genesys-ui": "^1.0.3-alpha.19",
     "filepond-plugin-file-validate-size": "^2.2.8",
     "filepond-plugin-file-validate-type": "^1.2.8",
     "filepond-plugin-image-preview": "^4.6.11",

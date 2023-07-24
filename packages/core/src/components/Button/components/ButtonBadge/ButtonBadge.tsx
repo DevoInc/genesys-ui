@@ -2,6 +2,10 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { AllHTMLAttributes } from 'react';
 
+import {
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '../../../../declarations';
 import { BadgeColorScheme } from '../../../Badge';
 
 import { getTranslate } from './utils';
@@ -9,7 +13,9 @@ import { getTranslate } from './utils';
 import { Badge, BadgeSize } from '../../../Badge';
 import { Box } from '../../../Box';
 
-export interface ButtonBadgeProps<T = Element> {
+export interface ButtonBadgeProps<T = Element>
+  extends StyledPolymorphicProps,
+    StyledOverloadCssProps {
   /** ColorScheme and status */
   colorScheme?: BadgeColorScheme;
   /** If the button parent is circular */

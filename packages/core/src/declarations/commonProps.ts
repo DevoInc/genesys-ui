@@ -8,6 +8,7 @@ import {
   FocusEventAttrProps,
   MouseEventAttrProps,
 } from './htmlEventAttrs';
+import { StyledOverloadCssProps, StyledPolymorphicProps } from './styled';
 
 /** ---------------------------------------------
  * COMMON PROPS
@@ -232,12 +233,6 @@ export type Elevation =
   | 'popOut';
 
 /** ---------------------------------------------
- * Table
- * --------------------------------------------- */
-// TODO: Is it used in Table?
-export type RowHeight = 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
-
-/** ---------------------------------------------
  * Form field controls: InputControl, CheckboxControl... etc. common interface
  * --------------------------------------------- */
 export interface FieldControlCommonProps<T = Element>
@@ -248,4 +243,6 @@ export interface FieldControlCommonProps<T = Element>
     FieldAttrProps<T>,
     FieldEventAttrProps<T>,
     FocusEventAttrProps<T>,
-    MouseEventAttrProps<T> {}
+    MouseEventAttrProps<T>,
+    StyledPolymorphicProps,
+    StyledOverloadCssProps {}

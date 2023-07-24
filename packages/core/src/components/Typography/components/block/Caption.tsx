@@ -1,6 +1,7 @@
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../../../declarations';
 import * as React from 'react';
@@ -11,6 +12,7 @@ export interface CaptionProps
   extends StyledCaptionProps,
     //native
     StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps {
   children?: React.ReactNode;
@@ -23,12 +25,14 @@ export const Caption: React.FC<CaptionProps> = ({
   textAlign = 'left',
   truncateLine = 1,
   children,
+  styles,
   tooltip,
   ...nativeProps
 }) => (
   <StyledCaption
     {...nativeProps}
     colorScheme={colorScheme}
+    css={styles}
     truncateLine={truncateLine}
     gutterBottom={gutterBottom}
     size={size}

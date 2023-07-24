@@ -8,6 +8,7 @@ import * as React from 'react';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../declarations';
 import { WithRequired } from '../../typeFunctions';
@@ -22,7 +23,8 @@ export interface StepperProps
       Pick<GlobalAriaProps, 'aria-label' | 'aria-describedby'>,
       'aria-label'
     >,
-    StyledPolymorphicProps {
+    StyledPolymorphicProps,
+    StyledOverloadCssProps {
   /** Stepper size */
   size?: StepperSize;
   /** Stepper model */

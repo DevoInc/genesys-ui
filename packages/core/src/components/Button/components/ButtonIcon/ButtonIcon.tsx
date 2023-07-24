@@ -1,15 +1,21 @@
 import * as React from 'react';
 
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
+
 import { ButtonState } from '../../declarations';
 
 import { StyledButtonIcon, StyledButtonIconProps } from './StyledButtonIcon';
-import { StyledOverloadCssProps } from '../../../../declarations';
+import {
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '../../../../declarations';
 
 export interface ButtonIconProps
   extends StyledButtonIconProps,
+    StyledPolymorphicProps,
     StyledOverloadCssProps {
   /** Icon name/id  */
-  icon?: string;
+  icon?: keyof typeof iconDictionary;
   /** Sets the color scheme according to component state */
   state?: ButtonState;
 }

@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { usePopper } from 'react-popper';
 
-import { Panel, Button, GlobalAttrProps } from '@devoinc/genesys-ui';
+import {
+  Panel,
+  Button,
+  GlobalAttrProps,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '@devoinc/genesys-ui';
 
 import {
   DateTimeRangeControl,
@@ -48,7 +54,9 @@ export interface DateTimeRangePickerProps
       | 'onBlur'
       | 'wide'
     >,
-    Required<Pick<GlobalAttrProps, 'id'>> {
+    Required<Pick<GlobalAttrProps, 'id'>>,
+    StyledOverloadCssProps,
+    StyledPolymorphicProps {
   /** Initial value for the input. */
   value: { from: string | number | Date; to: string | number | Date };
   /** Apply button text. */

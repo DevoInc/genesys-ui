@@ -2,8 +2,9 @@ import * as React from 'react';
 import { MultiValueProps as RSMultiValueProps } from 'react-select';
 import { SelectOption } from '../declarations';
 
-import { StyledSelectChipIcon } from '../styled';
 import { getChipSize } from '../utils';
+
+import { Chip } from '../../Chip';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MultiValueProps<Option> extends RSMultiValueProps<Option> {}
@@ -15,8 +16,9 @@ export const MultiValueLabel = <Option extends SelectOption>({
   return (
     <React.Fragment>
       {data.icon && (
-        <StyledSelectChipIcon
-          hasBoldIcon={data.bold}
+        <Chip.Icon
+          iconId={data.icon}
+          strong={data.bold}
           size={getChipSize({
             size: selectProps.size || 'xs',
             chipSize: selectProps.chipSize,

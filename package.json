@@ -1,13 +1,16 @@
 {
   "name": "genesys-ui",
-  "version": "1.0.3-alpha.17",
+  "version": "1.0.3-alpha.19",
   "description": "",
   "main": "index.js",
   "private": true,
   "scripts": {
+    "compile": "npm run compile -ws --if-present",
+    "compile:watch": "npm run compile:watch -ws --if-present",
     "clean:cache": "rm -rf node_modules/.cache",
     "clean": "rm -rf storybook-static coverage packages/*/dist",
     "build": "npm run build -ws --if-present",
+    "build:watch": "npm run build:watch -ws --if-present",
     "depcruise": "npm run depcruise -ws --if-present",
     "lint": "npx eslint --max-warnings 0 packages/**/src",
     "start": "npm run storybook",
@@ -23,7 +26,7 @@
   "license": "MIT",
   "devDependencies": {
     "@devoinc/genesys-base-styles": "^1.2.1",
-    "@devoinc/genesys-brand-devo": "5.7.0",
+    "@devoinc/genesys-brand-devo": "5.14.1",
     "@mdx-js/react": "^2.1.5",
     "@release-it-plugins/workspaces": "^3.2.0",
     "@release-it/conventional-changelog": "^5.1.1",

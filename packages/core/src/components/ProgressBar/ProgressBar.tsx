@@ -5,6 +5,7 @@ import { BaseProgressBarProps, ProgressBarType } from './declarations';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../declarations';
 
@@ -24,6 +25,7 @@ export interface ProgressBarProps
   extends Omit<GlobalAttrProps, 'role'>,
     GlobalAriaProps,
     StyledPolymorphicProps,
+    StyledOverloadCssProps,
     Pick<
       Partial<BaseProgressBarProps>,
       | 'colorScheme'

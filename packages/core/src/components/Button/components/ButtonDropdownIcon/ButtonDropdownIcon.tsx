@@ -12,6 +12,7 @@ export interface ButtonDropdownIconProps extends ButtonIconProps {
 }
 
 export const ButtonDropdownIcon: React.FC<ButtonDropdownIconProps> = ({
+  as,
   size = 'md',
   state = 'enabled',
   styles,
@@ -22,6 +23,7 @@ export const ButtonDropdownIcon: React.FC<ButtonDropdownIconProps> = ({
   `;
   return (
     <ButtonIcon
+      as={as}
       icon="gi-arrow_down_fat"
       hasBoldIcon
       size={size}

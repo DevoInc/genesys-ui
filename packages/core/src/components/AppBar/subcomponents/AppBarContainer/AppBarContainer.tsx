@@ -1,12 +1,22 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
+import {
+  GlobalAriaProps,
+  GlobalAttrProps,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '../../../../declarations';
+
 import { HFlex } from '../../..';
 
 import { StyledAppBarContainer } from './StyledContainer';
-import { GlobalAriaProps, GlobalAttrProps } from '../../../../declarations';
 
-export interface AppBarContainerProps extends GlobalAttrProps, GlobalAriaProps {
+export interface AppBarContainerProps
+  extends GlobalAttrProps,
+    GlobalAriaProps,
+    StyledPolymorphicProps,
+    StyledOverloadCssProps {
   children?: React.ReactNode;
   /** Define the elevation styles of the container */
   sticky?: boolean;

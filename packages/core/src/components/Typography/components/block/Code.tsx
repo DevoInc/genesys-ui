@@ -1,6 +1,7 @@
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../../../declarations';
 import * as React from 'react';
@@ -17,6 +18,7 @@ export interface CodeProps
     StyledCodeBlockWrapperProps,
     //native
     StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps {
   /** The function to be triggered on the click event. */
@@ -30,6 +32,7 @@ export const Code: React.FC<CodeProps> = ({
   gutterBottom = 'cmp-md',
   onClick,
   size = 'md',
+  styles,
   textAlign = 'left',
   tooltip,
   truncateLine,
@@ -37,6 +40,7 @@ export const Code: React.FC<CodeProps> = ({
 }) => (
   <StyledCodeBlockWrapper
     {...nativeProps}
+    css={styles}
     gutterBottom={gutterBottom}
     onClick={onClick}
     title={tooltip}

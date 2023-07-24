@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../../../declarations';
 
@@ -14,6 +15,7 @@ export interface BlockQuoteProps
   extends StyledBlockQuoteProps,
     //native
     StyledPolymorphicProps,
+    StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps {
   /** Content of the BlockQuote */
@@ -24,12 +26,14 @@ export const BlockQuote: React.FC<BlockQuoteProps> = ({
   children,
   gutterBottom = 'cmp-md',
   size = 'md',
+  styles,
   textAlign = 'left',
   tooltip,
   ...nativeProps
 }) => (
   <StyledBlockQuote
     {...nativeProps}
+    css={styles}
     gutterBottom={gutterBottom}
     size={size}
     textAlign={textAlign}
