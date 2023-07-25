@@ -1,4 +1,21 @@
+import {
+  BaseSize,
+  GlobalAttrProps,
+  StyledOverloadCssProps,
+} from '../../declarations';
+import { PaginationInfo } from './hooks';
+
 export type Item = string | number;
+
+export interface PaginationCommonInterface
+  extends Pick<GlobalAttrProps, 'id'>,
+    StyledOverloadCssProps {
+  /** If you want to override pagination internal state, use the usePagination hook in the parent and pass the props. */
+  paginationHook?: PaginationInfo;
+  size?: BaseSize;
+  /** Texts for tooltips and accessibility: aria-labels... etc. */
+  texts?: TextProps;
+}
 
 interface SelectPageTooltipTextFnParams {
   currentPage: number;
