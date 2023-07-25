@@ -30,6 +30,6 @@ type Story = StoryObj<typeof Cell>;
 export const Base: Story = {
   render: () =>
     (() => {
-      return <Cell column={column} data={data[0]} />;
+      return <Cell column={column} data={data[0][column.field]} />;
     })(),
 };

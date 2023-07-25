@@ -6,10 +6,11 @@ import { RenderCellContentGroupTags } from './groupTags';
 
 const cellRenderers = {
   default: RenderCellContentText,
-  popper: RenderCellContentPopper,
   link: RenderCellContentLink,
   tag: RenderCellContentTag,
   groupTags: RenderCellContentGroupTags,
+
+  popper: RenderCellContentPopper,
 };
 
 export const getRenderer = (render) => cellRenderers[render];
