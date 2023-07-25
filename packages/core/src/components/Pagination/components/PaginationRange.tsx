@@ -3,6 +3,7 @@ import * as React from 'react';
 import { defaultTexts, PaginationCommonInterface } from '../declarations';
 import { HFlex, Label, SelectControl } from '../../';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface PaginationRangeProps extends PaginationCommonInterface {}
 
 export const PaginationRange: React.FC<PaginationRangeProps> = ({

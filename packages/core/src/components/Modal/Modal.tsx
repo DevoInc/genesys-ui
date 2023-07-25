@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import {
-  BaseLoaderProps,
   Box,
   ButtonGroup,
   Flex,

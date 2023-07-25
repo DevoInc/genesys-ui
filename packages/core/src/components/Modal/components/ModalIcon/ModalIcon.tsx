@@ -59,6 +59,7 @@ export const ModalIcon: React.FC<ModalIconProps> = ({ status, styles }) => {
     }
   }, [
     status,
+    styles,
     tokens.cmp.dialog.headerIcon,
     tokens.cmp.modal.headerDecoratorBar.size.height,
     tokens.cmp.modal.headerDecoratorBar.space.marginRight,
