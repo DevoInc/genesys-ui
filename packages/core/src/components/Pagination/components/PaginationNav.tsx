@@ -47,10 +47,12 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
     prevPageTooltipText,
     selectPageTooltipTextFn,
   } = React.useMemo(() => ({ ...defaultTexts, ...texts }), [texts]);
+
   const pageTooltip = selectPageTooltipTextFn({
     currentPage: page + 1,
     lastPage: lastPage + 1,
   });
+
   const pageNavOptions = React.useMemo(
     () =>
       [...new Array(lastPage + 1)].map((_, index) => ({
@@ -59,6 +61,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
       })),
     [lastPage]
   );
+
   const { actionsSize } = usePaginationStyles({
     pageSizeOptions,
     size,

@@ -18,7 +18,7 @@ type Story = StoryObj<typeof Pagination>;
 export const Base: Story = {
   render: (args) =>
     (() => {
-      const list = [...Array(22).keys()];
+      const list = React.useMemo(() => [...Array(150).keys()], []);
       const paginationHook = usePagination({
         list,
         conf: {

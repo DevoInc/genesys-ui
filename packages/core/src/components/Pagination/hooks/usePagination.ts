@@ -2,14 +2,14 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { Item } from '../declarations';
 import { useIsMounted } from '../../../hooks/useIsMounted';
 export interface PaginationInfo {
-  page: number;
-  lastPage: number;
-  pageFirstItem: number;
-  pageLastItem: number;
-  totalItems: number;
-  pageData: Item[];
-  pageSize: number;
-  pageSizeOptions: number[];
+  readonly page: number;
+  readonly lastPage: number;
+  readonly pageFirstItem: number;
+  readonly pageLastItem: number;
+  readonly totalItems: number;
+  readonly pageData: Item[];
+  readonly pageSize: number;
+  readonly pageSizeOptions: number[];
   setPageSize: (value: number) => void;
   goToNextPage: () => void;
   goToPreviousPage: () => void;
@@ -97,6 +97,7 @@ export const usePagination: PaginationHook = ({ list, conf }) => {
       }
     }
   };
+
   useEffect(updatePageDataOrResetPage, [
     list,
     page,
@@ -105,6 +106,7 @@ export const usePagination: PaginationHook = ({ list, conf }) => {
     isMounted,
     isHookActive,
   ]);
+
   return {
     page,
     lastPage,

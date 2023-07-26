@@ -13,11 +13,17 @@ Using a component is as simple as adding the import, and using it in your code.
 ```jsx
 // MyView.tsx
 
+import type { FlexProps } from '@devoinc/genesys-ui';
 import { Flex, Typography, Avatar } from '@devoinc/genesys-ui';
 
-export const MyView: React.FC = () => {
+export const MyView: React.FC<FlexProps> = ({ flexProps }) => {
   return (
-    <Flex flexDirection="column" gap="cmp-xxl" justifyContent="center">
+    <Flex
+      flexDirection="column"
+      gap="cmp-xxl"
+      justifyContent="center"
+      {...flexProps}
+    >
       <Typography.Heading size="h1">
         Welcome to <Typography.CodeInline>genesys-ui</Typography.CodeInline>
       </Typography.Heading>
@@ -31,8 +37,6 @@ export const MyView: React.FC = () => {
   );
 };
 ```
-
-**Note:** If you happen to run into styles inconsistencies, make sure that you have gone through the [Installation](/docs/getting-started-installation--docs) steps.
 
 ## Building the layout of a vertical app
 
