@@ -1,25 +1,10 @@
 import { DefaultTheme } from 'styled-components';
 import { ColDef } from '../cell/declarations';
-
 interface DragNDropSettings {
   draggableRef?: React.Ref<HTMLTableRowElement>;
   draggableProps?: object;
   dragHandleProps?: object;
   isDragging?: boolean;
-}
-
-interface AfterRowManager {
-  setHeight: (id: string, height: number) => void;
-  getHeight: (id: string) => number;
-  isOpen: (id: string) => boolean;
-  getOpacity: (id: string) => number;
-  function: ({
-    row,
-    onUpdateRow,
-  }: {
-    row: RowObject;
-    onUpdateRow: (row: RowObject) => void;
-  }) => object;
 }
 
 export interface RowObject {
@@ -28,32 +13,24 @@ export interface RowObject {
   row: RowObject;
 }
 
-interface Data {
-  rows: RowObject[];
-  afterRowManager: AfterRowManager;
-  columns: ColDef[];
-  onUpdateDecoratedRow: (params: object) => void;
-}
-
 export type Density = 'default' | 'compact' | 'comfortable';
 
 interface Style {
   density: Density;
-  rowHeight: number;
+  height: number;
   columnsWidth: number;
   hasStripedRows: boolean;
   isVirtual: boolean;
   tableWidth: number;
+  even?: boolean;
 }
 
 export interface RowProps {
-  disabled?: boolean;
-  dndSettings?: DragNDropSettings;
-  isSelected?: boolean;
-  index: number;
-  top?: number;
-  data?: Data;
+  columnDefs: ColDef[];
+  data?: { [key: string]: object };
   style?: Style;
+  defaultColumnDefs?: ColDef[];
+  dndSettings?: DragNDropSettings;
 }
 
 export interface StyledTableRowProps {

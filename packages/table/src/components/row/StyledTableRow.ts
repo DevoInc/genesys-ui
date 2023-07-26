@@ -36,31 +36,6 @@ const getBorderRadiusValue = (
   return !isAfterRow ? borderRadius : '0';
 };
 
-const draggableStyles = (theme: DefaultTheme) => css`
-  position: relative;
-  &::after {
-    ${pseudoElementMixin(null)};
-    ${iconFontMixin()};
-    content: '${icons.row_drag_drop}';
-    top: 50%;
-    left: -0.4rem;
-    transition: opacity 0.1s ease-in-out;
-    transform: translate(0, -50%);
-    opacity: 0;
-    font-size: 2rem;
-    color: ${theme.alias.color.text.body.base};
-  }
-
-  &:hover::after,
-  &:active::after {
-    opacity: 0.5;
-  }
-
-  &:active {
-    cursor: grabbing;
-  }
-`;
-
 export const StyledTableRow = styled.tr<StyledTableRowProps>`
   ${({
     density,
@@ -70,7 +45,6 @@ export const StyledTableRow = styled.tr<StyledTableRowProps>`
     heightProp,
     highlighted,
     isAfterRow,
-    isDraggable,
     isDragging,
     isVirtual,
     modified,
@@ -127,17 +101,6 @@ export const StyledTableRow = styled.tr<StyledTableRowProps>`
           if (expanded) return cmpTokens.color.background[evenOddType].expanded;
           return cmpTokens.color.background[evenOddType].base;
         }};
-      `}
-
-      ${isDraggable && draggableStyles}
-
-      // dragging
-      ${isDragging &&
-      css`
-        &::before {
-          ${pseudoElementOverlayMixin()};
-          background-color: ${cmpTokens.color.background.odd.base};
-        }
       `}
 
       // virtualized

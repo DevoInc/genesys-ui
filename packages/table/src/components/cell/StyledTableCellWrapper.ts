@@ -3,10 +3,10 @@ import styled, { css } from 'styled-components';
 import { pseudoElementMixin } from '@devoinc/genesys-ui';
 import { getSizesObj, getZindexMap } from '../../constants';
 
-import { StyledTableRow } from '../../styled/StyledTableRow';
 import { StyledTableCell } from '../../styled/StyledTableCell';
 import { StyledTableCellProps } from '../../styled/declarations';
 import { ColDef } from './declarations';
+import { StyledTableRow } from '../row/StyledTableRow';
 
 const getPaddingVer = ({ editable, expandedRow, tall, sizes }) => {
   if (expandedRow) return sizes.afterRow.verPad;
