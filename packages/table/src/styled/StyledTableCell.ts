@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { getZindexMap, getSizesObj } from '../constants';
 import { pseudoElementOverlayMixin } from '@devoinc/genesys-ui';
 import { StyledTableCellProps } from './declarations';
-import { StyledTableRow } from '../components/row/StyledTableRow';
+import { StyledTableRow } from '../components/Row/StyledTableRow';
 
 export const StyledTableCell = styled.td<StyledTableCellProps>`
   ${({ widthProp }) => css`

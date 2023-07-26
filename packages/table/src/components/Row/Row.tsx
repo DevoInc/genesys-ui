@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useAnimationRow } from './useAnimationRow';
 import { StyledTableRow } from './StyledTableRow';
 import { RowProps } from './declarations';
-import { Cell } from '../cell/Cell';
-import { ColDef } from '../cell/declarations';
+import { Cell } from '../Cell/Cell';
+import { ColDef } from '../Cell/declarations';
 
 export const Row: React.FC<RowProps> = ({
   columnDefs,

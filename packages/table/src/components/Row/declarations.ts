@@ -1,5 +1,5 @@
 import { DefaultTheme } from 'styled-components';
-import { ColDef } from '../cell/declarations';
+import { ColDef } from '../Cell/declarations';
 interface DragNDropSettings {
   draggableRef?: React.Ref<HTMLTableRowElement>;
   draggableProps?: object;

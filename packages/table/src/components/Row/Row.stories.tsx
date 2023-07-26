@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Row } from './Row';
-import { ColDef } from '../cell/declarations';
+import { ColDef } from '../Cell/declarations';
 
 const data = {
   name: new String('Carlos'),

@@ -6,7 +6,7 @@ import { getSizesObj, getZindexMap } from '../../constants';
 import { StyledTableCell } from '../../styled/StyledTableCell';
 import { StyledTableCellProps } from '../../styled/declarations';
 import { ColDef } from './declarations';
-import { StyledTableRow } from '../row/StyledTableRow';
+import { StyledTableRow } from '../Row/StyledTableRow';
 
 const getPaddingVer = ({ editable, expandedRow, tall, sizes }) => {
   if (expandedRow) return sizes.afterRow.verPad;

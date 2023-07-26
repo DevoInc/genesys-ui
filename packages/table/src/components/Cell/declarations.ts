@@ -20,9 +20,6 @@ export interface ColDef {
   maxWidth?: number;
   minWidth?: number;
   headerName?: string;
-  tagConfig?: {
-    [key: string]: TagProps;
-  };
   cellStyle?: {
     align?: {
       horizontal?: 'left' | 'center' | 'right';

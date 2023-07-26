@@ -2,9 +2,9 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 
 import { Icon } from '@devoinc/genesys-ui';
-import { StyledTableCellWrapper } from '../components/cell/StyledTableCellWrapper';
+import { StyledTableCellWrapper } from '../components/Cell/StyledTableCellWrapper';
 import { StyledTableCellProps } from './declarations';
-import { StyledTableRow } from '../components/row/StyledTableRow';
+import { StyledTableRow } from '../components/Row/StyledTableRow';
 
 export const StyledTableCellMarker = styled((props) => (
   <Icon {...props} />
