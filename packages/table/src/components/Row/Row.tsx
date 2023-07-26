@@ -25,7 +25,7 @@ export const Row: React.FC<RowProps> = ({
         <Cell
           column={colDef}
           key={`cell-${colDef.colId}`}
-          data={data[0][colDef.field]}
+          data={data[colDef.field]}
         />
       ))}
     </StyledTableRow>

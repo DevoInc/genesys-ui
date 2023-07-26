@@ -57,6 +57,6 @@ type Story = StoryObj<typeof Row>;
 export const Base: Story = {
   render: () =>
     (() => {
-      return <Row columnDefs={colDefs} data={data} />;
+      return <Row columnDefs={colDefs} data={data[0]} />;
     })(),
 };
