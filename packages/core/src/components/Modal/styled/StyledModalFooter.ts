@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { GlobalStatus } from 'packages/core/src/declarations';
+import { GlobalStatus } from '../../../declarations';
 
 export interface StyledModalFooterProps {
   /** Whether the footer has a box shadow */

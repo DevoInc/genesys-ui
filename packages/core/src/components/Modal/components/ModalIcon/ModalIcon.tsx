@@ -1,9 +1,5 @@
 import * as React from 'react';
 import { concat } from 'lodash';
-import type {
-  ActiveStatus,
-  GlobalStatus,
-} from 'packages/core/src/declarations';
 import { DecoratorBar } from '../../../DecoratorBar';
 import { useTheme } from 'styled-components';
 import {
@@ -14,7 +10,11 @@ import {
   GIOkSuccessfulCheckFilled,
 } from '@devoinc/genesys-icons';
 import type { IconType } from '@devoinc/genesys-icons';
-import { StyledOverloadCssProps } from 'packages/core/src/declarations';
+import type {
+  ActiveStatus,
+  GlobalStatus,
+  StyledOverloadCssProps,
+} from '../../../../declarations';
 
 export const statusIconMap: { [key in ActiveStatus]: IconType } = {
   success: GIOkSuccessfulCheckFilled,

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { ButtonSize } from '../../declarations';
-import type { StyledPolymorphicProps } from 'packages/core/src/declarations';
+import type { StyledPolymorphicProps } from '../../../../declarations';
 
 export interface StyledButtonIconProps extends StyledPolymorphicProps {
   /** Icon needs a higher font-weight */
