@@ -119,7 +119,7 @@ export const InternalModal: React.FC<ModalProps> = ({
         )}
 
         <Flex marginLeft="auto">
-          <ButtonGroup size="sm" itemsGap="lg">
+          <ButtonGroup size="sm">
             {[
               ...headerActions,
               <IconButtonClose

@@ -79,7 +79,7 @@ export const InternalPagination: React.FC<PaginationProps> = ({
       as={as}
       id={id}
       size={size}
-      styles={styles || subcomponentStyles?.container}
+      styles={subcomponentStyles?.container || styles}
       WrapperComponent={WrapperComponent}
     >
       {!hideParts?.infoLabel && (

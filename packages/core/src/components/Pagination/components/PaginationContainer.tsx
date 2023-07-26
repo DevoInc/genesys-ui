@@ -30,6 +30,7 @@ export const PaginationContainer: React.FC<PaginationContainerProps> = ({
       as={WrapperComponent ? null : as || 'nav'}
       aria-label={ariaLabel}
       aria-describedby={ariaDescribedBy}
+      justifyContent="flex-end"
       id={id}
       spacing={`cmp-${size}`}
       styles={styles}

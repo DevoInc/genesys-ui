@@ -14,6 +14,7 @@ import {
   panelSectionHeaderMixin,
 } from './helpers';
 import { useTheme } from 'styled-components';
+import { concat } from 'lodash';
 
 export const renderBackwardNavigation = ({
   backwardTooltip,
@@ -48,6 +49,8 @@ export interface PanelSectionProps
     | 'helpTooltip'
     | 'helpUrl'
     | 'id'
+    | 'styles'
+    | 'subcomponentStyles'
     | 'subtitle'
     | 'title'
     | 'visibility'
@@ -81,6 +84,8 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
   onClickBackwardNav,
   removeContentSpace = false,
   renderActions,
+  styles,
+  subcomponentStyles,
   subtitle,
   title,
   visibility,
@@ -92,13 +97,14 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
       display={display}
       id={id}
       height={height}
+      styles={subcomponentStyles?.container || styles}
       visibility={visibility}
     >
       {(onClickBackwardNav || title || headerActions || renderActions) && (
         <Panel.Header.Container
           bordered={!navigation}
           hasBoxShadow
-          styles="padding: 0;"
+          styles={concat('padding: 0;', subcomponentStyles?.header)}
         >
           <Panel.Header.Container
             as="div"
@@ -128,11 +134,14 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
         hasScroll={hasScroll}
         removeSpace={removeContentSpace}
         panelBodyRef={targetElRef}
-        styles={panelSectionBodyMixin({
-          hasScroll,
-          removeSpace: removeContentSpace,
-          theme,
-        })}
+        styles={concat(
+          panelSectionBodyMixin({
+            hasScroll,
+            removeSpace: removeContentSpace,
+            theme,
+          }),
+          subcomponentStyles?.body
+        )}
       >
         {children}
       </Panel.Body>
@@ -141,7 +150,10 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
           actions={footerActions}
           hasBackground={footerHasBackground}
           hasBoxShadow
-          styles={panelSectionFooterMixin({ theme })}
+          styles={concat(
+            panelSectionFooterMixin({ theme }),
+            subcomponentStyles.footer
+          )}
         >
           {footerContent}
         </Panel.Footer>
