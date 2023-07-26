@@ -56,18 +56,12 @@ const getPaddingRight = ({
 //   min-height: ${heightProp && heightProp + 'px'};
 // `}
 
-export const StyledTableCellWrapper = styled.div<ColDef>`
+export const StyledTableCellWrapper = styled.th<ColDef>`
   display: flex;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-
-  ${({ actionsCell, expandedRow, isDragging, isCellPopover }) => css`
-    position: ${actionsCell || expandedRow || isDragging || isCellPopover
-      ? 'relative'
-      : 'absolute'};
-  `}
 
   ${({ cellStyle }) => css`
     justify-content: ${() => {

@@ -4,9 +4,9 @@ import { typoColorMixin, typoMixin } from '@devoinc/genesys-ui';
 import { StyledCellRendererTextProps } from './declarations';
 
 export const StyledTableCellRendererText = styled.div<StyledCellRendererTextProps>`
-  // position: relative;
-  // flex: '1';
-  // display: 'flex';
+  position: relative;
+  flex: '1';
+  display: 'flex';
 
   ${({ size, theme }) => {
     return css`

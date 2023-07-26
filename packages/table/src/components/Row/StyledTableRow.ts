@@ -59,6 +59,7 @@ export const StyledTableRow = styled.tr<StyledTableRowProps>`
     const transitionDuration = cmpTokens.mutation.transitionDuration;
     const borderRadius = getSizes(density, tableTokens).row.br + 'px';
     return css`
+      display: flex;
       @keyframes modifiedBlink {
         0% {
           background-color: ${cmpTokens.color.background.modifiedBlink};

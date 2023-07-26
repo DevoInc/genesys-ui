@@ -2,12 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Row } from './Row';
 import { ColDef } from '../Cell/declarations';
-
-const data = {
-  name: new String('Carlos'),
-  city: new String('Madrid'),
-  age: new Number(28),
-};
+import { data } from '../../stories/data';
 
 const colDefs: ColDef[] = [
   {
@@ -24,9 +19,9 @@ const colDefs: ColDef[] = [
     },
   },
   {
-    colId: 'city',
-    field: 'city',
-    headerName: 'City',
+    colId: 'company',
+    field: 'company',
+    headerName: 'company',
     type: 'default',
     cellStyle: {
       align: {
@@ -38,8 +33,8 @@ const colDefs: ColDef[] = [
   },
   {
     colId: 'age',
-    field: 'Age',
-    headerName: 'Name',
+    field: 'age',
+    headerName: 'age',
     type: 'default',
     cellStyle: {
       align: {
