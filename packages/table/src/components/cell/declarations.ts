@@ -6,17 +6,7 @@ export interface ColDef {
   // example name or medal.gold
   // { name: santi, medal: { gold: 2 }}
   field?: string;
-  type?:
-    | 'default'
-    | 'boolean'
-    | 'custom'
-    | 'date'
-    | 'link'
-    | 'longText'
-    | 'number'
-    | 'status'
-    | 'tags'
-    | 'text';
+  type?: 'default' | 'link' | 'tag' | 'groupTags';
   // https://www.ag-grid.com/javascript-data-grid/value-getters/
   valueGetter?: (params) => void;
   // https://www.ag-grid.com/javascript-data-grid/value-formatters/

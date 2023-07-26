@@ -14,7 +14,7 @@ import { getRenderer } from './cellRenderer';
 import { ColDef } from './declarations';
 
 interface CellProps {
-  data?: object;
+  data?: any;
   column?: ColDef;
   renderer?: 'default' | 'popper' | 'link' | 'tag' | 'groupTags';
 }
@@ -159,7 +159,7 @@ export const Cell: React.FC<CellProps> = ({
       // innerActionsWidth={getCellActionsWidth(column, tableTokens)}
       // innerEllipsis={innerEllipsis}
     >
-      {renderContent({ value: data[column.field], columnDef: column })}
+      {renderContent({ value: data, columnDef: column })}
     </StyledTableCellWrapper>
   );
 };

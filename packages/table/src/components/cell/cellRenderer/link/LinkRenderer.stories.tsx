@@ -2,21 +2,22 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Cell } from '../../Cell';
-import { ColumnsCellProps, StylesCellProps } from '../../declarationsfake';
+import { ColDef } from '../../declarations';
+import { data } from '../../../../stories/data';
 
-const column: ColumnsCellProps = {
-  id: 'name',
-  dataKey: 'name',
-  Header: 'Name',
-  type: 'longText',
+const column: ColDef = {
+  colId: 'picture',
+  field: 'picture',
+  headerName: 'picture',
+  type: 'link',
+  cellStyle: {
+    align: {
+      horizontal: 'left',
+      vertical: 'center',
+    },
+    textAlign: 'right',
+  },
 };
-
-const styles: StylesCellProps = {
-  density: 'comfortable',
-  tallRows: false,
-  rowHeight: 10,
-};
-
 const meta: Meta<typeof Cell> = {
   title: 'Table/Components/Cell/link renderer',
   component: Cell,
@@ -28,10 +29,6 @@ type Story = StoryObj<typeof Cell>;
 export const Base: Story = {
   render: () =>
     (() => {
-      return (
-        <Cell column={column} styles={styles} renderer={'link'}>
-          https://devoinc.atlassian.net/jira/software/c/projects/QUV/boards/493?selectedIssue=QUV-1227
-        </Cell>
-      );
+      return <Cell column={column} data={data[0][column.field]} />;
     })(),
 };

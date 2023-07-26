@@ -1,27 +1,15 @@
 import * as React from 'react';
 
-import { Tag } from '@devoinc/genesys-ui';
-import { ColDef } from '../../declarations';
+import { FeedbackColorScheme, Tag } from '@devoinc/genesys-ui';
 
-interface TagsProps {
-  value?: any;
-  columnDef?: ColDef;
+interface TagProps {
+  value?: {
+    colorScheme: FeedbackColorScheme;
+    text: string;
+    icon: string;
+  };
 }
 
-export const RenderCellContentTag: React.FC<TagsProps> = ({
-  value,
-  columnDef,
-}) => {
-  const conf = columnDef.tagConfig[value] || {
-    text: '',
-    colorScheme: 'neutral',
-  };
-  return (
-    <Tag
-      colorScheme={conf.colorScheme}
-      text={conf.text || value}
-      icon={conf.icon}
-      styles={columnDef.cellStyle}
-    />
-  );
-};
+export const RenderCellContentTag: React.FC<TagProps> = ({ value }) => (
+  <Tag colorScheme={value.colorScheme} text={value.text} icon={value.icon} />
+);

@@ -3,12 +3,13 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Cell } from '../../Cell';
 import { ColDef } from '../../declarations';
+import { data } from '../../../../stories/data';
 
 const column: ColDef = {
-  colId: 'tag',
-  field: 'tag',
-  headerName: 'tag',
-  type: 'tag',
+  colId: 'tags',
+  field: 'tags',
+  headerName: 'tags',
+  type: 'groupTags',
   cellStyle: {
     align: {
       horizontal: 'left',
@@ -19,7 +20,7 @@ const column: ColDef = {
 };
 
 const meta: Meta<typeof Cell> = {
-  title: 'Table/Components/Cell/tag renderer',
+  title: 'Table/Components/Cell/group tags renderer',
   component: Cell,
 };
 
@@ -29,11 +30,6 @@ type Story = StoryObj<typeof Cell>;
 export const Base: Story = {
   render: () =>
     (() => {
-      return (
-        <Cell
-          column={column}
-          data={{ text: 'Coworker', colorScheme: 'primary' }}
-        />
-      );
+      return <Cell column={column} data={data[0][column.field]} />;
     })(),
 };
