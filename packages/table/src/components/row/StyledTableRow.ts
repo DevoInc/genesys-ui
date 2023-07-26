@@ -1,17 +1,42 @@
-import styled, { css } from 'styled-components';
-
-import icons from '@devoinc/genesys-icons/dist/icon-variables.js';
-
+import styled, { css, DefaultTheme } from 'styled-components';
+import { getSizes, getZindexMap } from './constants';
 import {
-  pseudoElementMixin,
   pseudoElementOverlayMixin,
+  pseudoElementMixin,
   iconFontMixin,
 } from '@devoinc/genesys-ui';
+import icons from '@devoinc/genesys-icons/dist/icon-variables.js';
+import { Density } from './declarations';
 
-import { getSizesObj } from '../constants';
-import { StyledTableCellProps } from './declarations';
+interface StyledTableRowProps {
+  density?: Density;
+  disabled?: boolean;
+  even?: boolean;
+  expanded?: boolean;
+  heightProp?: number;
+  highlighted?: boolean;
+  isAfterRow?: boolean;
+  isDraggable?: boolean;
+  isDragging?: boolean;
+  isVirtual?: boolean;
+  modified?: boolean;
+  opacity?: number;
+  selected?: boolean;
+  striped?: boolean;
+}
 
-export const StyledTableRow = styled.tr<StyledTableCellProps>`
+const getBorderRadiusValue = (
+  expanded: boolean,
+  isAfterRow: boolean,
+  borderRadius: string
+) => {
+  if (expanded) {
+    return `${borderRadius} ${borderRadius} 0 0`;
+  }
+  return !isAfterRow ? borderRadius : '0';
+};
+
+export const StyledTableRow = styled.tr<StyledTableRowProps>`
   ${({
     density,
     disabled,
@@ -20,7 +45,6 @@ export const StyledTableRow = styled.tr<StyledTableCellProps>`
     heightProp,
     highlighted,
     isAfterRow,
-    isDraggable,
     isDragging,
     isVirtual,
     modified,
@@ -32,10 +56,8 @@ export const StyledTableRow = styled.tr<StyledTableCellProps>`
     const evenOddType = even ? 'even' : 'odd';
     const tableTokens = theme.cmp.table;
     const cmpTokens = tableTokens.row;
-    const textColor = theme.alias.color.text.body.base;
     const transitionDuration = cmpTokens.mutation.transitionDuration;
-    const borderRadius =
-      getSizesObj({ density, tokens: tableTokens }).row.br + 'px';
+    const borderRadius = getSizes(density, tableTokens).row.br + 'px';
     return css`
       @keyframes modifiedBlink {
         0% {
@@ -46,18 +68,18 @@ export const StyledTableRow = styled.tr<StyledTableCellProps>`
           cmpTokens.color.background[evenOddType].highlighted};
         }
       }
-      z-index: ${isAfterRow && tableTokens.row.elevation.zIndex.isAfterRow};
+      z-index: ${isAfterRow && getZindexMap(theme).afterRow};
       transition: background-color ease ${transitionDuration.bgColor};
       animation: ${modified &&
       `modifiedBlink ${transitionDuration.modifiedBlink} ease-in-out`};
       border: none;
       box-shadow: ${isDragging &&
       '0 8px 16px -4px rgba(24,43,66, 0.25), 0 0 1px 0 rgba(24,43,66, 0.31)'};
-      border-radius: ${expanded
-        ? `${borderRadius} ${borderRadius} 0 0`
-        : !isAfterRow
-        ? borderRadius
-        : '0'};
+      border-radius: ${getBorderRadiusValue(
+        expanded,
+        isAfterRow,
+        borderRadius
+      )};
       height: ${heightProp + 'px'};
       background-color: ${() => {
         if (selected) return cmpTokens.color.background.odd.selected;
@@ -81,42 +103,6 @@ export const StyledTableRow = styled.tr<StyledTableCellProps>`
         }};
       `}
 
-      // draggable
-      ${isDraggable &&
-      css`
-        position: relative;
-        &::after {
-          ${pseudoElementMixin({})};
-          ${iconFontMixin()};
-          content: '${icons['row_drag_drop']}';
-          top: 50%;
-          left: -0.4rem;
-          transition: opacity 0.1s ease-in-out;
-          transform: translate(0, -50%);
-          opacity: 0;
-          font-size: 2rem;
-          color: ${textColor};
-        }
-
-        &:hover::after,
-        &:active::after {
-          opacity: 0.5;
-        }
-
-        &:active {
-          cursor: grabbing;
-        }
-      `}
-
-      // dragging
-      ${isDragging &&
-      css`
-        &::before {
-          ${pseudoElementOverlayMixin()};
-          background-color: ${cmpTokens.color.background.odd.base};
-        }
-      `}
-
       // virtualized
       ${isVirtual &&
       css`
@@ -125,7 +111,6 @@ export const StyledTableRow = styled.tr<StyledTableCellProps>`
         left: 0;
       `}
 
-      // disabled
       ${disabled &&
       css`
         opacity: ${cmpTokens.shape.opacity.disabled};
@@ -138,7 +123,7 @@ export const StyledTableRow = styled.tr<StyledTableCellProps>`
       !striped &&
       css`
         &::after {
-          ${pseudoElementMixin({})};
+          ${pseudoElementMixin(null)};
           bottom: 0;
           left: ${borderRadius};
           right: ${borderRadius};
@@ -146,12 +131,6 @@ export const StyledTableRow = styled.tr<StyledTableCellProps>`
           background-color: ${cmpTokens.color.background.after};
           pointer-events: none;
         }
-      `}
-
-      // opacity after row
-      ${isAfterRow &&
-      css`
-        opacity: ${opacity};
       `}
 
       // opacity after row
