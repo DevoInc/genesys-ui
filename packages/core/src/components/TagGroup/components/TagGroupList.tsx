@@ -34,7 +34,7 @@ export const TagGroupList: React.FC<TagGroupListProps> = ({
     >
       {children?.map((child, idx) =>
         React.cloneElement(child, {
-          key: idx,
+          key: `tag-${idx}`,
           size: size,
         })
       )}

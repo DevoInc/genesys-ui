@@ -2,9 +2,7 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import { TagProps } from '../Tag';
-import { Flex, StyledOverloadCssPropsWithRecord } from '../../';
-
-import { tagGroupFlexSpacingMixin } from './helpers';
+import { StyledOverloadCssPropsWithRecord } from '../../';
 
 import {
   TagGroupContainer,
