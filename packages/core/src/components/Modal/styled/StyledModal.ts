@@ -28,7 +28,6 @@ export interface StyledModalProps {
 
 export const StyledModal = styled.div<StyledModalProps>`
   ${({ theme, height, width, windowSize, status }) => {
-    const aliasTokens = theme.alias;
     const tokensDialog = theme.cmp.dialog;
     const tokensModal = theme.cmp.modal;
 

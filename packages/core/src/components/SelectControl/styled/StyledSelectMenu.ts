@@ -48,7 +48,6 @@ export const StyledSelectMenu = styled.div.attrs({
     theme,
   }) => {
     const aliasTokens = theme.alias;
-    const elevationTokens = aliasTokens.elevation;
     const surfaceTokens = aliasTokens.color.background.surface;
     const fieldTokens = aliasTokens.fields;
     const fieldTransitionDuration = fieldTokens.mutation.transitionDuration;
