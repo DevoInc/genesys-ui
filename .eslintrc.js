@@ -33,4 +33,5 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     'react/jsx-no-useless-fragment': ['error', { allowExpressions: false }],
   },
+  ignorePatterns: ['jest.config.ts', '.eslintrc.js'],
 };

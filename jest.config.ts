@@ -1,9 +1,3 @@
-// module.exports = {
-//   preset: 'ts-jest',
-//   rootDir: 'src',
-//   moduleDirectories: ['node_modules', '../../test'],
-// };
-
 const baseConfig = {
   transform: {
     '^.+\\.tsx?$': [
@@ -16,6 +10,9 @@ const baseConfig = {
     ],
   },
   testEnvironment: 'jsdom',
+  moduleNameMapper: {
+    '\\.(scss|css)$': 'identity-obj-proxy',
+  },
 };
 
 const config = {
@@ -23,7 +20,11 @@ const config = {
     {
       ...baseConfig,
       displayName: '@devoinc/genesys-ui',
-      testMatch: ['<rootDir>/packages/core/src/**/*.test.ts'],
+      testMatch: [
+        '<rootDir>/packages/core/src/**/*.test.ts',
+        // To be generalized after repairing all TSX (component) tests
+        '<rootDir>/packages/core/src/components/Helper/Helper.test.tsx',
+      ],
     },
     {
       ...baseConfig,
