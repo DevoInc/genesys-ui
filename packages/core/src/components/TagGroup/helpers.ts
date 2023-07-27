@@ -2,6 +2,7 @@ import { css, DefaultTheme } from 'styled-components';
 
 import { LabelPosition } from './declarations';
 import { StyledTagContainerProps } from '../Tag/components/StyledTagContainer';
+import { TagProps } from '../Tag';
 
 export interface TagGroupLabelMixinProps
   extends Pick<StyledTagContainerProps, 'size'> {
@@ -32,5 +33,26 @@ export const tagGroupLabelMixin = ({
       : css`
           margin-bottom: ${tokens.space.marginBottom[size]};
         `};
+  `;
+};
+
+export interface TagGroupFlexSpacingMixinProps extends Pick<TagProps, 'size'> {
+  theme: DefaultTheme;
+}
+
+/**
+ * Get the specific spacing styles for Flex component when it's used as a TagGroup flex component
+ *
+ * @return specific styles for Label
+ */
+
+export const tagGroupFlexSpacingMixin = ({
+  size,
+  theme,
+}: TagGroupFlexSpacingMixinProps) => {
+  const itemTokens = theme.cmp.tagGroup.item;
+  return css`
+    column-gap: ${itemTokens.space.margin.hor[size]};
+    row-gap: ${itemTokens.space.margin.ver[size]};
   `;
 };

@@ -5,6 +5,7 @@ import {
   GlobalAriaProps,
   GlobalAttrProps,
   StyledOverloadCssProps,
+  StyledOverloadCssPropsWithRecord,
   StyledPolymorphicProps,
 } from '../../declarations';
 
@@ -14,7 +15,7 @@ import { StyledTagContainerProps } from './components/StyledTagContainer';
 // components
 import { TagBadge, TagContainer, TagIcon, TagLabel } from './components';
 
-export interface TagProps
+export interface BaseTagProps
   extends StyledPolymorphicProps,
     StyledOverloadCssProps,
     GlobalAttrProps,
@@ -26,6 +27,9 @@ export interface TagProps
   text: string;
 }
 
+export type TagProps = BaseTagProps &
+  StyledOverloadCssPropsWithRecord<'badge' | 'container' | 'icon' | 'label'>;
+
 export const InternalTag: React.FC<TagProps> = ({
   colorScheme = 'neutral',
   icon,
@@ -34,6 +38,7 @@ export const InternalTag: React.FC<TagProps> = ({
   wide,
   size = 'md',
   styles,
+  subcomponentStyles,
   text,
   tooltip,
   ...restNativeProps
@@ -46,14 +51,26 @@ export const InternalTag: React.FC<TagProps> = ({
       quiet={quiet}
       wide={wide}
       size={size}
-      styles={styles}
+      styles={subcomponentStyles?.container || styles}
       tooltip={tooltip}
     >
-      {quiet && <TagBadge colorScheme={colorScheme} icon={icon} size={size} />}
-      {text && icon && !quiet && (
-        <TagIcon iconId={icon} strong={bold} size={size} />
+      {quiet && (
+        <TagBadge
+          colorScheme={colorScheme}
+          icon={icon}
+          size={size}
+          styles={subcomponentStyles?.badge}
+        />
       )}
-      {text && <TagLabel>{text}</TagLabel>}
+      {text && icon && !quiet && (
+        <TagIcon
+          iconId={icon}
+          strong={bold}
+          size={size}
+          styles={subcomponentStyles?.icon}
+        />
+      )}
+      {text && <TagLabel styles={subcomponentStyles?.label}>{text}</TagLabel>}
     </TagContainer>
   );
 };

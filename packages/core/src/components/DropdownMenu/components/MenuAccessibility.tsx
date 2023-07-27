@@ -7,7 +7,7 @@ import {
   killEvent,
   navigateBetweenMenuItemByKeyboard,
 } from '../helpers';
-import { StyledPolymorphicProps } from 'packages/core/src/declarations';
+import type { StyledPolymorphicProps } from '../../../declarations';
 
 export interface MenuAccessibilityProps extends StyledPolymorphicProps {
   /** Tabindex item */

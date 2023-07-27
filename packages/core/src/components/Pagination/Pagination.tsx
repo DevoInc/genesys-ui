@@ -1,25 +1,19 @@
 import * as React from 'react';
-import ReactToolTip from 'react-tooltip';
 
 import {
-  HFlex,
-  Label,
-  IconButton,
-  InputControl,
-  SelectControl,
-  Flex,
-  Box,
-} from '../';
-import { usePaginationStyles } from './usePaginationStyles';
-import { defaultTexts, HideParts, TextProps } from './declarations';
-import { PaginationInfo } from './hooks';
+  defaultTexts,
+  HideParts,
+  PaginationCommonInterface,
+} from './declarations';
 import {
-  BaseSize,
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-} from '../../declarations';
+  PaginationContainer,
+  PaginationContainerProps,
+  PaginationNav,
+  PaginationRange,
+} from './components';
+import { StyledOverloadCssPropsWithRecord } from '../../declarations';
+
+import { Label } from '../';
 
 const defaultHideParts = {
   infoLabel: false,
@@ -30,68 +24,43 @@ const defaultHideParts = {
   lastPageBtn: false,
 };
 
-export interface PaginationProps
-  extends Pick<GlobalAttrProps, 'id'>,
-    Pick<GlobalAriaProps, 'aria-label' | 'aria-describedby'>,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps {
-  /** Tooltip text of the first last button */
-  texts?: TextProps;
-  /**
-   * If you want to override pagination internal state,
-   * use the usePagination hook in the parent and pass the props
-   */
-  paginationHook?: PaginationInfo;
+export interface BasePaginationProps
+  extends PaginationCommonInterface,
+    Pick<
+      PaginationContainerProps,
+      'aria-label' | 'aria-describedby' | 'as' | 'WrapperComponent'
+    > {
   hideParts?: HideParts;
-  WrapperComponent?: React.ComponentType<any>;
-  size?: BaseSize;
 }
 
-export const Pagination: React.FC<PaginationProps> = ({
-  as = 'nav',
+export type PaginationProps = BasePaginationProps &
+  StyledOverloadCssPropsWithRecord<'container' | 'info' | 'range' | 'nav'>;
+
+export const InternalPagination: React.FC<PaginationProps> = ({
   'aria-label': ariaLabel,
   'aria-describedby': ariaDescribedBy,
+  as = 'nav',
   hideParts = defaultHideParts,
   id,
   paginationHook,
   size = 'md',
   styles,
+  subcomponentStyles,
   texts,
   WrapperComponent,
 }) => {
   // State
-  const [isMenuOpen, setMenuOpen] = React.useState(false);
-  const {
-    page,
-    lastPage,
-    pageFirstItem,
-    pageLastItem,
-    totalItems,
-    pageSize,
-    setPageSize,
-    goToFirstPage,
-    goToLastPage,
-    goToNextPage,
-    goToPage,
-    goToPreviousPage,
-    pageSizeOptions,
-  } = React.useMemo(() => paginationHook, [paginationHook]);
+  const { pageFirstItem, pageLastItem, totalItems, pageSize } = React.useMemo(
+    () => paginationHook,
+    [paginationHook]
+  );
 
   // Constants
-  const {
-    firstPageTooltipText,
-    infoTextFn,
-    lastPageTooltipText,
-    nextPageTooltipText,
-    pageSelectorLabel,
-    prevPageTooltipText,
-    rangeText,
-    selectPageTooltipTextFn,
-  } = React.useMemo(() => ({ ...defaultTexts, ...texts }), [texts]);
-  const pageTooltip = selectPageTooltipTextFn({
-    currentPage: page + 1,
-    lastPage: lastPage + 1,
-  });
+  const { infoTextFn } = React.useMemo(
+    () => ({ ...defaultTexts, ...texts }),
+    [texts]
+  );
+
   const paginationInfoText = React.useMemo(
     () =>
       infoTextFn({
@@ -102,170 +71,54 @@ export const Pagination: React.FC<PaginationProps> = ({
       }),
     [infoTextFn, totalItems, pageSize, pageFirstItem, pageLastItem]
   );
-  const pageNavOptions = React.useMemo(
-    () =>
-      [...new Array(lastPage + 1)].map((_, index) => ({
-        value: index,
-        label: `${index + 1}`,
-      })),
-    [lastPage]
-  );
-  const { actionsSize } = usePaginationStyles({
-    pageSizeOptions,
-    size,
-    lastPage,
-  });
-
-  // Functions
-  const onChangeRangeSelect = React.useCallback(
-    (option) => setPageSize(parseInt(option.value)),
-    [setPageSize]
-  );
-  const onInputChange = React.useCallback(
-    () => (ev: Event) =>
-      goToPage(parseInt((ev.target as HTMLInputElement)?.value) - 1),
-    [goToPage]
-  );
-  const noOptionsMessage = React.useCallback(() => '', []);
-  const onChange = React.useCallback((e) => goToPage(e.value), [goToPage]);
-  const onMenuOpen = React.useCallback(() => {
-    ReactToolTip.hide();
-    setMenuOpen(true);
-  }, []);
-  const onMenuClose = React.useCallback(() => setMenuOpen(false), []);
-  const WrapperComponentEval = WrapperComponent || Box;
 
   return (
-    <WrapperComponentEval
-      as={WrapperComponent ? null : as}
+    <PaginationContainer
       aria-label={ariaLabel}
       aria-describedby={ariaDescribedBy}
+      as={as}
       id={id}
-      styles={styles}
+      size={size}
+      styles={subcomponentStyles?.container || styles}
+      WrapperComponent={WrapperComponent}
     >
-      <HFlex as="ul" spacing={`cmp-${size}`}>
-        {/* PAGINATION INFO */}
-        {!hideParts?.infoLabel && (
-          <Flex.Item as="li">
-            <Label size={size}>{paginationInfoText}</Label>
-          </Flex.Item>
-        )}
-
-        {/* PAGINATION RANGE */}
-        {!hideParts?.rangeSelector && (
-          <Flex.Item as="li">
-            <HFlex spacing="cmp-xxs">
-              <Flex.Item>
-                <SelectControl
-                  id={id ? `${id}-page-range-selector` : null}
-                  noOptionsMessage={noOptionsMessage}
-                  onChange={onChangeRangeSelect}
-                  options={pageSizeOptions.map((item) => ({
-                    value: String(item),
-                    label: String(item),
-                  }))}
-                  size={size}
-                  value={{ value: pageSize, label: String(pageSize) }}
-                />
-              </Flex.Item>
-              <Flex.Item>
-                <Label size={size}>{rangeText}</Label>
-              </Flex.Item>
-            </HFlex>
-          </Flex.Item>
-        )}
-
-        {/* PAGINATION NAV */}
-        <Flex.Item as="li">
-          <HFlex
-            as="ul"
-            id={id ? `${id}-page-navigation` : null}
-            spacing={size === 'lg' ? 'cmp-sm' : 'cmp-xs'}
-          >
-            {!hideParts?.firstPageBtn && (
-              <Flex.Item as="li">
-                <IconButton
-                  hasBoldIcon
-                  icon="gi-arrow_double_left"
-                  onClick={goToFirstPage}
-                  size={actionsSize}
-                  state={page === 0 ? 'disabled' : 'enabled'}
-                  tooltip={firstPageTooltipText}
-                />
-              </Flex.Item>
-            )}
-            {!hideParts?.prevPageBtn && (
-              <Flex.Item as="li">
-                <IconButton
-                  hasBoldIcon
-                  icon="gi-arrow_left"
-                  onClick={goToPreviousPage}
-                  size={actionsSize}
-                  state={page === 0 ? 'disabled' : 'enabled'}
-                  tooltip={prevPageTooltipText}
-                />
-              </Flex.Item>
-            )}
-            {lastPage > 9 ? (
-              <Flex.Item as="li">
-                <InputControl
-                  aria-label={pageSelectorLabel}
-                  data-tip={pageTooltip}
-                  id={id ? `${id}-page-selector` : null}
-                  max={String(lastPage + 1)}
-                  min={'1'}
-                  onChange={onInputChange}
-                  size={size}
-                  type="number"
-                  value={String(page + 1)}
-                />
-              </Flex.Item>
-            ) : (
-              <Flex.Item as="li">
-                <SelectControl
-                  aria-label={pageSelectorLabel}
-                  data-tip={isMenuOpen ? '' : pageTooltip}
-                  isDisabled={lastPage === 0}
-                  id={id ? `${id}-page-selector` : null}
-                  noOptionsMessage={noOptionsMessage}
-                  onChange={onChange}
-                  onMenuClose={onMenuClose}
-                  onMenuOpen={onMenuOpen}
-                  options={pageNavOptions}
-                  size={size}
-                  value={{ value: page, label: String(page + 1) }}
-                />
-              </Flex.Item>
-            )}
-            {!hideParts?.nextPageBtn && (
-              <Flex.Item as="li">
-                <IconButton
-                  aria-label={nextPageTooltipText}
-                  hasBoldIcon
-                  icon="gi-arrow_right"
-                  onClick={goToNextPage}
-                  size={actionsSize}
-                  state={page === lastPage ? 'disabled' : 'enabled'}
-                  tooltip={nextPageTooltipText}
-                />
-              </Flex.Item>
-            )}
-            {!hideParts?.lastPageBtn && (
-              <Flex.Item as="li">
-                <IconButton
-                  aria-label={lastPageTooltipText}
-                  hasBoldIcon
-                  icon="gi-arrow_double_right"
-                  onClick={goToLastPage}
-                  size={actionsSize}
-                  state={page === lastPage ? 'disabled' : 'enabled'}
-                  tooltip={lastPageTooltipText}
-                />
-              </Flex.Item>
-            )}
-          </HFlex>
-        </Flex.Item>
-      </HFlex>
-    </WrapperComponentEval>
+      {!hideParts?.infoLabel && (
+        <Label size={size} styles={subcomponentStyles?.info}>
+          {paginationInfoText}
+        </Label>
+      )}
+      {!hideParts?.rangeSelector && (
+        <PaginationRange
+          id={id}
+          paginationHook={paginationHook}
+          texts={texts}
+          size={size}
+          styles={subcomponentStyles?.range}
+        />
+      )}
+      <PaginationNav
+        hideFirstPageBtn={hideParts.firstPageBtn}
+        hideLastPageBtn={hideParts.lastPageBtn}
+        hideNextPageBtn={hideParts.nextPageBtn}
+        hidePrevPageBtn={hideParts.prevPageBtn}
+        id={id}
+        paginationHook={paginationHook}
+        size={size}
+        styles={subcomponentStyles?.nav}
+        texts={texts}
+      />
+    </PaginationContainer>
   );
 };
+
+export const Pagination = InternalPagination as typeof InternalPagination & {
+  Container: typeof PaginationContainer;
+  Info: typeof Label;
+  Nav: typeof PaginationNav;
+  Range: typeof PaginationRange;
+};
+
+Pagination.Container = PaginationContainer;
+Pagination.Info = Label;
+Pagination.Nav = PaginationNav;
+Pagination.Range = PaginationRange;

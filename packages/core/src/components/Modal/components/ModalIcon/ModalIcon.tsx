@@ -1,8 +1,5 @@
 import * as React from 'react';
-import type {
-  ActiveStatus,
-  GlobalStatus,
-} from 'packages/core/src/declarations';
+import { concat } from 'lodash';
 import { DecoratorBar } from '../../../DecoratorBar';
 import { useTheme } from 'styled-components';
 import {
@@ -13,6 +10,11 @@ import {
   GIOkSuccessfulCheckFilled,
 } from '@devoinc/genesys-icons';
 import type { IconType } from '@devoinc/genesys-icons';
+import type {
+  ActiveStatus,
+  GlobalStatus,
+  StyledOverloadCssProps,
+} from '../../../../declarations';
 
 export const statusIconMap: { [key in ActiveStatus]: IconType } = {
   success: GIOkSuccessfulCheckFilled,
@@ -22,12 +24,12 @@ export const statusIconMap: { [key in ActiveStatus]: IconType } = {
   warning: GIAttentionErrorAlertCautionFilled,
 } as const;
 
-export interface ModalIconProps {
+export interface ModalIconProps extends StyledOverloadCssProps {
   /** Status of the modal **/
   status?: GlobalStatus;
 }
 
-export const ModalIcon: React.FC<ModalIconProps> = ({ status }) => {
+export const ModalIcon: React.FC<ModalIconProps> = ({ status, styles }) => {
   const tokens = useTheme();
 
   const IconElement = React.useMemo(() => {
@@ -48,12 +50,16 @@ export const ModalIcon: React.FC<ModalIconProps> = ({ status }) => {
       return (
         <DecoratorBar
           size={tokens.cmp.modal.headerDecoratorBar.size.height}
-          styles={`margin-right: ${tokens.cmp.modal.headerDecoratorBar.space.marginRight}`}
+          styles={concat(
+            `margin-right: ${tokens.cmp.modal.headerDecoratorBar.space.marginRight}`,
+            styles
+          )}
         />
       );
     }
   }, [
     status,
+    styles,
     tokens.cmp.dialog.headerIcon,
     tokens.cmp.modal.headerDecoratorBar.size.height,
     tokens.cmp.modal.headerDecoratorBar.space.marginRight,

@@ -8,7 +8,10 @@ import {
   HeaderSettingsProps,
   PanelSize,
 } from './declarations';
-import { StyledOverloadCssProps } from '../../declarations';
+import {
+  StyledOverloadCssProps,
+  StyledOverloadCssPropsWithRecord,
+} from '../../declarations';
 
 import {
   PanelContainer,
@@ -20,7 +23,7 @@ import {
   PanelHeaderProps,
 } from './components';
 
-export interface PanelProps
+export interface BasePanelProps
   extends StyledOverloadCssProps,
     Omit<PanelContainerProps, 'children'>,
     Pick<
@@ -43,6 +46,9 @@ export interface PanelProps
   size?: PanelSize;
 }
 
+export type PanelProps = BasePanelProps &
+  StyledOverloadCssPropsWithRecord<'container' | 'header' | 'body' | 'footer'>;
+
 const InternalPanel: React.FC<PanelProps> = ({
   // PanelContainerProps
   as,
@@ -54,12 +60,13 @@ const InternalPanel: React.FC<PanelProps> = ({
   id,
   visibility,
   position,
+  styles,
+  subcomponentStyles,
   // PanelHeaderProps
   headerSettings,
   closeSettings,
   collapseSettings,
   subtitle,
-  styles,
   title,
   titleTooltip,
   legend,
@@ -87,7 +94,7 @@ const InternalPanel: React.FC<PanelProps> = ({
       id={id}
       position={position}
       visibility={visibility}
-      styles={styles}
+      styles={subcomponentStyles?.container || styles}
       {...boxProps}
     >
       <PanelHeader
@@ -102,6 +109,7 @@ const InternalPanel: React.FC<PanelProps> = ({
         legend={legend}
         removeSpace={headerSettings?.removeSpace}
         size={size}
+        styles={subcomponentStyles?.header}
         subtitle={subtitle}
         title={title}
         titleTooltip={titleTooltip}
@@ -113,6 +121,7 @@ const InternalPanel: React.FC<PanelProps> = ({
         panelBodyRef={targetElRef}
         removeSpace={bodySettings?.removeSpace}
         size={size}
+        styles={subcomponentStyles?.body}
       >
         {children}
       </PanelBody>
@@ -125,6 +134,7 @@ const InternalPanel: React.FC<PanelProps> = ({
         helpTooltip={helpTooltip}
         removeSpace={footerSettings?.removeSpace}
         size={size}
+        styles={subcomponentStyles?.footer}
       >
         {footerSettings?.renderContent}
       </PanelFooter>

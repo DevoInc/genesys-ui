@@ -1,65 +1,70 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
-// declarations
-import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-} from '../../declarations';
-import { ButtonSize } from '../';
+import { FLEX_SPACING_SIZE_MAP } from './constants';
 
-// styled
+import { ButtonGroupSize } from './declarations';
+
+import { ButtonProps, Flex, FlexProps, IconButtonProps } from '../';
+
 import {
-  StyledButtonGroup,
-  StyledButtonGroupItem,
-  StyledButtonGroupProps,
-} from './StyledButtonGroup';
+  buttonGroupItemMixin,
+  buttonGroupMixin,
+  ButtonGroupMixinProps,
+} from './helpers';
 
 export interface ButtonGroupProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    StyledButtonGroupProps {
-  children: React.ReactElement[];
+  extends Omit<FlexProps, 'as' | 'children'>,
+    Omit<ButtonGroupMixinProps, 'theme'> {
+  //TODO: add the DropdownMenu to this types when it's ready
+  children: (
+    | React.ReactElement<ButtonProps>
+    | React.ReactElement<IconButtonProps>
+  )[];
   /** The size of the buttons */
-  size?: ButtonSize;
+  size?: ButtonGroupSize;
 }
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
-  as,
+  alignItems = 'center',
   children,
-  hidden = false,
-  itemsGap = 'md',
-  role,
+  flexWrap = 'wrap',
+  gap,
+  hidden,
+  inline = true,
+  justifyContent = 'center',
   size = 'md',
-  styles,
-  tooltip,
   visibilityTrigger,
-  ...restNativeProps
-}) => (
-  <StyledButtonGroup
-    {...restNativeProps}
-    as={as}
-    css={styles}
-    hidden={hidden}
-    itemsGap={itemsGap}
-    role={role}
-    title={tooltip}
-    visibilityTrigger={visibilityTrigger}
-  >
-    {children?.map((child, idx) => (
-      <StyledButtonGroupItem
-        key={idx}
-        quietChildButton={child.props?.colorScheme === 'quiet'}
-        size={size}
-      >
-        {React.cloneElement(child, {
-          key: idx,
-          size: child.props?.size || size,
-        })}
-      </StyledButtonGroupItem>
-    ))}
-  </StyledButtonGroup>
-);
+  ...restFlexProps
+}) => {
+  const theme = useTheme();
+  return (
+    <Flex
+      {...restFlexProps}
+      alignItems={alignItems}
+      as="ul"
+      flexWrap={flexWrap}
+      gap={gap || `cmp-${FLEX_SPACING_SIZE_MAP[size]}`}
+      justifyContent={justifyContent}
+      inline={inline}
+      styles={buttonGroupMixin({ hidden, theme, visibilityTrigger })}
+    >
+      {children?.map((child, idx) => (
+        <Flex.Item
+          as="li"
+          key={idx}
+          styles={buttonGroupItemMixin({
+            quietChildButton: child.props?.colorScheme === 'quiet',
+            size,
+            theme,
+          })}
+        >
+          {React.cloneElement(child, {
+            key: idx,
+            size: child.props?.size || size,
+          })}
+        </Flex.Item>
+      ))}
+    </Flex>
+  );
+};
