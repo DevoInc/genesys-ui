@@ -1,5 +1,30 @@
 # Changelog
 
+### [1.0.3-alpha.20](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.19...v1.0.3-alpha.20) (2023-07-27)
+
+
+### Features
+
+* added css overlapping to Modal ([e143aec](https://github.com/DevoInc/genesys-ui/commit/e143aec758f61d3cef47f1aba914f3d9588e0f85))
+* css overlapping and refactor of several components ([349a3ae](https://github.com/DevoInc/genesys-ui/commit/349a3ae5555b4fdde3499bef359e84a9f29a2069))
+* dot notation for Pagination and StatusMessage. Styles overlapping for several components. ([a500c64](https://github.com/DevoInc/genesys-ui/commit/a500c6445e64d60d1bd8c2223abc552ea329c150))
+* **Helper:** QUV-1099 Avoided paragraph element in DOM when using a TSX message ([d4afa25](https://github.com/DevoInc/genesys-ui/commit/d4afa2575ef15981019c1b62858b27253ff60a60))
+* Pagination to dot notation ([85d93ae](https://github.com/DevoInc/genesys-ui/commit/85d93ae524066c3bbe292b57c239176d7b1d9a9f))
+* styles overlapping for ButtonGroup, Stepper and TagGroup ([7e809c3](https://github.com/DevoInc/genesys-ui/commit/7e809c368dfe2f5f7671db2b62d33a4cd2cb1dff))
+* **Textarea:** QUV-1099 Added example for character counter ([1c8f078](https://github.com/DevoInc/genesys-ui/commit/1c8f0788b41b163f0ad5f9147c24354d4bb1c0ee))
+* **Tooltip:** make offset properties optional ([c8b6166](https://github.com/DevoInc/genesys-ui/commit/c8b6166cd0ebd7fcafe1e5872e8975cb0c263593))
+* **UsePagination:** enforce readonly fields ([6196d7b](https://github.com/DevoInc/genesys-ui/commit/6196d7b49f99c15e236aa3bee81f8bf5b4405cc5))
+
+
+### Bug Fixes
+
+* **BoxMessageActions:** make actions optional ([7203172](https://github.com/DevoInc/genesys-ui/commit/72031727a11a8126edbd1900a6b78fae9e3d9a0f))
+* fix type imports ([f697240](https://github.com/DevoInc/genesys-ui/commit/f6972404ba5dff83b4515f375542ce89f81c4750))
+* fixed interface ([dd736d9](https://github.com/DevoInc/genesys-ui/commit/dd736d9e82e5ab7cf2d77e725b51f42c483ed8f5))
+* fixed lint ([c068643](https://github.com/DevoInc/genesys-ui/commit/c06864357f985af08ab9a71a6fa068eded34e53c))
+* Linter ([a3eea7f](https://github.com/DevoInc/genesys-ui/commit/a3eea7f3003f0b8b3a25e00f67a4fe3dbb179ea4))
+* **Textarea:** Used Flex.Item instead of FlexItem ([791d19d](https://github.com/DevoInc/genesys-ui/commit/791d19d219be1031e46dcbfdebb6401165d3d46a))
+
 ### [1.0.3-alpha.19](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.18...v1.0.3-alpha.19) (2023-07-21)
 
 
