@@ -22,7 +22,7 @@ export interface HelperProps
     StyledPolymorphicProps,
     StyledOverloadCssProps {
   /** Content of the helper message. */
-  message: React.ReactNode;
+  message: string | React.ReactNode;
   /** Size of the helper: spacing, font-size... etc. */
   size?: HelperSize;
   /** This property defines the status color schema for the helper */
@@ -61,12 +61,16 @@ export const Helper: React.FC<HelperProps> = ({
           />
         </Flex>
       )}
-      <Typography.Paragraph
-        colorScheme={status === 'error' ? 'error' : 'weak'}
-        size={size}
-      >
-        {message}
-      </Typography.Paragraph>
+      {React.isValidElement(message) ? (
+        message
+      ) : (
+        <Typography.Paragraph
+          colorScheme={status === 'error' ? 'error' : 'weak'}
+          size={size}
+        >
+          {message}
+        </Typography.Paragraph>
+      )}
     </HFlex>
   );
 };
