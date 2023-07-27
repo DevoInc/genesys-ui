@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Textarea } from './Textarea';
-import { Flex, HFlex, Typography } from '@devoinc/genesys-ui';
+import { HFlex, Typography } from '@devoinc/genesys-ui';
 
 const meta: Meta<typeof Textarea> = {
   title: 'Components/Form/Textarea',
@@ -55,21 +55,21 @@ export const WithCharacterCounter: Story = {
           {...args}
           onChange={onChange}
           helper={
-            <HFlex justifyContent={'space-between'} width={'100%'}>
-              <Flex.Item alignSelf={'flex-start'}>
-                <Typography.Paragraph
-                  colorScheme={counter > MAX_CHARACTERS ? 'error' : 'weak'}
-                >
-                  {counter > MAX_CHARACTERS ? errorMessage : args.helper}
-                </Typography.Paragraph>
-              </Flex.Item>
-              <Flex.Item alignSelf={'flex-end'}>
-                <Typography.Paragraph
-                  colorScheme={counter > MAX_CHARACTERS ? 'error' : 'weak'}
-                >
-                  {`${counter}/${MAX_CHARACTERS}`}
-                </Typography.Paragraph>
-              </Flex.Item>
+            <HFlex
+              justifyContent={'space-between'}
+              width={'100%'}
+              alignItems={'flex-start'}
+            >
+              <Typography.Paragraph
+                colorScheme={counter > MAX_CHARACTERS ? 'error' : 'weak'}
+              >
+                {counter > MAX_CHARACTERS ? errorMessage : args.helper}
+              </Typography.Paragraph>
+              <Typography.Paragraph
+                colorScheme={counter > MAX_CHARACTERS ? 'error' : 'weak'}
+              >
+                {`${counter}/${MAX_CHARACTERS}`}
+              </Typography.Paragraph>
             </HFlex>
           }
           status={counter > MAX_CHARACTERS ? 'error' : 'base'}
