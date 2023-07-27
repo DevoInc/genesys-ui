@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 
 // components
 import { Label } from '../Label';
@@ -41,7 +41,6 @@ export const InternalTagGroup: React.FC<TagGroupProps> = ({
   ...restNativeProps
 }) => {
   const theme = useTheme();
-  const itemTokens = theme.cmp.tagGroup.item;
   return (
     <Flex
       {...restNativeProps}
@@ -65,9 +64,9 @@ export const InternalTagGroup: React.FC<TagGroupProps> = ({
         role="group"
         styles={tagGroupFlexSpacingMixin({ size, theme })}
       >
-        {children?.map((child, idx) =>
+        {children?.map((child) =>
           React.cloneElement(child, {
-            key: idx,
+            key: `tag-${child.key}`,
             size: size,
           })
         )}
