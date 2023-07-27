@@ -4,7 +4,10 @@ import { SwitchControl, SwitchControlProps } from '@devoinc/genesys-ui';
 import { Field, FieldProps } from '@devoinc/genesys-ui';
 
 export interface SwitchProps
-  extends Omit<FieldProps, 'children' | 'hasWideControl' | 'role'>,
+  extends Omit<
+      FieldProps,
+      'children' | 'hasWideControl' | 'role' | 'subcomponentStyles'
+    >,
     Omit<
       SwitchControlProps,
       'id' | 'size' | 'aria-label' | 'status' | 'disabled' | 'required'
