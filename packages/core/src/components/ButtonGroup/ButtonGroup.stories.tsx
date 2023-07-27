@@ -7,8 +7,11 @@ const meta: Meta<typeof ButtonGroup> = {
   title: 'Components/Core/Button/ButtonGroup',
   component: ButtonGroup,
   args: {
+    alignItems: 'center',
+    flexWrap: 'wrap',
     hidden: false,
-    itemsGap: 'md',
+    inline: true,
+    justifyContent: 'center',
     size: 'md',
   },
 };

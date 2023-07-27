@@ -1,131 +1,135 @@
 import * as React from 'react';
 
-// declarations
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  GlobalSpacing,
-  MouseEventAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-  TriggerEventAttrProps,
+  GlobalStatus,
+  StyledOverloadCssPropsWithRecord,
 } from '../../declarations';
-import { IconProps } from '../Icon';
+import { IconProps, ButtonGroupProps } from '../';
 
-// components
-import { VFlex } from '../VFlex/';
-import { HFlex } from '../HFlex/';
-import { Flex } from '../Flex';
-import { Icon } from '../Icon/';
-import { Button } from '../Button/';
-import { Heading, Paragraph } from '../Typography/components/block';
-
-// styled
 import {
-  StyledStatusMessage,
-  StyledStatusMessageProps,
-} from './StyledStatusMessage';
+  StatusMessageButtons,
+  StatusMessageContainer,
+  StatusMessageContainerProps,
+  StatusMessageDescription,
+  StatusMessageIcon,
+  StatusMessageTitle,
+} from './components';
 
-export interface StatusMessageProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    MouseEventAttrProps,
-    Pick<TriggerEventAttrProps, 'onClick'>,
-    StyledStatusMessageProps {
-  padding?: GlobalSpacing;
+export interface BaseStatusMessageProps
+  extends Omit<StatusMessageContainerProps, 'children'> {
   /** This property defines the font size of the icon */
   iconSize?: IconProps['size'];
   /** Title block of the status message */
-  msgTitle: string;
+  title: React.ReactNode;
   /** Description block of status message */
-  msgDescription?: string;
-  /** Button of the status message */
-  msgButton?: string;
-  /** If the button of the status message is at the right of the content*/
-  msgButtonRight?: boolean;
+  description?: React.ReactNode;
+  /** Buttons of the status message */
+  buttons: ButtonGroupProps['children'];
   /** Icon for the top of the panel */
   icon?: string;
   /** If it's true then the content box is not centered and it's scrollable */
-  longMessage?: boolean;
+  hasLongMessage?: boolean;
+  /** The status of the message: error, warning... etc. */
+  status?: GlobalStatus;
 }
 
-export const StatusMessage = ({
-  msgTitle,
+export type StatusMessageProps = BaseStatusMessageProps &
+  StyledOverloadCssPropsWithRecord<
+    'container' | 'title' | 'icon' | 'description' | 'buttons'
+  >;
+
+export const InternalStatusMessage = ({
+  'aria-describedby': ariaDescribedBy,
+  'aria-details': ariaDetails,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
+  as,
   bordered,
+  buttons,
+  description,
+  hasLongMessage,
+  height,
   icon,
-  iconSize,
-  longMessage,
+  iconSize = '3.6rem',
+  id,
   margin,
-  msgButton,
-  msgButtonRight,
-  msgDescription,
-  onClick,
-  padding,
+  onMouseDown,
+  onMouseLeave,
+  onMouseMove,
+  onMouseOut,
+  onMouseOver,
+  onMouseUp,
+  padding = 'cmp-md',
+  role,
   status,
   styles,
+  subcomponentStyles,
+  title,
   tooltip,
   width,
-  ...restNativeProps
 }: StatusMessageProps) => {
-  const FlexWrapper = msgButtonRight ? HFlex : VFlex;
-
-  const getWrapperPadding = () => {
-    if (longMessage) return 'cmp-xl';
-    if (msgButton) return 'cmp-md';
-    return padding || 'cmp-xs cmp-sm';
-  };
-
-  const getIconSize = () => {
-    if (iconSize) return iconSize;
-    if (msgButton && msgButtonRight) return '2rem';
-    return '3.75rem';
-  };
-
   return (
-    <StyledStatusMessage
-      {...restNativeProps}
+    <StatusMessage.Container
+      aria-describedby={ariaDescribedBy}
+      aria-details={ariaDetails}
+      aria-label={ariaLabel}
+      aria-labelledby={ariaLabelledBy}
+      as={as}
       bordered={bordered}
-      css={styles}
+      height={height}
+      id={id}
       margin={margin}
-      status={status}
-      title={tooltip}
+      onMouseDown={onMouseDown}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
+      onMouseOut={onMouseOut}
+      onMouseOver={onMouseOver}
+      onMouseUp={onMouseUp}
+      padding={padding}
+      role={role}
+      styles={subcomponentStyles?.container || styles}
+      tooltip={tooltip}
       width={width}
     >
-      <FlexWrapper
-        alignItems="center"
-        justifyContent="center"
-        margin={String(margin)}
-        padding={getWrapperPadding()}
-      >
-        <VFlex alignItems="center">
-          <Icon
-            colorScheme={status || 'stronger'}
-            iconId={icon || 'gi-no_data'}
-            size={getIconSize()}
-          />
-          {msgTitle && <Heading textAlign="center">{msgTitle}</Heading>}
-          {msgDescription && (
-            <Paragraph
-              colorScheme="weak"
-              textAlign={longMessage ? 'left' : 'center'}
-            >
-              {msgDescription}
-            </Paragraph>
-          )}
-        </VFlex>
-        {msgButton && (
-          <Flex.Item flex="1 0 auto" alignSelf="center">
-            <Button
-              colorScheme={status === 'base' ? 'neutral' : status}
-              onClick={onClick}
-            >
-              {msgButton}
-            </Button>
-          </Flex.Item>
-        )}
-      </FlexWrapper>
-    </StyledStatusMessage>
+      <StatusMessage.Icon
+        colorScheme={status === 'base' ? 'stronger' : status}
+        iconId={icon}
+        size={iconSize}
+        styles={subcomponentStyles?.icon}
+      />
+      {title && (
+        <StatusMessage.Title styles={subcomponentStyles?.title}>
+          {title}
+        </StatusMessage.Title>
+      )}
+      {description && (
+        <StatusMessage.Description
+          isLong={hasLongMessage}
+          styles={subcomponentStyles?.description}
+        >
+          {description}
+        </StatusMessage.Description>
+      )}
+      {buttons?.length && (
+        <StatusMessage.Buttons styles={subcomponentStyles?.buttons}>
+          {buttons}
+        </StatusMessage.Buttons>
+      )}
+    </StatusMessage.Container>
   );
 };
+
+export const StatusMessage =
+  InternalStatusMessage as typeof InternalStatusMessage & {
+    Buttons: typeof StatusMessageButtons;
+    Container: typeof StatusMessageContainer;
+    Description: typeof StatusMessageDescription;
+    Icon: typeof StatusMessageIcon;
+    Title: typeof StatusMessageTitle;
+  };
+
+StatusMessage.Buttons = StatusMessageButtons;
+StatusMessage.Container = StatusMessageContainer;
+StatusMessage.Description = StatusMessageDescription;
+StatusMessage.Icon = StatusMessageIcon;
+StatusMessage.Title = StatusMessageTitle;

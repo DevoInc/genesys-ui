@@ -6,10 +6,7 @@ import { getSizeByType } from '../../utils';
 import { CmpSpacing } from '../../../../declarations';
 
 export interface ContextualScrollLoaderProps
-  extends Pick<
-    LoaderProps,
-    'className' | 'fixed' | 'progressIcon' | 'loadPercent' | 'zIndex'
-  > {
+  extends Omit<LoaderProps, 'gradientConfig' | 'type'> {
   gradientHeight?: string;
   spinnerOffset?: CmpSpacing;
   size: ContextualScrollLoaderSize;
@@ -23,12 +20,15 @@ export const ContextualScrollLoader: React.FC<ContextualScrollLoaderProps> = ({
   loadPercent,
   spinnerOffset = 'cmp-xs',
   size = 'md',
+  styles,
+  subcomponentStyles,
   zIndex,
   ...nativeProps
 }) => {
   return (
     <Loader
       {...nativeProps}
+      {...(styles ? { styles } : { subcomponentStyles })}
       className={className}
       fixed={fixed}
       gradientConfig={{

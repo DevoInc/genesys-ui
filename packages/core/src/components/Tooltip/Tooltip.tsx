@@ -13,10 +13,10 @@ export interface TooltipProps
   delayShow?: number;
   id?: string;
   offset?: {
-    top: number | string;
-    left: number | string;
-    right: number | string;
-    bottom: number | string;
+    top?: number | string;
+    left?: number | string;
+    right?: number | string;
+    bottom?: number | string;
   };
   children?: React.ReactNode;
 }
