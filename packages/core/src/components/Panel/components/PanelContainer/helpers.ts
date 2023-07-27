@@ -41,8 +41,9 @@ export const panelContainerMixin = ({
       justify-content: space-between;
     `};
     overflow: hidden;
-    border: ${bordered && `solid ${borderWidth} ${borderColor}`};
-    border-radius: ${borderRadius};
+    border: ${elevation === 'ground' &&
+    bordered &&
+    `solid ${borderWidth} ${borderColor}`};
     // to maintain always a solid background to avoid overlapping problems
     background-color: ${panelTokens.color.background};
 

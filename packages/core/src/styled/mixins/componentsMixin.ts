@@ -4,6 +4,7 @@ import { DefaultTheme } from 'styled-components';
 
 import {
   ControlWidth,
+  elevationMixin,
   FieldSize,
   FieldStatus,
   getFieldState,
@@ -310,28 +311,9 @@ export const boxMixin = ({
     paddingRight ||
     paddingRight ||
     paddingBottom;
-
-  const getBoxShadow = (elevationProp) => {
-    const { boxShadow } = elevationTokens;
-
-    if (!boxShadow) return null;
-
-    if (elevationProp?.includes('sticky')) {
-      const stickyOptions = boxShadow.depth.sticky;
-
-      if (elevationProp === 'stickyTop') return stickyOptions.top;
-      if (elevationProp === 'stickyRight') return stickyOptions.right;
-      if (elevationProp === 'stickyLeft') return stickyOptions.left;
-
-      return stickyOptions.bottom;
-    }
-
-    return boxShadow.depth[elevationProp] || null;
-  };
-
   return css`
     // position and layout
-    position: ${position};
+    position: ${position || elevation ? 'relative' : null};
     top: ${positionTop};
     right: ${positionRight};
     bottom: ${positionBottom};
@@ -355,8 +337,9 @@ export const boxMixin = ({
     })}
 
     // elevation
-    box-shadow: ${getBoxShadow(elevation)};
-    border-radius: ${hasBorder && aliasTokens.shape.borderRadius.elevated};
+    ${elevationMixin({ theme, elevation, prop: 'boxShadow' })};
+    ${elevationMixin({ theme, elevation, prop: 'border' })};
+    ${hasBorder && elevationMixin({ theme, elevation, prop: 'borderRadius' })}
 
     // box model
     align-self: ${alignSelf};

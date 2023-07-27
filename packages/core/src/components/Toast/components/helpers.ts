@@ -24,9 +24,11 @@ export const toastPanelMixinProps = ({
   const tokensToast = theme.cmp.toast;
 
   return css`
-    border: ${`solid 0.1rem ${
-      tokensToast.color.border[accent ? status : 'default']
-    }`};
+    ${accent &&
+    css`
+      border: solid 0.1rem
+        ${tokensToast.color.border[accent ? status : 'default']};
+    `}
     ${showProgressBar &&
     css`
       padding-bottom: ${tokensToast.progressBar.size.height};

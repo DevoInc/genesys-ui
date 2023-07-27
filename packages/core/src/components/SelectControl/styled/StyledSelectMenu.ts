@@ -1,14 +1,11 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import { getFieldControlTypo } from '../../Field/helpers';
+import { getFieldControlTypo } from '../../Field';
 
-import { disabledMixin } from '../../../styled/mixins/utilsMixins';
-import { scrollbars } from '../../../styled/mixins/scrollbars';
-import {
-  truncateTypoMixin,
-  typoMixin,
-} from '../../../styled/mixins/baseMixins';
+import { disabledMixin, elevationMixin } from '../../../styled';
+import { scrollbars } from '../../../styled';
+import { truncateTypoMixin, typoMixin } from '../../../styled';
 import { Elevation, FieldSize } from '../../../declarations';
 
 const FIELD_MENU_LEVEL_ELEVATION_MAP: Elevation[] = [
@@ -51,7 +48,6 @@ export const StyledSelectMenu = styled.div.attrs({
     theme,
   }) => {
     const aliasTokens = theme.alias;
-    const elevationTokens = aliasTokens.elevation;
     const surfaceTokens = aliasTokens.color.background.surface;
     const fieldTokens = aliasTokens.fields;
     const fieldTransitionDuration = fieldTokens.mutation.transitionDuration;
@@ -64,13 +60,15 @@ export const StyledSelectMenu = styled.div.attrs({
     const optionGroupTokens = menuTokens.itemGroup;
     const optionHeight = optionTokens.size.minHeight;
     const optionHorSpacing = fieldTokens.space.padding.hor[size];
-
+    const elevation =
+      FIELD_MENU_LEVEL_ELEVATION_MAP[menuLevel >= 0 ? menuLevel : 3];
+    console.info('menuRelative', menuRelative);
     return css`
       .${classNamePrefix} {
         // SELECT__MENU ////////////////////////////////////////////////////////
         &__menu {
           position: ${menuRelative || menuQuiet ? 'relative' : 'absolute'};
-          z-index: ${elevationTokens.zIndex.depth.activated};
+          top: ${menuRelative && 'auto'};
           margin-top: ${() => {
             if (menuQuiet) return menuTokens.space.marginTop.isQuiet;
             if (menuIsOpen && menuLevel === 0)
@@ -78,12 +76,15 @@ export const StyledSelectMenu = styled.div.attrs({
             return menuTokens.space.marginTop.base;
           }};
           margin-bottom: ${menuQuiet && '0'};
-          box-shadow: ${menuQuiet
-            ? 'none'
-            : elevationTokens.boxShadow.depth?.[
-                FIELD_MENU_LEVEL_ELEVATION_MAP[menuLevel >= 0 ? menuLevel : 3]
-              ]};
-          border-radius: ${aliasTokens.shape.borderRadius.elevated};
+          ${menuQuiet
+            ? elevationMixin({
+                theme,
+                elevation: 'ground',
+              })
+            : elevationMixin({
+                theme,
+                elevation,
+              })};
           min-width: ${minMenuWidth};
           background: ${surfaceTokens.base.base};
           ${getFieldControlTypo({ theme, size })};

@@ -30,13 +30,6 @@ export const WithHeadingAndActions: Story = {
     tabItems: tabs,
     heading: 'App',
     actions: mainActions,
-    subcomponentStyles: {
-      heading: css`
-        > div {
-          color: red;
-        }
-      `,
-    },
   },
 };
 
