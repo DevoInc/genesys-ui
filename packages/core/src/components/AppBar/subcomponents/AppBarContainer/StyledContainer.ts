@@ -9,6 +9,7 @@ export interface StyledAppBarContainerProps
 
 export const StyledAppBarContainer = styled.div<StyledAppBarContainerProps>`
   ${({ theme, ...boxMixinProps }) => {
+    console.info(boxMixinProps.elevation);
     return css`
       ${boxMixin({ theme, ...boxMixinProps })}
       position: relative;

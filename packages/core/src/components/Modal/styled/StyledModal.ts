@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 
 import type { WindowSize } from '../declarations';
 import type { GlobalStatus } from 'packages/core/src/declarations';
+import { elevationMixin } from '../../../styled';
 
 const windowSizeMap: { [key in WindowSize]: string } = {
   small: 'sm',
@@ -39,8 +40,7 @@ export const StyledModal = styled.div<StyledModalProps>`
       display: inline-flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: ${aliasTokens.elevation.boxShadow.depth?.overlay};
-      border-radius: ${aliasTokens.shape.borderRadius.elevated};
+      ${elevationMixin({ theme, elevation: 'overlay' })};
       background-color: ${tokensModal.color.background};
 
       &:focus {

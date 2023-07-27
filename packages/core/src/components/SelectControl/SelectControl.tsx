@@ -132,7 +132,7 @@ export const SelectControl = <
     <InnerSelectControl<Option, IsMulti, Group>
       {...rest}
       minMenuHeight={0}
-      menuPortalTarget={menuPortalTarget}
+      menuPortalTarget={rest.menuRelative ? null : menuPortalTarget}
       isClearable={clearable}
       {...(onChange && { onChange })}
       componentStyles={mergeStyles(defaultStyles, componentStyles)}

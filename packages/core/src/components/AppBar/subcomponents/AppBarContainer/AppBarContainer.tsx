@@ -35,7 +35,7 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
   return (
     <StyledAppBarContainer
       {...nativeProps}
-      id={`${id}__container`}
+      id={id ? `${id}__container` : null}
       elevation={elevation}
       title={tooltip}
     >
