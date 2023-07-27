@@ -1,4 +1,7 @@
 import * as React from 'react';
+
+import { StyledOverloadCssPropsWithRecord } from '../../../../declarations';
+
 import {
   StepperItemContainer,
   StepperItemContainerProps,
@@ -10,12 +13,17 @@ import {
   StepperItemContent,
 } from './components';
 
-export interface StepperItemProps
+export interface BaseStepperItemProps
   extends StepperItemIndicatorProps,
     StepperItemContainerProps {
   hasDivider?: boolean;
   hiddenStatusText?: StepperItemHiddenStatusProps['children'];
 }
+
+export type StepperItemProps = BaseStepperItemProps &
+  StyledOverloadCssPropsWithRecord<
+    'container' | 'content' | 'divider' | 'indicator'
+  >;
 
 export const InternalStepperItem: React.FC<StepperItemProps> = ({
   children,
@@ -23,18 +31,27 @@ export const InternalStepperItem: React.FC<StepperItemProps> = ({
   hiddenStatusText,
   size = 'md',
   status,
+  styles,
+  subcomponentStyles,
   stepNumberPos,
 }) => {
   return (
-    <StepperItemContainer>
-      {hasDivider && <StepperItemDivider />}
+    <StepperItemContainer styles={subcomponentStyles?.container || styles}>
+      {hasDivider && (
+        <StepperItemDivider styles={subcomponentStyles?.divider} />
+      )}
       <StepperItemIndicator
         stepNumberPos={stepNumberPos}
         size={size}
         status={status}
+        styles={subcomponentStyles?.indicator}
       />
       <StepperItemHiddenStatus>{hiddenStatusText}</StepperItemHiddenStatus>
-      <StepperItemContent size={size} status={status}>
+      <StepperItemContent
+        size={size}
+        status={status}
+        styles={subcomponentStyles?.content}
+      >
         {children}
       </StepperItemContent>
     </StepperItemContainer>

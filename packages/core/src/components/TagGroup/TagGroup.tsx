@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
+import { css, useTheme } from 'styled-components';
 
 // components
 import { Label } from '../Label';
@@ -11,13 +11,13 @@ import {
   Flex,
   GlobalAriaProps,
   GlobalAttrProps,
-  GlobalSpacing,
   StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../';
 
 // helpers
-import { tagGroupLabelMixin } from './helpers';
+import { tagGroupFlexSpacingMixin, tagGroupLabelMixin } from './helpers';
+import { FlexItem } from '../Flex/subcomponents';
 
 export interface TagGroupProps
   extends StyledPolymorphicProps,
@@ -32,7 +32,7 @@ export interface TagGroupProps
   labelText?: string;
 }
 
-export const TagGroup: React.FC<TagGroupProps> = ({
+export const InternalTagGroup: React.FC<TagGroupProps> = ({
   children,
   labelPosition = 'left',
   labelText,
@@ -63,8 +63,7 @@ export const TagGroup: React.FC<TagGroupProps> = ({
         flexWrap="wrap"
         inline
         role="group"
-        rowGap={itemTokens.space.margin.ver[size] as GlobalSpacing}
-        columnGap={itemTokens.space.margin.hor[size] as GlobalSpacing}
+        styles={tagGroupFlexSpacingMixin({ size, theme })}
       >
         {children?.map((child, idx) =>
           React.cloneElement(child, {
@@ -75,4 +74,8 @@ export const TagGroup: React.FC<TagGroupProps> = ({
       </Flex>
     </Flex>
   );
+};
+
+export const TagGroup = InternalTagGroup as typeof InternalTagGroup & {
+  Container: typeof FlexItem;
 };

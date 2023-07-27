@@ -69,7 +69,7 @@ export const buttonGroupItemMixin = ({
 
     & + & {
       margin-left: ${quietChildButton
-        ? `0 calc((${spacingBetweenButtons} / 3) * -1)`
+        ? `calc((${spacingBetweenButtons} / 2) * -1)`
         : null};
     }
   `;

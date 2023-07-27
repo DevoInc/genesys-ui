@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { GlobalAriaProps, GlobalAttrProps } from '../../declarations';
+import {
+  GlobalAriaProps,
+  GlobalAttrProps,
+  StyledOverloadCssPropsWithRecord,
+} from '../../declarations';
 
 // hooks
 import { useWindowSize } from '../../hooks';
@@ -17,7 +21,7 @@ import {
   TabsMarkProps,
 } from './subcomponents';
 
-export interface TabsProps
+export interface BaseTabsProps
   extends Omit<TabsContainerProps, 'children'>,
     TabsListProps,
     TabsMarkProps,
@@ -25,10 +29,15 @@ export interface TabsProps
     GlobalAttrProps,
     GlobalAriaProps {}
 
+export type TabsProps = BaseTabsProps &
+  StyledOverloadCssPropsWithRecord<'container' | 'list' | 'mark'>;
+
 const InternalTabs: React.FC<TabsProps> = ({
   children = [],
   colorScheme = 'default',
   contained,
+  styles,
+  subcomponentStyles,
   tooltip,
   ...nativeProps
 }) => {
@@ -63,10 +72,17 @@ const InternalTabs: React.FC<TabsProps> = ({
       {...nativeProps}
       contained={contained}
       ref={navContainerRef}
+      styles={subcomponentStyles?.container || styles}
       tooltip={tooltip}
     >
-      <TabsList ref={navTabItemRef}>{tabs}</TabsList>
-      <TabsMark ref={activeMarkRef} colorScheme={colorScheme} />
+      <TabsList ref={navTabItemRef} styles={subcomponentStyles?.list}>
+        {tabs}
+      </TabsList>
+      <TabsMark
+        ref={activeMarkRef}
+        colorScheme={colorScheme}
+        styles={subcomponentStyles?.mark}
+      />
     </TabsContainer>
   );
 };

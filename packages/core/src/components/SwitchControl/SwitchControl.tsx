@@ -7,6 +7,7 @@ import {
   FieldSize,
   FieldStatus,
   InputAttrProps,
+  StyledOverloadCssPropsWithRecord,
 } from '../../declarations';
 
 import { getPxFromRem } from '../../styled/functions';
@@ -18,7 +19,7 @@ import {
   SwitchControlText,
 } from './components';
 
-export interface SwitchControlProps
+export interface BaseSwitchControlProps
   extends FieldControlCommonProps,
     Pick<InputAttrProps, 'defaultValue' | 'value'>,
     CheckAttrProps {
@@ -31,6 +32,9 @@ export interface SwitchControlProps
   /** Optional content to be included inside the switch track when it's unchecked */
   uncheckedContent?: React.ReactNode;
 }
+
+export type SwitchControlProps = BaseSwitchControlProps &
+  StyledOverloadCssPropsWithRecord<'container' | 'handle' | 'text'>;
 
 export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
   'aria-errormessage': ariaErrorMessage,
@@ -50,6 +54,7 @@ export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
   size = 'md',
   status = 'base',
   styles,
+  subcomponentStyles,
   tooltip,
   uncheckedContent,
   ...restNativeProps
@@ -77,7 +82,7 @@ export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
       onMouseUp={onMouseUp}
       size={size}
       status={status}
-      styles={styles}
+      styles={subcomponentStyles?.container || styles}
       tooltip={tooltip}
     >
       <SwitchControlInput
@@ -94,14 +99,16 @@ export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
       <SwitchControlText
         checked={checked}
         checkedContent={checkedContent}
+        styles={subcomponentStyles?.text}
         uncheckedContent={uncheckedContent}
       />
       <SwitchControlHandle
         aria-hidden
-        disabled={disabled}
         checked={checked}
-        switchHeight={switchHeight}
         diameter={handleDiameter}
+        disabled={disabled}
+        styles={subcomponentStyles?.handle}
+        switchHeight={switchHeight}
       />
     </SwitchControlContainer>
   );

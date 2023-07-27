@@ -4,20 +4,21 @@
 
 import * as React from 'react';
 
-// declarations
+import { HIDDEN_TEXT } from './constants';
+
 import {
   GlobalAriaProps,
   GlobalAttrProps,
   StyledOverloadCssProps,
+  StyledOverloadCssPropsWithRecord,
   StyledPolymorphicProps,
 } from '../../declarations';
 import { WithRequired } from '../../typeFunctions';
 import { StepperStatus, StepperSize } from './declarations';
-import { HIDDEN_TEXT } from './constants';
 
 import { StepperContainer, StepperItem } from './components';
 
-export interface StepperProps
+export interface BaseStepperProps
   extends WithRequired<Pick<GlobalAttrProps, 'id' | 'tooltip'>, 'id'>,
     WithRequired<
       Pick<GlobalAriaProps, 'aria-label' | 'aria-describedby'>,
@@ -31,13 +32,23 @@ export interface StepperProps
   steps: { name: string; label: string; status: StepperStatus }[];
 }
 
+export type StepperProps = BaseStepperProps &
+  StyledOverloadCssPropsWithRecord<'container' | 'item'>;
+
 export const InternalStepper: React.FC<StepperProps> = ({
   size = 'sm',
   steps = [],
   tooltip,
+  styles,
+  subcomponentStyles,
   ...nativeProps
 }) => (
-  <StepperContainer {...nativeProps} size={size} tooltip={tooltip}>
+  <StepperContainer
+    {...nativeProps}
+    size={size}
+    tooltip={tooltip}
+    styles={subcomponentStyles?.container || styles}
+  >
     {steps.map((el, idx) => (
       <StepperItem
         key={el.name}
@@ -48,6 +59,7 @@ export const InternalStepper: React.FC<StepperProps> = ({
         size={size}
         status={el.status}
         stepNumberPos={idx}
+        styles={subcomponentStyles?.item}
       >
         {el.label}
       </StepperItem>
