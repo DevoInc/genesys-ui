@@ -33,4 +33,14 @@ describe('Helper', () => {
       `<span>${MESSAGE_STRING}</span>`
     );
   });
+
+  test('Passing null as message', () => {
+    render(
+      <ThemeProvider theme={theme}>
+        <Helper data-testid={TEST_ID} message={null} />
+      </ThemeProvider>
+    );
+    expect(screen.getAllByTestId(TEST_ID)[0].children[0].tagName).toBe('P');
+    expect(screen.getAllByTestId(TEST_ID)[0].children[0].innerHTML).toBe('');
+  });
 });
