@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { TagProps } from '../Tag';
 import { StyledOverloadCssPropsWithRecord } from '../../';
@@ -33,7 +32,6 @@ export const InternalTagGroup: React.FC<TagGroupProps> = ({
   subcomponentStyles,
   ...restNativeProps
 }) => {
-  const theme = useTheme();
   return (
     <TagGroup.Container
       {...restNativeProps}
