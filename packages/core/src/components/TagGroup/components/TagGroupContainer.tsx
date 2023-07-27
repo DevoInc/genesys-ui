@@ -1,17 +1,13 @@
 import * as React from 'react';
 
-import { LabelPosition } from '../declarations';
+import { CommonTagGroupProps } from '../declarations';
 import { TagProps } from '../../Tag';
 import { Flex, FlexProps } from '../../../';
 
 export interface TagGroupContainerProps
-  extends Omit<
-    FlexProps,
-    'children' | 'inline' | 'alignItems' | 'flexDirection'
-  > {
+  extends CommonTagGroupProps,
+    Omit<FlexProps, 'children' | 'inline' | 'alignItems' | 'flexDirection'> {
   children: React.ReactElement<TagProps>[];
-  /** Position of the label text relative to the tags */
-  labelPosition?: LabelPosition;
 }
 
 export const TagGroupContainer: React.FC<TagGroupContainerProps> = ({

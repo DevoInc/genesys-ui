@@ -26,7 +26,7 @@
   "license": "MIT",
   "devDependencies": {
     "@devoinc/genesys-base-styles": "^1.2.1",
-    "@devoinc/genesys-brand-devo": "5.14.1",
+    "@devoinc/genesys-brand-devo": "5.16.0",
     "@mdx-js/react": "^2.1.5",
     "@release-it-plugins/workspaces": "^3.2.0",
     "@release-it/conventional-changelog": "^5.1.1",

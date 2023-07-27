@@ -1,52 +1,57 @@
 import * as React from 'react';
+import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
-import { BaseSize } from '../../declarations';
-import { OmitUnion } from '../../typeFunctions/omitUnion';
+import { OmitUnion } from '../../typeFunctions';
 
-import { StyledToolbar, StyledToolbarProps } from './StyledToolbar';
-import { ToolbarGroup } from './subcomponents/ToolbarGroup';
-import { ToolbarItem } from './subcomponents/ToolbarItem';
-import { ToolbarSeparator } from './subcomponents/ToolbarSeparator';
-import { CommonBoxProps } from '../Box';
+import { toolbarContainerMixin } from './helpers';
+
+import { BaseSize } from '../../declarations';
+
+import { ToolbarGroup } from './components/ToolbarGroup';
+import { ToolbarSeparator } from './components/ToolbarSeparator';
+import { Flex, FlexProps } from '../Flex';
 
 export interface ToolbarProps
-  extends Omit<CommonBoxProps, 'tooltip'>,
-    StyledToolbarProps {
+  extends Omit<FlexProps, 'as' | 'alignItems' | 'justifyContent'> {
   /** Size of the component */
   size?: OmitUnion<BaseSize, 'lg'>;
-  /** Children of the toolbar */
-  children?: React.ReactNode;
 }
 
 const InternalToolbar: React.FC<ToolbarProps> = ({
   children,
-  className,
   size = 'md',
   height,
   elevation = 'stickyBottom',
+  padding = '0 cmp-sm',
+  role = 'group',
   styles,
-  ...restBoxProps
+  ...restFlexProps
 }) => {
-  const surfaceHeightTokens = useTheme().alias.size.height.surface;
+  const theme = useTheme();
+  const surfaceHeightTokens = theme.alias.size.height.surface;
   return (
-    <StyledToolbar
-      {...restBoxProps}
-      className={className}
-      css={styles}
+    <Flex
+      {...restFlexProps}
+      alignItems="center"
       elevation={elevation}
+      gap="layout-xs"
+      justifyContent="space-between"
       height={height || surfaceHeightTokens[size]}
+      padding={padding}
+      role={role}
+      styles={concat(toolbarContainerMixin({ theme }), styles)}
     >
       {children}
-    </StyledToolbar>
+    </Flex>
   );
 };
 
 export const Toolbar = InternalToolbar as typeof InternalToolbar & {
   Group: typeof ToolbarGroup;
-  Item: typeof ToolbarItem;
+  Item: typeof Flex.Item;
   Separator: typeof ToolbarSeparator;
 };
 
-Toolbar.Item = ToolbarItem;
 Toolbar.Group = ToolbarGroup;
+Toolbar.Item = Flex.Item;
 Toolbar.Separator = ToolbarSeparator;

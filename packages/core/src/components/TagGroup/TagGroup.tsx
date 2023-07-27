@@ -1,81 +1,65 @@
 import * as React from 'react';
-import { css, useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 
-// components
-import { Label } from '../Label';
-
-// declarations
-import { LabelPosition } from './declarations';
 import { TagProps } from '../Tag';
+import { Flex, StyledOverloadCssPropsWithRecord } from '../../';
+
+import { tagGroupFlexSpacingMixin } from './helpers';
+
 import {
-  Flex,
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-} from '../../';
+  TagGroupContainer,
+  TagGroupContainerProps,
+  TagGroupLabel,
+  TagGroupLabelProps,
+  TagGroupList,
+  TagGroupListProps,
+} from './components';
 
-// helpers
-import { tagGroupFlexSpacingMixin, tagGroupLabelMixin } from './helpers';
-import { FlexItem } from '../Flex/subcomponents';
-
-export interface TagGroupProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
+export interface BaseTagGroupProps
+  extends Omit<TagGroupContainerProps, 'children'>,
+    Pick<TagGroupListProps, 'children'>,
     Pick<TagProps, 'size'> {
-  children: React.ReactElement<TagProps>[];
-  /** Position of the label text relative to the tags */
-  labelPosition?: LabelPosition;
   /** Text within the label. (aria-label is the same as Label) */
-  labelText?: string;
+  label?: TagGroupLabelProps['children'];
 }
+
+export type TagGroupProps = BaseTagGroupProps &
+  StyledOverloadCssPropsWithRecord<'container' | 'label' | 'list'>;
 
 export const InternalTagGroup: React.FC<TagGroupProps> = ({
   children,
   labelPosition = 'left',
-  labelText,
+  label,
   size = 'md',
   styles,
+  subcomponentStyles,
   ...restNativeProps
 }) => {
   const theme = useTheme();
-  const itemTokens = theme.cmp.tagGroup.item;
   return (
-    <Flex
+    <TagGroup.Container
       {...restNativeProps}
-      alignItems={labelPosition === 'left' ? 'center' : null}
-      inline
-      flexDirection={labelPosition === 'left' ? 'row' : 'column'}
-      styles={styles}
+      labelPosition={labelPosition}
+      styles={subcomponentStyles?.container || styles}
     >
-      {labelText && (
-        <Label
-          styles={tagGroupLabelMixin({ size, labelPosition, theme })}
-          size={size}
-        >
-          {labelText}
-        </Label>
+      {label && (
+        <TagGroup.Label size={size} styles={subcomponentStyles?.label}>
+          {label}
+        </TagGroup.Label>
       )}
-      <Flex
-        alignItems="center"
-        flexWrap="wrap"
-        inline
-        role="group"
-        styles={tagGroupFlexSpacingMixin({ size, theme })}
-      >
-        {children?.map((child, idx) =>
-          React.cloneElement(child, {
-            key: idx,
-            size: size,
-          })
-        )}
-      </Flex>
-    </Flex>
+      <TagGroup.List styles={subcomponentStyles?.list} size={size}>
+        {children}
+      </TagGroup.List>
+    </TagGroup.Container>
   );
 };
 
 export const TagGroup = InternalTagGroup as typeof InternalTagGroup & {
-  Container: typeof FlexItem;
+  Container: typeof TagGroupContainer;
+  Label: typeof TagGroupLabel;
+  List: typeof TagGroupList;
 };
+
+TagGroup.Container = TagGroupContainer;
+TagGroup.Label = TagGroupLabel;
+TagGroup.List = TagGroupList;
