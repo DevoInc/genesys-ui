@@ -11,7 +11,7 @@ export const StyledTableRow = styled.tr<StyledTableRowProps>`
     const tableTokens = theme.cmp.table;
     const cmpTokens = tableTokens.row;
     const transitionDuration = cmpTokens.mutation.transitionDuration;
-    const borderRadius = getSizes(tableTokens).row.br + 'px';
+    const borderRadius = getSizes(tableTokens).row.br;
     return css`
       display: flex;
       @keyframes modifiedBlink {

@@ -1,3 +1,4 @@
+import { Table } from '@devoinc/genesys-brand-devo/dist/light/js';
 import { getPxFromRem } from '@devoinc/genesys-ui';
 
 export const COLUMN_TYPE = {
@@ -15,7 +16,7 @@ export const COLUMN_TYPE = {
   //STATUS_MESSAGE: 'statusMessage',
 } as const;
 
-export const getFixedSizesObj = (tokens) => {
+export const getFixedSizesObj = (tokens: Table) => {
   const filterTokens = tokens.filter;
   const filterColumnsCellTokens = tokens.filterColumnsCell;
   const cellActionsTokens = tokens.cellActions;

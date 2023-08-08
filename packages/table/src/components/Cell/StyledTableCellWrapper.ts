@@ -90,7 +90,7 @@ export const StyledTableCellWrapper = styled.th<ColDef>`
   ${({ theme, expandedRow }) => {
     const tokens = theme.cmp.table;
     const sizes = getSizes(tokens);
-    const borderRadius = sizes.row.br + 'px';
+    const borderRadius = sizes.row.br;
 
     return css`
       // border radius of first and last cell for radius of row
@@ -129,7 +129,7 @@ export const StyledTableCellWrapper = styled.th<ColDef>`
           expandedRow,
           tall,
           sizes,
-        }) + 'px'
+        })
       : '0 px';
 
     const paddingHor = !toEdge
@@ -138,21 +138,20 @@ export const StyledTableCellWrapper = styled.th<ColDef>`
           expandedRow,
           tall,
           sizes,
-        }) + 'px'
+        })
       : '0 px';
 
-    const paddingRight =
-      getPaddingRight({
-        editable,
-        innerActions,
-        innerActionsWidth,
-        innerEllipsis,
-        expandedRow,
-        hasComplexContent,
-        resizable,
-        tall,
-        sizes,
-      }) + 'px';
+    const paddingRight = getPaddingRight({
+      editable,
+      innerActions,
+      innerActionsWidth,
+      innerEllipsis,
+      expandedRow,
+      hasComplexContent,
+      resizable,
+      tall,
+      sizes,
+    });
 
     return css`
       padding: ${paddingVer} ${paddingHor};

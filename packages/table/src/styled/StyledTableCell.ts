@@ -38,7 +38,6 @@ export const StyledTableCell = styled.td<StyledTableCellProps>`
 
   ${({
     bodyHeight,
-    density,
     expandedRow,
     isAfterRow,
     columnHighlight,
@@ -59,7 +58,7 @@ export const StyledTableCell = styled.td<StyledTableCellProps>`
         : bodyHeight
         ? bodyHeight + 'px'
         : '9999px';
-    const borderRadius = getSizes(tokens).row.br + 'px';
+    const borderRadius = getSizes(tokens).row.br;
     return css`
       // highlight overlay for rows on hover
       // highlight overlay for columns on hover

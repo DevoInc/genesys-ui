@@ -14,9 +14,9 @@ export const StyledTableCellActions = styled((props) => (
 
   ${({ theme }) => {
     const tokens = theme.tokens.cmp.table;
-    const actionsSize = getFixedSizesObj(tokens).cellActions.actionSize + 'px';
+    const actionsSize = getFixedSizesObj(tokens).cellActions.actionSize;
     return css`
-      right: ${getSizes(tokens).cell.horPad + 'px'};
+      right: ${getSizes(tokens).cell.horPad};
       margin-top: ${`calc(${actionsSize} / 2 * -1)`};
     `;
   }}

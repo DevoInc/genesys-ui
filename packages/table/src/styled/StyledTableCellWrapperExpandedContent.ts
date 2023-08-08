@@ -29,10 +29,10 @@ export const StyledTableCellWrapperExpandedContent = styled.div<StyledTableCellP
   ${({ theme, tall, editable }) => {
     const tableTokens = theme.cmp.table;
 
-    const paddingHor = getSizes(tableTokens).cell.horPad + 'px';
+    const paddingHor = getSizes(tableTokens).cell.horPad;
     const paddingVer = tall
-      ? getSizes(tableTokens).cell.verPadTall + 'px'
-      : getSizes(tableTokens).cell.verPad + 'px';
+      ? getSizes(tableTokens).cell.verPadTall
+      : getSizes(tableTokens).cell.verPad;
 
     return css`
       padding: ${paddingVer} ${paddingHor};

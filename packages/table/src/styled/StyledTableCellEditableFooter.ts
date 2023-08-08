@@ -16,8 +16,8 @@ export const StyledTableCellEditableFooter = styled.footer<StyledTableCellProps>
   }}
   ${({ theme }) => {
     const tokens = theme.cmp.table;
-    const paddingVer = getSizes(tokens).expanded.verPad + 'px';
-    const paddingHor = getSizes(tokens).expanded.horPad + 'px';
+    const paddingVer = getSizes(tokens).expanded.verPad;
+    const paddingHor = getSizes(tokens).expanded.horPad;
     return css`
       padding: ${`calc(${paddingVer} / 2) ${paddingHor}`};
     `;
