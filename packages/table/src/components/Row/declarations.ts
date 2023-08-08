@@ -1,5 +1,6 @@
 import { DefaultTheme } from 'styled-components';
 import { ColDef } from '../Cell/declarations';
+import { Density } from '../declarations';
 interface DragNDropSettings {
   draggableRef?: React.Ref<HTMLTableRowElement>;
   draggableProps?: object;
@@ -12,8 +13,6 @@ export interface RowObject {
   isSelected: boolean;
   row: RowObject;
 }
-
-export type Density = 'default' | 'compact' | 'comfortable';
 
 interface Style {
   density: Density;

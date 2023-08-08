@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-
-import { getZindexMap, getSizesObj } from '../constants';
+import { getZindexMap } from '../constants';
 import { pseudoElementOverlayMixin } from '@devoinc/genesys-ui';
 import { StyledTableCellProps } from './declarations';
 import { StyledTableRow } from '../components/Row/StyledTableRow';
+import { getSizes } from '../components/utils';
 
 export const StyledTableCell = styled.td<StyledTableCellProps>`
   ${({ widthProp }) => css`
@@ -59,7 +59,7 @@ export const StyledTableCell = styled.td<StyledTableCellProps>`
         : bodyHeight
         ? bodyHeight + 'px'
         : '9999px';
-    const borderRadius = getSizesObj({ density, tokens }).row.br + 'px';
+    const borderRadius = getSizes(tokens).row.br + 'px';
     return css`
       // highlight overlay for rows on hover
       // highlight overlay for columns on hover

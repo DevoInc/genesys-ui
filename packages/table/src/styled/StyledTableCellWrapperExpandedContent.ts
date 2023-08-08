@@ -1,12 +1,13 @@
 import styled, { css } from 'styled-components';
 
-import { COLUMN_TYPE, getSizesObj } from '../constants/column';
+import { COLUMN_TYPE } from '../constants/column';
 import { StyledTableCellProps } from './declarations';
 import {
   typoMixin,
   StyledTagGroup,
   StyledTagGroupList,
 } from '@devoinc/genesys-ui';
+import { getSizes } from '../components/utils';
 
 export const StyledTableCellWrapperExpandedContent = styled.div<StyledTableCellProps>`
   position: relative;
@@ -25,14 +26,13 @@ export const StyledTableCellWrapperExpandedContent = styled.div<StyledTableCellP
     `;
   }}
 
-  ${({ theme, density, tall, editable }) => {
+  ${({ theme, tall, editable }) => {
     const tableTokens = theme.cmp.table;
 
-    const paddingHor =
-      getSizesObj({ density, tokens: tableTokens }).cell.horPad + 'px';
+    const paddingHor = getSizes(tableTokens).cell.horPad + 'px';
     const paddingVer = tall
-      ? getSizesObj({ density, tokens: tableTokens }).cell.verPadTall + 'px'
-      : getSizesObj({ density, tokens: tableTokens }).cell.verPad + 'px';
+      ? getSizes(tableTokens).cell.verPadTall + 'px'
+      : getSizes(tableTokens).cell.verPad + 'px';
 
     return css`
       padding: ${paddingVer} ${paddingHor};

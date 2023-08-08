@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
-
-import { getSizesObj } from '../constants';
+import { getSizes } from '../components/utils';
 import { StyledTableCellProps } from './declarations';
 
 export const StyledTableCellEditableFooter = styled.footer<StyledTableCellProps>`
@@ -15,10 +14,10 @@ export const StyledTableCellEditableFooter = styled.footer<StyledTableCellProps>
       border-top: solid ${cmpTokens.shape.borderSize} ${cmpTokens.color.border};
     `;
   }}
-  ${({ density, theme }) => {
+  ${({ theme }) => {
     const tokens = theme.cmp.table;
-    const paddingVer = getSizesObj({ density, tokens }).expanded.verPad + 'px';
-    const paddingHor = getSizesObj({ density, tokens }).expanded.horPad + 'px';
+    const paddingVer = getSizes(tokens).expanded.verPad + 'px';
+    const paddingHor = getSizes(tokens).expanded.horPad + 'px';
     return css`
       padding: ${`calc(${paddingVer} / 2) ${paddingHor}`};
     `;

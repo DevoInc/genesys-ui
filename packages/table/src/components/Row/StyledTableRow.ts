@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { getSizesObj } from './constants';
 import { pseudoElementMixin } from '@devoinc/genesys-ui';
+import { getSizes } from '../utils';
 
 interface StyledTableRowProps {
   heightProp?: number;
@@ -11,7 +11,7 @@ export const StyledTableRow = styled.tr<StyledTableRowProps>`
     const tableTokens = theme.cmp.table;
     const cmpTokens = tableTokens.row;
     const transitionDuration = cmpTokens.mutation.transitionDuration;
-    const borderRadius = getSizesObj(tableTokens).row.br + 'px';
+    const borderRadius = getSizes(tableTokens).row.br + 'px';
     return css`
       display: flex;
       @keyframes modifiedBlink {

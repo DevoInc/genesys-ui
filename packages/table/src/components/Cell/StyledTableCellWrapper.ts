@@ -1,12 +1,10 @@
 import styled, { css } from 'styled-components';
 
 import { pseudoElementMixin } from '@devoinc/genesys-ui';
-import { getSizesObj, getZindexMap } from '../../constants';
-
 import { StyledTableCell } from '../../styled/StyledTableCell';
-import { StyledTableCellProps } from '../../styled/declarations';
 import { ColDef } from './declarations';
 import { StyledTableRow } from '../Row/StyledTableRow';
+import { getSizes } from '../utils';
 
 const getPaddingVer = ({ editable, expandedRow, tall, sizes }) => {
   if (expandedRow) return sizes.afterRow.verPad;
@@ -89,9 +87,9 @@ export const StyledTableCellWrapper = styled.th<ColDef>`
     `;
   }}
 
-  ${({ cellStyle, theme, expandedRow }) => {
+  ${({ theme, expandedRow }) => {
     const tokens = theme.cmp.table;
-    const sizes = getSizesObj({ density: cellStyle.density, tokens });
+    const sizes = getSizes(tokens);
     const borderRadius = sizes.row.br + 'px';
 
     return css`
@@ -110,7 +108,6 @@ export const StyledTableCellWrapper = styled.th<ColDef>`
 
   ${({
     theme,
-    cellStyle,
     toEdge,
     editable,
     expandedRow,
@@ -124,7 +121,7 @@ export const StyledTableCellWrapper = styled.th<ColDef>`
     toLeftEdge,
   }) => {
     const tokens = theme.cmp.table;
-    const sizes = getSizesObj({ density: cellStyle.density, tokens });
+    const sizes = getSizes(tokens);
 
     const paddingVer = !toEdge
       ? getPaddingVer({
