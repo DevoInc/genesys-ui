@@ -1,21 +1,19 @@
-import { TagProps } from '@devoinc/genesys-ui';
-
 export interface ColDef {
   // identificador unico, si no existe se usara field y si no se añadira un identificador unico
   colId?: string;
   // example name or medal.gold
   // { name: santi, medal: { gold: 2 }}
   field?: string;
-  type?: 'default' | 'link' | 'tag' | 'groupTags';
+  type?: 'default' | 'link' | 'tag' | 'groupTags' | 'popper';
   // https://www.ag-grid.com/javascript-data-grid/value-getters/
   valueGetter?: (params) => void;
   // https://www.ag-grid.com/javascript-data-grid/value-formatters/
-  valueFormatter?: (params) => void;
+  valueFormatter?: (value, columnDef, context) => void;
   hide?: boolean;
   initialHide?: boolean;
   editable?: boolean;
   // https://www.ag-grid.com/javascript-data-grid/component-cell-editor/
-  cellEditor?: () => void;
+  cellEditor?: (value) => void;
   width?: number;
   maxWidth?: number;
   minWidth?: number;
@@ -32,6 +30,9 @@ export interface ColDef {
   expandedRow?: boolean;
   boxShadow?: 'base' | 'strong';
   isDragging?: boolean;
+  context?: {
+    [key: string]: unknown;
+  };
 }
 
 export type DefaultColDef = ColDef;
@@ -41,4 +42,7 @@ export interface TableOptions {
   defaultColumnDef: DefaultColDef;
   rowHeight: number;
   getRowHeight: (params) => void;
+  context?: {
+    [key: string]: unknown;
+  };
 }

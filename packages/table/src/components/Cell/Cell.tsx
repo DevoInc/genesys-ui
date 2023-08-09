@@ -132,6 +132,18 @@ export const Cell: React.FC<CellProps> = ({
   //   }
   //   return width + extraWidth;
   // };
+  let value;
+  if (column.valueFormatter) {
+    value = column.valueFormatter(data, column, column.context);
+  }
+
+  let component;
+  if (column.cellEditor) {
+    component = column.cellEditor(data);
+  } else {
+    component = renderContent({ value: value || data, columnDef: column });
+  }
+  debugger;
   return (
     <StyledTableCellWrapper
       cellStyle={column.cellStyle}
@@ -159,7 +171,7 @@ export const Cell: React.FC<CellProps> = ({
       // innerActionsWidth={getCellActionsWidth(column, tableTokens)}
       // innerEllipsis={innerEllipsis}
     >
-      {renderContent({ value: data, columnDef: column })}
+      {component}
     </StyledTableCellWrapper>
   );
 };
