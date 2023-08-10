@@ -39,6 +39,7 @@ export const Cell: React.FC<CellProps> = ({
     isDragging,
     valueFormatter,
     onClick,
+    context,
   } = column;
   const renderContent = getRenderer(type);
   // const { setRef: contentRef, size: measures } = useContainerDimensions();
@@ -132,7 +133,7 @@ export const Cell: React.FC<CellProps> = ({
   // };
   let value;
   if (valueFormatter) {
-    value = valueFormatter(data, column);
+    value = valueFormatter(data, context);
   }
 
   let component;

@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-
 import { pseudoElementMixin } from '@devoinc/genesys-ui';
 import { StyledTableCell } from '../../styled/StyledTableCell';
 import { ColDef } from './declarations';

@@ -1,3 +1,14 @@
+export interface DateContext {
+  tz: string;
+  formatDate: string;
+  locale: string;
+}
+
+type Context =
+  | {
+      [key: string]: unknown;
+    }
+  | DateContext;
 export interface ColDef {
   // identificador unico, si no existe se usara field y si no se añadira un identificador unico
   colId?: string;
@@ -8,7 +19,7 @@ export interface ColDef {
   // https://www.ag-grid.com/javascript-data-grid/value-getters/
   valueGetter?: (params) => void;
   // https://www.ag-grid.com/javascript-data-grid/value-formatters/
-  valueFormatter?: (value, columnDef) => void;
+  valueFormatter?: (value: string | number, context: Context) => void;
   hide?: boolean;
   initialHide?: boolean;
   editable?: boolean;
@@ -30,9 +41,7 @@ export interface ColDef {
   expandedRow?: boolean;
   boxShadow?: 'base' | 'strong';
   isDragging?: boolean;
-  context?: {
-    [key: string]: unknown;
-  };
+  context?: Context;
   onClick?: () => void;
 }
 

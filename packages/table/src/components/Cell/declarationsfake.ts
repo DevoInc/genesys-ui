@@ -1,8 +1,6 @@
+import { TagProps } from '@devoinc/genesys-ui';
 import * as React from 'react';
-
-import { ColumnTypeCombinerType } from '../../styled/declarations';
 import { DefaultTheme } from 'styled-components';
-import { TagProps } from 'packages/core/dist/types/src';
 
 export type ColumnsCellProps = BaseColumnsCellProps &
   (
