@@ -1,15 +1,5 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
-
-import { useContainerDimensions } from '@devoinc/genesys-ui';
-
 import { StyledTableCellWrapper } from './StyledTableCellWrapper';
-
-import {
-  COLUMN_TYPE,
-  AUX_COLUMN_TYPE,
-  getFixedSizesObj,
-} from '../../constants';
 import { getRenderer } from './cellRenderer';
 import { ColDef } from './declarations';
 
@@ -22,11 +12,6 @@ interface CellProps {
 export const Cell: React.FC<CellProps> = ({
   data,
   column,
-  expanded,
-  boxShadow,
-  onClick,
-  isDragging,
-
   // hasComplexContent,
   // hasStripedRows,
   // isAfterRow,
@@ -42,7 +27,20 @@ export const Cell: React.FC<CellProps> = ({
   // renderer,
   // hasPopper,
 }) => {
-  const renderContent = getRenderer(column.type);
+  const {
+    expandedRow,
+    boxShadow,
+    cellStyle,
+    minWidth,
+    editable,
+    type,
+    cellEditor,
+    tooltipField,
+    isDragging,
+    valueFormatter,
+    onClick,
+  } = column;
+  const renderContent = getRenderer(type);
   // const { setRef: contentRef, size: measures } = useContainerDimensions();
   // const tableTokens = useTheme().cmp.tabs.container;
 
@@ -133,24 +131,24 @@ export const Cell: React.FC<CellProps> = ({
   //   return width + extraWidth;
   // };
   let value;
-  if (column.valueFormatter) {
-    value = column.valueFormatter(data, column, column.context);
+  if (valueFormatter) {
+    value = valueFormatter(data, column);
   }
 
   let component;
-  if (column.cellEditor) {
-    component = column.cellEditor(data);
+  if (cellEditor) {
+    component = cellEditor(data);
   } else {
     component = renderContent({ value: value || data, columnDef: column });
   }
 
   return (
     <StyledTableCellWrapper
-      cellStyle={column.cellStyle}
-      minWidth={column.minWidth}
-      editable={column.editable}
-      data-tip={!expanded ? column.tooltipField : null}
-      expandedRow={column.expandedRow}
+      cellStyle={cellStyle}
+      minWidth={minWidth}
+      editable={editable}
+      data-tip={!expandedRow ? tooltipField : null}
+      expandedRow={expandedRow}
       // pinta una celda si y otra no lo convertimos en box-shadow: base o strong
       // isEvenRow={isEvenRow}
       // striped={hasStripedRows}

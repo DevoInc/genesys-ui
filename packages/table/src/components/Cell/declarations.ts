@@ -8,7 +8,7 @@ export interface ColDef {
   // https://www.ag-grid.com/javascript-data-grid/value-getters/
   valueGetter?: (params) => void;
   // https://www.ag-grid.com/javascript-data-grid/value-formatters/
-  valueFormatter?: (value, columnDef, context) => void;
+  valueFormatter?: (value, columnDef) => void;
   hide?: boolean;
   initialHide?: boolean;
   editable?: boolean;
@@ -33,6 +33,7 @@ export interface ColDef {
   context?: {
     [key: string]: unknown;
   };
+  onClick?: () => void;
 }
 
 export type DefaultColDef = ColDef;
