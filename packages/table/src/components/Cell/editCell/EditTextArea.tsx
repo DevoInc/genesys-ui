@@ -3,7 +3,6 @@ import { TextareaControl } from '@devoinc/genesys-ui';
 
 export const EditTextArea = (value) => {
   const onChange = (e) => {
-    debugger;
     // const newValue = e.target.value;
     // if (newValue === defaultValue) {
     //   resetUnsavedRow();

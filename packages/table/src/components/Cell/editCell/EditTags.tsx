@@ -10,9 +10,7 @@ export const EditTags = (value) => {
       }))
   );
   const onChange = (newValue = []) => {
-    debugger;
     // setValue(newValue);
-
     // const parsedNewValue = newValue.map((opt) => ({ text: opt.value }));
     // const newRow = setObjectValue(row, column.dataKey, parsedNewValue);
     // onChangeUnsavedRow(newRow);

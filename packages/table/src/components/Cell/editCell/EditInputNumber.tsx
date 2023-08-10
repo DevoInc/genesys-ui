@@ -3,11 +3,9 @@ import React from 'react';
 import { InputControl } from '@devoinc/genesys-ui';
 
 export const EditInputNumber = (value) => {
-  debugger;
   //const defaultValue = getObjectValue(row, column.dataKey);
 
   const onChange = (e) => {
-    debugger;
     // const newValue = e.target.value;
     // if (newValue === defaultValue) {
     //   resetUnsavedRow();

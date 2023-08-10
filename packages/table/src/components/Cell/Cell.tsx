@@ -143,7 +143,7 @@ export const Cell: React.FC<CellProps> = ({
   } else {
     component = renderContent({ value: value || data, columnDef: column });
   }
-  debugger;
+
   return (
     <StyledTableCellWrapper
       cellStyle={column.cellStyle}

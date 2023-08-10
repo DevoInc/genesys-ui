@@ -7,7 +7,6 @@ export const EditBoolean = (value) => {
   //   200
   // );
   const onChange = (e) => {
-    debugger;
     // const newRow = setObjectValue(row, column.dataKey, !currentVal);
     // updateTableData(newRow);
   };

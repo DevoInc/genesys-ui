@@ -2,14 +2,12 @@ import * as React from 'react';
 import { SelectControl } from '@devoinc/genesys-ui';
 
 export const EditStatus = (value) => {
-  debugger;
   const options = value.map((v) => ({
     value: v.text,
     label: v.text,
     color: v.colorScheme,
   }));
   const onChange = (opt) => {
-    debugger;
     // const newRow = setObjectValue(row, column.dataKey, opt.value);
     // onChangeUnsavedRow(newRow, true);
   };
