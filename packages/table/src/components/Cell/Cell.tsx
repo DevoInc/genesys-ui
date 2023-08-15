@@ -2,9 +2,10 @@ import * as React from 'react';
 import { StyledTableCellWrapper } from './StyledTableCellWrapper';
 import { getRenderer } from './cellRenderer';
 import { ColDef } from './declarations';
+import { EditInput } from './editCell';
 
 interface CellProps {
-  data?: any;
+  data?: string | number;
   column?: ColDef;
   renderer?: 'default' | 'popper' | 'link' | 'tag' | 'groupTags';
 }
@@ -38,7 +39,6 @@ export const Cell: React.FC<CellProps> = ({
     tooltipField,
     isDragging,
     valueFormatter,
-    onClick,
     context,
   } = column;
   const renderContent = getRenderer(type);
@@ -131,17 +131,29 @@ export const Cell: React.FC<CellProps> = ({
   //   }
   //   return width + extraWidth;
   // };
-  let value;
-  if (valueFormatter) {
-    value = valueFormatter(data, context);
-  }
 
-  let component;
-  if (cellEditor) {
-    component = cellEditor(data);
-  } else {
-    component = renderContent({ value: value || data, columnDef: column });
-  }
+  const [isEditMode, setIsEditMode] = React.useState<boolean>(false);
+  const [content, setContent] = React.useState<string | number>(
+    valueFormatter ? valueFormatter(data, context) : data
+  );
+
+  const onClick = () => {
+    if (column.editable) {
+      setIsEditMode(!isEditMode);
+      setContent(getContent());
+    }
+  };
+
+  const getContent = () => {
+    if (isEditMode) {
+      return cellEditor ?? EditInput;
+    } else {
+      return renderContent({
+        value: valueFormatter ? valueFormatter(data, context) : data,
+        columnDef: column,
+      });
+    }
+  };
 
   return (
     <StyledTableCellWrapper
@@ -170,7 +182,7 @@ export const Cell: React.FC<CellProps> = ({
       // innerActionsWidth={getCellActionsWidth(column, tableTokens)}
       // innerEllipsis={innerEllipsis}
     >
-      {component}
+      {content}
     </StyledTableCellWrapper>
   );
 };
