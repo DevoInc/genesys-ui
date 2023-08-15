@@ -4,56 +4,21 @@ import { StyledTableCell } from '../../styled/StyledTableCell';
 import { ColDef } from './declarations';
 import { StyledTableRow } from '../Row/StyledTableRow';
 import { getSizes } from '../utils';
-
-const getPaddingVer = ({ editable, expandedRow, tall, sizes }) => {
-  if (expandedRow) return sizes.afterRow.verPad;
-  if (!editable && tall) return sizes.expandedLg.verPad;
-  if (!editable) return sizes.expanded.verPad;
-  return sizes.cell.verPad;
-};
-
-const getPaddingHor = ({ editable, expandedRow, tall, sizes }) => {
-  if (expandedRow) return sizes.afterRow.horPad;
-  if (!editable && tall) return sizes.expandedLg.horPad;
-  if (!editable) return sizes.expanded.horPad;
-  return sizes.cell.horPad;
-};
-
-const getPaddingRight = ({
-  editable,
-  innerActions,
-  innerActionsWidth,
-  innerEllipsis,
-  expandedRow,
-  hasComplexContent,
-  resizable,
-  tall,
-  sizes,
-}) => {
-  let paddingRight = getPaddingHor({
-    editable,
-    expandedRow,
-    tall,
-    sizes,
-  });
-  if (hasComplexContent && innerEllipsis) {
-    paddingRight += 10 + paddingRight / 2;
-  }
-  if (resizable) {
-    paddingRight += 4;
-  }
-  if (innerActions) {
-    paddingRight += innerActionsWidth + paddingRight / 2;
-  }
-  return paddingRight;
-};
+import {
+  getHorizontalPadding,
+  getPaddingRight,
+  getVerticalPadding,
+} from './padding';
+import { StyledTableCellProps } from '../../styled/declarations';
 
 // no se le pasa heightProp
 // ${({ heightProp }) => css`
 //   min-height: ${heightProp && heightProp + 'px'};
 // `}
 
-export const StyledTableCellWrapper = styled.th<ColDef>`
+interface StyledTableCellWrapperProps extends ColDef, StyledTableCellProps {}
+
+export const StyledTableCellWrapper = styled.th<StyledTableCellWrapperProps>`
   display: flex;
   top: 0;
   left: 0;
@@ -123,7 +88,7 @@ export const StyledTableCellWrapper = styled.th<ColDef>`
     const sizes = getSizes(tokens);
 
     const paddingVer = !toEdge
-      ? getPaddingVer({
+      ? getVerticalPadding({
           editable,
           expandedRow,
           tall,
@@ -132,7 +97,7 @@ export const StyledTableCellWrapper = styled.th<ColDef>`
       : '0 px';
 
     const paddingHor = !toEdge
-      ? getPaddingHor({
+      ? getHorizontalPadding({
           editable,
           expandedRow,
           tall,

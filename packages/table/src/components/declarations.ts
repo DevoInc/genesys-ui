@@ -30,3 +30,14 @@ export interface RowSizes {
 }
 
 export type Density = 'default' | 'compact' | 'comfortable';
+
+export type ColumnTypeCombinerType =
+  | 'boolean'
+  | 'custom'
+  | 'date'
+  | 'link'
+  | 'longText'
+  | 'number'
+  | 'status'
+  | 'tags'
+  | 'text';

@@ -1,3 +1,5 @@
+import { ColumnTypeCombinerType } from '../declarations';
+
 export interface DateContext {
   tz: string;
   formatDate: string;
@@ -15,11 +17,14 @@ export interface ColDef {
   // example name or medal.gold
   // { name: santi, medal: { gold: 2 }}
   field?: string;
-  type?: 'default' | 'link' | 'tag' | 'groupTags' | 'popper';
+  type?: ColumnTypeCombinerType;
   // https://www.ag-grid.com/javascript-data-grid/value-getters/
   valueGetter?: (params) => void;
   // https://www.ag-grid.com/javascript-data-grid/value-formatters/
-  valueFormatter?: (value: string | number, context: Context) => void;
+  valueFormatter?: (
+    value: string | number,
+    context: Context
+  ) => string | number;
   hide?: boolean;
   initialHide?: boolean;
   editable?: boolean;
@@ -42,7 +47,6 @@ export interface ColDef {
   boxShadow?: 'base' | 'strong';
   isDragging?: boolean;
   context?: Context;
-  onClick?: () => void;
 }
 
 export type DefaultColDef = ColDef;

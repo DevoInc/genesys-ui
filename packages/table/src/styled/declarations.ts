@@ -2,19 +2,9 @@ import { AllHTMLAttributes } from 'react';
 import { DefaultTheme } from 'styled-components';
 
 import { BaseSize } from '@devoinc/genesys-ui';
+import { ColumnTypeCombinerType } from '../components/declarations';
 
 export type cellSize = BaseSize;
-
-export type ColumnTypeCombinerType =
-  | 'boolean'
-  | 'custom'
-  | 'date'
-  | 'link'
-  | 'longText'
-  | 'number'
-  | 'status'
-  | 'tags'
-  | 'text';
 
 export interface StyledTableCellProps<T = Element> {
   contentEditable?: AllHTMLAttributes<T>['contentEditable'];
