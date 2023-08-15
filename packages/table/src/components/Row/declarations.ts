@@ -26,7 +26,7 @@ interface Style {
 
 export interface RowProps {
   columnDefs: ColDef[];
-  data?: { [key: string]: unknown };
+  data?: { [key: string]: string | number };
   style?: Style;
   defaultColumnDefs?: ColDef[];
   dndSettings?: DragNDropSettings;
