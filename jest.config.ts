@@ -12,6 +12,7 @@ const baseConfig = {
   testEnvironment: 'jsdom',
   moduleNameMapper: {
     '\\.(scss|css)$': 'identity-obj-proxy',
+    '^test-utils$': '<rootDir>/test/test-utils.tsx',
   },
 };
 
