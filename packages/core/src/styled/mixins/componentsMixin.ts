@@ -1,15 +1,18 @@
 import * as React from 'react';
 import { css } from 'styled-components';
-import { DefaultTheme } from 'styled-components';
 
-import {
+import type { DefaultTheme } from 'styled-components';
+import type {
   ControlWidth,
-  elevationMixin,
   FieldSize,
   FieldStatus,
-  getFieldState,
   LayoutCommonProps,
-} from '../../';
+} from '../../declarations';
+
+import { getFieldState } from '../../components';
+
+import { elevationMixin } from './utilsMixins';
+
 import { scrollbars, disabledMixin } from '.';
 import { getFieldControlTypo } from '../../components';
 import { getSpacingPropCss } from '../../utils/spacing';
