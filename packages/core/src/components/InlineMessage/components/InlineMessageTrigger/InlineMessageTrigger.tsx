@@ -121,18 +121,18 @@ export const InlineMessageTrigger = React.forwardRef<
     }
 
     return (
-        <IconButtonStatus
-          aria-controls={ariaControls}
-          colorScheme={status}
-          icon={icon}
-          id={id}
-          onClick={onClick}
-          ref={ref}
-          size={size}
-          state={state}
-          tooltip={tooltip}
-          type="button"
-        />
+      <IconButtonStatus
+        aria-controls={ariaControls}
+        colorScheme={status}
+        icon={icon}
+        id={id}
+        onClick={onClick}
+        ref={ref}
+        size={size}
+        state={state}
+        tooltip={tooltip}
+        type="button"
+      />
     );
   }
 );
