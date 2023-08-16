@@ -1,5 +1,5 @@
-import { Table } from '@devoinc/genesys-brand-devo/dist/light/js';
 import { getPxFromRem } from '@devoinc/genesys-ui';
+import { Brand } from '@devoinc/genesys-tokens-types';
 
 export const COLUMN_TYPE = {
   BOOLEAN: 'boolean',
@@ -16,7 +16,7 @@ export const COLUMN_TYPE = {
   //STATUS_MESSAGE: 'statusMessage',
 } as const;
 
-export const getFixedSizesObj = (tokens: Table) => {
+export const getFixedSizesObj = (tokens: Brand['cmp']['table']) => {
   const filterTokens = tokens.filter;
   const filterColumnsCellTokens = tokens.filterColumnsCell;
   const cellActionsTokens = tokens.cellActions;
