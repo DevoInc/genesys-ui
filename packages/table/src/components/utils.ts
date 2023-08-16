@@ -1,11 +1,11 @@
-import { Table } from '@devoinc/genesys-brand-devo/dist/light/js';
 import { DENSITY } from './constants';
 import { RowSizes } from './declarations';
+import { Brand } from '@devoinc/genesys-tokens-types';
 
 /**
  * Returns an object with size values based in design tokens and display density
  */
-export const getSizes = (tokens: Table): RowSizes => {
+export const getSizes = (tokens: Brand['cmp']['table']): RowSizes => {
   const cellTokens = tokens.cell;
   const cellWrapperTokens = tokens.cellWrapper;
   const headTokens = tokens.head;
