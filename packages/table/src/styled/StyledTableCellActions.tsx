@@ -1,12 +1,12 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { ActionGroup } from '@devoinc/genesys-ui';
 import { getFixedSizesObj } from '../constants';
 import { StyledTableRow } from '../components/Row/StyledTableRow';
 import { getSizes } from '../components/utils';
+import { ButtonGroup } from '@devoinc/genesys-ui';
 
 export const StyledTableCellActions = styled((props) => (
-  <ActionGroup {...props} />
+  <ButtonGroup {...props} />
 ))`
   position: absolute;
   top: 50%;
