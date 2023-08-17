@@ -1,12 +1,11 @@
 import { DefaultTheme, css } from 'styled-components';
-
 import { typoColorMixin, typoMixin } from '@devoinc/genesys-ui';
 import { COLUMN_TYPE } from '../../constants/column';
-import { AllHTMLAttributes } from 'react';
-import { cellSize, ColumnTypeCombinerType } from '../declarations';
+import { cellSize } from '../declarations';
+import { ColumnTypeCombinerType } from '../../components/declarations';
 
-export interface CellContentTextMixinProps<T = Element> {
-  contentEditable?: AllHTMLAttributes<T>['contentEditable'];
+export interface CellContentTextMixinProps {
+  contentEditable?: ElementContentEditable;
   expanded?: boolean;
   size?: cellSize;
   theme?: DefaultTheme;
