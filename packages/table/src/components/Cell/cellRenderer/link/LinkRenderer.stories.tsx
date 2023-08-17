@@ -19,7 +19,7 @@ const column: ColDef = {
   },
 };
 const meta: Meta<typeof Cell> = {
-  title: 'Table/Components/Cell/link renderer',
+  title: 'Components/Table/Components/Cell/link renderer',
   component: Cell,
 };
 

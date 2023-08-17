@@ -131,7 +131,7 @@ const columnEditStatus: ColDef = {
 };
 
 const meta: Meta<typeof Cell> = {
-  title: 'Table/Components/Cell/edit cell',
+  title: 'Components/Table/Components/Cell/edit cell',
   component: Cell,
 };
 

@@ -20,7 +20,7 @@ const column: ColDef = {
 };
 
 const meta: Meta<typeof Cell> = {
-  title: 'Table/Components/Cell/group tags renderer',
+  title: 'Components/Table/Components/Cell/group tags renderer',
   component: Cell,
 };
 
