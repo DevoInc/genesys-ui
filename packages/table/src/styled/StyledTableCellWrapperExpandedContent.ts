@@ -4,8 +4,9 @@ import { COLUMN_TYPE } from '../constants/column';
 import { StyledTableCellProps } from './declarations';
 import {
   typoMixin,
-  StyledTagGroup,
-  StyledTagGroupList,
+  // TODO: Read at components mention above
+  // StyledTagGroup,
+  // StyledTagGroupList,
 } from '@devoinc/genesys-ui';
 import { getSizes } from '../components/utils';
 
@@ -49,10 +50,12 @@ export const StyledTableCellWrapperExpandedContent = styled.div<StyledTableCellP
     `;
   }}
 
+*/ TODO: Find equivalent Genesys UI component and verify the utility of this styles
   // avoid overflow with long text tags in expanded mode
-  ${StyledTagGroup},
-  ${StyledTagGroupList} {
+  $ {StyledTagGroup},
+  $ {StyledTagGroupList} {
     flex-wrap: wrap;
     max-width: 100%;
   }
+  /*
 `;
