@@ -164,7 +164,7 @@ export const Cell: React.FC<CellProps> = ({
       // isEvenRow={isEvenRow}
       // striped={hasStripedRows}
       boxShadow={boxShadow}
-      onClick={onClick}
+      onDoubleClick={onClick}
       isDragging={isDragging}
 
       // sacar a los renderer
