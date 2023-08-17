@@ -31,6 +31,7 @@ const columnEditDate: ColDef = {
     tz: 'Europe/Madrid',
     locale: 'es',
   },
+  editable: true,
 };
 
 const columnEditText: ColDef = {
@@ -46,6 +47,7 @@ const columnEditText: ColDef = {
     },
     textAlign: 'right',
   },
+  editable: true,
 };
 
 const columnEditTextNumber: ColDef = {
@@ -61,6 +63,7 @@ const columnEditTextNumber: ColDef = {
     },
     textAlign: 'right',
   },
+  editable: true,
 };
 
 const columnEditTextArea: ColDef = {
@@ -76,6 +79,7 @@ const columnEditTextArea: ColDef = {
     },
     textAlign: 'right',
   },
+  editable: true,
 };
 
 const columnEditBoolean: ColDef = {
@@ -91,6 +95,7 @@ const columnEditBoolean: ColDef = {
     },
     textAlign: 'right',
   },
+  editable: true,
 };
 
 const columnEditTags: ColDef = {
@@ -106,6 +111,7 @@ const columnEditTags: ColDef = {
     },
     textAlign: 'right',
   },
+  editable: true,
 };
 
 const columnEditStatus: ColDef = {
@@ -121,6 +127,7 @@ const columnEditStatus: ColDef = {
     },
     textAlign: 'right',
   },
+  editable: true,
 };
 
 const meta: Meta<typeof Cell> = {

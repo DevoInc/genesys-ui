@@ -132,26 +132,24 @@ export const Cell: React.FC<CellProps> = ({
   //   return width + extraWidth;
   // };
 
+  const renderWithoutEditing = () =>
+    renderContent({
+      value: valueFormatter ? valueFormatter(data, context) : data,
+      columnDef: column,
+    });
+
   const [isEditMode, setIsEditMode] = React.useState<boolean>(false);
-  const [content, setContent] = React.useState<string | number>(
-    valueFormatter ? valueFormatter(data, context) : data
-  );
+  const [content, setContent] = React.useState<
+    string | number | React.ReactNode
+  >(renderWithoutEditing());
+
+  const renderEditionCell = (): React.ReactNode =>
+    cellEditor ? cellEditor(data) : EditInput(data);
 
   const onClick = () => {
-    if (column.editable) {
-      setIsEditMode(!isEditMode);
-      setContent(getContent());
-    }
-  };
-
-  const getContent = () => {
-    if (isEditMode) {
-      return cellEditor ?? EditInput;
-    } else {
-      return renderContent({
-        value: valueFormatter ? valueFormatter(data, context) : data,
-        columnDef: column,
-      });
+    if (column.editable && !isEditMode) {
+      setIsEditMode(true);
+      setContent(renderEditionCell());
     }
   };
 

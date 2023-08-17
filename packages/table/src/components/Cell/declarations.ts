@@ -29,7 +29,7 @@ export interface ColDef {
   initialHide?: boolean;
   editable?: boolean;
   // https://www.ag-grid.com/javascript-data-grid/component-cell-editor/
-  cellEditor?: (value) => void;
+  cellEditor?: (value) => string | number | React.ReactNode;
   width?: number;
   maxWidth?: number;
   minWidth?: number;
