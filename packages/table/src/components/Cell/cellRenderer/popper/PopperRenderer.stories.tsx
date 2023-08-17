@@ -22,7 +22,7 @@ const styles: StylesCellProps = {
 };
 
 const meta: Meta<typeof Cell> = {
-  title: 'Components/Table/Components/Cell/popper renderer',
+  title: 'Components/Table/Cell/popper renderer',
   component: Cell,
 };
 

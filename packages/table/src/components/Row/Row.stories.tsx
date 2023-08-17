@@ -47,7 +47,7 @@ const colDefs: ColDef[] = [
 ];
 
 const meta: Meta<typeof Row> = {
-  title: 'Components/Table/Components/Row',
+  title: 'Components/Table/Row',
   component: Row,
 };
 

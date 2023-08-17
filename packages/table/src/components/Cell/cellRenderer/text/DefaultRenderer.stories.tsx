@@ -41,7 +41,7 @@ const columnDate: ColDef = {
 };
 
 const meta: Meta<typeof Cell> = {
-  title: 'Components/Table/Components/Cell/default renderer',
+  title: 'Components/Table/Cell/default renderer',
   component: Cell,
 };
 
