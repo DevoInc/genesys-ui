@@ -35,9 +35,16 @@ export const useRenderContent = (
     }
   };
 
+  React.useEffect(
+    () => setContent(isEditMode ? renderEditionCell() : renderWithoutEditing()),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [isEditMode]
+  );
+
   return {
     isEditMode,
     content,
     onClick,
+    setIsEditMode,
   };
 };

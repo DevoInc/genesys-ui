@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyledTableCellWrapper } from './StyledTableCellWrapper';
 import { ColDef } from './declarations';
 import { useRenderContent } from './useRenderContent';
+import { useOnEventOutside } from '@devoinc/genesys-ui';
 
 interface CellProps {
   data?: string | number;
@@ -24,7 +25,9 @@ export const Cell: React.FC<CellProps> = ({ data, column }) => {
     context,
   } = column;
 
-  const { content, onClick } = useRenderContent(
+  const cellRef = React.useRef(null);
+
+  const { content, onClick, setIsEditMode } = useRenderContent(
     type,
     valueFormatter,
     column,
@@ -32,6 +35,11 @@ export const Cell: React.FC<CellProps> = ({ data, column }) => {
     context,
     cellEditor
   );
+
+  useOnEventOutside({
+    references: [cellRef],
+    handler: () => setIsEditMode(false),
+  });
 
   return (
     <StyledTableCellWrapper
@@ -43,6 +51,7 @@ export const Cell: React.FC<CellProps> = ({ data, column }) => {
       boxShadow={boxShadow}
       onDoubleClick={onClick}
       isDragging={isDragging}
+      ref={cellRef}
     >
       {content}
     </StyledTableCellWrapper>
