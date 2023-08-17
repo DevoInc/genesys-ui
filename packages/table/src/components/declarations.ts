@@ -32,6 +32,7 @@ export interface RowSizes {
 export type Density = 'default' | 'compact' | 'comfortable';
 
 export type ColumnTypeCombinerType =
+  | 'default'
   | 'boolean'
   | 'custom'
   | 'date'

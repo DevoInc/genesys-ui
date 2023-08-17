@@ -13,7 +13,7 @@ export type Context =
   | DateContext;
 
 export type ValueFormatter = (
-  value: string | number,
+  value: string | number | Date,
   context: Context
 ) => string | number;
 
