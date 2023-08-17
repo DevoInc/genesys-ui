@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { StyledTableCellWrapper } from './StyledTableCellWrapper';
-import { getRenderer } from './cellRenderer';
 import { ColDef } from './declarations';
-import { EditInput } from './editCell';
+import { useRenderContent } from './useRenderContent';
 
 interface CellProps {
   data?: string | number;
@@ -24,28 +23,15 @@ export const Cell: React.FC<CellProps> = ({ data, column }) => {
     valueFormatter,
     context,
   } = column;
-  const renderContent = getRenderer(type);
 
-  const renderWithoutEditing = () =>
-    renderContent({
-      value: valueFormatter ? valueFormatter(data, context) : data,
-      columnDef: column,
-    });
-
-  const [isEditMode, setIsEditMode] = React.useState<boolean>(false);
-  const [content, setContent] = React.useState<
-    string | number | React.ReactNode
-  >(renderWithoutEditing());
-
-  const renderEditionCell = (): React.ReactNode =>
-    cellEditor ? cellEditor(data) : EditInput(data);
-
-  const onClick = () => {
-    if (column.editable && !isEditMode) {
-      setIsEditMode(true);
-      setContent(renderEditionCell());
-    }
-  };
+  const { content, onClick } = useRenderContent(
+    type,
+    valueFormatter,
+    column,
+    data,
+    context,
+    cellEditor
+  );
 
   return (
     <StyledTableCellWrapper

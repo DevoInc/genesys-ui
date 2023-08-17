@@ -6,11 +6,21 @@ export interface DateContext {
   locale: string;
 }
 
-type Context =
+export type Context =
   | {
       [key: string]: unknown;
     }
   | DateContext;
+
+export type ValueFormatter = (
+  value: string | number,
+  context: Context
+) => string | number;
+
+export type CellEditor = (
+  value: string | number
+) => string | number | React.ReactNode;
+
 export interface ColDef {
   // identificador unico, si no existe se usara field y si no se añadira un identificador unico
   colId?: string;
@@ -21,15 +31,12 @@ export interface ColDef {
   // https://www.ag-grid.com/javascript-data-grid/value-getters/
   valueGetter?: (params) => void;
   // https://www.ag-grid.com/javascript-data-grid/value-formatters/
-  valueFormatter?: (
-    value: string | number,
-    context: Context
-  ) => string | number;
+  valueFormatter?: ValueFormatter;
   hide?: boolean;
   initialHide?: boolean;
   editable?: boolean;
   // https://www.ag-grid.com/javascript-data-grid/component-cell-editor/
-  cellEditor?: (value) => string | number | React.ReactNode;
+  cellEditor?: CellEditor;
   width?: number;
   maxWidth?: number;
   minWidth?: number;
