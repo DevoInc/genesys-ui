@@ -9,6 +9,7 @@ import { BaseSize } from '../../declarations';
 
 import { ToolbarGroup } from './components/ToolbarGroup';
 import { ToolbarSeparator } from './components/ToolbarSeparator';
+import { ToolbarItem } from './components/ToolbarItem';
 import { Flex, FlexProps } from '../Flex';
 
 export interface ToolbarProps
@@ -48,10 +49,10 @@ const InternalToolbar: React.FC<ToolbarProps> = ({
 
 export const Toolbar = InternalToolbar as typeof InternalToolbar & {
   Group: typeof ToolbarGroup;
-  Item: typeof Flex.Item;
+  Item: typeof ToolbarItem;
   Separator: typeof ToolbarSeparator;
 };
 
 Toolbar.Group = ToolbarGroup;
-Toolbar.Item = Flex.Item;
+Toolbar.Item = ToolbarItem;
 Toolbar.Separator = ToolbarSeparator;

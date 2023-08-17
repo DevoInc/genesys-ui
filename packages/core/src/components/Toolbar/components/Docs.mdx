@@ -1,6 +1,5 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
-import * as Stories from '../Toolbar.stories';
 import * as GroupStories from './ToolbarGroup/ToolbarGroup.stories';
 import * as ItemStories from './ToolbarItem/ToolbarItem.stories';
 import * as SeparatorStories from './ToolbarSeparator/ToolbarSeparator.stories';
@@ -57,9 +56,10 @@ or directly outside as child of the `Toolbar` component.
 <Source
   code={`
 <Toolbar>
-  <Toolbar.Group {...args}>
-    <Toolbar.Item>One</Toolbar.Item>
-    <Toolbar.Item>One</Toolbar.Item>
+  <Toolbar.Item>Root</Toolbar.Item>
+  <Toolbar.Group>
+    <Toolbar.Item>Grouped 1</Toolbar.Item>
+    <Toolbar.Item>Grouped 2</Toolbar.Item>
   </Toolbar.Group>
 </Toolbar>
 `}

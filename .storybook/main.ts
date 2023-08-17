@@ -28,7 +28,6 @@ const config: StorybookConfig = {
           '@storybook/theming',
           '@storybook/components',
           '@devoinc/genesys-brand-devo',
-          '@devoinc/genesys-tokens-types',
           '@storybook/addon-essentials/docs/mdx-react-shim',
           '@storybook/blocks',
           '@devoinc/genesys-ui',
