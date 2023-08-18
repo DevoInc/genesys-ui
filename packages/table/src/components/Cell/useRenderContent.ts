@@ -5,12 +5,12 @@ import { ColumnTypeCombinerType } from '../declarations';
 import { CellEditor, ColDef, Context, ValueFormatter } from './declarations';
 
 export const useRenderContent = (
-  type: ColumnTypeCombinerType,
-  valueFormatter: ValueFormatter,
+  cellEditor: CellEditor,
   columnDef: ColDef,
-  data: string | number,
   context: Context,
-  cellEditor: CellEditor
+  data: string | number,
+  type: ColumnTypeCombinerType,
+  valueFormatter: ValueFormatter
 ) => {
   const renderContent = getRenderer(type);
 
@@ -28,12 +28,7 @@ export const useRenderContent = (
   const renderEditionCell = (): React.ReactNode =>
     cellEditor ? cellEditor(data) : EditInput(data);
 
-  const onClick = () => {
-    if (columnDef.editable && !isEditMode) {
-      setIsEditMode(true);
-      setContent(renderEditionCell());
-    }
-  };
+  const onClick = () => setIsEditMode(columnDef.editable && !isEditMode);
 
   React.useEffect(
     () => setContent(isEditMode ? renderEditionCell() : renderWithoutEditing()),

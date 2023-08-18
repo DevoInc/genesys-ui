@@ -28,12 +28,12 @@ export const Cell: React.FC<CellProps> = ({ data, column }) => {
   const cellRef = React.useRef(null);
 
   const { content, onClick, setIsEditMode } = useRenderContent(
-    type,
-    valueFormatter,
+    cellEditor,
     column,
-    data,
     context,
-    cellEditor
+    data,
+    type,
+    valueFormatter
   );
 
   useOnEventOutside({

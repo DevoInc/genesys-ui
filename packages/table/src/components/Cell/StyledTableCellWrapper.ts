@@ -11,11 +11,6 @@ import {
 } from './padding';
 import { StyledTableCellProps } from '../../styled/declarations';
 
-// no se le pasa heightProp
-// ${({ heightProp }) => css`
-//   min-height: ${heightProp && heightProp + 'px'};
-// `}
-
 interface StyledTableCellWrapperProps extends ColDef, StyledTableCellProps {}
 
 export const StyledTableCellWrapper = styled.th<StyledTableCellWrapperProps>`
@@ -27,29 +22,22 @@ export const StyledTableCellWrapper = styled.th<StyledTableCellWrapperProps>`
 
   ${({ cellStyle }) => css`
     justify-content: ${() => {
-      if (cellStyle.align?.horizontal === 'left') return 'flex-start';
-      if (cellStyle.align?.horizontal === 'right') return 'flex-end';
-      if (cellStyle.align?.horizontal === 'center') return 'center';
+      if (cellStyle?.align?.horizontal === 'left') return 'flex-start';
+      if (cellStyle?.align?.horizontal === 'right') return 'flex-end';
+      if (cellStyle?.align?.horizontal === 'center') return 'center';
       return 'flex-start';
     }};
     align-items: ${() => {
-      if (cellStyle.align?.vertical === 'top') return 'flex-start';
-      if (cellStyle.align?.vertical === 'bottom') return 'flex-end';
-      if (cellStyle.align?.vertical === 'center') return 'center';
+      if (cellStyle?.align?.vertical === 'top') return 'flex-start';
+      if (cellStyle?.align?.vertical === 'bottom') return 'flex-end';
+      if (cellStyle?.align?.vertical === 'center') return 'center';
       return 'center';
     }};
   `}
 
-  ${({ theme }) => {
-    // const tokens = theme.cmp.table;
-    // const cmpTokens = tokens.cellWrapper;
-    // parece no tener efecto
-    // text-align: ${cellStyle.textAlign};
-    // font-size: ${cmpTokens.typo.fontSize[size || 'md']};
-    return css`
-      color: ${theme.alias.color.text.body.base};
-    `;
-  }}
+  ${({ theme }) => css`
+    color: ${theme.alias.color.text.body.base};
+  `}
 
   ${({ theme, expandedRow }) => {
     const tokens = theme.cmp.table;
