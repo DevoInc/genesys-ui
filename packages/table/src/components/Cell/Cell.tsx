@@ -3,11 +3,12 @@ import { StyledTableCellWrapper } from './StyledTableCellWrapper';
 import { CellData, ColDef } from './declarations';
 import { useRenderContent } from './useRenderContent';
 import { useOnEventOutside } from '@devoinc/genesys-ui';
+import { ColumnType } from '../declarations';
 
 interface CellProps {
   data?: CellData;
   column?: ColDef;
-  renderer?: 'default' | 'popper' | 'link' | 'tag' | 'groupTags';
+  renderer?: ColumnType;
 }
 
 export const Cell: React.FC<CellProps> = ({ data, column }) => {

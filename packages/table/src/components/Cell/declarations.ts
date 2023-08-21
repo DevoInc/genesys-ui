@@ -1,4 +1,4 @@
-import { ColumnTypeCombinerType } from '../declarations';
+import { ColumnType } from '../declarations';
 
 export interface DateContext {
   tz: string;
@@ -30,7 +30,7 @@ export interface ColDef {
   // example name or medal.gold
   // { name: santi, medal: { gold: 2 }}
   field?: string;
-  type?: ColumnTypeCombinerType;
+  type?: ColumnType;
   // https://www.ag-grid.com/javascript-data-grid/value-getters/
   valueGetter?: (params) => void;
   // https://www.ag-grid.com/javascript-data-grid/value-formatters/

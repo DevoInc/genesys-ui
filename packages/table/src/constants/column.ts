@@ -1,21 +1,6 @@
 import { getPxFromRem } from '@devoinc/genesys-ui';
 import { Brand } from '@devoinc/genesys-tokens-types';
 
-export const COLUMN_TYPE = {
-  BOOLEAN: 'boolean',
-  CUSTOM: 'custom',
-  DATE: 'date',
-  LINK: 'link',
-  LONG_TEXT: 'longText',
-  NUMBER: 'number',
-  STATUS: 'status',
-  TAGS: 'tags',
-  TEXT: 'text',
-  // TODO
-  //DATE_RANGE: 'dateRange',
-  //STATUS_MESSAGE: 'statusMessage',
-} as const;
-
 export const getFixedSizesObj = (tokens: Brand['cmp']['table']) => {
   const filterTokens = tokens.filter;
   const filterColumnsCellTokens = tokens.filterColumnsCell;

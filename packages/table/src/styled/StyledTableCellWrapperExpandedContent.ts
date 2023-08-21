@@ -1,6 +1,4 @@
 import styled, { css } from 'styled-components';
-
-import { COLUMN_TYPE } from '../constants/column';
 import { StyledTableCellProps } from './declarations';
 import {
   typoMixin,
@@ -20,8 +18,7 @@ export const StyledTableCellWrapperExpandedContent = styled.div<StyledTableCellP
     const cmpTokens = tableTokens.cellExpandedContent;
 
     return css`
-      max-height: ${typeProp?.startsWith(COLUMN_TYPE.DATE) ||
-      typeProp === COLUMN_TYPE.STATUS
+      max-height: ${typeProp === 'date' || typeProp === 'tags'
         ? 'none'
         : cmpTokens.size.maxHeight};
     `;

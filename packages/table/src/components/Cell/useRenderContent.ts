@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { EditInput } from './editCell/EditInput';
 import { getRenderer } from './cellRenderer';
-import { ColumnTypeCombinerType } from '../declarations';
+import { ColumnType } from '../declarations';
 import {
   CellData,
   CellEditorProps,
@@ -15,7 +15,7 @@ export const useRenderContent = (
   columnDef: ColDef,
   context: Context,
   data: CellData,
-  type: ColumnTypeCombinerType,
+  type: ColumnType,
   valueFormatter: ValueFormatter
 ) => {
   const renderContent = getRenderer(type);

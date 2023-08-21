@@ -1,8 +1,7 @@
 import { AllHTMLAttributes } from 'react';
 import { DefaultTheme } from 'styled-components';
-
 import { BaseSize } from '@devoinc/genesys-ui';
-import { ColumnTypeCombinerType } from '../components/declarations';
+import { ColumnType, Density } from '../components/declarations';
 
 export type cellSize = BaseSize;
 
@@ -11,10 +10,10 @@ export interface StyledTableCellProps<T = Element> {
   expanded?: boolean;
   size?: cellSize;
   theme?: DefaultTheme;
-  typeProp?: ColumnTypeCombinerType;
+  typeProp?: ColumnType;
   editable?: boolean;
   bodyHeight?: number;
-  density?: 'default' | 'compact' | 'comfortable';
+  density?: Density;
   expandedRow?: boolean;
   isAfterRow?: boolean;
   columnHighlight?: boolean;

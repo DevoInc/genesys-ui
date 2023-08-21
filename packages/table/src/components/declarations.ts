@@ -31,14 +31,4 @@ export interface RowSizes {
 
 export type Density = 'default' | 'compact' | 'comfortable';
 
-export type ColumnTypeCombinerType =
-  | 'default'
-  | 'boolean'
-  | 'custom'
-  | 'date'
-  | 'link'
-  | 'longText'
-  | 'number'
-  | 'status'
-  | 'tags'
-  | 'text';
+export type ColumnType = 'date' | 'link' | 'number' | 'tags' | 'text';
