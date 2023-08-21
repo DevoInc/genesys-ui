@@ -1,16 +1,19 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { ColDef } from '../declarations';
+import { CellData, ColDef } from '../declarations';
 import { dateFormatter } from '../formatters';
-import { EditDate } from './EditDate';
-import { EditInput } from './EditInput';
-import { EditInputNumber } from './EditInputNumber';
-import { EditTextArea } from './EditTextArea';
-import { EditBoolean } from './EditBoolean';
-import { EditTags } from './EditTags';
-import { EditStatus } from './EditStatus';
+import {
+  EditBoolean,
+  EditDate,
+  EditInput,
+  EditInputNumber,
+  EditStatus,
+  EditTags,
+  EditTextArea,
+} from '.';
 import { Cell } from '../Cell';
 import { data } from '../../../stories/data';
+import { CustomCellEditor } from './CustomCellEditorCase';
 
 const columnEditDate: ColDef = {
   colId: 'timestamp',
@@ -18,7 +21,7 @@ const columnEditDate: ColDef = {
   headerName: 'timestamp',
   type: 'default',
   valueFormatter: dateFormatter,
-  cellEditor: EditDate,
+  CellEditor: EditDate,
   cellStyle: {
     align: {
       horizontal: 'left',
@@ -39,7 +42,7 @@ const columnEditText: ColDef = {
   field: 'name',
   headerName: 'Name',
   type: 'default',
-  cellEditor: EditInput,
+  CellEditor: EditInput,
   cellStyle: {
     align: {
       horizontal: 'left',
@@ -55,7 +58,7 @@ const columnEditTextNumber: ColDef = {
   field: 'age',
   headerName: 'age',
   type: 'default',
-  cellEditor: EditInputNumber,
+  CellEditor: EditInputNumber,
   cellStyle: {
     align: {
       horizontal: 'left',
@@ -71,7 +74,7 @@ const columnEditTextArea: ColDef = {
   field: 'name',
   headerName: 'Name',
   type: 'default',
-  cellEditor: EditTextArea,
+  CellEditor: EditTextArea,
   cellStyle: {
     align: {
       horizontal: 'left',
@@ -87,7 +90,7 @@ const columnEditBoolean: ColDef = {
   field: 'booleanValue',
   headerName: 'booleanValue',
   type: 'default',
-  cellEditor: EditBoolean,
+  CellEditor: EditBoolean,
   cellStyle: {
     align: {
       horizontal: 'left',
@@ -103,7 +106,7 @@ const columnEditTags: ColDef = {
   field: 'tags',
   headerName: 'tags',
   type: 'default',
-  cellEditor: EditTags,
+  CellEditor: EditTags,
   cellStyle: {
     align: {
       horizontal: 'left',
@@ -119,7 +122,7 @@ const columnEditStatus: ColDef = {
   field: 'tags',
   headerName: 'tags',
   type: 'default',
-  cellEditor: EditStatus,
+  CellEditor: EditStatus,
   cellStyle: {
     align: {
       horizontal: 'left',
@@ -210,5 +213,31 @@ export const ColumnEditStatus: Story = {
           data={data[0][columnEditStatus.field]}
         />
       );
+    })(),
+};
+
+export const UsingACustomCellEditor: Story = {
+  render: () =>
+    (() => {
+      const [text, setText] = React.useState<CellData>('Hola');
+
+      const customEditorDef: ColDef = {
+        colId: 'text',
+        field: 'text',
+        headerName: 'text',
+        type: 'default',
+        CellEditor: CustomCellEditor,
+        cellStyle: {
+          align: {
+            horizontal: 'left',
+            vertical: 'center',
+          },
+          textAlign: 'right',
+        },
+        editable: true,
+        onChange: (newValue: CellData) => setText(newValue),
+      };
+
+      return <Cell column={customEditorDef} data={text} />;
     })(),
 };

@@ -6,6 +6,8 @@ export interface DateContext {
   locale: string;
 }
 
+export type CellData = string | number | boolean | React.ReactNode | undefined;
+
 export type Context =
   | {
       [key: string]: unknown;
@@ -13,13 +15,14 @@ export type Context =
   | DateContext;
 
 export type ValueFormatter = (
-  value: string | number | Date,
+  value: CellData,
   context: Context
-) => string | number;
-
-export type CellEditor = (
-  value: string | number
 ) => string | number | React.ReactNode;
+
+export interface CellEditorProps {
+  value: CellData;
+  onChange?: (newValue: CellData) => void;
+}
 
 export interface ColDef {
   // identificador unico, si no existe se usara field y si no se añadira un identificador unico
@@ -36,7 +39,7 @@ export interface ColDef {
   initialHide?: boolean;
   editable?: boolean;
   // https://www.ag-grid.com/javascript-data-grid/component-cell-editor/
-  cellEditor?: CellEditor;
+  CellEditor?: React.FC<CellEditorProps>;
   width?: number;
   maxWidth?: number;
   minWidth?: number;
@@ -54,6 +57,7 @@ export interface ColDef {
   boxShadow?: 'base' | 'strong';
   isDragging?: boolean;
   context?: Context;
+  onChange?: (newValue: CellData) => void;
 }
 
 export type DefaultColDef = ColDef;

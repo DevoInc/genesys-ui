@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { StyledTableCellWrapper } from './StyledTableCellWrapper';
-import { ColDef } from './declarations';
+import { CellData, ColDef } from './declarations';
 import { useRenderContent } from './useRenderContent';
 import { useOnEventOutside } from '@devoinc/genesys-ui';
 
 interface CellProps {
-  data?: string | number;
+  data?: CellData;
   column?: ColDef;
   renderer?: 'default' | 'popper' | 'link' | 'tag' | 'groupTags';
 }
@@ -18,7 +18,7 @@ export const Cell: React.FC<CellProps> = ({ data, column }) => {
     minWidth,
     editable,
     type,
-    cellEditor,
+    CellEditor,
     tooltipField,
     isDragging,
     valueFormatter,
@@ -27,17 +27,11 @@ export const Cell: React.FC<CellProps> = ({ data, column }) => {
 
   const cellRef = React.useRef(null);
 
-  const { content, onClick, setIsEditMode } = useRenderContent(
-    cellEditor,
-    column,
-    context,
-    data,
-    type,
-    valueFormatter
-  );
+  const { editionContent, viewContent, isEditMode, onClick, setIsEditMode } =
+    useRenderContent(CellEditor, column, context, data, type, valueFormatter);
 
   useOnEventOutside({
-    references: [cellRef],
+    references: [cellRef, editionContent, viewContent],
     handler: () => setIsEditMode(false),
   });
 
@@ -53,7 +47,7 @@ export const Cell: React.FC<CellProps> = ({ data, column }) => {
       isDragging={isDragging}
       ref={cellRef}
     >
-      {content}
+      {isEditMode ? editionContent : viewContent}
     </StyledTableCellWrapper>
   );
 };
