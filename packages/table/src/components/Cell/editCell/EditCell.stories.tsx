@@ -7,7 +7,6 @@ import {
   EditDate,
   EditInput,
   EditNumber,
-  EditStatus,
   EditTags,
   EditTextArea,
 } from '.';
@@ -111,21 +110,6 @@ const columnEditTags: ColDef = {
   editable: true,
 };
 
-const columnEditStatus: ColDef = {
-  colId: 'tags',
-  field: 'tags',
-  headerName: 'tags',
-  CellEditor: EditStatus,
-  cellStyle: {
-    align: {
-      horizontal: 'left',
-      vertical: 'center',
-    },
-    textAlign: 'right',
-  },
-  editable: true,
-};
-
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/edit cell',
   component: Cell,
@@ -193,18 +177,6 @@ export const ColumnEditTags: Story = {
     (() => {
       return (
         <Cell column={columnEditTags} data={data[0][columnEditTags.field]} />
-      );
-    })(),
-};
-
-export const ColumnEditStatus: Story = {
-  render: () =>
-    (() => {
-      return (
-        <Cell
-          column={columnEditStatus}
-          data={data[0][columnEditStatus.field]}
-        />
       );
     })(),
 };
