@@ -11,5 +11,5 @@ const cellRenderers = {
   groupTags: RenderCellContentGroupTags,
 };
 
-export const getRenderer = (render: ColumnType): React.FC =>
-  cellRenderers[render];
+export const getRenderer = (renderType: ColumnType): React.FC =>
+  cellRenderers[renderType ?? 'default'];

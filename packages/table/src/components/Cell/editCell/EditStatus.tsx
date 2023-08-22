@@ -1,24 +1,13 @@
 import * as React from 'react';
 import { SelectControl } from '@devoinc/genesys-ui';
+import { CellEditorProps } from '../declarations';
 
-export const EditStatus = (value) => {
-  const options = value.map((v) => ({
-    value: v.text,
-    label: v.text,
-    color: v.colorScheme,
-  }));
-  const onChange = (opt) => {
-    // const newRow = setObjectValue(row, column.dataKey, opt.value);
-    // onChangeUnsavedRow(newRow, true);
-  };
-  return (
-    <SelectControl
-      maxMenuHeight={19.2}
-      menuIsOpen
-      menuQuiet
-      onChange={onChange}
-      options={options}
-      value={value}
-    />
-  );
-};
+export const EditStatus: React.FC<CellEditorProps> = ({ value, onChange }) => (
+  <SelectControl
+    maxMenuHeight={19.2}
+    menuIsOpen
+    menuQuiet
+    onChange={(newStatus) => onChange?.(newStatus)}
+    value={value}
+  />
+);

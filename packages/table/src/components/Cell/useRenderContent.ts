@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { EditInput } from './editCell/EditInput';
+import { EditInput } from './editCell/EditText';
 import { getRenderer } from './cellRenderer';
 import { ColumnType } from '../declarations';
 import {
@@ -29,7 +29,7 @@ export const useRenderContent = (
 
   const editionContent = cellEditor
     ? cellEditor({ value: data, onChange: columnDef.onChange })
-    : EditInput({ value: data });
+    : EditInput({ value: data.toString() });
 
   const onClick = () => setIsEditMode(columnDef.editable && !isEditMode);
 

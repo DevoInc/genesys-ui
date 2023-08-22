@@ -6,7 +6,7 @@ import {
   EditBoolean,
   EditDate,
   EditInput,
-  EditInputNumber,
+  EditNumber,
   EditStatus,
   EditTags,
   EditTextArea,
@@ -19,7 +19,6 @@ const columnEditDate: ColDef = {
   colId: 'timestamp',
   field: 'timestamp',
   headerName: 'timestamp',
-  type: 'default',
   valueFormatter: dateFormatter,
   CellEditor: EditDate,
   cellStyle: {
@@ -41,7 +40,6 @@ const columnEditText: ColDef = {
   colId: 'name',
   field: 'name',
   headerName: 'Name',
-  type: 'default',
   CellEditor: EditInput,
   cellStyle: {
     align: {
@@ -57,8 +55,7 @@ const columnEditTextNumber: ColDef = {
   colId: 'age',
   field: 'age',
   headerName: 'age',
-  type: 'default',
-  CellEditor: EditInputNumber,
+  CellEditor: EditNumber,
   cellStyle: {
     align: {
       horizontal: 'left',
@@ -73,7 +70,6 @@ const columnEditTextArea: ColDef = {
   colId: 'name',
   field: 'name',
   headerName: 'Name',
-  type: 'default',
   CellEditor: EditTextArea,
   cellStyle: {
     align: {
@@ -89,7 +85,6 @@ const columnEditBoolean: ColDef = {
   colId: 'booleanValue',
   field: 'booleanValue',
   headerName: 'booleanValue',
-  type: 'default',
   CellEditor: EditBoolean,
   cellStyle: {
     align: {
@@ -105,7 +100,6 @@ const columnEditTags: ColDef = {
   colId: 'tags',
   field: 'tags',
   headerName: 'tags',
-  type: 'default',
   CellEditor: EditTags,
   cellStyle: {
     align: {
@@ -121,7 +115,6 @@ const columnEditStatus: ColDef = {
   colId: 'tags',
   field: 'tags',
   headerName: 'tags',
-  type: 'default',
   CellEditor: EditStatus,
   cellStyle: {
     align: {
@@ -225,7 +218,6 @@ export const UsingACustomCellEditor: Story = {
         colId: 'text',
         field: 'text',
         headerName: 'text',
-        type: 'default',
         CellEditor: CustomCellEditor,
         cellStyle: {
           align: {

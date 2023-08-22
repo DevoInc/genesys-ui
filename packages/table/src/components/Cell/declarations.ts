@@ -20,8 +20,8 @@ export type ValueFormatter = (
 ) => string | number | React.ReactNode;
 
 export interface CellEditorProps {
-  value: CellData;
-  onChange?: (newValue: CellData) => void;
+  value: any;
+  onChange?: (newValue: any) => void;
 }
 
 export interface ColDef {

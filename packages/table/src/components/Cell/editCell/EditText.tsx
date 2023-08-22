@@ -1,18 +1,15 @@
 import React, { FormEvent } from 'react';
-import { TextareaControl } from '@devoinc/genesys-ui';
+import { InputControl } from '@devoinc/genesys-ui';
 
-interface EditTextAreaProps {
+interface EditInputProps {
   value: string | number;
   onChange?: (newValue: string) => void;
 }
 
-export const EditTextArea: React.FC<EditTextAreaProps> = ({
-  value,
-  onChange,
-}) => (
-  <TextareaControl
-    rows={6}
-    aria-label={'TextArea input'}
+export const EditInput: React.FC<EditInputProps> = ({ value, onChange }) => (
+  <InputControl
+    type={'text'}
+    aria-label={'Text input'}
     value={value.toString()}
     onChange={(event: FormEvent) =>
       onChange?.((event.target as HTMLInputElement).value)

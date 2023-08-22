@@ -1,12 +1,19 @@
 import * as React from 'react';
 import { DateTimePicker } from '@devoinc/genesys-ui-datetime';
-export const EditDate = () => {
-  return (
-    <DateTimePicker
-      onApply={function ka() {}}
-      onCancel={function ka() {}}
-      onChange={function ka() {}}
-      value={1690448515137}
-    />
-  );
-};
+
+interface DateCellEditorProps {
+  value: string | number | Date;
+  onChange?: (newValue: string) => void;
+}
+
+export const EditDate: React.FC<DateCellEditorProps> = ({
+  value,
+  onChange,
+}) => (
+  <DateTimePicker
+    onChange={(event) => onChange?.((event.target as HTMLInputElement).value)}
+    onApply={undefined}
+    onCancel={undefined}
+    value={new Date(value)}
+  />
+);
