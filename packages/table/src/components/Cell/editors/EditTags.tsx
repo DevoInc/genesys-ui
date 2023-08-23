@@ -33,6 +33,7 @@ export const EditTags: React.FC<EditTagsProps> = ({ value, onChange }) => {
       isMulti
       menuAppendToBody
       options={getOptionsFromTags(value)}
+      autoFocus
     />
   );
 };

@@ -14,5 +14,6 @@ export const EditNumber: React.FC<EditNumberProps> = ({ value, onChange }) => (
     onChange={(event: FormEvent) =>
       onChange?.(parseInt((event.target as HTMLInputElement).value))
     }
+    autoFocus
   />
 );

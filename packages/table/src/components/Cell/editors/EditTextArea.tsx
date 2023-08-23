@@ -17,5 +17,6 @@ export const EditTextArea: React.FC<EditTextAreaProps> = ({
     onChange={(event: FormEvent) =>
       onChange?.((event.target as HTMLInputElement).value)
     }
+    autoFocus
   />
 );

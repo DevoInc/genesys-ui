@@ -16,5 +16,6 @@ export const EditText: React.FC<EditInputProps> = ({ value, onChange }) => (
     onChange={(event: FormEvent) =>
       onChange?.((event.target as HTMLInputElement).value)
     }
+    autoFocus
   />
 );
