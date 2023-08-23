@@ -1,35 +1,26 @@
 import * as React from 'react';
-import { EditInput } from './editors';
+import { EditText } from './editors';
 import { getRenderer } from './renderers';
 import { ColumnType } from '../declarations';
-import {
-  CellData,
-  CellEditorProps,
-  ColDef,
-  Context,
-  ValueFormatter,
-} from './declarations';
+import { CellData, ColDef } from './declarations';
 
 export const useRenderContent = (
-  cellEditor: React.FC<CellEditorProps>,
+  cellEditor: () => React.ReactNode,
   columnDef: ColDef,
-  context: Context,
   data: CellData,
   type: ColumnType,
-  valueFormatter: ValueFormatter
+  valueFormatter: (value: CellData) => void
 ) => {
   const renderContent = getRenderer(type);
 
   const viewContent = renderContent({
-    value: valueFormatter ? valueFormatter(data, context) : data,
+    value: valueFormatter ? valueFormatter(data) : data,
     columnDef,
   });
 
   const [isEditMode, setIsEditMode] = React.useState<boolean>(false);
 
-  const editionContent = cellEditor
-    ? cellEditor({ value: data, onChange: columnDef.onChange })
-    : EditInput({ value: data.toString() });
+  const editionContent = cellEditor?.() ?? EditText({ value: data });
 
   const onClick = () => setIsEditMode(columnDef.editable && !isEditMode);
 

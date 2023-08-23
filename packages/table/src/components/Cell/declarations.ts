@@ -1,23 +1,13 @@
+import { TagProps } from '@devoinc/genesys-ui';
 import { ColumnType } from '../declarations';
 
-export interface DateContext {
-  tz: string;
-  formatDate: string;
-  locale: string;
-}
-
-export type CellData = string | number | boolean | React.ReactNode | undefined;
-
-export type Context =
-  | {
-      [key: string]: unknown;
-    }
-  | DateContext;
-
-export type ValueFormatter = (
-  value: CellData,
-  context: Context
-) => string | number | React.ReactNode;
+export type CellData =
+  | string
+  | number
+  | boolean
+  | React.ReactNode
+  | TagProps[]
+  | undefined;
 
 export interface CellEditorProps {
   value: any;
@@ -34,12 +24,12 @@ export interface ColDef {
   // https://www.ag-grid.com/javascript-data-grid/value-getters/
   valueGetter?: (params) => void;
   // https://www.ag-grid.com/javascript-data-grid/value-formatters/
-  valueFormatter?: ValueFormatter;
+  valueFormatter?: (value: CellData) => void;
   hide?: boolean;
   initialHide?: boolean;
   editable?: boolean;
   // https://www.ag-grid.com/javascript-data-grid/component-cell-editor/
-  CellEditor?: React.FC<CellEditorProps>;
+  CellEditor?: () => React.ReactNode;
   width?: number;
   maxWidth?: number;
   minWidth?: number;
@@ -56,7 +46,6 @@ export interface ColDef {
   expandedRow?: boolean;
   boxShadow?: 'base' | 'strong';
   isDragging?: boolean;
-  context?: Context;
   onChange?: (newValue: CellData) => void;
 }
 

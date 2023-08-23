@@ -5,7 +5,7 @@ import { dateFormatter } from '../formatters';
 import {
   EditBoolean,
   EditDate,
-  EditInput,
+  EditText,
   EditNumber,
   EditTags,
   EditTextArea,
@@ -13,103 +13,7 @@ import {
 import { Cell } from '../Cell';
 import { data } from '../../../stories/data';
 import { CustomCellEditor } from './CustomCellEditorCase';
-
-const columnEditDate: ColDef = {
-  colId: 'timestamp',
-  field: 'timestamp',
-  headerName: 'timestamp',
-  valueFormatter: dateFormatter,
-  CellEditor: EditDate,
-  cellStyle: {
-    align: {
-      horizontal: 'left',
-      vertical: 'center',
-    },
-    textAlign: 'right',
-  },
-  context: {
-    formatDate: 'dd/MM/yyyy HH:mm:ss',
-    tz: 'Europe/Madrid',
-    locale: 'es',
-  },
-  editable: true,
-};
-
-const columnEditText: ColDef = {
-  colId: 'name',
-  field: 'name',
-  headerName: 'Name',
-  CellEditor: EditInput,
-  cellStyle: {
-    align: {
-      horizontal: 'left',
-      vertical: 'center',
-    },
-    textAlign: 'right',
-  },
-  editable: true,
-};
-
-const columnEditTextNumber: ColDef = {
-  colId: 'age',
-  field: 'age',
-  headerName: 'age',
-  CellEditor: EditNumber,
-  cellStyle: {
-    align: {
-      horizontal: 'left',
-      vertical: 'center',
-    },
-    textAlign: 'right',
-  },
-  editable: true,
-};
-
-const columnEditTextArea: ColDef = {
-  colId: 'name',
-  field: 'name',
-  headerName: 'Name',
-  CellEditor: EditTextArea,
-  cellStyle: {
-    align: {
-      horizontal: 'left',
-      vertical: 'center',
-    },
-    textAlign: 'right',
-  },
-  editable: true,
-};
-
-const columnEditBoolean: ColDef = {
-  colId: 'booleanValue',
-  field: 'booleanValue',
-  headerName: 'booleanValue',
-  CellEditor: EditBoolean,
-  cellStyle: {
-    align: {
-      horizontal: 'left',
-      vertical: 'center',
-    },
-    textAlign: 'right',
-  },
-  editable: true,
-};
-
-const columnEditTags: ColDef = {
-  colId: 'tags',
-  field: 'tags',
-  headerName: 'tags',
-  type: 'tags',
-  CellEditor: EditTags,
-  cellStyle: {
-    align: {
-      horizontal: 'left',
-      vertical: 'center',
-    },
-    textAlign: 'right',
-  },
-  editable: true,
-};
+import { TagProps } from 'packages/core/dist/types/src';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/Edition cells',
@@ -122,76 +26,20 @@ type Story = StoryObj<typeof Cell>;
 export const DateEditor: Story = {
   render: () =>
     (() => {
-      return (
-        <Cell column={columnEditDate} data={data[0][columnEditDate.field]} />
-      );
-    })(),
-};
+      const [date, setDate] = React.useState(new Date().toISOString());
+      const onChange = (newDate: string) => setDate(newDate);
 
-export const TextEditor: Story = {
-  render: () =>
-    (() => {
-      return (
-        <Cell column={columnEditText} data={data[0][columnEditText.field]} />
-      );
-    })(),
-};
-
-export const NumberEditor: Story = {
-  render: () =>
-    (() => {
-      return (
-        <Cell
-          column={columnEditTextNumber}
-          data={data[0][columnEditTextNumber.field]}
-        />
-      );
-    })(),
-};
-
-export const TextAreaEditor: Story = {
-  render: () =>
-    (() => {
-      return (
-        <Cell
-          column={columnEditTextArea}
-          data={data[0][columnEditTextArea.field]}
-        />
-      );
-    })(),
-};
-
-export const BooleanEditor: Story = {
-  render: () =>
-    (() => {
-      return (
-        <Cell
-          column={columnEditBoolean}
-          data={data[0][columnEditBoolean.field]}
-        />
-      );
-    })(),
-};
-
-export const TagsEditor: Story = {
-  render: () =>
-    (() => {
-      return (
-        <Cell column={columnEditTags} data={data[0][columnEditTags.field]} />
-      );
-    })(),
-};
-
-export const UsingACustomCellEditor: Story = {
-  render: () =>
-    (() => {
-      const [text, setText] = React.useState<CellData>('Hola');
-
-      const customEditorDef: ColDef = {
-        colId: 'text',
-        field: 'text',
-        headerName: 'text',
-        CellEditor: CustomCellEditor,
+      const columnEditDate: ColDef = {
+        colId: 'timestamp',
+        field: 'timestamp',
+        headerName: 'timestamp',
+        valueFormatter: () =>
+          dateFormatter(date, {
+            formatDate: 'dd/MM/yyyy HH:mm:ss',
+            tz: 'Europe/Madrid',
+            locale: 'es',
+          }),
+        CellEditor: () => EditDate({ value: date, onChange }),
         cellStyle: {
           align: {
             horizontal: 'left',
@@ -200,7 +48,163 @@ export const UsingACustomCellEditor: Story = {
           textAlign: 'right',
         },
         editable: true,
-        onChange: (newValue: CellData) => setText(newValue),
+      };
+
+      return <Cell column={columnEditDate} data={date} />;
+    })(),
+};
+
+export const TextEditor: Story = {
+  render: () =>
+    (() => {
+      const [text, setText] = React.useState('Hello!');
+      const onChange = (newText: string) => setText(newText);
+
+      const columnEditText: ColDef = {
+        colId: 'name',
+        field: 'name',
+        headerName: 'Name',
+        CellEditor: () => EditText({ value: text, onChange }),
+        cellStyle: {
+          align: {
+            horizontal: 'left',
+            vertical: 'center',
+          },
+          textAlign: 'right',
+        },
+        editable: true,
+      };
+
+      return <Cell column={columnEditText} data={text} />;
+    })(),
+};
+
+export const NumberEditor: Story = {
+  render: () =>
+    (() => {
+      const [number, setNumber] = React.useState(10);
+      const onChange = (newNumber: number) => setNumber(newNumber);
+
+      const columnEditTextNumber: ColDef = {
+        colId: 'age',
+        field: 'age',
+        headerName: 'age',
+        CellEditor: () => EditNumber({ value: number, onChange }),
+        cellStyle: {
+          align: {
+            horizontal: 'left',
+            vertical: 'center',
+          },
+          textAlign: 'right',
+        },
+        editable: true,
+      };
+      return <Cell column={columnEditTextNumber} data={number} />;
+    })(),
+};
+
+export const TextAreaEditor: Story = {
+  render: () =>
+    (() => {
+      const [text, setText] = React.useState(
+        `I am ridiculously anti-drug. So anti-drug that I am above 
+        suspicion in any way that involves suspicion, or testing of any kind. 
+        Mine was green. If you are not this tall, you may not ride the 
+        rollercoaster. See you guys tomorrow.`
+      );
+      const onChange = (newText: string) => setText(newText);
+
+      const columnEditTextArea: ColDef = {
+        colId: 'name',
+        field: 'name',
+        headerName: 'Name',
+        CellEditor: () => EditTextArea({ value: text, onChange }),
+        cellStyle: {
+          align: {
+            horizontal: 'left',
+            vertical: 'center',
+          },
+          textAlign: 'right',
+        },
+        editable: true,
+      };
+
+      return <Cell column={columnEditTextArea} data={text} />;
+    })(),
+};
+
+export const BooleanEditor: Story = {
+  render: () =>
+    (() => {
+      const [boolean, setBoolean] = React.useState(false);
+      const onChange = (newValue: boolean) => setBoolean(newValue);
+
+      const columnEditBoolean: ColDef = {
+        colId: 'booleanValue',
+        field: 'booleanValue',
+        headerName: 'booleanValue',
+        CellEditor: () => EditBoolean({ value: boolean, onChange }),
+        cellStyle: {
+          align: {
+            horizontal: 'left',
+            vertical: 'center',
+          },
+          textAlign: 'right',
+        },
+        editable: true,
+      };
+
+      return <Cell column={columnEditBoolean} data={boolean} />;
+    })(),
+};
+
+export const TagsEditor: Story = {
+  render: () =>
+    (() => {
+      const [tags, setTags] = React.useState<TagProps[]>(
+        data[0]['tags'] as TagProps[]
+      );
+
+      const onChange = (newTags: TagProps[]) => setTags(newTags);
+
+      const columnEditTags: ColDef = {
+        colId: 'tags',
+        field: 'tags',
+        headerName: 'tags',
+        type: 'tags',
+        CellEditor: () => EditTags({ value: tags, onChange }),
+        cellStyle: {
+          align: {
+            horizontal: 'left',
+            vertical: 'center',
+          },
+          textAlign: 'right',
+        },
+        editable: true,
+      };
+      return <Cell column={columnEditTags} data={tags} />;
+    })(),
+};
+
+export const UsingACustomCellEditor: Story = {
+  render: () =>
+    (() => {
+      const [text, setText] = React.useState<CellData>('Hola');
+      const onChange = (newValue: CellData) => setText(newValue);
+
+      const customEditorDef: ColDef = {
+        colId: 'text',
+        field: 'text',
+        headerName: 'text',
+        CellEditor: () => CustomCellEditor({ value: text, onChange }),
+        cellStyle: {
+          align: {
+            horizontal: 'left',
+            vertical: 'center',
+          },
+          textAlign: 'right',
+        },
+        editable: true,
       };
 
       return <Cell column={customEditorDef} data={text} />;

@@ -1,12 +1,14 @@
 import React, { FormEvent } from 'react';
 import { InputControl } from '@devoinc/genesys-ui';
+import { CellData } from '../declarations';
 
 interface EditInputProps {
-  value: string | number;
+  // Text Edit Cell accepts any value type as it is the default edit cell
+  value: CellData;
   onChange?: (newValue: string) => void;
 }
 
-export const EditInput: React.FC<EditInputProps> = ({ value, onChange }) => (
+export const EditText: React.FC<EditInputProps> = ({ value, onChange }) => (
   <InputControl
     type={'text'}
     aria-label={'Text input'}

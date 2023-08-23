@@ -23,13 +23,12 @@ export const Cell: React.FC<CellProps> = ({ data, column }) => {
     tooltipField,
     isDragging,
     valueFormatter,
-    context,
   } = column;
 
   const cellRef = React.useRef(null);
 
   const { editionContent, viewContent, isEditMode, onClick, setIsEditMode } =
-    useRenderContent(CellEditor, column, context, data, type, valueFormatter);
+    useRenderContent(CellEditor, column, data, type, valueFormatter);
 
   useOnEventOutside({
     references: [cellRef, editionContent, viewContent],

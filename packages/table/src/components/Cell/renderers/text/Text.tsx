@@ -7,5 +7,5 @@ interface TextProps {
 }
 
 export const RenderCellContentText: React.FC<TextProps> = ({ value }) => (
-  <StyledTableCellRendererText>{value}</StyledTableCellRendererText>
+  <StyledTableCellRendererText>{value.toString()}</StyledTableCellRendererText>
 );

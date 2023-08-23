@@ -11,9 +11,9 @@ export const EditDate: React.FC<DateCellEditorProps> = ({
   onChange,
 }) => (
   <DateTimePicker
-    onChange={(event) => onChange?.((event.target as HTMLInputElement).value)}
-    onApply={undefined}
-    onCancel={undefined}
+    onChange={() => undefined}
+    onApply={(newDate: number) => onChange?.(new Date(newDate).toISOString())}
+    onCancel={() => undefined}
     value={new Date(value)}
   />
 );
