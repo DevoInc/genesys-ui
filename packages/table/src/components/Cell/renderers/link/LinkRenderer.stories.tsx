@@ -6,10 +6,10 @@ import { ColDef } from '../../declarations';
 import { data } from '../../../../stories/data';
 
 const column: ColDef = {
-  colId: 'tags',
-  field: 'tags',
-  headerName: 'tags',
-  type: 'groupTags',
+  colId: 'picture',
+  field: 'picture',
+  headerName: 'picture',
+  type: 'link',
   cellStyle: {
     align: {
       horizontal: 'left',
@@ -18,9 +18,8 @@ const column: ColDef = {
     textAlign: 'right',
   },
 };
-
 const meta: Meta<typeof Cell> = {
-  title: 'Components/Table/Cell/group tags renderer',
+  title: 'Components/Table/Cell/Base renderers/Link',
   component: Cell,
 };
 

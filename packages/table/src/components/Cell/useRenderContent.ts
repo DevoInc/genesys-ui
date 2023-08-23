@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { EditInput } from './editCell/EditText';
-import { getRenderer } from './cellRenderer';
+import { EditInput } from './editors';
+import { getRenderer } from './renderers';
 import { ColumnType } from '../declarations';
 import {
   CellData,

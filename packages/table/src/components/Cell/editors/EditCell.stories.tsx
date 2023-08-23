@@ -99,6 +99,7 @@ const columnEditTags: ColDef = {
   colId: 'tags',
   field: 'tags',
   headerName: 'tags',
+  type: 'tags',
   CellEditor: EditTags,
   cellStyle: {
     align: {
@@ -111,14 +112,14 @@ const columnEditTags: ColDef = {
 };
 
 const meta: Meta<typeof Cell> = {
-  title: 'Components/Table/Cell/edit cell',
+  title: 'Components/Table/Cell/Edition cells',
   component: Cell,
 };
 
 export default meta;
 type Story = StoryObj<typeof Cell>;
 
-export const DateEdit: Story = {
+export const DateEditor: Story = {
   render: () =>
     (() => {
       return (
@@ -127,7 +128,7 @@ export const DateEdit: Story = {
     })(),
 };
 
-export const ColumnEditText: Story = {
+export const TextEditor: Story = {
   render: () =>
     (() => {
       return (
@@ -136,7 +137,7 @@ export const ColumnEditText: Story = {
     })(),
 };
 
-export const ColumnEditNumber: Story = {
+export const NumberEditor: Story = {
   render: () =>
     (() => {
       return (
@@ -148,7 +149,7 @@ export const ColumnEditNumber: Story = {
     })(),
 };
 
-export const ColumnEditTextArea: Story = {
+export const TextAreaEditor: Story = {
   render: () =>
     (() => {
       return (
@@ -160,7 +161,7 @@ export const ColumnEditTextArea: Story = {
     })(),
 };
 
-export const ColumnEditBoolean: Story = {
+export const BooleanEditor: Story = {
   render: () =>
     (() => {
       return (
@@ -172,7 +173,7 @@ export const ColumnEditBoolean: Story = {
     })(),
 };
 
-export const ColumnEditTags: Story = {
+export const TagsEditor: Story = {
   render: () =>
     (() => {
       return (

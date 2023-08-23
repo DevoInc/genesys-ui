@@ -1,22 +1,15 @@
 import * as React from 'react';
-import { FeedbackColorScheme, Tag } from '@devoinc/genesys-ui';
-
+import { BaseTagProps, Tag } from '@devoinc/genesys-ui';
 import { StyledCellTagGroup } from './StyledCellTagGroup';
 
-interface GroupTagsProps {
-  value?: {
-    colorScheme: FeedbackColorScheme;
-    text: string;
-    icon: string;
-  }[];
+interface TagsProps {
+  value?: BaseTagProps[];
 }
 
-export const RenderCellContentGroupTags: React.FC<GroupTagsProps> = ({
-  value,
-}) => {
+export const TagsCellRenderer: React.FC<TagsProps> = ({ value }) => {
   return (
     <StyledCellTagGroup colorScheme={'blend-base'}>
-      {value.map((tag) => {
+      {value.map((tag: BaseTagProps) => {
         return (
           <Tag
             colorScheme={tag.colorScheme}
