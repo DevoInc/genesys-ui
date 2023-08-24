@@ -20,7 +20,7 @@ export const useRenderContent = (
 
   const editionContent = cellEditor?.() ?? EditText({ value: data });
 
-  const onDoubleClick = () => setIsEditMode(columnDef.editable && !isEditMode);
+  const onDoubleClick = () => setIsEditMode(columnDef.editable);
 
   return {
     editionContent,
