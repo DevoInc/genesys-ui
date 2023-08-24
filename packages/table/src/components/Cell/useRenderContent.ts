@@ -1,17 +1,15 @@
 import * as React from 'react';
 import { EditText } from './editors';
 import { getRenderer } from './renderers';
-import { ColumnType } from '../declarations';
 import { CellData, ColDef } from './declarations';
 
 export const useRenderContent = (
   cellEditor: () => React.ReactNode,
   columnDef: ColDef,
   data: CellData,
-  type: ColumnType,
   valueFormatter: (value: CellData) => void
 ) => {
-  const renderContent = getRenderer(type);
+  const renderContent = getRenderer(columnDef.type);
 
   const viewContent = renderContent({
     value: valueFormatter ? valueFormatter(data) : data,
@@ -22,12 +20,12 @@ export const useRenderContent = (
 
   const editionContent = cellEditor?.() ?? EditText({ value: data });
 
-  const onClick = () => setIsEditMode(columnDef.editable && !isEditMode);
+  const onDoubleClick = () => setIsEditMode(columnDef.editable && !isEditMode);
 
   return {
     editionContent,
     viewContent,
-    onClick,
+    onDoubleClick,
     isEditMode,
     setIsEditMode,
   };

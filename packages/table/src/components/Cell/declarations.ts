@@ -9,44 +9,41 @@ export type CellData =
   | TagProps[]
   | undefined;
 
-export interface CellEditorProps {
+export interface GenericCellEditorProps {
   value: any;
   onChange?: (newValue: any) => void;
 }
 
 export interface ColDef {
-  // identificador unico, si no existe se usara field y si no se añadira un identificador unico
-  colId?: string;
-  // example name or medal.gold
-  // { name: santi, medal: { gold: 2 }}
-  field?: string;
-  type?: ColumnType;
-  // https://www.ag-grid.com/javascript-data-grid/value-getters/
-  valueGetter?: (params) => void;
-  // https://www.ag-grid.com/javascript-data-grid/value-formatters/
-  valueFormatter?: (value: CellData) => void;
-  hide?: boolean;
-  initialHide?: boolean;
-  editable?: boolean;
   // https://www.ag-grid.com/javascript-data-grid/component-cell-editor/
   CellEditor?: () => React.ReactNode;
-  width?: number;
-  maxWidth?: number;
-  minWidth?: number;
-  headerName?: string;
   cellStyle?: {
+    minWidth?: number;
+    maxWidth?: number;
+    width?: number;
     align?: {
       horizontal?: 'left' | 'center' | 'right';
       vertical?: 'top' | 'bottom' | 'center';
     };
     textAlign?: 'left' | 'center' | 'right';
     density?: 'default' | 'compact' | 'comfortable';
+    boxShadow?: 'base' | 'strong';
   };
-  tooltipField?: string;
+  colId?: string;
+  editable?: boolean;
   expandedRow?: boolean;
-  boxShadow?: 'base' | 'strong';
+  field?: string;
+  headerName?: string;
+  hide?: boolean;
+  initialHide?: boolean;
   isDragging?: boolean;
   onReset?: (initialValue: CellData) => void;
+  tooltipField?: string;
+  type?: ColumnType;
+  // https://www.ag-grid.com/javascript-data-grid/value-getters/
+  valueGetter?: (params) => void;
+  // https://www.ag-grid.com/javascript-data-grid/value-formatters/
+  valueFormatter?: (value: CellData) => void;
 }
 
 export type DefaultColDef = ColDef;

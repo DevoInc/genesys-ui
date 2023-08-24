@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { SwitchControl } from '@devoinc/genesys-ui';
-import { CellEditorProps } from '../declarations';
+import { GenericCellEditorProps } from '../declarations';
 
-export const EditBoolean: React.FC<CellEditorProps> = ({ value, onChange }) => {
+export const EditBoolean: React.FC<GenericCellEditorProps> = ({ value, onChange }) => {
   return (
     <SwitchControl
       checked={!!value}
