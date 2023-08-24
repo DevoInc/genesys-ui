@@ -2,7 +2,6 @@ import * as React from 'react';
 import { StyledTableCellWrapper } from './StyledTableCellWrapper';
 import { CellData, ColDef } from './declarations';
 import { useRenderContent } from './useRenderContent';
-import { useOnEventOutside } from '@devoinc/genesys-ui';
 import { useInitialState } from './editors/useInitialState';
 
 interface CellProps {
@@ -23,22 +22,10 @@ export const Cell: React.FC<CellProps> = ({ data, column }) => {
     tooltipField,
     valueFormatter,
   } = column;
-
-  const cellRef = React.useRef(null);
   useInitialState(data, onReset);
 
-  const {
-    editionContent,
-    isEditMode,
-    onDoubleClick,
-    setIsEditMode,
-    viewContent,
-  } = useRenderContent(CellEditor, column, data, valueFormatter);
-
-  useOnEventOutside({
-    references: [cellRef, editionContent, viewContent],
-    handler: () => setIsEditMode(false),
-  });
+  const { cellRef, editionContent, isEditMode, onDoubleClick, viewContent } =
+    useRenderContent(CellEditor, column, data, valueFormatter);
 
   return (
     <StyledTableCellWrapper

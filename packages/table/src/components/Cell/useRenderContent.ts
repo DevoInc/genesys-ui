@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useOnEventOutside } from '@devoinc/genesys-ui';
 import { EditText } from './editors';
 import { getRenderer } from './renderers';
 import { CellData, ColDef } from './declarations';
@@ -9,6 +10,7 @@ export const useRenderContent = (
   data: CellData,
   valueFormatter: (value: CellData) => void
 ) => {
+  const cellRef = React.useRef(null);
   const renderContent = getRenderer(columnDef.type);
 
   const viewContent = renderContent({
@@ -22,7 +24,13 @@ export const useRenderContent = (
 
   const onDoubleClick = () => setIsEditMode(columnDef.editable);
 
+  useOnEventOutside({
+    references: [cellRef, editionContent, viewContent],
+    handler: () => setIsEditMode(false),
+  });
+
   return {
+    cellRef,
     editionContent,
     viewContent,
     onDoubleClick,
