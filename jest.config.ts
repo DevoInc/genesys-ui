@@ -37,6 +37,11 @@ const config = {
       displayName: '@devoinc/genesys-ui-form',
       testMatch: ['<rootDir>/packages/form/src/**/*.test.ts'],
     },
+    {
+      ...baseConfig,
+      displayName: '@devoinc/genesys-ui-table',
+      testMatch: ['<rootDir>/packages/table/src/**/*.test.ts'],
+    },
   ],
 };
 
