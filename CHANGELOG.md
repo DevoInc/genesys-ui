@@ -1,5 +1,20 @@
 # Changelog
 
+### [1.0.3-alpha.21](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.20...v1.0.3-alpha.21) (2023-08-24)
+
+
+### Features
+
+* **Brand:** Bump tokens version to `v6.0.0` ([c037b10](https://github.com/DevoInc/genesys-ui/commit/c037b10b7ee8239521e37728424c5abdd30ec058))
+* QUV-1096 Elevated surfaces with border but the ground one ([f9974a7](https://github.com/DevoInc/genesys-ui/commit/f9974a7b7cb2a7e565c5eae30cdef48dc9c0401e))
+
+
+### Bug Fixes
+
+* fix error in tokens types import ([c23471c](https://github.com/DevoInc/genesys-ui/commit/c23471ce002d310f9273de4fc7c1baf3125ae25a))
+* fixed lint ([fe4a68e](https://github.com/DevoInc/genesys-ui/commit/fe4a68e373b769bc1d4eb9131bc1d77882512893))
+* **Popper:** QUV-1095 incorrect position on mount ([#23](https://github.com/DevoInc/genesys-ui/issues/23)) ([a41066e](https://github.com/DevoInc/genesys-ui/commit/a41066e8f40d897236d1d8ce764a2a3c3bb69fc4))
+
 ### [1.0.3-alpha.20](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.19...v1.0.3-alpha.20) (2023-07-27)
 
 
