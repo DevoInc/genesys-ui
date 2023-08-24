@@ -46,7 +46,7 @@ export interface ColDef {
   expandedRow?: boolean;
   boxShadow?: 'base' | 'strong';
   isDragging?: boolean;
-  onChange?: (newValue: CellData) => void;
+  onReset?: (initialValue: CellData) => void;
 }
 
 export type DefaultColDef = ColDef;

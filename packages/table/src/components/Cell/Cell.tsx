@@ -4,6 +4,7 @@ import { CellData, ColDef } from './declarations';
 import { useRenderContent } from './useRenderContent';
 import { useOnEventOutside } from '@devoinc/genesys-ui';
 import { ColumnType } from '../declarations';
+import { useInitialState } from './editors/useInitialState';
 
 interface CellProps {
   data?: CellData;
@@ -23,9 +24,11 @@ export const Cell: React.FC<CellProps> = ({ data, column }) => {
     tooltipField,
     isDragging,
     valueFormatter,
+    onReset,
   } = column;
 
   const cellRef = React.useRef(null);
+  useInitialState(data, onReset);
 
   const { editionContent, viewContent, isEditMode, onClick, setIsEditMode } =
     useRenderContent(CellEditor, column, data, type, valueFormatter);
