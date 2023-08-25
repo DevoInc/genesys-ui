@@ -23,6 +23,31 @@ const meta: Meta<typeof Cell> = {
 export default meta;
 type Story = StoryObj<typeof Cell>;
 
+export const TextEditor: Story = {
+  render: () =>
+    (() => {
+      const [text, setText] = React.useState('Hello!');
+      const onChange = (newText: string) => setText(newText);
+
+      const columnEditText: ColDef = {
+        colId: 'name',
+        field: 'name',
+        headerName: 'Name',
+        CellEditor: () => EditText({ value: text, onChange }),
+        cellStyle: {
+          align: {
+            horizontal: 'left',
+            vertical: 'center',
+          },
+          textAlign: 'right',
+        },
+        editable: true,
+      };
+
+      return <Cell column={columnEditText} data={text} />;
+    })(),
+};
+
 export const DateEditor: Story = {
   render: () =>
     (() => {
@@ -51,31 +76,6 @@ export const DateEditor: Story = {
       };
 
       return <Cell column={columnEditDate} data={date} />;
-    })(),
-};
-
-export const TextEditor: Story = {
-  render: () =>
-    (() => {
-      const [text, setText] = React.useState('Hello!');
-      const onChange = (newText: string) => setText(newText);
-
-      const columnEditText: ColDef = {
-        colId: 'name',
-        field: 'name',
-        headerName: 'Name',
-        CellEditor: () => EditText({ value: text, onChange }),
-        cellStyle: {
-          align: {
-            horizontal: 'left',
-            vertical: 'center',
-          },
-          textAlign: 'right',
-        },
-        editable: true,
-      };
-
-      return <Cell column={columnEditText} data={text} />;
     })(),
 };
 
