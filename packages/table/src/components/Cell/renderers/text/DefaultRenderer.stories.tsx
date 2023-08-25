@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Cell } from '../../Cell';
-import { ColDef } from '../../declarations';
+import { CellData, ColDef } from '../../declarations';
 import { data } from '../../../../stories/data';
 import { dateFormatter } from '../../formatters';
 
@@ -22,18 +22,18 @@ const columnDate: ColDef = {
   colId: 'timestamp',
   field: 'timestamp',
   headerName: 'timestamp',
-  valueFormatter: dateFormatter,
+  valueFormatter: (value: CellData) =>
+    dateFormatter(value as string, {
+      formatDate: 'dd/MM/yyyy HH:mm:ss',
+      tz: 'Europe/Madrid',
+      locale: 'es',
+    }),
   cellStyle: {
     align: {
       horizontal: 'left',
       vertical: 'center',
     },
     textAlign: 'right',
-  },
-  context: {
-    formatDate: 'dd/MM/yyyy HH:mm:ss',
-    tz: 'Europe/Madrid',
-    locale: 'es',
   },
 };
 
