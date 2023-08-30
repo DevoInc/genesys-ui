@@ -58,7 +58,7 @@ const hexToB = (h: string) => parseInt(cutHex(h).substring(4, 6), 16);
 export const getAccTextColor = (
   bgColor: string,
   lightColor: string,
-  darkColor: string
+  darkColor: string,
 ) => {
   const threshold = 128;
   const isHex = bgColor.startsWith('#');

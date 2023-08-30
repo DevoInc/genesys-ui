@@ -8,7 +8,7 @@ import { SelectOption } from '../declarations';
 export interface OptionProps<Option> extends RSOptionProps<Option> {}
 
 export const Option = <Option extends SelectOption>(
-  props: OptionProps<Option>
+  props: OptionProps<Option>,
 ): React.ReactElement<OptionProps<Option>> => {
   return (
     <components.Option {...props}>

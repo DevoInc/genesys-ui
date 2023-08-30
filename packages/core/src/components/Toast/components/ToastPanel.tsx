@@ -98,7 +98,7 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
             status,
             theme,
           }),
-          styles
+          styles,
         )}
       >
         <ToastContent content={content} collapsed={showCollapsed} />

@@ -190,7 +190,8 @@ export const commonInputControlMixin = ({
     display: flex;
     appearance: none;
     position: relative;
-    transition: border ${fieldTokens.mutation.transitionDuration} ease-in-out,
+    transition:
+      border ${fieldTokens.mutation.transitionDuration} ease-in-out,
       box-shadow ${fieldTokens.mutation.transitionDuration} ease-in-out;
     outline: none;
     border-width: ${fieldTokens.shape.borderSize.base};

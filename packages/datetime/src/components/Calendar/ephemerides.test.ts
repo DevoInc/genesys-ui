@@ -74,7 +74,7 @@ describe('CalendarHelper', () => {
         validateDate: (ts) => boolean;
         invalidDates: number[];
       },
-      { value: string; classes: string; ts: number }[]
+      { value: string; classes: string; ts: number }[],
     ][] = [
       [
         'full range of days',

@@ -45,7 +45,8 @@ export const StyledColorPicker = styled.button<StyledColorPickerProps>`
       appearance: none;
       padding: 0;
       margin: 0;
-      transition: border ${transitionDuration} ease-in-out,
+      transition:
+        border ${transitionDuration} ease-in-out,
         box-shadow ${transitionDuration} ease-in-out;
       border-width: ${fieldTokens.shape.borderSize.base};
       border-style: solid;

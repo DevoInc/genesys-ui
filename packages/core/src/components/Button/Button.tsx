@@ -86,7 +86,7 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
       value,
       ...restNativeProps
     },
-    ref
+    ref,
   ) => {
     const defIconPosition: ButtonIconPosition =
       squared && !hasDropdown ? null : iconPosition;
@@ -195,7 +195,7 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
         )}
       </StyledButton>
     );
-  }
+  },
 );
 
 Button.displayName = 'Button';

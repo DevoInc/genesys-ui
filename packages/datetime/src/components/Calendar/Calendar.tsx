@@ -90,7 +90,7 @@ export const Calendar: React.FC<CalendarProps> = ({
         minDate,
       });
     },
-    [validateDate, maxDate, minDate]
+    [validateDate, maxDate, minDate],
   );
 
   const onMouseEnterCallback = React.useCallback(
@@ -100,7 +100,7 @@ export const Calendar: React.FC<CalendarProps> = ({
       }
       onMouseEnter?.(ts);
     },
-    [disableHoverDay, onMouseEnter]
+    [disableHoverDay, onMouseEnter],
   );
 
   const onMouseLeaveCallback = React.useCallback(() => {

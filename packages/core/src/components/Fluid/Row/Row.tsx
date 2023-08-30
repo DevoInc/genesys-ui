@@ -47,7 +47,7 @@ export const Row = React.forwardRef<HTMLDivElement, RowProps>(
       tooltip,
       ...reactGridRowProps
     },
-    ref
+    ref,
   ) => {
     const theme = useTheme();
     const layoutSpaceTokens = theme.alias.space.layout;
@@ -78,7 +78,7 @@ export const Row = React.forwardRef<HTMLDivElement, RowProps>(
         {children}
       </ReactGridRow>
     );
-  }
+  },
 );
 
 Row.displayName = 'Row';

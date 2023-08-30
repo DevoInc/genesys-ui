@@ -86,7 +86,7 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
       containerRect: DOMRect,
       splitterRect: DOMRect,
       clientPosition: ClientPositionProps, // TODO: this value can be extracted from splitterRect
-      offsetMouse: boolean
+      offsetMouse: boolean,
     ) => {
       let totalSize;
       let splitterSize;
@@ -126,12 +126,12 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
       if (primaryPaneSize < primaryMinSize) {
         secondaryPaneSize = Math.max(
           secondaryPaneSize - (primaryMinSize - primaryPaneSize),
-          0
+          0,
         );
       } else if (secondaryPaneSize < secondaryMinSize) {
         secondaryPaneSize = Math.min(
           totalSize - splitterSize - primaryMinSize,
-          secondaryMinSize
+          secondaryMinSize,
         );
       } else if (secondaryPaneSize > secondaryMaxSize) {
         secondaryPaneSize = secondaryMaxSize;
@@ -146,7 +146,7 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
       secondaryMaxSize,
       secondaryMinSize,
       vertical,
-    ]
+    ],
   );
 
   const handleResize = React.useCallback(() => {
@@ -160,7 +160,7 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
           left: splitterRect.left,
           top: splitterRect.top,
         },
-        false
+        false,
       );
       setSecondaryPaneSize(secondaryPaneSize);
     }
@@ -177,7 +177,7 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
           left: e.clientX,
           top: e.clientY,
         },
-        true
+        true,
       );
       clearSelection();
       setSecondaryPaneSize(secondaryPaneSize);
@@ -233,7 +233,7 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
               containerRect.top +
               (containerRect.height - splitterRect.height) / 2,
           },
-          false
+          false,
         );
       }
     }
@@ -281,7 +281,7 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
         size={newSize}
       >
         {child[i]}
-      </Pane>
+      </Pane>,
     );
   }
 

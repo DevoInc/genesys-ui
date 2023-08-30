@@ -27,7 +27,7 @@ describe('BaseButton', () => {
       render(<Button data-testid={TEST_ID} hasDropdown />);
       const button = screen.getByTestId(TEST_ID);
       expect(button.getElementsByTagName('i')[0]).toHaveClass(
-        'gi-arrow_down_fat'
+        'gi-arrow_down_fat',
       );
     });
 
@@ -40,7 +40,7 @@ describe('BaseButton', () => {
     test('When has children', () => {
       render(<Button data-testid={TEST_ID}>Any label</Button>);
       expect(
-        screen.getByRole('button', { name: 'Any label' })
+        screen.getByRole('button', { name: 'Any label' }),
       ).toBeInTheDocument();
     });
 
@@ -53,10 +53,10 @@ describe('BaseButton', () => {
       render(
         <Button data-testid={TEST_ID} selectionScheme={'single'}>
           Selectable button
-        </Button>
+        </Button>,
       );
       expect(
-        screen.getByRole('radio', { name: 'Selectable button' })
+        screen.getByRole('radio', { name: 'Selectable button' }),
       ).toBeInTheDocument();
     });
 
@@ -64,10 +64,10 @@ describe('BaseButton', () => {
       render(
         <Button data-testid={TEST_ID} id={TEST_ID} selectionScheme={'multiple'}>
           Selectable button
-        </Button>
+        </Button>,
       );
       expect(
-        screen.getByRole('checkbox', { name: 'Selectable button' })
+        screen.getByRole('checkbox', { name: 'Selectable button' }),
       ).toBeInTheDocument();
     });
   });

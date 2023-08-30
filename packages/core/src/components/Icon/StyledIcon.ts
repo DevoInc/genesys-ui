@@ -21,7 +21,7 @@ export interface StyledIconProps {
 export const StyledIcon = styled.i.attrs(
   ({ iconId }: Pick<StyledIconProps, 'iconId'>) => ({
     className: iconId as string,
-  })
+  }),
 )<StyledIconProps>`
   ${({ color, colorScheme, size, strong, theme }) => {
     const sizeTokens = theme.alias.size.square.icon.base;

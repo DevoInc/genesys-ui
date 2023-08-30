@@ -61,7 +61,7 @@ const InternalTabs: React.FC<TabsProps> = ({
 
     activeMarkRef.current.style.width = `${roundValues(activeTabWidth)}px`;
     activeMarkRef.current.style.left = `${roundValues(
-      activeTabLeft - navContainerLeft
+      activeTabLeft - navContainerLeft,
     )}px`;
   };
 

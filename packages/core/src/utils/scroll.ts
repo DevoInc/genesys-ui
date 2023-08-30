@@ -3,7 +3,7 @@ import { ClientSize } from '../declarations/dom';
 export const updateHasScroll = (
   measures: ClientSize,
   hasScroll: boolean,
-  hasScrollSetter: React.Dispatch<React.SetStateAction<boolean>>
+  hasScrollSetter: React.Dispatch<React.SetStateAction<boolean>>,
 ) => {
   if (measures) {
     const newHasScroll =

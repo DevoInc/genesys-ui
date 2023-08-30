@@ -21,7 +21,7 @@ export const FloatPanelClose: React.FC<FloatPanelCloseProps> = ({
           top: ${theme.alias.space.cmp.sm};
           right: ${theme.alias.space.cmp.sm};
         `,
-        styles
+        styles,
       )}
     />
   );

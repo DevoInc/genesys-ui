@@ -97,18 +97,17 @@ export interface StyledCodeBlockProps {
 }
 
 export const StyledCodeBlock = styled.code<StyledCodeBlockProps>`
-  ${({ size, textAlign, theme, truncateLine }) =>
-    css`
-      ${getTypoCss({
-        variant: 'mono',
-        textAlign,
-        theme,
-        truncateLine,
-        size,
-      })};
-      display: block;
-      word-break: break-word;
-    `}
+  ${({ size, textAlign, theme, truncateLine }) => css`
+    ${getTypoCss({
+      variant: 'mono',
+      textAlign,
+      theme,
+      truncateLine,
+      size,
+    })};
+    display: block;
+    word-break: break-word;
+  `}
 `;
 
 export const StyledCodeInline = styled.code`

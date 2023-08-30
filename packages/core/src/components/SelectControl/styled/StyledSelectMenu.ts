@@ -109,7 +109,8 @@ export const StyledSelectMenu = styled.div.attrs({
           ${truncateTypoMixin()};
           position: relative;
           display: block;
-          transition: background-color ${fieldTransitionDuration},
+          transition:
+            background-color ${fieldTransitionDuration},
             color ${fieldTransitionDuration};
           border-radius: ${optionTokens.shape.borderRadius};
           min-height: ${optionHeight};

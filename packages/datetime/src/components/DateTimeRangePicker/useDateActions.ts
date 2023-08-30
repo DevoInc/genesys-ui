@@ -13,11 +13,11 @@ export const useDateActions = (to: number | Date) => {
             year: elements[0],
             month: elements[1],
           }),
-          1
-        )
+          1,
+        ),
       );
     },
-    []
+    [],
   );
 
   const onChangeMonthTo = React.useCallback(
@@ -27,10 +27,10 @@ export const useDateActions = (to: number | Date) => {
         set(oldDate, {
           year: elements[0],
           month: elements[1],
-        })
+        }),
       );
     },
-    []
+    [],
   );
 
   const onPrevMonthClick = React.useCallback(() => {

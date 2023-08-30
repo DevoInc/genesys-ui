@@ -22,6 +22,6 @@ export const getBorderRadius = ({ coords, value }: Radius = {}) =>
     topRight: `0 ${value} 0 0`,
     bottomLeft: `0 0 0 ${value}`,
     bottomRight: `0 0 ${value} 0`,
-  }[coords] || null);
+  })[coords] || null;
 
 getBorderRadius({ coords: 'all', value: '12px' });

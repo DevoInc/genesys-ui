@@ -25,7 +25,7 @@ export interface StyledHiddenInputProps
 export const StyledHiddenInput = styled.input.attrs(
   ({ selectionScheme }: StyledHiddenInputProps) => ({
     type: selectionScheme === 'single' ? 'radio' : 'checkbox',
-  })
+  }),
 )<StyledHiddenInputProps>`
   ${srOnlyMixin}
 `;

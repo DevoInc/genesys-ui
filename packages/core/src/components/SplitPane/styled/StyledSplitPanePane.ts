@@ -29,7 +29,7 @@ export const StyledSplitPanePane = styled.div.attrs<StyledSplitPanePaneProps>(
       flex: primary ? '1 1 auto' : flex,
       padding: padding ? padding : null,
     },
-  })
+  }),
 )<StyledSplitPanePaneProps>`
   position: relative;
   flex: 0 0 auto;

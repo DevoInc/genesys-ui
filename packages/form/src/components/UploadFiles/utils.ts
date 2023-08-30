@@ -2,7 +2,7 @@ import { UploadFilesProps } from './UploadFiles';
 
 export const detectUnknownTypes =
   (
-    extensions: UploadFilesProps['acceptedFileTypes']
+    extensions: UploadFilesProps['acceptedFileTypes'],
   ): UploadFilesProps['fileValidateTypeDetectType'] =>
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   (source, type) =>
@@ -19,5 +19,5 @@ export const detectUnknownTypes =
     });
 
 export const buildErrorMessage = (
-  extensionTypes: UploadFilesProps['acceptedFileTypes'] = []
+  extensionTypes: UploadFilesProps['acceptedFileTypes'] = [],
 ): string => `Expects: ${extensionTypes.map((x) => `${x}`).join(', ')}`;

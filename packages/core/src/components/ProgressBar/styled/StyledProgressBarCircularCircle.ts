@@ -16,7 +16,7 @@ export const StyledProgressBarCircular = styled.circle.attrs(
     strokeWidth: getStroke(size),
     r: getRadio(size),
     fill: 'none',
-  })
+  }),
 )<StyledProgressBarCircularProps>`
   ${({ colorScheme, status, theme }) => {
     const progressBarTokens = theme.cmp.progressBar;

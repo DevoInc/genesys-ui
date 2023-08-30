@@ -59,7 +59,7 @@ export const useCalendarForwardBackwardBehavior = ({
       }
       setReverse(!reverse);
     },
-    [from, reverse, to]
+    [from, reverse, to],
   );
 
   return {

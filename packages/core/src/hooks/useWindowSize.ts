@@ -21,7 +21,7 @@ export const useWindowSize = (delay = 0) => {
     if (typeof window !== 'undefined') {
       return throttle(
         () => setSize([window.innerWidth, window.innerHeight]),
-        delay
+        delay,
       );
     }
   }, [delay]);

@@ -37,7 +37,7 @@ export const PanelContainer: React.FC<PanelContainerProps> = ({
           elevation,
           theme,
         }),
-        styles
+        styles,
       )}
     >
       {children}

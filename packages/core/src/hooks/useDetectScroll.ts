@@ -9,7 +9,7 @@ export const useDetectScroll = () => {
 
   React.useLayoutEffect(
     () => updateHasScroll(measures, hasScroll, setHasScroll),
-    [measures, hasScroll, setHasScroll]
+    [measures, hasScroll, setHasScroll],
   );
 
   return { targetElRef, hasScroll };

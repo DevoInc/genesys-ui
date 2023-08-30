@@ -140,7 +140,7 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
             removeSpace: removeContentSpace,
             theme,
           }),
-          subcomponentStyles?.body
+          subcomponentStyles?.body,
         )}
       >
         {children}
@@ -152,7 +152,7 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
           hasBoxShadow
           styles={concat(
             panelSectionFooterMixin({ theme }),
-            subcomponentStyles.footer
+            subcomponentStyles.footer,
           )}
         >
           {footerContent}

@@ -48,7 +48,7 @@ export const WithNavigation: Story = {
 
       React.useEffect(
         () => setSteps((preSteps) => updateSteps(preSteps, current)),
-        [current, updateSteps]
+        [current, updateSteps],
       );
 
       return (

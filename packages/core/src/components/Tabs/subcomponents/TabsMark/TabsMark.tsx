@@ -11,7 +11,7 @@ export interface TabsMarkProps
 export const TabsMark = React.forwardRef<HTMLDivElement, TabsMarkProps>(
   ({ colorScheme, styles }, ref) => (
     <StyledTabsMark colorScheme={colorScheme} ref={ref} css={styles} />
-  )
+  ),
 );
 
 TabsMark.displayName = 'TabsMark';

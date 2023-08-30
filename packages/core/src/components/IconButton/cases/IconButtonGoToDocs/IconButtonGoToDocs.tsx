@@ -49,7 +49,7 @@ export const IconButtonGoToDocs = React.forwardRef<
       target = '_blank',
       ...restIconButtonProps
     },
-    ref
+    ref,
   ) => {
     const theme = useTheme();
     return (
@@ -66,7 +66,7 @@ export const IconButtonGoToDocs = React.forwardRef<
         styles={concat(iconButtonGoToDocsMixin({ size, state, theme }), styles)}
       />
     );
-  }
+  },
 );
 
 IconButtonGoToDocs.displayName = 'IconButtonGoToDocs';

@@ -15,7 +15,7 @@ export const IconButton = React.forwardRef<HTMLElement, IconButtonProps>(
       state = 'enabled',
       ...restButtonProps
     },
-    ref
+    ref,
   ) => {
     return (
       <Button
@@ -29,7 +29,7 @@ export const IconButton = React.forwardRef<HTMLElement, IconButtonProps>(
         {children}
       </Button>
     );
-  }
+  },
 );
 
 IconButton.displayName = 'IconButton';

@@ -2,7 +2,7 @@ import { KeyboardEventsAction, KeyboardEventsMove } from './declarations';
 
 export const actionItemByKeyBoard = (
   event: React.KeyboardEvent,
-  action: (event: React.KeyboardEvent) => void
+  action: (event: React.KeyboardEvent) => void,
 ) => {
   const { key } = event;
   const enter: KeyboardEventsAction = 'Enter';
@@ -17,7 +17,7 @@ export const navigateBetweenSubMenuByKeyBoard = (
   event: React.KeyboardEvent,
   action: (event: any) => void,
   expanded: boolean,
-  ref: React.RefObject<HTMLElement>
+  ref: React.RefObject<HTMLElement>,
 ) => {
   const { key } = event;
   const enter: KeyboardEventsAction = 'Enter';
@@ -55,7 +55,7 @@ export const killEvent = (event: React.KeyboardEvent) => {
 
 export const navigateBetweenMenuItemByKeyboard = (
   event: React.KeyboardEvent,
-  action: (event: any) => void
+  action: (event: any) => void,
 ) => {
   const { key } = event;
   const up: KeyboardEventsMove = 'ArrowUp';

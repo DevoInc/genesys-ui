@@ -14,7 +14,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
     classNamePrefix: classNamePrefix || 'react-select',
     className: className || 'react-select__container',
     title: tooltip,
-  })
+  }),
 )`
   ${({
     addonToLeft,
@@ -63,7 +63,8 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
         &__control {
           flex-wrap: nowrap;
           flex: 1 1 100%;
-          transition: border ${fieldTransitionDuration} ease-in-out,
+          transition:
+            border ${fieldTransitionDuration} ease-in-out,
             box-shadow ${fieldTransitionDuration} ease-in-out;
           border-width: ${fieldTokens.shape.borderSize.base};
           border-style: solid;

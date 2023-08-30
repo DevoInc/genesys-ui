@@ -204,6 +204,6 @@ export const useDefaultPresets = (): PresetGroup[] => {
         ],
       },
     ],
-    []
+    [],
   );
 };

@@ -39,7 +39,7 @@ const InternalPresets: React.FC<PresetsProps> = ({
     (option) => {
       onChange?.(JSON.parse(option.value));
     },
-    [onChange]
+    [onChange],
   );
 
   const serializedValue = React.useMemo(() => JSON.stringify(value), [value]);

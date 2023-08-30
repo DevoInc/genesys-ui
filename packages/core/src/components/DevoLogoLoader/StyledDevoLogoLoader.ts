@@ -94,7 +94,8 @@ export const StyledDevoLogoLoader = styled.div<StyledDevoLogoLoaderProps>`
             ${FLOW_ANIMATION.DELAY};
 
             .devo-logo-svg__path {
-              animation: ${FLOW_ANIMATION.TRANSLATE} 1.5s ease infinite,
+              animation:
+                ${FLOW_ANIMATION.TRANSLATE} 1.5s ease infinite,
                 ${FLOW_ANIMATION.OPACITY} 1.5s ease infinite;
             }
 

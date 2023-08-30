@@ -10,7 +10,7 @@ import React, { useMemo, Children, cloneElement } from 'react';
  */
 export const useAddPropsToChildren = (
   children: React.ReactNode,
-  props: unknown
+  props: unknown,
 ) => {
   return useMemo(() => {
     return Children.toArray(children).map((child, childIndex) => {

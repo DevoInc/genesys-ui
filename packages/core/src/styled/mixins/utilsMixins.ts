@@ -39,7 +39,7 @@ export const heightMixin = (scheme) => css`
  * @return {css} the css width styles.
  */
 export const coordsMixin = (
-  obj = { top: 'auto', right: 'auto', bottom: 'auto', left: 'auto' }
+  obj = { top: 'auto', right: 'auto', bottom: 'auto', left: 'auto' },
 ) => css`
   top: ${obj.top};
   right: ${obj.right};

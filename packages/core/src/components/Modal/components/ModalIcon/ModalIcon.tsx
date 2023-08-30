@@ -52,7 +52,7 @@ export const ModalIcon: React.FC<ModalIconProps> = ({ status, styles }) => {
           size={tokens.cmp.modal.headerDecoratorBar.size.height}
           styles={concat(
             `margin-right: ${tokens.cmp.modal.headerDecoratorBar.space.marginRight}`,
-            styles
+            styles,
           )}
         />
       );

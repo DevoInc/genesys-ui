@@ -57,7 +57,7 @@ export const getFooterActions = ({
         colorScheme={accent ? 'blend-base' : 'quiet'}
       >
         {actionReject.label}
-      </Button>
+      </Button>,
     );
   }
 
@@ -71,7 +71,7 @@ export const getFooterActions = ({
         colorScheme={accent ? status : 'neutral'}
       >
         {actionApply.label}
-      </Button>
+      </Button>,
     );
   }
 

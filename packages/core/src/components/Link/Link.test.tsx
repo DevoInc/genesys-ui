@@ -15,7 +15,7 @@ describe('Link', () => {
     render(
       <Link colorScheme="base" underlined wide size="lg" state="enabled">
         {LINK_LABEL}
-      </Link>
+      </Link>,
     );
     expect(screen.getByText(LINK_LABEL)).toHaveStyle({
       width: '100%',
@@ -35,7 +35,7 @@ describe('Link', () => {
         state="disabled"
       >
         {LINK_LABEL}
-      </Link>
+      </Link>,
     );
     expect(screen.getByText(LINK_LABEL)).toHaveStyle({
       color: linkTokens.color.text.error,
@@ -51,7 +51,7 @@ describe('Link', () => {
     render(
       <Link colorScheme="info" size="sm" state="hovered" lineClamp={2}>
         {LINK_LABEL}
-      </Link>
+      </Link>,
     );
     expect(screen.getByText(LINK_LABEL)).toHaveStyle({
       color: darken(0.08, linkTokens.color.text.info || ''),
@@ -64,7 +64,7 @@ describe('Link', () => {
     render(
       <Link colorScheme="inverse" size="xs" state="focused" lineClamp={3}>
         {LINK_LABEL}
-      </Link>
+      </Link>,
     );
     expect(screen.getByText(LINK_LABEL)).toHaveStyle({
       color: darken(0.12, linkTokens.color.text.inverse || ''),
@@ -77,7 +77,7 @@ describe('Link', () => {
     render(
       <Link colorScheme="help" state="pressed">
         {LINK_LABEL}
-      </Link>
+      </Link>,
     );
     expect(screen.getByText(LINK_LABEL)).toHaveStyle({
       color: darken(0.16, linkTokens.color.text.help || ''),

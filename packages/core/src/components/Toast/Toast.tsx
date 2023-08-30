@@ -75,7 +75,7 @@ export const toast = ({
         hideProgressBar: autoClose && activeToastsLength > 1,
         progressClassName: getProgressClassName,
         toastId: id,
-      }
+      },
     );
   }
 };

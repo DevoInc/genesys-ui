@@ -89,8 +89,10 @@ export const StyledButton = styled.button<StyledButtonProps>`
         if (state === 'loading') return '.8';
         return '1';
       }};
-      transition: background-color ${animationTime} ease,
-        color ${animationTime} ease, width ${animationTime} ease;
+      transition:
+        background-color ${animationTime} ease,
+        color ${animationTime} ease,
+        width ${animationTime} ease;
       box-shadow: ${state === 'focused' && boxShadowFocused};
       border: none;
       border-radius: ${borderRadius};

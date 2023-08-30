@@ -90,13 +90,13 @@ export const Month: React.FC<MonthProps> = ({
           set(new Date(value), {
             year: Number(elements[0]),
             month: Number(elements[1]) - 1,
-          }).getTime()
+          }).getTime(),
         );
       } else {
         onChange(value);
       }
     },
-    [onChange, value]
+    [onChange, value],
   );
 
   return (

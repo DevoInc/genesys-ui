@@ -98,7 +98,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
       from: toTimestamp(defaultValue?.from),
       to: toTimestamp(defaultValue?.to),
     }),
-    [defaultValue?.from, defaultValue?.to]
+    [defaultValue?.from, defaultValue?.to],
   );
 
   const timeValue = React.useMemo(
@@ -106,7 +106,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
       from: value?.from || startOfDay(new Date()).getTime(),
       to: value?.to || startOfDay(new Date()).getTime(),
     }),
-    [value?.from, value?.to]
+    [value?.from, value?.to],
   );
 
   const dateForMonth = React.useMemo(() => {
@@ -135,7 +135,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
         : new Date().getTime(),
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [],
   );
 
   const [previewDate, setPreviewDate] = React.useState(initialPreviewDate);
@@ -215,14 +215,14 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
     (ts: number) => {
       onChange({ from: ts, to: value.to });
     },
-    [onChange, value.to]
+    [onChange, value.to],
   );
 
   const onChangeTimeTo = React.useCallback(
     (ts: number) => {
       onChange({ from: value.from, to: ts });
     },
-    [onChange, value.from]
+    [onChange, value.from],
   );
 
   const onChangePresetDateCallback = React.useCallback(
@@ -230,7 +230,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
       setFirsTime(true);
       onChangePresetDate(preset);
     },
-    [onChangePresetDate]
+    [onChangePresetDate],
   );
 
   const onMouseEnterCallback = React.useCallback((ts: number) => {
@@ -246,7 +246,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
       handleDateChange(ts);
       setFirsTime(false);
     },
-    [handleDateChange]
+    [handleDateChange],
   );
 
   return (

@@ -196,7 +196,7 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
           &:hover {
             background-color: ${lighten(
               theme.meta.scheme === 'dark' ? 0.1 : 0.03,
-              buttonTokens.color.background.neutral.hovered
+              buttonTokens.color.background.neutral.hovered,
             )};
 
             background-image: ${fieldTokens.shape.backgroundImage.searchCancel

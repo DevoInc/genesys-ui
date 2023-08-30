@@ -50,7 +50,7 @@ export const IconButtonStatus = React.forwardRef<
       styles,
       ...restIconButtonProps
     },
-    ref
+    ref,
   ) => {
     const theme = useTheme();
     return (
@@ -64,11 +64,11 @@ export const IconButtonStatus = React.forwardRef<
         state={state}
         styles={concat(
           iconButtonStatusMixin({ state, colorScheme, theme }),
-          styles
+          styles,
         )}
       />
     );
-  }
+  },
 );
 
 IconButtonStatus.displayName = 'IconButtonStatus';

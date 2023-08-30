@@ -20,7 +20,7 @@ export const PanelFooterActions: React.FC<PanelFooterActionsProps> = ({
 }) => {
   const filteredActions = React.useMemo(
     () => actions && actions.filter((action) => !_.isEmpty(action)),
-    [actions]
+    [actions],
   );
 
   if (children)

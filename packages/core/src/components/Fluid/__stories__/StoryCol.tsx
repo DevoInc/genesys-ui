@@ -29,7 +29,7 @@ export const StoryCol = React.forwardRef<HTMLDivElement, StoryColProps>(
     >
       {props.children}
     </Col>
-  )
+  ),
 );
 
 StoryCol.displayName = 'StoryCol';

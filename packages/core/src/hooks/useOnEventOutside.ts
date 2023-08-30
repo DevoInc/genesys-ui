@@ -20,7 +20,7 @@ export const useOnEventOutside = ({
       const isInside = references.some(
         (ref) =>
           ref?.current?.contains?.(event.target) ||
-          ref?.contains?.(event.target)
+          ref?.contains?.(event.target),
       );
       if (!isInside) {
         handler(event);

@@ -93,7 +93,7 @@ export const truncateTypoMixin = (
   }: {
     maxWidth?: string;
     lineClamp?: number;
-  } = { maxWidth: '100%', lineClamp: 1 }
+  } = { maxWidth: '100%', lineClamp: 1 },
 ) => css`
   max-width: ${maxWidth};
   overflow: hidden;

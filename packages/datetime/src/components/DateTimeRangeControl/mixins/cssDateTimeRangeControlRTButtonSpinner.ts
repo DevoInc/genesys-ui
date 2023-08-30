@@ -25,6 +25,7 @@ const rotateAnimation = keyframes`
 `;
 
 export const cssDateTimeRangeControlRTButtonSpinner: CSSProp = css`
-  animation: ${fadeAnimation} linear 3s infinite,
+  animation:
+    ${fadeAnimation} linear 3s infinite,
     ${rotateAnimation} linear 2s infinite;
 `;

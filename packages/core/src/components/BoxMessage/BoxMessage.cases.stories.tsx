@@ -23,7 +23,7 @@ export const Cookie: Story = {
   render: (args) =>
     ((args) => {
       const [show, setShow] = React.useState(
-        Cookies.get(cookieId) !== 'accepted'
+        Cookies.get(cookieId) !== 'accepted',
       );
       return (
         <VFlex>

@@ -31,7 +31,7 @@ export interface StyledAvatarWrapperClickableProps {
 export const StyledAvatarWrapperClickable = styled.button.attrs<StyledAvatarWrapperClickableProps>(
   ({ target }) => ({
     rel: target === '_blank' ? REL_FOR_BLANK_TARGET : undefined,
-  })
+  }),
 )<StyledAvatarWrapperClickableProps>`
   ${({ customSize, disabled, iconOnHover, bordered, size, theme, variant }) => {
     const sizeConfig = getAvatarSizeConfig({ customSize, size });

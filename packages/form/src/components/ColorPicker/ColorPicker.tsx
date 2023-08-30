@@ -51,7 +51,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
   value,
 }) => {
   const [color, setColor] = React.useState(
-    strColorToRGBAColor(value, defaultValue)
+    strColorToRGBAColor(value, defaultValue),
   );
   const [visible, setVisible] = React.useState(false);
 

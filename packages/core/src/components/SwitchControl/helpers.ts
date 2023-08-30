@@ -33,7 +33,8 @@ export const switchControlContainerMixin = ({
   `;
 
   return css`
-    transition: background-color ${transitionDuration},
+    transition:
+      background-color ${transitionDuration},
       box-shadow ${transitionDuration};
     border-radius: ${handleDiameter}px;
     background: ${trackTokens.color.background.unchecked[status]};

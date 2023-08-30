@@ -27,7 +27,7 @@ export const useContainerDimensions = ({ delay } = DEFAULT_PROPS): {
 
   const handleResize = React.useMemo(
     () => throttle(() => updateSize(), delay),
-    [updateSize, delay]
+    [updateSize, delay],
   );
 
   // eslint-disable-next-line consistent-return
@@ -63,7 +63,7 @@ export const useContainerDimensions = ({ delay } = DEFAULT_PROPS): {
         }
       }
     },
-    [updateSize, resizeObserver]
+    [updateSize, resizeObserver],
   );
 
   return { setRef, size, nodeRef };

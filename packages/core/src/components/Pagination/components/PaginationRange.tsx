@@ -16,18 +16,18 @@ export const PaginationRange: React.FC<PaginationRangeProps> = ({
   // State
   const { pageSize, setPageSize, pageSizeOptions } = React.useMemo(
     () => paginationHook,
-    [paginationHook]
+    [paginationHook],
   );
 
   // Constants
   const { rangeText } = React.useMemo(
     () => ({ ...defaultTexts, ...texts }),
-    [texts]
+    [texts],
   );
 
   const onChangeRangeSelect = React.useCallback(
     (option) => setPageSize(parseInt(option.value)),
-    [setPageSize]
+    [setPageSize],
   );
   const noOptionsMessage = React.useCallback(() => '', []);
 

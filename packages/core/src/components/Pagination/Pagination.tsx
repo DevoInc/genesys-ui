@@ -52,13 +52,13 @@ export const InternalPagination: React.FC<PaginationProps> = ({
   // State
   const { pageFirstItem, pageLastItem, totalItems, pageSize } = React.useMemo(
     () => paginationHook,
-    [paginationHook]
+    [paginationHook],
   );
 
   // Constants
   const { infoTextFn } = React.useMemo(
     () => ({ ...defaultTexts, ...texts }),
-    [texts]
+    [texts],
   );
 
   const paginationInfoText = React.useMemo(
@@ -69,7 +69,7 @@ export const InternalPagination: React.FC<PaginationProps> = ({
         pageFirstItem: pageFirstItem + 1,
         pageLastItem: pageLastItem + 1,
       }),
-    [infoTextFn, totalItems, pageSize, pageFirstItem, pageLastItem]
+    [infoTextFn, totalItems, pageSize, pageFirstItem, pageLastItem],
   );
 
   return (

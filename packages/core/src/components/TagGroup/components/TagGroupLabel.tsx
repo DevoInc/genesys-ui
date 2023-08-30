@@ -24,7 +24,7 @@ export const TagGroupLabel: React.FC<TagGroupLabelProps> = ({
       {...restLabelProps}
       styles={concat(
         tagGroupLabelMixin({ size, labelPosition, theme }),
-        styles
+        styles,
       )}
       size={size}
     >

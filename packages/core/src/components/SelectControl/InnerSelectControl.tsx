@@ -10,7 +10,7 @@ import { StyledSelectControl } from './styled';
 export interface InnerSelectControlProps<
   Option = SelectOption,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
   // React-select requires a concrete theme schema which is not compatible with ours.
 > extends Omit<Props<Option, IsMulti, Group>, 'theme' | 'styles'>,
     CommonSelectCmpsProps,
@@ -21,7 +21,7 @@ export interface InnerSelectControlProps<
 export const InnerSelectControl = <
   Option extends SelectOption,
   IsMulti extends boolean,
-  Group extends GroupBase<Option>
+  Group extends GroupBase<Option>,
 >({
   styles,
   componentStyles,

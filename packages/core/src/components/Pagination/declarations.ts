@@ -31,7 +31,7 @@ interface InfoTextFnParams {
 
 type InfoTextFn = (params: InfoTextFnParams) => string;
 type SelectPageTooltipTextFn = (
-  params: SelectPageTooltipTextFnParams
+  params: SelectPageTooltipTextFnParams,
 ) => string;
 
 export const defaultTexts = {

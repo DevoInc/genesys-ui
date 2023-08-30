@@ -55,7 +55,7 @@ export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
       tooltip,
       ...reactGridContainerProps
     },
-    ref
+    ref,
   ) => {
     const theme = useTheme();
     const layoutSpaceTokens = theme.alias.space.layout;
@@ -99,7 +99,7 @@ export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
         })}
       </ReactGridContainer>
     );
-  }
+  },
 );
 
 Container.displayName = 'Container';

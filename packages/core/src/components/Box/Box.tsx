@@ -85,7 +85,7 @@ export const Box = React.forwardRef<HTMLElement, BoxProps>(
       zIndex,
       ...nativeProps
     },
-    ref
+    ref,
   ) => {
     return (
       <StyledBox
@@ -129,7 +129,7 @@ export const Box = React.forwardRef<HTMLElement, BoxProps>(
         {children}
       </StyledBox>
     );
-  }
+  },
 );
 
 Box.displayName = 'Box';
