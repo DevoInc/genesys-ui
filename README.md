@@ -11,7 +11,9 @@ Monorepo containing the codebase for the Genesys UI components library.
 The project is built using `npm workspaces` and includes the following packages:
 
 [![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui/alpha?label=%40devoinc%2Fgenesys-ui@alpha)](https://www.npmjs.com/package/@devoinc/genesys-ui)
+
 [![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui-form/alpha?label=%40devoinc%2Fgenesys-ui-form@alpha)](https://www.npmjs.com/package/@devoinc/genesys-ui-form)
+
 [![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui-datetime/alpha?label=%40devoinc%2Fgenesys-ui-datetime@alpha)](https://www.npmjs.com/package/@devoinc/genesys-ui-datetime)
 
 - **genesys-ui:** Core package containing base components.
