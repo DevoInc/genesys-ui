@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import ReactToolTip from 'react-tooltip';
 
-import { getFontSize } from '../../styled/mixins/baseMixins';
+import { getFontSize } from '../../styled/mixins';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledTooltipProps extends ReactToolTip {}

@@ -6,7 +6,7 @@ import { BadgeColorScheme, BadgeSize } from './declarations';
 
 // utils and helpers
 import { isValidColor, getAccTextColor } from '../../styled/functions';
-import { truncateTypoMixin } from '../../styled/mixins/baseMixins';
+import { truncateTypoMixin } from '../../styled/mixins';
 import { getBadgeInverseModeColor } from './helpers';
 
 export interface StyledBadgeProps {

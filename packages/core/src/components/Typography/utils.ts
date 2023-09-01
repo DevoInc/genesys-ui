@@ -5,7 +5,7 @@ import {
   typoColorMixin,
   truncateTypoMixin,
   typoMixin,
-} from '../../styled/mixins/baseMixins';
+} from '../../styled/mixins';
 import { TypoBodySize, TypoHeadingSize, TypoSize } from '../../declarations';
 
 /**

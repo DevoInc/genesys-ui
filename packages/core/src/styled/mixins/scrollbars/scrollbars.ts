@@ -1,12 +1,6 @@
 import { css, DefaultTheme } from 'styled-components';
 
-/* -------------------------------------------------------------------------- */
-/*                                UTILS - MIXINS                              */
-/* -------------------------------------------------------------------------- */
-
-// Scrollbars - Utils - Mixin ------------------------------------------------ /
-
-interface ScrollbarsProps {
+interface ScrollbarConfig {
   cornerColor?: string;
   size?: string;
   thumbColor?: string;
@@ -43,7 +37,7 @@ export const scrollbars = ({
   trackColor,
   trackRadius,
   theme,
-}: ScrollbarsProps) => {
+}: ScrollbarConfig) => {
   const scrollbarTokens = theme.alias.scrollbars;
   const sizeEval = size || scrollbarTokens.size.square.md || '0.8rem';
   return css`

@@ -1,4 +1,3 @@
-// MIXIN PARAMS - TYPO VARIANT & SIZE - CONSTANTS ------------------------ //
 export type TypoVariant =
   | 'action'
   | 'body'

@@ -1,11 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { FieldSize, FieldStatus } from '../../declarations';
-
-import {
-  checkRadioMixin,
-  getCheckRadioTokens,
-} from '../../styled/mixins/componentsMixin';
+import { checkRadioMixin, getCheckRadioTokens } from '../../styled/mixins';
 
 export interface StyledRadioControlProps {
   /** The size for the checkbox. It affects to its width, height, font-size... etc. */

@@ -15,7 +15,7 @@ import {
 // utils
 import { getHeadingCategoryAndType, getTypoCss } from './utils';
 import { getSpacingPropCss } from '../../utils/spacing';
-import { srOnlyMixin } from '../../styled/mixins/utilsMixins';
+import { srOnlyMixin } from '../../styled/mixins';
 
 export const StyledAbbr = styled.abbr`
   text-decoration: underline dotted;

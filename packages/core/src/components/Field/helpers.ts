@@ -2,8 +2,7 @@ import * as React from 'react';
 
 import { DefaultTheme } from 'styled-components';
 import { FieldSize, GlobalState, GlobalStatus } from '../../declarations';
-import { typoMixin } from '../../styled/mixins/baseMixins';
-import { getTypoObject } from '../../styled/mixins/baseMixins';
+import { typoMixin, getTypoObject } from '../../styled/mixins';
 
 export const getFieldControlTypo = ({
   textAlign,

@@ -10,7 +10,7 @@ import {
   SelectionScheme,
 } from '../declarations';
 
-import { srOnlyMixin } from './mixins/utilsMixins';
+import { srOnlyMixin } from './mixins';
 
 export interface StyledHiddenInputProps
   extends Pick<GlobalAriaProps, 'aria-label'>,

@@ -35,6 +35,7 @@ const config: StorybookConfig = {
           '@devoinc/genesys-ui-datetime',
           '@devoinc/genesys-ui-form',
           '@devoinc/genesys-ui-table',
+          '@storybook/addon-actions',
         ],
       },
     });
