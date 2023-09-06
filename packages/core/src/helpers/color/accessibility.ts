@@ -50,4 +50,3 @@ export const getAccTextColor = (
     ? darkColor || '#272727'
     : lightColor || '#ffffff';
 };
-
