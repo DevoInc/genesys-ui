@@ -1,10 +1,8 @@
-const getBaseFs = () => {
-  if (typeof window !== 'undefined')
-    return parseInt(
-      window.getComputedStyle(document.documentElement).fontSize,
-      10,
-    );
-};
+// Get the document font-size
+const getBaseFs = () =>
+  typeof window !== 'undefined'
+    ? parseInt(window.getComputedStyle(document.documentElement).fontSize, 10)
+    : null;
 
 /**
  * Returns the size number in px without units

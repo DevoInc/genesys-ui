@@ -10,7 +10,7 @@ import {
   StyledOverloadCssPropsWithRecord,
 } from '../../declarations';
 
-import { getPxFromRem } from '../../styled/functions';
+import { getPxFromRem } from '../../helpers';
 
 import {
   SwitchControlContainer,

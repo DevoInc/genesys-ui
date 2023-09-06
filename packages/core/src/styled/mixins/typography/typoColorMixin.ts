@@ -1,6 +1,6 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { isValidColor } from '../../functions';
+import { isValidColor } from '../../../helpers';
 import { TypoColorScheme } from '../../../components/Typography/constants';
 import { TypoVariant } from './declarations';
 

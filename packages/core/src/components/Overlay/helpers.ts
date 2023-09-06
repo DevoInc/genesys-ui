@@ -4,7 +4,7 @@ import { css, DefaultTheme } from 'styled-components';
 
 import { OverlayBgColorScheme } from './declarations';
 
-import { isValidColor } from '../../styled/functions';
+import { isValidColor } from '../../helpers';
 
 /**
  * Get background for the Overlay

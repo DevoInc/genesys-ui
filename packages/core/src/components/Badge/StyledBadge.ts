@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { BadgeColorScheme, BadgeSize } from './declarations';
 
 // utils and helpers
-import { isValidColor, getAccTextColor } from '../../styled/functions';
+import { isValidColor, getAccTextColor } from '../../helpers';
 import { truncateTypoMixin } from '../../styled/mixins';
 import { getBadgeInverseModeColor } from './helpers';
 

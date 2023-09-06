@@ -1,6 +1,6 @@
 import { Color } from './definitions';
 
-const colorList: Color[] = [
+export const colors: Color[] = [
   {
     colorId: 0,
     hexString: '#000000',
@@ -1794,5 +1794,3 @@ const colorList: Color[] = [
     name: 'Grey93',
   },
 ];
-
-export default colorList;

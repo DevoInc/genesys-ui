@@ -9,7 +9,7 @@ import { GlobalAttrProps } from '../../../declarations';
 import { ContainerSpacing, FluidAs } from '../declarations';
 
 import { getSpacingPropCss } from '../../../utils/spacing';
-import { getPxFromRem } from '../../../styled/functions';
+import { getPxFromRem } from '../../../helpers';
 
 export interface RowProps
   extends Omit<ReactGridRowProps, 'component' | 'gutterWidth'>,

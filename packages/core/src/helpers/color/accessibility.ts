@@ -1,39 +1,6 @@
-import colorsList from './colorsList';
-import { Color } from './definitions';
-
-export const colorName = (arr: Color[], name: string) => {
-  let idx = -1;
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].name.toUpperCase() === name.toUpperCase()) {
-      idx = i;
-      break;
-    }
-  }
-  return { idx: idx, exists: idx > -1 };
-};
-
-export const getHexName = (arr: Color[], name: string) => {
-  return colorName(arr, name).exists
-    ? arr[colorName(arr, name).idx].hexString
-    : '#000000';
-};
-
-/**
- * Based in the color value returns if the color exists or not
- *
- * @param color - The color value: rgb(0,0,0), #000, black...
- * @returns If it's valid or not
- */
-export const isValidColor = (color: string) => {
-  return (
-    color &&
-    (color === 'transparent' ||
-      color.startsWith('#') ||
-      color.startsWith('rgb') ||
-      color.startsWith('rgba') ||
-      colorName(colorsList, color).exists)
-  );
-};
+import { colors } from './colors';
+import { isValidColor } from './validation';
+import { getHexName } from './getters';
 
 const cutHex = (h: string) => (h.charAt(0) === '#' ? h.substring(1, 7) : h);
 const hexToR = (h: string) => parseInt(cutHex(h).substring(0, 2), 16);
@@ -59,7 +26,7 @@ export const getAccTextColor = (
   const isRGBA = bgColor.startsWith('rgba');
   const named = !isHex && !isRGB && !isRGBA;
   bgColor =
-    isValidColor(bgColor) && !named ? bgColor : getHexName(colorsList, bgColor);
+    isValidColor(bgColor) && !named ? bgColor : getHexName(colors, bgColor);
   const rgbArray =
     isRGB &&
     (isRGBA
@@ -83,3 +50,4 @@ export const getAccTextColor = (
     ? darkColor || '#272727'
     : lightColor || '#ffffff';
 };
+

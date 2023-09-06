@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 import { FeedbackColorScheme, FeedbackSize } from '../../../declarations';
 
 import { typoMixin } from '../../../styled';
-import { getAccTextColor, isValidColor } from '../../../styled/functions';
+import { getAccTextColor, isValidColor } from '../../../helpers';
 
 export interface StyledTagContainerProps {
   /** It defines the color scheme for the background and text color.
