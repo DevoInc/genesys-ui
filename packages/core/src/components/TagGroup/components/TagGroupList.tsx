@@ -36,7 +36,7 @@ export const TagGroupList: React.FC<TagGroupListProps> = ({
         React.cloneElement(child, {
           key: `tag-${idx}`,
           size: size,
-        })
+        }),
       )}
     </Flex>
   );

@@ -15,7 +15,7 @@ import {
 // utils
 import { getHeadingCategoryAndType, getTypoCss } from './utils';
 import { getSpacingPropCss } from '../../utils/spacing';
-import { srOnlyMixin } from '../../styled/mixins/utilsMixins';
+import { srOnlyMixin } from '../../styled/mixins';
 
 export const StyledAbbr = styled.abbr`
   text-decoration: underline dotted;
@@ -97,18 +97,17 @@ export interface StyledCodeBlockProps {
 }
 
 export const StyledCodeBlock = styled.code<StyledCodeBlockProps>`
-  ${({ size, textAlign, theme, truncateLine }) =>
-    css`
-      ${getTypoCss({
-        variant: 'mono',
-        textAlign,
-        theme,
-        truncateLine,
-        size,
-      })};
-      display: block;
-      word-break: break-word;
-    `}
+  ${({ size, textAlign, theme, truncateLine }) => css`
+    ${getTypoCss({
+      variant: 'mono',
+      textAlign,
+      theme,
+      truncateLine,
+      size,
+    })};
+    display: block;
+    word-break: break-word;
+  `}
 `;
 
 export const StyledCodeInline = styled.code`

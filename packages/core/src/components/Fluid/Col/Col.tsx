@@ -31,7 +31,7 @@ export const Col = React.forwardRef<HTMLDivElement, ColProps>(
         {children}
       </ReactGridCol>
     );
-  }
+  },
 );
 
 Col.displayName = 'Col';

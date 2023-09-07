@@ -16,7 +16,7 @@ export const getSpacingValuesMap = (theme: DefaultTheme) => {
         return [valueName, valueName];
       const spacingTk = spacingTks[type];
       return [valueName, spacingTk[size]];
-    })
+    }),
   );
 };
 

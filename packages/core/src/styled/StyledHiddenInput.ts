@@ -10,7 +10,7 @@ import {
   SelectionScheme,
 } from '../declarations';
 
-import { srOnlyMixin } from './mixins/utilsMixins';
+import { srOnlyMixin } from './mixins';
 
 export interface StyledHiddenInputProps
   extends Pick<GlobalAriaProps, 'aria-label'>,
@@ -25,7 +25,7 @@ export interface StyledHiddenInputProps
 export const StyledHiddenInput = styled.input.attrs(
   ({ selectionScheme }: StyledHiddenInputProps) => ({
     type: selectionScheme === 'single' ? 'radio' : 'checkbox',
-  })
+  }),
 )<StyledHiddenInputProps>`
   ${srOnlyMixin}
 `;

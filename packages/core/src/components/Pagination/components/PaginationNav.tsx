@@ -59,7 +59,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
         value: index,
         label: `${index + 1}`,
       })),
-    [lastPage]
+    [lastPage],
   );
 
   const { actionsSize } = usePaginationStyles({
@@ -72,7 +72,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
   const onInputChange = React.useCallback(
     () => (ev: Event) =>
       goToPage(parseInt((ev.target as HTMLInputElement)?.value) - 1),
-    [goToPage]
+    [goToPage],
   );
   const noOptionsMessage = React.useCallback(() => '', []);
   const onChange = React.useCallback((e) => goToPage(e.value), [goToPage]);

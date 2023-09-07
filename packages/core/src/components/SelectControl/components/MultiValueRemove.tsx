@@ -13,7 +13,7 @@ export interface MultiValueRemoveProps<Option>
   extends RSMultiValueRemoveProps<Option> {}
 
 export const MultiValueRemove = <Option extends SelectOption>(
-  props: MultiValueRemoveProps<Option>
+  props: MultiValueRemoveProps<Option>,
 ): React.ReactElement<MultiValueRemoveProps<Option>> => {
   if (props.data.fixed) return null;
 

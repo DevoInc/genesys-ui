@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { FieldAddonPosition } from '../declarations';
-import { typoMixin } from '../../../styled/mixins/baseMixins';
+import { typoMixin } from '../../../styled/mixins';
 import {
   FieldSize,
   GlobalAriaProps,

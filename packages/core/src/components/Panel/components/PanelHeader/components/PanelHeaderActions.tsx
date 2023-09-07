@@ -24,7 +24,7 @@ export const PanelHeaderActions: React.FC<PanelHeaderActionsProps> = ({
 }) => {
   const filteredActions: PanelHeaderActionsType = React.useMemo(
     () => actions && actions.filter((action) => !isEmpty(action)),
-    [actions]
+    [actions],
   );
   const theme = useTheme();
   const baseStyles = panelHeaderAppendMixin({ size, theme });

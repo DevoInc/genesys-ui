@@ -10,15 +10,15 @@ import { SelectOption } from '../declarations';
 export interface MenuProps<Option> extends RSMenuProps<Option> {}
 
 export const Menu = <Option extends SelectOption>(
-  props: MenuProps<Option>
+  props: MenuProps<Option>,
 ): React.ReactElement<MenuProps<Option>> => {
   const handleSelectAll = React.useCallback(
     () =>
       props.setValue(
         props.options as Option | MultiValue<Option>,
-        'select-option'
+        'select-option',
       ),
-    [props]
+    [props],
   );
 
   return (

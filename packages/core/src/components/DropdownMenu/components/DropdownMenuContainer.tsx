@@ -17,7 +17,7 @@ export const DropdownMenuContainer: React.FC<DropdownMenuContainerProps> =
         padding = 'cmp-xs',
         ...boxProps
       },
-      ref
+      ref,
     ) => (
       <StyledDropdownMenuContainer
         {...boxProps}
@@ -29,7 +29,7 @@ export const DropdownMenuContainer: React.FC<DropdownMenuContainerProps> =
       >
         {children}
       </StyledDropdownMenuContainer>
-    )
+    ),
   );
 
 DropdownMenuContainer.displayName = 'DropdownMenuContainer';

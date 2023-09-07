@@ -13,7 +13,7 @@ describe('Stepper', () => {
 
   test('Render component', () => {
     render(
-      <Stepper aria-label="Stepper for test" id="stepper-test" steps={steps} />
+      <Stepper aria-label="Stepper for test" id="stepper-test" steps={steps} />,
     );
     const stepper = screen.getByRole('list', { name: 'Stepper for test' });
     expect(stepper.children).toHaveLength(4);

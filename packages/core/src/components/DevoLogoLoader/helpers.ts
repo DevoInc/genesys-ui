@@ -18,5 +18,5 @@ export const getSize = (size: DevoLogoSize) => SizeMap[size] || SizeMap.md;
 export const getColor = (
   colorScheme: DevoLogoColorScheme,
   theme: DefaultTheme,
-  type: DevoLogoPathType
+  type: DevoLogoPathType,
 ) => theme.cmp.loader[type].color.background[colorScheme];

@@ -55,12 +55,12 @@ export const Time: React.FC<TimeProps> = ({
     setMin(
       minDate && isSameDay(tmpValue, minDate)
         ? format(new Date(minDate), getFormatTimeStr(hasSeconds, hasMillis))
-        : null
+        : null,
     );
     setMax(
       maxDate && isSameDay(tmpValue, maxDate)
         ? format(new Date(maxDate), getFormatTimeStr(hasSeconds, hasMillis))
-        : null
+        : null,
     );
   }, [tmpValue, hasMillis, hasSeconds, maxDate, minDate]);
 

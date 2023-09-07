@@ -18,7 +18,7 @@ export const StoryRow = React.forwardRef<HTMLDivElement, StoryRowProps>(
     >
       {props.children}
     </Row>
-  )
+  ),
 );
 
 StoryRow.displayName = 'StoryRow';

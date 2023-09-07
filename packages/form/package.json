@@ -26,7 +26,7 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "@devoinc/genesys-icons": "^3.0.1",
+    "@devoinc/genesys-icons": "^3.1.2",
     "@devoinc/genesys-ui": "^1.0.3-alpha.21",
     "filepond-plugin-file-validate-size": "^2.2.8",
     "filepond-plugin-file-validate-type": "^1.2.8",

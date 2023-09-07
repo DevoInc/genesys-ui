@@ -11,7 +11,7 @@ import { SelectOption } from '../declarations';
 export interface MenuListProps<Option> extends RWSMenuListProps<Option> {}
 
 export const MenuList = <Option extends SelectOption>(
-  props: MenuListProps<Option>
+  props: MenuListProps<Option>,
 ): React.ReactElement<MenuListProps<Option>> => {
   return props.selectProps.virtualizeOptions ? (
     <WindowedMenuList {...props} />

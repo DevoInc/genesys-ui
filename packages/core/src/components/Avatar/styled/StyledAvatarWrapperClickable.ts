@@ -3,7 +3,10 @@ import styled, { css } from 'styled-components';
 
 import icons from '@devoinc/genesys-icons/dist/icon-variables.js';
 
-import { iconFontMixin, pseudoElementOverlayMixin } from '../../../styled/';
+import {
+  iconFontMixin,
+  pseudoElementOverlayMixin,
+} from '../../../styled/mixins';
 import { getAvatarSizeConfig, getVariantValue } from '../utils';
 import { REL_FOR_BLANK_TARGET } from '../constants';
 import { AvatarSize, AvatarVariant, CustomSize } from '../declarations';
@@ -31,7 +34,7 @@ export interface StyledAvatarWrapperClickableProps {
 export const StyledAvatarWrapperClickable = styled.button.attrs<StyledAvatarWrapperClickableProps>(
   ({ target }) => ({
     rel: target === '_blank' ? REL_FOR_BLANK_TARGET : undefined,
-  })
+  }),
 )<StyledAvatarWrapperClickableProps>`
   ${({ customSize, disabled, iconOnHover, bordered, size, theme, variant }) => {
     const sizeConfig = getAvatarSizeConfig({ customSize, size });

@@ -3,8 +3,8 @@ import { css, DefaultTheme } from 'styled-components';
 import {
   truncateTypoMixin,
   typoMixin,
-} from '../../../styled/mixins/baseMixins';
-import { disabledMixin } from '../../../styled/mixins/utilsMixins';
+  disabledMixin,
+} from '../../../styled/mixins';
 import { StyledLinkProps } from '../StyledLink';
 import { getLinkColor } from './linkColor';
 

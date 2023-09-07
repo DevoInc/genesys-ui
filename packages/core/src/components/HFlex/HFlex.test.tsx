@@ -13,7 +13,7 @@ describe('HFlex', () => {
     render(
       <HFlex spacing="cmp-md" height="30rem" overflow="auto" width="60rem">
         test
-      </HFlex>
+      </HFlex>,
     );
     expect(screen.getByText('test')).toHaveStyle({
       'align-items': 'center',

@@ -56,7 +56,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
       setIsVisible(visible);
       triggerDropdownMenuVisibility?.({ label, isVisible: visible });
     },
-    [label, triggerDropdownMenuVisibility]
+    [label, triggerDropdownMenuVisibility],
   );
 
   const handleClose = (event) => {
@@ -79,12 +79,12 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
       setOpenWithKeyboard(isKeyboard);
       changeDropdownMenuVisibility(visible);
     },
-    [changeDropdownMenuVisibility]
+    [changeDropdownMenuVisibility],
   );
 
   const onCLick = React.useCallback(
     () => handleAction(!isVisible, false),
-    [handleAction, isVisible]
+    [handleAction, isVisible],
   );
 
   const keydownHandler = React.useCallback(
@@ -101,7 +101,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
         handleAction(true, isKeyboard);
       }
     },
-    [handleAction, isVisible]
+    [handleAction, isVisible],
   );
 
   const mouseEnterHandler = React.useCallback(() => {

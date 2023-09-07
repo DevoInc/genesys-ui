@@ -23,7 +23,7 @@ export const ItemSubMenu = ({
 }: ItemSubMenuProps) => {
   const [referenceElement] = React.useState<HTMLLabelElement | null>(null);
   const [popperElement, setPopperElement] = React.useState<HTMLElement | null>(
-    null
+    null,
   );
   const [isVisible, setVisible] = React.useState(false);
   const { styles, attributes } = usePopper(referenceElement, popperElement, {

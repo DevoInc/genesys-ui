@@ -42,8 +42,8 @@ export const SwitchControlText: React.FC<SwitchControlTextProps> = ({
     setWidthPx(
       Math.max(
         refUnchecked?.current?.offsetWidth,
-        refChecked?.current?.offsetWidth
-      )
+        refChecked?.current?.offsetWidth,
+      ),
     );
   }, [checkedContent, uncheckedContent]);
 

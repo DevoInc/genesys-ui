@@ -44,7 +44,7 @@ export const SimpleValidation: Story = {
   render: () =>
     (() => {
       const [validation, setValidation] = React.useState<ValidationMsg>(
-        validationMsgs.idle
+        validationMsgs.idle,
       );
 
       const handleChange = React.useCallback((text) => {

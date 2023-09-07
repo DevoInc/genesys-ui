@@ -54,7 +54,7 @@ export const InlineMessageTrigger = React.forwardRef<
       tooltip,
       Trigger,
     },
-    ref
+    ref,
   ) => {
     const TriggerCmp = useAddPropsToChildren(Trigger, {
       'aria-controls': ariaControls,
@@ -134,7 +134,7 @@ export const InlineMessageTrigger = React.forwardRef<
         type="button"
       />
     );
-  }
+  },
 );
 
 InlineMessageTrigger.displayName = 'InlineMessageTrigger';

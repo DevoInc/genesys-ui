@@ -26,7 +26,7 @@ const InternalFlex = React.forwardRef<HTMLElement, FlexProps>(
         {children}
       </StyledFlex>
     );
-  }
+  },
 );
 
 export const Flex = InternalFlex as typeof InternalFlex & {

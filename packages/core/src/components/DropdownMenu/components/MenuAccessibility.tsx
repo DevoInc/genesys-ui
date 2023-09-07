@@ -41,7 +41,7 @@ export const MenuAccessibility = React.forwardRef<
       tabIndex = 1,
       ...rest
     },
-    ref
+    ref,
   ) => {
     const hasPopup = rest?.['aria-haspopup'];
     let type: AccessibilityRolesProp | 'submenuitem' | 'item' = role;
@@ -54,7 +54,7 @@ export const MenuAccessibility = React.forwardRef<
     const nextAction = React.useCallback(
       (event, actions) =>
         disabled ? killEvent(event) : actions[type]?.(event),
-      [disabled, type]
+      [disabled, type],
     );
 
     const actionClick = React.useCallback(
@@ -75,7 +75,7 @@ export const MenuAccessibility = React.forwardRef<
         };
         nextAction(event, clickActionsTypes);
       },
-      [action, nextAction, ref]
+      [action, nextAction, ref],
     );
 
     const actionHover = React.useCallback(
@@ -94,7 +94,7 @@ export const MenuAccessibility = React.forwardRef<
         const mouseAction = MOUSE_HOVER_ACTIONS[event.type];
         nextAction(event, mouseAction);
       },
-      [actionLeave, actionOver, nextAction]
+      [actionLeave, actionOver, nextAction],
     );
 
     const actionKeyBoard = React.useCallback(
@@ -106,13 +106,13 @@ export const MenuAccessibility = React.forwardRef<
               event,
               action,
               rest['aria-expanded'],
-              ref as React.RefObject<HTMLElement>
+              ref as React.RefObject<HTMLElement>,
             ),
           item: (event) => actionItemByKeyBoard(event, action),
         };
         nextAction(event, keydownActionsTypes);
       },
-      [action, nextAction, ref, rest]
+      [action, nextAction, ref, rest],
     );
 
     return (
@@ -130,7 +130,7 @@ export const MenuAccessibility = React.forwardRef<
         {children}
       </Component>
     );
-  }
+  },
 );
 
 MenuAccessibility.displayName = 'MenuAccessibility';

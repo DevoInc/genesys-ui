@@ -6,9 +6,11 @@ import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
 import { SelectionScheme } from '../../declarations';
 import { ButtonColorScheme, ButtonState, ButtonSize } from './declarations';
 
-import { typoMixin } from '../../styled/mixins/baseMixins';
-import { btnResetMixin } from '../../styled/mixins/componentsMixin';
-import { pseudoElementOverlayMixin } from '../../styled/mixins/utilsMixins';
+import {
+  typoMixin,
+  btnResetMixin,
+  pseudoElementOverlayMixin,
+} from '../../styled/mixins';
 import { loadingAnimationMixin } from './helpers';
 
 export interface StyledButtonProps {
@@ -89,8 +91,10 @@ export const StyledButton = styled.button<StyledButtonProps>`
         if (state === 'loading') return '.8';
         return '1';
       }};
-      transition: background-color ${animationTime} ease,
-        color ${animationTime} ease, width ${animationTime} ease;
+      transition:
+        background-color ${animationTime} ease,
+        color ${animationTime} ease,
+        width ${animationTime} ease;
       box-shadow: ${state === 'focused' && boxShadowFocused};
       border: none;
       border-radius: ${borderRadius};
@@ -134,7 +138,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
           loadingType: 'success',
         })};
       `}
-      
+
       ${state === 'loading-error' &&
       css`
         ${loadingAnimationMixin({
@@ -200,7 +204,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
           color: ${textColorTokens.pressed};
         }
       `}
-        
+
       // get the selected and activated styles in uncontrolled way too
       &&&:has(:checked) {
         background-color: ${bgColorTokens[

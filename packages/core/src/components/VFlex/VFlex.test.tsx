@@ -13,7 +13,7 @@ describe('VFlex', () => {
     render(
       <VFlex spacing="cmp-md" height="30rem" overflow="auto" width="60rem">
         test
-      </VFlex>
+      </VFlex>,
     );
     expect(screen.getByText('test')).toHaveStyle({
       display: 'flex',

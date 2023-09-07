@@ -11,14 +11,14 @@ describe('Helper', () => {
     render(<Helper data-testid={TEST_ID} message={MESSAGE_STRING} />);
     expect(screen.getAllByTestId(TEST_ID)[0].children[0].tagName).toBe('P');
     expect(screen.getAllByTestId(TEST_ID)[0].children[0].innerHTML).toBe(
-      MESSAGE_STRING
+      MESSAGE_STRING,
     );
   });
 
   test('Passing a React fragment as message', () => {
     render(<Helper data-testid={TEST_ID} message={MESSAGE_REACT} />);
     expect(screen.getAllByTestId(TEST_ID)[0].innerHTML).toBe(
-      `<span>${MESSAGE_STRING}</span>`
+      `<span>${MESSAGE_STRING}</span>`,
     );
   });
 

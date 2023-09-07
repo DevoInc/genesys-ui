@@ -19,7 +19,7 @@ export const ItemSelectable = ({
       onChange(event);
       event.stopPropagation();
     },
-    [onChange]
+    [onChange],
   );
 
   return (

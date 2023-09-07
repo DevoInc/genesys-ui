@@ -25,7 +25,7 @@ export const StyledProgressBarCircularSVG = styled.svg.attrs(
     width: SQUARE[size],
     height: SQUARE[size],
     'data-tip': !showStatus ? percent + '%' : null,
-  })
+  }),
 )<StyledProgressBarCircularSVGProps>`
   ${({ indeterminate, status }) => css`
     ${!indeterminate &&

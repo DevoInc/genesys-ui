@@ -45,12 +45,12 @@ export const usePagination: PaginationHook = ({ list, conf }) => {
 
   const lastPage = useMemo(
     () => Math.floor(((list.length || 1) - 1) / pageSize),
-    [list.length, pageSize]
+    [list.length, pageSize],
   );
   const pageFirstItem = useMemo(() => page * pageSize, [page, pageSize]);
   const pageLastItem = useMemo(
     () => (page === lastPage ? list.length - 1 : pageFirstItem + pageSize - 1),
-    [page, lastPage, pageFirstItem, pageSize, list.length]
+    [page, lastPage, pageFirstItem, pageSize, list.length],
   );
   const totalItems = useMemo(() => list.length, [list.length]);
 
@@ -64,7 +64,7 @@ export const usePagination: PaginationHook = ({ list, conf }) => {
         setPage(pageNumber);
       }
     },
-    [page, lastPage]
+    [page, lastPage],
   );
   const goToNextPage = useCallback(() => setPage(page + 1), [page]);
   const goToPreviousPage = useCallback(() => setPage(page - 1), [page]);
@@ -77,7 +77,7 @@ export const usePagination: PaginationHook = ({ list, conf }) => {
       setPage(newPage);
       setPageSize(newPageSize);
     },
-    [pageFirstItem]
+    [pageFirstItem],
   );
 
   /**

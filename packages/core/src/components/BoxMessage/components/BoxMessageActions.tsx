@@ -28,7 +28,7 @@ export const BoxMessageActions: React.FC<BoxMessageActionsProps> = ({
           key: idx,
           size: action.props.size || 'sm',
           colorScheme: action.props.colorScheme || status,
-        })
+        }),
     )}
   </HFlex>
 );

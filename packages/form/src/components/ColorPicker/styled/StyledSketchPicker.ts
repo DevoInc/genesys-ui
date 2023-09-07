@@ -23,7 +23,8 @@ export const StyledSketchPicker = styled(SketchPicker)`
       background-color: ${sketchPickerTokens.color.background} !important;
 
       input {
-        transition: border ${transitionDuration} ease-in-out,
+        transition:
+          border ${transitionDuration} ease-in-out,
           box-shadow ${transitionDuration} ease-in-out;
         outline: none;
         box-shadow: none !important;

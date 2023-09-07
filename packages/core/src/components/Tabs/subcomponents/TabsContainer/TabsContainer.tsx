@@ -18,7 +18,8 @@ export const TabsContainer = React.forwardRef<HTMLElement, TabsContainerProps>(
       css`
         padding: 0 ${tokens.space.padding};
         background: ${tokens.color.background};
-        box-shadow: inset 0 ${tokens.shape.borderSize} 0 ${tokens.color.border},
+        box-shadow:
+          inset 0 ${tokens.shape.borderSize} 0 ${tokens.color.border},
           inset 0 -${tokens.shape.borderSize} 0 ${tokens.color.border};
       `}
     `;
@@ -34,7 +35,7 @@ export const TabsContainer = React.forwardRef<HTMLElement, TabsContainerProps>(
         {children}
       </Flex>
     );
-  }
+  },
 );
 
 TabsContainer.displayName = 'TabsContainer';

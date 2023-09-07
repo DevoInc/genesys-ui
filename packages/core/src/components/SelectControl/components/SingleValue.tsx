@@ -11,7 +11,7 @@ import { SelectOption } from '../declarations';
 export interface SingleValueProps<Option> extends RSSingleValueProps<Option> {}
 
 export const SingleValue = <Option extends SelectOption>(
-  props: SingleValueProps<Option>
+  props: SingleValueProps<Option>,
 ): React.ReactElement<SingleValueProps<Option>> => {
   return (
     components.SingleValue && (

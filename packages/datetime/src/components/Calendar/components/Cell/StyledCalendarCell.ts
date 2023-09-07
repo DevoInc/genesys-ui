@@ -135,8 +135,8 @@ export const StyledCalendarCell = styled.div`
       /* -------------------------------------------------------------------- */
 
       span {
-        transition: background-color ease
-            ${dayTokens.mutation.transitionDuration},
+        transition:
+          background-color ease ${dayTokens.mutation.transitionDuration},
           color ease ${dayTokens.mutation.transitionDuration};
       }
 

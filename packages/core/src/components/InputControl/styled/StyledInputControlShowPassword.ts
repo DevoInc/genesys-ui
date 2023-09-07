@@ -7,10 +7,9 @@ export interface StyledInputControlShowPasswordProps
 export const StyledInputControlShowPassword = styled.span<StyledInputControlShowPasswordProps>`
   position: absolute;
   top: 50%;
-  right: ${({ $size, theme }) =>
-    css`
-      ${theme.alias.fields.space.padding.hor[$size]}
-    `};
+  right: ${({ $size, theme }) => css`
+    ${theme.alias.fields.space.padding.hor[$size]}
+  `};
   transform: translate(0, -50%);
   z-index: 1;
 `;

@@ -38,7 +38,7 @@ export const PartitionsContainer: React.FC<PartitionsContainerProps> = ({
       position="relative"
       styles={concat(
         partitionsContainerMixin({ hasSeparators, size, theme }),
-        styles
+        styles,
       )}
       width="100%"
     >

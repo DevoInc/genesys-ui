@@ -13,7 +13,7 @@ describe('Flex', () => {
     render(
       <Flex gap="cmp-md" height="30rem" overflow="auto" width="60rem">
         test
-      </Flex>
+      </Flex>,
     );
     expect(screen.getByText('test')).toHaveStyle({
       display: 'flex',

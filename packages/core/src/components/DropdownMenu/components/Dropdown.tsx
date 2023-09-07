@@ -19,7 +19,7 @@ const TYPES: { [key: string]: TypesProp } = {
 const buildItemsMenu = (
   items: Record<string, any>[],
   listItemsRef: React.RefObject<HTMLElement>[],
-  deepLevel: number
+  deepLevel: number,
 ) => {
   const elements: React.ReactElement[] = [];
   const checkLeftSpace = (dataItem) =>
@@ -123,7 +123,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
         setActiveItem(activeItem + 1);
       }
     },
-    [activeItem, listItemsRef.length]
+    [activeItem, listItemsRef.length],
   );
 
   return (

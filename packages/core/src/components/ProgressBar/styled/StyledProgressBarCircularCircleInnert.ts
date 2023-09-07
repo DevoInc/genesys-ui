@@ -41,7 +41,7 @@ export const StyledProgressBarCircularCircleInner = styled.circle.attrs(
     r: getRadio(size),
     rad: getRadiant(size),
     fill: 'none',
-  })
+  }),
 )<StyledProgressBarCircularCircleInnerProps>`
   ${({ indeterminate, status, percent, rad, theme }) => {
     const progressBarTokens = theme.cmp.progressBar;

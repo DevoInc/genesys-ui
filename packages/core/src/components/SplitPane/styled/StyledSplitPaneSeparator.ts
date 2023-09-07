@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { pseudoElementOverlayMixin } from '../../../styled/mixins/utilsMixins';
+import { pseudoElementOverlayMixin } from '../../../styled/mixins';
 
 export interface StyledSplitPaneSeparatorProps {
   vertical?: boolean;

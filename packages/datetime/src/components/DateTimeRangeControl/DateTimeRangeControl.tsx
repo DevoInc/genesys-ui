@@ -122,28 +122,28 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
     (event: React.FocusEvent<HTMLInputElement>) => {
       onBlur({ from: event.target.value, to });
     },
-    [onBlur, to]
+    [onBlur, to],
   );
 
   const onBlurToCallback = React.useCallback(
     (event: React.FocusEvent<HTMLInputElement>) => {
       onBlur({ from, to: event.target.value });
     },
-    [from, onBlur]
+    [from, onBlur],
   );
 
   const onChangeFromCallback = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       onChange({ from: event.target.value, to });
     },
-    [onChange, to]
+    [onChange, to],
   );
 
   const onChangeToCallback = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       onChange({ from, to: event.target.value });
     },
-    [from, onChange]
+    [from, onChange],
   );
 
   const dateTimeRangeControlTokens = useTheme().cmp.dateTimeRangeControl;

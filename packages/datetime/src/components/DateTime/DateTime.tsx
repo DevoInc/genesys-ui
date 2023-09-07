@@ -100,7 +100,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
         minutes: tmp.getMinutes(),
         seconds: tmp.getSeconds(),
         milliseconds: tmp.getMilliseconds(),
-      }).getTime()
+      }).getTime(),
     );
   }, [selectedDates, tmpTime, firstTime, onChange]);
 
@@ -125,7 +125,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
         minutes: tmp.getMinutes(),
         seconds: tmp.getSeconds(),
         milliseconds: tmp.getMilliseconds(),
-      }).getTime()
+      }).getTime(),
     );
   }, []);
 
@@ -134,7 +134,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
       handleDateChange(ts);
       setFirsTime(false);
     },
-    [handleDateChange]
+    [handleDateChange],
   );
   const theme = useTheme();
   return (

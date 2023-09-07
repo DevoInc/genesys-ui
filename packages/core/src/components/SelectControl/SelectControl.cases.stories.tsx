@@ -80,7 +80,7 @@ export const SingleWithOptionsGroups: Story = {
         { value: 5, label: 'Option five' },
       ];
       const [value, setValue] = React.useState<PropsValue<SelectControlOption>>(
-        { value: 41, label: 'Option four-one' }
+        { value: 41, label: 'Option four-one' },
       );
       return (
         <SelectControl
@@ -97,7 +97,7 @@ export const MultipleBasic: Story = {
   render: (args) =>
     ((args) => {
       const getOptions = (
-        optionsNumber: number
+        optionsNumber: number,
       ): Props<SelectControlOption>['options'] => {
         return Array(optionsNumber)
           .fill(null)
@@ -125,7 +125,7 @@ export const MultipleSortable: Story = {
   render: (args) =>
     ((args) => {
       const getOptions = (
-        optionsNumber: number
+        optionsNumber: number,
       ): Props<SelectControlOption>['options'] => {
         return Array(optionsNumber)
           .fill(null)
@@ -155,7 +155,7 @@ export const MultipleCreatable: Story = {
   render: (args) =>
     ((args) => {
       const getOptions = (
-        optionsNumber: number
+        optionsNumber: number,
       ): Props<SelectControlOption>['options'] => {
         return Array(optionsNumber)
           .fill(null)
@@ -183,7 +183,7 @@ export const MultipleSelectAll: Story = {
   render: (args) =>
     ((args) => {
       const getOptions = (
-        optionsNumber: number
+        optionsNumber: number,
       ): Props<SelectControlOption>['options'] => {
         return Array(optionsNumber)
           .fill(null)
@@ -224,7 +224,7 @@ export const MultipleFixedOptions: Story = {
         [
           { value: 'item5', label: 'Item 5' },
           { value: 'item8', label: 'Item 8' },
-        ]
+        ],
       );
       const onChange = (opts) => setValue(opts);
       return (

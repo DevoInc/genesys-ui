@@ -8,6 +8,6 @@ declare module 'react-select/dist/declarations/src/Select' {
   export interface Props<
     Option,
     IsMulti extends boolean,
-    Group extends GroupBase<Option>
+    Group extends GroupBase<Option>,
   > extends CommonSelectCmpsProps {}
 }

@@ -9,7 +9,7 @@ describe('useCalendarForwardBackwardBehavior', () => {
     const initialBehavior = 'backward';
 
     const { result } = renderHook(() =>
-      useCalendarForwardBackwardBehavior({ from, to, initialBehavior })
+      useCalendarForwardBackwardBehavior({ from, to, initialBehavior }),
     );
     expect(result.current.selectedDates.from).toEqual(from);
     expect(result.current.selectedDates.to).toEqual(to);
@@ -34,7 +34,7 @@ describe('useCalendarForwardBackwardBehavior', () => {
     const initialBehavior = 'forward';
 
     const { result } = renderHook(() =>
-      useCalendarForwardBackwardBehavior({ from, to, initialBehavior })
+      useCalendarForwardBackwardBehavior({ from, to, initialBehavior }),
     );
     expect(result.current.selectedDates.from).toEqual(from);
     expect(result.current.selectedDates.to).toEqual(to);
@@ -75,7 +75,7 @@ describe('useCalendarForwardBackwardBehavior', () => {
   test('Initial without to', () => {
     const from = new Date(2022, 8, 0).getTime();
     const { result } = renderHook(() =>
-      useCalendarForwardBackwardBehavior({ from })
+      useCalendarForwardBackwardBehavior({ from }),
     );
     expect(result.current.selectedDates.from).toEqual(from);
     expect(result.current.selectedDates.to).toEqual(null);

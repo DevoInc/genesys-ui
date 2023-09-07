@@ -67,7 +67,7 @@ export const Popper: React.FC<PopperProps> = ({
   // Visibility - State
   const [isVisible, setIsVisible] = useStateFromProps(
     isVisibleExternalState,
-    setIsVisibleExternalState
+    setIsVisibleExternalState,
   );
   const setIsVisibleFalse = () => setIsVisible(false);
 

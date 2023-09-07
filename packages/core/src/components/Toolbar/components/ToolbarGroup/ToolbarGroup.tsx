@@ -26,7 +26,7 @@ export const ToolbarGroup: React.FC<ToolbarGroupProps> = ({
       role={role}
       styles={concat(
         `background: ${theme.alias.color.background.surface.base.base};`,
-        styles
+        styles,
       )}
     >
       {children}

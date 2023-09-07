@@ -19,7 +19,7 @@ describe('Wrap', () => {
         width="60rem"
       >
         test
-      </Wrap>
+      </Wrap>,
     );
     expect(screen.getByText('test')).toHaveStyle({
       display: 'flex',

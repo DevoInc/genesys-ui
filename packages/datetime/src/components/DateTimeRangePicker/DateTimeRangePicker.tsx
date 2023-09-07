@@ -169,14 +169,14 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
     (range) => {
       onChange?.({ from: range.from, to: range.to });
     },
-    [onChange]
+    [onChange],
   );
 
   const onBlurCallback = React.useCallback(
     (range) => {
       onBlur?.({ from: range.from, to: range.to });
     },
-    [onBlur]
+    [onBlur],
   );
 
   const onChangePresetDateCallback = React.useCallback(
@@ -187,7 +187,7 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
       });
       setPreset(range);
     },
-    [expresionToTime]
+    [expresionToTime],
   );
 
   const onChangeDateTimeCallback = React.useCallback((range: DateRange) => {

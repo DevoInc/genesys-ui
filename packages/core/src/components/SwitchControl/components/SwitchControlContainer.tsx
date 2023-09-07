@@ -67,7 +67,7 @@ export const SwitchControlContainer: React.FC<SwitchControlContainerProps> = ({
           status,
           theme,
         }),
-        styles
+        styles,
       )}
     >
       {children}

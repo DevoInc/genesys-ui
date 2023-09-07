@@ -6,7 +6,7 @@ import {
   StyledPolymorphicProps,
 } from '../../../declarations';
 
-import { srOnlyMixin } from '../../../styled/mixins/utilsMixins';
+import { srOnlyMixin } from '../../../styled/mixins';
 
 export interface StyledFormLegendContainerProps
   extends StyledPolymorphicProps,

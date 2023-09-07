@@ -10,8 +10,8 @@ import {
   truncateTypoMixin,
   typoColorMixin,
   typoMixin,
-} from '../../styled/mixins/baseMixins';
-import { srOnlyMixin } from '../../styled/mixins/utilsMixins';
+  srOnlyMixin,
+} from '../../styled/mixins';
 import * as React from 'react';
 
 export interface StyledLabelProps extends Pick<LabelAttrProps, 'htmlFor'> {

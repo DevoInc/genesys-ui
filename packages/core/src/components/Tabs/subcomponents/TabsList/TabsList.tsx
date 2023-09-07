@@ -27,7 +27,7 @@ export const TabsList = React.forwardRef<HTMLElement, TabsListProps>(
         {children}
       </Flex>
     );
-  }
+  },
 );
 
 TabsList.displayName = 'TabsList';

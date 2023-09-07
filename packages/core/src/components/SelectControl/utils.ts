@@ -45,7 +45,7 @@ export const wrapperOnChange =
  * creatable, value, and options."
  */
 export const showMenuAndDropDown = <Option extends SelectOption>(
-  selectProps: Props<Option>
+  selectProps: Props<Option>,
 ): boolean => {
   return (
     (selectProps.isMulti &&
@@ -65,7 +65,7 @@ export const showMenuAndDropDown = <Option extends SelectOption>(
  */
 const flattenOptionsFn = <Option extends SelectOption>(
   acc: Option[],
-  option: Props<Option>
+  option: Props<Option>,
 ) => {
   if ('options' in option && Array.isArray(option.options)) {
     return [...acc, ...option.options.reduce<Option[]>(flattenOptionsFn, [])];
@@ -83,7 +83,7 @@ const flattenOptionsFn = <Option extends SelectOption>(
 export const findValue = <Option extends SelectOption>(
   value: SelectControlProps<Option>['value'],
   options: Props<Option>['options'],
-  isMulti: boolean
+  isMulti: boolean,
 ) => {
   const defaultValue = value || '';
   // If options are defined search the value inside them.
@@ -99,7 +99,7 @@ export const findValue = <Option extends SelectOption>(
           return (options as Option[]).find((option) =>
             val instanceof Object
               ? option.value === val.value
-              : option.value === val
+              : option.value === val,
           );
         })
         .filter((el) => el !== undefined);
@@ -119,7 +119,7 @@ export const findValue = <Option extends SelectOption>(
       const found = flattenedOptions.find((option) =>
         value && typeof value === 'object' && 'value' in value
           ? option.value === value.value || ''
-          : option.value === value || ''
+          : option.value === value || '',
       );
       return found || defaultValue;
     }

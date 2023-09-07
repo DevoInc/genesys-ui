@@ -28,7 +28,7 @@ import {
 export interface SelectControlProps<
   Option extends SelectOption = SelectOption,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 > extends Omit<
       InnerSelectControlProps<Option, IsMulti, Group>,
       'value' | 'option'
@@ -45,7 +45,7 @@ export interface SelectControlProps<
 export const SelectControl = <
   Option extends SelectOption = SelectOption,
   IsMulti extends boolean = boolean,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >({
   components,
   componentStyles,
@@ -84,12 +84,12 @@ export const SelectControl = <
       rest.minMenuHeight,
       rest.selectAllBtn,
       rest.size,
-    ]
+    ],
   );
 
   const hasFixedOptions = React.useMemo(
     () => Array.isArray(value) && value.some(({ fixed }) => fixed),
-    [value]
+    [value],
   );
 
   const onChange =
@@ -104,12 +104,12 @@ export const SelectControl = <
       isClearable === undefined && hasFixedOptions
         ? (value as MultiValue<Option>).some(({ fixed }) => !fixed)
         : isClearable,
-    [hasFixedOptions, isClearable, value]
+    [hasFixedOptions, isClearable, value],
   );
 
   const menuPortalTarget = React.useMemo(
     () => (rest.menuAppendToBody ? document.body : rest.menuPortalTarget),
-    [rest.menuAppendToBody, rest.menuPortalTarget]
+    [rest.menuAppendToBody, rest.menuPortalTarget],
   );
 
   const handleCloseMenuOnScroll = React.useCallback(
@@ -122,10 +122,10 @@ export const SelectControl = <
       ev != null &&
       get(ev, 'srcElement.classList') != null &&
       ev.srcElement.getElementsByClassName(
-        `${rest.classNamePrefix}__control--menu-is-open`
+        `${rest.classNamePrefix}__control--menu-is-open`,
       ).length &&
       !ev.srcElement.classList.contains(`${rest.classNamePrefix}__menu-list`),
-    [rest.classNamePrefix, rest.closeMenuOnScroll, rest.menuAppendToBody]
+    [rest.classNamePrefix, rest.closeMenuOnScroll, rest.menuAppendToBody],
   );
 
   return (
