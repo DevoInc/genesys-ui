@@ -3,7 +3,7 @@ import { DateTimePicker } from '@devoinc/genesys-ui-datetime';
 
 interface DateCellEditorProps {
   value: string | number | Date;
-  onChange?: (newValue: string) => void;
+  onChange?: (newValue: string | number | Date) => void;
 }
 
 export const EditDate: React.FC<DateCellEditorProps> = ({

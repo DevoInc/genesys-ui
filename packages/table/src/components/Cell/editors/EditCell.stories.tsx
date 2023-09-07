@@ -26,7 +26,7 @@ type Story = StoryObj<typeof Cell>;
 export const TextEditor: Story = {
   render: () =>
     (() => {
-      const [text, setText] = React.useState('Hello!');
+      const [text, setText] = React.useState(data[0].name);
       const onChange = (newText: string) => setText(newText);
 
       const columnEditText: ColDef = {
@@ -51,8 +51,8 @@ export const TextEditor: Story = {
 export const DateEditor: Story = {
   render: () =>
     (() => {
-      const [date, setDate] = React.useState(new Date().toISOString());
-      const onChange = (newDate: string) => setDate(newDate);
+      const [date, setDate] = React.useState(data[0].timestamp);
+      const onChange = (newDate: number) => setDate(newDate);
 
       const columnEditDate: ColDef = {
         colId: 'timestamp',
