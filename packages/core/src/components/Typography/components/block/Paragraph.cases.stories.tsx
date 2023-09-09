@@ -12,7 +12,7 @@ const meta: Meta<typeof Typography.Paragraph> = {
 export default meta;
 type Story = StoryObj<typeof Typography.Paragraph>;
 
-export const Editable: Story = {
+export const ParagraphEditable: Story = {
   render: () =>
     (() => {
       const [editConfig, setEditConfig] = React.useState({

@@ -11,7 +11,7 @@ const meta: Meta<typeof Typography.Paragraph> = {
 export default meta;
 type Story = StoryObj<typeof Typography.Paragraph>;
 
-export const Base: Story = {
+export const Paragraph: Story = {
   args: {
     children: lorem,
   },

@@ -10,7 +10,7 @@ const meta: Meta<typeof Typography.Heading> = {
 export default meta;
 type Story = StoryObj<typeof Typography.Heading>;
 
-export const Base: Story = {
+export const Heading: Story = {
   args: {
     children: 'Heading',
   },

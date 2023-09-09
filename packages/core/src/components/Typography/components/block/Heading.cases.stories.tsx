@@ -12,7 +12,7 @@ const meta: Meta<typeof Typography.Heading> = {
 export default meta;
 type Story = StoryObj<typeof Typography.Heading>;
 
-export const Editable: Story = {
+export const HeadingEditable: Story = {
   render: () =>
     (() => {
       const [editConfig, setEditConfig] = React.useState({
