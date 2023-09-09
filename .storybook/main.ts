@@ -1,4 +1,4 @@
-import { dirname, join } from "path";
+import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
 import { mergeConfig } from 'vite';
 
@@ -11,14 +11,14 @@ const config: StorybookConfig = {
     // '../packages/**/depcruise.html',
   ],
   framework: {
-    name: getAbsolutePath("@storybook/react-vite"),
+    name: getAbsolutePath('@storybook/react-vite'),
     options: {},
   },
   addons: [
-    getAbsolutePath("@storybook/addon-essentials"),
-    getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@storybook/addon-a11y"),
-    getAbsolutePath("@storybook/preset-scss"),
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('@storybook/preset-scss'),
   ],
   async viteFinal(config) {
     // Merge custom configuration into the default config
@@ -36,6 +36,8 @@ const config: StorybookConfig = {
           '@devoinc/genesys-ui-form',
           '@devoinc/genesys-ui-table',
           '@storybook/addon-actions',
+          '@storybook/addon-docs',
+          '@storybook/addon-docs/blocks',
         ],
       },
     });
@@ -60,5 +62,5 @@ const config: StorybookConfig = {
 export default config;
 
 function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, "package.json")));
+  return dirname(require.resolve(join(value, 'package.json')));
 }

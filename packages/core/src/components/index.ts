@@ -2,7 +2,7 @@ export * from './AppBar';
 export * from './Avatar';
 export * from './Badge';
 export * from './Box';
-export * from './BoxMessage';
+export * from './Banner';
 export * from './Button';
 export * from './ButtonGroup';
 export * from './CheckboxControl';

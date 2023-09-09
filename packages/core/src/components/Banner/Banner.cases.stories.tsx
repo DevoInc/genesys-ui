@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import Cookies from 'js-cookie';
 
-import { BoxMessage, Button, Flex, VFlex } from '..';
+import { Banner, Button, Flex, VFlex } from '..';
 import { lorem } from '../../../stories/utils/fillerTexts';
 
-const meta: Meta<typeof BoxMessage> = {
-  title: 'Components/Core/Layout/BoxMessage/Cases',
-  component: BoxMessage,
+const meta: Meta<typeof Banner> = {
+  title: 'Components/Core/Layout/Banner/Cases',
+  component: Banner,
   args: {
     status: 'info',
     closeTooltip: 'Remove message',
@@ -15,7 +15,7 @@ const meta: Meta<typeof BoxMessage> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof BoxMessage>;
+type Story = StoryObj<typeof Banner>;
 
 const cookieId = 'genesys-ui-box-message-cookie-example';
 export const Cookie: Story = {
@@ -29,7 +29,7 @@ export const Cookie: Story = {
         <VFlex>
           {show && (
             <Flex.Item>
-              <BoxMessage
+              <Banner
                 {...args}
                 actions={[
                   <Button

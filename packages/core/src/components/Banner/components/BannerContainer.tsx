@@ -8,9 +8,9 @@ import {
   StyledPolymorphicProps,
 } from '../../../declarations';
 
-import { StyledBoxMessage } from '../StyledBoxMessage';
+import { StyledBanner } from '../StyledBanner';
 
-export interface BoxMessageContainerProps
+export interface BannerContainerProps
   extends StyledPolymorphicProps,
     StyledOverloadCssProps,
     GlobalAttrProps,
@@ -19,7 +19,7 @@ export interface BoxMessageContainerProps
   status?: ActiveStatus;
 }
 
-export const BoxMessageContainer: React.FC<BoxMessageContainerProps> = ({
+export const BannerContainer: React.FC<BannerContainerProps> = ({
   as,
   children,
   className,
@@ -30,7 +30,7 @@ export const BoxMessageContainer: React.FC<BoxMessageContainerProps> = ({
   tooltip,
   ...ariaProps
 }) => (
-  <StyledBoxMessage
+  <StyledBanner
     {...ariaProps}
     as={as}
     className={className}
@@ -41,5 +41,5 @@ export const BoxMessageContainer: React.FC<BoxMessageContainerProps> = ({
     title={tooltip}
   >
     {children}
-  </StyledBoxMessage>
+  </StyledBanner>
 );

@@ -1,14 +1,14 @@
 import * as React from 'react';
 
 import { ButtonProps, HFlex } from '../../index';
-import { BoxMessageContainerProps } from './BoxMessageContainer';
+import { BannerContainerProps } from './BannerContainer';
 
-export interface BoxMessageActionsProps
-  extends Pick<BoxMessageContainerProps, 'status' | 'styles'> {
+export interface BannerActionsProps
+  extends Pick<BannerContainerProps, 'status' | 'styles'> {
   actions?: React.ReactElement<ButtonProps>[];
 }
 
-export const BoxMessageActions: React.FC<BoxMessageActionsProps> = ({
+export const BannerActions: React.FC<BannerActionsProps> = ({
   actions,
   styles,
   status,

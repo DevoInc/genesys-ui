@@ -2,12 +2,12 @@ import styled, { css } from 'styled-components';
 
 import { ActiveStatus } from '../../';
 
-export interface StyledBoxMessageProps {
-  /** BoxMessage status */
+export interface StyledBannerProps {
+  /** Banner status */
   status?: ActiveStatus;
 }
 
-export const StyledBoxMessage = styled.div<StyledBoxMessageProps>`
+export const StyledBanner = styled.div<StyledBannerProps>`
   ${({ status = 'info', theme }) => {
     const cmpTokens = theme.cmp.boxMessage;
     return css`

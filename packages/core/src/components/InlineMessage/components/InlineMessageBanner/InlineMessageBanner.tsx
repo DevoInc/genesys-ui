@@ -2,12 +2,12 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { BoxMessage, BoxMessageProps } from '../../../BoxMessage';
+import { Banner, BannerProps } from '../../../Banner';
 import { inlineMessageBannerMixin } from './helpers';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface InlineMessageBannerProps
-  extends Omit<BoxMessageProps, 'subcomponentStyles'> {}
+  extends Omit<BannerProps, 'subcomponentStyles'> {}
 
 export const InlineMessageBanner: React.FC<InlineMessageBannerProps> = ({
   actions,
@@ -20,7 +20,7 @@ export const InlineMessageBanner: React.FC<InlineMessageBannerProps> = ({
 }) => {
   const theme = useTheme();
   return (
-    <BoxMessage
+    <Banner
       actions={actions}
       className={className}
       content={content}

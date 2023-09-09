@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { BoxMessageProps, Icon } from '../../index';
+import { BannerProps, Icon } from '../../index';
 import { STATUS_ICON_MAP } from '../../../../src/constants';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface BoxMessageIconProps
-  extends Pick<BoxMessageProps, 'status' | 'styles'> {}
+export interface BannerIconProps
+  extends Pick<BannerProps, 'status' | 'styles'> {}
 
-export const BoxMessageIcon: React.FC<BoxMessageIconProps> = ({
+export const BannerIcon: React.FC<BannerIconProps> = ({
   status = 'info',
   styles,
 }) => {

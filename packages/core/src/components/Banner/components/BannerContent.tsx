@@ -3,11 +3,11 @@ import * as React from 'react';
 import { StyledOverloadCssProps } from '../../../declarations';
 import { Typography } from '../../index';
 
-export interface BoxMessageContentProps extends StyledOverloadCssProps {
+export interface BannerContentProps extends StyledOverloadCssProps {
   children: React.ReactNode;
 }
 
-export const BoxMessageContent: React.FC<BoxMessageContentProps> = ({
+export const BannerContent: React.FC<BannerContentProps> = ({
   children,
   styles,
 }) =>

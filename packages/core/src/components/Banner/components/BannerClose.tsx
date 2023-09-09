@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { useTheme } from 'styled-components';
 
 import {
   MouseEventAttrProps,
@@ -8,13 +7,13 @@ import {
 
 import { Box, IconButtonRemove } from '../../index';
 
-export interface BoxMessageCloseProps
+export interface BannerCloseProps
   extends StyledOverloadCssProps,
     Pick<MouseEventAttrProps, 'onClick'> {
   tooltip?: string;
 }
 
-export const BoxMessageClose: React.FC<BoxMessageCloseProps> = ({
+export const BannerClose: React.FC<BannerCloseProps> = ({
   onClick,
   tooltip,
   styles,
