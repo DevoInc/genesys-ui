@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import { GlobalAriaProps, GlobalAttrProps } from '../../declarations';
 
-import { Flex } from '../Flex';
 import {
   FormButtons,
   FormDistributor,
   FormDistributorProps,
   FormGroup,
   FormLegend,
+  FormItem,
 } from './components';
 import { FormAttrProps, FormEventAttrs } from './declarations';
 
@@ -55,11 +55,11 @@ const PartForm: React.FC<FormProps> = ({
 export const Form = PartForm as typeof PartForm & {
   Buttons: typeof FormButtons;
   Group: typeof FormGroup;
-  Item: typeof Flex.Item;
+  Item: typeof FormItem;
   Legend: typeof FormLegend;
 };
 
 Form.Buttons = FormButtons;
 Form.Group = FormGroup;
-Form.Item = Flex.Item;
+Form.Item = FormItem;
 Form.Legend = FormLegend;

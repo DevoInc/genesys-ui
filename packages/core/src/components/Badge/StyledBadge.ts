@@ -104,6 +104,6 @@ export const StyledBadgeIcon = styled.i<StyledBadgeIconProps>`
 `;
 
 export const StyledBadgeText = styled.span`
-  ${truncateTypoMixin()};
+  ${() => truncateTypoMixin()};
   line-height: 1;
 `;

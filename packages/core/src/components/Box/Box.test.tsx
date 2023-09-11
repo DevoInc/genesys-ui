@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { render, screen } from 'test-utils';
 
-import { VFlex } from './VFlex';
+import { Box } from './Box';
 
-describe('VFlex', () => {
+describe('Box', () => {
   test('render', () => {
-    render(<VFlex>test</VFlex>);
+    render(<Box>test</Box>);
     expect(screen.getByText('test')).toBeInTheDocument();
   });
 });
