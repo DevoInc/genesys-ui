@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.3-alpha.22](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.21...v1.0.3-alpha.22) (2023-09-11)
+
+
+### Features
+
+* renamed BoxMessage to Banner ([3d880a8](https://github.com/DevoInc/genesys-ui/commit/3d880a8ecf1d69763d0843104f6cd7d099109de9))
+
+
+### Bug Fixes
+
+* **Modal:** fix import ([64f41f9](https://github.com/DevoInc/genesys-ui/commit/64f41f92b3f87accfb4bec57ee6eb68d01801265))
+* removed tooltip from index ([e8e4a34](https://github.com/DevoInc/genesys-ui/commit/e8e4a344424d526d1883a86bdcc4bf1d6ec083ec))
+
 ### [1.0.3-alpha.21](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.20...v1.0.3-alpha.21) (2023-08-24)
 
 
