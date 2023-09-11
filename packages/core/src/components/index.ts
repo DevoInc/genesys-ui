@@ -55,7 +55,6 @@ export * from './TextareaControl';
 export * from './Thumbnail';
 export * from './Toast';
 export * from './Toolbar';
-export * from './Tooltip';
 export * from './Typography';
 export * from './VFlex';
 export * from './Wrap';
