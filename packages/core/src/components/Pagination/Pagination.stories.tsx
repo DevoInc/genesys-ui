@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Pagination, Tooltip, usePagination } from '../';
+import { Pagination, usePagination } from '../';
 import { Item } from './declarations';
 
 const meta: Meta<typeof Pagination> = {
@@ -28,7 +28,6 @@ export const Base: Story = {
 
       return (
         <>
-          <Tooltip place={'bottom'} delayShow={150} />
           <Pagination {...args} paginationHook={paginationHook} />
           {paginationHook.pageData.map((data: Item, idx: number) => (
             <p
