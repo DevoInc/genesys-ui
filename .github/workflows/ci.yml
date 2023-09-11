@@ -100,7 +100,7 @@ jobs:
           key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
 
       - name: Run unit tests
-        run: npm t
+        run: npm run test:ci
 
   deploy:
     needs: [lint, unit-test]

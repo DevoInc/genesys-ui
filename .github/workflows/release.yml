@@ -103,7 +103,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ github.sha }}
 
       - name: Run tests
-        run: npm t
+        run: npm run test:ci
 
   release:
     needs: [lint, unit-test]

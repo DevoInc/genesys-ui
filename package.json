@@ -17,7 +17,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "NODE_OPTIONS=\"--max_old_space_size=4096\" storybook build",
     "stryker": "npm run stryker -ws --if-present",
-    "test": "jest --coverage",
+    "test": "jest",
+    "test:ci": "jest --coverage",
     "release": "release-it --dry-run",
     "release:ci": "release-it --ci"
   },
