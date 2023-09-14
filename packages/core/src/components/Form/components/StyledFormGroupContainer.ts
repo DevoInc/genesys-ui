@@ -29,9 +29,9 @@ export const StyledFormGroupContainer = styled.div<StyledFormGroupContainerProps
       flex-direction: ${legendPosition === 'left' ? 'row' : 'column'};
       align-items: ${legendPosition === 'left' ? 'center' : 'stretch'};
       position: relative;
-      gap: ${getSpacingPropCss('cmp-xs', theme)};
-      margin-top: ${marginTop && getSpacingPropCss(marginTop, theme)};
-      margin-left: ${marginTop && getSpacingPropCss(marginLeft, theme)};
+      gap: ${getSpacingPropCss(theme)('cmp-xs')};
+      margin-top: ${marginTop && getSpacingPropCss(theme)(marginTop)};
+      margin-left: ${marginTop && getSpacingPropCss(theme)(marginLeft)};
 
       ${asFieldset &&
       css`

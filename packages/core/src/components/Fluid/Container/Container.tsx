@@ -81,13 +81,13 @@ export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
         }
         style={{
           ...style,
-          marginBottom: marginBottom && getSpacingPropCss(marginBottom, theme),
-          marginTop: marginTop && getSpacingPropCss(marginTop, theme),
+          marginBottom: marginBottom && getSpacingPropCss(theme)(marginBottom),
+          marginTop: marginTop && getSpacingPropCss(theme)(marginTop),
           paddingBottom:
-            paddingBottom && getSpacingPropCss(paddingBottom, theme),
+            paddingBottom && getSpacingPropCss(theme)(paddingBottom),
           paddingLeft: `${gutterSizeNumber / 2}px`,
           paddingRight: `${gutterSizeNumber / 2}px`,
-          paddingTop: marginTop && getSpacingPropCss(paddingTop, theme),
+          paddingTop: marginTop && getSpacingPropCss(theme)(paddingTop),
         }}
         title={tooltip}
       >

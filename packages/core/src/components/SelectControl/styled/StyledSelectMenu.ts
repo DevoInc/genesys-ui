@@ -76,15 +76,7 @@ export const StyledSelectMenu = styled.div.attrs({
             return menuTokens.space.marginTop.base;
           }};
           margin-bottom: ${menuQuiet && '0'};
-          ${menuQuiet
-            ? elevationMixin({
-                theme,
-                elevation: 'ground',
-              })
-            : elevationMixin({
-                theme,
-                elevation,
-              })};
+          ${elevationMixin(theme)(menuQuiet ? 'ground' : elevation)};
           min-width: ${minMenuWidth};
           background: ${surfaceTokens.base.base};
           ${getFieldControlTypo({ theme, size })};

@@ -21,11 +21,13 @@ export const getSpacingValuesMap = (theme: DefaultTheme) => {
 };
 
 /**
- * Get the map with spacing prop alias values and prop css values (tokens)
- * based in the theme object.
+ * Get the spacing value translated into css units
+ * cmp-md -> Xrem, ...
+ * could be composed as: 'cmp-md cmp-md' for margin or padding attributes (for
+ * example)
  */
-export const getSpacingPropCss = (aliasValue: string, theme: DefaultTheme) => {
-  const valuesArr = aliasValue?.split(' ');
+export const getSpacingPropCss = (theme: DefaultTheme) => (spacing: string) => {
+  const valuesArr = spacing?.split(' ');
   const cssValuesArr = valuesArr?.map((val) => getSpacingValuesMap(theme)[val]);
   return cssValuesArr?.join(' ');
 };

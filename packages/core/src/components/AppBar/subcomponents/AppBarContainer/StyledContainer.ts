@@ -11,10 +11,10 @@ export const StyledAppBarContainer = styled.div<StyledAppBarContainerProps>`
   ${({ theme, ...boxMixinProps }) => {
     console.info(boxMixinProps.elevation);
     return css`
-      ${boxMixin({ theme, ...boxMixinProps })}
+      ${boxMixin(theme)(boxMixinProps)}
       position: relative;
-      padding-left: ${getSpacingPropCss('cmp-md', theme)};
-      padding-right: ${getSpacingPropCss('cmp-md', theme)};
+      padding-left: ${getSpacingPropCss(theme)('cmp-md')};
+      padding-right: ${getSpacingPropCss(theme)('cmp-md')};
       background-color: ${theme.cmp.appBar.color.background};
     `;
   }}

@@ -23,7 +23,7 @@ export const getChildrenByRowFlex = ({
   if (childrenByRow <= 0) return undefined;
   const childrenEqualWidthPercent = 100 / childrenByRow + '%';
   // Horizontal gap compensation applied to each flex item: horizontal space * number of gutters / number of items
-  const hSpacingCssValue = getSpacingPropCss(hSpacing, theme);
+  const hSpacingCssValue = getSpacingPropCss(theme)(hSpacing);
   const gutterFactor = (childrenByRow - 1) / childrenByRow;
   const gapOffset = `${hSpacingCssValue} * ${gutterFactor}`;
   return `0 1 calc(${childrenEqualWidthPercent} - ${gapOffset})`;

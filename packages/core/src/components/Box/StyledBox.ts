@@ -39,7 +39,7 @@ export const StyledBox = styled.div<StyledBoxProps>`
     $width,
     zIndex,
   }) =>
-    boxMixin({
+    boxMixin(theme)({
       alignSelf,
       $display,
       flex,
@@ -67,7 +67,6 @@ export const StyledBox = styled.div<StyledBoxProps>`
       positionLeft,
       positionRight,
       positionTop,
-      theme,
       cssTranslate,
       verticalAlign,
       visibility,

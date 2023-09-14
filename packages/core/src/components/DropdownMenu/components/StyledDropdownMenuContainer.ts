@@ -5,9 +5,9 @@ import { boxMixin, BoxMixinProps } from '../../../styled';
 interface StyledDropdownProps extends BoxMixinProps {}
 
 export const StyledDropdownMenuContainer = styled.ul<StyledDropdownProps>`
-  ${(mixinBoxProps) => {
+  ${({ theme, ...mixinBoxProps }) => {
     return css`
-      ${boxMixin(mixinBoxProps)};
+      ${boxMixin(theme)(mixinBoxProps)};
     `;
   }}
 `;

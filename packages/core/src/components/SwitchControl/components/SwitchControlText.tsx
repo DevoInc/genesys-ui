@@ -33,8 +33,8 @@ export const SwitchControlText: React.FC<SwitchControlTextProps> = ({
   ...restFlexProps
 }) => {
   const theme = useTheme();
-  const spaceToHandler = getSpacingPropCss('cmp-xxs', theme);
-  const spaceToEdge = getSpacingPropCss('cmp-sm', theme);
+  const spaceToHandler = getSpacingPropCss(theme)('cmp-xxs');
+  const spaceToEdge = getSpacingPropCss(theme)('cmp-sm');
   const refUnchecked = React.useRef<any>();
   const refChecked = React.useRef<any>();
   const [widthPx, setWidthPx] = React.useState(0);

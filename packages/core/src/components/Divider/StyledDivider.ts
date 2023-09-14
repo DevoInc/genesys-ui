@@ -31,7 +31,7 @@ export const StyledDivider = styled.hr<StyledDividerProps>`
     $width,
   }) => {
     const defaultSpacing = theme.alias.space.cmp.md;
-    const spacing = margin ? getSpacingPropCss(margin, theme) : defaultSpacing;
+    const spacing = margin ? getSpacingPropCss(theme)(margin) : defaultSpacing;
     const borderSize = theme.alias.shape.borderSize.separator.md;
     const bgColor =
       customColor ||
@@ -41,7 +41,7 @@ export const StyledDivider = styled.hr<StyledDividerProps>`
       flex-shrink: 0;
       display: ${vertical ? 'inline-flex' : 'flex'};
       overflow: hidden;
-      margin: ${margin && getSpacingPropCss(margin, theme)};
+      margin: ${margin && getSpacingPropCss(theme)(margin)};
       margin: ${vertical ? `0 ${spacing}` : `${spacing} 0`};
       border: none;
       width: ${$width || (vertical ? borderSize : '100%')};
