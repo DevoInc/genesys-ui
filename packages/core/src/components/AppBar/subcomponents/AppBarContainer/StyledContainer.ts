@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { getSpacingPropCss } from '../../../../utils/spacing';
+import { getSpacingPropCss } from '../../../../helpers';
 import { boxMixin, BoxMixinProps } from '../../../../styled/';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

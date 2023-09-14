@@ -8,7 +8,7 @@ import {
   StyledPolymorphicProps,
 } from '../../../';
 
-import { getSpacingPropCss } from '../../../utils/spacing';
+import { getSpacingPropCss } from '../../../helpers';
 
 export interface StyledFormGroupContainerProps
   extends StyledPolymorphicProps,

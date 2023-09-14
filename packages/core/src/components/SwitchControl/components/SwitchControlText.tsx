@@ -7,7 +7,7 @@ import {
 import { SwitchControlProps } from '../SwitchControl';
 import { StyledOverloadCssProps } from '../../../declarations';
 import { Flex, FlexProps } from '../../Flex';
-import { getSpacingPropCss } from '../../../utils/spacing';
+import { getSpacingPropCss } from '../../../helpers';
 import { useTheme } from 'styled-components';
 
 export interface SwitchControlTextProps

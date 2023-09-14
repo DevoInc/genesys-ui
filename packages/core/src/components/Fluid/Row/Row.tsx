@@ -8,7 +8,7 @@ import {
 import { GlobalAttrProps } from '../../../declarations';
 import { ContainerSpacing, FluidAs } from '../declarations';
 
-import { getSpacingPropCss } from '../../../utils/spacing';
+import { getSpacingPropCss } from '../../../helpers';
 import { getPxFromRem } from '../../../helpers';
 
 export interface RowProps

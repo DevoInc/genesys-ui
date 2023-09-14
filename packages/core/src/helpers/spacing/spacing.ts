@@ -1,5 +1,5 @@
 import { DefaultTheme } from 'styled-components';
-import { GLOBAL_SPACING } from '../constants/spacing';
+import { GLOBAL_SPACING } from '../../constants/spacing';
 
 /**
  * Get the map with spacing prop alias values and prop css values (tokens)

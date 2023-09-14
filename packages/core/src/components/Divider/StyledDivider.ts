@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 
 import { AllColorScheme, GlobalSpacing } from '../../declarations';
-import { getSpacingPropCss } from '../../utils/spacing';
+import { getSpacingPropCss } from '../../helpers';
 import { getDividerColorTokens } from './helpers';
 
 export interface StyledDividerProps {

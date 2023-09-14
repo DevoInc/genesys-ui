@@ -1,5 +1,5 @@
 import { GlobalSpacing } from '../../declarations';
-import { getSpacingPropCss } from '../../utils/spacing';
+import { getSpacingPropCss } from '../../helpers';
 import { DefaultTheme } from 'styled-components';
 
 /**

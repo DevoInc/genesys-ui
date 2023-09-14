@@ -14,7 +14,7 @@ import {
 
 // utils
 import { getHeadingCategoryAndType, getTypoCss } from './utils';
-import { getSpacingPropCss } from '../../utils/spacing';
+import { getSpacingPropCss } from '../../helpers';
 import { srOnlyMixin } from '../../styled/mixins';
 
 export const StyledAbbr = styled.abbr`

@@ -15,7 +15,7 @@ import {
 import { ContainerSpacing } from '../declarations';
 import { GlobalAttrProps } from '../../../declarations';
 
-import { getSpacingPropCss } from '../../../utils/spacing';
+import { getSpacingPropCss } from '../../../helpers';
 import { getPxFromRem } from '../../../helpers';
 import { RowProps } from '../Row';
 
