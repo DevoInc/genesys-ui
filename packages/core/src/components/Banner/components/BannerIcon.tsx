@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import { BannerProps, Icon } from '../../index';
-import { STATUS_ICON_MAP } from '../../../../src/constants';
+import { STATUS_ICON_MAP } from '../../../constants';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface BannerIconProps
