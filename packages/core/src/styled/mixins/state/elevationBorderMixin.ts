@@ -8,9 +8,9 @@ import { Elevation } from '../../../declarations';
 export const elevationBorderMixin =
   (theme: DefaultTheme) => (elevation: Elevation) => {
     const elevations = theme.alias.color.border.elevation;
-    return elevation === 'ground'
+    return !elevation || elevation === 'ground'
       ? null
-      : elevation?.includes('sticky')
+      : elevation?.startsWith('sticky')
       ? elevation === 'stickyTop'
         ? css`
             border-top: 0.1rem solid ${elevations.sticky.top};
@@ -28,7 +28,9 @@ export const elevationBorderMixin =
             border-bottom: 0.1rem solid ${elevations.sticky.bottom};
           `
         : null
-      : css`
+      : Object.keys(elevations).includes(elevation)
+      ? css`
           border: 0.1rem solid ${elevations[elevation]};
-        `;
+        `
+      : null;
   };

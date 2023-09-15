@@ -24,7 +24,6 @@ describe('elevationMixin', () => {
     const mixin = elevationMixin(theme)('badElevation' as Elevation).join('');
     expect(mixin).toContain('box-shadow: ;');
     expect(mixin).toContain('border-radius: 0.6rem;');
-    expect(mixin).toContain('border: 0.1rem solid ;');
     expect(mixin).toContain('z-index: ;');
   });
 });
