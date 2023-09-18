@@ -17,17 +17,15 @@ export const HFlex: React.FC<HFlexProps> = ({
   childrenFitFullWidth = false,
   spacing = 'cmp-md',
   ...flexProps
-}) => {
-  return (
-    <Flex
-      {...flexProps}
-      alignItems={alignItems}
-      childrenFlex={childrenFitFullWidth && '1'}
-      columnGap={spacing}
-      flexDirection="row"
-      flexWrap="nowrap"
-    >
-      {children}
-    </Flex>
-  );
-};
+}) => (
+  <Flex
+    {...flexProps}
+    alignItems={alignItems}
+    childrenFlex={childrenFitFullWidth && '1'}
+    columnGap={spacing}
+    flexDirection="row"
+    flexWrap="nowrap"
+  >
+    {children}
+  </Flex>
+);

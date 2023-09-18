@@ -6,6 +6,9 @@ import { HFlex } from './HFlex';
 describe('HFlex', () => {
   test('render', () => {
     render(<HFlex>test</HFlex>);
-    expect(screen.getByText('test')).toBeInTheDocument();
+    expect(screen.getByText('test')).toHaveStyle({
+      flexDirection: 'row',
+      flexWrap: 'nowrap',
+    });
   });
 });
