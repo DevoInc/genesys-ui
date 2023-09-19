@@ -19,7 +19,7 @@ export const Loading: Story = {
   },
 };
 
-export const LoadSuccess: Story = {
+export const Success: Story = {
   args: {
     icon: 'gi-cloud_download_2',
     state: 'loading',
@@ -55,7 +55,7 @@ export const LoadSuccess: Story = {
     })(),
 };
 
-export const LoadError: Story = {
+export const Error: Story = {
   args: {
     icon: 'gi-cloud_download_2',
     state: 'loading',

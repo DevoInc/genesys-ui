@@ -1,5 +1,4 @@
 import * as React from 'react';
-import ReactToolTip from 'react-tooltip';
 
 import { defaultTexts, PaginationCommonInterface } from '../declarations';
 
@@ -77,7 +76,6 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
   const noOptionsMessage = React.useCallback(() => '', []);
   const onChange = React.useCallback((e) => goToPage(e.value), [goToPage]);
   const onMenuOpen = React.useCallback(() => {
-    ReactToolTip.hide();
     setMenuOpen(true);
   }, []);
   const onMenuClose = React.useCallback(() => setMenuOpen(false), []);

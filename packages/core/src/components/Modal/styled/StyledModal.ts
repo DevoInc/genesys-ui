@@ -39,7 +39,7 @@ export const StyledModal = styled.div<StyledModalProps>`
       display: inline-flex;
       flex-direction: column;
       overflow: hidden;
-      ${elevationMixin({ theme, elevation: 'overlay' })};
+      ${elevationMixin(theme)('overlay')};
       background-color: ${tokensModal.color.background};
 
       &:focus {

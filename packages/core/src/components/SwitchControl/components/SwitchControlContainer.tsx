@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components';
 
 import { Flex, FlexProps } from '../../Flex';
 import { FieldSize, FieldStatus } from '../../../declarations';
-import { getPxFromRem } from '../../../styled/functions';
+import { getPxFromRem } from '../../../helpers';
 import {
   switchControlContainerMixin,
   SwitchControlContainerMixinProps,

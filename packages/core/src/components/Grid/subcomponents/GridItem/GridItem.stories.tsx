@@ -12,7 +12,7 @@ const meta: Meta<typeof Grid.Item> = {
 export default meta;
 type Story = StoryObj<typeof Grid.Item>;
 
-export const Item: Story = {
+export const Base: Story = {
   args: {
     alignSelf: 'center',
     justifySelf: 'center',

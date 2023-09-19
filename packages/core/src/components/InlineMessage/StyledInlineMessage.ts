@@ -15,7 +15,7 @@ export const StyledInlineMessage = styled.div<StyledInlineMessageProps>`
     const tokens = theme.cmp.inlineMessage;
 
     return css`
-      ${boxMixin({ theme, ...boxMixinProps })};
+      ${boxMixin(theme)(boxMixinProps)};
       position: relative;
       background-color: ${tokens.color.background};
 

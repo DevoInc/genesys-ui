@@ -22,7 +22,7 @@ const config = {
       ...baseConfig,
       displayName: '@devoinc/genesys-ui',
       testMatch: [
-        '<rootDir>/packages/core/src/**/*.test.ts',
+        '<rootDir>/packages/core/src/**/*.test.ts?(x)',
         // To be generalized after repairing all TSX (component) tests
         '<rootDir>/packages/core/src/components/Helper/Helper.test.tsx',
       ],

@@ -13,20 +13,18 @@ export interface FlexProps
 }
 
 const InternalFlex = React.forwardRef<HTMLElement, FlexProps>(
-  ({ children, height, styles, tooltip, width, ...styledProps }, ref) => {
-    return (
-      <StyledFlex
-        {...styledProps}
-        css={styles}
-        ref={ref}
-        title={tooltip}
-        $height={height}
-        $width={width}
-      >
-        {children}
-      </StyledFlex>
-    );
-  },
+  ({ children, height, styles, tooltip, width, ...styledProps }, ref) => (
+    <StyledFlex
+      {...styledProps}
+      css={styles}
+      ref={ref}
+      title={tooltip}
+      $height={height}
+      $width={width}
+    >
+      {children}
+    </StyledFlex>
+  ),
 );
 
 export const Flex = InternalFlex as typeof InternalFlex & {

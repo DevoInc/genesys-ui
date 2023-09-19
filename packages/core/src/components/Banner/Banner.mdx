@@ -1,0 +1,34 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Banner.stories';
+import * as CaseStories from './Banner.cases.stories';
+
+<Meta of={Stories} />
+
+# Banner
+
+## Overview
+
+Component designed to display a message or notification to the user, with customizable content, title, and status.
+
+## How to import
+
+<Source
+  code={`
+import { Banner } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Cases
+
+### Using cookie
+
+<Canvas of={CaseStories.Cookie} />
+
+## Props
+
+<ArgTypes of={Stories} />

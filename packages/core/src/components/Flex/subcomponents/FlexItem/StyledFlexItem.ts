@@ -9,8 +9,8 @@ export interface StyledFlexItemProps
     LayoutFlexItemProps {}
 
 export const StyledFlexItem = styled.div<StyledFlexItemProps>`
-  ${({ alignSelf, order, ...boxMixinProps }) => css`
-    ${boxMixin({ ...boxMixinProps })};
+  ${({ alignSelf, order, theme, ...boxMixinProps }) => css`
+    ${boxMixin(theme)(boxMixinProps)};
     align-self: ${alignSelf};
     order: ${order};
   `};

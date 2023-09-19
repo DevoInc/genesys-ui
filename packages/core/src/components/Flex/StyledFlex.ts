@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { LayoutFlexProps } from '../../declarations';
 
-import { getSpacingPropCss } from '../../utils/spacing';
+import { getSpacingPropCss } from '../../helpers';
 import { boxMixin, BoxMixinProps } from '../../styled/';
 
 export interface StyledFlexProps
@@ -24,7 +24,7 @@ export const StyledFlex = styled.div<StyledFlexProps>`
     theme,
     ...boxMixinProps
   }) => css`
-    ${boxMixin({ theme, ...boxMixinProps })};
+    ${boxMixin(theme)(boxMixinProps)};
     display: ${inline ? 'inline-flex' : 'flex'};
     align-content: ${alignContent};
     align-items: ${alignItems};
@@ -32,9 +32,9 @@ export const StyledFlex = styled.div<StyledFlexProps>`
     flex-direction: ${flexDirection};
     flex-wrap: ${flexWrap};
     justify-content: ${justifyContent};
-    gap: ${gap && getSpacingPropCss(gap, theme)};
-    column-gap: ${columnGap && getSpacingPropCss(columnGap, theme)};
-    row-gap: ${rowGap && getSpacingPropCss(rowGap, theme)};
+    gap: ${gap && getSpacingPropCss(theme)(gap)};
+    column-gap: ${columnGap && getSpacingPropCss(theme)(columnGap)};
+    row-gap: ${rowGap && getSpacingPropCss(theme)(rowGap)};
 
     ${childrenFlex &&
     css`

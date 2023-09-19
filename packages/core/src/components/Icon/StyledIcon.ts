@@ -3,7 +3,7 @@ import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
 
 import { AllColorScheme, GlobalSize } from '../../declarations';
 
-import { getColor } from './helpers';
+import { getIconColor, getIconSize } from '../../helpers';
 
 export interface StyledIconProps {
   /** This property defines the icon type */
@@ -23,20 +23,17 @@ export const StyledIcon = styled.i.attrs(
     className: iconId as string,
   }),
 )<StyledIconProps>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   ${({ color, colorScheme, size, strong, theme }) => {
-    const sizeTokens = theme.alias.size.square.icon.base;
-    const sizeEval = (size && sizeTokens[size]) || size;
     return css`
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
       font-weight: ${strong && 'bold'};
-      font-size: ${sizeEval};
-      color: ${getColor({
+      font-size: ${getIconSize(theme)(size)};
+      color: ${getIconColor(theme)({
         color,
         colorScheme,
-        theme,
       })};
     `;
   }}

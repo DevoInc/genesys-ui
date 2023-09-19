@@ -20,9 +20,10 @@ export const StyledGrid = styled.div<StyledGridProps>`
     justifyItems,
     gridTemplateRows,
     rowGap,
+    theme,
     ...boxMixinProps
   }) => css`
-    ${boxMixin({ ...boxMixinProps })};
+    ${boxMixin(theme)(boxMixinProps)};
     display: ${inline ? 'inline-grid' : 'grid'};
     align-content: ${alignContent};
     align-items: ${alignItems};

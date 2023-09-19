@@ -18,9 +18,10 @@ export const StyledGridItem = styled.div<StyledGridItemProps>`
     gridRowEnd,
     gridRowStart,
     justifySelf,
+    theme,
     ...boxMixinProps
   }) => css`
-    ${boxMixin({ ...boxMixinProps })};
+    ${boxMixin(theme)(boxMixinProps)};
     align-self: ${alignSelf};
     grid-area: ${gridArea};
     grid-column: ${gridColumn};

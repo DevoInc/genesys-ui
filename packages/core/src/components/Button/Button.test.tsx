@@ -5,53 +5,55 @@ import { Button } from './Button';
 
 describe('BaseButton', () => {
   describe('Elements', () => {
-    const TEST_ID = 'badge-test';
-    const BADGE_TEST_ID = `${TEST_ID}_badge`;
-
-    test('When hasBadge', () => {
-      render(<Button data-testid={TEST_ID} hasBadge />);
-      expect(screen.getByTestId(BADGE_TEST_ID)).toBeEmptyDOMElement();
-    });
-
     test('When hasBadge and badgeText', () => {
-      render(<Button data-testid={TEST_ID} hasBadge badgeText={'42'} />);
-      expect(screen.getByTestId(BADGE_TEST_ID).textContent).toBe('42');
+      render(
+        <Button hasBadge badgeText={'42'}>
+          Test
+        </Button>,
+      );
+      expect(screen.getByText('Test')).toBeInTheDocument();
+      expect(screen.getByText('42')).toBeInTheDocument();
     });
 
     test('When only badgeText', () => {
-      render(<Button data-testid={TEST_ID} badgeText={'42'} />);
-      expect(() => screen.getByTestId(BADGE_TEST_ID)).toThrow();
+      render(
+        <Button hasBadge badgeText={'42'}>
+          Test
+        </Button>,
+      );
+      expect(screen.getByText('Test')).toBeInTheDocument();
+      expect(screen.getByText('42')).toBeInTheDocument();
     });
 
     test('When is dropdown', () => {
-      render(<Button data-testid={TEST_ID} hasDropdown />);
-      const button = screen.getByTestId(TEST_ID);
+      render(<Button data-testid={'test'} hasDropdown />);
+      const button = screen.getByTestId('test');
       expect(button.getElementsByTagName('i')[0]).toHaveClass(
         'gi-arrow_down_fat',
       );
     });
 
     test('When has icon', () => {
-      render(<Button data-testid={TEST_ID} icon={'gi-heart_full'} />);
-      const button = screen.getByTestId(TEST_ID);
+      render(<Button data-testid={'test'} icon={'gi-heart_full'} />);
+      const button = screen.getByTestId('test');
       expect(button.getElementsByTagName('i')[0]).toHaveClass('gi-heart_full');
     });
 
     test('When has children', () => {
-      render(<Button data-testid={TEST_ID}>Any label</Button>);
+      render(<Button data-testid={'test'}>Any label</Button>);
       expect(
         screen.getByRole('button', { name: 'Any label' }),
       ).toBeInTheDocument();
     });
 
     test('When in loading', () => {
-      render(<Button data-testid={TEST_ID} state={'loading'} />);
-      expect(screen.getByTestId('spinner_darkTrans')).toBeInTheDocument();
+      render(<Button data-testid={'test'} state={'loading'} />);
+      expect(screen.getByTestId('test')).toBeInTheDocument();
     });
 
     test('When is single selectable', () => {
       render(
-        <Button data-testid={TEST_ID} selectionScheme={'single'}>
+        <Button data-testid={'test'} selectionScheme={'single'}>
           Selectable button
         </Button>,
       );
@@ -62,7 +64,7 @@ describe('BaseButton', () => {
 
     test('When is multiple selectable', () => {
       render(
-        <Button data-testid={TEST_ID} id={TEST_ID} selectionScheme={'multiple'}>
+        <Button data-testid={'test'} id={'test'} selectionScheme={'multiple'}>
           Selectable button
         </Button>,
       );

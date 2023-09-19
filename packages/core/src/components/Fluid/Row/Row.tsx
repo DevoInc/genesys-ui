@@ -8,8 +8,8 @@ import {
 import { GlobalAttrProps } from '../../../declarations';
 import { ContainerSpacing, FluidAs } from '../declarations';
 
-import { getSpacingPropCss } from '../../../utils/spacing';
-import { getPxFromRem } from '../../../styled/functions';
+import { getSpacingPropCss } from '../../../helpers';
+import { getPxFromRem } from '../../../helpers';
 
 export interface RowProps
   extends Omit<ReactGridRowProps, 'component' | 'gutterWidth'>,
@@ -67,11 +67,11 @@ export const Row = React.forwardRef<HTMLDivElement, RowProps>(
         }
         style={{
           ...style,
-          marginBottom: marginBottom && getSpacingPropCss(marginBottom, theme),
-          marginTop: marginTop && getSpacingPropCss(marginTop, theme),
+          marginBottom: marginBottom && getSpacingPropCss(theme)(marginBottom),
+          marginTop: marginTop && getSpacingPropCss(theme)(marginTop),
           paddingBottom:
-            paddingBottom && getSpacingPropCss(paddingBottom, theme),
-          paddingTop: marginTop && getSpacingPropCss(paddingTop, theme),
+            paddingBottom && getSpacingPropCss(theme)(paddingBottom),
+          paddingTop: marginTop && getSpacingPropCss(theme)(paddingTop),
         }}
         title={tooltip}
       >

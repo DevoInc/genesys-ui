@@ -11,7 +11,7 @@ export const StyledStoryWrapper = styled.div<StyledStoryWrapperProps>`
   ${({ bgColor, theme, ...boxMixinProps }) => {
     const defaultColor = theme.alias.color.background.surface.base.base;
     return css`
-      ${boxMixin({ theme, ...boxMixinProps })};
+      ${boxMixin(theme)(boxMixinProps)};
       background-color: ${bgColor || defaultColor};
     `;
   }};

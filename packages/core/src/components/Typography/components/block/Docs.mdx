@@ -4,10 +4,12 @@ import * as BlockQuoteStories from './BlockQuote.stories';
 import * as CaptionStories from './Caption.stories';
 import * as CodeStories from './Code.stories';
 import * as HeadingStories from './Heading.stories';
+import * as HeadingCasesStories from './Heading.cases.stories';
 import * as LeadStories from './Lead.stories';
 import * as ListStories from './List.stories';
 import * as ListItemStories from './ListItem.stories';
 import * as ParagraphStories from './Paragraph.stories';
+import * as ParagraphCasesStories from './Paragraph.cases.stories';
 
 <Meta
   title="Components/Core/Layout/Toolbar/Subcomponents/Block/Docs"
@@ -88,7 +90,7 @@ although they can be any structural grouping of related content.
 
 ### Editable
 
-<Canvas of={ParagraphStories.Paragraph} />
+<Canvas of={ParagraphCasesStories.ParagraphEditable} />
 
 ### Props
 
@@ -122,13 +124,13 @@ subtitle or summary block alongside a Heading component.
 
 ## Heading
 
-`Typography.Heading` component generates HTML headings that serve
-as titles or subtitles for various components, such as Panel Header titles,
-BoxMessage titles, and Grouping titles in menus and forms.
+`Typography.Heading` component generates HTML headings that serve as titles or
+subtitles for various components, such as Panel Header titles, BoxMessage
+titles, and Grouping titles in menus and forms.
 
-To use standard HTML headings (h1-h6) with Typography.Heading,
-set the type prop to any 'h-' value. By default, they render as an HTML div.
-However, it's possible to render them as any h1 to h6 element by using the 'as' prop.
+To use standard HTML headings (h1-h6) with Typography.Heading, set the type prop
+to any 'h-' value. By default, they render as an HTML div. However, it's
+possible to render them as any h1 to h6 element by using the 'as' prop.
 
 ### Basic usage
 
@@ -136,8 +138,8 @@ However, it's possible to render them as any h1 to h6 element by using the 'as' 
 
 ### Cases
 
-For commercial or onboarding contexts that require extra-large headings,
-we can use any 'hero-' value for the 'type' prop. Here's an example:
+For commercial or onboarding contexts that require extra-large headings, we can
+use any 'hero-' value for the 'type' prop. Here's an example:
 
 <Source
   code={`
@@ -145,14 +147,18 @@ we can use any 'hero-' value for the 'type' prop. Here's an example:
 `}
 />
 
-For a subtle heading to group menu items,
-form fields, and similar items, we can use any 'overline-' value for the 'type' prop.
+For a subtle heading to group menu items, form fields, and similar items, we can
+use any 'overline-' value for the 'type' prop.
 
 <Source
   code={`
 <Typography.Heading type={'overline-md'} >Heading</ Typography.Heading>
 `}
 />
+
+Editable heading
+
+<Canvas of={HeadingCasesStories.HeadingEditable} />
 
 ### Props
 

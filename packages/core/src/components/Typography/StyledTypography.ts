@@ -14,7 +14,7 @@ import {
 
 // utils
 import { getHeadingCategoryAndType, getTypoCss } from './utils';
-import { getSpacingPropCss } from '../../utils/spacing';
+import { getSpacingPropCss } from '../../helpers';
 import { srOnlyMixin } from '../../styled/mixins';
 
 export const StyledAbbr = styled.abbr`
@@ -42,7 +42,7 @@ export const StyledBlockQuote = styled.blockquote<StyledBlockQuoteProps>`
       padding: ${textAlign === 'right'
         ? `0 ${spacingTokens.cmp.xxl} 0 0`
         : `0 0 0 ${spacingTokens.cmp.xxl}`};
-      margin-bottom: ${getSpacingPropCss(gutterBottom, theme)};
+      margin-bottom: ${getSpacingPropCss(theme)(gutterBottom)};
 
       &:last-child {
         margin-bottom: 0;
@@ -74,7 +74,7 @@ export const StyledCodeBlockWrapper = styled.div<StyledCodeBlockWrapperProps>`
     const aliasTokens = theme.alias;
     const spacingTokens = aliasTokens.space;
     return css`
-      margin-bottom: ${getSpacingPropCss(gutterBottom, theme)};
+      margin-bottom: ${getSpacingPropCss(theme)(gutterBottom)};
       padding: ${spacingTokens.cmp.sm} ${spacingTokens.cmp.md};
       background: ${aliasTokens.color.background.surface.base.raised};
 
@@ -162,7 +162,7 @@ export interface StyledListProps {
 
 export const StyledList = styled.ul<StyledListProps>`
   ${({ colorScheme, gutterBottom, listStyle, size, textAlign, theme }) => css`
-    margin-bottom: ${getSpacingPropCss(gutterBottom, theme)};
+    margin-bottom: ${getSpacingPropCss(theme)(gutterBottom)};
     padding-left: ${theme.alias.space.cmp.md};
     ${() => {
       if (listStyle === 'ordered')
@@ -221,7 +221,7 @@ export const StyledParagraph = styled.p<StyledParagraphProps>`
     theme,
     truncateLine,
   }) => css`
-    margin-bottom: ${getSpacingPropCss(gutterBottom, theme)};
+    margin-bottom: ${getSpacingPropCss(theme)(gutterBottom)};
     ${getTypoCss({
       variant: 'body',
       colorScheme,
@@ -260,7 +260,7 @@ export const StyledHeading = styled.div<StyledHeadingProps>`
     theme,
     truncateLine,
   }) => css`
-    margin-bottom: ${getSpacingPropCss(gutterBottom, theme)};
+    margin-bottom: ${getSpacingPropCss(theme)(gutterBottom)};
     ${getTypoCss({
       variant: getHeadingCategoryAndType(size).category,
       colorScheme,
@@ -294,7 +294,7 @@ export const StyledLead = styled.p<StyledLeadProps>`
     theme,
     truncateLine,
   }) => css`
-    margin-bottom: ${getSpacingPropCss(gutterBottom, theme)};
+    margin-bottom: ${getSpacingPropCss(theme)(gutterBottom)};
     ${getTypoCss({
       variant: 'lead',
       colorScheme,
@@ -332,7 +332,7 @@ export const StyledCaption = styled.span<StyledCaptionProps>`
     truncateLine,
   }) => css`
     display: inline-block;
-    margin-bottom: ${getSpacingPropCss(gutterBottom, theme)};
+    margin-bottom: ${getSpacingPropCss(theme)(gutterBottom)};
     ${getTypoCss({
       variant: 'body',
       colorScheme,
