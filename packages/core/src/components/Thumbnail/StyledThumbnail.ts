@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { ThumbSizeMap } from '../constants';
-import { ThumbnailSize } from '../declarations';
+import { ThumbSizeMap } from './constants';
+import { ThumbnailSize } from './declarations';
 
 export interface StyledThumbnailProps {
   /** The size of the avatar img */
