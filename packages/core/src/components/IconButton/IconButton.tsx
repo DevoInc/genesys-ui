@@ -16,20 +16,18 @@ export const IconButton = React.forwardRef<HTMLElement, IconButtonProps>(
       ...restButtonProps
     },
     ref,
-  ) => {
-    return (
-      <Button
-        {...restButtonProps}
-        ref={ref}
-        colorScheme={colorScheme}
-        size={size}
-        squared
-        state={state}
-      >
-        {children}
-      </Button>
-    );
-  },
+  ) => (
+    <Button
+      {...restButtonProps}
+      ref={ref}
+      colorScheme={colorScheme}
+      size={size}
+      squared
+      state={state}
+    >
+      {children}
+    </Button>
+  ),
 );
 
 IconButton.displayName = 'IconButton';

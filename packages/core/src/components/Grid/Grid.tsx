@@ -11,13 +11,11 @@ const InternalGrid: React.FC<GridProps> = ({
   styles,
   tooltip,
   ...styledProps
-}) => {
-  return (
-    <StyledGrid {...styledProps} css={styles} title={tooltip}>
-      {children}
-    </StyledGrid>
-  );
-};
+}) => (
+  <StyledGrid {...styledProps} css={styles} title={tooltip}>
+    {children}
+  </StyledGrid>
+);
 
 export const Grid = InternalGrid as typeof InternalGrid & {
   Item: typeof GridItem;

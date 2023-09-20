@@ -86,50 +86,48 @@ export const Box = React.forwardRef<HTMLElement, BoxProps>(
       ...nativeProps
     },
     ref,
-  ) => {
-    return (
-      <StyledBox
-        {...nativeProps}
-        alignSelf={alignSelf}
-        css={styles}
-        cssTranslate={cssTranslate}
-        $display={display}
-        elevation={elevation}
-        flex={flex}
-        $height={height}
-        margin={margin}
-        marginBottom={marginBottom}
-        marginLeft={marginLeft}
-        marginRight={marginRight}
-        marginTop={marginTop}
-        maxHeight={maxHeight}
-        maxWidth={maxWidth}
-        minHeight={minHeight}
-        minWidth={minWidth}
-        overflow={overflow}
-        overflowX={overflowX}
-        overflowY={overflowY}
-        padding={padding}
-        paddingBottom={paddingBottom}
-        paddingLeft={paddingLeft}
-        paddingRight={paddingRight}
-        paddingTop={paddingTop}
-        position={position}
-        positionBottom={positionBottom}
-        positionLeft={positionLeft}
-        positionRight={positionRight}
-        positionTop={positionTop}
-        ref={ref}
-        title={tooltip}
-        verticalAlign={verticalAlign}
-        visibility={visibility}
-        $width={width}
-        zIndex={zIndex}
-      >
-        {children}
-      </StyledBox>
-    );
-  },
+  ) => (
+    <StyledBox
+      {...nativeProps}
+      alignSelf={alignSelf}
+      css={styles}
+      cssTranslate={cssTranslate}
+      $display={display}
+      elevation={elevation}
+      flex={flex}
+      $height={height}
+      margin={margin}
+      marginBottom={marginBottom}
+      marginLeft={marginLeft}
+      marginRight={marginRight}
+      marginTop={marginTop}
+      maxHeight={maxHeight}
+      maxWidth={maxWidth}
+      minHeight={minHeight}
+      minWidth={minWidth}
+      overflow={overflow}
+      overflowX={overflowX}
+      overflowY={overflowY}
+      padding={padding}
+      paddingBottom={paddingBottom}
+      paddingLeft={paddingLeft}
+      paddingRight={paddingRight}
+      paddingTop={paddingTop}
+      position={position}
+      positionBottom={positionBottom}
+      positionLeft={positionLeft}
+      positionRight={positionRight}
+      positionTop={positionTop}
+      ref={ref}
+      title={tooltip}
+      verticalAlign={verticalAlign}
+      visibility={visibility}
+      $width={width}
+      zIndex={zIndex}
+    >
+      {children}
+    </StyledBox>
+  ),
 );
 
 Box.displayName = 'Box';
