@@ -9,11 +9,10 @@ export interface AppLayoutContainerProps {
 
 export const Container: React.FC<AppLayoutContainerProps> = ({ children }) => {
   const theme = useTheme();
-  const appBarHeight = theme.alias.size.height.surface.md;
   return (
     <Grid
       gridTemplateAreas='"app-bar" "app-lead" "app-content"'
-      gridTemplateRows={`${appBarHeight} auto 1fr`}
+      gridTemplateRows="auto auto 1fr"
       styles={{
         width: '100%',
         height: '100vh',

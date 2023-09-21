@@ -100,3 +100,11 @@ export const ContentPadding: Story = {
     </AppLayout.Container>
   ),
 };
+
+export const NoHeading: Story = {
+  render: () => (
+    <AppLayout.Container>
+      <AppLayout.Content>Without heading</AppLayout.Content>
+    </AppLayout.Container>
+  ),
+};
