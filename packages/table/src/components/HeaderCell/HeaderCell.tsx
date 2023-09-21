@@ -26,14 +26,6 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({ column, data }) => {
         >
           {viewContent}
         </StyledTableHeadCellText>
-        {/* TODO: QUV-758 Migrate OrderIndicator */}
-        {/* {!!column.sort?.direction && (
-          <OrderIndicator
-            order={orderDirection}
-            sortingFactor={orderFactor}
-            onClick={onOrder}
-          />
-        )} */}
       </StyledTableHeadCellWrapper>
       {column.isResizable && <StyledTableHeadCellGrabber />}
       {column.isResizable && <StyledTableHeadCellSeparator heightProp={null} />}
