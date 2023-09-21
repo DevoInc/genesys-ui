@@ -17,6 +17,7 @@ export const Container: React.FC<AppLayoutContainerProps> = ({ children }) => {
         width: '100%',
         height: '100vh',
         backgroundColor: theme.alias.color.background.app,
+        overflow: 'hidden',
       }}
     >
       {children}
