@@ -1,10 +1,9 @@
 import styled, { css, DefaultTheme } from 'styled-components';
-import { StyledTableHeadCellSeparator } from '@devoinc/genesys-ui-table';
 import { elevationMixin } from '@devoinc/genesys-ui';
+import { StyledTableHeadCellSeparator } from './StyledTableHeadCellSeparator';
 
 interface StyledTableHeadCellGrabberProps {
   theme: DefaultTheme;
-  tableHeight: number;
 }
 
 export const StyledTableHeadCellGrabber = styled(

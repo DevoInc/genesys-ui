@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { StyledTableCellWrapper } from '@devoinc/genesys-ui-table';
+import { StyledTableCellWrapper } from '../../Cell/StyledTableCellWrapper';
 
 export const StyledTableHeadCellWrapper = styled(StyledTableCellWrapper)`
   ${({ theme }) => {

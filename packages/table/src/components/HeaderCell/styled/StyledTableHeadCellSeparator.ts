@@ -1,9 +1,9 @@
 import styled, { css, DefaultTheme } from 'styled-components';
 import { pseudoElementMixin } from '@devoinc/genesys-ui';
 
-interface StyledTableHeadCellSeparatorProps {
+export interface StyledTableHeadCellSeparatorProps {
   theme: DefaultTheme;
-  heightProp: number;
+  heightProp?: number;
 }
 
 export const StyledTableHeadCellSeparator = styled.span<StyledTableHeadCellSeparatorProps>`

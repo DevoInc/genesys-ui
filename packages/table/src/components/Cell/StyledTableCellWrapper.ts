@@ -11,7 +11,9 @@ import {
 } from './padding';
 import { StyledTableCellProps } from '../../styled/declarations';
 
-interface StyledTableCellWrapperProps extends ColDef, StyledTableCellProps {}
+export interface StyledTableCellWrapperProps
+  extends ColDef,
+    StyledTableCellProps {}
 
 export const StyledTableCellWrapper = styled.th<StyledTableCellWrapperProps>`
   display: flex;
