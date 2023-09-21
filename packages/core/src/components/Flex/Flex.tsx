@@ -1,9 +1,12 @@
 import * as React from 'react';
 
-import { StyledOverloadCssProps } from '../../declarations';
 import { FlexItem } from './subcomponents';
-import { CommonBoxProps } from '../Box';
-import { StyledFlex, StyledFlexProps } from './StyledFlex';
+import { StyledFlex, type StyledFlexProps } from './StyledFlex';
+import {
+  type Resolve,
+  type CommonBoxProps,
+  type StyledOverloadCssProps,
+} from '../../index';
 
 export interface FlexProps
   extends CommonBoxProps,
@@ -12,7 +15,7 @@ export interface FlexProps
   children?: React.ReactNode;
 }
 
-const InternalFlex = React.forwardRef<HTMLElement, FlexProps>(
+const InternalFlex = React.forwardRef<HTMLElement, Resolve<FlexProps>>(
   ({ children, height, styles, tooltip, width, ...styledProps }, ref) => (
     <StyledFlex
       {...styledProps}

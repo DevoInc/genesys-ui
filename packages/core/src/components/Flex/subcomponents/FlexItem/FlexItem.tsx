@@ -1,15 +1,18 @@
 import * as React from 'react';
 
-import { StyledFlexItem, StyledFlexItemProps } from './StyledFlexItem';
-import { CommonBoxProps } from '../../../Box';
-import { StyledOverloadCssProps } from '../../../../declarations';
+import { StyledFlexItem, type StyledFlexItemProps } from './StyledFlexItem';
+import {
+  type Resolve,
+  type StyledOverloadCssProps,
+  type CommonBoxProps,
+} from '../../../../index';
 
 export interface FlexItemProps
   extends CommonBoxProps,
     StyledFlexItemProps,
     StyledOverloadCssProps {}
 
-export const FlexItem: React.FC<FlexItemProps> = ({
+export const FlexItem: React.FC<Resolve<FlexItemProps>> = ({
   children,
   height,
   styles,
