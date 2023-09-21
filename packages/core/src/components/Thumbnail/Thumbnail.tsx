@@ -6,7 +6,7 @@ import {
   StyledOverloadCssProps,
 } from '../../declarations';
 
-import { StyledThumbnail, StyledThumbnailProps } from './styled';
+import { StyledThumbnail, StyledThumbnailProps } from './StyledThumbnail';
 
 export interface ThumbnailProps
   extends StyledThumbnailProps,

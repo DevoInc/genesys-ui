@@ -17,21 +17,19 @@ export interface ColProps
 }
 
 export const Col = React.forwardRef<HTMLDivElement, ColProps>(
-  ({ as, alignSelf, children, style, tooltip, ...reactGridColProps }, ref) => {
-    return (
-      <ReactGridCol
-        {...reactGridColProps}
-        component={as}
-        ref={
-          ref as React.LegacyRef<ReactGridCol> & React.LegacyRef<HTMLDivElement>
-        }
-        style={{ ...style, alignSelf: alignSelf }}
-        title={tooltip}
-      >
-        {children}
-      </ReactGridCol>
-    );
-  },
+  ({ as, alignSelf, children, style, tooltip, ...reactGridColProps }, ref) => (
+    <ReactGridCol
+      {...reactGridColProps}
+      component={as}
+      ref={
+        ref as React.LegacyRef<ReactGridCol> & React.LegacyRef<HTMLDivElement>
+      }
+      style={{ ...style, alignSelf: alignSelf }}
+      title={tooltip}
+    >
+      {children}
+    </ReactGridCol>
+  ),
 );
 
 Col.displayName = 'Col';

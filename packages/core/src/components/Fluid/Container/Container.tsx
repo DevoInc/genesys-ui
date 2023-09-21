@@ -70,8 +70,6 @@ export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
       gridColumns: 12,
       maxScreenClass: maxScreen,
     });
-    console.info('gutter: ', gutter);
-    console.info('gutterNumber: ', gutterSizeNumber);
     return (
       <ReactGridContainer
         {...reactGridContainerProps}

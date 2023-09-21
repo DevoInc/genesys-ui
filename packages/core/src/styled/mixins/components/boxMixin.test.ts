@@ -13,6 +13,7 @@ describe('boxMixin', () => {
     expect(mixin).toContain('overflow: ;');
     expect(mixin).toContain('z-index: ;');
     expect(mixin).toContain('transform: ;');
+    expect(mixin).toContain('display: ;');
   });
 
   test('position', () => {

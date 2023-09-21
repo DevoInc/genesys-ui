@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { render, screen } from 'test-utils';
 
-import { HFlex } from './HFlex';
+import { StyledBox } from './StyledBox';
 
-describe('HFlex', () => {
+describe('StyledFlex', () => {
   test('render', () => {
-    render(<HFlex>test</HFlex>);
+    render(<StyledBox>test</StyledBox>);
     expect(screen.getByText('test')).toHaveStyle({
-      flexDirection: 'row',
-      flexWrap: 'nowrap',
+      display: 'block',
     });
   });
 });

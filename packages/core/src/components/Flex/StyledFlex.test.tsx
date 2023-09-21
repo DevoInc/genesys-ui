@@ -7,7 +7,6 @@ import { StyledFlex } from './StyledFlex';
 describe('StyledFlex', () => {
   test('render', () => {
     render(<StyledFlex>test</StyledFlex>);
-    expect(screen.getByText('test')).toBeInTheDocument();
     expect(screen.getByText('test')).toHaveStyle({
       display: 'flex',
     });

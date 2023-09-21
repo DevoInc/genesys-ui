@@ -21,17 +21,15 @@ export const VFlex: React.FC<VFlexProps> = ({
   justifyContent = 'flex-start',
   spacing = 'cmp-md',
   ...flexProps
-}) => {
-  return (
-    <Flex
-      {...flexProps}
-      alignItems={childrenFitFullWidth ? 'stretch' : alignItems}
-      childrenFlex={childrenFitFullHeight && '1'}
-      flexDirection="column"
-      justifyContent={justifyContent}
-      rowGap={spacing}
-    >
-      {children}
-    </Flex>
-  );
-};
+}) => (
+  <Flex
+    {...flexProps}
+    alignItems={childrenFitFullWidth ? 'stretch' : alignItems}
+    childrenFlex={childrenFitFullHeight && '1'}
+    flexDirection="column"
+    justifyContent={justifyContent}
+    rowGap={spacing}
+  >
+    {children}
+  </Flex>
+);

@@ -13,16 +13,14 @@ export const GridItem: React.FC<GridItemProps> = ({
   tooltip,
   width,
   ...styledProps
-}) => {
-  return (
-    <StyledGridItem
-      {...styledProps}
-      css={styles}
-      title={tooltip}
-      $width={width}
-      $height={height}
-    >
-      {children}
-    </StyledGridItem>
-  );
-};
+}) => (
+  <StyledGridItem
+    {...styledProps}
+    css={styles}
+    title={tooltip}
+    $width={width}
+    $height={height}
+  >
+    {children}
+  </StyledGridItem>
+);
