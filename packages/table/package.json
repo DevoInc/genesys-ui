@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-table",
-  "version": "1.0.3-alpha.22",
+  "version": "1.0.3-alpha.23",
   "description": "",
   "scripts": {
     "compile": "tsc --project tsconfig.build.json",
