@@ -2,13 +2,13 @@ import * as React from 'react';
 import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
-import { buttonStateMap } from '../../../utils';
-
 import {
+  type Resolve,
   IconButtonRemove,
-  IconButtonRemoveProps,
-} from '../../../../IconButton';
-import { TabsItemState } from '../../../declarations';
+  type IconButtonRemoveProps,
+} from '../../../../../index';
+import { buttonStateMap } from '../../../utils';
+import { type TabsItemState } from '../../../declarations';
 
 export interface TabsItemCloseProps
   extends Omit<IconButtonRemoveProps, 'state'> {
@@ -16,7 +16,7 @@ export interface TabsItemCloseProps
   state?: TabsItemState;
 }
 
-export const TabsItemClose: React.FC<TabsItemCloseProps> = ({
+export const TabsItemClose: React.FC<Resolve<TabsItemCloseProps>> = ({
   state,
   styles,
   ...restIconButtonRemoveProps

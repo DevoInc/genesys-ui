@@ -36,16 +36,16 @@ export const useTabsConfig = ({
   const [activeTab, setActiveTab] = React.useState(active);
 
   const buildTabsConfig = () =>
-    tabs.map(({ onTabClick, ...tab }, idx) => {
+    tabs.map(({ onClick, ...tab }, idx) => {
       const stateEval: TabsItemState = activeTab === idx ? 'selected' : state;
-      const tunedOnTabClick = () => {
+      const tunedOnClick = (e: React.MouseEvent) => {
         setActiveTab(idx);
-        onTabClick?.();
+        onClick?.(e);
       };
       return {
         href,
         iconId,
-        onTabClick: tunedOnTabClick,
+        onClick: tunedOnClick,
         size,
         state: stateEval,
         target,

@@ -1,23 +1,24 @@
 import * as React from 'react';
 
-import { GlobalAttrProps } from '../../../../declarations';
-
-import { LinkProps } from '../../../Link';
-
+import {
+  type Resolve,
+  type GlobalAttrProps,
+  type LinkProps,
+} from '../../../../index';
 import {
   TabsItemClose,
-  TabsItemCloseProps,
+  type TabsItemCloseProps,
   TabsItemContainer,
-  TabsItemContainerProps,
+  type TabsItemContainerProps,
   TabsItemIcon,
-  TabsItemIconProps,
+  type TabsItemIconProps,
   TabsItemLink,
 } from './components';
 
 export interface TabsItemProps
   extends Pick<TabsItemCloseProps, 'state' | 'tooltip'>,
     Pick<LinkProps, 'href' | 'target'>,
-    TabsItemContainerProps {
+    Pick<TabsItemContainerProps, 'onClick' | 'size' | 'wide'> {
   /** A title or description of the element, typically displayed as a tooltip when hovering over the element */
   closeTooltip?: GlobalAttrProps['tooltip'];
   /** This property defines the icon type */
@@ -25,59 +26,51 @@ export interface TabsItemProps
   /** Tab label */
   label: string;
   /** Action when click on close tab button */
-  onActionClick?: () => void;
-  /** Action when click on tab */
-  onTabClick?: () => void;
+  onClose?: () => void;
 }
 
-export const InternalTabsItem: React.FC<TabsItemProps> = ({
+export const InternalTabsItem: React.FC<Resolve<TabsItemProps>> = ({
   closeTooltip,
   href,
   icon,
   label,
-  onActionClick,
-  onTabClick,
+  onClose,
+  onClick,
   size = 'md',
   state = 'enabled',
   target,
   tooltip = 'Close',
   wide = false,
-}) => {
-  const tunedOnActionClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    onActionClick?.();
-  };
-
-  const disabled: boolean = state === 'disabled';
-
-  return (
-    <TabsItemContainer
-      aria-selected={state === 'selected'}
+}) => (
+  <TabsItemContainer
+    aria-selected={state === 'selected'}
+    size={size}
+    wide={wide}
+    tooltip={tooltip}
+  >
+    <TabsItemLink
+      state={state}
       size={size}
-      wide={wide}
-      tooltip={tooltip}
+      onClick={state === 'disabled' ? undefined : onClick}
+      href={href}
+      target={target}
     >
-      <TabsItemLink
-        state={state}
-        size={size}
-        onClick={disabled ? null : onTabClick}
-        href={href}
-        target={target}
-      >
-        {icon && <TabsItemIcon iconId={icon} />}
-        {label}
-        {onActionClick && (
-          <TabsItemClose
-            state={state}
-            tooltip={closeTooltip}
-            onClick={tunedOnActionClick}
-          />
-        )}
-      </TabsItemLink>
-    </TabsItemContainer>
-  );
-};
+      {icon && <TabsItemIcon iconId={icon} />}
+      {label}
+      {onClose && (
+        <TabsItemClose
+          state={state}
+          tooltip={closeTooltip}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onClose?.();
+          }}
+        />
+      )}
+    </TabsItemLink>
+  </TabsItemContainer>
+);
 
 export const TabsItem = InternalTabsItem as typeof InternalTabsItem & {
   Close: typeof TabsItemClose;
