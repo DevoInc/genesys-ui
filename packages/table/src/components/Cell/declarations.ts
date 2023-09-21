@@ -14,6 +14,11 @@ export interface GenericCellEditorProps {
   onChange?: (newValue: any) => void;
 }
 
+interface SortOptions {
+  direction?: 'asc' | 'desc';
+  sorterFn?: (a: CellData, b: CellData) => number;
+}
+
 export interface ColDef {
   // https://www.ag-grid.com/javascript-data-grid/component-cell-editor/
   CellEditor?: () => React.ReactNode;
@@ -37,7 +42,9 @@ export interface ColDef {
   hide?: boolean;
   initialHide?: boolean;
   isDragging?: boolean;
+  isResizable?: boolean;
   onReset?: (initialValue: CellData) => void;
+  sort?: SortOptions;
   tooltipField?: string;
   type?: ColumnType;
   // https://www.ag-grid.com/javascript-data-grid/value-getters/

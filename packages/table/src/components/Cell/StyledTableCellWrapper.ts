@@ -144,17 +144,16 @@ export const StyledTableCellWrapper = styled.th<StyledTableCellWrapperProps>`
     `;
   }}
 
-  ${({ innerEllipsis, hasComplexContent }) =>
+  ${({ innerEllipsis, hasComplexContent }) => css`
+    // for complex cell component content ellipsis: tags
+    ${hasComplexContent &&
+    innerEllipsis &&
     css`
-      // for complex cell component content ellipsis: tags
-      ${hasComplexContent &&
-      innerEllipsis &&
-      css`
-        &::after {
-          content: '...';
-          position: absolute;
-          right: 1.2rem;
-        }
-      `}
+      &::after {
+        content: '...';
+        position: absolute;
+        right: 1.2rem;
+      }
     `}
+  `}
 `;
