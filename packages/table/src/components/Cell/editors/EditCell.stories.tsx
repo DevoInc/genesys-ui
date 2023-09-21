@@ -110,7 +110,7 @@ export const TextAreaEditor: Story = {
         `I am ridiculously anti-drug. So anti-drug that I am above 
         suspicion in any way that involves suspicion, or testing of any kind. 
         Mine was green. If you are not this tall, you may not ride the 
-        rollercoaster. See you guys tomorrow.`
+        rollercoaster. See you guys tomorrow.`,
       );
       const onChange = (newText: string) => setText(newText);
 
@@ -162,7 +162,7 @@ export const TagsEditor: Story = {
   render: () =>
     (() => {
       const [tags, setTags] = React.useState<TagProps[]>(
-        data[0]['tags'] as TagProps[]
+        data[0]['tags'] as TagProps[],
       );
 
       const onChange = (newTags: TagProps[]) => setTags(newTags);
