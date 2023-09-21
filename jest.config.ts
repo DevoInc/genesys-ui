@@ -1,41 +1,35 @@
-const baseConfig = {
-  transform: {
-    '^.+\\.tsx?$': [
-      'ts-jest',
-      {
-        // TODO When the maturity of the project allow to check types in tests
-        // remove this line
-        isolatedModules: true,
-      },
-    ],
-  },
-  testEnvironment: 'jsdom',
-  moduleNameMapper: {
-    '\\.(scss|css)$': 'identity-obj-proxy',
-    '^test-utils$': '<rootDir>/test/test-utils.tsx',
-  },
+import type { JestConfigWithTsJest } from 'ts-jest';
+
+const globalModuleNameMapper = {
+  '\\.(scss|css)$': 'identity-obj-proxy',
+  '^test-utils$': '<rootDir>/test/test-utils.tsx',
 };
 
-const config = {
+const config: JestConfigWithTsJest = {
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
+  rootDir: './',
   projects: [
     {
-      ...baseConfig,
-      displayName: '@devoinc/genesys-ui',
-      testMatch: [
-        '<rootDir>/packages/core/src/**/*.test.ts?(x)',
-        // To be generalized after repairing all TSX (component) tests
-        '<rootDir>/packages/core/src/components/Helper/Helper.test.tsx',
-      ],
+      displayName: 'core',
+      testEnvironment: 'jsdom',
+      preset: 'ts-jest',
+      testMatch: ['<rootDir>/packages/core/src/**/*.test.ts?(x)'],
+      moduleNameMapper: globalModuleNameMapper,
     },
     {
-      ...baseConfig,
-      displayName: '@devoinc/genesys-ui-datetime',
-      testMatch: ['<rootDir>/packages/datetime/src/**/*.test.ts'],
+      displayName: 'datetime',
+      testEnvironment: 'jsdom',
+      preset: 'ts-jest',
+      testMatch: ['<rootDir>/packages/datetime/src/**/*.test.ts?(x)'],
+      moduleNameMapper: globalModuleNameMapper,
     },
     {
-      ...baseConfig,
-      displayName: '@devoinc/genesys-ui-form',
-      testMatch: ['<rootDir>/packages/form/src/**/*.test.ts'],
+      displayName: 'form',
+      testEnvironment: 'jsdom',
+      preset: 'ts-jest',
+      testMatch: ['<rootDir>/packages/form/src/**/*.test.ts?(x)'],
+      moduleNameMapper: globalModuleNameMapper,
     },
   ],
 };
