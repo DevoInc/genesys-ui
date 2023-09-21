@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-form",
-  "version": "1.0.3-alpha.22",
+  "version": "1.0.3-alpha.24",
   "description": "",
   "scripts": {
     "compile": "tsc --project tsconfig.build.json",
@@ -27,13 +27,13 @@
   "license": "MIT",
   "peerDependencies": {
     "@devoinc/genesys-icons": "^3.2.2",
-    "@devoinc/genesys-ui": "^1.0.3-alpha.22",
+    "@devoinc/genesys-ui": "^1.0.3-alpha.24",
     "filepond-plugin-file-validate-size": "^2.2.8",
     "filepond-plugin-file-validate-type": "^1.2.8",
     "filepond-plugin-image-preview": "^4.6.11",
     "lodash": "^4.17.21",
     "polished": "^4.2.2",
-    "react": "17.x || 18.x",
+    "react": "16.x || 17.x || 18.x",
     "react-color": "^2.19.3",
     "react-filepond": "^7.1.2",
     "styled-components": "^5.3.10"

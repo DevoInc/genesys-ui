@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui",
-  "version": "1.0.3-alpha.22",
+  "version": "1.0.3-alpha.24",
   "description": "",
   "types": "./dist/types/src/index.d.ts",
   "main": "./dist/index.umd.js",
@@ -30,7 +30,7 @@
     "lodash": "^4.17.21",
     "polished": "^4.2.2",
     "prop-types": "15.x",
-    "react": "17.x || 18.x",
+    "react": "16.x || 17.x || 18.x",
     "react-dock": "^0.6.0",
     "react-grid-system": "^8.1.6",
     "react-popper": "^2.3.0",

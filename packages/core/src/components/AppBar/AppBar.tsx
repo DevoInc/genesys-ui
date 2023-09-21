@@ -53,42 +53,40 @@ const InternalAppBar: React.FC<AppBarProps> = ({
   styles,
   subcomponentStyles,
   ...nativeProps
-}) => {
-  return (
-    <AppBarContainer
-      {...nativeProps}
-      styles={subcomponentStyles?.container || styles}
-      id={id}
-      sticky={sticky}
-    >
-      {heading && (
-        <AppBarHeading id={id} styles={subcomponentStyles?.heading}>
-          {heading}
-        </AppBarHeading>
-      )}
-      {heading && tabItems && (
-        <AppBarDivider id={id} styles={subcomponentStyles?.divider} />
-      )}
-      {tabItems && (
-        <AppBarNavigation id={id} styles={subcomponentStyles?.navigation}>
-          <Tabs aria-label="main-nav" colorScheme="primary" contained={false}>
-            {React.Children.map(tabItems, (tab) => React.cloneElement(tab))}
-          </Tabs>
-        </AppBarNavigation>
-      )}
-      {actions && (
-        <AppBarActions id={id} styles={subcomponentStyles?.actions}>
-          <ButtonGroup size="md">{actions}</ButtonGroup>
-        </AppBarActions>
-      )}
-      {options && (
-        <AppBarOptions id={id} styles={subcomponentStyles?.options}>
-          <ButtonGroup size="md">{options}</ButtonGroup>
-        </AppBarOptions>
-      )}
-    </AppBarContainer>
-  );
-};
+}) => (
+  <AppBarContainer
+    {...nativeProps}
+    styles={subcomponentStyles?.container || styles}
+    id={id}
+    sticky={sticky}
+  >
+    {heading && (
+      <AppBarHeading id={id} styles={subcomponentStyles?.heading}>
+        {heading}
+      </AppBarHeading>
+    )}
+    {heading && tabItems && (
+      <AppBarDivider id={id} styles={subcomponentStyles?.divider} />
+    )}
+    {tabItems && (
+      <AppBarNavigation id={id} styles={subcomponentStyles?.navigation}>
+        <Tabs aria-label="main-nav" colorScheme="primary" contained={false}>
+          {React.Children.map(tabItems, (tab) => React.cloneElement(tab))}
+        </Tabs>
+      </AppBarNavigation>
+    )}
+    {actions && (
+      <AppBarActions id={id} styles={subcomponentStyles?.actions}>
+        <ButtonGroup size="md">{actions}</ButtonGroup>
+      </AppBarActions>
+    )}
+    {options && (
+      <AppBarOptions id={id} styles={subcomponentStyles?.options}>
+        <ButtonGroup size="md">{options}</ButtonGroup>
+      </AppBarOptions>
+    )}
+  </AppBarContainer>
+);
 
 export const AppBar = InternalAppBar as typeof InternalAppBar & {
   Actions: typeof AppBarActions;

@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.0.3-alpha.24](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.23...v1.0.3-alpha.24) (2023-09-21)
+
+
+### Features
+
+* **deps:** allow `react` 16.x ([60aab9e](https://github.com/DevoInc/genesys-ui/commit/60aab9e7e5385d3b2c20b8e9d557bee88c3135c1))
+
+## [1.0.3-alpha.23](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.22...v1.0.3-alpha.23) (2023-09-21)
+
+
+### Features
+
+* added AppLayout component ([3e47a10](https://github.com/DevoInc/genesys-ui/commit/3e47a105600328370759bd25dd15fd2bda8fee38))
+* AppLayout with no heading support ([ac3568f](https://github.com/DevoInc/genesys-ui/commit/ac3568f34bee4f99fb51c4126e180475770babc7))
+
+
+### Bug Fixes
+
+* removed Pagination from test story ([d9a7ae5](https://github.com/DevoInc/genesys-ui/commit/d9a7ae5c76718de5a91b5a5e716cb9544c30d181))
+
 ## [1.0.3-alpha.22](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.21...v1.0.3-alpha.22) (2023-09-11)
 
 

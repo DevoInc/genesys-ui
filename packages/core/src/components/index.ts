@@ -1,4 +1,5 @@
 export * from './AppBar';
+export * from './AppLayout';
 export * from './Avatar';
 export * from './Badge';
 export * from './Box';
