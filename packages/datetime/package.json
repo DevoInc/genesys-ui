@@ -29,7 +29,7 @@
     "@devoinc/genesys-icons": "^3.2.2",
     "@devoinc/genesys-ui": "^1.0.3-alpha.23",
     "date-fns": "^2.30.0",
-    "react": "17.x || 18.x",
+    "react": "16.x || 17.x || 18.x",
     "react-popper": "^2.3.0",
     "styled-components": "^5.3.10"
   },
