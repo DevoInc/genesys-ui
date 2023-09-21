@@ -8,7 +8,7 @@ export const useRenderContent = (
   cellEditor: () => React.ReactNode,
   columnDef: ColDef,
   data: CellData,
-  valueFormatter: (value: CellData) => void
+  valueFormatter: (value: CellData) => void,
 ) => {
   const cellRef = React.useRef(null);
   const renderContent = getRenderer(columnDef.type);
