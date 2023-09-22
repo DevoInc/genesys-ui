@@ -1,11 +1,16 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "composite": true,
     "declaration": true,
     "declarationMap": true,
     "incremental": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "noErrorTruncation": true,
+    "paths": {
+      "@": ["src"]
+    }
   },
   "include": ["src"]
 }

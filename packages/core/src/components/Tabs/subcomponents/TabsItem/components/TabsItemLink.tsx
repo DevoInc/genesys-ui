@@ -4,8 +4,7 @@ import { useTheme } from 'styled-components';
 
 import { linkStateMap } from '../../../utils';
 import { tabsLinkMixin, TabsLinkMixinProps } from './helpers';
-
-import { Link, LinkProps } from '../../../../Link';
+import { type Resolve, Link, type LinkProps } from '../../../../../index';
 
 export interface TabsItemLinkProps
   extends Omit<LinkProps, 'size' | 'state'>,
@@ -13,7 +12,7 @@ export interface TabsItemLinkProps
   children?: React.ReactNode;
 }
 
-export const TabsItemLink: React.FC<TabsItemLinkProps> = ({
+export const TabsItemLink: React.FC<Resolve<TabsItemLinkProps>> = ({
   children,
   size,
   state,

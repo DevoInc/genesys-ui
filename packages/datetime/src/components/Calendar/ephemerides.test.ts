@@ -71,8 +71,9 @@ describe('CalendarHelper', () => {
         hover: number;
         hasLeftHoverEffect: boolean;
         hasRightHoverEffect: boolean;
-        validateDate: (ts) => boolean;
+        validateDate: (ts: number) => boolean;
         invalidDates: number[];
+        lastDayOfMonth: number;
       },
       { value: string; classes: string; ts: number }[],
     ][] = [
@@ -96,6 +97,7 @@ describe('CalendarHelper', () => {
           hasRightHoverEffect: true,
           validateDate: (ts) => ts < new Date(2022, 12, 14).getTime(),
           invalidDates: [],
+          lastDayOfMonth: 30,
         },
         [
           { value: '1', ts: new Date(2022, 11, 1).getTime(), classes: '' },
@@ -149,6 +151,7 @@ describe('CalendarHelper', () => {
           hasRightHoverEffect: true,
           validateDate: (ts) => ts < new Date().getTime(),
           invalidDates: [],
+          lastDayOfMonth: 30,
         },
         [
           { value: '1', ts: new Date(2022, 11, 1).getTime(), classes: '' },
@@ -173,7 +176,7 @@ describe('CalendarHelper', () => {
     ];
 
     it.each(cases)('%s', (_title, params, expected) => {
-      expect(parseDays({ ...params })).toEqual(expected);
+      expect(parseDays(params)).toEqual(expected);
     });
   });
 });

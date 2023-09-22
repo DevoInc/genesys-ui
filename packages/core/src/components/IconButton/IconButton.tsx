@@ -1,12 +1,15 @@
 import * as React from 'react';
 
-import { Button, ButtonProps } from '../';
+import { type Resolve, Button, type ButtonProps } from '../../index';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IconButtonProps
   extends Omit<ButtonProps, 'squared' | 'iconPosition'> {}
 
-export const IconButton = React.forwardRef<HTMLElement, IconButtonProps>(
+export const IconButton = React.forwardRef<
+  HTMLElement,
+  Resolve<IconButtonProps>
+>(
   (
     {
       colorScheme = 'neutral',
