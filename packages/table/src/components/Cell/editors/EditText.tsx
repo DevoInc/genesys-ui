@@ -1,6 +1,6 @@
 import React, { FormEvent } from 'react';
 import { InputControl } from '@devoinc/genesys-ui';
-import { CellData } from '../declarations';
+import { CellData } from '../../declarations';
 
 interface EditInputProps {
   // Text Edit Cell accepts any value type as it is the default edit cell

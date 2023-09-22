@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyledTableRow } from './StyledTableRow';
 import { RowProps } from './declarations';
 import { Cell } from '../Cell/Cell';
-import { ColDef } from '../Cell/declarations';
+import { ColDef } from '../declarations';
 
 export const Row: React.FC<RowProps> = ({
   columnDefs,

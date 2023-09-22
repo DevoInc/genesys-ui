@@ -1,6 +1,6 @@
 import React from 'react';
 import { Popper, Box, Button, IconButton } from '@devoinc/genesys-ui';
-import { GenericCellEditorProps } from '../declarations';
+import { GenericCellEditorProps } from '../../declarations';
 
 export const CustomCellEditor: React.FC<GenericCellEditorProps> = ({
   value,

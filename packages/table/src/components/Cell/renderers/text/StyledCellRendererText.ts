@@ -8,11 +8,15 @@ export const StyledTableCellRendererText = styled.div<StyledCellRendererTextProp
   flex: '1';
   display: 'flex';
 
-  ${({ size, theme }) => {
+  ${({ size, theme, bold }) => {
     return css`
       // text styles
-      ${typoMixin({ variant: 'body', theme, size })};
+      ${typoMixin({ variant: 'body', theme, size, bold })};
+    `;
+  }};
 
+  ${({ theme }) => {
+    return css`
       // text color
       ${typoColorMixin({
         variant: 'body',

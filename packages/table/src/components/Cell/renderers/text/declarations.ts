@@ -9,4 +9,5 @@ export interface StyledCellRendererTextProps {
   heightProp?: number;
   textAlign?: 'left' | 'center' | 'right';
   density?: 'default' | 'compact' | 'comfortable';
+  bold?: boolean;
 }

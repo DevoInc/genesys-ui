@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { StyledTableCellWrapper } from './StyledTableCellWrapper';
-import { CellData, ColDef } from './declarations';
 import { useRenderContent } from './useRenderContent';
 import { useInitialState } from './editors/useInitialState';
+import { CellData, ColDef } from '../declarations';
 
 interface CellProps {
   /** The content for the cell. */

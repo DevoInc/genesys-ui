@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useOnEventOutside } from '@devoinc/genesys-ui';
 import { EditText } from './editors';
 import { getRenderer } from './renderers';
-import { CellData, ColDef } from './declarations';
+import { CellData, ColDef } from '../declarations';
 
 export const useRenderContent = (
   cellEditor: () => React.ReactNode,

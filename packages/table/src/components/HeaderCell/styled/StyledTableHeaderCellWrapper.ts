@@ -2,14 +2,14 @@ import styled, { css, DefaultTheme } from 'styled-components';
 import { elevationMixin } from '@devoinc/genesys-ui';
 import { getSizes } from '../../utils';
 
-interface StyledTableHeadCellProps {
+interface StyledTableHeaderCellWrapperProps {
   theme: DefaultTheme;
   isVirtual?: boolean;
   isScrolled?: boolean;
   widthProp: number;
 }
 
-export const StyledTableHeadCell = styled.th<StyledTableHeadCellProps>`
+export const StyledTableHeaderCellWrapper = styled.th<StyledTableHeaderCellWrapperProps>`
   ${({ isVirtual, isScrolled, theme, widthProp }) => {
     const tokens = theme.cmp.table;
     const aliasTokens = theme.alias;
@@ -36,6 +36,12 @@ export const StyledTableHeadCell = styled.th<StyledTableHeadCellProps>`
       // resizable columns
       ::-webkit-resizer {
         appearance: none;
+      }
+      padding-top: 0;
+      padding-bottom: 0;
+      // to avoid include '...' ellipsis in complex type cells
+      &::after {
+        content: none;
       }
     `;
   }}

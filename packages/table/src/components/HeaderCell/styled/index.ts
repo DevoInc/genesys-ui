@@ -1,5 +1,5 @@
-export * from './StyledTableHeadCell';
+export * from './StyledTableHeaderCellWrapper';
 export * from './StyledTableHeadCellGrabber';
 export * from './StyledTableHeadCellSeparator';
 export * from './StyledTableHeadCellText';
-export * from './StyledTableHeadCellWrapper';
+export * from './StyledTableHeaderCellWrapper';

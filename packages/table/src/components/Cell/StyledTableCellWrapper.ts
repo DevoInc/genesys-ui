@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import { pseudoElementMixin } from '@devoinc/genesys-ui';
 import { StyledTableCell } from '../../styled/StyledTableCell';
-import { ColDef } from './declarations';
 import { StyledTableRow } from '../Row/StyledTableRow';
 import { getSizes } from '../utils';
 import {
@@ -10,12 +9,13 @@ import {
   getVerticalPadding,
 } from './padding';
 import { StyledTableCellProps } from '../../styled/declarations';
+import { ColDef } from '../declarations';
 
 export interface StyledTableCellWrapperProps
   extends ColDef,
     StyledTableCellProps {}
 
-export const StyledTableCellWrapper = styled.th<StyledTableCellWrapperProps>`
+export const StyledTableCellWrapper = styled.td<StyledTableCellWrapperProps>`
   display: flex;
   top: 0;
   left: 0;
