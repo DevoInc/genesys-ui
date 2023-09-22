@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.3-alpha.25](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.24...v1.0.3-alpha.25) (2023-09-22)
+
+
+### Features
+
+* added props to AppLayout component ([0685b0c](https://github.com/DevoInc/genesys-ui/commit/0685b0cd6b98731c4a31536cd19983af96e632a2))
+* added Resolve type function ([7b8a9d1](https://github.com/DevoInc/genesys-ui/commit/7b8a9d114ecfedae00b61252304f4177dad16bc4))
+
 ## [1.0.3-alpha.24](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.23...v1.0.3-alpha.24) (2023-09-21)
 
 
