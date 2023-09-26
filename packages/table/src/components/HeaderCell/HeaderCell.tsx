@@ -5,11 +5,12 @@ import { ColDef } from '../declarations';
 
 interface HeaderCellProps {
   column: ColDef;
-  data: string;
 }
 
-export const HeaderCell: React.FC<HeaderCellProps> = ({ column, data }) => (
-  <StyledTableHeaderCellWrapper widthProp={column.cellStyle.width}>
-    <RenderCellContentText value={data} bold />
+export const HeaderCell: React.FC<HeaderCellProps> = ({
+  column: { cellStyle, headerName },
+}) => (
+  <StyledTableHeaderCellWrapper width={cellStyle.width}>
+    <RenderCellContentText value={headerName} bold />
   </StyledTableHeaderCellWrapper>
 );

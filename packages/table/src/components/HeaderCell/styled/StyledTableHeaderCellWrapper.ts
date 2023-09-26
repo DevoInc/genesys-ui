@@ -5,11 +5,11 @@ import { getSizes } from '../../utils';
 interface StyledTableHeaderCellWrapperProps {
   theme: DefaultTheme;
   isScrolled?: boolean;
-  widthProp: number;
+  width: number;
 }
 
 export const StyledTableHeaderCellWrapper = styled.th<StyledTableHeaderCellWrapperProps>`
-  ${({ isScrolled, theme, widthProp }) => {
+  ${({ isScrolled, theme, width }) => {
     const tokens = theme.cmp.table;
     const aliasTokens = theme.alias;
     const borderRadius = getSizes(tokens).row.br + 'px';
@@ -19,7 +19,7 @@ export const StyledTableHeaderCellWrapper = styled.th<StyledTableHeaderCellWrapp
       top: 0;
       vertical-align: middle;
       box-sizing: border-box;
-      width: ${widthProp && widthProp + 'px'};
+      width: ${width && width + 'px'};
       color: ${aliasTokens.color.text.heading.base};
 
       // border radius in head top
