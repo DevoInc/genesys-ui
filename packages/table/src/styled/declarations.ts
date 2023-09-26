@@ -47,7 +47,6 @@ export interface StyledTableCellProps<T = Element> {
   disabled?: boolean;
   even?: boolean;
   isDraggable?: boolean;
-  isVirtual?: boolean;
   modified?: boolean;
   opacity?: number;
   selected?: boolean;

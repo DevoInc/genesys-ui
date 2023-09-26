@@ -4,20 +4,19 @@ import { getSizes } from '../../utils';
 
 interface StyledTableHeaderCellWrapperProps {
   theme: DefaultTheme;
-  isVirtual?: boolean;
   isScrolled?: boolean;
   widthProp: number;
 }
 
 export const StyledTableHeaderCellWrapper = styled.th<StyledTableHeaderCellWrapperProps>`
-  ${({ isVirtual, isScrolled, theme, widthProp }) => {
+  ${({ isScrolled, theme, widthProp }) => {
     const tokens = theme.cmp.table;
     const aliasTokens = theme.alias;
     const borderRadius = getSizes(tokens).row.br + 'px';
     return css`
-      ${!isVirtual && isScrolled && elevationMixin(theme)('stickyBottom')};
-      position: ${!isVirtual && isScrolled ? 'sticky' : 'relative'};
-      top: ${!isVirtual && '0'};
+      ${isScrolled && elevationMixin(theme)('stickyBottom')};
+      position: ${isScrolled ? 'sticky' : 'relative'};
+      top: 0;
       vertical-align: middle;
       box-sizing: border-box;
       width: ${widthProp && widthProp + 'px'};

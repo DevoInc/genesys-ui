@@ -18,7 +18,6 @@ interface Style {
   height: number;
   columnsWidth: number;
   hasStripedRows: boolean;
-  isVirtual: boolean;
   tableWidth: number;
   even?: boolean;
 }
@@ -41,7 +40,6 @@ export interface StyledTableRowProps {
   isAfterRow: boolean;
   isDraggable: boolean;
   isDragging: boolean;
-  isVirtual: boolean;
   modified: boolean;
   opacity: number;
   selected: boolean;
