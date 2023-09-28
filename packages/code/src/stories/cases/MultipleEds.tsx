@@ -8,8 +8,16 @@ export const MultipleEds = ({ ...props }: Partial<SmartEditorProps>) => {
   const theme = useTheme();
   return (
     <Flex width="100%" flexDirection="column" gap="cmp-md">
-      <SmartEditor theme={getTheme(theme)} {...props} />
-      <SmartEditor theme={getTheme(theme)} {...props} />
+      <SmartEditor
+        options={{ readOnly: true }}
+        theme={getTheme(theme)}
+        {...props}
+      />
+      <SmartEditor
+        options={{ minimap: { enabled: true } }}
+        theme={getTheme(theme)}
+        {...props}
+      />
     </Flex>
   );
 };

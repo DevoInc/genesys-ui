@@ -20,7 +20,7 @@ export const Shortcuts = ({ ...props }: Partial<SmartEditorProps>) => {
     <SmartEditor
       {...props}
       theme={getTheme(theme)}
-      value={'Press Ctrl + E to export content to file\n'}
+      value={'Press Ctrl/Cmd + E to export this content to a file\n'}
       onMount={registerShortcuts}
     />
   );
