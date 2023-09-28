@@ -1,0 +1,124 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/Code/SmartEditor/Docs" />
+
+# Devo Editor
+
+## Overview
+
+This project is an implementation of [**monaco editor**](https://microsoft.github.io/monaco-editor/), with the aim of providing our editors with more functionality.
+
+[Official Website](https://microsoft.github.io/monaco-editor/) / [Playground with examples for microsoft](https://microsoft.github.io/monaco-editor/playground.html) / [Doc api monaco editor](https://microsoft.github.io/monaco-editor/api/index.html)
+
+When it came to implementing a new editor in the project, there were several points to consider:
+
+- Ease of implementation.
+- Possibility of configuration.
+- Long-term maintenance.
+- Etc.
+
+In the end, the decision to use monaco editor was based on two main points. On the one hand it is the editor used to build visual studio code, so the **maintenance by microsoft and the community is continuous**. And on the other hand, the **infinite possibilities of configuration** that it gives us.
+
+One of the most important decisions before implementation is deciding which package to import. In general [monaco-editor](https://www.npmjs.com/package/monaco-editor) provides us with a package that comes with everything, all the languages it supports and all the functionality. But it also gives us the option to use [monaco-editor-core](https://www.npmjs.com/package/monaco-editor-core) which only does not provide the minimum necessary to be able to set up an editor.
+
+As a small reference it should be said that specific monaco-editor implementations already exist for some frameworks. For example for [React](https://www.npmjs.com/package/@lukaskl/monaco-editor-react). Discarded after testing due to the difficulties we encountered and the difficulty of adding new features.
+
+## How to import
+
+## Basic usage
+
+After a study of the use cases and testing, several interesting conclusions were reached:
+
+In the case of **RawConfig**:
+
+- Initially we could make use of the **json language** already provided by monaco editor. But we saw **limitations for future implementations**.
+
+After these points what we realised is that we should use monaco-editor-core. Since it is easier to create custom languages. One of the advantages is that creating a custom language is quite easy and in a short time we could have something working.
+
+## Hooks
+
+## Theming
+
+For the visual theme that will use the language, it is necessary to have a clear
+premise. We need to define a dark and a light theme. Initially we will start
+with the light theme, since redada does not support the dark theme. To define
+the colors of the theme we have based on [gruvbox](https://github.com/morhetz/gruvbox).
+We find it a visually beautiful and clear theme for everyday use. This should be
+validated by UX and product.
+
+### Props
+
+By making use of the package we can require SmartEditor component.
+
+```javascript
+<SmartEditor
+  {...args}
+  theme={'lightTheme'}
+  hasMinimap={hasMinimap}
+  value={state.internalValue}
+  onChanged={onInternalChange}
+  language={language}
+  errorsFn={errorsFn}
+/>
+```
+
+#### Monaco provider
+
+It takes care of loading the languages and setting the chosen theme, right now
+the only language that can be used is 'rawConfig'.
+
+```javascript
+const loadingMap = {
+  rawConfig: setupRawConfigLanguageEditor,
+};
+```
+
+### Errors
+
+The consumer of the editor can send a function that is responsible for returning
+any errors that may be generated in the text entered. This functionality is
+common, independent of the language used.
+
+#### Structure
+
+It is necessary for the function to return a concrete error structure for the
+editor to be able to read and display them. The structure must be:
+
+```javascript
+const validate = (val) => {
+  const { report, ast } = exprCode(val);
+  return {
+    isOK,
+    errors: {
+      location: {
+        init: {
+          line,
+          column,
+        },
+        end: {
+          line,
+          column,
+        },
+      },
+      message,
+    },
+  };
+};
+```
+
+## Videos
+
+- [suggestions](https://drive.google.com/file/d/1EPafJi6pKCGsx5mF1k5aqB6r7dG7n518/view?usp=sharing)
+- [find elements](https://drive.google.com/file/d/1dLGKrL-zgHRAcIAVGexkpJZW_k4i0oX8/view?usp=sharing)
+- [show errors](https://drive.google.com/file/d/1Eyys9tQePXWl9ML_wFQ43GbJaxZGbLls/view?usp=sharing)
+- [export value](https://drive.google.com/file/d/1sQDDGb-P7N5qYC6970Mbn5ZrzEpNtNuY/view?usp=sharing)
+
+## Links of interest
+
+- [create a custom web editor using typescript react antlr and monaco editor](https://medium.com/better-programming/create-a-custom-web-editor-using-typescript-react-antlr-and-monaco-editor-bcfc7554e446)
+- [monaco editor](https://microsoft.github.io/monaco-editor/)
+- [react monaco editor](https://github.com/react-monaco-editor/react-monaco-editor)
+- [example implement languages](https://github.com/microsoft/monaco-languages)
+- [json language service](https://github.com/microsoft/vscode-json-languageservice)
+- [info bundle monaco editor core](https://bundlephobia.com/result?p=monaco-editor-core@0.24.0)
+- [info bundle codemirror](https://bundlephobia.com/result?p=codemirror@5.61.1)
