@@ -42,7 +42,7 @@ export const InternalSmartEditor: React.FC<SmartEditorProps> = ({
         onValidate={onValidate}
         options={options}
       />
-      {actions}
+      <ActionsContainer>{actions}</ActionsContainer>
     </Container>
   );
 };

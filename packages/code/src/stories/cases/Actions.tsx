@@ -39,22 +39,20 @@ export const Actions = ({ ...props }: Partial<SmartEditorProps>) => {
       value={'Copy me!\n'}
       onMount={handleEditorDidMount}
       actions={
-        <SmartEditor.ActionsContainer>
-          <ButtonGroup>
-            <IconButton
-              key="copy"
-              icon="gi-documents_files_paper_text_archive_copy" // copy
-              onClick={handleCopyToClipboard}
-              tooltip="Copy to clipboard"
-            />
-            <IconButton
-              key="paste"
-              icon="gi-paste_clipboard"
-              onClick={handlePasteToEditor}
-              tooltip="Paste to editor"
-            />
-          </ButtonGroup>
-        </SmartEditor.ActionsContainer>
+        <ButtonGroup>
+          <IconButton
+            key="copy"
+            icon="gi-documents_files_paper_text_archive_copy" // copy
+            onClick={handleCopyToClipboard}
+            tooltip="Copy to clipboard"
+          />
+          <IconButton
+            key="paste"
+            icon="gi-paste_clipboard"
+            onClick={handlePasteToEditor}
+            tooltip="Paste to editor"
+          />
+        </ButtonGroup>
       }
     />
   );
