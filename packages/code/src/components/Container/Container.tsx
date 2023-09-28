@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Box, BoxProps } from '@devoinc/genesys-ui';
 
-export interface ActionsContainerProps extends BoxProps {
+export interface ContainerProps extends BoxProps {
   children: React.ReactNode;
 }
 
-export const Container: React.FC<ActionsContainerProps> = ({
+export const Container: React.FC<ContainerProps> = ({
   children,
   ...boxProps
 }) => {
