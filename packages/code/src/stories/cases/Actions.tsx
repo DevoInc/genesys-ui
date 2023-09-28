@@ -1,13 +1,10 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { IconButton, ButtonGroup } from '@devoinc/genesys-ui';
-import { SmartEditor, SmartEditorProps, getTheme, type monaco } from '../../';
+import { SmartEditor, SmartEditorProps, type monaco } from '../../';
 
 export const Actions = ({ ...props }: Partial<SmartEditorProps>) => {
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor>();
-
-  const theme = useTheme();
 
   const handleEditorDidMount = (
     editor: monaco.editor.IStandaloneCodeEditor,
@@ -37,7 +34,6 @@ export const Actions = ({ ...props }: Partial<SmartEditorProps>) => {
   return (
     <SmartEditor
       {...props}
-      theme={getTheme(theme)}
       height="300px"
       bordered={true}
       value={'Copy me!\n'}

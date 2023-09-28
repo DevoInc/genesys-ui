@@ -33,7 +33,6 @@ export const StyledSmartEditor = styled.div<StyledSmartEditorProps>`
 
     // Default - Smart Editor - Style
 
-    position: relative;
     ${bordered &&
     css`
       border-width: ${theme.alias.fields.shape.borderSize.base};

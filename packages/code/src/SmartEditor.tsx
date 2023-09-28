@@ -1,22 +1,12 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
-import { useEditor, type UseEditorParams } from './hooks';
-import { StyledSmartEditor } from './styled/StyledSmartEditor';
 import { ActionsContainer } from './components/Actions';
+import { Container } from './components/Container/Container';
+import { Editor, EditorProps } from './components';
+import { getTheme } from './themes';
 
-export interface SmartEditorProps extends UseEditorParams {
-  /**
-   * Width of the editor wrapper
-   */
-  width?: number | string;
-  /**
-   * Height of the editor wrapper
-   */
-  height?: number | string;
-  /**
-   * Add border to the editor wrapper
-   */
-  bordered?: boolean;
+export interface SmartEditorProps extends Omit<EditorProps, 'theme'> {
   /**
    * Array of actions to be added to the editor
    */
@@ -25,7 +15,6 @@ export interface SmartEditorProps extends UseEditorParams {
 
 export const InternalSmartEditor: React.FC<SmartEditorProps> = ({
   value = '',
-  theme,
   width = 'auto',
   height = '100%',
   language,
@@ -37,36 +26,38 @@ export const InternalSmartEditor: React.FC<SmartEditorProps> = ({
   actions,
   options = {},
 }) => {
-  const { containerRef } = useEditor({
-    value,
-    theme,
-    language,
-    beforeMount,
-    onMount,
-    onChange,
-    onValidate,
-    options,
-  });
-
+  const theme = useTheme();
   return (
-    <StyledSmartEditor
-      ref={containerRef}
-      $height={height}
-      $width={width}
-      bordered={bordered}
-      lineNumbers={options.lineNumbers}
-      readOnly={options.readOnly}
-    >
+    <Container>
+      <Editor
+        value={value}
+        theme={getTheme(theme)}
+        language={language}
+        height={height}
+        width={width}
+        bordered={bordered}
+        beforeMount={beforeMount}
+        onMount={onMount}
+        onChange={onChange}
+        onValidate={onValidate}
+        options={options}
+      />
       {actions}
-    </StyledSmartEditor>
+    </Container>
   );
 };
 
 export const SmartEditor = InternalSmartEditor as typeof InternalSmartEditor & {
+  Container: typeof Container;
+  Editor: typeof Editor;
   ActionsContainer: typeof ActionsContainer;
 };
 
+SmartEditor.Container = Container;
+SmartEditor.Editor = Editor;
 SmartEditor.ActionsContainer = ActionsContainer;
 
 InternalSmartEditor.displayName = 'SmartEditor';
+Container.displayName = 'SmartEditor.Container';
+Editor.displayName = 'SmartEditor.Editor';
 ActionsContainer.displayName = 'SmartEditor.ActionsContainer';

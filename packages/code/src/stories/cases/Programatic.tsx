@@ -1,17 +1,9 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { Button, ButtonGroup, Flex } from '@devoinc/genesys-ui';
-import {
-  SmartEditor,
-  getTheme,
-  type SmartEditorProps,
-  type monaco,
-} from '../../';
+import { SmartEditor, type SmartEditorProps, type monaco } from '../../';
 
 export const Programatic = ({ ...props }: Partial<SmartEditorProps>) => {
-  const theme = useTheme();
-
   const [value, setValue] = React.useState<string>(
     "Help! I'm being updated programatically",
   );
@@ -38,7 +30,6 @@ export const Programatic = ({ ...props }: Partial<SmartEditorProps>) => {
       </ButtonGroup>
       <SmartEditor
         {...props}
-        theme={getTheme(theme)}
         height="300px"
         width="100%"
         value={value}

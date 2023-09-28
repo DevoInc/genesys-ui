@@ -1,4 +1,5 @@
 export * from './Actions';
+export * from './Composed';
 export * from './CustomLang';
 export * from './MultipleEds';
 export * from './MultipleLangs';

@@ -28,14 +28,6 @@ export const ReadonlyMode: Story = {
   },
 };
 
-export const Themed: Story = {
-  render: (args) =>
-    ((args) => {
-      const theme = useTheme();
-      return <SmartEditor theme={getTheme(theme)} {...args} />;
-    })(args),
-};
-
 export const WithMinimap: Story = {
   args: {
     options: {

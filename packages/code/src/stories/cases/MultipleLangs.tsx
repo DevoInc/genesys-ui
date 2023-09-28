@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { Box, ContentSwitcher, Flex } from '@devoinc/genesys-ui';
 import {
@@ -8,14 +7,11 @@ import {
   SmartEditorProps,
   registerCompletionProvider,
   registerStyleTokenizer,
-  getTheme,
 } from '../../';
 import { rawLanguage } from '../../__stories__/rawConfig';
 import { dedalLanguage } from '../../__stories__/dedal';
 
 export const MultipleLangs = ({ ...props }: Partial<SmartEditorProps>) => {
-  const theme = useTheme();
-
   const [language, setLanguage] = React.useState<'dedal' | 'rawConfig'>(
     'dedal',
   );
@@ -57,7 +53,6 @@ export const MultipleLangs = ({ ...props }: Partial<SmartEditorProps>) => {
       </Box>
       <SmartEditor
         {...props}
-        theme={getTheme(theme)}
         language={language}
         value={dedalLanguage.value.concat(rawLanguage.value)}
         beforeMount={registerLanguageProviders}

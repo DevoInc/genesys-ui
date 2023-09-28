@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import {
   SmartEditor,
   type Monaco,
   type monaco,
-  getTheme,
   SmartEditorProps,
   registerStyleTokenizer,
   registerCompletionProvider,
@@ -26,8 +24,6 @@ const options: monaco.editor.IEditorOptions = {
 export const CustomLang = ({ ...props }: Partial<SmartEditorProps>) => {
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor>();
   const monacoRef = React.useRef<Monaco>();
-
-  const theme = useTheme();
 
   const registerLanguageProviders = (monaco) => {
     // Register highlighting
@@ -88,7 +84,6 @@ export const CustomLang = ({ ...props }: Partial<SmartEditorProps>) => {
 
   return (
     <SmartEditor
-      theme={getTheme(theme)}
       height="300px"
       bordered={true}
       options={options}
