@@ -30,9 +30,9 @@
     "ahooks": "^3.7.8"
   },
   "peerDependencies": {
-    "monaco-editor-core": "^0.41.0",
     "@devoinc/genesys-brand-devo": "^6.1.1",
     "@devoinc/genesys-ui": "^1.0.3-alpha.25",
+    "monaco-editor-core": "^0.41.0",
     "react": ">=16.13.1",
     "react-dom": ">=16.13.1",
     "styled-components": "^5.3.3"
@@ -51,6 +51,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "file-saver": "^2.0.5"
+    "file-saver": "^2.0.5",
+    "monaco-editor-core": "^0.43.0"
   }
 }
