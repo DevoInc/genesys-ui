@@ -84,7 +84,11 @@
     "viz.js": "^2.1.2"
   },
   "workspaces": [
-    "packages/*"
+    "packages/core",
+    "packages/form",
+    "packages/datetime",
+    "packages/code",
+    "packages/table"
   ],
   "engines": {
     "node": ">=18",
