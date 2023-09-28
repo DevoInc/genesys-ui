@@ -3,7 +3,8 @@ import * as monaco from 'monaco-editor-core';
 import { useUpdateEffect } from 'ahooks';
 
 import { buildEditorOptions } from './buildEditorOptions';
-import { Monaco } from '../../declarations';
+
+type Monaco = typeof monaco;
 
 export interface UseEditorParams {
   /**

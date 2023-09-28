@@ -1,5 +1,6 @@
 import type * as monaco from 'monaco-editor-core';
-import { Monaco } from '../declarations';
+
+type Monaco = typeof monaco;
 
 export const registerCompletionProvider = (
   monaco: Monaco,

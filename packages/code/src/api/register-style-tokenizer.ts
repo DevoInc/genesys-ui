@@ -1,5 +1,6 @@
 import type * as monaco from 'monaco-editor-core';
-import { type Monaco } from '../declarations';
+
+type Monaco = typeof monaco;
 
 export const registerStyleTokenizer = (
   monaco: Monaco,

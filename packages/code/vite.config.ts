@@ -17,6 +17,7 @@ export default defineConfig({
       external: [
         'react',
         'react-dom',
+        'monaco-editor-core',
         '@devoinc/genesys-ui',
         '@devoinc/genesys-brand-devo',
         'styled-components',
@@ -26,6 +27,7 @@ export default defineConfig({
           react: 'React',
           'react-dom': 'reactDom',
           'styled-components': 'styled',
+          'monaco-editor-core': 'monacoEditorCore',
           '@devoinc/genesys-ui': 'genesysUi',
         },
       },
