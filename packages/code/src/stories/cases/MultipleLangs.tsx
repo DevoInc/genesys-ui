@@ -1,8 +1,8 @@
 import * as React from 'react';
+import type * as monaco from 'monaco-editor-core';
 
 import { Box, ContentSwitcher, Flex } from '@devoinc/genesys-ui';
 import {
-  type Monaco,
   SmartEditor,
   SmartEditorProps,
   registerCompletionProvider,
@@ -10,6 +10,8 @@ import {
 } from '../../';
 import { rawLanguage } from '../../__stories__/rawConfig';
 import { dedalLanguage } from '../../__stories__/dedal';
+
+type Monaco = typeof monaco;
 
 export const MultipleLangs = ({ ...props }: Partial<SmartEditorProps>) => {
   const [language, setLanguage] = React.useState<'dedal' | 'rawConfig'>(

@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type * as monaco from 'monaco-editor-core';
 
 import { IconButton, ButtonGroup } from '@devoinc/genesys-ui';
-import { SmartEditor, SmartEditorProps, type monaco } from '../../';
+import { SmartEditor, SmartEditorProps } from '../../';
 
 export const Actions = ({ ...props }: Partial<SmartEditorProps>) => {
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor>();

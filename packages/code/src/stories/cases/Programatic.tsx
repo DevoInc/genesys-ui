@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type * as monaco from 'monaco-editor-core';
 
 import { Button, ButtonGroup, Flex } from '@devoinc/genesys-ui';
-import { SmartEditor, type SmartEditorProps, type monaco } from '../../';
+import { SmartEditor, type SmartEditorProps } from '../../';
 
 export const Programatic = ({ ...props }: Partial<SmartEditorProps>) => {
   const [value, setValue] = React.useState<string>(

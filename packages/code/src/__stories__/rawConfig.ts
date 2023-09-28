@@ -1,4 +1,4 @@
-import { monaco } from '../';
+import * as monaco from 'monaco-editor-core';
 import { type Language } from './declarations';
 import { getRange } from './utils';
 

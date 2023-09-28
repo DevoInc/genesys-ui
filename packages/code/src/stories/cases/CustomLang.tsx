@@ -1,14 +1,15 @@
 import * as React from 'react';
+import type * as monaco from 'monaco-editor-core';
 
 import {
   SmartEditor,
-  type Monaco,
-  type monaco,
   SmartEditorProps,
   registerStyleTokenizer,
   registerCompletionProvider,
 } from '../../';
 import { rawLanguage } from '../../__stories__/rawConfig';
+
+type Monaco = typeof monaco;
 
 const options: monaco.editor.IEditorOptions = {
   // enable error batches in scrollbar to be shown.

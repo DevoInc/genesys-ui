@@ -1,8 +1,6 @@
-import * as React from 'react';
-import { useTheme } from 'styled-components';
 import { type Meta, type StoryObj } from '@storybook/react';
 
-import { SmartEditor, getTheme } from '../';
+import { SmartEditor } from '../';
 import { rawLanguage } from '../__stories__/rawConfig';
 
 const meta: Meta<typeof SmartEditor> = {

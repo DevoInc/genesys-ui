@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { saveAs } from 'file-saver';
+import * as monaco from 'monaco-editor-core';
 
-import { SmartEditor, SmartEditorProps, monaco } from '../../';
+import { SmartEditor, SmartEditorProps } from '../../';
 
 export const Shortcuts = ({ ...props }: Partial<SmartEditorProps>) => {
   const registerShortcuts = (editor: monaco.editor.IStandaloneCodeEditor) => {
