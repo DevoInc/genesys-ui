@@ -7,7 +7,7 @@
     "incremental": true,
     "outDir": "./dist"
   },
-  "include": ["src", "../../__stories__", "../../stories"],
+  "include": ["src"],
   "references": [
     {
       "path": "../core"

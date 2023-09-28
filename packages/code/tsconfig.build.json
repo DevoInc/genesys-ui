@@ -10,5 +10,15 @@
     "outDir": "./dist"
   },
   "include": ["src"],
-  "exclude": ["src/**/*.test.*", "src/**/*.stories.tsx", "src/**/__stories__/*", "src/**/stories/*"],
+  "exclude": [
+    "src/**/*.test.*",
+    "src/**/*.stories.tsx",
+    "src/**/stories/*",
+    "src/**/__stories__/*"
+  ],
+  "references": [
+    {
+      "path": "../core/tsconfig.build.json"
+    }
+  ]
 }
