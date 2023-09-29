@@ -46,7 +46,7 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import { Button } from '@devoinc/genesys-ui';
-import { SmartEditor, getTheme } from '../..';
+import { SmartEditor, getTheme } from '@devoinc/genesys-ui-code';
   
 export const MyEditor = () => {
   const theme = useTheme();
@@ -75,10 +75,7 @@ If the React tag doesn't suit a particular use case, the SmartEditor can also be
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { ActionsContainer } from './components/Actions';
-import { Container } from './components/Container/Container';
-import { Editor, EditorProps } from './components';
-import { getTheme } from './themes';
+import { SmartEditor, getTheme, useEditor } from '@devoinc/genesys-ui-code';
 
 export const MyEditor = () => {
   const theme = useTheme();
@@ -96,7 +93,7 @@ options,
 
 return (
 
-<Container>
+<SmartEditor.Container>
   <div
     ref={containerRef}
     $height={height}
@@ -105,8 +102,8 @@ return (
     lineNumbers={options?.lineNumbers}
     readOnly={options?.readOnly}
   />
-  <ActionsContainer>{actions}</ActionsContainer>
-</Container>
+  <SmartEditor.ActionsContainer>{actions}</SmartEditor.ActionsContainer>
+</SmartEditor.Container>
 ); }; `} />
 
 ## Custom Configurations
