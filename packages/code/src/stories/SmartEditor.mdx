@@ -1,5 +1,7 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
+import { SmartEditor } from '../';
+
 import * as Stories from './SmartEditor.stories';
 import * as CaseStories from './SmartEditor.cases.stories';
 
@@ -21,13 +23,115 @@ import { SmartEditor } from '@devoinc/genesys-ui-code';
 
 ## Basic usage
 
+Using the predefined editor is as simple as importing the 'SmartEditor' tag.
+
+<Source
+  code={`
+import * as React from 'react';
+import { SmartEditor } from '@devoinc/genesys-ui-code';
+
+export const MyEditor = () => <SmartEditor value="I'm smart!" />
+`}
+/>
+
 <Canvas of={Stories.Base} />
+
+## Advanced usage
+
+For more specific customizations, the SmartEditor can also be constructed from its individual components.
+
+<Source
+  code={`
+import * as React from 'react';
+import { useTheme } from 'styled-components';
+
+import { Button } from '@devoinc/genesys-ui';
+import { SmartEditor, getTheme } from '../..';
+  
+export const MyEditor = () => {
+  const theme = useTheme();
+  return (
+    <SmartEditor.Container height="300px">
+      <SmartEditor.Editor
+        theme={getTheme(theme)}
+        value="I'm being built from my inner parts"
+      />
+      <SmartEditor.ActionsContainer>
+        <Button>Submit</Button>
+      </SmartEditor.ActionsContainer>
+    </SmartEditor.Container>
+  );
+};
+`}
+/>
 
 ## Hooks
 
 ### useEditor
 
-## Cases
+If the React tag doesn't suit a particular use case, the SmartEditor can also be integrated using the 'useEditor' hook.
+
+<Source code={`
+import * as React from 'react';
+import { useTheme } from 'styled-components';
+
+import { ActionsContainer } from './components/Actions';
+import { Container } from './components/Container/Container';
+import { Editor, EditorProps } from './components';
+import { getTheme } from './themes';
+
+export const MyEditor = () => {
+  const theme = useTheme();
+
+const { containerRef } = useEditor({
+value,
+theme,
+language,
+beforeMount,
+onMount,
+onChange,
+onValidate,
+options,
+});
+
+return (
+
+<Container>
+  <div
+    ref={containerRef}
+    $height={height}
+    $width={width}
+    bordered={bordered}
+    lineNumbers={options?.lineNumbers}
+    readOnly={options?.readOnly}
+  />
+  <ActionsContainer>{actions}</ActionsContainer>
+</Container>
+); }; `} />
+
+## Custom Configurations
+
+Here are some of the most common configurations.
+
+### Readonly mode
+
+<Canvas of={Stories.ReadonlyMode} />
+
+### With Minimap
+
+<Canvas of={Stories.WithMinimap} />
+
+### Without line numbers
+
+<Canvas of={Stories.WithoutLineNumbers} />
+
+### Smaller text size
+
+<Canvas of={Stories.SmallerTextSize} />
+
+## Recipes
+
+The SmartEditor can be extensively customized to accommodate even the most complex use cases.
 
 ### Custom Language
 
@@ -59,28 +163,16 @@ import { SmartEditor } from '@devoinc/genesys-ui-code';
 
 ## Subcomponents
 
-<Source
-  code={`
-import * as React from 'react';
-import { useTheme } from 'styled-components';
+The SmartEditor is made up of 3 main components:
 
-import { Button } from '@devoinc/genesys-ui';
-import { SmartEditor, getTheme } from '../..';
-  
-export const MyEditor = () => {
-  const theme = useTheme();
-  return (
-    <SmartEditor.Container height="300px">
-      <SmartEditor.Editor
-        theme={getTheme(theme)}
-        value="I'm being built from my inner parts"
-        bordered={true}
-      />
-      <SmartEditor.ActionsContainer>
-        <Button>Submit</Button>
-      </SmartEditor.ActionsContainer>
-    </SmartEditor.Container>
-  );
-};
-`}
-/>
+### SmartEditor.Container
+
+<ArgTypes of={SmartEditor.Container} />
+
+### SmartEditor.Editor
+
+<ArgTypes of={SmartEditor.Editor} />
+
+### SmartEditor.ActionsContainer
+
+<ArgTypes of={SmartEditor.ActionsContainer} />
