@@ -10,7 +10,7 @@ export const Container: React.FC<ContainerProps> = ({
   ...boxProps
 }) => {
   return (
-    <Box position="relative" width="100%" {...boxProps}>
+    <Box position="relative" width="100%" height="100%" {...boxProps}>
       {children}
     </Box>
   );
