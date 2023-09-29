@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-code",
-  "version": "1.0.3-alpha.25",
+  "version": "1.0.3-alpha.26",
   "description": "",
   "types": "./dist/types/src/index.d.ts",
   "main": "./dist/index.umd.js",
@@ -32,7 +32,7 @@
   "peerDependencies": {
     "monaco-editor-core": "^0.41.0",
     "@devoinc/genesys-brand-devo": "^6.1.1",
-    "@devoinc/genesys-ui": "^1.0.3-alpha.25",
+    "@devoinc/genesys-ui": "^1.0.3-alpha.26",
     "react": ">=16.13.1",
     "react-dom": ">=16.13.1",
     "styled-components": "^5.3.3"
