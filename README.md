@@ -124,6 +124,3 @@ Find the full license content [here](LICENSE).
 
 The team in charge of this codebase is [DevoInc/Quvis](https://github.com/orgs/DevoInc/teams/quvis).
 
-```
-
-```
