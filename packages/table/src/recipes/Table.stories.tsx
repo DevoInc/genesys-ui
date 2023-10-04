@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-
 import { Holo } from '@devoinc/holo';
 import { DropdownMenu, Button } from '@devoinc/genesys-ui';
-
 import { TableOptionsProps } from '../declarations';
 import { BasicTable } from './Table';
 
@@ -32,7 +30,7 @@ const data = Holo.of()
   .repeat(20)
   .generate();
 
-const TableOptions: TableOptionsProps = {
+const tableOptions: TableOptionsProps = {
   defaultColumnDef: {
     editable: false,
   },
@@ -41,7 +39,7 @@ const TableOptions: TableOptionsProps = {
       colId: 'menu',
       field: 'menu',
       headerName: 'menu',
-      CellRenderer: ({ value, columnDef }) => {
+      CellRenderer: (params) => {
         return (
           <DropdownMenu
             items={[
@@ -52,7 +50,7 @@ const TableOptions: TableOptionsProps = {
                 title: 'Testing menu',
                 state: 'featured',
                 onChange: () => {
-                  console.log(columnDef.headerName);
+                  console.log(params.columnDef.headerName);
                 },
                 defaultChecked: true,
               },
@@ -137,6 +135,6 @@ type Story = StoryObj<typeof BasicTable>;
 export const Base: Story = {
   render: () =>
     (() => {
-      return <BasicTable tableOptions={TableOptions} data={data} />;
+      return <BasicTable tableOptions={tableOptions} data={data} />;
     })(),
 };

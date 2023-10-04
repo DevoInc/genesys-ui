@@ -21,9 +21,19 @@ export interface TableOptionsProps {
   };
 }
 
+interface CellRendererParams {
+  value: unknown;
+  columnDef: ColDef;
+}
+
+type CellRenderer = ({
+  value,
+  columnDef,
+}: CellRendererParams) => React.ReactNode;
+
 export interface ColDef {
   CellEditor?: (a) => React.ReactNode;
-  CellRenderer?: (a) => React.ReactNode;
+  CellRenderer?: CellRenderer;
   cellStyle?: {
     minWidth?: number;
     maxWidth?: number;
