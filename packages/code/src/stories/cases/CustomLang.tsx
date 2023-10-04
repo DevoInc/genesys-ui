@@ -8,10 +8,11 @@ import {
   registerCompletionProvider,
 } from '../../';
 import { rawLanguage } from '../../__stories__/rawConfig';
+import { dedalLanguage } from '../../__stories__/dedal';
 
 type Monaco = typeof monaco;
 
-const options: monaco.editor.IEditorOptions = {
+const opts: monaco.editor.IEditorOptions = {
   // enable error batches in scrollbar to be shown.
   overviewRulerLanes: 2,
   // enable folding of code blocks
@@ -22,18 +23,31 @@ const options: monaco.editor.IEditorOptions = {
   },
 };
 
-export const CustomLang = ({ ...props }: Partial<SmartEditorProps>) => {
+const languages = {
+  rawConfig: rawLanguage,
+  dedal: dedalLanguage,
+};
+
+export const CustomLang = ({
+  langId = 'rawConfig',
+  options,
+  ...props
+}: Partial<SmartEditorProps & { langId: string }>) => {
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor>();
   const monacoRef = React.useRef<Monaco>();
 
   const registerLanguageProviders = (monaco) => {
     // Register highlighting
-    registerStyleTokenizer(monaco, rawLanguage.id, rawLanguage.lang);
+    registerStyleTokenizer(
+      monaco,
+      languages[langId].id,
+      languages[langId].lang,
+    );
     // Register autocompletion
     registerCompletionProvider(
       monaco,
-      rawLanguage.id,
-      rawLanguage.completionProvider,
+      languages[langId].id,
+      languages[langId].completionProvider,
     );
   };
 
@@ -55,7 +69,7 @@ export const CustomLang = ({ ...props }: Partial<SmartEditorProps>) => {
     // locate the position of the error and mark it in the editor
     try {
       JSON.parse(value);
-      monaco.editor.setModelMarkers(monaco.editor.getModels()[0], 'owner', []);
+      monaco.editor.setModelMarkers(editorRef.current.getModel(), 'owner', []);
     } catch (err) {
       const message = err.message;
       const model = editorRef.current.getModel();
@@ -87,9 +101,9 @@ export const CustomLang = ({ ...props }: Partial<SmartEditorProps>) => {
     <SmartEditor
       height="300px"
       bordered={true}
-      options={options}
-      language="rawConfig"
-      value={rawLanguage.value}
+      options={{ ...opts, ...options }}
+      language={langId}
+      value={languages[langId].value}
       onMount={handleEditorDidMount}
       beforeMount={registerLanguageProviders}
       onChange={validateEditorContent}

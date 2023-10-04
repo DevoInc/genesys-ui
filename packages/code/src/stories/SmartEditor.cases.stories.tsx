@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 
 import { SmartEditor } from '../';
@@ -27,7 +28,7 @@ export default meta;
 type Story = StoryObj<typeof SmartEditor>;
 
 export const MultipleEditors: Story = {
-  render: MultipleEds,
+  render: ({ value, ...props }) => <MultipleEds {...props} />,
 };
 
 export const MultipleLanguages: Story = {
