@@ -10,19 +10,19 @@ const cases: [
     'Value is undefined',
     undefined,
     { tz: 'Madrid/Europe', formatDate: 'PPpp', locale: 'en-US' },
-    undefined,
+    'undefined',
   ],
   [
     'Value is null',
     null,
     { tz: 'Madrid/Europe', formatDate: 'PPpp', locale: 'en-US' },
-    null,
+    'null',
   ],
   [
     'Value is not a valid number',
     -1,
     { tz: 'Madrid/Europe', formatDate: 'PPpp', locale: 'en-US' },
-    -1,
+    '-1',
   ],
 ];
 
