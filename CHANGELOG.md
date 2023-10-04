@@ -1,5 +1,41 @@
 # Changelog
 
+## [1.0.3-alpha.31](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.30...v1.0.3-alpha.31) (2023-10-04)
+
+
+### Features
+
+* add cell edit ([d309b32](https://github.com/DevoInc/genesys-ui/commit/d309b32141510ca2bab3f4f783e9f80656d34d86))
+* add data renderer ([79efbc6](https://github.com/DevoInc/genesys-ui/commit/79efbc6d642481bd103ff1fba0334a31824ddcb6))
+* **Cell:** Added cell edition behavior ([a019b6b](https://github.com/DevoInc/genesys-ui/commit/a019b6b3722aa6da9d2ec030f81310d1e636f194))
+* **Cell:** Added custom case for edit cell ([d04ba09](https://github.com/DevoInc/genesys-ui/commit/d04ba09f49efc2dbe537b0a7cd5d873906b3946f))
+* **Cell:** Added edit mode disabling on outside click ([f519dc9](https://github.com/DevoInc/genesys-ui/commit/f519dc998f9bfafa3666325d0b92967abab760ad))
+* **Cell:** Added reset and initial value management ([35cd9f8](https://github.com/DevoInc/genesys-ui/commit/35cd9f84e75eb542fba8288c746949fa01d56b96))
+* create table component ([16dd870](https://github.com/DevoInc/genesys-ui/commit/16dd87043cd1f091e4c76c395c7f797c6aef0811))
+* new format stories ([9d4420d](https://github.com/DevoInc/genesys-ui/commit/9d4420d7a2137c93a340c8f3881f2395ab5d4632))
+* new table component ([84dea76](https://github.com/DevoInc/genesys-ui/commit/84dea766976aa6b78a7139e9aab420e7432d9ab9))
+* Opened edit cell on double click ([080bdc7](https://github.com/DevoInc/genesys-ui/commit/080bdc79a4aeb81672dbe885794cb9c65e151dc8))
+* **Row:** QUV-764 Initial migration for table Row component ([b80b950](https://github.com/DevoInc/genesys-ui/commit/b80b950fb8309a098ddc589171b8e752a7797a7f))
+* **Table:** QUV-770 First migration for HeaderCell ([fb6944d](https://github.com/DevoInc/genesys-ui/commit/fb6944dcd2d8b2ca7283f80d4bcee9aba8c8c9db))
+
+
+### Bug Fixes
+
+* Avoided edit mode disabling when double clicking already in edit mode ([6c07d5e](https://github.com/DevoInc/genesys-ui/commit/6c07d5ede6324cebf5da9a7866644b84f56bdbda))
+* Brand type import ([be2be4c](https://github.com/DevoInc/genesys-ui/commit/be2be4c32802e24e13ecc40adc7f647cda2737da))
+* Brand type import ([c0a20b0](https://github.com/DevoInc/genesys-ui/commit/c0a20b0771d187acf9d55f97b064ae2c4dd2dd8a))
+* **Cell:** Recovered cell edition behavior ([1c06f59](https://github.com/DevoInc/genesys-ui/commit/1c06f592b9d4b234df182cdcd6c1254bb350fac0))
+* Component export ([cfc873a](https://github.com/DevoInc/genesys-ui/commit/cfc873acbe8a7bc91becc52f1031e6ed338866c7))
+* Focused on input when opening edition cell ([70a4977](https://github.com/DevoInc/genesys-ui/commit/70a4977f642faaa65282ebe7807f4b1022a8c614))
+* Lint ([c78439a](https://github.com/DevoInc/genesys-ui/commit/c78439a57790739cf245a9fd96dc7b2d2b6654dd))
+* Migrated component mismatch ([86c2bd9](https://github.com/DevoInc/genesys-ui/commit/86c2bd986fb848e824eaee4705038b43127da0d8))
+* Minor type corrections ([7721729](https://github.com/DevoInc/genesys-ui/commit/772172976d3eb463b4e5a2cde34d80ddaf891114))
+* rename folders components ([c1520a3](https://github.com/DevoInc/genesys-ui/commit/c1520a3518cf8517176d9bc02410955367791d22))
+* Reverted prop type change ([fa56489](https://github.com/DevoInc/genesys-ui/commit/fa56489fcc98ca2c86e1f14429de2607d3e1f4db))
+* styled row and cell ([ba0ca22](https://github.com/DevoInc/genesys-ui/commit/ba0ca22e40df42246748ca17a5aa9e89871394dc))
+* Type error ([14b8846](https://github.com/DevoInc/genesys-ui/commit/14b8846df09b1f0031912c9e85c9ee97080752a9))
+* Type mismatch ([6781bba](https://github.com/DevoInc/genesys-ui/commit/6781bba05da5abb43c080bf0e673f6d67122752d))
+
 ## [1.0.3-alpha.30](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.29...v1.0.3-alpha.30) (2023-10-04)
 
 
