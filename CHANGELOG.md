@@ -1,5 +1,46 @@
 # Changelog
 
+## [1.0.3-alpha.30](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.29...v1.0.3-alpha.30) (2023-10-04)
+
+
+### Bug Fixes
+
+* **SmartEditor:** solve issue with markers when multiple editors are active ([b8630b1](https://github.com/DevoInc/genesys-ui/commit/b8630b1597131cf11cc8a1e1316ba0fdc23b9815))
+
+## [1.0.3-alpha.29](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.28...v1.0.3-alpha.29) (2023-10-04)
+
+
+### Bug Fixes
+
+* **SmartEditor:** downgrade version ([26ed10a](https://github.com/DevoInc/genesys-ui/commit/26ed10a6ac4b5a9c9e7338a875d35a1adea6d0f0))
+
+
+### Vulnerabilities
+
+* **deps-dev:** bump postcss from 8.4.30 to 8.4.31 ([#25](https://github.com/DevoInc/genesys-ui/issues/25)) ([627a954](https://github.com/DevoInc/genesys-ui/commit/627a954248087c9afa1d5b221724ae6e48b33d9c))
+
+## [1.0.3-alpha.28](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.27...v1.0.3-alpha.28) (2023-09-29)
+
+
+### Bug Fixes
+
+* **SmartEditor:** update token in ActionsContainer ([5c21b2d](https://github.com/DevoInc/genesys-ui/commit/5c21b2ddd1a6882fb02256138b7c3db8f6faccbc))
+
+## [1.0.3-alpha.27](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.26...v1.0.3-alpha.27) (2023-09-29)
+
+
+### Bug Fixes
+
+* **SmartEditor:** fix height in Container ([cf1ae8c](https://github.com/DevoInc/genesys-ui/commit/cf1ae8cd6da939211f32d658273f1ca9fe646bc0))
+
+## [1.0.3-alpha.26](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.25...v1.0.3-alpha.26) (2023-09-29)
+
+
+### Features
+
+* new component `SmartEditor` ([95adfe2](https://github.com/DevoInc/genesys-ui/commit/95adfe2f444c9caa6053ff62cec35a9a3a91cd94))
+* **SmartEditor:** Added dot notation ([a0c396d](https://github.com/DevoInc/genesys-ui/commit/a0c396d739b05530e08646ff7278c3e2d3aa9474))
+
 ## [1.0.3-alpha.25](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.24...v1.0.3-alpha.25) (2023-09-22)
 
 

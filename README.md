@@ -16,9 +16,12 @@ The project is built using `npm workspaces` and includes the following packages:
 
 [![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui-datetime/alpha?label=%40devoinc%2Fgenesys-ui-datetime@alpha)](https://www.npmjs.com/package/@devoinc/genesys-ui-datetime)
 
+[![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui-code/alpha?label=%40devoinc%2Fgenesys-ui-code@alpha)](https://www.npmjs.com/package/@devoinc/genesys-ui-code)
+
 - **genesys-ui:** Core package containing base components.
 - **genesys-ui-form:** Form components.
 - **genesys-ui-datetime:** Date and time components.
+- **genesys-ui-datetime:** Code editing and code visualization components.
 
 The packages have the following interdependencies:
 
@@ -28,6 +31,8 @@ The packages have the following interdependencies:
 ├─┬ @devoinc/genesys-ui-form
 │ ├── @devoinc/genesys-ui
 ├─┬ @devoinc/genesys-ui
+├─┬ @devoinc/genesys-ui-code
+│ ├── @devoinc/genesys-ui
 ```
 
 ## Preview
@@ -97,6 +102,7 @@ For detailed documentation please refer to the READMEs of the internal packages:
 - [genesys-ui/README.md](./packages/core/README.md)
 - [genesys-ui-form/README.md](./packages/form/README.md)
 - [genesys-ui-datetime/README.md](./packages/datetime/README.md)
+- [genesys-ui-code/README.md](./packages/code/README.md)
 
 ## Changelog
 
@@ -118,6 +124,3 @@ Find the full license content [here](LICENSE).
 
 The team in charge of this codebase is [DevoInc/Quvis](https://github.com/orgs/DevoInc/teams/quvis).
 
-```
-
-```

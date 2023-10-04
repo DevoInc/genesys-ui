@@ -27,6 +27,9 @@
     },
     {
       "path": "packages/table"
+    },
+    {
+      "path": "packages/code"
     }
   ]
 }

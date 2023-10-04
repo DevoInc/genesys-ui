@@ -1,6 +1,6 @@
 {
   "name": "genesys-ui",
-  "version": "1.0.3-alpha.25",
+  "version": "1.0.3-alpha.30",
   "description": "",
   "main": "index.js",
   "private": true,
@@ -85,7 +85,11 @@
     "viz.js": "^2.1.2"
   },
   "workspaces": [
-    "packages/*"
+    "packages/core",
+    "packages/form",
+    "packages/datetime",
+    "packages/code",
+    "packages/table"
   ],
   "engines": {
     "node": ">=18",

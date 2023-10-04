@@ -23,7 +23,7 @@ type Story = StoryObj<typeof Toolbar>;
 export const Base: Story = {
   args: {
     children: (
-      <>
+      <Toolbar>
         <Toolbar.Group>
           <Toolbar.Item>Item One - G1</Toolbar.Item>
           <Toolbar.Item>Item Two - G1</Toolbar.Item>
@@ -37,7 +37,7 @@ export const Base: Story = {
         <Toolbar.Group>
           <Toolbar.Item>Item One - G3</Toolbar.Item>
         </Toolbar.Group>
-      </>
+      </Toolbar>
     ),
   },
 };
