@@ -24,7 +24,7 @@ export const StoryWrapper: React.FC<StoryWrapperProps> = ({
   children,
   className,
   display = 'block',
-  height = '100%',
+  height = '100vh',
   margin,
   maxHeight,
   maxWidth,
