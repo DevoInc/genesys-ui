@@ -31,6 +31,13 @@ const config: JestConfigWithTsJest = {
       testMatch: ['<rootDir>/packages/form/src/**/*.test.ts?(x)'],
       moduleNameMapper: globalModuleNameMapper,
     },
+    {
+      displayName: 'table',
+      testEnvironment: 'jsdom',
+      preset: 'ts-jest',
+      testMatch: ['<rootDir>/packages/table/src/**/*.test.ts'],
+      moduleNameMapper: globalModuleNameMapper,
+    },
   ],
 };
 

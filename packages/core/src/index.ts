@@ -1,4 +1,6 @@
 export * from './components';
 export * from './declarations';
+export * from './styled';
 export * from './typeFunctions';
-export * from './styled/mixins';
+export * from './hooks';
+export * from './helpers';

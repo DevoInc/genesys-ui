@@ -26,6 +26,7 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
+    "@devoinc/genesys-ui": "^1.0.3-alpha.25",
     "react": "16.x || 17.x || 18.x"
   },
   "engine": {
@@ -38,5 +39,9 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "date-fns": "^2.30.0",
+    "date-fns-tz": "^2.0.0"
   }
 }

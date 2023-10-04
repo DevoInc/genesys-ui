@@ -30,6 +30,7 @@
     "@devoinc/genesys-brand-devo": "^6.1.1",
     "@devoinc/genesys-icons": "^3.2.2",
     "@devoinc/genesys-tokens-types": "^6.1.1",
+    "@devoinc/holo": "^1.0.5",
     "@mdx-js/react": "^2.1.5",
     "@release-it-plugins/workspaces": "^4.0.0",
     "@release-it/conventional-changelog": "^7.0.2",
