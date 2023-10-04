@@ -106,9 +106,31 @@ export const useEditor: UseEditor = ({
 
     ////////////////////////////////////////////
     // Call onValidate callback on model markers change
+    /**
+     * Markers event emitter is shared across all active
+     * instances of the editor. Therefore, before calling
+     * onValidate we need to ensure we are emitting to
+     * the editor that triggered the change. This only
+     * applies to cases where multiple editors are active
+     * at the same time.
+     */
     const { dispose: disposeOnMarkersChange } =
-      monaco.editor.onDidChangeMarkers(() => {
-        onValidate?.(monaco.editor.getModelMarkers({}));
+      monaco.editor.onDidChangeMarkers((uris) => {
+        const currentEditorUri = editorRef.current.getModel()?.uri;
+
+        if (currentEditorUri) {
+          const currentEditorHasMarkerChanges = uris.find(
+            (uri) => uri.path === currentEditorUri.path,
+          );
+
+          if (currentEditorHasMarkerChanges) {
+            onValidate?.(
+              monaco.editor.getModelMarkers({
+                resource: currentEditorUri,
+              }),
+            );
+          }
+        }
       });
 
     return () => {
