@@ -2,11 +2,9 @@ import * as React from 'react';
 import { StyledDivider } from './StyledDivider';
 import { render } from 'test-utils';
 
-const TEST_ID = 'styled-divider';
-
 describe('StyledDivider', () => {
   test('Component renders with default styles', () => {
-    const { container } = render(<StyledDivider data-testid={TEST_ID} />);
+    const { container } = render(<StyledDivider />);
 
     expect(container.getElementsByTagName('hr')[0]).toHaveStyle(`
         position: relative;
