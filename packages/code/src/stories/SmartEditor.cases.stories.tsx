@@ -11,7 +11,6 @@ import {
   Actions,
   MultipleLangs,
   Shortcuts,
-  Composed,
 } from './cases';
 
 const meta: Meta<typeof SmartEditor> = {
@@ -30,6 +29,11 @@ type Story = StoryObj<typeof SmartEditor>;
 export const MultipleEditors: Story = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: ({ value, ...props }) => <MultipleEds {...props} />,
+  parameters: {
+    source: {
+      code: 'hiiiii',
+    },
+  },
 };
 
 export const MultipleLanguages: Story = {
@@ -50,8 +54,4 @@ export const ProgramaticActions: Story = {
 
 export const WithShortcuts: Story = {
   render: Shortcuts,
-};
-
-export const Composable: Story = {
-  render: Composed,
 };
