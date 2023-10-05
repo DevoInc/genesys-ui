@@ -68,6 +68,10 @@ export const InternalStatusMessage = ({
   tooltip,
   width,
 }: StatusMessageProps) => {
+  if (buttons) {
+    buttons = Array.isArray(buttons) ? buttons : [buttons];
+  }
+
   return (
     <StatusMessage.Container
       aria-describedby={ariaDescribedBy}
@@ -110,7 +114,7 @@ export const InternalStatusMessage = ({
           {description}
         </StatusMessage.Description>
       )}
-      {buttons?.length && (
+      {Array.isArray(buttons) && (
         <StatusMessage.Buttons styles={subcomponentStyles?.buttons}>
           {buttons}
         </StatusMessage.Buttons>

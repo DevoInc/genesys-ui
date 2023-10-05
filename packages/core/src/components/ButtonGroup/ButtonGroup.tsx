@@ -17,10 +17,10 @@ export interface ButtonGroupProps
   extends Omit<FlexProps, 'as' | 'children'>,
     Omit<ButtonGroupMixinProps, 'theme'> {
   //TODO: add the DropdownMenu to this types when it's ready
-  children: (
+  children:
     | React.ReactElement<ButtonProps>
     | React.ReactElement<IconButtonProps>
-  )[];
+    | (React.ReactElement<ButtonProps> | React.ReactElement<IconButtonProps>)[];
   /** The size of the buttons */
   size?: ButtonGroupSize;
 }
@@ -49,7 +49,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
       inline={inline}
       styles={buttonGroupMixin({ hidden, theme, visibilityTrigger })}
     >
-      {children?.map((child, idx) => (
+      {React.Children.map(children, (child, idx) => (
         <Flex.Item
           as="li"
           key={idx}
