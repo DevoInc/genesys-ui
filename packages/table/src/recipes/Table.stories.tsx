@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Holo } from '@devoinc/holo';
-import { DropdownMenu, Button } from '@devoinc/genesys-ui';
+import { DropdownMenu, Button, Flex } from '@devoinc/genesys-ui';
 import { TableOptionsProps } from '../declarations';
 import { BasicTable } from './Table';
 
@@ -33,6 +33,11 @@ const data = Holo.of()
 const tableOptions: TableOptionsProps = {
   defaultColumnDef: {
     editable: false,
+  },
+  style: {
+    wrapper: {
+      maxHeight: '300px',
+    },
   },
   columnDefs: [
     {
@@ -135,6 +140,10 @@ type Story = StoryObj<typeof BasicTable>;
 export const Base: Story = {
   render: () =>
     (() => {
-      return <BasicTable tableOptions={tableOptions} data={data} />;
+      return (
+        <Flex height="100vh">
+          <BasicTable tableOptions={tableOptions} data={data} />
+        </Flex>
+      );
     })(),
 };

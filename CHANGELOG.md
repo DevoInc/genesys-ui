@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3-alpha.32](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.31...v1.0.3-alpha.32) (2023-10-05)
+
+
+### Features
+
+* buttongroup supports array of children or just one element ([5409033](https://github.com/DevoInc/genesys-ui/commit/540903307ecfb02a55a76034ddfbf9f025469e03))
+
 ## [1.0.3-alpha.31](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.30...v1.0.3-alpha.31) (2023-10-04)
 
 

@@ -11,7 +11,6 @@ import {
   Actions,
   MultipleLangs,
   Shortcuts,
-  Composed,
 } from './cases';
 
 const meta: Meta<typeof SmartEditor> = {
@@ -50,8 +49,4 @@ export const ProgramaticActions: Story = {
 
 export const WithShortcuts: Story = {
   render: Shortcuts,
-};
-
-export const Composable: Story = {
-  render: Composed,
 };

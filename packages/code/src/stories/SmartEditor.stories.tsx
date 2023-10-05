@@ -1,14 +1,13 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 
 import { SmartEditor } from '../';
-import { rawLanguage } from '../__stories__/rawConfig';
 
 const meta: Meta<typeof SmartEditor> = {
   title: 'Components/Code/SmartEditor',
   component: SmartEditor,
   args: {
     bordered: true,
-    value: rawLanguage.value,
+    value: "Hey! I'm smart!",
     height: '300px',
   },
 };
