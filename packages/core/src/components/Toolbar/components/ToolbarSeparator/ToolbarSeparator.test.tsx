@@ -7,4 +7,13 @@ describe('ToolbarSeparator', () => {
     const { container } = render(<ToolbarSeparator />);
     expect(container.getElementsByTagName('hr')[0]).toBeInTheDocument();
   });
+
+  test('Component renders with default styles', () => {
+    const { container } = render(<ToolbarSeparator />);
+    expect(container.getElementsByTagName('hr')[0]).toHaveStyle(`
+        height: 2rem;
+        width: 0.1rem;
+        margin: 0.4rem 0px;
+    `);
+  });
 });

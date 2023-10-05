@@ -11,4 +11,14 @@ describe('ToolbarGroup', () => {
     render(<ToolbarGroup data-testid={TEST_ID}>{CONTENT_STRING}</ToolbarGroup>);
     expect(screen.getAllByTestId(TEST_ID)[0]).toBeInTheDocument();
   });
+
+  test('Component renders with default styles', () => {
+    render(<ToolbarGroup data-testid={TEST_ID}>{CONTENT_STRING}</ToolbarGroup>);
+
+    expect(screen.getAllByTestId(TEST_ID)[0]).toHaveStyle(`
+        align-items: center;
+        align-self: stretch;
+        flex: 1 1 auto;
+    `);
+  });
 });
