@@ -8,7 +8,7 @@ const meta: Meta<typeof SmartEditor> = {
   args: {
     bordered: true,
     value: "Hey! I'm smart!",
-    height: '100px',
+    height: '300px',
   },
 };
 

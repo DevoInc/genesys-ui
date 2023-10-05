@@ -29,11 +29,6 @@ type Story = StoryObj<typeof SmartEditor>;
 export const MultipleEditors: Story = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: ({ value, ...props }) => <MultipleEds {...props} />,
-  parameters: {
-    source: {
-      code: 'hiiiii',
-    },
-  },
 };
 
 export const MultipleLanguages: Story = {
