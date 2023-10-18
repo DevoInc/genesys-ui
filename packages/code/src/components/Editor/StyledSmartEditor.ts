@@ -20,11 +20,20 @@ export interface StyledSmartEditorProps {
   $width: string | number;
   readOnly?: boolean;
   bordered?: boolean;
+  minimap?: boolean;
   lineNumbers?: monaco.editor.IStandaloneEditorConstructionOptions['lineNumbers'];
 }
 
 export const StyledSmartEditor = styled.div<StyledSmartEditorProps>`
-  ${({ $height, lineNumbers = true, readOnly, $width, theme, bordered }) => css`
+  ${({
+    $height,
+    lineNumbers = true,
+    readOnly,
+    $width,
+    theme,
+    bordered,
+    minimap,
+  }) => css`
     // Variables - Smart Editor - Style
 
     --read-only-bg-color: ${theme.alias.fields.color.background.base.readonly};
@@ -48,9 +57,31 @@ export const StyledSmartEditor = styled.div<StyledSmartEditorProps>`
           border-radius: var(--border-radius);
         `}
       }
+
       // Base font color. Applies to non tokenized text - Smart Editor - Style
       .mtk1 {
         color: ${theme.alias.color.text.body.stronger};
+      }
+
+      // Cannot edit on read-only mode - Smart Editor - Style
+      // overflowingContentWidgets className
+      .monaco-editor-overlaymessage {
+        .message {
+          font-size: ${theme.alias.typo.fontSize.body.sm};
+          font-family: ${theme.alias.typo.fontFamily.body.fontFaceName};
+          background-color: ${theme.alias.color.background.surface.base
+            .base} !important;
+          color: ${theme.alias.color.text.body.stronger};
+          border-color: ${theme.alias.color.border.elevation
+            .activated} !important;
+          box-shadow: ${theme.alias.elevation.boxShadow.depth.activated};
+          border-radius: ${theme.alias.shape.borderRadius.elevated};
+          padding: ${theme.alias.space.cmp.xs} ${theme.alias.space.cmp.sm};
+        }
+
+        .anchor {
+          border: unset;
+        }
       }
 
       // Error label - Smart Editor - Style
@@ -121,6 +152,22 @@ export const StyledSmartEditor = styled.div<StyledSmartEditorProps>`
         //border-radius: ${theme.alias.shape.borderRadius.elevated};
         box-shadow: ${theme.alias.elevation.boxShadow.depth.activated};
         z-index: ${theme.alias.elevation.zIndex.depth.activated};
+      }
+
+      // Minimap - Smart Editor - Style
+
+      .minimap {
+        transform: translateX(-${theme.alias.scrollbars.size.square.md});
+      }
+
+      // Decorations overview ruler - Smart Editor - Style
+      .decorationsOverviewRuler {
+        border-left: ${minimap &&
+        `1px solid ${theme.alias.color.border.separator.base.weak}`};
+
+        transform: translateX(
+          -${theme.alias.scrollbars.size.square.md}
+        ) !important; // Need to override inline style
       }
     }
 

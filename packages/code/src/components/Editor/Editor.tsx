@@ -54,6 +54,7 @@ export const Editor: React.FC<EditorProps> = ({
       bordered={bordered}
       lineNumbers={options?.lineNumbers}
       readOnly={options?.readOnly}
+      minimap={!!options?.minimap?.enabled}
     />
   );
 };
