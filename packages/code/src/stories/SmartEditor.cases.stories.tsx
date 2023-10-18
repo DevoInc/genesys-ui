@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 
-import { SmartEditor } from '../';
+import { SmartEditor, DiffEditor } from '../';
 import { rawLanguage } from '../__stories__/rawConfig';
 
 import {
@@ -11,6 +11,7 @@ import {
   Actions,
   MultipleLangs,
   Shortcuts,
+  Diff,
 } from './cases';
 
 const meta: Meta<typeof SmartEditor> = {
@@ -24,29 +25,40 @@ const meta: Meta<typeof SmartEditor> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof SmartEditor>;
+type SmartStory = StoryObj<typeof SmartEditor>;
+type DiffStory = StoryObj<typeof DiffEditor>;
 
-export const MultipleEditors: Story = {
+export const MultipleEditors: SmartStory = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: ({ value, ...props }) => <MultipleEds {...props} />,
 };
 
-export const MultipleLanguages: Story = {
+export const MultipleLanguages: SmartStory = {
   render: MultipleLangs,
 };
 
-export const CustomLanguage: Story = {
+export const CustomLanguage: SmartStory = {
   render: CustomLang,
 };
 
-export const WithActions: Story = {
+export const WithActions: SmartStory = {
   render: Actions,
 };
 
-export const ProgramaticActions: Story = {
+export const ProgramaticActions: SmartStory = {
   render: Programatic,
 };
 
-export const WithShortcuts: Story = {
+export const WithShortcuts: SmartStory = {
   render: Shortcuts,
+};
+
+export const DiffEd: DiffStory = {
+  render: (args) => (
+    <Diff
+      {...args}
+      originalValue="jjuhiuhiuhiuhiujjj"
+      modifiedValue="nincdskjcnsdkjn"
+    />
+  ),
 };
