@@ -48,6 +48,10 @@ export const StyledSmartEditor = styled.div<StyledSmartEditorProps>`
           border-radius: var(--border-radius);
         `}
       }
+      // Base font color. Applies to non tokenized text - Smart Editor - Style
+      .mtk1 {
+        color: ${theme.alias.color.text.body.stronger};
+      }
 
       // Error label - Smart Editor - Style
       // Hide the label of the editor id in the error widget (LXCP-497)
