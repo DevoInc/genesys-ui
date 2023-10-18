@@ -28,19 +28,19 @@ export const InternalSmartEditor: React.FC<SmartEditorProps> = ({
 }) => {
   const theme = useTheme();
   return (
-    <Container>
+    <Container bordered={bordered}>
       <Editor
         value={value}
         theme={getTheme(theme)}
         language={language}
         height={height}
         width={width}
-        bordered={bordered}
         beforeMount={beforeMount}
         onMount={onMount}
         onChange={onChange}
         onValidate={onValidate}
         options={options}
+        bordered={bordered}
       />
       <ActionsContainer>{actions}</ActionsContainer>
     </Container>

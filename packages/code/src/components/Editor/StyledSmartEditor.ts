@@ -33,13 +33,6 @@ export const StyledSmartEditor = styled.div<StyledSmartEditorProps>`
 
     // Default - Smart Editor - Style
 
-    ${bordered &&
-    css`
-      border-width: ${theme.alias.fields.shape.borderSize.base};
-      border-style: solid;
-      border-color: ${theme.alias.fields.color.border.base.enabled};
-      border-radius: calc(var(--border-radius) + 0.1rem);
-    `}
     height: ${$height};
     width: ${$width};
 
