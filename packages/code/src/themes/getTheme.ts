@@ -178,6 +178,11 @@ export const getTheme = (
         // 'scrollbarSlider.activeBackground': convertRGBAToHexA(
         //   theme.alias.scrollbars.thumb.color.backdrop.hovered
         // ),
+
+        // Half of the styling is here, half is in StyledSmartEditor
+        'editorOverviewRuler.background': convertRGBAToHexA(
+          theme.alias.color.background.surface.base.raised,
+        ),
       },
     },
   };

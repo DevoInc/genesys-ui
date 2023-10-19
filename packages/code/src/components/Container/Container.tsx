@@ -1,17 +1,19 @@
 import * as React from 'react';
-import { Box, BoxProps } from '@devoinc/genesys-ui';
 
-export interface ContainerProps extends BoxProps {
+import { StyledContainer, StyledContainerProps } from './StyledContainer';
+
+export interface ContainerProps extends StyledContainerProps {
   children: React.ReactNode;
 }
 
 export const Container: React.FC<ContainerProps> = ({
+  bordered,
   children,
   ...boxProps
 }) => {
   return (
-    <Box position="relative" width="100%" height="100%" {...boxProps}>
+    <StyledContainer bordered={bordered} {...boxProps}>
       {children}
-    </Box>
+    </StyledContainer>
   );
 };
