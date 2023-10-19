@@ -255,7 +255,7 @@ export const StyledHeading = styled.div<StyledHeadingProps>`
   ${({
     colorScheme,
     gutterBottom,
-    size,
+    size = 'h4',
     textAlign,
     theme,
     truncateLine,
