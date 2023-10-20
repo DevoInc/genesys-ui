@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.0.3-alpha.33](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.32...v1.0.3-alpha.33) (2023-10-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **SmartEditor:** Some `Editor` styles are being moved to the `Container`
+
+### Features
+
+* **SmartEditor:** Some `Editor` styles are being moved to the `Container` ([3c8c139](https://github.com/DevoInc/genesys-ui/commit/3c8c139a46653c49c78f1fefd8c7e851ef6e0804))
+* **SmartEditor:** Tokenize base text ([5d1b368](https://github.com/DevoInc/genesys-ui/commit/5d1b368206e452d8daeff505023565550b0b52f8))
+* **SmartEditor:** Tokenize overview ruler and minimap ([f30c490](https://github.com/DevoInc/genesys-ui/commit/f30c490a8194b5e55aa009f14370d34d44e7e646))
+
+
+### Vulnerabilities
+
+* **deps:** bump @babel/traverse from 7.23.0 to 7.23.2 ([418be96](https://github.com/DevoInc/genesys-ui/commit/418be968b9883708774c276554122a42455db86c))
+
 ## [1.0.3-alpha.32](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.31...v1.0.3-alpha.32) (2023-10-05)
 
 
