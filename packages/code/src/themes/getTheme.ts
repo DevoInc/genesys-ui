@@ -123,7 +123,7 @@ export const getTheme = (
         ),
         // 'editorGutter.background': convertRGBAToHexA(
         //   theme.alias.color.background.feedback.neutral.weak
-        // ), // From StyledSmartEditor managing line number visibility
+        // ), // From StyledInternalEditor managing line number visibility
         'editorIndentGuide.background': convertRGBAToHexA(
           theme.alias.color.border.separator.base.weak,
         ),
@@ -179,7 +179,7 @@ export const getTheme = (
         //   theme.alias.scrollbars.thumb.color.backdrop.hovered
         // ),
 
-        // Half of the styling is here, half is in StyledSmartEditor
+        // Half of the styling is here, half is in StyledInternalEditor
         'editorOverviewRuler.background': convertRGBAToHexA(
           theme.alias.color.background.surface.base.raised,
         ),

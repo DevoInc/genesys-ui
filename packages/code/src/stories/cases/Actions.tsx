@@ -2,9 +2,9 @@ import * as React from 'react';
 import type * as monaco from 'monaco-editor-core';
 
 import { IconButton, ButtonGroup } from '@devoinc/genesys-ui';
-import { SmartEditor, SmartEditorProps } from '../../';
+import { Editor, EditorProps } from '../../';
 
-export const Actions = ({ ...props }: Partial<SmartEditorProps>) => {
+export const Actions = ({ ...props }: Partial<EditorProps>) => {
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor>();
 
   const handleEditorDidMount = (
@@ -33,7 +33,7 @@ export const Actions = ({ ...props }: Partial<SmartEditorProps>) => {
   };
 
   return (
-    <SmartEditor
+    <Editor
       {...props}
       height="300px"
       bordered={true}

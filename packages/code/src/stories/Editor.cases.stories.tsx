@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 
-import { SmartEditor } from '../';
+import { Editor } from '..';
 import { rawLanguage } from '../__stories__/rawConfig';
 
 import {
@@ -13,9 +13,9 @@ import {
   Shortcuts,
 } from './cases';
 
-const meta: Meta<typeof SmartEditor> = {
-  title: 'Components/Code/SmartEditor/cases',
-  component: SmartEditor,
+const meta: Meta<typeof Editor> = {
+  title: 'Components/Code/Editor/cases',
+  component: Editor,
   args: {
     value: rawLanguage.value,
     height: '300px',
@@ -24,7 +24,7 @@ const meta: Meta<typeof SmartEditor> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof SmartEditor>;
+type Story = StoryObj<typeof Editor>;
 
 export const MultipleEditors: Story = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

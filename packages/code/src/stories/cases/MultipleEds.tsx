@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 import { Flex } from '@devoinc/genesys-ui';
-import { SmartEditorProps } from '../../';
+import { EditorProps } from '../../';
 import { CustomLang } from './CustomLang';
 
-export const MultipleEds = ({ ...props }: Partial<SmartEditorProps>) => {
+export const MultipleEds = ({ ...props }: Partial<EditorProps>) => {
   return (
     <Flex width="100%" flexDirection="column" gap="cmp-md">
       <CustomLang {...props} />

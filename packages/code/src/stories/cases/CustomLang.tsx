@@ -2,8 +2,8 @@ import * as React from 'react';
 import type * as monaco from 'monaco-editor-core';
 
 import {
-  SmartEditor,
-  SmartEditorProps,
+  Editor,
+  EditorProps,
   registerStyleTokenizer,
   registerCompletionProvider,
 } from '../../';
@@ -32,7 +32,7 @@ export const CustomLang = ({
   langId = 'rawConfig',
   options,
   ...props
-}: Partial<SmartEditorProps & { langId: string }>) => {
+}: Partial<EditorProps & { langId: string }>) => {
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor>();
   const monacoRef = React.useRef<Monaco>();
 
@@ -98,7 +98,7 @@ export const CustomLang = ({
   };
 
   return (
-    <SmartEditor
+    <Editor
       height="300px"
       bordered={true}
       options={{ ...opts, ...options }}

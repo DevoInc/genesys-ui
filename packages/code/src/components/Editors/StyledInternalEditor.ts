@@ -15,7 +15,7 @@ const readOnlyCss = css`
   }
 `;
 
-export interface StyledSmartEditorProps {
+export interface StyledInternalEditorProps {
   $height: string | number;
   $width: string | number;
   readOnly?: boolean;
@@ -24,7 +24,7 @@ export interface StyledSmartEditorProps {
   lineNumbers?: monaco.editor.IStandaloneEditorConstructionOptions['lineNumbers'];
 }
 
-export const StyledSmartEditor = styled.div<StyledSmartEditorProps>`
+export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
   ${({
     $height,
     lineNumbers = true,

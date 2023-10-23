@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
-  StyledSmartEditor,
-  type StyledSmartEditorProps,
-} from './StyledSmartEditor';
+  StyledInternalEditor,
+  type StyledInternalEditorProps,
+} from './StyledInternalEditor';
 import { type UseEditorParams, useEditor } from '../../hooks';
 
-export interface EditorProps
+export interface InternalEditorProps
   extends UseEditorParams,
-    Pick<StyledSmartEditorProps, 'bordered'> {
+    Pick<StyledInternalEditorProps, 'bordered'> {
   /**
    * Width of the editor wrapper
    */
@@ -22,7 +22,7 @@ export interface EditorProps
   bordered?: boolean;
 }
 
-export const Editor: React.FC<EditorProps> = ({
+export const InternalEditor: React.FC<InternalEditorProps> = ({
   width = 'auto',
   height = '100%',
   bordered,
@@ -47,7 +47,7 @@ export const Editor: React.FC<EditorProps> = ({
   });
 
   return (
-    <StyledSmartEditor
+    <StyledInternalEditor
       ref={containerRef}
       $height={height}
       $width={width}

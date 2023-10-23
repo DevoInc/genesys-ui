@@ -2,9 +2,9 @@ import * as React from 'react';
 import type * as monaco from 'monaco-editor-core';
 
 import { Button, ButtonGroup, Flex } from '@devoinc/genesys-ui';
-import { SmartEditor, type SmartEditorProps } from '../../';
+import { Editor, type EditorProps } from '../../';
 
-export const Programatic = ({ ...props }: Partial<SmartEditorProps>) => {
+export const Programatic = ({ ...props }: Partial<EditorProps>) => {
   const [value, setValue] = React.useState<string>(
     "Help! I'm being updated programatically",
   );
@@ -29,7 +29,7 @@ export const Programatic = ({ ...props }: Partial<SmartEditorProps>) => {
         <Button onClick={focusEditor}>Focus editor</Button>
         <Button onClick={updateValue}>Update value</Button>
       </ButtonGroup>
-      <SmartEditor
+      <Editor
         {...props}
         height="300px"
         width="100%"
