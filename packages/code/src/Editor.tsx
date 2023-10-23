@@ -28,7 +28,7 @@ const BaseEditor: React.FC<EditorProps> = ({
 }) => {
   const theme = useTheme();
   return (
-    <Container bordered={bordered}>
+    <Container bordered={bordered} readOnly={options.readOnly}>
       <InternalEditor
         value={value}
         theme={getTheme(theme)}
