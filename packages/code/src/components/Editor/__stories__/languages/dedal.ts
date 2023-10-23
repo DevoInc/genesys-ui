@@ -1,4 +1,4 @@
-import { type Language } from './declarations';
+import { type Language } from '../declarations';
 
 export const dedalLanguage: Language = {
   id: 'dedal',

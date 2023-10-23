@@ -7,8 +7,8 @@ import {
   registerStyleTokenizer,
   registerCompletionProvider,
 } from '../../';
-import { rawLanguage } from '../../__stories__/rawConfig';
-import { dedalLanguage } from '../../__stories__/dedal';
+import { rawLanguage } from '../../__stories__/languages/rawConfig';
+import { dedalLanguage } from '../../__stories__/languages/dedal';
 
 type Monaco = typeof monaco;
 

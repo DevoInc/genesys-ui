@@ -2,7 +2,7 @@ import * as React from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 
 import { Editor, DiffEditor } from '..';
-import { rawLanguage } from '../__stories__/rawConfig';
+import { rawLanguage } from '../__stories__/languages/rawConfig';
 
 import {
   CustomLang,

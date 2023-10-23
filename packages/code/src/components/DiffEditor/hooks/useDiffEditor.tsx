@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as monaco from 'monaco-editor-core';
 import { useUpdateEffect } from 'ahooks';
 
-import { buildEditorOptions } from '../useEditor/buildEditorOptions';
+import { buildEditorOptions } from '../../Editor/hooks/useEditor/buildEditorOptions';
 
 type Monaco = typeof monaco;
 

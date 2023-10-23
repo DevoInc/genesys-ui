@@ -1,3 +1,3 @@
-export * from './Actions';
-export * from './Container';
+export * from './Editor/components/Actions';
+export * from './Editor/components/Container';
 export * from './Editors';

@@ -1,6 +1,6 @@
 import * as monaco from 'monaco-editor-core';
-import { type Language } from './declarations';
-import { getRange } from './utils';
+import { type Language } from '../declarations';
+import { getRange } from '../utils';
 
 export const keywords = [
   '"extra"',
