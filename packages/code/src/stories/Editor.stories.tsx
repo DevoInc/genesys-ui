@@ -1,10 +1,10 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 
-import { SmartEditor } from '../';
+import { Editor } from '..';
 
-const meta: Meta<typeof SmartEditor> = {
-  title: 'Components/Code/SmartEditor',
-  component: SmartEditor,
+const meta: Meta<typeof Editor> = {
+  title: 'Components/Code/Editor',
+  component: Editor,
   args: {
     bordered: true,
     value: "Hey! I'm smart!",
@@ -13,7 +13,7 @@ const meta: Meta<typeof SmartEditor> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof SmartEditor>;
+type Story = StoryObj<typeof Editor>;
 
 export const Base: Story = {};
 

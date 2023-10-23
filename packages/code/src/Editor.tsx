@@ -3,17 +3,17 @@ import { useTheme } from 'styled-components';
 
 import { ActionsContainer } from './components/Actions';
 import { Container } from './components/Container/Container';
-import { Editor, EditorProps } from './components';
+import { InternalEditor, InternalEditorProps } from './components';
 import { getTheme } from './themes';
 
-export interface SmartEditorProps extends Omit<EditorProps, 'theme'> {
+export interface EditorProps extends Omit<InternalEditorProps, 'theme'> {
   /**
    * Array of actions to be added to the editor
    */
   actions?: React.ReactNode;
 }
 
-export const InternalSmartEditor: React.FC<SmartEditorProps> = ({
+const BaseEditor: React.FC<EditorProps> = ({
   value = '',
   width = 'auto',
   height = '100%',
@@ -28,8 +28,8 @@ export const InternalSmartEditor: React.FC<SmartEditorProps> = ({
 }) => {
   const theme = useTheme();
   return (
-    <Container bordered={bordered}>
-      <Editor
+    <Container bordered={bordered} readOnly={options.readOnly}>
+      <InternalEditor
         value={value}
         theme={getTheme(theme)}
         language={language}
@@ -47,17 +47,17 @@ export const InternalSmartEditor: React.FC<SmartEditorProps> = ({
   );
 };
 
-export const SmartEditor = InternalSmartEditor as typeof InternalSmartEditor & {
+export const Editor = BaseEditor as typeof BaseEditor & {
   Container: typeof Container;
-  Editor: typeof Editor;
+  Editor: typeof InternalEditor;
   ActionsContainer: typeof ActionsContainer;
 };
 
-SmartEditor.Container = Container;
-SmartEditor.Editor = Editor;
-SmartEditor.ActionsContainer = ActionsContainer;
+Editor.Container = Container;
+Editor.Editor = InternalEditor;
+Editor.ActionsContainer = ActionsContainer;
 
-InternalSmartEditor.displayName = 'SmartEditor';
-Container.displayName = 'SmartEditor.Container';
-Editor.displayName = 'SmartEditor.Editor';
-ActionsContainer.displayName = 'SmartEditor.ActionsContainer';
+InternalEditor.displayName = 'Editor';
+Container.displayName = 'Editor.Container';
+InternalEditor.displayName = 'Editor.Editor';
+ActionsContainer.displayName = 'Editor.ActionsContainer';

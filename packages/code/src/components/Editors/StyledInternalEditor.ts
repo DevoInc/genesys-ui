@@ -1,21 +1,7 @@
 import type * as monaco from 'monaco-editor-core';
 import styled, { css } from 'styled-components';
 
-// Readonly - Smart Editor - Style
-const readOnlyCss = css`
-  &&& {
-    border-color: var(--read-only-bg-color);
-    background-color: var(--read-only-bg-color);
-
-    .monaco-editor {
-      .monaco-editor-background {
-        background-color: var(--read-only-bg-color);
-      }
-    }
-  }
-`;
-
-export interface StyledSmartEditorProps {
+export interface StyledInternalEditorProps {
   $height: string | number;
   $width: string | number;
   readOnly?: boolean;
@@ -24,7 +10,7 @@ export interface StyledSmartEditorProps {
   lineNumbers?: monaco.editor.IStandaloneEditorConstructionOptions['lineNumbers'];
 }
 
-export const StyledSmartEditor = styled.div<StyledSmartEditorProps>`
+export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
   ${({
     $height,
     lineNumbers = true,
@@ -46,6 +32,11 @@ export const StyledSmartEditor = styled.div<StyledSmartEditorProps>`
     width: ${$width};
 
     .monaco-editor {
+      ${readOnly &&
+      `.monaco-editor-background {
+          background-color: var(--read-only-bg-color);
+        }`}
+
       ${bordered &&
       css`
         border-radius: var(--border-radius);
@@ -170,7 +161,5 @@ export const StyledSmartEditor = styled.div<StyledSmartEditorProps>`
         ) !important; // Need to override inline style
       }
     }
-
-    ${readOnly && readOnlyCss}
   `}
 `;

@@ -8,7 +8,7 @@ This package contains components for code editing and visualization. It belongs 
 This package contains the following components:
 
 ```
-SmartEditor
+Editor
 ```
 
 ## Preview
@@ -43,9 +43,9 @@ Using a component is as simple as adding the import, and using it in your code.
 ```jsx
 // MyView.tsx
 
-import { SmartEditor } from '@devoinc/genesys-ui-code';
+import { Editor } from '@devoinc/genesys-ui-code';
 
-export const MyEditor = () => <SmartEditor />;
+export const MyEditor = () => <Editor />;
 ```
 
 ## Development

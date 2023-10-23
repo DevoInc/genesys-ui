@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 
-import { SmartEditor, DiffEditor } from '../';
+import { Editor, DiffEditor } from '..';
 import { rawLanguage } from '../__stories__/rawConfig';
 
 import {
@@ -14,9 +14,9 @@ import {
   Diff,
 } from './cases';
 
-const meta: Meta<typeof SmartEditor> = {
-  title: 'Components/Code/SmartEditor/cases',
-  component: SmartEditor,
+const meta: Meta<typeof Editor> = {
+  title: 'Components/Code/Editor/cases',
+  component: Editor,
   args: {
     value: rawLanguage.value,
     height: '300px',
@@ -25,31 +25,31 @@ const meta: Meta<typeof SmartEditor> = {
 };
 
 export default meta;
-type SmartStory = StoryObj<typeof SmartEditor>;
+type EditorStory = StoryObj<typeof Editor>;
 type DiffStory = StoryObj<typeof DiffEditor>;
 
-export const MultipleEditors: SmartStory = {
+export const MultipleEditors: EditorStory = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: ({ value, ...props }) => <MultipleEds {...props} />,
 };
 
-export const MultipleLanguages: SmartStory = {
+export const MultipleLanguages: EditorStory = {
   render: MultipleLangs,
 };
 
-export const CustomLanguage: SmartStory = {
+export const CustomLanguage: EditorStory = {
   render: CustomLang,
 };
 
-export const WithActions: SmartStory = {
+export const WithActions: EditorStory = {
   render: Actions,
 };
 
-export const ProgramaticActions: SmartStory = {
+export const ProgramaticActions: EditorStory = {
   render: Programatic,
 };
 
-export const WithShortcuts: SmartStory = {
+export const WithShortcuts: EditorStory = {
   render: Shortcuts,
 };
 

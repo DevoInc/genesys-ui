@@ -71,8 +71,8 @@ export const rawLanguage: Language = {
             },
           },
         ],
-        [/:\s"(.|\n|\r)*"/, 'value'],
-        [/:\s[0-9]*/, 'digit'],
+        [/:\s"((.|-|\n|\r)*)"/, 'value'],
+        [/:\s[0-9]+([,.][0-9]+)?/, 'digit'],
         [/true|false|null/, 'boolean'],
         [/[{}()\[\]]/, '@brackets'],
         [/[;,.]/, 'delimiter'],
@@ -82,9 +82,11 @@ export const rawLanguage: Language = {
   value: `{
     "extra": {
       "favourites": {
-        "widgets": "SimpleValue",
+        "widgets-widgets": "SimpleValue",
         "inputs": "Input",
-        "containers": "Grid"
+        "containers": "Grid",
+        "size": 1,2333,
+        "height": 1.2333
       },
       "config": {
         "theme": {}

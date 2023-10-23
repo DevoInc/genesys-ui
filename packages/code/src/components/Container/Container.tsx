@@ -8,11 +8,12 @@ export interface ContainerProps extends StyledContainerProps {
 
 export const Container: React.FC<ContainerProps> = ({
   bordered,
+  readOnly,
   children,
   ...boxProps
 }) => {
   return (
-    <StyledContainer bordered={bordered} {...boxProps}>
+    <StyledContainer bordered={bordered} readOnly={readOnly} {...boxProps}>
       {children}
     </StyledContainer>
   );

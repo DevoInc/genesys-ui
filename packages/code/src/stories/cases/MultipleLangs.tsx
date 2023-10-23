@@ -3,8 +3,8 @@ import type * as monaco from 'monaco-editor-core';
 
 import { Box, ContentSwitcher, Flex } from '@devoinc/genesys-ui';
 import {
-  SmartEditor,
-  SmartEditorProps,
+  Editor,
+  EditorProps,
   registerCompletionProvider,
   registerStyleTokenizer,
 } from '../../';
@@ -13,7 +13,7 @@ import { dedalLanguage } from '../../__stories__/dedal';
 
 type Monaco = typeof monaco;
 
-export const MultipleLangs = ({ ...props }: Partial<SmartEditorProps>) => {
+export const MultipleLangs = ({ ...props }: Partial<EditorProps>) => {
   const [language, setLanguage] = React.useState<'dedal' | 'rawConfig'>(
     'dedal',
   );
@@ -53,7 +53,7 @@ export const MultipleLangs = ({ ...props }: Partial<SmartEditorProps>) => {
           </ContentSwitcher.Item>
         </ContentSwitcher.Container>
       </Box>
-      <SmartEditor
+      <Editor
         {...props}
         language={language}
         value={dedalLanguage.value.concat(rawLanguage.value)}
