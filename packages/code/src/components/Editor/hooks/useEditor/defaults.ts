@@ -12,6 +12,7 @@ export const defaultOptions: UseEditorParams['options'] = {
   fixedOverflowWidgets: true,
   folding: false,
   hideCursorInOverviewRuler: true,
+  // Line numbers decoration of max 4 digits
   lineNumbersMinChars: 4,
   minimap: {
     enabled: false,

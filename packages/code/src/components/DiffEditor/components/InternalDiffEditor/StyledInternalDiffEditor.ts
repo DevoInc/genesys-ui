@@ -31,31 +31,23 @@ export const StyledInternalDiffEditor = styled(
               .readonly};
           }
         `}
-
-        .overflow-guard {
-          ${bordered &&
-          css`
-            border-radius: var(--inner-border-radius) 0 0
-              var(--inner-border-radius);
-          `}
-        }
       }
+
       // Right side of the diff editor
       .editor.modified {
         box-shadow: none;
+
+        border-left-width: ${theme.alias.fields.shape.borderSize.base};
+        border-left-style: solid;
+        border-left-color: ${readOnly
+          ? theme.alias.fields.color.background.base.readonly
+          : theme.alias.fields.color.border.base.enabled};
       }
-      // .diffOverview {
-      //   transform: translateX(-${theme.alias.scrollbars.size.square.md});
-      //  // width: calc(10 - ${theme.alias.scrollbars.size.square.md});
 
-      // }
-
-      // .diffViewport {
-      //   opacity: 0 !important;
-      // }
-      // .scrollbar {
-      //   transform: translateX(${theme.alias.scrollbars.size.square.md});
-      // }
+      // Hide diff viewport slider but keep the area clickable
+      .diffViewport {
+        opacity: 0 !important;
+      }
     }
   `}
 `;
