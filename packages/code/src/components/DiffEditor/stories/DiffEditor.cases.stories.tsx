@@ -38,7 +38,7 @@ export const MultipleLanguages: DiffEditorStory = {
   render: MultipleLangs,
 };
 
-export const CustomLanguage: DiffEditorStory = {
+export const CustomLanguageWithValidation: DiffEditorStory = {
   render: CustomLang,
 };
 

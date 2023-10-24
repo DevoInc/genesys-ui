@@ -7,11 +7,13 @@ import * as CaseStories from './Editor.cases.stories';
 
 <Meta title="Components/Code/Editor/Docs" />
 
-# Smart Editor
+# Editor
 
 ## Overview
 
 React implementation of [**monaco editor**](https://microsoft.github.io/monaco-editor/).
+
+<Canvas of={Stories.Base} sourceState="none" />
 
 ## How to import
 
@@ -33,8 +35,6 @@ import { Editor } from '@devoinc/genesys-ui-code';
 export const MyEditor = () => <Editor value="I'm smart!" />
 `}
 />
-
-<Canvas of={Stories.Base} />
 
 ## Advanced usage
 
@@ -80,24 +80,25 @@ import { Editor, getTheme, useEditor } from '@devoinc/genesys-ui-code';
 export const MyEditor = () => {
   const theme = useTheme();
 
-const { containerRef } = useEditor({
-value,
-theme,
-language,
-beforeMount,
-onMount,
-onChange,
-onValidate,
-options,
-});
+  const { containerRef } = useDiffEditor({
+  value: "Hey there!",
+  theme: getTheme(theme),
+  language: '',
+  beforeMount: () => console.log('beforeMount'),
+  onMount: () => console.log('onMount'),
+  onChange: () => console.log('onChange'),
+  onValidate: () => console.log('onValidate'),
+  options: {}
+  });
 
-return (
-
-<Editor.Container>
-  <div ref={containerRef} />
-  <Editor.ActionsContainer>{actions}</SmartEditor.ActionsContainer>
-</Editor.Container>
-); }; `} />
+  return (
+    <Editor.Container>
+      <div ref={containerRef} />
+      <Editor.ActionsContainer>{actions}</SmartEditor.ActionsContainer>
+    </Editor.Container>
+  ); 
+}; 
+`} />
 
 ## Custom Configurations
 
@@ -123,33 +124,33 @@ Here are some of the most common configurations.
 
 The Editor can be extensively customized to accommodate even the most complex use cases.
 
-### Custom Language
+### Custom Language With Validation
 
-Visit [stories/cases/CustomLang.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/stories/cases/CustomLang.tsx) for a code example.
+Visit [stories/cases/CustomLang.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/CustomLang.tsx) for a code example.
 
-<Canvas of={CaseStories.CustomLanguage} sourceState="none" />
+<Canvas of={CaseStories.CustomLanguageWithValidation} sourceState="none" />
 
 ### With Actions
 
-Visit [stories/cases/Actions.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/stories/cases/Actions.tsx) for a code example.
+Visit [stories/cases/Actions.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/Actions.tsx) for a code example.
 
 <Canvas of={CaseStories.WithActions} sourceState="none" />
 
 ### Programatic Actions
 
-Visit [stories/cases/Programatic.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/stories/cases/Programatic.tsx) for a code example.
+Visit [stories/cases/Programatic.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/Programatic.tsx) for a code example.
 
 <Canvas of={CaseStories.ProgramaticActions} sourceState="none" />
 
 ### With Shortcuts
 
-Visit [stories/cases/Shortcuts.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/stories/cases/Shortcuts.tsx) for a code example.
+Visit [stories/cases/Shortcuts.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/Shortcuts.tsx) for a code example.
 
 <Canvas of={CaseStories.WithShortcuts} sourceState="none" />
 
 ### Multiple Editors
 
-Visit [stories/cases/MultipleEds.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/stories/cases/MultipleEds.tsx) for a code example.
+Visit [stories/cases/MultipleEds.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/MultipleEds.tsx) for a code example.
 
 <Canvas of={CaseStories.MultipleEditors} sourceState="none" />
 

@@ -7,11 +7,14 @@ import * as CaseStories from './DiffEditor.cases.stories';
 
 <Meta title="Components/Code/DiffEditor/Docs" />
 
-# Smart DiffEditor
+# DiffEditor
 
 ## Overview
 
-React implementation of [**monaco Diffeditor**](https://microsoft.github.io/monaco-Diffeditor/).
+DiffEditor component for comparing two pieces of code. It is built on top of [Monaco Editor](https://microsoft.github.io/monaco-editor/) and
+the [Editor](/docs/components-code-editor-docs--docs) component in this same library.
+
+<Canvas of={Stories.Base} />
 
 ## How to import
 
@@ -30,11 +33,10 @@ Using the predefined Diffeditor is as simple as importing the 'DiffEditor' tag.
 import * as React from 'react';
 import { DiffEditor } from '@devoinc/genesys-ui-code';
 
-export const MyDiffEditor = () => <DiffEditor value="I'm smart!" />
+export const MyDiffEditor = () => 
+  <DiffEditor originalValue="I'm smart!" modifiedValue="I'm not smart!" />
 `}
 />
-
-<Canvas of={Stories.Base} />
 
 ## Advanced usage
 
@@ -51,10 +53,11 @@ import { DiffEditor, getTheme } from '@devoinc/genesys-ui-code';
 export const MyDiffEditor = () => {
   const theme = useTheme();
   return (
-    <DiffEditor.Container height="300px">
+    <DiffEditor.Container height="300px" bordered={true}>
       <DiffEditor.DiffEditor
         theme={getTheme(theme)}
-        value="I'm being built from my inner parts"
+        originalValue="I'm being built from my inner parts"
+        modifiedValue="I'm being built from scratch"
       />
       <DiffEditor.ActionsContainer>
         <Button>Submit</Button>
@@ -80,24 +83,26 @@ import { DiffEditor, getTheme, useDiffEditor } from '@devoinc/genesys-ui-code';
 export const MyDiffEditor = () => {
   const theme = useTheme();
 
-const { containerRef } = useDiffEditor({
-value,
-theme,
-language,
-beforeMount,
-onMount,
-onChange,
-onValidate,
-options,
-});
+  const { containerRef } = useDiffEditor({
+  originalValue: "Hey there!",
+  modifiedValue: "Hey hey!",
+  theme: getTheme(theme),
+  language: '',
+  beforeMount: () => console.log('beforeMount'),
+  onMount: () => console.log('onMount'),
+  onChange: () => console.log('onChange'),
+  onValidate: () => console.log('onValidate'),
+  options: {}
+  });
 
-return (
-
-<DiffEditor.Container>
-  <div ref={containerRef} />
-  <DiffEditor.ActionsContainer>{actions}</SmartDiffEditor.ActionsContainer>
-</DiffEditor.Container>
-); }; `} />
+  return (
+    <DiffEditor.Container>
+      <div ref={containerRef} />
+      <DiffEditor.ActionsContainer>{actions}</SmartDiffEditor.ActionsContainer>
+    </DiffEditor.Container>
+  ); 
+}; 
+`} />
 
 ## Custom Configurations
 
@@ -106,10 +111,6 @@ Here are some of the most common configurations.
 ### Readonly mode
 
 <Canvas of={Stories.ReadonlyMode} />
-
-### With Minimap
-
-<Canvas of={Stories.WithMinimap} />
 
 ### Without line numbers
 
@@ -123,41 +124,35 @@ Here are some of the most common configurations.
 
 The DiffEditor can be extensively customized to accommodate even the most complex use cases.
 
-### Custom Language
+### Custom Language With Validation
 
-Visit [stories/cases/CustomLang.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/stories/cases/CustomLang.tsx) for a code example.
+Visit [stories/cases/CustomLang.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/CustomLang.tsx) for a code example.
 
-<Canvas of={CaseStories.CustomLanguage} sourceState="none" />
+<Canvas of={CaseStories.CustomLanguageWithValidation} sourceState="none" />
 
 ### With Actions
 
-Visit [stories/cases/Actions.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/stories/cases/Actions.tsx) for a code example.
+Visit [stories/cases/Actions.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/Actions.tsx) for a code example.
 
 <Canvas of={CaseStories.WithActions} sourceState="none" />
 
 ### Programatic Actions
 
-Visit [stories/cases/Programatic.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/stories/cases/Programatic.tsx) for a code example.
+Visit [stories/cases/Programatic.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/Programatic.tsx) for a code example.
 
 <Canvas of={CaseStories.ProgramaticActions} sourceState="none" />
 
 ### With Shortcuts
 
-Visit [stories/cases/Shortcuts.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/stories/cases/Shortcuts.tsx) for a code example.
+Visit [stories/cases/Shortcuts.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/Shortcuts.tsx) for a code example.
 
 <Canvas of={CaseStories.WithShortcuts} sourceState="none" />
 
 ### Multiple DiffEditors
 
-Visit [stories/cases/MultipleEds.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/stories/cases/MultipleEds.tsx) for a code example.
+Visit [stories/cases/MultipleEds.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/MultipleEds.tsx) for a code example.
 
 <Canvas of={CaseStories.MultipleDiffEditors} sourceState="none" />
-
-### Diff DiffEditor
-
-Visit [stories/cases/MultipleEds.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/stories/cases/DiffEd.tsx) for a code example.
-
-<Canvas of={CaseStories.DiffDiffEditor} sourceState="none" />
 
 ## Props
 
@@ -173,11 +168,11 @@ Container of the Diffeditor.
 
 <ArgTypes of={DiffEditor.Container} />
 
-### DiffEditor.DiffEditor
+### DiffEditor.Editor
 
-Actual Diffeditor. Uses `useDiffEditor` under the hood.
+Actual editor. Uses `useEditor` under the hood.
 
-<ArgTypes of={DiffEditor.DiffEditor} />
+<ArgTypes of={DiffEditor.Editor} />
 
 ### DiffEditor.ActionsContainer
 

@@ -8,7 +8,7 @@ const meta: Meta<typeof Editor> = {
   component: Editor,
   args: {
     bordered: true,
-    value: originalValue.concat(originalValue).concat(originalValue),
+    value: 'Hey there!, I am a code editor',
     height: '300px',
   },
 };
@@ -16,7 +16,11 @@ const meta: Meta<typeof Editor> = {
 export default meta;
 type Story = StoryObj<typeof Editor>;
 
-export const Base: Story = {};
+export const Base: Story = {
+  args: {
+    value: originalValue.concat(originalValue).concat(originalValue),
+  },
+};
 
 export const ReadonlyMode: Story = {
   args: {

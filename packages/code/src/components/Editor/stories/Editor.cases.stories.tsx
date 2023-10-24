@@ -31,7 +31,7 @@ export const MultipleEditors: EditorStory = {
   render: ({ value, ...props }) => <MultipleEds {...props} />,
 };
 
-export const CustomLanguage: EditorStory = {
+export const CustomLanguageWithValidation: EditorStory = {
   render: CustomLang,
 };
 
