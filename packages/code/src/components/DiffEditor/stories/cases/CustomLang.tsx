@@ -1,18 +1,17 @@
 import * as React from 'react';
 import type * as monaco from 'monaco-editor-core';
 
+import { DiffEditor, type DiffEditorProps } from '../../';
+import { rawLanguage } from '../../../Editor/__stories__/languages/rawConfig';
+import { dedalLanguage } from '../../../Editor/__stories__/languages/dedal';
 import {
-  Editor,
-  EditorProps,
-  registerStyleTokenizer,
   registerCompletionProvider,
-} from '../../';
-import { rawLanguage } from '../../__stories__/languages/rawConfig';
-import { dedalLanguage } from '../../__stories__/languages/dedal';
+  registerStyleTokenizer,
+} from '../../../Editor';
 
 type Monaco = typeof monaco;
 
-const opts: monaco.editor.IEditorOptions = {
+const opts: monaco.editor.IDiffEditorOptions = {
   // enable error batches in scrollbar to be shown.
   overviewRulerLanes: 2,
   // enable folding of code blocks
@@ -32,8 +31,8 @@ export const CustomLang = ({
   langId = 'rawConfig',
   options,
   ...props
-}: Partial<EditorProps & { langId: string }>) => {
-  const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor>();
+}: Partial<DiffEditorProps & { langId: string }>) => {
+  const editorRef = React.useRef<monaco.editor.IStandaloneDiffEditor>();
   const monacoRef = React.useRef<Monaco>();
 
   const registerLanguageProviders = (monaco) => {
@@ -52,30 +51,35 @@ export const CustomLang = ({
   };
 
   const handleEditorDidMount = (
-    editor: monaco.editor.IStandaloneCodeEditor,
+    editor: monaco.editor.IStandaloneDiffEditor,
     monaco: Monaco,
   ) => {
     editorRef.current = editor;
     monacoRef.current = monaco;
-
-    // Validate the initial content of the editor
-    validateEditorContent(editor.getValue());
   };
 
   const handleValidate = (markers) => {
     console.log('Errors found', markers);
   };
 
-  const validateEditorContent = (value: string) => {
+  const validateEditorContent = (value: {
+    original: string;
+    modified: string;
+  }) => {
     const monaco = monacoRef.current;
     // validate that the content is a valid JSON. If there is an error,
     // locate the position of the error and mark it in the editor
     try {
-      JSON.parse(value);
-      monaco.editor.setModelMarkers(editorRef.current.getModel(), 'owner', []);
+      // As only the left editor is editable, we only validate the modified content.
+      JSON.parse(value.modified);
+      monaco.editor.setModelMarkers(
+        editorRef.current.getModel().modified,
+        'owner',
+        [],
+      );
     } catch (err) {
       const message = err.message;
-      const model = editorRef.current.getModel();
+      const model = editorRef.current.getModel().modified;
       const position = message.match(/position (\d+)/)?.[1];
 
       // Position of the error in the string
@@ -94,19 +98,22 @@ export const CustomLang = ({
         endColumn: column,
         message: err.message,
       };
-      monaco.editor.setModelMarkers(editorRef.current.getModel(), 'owner', [
-        error,
-      ]);
+      monaco.editor.setModelMarkers(
+        editorRef.current.getModel().modified,
+        'owner',
+        [error],
+      );
     }
   };
 
   return (
-    <Editor
+    <DiffEditor
       height="300px"
       bordered={true}
       options={{ ...opts, ...options }}
       language={langId}
-      value={languages[langId].value}
+      originalValue={languages[langId].value}
+      modifiedValue={languages[langId].value}
       onMount={handleEditorDidMount}
       beforeMount={registerLanguageProviders}
       onChange={validateEditorContent}

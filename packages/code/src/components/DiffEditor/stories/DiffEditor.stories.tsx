@@ -1,22 +1,33 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 
-import { Editor } from '../';
-import { originalValue } from '../__stories__/mockContent';
+import { DiffEditor } from '../DiffEditor';
+import {
+  modifiedValue,
+  originalValue,
+} from '../../Editor/__stories__/mockContent';
 
-const meta: Meta<typeof Editor> = {
-  title: 'Components/Code/Editor',
-  component: Editor,
+const meta: Meta<typeof DiffEditor> = {
+  title: 'Components/Code/DiffEditor',
+  component: DiffEditor,
   args: {
     bordered: true,
-    value: originalValue.concat(originalValue).concat(originalValue),
+    originalValue: originalValue.concat(originalValue),
+    modifiedValue: modifiedValue,
     height: '300px',
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Editor>;
+type Story = StoryObj<typeof DiffEditor>;
 
 export const Base: Story = {};
+
+export const NoDifference: Story = {
+  args: {
+    originalValue: originalValue,
+    modifiedValue: originalValue,
+  },
+};
 
 export const ReadonlyMode: Story = {
   args: {
@@ -26,12 +37,11 @@ export const ReadonlyMode: Story = {
   },
 };
 
-export const WithMinimap: Story = {
+export const BothEditorsEditable: Story = {
   args: {
     options: {
-      minimap: {
-        enabled: true,
-      },
+      readOnly: false,
+      originalEditable: true,
     },
   },
 };

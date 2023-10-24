@@ -6,7 +6,7 @@ import { Container } from '../Editor/components/Container/Container';
 import {
   InternalDiffEditor,
   type InternalDiffEditorProps,
-} from './InternalDiffEditor';
+} from './components/InternalDiffEditor/InternalDiffEditor';
 import { getTheme } from '../Editor/themes';
 
 export interface DiffEditorProps
@@ -47,7 +47,7 @@ const BaseDiffEditor: React.FC<DiffEditorProps> = ({
         onValidate={onValidate}
         options={options}
       />
-      <ActionsContainer>{actions}</ActionsContainer>
+      <ActionsContainer marginRight="cmp-xl">{actions}</ActionsContainer>
     </Container>
   );
 };

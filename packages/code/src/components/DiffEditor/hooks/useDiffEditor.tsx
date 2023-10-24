@@ -56,7 +56,7 @@ export interface UseDiffEditorParams {
   /**
    * IStandaloneEditorConstructionOptions
    */
-  options?: monaco.editor.IStandaloneEditorConstructionOptions;
+  options?: monaco.editor.IDiffEditorConstructionOptions;
 }
 
 export type UseDiffEditor = (params: UseDiffEditorParams) => {
@@ -124,7 +124,10 @@ export const useDiffEditor: UseDiffEditor = ({
      */
     const { dispose: disposeOnMarkersChange } =
       monaco.editor.onDidChangeMarkers((uris) => {
-        const currentEditorUri = editorRef.current.getModel()?.uri;
+        // Markers only apply to the modified editor
+        const currentEditorUri = editorRef.current
+          .getModifiedEditor()
+          .getModel()?.uri;
 
         if (currentEditorUri) {
           const currentEditorHasMarkerChanges = uris.find(
@@ -153,7 +156,14 @@ export const useDiffEditor: UseDiffEditor = ({
     ////////////////////////////////////////////
     // Update monaco editor on language change
     if (monaco) {
-      monaco.editor.setModelLanguage(editorRef.current?.getModel(), language);
+      monaco.editor.setModelLanguage(
+        editorRef.current?.getModel().original,
+        language,
+      );
+      monaco.editor.setModelLanguage(
+        editorRef.current?.getModel().modified,
+        language,
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language]);

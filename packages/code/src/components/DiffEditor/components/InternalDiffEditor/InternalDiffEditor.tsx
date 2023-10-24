@@ -1,13 +1,13 @@
 import * as React from 'react';
+import { useDiffEditor, type UseDiffEditorParams } from '../../hooks';
 import {
-  StyledInternalEditor,
-  type StyledInternalEditorProps,
-} from '../Editor/components/InternalEditor/StyledInternalEditor';
-import { useDiffEditor, type UseDiffEditorParams } from './hooks';
+  StyledInternalDiffEditor,
+  type StyledInternalDiffEditorProps,
+} from './StyledInternalDiffEditor';
 
 export interface InternalDiffEditorProps
   extends UseDiffEditorParams,
-    Pick<StyledInternalEditorProps, 'bordered'> {
+    Pick<StyledInternalDiffEditorProps, 'bordered'> {
   /**
    * Width of the editor wrapper
    */
@@ -44,7 +44,8 @@ export const InternalDiffEditor: React.FC<InternalDiffEditorProps> = ({
   });
 
   return (
-    <StyledInternalEditor
+    <StyledInternalDiffEditor
+      originalEditable={options.originalEditable}
       bordered={false}
       ref={containerRef}
       $height={height}

@@ -1,36 +1,36 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
-import { Editor } from '../';
+import { DiffEditor } from '../';
 
-import * as Stories from './Editor.stories';
-import * as CaseStories from './Editor.cases.stories';
+import * as Stories from './DiffEditor.stories';
+import * as CaseStories from './DiffEditor.cases.stories';
 
-<Meta title="Components/Code/Editor/Docs" />
+<Meta title="Components/Code/DiffEditor/Docs" />
 
-# Smart Editor
+# Smart DiffEditor
 
 ## Overview
 
-React implementation of [**monaco editor**](https://microsoft.github.io/monaco-editor/).
+React implementation of [**monaco Diffeditor**](https://microsoft.github.io/monaco-Diffeditor/).
 
 ## How to import
 
 <Source
   code={`
-import { Editor } from '@devoinc/genesys-ui-code';
+import { DiffEditor } from '@devoinc/genesys-ui-code';
 `}
 />
 
 ## Basic usage
 
-Using the predefined editor is as simple as importing the 'Editor' tag.
+Using the predefined Diffeditor is as simple as importing the 'DiffEditor' tag.
 
 <Source
   code={`
 import * as React from 'react';
-import { Editor } from '@devoinc/genesys-ui-code';
+import { DiffEditor } from '@devoinc/genesys-ui-code';
 
-export const MyEditor = () => <Editor value="I'm smart!" />
+export const MyDiffEditor = () => <DiffEditor value="I'm smart!" />
 `}
 />
 
@@ -38,7 +38,7 @@ export const MyEditor = () => <Editor value="I'm smart!" />
 
 ## Advanced usage
 
-For more specific customizations, the Editor can also be constructed from its individual components.
+For more specific customizations, the DiffEditor can also be constructed from its individual components.
 
 <Source
   code={`
@@ -46,20 +46,20 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import { Button } from '@devoinc/genesys-ui';
-import { Editor, getTheme } from '@devoinc/genesys-ui-code';
+import { DiffEditor, getTheme } from '@devoinc/genesys-ui-code';
   
-export const MyEditor = () => {
+export const MyDiffEditor = () => {
   const theme = useTheme();
   return (
-    <Editor.Container height="300px">
-      <Editor.Editor
+    <DiffEditor.Container height="300px">
+      <DiffEditor.DiffEditor
         theme={getTheme(theme)}
         value="I'm being built from my inner parts"
       />
-      <Editor.ActionsContainer>
+      <DiffEditor.ActionsContainer>
         <Button>Submit</Button>
-      </Editor.ActionsContainer>
-    </Editor.Container>
+      </DiffEditor.ActionsContainer>
+    </DiffEditor.Container>
   );
 };
 `}
@@ -67,20 +67,20 @@ export const MyEditor = () => {
 
 ## Hooks
 
-### useEditor
+### useDiffEditor
 
-If the React tag doesn't suit a particular use case, the Editor can also be integrated using the 'useEditor' hook.
+If the React tag doesn't suit a particular use case, the DiffEditor can also be integrated using the 'useDiffEditor' hook.
 
 <Source code={`
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { Editor, getTheme, useEditor } from '@devoinc/genesys-ui-code';
+import { DiffEditor, getTheme, useDiffEditor } from '@devoinc/genesys-ui-code';
 
-export const MyEditor = () => {
+export const MyDiffEditor = () => {
   const theme = useTheme();
 
-const { containerRef } = useEditor({
+const { containerRef } = useDiffEditor({
 value,
 theme,
 language,
@@ -93,10 +93,10 @@ options,
 
 return (
 
-<Editor.Container>
+<DiffEditor.Container>
   <div ref={containerRef} />
-  <Editor.ActionsContainer>{actions}</SmartEditor.ActionsContainer>
-</Editor.Container>
+  <DiffEditor.ActionsContainer>{actions}</SmartDiffEditor.ActionsContainer>
+</DiffEditor.Container>
 ); }; `} />
 
 ## Custom Configurations
@@ -121,7 +121,7 @@ Here are some of the most common configurations.
 
 ## Cases
 
-The Editor can be extensively customized to accommodate even the most complex use cases.
+The DiffEditor can be extensively customized to accommodate even the most complex use cases.
 
 ### Custom Language
 
@@ -147,11 +147,17 @@ Visit [stories/cases/Shortcuts.tsx](https://github.com/DevoInc/genesys-ui/blob/m
 
 <Canvas of={CaseStories.WithShortcuts} sourceState="none" />
 
-### Multiple Editors
+### Multiple DiffEditors
 
 Visit [stories/cases/MultipleEds.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/stories/cases/MultipleEds.tsx) for a code example.
 
-<Canvas of={CaseStories.MultipleEditors} sourceState="none" />
+<Canvas of={CaseStories.MultipleDiffEditors} sourceState="none" />
+
+### Diff DiffEditor
+
+Visit [stories/cases/MultipleEds.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/stories/cases/DiffEd.tsx) for a code example.
+
+<Canvas of={CaseStories.DiffDiffEditor} sourceState="none" />
 
 ## Props
 
@@ -159,22 +165,22 @@ Visit [stories/cases/MultipleEds.tsx](https://github.com/DevoInc/genesys-ui/blob
 
 ## Subcomponents
 
-The Editor is made up of 3 main components:
+The DiffEditor is made up of 3 main components:
 
-### Editor.Container
+### DiffEditor.Container
 
-Container of the editor.
+Container of the Diffeditor.
 
-<ArgTypes of={Editor.Container} />
+<ArgTypes of={DiffEditor.Container} />
 
-### Editor.Editor
+### DiffEditor.DiffEditor
 
-Actual editor. Uses `useEditor` under the hood.
+Actual Diffeditor. Uses `useDiffEditor` under the hood.
 
-<ArgTypes of={Editor.Editor} />
+<ArgTypes of={DiffEditor.DiffEditor} />
 
-### Editor.ActionsContainer
+### DiffEditor.ActionsContainer
 
-Placement element for positioning floating actions in the editor.
+Placement element for positioning floating actions in the Diffeditor.
 
-<ArgTypes of={Editor.ActionsContainer} />
+<ArgTypes of={DiffEditor.ActionsContainer} />

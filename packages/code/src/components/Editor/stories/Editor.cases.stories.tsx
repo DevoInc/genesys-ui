@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 
-import { Editor, DiffEditor } from '..';
+import { Editor } from '..';
 import { rawLanguage } from '../__stories__/languages/rawConfig';
 
 import {
@@ -11,7 +11,6 @@ import {
   Actions,
   MultipleLangs,
   Shortcuts,
-  Diff,
 } from './cases';
 
 const meta: Meta<typeof Editor> = {
@@ -26,19 +25,18 @@ const meta: Meta<typeof Editor> = {
 
 export default meta;
 type EditorStory = StoryObj<typeof Editor>;
-type DiffStory = StoryObj<typeof DiffEditor>;
 
 export const MultipleEditors: EditorStory = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: ({ value, ...props }) => <MultipleEds {...props} />,
 };
 
-export const MultipleLanguages: EditorStory = {
-  render: MultipleLangs,
-};
-
 export const CustomLanguage: EditorStory = {
   render: CustomLang,
+};
+
+export const MultipleCustomLanguages: EditorStory = {
+  render: MultipleLangs,
 };
 
 export const WithActions: EditorStory = {
@@ -51,14 +49,4 @@ export const ProgramaticActions: EditorStory = {
 
 export const WithShortcuts: EditorStory = {
   render: Shortcuts,
-};
-
-export const DiffEd: DiffStory = {
-  render: (args) => (
-    <Diff
-      {...args}
-      originalValue="jjuhiuhiuhiuhiujjj"
-      modifiedValue="nincdskjcnsdkjn"
-    />
-  ),
 };
