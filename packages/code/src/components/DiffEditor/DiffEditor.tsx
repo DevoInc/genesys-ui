@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { ActionsContainer } from '../Editor/components/Actions';
 import { Container } from '../Editor/components/Container/Container';
 import {
   InternalDiffEditor,
   type InternalDiffEditorProps,
 } from './components/InternalDiffEditor/InternalDiffEditor';
 import { getTheme } from '../Editor/themes';
+import { ActionsContainer } from './components';
 
 export interface DiffEditorProps
   extends Omit<InternalDiffEditorProps, 'theme'> {
@@ -47,7 +47,7 @@ const BaseDiffEditor: React.FC<DiffEditorProps> = ({
         onValidate={onValidate}
         options={options}
       />
-      <ActionsContainer marginRight="cmp-xl">{actions}</ActionsContainer>
+      <ActionsContainer>{actions}</ActionsContainer>
     </Container>
   );
 };
