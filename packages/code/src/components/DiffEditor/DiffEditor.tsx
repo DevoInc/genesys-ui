@@ -35,6 +35,7 @@ const BaseDiffEditor: React.FC<DiffEditorProps> = ({
   return (
     <Container bordered={bordered}>
       <InternalDiffEditor
+        bordered={bordered}
         originalValue={originalValue}
         modifiedValue={modifiedValue}
         theme={getTheme(theme)}

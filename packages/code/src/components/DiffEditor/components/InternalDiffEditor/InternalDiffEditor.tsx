@@ -21,6 +21,7 @@ export interface InternalDiffEditorProps
 export const InternalDiffEditor: React.FC<InternalDiffEditorProps> = ({
   width = 'auto',
   height = '100%',
+  bordered,
   originalValue,
   modifiedValue,
   theme,
@@ -46,7 +47,7 @@ export const InternalDiffEditor: React.FC<InternalDiffEditorProps> = ({
   return (
     <StyledInternalDiffEditor
       originalEditable={options.originalEditable}
-      bordered={false}
+      bordered={bordered}
       ref={containerRef}
       $height={height}
       $width={width}
