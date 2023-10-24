@@ -25,13 +25,11 @@ export interface UseDiffEditorParams {
   language?: string;
   /**
    * An event is emitted before the editor is mounted
-   * It gets the monaco instance as a first argument
    * Defaults to "noop"
    */
   beforeMount?: (monaco: Monaco) => void;
   /**
    * An event is emitted when the editor is mounted
-   * It gets the editor instance as a first argument and the monaco instance as a second
    * Defaults to "noop"
    */
   onMount?: (
