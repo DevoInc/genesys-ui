@@ -78,7 +78,7 @@ export const useDiffEditor: UseDiffEditor = ({
   const containerRef = React.useRef<HTMLDivElement>(null);
 
   // Extend default options with external options
-  const options: monaco.editor.IStandaloneEditorConstructionOptions =
+  const options: monaco.editor.IDiffEditorConstructionOptions =
     buildEditorOptions(externalOptions);
 
   React.useEffect(() => {
@@ -87,7 +87,6 @@ export const useDiffEditor: UseDiffEditor = ({
     if (monaco && containerRef) {
       beforeMount?.(monaco);
       editorRef.current = monaco.editor.createDiffEditor(containerRef.current, {
-        language,
         ...options,
       });
       editorRef.current.setModel({
