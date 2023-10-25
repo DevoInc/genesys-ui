@@ -20,27 +20,42 @@ export const TableBody: React.FC<TableBodyProps> = ({
   height,
   rowHeight,
 }) => {
-  const tableContainerRef = React.useRef();
+  const ref = React.useRef();
 
   const rowVirtualizer = useVirtualizer({
     count: data.length,
-    getScrollElement: () => tableContainerRef.current,
+    getScrollElement: () => ref.current,
     estimateSize: () => 34,
-    overscan: 1,
+    overscan: 10,
   });
 
   return (
-    <StyledTableBody ref={tableContainerRef}>
-      {rowVirtualizer?.getVirtualItems().map((d, i) => {
-        return (
-          <Row
-            key={'tb_' + i}
-            columnDefs={columnDefs}
-            data={data[d.index]}
-            height={d.size}
-          />
-        );
-      })}
-    </StyledTableBody>
+    <div
+      ref={ref}
+      style={{
+        height: '400px',
+        overflow: 'auto',
+      }}
+    >
+      <StyledTableBody height={`${rowVirtualizer.getTotalSize()}px`}>
+        {rowVirtualizer.getVirtualItems().map((virtualItem) => {
+          return (
+            <Row
+              key={'tb_' + virtualItem.key}
+              columnDefs={columnDefs}
+              data={data[virtualItem.index]}
+              styles={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: `${virtualItem.size}px`,
+                transform: `translateY(${virtualItem.start}px)`,
+              }}
+            />
+          );
+        })}
+      </StyledTableBody>
+    </div>
   );
 };

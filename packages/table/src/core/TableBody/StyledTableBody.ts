@@ -1,11 +1,11 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 interface StyledTableBodyProps {
   height?: React.CSSProperties['height'];
 }
 
 export const StyledTableBody = styled.tbody<StyledTableBodyProps>`
-  position: absolute;
-  overflow: auto;
-  height: 200px;
+  position: relative;
+  height: ${({ height }) => height};
+  width: 100%;
 `;
