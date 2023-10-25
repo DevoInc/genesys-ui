@@ -8,24 +8,6 @@ export interface StyledTableWrapperProps {
 }
 
 export const StyledTableWrapper = styled.div<StyledTableWrapperProps>`
-  display: block;
-
-  ${({ theme }) => {
-    return css`
-      ${scrollbars({ theme })}
-    `;
-  }}
-  overflow-x: auto;
-
-  ${({ scrolled }) => {
-    return css`
-      overflow-y: ${scrolled ? 'auto' : 'visible'};
-    `;
-  }}
-
-  ${({ maxHeight = '100%' }) => {
-    return css`
-      max-height: ${maxHeight};
-    `;
-  }}
+  display: inline-block;
+  width: 100%;
 `;

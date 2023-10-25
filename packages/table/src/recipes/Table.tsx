@@ -22,6 +22,7 @@ export const BasicTable: React.FC<TableProps> = ({ tableOptions, data }) => {
   const TableOptionsPlus: TableOptionsProps = {
     defaultColumnDef: tableOptions.defaultColumnDef,
     columnDefs: tableOptions.columnDefs,
+    style: tableOptions.style,
     types: [
       typeDate,
       typeString,

@@ -4,21 +4,11 @@ import styled, { css } from 'styled-components';
 export interface StyledTableProps {
   width?: React.CSSProperties['width'];
   minWidth?: React.CSSProperties['minWidth'];
+  height?: React.CSSProperties['height'];
 }
 
 export const StyledTable = styled.table<StyledTableProps>`
+  display: block;
   height: auto;
-
-  margin: 0;
-
-  ${({ width }) => css`
-    width: ${width};
-  `}
-
-  ${({ minWidth }) => css`
-    min-width: ${minWidth};
-  `}
-
-  border: none;
   position: relative;
 `;
