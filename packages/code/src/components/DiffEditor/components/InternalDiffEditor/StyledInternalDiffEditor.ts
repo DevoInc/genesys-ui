@@ -31,6 +31,15 @@ export const StyledInternalDiffEditor = styled(
               .readonly};
           }
         `}
+
+        .overflow-guard {
+          ${bordered &&
+          css`
+            //  -1 fills the gap between the internal border and external border
+            border-radius: var(--inner-border-radius) 0px 0px
+              var(--inner-border-radius);
+          `}
+        }
       }
 
       // Right side of the diff editor
@@ -45,6 +54,15 @@ export const StyledInternalDiffEditor = styled(
 
         .scrollbar {
           right: 1px !important;
+        }
+
+        .overflow-guard {
+          ${bordered &&
+          css`
+            //  -1 fills the gap between the internal border and external border
+            border-radius: 0px var(--inner-border-radius)
+              var(--inner-border-radius) 0px;
+          `}
         }
       }
 
