@@ -112,6 +112,48 @@ export const CustomThemed = () => {
 };
 `} />
 
+### useEditorTheme
+
+When using the Editor's components, the theme to be used by the editor can be generated using the 'useEditorTheme' hook by passing the current theme as an argument.
+Using this hook also allows for customizing the theme by passing a custom theme object.
+
+<Source code={`
+import * as React from 'react';
+import { useTheme } from 'styled-components';
+
+import { IconButton } from '@devoinc/genesys-ui';
+import { Editor, useEditorTheme} from '@devoinc/genesys-ui-code';
+
+export const CustomThemed = () => {
+  const theme = useTheme();
+  const editorTheme = useEditorTheme(theme);
+  const customEditorTheme = {
+    ...editorTheme,
+    themeData: {
+      ...editorTheme.themeData,
+      colors: {
+        ...editorTheme.themeData.colors,
+        'editor.background': '#ffff0055',
+      },
+    },
+  };
+
+  return (
+    <Editor.Container bordered={true}>
+      <Editor.Editor
+        height="300px"
+        bordered={true}
+        theme={customEditorTheme}
+        value="I'm being built from my inner parts"
+      />
+      <Editor.ActionsContainer>
+        <IconButton icon="gi-heart_full" />
+      </Editor.ActionsContainer>
+    </Editor.Container>
+  );
+};
+`} />
+
 ## Custom Configurations
 
 Here are some of the most common configurations.

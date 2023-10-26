@@ -117,6 +117,49 @@ export const CustomThemed = () => {
 
 `} />
 
+### useDiffEditorTheme
+
+When using the DiffEditor's components, the theme to be used by the editor can be generated using the 'useDiffEditorTheme' hook by passing the current theme as an argument.
+Using this hook also allows for customizing the theme by passing a custom theme object.
+
+<Source code={`
+import * as React from 'react';
+import { useTheme } from 'styled-components';
+
+import { IconButton } from '@devoinc/genesys-ui';
+import { DiffEditor, useDiffEditorTheme } from '@devoinc/genesys-ui-code';
+
+export const CustomThemed = () => {
+  const theme = useTheme();
+  const editorTheme = useDiffEditorTheme(theme);
+  const customEditorTheme = {
+    ...editorTheme,
+    themeData: {
+      ...editorTheme.themeData,
+      colors: {
+        ...editorTheme.themeData.colors,
+        'diffEditor.insertedTextBackground': '#ffff0055',
+      },
+    },
+  };
+
+  return (
+    <DiffEditor.Container bordered={true}>
+      <DiffEditor.Editor
+        height="300px"
+        bordered={true}
+        theme={customEditorTheme}
+        originalValue="I'm being built from my inner parts"
+        modifiedValue="I'm being built from scratch"
+      />
+      <DiffEditor.ActionsContainer>
+        <IconButton icon="gi-heart_full" />
+      </DiffEditor.ActionsContainer>
+    </DiffEditor.Container>
+  );
+};
+`} />
+
 ## Custom Configurations
 
 Here are some of the most common configurations.
