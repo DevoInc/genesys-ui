@@ -66,9 +66,12 @@ export const StyledInternalDiffEditor = styled(
         }
       }
 
-      // Hide diff viewport slider but keep the area clickable
-      .diffViewport {
-        opacity: 0 !important;
+      .diffOverview {
+        background-color: ${theme.alias.color.background.feedback.neutral.weaker};
+        // Hide diff viewport slider but keep the area clickable
+        .diffViewport {
+          opacity: 0 !important;
+        }
       }
     }
   `}
