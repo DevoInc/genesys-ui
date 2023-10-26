@@ -42,6 +42,10 @@ export const StyledInternalDiffEditor = styled(
         border-left-color: ${readOnly
           ? theme.alias.fields.color.background.base.readonly
           : theme.alias.fields.color.border.base.enabled};
+
+        .scrollbar {
+          right: 1px !important;
+        }
       }
 
       // Hide diff viewport slider but keep the area clickable

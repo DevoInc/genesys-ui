@@ -46,7 +46,8 @@ export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
       .overflow-guard {
         ${bordered &&
         css`
-          border-radius: var(--border-radius);
+          //  -1 fills the gap between the internal border and external border
+          border-radius: calc(var(--border-radius) - 1px);
         `}
       }
 

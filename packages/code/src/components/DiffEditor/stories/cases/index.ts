@@ -4,3 +4,4 @@ export * from './MultipleEds';
 export * from './MultipleLangs';
 export * from './Programatic';
 export * from './Shortcuts';
+export * from './CustomThemed';

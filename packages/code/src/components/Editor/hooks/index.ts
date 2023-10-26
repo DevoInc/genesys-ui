@@ -1,1 +1,2 @@
-export * from './useEditor';
+export * from './editor';
+export * from './theme';

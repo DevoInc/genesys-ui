@@ -2,11 +2,13 @@ import * as React from 'react';
 import * as monaco from 'monaco-editor-core';
 import { useUpdateEffect } from 'ahooks';
 
-import { buildEditorOptions } from '../../Editor/hooks/useEditor/buildEditorOptions';
+import { buildEditorOptions } from '../../../Editor/hooks/editor/buildEditorOptions';
+import { type UseEditorParams } from '../../../Editor';
 
 type Monaco = typeof monaco;
 
-export interface UseDiffEditorParams {
+export interface UseDiffEditorParams
+  extends Pick<UseEditorParams, 'theme' | 'language'> {
   /**
    * Value of the original editor (leftmost)
    */
@@ -15,14 +17,6 @@ export interface UseDiffEditorParams {
    * Value of the modified editor (rightmost)
    */
   modifiedValue?: string;
-  /**
-   * Theme data to customize the editor
-   */
-  theme?: { id: string; themeData: monaco.editor.IStandaloneThemeData };
-  /**
-   * Language of the current model
-   */
-  language?: string;
   /**
    * An event is emitted before the editor is mounted
    * Defaults to "noop"

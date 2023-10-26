@@ -37,7 +37,7 @@ export const Actions = ({ ...props }: Partial<DiffEditorProps>) => {
       {...props}
       height="300px"
       bordered={true}
-      originalValue={'Copy me!\n'}
+      originalValue={'Click to copy the right side!\n'}
       modifiedValue={'Copy me!\n'}
       onMount={handleEditorDidMount}
       actions={

@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components';
 import { ActionsContainer } from './components/Actions';
 import { Container } from './components/Container/Container';
 import { InternalEditor, InternalEditorProps } from './components';
-import { getTheme } from './themes';
+import { useEditorTheme } from './hooks';
 
 export interface EditorProps extends Omit<InternalEditorProps, 'theme'> {
   /**
@@ -27,11 +27,13 @@ const BaseEditor: React.FC<EditorProps> = ({
   options = {},
 }) => {
   const theme = useTheme();
+  const editorTheme = useEditorTheme(theme);
+
   return (
     <Container bordered={bordered} readOnly={options.readOnly}>
       <InternalEditor
         value={value}
-        theme={getTheme(theme)}
+        theme={editorTheme}
         language={language}
         height={height}
         width={width}

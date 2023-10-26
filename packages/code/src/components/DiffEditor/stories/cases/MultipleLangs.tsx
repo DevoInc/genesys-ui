@@ -56,7 +56,9 @@ export const MultipleLangs = ({ ...props }: Partial<DiffEditorProps>) => {
         {...props}
         language={language}
         originalValue={dedalLanguage.value.concat(rawLanguage.value)}
-        modifiedValue={dedalLanguage.value.concat(rawLanguage.value)}
+        modifiedValue={dedalLanguage.value
+          .concat(rawLanguage.value)
+          .replaceAll('Grid', 'Flex')}
         beforeMount={registerLanguageProviders}
       />
     </Flex>

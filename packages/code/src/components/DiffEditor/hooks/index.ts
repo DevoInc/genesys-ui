@@ -1,1 +1,2 @@
-export * from './useDiffEditor';
+export * from './editor';
+export * from './theme';

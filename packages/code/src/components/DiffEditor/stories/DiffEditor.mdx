@@ -26,7 +26,7 @@ import { DiffEditor } from '@devoinc/genesys-ui-code';
 
 ## Basic usage
 
-Using the predefined Diffeditor is as simple as importing the 'DiffEditor' tag.
+Using the predefined DiffEditor is as simple as importing the 'DiffEditor' tag.
 
 <Source
   code={`
@@ -47,24 +47,30 @@ For more specific customizations, the DiffEditor can also be constructed from it
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { Button } from '@devoinc/genesys-ui';
-import { DiffEditor, getTheme } from '@devoinc/genesys-ui-code';
-  
-export const MyDiffEditor = () => {
+import { IconButton } from '@devoinc/genesys-ui';
+import { DiffEditor } from '../../DiffEditor';
+import { useDiffEditorTheme } from '../../hooks';
+
+export const CustomThemed = () => {
   const theme = useTheme();
+  const editorTheme = useDiffEditorTheme(theme);
+
   return (
-    <DiffEditor.Container height="300px" bordered={true}>
-      <DiffEditor.DiffEditor
-        theme={getTheme(theme)}
+    <DiffEditor.Container bordered={true}>
+      <DiffEditor.Editor
+        height="300px"
+        bordered={true}
+        theme={editorTheme}
         originalValue="I'm being built from my inner parts"
         modifiedValue="I'm being built from scratch"
       />
       <DiffEditor.ActionsContainer>
-        <Button>Submit</Button>
+        <IconButton icon="gi-heart_full" />
       </DiffEditor.ActionsContainer>
     </DiffEditor.Container>
   );
 };
+
 `}
 />
 
@@ -77,31 +83,39 @@ If the React tag doesn't suit a particular use case, the DiffEditor can also be 
 <Source code={`
 import * as React from 'react';
 import { useTheme } from 'styled-components';
+import { Box, IconButton } from '@devoinc/genesys-ui';
+import {
+  DiffEditor,
+  useDiffEditorTheme,
+  useDiffEditor,
+} from '@devoinc/genesys-ui-code';
 
-import { DiffEditor, getTheme, useDiffEditor } from '@devoinc/genesys-ui-code';
-
-export const MyDiffEditor = () => {
+export const CustomThemed = () => {
   const theme = useTheme();
+  const editorTheme = useDiffEditorTheme(theme);
 
   const { containerRef } = useDiffEditor({
-  originalValue: "Hey there!",
-  modifiedValue: "Hey hey!",
-  theme: getTheme(theme),
-  language: '',
-  beforeMount: () => console.log('beforeMount'),
-  onMount: () => console.log('onMount'),
-  onChange: () => console.log('onChange'),
-  onValidate: () => console.log('onValidate'),
-  options: {}
+    originalValue: 'Hey there!',
+    modifiedValue: 'Hey hey!',
+    theme: editorTheme,
+    language: '',
+    beforeMount: () => console.log('beforeMount'),
+    onMount: () => console.log('onMount'),
+    onChange: () => console.log('onChange'),
+    onValidate: () => console.log('onValidate'),
+    options: {},
   });
 
   return (
     <DiffEditor.Container>
-      <div ref={containerRef} />
-      <DiffEditor.ActionsContainer>{actions}</SmartDiffEditor.ActionsContainer>
+      <Box ref={containerRef} height="100%" />
+      <DiffEditor.ActionsContainer>
+        <IconButton icon="gi-heart_full" />
+      </DiffEditor.ActionsContainer>
     </DiffEditor.Container>
-  ); 
-}; 
+  );
+};
+
 `} />
 
 ## Custom Configurations
@@ -147,6 +161,12 @@ Visit [stories/cases/Programatic.tsx](https://github.com/DevoInc/genesys-ui/blob
 Visit [stories/cases/Shortcuts.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/Shortcuts.tsx) for a code example.
 
 <Canvas of={CaseStories.WithShortcuts} sourceState="none" />
+
+### Custom Theme
+
+Visit [stories/cases/CustomTheme.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/CustomTheme.tsx) for a code example.
+
+<Canvas of={CaseStories.CustomTheme} sourceState="none" />
 
 ### Multiple DiffEditors
 

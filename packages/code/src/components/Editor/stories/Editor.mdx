@@ -45,19 +45,24 @@ For more specific customizations, the Editor can also be constructed from its in
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { Button } from '@devoinc/genesys-ui';
-import { Editor, getTheme } from '@devoinc/genesys-ui-code';
-  
-export const MyEditor = () => {
+import { IconButton } from '@devoinc/genesys-ui';
+import { Editor } from '../../Editor';
+import { useEditorTheme } from '../../hooks';
+
+export const CustomThemed = () => {
   const theme = useTheme();
+  const editorTheme = useEditorTheme(theme);
+
   return (
-    <Editor.Container height="300px">
+    <Editor.Container bordered={true}>
       <Editor.Editor
-        theme={getTheme(theme)}
+        height="300px"
+        bordered={true}
+        theme={editorTheme}
         value="I'm being built from my inner parts"
       />
       <Editor.ActionsContainer>
-        <Button>Submit</Button>
+        <IconButton icon="gi-heart_full" />
       </Editor.ActionsContainer>
     </Editor.Container>
   );
@@ -74,30 +79,38 @@ If the React tag doesn't suit a particular use case, the Editor can also be inte
 <Source code={`
 import * as React from 'react';
 import { useTheme } from 'styled-components';
+import { Box, IconButton } from '@devoinc/genesys-ui';
+import {
+  Editor,
+  useEditorTheme,
+  useEditor,
+} from '@devoinc/genesys-ui-code';
 
-import { Editor, getTheme, useEditor } from '@devoinc/genesys-ui-code';
-
-export const MyEditor = () => {
+export const CustomThemed = () => {
   const theme = useTheme();
+  const editorTheme = useEditorTheme(theme);
 
-  const { containerRef } = useDiffEditor({
-  value: "Hey there!",
-  theme: getTheme(theme),
-  language: '',
-  beforeMount: () => console.log('beforeMount'),
-  onMount: () => console.log('onMount'),
-  onChange: () => console.log('onChange'),
-  onValidate: () => console.log('onValidate'),
-  options: {}
+  const { containerRef } = useEditor({
+    originalValue: 'Hey there!',
+    modifiedValue: 'Hey hey!',
+    theme: editorTheme,
+    language: '',
+    beforeMount: () => console.log('beforeMount'),
+    onMount: () => console.log('onMount'),
+    onChange: () => console.log('onChange'),
+    onValidate: () => console.log('onValidate'),
+    options: {},
   });
 
   return (
     <Editor.Container>
-      <div ref={containerRef} />
-      <Editor.ActionsContainer>{actions}</SmartEditor.ActionsContainer>
+      <Box ref={containerRef} height="100%" />
+      <Editor.ActionsContainer>
+        <IconButton icon="gi-heart_full" />
+      </Editor.ActionsContainer>
     </Editor.Container>
-  ); 
-}; 
+  );
+};
 `} />
 
 ## Custom Configurations
@@ -147,6 +160,12 @@ Visit [stories/cases/Programatic.tsx](https://github.com/DevoInc/genesys-ui/blob
 Visit [stories/cases/Shortcuts.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/Shortcuts.tsx) for a code example.
 
 <Canvas of={CaseStories.WithShortcuts} sourceState="none" />
+
+### Custom Theme
+
+Visit [stories/cases/CustomTheme.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/CustomTheme.tsx) for a code example.
+
+<Canvas of={CaseStories.CustomTheme} sourceState="none" />
 
 ### Multiple Editors
 

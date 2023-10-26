@@ -5,3 +5,4 @@ export * from './MultipleLangs';
 export * from './Programatic';
 export * from './Shortcuts';
 export * from './Diff';
+export * from './CustomThemed';

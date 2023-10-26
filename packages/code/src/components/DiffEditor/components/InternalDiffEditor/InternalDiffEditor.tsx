@@ -46,7 +46,7 @@ export const InternalDiffEditor: React.FC<InternalDiffEditorProps> = ({
 
   return (
     <StyledInternalDiffEditor
-      originalEditable={options.originalEditable}
+      originalEditable={options?.originalEditable}
       bordered={bordered}
       ref={containerRef}
       $height={height}

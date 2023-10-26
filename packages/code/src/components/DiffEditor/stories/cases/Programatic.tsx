@@ -35,7 +35,7 @@ export const Programatic = ({ ...props }: Partial<DiffEditorProps>) => {
         height="300px"
         width="100%"
         originalValue={value}
-        modifiedValue={value}
+        modifiedValue={value.repeat(2)}
         onMount={handleEditorMount}
       />
     </Flex>

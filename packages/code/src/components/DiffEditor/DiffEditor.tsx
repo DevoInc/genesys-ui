@@ -6,8 +6,8 @@ import {
   InternalDiffEditor,
   type InternalDiffEditorProps,
 } from './components/InternalDiffEditor/InternalDiffEditor';
-import { getTheme } from '../Editor/themes';
 import { ActionsContainer } from './components';
+import { useDiffEditorTheme } from './hooks';
 
 export interface DiffEditorProps
   extends Omit<InternalDiffEditorProps, 'theme'> {
@@ -32,13 +32,14 @@ const BaseDiffEditor: React.FC<DiffEditorProps> = ({
   options = {},
 }) => {
   const theme = useTheme();
+  const editorTheme = useDiffEditorTheme(theme);
   return (
     <Container bordered={bordered}>
       <InternalDiffEditor
         bordered={bordered}
         originalValue={originalValue}
         modifiedValue={modifiedValue}
-        theme={getTheme(theme)}
+        theme={editorTheme}
         language={language}
         height={height}
         width={width}
@@ -60,7 +61,7 @@ export const DiffEditor = BaseDiffEditor as typeof BaseDiffEditor & {
 };
 
 DiffEditor.Container = Container;
-DiffEditor.Editor = DiffEditor;
+DiffEditor.Editor = InternalDiffEditor;
 DiffEditor.ActionsContainer = ActionsContainer;
 
 InternalDiffEditor.displayName = 'DiffEditor';
