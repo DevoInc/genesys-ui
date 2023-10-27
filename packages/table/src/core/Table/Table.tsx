@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useVirtualizer } from '@tanstack/react-virtual';
 
 import { TableOptionsProps } from '../../declarations';
 
@@ -25,23 +26,45 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
 
   const columnsDefs = defineColumnsDefs(defaultColumnDef, columnDefs, types);
 
+  const ref = React.useRef();
+
+  const rowVirtualizer = useVirtualizer({
+    count: data.length,
+    getScrollElement: () => ref.current,
+    estimateSize: () => 34,
+    overscan: 5,
+  });
+
+  const columnVirtualizer = useVirtualizer({
+    count: columnsDefs.length,
+    getScrollElement: () => ref.current,
+    estimateSize: () => 34,
+    overscan: 5,
+    horizontal: true,
+  });
+  debugger;
+
   return (
     <StyledTableWrapper
       maxHeight={style?.wrapper?.maxHeight}
       scrolled={style?.wrapper?.scrolled}
+      ref={ref}
+      height={'500px'}
     >
       <StyledTable
-        width={'400px'}
+        width={'100%'}
         minWidth={style?.table?.minWidth}
-        height={'200px'}
+        height={`${rowVirtualizer.getTotalSize()}px`}
       >
         <TableHead
           columnDefs={columnsDefs}
+          columnVirtualizer={columnVirtualizer}
           scrolled={style?.wrapper?.scrolled}
         />
         <TableBody
-          columnDefs={columnsDefs}
           data={data}
+          columnDefs={columnsDefs}
+          rowVirtualizer={rowVirtualizer}
           height={style?.row?.height}
           rowHeight={style?.row?.height}
         />

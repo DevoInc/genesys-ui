@@ -15,6 +15,7 @@ export const StyledTableHead = styled.thead<StyledTableHeadProps>`
   }}
 
   top: 0;
+  vertical-align: middle;
 
   ${({ theme }) => {
     return css`

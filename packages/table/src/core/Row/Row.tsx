@@ -17,8 +17,8 @@ export const Row: React.FC<RowProps> = ({ columnDefs, data, styles }) => {
         return (
           <Cell
             columnDef={columnDef}
-            key={`cell-${columnDef.colId}`}
-            data={data[columnDef.field] ?? ''}
+            key={`cell-${columnDef.id}`}
+            data={data[columnDef.id] ?? ''}
           />
         );
       })}

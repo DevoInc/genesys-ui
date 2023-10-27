@@ -13,4 +13,5 @@ export const StyledTableRow = styled.tr<StyledTableRowProps>`
   width: 100%;
   height: ${({ styles }) => styles.height};
   transform: ${({ styles }) => styles.transform};
+  display: table;
 `;
