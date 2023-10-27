@@ -85,73 +85,72 @@ for more information regarding language definitions and autocompletion.
 
 <Source
   code={`
-import * as React from "react";
-import * as monaco from "monaco-editor-core";
+import * as React from 'react';
+import * as monaco from 'monaco-editor-core';
 
-import { DiffEditor, registerLanguage } from "@devoinc/genesys-ui-code";
+import { DiffEditor, registerLanguage } from '@devoinc/genesys-ui-code';
 
-export const myLang = {
-  id: "myLang",
-  lang: {
-    keywords: ['"keyword"'],
-    tokenizer: {
-      root: [
-        [
-          /"[A-Za-z0-9_]*"/,
-          {
-            cases: {
-              "@keywords": "keyword",
-              "@default": "default",
-            },
-          },
-        ],
-        [/:\s"((.|-|\n|\r)*)"/, "value"],
-      ],
-    },
-  },
-  completionProvider: {
-    provideCompletionItems: (model, position) => {
-      const word = model.getWordUntilPosition(position);
-      const suggestions = [
+const languageId = 'myLang';
+
+const language = {
+  keywords: ['"keyword"'],
+  tokenizer: {
+    root: [
+      [
+        /"[A-Za-z0-9_]*"/,
         {
-          label: "keyword",
-          kind: monaco.languages.CompletionItemKind.Field,
-          insertText: '"keyword"',
-          range: {
-            startLineNumber: position.lineNumber,
-            endLineNumber: position.lineNumber,
-            startColumn: word.startColumn,
-            endColumn: word.endColumn,
+          cases: {
+            '@keywords': 'keyword',
+            '@default': 'default',
           },
         },
-      ];
+      ],
+      [/:\s"((.|-|\n|\r)*)"/, 'value'],
+    ],
+  },
+};
 
-      return { suggestions: suggestions };
-    },
+const completionProvider = {
+  provideCompletionItems: (model, position) => {
+    const word = model.getWordUntilPosition(position);
+    const suggestions = [
+      {
+        label: 'keyword',
+        kind: monaco.languages.CompletionItemKind.Field,
+        insertText: '"keyword"',
+        range: {
+          startLineNumber: position.lineNumber,
+          endLineNumber: position.lineNumber,
+          startColumn: word.startColumn,
+          endColumn: word.endColumn,
+        },
+      },
+    ];
+
+    return { suggestions: suggestions };
   },
 };
 
 export const CustomLang = () => {
   const registerLanguageProviders = (monaco) => {
-    registerLanguage(monaco, myLang.id)
+    registerLanguage(monaco, languageId)
       // register highlighting
-      .registerStyleTokenizer(myLang.lang)
+      .registerStyleTokenizer(language)
       // register autocompletion
-      .registerCompletionProvider(myLang.completionProvider);
+      .registerCompletionProvider(completionProvider);
   };
 
   return (
     <DiffEditor
       height="300px"
-      language={"myLang"}
+      language={languageId}
       bordered={true}
       originalValue={'{ "keyword": true, "not_keyword": 123 }'}
-      modifiedValue={'{ "keyword": true, "not_keyword": 234 }'}
+      modifiedValue={'{\n "keyword": true,\n "not_keyword": 1234\n}'}
       beforeMount={registerLanguageProviders}
     />
   );
 };
-
 `} />
 
 
