@@ -76,10 +76,9 @@ export const CustomThemed = () => {
 ## Registering a custom language
 
 The Editor supports custom languages. To use a custom language, the language and its configuration must be registered with the editor using the `registerLanguage` function.
+**Please, refrain from directly using monaco editor's `monaco.languages.register` function, as it might side-effect other editors.**
 
-For more a more advanced use case, visit [Custom Language With Validation](#custom-language-with-validation). 
-
-See also [Monaco Editor - Custom Languages](https://microsoft.github.io/monaco-editor/monarch.html) 
+For more a more advanced use case, visit [Custom Language With Validation](#custom-language-with-validation). See also [Monaco Editor - Custom Languages](https://microsoft.github.io/monaco-editor/monarch.html) 
 and [Monaco Editor - Custom Autocompletion](https://microsoft.github.io/monaco-editor/playground.html#extending-language-services-custom-languages)
 for more information regarding language definitions and autocompletion.
 
