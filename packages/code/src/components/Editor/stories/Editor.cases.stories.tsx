@@ -2,7 +2,7 @@ import * as React from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 
 import { Editor } from '..';
-import { rawLanguage } from '../__stories__/languages/rawConfig';
+import { jason } from '../__stories__/languages/jason';
 
 import {
   CustomLang,
@@ -17,7 +17,7 @@ const meta: Meta<typeof Editor> = {
   title: 'Components/Code/Editor/cases',
   component: Editor,
   args: {
-    value: rawLanguage.value,
+    value: jason.value,
     height: '300px',
     bordered: true,
   },

@@ -2,8 +2,8 @@ import * as React from 'react';
 import type * as monaco from 'monaco-editor-core';
 
 import { DiffEditor, type DiffEditorProps } from '../../';
-import { rawLanguage } from '../../../Editor/__stories__/languages/rawConfig';
-import { dedalLanguage } from '../../../Editor/__stories__/languages/dedal';
+import { jason } from '../../../Editor/__stories__/languages/jason';
+import { esql } from '../../../Editor/__stories__/languages/esql';
 import { registerLanguage } from '../../../Editor';
 
 type Monaco = typeof monaco;
@@ -20,12 +20,12 @@ const opts: monaco.editor.IDiffEditorOptions = {
 };
 
 const languages = {
-  rawConfig: rawLanguage,
-  dedal: dedalLanguage,
+  jason: jason,
+  esql: esql,
 };
 
 export const CustomLang = ({
-  langId = 'rawConfig',
+  langId = 'jason',
   options,
   ...props
 }: Partial<DiffEditorProps & { langId: string }>) => {

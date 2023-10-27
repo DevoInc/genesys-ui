@@ -27,37 +27,10 @@ export const keywords = [
   '"from"',
   '"to"',
   '"realTime"',
-  //layout
-  '"i"',
-  '"w"',
-  '"h"',
-  '"x"',
-  '"y"',
-  '"moved"',
-  '"static"',
-  '"theme"',
-  //wy
-  '"fields"',
-  '"xAxis"',
-  '"yAxis"',
-  '"series"',
-  // donut pie
-  '"aggr"',
-  // heatmap
-  '"lat"',
-  '"lng"',
-  '"val"',
-  // simple value
-  '"field"',
-  // table
-  '"columnDefs"',
-  // voronoi
-  '"keys"',
-  '"weight"',
 ];
 
-export const rawLanguage: Language = {
-  id: 'rawConfig',
+export const jason: Language = {
+  id: 'jason',
   lang: {
     keywords,
     tokenizer: {

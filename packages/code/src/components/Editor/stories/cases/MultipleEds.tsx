@@ -9,7 +9,7 @@ export const MultipleEds = ({ ...props }: Partial<EditorProps>) => {
     <Flex width="100%" flexDirection="column" gap="cmp-md">
       <CustomLang {...props} />
       <CustomLang options={{ minimap: { enabled: false } }} {...props} />
-      <CustomLang langId="dedal" language="dedal" {...props} />
+      <CustomLang langId="esql" language="esql" {...props} />
       <CustomLang options={{ fontSize: 10 }} {...props} />
     </Flex>
   );

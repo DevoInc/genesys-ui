@@ -1,28 +1,15 @@
 import { type Language } from '../declarations';
 
-export const dedalLanguage: Language = {
-  id: 'dedal',
+export const esql: Language = {
+  id: 'esql',
   lang: {
     keywords: [
-      // dedal
-      'query',
-      'sparkline',
-      // linq
       'by',
       'every',
       'from',
       'group',
       'select',
       'where',
-      // operations
-      'asc',
-      'ASC',
-      'desc',
-      'DESC',
-      'order',
-      'sort',
-      'limit',
-      // keywords
       'and',
       'as',
       'in',

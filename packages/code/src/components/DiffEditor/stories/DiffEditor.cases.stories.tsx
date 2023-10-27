@@ -11,14 +11,14 @@ import {
   Shortcuts,
   CustomThemed,
 } from './cases';
-import { rawLanguage } from '../../Editor/__stories__/languages/rawConfig';
+import { jason } from '../../Editor/__stories__/languages/jason';
 
 const meta: Meta<typeof DiffEditor> = {
   title: 'Components/Code/DiffEditor/cases',
   component: DiffEditor,
   args: {
-    originalValue: rawLanguage.value,
-    modifiedValue: rawLanguage.value.replaceAll('Grid', 'Flex'),
+    originalValue: jason.value,
+    modifiedValue: jason.value.replaceAll('Grid', 'Flex'),
     height: '300px',
     bordered: true,
   },

@@ -2,8 +2,8 @@ import * as React from 'react';
 import type * as monaco from 'monaco-editor-core';
 
 import { Editor, EditorProps, registerLanguage } from '../../';
-import { rawLanguage } from '../../__stories__/languages/rawConfig';
-import { dedalLanguage } from '../../__stories__/languages/dedal';
+import { jason } from '../../__stories__/languages/jason';
+import { esql } from '../../__stories__/languages/esql';
 
 type Monaco = typeof monaco;
 
@@ -19,12 +19,12 @@ const opts: monaco.editor.IEditorOptions = {
 };
 
 const languages = {
-  rawConfig: rawLanguage,
-  dedal: dedalLanguage,
+  jason: jason,
+  esql: esql,
 };
 
 export const CustomLang = ({
-  langId = 'rawConfig',
+  langId = 'jason',
   options,
   ...props
 }: Partial<EditorProps & { langId: string }>) => {
