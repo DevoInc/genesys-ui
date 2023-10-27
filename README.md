@@ -18,7 +18,7 @@ The project is built using `npm workspaces` and includes the following packages:
 - **genesys-ui:** Core package containing base components.
 - **genesys-ui-form:** Form components.
 - **genesys-ui-datetime:** Date and time components.
-- **genesys-ui-datetime:** Code editing and code visualization components.
+- **genesys-ui-code:** Code editing and code visualization components.
 
 The packages have the following interdependencies:
 
