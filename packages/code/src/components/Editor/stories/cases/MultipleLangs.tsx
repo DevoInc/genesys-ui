@@ -2,12 +2,7 @@ import * as React from 'react';
 import type * as monaco from 'monaco-editor-core';
 
 import { Box, ContentSwitcher, Flex } from '@devoinc/genesys-ui';
-import {
-  Editor,
-  EditorProps,
-  registerCompletionProvider,
-  registerStyleTokenizer,
-} from '../../';
+import { Editor, EditorProps, registerLanguage } from '../../';
 import { rawLanguage } from '../../__stories__/languages/rawConfig';
 import { dedalLanguage } from '../../__stories__/languages/dedal';
 
@@ -18,19 +13,37 @@ export const MultipleLangs = ({ ...props }: Partial<EditorProps>) => {
     'dedal',
   );
 
-  const registerLanguageProviders = (monaco: Monaco) => {
+  const registerProviders = (monaco: Monaco) => {
     // DEDAL
     // Register highlighting
-    registerStyleTokenizer(monaco, dedalLanguage.id, dedalLanguage.lang);
-    // RAW CONFIG
-    // Register highlighting
-    registerStyleTokenizer(monaco, rawLanguage.id, rawLanguage.lang);
-    // Register autocompletion
-    registerCompletionProvider(
-      monaco,
-      rawLanguage.id,
-      rawLanguage.completionProvider,
+    registerLanguage(monaco, dedalLanguage.id).registerStyleTokenizer(
+      dedalLanguage.lang,
     );
+    // RAW CONFIG
+    // Register highlighting and autocompletion
+    registerLanguage(monaco, rawLanguage.id)
+      .registerStyleTokenizer(rawLanguage.lang)
+      .registerCompletionProvider(rawLanguage.completionProvider)
+      .registerCompletionProvider({
+        provideCompletionItems: (model, position) => {
+          const word = model.getWordUntilPosition(position);
+          const suggestions = [
+            {
+              label: 'example suggestion',
+              kind: monaco.languages.CompletionItemKind.Field,
+              insertText: 'example suggestion effective',
+              range: {
+                startLineNumber: position.lineNumber,
+                endLineNumber: position.lineNumber,
+                startColumn: word.startColumn,
+                endColumn: word.endColumn,
+              },
+            },
+          ];
+
+          return { suggestions: suggestions };
+        },
+      });
   };
 
   return (
@@ -57,7 +70,7 @@ export const MultipleLangs = ({ ...props }: Partial<EditorProps>) => {
         {...props}
         language={language}
         value={dedalLanguage.value.concat(rawLanguage.value)}
-        beforeMount={registerLanguageProviders}
+        beforeMount={registerProviders}
       />
     </Flex>
   );
