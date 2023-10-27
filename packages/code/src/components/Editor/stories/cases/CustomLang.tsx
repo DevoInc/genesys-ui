@@ -1,12 +1,7 @@
 import * as React from 'react';
 import type * as monaco from 'monaco-editor-core';
 
-import {
-  Editor,
-  EditorProps,
-  registerStyleTokenizer,
-  registerCompletionProvider,
-} from '../../';
+import { Editor, EditorProps, registerLanguage } from '../../';
 import { rawLanguage } from '../../__stories__/languages/rawConfig';
 import { dedalLanguage } from '../../__stories__/languages/dedal';
 
@@ -37,18 +32,11 @@ export const CustomLang = ({
   const monacoRef = React.useRef<Monaco>();
 
   const registerLanguageProviders = (monaco) => {
-    // Register highlighting
-    registerStyleTokenizer(
-      monaco,
-      languages[langId].id,
-      languages[langId].lang,
-    );
-    // Register autocompletion
-    registerCompletionProvider(
-      monaco,
-      languages[langId].id,
-      languages[langId].completionProvider,
-    );
+    registerLanguage(monaco, languages[langId].id)
+      // register highlighting
+      .registerStyleTokenizer(languages[langId].lang)
+      // register autocompletion
+      .registerCompletionProvider(languages[langId].completionProvider);
   };
 
   const handleEditorDidMount = (

@@ -8,7 +8,6 @@ import {
   MultipleEds,
   Programatic,
   Actions,
-  MultipleLangs,
   Shortcuts,
   CustomThemed,
 } from './cases';
@@ -52,12 +51,5 @@ export const MultipleDiffEditors: DiffEditorStory = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: ({ originalValue, modifiedValue, ...props }) => (
     <MultipleEds {...props} />
-  ),
-};
-
-export const MultipleLanguages: DiffEditorStory = {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  render: ({ originalValue, modifiedValue, ...props }) => (
-    <MultipleLangs {...props} />
   ),
 };

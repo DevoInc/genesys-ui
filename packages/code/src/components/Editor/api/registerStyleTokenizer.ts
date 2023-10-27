@@ -9,12 +9,6 @@ export const registerStyleTokenizer = (
     | monaco.languages.IMonarchLanguage
     | monaco.Thenable<monaco.languages.IMonarchLanguage>,
 ): void => {
-  if (languageID == '') return;
-
-  if (monaco.languages.getEncodedLanguageId(languageID) == 0) {
-    monaco.languages.register({ id: languageID });
-  }
-
   monaco.languages.onLanguage(languageID, () => {
     monaco.languages.setMonarchTokensProvider(languageID, tokenizer);
   });

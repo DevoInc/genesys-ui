@@ -9,7 +9,6 @@ import {
   MultipleEds,
   Programatic,
   Actions,
-  MultipleLangs,
   Shortcuts,
   CustomThemed,
 } from './cases';
@@ -27,8 +26,8 @@ const meta: Meta<typeof Editor> = {
 export default meta;
 type EditorStory = StoryObj<typeof Editor>;
 
-export const MultipleCustomLanguages: EditorStory = {
-  render: MultipleLangs,
+export const CustomLanguageWithValidation: EditorStory = {
+  render: CustomLang,
 };
 
 export const WithActions: EditorStory = {
@@ -50,8 +49,4 @@ export const CustomTheme: EditorStory = {
 export const MultipleEditors: EditorStory = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: ({ value, ...props }) => <MultipleEds {...props} />,
-};
-
-export const CustomLanguageWithValidation: EditorStory = {
-  render: CustomLang,
 };
