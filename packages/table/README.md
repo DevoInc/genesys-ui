@@ -1,7 +1,7 @@
 # Genesys UI Table
 
 > **Warning**
-> This package is still under development and is not ready for production use.
+> This package is still under development and is not yet production ready.
 
 This package contains the `Table` component. It belongs to the [Genesys UI](https://github.com/DevoInc/genesys-ui) component library and is built on top of the [core](https://github.com/DevoInc/genesys-ui/tree/master/packages/core) package.
 

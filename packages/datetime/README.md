@@ -1,5 +1,8 @@
 # Genesys UI Datetime
 
+> **Warning**
+> This is an `alpha` version and it is not yet production ready.
+
 Package containing a set of components for date and time selection. It belongs to the [Genesys UI](https://github.com/DevoInc/genesys-ui) component library and is built on top of the [core](https://github.com/DevoInc/genesys-ui/tree/master/packages/core) package.
 
 Among others, this package contains the following components:
