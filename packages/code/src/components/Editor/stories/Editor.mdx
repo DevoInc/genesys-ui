@@ -52,27 +52,100 @@ export const CustomThemed = () => {
   const theme = useTheme();
   const editorTheme = useEditorTheme(theme);
 
+return (
+
+<Editor.Container bordered={true}>
+  <Editor.Editor
+    height="300px"
+    bordered={true}
+    theme={editorTheme}
+    value="I'm being built from my inner parts"
+  />
+  <Editor.ActionsContainer>
+    <IconButton icon="gi-heart_full" />
+  </Editor.ActionsContainer>
+</Editor.Container>
+); }; `} />
+
+## Registering a custom language
+
+The Editor supports custom languages. To use a custom language, the language and its configuration must be registered with the editor using the `registerLanguage` function.
+
+For more a more advanced use case, visit [Custom Language With Validation](#custom-language-with-validation). 
+
+See also [Monaco Editor - Custom Languages](https://microsoft.github.io/monaco-editor/monarch.html) 
+and [Monaco Editor - Custom Autocompletion](https://microsoft.github.io/monaco-editor/playground.html#extending-language-services-custom-languages)
+for more information regarding language definitions and autocompletion.
+
+<Source
+  code={`
+import * as React from "react";
+import * as monaco from "monaco-editor-core";
+
+import { Editor, registerLanguage } from "@devoinc/genesys-ui-code";
+
+export const myLang = {
+  id: "myLang",
+  lang: {
+    keywords: ['"keyword"'],
+    tokenizer: {
+      root: [
+        [
+          /"[A-Za-z0-9_]*"/,
+          {
+            cases: {
+              "@keywords": "keyword",
+              "@default": "default",
+            },
+          },
+        ],
+        [/:\s"((.|-|\n|\r)*)"/, "value"],
+      ],
+    },
+  },
+  completionProvider: {
+    provideCompletionItems: (model, position) => {
+      const word = model.getWordUntilPosition(position);
+      const suggestions = [
+        {
+          label: "keyword",
+          kind: monaco.languages.CompletionItemKind.Field,
+          insertText: '"keyword"',
+          range: {
+            startLineNumber: position.lineNumber,
+            endLineNumber: position.lineNumber,
+            startColumn: word.startColumn,
+            endColumn: word.endColumn,
+          },
+        },
+      ];
+
+      return { suggestions: suggestions };
+    },
+  },
+};
+
+export const CustomLang = () => {
+  const registerLanguageProviders = (monaco) => {
+    registerLanguage(monaco, myLang.id)
+      // register highlighting
+      .registerStyleTokenizer(myLang.lang)
+      // register autocompletion
+      .registerCompletionProvider(myLang.completionProvider);
+  };
+
   return (
-    <Editor.Container bordered={true}>
-      <Editor.Editor
-        height="300px"
-        bordered={true}
-        theme={editorTheme}
-        value="I'm being built from my inner parts"
-      />
-      <Editor.ActionsContainer>
-        <IconButton icon="gi-heart_full" />
-      </Editor.ActionsContainer>
-    </Editor.Container>
+    <Editor
+      height="300px"
+      language={"myLang"}
+      bordered={true}
+      value={'{ "keyword": true, "not_keyword": 123 }'}
+      beforeMount={registerLanguageProviders}
+    />
   );
 };
-`}
-/>
 
-## Setting a custom language
-
-The Editor supports custom languages. To use a custom language, the language and its configuration must be registered with the editor.
-
+`} />
 
 ## Hooks
 
@@ -94,28 +167,27 @@ export const CustomThemed = () => {
   const theme = useTheme();
   const editorTheme = useEditorTheme(theme);
 
-  const { containerRef } = useEditor({
-    originalValue: 'Hey there!',
-    modifiedValue: 'Hey hey!',
-    theme: editorTheme,
-    language: '',
-    beforeMount: () => console.log('beforeMount'),
-    onMount: () => console.log('onMount'),
-    onChange: () => console.log('onChange'),
-    onValidate: () => console.log('onValidate'),
-    options: {},
-  });
+const { containerRef } = useEditor({
+originalValue: 'Hey there!',
+modifiedValue: 'Hey hey!',
+theme: editorTheme,
+language: '',
+beforeMount: () => console.log('beforeMount'),
+onMount: () => console.log('onMount'),
+onChange: () => console.log('onChange'),
+onValidate: () => console.log('onValidate'),
+options: {},
+});
 
-  return (
-    <Editor.Container>
-      <Box ref={containerRef} height="100%" />
-      <Editor.ActionsContainer>
-        <IconButton icon="gi-heart_full" />
-      </Editor.ActionsContainer>
-    </Editor.Container>
-  );
-};
-`} />
+return (
+
+<Editor.Container>
+  <Box ref={containerRef} height="100%" />
+  <Editor.ActionsContainer>
+    <IconButton icon="gi-heart_full" />
+  </Editor.ActionsContainer>
+</Editor.Container>
+); }; `} />
 
 ### useEditorTheme
 
@@ -127,7 +199,7 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import { IconButton } from '@devoinc/genesys-ui';
-import { Editor, useEditorTheme} from '@devoinc/genesys-ui-code';
+import { Editor, useEditorTheme } from '@devoinc/genesys-ui-code';
 
 export const CustomThemed = () => {
   const theme = useTheme();
@@ -143,21 +215,20 @@ export const CustomThemed = () => {
     },
   };
 
-  return (
-    <Editor.Container bordered={true}>
-      <Editor.Editor
-        height="300px"
-        bordered={true}
-        theme={customEditorTheme}
-        value="I'm being built from my inner parts"
-      />
-      <Editor.ActionsContainer>
-        <IconButton icon="gi-heart_full" />
-      </Editor.ActionsContainer>
-    </Editor.Container>
-  );
-};
-`} />
+return (
+
+<Editor.Container bordered={true}>
+  <Editor.Editor
+    height="300px"
+    bordered={true}
+    theme={customEditorTheme}
+    value="I'm being built from my inner parts"
+  />
+  <Editor.ActionsContainer>
+    <IconButton icon="gi-heart_full" />
+  </Editor.ActionsContainer>
+</Editor.Container>
+); }; `} />
 
 ## Custom Configurations
 
