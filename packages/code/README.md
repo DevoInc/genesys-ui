@@ -1,8 +1,5 @@
 # Genesys UI Code
 
-> **Warning**
-> This is an `alpha` version and it is not yet production ready.
-
 This package contains components for code editing and visualization. It belongs to the [Genesys UI](https://github.com/DevoInc/genesys-ui) component library and is built on top of the [core](https://github.com/DevoInc/genesys-ui/tree/master/packages/core) package.
 
 This package contains the following components:

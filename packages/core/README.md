@@ -1,8 +1,5 @@
 # Genesys UI Core
 
-> **Warning**
-> This is an `alpha` version and it is not yet production ready.
-
 Core package for the Genesys UI component library. It contains the base components of the library, and is a dependency of `genesys-ui-form` and `genesys-ui-datetime`.
 
 Among others, this package contains the following components:
