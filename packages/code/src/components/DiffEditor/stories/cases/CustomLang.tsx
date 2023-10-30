@@ -2,12 +2,9 @@ import * as React from 'react';
 import type * as monaco from 'monaco-editor-core';
 
 import { DiffEditor, type DiffEditorProps } from '../../';
-import { rawLanguage } from '../../../Editor/__stories__/languages/rawConfig';
-import { dedalLanguage } from '../../../Editor/__stories__/languages/dedal';
-import {
-  registerCompletionProvider,
-  registerStyleTokenizer,
-} from '../../../Editor';
+import { jason } from '../../../Editor/__stories__/languages/jason';
+import { esql } from '../../../Editor/__stories__/languages/esql';
+import { registerLanguage } from '../../../Editor';
 
 type Monaco = typeof monaco;
 
@@ -23,12 +20,12 @@ const opts: monaco.editor.IDiffEditorOptions = {
 };
 
 const languages = {
-  rawConfig: rawLanguage,
-  dedal: dedalLanguage,
+  jason: jason,
+  esql: esql,
 };
 
 export const CustomLang = ({
-  langId = 'rawConfig',
+  langId = 'jason',
   options,
   ...props
 }: Partial<DiffEditorProps & { langId: string }>) => {
@@ -36,18 +33,11 @@ export const CustomLang = ({
   const monacoRef = React.useRef<Monaco>();
 
   const registerLanguageProviders = (monaco) => {
-    // Register highlighting
-    registerStyleTokenizer(
-      monaco,
-      languages[langId].id,
-      languages[langId].lang,
-    );
-    // Register autocompletion
-    registerCompletionProvider(
-      monaco,
-      languages[langId].id,
-      languages[langId].completionProvider,
-    );
+    registerLanguage(monaco, languages[langId].id)
+      // register highlighting
+      .registerStyleTokenizer(languages[langId].lang)
+      // register autocompletion
+      .registerCompletionProvider(languages[langId].completionProvider);
   };
 
   const handleEditorDidMount = (

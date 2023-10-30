@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.0.3](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.35...v1.0.3) (2023-10-27)
+
 ## [1.0.3-alpha.35](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.34...v1.0.3-alpha.35) (2023-10-26)
 
 

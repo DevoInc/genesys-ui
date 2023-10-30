@@ -10,18 +10,18 @@ Monorepo containing the codebase for the Genesys UI components library.
 
 The project is built using `npm workspaces` and includes the following packages:
 
-[![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui/alpha?label=%40devoinc%2Fgenesys-ui@alpha)](https://www.npmjs.com/package/@devoinc/genesys-ui)
+[![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui/latest?label=%40devoinc%2Fgenesys-ui@latest)](https://www.npmjs.com/package/@devoinc/genesys-ui)
 
-[![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui-form/alpha?label=%40devoinc%2Fgenesys-ui-form@alpha)](https://www.npmjs.com/package/@devoinc/genesys-ui-form)
+[![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui-form/latest?label=%40devoinc%2Fgenesys-ui-form@latest)](https://www.npmjs.com/package/@devoinc/genesys-ui-form)
 
-[![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui-datetime/alpha?label=%40devoinc%2Fgenesys-ui-datetime@alpha)](https://www.npmjs.com/package/@devoinc/genesys-ui-datetime)
+[![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui-datetime/latest?label=%40devoinc%2Fgenesys-ui-datetime@latest)](https://www.npmjs.com/package/@devoinc/genesys-ui-datetime)
 
-[![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui-code/alpha?label=%40devoinc%2Fgenesys-ui-code@alpha)](https://www.npmjs.com/package/@devoinc/genesys-ui-code)
+[![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui-code/latest?label=%40devoinc%2Fgenesys-ui-code@latest)](https://www.npmjs.com/package/@devoinc/genesys-ui-code)
 
 - **genesys-ui:** Core package containing base components.
 - **genesys-ui-form:** Form components.
 - **genesys-ui-datetime:** Date and time components.
-- **genesys-ui-datetime:** Code editing and code visualization components.
+- **genesys-ui-code:** Code editing and code visualization components.
 
 The packages have the following interdependencies:
 

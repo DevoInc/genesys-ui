@@ -17,7 +17,7 @@ on:
           - patch
           - prerelease
           - auto
-        default: prerelease
+        default: auto
         required: true
 
 run-name: release ${{ github.event.inputs.version }}${{ github.event.inputs.dry == 'true' && ' (--dry-run)' || '' }}

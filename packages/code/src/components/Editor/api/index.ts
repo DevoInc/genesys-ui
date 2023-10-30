@@ -1,2 +1,3 @@
-export * from './register-completion-provider';
-export * from './register-style-tokenizer';
+export * from './registerCompletionProvider';
+export * from './registerLanguage';
+export * from './registerStyleTokenizer';
