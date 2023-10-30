@@ -43,14 +43,12 @@ For more specific customizations, the Editor can also be constructed from its in
 <Source
   code={`
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { IconButton } from '@devoinc/genesys-ui';
 import { Editor, useEditorTheme } from '@devoinc/genesys-ui-code';
 
 export const CustomThemed = () => {
-  const theme = useTheme();
-  const editorTheme = useEditorTheme(theme);
+  const editorTheme = useEditorTheme();
 
 return (
 
@@ -154,7 +152,6 @@ If the React tag doesn't suit a particular use case, the Editor can also be inte
 
 <Source code={`
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 import { Box, IconButton } from '@devoinc/genesys-ui';
 import {
   Editor,
@@ -163,8 +160,7 @@ import {
 } from '@devoinc/genesys-ui-code';
 
 export const CustomThemed = () => {
-  const theme = useTheme();
-  const editorTheme = useEditorTheme(theme);
+  const editorTheme = useEditorTheme();
 
 const { containerRef } = useEditor({
 originalValue: 'Hey there!',
@@ -195,14 +191,13 @@ Using this hook also allows for customizing the theme by passing a custom theme 
 
 <Source code={`
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { IconButton } from '@devoinc/genesys-ui';
 import { Editor, useEditorTheme } from '@devoinc/genesys-ui-code';
 
 export const CustomThemed = () => {
   const theme = useTheme();
-  const editorTheme = useEditorTheme(theme);
+  const editorTheme = useEditorTheme();
   const customEditorTheme = {
     ...editorTheme,
     themeData: {

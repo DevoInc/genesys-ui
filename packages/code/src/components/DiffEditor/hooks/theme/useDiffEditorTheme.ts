@@ -1,8 +1,10 @@
-import { UseEditorTheme, useEditorTheme } from '../../../Editor';
+import { useTheme } from 'styled-components';
+import { type UseEditorTheme, useEditorTheme } from '../../../Editor';
 
-export const useDiffEditorTheme: UseEditorTheme = (theme) => {
+export const useDiffEditorTheme: UseEditorTheme = () => {
+  const theme = useTheme();
+  const editorTheme = useEditorTheme();
   // Merge the editor theme with the diff editor theme.
-  const editorTheme = useEditorTheme(theme);
   return {
     ...editorTheme,
     themeData: {

@@ -1,13 +1,11 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { IconButton } from '@devoinc/genesys-ui';
 import { DiffEditor } from '../../DiffEditor';
 import { useDiffEditorTheme } from '../../hooks';
 
 export const CustomThemed = () => {
-  const theme = useTheme();
-  const editorTheme = useDiffEditorTheme(theme);
+  const editorTheme = useDiffEditorTheme();
   const customEditorTheme = {
     ...editorTheme,
     themeData: {

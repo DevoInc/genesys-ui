@@ -1,13 +1,11 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { IconButton } from '@devoinc/genesys-ui';
 import { Editor } from '../../Editor';
 import { useEditorTheme } from '../../hooks';
 
 export const CustomThemed = () => {
-  const theme = useTheme();
-  const editorTheme = useEditorTheme(theme);
+  const editorTheme = useEditorTheme();
   const customEditorTheme = {
     ...editorTheme,
     themeData: {

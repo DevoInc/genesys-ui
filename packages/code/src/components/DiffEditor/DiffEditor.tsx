@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { Container } from '../Editor/components/Container/Container';
 import {
@@ -31,8 +30,7 @@ const BaseDiffEditor: React.FC<DiffEditorProps> = ({
   actions,
   options = {},
 }) => {
-  const theme = useTheme();
-  const editorTheme = useDiffEditorTheme(theme);
+  const editorTheme = useDiffEditorTheme();
   return (
     <Container bordered={bordered}>
       <InternalDiffEditor

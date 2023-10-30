@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { ActionsContainer } from './components/Actions';
 import { Container } from './components/Container/Container';
@@ -26,8 +25,7 @@ const BaseEditor: React.FC<EditorProps> = ({
   actions,
   options = {},
 }) => {
-  const theme = useTheme();
-  const editorTheme = useEditorTheme(theme);
+  const editorTheme = useEditorTheme();
 
   return (
     <Container bordered={bordered} readOnly={options.readOnly}>

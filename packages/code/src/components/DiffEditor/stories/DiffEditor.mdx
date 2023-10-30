@@ -45,14 +45,12 @@ For more specific customizations, the DiffEditor can also be constructed from it
 <Source
   code={`
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { IconButton } from '@devoinc/genesys-ui';
 import { DiffEditor, useDiffEditorTheme } from '@devoinc/genesys-ui-code';
 
 export const CustomThemed = () => {
-  const theme = useTheme();
-  const editorTheme = useDiffEditorTheme(theme);
+  const editorTheme = useDiffEditorTheme();
 
   return (
     <DiffEditor.Container bordered={true}>
@@ -161,7 +159,7 @@ If the React tag doesn't suit a particular use case, the DiffEditor can also be 
 
 <Source code={`
 import * as React from 'react';
-import { useTheme } from 'styled-components';
+
 import { Box, IconButton } from '@devoinc/genesys-ui';
 import {
   DiffEditor,
@@ -170,8 +168,7 @@ import {
 } from '@devoinc/genesys-ui-code';
 
 export const CustomThemed = () => {
-  const theme = useTheme();
-  const editorTheme = useDiffEditorTheme(theme);
+  const editorTheme = useDiffEditorTheme();
 
   const { containerRef } = useDiffEditor({
     originalValue: 'Hey there!',
@@ -204,14 +201,12 @@ Using this hook also allows for customizing the theme by passing a custom theme 
 
 <Source code={`
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { IconButton } from '@devoinc/genesys-ui';
 import { DiffEditor, useDiffEditorTheme } from '@devoinc/genesys-ui-code';
 
 export const CustomThemed = () => {
-  const theme = useTheme();
-  const editorTheme = useDiffEditorTheme(theme);
+  const editorTheme = useDiffEditorTheme();
   const customEditorTheme = {
     ...editorTheme,
     themeData: {
