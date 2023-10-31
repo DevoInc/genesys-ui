@@ -1,5 +1,6 @@
 import { useTheme } from 'styled-components';
 import { type UseEditorTheme, useEditorTheme } from '../../../Editor';
+import { convertRGBAToHexA } from '../../../Editor/hooks/theme/colorConvertions';
 
 export const useDiffEditorTheme: UseEditorTheme = () => {
   const theme = useTheme();
@@ -12,10 +13,12 @@ export const useDiffEditorTheme: UseEditorTheme = () => {
       rules: [...editorTheme.themeData.rules],
       colors: {
         ...editorTheme.themeData.colors,
-        'diffEditor.removedTextBackground':
-          theme.alias.color.background.feedback.dataRed.base,
-        'diffEditor.insertedTextBackground':
-          theme.alias.color.background.feedback.dataGreen.base,
+        'diffEditor.removedTextBackground': convertRGBAToHexA(
+          theme.alias.color.background.surface.blend.error.base,
+        ),
+        'diffEditor.insertedTextBackground': convertRGBAToHexA(
+          theme.alias.color.background.surface.blend.success.base,
+        ),
       },
     },
   };
