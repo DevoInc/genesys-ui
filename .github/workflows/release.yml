@@ -17,7 +17,7 @@ on:
           - patch
           - prerelease
           - auto
-        default: prerelease
+        default: auto
         required: true
 
 run-name: release ${{ github.event.inputs.version }}${{ github.event.inputs.dry == 'true' && ' (--dry-run)' || '' }}
@@ -47,7 +47,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ github.sha }}
 
       - name: Set Node v18
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
@@ -115,7 +115,7 @@ jobs:
           fetch-depth: 0
 
       - name: Set node v18
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'npm'

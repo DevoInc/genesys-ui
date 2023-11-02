@@ -1,0 +1,311 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import { Editor } from '../';
+
+import * as Stories from './Editor.stories';
+import * as CaseStories from './Editor.cases.stories';
+
+<Meta title="Components/Code/Editor/Docs" />
+
+# Editor
+
+## Overview
+
+React implementation of [**monaco editor**](https://microsoft.github.io/monaco-editor/).
+
+<Canvas of={Stories.Base} sourceState="none" />
+
+## How to import
+
+<Source
+  code={`
+import { Editor } from '@devoinc/genesys-ui-code';
+`}
+/>
+
+## Basic usage
+
+Using the predefined editor is as simple as importing the 'Editor' tag.
+
+<Source
+  code={`
+import * as React from 'react';
+import { Editor } from '@devoinc/genesys-ui-code';
+
+export const MyEditor = () => <Editor value="I'm smart!" />
+`}
+/>
+
+## Advanced usage
+
+For more specific customizations, the Editor can also be constructed from its individual components.
+
+<Source
+  code={`
+import * as React from 'react';
+
+import { IconButton } from '@devoinc/genesys-ui';
+import { Editor, useEditorTheme } from '@devoinc/genesys-ui-code';
+
+export const CustomThemed = () => {
+  const editorTheme = useEditorTheme();
+
+return (
+
+<Editor.Container bordered={true}>
+  <Editor.Editor
+    height="300px"
+    bordered={true}
+    theme={editorTheme}
+    value="I'm being built from my inner parts"
+  />
+  <Editor.ActionsContainer>
+    <IconButton icon="gi-heart_full" />
+  </Editor.ActionsContainer>
+</Editor.Container>
+); }; `} />
+
+## Registering a custom language
+
+The Editor supports custom languages. To use a custom language, the language and its configuration must be registered with the editor using the `registerLanguage` function.
+**Please, refrain from directly using monaco editor's `monaco.languages.register` function, as it might side-effect other editors.**
+
+For more a more advanced use case, visit [Custom Language With Validation](#custom-language-with-validation). See also [Monaco Editor - Custom Languages](https://microsoft.github.io/monaco-editor/monarch.html) 
+and [Monaco Editor - Custom Autocompletion](https://microsoft.github.io/monaco-editor/playground.html#extending-language-services-custom-languages)
+for more information regarding language definitions and autocompletion.
+
+<Source
+  code={`
+import * as React from 'react';
+import * as monaco from 'monaco-editor-core';
+
+import { Editor, registerLanguage } from '@devoinc/genesys-ui-code';
+
+const languageId = 'myLang';
+
+const language = {
+  keywords: ['"keyword"'],
+  tokenizer: {
+    root: [
+      [
+        /"[A-Za-z0-9_]*"/,
+        {
+          cases: {
+            '@keywords': 'keyword',
+            '@default': 'default',
+          },
+        },
+      ],
+      [/:\s"((.|-|\n|\r)*)"/, 'value'],
+    ],
+  },
+};
+
+const completionProvider = {
+  provideCompletionItems: (model, position) => {
+    const word = model.getWordUntilPosition(position);
+    const suggestions = [
+      {
+        label: 'keyword',
+        kind: monaco.languages.CompletionItemKind.Field,
+        insertText: '"keyword"',
+        range: {
+          startLineNumber: position.lineNumber,
+          endLineNumber: position.lineNumber,
+          startColumn: word.startColumn,
+          endColumn: word.endColumn,
+        },
+      },
+    ];
+
+    return { suggestions: suggestions };
+  },
+};
+
+export const CustomLang = () => {
+  const registerLanguageProviders = (monaco) => {
+    registerLanguage(monaco, languageId)
+      // register highlighting
+      .registerStyleTokenizer(language)
+      // register autocompletion
+      .registerCompletionProvider(completionProvider);
+  };
+
+  return (
+    <Editor
+      height="300px"
+      language={languageId}
+      bordered={true}
+      value={'{ "keyword": true, "not_keyword": 123 }'}
+      beforeMount={registerLanguageProviders}
+    />
+  );
+};
+
+`} />
+
+## Hooks
+
+### useEditor
+
+If the React tag doesn't suit a particular use case, the Editor can also be integrated using the 'useEditor' hook.
+
+<Source code={`
+import * as React from 'react';
+import { Box, IconButton } from '@devoinc/genesys-ui';
+import {
+  Editor,
+  useEditorTheme,
+  useEditor,
+} from '@devoinc/genesys-ui-code';
+
+export const CustomThemed = () => {
+  const editorTheme = useEditorTheme();
+
+const { containerRef } = useEditor({
+originalValue: 'Hey there!',
+modifiedValue: 'Hey hey!',
+theme: editorTheme,
+language: '',
+beforeMount: () => console.log('beforeMount'),
+onMount: () => console.log('onMount'),
+onChange: () => console.log('onChange'),
+onValidate: () => console.log('onValidate'),
+options: {},
+});
+
+return (
+
+<Editor.Container>
+  <Box ref={containerRef} height="100%" />
+  <Editor.ActionsContainer>
+    <IconButton icon="gi-heart_full" />
+  </Editor.ActionsContainer>
+</Editor.Container>
+); }; `} />
+
+### useEditorTheme
+
+When using the Editor's components, the theme to be used by the editor can be generated using the 'useEditorTheme' hook by passing the current theme as an argument.
+Using this hook also allows for customizing the theme by passing a custom theme object.
+
+<Source code={`
+import * as React from 'react';
+
+import { IconButton } from '@devoinc/genesys-ui';
+import { Editor, useEditorTheme } from '@devoinc/genesys-ui-code';
+
+export const CustomThemed = () => {
+  const theme = useTheme();
+  const editorTheme = useEditorTheme();
+  const customEditorTheme = {
+    ...editorTheme,
+    themeData: {
+      ...editorTheme.themeData,
+      colors: {
+        ...editorTheme.themeData.colors,
+        'editor.background': '#ffff0055',
+      },
+    },
+  };
+
+return (
+
+<Editor.Container bordered={true}>
+  <Editor.Editor
+    height="300px"
+    bordered={true}
+    theme={customEditorTheme}
+    value="I'm being built from my inner parts"
+  />
+  <Editor.ActionsContainer>
+    <IconButton icon="gi-heart_full" />
+  </Editor.ActionsContainer>
+</Editor.Container>
+); }; `} />
+
+## Custom Configurations
+
+Here are some of the most common configurations.
+
+### Readonly mode
+
+<Canvas of={Stories.ReadonlyMode} />
+
+### With Minimap
+
+<Canvas of={Stories.WithMinimap} />
+
+### Without line numbers
+
+<Canvas of={Stories.WithoutLineNumbers} />
+
+### Smaller text size
+
+<Canvas of={Stories.SmallerTextSize} />
+
+## Cases
+
+The Editor can be extensively customized to accommodate even the most complex use cases.
+
+### Custom Language With Validation
+
+Visit [stories/cases/CustomLang.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/CustomLang.tsx) for a code example.
+
+<Canvas of={CaseStories.CustomLanguageWithValidation} sourceState="none" />
+
+### With Actions
+
+Visit [stories/cases/Actions.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/Actions.tsx) for a code example.
+
+<Canvas of={CaseStories.WithActions} sourceState="none" />
+
+### Programatic Actions
+
+Visit [stories/cases/Programatic.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/Programatic.tsx) for a code example.
+
+<Canvas of={CaseStories.ProgramaticActions} sourceState="none" />
+
+### With Shortcuts
+
+Visit [stories/cases/Shortcuts.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/Shortcuts.tsx) for a code example.
+
+<Canvas of={CaseStories.WithShortcuts} sourceState="none" />
+
+### Custom Theme
+
+Visit [stories/cases/CustomTheme.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/CustomThemed.tsx) for a code example.
+
+<Canvas of={CaseStories.CustomTheme} sourceState="none" />
+
+### Multiple Editors
+
+Visit [stories/cases/MultipleEds.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/MultipleEds.tsx) for a code example.
+
+<Canvas of={CaseStories.MultipleEditors} sourceState="none" />
+
+## Props
+
+<ArgTypes of={Stories} />
+
+## Subcomponents
+
+The Editor is made up of 3 main components:
+
+### Editor.Container
+
+Container of the editor.
+
+<ArgTypes of={Editor.Container} />
+
+### Editor.Editor
+
+Actual editor. Uses `useEditor` under the hood.
+
+<ArgTypes of={Editor.Editor} />
+
+### Editor.ActionsContainer
+
+Placement element for positioning floating actions in the editor.
+
+<ArgTypes of={Editor.ActionsContainer} />

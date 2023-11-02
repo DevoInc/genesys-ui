@@ -62,7 +62,6 @@ export const StyledSelectMenu = styled.div.attrs({
     const optionHorSpacing = fieldTokens.space.padding.hor[size];
     const elevation =
       FIELD_MENU_LEVEL_ELEVATION_MAP[menuLevel >= 0 ? menuLevel : 3];
-    console.info('menuRelative', menuRelative);
     return css`
       .${classNamePrefix} {
         // SELECT__MENU ////////////////////////////////////////////////////////

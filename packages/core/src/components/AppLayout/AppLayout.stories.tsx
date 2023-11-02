@@ -7,7 +7,7 @@ import { Tabs } from '../Tabs';
 import { Panel } from '../Panel';
 
 const meta: Meta<typeof AppLayout.Container> = {
-  title: 'Components/Core/Navigation/AppLayout',
+  title: 'Components/Core/Layout/AppLayout',
   component: AppLayout.Container,
   parameters: {
     layout: 'fullscreen',

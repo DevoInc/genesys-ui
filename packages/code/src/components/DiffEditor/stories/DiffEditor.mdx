@@ -1,0 +1,318 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import { DiffEditor } from '../';
+
+import * as Stories from './DiffEditor.stories';
+import * as CaseStories from './DiffEditor.cases.stories';
+
+<Meta title="Components/Code/DiffEditor/Docs" />
+
+# DiffEditor
+
+## Overview
+
+DiffEditor component for comparing two pieces of code. It is built on top of [Monaco Editor](https://microsoft.github.io/monaco-editor/) and
+the [Editor](/docs/components-code-editor-docs--docs) component in this same library.
+
+<Canvas of={Stories.Base} sourceState="none" />
+
+## How to import
+
+<Source
+  code={`
+import { DiffEditor } from '@devoinc/genesys-ui-code';
+`}
+/>
+
+## Basic usage
+
+Using the predefined DiffEditor is as simple as importing the 'DiffEditor' tag.
+
+<Source
+  code={`
+import * as React from 'react';
+import { DiffEditor } from '@devoinc/genesys-ui-code';
+
+export const MyDiffEditor = () => 
+  <DiffEditor originalValue="I'm smart!" modifiedValue="I'm not smart!" />
+`}
+/>
+
+## Advanced usage
+
+For more specific customizations, the DiffEditor can also be constructed from its individual components.
+
+<Source
+  code={`
+import * as React from 'react';
+
+import { IconButton } from '@devoinc/genesys-ui';
+import { DiffEditor, useDiffEditorTheme } from '@devoinc/genesys-ui-code';
+
+export const CustomThemed = () => {
+  const editorTheme = useDiffEditorTheme();
+
+  return (
+    <DiffEditor.Container bordered={true}>
+      <DiffEditor.Editor
+        height="300px"
+        bordered={true}
+        theme={editorTheme}
+        originalValue="I'm being built from my inner parts"
+        modifiedValue="I'm being built from scratch"
+      />
+      <DiffEditor.ActionsContainer>
+        <IconButton icon="gi-heart_full" />
+      </DiffEditor.ActionsContainer>
+    </DiffEditor.Container>
+  );
+};
+
+`}
+/>
+
+## Registering a custom language
+
+The Editor supports custom languages. To use a custom language, the language and its configuration must be registered with the editor using the `registerLanguage` function.
+**Please, refrain from directly using monaco editor's `monaco.languages.register` function, as it might side-effect other editors.**
+
+For more a more advanced use case, visit [Custom Language With Validation](#custom-language-with-validation). See also [Monaco Editor - Custom Languages](https://microsoft.github.io/monaco-editor/monarch.html) 
+and [Monaco Editor - Custom Autocompletion](https://microsoft.github.io/monaco-editor/playground.html#extending-language-services-custom-languages)
+for more information regarding language definitions and autocompletion.
+
+<Source
+  code={`
+import * as React from 'react';
+import * as monaco from 'monaco-editor-core';
+
+import { DiffEditor, registerLanguage } from '@devoinc/genesys-ui-code';
+
+const languageId = 'myLang';
+
+const language = {
+  keywords: ['"keyword"'],
+  tokenizer: {
+    root: [
+      [
+        /"[A-Za-z0-9_]*"/,
+        {
+          cases: {
+            '@keywords': 'keyword',
+            '@default': 'default',
+          },
+        },
+      ],
+      [/:\s"((.|-|\n|\r)*)"/, 'value'],
+    ],
+  },
+};
+
+const completionProvider = {
+  provideCompletionItems: (model, position) => {
+    const word = model.getWordUntilPosition(position);
+    const suggestions = [
+      {
+        label: 'keyword',
+        kind: monaco.languages.CompletionItemKind.Field,
+        insertText: '"keyword"',
+        range: {
+          startLineNumber: position.lineNumber,
+          endLineNumber: position.lineNumber,
+          startColumn: word.startColumn,
+          endColumn: word.endColumn,
+        },
+      },
+    ];
+
+    return { suggestions: suggestions };
+  },
+};
+
+export const CustomLang = () => {
+  const registerLanguageProviders = (monaco) => {
+    registerLanguage(monaco, languageId)
+      // register highlighting
+      .registerStyleTokenizer(language)
+      // register autocompletion
+      .registerCompletionProvider(completionProvider);
+  };
+
+  return (
+    <DiffEditor
+      height="300px"
+      language={languageId}
+      bordered={true}
+      originalValue={'{ "keyword": true, "not_keyword": 123 }'}
+      modifiedValue={'{\n "keyword": true,\n "not_keyword": 1234\n}'}
+      beforeMount={registerLanguageProviders}
+    />
+  );
+};
+`} />
+
+
+## Hooks
+
+### useDiffEditor
+
+If the React tag doesn't suit a particular use case, the DiffEditor can also be integrated using the 'useDiffEditor' hook.
+
+<Source code={`
+import * as React from 'react';
+
+import { Box, IconButton } from '@devoinc/genesys-ui';
+import {
+  DiffEditor,
+  useDiffEditorTheme,
+  useDiffEditor,
+} from '@devoinc/genesys-ui-code';
+
+export const CustomThemed = () => {
+  const editorTheme = useDiffEditorTheme();
+
+  const { containerRef } = useDiffEditor({
+    originalValue: 'Hey there!',
+    modifiedValue: 'Hey hey!',
+    theme: editorTheme,
+    language: '',
+    beforeMount: () => console.log('beforeMount'),
+    onMount: () => console.log('onMount'),
+    onChange: () => console.log('onChange'),
+    onValidate: () => console.log('onValidate'),
+    options: {},
+  });
+
+  return (
+    <DiffEditor.Container>
+      <Box ref={containerRef} height="100%" />
+      <DiffEditor.ActionsContainer>
+        <IconButton icon="gi-heart_full" />
+      </DiffEditor.ActionsContainer>
+    </DiffEditor.Container>
+  );
+};
+
+`} />
+
+### useDiffEditorTheme
+
+When using the DiffEditor's components, the theme to be used by the editor can be generated using the 'useDiffEditorTheme' hook by passing the current theme as an argument.
+Using this hook also allows for customizing the theme by passing a custom theme object.
+
+<Source code={`
+import * as React from 'react';
+
+import { IconButton } from '@devoinc/genesys-ui';
+import { DiffEditor, useDiffEditorTheme } from '@devoinc/genesys-ui-code';
+
+export const CustomThemed = () => {
+  const editorTheme = useDiffEditorTheme();
+  const customEditorTheme = {
+    ...editorTheme,
+    themeData: {
+      ...editorTheme.themeData,
+      colors: {
+        ...editorTheme.themeData.colors,
+        'diffEditor.insertedTextBackground': '#ffff0055',
+      },
+    },
+  };
+
+  return (
+    <DiffEditor.Container bordered={true}>
+      <DiffEditor.Editor
+        height="300px"
+        bordered={true}
+        theme={customEditorTheme}
+        originalValue="I'm being built from my inner parts"
+        modifiedValue="I'm being built from scratch"
+      />
+      <DiffEditor.ActionsContainer>
+        <IconButton icon="gi-heart_full" />
+      </DiffEditor.ActionsContainer>
+    </DiffEditor.Container>
+  );
+};
+`} />
+
+## Custom Configurations
+
+Here are some of the most common configurations.
+
+### Readonly mode
+
+<Canvas of={Stories.ReadonlyMode} />
+
+### Without line numbers
+
+<Canvas of={Stories.WithoutLineNumbers} />
+
+### Smaller text size
+
+<Canvas of={Stories.SmallerTextSize} />
+
+## Cases
+
+The DiffEditor can be extensively customized to accommodate even the most complex use cases.
+
+### Custom Language With Validation
+
+Visit [stories/cases/CustomLang.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/CustomLang.tsx) for a code example.
+
+<Canvas of={CaseStories.CustomLanguageWithValidation} sourceState="none" />
+
+### With Actions
+
+Visit [stories/cases/Actions.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/Actions.tsx) for a code example.
+
+<Canvas of={CaseStories.WithActions} sourceState="none" />
+
+### Programatic Actions
+
+Visit [stories/cases/Programatic.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/Programatic.tsx) for a code example.
+
+<Canvas of={CaseStories.ProgramaticActions} sourceState="none" />
+
+### With Shortcuts
+
+Visit [stories/cases/Shortcuts.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/Shortcuts.tsx) for a code example.
+
+<Canvas of={CaseStories.WithShortcuts} sourceState="none" />
+
+### Custom Theme
+
+Visit [stories/cases/CustomTheme.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/CustomThemed.tsx) for a code example.
+
+<Canvas of={CaseStories.CustomTheme} sourceState="none" />
+
+### Multiple DiffEditors
+
+Visit [stories/cases/MultipleEds.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/MultipleEds.tsx) for a code example.
+
+<Canvas of={CaseStories.MultipleDiffEditors} sourceState="none" />
+
+## Props
+
+<ArgTypes of={Stories} />
+
+## Subcomponents
+
+The DiffEditor is made up of 3 main components:
+
+### DiffEditor.Container
+
+Container of the Diffeditor.
+
+<ArgTypes of={DiffEditor.Container} />
+
+### DiffEditor.Editor
+
+Actual editor. Uses `useEditor` under the hood.
+
+<ArgTypes of={DiffEditor.Editor} />
+
+### DiffEditor.ActionsContainer
+
+Placement element for positioning floating actions in the Diffeditor.
+
+<ArgTypes of={DiffEditor.ActionsContainer} />

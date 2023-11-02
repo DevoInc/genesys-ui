@@ -1,5 +1,61 @@
 # Changelog
 
+## [1.1.0](https://github.com/DevoInc/genesys-ui/compare/v1.0.3...v1.1.0) (2023-10-31)
+
+
+### Features
+
+* **code:** added registerLanguage ([20ad079](https://github.com/DevoInc/genesys-ui/commit/20ad0793090e5af03a41a0899538a58c1c641330))
+* **Code:** internalize theme provision ([21cc408](https://github.com/DevoInc/genesys-ui/commit/21cc408dce9bebf91bea2b974cf7c2c843383f34))
+
+
+### Bug Fixes
+
+* removed console.info ([977a17c](https://github.com/DevoInc/genesys-ui/commit/977a17c0dd51c83e949a7fa67d104919db8b92fb))
+
+## [1.0.3](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.35...v1.0.3) (2023-10-27)
+
+## [1.0.3-alpha.35](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.34...v1.0.3-alpha.35) (2023-10-26)
+
+
+### Features
+
+* **DiffEditor:** new component `DiffEditor` ([65f4835](https://github.com/DevoInc/genesys-ui/commit/65f4835a0041ee419b1afa32e0f0cc854f2df44a))
+
+## [1.0.3-alpha.34](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.33...v1.0.3-alpha.34) (2023-10-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Editor:** rename `SmartEditor` to `Editor`
+
+### Features
+
+* **Editor:** rename `SmartEditor` to `Editor` ([026fa85](https://github.com/DevoInc/genesys-ui/commit/026fa852ad4c8b54c90be43d136259b699b025e4))
+
+
+### Bug Fixes
+
+* **Editor:** fix styles in readonly mode ([53b90dd](https://github.com/DevoInc/genesys-ui/commit/53b90dd397da1db4c38b54ceec45295f7abb5dc2))
+
+## [1.0.3-alpha.33](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.32...v1.0.3-alpha.33) (2023-10-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **SmartEditor:** Some `Editor` styles are being moved to the `Container`
+
+### Features
+
+* **SmartEditor:** Some `Editor` styles are being moved to the `Container` ([3c8c139](https://github.com/DevoInc/genesys-ui/commit/3c8c139a46653c49c78f1fefd8c7e851ef6e0804))
+* **SmartEditor:** Tokenize base text ([5d1b368](https://github.com/DevoInc/genesys-ui/commit/5d1b368206e452d8daeff505023565550b0b52f8))
+* **SmartEditor:** Tokenize overview ruler and minimap ([f30c490](https://github.com/DevoInc/genesys-ui/commit/f30c490a8194b5e55aa009f14370d34d44e7e646))
+
+
+### Vulnerabilities
+
+* **deps:** bump @babel/traverse from 7.23.0 to 7.23.2 ([418be96](https://github.com/DevoInc/genesys-ui/commit/418be968b9883708774c276554122a42455db86c))
+
 ## [1.0.3-alpha.32](https://github.com/DevoInc/genesys-ui/compare/v1.0.3-alpha.31...v1.0.3-alpha.32) (2023-10-05)
 
 

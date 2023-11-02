@@ -1,59 +1,63 @@
 import * as React from 'react';
-import {
-  StyledSmartEditor,
-  type StyledSmartEditorProps,
-} from './StyledSmartEditor';
-import { type UseEditorParams, useEditor } from '../../hooks';
 
-export interface EditorProps
-  extends UseEditorParams,
-    Pick<StyledSmartEditorProps, 'bordered'> {
+import { ActionsContainer } from './components/Actions';
+import { Container } from './components/Container/Container';
+import { InternalEditor, InternalEditorProps } from './components';
+import { useEditorTheme } from './hooks';
+
+export interface EditorProps extends Omit<InternalEditorProps, 'theme'> {
   /**
-   * Width of the editor wrapper
+   * Array of actions to be added to the editor
    */
-  width?: number | string;
-  /**
-   * Height of the editor wrapper
-   */
-  height?: number | string;
-  /**
-   * Add border to the editor wrapper
-   */
-  bordered?: boolean;
+  actions?: React.ReactNode;
 }
 
-export const Editor: React.FC<EditorProps> = ({
+const BaseEditor: React.FC<EditorProps> = ({
+  value = '',
   width = 'auto',
   height = '100%',
-  bordered,
-  value,
-  theme,
   language,
+  bordered,
   beforeMount,
   onMount,
   onChange,
   onValidate,
-  options,
+  actions,
+  options = {},
 }) => {
-  const { containerRef } = useEditor({
-    value,
-    theme,
-    language,
-    beforeMount,
-    onMount,
-    onChange,
-    onValidate,
-    options,
-  });
+  const editorTheme = useEditorTheme();
 
   return (
-    <StyledSmartEditor
-      ref={containerRef}
-      $height={height}
-      $width={width}
-      bordered={bordered}
-      lineNumbers={options?.lineNumbers}
-      readOnly={options?.readOnly}
-    />
+    <Container bordered={bordered} readOnly={options.readOnly}>
+      <InternalEditor
+        value={value}
+        theme={editorTheme}
+        language={language}
+        height={height}
+        width={width}
+        beforeMount={beforeMount}
+        onMount={onMount}
+        onChange={onChange}
+        onValidate={onValidate}
+        options={options}
+        bordered={bordered}
+      />
+      <ActionsContainer>{actions}</ActionsContainer>
+    </Container>
   );
 };
+
+export const Editor = BaseEditor as typeof BaseEditor & {
+  Container: typeof Container;
+  Editor: typeof InternalEditor;
+  ActionsContainer: typeof ActionsContainer;
+};
+
+Editor.Container = Container;
+Editor.Editor = InternalEditor;
+Editor.ActionsContainer = ActionsContainer;
+
+InternalEditor.displayName = 'Editor';
+Container.displayName = 'Editor.Container';
+InternalEditor.displayName = 'Editor.Editor';
+ActionsContainer.displayName = 'Editor.ActionsContainer';
