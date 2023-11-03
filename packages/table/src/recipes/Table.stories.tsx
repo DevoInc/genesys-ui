@@ -10,15 +10,15 @@ let index = 1;
 const data = Holo.of()
   .schema({
     id: () => index++,
-    name: 'name',
-    company: 'company',
-    age: 'age',
-    about: 'paragraph',
-    picture: 'avatar',
-    balance: 'euro',
-    timestamp: 'timestamp',
+    menu: 'bool',
     booleanValue: 'bool',
+    name: 'name',
+    age: 'age',
+    company: 'company',
+    balance: 'euro',
     status: () => Holo.chance.pickone(['TODO', 'inProgress', 'test', 'done']),
+    picture: 'avatar',
+    timestamp: 'timestamp',
     tags: () =>
       Holo.chance.pickset(
         [
@@ -126,53 +126,6 @@ const tableOptions: TableOptionsProps = {
       headerName: 'tags',
       type: 'tags',
     },
-    {
-      id: 'name',
-      headerName: 'Name',
-      type: 'text',
-      editable: true,
-    },
-    {
-      id: 'age',
-      headerName: 'age',
-      type: 'number',
-    },
-    {
-      id: 'company',
-      headerName: 'company',
-      type: 'text',
-    },
-    {
-      id: 'balance',
-      headerName: 'balance',
-      type: 'number',
-    },
-    {
-      id: 'status',
-      headerName: 'status',
-      type: 'tag',
-    },
-    {
-      id: 'picture',
-      headerName: 'picture',
-      type: 'link',
-    },
-    {
-      id: 'timestamp',
-      headerName: 'timestamp',
-      type: 'date',
-      editable: true,
-    },
-    {
-      id: 'tags',
-      headerName: 'tags',
-      type: 'tags',
-    },
-    // {
-    //   id: 'about',
-    //   headerName: 'about',
-    //   type: 'text',
-    // },
   ],
 };
 

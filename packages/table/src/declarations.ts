@@ -29,7 +29,7 @@ interface CellRendererParams {
 
 interface CellEditorParams {
   value: unknown;
-  onChange: void;
+  onChange: () => void;
 }
 
 export interface ColDef {

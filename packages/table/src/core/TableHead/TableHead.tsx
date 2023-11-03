@@ -22,6 +22,7 @@ export const TableHead: React.FC<TableHeadProps> = ({
             key={columnDef.id}
             columnDef={columnDef}
             scrolled={scrolled}
+            minWidth={columnDef.cellStyle.minWidth}
           />
         ))}
       </StyledTableHeadRow>
