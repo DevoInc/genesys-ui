@@ -7,6 +7,7 @@ import { getSizes } from '../utils';
 interface StyledHeaderCellProps {
   scrolled?: boolean;
   width?: React.CSSProperties['width'];
+  offsetX?: number;
 }
 
 export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
@@ -16,6 +17,10 @@ export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
       position: ${scrolled ? 'sticky' : 'relative'};
     `;
   }}
+
+  ${({ offsetX }) => css`
+    transform: translateX(${offsetX}px);
+  `}
 
   top: 0;
   vertical-align: middle;

@@ -9,8 +9,6 @@ interface TableBodyProps {
   columnVirtualizer: Virtualizer<undefined, Element>;
   data: unknown;
   columnDefs: ColDef[];
-  height?: React.CSSProperties['height'];
-  rowHeight?: number;
 }
 
 export const TableBody: React.FC<TableBodyProps> = ({
@@ -20,21 +18,22 @@ export const TableBody: React.FC<TableBodyProps> = ({
   data,
 }) => (
   <StyledTableBody>
-    {rowVirtualizer.getVirtualItems().map((virtualItem) => {
+    {rowVirtualizer.getVirtualItems().map((virtualRow) => {
       return (
         <Row
-          key={'tb_' + virtualItem.key}
+          key={'tb_' + virtualRow.key}
           columnDefs={columnDefs}
           columnVirtualizer={columnVirtualizer}
-          data={data[virtualItem.index]}
+          data={data[virtualRow.index]}
           styles={{
-            position: 'absolute',
             top: 0,
             left: 0,
+            position: 'absolute',
             width: '100%',
-            height: `${virtualItem.size}px`,
-            transform: `translateY(${virtualItem.start}px)`,
+            height: `${virtualRow.size}px`,
+            transform: `translateY(${virtualRow.start}px)`,
           }}
+          virtualRow={virtualRow}
         />
       );
     })}

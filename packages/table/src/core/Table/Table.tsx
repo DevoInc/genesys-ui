@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  useVirtualizer,
-  VirtualItem,
-  Virtualizer,
-} from '@tanstack/react-virtual';
+import { useVirtualizer } from '@tanstack/react-virtual';
 import { ColDef, DefaultColDef, TableOptionsProps } from '../../declarations';
 import { TableHead } from '../TableHead';
 import { TableBody } from '../TableBody';
@@ -16,27 +12,14 @@ interface TableProps {
   tableOptions: TableOptionsProps;
 }
 
-const getVirtualItemWidth = (
-  rowVirtualizer: Virtualizer<undefined, Element>,
-  key: string | number,
-): number =>
-  rowVirtualizer
-    .getVirtualItems()
-    .find((virtualRow: VirtualItem) => virtualRow.index === key)?.size;
-
 const defineColumnsDefs = (
   defaultColumnDef: DefaultColDef,
   columnDefs: ColDef[],
   types: ColumnType[],
-  rowVirtualizer: Virtualizer<undefined, Element>,
 ): ColDef[] => {
-  return columnDefs.map((column, index) => {
+  return columnDefs.map((column) => {
     const type = types.find((element) => element.id === column.type);
-    const cellStyle = {
-      ...column.cellStyle,
-      minWidth: getVirtualItemWidth(rowVirtualizer, index),
-    };
-    return { ...defaultColumnDef, ...type, ...column, cellStyle };
+    return { ...defaultColumnDef, ...type, ...column };
   });
 };
 
@@ -46,25 +29,24 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
   const rowVirtualizer = useVirtualizer({
     count: data.length,
     getScrollElement: () => ref.current,
-    estimateSize: () => 34,
+    estimateSize: () => 30,
   });
 
-  const columnsDefs = defineColumnsDefs(
-    defaultColumnDef,
-    columnDefs,
-    types,
-    rowVirtualizer,
-  );
-
-  const ref = React.useRef();
-
   const columnVirtualizer = useVirtualizer({
-    count: columnsDefs.length,
+    count: columnDefs.length,
     getScrollElement: () => ref.current,
-    estimateSize: () => 300,
+    estimateSize: () => 120,
     horizontal: true,
     getItemKey: (index: number) => columnDefs[index].headerName,
   });
+
+  const refinedColumnDefs = defineColumnsDefs(
+    defaultColumnDef,
+    columnDefs,
+    types,
+  );
+
+  const ref = React.useRef();
 
   return (
     <StyledTableWrapper
@@ -74,21 +56,18 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
       height={'500px'}
     >
       <StyledTable
-        width={'100%'}
-        minWidth={style?.table?.minWidth}
+        width={`${rowVirtualizer.getTotalSize()}px`}
         height={`${rowVirtualizer.getTotalSize()}px`}
       >
         <TableHead
-          columnDefs={columnsDefs}
           scrolled={style?.wrapper?.scrolled}
+          columnVirtualizer={columnVirtualizer}
         />
         <TableBody
           data={data}
-          columnDefs={columnsDefs}
+          columnDefs={refinedColumnDefs}
           rowVirtualizer={rowVirtualizer}
           columnVirtualizer={columnVirtualizer}
-          height={style?.row?.height}
-          rowHeight={style?.row?.height}
         />
       </StyledTable>
     </StyledTableWrapper>

@@ -9,6 +9,7 @@ interface RowProps {
   data: { [key: string]: unknown };
   styles?: React.CSSProperties;
   columnVirtualizer: Virtualizer<undefined, Element>;
+  virtualRow: VirtualItem;
 }
 
 export const Row: React.FC<RowProps> = ({
@@ -16,6 +17,7 @@ export const Row: React.FC<RowProps> = ({
   data,
   styles,
   columnVirtualizer,
+  virtualRow,
 }) => {
   return (
     <StyledTableRow styles={styles}>
@@ -25,7 +27,8 @@ export const Row: React.FC<RowProps> = ({
             columnDef={columnDefs[virtualColumn.index]}
             key={`cell-${virtualColumn.key}`}
             data={data[columnDefs[virtualColumn.index].id] ?? ''}
-            width={virtualColumn.size}
+            virtualColumn={virtualColumn}
+            virtualRow={virtualRow}
           />
         );
       })}

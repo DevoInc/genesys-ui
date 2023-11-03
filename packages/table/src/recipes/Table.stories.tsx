@@ -52,11 +52,11 @@ const tableOptions: TableOptionsProps = {
     {
       id: 'id',
       type: 'text',
-      headerName: 'id',
+      headerName: 'ID',
     },
     {
       id: 'menu',
-      headerName: 'menu',
+      headerName: 'Menu',
       CellRenderer: (params) => {
         return (
           <DropdownMenu
@@ -81,7 +81,7 @@ const tableOptions: TableOptionsProps = {
     },
     {
       id: 'booleanValue',
-      headerName: 'booleanValue',
+      headerName: 'Boolean value',
       type: 'tagBoolean',
     },
     {
@@ -92,38 +92,38 @@ const tableOptions: TableOptionsProps = {
     },
     {
       id: 'age',
-      headerName: 'age',
+      headerName: 'Age',
       type: 'number',
     },
     {
       id: 'company',
-      headerName: 'company',
+      headerName: 'Company',
       type: 'text',
     },
     {
       id: 'balance',
-      headerName: 'balance',
+      headerName: 'Balance',
       type: 'number',
     },
     {
       id: 'status',
-      headerName: 'status',
+      headerName: 'Status',
       type: 'tag',
     },
     {
       id: 'picture',
-      headerName: 'picture',
+      headerName: 'Image (URL)',
       type: 'link',
     },
     {
       id: 'timestamp',
-      headerName: 'timestamp',
+      headerName: 'Date',
       type: 'date',
       editable: true,
     },
     {
       id: 'tags',
-      headerName: 'tags',
+      headerName: 'Tags',
       type: 'tags',
     },
   ],
