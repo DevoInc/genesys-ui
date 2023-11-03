@@ -1,26 +1,25 @@
 import React from 'react';
-
 import { StyledTableHead } from './StyledTableHead';
 import { StyledTableHeadRow } from './StyledTableHeadRow';
 import { HeaderCell } from '../HeaderCell';
-import { ColDef } from '../../declarations';
+import { Virtualizer } from '@tanstack/react-virtual';
 
 interface TableHeadProps {
-  columnDefs: ColDef[];
   scrolled?: boolean;
+  columnVirtualizer: Virtualizer<undefined, Element>;
 }
 
 export const TableHead: React.FC<TableHeadProps> = ({
-  columnDefs,
   scrolled,
+  columnVirtualizer,
 }) => {
   return (
     <StyledTableHead scrolled={scrolled}>
       <StyledTableHeadRow scrolled={scrolled}>
-        {columnDefs.map((columnDef) => (
+        {columnVirtualizer.getVirtualItems().map((virtualColumn) => (
           <HeaderCell
-            key={columnDef.colId}
-            columnDef={columnDef}
+            key={virtualColumn.key}
+            virtualColumn={virtualColumn}
             scrolled={scrolled}
           />
         ))}

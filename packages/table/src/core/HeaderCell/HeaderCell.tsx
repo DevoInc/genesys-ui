@@ -1,19 +1,22 @@
+import { VirtualItem } from '@tanstack/react-virtual';
 import React from 'react';
-
-import { ColDef } from '../../declarations';
 import { TextRenderer } from '../../renderers';
 import { StyledHeaderCell } from './StyledTableHeaderCellWrapper';
 
 interface HeaderCellProps {
-  columnDef: ColDef;
   scrolled?: boolean;
+  virtualColumn: VirtualItem;
 }
 
 export const HeaderCell: React.FC<HeaderCellProps> = ({
-  columnDef,
   scrolled,
+  virtualColumn,
 }) => (
-  <StyledHeaderCell scrolled={scrolled} width={columnDef?.cellStyle?.width}>
-    <TextRenderer value={columnDef.headerName} bold />
+  <StyledHeaderCell
+    scrolled={scrolled}
+    width={`${virtualColumn.size}px`}
+    offsetX={virtualColumn.start}
+  >
+    <TextRenderer value={virtualColumn.key} bold />
   </StyledHeaderCell>
 );

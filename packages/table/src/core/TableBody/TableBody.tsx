@@ -1,34 +1,41 @@
 import React from 'react';
-
 import { Row } from '../Row';
-
 import { ColDef } from '../../declarations';
-
 import { StyledTableBody } from './StyledTableBody';
+import { Virtualizer } from '@tanstack/react-virtual';
 
 interface TableBodyProps {
-  data: { [key: string]: unknown }[];
+  rowVirtualizer: Virtualizer<undefined, Element>;
+  columnVirtualizer: Virtualizer<undefined, Element>;
+  data: unknown;
   columnDefs: ColDef[];
-  height?: React.CSSProperties['height'];
 }
 
 export const TableBody: React.FC<TableBodyProps> = ({
   columnDefs,
+  rowVirtualizer,
+  columnVirtualizer,
   data,
-  height,
-}) => {
-  return (
-    <StyledTableBody height={height}>
-      {data.map((d, i) => {
-        return (
-          <Row
-            key={'tb_' + i}
-            columnDefs={columnDefs}
-            data={d}
-            height={height}
-          />
-        );
-      })}
-    </StyledTableBody>
-  );
-};
+}) => (
+  <StyledTableBody>
+    {rowVirtualizer.getVirtualItems().map((virtualRow) => {
+      return (
+        <Row
+          key={'tb_' + virtualRow.key}
+          columnDefs={columnDefs}
+          columnVirtualizer={columnVirtualizer}
+          data={data[virtualRow.index]}
+          styles={{
+            top: 0,
+            left: 0,
+            position: 'absolute',
+            width: '100%',
+            height: `${virtualRow.size}px`,
+            transform: `translateY(${virtualRow.start}px)`,
+          }}
+          virtualRow={virtualRow}
+        />
+      );
+    })}
+  </StyledTableBody>
+);

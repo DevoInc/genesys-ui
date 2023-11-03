@@ -3,7 +3,7 @@ import { InputControl } from '@devoinc/genesys-ui';
 
 interface EditNumberProps {
   value: number;
-  onChange?: (newValue: number) => void;
+  onChange: (newValue: number) => void;
 }
 
 export const EditNumber: React.FC<EditNumberProps> = ({ value, onChange }) => (
@@ -11,9 +11,10 @@ export const EditNumber: React.FC<EditNumberProps> = ({ value, onChange }) => (
     type={'number'}
     aria-label={'Number input'}
     value={value}
-    onChange={(event: FormEvent) =>
-      onChange?.(parseInt((event.target as HTMLInputElement).value))
-    }
+    onChange={(event: FormEvent) => {
+      debugger;
+      onChange(parseInt((event.target as HTMLInputElement).value));
+    }}
     autoFocus
   />
 );

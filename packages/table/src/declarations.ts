@@ -2,7 +2,7 @@ import { StyledTableProps } from './core/Table/StyledTable';
 import { StyledTableWrapperProps } from './core/Table/StyledTableWrapper';
 import { DateContext } from './valueFormatters/date';
 
-export type DefaultColDef = ColDef;
+export type DefaultColDef = Omit<ColDef, 'id'>;
 
 type Types = { id: string };
 type TypesColDef = Omit<ColDef, 'colId'>;
@@ -17,7 +17,8 @@ export interface TableOptionsProps {
   style?: {
     wrapper?: StyledTableWrapperProps;
     table?: StyledTableProps;
-    row?: { height: React.CSSProperties['height'] };
+    body?: { height: React.CSSProperties['height'] };
+    row?: { height: number };
   };
 }
 
@@ -26,14 +27,27 @@ interface CellRendererParams {
   columnDef: ColDef;
 }
 
-type CellRenderer = ({
-  value,
-  columnDef,
-}: CellRendererParams) => React.ReactNode;
+interface CellEditorParams {
+  value: unknown;
+  onChange: () => void;
+}
 
 export interface ColDef {
-  CellEditor?: (a) => React.ReactNode;
-  CellRenderer?: CellRenderer;
+  id: string;
+  headerName?: string;
+  type?: string;
+
+  editable?: boolean;
+  CellEditor?: ({ value, onChange }: CellEditorParams) => React.ReactNode;
+  CellRenderer?: ({ value, columnDef }: CellRendererParams) => React.ReactNode;
+  valueFormatter?: (value: unknown, context: DateContext) => void;
+
+  // revisar
+  tagConfig?: any;
+  context?: {
+    [key: string]: unknown;
+  };
+
   cellStyle?: {
     minWidth?: number;
     maxWidth?: number;
@@ -46,18 +60,8 @@ export interface ColDef {
     density?: 'default' | 'compact' | 'comfortable';
     boxShadow?: 'base' | 'strong';
   };
-  colId?: string;
-  editable?: boolean;
   expandedRow?: boolean;
-  field?: string;
-  headerName?: string;
   isDragging?: boolean;
   onReset?: (initialValue: unknown) => void;
   tooltipField?: string;
-  type?: string;
-  tagConfig?: any;
-  valueFormatter?: (value: unknown, context: DateContext) => void;
-  context?: {
-    [key: string]: unknown;
-  };
 }

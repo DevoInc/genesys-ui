@@ -5,17 +5,20 @@ import { DropdownMenu, Button, Flex } from '@devoinc/genesys-ui';
 import { TableOptionsProps } from '../declarations';
 import { BasicTable } from './Table';
 
+let index = 1;
+
 const data = Holo.of()
   .schema({
-    name: 'name',
-    company: 'company',
-    age: 'age',
-    about: 'paragraph',
-    picture: 'avatar',
-    balance: 'euro',
-    timestamp: 'timestamp',
+    id: () => index++,
+    menu: 'bool',
     booleanValue: 'bool',
+    name: 'name',
+    age: 'age',
+    company: 'company',
+    balance: 'euro',
     status: () => Holo.chance.pickone(['TODO', 'inProgress', 'test', 'done']),
+    picture: 'avatar',
+    timestamp: 'timestamp',
     tags: () =>
       Holo.chance.pickset(
         [
@@ -27,7 +30,7 @@ const data = Holo.of()
         Holo.chance.integer({ min: 1, max: 4 }),
       ),
   })
-  .repeat(20)
+  .repeat(200)
   .generate();
 
 const tableOptions: TableOptionsProps = {
@@ -36,14 +39,24 @@ const tableOptions: TableOptionsProps = {
   },
   style: {
     wrapper: {
-      maxHeight: '300px',
+      maxHeight: '100%',
+    },
+    body: {
+      height: '100%',
+    },
+    row: {
+      height: 30,
     },
   },
   columnDefs: [
     {
-      colId: 'menu',
-      field: 'menu',
-      headerName: 'menu',
+      id: 'id',
+      type: 'text',
+      headerName: 'ID',
+    },
+    {
+      id: 'menu',
+      headerName: 'Menu',
       CellRenderer: (params) => {
         return (
           <DropdownMenu
@@ -67,64 +80,51 @@ const tableOptions: TableOptionsProps = {
       },
     },
     {
-      colId: 'booleanValue',
-      field: 'booleanValue',
-      headerName: 'booleanValue',
+      id: 'booleanValue',
+      headerName: 'Boolean value',
       type: 'tagBoolean',
     },
     {
-      colId: 'name',
-      field: 'name',
+      id: 'name',
       headerName: 'Name',
       type: 'text',
+      editable: true,
     },
     {
-      colId: 'age',
-      field: 'age',
-      headerName: 'age',
+      id: 'age',
+      headerName: 'Age',
       type: 'number',
     },
     {
-      colId: 'company',
-      field: 'company',
-      headerName: 'company',
+      id: 'company',
+      headerName: 'Company',
       type: 'text',
     },
     {
-      colId: 'balance',
-      field: 'balance',
-      headerName: 'balance',
+      id: 'balance',
+      headerName: 'Balance',
       type: 'number',
     },
     {
-      colId: 'status',
-      field: 'status',
-      headerName: 'status',
+      id: 'status',
+      headerName: 'Status',
       type: 'tag',
     },
     {
-      colId: 'picture',
-      field: 'picture',
-      headerName: 'picture',
+      id: 'picture',
+      headerName: 'Image (URL)',
       type: 'link',
     },
     {
-      colId: 'timestamp',
-      field: 'timestamp',
-      headerName: 'timestamp',
+      id: 'timestamp',
+      headerName: 'Date',
       type: 'date',
+      editable: true,
     },
     {
-      colId: 'tags',
-      field: 'tags',
-      headerName: 'tags',
+      id: 'tags',
+      headerName: 'Tags',
       type: 'tags',
-    },
-    {
-      colId: 'about',
-      field: 'about',
-      headerName: 'about',
-      type: 'text',
     },
   ],
 };
@@ -141,7 +141,7 @@ export const Base: Story = {
   render: () =>
     (() => {
       return (
-        <Flex height="100vh">
+        <Flex height="100%" width="100%" flex-direction="column">
           <BasicTable tableOptions={tableOptions} data={data} />
         </Flex>
       );
