@@ -5,7 +5,7 @@ import { DropdownMenu, Button, Flex } from '@devoinc/genesys-ui';
 import { TableOptionsProps } from '../declarations';
 import { BasicTable } from './Table';
 
-let index = 0;
+let index = 1;
 
 const data = Holo.of()
   .schema({
@@ -50,13 +50,12 @@ const tableOptions: TableOptionsProps = {
   },
   columnDefs: [
     {
-      colId: 'id',
-      field: 'id',
+      id: 'id',
       type: 'text',
+      headerName: 'id',
     },
     {
-      colId: 'menu',
-      field: 'menu',
+      id: 'menu',
       headerName: 'menu',
       CellRenderer: (params) => {
         return (
@@ -81,64 +80,96 @@ const tableOptions: TableOptionsProps = {
       },
     },
     {
-      colId: 'booleanValue',
-      field: 'booleanValue',
+      id: 'booleanValue',
       headerName: 'booleanValue',
       type: 'tagBoolean',
     },
+    {
+      id: 'name',
+      headerName: 'Name',
+      type: 'text',
+      editable: true,
+    },
+    {
+      id: 'age',
+      headerName: 'age',
+      type: 'number',
+    },
+    {
+      id: 'company',
+      headerName: 'company',
+      type: 'text',
+    },
+    {
+      id: 'balance',
+      headerName: 'balance',
+      type: 'number',
+    },
+    {
+      id: 'status',
+      headerName: 'status',
+      type: 'tag',
+    },
+    {
+      id: 'picture',
+      headerName: 'picture',
+      type: 'link',
+    },
+    {
+      id: 'timestamp',
+      headerName: 'timestamp',
+      type: 'date',
+      editable: true,
+    },
+    {
+      id: 'tags',
+      headerName: 'tags',
+      type: 'tags',
+    },
+    {
+      id: 'name',
+      headerName: 'Name',
+      type: 'text',
+      editable: true,
+    },
+    {
+      id: 'age',
+      headerName: 'age',
+      type: 'number',
+    },
+    {
+      id: 'company',
+      headerName: 'company',
+      type: 'text',
+    },
+    {
+      id: 'balance',
+      headerName: 'balance',
+      type: 'number',
+    },
+    {
+      id: 'status',
+      headerName: 'status',
+      type: 'tag',
+    },
+    {
+      id: 'picture',
+      headerName: 'picture',
+      type: 'link',
+    },
+    {
+      id: 'timestamp',
+      headerName: 'timestamp',
+      type: 'date',
+      editable: true,
+    },
+    {
+      id: 'tags',
+      headerName: 'tags',
+      type: 'tags',
+    },
     // {
-    //   colId: 'name',
-    //   field: 'name',
-    //   headerName: 'Name',
-    //   type: 'text',
-    //   editable: true,
-    // },
-    // {
-    //   colId: 'age',
-    //   field: 'age',
-    //   headerName: 'age',
-    //   type: 'number',
-    // },
-    // {
-    //   colId: 'company',
-    //   field: 'company',
-    //   headerName: 'company',
-    //   type: 'text',
-    // },
-    // {
-    //   colId: 'balance',
-    //   field: 'balance',
-    //   headerName: 'balance',
-    //   type: 'number',
-    // },
-    // {
-    //   colId: 'status',
-    //   field: 'status',
-    //   headerName: 'status',
-    //   type: 'tag',
-    // },
-    // {
-    //   colId: 'picture',
-    //   field: 'picture',
-    //   headerName: 'picture',
-    //   type: 'link',
-    // },
-    // {
-    //   colId: 'timestamp',
-    //   field: 'timestamp',
-    //   headerName: 'timestamp',
-    //   type: 'date',
-    //   editable: true,
-    // },
-    // {
-    //   colId: 'tags',
-    //   field: 'tags',
-    //   headerName: 'tags',
-    //   type: 'tags',
-    // },
-    // {
-    //   colId: 'about',
-    //   field: 'about',
+    //   id: 'about',
     //   headerName: 'about',
     //   type: 'text',
     // },

@@ -19,7 +19,7 @@ export const TableHead: React.FC<TableHeadProps> = ({
       <StyledTableHeadRow scrolled={scrolled}>
         {columnDefs.map((columnDef) => (
           <HeaderCell
-            key={columnDef.colId}
+            key={columnDef.id}
             columnDef={columnDef}
             scrolled={scrolled}
           />

@@ -2,7 +2,7 @@ import { StyledTableProps } from './core/Table/StyledTable';
 import { StyledTableWrapperProps } from './core/Table/StyledTableWrapper';
 import { DateContext } from './valueFormatters/date';
 
-export type DefaultColDef = Omit<ColDef, 'colId' | 'field'>;
+export type DefaultColDef = Omit<ColDef, 'id'>;
 
 type Types = { id: string };
 type TypesColDef = Omit<ColDef, 'colId'>;

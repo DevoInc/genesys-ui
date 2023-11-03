@@ -5,9 +5,11 @@ import { scrollbars } from '@devoinc/genesys-ui';
 export interface StyledTableWrapperProps {
   maxHeight?: React.CSSProperties['maxHeight'];
   scrolled?: boolean;
+  height?: React.CSSProperties['height'];
 }
 
 export const StyledTableWrapper = styled.div<StyledTableWrapperProps>`
-  display: inline-block;
   width: 100%;
+  height: ${({ height }) => height};
+  overflow: auto;
 `;

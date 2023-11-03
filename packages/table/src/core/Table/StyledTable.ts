@@ -8,7 +8,7 @@ export interface StyledTableProps {
 }
 
 export const StyledTable = styled.table<StyledTableProps>`
-  display: block;
-  height: auto;
   position: relative;
+  height: ${({ height }) => height};
+  width: 100%;
 `;
