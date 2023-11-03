@@ -7,12 +7,12 @@ import { Cell } from '../Cell';
 interface RowProps {
   columnDefs: ColDef[];
   data: { [key: string]: unknown };
-  height?: React.CSSProperties['height'];
+  styles?: React.CSSProperties;
 }
 
-export const Row: React.FC<RowProps> = ({ columnDefs, data, height }) => {
+export const Row: React.FC<RowProps> = ({ columnDefs, data, styles }) => {
   return (
-    <StyledTableRow height={height}>
+    <StyledTableRow styles={styles}>
       {columnDefs.map((columnDef: ColDef) => {
         return (
           <Cell

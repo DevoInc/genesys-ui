@@ -5,8 +5,11 @@ import { DropdownMenu, Button, Flex } from '@devoinc/genesys-ui';
 import { TableOptionsProps } from '../declarations';
 import { BasicTable } from './Table';
 
+let index = 0;
+
 const data = Holo.of()
   .schema({
+    id: () => index++,
     name: 'name',
     company: 'company',
     age: 'age',
@@ -47,11 +50,15 @@ const tableOptions: TableOptionsProps = {
   },
   columnDefs: [
     {
+      colId: 'id',
+      field: 'id',
+      type: 'text',
+    },
+    {
       colId: 'menu',
       field: 'menu',
       headerName: 'menu',
       CellRenderer: (params) => {
-        debugger;
         return (
           <DropdownMenu
             items={[
@@ -79,56 +86,56 @@ const tableOptions: TableOptionsProps = {
       headerName: 'booleanValue',
       type: 'tagBoolean',
     },
-    {
-      colId: 'name',
-      field: 'name',
-      headerName: 'Name',
-      type: 'text',
-      editable: true,
-    },
-    {
-      colId: 'age',
-      field: 'age',
-      headerName: 'age',
-      type: 'number',
-    },
-    {
-      colId: 'company',
-      field: 'company',
-      headerName: 'company',
-      type: 'text',
-    },
-    {
-      colId: 'balance',
-      field: 'balance',
-      headerName: 'balance',
-      type: 'number',
-    },
-    {
-      colId: 'status',
-      field: 'status',
-      headerName: 'status',
-      type: 'tag',
-    },
-    {
-      colId: 'picture',
-      field: 'picture',
-      headerName: 'picture',
-      type: 'link',
-    },
-    {
-      colId: 'timestamp',
-      field: 'timestamp',
-      headerName: 'timestamp',
-      type: 'date',
-      editable: true,
-    },
-    {
-      colId: 'tags',
-      field: 'tags',
-      headerName: 'tags',
-      type: 'tags',
-    },
+    // {
+    //   colId: 'name',
+    //   field: 'name',
+    //   headerName: 'Name',
+    //   type: 'text',
+    //   editable: true,
+    // },
+    // {
+    //   colId: 'age',
+    //   field: 'age',
+    //   headerName: 'age',
+    //   type: 'number',
+    // },
+    // {
+    //   colId: 'company',
+    //   field: 'company',
+    //   headerName: 'company',
+    //   type: 'text',
+    // },
+    // {
+    //   colId: 'balance',
+    //   field: 'balance',
+    //   headerName: 'balance',
+    //   type: 'number',
+    // },
+    // {
+    //   colId: 'status',
+    //   field: 'status',
+    //   headerName: 'status',
+    //   type: 'tag',
+    // },
+    // {
+    //   colId: 'picture',
+    //   field: 'picture',
+    //   headerName: 'picture',
+    //   type: 'link',
+    // },
+    // {
+    //   colId: 'timestamp',
+    //   field: 'timestamp',
+    //   headerName: 'timestamp',
+    //   type: 'date',
+    //   editable: true,
+    // },
+    // {
+    //   colId: 'tags',
+    //   field: 'tags',
+    //   headerName: 'tags',
+    //   type: 'tags',
+    // },
     // {
     //   colId: 'about',
     //   field: 'about',
