@@ -1,6 +1,4 @@
-import styled, { css } from 'styled-components';
-import { pseudoElementMixin } from '@devoinc/genesys-ui';
-import { getSizes } from '../utils';
+import styled from 'styled-components';
 
 interface StyledTableRowProps {
   styles?: React.CSSProperties;

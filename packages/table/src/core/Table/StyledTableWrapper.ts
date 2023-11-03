@@ -1,6 +1,5 @@
 import * as React from 'react';
-import styled, { css } from 'styled-components';
-import { scrollbars } from '@devoinc/genesys-ui';
+import styled from 'styled-components';
 
 export interface StyledTableWrapperProps {
   maxHeight?: React.CSSProperties['maxHeight'];
