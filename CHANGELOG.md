@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/DevoInc/genesys-ui/compare/v1.1.0...v1.1.1) (2023-11-03)
+
+
+### Bug Fixes
+
+* **DiffEditor:** improve diff styles ([7297d54](https://github.com/DevoInc/genesys-ui/commit/7297d54d066ab1ccc14405161c3a523c4a102317))
+* **Jest:** Added polyfill for ResizeObserver in Jest tests ([d7baa52](https://github.com/DevoInc/genesys-ui/commit/d7baa528893f49cd91cf4ee4c0dfe34c4c61e26a))
+
 ## [1.1.0](https://github.com/DevoInc/genesys-ui/compare/v1.0.3...v1.1.0) (2023-10-31)
 
 
