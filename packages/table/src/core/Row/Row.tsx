@@ -10,16 +10,18 @@ interface RowProps {
   height?: React.CSSProperties['height'];
 }
 
-export const Row: React.FC<RowProps> = ({ columnDefs, data, height }) => (
-  <StyledTableRow height={height}>
-    {columnDefs.map((columnDef: ColDef) => {
-      return (
-        <Cell
-          columnDef={columnDef}
-          key={`cell-${columnDef.colId}`}
-          data={data[columnDef.field] ?? ''}
-        />
-      );
-    })}
-  </StyledTableRow>
-);
+export const Row: React.FC<RowProps> = ({ columnDefs, data, height }) => {
+  return (
+    <StyledTableRow height={height}>
+      {columnDefs.map((columnDef: ColDef) => {
+        return (
+          <Cell
+            columnDef={columnDef}
+            key={`cell-${columnDef.colId}`}
+            data={data[columnDef.field] ?? ''}
+          />
+        );
+      })}
+    </StyledTableRow>
+  );
+};

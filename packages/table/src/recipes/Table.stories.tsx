@@ -27,7 +27,7 @@ const data = Holo.of()
         Holo.chance.integer({ min: 1, max: 4 }),
       ),
   })
-  .repeat(20)
+  .repeat(200)
   .generate();
 
 const tableOptions: TableOptionsProps = {
@@ -36,7 +36,13 @@ const tableOptions: TableOptionsProps = {
   },
   style: {
     wrapper: {
-      maxHeight: '300px',
+      maxHeight: '100%',
+    },
+    body: {
+      height: '100%',
+    },
+    row: {
+      height: 30,
     },
   },
   columnDefs: [
@@ -45,6 +51,7 @@ const tableOptions: TableOptionsProps = {
       field: 'menu',
       headerName: 'menu',
       CellRenderer: (params) => {
+        debugger;
         return (
           <DropdownMenu
             items={[
@@ -77,6 +84,7 @@ const tableOptions: TableOptionsProps = {
       field: 'name',
       headerName: 'Name',
       type: 'text',
+      editable: true,
     },
     {
       colId: 'age',
@@ -113,6 +121,7 @@ const tableOptions: TableOptionsProps = {
       field: 'timestamp',
       headerName: 'timestamp',
       type: 'date',
+      editable: true,
     },
     {
       colId: 'tags',
@@ -120,12 +129,12 @@ const tableOptions: TableOptionsProps = {
       headerName: 'tags',
       type: 'tags',
     },
-    {
-      colId: 'about',
-      field: 'about',
-      headerName: 'about',
-      type: 'text',
-    },
+    // {
+    //   colId: 'about',
+    //   field: 'about',
+    //   headerName: 'about',
+    //   type: 'text',
+    // },
   ],
 };
 
@@ -141,7 +150,7 @@ export const Base: Story = {
   render: () =>
     (() => {
       return (
-        <Flex height="100vh">
+        <Flex height="100%" width="100%" flex-direction="column">
           <BasicTable tableOptions={tableOptions} data={data} />
         </Flex>
       );

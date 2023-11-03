@@ -31,8 +31,9 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
       scrolled={style?.wrapper?.scrolled}
     >
       <StyledTable
-        width={style?.table?.width}
+        width={'400px'}
         minWidth={style?.table?.minWidth}
+        height={'200px'}
       >
         <TableHead
           columnDefs={columnsDefs}
@@ -42,6 +43,7 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
           columnDefs={columnsDefs}
           data={data}
           height={style?.row?.height}
+          rowHeight={style?.row?.height}
         />
       </StyledTable>
     </StyledTableWrapper>

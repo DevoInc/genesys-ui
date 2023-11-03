@@ -41,6 +41,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@tanstack/react-virtual": "^3.0.0-beta.65",
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0"
   }

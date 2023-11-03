@@ -5,20 +5,7 @@ interface StyledTableBodyProps {
 }
 
 export const StyledTableBody = styled.tbody<StyledTableBodyProps>`
-  display: 'inline-block';
-  position: relative;
-
-  width: 100%;
-
-  ${({ height }) => {
-    return css`
-      height: ${height};
-    `;
-  }}
-
-  ${({ theme }) => {
-    return css`
-      background-color: ${theme.cmp.table.body.color.background};
-    `;
-  }}
+  position: absolute;
+  overflow: auto;
+  height: 200px;
 `;

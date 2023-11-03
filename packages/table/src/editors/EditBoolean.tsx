@@ -2,8 +2,8 @@ import * as React from 'react';
 import { SwitchControl } from '@devoinc/genesys-ui';
 
 interface GenericCellEditorProps {
-  value: any;
-  onChange?: (newValue: any) => void;
+  value: unknown;
+  onChange: (newValue: unknown) => void;
 }
 
 export const EditBoolean: React.FC<GenericCellEditorProps> = ({
@@ -14,7 +14,7 @@ export const EditBoolean: React.FC<GenericCellEditorProps> = ({
     <SwitchControl
       checked={!!value}
       aria-label={'Switch'}
-      onChange={() => onChange?.(!value)}
+      onChange={() => onChange(!value)}
     />
   );
 };
