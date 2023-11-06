@@ -27,7 +27,10 @@
   "license": "MIT",
   "peerDependencies": {
     "@devoinc/genesys-ui": "^1.1.1",
-    "react": "16.x || 17.x || 18.x"
+    "react": "16.x || 17.x || 18.x",
+    "@tanstack/react-virtual": "^3.0.0-beta.65",
+    "date-fns": "^2.30.0",
+    "date-fns-tz": "^2.0.0"
   },
   "engine": {
     "node": ">=16",
@@ -39,10 +42,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "@tanstack/react-virtual": "^3.0.0-beta.65",
-    "date-fns": "^2.30.0",
-    "date-fns-tz": "^2.0.0"
   }
 }

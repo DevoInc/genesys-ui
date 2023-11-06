@@ -14,12 +14,22 @@ export default defineConfig({
       fileName: 'index',
     },
     rollupOptions: {
-      external: ['react', '@devoinc/genesys-ui', 'styled-components'],
+      external: [
+        'react',
+        '@devoinc/genesys-ui',
+        'styled-components',
+        '@tanstack/react-virtual',
+        'date-fns',
+        'date-fns-tz',
+      ],
       output: {
         globals: {
           react: 'React',
           'styled-components': 'styled',
           '@devoinc/genesys-ui': 'genesysUi',
+          '@tanstack/react-virtual': 'reactVirtual',
+          'date-fns': 'dateFns',
+          'date-fns-tz': 'dateFnsTz',
         },
       },
     },
