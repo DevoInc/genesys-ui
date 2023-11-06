@@ -22,7 +22,7 @@ export interface TableOptionsProps {
   };
 }
 
-interface CellRendererParams {
+export interface CellRendererParams {
   value: unknown;
   columnDef: ColDef;
 }

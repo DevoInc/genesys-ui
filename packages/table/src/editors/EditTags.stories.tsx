@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-
 import { Holo } from '@devoinc/holo';
-
 import { ColDef } from '../declarations';
 import { EditTags } from '.';
 import { Cell } from '../core/Cell';
 import { TagProps } from 'packages/core/dist/types/src';
 import { TagsRenderer } from '../renderers';
+import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_VIRTUAL_ROW } from '../constants';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/Edit/Tags',
@@ -42,14 +41,20 @@ export const TagsEditor: Story = {
       const onChange = (newTags: TagProps[]) => setTags(newTags);
 
       const columnEditTags: ColDef = {
-        colId: 'tags',
-        field: 'tags',
+        id: 'tags',
         headerName: 'tags',
         type: 'tags',
         CellEditor: () => EditTags({ value: tags, onChange }),
         CellRenderer: TagsRenderer,
         editable: true,
       };
-      return <Cell columnDef={columnEditTags} data={tags} />;
+      return (
+        <Cell
+          columnDef={columnEditTags}
+          data={tags}
+          virtualRow={DEFAULT_VIRTUAL_ROW}
+          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
+        />
+      );
     })(),
 };

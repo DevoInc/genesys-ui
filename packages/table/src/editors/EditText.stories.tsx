@@ -6,6 +6,7 @@ import { ColDef } from '../declarations';
 import { EditText, EditTextArea } from '.';
 import { Cell } from '../core/Cell';
 import { TextRenderer } from '../renderers';
+import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_VIRTUAL_ROW } from '../constants';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/Edit/Text',
@@ -28,15 +29,21 @@ export const Base: Story = {
       const onChange = (newText: string) => setText(newText);
 
       const columnEditText: ColDef = {
-        colId: 'name',
-        field: 'name',
+        id: 'name',
         headerName: 'Name',
         CellRenderer: TextRenderer,
         CellEditor: () => EditText({ value: text, onChange }),
         editable: true,
       };
 
-      return <Cell columnDef={columnEditText} data={text} />;
+      return (
+        <Cell
+          columnDef={columnEditText}
+          data={text}
+          virtualRow={DEFAULT_VIRTUAL_ROW}
+          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
+        />
+      );
     })(),
 };
 
@@ -52,8 +59,7 @@ export const TextAreaEditor: Story = {
       const onChange = (newText: string) => setText(newText);
 
       const columnEditTextArea: ColDef = {
-        colId: 'name',
-        field: 'name',
+        id: 'name',
         headerName: 'Name',
         CellEditor: () => EditTextArea({ value: text, onChange }),
         CellRenderer: TextRenderer,
@@ -67,6 +73,13 @@ export const TextAreaEditor: Story = {
         editable: true,
       };
 
-      return <Cell columnDef={columnEditTextArea} data={text} />;
+      return (
+        <Cell
+          columnDef={columnEditTextArea}
+          data={text}
+          virtualRow={DEFAULT_VIRTUAL_ROW}
+          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
+        />
+      );
     })(),
 };

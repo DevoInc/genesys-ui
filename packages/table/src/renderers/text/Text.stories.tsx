@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Holo } from '@devoinc/holo';
-
 import { Cell } from '../../core/Cell';
 import { ColDef } from '../../declarations';
 import { TextRenderer } from './Text';
 import { dateFormatter, linkFormatter } from '../../valueFormatters';
+import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_VIRTUAL_ROW } from '../../constants';
 
 const data = Holo.of()
   .schema({
@@ -17,15 +17,13 @@ const data = Holo.of()
   .generate();
 
 const column: ColDef = {
-  colId: 'name',
-  field: 'name',
+  id: 'name',
   headerName: 'Name',
   CellRenderer: TextRenderer,
 };
 
 const columnDate: ColDef = {
-  colId: 'timestamp',
-  field: 'timestamp',
+  id: 'timestamp',
   headerName: 'timestamp',
   valueFormatter: dateFormatter,
   CellRenderer: TextRenderer,
@@ -37,8 +35,7 @@ const columnDate: ColDef = {
 };
 
 const columnLink: ColDef = {
-  colId: 'picture',
-  field: 'picture',
+  id: 'picture',
   headerName: 'picture',
   type: 'link',
   CellRenderer: TextRenderer,
@@ -56,20 +53,41 @@ type Story = StoryObj<typeof Cell>;
 export const Base: Story = {
   render: () =>
     (() => {
-      return <Cell columnDef={column} data={data[0][column.field]} />;
+      return (
+        <Cell
+          columnDef={column}
+          data={data[0][column.id]}
+          virtualRow={DEFAULT_VIRTUAL_ROW}
+          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
+        />
+      );
     })(),
 };
 
 export const DateFormat: Story = {
   render: () =>
     (() => {
-      return <Cell columnDef={columnDate} data={data[0][columnDate.field]} />;
+      return (
+        <Cell
+          columnDef={columnDate}
+          data={data[0][columnDate.id]}
+          virtualRow={DEFAULT_VIRTUAL_ROW}
+          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
+        />
+      );
     })(),
 };
 
 export const LinkFormat: Story = {
   render: () =>
     (() => {
-      return <Cell columnDef={columnLink} data={data[0][columnLink.field]} />;
+      return (
+        <Cell
+          columnDef={columnLink}
+          data={data[0][columnLink.id]}
+          virtualRow={DEFAULT_VIRTUAL_ROW}
+          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
+        />
+      );
     })(),
 };

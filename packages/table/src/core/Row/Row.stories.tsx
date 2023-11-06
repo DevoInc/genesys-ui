@@ -11,6 +11,8 @@ import {
   TagsRenderer,
   TextRenderer,
 } from '../../renderers';
+import { DEFAULT_VIRTUAL_ROW } from '../../constants';
+import { useVirtualizer } from '@tanstack/react-virtual';
 
 const data = Holo.of()
   .schema({
@@ -39,29 +41,25 @@ const data = Holo.of()
 
 const colDefs: ColDef[] = [
   {
-    colId: 'name',
-    field: 'name',
+    id: 'name',
     headerName: 'Name',
     type: 'text',
     CellRenderer: TextRenderer,
   },
   {
-    colId: 'age',
-    field: 'age',
+    id: 'age',
     headerName: 'age',
     type: 'number',
     CellRenderer: NumberRenderer,
   },
   {
-    colId: 'balance',
-    field: 'balance',
+    id: 'balance',
     headerName: 'balance',
     type: 'number',
     CellRenderer: NumberRenderer,
   },
   {
-    colId: 'booleanValue',
-    field: 'booleanValue',
+    id: 'booleanValue',
     headerName: 'booleanValue',
     type: 'tag',
     tagConfig: {
@@ -71,8 +69,7 @@ const colDefs: ColDef[] = [
     CellRenderer: TagRenderer,
   },
   {
-    colId: 'status',
-    field: 'status',
+    id: 'status',
     headerName: 'status',
     type: 'tag',
     tagConfig: {
@@ -84,8 +81,7 @@ const colDefs: ColDef[] = [
     CellRenderer: TagRenderer,
   },
   {
-    colId: 'tags',
-    field: 'tags',
+    id: 'tags',
     headerName: 'tags',
     type: 'tags',
     CellRenderer: TagsRenderer,
@@ -103,6 +99,20 @@ type Story = StoryObj<typeof Row>;
 export const Base: Story = {
   render: () =>
     (() => {
-      return <Row columnDefs={colDefs} data={data[0]} />;
+      const rowRef = React.useRef();
+      const columnVirtualizer = useVirtualizer({
+        count: colDefs.length,
+        getScrollElement: () => rowRef.current,
+        estimateSize: () => 120,
+        horizontal: true,
+      });
+      return (
+        <Row
+          columnDefs={colDefs}
+          data={data[0]}
+          virtualRow={DEFAULT_VIRTUAL_ROW}
+          columnVirtualizer={columnVirtualizer}
+        />
+      );
     })(),
 };

@@ -8,6 +8,7 @@ import { EditDate } from '.';
 import { Cell } from '../core/Cell';
 import { dateFormatter } from '../valueFormatters/date';
 import { TextRenderer } from '../renderers';
+import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_VIRTUAL_ROW } from '../constants';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/Edit/Date',
@@ -30,8 +31,7 @@ export const Base: Story = {
       const onChange = (newDate: number) => setDate(newDate);
 
       const columnEditDate: ColDef = {
-        colId: 'timestamp',
-        field: 'timestamp',
+        id: 'timestamp',
         headerName: 'timestamp',
         valueFormatter: dateFormatter,
         CellEditor: () => EditDate({ value: date, onChange }),
@@ -44,6 +44,13 @@ export const Base: Story = {
         editable: true,
       };
 
-      return <Cell columnDef={columnEditDate} data={date} />;
+      return (
+        <Cell
+          columnDef={columnEditDate}
+          data={date}
+          virtualRow={DEFAULT_VIRTUAL_ROW}
+          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
+        />
+      );
     })(),
 };

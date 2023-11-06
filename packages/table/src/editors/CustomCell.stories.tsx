@@ -5,6 +5,7 @@ import { ColDef } from '../declarations';
 import { Cell } from '../core/Cell';
 import { CustomCellEditor } from './CustomCellEditorCase';
 import { TextRenderer } from '../renderers';
+import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_VIRTUAL_ROW } from '../constants';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/Edit/Custom',
@@ -21,8 +22,7 @@ export const UsingACustomCellEditor: Story = {
       const onChange = (newValue) => setText(newValue);
 
       const customEditorDef: ColDef = {
-        colId: 'text',
-        field: 'text',
+        id: 'text',
         headerName: 'text',
         CellEditor: () => CustomCellEditor({ value: text, onChange }),
         CellRenderer: TextRenderer,
@@ -36,6 +36,13 @@ export const UsingACustomCellEditor: Story = {
         editable: true,
       };
 
-      return <Cell columnDef={customEditorDef} data={text} />;
+      return (
+        <Cell
+          columnDef={customEditorDef}
+          data={text}
+          virtualRow={DEFAULT_VIRTUAL_ROW}
+          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
+        />
+      );
     })(),
 };

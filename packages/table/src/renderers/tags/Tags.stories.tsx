@@ -5,6 +5,7 @@ import { Holo } from '@devoinc/holo';
 import { Cell } from '../../core/Cell';
 import { ColDef } from '../../declarations';
 import { TagsRenderer } from './Tags';
+import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_VIRTUAL_ROW } from '../../constants';
 
 const data = Holo.of()
   .schema({
@@ -23,8 +24,7 @@ const data = Holo.of()
   .generate();
 
 const column: ColDef = {
-  colId: 'tags',
-  field: 'tags',
+  id: 'tags',
   headerName: 'tags',
   type: 'tags',
   CellRenderer: TagsRenderer,
@@ -41,6 +41,13 @@ type Story = StoryObj<typeof Cell>;
 export const Base: Story = {
   render: () =>
     (() => {
-      return <Cell columnDef={column} data={data[0][column.field]} />;
+      return (
+        <Cell
+          columnDef={column}
+          data={data[0][column.id]}
+          virtualRow={DEFAULT_VIRTUAL_ROW}
+          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
+        />
+      );
     })(),
 };

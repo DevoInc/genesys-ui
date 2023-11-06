@@ -6,6 +6,7 @@ import { ColDef } from '../declarations';
 import { EditNumber } from '.';
 import { Cell } from '../core/Cell';
 import { NumberRenderer } from '../renderers';
+import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_VIRTUAL_ROW } from '../constants';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/Edit/Number',
@@ -28,13 +29,19 @@ export const NumberEditor: Story = {
       const onChange = (newNumber: number) => setNumber(newNumber);
 
       const columnEditTextNumber: ColDef = {
-        colId: 'age',
-        field: 'age',
+        id: 'age',
         headerName: 'age',
         CellEditor: () => EditNumber({ value: number, onChange }),
         CellRenderer: NumberRenderer,
         editable: true,
       };
-      return <Cell columnDef={columnEditTextNumber} data={number} />;
+      return (
+        <Cell
+          columnDef={columnEditTextNumber}
+          data={number}
+          virtualRow={DEFAULT_VIRTUAL_ROW}
+          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
+        />
+      );
     })(),
 };

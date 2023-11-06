@@ -13,7 +13,8 @@
     "noUncheckedIndexedAccess": true,
     "paths": {
       "test-utils": ["./test/test-utils.tsx"]
-    }
+    },
+    "skipLibCheck": true,
   },
   "references": [
     {

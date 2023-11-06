@@ -6,6 +6,7 @@ import { Cell } from '../../core/Cell';
 import { ColDef } from '../../declarations';
 import { NumberRenderer } from './Number';
 import { linkFormatter } from '../../valueFormatters';
+import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_VIRTUAL_ROW } from '../../constants';
 
 const data = Holo.of()
   .schema({
@@ -16,16 +17,14 @@ const data = Holo.of()
   .generate();
 
 const column: ColDef = {
-  colId: 'age',
-  field: 'age',
+  id: 'age',
   headerName: 'age',
   type: 'number',
   CellRenderer: NumberRenderer,
 };
 
 const columnLink: ColDef = {
-  colId: 'balance',
-  field: 'balance',
+  id: 'balance',
   headerName: 'balance',
   type: 'link',
   CellRenderer: NumberRenderer,
@@ -43,13 +42,27 @@ type Story = StoryObj<typeof Cell>;
 export const Base: Story = {
   render: () =>
     (() => {
-      return <Cell columnDef={column} data={data[0][column.field]} />;
+      return (
+        <Cell
+          columnDef={column}
+          data={data[0][column.id]}
+          virtualRow={DEFAULT_VIRTUAL_ROW}
+          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
+        />
+      );
     })(),
 };
 
 export const NumberLink: Story = {
   render: () =>
     (() => {
-      return <Cell columnDef={columnLink} data={data[0][columnLink.field]} />;
+      return (
+        <Cell
+          columnDef={columnLink}
+          data={data[0][columnLink.id]}
+          virtualRow={DEFAULT_VIRTUAL_ROW}
+          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
+        />
+      );
     })(),
 };

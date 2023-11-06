@@ -1,13 +1,10 @@
 import * as React from 'react';
 import { BaseTagProps, Tag } from '@devoinc/genesys-ui';
 import { StyledTags } from './StyledTags';
+import { CellRendererParams } from '../../declarations';
 
-interface TagsProps {
-  value?: BaseTagProps[];
-}
-
-export const TagsRenderer: React.FC<TagsProps> = ({ value }) => {
-  const realValue = value || [];
+export const TagsRenderer: React.FC<CellRendererParams> = ({ value = [] }) => {
+  const realValue = Array.isArray(value) ? value : [value];
   return (
     <StyledTags>
       {realValue.map((tag: BaseTagProps) => {
