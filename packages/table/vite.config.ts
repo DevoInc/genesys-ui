@@ -3,7 +3,6 @@ import { defineConfig } from 'vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 // Used from @storybook/react-vite dependencies
 import react from '@vitejs/plugin-react';
-import { viteExternalsPlugin } from 'vite-plugin-externals';
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
@@ -13,6 +12,26 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'index',
       fileName: 'index',
+    },
+    rollupOptions: {
+      external: [
+        'react',
+        '@devoinc/genesys-ui',
+        'styled-components',
+        '@tanstack/react-virtual',
+        'date-fns',
+        'date-fns-tz',
+      ],
+      output: {
+        globals: {
+          react: 'React',
+          'styled-components': 'styled',
+          '@devoinc/genesys-ui': 'genesysUi',
+          '@tanstack/react-virtual': 'ReactVirtual',
+          'date-fns': 'dateFns',
+          'date-fns-tz': 'dateFnsTz',
+        },
+      },
     },
   },
   plugins: [
@@ -33,14 +52,6 @@ export default defineConfig({
     }),
     visualizer({
       filename: 'dist/stats.html',
-    }),
-    viteExternalsPlugin({
-      react: 'React',
-      'styled-components': 'styled',
-      '@devoinc/genesys-ui': 'genesysUi',
-      '@tanstack/react-virtual': 'reactVirtual',
-      'date-fns': 'dateFns',
-      'date-fns-tz': 'dateFnsTz',
     }),
   ],
 });
