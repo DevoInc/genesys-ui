@@ -20,5 +20,10 @@ addons.setConfig({
         ? `${iconMap[name] ? iconMap[name] : ''} ${name}`
         : name;
     },
+    filters: {
+      patternns: (item) => {
+        return !(item?.tags?.includes('isHidden') ?? false);
+      }
+    }
   },
 });
