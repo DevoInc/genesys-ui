@@ -16,7 +16,15 @@ import {
   StyledProgressBarCircularSVG,
   StyledProgressBarCircularSVGProps,
 } from '../styled';
-import { getPercent, getStatus } from '../utils';
+import {
+  getCxy,
+  getPercent,
+  getRadiant,
+  getRadio,
+  getStatus,
+  getStroke,
+} from '../utils';
+import { SQUARE } from '../constants';
 
 export interface ProgressBarCircularBarProps
   extends GlobalAttrProps,
@@ -26,7 +34,7 @@ export interface ProgressBarCircularBarProps
     StyledOverloadCssProps,
     StyledProgressBarCircularSVGProps,
     StyledProgressBarCircularProps,
-    StyledProgressBarCircularCircleInnerProps {}
+    Omit<StyledProgressBarCircularCircleInnerProps, 'rad'> {}
 
 export const ProgressBarCircularBar: React.FC<ProgressBarCircularBarProps> = ({
   colorScheme,
@@ -46,18 +54,30 @@ export const ProgressBarCircularBar: React.FC<ProgressBarCircularBarProps> = ({
       percent={getPercent({ percent, status })}
       status={getStatus({ percent, status })}
       showStatus={showStatus}
-      size={size}
+      width={SQUARE[size]}
+      height={SQUARE[size]}
+      data-tip={!showStatus ? percent + '%' : null}
     >
       <StyledProgressBarCircular
         colorScheme={colorScheme}
         status={status}
         size={size}
+        cx={getCxy(size)}
+        cy={getCxy(size)}
+        strokeWidth={getStroke(size)}
+        r={getRadio(size)}
+        fill={'none'}
       />
       <StyledProgressBarCircularCircleInner
         indeterminate={indeterminate}
         percent={getPercent({ percent, status })}
         status={getStatus({ percent, status })}
-        size={size}
+        cx={getCxy(size)}
+        cy={getCxy(size)}
+        strokeWidth={getStroke(size)}
+        r={getRadio(size)}
+        rad={getRadiant(size)}
+        fill={'none'}
       />
     </StyledProgressBarCircularSVG>
   );
