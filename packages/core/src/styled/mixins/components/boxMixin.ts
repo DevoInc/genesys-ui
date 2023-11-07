@@ -77,7 +77,7 @@ export const boxMixin =
       paddingBottom;
     return css`
       /* position and layout */
-      position: ${position || elevation ? 'relative' : null};
+      position: ${position || (elevation ? 'relative' : null)};
       top: ${positionTop};
       right: ${positionRight};
       bottom: ${positionBottom};
