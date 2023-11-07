@@ -18,7 +18,7 @@ describe('boxMixin', () => {
 
   test('position', () => {
     const mixin1 = boxMixin(theme)({ position: 'absolute' }).join('');
-    expect(mixin1).toContain('position: relative');
+    expect(mixin1).toContain('position: absolute');
 
     const mixin2 = boxMixin(theme)({ elevation: 'raised' }).join('');
     expect(mixin2).toContain('position: relative');
@@ -44,11 +44,11 @@ describe('boxMixin', () => {
 
   test('display', () => {
     const mixin1 = boxMixin(theme)({
-      $display: 'absolute',
+      $display: 'block',
       cssTranslate: '42px, 42px',
       verticalAlign: 'center',
     }).join('');
-    expect(mixin1).toContain('display: absolute;');
+    expect(mixin1).toContain('display: block;');
     expect(mixin1).toContain('transform: translate(42px, 42px);');
     expect(mixin1).toContain('vertical-align: center;');
   });
