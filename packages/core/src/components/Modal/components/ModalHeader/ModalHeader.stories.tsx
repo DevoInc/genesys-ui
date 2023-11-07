@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Heading } from '../../../Typography/components/block';
-import { GIOkSuccessfulCheckFilled } from '@devoinc/genesys-icons';
+import { GICheckOkRoundedFilled } from '@devoinc/genesys-icons';
 import { IconButtonClose, IconButtonStatus } from '../../../IconButton';
 import { Flex } from '../../../Flex';
 import { Modal } from '../../Modal';
@@ -26,7 +26,7 @@ export const Header: Story = {
       return (
         <Modal.Header>
           <Flex alignItems="center" gap="cmp-sm">
-            <GIOkSuccessfulCheckFilled
+            <GICheckOkRoundedFilled
               color={dialogHeaderIconTokens.color.background.success}
             />
             <Heading size="h4" truncateLine={1}>

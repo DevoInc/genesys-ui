@@ -15,7 +15,7 @@ import {
   Modal,
   ModalProps,
 } from '..';
-import { GIOkSuccessfulCheckFilled } from '@devoinc/genesys-icons';
+import { GICheckOkRoundedFilled } from '@devoinc/genesys-icons';
 import { Heading } from '../Typography/components/block';
 import { useTheme } from 'styled-components';
 import { lorem } from '../../../stories/utils/fillerTexts';
@@ -159,7 +159,7 @@ export const Custom: Story = {
             <Modal.Container onRequestClose={() => setOpen(false)} zIndex={100}>
               <Modal.Header>
                 <Flex alignItems="center" gap="cmp-sm">
-                  <GIOkSuccessfulCheckFilled
+                  <GICheckOkRoundedFilled
                     color={dialogHeaderIconTokens.color.background.success}
                   />
                   <Heading size="h4" truncateLine={1}>
