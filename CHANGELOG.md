@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.2.0](https://github.com/DevoInc/genesys-ui/compare/v1.1.1...v1.2.0) (2023-11-08)
+
+
+### Features
+
+* add windowing ([7a023b6](https://github.com/DevoInc/genesys-ui/commit/7a023b650e34b1fc20675e2249917bad1ea69082))
+* implement windowing horizontal by santiago.trigo ([6101940](https://github.com/DevoInc/genesys-ui/commit/6101940feaab3e60febaa7bb0abebd968b4272a8))
+* **Table:** Fixed lint errors. Improved horizontal virtualization ([82c478b](https://github.com/DevoInc/genesys-ui/commit/82c478bb2e5eaaae69ea622e19e60b56c776b486))
+* **Table:** QUV-1299 Added horizontal virtualization ([7ce1856](https://github.com/DevoInc/genesys-ui/commit/7ce1856479c30f298dbb77f5339eabae7825c92c))
+
+
+### Bug Fixes
+
+* **Box:** fixed condition in box css mixin to get the position correctly. ([4745385](https://github.com/DevoInc/genesys-ui/commit/47453859ad4019a1c52915a60b22231ceedae782))
+* Lint ([0ea0f6c](https://github.com/DevoInc/genesys-ui/commit/0ea0f6c0a4e6d826bcbe799369dfa580f9eb18f8))
+* rebuild package-lock and fix some icons ([1f188e1](https://github.com/DevoInc/genesys-ui/commit/1f188e1b7a0f73af18cd3fecd3237ff43d872a93))
+* remove styled attr on Icon ([5f57415](https://github.com/DevoInc/genesys-ui/commit/5f57415168fbacc6ec6b8ff4ae62941fe698eaea))
+* remove styled attr on Menu ([aed9515](https://github.com/DevoInc/genesys-ui/commit/aed95152269316aea90c81f5a8354bb6326e5bfa))
+* remove styled attr on ProgressBar ([45cc19e](https://github.com/DevoInc/genesys-ui/commit/45cc19e14bec0a840e2acc42920d3df14e8a6b3d))
+* remove styled attr on SelectControl ([e3baa29](https://github.com/DevoInc/genesys-ui/commit/e3baa2962c7c8282dcb2e2a9d92e4dec567b2025))
+* revert the notation of the mixin on menu ([2b4d875](https://github.com/DevoInc/genesys-ui/commit/2b4d875d965dece1225c85f6c017e4756d45f65b))
+* **Table:** Adapted stories to new props ([772b885](https://github.com/DevoInc/genesys-ui/commit/772b8855137d5b00ec5fa5fa3916c4acd46f9b60))
+* **test:** fixed boxMixin test. ([db0bc8f](https://github.com/DevoInc/genesys-ui/commit/db0bc8f4f8f94a22f5a94231e7f73cb9707f5978))
+
 ## [1.1.1](https://github.com/DevoInc/genesys-ui/compare/v1.1.0...v1.1.1) (2023-11-03)
 
 
