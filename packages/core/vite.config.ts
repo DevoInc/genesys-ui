@@ -26,6 +26,10 @@ export default defineConfig({
         '@dnd-kit/core',
         '@dnd-kit/sortable',
         'react-select',
+        // Prevent emotion from being bundled with the library (comes from react-select)
+        // (https://github.com/emotion-js/emotion/blob/main/packages/react/CHANGELOG.md#patch-changes-5)
+        '@emotion/cache',
+        '@emotion/react',
         'lodash',
         'polished',
         'prop-types',
@@ -46,6 +50,8 @@ export default defineConfig({
           lodash: 'lodash',
           polished: 'polished',
           'prop-types': 'propTypes',
+          '@emotion/cache': 'emotionCache',
+          '@emotion/react': 'emotionReact',
         },
       },
     },
