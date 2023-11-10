@@ -35,7 +35,7 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
   const columnVirtualizer = useVirtualizer({
     count: columnDefs.length,
     getScrollElement: () => ref.current,
-    estimateSize: () => 120,
+    estimateSize: () => 10,
     horizontal: true,
     getItemKey: (index: number) => columnDefs[index].headerName,
   });
@@ -55,10 +55,7 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
       ref={ref}
       height={'500px'}
     >
-      <StyledTable
-        width={`${rowVirtualizer.getTotalSize()}px`}
-        height={`${rowVirtualizer.getTotalSize()}px`}
-      >
+      <StyledTable>
         <TableHead
           scrolled={style?.wrapper?.scrolled}
           columnVirtualizer={columnVirtualizer}

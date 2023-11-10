@@ -9,14 +9,12 @@ interface CellProps {
   data: unknown;
   columnDef: ColDef;
   virtualColumn: VirtualItem;
-  virtualRow: VirtualItem;
 }
 
 export const Cell: React.FC<CellProps> = ({
   data,
   columnDef,
   virtualColumn,
-  virtualRow,
 }) => {
   const { onReset } = columnDef;
 
@@ -29,9 +27,7 @@ export const Cell: React.FC<CellProps> = ({
     <StyledTableCellWrapper
       onDoubleClick={onDoubleClick}
       ref={cellRef}
-      width={`${virtualColumn.size}px`}
-      translateX={virtualColumn.start}
-      translateY={virtualRow.start}
+      cellWidth={`${virtualColumn.size}px`}
     >
       {isEditMode ? editionContent : viewContent}
     </StyledTableCellWrapper>

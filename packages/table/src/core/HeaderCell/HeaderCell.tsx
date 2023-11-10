@@ -12,11 +12,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   scrolled,
   virtualColumn,
 }) => (
-  <StyledHeaderCell
-    scrolled={scrolled}
-    width={`${virtualColumn.size}px`}
-    offsetX={virtualColumn.start}
-  >
+  <StyledHeaderCell scrolled={scrolled} cellWidth={`${virtualColumn.size}px`}>
     <TextRenderer value={virtualColumn.key} bold />
   </StyledHeaderCell>
 );

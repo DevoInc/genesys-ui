@@ -12,18 +12,16 @@ interface TableHeadProps {
 export const TableHead: React.FC<TableHeadProps> = ({
   scrolled,
   columnVirtualizer,
-}) => {
-  return (
-    <StyledTableHead scrolled={scrolled}>
-      <StyledTableHeadRow scrolled={scrolled}>
-        {columnVirtualizer.getVirtualItems().map((virtualColumn) => (
-          <HeaderCell
-            key={virtualColumn.key}
-            virtualColumn={virtualColumn}
-            scrolled={scrolled}
-          />
-        ))}
-      </StyledTableHeadRow>
-    </StyledTableHead>
-  );
-};
+}) => (
+  <StyledTableHead scrolled={scrolled}>
+    <StyledTableHeadRow scrolled={scrolled}>
+      {columnVirtualizer.getVirtualItems().map((virtualColumn) => (
+        <HeaderCell
+          key={virtualColumn.key}
+          virtualColumn={virtualColumn}
+          scrolled={scrolled}
+        />
+      ))}
+    </StyledTableHeadRow>
+  </StyledTableHead>
+);
