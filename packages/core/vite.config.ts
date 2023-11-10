@@ -25,14 +25,15 @@ export default defineConfig({
         'react-toastify',
         '@dnd-kit/core',
         '@dnd-kit/sortable',
+        'lodash',
+        'polished',
+        'prop-types',
         'react-select',
         // Prevent emotion from being bundled with the library (comes from react-select)
         // (https://github.com/emotion-js/emotion/blob/main/packages/react/CHANGELOG.md#patch-changes-5)
         '@emotion/cache',
         '@emotion/react',
-        'lodash',
-        'polished',
-        'prop-types',
+        '@emotion/use-insertion-effect-with-fallbacks',
       ],
       output: {
         globals: {
@@ -52,6 +53,8 @@ export default defineConfig({
           'prop-types': 'propTypes',
           '@emotion/cache': 'emotionCache',
           '@emotion/react': 'emotionReact',
+          '@emotion/use-insertion-effect-with-fallbacks':
+            'emotionUseInsertionEffectWithFallbacks',
         },
       },
     },
