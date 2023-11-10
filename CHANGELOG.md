@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.1](https://github.com/DevoInc/genesys-ui/compare/v1.2.0...v1.2.1) (2023-11-10)
+
+
+### Bug Fixes
+
+* explicitly set @emotion/use-insertion-effect-with-fallbacks as external ([f4d326f](https://github.com/DevoInc/genesys-ui/commit/f4d326f698b6b3ce54213e71dcc63631139d8ef2))
+* prevent @emotion/* from being bundled ([85a6cb7](https://github.com/DevoInc/genesys-ui/commit/85a6cb7e1233ca554b4c514d72341ec0260a216b))
+
 ## [1.2.0](https://github.com/DevoInc/genesys-ui/compare/v1.1.1...v1.2.0) (2023-11-08)
 
 
