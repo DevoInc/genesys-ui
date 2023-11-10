@@ -29,7 +29,7 @@ export default defineConfig({
         'polished',
         'prop-types',
         'react-select',
-        // Prevent emotion useInsertion hook from being bundled with the library (comes from react-select)
+        // Prevent emotion from being bundled with the library (comes from react-select)
         '@emotion/cache',
         '@emotion/react',
         // (https://github.com/emotion-js/emotion/blob/main/packages/react/CHANGELOG.md#patch-changes-5)
