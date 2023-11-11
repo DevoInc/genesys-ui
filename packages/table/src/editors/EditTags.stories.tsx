@@ -6,7 +6,7 @@ import { EditTags } from '.';
 import { Cell } from '../core/Cell';
 import { TagProps } from 'packages/core/dist/types/src';
 import { TagsRenderer } from '../renderers';
-import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_VIRTUAL_ROW } from '../constants';
+import { DEFAULT_VIRTUAL_COLUMN } from '../constants';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/Edit/Tags',
@@ -52,7 +52,6 @@ export const TagsEditor: Story = {
         <Cell
           columnDef={columnEditTags}
           data={tags}
-          virtualRow={DEFAULT_VIRTUAL_ROW}
           virtualColumn={DEFAULT_VIRTUAL_COLUMN}
         />
       );

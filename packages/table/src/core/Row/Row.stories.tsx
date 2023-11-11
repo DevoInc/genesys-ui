@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Holo } from '@devoinc/holo';
-
 import { Row } from './Row';
-
 import { ColDef } from '../../declarations';
 import {
   NumberRenderer,
@@ -11,7 +9,6 @@ import {
   TagsRenderer,
   TextRenderer,
 } from '../../renderers';
-import { DEFAULT_VIRTUAL_ROW } from '../../constants';
 import { useVirtualizer } from '@tanstack/react-virtual';
 
 const data = Holo.of()
@@ -110,7 +107,6 @@ export const Base: Story = {
         <Row
           columnDefs={colDefs}
           data={data[0]}
-          virtualRow={DEFAULT_VIRTUAL_ROW}
           columnVirtualizer={columnVirtualizer}
         />
       );

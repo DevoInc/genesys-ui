@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Holo } from '@devoinc/holo';
-
 import { ColDef } from '../declarations';
 import { EditText, EditTextArea } from '.';
 import { Cell } from '../core/Cell';
 import { TextRenderer } from '../renderers';
-import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_VIRTUAL_ROW } from '../constants';
+import { DEFAULT_VIRTUAL_COLUMN } from '../constants';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/Edit/Text',
@@ -40,7 +39,6 @@ export const Base: Story = {
         <Cell
           columnDef={columnEditText}
           data={text}
-          virtualRow={DEFAULT_VIRTUAL_ROW}
           virtualColumn={DEFAULT_VIRTUAL_COLUMN}
         />
       );
@@ -77,7 +75,6 @@ export const TextAreaEditor: Story = {
         <Cell
           columnDef={columnEditTextArea}
           data={text}
-          virtualRow={DEFAULT_VIRTUAL_ROW}
           virtualColumn={DEFAULT_VIRTUAL_COLUMN}
         />
       );

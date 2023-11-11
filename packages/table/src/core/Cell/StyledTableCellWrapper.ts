@@ -3,8 +3,6 @@ import styled, { DefaultTheme } from 'styled-components';
 interface StyledTableCellWrapperProps {
   cellWidth?: React.CSSProperties['width'];
   height?: React.CSSProperties['height'];
-  translateX?: number;
-  translateY?: number;
   theme: DefaultTheme;
 }
 

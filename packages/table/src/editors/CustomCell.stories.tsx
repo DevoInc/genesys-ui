@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-
 import { ColDef } from '../declarations';
 import { Cell } from '../core/Cell';
 import { CustomCellEditor } from './CustomCellEditorCase';
 import { TextRenderer } from '../renderers';
-import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_VIRTUAL_ROW } from '../constants';
+import { DEFAULT_VIRTUAL_COLUMN } from '../constants';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/Edit/Custom',
@@ -40,7 +39,6 @@ export const UsingACustomCellEditor: Story = {
         <Cell
           columnDef={customEditorDef}
           data={text}
-          virtualRow={DEFAULT_VIRTUAL_ROW}
           virtualColumn={DEFAULT_VIRTUAL_COLUMN}
         />
       );
