@@ -1,17 +1,17 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
+import { useRef } from 'react';
 import { ColDef } from '../../declarations';
 
 interface UseVirtualizationParams {
   data: { [key: string]: unknown }[];
   columnDefs: ColDef[];
-  ref: React.MutableRefObject<undefined>;
 }
 
 export const useTableVirtualization = ({
   data,
   columnDefs,
-  ref,
 }: UseVirtualizationParams) => {
+  const ref = useRef();
   const rowVirtualizer = useVirtualizer({
     count: data.length,
     getScrollElement: () => ref.current,
@@ -26,5 +26,5 @@ export const useTableVirtualization = ({
     getItemKey: (index: number) => columnDefs[index].id,
   });
 
-  return { rowVirtualizer, columnVirtualizer };
+  return { rowVirtualizer, columnVirtualizer, ref };
 };

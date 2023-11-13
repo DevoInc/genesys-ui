@@ -13,12 +13,10 @@ interface TableProps {
 }
 
 export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
-  const ref = React.useRef();
   const { defaultColumnDef, columnDefs, types, style } = tableOptions;
-  const { rowVirtualizer, columnVirtualizer } = useTableVirtualization({
+  const { rowVirtualizer, columnVirtualizer, ref } = useTableVirtualization({
     data,
     columnDefs,
-    ref,
   });
 
   const refinedColumnDefs = getCollatedColumns(
