@@ -106,7 +106,7 @@ export const Month: React.FC<MonthProps> = ({
           aria-label={ariaLabelPrevMonth}
           colorScheme={'quiet'}
           hasBoldIcon
-          icon="gi-arrow_left"
+          icon="gi-angle_left"
           onClick={onClickPrevMonth}
           size={size}
           state={stateMin}
@@ -157,7 +157,7 @@ export const Month: React.FC<MonthProps> = ({
           aria-label={ariaLabelNextMonth}
           colorScheme={'quiet'}
           hasBoldIcon
-          icon="gi-arrow_right"
+          icon="gi-angle_right"
           onClick={onClickNextMonth}
           size={size}
           state={stateMax}

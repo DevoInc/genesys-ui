@@ -96,7 +96,7 @@ export const ButtonEditable: Story = {
     'aria-haspopup': true,
     customSize: { square: '12rem' },
     name: 'Edit profile',
-    iconOnHover: 'write_pencil_new_edit',
+    iconOnHover: 'pencil_edit',
   },
   render: (args) =>
     ((args) => {

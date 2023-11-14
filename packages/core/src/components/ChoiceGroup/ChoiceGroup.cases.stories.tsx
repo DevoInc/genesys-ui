@@ -65,11 +65,7 @@ export const MultipleSelectionControlled: Story = {
           />
           <IconButton
             colorScheme="quiet"
-            icon={
-              selectedButtons.three
-                ? 'gi-pin_bookmark_solid'
-                : 'gi-pin_bookmark'
-            }
+            icon={selectedButtons.three ? 'gi-pin_bookmark' : 'gi-pin_bookmark'}
             onChange={() => {
               setSelectedButtons({
                 ...selectedButtons,

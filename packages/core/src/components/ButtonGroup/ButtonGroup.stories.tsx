@@ -25,7 +25,7 @@ export const Base: Story = {
       <ButtonGroup {...args}>
         <IconButton icon="gi-custom_date" />
         <IconButton icon="gi-reload_refresh_update" />
-        <IconButton icon="gi-pin_bookmark_solid" />
+        <IconButton icon="gi-pin_bookmark" />
         <Button icon="gi-heart_full">Add to favorites</Button>
       </ButtonGroup>
     ))(args),

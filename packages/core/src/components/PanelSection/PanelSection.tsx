@@ -32,7 +32,7 @@ export const renderBackwardNavigation = ({
     >
       <IconButton
         hasBoldIcon
-        icon="gi-arrow_left1"
+        icon="gi-arrow_left"
         onClick={onClickBackwardNav}
         tooltip={backwardTooltip}
       />

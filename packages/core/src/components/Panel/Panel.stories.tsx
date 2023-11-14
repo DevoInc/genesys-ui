@@ -93,7 +93,7 @@ export const ClosableBackwardNavigation: Story = {
           key="btn-back"
           hasBoldIcon
           circular
-          icon="gi-arrow_left1"
+          icon="gi-arrow_left"
           onClick={() => alert('Close Panel!')}
           colorScheme="quiet"
           size="sm"

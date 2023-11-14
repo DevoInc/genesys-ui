@@ -7,6 +7,7 @@ import { Badge } from '../../../Badge';
 import { Typography } from '../../../Typography';
 import { VFlex } from '../../../VFlex';
 import { ProgressBar } from '../../../ProgressBar';
+import { GITimeZone } from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof Menu.Item> = {
   title: 'Components/Core/Navigation/Menu/Subcomponents/Item',
@@ -19,6 +20,7 @@ type Story = StoryObj<typeof Menu.Item>;
 export const Base: Story = {
   args: {
     label: 'Menu item content',
+    icon: <GITimeZone />,
   },
 };
 
@@ -118,6 +120,7 @@ export const CustomContent: Story = {
           selectionScheme="multiple"
           onChange={onOptionChange}
           state={selected ? 'selected' : 'enabled'}
+          unlimitedHeight
         >
           <VFlex spacing="cmp-xxs" padding="cmp-xs">
             <Typography.Heading size="h6">Menu item heading</Typography.Heading>

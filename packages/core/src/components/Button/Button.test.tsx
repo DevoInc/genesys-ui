@@ -28,9 +28,7 @@ describe('BaseButton', () => {
     test('When is dropdown', () => {
       render(<Button data-testid={'test'} hasDropdown />);
       const button = screen.getByTestId('test');
-      expect(button.getElementsByTagName('i')[0]).toHaveClass(
-        'gi-arrow_down_fat',
-      );
+      expect(button.getElementsByTagName('i')[0]).toHaveClass('gi-angle_down');
     });
 
     test('When has icon', () => {

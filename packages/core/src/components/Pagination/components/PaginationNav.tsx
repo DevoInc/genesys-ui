@@ -91,7 +91,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
         <Flex.Item as="li">
           <IconButton
             hasBoldIcon
-            icon="gi-arrow_double_left"
+            icon="gi-angle_double_left"
             onClick={goToFirstPage}
             size={actionsSize}
             state={page === 0 ? 'disabled' : 'enabled'}
@@ -103,7 +103,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
         <Flex.Item as="li">
           <IconButton
             hasBoldIcon
-            icon="gi-arrow_left"
+            icon="gi-angle_left"
             onClick={goToPreviousPage}
             size={actionsSize}
             state={page === 0 ? 'disabled' : 'enabled'}
@@ -147,7 +147,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
           <IconButton
             aria-label={nextPageTooltipText}
             hasBoldIcon
-            icon="gi-arrow_right"
+            icon="gi-angle_right"
             onClick={goToNextPage}
             size={actionsSize}
             state={page === lastPage ? 'disabled' : 'enabled'}
@@ -160,7 +160,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
           <IconButton
             aria-label={lastPageTooltipText}
             hasBoldIcon
-            icon="gi-arrow_double_right"
+            icon="gi-angle_double_right"
             onClick={goToLastPage}
             size={actionsSize}
             state={page === lastPage ? 'disabled' : 'enabled'}

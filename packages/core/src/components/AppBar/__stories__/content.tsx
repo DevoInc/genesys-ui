@@ -27,7 +27,7 @@ export const mainActions = [
     aria-label="Notifications"
     tooltip="Notifications"
     key={3}
-    icon="gi-bell_solid"
+    icon="gi-bell_ringer_alarm_sound_solid"
     circular
     colorScheme="quiet"
   />,

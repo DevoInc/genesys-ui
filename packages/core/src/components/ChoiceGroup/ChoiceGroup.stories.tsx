@@ -37,7 +37,7 @@ export const Base: Story = {
           selectionScheme="multiple"
           colorScheme="quiet"
           tooltip="Pause"
-          icon="gi-pause_full"
+          icon="gi-pause"
         />
         <IconButton
           selectionScheme="multiple"

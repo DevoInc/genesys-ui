@@ -13,7 +13,7 @@ type Story = StoryObj<typeof Button>;
 
 export const Loading: Story = {
   args: {
-    icon: 'gi-cloud_download_2',
+    icon: 'gi-download_cloud_file_sync',
     state: 'loading',
     children: 'Downloading...',
   },
@@ -21,7 +21,7 @@ export const Loading: Story = {
 
 export const Success: Story = {
   args: {
-    icon: 'gi-cloud_download_2',
+    icon: 'gi-download_cloud_file_sync',
     state: 'loading',
     children: 'Downloading...',
   },
@@ -47,7 +47,11 @@ export const Success: Story = {
           <Typography.Paragraph size="sm" colorScheme="weak">
             Click on the button to get the <code>loading-success</code> state.
           </Typography.Paragraph>
-          <Button icon="gi-cloud_download_2" onClick={onClick} state={load}>
+          <Button
+            icon="gi-download_cloud_file_sync"
+            onClick={onClick}
+            state={load}
+          >
             {getLabel()}
           </Button>
         </>
@@ -57,7 +61,7 @@ export const Success: Story = {
 
 export const Error: Story = {
   args: {
-    icon: 'gi-cloud_download_2',
+    icon: 'gi-download_cloud_file_sync',
     state: 'loading',
     children: 'Downloading...',
   },
@@ -83,7 +87,11 @@ export const Error: Story = {
           <Typography.Paragraph size="sm" colorScheme="weak">
             Click on the button to get the <code>loading-error</code> state.
           </Typography.Paragraph>
-          <Button icon="gi-cloud_download_2" onClick={onClick} state={load}>
+          <Button
+            icon="gi-download_cloud_file_sync"
+            onClick={onClick}
+            state={load}
+          >
             {getLabel()}
           </Button>
         </>

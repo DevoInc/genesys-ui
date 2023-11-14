@@ -22,7 +22,7 @@ export const CustomCellEditor: React.FC<GenericCellEditorProps> = ({
           aria-expanded={isVisible}
           aria-controls="story-id"
           aria-haspopup="true"
-          icon="gi-menu_alt_bold"
+          icon="gi-menu_alt"
           tooltip="Open Popper"
         />
       }

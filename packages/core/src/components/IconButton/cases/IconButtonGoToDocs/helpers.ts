@@ -44,7 +44,7 @@ export const iconButtonGoToDocsMixin = ({
 
     &::after {
       ${iconFontMixin()};
-      content: '${icons.arrow_up_fat}';
+      content: '${icons.angle_up}';
       position: absolute;
       top: ${offset};
       right: ${offset};

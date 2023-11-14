@@ -54,8 +54,8 @@ export interface MenuItemProps
   bottomContent?: React.ReactNode;
   children?: React.ReactNode;
   expandable?: boolean;
-  icon?: string;
-  label?: string;
+  icon?: React.ReactNode;
+  label?: React.ReactNode;
   prependContent?: React.ReactNode;
   //ref: React.Ref<HTMLElement>;
   selectionScheme?: SelectionScheme;
@@ -102,27 +102,29 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   const isSelectable = Boolean(selectionScheme);
   const isSelected = state === 'selected';
   const iconSize = menuItemSizeConfig(theme).iconSize;
-  const roleEval = isLink
-    ? null
-    : selectionScheme === 'single'
-    ? 'menuitemradio'
-    : selectionScheme === 'multiple'
-    ? 'menuitemcheckbox'
-    : 'menuitem';
+  const roleEval =
+    selectionScheme === 'single'
+      ? 'menuitemradio'
+      : selectionScheme === 'multiple'
+      ? 'menuitemcheckbox'
+      : 'menuitem';
   const hasExtraLeftSpaceEval =
-    (hasExtraLeftSpace ||
+    (Boolean(children) && hasExtraLeftSpace) ||
+    ((hasExtraLeftSpace ||
       Boolean(icon) ||
       isSelectable ||
       Boolean(selectionScheme)) &&
-    !Boolean(children);
+      !Boolean(children));
+  const isLabelString = typeof label === 'string';
+  const isFontIcon = typeof icon === 'string';
 
   return (
-    <StyledMenuItem as={as}>
+    <StyledMenuItem as={as} role="presentation">
       <StyledMenuItemInner
         {...restNativeProps}
         aria-keyshortcuts={shortcut}
         aria-expanded={isExpanded || null}
-        aria-label={label}
+        aria-label={ariaLabel || (isLabelString ? label : null)}
         aria-checked={(Boolean(selectionScheme) && isSelected) || null}
         as={isLink ? 'a' : isSelectable ? 'label' : 'button'}
         disabled={!isLink && !isSelectable && isDisabled}
@@ -142,7 +144,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
       >
         {isSelectable && (
           <StyledHiddenInput
-            aria-label={ariaLabel || label}
+            aria-label={ariaLabel || (isLabelString ? label : null)}
             checked={onChange ? isSelected : null}
             disabled={isDisabled}
             id={id ? `menu-item-input-${id}` : null}
@@ -173,9 +175,19 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                 {(icon || isSelected) && (
                   <StyledMenuItemMarker>
                     <Icon
-                      iconId={isSelected ? 'gi-check_thick' : icon}
+                      iconId={
+                        isFontIcon
+                          ? isSelected
+                            ? 'gi-check_thick'
+                            : icon
+                          : null
+                      }
                       size={iconSize}
-                    />
+                      tooltip="pepepe"
+                      role={'img'}
+                    >
+                      {!isFontIcon ? icon : null}
+                    </Icon>
                   </StyledMenuItemMarker>
                 )}
                 {prependContent}
@@ -193,7 +205,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
             </VFlex>
             {expandable && (
               <Flex as="span" flex="0" marginLeft="auto" paddingLeft="cmp-xs">
-                <Icon size="xxs" iconId="gi-arrow_right" />
+                <Icon size="xxs" iconId="gi-angle_right" />
               </Flex>
             )}
           </>

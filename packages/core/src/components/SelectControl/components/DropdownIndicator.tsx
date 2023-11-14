@@ -40,7 +40,7 @@ export const DropdownIndicator = <Option extends SelectOption>({
             className={`${selectProps.classNamePrefix}__status-icon`}
           />
         )}
-        <Icon iconId="gi-arrow_down_fat" />
+        <Icon iconId="gi-angle_down" />
       </components.DropdownIndicator>
     )
   );

@@ -8,6 +8,7 @@ import {
 import { hasStatus } from '../../../utils/validations';
 import { scrollbars } from '../../../styled/mixins/scrollbars';
 import { SelectOption } from '../declarations';
+import { disabledMixin } from '../../../styled';
 
 export const StyledSelectControl = styled(ReactSelect).attrs(
   ({ className, classNamePrefix, tooltip }) => ({
@@ -296,6 +297,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
 
         &__control--is-disabled {
           cursor: not-allowed;
+          ${disabledMixin(theme)};
         }
         ///////////////////////////////////////////////////////// END DISABLED
       }

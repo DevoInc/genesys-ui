@@ -63,6 +63,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   name,
   onClick = undefined,
   size = 'md',
+  styles,
   target,
   tooltip,
   variant = 'circle',
@@ -84,6 +85,7 @@ export const Avatar: React.FC<AvatarProps> = ({
       $disabled={disabled}
       role={imageSrc ? 'img' : undefined}
       size={size}
+      styles={styles}
       title={tooltip || name}
       variant={variant}
     >

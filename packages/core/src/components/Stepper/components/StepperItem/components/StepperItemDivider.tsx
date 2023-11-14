@@ -19,7 +19,7 @@ export const StepperItemDivider: React.FC<StepperItemDividerProps> = ({
   return (
     <Icon
       {...restIconProps}
-      iconId="gi-arrow_right"
+      iconId="gi-angle_right"
       styles={concat(baseStyles, styles)}
     />
   );

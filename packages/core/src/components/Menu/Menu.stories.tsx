@@ -27,7 +27,7 @@ export const Base: Story = {
         icon="gi-network_connection_computer_folder"
         label="Network manager"
       />
-      <Menu.Item icon="gi-pin_bookmark_solid" label="Set as default" />
+      <Menu.Item icon="gi-pin_bookmark" label="Set as default" />
       <Menu.Item icon="gi-tag_price_sale" label="Manage user tags" />
       <Menu.Separator />
       <Menu.Item icon="gi-download_file" label="Export to PDF" />
@@ -43,7 +43,7 @@ export const Base: Story = {
         state="disabled"
       />
       <Menu.Separator />
-      <Menu.Item icon="gi-compose_write_pencil_new" label="Edit details" />
+      <Menu.Item icon="gi-pencil_edit" label="Edit details" expandable />
       <Menu.Item
         icon="gi-settings_gear_preferences"
         label="Edit raw configuration"

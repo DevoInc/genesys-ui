@@ -12,9 +12,6 @@ const meta: Meta<SelectControlProps<SelectControlOption>> = {
   component: SelectControl,
   args: {
     menuAppendToBody: true,
-    menuQuiet: true,
-    menuRelative: true,
-    menuIsOpen: true,
     options: [
       { value: 1, label: 'Option one' },
       { value: 2, label: 'Option two' },
