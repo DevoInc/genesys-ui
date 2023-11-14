@@ -9,6 +9,9 @@ export const getHeaderNameByID = (
   columnDefs.find((colDef: ColDef) => colDef.id === virtualColumn.key)
     .headerName;
 
+/**
+ * @returns Column defs mixed with default column def
+ */
 export const getCollatedColumns = (
   defaultColumnDef: DefaultColDef,
   columnDefs: ColDef[],
