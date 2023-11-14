@@ -15,13 +15,13 @@ export const useTableVirtualization = ({
   const rowVirtualizer = useVirtualizer({
     count: data.length,
     getScrollElement: () => ref.current,
-    estimateSize: () => 30,
+    estimateSize: () => 100,
   });
 
   const columnVirtualizer = useVirtualizer({
     count: columnDefs.length,
     getScrollElement: () => ref.current,
-    estimateSize: () => 10,
+    estimateSize: () => 100,
     horizontal: true,
     getItemKey: (index: number) => columnDefs[index].id,
   });
