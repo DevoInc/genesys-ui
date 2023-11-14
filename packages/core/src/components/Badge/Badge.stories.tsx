@@ -5,6 +5,7 @@ import { Badge } from './Badge';
 const meta: Meta<typeof Badge> = {
   title: 'Components/Core/Feedback/Badge',
   component: Badge,
+  tags: ['isHidden'],
 };
 
 export default meta;

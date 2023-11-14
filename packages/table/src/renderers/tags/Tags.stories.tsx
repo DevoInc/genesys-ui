@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Holo } from '@devoinc/holo';
-
 import { Cell } from '../../core/Cell';
 import { ColDef } from '../../declarations';
 import { TagsRenderer } from './Tags';
-import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_VIRTUAL_ROW } from '../../constants';
+import { DEFAULT_VIRTUAL_COLUMN } from '../../constants';
 
 const data = Holo.of()
   .schema({
@@ -45,7 +44,6 @@ export const Base: Story = {
         <Cell
           columnDef={column}
           data={data[0][column.id]}
-          virtualRow={DEFAULT_VIRTUAL_ROW}
           virtualColumn={DEFAULT_VIRTUAL_COLUMN}
         />
       );

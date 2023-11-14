@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Holo } from '@devoinc/holo';
-
 import { Row } from './Row';
-
 import { ColDef } from '../../declarations';
 import {
   NumberRenderer,
@@ -11,7 +9,6 @@ import {
   TagsRenderer,
   TextRenderer,
 } from '../../renderers';
-import { DEFAULT_VIRTUAL_ROW } from '../../constants';
 import { useVirtualizer } from '@tanstack/react-virtual';
 
 const data = Holo.of()
@@ -62,7 +59,7 @@ const colDefs: ColDef[] = [
     id: 'booleanValue',
     headerName: 'booleanValue',
     type: 'tag',
-    tagConfig: {
+    cellRendererConfig: {
       true: { color: '#1EC990', text: 'Active' },
       false: { color: '#ED5353', text: 'Inactive' },
     },
@@ -72,7 +69,7 @@ const colDefs: ColDef[] = [
     id: 'status',
     headerName: 'status',
     type: 'tag',
-    tagConfig: {
+    cellRendererConfig: {
       TODO: { color: '#1EC990', text: 'TODO' },
       inProgress: { color: '#ED5353', text: 'inProgress' },
       test: { color: 'orange', text: 'test' },
@@ -110,7 +107,6 @@ export const Base: Story = {
         <Row
           columnDefs={colDefs}
           data={data[0]}
-          virtualRow={DEFAULT_VIRTUAL_ROW}
           columnVirtualizer={columnVirtualizer}
         />
       );

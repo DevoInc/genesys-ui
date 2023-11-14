@@ -18,7 +18,7 @@ export const TableBody: React.FC<TableBodyProps> = ({
   data,
 }) => (
   <StyledTableBody>
-    {rowVirtualizer.getVirtualItems().map((virtualRow) => {
+    {rowVirtualizer.getVirtualItems().map((virtualRow, index) => {
       return (
         <Row
           key={'tb_' + virtualRow.key}
@@ -26,14 +26,13 @@ export const TableBody: React.FC<TableBodyProps> = ({
           columnVirtualizer={columnVirtualizer}
           data={data[virtualRow.index]}
           styles={{
-            top: 0,
-            left: 0,
-            position: 'absolute',
-            width: '100%',
             height: `${virtualRow.size}px`,
-            transform: `translateY(${virtualRow.start}px)`,
+            transform: `translateY(${
+              virtualRow.start - index * virtualRow.size
+            }px)`,
+            width: '100%',
+            position: 'relative',
           }}
-          virtualRow={virtualRow}
         />
       );
     })}

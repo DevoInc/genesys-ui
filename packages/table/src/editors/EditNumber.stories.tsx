@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Holo } from '@devoinc/holo';
-
 import { ColDef } from '../declarations';
 import { EditNumber } from '.';
 import { Cell } from '../core/Cell';
 import { NumberRenderer } from '../renderers';
-import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_VIRTUAL_ROW } from '../constants';
+import { DEFAULT_VIRTUAL_COLUMN } from '../constants';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/Edit/Number',
@@ -39,7 +38,6 @@ export const NumberEditor: Story = {
         <Cell
           columnDef={columnEditTextNumber}
           data={number}
-          virtualRow={DEFAULT_VIRTUAL_ROW}
           virtualColumn={DEFAULT_VIRTUAL_COLUMN}
         />
       );

@@ -25,6 +25,7 @@ export const Menu = <Option extends SelectOption>(
     showMenuAndDropDown<Option>(props.selectProps) &&
     components.Menu && (
       <StyledSelectMenu
+        classNamePrefix={'react-select'}
         alignOptions={props.selectProps.alignOptions}
         className={`${props.selectProps.className}__menu`}
         size={props.selectProps.size}

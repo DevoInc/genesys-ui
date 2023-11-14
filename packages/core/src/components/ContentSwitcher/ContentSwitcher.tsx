@@ -47,4 +47,6 @@ export const ContentSwitcher =
   };
 
 ContentSwitcher.Item = ContentSwitcherItem;
+ContentSwitcher.Item.displayName = 'ContentSwitcher.Item';
 ContentSwitcher.Container = ContentSwitcherContainer;
+ContentSwitcher.Container.displayName = 'ContentSwitcher.Container';

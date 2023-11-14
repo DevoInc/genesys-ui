@@ -2,13 +2,7 @@ import styled, { css, keyframes } from 'styled-components';
 
 import { BaseProgressBarProps } from '../declarations';
 
-import {
-  getProgressBgColor,
-  getCxy,
-  getStroke,
-  getRadio,
-  getRadiant,
-} from '../utils';
+import { getProgressBgColor } from '../utils';
 
 const sizeStroke = keyframes`
   0% {
@@ -27,22 +21,11 @@ const sizeStroke = keyframes`
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledProgressBarCircularCircleInnerProps
-  extends Pick<
-    BaseProgressBarProps,
-    'indeterminate' | 'percent' | 'status' | 'size'
-  > {}
+  extends Pick<BaseProgressBarProps, 'indeterminate' | 'percent' | 'status'> {
+  rad: number;
+}
 
-export const StyledProgressBarCircularCircleInner = styled.circle.attrs(
-  ({ size }: StyledProgressBarCircularCircleInnerProps) => ({
-    // width, height, stroke-width and r depends on prop 'size' ------------------
-    cx: getCxy(size),
-    cy: getCxy(size),
-    strokeWidth: getStroke(size),
-    r: getRadio(size),
-    rad: getRadiant(size),
-    fill: 'none',
-  }),
-)<StyledProgressBarCircularCircleInnerProps>`
+export const StyledProgressBarCircularCircleInner = styled.circle<StyledProgressBarCircularCircleInnerProps>`
   ${({ indeterminate, status, percent, rad, theme }) => {
     const progressBarTokens = theme.cmp.progressBar;
 

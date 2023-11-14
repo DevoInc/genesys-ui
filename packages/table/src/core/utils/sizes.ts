@@ -1,41 +1,11 @@
 import { Brand } from '@devoinc/genesys-tokens-types';
+import { RowSizes } from '../../declarations';
 
 export const DENSITY = {
   DEFAULT: 'default',
   COMPACT: 'compact',
   COMFORTABLE: 'comfortable',
 };
-
-interface RowSizes {
-  head: { height: number };
-  row: {
-    height: {
-      md: number;
-      lg: number;
-      xl: number;
-      xxl: number;
-      xxxl: number;
-    };
-    br: number;
-  };
-  cell: {
-    horPad: number;
-    verPad: number;
-    verPadTall: number;
-  };
-  afterRow: {
-    horPad: number;
-    verPad: number;
-  };
-  expanded: {
-    horPad: number;
-    verPad: number;
-  };
-  expandedLg: {
-    horPad: number;
-    verPad: number;
-  };
-}
 
 /**
  * Returns an object with size values based in design tokens and display density

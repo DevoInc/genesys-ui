@@ -1,13 +1,11 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { elevationMixin } from '@devoinc/genesys-ui';
-
 import { getSizes } from '../utils';
 
 interface StyledHeaderCellProps {
   scrolled?: boolean;
-  width?: React.CSSProperties['width'];
-  offsetX?: number;
+  cellWidth?: React.CSSProperties['width'];
 }
 
 export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
@@ -18,17 +16,13 @@ export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
     `;
   }}
 
-  ${({ offsetX }) => css`
-    transform: translateX(${offsetX}px);
-  `}
-
   top: 0;
   vertical-align: middle;
   box-sizing: border-box;
 
-  ${({ width }) => {
+  ${({ cellWidth }) => {
     return css`
-      width: ${width};
+      width: ${cellWidth};
     `;
   }}
 

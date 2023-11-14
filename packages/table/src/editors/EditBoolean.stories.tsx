@@ -4,7 +4,7 @@ import { ColDef } from '../declarations';
 import { EditBoolean } from '.';
 import { Cell } from '../core/Cell';
 import { TagRenderer } from '../renderers';
-import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_VIRTUAL_ROW } from '../constants';
+import { DEFAULT_VIRTUAL_COLUMN } from '../constants';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/Edit/Tag',
@@ -25,7 +25,7 @@ export const BooleanEditor: Story = {
         headerName: 'booleanValue',
         CellEditor: () => EditBoolean({ value: boolean, onChange }),
         CellRenderer: TagRenderer,
-        tagConfig: {
+        cellRendererConfig: {
           true: { color: '#1EC990', text: 'Active' },
           false: { color: '#ED5353', text: 'Inactive' },
         },
@@ -36,7 +36,6 @@ export const BooleanEditor: Story = {
         <Cell
           columnDef={columnEditBoolean}
           data={boolean}
-          virtualRow={DEFAULT_VIRTUAL_ROW}
           virtualColumn={DEFAULT_VIRTUAL_COLUMN}
         />
       );

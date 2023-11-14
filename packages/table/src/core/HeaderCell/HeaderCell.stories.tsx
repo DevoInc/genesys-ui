@@ -14,6 +14,11 @@ type Story = StoryObj<typeof HeaderCell>;
 export const Base: Story = {
   render: () =>
     (() => {
-      return <HeaderCell virtualColumn={DEFAULT_VIRTUAL_COLUMN} />;
+      return (
+        <HeaderCell
+          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
+          headerName={'Column header'}
+        />
+      );
     })(),
 };

@@ -6,17 +6,15 @@ import { StyledHeaderCell } from './StyledTableHeaderCellWrapper';
 interface HeaderCellProps {
   scrolled?: boolean;
   virtualColumn: VirtualItem;
+  headerName: string;
 }
 
 export const HeaderCell: React.FC<HeaderCellProps> = ({
   scrolled,
   virtualColumn,
+  headerName,
 }) => (
-  <StyledHeaderCell
-    scrolled={scrolled}
-    width={`${virtualColumn.size}px`}
-    offsetX={virtualColumn.start}
-  >
-    <TextRenderer value={virtualColumn.key} bold />
+  <StyledHeaderCell scrolled={scrolled} cellWidth={`${virtualColumn.size}px`}>
+    <TextRenderer value={headerName} bold />
   </StyledHeaderCell>
 );

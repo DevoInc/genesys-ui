@@ -31,9 +31,7 @@ export interface StyledSelectMenuProps {
   size: FieldSize;
 }
 
-export const StyledSelectMenu = styled.div.attrs({
-  classNamePrefix: 'react-select',
-})<StyledSelectMenuProps>`
+export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`
   ${({
     alignOptions = 'left',
     classNamePrefix = 'react-select',

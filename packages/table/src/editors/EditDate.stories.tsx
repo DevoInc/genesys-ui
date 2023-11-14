@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-
 import { Holo } from '@devoinc/holo';
-
 import { ColDef } from '../declarations';
 import { EditDate } from '.';
 import { Cell } from '../core/Cell';
 import { dateFormatter } from '../valueFormatters/date';
 import { TextRenderer } from '../renderers';
-import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_VIRTUAL_ROW } from '../constants';
+import { DEFAULT_VIRTUAL_COLUMN } from '../constants';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/Edit/Date',
@@ -48,7 +46,6 @@ export const Base: Story = {
         <Cell
           columnDef={columnEditDate}
           data={date}
-          virtualRow={DEFAULT_VIRTUAL_ROW}
           virtualColumn={DEFAULT_VIRTUAL_COLUMN}
         />
       );

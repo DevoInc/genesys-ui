@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Holo } from '@devoinc/holo';
-
 import { Cell } from '../../core/Cell';
 import { ColDef } from '../../declarations';
 import { TagRenderer } from './Tag';
-import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_VIRTUAL_ROW } from '../../constants';
+import { DEFAULT_VIRTUAL_COLUMN } from '../../constants';
 
 const data = Holo.of()
   .schema({
@@ -19,7 +18,7 @@ const columnBoolean: ColDef = {
   id: 'booleanValue',
   headerName: 'booleanValue',
   type: 'tag',
-  tagConfig: {
+  cellRendererConfig: {
     true: { color: '#1EC990', text: 'Active' },
     false: { color: '#ED5353', text: 'Inactive' },
   },
@@ -30,7 +29,7 @@ const columnStatus: ColDef = {
   id: 'status',
   headerName: 'status',
   type: 'tag',
-  tagConfig: {
+  cellRendererConfig: {
     TODO: { color: '#1EC990', text: 'TODO' },
     inProgress: { color: '#ED5353', text: 'inProgress' },
     test: { color: 'orange', text: 'test' },
@@ -54,7 +53,6 @@ export const BooleanRenderer: Story = {
         <Cell
           columnDef={columnBoolean}
           data={data[0][columnBoolean.id]}
-          virtualRow={DEFAULT_VIRTUAL_ROW}
           virtualColumn={DEFAULT_VIRTUAL_COLUMN}
         />
       );
@@ -68,7 +66,6 @@ export const Status: Story = {
         <Cell
           columnDef={columnStatus}
           data={data[0][columnStatus.id]}
-          virtualRow={DEFAULT_VIRTUAL_ROW}
           virtualColumn={DEFAULT_VIRTUAL_COLUMN}
         />
       );

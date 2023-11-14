@@ -18,11 +18,7 @@ export interface StyledIconProps {
   strong?: boolean;
 }
 
-export const StyledIcon = styled.i.attrs(
-  ({ iconId }: Pick<StyledIconProps, 'iconId'>) => ({
-    className: iconId as string,
-  }),
-)<StyledIconProps>`
+export const StyledIcon = styled.i<StyledIconProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;

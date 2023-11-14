@@ -43,7 +43,7 @@ export interface ColDef {
   valueFormatter?: (value: unknown, context: DateContext) => void;
 
   // revisar
-  tagConfig?: any;
+  cellRendererConfig?: any;
   context?: {
     [key: string]: unknown;
   };
@@ -64,4 +64,35 @@ export interface ColDef {
   isDragging?: boolean;
   onReset?: (initialValue: unknown) => void;
   tooltipField?: string;
+}
+
+export interface RowSizes {
+  head: { height: number };
+  row: {
+    height: {
+      md: number;
+      lg: number;
+      xl: number;
+      xxl: number;
+      xxxl: number;
+    };
+    br: number;
+  };
+  cell: {
+    horPad: number;
+    verPad: number;
+    verPadTall: number;
+  };
+  afterRow: {
+    horPad: number;
+    verPad: number;
+  };
+  expanded: {
+    horPad: number;
+    verPad: number;
+  };
+  expandedLg: {
+    horPad: number;
+    verPad: number;
+  };
 }
