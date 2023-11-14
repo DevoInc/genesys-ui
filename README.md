@@ -53,11 +53,11 @@ git clone https://github.com/devoinc/genesys-ui
 cd genesys-ui
 ## Install dependencies
 npm ci
-
-## Run Storybook
-npm run storybook
 ## Build the packages
 npm run build
+## Run Storybook
+npm start
+
 ## Build the storybook
 npm run build-storybook
 ## Run tests
