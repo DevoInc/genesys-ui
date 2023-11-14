@@ -18,7 +18,7 @@ const columnBoolean: ColDef = {
   id: 'booleanValue',
   headerName: 'booleanValue',
   type: 'tag',
-  tagConfig: {
+  cellRendererConfig: {
     true: { color: '#1EC990', text: 'Active' },
     false: { color: '#ED5353', text: 'Inactive' },
   },
@@ -29,7 +29,7 @@ const columnStatus: ColDef = {
   id: 'status',
   headerName: 'status',
   type: 'tag',
-  tagConfig: {
+  cellRendererConfig: {
     TODO: { color: '#1EC990', text: 'TODO' },
     inProgress: { color: '#ED5353', text: 'inProgress' },
     test: { color: 'orange', text: 'test' },

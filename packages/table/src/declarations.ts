@@ -43,7 +43,7 @@ export interface ColDef {
   valueFormatter?: (value: unknown, context: DateContext) => void;
 
   // revisar
-  tagConfig?: any;
+  cellRendererConfig?: any;
   context?: {
     [key: string]: unknown;
   };

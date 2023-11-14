@@ -6,5 +6,5 @@ export type ColumnType = {
   context?: {
     [key: string]: unknown;
   };
-  tagConfig?: { [key: string]: { color: string; text: string } };
+  cellRendererConfig?: { [key: string]: { color: string; text: string } };
 };

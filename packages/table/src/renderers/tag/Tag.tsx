@@ -11,9 +11,9 @@ interface TagProps {
 export const TagRenderer: React.FC<TagProps> = ({ value, columnDef }) => {
   return (
     <Tag
-      colorScheme={columnDef.tagConfig[value]?.color}
-      text={columnDef.tagConfig[value]?.text}
-      icon={columnDef.tagConfig[value]?.icon}
+      colorScheme={columnDef.cellRendererConfig[value]?.color}
+      text={columnDef.cellRendererConfig[value]?.text}
+      icon={columnDef.cellRendererConfig[value]?.icon}
     />
   );
 };
