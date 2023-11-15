@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0](https://github.com/DevoInc/genesys-ui/compare/v1.3.0...v1.4.0) (2023-11-15)
+
+
+### Features
+
+* improvements for Icon, InputControl, MenuItem and PanelHeader components. ([2e2fa1d](https://github.com/DevoInc/genesys-ui/commit/2e2fa1df33906023c0aafc0a7111aef22827bfd9))
+
+
+### Bug Fixes
+
+* **icons:** fixed the font icon names according with the new naming way from genesys-icons project. ([d56d45b](https://github.com/DevoInc/genesys-ui/commit/d56d45bc0c4b9debcbb3acf29c16fc78c9c1f4d5))
+
 ## [1.3.0](https://github.com/DevoInc/genesys-ui/compare/v1.2.1...v1.3.0) (2023-11-15)
 
 
