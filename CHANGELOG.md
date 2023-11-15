@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/DevoInc/genesys-ui/compare/v1.2.1...v1.3.0) (2023-11-15)
+
+
+### Features
+
+* adapted to the last version of genesys-icons and improvements for Icon component to admit IconBase components as children. ([39f3871](https://github.com/DevoInc/genesys-ui/commit/39f387129fc7012c6058e9c4dc027752c91c75f9))
+
+
+### Bug Fixes
+
+* **Table:** Improved virtualization scrolling ([d3d9bce](https://github.com/DevoInc/genesys-ui/commit/d3d9bce8cd78dbcb3ca3b59f8d1eb2c438f7aa26))
+* **Table:** QUV-1836 Improved table virtualization and alignments ([969cb75](https://github.com/DevoInc/genesys-ui/commit/969cb753307601e23ee73ef28986d95df93a13b2))
+
 ## [1.2.1](https://github.com/DevoInc/genesys-ui/compare/v1.2.0...v1.2.1) (2023-11-10)
 
 
