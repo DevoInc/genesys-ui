@@ -84,7 +84,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       <div ref={setReferenceElement}>
         <InputControl
           aria-label={ariaLabel}
-          icon="calendar_month_day_planner_events2"
+          icon="gi-calendar_month_day_planner_events2"
           id={id}
           value={value && format(value, datetimeFormat)}
           onChange={onChange}

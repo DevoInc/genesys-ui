@@ -42,7 +42,7 @@ export const DateTimeRangeControlRTButton: React.FC<
       <IconButton
         css={cssDateTimeRangeControlRTButton}
         circular={true}
-        icon={'real_time'}
+        icon={'gi-real_time'}
         onClick={onClick}
         size={size}
         state={getButtonStateFromRealTimeState(state)}

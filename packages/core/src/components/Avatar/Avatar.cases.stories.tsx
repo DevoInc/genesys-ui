@@ -96,7 +96,7 @@ export const ButtonEditable: Story = {
     'aria-haspopup': true,
     customSize: { square: '12rem' },
     name: 'Edit profile',
-    iconOnHover: 'pencil_edit',
+    iconOnHover: 'gi-pencil_edit',
   },
   render: (args) =>
     ((args) => {
@@ -120,7 +120,7 @@ export const ButtonExpandable: Story = {
     'aria-haspopup': true,
     customSize: { square: '12rem' },
     name: 'Expand avatar image',
-    iconOnHover: 'zoom_expand_maximize_window',
+    iconOnHover: 'gi-zoom_expand_maximize_window',
     onClick: () => console.info('Opening lightbox to expand profile image'),
   },
 };
@@ -133,7 +133,7 @@ export const Clickable: Story = {
     colorScheme: 'neutral',
     customSize: { square: '12rem' },
     disabled: false,
-    iconOnHover: 'zoom_expand_maximize_window',
+    iconOnHover: 'gi-zoom_expand_maximize_window',
     imageFit: 'cover',
     imageSrc: EXAMPLE_AVATAR_IMG,
     name: 'Expand avatar image',

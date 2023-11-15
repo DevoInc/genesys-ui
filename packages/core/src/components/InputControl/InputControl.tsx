@@ -96,7 +96,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
   value,
 }) => {
   const [showPassword, setShowPassword] = React.useState(false);
-  const typeIcon = type === 'search' ? 'search_find_zoom' : null;
+  const typeIcon = type === 'search' ? 'gi-search_find_zoom' : null;
   const iconEval =
     icon || (hasStatus(status) ? INPUT_CONTROL_ICON_STATUS_MAP[status] : icon);
   return (

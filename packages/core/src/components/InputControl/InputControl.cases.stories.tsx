@@ -26,7 +26,7 @@ export const AdvancedUsage: Story = {
       <InputControl.Container>
         <InputControl.Addon position="left">Addon to left</InputControl.Addon>
         <InputControl.InnerContainer>
-          <InputControl.Icon icon="check_thick" />
+          <InputControl.Icon icon="gi-check_thick" />
           <InputControl.Input
             aria-label="story example"
             hasAddonToLeft
