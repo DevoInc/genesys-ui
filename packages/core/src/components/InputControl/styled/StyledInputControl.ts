@@ -60,9 +60,10 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
     const inputBorderRadius = fieldTokens.shape.borderRadius;
     const inputHeight = fieldTokens.size.height[$size];
     const inputHorPadding = fieldTokens.space.padding.hor[$size];
-    const inputWithIconPadding = hasIcon
-      ? css`calc(${iconSize} + ${inputHorPadding} * 2)`
-      : '0rem';
+    const inputWithIconPadding =
+      hasIcon || hasTypeIcon
+        ? css`calc(${iconSize} + ${inputHorPadding} * 2)`
+        : '0rem';
     const inputWithShowPasswordPadding =
       type === 'password'
         ? css`calc(${showPasswordSize} + ${inputHorPadding} * 2)`

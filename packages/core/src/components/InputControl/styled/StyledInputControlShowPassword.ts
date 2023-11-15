@@ -10,6 +10,7 @@ export const StyledInputControlShowPassword = styled.span<StyledInputControlShow
   right: ${({ $size, theme }) => css`
     ${theme.alias.fields.space.padding.hor[$size]}
   `};
+  display: flex;
   transform: translate(0, -50%);
   z-index: 1;
 `;

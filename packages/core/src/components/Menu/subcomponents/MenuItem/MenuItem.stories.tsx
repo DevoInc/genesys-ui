@@ -7,6 +7,7 @@ import { Badge } from '../../../Badge';
 import { Typography } from '../../../Typography';
 import { VFlex } from '../../../VFlex';
 import { ProgressBar } from '../../../ProgressBar';
+import { Box } from '../../../Box';
 import { GITimeZone } from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof Menu.Item> = {
@@ -66,9 +67,9 @@ export const WithAppendPrependAndBottomContent: Story = {
       </Flex>
     ),
     bottomContent: (
-      <Flex as="span" paddingTop="cmp-xs">
+      <Box marginTop="cmp-xs">
         <ProgressBar percent={48} />
-      </Flex>
+      </Box>
     ),
     prependContent: (
       <Flex as="span" paddingRight="cmp-xs">

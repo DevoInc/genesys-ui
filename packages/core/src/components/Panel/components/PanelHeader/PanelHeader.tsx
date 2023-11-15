@@ -1,6 +1,9 @@
 import * as React from 'react';
 
-import { StyledOverloadCssProps } from '../../../../declarations';
+import {
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '../../../../declarations';
 import { PanelFooterProps } from '../PanelFooter';
 import { HeaderSettingsProps, PanelSize } from '../../declarations';
 
@@ -20,6 +23,7 @@ import {
 
 export interface PanelHeaderProps
   extends StyledOverloadCssProps,
+    Pick<StyledPolymorphicProps, 'as'>,
     Omit<HeaderSettingsProps, 'renderContent'>,
     Pick<PanelHeaderContainerProps, 'hasBoxShadow'>,
     Pick<
@@ -46,6 +50,7 @@ export interface PanelHeaderProps
 
 export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
   actions,
+  as,
   bordered,
   children,
   closeSettings,
@@ -64,6 +69,7 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
 }) => {
   return (
     <PanelHeaderContainer
+      as={as}
       hasBoxShadow={hasBoxShadow}
       bordered={bordered}
       hasSubtitle={Boolean(subtitle)}

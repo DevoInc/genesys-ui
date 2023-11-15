@@ -164,6 +164,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
               justifyContent="center"
               childrenFitFullWidth
               spacing="0"
+              minWidth="0"
             >
               <HFlex
                 as="span"
@@ -183,8 +184,8 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                           : null
                       }
                       size={iconSize}
-                      tooltip="pepepe"
                       role={'img'}
+                      tooltip={ariaLabel || (isLabelString ? label : null)}
                     >
                       {!isFontIcon ? icon : null}
                     </Icon>

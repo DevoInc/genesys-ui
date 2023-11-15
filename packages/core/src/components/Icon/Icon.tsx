@@ -44,6 +44,7 @@ export const Icon: React.FC<IconProps> = ({
         }),
         size: getIconSize(theme)(size),
         title: tooltip,
+        style: { position: 'relative' },
       }}
     >
       {children}
