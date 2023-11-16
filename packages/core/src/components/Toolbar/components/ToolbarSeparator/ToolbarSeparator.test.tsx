@@ -13,7 +13,7 @@ describe('ToolbarSeparator', () => {
     expect(container.getElementsByTagName('hr')[0]).toHaveStyle(`
         height: 2rem;
         width: 0.1rem;
-        margin: 0.4rem 0px;
+        margin: 0 0.4rem;
     `);
   });
 });
