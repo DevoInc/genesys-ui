@@ -47,24 +47,23 @@ export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
       css`
         border-radius: var(--border-radius);
       `}
-
       .overflow-guard {
         ${bordered &&
         css`
-          //  -1 fills the gap between the internal border and external border
+          // -1 fills the gap between the internal border and external border
           border-radius: calc(var(--border-radius) - 1px);
         `}
       }
 
       // Base font color. Applies to non tokenized text - Smart Editor - Style
-      
+
       .mtk1 {
         color: ${theme.alias.color.text.body.stronger};
       }
 
       // Cannot edit on read-only mode - Smart Editor - Style
       // overflowingContentWidgets className
-      
+
       .monaco-editor-overlaymessage {
         .message {
           box-shadow: ${theme.alias.elevation.boxShadow.depth.activated};
@@ -108,9 +107,7 @@ export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
           margin-left: calc(-1 * var(--line-numbers-spacing));
         }
       `}
-
       // Scrollbar - Smart Editor - Style
-  
       .monaco-scrollable-element {
         .scrollbar {
           background-color: ${theme.alias.scrollbars.track.color.backdrop};
@@ -155,15 +152,15 @@ export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
       // Minimap - Smart Editor - Style
 
       .minimap {
-        transform: translateX(.6rem);
+        transform: translateX(0.6rem);
       }
 
       // Decorations overview ruler - Smart Editor - Style
-      
+
       .decorationsOverviewRuler {
         width: var(--scrollbar-size) !important;
         border-left: ${minimap &&
-          `1px solid ${theme.alias.color.border.separator.base.weak}`};
+        `1px solid ${theme.alias.color.border.separator.base.weak}`};
       }
     }
   `}
