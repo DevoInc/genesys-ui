@@ -13,16 +13,16 @@ export interface StyledInternalDiffEditorProps
 export const StyledInternalDiffEditor = styled(
   StyledInternalEditor,
 )<StyledInternalDiffEditorProps>`
-  ${({ theme, originalEditable, readOnly, bordered }) => css`
+  ${({ bordered, originalEditable, readOnly, theme }) => css`
     --border-radius: ${theme.alias.fields.shape.borderRadius};
-    --inner-border-radius: calc(var(--border-radius) - 1px);
+    --inner-border-radius: calc(var(--border-radius) -0.1rem);
 
     .monaco-diff-editor.side-by-side {
       ${bordered && 'border-radius: var(--border-radius);'}
-
       // Left side of the diff editor
       .editor.original {
         box-shadow: none;
+
         ${!originalEditable &&
         !readOnly &&
         css`
@@ -31,45 +31,64 @@ export const StyledInternalDiffEditor = styled(
               .readonly};
           }
         `}
-
-        .overflow-guard {
+        .monaco-editor {
           ${bordered &&
           css`
-            //  -1 fills the gap between the internal border and external border
-            border-radius: var(--inner-border-radius) 0px 0px
+            border-radius: var(--inner-border-radius) 0 0
               var(--inner-border-radius);
+
+            .overflow-guard {
+              border-radius: var(--inner-border-radius) 0 0
+                var(--inner-border-radius);
+
+              .lines-content.monaco-editor-background {
+                .view-overlays .line-delete {
+                  left: calc(-1 * var(--line-numbers-spacing)) !important;
+                }
+              }
+            }
           `}
         }
       }
 
       // Right side of the diff editor
+
       .editor.modified {
         box-shadow: none;
-
         border-left-width: ${theme.alias.fields.shape.borderSize.base};
         border-left-style: solid;
-        border-left-color: ${readOnly
-          ? theme.alias.fields.color.background.base.readonly
-          : theme.alias.fields.color.border.base.enabled};
+        border-left-color: ${theme.alias.fields.color.border.base.enabled};
 
         .scrollbar {
-          right: 1px !important;
+          right: 0.1rem !important;
         }
 
-        .overflow-guard {
-          ${bordered &&
-          css`
-            //  -1 fills the gap between the internal border and external border
-            border-radius: 0px var(--inner-border-radius)
-              var(--inner-border-radius) 0px;
-          `}
+        .monaco-editor {
+          border-radius: 0;
+
+          .overflow-guard {
+            border-radius: 0;
+
+            .lines-content.monaco-editor-background {
+              .view-overlays .line-insert {
+                left: calc(-1 * var(--line-numbers-spacing)) !important;
+              }
+            }
+          }
         }
       }
 
+      // Difference area
+
       .diffOverview {
+        border-left-width: ${theme.alias.fields.shape.borderSize.base};
+        border-left-style: solid;
+        border-left-color: ${theme.alias.fields.color.border.base.enabled};
         background-color: ${theme.alias.color.background.feedback.neutral
           .weaker};
+
         // Hide diff viewport slider but keep the area clickable
+
         .diffViewport {
           opacity: 0 !important;
         }
