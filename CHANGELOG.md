@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.5.0](https://github.com/DevoInc/genesys-ui/compare/v1.4.0...v1.5.0) (2023-11-16)
+
+
+### Features
+
+* modified the margin prop of Divider component to have the same behavior of the rest of ones and added surface background color to the DropdownMenu. ([516110e](https://github.com/DevoInc/genesys-ui/commit/516110e32b3732f83a4b0e6997c7604cc7fe7150))
+
+
+### Bug Fixes
+
+* **Editor:** QUV-1868 - Minor Code styles have been improved ([#34](https://github.com/DevoInc/genesys-ui/issues/34)) ([e06c387](https://github.com/DevoInc/genesys-ui/commit/e06c387861a92832c12decf77006a8df577fd646))
+* **tests:** fixed test for ToolbarSeparator. ([f906c65](https://github.com/DevoInc/genesys-ui/commit/f906c65b410be8db9c4ae740e99bcfcabb4fd2aa))
+
 ## [1.4.0](https://github.com/DevoInc/genesys-ui/compare/v1.3.0...v1.4.0) (2023-11-15)
 
 
