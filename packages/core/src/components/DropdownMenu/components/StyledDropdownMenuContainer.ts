@@ -8,6 +8,7 @@ export const StyledDropdownMenuContainer = styled.ul<StyledDropdownProps>`
   ${({ theme, ...mixinBoxProps }) => {
     return css`
       ${boxMixin(theme)(mixinBoxProps)};
+      background-color: ${theme.alias.color.background.surface.base.base};
     `;
   }}
 `;

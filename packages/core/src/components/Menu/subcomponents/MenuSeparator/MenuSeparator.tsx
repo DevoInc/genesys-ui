@@ -5,6 +5,6 @@ import { StyledMenuSeparator } from './StyledMenuSeparator';
 
 export const MenuSeparator: React.FC = () => (
   <StyledMenuSeparator role="separator">
-    <Divider colorScheme="weak" margin="cmp-xs" />
+    <Divider colorScheme="weak" margin="cmp-xs 0" />
   </StyledMenuSeparator>
 );

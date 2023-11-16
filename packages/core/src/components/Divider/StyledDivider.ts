@@ -11,7 +11,7 @@ export interface StyledDividerProps {
   /** This property defines a custom color of the divider */
   customColor?: React.CSSProperties['color'];
   /** Vertical or horizontal Css margin, depending on the Divider is vertical. */
-  margin?: GlobalSpacing;
+  margin?: string | GlobalSpacing;
   /** This property defines if the divider is vertical */
   vertical?: boolean;
   /** Css height */
@@ -30,7 +30,9 @@ export const StyledDivider = styled.hr<StyledDividerProps>`
     vertical = false,
     $width,
   }) => {
-    const defaultSpacing = theme.alias.space.cmp.md;
+    const defaultSpacing = vertical
+      ? `0 ${theme.alias.space.cmp.md}`
+      : `${theme.alias.space.cmp.md} 0`;
     const spacing = margin ? getSpacingPropCss(theme)(margin) : defaultSpacing;
     const borderSize = theme.alias.shape.borderSize.separator.md;
     const bgColor =
@@ -41,8 +43,7 @@ export const StyledDivider = styled.hr<StyledDividerProps>`
       flex-shrink: 0;
       display: ${vertical ? 'inline-flex' : 'flex'};
       overflow: hidden;
-      margin: ${margin && getSpacingPropCss(theme)(margin)};
-      margin: ${vertical ? `0 ${spacing}` : `${spacing} 0`};
+      margin: ${spacing};
       border: none;
       width: ${$width || (vertical ? borderSize : '100%')};
       height: ${$height ||
