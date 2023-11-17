@@ -108,13 +108,13 @@ export const MenuItem: React.FC<MenuItemProps> = ({
       : selectionScheme === 'multiple'
       ? 'menuitemcheckbox'
       : 'menuitem';
-  const hasExtraLeftSpaceEval =
-    (Boolean(children) && hasExtraLeftSpace) ||
-    ((hasExtraLeftSpace ||
-      Boolean(icon) ||
-      isSelectable ||
-      Boolean(selectionScheme)) &&
-      !Boolean(children));
+  const getHasExtraLeftSpace = () => {
+    if (hasExtraLeftSpace === false) return false;
+    if (Boolean(children) && hasExtraLeftSpace) return true;
+    return (
+      (hasExtraLeftSpace || Boolean(icon) || isSelectable) && !Boolean(children)
+    );
+  };
   const isLabelString = typeof label === 'string';
   const isFontIcon = typeof icon === 'string';
 
@@ -129,7 +129,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         as={isLink ? 'a' : isSelectable ? 'label' : 'button'}
         disabled={!isLink && !isSelectable && isDisabled}
         download={download}
-        hasExtraLeftSpace={hasExtraLeftSpaceEval}
+        hasExtraLeftSpace={getHasExtraLeftSpace()}
         href={isDisabled ? null : href}
         id={id}
         name={isSelectable ? null : name}
@@ -173,21 +173,17 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                 minWidth="0"
                 spacing="cmp-xs"
               >
-                {(icon || isSelected) && (
+                {(icon || isSelected) && getHasExtraLeftSpace() && (
                   <StyledMenuItemMarker>
                     <Icon
                       iconId={
-                        isFontIcon
-                          ? isSelected
-                            ? 'gi-check_thick'
-                            : icon
-                          : null
+                        isSelected ? 'gi-check_thick' : isFontIcon ? icon : null
                       }
                       size={iconSize}
                       role={'img'}
                       tooltip={ariaLabel || (isLabelString ? label : null)}
                     >
-                      {!isFontIcon ? icon : null}
+                      {!isSelected && !isFontIcon ? icon : null}
                     </Icon>
                   </StyledMenuItemMarker>
                 )}
