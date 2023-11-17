@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/DevoInc/genesys-ui/compare/v1.5.0...v1.5.1) (2023-11-17)
+
+
+### Bug Fixes
+
+* **MenuItem:** fixed condition to show automatically check icon when it's selected and now it's possible to force not to have extra left space only by the specific prop. ([f49c66f](https://github.com/DevoInc/genesys-ui/commit/f49c66faa84db77c2e039456b17a1087570ca120))
+
 ## [1.5.0](https://github.com/DevoInc/genesys-ui/compare/v1.4.0...v1.5.0) (2023-11-16)
 
 
