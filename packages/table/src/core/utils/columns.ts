@@ -2,12 +2,11 @@ import { VirtualItem } from '@tanstack/react-virtual';
 import { ColDef, DefaultColDef } from '../../declarations';
 import { ColumnType } from '../../types/declarations';
 
-export const getHeaderNameByID = (
+export const getColDefByID = (
   columnDefs: ColDef[],
   virtualColumn: VirtualItem,
-): string =>
-  columnDefs.find((colDef: ColDef) => colDef.id === virtualColumn.key)
-    .headerName;
+): ColDef =>
+  columnDefs.find((colDef: ColDef) => colDef.id === virtualColumn.key);
 
 /**
  * @returns Column defs mixed with default column def

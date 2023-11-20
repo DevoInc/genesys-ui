@@ -4,7 +4,7 @@ import { StyledTableHeadRow } from './StyledTableHeadRow';
 import { HeaderCell } from '../HeaderCell';
 import { Virtualizer } from '@tanstack/react-virtual';
 import { ColDef } from '../../declarations';
-import { getHeaderNameByID } from '../utils';
+import { getColDefByID } from '../utils';
 
 interface TableHeadProps {
   scrolled?: boolean;
@@ -24,7 +24,7 @@ export const TableHead: React.FC<TableHeadProps> = ({
           key={virtualColumn.key}
           virtualColumn={virtualColumn}
           scrolled={scrolled}
-          headerName={getHeaderNameByID(columnDefs, virtualColumn)}
+          colDef={getColDefByID(columnDefs, virtualColumn)}
         />
       ))}
     </StyledTableHeadRow>
