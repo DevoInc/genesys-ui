@@ -9,12 +9,7 @@ interface StyledTableHeadRowProps {
 export const StyledTableHeadRow = styled.tr<StyledTableHeadRowProps>`
   position: relative;
   width: 100%;
-
-  ${({ height }) => {
-    return css`
-      height: ${height};
-    `;
-  }}
+  display: flex;
 
   ${({ scrolled, theme }) => {
     const tokens = theme.cmp.table;

@@ -7,7 +7,7 @@ interface LinkProps {
 
 export const linkFormatter: React.FC<LinkProps> = (value) => {
   return (
-    <Link href={String(value)} tooltip={String(value)}>
+    <Link href={String(value)} tooltip={String(value)} lineClamp={1}>
       {String(value)}
     </Link>
   );

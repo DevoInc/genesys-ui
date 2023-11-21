@@ -16,17 +16,32 @@ export const TableHead: React.FC<TableHeadProps> = ({
   scrolled,
   columnVirtualizer,
   columnDefs,
-}) => (
-  <StyledTableHead scrolled={scrolled}>
-    <StyledTableHeadRow scrolled={scrolled}>
-      {columnVirtualizer.getVirtualItems().map((virtualColumn) => (
-        <HeaderCell
-          key={virtualColumn.key}
-          virtualColumn={virtualColumn}
-          scrolled={scrolled}
-          colDef={getColDefByID(columnDefs, virtualColumn)}
-        />
-      ))}
-    </StyledTableHeadRow>
-  </StyledTableHead>
-);
+}) => {
+  const columnsNumber = columnDefs.length;
+  return (
+    <StyledTableHead scrolled={scrolled}>
+      <StyledTableHeadRow scrolled={scrolled}>
+        {columnVirtualizer.getVirtualItems().map((virtualColumn) => {
+          const columnWidthProp = getColDefByID(columnDefs, virtualColumn)
+            ?.cellStyle?.width;
+          return (
+            <HeaderCell
+              key={virtualColumn.key}
+              scrolled={scrolled}
+              colDef={getColDefByID(columnDefs, virtualColumn)}
+              headerCellFlex={
+                columnWidthProp
+                  ? `1 1 ${columnWidthProp}%`
+                  : `1 1 calc(100% / ${columnsNumber})`
+              }
+              headerCellWidth={
+                virtualColumn?.size ? `${virtualColumn.size}px` : null
+              }
+              virtualColumn={virtualColumn}
+            />
+          );
+        })}
+      </StyledTableHeadRow>
+    </StyledTableHead>
+  );
+};

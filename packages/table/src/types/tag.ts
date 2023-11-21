@@ -5,9 +5,9 @@ export const typeTag: ColumnType = {
   id: 'tag',
   CellRenderer: TagRenderer,
   cellRendererConfig: {
-    TODO: { color: '#1EC990', text: 'TODO' },
-    inProgress: { color: '#ED5353', text: 'inProgress' },
-    test: { color: 'orange', text: 'test' },
-    done: { color: 'green', text: 'done' },
+    TODO: { color: 'warning', text: 'TODO' },
+    inProgress: { color: 'info', text: 'In progress' },
+    test: { color: 'data-purple', text: 'Test' },
+    done: { color: 'success', text: 'Done' },
   },
 };

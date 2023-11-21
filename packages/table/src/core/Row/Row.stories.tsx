@@ -21,7 +21,7 @@ const data = Holo.of()
     balance: 'euro',
     timestamp: 'timestamp',
     booleanValue: 'bool',
-    status: () => Holo.chance.pickone(['TODO', 'inProgress', 'test', 'done']),
+    status: () => Holo.chance.pickone(['TODO', 'In progress', 'Test', 'Done']),
     tags: () =>
       Holo.chance.pickset(
         [
@@ -60,8 +60,8 @@ const colDefs: ColDef[] = [
     headerName: 'booleanValue',
     type: 'tag',
     cellRendererConfig: {
-      true: { color: '#1EC990', text: 'Active' },
-      false: { color: '#ED5353', text: 'Inactive' },
+      true: { color: 'success', text: 'Active' },
+      false: { color: 'neutral', text: 'Inactive' },
     },
     CellRenderer: TagRenderer,
   },
@@ -70,10 +70,10 @@ const colDefs: ColDef[] = [
     headerName: 'status',
     type: 'tag',
     cellRendererConfig: {
-      TODO: { color: '#1EC990', text: 'TODO' },
-      inProgress: { color: '#ED5353', text: 'inProgress' },
-      test: { color: 'orange', text: 'test' },
-      done: { color: 'green', text: 'done' },
+      TODO: { color: 'warning', text: 'TODO' },
+      inProgress: { color: 'data-blue', text: 'inProgress' },
+      test: { color: 'data-bronze', text: 'test' },
+      done: { color: 'success', text: 'done' },
     },
     CellRenderer: TagRenderer,
   },

@@ -17,7 +17,10 @@ export const TableBody: React.FC<TableBodyProps> = ({
   columnVirtualizer,
   data,
 }) => (
-  <StyledTableBody>
+  <StyledTableBody
+    $height={`${rowVirtualizer.getTotalSize()}px`}
+    $width={`${columnVirtualizer.getTotalSize()}px`}
+  >
     {rowVirtualizer.getVirtualItems().map((virtualRow, index) => {
       return (
         <Row

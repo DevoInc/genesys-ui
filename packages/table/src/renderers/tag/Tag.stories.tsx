@@ -9,7 +9,7 @@ import { DEFAULT_VIRTUAL_COLUMN } from '../../constants';
 const data = Holo.of()
   .schema({
     booleanValue: 'bool',
-    status: () => Holo.chance.pickone(['TODO', 'inProgress', 'test', 'done']),
+    status: () => Holo.chance.pickone(['TODO', 'In progress', 'Test', 'Done']),
   })
   .repeat(1)
   .generate();
@@ -19,8 +19,8 @@ const columnBoolean: ColDef = {
   headerName: 'booleanValue',
   type: 'tag',
   cellRendererConfig: {
-    true: { color: '#1EC990', text: 'Active' },
-    false: { color: '#ED5353', text: 'Inactive' },
+    true: { color: 'success', text: 'Active' },
+    false: { color: 'neutral', text: 'Inactive' },
   },
   CellRenderer: TagRenderer,
 };
@@ -30,10 +30,10 @@ const columnStatus: ColDef = {
   headerName: 'status',
   type: 'tag',
   cellRendererConfig: {
-    TODO: { color: '#1EC990', text: 'TODO' },
-    inProgress: { color: '#ED5353', text: 'inProgress' },
-    test: { color: 'orange', text: 'test' },
-    done: { color: 'green', text: 'done' },
+    TODO: { color: 'neutral', text: 'TODO' },
+    inProgress: { color: 'warning', text: 'In progress' },
+    test: { color: 'info', text: 'Test' },
+    done: { color: 'green', text: 'Done' },
   },
   CellRenderer: TagRenderer,
 };

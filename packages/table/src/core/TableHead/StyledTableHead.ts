@@ -7,15 +7,18 @@ interface StyledTableHeadProps {
 }
 
 export const StyledTableHead = styled.thead<StyledTableHeadProps>`
-  ${({ scrolled, theme }) => {
+  top: 0;
+  vertical-align: middle;
+  width: 100%;
+  display: inline-block;
+  position: sticky;
+
+  ${({ scrolled = true, theme }) => {
     return css`
-      ${scrolled && elevationMixin(theme)('stickyBottom')})};
+      ${scrolled && elevationMixin(theme)('stickyBottom')};
       position: ${scrolled ? 'sticky' : 'relative'};
     `;
   }}
-
-  top: 0;
-  vertical-align: middle;
 
   ${({ theme }) => {
     return css`

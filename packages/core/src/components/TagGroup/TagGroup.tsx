@@ -25,6 +25,7 @@ export type TagGroupProps = BaseTagGroupProps &
 
 export const InternalTagGroup: React.FC<TagGroupProps> = ({
   children,
+  flexWrap = 'wrap',
   labelPosition = 'left',
   label,
   size = 'md',
@@ -43,7 +44,11 @@ export const InternalTagGroup: React.FC<TagGroupProps> = ({
           {label}
         </TagGroup.Label>
       )}
-      <TagGroup.List styles={subcomponentStyles?.list} size={size}>
+      <TagGroup.List
+        flexWrap={flexWrap}
+        styles={subcomponentStyles?.list}
+        size={size}
+      >
         {children}
       </TagGroup.List>
     </TagGroup.Container>

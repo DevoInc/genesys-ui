@@ -15,8 +15,8 @@ interface StyledTextProps {
 
 export const StyledText = styled.div<StyledTextProps>`
   position: relative;
-  flex: '1';
-  display: 'flex';
+  flex: 1 1 100%;
+  display: flex;
 
   ${({ size, theme, bold }) => {
     return css`

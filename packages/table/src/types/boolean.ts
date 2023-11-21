@@ -7,7 +7,7 @@ export const typeBoolean: ColumnType = {
   CellRenderer: TagRenderer,
   CellEditor: EditBoolean,
   cellRendererConfig: {
-    true: { color: '#1EC990', text: 'Active' },
-    false: { color: '#ED5353', text: 'Inactive' },
+    true: { color: 'success', text: 'Active' },
+    false: { color: 'neutral', text: 'Inactive' },
   },
 };

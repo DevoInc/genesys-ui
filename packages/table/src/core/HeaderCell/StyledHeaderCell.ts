@@ -5,31 +5,26 @@ import { getSizes } from '../utils';
 
 interface StyledHeaderCellProps {
   scrolled?: boolean;
-  cellWidth?: React.CSSProperties['width'];
+  headerCellWidth: React.CSSProperties['width'];
+  headerCellFlex: React.CSSProperties['flex'];
 }
 
 export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
+  display: flex;
+  align-items: center;
+  top: 0;
+  box-sizing: border-box;
+  height: 4.2rem;
+  padding: 0 1.2rem;
+  width: ${({ headerCellWidth }) => headerCellWidth};
+  flex: ${({ headerCellFlex }) => headerCellFlex};
+  color: ${({ theme }) => theme.alias.color.text.heading.base};
+  flex: 0 0 auto;
+
   ${({ scrolled, theme }) => {
     return css`
       ${scrolled && elevationMixin(theme)('stickyBottom')};
       position: ${scrolled ? 'sticky' : 'relative'};
-    `;
-  }}
-
-  top: 0;
-  vertical-align: middle;
-  box-sizing: border-box;
-
-  ${({ cellWidth }) => {
-    return css`
-      width: ${cellWidth};
-    `;
-  }}
-
-  ${({ theme }) => {
-    const aliasTokens = theme.alias;
-    return css`
-      color: ${aliasTokens.color.text.heading.base};
     `;
   }}
 
@@ -50,11 +45,10 @@ export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
   }}
 
   // resizable columns
-      ::-webkit-resizer {
+  ::-webkit-resizer {
     appearance: none;
   }
-  padding-top: 0;
-  padding-bottom: 0;
+
   // to avoid include '...' ellipsis in complex type cells
   &::after {
     content: none;

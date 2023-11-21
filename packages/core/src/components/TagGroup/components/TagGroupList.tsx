@@ -15,7 +15,6 @@ export interface TagGroupListProps
 
 export const TagGroupList: React.FC<TagGroupListProps> = ({
   alignItems = 'center',
-  flexWrap = 'wrap',
   inline = true,
   children,
   size = 'md',
@@ -27,7 +26,6 @@ export const TagGroupList: React.FC<TagGroupListProps> = ({
     <Flex
       {...restFlexProps}
       alignItems={alignItems}
-      flexWrap={flexWrap}
       inline={inline}
       role="group"
       styles={concat(tagGroupFlexSpacingMixin({ size, theme }), styles)}

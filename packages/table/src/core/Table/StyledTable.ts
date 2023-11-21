@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export interface StyledTableProps {
   width?: React.CSSProperties['width'];
@@ -9,9 +9,8 @@ export interface StyledTableProps {
 
 export const StyledTable = styled.table<StyledTableProps>`
   position: relative;
+  display: block;
   height: ${({ height }) => height};
-
-  ${({ width }) => css`
-    width: ${width ? `${width}px` : '100%'};
-  `}
+  width: ${({ width }) => (width ? `${width}px` : '100%')};
+  //min-width: 1800px;
 `;

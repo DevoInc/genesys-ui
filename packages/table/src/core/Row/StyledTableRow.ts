@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 interface StyledTableRowProps {
@@ -19,4 +20,6 @@ export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
 )<StyledTableRowProps>`
   top: 0;
   left: 0;
+  display: flex;
+  align-items: center;
 `;

@@ -83,6 +83,9 @@ const tableOptions: TableOptionsProps = {
       id: 'booleanValue',
       headerName: 'Boolean value',
       type: 'tagBoolean',
+      cellStyle: {
+        width: 30,
+      },
     },
     {
       id: 'name',

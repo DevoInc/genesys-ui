@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyledTableCellWrapper } from './StyledTableCellWrapper';
+import { StyledTableCell } from './StyledTableCell';
 import { useRenderContent } from './useRenderContent';
 import { ColDef } from '../../declarations';
 import { useInitialState } from '../../editors/useInitialState';
@@ -8,12 +8,16 @@ import { VirtualItem } from '@tanstack/react-virtual';
 interface CellProps {
   data: unknown;
   columnDef: ColDef;
+  cellWidth?: React.CSSProperties['width'];
+  cellFlex?: React.CSSProperties['flex'];
   virtualColumn: VirtualItem;
 }
 
 export const Cell: React.FC<CellProps> = ({
   data,
   columnDef,
+  cellWidth,
+  cellFlex,
   virtualColumn,
 }) => {
   const { onReset } = columnDef;
@@ -24,12 +28,16 @@ export const Cell: React.FC<CellProps> = ({
     useRenderContent(columnDef, data);
 
   return (
-    <StyledTableCellWrapper
+    <StyledTableCell
       onDoubleClick={onDoubleClick}
       ref={cellRef}
-      cellWidth={`${virtualColumn.size}px`}
+      /*      cellWidth={
+        virtualColumn?.size ? `1 1 ${virtualColumn.size}px` : cellWidth
+      }*/
+      cellWidth={cellWidth}
+      cellFlex={cellFlex}
     >
       {isEditMode ? editionContent : viewContent}
-    </StyledTableCellWrapper>
+    </StyledTableCell>
   );
 };
