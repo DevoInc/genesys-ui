@@ -29,6 +29,13 @@ const data = Holo.of()
         ],
         Holo.chance.integer({ min: 1, max: 4 }),
       ),
+    profession: 'profession',
+    email: 'email',
+    quote: 'sentence',
+    IP6: 'ipv6',
+    address: 'address',
+    website: 'url',
+    secondaryWebsite: 'url',
   })
   .repeat(200)
   .generate();
@@ -125,6 +132,39 @@ const tableOptions: TableOptionsProps = {
       id: 'tags',
       headerName: 'Tags',
       type: 'tags',
+    },
+    {
+      id: 'profession',
+      headerName: 'Profession',
+      type: 'text',
+    },
+    {
+      id: 'email',
+      headerName: 'Email',
+      type: 'link',
+    },
+    {
+      id: 'quote',
+      headerName: 'Favourite quote',
+      type: 'text',
+      cellStyle: {
+        width: 100,
+      },
+    },
+    {
+      id: 'address',
+      headerName: 'Address',
+      type: 'text',
+    },
+    {
+      id: 'website',
+      headerName: 'Website',
+      type: 'link',
+    },
+    {
+      id: 'secondaryWebsite',
+      headerName: 'Secondary Website',
+      type: 'link',
     },
   ],
 };
