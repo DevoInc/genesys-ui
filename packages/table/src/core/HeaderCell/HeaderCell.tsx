@@ -1,7 +1,6 @@
 import { VirtualItem } from '@tanstack/react-virtual';
 import React from 'react';
 import { ColDef } from '../../declarations';
-import { TextRenderer } from '../../renderers';
 import { StyledHeaderCell } from './StyledHeaderCell';
 import { Typography } from '@devoinc/genesys-ui';
 
@@ -18,7 +17,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   colDef,
   headerCellFlex,
   headerCellWidth,
-  virtualColumn,
+  //virtualColumn,
 }) => (
   <StyledHeaderCell
     scrolled={scrolled}

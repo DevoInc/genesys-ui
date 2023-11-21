@@ -18,7 +18,7 @@ export const Cell: React.FC<CellProps> = ({
   columnDef,
   cellWidth,
   cellFlex,
-  virtualColumn,
+  //virtualColumn,
 }) => {
   const { onReset } = columnDef;
 

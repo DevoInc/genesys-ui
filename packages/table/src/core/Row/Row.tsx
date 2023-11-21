@@ -8,6 +8,7 @@ import { getColDefByID } from '../utils';
 interface RowProps {
   columnDefs: ColDef[];
   data: { [key: string]: unknown };
+  even: boolean;
   styles?: React.CSSProperties;
   columnVirtualizer: Virtualizer<undefined, Element>;
 }
@@ -15,12 +16,14 @@ interface RowProps {
 export const Row: React.FC<RowProps> = ({
   columnDefs,
   data,
+  even,
   styles,
   columnVirtualizer,
 }) => {
   const columnsNumber = columnDefs.length;
   return (
     <StyledTableRow
+      even={even}
       position={styles.position}
       width={styles.width}
       height={styles.height}

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface StyledTableRowProps {
+  even: boolean;
   position?: React.CSSProperties['position'];
   width?: React.CSSProperties['width'];
   height?: React.CSSProperties['height'];
