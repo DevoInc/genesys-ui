@@ -27,7 +27,10 @@ export const Cell: React.FC<CellProps> = ({
     <StyledTableCellWrapper
       onDoubleClick={onDoubleClick}
       ref={cellRef}
-      cellWidth={`${virtualColumn.size}px`}
+      cellWidth={`${Math.max(
+        virtualColumn.size,
+        columnDef.cellStyle?.width,
+      )}px`}
     >
       {isEditMode ? editionContent : viewContent}
     </StyledTableCellWrapper>
