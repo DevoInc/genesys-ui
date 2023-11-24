@@ -5,20 +5,21 @@ import { getSizes } from '../utils';
 
 interface StyledHeaderCellProps {
   headerCellWidth: React.CSSProperties['width'];
-  headerCellFlex: React.CSSProperties['flex'];
+  offsetX?: number;
 }
 
 export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
   display: flex;
   align-items: center;
+  position: absolute;
   top: 0;
+  left: 0;
   box-sizing: border-box;
   height: 4.2rem;
   padding: 0 1.2rem;
   width: ${({ headerCellWidth }) => headerCellWidth};
-  flex: ${({ headerCellFlex, headerCellWidth }) =>
-    headerCellWidth ? '0 0 auto' : headerCellFlex};
   color: ${({ theme }) => theme.alias.color.text.heading.base};
+  transform: ${({ offsetX }) => `translateX(${offsetX}px)`};
 
   // resizable columns
   ::-webkit-resizer {

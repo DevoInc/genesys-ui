@@ -2,22 +2,24 @@ import React from 'react';
 import styled, { DefaultTheme } from 'styled-components';
 
 interface StyledTableCellWrapperProps {
-  cellFlex?: React.CSSProperties['flex'];
   cellWidth?: React.CSSProperties['width'];
   height?: React.CSSProperties['height'];
+  offsetX?: number;
   theme: DefaultTheme;
 }
 
 export const StyledTableCell = styled.td.attrs(
-  ({ cellFlex, cellWidth, theme }: StyledTableCellWrapperProps) => ({
+  ({ cellWidth, theme, offsetX, height }: StyledTableCellWrapperProps) => ({
     style: {
-      flex: cellWidth ? '0 0 auto' : cellFlex,
       width: cellWidth,
       color: theme.alias.color.text.body.base,
+      left: `${offsetX}px`,
+      height,
     },
   }),
 )<StyledTableCellWrapperProps>`
-  position: relative;
+  position: absolute;
+  top: 0;
   display: flex;
   align-items: center;
   box-sizing: border-box;

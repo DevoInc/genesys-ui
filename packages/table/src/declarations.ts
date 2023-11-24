@@ -1,5 +1,6 @@
 import { StyledTableProps } from './core/Table/StyledTable';
 import { DateContext } from './valueFormatters/date';
+import { StyledTableWrapperProps } from './core/Table/StyledTableWrapper';
 
 export type DefaultColDef = Omit<ColDef, 'id'>;
 
@@ -14,6 +15,7 @@ export interface TableOptionsProps {
     [key: string]: unknown;
   };
   style?: {
+    wrapper: StyledTableWrapperProps;
     table?: StyledTableProps;
     row?: { height: number };
   };

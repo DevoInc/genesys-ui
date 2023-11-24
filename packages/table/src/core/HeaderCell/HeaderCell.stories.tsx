@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { HeaderCell } from './HeaderCell';
-import { DEFAULT_VIRTUAL_COLUMN } from '../../constants';
+import { DEFAULT_COLDEF } from '../../constants';
 
 const meta: Meta<typeof HeaderCell> = {
   title: 'Components/Table/Header Cell',
@@ -16,8 +16,9 @@ export const Base: Story = {
     (() => {
       return (
         <HeaderCell
-          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
-          headerName={'Column header'}
+          colDef={DEFAULT_COLDEF}
+          headerCellWidth={300}
+          offsetX={30}
         />
       );
     })(),

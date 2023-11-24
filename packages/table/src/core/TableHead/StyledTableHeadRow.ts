@@ -1,8 +1,14 @@
 import * as React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-export const StyledTableHeadRow = styled.tr`
+interface StyledTableHeadRowProps {
+  width?: React.CSSProperties['width'];
+  height?: React.CSSProperties['height'];
+}
+
+export const StyledTableHeadRow = styled.tr<StyledTableHeadRowProps>`
   position: relative;
-  width: 100%;
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
   display: flex;
 `;

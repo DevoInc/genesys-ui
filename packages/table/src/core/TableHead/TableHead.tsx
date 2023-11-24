@@ -2,13 +2,13 @@ import React from 'react';
 import { StyledTableHead } from './StyledTableHead';
 import { StyledTableHeadRow } from './StyledTableHeadRow';
 import { HeaderCell } from '../HeaderCell';
-import { Virtualizer } from '@tanstack/react-virtual';
+import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { ColDef } from '../../declarations';
 import { getColDefByID } from '../utils';
 
 interface TableHeadProps {
   scrolled?: boolean;
-  columnVirtualizer: Virtualizer<undefined, Element>;
+  columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
   columnDefs: ColDef[];
 }
 
@@ -17,29 +17,25 @@ export const TableHead: React.FC<TableHeadProps> = ({
   columnVirtualizer,
   columnDefs,
 }) => {
-  const columnsNumber = columnDefs.length;
   return (
-    <StyledTableHead scrolled={scrolled}>
-      <StyledTableHeadRow scrolled={scrolled}>
-        {columnVirtualizer.getVirtualItems().map((virtualColumn) => {
-          const columnWidthProp = getColDefByID(columnDefs, virtualColumn)
-            ?.cellStyle?.width;
-          return (
+    <StyledTableHead
+      scrolled={scrolled}
+      width={`${columnVirtualizer.getTotalSize()}px`}
+    >
+      <StyledTableHeadRow
+        width={`${columnVirtualizer.getTotalSize()}px`}
+        height={'40px'}
+      >
+        {columnVirtualizer
+          .getVirtualItems()
+          .map((virtualColumn: VirtualItem) => (
             <HeaderCell
               key={virtualColumn.key}
               colDef={getColDefByID(columnDefs, virtualColumn)}
-              headerCellFlex={
-                columnWidthProp
-                  ? `1 1 ${columnWidthProp}%`
-                  : `1 1 calc(100% / ${columnsNumber})`
-              }
-              headerCellWidth={
-                virtualColumn?.size ? `${virtualColumn.size}px` : null
-              }
-              virtualColumn={virtualColumn}
+              headerCellWidth={`${virtualColumn.size}px`}
+              offsetX={virtualColumn.start}
             />
-          );
-        })}
+          ))}
       </StyledTableHeadRow>
     </StyledTableHead>
   );

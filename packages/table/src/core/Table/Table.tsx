@@ -3,6 +3,7 @@ import { TableOptionsProps } from '../../declarations';
 import { TableHead } from '../TableHead';
 import { TableBody } from '../TableBody';
 import { StyledTable } from './StyledTable';
+import { StyledTableWrapper } from './StyledTableWrapper';
 import { getCollatedColumns } from '../utils';
 import { useTableVirtualization } from './useTableVirtualization';
 
@@ -35,18 +36,27 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
   console.info('visibleHeight: ', tableHeight - tableHeadHeight);
 
   return (
-    <StyledTable maxHeight={style?.table?.maxHeight} ref={ref}>
-      <TableHead
-        scrolled={hasScroll}
-        columnVirtualizer={columnVirtualizer}
-        columnDefs={columnDefs}
-      />
-      <TableBody
-        data={data}
-        columnDefs={refinedColumnDefs}
-        rowVirtualizer={rowVirtualizer}
-        columnVirtualizer={columnVirtualizer}
-      />
-    </StyledTable>
+    <StyledTableWrapper
+      ref={ref}
+      maxHeight={style?.wrapper?.maxHeight}
+      scrolled={style?.wrapper?.scrolled}
+    >
+      <StyledTable
+        width={`${columnVirtualizer.getTotalSize()}px`}
+        height={`${rowVirtualizer.getTotalSize()}px`}
+      >
+        <TableHead
+          scrolled={hasScroll}
+          columnVirtualizer={columnVirtualizer}
+          columnDefs={columnDefs}
+        />
+        <TableBody
+          data={data}
+          columnDefs={refinedColumnDefs}
+          rowVirtualizer={rowVirtualizer}
+          columnVirtualizer={columnVirtualizer}
+        />
+      </StyledTable>
+    </StyledTableWrapper>
   );
 };

@@ -5,7 +5,6 @@ import { ColDef } from '../declarations';
 import { EditText, EditTextArea } from '.';
 import { Cell } from '../core/Cell';
 import { TextRenderer } from '../renderers';
-import { DEFAULT_VIRTUAL_COLUMN } from '../constants';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/Edit/Text',
@@ -35,13 +34,7 @@ export const Base: Story = {
         editable: true,
       };
 
-      return (
-        <Cell
-          columnDef={columnEditText}
-          data={text}
-          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
-        />
-      );
+      return <Cell columnDef={columnEditText} data={text} />;
     })(),
 };
 
@@ -71,12 +64,6 @@ export const TextAreaEditor: Story = {
         editable: true,
       };
 
-      return (
-        <Cell
-          columnDef={columnEditTextArea}
-          data={text}
-          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
-        />
-      );
+      return <Cell columnDef={columnEditTextArea} data={text} />;
     })(),
 };

@@ -45,8 +45,8 @@ const tableOptions: TableOptionsProps = {
     editable: false,
   },
   style: {
-    table: {
-      maxHeight: '70vh',
+    wrapper: {
+      maxHeight: '500px',
     },
     row: {
       height: 30,
@@ -88,7 +88,7 @@ const tableOptions: TableOptionsProps = {
       headerName: 'Boolean value',
       type: 'tagBoolean',
       cellStyle: {
-        width: 30,
+        width: 150,
       },
     },
     {
@@ -106,6 +106,9 @@ const tableOptions: TableOptionsProps = {
       id: 'company',
       headerName: 'Company',
       type: 'text',
+      cellStyle: {
+        width: 180,
+      },
     },
     {
       id: 'balance',
@@ -132,6 +135,9 @@ const tableOptions: TableOptionsProps = {
       id: 'tags',
       headerName: 'Tags',
       type: 'tags',
+      cellStyle: {
+        width: 300,
+      },
     },
     {
       id: 'profession',
@@ -157,11 +163,17 @@ const tableOptions: TableOptionsProps = {
       id: 'website',
       headerName: 'Website',
       type: 'link',
+      cellStyle: {
+        width: 150,
+      },
     },
     {
       id: 'secondaryWebsite',
       headerName: 'Secondary Website',
       type: 'link',
+      cellStyle: {
+        width: 150,
+      },
     },
   ],
 };

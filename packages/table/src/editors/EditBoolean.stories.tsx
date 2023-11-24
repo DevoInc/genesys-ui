@@ -4,7 +4,6 @@ import { ColDef } from '../declarations';
 import { EditBoolean } from '.';
 import { Cell } from '../core/Cell';
 import { TagRenderer } from '../renderers';
-import { DEFAULT_VIRTUAL_COLUMN } from '../constants';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/Edit/Tag',
@@ -32,12 +31,6 @@ export const BooleanEditor: Story = {
         editable: true,
       };
 
-      return (
-        <Cell
-          columnDef={columnEditBoolean}
-          data={boolean}
-          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
-        />
-      );
+      return <Cell columnDef={columnEditBoolean} data={boolean} />;
     })(),
 };

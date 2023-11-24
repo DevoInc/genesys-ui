@@ -1,4 +1,5 @@
 import { VirtualItem } from '@tanstack/react-virtual';
+import { ColDef } from './declarations';
 
 export const DEFAULT_VIRTUAL_ROW: VirtualItem = {
   index: 0,
@@ -16,4 +17,8 @@ export const DEFAULT_VIRTUAL_COLUMN: VirtualItem = {
   end: 0,
   lane: 2,
   key: 'example',
+};
+
+export const DEFAULT_COLDEF: ColDef = {
+  id: 'col',
 };
