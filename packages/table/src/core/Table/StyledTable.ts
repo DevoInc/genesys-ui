@@ -9,8 +9,6 @@ export interface StyledTableProps {
 
 export const StyledTable = styled.table<StyledTableProps>`
   position: relative;
-  display: block;
   height: ${({ height }) => height};
-  width: ${({ width }) => (width ? `${width}px` : '100%')};
-  //min-width: 1800px;
+  width: ${({ width }) => (width ? width : '100%')};
 `;

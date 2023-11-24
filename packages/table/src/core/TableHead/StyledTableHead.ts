@@ -3,15 +3,13 @@ import { elevationMixin } from '@devoinc/genesys-ui';
 
 interface StyledTableHeadProps {
   scrolled?: boolean;
-  isVirtual?: boolean;
+  width?: React.CSSProperties['width'];
 }
 
 export const StyledTableHead = styled.thead<StyledTableHeadProps>`
   top: 0;
-  vertical-align: middle;
   width: 100%;
   display: inline-block;
-  position: sticky;
 
   ${({ scrolled = true, theme }) => {
     return css`
@@ -26,4 +24,8 @@ export const StyledTableHead = styled.thead<StyledTableHeadProps>`
       background-color: ${theme.cmp.table.head.color.background};
     `;
   }}
+
+  ${({ width }) => css`
+    width: ${width};
+  `}
 `;

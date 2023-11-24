@@ -1,4 +1,3 @@
-import { VirtualItem } from '@tanstack/react-virtual';
 import React from 'react';
 import { ColDef } from '../../declarations';
 import { StyledHeaderCell } from './StyledHeaderCell';
@@ -7,22 +6,20 @@ import { Typography } from '@devoinc/genesys-ui';
 interface HeaderCellProps {
   scrolled?: boolean;
   colDef: ColDef;
-  headerCellFlex: React.CSSProperties['flex'];
   headerCellWidth: React.CSSProperties['width'];
-  virtualColumn: VirtualItem;
+  offsetX: number;
 }
 
 export const HeaderCell: React.FC<HeaderCellProps> = ({
   scrolled,
   colDef,
-  headerCellFlex,
   headerCellWidth,
-  //virtualColumn,
+  offsetX,
 }) => (
   <StyledHeaderCell
     scrolled={scrolled}
     headerCellWidth={headerCellWidth}
-    headerCellFlex={headerCellFlex}
+    offsetX={offsetX}
   >
     <Typography.Heading size="h6">{colDef.headerName}</Typography.Heading>
   </StyledHeaderCell>

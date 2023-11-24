@@ -8,7 +8,6 @@ interface StyledNumberProps {
 
 export const StyledNumber = styled.div<StyledNumberProps>`
   position: relative;
-  flex: '1';
   display: 'flex';
 
   ${({ size, theme, bold }) => {

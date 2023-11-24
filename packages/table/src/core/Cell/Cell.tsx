@@ -3,22 +3,21 @@ import { StyledTableCell } from './StyledTableCell';
 import { useRenderContent } from './useRenderContent';
 import { ColDef } from '../../declarations';
 import { useInitialState } from '../../editors/useInitialState';
-import { VirtualItem } from '@tanstack/react-virtual';
 
 interface CellProps {
   data: unknown;
   columnDef: ColDef;
   cellWidth?: React.CSSProperties['width'];
-  cellFlex?: React.CSSProperties['flex'];
-  virtualColumn: VirtualItem;
+  cellHeight?: React.CSSProperties['height'];
+  offsetX?: number;
 }
 
 export const Cell: React.FC<CellProps> = ({
   data,
   columnDef,
   cellWidth,
-  cellFlex,
-  //virtualColumn,
+  cellHeight,
+  offsetX,
 }) => {
   const { onReset } = columnDef;
 
@@ -31,11 +30,9 @@ export const Cell: React.FC<CellProps> = ({
     <StyledTableCell
       onDoubleClick={onDoubleClick}
       ref={cellRef}
-      /*      cellWidth={
-        virtualColumn?.size ? `1 1 ${virtualColumn.size}px` : cellWidth
-      }*/
       cellWidth={cellWidth}
-      cellFlex={cellFlex}
+      offsetX={offsetX}
+      height={cellHeight}
     >
       {isEditMode ? editionContent : viewContent}
     </StyledTableCell>

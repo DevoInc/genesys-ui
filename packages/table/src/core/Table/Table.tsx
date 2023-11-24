@@ -27,12 +27,15 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
 
   return (
     <StyledTableWrapper
+      ref={ref}
       maxHeight={style?.wrapper?.maxHeight}
       scrolled={style?.wrapper?.scrolled}
-      ref={ref}
       height={'500px'}
     >
-      <StyledTable>
+      <StyledTable
+        width={`${columnVirtualizer.getTotalSize()}px`}
+        height={`${rowVirtualizer.getTotalSize()}px`}
+      >
         <TableHead
           scrolled={style?.wrapper?.scrolled}
           columnVirtualizer={columnVirtualizer}

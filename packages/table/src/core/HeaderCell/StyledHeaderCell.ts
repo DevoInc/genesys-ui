@@ -6,25 +6,23 @@ import { getSizes } from '../utils';
 interface StyledHeaderCellProps {
   scrolled?: boolean;
   headerCellWidth: React.CSSProperties['width'];
-  headerCellFlex: React.CSSProperties['flex'];
+  offsetX?: number;
 }
 
 export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
-  display: flex;
-  align-items: center;
+  display: block;
   top: 0;
+  left: 0;
   box-sizing: border-box;
-  height: 4.2rem;
   padding: 0 1.2rem;
   width: ${({ headerCellWidth }) => headerCellWidth};
-  flex: ${({ headerCellFlex }) => headerCellFlex};
   color: ${({ theme }) => theme.alias.color.text.heading.base};
-  flex: 0 0 auto;
+  transform: ${({ offsetX }) => `translateX(${offsetX}px)`};
 
   ${({ scrolled, theme }) => {
     return css`
       ${scrolled && elevationMixin(theme)('stickyBottom')};
-      position: ${scrolled ? 'sticky' : 'relative'};
+      position: ${scrolled ? 'sticky' : 'absolute'};
     `;
   }}
 

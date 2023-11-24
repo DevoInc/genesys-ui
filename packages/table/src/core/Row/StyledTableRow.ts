@@ -12,7 +12,7 @@ interface StyledTableRowProps {
 export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
   ({ position, width, height, transform }) => ({
     style: {
-      position,
+      position: position ?? 'absolute',
       width: width ? `${width}px` : '100%',
       height,
       transform,
@@ -21,6 +21,4 @@ export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
 )<StyledTableRowProps>`
   top: 0;
   left: 0;
-  display: flex;
-  align-items: center;
 `;

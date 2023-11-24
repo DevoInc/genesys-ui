@@ -2,11 +2,11 @@ import React from 'react';
 import { Row } from '../Row';
 import { ColDef } from '../../declarations';
 import { StyledTableBody } from './StyledTableBody';
-import { Virtualizer } from '@tanstack/react-virtual';
+import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 
 interface TableBodyProps {
-  rowVirtualizer: Virtualizer<undefined, Element>;
-  columnVirtualizer: Virtualizer<undefined, Element>;
+  rowVirtualizer: Virtualizer<HTMLDivElement, Element>;
+  columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
   data: unknown;
   columnDefs: ColDef[];
 }
@@ -21,24 +21,24 @@ export const TableBody: React.FC<TableBodyProps> = ({
     $height={`${rowVirtualizer.getTotalSize()}px`}
     $width={`${columnVirtualizer.getTotalSize()}px`}
   >
-    {rowVirtualizer.getVirtualItems().map((virtualRow, index) => {
-      return (
-        <Row
-          key={'tb_' + virtualRow.key}
-          columnDefs={columnDefs}
-          columnVirtualizer={columnVirtualizer}
-          data={data[virtualRow.index]}
-          even={(index + 1) % 2 === 0}
-          styles={{
-            height: `${virtualRow.size}px`,
-            transform: `translateY(${
-              virtualRow.start - index * virtualRow.size
-            }px)`,
-            width: '100%',
-            position: 'relative',
-          }}
-        />
-      );
-    })}
+    {rowVirtualizer
+      .getVirtualItems()
+      .map((virtualRow: VirtualItem, index: number) => {
+        return (
+          <Row
+            key={'tb_' + virtualRow.key}
+            columnDefs={columnDefs}
+            columnVirtualizer={columnVirtualizer}
+            data={data[virtualRow.index]}
+            even={(index + 1) % 2 === 0}
+            styles={{
+              height: `${virtualRow.size}px`,
+              transform: `translateY(${virtualRow.start}px)`,
+              width: `${columnVirtualizer.getTotalSize()}px`,
+              position: 'absolute',
+            }}
+          />
+        );
+      })}
   </StyledTableBody>
 );
