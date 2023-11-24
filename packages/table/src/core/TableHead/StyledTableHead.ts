@@ -13,16 +13,17 @@ export const StyledTableHead = styled.thead<StyledTableHeadProps>`
   display: inline-block;
   position: sticky;
 
-  ${({ scrolled = true, theme }) => {
+  ${({ scrolled, theme }) => {
+    const tableHeadTokens = theme.cmp.table.head;
+    const tableHeadRowTokens = theme.cmp.table.headRow;
     return css`
-      ${scrolled && elevationMixin(theme)('stickyBottom')};
-      position: ${scrolled ? 'sticky' : 'relative'};
-    `;
-  }}
-
-  ${({ theme }) => {
-    return css`
-      z-index: ${theme.cmp.table.head.elevation.zIndex};
+      ${scrolled
+        ? elevationMixin(theme)('stickyBottom')
+        : css`
+            box-shadow: 0 0 0 ${tableHeadRowTokens.shape.borderSize.md}
+              ${tableHeadRowTokens.color.background.after.base};
+          `};
+      z-index: ${tableHeadTokens.elevation.zIndex};
       background-color: ${theme.cmp.table.head.color.background};
     `;
   }}

@@ -18,7 +18,6 @@ export const Cell: React.FC<CellProps> = ({
   columnDef,
   cellWidth,
   cellFlex,
-  //virtualColumn,
 }) => {
   const { onReset } = columnDef;
 
@@ -31,9 +30,6 @@ export const Cell: React.FC<CellProps> = ({
     <StyledTableCell
       onDoubleClick={onDoubleClick}
       ref={cellRef}
-      /*      cellWidth={
-        virtualColumn?.size ? `1 1 ${virtualColumn.size}px` : cellWidth
-      }*/
       cellWidth={cellWidth}
       cellFlex={cellFlex}
     >

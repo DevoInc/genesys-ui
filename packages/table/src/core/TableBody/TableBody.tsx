@@ -19,7 +19,11 @@ export const TableBody: React.FC<TableBodyProps> = ({
 }) => (
   <StyledTableBody
     $height={`${rowVirtualizer.getTotalSize()}px`}
-    $width={`${columnVirtualizer.getTotalSize()}px`}
+    $width={
+      columnVirtualizer.getTotalSize()
+        ? `${columnVirtualizer.getTotalSize()}px`
+        : '100%'
+    }
   >
     {rowVirtualizer.getVirtualItems().map((virtualRow, index) => {
       return (
@@ -28,7 +32,7 @@ export const TableBody: React.FC<TableBodyProps> = ({
           columnDefs={columnDefs}
           columnVirtualizer={columnVirtualizer}
           data={data[virtualRow.index]}
-          even={(index + 1) % 2 === 0}
+          even={(virtualRow.index + 1) % 2 === 0}
           styles={{
             height: `${virtualRow.size}px`,
             transform: `translateY(${
@@ -37,6 +41,7 @@ export const TableBody: React.FC<TableBodyProps> = ({
             width: '100%',
             position: 'relative',
           }}
+          selected={virtualRow.key === 4}
         />
       );
     })}

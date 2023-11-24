@@ -27,7 +27,6 @@ export const TableHead: React.FC<TableHeadProps> = ({
           return (
             <HeaderCell
               key={virtualColumn.key}
-              scrolled={scrolled}
               colDef={getColDefByID(columnDefs, virtualColumn)}
               headerCellFlex={
                 columnWidthProp

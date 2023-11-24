@@ -21,7 +21,7 @@ export const useTableVirtualization = ({
   const columnVirtualizer = useVirtualizer({
     count: columnDefs.length,
     getScrollElement: () => ref.current,
-    estimateSize: () => 300,
+    estimateSize: () => null,
     horizontal: true,
     getItemKey: (index: number) => columnDefs[index].id,
   });

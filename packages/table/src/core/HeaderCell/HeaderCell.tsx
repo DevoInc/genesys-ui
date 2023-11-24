@@ -5,7 +5,6 @@ import { StyledHeaderCell } from './StyledHeaderCell';
 import { Typography } from '@devoinc/genesys-ui';
 
 interface HeaderCellProps {
-  scrolled?: boolean;
   colDef: ColDef;
   headerCellFlex: React.CSSProperties['flex'];
   headerCellWidth: React.CSSProperties['width'];
@@ -13,17 +12,17 @@ interface HeaderCellProps {
 }
 
 export const HeaderCell: React.FC<HeaderCellProps> = ({
-  scrolled,
   colDef,
   headerCellFlex,
   headerCellWidth,
   //virtualColumn,
 }) => (
   <StyledHeaderCell
-    scrolled={scrolled}
     headerCellWidth={headerCellWidth}
     headerCellFlex={headerCellFlex}
   >
-    <Typography.Heading size="h6">{colDef.headerName}</Typography.Heading>
+    <Typography.Heading size="h6" truncateLine={1}>
+      {colDef.headerName}
+    </Typography.Heading>
   </StyledHeaderCell>
 );

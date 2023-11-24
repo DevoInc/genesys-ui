@@ -45,11 +45,8 @@ const tableOptions: TableOptionsProps = {
     editable: false,
   },
   style: {
-    wrapper: {
-      maxHeight: '100%',
-    },
-    body: {
-      height: '100%',
+    table: {
+      maxHeight: '70vh',
     },
     row: {
       height: 30,
@@ -150,9 +147,6 @@ const tableOptions: TableOptionsProps = {
       id: 'quote',
       headerName: 'Favourite quote',
       type: 'text',
-      cellStyle: {
-        width: 100,
-      },
     },
     {
       id: 'address',

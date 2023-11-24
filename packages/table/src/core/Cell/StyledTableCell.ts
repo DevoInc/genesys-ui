@@ -9,9 +9,9 @@ interface StyledTableCellWrapperProps {
 }
 
 export const StyledTableCell = styled.td.attrs(
-  ({ cellWidth, theme }: StyledTableCellWrapperProps) => ({
+  ({ cellFlex, cellWidth, theme }: StyledTableCellWrapperProps) => ({
     style: {
-      //flex: cellFlex,
+      flex: cellWidth ? '0 0 auto' : cellFlex,
       width: cellWidth,
       color: theme.alias.color.text.body.base,
     },

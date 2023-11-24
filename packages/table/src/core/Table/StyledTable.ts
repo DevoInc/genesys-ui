@@ -1,16 +1,18 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { scrollbars } from '@devoinc/genesys-ui';
 
 export interface StyledTableProps {
   width?: React.CSSProperties['width'];
   minWidth?: React.CSSProperties['minWidth'];
-  height?: React.CSSProperties['height'];
+  maxHeight?: React.CSSProperties['maxHeight'];
 }
 
 export const StyledTable = styled.table<StyledTableProps>`
+  ${({ theme }) => scrollbars({ theme })};
   position: relative;
   display: block;
-  height: ${({ height }) => height};
   width: ${({ width }) => (width ? `${width}px` : '100%')};
-  //min-width: 1800px;
+  overflow: auto;
+  max-height: ${({ maxHeight }) => maxHeight};
 `;

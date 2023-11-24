@@ -1,33 +1,46 @@
 import * as React from 'react';
-import { StyledTableRow } from './StyledTableRow';
+import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { ColDef } from '../../declarations';
 import { Cell } from '../Cell';
-import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { getColDefByID } from '../utils';
+import { StyledTableRow, StyledTableRowProps } from './StyledTableRow';
 
-interface RowProps {
+interface RowProps extends StyledTableRowProps {
   columnDefs: ColDef[];
   data: { [key: string]: unknown };
-  even: boolean;
+  even?: boolean;
   styles?: React.CSSProperties;
   columnVirtualizer: Virtualizer<undefined, Element>;
 }
 
 export const Row: React.FC<RowProps> = ({
   columnDefs,
+  disabled,
   data,
   even,
+  expanded,
+  highlighted,
+  isAfterRow,
+  isDragging,
+  modified,
+  selected,
+  striped,
   styles,
   columnVirtualizer,
 }) => {
   const columnsNumber = columnDefs.length;
   return (
     <StyledTableRow
+      disabled={disabled}
       even={even}
-      position={styles.position}
-      width={styles.width}
-      height={styles.height}
-      transform={styles.transform}
+      expanded={expanded}
+      highlighted={highlighted}
+      isAfterRow={isAfterRow}
+      isDragging={isDragging}
+      modified={modified}
+      selected={selected}
+      striped={striped}
+      style={styles}
     >
       {columnVirtualizer.getVirtualItems().map((virtualColumn: VirtualItem) => {
         const cellWidth = getColDefByID(columnDefs, virtualColumn)?.cellStyle

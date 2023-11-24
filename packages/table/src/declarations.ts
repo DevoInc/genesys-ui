@@ -1,5 +1,4 @@
 import { StyledTableProps } from './core/Table/StyledTable';
-import { StyledTableWrapperProps } from './core/Table/StyledTableWrapper';
 import { DateContext } from './valueFormatters/date';
 
 export type DefaultColDef = Omit<ColDef, 'id'>;
@@ -15,9 +14,7 @@ export interface TableOptionsProps {
     [key: string]: unknown;
   };
   style?: {
-    wrapper?: StyledTableWrapperProps;
     table?: StyledTableProps;
-    body?: { height: React.CSSProperties['height'] };
     row?: { height: number };
   };
 }
@@ -57,6 +54,7 @@ export interface ColDef {
       vertical?: 'top' | 'bottom' | 'center';
     };
     textAlign?: 'left' | 'center' | 'right';
+    truncateLine?: number;
     density?: 'default' | 'compact' | 'comfortable';
     boxShadow?: 'base' | 'strong';
   };
