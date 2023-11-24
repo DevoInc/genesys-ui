@@ -5,7 +5,6 @@ import { Cell } from '../../core/Cell';
 import { ColDef } from '../../declarations';
 import { TextRenderer } from './Text';
 import { dateFormatter, linkFormatter } from '../../valueFormatters';
-import { DEFAULT_VIRTUAL_COLUMN } from '../../constants';
 
 const data = Holo.of()
   .schema({
@@ -53,38 +52,20 @@ type Story = StoryObj<typeof Cell>;
 export const Base: Story = {
   render: () =>
     (() => {
-      return (
-        <Cell
-          columnDef={column}
-          data={data[0][column.id]}
-          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
-        />
-      );
+      return <Cell columnDef={column} data={data[0][column.id]} />;
     })(),
 };
 
 export const DateFormat: Story = {
   render: () =>
     (() => {
-      return (
-        <Cell
-          columnDef={columnDate}
-          data={data[0][columnDate.id]}
-          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
-        />
-      );
+      return <Cell columnDef={columnDate} data={data[0][columnDate.id]} />;
     })(),
 };
 
 export const LinkFormat: Story = {
   render: () =>
     (() => {
-      return (
-        <Cell
-          columnDef={columnLink}
-          data={data[0][columnLink.id]}
-          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
-        />
-      );
+      return <Cell columnDef={columnLink} data={data[0][columnLink.id]} />;
     })(),
 };

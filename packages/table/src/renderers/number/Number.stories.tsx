@@ -5,7 +5,6 @@ import { Cell } from '../../core/Cell';
 import { ColDef } from '../../declarations';
 import { NumberRenderer } from './Number';
 import { linkFormatter } from '../../valueFormatters';
-import { DEFAULT_VIRTUAL_COLUMN } from '../../constants';
 
 const data = Holo.of()
   .schema({
@@ -41,25 +40,13 @@ type Story = StoryObj<typeof Cell>;
 export const Base: Story = {
   render: () =>
     (() => {
-      return (
-        <Cell
-          columnDef={column}
-          data={data[0][column.id]}
-          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
-        />
-      );
+      return <Cell columnDef={column} data={data[0][column.id]} />;
     })(),
 };
 
 export const NumberLink: Story = {
   render: () =>
     (() => {
-      return (
-        <Cell
-          columnDef={columnLink}
-          data={data[0][columnLink.id]}
-          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
-        />
-      );
+      return <Cell columnDef={columnLink} data={data[0][columnLink.id]} />;
     })(),
 };

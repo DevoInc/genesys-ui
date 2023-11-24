@@ -108,6 +108,7 @@ export const Base: Story = {
           columnDefs={colDefs}
           data={data[0]}
           columnVirtualizer={columnVirtualizer}
+          even
         />
       );
     })(),

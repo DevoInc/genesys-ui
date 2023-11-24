@@ -4,7 +4,6 @@ import { Holo } from '@devoinc/holo';
 import { Cell } from '../../core/Cell';
 import { ColDef } from '../../declarations';
 import { TagRenderer } from './Tag';
-import { DEFAULT_VIRTUAL_COLUMN } from '../../constants';
 
 const data = Holo.of()
   .schema({
@@ -50,11 +49,7 @@ export const BooleanRenderer: Story = {
   render: () =>
     (() => {
       return (
-        <Cell
-          columnDef={columnBoolean}
-          data={data[0][columnBoolean.id]}
-          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
-        />
+        <Cell columnDef={columnBoolean} data={data[0][columnBoolean.id]} />
       );
     })(),
 };
@@ -62,12 +57,6 @@ export const BooleanRenderer: Story = {
 export const Status: Story = {
   render: () =>
     (() => {
-      return (
-        <Cell
-          columnDef={columnStatus}
-          data={data[0][columnStatus.id]}
-          virtualColumn={DEFAULT_VIRTUAL_COLUMN}
-        />
-      );
+      return <Cell columnDef={columnStatus} data={data[0][columnStatus.id]} />;
     })(),
 };
