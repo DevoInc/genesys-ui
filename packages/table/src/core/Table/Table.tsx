@@ -30,10 +30,6 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
   const tableHeadHeight =
     ref?.current?.querySelector('thead')?.clientHeight || 0;
   const hasScroll = tableBodyHeight > tableHeight - tableHeadHeight;
-  console.info('hasScroll: ', hasScroll);
-  console.info('tableBodyHeight: ', tableBodyHeight);
-  console.info('tableHeadHeight: ', tableHeadHeight);
-  console.info('visibleHeight: ', tableHeight - tableHeadHeight);
 
   return (
     <StyledTableWrapper
