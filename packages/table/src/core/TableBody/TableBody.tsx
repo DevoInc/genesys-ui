@@ -21,24 +21,22 @@ export const TableBody: React.FC<TableBodyProps> = ({
     $height={`${rowVirtualizer.getTotalSize()}px`}
     $width={`${columnVirtualizer.getTotalSize()}px`}
   >
-    {rowVirtualizer
-      .getVirtualItems()
-      .map((virtualRow: VirtualItem, index: number) => {
-        return (
-          <Row
-            key={'tb_' + virtualRow.key}
-            columnDefs={columnDefs}
-            columnVirtualizer={columnVirtualizer}
-            data={data[virtualRow.index]}
-            even={(virtualRow.index + 1) % 2 === 0}
-            styles={{
-              height: `${virtualRow.size}px`,
-              transform: `translateY(${virtualRow.start}px)`,
-              width: `${columnVirtualizer.getTotalSize()}px`,
-              position: 'absolute',
-            }}
-          />
-        );
-      })}
+    {rowVirtualizer.getVirtualItems().map((virtualRow: VirtualItem) => {
+      return (
+        <Row
+          key={'tb_' + virtualRow.key}
+          columnDefs={columnDefs}
+          columnVirtualizer={columnVirtualizer}
+          data={data[virtualRow.index]}
+          even={(virtualRow.index + 1) % 2 === 0}
+          styles={{
+            height: `${virtualRow.size}px`,
+            transform: `translateY(${virtualRow.start}px)`,
+            width: `${columnVirtualizer.getTotalSize()}px`,
+            position: 'absolute',
+          }}
+        />
+      );
+    })}
   </StyledTableBody>
 );

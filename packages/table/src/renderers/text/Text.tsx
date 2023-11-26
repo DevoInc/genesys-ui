@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { StyledText } from './StyledText';
 import { Typography } from '@devoinc/genesys-ui';
 import { ColDef } from '../../declarations';
 

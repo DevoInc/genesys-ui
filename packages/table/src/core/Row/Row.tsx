@@ -3,7 +3,6 @@ import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { ColDef } from '../../declarations';
 import { Cell } from '../Cell';
 import { StyledTableRow, StyledTableRowProps } from './StyledTableRow';
-import { getColDefByID } from '../utils';
 
 interface RowProps extends StyledTableRowProps {
   columnDefs: ColDef[];

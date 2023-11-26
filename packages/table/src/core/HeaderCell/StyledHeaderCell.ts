@@ -1,7 +1,5 @@
 import * as React from 'react';
-import styled, { css } from 'styled-components';
-import { elevationMixin } from '@devoinc/genesys-ui';
-import { getSizes } from '../utils';
+import styled from 'styled-components';
 
 interface StyledHeaderCellProps {
   headerCellWidth: React.CSSProperties['width'];
