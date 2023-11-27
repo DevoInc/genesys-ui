@@ -17,6 +17,7 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
   const { rowVirtualizer, columnVirtualizer, ref } = useTableVirtualization({
     data,
     columnDefs,
+    tableOptions,
   });
 
   const refinedColumnDefs = getCollatedColumns(
