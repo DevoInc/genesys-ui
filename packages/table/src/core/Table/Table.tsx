@@ -6,6 +6,7 @@ import { StyledTable } from './StyledTable';
 import { StyledTableWrapper } from './StyledTableWrapper';
 import { getCollatedColumns } from '../utils';
 import { useTableVirtualization } from './useTableVirtualization';
+import { useTableScroll } from './useTableScroll';
 
 interface TableProps {
   data: { [key: string]: unknown }[];
@@ -26,11 +27,7 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
     types,
   );
 
-  const tableBodyHeight = rowVirtualizer?.getTotalSize() || 0;
-  const tableHeight = ref?.current?.clientHeight || 0;
-  const tableHeadHeight =
-    ref?.current?.querySelector('thead')?.clientHeight || 0;
-  const hasScroll = tableBodyHeight > tableHeight - tableHeadHeight;
+  const { hasScroll } = useTableScroll(rowVirtualizer, ref);
 
   return (
     <StyledTableWrapper
