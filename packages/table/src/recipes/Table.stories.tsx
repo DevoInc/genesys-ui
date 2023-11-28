@@ -49,7 +49,7 @@ const tableOptions: TableOptionsProps = {
       maxHeight: '500px',
     },
     row: {
-      height: 30,
+      height: 'md',
     },
   },
   columnDefs: [

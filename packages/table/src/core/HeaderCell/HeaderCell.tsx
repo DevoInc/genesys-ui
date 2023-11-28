@@ -14,7 +14,11 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   headerCellWidth,
   offsetX,
 }) => (
-  <StyledHeaderCell headerCellWidth={headerCellWidth} offsetX={offsetX}>
+  <StyledHeaderCell
+    headerCellWidth={headerCellWidth}
+    offsetX={offsetX}
+    title={colDef.headerName}
+  >
     <Typography.Heading size="h6" truncateLine={1}>
       {colDef.headerName}
     </Typography.Heading>

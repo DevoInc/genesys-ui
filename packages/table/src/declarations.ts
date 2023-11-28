@@ -1,11 +1,20 @@
 import { StyledTableProps } from './core/Table/StyledTable';
 import { DateContext } from './valueFormatters/date';
 import { StyledTableWrapperProps } from './core/Table/StyledTableWrapper';
+import { getPxFromRem } from '@devoinc/genesys-ui';
 
 export type DefaultColDef = Omit<ColDef, 'id'>;
 
 type Types = { id: string };
 type TypesColDef = Omit<ColDef, 'colId'>;
+export type Density = 'default' | 'compact' | 'comfortable';
+
+export interface TableStyles {
+  density?: Density;
+  wrapper: StyledTableWrapperProps;
+  table?: StyledTableProps;
+  row?: { height: RowHeight };
+}
 
 export interface TableOptionsProps {
   columnDefs?: ColDef[];
@@ -14,11 +23,7 @@ export interface TableOptionsProps {
   context?: {
     [key: string]: unknown;
   };
-  style?: {
-    wrapper: StyledTableWrapperProps;
-    table?: StyledTableProps;
-    row?: { height: number };
-  };
+  style?: TableStyles;
 }
 
 export interface CellRendererParams {
@@ -57,8 +62,8 @@ export interface ColDef {
     };
     textAlign?: 'left' | 'center' | 'right';
     truncateLine?: number;
-    density?: 'default' | 'compact' | 'comfortable';
     boxShadow?: 'base' | 'strong';
+    toEdge: boolean;
   };
   expandedRow?: boolean;
   isDragging?: boolean;
@@ -66,7 +71,9 @@ export interface ColDef {
   tooltipField?: string;
 }
 
-export interface RowSizes {
+export type RowHeight = 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
+
+export interface MeasuresConfig {
   head: { height: number };
   row: {
     height: {
@@ -76,22 +83,8 @@ export interface RowSizes {
       xxl: number;
       xxxl: number;
     };
-    br: number;
   };
   cell: {
-    horPad: number;
-    verPad: number;
-    verPadTall: number;
-  };
-  afterRow: {
-    horPad: number;
-    verPad: number;
-  };
-  expanded: {
-    horPad: number;
-    verPad: number;
-  };
-  expandedLg: {
     horPad: number;
     verPad: number;
   };

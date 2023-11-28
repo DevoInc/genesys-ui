@@ -1,16 +1,19 @@
 import styled, { css } from 'styled-components';
+import React from 'react';
 import { elevationMixin } from '@devoinc/genesys-ui';
 
 interface StyledTableHeadProps {
   scrolled?: boolean;
   width?: React.CSSProperties['width'];
+  height?: React.CSSProperties['height'];
 }
 
 export const StyledTableHead = styled.thead<StyledTableHeadProps>`
   top: 0;
-  width: 100%;
   display: inline-block;
   position: sticky;
+  height: ${({ height }) => height};
+  width: ${({ width }) => width || '100%'};
 
   ${({ scrolled, theme }) => {
     const tableHeadTokens = theme.cmp.table.head;
@@ -26,8 +29,4 @@ export const StyledTableHead = styled.thead<StyledTableHeadProps>`
       background-color: ${theme.cmp.table.head.color.background};
     `;
   }}
-
-  ${({ width }) => css`
-    width: ${width};
-  `}
 `;

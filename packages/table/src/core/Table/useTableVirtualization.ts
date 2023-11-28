@@ -1,6 +1,8 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { MutableRefObject, useRef } from 'react';
 import { ColDef, TableOptionsProps } from '../../declarations';
+import { getMeasures } from '../utils';
+import { useTheme } from 'styled-components';
 
 interface UseVirtualizationParams {
   data: { [key: string]: unknown }[];
@@ -17,8 +19,14 @@ const getEstimatedColumnWidth = (
   tableRef?.current?.offsetWidth / colDefs.length ??
   300;
 
-const getEstimatedRowHeight = (options: TableOptionsProps) =>
-  options.style?.row?.height ?? 300;
+const getEstimatedRowHeight = (options: TableOptionsProps) => {
+  const theme = useTheme();
+  return (
+    getMeasures(theme, (options.style.density = 'default')).row.height[
+      options.style?.row?.height || 'md'
+    ] ?? 36
+  );
+};
 
 export const useTableVirtualization = ({
   data,

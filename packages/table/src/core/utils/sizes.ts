@@ -1,48 +1,28 @@
 import { Brand } from '@devoinc/genesys-tokens-types';
-import { RowSizes } from '../../declarations';
-
-export const DENSITY = {
-  DEFAULT: 'default',
-  COMPACT: 'compact',
-  COMFORTABLE: 'comfortable',
-};
+import { Density, MeasuresConfig } from '../../declarations';
+import { getPxFromRem } from '@devoinc/genesys-ui';
 
 /**
  * Returns an object with size values based in design tokens and display density
  */
-export const getSizes = (tokens: Brand['cmp']['table']): RowSizes => {
-  const cellTokens = tokens.cell;
-  const cellWrapperTokens = tokens.cellWrapper;
-  const headTokens = tokens.head;
-  const rowTokens = tokens.row;
+export const getMeasures = (theme: Brand, density: Density): MeasuresConfig => {
+  const headTokens = theme.cmp.table.head;
+  const rowTokens = theme.cmp.table.row;
+  const cellTokens = theme.cmp.table.cell;
   return {
-    head: { height: headTokens.size.height[DENSITY.DEFAULT] },
+    head: { height: getPxFromRem(headTokens.size.height[density]) },
     row: {
       height: {
-        md: rowTokens.size.height[DENSITY.DEFAULT].md,
-        lg: rowTokens.size.height[DENSITY.DEFAULT].lg,
-        xl: rowTokens.size.height[DENSITY.DEFAULT].xl,
-        xxl: rowTokens.size.height[DENSITY.DEFAULT].xxl,
-        xxxl: rowTokens.size.height[DENSITY.DEFAULT].xxxl,
+        md: getPxFromRem(rowTokens.size.height[density].md),
+        lg: getPxFromRem(rowTokens.size.height[density].lg),
+        xl: getPxFromRem(rowTokens.size.height[density].xl),
+        xxl: getPxFromRem(rowTokens.size.height[density].xxl),
+        xxxl: getPxFromRem(rowTokens.size.height[density].xxxl),
       },
-      br: rowTokens.shape.borderRadius[DENSITY.DEFAULT],
     },
     cell: {
-      horPad: cellTokens.space.padding.hor[DENSITY.DEFAULT],
-      verPad: cellTokens.space.padding.ver[DENSITY.DEFAULT].base,
-      verPadTall: cellTokens.space.padding.ver[DENSITY.DEFAULT].tall,
-    },
-    afterRow: {
-      horPad: cellWrapperTokens.space.padding.hor[DENSITY.DEFAULT].afterRow,
-      verPad: cellWrapperTokens.space.padding.ver[DENSITY.DEFAULT].afterRow,
-    },
-    expanded: {
-      horPad: cellWrapperTokens.space.padding.hor[DENSITY.DEFAULT].expanded,
-      verPad: cellWrapperTokens.space.padding.ver[DENSITY.DEFAULT].expanded,
-    },
-    expandedLg: {
-      horPad: cellWrapperTokens.space.padding.hor[DENSITY.DEFAULT].expandedLg,
-      verPad: cellWrapperTokens.space.padding.ver[DENSITY.DEFAULT].expandedLg,
+      horPad: getPxFromRem(cellTokens.space.padding.hor[density]),
+      verPad: getPxFromRem(cellTokens.space.padding.ver[density].base),
     },
   };
 };

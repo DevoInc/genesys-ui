@@ -5,6 +5,7 @@ import { HeaderCell } from '../HeaderCell';
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { ColDef } from '../../declarations';
 import { getColDefByID } from '../utils';
+import { TableContext } from '../Table/context';
 
 interface TableHeadProps {
   scrolled?: boolean;
@@ -13,19 +14,18 @@ interface TableHeadProps {
 }
 
 export const TableHead: React.FC<TableHeadProps> = ({
-  scrolled,
   columnVirtualizer,
   columnDefs,
+  scrolled,
 }) => {
+  const { styles, measures } = React.useContext(TableContext);
   return (
     <StyledTableHead
       scrolled={scrolled}
       width={`${columnVirtualizer.getTotalSize()}px`}
+      height={`${measures.head.height}px`}
     >
-      <StyledTableHeadRow
-        width={`${columnVirtualizer.getTotalSize()}px`}
-        height={'40px'}
-      >
+      <StyledTableHeadRow width={`${columnVirtualizer.getTotalSize()}px`}>
         {columnVirtualizer
           .getVirtualItems()
           .map((virtualColumn: VirtualItem) => (
