@@ -37,14 +37,14 @@ const data = Holo.of()
     website: 'url',
     secondaryWebsite: 'url',
   })
-  .repeat(10)
+  .repeat(200)
   .generate();
 
 const tableOptions: TableOptionsProps = {
   defaultColumnDef: {
     editable: false,
   },
-  style: {
+  visualOptions: {
     wrapper: {
       maxHeight: '500px',
     },

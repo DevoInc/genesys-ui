@@ -17,11 +17,17 @@ interface TableProps {
 
 export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
   const theme = useTheme();
-  const { defaultColumnDef, columnDefs, types, style } = tableOptions;
+  const measures = getMeasures(
+    theme,
+    (tableOptions.visualOptions.density = 'default'),
+  );
+  const rowHeight =
+    measures.row.height[tableOptions.visualOptions?.row?.height || 'md'];
+  const { defaultColumnDef, columnDefs, types, visualOptions } = tableOptions;
   const { rowVirtualizer, columnVirtualizer, ref } = useTableVirtualization({
     data,
     columnDefs,
-    tableOptions,
+    rowHeight,
   });
   const refinedColumnDefs = getCollatedColumns(
     defaultColumnDef,
@@ -30,14 +36,18 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
   );
   const { hasScroll } = useTableScroll(rowVirtualizer, ref);
   console.info('hasScroll: ', hasScroll);
+  console.info(measures);
   return (
     <TableContext.Provider
       value={{
-        styles: tableOptions.style,
-        measures: getMeasures(theme, (tableOptions.style.density = 'default')),
+        visualOptions: tableOptions.visualOptions,
+        measures,
       }}
     >
-      <StyledTableWrapper ref={ref} maxHeight={style?.wrapper?.maxHeight}>
+      <StyledTableWrapper
+        ref={ref}
+        maxHeight={visualOptions?.wrapper?.maxHeight}
+      >
         <StyledTable
           width={`${columnVirtualizer.getTotalSize()}px`}
           height={`${rowVirtualizer.getTotalSize()}px`}

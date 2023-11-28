@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { DefaultTheme } from 'styled-components';
 
-interface StyledTableCellWrapperProps {
+interface StyledTableCellProps {
   cellWidth?: React.CSSProperties['width'];
   height?: React.CSSProperties['height'];
   offsetX?: number;
@@ -9,7 +9,7 @@ interface StyledTableCellWrapperProps {
 }
 
 export const StyledTableCell = styled.td.attrs(
-  ({ cellWidth, theme, offsetX, height }: StyledTableCellWrapperProps) => ({
+  ({ cellWidth, theme, offsetX, height }: StyledTableCellProps) => ({
     style: {
       width: cellWidth,
       color: theme.alias.color.text.body.base,
@@ -17,13 +17,12 @@ export const StyledTableCell = styled.td.attrs(
       height,
     },
   }),
-)<StyledTableCellWrapperProps>`
+)<StyledTableCellProps>`
   position: absolute;
   top: 0;
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  padding: 0 1.2rem;
   height: 100%;
   overflow: hidden;
   flex: 0 0 auto;

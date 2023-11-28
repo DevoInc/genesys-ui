@@ -1,15 +1,34 @@
 import * as React from 'react';
-import { MeasuresConfig, TableStyles } from '../../declarations';
+import { MeasuresConfig, TableVisualOptions } from '../../declarations';
 
 interface TableContextProps {
-  styles: TableStyles;
+  visualOptions: TableVisualOptions;
   measures: MeasuresConfig;
 }
 
 export const TableContext = React.createContext<TableContextProps>({
-  density: 'default',
-  row: { height: 'md' },
-  wrapper: {
-    maxHeight: 'none',
+  visualOptions: {
+    density: 'default',
+    row: { height: 'md' },
+    striped: false,
+    wrapper: {
+      maxHeight: 'none',
+    },
+  },
+  measures: {
+    head: { height: 36 },
+    row: {
+      height: {
+        md: 36,
+        lg: 60,
+        xl: 72,
+        xxl: 84,
+        xxxl: 96,
+      },
+    },
+    cell: {
+      horPad: 12,
+      verPad: 8,
+    },
   },
 });

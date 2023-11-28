@@ -1,7 +1,7 @@
+import * as React from 'react';
 import { StyledTableProps } from './core/Table/StyledTable';
 import { DateContext } from './valueFormatters/date';
 import { StyledTableWrapperProps } from './core/Table/StyledTableWrapper';
-import { getPxFromRem } from '@devoinc/genesys-ui';
 
 export type DefaultColDef = Omit<ColDef, 'id'>;
 
@@ -9,8 +9,9 @@ type Types = { id: string };
 type TypesColDef = Omit<ColDef, 'colId'>;
 export type Density = 'default' | 'compact' | 'comfortable';
 
-export interface TableStyles {
+export interface TableVisualOptions {
   density?: Density;
+  striped?: boolean;
   wrapper: StyledTableWrapperProps;
   table?: StyledTableProps;
   row?: { height: RowHeight };
@@ -23,12 +24,26 @@ export interface TableOptionsProps {
   context?: {
     [key: string]: unknown;
   };
-  style?: TableStyles;
+  visualOptions?: TableVisualOptions;
 }
 
 export interface CellRendererParams {
   value: unknown;
   columnDef: ColDef;
+}
+
+export type CellVerAlign = 'top' | 'bottom' | 'center';
+export type CellHorAlign = 'left' | 'center' | 'right';
+
+export interface ColumnCellStyleProps {
+  align?: {
+    horizontal?: CellHorAlign;
+    vertical?: CellVerAlign;
+  };
+  textAlign?: React.CSSProperties['textAlign'];
+  width?: number;
+  truncateLine?: number;
+  toEdge?: boolean;
 }
 
 interface CellEditorParams {
@@ -52,19 +67,7 @@ export interface ColDef {
     [key: string]: unknown;
   };
 
-  cellStyle?: {
-    minWidth?: number;
-    maxWidth?: number;
-    width?: number;
-    align?: {
-      horizontal?: 'left' | 'center' | 'right';
-      vertical?: 'top' | 'bottom' | 'center';
-    };
-    textAlign?: 'left' | 'center' | 'right';
-    truncateLine?: number;
-    boxShadow?: 'base' | 'strong';
-    toEdge: boolean;
-  };
+  cellStyle?: ColumnCellStyleProps;
   expandedRow?: boolean;
   isDragging?: boolean;
   onReset?: (initialValue: unknown) => void;

@@ -18,7 +18,7 @@ export const TableHead: React.FC<TableHeadProps> = ({
   columnDefs,
   scrolled,
 }) => {
-  const { styles, measures } = React.useContext(TableContext);
+  const { measures } = React.useContext(TableContext);
   return (
     <StyledTableHead
       scrolled={scrolled}
