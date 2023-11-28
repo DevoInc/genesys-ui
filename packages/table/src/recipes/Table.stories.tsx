@@ -37,7 +37,7 @@ const data = Holo.of()
     website: 'url',
     secondaryWebsite: 'url',
   })
-  .repeat(200)
+  .repeat(10)
   .generate();
 
 const tableOptions: TableOptionsProps = {
