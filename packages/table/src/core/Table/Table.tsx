@@ -35,8 +35,6 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
     types,
   );
   const { hasScroll } = useTableScroll(rowVirtualizer, ref);
-  console.info('hasScroll: ', hasScroll);
-  console.info(measures);
   return (
     <TableContext.Provider
       value={{

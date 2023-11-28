@@ -5,21 +5,24 @@ export const useTableScroll = (
   rowVirtualizer: Virtualizer<HTMLDivElement, Element>,
   wrapperRef: React.MutableRefObject<HTMLDivElement>,
 ) => {
-  const [bodyHeight] = React.useState(rowVirtualizer?.getTotalSize() || 0);
-  const [totalHeight] = React.useState(wrapperRef?.current?.clientHeight || 0);
-  const [headHeight] = React.useState(
-    wrapperRef?.current?.querySelector('thead')?.clientHeight || 0,
-  );
-  console.info('bodyHeight: ', bodyHeight);
-  console.info('totalHeight: ', totalHeight);
-  console.info('headHeight: ', headHeight);
-  const [hasScroll, setHasScroll] = React.useState(
-    bodyHeight > totalHeight - headHeight,
-  );
+  const [dataHeight, setDataHeight] = React.useState<number>(0);
+  const [wrapperHeight, setWrapperHeight] = React.useState<number>(0);
+  const [headHeight, setHeadHeight] = React.useState<number>(0);
+  const [hasScroll, setHasScroll] = React.useState<boolean>(false);
 
   React.useEffect(() => {
-    setHasScroll(bodyHeight > totalHeight - headHeight);
-  }, [bodyHeight, totalHeight, headHeight]);
+    setDataHeight(rowVirtualizer.getTotalSize());
+    setWrapperHeight(wrapperRef.current?.offsetHeight);
+    setHeadHeight(
+      wrapperRef.current?.querySelector<HTMLElement>('table thead')
+        ?.offsetHeight,
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  React.useEffect(() => {
+    setHasScroll(dataHeight > wrapperHeight - headHeight);
+  }, [dataHeight, wrapperHeight, headHeight]);
 
   return { hasScroll };
 };
