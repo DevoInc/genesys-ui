@@ -3,6 +3,8 @@ import { StyledTableCell } from './StyledTableCell';
 import { useRenderContent } from './useRenderContent';
 import { ColDef } from '../../declarations';
 import { useInitialState } from '../../editors/useInitialState';
+import { TableContext } from '../Table/context';
+import { StyledTableCellWrapper } from './StyledTableCellWrapper';
 
 interface CellProps {
   data: unknown;
@@ -19,6 +21,7 @@ export const Cell: React.FC<CellProps> = ({
   cellHeight,
   offsetX,
 }) => {
+  const { measures } = React.useContext(TableContext);
   const { onReset } = columnDef;
 
   useInitialState(data, onReset);
@@ -34,7 +37,14 @@ export const Cell: React.FC<CellProps> = ({
       offsetX={offsetX}
       height={cellHeight}
     >
-      {isEditMode ? editionContent : viewContent}
+      <StyledTableCellWrapper
+        clickable={columnDef.editable}
+        as={columnDef.editable ? 'button' : 'div'}
+        paddingVer={`${measures.cell.verPad}px`}
+        paddingHor={`${measures.cell.horPad}px`}
+      >
+        {isEditMode ? editionContent : viewContent}
+      </StyledTableCellWrapper>
     </StyledTableCell>
   );
 };

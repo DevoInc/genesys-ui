@@ -21,4 +21,5 @@ export const DEFAULT_VIRTUAL_COLUMN: VirtualItem = {
 
 export const DEFAULT_COLDEF: ColDef = {
   id: 'col',
+  headerName: 'Column',
 };

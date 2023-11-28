@@ -1,10 +1,12 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
+import { TableContext } from './context';
 import { TableOptionsProps } from '../../declarations';
 import { TableHead } from '../TableHead';
 import { TableBody } from '../TableBody';
 import { StyledTable } from './StyledTable';
 import { StyledTableWrapper } from './StyledTableWrapper';
-import { getCollatedColumns } from '../utils';
+import { getCollatedColumns, getMeasures } from '../utils';
 import { useTableVirtualization } from './useTableVirtualization';
 import { useTableScroll } from './useTableScroll';
 
@@ -14,43 +16,55 @@ interface TableProps {
 }
 
 export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
-  const { defaultColumnDef, columnDefs, types, style } = tableOptions;
+  const theme = useTheme();
+  const measures = getMeasures(
+    theme,
+    (tableOptions.visualOptions.density = 'default'),
+  );
+  const rowHeight =
+    measures.row.height[tableOptions.visualOptions?.row?.height || 'md'];
+  const { defaultColumnDef, columnDefs, types, visualOptions } = tableOptions;
   const { rowVirtualizer, columnVirtualizer, ref } = useTableVirtualization({
     data,
     columnDefs,
-    tableOptions,
+    rowHeight,
   });
-
   const refinedColumnDefs = getCollatedColumns(
     defaultColumnDef,
     columnDefs,
     types,
   );
-
   const { hasScroll } = useTableScroll(rowVirtualizer, ref);
-
+  console.info('hasScroll: ', hasScroll);
+  console.info(measures);
   return (
-    <StyledTableWrapper
-      ref={ref}
-      maxHeight={style?.wrapper?.maxHeight}
-      scrolled={style?.wrapper?.scrolled}
+    <TableContext.Provider
+      value={{
+        visualOptions: tableOptions.visualOptions,
+        measures,
+      }}
     >
-      <StyledTable
-        width={`${columnVirtualizer.getTotalSize()}px`}
-        height={`${rowVirtualizer.getTotalSize()}px`}
+      <StyledTableWrapper
+        ref={ref}
+        maxHeight={visualOptions?.wrapper?.maxHeight}
       >
-        <TableHead
-          scrolled={hasScroll}
-          columnVirtualizer={columnVirtualizer}
-          columnDefs={columnDefs}
-        />
-        <TableBody
-          data={data}
-          columnDefs={refinedColumnDefs}
-          rowVirtualizer={rowVirtualizer}
-          columnVirtualizer={columnVirtualizer}
-        />
-      </StyledTable>
-    </StyledTableWrapper>
+        <StyledTable
+          width={`${columnVirtualizer.getTotalSize()}px`}
+          height={`${rowVirtualizer.getTotalSize()}px`}
+        >
+          <TableHead
+            columnDefs={columnDefs}
+            columnVirtualizer={columnVirtualizer}
+            scrolled={hasScroll}
+          />
+          <TableBody
+            data={data}
+            columnDefs={refinedColumnDefs}
+            rowVirtualizer={rowVirtualizer}
+            columnVirtualizer={columnVirtualizer}
+          />
+        </StyledTable>
+      </StyledTableWrapper>
+    </TableContext.Provider>
   );
 };

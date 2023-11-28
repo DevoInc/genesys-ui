@@ -32,12 +32,12 @@ export const performanceOptions: TableOptionsProps = {
   defaultColumnDef: {
     editable: false,
   },
-  style: {
+  visualOptions: {
     wrapper: {
       maxHeight: '500px',
     },
     row: {
-      height: 30,
+      height: 'md',
     },
   },
   columnDefs: colDefs,

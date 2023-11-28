@@ -1,11 +1,11 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { MutableRefObject, useRef } from 'react';
-import { ColDef, TableOptionsProps } from '../../declarations';
+import { ColDef } from '../../declarations';
 
 interface UseVirtualizationParams {
   data: { [key: string]: unknown }[];
   columnDefs: ColDef[];
-  tableOptions: TableOptionsProps;
+  rowHeight: number;
 }
 
 const getEstimatedColumnWidth = (
@@ -17,19 +17,16 @@ const getEstimatedColumnWidth = (
   tableRef?.current?.offsetWidth / colDefs.length ??
   300;
 
-const getEstimatedRowHeight = (options: TableOptionsProps) =>
-  options.style?.row?.height ?? 300;
-
 export const useTableVirtualization = ({
   data,
   columnDefs,
-  tableOptions,
+  rowHeight,
 }: UseVirtualizationParams) => {
   const ref = useRef<HTMLDivElement>();
   const rowVirtualizer = useVirtualizer({
     count: data.length,
     getScrollElement: () => ref.current,
-    estimateSize: () => getEstimatedRowHeight(tableOptions),
+    estimateSize: () => rowHeight,
     overscan: 10,
   });
 

@@ -3,6 +3,7 @@ import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { ColDef } from '../../declarations';
 import { Cell } from '../Cell';
 import { StyledTableRow, StyledTableRowProps } from './StyledTableRow';
+import { TableContext } from '../Table/context';
 
 interface RowProps extends StyledTableRowProps {
   columnDefs: ColDef[];
@@ -23,10 +24,10 @@ export const Row: React.FC<RowProps> = ({
   isDragging,
   modified,
   selected,
-  striped,
   styles,
   columnVirtualizer,
 }) => {
+  const { visualOptions } = React.useContext(TableContext);
   return (
     <StyledTableRow
       disabled={disabled}
@@ -37,7 +38,7 @@ export const Row: React.FC<RowProps> = ({
       isDragging={isDragging}
       modified={modified}
       selected={selected}
-      striped={striped}
+      striped={visualOptions.striped}
       position={styles.position}
       width={styles.width}
       height={styles.height}

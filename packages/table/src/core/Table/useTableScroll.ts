@@ -1,21 +1,23 @@
+import * as React from 'react';
 import { Virtualizer } from '@tanstack/react-virtual';
-import { useEffect, useState } from 'react';
 
 export const useTableScroll = (
   rowVirtualizer: Virtualizer<HTMLDivElement, Element>,
   wrapperRef: React.MutableRefObject<HTMLDivElement>,
 ) => {
-  const [bodyHeight] = useState(rowVirtualizer?.getTotalSize() || 0);
-  const [totalHeight] = useState(wrapperRef?.current?.clientHeight || 0);
-  const [headHeight] = useState(
+  const [bodyHeight] = React.useState(rowVirtualizer?.getTotalSize() || 0);
+  const [totalHeight] = React.useState(wrapperRef?.current?.clientHeight || 0);
+  const [headHeight] = React.useState(
     wrapperRef?.current?.querySelector('thead')?.clientHeight || 0,
   );
-
-  const [hasScroll, setHasScroll] = useState(
+  console.info('bodyHeight: ', bodyHeight);
+  console.info('totalHeight: ', totalHeight);
+  console.info('headHeight: ', headHeight);
+  const [hasScroll, setHasScroll] = React.useState(
     bodyHeight > totalHeight - headHeight,
   );
 
-  useEffect(() => {
+  React.useEffect(() => {
     setHasScroll(bodyHeight > totalHeight - headHeight);
   }, [bodyHeight, totalHeight, headHeight]);
 

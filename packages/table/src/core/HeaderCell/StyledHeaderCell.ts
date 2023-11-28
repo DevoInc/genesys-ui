@@ -13,7 +13,7 @@ export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
   top: 0;
   left: 0;
   box-sizing: border-box;
-  height: 4.2rem;
+  height: 100%;
   padding: 0 1.2rem;
   width: ${({ headerCellWidth }) => headerCellWidth};
   color: ${({ theme }) => theme.alias.color.text.heading.base};

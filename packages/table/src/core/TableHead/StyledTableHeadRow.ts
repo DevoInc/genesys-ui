@@ -8,7 +8,6 @@ interface StyledTableHeadRowProps {
 
 export const StyledTableHeadRow = styled.tr<StyledTableHeadRowProps>`
   position: relative;
-  width: ${({ width }) => width};
-  height: ${({ height }) => height};
   display: flex;
+  height: 100%;
 `;

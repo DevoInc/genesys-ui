@@ -1,6 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { pseudoElementMixin } from '@devoinc/genesys-ui';
+import {
+  pseudoElementMixin,
+  pseudoElementOverlayMixin,
+} from '@devoinc/genesys-ui';
 
 export interface StyledTableRowProps {
   disabled?: boolean;
@@ -51,7 +54,9 @@ export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
     const evenOddType = striped && even ? 'even' : 'odd';
     const rowTokens = theme.cmp.table.row;
     const transitionDuration = rowTokens.mutation.transitionDuration;
-
+    const hoverBgColor = striped
+      ? theme.cmp.table.cell.color.background.backdrop.hovered.strong
+      : theme.cmp.table.cell.color.background.backdrop.hovered.base;
     return css`
       @keyframes modifiedBlink {
         0% {
@@ -84,6 +89,18 @@ export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
         if (isDragging) return rowTokens.color.background.odd.base;
         return rowTokens.color.background[evenOddType].base;
       }};
+
+      // hovered
+      &::before {
+        ${pseudoElementOverlayMixin({})};
+        transition: background-color ease-in-out
+          ${theme.cmp.table.cell.mutation.transitionDuration};
+        background-color: transparent;
+      }
+
+      &:hover::before {
+        background-color: ${hoverBgColor};
+      }
 
       // draggable
       ${draggable &&
