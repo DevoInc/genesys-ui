@@ -46,9 +46,16 @@ export interface ColumnCellStyleProps {
   toEdge?: boolean;
 }
 
+type EditCellOnChange = (newValue: unknown) => void;
+
 interface CellEditorParams {
   value: unknown;
-  onChange: () => void;
+  onChange: EditCellOnChange;
+}
+
+interface CellRendererConfig {
+  onChange?: EditCellOnChange;
+  [key: string]: any;
 }
 
 export interface ColDef {
@@ -62,7 +69,7 @@ export interface ColDef {
   valueFormatter?: (value: unknown, context: DateContext) => void;
 
   // revisar
-  cellRendererConfig?: any;
+  cellRendererConfig?: CellRendererConfig;
   context?: {
     [key: string]: unknown;
   };

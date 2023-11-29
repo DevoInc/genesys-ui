@@ -18,7 +18,7 @@ export const useRenderContent = (columnDef: ColDef, data: unknown) => {
   const editionContent = columnDef.CellEditor
     ? columnDef.CellEditor({
         value: data,
-        onChange: () => {},
+        onChange: columnDef.cellRendererConfig?.onChange,
       })
     : null;
 
