@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.6.0](https://github.com/DevoInc/genesys-ui/compare/v1.5.1...v1.6.0) (2023-11-29)
+
+
+### Features
+
+* improvements for the Table and added context provider for Table configuration. ([6888fdf](https://github.com/DevoInc/genesys-ui/commit/6888fdf3e2f8425b40161c611fb9c7c8122c0951))
+* Improvements for the virtualization and row look and feel. ([28cce03](https://github.com/DevoInc/genesys-ui/commit/28cce03a92363bcfd941addcc9d71a885e64754c))
+* new naming for props and styles for rows. ([3665f49](https://github.com/DevoInc/genesys-ui/commit/3665f4925a149a3338a23600ef5483e98e5f0ce9))
+* **Table:** Added horizontal virtualization ([8da3740](https://github.com/DevoInc/genesys-ui/commit/8da374071c8bd425d4eb9b71f9adf7b030047cb9))
+* **Table:** Added user cell width in styled element ([6a484a2](https://github.com/DevoInc/genesys-ui/commit/6a484a2d788d587c64cf88606708de7f02e08dca))
+* **Table:** Added user row height for virtualizer estimate size ([6b2ff04](https://github.com/DevoInc/genesys-ui/commit/6b2ff0427ffae45a82bdab12baa07e911ac94499))
+* **Table:** Calculated scroll logic into React state for correct visualization ([e785f99](https://github.com/DevoInc/genesys-ui/commit/e785f99d4b1e61797911785feb6b7323abb080ac))
+* **Table:** style and virtualization improvements ([9712225](https://github.com/DevoInc/genesys-ui/commit/97122257162cef8ac323d89a025a2b334853b135))
+
+
+### Bug Fixes
+
+* fixed lint problems. ([29b2ee6](https://github.com/DevoInc/genesys-ui/commit/29b2ee61f074ac114547dfb589d21f921f931e3e))
+* **Table:** Adjusted scroll flag calculation ([951bf1a](https://github.com/DevoInc/genesys-ui/commit/951bf1a1eff36b02829a1fd13212c04e7b663d22))
+* **Table:** Solved TS errors ([d7e12cd](https://github.com/DevoInc/genesys-ui/commit/d7e12cd16367b124a1aa8f191fa7890e44e4e18f))
+
 ## [1.5.1](https://github.com/DevoInc/genesys-ui/compare/v1.5.0...v1.5.1) (2023-11-17)
 
 
