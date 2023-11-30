@@ -98,3 +98,8 @@ export interface MeasuresConfig {
     verPad: number;
   };
 }
+
+export interface OccupiedWidth {
+  percentage: number;
+  definedColDefs: number;
+}
