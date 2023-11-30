@@ -9,11 +9,9 @@ interface TableContextProps {
 export const TableContext = React.createContext<TableContextProps>({
   visualOptions: {
     density: 'default',
-    row: { height: 'md' },
+    rowHeight: 'md',
     striped: false,
-    wrapper: {
-      maxHeight: 'none',
-    },
+    maxHeight: 'none',
   },
   measures: {
     head: { height: 36 },

@@ -9,12 +9,12 @@ interface EditInputProps {
 
 export const EditText: React.FC<EditInputProps> = ({ value, onChange }) => (
   <InputControl
+    autoFocus
     type={'text'}
     aria-label={'Text input'}
     value={value}
     onChange={(event: FormEvent) =>
       onChange?.((event.target as HTMLInputElement).value)
     }
-    autoFocus
   />
 );

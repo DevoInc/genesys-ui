@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { StyledTableProps } from './core/Table/StyledTable';
 import { DateContext } from './valueFormatters/date';
-import { StyledTableWrapperProps } from './core/Table/StyledTableWrapper';
 
 export type DefaultColDef = Omit<ColDef, 'id'>;
 
@@ -12,9 +10,9 @@ export type Density = 'default' | 'compact' | 'comfortable';
 export interface TableVisualOptions {
   density?: Density;
   striped?: boolean;
-  wrapper: StyledTableWrapperProps;
-  table?: StyledTableProps;
-  row?: { height: RowHeight };
+  maxHeight?: React.CSSProperties['maxHeight'];
+  minWidth?: number;
+  rowHeight?: RowHeight;
 }
 
 export interface TableOptionsProps {

@@ -9,10 +9,11 @@ export const useTableScroll = (
   const [wrapperHeight, setWrapperHeight] = React.useState<number>(0);
   const [headHeight, setHeadHeight] = React.useState<number>(0);
   const [hasScroll, setHasScroll] = React.useState<boolean>(false);
-
   React.useEffect(() => {
     setDataHeight(rowVirtualizer.getTotalSize());
-    setWrapperHeight(wrapperRef.current?.offsetHeight);
+    setWrapperHeight(
+      wrapperRef.current?.querySelector<HTMLElement>('table')?.offsetHeight,
+    );
     setHeadHeight(
       wrapperRef.current?.querySelector<HTMLElement>('table thead')
         ?.offsetHeight,

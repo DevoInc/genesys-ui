@@ -35,7 +35,7 @@ export const baseData = Holo.of()
     website: 'url',
     secondaryWebsite: 'url',
   })
-  .repeat(200)
+  .repeat(10)
   .generate();
 
 export const baseOptions: TableOptionsProps = {
@@ -43,12 +43,9 @@ export const baseOptions: TableOptionsProps = {
     editable: false,
   },
   visualOptions: {
-    wrapper: {
-      maxHeight: '500px',
-    },
-    row: {
-      height: 'md',
-    },
+    maxHeight: '80vh',
+    minWidth: 1800,
+    rowHeight: 'md',
   },
   columnDefs: [
     {
@@ -117,6 +114,7 @@ export const baseOptions: TableOptionsProps = {
       id: 'status',
       headerName: 'Status',
       type: 'tag',
+      editable: true,
     },
     {
       id: 'picture',

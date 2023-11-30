@@ -22,12 +22,13 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
     (tableOptions.visualOptions.density = 'default'),
   );
   const rowHeight =
-    measures.row.height[tableOptions.visualOptions?.row?.height || 'md'];
+    measures.row.height[tableOptions.visualOptions?.rowHeight || 'md'];
   const { defaultColumnDef, columnDefs, types, visualOptions } = tableOptions;
   const { rowVirtualizer, columnVirtualizer, ref } = useTableVirtualization({
     data,
     columnDefs,
     rowHeight,
+    tableMinWidth: tableOptions?.visualOptions?.minWidth,
   });
   const refinedColumnDefs = getCollatedColumns(
     defaultColumnDef,
@@ -42,13 +43,11 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
         measures,
       }}
     >
-      <StyledTableWrapper
-        ref={ref}
-        maxHeight={visualOptions?.wrapper?.maxHeight}
-      >
+      <StyledTableWrapper ref={ref} maxHeight={visualOptions?.maxHeight}>
         <StyledTable
           width={`${columnVirtualizer.getTotalSize()}px`}
           height={`${rowVirtualizer.getTotalSize()}px`}
+          minWidth={visualOptions?.minWidth}
         >
           <TableHead
             columnDefs={columnDefs}
