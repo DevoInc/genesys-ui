@@ -1,27 +1,19 @@
 import { Holo } from '@devoinc/holo';
-import { TableOptionsProps } from '../../declarations';
+import { ColDef, TableOptionsProps } from '../../declarations';
 
-const defaultColDef = {
-  id: 'company',
+const colDefs: ColDef[] = Array.from({ length: 100 }, (_, index) => ({
+  id: `company_${index}`,
   headerName: 'Company',
   type: 'text',
   cellStyle: {
     width: 180,
   },
-};
+}));
 
-let index = 0;
 const schemaObject = {};
 Array.from({ length: 100 }).forEach((_el, index: number) => {
   schemaObject[`company_${index}`] = 'company';
 });
-
-const defObject = {
-  ...defaultColDef,
-  id: () => `company_${index++}`,
-  headerName: () => `Company ${index}`,
-};
-const colDefs = Holo.of().schema(defObject).repeat(100).generate();
 
 export const performanceData = Holo.of()
   .schema(schemaObject)
