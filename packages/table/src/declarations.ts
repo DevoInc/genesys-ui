@@ -39,6 +39,7 @@ export interface ColumnCellStyleProps {
     vertical?: CellVerAlign;
   };
   textAlign?: React.CSSProperties['textAlign'];
+  /** Width of the column expressed in percentage over the width of the table */
   width?: number;
   truncateLine?: number;
   toEdge?: boolean;
