@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/DevoInc/genesys-ui/compare/v1.6.0...v1.6.1) (2023-11-30)
+
+
+### Bug Fixes
+
+* Update monaco editor on value change only if the ([28a8088](https://github.com/DevoInc/genesys-ui/commit/28a8088b9bce3f01f5fd2c54bcf16037aa3c61ba))
+
 ## [1.6.0](https://github.com/DevoInc/genesys-ui/compare/v1.5.1...v1.6.0) (2023-11-29)
 
 
