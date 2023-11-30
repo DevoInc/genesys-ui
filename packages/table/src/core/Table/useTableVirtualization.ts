@@ -6,21 +6,24 @@ interface UseVirtualizationParams {
   data: { [key: string]: unknown }[];
   columnDefs: ColDef[];
   rowHeight: number;
+  tableMinWidth: number;
 }
 
 const getEstimatedColumnWidth = (
   colDefs: ColDef[],
+  tableMinWidth: number,
   colIndex: number,
   tableRef: MutableRefObject<HTMLDivElement>,
 ) =>
   colDefs[colIndex]?.cellStyle?.width ??
-  tableRef?.current?.offsetWidth / colDefs.length ??
+  Math.max(tableMinWidth, tableRef?.current?.offsetWidth) / colDefs.length ??
   300;
 
 export const useTableVirtualization = ({
   data,
   columnDefs,
   rowHeight,
+  tableMinWidth,
 }: UseVirtualizationParams) => {
   const ref = useRef<HTMLDivElement>();
   const rowVirtualizer = useVirtualizer({
@@ -34,7 +37,7 @@ export const useTableVirtualization = ({
     count: columnDefs.length,
     getScrollElement: () => ref.current,
     estimateSize: (index: number) =>
-      getEstimatedColumnWidth(columnDefs, index, ref),
+      getEstimatedColumnWidth(columnDefs, tableMinWidth, index, ref),
     horizontal: true,
     getItemKey: (index: number) => columnDefs[index].id,
     overscan: 2,

@@ -5,6 +5,8 @@ import { ColDef } from '../../declarations';
 import { useInitialState } from '../../editors/useInitialState';
 import { TableContext } from '../Table/context';
 import { StyledTableCellWrapper } from './StyledTableCellWrapper';
+import { GIPencilEditFilled } from '@devoinc/genesys-icons';
+import { StyledTableCellMarker } from './StyledTableCellMarker';
 
 interface CellProps {
   data: unknown;
@@ -44,6 +46,11 @@ export const Cell: React.FC<CellProps> = ({
         paddingHor={`${measures.cell.horPad}px`}
       >
         {isEditMode ? editionContent : viewContent}
+        {columnDef.editable && !isEditMode && (
+          <StyledTableCellMarker>
+            <GIPencilEditFilled size={10} />
+          </StyledTableCellMarker>
+        )}
       </StyledTableCellWrapper>
     </StyledTableCell>
   );

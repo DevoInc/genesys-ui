@@ -24,6 +24,6 @@ export const StyledTableCell = styled.td.attrs(
   align-items: center;
   box-sizing: border-box;
   height: 100%;
-  overflow: hidden;
+  //overflow: hidden;
   flex: 0 0 auto;
 `;

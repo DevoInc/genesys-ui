@@ -33,12 +33,8 @@ export const performanceOptions: TableOptionsProps = {
     editable: false,
   },
   visualOptions: {
-    wrapper: {
-      maxHeight: '500px',
-    },
-    row: {
-      height: 'md',
-    },
+    maxHeight: '500px',
+    rowHeight: 'md',
   },
   columnDefs: colDefs,
 };
