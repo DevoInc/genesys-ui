@@ -151,8 +151,12 @@ export const useEditor: UseEditor = ({
   useUpdateEffect(() => {
     ////////////////////////////////////////////
     // Update monaco editor on value change
+    // Only update if the value has changed
     if (monaco) {
-      editorRef.current?.setValue(value);
+      const editor = editorRef.current;
+      if (editor.getValue() !== value) {
+        editorRef.current?.setValue(value);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
