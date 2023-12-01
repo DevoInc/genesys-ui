@@ -35,7 +35,7 @@ export const baseData = Holo.of()
     website: 'url',
     secondaryWebsite: 'url',
   })
-  .repeat(10)
+  .repeat(200)
   .generate();
 
 export const baseOptions: TableOptionsProps = {
