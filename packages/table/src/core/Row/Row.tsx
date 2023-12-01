@@ -50,7 +50,7 @@ export const Row: React.FC<RowProps> = ({
           key={`cell-${virtualColumn.key}`}
           data={data[columnDefs[virtualColumn.index].id] ?? ''}
           cellWidth={`${virtualColumn.size}px`}
-          cellHeight={styles.height}
+          //cellHeight={styles.height}
           offsetX={virtualColumn.start}
         />
       ))}

@@ -10,7 +10,9 @@ export const StyledTableCellMarker = styled.span`
   opacity: 0;
   cursor: inherit;
 
-  tr:hover & {
+  tr:hover &,
+  *:enabled:hover &,
+  *:enabled:focus & {
     opacity: 1;
   }
 

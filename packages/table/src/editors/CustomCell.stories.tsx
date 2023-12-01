@@ -24,16 +24,9 @@ export const UsingACustomCellEditor: Story = {
         headerName: 'text',
         CellEditor: () => CustomCellEditor({ value: text, onChange }),
         CellRenderer: TextRenderer,
-        cellStyle: {
-          align: {
-            horizontal: 'left',
-            vertical: 'center',
-          },
-          textAlign: 'right',
-        },
         editable: true,
       };
 
-      return <Cell columnDef={customEditorDef} data={text} />;
+      return <Cell cellWidth="20rem" columnDef={customEditorDef} data={text} />;
     })(),
 };
