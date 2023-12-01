@@ -11,6 +11,11 @@ interface TableContextProps {
   measures: MeasuresConfig;
 }
 
+interface TableContextProviderProps {
+  children: React.ReactNode;
+  value: TableContextProps;
+}
+
 const defaultTableContext: TableContextProps = {
   visualOptions: {
     density: 'default',
@@ -52,8 +57,11 @@ const defaultTableContext: TableContextProps = {
 export const TableContext =
   React.createContext<TableContextProps>(defaultTableContext);
 
-export const TableContextProvider = ({ children, value }) => {
-  const [context, setContext] = React.useState({
+export const TableContextProvider = ({
+  children,
+  value,
+}: TableContextProviderProps) => {
+  const [context] = React.useState({
     ...defaultTableContext,
     ...value,
   });

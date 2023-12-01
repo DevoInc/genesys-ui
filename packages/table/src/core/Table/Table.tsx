@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import { TableContext } from './context';
+import { TableContextProvider } from './context';
 import { TableOptionsProps } from '../../declarations';
 import { TableHead } from '../TableHead';
 import { TableBody } from '../TableBody';
@@ -37,7 +37,7 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
   );
   const { hasScroll } = useTableScroll(rowVirtualizer, ref);
   return (
-    <TableContext.Provider
+    <TableContextProvider
       value={{
         ...tableOptions,
         measures,
@@ -62,6 +62,6 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
           />
         </StyledTable>
       </StyledTableWrapper>
-    </TableContext.Provider>
+    </TableContextProvider>
   );
 };
