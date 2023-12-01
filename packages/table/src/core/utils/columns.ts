@@ -53,7 +53,7 @@ export const getEstimatedColumnWidth = (
   const percentageToCover = (100 - percentage) / 100;
   const tableWidth = Math.max(tableMinWidth, tableRef?.current?.offsetWidth);
   const defaultColWidth =
-    (percentageToCover * tableMinWidth) / (colDefs.length - definedColDefs);
+    (percentageToCover * tableWidth) / (colDefs.length - definedColDefs);
   return colDefs[colIndex]?.cellStyle?.width
     ? tableWidth * (colDefs[colIndex]?.cellStyle?.width / 100)
     : defaultColWidth;
