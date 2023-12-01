@@ -5,6 +5,7 @@ import { btnResetMixin, typoMixin } from '@devoinc/genesys-ui';
 
 interface StyledTableCellWrapperProps extends ColumnCellStyleProps {
   clickable?: boolean;
+  isEditMode?: boolean;
   paddingVer?: React.CSSProperties['paddingBottom'];
   paddingHor?: React.CSSProperties['paddingLeft'];
 }
@@ -18,10 +19,10 @@ const alignMap = {
 };
 
 export const StyledTableCellWrapper = styled.div<StyledTableCellWrapperProps>`
-  ${({ clickable, theme }) => {
+  ${({ clickable, isEditMode, theme }) => {
     const tokens = theme.cmp.table.cellClickableWrapper;
-    return (
-      clickable &&
+    return css`
+      ${clickable &&
       css`
         ${btnResetMixin};
         user-select: auto;
@@ -37,8 +38,13 @@ export const StyledTableCellWrapper = styled.div<StyledTableCellWrapperProps>`
         &:focus {
           box-shadow: ${theme.alias.elevation.boxShadow.base.focused};
         }
-      `
-    );
+      `}
+
+      ${isEditMode &&
+      css`
+        background-color: ${tokens.color.background.hovered};
+      `}
+    `;
   }}
   ${({ theme, textAlign }) => typoMixin({ theme, textAlign })};
   position: absolute;

@@ -39,7 +39,7 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
   return (
     <TableContext.Provider
       value={{
-        visualOptions: tableOptions.visualOptions,
+        ...tableOptions,
         measures,
       }}
     >

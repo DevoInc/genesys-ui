@@ -107,7 +107,8 @@ export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
         }
       }
 
-      :has(*:focus) {
+      :has(*:focus),
+      :has([aria-selected='true']) {
         z-index: 2;
       }
 

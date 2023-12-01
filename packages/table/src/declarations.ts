@@ -15,6 +15,28 @@ export interface TableVisualOptions {
   rowHeight?: RowHeight;
 }
 
+export interface TableVisualOptions {
+  density?: Density;
+  striped?: boolean;
+  maxHeight?: React.CSSProperties['maxHeight'];
+  minWidth?: number;
+  rowHeight?: RowHeight;
+}
+
+export type TextsType = {
+  general: {
+    noData?: React.ReactNode;
+    noResults?: React.ReactNode;
+  };
+  cell: {
+    editTooltip?: string;
+    editSaveTooltip?: string;
+  };
+  editor: {
+    editorTextLabel?: string;
+  };
+};
+
 export interface TableOptionsProps {
   columnDefs?: ColDef[];
   defaultColumnDef?: DefaultColDef;
@@ -23,6 +45,7 @@ export interface TableOptionsProps {
     [key: string]: unknown;
   };
   visualOptions?: TableVisualOptions;
+  texts?: TextsType;
 }
 
 export interface CellRendererParams {

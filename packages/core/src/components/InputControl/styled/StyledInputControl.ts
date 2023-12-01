@@ -62,11 +62,11 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
     const inputHorPadding = fieldTokens.space.padding.hor[$size];
     const inputWithIconPadding =
       hasIcon || hasTypeIcon
-        ? css`calc(${iconSize} + ${inputHorPadding} * 2)`
+        ? css`calc(${iconSize} + (${inputHorPadding} * 2))`
         : '0rem';
     const inputWithShowPasswordPadding =
       type === 'password'
-        ? css`calc(${showPasswordSize} + ${inputHorPadding} * 2)`
+        ? css`calc(${showPasswordSize} + (${inputHorPadding} * 2))`
         : '0rem';
     const buttonTokens = theme.cmp.button;
     const clearSearchButtonSize = buttonTokens.size.square.xxs;
@@ -93,9 +93,12 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
         theme,
       })};
 
-      padding-right: calc(
-        ${inputWithIconPadding} + ${inputWithShowPasswordPadding}
-      );
+      ${(hasIcon || hasTypeIcon || type === 'password') &&
+      css`
+        padding-right: ${type === 'password'
+          ? inputWithShowPasswordPadding
+          : inputWithIconPadding};
+      `}
 
       ${hasTypeIcon &&
       css`
