@@ -30,7 +30,7 @@ export const Cell: React.FC<CellProps> = ({
 
   const { cellRef, editionContent, isEditMode, onDoubleClick, viewContent } =
     useRenderContent(columnDef, data);
-
+  const clickable = columnDef.editable && !isEditMode;
   return (
     <StyledTableCell
       onDoubleClick={onDoubleClick}
@@ -40,10 +40,13 @@ export const Cell: React.FC<CellProps> = ({
       height={cellHeight}
     >
       <StyledTableCellWrapper
-        clickable={columnDef.editable}
-        as={columnDef.editable ? 'button' : 'div'}
+        clickable={clickable}
+        as={clickable ? 'button' : 'div'}
         paddingVer={`${measures.cell.verPad}px`}
         paddingHor={`${measures.cell.horPad}px`}
+        title={
+          clickable ? 'Double click to edit' : 'Click outside to save changes'
+        }
       >
         {isEditMode ? editionContent : viewContent}
         {columnDef.editable && !isEditMode && (

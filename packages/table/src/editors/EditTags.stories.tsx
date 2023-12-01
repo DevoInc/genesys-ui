@@ -47,6 +47,6 @@ export const TagsEditor: Story = {
         CellRenderer: TagsRenderer,
         editable: true,
       };
-      return <Cell columnDef={columnEditTags} data={tags} />;
+      return <Cell cellWidth="30rem" columnDef={columnEditTags} data={tags} />;
     })(),
 };

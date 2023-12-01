@@ -98,8 +98,17 @@ export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
         background-color: transparent;
       }
 
-      &:hover::before {
-        background-color: ${hoverBgColor};
+      &:hover,
+      :has(*:focus) {
+        z-index: 1;
+
+        &::before {
+          background-color: ${hoverBgColor};
+        }
+      }
+
+      :has(*:focus) {
+        z-index: 2;
       }
 
       // draggable

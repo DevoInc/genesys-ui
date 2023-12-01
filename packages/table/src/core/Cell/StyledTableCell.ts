@@ -3,18 +3,16 @@ import styled, { DefaultTheme } from 'styled-components';
 
 interface StyledTableCellProps {
   cellWidth?: React.CSSProperties['width'];
-  height?: React.CSSProperties['height'];
   offsetX?: number;
   theme: DefaultTheme;
 }
 
 export const StyledTableCell = styled.td.attrs(
-  ({ cellWidth, theme, offsetX, height }: StyledTableCellProps) => ({
+  ({ cellWidth, theme, offsetX }: StyledTableCellProps) => ({
     style: {
       width: cellWidth,
       color: theme.alias.color.text.body.base,
       left: `${offsetX}px`,
-      height,
     },
   }),
 )<StyledTableCellProps>`
@@ -24,6 +22,5 @@ export const StyledTableCell = styled.td.attrs(
   align-items: center;
   box-sizing: border-box;
   height: 100%;
-  //overflow: hidden;
   flex: 0 0 auto;
 `;

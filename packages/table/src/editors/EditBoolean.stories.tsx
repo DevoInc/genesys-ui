@@ -31,6 +31,8 @@ export const BooleanEditor: Story = {
         editable: true,
       };
 
-      return <Cell columnDef={columnEditBoolean} data={boolean} />;
+      return (
+        <Cell cellWidth="20rem" columnDef={columnEditBoolean} data={boolean} />
+      );
     })(),
 };

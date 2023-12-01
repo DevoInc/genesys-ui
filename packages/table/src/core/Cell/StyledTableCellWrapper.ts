@@ -34,15 +34,17 @@ export const StyledTableCellWrapper = styled.div<StyledTableCellWrapperProps>`
         transition: background-color ease ${tokens.mutation.transitionDuration};
 
         &:hover,
-        &:focus,
         &:active {
           background-color: ${tokens.color.background.hovered};
+        }
+
+        &:focus {
+          box-shadow: ${theme.alias.elevation.boxShadow.base.focused};
         }
       `
     );
   }}
   ${({ theme, textAlign }) => typoMixin({ theme, textAlign })};
-  ${({ truncateLine }) => truncateTypoMixin({ lineClamp: truncateLine })}
   position: absolute;
   top: 0;
   left: 0;

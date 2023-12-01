@@ -33,6 +33,12 @@ export const NumberEditor: Story = {
         CellRenderer: NumberRenderer,
         editable: true,
       };
-      return <Cell columnDef={columnEditTextNumber} data={number} />;
+      return (
+        <Cell
+          cellWidth="20rem"
+          columnDef={columnEditTextNumber}
+          data={number}
+        />
+      );
     })(),
 };

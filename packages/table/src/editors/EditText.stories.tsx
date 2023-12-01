@@ -34,7 +34,7 @@ export const Base: Story = {
         editable: true,
       };
 
-      return <Cell columnDef={columnEditText} data={text} />;
+      return <Cell cellWidth="20rem" columnDef={columnEditText} data={text} />;
     })(),
 };
 
@@ -54,16 +54,12 @@ export const TextAreaEditor: Story = {
         headerName: 'Name',
         CellEditor: () => EditTextArea({ value: text, onChange }),
         CellRenderer: TextRenderer,
-        cellStyle: {
-          align: {
-            horizontal: 'left',
-            vertical: 'center',
-          },
-          textAlign: 'right',
-        },
+        type: 'longText',
         editable: true,
       };
 
-      return <Cell columnDef={columnEditTextArea} data={text} />;
+      return (
+        <Cell cellWidth="20rem" columnDef={columnEditTextArea} data={text} />
+      );
     })(),
 };
