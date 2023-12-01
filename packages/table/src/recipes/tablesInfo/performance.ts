@@ -6,7 +6,7 @@ const colDefs: ColDef[] = Array.from({ length: 100 }, (_, index) => ({
   headerName: 'Company',
   type: 'text',
   cellStyle: {
-    width: 180,
+    width: 5,
   },
 }));
 
@@ -27,6 +27,7 @@ export const performanceOptions: TableOptionsProps = {
   visualOptions: {
     maxHeight: '500px',
     rowHeight: 'md',
+    minWidth: 2000,
   },
   columnDefs: colDefs,
 };
