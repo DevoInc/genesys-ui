@@ -1,11 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { ColumnCellStyleProps } from '../../declarations';
-import {
-  btnResetMixin,
-  truncateTypoMixin,
-  typoMixin,
-} from '@devoinc/genesys-ui';
+import { btnResetMixin, typoMixin } from '@devoinc/genesys-ui';
 
 interface StyledTableCellWrapperProps extends ColumnCellStyleProps {
   clickable?: boolean;
