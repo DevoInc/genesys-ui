@@ -39,14 +39,22 @@ export interface ColumnCellStyleProps {
     vertical?: CellVerAlign;
   };
   textAlign?: React.CSSProperties['textAlign'];
+  /** Width of the column expressed in percentage over the width of the table */
   width?: number;
   truncateLine?: number;
   toEdge?: boolean;
 }
 
+type EditCellOnChange = (newValue: unknown) => void;
+
 interface CellEditorParams {
   value: unknown;
-  onChange: () => void;
+  onChange: EditCellOnChange;
+}
+
+interface CellRendererConfig {
+  onChange?: EditCellOnChange;
+  [key: string]: any;
 }
 
 export interface ColDef {
@@ -60,7 +68,7 @@ export interface ColDef {
   valueFormatter?: (value: unknown, context: DateContext) => void;
 
   // revisar
-  cellRendererConfig?: any;
+  cellRendererConfig?: CellRendererConfig;
   context?: {
     [key: string]: unknown;
   };
@@ -89,4 +97,9 @@ export interface MeasuresConfig {
     horPad: number;
     verPad: number;
   };
+}
+
+export interface OccupiedWidth {
+  percentage: number;
+  definedColDefs: number;
 }

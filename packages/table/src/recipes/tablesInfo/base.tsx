@@ -35,7 +35,7 @@ export const baseData = Holo.of()
     website: 'url',
     secondaryWebsite: 'url',
   })
-  .repeat(10)
+  .repeat(200)
   .generate();
 
 export const baseOptions: TableOptionsProps = {
@@ -52,6 +52,9 @@ export const baseOptions: TableOptionsProps = {
       id: 'id',
       type: 'text',
       headerName: 'ID',
+      cellStyle: {
+        width: 3,
+      },
     },
     {
       id: 'menu',
@@ -77,6 +80,9 @@ export const baseOptions: TableOptionsProps = {
           />
         );
       },
+      cellStyle: {
+        width: 5,
+      },
     },
     {
       id: 'booleanValue',
@@ -84,7 +90,7 @@ export const baseOptions: TableOptionsProps = {
       type: 'tagBoolean',
       editable: true,
       cellStyle: {
-        width: 150,
+        width: 6,
       },
     },
     {
@@ -92,85 +98,112 @@ export const baseOptions: TableOptionsProps = {
       headerName: 'Name',
       type: 'text',
       editable: true,
+      cellStyle: {
+        width: 7,
+      },
     },
     {
       id: 'age',
       headerName: 'Age',
       type: 'number',
+      cellStyle: {
+        width: 3,
+      },
     },
     {
       id: 'company',
       headerName: 'Company',
       type: 'text',
       cellStyle: {
-        width: 180,
+        width: 5,
       },
     },
     {
       id: 'balance',
       headerName: 'Balance',
       type: 'number',
+      cellStyle: {
+        width: 5,
+      },
     },
     {
       id: 'status',
       headerName: 'Status',
       type: 'tag',
       editable: true,
+      cellStyle: {
+        width: 6,
+      },
     },
     {
       id: 'picture',
       headerName: 'Image (URL)',
       type: 'link',
+      cellStyle: {
+        width: 9,
+      },
     },
     {
       id: 'timestamp',
       headerName: 'Date',
       type: 'date',
       editable: true,
+      cellStyle: {
+        width: 5,
+      },
     },
     {
       id: 'tags',
       headerName: 'Tags',
       type: 'tags',
       cellStyle: {
-        width: 300,
+        width: 5,
       },
     },
     {
       id: 'profession',
       headerName: 'Profession',
       type: 'text',
+      cellStyle: {
+        width: 5,
+      },
     },
     {
       id: 'email',
       headerName: 'Email',
       type: 'link',
+      cellStyle: {
+        width: 5,
+      },
     },
     {
       id: 'quote',
       headerName: 'Favourite quote',
       type: 'text',
+      cellStyle: {
+        width: 5,
+      },
     },
     {
       id: 'address',
       headerName: 'Address',
       type: 'text',
+      cellStyle: {
+        width: 5,
+      },
     },
     {
       id: 'website',
       headerName: 'Website',
       type: 'link',
       cellStyle: {
-        width: 150,
+        width: 5,
       },
     },
     {
       id: 'secondaryWebsite',
       headerName: 'Secondary Website',
       type: 'link',
-      cellStyle: {
-        width: 150,
-      },
     },
   ],
 };

@@ -1,6 +1,7 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
-import { MutableRefObject, useRef } from 'react';
+import { useRef } from 'react';
 import { ColDef } from '../../declarations';
+import { getEstimatedColumnWidth } from '../utils';
 
 interface UseVirtualizationParams {
   data: { [key: string]: unknown }[];
@@ -8,16 +9,6 @@ interface UseVirtualizationParams {
   rowHeight: number;
   tableMinWidth: number;
 }
-
-const getEstimatedColumnWidth = (
-  colDefs: ColDef[],
-  tableMinWidth: number,
-  colIndex: number,
-  tableRef: MutableRefObject<HTMLDivElement>,
-) =>
-  colDefs[colIndex]?.cellStyle?.width ??
-  Math.max(tableMinWidth, tableRef?.current?.offsetWidth) / colDefs.length ??
-  300;
 
 export const useTableVirtualization = ({
   data,

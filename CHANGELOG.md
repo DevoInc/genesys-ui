@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.7.0](https://github.com/DevoInc/genesys-ui/compare/v1.6.1...v1.7.0) (2023-11-30)
+
+
+### Features
+
+* added minWidth behavior and style adjustments ([69e3589](https://github.com/DevoInc/genesys-ui/commit/69e35891a8cbcc4b689a0f00ddc57011bcc39608))
+* **Table:** Added algorithm for percentage column widths ([57c66c6](https://github.com/DevoInc/genesys-ui/commit/57c66c61ee4754541e124142fa5ab2324577706c))
+* **Table:** Applied user onChange callback for edit cells ([0694d3d](https://github.com/DevoInc/genesys-ui/commit/0694d3d803816bb3f45697cfdd31246ffb951fbd))
+
 ## [1.6.1](https://github.com/DevoInc/genesys-ui/compare/v1.6.0...v1.6.1) (2023-11-30)
 
 
