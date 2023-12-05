@@ -19,7 +19,7 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
   const theme = useTheme();
   const measures = getMeasures(
     theme,
-    (tableOptions.visualOptions.density = 'default'),
+    tableOptions.visualOptions?.density ?? 'default',
   );
   const rowHeight =
     measures.row.height[tableOptions.visualOptions?.rowHeight || 'md'];
