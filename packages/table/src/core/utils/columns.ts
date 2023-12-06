@@ -3,10 +3,10 @@ import { ColDef, DefaultColDef } from '../../declarations';
 import { ColumnType } from '../../types/declarations';
 
 export const getColDefByID = (
-  columnDefs: ColDef[],
+  columnDefs: ColDef[] = [],
   virtualColumn: VirtualItem,
 ): ColDef =>
-  columnDefs.find((colDef: ColDef) => colDef.id === virtualColumn.key);
+  columnDefs.find((colDef: ColDef) => colDef.id === virtualColumn?.key);
 
 /**
  * @returns Column defs mixed with default column def
