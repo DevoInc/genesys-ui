@@ -16,10 +16,12 @@ export const getCollatedColumns = (
   columnDefs: ColDef[],
   types: ColumnType[],
 ): ColDef[] => {
-  return columnDefs.map((column) => {
-    const type = types.find((element) => element.id === column.type);
-    return { ...defaultColumnDef, ...type, ...column };
-  });
+  return (
+    columnDefs?.map((column) => {
+      const type = types.find((element) => element.id === column.type);
+      return { ...defaultColumnDef, ...type, ...column };
+    }) ?? []
+  );
 };
 
 export const getOccupiedWidthInfo = (colDefs: ColDef[]): [number, number] =>
