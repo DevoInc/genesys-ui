@@ -1,19 +1,23 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import { TableContextProvider } from './context';
+
 import { ColDef, TableOptionsProps } from '../../declarations';
+
+import { TableContextProvider } from './context';
+import { useTableVirtualization } from './useTableVirtualization';
+import { useTableScroll } from './useTableScroll';
+
 import { TableHead } from '../TableHead';
 import { TableBody } from '../TableBody';
 import { StyledTable } from './StyledTable';
 import { StyledTableWrapper } from './StyledTableWrapper';
+
 import {
   getCollatedColumns,
   getSizes,
   getTableEvalHeight,
   getTableEvalWidth,
 } from '../utils';
-import { useTableVirtualization } from './useTableVirtualization';
-import { useTableScroll } from './useTableScroll';
 
 interface TableProps {
   data: { [key: string]: unknown }[];
@@ -21,13 +25,15 @@ interface TableProps {
 }
 
 export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
-  const ref = React.useRef<HTMLDivElement>();
   const theme = useTheme();
+  const { defaultColumnDef, columnDefs, types, visualOptions } = tableOptions;
+
+  const ref = React.useRef<HTMLDivElement>();
+
   const sizes = getSizes(
     theme,
     tableOptions.visualOptions?.density ?? 'default',
   );
-  const { defaultColumnDef, columnDefs, types, visualOptions } = tableOptions;
   const rowHeight =
     sizes.row.height[
       tableOptions.visualOptions?.rowHeight ||
@@ -35,7 +41,7 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
         ? 'lg'
         : 'md'
     ];
-  const headerHeight = sizes.head.height;
+
   const { rowVirtualizer, columnVirtualizer } = useTableVirtualization({
     data,
     columnDefs,
@@ -51,10 +57,13 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
     columnDefs,
     types,
   );
+
   const tableWrapperHeight = ref?.current?.offsetHeight;
   const tableWrapperWidth = ref?.current?.offsetWidth;
-  const tableVisibleBodyHeight = tableWrapperHeight - headerHeight;
+  const tableVisibleBodyHeight = tableWrapperHeight - sizes.head.height;
+
   const { hasScroll } = useTableScroll(rowVirtualizer, ref);
+
   const measures = {
     wrapper: {
       height: tableWrapperHeight,
