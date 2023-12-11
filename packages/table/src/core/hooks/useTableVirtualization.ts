@@ -1,5 +1,5 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
-import { ColDef, SizesConfig, TableOptionsProps } from '../../declarations';
+import { ColDef, SizesConfig, TableVisualOptions } from '../../declarations';
 import {
   getDefaultColWidth,
   getColWidth,
@@ -9,37 +9,37 @@ import {
 interface UseVirtualizationParams {
   data: { [key: string]: unknown }[];
   columnDefs: ColDef[];
-  tableOptions: TableOptionsProps;
+  visualOptions: TableVisualOptions;
   wrapperRef: React.MutableRefObject<HTMLDivElement>;
   sizes: SizesConfig;
 }
 
 const getRowHeight = (
   sizes: SizesConfig,
-  tableOptions: TableOptionsProps,
+  visualOptions: TableVisualOptions,
   colDefs: ColDef[],
 ) =>
   sizes.row.height[
-    tableOptions.visualOptions?.rowHeight ||
+    visualOptions?.rowHeight ||
     colDefs.find((columnDef) => columnDef.type === 'longText')
       ? 'lg'
       : 'md'
   ];
 
 const getTableWidth = (
-  tableOptions: TableOptionsProps,
+  visualOptions: TableVisualOptions,
   ref: React.MutableRefObject<HTMLDivElement>,
-) => Math.max(tableOptions?.visualOptions?.minWidth, ref.current?.offsetWidth);
+) => Math.max(visualOptions?.minWidth, ref.current?.offsetWidth);
 
 export const useTableVirtualization = ({
   data,
   columnDefs,
-  tableOptions,
+  visualOptions,
   wrapperRef,
   sizes,
 }: UseVirtualizationParams) => {
-  const rowHeight = getRowHeight(sizes, tableOptions, columnDefs);
-  const tableWidth = getTableWidth(tableOptions, wrapperRef);
+  const rowHeight = getRowHeight(sizes, visualOptions, columnDefs);
+  const tableWidth = getTableWidth(visualOptions, wrapperRef);
 
   const rowVirtualizer = useVirtualizer({
     count: data.length,

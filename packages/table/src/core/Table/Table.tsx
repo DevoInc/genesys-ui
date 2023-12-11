@@ -27,9 +27,11 @@ interface TableProps {
   tableOptions: TableOptionsProps;
 }
 
-export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
+export const Table: React.FC<TableProps> = ({
+  tableOptions: { defaultColumnDef, columnDefs, types, visualOptions },
+  data,
+}) => {
   const theme = useTheme();
-  const { defaultColumnDef, columnDefs, types, visualOptions } = tableOptions;
 
   const ref = React.useRef<HTMLDivElement>();
   const refinedColumnDefs: ColDef[] = getCollatedColumns(
@@ -37,15 +39,12 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
     columnDefs,
     types,
   );
-  const sizes = getSizes(
-    theme,
-    tableOptions.visualOptions?.density ?? 'default',
-  );
+  const sizes = getSizes(theme, visualOptions?.density ?? 'default');
 
   const { rowVirtualizer, columnVirtualizer } = useTableVirtualization({
     data,
     columnDefs,
-    tableOptions,
+    visualOptions,
     wrapperRef: ref,
     sizes,
   });
@@ -61,7 +60,7 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
   return (
     <TableContextProvider
       value={{
-        visualOptions: tableOptions.visualOptions,
+        visualOptions,
         measures,
         sizes,
       }}
