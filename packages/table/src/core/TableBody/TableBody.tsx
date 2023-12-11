@@ -11,7 +11,6 @@ export interface TableBodyProps {
   columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
   data: unknown;
   rowVirtualizer: Virtualizer<HTMLDivElement, Element>;
-  visibleHeight: number;
   height?: React.CSSProperties['height'];
   width?: React.CSSProperties['width'];
 }

@@ -4,8 +4,6 @@ import { useTheme } from 'styled-components';
 import { ColDef, TableOptionsProps } from '../../declarations';
 
 import { TableContextProvider } from './context';
-import { useTableVirtualization } from './useTableVirtualization';
-import { useTableScroll } from './useTableScroll';
 
 import { TableHead } from '../TableHead';
 import { TableBody } from '../TableBody';
@@ -18,6 +16,11 @@ import {
   getTableEvalHeight,
   getTableEvalWidth,
 } from '../utils';
+import {
+  useTableMeasures,
+  useTableScroll,
+  useTableVirtualization,
+} from '../hooks';
 
 interface TableProps {
   data: { [key: string]: unknown }[];
@@ -29,57 +32,31 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
   const { defaultColumnDef, columnDefs, types, visualOptions } = tableOptions;
 
   const ref = React.useRef<HTMLDivElement>();
-
-  const sizes = getSizes(
-    theme,
-    tableOptions.visualOptions?.density ?? 'default',
-  );
-  const rowHeight =
-    sizes.row.height[
-      tableOptions.visualOptions?.rowHeight ||
-      columnDefs.find((columnDef) => columnDef.type === 'longText')
-        ? 'lg'
-        : 'md'
-    ];
-
-  const { rowVirtualizer, columnVirtualizer } = useTableVirtualization({
-    data,
-    columnDefs,
-    rowHeight,
-    tableWidth: Math.max(
-      tableOptions?.visualOptions?.minWidth,
-      ref.current?.offsetWidth,
-    ),
-    wrapperRef: ref,
-  });
   const refinedColumnDefs: ColDef[] = getCollatedColumns(
     defaultColumnDef,
     columnDefs,
     types,
   );
+  const sizes = getSizes(
+    theme,
+    tableOptions.visualOptions?.density ?? 'default',
+  );
 
-  const tableWrapperHeight = ref?.current?.offsetHeight;
-  const tableWrapperWidth = ref?.current?.offsetWidth;
-  const tableVisibleBodyHeight = tableWrapperHeight - sizes.head.height;
+  const { rowVirtualizer, columnVirtualizer } = useTableVirtualization({
+    data,
+    columnDefs,
+    tableOptions,
+    wrapperRef: ref,
+    sizes,
+  });
 
   const { hasScroll } = useTableScroll(rowVirtualizer, ref);
-
-  const measures = {
-    wrapper: {
-      height: tableWrapperHeight,
-      width: tableWrapperWidth,
-    },
-    body: {
-      total: {
-        height: rowVirtualizer?.getTotalSize(),
-        width: columnVirtualizer?.getTotalSize(),
-      },
-      visible: {
-        height: tableVisibleBodyHeight,
-        width: tableWrapperWidth,
-      },
-    },
-  };
+  const { measures } = useTableMeasures({
+    ref,
+    rowVirtualizer,
+    columnVirtualizer,
+    sizes,
+  });
 
   return (
     <TableContextProvider
@@ -92,8 +69,8 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
       <StyledTableWrapper ref={ref} maxHeight={visualOptions?.maxHeight}>
         <StyledTable
           minWidth={visualOptions?.minWidth}
-          $height={getTableEvalHeight(measures?.body?.total?.height)}
-          $width={getTableEvalWidth(measures?.body?.total?.width)}
+          height={getTableEvalHeight(measures?.body?.total?.height)}
+          width={getTableEvalWidth(measures?.body?.total?.width)}
         >
           <TableHead
             columnDefs={refinedColumnDefs}
@@ -107,7 +84,6 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
             columnVirtualizer={columnVirtualizer}
             data={data}
             rowVirtualizer={rowVirtualizer}
-            visibleHeight={tableVisibleBodyHeight}
           />
         </StyledTable>
       </StyledTableWrapper>
