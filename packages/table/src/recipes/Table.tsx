@@ -6,6 +6,7 @@ import { TableOptionsProps } from '../declarations';
 import {
   typeDate,
   typeString,
+  typeLongString,
   typeLink,
   typeNumber,
   typeBoolean,
@@ -27,6 +28,7 @@ export const BasicTable: React.FC<TableProps> = ({ tableOptions, data }) => {
       typeDate,
       typeString,
       typeLink,
+      typeLongString,
       typeNumber,
       typeBoolean,
       typeTag,

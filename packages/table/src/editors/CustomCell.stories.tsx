@@ -27,6 +27,13 @@ export const UsingACustomCellEditor: Story = {
         editable: true,
       };
 
-      return <Cell cellWidth="20rem" columnDef={customEditorDef} data={text} />;
+      return (
+        <Cell
+          height="3.6rem"
+          width="20rem"
+          columnDef={customEditorDef}
+          data={text}
+        />
+      );
     })(),
 };

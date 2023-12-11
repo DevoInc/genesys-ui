@@ -9,6 +9,7 @@ const meta: Meta<typeof SwitchControl> = {
   args: {
     'aria-label': 'Story label',
     size: 'md',
+    autoFocus: true,
     status: 'base',
   },
   argTypes: {

@@ -46,6 +46,8 @@ export const baseOptions: TableOptionsProps = {
     maxHeight: '80vh',
     minWidth: 1800,
     rowHeight: 'md',
+    resizableColumns: true,
+    highlightColumnsOnHover: true,
   },
   columnDefs: [
     {
@@ -68,11 +70,9 @@ export const baseOptions: TableOptionsProps = {
                 label: 'Testing menu',
                 shortcut: "⌘ '",
                 title: 'Testing menu',
-                state: 'featured',
                 onChange: () => {
                   console.log(params.columnDef.headerName);
                 },
-                defaultChecked: true,
               },
             ]}
             label="Actions"
@@ -106,6 +106,7 @@ export const baseOptions: TableOptionsProps = {
       id: 'age',
       headerName: 'Age',
       type: 'number',
+      editable: true,
       cellStyle: {
         width: 3,
       },
@@ -149,13 +150,14 @@ export const baseOptions: TableOptionsProps = {
       type: 'date',
       editable: true,
       cellStyle: {
-        width: 5,
+        width: 10,
       },
     },
     {
       id: 'tags',
       headerName: 'Tags',
       type: 'tags',
+      editable: true,
       cellStyle: {
         width: 5,
       },
@@ -185,14 +187,6 @@ export const baseOptions: TableOptionsProps = {
       },
     },
     {
-      id: 'address',
-      headerName: 'Address',
-      type: 'text',
-      cellStyle: {
-        width: 5,
-      },
-    },
-    {
       id: 'website',
       headerName: 'Website',
       type: 'link',
@@ -204,6 +198,17 @@ export const baseOptions: TableOptionsProps = {
       id: 'secondaryWebsite',
       headerName: 'Secondary Website',
       type: 'link',
+      cellStyle: {
+        width: 5,
+      },
+    },
+    {
+      id: 'address',
+      headerName: 'Address',
+      type: 'text',
+      cellStyle: {
+        width: 5,
+      },
     },
   ],
 };

@@ -1,26 +1,49 @@
-import React from 'react';
-import styled, { DefaultTheme } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-interface StyledTableCellProps {
-  cellWidth?: React.CSSProperties['width'];
+import { TableVisualOptions } from '../../declarations';
+import { StyledTableProps } from '../Table/StyledTable';
+
+import { cellMixin } from '../helpers';
+import { pseudoElementOverlayMixin } from '@devoinc/genesys-ui';
+import { getTableZIndexMap } from '../utils';
+
+interface StyledTableCellProps
+  extends Pick<TableVisualOptions, 'highlightColumnsOnHover'>,
+    Pick<StyledTableProps, '$height' | '$width'> {
   offsetX?: number;
-  theme: DefaultTheme;
+  highlightedColumnHeight?: number;
 }
 
 export const StyledTableCell = styled.td.attrs(
-  ({ cellWidth, theme, offsetX }: StyledTableCellProps) => ({
+  ({ $width, $height, offsetX }: StyledTableCellProps) => ({
     style: {
-      width: cellWidth,
-      color: theme.alias.color.text.body.base,
+      width: $width,
+      height: $height,
       left: `${offsetX}px`,
     },
   }),
 )<StyledTableCellProps>`
-  position: absolute;
-  top: 0;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  height: 100%;
-  flex: 0 0 auto;
+  ${({ highlightColumnsOnHover, highlightedColumnHeight = 9999, theme }) => {
+    const tokens = theme.cmp.table.cell;
+    return css`
+      ${cellMixin({ theme })};
+      ${highlightColumnsOnHover &&
+      css`
+        &:after {
+          ${pseudoElementOverlayMixin()};
+          height: ${`calc(${highlightedColumnHeight}px * 2)`};
+          z-index: -1;
+          background-color: transparent;
+          transition: none;
+        }
+
+        &:hover::after {
+          top: ${`calc(${highlightedColumnHeight}px * -1)`};
+          background-color: ${tokens.color.background.backdrop.hovered.base};
+          z-index: ${getTableZIndexMap(theme).columnHighlight};
+          pointer-events: none;
+        }
+      `};
+    `;
+  }}
 `;

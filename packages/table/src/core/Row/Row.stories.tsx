@@ -3,12 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Holo } from '@devoinc/holo';
 import { Row } from './Row';
 import { ColDef } from '../../declarations';
-import {
-  NumberRenderer,
-  TagRenderer,
-  TagsRenderer,
-  TextRenderer,
-} from '../../renderers';
+import { TagRenderer, TagsRenderer, TextRenderer } from '../../renderers';
 import { useVirtualizer } from '@tanstack/react-virtual';
 
 const data = Holo.of()
@@ -47,13 +42,13 @@ const colDefs: ColDef[] = [
     id: 'age',
     headerName: 'age',
     type: 'number',
-    CellRenderer: NumberRenderer,
+    CellRenderer: TextRenderer,
   },
   {
     id: 'balance',
     headerName: 'balance',
     type: 'number',
-    CellRenderer: NumberRenderer,
+    CellRenderer: TextRenderer,
   },
   {
     id: 'booleanValue',

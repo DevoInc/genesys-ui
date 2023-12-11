@@ -11,7 +11,7 @@ interface EditInputProps {
 export const EditText: React.FC<EditInputProps> = ({ value, onChange }) => {
   const { texts } = React.useContext(TableContext);
   return (
-    <InputControl
+    <InputControl.Input
       autoFocus
       aria-label={texts?.editor?.editorTextLabel}
       value={value}

@@ -1,22 +1,22 @@
 import styled, { css } from 'styled-components';
 import React from 'react';
 import { elevationMixin } from '@devoinc/genesys-ui';
+import { getTableZIndexMap } from '../utils';
 
 interface StyledTableHeadProps {
+  $height?: React.CSSProperties['height'];
   scrolled?: boolean;
-  width?: React.CSSProperties['width'];
-  height?: React.CSSProperties['height'];
+  $width?: React.CSSProperties['width'];
 }
 
 export const StyledTableHead = styled.thead<StyledTableHeadProps>`
   top: 0;
   display: inline-block;
   position: sticky;
-  height: ${({ height }) => height};
-  width: ${({ width }) => width || '100%'};
+  height: ${({ $height }) => $height};
+  width: ${({ $width }) => $width || '100%'};
 
   ${({ scrolled, theme }) => {
-    const tableHeadTokens = theme.cmp.table.head;
     const tableHeadRowTokens = theme.cmp.table.headRow;
     return css`
       ${scrolled
@@ -25,7 +25,7 @@ export const StyledTableHead = styled.thead<StyledTableHeadProps>`
             box-shadow: 0 0 0 ${tableHeadRowTokens.shape.borderSize.md}
               ${tableHeadRowTokens.color.background.after.base};
           `};
-      z-index: ${tableHeadTokens.elevation.zIndex};
+      z-index: ${getTableZIndexMap(theme).head};
       background-color: ${theme.cmp.table.head.color.background};
     `;
   }}

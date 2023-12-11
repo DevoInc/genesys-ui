@@ -18,14 +18,14 @@ export const useTableVirtualization = ({
 }: UseVirtualizationParams) => {
   const ref = useRef<HTMLDivElement>();
   const rowVirtualizer = useVirtualizer({
-    count: data.length,
+    count: data?.length,
     getScrollElement: () => ref.current,
     estimateSize: () => rowHeight,
     overscan: 10,
   });
 
   const columnVirtualizer = useVirtualizer({
-    count: columnDefs.length,
+    count: columnDefs?.length,
     getScrollElement: () => ref.current,
     estimateSize: (index: number) =>
       getEstimatedColumnWidth(columnDefs, tableMinWidth, index, ref),
@@ -34,5 +34,9 @@ export const useTableVirtualization = ({
     overscan: 2,
   });
 
-  return { rowVirtualizer, columnVirtualizer, ref };
+  return {
+    rowVirtualizer,
+    columnVirtualizer,
+    ref,
+  };
 };

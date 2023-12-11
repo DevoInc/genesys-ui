@@ -6,28 +6,32 @@ import {
 } from '@devoinc/genesys-ui';
 
 export interface StyledTableRowProps {
-  disabled?: boolean;
   draggable?: boolean;
   even?: boolean;
-  expanded?: boolean;
-  highlighted?: boolean;
+  $height?: React.CSSProperties['height'];
   isAfterRow?: boolean;
   isDragging?: boolean;
-  modified?: boolean;
-  selected?: boolean;
-  striped?: boolean;
   position?: React.CSSProperties['position'];
-  width?: React.CSSProperties['width'];
-  height?: React.CSSProperties['height'];
+  state?:
+    | 'enabled'
+    | 'disabled'
+    | 'expanded'
+    | 'highlighted'
+    | 'modified'
+    | 'selected'
+    | 'created'
+    | 'deleted';
+  striped?: boolean;
   transform?: React.CSSProperties['transform'];
+  $width?: React.CSSProperties['width'];
 }
 
 export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
-  ({ position, width, height, transform }) => ({
+  ({ position, $width, $height, transform }) => ({
     style: {
       position: position ?? 'absolute',
-      width: width ? `${width}px` : '100%',
-      height,
+      width: $width ? $width : '100%',
+      height: $height,
       transform,
     },
   }),
@@ -38,20 +42,9 @@ export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
   align-items: center;
   width: 100%;
 
-  ${({
-    disabled,
-    even,
-    expanded,
-    highlighted,
-    isAfterRow,
-    draggable,
-    isDragging,
-    striped,
-    modified,
-    selected,
-    theme,
-  }) => {
+  ${({ even, isAfterRow, draggable, isDragging, striped, state, theme }) => {
     const evenOddType = striped && even ? 'even' : 'odd';
+    const aliasTokens = theme.alias;
     const rowTokens = theme.cmp.table.row;
     const transitionDuration = rowTokens.mutation.transitionDuration;
     const hoverBgColor = striped
@@ -75,17 +68,23 @@ export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
       }
       z-index: ${isAfterRow && rowTokens.elevation.zIndex.isAfterRow};
       transition: background-color ease ${transitionDuration.bgColor};
-      animation: ${modified &&
+      animation: ${state === 'modified' &&
       `modifiedBlink ${transitionDuration.modifiedBlink} ease-in-out`};
       border: none;
       box-shadow: ${isDragging &&
       theme.alias.elevation.boxShadow.depth.draggable};
       background-color: ${() => {
-        if (selected) return rowTokens.color.background[evenOddType].selected;
         if (isAfterRow) return rowTokens.color.background[evenOddType].afterRow;
-        if (highlighted || modified)
+        if (state === 'selected')
+          return rowTokens.color.background[evenOddType].selected;
+        if (state === 'created')
+          return aliasTokens.color.background.surface.base.created;
+        if (state === 'deleted')
+          return aliasTokens.color.background.surface.base.deleted;
+        if (state === 'highlighted' || state === 'modified')
           return rowTokens.color.background[evenOddType].highlighted;
-        if (expanded) return rowTokens.color.background[evenOddType].expanded;
+        if (state === 'expanded')
+          return rowTokens.color.background[evenOddType].expanded;
         if (isDragging) return rowTokens.color.background.odd.base;
         return rowTokens.color.background[evenOddType].base;
       }};
@@ -144,7 +143,7 @@ export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
       `}
 
       // disabled
-      ${disabled &&
+      ${state === 'disabled' &&
       css`
         opacity: ${rowTokens.shape.opacity.disabled};
         pointer-events: none;
@@ -152,7 +151,7 @@ export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
 
       // border bottom when it's not striped
       ${!isAfterRow &&
-      !expanded &&
+      state !== 'expanded' &&
       !striped &&
       css`
         border-bottom: solid ${rowTokens.shape.borderSize.after}

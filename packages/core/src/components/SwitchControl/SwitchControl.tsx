@@ -21,7 +21,7 @@ import {
 
 export interface BaseSwitchControlProps
   extends FieldControlCommonProps,
-    Pick<InputAttrProps, 'defaultValue' | 'value'>,
+    Pick<InputAttrProps, 'autoFocus' | 'defaultValue' | 'value'>,
     CheckAttrProps {
   /** Optional content to be included inside the switch track when it's checked */
   checkedContent?: React.ReactNode;
@@ -39,6 +39,7 @@ export type SwitchControlProps = BaseSwitchControlProps &
 export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
   'aria-errormessage': ariaErrorMessage,
   'aria-invalid': ariaInvalid,
+  autoFocus,
   checked,
   checkedContent,
   disabled = false,
@@ -89,6 +90,7 @@ export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
         {...restNativeProps}
         aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
         aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
+        autoFocus={autoFocus}
         checked={onChange ? checked : undefined}
         disabled={disabled}
         id={`${id}-switch-input`}

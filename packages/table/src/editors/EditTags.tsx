@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { SelectControl, SelectOption, TagProps } from '@devoinc/genesys-ui';
 import { PropsValue } from 'react-select';
+import { EditorFloatingWrapper } from './components';
 
 interface EditTagsProps {
   value: TagProps[];
@@ -26,14 +27,17 @@ export const EditTags: React.FC<EditTagsProps> = ({ value, onChange }) => {
   React.useEffect(() => onChange?.(options), [options]);
 
   return (
-    <SelectControl
-      onChange={onOptionSelect}
-      value={getOptionsFromTags(value)}
-      creatable
-      isMulti
-      menuAppendToBody
-      options={getOptionsFromTags(value)}
-      autoFocus
-    />
+    <EditorFloatingWrapper width="34rem">
+      <SelectControl
+        onChange={onOptionSelect}
+        value={getOptionsFromTags(value)}
+        creatable
+        isMulti
+        menuAppendToBody
+        options={getOptionsFromTags(value)}
+        autoFocus
+        styles={'display: flex; flex: 1;'}
+      />
+    </EditorFloatingWrapper>
   );
 };

@@ -9,6 +9,8 @@ import {
   InputControlProps,
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
 } from '@devoinc/genesys-ui';
 
 import { DateTime, DateTimeProps } from '../DateTime';
@@ -19,7 +21,9 @@ export interface DateTimePickerProps
   extends Omit<DateTimeProps, 'onChange' | 'selectedDates'>,
     Pick<InputControlProps, 'onChange' | 'placeholder'>,
     Pick<GlobalAriaProps, 'aria-label'>,
-    Pick<GlobalAttrProps, 'id'> {
+    Pick<GlobalAttrProps, 'id'>,
+    StyledOverloadCssProps,
+    StyledPolymorphicProps {
   /** Apply button text */
   applyButtonText?: string;
   /** Cancel button text */
@@ -32,8 +36,8 @@ export interface DateTimePickerProps
 
 export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   'aria-label': ariaLabel = 'datetime',
-  as,
   applyButtonText = 'Apply',
+  as,
   cancelButtonText = 'Cancel',
   hasMillis = false,
   hasSeconds = true,
@@ -84,7 +88,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       <div ref={setReferenceElement}>
         <InputControl
           aria-label={ariaLabel}
-          icon="gi-calendar_month_day_planner_events2"
+          icon="gi-calendar_month_day_planner_events"
           id={id}
           value={value && format(value, datetimeFormat)}
           onChange={onChange}

@@ -12,7 +12,6 @@ export const EditNumber: React.FC<EditNumberProps> = ({ value, onChange }) => (
     aria-label={'Number input'}
     value={value}
     onChange={(event: FormEvent) => {
-      debugger;
       onChange(parseInt((event.target as HTMLInputElement).value));
     }}
     autoFocus

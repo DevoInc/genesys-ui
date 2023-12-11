@@ -13,14 +13,8 @@ export interface TableVisualOptions {
   maxHeight?: React.CSSProperties['maxHeight'];
   minWidth?: number;
   rowHeight?: RowHeight;
-}
-
-export interface TableVisualOptions {
-  density?: Density;
-  striped?: boolean;
-  maxHeight?: React.CSSProperties['maxHeight'];
-  minWidth?: number;
-  rowHeight?: RowHeight;
+  resizableColumns?: boolean;
+  highlightColumnsOnHover?: boolean;
 }
 
 export type TextsType = {
@@ -101,11 +95,12 @@ export interface ColDef {
   isDragging?: boolean;
   onReset?: (initialValue: unknown) => void;
   tooltipField?: string;
+  resizable?: boolean;
 }
 
 export type RowHeight = 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
 
-export interface MeasuresConfig {
+export interface SizesConfig {
   head: { height: number };
   row: {
     height: {
@@ -119,6 +114,23 @@ export interface MeasuresConfig {
   cell: {
     horPad: number;
     verPad: number;
+  };
+}
+
+export interface MeasuresConfig {
+  wrapper: {
+    height: number;
+    width: number;
+  };
+  body: {
+    total: {
+      height: number;
+      width: number;
+    };
+    visible: {
+      height: number;
+      width: number;
+    };
   };
 }
 

@@ -11,19 +11,20 @@ import { StyledTableCellMarker } from './StyledTableCellMarker';
 interface CellProps {
   data: unknown;
   columnDef: ColDef;
-  cellWidth?: React.CSSProperties['width'];
-  cellHeight?: React.CSSProperties['height'];
+  width?: React.CSSProperties['width'];
+  height?: React.CSSProperties['height'];
   offsetX?: number;
 }
 
 export const Cell: React.FC<CellProps> = ({
   data,
   columnDef,
-  cellWidth,
-  cellHeight,
+  width,
+  height,
   offsetX,
 }) => {
-  const { measures, texts } = React.useContext(TableContext);
+  const { sizes, texts, visualOptions, measures } =
+    React.useContext(TableContext);
   const { onReset } = columnDef;
 
   useInitialState(data, onReset);
@@ -33,22 +34,31 @@ export const Cell: React.FC<CellProps> = ({
   const clickable = columnDef.editable;
   return (
     <StyledTableCell
+      $height={height}
+      $width={width}
+      highlightColumnsOnHover={visualOptions?.highlightColumnsOnHover}
+      highlightedColumnHeight={measures?.body?.visible?.height}
       aria-selected={isEditMode}
+      offsetX={offsetX}
       onDoubleClick={onDoubleClick}
       ref={cellRef}
-      cellWidth={cellWidth}
-      offsetX={offsetX}
-      height={cellHeight}
     >
       <StyledTableCellWrapper
-        clickable={clickable}
         as={clickable ? 'button' : 'div'}
-        paddingVer={`${measures.cell.verPad}px`}
-        paddingHor={`${measures.cell.horPad}px`}
+        clickable={clickable}
         isEditMode={isEditMode}
+        paddingHor={`${sizes.cell.horPad}px`}
+        paddingVer={`${sizes.cell.verPad}px`}
         tabIndex={clickable ? 0 : -1}
         title={
           isEditMode ? texts?.cell?.editSaveTooltip : texts?.cell?.editTooltip
+        }
+        toEdge={columnDef?.cellStyle?.toEdge}
+        verAlign={columnDef?.cellStyle?.align?.vertical}
+        horAlign={
+          columnDef?.cellStyle?.align?.horizontal || columnDef.type === 'number'
+            ? 'right'
+            : null
         }
       >
         {isEditMode ? editionContent : viewContent}

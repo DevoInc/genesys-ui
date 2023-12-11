@@ -41,6 +41,13 @@ export const Base: Story = {
         editable: true,
       };
 
-      return <Cell cellWidth="30rem" columnDef={columnEditDate} data={date} />;
+      return (
+        <Cell
+          height="3.6rem"
+          width="30rem"
+          columnDef={columnEditDate}
+          data={date}
+        />
+      );
     })(),
 };

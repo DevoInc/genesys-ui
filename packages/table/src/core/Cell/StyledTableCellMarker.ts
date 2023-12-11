@@ -13,7 +13,7 @@ export const StyledTableCellMarker = styled.span`
   tr:hover &,
   *:enabled:hover &,
   *:enabled:focus & {
-    opacity: 1;
+    opacity: 0.6;
   }
 
   ${({ theme }) => {
@@ -30,6 +30,7 @@ export const StyledTableCellMarker = styled.span`
 
       *:enabled:hover &,
       *:enabled:focus & {
+        opacity: 1;
         color: ${tokens.color.text.hovered};
       }
     `;

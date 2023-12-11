@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   MeasuresConfig,
+  SizesConfig,
   TableVisualOptions,
   TextsType,
 } from '../../declarations';
@@ -9,6 +10,7 @@ interface TableContextProps {
   visualOptions?: TableVisualOptions;
   texts?: TextsType;
   measures: MeasuresConfig;
+  sizes: SizesConfig;
 }
 
 interface TableContextProviderProps {
@@ -33,11 +35,27 @@ const defaultTableContext: TableContextProps = {
       editSaveTooltip: 'Click outside to save the changes',
     },
     editor: {
-      editorTextLabel: 'Edit this text content.',
+      editorTextLabel: 'Edit this text content',
     },
   },
   measures: {
-    head: { height: 36 },
+    wrapper: {
+      height: 500,
+      width: 1200,
+    },
+    body: {
+      total: {
+        height: 500,
+        width: 1200,
+      },
+      visible: {
+        height: 500,
+        width: 1200,
+      },
+    },
+  },
+  sizes: {
+    head: { height: 42 },
     row: {
       height: {
         md: 36,

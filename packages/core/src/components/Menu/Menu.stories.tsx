@@ -32,7 +32,7 @@ export const Base: Story = {
       <Menu.Separator />
       <Menu.Item icon="gi-download_file" label="Export to PDF" />
       <Menu.Item
-        icon="gi-calendar_month_day_planner_events2"
+        icon="gi-calendar_month_day_planner_events"
         label="Add scheduled report"
       />
       <Menu.Separator />

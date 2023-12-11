@@ -34,7 +34,14 @@ export const Base: Story = {
         editable: true,
       };
 
-      return <Cell cellWidth="20rem" columnDef={columnEditText} data={text} />;
+      return (
+        <Cell
+          height="3.6rem"
+          width="20rem"
+          columnDef={columnEditText}
+          data={text}
+        />
+      );
     })(),
 };
 
@@ -59,7 +66,12 @@ export const TextAreaEditor: Story = {
       };
 
       return (
-        <Cell cellWidth="20rem" columnDef={columnEditTextArea} data={text} />
+        <Cell
+          height="3.6rem"
+          width="20rem"
+          columnDef={columnEditTextArea}
+          data={text}
+        />
       );
     })(),
 };

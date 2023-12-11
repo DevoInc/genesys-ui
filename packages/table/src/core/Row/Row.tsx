@@ -15,43 +15,35 @@ interface RowProps extends StyledTableRowProps {
 
 export const Row: React.FC<RowProps> = ({
   columnDefs,
-  disabled,
+  columnVirtualizer,
   data,
   even,
-  expanded,
-  highlighted,
   isAfterRow,
   isDragging,
-  modified,
-  selected,
+  state = 'enabled',
   styles,
-  columnVirtualizer,
 }) => {
   const { visualOptions } = React.useContext(TableContext);
   return (
     <StyledTableRow
-      disabled={disabled}
       even={even}
-      expanded={expanded}
-      highlighted={highlighted}
+      $height={styles.height}
       isAfterRow={isAfterRow}
       isDragging={isDragging}
-      modified={modified}
-      selected={selected}
-      striped={visualOptions.striped}
       position={styles.position}
-      width={styles.width}
-      height={styles.height}
+      state={state}
+      striped={visualOptions.striped}
       transform={styles.transform}
+      $width={styles.width}
     >
       {columnVirtualizer.getVirtualItems().map((virtualColumn: VirtualItem) => (
         <Cell
           columnDef={columnDefs[virtualColumn.index]}
-          key={`cell-${virtualColumn.key}`}
           data={data[columnDefs[virtualColumn.index].id] ?? ''}
-          cellWidth={`${virtualColumn.size}px`}
-          //cellHeight={styles.height}
+          height={styles.height}
+          key={`cell-${virtualColumn.key}`}
           offsetX={virtualColumn.start}
+          width={`${virtualColumn.size}px`}
         />
       ))}
     </StyledTableRow>

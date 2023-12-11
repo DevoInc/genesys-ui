@@ -50,7 +50,7 @@ export const mainActions = [
 ];
 
 export const userOptions = [
-  <Button key={1} icon="gi-user_profile_avatar_man_male2">
+  <Button key={1} icon="gi-user_profile_avatar_man_male">
     Preferences
   </Button>,
   <Button key={2} icon="gi-folder_documents_revert_history">

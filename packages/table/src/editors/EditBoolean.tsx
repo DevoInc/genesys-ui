@@ -12,6 +12,7 @@ export const EditBoolean: React.FC<GenericCellEditorProps> = ({
 }) => {
   return (
     <SwitchControl
+      autoFocus
       checked={!!value}
       aria-label={'Switch'}
       onChange={() => onChange(!value)}

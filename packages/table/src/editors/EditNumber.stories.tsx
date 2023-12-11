@@ -4,7 +4,7 @@ import { Holo } from '@devoinc/holo';
 import { ColDef } from '../declarations';
 import { EditNumber } from '.';
 import { Cell } from '../core/Cell';
-import { NumberRenderer } from '../renderers';
+import { TextRenderer } from '../renderers';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/Edit/Number',
@@ -30,12 +30,13 @@ export const NumberEditor: Story = {
         id: 'age',
         headerName: 'age',
         CellEditor: () => EditNumber({ value: number, onChange }),
-        CellRenderer: NumberRenderer,
+        CellRenderer: TextRenderer,
         editable: true,
       };
       return (
         <Cell
-          cellWidth="20rem"
+          width="20rem"
+          height="3.6rem"
           columnDef={columnEditTextNumber}
           data={number}
         />

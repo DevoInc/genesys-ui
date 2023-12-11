@@ -32,7 +32,12 @@ export const BooleanEditor: Story = {
       };
 
       return (
-        <Cell cellWidth="20rem" columnDef={columnEditBoolean} data={boolean} />
+        <Cell
+          height="3.6rem"
+          width="20rem"
+          columnDef={columnEditBoolean}
+          data={boolean}
+        />
       );
     })(),
 };

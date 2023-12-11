@@ -6,18 +6,23 @@ import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { Box, Typography } from '@devoinc/genesys-ui';
 import { TableContext } from '../Table/context';
 
-interface TableBodyProps {
-  rowVirtualizer: Virtualizer<HTMLDivElement, Element>;
+export interface TableBodyProps {
+  columnDefs: ColDef[];
   columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
   data: unknown;
-  columnDefs: ColDef[];
+  rowVirtualizer: Virtualizer<HTMLDivElement, Element>;
+  visibleHeight: number;
+  height?: React.CSSProperties['height'];
+  width?: React.CSSProperties['width'];
 }
 
 export const TableBody: React.FC<TableBodyProps> = ({
   columnDefs,
-  rowVirtualizer,
   columnVirtualizer,
   data,
+  rowVirtualizer,
+  height,
+  width,
 }) => {
   const { texts } = React.useContext(TableContext);
   let emptyMessage;
@@ -26,7 +31,6 @@ export const TableBody: React.FC<TableBodyProps> = ({
   } else if (!rowVirtualizer.getVirtualItems().length) {
     emptyMessage = texts?.general?.noResults;
   }
-  console.info();
   const renderMessage = (message: React.ReactNode) => {
     return typeof message === 'string' ? (
       <Box padding="cmp-sm">
@@ -38,10 +42,13 @@ export const TableBody: React.FC<TableBodyProps> = ({
       <Box padding="cmp-md">{message}</Box>
     );
   };
+  const { visualOptions } = React.useContext(TableContext);
+
   return (
     <StyledTableBody
-      $height={`${rowVirtualizer.getTotalSize()}px`}
-      $width={`${columnVirtualizer.getTotalSize()}px`}
+      $height={height}
+      $width={width}
+      highlightColumnsOnHover={visualOptions?.highlightColumnsOnHover}
     >
       {emptyMessage ? (
         <tr>

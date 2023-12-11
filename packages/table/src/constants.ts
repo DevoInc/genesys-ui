@@ -23,3 +23,11 @@ export const DEFAULT_COLDEF: ColDef = {
   id: 'col',
   headerName: 'Column',
 };
+
+export const CELL_ALIGN_MAP: object = {
+  left: 'flex-start',
+  right: 'flex-end',
+  center: 'center',
+  top: 'flex-start',
+  bottom: 'flex-end',
+};

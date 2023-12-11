@@ -1,31 +1,27 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-interface StyledHeaderCellProps {
-  headerCellWidth: React.CSSProperties['width'];
+import { CELL_ALIGN_MAP } from '../../constants';
+
+import { StyledTableCellWrapperProps } from '../Cell/StyledTableCellWrapper';
+import { cellMixin } from '../helpers';
+
+interface StyledHeaderCellProps
+  extends Pick<
+    StyledTableCellWrapperProps,
+    'horAlign' | 'paddingHor' | 'paddingVer'
+  > {
+  $width: React.CSSProperties['width'];
   offsetX?: number;
+  resizable?;
 }
 
 export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: 0;
+  ${({ theme }) => cellMixin({ theme })}
   left: 0;
-  box-sizing: border-box;
-  height: 100%;
-  padding: 0 1.2rem;
-  width: ${({ headerCellWidth }) => headerCellWidth};
-  color: ${({ theme }) => theme.alias.color.text.heading.base};
+  justify-content: ${({ horAlign }) => CELL_ALIGN_MAP[horAlign || 'left']};
   transform: ${({ offsetX }) => `translateX(${offsetX}px)`};
-
-  // resizable columns
-  ::-webkit-resizer {
-    appearance: none;
-  }
-
-  // to avoid include '...' ellipsis in complex type cells
-  &::after {
-    content: none;
-  }
+  width: ${({ $width }) => $width};
+  height: 100%;
+  padding: ${({ paddingVer, paddingHor }) => `${paddingVer} ${paddingHor}`};
 `;

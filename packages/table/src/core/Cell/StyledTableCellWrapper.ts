@@ -1,22 +1,21 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { ColumnCellStyleProps } from '../../declarations';
+import { CELL_ALIGN_MAP } from '../../constants';
+import {
+  CellHorAlign,
+  CellVerAlign,
+  ColumnCellStyleProps,
+} from '../../declarations';
 import { btnResetMixin, typoMixin } from '@devoinc/genesys-ui';
 
-interface StyledTableCellWrapperProps extends ColumnCellStyleProps {
+export interface StyledTableCellWrapperProps extends ColumnCellStyleProps {
   clickable?: boolean;
+  horAlign?: CellHorAlign;
   isEditMode?: boolean;
-  paddingVer?: React.CSSProperties['paddingBottom'];
   paddingHor?: React.CSSProperties['paddingLeft'];
+  paddingVer?: React.CSSProperties['paddingBottom'];
+  verAlign?: CellVerAlign;
 }
-
-const alignMap = {
-  left: 'flex-start',
-  right: 'flex-end',
-  center: 'center',
-  top: 'flex-start',
-  bottom: 'flex-end',
-};
 
 export const StyledTableCellWrapper = styled.div<StyledTableCellWrapperProps>`
   ${({ clickable, isEditMode, theme }) => {
@@ -30,19 +29,28 @@ export const StyledTableCellWrapper = styled.div<StyledTableCellWrapperProps>`
         cursor: pointer;
         transition: background-color ease ${tokens.mutation.transitionDuration};
 
-        &:hover,
-        &:active {
-          background-color: ${tokens.color.background.hovered};
-        }
+        ${!isEditMode &&
+        css`
+          &:hover,
+          &:active {
+            background-color: ${tokens.color.background.hovered};
+          }
 
-        &:focus {
-          box-shadow: ${theme.alias.elevation.boxShadow.base.focused};
-        }
+          &:focus {
+            box-shadow: ${theme.alias.elevation.boxShadow.base.focused};
+          }
+        `}
       `}
 
       ${isEditMode &&
       css`
-        background-color: ${tokens.color.background.hovered};
+        &:has(:focus) {
+          background-color: ${tokens.color.background.hovered};
+        }
+
+        &:not(:has(:focus)) {
+          box-shadow: ${theme.alias.elevation.boxShadow.base.focused};
+        }
       `}
     `;
   }}
@@ -51,8 +59,8 @@ export const StyledTableCellWrapper = styled.div<StyledTableCellWrapperProps>`
   top: 0;
   left: 0;
   display: flex;
-  align-items: ${({ align }) => alignMap[align?.vertical || 'center']};
-  justify-content: ${({ align }) => alignMap[align?.horizontal || 'left']};
+  align-items: ${({ verAlign }) => CELL_ALIGN_MAP[verAlign || 'center']};
+  justify-content: ${({ horAlign }) => CELL_ALIGN_MAP[horAlign || 'left']};
   width: 100%;
   height: 100%;
   padding: ${({ paddingVer, paddingHor, toEdge }) =>
