@@ -1,14 +1,13 @@
 import * as React from 'react';
+import { merge } from 'lodash';
 import {
   MeasuresConfig,
   SizesConfig,
-  TableVisualOptions,
-  TextsType,
+  TableOptionsProps,
 } from '../../declarations';
 
-interface TableContextProps {
-  visualOptions?: TableVisualOptions;
-  texts?: TextsType;
+export interface TableContextProps
+  extends Pick<TableOptionsProps, 'visualOptions' | 'texts'> {
   measures: MeasuresConfig;
   sizes: SizesConfig;
 }
@@ -80,8 +79,7 @@ export const TableContextProvider = ({
   value,
 }: TableContextProviderProps) => {
   const [context] = React.useState({
-    ...defaultTableContext,
-    ...value,
+    ...merge({}, defaultTableContext, value),
   });
 
   return (

@@ -87,7 +87,13 @@ export const useEditor: UseEditor = ({
       });
       onMount?.(editorRef.current, monaco);
     }
+    return () => {
+      editorRef.current?.dispose();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
+  React.useEffect(() => {
     ////////////////////////////////////////////
     // Call onChange callback on content change
     const { dispose: disposeOnModelChange } =
@@ -101,7 +107,12 @@ export const useEditor: UseEditor = ({
           );
         },
       );
+    return () => {
+      disposeOnModelChange();
+    };
+  }, [onChange]);
 
+  React.useEffect(() => {
     ////////////////////////////////////////////
     // Call onValidate callback on model markers change
     /**
@@ -132,12 +143,10 @@ export const useEditor: UseEditor = ({
       });
 
     return () => {
-      disposeOnModelChange();
       disposeOnMarkersChange();
-      editorRef.current?.dispose();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [onValidate]);
 
   useUpdateEffect(() => {
     ////////////////////////////////////////////

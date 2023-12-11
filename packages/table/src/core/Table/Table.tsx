@@ -21,10 +21,11 @@ interface TableProps {
 }
 
 export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
+  const ref = React.useRef<HTMLDivElement>();
   const theme = useTheme();
   const sizes = getSizes(
     theme,
-    (tableOptions.visualOptions.density = 'default'),
+    tableOptions.visualOptions?.density ?? 'default',
   );
   const { defaultColumnDef, columnDefs, types, visualOptions } = tableOptions;
   const rowHeight =
@@ -35,11 +36,15 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
         : 'md'
     ];
   const headerHeight = sizes.head.height;
-  const { rowVirtualizer, columnVirtualizer, ref } = useTableVirtualization({
+  const { rowVirtualizer, columnVirtualizer } = useTableVirtualization({
     data,
     columnDefs,
     rowHeight,
-    tableMinWidth: tableOptions?.visualOptions?.minWidth,
+    tableWidth: Math.max(
+      tableOptions?.visualOptions?.minWidth,
+      ref.current?.offsetWidth,
+    ),
+    wrapperRef: ref,
   });
   const refinedColumnDefs = getCollatedColumns(
     defaultColumnDef,

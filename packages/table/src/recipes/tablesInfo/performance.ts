@@ -1,12 +1,12 @@
 import { Holo } from '@devoinc/holo';
 import { ColDef, TableOptionsProps } from '../../declarations';
 
-const colDefs: ColDef[] = Array.from({ length: 100 }, (_, index) => ({
+const colDefs: ColDef[] = Array.from({ length: 100 }, (_, index: number) => ({
   id: `company_${index}`,
-  headerName: 'Company',
+  headerName: `Company ${index + 1}`,
   type: 'text',
   cellStyle: {
-    width: 5,
+    width: 12,
   },
 }));
 

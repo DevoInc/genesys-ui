@@ -141,7 +141,7 @@ export const baseOptions: TableOptionsProps = {
       headerName: 'Image (URL)',
       type: 'link',
       cellStyle: {
-        width: 9,
+        width: 10,
       },
     },
     {
@@ -159,7 +159,7 @@ export const baseOptions: TableOptionsProps = {
       type: 'tags',
       editable: true,
       cellStyle: {
-        width: 5,
+        width: 20,
       },
     },
     {
@@ -167,7 +167,7 @@ export const baseOptions: TableOptionsProps = {
       headerName: 'Profession',
       type: 'text',
       cellStyle: {
-        width: 5,
+        width: 10,
       },
     },
     {
@@ -175,7 +175,7 @@ export const baseOptions: TableOptionsProps = {
       headerName: 'Email',
       type: 'link',
       cellStyle: {
-        width: 5,
+        width: 10,
       },
     },
     {
@@ -184,6 +184,14 @@ export const baseOptions: TableOptionsProps = {
       type: 'text',
       cellStyle: {
         width: 5,
+      },
+    },
+    {
+      id: 'address',
+      headerName: 'Address',
+      type: 'text',
+      cellStyle: {
+        width: 10,
       },
     },
     {
@@ -199,15 +207,7 @@ export const baseOptions: TableOptionsProps = {
       headerName: 'Secondary Website',
       type: 'link',
       cellStyle: {
-        width: 5,
-      },
-    },
-    {
-      id: 'address',
-      headerName: 'Address',
-      type: 'text',
-      cellStyle: {
-        width: 5,
+        width: 10,
       },
     },
   ],

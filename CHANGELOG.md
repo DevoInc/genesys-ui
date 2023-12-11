@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.8.0](https://github.com/DevoInc/genesys-ui/compare/v1.7.0...v1.8.0) (2023-12-04)
+
+
+### Features
+
+* cell edit mode styles and HTML attributes ([86df153](https://github.com/DevoInc/genesys-ui/commit/86df1530db42eb8c7a2fd73253ddff4633b21d67))
+* Row and editable cell interactions. ([5ff10e7](https://github.com/DevoInc/genesys-ui/commit/5ff10e7b2fce2cea3188faf309fa35da9ad50af1))
+
+
+### Bug Fixes
+
+* **Editor:** solve callbacks not updating ([b721d05](https://github.com/DevoInc/genesys-ui/commit/b721d0576c9f2ef5404d0bb6604ca020795cf54e))
+* lint and use of correct provider. ([b87e5e8](https://github.com/DevoInc/genesys-ui/commit/b87e5e870345ea4298e15c05a3bd14b16f8f66fe))
+* **Table:** Used correct width for calculations ([566dec6](https://github.com/DevoInc/genesys-ui/commit/566dec6dca2d40826d9a1e1de4c5e03d84939961))
+
 ## [1.7.0](https://github.com/DevoInc/genesys-ui/compare/v1.6.1...v1.7.0) (2023-11-30)
 
 
