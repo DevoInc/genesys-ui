@@ -68,8 +68,8 @@ export const Table: React.FC<TableProps> = ({
       <StyledTableWrapper ref={ref} maxHeight={visualOptions?.maxHeight}>
         <StyledTable
           minWidth={visualOptions?.minWidth}
-          height={getTableEvalHeight(measures?.body?.total?.height)}
-          width={getTableEvalWidth(measures?.body?.total?.width)}
+          $height={getTableEvalHeight(measures?.body?.total?.height)}
+          $width={getTableEvalWidth(measures?.body?.total?.width)}
         >
           <TableHead
             columnDefs={refinedColumnDefs}
