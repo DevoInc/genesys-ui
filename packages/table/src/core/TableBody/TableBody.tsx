@@ -70,13 +70,7 @@ export const TableBody: React.FC<TableBodyProps> = ({
               columnDefs={columnDefs}
               columnVirtualizer={columnVirtualizer}
               data={data[virtualRow.index]}
-              even={(virtualRow.index + 1) % 2 === 0}
-              styles={{
-                height: `${virtualRow.size}px`,
-                transform: `translateY(${virtualRow.start}px)`,
-                width: `${columnVirtualizer.getTotalSize()}px`,
-                position: 'absolute',
-              }}
+              virtualRow={virtualRow}
             />
           );
         })
