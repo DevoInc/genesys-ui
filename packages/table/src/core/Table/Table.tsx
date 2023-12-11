@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { TableContextProvider } from './context';
-import { TableOptionsProps } from '../../declarations';
+import { ColDef, TableOptionsProps } from '../../declarations';
 import { TableHead } from '../TableHead';
 import { TableBody } from '../TableBody';
 import { StyledTable } from './StyledTable';
@@ -46,7 +46,7 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
     ),
     wrapperRef: ref,
   });
-  const refinedColumnDefs = getCollatedColumns(
+  const refinedColumnDefs: ColDef[] = getCollatedColumns(
     defaultColumnDef,
     columnDefs,
     types,
@@ -75,15 +75,9 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
   return (
     <TableContextProvider
       value={{
-        visualOptions: {
-          ...tableOptions.visualOptions,
-        },
-        measures: {
-          ...measures,
-        },
-        sizes: {
-          ...sizes,
-        },
+        visualOptions: tableOptions.visualOptions,
+        measures,
+        sizes,
       }}
     >
       <StyledTableWrapper ref={ref} maxHeight={visualOptions?.maxHeight}>
@@ -93,7 +87,7 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
           $width={getTableEvalWidth(measures?.body?.total?.width)}
         >
           <TableHead
-            columnDefs={columnDefs}
+            columnDefs={refinedColumnDefs}
             columnVirtualizer={columnVirtualizer}
             scrolled={hasScroll}
           />

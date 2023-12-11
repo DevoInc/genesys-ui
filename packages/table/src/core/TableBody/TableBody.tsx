@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row } from '../Row';
-import { ColDef } from '../../declarations';
+import { ColDef, TextsType } from '../../declarations';
 import { StyledTableBody } from './StyledTableBody';
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { Box, Typography } from '@devoinc/genesys-ui';
@@ -16,6 +16,31 @@ export interface TableBodyProps {
   width?: React.CSSProperties['width'];
 }
 
+const renderMessage = (message: React.ReactNode) => {
+  return typeof message === 'string' ? (
+    <Box padding="cmp-sm">
+      <Typography.Paragraph colorScheme="weak" gutterBottom="0">
+        {message}
+      </Typography.Paragraph>
+    </Box>
+  ) : (
+    <Box padding="cmp-md">{message}</Box>
+  );
+};
+
+const getEmptyMessage = (
+  data: unknown,
+  texts: TextsType,
+  rowVirtualizer: Virtualizer<HTMLDivElement, Element>,
+) => {
+  if (!data) {
+    return texts?.general?.noData;
+  } else if (!rowVirtualizer.getVirtualItems().length) {
+    return texts?.general?.noResults;
+  }
+  return null;
+};
+
 export const TableBody: React.FC<TableBodyProps> = ({
   columnDefs,
   columnVirtualizer,
@@ -25,23 +50,7 @@ export const TableBody: React.FC<TableBodyProps> = ({
   width,
 }) => {
   const { texts } = React.useContext(TableContext);
-  let emptyMessage;
-  if (!data) {
-    emptyMessage = texts?.general?.noData;
-  } else if (!rowVirtualizer.getVirtualItems().length) {
-    emptyMessage = texts?.general?.noResults;
-  }
-  const renderMessage = (message: React.ReactNode) => {
-    return typeof message === 'string' ? (
-      <Box padding="cmp-sm">
-        <Typography.Paragraph colorScheme="weak" gutterBottom="0">
-          {message}
-        </Typography.Paragraph>
-      </Box>
-    ) : (
-      <Box padding="cmp-md">{message}</Box>
-    );
-  };
+  const emptyMessage = getEmptyMessage(data, texts, rowVirtualizer);
   const { visualOptions } = React.useContext(TableContext);
 
   return (
