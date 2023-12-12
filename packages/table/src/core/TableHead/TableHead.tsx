@@ -4,7 +4,7 @@ import { StyledTableHeadRow } from './StyledTableHeadRow';
 import { HeaderCell } from '../HeaderCell';
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { ColDef } from '../../declarations';
-import { getColDefByID, getTableEvalWidth } from '../utils';
+import { getColDefByID } from '../utils';
 import { TableContext } from '../Table/context';
 
 interface TableHeadProps {
@@ -22,7 +22,7 @@ export const TableHead: React.FC<TableHeadProps> = ({
   return (
     <StyledTableHead
       scrolled={scrolled}
-      $width={getTableEvalWidth(measures?.body?.total?.width)}
+      $width={measures?.body?.total?.width || '100%'}
       $height={`${sizes.head.height}px`}
     >
       <StyledTableHeadRow width={`${columnVirtualizer.getTotalSize()}px`}>

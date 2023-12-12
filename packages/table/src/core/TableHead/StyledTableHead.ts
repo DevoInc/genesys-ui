@@ -14,7 +14,7 @@ export const StyledTableHead = styled.thead<StyledTableHeadProps>`
   display: inline-block;
   position: sticky;
   height: ${({ $height }) => $height};
-  width: ${({ $width }) => $width || '100%'};
+  width: ${({ $width }) => ($width !== 0 ? `${$width}px` : '100%')};
 
   ${({ scrolled, theme }) => {
     const tableHeadRowTokens = theme.cmp.table.headRow;
