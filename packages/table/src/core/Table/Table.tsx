@@ -34,11 +34,13 @@ export const Table: React.FC<TableProps> = ({
   const theme = useTheme();
 
   const ref = React.useRef<HTMLDivElement>();
+
   const refinedColumnDefs: ColDef[] = getCollatedColumns(
     defaultColumnDef,
     columnDefs,
     types,
   );
+
   const sizes = getSizes(theme, visualOptions?.density ?? 'default');
 
   const { rowVirtualizer, columnVirtualizer } = useTableVirtualization({
@@ -50,6 +52,7 @@ export const Table: React.FC<TableProps> = ({
   });
 
   const { hasScroll } = useTableScroll(rowVirtualizer, ref);
+
   const { measures } = useTableMeasures({
     ref,
     rowVirtualizer,
@@ -77,8 +80,6 @@ export const Table: React.FC<TableProps> = ({
             scrolled={hasScroll}
           />
           <TableBody
-            height={getTableEvalHeight(measures?.body?.total?.height)}
-            width={getTableEvalWidth(measures?.body?.total?.width)}
             columnDefs={refinedColumnDefs}
             columnVirtualizer={columnVirtualizer}
             data={data}

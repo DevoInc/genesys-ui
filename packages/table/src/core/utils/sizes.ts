@@ -1,19 +1,17 @@
 import { Brand } from '@devoinc/genesys-tokens-types';
 import { Density, SizesConfig } from '../../declarations';
 import { getPxFromRem } from '@devoinc/genesys-ui';
-import { TableBodyProps } from '../TableBody';
 
 /**
  * Returns the evaluated height of the table based in the virtualization
  */
-export const getTableEvalHeight = (
-  tableBodyHeight: TableBodyProps['height'],
-) => (tableBodyHeight !== 0 ? `${tableBodyHeight}px` : 'auto');
+export const getTableEvalHeight = (tableBodyHeight: number) =>
+  tableBodyHeight !== 0 ? `${tableBodyHeight}px` : 'auto';
 
 /**
  * Returns the evaluated width of the table based in the virtualization
  */
-export const getTableEvalWidth = (tableBodyWidth: TableBodyProps['width']) =>
+export const getTableEvalWidth = (tableBodyWidth: number) =>
   tableBodyWidth !== 0 ? `${tableBodyWidth}px` : '100%';
 
 /**

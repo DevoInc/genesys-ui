@@ -5,14 +5,13 @@ import { StyledTableBody } from './StyledTableBody';
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { Box, Typography } from '@devoinc/genesys-ui';
 import { TableContext } from '../Table/context';
+import { getTableEvalHeight, getTableEvalWidth } from '../utils';
 
 export interface TableBodyProps {
   columnDefs: ColDef[];
   columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
   data: unknown;
   rowVirtualizer: Virtualizer<HTMLDivElement, Element>;
-  height?: React.CSSProperties['height'];
-  width?: React.CSSProperties['width'];
 }
 
 const renderMessage = (message: React.ReactNode) => {
@@ -45,17 +44,14 @@ export const TableBody: React.FC<TableBodyProps> = ({
   columnVirtualizer,
   data,
   rowVirtualizer,
-  height,
-  width,
 }) => {
-  const { texts } = React.useContext(TableContext);
+  const { visualOptions, texts, measures } = React.useContext(TableContext);
   const emptyMessage = getEmptyMessage(data, texts, rowVirtualizer);
-  const { visualOptions } = React.useContext(TableContext);
 
   return (
     <StyledTableBody
-      $height={height}
-      $width={width}
+      $height={getTableEvalHeight(measures?.body?.total?.height)}
+      $width={getTableEvalWidth(measures?.body?.total?.width)}
       highlightColumnsOnHover={visualOptions?.highlightColumnsOnHover}
     >
       {emptyMessage ? (

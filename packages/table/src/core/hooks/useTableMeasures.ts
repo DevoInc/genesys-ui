@@ -1,5 +1,6 @@
+import React, { useEffect } from 'react';
 import { Virtualizer } from '@tanstack/react-virtual';
-import { SizesConfig } from '../../declarations';
+import { MeasuresConfig, SizesConfig } from '../../declarations';
 
 interface UseTableMeasuresParams {
   ref: React.MutableRefObject<HTMLDivElement>;
@@ -14,26 +15,27 @@ export const useTableMeasures = ({
   columnVirtualizer,
   sizes,
 }: UseTableMeasuresParams) => {
-  const tableWrapperHeight = ref?.current?.offsetHeight;
-  const tableWrapperWidth = ref?.current?.offsetWidth;
-  const tableVisibleBodyHeight = tableWrapperHeight - sizes.head.height;
+  const [measures, setMeasures] = React.useState<MeasuresConfig>();
 
-  const measures = {
-    wrapper: {
-      height: tableWrapperHeight,
-      width: tableWrapperWidth,
-    },
-    body: {
-      total: {
-        height: rowVirtualizer?.getTotalSize(),
-        width: columnVirtualizer?.getTotalSize(),
+  useEffect(() => {
+    setMeasures({
+      wrapper: {
+        height: ref?.current?.offsetHeight,
+        width: ref?.current?.offsetWidth,
       },
-      visible: {
-        height: tableVisibleBodyHeight,
-        width: tableWrapperWidth,
+      body: {
+        total: {
+          height: rowVirtualizer?.getTotalSize(),
+          width: columnVirtualizer?.getTotalSize(),
+        },
+        visible: {
+          height: ref?.current?.offsetHeight - sizes.head.height,
+          width: ref?.current?.offsetWidth,
+        },
       },
-    },
-  };
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ref.current?.offsetHeight, ref.current?.offsetWidth]);
 
   return { measures };
 };
