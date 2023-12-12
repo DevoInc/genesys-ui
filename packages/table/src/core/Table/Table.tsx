@@ -25,17 +25,18 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
   const theme = useTheme();
   const sizes = getSizes(
     theme,
-    tableOptions.visualOptions?.density ?? 'default',
+    tableOptions.visualOptions?.density || 'default',
   );
   const { defaultColumnDef, columnDefs, types, visualOptions } = tableOptions;
   const rowHeight =
     sizes.row.height[
-      tableOptions.visualOptions?.rowHeight ||
-      columnDefs.find((columnDef) => columnDef.type === 'longText')
-        ? 'lg'
-        : 'md'
+      tableOptions?.visualOptions?.rowHeight === undefined ||
+      tableOptions?.visualOptions?.rowHeight === 'md'
+        ? columnDefs.find((columnDef) => columnDef.type === 'longText')
+          ? 'lg'
+          : 'md'
+        : tableOptions?.visualOptions?.rowHeight
     ];
-  const headerHeight = sizes.head.height;
   const { rowVirtualizer, columnVirtualizer } = useTableVirtualization({
     data,
     columnDefs,
@@ -51,6 +52,7 @@ export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
     columnDefs,
     types,
   );
+  const headerHeight = sizes.head.height;
   const tableWrapperHeight = ref?.current?.offsetHeight;
   const tableWrapperWidth = ref?.current?.offsetWidth;
   const tableVisibleBodyHeight = tableWrapperHeight - headerHeight;

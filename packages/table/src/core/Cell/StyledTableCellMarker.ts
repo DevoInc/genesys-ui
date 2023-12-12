@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components';
 
 export const StyledTableCellMarker = styled.span`
   position: absolute;
-  right: 0.4rem;
-  top: 0.4rem;
+  right: 0;
+  top: 0;
   display: inline-flex;
   justify-content: center;
   align-items: center;

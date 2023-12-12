@@ -5,23 +5,25 @@ import { getTableZIndexMap } from '../../core/utils';
 
 interface EditorFloatingWrapperProps {
   children: React.ReactNode;
-  width: React.CSSProperties['width'];
+  minWidth?: React.CSSProperties['minWidth'];
 }
 
 export const EditorFloatingWrapper: React.FC<EditorFloatingWrapperProps> = ({
   children,
-  width,
+  minWidth = '34rem',
 }) => {
   const theme = useTheme();
   return (
     <Flex
-      width={width}
+      minWidth={minWidth}
+      width="100%"
       position="absolute"
       positionTop="0"
       positionLeft="0"
-      zIndex={getTableZIndexMap(theme).expanded}
+      zIndex={getTableZIndexMap(theme).columnHighlight}
       flex="0 0 auto"
       flexDirection="column"
+      alignItems="stretch"
       minHeight="100%"
     >
       {children}

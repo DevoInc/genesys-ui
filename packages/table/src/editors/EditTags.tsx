@@ -27,7 +27,7 @@ export const EditTags: React.FC<EditTagsProps> = ({ value, onChange }) => {
   React.useEffect(() => onChange?.(options), [options]);
 
   return (
-    <EditorFloatingWrapper width="34rem">
+    <EditorFloatingWrapper>
       <SelectControl
         onChange={onOptionSelect}
         value={getOptionsFromTags(value)}
@@ -36,7 +36,6 @@ export const EditTags: React.FC<EditTagsProps> = ({ value, onChange }) => {
         menuAppendToBody
         options={getOptionsFromTags(value)}
         autoFocus
-        styles={'display: flex; flex: 1;'}
       />
     </EditorFloatingWrapper>
   );

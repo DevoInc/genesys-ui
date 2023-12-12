@@ -45,7 +45,6 @@ export const baseOptions: TableOptionsProps = {
   visualOptions: {
     maxHeight: '80vh',
     minWidth: 1800,
-    rowHeight: 'md',
     resizableColumns: true,
     highlightColumnsOnHover: true,
   },
@@ -123,6 +122,7 @@ export const baseOptions: TableOptionsProps = {
       id: 'balance',
       headerName: 'Balance',
       type: 'number',
+      editable: true,
       cellStyle: {
         width: 5,
       },

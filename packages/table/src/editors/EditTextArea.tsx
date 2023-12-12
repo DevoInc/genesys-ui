@@ -11,7 +11,7 @@ export const EditTextArea: React.FC<EditTextAreaProps> = ({
   value,
   onChange,
 }) => (
-  <EditorFloatingWrapper width="34rem">
+  <EditorFloatingWrapper>
     <TextareaControl
       rows={6}
       aria-label={'TextArea input'}

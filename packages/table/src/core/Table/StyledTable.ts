@@ -9,6 +9,8 @@ export interface StyledTableProps {
 
 export const StyledTable = styled.table<StyledTableProps>`
   position: relative;
+  display: flex;
+  flex-direction: column;
   height: ${({ $height }) => ($height ? $height : 'auto')};
   width: ${({ $width }) => ($width ? $width : '100%')};
 `;

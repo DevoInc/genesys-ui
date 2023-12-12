@@ -25,23 +25,29 @@ export const StyledTableCell = styled.td.attrs(
 )<StyledTableCellProps>`
   ${({ highlightColumnsOnHover, highlightedColumnHeight = 9999, theme }) => {
     const tokens = theme.cmp.table.cell;
+    highlightedColumnHeight = 400;
     return css`
       ${cellMixin({ theme })};
       ${highlightColumnsOnHover &&
       css`
         &:after {
           ${pseudoElementOverlayMixin()};
-          height: ${`calc(${highlightedColumnHeight}px * 2)`};
           z-index: -1;
           background-color: transparent;
           transition: none;
         }
 
-        &:hover::after {
-          top: ${`calc(${highlightedColumnHeight}px * -1)`};
-          background-color: ${tokens.color.background.backdrop.hovered.base};
-          z-index: ${getTableZIndexMap(theme).columnHighlight};
-          pointer-events: none;
+        &:focus,
+        &:has(*:focus),
+        &:has([aria-expanded='true']),
+        &:hover {
+          &::after {
+            top: ${`calc(${highlightedColumnHeight}px * -1)`};
+            height: ${`calc(${highlightedColumnHeight}px * 2)`};
+            background-color: ${tokens.color.background.backdrop.hovered.base};
+            z-index: ${getTableZIndexMap(theme).columnHighlight};
+            pointer-events: none;
+          }
         }
       `};
     `;
