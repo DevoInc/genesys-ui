@@ -10,8 +10,8 @@ interface StyledTableBodyProps
 export const StyledTableBody = styled.tbody<StyledTableBodyProps>`
   position: relative;
   display: inline-block;
-  height: ${({ $height }) => ($height ? $height : 'auto')};
-  width: ${({ $width }) => ($width ? $width : '100%')};
+  height: ${({ $height }) => ($height !== 0 ? `${$height}px` : 'auto')};
+  width: ${({ $width }) => ($width !== 0 ? `${$width}px` : '100%')};
   overflow: ${({ highlightColumnsOnHover }) =>
     highlightColumnsOnHover ? 'hidden' : null};
 `;
