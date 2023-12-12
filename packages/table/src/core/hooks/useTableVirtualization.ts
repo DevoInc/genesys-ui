@@ -6,12 +6,18 @@ import {
   getOccupiedWidthInfo,
 } from '../utils';
 
-interface UseVirtualizationParams {
+interface UseVirtualizationParamsRow {
   data: { [key: string]: unknown }[];
   columnDefs: ColDef[];
   visualOptions: TableVisualOptions;
   wrapperRef: React.MutableRefObject<HTMLDivElement>;
   sizes: SizesConfig;
+}
+
+interface UseVirtualizationParamsColumn {
+  columnDefs: ColDef[];
+  visualOptions: TableVisualOptions;
+  wrapperRef: React.MutableRefObject<HTMLDivElement>;
 }
 
 const getRowHeight = (
@@ -31,29 +37,37 @@ const getTableWidth = (
   ref: React.MutableRefObject<HTMLDivElement>,
 ) => Math.max(visualOptions?.minWidth, ref.current?.offsetWidth);
 
-export const useTableVirtualization = ({
+export const useTableVirtualizationRow = ({
   data,
   columnDefs,
   visualOptions,
   wrapperRef,
   sizes,
-}: UseVirtualizationParams) => {
+}: UseVirtualizationParamsRow) => {
   const rowHeight = getRowHeight(sizes, visualOptions, columnDefs);
-  const tableWidth = getTableWidth(visualOptions, wrapperRef);
 
-  const rowVirtualizer = useVirtualizer({
+  return useVirtualizer({
     count: data.length,
     getScrollElement: () => wrapperRef.current,
     estimateSize: () => rowHeight,
     overscan: 10,
   });
+};
+
+export const useTableVirtualizationColumn = ({
+  columnDefs,
+  visualOptions,
+  wrapperRef,
+}: UseVirtualizationParamsColumn) => {
+  const tableWidth = getTableWidth(visualOptions, wrapperRef);
+
   const defaultColWidth = getDefaultColWidth(
     columnDefs,
     tableWidth,
     getOccupiedWidthInfo(columnDefs),
   );
 
-  const columnVirtualizer = useVirtualizer({
+  return useVirtualizer({
     count: columnDefs.length,
     getScrollElement: () => wrapperRef.current,
     estimateSize: (index: number) =>
@@ -66,6 +80,4 @@ export const useTableVirtualization = ({
     getItemKey: (index: number) => columnDefs[index].id,
     overscan: 2,
   });
-
-  return { rowVirtualizer, columnVirtualizer };
 };

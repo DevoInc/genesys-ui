@@ -19,7 +19,8 @@ import {
 import {
   useTableMeasures,
   useTableScroll,
-  useTableVirtualization,
+  useTableVirtualizationRow,
+  useTableVirtualizationColumn,
 } from '../hooks';
 
 interface TableProps {
@@ -41,12 +42,18 @@ export const Table: React.FC<TableProps> = ({
 
   const sizes = getSizes(theme, density);
 
-  const { rowVirtualizer, columnVirtualizer } = useTableVirtualization({
+  const rowVirtualizer = useTableVirtualizationRow({
     data,
     columnDefs,
     visualOptions,
     wrapperRef: ref,
     sizes,
+  });
+
+  const columnVirtualizer = useTableVirtualizationColumn({
+    columnDefs,
+    visualOptions,
+    wrapperRef: ref,
   });
 
   const { hasScroll } = useTableScroll(rowVirtualizer, ref);
