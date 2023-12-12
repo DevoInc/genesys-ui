@@ -32,14 +32,14 @@ export const Table: React.FC<TableProps> = ({
   data,
 }) => {
   const theme = useTheme();
-
+  const { density, maxHeight, minWidth } = visualOptions;
   const ref = React.useRef<HTMLDivElement>();
 
   const refinedColumnDefs: ColDef[] = columnDefs.map((column) =>
     getCollatedColumns(defaultColumnDef, column, types),
   );
 
-  const sizes = getSizes(theme, visualOptions?.density ?? 'default');
+  const sizes = getSizes(theme, density);
 
   const { rowVirtualizer, columnVirtualizer } = useTableVirtualization({
     data,
@@ -66,9 +66,9 @@ export const Table: React.FC<TableProps> = ({
         sizes,
       }}
     >
-      <StyledTableWrapper ref={ref} maxHeight={visualOptions?.maxHeight}>
+      <StyledTableWrapper ref={ref} maxHeight={maxHeight}>
         <StyledTable
-          minWidth={visualOptions?.minWidth}
+          minWidth={minWidth}
           $height={getTableEvalHeight(measures?.body?.total?.height)}
           $width={getTableEvalWidth(measures?.body?.total?.width)}
         >

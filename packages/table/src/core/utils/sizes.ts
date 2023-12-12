@@ -17,7 +17,10 @@ export const getTableEvalWidth = (tableBodyWidth: number) =>
 /**
  * Returns an object with size values based in design tokens and display density
  */
-export const getSizes = (theme: Brand, density: Density): SizesConfig => {
+export const getSizes = (
+  theme: Brand,
+  density: Density = 'default',
+): SizesConfig => {
   const headTokens = theme.cmp.table.head;
   const rowTokens = theme.cmp.table.row;
   const cellTokens = theme.cmp.table.cell;
