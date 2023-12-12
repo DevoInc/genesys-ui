@@ -13,15 +13,11 @@ export const getColDefByID = (
  */
 export const getCollatedColumns = (
   defaultColumnDef: DefaultColDef,
-  columnDefs: ColDef[],
+  column: ColDef,
   types: ColumnType[],
-): ColDef[] => {
-  return (
-    columnDefs?.map((column) => {
-      const type = types.find((element) => element.id === column.type);
-      return { ...defaultColumnDef, ...type, ...column };
-    }) ?? []
-  );
+): ColDef => {
+  const type = types.find((element) => element.id === column.type);
+  return { ...defaultColumnDef, ...type, ...column };
 };
 
 export const getOccupiedWidthInfo = (colDefs: ColDef[]): [number, number] =>

@@ -35,10 +35,8 @@ export const Table: React.FC<TableProps> = ({
 
   const ref = React.useRef<HTMLDivElement>();
 
-  const refinedColumnDefs: ColDef[] = getCollatedColumns(
-    defaultColumnDef,
-    columnDefs,
-    types,
+  const refinedColumnDefs: ColDef[] = columnDefs.map((column) =>
+    getCollatedColumns(defaultColumnDef, column, types),
   );
 
   const sizes = getSizes(theme, visualOptions?.density ?? 'default');
