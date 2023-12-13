@@ -14,7 +14,7 @@ export const getColDefByID = (
 export const getCollatedColumns = (
   defaultColumnDef: DefaultColDef,
   column: ColDef,
-  types: ColumnType[],
+  types: ColumnType[] = [],
 ): ColDef => {
   const type = types.find((element) => element.id === column.type);
   return { ...defaultColumnDef, ...type, ...column };
