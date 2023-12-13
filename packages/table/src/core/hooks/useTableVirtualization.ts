@@ -35,7 +35,7 @@ const getRowHeight = (
 const getTableWidth = (
   visualOptions: TableVisualOptions,
   ref: React.MutableRefObject<HTMLDivElement>,
-) => Math.max(visualOptions?.minWidth, ref.current?.offsetWidth);
+) => Math.max(visualOptions?.minWidth ?? 0, ref?.current?.offsetWidth ?? 0);
 
 export const useTableVirtualizationRow = ({
   data,

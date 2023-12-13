@@ -24,7 +24,7 @@ export const getOccupiedWidthInfo = (colDefs: ColDef[]): [number, number] =>
   colDefs.reduce(
     ([percentageRemaining, colsCount], colDef: ColDef) => [
       percentageRemaining - (colDef.cellStyle?.width ?? 0),
-      colDef.cellStyle?.width ? colsCount++ : colsCount,
+      colDef.cellStyle?.width ? ++colsCount : colsCount,
     ],
     [100, 0],
   );
