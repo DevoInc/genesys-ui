@@ -29,7 +29,7 @@ export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
   ({ $width, $height, transform }) => ({
     style: {
       position: 'absolute',
-      width: $width ? $width : '100%',
+      width: $width ?? '100%',
       height: $height,
       transform,
     },

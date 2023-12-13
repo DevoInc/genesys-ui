@@ -35,8 +35,8 @@ export const NumberEditor: Story = {
       };
       return (
         <Cell
-          width="20rem"
-          height="3.6rem"
+          height={40}
+          width={60}
           columnDef={columnEditTextNumber}
           data={number}
         />

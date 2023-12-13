@@ -49,8 +49,8 @@ export const TableBody: React.FC<TableBodyProps> = ({
 
   return (
     <StyledTableBody
-      $height={measures?.body?.total?.height || 'auto'}
-      $width={measures?.body?.total?.width || '100%'}
+      $height={measures?.body?.total?.height}
+      $width={measures?.body?.total?.width}
       highlightColumnsOnHover={visualOptions?.highlightColumnsOnHover}
     >
       {emptyMessage ? (

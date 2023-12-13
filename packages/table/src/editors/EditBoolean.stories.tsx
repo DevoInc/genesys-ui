@@ -33,8 +33,8 @@ export const BooleanEditor: Story = {
 
       return (
         <Cell
-          height="3.6rem"
-          width="20rem"
+          height={40}
+          width={60}
           columnDef={columnEditBoolean}
           data={boolean}
         />

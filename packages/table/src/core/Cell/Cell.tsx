@@ -11,8 +11,8 @@ import { StyledTableCellMarker } from './StyledTableCellMarker';
 interface CellProps {
   data: unknown;
   columnDef: ColDef;
-  width?: React.CSSProperties['width'];
-  height?: React.CSSProperties['height'];
+  width?: number;
+  height?: number;
   offsetX?: number;
 }
 
@@ -34,8 +34,8 @@ export const Cell: React.FC<CellProps> = ({
   const clickable = columnDef.editable;
   return (
     <StyledTableCell
-      $height={height}
-      $width={width}
+      $height={`${height}px`}
+      $width={`${width}px`}
       highlightColumnsOnHover={visualOptions?.highlightColumnsOnHover}
       highlightedColumnHeight={measures?.body?.visible?.height}
       aria-selected={isEditMode}

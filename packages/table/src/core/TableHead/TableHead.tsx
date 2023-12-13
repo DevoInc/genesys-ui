@@ -22,7 +22,7 @@ export const TableHead: React.FC<TableHeadProps> = ({
   return (
     <StyledTableHead
       scrolled={scrolled}
-      $width={measures?.body?.total?.width || '100%'}
+      $width={measures?.body?.total?.width}
       $height={`${sizes.head.height}px`}
     >
       <StyledTableHeadRow width={`${columnVirtualizer.getTotalSize()}px`}>

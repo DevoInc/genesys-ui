@@ -28,12 +28,7 @@ export const UsingACustomCellEditor: Story = {
       };
 
       return (
-        <Cell
-          height="3.6rem"
-          width="20rem"
-          columnDef={customEditorDef}
-          data={text}
-        />
+        <Cell height={40} width={60} columnDef={customEditorDef} data={text} />
       );
     })(),
 };
