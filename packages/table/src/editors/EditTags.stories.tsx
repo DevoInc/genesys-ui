@@ -48,12 +48,7 @@ export const TagsEditor: Story = {
         editable: true,
       };
       return (
-        <Cell
-          height="3.6rem"
-          width="30rem"
-          columnDef={columnEditTags}
-          data={tags}
-        />
+        <Cell height={40} width={60} columnDef={columnEditTags} data={tags} />
       );
     })(),
 };

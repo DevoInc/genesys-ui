@@ -1,12 +1,12 @@
-import styled, { css } from 'styled-components';
 import React from 'react';
+import styled, { css } from 'styled-components';
 import { elevationMixin } from '@devoinc/genesys-ui';
 import { getTableZIndexMap } from '../utils';
 
 interface StyledTableHeadProps {
   $height?: React.CSSProperties['height'];
   scrolled?: boolean;
-  $width?: React.CSSProperties['width'];
+  $width?: number;
 }
 
 export const StyledTableHead = styled.thead<StyledTableHeadProps>`
@@ -14,7 +14,7 @@ export const StyledTableHead = styled.thead<StyledTableHeadProps>`
   display: inline-block;
   position: sticky;
   height: ${({ $height }) => $height};
-  width: ${({ $width }) => $width || '100%'};
+  width: ${({ $width }) => ($width ? `${$width}px` : '100%')};
 
   ${({ scrolled, theme }) => {
     const tableHeadRowTokens = theme.cmp.table.headRow;

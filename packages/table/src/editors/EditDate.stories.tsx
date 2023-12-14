@@ -42,12 +42,7 @@ export const Base: Story = {
       };
 
       return (
-        <Cell
-          height="3.6rem"
-          width="30rem"
-          columnDef={columnEditDate}
-          data={date}
-        />
+        <Cell height={40} width={60} columnDef={columnEditDate} data={date} />
       );
     })(),
 };

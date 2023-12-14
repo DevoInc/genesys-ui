@@ -4,7 +4,7 @@ import { StyledTableHeadRow } from './StyledTableHeadRow';
 import { HeaderCell } from '../HeaderCell';
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { ColDef } from '../../declarations';
-import { getColDefByID, getTableEvalWidth } from '../utils';
+import { getColDefByID } from '../utils';
 import { TableContext } from '../Table/context';
 import { InputControl, SelectControl } from '@devoinc/genesys-ui';
 
@@ -21,10 +21,7 @@ export const TableHead: React.FC<TableHeadProps> = ({
 }) => {
   const { measures, sizes } = React.useContext(TableContext);
   return (
-    <StyledTableHead
-      scrolled={scrolled}
-      $width={getTableEvalWidth(measures?.body?.total?.width)}
-    >
+    <StyledTableHead scrolled={scrolled} $width={measures?.body?.total?.width}>
       <StyledTableHeadRow $height={`${sizes.head.height}px`}>
         {columnVirtualizer
           .getVirtualItems()

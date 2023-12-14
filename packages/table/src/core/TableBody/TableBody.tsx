@@ -5,7 +5,6 @@ import { StyledTableBody } from './StyledTableBody';
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { Box, Typography } from '@devoinc/genesys-ui';
 import { TableContext } from '../Table/context';
-import { getTableEvalHeight, getTableEvalWidth } from '../utils';
 
 export interface TableBodyProps {
   columnDefs: ColDef[];
@@ -50,8 +49,8 @@ export const TableBody: React.FC<TableBodyProps> = ({
 
   return (
     <StyledTableBody
-      $height={getTableEvalHeight(measures?.body?.total?.height)}
-      $width={getTableEvalWidth(measures?.body?.total?.width)}
+      $height={measures?.body?.total?.height}
+      $width={measures?.body?.total?.width}
       highlightColumnsOnHover={visualOptions?.highlightColumnsOnHover}
     >
       {emptyMessage ? (

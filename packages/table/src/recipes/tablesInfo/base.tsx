@@ -44,7 +44,7 @@ export const baseOptions: TableOptionsProps = {
   },
   visualOptions: {
     maxHeight: '80vh',
-    minWidth: 1800,
+    minWidth: 800,
     resizableColumns: true,
     highlightColumnsOnHover: true,
   },
@@ -141,7 +141,7 @@ export const baseOptions: TableOptionsProps = {
       headerName: 'Image (URL)',
       type: 'link',
       cellStyle: {
-        width: 10,
+        width: 5,
       },
     },
     {
@@ -150,7 +150,7 @@ export const baseOptions: TableOptionsProps = {
       type: 'date',
       editable: true,
       cellStyle: {
-        width: 10,
+        width: 5,
       },
     },
     {
@@ -159,7 +159,7 @@ export const baseOptions: TableOptionsProps = {
       type: 'tags',
       editable: true,
       cellStyle: {
-        width: 20,
+        width: 5,
       },
     },
     {
@@ -167,7 +167,7 @@ export const baseOptions: TableOptionsProps = {
       headerName: 'Profession',
       type: 'text',
       cellStyle: {
-        width: 10,
+        width: 5,
       },
     },
     {

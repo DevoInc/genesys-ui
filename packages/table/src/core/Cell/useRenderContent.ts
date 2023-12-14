@@ -6,12 +6,14 @@ import { ColDef } from '../../declarations';
 export const useRenderContent = (columnDef: ColDef, data: unknown) => {
   const cellRef = React.useRef(null);
 
-  const viewContent = columnDef.CellRenderer({
-    value: columnDef.valueFormatter
-      ? columnDef.valueFormatter(data, columnDef.context)
-      : data,
-    columnDef,
-  });
+  const viewContent = columnDef.CellRenderer
+    ? columnDef.CellRenderer({
+        value: columnDef.valueFormatter
+          ? columnDef.valueFormatter(data, columnDef.context)
+          : data,
+        columnDef,
+      })
+    : '';
 
   const [isEditMode, setIsEditMode] = React.useState<boolean>(false);
 

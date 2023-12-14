@@ -22,11 +22,10 @@ export const Row: React.FC<RowProps> = ({
   virtualRow,
 }) => {
   const { visualOptions } = React.useContext(TableContext);
-  const rowHeight: React.CSSProperties['height'] = `${virtualRow.size}px`;
   return (
     <StyledTableRow
       even={(virtualRow.index + 1) % 2 === 0}
-      $height={rowHeight}
+      $height={`${virtualRow.size}px`}
       isAfterRow={isAfterRow}
       isDragging={isDragging}
       state={state}
@@ -38,10 +37,10 @@ export const Row: React.FC<RowProps> = ({
         <Cell
           columnDef={columnDefs[virtualColumn.index]}
           data={data[columnDefs[virtualColumn.index].id] ?? ''}
-          height={rowHeight}
+          height={virtualRow.size}
           key={`cell-${virtualColumn.key}`}
           offsetX={virtualColumn.start}
-          width={`${virtualColumn.size}px`}
+          width={virtualColumn.size}
         />
       ))}
     </StyledTableRow>

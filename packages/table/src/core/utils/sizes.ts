@@ -3,18 +3,6 @@ import { Density, SizesConfig } from '../../declarations';
 import { getPxFromRem } from '@devoinc/genesys-ui';
 
 /**
- * Returns the evaluated height of the table based in the virtualization
- */
-export const getTableEvalHeight = (tableBodyHeight: number) =>
-  tableBodyHeight !== 0 ? `${tableBodyHeight}px` : 'auto';
-
-/**
- * Returns the evaluated width of the table based in the virtualization
- */
-export const getTableEvalWidth = (tableBodyWidth: number) =>
-  tableBodyWidth !== 0 ? `${tableBodyWidth}px` : '100%';
-
-/**
  * Returns an object with size values based in design tokens and display density
  */
 export const getSizes = (
