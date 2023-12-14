@@ -85,7 +85,7 @@ export const baseOptions: TableOptionsProps = {
     },
     {
       id: 'booleanValue',
-      headerName: 'Boolean value',
+      headerName: 'Active',
       type: 'tagBoolean',
       editable: true,
       cellStyle: {

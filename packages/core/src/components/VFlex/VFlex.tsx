@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { Flex, FlexProps } from '../';
 import { GlobalSpacing } from '../../declarations';
+import { FlexItem } from '../Flex/subcomponents';
 
 export interface VFlexProps
   extends Omit<FlexProps, 'gap' | 'columnGap' | 'rowGap'> {
@@ -13,7 +14,7 @@ export interface VFlexProps
   childrenFitFullHeight?: boolean;
 }
 
-export const VFlex: React.FC<VFlexProps> = ({
+const InternalVFlex: React.FC<VFlexProps> = ({
   alignItems = 'flex-start',
   children,
   childrenFitFullHeight = false,
@@ -33,3 +34,11 @@ export const VFlex: React.FC<VFlexProps> = ({
     {children}
   </Flex>
 );
+
+export const VFlex = InternalVFlex as typeof InternalVFlex & {
+  Item: typeof FlexItem;
+};
+
+VFlex.Item = FlexItem;
+
+InternalVFlex.displayName = 'VFlex';

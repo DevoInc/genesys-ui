@@ -6,6 +6,7 @@ import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { ColDef } from '../../declarations';
 import { getColDefByID, getTableEvalWidth } from '../utils';
 import { TableContext } from '../Table/context';
+import { InputControl, SelectControl } from '@devoinc/genesys-ui';
 
 interface TableHeadProps {
   scrolled?: boolean;
@@ -23,9 +24,8 @@ export const TableHead: React.FC<TableHeadProps> = ({
     <StyledTableHead
       scrolled={scrolled}
       $width={getTableEvalWidth(measures?.body?.total?.width)}
-      $height={`${sizes.head.height}px`}
     >
-      <StyledTableHeadRow width={`${columnVirtualizer.getTotalSize()}px`}>
+      <StyledTableHeadRow $height={`${sizes.head.height}px`}>
         {columnVirtualizer
           .getVirtualItems()
           .map((virtualColumn: VirtualItem) => (
@@ -36,6 +36,21 @@ export const TableHead: React.FC<TableHeadProps> = ({
               offsetX={virtualColumn.start}
             />
           ))}
+      </StyledTableHeadRow>
+      <StyledTableHeadRow $height={`${sizes.head.height}px`}>
+        {columnVirtualizer
+          .getVirtualItems()
+          .map((virtualColumn: VirtualItem) => {
+            return (
+              <HeaderCell
+                key={`header-filter-cell-${virtualColumn.key}`}
+                colDef={getColDefByID(columnDefs, virtualColumn)}
+                isFilterCell
+                width={`${virtualColumn.size}px`}
+                offsetX={virtualColumn.start}
+              />
+            );
+          })}
       </StyledTableHeadRow>
     </StyledTableHead>
   );

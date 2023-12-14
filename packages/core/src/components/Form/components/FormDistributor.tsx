@@ -7,9 +7,7 @@ import { FormGap } from '../declarations';
 import { GlobalAriaProps, GlobalAttrProps } from '../../../declarations';
 
 export interface FormDistributorProps
-  extends GlobalAttrProps,
-    GlobalAriaProps,
-    Pick<FlexProps, 'alignItems' | 'justifyContent' | 'flexWrap'> {
+  extends Omit<FlexProps, 'flexDirection' | 'gap'> {
   /** If the fields  or other form groups are displayed in a row or in a column. */
   direction?: 'column' | 'row';
   /** The gap between the form group items.*/
@@ -19,23 +17,17 @@ export interface FormDistributorProps
 }
 
 export const FormDistributor: React.FC<FormDistributorProps> = ({
-  alignItems,
   children,
   direction = 'column',
-  flexWrap,
   itemsGap = 'md',
-  justifyContent,
-  ...nativeProps
+  ...flexProps
 }) => {
   const childrenArr = Array.isArray(children) ? children : [children];
   return (
     <Flex
-      {...nativeProps}
-      alignItems={alignItems}
+      {...flexProps}
       flexDirection={direction}
-      flexWrap={flexWrap}
       gap={`cmp-${itemsGap}`}
-      justifyContent={justifyContent}
       role="group"
     >
       {childrenArr.map((child, idx) => {

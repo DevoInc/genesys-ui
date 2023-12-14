@@ -78,9 +78,13 @@ export const TableContextProvider = ({
   children,
   value,
 }: TableContextProviderProps) => {
-  const [context] = React.useState({
+  const [context, setContext] = React.useState({
     ...merge({}, defaultTableContext, value),
   });
+
+  React.useEffect(() => {
+    setContext(merge({}, defaultTableContext, value));
+  }, [value]);
 
   return (
     <TableContext.Provider value={context}>{children}</TableContext.Provider>

@@ -19,7 +19,7 @@ interface StyledHeaderCellProps
 export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
   ${({ theme }) => cellMixin({ theme })}
   left: 0;
-  justify-content: ${({ horAlign }) => CELL_ALIGN_MAP[horAlign || 'left']};
+  justify-content: space-between;
   transform: ${({ offsetX }) => `translateX(${offsetX}px)`};
   width: ${({ $width }) => $width};
   height: 100%;

@@ -2,12 +2,11 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 interface StyledTableHeadRowProps {
-  width?: React.CSSProperties['width'];
-  height?: React.CSSProperties['height'];
+  $height?: React.CSSProperties['height'];
 }
 
 export const StyledTableHeadRow = styled.tr<StyledTableHeadRowProps>`
   position: relative;
   display: flex;
-  height: 100%;
+  height: ${({ $height }) => $height};
 `;

@@ -26,10 +26,18 @@ const getColDefByIDCases: [string, ColDef[], VirtualItem, ColDef][] = [
 const getCollatedColumnsCases: [
   string,
   DefaultColDef,
-  ColDef[],
+  ColDef,
   ColumnType[],
-  ColDef[],
-][] = [['No column definitions', DEFAULT_COLDEF, [], [], []]];
+  ColDef,
+][] = [
+  [
+    'No column definitions',
+    DEFAULT_COLDEF,
+    { id: 'null' },
+    [],
+    { id: 'null', headerName: 'Column' },
+  ],
+];
 
 describe('Table', () => {
   describe('Utils', () => {
@@ -45,8 +53,8 @@ describe('Table', () => {
       describe('getCollatedColumns', () => {
         it.each(getCollatedColumnsCases)(
           '%s',
-          (_title, defaultColDef, colDefs, types, expected) => {
-            expect(getCollatedColumns(defaultColDef, colDefs, types)).toEqual(
+          (_title, defaultColDef, column, types, expected) => {
+            expect(getCollatedColumns(defaultColDef, column, types)).toEqual(
               expected,
             );
           },

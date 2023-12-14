@@ -5,6 +5,7 @@ import { Row } from './Row';
 import { ColDef } from '../../declarations';
 import { TagRenderer, TagsRenderer, TextRenderer } from '../../renderers';
 import { useVirtualizer } from '@tanstack/react-virtual';
+import { DEFAULT_VIRTUAL_ROW } from '../../constants';
 
 const data = Holo.of()
   .schema({
@@ -103,7 +104,7 @@ export const Base: Story = {
           columnDefs={colDefs}
           data={data[0]}
           columnVirtualizer={columnVirtualizer}
-          even
+          virtualRow={DEFAULT_VIRTUAL_ROW}
         />
       );
     })(),

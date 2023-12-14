@@ -25,7 +25,6 @@ export const StyledTableCell = styled.td.attrs(
 )<StyledTableCellProps>`
   ${({ highlightColumnsOnHover, highlightedColumnHeight = 9999, theme }) => {
     const tokens = theme.cmp.table.cell;
-    highlightedColumnHeight = 400;
     return css`
       ${cellMixin({ theme })};
       ${highlightColumnsOnHover &&

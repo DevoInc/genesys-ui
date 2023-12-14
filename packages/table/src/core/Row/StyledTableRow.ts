@@ -11,7 +11,6 @@ export interface StyledTableRowProps {
   $height?: React.CSSProperties['height'];
   isAfterRow?: boolean;
   isDragging?: boolean;
-  position?: React.CSSProperties['position'];
   state?:
     | 'enabled'
     | 'disabled'
@@ -27,9 +26,9 @@ export interface StyledTableRowProps {
 }
 
 export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
-  ({ position, $width, $height, transform }) => ({
+  ({ $width, $height, transform }) => ({
     style: {
-      position: position ?? 'absolute',
+      position: 'absolute',
       width: $width ? $width : '100%',
       height: $height,
       transform,

@@ -1,112 +1,94 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
+
+import { ColDef, TableOptionsProps } from '../../declarations';
+
 import { TableContextProvider } from './context';
-import { TableOptionsProps } from '../../declarations';
+
 import { TableHead } from '../TableHead';
 import { TableBody } from '../TableBody';
 import { StyledTable } from './StyledTable';
 import { StyledTableWrapper } from './StyledTableWrapper';
+
 import {
   getCollatedColumns,
   getSizes,
   getTableEvalHeight,
   getTableEvalWidth,
 } from '../utils';
-import { useTableVirtualization } from './useTableVirtualization';
-import { useTableScroll } from './useTableScroll';
+import {
+  useTableMeasures,
+  useTableScroll,
+  useTableVirtualizationRow,
+  useTableVirtualizationColumn,
+} from '../hooks';
 
 interface TableProps {
   data: { [key: string]: unknown }[];
   tableOptions: TableOptionsProps;
 }
 
-export const Table: React.FC<TableProps> = ({ tableOptions, data }) => {
-  const ref = React.useRef<HTMLDivElement>();
+export const Table: React.FC<TableProps> = ({
+  tableOptions: { defaultColumnDef, columnDefs, types, visualOptions },
+  data,
+}) => {
   const theme = useTheme();
-  const sizes = getSizes(
-    theme,
-    tableOptions.visualOptions?.density || 'default',
+  const { density, maxHeight, minWidth } = visualOptions;
+  const ref = React.useRef<HTMLDivElement>();
+
+  const refinedColumnDefs: ColDef[] = columnDefs.map((column) =>
+    getCollatedColumns(defaultColumnDef, column, types),
   );
-  const { defaultColumnDef, columnDefs, types, visualOptions } = tableOptions;
-  const rowHeight =
-    sizes.row.height[
-      tableOptions?.visualOptions?.rowHeight === undefined ||
-      tableOptions?.visualOptions?.rowHeight === 'md'
-        ? columnDefs.find((columnDef) => columnDef.type === 'longText')
-          ? 'lg'
-          : 'md'
-        : tableOptions?.visualOptions?.rowHeight
-    ];
-  const { rowVirtualizer, columnVirtualizer } = useTableVirtualization({
+
+  const sizes = getSizes(theme, density);
+
+  const rowVirtualizer = useTableVirtualizationRow({
     data,
     columnDefs,
-    rowHeight,
-    tableWidth: Math.max(
-      tableOptions?.visualOptions?.minWidth,
-      ref.current?.offsetWidth,
-    ),
+    visualOptions,
+    wrapperRef: ref,
+    sizes,
+  });
+
+  const columnVirtualizer = useTableVirtualizationColumn({
+    columnDefs,
+    visualOptions,
     wrapperRef: ref,
   });
-  const refinedColumnDefs = getCollatedColumns(
-    defaultColumnDef,
-    columnDefs,
-    types,
-  );
-  const headerHeight = sizes.head.height;
-  const tableWrapperHeight = ref?.current?.offsetHeight;
-  const tableWrapperWidth = ref?.current?.offsetWidth;
-  const tableVisibleBodyHeight = tableWrapperHeight - headerHeight;
+
   const { hasScroll } = useTableScroll(rowVirtualizer, ref);
-  const measures = {
-    wrapper: {
-      height: tableWrapperHeight,
-      width: tableWrapperWidth,
-    },
-    body: {
-      total: {
-        height: rowVirtualizer?.getTotalSize(),
-        width: columnVirtualizer?.getTotalSize(),
-      },
-      visible: {
-        height: tableVisibleBodyHeight,
-        width: tableWrapperWidth,
-      },
-    },
-  };
+
+  const { measures } = useTableMeasures({
+    ref,
+    rowVirtualizer,
+    columnVirtualizer,
+    sizes,
+  });
 
   return (
     <TableContextProvider
       value={{
-        visualOptions: {
-          ...tableOptions.visualOptions,
-        },
-        measures: {
-          ...measures,
-        },
-        sizes: {
-          ...sizes,
-        },
+        visualOptions,
+        measures,
+        sizes,
       }}
     >
-      <StyledTableWrapper ref={ref} maxHeight={visualOptions?.maxHeight}>
+      <StyledTableWrapper ref={ref} maxHeight={maxHeight}>
         <StyledTable
-          minWidth={visualOptions?.minWidth}
+          minWidth={minWidth}
           $height={getTableEvalHeight(measures?.body?.total?.height)}
           $width={getTableEvalWidth(measures?.body?.total?.width)}
         >
           <TableHead
-            columnDefs={columnDefs}
+            columnDefs={refinedColumnDefs}
             columnVirtualizer={columnVirtualizer}
             scrolled={hasScroll}
           />
           <TableBody
-            height={getTableEvalHeight(measures?.body?.total?.height)}
-            width={getTableEvalWidth(measures?.body?.total?.width)}
             columnDefs={refinedColumnDefs}
             columnVirtualizer={columnVirtualizer}
             data={data}
             rowVirtualizer={rowVirtualizer}
-            visibleHeight={tableVisibleBodyHeight}
           />
         </StyledTable>
       </StyledTableWrapper>

@@ -8,39 +8,37 @@ import { TableContext } from '../Table/context';
 interface RowProps extends StyledTableRowProps {
   columnDefs: ColDef[];
   data: { [key: string]: unknown };
-  even?: boolean;
-  styles?: React.CSSProperties;
   columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
+  virtualRow: VirtualItem;
 }
 
 export const Row: React.FC<RowProps> = ({
   columnDefs,
   columnVirtualizer,
   data,
-  even,
   isAfterRow,
   isDragging,
   state = 'enabled',
-  styles,
+  virtualRow,
 }) => {
   const { visualOptions } = React.useContext(TableContext);
+  const rowHeight: React.CSSProperties['height'] = `${virtualRow.size}px`;
   return (
     <StyledTableRow
-      even={even}
-      $height={styles.height}
+      even={(virtualRow.index + 1) % 2 === 0}
+      $height={rowHeight}
       isAfterRow={isAfterRow}
       isDragging={isDragging}
-      position={styles.position}
       state={state}
       striped={visualOptions.striped}
-      transform={styles.transform}
-      $width={styles.width}
+      transform={`translateY(${virtualRow.start}px)`}
+      $width={`${columnVirtualizer.getTotalSize()}px`}
     >
       {columnVirtualizer.getVirtualItems().map((virtualColumn: VirtualItem) => (
         <Cell
           columnDef={columnDefs[virtualColumn.index]}
           data={data[columnDefs[virtualColumn.index].id] ?? ''}
-          height={styles.height}
+          height={rowHeight}
           key={`cell-${virtualColumn.key}`}
           offsetX={virtualColumn.start}
           width={`${virtualColumn.size}px`}
