@@ -4,6 +4,7 @@ import * as React from 'react';
 export interface StyledTableProps {
   $width: React.CSSProperties['width'];
   $height: React.CSSProperties['height'];
+  minWidth: React.CSSProperties['minWidth'];
 }
 
 export const StyledTable = styled.table<StyledTableProps>`
