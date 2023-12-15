@@ -1,0 +1,29 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './Dropdown.stories';
+
+<Meta of={Stories} />
+
+# Dropdown
+
+## Overview
+
+A Dropdown component is an element that allows users to select an option from a drop-down list.
+This component is valuable in web applications to enhance usability by reducing the amount of
+screen space used to display options, especially when there are multiple choices available.
+
+## How to import
+
+<Source
+  code={`
+import { Dropdown } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Props
+
+<ArgTypes of={Stories} />
