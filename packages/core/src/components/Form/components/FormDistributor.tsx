@@ -4,7 +4,6 @@ import { Flex, FlexProps } from '../../';
 import { FormGroup } from './FormGroup';
 import { FormButtons } from './FormButtons';
 import { FormGap } from '../declarations';
-import { GlobalAriaProps, GlobalAttrProps } from '../../../declarations';
 
 export interface FormDistributorProps
   extends Omit<FlexProps, 'flexDirection' | 'gap'> {

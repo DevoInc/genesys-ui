@@ -6,7 +6,6 @@ import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { ColDef } from '../../declarations';
 import { getColDefByID } from '../utils';
 import { TableContext } from '../Table/context';
-import { InputControl, SelectControl } from '@devoinc/genesys-ui';
 
 interface TableHeadProps {
   scrolled?: boolean;

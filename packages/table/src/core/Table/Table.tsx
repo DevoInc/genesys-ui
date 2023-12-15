@@ -28,7 +28,7 @@ export const Table: React.FC<TableProps> = ({
   data,
 }) => {
   const theme = useTheme();
-  const { density, maxHeight, minWidth } = visualOptions || {};
+  const { density, maxHeight } = visualOptions || {};
   const ref = React.useRef<HTMLDivElement>();
 
   const refinedColumnDefs: ColDef[] = columnDefs.map((column) =>
@@ -70,7 +70,6 @@ export const Table: React.FC<TableProps> = ({
     >
       <StyledTableWrapper ref={ref} maxHeight={maxHeight}>
         <StyledTable
-          minWidth={minWidth}
           $height={`${measures?.body.total.height}px`}
           $width={`${measures?.body.total.width}px`}
         >

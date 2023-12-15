@@ -3,11 +3,9 @@ import React from 'react';
 import { ColDef } from '../../declarations';
 
 import {
-  Box,
   Button,
   Form,
   HFlex,
-  Icon,
   IconButton,
   InputControl,
   Panel,
@@ -19,8 +17,7 @@ import {
 import { StyledHeaderCell } from './StyledHeaderCell';
 import { TableContext } from '../Table/context';
 import { StyledHeaderCellResizer } from './StyledHeaderCellResizer';
-import { GIFilter } from '@devoinc/genesys-icons';
-import { getColDefByID } from '../utils';
+import { Checkbox, CheckboxGroup } from '@devoinc/genesys-ui-form';
 
 interface HeaderCellProps {
   colDef: ColDef;
@@ -102,6 +99,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
                 }
               >
                 <Panel
+                  maxHeight="34rem"
                   bodySettings={{
                     removeSpace: true,
                   }}
@@ -111,10 +109,20 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
                   width={colType === 'number' ? '20rem' : '28rem'}
                   footerSettings={{
                     actions: [
-                      <Button size="sm" colorScheme="accent">
+                      <Button key={1} size="sm" colorScheme="accent">
                         Reset
                       </Button>,
                     ],
+                  }}
+                  headerSettings={{
+                    renderContent:
+                      colType === 'tag' ? (
+                        <InputControl
+                          aria-label="Filter this options"
+                          placeholder="Filter options..."
+                          type="search"
+                        />
+                      ) : null,
                   }}
                 >
                   <Form padding="cmp-sm">
@@ -165,21 +173,33 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
                         />
                       </>
                     ) : colType === 'tag' ? (
-                      <SelectControl
-                        size="sm"
-                        menuRelative
-                        menuIsOpen
-                        menuQuiet
-                        menuLevel={0}
-                        hideSelectedOptions={false}
-                        isMulti
-                        options={[
-                          { value: 1, label: 'In progress' },
-                          { value: 2, label: 'TODO' },
-                          { value: 3, label: 'Test' },
-                          { value: 4, label: 'Done' },
-                        ]}
-                      />
+                      <CheckboxGroup legend="Column filter options" hideLegend>
+                        <Checkbox
+                          label="[Select all]"
+                          id="filter-all"
+                          defaultChecked
+                        />
+                        <Checkbox
+                          label="Done"
+                          id="filter-done"
+                          defaultChecked
+                        />
+                        <Checkbox
+                          label="In progress"
+                          id="filter-in-progress"
+                          defaultChecked
+                        />
+                        <Checkbox
+                          label="Test"
+                          id="filter-test"
+                          defaultChecked
+                        />
+                        <Checkbox
+                          label="TODO"
+                          id="filter-todo"
+                          defaultChecked
+                        />
+                      </CheckboxGroup>
                     ) : null}
                   </Form>
                 </Panel>
