@@ -1,9 +1,9 @@
+import { ColDef } from '../declarations';
 import { TagRenderer } from '../renderers';
-import { ColumnType } from './declarations';
 
-export const typeTag: ColumnType = {
+export const tag: ColDef = {
   id: 'tag',
-  CellRenderer: TagRenderer,
+  cellRenderer: TagRenderer,
   cellRendererConfig: {
     TODO: { color: 'warning', text: 'TODO' },
     inProgress: { color: 'info', text: 'In progress' },

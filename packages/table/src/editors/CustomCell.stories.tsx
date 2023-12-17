@@ -22,8 +22,8 @@ export const UsingACustomCellEditor: Story = {
       const customEditorDef: ColDef = {
         id: 'text',
         headerName: 'text',
-        CellEditor: () => CustomCellEditor({ value: text, onChange }),
-        CellRenderer: TextRenderer,
+        cellEditor: () => CustomCellEditor({ value: text, onChange }),
+        cellRenderer: TextRenderer,
         editable: true,
       };
 

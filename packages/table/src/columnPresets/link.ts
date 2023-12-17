@@ -1,10 +1,10 @@
+import { ColDef } from '../declarations';
 import { EditText } from '../editors';
 import { linkFormatter } from '../valueFormatters/link';
-import { ColumnType } from './declarations';
 
-export const typeLink: ColumnType = {
+export const link: ColDef = {
   id: 'link',
-  CellRenderer: ({ value }) => value,
-  CellEditor: EditText,
+  cellRenderer: ({ value }) => value,
+  cellEditor: EditText,
   valueFormatter: linkFormatter,
 };

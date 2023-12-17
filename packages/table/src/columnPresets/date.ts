@@ -1,16 +1,18 @@
+import { ColDef } from '../declarations';
 import { EditDate } from '../editors/EditDate';
 import { TextRenderer } from '../renderers';
 import { dateFormatter } from '../valueFormatters/date';
-import { ColumnType } from './declarations';
 
-export const typeDate: ColumnType = {
+export const date: ColDef = {
   id: 'date',
-  CellRenderer: TextRenderer,
+  cellRenderer: TextRenderer,
   valueFormatter: dateFormatter,
-  CellEditor: EditDate,
+  cellEditor: EditDate,
   context: {
     formatDate: 'dd/MM/yyyy HH:mm:ss',
     tz: 'Europe/Madrid',
     locale: 'es',
   },
 };
+
+// TODO: Review the merge of global context with column context

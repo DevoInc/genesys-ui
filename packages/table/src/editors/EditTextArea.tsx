@@ -2,10 +2,10 @@ import React, { FormEvent } from 'react';
 import { TextareaControl } from '@devoinc/genesys-ui';
 import { EditorFloatingWrapper } from './components';
 
-interface EditTextAreaProps {
+type EditTextAreaProps = {
   value: string | number;
   onChange?: (newValue: string) => void;
-}
+};
 
 export const EditTextArea: React.FC<EditTextAreaProps> = ({
   value,
@@ -16,9 +16,11 @@ export const EditTextArea: React.FC<EditTextAreaProps> = ({
       rows={6}
       aria-label={'TextArea input'}
       value={value.toString()}
-      onChange={(event: FormEvent) =>
-        onChange?.((event.target as HTMLInputElement).value)
-      }
+      onChange={(event: FormEvent) => {
+        if (onChange) {
+          onChange((event.target as HTMLInputElement).value);
+        }
+      }}
       autoFocus
     />
   </EditorFloatingWrapper>

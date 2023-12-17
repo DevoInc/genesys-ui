@@ -20,11 +20,17 @@ import {
 
 interface TableProps {
   data: { [key: string]: unknown }[];
-  tableOptions: TableOptionsProps;
+  options: TableOptionsProps;
 }
 
 export const Table: React.FC<TableProps> = ({
-  tableOptions: { defaultColumnDef, columnDefs, types, visualOptions },
+  options: {
+    defaultColumnDef,
+    columnDefs,
+    columnPresets,
+    visualOptions,
+    showFilters,
+  },
   data,
 }) => {
   const theme = useTheme();
@@ -32,7 +38,7 @@ export const Table: React.FC<TableProps> = ({
   const ref = React.useRef<HTMLDivElement>();
 
   const refinedColumnDefs: ColDef[] = columnDefs.map((column) =>
-    getCollatedColumns(defaultColumnDef, column, types),
+    getCollatedColumns(defaultColumnDef, column, columnPresets),
   );
 
   const sizes = getSizes(theme, density);
@@ -66,6 +72,8 @@ export const Table: React.FC<TableProps> = ({
         visualOptions,
         measures,
         sizes,
+        columnDefs,
+        showFilters,
       }}
     >
       <StyledTableWrapper ref={ref} maxHeight={maxHeight}>

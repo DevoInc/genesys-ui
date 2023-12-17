@@ -22,8 +22,8 @@ export const BooleanEditor: Story = {
       const columnEditBoolean: ColDef = {
         id: 'booleanValue',
         headerName: 'booleanValue',
-        CellEditor: () => EditBoolean({ value: boolean, onChange }),
-        CellRenderer: TagRenderer,
+        cellEditor: () => EditBoolean({ value: boolean, onChange }),
+        cellRenderer: TagRenderer,
         cellRendererConfig: {
           true: { color: '#1EC990', text: 'Active' },
           false: { color: '#ED5353', text: 'Inactive' },

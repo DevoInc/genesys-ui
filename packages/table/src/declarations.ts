@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { DateContext } from './valueFormatters/date';
+import { FilterProps } from './filters/declarations';
 
 export type DefaultColDef = Omit<ColDef, 'id'>;
 
-type Types = { id: string };
-type TypesColDef = Omit<ColDef, 'colId'>;
 export type Density = 'default' | 'compact' | 'comfortable';
 
 export interface TableVisualOptions {
@@ -31,15 +30,20 @@ export type TextsType = {
   };
 };
 
+export type Preset = {
+  id: string;
+} & Omit<ColDef, 'colId'>;
+
 export interface TableOptionsProps {
   columnDefs?: ColDef[];
   defaultColumnDef?: DefaultColDef;
-  types?: (Types & TypesColDef)[];
+  columnPresets?: Preset[];
   context?: {
     [key: string]: unknown;
   };
   visualOptions?: TableVisualOptions;
   texts?: TextsType;
+  showFilters?: boolean;
 }
 
 export interface CellRendererParams {
@@ -74,15 +78,25 @@ interface CellRendererConfig {
   [key: string]: any;
 }
 
-export interface ColDef {
+export type ColDef = {
   id: string;
   headerName?: string;
-  type?: string;
+  // type?: string;
+  preset?: string;
 
   editable?: boolean;
-  CellEditor?: ({ value, onChange }: CellEditorParams) => React.ReactNode;
-  CellRenderer?: ({ value, columnDef }: CellRendererParams) => React.ReactNode;
+  cellEditor?:
+    | React.FC<CellRendererParams>
+    | (({ value, onChange }: CellEditorParams) => React.ReactNode);
+  cellRenderer?:
+    | React.FC<CellRendererParams>
+    | (({ value, columnDef }: CellRendererParams) => React.ReactNode);
   valueFormatter?: (value: unknown, context: DateContext) => void;
+
+  cellFilter?:
+    | React.FC<FilterProps>
+    | (({ colDef }: FilterProps) => React.ReactNode);
+  cellFilterParams?: { [key: string]: unknown };
 
   // revisar
   cellRendererConfig?: CellRendererConfig;
@@ -96,7 +110,7 @@ export interface ColDef {
   onReset?: (initialValue: unknown) => void;
   tooltipField?: string;
   resizable?: boolean;
-}
+};
 
 export type RowHeight = 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
 
