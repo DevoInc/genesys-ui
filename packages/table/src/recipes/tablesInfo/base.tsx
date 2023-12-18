@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, DropdownMenu } from '@devoinc/genesys-ui';
 import { Holo } from '@devoinc/holo';
-import { TableOptionsProps } from '../../declarations';
+import { CellRendererParams, TableOptionsProps } from '../../declarations';
 
 let index = 1;
 
@@ -51,7 +51,7 @@ export const baseOptions: TableOptionsProps = {
   columnDefs: [
     {
       id: 'id',
-      type: 'text',
+      preset: 'text',
       headerName: 'ID',
       cellStyle: {
         width: 3,
@@ -60,7 +60,7 @@ export const baseOptions: TableOptionsProps = {
     {
       id: 'menu',
       headerName: 'Menu',
-      CellRenderer: (params) => {
+      cellRenderer: (params: CellRendererParams) => {
         return (
           <DropdownMenu
             items={[
@@ -86,7 +86,7 @@ export const baseOptions: TableOptionsProps = {
     {
       id: 'booleanValue',
       headerName: 'Active',
-      type: 'tagBoolean',
+      preset: 'tagBoolean',
       editable: true,
       cellStyle: {
         width: 6,
@@ -95,7 +95,7 @@ export const baseOptions: TableOptionsProps = {
     {
       id: 'name',
       headerName: 'Name',
-      type: 'text',
+      preset: 'text',
       editable: true,
       cellStyle: {
         width: 7,
@@ -104,7 +104,7 @@ export const baseOptions: TableOptionsProps = {
     {
       id: 'age',
       headerName: 'Age',
-      type: 'number',
+      preset: 'number',
       editable: true,
       cellStyle: {
         width: 3,
@@ -113,7 +113,7 @@ export const baseOptions: TableOptionsProps = {
     {
       id: 'company',
       headerName: 'Company',
-      type: 'text',
+      preset: 'text',
       cellStyle: {
         width: 5,
       },
@@ -121,7 +121,7 @@ export const baseOptions: TableOptionsProps = {
     {
       id: 'balance',
       headerName: 'Balance',
-      type: 'number',
+      preset: 'number',
       editable: true,
       cellStyle: {
         width: 5,
@@ -130,7 +130,7 @@ export const baseOptions: TableOptionsProps = {
     {
       id: 'status',
       headerName: 'Status',
-      type: 'tag',
+      preset: 'tag',
       editable: true,
       cellStyle: {
         width: 6,
@@ -139,7 +139,7 @@ export const baseOptions: TableOptionsProps = {
     {
       id: 'picture',
       headerName: 'Image (URL)',
-      type: 'link',
+      preset: 'link',
       cellStyle: {
         width: 5,
       },
@@ -147,7 +147,7 @@ export const baseOptions: TableOptionsProps = {
     {
       id: 'timestamp',
       headerName: 'Date',
-      type: 'date',
+      preset: 'date',
       editable: true,
       cellStyle: {
         width: 5,
@@ -156,7 +156,7 @@ export const baseOptions: TableOptionsProps = {
     {
       id: 'tags',
       headerName: 'Tags',
-      type: 'tags',
+      preset: 'tags',
       editable: true,
       cellStyle: {
         width: 5,
@@ -165,7 +165,7 @@ export const baseOptions: TableOptionsProps = {
     {
       id: 'profession',
       headerName: 'Profession',
-      type: 'text',
+      preset: 'text',
       cellStyle: {
         width: 5,
       },
@@ -173,7 +173,7 @@ export const baseOptions: TableOptionsProps = {
     {
       id: 'email',
       headerName: 'Email',
-      type: 'link',
+      preset: 'link',
       cellStyle: {
         width: 10,
       },
@@ -181,7 +181,7 @@ export const baseOptions: TableOptionsProps = {
     {
       id: 'quote',
       headerName: 'Favourite quote',
-      type: 'text',
+      preset: 'text',
       cellStyle: {
         width: 5,
       },
@@ -189,7 +189,7 @@ export const baseOptions: TableOptionsProps = {
     {
       id: 'address',
       headerName: 'Address',
-      type: 'text',
+      preset: 'text',
       cellStyle: {
         width: 10,
       },
@@ -197,7 +197,7 @@ export const baseOptions: TableOptionsProps = {
     {
       id: 'website',
       headerName: 'Website',
-      type: 'link',
+      preset: 'link',
       cellStyle: {
         width: 5,
       },
@@ -205,7 +205,7 @@ export const baseOptions: TableOptionsProps = {
     {
       id: 'secondaryWebsite',
       headerName: 'Secondary Website',
-      type: 'link',
+      preset: 'link',
       cellStyle: {
         width: 10,
       },

@@ -86,7 +86,7 @@ export type ColDef = {
 
   editable?: boolean;
   cellEditor?:
-    | React.FC<CellRendererParams>
+    | React.FC<CellEditorParams>
     | (({ value, onChange }: CellEditorParams) => React.ReactNode);
   cellRenderer?:
     | React.FC<CellRendererParams>

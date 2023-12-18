@@ -4,7 +4,7 @@ import { PropsValue } from 'react-select';
 import { EditorFloatingWrapper } from './components';
 
 interface EditTagsProps {
-  value: TagProps[];
+  value: unknown;
   onChange?: (newValue: TagProps[]) => void;
 }
 
@@ -17,7 +17,7 @@ const getOptionsFromTags = (tags: TagProps[]) =>
   tags.map((tag: TagProps) => ({ value: tag.text, label: tag.text }));
 
 export const EditTags: React.FC<EditTagsProps> = ({ value, onChange }) => {
-  const [options, setOptions] = React.useState<TagProps[]>(value);
+  const [options, setOptions] = React.useState<TagProps[]>(value as TagProps[]);
 
   const onOptionSelect = (
     newOption: PropsValue<{ value: string; label: string }>,
@@ -30,11 +30,11 @@ export const EditTags: React.FC<EditTagsProps> = ({ value, onChange }) => {
     <EditorFloatingWrapper>
       <SelectControl
         onChange={onOptionSelect}
-        value={getOptionsFromTags(value)}
+        value={getOptionsFromTags(value as TagProps[])}
         creatable
         isMulti
         menuAppendToBody
-        options={getOptionsFromTags(value)}
+        options={getOptionsFromTags(value as TagProps[])}
         autoFocus
       />
     </EditorFloatingWrapper>

@@ -12,11 +12,16 @@ type Story = StoryObj<typeof TagsFilter>;
 
 export const Base: Story = {
   args: {
-    defaultValue: 'all',
-    options: [
-      { value: 'all', label: 'All' },
-      { value: 'true', label: 'True' },
-      { value: 'false', label: 'False' },
-    ],
+    colDef: {
+      id: 'col0',
+      cellFilterParams: {
+        defaultValue: 'all',
+        options: [
+          { value: 'all', label: 'All' },
+          { value: 'true', label: 'True' },
+          { value: 'false', label: 'False' },
+        ],
+      },
+    },
   },
 };

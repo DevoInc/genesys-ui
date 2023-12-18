@@ -1,11 +1,11 @@
+import { Preset } from '../declarations';
 import { EditBoolean } from '../editors';
 import { TagRenderer } from '../renderers';
-import { ColumnType } from './declarations';
 
-export const typeBoolean: ColumnType = {
+export const typeBoolean: Preset = {
   id: 'tagBoolean',
-  CellRenderer: TagRenderer,
-  CellEditor: EditBoolean,
+  cellRenderer: TagRenderer,
+  cellEditor: EditBoolean,
   cellRendererConfig: {
     true: { color: 'success', text: 'True' },
     false: { color: 'neutral', text: 'False' },
