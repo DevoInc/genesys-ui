@@ -3,7 +3,9 @@ import React from 'react';
 import { ColDef } from '../../declarations';
 
 import {
+  Badge,
   Button,
+  ChoiceGroup,
   Form,
   HFlex,
   IconButton,
@@ -17,7 +19,13 @@ import {
 import { StyledHeaderCell } from './StyledHeaderCell';
 import { TableContext } from '../Table/context';
 import { StyledHeaderCellResizer } from './StyledHeaderCellResizer';
-import { Checkbox, CheckboxGroup } from '@devoinc/genesys-ui-form';
+import {
+  Checkbox,
+  CheckboxGroup,
+  Radio,
+  RadioGroup,
+} from '@devoinc/genesys-ui-form';
+import { DateTimePicker } from '@devoinc/genesys-ui-datetime';
 
 interface HeaderCellProps {
   colDef: ColDef;
@@ -56,21 +64,39 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
             {colType === 'text' ||
             colType === 'number' ||
             colType === 'link' ||
-            colType === 'date' ||
             !colType ? (
               <InputControl
                 size="sm"
                 aria-label="filter"
                 placeholder="Filter content..."
               />
-            ) : colType === 'tag' || colType === 'tags' ? (
+            ) : colType === 'tag' ? (
               <SelectControl
                 size="sm"
-                placeholder="Filters..."
-                styles="flex: 1;"
+                menuAppendToBody
+                placeholder={'Select option to filter...'}
+                options={[
+                  { value: 1, label: 'Done' },
+                  { value: 2, label: 'In progress' },
+                  { value: 3, label: 'Test' },
+                  { value: 4, label: 'TODO' },
+                ]}
+              />
+            ) : colType === 'tags' ? (
+              <SelectControl
+                size="sm"
+                menuAppendToBody
+                placeholder={'Select option to filter...'}
+                options={[
+                  { value: 4, label: 'Components' },
+                  { value: 1, label: 'Coworker' },
+                  { value: 2, label: 'Developer' },
+                  { value: 3, label: 'Engineer' },
+                ]}
               />
             ) : colType === 'tagBoolean' ? (
               <SelectControl
+                size="sm"
                 menuAppendToBody
                 defaultInputValue={'All'}
                 options={[
@@ -78,6 +104,12 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
                   { value: 2, label: 'True' },
                   { value: 3, label: 'False' },
                 ]}
+              />
+            ) : colType === 'date' ? (
+              <DateTimePicker
+                size="sm"
+                onApply={() => undefined}
+                onCancel={() => undefined}
               />
             ) : null}
           </HFlex.Item>
@@ -108,15 +140,43 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
                   id="story-id"
                   width={colType === 'number' ? '20rem' : '28rem'}
                   footerSettings={{
-                    actions: [
-                      <Button key={1} size="sm" colorScheme="accent">
-                        Reset
-                      </Button>,
-                    ],
+                    bordered: true,
+                    renderContent: (
+                      <HFlex flex="1">
+                        {colType === 'tags' ? (
+                          <HFlex.Item>
+                            <RadioGroup
+                              direction="row"
+                              legend="Kind of logic"
+                              hideLegend
+                            >
+                              <Radio
+                                defaultChecked
+                                size="sm"
+                                label="OR"
+                                id="or-radio-selector"
+                                name="and-or-selector"
+                              />
+                              <Radio
+                                size="sm"
+                                label="AND"
+                                id="and-radio-selector"
+                                name="and-or-selector"
+                              />
+                            </RadioGroup>
+                          </HFlex.Item>
+                        ) : null}
+                        <HFlex.Item marginLeft="auto">
+                          <Button key={1} colorScheme="accent">
+                            Reset
+                          </Button>
+                        </HFlex.Item>
+                      </HFlex>
+                    ),
                   }}
                   headerSettings={{
                     renderContent:
-                      colType === 'tag' ? (
+                      colType === 'tag' || colType === 'tags' ? (
                         <InputControl
                           aria-label="Filter this options"
                           placeholder="Filter options..."
@@ -126,7 +186,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
                   }}
                 >
                   <Form padding="cmp-sm">
-                    {colType === 'text' ? (
+                    {colType === 'text' || colType === 'link' || !colType ? (
                       <>
                         <SelectControl
                           menuAppendToBody
@@ -172,7 +232,27 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
                           type="number"
                         />
                       </>
-                    ) : colType === 'tag' ? (
+                    ) : colType === 'date' ? (
+                      <>
+                        <SelectControl
+                          menuAppendToBody
+                          defaultInputValue={'Equals to'}
+                          options={[
+                            { value: 1, label: 'Equals to' },
+                            { value: 4, label: 'Does not equal to' },
+                            { value: 3, label: 'Before' },
+                            { value: 5, label: 'After' },
+                            { value: 6, label: 'Between' },
+                            { value: 9, label: 'Blank' },
+                            { value: 10, label: 'Not blank' },
+                          ]}
+                        />
+                        <DateTimePicker
+                          onApply={() => undefined}
+                          onCancel={() => undefined}
+                        />
+                      </>
+                    ) : colType === 'tag' || colType === 'tags' ? (
                       <CheckboxGroup legend="Column filter options" hideLegend>
                         <Checkbox
                           label="[Select all]"
@@ -180,22 +260,42 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
                           defaultChecked
                         />
                         <Checkbox
-                          label="Done"
+                          label={
+                            <HFlex spacing="cmp-xxs">
+                              <Badge size="sm" colorScheme="success" />
+                              Done
+                            </HFlex>
+                          }
                           id="filter-done"
                           defaultChecked
                         />
                         <Checkbox
-                          label="In progress"
+                          label={
+                            <HFlex spacing="cmp-xxs">
+                              <Badge size="sm" colorScheme="data-blue" />
+                              In progress
+                            </HFlex>
+                          }
                           id="filter-in-progress"
                           defaultChecked
                         />
                         <Checkbox
-                          label="Test"
+                          label={
+                            <HFlex spacing="cmp-xxs">
+                              <Badge size="sm" colorScheme="data-purple" />
+                              Test
+                            </HFlex>
+                          }
                           id="filter-test"
                           defaultChecked
                         />
                         <Checkbox
-                          label="TODO"
+                          label={
+                            <HFlex spacing="cmp-xxs">
+                              <Badge size="sm" colorScheme="warning" />
+                              TODO
+                            </HFlex>
+                          }
                           id="filter-todo"
                           defaultChecked
                         />

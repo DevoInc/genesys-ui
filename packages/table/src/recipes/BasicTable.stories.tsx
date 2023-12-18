@@ -23,7 +23,7 @@ export const Base: Story = {
       },
       visualOptions: {
         maxHeight: '80vh',
-        minWidth: 1800,
+        minWidth: 2800,
         rowHeight: 'md',
         resizableColumns: true,
         highlightColumnsOnHover: true,
@@ -69,7 +69,7 @@ export const Base: Story = {
           type: 'tagBoolean',
           editable: true,
           cellStyle: {
-            width: 6,
+            width: 4,
           },
         },
         {
@@ -87,7 +87,7 @@ export const Base: Story = {
           type: 'number',
           editable: true,
           cellStyle: {
-            width: 3,
+            width: 5,
           },
         },
         {

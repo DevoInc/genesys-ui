@@ -8,6 +8,7 @@ import {
   TextareaAttrProps,
   TextareaEventAttrs,
   TextBoxAriaProps,
+  WithRequiredAriaLabelOrAriaLabelledByProps,
 } from '../../declarations';
 
 // styled
@@ -16,7 +17,7 @@ import {
   StyledTextareaControlProps,
 } from './StyledTextareaControl';
 
-export interface TextareaControlProps
+interface CommonTextareaControlProps
   extends FieldControlCommonProps,
     Pick<TextBoxAriaProps, 'aria-invalid' | 'aria-activedescendant'>,
     Omit<TextareaAttrProps, 'cols'>,
@@ -29,6 +30,9 @@ export interface TextareaControlProps
   /** The size for the textarea. It affects to its padding, font-size... etc. */
   size?: FieldSize;
 }
+
+export type TextareaControlProps =
+  WithRequiredAriaLabelOrAriaLabelledByProps<CommonTextareaControlProps>;
 
 export const TextareaControl: React.FC<TextareaControlProps> = ({
   'aria-errormessage': ariaErrorMessage,

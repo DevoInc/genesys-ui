@@ -19,7 +19,7 @@ import { toTimestamp } from '../utils';
 
 export interface DateTimePickerProps
   extends Omit<DateTimeProps, 'onChange' | 'selectedDates'>,
-    Pick<InputControlProps, 'onChange' | 'placeholder'>,
+    Pick<InputControlProps, 'onChange' | 'placeholder' | 'size'>,
     Pick<GlobalAriaProps, 'aria-label'>,
     Pick<GlobalAttrProps, 'id'>,
     StyledOverloadCssProps,
@@ -47,6 +47,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   onCancel,
   onChange,
   placeholder,
+  size,
   styles: customStyles,
   value: customValue,
   ...restDateTimeProps
@@ -94,6 +95,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
           onChange={onChange}
           onClick={onClickInputCallback}
           placeholder={placeholder}
+          size={size}
         />
       </div>
       {visible && (

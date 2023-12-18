@@ -8,7 +8,7 @@ import {
 import { hasStatus } from '../../../utils/validations';
 import { scrollbars } from '../../../styled/mixins/scrollbars';
 import { SelectOption } from '../declarations';
-import { disabledMixin } from '../../../styled';
+import { disabledMixin, truncateTypoMixin } from '../../../styled';
 
 export const StyledSelectControl = styled(ReactSelect).attrs(
   ({ className, classNamePrefix, tooltip }) => ({
@@ -219,6 +219,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
             }
 
             &__placeholder {
+              ${truncateTypoMixin()};
               color: ${fieldTokens.color.text[statusEval].placeholder};
               text-align: left;
             }

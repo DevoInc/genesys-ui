@@ -8,12 +8,18 @@ import {
 } from './utils';
 
 import { DropdownPicker, DropdownPickerProps } from './components';
-import { Field, FieldProps, Popper } from '@devoinc/genesys-ui';
+import {
+  Field,
+  FieldProps,
+  GlobalAriaProps,
+  Popper,
+} from '@devoinc/genesys-ui';
 
 import { StyledColorPicker, StyledColorPickerProps } from './styled';
 
 export interface ColorPickerProps
-  extends Omit<FieldProps, 'children' | 'hasWideControl' | 'role'>,
+  extends Pick<GlobalAriaProps, 'aria-label'>,
+    Omit<FieldProps, 'children' | 'hasWideControl' | 'role'>,
     Omit<DropdownPickerProps, 'expanded' | 'id'>,
     Omit<StyledColorPickerProps, 'disabled' | 'size' | 'status'> {
   value?: string;
@@ -21,6 +27,7 @@ export interface ColorPickerProps
 }
 
 export const ColorPicker: React.FC<ColorPickerProps> = ({
+  'aria-label': ariaLabel,
   disabled,
   hasFloatingHelper,
   helper,
@@ -98,7 +105,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
         setIsVisible={setVisible}
         trigger={
           <StyledColorPicker
-            aria-label={label}
+            aria-label={ariaLabel}
             aria-controls={`${id}-picker`}
             aria-haspopup
             aria-expanded={visible}

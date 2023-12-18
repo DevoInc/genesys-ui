@@ -237,7 +237,7 @@ export type Elevation =
  * --------------------------------------------- */
 export interface FieldControlCommonProps<T = Element>
   extends GlobalAttrProps<T>,
-    Pick<GlobalAriaProps, 'aria-describedby'>,
+    Pick<GlobalAriaProps, 'aria-describedby' | 'aria-labelledby'>,
     Required<Pick<GlobalAriaProps, 'aria-label'>>,
     Omit<FieldAriaProps, 'aria-required'>,
     FieldAttrProps<T>,

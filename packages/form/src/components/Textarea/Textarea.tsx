@@ -11,10 +11,11 @@ export interface TextareaProps
   extends Omit<FieldProps, 'children' | 'role'>,
     Omit<
       TextareaControlProps,
-      'id' | 'size' | 'aria-label' | 'status' | 'disabled' | 'required'
+      'id' | 'size' | 'status' | 'disabled' | 'required'
     > {}
 
 export const Textarea: React.FC<TextareaProps> = ({
+  'aria-label': ariaLabel,
   disabled,
   hasFloatingHelper,
   helper,
@@ -61,7 +62,7 @@ export const Textarea: React.FC<TextareaProps> = ({
   >
     <TextareaControl
       {...restNativeTextareaProps}
-      aria-label={label}
+      aria-label={ariaLabel}
       disabled={disabled}
       id={id}
       required={required}
