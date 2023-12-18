@@ -27,9 +27,9 @@ const getRowHeight = (
 ) =>
   sizes.row.height[
     visualOptions?.rowHeight ||
-    colDefs.find((columnDef) => columnDef.preset === 'longText')
-      ? 'lg'
-      : 'md'
+      (colDefs.find((columnDef) => columnDef.preset === 'longText')
+        ? 'lg'
+        : 'md')
   ];
 
 const getTableWidth = (
@@ -60,7 +60,6 @@ export const useTableVirtualizationColumn = ({
   wrapperRef,
 }: UseVirtualizationParamsColumn) => {
   const tableWidth = getTableWidth(visualOptions, wrapperRef);
-  console.info('tableWidth: ', tableWidth);
 
   const defaultColWidth = getDefaultColWidth(
     columnDefs,
