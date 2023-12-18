@@ -49,9 +49,8 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
     <StyledHeaderCell
       $width={width}
       horAlign={
-        colDef?.cellStyle?.align?.horizontal || colDef.preset === 'number'
-          ? 'right'
-          : null
+        colDef?.cellStyle?.align?.horizontal ||
+        (colDef.preset === 'number' ? 'right' : null)
       }
       offsetX={offsetX}
       paddingHor={`${sizes.cell.horPad}px`}
@@ -252,7 +251,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
                           onCancel={() => undefined}
                         />
                       </>
-                    ) : colType === 'tag' || colType === 'tags' ? (
+                    ) : colType === 'tag' ? (
                       <CheckboxGroup legend="Column filter options" hideLegend>
                         <Checkbox
                           label="[Select all]"
@@ -297,6 +296,54 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
                             </HFlex>
                           }
                           id="filter-todo"
+                          defaultChecked
+                        />
+                      </CheckboxGroup>
+                    ) : colType === 'tags' ? (
+                      <CheckboxGroup legend="Column filter options" hideLegend>
+                        <Checkbox
+                          label="[Select all]"
+                          id="filter-all"
+                          defaultChecked
+                        />
+                        <Checkbox
+                          label={
+                            <HFlex spacing="cmp-xxs">
+                              <Badge size="sm" colorScheme="success" />
+                              Coworker
+                            </HFlex>
+                          }
+                          id="filter-coworker"
+                          defaultChecked
+                        />
+                        <Checkbox
+                          label={
+                            <HFlex spacing="cmp-xxs">
+                              <Badge size="sm" colorScheme="data-blue" />
+                              Components
+                            </HFlex>
+                          }
+                          id="filter-conponents"
+                          defaultChecked
+                        />
+                        <Checkbox
+                          label={
+                            <HFlex spacing="cmp-xxs">
+                              <Badge size="sm" colorScheme="data-purple" />
+                              Engineer
+                            </HFlex>
+                          }
+                          id="filter-engineer"
+                          defaultChecked
+                        />
+                        <Checkbox
+                          label={
+                            <HFlex spacing="cmp-xxs">
+                              <Badge size="sm" colorScheme="data-magenta" />
+                              Developer
+                            </HFlex>
+                          }
+                          id="filter-developer"
                           defaultChecked
                         />
                       </CheckboxGroup>

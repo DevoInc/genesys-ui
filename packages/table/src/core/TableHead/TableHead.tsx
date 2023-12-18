@@ -49,9 +49,9 @@ export const TableHead: React.FC<TableHeadProps> = ({
             .getVirtualItems()
             .map((virtualColumn: VirtualItem) => {
               const colDef = getColDefByID(columnDefs, virtualColumn);
-              console.log(colDef);
               return (
                 <HeaderCell
+                  isFilterCell
                   key={`header-filter-cell-${virtualColumn.key}`}
                   colDef={getColDefByID(columnDefs, virtualColumn)}
                   resizable={false}
