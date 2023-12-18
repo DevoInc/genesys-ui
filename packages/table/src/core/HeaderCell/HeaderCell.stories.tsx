@@ -14,6 +14,10 @@ type Story = StoryObj<typeof HeaderCell>;
 export const Base: Story = {
   render: () =>
     (() => {
-      return <HeaderCell colDef={DEFAULT_COLDEF} offsetX={30} width={300} />;
+      return (
+        <HeaderCell colDef={DEFAULT_COLDEF} offsetX={30} width={300}>
+          {'This is a header'}
+        </HeaderCell>
+      );
     })(),
 };

@@ -24,8 +24,8 @@ export const TagsEditor: Story = {
             Holo.chance.pickset(
               [
                 { text: 'Coworker', colorScheme: 'success' },
-                { text: 'Developer', colorScheme: 'warning' },
-                { text: 'Engineer', colorScheme: 'error' },
+                { text: 'Developer', colorScheme: 'data-magenta' },
+                { text: 'Engineer', colorScheme: 'data-purple' },
                 { text: 'Components', colorScheme: 'data-blue' },
               ],
               Holo.chance.integer({ min: 1, max: 4 }),

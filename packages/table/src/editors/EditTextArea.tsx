@@ -3,7 +3,7 @@ import { TextareaControl } from '@devoinc/genesys-ui';
 import { EditorFloatingWrapper } from './components';
 
 type EditTextAreaProps = {
-  value: string | number;
+  value: unknown;
   onChange?: (newValue: string) => void;
 };
 

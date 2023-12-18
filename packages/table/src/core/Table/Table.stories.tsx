@@ -73,7 +73,7 @@ const PerformanceTable = () => {
     };
   }, []);
 
-  return <Table tableOptions={getOptions(100)} data={data} />;
+  return <Table options={getOptions(100)} data={data} />;
 };
 
 export const ChunksInTime: Story = {

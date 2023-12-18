@@ -27,7 +27,7 @@ const getRowHeight = (
 ) =>
   sizes.row.height[
     visualOptions?.rowHeight ||
-    colDefs.find((columnDef) => columnDef.type === 'longText')
+    colDefs.find((columnDef) => columnDef.preset === 'longText')
       ? 'lg'
       : 'md'
   ];

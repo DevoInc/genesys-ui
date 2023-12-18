@@ -10,6 +10,7 @@ export const useTableScroll = (
   const [headHeight, setHeadHeight] = React.useState<number>(0);
   const [hasScroll, setHasScroll] = React.useState<boolean>(false);
   React.useEffect(() => {
+    console.debug(rowVirtualizer.getTotalSize());
     setDataHeight(rowVirtualizer.getTotalSize());
     setWrapperHeight(
       wrapperRef.current?.querySelector<HTMLElement>('table')?.offsetHeight,
@@ -22,6 +23,13 @@ export const useTableScroll = (
   }, []);
 
   React.useEffect(() => {
+    console.debug(
+      'dataHeight, wrapperHeight, headHeight',
+      dataHeight,
+      wrapperHeight,
+      headHeight,
+    );
+    console.debug('hasScroll', dataHeight > wrapperHeight - headHeight);
     setHasScroll(dataHeight > wrapperHeight - headHeight);
   }, [dataHeight, wrapperHeight, headHeight]);
 

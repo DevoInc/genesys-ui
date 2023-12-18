@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Menu } from './';
-import { CheckboxControl } from '@';
 
 const meta: Meta<typeof Menu> = {
   title: 'Components/Core/Navigation/Menu',
