@@ -17,7 +17,7 @@ type Story = StoryObj<typeof BasicTable>;
 
 export const Base: Story = {
   args: {
-    tableOptions: {
+    options: {
       defaultColumnDef: {
         editable: false,
       },
@@ -28,10 +28,11 @@ export const Base: Story = {
         resizableColumns: true,
         highlightColumnsOnHover: true,
       },
+      showFilters: true,
       columnDefs: [
         {
           id: 'id',
-          type: 'text',
+          preset: 'text',
           headerName: 'ID',
           cellStyle: {
             width: 3,
@@ -40,7 +41,7 @@ export const Base: Story = {
         {
           id: 'menu',
           headerName: 'Menu',
-          CellRenderer: (params) => {
+          cellRenderer: (params) => {
             return (
               <DropdownMenu
                 items={[
@@ -66,7 +67,7 @@ export const Base: Story = {
         {
           id: 'booleanValue',
           headerName: 'Boolean value',
-          type: 'tagBoolean',
+          preset: 'tagBoolean',
           editable: true,
           cellStyle: {
             width: 4,
@@ -75,7 +76,7 @@ export const Base: Story = {
         {
           id: 'name',
           headerName: 'Name',
-          type: 'text',
+          preset: 'text',
           editable: true,
           cellStyle: {
             width: 7,
@@ -84,7 +85,7 @@ export const Base: Story = {
         {
           id: 'age',
           headerName: 'Age',
-          type: 'number',
+          preset: 'number',
           editable: true,
           cellStyle: {
             width: 5,
@@ -93,7 +94,7 @@ export const Base: Story = {
         {
           id: 'company',
           headerName: 'Company',
-          type: 'text',
+          preset: 'text',
           cellStyle: {
             width: 5,
           },
@@ -101,7 +102,7 @@ export const Base: Story = {
         {
           id: 'balance',
           headerName: 'Balance',
-          type: 'number',
+          preset: 'number',
           cellStyle: {
             width: 5,
           },
@@ -109,7 +110,7 @@ export const Base: Story = {
         {
           id: 'status',
           headerName: 'Status',
-          type: 'tag',
+          preset: 'tag',
           editable: true,
           cellStyle: {
             width: 6,
@@ -118,7 +119,7 @@ export const Base: Story = {
         {
           id: 'picture',
           headerName: 'Image (URL)',
-          type: 'link',
+          preset: 'link',
           cellStyle: {
             width: 5,
           },
@@ -126,7 +127,7 @@ export const Base: Story = {
         {
           id: 'timestamp',
           headerName: 'Date',
-          type: 'date',
+          preset: 'date',
           editable: true,
           cellStyle: {
             width: 5,
@@ -135,7 +136,7 @@ export const Base: Story = {
         {
           id: 'tags',
           headerName: 'Tags',
-          type: 'tags',
+          preset: 'tags',
           editable: true,
           cellStyle: {
             width: 10,
@@ -144,7 +145,7 @@ export const Base: Story = {
         {
           id: 'profession',
           headerName: 'Profession',
-          type: 'text',
+          preset: 'text',
           cellStyle: {
             width: 5,
           },
@@ -152,7 +153,7 @@ export const Base: Story = {
         {
           id: 'email',
           headerName: 'Email',
-          type: 'link',
+          preset: 'link',
           cellStyle: {
             width: 5,
           },
@@ -160,7 +161,7 @@ export const Base: Story = {
         {
           id: 'quote',
           headerName: 'Favourite quote',
-          type: 'text',
+          preset: 'text',
           cellStyle: {
             width: 5,
           },
@@ -168,7 +169,7 @@ export const Base: Story = {
         {
           id: 'address',
           headerName: 'Address',
-          type: 'text',
+          preset: 'text',
           cellStyle: {
             width: 10,
           },
@@ -176,7 +177,7 @@ export const Base: Story = {
         {
           id: 'website',
           headerName: 'Website',
-          type: 'link',
+          preset: 'link',
           cellStyle: {
             width: 5,
           },
@@ -184,7 +185,7 @@ export const Base: Story = {
         {
           id: 'secondaryWebsite',
           headerName: 'Secondary Website',
-          type: 'link',
+          preset: 'link',
           cellStyle: {
             width: 10,
           },

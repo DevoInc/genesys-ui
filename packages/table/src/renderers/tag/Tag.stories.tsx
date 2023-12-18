@@ -16,25 +16,25 @@ const data = Holo.of()
 const columnBoolean: ColDef = {
   id: 'booleanValue',
   headerName: 'booleanValue',
-  type: 'tag',
+  preset: 'tag',
   cellRendererConfig: {
     true: { color: 'success', text: 'Active' },
     false: { color: 'neutral', text: 'Inactive' },
   },
-  CellRenderer: TagRenderer,
+  cellRenderer: TagRenderer,
 };
 
 const columnStatus: ColDef = {
   id: 'status',
   headerName: 'status',
-  type: 'tag',
+  preset: 'tag',
   cellRendererConfig: {
     TODO: { color: 'neutral', text: 'TODO' },
     inProgress: { color: 'warning', text: 'In progress' },
     test: { color: 'info', text: 'Test' },
     done: { color: 'green', text: 'Done' },
   },
-  CellRenderer: TagRenderer,
+  cellRenderer: TagRenderer,
 };
 
 const meta: Meta<typeof Cell> = {

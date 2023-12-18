@@ -13,7 +13,6 @@ interface StyledHeaderCellProps
   > {
   $width: React.CSSProperties['width'];
   offsetX?: number;
-  resizable?;
 }
 
 export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`

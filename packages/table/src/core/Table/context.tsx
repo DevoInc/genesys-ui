@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { merge } from 'lodash';
 import {
+  ColDef,
   MeasuresConfig,
   SizesConfig,
   TableOptionsProps,
@@ -10,6 +11,8 @@ export interface TableContextProps
   extends Pick<TableOptionsProps, 'visualOptions' | 'texts'> {
   measures: MeasuresConfig;
   sizes: SizesConfig;
+  columnDefs: ColDef[];
+  showFilters: boolean;
 }
 
 interface TableContextProviderProps {
@@ -69,6 +72,8 @@ const defaultTableContext: TableContextProps = {
       verPad: 8,
     },
   },
+  columnDefs: [],
+  showFilters: false,
 };
 
 export const TableContext =

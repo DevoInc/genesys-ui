@@ -30,7 +30,7 @@ const getOptions = (cols: number) => {
     (_, index: number) => ({
       id: `company_${index}`,
       headerName: `Company ${index + 1}`,
-      CellRenderer: ({ value }) => String(value),
+      cellRenderer: ({ value }) => String(value),
       cellStyle: {
         width: 12,
       },

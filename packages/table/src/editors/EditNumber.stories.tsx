@@ -29,8 +29,8 @@ export const NumberEditor: Story = {
       const columnEditTextNumber: ColDef = {
         id: 'age',
         headerName: 'age',
-        CellEditor: () => EditNumber({ value: number, onChange }),
-        CellRenderer: TextRenderer,
+        cellEditor: () => EditNumber({ value: number, onChange }),
+        cellRenderer: TextRenderer,
         editable: true,
       };
       return (

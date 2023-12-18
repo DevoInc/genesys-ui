@@ -5,7 +5,6 @@ import { ColDef } from '../../declarations';
 import {
   Badge,
   Button,
-  ChoiceGroup,
   Form,
   HFlex,
   IconButton,
@@ -13,7 +12,6 @@ import {
   Panel,
   Popper,
   SelectControl,
-  Typography,
 } from '@devoinc/genesys-ui';
 
 import { StyledHeaderCell } from './StyledHeaderCell';
@@ -32,6 +30,8 @@ interface HeaderCellProps {
   isFilterCell?: boolean;
   width: React.CSSProperties['width'];
   offsetX: number;
+  children: React.ReactNode;
+  resizable?: boolean;
 }
 
 export const HeaderCell: React.FC<HeaderCellProps> = ({
@@ -39,20 +39,20 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   isFilterCell,
   width,
   offsetX,
+  children,
+  resizable = true,
 }) => {
   const { sizes, visualOptions } = React.useContext(TableContext);
-  const resizable = colDef?.resizable ?? visualOptions?.resizableColumns;
   const [isVisible, setIsVisible] = React.useState(false);
-  const colType = colDef.type;
+  const colType = colDef.preset;
   return (
     <StyledHeaderCell
       $width={width}
       horAlign={
-        colDef?.cellStyle?.align?.horizontal || colDef.type === 'number'
+        colDef?.cellStyle?.align?.horizontal || colDef.preset === 'number'
           ? 'right'
           : null
       }
-      resizable={visualOptions.resizableColumns ?? colDef?.resizable}
       offsetX={offsetX}
       paddingHor={`${sizes.cell.horPad}px`}
       paddingVer={`${sizes.cell.verPad}px`}
@@ -309,10 +309,10 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
         </HFlex>
       ) : (
         <>
-          <Typography.Heading size="h6" truncateLine={1}>
-            {colDef.headerName}
-          </Typography.Heading>
-          {resizable && (
+          {children}
+          {(resizable
+            ? colDef?.resizable ?? visualOptions?.resizableColumns
+            : false) && (
             <StyledHeaderCellResizer
               $height={`${sizes.head.height}px`}
               role="presentation"

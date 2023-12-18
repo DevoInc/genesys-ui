@@ -18,14 +18,14 @@ const data = Holo.of()
 const column: ColDef = {
   id: 'name',
   headerName: 'Name',
-  CellRenderer: TextRenderer,
+  cellRenderer: TextRenderer,
 };
 
 const columnDate: ColDef = {
   id: 'timestamp',
   headerName: 'timestamp',
   valueFormatter: dateFormatter,
-  CellRenderer: TextRenderer,
+  cellRenderer: TextRenderer,
   context: {
     formatDate: 'dd/MM/yyyy HH:mm:ss',
     tz: 'Europe/Madrid',
@@ -36,8 +36,8 @@ const columnDate: ColDef = {
 const columnLink: ColDef = {
   id: 'picture',
   headerName: 'picture',
-  type: 'link',
-  CellRenderer: TextRenderer,
+  preset: 'link',
+  cellRenderer: TextRenderer,
   valueFormatter: linkFormatter,
 };
 

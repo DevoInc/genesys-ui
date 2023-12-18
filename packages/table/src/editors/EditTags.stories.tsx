@@ -4,8 +4,8 @@ import { Holo } from '@devoinc/holo';
 import { ColDef } from '../declarations';
 import { EditTags } from '.';
 import { Cell } from '../core/Cell';
-import { TagProps } from 'packages/core/dist/types/src';
 import { TagsRenderer } from '../renderers';
+import { TagProps } from '@devoinc/genesys-ui';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Table/Cell/Edit/Tags',
@@ -42,9 +42,9 @@ export const TagsEditor: Story = {
       const columnEditTags: ColDef = {
         id: 'tags',
         headerName: 'tags',
-        type: 'tags',
-        CellEditor: () => EditTags({ value: tags, onChange }),
-        CellRenderer: TagsRenderer,
+        preset: 'tags',
+        cellEditor: () => EditTags({ value: tags, onChange }),
+        cellRenderer: TagsRenderer,
         editable: true,
       };
       return (

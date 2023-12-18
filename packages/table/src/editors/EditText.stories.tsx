@@ -29,8 +29,8 @@ export const Base: Story = {
       const columnEditText: ColDef = {
         id: 'name',
         headerName: 'Name',
-        CellRenderer: TextRenderer,
-        CellEditor: () => EditText({ value: text, onChange }),
+        cellRenderer: TextRenderer,
+        cellEditor: () => EditText({ value: text, onChange }),
         editable: true,
       };
 
@@ -54,9 +54,9 @@ export const TextAreaEditor: Story = {
       const columnEditTextArea: ColDef = {
         id: 'name',
         headerName: 'Name',
-        CellEditor: () => EditTextArea({ value: text, onChange }),
-        CellRenderer: TextRenderer,
-        type: 'longText',
+        cellEditor: () => <EditTextArea value={text} onChange={onChange} />,
+        cellRenderer: TextRenderer,
+        preset: 'longText',
         editable: true,
       };
 

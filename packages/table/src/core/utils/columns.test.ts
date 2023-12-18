@@ -2,7 +2,6 @@ import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_COLDEF } from './../../constants';
 import { VirtualItem } from '@tanstack/react-virtual';
 import { ColDef, DefaultColDef } from '../../declarations';
 import { getColDefByID, getCollatedColumns } from './columns';
-import { ColumnType } from '../../types/declarations';
 
 const colDefsMock: ColDef[] = [
   { id: 'col0' },
@@ -27,7 +26,7 @@ const getCollatedColumnsCases: [
   string,
   DefaultColDef,
   ColDef,
-  ColumnType[],
+  ColDef[],
   ColDef,
 ][] = [
   [
@@ -53,8 +52,8 @@ describe('Table', () => {
       describe('getCollatedColumns', () => {
         it.each(getCollatedColumnsCases)(
           '%s',
-          (_title, defaultColDef, column, types, expected) => {
-            expect(getCollatedColumns(defaultColDef, column, types)).toEqual(
+          (_title, defaultColDef, column, presets, expected) => {
+            expect(getCollatedColumns(defaultColDef, column, presets)).toEqual(
               expected,
             );
           },

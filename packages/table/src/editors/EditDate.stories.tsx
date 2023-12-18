@@ -31,8 +31,8 @@ export const Base: Story = {
         id: 'timestamp',
         headerName: 'timestamp',
         valueFormatter: dateFormatter,
-        CellEditor: () => EditDate({ value: date, onChange }),
-        CellRenderer: TextRenderer,
+        cellEditor: () => EditDate({ value: date, onChange }),
+        cellRenderer: TextRenderer,
         context: {
           formatDate: 'dd/MM/yyyy HH:mm:ss',
           tz: 'Europe/Madrid',

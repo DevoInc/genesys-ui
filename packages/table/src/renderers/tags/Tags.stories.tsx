@@ -24,8 +24,8 @@ const data = Holo.of()
 const column: ColDef = {
   id: 'tags',
   headerName: 'tags',
-  type: 'tags',
-  CellRenderer: TagsRenderer,
+  preset: 'tags',
+  cellRenderer: TagsRenderer,
 };
 
 const meta: Meta<typeof Cell> = {
