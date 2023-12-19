@@ -12,6 +12,8 @@ import {
   Panel,
   Popper,
   SelectControl,
+  SelectControlProps,
+  SelectOption,
 } from '@devoinc/genesys-ui';
 
 import { StyledHeaderCell } from './StyledHeaderCell';
@@ -44,6 +46,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
 }) => {
   const { sizes, visualOptions } = React.useContext(TableContext);
   const [isVisible, setIsVisible] = React.useState(false);
+  const [value, setValue] = React.useState<SelectControlProps['value']>(1);
   const colType = colDef.preset;
   return (
     <StyledHeaderCell
@@ -60,14 +63,18 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
       {isFilterCell ? (
         <HFlex spacing="cmp-xxs" flex="1 1 auto">
           <HFlex.Item flex="1 1 auto">
-            {colType === 'text' ||
-            colType === 'number' ||
-            colType === 'link' ||
-            !colType ? (
+            {colType === 'text' || colType === 'link' || !colType ? (
               <InputControl
                 size="sm"
                 aria-label="filter"
                 placeholder="Filter content..."
+              />
+            ) : colType === 'number' ? (
+              <InputControl
+                size="sm"
+                aria-label="filter"
+                placeholder="Filter content..."
+                type="number"
               />
             ) : colType === 'tag' ? (
               <SelectControl
@@ -97,12 +104,13 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
               <SelectControl
                 size="sm"
                 menuAppendToBody
-                defaultInputValue={'All'}
+                onChange={(opt: SelectOption) => setValue(opt.value)}
                 options={[
                   { value: 1, label: 'All' },
                   { value: 2, label: 'True' },
                   { value: 3, label: 'False' },
                 ]}
+                value={value}
               />
             ) : colType === 'date' ? (
               <DateTimePicker
@@ -189,7 +197,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
                       <>
                         <SelectControl
                           menuAppendToBody
-                          defaultInputValue={'Contains'}
+                          onChange={(opt: SelectOption) => setValue(opt.value)}
                           options={[
                             { value: 1, label: 'Contains' },
                             { value: 2, label: 'Does not contain' },
@@ -200,6 +208,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
                             { value: 7, label: 'Blank' },
                             { value: 8, label: 'Not blank' },
                           ]}
+                          value={value}
                         />
                         <InputControl
                           autoFocus
@@ -211,7 +220,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
                       <>
                         <SelectControl
                           menuAppendToBody
-                          defaultInputValue={'Equals to'}
+                          onChange={(opt: SelectOption) => setValue(opt.value)}
                           options={[
                             { value: 1, label: 'Equals to' },
                             { value: 4, label: 'Does not equal to' },
@@ -223,6 +232,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
                             { value: 9, label: 'Blank' },
                             { value: 10, label: 'Not blank' },
                           ]}
+                          value={value}
                         />
                         <InputControl
                           autoFocus
@@ -235,7 +245,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
                       <>
                         <SelectControl
                           menuAppendToBody
-                          defaultInputValue={'Equals to'}
+                          onChange={(opt: SelectOption) => setValue(opt.value)}
                           options={[
                             { value: 1, label: 'Equals to' },
                             { value: 4, label: 'Does not equal to' },
@@ -245,6 +255,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
                             { value: 9, label: 'Blank' },
                             { value: 10, label: 'Not blank' },
                           ]}
+                          value={value}
                         />
                         <DateTimePicker
                           onApply={() => undefined}

@@ -55,7 +55,10 @@ export const Cell: React.FC<CellProps> = ({
         }
         toEdge={columnDef?.cellStyle?.toEdge}
         verAlign={columnDef?.cellStyle?.align?.vertical}
-        horAlign={columnDef?.cellStyle?.align?.horizontal}
+        horAlign={
+          columnDef?.cellStyle?.align?.horizontal ||
+          (columnDef.preset === 'number' ? 'right' : null)
+        }
       >
         {isEditMode ? editionContent : viewContent}
         {columnDef.editable && !isEditMode && (

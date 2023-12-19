@@ -35,7 +35,7 @@ export const Base: Story = {
       };
 
       return (
-        <Cell height={40} width={60} columnDef={columnEditText} data={text} />
+        <Cell height={36} width={180} columnDef={columnEditText} data={text} />
       );
     })(),
 };
@@ -44,10 +44,7 @@ export const TextAreaEditor: Story = {
   render: () =>
     (() => {
       const [text, setText] = React.useState(
-        `I am ridiculously anti-drug. So anti-drug that I am above 
-        suspicion in any way that involves suspicion, or testing of any kind. 
-        Mine was green. If you are not this tall, you may not ride the 
-        rollercoaster. See you guys tomorrow.`,
+        `I am ridiculously anti-drug. So anti-drug that I am above suspicion in any way that involves suspicion, or testing of any kind. Mine was green. If you are not this tall, you may not ride the rollercoaster. See you guys tomorrow.`,
       );
       const onChange = (newText: string) => setText(newText);
 
@@ -62,8 +59,8 @@ export const TextAreaEditor: Story = {
 
       return (
         <Cell
-          height={40}
-          width={60}
+          height={60}
+          width={220}
           columnDef={columnEditTextArea}
           data={text}
         />

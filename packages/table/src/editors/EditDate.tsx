@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { DateTimePicker } from '@devoinc/genesys-ui-datetime';
+import { TableContext } from '../core/Table/context';
+import { getEditControlSize } from './utils';
 
 type DateCellEditorProps = {
   value: unknown;
@@ -9,11 +11,15 @@ type DateCellEditorProps = {
 export const EditDate: React.FC<DateCellEditorProps> = ({
   value,
   onChange,
-}) => (
-  <DateTimePicker
-    onChange={() => undefined}
-    onApply={(newDate: number) => onChange?.(new Date(newDate).toISOString())}
-    onCancel={() => undefined}
-    value={new Date(value as Date)}
-  />
-);
+}) => {
+  const { visualOptions } = React.useContext(TableContext);
+  return (
+    <DateTimePicker
+      size={getEditControlSize(visualOptions)}
+      onChange={() => undefined}
+      onApply={(newDate: number) => onChange?.(new Date(newDate).toISOString())}
+      onCancel={() => undefined}
+      value={new Date(value as Date)}
+    />
+  );
+};

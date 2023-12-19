@@ -24,13 +24,14 @@ const getRowHeight = (
   sizes: SizesConfig,
   visualOptions: TableVisualOptions,
   colDefs: ColDef[],
-) =>
-  sizes.row.height[
+) => {
+  return sizes.row.height[
     visualOptions?.rowHeight ||
-    colDefs.find((columnDef) => columnDef.preset === 'longText')
-      ? 'lg'
-      : 'md'
+      (colDefs.find((columnDef) => columnDef.preset === 'longText')
+        ? 'lg'
+        : 'md')
   ];
+};
 
 const getTableWidth = (
   visualOptions: TableVisualOptions,
@@ -45,7 +46,7 @@ export const useTableVirtualizationRow = ({
   sizes,
 }: UseVirtualizationParamsRow) => {
   const rowHeight = getRowHeight(sizes, visualOptions, columnDefs);
-
+  console.info(rowHeight);
   return useVirtualizer({
     count: data.length,
     getScrollElement: () => wrapperRef.current,
@@ -60,7 +61,6 @@ export const useTableVirtualizationColumn = ({
   wrapperRef,
 }: UseVirtualizationParamsColumn) => {
   const tableWidth = getTableWidth(visualOptions, wrapperRef);
-  console.info('tableWidth: ', tableWidth);
 
   const defaultColWidth = getDefaultColWidth(
     columnDefs,

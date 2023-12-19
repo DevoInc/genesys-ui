@@ -11,6 +11,7 @@ export const NumberFilter: React.FC<FilterProps> = () => (
         size="sm"
         aria-label="filter"
         placeholder="Filter content..."
+        type="number"
       />
     </HFlex.Item>
     <HFlex.Item flex="0 0 auto">
