@@ -46,7 +46,7 @@ export const useTableVirtualizationRow = ({
   sizes,
 }: UseVirtualizationParamsRow) => {
   const rowHeight = getRowHeight(sizes, visualOptions, columnDefs);
-  console.info(rowHeight);
+
   return useVirtualizer({
     count: data.length,
     getScrollElement: () => wrapperRef.current,
