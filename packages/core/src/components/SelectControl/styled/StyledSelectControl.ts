@@ -58,6 +58,8 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
     const hasClearIndicator = isClearable === false ? 0 : 1;
     const sortableSpacing = sortable ? scrollSpacing : '0rem';
 
+    console.log('pollo');
+
     return css`
       .${classNamePrefix} {
         // CONTROL ///////////////////////////////////////////////////////////
@@ -191,6 +193,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
         // INPUT CONTAINER ///////////////////////////////////////////////////
         &__input-container {
           overflow-y: hidden;
+          color: ${fieldTokens.color.text[statusEval][state]};
 
           &::-webkit-scrollbar {
             display: none;
