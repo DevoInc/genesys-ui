@@ -1,19 +1,17 @@
 import React, { FormEvent } from 'react';
+
 import { InputControl } from '@devoinc/genesys-ui';
 
-interface EditNumberProps {
-  value: number;
-  onChange: (newValue: number) => void;
-}
+import type { CellEditorProps } from '../declarations';
 
-export const NumberEditor: React.FC<EditNumberProps> = ({
+export const NumberEditor: React.FC<CellEditorProps> = ({
   value,
   onChange,
 }) => (
   <InputControl
     type={'number'}
     aria-label={'Number input'}
-    value={value}
+    value={String(value)}
     onChange={(event: FormEvent) => {
       onChange(parseInt((event.target as HTMLInputElement).value));
     }}

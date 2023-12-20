@@ -34,7 +34,6 @@ export const useRenderContent = (colDef: ColDef, data: unknown) => {
   const editionContent = colDef.cellEditor
     ? colDef.cellEditor({
         value: data,
-        onChange: colDef.cellRendererParams?.onChange,
       })
     : null;
 

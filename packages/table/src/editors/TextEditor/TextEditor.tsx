@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react';
+import * as React from 'react';
 
 import { InputControl } from '@devoinc/genesys-ui';
 
@@ -18,7 +18,7 @@ export const TextEditor: React.FC<EditInputProps> = ({ value, onChange }) => {
       autoFocus
       aria-label={texts?.editor?.editorTextLabel}
       value={value}
-      onChange={(event: FormEvent) =>
+      onChange={(event: React.FormEvent) =>
         onChange?.((event.target as HTMLInputElement).value)
       }
     />
