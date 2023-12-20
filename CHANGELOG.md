@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/DevoInc/genesys-ui/compare/v1.4.0...v1.4.1) (2023-12-20)
+
+
+### Bug Fixes
+
+* **SelectControl:** tokenize input value ([c45e48f](https://github.com/DevoInc/genesys-ui/commit/c45e48f96aa5362c78c14a706ec2a865d861d3eb))
+
 ## [1.4.0](https://github.com/DevoInc/genesys-ui/compare/v1.3.0...v1.4.0) (2023-11-15)
 
 
