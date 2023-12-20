@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.4.2](https://github.com/DevoInc/genesys-ui/compare/v1.4.1...v1.4.2) (2023-12-20)
+
 ## [1.4.1](https://github.com/DevoInc/genesys-ui/compare/v1.4.0...v1.4.1) (2023-12-20)
 
 
