@@ -1,5 +1,5 @@
 import { ColDef } from '../declarations';
-import { EditDate } from '../editors/EditDate';
+import { DateEditor } from '../editors';
 import { TextRenderer } from '../renderers';
 import { dateFormatter } from '../valueFormatters/date';
 
@@ -7,7 +7,7 @@ export const date: ColDef = {
   id: 'date',
   cellRenderer: TextRenderer,
   valueFormatter: dateFormatter,
-  cellEditor: EditDate,
+  cellEditor: DateEditor,
   context: {
     formatDate: 'dd/MM/yyyy HH:mm:ss',
     tz: 'Europe/Madrid',

@@ -18,7 +18,7 @@ type Story = StoryObj<typeof BasicTable>;
 export const Base: Story = {
   args: {
     options: {
-      defaultColumnDef: {
+      defaultColDef: {
         editable: false,
       },
       visualOptions: {
@@ -29,7 +29,7 @@ export const Base: Story = {
         highlightColumnsOnHover: true,
       },
       showFilters: true,
-      columnDefs: [
+      colDefs: [
         {
           id: 'id',
           preset: 'text',
@@ -41,7 +41,7 @@ export const Base: Story = {
         {
           id: 'menu',
           headerName: 'Menu',
-          cellRenderer: (params) => {
+          cellRenderer: ({ colDef }) => {
             return (
               <DropdownMenu
                 items={[
@@ -51,7 +51,7 @@ export const Base: Story = {
                     shortcut: "⌘ '",
                     title: 'Testing menu',
                     onChange: () => {
-                      console.log(params.columnDef.headerName);
+                      console.log(colDef.headerName);
                     },
                   },
                 ]}
@@ -67,7 +67,7 @@ export const Base: Story = {
         {
           id: 'booleanValue',
           headerName: 'Boolean value',
-          preset: 'tagBoolean',
+          preset: 'boolean',
           editable: true,
           cellStyle: {
             width: 4,
@@ -110,7 +110,7 @@ export const Base: Story = {
         {
           id: 'status',
           headerName: 'Status',
-          preset: 'tag',
+          preset: 'options',
           editable: true,
           cellStyle: {
             width: 6,
@@ -136,10 +136,18 @@ export const Base: Story = {
         {
           id: 'tags',
           headerName: 'Tags',
-          preset: 'tags',
+          preset: 'options',
           editable: true,
           cellStyle: {
             width: 10,
+          },
+          cellRendererParams: {
+            options: {
+              Coworker: { colorScheme: 'success' },
+              Developer: { colorScheme: 'data-magenta' },
+              Engineer: { colorScheme: 'data-purple' },
+              Components: { colorScheme: 'data-blue' },
+            },
           },
         },
         {
@@ -208,12 +216,7 @@ export const Base: Story = {
         timestamp: 'timestamp',
         tags: () =>
           Holo.chance.pickset(
-            [
-              { text: 'Coworker', colorScheme: 'success' },
-              { text: 'Developer', colorScheme: 'data-magenta' },
-              { text: 'Engineer', colorScheme: 'data-purple' },
-              { text: 'Components', colorScheme: 'data-blue' },
-            ],
+            ['Coworker', 'Developer', 'Engineer', 'Components'],
             Holo.chance.integer({ min: 1, max: 4 }),
           ),
         profession: 'profession',

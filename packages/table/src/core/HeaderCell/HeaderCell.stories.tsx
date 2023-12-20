@@ -1,10 +1,8 @@
-import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { HeaderCell } from './HeaderCell';
-import { DEFAULT_COLDEF } from '../../constants';
 
 const meta: Meta<typeof HeaderCell> = {
-  title: 'Components/Table/Header Cell',
+  title: 'Components/Table/HeaderCell',
   component: HeaderCell,
 };
 
@@ -12,12 +10,14 @@ export default meta;
 type Story = StoryObj<typeof HeaderCell>;
 
 export const Base: Story = {
-  render: () =>
-    (() => {
-      return (
-        <HeaderCell colDef={DEFAULT_COLDEF} offsetX={30} width={300}>
-          {'This is a header'}
-        </HeaderCell>
-      );
-    })(),
+  args: {
+    colDef: {
+      id: 'col',
+      headerName: 'Column',
+    },
+    offsetX: 30,
+    width: 300,
+    children: 'This is a header',
+    resizable: true,
+  },
 };

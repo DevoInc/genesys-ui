@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { ColDef, TableOptionsProps } from '../../declarations';
+import { ColDef, Data, TableOptionsProps } from '../../declarations';
 
 import { TableContextProvider } from './context';
 
@@ -19,14 +19,14 @@ import {
 } from '../hooks';
 
 interface TableProps {
-  data: { [key: string]: unknown }[];
+  data: Data;
   options: TableOptionsProps;
 }
 
 export const Table: React.FC<TableProps> = ({
   options: {
-    defaultColumnDef,
-    columnDefs,
+    defaultColDef,
+    colDefs,
     columnPresets,
     visualOptions,
     showFilters,
@@ -37,22 +37,22 @@ export const Table: React.FC<TableProps> = ({
   const { density, maxHeight } = visualOptions || {};
   const ref = React.useRef<HTMLDivElement>();
 
-  const refinedColumnDefs: ColDef[] = columnDefs.map((column) =>
-    getCollatedColumns(defaultColumnDef, column, columnPresets),
+  const refinedColDefs: ColDef[] = colDefs.map((column) =>
+    getCollatedColumns(defaultColDef, column, columnPresets),
   );
 
   const sizes = getSizes(theme, density);
 
   const rowVirtualizer = useTableVirtualizationRow({
     data,
-    columnDefs,
+    colDefs,
     visualOptions,
     wrapperRef: ref,
     sizes,
   });
 
   const columnVirtualizer = useTableVirtualizationColumn({
-    columnDefs,
+    colDefs,
     visualOptions,
     wrapperRef: ref,
   });
@@ -72,7 +72,7 @@ export const Table: React.FC<TableProps> = ({
         visualOptions,
         measures,
         sizes,
-        columnDefs,
+        colDefs,
         showFilters,
       }}
     >
@@ -82,12 +82,13 @@ export const Table: React.FC<TableProps> = ({
           $width={`${measures?.body.total.width}px`}
         >
           <TableHead
-            columnDefs={refinedColumnDefs}
+            colDefs={refinedColDefs}
             columnVirtualizer={columnVirtualizer}
             scrolled={hasScroll}
+            data={data}
           />
           <TableBody
-            columnDefs={refinedColumnDefs}
+            colDefs={refinedColDefs}
             columnVirtualizer={columnVirtualizer}
             data={data}
             rowVirtualizer={rowVirtualizer}

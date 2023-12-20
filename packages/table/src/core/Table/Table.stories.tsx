@@ -37,7 +37,7 @@ const getOptions = (cols: number) => {
     }),
   );
   return {
-    defaultColumnDef: {
+    defaultColDef: {
       editable: false,
     },
     visualOptions: {
@@ -45,7 +45,7 @@ const getOptions = (cols: number) => {
       rowHeight: 'md',
       minWidth: 2000,
     },
-    columnDefs: colDefs,
+    colDefs: colDefs,
   } as TableOptionsProps;
 };
 

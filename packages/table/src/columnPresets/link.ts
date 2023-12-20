@@ -1,10 +1,11 @@
 import { ColDef } from '../declarations';
-import { EditText } from '../editors';
-import { linkFormatter } from '../valueFormatters/link';
+import { TextEditor } from '../editors';
+import { TextFilter } from '../filters';
+import { LinkRenderer } from '../renderers';
 
 export const link: ColDef = {
   id: 'link',
-  cellRenderer: ({ value }) => value,
-  cellEditor: EditText,
-  valueFormatter: linkFormatter,
+  cellRenderer: LinkRenderer,
+  cellEditor: TextEditor,
+  cellFilter: TextFilter,
 };

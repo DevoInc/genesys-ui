@@ -11,7 +11,7 @@ export interface TableContextProps
   extends Pick<TableOptionsProps, 'visualOptions' | 'texts'> {
   measures: MeasuresConfig;
   sizes: SizesConfig;
-  columnDefs: ColDef[];
+  colDefs: ColDef[];
   showFilters: boolean;
 }
 
@@ -72,7 +72,7 @@ const defaultTableContext: TableContextProps = {
       verPad: 8,
     },
   },
-  columnDefs: [],
+  colDefs: [],
   showFilters: false,
 };
 

@@ -10,7 +10,7 @@ import { StyledTableCellMarker } from './StyledTableCellMarker';
 
 interface CellProps {
   data: unknown;
-  columnDef: ColDef;
+  colDef: ColDef;
   width?: number;
   height?: number;
   offsetX?: number;
@@ -18,19 +18,19 @@ interface CellProps {
 
 export const Cell: React.FC<CellProps> = ({
   data,
-  columnDef,
+  colDef,
   width,
   height,
   offsetX,
 }) => {
   const { sizes, texts, visualOptions, measures } =
     React.useContext(TableContext);
-  const { onReset } = columnDef;
+  const { onReset } = colDef;
 
   useInitialState(data, onReset);
 
   const { cellRef, editionContent, isEditMode, onDoubleClick, viewContent } =
-    useRenderContent(columnDef, data);
+    useRenderContent(colDef, data);
 
   return (
     <StyledTableCell
@@ -44,24 +44,24 @@ export const Cell: React.FC<CellProps> = ({
       ref={cellRef}
     >
       <StyledTableCellWrapper
-        as={columnDef.editable ? 'button' : 'div'}
-        clickable={columnDef.editable}
+        as={colDef.editable ? 'button' : 'div'}
+        clickable={colDef.editable}
         isEditMode={isEditMode}
         paddingHor={`${sizes.cell.horPad}px`}
         paddingVer={`${sizes.cell.verPad}px`}
-        tabIndex={columnDef.editable ? 0 : -1}
+        tabIndex={colDef.editable ? 0 : -1}
         title={
           isEditMode ? texts?.cell?.editSaveTooltip : texts?.cell?.editTooltip
         }
-        toEdge={columnDef?.cellStyle?.toEdge}
-        verAlign={columnDef?.cellStyle?.align?.vertical}
+        toEdge={colDef?.cellStyle?.toEdge}
+        verAlign={colDef?.cellStyle?.align?.vertical}
         horAlign={
-          columnDef?.cellStyle?.align?.horizontal ||
-          (columnDef.preset === 'number' ? 'right' : null)
+          colDef?.cellStyle?.align?.horizontal ||
+          (colDef.preset === 'number' ? 'right' : null)
         }
       >
         {isEditMode ? editionContent : viewContent}
-        {columnDef.editable && !isEditMode && (
+        {colDef.editable && !isEditMode && (
           <StyledTableCellMarker>
             <GIPencilEditFilled size={10} />
           </StyledTableCellMarker>

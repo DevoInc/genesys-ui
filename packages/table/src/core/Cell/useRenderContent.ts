@@ -3,44 +3,44 @@ import { useOnEventOutside } from '@devoinc/genesys-ui';
 
 import { ColDef } from '../../declarations';
 
-export const useRenderContent = (columnDef: ColDef, data: unknown) => {
+export const useRenderContent = (colDef: ColDef, data: unknown) => {
   const cellRef = React.useRef<HTMLTableCellElement>();
 
   const viewContent = React.useMemo(
     () =>
-      columnDef.cellRenderer
-        ? columnDef.cellRenderer({
-            value: columnDef.valueFormatter
-              ? columnDef.valueFormatter(data, columnDef.context)
+      colDef.cellRenderer
+        ? colDef.cellRenderer({
+            value: colDef.valueFormatter
+              ? colDef.valueFormatter(data, colDef.context)
               : data,
-            columnDef,
+            colDef,
           })
         : '',
-    [columnDef, data],
+    [colDef, data],
   );
 
   const [isEditMode, setIsEditMode] = React.useState<boolean>(false);
 
   // const editionContent = React.useMemo(
   //   () =>
-  //     columnDef.cellEditor
-  //       ? columnDef.cellEditor({
+  //     colDef.cellEditor
+  //       ? colDef.cellEditor({
   //           value: data,
-  //           onChange: columnDef.cellRendererConfig?.onChange,
+  //           onChange: colDef.cellRendererParams?.onChange,
   //         })
   //       : null,
-  //   [columnDef, data],
+  //   [colDef, data],
   // );
-  const editionContent = columnDef.cellEditor
-    ? columnDef.cellEditor({
+  const editionContent = colDef.cellEditor
+    ? colDef.cellEditor({
         value: data,
-        onChange: columnDef.cellRendererConfig?.onChange,
+        onChange: colDef.cellRendererParams?.onChange,
       })
     : null;
 
   const onDoubleClick = React.useCallback(
-    () => setIsEditMode(columnDef.editable),
-    [columnDef.editable],
+    () => setIsEditMode(colDef.editable),
+    [colDef.editable],
   );
 
   useOnEventOutside({
