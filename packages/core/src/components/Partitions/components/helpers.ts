@@ -22,8 +22,8 @@ export const getPartitionsHeight = ({
   return size === 'sm'
     ? trackTokens['xs']
     : size === 'lg'
-    ? `calc(${trackTokens['md']} - 0.2rem)`
-    : `calc(${trackTokens['sm']} - 0.2rem)`;
+      ? `calc(${trackTokens['md']} - 0.2rem)`
+      : `calc(${trackTokens['sm']} - 0.2rem)`;
 };
 
 /**

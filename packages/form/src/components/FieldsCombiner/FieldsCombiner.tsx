@@ -129,13 +129,13 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
                       theme,
                     })
                   : elemType(leftElem) === 'button'
-                  ? fieldsCombinerButtonMixin({
-                      first: true,
-                      size,
-                      status,
-                      theme,
-                    })
-                  : null,
+                    ? fieldsCombinerButtonMixin({
+                        first: true,
+                        size,
+                        status,
+                        theme,
+                      })
+                    : null,
               ...props,
             })}
         </StyledFieldsCombinerElem>
@@ -159,13 +159,13 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
                       theme,
                     })
                   : elemType(rightElem) === 'button'
-                  ? fieldsCombinerButtonMixin({
-                      first: false,
-                      size,
-                      status,
-                      theme,
-                    })
-                  : null,
+                    ? fieldsCombinerButtonMixin({
+                        first: false,
+                        size,
+                        status,
+                        theme,
+                      })
+                    : null,
               ...props,
             })}
         </StyledFieldsCombinerElem>

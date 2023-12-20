@@ -36,8 +36,8 @@ export const FieldControlDistributor: React.FC<
         inputWidthEval
           ? '0 1 auto'
           : !wide || labelPosition === 'between' || labelPosition === 'right'
-          ? '0 0 auto'
-          : '1 1 auto'
+            ? '0 0 auto'
+            : '1 1 auto'
       }
       gap="cmp-xxs"
       minHeight={labelLineHeight}
