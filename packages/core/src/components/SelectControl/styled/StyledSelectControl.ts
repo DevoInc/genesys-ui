@@ -48,17 +48,15 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
     const hasDropdownIndicator = menuIsOpen
       ? 0
       : (isMulti &&
-          hideSelectedOptions &&
-          (value && (value as MultiValue<SelectOption>).length) !==
-            (options && options.length)) ||
-        !isMulti ||
-        !hideSelectedOptions
-      ? 1
-      : 0;
+            hideSelectedOptions &&
+            (value && (value as MultiValue<SelectOption>).length) !==
+              (options && options.length)) ||
+          !isMulti ||
+          !hideSelectedOptions
+        ? 1
+        : 0;
     const hasClearIndicator = isClearable === false ? 0 : 1;
     const sortableSpacing = sortable ? scrollSpacing : '0rem';
-
-    console.log('pollo');
 
     return css`
       .${classNamePrefix} {
