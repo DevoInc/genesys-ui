@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Dropdown } from './Dropdown';
 import { Button } from '../Button';
-import { Panel } from '../Panel';
 import { Menu } from '../Menu';
 
 const meta: Meta<typeof Dropdown> = {
@@ -13,101 +12,64 @@ const meta: Meta<typeof Dropdown> = {
 export default meta;
 type Story = StoryObj<typeof Dropdown>;
 
-const toggleMouseOut = (ev: React.MouseEvent, toggle) => {
-  debugger;
-  console.log(ev);
-  const from = (ev.target as HTMLElement).parentElement.nextElementSibling;
-  const to = ev.relatedTarget as HTMLElement;
-  const isChild = from.contains(to);
-  if (!isChild) {
-    toggle(false);
-  }
-};
-
 export const Base: Story = {
   render: () => (
-    <Dropdown placement="bottom-start">
-      {({ toggle, ref }) => (
-        <Button onClick={() => toggle()} ref={ref}>
+    <Dropdown placement="bottom-start" width={'200px'}>
+      {({ toggle, ref, opened }) => (
+        <Button
+          onClick={toggle()}
+          ref={ref}
+          aria-haspopup={true}
+          aria-expanded={opened}
+        >
           TriggerElement
         </Button>
       )}
-      <Panel.Container width={'200px'}>
-        <Menu>
-          <Menu.Item>Opcion 1</Menu.Item>
-          <Menu.Item>Opcion 2</Menu.Item>
-          <Menu.Item>Opcion 3</Menu.Item>
-          <Dropdown placement="right-start">
-            {({ toggle, ref }) => (
-              <Menu.Item
-                expandable
-                label="Opcion 4"
-                onMouseOver={() => toggle(true)}
-                onMouseLeave={(ev) => toggleMouseOut(ev, toggle)}
-                ref={ref}
-              />
-            )}
-            <Panel.Container width={'200px'}>
-              <Menu>
-                <Menu.Item onClick={() => console.log('hjjjjj')}>
-                  Opcion 4.1
-                </Menu.Item>
-                <Menu.Item onClick={() => console.log('hjjjjj')}>
-                  Opcion 4.2
-                </Menu.Item>
-                <Dropdown placement="right-start">
-                  {({ toggle, ref }) => (
-                    <Menu.Item
-                      expandable
-                      label="Opcion 4.3"
-                      onMouseOver={() => toggle(true)}
-                      onMouseLeave={(ev) => toggleMouseOut(ev, toggle)}
-                      ref={ref}
-                    />
-                  )}
-                  <Panel.Container width={'200px'}>
-                    <Menu>
-                      <Menu.Item onClick={() => console.log('hjjjjj')}>
-                        Opcion 4.3.1
-                      </Menu.Item>
-                      <Menu.Item onClick={() => console.log('hjjjjj')}>
-                        Opcion 4.3.2
-                      </Menu.Item>
-                      <Menu.Item onClick={() => console.log('hjjjjj')}>
-                        Opcion 4.3.3.x
-                      </Menu.Item>
-                      <Dropdown placement="right-start">
-                        {({ toggle, ref }) => (
-                          <Menu.Item
-                            expandable
-                            label="Opcion 4.3.3"
-                            onMouseOver={() => toggle(true)}
-                            onMouseLeave={(ev) => toggleMouseOut(ev, toggle)}
-                            ref={ref}
-                          />
-                        )}
-                        <Panel.Container width={'200px'}>
-                          <Menu>
-                            <Menu.Item onClick={() => console.log('hjjjjj')}>
-                              Opcion 4.3.3.1
-                            </Menu.Item>
-                            <Menu.Item onClick={() => console.log('hjjjjj')}>
-                              Opcion 4.3.3.2
-                            </Menu.Item>
-                          </Menu>
-                        </Panel.Container>
-                      </Dropdown>
-                    </Menu>
-                  </Panel.Container>
-                </Dropdown>
-                <Menu.Item onClick={() => console.log('hjjjjj')}>
-                  Opcion 4.4
-                </Menu.Item>
-              </Menu>
-            </Panel.Container>
-          </Dropdown>
-        </Menu>
-      </Panel.Container>
+      <Menu>
+        <Menu.Item label="Option 1" />
+        <Menu.Item label="Option 2" />
+        <Menu.Item label="Option 3" />
+      </Menu>
+    </Dropdown>
+  ),
+};
+
+export const Nested: Story = {
+  render: () => (
+    <Dropdown placement="bottom-start" width={'200px'}>
+      {({ toggle, ref, opened }) => (
+        <Button
+          onClick={toggle()}
+          ref={ref}
+          aria-haspopup={true}
+          aria-expanded={opened}
+        >
+          TriggerElement
+        </Button>
+      )}
+      <Menu>
+        <Menu.Item label="Option 1" />
+        <Menu.Item label="Option 2" />
+        <Menu.Item label="Option 3" />
+        <Dropdown placement="right-start">
+          {({ toggle, ref, opened }) => (
+            <Menu.Item
+              expandable
+              label="Option 4"
+              onClick={toggle(true)}
+              onMouseLeave={toggle()}
+              onMouseOver={toggle(true)}
+              ref={ref}
+              state={opened ? 'expanded' : 'enabled'}
+            />
+          )}
+          <Menu>
+            <Menu.Item label="Option 4.1" />
+            <Menu.Item label="Option 4.2" />
+            <Menu.Item label="Option 4.3" />
+          </Menu>
+        </Dropdown>
+      </Menu>
     </Dropdown>
   ),
 };

@@ -40,7 +40,6 @@ export const panelContainerMixin = ({
       flex-direction: column;
       justify-content: space-between;
     `};
-    overflow: hidden;
     border: ${elevation === 'ground' &&
     bordered &&
     `solid ${borderWidth} ${borderColor}`};

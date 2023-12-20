@@ -92,7 +92,7 @@ export const boxMixin =
       vertical-align: ${verticalAlign};
 
       /* clipping */
-      overflow: ${overflow || (hasBorder && 'hidden')};
+      overflow: ${overflow};
       overflow-x: ${overflowX};
       overflow-y: ${overflowY};
       ${scrollbars({

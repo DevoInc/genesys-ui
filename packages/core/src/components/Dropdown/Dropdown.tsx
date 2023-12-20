@@ -1,29 +1,36 @@
 import * as React from 'react';
-import { createPortal } from 'react-dom';
 import { type PopperProps, usePopper } from 'react-popper';
+
+import { useOnEventOutside } from '../../hooks';
+import { createPortal } from 'react-dom';
+import { Panel } from '../Panel';
+import { CSSProp, DefaultTheme } from 'styled-components';
 
 type TriggerProps = (props: {
   ref: any;
-  toggle: (value?: boolean) => void;
+  toggle: (value?: boolean) => (ev: React.MouseEvent<HTMLElement>) => void;
+  opened: boolean;
 }) => React.ReactNode;
 
 type ChidrenProps = React.ReactNode;
 
-interface DropdownProps extends Omit<PopperProps<unknown>, 'children'> {
-  isOpened?: boolean;
-  // children?: [React.ReactNode, PopperProps<unknown>['children']];
+export interface DropdownProps
+  extends Omit<
+    PopperProps<unknown>,
+    'children' | 'innerRef' | 'referenceElement' | 'onFirstUpdate'
+  > {
   children?: [TriggerProps, ChidrenProps];
+  isOpened?: boolean;
+  width?: React.CSSProperties['width'];
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
+  children: [triggerEl, childrenEl],
   isOpened = false,
-  // innerRef,
   modifiers,
   placement,
   strategy = 'fixed',
-  // referenceElement
-  // onFirstUpdate
-  children: [triggerEl, childrenEl],
+  width,
 }) => {
   const [opened, setOpened] = React.useState(isOpened);
 
@@ -36,25 +43,44 @@ export const Dropdown: React.FC<DropdownProps> = ({
     strategy,
   });
 
-  const toggle = React.useCallback((value?: boolean) => {
-    setOpened((prevState) => value ?? !prevState);
-  }, []);
+  const toggle =
+    (value?: boolean) =>
+    (ev: React.MouseEvent<HTMLElement>): void => {
+      const from = (ev?.target as HTMLElement).parentElement;
+      const to = ev?.relatedTarget as HTMLElement;
+      const isChild = to instanceof Node && from?.contains(to);
 
-  console.log(referenceElement);
+      if (!isChild) {
+        setOpened((prevState) => value ?? !prevState);
+      }
+    };
+
+  useOnEventOutside({
+    references: [referenceElement, popperElement],
+    handler: () => setOpened(false),
+  });
 
   return (
     <>
-      {triggerEl({ ref: setReferenceElement, toggle })}
-      {opened && (
-        <div
-          id="popper-container"
-          ref={setPopperElement}
-          style={styles.popper}
-          {...attributes.popper}
-        >
-          {childrenEl}
-        </div>
-      )}
+      {triggerEl({ ref: setReferenceElement, toggle, opened })}
+      {opened &&
+        referenceElement &&
+        createPortal(
+          <Panel.Container
+            width={width}
+            id={
+              referenceElement.getAttribute('aria-controls')
+                ? referenceElement.getAttribute('aria-controls')
+                : `popper-container-${referenceElement?.id}`
+            }
+            ref={setPopperElement}
+            styles={styles.popper as CSSProp<DefaultTheme>}
+            {...attributes.popper}
+          >
+            {childrenEl}
+          </Panel.Container>,
+          referenceElement.parentElement,
+        )}
     </>
   );
 };

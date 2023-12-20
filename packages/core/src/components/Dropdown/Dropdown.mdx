@@ -1,6 +1,7 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './Dropdown.stories';
+import * as CaseStories from './Dropdown.cases.stories';
 
 <Meta of={Stories} />
 
@@ -22,7 +23,104 @@ import { Dropdown } from '@devoinc/genesys-ui';
 
 ## Basic usage
 
+The `Dropdown` component must have two children components.
+First, the trigger element and next the to be displayed.
+
+The trigger component should be involved into a functions
+receiving the reference for the `ref` property, the `toggle`
+function to be called by the triggers event and `opened` as a boolean indiccating when it's opened.
+
+<Source
+  code={`
+import * as React from 'react';
+import { Dropdown } from '@devoinc/genesys-ui';
+export const MyDropdown = () => 
+  <Dropdown placement="bottom-start" width={'200px'}>
+    {({ toggle, ref, opened }) => (
+      <Button
+        onClick={toggle()}
+        ref={ref}
+        aria-haspopup={true}
+        aria-expanded={opened}
+      >
+        TriggerElement
+      </Button>
+    )}
+    <Menu>
+      <Menu.Item label="Option 1" />
+      <Menu.Item label="Option 2" />
+      <Menu.Item label="Option 3" />
+    </Menu>
+  </Dropdown>
+`}
+/>
+
+## Nested Dropdown
+
+`Dropdown` component allows the creation of hierarchical structures,
+where one Dropdown can contain other Dropdowns as selectable options.
+
+<Source
+  code={`
+import * as React from 'react';
+import { Dropdown } from '@devoinc/genesys-ui';
+export const MyDropdown = () => 
+  <Dropdown placement="bottom-start" width={'200px'}>
+    {({ toggle, ref, opened }) => (
+      <Button
+        onClick={toggle()}
+        ref={ref}
+        aria-haspopup={true}
+        aria-expanded={opened}
+      >
+        TriggerElement
+      </Button>
+    )}
+    <Menu>
+      <Menu.Item label="Option 1" />
+      <Menu.Item label="Option 2" />
+      <Menu.Item label="Option 3" />
+      <Dropdown placement="right-start">
+        {({ toggle, ref, opened }) => (
+          <Menu.Item
+            expandable
+            label="Option 4"
+            onClick={toggle(true)}
+            onMouseLeave={toggle()}
+            onMouseOver={toggle(true)}
+            ref={ref}
+            state={opened ? 'expanded' : 'enabled'}
+          />
+        )}
+        <Menu>
+          <Menu.Item label="Option 4.1" />
+          <Menu.Item label="Option 4.2" />
+          <Menu.Item label="Option 4.3" />
+        </Menu>
+      </Dropdown>
+    </Menu> 
+  </Dropdown>
+`}
+/>
+
 <Canvas of={Stories.Base} />
+
+## Cases
+
+### Including in a modal
+
+<Canvas of={CaseStories.IntoModal} sourceState="none" />
+
+### Using accebility props
+
+To ensure full accessibility of the component, we need to consider multiple aspects.
+These include:
+
+- Adding the value of the `id` attribute of the component that trigger the dropdown.
+- Each trigger component should have defined the `onClick` property.
+- Be sure that `aria-haspopup`, `aria-expanded`, `aria-controls`, `aria-label` and `role` are present into components.
+
+<Canvas of={CaseStories.FullAccessibility} />
 
 ## Props
 
