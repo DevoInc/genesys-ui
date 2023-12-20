@@ -21,16 +21,6 @@ export const useRenderContent = (columnDef: ColDef, data: unknown) => {
 
   const [isEditMode, setIsEditMode] = React.useState<boolean>(false);
 
-  // const editionContent = React.useMemo(
-  //   () =>
-  //     columnDef.cellEditor
-  //       ? columnDef.cellEditor({
-  //           value: data,
-  //           onChange: columnDef.cellRendererConfig?.onChange,
-  //         })
-  //       : null,
-  //   [columnDef, data],
-  // );
   const editionContent = columnDef.cellEditor
     ? columnDef.cellEditor({
         value: data,
