@@ -1,47 +1,54 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-} from '../../../../declarations';
-
-import { HFlex } from '../../..';
-
-import { StyledAppBarContainer } from './StyledContainer';
+import { Box, BoxProps, HFlex } from '../../..';
+import { concat } from 'lodash';
 
 export interface AppBarContainerProps
-  extends GlobalAttrProps,
-    GlobalAriaProps,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps {
-  children?: React.ReactNode;
+  extends Omit<BoxProps, 'elevation' | 'position'> {
   /** Define the elevation styles of the container */
   sticky?: boolean;
+  /** Define some size and space properties of the container */
+  compact?: boolean;
 }
 
 export const AppBarContainer: React.FC<AppBarContainerProps> = ({
   children,
+  compact,
   id,
+  paddingLeft = 'cmp-md',
+  paddingRight = 'cmp-md',
   sticky = false,
-  tooltip,
-  ...nativeProps
+  styles,
+  ...boxProps
 }) => {
+  const theme = useTheme();
   const elevation = sticky ? 'stickyBottom' : 'ground';
   const tabsContainerTokens = useTheme().cmp.tabs.container;
 
   return (
-    <StyledAppBarContainer
-      {...nativeProps}
-      id={id ? `${id}__container` : null}
+    <Box
+      {...boxProps}
       elevation={elevation}
-      title={tooltip}
+      id={id ? `${id}__container` : null}
+      paddingLeft={paddingLeft}
+      paddingRight={paddingRight}
+      position="relative"
+      styles={concat(
+        `background-color: ${theme.cmp.appBar.color.background};`,
+        styles,
+      )}
     >
-      <HFlex alignItems="center" height={tabsContainerTokens.size.height.lg}>
+      <HFlex
+        alignItems="center"
+        height={
+          compact
+            ? `calc(${tabsContainerTokens.size.height.lg} - 2rem)`
+            : tabsContainerTokens.size.height.lg
+        }
+      >
         {children}
       </HFlex>
-    </StyledAppBarContainer>
+    </Box>
   );
 };

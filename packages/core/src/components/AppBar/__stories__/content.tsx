@@ -1,21 +1,23 @@
 import * as React from 'react';
 
 import { Button } from '../../Button';
-import { IconButton } from '../../IconButton';
+import { IconButton, IconButtonProps } from '../../IconButton';
 import { Divider } from '../../Divider';
 import { Tabs, TabsItemProps } from '../../Tabs';
 import { STATUS_ICON_MAP } from '../../../constants';
 
-export const mainActions = [
+export const mainActions = (size: IconButtonProps['size'] = 'md') => [
   <IconButton
+    size={size}
     aria-label="avatar"
     tooltip="Avatar"
     key={1}
-    icon="gi-user_profile_avatar_man_male2"
+    icon="gi-user_profile_avatar_man_male"
     circular
     colorScheme="quiet"
   />,
   <IconButton
+    size={size}
     aria-label="Search"
     tooltip="Search"
     key={2}
@@ -24,6 +26,7 @@ export const mainActions = [
     colorScheme="quiet"
   />,
   <IconButton
+    size={size}
     aria-label="Notifications"
     tooltip="Notifications"
     key={3}
@@ -32,6 +35,7 @@ export const mainActions = [
     colorScheme="quiet"
   />,
   <IconButton
+    size={size}
     aria-label="Help"
     tooltip="Help"
     key={4}
@@ -40,6 +44,7 @@ export const mainActions = [
     colorScheme="quiet"
   />,
   <IconButton
+    size={size}
     aria-label="Time zone"
     tooltip="Time zone"
     key={5}

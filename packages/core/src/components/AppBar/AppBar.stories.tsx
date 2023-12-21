@@ -4,6 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { AppBar } from './AppBar';
 import { mainActions, userOptions, tabs } from './__stories__/content';
 import { css } from 'styled-components';
+import { Box, Typography } from '../../components';
 
 const meta: Meta<typeof AppBar> = {
   title: 'Components/Core/Navigation/AppBar/Examples',
@@ -22,19 +23,61 @@ export default meta;
 type Story = StoryObj<typeof AppBar>;
 
 export const Base: Story = {
-  args: { tabItems: tabs },
+  args: {
+    tabItems: tabs,
+    sticky: true,
+  },
 };
 
 export const WithHeadingAndActions: Story = {
   args: {
     tabItems: tabs,
     heading: 'App',
-    actions: mainActions,
+    actions: mainActions(),
+    sticky: true,
+  },
+};
+
+export const Compact: Story = {
+  args: {
+    compact: true,
+    heading: 'Compact bar',
+    actions: mainActions('xs'),
+    sticky: true,
+  },
+};
+
+export const CompactWithAnotherToolbar: Story = {
+  render: () =>
+    (() => {
+      return (
+        <>
+          <AppBar />
+          <AppBar />
+        </>
+      );
+    })(),
+};
+
+export const CustomContentBlock: Story = {
+  args: {
+    customContent: (
+      <Box marginLeft="auto">
+        <Typography.Paragraph>Custom content</Typography.Paragraph>
+      </Box>
+    ),
+    heading: 'Custom content bar',
+    sticky: true,
+    tabItems: tabs,
   },
 };
 
 export const WithOptions: Story = {
-  args: { tabItems: tabs, options: userOptions },
+  args: {
+    tabItems: tabs,
+    options: userOptions,
+    sticky: true,
+  },
 };
 
 export const Custom: Story = {
@@ -42,10 +85,14 @@ export const Custom: Story = {
     (() => {
       const id = 'custom';
       return (
-        <AppBar.Container>
-          <AppBar.Heading id={id}>Hola</AppBar.Heading>
-          <AppBar.Navigation id={id}>Custom navigation</AppBar.Navigation>
-          <AppBar.Actions id={id}>Custom actions</AppBar.Actions>
+        <AppBar.Container sticky={true}>
+          <AppBar.Heading id={id}>Hello</AppBar.Heading>
+          <AppBar.Navigation id={id}>
+            <Typography.Paragraph>Custom navigation</Typography.Paragraph>
+          </AppBar.Navigation>
+          <AppBar.Actions id={id}>
+            <Typography.Paragraph>Custom actions</Typography.Paragraph>
+          </AppBar.Actions>
         </AppBar.Container>
       );
     })(),
@@ -55,7 +102,7 @@ export const CustomStyles: Story = {
   args: {
     tabItems: tabs,
     heading: 'App',
-    actions: mainActions,
+    actions: mainActions(),
     subcomponentStyles: {
       heading: css`
         > div {
@@ -64,5 +111,6 @@ export const CustomStyles: Story = {
       `,
       actions: 'background-color: #eee; border-radius: 0.4rem;',
     },
+    sticky: true,
   },
 };
