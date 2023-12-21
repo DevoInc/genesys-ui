@@ -126,13 +126,13 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
               }).getTime()
             : value.from
           : dateForMonth
-          ? subMonths(dateForMonth, 1).getTime()
-          : subMonths(new Date(), 1).getTime(),
+            ? subMonths(dateForMonth, 1).getTime()
+            : subMonths(new Date(), 1).getTime(),
       to: value.to
         ? value.to
         : dateForMonth
-        ? dateForMonth
-        : new Date().getTime(),
+          ? dateForMonth
+          : new Date().getTime(),
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],

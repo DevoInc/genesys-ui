@@ -122,22 +122,22 @@ export const Month: React.FC<MonthProps> = ({
           hasPrevMonthButton && hasNextMonthButton
             ? null
             : hasPrevMonthButton
-            ? '50%'
-            : null
+              ? '50%'
+              : null
         }
         positionLeft={
           hasPrevMonthButton && hasNextMonthButton
             ? null
             : hasNextMonthButton
-            ? '50%'
-            : null
+              ? '50%'
+              : null
         }
         cssTranslate={
           hasPrevMonthButton && hasNextMonthButton
             ? null
             : hasPrevMonthButton
-            ? '50%, 0'
-            : '-50%, 0'
+              ? '50%, 0'
+              : '-50%, 0'
         }
         width={'16.8rem'}
       >

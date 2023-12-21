@@ -4,7 +4,6 @@ import { visualizer } from 'rollup-plugin-visualizer';
 // Used from @storybook/react-vite dependencies
 import react from '@vitejs/plugin-react';
 
-/** @type {import('vite').UserConfig} */
 export default defineConfig({
   build: {
     sourcemap: true,
@@ -16,20 +15,34 @@ export default defineConfig({
     rollupOptions: {
       external: [
         'react',
+        'react-dom',
         '@devoinc/genesys-ui',
         'styled-components',
         '@tanstack/react-virtual',
+        'lodash',
         'date-fns',
+        'date-fns/locale',
         'date-fns-tz',
+        'filepond',
+        'react-filepond',
+        'react-color',
+        '@popperjs/core',
       ],
       output: {
         globals: {
           react: 'React',
+          'react-dom': 'ReactDom',
           'styled-components': 'styled',
           '@devoinc/genesys-ui': 'genesysUi',
           '@tanstack/react-virtual': 'ReactVirtual',
+          lodash: 'lodash',
           'date-fns': 'dateFns',
           'date-fns-tz': 'dateFnsTz',
+          filepond: 'filepond',
+          'react-filepond': 'reactFilepond',
+          'react-color': 'reactColor',
+          '@popperjs/core': 'popperCore',
+          'date-fns/locale': 'dateFnsLocale',
         },
       },
     },

@@ -1,12 +1,18 @@
 import * as React from 'react';
 
-import { Button, Form, IconButton, Panel, Popper } from '@devoinc/genesys-ui';
+import { Form, IconButton, Panel, Popper } from '@devoinc/genesys-ui';
 
 type AdvancedProps = {
   children: React.ReactNode;
+  footer?: React.ReactNode;
+  header?: React.ReactNode;
 };
 
-export const Advanced: React.FC<AdvancedProps> = ({ children }) => {
+export const Advanced: React.FC<AdvancedProps> = ({
+  children,
+  footer,
+  header,
+}) => {
   const [isVisible, setIsVisible] = React.useState(false);
   return (
     <Popper
@@ -34,11 +40,11 @@ export const Advanced: React.FC<AdvancedProps> = ({ children }) => {
         id="story-id"
         width={'28rem'}
         footerSettings={{
-          actions: [
-            <Button key={1} size="sm" colorScheme="accent">
-              Reset
-            </Button>,
-          ],
+          bordered: true,
+          renderContent: footer,
+        }}
+        headerSettings={{
+          renderContent: header,
         }}
       >
         <Form padding="cmp-sm">{children}</Form>

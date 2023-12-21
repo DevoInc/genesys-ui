@@ -2,21 +2,20 @@ import { VirtualItem } from '@tanstack/react-virtual';
 import { ColDef, DefaultColDef, Preset } from '../../declarations';
 
 export const getColDefByID = (
-  columnDefs: ColDef[] = [],
+  colDefs: ColDef[] = [],
   virtualColumn: VirtualItem,
-): ColDef =>
-  columnDefs.find((colDef: ColDef) => colDef.id === virtualColumn?.key);
+): ColDef => colDefs.find((colDef: ColDef) => colDef.id === virtualColumn?.key);
 
 /**
  * @returns Column defs mixed with default column def
  */
 export const getCollatedColumns = (
-  defaultColumnDef: DefaultColDef,
+  defaultColDef: DefaultColDef,
   column: ColDef,
   presets: Preset[] = [],
 ): ColDef => {
   const preset = presets.find((element) => element.id === column.preset);
-  return { ...defaultColumnDef, ...preset, ...column };
+  return { ...defaultColDef, ...preset, ...column };
 };
 
 export const getOccupiedWidthInfo = (colDefs: ColDef[]): [number, number] =>

@@ -24,7 +24,7 @@ const RowWrapper = () => {
   return (
     <div ref={rowRef}>
       <Row
-        columnDefs={[
+        colDefs={[
           {
             id: 'name',
             headerName: 'Name',

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { DateContext } from './valueFormatters/date';
 import { FilterProps } from './filters/declarations';
+import { CellRendererProps } from './renderers/declarations';
+import { CellEditorProps } from './editors/declarations';
 
 export type DefaultColDef = Omit<ColDef, 'id'>;
 
@@ -35,8 +37,8 @@ export type Preset = {
 } & Omit<ColDef, 'colId'>;
 
 export interface TableOptionsProps {
-  columnDefs?: ColDef[];
-  defaultColumnDef?: DefaultColDef;
+  colDefs?: ColDef[];
+  defaultColDef?: DefaultColDef;
   columnPresets?: Preset[];
   context?: {
     [key: string]: unknown;
@@ -48,7 +50,7 @@ export interface TableOptionsProps {
 
 export interface CellRendererParams {
   value: unknown;
-  columnDef: ColDef;
+  colDef: ColDef;
 }
 
 export type CellVerAlign = 'top' | 'bottom' | 'center';
@@ -66,18 +68,6 @@ export interface ColumnCellStyleProps {
   toEdge?: boolean;
 }
 
-type EditCellOnChange = (newValue: unknown) => void;
-
-interface CellEditorParams {
-  value: unknown;
-  onChange: EditCellOnChange;
-}
-
-interface CellRendererConfig {
-  onChange?: EditCellOnChange;
-  [key: string]: any;
-}
-
 export type ColDef = {
   id: string;
   headerName?: string;
@@ -86,11 +76,13 @@ export type ColDef = {
 
   editable?: boolean;
   cellEditor?:
-    | React.FC<CellEditorParams>
-    | (({ value, onChange }: CellEditorParams) => React.ReactNode);
+    | React.FC<CellEditorProps>
+    | (({ value, onChange }: CellEditorProps) => React.ReactNode);
+  cellEditorParams?: { [key: string]: unknown };
   cellRenderer?:
-    | React.FC<CellRendererParams>
-    | (({ value, columnDef }: CellRendererParams) => React.ReactNode);
+    | React.FC<CellRendererProps>
+    | (({ value, colDef }: CellRendererProps) => React.ReactNode);
+  cellRendererParams?: { [key: string]: unknown };
   valueFormatter?: (value: unknown, context: DateContext) => void;
 
   cellFilter?:
@@ -98,8 +90,6 @@ export type ColDef = {
     | (({ colDef }: FilterProps) => React.ReactNode);
   cellFilterParams?: { [key: string]: unknown };
 
-  // revisar
-  cellRendererConfig?: CellRendererConfig;
   context?: {
     [key: string]: unknown;
   };
@@ -111,6 +101,8 @@ export type ColDef = {
   tooltipField?: string;
   resizable?: boolean;
 };
+
+export type Data = { [key: string]: unknown }[];
 
 export type RowHeight = 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
 

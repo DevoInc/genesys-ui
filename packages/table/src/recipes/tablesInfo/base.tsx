@@ -39,7 +39,7 @@ export const baseData = Holo.of()
   .generate();
 
 export const baseOptions: TableOptionsProps = {
-  defaultColumnDef: {
+  defaultColDef: {
     editable: false,
   },
   visualOptions: {
@@ -48,7 +48,7 @@ export const baseOptions: TableOptionsProps = {
     resizableColumns: true,
     highlightColumnsOnHover: true,
   },
-  columnDefs: [
+  colDefs: [
     {
       id: 'id',
       preset: 'text',
@@ -70,7 +70,7 @@ export const baseOptions: TableOptionsProps = {
                 shortcut: "⌘ '",
                 title: 'Testing menu',
                 onChange: () => {
-                  console.log(params.columnDef.headerName);
+                  console.log(params.colDef.headerName);
                 },
               },
             ]}

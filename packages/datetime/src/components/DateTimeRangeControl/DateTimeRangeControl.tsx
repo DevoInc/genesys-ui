@@ -153,10 +153,10 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
       hasMillis
         ? 'withMillis'
         : hasSeconds
-        ? 'withSeconds'
-        : hasTime
-        ? 'withTime'
-        : 'base'
+          ? 'withSeconds'
+          : hasTime
+            ? 'withTime'
+            : 'base'
     ][size];
   };
 

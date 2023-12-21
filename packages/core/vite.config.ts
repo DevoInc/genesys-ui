@@ -53,6 +53,7 @@ export default defineConfig({
           'prop-types': 'propTypes',
           '@emotion/use-insertion-effect-with-fallbacks':
             'emotionUseInsertionEffectWithFallbacks',
+          '@emotion/react': 'emotionReact',
         },
       },
     },

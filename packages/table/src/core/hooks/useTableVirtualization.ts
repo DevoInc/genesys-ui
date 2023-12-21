@@ -8,14 +8,14 @@ import {
 
 interface UseVirtualizationParamsRow {
   data: { [key: string]: unknown }[];
-  columnDefs: ColDef[];
+  colDefs: ColDef[];
   visualOptions: TableVisualOptions;
   wrapperRef: React.MutableRefObject<HTMLDivElement>;
   sizes: SizesConfig;
 }
 
 interface UseVirtualizationParamsColumn {
-  columnDefs: ColDef[];
+  colDefs: ColDef[];
   visualOptions: TableVisualOptions;
   wrapperRef: React.MutableRefObject<HTMLDivElement>;
 }
@@ -27,9 +27,7 @@ const getRowHeight = (
 ) => {
   return sizes.row.height[
     visualOptions?.rowHeight ||
-      (colDefs.find((columnDef) => columnDef.preset === 'longText')
-        ? 'lg'
-        : 'md')
+      (colDefs.find((colDef) => colDef.preset === 'longText') ? 'lg' : 'md')
   ];
 };
 
@@ -40,13 +38,12 @@ const getTableWidth = (
 
 export const useTableVirtualizationRow = ({
   data,
-  columnDefs,
+  colDefs,
   visualOptions,
   wrapperRef,
   sizes,
 }: UseVirtualizationParamsRow) => {
-  const rowHeight = getRowHeight(sizes, visualOptions, columnDefs);
-
+  const rowHeight = getRowHeight(sizes, visualOptions, colDefs);
   return useVirtualizer({
     count: data.length,
     getScrollElement: () => wrapperRef.current,
@@ -56,29 +53,25 @@ export const useTableVirtualizationRow = ({
 };
 
 export const useTableVirtualizationColumn = ({
-  columnDefs,
+  colDefs,
   visualOptions,
   wrapperRef,
 }: UseVirtualizationParamsColumn) => {
   const tableWidth = getTableWidth(visualOptions, wrapperRef);
 
   const defaultColWidth = getDefaultColWidth(
-    columnDefs,
+    colDefs,
     tableWidth,
-    getOccupiedWidthInfo(columnDefs),
+    getOccupiedWidthInfo(colDefs),
   );
 
   return useVirtualizer({
-    count: columnDefs.length,
+    count: colDefs.length,
     getScrollElement: () => wrapperRef.current,
     estimateSize: (index: number) =>
-      getColWidth(
-        columnDefs[index].cellStyle?.width,
-        tableWidth,
-        defaultColWidth,
-      ),
+      getColWidth(colDefs[index].cellStyle?.width, tableWidth, defaultColWidth),
     horizontal: true,
-    getItemKey: (index: number) => columnDefs[index].id,
+    getItemKey: (index: number) => colDefs[index].id,
     overscan: 2,
   });
 };

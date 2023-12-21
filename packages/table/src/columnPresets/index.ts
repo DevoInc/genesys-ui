@@ -3,6 +3,5 @@ export * from './link';
 export * from './number';
 export * from './text';
 export * from './longText';
-export * from './tagBoolean';
-export * from './tag';
-export * from './tags';
+export * from './boolean';
+export * from './options';
