@@ -170,10 +170,10 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
               colorScheme === 'accent-high'
                 ? 'primary'
                 : colorScheme === 'accent'
-                ? 'secondary'
-                : colorScheme === 'quiet'
-                ? 'neutral'
-                : (colorScheme as UIColorScheme)
+                  ? 'secondary'
+                  : colorScheme === 'quiet'
+                    ? 'neutral'
+                    : (colorScheme as UIColorScheme)
             }
             hasCircularParent={circular}
             id={id}

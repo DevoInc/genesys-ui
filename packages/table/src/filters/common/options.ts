@@ -22,3 +22,13 @@ export const numberOptions = [
   { value: 'blank', label: 'Blank' },
   { value: 'notBlank', label: 'Not blank' },
 ];
+
+export const dateOptions = [
+  { value: 'equals', label: 'Equals to' },
+  { value: 'notEquals', label: 'Does not equal to' },
+  { value: 'before', label: 'Before' },
+  { value: 'after', label: 'After' },
+  { value: 'between', label: 'Between' },
+  { value: 'blank', label: 'Blank' },
+  { value: 'notBlank', label: 'Not blank' },
+];

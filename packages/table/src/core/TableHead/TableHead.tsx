@@ -6,35 +6,41 @@ import { Typography } from '@devoinc/genesys-ui';
 import { StyledTableHead } from './StyledTableHead';
 import { StyledTableHeadRow } from './StyledTableHeadRow';
 import { HeaderCell } from '../HeaderCell';
-import { ColDef } from '../../declarations';
+import { ColDef, Data } from '../../declarations';
 import { getColDefByID } from '../utils';
 import { TableContext } from '../Table/context';
 
 interface TableHeadProps {
   scrolled?: boolean;
   columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
-  columnDefs: ColDef[];
+  colDefs: ColDef[];
+  data: Data;
 }
 
 export const TableHead: React.FC<TableHeadProps> = ({
   columnVirtualizer,
-  columnDefs,
+  colDefs,
   scrolled,
+  data,
 }) => {
-  const { measures, sizes, showFilters } = React.useContext(TableContext);
+  const { measures, sizes, showFilters, visualOptions } =
+    React.useContext(TableContext);
   return (
     <StyledTableHead scrolled={scrolled} $width={measures?.body?.total?.width}>
       <StyledTableHeadRow $height={`${sizes.head.height}px`}>
         {columnVirtualizer
           .getVirtualItems()
           .map((virtualColumn: VirtualItem) => {
-            const colDef = getColDefByID(columnDefs, virtualColumn);
+            const colDef = getColDefByID(colDefs, virtualColumn);
             return (
               <HeaderCell
                 key={`header-cell-${virtualColumn.key}`}
-                colDef={getColDefByID(columnDefs, virtualColumn)}
+                colDef={colDef}
                 width={`${virtualColumn.size}px`}
                 offsetX={virtualColumn.start}
+                resizable={
+                  colDef?.resizable ?? visualOptions?.resizableColumns ?? false
+                }
               >
                 <Typography.Heading size="h6" truncateLine={1}>
                   {colDef.headerName}
@@ -48,17 +54,18 @@ export const TableHead: React.FC<TableHeadProps> = ({
           {columnVirtualizer
             .getVirtualItems()
             .map((virtualColumn: VirtualItem) => {
-              const colDef = getColDefByID(columnDefs, virtualColumn);
+              const colDef = getColDefByID(colDefs, virtualColumn);
               return (
                 <HeaderCell
-                  isFilterCell
                   key={`header-filter-cell-${virtualColumn.key}`}
-                  colDef={getColDefByID(columnDefs, virtualColumn)}
+                  colDef={colDef}
                   resizable={false}
                   width={`${virtualColumn.size}px`}
                   offsetX={virtualColumn.start}
                 >
-                  {colDef.cellFilter ? colDef.cellFilter({ colDef }) : null}
+                  {colDef.cellFilter
+                    ? colDef.cellFilter({ colDef, data })
+                    : null}
                 </HeaderCell>
               );
             })}

@@ -9,10 +9,10 @@ export const toTSorPreset = (date: string | Datetime) =>
   date instanceof Date
     ? date.getTime()
     : date === null || date === ''
-    ? date
-    : !isNaN(Number(date))
-    ? Number(date)
-    : date;
+      ? date
+      : !isNaN(Number(date))
+        ? Number(date)
+        : date;
 
 /**
  * Convert a date to timestamp

@@ -18,6 +18,7 @@ import type {
 import { SelectComponents } from 'react-select/dist/declarations/src/components';
 import { SelectOption } from './declarations';
 import {
+  CSSObjectWithLabel,
   GroupBase,
   mergeStyles,
   MultiValue,
@@ -54,28 +55,26 @@ export const SelectControl = <
   isClearable,
   ...rest
 }: SelectControlProps<Option, IsMulti, Group>) => {
-  const defaultStyles: StylesConfig<Option, IsMulti, Group> = React.useMemo(
+  const defaultStyles = React.useMemo(
     () => ({
-      menuPortal: (base) => ({
+      menuPortal: (base: CSSObjectWithLabel) => ({
         ...base,
         zIndex: rest.menuAppendToBody ? 10000 : '',
       }),
-      menuList: (base) => {
-        return {
-          ...base,
-          maxHeight: rest.maxMenuHeight
-            ? rest.selectAllBtn
-              ? rest.maxMenuHeight - CUSTOM_HEIGHT[rest.size]
-              : rest.maxMenuHeight
-            : rest.selectAllBtn
+      menuList: (base: CSSObjectWithLabel) => ({
+        ...base,
+        maxHeight: rest.maxMenuHeight
+          ? rest.selectAllBtn
+            ? rest.maxMenuHeight - CUSTOM_HEIGHT[rest.size]
+            : rest.maxMenuHeight
+          : rest.selectAllBtn
             ? 200 - CUSTOM_HEIGHT[rest.size]
             : 200,
-          minHeight:
-            rest.minMenuHeight && rest.selectAllBtn
-              ? rest.minMenuHeight - CUSTOM_HEIGHT[rest.size]
-              : rest.minMenuHeight,
-        };
-      },
+        minHeight:
+          rest.minMenuHeight && rest.selectAllBtn
+            ? rest.minMenuHeight - CUSTOM_HEIGHT[rest.size]
+            : rest.minMenuHeight,
+      }),
       multiValueRemove: () => ({}),
     }),
     [
@@ -135,7 +134,10 @@ export const SelectControl = <
       menuPortalTarget={rest.menuRelative ? null : menuPortalTarget}
       isClearable={clearable}
       {...(onChange && { onChange })}
-      componentStyles={mergeStyles(defaultStyles, componentStyles)}
+      componentStyles={mergeStyles(
+        defaultStyles as StylesConfig,
+        componentStyles,
+      )}
       {...(value && { value: findValue(value, rest.options, rest.isMulti) })}
       components={
         { ...defaultComponents, ...components } as Partial<

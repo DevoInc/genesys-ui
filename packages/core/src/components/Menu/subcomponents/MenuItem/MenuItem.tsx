@@ -106,8 +106,8 @@ export const MenuItem: React.FC<MenuItemProps> = ({
     selectionScheme === 'single'
       ? 'menuitemradio'
       : selectionScheme === 'multiple'
-      ? 'menuitemcheckbox'
-      : 'menuitem';
+        ? 'menuitemcheckbox'
+        : 'menuitem';
   const getHasExtraLeftSpace = () => {
     if (hasExtraLeftSpace === false) return false;
     if (Boolean(children) && hasExtraLeftSpace) return true;

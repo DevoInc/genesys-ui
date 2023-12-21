@@ -43,6 +43,7 @@ export const StyledLabel = styled.span<StyledLabelProps>`
     return css`
       position: relative;
       display: block;
+      word-break: break-word;
       cursor: ${cursor || (htmlFor ? 'pointer' : 'default')};
 
       // to get text ellipsis

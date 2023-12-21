@@ -7,7 +7,7 @@ import { Box, Typography } from '@devoinc/genesys-ui';
 import { TableContext } from '../Table/context';
 
 export interface TableBodyProps {
-  columnDefs: ColDef[];
+  colDefs: ColDef[];
   columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
   data: unknown;
   rowVirtualizer: Virtualizer<HTMLDivElement, Element>;
@@ -39,7 +39,7 @@ const getEmptyMessage = (
 };
 
 export const TableBody: React.FC<TableBodyProps> = ({
-  columnDefs,
+  colDefs,
   columnVirtualizer,
   data,
   rowVirtualizer,
@@ -55,14 +55,14 @@ export const TableBody: React.FC<TableBodyProps> = ({
     >
       {emptyMessage ? (
         <tr>
-          <td colSpan={columnDefs?.length}>{renderMessage(emptyMessage)}</td>
+          <td colSpan={colDefs?.length}>{renderMessage(emptyMessage)}</td>
         </tr>
       ) : (
         rowVirtualizer.getVirtualItems().map((virtualRow: VirtualItem) => {
           return (
             <Row
               key={'tb_' + virtualRow.key}
-              columnDefs={columnDefs}
+              colDefs={colDefs}
               columnVirtualizer={columnVirtualizer}
               data={data[virtualRow.index]}
               virtualRow={virtualRow}

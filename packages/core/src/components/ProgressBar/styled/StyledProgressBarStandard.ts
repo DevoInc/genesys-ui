@@ -78,16 +78,16 @@ export const StyledProgressBarStandard = styled.div<StyledProgressBarStandardPro
       indeterminate && status === 'progressing'
         ? '30%'
         : indeterminate
-        ? '100%'
-        : percent
-        ? `${percent}%`
-        : null;
+          ? '100%'
+          : percent
+            ? `${percent}%`
+            : null;
     const percentMinorBarWidth =
       indeterminate && status === 'progressing'
         ? '15%'
         : indeterminate
-        ? '0'
-        : null;
+          ? '0'
+          : null;
     return css`
       flex: 1 1 auto;
       background-color: ${getTrackBgColor({

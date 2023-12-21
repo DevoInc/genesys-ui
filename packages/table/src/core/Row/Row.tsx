@@ -6,14 +6,14 @@ import { StyledTableRow, StyledTableRowProps } from './StyledTableRow';
 import { TableContext } from '../Table/context';
 
 interface RowProps extends StyledTableRowProps {
-  columnDefs: ColDef[];
+  colDefs: ColDef[];
   data: { [key: string]: unknown };
   columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
   virtualRow: VirtualItem;
 }
 
 export const Row: React.FC<RowProps> = ({
-  columnDefs,
+  colDefs,
   columnVirtualizer,
   data,
   isAfterRow,
@@ -35,8 +35,8 @@ export const Row: React.FC<RowProps> = ({
     >
       {columnVirtualizer.getVirtualItems().map((virtualColumn: VirtualItem) => (
         <Cell
-          columnDef={columnDefs[virtualColumn.index]}
-          data={data[columnDefs[virtualColumn.index].id] ?? ''}
+          colDef={colDefs[virtualColumn.index]}
+          data={data[colDefs[virtualColumn.index].id] ?? ''}
           height={virtualRow.size}
           key={`cell-${virtualColumn.key}`}
           offsetX={virtualColumn.start}

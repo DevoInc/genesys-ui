@@ -2,6 +2,7 @@
   "name": "@devoinc/genesys-ui-table",
   "version": "1.8.0",
   "description": "",
+  "type": "module",
   "scripts": {
     "compile": "tsc --project tsconfig.json",
     "compile:watch": "npm run compile -- --watch",
@@ -27,7 +28,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@devoinc/genesys-ui": "^1.8.0",
-    "@tanstack/react-virtual": "^3.0.0-beta.65",
+    "@tanstack/react-virtual": "^3.0.1",
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0",
     "react": "16.x || 17.x || 18.x"
