@@ -27,6 +27,8 @@ interface BaseAppBarProps extends AppBarContainerProps {
     | React.ReactElement<ButtonProps>
     | React.ReactElement<IconButtonCloseProps>
   )[];
+  /** Custom content to be added to the app bar. */
+  customContent?: React.ReactNode;
   /** Heading content. */
   heading?: AppBarHeadingProps['children'];
   /** List of options elements. */
@@ -45,6 +47,7 @@ export type AppBarProps = BaseAppBarProps &
 
 const InternalAppBar: React.FC<AppBarProps> = ({
   actions,
+  customContent,
   id,
   options,
   sticky = false,
@@ -52,10 +55,10 @@ const InternalAppBar: React.FC<AppBarProps> = ({
   heading,
   styles,
   subcomponentStyles,
-  ...nativeProps
+  ...restContainerProps
 }) => (
   <AppBarContainer
-    {...nativeProps}
+    {...restContainerProps}
     styles={subcomponentStyles?.container || styles}
     id={id}
     sticky={sticky}
@@ -85,6 +88,7 @@ const InternalAppBar: React.FC<AppBarProps> = ({
         <ButtonGroup size="md">{options}</ButtonGroup>
       </AppBarOptions>
     )}
+    {customContent}
   </AppBarContainer>
 );
 
