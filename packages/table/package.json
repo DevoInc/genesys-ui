@@ -2,6 +2,7 @@
   "name": "@devoinc/genesys-ui-table",
   "version": "1.8.0",
   "description": "",
+  "type": "module",
   "scripts": {
     "compile": "tsc --project tsconfig.json",
     "compile:watch": "npm run compile -- --watch",
