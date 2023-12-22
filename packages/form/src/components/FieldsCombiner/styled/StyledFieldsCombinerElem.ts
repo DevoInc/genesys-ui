@@ -5,6 +5,7 @@ import { FieldsCombinerType } from '../declarations';
 import { FieldSize, FieldStatus } from '@devoinc/genesys-ui';
 
 export interface StyledFieldsCombinerElemProps {
+  combinedButtons?: boolean;
   elemWidth?: React.CSSProperties['width'];
   first?: boolean;
   typeProp?: FieldsCombinerType;
@@ -13,7 +14,7 @@ export interface StyledFieldsCombinerElemProps {
 }
 
 export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps>`
-  ${({ size, elemWidth, first, theme, typeProp, status }) => {
+  ${({ combinedButtons, size, elemWidth, first, theme, typeProp, status }) => {
     const fieldTokens = theme.alias.fields;
     const btnTokens = theme.cmp.button;
     const height = btnTokens.size.height[size];
@@ -66,24 +67,27 @@ export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps
         }
       `}
 
-        // Right elem
-      ${!first &&
+      ${!combinedButtons &&
       css`
-        margin-left: -0.1rem;
-      `}
+        // Right elem
+        ${!first &&
+        css`
+          margin-left: -0.1rem;
+        `}
 
         // states
-      &:hover {
-        z-index: 2;
-      }
+        &:hover {
+          z-index: 2;
+        }
+      `};
 
       // parent hover state
-      *:hover > & {
-        ${typeProp === 'check' &&
-        css`
+      ${typeProp === 'check' &&
+      css`
+        *:hover > & {
           border-color: ${fieldTokens.color.border.base.hovered};
-        `}
-      }
+        }
+      `}
     `;
   }};
 `;

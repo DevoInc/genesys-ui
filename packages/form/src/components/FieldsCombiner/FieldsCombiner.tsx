@@ -13,6 +13,8 @@ import {
   IconButtonProps,
   SelectControlProps,
   CheckboxControlProps,
+  Popper,
+  PopperProps,
 } from '@devoinc/genesys-ui';
 
 import {
@@ -33,6 +35,7 @@ export interface FieldsCombinerProps extends Omit<FieldProps, 'children'> {
     | React.ComponentPropsWithoutRef<typeof InputControl.Input>
     | SelectControlProps
     | CheckboxControlProps
+    | PopperProps
   >;
   leftElemWidth?: string;
   margin?: string;
@@ -43,6 +46,7 @@ export interface FieldsCombinerProps extends Omit<FieldProps, 'children'> {
     | React.ComponentPropsWithoutRef<typeof InputControl.Input>
     | SelectControlProps
     | CheckboxControlProps
+    | PopperProps
   >;
   /** Width of the Field/component to the left of the group */
   rightElemWidth?: string;
@@ -75,12 +79,16 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
   const LeftElement = leftElem;
 
   const elemType = (elem) => {
-    const elemTypeName = elem?.type?.displayName;
+    const elemTypeDisplayName = elem?.type?.displayName;
+    const elemTypeName = elem?.type?.name;
     if (
-      elemTypeName === Button.displayName ||
-      elemTypeName === IconButton.displayName
+      elemTypeDisplayName === Button.displayName ||
+      elemTypeDisplayName === IconButton.displayName
     ) {
       return 'button';
+    }
+    if (elemTypeName === Popper.name) {
+      return 'popper';
     } else if (
       elem.type === SelectControl ||
       elem.type === InputControl.Input
@@ -93,6 +101,9 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
     }
   };
   const theme = useTheme();
+  const combinedButtons =
+    (elemType(leftElem) === 'button' || elemType(leftElem) === 'popper') &&
+    (elemType(rightElem) === 'button' || elemType(rightElem) === 'popper');
   return (
     <Field
       hasFloatingHelper={hasFloatingHelper}
@@ -114,6 +125,7 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
           size={size}
           status={status}
           typeProp={elemType(leftElem)}
+          combinedButtons={combinedButtons}
           {...props}
         >
           {LeftElement &&
@@ -128,8 +140,10 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
                       status,
                       theme,
                     })
-                  : elemType(leftElem) === 'button'
+                  : elemType(leftElem) === 'button' ||
+                      elemType(leftElem) === 'popper'
                     ? fieldsCombinerButtonMixin({
+                        combinedButtons,
                         first: true,
                         size,
                         status,
@@ -144,6 +158,7 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
           size={size}
           status={status}
           typeProp={elemType(rightElem)}
+          combinedButtons={combinedButtons}
           {...props}
         >
           {RightElement &&
@@ -158,8 +173,10 @@ export const FieldsCombiner: React.FC<FieldsCombinerProps> = ({
                       status,
                       theme,
                     })
-                  : elemType(rightElem) === 'button'
+                  : elemType(rightElem) === 'button' ||
+                      elemType(rightElem) === 'popper'
                     ? fieldsCombinerButtonMixin({
+                        combinedButtons,
                         first: false,
                         size,
                         status,
