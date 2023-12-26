@@ -2,7 +2,10 @@ import { css, DefaultTheme, StyledComponent } from 'styled-components';
 import { ButtonSize } from '../Button';
 import { FLEX_SPACING_SIZE_MAP } from './constants';
 
-const getSpacingSize = (size: ButtonSize, theme: DefaultTheme) => {
+export const getButtonGroupSpacingSize = (
+  size: ButtonSize,
+  theme: DefaultTheme,
+) => {
   const sizeForSpacing = FLEX_SPACING_SIZE_MAP[size];
   return theme.alias.space.cmp[sizeForSpacing];
 };
@@ -63,14 +66,12 @@ export const buttonGroupItemMixin = ({
   size,
   theme,
 }: ButtonGroupItemMixinProps) => {
-  const spacingBetweenButtons = getSpacingSize(size, theme);
+  const spacingBetweenButtons = getButtonGroupSpacingSize(size, theme);
   return css`
     list-style: none;
-
-    & + & {
-      margin-left: ${quietChildButton
-        ? `calc((${spacingBetweenButtons} / 2) * -1)`
-        : null};
-    }
+    // to reduce the optical distancing effect when the buttons are quiet colorScheme
+    margin-left: ${quietChildButton
+      ? `calc((${spacingBetweenButtons} / 2) * -1)`
+      : null};
   `;
 };

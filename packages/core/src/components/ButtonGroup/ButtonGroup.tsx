@@ -12,6 +12,7 @@ import {
   buttonGroupMixin,
   ButtonGroupMixinProps,
 } from './helpers';
+import { concat } from 'lodash';
 
 export interface ButtonGroupProps
   extends Omit<FlexProps, 'as' | 'children'>,
@@ -53,11 +54,14 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
         <Flex.Item
           as="li"
           key={idx}
-          styles={buttonGroupItemMixin({
-            quietChildButton: child.props?.colorScheme === 'quiet',
-            size,
-            theme,
-          })}
+          styles={concat(
+            child.props.styles,
+            buttonGroupItemMixin({
+              quietChildButton: child.props?.colorScheme === 'quiet',
+              size,
+              theme,
+            }),
+          )}
         >
           {React.cloneElement(child, {
             key: idx,
