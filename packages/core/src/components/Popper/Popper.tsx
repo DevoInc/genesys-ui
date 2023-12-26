@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as PopperJS from '@popperjs/core';
 import { usePopper } from 'react-popper';
 import ReactDOM from 'react-dom';
+import { concat } from 'lodash';
 
 import { POPPER_DEFAULT_OFFSET } from './constants';
 import {
@@ -18,6 +19,7 @@ import {
   StyledOverloadCssPropsWithRecord,
   TriggerAriaProps,
 } from '../../declarations';
+
 const defaultAppendToProp =
   typeof window !== 'undefined' ? document.body : null;
 
@@ -146,7 +148,7 @@ export const Popper: React.FC<PopperProps> = ({
   const triggerCmp = useAddPropsToChildren(trigger, {
     onClick: wrappedClick,
     state: isVisible ? 'expanded' : undefined,
-    styles: subcomponentStyles?.trigger || styles,
+    styles: concat(trigger.props.styles, subcomponentStyles?.trigger || styles),
     ref: setTriggerRef,
   });
   const childrenCmp = useAddPropsToChildren(children, {
