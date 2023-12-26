@@ -21,7 +21,7 @@ export const AppBarHeading: React.FC<AppBarHeadingProps> = ({
   id,
   styles,
 }) => (
-  <Flex.Item id={`${id}__heading`} as={as} styles={styles}>
+  <Flex.Item id={id ? `${id}__heading` : null} as={as} styles={styles}>
     {typeof children === 'string' ? (
       <Typography.Heading colorScheme="weaker" size="overline-md">
         {children}

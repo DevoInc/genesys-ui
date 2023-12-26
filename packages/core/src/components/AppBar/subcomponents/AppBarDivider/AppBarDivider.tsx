@@ -22,7 +22,7 @@ export const AppBarDivider: React.FC<AppBarDividerProps> = ({
   const appBarDividerTokens = useTheme().cmp.appBar.divider;
 
   return (
-    <Flex.Item id={`${id}__divider`} as={as} styles={styles}>
+    <Flex.Item id={id ? `${id}__divider` : null} as={as} styles={styles}>
       <Divider
         vertical
         customColor={appBarDividerTokens.color.border}

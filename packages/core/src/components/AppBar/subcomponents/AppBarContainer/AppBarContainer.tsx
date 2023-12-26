@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
+import { css, useTheme } from 'styled-components';
 
 import { Box, BoxProps, HFlex } from '../../..';
 import { concat } from 'lodash';
 
 export interface AppBarContainerProps
   extends Omit<BoxProps, 'elevation' | 'position'> {
+  /** If the app bar has a bottom-border */
+  bordered?: boolean;
   /** Define the elevation styles of the container */
   sticky?: boolean;
   /** Define some size and space properties of the container */
@@ -13,6 +15,7 @@ export interface AppBarContainerProps
 }
 
 export const AppBarContainer: React.FC<AppBarContainerProps> = ({
+  bordered,
   children,
   compact,
   id,
@@ -35,7 +38,14 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
       paddingRight={paddingRight}
       position="relative"
       styles={concat(
-        `background-color: ${theme.cmp.appBar.color.background};`,
+        css`
+          background-color: ${theme.cmp.appBar.color.background};
+          ${bordered &&
+          css`
+            border-bottom: solid ${theme.alias.shape.borderSize.separator.md}
+              ${theme.alias.color.border.separator.base.weak};
+          `}
+        `,
         styles,
       )}
     >
