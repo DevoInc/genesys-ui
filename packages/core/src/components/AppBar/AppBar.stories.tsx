@@ -8,7 +8,6 @@ import {
   Box,
   Button,
   ButtonGroup,
-  Divider,
   HFlex,
   IconButton,
   InputControl,
@@ -71,19 +70,34 @@ export const CompactWithAnotherToolbar: Story = {
             compact
             heading="Compact app bar"
             actions={[
-              <IconButton size="sm" colorScheme="quiet" circular>
+              <IconButton
+                key="actions-01"
+                size="sm"
+                colorScheme="quiet"
+                circular
+              >
                 <GISearchFindZoom
                   size="1.8rem"
                   style={{ position: 'relative' }}
                 />
               </IconButton>,
-              <IconButton size="sm" colorScheme="quiet" circular>
+              <IconButton
+                key="actions-02"
+                size="sm"
+                colorScheme="quiet"
+                circular
+              >
                 <GIBellRingerAlarmSound
                   size="1.8rem"
                   style={{ position: 'relative' }}
                 />
               </IconButton>,
-              <IconButton size="sm" colorScheme="quiet" circular>
+              <IconButton
+                key="actions-03"
+                size="sm"
+                colorScheme="quiet"
+                circular
+              >
                 <GIAboutQuestionFaqHelp
                   size="2.2rem"
                   style={{ position: 'relative' }}
