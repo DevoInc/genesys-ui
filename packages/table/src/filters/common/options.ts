@@ -32,3 +32,9 @@ export const dateOptions = [
   { value: 'blank', label: 'Blank' },
   { value: 'notBlank', label: 'Not blank' },
 ];
+
+export const booleanOptions = [
+  { value: 'all', label: 'All' },
+  { value: 'true', label: 'true' },
+  { value: 'false', label: 'false' },
+];
