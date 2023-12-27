@@ -18,7 +18,6 @@ export const BooleanFilter: React.FC<FilterProps> = () => {
           value={value}
         />
       </BasicFilter>
-      {/*<AdvancedFilter>Boolean Advanced Filter</AdvancedFilter>*/}
     </FilterContainer>
   );
 };

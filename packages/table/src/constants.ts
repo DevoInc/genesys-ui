@@ -31,3 +31,17 @@ export const CELL_ALIGN_MAP: object = {
   top: 'flex-start',
   bottom: 'flex-end',
 };
+
+export const SIZES = {
+  HEAD: { HEIGHT: 42 },
+  CELL: {
+    HOR_PAD: 12,
+    VER_PAD: 8,
+  },
+};
+
+export const ROW_HEIGHT_MD = 36;
+export const ROW_HEIGHT_LG = 60;
+export const ROW_HEIGHT_XL = 72;
+export const ROW_HEIGHT_XXL = 84;
+export const ROW_HEIGHT_XXXL = 96;

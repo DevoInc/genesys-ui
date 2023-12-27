@@ -21,7 +21,7 @@ export const ColorScheme: Story = {
     value: ['Item 1', 'Item 2', 'Item 3'],
     colDef: {
       id: 'test',
-      cellRendererParams: {
+      context: {
         options: {
           'Item 1': { colorScheme: 'success' },
           'Item 2': { colorScheme: 'warning' },
@@ -37,7 +37,7 @@ export const Icon: Story = {
     value: ['Item 1', 'Item 2', 'Item 3'],
     colDef: {
       id: 'test',
-      cellRendererParams: {
+      context: {
         options: {
           'Item 1': { icon: 'gi-check_ok' },
           'Item 2': { icon: 'gi-error_warning_alert_attention' },

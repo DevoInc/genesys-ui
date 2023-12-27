@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { StyledTableCell } from './StyledTableCell';
+import { StyledCell } from './StyledCell';
 import { useRenderContent } from './useRenderContent';
-import { ColDef } from '../../declarations';
+import { ColDef, Size } from '../../declarations';
 import { useInitialState } from '../../editors/useInitialState';
-import { TableContext } from '../Table/context';
-import { StyledTableCellWrapper } from './StyledTableCellWrapper';
+import { TableContext } from '../../context/TableContext';
+import { StyledCellWrapper } from './StyledCellWrapper';
 import { GIPencilEditFilled } from '@devoinc/genesys-icons';
-import { StyledTableCellMarker } from './StyledTableCellMarker';
+import { StyledCellMarker } from './StyledCellMarker';
 
 interface CellProps {
   data: unknown;
@@ -14,6 +14,7 @@ interface CellProps {
   width?: number;
   height?: number;
   offsetX?: number;
+  wrapperSize: Size;
 }
 
 export const Cell: React.FC<CellProps> = ({
@@ -22,8 +23,9 @@ export const Cell: React.FC<CellProps> = ({
   width,
   height,
   offsetX,
+  wrapperSize,
 }) => {
-  const { sizes, texts, visualOptions, measures } =
+  const { density, texts, highlightColumnsOnHover } =
     React.useContext(TableContext);
   const { onReset } = colDef;
 
@@ -33,22 +35,21 @@ export const Cell: React.FC<CellProps> = ({
     useRenderContent(colDef, data);
 
   return (
-    <StyledTableCell
-      $height={`${height}px`}
-      $width={`${width}px`}
-      highlightColumnsOnHover={visualOptions?.highlightColumnsOnHover}
-      highlightedColumnHeight={measures?.body?.visible?.height}
-      aria-selected={isEditMode}
+    <StyledCell
+      $height={height}
+      $width={width}
       offsetX={offsetX}
+      highlightColumnsOnHover={highlightColumnsOnHover}
+      wrapperHeight={wrapperSize?.height ?? 0}
+      aria-selected={isEditMode}
       onDoubleClick={onDoubleClick}
       ref={cellRef}
     >
-      <StyledTableCellWrapper
+      <StyledCellWrapper
         as={colDef.editable ? 'button' : 'div'}
         clickable={colDef.editable}
         isEditMode={isEditMode}
-        paddingHor={`${sizes.cell.horPad}px`}
-        paddingVer={`${sizes.cell.verPad}px`}
+        density={density}
         tabIndex={colDef.editable ? 0 : -1}
         title={
           isEditMode ? texts?.cell?.editSaveTooltip : texts?.cell?.editTooltip
@@ -62,11 +63,11 @@ export const Cell: React.FC<CellProps> = ({
       >
         {isEditMode ? editionContent : viewContent}
         {colDef.editable && !isEditMode && (
-          <StyledTableCellMarker>
+          <StyledCellMarker>
             <GIPencilEditFilled size={10} />
-          </StyledTableCellMarker>
+          </StyledCellMarker>
         )}
-      </StyledTableCellWrapper>
-    </StyledTableCell>
+      </StyledCellWrapper>
+    </StyledCell>
   );
 };

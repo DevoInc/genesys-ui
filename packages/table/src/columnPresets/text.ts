@@ -7,5 +7,10 @@ export const text: ColDef = {
   id: 'text',
   cellRenderer: TextRenderer,
   cellEditor: TextEditor,
+  context: {
+    texts: {
+      editorLabel: 'Edit this text content',
+    },
+  },
   cellFilter: TextFilter,
 };

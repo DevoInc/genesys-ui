@@ -3,16 +3,15 @@ import styled from 'styled-components';
 
 import { CELL_ALIGN_MAP } from '../../constants';
 
-import { StyledTableCellWrapperProps } from '../Cell/StyledTableCellWrapper';
+import { StyledCellWrapperProps } from '../Cell/StyledCellWrapper';
 import { cellMixin } from '../helpers';
+import { Density } from '../../declarations';
 
 interface StyledHeaderCellProps
-  extends Pick<
-    StyledTableCellWrapperProps,
-    'horAlign' | 'paddingHor' | 'paddingVer'
-  > {
+  extends Pick<StyledCellWrapperProps, 'horAlign'> {
   $width: React.CSSProperties['width'];
   offsetX?: number;
+  density?: Density;
 }
 
 export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
@@ -23,5 +22,6 @@ export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
   transform: ${({ offsetX }) => `translateX(${offsetX}px)`};
   width: ${({ $width }) => $width};
   height: 100%;
-  padding: ${({ paddingVer, paddingHor }) => `${paddingVer} ${paddingHor}`};
+  padding: ${({ theme, density }) =>
+    `${theme.cmp.table.cell.space.padding.ver[density].base} ${theme.cmp.table.cell.space.padding.hor[density]}`};
 `;

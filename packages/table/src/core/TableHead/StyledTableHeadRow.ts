@@ -1,12 +1,12 @@
-import * as React from 'react';
 import styled from 'styled-components';
+import { Density } from '../../declarations';
 
 interface StyledTableHeadRowProps {
-  $height?: React.CSSProperties['height'];
+  density: Density;
 }
 
 export const StyledTableHeadRow = styled.tr<StyledTableHeadRowProps>`
   position: relative;
   display: flex;
-  height: ${({ $height }) => $height};
+  height: ${({ theme, density }) => theme.cmp.table.head.size.height[density]};
 `;

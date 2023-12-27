@@ -8,16 +8,6 @@ export type DefaultColDef = Omit<ColDef, 'id'>;
 
 export type Density = 'default' | 'compact' | 'comfortable';
 
-export interface TableVisualOptions {
-  density?: Density;
-  striped?: boolean;
-  maxHeight?: React.CSSProperties['maxHeight'];
-  minWidth?: number;
-  rowHeight?: RowHeight;
-  resizableColumns?: boolean;
-  highlightColumnsOnHover?: boolean;
-}
-
 export type TextsType = {
   general: {
     noData?: React.ReactNode;
@@ -35,23 +25,6 @@ export type TextsType = {
 export type Preset = {
   id: string;
 } & Omit<ColDef, 'colId'>;
-
-export interface TableOptionsProps {
-  colDefs?: ColDef[];
-  defaultColDef?: DefaultColDef;
-  columnPresets?: Preset[];
-  context?: {
-    [key: string]: unknown;
-  };
-  visualOptions?: TableVisualOptions;
-  texts?: TextsType;
-  showFilters?: boolean;
-}
-
-export interface CellRendererParams {
-  value: unknown;
-  colDef: ColDef;
-}
 
 export type CellVerAlign = 'top' | 'bottom' | 'center';
 export type CellHorAlign = 'left' | 'center' | 'right';
@@ -78,17 +51,15 @@ export type ColDef = {
   cellEditor?:
     | React.FC<CellEditorProps>
     | (({ value, onChange }: CellEditorProps) => React.ReactNode);
-  cellEditorParams?: { [key: string]: unknown };
+
+  valueFormatter?: (value: unknown, context: DateContext) => void;
   cellRenderer?:
     | React.FC<CellRendererProps>
     | (({ value, colDef }: CellRendererProps) => React.ReactNode);
-  cellRendererParams?: { [key: string]: unknown };
-  valueFormatter?: (value: unknown, context: DateContext) => void;
 
   cellFilter?:
     | React.FC<FilterProps>
     | (({ colDef }: FilterProps) => React.ReactNode);
-  cellFilterParams?: { [key: string]: unknown };
 
   context?: {
     [key: string]: unknown;
@@ -100,6 +71,7 @@ export type ColDef = {
   onReset?: (initialValue: unknown) => void;
   tooltipField?: string;
   resizable?: boolean;
+  rowHeight?: number;
 };
 
 export type Data = { [key: string]: unknown }[];
@@ -123,24 +95,12 @@ export interface SizesConfig {
   };
 }
 
-export interface MeasuresConfig {
-  wrapper: {
-    height: number;
-    width: number;
-  };
-  body: {
-    total: {
-      height: number;
-      width: number;
-    };
-    visible: {
-      height: number;
-      width: number;
-    };
-  };
-}
-
 export interface OccupiedWidth {
   percentage: number;
   definedColDefs: number;
 }
+
+export type Size = {
+  width: number;
+  height: number;
+};
