@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 import { CELL_ALIGN_MAP } from '../../constants';
 
-import { StyledTableCellWrapperProps } from '../Cell/StyledCellWrapper';
+import { StyledCellWrapperProps } from '../Cell/StyledCellWrapper';
 import { cellMixin } from '../helpers';
 import { Density } from '../../declarations';
 
 interface StyledHeaderCellProps
-  extends Pick<StyledTableCellWrapperProps, 'horAlign'> {
+  extends Pick<StyledCellWrapperProps, 'horAlign'> {
   $width: React.CSSProperties['width'];
   offsetX?: number;
   density?: Density;
