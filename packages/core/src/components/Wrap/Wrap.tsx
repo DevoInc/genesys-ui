@@ -4,6 +4,7 @@ import { useTheme } from 'styled-components';
 import { Flex, FlexProps } from '../';
 import { GlobalSpacing } from '../../declarations';
 import { getChildrenByRowFlex } from './helpers';
+import { FlexItem } from '../Flex/subcomponents';
 
 export interface WrapProps
   extends Omit<FlexProps, 'gap' | 'columnGap' | 'rowGap'> {
@@ -15,7 +16,7 @@ export interface WrapProps
   vSpacing?: GlobalSpacing;
 }
 
-export const Wrap: React.FC<WrapProps> = ({
+export const InternalWrap: React.FC<WrapProps> = ({
   alignContent = 'flex-start',
   alignItems = 'center',
   children,
@@ -40,3 +41,9 @@ export const Wrap: React.FC<WrapProps> = ({
     </Flex>
   );
 };
+
+export const Wrap = InternalWrap as typeof InternalWrap & {
+  Item: typeof FlexItem;
+};
+
+Wrap.Item = FlexItem;

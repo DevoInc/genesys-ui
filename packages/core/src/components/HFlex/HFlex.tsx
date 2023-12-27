@@ -36,4 +36,3 @@ export const HFlex = InternalHFlex as typeof InternalHFlex & {
 };
 
 HFlex.Item = FlexItem;
-// HFlex.Item.displayName = 'HFlex.Item';
