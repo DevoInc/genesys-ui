@@ -1,14 +1,9 @@
 import * as React from 'react';
 
-import { SelectControl, SelectOption } from '@devoinc/genesys-ui';
+import { SelectControl } from '@devoinc/genesys-ui';
 
 import { FilterProps } from '../declarations';
-import {
-  AdvancedFilter,
-  BasicFilter,
-  booleanOptions,
-  FilterContainer,
-} from '../common';
+import { BasicFilter, booleanOptions, FilterContainer } from '../common';
 
 export const BooleanFilter: React.FC<FilterProps> = () => {
   const [value, setValue] = React.useState('all');
@@ -18,7 +13,7 @@ export const BooleanFilter: React.FC<FilterProps> = () => {
         <SelectControl
           size="sm"
           menuAppendToBody
-          //onChange={(e: SelectOption) => setValue(e.target.value)}
+          onChange={() => setValue('fake')}
           options={booleanOptions}
           value={value}
         />
