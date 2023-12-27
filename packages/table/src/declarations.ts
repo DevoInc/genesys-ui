@@ -26,11 +26,6 @@ export type Preset = {
   id: string;
 } & Omit<ColDef, 'colId'>;
 
-export interface CellRendererParams {
-  value: unknown;
-  colDef: ColDef;
-}
-
 export type CellVerAlign = 'top' | 'bottom' | 'center';
 export type CellHorAlign = 'left' | 'center' | 'right';
 
