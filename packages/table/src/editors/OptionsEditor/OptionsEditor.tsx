@@ -1,30 +1,27 @@
 import * as React from 'react';
 
-import { SelectControl, SelectOption } from '@devoinc/genesys-ui';
+import { SelectControl } from '@devoinc/genesys-ui';
 
 import { EditorFloatingWrapper } from '../components';
 import { CellEditorProps } from '../declarations';
-import { getOptionsFromData } from '../../filters/OptionsFilter/getOptionsFromData';
+import { ContextOptions, getSelectOptions } from '../../facade';
 
 export const OptionsEditor: React.FC<CellEditorProps> = ({
   value,
   onChange,
   colDef,
-  data = [],
 }) => {
-  const options =
-    (colDef?.cellEditorParams?.options as SelectOption[]) ??
-    (getOptionsFromData(data, colDef) as SelectOption[]);
+  const options = (colDef?.context as ContextOptions)?.options;
 
   return (
     <EditorFloatingWrapper>
       <SelectControl
         onChange={onChange}
-        value={value as SelectOption}
+        value={String(value)}
         creatable
-        isMulti
+        isMulti={Array.isArray(value)}
         menuAppendToBody
-        options={options}
+        options={getSelectOptions(options)}
         autoFocus
       />
     </EditorFloatingWrapper>

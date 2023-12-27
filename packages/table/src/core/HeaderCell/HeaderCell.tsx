@@ -3,8 +3,8 @@ import React from 'react';
 import { ColDef } from '../../declarations';
 
 import { StyledHeaderCell } from './StyledHeaderCell';
-import { TableContext } from '../Table/context';
 import { StyledHeaderCellResizer } from './StyledHeaderCellResizer';
+import { TableContext } from '../../context/TableContext';
 
 interface HeaderCellProps {
   colDef: ColDef;
@@ -21,7 +21,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   children,
   resizable = true,
 }) => {
-  const { sizes } = React.useContext(TableContext);
+  const { density } = React.useContext(TableContext);
   return (
     <StyledHeaderCell
       $width={width}
@@ -30,14 +30,13 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
         (colDef.preset === 'number' ? 'right' : null)
       }
       offsetX={offsetX}
-      paddingHor={`${sizes.cell.horPad}px`}
-      paddingVer={`${sizes.cell.verPad}px`}
+      density={density}
       title={colDef.headerName}
     >
       {children}
       {resizable && (
         <StyledHeaderCellResizer
-          $height={`${sizes.head.height}px`}
+          density={density}
           role="presentation"
           aria-hidden="false"
         />

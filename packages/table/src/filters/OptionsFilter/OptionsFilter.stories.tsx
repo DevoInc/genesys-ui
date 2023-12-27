@@ -15,13 +15,12 @@ export const Base: Story = {
     data: [{ col0: 'test b' }, { col0: 'test a' }, { col0: 'test c' }],
     colDef: {
       id: 'col0',
-      cellFilterParams: {
-        defaultValue: 'all',
-        options: [
-          { value: 'all', label: 'All' },
-          { value: 'true', label: 'True' },
-          { value: 'false', label: 'False' },
-        ],
+      context: {
+        options: {
+          'test a': { colorScheme: 'error' },
+          'test b': { colorScheme: 'success', label: 'Success' },
+          'test c': { colorScheme: 'warning' },
+        },
       },
     },
   },

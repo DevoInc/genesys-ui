@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components';
-import * as React from 'react';
+
 import { pseudoElementMixin } from '@devoinc/genesys-ui';
 
+import { Density } from '../../declarations';
+
 interface StyledHeaderCellResizerProps {
-  $height: React.CSSProperties['height'];
+  density: Density;
 }
 
 export const StyledHeaderCellResizer = styled.span<StyledHeaderCellResizerProps>`
@@ -19,7 +21,7 @@ export const StyledHeaderCellResizer = styled.span<StyledHeaderCellResizerProps>
   height: 100%;
   cursor: col-resize;
 
-  ${({ $height, theme }) => {
+  ${({ density, theme }) => {
     const grabberTokens = theme.cmp.table.headCellGrabber;
     const transitionDuration = grabberTokens.mutation.transitionDuration;
     const separatorTokens = theme.cmp.table.headCellSeparator;
@@ -47,7 +49,7 @@ export const StyledHeaderCellResizer = styled.span<StyledHeaderCellResizerProps>
 
       &::after {
         top: 50%;
-        height: calc(${$height} / 2);
+        height: calc(${theme.cmp.table.head.size.height[density]} / 2);
         transform: translateY(-50%);
         width: 0.2rem;
         background-color: ${separatorTokens.color.background.after};

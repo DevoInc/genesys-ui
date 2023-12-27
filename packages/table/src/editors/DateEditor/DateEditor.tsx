@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import { DateTimePicker } from '@devoinc/genesys-ui-datetime';
 
-import { TableContext } from '../../core/Table/context';
-import { getEditControlSize } from '../utils';
+import { TableContext } from '../../context/TableContext';
+import { ROW_HEIGHT_MD } from '../../constants';
 
 type DateCellEditorProps = {
   value: unknown;
@@ -14,10 +14,10 @@ export const DateEditor: React.FC<DateCellEditorProps> = ({
   value,
   onChange,
 }) => {
-  const { visualOptions } = React.useContext(TableContext);
+  const { density, rowHeight } = React.useContext(TableContext);
   return (
     <DateTimePicker
-      size={getEditControlSize(visualOptions)}
+      size={density === 'compact' && rowHeight <= ROW_HEIGHT_MD ? 'sm' : 'md'}
       onChange={() => undefined}
       onApply={(newDate: number) => onChange?.(new Date(newDate).toISOString())}
       onCancel={() => undefined}

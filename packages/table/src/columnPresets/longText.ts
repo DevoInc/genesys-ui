@@ -6,4 +6,5 @@ export const longText: ColDef = {
   id: 'longText',
   cellRenderer: TextRenderer,
   cellEditor: TextAreaEditor,
+  rowHeight: 'lg',
 };

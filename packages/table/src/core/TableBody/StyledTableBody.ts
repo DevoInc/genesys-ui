@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { StyledTableProps } from '../Table/StyledTable';
+import { StyledTableProps } from '../TableWrapper/StyledTable';
 import { TableVisualOptions } from '../../declarations';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

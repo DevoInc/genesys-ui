@@ -1,8 +1,7 @@
-import { ColDef, Data } from '../declarations';
+import { ColDef } from '../declarations';
 
 export type CellEditorProps = {
-  value: unknown;
+  value?: unknown;
   onChange?: (value: unknown) => void;
   colDef?: ColDef;
-  data?: Data;
 };

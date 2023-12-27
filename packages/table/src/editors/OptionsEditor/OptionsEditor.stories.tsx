@@ -14,19 +14,9 @@ type Story = StoryObj<typeof OptionsEditor>;
 export const Base: Story = {
   args: {
     value: ['a'],
-    data: [{ col1: 'a' }, { col1: 'b' }, { col1: 'c' }],
     colDef: {
       id: 'col1',
-    },
-  },
-};
-
-export const OptionsParams: Story = {
-  args: {
-    value: ['a'],
-    colDef: {
-      id: 'col1',
-      cellEditorParams: {
+      context: {
         options: [
           { label: 'A', value: 'a' },
           { label: 'B', value: 'b' },

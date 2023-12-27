@@ -7,7 +7,6 @@ import {
   HFlex,
   InputControl,
   SelectControl,
-  type SelectOption,
 } from '@devoinc/genesys-ui';
 import {
   Checkbox,
@@ -17,21 +16,19 @@ import {
 } from '@devoinc/genesys-ui-form';
 
 import { FilterProps } from '../declarations';
-import { getOptionsFromData } from './getOptionsFromData';
 import { AdvancedFilter, BasicFilter, FilterContainer } from '../common';
+import { ContextOptions, getSelectOptions } from '../../facade';
 
-export const OptionsFilter: React.FC<FilterProps> = ({ colDef, data }) => {
-  const options =
-    (colDef?.cellFilterParams?.options as SelectOption[]) ??
-    (getOptionsFromData(data, colDef) as SelectOption[]);
+export const OptionsFilter: React.FC<FilterProps> = ({ colDef }) => {
+  const options = (colDef?.context as ContextOptions)?.options ?? {};
 
   return (
     <FilterContainer>
       <BasicFilter>
         <SelectControl
           menuAppendToBody
-          defaultInputValue={colDef?.cellFilterParams?.defaultValue as string}
-          options={options}
+          defaultInputValue={colDef?.context?.defaultValue as string}
+          options={getSelectOptions(options)}
         />
       </BasicFilter>
       <AdvancedFilter
@@ -71,18 +68,22 @@ export const OptionsFilter: React.FC<FilterProps> = ({ colDef, data }) => {
       >
         <CheckboxGroup legend="Column filter options" hideLegend>
           <Checkbox label="[Select all]" id="filter-all" defaultChecked />
-          {options.map((option) => (
+          {Object.entries(options).map(([key, option]) => (
             <Checkbox
               label={
-                <HFlex spacing="cmp-xxs" alignItems="flex-start">
-                  <Flex alignItems="center">
-                    <Badge size="sm" colorScheme="success" />
-                  </Flex>
-                  {option.label}
-                </HFlex>
+                option.colorScheme ? (
+                  <HFlex spacing="cmp-xxs" alignItems="flex-start">
+                    <Flex alignItems="center">
+                      <Badge size="sm" colorScheme={option.colorScheme} />
+                    </Flex>
+                    {option.label ?? key}
+                  </HFlex>
+                ) : (
+                  option.label ?? key
+                )
               }
-              id={String(option.value)}
-              key={option.value}
+              id={key}
+              key={key}
               defaultChecked
             />
           ))}

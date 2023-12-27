@@ -2,22 +2,30 @@ import * as React from 'react';
 
 import { InputControl } from '@devoinc/genesys-ui';
 
-import { TableContext } from '../../core/Table/context';
-import { getEditControlSize } from '../utils';
+import { TableContext } from '../../context/TableContext';
+import { CellEditorProps } from '../declarations';
+import { ROW_HEIGHT_MD } from '../../constants';
 
-type EditInputProps = {
-  value: any;
-  onChange?: (value: string) => void;
+export type ContextTextEditorParams = {
+  texts: {
+    editorLabel: string;
+  };
 };
 
-export const TextEditor: React.FC<EditInputProps> = ({ value, onChange }) => {
-  const { texts, visualOptions } = React.useContext(TableContext);
+export const TextEditor: React.FC<CellEditorProps> = ({
+  value,
+  onChange,
+  colDef,
+}) => {
+  const { density, rowHeight } = React.useContext(TableContext);
   return (
     <InputControl.Input
-      size={getEditControlSize(visualOptions)}
+      size={density === 'compact' && rowHeight <= ROW_HEIGHT_MD ? 'sm' : 'md'}
       autoFocus
-      aria-label={texts?.editor?.editorTextLabel}
-      value={value}
+      aria-label={
+        (colDef?.context as ContextTextEditorParams)?.texts?.editorLabel
+      }
+      value={String(value)}
       onChange={(event: React.FormEvent) =>
         onChange?.((event.target as HTMLInputElement).value)
       }

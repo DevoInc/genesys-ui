@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const StyledTableCellMarker = styled.span`
+export const StyledCellMarker = styled.span`
   position: absolute;
   right: 0;
   top: 0;

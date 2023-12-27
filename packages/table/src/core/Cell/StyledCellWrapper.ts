@@ -1,23 +1,22 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 import { CELL_ALIGN_MAP } from '../../constants';
 import {
   CellHorAlign,
   CellVerAlign,
   ColumnCellStyleProps,
+  Density,
 } from '../../declarations';
 import { btnResetMixin, typoMixin } from '@devoinc/genesys-ui';
 
-export interface StyledTableCellWrapperProps extends ColumnCellStyleProps {
+export interface StyledCellWrapperProps extends ColumnCellStyleProps {
   clickable?: boolean;
   horAlign?: CellHorAlign;
   isEditMode?: boolean;
-  paddingHor?: React.CSSProperties['paddingLeft'];
-  paddingVer?: React.CSSProperties['paddingBottom'];
   verAlign?: CellVerAlign;
+  density?: Density;
 }
 
-export const StyledTableCellWrapper = styled.div<StyledTableCellWrapperProps>`
+export const StyledCellWrapper = styled.div<StyledCellWrapperProps>`
   ${({ clickable, isEditMode, theme }) => {
     const tokens = theme.cmp.table.cellClickableWrapper;
     return css`
@@ -63,6 +62,8 @@ export const StyledTableCellWrapper = styled.div<StyledTableCellWrapperProps>`
   justify-content: ${({ horAlign }) => CELL_ALIGN_MAP[horAlign || 'left']};
   width: 100%;
   height: 100%;
-  padding: ${({ paddingVer, paddingHor, toEdge }) =>
-    toEdge ? '0' : `${paddingVer} ${paddingHor}`};
+  padding: ${({ toEdge, density, theme }) =>
+    toEdge
+      ? '0'
+      : `${theme.cmp.table.cell.space.padding.ver[density].base} ${theme.cmp.table.cell.space.padding.hor[density]}`};
 `;
