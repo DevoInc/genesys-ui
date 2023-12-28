@@ -13,7 +13,7 @@ interface HeaderCellProps {
   offsetX: number;
   children: React.ReactNode;
   resizable?: boolean;
-  onSort?: (colDef) => void;
+  onSort?: (colDef: ColDef) => void;
 }
 
 export const HeaderCell: React.FC<HeaderCellProps> = ({
@@ -33,7 +33,9 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
       density={density}
       title={colDef.headerName}
       onClick={() => {
-        onSort(colDef);
+        if (onSort) {
+          onSort(colDef);
+        }
       }}
     >
       {children}
