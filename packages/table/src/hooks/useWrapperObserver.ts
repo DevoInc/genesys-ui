@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import { Size } from '../declarations';
 import { debounce } from '../effects';
+import { WrapperContext } from '../context';
 
 export const useWrapperOberver = () => {
   const ref = React.useRef<HTMLDivElement>();
-  const [wrapperSize, setWrapperSize] = React.useState<Size>();
+  const { setSize } = React.useContext(WrapperContext);
 
   React.useEffect(() => {
     let resizeObserver: ResizeObserver;
@@ -14,7 +14,7 @@ export const useWrapperOberver = () => {
       resizeObserver = new ResizeObserver(
         debounce((entries: ResizeObserverEntry[]) => {
           for (const entry of entries) {
-            setWrapperSize({
+            setSize({
               width: entry.contentRect.width,
               height: entry.contentRect.height,
             });
@@ -27,7 +27,8 @@ export const useWrapperOberver = () => {
     return () => {
       resizeObserver.disconnect();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return { ref, wrapperSize };
+  return { ref };
 };

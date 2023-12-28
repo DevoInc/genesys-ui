@@ -8,4 +8,5 @@ export const boolean: ColDef = {
   cellRenderer: BooleanRenderer,
   cellEditor: BooleanEditor,
   cellFilter: BooleanFilter,
+  minWidth: 100,
 };

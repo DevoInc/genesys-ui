@@ -29,7 +29,7 @@ const RowWrapper = () => {
             id: 'name',
             headerName: 'Name',
             cellRenderer: TextRenderer,
-            cellStyle: { width: 50 },
+            width: 50,
           },
           // { id: 'company', headerName: 'Company', cellRenderer: TextRenderer },
           // { id: 'age', headerName: 'age', cellRenderer: TextRenderer },

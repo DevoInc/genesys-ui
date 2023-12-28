@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
-import { ColDef, Size } from '../../declarations';
+import { ColDef } from '../../declarations';
 import { Cell } from '../Cell';
 import { StyledTableRow, StyledTableRowProps } from './StyledTableRow';
 import { TableContext } from '../../context/TableContext';
@@ -10,7 +10,6 @@ interface RowProps extends StyledTableRowProps {
   data: { [key: string]: unknown };
   columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
   virtualRow: VirtualItem;
-  wrapperSize: Size;
 }
 
 export const Row: React.FC<RowProps> = ({
@@ -21,7 +20,6 @@ export const Row: React.FC<RowProps> = ({
   isDragging,
   state = 'enabled',
   virtualRow,
-  wrapperSize,
 }) => {
   const { striped } = React.useContext(TableContext);
   return (
@@ -43,7 +41,6 @@ export const Row: React.FC<RowProps> = ({
           key={`cell-${virtualColumn.key}`}
           offsetX={virtualColumn.start}
           width={virtualColumn.size}
-          wrapperSize={wrapperSize}
         />
       ))}
     </StyledTableRow>

@@ -29,18 +29,6 @@ export type Preset = {
 export type CellVerAlign = 'top' | 'bottom' | 'center';
 export type CellHorAlign = 'left' | 'center' | 'right';
 
-export interface ColumnCellStyleProps {
-  align?: {
-    horizontal?: CellHorAlign;
-    vertical?: CellVerAlign;
-  };
-  textAlign?: React.CSSProperties['textAlign'];
-  /** Width of the column expressed in percentage over the width of the table */
-  width?: number;
-  truncateLine?: number;
-  toEdge?: boolean;
-}
-
 export type ColDef = {
   id: string;
   headerName?: string;
@@ -69,13 +57,20 @@ export type ColDef = {
   sort?: 'asc' | 'desc';
   sortIndex?: React.ReactNode;
 
-  cellStyle?: ColumnCellStyleProps;
   expandedRow?: boolean;
   isDragging?: boolean;
   onReset?: (initialValue: unknown) => void;
   tooltipField?: string;
   resizable?: boolean;
   rowHeight?: number;
+  minWidth?: number | string;
+  width?: number | string;
+  align?: CellHorAlign;
+  verticalAlign?: CellVerAlign;
+  textAlign?: React.CSSProperties['textAlign'];
+  /** Width of the column expressed in percentage over the width of the table */
+  truncateLine?: number;
+  toEdge?: boolean;
 };
 
 export type Data = { [key: string]: unknown }[];
@@ -98,13 +93,3 @@ export interface SizesConfig {
     verPad: number;
   };
 }
-
-export interface OccupiedWidth {
-  percentage: number;
-  definedColDefs: number;
-}
-
-export type Size = {
-  width: number;
-  height: number;
-};

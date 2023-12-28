@@ -11,10 +11,12 @@ import {
   useTableVirtualizationColumn,
   useTableVirtualizationRow,
 } from '../../hooks';
+import { WrapperContext } from '../../context';
 
 export const TableWrapper: React.FC = () => {
-  const { ref, wrapperSize } = useWrapperOberver();
+  const { ref } = useWrapperOberver();
   const { maxHeight, colDefs, data } = React.useContext(TableContext);
+  const { width: wrapperWidth } = React.useContext(WrapperContext);
 
   const rowVirtualizer = useTableVirtualizationRow({ ref });
   const columnVirtualizer = useTableVirtualizationColumn({ ref });
@@ -26,24 +28,25 @@ export const TableWrapper: React.FC = () => {
 
   return (
     <StyledTableWrapper ref={ref} maxHeight={maxHeight}>
-      <StyledTable $height={height} $width={width}>
-        <TableHead
-          colDefs={colDefs}
-          columnVirtualizer={columnVirtualizer}
-          scrolled={hasScroll}
-          data={data}
-          width={width}
-        />
-        <TableBody
-          colDefs={colDefs}
-          columnVirtualizer={columnVirtualizer}
-          data={data}
-          rowVirtualizer={rowVirtualizer}
-          width={width}
-          height={height}
-          wrapperSize={wrapperSize}
-        />
-      </StyledTable>
+      {wrapperWidth > 0 ? (
+        <StyledTable $height={height} $width={width}>
+          <TableHead
+            colDefs={colDefs}
+            columnVirtualizer={columnVirtualizer}
+            scrolled={hasScroll}
+            data={data}
+            width={width}
+          />
+          <TableBody
+            colDefs={colDefs}
+            columnVirtualizer={columnVirtualizer}
+            data={data}
+            rowVirtualizer={rowVirtualizer}
+            width={width}
+            height={height}
+          />
+        </StyledTable>
+      ) : null}
     </StyledTableWrapper>
   );
 };

@@ -7,10 +7,6 @@ export const number: ColDef = {
   id: 'number',
   cellRenderer: TextRenderer,
   cellEditor: NumberEditor,
-  cellStyle: {
-    align: {
-      horizontal: 'right',
-    },
-  },
+  align: 'right',
   cellFilter: NumberFilter,
 };

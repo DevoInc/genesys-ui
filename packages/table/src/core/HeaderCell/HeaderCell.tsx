@@ -28,10 +28,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   return (
     <StyledHeaderCell
       $width={width}
-      horAlign={
-        colDef?.cellStyle?.align?.horizontal ||
-        (colDef.preset === 'number' ? 'right' : null)
-      }
+      horAlign={colDef?.align || (colDef.preset === 'number' ? 'right' : null)}
       offsetX={offsetX}
       density={density}
       title={colDef.headerName}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row } from '../Row';
-import { ColDef, Size, TextsType } from '../../declarations';
+import { ColDef, TextsType } from '../../declarations';
 import { StyledTableBody } from './StyledTableBody';
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { Box, Typography } from '@devoinc/genesys-ui';
@@ -13,7 +13,6 @@ export interface TableBodyProps {
   rowVirtualizer: Virtualizer<HTMLDivElement, Element>;
   width: number;
   height: number;
-  wrapperSize: Size;
 }
 
 const renderMessage = (message: React.ReactNode) => {
@@ -48,7 +47,6 @@ export const TableBody: React.FC<TableBodyProps> = ({
   rowVirtualizer,
   width,
   height,
-  wrapperSize,
 }) => {
   const { highlightColumnsOnHover, texts } = React.useContext(TableContext);
   const emptyMessage = getEmptyMessage(data, texts, rowVirtualizer);
@@ -72,7 +70,6 @@ export const TableBody: React.FC<TableBodyProps> = ({
               columnVirtualizer={columnVirtualizer}
               data={data[virtualRow.index]}
               virtualRow={virtualRow}
-              wrapperSize={wrapperSize}
             />
           );
         })

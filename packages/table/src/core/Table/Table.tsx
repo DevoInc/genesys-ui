@@ -8,8 +8,9 @@ import {
   Preset,
   TextsType,
 } from '../../declarations';
-import { TableContext } from '../../context';
+import { TableContext, WrapperContextProvider } from '../../context';
 import { TableWrapper } from '../TableWrapper';
+import { ROW_HEIGHT_MD } from '../../constants';
 
 export type TableProps = {
   data: Data;
@@ -45,6 +46,7 @@ export const Table: React.FC<TableProps> = ({
   data,
   highlightColumnsOnHover = true,
   resizableColumns = false,
+  rowHeight = ROW_HEIGHT_MD,
 }) => {
   const mergedColDefs: ColDef[] = React.useMemo(
     () =>
@@ -70,9 +72,12 @@ export const Table: React.FC<TableProps> = ({
         highlightColumnsOnHover,
         resizableColumns,
         onSort,
+        rowHeight,
       }}
     >
-      <TableWrapper />
+      <WrapperContextProvider>
+        <TableWrapper />
+      </WrapperContextProvider>
     </TableContext.Provider>
   );
 };

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { StyledCell } from './StyledCell';
 import { useRenderContent } from './useRenderContent';
-import { ColDef, Size } from '../../declarations';
+import { ColDef } from '../../declarations';
 import { useInitialState } from '../../editors/useInitialState';
-import { TableContext } from '../../context/TableContext';
 import { StyledCellWrapper } from './StyledCellWrapper';
 import { GIPencilEditFilled } from '@devoinc/genesys-icons';
 import { StyledCellMarker } from './StyledCellMarker';
+import { TableContext, WrapperContext } from '../../context';
 
 interface CellProps {
   data: unknown;
@@ -14,7 +14,6 @@ interface CellProps {
   width?: number;
   height?: number;
   offsetX?: number;
-  wrapperSize: Size;
 }
 
 export const Cell: React.FC<CellProps> = ({
@@ -23,10 +22,11 @@ export const Cell: React.FC<CellProps> = ({
   width,
   height,
   offsetX,
-  wrapperSize,
 }) => {
   const { density, texts, highlightColumnsOnHover } =
     React.useContext(TableContext);
+  const { height: wrapperHeight } = React.useContext(WrapperContext);
+
   const { onReset } = colDef;
 
   useInitialState(data, onReset);
@@ -40,7 +40,7 @@ export const Cell: React.FC<CellProps> = ({
       $width={width}
       offsetX={offsetX}
       highlightColumnsOnHover={highlightColumnsOnHover}
-      wrapperHeight={wrapperSize?.height ?? 0}
+      wrapperHeight={wrapperHeight}
       aria-selected={isEditMode}
       onDoubleClick={onDoubleClick}
       ref={cellRef}
@@ -54,11 +54,10 @@ export const Cell: React.FC<CellProps> = ({
         title={
           isEditMode ? texts?.cell?.editSaveTooltip : texts?.cell?.editTooltip
         }
-        toEdge={colDef?.cellStyle?.toEdge}
-        verAlign={colDef?.cellStyle?.align?.vertical}
+        toEdge={colDef?.toEdge}
+        verAlign={colDef?.verticalAlign}
         horAlign={
-          colDef?.cellStyle?.align?.horizontal ||
-          (colDef.preset === 'number' ? 'right' : null)
+          colDef?.align || (colDef.preset === 'number' ? 'right' : null)
         }
       >
         {isEditMode ? editionContent : viewContent}
