@@ -65,6 +65,10 @@ export type ColDef = {
     [key: string]: unknown;
   };
 
+  sortable?: boolean;
+  sort?: 'asc' | 'desc';
+  sortIndex?: React.ReactNode;
+
   cellStyle?: ColumnCellStyleProps;
   expandedRow?: boolean;
   isDragging?: boolean;

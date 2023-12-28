@@ -25,7 +25,7 @@ export const TableHead: React.FC<TableHeadProps> = ({
   data,
   width,
 }) => {
-  const { showFilters, resizableColumns, density } =
+  const { showFilters, resizableColumns, density, onSort } =
     React.useContext(TableContext);
   const items = columnVirtualizer?.getVirtualItems() ?? [];
   return (
@@ -40,6 +40,7 @@ export const TableHead: React.FC<TableHeadProps> = ({
               width={`${virtualColumn.size}px`}
               offsetX={virtualColumn.start}
               resizable={colDef?.resizable ?? resizableColumns ?? false}
+              onSort={onSort}
             >
               <Typography.Heading size="h6" truncateLine={1}>
                 {colDef.headerName}

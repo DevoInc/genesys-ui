@@ -5,6 +5,7 @@ import { ColDef } from '../../declarations';
 import { StyledHeaderCell } from './StyledHeaderCell';
 import { StyledHeaderCellResizer } from './StyledHeaderCellResizer';
 import { TableContext } from '../../context/TableContext';
+import { OrderIndicator } from './OrderIndicator';
 
 interface HeaderCellProps {
   colDef: ColDef;
@@ -12,6 +13,7 @@ interface HeaderCellProps {
   offsetX: number;
   children: React.ReactNode;
   resizable?: boolean;
+  onSort?: (colDef) => void;
 }
 
 export const HeaderCell: React.FC<HeaderCellProps> = ({
@@ -20,6 +22,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   offsetX,
   children,
   resizable = true,
+  onSort,
 }) => {
   const { density } = React.useContext(TableContext);
   return (
@@ -32,8 +35,12 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
       offsetX={offsetX}
       density={density}
       title={colDef.headerName}
+      onClick={() => {
+        onSort(colDef);
+      }}
     >
       {children}
+      <OrderIndicator colDef={colDef} />
       {resizable && (
         <StyledHeaderCellResizer
           density={density}

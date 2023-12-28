@@ -29,6 +29,7 @@ export type TableProps = {
   highlightColumnsOnHover?: boolean;
   texts?: TextsType;
   showFilters?: boolean;
+  onSort?: (columnDef) => void;
 };
 
 export const Table: React.FC<TableProps> = ({
@@ -40,6 +41,7 @@ export const Table: React.FC<TableProps> = ({
   maxHeight = 'none',
   minHeight,
   showFilters,
+  onSort,
   data,
   highlightColumnsOnHover = true,
   resizableColumns = false,
@@ -67,6 +69,7 @@ export const Table: React.FC<TableProps> = ({
         density,
         highlightColumnsOnHover,
         resizableColumns,
+        onSort,
       }}
     >
       <TableWrapper />
