@@ -3,12 +3,12 @@ import { CELL_ALIGN_MAP } from '../../constants';
 import {
   CellHorAlign,
   CellVerAlign,
-  ColumnCellStyleProps,
+  ColDef,
   Density,
 } from '../../declarations';
 import { btnResetMixin, typoMixin } from '@devoinc/genesys-ui';
 
-export interface StyledCellWrapperProps extends ColumnCellStyleProps {
+export interface StyledCellWrapperProps extends Omit<ColDef, 'id'> {
   clickable?: boolean;
   horAlign?: CellHorAlign;
   isEditMode?: boolean;
