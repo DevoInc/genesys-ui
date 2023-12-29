@@ -21,7 +21,7 @@ export const useTableVirtualizationColumn = ({
 
   const colsWidth = React.useMemo(() => {
     // get the width of the table
-    const tableWidth = Math.max(minWidth ?? 0, wrapperWidth) - 4;
+    const tableWidth = Math.max(minWidth ?? 0, wrapperWidth);
     const getPixels = getPixelsFromPercentage(tableWidth);
 
     const colWidths = [];
