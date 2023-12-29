@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { BasicTable } from './BasicTable';
-import { useOrderStruct } from '../core/hooks/useOrderStruct';
+import { useOrderStruct } from '../hooks/useOrderStruct';
 import { ColDef } from '../declarations';
 import { orderDataByOrderStruct } from '../helpers/orderDataByOrderStruct';
 

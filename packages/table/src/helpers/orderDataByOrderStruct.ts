@@ -1,4 +1,4 @@
-import { OrderColumn } from '../core/hooks/useOrderStruct';
+import { OrderColumn } from '../hooks/useOrderStruct';
 
 const order = (orderStruct, a, b) => {
   for (const { sort, id } of orderStruct) {

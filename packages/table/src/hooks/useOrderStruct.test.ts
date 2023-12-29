@@ -1,5 +1,5 @@
-import { OrderColumn, useOrderStruct } from './useOrderStruct';
 import { renderHook } from '@testing-library/react';
+import { OrderColumn, useOrderStruct } from './useOrderStruct';
 
 describe('getOptionsFromData', () => {
   const cases: [string, OrderColumn[], string, OrderColumn[]][] = [

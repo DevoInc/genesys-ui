@@ -1,4 +1,4 @@
-import { OrderColumn } from '../core/hooks/useOrderStruct';
+import { OrderColumn } from '../hooks/useOrderStruct';
 import { Data } from '../declarations';
 import { orderDataByOrderStruct } from './orderDataByOrderStruct';
 
