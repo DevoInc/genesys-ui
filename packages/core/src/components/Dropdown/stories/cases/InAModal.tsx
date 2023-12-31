@@ -42,7 +42,7 @@ export const ModalSimple = ({ ...props }) => {
           Your modal content goes here&nbsp;
           <Dropdown {...props}>
             {({ toggle, ref }) => (
-              <Button size="sm" onClick={toggle()} ref={ref}>
+              <Button size="sm" onClick={toggle} ref={ref}>
                 TriggerElement
               </Button>
             )}

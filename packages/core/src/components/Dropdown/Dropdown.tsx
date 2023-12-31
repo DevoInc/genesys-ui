@@ -8,8 +8,9 @@ import { CSSProp, DefaultTheme } from 'styled-components';
 
 type TriggerProps = (props: {
   ref: any;
-  toggle: (value?: boolean) => (ev: React.MouseEvent<HTMLElement>) => void;
-  opened: boolean;
+  toggle: (ev: React.MouseEvent<HTMLElement>) => void;
+  isOpened: boolean;
+  setOpened: (opened: boolean) => void;
 }) => React.ReactNode;
 
 type ChidrenProps = React.ReactNode;
@@ -43,17 +44,19 @@ export const Dropdown: React.FC<DropdownProps> = ({
     strategy,
   });
 
-  const toggle =
-    (value?: boolean) =>
-    (ev: React.MouseEvent<HTMLElement>): void => {
-      const from = (ev?.target as HTMLElement).parentElement;
-      const to = ev?.relatedTarget as HTMLElement;
-      const isChild = to instanceof Node && from?.contains(to);
+  const toggle = (ev: React.MouseEvent<HTMLElement>): void => {
+    const from = (ev?.target as HTMLElement).parentElement;
+    const to = ev?.relatedTarget as HTMLElement;
+    const isChild = to instanceof Node && from?.contains(to);
 
-      if (!isChild) {
-        setOpened((prevState) => value ?? !prevState);
-      }
-    };
+    if (!isChild) {
+      setOpened((prevState) => !prevState);
+    }
+  };
+
+  const setOpenedFn = (opened: boolean) => {
+    setOpened(opened);
+  };
 
   useOnEventOutside({
     references: [referenceElement, popperElement],
@@ -62,7 +65,12 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <>
-      {triggerEl({ ref: setReferenceElement, toggle, opened })}
+      {triggerEl({
+        ref: setReferenceElement,
+        toggle,
+        isOpened: opened,
+        setOpened: setOpenedFn,
+      })}
       {opened &&
         referenceElement &&
         createPortal(

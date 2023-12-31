@@ -6,11 +6,11 @@ import { Menu } from '../../../Menu';
 
 export const Accessibility = ({ ...props }: Partial<DropdownProps>) => (
   <Dropdown {...props}>
-    {({ toggle, ref, opened }) => (
+    {({ toggle, ref, isOpened }) => (
       <Button
-        onClick={toggle()}
+        onClick={toggle}
         aria-haspopup={true}
-        aria-expanded={opened}
+        aria-expanded={isOpened}
         aria-controls="btn-dd"
         ref={ref}
       >
@@ -22,14 +22,14 @@ export const Accessibility = ({ ...props }: Partial<DropdownProps>) => (
       <Menu.Item label="Option 2" />
       <Menu.Item label="Option 3" />
       <Dropdown placement="right-start">
-        {({ toggle, ref, opened }) => (
+        {({ toggle, ref, isOpened, setOpened }) => (
           <Menu.Item
             expandable
-            onClick={toggle(true)}
-            onMouseOver={toggle(true)}
-            onMouseLeave={toggle()}
+            onClick={() => setOpened(true)}
+            onMouseOver={() => setOpened(true)}
+            onMouseLeave={toggle}
             ref={ref}
-            state={opened ? 'expanded' : 'enabled'}
+            state={isOpened ? 'expanded' : 'enabled'}
             label="Option 4"
           />
         )}

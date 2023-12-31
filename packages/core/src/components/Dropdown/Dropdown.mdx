@@ -9,9 +9,14 @@ import * as CaseStories from './Dropdown.cases.stories';
 
 ## Overview
 
-A Dropdown component is an element that allows users to select an option from a drop-down list.
-This component is valuable in web applications to enhance usability by reducing the amount of
-screen space used to display options, especially when there are multiple choices available.
+A Dropdown component is an element that allows users to select an option
+from a drop-down list.
+This component is valuable in web applications to enhance usability by
+reducing the amount of
+screen space used to display options, especially when there are multiple
+choices available.
+
+This compoennt is based on `popper.js` library.
 
 ## How to import
 
@@ -26,9 +31,15 @@ import { Dropdown } from '@devoinc/genesys-ui';
 The `Dropdown` component must have two children components.
 First, the trigger element and next the to be displayed.
 
-The trigger component should be involved into a functions
-receiving the reference for the `ref` property, the `toggle`
-function to be called by the triggers event and `opened` as a boolean indiccating when it's opened.
+The trigger component should be involved into a function.
+This function will receive the `ref` property, the `toggle`
+function, the `setOpened` function and `isOpened` as a boolean
+indicating when it's opened.
+
+- `ref`: used to retrieve the React refd of the _popper_ element.
+- `toggle`: funtion to toggle the content of the component.
+- `setOpened`: function to force display or hide the dropdown menu.
+- `isOpened`: a boolean indicating if the dropdown menu is open.
 
 <Source
   code={`
@@ -36,12 +47,13 @@ import * as React from 'react';
 import { Dropdown } from '@devoinc/genesys-ui';
 export const MyDropdown = () => 
   <Dropdown placement="bottom-start" width={'200px'}>
-    {({ toggle, ref, opened }) => (
+    {({ toggle, ref, isOpened, setOpened }) => (
       <Button
-        onClick={toggle()}
-        ref={ref}
+        aria-expanded={isOpened}
         aria-haspopup={true}
-        aria-expanded={opened}
+        onClick={toggle}
+        onMouseOver={() => setOpened(true)}
+        ref={ref}
       >
         TriggerElement
       </Button>
@@ -66,40 +78,59 @@ import * as React from 'react';
 import { Dropdown } from '@devoinc/genesys-ui';
 export const MyDropdown = () => 
   <Dropdown placement="bottom-start" width={'200px'}>
-    {({ toggle, ref, opened }) => (
-      <Button
-        onClick={toggle()}
-        ref={ref}
-        aria-haspopup={true}
-        aria-expanded={opened}
-      >
-        TriggerElement
-      </Button>
-    )}
-    <Menu>
-      <Menu.Item label="Option 1" />
-      <Menu.Item label="Option 2" />
-      <Menu.Item label="Option 3" />
-      <Dropdown placement="right-start">
-        {({ toggle, ref, opened }) => (
-          <Menu.Item
-            expandable
-            label="Option 4"
-            onClick={toggle(true)}
-            onMouseLeave={toggle()}
-            onMouseOver={toggle(true)}
-            ref={ref}
-            state={opened ? 'expanded' : 'enabled'}
-          />
-        )}
-        <Menu>
-          <Menu.Item label="Option 4.1" />
-          <Menu.Item label="Option 4.2" />
-          <Menu.Item label="Option 4.3" />
-        </Menu>
-      </Dropdown>
-    </Menu> 
-  </Dropdown>
+      {({ toggle, ref, isOpened, setOpened }) => (
+        <Button
+          aria-expanded={isOpened}
+          aria-haspopup={true}
+          onClick={toggle}
+          onMouseOver={() => setOpened(true)}
+          ref={ref}
+        >
+          TriggerElement
+        </Button>
+      )}
+      <Menu>
+        <Menu.Item label="Option 1" />
+        <Menu.Item label="Option 2" />
+        <Menu.Item label="Option 3" />
+        <Dropdown placement="right-start">
+          {({ toggle, ref, isOpened, setOpened }) => (
+            <Menu.Item
+              expandable
+              label="Option 4"
+              onClick={() => setOpened(true)}
+              onMouseLeave={toggle}
+              onMouseOver={() => setOpened(true)}
+              ref={ref}
+              state={isOpened ? 'expanded' : 'enabled'}
+            />
+          )}
+          <Menu>
+            <Menu.Item label="Option 4.1" />
+            <Menu.Item label="Option 4.2" />
+            <Menu.Item label="Option 4.3" />
+            <Dropdown placement="right-start">
+              {({ toggle, ref, isOpened, setOpened }) => (
+                <Menu.Item
+                  expandable
+                  label="Option 4.3.1"
+                  onClick={() => setOpened(true)}
+                  onMouseLeave={toggle}
+                  onMouseOver={() => setOpened(true)}
+                  ref={ref}
+                  state={isOpened ? 'expanded' : 'enabled'}
+                />
+              )}
+              <Menu>
+                <Menu.Item label="Option 4.3.1" />
+                <Menu.Item label="Option 4.3.3" />
+                <Menu.Item label="Option 4.3.2" />
+              </Menu>
+            </Dropdown>
+          </Menu>
+        </Dropdown>
+      </Menu>
+    </Dropdown>
 `}
 />
 

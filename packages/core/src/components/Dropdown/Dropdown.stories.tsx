@@ -15,12 +15,13 @@ type Story = StoryObj<typeof Dropdown>;
 export const Base: Story = {
   render: () => (
     <Dropdown placement="bottom-start" width={'200px'}>
-      {({ toggle, ref, opened }) => (
+      {({ toggle, ref, isOpened, setOpened }) => (
         <Button
-          onClick={toggle()}
+          onClick={toggle}
+          onMouseOver={() => setOpened(true)}
           ref={ref}
           aria-haspopup={true}
-          aria-expanded={opened}
+          aria-expanded={isOpened}
         >
           TriggerElement
         </Button>
@@ -37,12 +38,13 @@ export const Base: Story = {
 export const Nested: Story = {
   render: () => (
     <Dropdown placement="bottom-start" width={'200px'}>
-      {({ toggle, ref, opened }) => (
+      {({ toggle, ref, isOpened, setOpened }) => (
         <Button
-          onClick={toggle()}
+          onClick={toggle}
+          onMouseOver={() => setOpened(true)}
           ref={ref}
           aria-haspopup={true}
-          aria-expanded={opened}
+          aria-expanded={isOpened}
         >
           TriggerElement
         </Button>
@@ -52,21 +54,39 @@ export const Nested: Story = {
         <Menu.Item label="Option 2" />
         <Menu.Item label="Option 3" />
         <Dropdown placement="right-start">
-          {({ toggle, ref, opened }) => (
+          {({ toggle, ref, isOpened, setOpened }) => (
             <Menu.Item
               expandable
               label="Option 4"
-              onClick={toggle(true)}
-              onMouseLeave={toggle()}
-              onMouseOver={toggle(true)}
+              onClick={() => setOpened(true)}
+              onMouseLeave={toggle}
+              onMouseOver={() => setOpened(true)}
               ref={ref}
-              state={opened ? 'expanded' : 'enabled'}
+              state={isOpened ? 'expanded' : 'enabled'}
             />
           )}
           <Menu>
             <Menu.Item label="Option 4.1" />
             <Menu.Item label="Option 4.2" />
             <Menu.Item label="Option 4.3" />
+            <Dropdown placement="right-start">
+              {({ toggle, ref, isOpened, setOpened }) => (
+                <Menu.Item
+                  expandable
+                  label="Option 4.3.1"
+                  onClick={() => setOpened(true)}
+                  onMouseLeave={toggle}
+                  onMouseOver={() => setOpened(true)}
+                  ref={ref}
+                  state={isOpened ? 'expanded' : 'enabled'}
+                />
+              )}
+              <Menu>
+                <Menu.Item label="Option 4.3.1" />
+                <Menu.Item label="Option 4.3.3" />
+                <Menu.Item label="Option 4.3.2" />
+              </Menu>
+            </Dropdown>
           </Menu>
         </Dropdown>
       </Menu>
