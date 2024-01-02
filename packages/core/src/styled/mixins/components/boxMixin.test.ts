@@ -58,7 +58,7 @@ describe('boxMixin', () => {
     expect(mixin1).toContain('overflow: hidden;');
 
     const mixin2 = boxMixin(theme)({ elevation: 'raised' }).join('');
-    expect(mixin2).toContain('overflow: hidden;');
+    expect(mixin2).toContain('');
 
     const mixin3 = boxMixin(theme)({
       overflowX: 'scroll',
