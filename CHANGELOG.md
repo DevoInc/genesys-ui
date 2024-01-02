@@ -1,5 +1,62 @@
 # Changelog
 
+## [2.0.0](https://github.com/DevoInc/genesys-ui/compare/v1.8.0...v2.0.0) (2024-01-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* removed DrowdownMenu in favor of Dropdown
+* refactor filters, presets and declarations
+
+### Features
+
+* added new format for column filters ([d8a91d7](https://github.com/DevoInc/genesys-ui/commit/d8a91d7a65777849173f8cf4b580bc5c92f0515c))
+* adjustments for cell editors and column highlighting. ([c06a6de](https://github.com/DevoInc/genesys-ui/commit/c06a6de6f2cc94a9157e1425d5bdc227a7d00765))
+* **AppBar:** compact mode ([3fcadab](https://github.com/DevoInc/genesys-ui/commit/3fcadab292a6c56193dbcdac472c7dff03696e9d))
+* **AppBar:** improved the contrast of the AppBar heading, changing its colorScheme. ([00a77f6](https://github.com/DevoInc/genesys-ui/commit/00a77f6e78b2ab67d2b15efd37814dd0d6690dd9))
+* **AppBar:** improvements and added option to get a bottom border. ([b5ff13f](https://github.com/DevoInc/genesys-ui/commit/b5ff13f7943a73b67bfb2cebb83bf0bea6fadd0d))
+* **Core:** new dropdown component ([b90eb46](https://github.com/DevoInc/genesys-ui/commit/b90eb46b5b6fd106e6d5aff5d617739ebc1c6fe9))
+* **Dropdown:** component improvement ([9a4c212](https://github.com/DevoInc/genesys-ui/commit/9a4c2129cb55f30440d0a0260d4bb56290e53bb3))
+* **FieldsCombiner:** added new option to combine two Button, IconButton or Popper components. ([8a37d08](https://github.com/DevoInc/genesys-ui/commit/8a37d080c2aa5ac6cdb74d317c3ef5337678fcbe))
+* improvements for editors ([d0152b3](https://github.com/DevoInc/genesys-ui/commit/d0152b34b6955e0d1bb69bc1fb71a84bc3adf5d3))
+* improvements for InlineMessage and Field ([598c764](https://github.com/DevoInc/genesys-ui/commit/598c7643dd8ff9ba52cff6ea38eded20532b6384))
+* improvements for tags filter ([f41064d](https://github.com/DevoInc/genesys-ui/commit/f41064d606eee6653a72427c54cc035c9749dcbd))
+* improvements in Wrap and BooleanRenderer ([5c50647](https://github.com/DevoInc/genesys-ui/commit/5c50647b4203640f3c53f10d778253aa8c97859d))
+* **Menu:** added VFlex props because this type of component is already used as its base. ([3ef731f](https://github.com/DevoInc/genesys-ui/commit/3ef731f07dd76a58f4ef9e99c747357c62e0d398))
+* **Popper:** added styles and subComponentStyles to Popper to add custom styles to the trigger and to the popper container. ([6678eb9](https://github.com/DevoInc/genesys-ui/commit/6678eb928e791a66d2a281b22f18edba91a76c6f))
+* prototype for column filtering and improvements for form components. ([9d55df0](https://github.com/DevoInc/genesys-ui/commit/9d55df0b61e94422ea37fe0bebd312bc97fd19a8))
+* QUV-758 Create column sorting and OrderIndicator ([c940c60](https://github.com/DevoInc/genesys-ui/commit/c940c60392e599be1163b6e8bcc6d065fee329f8))
+* refactor filters, presets and declarations ([0cc50ad](https://github.com/DevoInc/genesys-ui/commit/0cc50adcac8ea1f63bdd65475b3ed57dafa52180))
+* removed DrowdownMenu in favor of Dropdown ([343710e](https://github.com/DevoInc/genesys-ui/commit/343710ed49e82ad7707a063fcd89a7ea5f1dcbfe))
+* rename ([4cacb62](https://github.com/DevoInc/genesys-ui/commit/4cacb6215e5e4a3b97ab7c7d62f546d1c6ee66b1))
+* rename ([b7bd82f](https://github.com/DevoInc/genesys-ui/commit/b7bd82f1c9509c79e469813b4f1557f10089ac5e))
+* styles for row states, column highlighting, new values for table context and new constants and functions. ([89892a7](https://github.com/DevoInc/genesys-ui/commit/89892a7782eae3cd62f3adf67f7fa89bdc859ef8))
+* **Table:** Improved context communication and values update for table body ([5a2441a](https://github.com/DevoInc/genesys-ui/commit/5a2441a5ffee43c9f97604d04630589d8ad55e0d))
+* **Table:** rename of the filters ([f8ab5c7](https://github.com/DevoInc/genesys-ui/commit/f8ab5c78447992926194be152217380958a3abfc))
+
+
+### Bug Fixes
+
+* add ref null in panel component ([8a93791](https://github.com/DevoInc/genesys-ui/commit/8a93791d9e0ad79514999cdefab92a9e5327ba40))
+* **ButtonGroup:** fixed styles to avoid get them in every sibling FlexItem. ([c1b3dc9](https://github.com/DevoInc/genesys-ui/commit/c1b3dc99877d98f3c0fd43830530e53af5bd8914))
+* lint ([148aeda](https://github.com/DevoInc/genesys-ui/commit/148aeda967d7b971e6e3cf7157d12edca30c24ac))
+* lint ([66fc9af](https://github.com/DevoInc/genesys-ui/commit/66fc9af209a7cbea7e456aa8e402dae42daf1026))
+* modified styles in Avatar and fixed manage of style props in Popper. ([e4381d2](https://github.com/DevoInc/genesys-ui/commit/e4381d2e60505ae3327b3104fcdd7fe261f80a7e))
+* **SelectControl:** tokenize input value ([1fcdb1c](https://github.com/DevoInc/genesys-ui/commit/1fcdb1cb5b44dccbb9607b096dcda43be592fbed))
+* **Table:** Columns default width calculation ([49abc61](https://github.com/DevoInc/genesys-ui/commit/49abc61201c78d49383cc3db93947e13a19b87ab))
+* **table:** fix minWidth of the table ([8a45014](https://github.com/DevoInc/genesys-ui/commit/8a450146c7401a3a0b248b22c26129cd73f2a1d1))
+* **Table:** Props and imports errors ([0ad0862](https://github.com/DevoInc/genesys-ui/commit/0ad086250363b5fef3a967c2b099e9401fbdefc9))
+* **Table:** QUV-1922 Scroll styles behavior ([a93332d](https://github.com/DevoInc/genesys-ui/commit/a93332dc225fea8124186195dd5c98e50b827aba))
+* **Table:** Recovered prop names ([08b6f35](https://github.com/DevoInc/genesys-ui/commit/08b6f35220a04a28a4067703be2a9cd64bf3b615))
+* **Table:** Row height calculation for virtualization ([a8a5d47](https://github.com/DevoInc/genesys-ui/commit/a8a5d4780abc31b00785f5a759ddfe8a65a43403))
+* **Table:** TS types ([21cacac](https://github.com/DevoInc/genesys-ui/commit/21cacac1319d9a6962cf98e23fef204786e77ddb))
+
+
+### Vulnerabilities
+
+* **deps-dev:** bump @adobe/css-tools from 4.3.1 to 4.3.2 ([2312396](https://github.com/DevoInc/genesys-ui/commit/23123964814706a73b736a62d8120e831d7f1ac2))
+* **deps-dev:** bump vite from 4.5.0 to 4.5.1 ([2edc3d4](https://github.com/DevoInc/genesys-ui/commit/2edc3d42b9c35e18667357acab5ff046a65a53f2))
+
 ## [1.8.0](https://github.com/DevoInc/genesys-ui/compare/v1.7.0...v1.8.0) (2023-12-04)
 
 
