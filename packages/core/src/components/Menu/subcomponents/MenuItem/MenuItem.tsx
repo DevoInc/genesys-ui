@@ -109,8 +109,8 @@ export const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
       selectionScheme === 'single'
         ? 'menuitemradio'
         : selectionScheme === 'multiple'
-        ? 'menuitemcheckbox'
-        : 'menuitem';
+          ? 'menuitemcheckbox'
+          : 'menuitem';
     const getHasExtraLeftSpace = () => {
       if (hasExtraLeftSpace === false) return false;
       if (Boolean(children) && hasExtraLeftSpace) return true;
@@ -184,8 +184,8 @@ export const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
                           isSelected
                             ? 'gi-check_thick'
                             : isFontIcon
-                            ? icon
-                            : null
+                              ? icon
+                              : null
                         }
                         size={iconSize}
                         role={'img'}
