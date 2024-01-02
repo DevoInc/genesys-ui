@@ -14,10 +14,8 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({
   hasBoxShadow,
   status,
   styles,
-}) => {
-  return (
-    <StyledModalFooter css={styles} status={status} hasBoxShadow={hasBoxShadow}>
-      {children}
-    </StyledModalFooter>
-  );
-};
+}) => (
+  <StyledModalFooter css={styles} status={status} hasBoxShadow={hasBoxShadow}>
+    {children}
+  </StyledModalFooter>
+);
