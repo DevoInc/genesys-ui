@@ -40,6 +40,7 @@ export type FieldChildrenProps = React.ReactElement<{
   'aria-describedby': React.HTMLAttributes<unknown>['aria-describedby'];
   'aria-errormessage': React.HTMLAttributes<unknown>['aria-errormessage'];
   'aria-label': React.HTMLAttributes<unknown>['aria-label'];
+  'aria-labelledby': React.HTMLAttributes<unknown>['aria-labelledby'];
   id: string;
   required: boolean;
   size: FieldSize;
@@ -68,7 +69,7 @@ export interface BaseFieldProps
   /** The title to be shown on hover of the required marker of the field. */
   requiredMarkTooltip?: FieldRequiredMarkProps['tooltip'];
   /** Label for the input (aria-label is the same as Label) */
-  label: string;
+  label: React.ReactNode;
   /** Position of the label text relative to the input control. The position 'right' for the label is only recommended for checkbox and radio controls. */
   labelPosition?: LabelPosition;
   /** Size of the input: height, padding, font-size... etc. */
@@ -112,6 +113,7 @@ export const PartField: React.FC<FieldProps> = ({
   ...mouseEventAttrProps
 }) => {
   const helperId = helper ? `${id}-field-helper` : undefined;
+  const labelId = label ? `${id}-field-label` : undefined;
   const showFloatingHelper = helper && hasFloatingHelper;
   const labelPositionUpper = labelPosition.toUpperCase();
   const direction = FIELD_LABEL_POS_DIRECTION_MAP[labelPositionUpper];
@@ -149,6 +151,7 @@ export const PartField: React.FC<FieldProps> = ({
             srOnly={hideLabel}
             helper={showFloatingHelper ? FloatingHelperBlock : null}
             htmlFor={disabled ? null : id}
+            id={labelId}
             requiredMark={required ? RequiredMarkerBlock : null}
             size={size}
             styles={subcomponentStyles?.label}
@@ -157,7 +160,6 @@ export const PartField: React.FC<FieldProps> = ({
           </Field.Label>
         )}
         <Field.ControlDistributor
-          hasFloatingHelper={hasFloatingHelper}
           labelPosition={labelPosition}
           size={size}
           styles={subcomponentStyles?.controlDistributor}
@@ -171,6 +173,8 @@ export const PartField: React.FC<FieldProps> = ({
               status === 'error'
                 ? children.props['aria-errormessage'] || helperId
                 : undefined,
+            'aria-labelledby':
+              children.props['aria-labelledby'] || labelId || undefined,
           })}
           {hideLabel && showFloatingHelper && (
             <FloatingHelper

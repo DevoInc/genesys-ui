@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import { GlobalAriaProps, GlobalAttrProps } from '../../declarations';
-
 import {
   FormButtons,
   FormDistributor,
@@ -15,37 +13,47 @@ import { FormAttrProps, FormEventAttrs } from './declarations';
 export interface FormProps
   extends FormAttrProps,
     FormEventAttrs,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    Pick<
-      FormDistributorProps,
-      'alignItems' | 'justifyContent' | 'direction' | 'itemsGap'
-    > {
+    FormDistributorProps {
   /** Text as heading for the form. */
   heading?: string;
-  /** If the fields or other form groups are displayed in a row or in a column. */
-  children: React.ReactNode;
 }
 
 const PartForm: React.FC<FormProps> = ({
-  alignItems,
+  acceptCharset,
+  action,
+  autoComplete,
   children,
+  encType,
+  method,
+  name,
+  noValidate,
+  onReset,
+  onSubmit,
+  rel,
+  target,
   direction = 'column',
   heading,
   itemsGap = 'md',
-  justifyContent,
   tooltip,
-  ...formNativeProps
+  ...flexProps
 }) => {
   return (
-    <form {...formNativeProps} title={tooltip}>
+    <form
+      acceptCharset={acceptCharset}
+      action={action}
+      autoComplete={autoComplete}
+      encType={encType}
+      method={method}
+      name={name}
+      noValidate={noValidate}
+      onReset={onReset}
+      onSubmit={onSubmit}
+      rel={rel}
+      target={target}
+      title={tooltip}
+    >
       {heading && <FormLegend text={heading} />}
-      <FormDistributor
-        alignItems={alignItems}
-        direction={direction}
-        itemsGap={itemsGap}
-        justifyContent={justifyContent}
-      >
+      <FormDistributor {...flexProps} direction={direction} itemsGap={itemsGap}>
         {children}
       </FormDistributor>
     </form>

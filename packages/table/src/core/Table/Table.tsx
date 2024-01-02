@@ -1,92 +1,85 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
-import { ColDef, TableOptionsProps } from '../../declarations';
-
-import { TableContextProvider } from './context';
-
-import { TableHead } from '../TableHead';
-import { TableBody } from '../TableBody';
-import { StyledTable } from './StyledTable';
-import { StyledTableWrapper } from './StyledTableWrapper';
-
-import { getCollatedColumns, getSizes } from '../utils';
 import {
-  useTableMeasures,
-  useTableScroll,
-  useTableVirtualizationRow,
-  useTableVirtualizationColumn,
-} from '../hooks';
+  ColDef,
+  Data,
+  DefaultColDef,
+  Density,
+  Preset,
+  TextsType,
+} from '../../declarations';
+import { TableContext, WrapperContextProvider } from '../../context';
+import { TableWrapper } from '../TableWrapper';
+import { ROW_HEIGHT_MD } from '../../constants';
 
-interface TableProps {
-  data: { [key: string]: unknown }[];
-  tableOptions: TableOptionsProps;
-}
+export type TableProps = {
+  data: Data;
+  colDefs?: ColDef[];
+  defaultColDef?: DefaultColDef;
+  columnPresets?: Preset[];
+  context?: {
+    [key: string]: unknown;
+  };
+  density?: Density;
+  striped?: boolean;
+  maxHeight?: React.CSSProperties['maxHeight'];
+  minWidth?: number;
+  minHeight?: number;
+  rowHeight?: number;
+  resizableColumns?: boolean;
+  highlightColumnsOnHover?: boolean;
+  texts?: TextsType;
+  showFilters?: boolean;
+  onSort?: (columnDef) => void;
+};
 
 export const Table: React.FC<TableProps> = ({
-  tableOptions: { defaultColumnDef, columnDefs, types, visualOptions },
+  defaultColDef,
+  colDefs,
+  columnPresets,
+  density = 'default',
+  striped = false,
+  maxHeight = 'none',
+  minHeight,
+  minWidth,
+  showFilters,
+  onSort,
   data,
+  highlightColumnsOnHover = true,
+  resizableColumns = false,
+  rowHeight = ROW_HEIGHT_MD,
 }) => {
-  const theme = useTheme();
-  const { density, maxHeight, minWidth } = visualOptions || {};
-  const ref = React.useRef<HTMLDivElement>();
-
-  const refinedColumnDefs: ColDef[] = columnDefs.map((column) =>
-    getCollatedColumns(defaultColumnDef, column, types),
+  const mergedColDefs: ColDef[] = React.useMemo(
+    () =>
+      colDefs.map((column) => {
+        const preset = columnPresets.find(
+          (element) => element.id === column.preset,
+        );
+        return { ...defaultColDef, ...preset, ...column };
+      }),
+    [defaultColDef, columnPresets, colDefs],
   );
 
-  const sizes = getSizes(theme, density);
-
-  const rowVirtualizer = useTableVirtualizationRow({
-    data,
-    columnDefs,
-    visualOptions,
-    wrapperRef: ref,
-    sizes,
-  });
-
-  const columnVirtualizer = useTableVirtualizationColumn({
-    columnDefs,
-    visualOptions,
-    wrapperRef: ref,
-  });
-
-  const { hasScroll } = useTableScroll(rowVirtualizer, ref);
-
-  const { measures } = useTableMeasures({
-    ref,
-    rowVirtualizer,
-    columnVirtualizer,
-    sizes,
-  });
-
   return (
-    <TableContextProvider
+    <TableContext.Provider
       value={{
-        visualOptions,
-        measures,
-        sizes,
+        data,
+        colDefs: mergedColDefs,
+        showFilters,
+        striped,
+        maxHeight,
+        minHeight,
+        minWidth,
+        density,
+        highlightColumnsOnHover,
+        resizableColumns,
+        onSort,
+        rowHeight,
       }}
     >
-      <StyledTableWrapper ref={ref} maxHeight={maxHeight}>
-        <StyledTable
-          minWidth={minWidth}
-          $height={`${measures?.body.total.height}px`}
-          $width={`${measures?.body.total.width}px`}
-        >
-          <TableHead
-            columnDefs={refinedColumnDefs}
-            columnVirtualizer={columnVirtualizer}
-            scrolled={hasScroll}
-          />
-          <TableBody
-            columnDefs={refinedColumnDefs}
-            columnVirtualizer={columnVirtualizer}
-            data={data}
-            rowVirtualizer={rowVirtualizer}
-          />
-        </StyledTable>
-      </StyledTableWrapper>
-    </TableContextProvider>
+      <WrapperContextProvider>
+        <TableWrapper />
+      </WrapperContextProvider>
+    </TableContext.Provider>
   );
 };

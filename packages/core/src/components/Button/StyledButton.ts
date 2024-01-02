@@ -69,10 +69,10 @@ export const StyledButton = styled.button<StyledButtonProps>`
     const width = wide
       ? '100%'
       : isIconButtonDropdown
-      ? IconButtonDropdownTokens.size.width[size]
-      : squared
-      ? height
-      : 'auto';
+        ? IconButtonDropdownTokens.size.width[size]
+        : squared
+          ? height
+          : 'auto';
     const padding =
       squared && !hasDropdown ? '0' : `0 ${buttonTokens.space.padding[size]}`;
     const minWidth = !squared && buttonTokens.size.minWidth[size];

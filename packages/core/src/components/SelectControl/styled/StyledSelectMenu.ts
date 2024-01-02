@@ -81,7 +81,9 @@ export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`
 
           &-list {
             ${scrollbars({ theme })};
-            margin: ${wrapperTokens.space.margin};
+            margin: ${menuQuiet
+              ? `${wrapperTokens.space.margin} 0 0 0`
+              : wrapperTokens.space.margin};
             max-height: ${maxMenuHeight
               ? `${maxMenuHeight}px`
               : listTokens.size.maxHeight};

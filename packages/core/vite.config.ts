@@ -1,10 +1,8 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import { visualizer } from 'rollup-plugin-visualizer';
-// Used from @storybook/react-vite dependencies
 import react from '@vitejs/plugin-react';
 
-/** @type {import('vite').UserConfig} */
 export default defineConfig({
   build: {
     sourcemap: true,
@@ -53,6 +51,7 @@ export default defineConfig({
           'prop-types': 'propTypes',
           '@emotion/use-insertion-effect-with-fallbacks':
             'emotionUseInsertionEffectWithFallbacks',
+          '@emotion/react': 'emotionReact',
         },
       },
     },

@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { StyledTableCell } from './StyledTableCell';
+import { StyledCell } from './StyledCell';
 import { useRenderContent } from './useRenderContent';
 import { ColDef } from '../../declarations';
 import { useInitialState } from '../../editors/useInitialState';
-import { TableContext } from '../Table/context';
-import { StyledTableCellWrapper } from './StyledTableCellWrapper';
+import { StyledCellWrapper } from './StyledCellWrapper';
 import { GIPencilEditFilled } from '@devoinc/genesys-icons';
-import { StyledTableCellMarker } from './StyledTableCellMarker';
+import { StyledCellMarker } from './StyledCellMarker';
+import { TableContext, WrapperContext } from '../../context';
 
 interface CellProps {
   data: unknown;
-  columnDef: ColDef;
+  colDef: ColDef;
   width?: number;
   height?: number;
   offsetX?: number;
@@ -18,56 +18,55 @@ interface CellProps {
 
 export const Cell: React.FC<CellProps> = ({
   data,
-  columnDef,
+  colDef,
   width,
   height,
   offsetX,
 }) => {
-  const { sizes, texts, visualOptions, measures } =
+  const { density, texts, highlightColumnsOnHover } =
     React.useContext(TableContext);
-  const { onReset } = columnDef;
+  const { height: wrapperHeight } = React.useContext(WrapperContext);
+
+  const { onReset } = colDef;
 
   useInitialState(data, onReset);
 
   const { cellRef, editionContent, isEditMode, onDoubleClick, viewContent } =
-    useRenderContent(columnDef, data);
-  const clickable = columnDef.editable;
+    useRenderContent(colDef, data);
+
   return (
-    <StyledTableCell
-      $height={`${height}px`}
-      $width={`${width}px`}
-      highlightColumnsOnHover={visualOptions?.highlightColumnsOnHover}
-      highlightedColumnHeight={measures?.body?.visible?.height}
-      aria-selected={isEditMode}
+    <StyledCell
+      $height={height}
+      $width={width}
       offsetX={offsetX}
+      highlightColumnsOnHover={highlightColumnsOnHover}
+      wrapperHeight={wrapperHeight}
+      aria-selected={isEditMode}
       onDoubleClick={onDoubleClick}
       ref={cellRef}
     >
-      <StyledTableCellWrapper
-        as={clickable ? 'button' : 'div'}
-        clickable={clickable}
+      <StyledCellWrapper
+        as={colDef.editable ? 'button' : 'div'}
+        clickable={colDef.editable}
         isEditMode={isEditMode}
-        paddingHor={`${sizes.cell.horPad}px`}
-        paddingVer={`${sizes.cell.verPad}px`}
-        tabIndex={clickable ? 0 : -1}
+        density={density}
+        tabIndex={colDef.editable ? 0 : -1}
         title={
           isEditMode ? texts?.cell?.editSaveTooltip : texts?.cell?.editTooltip
         }
-        toEdge={columnDef?.cellStyle?.toEdge}
-        verAlign={columnDef?.cellStyle?.align?.vertical}
+        toEdge={colDef?.toEdge}
+        verAlign={colDef?.verticalAlign}
         horAlign={
-          columnDef?.cellStyle?.align?.horizontal || columnDef.type === 'number'
-            ? 'right'
-            : null
+          colDef?.align || (colDef.preset === 'number' ? 'right' : null)
         }
       >
         {isEditMode ? editionContent : viewContent}
-        {columnDef.editable && !isEditMode && (
-          <StyledTableCellMarker>
+        {colDef.editable && !isEditMode && (
+          <StyledCellMarker>
             <GIPencilEditFilled size={10} />
-          </StyledTableCellMarker>
+          </StyledCellMarker>
         )}
-      </StyledTableCellWrapper>
-    </StyledTableCell>
+      </StyledCellWrapper>
+    </StyledCell>
   );
 };

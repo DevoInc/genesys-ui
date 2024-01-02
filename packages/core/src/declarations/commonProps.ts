@@ -14,6 +14,7 @@ import { StyledOverloadCssProps, StyledPolymorphicProps } from './styled';
  * COMMON PROPS
  * --------------------------------------------- */
 export type HTMLTag = keyof ReactHTML;
+
 export type GlobalSize =
   | 'xxxxs'
   | 'xxxs'
@@ -26,11 +27,15 @@ export type GlobalSize =
   | 'xxl'
   | 'xxxl'
   | 'xxxxl';
+
 export type BaseSize = PickUnion<GlobalSize, 'sm' | 'md' | 'lg'>;
+
 export type TypoBodySize =
   | BaseSize
-  | PickUnion<GlobalSize, 'xxs' | 'xs' | 'xl' | 'xxl'>;
-export type TypoHeadingSize = 'h1' | 'h2' | 'h3' | 'h4' | 'H5' | 'H6';
+  | PickUnion<GlobalSize, 'xxs' | 'xs' | 'xl'>;
+
+export type TypoHeadingSize = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
 export type TypoSize = TypoBodySize | TypoHeadingSize;
 
 /** ---------------------------------------------
@@ -237,7 +242,7 @@ export type Elevation =
  * --------------------------------------------- */
 export interface FieldControlCommonProps<T = Element>
   extends GlobalAttrProps<T>,
-    Pick<GlobalAriaProps, 'aria-describedby'>,
+    Pick<GlobalAriaProps, 'aria-describedby' | 'aria-labelledby'>,
     Required<Pick<GlobalAriaProps, 'aria-label'>>,
     Omit<FieldAriaProps, 'aria-required'>,
     FieldAttrProps<T>,

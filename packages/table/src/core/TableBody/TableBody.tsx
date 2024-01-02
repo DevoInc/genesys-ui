@@ -4,13 +4,15 @@ import { ColDef, TextsType } from '../../declarations';
 import { StyledTableBody } from './StyledTableBody';
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { Box, Typography } from '@devoinc/genesys-ui';
-import { TableContext } from '../Table/context';
+import { TableContext } from '../../context/TableContext';
 
 export interface TableBodyProps {
-  columnDefs: ColDef[];
+  colDefs: ColDef[];
   columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
   data: unknown;
   rowVirtualizer: Virtualizer<HTMLDivElement, Element>;
+  width: number;
+  height: number;
 }
 
 const renderMessage = (message: React.ReactNode) => {
@@ -39,30 +41,32 @@ const getEmptyMessage = (
 };
 
 export const TableBody: React.FC<TableBodyProps> = ({
-  columnDefs,
+  colDefs,
   columnVirtualizer,
   data,
   rowVirtualizer,
+  width,
+  height,
 }) => {
-  const { visualOptions, texts, measures } = React.useContext(TableContext);
+  const { highlightColumnsOnHover, texts } = React.useContext(TableContext);
   const emptyMessage = getEmptyMessage(data, texts, rowVirtualizer);
 
   return (
     <StyledTableBody
-      $height={measures?.body?.total?.height}
-      $width={measures?.body?.total?.width}
-      highlightColumnsOnHover={visualOptions?.highlightColumnsOnHover}
+      $height={height}
+      $width={width}
+      highlightColumnsOnHover={highlightColumnsOnHover}
     >
       {emptyMessage ? (
         <tr>
-          <td colSpan={columnDefs?.length}>{renderMessage(emptyMessage)}</td>
+          <td colSpan={colDefs?.length}>{renderMessage(emptyMessage)}</td>
         </tr>
       ) : (
         rowVirtualizer.getVirtualItems().map((virtualRow: VirtualItem) => {
           return (
             <Row
               key={'tb_' + virtualRow.key}
-              columnDefs={columnDefs}
+              colDefs={colDefs}
               columnVirtualizer={columnVirtualizer}
               data={data[virtualRow.index]}
               virtualRow={virtualRow}

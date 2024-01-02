@@ -69,13 +69,12 @@ export const StyledAvatar = styled.span<StyledAvatarProps>`
       background-color: ${bgColor};
       text-transform: uppercase;
       font-weight: bold;
-      font-size: calc(${width} / 2.5);
+      font-size: calc(${width} / 1.8);
       color: ${color};
 
       ${imageSrc &&
       css`
         object-fit: ${imageFit};
-        padding-left: ${width};
         background-image: ${`url("${imageSrc}")`};
         background-size: ${imageFit};
         background-position: center;

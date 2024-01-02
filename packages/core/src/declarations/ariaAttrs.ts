@@ -143,3 +143,19 @@ export interface FieldAriaProps
  * Common aria declarations for tree components
  * --------------------------------------------- */
 export interface TreeAriaProps extends Pick<AriaAttributes, 'aria-level'> {}
+
+/** ---------------------------------------------
+ * Common interface with required aria-label or aria-labelledby. Always there has to be defined one,
+ * but not both at the same time.
+ * --------------------------------------------- */
+export type WithRequiredAriaLabelOrAriaLabelledByProps<T> = (
+  | {
+      'aria-label': GlobalAriaProps['aria-label'];
+      'aria-labelledby'?: string;
+    }
+  | {
+      'aria-label'?: string;
+      'aria-labelledby': GlobalAriaProps['aria-label'];
+    }
+) &
+  Omit<T, 'aria-label' | 'aria-labelledby'>;

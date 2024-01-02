@@ -8,6 +8,7 @@ import {
   FieldStatus,
   InputAttrProps,
   StyledOverloadCssPropsWithRecord,
+  WithRequiredAriaLabelOrAriaLabelledByProps,
 } from '../../declarations';
 
 import { getPxFromRem } from '../../helpers';
@@ -33,8 +34,9 @@ export interface BaseSwitchControlProps
   uncheckedContent?: React.ReactNode;
 }
 
-export type SwitchControlProps = BaseSwitchControlProps &
-  StyledOverloadCssPropsWithRecord<'container' | 'handle' | 'text'>;
+export type SwitchControlProps =
+  WithRequiredAriaLabelOrAriaLabelledByProps<BaseSwitchControlProps> &
+    StyledOverloadCssPropsWithRecord<'container' | 'handle' | 'text'>;
 
 export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
   'aria-errormessage': ariaErrorMessage,

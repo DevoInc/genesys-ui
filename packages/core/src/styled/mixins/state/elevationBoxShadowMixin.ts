@@ -14,12 +14,12 @@ export const elevationBoxShadowMixin =
             ? elevation === 'stickyBottom'
               ? boxShadowTokens.depth.sticky.bottom
               : elevation === 'stickyLeft'
-              ? boxShadowTokens.depth.sticky.left
-              : elevation === 'stickyRight'
-              ? boxShadowTokens.depth.sticky.right
-              : elevation === 'stickyTop'
-              ? boxShadowTokens.depth.sticky.top
-              : ''
+                ? boxShadowTokens.depth.sticky.left
+                : elevation === 'stickyRight'
+                  ? boxShadowTokens.depth.sticky.right
+                  : elevation === 'stickyTop'
+                    ? boxShadowTokens.depth.sticky.top
+                    : ''
             : boxShadowTokens.depth[elevation]};
         `
       : null;

@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-import { StyledTableProps } from '../Table/StyledTable';
-import { TableVisualOptions } from '../../declarations';
+
+import { StyledTableProps } from '../TableWrapper/StyledTable';
+import { TableProps } from '../Table';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface StyledTableBodyProps
   extends Pick<StyledTableProps, '$width' | '$height'>,
-    Pick<TableVisualOptions, 'highlightColumnsOnHover'> {}
+    Pick<TableProps, 'highlightColumnsOnHover'> {}
 
 export const StyledTableBody = styled.tbody<StyledTableBodyProps>`
   position: relative;

@@ -7,6 +7,7 @@ import {
   ElemSelect,
   ElemCheckbox,
   ElemInputControl,
+  ElemPopper,
 } from './__stories__/commonElements';
 
 const meta: Meta<typeof FieldsCombiner> = {
@@ -39,6 +40,26 @@ export const InputAndIconButton: Story = {
     label: 'Input and IconButton to right',
     leftElem: ElemInputControl,
     rightElem: ElemIconButton,
+  },
+};
+
+export const ButtonAndIconButton: Story = {
+  name: 'Button and IconButton',
+  args: {
+    id: 'fields-1',
+    label: 'Button and IconButton to right',
+    leftElem: ElemButton,
+    rightElem: ElemIconButton,
+  },
+};
+
+export const ButtonAndPopper: Story = {
+  name: 'Button and Popper',
+  args: {
+    id: 'fields-1',
+    label: 'Button and Popper to right',
+    leftElem: ElemButton,
+    rightElem: ElemPopper,
   },
 };
 

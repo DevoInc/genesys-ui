@@ -10,6 +10,7 @@ import { hasStatus } from '../../utils/validations';
 import {
   StyledOverloadCssProps,
   StyledOverloadCssPropsWithRecord,
+  WithRequiredAriaLabelOrAriaLabelledByProps,
 } from '../../declarations';
 import type {
   InputControlIconProps,
@@ -38,10 +39,16 @@ export interface BaseInputControlProps
   addonToRight?: React.ReactNode;
 }
 
-export type InputControlProps = BaseInputControlProps &
-  StyledOverloadCssPropsWithRecord<
-    'addon' | 'container' | 'icon' | 'input' | 'innerContainer' | 'showPassword'
-  >;
+export type InputControlProps =
+  WithRequiredAriaLabelOrAriaLabelledByProps<BaseInputControlProps> &
+    StyledOverloadCssPropsWithRecord<
+      | 'addon'
+      | 'container'
+      | 'icon'
+      | 'input'
+      | 'innerContainer'
+      | 'showPassword'
+    >;
 
 const InternalInputControl: React.FC<InputControlProps> = ({
   addonToLeft,

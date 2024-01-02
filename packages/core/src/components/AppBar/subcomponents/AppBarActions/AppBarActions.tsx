@@ -14,7 +14,11 @@ export const AppBarActions: React.FC<AppBarActionsProps> = ({
   children,
   styles,
 }) => (
-  <Flex.Item id={`${id}__actions`} marginLeft="auto" styles={styles}>
+  <Flex.Item
+    id={id ? `${id}__actions` : null}
+    marginLeft="auto"
+    styles={styles}
+  >
     {children}
   </Flex.Item>
 );

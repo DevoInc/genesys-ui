@@ -6,6 +6,7 @@ import {
   FieldControlCommonProps,
   FieldSize,
   InputAttrProps,
+  WithRequiredAriaLabelOrAriaLabelledByProps,
 } from '../../declarations';
 
 import {
@@ -13,7 +14,7 @@ import {
   StyledRadioControlProps,
 } from './StyledRadioControl';
 
-export interface RadioControlProps
+interface CommonRadioControlProps
   extends FieldControlCommonProps,
     CheckAttrProps,
     CheckAriaProps,
@@ -22,6 +23,9 @@ export interface RadioControlProps
   /** The size for the radio. It affects to its width, height, font-size... etc. */
   size?: FieldSize;
 }
+
+export type RadioControlProps =
+  WithRequiredAriaLabelOrAriaLabelledByProps<CommonRadioControlProps>;
 
 export const RadioControl: React.FC<RadioControlProps> = ({
   'aria-errormessage': ariaErrorMessage,

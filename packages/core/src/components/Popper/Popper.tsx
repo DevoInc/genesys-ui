@@ -2,7 +2,9 @@ import * as React from 'react';
 import * as PopperJS from '@popperjs/core';
 import { usePopper } from 'react-popper';
 import ReactDOM from 'react-dom';
+import { concat } from 'lodash';
 
+import { POPPER_DEFAULT_OFFSET } from './constants';
 import {
   useAddPropsToChildren,
   useStateFromProps,
@@ -13,14 +15,18 @@ import { StyledPopperArrow, StyledPopperArrowProps } from './StyledPopperArrow';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  StyledOverloadCssProps,
+  StyledOverloadCssPropsWithRecord,
   TriggerAriaProps,
 } from '../../declarations';
+
 const defaultAppendToProp =
   typeof window !== 'undefined' ? document.body : null;
 
-export interface PopperProps
+interface BasePopperProps
   extends StyledPopperArrowProps,
     //native
+    StyledOverloadCssProps,
     Pick<GlobalAttrProps, 'id' | 'role'>,
     GlobalAriaProps,
     Pick<TriggerAriaProps, 'aria-expanded'> {
@@ -49,6 +55,9 @@ export interface PopperProps
   trigger?: React.ReactElement;
 }
 
+export type PopperProps = BasePopperProps &
+  StyledOverloadCssPropsWithRecord<'trigger' | 'container'>;
+
 export const Popper: React.FC<PopperProps> = ({
   appendTo = defaultAppendToProp,
   'aria-expanded': ariaExpanded,
@@ -56,10 +65,12 @@ export const Popper: React.FC<PopperProps> = ({
   children,
   hasGpuAcceleration,
   visible: isVisibleExternalState,
-  offset = [0, 10],
+  offset = POPPER_DEFAULT_OFFSET,
   placement = 'auto',
   setIsVisible: setIsVisibleExternalState,
   strategy = 'absolute',
+  styles,
+  subcomponentStyles,
   trigger,
   zIndex,
   ...nativeProps
@@ -105,11 +116,15 @@ export const Popper: React.FC<PopperProps> = ({
   }, [arrow, arrowRef, hasGpuAcceleration, offset]);
 
   // Popper - Hook
-  const { styles, attributes } = usePopper(triggerRef, popperRef, {
-    placement,
-    strategy,
-    modifiers,
-  });
+  const { styles: popperStyles, attributes: popperAttributes } = usePopper(
+    triggerRef,
+    popperRef,
+    {
+      placement,
+      strategy,
+      modifiers,
+    },
+  );
 
   // Click Outside - Hook
   useOnEventOutside({
@@ -118,8 +133,9 @@ export const Popper: React.FC<PopperProps> = ({
   });
 
   // Attributes and Styles - Popper
-  const isTriggerHidden = attributes?.popper?.['data-popper-reference-hidden'];
-  const placementPopper = attributes?.popper?.[
+  const isTriggerHidden =
+    popperAttributes?.popper?.['data-popper-reference-hidden'];
+  const placementPopper = popperAttributes?.popper?.[
     'data-popper-placement'
   ] as PopperJS.Placement;
 
@@ -132,6 +148,7 @@ export const Popper: React.FC<PopperProps> = ({
   const triggerCmp = useAddPropsToChildren(trigger, {
     onClick: wrappedClick,
     state: isVisible ? 'expanded' : undefined,
+    styles: concat(trigger.props.styles, subcomponentStyles?.trigger || styles),
     ref: setTriggerRef,
   });
   const childrenCmp = useAddPropsToChildren(children, {
@@ -148,7 +165,8 @@ export const Popper: React.FC<PopperProps> = ({
       aria-expanded={ariaExpanded || isVisible}
       hiddenTrigger={!!isTriggerHidden}
       ref={setPopperRef}
-      style={styles.popper}
+      style={popperStyles.popper}
+      css={subcomponentStyles?.container}
       zIndex={zIndex}
     >
       {childrenCmp}
@@ -156,7 +174,7 @@ export const Popper: React.FC<PopperProps> = ({
         <StyledPopperArrow
           ref={setArrowRef}
           placement={placementPopper}
-          style={styles.arrow}
+          style={popperStyles.arrow}
           zIndex={zIndex}
         >
           {arrowCmp}

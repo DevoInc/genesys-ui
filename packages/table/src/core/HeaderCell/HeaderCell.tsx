@@ -2,46 +2,47 @@ import React from 'react';
 
 import { ColDef } from '../../declarations';
 
-import { Typography } from '@devoinc/genesys-ui';
-
 import { StyledHeaderCell } from './StyledHeaderCell';
-import { TableContext } from '../Table/context';
 import { StyledHeaderCellResizer } from './StyledHeaderCellResizer';
+import { TableContext } from '../../context/TableContext';
+import { OrderIndicator } from './OrderIndicator';
 
 interface HeaderCellProps {
   colDef: ColDef;
   width: React.CSSProperties['width'];
   offsetX: number;
+  children: React.ReactNode;
+  resizable?: boolean;
+  onSort?: (colDef: ColDef) => void;
 }
 
 export const HeaderCell: React.FC<HeaderCellProps> = ({
   colDef,
   width,
   offsetX,
+  children,
+  resizable = true,
+  onSort,
 }) => {
-  const { sizes, visualOptions } = React.useContext(TableContext);
-  const resizable = colDef?.resizable ?? visualOptions?.resizableColumns;
-
+  const { density } = React.useContext(TableContext);
   return (
     <StyledHeaderCell
       $width={width}
-      horAlign={
-        colDef?.cellStyle?.align?.horizontal || colDef.type === 'number'
-          ? 'right'
-          : null
-      }
-      resizable={visualOptions.resizableColumns ?? colDef?.resizable}
+      horAlign={colDef?.align || (colDef.preset === 'number' ? 'right' : null)}
       offsetX={offsetX}
-      paddingHor={`${sizes.cell.horPad}px`}
-      paddingVer={`${sizes.cell.verPad}px`}
+      density={density}
       title={colDef.headerName}
+      onClick={() => {
+        if (onSort) {
+          onSort(colDef);
+        }
+      }}
     >
-      <Typography.Heading size="h6" truncateLine={1}>
-        {colDef.headerName}
-      </Typography.Heading>
+      {children}
+      <OrderIndicator colDef={colDef} />
       {resizable && (
         <StyledHeaderCellResizer
-          $height={`${sizes.head.height}px`}
+          density={density}
           role="presentation"
           aria-hidden="false"
         />

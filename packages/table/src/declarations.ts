@@ -1,21 +1,12 @@
 import * as React from 'react';
 import { DateContext } from './valueFormatters/date';
+import { FilterProps } from './filters/declarations';
+import { CellRendererProps } from './renderers/declarations';
+import { CellEditorProps } from './editors/declarations';
 
 export type DefaultColDef = Omit<ColDef, 'id'>;
 
-type Types = { id: string };
-type TypesColDef = Omit<ColDef, 'colId'>;
 export type Density = 'default' | 'compact' | 'comfortable';
-
-export interface TableVisualOptions {
-  density?: Density;
-  striped?: boolean;
-  maxHeight?: React.CSSProperties['maxHeight'];
-  minWidth?: number;
-  rowHeight?: RowHeight;
-  resizableColumns?: boolean;
-  highlightColumnsOnHover?: boolean;
-}
 
 export type TextsType = {
   general: {
@@ -31,72 +22,58 @@ export type TextsType = {
   };
 };
 
-export interface TableOptionsProps {
-  columnDefs?: ColDef[];
-  defaultColumnDef?: DefaultColDef;
-  types?: (Types & TypesColDef)[];
-  context?: {
-    [key: string]: unknown;
-  };
-  visualOptions?: TableVisualOptions;
-  texts?: TextsType;
-}
-
-export interface CellRendererParams {
-  value: unknown;
-  columnDef: ColDef;
-}
+export type Preset = {
+  id: string;
+} & Omit<ColDef, 'colId'>;
 
 export type CellVerAlign = 'top' | 'bottom' | 'center';
 export type CellHorAlign = 'left' | 'center' | 'right';
 
-export interface ColumnCellStyleProps {
-  align?: {
-    horizontal?: CellHorAlign;
-    vertical?: CellVerAlign;
-  };
-  textAlign?: React.CSSProperties['textAlign'];
-  /** Width of the column expressed in percentage over the width of the table */
-  width?: number;
-  truncateLine?: number;
-  toEdge?: boolean;
-}
-
-type EditCellOnChange = (newValue: unknown) => void;
-
-interface CellEditorParams {
-  value: unknown;
-  onChange: EditCellOnChange;
-}
-
-interface CellRendererConfig {
-  onChange?: EditCellOnChange;
-  [key: string]: any;
-}
-
-export interface ColDef {
+export type ColDef = {
   id: string;
   headerName?: string;
-  type?: string;
+  // type?: string;
+  preset?: string;
 
   editable?: boolean;
-  CellEditor?: ({ value, onChange }: CellEditorParams) => React.ReactNode;
-  CellRenderer?: ({ value, columnDef }: CellRendererParams) => React.ReactNode;
-  valueFormatter?: (value: unknown, context: DateContext) => void;
+  cellEditor?:
+    | React.FC<CellEditorProps>
+    | (({ value, onChange }: CellEditorProps) => React.ReactNode);
 
-  // revisar
-  cellRendererConfig?: CellRendererConfig;
+  valueFormatter?: (value: unknown, context: DateContext) => void;
+  cellRenderer?:
+    | React.FC<CellRendererProps>
+    | (({ value, colDef }: CellRendererProps) => React.ReactNode);
+
+  cellFilter?:
+    | React.FC<FilterProps>
+    | (({ colDef }: FilterProps) => React.ReactNode);
+
   context?: {
     [key: string]: unknown;
   };
 
-  cellStyle?: ColumnCellStyleProps;
+  sortable?: boolean;
+  sort?: 'asc' | 'desc';
+  sortIndex?: React.ReactNode;
+
   expandedRow?: boolean;
   isDragging?: boolean;
   onReset?: (initialValue: unknown) => void;
   tooltipField?: string;
   resizable?: boolean;
-}
+  rowHeight?: number;
+  minWidth?: number | string;
+  width?: number | string;
+  align?: CellHorAlign;
+  verticalAlign?: CellVerAlign;
+  textAlign?: React.CSSProperties['textAlign'];
+  /** Width of the column expressed in percentage over the width of the table */
+  truncateLine?: number;
+  toEdge?: boolean;
+};
+
+export type Data = { [key: string]: unknown }[];
 
 export type RowHeight = 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
 
@@ -115,26 +92,4 @@ export interface SizesConfig {
     horPad: number;
     verPad: number;
   };
-}
-
-export interface MeasuresConfig {
-  wrapper: {
-    height: number;
-    width: number;
-  };
-  body: {
-    total: {
-      height: number;
-      width: number;
-    };
-    visible: {
-      height: number;
-      width: number;
-    };
-  };
-}
-
-export interface OccupiedWidth {
-  percentage: number;
-  definedColDefs: number;
 }

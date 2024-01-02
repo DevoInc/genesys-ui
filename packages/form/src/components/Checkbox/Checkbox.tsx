@@ -14,10 +14,11 @@ export interface CheckboxProps
     >,
     Omit<
       CheckboxControlProps,
-      'id' | 'size' | 'aria-label' | 'status' | 'disabled' | 'required'
+      'id' | 'size' | 'status' | 'disabled' | 'required' | 'aria-label'
     > {}
 
 export const Checkbox: React.FC<CheckboxProps> = ({
+  'aria-labelledby': ariaLabelledBy,
   disabled,
   hasFloatingHelper,
   helper,
@@ -64,7 +65,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   >
     <CheckboxControl
       {...restNativeInputProps}
-      aria-label={label}
+      aria-labelledby={ariaLabelledBy}
       disabled={disabled}
       id={id}
       required={required}

@@ -25,7 +25,7 @@ export const AppBarOptions: React.FC<AppBarOptionsProps> = ({
   return (
     <HFlex
       as={as}
-      id={`${id}__user-options`}
+      id={id ? `${id}__user-options` : null}
       alignItems="center"
       marginLeft="auto"
       styles={styles}

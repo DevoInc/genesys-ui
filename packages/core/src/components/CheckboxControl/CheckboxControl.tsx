@@ -6,6 +6,7 @@ import {
   CheckAttrProps,
   CheckAriaProps,
   InputAttrProps,
+  WithRequiredAriaLabelOrAriaLabelledByProps,
 } from '../../declarations';
 
 import {
@@ -13,7 +14,7 @@ import {
   StyledCheckboxControlProps,
 } from './StyledCheckboxControl';
 
-export interface CheckboxControlProps
+interface CommonCheckboxControlProps
   extends FieldControlCommonProps,
     CheckAttrProps,
     CheckAriaProps,
@@ -22,6 +23,9 @@ export interface CheckboxControlProps
   /** The size for the checkbox. It affects to its width, height, font-size... etc. */
   size?: FieldSize;
 }
+
+export type CheckboxControlProps =
+  WithRequiredAriaLabelOrAriaLabelledByProps<CommonCheckboxControlProps>;
 
 export const CheckboxControl: React.FC<CheckboxControlProps> = ({
   'aria-checked': ariaChecked,

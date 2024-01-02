@@ -10,10 +10,11 @@ export interface SwitchProps
     >,
     Omit<
       SwitchControlProps,
-      'id' | 'size' | 'aria-label' | 'status' | 'disabled' | 'required'
+      'id' | 'size' | 'status' | 'disabled' | 'required'
     > {}
 
 export const Switch: React.FC<SwitchProps> = ({
+  'aria-label': ariaLabel,
   disabled,
   hasFloatingHelper,
   helper,
@@ -62,7 +63,7 @@ export const Switch: React.FC<SwitchProps> = ({
     >
       <SwitchControl
         {...restSwitchControlProps}
-        aria-label={label}
+        aria-label={ariaLabel}
         disabled={disabled}
         id={id}
         required={required}

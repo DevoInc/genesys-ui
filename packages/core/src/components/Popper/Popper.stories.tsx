@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
+import { POPPER_DEFAULT_OFFSET } from './constants';
 import { Box, Button, IconButton, Popper, Typography } from '../';
 import { lorem } from '../../../stories/utils/fillerTexts';
 
@@ -10,7 +11,7 @@ const meta: Meta<typeof Popper> = {
   args: {
     id: 'story-id',
     placement: 'auto',
-    offset: [0, 10],
+    offset: POPPER_DEFAULT_OFFSET,
     strategy: 'absolute',
   },
 };

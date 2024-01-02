@@ -3,6 +3,7 @@ import { css, DefaultTheme } from 'styled-components';
 import { FieldSize, FieldStatus } from '@devoinc/genesys-ui';
 
 export interface FieldsCombinerMixinsProps {
+  combinedButtons?: boolean;
   first: boolean;
   size: FieldSize;
   status: FieldStatus;
@@ -52,12 +53,14 @@ export const fieldsCombinerInputAndSelectMixin = ({
 };
 
 export const fieldsCombinerButtonMixin = ({
+  combinedButtons,
   first,
   size,
   status,
   theme,
 }: FieldsCombinerMixinsProps) => {
-  const fieldTokens = theme.alias.fields;
+  const aliasTokens = theme.alias;
+  const fieldTokens = aliasTokens.fields;
   const btnTokens = theme.cmp.button;
   const height = btnTokens.size.height[size];
 
@@ -67,14 +70,37 @@ export const fieldsCombinerButtonMixin = ({
     transition: all ease ${btnTokens.mutation.transitionDuration};
     position: relative;
     z-index: 1;
-    border-style: solid;
-    border-color: ${fieldTokens.color.border[status]?.enabled};
-    border-width: ${fieldTokens.shape.borderSize.base};
 
-    // icon button
-    &${'[data-squared]'} {
-      width: ${height};
-    }
+    ${combinedButtons
+      ? css`
+          border-left: ${first
+            ? null
+            : `solid ${aliasTokens.shape.borderSize.separator.md} ${
+                theme?.meta?.scheme === 'light'
+                  ? aliasTokens.color.border.separator.blendInverse.strong
+                  : aliasTokens.color.border.separator.blendBase.strong
+              }`};
+        `
+      : css`
+          border-style: solid;
+          border-color: ${fieldTokens.color.border[status]?.enabled};
+          border-width: ${fieldTokens.shape.borderSize.base};
+
+          &,
+          &::before {
+            ${first
+              ? css`
+                  border-right-width: 0;
+                `
+              : css`
+                  border-left-width: 0;
+                `}
+          }
+
+          *:hover > * > & {
+            border-color: ${fieldTokens.color.border.base.hovered};
+          }
+        `}
 
     &,
     &::before {
@@ -82,17 +108,16 @@ export const fieldsCombinerButtonMixin = ({
         ? css`
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
-            border-right-width: 0;
           `
         : css`
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
-            border-left-width: 0;
           `}
     }
 
-    *:hover > * > & {
-      border-color: ${fieldTokens.color.border.base.hovered};
+    // icon button
+    &${'[data-squared]'} {
+      width: ${height};
     }
   `;
 };

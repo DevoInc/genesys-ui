@@ -1,45 +1,37 @@
 import * as React from 'react';
-
-// declarations
-import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-} from '../../declarations';
-
-// components
-import { VFlex } from '../VFlex';
+import { VFlex, VFlexProps } from '../VFlex';
 import { MenuHeading, MenuItem, MenuSeparator } from './subcomponents';
 
-export interface MenuProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    Pick<GlobalAttrProps, 'id'>,
-    GlobalAriaProps {
-  children?: React.ReactNode;
+export interface MenuProps extends Omit<VFlexProps, 'role'> {
   cmpRole?: 'menu' | 'nav';
 }
 
 const InternalMenu: React.FC<MenuProps> = ({
-  as = 'nav',
+  as,
   children,
+  childrenFitFullWidth = true,
   cmpRole = 'menu',
-  ...restNativeProps
+  spacing = '0',
+  ...restVFlexProps
 }) => {
   return cmpRole === 'nav' ? (
-    <VFlex {...restNativeProps} as={as} spacing="0" childrenFitFullWidth>
+    <VFlex
+      {...restVFlexProps}
+      as={as || 'nav'}
+      spacing={spacing}
+      childrenFitFullWidth={childrenFitFullWidth}
+    >
       <VFlex as="ul" spacing="0" childrenFitFullWidth>
         {children}
       </VFlex>
     </VFlex>
   ) : (
     <VFlex
-      {...restNativeProps}
-      as="ul"
+      {...restVFlexProps}
+      as={as || 'ul'}
       role="menu"
-      spacing="0"
-      childrenFitFullWidth
+      spacing={spacing}
+      childrenFitFullWidth={childrenFitFullWidth}
     >
       {children}
     </VFlex>

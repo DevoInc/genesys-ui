@@ -69,8 +69,8 @@ export const DateTime: React.FC<DateTimeProps> = ({
   const iniDate = value
     ? value
     : dateForMonth
-    ? dateForMonth
-    : new Date().getTime();
+      ? dateForMonth
+      : new Date().getTime();
 
   const [tmpMonth, setTmpMonth] = React.useState(iniDate);
   const [tmpTime, setTmpTime] = React.useState(iniDate);

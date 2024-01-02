@@ -14,10 +14,11 @@ export interface RadioProps
     >,
     Omit<
       RadioControlProps,
-      'id' | 'size' | 'aria-label' | 'status' | 'disabled' | 'required'
+      'id' | 'size' | 'status' | 'disabled' | 'required' | 'aria-label'
     > {}
 
 export const Radio: React.FC<RadioProps> = ({
+  'aria-labelledby': ariaLabelledBy,
   disabled,
   hasFloatingHelper,
   helper,
@@ -64,7 +65,7 @@ export const Radio: React.FC<RadioProps> = ({
   >
     <RadioControl
       {...restNativeInputProps}
-      aria-label={label}
+      aria-labelledby={ariaLabelledBy}
       disabled={disabled}
       id={id}
       required={required}

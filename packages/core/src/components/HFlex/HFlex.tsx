@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { Flex, FlexProps } from '../';
 import { GlobalSpacing } from '../../declarations';
+import { FlexItem } from '../Flex/subcomponents';
 
 export interface HFlexProps
   extends Omit<FlexProps, 'gap' | 'columnGap' | 'rowGap'> {
@@ -11,7 +12,7 @@ export interface HFlexProps
   spacing?: GlobalSpacing;
 }
 
-export const HFlex: React.FC<HFlexProps> = ({
+const InternalHFlex: React.FC<HFlexProps> = ({
   alignItems = 'center',
   children,
   childrenFitFullWidth = false,
@@ -29,3 +30,9 @@ export const HFlex: React.FC<HFlexProps> = ({
     {children}
   </Flex>
 );
+
+export const HFlex = InternalHFlex as typeof InternalHFlex & {
+  Item: typeof FlexItem;
+};
+
+HFlex.Item = FlexItem;

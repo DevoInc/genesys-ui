@@ -13,5 +13,5 @@ export default meta;
 type Story = StoryObj<typeof AppBar.Actions>;
 
 export const Actions: Story = {
-  args: { children: <ButtonGroup size="md">{mainActions}</ButtonGroup> },
+  args: { children: <ButtonGroup size="md">{mainActions()}</ButtonGroup> },
 };

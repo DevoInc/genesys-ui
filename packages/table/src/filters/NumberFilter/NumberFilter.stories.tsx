@@ -1,0 +1,15 @@
+import { Meta, StoryObj } from '@storybook/react';
+
+import { NumberFilter } from './NumberFilter';
+
+const meta: Meta<typeof NumberFilter> = {
+  title: 'Components/Table/Filters/NumberFilter',
+  component: NumberFilter,
+};
+
+export default meta;
+type Story = StoryObj<typeof NumberFilter>;
+
+export const Base: Story = {
+  args: {},
+};

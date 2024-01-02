@@ -1,3 +1,4 @@
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { elevationMixin } from '@devoinc/genesys-ui';
 import { getTableZIndexMap } from '../utils';

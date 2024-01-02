@@ -8,7 +8,7 @@ import {
 import { hasStatus } from '../../../utils/validations';
 import { scrollbars } from '../../../styled/mixins/scrollbars';
 import { SelectOption } from '../declarations';
-import { disabledMixin } from '../../../styled';
+import { disabledMixin, truncateTypoMixin } from '../../../styled';
 
 export const StyledSelectControl = styled(ReactSelect).attrs(
   ({ className, classNamePrefix, tooltip }) => ({
@@ -48,13 +48,13 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
     const hasDropdownIndicator = menuIsOpen
       ? 0
       : (isMulti &&
-          hideSelectedOptions &&
-          (value && (value as MultiValue<SelectOption>).length) !==
-            (options && options.length)) ||
-        !isMulti ||
-        !hideSelectedOptions
-      ? 1
-      : 0;
+            hideSelectedOptions &&
+            (value && (value as MultiValue<SelectOption>).length) !==
+              (options && options.length)) ||
+          !isMulti ||
+          !hideSelectedOptions
+        ? 1
+        : 0;
     const hasClearIndicator = isClearable === false ? 0 : 1;
     const sortableSpacing = sortable ? scrollSpacing : '0rem';
 
@@ -191,6 +191,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
         // INPUT CONTAINER ///////////////////////////////////////////////////
         &__input-container {
           overflow-y: hidden;
+          color: ${fieldTokens.color.text[statusEval][state]};
 
           &::-webkit-scrollbar {
             display: none;
@@ -219,6 +220,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
             }
 
             &__placeholder {
+              ${truncateTypoMixin()};
               color: ${fieldTokens.color.text[statusEval].placeholder};
               text-align: left;
             }

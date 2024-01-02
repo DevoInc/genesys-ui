@@ -30,14 +30,14 @@ const getOptions = (cols: number) => {
     (_, index: number) => ({
       id: `company_${index}`,
       headerName: `Company ${index + 1}`,
-      CellRenderer: ({ value }) => String(value),
+      cellRenderer: ({ value }) => String(value),
       cellStyle: {
         width: 12,
       },
     }),
   );
   return {
-    defaultColumnDef: {
+    defaultColDef: {
       editable: false,
     },
     visualOptions: {
@@ -45,7 +45,7 @@ const getOptions = (cols: number) => {
       rowHeight: 'md',
       minWidth: 2000,
     },
-    columnDefs: colDefs,
+    colDefs: colDefs,
   } as TableOptionsProps;
 };
 
@@ -73,7 +73,7 @@ const PerformanceTable = () => {
     };
   }, []);
 
-  return <Table tableOptions={getOptions(100)} data={data} />;
+  return <Table options={getOptions(100)} data={data} />;
 };
 
 export const ChunksInTime: Story = {
