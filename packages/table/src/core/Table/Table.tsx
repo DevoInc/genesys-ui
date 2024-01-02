@@ -30,7 +30,7 @@ export type TableProps = {
   highlightColumnsOnHover?: boolean;
   texts?: TextsType;
   showFilters?: boolean;
-  onSort?: (columnDef) => void;
+  onSort?: (colDef: ColDef) => void;
 };
 
 export const Table: React.FC<TableProps> = ({
