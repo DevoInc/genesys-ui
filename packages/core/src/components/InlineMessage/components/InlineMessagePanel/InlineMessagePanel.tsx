@@ -13,7 +13,6 @@ import {
 } from './helpers';
 
 import { Panel } from '../../../Panel';
-import { Typography } from '../../../Typography';
 
 interface InlineMessagePanelProps
   extends StyledOverloadCssProps,
@@ -79,11 +78,7 @@ export const InlineMessagePanel: React.FC<InlineMessagePanelProps> = ({
         panelBodyRef={targetElRef}
         styles={inlineMessagePanelBodyMixin({ hasScroll, theme })}
       >
-        {typeof children === 'string' ? (
-          <Typography.Paragraph>{children}</Typography.Paragraph>
-        ) : (
-          children
-        )}
+        {children}
       </Panel.Body>
       <Panel.Footer
         hasBoxShadow={hasScroll}

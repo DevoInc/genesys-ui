@@ -160,7 +160,6 @@ export const PartField: React.FC<FieldProps> = ({
           </Field.Label>
         )}
         <Field.ControlDistributor
-          hasFloatingHelper={hasFloatingHelper}
           labelPosition={labelPosition}
           size={size}
           styles={subcomponentStyles?.controlDistributor}
