@@ -8,10 +8,10 @@ export const Accessibility = ({ ...props }: Partial<DropdownProps>) => (
   <Dropdown {...props}>
     {({ toggle, ref, isOpened }) => (
       <Button
-        onClick={toggle}
-        aria-haspopup={true}
-        aria-expanded={isOpened}
         aria-controls="btn-dd"
+        aria-expanded={isOpened}
+        aria-haspopup={true}
+        onClick={toggle}
         ref={ref}
       >
         TriggerElement
@@ -25,12 +25,12 @@ export const Accessibility = ({ ...props }: Partial<DropdownProps>) => (
         {({ toggle, ref, isOpened, setOpened }) => (
           <Menu.Item
             expandable
+            label="Option 4"
             onClick={() => setOpened(true)}
-            onMouseOver={() => setOpened(true)}
             onMouseLeave={toggle}
+            onMouseOver={() => setOpened(true)}
             ref={ref}
             state={isOpened ? 'expanded' : 'enabled'}
-            label="Option 4"
           />
         )}
         <Menu>

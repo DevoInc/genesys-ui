@@ -10,7 +10,7 @@ type TriggerProps = (props: {
   ref: any;
   toggle: (ev: React.MouseEvent<HTMLElement>) => void;
   isOpened: boolean;
-  setOpened: (opened: boolean) => void;
+  setOpened: React.Dispatch<React.SetStateAction<boolean>>;
 }) => React.ReactNode;
 
 type ChidrenProps = React.ReactNode;
@@ -54,10 +54,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
     }
   };
 
-  const setOpenedFn = (opened: boolean) => {
-    setOpened(opened);
-  };
-
   useOnEventOutside({
     references: [referenceElement, popperElement],
     handler: () => setOpened(false),
@@ -69,7 +65,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
         ref: setReferenceElement,
         toggle,
         isOpened: opened,
-        setOpened: setOpenedFn,
+        setOpened,
       })}
       {opened &&
         referenceElement &&

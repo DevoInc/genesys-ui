@@ -17,11 +17,11 @@ export const Base: Story = {
     <Dropdown placement="bottom-start" width={'200px'}>
       {({ toggle, ref, isOpened, setOpened }) => (
         <Button
+          aria-expanded={isOpened}
+          aria-haspopup={true}
           onClick={toggle}
           onMouseOver={() => setOpened(true)}
           ref={ref}
-          aria-haspopup={true}
-          aria-expanded={isOpened}
         >
           TriggerElement
         </Button>
@@ -40,11 +40,11 @@ export const Nested: Story = {
     <Dropdown placement="bottom-start" width={'200px'}>
       {({ toggle, ref, isOpened, setOpened }) => (
         <Button
+          aria-expanded={isOpened}
+          aria-haspopup={true}
           onClick={toggle}
           onMouseOver={() => setOpened(true)}
           ref={ref}
-          aria-haspopup={true}
-          aria-expanded={isOpened}
         >
           TriggerElement
         </Button>
