@@ -32,6 +32,7 @@ export const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
         }
       >
         <Panel
+          ref={null}
           maxHeight="34rem"
           bodySettings={{
             removeSpace: true,
