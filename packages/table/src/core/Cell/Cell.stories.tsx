@@ -7,7 +7,7 @@ import { Cell } from './Cell';
 import { CellEditorProps } from '../../editors/declarations';
 
 const meta: Meta<typeof Cell> = {
-  title: 'Components/Table/Cell',
+  title: 'Components/Table/Core/Cell',
   component: Cell,
 };
 

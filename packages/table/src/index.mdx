@@ -1,0 +1,40 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+
+<Meta title="Components/Table" />
+
+# Table
+
+Our `Table` component is separated from the core and could be imported like this
+
+```js
+import { Table } from '@devoinc/genesys-ui-table';
+// or
+import { BasicTable } from '@devoinc/genesys-ui-table';
+```
+
+The `Table` component is a representation layer only, so we provide the
+necessary components to transform it into a fully functional table.
+
+For example you could use the `BasicTable` as a preconfigured Table for use all
+the presets that we are exporting separately.
+
+## Architecture
+
+The `Table` has several concepts you should must know to build advanced tables
+with it
+
+- First of all, it is composible
+- `Renderers` are in charge of render each cell, defined by the column, you
+  could build custom ones or use our predefined `Renderers`.
+- Same as `Renderers` are the `Editors` that are responsables to make the cell
+  editable (also you must to indicate that the table and the cell are editable),
+  in the same way you could build your own Editors or use the provided ones, or
+  even compose the provided ones with your own customization.
+- `Filters` are the same but for the header so you could have a custom filter
+  ready for your column, we provide several ones but you always could use your
+  owns.
+- `HeaderRenderer` are the same as `Renderers` but for the headers, in case you
+  need a custom one.
+
+TBD...

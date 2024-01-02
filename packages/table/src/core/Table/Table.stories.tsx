@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { ColDef, TableOptionsProps } from '../../declarations';
 import { Meta, StoryObj } from '@storybook/react';
-import { Table } from './Table';
+
 import { Holo } from '@devoinc/holo';
 
+import { Table } from './Table';
+
 const meta: Meta<typeof Table> = {
-  title: 'Components/Table/Performance',
+  title: 'Components/Table/Core/Table',
   component: Table,
   parameters: {
     layout: 'fullscreen',
@@ -24,30 +25,15 @@ const getData = (cols: number, rows: number) => {
   return Holo.of().schema(schemaObject2).repeat(rows).generate();
 };
 
-const getOptions = (cols: number) => {
-  const colDefs: ColDef[] = Array.from(
-    { length: cols },
-    (_, index: number) => ({
-      id: `company_${index}`,
-      headerName: `Company ${index + 1}`,
-      cellRenderer: ({ value }) => String(value),
-      cellStyle: {
-        width: 12,
-      },
-    }),
-  );
-  return {
-    defaultColDef: {
-      editable: false,
+const getColDefs = (cols: number) =>
+  Array.from({ length: cols }, (_, index: number) => ({
+    id: `company_${index}`,
+    headerName: `Company ${index + 1}`,
+    cellRenderer: ({ value }) => String(value),
+    cellStyle: {
+      width: 12,
     },
-    visualOptions: {
-      maxHeight: '500px',
-      rowHeight: 'md',
-      minWidth: 2000,
-    },
-    colDefs: colDefs,
-  } as TableOptionsProps;
-};
+  }));
 
 const chunkSize = 10;
 const interval = 1000;
@@ -73,7 +59,14 @@ const PerformanceTable = () => {
     };
   }, []);
 
-  return <Table options={getOptions(100)} data={data} />;
+  return (
+    <Table
+      defaultColDef={{ editable: false }}
+      minWidth={2000}
+      colDefs={getColDefs(100)}
+      data={data}
+    />
+  );
 };
 
 export const ChunksInTime: Story = {
