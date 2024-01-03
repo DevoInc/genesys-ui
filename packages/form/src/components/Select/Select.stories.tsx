@@ -20,6 +20,7 @@ const meta: Meta<typeof Select> = {
       { value: 3, label: 'Option three', isDisabled: true },
     ],
     helper: 'This is the helper',
+    isMulti: true,
   },
   argTypes: {
     helper: {

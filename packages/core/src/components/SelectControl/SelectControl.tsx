@@ -28,7 +28,7 @@ import {
 
 export interface SelectControlProps<
   Option extends SelectOption = SelectOption,
-  IsMulti extends boolean = false,
+  IsMulti extends boolean = boolean,
   Group extends GroupBase<Option> = GroupBase<Option>,
 > extends Omit<
       InnerSelectControlProps<Option, IsMulti, Group>,
