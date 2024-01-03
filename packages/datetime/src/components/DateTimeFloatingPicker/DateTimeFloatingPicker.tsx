@@ -21,7 +21,7 @@ import { toTimestamp } from '../utils';
 const defaultAppendToProp =
   typeof window !== 'undefined' ? document.body : null;
 
-export interface DateTimePickerProps
+export interface DateTimeFloatingPickerProps
   extends Omit<DateTimeProps, 'onChange' | 'selectedDates'>,
     Pick<InputControlProps, 'onChange' | 'placeholder' | 'size'>,
     Pick<GlobalAriaProps, 'aria-label'>,
@@ -41,7 +41,7 @@ export interface DateTimePickerProps
   onCancel: () => void;
 }
 
-export const DateTimePicker: React.FC<DateTimePickerProps> = ({
+export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
   'aria-label': ariaLabel = 'datetime',
   appendTo = defaultAppendToProp,
   applyButtonText = 'Apply',

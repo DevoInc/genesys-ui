@@ -8,7 +8,7 @@ Package containing a set of components for date and time selection. It belongs t
 Among others, this package contains the following components:
 
 ```
-Calendar, DateTimeRangePicker, DateTime, Presets, DateTimePicker, RangeInput, DateTimeRange, ...
+Calendar, DateTimeRangePicker, DateTime, Presets, DateTimeFloatingPicker, RangeInput, DateTimeRange, ...
 ```
 
 ## Preview

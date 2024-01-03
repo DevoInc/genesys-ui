@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { DateTimePicker } from './DateTimePicker';
+import { DateTimeFloatingPicker } from './DateTimeFloatingPicker';
 
-const meta: Meta<typeof DateTimePicker> = {
-  title: 'Components/Datetime/DateTimePicker',
-  component: DateTimePicker,
+const meta: Meta<typeof DateTimeFloatingPicker> = {
+  title: 'Components/Datetime/DateTimeFloatingPicker',
+  component: DateTimeFloatingPicker,
   args: {
     value: new Date().getTime(),
     onApply: (ts: number) => {
@@ -18,7 +18,7 @@ const meta: Meta<typeof DateTimePicker> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof DateTimePicker>;
+type Story = StoryObj<typeof DateTimeFloatingPicker>;
 
 export const Base: Story = {
   render: (args) =>
@@ -37,7 +37,7 @@ export const Base: Story = {
       };
 
       return (
-        <DateTimePicker
+        <DateTimeFloatingPicker
           {...args}
           value={date}
           onApply={onApply}
