@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/DevoInc/genesys-ui/compare/v2.0.0...v2.1.0) (2024-01-03)
+
+
+### Features
+
+* **tokens:** updated to the last version of genesys-brand-devo to get the new size of checkboxes and radios. ([a3f9c12](https://github.com/DevoInc/genesys-ui/commit/a3f9c12b7f6d4e8882ad865a43954e61a178255b))
+
 ## [2.0.0](https://github.com/DevoInc/genesys-ui/compare/v1.8.0...v2.0.0) (2024-01-02)
 
 
