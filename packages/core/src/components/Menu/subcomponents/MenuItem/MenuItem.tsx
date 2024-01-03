@@ -104,6 +104,7 @@ export const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
     const isExpanded = state === 'expanded';
     const isSelectable = Boolean(selectionScheme);
     const isSelected = state === 'selected';
+    const isReadonly = state === 'readonly';
     const iconSize = menuItemSizeConfig(theme).iconSize;
     const roleEval =
       selectionScheme === 'single'
@@ -121,6 +122,13 @@ export const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
     };
     const isLabelString = typeof label === 'string';
     const isFontIcon = typeof icon === 'string';
+    const evalAs = isReadonly
+      ? 'div'
+      : isLink
+        ? 'a'
+        : isSelectable
+          ? 'label'
+          : 'button';
 
     return (
       <StyledMenuItem as={as} role="presentation">
@@ -130,7 +138,7 @@ export const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
           aria-expanded={isExpanded || null}
           aria-label={ariaLabel || (isLabelString ? label : null)}
           aria-checked={(Boolean(selectionScheme) && isSelected) || null}
-          as={isLink ? 'a' : isSelectable ? 'label' : 'button'}
+          as={evalAs}
           disabled={!isLink && !isSelectable && isDisabled}
           download={download}
           hasExtraLeftSpace={getHasExtraLeftSpace()}

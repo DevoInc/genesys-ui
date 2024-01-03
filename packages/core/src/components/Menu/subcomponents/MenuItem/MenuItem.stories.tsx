@@ -1,13 +1,17 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Menu } from '../..';
-import { Tag } from '../../../Tag';
-import { Flex } from '../../../Flex';
-import { Badge } from '../../../Badge';
-import { Typography } from '../../../Typography';
-import { VFlex } from '../../../VFlex';
-import { ProgressBar } from '../../../ProgressBar';
-import { Box } from '../../../Box';
+import {
+  Badge,
+  Box,
+  Flex,
+  HFlex,
+  Icon,
+  Menu,
+  ProgressBar,
+  Tag,
+  Typography,
+  VFlex,
+} from '../../../../components';
 import { GITimeZone } from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof Menu.Item> = {
@@ -90,6 +94,38 @@ export const Selectable: Story = {
           selectionScheme="multiple"
           onChange={onOptionChange}
           state={selected ? 'selected' : 'enabled'}
+        />
+      );
+    })(),
+};
+
+export const ReadOnly: Story = {
+  render: () =>
+    (() => {
+      return (
+        <Menu.Item
+          label="rick.sanchez@devo.com"
+          prependContent={
+            <Badge
+              text="RS"
+              size="sm"
+              styles="width: 2.4rem; height: 2.4rem; padding: 0;"
+            />
+          }
+          bottomContent={
+            <HFlex spacing="cmp-xxs" paddingLeft="cmp-xl">
+              <Icon
+                iconId="gi-diamond_prize_award_jewellery_ring"
+                size="xxs"
+                colorScheme="weak"
+              />
+              <Typography.Paragraph colorScheme="weak">
+                admin
+              </Typography.Paragraph>
+            </HFlex>
+          }
+          unlimitedHeight
+          state="readonly"
         />
       );
     })(),

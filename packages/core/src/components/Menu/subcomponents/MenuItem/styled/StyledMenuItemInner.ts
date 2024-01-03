@@ -7,6 +7,7 @@ import {
   FeaturedState,
   LinkAttrProps,
   MouseState,
+  ReadonlyState,
   SelectedState,
   UIState,
 } from '../../../../../declarations';
@@ -32,6 +33,7 @@ export interface StyledMenuItemInnerProps
     | ActiveState
     | MouseState
     | FeaturedState
+    | ReadonlyState
     | SelectedState
     | ExpandedState
     | UIState;
@@ -51,7 +53,10 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
       outline: none;
     `;
     return css`
-      ${btnResetMixin};
+      ${state !== 'readonly' &&
+      css`
+        ${btnResetMixin};
+      `}
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -65,7 +70,6 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
       padding: ${unlimitedHeight ? horPadding : `0 ${horPadding}`};
       background-color: ${tokens.color.background[stateForTokens]};
       color: ${tokens.color.text[stateForTokens]};
-      cursor: pointer;
       text-decoration: none;
 
       ${hasExtraLeftSpace &&
@@ -78,13 +82,15 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
         border-radius: ${tokens.shape.borderRadius};
       }
 
-      &::before {
-        ${pseudoElementOverlayMixin()};
-      }
-
       // styles based pseudo-classes (not disabled)
+
       ${state !== 'disabled' &&
+      state !== 'readonly' &&
       css`
+        &::before {
+          ${pseudoElementOverlayMixin()};
+        }
+
         &:hover {
           ${menuItemBackdropMixin({ tokens, state: 'hovered' })};
         }
@@ -101,26 +107,28 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
         &:active {
           ${menuItemBackdropMixin({ tokens, state: 'pressed' })};
         }
+
+        ${(state === 'expanded' ||
+          state === 'hovered' ||
+          state === 'pressed') &&
+        css`
+          &&& {
+            ${menuItemBackdropMixin({ tokens, state: stateForTokens })};
+          }
+        `}
+
+        ${state === 'focused' &&
+        css`
+          &&& {
+            ${focusedStyles};
+          }
+        `}
       `}
 
       // styles based in states
       ${state === 'disabled' &&
       css`
         ${disabledMixin(theme)};
-      `}
-      
-      ${(state === 'expanded' || state === 'hovered' || state === 'pressed') &&
-      css`
-        &&& {
-          ${menuItemBackdropMixin({ tokens, state: stateForTokens })};
-        }
-      `}
-
-      ${state === 'focused' &&
-      css`
-        &&& {
-          ${focusedStyles};
-        }
       `}
 
         // get the selected and activated styles in uncontrolled way too
