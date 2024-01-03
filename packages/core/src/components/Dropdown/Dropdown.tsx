@@ -2,10 +2,12 @@ import * as React from 'react';
 import { type PopperProps, usePopper } from 'react-popper';
 
 import { useOnEventOutside } from '../../hooks';
-import { createPortal } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { Panel } from '../Panel';
 import { CSSProp, DefaultTheme } from 'styled-components';
 
+const defaultAppendToProp =
+  typeof window !== 'undefined' ? document.body : null;
 type TriggerProps = (props: {
   ref: any;
   toggle: (ev: React.MouseEvent<HTMLElement>) => void;
@@ -20,12 +22,16 @@ export interface DropdownProps
     PopperProps<unknown>,
     'children' | 'innerRef' | 'referenceElement' | 'onFirstUpdate'
   > {
+  /** DOM element where the popper is appended. It is appended to the body
+   * by default. */
+  appendTo?: HTMLElement;
   children?: [TriggerProps, ChidrenProps];
   isOpened?: boolean;
   width?: React.CSSProperties['width'];
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
+  appendTo = defaultAppendToProp,
   children: [triggerEl, childrenEl],
   isOpened = false,
   modifiers,
@@ -59,6 +65,22 @@ export const Dropdown: React.FC<DropdownProps> = ({
     handler: () => setOpened(false),
   });
 
+  const PopperCmp = opened && referenceElement && (
+    <Panel.Container
+      width={width}
+      id={
+        referenceElement.getAttribute('aria-controls')
+          ? referenceElement.getAttribute('aria-controls')
+          : `popper-container-${referenceElement?.id}`
+      }
+      ref={setPopperElement}
+      styles={styles.popper as CSSProp<DefaultTheme>}
+      {...attributes.popper}
+    >
+      {childrenEl}
+    </Panel.Container>
+  );
+
   return (
     <>
       {triggerEl({
@@ -69,22 +91,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       })}
       {opened &&
         referenceElement &&
-        createPortal(
-          <Panel.Container
-            width={width}
-            id={
-              referenceElement.getAttribute('aria-controls')
-                ? referenceElement.getAttribute('aria-controls')
-                : `popper-container-${referenceElement?.id}`
-            }
-            ref={setPopperElement}
-            styles={styles.popper as CSSProp<DefaultTheme>}
-            {...attributes.popper}
-          >
-            {childrenEl}
-          </Panel.Container>,
-          referenceElement.parentElement,
-        )}
+        (appendTo ? ReactDOM.createPortal(PopperCmp, appendTo) : PopperCmp)}
     </>
   );
 };

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { usePopper } from 'react-popper';
+import ReactDOM from 'react-dom';
 import { format } from 'date-fns';
 
 import {
@@ -17,6 +18,9 @@ import { DateTime, DateTimeProps } from '../DateTime';
 import { getFormatTimeStr } from '../DateTime/utils/format';
 import { toTimestamp } from '../utils';
 
+const defaultAppendToProp =
+  typeof window !== 'undefined' ? document.body : null;
+
 export interface DateTimePickerProps
   extends Omit<DateTimeProps, 'onChange' | 'selectedDates'>,
     Pick<InputControlProps, 'onChange' | 'placeholder' | 'size'>,
@@ -24,6 +28,9 @@ export interface DateTimePickerProps
     Pick<GlobalAttrProps, 'id'>,
     StyledOverloadCssProps,
     StyledPolymorphicProps {
+  /** DOM element where the popper is appended. It is appended to the body
+   * by default. */
+  appendTo?: HTMLElement;
   /** Apply button text */
   applyButtonText?: string;
   /** Cancel button text */
@@ -36,6 +43,7 @@ export interface DateTimePickerProps
 
 export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   'aria-label': ariaLabel = 'datetime',
+  appendTo = defaultAppendToProp,
   applyButtonText = 'Apply',
   as,
   cancelButtonText = 'Cancel',
@@ -84,6 +92,41 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
     setDate(ts);
   }, []);
 
+  const PopperCmp = (
+    <div ref={setPopperElement} style={styles.popper} {...attributes.popper}>
+      <Panel
+        ref={null}
+        as={as}
+        elevation="activated"
+        footerSettings={{
+          actions: [
+            <Button key={'cancel'} onClick={onCancelCallback}>
+              {cancelButtonText}
+            </Button>,
+            <Button
+              key={'apply'}
+              colorScheme={'accent'}
+              onClick={onApplyCallback}
+            >
+              {applyButtonText}
+            </Button>,
+          ],
+          bordered: true,
+        }}
+        styles={customStyles}
+      >
+        <DateTime
+          {...restDateTimeProps}
+          hasSeconds={hasSeconds}
+          hasMillis={hasMillis}
+          hasTime={hasTime}
+          value={value}
+          onChange={onChangeCallback}
+        />
+      </Panel>
+    </div>
+  );
+
   return (
     <>
       <div ref={setReferenceElement}>
@@ -98,44 +141,8 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
           size={size}
         />
       </div>
-      {visible && (
-        <div
-          ref={setPopperElement}
-          style={styles.popper}
-          {...attributes.popper}
-        >
-          <Panel
-            ref={null}
-            as={as}
-            elevation="activated"
-            footerSettings={{
-              actions: [
-                <Button key={'cancel'} onClick={onCancelCallback}>
-                  {cancelButtonText}
-                </Button>,
-                <Button
-                  key={'apply'}
-                  colorScheme={'accent'}
-                  onClick={onApplyCallback}
-                >
-                  {applyButtonText}
-                </Button>,
-              ],
-              bordered: true,
-            }}
-            styles={customStyles}
-          >
-            <DateTime
-              {...restDateTimeProps}
-              hasSeconds={hasSeconds}
-              hasMillis={hasMillis}
-              hasTime={hasTime}
-              value={value}
-              onChange={onChangeCallback}
-            />
-          </Panel>
-        </div>
-      )}
+      {visible &&
+        (appendTo ? ReactDOM.createPortal(PopperCmp, appendTo) : PopperCmp)}
     </>
   );
 };
