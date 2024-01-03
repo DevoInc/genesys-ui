@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-
 import { Holo } from '@devoinc/holo';
-import { Button, DropdownMenu } from '@devoinc/genesys-ui';
+import { Button, Dropdown, Menu } from '@devoinc/genesys-ui';
 
 import { BasicTable } from './BasicTable';
 import { ROW_HEIGHT_MD } from '../constants';
@@ -40,21 +39,26 @@ export const Base: Story = {
         headerName: 'Menu',
         cellRenderer: ({ colDef }) => {
           return (
-            <DropdownMenu
-              items={[
-                {
-                  type: 'itemSelectable',
-                  label: 'Testing menu',
-                  shortcut: "⌘ '",
-                  title: 'Testing menu',
-                  onChange: () => {
-                    console.log(colDef.headerName);
-                  },
-                },
-              ]}
-              label="Actions"
-              triggerComponent={Button}
-            />
+            <Dropdown>
+              {({ toggle, ref, isOpened }) => (
+                <Button
+                  aria-expanded={isOpened}
+                  aria-haspopup={true}
+                  onClick={toggle}
+                  ref={ref}
+                >
+                  Actions
+                </Button>
+              )}
+              <Menu>
+                <Menu.Item
+                  label="Option 1"
+                  onClick={() => {
+                    console.log(colDef);
+                  }}
+                />
+              </Menu>
+            </Dropdown>
           );
         },
       },

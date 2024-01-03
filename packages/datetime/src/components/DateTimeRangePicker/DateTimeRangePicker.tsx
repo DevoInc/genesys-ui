@@ -232,6 +232,7 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
           {...attributes.popper}
         >
           <Panel
+            ref={null}
             elevation="activated"
             footerSettings={{
               actions: [

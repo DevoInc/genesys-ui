@@ -17,7 +17,7 @@ import { concat } from 'lodash';
 export interface ButtonGroupProps
   extends Omit<FlexProps, 'as' | 'children'>,
     Omit<ButtonGroupMixinProps, 'theme'> {
-  //TODO: add the DropdownMenu to this types when it's ready
+  //TODO: add the Dropdown to this types when it's ready
   children:
     | React.ReactElement<ButtonProps>
     | React.ReactElement<IconButtonProps>

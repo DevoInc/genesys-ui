@@ -2,8 +2,7 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat, isEmpty } from 'lodash';
 
-//TODO: ad the component when it's ready
-//const DropDownMenu = require('../../../../../react/molecules/DropDownMenu');
+//TODO: add the component Dropdown when it's ready
 
 import { PanelHeaderActionsType, PanelHeaderSize } from '../declarations';
 import { StyledOverloadCssProps } from '../../../../../declarations';

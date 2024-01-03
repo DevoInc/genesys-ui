@@ -105,6 +105,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
           {...attributes.popper}
         >
           <Panel
+            ref={null}
             as={as}
             elevation="activated"
             footerSettings={{

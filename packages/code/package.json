@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-code",
-  "version": "1.8.0",
+  "version": "2.0.0",
   "description": "",
   "type": "module",
   "types": "./dist/types/src/index.d.ts",
@@ -29,7 +29,7 @@
   },
   "peerDependencies": {
     "@devoinc/genesys-brand-devo": "^6.1.1",
-    "@devoinc/genesys-ui": "^1.8.0",
+    "@devoinc/genesys-ui": "^2.0.0",
     "ahooks": "^3.7.8",
     "monaco-editor-core": "^0.24.0",
     "react": ">=16.13.1",

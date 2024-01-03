@@ -81,6 +81,7 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
     <>
       <ToastBadge status={status} updates={updates} />
       <Panel
+        ref={null}
         colorScheme={backgroundColor}
         bodySettings={{ removeSpace: showCollapsed }}
         elevation={TOAST_ELEVATION_LEVEL}
