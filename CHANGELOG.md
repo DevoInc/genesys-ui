@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/DevoInc/genesys-ui/compare/v2.1.0...v2.2.0) (2024-01-03)
+
+
+### Features
+
+* **Panel:** 'ref' property not required in Panel.Container ([f59f1ae](https://github.com/DevoInc/genesys-ui/commit/f59f1ae3f730ef69310f17b0e54bf1050c403b8e))
+
 ## [2.1.0](https://github.com/DevoInc/genesys-ui/compare/v2.0.0...v2.1.0) (2024-01-03)
 
 
