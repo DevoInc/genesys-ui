@@ -14,7 +14,7 @@ export interface PanelContainerProps
   extends StyledOverloadCssProps,
     StyledPolymorphicProps,
     Omit<PanelContainerMixinProps, 'theme'> {
-  ref: React.MutableRefObject<HTMLElement>;
+  ref?: React.MutableRefObject<HTMLElement>;
 }
 
 export const PanelContainer = React.forwardRef<
