@@ -27,7 +27,7 @@
   "license": "MIT",
   "devDependencies": {
     "@devoinc/genesys-base-styles": "^1.2.1",
-    "@devoinc/genesys-brand-devo": "^6.1.2",
+    "@devoinc/genesys-brand-devo": "^6.2.0",
     "@devoinc/genesys-icons": "^3.5.1",
     "@devoinc/genesys-tokens-types": "^6.1.1",
     "@devoinc/holo": "^1.0.5",
