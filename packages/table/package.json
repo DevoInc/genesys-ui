@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-table",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Genesys composable table",
   "type": "module",
   "scripts": {
@@ -27,7 +27,7 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "@devoinc/genesys-ui": "^2.2.0",
+    "@devoinc/genesys-ui": "^2.3.0",
     "@tanstack/react-virtual": "^3.0.1",
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0",

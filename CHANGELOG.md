@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.3.0](https://github.com/DevoInc/genesys-ui/compare/v2.2.0...v2.3.0) (2024-01-03)
+
+
+### Features
+
+* **Menu:** added 'readOnly' new state for menu items to get them not interactive. ([1df52b9](https://github.com/DevoInc/genesys-ui/commit/1df52b9078dbebf8a8ea23afd9e3f2c9baff3071))
+* **table:** added bulk renderers ([809d5b3](https://github.com/DevoInc/genesys-ui/commit/809d5b3709bc9677d1b2c63bcd901c89d8e07ac8))
+
+
+### Bug Fixes
+
+* IsMulti is not assignable to Select component ([d5f7098](https://github.com/DevoInc/genesys-ui/commit/d5f7098d6305fa982e8158f900521d85acb1300b))
+
 ## [2.2.0](https://github.com/DevoInc/genesys-ui/compare/v2.1.0...v2.2.0) (2024-01-03)
 
 
