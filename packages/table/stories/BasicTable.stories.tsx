@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+
 import { Holo } from '@devoinc/holo';
 import { Button, Dropdown, Menu } from '@devoinc/genesys-ui';
+import { GIEyeViewFilled, GIPencilEdit } from '@devoinc/genesys-icons';
 
-import { BasicTable } from '../src';
+import { ActionContext, BasicTable } from '../src';
 import { ROW_HEIGHT_MD } from '../src/constants';
 
 const meta: Meta<typeof BasicTable> = {
@@ -150,6 +152,26 @@ export const Base: Story = {
         id: 'secondaryWebsite',
         headerName: 'Secondary Website',
         preset: 'link',
+      },
+      {
+        id: 'actions',
+        preset: 'actions',
+        context: {
+          quickActions: [
+            {
+              Icon: GIEyeViewFilled,
+              onClick: (rowIndex) => {
+                console.log(`Action 1 on row ${rowIndex}`);
+              },
+            },
+            {
+              Icon: GIPencilEdit,
+              onClick: (rowIndex) => {
+                console.log(`Action 2 on row ${rowIndex}`);
+              },
+            },
+          ],
+        } as ActionContext,
       },
     ],
     data: Holo.of()

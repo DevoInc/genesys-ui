@@ -25,7 +25,6 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   onSort,
 }) => {
   const { density } = React.useContext(TableContext);
-  debugger;
   return (
     <StyledHeaderCell
       $width={width}
