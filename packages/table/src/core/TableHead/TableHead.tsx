@@ -1,8 +1,6 @@
 import React from 'react';
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 
-import { Typography } from '@devoinc/genesys-ui';
-
 import { StyledTableHead } from './StyledTableHead';
 import { StyledTableHeadRow } from './StyledTableHeadRow';
 import { HeaderCell } from '../HeaderCell';
