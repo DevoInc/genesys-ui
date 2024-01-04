@@ -10,7 +10,7 @@ import {
   TextRenderer,
   HeaderBulkRenderer,
   BulkContext,
-  useBulkData,
+  useBulkSelection,
 } from '../src';
 
 const meta: Meta<typeof Table> = {
@@ -34,11 +34,22 @@ const initialData = new Array(10).fill(null).map((_, index) => ({
 
 const BulkExample = () => {
   const [data, setData] = React.useState(initialData);
+  const bulkDisabled = React.useMemo(
+    () =>
+      data.reduce((prev, row, index) => {
+        if (row.disabled) {
+          return [...prev, index];
+        }
+        return prev;
+      }, []),
+    [data],
+  );
 
-  const { selection, toggleAll, toggle, clear, globalCheckStatus } =
-    useBulkData({
-      data,
+  const { bulkSelection, toggleAll, toggle, clear, headerBulkChecked } =
+    useBulkSelection({
+      dataLength: data.length,
       initialSelection: [],
+      bulkDisabled,
     });
 
   return (
@@ -69,13 +80,13 @@ const BulkExample = () => {
               id: 'bulk',
               cellRenderer: BulkRenderer,
               headerRenderer: HeaderBulkRenderer,
-              width: 60,
+              width: 64,
               context: {
                 headerBulkMenu:
-                  selection.length > 0 ? (
+                  bulkSelection.length > 0 ? (
                     <Menu>
                       <Menu.Heading>
-                        Bulk actions: {selection.length} Selected
+                        Bulk actions: {bulkSelection.length} Selected
                       </Menu.Heading>
                       <Menu.Separator />
                       <Menu.Item>Dummy action 1</Menu.Item>
@@ -104,7 +115,7 @@ const BulkExample = () => {
                             onClick={() => {
                               setData((prev) =>
                                 prev.filter(
-                                  (_, index) => !selection.includes(index),
+                                  (_, index) => !bulkSelection.includes(index),
                                 ),
                               );
                               clear();
@@ -116,14 +127,9 @@ const BulkExample = () => {
                       </Dropdown>
                     </Menu>
                   ) : undefined,
-                bulkSelection: selection,
-                bulkDisabled: data.reduce((prev, row, index) => {
-                  if (row.disabled) {
-                    return [...prev, index];
-                  }
-                  return prev;
-                }, []),
-                headerBulkChecked: globalCheckStatus,
+                bulkSelection,
+                bulkDisabled,
+                headerBulkChecked,
                 onBulkCheckboxChange: (rowIndex) => {
                   toggle(rowIndex);
                 },

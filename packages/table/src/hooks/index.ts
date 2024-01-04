@@ -1,4 +1,4 @@
-export * from './useBulkData';
+export * from './useBulkSelection';
 export * from './useWrapperObserver';
 export * from './useTableScroll';
 export * from './useTableVirtualizationColumn';
