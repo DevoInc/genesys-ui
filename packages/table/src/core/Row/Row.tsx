@@ -1,19 +1,16 @@
 import * as React from 'react';
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
-import { ColDef } from '../../declarations';
 import { Cell } from '../Cell';
 import { StyledTableRow, StyledTableRowProps } from './StyledTableRow';
 import { TableContext } from '../../context/TableContext';
 
 interface RowProps extends StyledTableRowProps {
-  colDefs: ColDef[];
   data: { [key: string]: unknown };
   columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
   virtualRow: VirtualItem;
 }
 
 export const Row: React.FC<RowProps> = ({
-  colDefs,
   columnVirtualizer,
   data,
   isAfterRow,
@@ -21,7 +18,7 @@ export const Row: React.FC<RowProps> = ({
   state = 'enabled',
   virtualRow,
 }) => {
-  const { striped } = React.useContext(TableContext);
+  const { striped, colDefs } = React.useContext(TableContext);
   return (
     <StyledTableRow
       even={(virtualRow.index + 1) % 2 === 0}
@@ -41,6 +38,7 @@ export const Row: React.FC<RowProps> = ({
           key={`cell-${virtualColumn.key}`}
           offsetX={virtualColumn.start}
           width={virtualColumn.size}
+          rowIndex={virtualRow.index}
         />
       ))}
     </StyledTableRow>

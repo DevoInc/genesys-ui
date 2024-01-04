@@ -1,0 +1,65 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './BulkActions.stories';
+
+<Meta of={Stories} />
+
+# Bulk actions
+
+<Canvas of={Stories.Base} />
+
+To build a bulk actions on table we need to prepend a boolean column to your
+data with the initial state that you want (in our example we are going to use
+false for each row)
+
+<Source
+  code={`
+const data = [
+  ['text 1', 12, false, 'other text 1'],
+  ['text 2', 15, true, 'other text 2'],
+  ['text 3', 18, false, 'other text 3'],
+];
+
+const bulkData = data.map(row => [false].concat(row));
+`}
+/>
+
+After this, we need to configure the bulk column in our column definition
+
+<Source
+  code={`
+import { HeaderBulkRenderer } from '@devoinc/genesys-ui-table';
+
+const colDefs = [
+  {
+    headerRenderer: HeaderBulkRenderer,
+    // or
+    preset: 'bulk', // If you are using the BasicTable
+    // optionally we can add some bulk actions
+    context: {
+      actions: [
+        {
+          text: 'Remove',
+          onClick: (selection) => {
+            // filled later
+          },
+        },
+      ],
+      onClick: () => {
+        // filled later
+      }
+    }
+  },
+  ...
+]
+`}
+/>
+
+As you can see we are leaving the onClick empty, and now we need to add our
+logic (you can define your own but here we will be showing the default case)
+
+<Source
+  code={`
+import { } from '@devoinc/genesys-ui-table';
+`}
+/>

@@ -3,11 +3,11 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Holo } from '@devoinc/holo';
 import { Button, Dropdown, Menu } from '@devoinc/genesys-ui';
 
-import { BasicTable } from './BasicTable';
-import { ROW_HEIGHT_MD } from '../constants';
+import { BasicTable } from '../src';
+import { ROW_HEIGHT_MD } from '../src/constants';
 
 const meta: Meta<typeof BasicTable> = {
-  title: 'Components/Table/Recipes/BasicTable',
+  title: 'Components/Table/BasicTable',
   component: BasicTable,
   parameters: {
     layout: 'fullscreen',

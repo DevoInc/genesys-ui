@@ -9,6 +9,7 @@ import { HeaderCell } from '../HeaderCell';
 import { ColDef, Data } from '../../declarations';
 import { getColDefByID } from '../utils';
 import { TableContext } from '../../context/TableContext';
+import { HeaderTextRenderer } from '../../headerRenderers';
 
 interface TableHeadProps {
   scrolled?: boolean;
@@ -42,9 +43,11 @@ export const TableHead: React.FC<TableHeadProps> = ({
               resizable={colDef?.resizable ?? resizableColumns ?? false}
               onSort={onSort}
             >
-              <Typography.Heading size="h6" truncateLine={1}>
-                {colDef.headerName}
-              </Typography.Heading>
+              {colDef?.headerRenderer ? (
+                colDef.headerRenderer({ colDef })
+              ) : (
+                <HeaderTextRenderer colDef={colDef} />
+              )}
             </HeaderCell>
           );
         })}

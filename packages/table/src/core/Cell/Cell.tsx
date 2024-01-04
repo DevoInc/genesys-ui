@@ -14,11 +14,13 @@ interface CellProps {
   width?: number;
   height?: number;
   offsetX?: number;
+  rowIndex: number;
 }
 
 export const Cell: React.FC<CellProps> = ({
   data,
   colDef,
+  rowIndex,
   width,
   height,
   offsetX,
@@ -32,7 +34,7 @@ export const Cell: React.FC<CellProps> = ({
   useInitialState(data, onReset);
 
   const { cellRef, editionContent, isEditMode, onDoubleClick, viewContent } =
-    useRenderContent(colDef, data);
+    useRenderContent(colDef, data, rowIndex);
 
   return (
     <StyledCell

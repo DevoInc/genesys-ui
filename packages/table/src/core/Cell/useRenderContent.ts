@@ -1,23 +1,25 @@
 import * as React from 'react';
+
 import { useOnEventOutside } from '@devoinc/genesys-ui';
 
 import { ColDef } from '../../declarations';
 
-export const useRenderContent = (colDef: ColDef, data: unknown) => {
+export const useRenderContent = (
+  colDef: ColDef,
+  data: unknown,
+  rowIndex: number,
+) => {
   const cellRef = React.useRef<HTMLTableCellElement>();
 
-  const viewContent = React.useMemo(
-    () =>
-      colDef.cellRenderer
-        ? colDef.cellRenderer({
-            value: colDef.valueFormatter
-              ? colDef.valueFormatter(data, colDef.context)
-              : data,
-            colDef,
-          })
-        : '',
-    [colDef, data],
-  );
+  const viewContent = colDef.cellRenderer
+    ? colDef.cellRenderer({
+        value: colDef.valueFormatter
+          ? colDef.valueFormatter(data, colDef.context)
+          : data,
+        colDef,
+        rowIndex,
+      })
+    : '';
 
   const [isEditMode, setIsEditMode] = React.useState<boolean>(false);
 
