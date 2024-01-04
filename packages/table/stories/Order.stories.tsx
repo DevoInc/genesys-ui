@@ -34,6 +34,7 @@ const OrderTable = () => {
       cellStyle: {
         width: 7,
       },
+      sortable: false,
     },
     {
       id: 'age',
