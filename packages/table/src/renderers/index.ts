@@ -1,3 +1,4 @@
+export * from './ActionRenderer';
 export * from './BooleanRenderer';
 export * from './BulkRenderer';
 export * from './LinkRenderer';

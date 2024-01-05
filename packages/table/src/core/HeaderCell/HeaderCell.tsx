@@ -32,14 +32,18 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
       offsetX={offsetX}
       density={density}
       title={colDef.headerName}
-      onClick={() => {
-        if (onSort) {
-          onSort(colDef);
-        }
-      }}
+      onClick={
+        colDef.sortable
+          ? () => {
+              if (onSort) {
+                onSort(colDef);
+              }
+            }
+          : null
+      }
     >
       {children}
-      <OrderIndicator colDef={colDef} />
+      {colDef.sortable && <OrderIndicator colDef={colDef} />}
       {resizable && (
         <StyledHeaderCellResizer
           density={density}

@@ -2,10 +2,12 @@ import * as React from 'react';
 import { type PopperProps, usePopper } from 'react-popper';
 
 import { useOnEventOutside } from '../../hooks';
-import { createPortal } from 'react-dom';
-import { useTheme } from 'styled-components';
+import ReactDOM from 'react-dom';
 import { DropdownPanel } from './components';
 
+
+const defaultAppendToProp =
+  typeof window !== 'undefined' ? document.body : null;
 type TriggerProps = (props: {
   ref: any;
   toggle: (ev: React.MouseEvent<HTMLElement>) => void;
@@ -20,13 +22,17 @@ export interface DropdownProps
     PopperProps<unknown>,
     'children' | 'innerRef' | 'referenceElement' | 'onFirstUpdate'
   > {
+  /** DOM element where the popper is appended. It is appended to the body
+   * by default. */
+  appendTo?: HTMLElement;
   id: React.HTMLAttributes<HTMLDivElement>['id'];
   children?: [TriggerProps, ChildrenProps];
   isOpened?: boolean;
 }
 
 export const InternalDropdown: React.FC<DropdownProps> = ({
-  children: [triggerEl, childrenEl],
+                                                    appendTo = defaultAppendToProp,
+                                                    children: [triggerEl, childrenEl],
   id,
   isOpened = false,
   modifiers,
@@ -59,7 +65,16 @@ export const InternalDropdown: React.FC<DropdownProps> = ({
     handler: () => setOpened(false),
   });
 
-  const theme = useTheme();
+  const PopperCmp = opened && referenceElement && (
+    <div
+      id={id}
+      ref={setPopperElement}
+      style={styles.popper}
+      {...attributes.popper}
+    >
+      {childrenEl}
+    </div>
+  );
 
   return (
     <>
@@ -71,17 +86,7 @@ export const InternalDropdown: React.FC<DropdownProps> = ({
       })}
       {opened &&
         referenceElement &&
-        createPortal(
-          <div
-            id={id}
-            ref={setPopperElement}
-            style={styles.popper}
-            {...attributes.popper}
-          >
-            {childrenEl}
-          </div>,
-          referenceElement.parentElement,
-        )}
+        (appendTo ? ReactDOM.createPortal(PopperCmp, appendTo) : PopperCmp)}
     </>
   );
 };

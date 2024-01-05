@@ -7,6 +7,8 @@ const config: StorybookConfig = {
     '../stories/**/*.mdx',
     '../packages/*/src/**/*.stories.@(ts|tsx)',
     '../packages/*/src/**/*.mdx',
+    '../packages/*/stories/**/*.stories.@(ts|tsx)',
+    '../packages/*/stories/**/*.mdx',
     // TODO: configure SB to serve these HTML files, too:
     // '../packages/**/depcruise.html',
   ],

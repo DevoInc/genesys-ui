@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { DateTimePicker } from '@devoinc/genesys-ui-datetime';
+import { DateTimeFloatingPicker } from '@devoinc/genesys-ui-datetime';
 import { SelectControl } from '@devoinc/genesys-ui';
 
 import {
@@ -14,7 +14,7 @@ import { FilterProps } from '../declarations';
 export const DateFilter: React.FC<FilterProps> = () => (
   <FilterContainer>
     <BasicFilter>
-      <DateTimePicker
+      <DateTimeFloatingPicker
         size="sm"
         onApply={() => undefined}
         onCancel={() => undefined}
@@ -27,7 +27,10 @@ export const DateFilter: React.FC<FilterProps> = () => (
         options={dateOptions}
         // value={value}
       />
-      <DateTimePicker onApply={() => undefined} onCancel={() => undefined} />
+      <DateTimeFloatingPicker
+        onApply={() => undefined}
+        onCancel={() => undefined}
+      />
     </AdvancedFilter>
   </FilterContainer>
 );

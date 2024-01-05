@@ -3,6 +3,7 @@ import { DateContext } from './valueFormatters/date';
 import { FilterProps } from './filters/declarations';
 import { CellRendererProps } from './renderers/declarations';
 import { CellEditorProps } from './editors/declarations';
+import { HeaderRendererProps } from './headerRenderers/declarations';
 
 export type DefaultColDef = Omit<ColDef, 'id'>;
 
@@ -44,6 +45,9 @@ export type ColDef = {
   cellRenderer?:
     | React.FC<CellRendererProps>
     | (({ value, colDef }: CellRendererProps) => React.ReactNode);
+  headerRenderer?:
+    | React.FC<HeaderRendererProps>
+    | (({ colDef }: HeaderRendererProps) => React.ReactNode);
 
   cellFilter?:
     | React.FC<FilterProps>

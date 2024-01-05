@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { DateTimePicker } from '@devoinc/genesys-ui-datetime';
+import { DateTimeFloatingPicker } from '@devoinc/genesys-ui-datetime';
 
 import { TableContext } from '../../context/TableContext';
 import { ROW_HEIGHT_MD } from '../../constants';
@@ -16,7 +16,7 @@ export const DateEditor: React.FC<DateCellEditorProps> = ({
 }) => {
   const { density, rowHeight } = React.useContext(TableContext);
   return (
-    <DateTimePicker
+    <DateTimeFloatingPicker
       size={density === 'compact' && rowHeight <= ROW_HEIGHT_MD ? 'sm' : 'md'}
       onChange={() => undefined}
       onApply={(newDate: number) => onChange?.(new Date(newDate).toISOString())}

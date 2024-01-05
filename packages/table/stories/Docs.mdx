@@ -1,17 +1,18 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
-
 <Meta title="Components/Table" />
 
 # Table
 
 Our `Table` component is separated from the core and could be imported like this
 
-```js
+<Source
+  code={`
 import { Table } from '@devoinc/genesys-ui-table';
 // or
 import { BasicTable } from '@devoinc/genesys-ui-table';
-```
+`}
+/>
 
 The `Table` component is a representation layer only, so we provide the
 necessary components to transform it into a fully functional table.
@@ -36,5 +37,19 @@ with it
   owns.
 - `HeaderRenderer` are the same as `Renderers` but for the headers, in case you
   need a custom one.
+- `ColDef` this is the column definition, here we can set the renderers,
+  filters, etc.. that we need for our column
+- `presets` with this concept the table are bundling several renderers, filters,
+  etc, and default values for a column or columns
 
-TBD...
+## Presets
+
+Our presets are:
+
+- text
+- number
+- boolean
+- date
+- link
+- longText
+- options

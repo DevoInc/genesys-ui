@@ -1,0 +1,74 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Actions.stories';
+
+<Meta of={Stories} />
+
+# Actions
+
+<Canvas of={Stories.Base} />
+
+Using the `ActionRenderer` by the preset as above or by itself let us define
+some quick actions and/or a (nested or not) menu.
+
+This renderer is not intended to fill all the cases, in cases that the renderer
+is not enough we recommended to create a custom render.
+
+This is the context api:
+
+<Source
+  code={`
+...
+context: {
+  quickActions?: {
+    Icon?: React.FC<IconType>; // icon from genesys-icons
+    onClick?: (rowIndex: number, event: React.MouseEvent) => void;
+  }[];
+  actionMenu?: {
+    Icon?: React.FC<IconType>;
+    onClick?: (rowIndex: number, event: React.MouseEvent) => void;
+    text?: string;
+    children?: ActionMenuEntry[]; // the same structure
+    component?: 'separator';
+  }[];
+} as ActionContext,
+...
+`}
+/>
+
+for clarification here is an example with nested menu items
+
+<Source
+  code={`
+...
+context: {
+  quickActions: [
+    {
+      Icon: GIEyeViewFilled,
+      onClick: () => console.log('Quick action 1'),
+    },
+    { Icon: GIPencilEdit, onClick: () => console.log('Quick action 2') },
+  ],
+  actionMenu: [
+    { text: 'Action 1', onClick: () => console.log('Menu action 1') },
+    { text: 'Action 2', onClick: () => console.log('Menu action 2') },
+    {
+      text: 'Action 3',
+      children: [
+        {
+          text: 'Action 3.1',
+          onClick: () => console.log('Menu action 3.1'),
+        },
+        {
+          text: 'Action 3.2',
+          onClick: () => console.log('Menu action 3.2'),
+        },
+      ],
+    },
+    { component: 'separator' },
+    { text: 'Action 4', onClick: () => console.log('Menu action 4') },
+  ],
+} as ActionContext,
+...
+`}
+/>

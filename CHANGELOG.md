@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0](https://github.com/DevoInc/genesys-ui/compare/v2.3.0...v2.4.0) (2024-01-03)
+
+
+### Features
+
+* QUV-1894 Popper not appended to body by default ([fc18858](https://github.com/DevoInc/genesys-ui/commit/fc188581d8ec50a71387a73058de2168f230c0e9))
+
 ## [2.3.0](https://github.com/DevoInc/genesys-ui/compare/v2.2.0...v2.3.0) (2024-01-03)
 
 
