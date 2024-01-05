@@ -3,8 +3,8 @@ import { type PopperProps, usePopper } from 'react-popper';
 
 import { useOnEventOutside } from '../../hooks';
 import { createPortal } from 'react-dom';
-import { Panel } from '../Panel';
-import { CSSProp, DefaultTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
+import { DropdownPanel } from './components';
 
 type TriggerProps = (props: {
   ref: any;
@@ -13,25 +13,25 @@ type TriggerProps = (props: {
   setOpened: React.Dispatch<React.SetStateAction<boolean>>;
 }) => React.ReactNode;
 
-type ChidrenProps = React.ReactNode;
+type ChildrenProps = React.ReactNode;
 
 export interface DropdownProps
   extends Omit<
     PopperProps<unknown>,
     'children' | 'innerRef' | 'referenceElement' | 'onFirstUpdate'
   > {
-  children?: [TriggerProps, ChidrenProps];
+  id: React.HTMLAttributes<HTMLDivElement>['id'];
+  children?: [TriggerProps, ChildrenProps];
   isOpened?: boolean;
-  width?: React.CSSProperties['width'];
 }
 
-export const Dropdown: React.FC<DropdownProps> = ({
+export const InternalDropdown: React.FC<DropdownProps> = ({
   children: [triggerEl, childrenEl],
+  id,
   isOpened = false,
   modifiers,
-  placement,
+  placement = 'auto-start',
   strategy = 'fixed',
-  width,
 }) => {
   const [opened, setOpened] = React.useState(isOpened);
 
@@ -59,6 +59,8 @@ export const Dropdown: React.FC<DropdownProps> = ({
     handler: () => setOpened(false),
   });
 
+  const theme = useTheme();
+
   return (
     <>
       {triggerEl({
@@ -70,21 +72,24 @@ export const Dropdown: React.FC<DropdownProps> = ({
       {opened &&
         referenceElement &&
         createPortal(
-          <Panel.Container
-            width={width}
-            id={
-              referenceElement.getAttribute('aria-controls')
-                ? referenceElement.getAttribute('aria-controls')
-                : `popper-container-${referenceElement?.id}`
-            }
+          <div
+            id={id}
             ref={setPopperElement}
-            styles={styles.popper as CSSProp<DefaultTheme>}
+            style={styles.popper}
             {...attributes.popper}
           >
             {childrenEl}
-          </Panel.Container>,
+          </div>,
           referenceElement.parentElement,
         )}
     </>
   );
 };
+
+export const Dropdown = InternalDropdown as typeof InternalDropdown & {
+  Panel: typeof DropdownPanel;
+};
+
+Dropdown.Panel = DropdownPanel;
+
+InternalDropdown.displayName = 'Dropdown';

@@ -1,7 +1,6 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './Dropdown.stories';
-import * as CaseStories from './Dropdown.cases.stories';
 
 <Meta of={Stories} />
 
@@ -9,43 +8,48 @@ import * as CaseStories from './Dropdown.cases.stories';
 
 ## Overview
 
-A Dropdown component is an element that allows users to select an option
-from a drop-down list.
-This component is valuable in web applications to enhance usability by
-reducing the amount of
-screen space used to display options, especially when there are multiple
-choices available.
+This Dropdown component allows users to expand hidden contents using a trigger,
+usually a button, link or menu item.
 
-This compoennt is based on `popper.js` library.
+A Dropdown menu variant is a typical way of using this kind of component,
+which allows users to select an option from a drop-down menu list.
+
+This component is valuable in web applications to enhance usability by
+reducing the amount of screen space used to display options, especially
+when there are multiple choices available.
+
+This component is based on [Popper JS library](https://popper.js.org/).
+
+<Canvas of={Stories.Base} story={{ height: '160px' }} />
 
 ## How to import
 
-<Source
-  code={`
-import { Dropdown } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Dropdown } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
 The `Dropdown` component must have two children components.
-First, the trigger element and next the to be displayed.
+First, the trigger element and right after the content to be displayed.
+
+This content usually should be wrapped by the `Dropdown.Panel` component,
+which provides the elevation styles (box shadow, radius, z-index... etc.)
+according to the design pattern.
 
 The trigger component should be involved into a function.
 This function will receive the `ref` property, the `toggle`
 function, the `setOpened` function and `isOpened` as a boolean
 indicating when it's opened.
 
-- `ref`: used to retrieve the React refd of the _popper_ element.
-- `toggle`: funtion to toggle the content of the component.
+- `ref`: used to retrieve the React ref of the _popper_ element.
+- `toggle`: function to toggle the content of the component.
 - `setOpened`: function to force display or hide the dropdown menu.
 - `isOpened`: a boolean indicating if the dropdown menu is open.
 
 <Source
   code={`
 import * as React from 'react';
-import { Dropdown } from '@devoinc/genesys-ui';
-export const MyDropdown = () => 
+import { Button, Dropdown, Menu } from '@devoinc/genesys-ui';
+export const MyDropdown = () =>
   <Dropdown placement="bottom-start" width={'200px'}>
     {({ toggle, ref, isOpened, setOpened }) => (
       <Button
@@ -58,11 +62,13 @@ export const MyDropdown = () =>
         TriggerElement
       </Button>
     )}
-    <Menu>
-      <Menu.Item label="Option 1" />
-      <Menu.Item label="Option 2" />
-      <Menu.Item label="Option 3" />
-    </Menu>
+    <Dropdown.Panel>
+      <Menu>
+        <Menu.Item label="Option 1" />
+        <Menu.Item label="Option 2" />
+        <Menu.Item label="Option 3" />
+      </Menu>
+    </Dropdown.Panel>
   </Dropdown>
 `}
 />
@@ -75,9 +81,9 @@ where one Dropdown can contain other Dropdowns as selectable options.
 <Source
   code={`
 import * as React from 'react';
-import { Dropdown } from '@devoinc/genesys-ui';
-export const MyDropdown = () => 
-  <Dropdown placement="bottom-start" width={'200px'}>
+import { Button, Dropdown, Menu } from '@devoinc/genesys-ui';
+export const MyDropdown = () =>
+  <Dropdown id="nested" placement="bottom-start">
       {({ toggle, ref, isOpened, setOpened }) => (
         <Button
           aria-expanded={isOpened}
@@ -89,69 +95,69 @@ export const MyDropdown = () =>
           TriggerElement
         </Button>
       )}
-      <Menu>
-        <Menu.Item label="Option 1" />
-        <Menu.Item label="Option 2" />
-        <Menu.Item label="Option 3" />
-        <Dropdown placement="right-start">
-          {({ toggle, ref, isOpened, setOpened }) => (
-            <Menu.Item
-              expandable
-              label="Option 4"
-              onClick={() => setOpened(true)}
-              onMouseLeave={toggle}
-              onMouseOver={() => setOpened(true)}
-              ref={ref}
-              state={isOpened ? 'expanded' : 'enabled'}
-            />
-          )}
-          <Menu>
-            <Menu.Item label="Option 4.1" />
-            <Menu.Item label="Option 4.2" />
-            <Menu.Item label="Option 4.3" />
-            <Dropdown placement="right-start">
-              {({ toggle, ref, isOpened, setOpened }) => (
-                <Menu.Item
-                  expandable
-                  label="Option 4.3.1"
-                  onClick={() => setOpened(true)}
-                  onMouseLeave={toggle}
-                  onMouseOver={() => setOpened(true)}
-                  ref={ref}
-                  state={isOpened ? 'expanded' : 'enabled'}
-                />
-              )}
+      <Dropdown.Panel>
+        <Menu>
+          <Menu.Item label="Option 1" />
+          <Menu.Item label="Option 2" />
+          <Menu.Item label="Option 3" />
+          <Dropdown id="nested-one">
+            {({ toggle, ref, isOpened, setOpened }) => (
+              <Menu.Item
+                expandable
+                label="Option 4"
+                onClick={() => setOpened(true)}
+                onMouseLeave={toggle}
+                onMouseOver={() => setOpened(true)}
+                ref={ref}
+                state={isOpened ? 'expanded' : 'enabled'}
+              />
+            )}
+            <Dropdown.Panel>
               <Menu>
-                <Menu.Item label="Option 4.3.1" />
-                <Menu.Item label="Option 4.3.3" />
-                <Menu.Item label="Option 4.3.2" />
+                <Menu.Item label="Option 4.1" />
+                <Menu.Item label="Option 4.2" />
+                <Menu.Item label="Option 4.3" />
+                <Dropdown id="nested-two">
+                  {({ toggle, ref, isOpened, setOpened }) => (
+                    <Menu.Item
+                      expandable
+                      label="Option 4.3.1"
+                      onClick={() => setOpened(true)}
+                      onMouseLeave={toggle}
+                      onMouseOver={() => setOpened(true)}
+                      ref={ref}
+                      state={isOpened ? 'expanded' : 'enabled'}
+                    />
+                  )}
+                  <Dropdown.Panel>
+                    <Menu>
+                      <Menu.Item label="Option 4.3.1" />
+                      <Menu.Item label="Option 4.3.3" />
+                      <Menu.Item label="Option 4.3.2" />
+                    </Menu>
+                  </Dropdown.Panel>
+                </Dropdown>
               </Menu>
-            </Dropdown>
-          </Menu>
-        </Dropdown>
-      </Menu>
+            </Dropdown.Panel>
+          </Dropdown>
+        </Menu>
+      </Dropdown.Panel>
     </Dropdown>
 `}
 />
 
-<Canvas of={Stories.Base} />
-
-## Cases
-
-### Including in a modal
-
-<Canvas of={CaseStories.IntoModal} sourceState="none" />
-
-### Using accebility props
+## Accessibility
 
 To ensure full accessibility of the component, we need to consider multiple aspects.
 These include:
 
-- Adding the value of the `id` attribute of the component that trigger the dropdown.
-- Each trigger component should have defined the `onClick` property.
-- Be sure that `aria-haspopup`, `aria-expanded`, `aria-controls`, `aria-label` and `role` are present into components.
-
-<Canvas of={CaseStories.FullAccessibility} />
+- Adding a value for the `id` prop of the component. This value is automatically mapped to the attribute
+  of the 'div' HTML element which wraps the dropdown content. This value has to be used as
+  the `aria-controls` prop value of the dropdown trigger.
+- Each trigger component should have defined the `onClick` property to get the key events.
+- Add to the trigger the `aria-haspopup` prop value to true.
+- Add to the trigger the `aria-expanded` prop value to true when the dropdown is opened.
+- Add to the trigger the `aria-controls` prop value with the same value of the `id` prop of the component.
 
 ## Props
 
