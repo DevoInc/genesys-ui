@@ -35,8 +35,8 @@ export type TableProps = {
 
 export const Table: React.FC<TableProps> = ({
   defaultColDef,
-  colDefs,
-  columnPresets,
+  colDefs = [],
+  columnPresets = [],
   density = 'default',
   striped = false,
   maxHeight = 'none',

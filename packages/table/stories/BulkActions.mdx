@@ -1,0 +1,81 @@
+import { Meta, Story, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './BulkActions.stories';
+
+<Meta of={Stories} />
+
+# Bulk actions
+
+<Story of={Stories.Base} />
+
+To build a bulk actions on table we need to store an array with the index of
+the selected rows, for this we are going to use a predefined hook
+`useBulkSelection`
+
+<Source
+  code={`
+import { useBulkSelection } from '@devoinc/genesys-ui-table';
+...
+const { bulkSelection, toggleAll, toggle, clear, headerBulkChecked } =
+  useBulkSelection({
+    dataLength,
+    initialSelection,
+    bulkDisabled,
+  });
+`}
+/>
+
+This hook needs:
+- the data length (row count) for check if is all selected or not
+- the initial selection if you want initialize the bulk selection with some rows
+- the bulk disabled that is an array with the index of the rows disable for
+  selection
+
+And return the selection `bulkSelection`, and several functions to call for
+modify the selection. There is also a boolean + 'indeterminate' state for the
+header check status.
+
+These piece is in charge of manage the bulk selection, and you can change it for
+a custom one if you need more sophisticated bulk selection model.
+
+After this, we need to configure the bulk column in our column definition
+
+<Source
+  code={`
+import {
+  HeaderBulkRenderer,
+  BulkRenderer,
+  BulkContext
+} from '@devoinc/genesys-ui-table';
+...
+{
+  id: 'bulk',
+  cellRenderer: BulkRenderer,
+  headerRenderer: HeaderBulkRenderer,
+  width: 64,
+  context: {
+    headerBulkMenu:
+      bulkSelection.length > 0 ? (
+        <Menu>
+          // Any menu construction
+        </Menu>
+      ) : undefined,
+    bulkSelection, // the selection returned by the previous hook
+    bulkDisabled, // the disabled index array
+    headerBulkChecked, // the status of the header checked
+      // could be: true, false or 'indeterminate'
+    onBulkCheckboxChange: (rowIndex) => {
+      toggle(rowIndex); // for toggle one row in the selection model
+    },
+    onHeaderBulkCheckboxChange: () => {
+      toggleAll(); // for toggle all rows in the selection model
+    },
+  } as BulkContext, // this is for TS types
+},
+...
+`}
+/>
+
+If the `bulkSelection` is not set then the `BulkRenderer` will look for a real column
+value, so you can manage the selection model by adding a real column with true
+or false to your data.

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { BasicTable } from './BasicTable';
-import { useOrderStruct } from '../hooks/useOrderStruct';
-import { ColDef } from '../declarations';
-import { orderDataByOrderStruct } from '../helpers/orderDataByOrderStruct';
+import { BasicTable } from '../src/recipes/BasicTable';
+import { useOrderStruct } from '../src/hooks/useOrderStruct';
+import { ColDef } from '../src/declarations';
+import { orderDataByOrderStruct } from '../src/helpers/orderDataByOrderStruct';
 
 const meta: Meta<typeof BasicTable> = {
-  title: 'Components/Table/Recipes/tableOrder',
+  title: 'Components/Table/Order',
   component: BasicTable,
   parameters: {
     layout: 'fullscreen',
@@ -34,6 +34,7 @@ const OrderTable = () => {
       cellStyle: {
         width: 7,
       },
+      sortable: false,
     },
     {
       id: 'age',
@@ -71,7 +72,6 @@ const OrderTable = () => {
         editable: false,
         sortable: true,
       }}
-      minWidth={2800}
       colDefs={columnDefs.map((col) => {
         const orderCol = orderStruct.find((colorder) => colorder.id === col.id);
         const orderColIndex = orderStruct.findIndex(
@@ -88,6 +88,6 @@ const OrderTable = () => {
   );
 };
 
-export const Order: Story = {
+export const Base: Story = {
   render: () => <OrderTable />,
 };
