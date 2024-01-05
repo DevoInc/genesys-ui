@@ -27,7 +27,10 @@ export const DateFilter: React.FC<FilterProps> = () => (
         options={dateOptions}
         // value={value}
       />
-      <DateTimeFloatingPicker onApply={() => undefined} onCancel={() => undefined} />
+      <DateTimeFloatingPicker
+        onApply={() => undefined}
+        onCancel={() => undefined}
+      />
     </AdvancedFilter>
   </FilterContainer>
 );
