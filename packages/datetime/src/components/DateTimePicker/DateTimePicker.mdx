@@ -1,0 +1,26 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './DateTimePicker.stories';
+
+<Meta of={Stories} />
+
+# DateTimePicker
+
+The DateTimePicker is an extension of the DateTime component.
+It renders a date type input and a DateTime component, allowing users to select a date and time in several ways.
+
+## How to import
+
+<Source
+  code={`
+import { DateTimePicker } from '@devo/genesys-ui-datetime';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Props
+
+<ArgTypes of={Stories} />
