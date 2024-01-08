@@ -21,6 +21,7 @@ export const HeaderBulkRenderer: React.FC<HeaderRendererProps> = ({
         ? true
         : true
       : false;
+  const dropdownId = 'bulk-actions-menu';
   return (
     <HFlex spacing="cmp-xxs">
       <CheckboxControl
@@ -34,13 +35,22 @@ export const HeaderBulkRenderer: React.FC<HeaderRendererProps> = ({
         aria-label="Select all rows"
       />
       {(context?.headerBulkMenu ?? false) && (
-        <Dropdown placement="bottom-start" width={'200px'}>
-          {({ toggle, ref }) => (
-            <IconButton size={'xs'} onClick={toggle} ref={ref}>
+        <Dropdown id={dropdownId} placement="bottom-start">
+          {({ isOpened, toggle, ref }) => (
+            <IconButton
+              aria-controls={dropdownId}
+              aria-haspopup="true"
+              aria-label="Open the bulk actions menu"
+              aria-expanded={isOpened}
+              size={'xs'}
+              onClick={toggle}
+              ref={ref}
+              state={isOpened ? 'expanded' : undefined}
+            >
               <GIAngleDown size="12" />
             </IconButton>
           )}
-          {context.headerBulkMenu}
+          <Dropdown.Panel>{context.headerBulkMenu}</Dropdown.Panel>
         </Dropdown>
       )}
     </HFlex>

@@ -4,10 +4,8 @@ import { type PopperProps, usePopper } from 'react-popper';
 import { useOnEventOutside } from '../../hooks';
 import ReactDOM from 'react-dom';
 import { DropdownPanel } from './components';
+import { useTheme } from 'styled-components';
 
-
-const defaultAppendToProp =
-  typeof window !== 'undefined' ? document.body : null;
 type TriggerProps = (props: {
   ref: any;
   toggle: (ev: React.MouseEvent<HTMLElement>) => void;
@@ -30,9 +28,12 @@ export interface DropdownProps
   isOpened?: boolean;
 }
 
+const defaultAppendToProp =
+  typeof window !== 'undefined' ? document.body : null;
+
 export const InternalDropdown: React.FC<DropdownProps> = ({
-                                                    appendTo = defaultAppendToProp,
-                                                    children: [triggerEl, childrenEl],
+  appendTo,
+  children: [triggerEl, childrenEl],
   id,
   isOpened = false,
   modifiers,
@@ -65,11 +66,16 @@ export const InternalDropdown: React.FC<DropdownProps> = ({
     handler: () => setOpened(false),
   });
 
+  const theme = useTheme();
+
   const PopperCmp = opened && referenceElement && (
     <div
       id={id}
       ref={setPopperElement}
-      style={styles.popper}
+      style={{
+        zIndex: theme.alias.elevation.zIndex.depth.activated,
+        ...styles.popper,
+      }}
       {...attributes.popper}
     >
       {childrenEl}
