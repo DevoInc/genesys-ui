@@ -1,6 +1,5 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import { visualizer } from 'rollup-plugin-visualizer';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
@@ -10,40 +9,15 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'index',
       fileName: 'index',
+      formats: ['es', 'cjs'],
     },
     rollupOptions: {
       external: [
-        'react',
-        'react-dom',
-        '@devoinc/genesys-ui',
-        'styled-components',
-        '@tanstack/react-virtual',
-        'lodash',
-        'date-fns',
-        'date-fns/locale',
-        'date-fns-tz',
-        'filepond',
-        'react-filepond',
-        'react-color',
-        '@popperjs/core',
+        /node_modules/,
+        /packages\/core/,
+        /packages\/datetime/,
+        /packages\/form/,
       ],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDom',
-          'styled-components': 'styled',
-          '@devoinc/genesys-ui': 'genesysUi',
-          '@tanstack/react-virtual': 'ReactVirtual',
-          lodash: 'lodash',
-          'date-fns': 'dateFns',
-          'date-fns-tz': 'dateFnsTz',
-          filepond: 'filepond',
-          'react-filepond': 'reactFilepond',
-          'react-color': 'reactColor',
-          '@popperjs/core': 'popperCore',
-          'date-fns/locale': 'dateFnsLocale',
-        },
-      },
     },
   },
   plugins: [
@@ -61,9 +35,6 @@ export default defineConfig({
           ],
         ],
       },
-    }),
-    visualizer({
-      filename: 'dist/stats.html',
     }),
   ],
 });

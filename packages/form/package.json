@@ -9,15 +9,16 @@
     "build": "vite build && tsc --project tsconfig.build.json",
     "build:watch": "vite build --watch && tsc --project tsconfig.build.json",
     "depcruise": ". ../../depcruise.sh",
+    "analyzer": "npx vite-bundle-visualizer -o 'dist/stats.html'",
     "stryker": "npx stryker run"
   },
-  "main": "./dist/index.umd.cjs",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/types/src/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
+      "require": "./dist/index.cjs"
     }
   },
   "files": [
