@@ -13,7 +13,7 @@ type Story = StoryObj<typeof Dropdown>;
 export const Base: Story = {
   render: () => (
     <Dropdown id="base" placement="bottom-start">
-      {({ toggle, ref, isOpened, setOpened }) => (
+      {({ toggle, ref, isOpened }) => (
         <Button
           aria-expanded={isOpened}
           aria-haspopup={true}
@@ -127,7 +127,7 @@ export const Nested: Story = {
 export const ComplexPanel: Story = {
   render: () => (
     <Dropdown id="complex-panel" placement="bottom-start">
-      {({ toggle, ref, isOpened, setOpened }) => (
+      {({ toggle, ref, isOpened }) => (
         <Button
           aria-expanded={isOpened}
           aria-haspopup={true}
