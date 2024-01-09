@@ -73,6 +73,7 @@ const InternalPresets: React.FC<PresetsProps> = ({
       id={id}
       maxMenuHeight={maxMenuHeight}
       menuIsOpen
+      menuRelative
       menuLevel={0}
       onChange={handleChange}
       options={securedPresets}

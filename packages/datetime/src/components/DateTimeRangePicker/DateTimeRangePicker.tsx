@@ -20,6 +20,7 @@ import { format } from 'date-fns';
 import { ApplyValue, DateRange } from '../declarations';
 import { isManageableDate, toTSorPreset } from '../utils';
 import { PresetRange } from '../Presets/declarations';
+import { useTheme } from 'styled-components';
 
 const defaultAppendToProp =
   typeof window !== 'undefined' ? document.body : null;
@@ -204,13 +205,18 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
     setPreset({ from: undefined, to: undefined });
   }, []);
 
+  const theme = useTheme();
+
   const PopperCmp = (
     <div
       aria-modal
       id={id ? `${id}-range-selector` : null}
       ref={setPopperElement}
       role="dialog"
-      style={styles.popper}
+      style={{
+        zIndex: theme.alias.elevation.zIndex.depth.activated,
+        ...styles.popper,
+      }}
       {...attributes.popper}
     >
       <Panel

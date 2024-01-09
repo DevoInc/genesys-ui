@@ -251,7 +251,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
 
   return (
     <HFlex as={as} alignItems={'flex-start'} styles={styles}>
-      <VFlex flex={`1 1 ${hasTime ? '40%' : '50%'}`} alignItems="stretch">
+      <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
         <Month
           ariaLabelInput={ariaLabelFromMonth}
           ariaLabelPrevMonth={ariaLabelPrevMonth}
@@ -294,7 +294,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
           />
         )}
       </VFlex>
-      <VFlex flex={`1 1 ${hasTime ? '40%' : '50%'}`} alignItems="stretch">
+      <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
         <Month
           ariaLabelInput={ariaLabelToMonth}
           ariaLabelNextMonth={ariaLabelNextMonth}
@@ -338,10 +338,11 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
         )}
       </VFlex>
       {presets && (
-        <VFlex flex={'1 1 20%'}>
+        <VFlex flex={'1 1 30%'} alignItems="stretch" minWidth="16rem">
           <Presets
             value={selectedPreset}
             id={`${id}-presets`}
+            maxMenuHeight={224}
             placeholder={presetsPlaceholder}
             presets={presets}
             onChange={onChangePresetDateCallback}
