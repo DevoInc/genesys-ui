@@ -1,12 +1,8 @@
 import * as React from 'react';
 import { SwitchControl } from '@devoinc/genesys-ui';
+import { CellEditorProps } from '../declarations';
 
-interface GenericCellEditorProps {
-  value: unknown;
-  onChange: (newValue: unknown) => void;
-}
-
-export const BooleanEditor: React.FC<GenericCellEditorProps> = ({
+export const BooleanEditor: React.FC<CellEditorProps> = ({
   value,
   onChange,
 }) => (

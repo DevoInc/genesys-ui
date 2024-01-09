@@ -1,13 +1,9 @@
 import React, { FormEvent } from 'react';
 import { TextareaControl } from '@devoinc/genesys-ui';
 import { EditorFloatingWrapper } from '../components';
+import { CellEditorProps } from '../declarations';
 
-type EditTextAreaProps = {
-  value: unknown;
-  onChange?: (newValue: string) => void;
-};
-
-export const TextAreaEditor: React.FC<EditTextAreaProps> = ({
+export const TextAreaEditor: React.FC<CellEditorProps> = ({
   value,
   onChange,
 }) => (
