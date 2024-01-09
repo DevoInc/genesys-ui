@@ -26,6 +26,8 @@ export const useRenderContent = (
   const editionContent = colDef.cellEditor
     ? colDef.cellEditor({
         value: data,
+        colDef,
+        rowIndex,
       })
     : null;
 
