@@ -17,6 +17,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "NODE_OPTIONS=\"--max_old_space_size=4096\" storybook build",
     "stryker": "npm run stryker -ws --if-present",
+    "analyzer": "npm run analyzer -ws --if-present",
     "test": "jest",
     "test:ci": "jest --coverage",
     "release": "release-it --dry-run",
@@ -75,7 +76,6 @@
     "react-syntax-highlighter": "^15.5.0",
     "release-it": "^16.2.1",
     "resize-observer-polyfill": "^1.5.1",
-    "rollup-plugin-visualizer": "^5.12.0",
     "sass": "^1.69.7",
     "storybook": "^7.6.7",
     "tocbot": "^4.25.0",
@@ -83,6 +83,7 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "vite": "^5.0.11",
+    "vite-bundle-analyzer": "^0.6.1",
     "vite-tsconfig-paths": "^4.2.3",
     "viz.js": "^2.1.2"
   },

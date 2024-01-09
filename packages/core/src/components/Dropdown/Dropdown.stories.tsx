@@ -1,13 +1,6 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import {
-  Button,
-  Dropdown,
-  Menu,
-  Panel,
-  Typography,
-  VFlex,
-} from '../../components';
+import { Button, Dropdown, Menu, Panel, Typography } from '../../components';
 
 const meta: Meta<typeof Dropdown> = {
   title: 'Components/Core/Navigation/Dropdown',
@@ -100,7 +93,7 @@ export const Nested: Story = {
             <Menu.Item label="Option 2" />
             <Menu.Item label="Option 3" />
             <Dropdown id={`${dropdownId}-1`} appendTo={null}>
-              {({ toggle, ref, isOpened, setOpened }) => (
+              {({ toggle, ref, isOpened }) => (
                 <Menu.Item
                   aria-controls={`${dropdownId}-1`}
                   aria-expanded={isOpened}
@@ -118,7 +111,7 @@ export const Nested: Story = {
                   <Menu.Item label="Option 4.2" />
                   <Menu.Item label="Option 4.3" />
                   <Dropdown id={`${dropdownId}-2`} appendTo={null}>
-                    {({ toggle, ref, isOpened, setOpened }) => (
+                    {({ toggle, ref, isOpened }) => (
                       <Menu.Item
                         aria-controls={`${dropdownId}-2`}
                         aria-expanded={isOpened}
@@ -153,7 +146,7 @@ export const ComplexPanel: Story = {
     const dropdownId = 'complex-panel';
     return (
       <Dropdown id={dropdownId} placement="bottom-start">
-        {({ toggle, ref, isOpened, setOpened }) => (
+        {({ toggle, ref, isOpened }) => (
           <Button
             aria-controls={dropdownId}
             aria-expanded={isOpened}

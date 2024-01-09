@@ -1,6 +1,5 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import { visualizer } from 'rollup-plugin-visualizer';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
@@ -10,28 +9,10 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'index',
       fileName: 'index',
+      formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: [
-        'react',
-        'react-dom',
-        '@devoinc/genesys-icons',
-        '@devoinc/genesys-ui',
-        'styled-components',
-        'react-popper',
-        'date-fns',
-      ],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'reactDom',
-          '@devoinc/genesys-icons': 'genesysIcons',
-          'styled-components': 'styled',
-          '@devoinc/genesys-ui': 'genesysUi',
-          'react-popper': 'reactPopper',
-          'date-fns': 'dateFns',
-        },
-      },
+      external: [/node_modules/, /packages\/core/],
     },
   },
   plugins: [
@@ -49,9 +30,6 @@ export default defineConfig({
           ],
         ],
       },
-    }),
-    visualizer({
-      filename: 'dist/stats.html',
     }),
   ],
 });
