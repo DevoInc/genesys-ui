@@ -32,7 +32,7 @@ const defaultAppendToProp =
   typeof window !== 'undefined' ? document.body : null;
 
 export const InternalDropdown: React.FC<DropdownProps> = ({
-  appendTo,
+  appendTo = defaultAppendToProp,
   children: [triggerEl, childrenEl],
   id,
   isOpened = false,

@@ -3,19 +3,18 @@ import * as React from 'react';
 import { Dropdown, Menu } from '@devoinc/genesys-ui';
 
 import { ActionMenuEntry } from '../../facade';
-import { HTMLAttributes } from 'react';
 
 type Props = {
   entry: ActionMenuEntry;
-  id: HTMLAttributes<HTMLElement>['id'];
   rowIndex: number;
+  level: number;
 };
 
-export const MenuEntry: React.FC<Props> = ({ entry, id, rowIndex }) => {
+export const MenuEntry: React.FC<Props> = ({ entry, level = 0, rowIndex }) => {
   if (entry?.component === 'separator') {
     return <Menu.Separator />;
   } else if (entry?.children) {
-    const dropdownId = `${id}-menu`;
+    const dropdownId = `${rowIndex}-${level}-actions-menu`;
     return (
       <Dropdown placement="right-start" id={dropdownId}>
         {({ toggle, ref, setOpened, isOpened }) => (
@@ -30,7 +29,6 @@ export const MenuEntry: React.FC<Props> = ({ entry, id, rowIndex }) => {
             onMouseOver={() => {
               setOpened(true);
             }}
-            id={id}
             ref={ref}
             expandable
             state={isOpened ? 'expanded' : undefined}
@@ -43,7 +41,7 @@ export const MenuEntry: React.FC<Props> = ({ entry, id, rowIndex }) => {
             {(entry?.children ?? []).map((childEntry, index) => (
               <MenuEntry
                 key={index}
-                id={id}
+                level={level + 1}
                 entry={childEntry}
                 rowIndex={rowIndex}
               />
@@ -62,7 +60,6 @@ export const MenuEntry: React.FC<Props> = ({ entry, id, rowIndex }) => {
         }
       }}
       icon={Icon ? <Icon size={12} /> : null}
-      id={id}
     >
       {entry?.text}
     </Menu.Item>

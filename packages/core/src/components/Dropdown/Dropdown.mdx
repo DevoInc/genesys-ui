@@ -50,14 +50,16 @@ indicating when it's opened.
 import * as React from 'react';
 import { Button, Dropdown, Menu } from '@devoinc/genesys-ui';
 export const MyDropdown = () =>
-  <Dropdown placement="bottom-start" width={'200px'}>
+  <Dropdown placement="bottom-start" id="basic-usage">
     {({ toggle, ref, isOpened, setOpened }) => (
       <Button
+        aria-controls="basic-usage"
         aria-expanded={isOpened}
         aria-haspopup={true}
         onClick={toggle}
         onMouseOver={() => setOpened(true)}
         ref={ref}
+        state={isOpened ? 'expanded' : undefined}
       >
         TriggerElement
       </Button>
@@ -78,6 +80,11 @@ export const MyDropdown = () =>
 `Dropdown` component allows the creation of hierarchical structures,
 where one Dropdown can contain other Dropdowns as selectable options.
 
+**IMPORTANT:** to avoid the parent being closed when a nested one is clicked
+due to problems with the `ref`, we have to define `appendTo={null}`
+in the nested dropdowns. This way, the first parent container will be appended
+by default to the end of the `body`, and the nested ones will be rendered inside this one.
+
 <Source
   code={`
 import * as React from 'react';
@@ -86,11 +93,13 @@ export const MyDropdown = () =>
   <Dropdown id="nested" placement="bottom-start">
       {({ toggle, ref, isOpened, setOpened }) => (
         <Button
+          aria-controls="nested"
           aria-expanded={isOpened}
           aria-haspopup={true}
           onClick={toggle}
           onMouseOver={() => setOpened(true)}
           ref={ref}
+          state={isOpened ? 'expanded' : undefined}
         >
           TriggerElement
         </Button>
@@ -100,9 +109,12 @@ export const MyDropdown = () =>
           <Menu.Item label="Option 1" />
           <Menu.Item label="Option 2" />
           <Menu.Item label="Option 3" />
-          <Dropdown id="nested-one">
+          <Dropdown id="nested-one" appendTo={null}>
             {({ toggle, ref, isOpened, setOpened }) => (
               <Menu.Item
+                aria-controls="nested-one"
+                aria-expanded={isOpened}
+                aria-haspopup={true}
                 expandable
                 label="Option 4"
                 onClick={() => setOpened(true)}
@@ -117,9 +129,12 @@ export const MyDropdown = () =>
                 <Menu.Item label="Option 4.1" />
                 <Menu.Item label="Option 4.2" />
                 <Menu.Item label="Option 4.3" />
-                <Dropdown id="nested-two">
+                <Dropdown id="nested-two" appendTo={null}>
                   {({ toggle, ref, isOpened, setOpened }) => (
                     <Menu.Item
+                      aria-controls="nested-two"
+                      aria-expanded={isOpened}
+                      aria-haspopup={true}
                       expandable
                       label="Option 4.3.1"
                       onClick={() => setOpened(true)}

@@ -12,7 +12,7 @@ export const ActionRenderer: React.FC<CellRendererProps> = ({
   rowIndex,
 }) => {
   const context = colDef?.context as ActionContext;
-  const dropdownId = `actions-menu-${rowIndex}`;
+  const dropdownId = `${colDef.id}-actions-menu-${rowIndex}`;
   return (
     <HFlex spacing="cmp-xxs" alignItems="end">
       {(context?.quickActions ?? []).map(({ Icon, onClick }, idx) => (
@@ -49,8 +49,8 @@ export const ActionRenderer: React.FC<CellRendererProps> = ({
               {context.actionMenu.map((entry, idx) => (
                 <MenuEntry
                   key={idx}
-                  id={`row-${rowIndex}-menu-entry-${idx}`}
                   entry={entry}
+                  level={0}
                   rowIndex={rowIndex}
                 />
               ))}

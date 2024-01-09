@@ -21,7 +21,7 @@ export const HeaderBulkRenderer: React.FC<HeaderRendererProps> = ({
         ? true
         : true
       : false;
-  const dropdownId = 'bulk-actions-menu';
+  const dropdownId = `${colDef.id}-bulk-actions-menu`;
   return (
     <HFlex spacing="cmp-xxs">
       <CheckboxControl
