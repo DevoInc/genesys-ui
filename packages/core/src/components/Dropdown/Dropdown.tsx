@@ -28,6 +28,9 @@ export interface DropdownProps
   isOpened?: boolean;
 }
 
+const defaultAppendToProp =
+  typeof window !== 'undefined' ? document.body : null;
+
 export const InternalDropdown: React.FC<DropdownProps> = ({
   appendTo = defaultAppendToProp,
   children: [triggerEl, childrenEl],
