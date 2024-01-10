@@ -90,8 +90,8 @@
     "viz.js": "^2.1.2"
   },
   "workspaces": [
-    "packages/code",
     "packages/core",
+    "packages/code",
     "packages/datetime",
     "packages/form",
     "packages/table"

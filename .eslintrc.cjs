@@ -21,7 +21,6 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    '@devoinc/eslint-config-devo/ts-react-jest',
     'plugin:@typescript-eslint/recommended',
     'plugin:jest/recommended',
     'plugin:react/recommended',
