@@ -24,7 +24,7 @@
     "compile:watch": "npm run compile -- --watch",
     "build": "vite build && tsc --project tsconfig.build.json",
     "build:watch": "vite build --watch && tsc --project tsconfig.build.json",
-    "depcruise": ". ../../depcruise.sh",
+    "depcruise": "sh ../../depcruise.sh \"$npm_package_name\"",
     "analyzer": "npx vite-bundle-visualizer -o 'dist/stats.html'",
     "stryker": "npx stryker run"
   },
