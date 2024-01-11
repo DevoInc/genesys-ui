@@ -81,7 +81,7 @@ export const InternalModal: React.FC<ModalProps> = ({
   shouldCloseOnOverlayClick,
   styles,
   subcomponentStyles,
-  zIndex = 1,
+  zIndex,
 }) => {
   const { hasScroll, targetElRef } = useDetectScroll();
 

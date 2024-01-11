@@ -1,8 +1,12 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import { useDetectScroll } from '../../hooks';
+
+import { GICheckOkRoundedFilled } from '@devoinc/genesys-icons';
 import {
   Box,
   Button,
@@ -14,12 +18,10 @@ import {
   IconButtonStatus,
   Modal,
   ModalProps,
+  Typography,
 } from '..';
-import { GICheckOkRoundedFilled } from '@devoinc/genesys-icons';
-import { Heading } from '../Typography/components/block';
-import { useTheme } from 'styled-components';
-import { lorem } from '../../../stories/utils/fillerTexts';
-import { useDetectScroll } from '../../hooks';
+
+import { ModalDemoContent } from './__stories__/components';
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/Core/Layout/Modal/Cases',
@@ -38,7 +40,7 @@ const meta: Meta<typeof Modal> = {
 export default meta;
 type Story = StoryObj<typeof Modal>;
 
-const ModalWithHeaderActions = (props: ModalProps) => {
+const ModalWithButtons = (props: ModalProps) => {
   const [isOpen, setOpen] = React.useState<boolean>(false);
   const closeModal = (msg: string) => {
     action(msg);
@@ -72,7 +74,7 @@ const ModalWithHeaderActions = (props: ModalProps) => {
           ]}
           onRequestClose={() => closeModal('onRequestClose')}
         >
-          Your modal content goes here
+          {ModalDemoContent}
         </Modal>
       )}
       <Button onClick={() => setOpen(true)} colorScheme="accent-high">
@@ -80,6 +82,13 @@ const ModalWithHeaderActions = (props: ModalProps) => {
       </Button>
     </>
   );
+};
+
+export const WithButtons: Story = {
+  args: {
+    headerTitle: 'Modal window',
+  },
+  render: (args) => <ModalWithButtons {...args} />,
 };
 
 export const WithActions: Story = {
@@ -104,7 +113,7 @@ export const WithActions: Story = {
       />,
     ],
   },
-  render: (args) => <ModalWithHeaderActions {...args} />,
+  render: (args) => <ModalWithButtons {...args} />,
 };
 
 export const Animated: Story = {
@@ -132,7 +141,7 @@ export const Animated: Story = {
                 onRequestClose={() => setOpen(false)}
                 zIndex={100}
               >
-                Your modal content goes here
+                {ModalDemoContent}
               </Modal>
             </motion.div>
           )}
@@ -160,20 +169,23 @@ export const Custom: Story = {
               <Modal.Header>
                 <Flex alignItems="center" gap="cmp-sm">
                   <GICheckOkRoundedFilled
+                    size={22}
                     color={dialogHeaderIconTokens.color.background.success}
                   />
-                  <Heading size="h4" truncateLine={1}>
+                  <Typography.Heading size="h4" truncateLine={1}>
                     My custom Modal
-                  </Heading>
+                  </Typography.Heading>
                 </Flex>
                 <Flex marginLeft="auto">
-                  <ButtonGroup size="md" itemsGap="lg">
+                  <ButtonGroup size="md" gap="lg">
                     <IconButtonStatus tooltip="Info" />
                     <IconButtonClose tooltip="Close" />
                   </ButtonGroup>
                 </Flex>
               </Modal.Header>
-              <Modal.Body modalBodyRef={targetElRef}>{lorem}</Modal.Body>
+              <Modal.Body modalBodyRef={targetElRef}>
+                {ModalDemoContent}
+              </Modal.Body>
               <Modal.Footer hasBoxShadow={hasScroll}>
                 <Box marginRight="auto">
                   <IconButtonGoToDocs

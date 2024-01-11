@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyledModal, StyledModalProps } from '../../styled';
 import { Overlay } from '../../../Overlay';
 import { StyledOverloadCssProps } from '../../../../declarations';
+import { useTheme } from 'styled-components';
 
 export interface ModalContainerProps
   extends StyledModalProps,
@@ -13,7 +14,7 @@ export interface ModalContainerProps
   /** Manages closing action by pressing close button*/
   onRequestClose?: () => void;
   /** zIndex of the Modal */
-  zIndex?: React.CSSProperties['zIndex'];
+  zIndex?: number;
   /** Content of the Modal */
   children: React.ReactNode;
 }
@@ -25,18 +26,20 @@ export const ModalContainer: React.FC<ModalContainerProps> = ({
   windowSize = 'default',
   onRequestClose,
   shouldCloseOnOverlayClick = true,
-  zIndex = 1,
+  zIndex,
   status,
   styles,
   children,
 }) => {
+  const theme = useTheme();
   return (
     <Overlay
-      zIndex={zIndex}
+      zIndex={zIndex || theme.alias.elevation.zIndex.depth.overlay}
       bgColorScheme={'dark'}
       fixed
       onClick={shouldCloseOnOverlayClick ? () => onRequestClose?.() : undefined}
       styles={styles}
+      padding={windowSize === 'fullscreen' ? '0' : undefined}
     >
       <StyledModal
         id={id}
@@ -48,6 +51,7 @@ export const ModalContainer: React.FC<ModalContainerProps> = ({
           // For avoid click inside close overlay
           event.stopPropagation();
         }}
+        zIndex={zIndex ? zIndex + 1 : theme.alias.elevation.zIndex.depth.popOut}
       >
         {children}
       </StyledModal>
