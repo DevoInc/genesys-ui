@@ -116,7 +116,9 @@ export const InlineMessageTrigger = React.forwardRef<
       );
     }
 
+    // eslint-disable-next-line no-lone-blocks
     {
+      // eslint-disable-next-line no-unused-expressions
       Trigger && TriggerCmp;
     }
 

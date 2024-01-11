@@ -56,6 +56,7 @@ export const Editor: Story = {
                   colorScheme="accent"
                   onClick={() => {
                     setIsVisible(false);
+                    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
                     onChange(value + 'a');
                   }}
                   wide

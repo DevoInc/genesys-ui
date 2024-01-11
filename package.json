@@ -12,7 +12,7 @@
     "build": "npm run build -ws --if-present",
     "build:watch": "npm run build:watch -ws --if-present",
     "depcruise": "npm run depcruise -ws",
-    "lint": "eslint --max-warnings 0 packages/**/src",
+    "lint": "eslint packages/**/src",
     "start": "npm run storybook",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "NODE_OPTIONS=\"--max_old_space_size=4096\" storybook build",

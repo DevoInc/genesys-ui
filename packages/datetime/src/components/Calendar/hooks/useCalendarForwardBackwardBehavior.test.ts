@@ -13,8 +13,8 @@ describe('useCalendarForwardBackwardBehavior', () => {
     );
     expect(result.current.selectedDates.from).toEqual(from);
     expect(result.current.selectedDates.to).toEqual(to);
-    expect(result.current.hasLeftHoverEffect).toEqual(true);
-    expect(result.current.hasRightHoverEffect).toEqual(false);
+    expect(result.current.hasLeftHoverEffect).toBe(true);
+    expect(result.current.hasRightHoverEffect).toBe(false);
 
     const nextDate = new Date(2022, 8, 11).getTime();
 
@@ -23,9 +23,9 @@ describe('useCalendarForwardBackwardBehavior', () => {
     });
 
     expect(result.current.selectedDates.from).toEqual(nextDate);
-    expect(result.current.selectedDates.to).toEqual(null);
-    expect(result.current.hasLeftHoverEffect).toEqual(false);
-    expect(result.current.hasRightHoverEffect).toEqual(true);
+    expect(result.current.selectedDates.to).toBeNull();
+    expect(result.current.hasLeftHoverEffect).toBe(false);
+    expect(result.current.hasRightHoverEffect).toBe(true);
   });
 
   test('Initial behaviour forward', () => {
@@ -38,8 +38,8 @@ describe('useCalendarForwardBackwardBehavior', () => {
     );
     expect(result.current.selectedDates.from).toEqual(from);
     expect(result.current.selectedDates.to).toEqual(to);
-    expect(result.current.hasLeftHoverEffect).toEqual(false);
-    expect(result.current.hasRightHoverEffect).toEqual(true);
+    expect(result.current.hasLeftHoverEffect).toBe(false);
+    expect(result.current.hasRightHoverEffect).toBe(true);
 
     const nextDate = new Date(2022, 8, 11).getTime();
 
@@ -49,16 +49,16 @@ describe('useCalendarForwardBackwardBehavior', () => {
 
     expect(result.current.selectedDates.from).toEqual(from);
     expect(result.current.selectedDates.to).toEqual(nextDate);
-    expect(result.current.hasLeftHoverEffect).toEqual(true);
-    expect(result.current.hasRightHoverEffect).toEqual(false);
+    expect(result.current.hasLeftHoverEffect).toBe(true);
+    expect(result.current.hasRightHoverEffect).toBe(false);
   });
 
   test('Initial without dates', () => {
     const { result } = renderHook(() => useCalendarForwardBackwardBehavior({}));
-    expect(result.current.selectedDates.from).toEqual(null);
-    expect(result.current.selectedDates.to).toEqual(null);
-    expect(result.current.hasLeftHoverEffect).toEqual(true);
-    expect(result.current.hasRightHoverEffect).toEqual(false);
+    expect(result.current.selectedDates.from).toBeNull();
+    expect(result.current.selectedDates.to).toBeNull();
+    expect(result.current.hasLeftHoverEffect).toBe(true);
+    expect(result.current.hasRightHoverEffect).toBe(false);
 
     const nextDate = new Date(2022, 8, 11).getTime();
 
@@ -67,9 +67,9 @@ describe('useCalendarForwardBackwardBehavior', () => {
     });
 
     expect(result.current.selectedDates.from).toEqual(nextDate);
-    expect(result.current.selectedDates.to).toEqual(null);
-    expect(result.current.hasLeftHoverEffect).toEqual(false);
-    expect(result.current.hasRightHoverEffect).toEqual(true);
+    expect(result.current.selectedDates.to).toBeNull();
+    expect(result.current.hasLeftHoverEffect).toBe(false);
+    expect(result.current.hasRightHoverEffect).toBe(true);
   });
 
   test('Initial without to', () => {
@@ -78,9 +78,9 @@ describe('useCalendarForwardBackwardBehavior', () => {
       useCalendarForwardBackwardBehavior({ from }),
     );
     expect(result.current.selectedDates.from).toEqual(from);
-    expect(result.current.selectedDates.to).toEqual(null);
-    expect(result.current.hasLeftHoverEffect).toEqual(true);
-    expect(result.current.hasRightHoverEffect).toEqual(false);
+    expect(result.current.selectedDates.to).toBeNull();
+    expect(result.current.hasLeftHoverEffect).toBe(true);
+    expect(result.current.hasRightHoverEffect).toBe(false);
 
     const nextDate = new Date(2022, 8, 11).getTime();
 
@@ -90,7 +90,7 @@ describe('useCalendarForwardBackwardBehavior', () => {
 
     expect(result.current.selectedDates.from).toEqual(from);
     expect(result.current.selectedDates.to).toEqual(nextDate);
-    expect(result.current.hasLeftHoverEffect).toEqual(false);
-    expect(result.current.hasRightHoverEffect).toEqual(true);
+    expect(result.current.hasLeftHoverEffect).toBe(false);
+    expect(result.current.hasRightHoverEffect).toBe(true);
   });
 });

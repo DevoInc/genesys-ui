@@ -75,7 +75,7 @@ export const ProgressBarInfo: React.FC<ProgressBarInfoProps> = ({
         )
       ) : (
         <>
-          {icon && !Boolean(statusHelper) && (
+          {icon && !statusHelper && (
             <Box
               as="span"
               margin={type === 'circular' ? 'cmp-xxs 0 0 0' : '0 cmp-xs 0 0'}

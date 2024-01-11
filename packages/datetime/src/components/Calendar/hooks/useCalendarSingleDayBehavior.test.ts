@@ -9,8 +9,8 @@ describe('useCalendarSingleDayBehavior', () => {
     const { result } = renderHook(() => useCalendarSingleDayBehavior({ day }));
     expect(result.current.selectedDates.from).toEqual(day);
     expect(result.current.selectedDates.to).toEqual(day);
-    expect(result.current.hasLeftHoverEffect).toEqual(false);
-    expect(result.current.hasRightHoverEffect).toEqual(false);
+    expect(result.current.hasLeftHoverEffect).toBe(false);
+    expect(result.current.hasRightHoverEffect).toBe(false);
 
     const nextDate = new Date(2022, 8, 11).getTime();
 
@@ -24,10 +24,10 @@ describe('useCalendarSingleDayBehavior', () => {
 
   test('without day', () => {
     const { result } = renderHook(() => useCalendarSingleDayBehavior({}));
-    expect(result.current.selectedDates.from).toEqual(null);
-    expect(result.current.selectedDates.to).toEqual(null);
-    expect(result.current.hasLeftHoverEffect).toEqual(false);
-    expect(result.current.hasRightHoverEffect).toEqual(false);
+    expect(result.current.selectedDates.from).toBeNull();
+    expect(result.current.selectedDates.to).toBeNull();
+    expect(result.current.hasLeftHoverEffect).toBe(false);
+    expect(result.current.hasRightHoverEffect).toBe(false);
 
     const nextDate = new Date(2022, 8, 5).getTime();
 

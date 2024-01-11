@@ -15,6 +15,7 @@ export const onApply =
         from: timestamp.from,
         to: timestamp.to,
       },
+      // eslint-disable-next-line camelcase
       timestamp_formatted: {
         from: new Date(timestamp.from),
         to: new Date(timestamp.to),

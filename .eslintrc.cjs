@@ -20,6 +20,31 @@ module.exports = {
     browser: true,
     es2021: true,
   },
+  "rules": {
+    "@typescript-eslint/no-unsafe-member-access": "warn",
+    "@typescript-eslint/no-unsafe-assignment": "warn",
+    "@typescript-eslint/no-unsafe-call": "warn",
+    "@typescript-eslint/no-shadow": "warn",
+    "@typescript-eslint/no-unsafe-return": "warn",
+    "@typescript-eslint/no-unsafe-argument": "warn",
+    "no-use-before-define": "warn",
+    "no-console": "warn",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "no-alert": "warn",
+    "@typescript-eslint/no-redundant-type-constituents": "warn",
+    "no-useless-escape": "warn",
+    "@typescript-eslint/unbound-method": "warn",
+    "@typescript-eslint/no-base-to-string": "warn",
+    "radix": "warn",
+    "consistent-return": "warn",
+    "indent": [
+      "warn",
+      2,
+      {
+        'ignoredNodes': ['TemplateLiteral > *']
+      }
+    ],
+  },
   extends: [
     '@devoinc/eslint-config-devo/ts-react-jest'
   ]

@@ -20,10 +20,10 @@ export const getPartitionsHeight = ({
 }: partitionsContainerMixinProps) => {
   const trackTokens = theme.alias.size.height.track;
   return size === 'sm'
-    ? trackTokens['xs']
+    ? trackTokens.xs
     : size === 'lg'
-      ? `calc(${trackTokens['md']} - 0.2rem)`
-      : `calc(${trackTokens['sm']} - 0.2rem)`;
+      ? `calc(${trackTokens.md} - 0.2rem)`
+      : `calc(${trackTokens.sm} - 0.2rem)`;
 };
 
 /**
