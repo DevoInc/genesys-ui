@@ -4,7 +4,7 @@ import { DateTimePicker } from '@devoinc/genesys-ui-datetime';
 
 import { TableContext } from '../../context/TableContext';
 import { ROW_HEIGHT_MD } from '../../constants';
-import { Dropdown, getPxFromRem } from '@devoinc/genesys-ui';
+import { Popover, getPxFromRem } from '@devoinc/genesys-ui';
 import { CellEditorProps } from '../declarations';
 import { useTheme } from 'styled-components';
 
@@ -19,7 +19,7 @@ export const DateEditor: React.FC<CellEditorProps> = ({
   const dropdownId = `${colDef.id}-date-editor-${rowIndex}`;
   const offsetX = getPxFromRem(theme.cmp.table.cell.space.padding.hor[density]);
   return (
-    <Dropdown
+    <Popover
       placement="bottom-start"
       appendTo={null}
       id={dropdownId}
@@ -34,7 +34,7 @@ export const DateEditor: React.FC<CellEditorProps> = ({
       ]}
     >
       {({ ref }) => <div ref={ref}></div>}
-      <Dropdown.Panel width={'auto'}>
+      <Popover.Panel width={'auto'}>
         <DateTimePicker
           size={
             density === 'compact' && rowHeight <= ROW_HEIGHT_MD ? 'sm' : 'md'
@@ -44,7 +44,7 @@ export const DateEditor: React.FC<CellEditorProps> = ({
           }
           value={new Date(value as Date)}
         />
-      </Dropdown.Panel>
-    </Dropdown>
+      </Popover.Panel>
+    </Popover>
   );
 };

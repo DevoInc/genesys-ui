@@ -3,9 +3,9 @@ import { Panel } from '../../../components';
 import { PanelContainerProps } from '../../Panel/components';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface DropdownPanelProps extends Omit<PanelContainerProps, 'elevation'> {}
+interface PopoverPanelProps extends Omit<PanelContainerProps, 'elevation'> {}
 
-export const DropdownPanel: React.FC<DropdownPanelProps> = ({
+export const PopoverPanel: React.FC<PopoverPanelProps> = ({
   children,
   padding = 'cmp-xxs',
   width = '20rem',

@@ -1,10 +1,18 @@
 import * as React from 'react';
-import { type PopperProps, usePopper } from 'react-popper';
+import ReactDOM from 'react-dom';
+import { useTheme } from 'styled-components';
+import { type PopperProps, StrictModifier, usePopper } from 'react-popper';
+import { ComputedPlacement } from '@popperjs/core';
 
 import { useOnEventOutside } from '../../hooks';
-import ReactDOM from 'react-dom';
-import { DropdownPanel } from './components';
-import { useTheme } from 'styled-components';
+
+import { getMarginByPlacement } from './utils';
+
+import {
+  PopoverPanel,
+  StyledPopoverArrow,
+  StyledPopoverArrowProps,
+} from './components';
 
 type TriggerProps = (props: {
   ref: any;
@@ -15,28 +23,33 @@ type TriggerProps = (props: {
 
 type ChildrenProps = React.ReactNode;
 
-export interface DropdownProps
+export interface PopoverProps
   extends Omit<
     PopperProps<unknown>,
-    'children' | 'innerRef' | 'referenceElement' | 'onFirstUpdate'
+    'children' | 'innerRef' | 'referenceElement' | 'onFirstUpdate' | 'modifiers'
   > {
   /** DOM element where the popper is appended. It is appended to the body
    * by default. */
   appendTo?: HTMLElement;
+  /** The HTML id attribute which is added to the wrapper div of the floating content and should be used as 'aria-controls' value of the trigger. */
   id: React.HTMLAttributes<HTMLDivElement>['id'];
   children?: [TriggerProps, ChildrenProps];
+  /** If the floating content is visible/opened by default. */
   isOpened?: boolean;
+  arrow?: (arrowProps: StyledPopoverArrowProps) => React.ReactNode;
+  modifiers?: StrictModifier[];
 }
 
 const defaultAppendToProp =
   typeof window !== 'undefined' ? document.body : null;
 
-export const InternalDropdown: React.FC<DropdownProps> = ({
+export const InternalPopover: React.FC<PopoverProps> = ({
+  arrow,
   appendTo = defaultAppendToProp,
   children: [triggerEl, childrenEl],
   id,
   isOpened = false,
-  modifiers,
+  modifiers = [],
   placement = 'auto-start',
   strategy = 'fixed',
 }) => {
@@ -44,6 +57,17 @@ export const InternalDropdown: React.FC<DropdownProps> = ({
 
   const [referenceElement, setReferenceElement] = React.useState(null);
   const [popperElement, setPopperElement] = React.useState(null);
+  const [arrowRef, setArrowRef] = React.useState<HTMLElement>(null);
+
+  if (arrow) {
+    modifiers.push({
+      name: 'arrow',
+      options: {
+        element: arrowRef,
+        padding: 10,
+      },
+    });
+  }
 
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     modifiers,
@@ -67,18 +91,31 @@ export const InternalDropdown: React.FC<DropdownProps> = ({
   });
 
   const theme = useTheme();
-
+  const zIndex = theme.alias.elevation.zIndex.depth.activated;
   const PopperCmp = opened && referenceElement && (
     <div
       id={id}
       ref={setPopperElement}
       style={{
-        zIndex: theme.alias.elevation.zIndex.depth.activated,
+        zIndex,
+        ...getMarginByPlacement(
+          attributes?.popper?.['data-popper-placement'] as ComputedPlacement,
+        ),
         ...styles.popper,
       }}
       {...attributes.popper}
     >
       {childrenEl}
+      {arrow && (
+        <div ref={setArrowRef} style={{ zIndex: zIndex + 1, ...styles.arrow }}>
+          {arrow({
+            placement:
+              (attributes?.popper?.[
+                'data-popper-placement'
+              ] as ComputedPlacement) ?? undefined,
+          })}
+        </div>
+      )}
     </div>
   );
 
@@ -97,10 +134,12 @@ export const InternalDropdown: React.FC<DropdownProps> = ({
   );
 };
 
-export const Dropdown = InternalDropdown as typeof InternalDropdown & {
-  Panel: typeof DropdownPanel;
+export const Popover = InternalPopover as typeof InternalPopover & {
+  Arrow: typeof StyledPopoverArrow;
+  Panel: typeof PopoverPanel;
 };
 
-Dropdown.Panel = DropdownPanel;
+Popover.Arrow = StyledPopoverArrow;
+Popover.Panel = PopoverPanel;
 
-InternalDropdown.displayName = 'Dropdown';
+InternalPopover.displayName = 'Popover';

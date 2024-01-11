@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Dropdown, Menu } from '@devoinc/genesys-ui';
+import { Popover, Menu } from '@devoinc/genesys-ui';
 
 import { ActionMenuEntry } from '../../facade';
 
@@ -14,12 +14,12 @@ export const MenuEntry: React.FC<Props> = ({ entry, level = 0, rowIndex }) => {
   if (entry?.component === 'separator') {
     return <Menu.Separator />;
   } else if (entry?.children) {
-    const dropdownId = `${rowIndex}-${level}-actions-menu`;
+    const popoverId = `${rowIndex}-${level}-actions-menu`;
     return (
-      <Dropdown placement="right-start" id={dropdownId}>
+      <Popover placement="right-start" id={popoverId}>
         {({ toggle, ref, setOpened, isOpened }) => (
           <Menu.Item
-            aria-controls={dropdownId}
+            aria-controls={popoverId}
             aria-haspopup="true"
             aria-expanded={isOpened}
             onClick={() => {
@@ -36,7 +36,7 @@ export const MenuEntry: React.FC<Props> = ({ entry, level = 0, rowIndex }) => {
             {entry?.text}
           </Menu.Item>
         )}
-        <Dropdown.Panel>
+        <Popover.Panel>
           <Menu>
             {(entry?.children ?? []).map((childEntry, index) => (
               <MenuEntry
@@ -47,8 +47,8 @@ export const MenuEntry: React.FC<Props> = ({ entry, level = 0, rowIndex }) => {
               />
             ))}
           </Menu>
-        </Dropdown.Panel>
-      </Dropdown>
+        </Popover.Panel>
+      </Popover>
     );
   }
   const Icon = entry?.Icon;

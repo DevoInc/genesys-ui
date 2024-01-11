@@ -1,17 +1,17 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
-import * as Stories from './Dropdown.stories';
+import * as Stories from './Popover.stories';
 
 <Meta of={Stories} />
 
-# Dropdown
+# Popover
 
 ## Overview
 
-This Dropdown component allows users to expand hidden contents using a trigger,
+This Popover component allows users to expand hidden contents using a trigger,
 usually a button, link or menu item.
 
-A Dropdown menu variant is a typical way of using this kind of component,
+A Popover menu variant is a typical way of using this kind of component,
 which allows users to select an option from a drop-down menu list.
 
 This component is valuable in web applications to enhance usability by
@@ -24,14 +24,14 @@ This component is based on [Popper JS library](https://popper.js.org/).
 
 ## How to import
 
-<Source code={`import { Dropdown } from '@devoinc/genesys-ui';`} />
+<Source code={`import { Popover } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
-The `Dropdown` component must have two children components.
+The `Popover` component must have two children components.
 First, the trigger element and right after the content to be displayed.
 
-This content usually should be wrapped by the `Dropdown.Panel` component,
+This content usually should be wrapped by the `Popover.Panel` component,
 which provides the elevation styles (box shadow, radius, z-index... etc.)
 according to the design pattern.
 
@@ -42,15 +42,15 @@ indicating when it's opened.
 
 - `ref`: used to retrieve the React ref of the _popper_ element.
 - `toggle`: function to toggle the content of the component.
-- `setOpened`: function to force display or hide the dropdown menu.
-- `isOpened`: a boolean indicating if the dropdown menu is open.
+- `setOpened`: function to force display or hide the Popover floating content.
+- `isOpened`: a boolean indicating if the Popover floating content is open.
 
 <Source
   code={`
 import * as React from 'react';
-import { Button, Dropdown, Menu } from '@devoinc/genesys-ui';
-export const MyDropdown = () =>
-  <Dropdown placement="bottom-start" id="basic-usage">
+import { Button, Popover, Menu } from '@devoinc/genesys-ui';
+export const MyPopover = () =>
+  <Popover placement="bottom-start" id="basic-usage">
     {({ toggle, ref, isOpened, setOpened }) => (
       <Button
         aria-controls="basic-usage"
@@ -64,33 +64,33 @@ export const MyDropdown = () =>
         TriggerElement
       </Button>
     )}
-    <Dropdown.Panel>
+    <Popover.Panel>
       <Menu>
         <Menu.Item label="Option 1" />
         <Menu.Item label="Option 2" />
         <Menu.Item label="Option 3" />
       </Menu>
-    </Dropdown.Panel>
-  </Dropdown>
+    </Popover.Panel>
+  </Popover>
 `}
 />
 
-## Nested Dropdown
+## Nested Popover
 
-`Dropdown` component allows the creation of hierarchical structures,
-where one Dropdown can contain other Dropdowns as selectable options.
+`Popover` component allows the creation of hierarchical structures,
+where one Popover can contain other Popovers as selectable options.
 
 **IMPORTANT:** to avoid the parent being closed when a nested one is clicked
 due to problems with the `ref`, we have to define `appendTo={null}`
-in the nested dropdowns. This way, the first parent container will be appended
+in the nested popovers. This way, the first parent container will be appended
 by default to the end of the `body`, and the nested ones will be rendered inside this one.
 
 <Source
   code={`
 import * as React from 'react';
-import { Button, Dropdown, Menu } from '@devoinc/genesys-ui';
-export const MyDropdown = () =>
-  <Dropdown id="nested" placement="bottom-start">
+import { Button, Popover, Menu } from '@devoinc/genesys-ui';
+export const MyPopover = () =>
+  <Popover id="nested" placement="bottom-start">
       {({ toggle, ref, isOpened, setOpened }) => (
         <Button
           aria-controls="nested"
@@ -104,12 +104,12 @@ export const MyDropdown = () =>
           TriggerElement
         </Button>
       )}
-      <Dropdown.Panel>
+      <Popover.Panel>
         <Menu>
           <Menu.Item label="Option 1" />
           <Menu.Item label="Option 2" />
           <Menu.Item label="Option 3" />
-          <Dropdown id="nested-one" appendTo={null}>
+          <Popover id="nested-one" appendTo={null}>
             {({ toggle, ref, isOpened, setOpened }) => (
               <Menu.Item
                 aria-controls="nested-one"
@@ -124,12 +124,12 @@ export const MyDropdown = () =>
                 state={isOpened ? 'expanded' : 'enabled'}
               />
             )}
-            <Dropdown.Panel>
+            <Popover.Panel>
               <Menu>
                 <Menu.Item label="Option 4.1" />
                 <Menu.Item label="Option 4.2" />
                 <Menu.Item label="Option 4.3" />
-                <Dropdown id="nested-two" appendTo={null}>
+                <Popover id="nested-two" appendTo={null}>
                   {({ toggle, ref, isOpened, setOpened }) => (
                     <Menu.Item
                       aria-controls="nested-two"
@@ -144,20 +144,20 @@ export const MyDropdown = () =>
                       state={isOpened ? 'expanded' : 'enabled'}
                     />
                   )}
-                  <Dropdown.Panel>
+                  <Popover.Panel>
                     <Menu>
                       <Menu.Item label="Option 4.3.1" />
                       <Menu.Item label="Option 4.3.3" />
                       <Menu.Item label="Option 4.3.2" />
                     </Menu>
-                  </Dropdown.Panel>
-                </Dropdown>
+                  </Popover.Panel>
+                </Popover>
               </Menu>
-            </Dropdown.Panel>
-          </Dropdown>
+            </Popover.Panel>
+          </Popover>
         </Menu>
-      </Dropdown.Panel>
-    </Dropdown>
+      </Popover.Panel>
+    </Popover>
 `}
 />
 
@@ -167,11 +167,11 @@ To ensure full accessibility of the component, we need to consider multiple aspe
 These include:
 
 - Adding a value for the `id` prop of the component. This value is automatically mapped to the attribute
-  of the 'div' HTML element which wraps the dropdown content. This value has to be used as
-  the `aria-controls` prop value of the dropdown trigger.
+  of the 'div' HTML element which wraps the Popover content. This value has to be used as
+  the `aria-controls` prop value of the Popover trigger.
 - Each trigger component should have defined the `onClick` property to get the key events.
 - Add to the trigger the `aria-haspopup` prop value to true.
-- Add to the trigger the `aria-expanded` prop value to true when the dropdown is opened.
+- Add to the trigger the `aria-expanded` prop value to true when the Popover is opened.
 - Add to the trigger the `aria-controls` prop value with the same value of the `id` prop of the component.
 
 ## Props

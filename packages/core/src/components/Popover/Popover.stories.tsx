@@ -1,23 +1,23 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Button, Dropdown, Menu, Panel, Typography } from '../../components';
+import { Button, Popover, Menu, Panel, Typography } from '../../components';
 
-const meta: Meta<typeof Dropdown> = {
-  title: 'Components/Core/Navigation/Dropdown',
-  component: Dropdown,
+const meta: Meta<typeof Popover> = {
+  title: 'Components/Core/Navigation/Popover',
+  component: Popover,
 };
 
 export default meta;
-type Story = StoryObj<typeof Dropdown>;
+type Story = StoryObj<typeof Popover>;
 
 export const Base: Story = {
   render: () => {
-    const dropdownId = 'base';
+    const popoverId = 'base';
     return (
-      <Dropdown id={dropdownId} placement="bottom-start">
+      <Popover id={popoverId}>
         {({ toggle, ref, isOpened }) => (
           <Button
-            aria-controls={dropdownId}
+            aria-controls={popoverId}
             aria-expanded={isOpened}
             aria-haspopup={true}
             onClick={toggle}
@@ -27,26 +27,83 @@ export const Base: Story = {
             TriggerElement
           </Button>
         )}
-        <Dropdown.Panel>
+        <Popover.Panel padding="cmp-sm">
+          <Typography.Paragraph>
+            This is the content of the Popover.
+          </Typography.Paragraph>
+        </Popover.Panel>
+      </Popover>
+    );
+  },
+};
+
+export const WithArrow: Story = {
+  render: () => {
+    const popoverId = 'with-arrow';
+    return (
+      <Popover
+        id={popoverId}
+        arrow={({ placement }) => <Popover.Arrow placement={placement} />}
+      >
+        {({ toggle, ref, isOpened }) => (
+          <Button
+            aria-controls={popoverId}
+            aria-expanded={isOpened}
+            aria-haspopup={true}
+            onClick={toggle}
+            ref={ref}
+            state={isOpened ? 'expanded' : undefined}
+          >
+            TriggerElement
+          </Button>
+        )}
+        <Popover.Panel padding="cmp-sm">
+          <Typography.Paragraph>
+            This is the content of the Popover.
+          </Typography.Paragraph>
+        </Popover.Panel>
+      </Popover>
+    );
+  },
+};
+
+export const AsDropdownMenu: Story = {
+  render: () => {
+    const popoverId = 'base';
+    return (
+      <Popover id={popoverId} placement="bottom-start">
+        {({ toggle, ref, isOpened }) => (
+          <Button
+            aria-controls={popoverId}
+            aria-expanded={isOpened}
+            aria-haspopup={true}
+            onClick={toggle}
+            ref={ref}
+            state={isOpened ? 'expanded' : undefined}
+          >
+            TriggerElement
+          </Button>
+        )}
+        <Popover.Panel>
           <Menu>
             <Menu.Item label="Option 1" />
             <Menu.Item label="Option 2" />
             <Menu.Item label="Option 3" />
           </Menu>
-        </Dropdown.Panel>
-      </Dropdown>
+        </Popover.Panel>
+      </Popover>
     );
   },
 };
 
 export const OnHover: Story = {
   render: () => {
-    const dropdownId = 'on-hover';
+    const popoverId = 'on-hover';
     return (
-      <Dropdown appendTo={null} id={dropdownId} placement="bottom-start">
+      <Popover appendTo={null} id={popoverId} placement="bottom-start">
         {({ toggle, ref, isOpened, setOpened }) => (
           <Button
-            aria-controls={dropdownId}
+            aria-controls={popoverId}
             aria-expanded={isOpened}
             aria-haspopup={true}
             onClick={toggle}
@@ -58,26 +115,26 @@ export const OnHover: Story = {
             TriggerElement
           </Button>
         )}
-        <Dropdown.Panel>
+        <Popover.Panel>
           <Menu>
             <Menu.Item label="Option 1" />
             <Menu.Item label="Option 2" />
             <Menu.Item label="Option 3" />
           </Menu>
-        </Dropdown.Panel>
-      </Dropdown>
+        </Popover.Panel>
+      </Popover>
     );
   },
 };
 
 export const Nested: Story = {
   render: () => {
-    const dropdownId = 'nested';
+    const popoverId = 'nested';
     return (
-      <Dropdown id={dropdownId} placement="bottom-start">
+      <Popover id={popoverId} placement="bottom-start">
         {({ toggle, ref, isOpened }) => (
           <Button
-            aria-controls={dropdownId}
+            aria-controls={popoverId}
             aria-expanded={isOpened}
             aria-haspopup={true}
             onClick={toggle}
@@ -87,15 +144,15 @@ export const Nested: Story = {
             TriggerElement
           </Button>
         )}
-        <Dropdown.Panel>
+        <Popover.Panel>
           <Menu>
             <Menu.Item label="Option 1" />
             <Menu.Item label="Option 2" />
             <Menu.Item label="Option 3" />
-            <Dropdown id={`${dropdownId}-1`} appendTo={null}>
+            <Popover id={`${popoverId}-1`} appendTo={null}>
               {({ toggle, ref, isOpened }) => (
                 <Menu.Item
-                  aria-controls={`${dropdownId}-1`}
+                  aria-controls={`${popoverId}-1`}
                   aria-expanded={isOpened}
                   aria-haspopup={true}
                   expandable
@@ -105,15 +162,15 @@ export const Nested: Story = {
                   state={isOpened ? 'expanded' : undefined}
                 />
               )}
-              <Dropdown.Panel>
+              <Popover.Panel>
                 <Menu>
                   <Menu.Item label="Option 4.1" />
                   <Menu.Item label="Option 4.2" />
                   <Menu.Item label="Option 4.3" />
-                  <Dropdown id={`${dropdownId}-2`} appendTo={null}>
+                  <Popover id={`${popoverId}-2`} appendTo={null}>
                     {({ toggle, ref, isOpened }) => (
                       <Menu.Item
-                        aria-controls={`${dropdownId}-2`}
+                        aria-controls={`${popoverId}-2`}
                         aria-expanded={isOpened}
                         aria-haspopup={true}
                         expandable
@@ -123,32 +180,32 @@ export const Nested: Story = {
                         state={isOpened ? 'expanded' : undefined}
                       />
                     )}
-                    <Dropdown.Panel>
+                    <Popover.Panel>
                       <Menu>
                         <Menu.Item label="Option 4.3.1" />
                         <Menu.Item label="Option 4.3.3" />
                         <Menu.Item label="Option 4.3.2" />
                       </Menu>
-                    </Dropdown.Panel>
-                  </Dropdown>
+                    </Popover.Panel>
+                  </Popover>
                 </Menu>
-              </Dropdown.Panel>
-            </Dropdown>
+              </Popover.Panel>
+            </Popover>
           </Menu>
-        </Dropdown.Panel>
-      </Dropdown>
+        </Popover.Panel>
+      </Popover>
     );
   },
 };
 
 export const ComplexPanel: Story = {
   render: () => {
-    const dropdownId = 'complex-panel';
+    const popoverId = 'complex-panel';
     return (
-      <Dropdown id={dropdownId} placement="bottom-start">
+      <Popover id={popoverId} placement="bottom-start">
         {({ toggle, ref, isOpened }) => (
           <Button
-            aria-controls={dropdownId}
+            aria-controls={popoverId}
             aria-expanded={isOpened}
             aria-haspopup={true}
             onClick={toggle}
@@ -158,7 +215,7 @@ export const ComplexPanel: Story = {
             TriggerElement
           </Button>
         )}
-        <Dropdown.Panel width="28rem" padding="0">
+        <Popover.Panel width="28rem" padding="0">
           <Panel.Header bordered size="sm" title="Panel title" />
           <Panel.Body size="sm">
             <Typography.Paragraph>
@@ -172,8 +229,8 @@ export const ComplexPanel: Story = {
               <Menu.Item label="Option 3" />
             </Menu>
           </Panel.Body>
-        </Dropdown.Panel>
-      </Dropdown>
+        </Popover.Panel>
+      </Popover>
     );
   },
 };

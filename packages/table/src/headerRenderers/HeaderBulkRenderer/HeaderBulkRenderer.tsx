@@ -3,7 +3,7 @@ import * as React from 'react';
 import { GIAngleDown } from '@devoinc/genesys-icons';
 import {
   CheckboxControl,
-  Dropdown,
+  Popover,
   HFlex,
   IconButton,
 } from '@devoinc/genesys-ui';
@@ -21,7 +21,7 @@ export const HeaderBulkRenderer: React.FC<HeaderRendererProps> = ({
         ? true
         : true
       : false;
-  const dropdownId = `${colDef.id}-bulk-actions-menu`;
+  const popoverId = `${colDef.id}-bulk-actions-menu`;
   return (
     <HFlex spacing="cmp-xxs">
       <CheckboxControl
@@ -35,10 +35,10 @@ export const HeaderBulkRenderer: React.FC<HeaderRendererProps> = ({
         aria-label="Select all rows"
       />
       {(context?.headerBulkMenu ?? false) && (
-        <Dropdown id={dropdownId} placement="bottom-start">
+        <Popover id={popoverId} placement="bottom-start">
           {({ isOpened, toggle, ref }) => (
             <IconButton
-              aria-controls={dropdownId}
+              aria-controls={popoverId}
               aria-haspopup="true"
               aria-label="Open the bulk actions menu"
               aria-expanded={isOpened}
@@ -50,8 +50,8 @@ export const HeaderBulkRenderer: React.FC<HeaderRendererProps> = ({
               <GIAngleDown size="12" />
             </IconButton>
           )}
-          <Dropdown.Panel>{context.headerBulkMenu}</Dropdown.Panel>
-        </Dropdown>
+          <Popover.Panel>{context.headerBulkMenu}</Popover.Panel>
+        </Popover>
       )}
     </HFlex>
   );

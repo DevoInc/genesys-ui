@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Button, Dropdown, Flex, Menu } from '@devoinc/genesys-ui';
+import { Button, Flex, Menu, Popover } from '@devoinc/genesys-ui';
 
 import {
   BooleanRenderer,
@@ -52,6 +52,7 @@ const BulkExample = () => {
       bulkDisabled,
     });
 
+  const popoverId = 'bul-actions-menu-nested';
   return (
     <Flex flexDirection="column" gap="cmp-md">
       <Flex.Item>
@@ -91,9 +92,12 @@ const BulkExample = () => {
                       <Menu.Separator />
                       <Menu.Item>Dummy action 1</Menu.Item>
                       <Menu.Item>Dummy action 2</Menu.Item>
-                      <Dropdown placement="right-start" width={'200px'}>
+                      <Popover placement="right-start" id={popoverId}>
                         {({ toggle, ref, isOpened, setOpened }) => (
                           <Menu.Item
+                            aria-controls={popoverId}
+                            aria-haspopup="true"
+                            aria-expanded={isOpened}
                             ref={ref}
                             onClick={() => {
                               setOpened(true);
@@ -103,28 +107,31 @@ const BulkExample = () => {
                               setOpened(true);
                             }}
                             expandable
-                            state={isOpened ? 'expanded' : 'enabled'}
+                            state={isOpened ? 'expanded' : undefined}
                           >
                             Danger actions
                           </Menu.Item>
                         )}
-                        <Menu>
-                          <Menu.Item>Dummy action 1</Menu.Item>
-                          <Menu.Item>Dummy action 2</Menu.Item>
-                          <Menu.Item
-                            onClick={() => {
-                              setData((prev) =>
-                                prev.filter(
-                                  (_, index) => !bulkSelection.includes(index),
-                                ),
-                              );
-                              clear();
-                            }}
-                          >
-                            Remove row(s)
-                          </Menu.Item>
-                        </Menu>
-                      </Dropdown>
+                        <Popover.Panel>
+                          <Menu>
+                            <Menu.Item>Dummy action 1</Menu.Item>
+                            <Menu.Item>Dummy action 2</Menu.Item>
+                            <Menu.Item
+                              onClick={() => {
+                                setData((prev) =>
+                                  prev.filter(
+                                    (_, index) =>
+                                      !bulkSelection.includes(index),
+                                  ),
+                                );
+                                clear();
+                              }}
+                            >
+                              Remove row(s)
+                            </Menu.Item>
+                          </Menu>
+                        </Popover.Panel>
+                      </Popover>
                     </Menu>
                   ) : undefined,
                 bulkSelection,

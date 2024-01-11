@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Holo } from '@devoinc/holo';
-import { Button, Dropdown, Menu } from '@devoinc/genesys-ui';
+import { Button, Menu, Popover } from '@devoinc/genesys-ui';
 import { GIEyeViewFilled, GIPencilEdit } from '@devoinc/genesys-icons';
 
 import { ActionContext, BasicTable } from '../src';
@@ -41,7 +41,7 @@ export const Base: Story = {
         headerName: 'Menu',
         cellRenderer: ({ colDef }) => {
           return (
-            <Dropdown>
+            <Popover id="custom-col-menu">
               {({ toggle, ref, isOpened }) => (
                 <Button
                   aria-expanded={isOpened}
@@ -52,15 +52,17 @@ export const Base: Story = {
                   Actions
                 </Button>
               )}
-              <Menu>
-                <Menu.Item
-                  label="Option 1"
-                  onClick={() => {
-                    console.log(colDef);
-                  }}
-                />
-              </Menu>
-            </Dropdown>
+              <Popover.Panel>
+                <Menu>
+                  <Menu.Item
+                    label="Option 1"
+                    onClick={() => {
+                      console.log(colDef);
+                    }}
+                  />
+                </Menu>
+              </Popover.Panel>
+            </Popover>
           );
         },
       },

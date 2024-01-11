@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { GIAngleDown } from '@devoinc/genesys-icons';
-import { Dropdown, HFlex, IconButton, Menu } from '@devoinc/genesys-ui';
+import { Popover, HFlex, IconButton, Menu } from '@devoinc/genesys-ui';
 
 import { CellRendererProps } from '../declarations';
 import { ActionContext } from '../../facade';
@@ -12,7 +12,7 @@ export const ActionRenderer: React.FC<CellRendererProps> = ({
   rowIndex,
 }) => {
   const context = colDef?.context as ActionContext;
-  const dropdownId = `${colDef.id}-actions-menu-${rowIndex}`;
+  const popoverId = `${colDef.id}-actions-menu-${rowIndex}`;
   return (
     <HFlex spacing="cmp-xxs" alignItems="end">
       {(context?.quickActions ?? []).map(({ Icon, onClick }, idx) => (
@@ -29,10 +29,10 @@ export const ActionRenderer: React.FC<CellRendererProps> = ({
         </IconButton>
       ))}
       {context?.actionMenu ? (
-        <Dropdown id={dropdownId} placement="bottom-end">
+        <Popover id={popoverId} placement="bottom-end">
           {({ isOpened, toggle, ref }) => (
             <IconButton
-              aria-controls={dropdownId}
+              aria-controls={popoverId}
               aria-haspopup="true"
               aria-label="Open the bulk actions menu"
               aria-expanded={isOpened}
@@ -44,7 +44,7 @@ export const ActionRenderer: React.FC<CellRendererProps> = ({
               <GIAngleDown size="12" />
             </IconButton>
           )}
-          <Dropdown.Panel>
+          <Popover.Panel>
             <Menu>
               {context.actionMenu.map((entry, idx) => (
                 <MenuEntry
@@ -55,8 +55,8 @@ export const ActionRenderer: React.FC<CellRendererProps> = ({
                 />
               ))}
             </Menu>
-          </Dropdown.Panel>
-        </Dropdown>
+          </Popover.Panel>
+        </Popover>
       ) : null}
     </HFlex>
   );
