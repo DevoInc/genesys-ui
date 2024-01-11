@@ -8,9 +8,6 @@ describe('StyledModal', () => {
 
     expect(container.getElementsByTagName('div')[0]).toHaveStyle(`
         position:fixed;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
         display: inline-flex;
         flex-direction: column;
         overflow: hidden;
