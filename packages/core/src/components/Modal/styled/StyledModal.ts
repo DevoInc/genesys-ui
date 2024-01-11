@@ -24,22 +24,21 @@ export interface StyledModalProps {
   windowSize?: WindowSize;
   /** Status of the modal */
   status?: GlobalStatus;
+  /** z-index of the modal */
+  zIndex?: number;
 }
 
 export const StyledModal = styled.div<StyledModalProps>`
-  ${({ theme, height, width, windowSize, status }) => {
+  ${({ theme, height, width, windowSize, status, zIndex }) => {
     const tokensDialog = theme.cmp.dialog;
     const tokensModal = theme.cmp.modal;
 
     return css`
-      position: fixed;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+      ${elevationMixin(theme)('overlay')};
       display: inline-flex;
       flex-direction: column;
+      z-index: ${zIndex};
       overflow: hidden;
-      ${elevationMixin(theme)('overlay')};
       background-color: ${tokensModal.color.background};
 
       &:focus {
