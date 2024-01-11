@@ -117,7 +117,7 @@ export const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
       if (Boolean(children) && hasExtraLeftSpace) return true;
       return (
         (hasExtraLeftSpace || Boolean(icon) || isSelectable) &&
-        !Boolean(children)
+        !children
       );
     };
     const isLabelString = typeof label === 'string';

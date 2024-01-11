@@ -76,7 +76,7 @@ export const getIcon = ({
   if (icon) return icon;
   const iconMap =
     type === 'circular' ? STATUS_ICON_CIRCULAR_MAP : STATUS_ICON_MAP;
-  if (getStatus({ percent, status }) === 'complete') return iconMap['complete'];
+  if (getStatus({ percent, status }) === 'complete') return iconMap.complete;
   return iconMap[status] || null;
 };
 

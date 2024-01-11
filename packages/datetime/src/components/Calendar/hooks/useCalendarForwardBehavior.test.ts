@@ -12,8 +12,8 @@ describe('useCalendarForwardBehavior', () => {
     );
     expect(result.current.selectedDates.from).toEqual(from);
     expect(result.current.selectedDates.to).toEqual(to);
-    expect(result.current.hasLeftHoverEffect).toEqual(false);
-    expect(result.current.hasRightHoverEffect).toEqual(true);
+    expect(result.current.hasLeftHoverEffect).toBe(false);
+    expect(result.current.hasRightHoverEffect).toBe(true);
 
     const nextDate = new Date(2022, 8, 11).getTime();
 
@@ -34,8 +34,8 @@ describe('useCalendarForwardBehavior', () => {
     );
     expect(result.current.selectedDates.from).toEqual(from);
     expect(result.current.selectedDates.to).toEqual(to);
-    expect(result.current.hasLeftHoverEffect).toEqual(false);
-    expect(result.current.hasRightHoverEffect).toEqual(true);
+    expect(result.current.hasLeftHoverEffect).toBe(false);
+    expect(result.current.hasRightHoverEffect).toBe(true);
 
     const nextDate = new Date(2022, 8, 5).getTime();
 
@@ -56,8 +56,8 @@ describe('useCalendarForwardBehavior', () => {
     );
     expect(result.current.selectedDates.from).toEqual(from);
     expect(result.current.selectedDates.to).toEqual(to);
-    expect(result.current.hasLeftHoverEffect).toEqual(false);
-    expect(result.current.hasRightHoverEffect).toEqual(true);
+    expect(result.current.hasLeftHoverEffect).toBe(false);
+    expect(result.current.hasRightHoverEffect).toBe(true);
 
     const nextDate = new Date(2022, 7, 5).getTime();
 
@@ -66,15 +66,15 @@ describe('useCalendarForwardBehavior', () => {
     });
 
     expect(result.current.selectedDates.from).toEqual(nextDate);
-    expect(result.current.selectedDates.to).toEqual(null);
+    expect(result.current.selectedDates.to).toBeNull();
   });
 
   test('without dates', () => {
     const { result } = renderHook(() => useCalendarForwardBehavior({}));
-    expect(result.current.selectedDates.from).toEqual(null);
-    expect(result.current.selectedDates.to).toEqual(null);
-    expect(result.current.hasLeftHoverEffect).toEqual(false);
-    expect(result.current.hasRightHoverEffect).toEqual(true);
+    expect(result.current.selectedDates.from).toBeNull();
+    expect(result.current.selectedDates.to).toBeNull();
+    expect(result.current.hasLeftHoverEffect).toBe(false);
+    expect(result.current.hasRightHoverEffect).toBe(true);
 
     const nextDate = new Date(2022, 7, 5).getTime();
 
@@ -83,6 +83,6 @@ describe('useCalendarForwardBehavior', () => {
     });
 
     expect(result.current.selectedDates.from).toEqual(nextDate);
-    expect(result.current.selectedDates.to).toEqual(null);
+    expect(result.current.selectedDates.to).toBeNull();
   });
 });

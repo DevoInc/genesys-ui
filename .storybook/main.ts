@@ -9,8 +9,6 @@ const config: StorybookConfig = {
     '../packages/*/src/**/*.mdx',
     '../packages/*/stories/**/*.stories.@(ts|tsx)',
     '../packages/*/stories/**/*.mdx',
-    // TODO: configure SB to serve these HTML files, too:
-    // '../packages/**/depcruise.html',
   ],
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
