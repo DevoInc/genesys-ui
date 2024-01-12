@@ -1,5 +1,34 @@
 # Changelog
 
+## [3.0.0](https://github.com/DevoInc/genesys-ui/compare/v2.4.0...v3.0.0) (2024-01-12)
+
+
+### Features
+
+* Adapted Table blocks to new Dropdown component and its accessibility requirements. ([85ba241](https://github.com/DevoInc/genesys-ui/commit/85ba24137695822e71b33f6b37135043984df5f7))
+* adapted Table Dropdowns to new definition of the component ([8d63f5b](https://github.com/DevoInc/genesys-ui/commit/8d63f5b3ebebd4070d2f8bf3c0df91be7c9de23c))
+* add sortable condtion columns ([0fe708f](https://github.com/DevoInc/genesys-ui/commit/0fe708f40c5e192ad576e007400def72cf258dd0))
+* added ActionRenderer and docs ([3d08d26](https://github.com/DevoInc/genesys-ui/commit/3d08d26f06aea6c4d77717617c948e85d9bed1f1))
+* bulk actions example ([56890cc](https://github.com/DevoInc/genesys-ui/commit/56890cc425bde54acc4d2f05b74c1e1abdba4070))
+* **Datetime:** QUV-1987 Added new DateTimePicker version (docked) ([65bacf3](https://github.com/DevoInc/genesys-ui/commit/65bacf34c26751010f1f950dc82576d8862bc234))
+* **Datetime:** QUV-1987 Renamed DateTimePicker to DateTimeFloatingPicker ([acd0e79](https://github.com/DevoInc/genesys-ui/commit/acd0e79170b9e8fa24c30682246e8ef3db7ef2fd))
+* **DateTimeRangePicker:** QUV-1220 Fixed styles for Presets block and other adjustments. ([aa254cf](https://github.com/DevoInc/genesys-ui/commit/aa254cf02160a5349bd4b5a830ce219df2d71550))
+* **Dropdown:** New structure and internal components. Improvements for documentation. ([58ec889](https://github.com/DevoInc/genesys-ui/commit/58ec889b4b7b407824b362623df9868416162b70))
+* new name for component from Dropdown to Popover. ([cabca30](https://github.com/DevoInc/genesys-ui/commit/cabca302d5ad6b559b37e928fbcfc652884e2c32))
+* **Table:** QUV-1941 Fixed date cell editor behavior ([6a0b0ba](https://github.com/DevoInc/genesys-ui/commit/6a0b0ba1cf189bf3a5da85449f00cd7f86642d1b))
+* **Table:** QUV-1990 Improved styles and structure of OrderIndicator table component. ([7a07fa2](https://github.com/DevoInc/genesys-ui/commit/7a07fa29d40a87c492ffc4e2fa2fd22172f30a58))
+
+
+### Bug Fixes
+
+* defined default prop value ([0a20200](https://github.com/DevoInc/genesys-ui/commit/0a2020099142f86958efd362216e46e331d74758))
+* fixed StyledModal test ([380ba7d](https://github.com/DevoInc/genesys-ui/commit/380ba7d423fb093cd223a6631c1727a538f29473))
+* Lint ([8da01aa](https://github.com/DevoInc/genesys-ui/commit/8da01aa86303ae9cf936952f411d313f0d38d2b6))
+* modal styles and interface ([9a61b92](https://github.com/DevoInc/genesys-ui/commit/9a61b92f6315b15d27a69c718a5649341cf31930))
+* **Modal:** fixed z-index for overlay and avoided blur effect due to css translate. ([0d59747](https://github.com/DevoInc/genesys-ui/commit/0d597478af5bfed9dd5c0208157184ad5650af0c))
+* **StyledModal:** Test case ([30c379b](https://github.com/DevoInc/genesys-ui/commit/30c379b91cb3bb6229b8f6cc7fe51d9612573e3a))
+* **Table:** Type errors ([12e6de8](https://github.com/DevoInc/genesys-ui/commit/12e6de802837e1275811cf92e27b481923d2713c))
+
 ## [2.4.0](https://github.com/DevoInc/genesys-ui/compare/v2.3.0...v2.4.0) (2024-01-03)
 
 
