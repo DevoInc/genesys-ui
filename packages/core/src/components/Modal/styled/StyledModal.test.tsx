@@ -7,7 +7,6 @@ describe('StyledModal', () => {
     const { container } = render(<StyledModal />);
 
     expect(container.getElementsByTagName('div')[0]).toHaveStyle(`
-        position:fixed;
         display: inline-flex;
         flex-direction: column;
         overflow: hidden;
