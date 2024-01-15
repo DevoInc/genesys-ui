@@ -2,7 +2,7 @@ import { css, DefaultTheme } from 'styled-components';
 
 import { imgResponsiveMixin } from '../../../../styled';
 
-export interface inlineMessagePanelMixinProps {
+export interface InlineMessagePanelMixinProps {
   hasScroll?: boolean;
   theme: DefaultTheme;
 }
@@ -10,7 +10,7 @@ export interface inlineMessagePanelMixinProps {
 export const inlineMessagePanelHeaderMixin = ({
   hasScroll = false,
   theme,
-}: inlineMessagePanelMixinProps) => {
+}: InlineMessagePanelMixinProps) => {
   const tokens = theme.cmp.inlineMessage;
 
   return css`
@@ -23,7 +23,7 @@ export const inlineMessagePanelHeaderMixin = ({
 export const inlineMessagePanelBodyMixin = ({
   hasScroll = false,
   theme,
-}: inlineMessagePanelMixinProps) => {
+}: InlineMessagePanelMixinProps) => {
   const tokens = theme.cmp.inlineMessage;
 
   return css`
@@ -35,18 +35,5 @@ export const inlineMessagePanelBodyMixin = ({
       ${imgResponsiveMixin};
       margin-bottom: ${tokens.contentImg.space.marginBottom};
     }
-  `;
-};
-
-export const inlineMessagePanelFooterMixin = ({
-  hasScroll = false,
-  theme,
-}: inlineMessagePanelMixinProps) => {
-  const tokens = theme.cmp.inlineMessage;
-
-  return css`
-    padding: ${tokens.footer.space.padding[
-      hasScroll ? 'hasScroll' : 'noHasScroll'
-    ]};
   `;
 };

@@ -1,1 +1,1 @@
-export const POPOVER_ARROW_SIZE: string = '1rem';
+export const POPOVER_DEFAULT_ARROW_SIZE: number = 10;

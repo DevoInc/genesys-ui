@@ -9,37 +9,46 @@ import * as CaseStories from './InlineMessage.cases.stories';
 
 ## Overview
 
-Component designed to position a container in relation to a trigger. It uses the Popper component under the hood.
+Component designed to position a container in relation to a trigger.
+It uses the [Popover component](?path=/docs/components-core-navigation-popover--docs) under the hood.
 
-## How to import
-
-<Source
-  code={`
-import { InlineMessage } from '@devoinc/genesys-ui';
-`}
-/>
-
-## Basic usage
-
-The most frequent use of the InlineMessage component is to include an `InlineMessage.Panel` as a child.
+It's usually used to display contextual floating help and status info, without reducing
+the amount of screen space.
 
 <Canvas of={Stories.Base} />
 
-## Cases
+## How to import
 
-### With content
+<Source code={`import { InlineMessage } from '@devoinc/genesys-ui';`} />
 
-<Canvas of={CaseStories.WithContent} />
+## Basic usage
+
+The `InlineMessage` component must have one children component which will be the floating content to be displayed by a trigger.
+
+This trigger is an `IconButtonStatus` by default, and it can be modified using the `trigger` prop,
+even adding some text to the default icon button.
+
+<Source of={Stories.Base} />
+
+## InlineMessage.Panel
+
+One of the most frequent use of the InlineMessage component is to include an `InlineMessage.Panel` as a child.
+This component uses `Panel` components as base, but adding some styles and default prop values.
+
+<Source of={CaseStories.WithPanel} />
 
 ### Custom trigger
 
-<Canvas of={CaseStories.CustomTriggerIcon} />
+The default trigger is an `IconButtonStatus` but you can define a custom one by the `trigger.Component` prop.
+
+<Source of={CaseStories.CustomTrigger} />
 
 ### Banner
 
 Another atypical use of the InlineMessage component is to include an `InlineMessage.Banner` as a child.
+This is a case with docked banners as the content of the InlineMessage.
 
-<Canvas of={CaseStories.Banner} />
+<Source of={CaseStories.Banner} />
 
 ## Props
 

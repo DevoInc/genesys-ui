@@ -25,12 +25,11 @@ const meta: Meta<typeof InlineMessage> = {
 export default meta;
 type Story = StoryObj<typeof InlineMessage>;
 
-export const WithContent: Story = {
-  render: (args) =>
-    ((args) => {
-      const [visible, setVisible] = React.useState(false);
-      return (
-        <InlineMessage visible={visible} setVisible={setVisible} {...args}>
+export const WithPanel: Story = {
+  render: () => {
+    return (
+      <InlineMessage id="with-panel">
+        {({ setOpened }) => (
           <InlineMessage.Panel
             actions={[
               <Button
@@ -38,7 +37,7 @@ export const WithContent: Story = {
                 key="btn-1"
                 onClick={() => {
                   alert('Cancel');
-                  setVisible(false);
+                  setOpened(false);
                 }}
               >
                 Cancel
@@ -48,15 +47,14 @@ export const WithContent: Story = {
                 key="btn-2"
                 onClick={() => {
                   alert('Apply');
-                  setVisible(false);
+                  setOpened(false);
                 }}
               >
                 Apply
               </Button>,
             ]}
-            onClose={() => setVisible(false)}
+            onClose={() => setOpened(false)}
             title="This is a title"
-            {...args}
           >
             {inlineMessageContentFS}
             <Box marginTop="cmp-md">
@@ -64,95 +62,118 @@ export const WithContent: Story = {
                 colorScheme={'accent'}
                 onClick={() => {
                   alert('Hello world!');
-                  setVisible(false);
+                  setOpened(false);
                 }}
                 wide
               />
             </Box>
           </InlineMessage.Panel>
-        </InlineMessage>
-      );
-    })(args),
+        )}
+      </InlineMessage>
+    );
+  },
 };
 
-export const CustomTriggerIcon: Story = {
+export const TriggerWithText: Story = {
+  name: 'Default trigger with text',
   render: (args) =>
     ((args) => {
-      const [visible, setVisible] = React.useState(false);
       return (
         <InlineMessage
           {...args}
-          visible={visible}
-          setVisible={setVisible}
           trigger={{
             icon: 'gi-rocket_space_nasa',
             text: 'Text',
             secondaryText: 'secondary text',
           }}
         >
-          <InlineMessage.Panel onClose={() => setVisible(false)}>
-            <Typography.Paragraph>{lorem}</Typography.Paragraph>
-          </InlineMessage.Panel>
+          {({ setOpened }) => (
+            <InlineMessage.Panel
+              onClose={() => setOpened(false)}
+              title="Inline message heading"
+            >
+              <Typography.Paragraph>{lorem}</Typography.Paragraph>
+            </InlineMessage.Panel>
+          )}
         </InlineMessage>
       );
     })(args),
 };
 
+export const CustomTrigger: Story = {
+  render: () => {
+    return (
+      <InlineMessage
+        id="custom-trigger"
+        status="error"
+        trigger={{
+          Component: <Button colorScheme="error">Custom trigger</Button>,
+        }}
+      >
+        {({ setOpened }) => (
+          <InlineMessage.Panel
+            onClose={() => setOpened(false)}
+            title="Inline message heading"
+          >
+            <Typography.Paragraph>{lorem}</Typography.Paragraph>
+          </InlineMessage.Panel>
+        )}
+      </InlineMessage>
+    );
+  },
+};
+
 export const Banner: Story = {
   render: (args) =>
     ((args) => {
-      const [visible, setVisible] = React.useState(false);
       return (
-        <InlineMessage
-          {...args}
-          visible={visible}
-          setVisible={setVisible}
-          status={args.status}
-        >
-          <Box
-            maxWidth="40rem"
-            minWidth="30rem"
-            maxHeight="30rem"
-            overflowY={'auto'}
-          >
-            <InlineMessage.Banner
-              actions={[
-                <Button
-                  key="BannerAction-1"
-                  onClick={() => {
-                    alert('Apply');
-                    setVisible(false);
-                  }}
-                >
-                  Apply
-                </Button>,
-              ]}
-              content={lorem}
-              title="Pupita ut nostrud hasta luego Lucas"
-              {...args}
-            />
-            <InlineMessage.Banner
-              content={lorem2}
-              title="Condemor occaecat elit consectetur de la pradera"
-              {...args}
-            />
-            <InlineMessage.Banner
-              actions={[
-                <Button
-                  key="BannerAction-1"
-                  onClick={() => {
-                    alert('Apply');
-                    setVisible(false);
-                  }}
-                >
-                  Apply
-                </Button>,
-              ]}
-              content={lorem3}
-              title="Esta la cosa muy malar esta la cosa muy malar"
-              {...args}
-            />
-          </Box>
+        <InlineMessage {...args} status={args.status}>
+          {({ setOpened }) => (
+            <Box
+              maxWidth="40rem"
+              minWidth="30rem"
+              maxHeight="30rem"
+              overflowY={'auto'}
+            >
+              <InlineMessage.Banner
+                actions={[
+                  <Button
+                    key="BannerAction-1"
+                    onClick={() => {
+                      alert('Apply');
+                      setOpened(false);
+                    }}
+                  >
+                    Apply
+                  </Button>,
+                ]}
+                content={lorem}
+                title="Banner one"
+                {...args}
+              />
+              <InlineMessage.Banner
+                content={lorem2}
+                title="Banner two"
+                {...args}
+              />
+              <InlineMessage.Banner
+                actions={[
+                  <Button
+                    key="BannerAction-1"
+                    onClick={() => {
+                      alert('Apply');
+                      setOpened(false);
+                    }}
+                  >
+                    Apply
+                  </Button>,
+                ]}
+                content={lorem3}
+                title="Banner three"
+                {...args}
+              />
+            </Box>
+          )}
         </InlineMessage>
       );
     })(args),

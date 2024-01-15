@@ -29,13 +29,8 @@ export const buttonGroupMixin = ({
   visibilityTrigger,
 }: ButtonGroupMixinProps) => {
   return css`
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
     opacity: ${hidden ? '0' : null};
     transition: all ease ${theme.cmp.button.mutation.transitionDuration};
-    padding: 0;
     list-style: none;
 
     // If visibility trigger then the actions only are visible if this one is

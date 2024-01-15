@@ -24,6 +24,7 @@ export const panelContainerMixin = ({
   theme,
 }: PanelContainerMixinProps) => {
   const aliasTokens = theme.alias;
+  // TODO: Add border-color token to Panel component QUV-2018
   const borderColor = aliasTokens.color.border.surface.base.weak;
   const borderWidth = aliasTokens.shape.borderSize.panel.base;
   const panelTokens = theme.cmp.panel;

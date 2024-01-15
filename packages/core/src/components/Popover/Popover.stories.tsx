@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Button, Popover, Menu, Panel, Typography } from '../../components';
+import {
+  Button,
+  Popover,
+  Menu,
+  Panel,
+  Typography,
+  ButtonGroup,
+} from '../../components';
 
 const meta: Meta<typeof Popover> = {
   title: 'Components/Core/Navigation/Popover',
@@ -38,12 +45,17 @@ export const Base: Story = {
 };
 
 export const WithArrow: Story = {
+  name: 'With arrow',
   render: () => {
     const popoverId = 'with-arrow';
     return (
       <Popover
         id={popoverId}
-        arrow={({ placement }) => <Popover.Arrow placement={placement} />}
+        arrowConfig={{
+          component: ({ placement, size }) => (
+            <Popover.Arrow placement={placement} size={size} />
+          ),
+        }}
       >
         {({ toggle, ref, isOpened }) => (
           <Button
@@ -59,7 +71,9 @@ export const WithArrow: Story = {
         )}
         <Popover.Panel padding="cmp-sm">
           <Typography.Paragraph>
-            This is the content of the Popover.
+            Explorations from which we spring citizens of distant epochs hearts
+            of the stars something incredible is waiting to be known paroxysm of
+            global death.
           </Typography.Paragraph>
         </Popover.Panel>
       </Popover>
@@ -68,6 +82,7 @@ export const WithArrow: Story = {
 };
 
 export const AsDropdownMenu: Story = {
+  name: 'As dropdown menu',
   render: () => {
     const popoverId = 'base';
     return (
@@ -95,38 +110,6 @@ export const AsDropdownMenu: Story = {
     );
   },
 };
-
-export const OnHover: Story = {
-  render: () => {
-    const popoverId = 'on-hover';
-    return (
-      <Popover appendTo={null} id={popoverId} placement="bottom-start">
-        {({ toggle, ref, isOpened, setOpened }) => (
-          <Button
-            aria-controls={popoverId}
-            aria-expanded={isOpened}
-            aria-haspopup={true}
-            onClick={toggle}
-            onMouseOver={() => setOpened(true)}
-            onMouseLeave={() => setOpened(false)}
-            ref={ref}
-            state={isOpened ? 'expanded' : undefined}
-          >
-            TriggerElement
-          </Button>
-        )}
-        <Popover.Panel>
-          <Menu>
-            <Menu.Item label="Option 1" />
-            <Menu.Item label="Option 2" />
-            <Menu.Item label="Option 3" />
-          </Menu>
-        </Popover.Panel>
-      </Popover>
-    );
-  },
-};
-
 export const Nested: Story = {
   render: () => {
     const popoverId = 'nested';
@@ -149,7 +132,18 @@ export const Nested: Story = {
             <Menu.Item label="Option 1" />
             <Menu.Item label="Option 2" />
             <Menu.Item label="Option 3" />
-            <Popover id={`${popoverId}-1`} appendTo={null}>
+            <Popover
+              id={`${popoverId}-1`}
+              appendTo={null}
+              modifiers={[
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 4],
+                  },
+                },
+              ]}
+            >
               {({ toggle, ref, isOpened }) => (
                 <Menu.Item
                   aria-controls={`${popoverId}-1`}
@@ -167,7 +161,18 @@ export const Nested: Story = {
                   <Menu.Item label="Option 4.1" />
                   <Menu.Item label="Option 4.2" />
                   <Menu.Item label="Option 4.3" />
-                  <Popover id={`${popoverId}-2`} appendTo={null}>
+                  <Popover
+                    id={`${popoverId}-2`}
+                    appendTo={null}
+                    modifiers={[
+                      {
+                        name: 'offset',
+                        options: {
+                          offset: [0, 4],
+                        },
+                      },
+                    ]}
+                  >
                     {({ toggle, ref, isOpened }) => (
                       <Menu.Item
                         aria-controls={`${popoverId}-2`}
@@ -198,7 +203,90 @@ export const Nested: Story = {
   },
 };
 
+export const AccessToStateFromContent: Story = {
+  name: 'Access to state from content',
+  render: () => {
+    const popoverId = 'access-to-state';
+    return (
+      <Popover id={popoverId}>
+        {({ toggle, ref, isOpened }) => (
+          <Button
+            aria-controls={popoverId}
+            aria-expanded={isOpened}
+            aria-haspopup={true}
+            onClick={toggle}
+            ref={ref}
+            state={isOpened ? 'expanded' : undefined}
+          >
+            TriggerElement
+          </Button>
+        )}
+        {({ setOpened }) => (
+          <Popover.Panel padding="cmp-sm">
+            <Typography.Paragraph>
+              This is the content of the Popover.
+            </Typography.Paragraph>
+            <ButtonGroup justifyContent="flex-end">
+              <Button
+                colorScheme="quiet"
+                onClick={() => {
+                  alert('Cancel!');
+                  setOpened(false);
+                }}
+              >
+                Cancel
+              </Button>
+              <Button
+                colorScheme="accent"
+                onClick={() => {
+                  alert('Apply!');
+                  setOpened(false);
+                }}
+              >
+                Apply
+              </Button>
+            </ButtonGroup>
+          </Popover.Panel>
+        )}
+      </Popover>
+    );
+  },
+};
+
+export const OnHover: Story = {
+  name: 'On hover',
+  render: () => {
+    const popoverId = 'on-hover';
+    return (
+      <Popover appendTo={null} id={popoverId} placement="bottom-start">
+        {({ toggle, ref, isOpened, setOpened }) => (
+          <Button
+            aria-controls={popoverId}
+            aria-expanded={isOpened}
+            aria-haspopup={true}
+            onClick={toggle}
+            onMouseOver={() => setOpened(true)}
+            onMouseLeave={() => setOpened(false)}
+            ref={ref}
+            state={isOpened ? 'expanded' : undefined}
+          >
+            TriggerElement
+          </Button>
+        )}
+        <Popover.Panel>
+          <Menu>
+            <Menu.Item label="Option 1" />
+            <Menu.Item label="Option 2" />
+            <Menu.Item label="Option 3" />
+          </Menu>
+        </Popover.Panel>
+      </Popover>
+    );
+  },
+};
+
 export const ComplexPanel: Story = {
+  name: 'Complex panel',
   render: () => {
     const popoverId = 'complex-panel';
     return (
@@ -230,6 +318,41 @@ export const ComplexPanel: Story = {
             </Menu>
           </Panel.Body>
         </Popover.Panel>
+      </Popover>
+    );
+  },
+};
+
+export const DisabledOutsideEvent: Story = {
+  name: 'Disabled outside event',
+  render: () => {
+    const popoverId = 'disabled-click';
+    return (
+      <Popover id={popoverId} disableOutsideEvent>
+        {({ toggle, ref, isOpened }) => (
+          <Button
+            aria-controls={popoverId}
+            aria-expanded={isOpened}
+            aria-haspopup={true}
+            onClick={toggle}
+            ref={ref}
+            state={isOpened ? 'expanded' : undefined}
+          >
+            TriggerElement
+          </Button>
+        )}
+        {({ setOpened }) => (
+          <Popover.Panel padding="cmp-sm">
+            <Typography.Paragraph>
+              This is the content of the Popover.
+            </Typography.Paragraph>
+            <ButtonGroup justifyContent="flex-end">
+              <Button onClick={() => setOpened(false)}>
+                Close the Popover
+              </Button>
+            </ButtonGroup>
+          </Popover.Panel>
+        )}
       </Popover>
     );
   },

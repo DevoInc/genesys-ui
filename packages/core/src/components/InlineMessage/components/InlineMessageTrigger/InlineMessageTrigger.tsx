@@ -10,6 +10,7 @@ import {
   GlobalAttrProps,
   TextBoxAriaProps,
   TriggerAriaProps,
+  TriggerEventAttrProps,
 } from '../../../../';
 import {
   inlineMessageTriggerMixin,
@@ -25,7 +26,7 @@ export interface InlineMessageTriggerProps
       'aria-expanded' | 'aria-controls' | 'aria-haspopup'
     > {
   icon?: string;
-  onClick?: () => void;
+  onClick?: TriggerEventAttrProps['onClick'];
   size?: ButtonSize;
   state: ButtonExpandableState;
   status?: IconButtonStatusProps['colorScheme'];
@@ -42,6 +43,8 @@ export const InlineMessageTrigger = React.forwardRef<
   (
     {
       'aria-controls': ariaControls,
+      'aria-expanded': ariaExpanded,
+      'aria-haspopup': ariaHasPopup,
       'aria-activedescendant': ariaActiveDescendant,
       icon,
       id,
@@ -58,10 +61,13 @@ export const InlineMessageTrigger = React.forwardRef<
   ) => {
     const TriggerCmp = useAddPropsToChildren(Trigger, {
       'aria-controls': ariaControls,
+      'aria-expanded': ariaExpanded,
+      'aria-haspopup': ariaHasPopup,
       id,
       onClick: onClick,
       ref: ref,
       size: size,
+      state,
       tooltip,
       type: 'button',
     });
@@ -71,6 +77,8 @@ export const InlineMessageTrigger = React.forwardRef<
         <Button
           aria-activedescendant={ariaActiveDescendant}
           aria-controls={ariaControls}
+          aria-expanded={ariaExpanded}
+          aria-haspopup={ariaHasPopup}
           id={id}
           onClick={onClick}
           ref={ref}
@@ -107,7 +115,7 @@ export const InlineMessageTrigger = React.forwardRef<
               gutterBottom="0"
               truncateLine={1}
               size={size}
-              styles={inlineMessageTriggerParagraphMixin({ state })}
+              styles={inlineMessageTriggerParagraphMixin({ last: true, state })}
             >
               {secondaryText}
             </Typography.Paragraph>
@@ -116,13 +124,15 @@ export const InlineMessageTrigger = React.forwardRef<
       );
     }
 
-    {
-      Trigger && TriggerCmp;
+    if (Trigger) {
+      return TriggerCmp;
     }
 
     return (
       <IconButtonStatus
         aria-controls={ariaControls}
+        aria-expanded={ariaExpanded}
+        aria-haspopup={ariaHasPopup}
         colorScheme={status}
         icon={icon}
         id={id}

@@ -11,7 +11,7 @@ import * as Stories from './Popover.stories';
 This Popover component allows users to expand hidden contents using a trigger,
 usually a button, link or menu item.
 
-A Popover menu variant is a typical way of using this kind of component,
+A dropdown menu variant is a typical way of using this kind of component,
 which allows users to select an option from a drop-down menu list.
 
 This component is valuable in web applications to enhance usability by
@@ -45,121 +45,55 @@ indicating when it's opened.
 - `setOpened`: function to force display or hide the Popover floating content.
 - `isOpened`: a boolean indicating if the Popover floating content is open.
 
-<Source
-  code={`
-import * as React from 'react';
-import { Button, Popover, Menu } from '@devoinc/genesys-ui';
-export const MyPopover = () =>
-  <Popover placement="bottom-start" id="basic-usage">
-    {({ toggle, ref, isOpened, setOpened }) => (
-      <Button
-        aria-controls="basic-usage"
-        aria-expanded={isOpened}
-        aria-haspopup={true}
-        onClick={toggle}
-        onMouseOver={() => setOpened(true)}
-        ref={ref}
-        state={isOpened ? 'expanded' : undefined}
-      >
-        TriggerElement
-      </Button>
-    )}
-    <Popover.Panel>
-      <Menu>
-        <Menu.Item label="Option 1" />
-        <Menu.Item label="Option 2" />
-        <Menu.Item label="Option 3" />
-      </Menu>
-    </Popover.Panel>
-  </Popover>
-`}
-/>
+<Source of={Stories.Base} />
 
 ## Nested Popover
 
 `Popover` component allows the creation of hierarchical structures,
 where one Popover can contain other Popovers as selectable options.
 
+You should add a `offset` modifier to each nested Popover equal to the
+`Popover.Panel` padding, so the panel will be rendered at the end
+of the content instead of at the end of the trigger.
+
 **IMPORTANT:** to avoid the parent being closed when a nested one is clicked
 due to problems with the `ref`, we have to define `appendTo={null}`
 in the nested popovers. This way, the first parent container will be appended
 by default to the end of the `body`, and the nested ones will be rendered inside this one.
 
-<Source
-  code={`
-import * as React from 'react';
-import { Button, Popover, Menu } from '@devoinc/genesys-ui';
-export const MyPopover = () =>
-  <Popover id="nested" placement="bottom-start">
-      {({ toggle, ref, isOpened, setOpened }) => (
-        <Button
-          aria-controls="nested"
-          aria-expanded={isOpened}
-          aria-haspopup={true}
-          onClick={toggle}
-          onMouseOver={() => setOpened(true)}
-          ref={ref}
-          state={isOpened ? 'expanded' : undefined}
-        >
-          TriggerElement
-        </Button>
-      )}
-      <Popover.Panel>
-        <Menu>
-          <Menu.Item label="Option 1" />
-          <Menu.Item label="Option 2" />
-          <Menu.Item label="Option 3" />
-          <Popover id="nested-one" appendTo={null}>
-            {({ toggle, ref, isOpened, setOpened }) => (
-              <Menu.Item
-                aria-controls="nested-one"
-                aria-expanded={isOpened}
-                aria-haspopup={true}
-                expandable
-                label="Option 4"
-                onClick={() => setOpened(true)}
-                onMouseLeave={toggle}
-                onMouseOver={() => setOpened(true)}
-                ref={ref}
-                state={isOpened ? 'expanded' : 'enabled'}
-              />
-            )}
-            <Popover.Panel>
-              <Menu>
-                <Menu.Item label="Option 4.1" />
-                <Menu.Item label="Option 4.2" />
-                <Menu.Item label="Option 4.3" />
-                <Popover id="nested-two" appendTo={null}>
-                  {({ toggle, ref, isOpened, setOpened }) => (
-                    <Menu.Item
-                      aria-controls="nested-two"
-                      aria-expanded={isOpened}
-                      aria-haspopup={true}
-                      expandable
-                      label="Option 4.3.1"
-                      onClick={() => setOpened(true)}
-                      onMouseLeave={toggle}
-                      onMouseOver={() => setOpened(true)}
-                      ref={ref}
-                      state={isOpened ? 'expanded' : 'enabled'}
-                    />
-                  )}
-                  <Popover.Panel>
-                    <Menu>
-                      <Menu.Item label="Option 4.3.1" />
-                      <Menu.Item label="Option 4.3.3" />
-                      <Menu.Item label="Option 4.3.2" />
-                    </Menu>
-                  </Popover.Panel>
-                </Popover>
-              </Menu>
-            </Popover.Panel>
-          </Popover>
-        </Menu>
-      </Popover.Panel>
-    </Popover>
-`}
-/>
+<Source of={Stories.Nested} />
+
+## Access to state from content
+
+Sometimes you need to access to the Popover state from its content, like when we use a
+'cancel' button or an 'X' close, or when we want the Popover closed clicking on a children action.
+
+To do that we have to use the 'render-props' technique and include the content as a function
+instead of a node.
+
+<Source of={Stories.AccessToStateFromContent} />
+
+## Arrow
+
+You can add an arrow to the Popover content by the `arrowConfig` prop. It's an object
+with these variables:
+
+- `component`: it's a render-props function (depends on placement prop) with the
+  component used as arrow. E.g. `({ placement }) => <Popover.Arrow placement={placement} />`.
+  We have a pre-defined component with the basic needed styles `Popover.Arrow`, but anyway you
+  can add a custom one if you need it.
+- `padding`: the separation of the arrow from the edge of the content. More info in [PopperJS](https://popper.js.org/docs/v2/modifiers/arrow/#padding).
+- `size`: the square size of the arrow which will be used to define the `offset` of the content.
+
+<Source of={Stories.WithArrow} />
+
+## Disabled outside event
+
+The Popover is closed by default on `click` and `blur` events. Sometimes you might need to avoid
+this and delegate the close action only to a specific event as an inside button click. You only
+need to use the `disableOutsideEvent`:
+
+<Source of={Stories.DisabledOutsideEvent} />
 
 ## Accessibility
 

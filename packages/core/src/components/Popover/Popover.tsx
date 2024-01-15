@@ -2,11 +2,13 @@ import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { useTheme } from 'styled-components';
 import { type PopperProps, StrictModifier, usePopper } from 'react-popper';
-import { ComputedPlacement } from '@popperjs/core';
+import { ComputedPlacement, Padding } from '@popperjs/core';
 
 import { useOnEventOutside } from '../../hooks';
 
-import { getMarginByPlacement } from './utils';
+import { POPOVER_DEFAULT_ARROW_SIZE } from './constants';
+
+import { getPxFromRem } from '../../helpers';
 
 import {
   PopoverPanel,
@@ -21,7 +23,13 @@ type TriggerProps = (props: {
   setOpened: React.Dispatch<React.SetStateAction<boolean>>;
 }) => React.ReactNode;
 
-type ChildrenProps = React.ReactNode;
+type ChildrenProps =
+  | React.ReactNode
+  | ((props: {
+      toggle: (ev: React.MouseEvent<HTMLElement>) => void;
+      isOpened: boolean;
+      setOpened: React.Dispatch<React.SetStateAction<boolean>>;
+    }) => React.ReactNode);
 
 export interface PopoverProps
   extends Omit<
@@ -31,49 +39,83 @@ export interface PopoverProps
   /** DOM element where the popper is appended. It is appended to the body
    * by default. */
   appendTo?: HTMLElement;
+  disableOutsideEvent?: boolean;
   /** The HTML id attribute which is added to the wrapper div of the floating content and should be used as 'aria-controls' value of the trigger. */
   id: React.HTMLAttributes<HTMLDivElement>['id'];
   children?: [TriggerProps, ChildrenProps];
   /** If the floating content is visible/opened by default. */
   isOpened?: boolean;
-  arrow?: (arrowProps: StyledPopoverArrowProps) => React.ReactNode;
+  /** The configuration for the popover arrow: used component, padding... etc. */
+  arrowConfig?: {
+    component: (arrowProps: StyledPopoverArrowProps) => React.ReactNode;
+    padding?: Padding;
+    size?: StyledPopoverArrowProps['size'];
+  };
   modifiers?: StrictModifier[];
+  zIndex?: number;
 }
 
 const defaultAppendToProp =
   typeof window !== 'undefined' ? document.body : null;
 
 export const InternalPopover: React.FC<PopoverProps> = ({
-  arrow,
+  arrowConfig,
   appendTo = defaultAppendToProp,
   children: [triggerEl, childrenEl],
+  disableOutsideEvent = false,
   id,
   isOpened = false,
   modifiers = [],
-  placement = 'auto-start',
+  placement,
   strategy = 'fixed',
+  zIndex,
 }) => {
+  const theme = useTheme();
+  const evalZIndex = zIndex || theme.alias.elevation.zIndex.depth.activated;
   const [opened, setOpened] = React.useState(isOpened);
 
   const [referenceElement, setReferenceElement] = React.useState(null);
   const [popperElement, setPopperElement] = React.useState(null);
   const [arrowRef, setArrowRef] = React.useState<HTMLElement>(null);
+  const arrowModifiers = React.useMemo(() => {
+    return arrowConfig
+      ? [
+          {
+            name: 'arrow',
+            options: {
+              element: arrowRef,
+              padding:
+                arrowConfig?.padding ??
+                getPxFromRem(theme.cmp.panel.shape.borderRadius) * 2,
+            },
+          },
+          {
+            name: 'offset',
+            options: {
+              offset: [0, arrowConfig.size || POPOVER_DEFAULT_ARROW_SIZE],
+            },
+          },
+        ]
+      : [];
+  }, [arrowConfig, arrowRef, theme.cmp.panel.shape.borderRadius]);
 
-  if (arrow) {
-    modifiers.push({
-      name: 'arrow',
-      options: {
-        element: arrowRef,
-        padding: 10,
-      },
-    });
-  }
+  const evalPlacement = placement || (arrowConfig ? 'auto' : 'auto-start');
 
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
-    modifiers,
-    placement,
+    modifiers: [...arrowModifiers, ...modifiers],
+    placement: evalPlacement,
     strategy,
   });
+
+  const dynamicPlacement = attributes?.popper?.['data-popper-placement'];
+
+  const arrowDefaultStyles = () => {
+    if (dynamicPlacement?.includes('top')) return { bottom: '0' };
+    if (dynamicPlacement?.includes('bottom')) return { top: '0' };
+    if (dynamicPlacement?.includes('left')) return { right: '0' };
+    if (dynamicPlacement?.includes('right')) return { left: '0' };
+    return {};
+  };
 
   const toggle = (ev: React.MouseEvent<HTMLElement>): void => {
     const from = (ev?.target as HTMLElement).parentElement;
@@ -88,31 +130,40 @@ export const InternalPopover: React.FC<PopoverProps> = ({
   useOnEventOutside({
     references: [referenceElement, popperElement],
     handler: () => setOpened(false),
+    disabled: disableOutsideEvent,
   });
 
-  const theme = useTheme();
-  const zIndex = theme.alias.elevation.zIndex.depth.activated;
   const PopperCmp = opened && referenceElement && (
     <div
       id={id}
       ref={setPopperElement}
       style={{
-        zIndex,
-        ...getMarginByPlacement(
-          attributes?.popper?.['data-popper-placement'] as ComputedPlacement,
-        ),
+        zIndex: evalZIndex,
         ...styles.popper,
       }}
       {...attributes.popper}
     >
-      {childrenEl}
-      {arrow && (
-        <div ref={setArrowRef} style={{ zIndex: zIndex + 1, ...styles.arrow }}>
-          {arrow({
-            placement:
-              (attributes?.popper?.[
-                'data-popper-placement'
-              ] as ComputedPlacement) ?? undefined,
+      {React.isValidElement(childrenEl)
+        ? childrenEl
+        : typeof childrenEl === 'function'
+          ? childrenEl({
+              toggle,
+              isOpened: opened,
+              setOpened,
+            })
+          : null}
+      {arrowConfig && (
+        <div
+          ref={setArrowRef}
+          style={{
+            zIndex: evalZIndex + 1,
+            ...arrowDefaultStyles(),
+            ...styles.arrow,
+          }}
+        >
+          {arrowConfig.component({
+            placement: (dynamicPlacement as ComputedPlacement) ?? undefined,
+            size: arrowConfig.size ?? undefined,
           })}
         </div>
       )}

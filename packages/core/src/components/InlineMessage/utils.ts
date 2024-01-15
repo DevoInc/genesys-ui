@@ -7,6 +7,9 @@ export const getBorderPlacement = (position: string) => {
     return css`
       padding-bottom: ${borderSize};
 
+      [data-placement='top'] & {
+      }
+
       &::before {
         bottom: 0;
         width: 100%;

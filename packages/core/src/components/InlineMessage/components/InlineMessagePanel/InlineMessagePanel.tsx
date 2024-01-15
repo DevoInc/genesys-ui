@@ -7,16 +7,15 @@ import { useDetectScroll } from '../../../../hooks';
 
 import {
   inlineMessagePanelBodyMixin,
-  inlineMessagePanelFooterMixin,
   inlineMessagePanelHeaderMixin,
-  inlineMessagePanelMixinProps,
+  InlineMessagePanelMixinProps,
 } from './helpers';
 
 import { Panel } from '../../../Panel';
 
 interface InlineMessagePanelProps
   extends StyledOverloadCssProps,
-    Pick<inlineMessagePanelMixinProps, 'hasScroll'> {
+    Pick<InlineMessagePanelMixinProps, 'hasScroll'> {
   actions?: React.ReactElement[];
   children?: React.ReactNode;
   className?: string;
@@ -80,12 +79,7 @@ export const InlineMessagePanel: React.FC<InlineMessagePanelProps> = ({
       >
         {children}
       </Panel.Body>
-      <Panel.Footer
-        hasBoxShadow={hasScroll}
-        size="sm"
-        styles={inlineMessagePanelFooterMixin({ hasScroll, theme })}
-        actions={actions}
-      />
+      <Panel.Footer hasBoxShadow={hasScroll} size="sm" actions={actions} />
     </Panel.Container>
   );
 };

@@ -1,5 +1,6 @@
 import { css, DefaultTheme } from 'styled-components';
 import { ButtonExpandableState } from '../../../Button';
+import { getSpacingPropCss } from '../../../../helpers/spacing';
 
 export const inlineMessageTriggerMixin = ({
   theme,
@@ -28,14 +29,21 @@ export const inlineMessageTriggerMixin = ({
 `;
 
 export const inlineMessageTriggerParagraphMixin = ({
+  last = false,
   state,
 }: {
+  last?: boolean;
   state: ButtonExpandableState;
 }) => css`
   opacity: ${state === 'disabled' && 0.4};
   font-weight: 700;
   text-decoration: ${(state === 'hovered' || state === 'focused') &&
   'underline'};
+
+  ${last &&
+  css`
+    padding-right: ${({ theme }) => getSpacingPropCss(theme)('cmp-xxs')};
+  `}
 
   *:enabled:hover & {
     text-decoration: underline;
