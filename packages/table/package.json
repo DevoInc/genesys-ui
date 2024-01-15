@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-table",
-  "version": "2.4.0",
+  "version": "3.0.1",
   "description": "Genesys composable table",
   "type": "module",
   "scripts": {
@@ -8,7 +8,7 @@
     "compile:watch": "npm run compile -- --watch",
     "build": "vite build && tsc --project tsconfig.build.json",
     "build:watch": "vite build --watch && tsc --project tsconfig.build.json",
-    "depcruise": ". ../../depcruise.sh",
+    "depcruise": "sh ../../depcruise.sh \"$npm_package_name\"",
     "analyzer": "npx vite-bundle-visualizer -o 'dist/stats.html'",
     "stryker": "npx stryker run"
   },
@@ -28,9 +28,9 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "@devoinc/genesys-ui": "^2.4.0",
-    "@devoinc/genesys-ui-datetime": "^2.4.0",
-    "@devoinc/genesys-ui-form": "^2.4.0",
+    "@devoinc/genesys-ui": "^3.0.1",
+    "@devoinc/genesys-ui-datetime": "^3.0.1",
+    "@devoinc/genesys-ui-form": "^3.0.1",
     "@tanstack/react-virtual": "^3.0.1",
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0",

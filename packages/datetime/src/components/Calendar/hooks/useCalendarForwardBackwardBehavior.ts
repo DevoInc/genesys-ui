@@ -38,22 +38,18 @@ export const useCalendarForwardBackwardBehavior = ({
             } else {
               setFrom(ts);
             }
-          } else {
-            if (ts < from) {
+          } else if (ts < from) {
               setFrom(ts);
               setTo(null);
             } else {
               setTo(ts);
             }
-          }
-        } else {
-          if (ts <= from) {
+        } else if (ts <= from) {
             setTo(from);
             setFrom(ts);
           } else {
             setTo(ts);
           }
-        }
       } else {
         setFrom(ts);
       }

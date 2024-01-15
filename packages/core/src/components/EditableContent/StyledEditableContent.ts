@@ -28,7 +28,7 @@ export const StyledEditableContent = styled.div<StyledEditableContentProps>`
 
       &::after {
         ${pseudoElementMixin({
-          content: `'${icons['pencil_edit'] || ''}'`,
+          content: `'${icons.pencil_edit || ''}'`,
         })};
         ${iconFontMixin()};
         right: calc(${iconSize} / 2 * -1);

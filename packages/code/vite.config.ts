@@ -3,6 +3,9 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
+  resolve: {
+    preserveSymlinks: true,
+  },
   build: {
     sourcemap: true,
     lib: {
@@ -12,7 +15,7 @@ export default defineConfig({
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: [/node_modules/, /packages\/core/],
+      external: [/node_modules/],
     },
   },
   plugins: [

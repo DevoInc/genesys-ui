@@ -1,10 +1,8 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "composite": true,
     "declaration": true,
     "declarationMap": true,
-    "incremental": true,
     "outDir": "./dist"
   },
   "include": [
@@ -12,12 +10,4 @@
     "stories",
     "vite.config.ts"
   ],
-  "references": [
-    {
-      "path": "../core"
-    },
-    {
-      "path": "../datetime"
-    },
-  ]
 }

@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 export interface StyledFieldsCombinerWrapperProps {}
 
 export const StyledFieldsCombinerWrapper = styled.div<StyledFieldsCombinerWrapperProps>`
-  ${({}) => {
+  ${() => {
     return css`
       display: flex;
       flex-direction: row;
