@@ -15,7 +15,16 @@ export default defineConfig({
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: [/node_modules/],
+      external: [
+        '@devoinc/genesys-ui',
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        'react-popper',
+        'date-fns',
+        '@devoinc/genesys-icons',
+        'styled-components'
+      ],
     },
   },
   plugins: [

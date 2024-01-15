@@ -1,5 +1,5 @@
 import { parseToRgb } from 'polished';
-import _isEqual from 'lodash/isEqual';
+import {isEqual as _isEqual} from 'lodash';
 import { RgbaColor } from 'polished/lib/types/color';
 
 /**

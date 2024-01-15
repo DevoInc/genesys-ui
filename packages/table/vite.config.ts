@@ -15,7 +15,21 @@ export default defineConfig({
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: [/node_modules/],
+      external: [
+        '@devoinc/genesys-ui',
+        '@devoinc/genesys-ui-datetime',
+        '@devoinc/genesys-ui-form',
+        '@devoinc/genesys-icons',
+        '@tanstack/react-virtual',
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        'styled-components',
+        'lodash',
+        'date-fns',
+        'date-fns-tz',
+        'date-fns/locale',
+      ],
     },
   },
   plugins: [
