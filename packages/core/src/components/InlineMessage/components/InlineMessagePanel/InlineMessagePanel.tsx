@@ -75,6 +75,7 @@ export const InlineMessagePanel: React.FC<InlineMessagePanelProps> = ({
       <Panel.Body
         hasScroll={hasScroll}
         panelBodyRef={targetElRef}
+        size="sm"
         styles={inlineMessagePanelBodyMixin({ hasScroll, theme })}
       >
         {children}
