@@ -6,7 +6,7 @@ import {
 
 import { Icon } from '../..';
 import { showMenuAndDropDown } from '../utils';
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
 import { SelectOption } from '../declarations';
 import { STATUS_ICON_MAP } from '../../../constants';
 

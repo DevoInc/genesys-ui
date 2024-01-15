@@ -1,4 +1,4 @@
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
 
 import type { ProgressBarStatus } from './declarations';
 import type { GlobalStatus } from '../../declarations';
