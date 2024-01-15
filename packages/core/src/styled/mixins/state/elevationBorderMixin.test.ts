@@ -5,31 +5,32 @@ import { Elevation } from '../../../declarations';
 
 describe('elevationBorderMixin', () => {
   const themeElevation = theme.alias.color.border.elevation;
+  const width = theme.alias.shape.borderSize.panel.base;
   const cases: [string, Elevation, string][] = [
     [
       'stickyTop',
       'stickyTop',
-      `border-top: 0.1rem solid ${themeElevation.sticky.top};`,
+      `border-top: ${width} solid ${themeElevation.sticky.top};`,
     ],
     [
       'stickyRight',
       'stickyRight',
-      `border-right: 0.1rem solid ${themeElevation.sticky.right};`,
+      `border-right: ${width} solid ${themeElevation.sticky.right};`,
     ],
     [
       'stickyLeft',
       'stickyLeft',
-      `border-left: 0.1rem solid ${themeElevation.sticky.left};`,
+      `border-left: ${width} solid ${themeElevation.sticky.left};`,
     ],
     [
       'stickyBottom',
       'stickyBottom',
-      `border-bottom: 0.1rem solid ${themeElevation.sticky.bottom};`,
+      `border-bottom: ${width} solid ${themeElevation.sticky.bottom};`,
     ],
     [
       'not sticky but valid elevation',
       'raised',
-      `border: 0.1rem solid ${themeElevation.raised};`,
+      `border: ${width} solid ${themeElevation.raised};`,
     ],
   ];
 
