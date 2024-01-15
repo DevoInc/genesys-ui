@@ -30,5 +30,5 @@ export const defaultOptions: UseEditorParams['options'] = {
   scrollBeyondLastLine: false,
   wordWrap: 'on',
   wordWrapColumn: 80,
-  wordBasedSuggestions: false,
+  wordBasedSuggestions: 'off',
 };
