@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.1.0](https://github.com/DevoInc/genesys-ui/compare/v3.0.1...v3.1.0) (2024-01-15)
+
+
+### Features
+
+* **InlineMessage:** Use of Popover instead of Popper and other Improvements for InlineMessage ([20ad1bf](https://github.com/DevoInc/genesys-ui/commit/20ad1bfacbfce8b0c2ccda5d19d6df7d337e396e))
+
+
+### Bug Fixes
+
+* **code:** update default value for wordBasedSuggestions ([3088087](https://github.com/DevoInc/genesys-ui/commit/3088087ba127415bdd81aa1b8c4999446687a749))
+* **FloatingHelper:** fixed removed props. ([72fd1e3](https://github.com/DevoInc/genesys-ui/commit/72fd1e3eb602844ad2139f68897d7a923ea63b52))
+
 ## [3.0.1](https://github.com/DevoInc/genesys-ui/compare/v3.0.0...v3.0.1) (2024-01-15)
 
 ## [3.0.0](https://github.com/DevoInc/genesys-ui/compare/v2.4.0...v3.0.0) (2024-01-12)
