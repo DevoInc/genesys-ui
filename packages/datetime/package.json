@@ -28,12 +28,12 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "@devoinc/genesys-icons": "^3.5.1",
+    "@devoinc/genesys-icons": "3.x.x",
     "@devoinc/genesys-ui": "^3.0.1",
-    "date-fns": "^2.30.0",
+    "date-fns": "2.x.x",
     "react": "16.x || 17.x || 18.x",
-    "react-popper": "^2.3.0",
-    "styled-components": "^5.3.10"
+    "react-popper": "2.x.x",
+    "styled-components": "5.x.x"
   },
   "engine": {
     "node": ">=16",
