@@ -77,7 +77,8 @@ export type ColDef = {
   toEdge?: boolean;
 };
 
-export type Data = { [key: string]: unknown }[];
+export type Row = { [key: string]: unknown };
+export type Data = Row[];
 
 export type RowHeight = 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
 

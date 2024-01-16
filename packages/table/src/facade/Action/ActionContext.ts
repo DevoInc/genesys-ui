@@ -10,10 +10,12 @@ export type ActionMenuEntry = {
   component?: 'separator';
 };
 
+export type QuickActionMenuEntry = {
+  Icon?: IconType;
+  onClick?: (rowIndex: number, event: React.MouseEvent) => void;
+};
+
 export type ActionContext = {
-  quickActions?: {
-    Icon?: React.FC<IconType>;
-    onClick?: (rowIndex: number, event: React.MouseEvent) => void;
-  }[];
+  quickActions?: QuickActionMenuEntry[];
   actionMenu?: ActionMenuEntry[];
 };
