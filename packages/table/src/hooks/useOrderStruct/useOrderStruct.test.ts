@@ -1,16 +1,18 @@
 import { renderHook } from '@testing-library/react';
-import { OrderColumn, useOrderStruct } from './useOrderStruct';
+
+import { useOrderStruct } from './useOrderStruct';
+import { OrderColumn } from './declarations';
 
 describe('getOptionsFromData', () => {
   const cases: [string, OrderColumn[], string, OrderColumn[]][] = [
-    ['Changed desc - none', [{ id: 'id', sort: 'desc' }], 'id', []],
+    ['sort desc', [{ id: 'c1', sort: 'desc' }], 'c1', []],
     [
-      'Changed asc - desc',
-      [{ id: 'id', sort: 'asc' }],
-      'id',
-      [{ id: 'id', sort: 'desc' }],
+      'sort asc',
+      [{ id: 'c1', sort: 'asc' }],
+      'c1',
+      [{ id: 'c1', sort: 'desc' }],
     ],
-    ['sort none', [], 'id', [{ id: 'id', sort: 'asc' }]],
+    ['sort none', [], 'c1', [{ id: 'c1', sort: 'asc' }]],
   ];
 
   it.each(cases)('%s', (_title, initial, id, expected) => {

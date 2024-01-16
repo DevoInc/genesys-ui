@@ -7,3 +7,87 @@ import * as Stories from './Order.stories';
 # Order
 
 <Canvas of={Stories.Base} />
+
+The order of the columns could be done using the next hook and sorting function
+activated by the click over the columns, and as you can see is totally
+replaceable by your custom hook or sorting function.
+
+The hook give you the ability to store a multi column model (a simple column
+model is trivial so no hook is given)
+
+<Source code={`
+import { useOrderStruct } from '../src/hooks';
+...
+const { orderStruct, onSort } = useOrderStruct();
+`} />
+
+From the hook we extract an `orderStruct` with the next notation
+
+<Source code={`
+{
+  id: string;
+  sort: 'asc' | 'desc';
+}[]
+`} />
+
+And a `sort` property with the direction of the sorting, and also the could could
+be initialized with an initial `orderStruct` as unique parameter.
+
+After use the hook you could apply it to your data with the next function
+
+<Source code={`
+import { orderDataByOrderStruct } from '../src/helpers';
+
+const dataOrdered = [...data].sort(orderDataByOrderStruct(orderStruct));
+// or with the new \`toSorted\` native inmutable function
+const dataOrdered = data.toSorted(orderDataByOrderStruct(orderStruct));
+`} />
+
+This function also accept a second parameter with a custom map with a sorter
+function for each column ids with the next notation
+
+<Source code={`
+{
+  [key: string]: (a: Row, b: Row, sort: 'asc' | 'desc') => number;
+};
+`} />
+
+Check the [`compareFn`
+documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#comparefn).
+
+And last the table should use the `onSort` prop and for show the sorter
+indicator the columns definitions should change dynamically, this is an example
+of how could it be done
+
+<Source code={`
+<BasicTable
+  ...
+  onSort={(colDef: ColDef) => {
+    onSort(colDef.id);
+  }}
+  ...
+  defaultColDef={{
+    ...
+    sortable: true,
+    ...
+  }}
+  ...
+  colDefs={colDefs.map((col) => {
+    const index = orderStruct.findIndex((iter) => iter.id === col.id);
+    return index !== -1
+      ? {
+          ...col,
+          sort: orderStruct[index].sort,
+          sortIndex: orderStruct.length > 1 ? index + 1 : undefined,
+        }
+      : col;
+  })}
+  ...
+  data={dataOrdered}
+/>
+`} />
+
+
+
+
+
