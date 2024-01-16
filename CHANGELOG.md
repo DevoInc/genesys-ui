@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.1](https://github.com/DevoInc/genesys-ui/compare/v3.1.0...v3.1.1) (2024-01-16)
+
+
+### Bug Fixes
+
+* export helper orderDataByOrderStruct ([b169b92](https://github.com/DevoInc/genesys-ui/commit/b169b923a7030343bc23302e5c93f2bb3b712dbb))
+
 ## [3.1.0](https://github.com/DevoInc/genesys-ui/compare/v3.0.1...v3.1.0) (2024-01-15)
 
 
