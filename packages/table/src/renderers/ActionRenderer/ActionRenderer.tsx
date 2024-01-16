@@ -19,7 +19,7 @@ export const ActionRenderer: React.FC<CellRendererProps> = ({
         <IconButton
           size="xs"
           key={idx}
-          onClick={(event) => {
+          onClick={(event: React.MouseEvent) => {
             if (onClick) {
               onClick(rowIndex, event);
             }

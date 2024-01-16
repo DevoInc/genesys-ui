@@ -11,14 +11,14 @@ export const useOrderStruct = (initial: OrderColumn[] = []) => {
   const onSort = (id: string) => {
     let newOrderStruct = orderStruct.map((col) => ({ ...col }));
 
-    const col = orderStruct.find((col) => col.id === id);
+    const col = orderStruct.find((column) => column.id === id);
     if (col) {
       if (col.sort === 'asc') {
-        newOrderStruct = newOrderStruct.map((col) =>
-          col.id === id ? { ...col, sort: 'desc' } : col,
+        newOrderStruct = newOrderStruct.map((column) =>
+          column.id === id ? { ...column, sort: 'desc' } : col,
         );
       } else {
-        newOrderStruct = newOrderStruct.filter((col) => col.id !== id);
+        newOrderStruct = newOrderStruct.filter((column) => column.id !== id);
       }
     } else {
       newOrderStruct = newOrderStruct.concat({ id, sort: 'asc' });

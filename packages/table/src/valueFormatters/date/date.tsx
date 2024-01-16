@@ -13,7 +13,7 @@ export const dateFormatter = (value: unknown, context: DateContext): string => {
     (typeof value === 'number' && value >= 0) ||
     value instanceof Date
     ? format(utcToZonedTime(value, context.tz), context?.formatDate ?? 'PPpp', {
-        locale: Locales[context.locale || 'en'],
+        locale: Locales[context?.locale ?? 'en'],
       })
     : String(value);
 };
