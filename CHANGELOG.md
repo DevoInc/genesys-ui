@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.2.0](https://github.com/DevoInc/genesys-ui/compare/v3.1.1...v3.2.0) (2024-01-17)
+
+
+### Features
+
+* **table:** added declarations to main module ([266451a](https://github.com/DevoInc/genesys-ui/commit/266451a6c1ef16e71e05cf22776e8623e7d2b70a))
+
+
+### Bug Fixes
+
+* **table:** several sorting problems ([d7f7ebe](https://github.com/DevoInc/genesys-ui/commit/d7f7ebeb72668af18fd6d25d1d032816481bfae4))
+* **table:** temporal fix of table height ([d77e2a9](https://github.com/DevoInc/genesys-ui/commit/d77e2a9c6965ece7606187456b43d417e48d663d))
+
 ## [3.1.1](https://github.com/DevoInc/genesys-ui/compare/v3.1.0...v3.1.1) (2024-01-16)
 
 
