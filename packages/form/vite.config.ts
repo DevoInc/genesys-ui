@@ -15,7 +15,21 @@ export default defineConfig({
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: [/node_modules/],
+      external: [
+        '@devoinc/genesys-ui',
+        '@devoinc/genesys-icons/dist/icon-variables',
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        'styled-components',
+        'lodash',
+        'react-filepond',
+        'react-color',
+        'polished',
+        'filepond-plugin-image-preview',
+        'filepond-plugin-file-validate-type',
+        'filepond-plugin-file-validate-size'
+      ],
     },
   },
   plugins: [

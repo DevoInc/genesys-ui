@@ -15,7 +15,14 @@ export default defineConfig({
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: [/node_modules/],
+      external: [
+        'ahooks',
+        '@devoinc/genesys-ui',
+        'monaco-editor-core',
+        'react',
+        'react/jsx-runtime',
+        'styled-components',
+      ],
     },
   },
   plugins: [

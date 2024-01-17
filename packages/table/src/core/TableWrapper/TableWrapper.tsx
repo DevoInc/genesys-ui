@@ -24,7 +24,7 @@ export const TableWrapper: React.FC = () => {
   const { hasScroll } = useTableScroll(rowVirtualizer, ref);
 
   const width = columnVirtualizer.getTotalSize();
-  const height = rowVirtualizer.getTotalSize();
+  const height = rowVirtualizer.getTotalSize() + 42;
 
   return (
     <StyledTableWrapper ref={ref} maxHeight={maxHeight}>

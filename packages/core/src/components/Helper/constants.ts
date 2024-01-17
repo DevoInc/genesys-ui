@@ -3,7 +3,7 @@ import { ActiveStatus, GlobalSpacing } from '../../declarations';
 import { ButtonSize } from '../Button';
 import { IconProps } from '../Icon';
 import { FloatingHelperSize, HelperSize } from './declarations';
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
 
 export const HELPER_ICON_BUTTON_SIZE_MAP: {
   [key in FloatingHelperSize]: ButtonSize;

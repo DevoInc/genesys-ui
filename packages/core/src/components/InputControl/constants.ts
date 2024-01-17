@@ -1,6 +1,6 @@
 import { STATUS_ICON_MAP } from '../../constants';
 import type { FieldStatus } from '../../declarations';
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
 import { OmitUnion } from '../../typeFunctions/omitUnion';
 
 export const INPUT_CONTROL_ICON_STATUS_MAP: {

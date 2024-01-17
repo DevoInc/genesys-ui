@@ -21,28 +21,38 @@ export const Base: Story = {
         quickActions: [
           {
             Icon: GIEyeViewFilled,
-            onClick: () => console.log('Quick action 1'),
+            // eslint-disable-next-line no-console
+            onClick: () => console.debug('Quick action 1'),
           },
-          { Icon: GIPencilEdit, onClick: () => console.log('Quick action 2') },
+          {
+            Icon: GIPencilEdit,
+            // eslint-disable-next-line no-console
+            onClick: () => console.debug('Quick action 2'),
+          },
         ],
         actionMenu: [
-          { text: 'Action 1', onClick: () => console.log('Menu action 1') },
-          { text: 'Action 2', onClick: () => console.log('Menu action 2') },
+          // eslint-disable-next-line no-console
+          { text: 'Action 1', onClick: () => console.debug('Menu action 1') },
+          // eslint-disable-next-line no-console
+          { text: 'Action 2', onClick: () => console.debug('Menu action 2') },
           {
             text: 'Action 3',
             children: [
               {
                 text: 'Action 3.1',
-                onClick: () => console.log('Menu action 3.1'),
+                // eslint-disable-next-line no-console
+                onClick: () => console.debug('Menu action 3.1'),
               },
               {
                 text: 'Action 3.2',
-                onClick: () => console.log('Menu action 3.2'),
+                // eslint-disable-next-line no-console
+                onClick: () => console.debug('Menu action 3.2'),
               },
             ],
           },
           { component: 'separator' },
-          { text: 'Action 4', onClick: () => console.log('Menu action 4') },
+          // eslint-disable-next-line no-console
+          { text: 'Action 4', onClick: () => console.debug('Menu action 4') },
         ],
       } as ActionContext,
     },

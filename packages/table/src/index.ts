@@ -9,3 +9,4 @@ export * from './columnPresets';
 export * from './valueFormatters';
 export * from './recipes';
 export * from './helpers';
+export * from './declarations';

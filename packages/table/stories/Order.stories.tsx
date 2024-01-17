@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { BasicTable } from '../src/recipes/BasicTable';
-import { useOrderStruct } from '../src/hooks/useOrderStruct';
+import { useOrderStruct } from '../src/hooks';
 import { ColDef } from '../src/declarations';
-import { orderDataByOrderStruct } from '../src/helpers/orderDataByOrderStruct';
+import { orderDataByOrderStruct } from '../src/helpers';
 
 const meta: Meta<typeof BasicTable> = {
   title: 'Components/Table/Order',
@@ -17,7 +17,7 @@ export default meta;
 type Story = StoryObj<typeof BasicTable>;
 
 const OrderTable = () => {
-  const columnDefs = [
+  const colDefs = [
     {
       id: 'id',
       preset: 'text',
@@ -61,7 +61,7 @@ const OrderTable = () => {
   ];
 
   const { orderStruct, onSort } = useOrderStruct([{ id: 'id', sort: 'desc' }]);
-  const dataOrder = orderDataByOrderStruct(data, orderStruct);
+  const dataOrdered = [...data].sort(orderDataByOrderStruct(orderStruct));
 
   return (
     <BasicTable
@@ -72,18 +72,17 @@ const OrderTable = () => {
         editable: false,
         sortable: true,
       }}
-      colDefs={columnDefs.map((col) => {
-        const orderCol = orderStruct.find((colorder) => colorder.id === col.id);
-        const orderColIndex = orderStruct.findIndex(
-          (colorder) => colorder.id === col.id,
-        );
-
-        if (orderCol) {
-          return { ...col, sort: orderCol.sort, sortIndex: orderColIndex };
-        }
-        return col;
+      colDefs={colDefs.map((col) => {
+        const index = orderStruct.findIndex((iter) => iter.id === col.id);
+        return index !== -1
+          ? {
+              ...col,
+              sort: orderStruct[index].sort,
+              sortIndex: orderStruct.length > 1 ? index + 1 : undefined,
+            }
+          : col;
       })}
-      data={dataOrder}
+      data={dataOrdered}
     />
   );
 };

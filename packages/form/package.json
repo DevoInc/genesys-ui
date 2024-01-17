@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-form",
-  "version": "3.0.1",
+  "version": "3.2.0",
   "description": "",
   "type": "module",
   "scripts": {
@@ -28,17 +28,17 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "@devoinc/genesys-icons": "^3.5.1",
-    "@devoinc/genesys-ui": "^3.0.1",
-    "filepond-plugin-file-validate-size": "^2.2.8",
-    "filepond-plugin-file-validate-type": "^1.2.8",
-    "filepond-plugin-image-preview": "^4.6.11",
-    "lodash": "^4.17.21",
-    "polished": "^4.2.2",
+    "@devoinc/genesys-icons": "3.x.x",
+    "@devoinc/genesys-ui": "^3.2.0",
+    "filepond-plugin-file-validate-size": "2.x.x",
+    "filepond-plugin-file-validate-type": "1.x.x",
+    "filepond-plugin-image-preview": "4.x.x",
+    "lodash": "4.x.x",
+    "polished": "4.x.x",
     "react": "16.x || 17.x || 18.x",
-    "react-color": "^2.19.3",
-    "react-filepond": "^7.1.2",
-    "styled-components": "^5.3.10"
+    "react-color": "2.x.x",
+    "react-filepond": "7.x.x",
+    "styled-components": "5.x.x"
   },
   "engine": {
     "node": ">=16",

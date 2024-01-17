@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import _ from 'lodash';
 
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
 
 import { SelectionScheme } from '../../declarations';
 import { ButtonColorScheme, ButtonState, ButtonSize } from './declarations';

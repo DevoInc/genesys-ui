@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
 
 import { ButtonIconPosition, ButtonSize } from '../../declarations';
 

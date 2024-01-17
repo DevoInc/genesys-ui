@@ -18,7 +18,7 @@ export const OrderIndicator: React.FC<OrderIndicatorProps> = ({ colDef }) => {
     <HFlex
       spacing="cmp-xxs"
       styles={css`
-        opacity: 0;
+        opacity: ${colDef.sort ? 1 : 0};
         transition: opacity ease-in-out
           ${theme.alias.mutation.transitionDuration.opacity.sm};
 

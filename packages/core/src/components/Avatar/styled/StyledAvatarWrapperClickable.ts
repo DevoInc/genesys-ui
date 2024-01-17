@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import icons from '@devoinc/genesys-icons/dist/icon-variables.js';
+import icons from '@devoinc/genesys-icons/dist/icon-variables';
 
 import {
   iconFontMixin,

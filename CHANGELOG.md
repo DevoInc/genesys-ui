@@ -1,5 +1,38 @@
 # Changelog
 
+## [3.2.0](https://github.com/DevoInc/genesys-ui/compare/v3.1.1...v3.2.0) (2024-01-17)
+
+
+### Features
+
+* **table:** added declarations to main module ([266451a](https://github.com/DevoInc/genesys-ui/commit/266451a6c1ef16e71e05cf22776e8623e7d2b70a))
+
+
+### Bug Fixes
+
+* **table:** several sorting problems ([d7f7ebe](https://github.com/DevoInc/genesys-ui/commit/d7f7ebeb72668af18fd6d25d1d032816481bfae4))
+* **table:** temporal fix of table height ([d77e2a9](https://github.com/DevoInc/genesys-ui/commit/d77e2a9c6965ece7606187456b43d417e48d663d))
+
+## [3.1.1](https://github.com/DevoInc/genesys-ui/compare/v3.1.0...v3.1.1) (2024-01-16)
+
+
+### Bug Fixes
+
+* export helper orderDataByOrderStruct ([b169b92](https://github.com/DevoInc/genesys-ui/commit/b169b923a7030343bc23302e5c93f2bb3b712dbb))
+
+## [3.1.0](https://github.com/DevoInc/genesys-ui/compare/v3.0.1...v3.1.0) (2024-01-15)
+
+
+### Features
+
+* **InlineMessage:** Use of Popover instead of Popper and other Improvements for InlineMessage ([20ad1bf](https://github.com/DevoInc/genesys-ui/commit/20ad1bfacbfce8b0c2ccda5d19d6df7d337e396e))
+
+
+### Bug Fixes
+
+* **code:** update default value for wordBasedSuggestions ([3088087](https://github.com/DevoInc/genesys-ui/commit/3088087ba127415bdd81aa1b8c4999446687a749))
+* **FloatingHelper:** fixed removed props. ([72fd1e3](https://github.com/DevoInc/genesys-ui/commit/72fd1e3eb602844ad2139f68897d7a923ea63b52))
+
 ## [3.0.1](https://github.com/DevoInc/genesys-ui/compare/v3.0.0...v3.0.1) (2024-01-15)
 
 ## [3.0.0](https://github.com/DevoInc/genesys-ui/compare/v2.4.0...v3.0.0) (2024-01-12)

@@ -1,5 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
-import icons from '@devoinc/genesys-icons/dist/icon-variables.js';
+import icons from '@devoinc/genesys-icons/dist/icon-variables';
 
 import { ButtonSize, ButtonState } from '../../../Button';
 import { getMarkerSize } from './utils';
