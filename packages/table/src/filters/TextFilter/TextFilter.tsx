@@ -12,7 +12,7 @@ import {
 } from '../common';
 import { FilterProps } from '../declarations';
 
-export const TextFilter: React.FC<FilterProps> = () => (
+export const TextFilter: React.FC<FilterProps> = ({ colDef }) => (
   <FilterContainer>
     <BasicFilter>
       <InputControl
@@ -22,6 +22,7 @@ export const TextFilter: React.FC<FilterProps> = () => (
       />
     </BasicFilter>
     <AdvancedFilter
+      id={`text-adv-filter-${colDef.id}`}
       footer={
         <HFlex flex="1">
           <HFlex.Item marginLeft="auto">

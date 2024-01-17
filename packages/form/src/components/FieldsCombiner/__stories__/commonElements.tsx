@@ -1,20 +1,14 @@
 import * as React from 'react';
 
-import {
-  Button,
-  IconButton,
-  InputControl,
-  SelectControl,
-  CheckboxControl,
-  Popper,
-  Panel,
-  Menu,
-} from '@devoinc/genesys-ui';
+import { Menu, Popover } from '@devoinc/genesys-ui';
+import { FieldsCombiner } from '../FieldsCombiner';
 
-export const ElemButton = <Button colorScheme={'accent'}>Send</Button>;
+export const ElemButton = (
+  <FieldsCombiner.Button colorScheme={'accent'}>Send</FieldsCombiner.Button>
+);
 
 export const ElemIconButton = (
-  <IconButton
+  <FieldsCombiner.IconButton
     colorScheme="accent"
     tooltip="Refresh"
     icon="gi-reload_refresh_update"
@@ -22,21 +16,30 @@ export const ElemIconButton = (
 );
 
 export const ElemIconButtonDropdown = (
-  <IconButton
+  <FieldsCombiner.IconButton
+    colorScheme="accent"
     tooltip="Open options"
-    colorScheme={'accent'}
     icon="gi-angle_down"
   />
 );
 
-export const ElemPopper = (
-  <Popper trigger={ElemIconButtonDropdown} placement="bottom-start">
-    <Panel
-      elevation="activated"
-      bodySettings={{ removeSpace: true }}
-      width="24rem"
-    >
-      <Menu padding="cmp-xxs">
+export const ElemPopover = (
+  <Popover id="popover" placement="bottom-start">
+    {({ isOpened, ref, toggle }) => (
+      <FieldsCombiner.IconButton
+        aria-controls="popover"
+        aria-expanded={isOpened}
+        aria-haspopup={true}
+        onClick={toggle}
+        ref={ref}
+        state={isOpened ? 'expanded' : undefined}
+        tooltip="Open options"
+        colorScheme={'accent'}
+        icon="gi-angle_down"
+      />
+    )}
+    <Popover.Panel>
+      <Menu>
         <Menu.Item
           label="Schedule send"
           icon="gi-calendar_month_day_planner_events"
@@ -47,27 +50,48 @@ export const ElemPopper = (
         />
         <Menu.Item label="Send to all" icon="gi-user_profile_avatar_man_male" />
       </Menu>
-    </Panel>
-  </Popper>
+    </Popover.Panel>
+  </Popover>
 );
 
-export const ElemCheckbox = <CheckboxControl aria-label="Maintain activated" />;
+export const ElemCheckbox = (
+  <FieldsCombiner.Checkbox aria-label="Maintain activated" />
+);
 
 export const ElemSelect = (
-  <SelectControl
+  <FieldsCombiner.Select
     id="test-2"
-    size="sm"
     options={[
-      { value: 1, label: 'One' },
-      { value: 2, label: 'Two' },
+      { value: 1, label: 'JS' },
+      { value: 2, label: 'Typescript' },
     ]}
   />
 );
 
+export const ElemSelectCustomWidth = (
+  <FieldsCombiner.Select
+    id="test-2"
+    options={[
+      { value: 1, label: 'JS' },
+      { value: 2, label: 'Typescript' },
+    ]}
+    width="30%"
+  />
+);
+
 export const ElemInputControl = (
-  <InputControl.Input
+  <FieldsCombiner.Input
     id="test-3"
     aria-label="Label for story"
     onChange={() => console.log('change')}
+  />
+);
+
+export const ElemInputControlCustomWidth = (
+  <FieldsCombiner.Input
+    id="test-3"
+    aria-label="Label for story"
+    onChange={() => console.log('change')}
+    width="70%"
   />
 );

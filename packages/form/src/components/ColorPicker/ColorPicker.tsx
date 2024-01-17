@@ -12,18 +12,25 @@ import {
   Field,
   FieldProps,
   GlobalAriaProps,
-  Popper,
+  Popover,
+  PopoverProps,
 } from '@devoinc/genesys-ui';
 
 import { StyledColorPicker, StyledColorPickerProps } from './styled';
 
 export interface ColorPickerProps
   extends Pick<GlobalAriaProps, 'aria-label'>,
-    Omit<FieldProps, 'children' | 'hasWideControl' | 'role'>,
+    Omit<FieldProps, 'children' | 'hasWideControl' | 'role' | 'onClick'>,
     Omit<DropdownPickerProps, 'expanded' | 'id'>,
     Omit<StyledColorPickerProps, 'disabled' | 'size' | 'status'> {
   value?: string;
   defaultValue: string;
+  /** The placement of the floating color picker. */
+  pickerPlacement: PopoverProps['placement'];
+  /** DOM element where the floating color picker is appended. It is appended to the body by default. */
+  pickerAppendTo: PopoverProps['appendTo'];
+  /** If the floating color picker is opened by default. */
+  pickerOpenedByDefault: PopoverProps['isOpened'];
 }
 
 export const ColorPicker: React.FC<ColorPickerProps> = ({
@@ -40,13 +47,15 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
   disableAlpha,
   liveUpdate = false,
   onChange,
-  onClick,
   onMouseDown,
   onMouseLeave,
   onMouseMove,
   onMouseOut,
   onMouseOver,
   onMouseUp,
+  pickerPlacement = 'bottom-start',
+  pickerAppendTo,
+  pickerOpenedByDefault = false,
   presetColors,
   readOnly,
   required,
@@ -60,7 +69,6 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
   const [color, setColor] = React.useState(
     strColorToRGBAColor(value, defaultValue),
   );
-  const [visible, setVisible] = React.useState(false);
 
   const _onChange = () => {
     /* Default color for compare with selected color */
@@ -82,7 +90,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
       _onChange();
     }
   };
-
+  const popoverId = `${id}__popover`;
   return (
     <Field
       disabled={disabled}
@@ -100,19 +108,23 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
       styles={styles}
       tooltip={tooltip}
     >
-      <Popper
-        visible={visible}
-        setIsVisible={setVisible}
-        trigger={
+      <Popover
+        appendTo={pickerAppendTo}
+        id={popoverId}
+        isOpened={pickerOpenedByDefault}
+        placement={pickerPlacement}
+      >
+        {({ toggle, ref, isOpened }) => (
           <StyledColorPicker
+            ref={ref}
             aria-label={ariaLabel}
-            aria-controls={`${id}-picker`}
+            aria-controls={popoverId}
             aria-haspopup
-            aria-expanded={visible}
+            aria-expanded={isOpened}
             colorIndicatorType={colorIndicatorType}
             disabled={disabled}
-            id={`${id}-color-trigger`}
-            onClick={onClick}
+            id={`${id}__trigger`}
+            onClick={toggle}
             onMouseDown={onMouseDown}
             onMouseLeave={onMouseLeave}
             onMouseMove={onMouseMove}
@@ -128,18 +140,16 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
               style={{ backgroundColor: toColorString(color) }}
             />
           </StyledColorPicker>
-        }
-      >
+        )}
         <DropdownPicker
-          expanded={visible}
-          id={`${id}-color-picker`}
+          id={`${id}__picker`}
           color={color}
           disableAlpha={disableAlpha}
           liveUpdate={liveUpdate}
           onChange={internalOnChange}
           presetColors={presetColors}
         />
-      </Popper>
+      </Popover>
     </Field>
   );
 };

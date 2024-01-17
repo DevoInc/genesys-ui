@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Popper, Box, Button, IconButton } from '@devoinc/genesys-ui';
+import { Box, Button, IconButton, Popover } from '@devoinc/genesys-ui';
 
 import { Cell } from './Cell';
 import { CellEditorProps } from '../../editors/declarations';
@@ -33,39 +33,43 @@ export const Editor: Story = {
       cellRenderer: ({ value }) => value,
       editable: true,
       cellEditor: (({ value, onChange }) => {
-        const [isVisible, setIsVisible] = React.useState(false);
+        const popoverId = 'story-id';
         return (
-          <Popper
-            visible={isVisible}
-            setIsVisible={setIsVisible}
-            trigger={
+          <Popover id={popoverId} placement="top-start">
+            {({ toggle, ref, isOpened }) => (
               <IconButton
                 hasBoldIcon
-                aria-expanded={isVisible}
-                aria-controls="story-id"
-                aria-haspopup="true"
+                aria-controls={popoverId}
+                aria-expanded={isOpened}
+                aria-haspopup={true}
+                onClick={toggle}
+                ref={ref}
+                state={isOpened ? 'expanded' : undefined}
                 icon="gi-menu_alt"
-                tooltip="Open Popper"
+                tooltip="Open Popover"
               />
-            }
-          >
-            <Box elevation="activated" padding="cmp-sm" width="24rem">
-              <div>{String(value)}</div>
-              <Box marginTop="cmp-md">
-                <Button
-                  colorScheme="accent"
-                  onClick={() => {
-                    setIsVisible(false);
-                    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-                    onChange(value + 'a');
-                  }}
-                  wide
-                >
-                  Do something
-                </Button>
-              </Box>
-            </Box>
-          </Popper>
+            )}
+            {({ setOpened }) => (
+              <Popover.Panel>
+                <Box padding="cmp-sm">
+                  <div>{String(value)}</div>
+                  <Box marginTop="cmp-md">
+                    <Button
+                      colorScheme="accent"
+                      onClick={() => {
+                        setOpened(false);
+                        // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+                        onChange(value + 'a');
+                      }}
+                      wide
+                    >
+                      Do something
+                    </Button>
+                  </Box>
+                </Box>
+              </Popover.Panel>
+            )}
+          </Popover>
         );
       }) as React.FC<CellEditorProps>,
     },

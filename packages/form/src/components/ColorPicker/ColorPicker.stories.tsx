@@ -9,7 +9,7 @@ const meta: Meta<typeof ColorPicker> = {
   args: {
     colorIndicatorType: 'circle',
     defaultValue: '#000',
-    id: 'color-picker-id',
+    id: 'story-case',
     label: 'Label for story',
     labelPosition: 'top',
     liveUpdate: false,

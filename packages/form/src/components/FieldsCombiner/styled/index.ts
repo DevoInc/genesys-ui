@@ -1,2 +1,2 @@
-export * from './StyledFieldsCombinerElem';
+export * from './StyledFieldsCombinerItem';
 export * from './StyledFieldsCombinerWrapper';

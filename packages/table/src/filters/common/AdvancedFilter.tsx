@@ -1,46 +1,51 @@
 import * as React from 'react';
 
-import { Form, HFlex, IconButton, Panel, Popper } from '@devoinc/genesys-ui';
+import {
+  Form,
+  HFlex,
+  IconButton,
+  Panel,
+  Popover,
+  PopoverProps,
+} from '@devoinc/genesys-ui';
 
 type AdvancedFilterProps = {
   children: React.ReactNode;
   footer?: React.ReactNode;
   header?: React.ReactNode;
+  id: PopoverProps['id'];
 };
 
 export const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
   children,
   footer,
   header,
+  id,
 }) => {
-  const [isVisible, setIsVisible] = React.useState(false);
   return (
     <HFlex.Item flex="0 0 auto">
-      <Popper
-        visible={isVisible}
-        setIsVisible={setIsVisible}
-        placement={'top-end'}
-        trigger={
+      <Popover id={id} placement="bottom-start">
+        {({ toggle, ref, isOpened }) => (
           <IconButton
+            aria-controls={id}
+            aria-expanded={isOpened}
+            aria-haspopup="true"
             icon="gi-filter"
+            onClick={toggle}
+            ref={ref}
+            state={isOpened ? 'expanded' : undefined}
             size="sm"
             colorScheme="quiet"
-            aria-expanded={isVisible}
-            aria-controls="story-id"
-            aria-haspopup="true"
           />
-        }
-      >
+        )}
         <Panel
-          ref={null}
           maxHeight="34rem"
           bodySettings={{
             removeSpace: true,
           }}
           elevation="activated"
           size="sm"
-          id="story-id"
-          width={'28rem'}
+          width="28rem"
           footerSettings={{
             bordered: true,
             renderContent: footer,
@@ -51,7 +56,7 @@ export const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
         >
           <Form padding="cmp-sm">{children}</Form>
         </Panel>
-      </Popper>
+      </Popover>
     </HFlex.Item>
   );
 };

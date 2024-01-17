@@ -40,7 +40,6 @@ export * from './Pagination';
 export * from './Panel';
 export * from './PanelSection';
 export * from './Partitions';
-export * from './Popper';
 export * from './ProgressBar';
 export * from './RadioControl';
 export * from './SelectControl';

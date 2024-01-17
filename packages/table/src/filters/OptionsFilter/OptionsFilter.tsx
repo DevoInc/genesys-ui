@@ -32,6 +32,7 @@ export const OptionsFilter: React.FC<FilterProps> = ({ colDef }) => {
         />
       </BasicFilter>
       <AdvancedFilter
+        id={`options-adv-filter-${colDef.id}`}
         footer={
           <HFlex flex="1">
             <HFlex.Item>

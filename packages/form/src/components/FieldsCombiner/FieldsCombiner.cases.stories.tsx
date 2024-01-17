@@ -1,20 +1,22 @@
+import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { FieldsCombiner } from '..';
+import { FieldsCombiner } from './FieldsCombiner';
 import {
   ElemIconButton,
   ElemButton,
   ElemSelect,
   ElemCheckbox,
   ElemInputControl,
-  ElemPopper,
+  ElemPopover,
+  ElemSelectCustomWidth,
+  ElemInputControlCustomWidth,
 } from './__stories__/commonElements';
 
 const meta: Meta<typeof FieldsCombiner> = {
   title: 'Components/Form/FieldsCombiner/cases',
   component: FieldsCombiner,
   args: {
-    hasWideControl: true,
     size: 'md',
     status: 'base',
   },
@@ -28,8 +30,7 @@ export const InputAndButton: Story = {
   args: {
     id: 'fields-1',
     label: 'Input and Button to right',
-    leftElem: ElemInputControl,
-    rightElem: ElemButton,
+    children: [ElemInputControl, ElemButton],
   },
 };
 
@@ -38,8 +39,7 @@ export const InputAndIconButton: Story = {
   args: {
     id: 'fields-1',
     label: 'Input and IconButton to right',
-    leftElem: ElemInputControl,
-    rightElem: ElemIconButton,
+    children: [ElemInputControl, ElemIconButton],
   },
 };
 
@@ -48,18 +48,16 @@ export const ButtonAndIconButton: Story = {
   args: {
     id: 'fields-1',
     label: 'Button and IconButton to right',
-    leftElem: ElemButton,
-    rightElem: ElemIconButton,
+    children: [ElemButton, ElemIconButton],
   },
 };
 
-export const ButtonAndPopper: Story = {
-  name: 'Button and Popper',
+export const ButtonAndPopover: Story = {
+  name: 'Button and Popover',
   args: {
     id: 'fields-1',
-    label: 'Button and Popper to right',
-    leftElem: ElemButton,
-    rightElem: ElemPopper,
+    label: 'Button and Popover to right',
+    children: [ElemButton, ElemPopover],
   },
 };
 
@@ -68,8 +66,7 @@ export const InputAndCheckbox: Story = {
   args: {
     id: 'fields-1',
     label: 'Input and Checkbox to right',
-    leftElem: ElemInputControl,
-    rightElem: ElemCheckbox,
+    children: [ElemInputControl, ElemCheckbox],
   },
 };
 
@@ -78,7 +75,33 @@ export const SelectAndInput: Story = {
   args: {
     id: 'fields-1',
     label: 'Select and Input to right',
-    leftElem: ElemSelect,
-    rightElem: ElemInputControl,
+    children: [ElemSelect, ElemInputControl],
+  },
+};
+
+export const CustomWidths: Story = {
+  name: 'Custom widths',
+  args: {
+    id: 'fields-1',
+    label: 'Custom widths for fields',
+    children: [ElemSelectCustomWidth, ElemInputControlCustomWidth],
+  },
+};
+
+export const WithValidation: Story = {
+  name: 'With validation',
+  render: () => {
+    return (
+      <FieldsCombiner
+        id="fields-1"
+        label="Input and Button to right with error status"
+        size="md"
+        status="error"
+        helper="There is a problem with the text format."
+      >
+        <FieldsCombiner.Input aria-label="error input" id="test-2" />
+        <FieldsCombiner.Button>Send</FieldsCombiner.Button>
+      </FieldsCombiner>
+    );
   },
 };

@@ -3,4 +3,8 @@ export type FieldsCombinerType =
   | 'check'
   | 'field'
   | 'other'
-  | 'popper';
+  | 'popover';
+
+export type FieldsCombinerOrder = 'first' | 'last';
+
+export type FieldsCombinerCombinedButtons = boolean;

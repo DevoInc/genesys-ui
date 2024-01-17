@@ -38,7 +38,8 @@ according to the design pattern.
 The trigger component should be involved into a function.
 This function will receive the `ref` property, the `toggle`
 function, the `setOpened` function and `isOpened` as a boolean
-indicating when it's opened.
+indicating when it's opened. So it can be any clickable component
+built with forwardRef.
 
 - `ref`: used to retrieve the React ref of the _popper_ element.
 - `toggle`: function to toggle the content of the component.
@@ -107,6 +108,40 @@ These include:
 - Add to the trigger the `aria-haspopup` prop value to true.
 - Add to the trigger the `aria-expanded` prop value to true when the Popover is opened.
 - Add to the trigger the `aria-controls` prop value with the same value of the `id` prop of the component.
+
+## usePopper
+
+In case you require a specific behavior, you can use the hooks offered by the library
+directly in your code. You can refer to the documentation of [React Popper](https://popper.js.org/react-popper/v2/)
+for further details.
+
+Below is a brief example showcasing its use:
+
+<Source
+    code={`
+import * as React from 'react';
+import { usePopper } from 'react-popper';
+
+const Example = () => {
+const [referenceElement, setReferenceElement] = React.useState(null);
+const [popperElement, setPopperElement] = React.useState(null);
+const [arrowElement, setArrowElement] = React.useState(null);
+const { styles, attributes } = usePopper(referenceElement, popperElement, {
+modifiers: [{ name: 'arrow', options: { element: arrowElement } }],
+});
+
+    return (
+
+    <>
+      <button type="button" ref={setReferenceElement}>
+        Reference element
+      </button>
+      <div ref={setPopperElement} style={styles.popper} {...attributes.popper}>
+        Popper element
+        <div ref={setArrowElement} style={styles.arrow} />
+      </div>
+    </>
+    ); }; `} />
 
 ## Props
 

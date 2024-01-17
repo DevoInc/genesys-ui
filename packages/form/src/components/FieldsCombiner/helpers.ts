@@ -1,17 +1,21 @@
 import { css, DefaultTheme } from 'styled-components';
 
 import { FieldSize, FieldStatus } from '@devoinc/genesys-ui';
+import {
+  FieldsCombinerCombinedButtons,
+  FieldsCombinerOrder,
+} from './declarations';
 
 export interface FieldsCombinerMixinsProps {
-  combinedButtons?: boolean;
-  first: boolean;
+  combinedButtons?: FieldsCombinerCombinedButtons;
+  order: FieldsCombinerOrder;
   size: FieldSize;
-  status: FieldStatus;
+  status?: FieldStatus;
   theme: DefaultTheme;
 }
 
 export const fieldsCombinerInputAndSelectMixin = ({
-  first,
+  order,
   size,
   theme,
 }: FieldsCombinerMixinsProps) => {
@@ -27,14 +31,14 @@ export const fieldsCombinerInputAndSelectMixin = ({
       transition: all ease ${btnTokens.mutation.transitionDuration};
     }
 
-    &:focus {
-      box-shadow: none;
+    &:focus,
+    .react-select__control--is-focused {
       z-index: 3;
     }
 
     &,
     .react-select__control {
-      ${first
+      ${order === 'first'
         ? css`
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
@@ -54,7 +58,7 @@ export const fieldsCombinerInputAndSelectMixin = ({
 
 export const fieldsCombinerButtonMixin = ({
   combinedButtons,
-  first,
+  order,
   size,
   status,
   theme,
@@ -73,7 +77,7 @@ export const fieldsCombinerButtonMixin = ({
 
     ${combinedButtons
       ? css`
-          border-left: ${first
+          border-left: ${order === 'first'
             ? null
             : `solid ${aliasTokens.shape.borderSize.separator.md} ${
                 theme?.meta?.scheme === 'light'
@@ -88,7 +92,7 @@ export const fieldsCombinerButtonMixin = ({
 
           &,
           &::before {
-            ${first
+            ${order === 'first'
               ? css`
                   border-right-width: 0;
                 `
@@ -104,7 +108,7 @@ export const fieldsCombinerButtonMixin = ({
 
     &,
     &::before {
-      ${first
+      ${order === 'first'
         ? css`
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;

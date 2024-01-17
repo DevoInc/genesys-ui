@@ -1,41 +1,49 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import { FieldsCombinerType } from '../declarations';
+import { FieldsCombinerOrder, FieldsCombinerType } from '../declarations';
 import { FieldSize, FieldStatus } from '@devoinc/genesys-ui';
 
-export interface StyledFieldsCombinerElemProps {
+export interface StyledFieldsCombinerItemProps {
   combinedButtons?: boolean;
-  elemWidth?: React.CSSProperties['width'];
-  first?: boolean;
-  typeProp?: FieldsCombinerType;
+  $width?: React.CSSProperties['width'];
+  $order: FieldsCombinerOrder;
+  componentType?: FieldsCombinerType;
   size: FieldSize;
   status: FieldStatus;
 }
 
-export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps>`
-  ${({ combinedButtons, size, elemWidth, first, theme, typeProp, status }) => {
+export const StyledFieldsCombinerItem = styled.div<StyledFieldsCombinerItemProps>`
+  ${({
+    combinedButtons,
+    size,
+    $width,
+    $order,
+    theme,
+    componentType,
+    status,
+  }) => {
     const fieldTokens = theme.alias.fields;
     const btnTokens = theme.cmp.button;
     const height = btnTokens.size.height[size];
-    const width = btnTokens.size.square[size];
+    const checkWidth = btnTokens.size.square[size];
     const borderRadius = fieldTokens.shape.borderRadius;
 
     return css`
       position: relative;
       height: ${height};
-      width: ${elemWidth};
+      width: ${$width};
 
-      ${typeProp === 'button' || typeProp === 'check'
+      ${componentType === 'button' || componentType === 'check'
         ? css`
             z-index: 1;
             flex: 0 auto;
           `
         : css`
-            flex: ${!elemWidth && '1 1 auto'};
+            flex: ${!$width && '1 1 100%'};
           `}
 
-      ${typeProp === 'check' &&
+      ${componentType === 'check' &&
       css`
         display: flex;
         justify-content: center;
@@ -46,11 +54,11 @@ export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps
         border-color: ${fieldTokens.color.border[status]?.enabled};
         border-width: ${fieldTokens.shape.borderSize.base};
         border-radius: ${borderRadius};
-        width: ${width};
+        width: ${checkWidth};
         padding: 0;
         background-color: ${theme.alias.color.background.surface.base.raised};
 
-        ${first
+        ${$order === 'first'
           ? css`
               border-top-right-radius: 0;
               border-bottom-right-radius: 0;
@@ -70,7 +78,7 @@ export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps
       ${!combinedButtons &&
       css`
         // Right elem
-        ${!first &&
+        ${$order !== 'first' &&
         css`
           margin-left: -0.1rem;
         `}
@@ -82,7 +90,7 @@ export const StyledFieldsCombinerElem = styled.div<StyledFieldsCombinerElemProps
       `};
 
       // parent hover state
-      ${typeProp === 'check' &&
+      ${componentType === 'check' &&
       css`
         *:hover > & {
           border-color: ${fieldTokens.color.border.base.hovered};

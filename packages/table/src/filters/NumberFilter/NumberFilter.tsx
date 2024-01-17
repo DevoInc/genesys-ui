@@ -11,7 +11,7 @@ import {
 } from '../common';
 import { FilterProps } from '../declarations';
 
-export const NumberFilter: React.FC<FilterProps> = () => (
+export const NumberFilter: React.FC<FilterProps> = ({ colDef }) => (
   <FilterContainer>
     <BasicFilter>
       <InputControl
@@ -21,7 +21,7 @@ export const NumberFilter: React.FC<FilterProps> = () => (
         type="number"
       />
     </BasicFilter>
-    <AdvancedFilter>
+    <AdvancedFilter id={`number-adv-filter-${colDef.id}`}>
       <FilterRule
         defaultValue={numberDefaultValue}
         options={numberOptions}

@@ -11,7 +11,7 @@ import {
 } from '../common';
 import { FilterProps } from '../declarations';
 
-export const DateFilter: React.FC<FilterProps> = () => (
+export const DateFilter: React.FC<FilterProps> = ({ colDef }) => (
   <FilterContainer>
     <BasicFilter>
       <DateTimeFloatingPicker
@@ -20,7 +20,7 @@ export const DateFilter: React.FC<FilterProps> = () => (
         onCancel={() => undefined}
       />
     </BasicFilter>
-    <AdvancedFilter>
+    <AdvancedFilter id={`date-adv-filter-${colDef.id}`}>
       <SelectControl
         menuAppendToBody
         // onChange={(opt: SelectOption) => setValue(opt.value)}
