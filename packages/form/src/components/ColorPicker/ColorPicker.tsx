@@ -26,11 +26,11 @@ export interface ColorPickerProps
   value?: string;
   defaultValue: string;
   /** The placement of the floating color picker. */
-  pickerPlacement: PopoverProps['placement'];
+  pickerPlacement?: PopoverProps['placement'];
   /** DOM element where the floating color picker is appended. It is appended to the body by default. */
-  pickerAppendTo: PopoverProps['appendTo'];
+  pickerAppendTo?: PopoverProps['appendTo'];
   /** If the floating color picker is opened by default. */
-  pickerOpenedByDefault: PopoverProps['isOpened'];
+  pickerOpenedByDefault?: PopoverProps['isOpened'];
 }
 
 export const ColorPicker: React.FC<ColorPickerProps> = ({
