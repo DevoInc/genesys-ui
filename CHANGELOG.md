@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/DevoInc/genesys-ui/compare/v3.2.0...v4.0.0) (2024-01-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* Use Popover component instead of deleted Popper. Use new pre-defined children components for FieldsCombiner instead of elem props.
+
+### Features
+
+* Deleted Popper component and new way to define the FieldsCombiner children. ([0bca31c](https://github.com/DevoInc/genesys-ui/commit/0bca31c7fca4eb60e9fdcc55437869173a606e4f))
+
 ## [3.2.0](https://github.com/DevoInc/genesys-ui/compare/v3.1.1...v3.2.0) (2024-01-17)
 
 
