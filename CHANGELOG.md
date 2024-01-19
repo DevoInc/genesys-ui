@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/DevoInc/genesys-ui/compare/v4.0.0...v4.0.1) (2024-01-19)
+
+
+### Bug Fixes
+
+* **ColorPicker:** some recent new props have to be optional instead of required. ([a700091](https://github.com/DevoInc/genesys-ui/commit/a7000914c094b0c20ad0265fddb782104f7b98be))
+
 ## [4.0.0](https://github.com/DevoInc/genesys-ui/compare/v3.2.0...v4.0.0) (2024-01-17)
 
 
