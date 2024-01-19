@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.1.0](https://github.com/DevoInc/genesys-ui/compare/v4.0.1...v4.1.0) (2024-01-19)
+
+
+### Features
+
+* **PopoverPanel:** the default padding is not applied if the children are Panel components. ([3d90472](https://github.com/DevoInc/genesys-ui/commit/3d90472bb5d1209c31459fc2e738222cfa3c80f0))
+* QUV-1007 Improved the behavior of the icons in Input and Select components. ([b1ad869](https://github.com/DevoInc/genesys-ui/commit/b1ad869b1761e075733022aaec9ae2738f3ff5dc))
+
 ## [4.0.1](https://github.com/DevoInc/genesys-ui/compare/v4.0.0...v4.0.1) (2024-01-19)
 
 
