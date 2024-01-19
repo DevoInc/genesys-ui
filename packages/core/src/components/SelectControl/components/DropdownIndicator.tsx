@@ -9,6 +9,7 @@ import { showMenuAndDropDown } from '../utils';
 import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
 import { SelectOption } from '../declarations';
 import { STATUS_ICON_MAP } from '../../../constants';
+import { InnerSelectControlProps } from '../InnerSelectControl';
 
 const mapStatusIcon: {
   [key in RSDropdownIndicatorProps['selectProps']['status']]: keyof typeof iconDictionary;
@@ -21,7 +22,8 @@ const mapStatusIcon: {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface DropdownIndicatorProps<Option>
-  extends RSDropdownIndicatorProps<Option> {}
+  extends RSDropdownIndicatorProps<Option>,
+    Pick<InnerSelectControlProps, 'hideStatusIcon'> {}
 
 export const DropdownIndicator = <Option extends SelectOption>({
   selectProps,
@@ -33,13 +35,15 @@ export const DropdownIndicator = <Option extends SelectOption>({
     showMenuAndDropDown<Option>(selectProps) &&
     components.DropdownIndicator && (
       <components.DropdownIndicator selectProps={selectProps} {...props}>
-        {selectProps.status && selectProps.status !== 'base' && (
-          <Icon
-            iconId={mapStatusIcon[selectProps.status]}
-            colorScheme={selectProps.status}
-            className={`${selectProps.classNamePrefix}__status-icon`}
-          />
-        )}
+        {selectProps.status &&
+          selectProps.status !== 'base' &&
+          !selectProps.hideStatusIcon && (
+            <Icon
+              iconId={mapStatusIcon[selectProps.status]}
+              colorScheme={selectProps.status}
+              className={`${selectProps.classNamePrefix}__status-icon`}
+            />
+          )}
         <Icon iconId="gi-angle_down" />
       </components.DropdownIndicator>
     )

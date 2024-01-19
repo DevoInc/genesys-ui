@@ -23,6 +23,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
     classNamePrefix,
     isDisabled,
     hideSelectedOptions,
+    hideStatusIcon,
     isClearable,
     isMulti,
     menuIsOpen,
@@ -44,7 +45,9 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
     const defaultHorPadding = fieldTokens.space.padding.hor[size];
     const scrollSpacing = selectTokens.space.padding.scroll;
     const scrollOffset = spacingTokens.cmp.xxs;
-    const indicatorWidth = selectTokens.indicator.size.width[size];
+    const indicatorWidth = `calc(${selectTokens.indicator.size.width[size]} * ${
+      hasStatus(statusEval) && !hideStatusIcon ? 2 : 1
+    })`;
     const hasDropdownIndicator = menuIsOpen
       ? 0
       : (isMulti &&
@@ -59,6 +62,8 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
     const sortableSpacing = sortable ? scrollSpacing : '0rem';
 
     return css`
+      flex: 1 1 auto;
+
       .${classNamePrefix} {
         // CONTROL ///////////////////////////////////////////////////////////
         &__control {

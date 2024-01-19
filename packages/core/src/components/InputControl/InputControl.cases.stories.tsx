@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { InputControl } from '..';
+import { HFlex, IconButton, InputControl, VFlex } from '..';
 import * as React from 'react';
 
 const meta: Meta<typeof InputControl> = {
@@ -21,6 +21,7 @@ export default meta;
 type Story = StoryObj<typeof InputControl>;
 
 export const AdvancedUsage: Story = {
+  name: 'Advanced usage',
   render: () =>
     (() => (
       <InputControl.Container>
@@ -36,6 +37,29 @@ export const AdvancedUsage: Story = {
         </InputControl.InnerContainer>
         <InputControl.Addon position="right">Addon to right</InputControl.Addon>
       </InputControl.Container>
+    ))(),
+};
+
+export const SearchType: Story = {
+  name: 'Type search',
+  render: () =>
+    (() => (
+      <VFlex>
+        <InputControl
+          aria-label="With type icon"
+          placeholder="With type icon"
+          type="search"
+        />
+        <HFlex spacing="cmp-xxs">
+          <InputControl
+            aria-label="Without type icon"
+            hideTypeIcon
+            placeholder="Without type icon"
+            type="search"
+          />
+          <IconButton icon="gi-search_find_zoom" />
+        </HFlex>
+      </VFlex>
     ))(),
 };
 

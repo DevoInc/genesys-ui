@@ -18,6 +18,7 @@ export const InputControlIcon: React.FC<InputControlIconProps> = ({
   status,
   size,
   styles,
+  type,
 }) => (
   <StyledInputControlIcon
     aria-hidden
@@ -26,5 +27,6 @@ export const InputControlIcon: React.FC<InputControlIconProps> = ({
     status={status}
     isTypeIcon={isTypeIcon}
     css={styles}
+    type={type}
   />
 );

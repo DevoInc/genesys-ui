@@ -37,6 +37,12 @@ export interface BaseInputControlProps
   addonToLeft?: React.ReactNode;
   /** Fixed block of content at the end of the input */
   addonToRight?: React.ReactNode;
+  /** If the status icon which is shown automatically based on the status is hidden.
+   *  Usually when the InputControl is related with a validation helper to avoid redundancy. */
+  hideStatusIcon?: boolean;
+  /** If the type icon which is shown automatically based on the type is hidden.
+   *  E.g. when the InputControl is type search, but it's combined with an IconButton which has already the search icon. */
+  hideTypeIcon?: boolean;
 }
 
 export type InputControlProps =
@@ -64,6 +70,8 @@ const InternalInputControl: React.FC<InputControlProps> = ({
   disabled,
   form,
   formAction,
+  hideStatusIcon,
+  hideTypeIcon,
   icon,
   id,
   inputWidth,
@@ -103,9 +111,12 @@ const InternalInputControl: React.FC<InputControlProps> = ({
   value,
 }) => {
   const [showPassword, setShowPassword] = React.useState(false);
-  const typeIcon = type === 'search' ? 'gi-search_find_zoom' : null;
+  const typeIcon =
+    type === 'search' && !hideTypeIcon ? 'gi-search_find_zoom' : null;
   const iconEval =
-    icon || (hasStatus(status) ? INPUT_CONTROL_ICON_STATUS_MAP[status] : icon);
+    hasStatus(status) && !hideStatusIcon
+      ? INPUT_CONTROL_ICON_STATUS_MAP[status]
+      : icon;
   return (
     <InputControlContainer
       onClick={onClick}
@@ -146,6 +157,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
             size={size}
             status={status}
             styles={subcomponentStyles?.icon}
+            type={type}
           />
         )}
         {type === 'password' && (
