@@ -66,3 +66,5 @@ export const PanelFooter = InternalPanelFooter as typeof InternalPanelFooter & {
 PanelFooter.Container = PanelFooterContainer;
 PanelFooter.Help = PanelFooterHelp;
 PanelFooter.Actions = PanelFooterActions;
+
+PanelFooter.displayName = 'PanelFooter';

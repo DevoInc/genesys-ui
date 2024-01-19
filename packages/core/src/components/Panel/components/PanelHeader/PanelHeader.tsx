@@ -135,3 +135,5 @@ PanelHeader.Collapse = PanelHeaderCollapse;
 PanelHeader.Container = PanelHeaderContainer;
 PanelHeader.Heading = PanelHeaderHeading;
 PanelHeader.Icon = PanelHeaderIcon;
+
+PanelHeader.displayName = 'PanelHeader';
