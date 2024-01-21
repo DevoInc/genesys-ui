@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.2.0](https://github.com/DevoInc/genesys-ui/compare/v4.1.0...v4.2.0) (2024-01-21)
+
+
+### Features
+
+* **Popover:** added null option to the appendTo prop to avoid render de popover content at the end of the body (default behavior). ([bf99b7c](https://github.com/DevoInc/genesys-ui/commit/bf99b7cabc2501f60cecd0039f938fc1fd305a54))
+
 ## [4.1.0](https://github.com/DevoInc/genesys-ui/compare/v4.0.1...v4.1.0) (2024-01-19)
 
 
