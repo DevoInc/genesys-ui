@@ -38,7 +38,7 @@ export interface PopoverProps
   > {
   /** DOM element where the popper is appended. It is appended to the body
    * by default. */
-  appendTo?: HTMLElement;
+  appendTo?: HTMLElement | null;
   disableOutsideEvent?: boolean;
   /** The HTML id attribute which is added to the wrapper div of the floating content and should be used as 'aria-controls' value of the trigger. */
   id: React.HTMLAttributes<HTMLDivElement>['id'];
