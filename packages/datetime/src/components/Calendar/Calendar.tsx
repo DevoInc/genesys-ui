@@ -170,4 +170,4 @@ export const Calendar = InternalCalendar as typeof InternalCalendar & {
 
 Calendar.Cell = Cell;
 
-InternalCalendar.displayName = 'Calendar;';
+InternalCalendar.displayName = 'Calendar';

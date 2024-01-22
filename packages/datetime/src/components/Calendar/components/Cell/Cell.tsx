@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { format } from 'date-fns';
+import { AllHTMLAttributes } from 'react';
 
 import { StyledOverloadCssProps } from '@devoinc/genesys-ui';
 
 import { StyledCalendarCell } from './StyledCalendarCell';
-import { AllHTMLAttributes } from 'react';
 
 export interface CellProps extends StyledOverloadCssProps {
   /** classname to add */
