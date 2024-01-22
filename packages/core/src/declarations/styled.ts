@@ -1,4 +1,4 @@
-import React, { AllHTMLAttributes } from 'react';
+import React from 'react';
 import { CSSProp, DefaultTheme } from 'styled-components';
 import { HTMLTag } from './commonProps';
 

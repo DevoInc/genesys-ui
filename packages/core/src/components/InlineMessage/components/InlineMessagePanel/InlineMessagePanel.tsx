@@ -18,7 +18,6 @@ interface InlineMessagePanelProps
     Pick<InlineMessagePanelMixinProps, 'hasScroll'> {
   actions?: React.ReactElement[];
   children?: React.ReactNode;
-  className?: string;
   helpUrl?: string;
   icon?: string;
   id?: string;

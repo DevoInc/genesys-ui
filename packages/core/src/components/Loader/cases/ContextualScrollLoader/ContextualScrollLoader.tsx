@@ -13,7 +13,6 @@ export interface ContextualScrollLoaderProps
 }
 
 export const ContextualScrollLoader: React.FC<ContextualScrollLoaderProps> = ({
-  className,
   fixed,
   gradientHeight,
   progressIcon,
@@ -29,7 +28,6 @@ export const ContextualScrollLoader: React.FC<ContextualScrollLoaderProps> = ({
     <Loader
       {...nativeProps}
       {...(styles ? { styles } : { subcomponentStyles })}
-      className={className}
       fixed={fixed}
       gradientConfig={{
         height: gradientHeight,

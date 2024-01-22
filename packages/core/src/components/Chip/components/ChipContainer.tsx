@@ -27,7 +27,6 @@ export interface ChipContainerProps
 export const ChipContainer: React.FC<ChipContainerProps> = ({
   as,
   children,
-  className,
   id,
   onClick,
   onContextMenu,
@@ -62,7 +61,6 @@ export const ChipContainer: React.FC<ChipContainerProps> = ({
   return (
     <StyledChip
       as={as}
-      className={className}
       css={styles}
       id={id}
       onClick={onClick}

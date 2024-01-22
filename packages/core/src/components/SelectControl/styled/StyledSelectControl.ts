@@ -280,10 +280,6 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
             &__indicator-separator {
               display: none;
             }
-
-            &__status-icon {
-              font-size: 1.6rem;
-            }
           }
 
           // MULTIPLE

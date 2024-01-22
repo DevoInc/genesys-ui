@@ -12,10 +12,7 @@ import {
 import { Flex, Label, LabelProps } from '../../';
 
 export interface FieldLabelProps
-  extends Omit<
-      LabelProps,
-      'as' | 'className' | 'size' | 'textAlign' | 'truncated'
-    >,
+  extends Omit<LabelProps, 'as' | 'size' | 'textAlign' | 'truncated'>,
     GlobalAttrProps,
     GlobalAriaProps,
     StyledOverloadCssProps {

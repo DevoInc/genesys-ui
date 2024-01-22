@@ -118,11 +118,13 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
 
   return (
     <Grid
+      {...nativeProps}
       alignItems="center"
       gridTemplateColumns="repeat(7, 1fr)"
       justifyContent="center"
       rowGap="cmp-xxs"
       minWidth={theme.cmp.calendar.size.minWidth}
+      styles={styles}
     >
       {weekDays.map((day) => (
         <Cell key={day} value={day} className="weekDayName" />

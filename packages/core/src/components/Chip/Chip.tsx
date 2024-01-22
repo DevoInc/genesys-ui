@@ -26,7 +26,6 @@ export const InternalChip: React.FC<ChipProps> = ({
   'aria-label': ariaLabel,
   as,
   children,
-  className,
   defaultSelected = false,
   hasBoldIcon = false,
   icon,
@@ -73,7 +72,6 @@ export const InternalChip: React.FC<ChipProps> = ({
   return (
     <ChipContainer
       as={as}
-      className={className}
       id={id}
       onClick={onClick}
       onContextMenu={onContextMenu}

@@ -4,10 +4,11 @@ import { format } from 'date-fns';
 import { StyledOverloadCssProps } from '@devoinc/genesys-ui';
 
 import { StyledCalendarCell } from './StyledCalendarCell';
+import { AllHTMLAttributes } from 'react';
 
 export interface CellProps extends StyledOverloadCssProps {
   /** classname to add */
-  className?: string;
+  className?: AllHTMLAttributes<HTMLElement>['className'];
   /** Event fired when selected days change */
   onClick?: (ts: number) => void;
   /** Event fired when mouse enter a cell area */

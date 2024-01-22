@@ -9,7 +9,6 @@ export interface GlobalLoaderProps
     GlobalAriaProps {}
 
 export const GlobalLoader: React.FC<GlobalLoaderProps> = ({
-  className,
   fixed = true,
   styles,
   subcomponentStyles,
@@ -19,7 +18,6 @@ export const GlobalLoader: React.FC<GlobalLoaderProps> = ({
   <Loader
     {...nativeProps}
     {...(styles ? { styles } : { subcomponentStyles })}
-    className={className}
     colorScheme={'dark'}
     fixed={fixed}
     zIndex={zIndex}

@@ -37,12 +37,7 @@ import { LoaderGradientContainer, LoaderGradientOverlay } from './components';
 export interface BaseLoaderProps
   extends Pick<
       OverlayProps,
-      | 'alignItems'
-      | 'className'
-      | 'fixed'
-      | 'zIndex'
-      | 'justifyContent'
-      | 'padding'
+      'alignItems' | 'fixed' | 'zIndex' | 'justifyContent' | 'padding'
     >,
     // native
     GlobalAttrProps,
@@ -71,7 +66,6 @@ export type LoaderProps = BaseLoaderProps &
 const InternalLoader: React.FC<LoaderProps> = ({
   alignItems,
   as,
-  className,
   colorScheme = 'inherited',
   fixed,
   gradientConfig,
@@ -158,7 +152,6 @@ const InternalLoader: React.FC<LoaderProps> = ({
       alignItems={alignItems}
       bgColorScheme={evalColorScheme}
       bgColor={gradientConfig && 'transparent'}
-      className={className}
       fixed={fixed}
       hasInteractionBehind={Boolean(gradientConfig)}
       justifyContent={gradientConfig ? 'flex-end' : justifyContent}

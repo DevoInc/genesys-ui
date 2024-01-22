@@ -11,7 +11,6 @@ export interface InlineMessageBannerProps
 
 export const InlineMessageBanner: React.FC<InlineMessageBannerProps> = ({
   actions,
-  className,
   content,
   id,
   status,
@@ -22,7 +21,6 @@ export const InlineMessageBanner: React.FC<InlineMessageBannerProps> = ({
   return (
     <Banner
       actions={actions}
-      className={className}
       content={content}
       hideIcon
       id={id}

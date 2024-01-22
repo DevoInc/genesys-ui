@@ -35,7 +35,6 @@ export const ToastBadge: React.FC<ToastBadgeProps> = ({
     updates > 1 && (
       <Badge
         {...restBadgeProps}
-        className={`${status}-updates`}
         hasAbsolutePosition
         colorScheme={colorScheme || status}
         text={text || updates.toString()}

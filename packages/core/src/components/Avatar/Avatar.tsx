@@ -50,7 +50,6 @@ export const Avatar: React.FC<AvatarProps> = ({
   'aria-haspopup': ariaHasPopup,
   as,
   badge,
-  className,
   colorScheme = 'neutral',
   customSize,
   href,
@@ -76,7 +75,6 @@ export const Avatar: React.FC<AvatarProps> = ({
       {...(!isClickable && { ...styledProps })}
       aria-label={name}
       as={as}
-      className={className && `${className}__img`}
       colorScheme={colorScheme}
       customSize={customSize}
       imageFit={imageFit}
@@ -115,7 +113,6 @@ export const Avatar: React.FC<AvatarProps> = ({
       aria-expanded={ariaExpanded}
       aria-haspopup={ariaHasPopup}
       as={as || (href ? 'a' : 'button')}
-      className={className}
       customSize={customSize}
       href={href}
       iconOnHover={iconOnHover}

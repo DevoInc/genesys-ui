@@ -39,7 +39,6 @@ export type BannerProps = BaseBannerProps &
 export const InternalBanner: React.FC<BannerProps> = ({
   actions,
   as,
-  className,
   close,
   closeTooltip = 'Remove message',
   content,
@@ -57,7 +56,6 @@ export const InternalBanner: React.FC<BannerProps> = ({
     <BannerContainer
       {...ariaProps}
       as={as}
-      className={className}
       id={id}
       role={role}
       status={status}

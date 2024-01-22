@@ -41,7 +41,7 @@ export const DropdownIndicator = <Option extends SelectOption>({
             <Icon
               iconId={mapStatusIcon[selectProps.status]}
               colorScheme={selectProps.status}
-              className={`${selectProps.classNamePrefix}__status-icon`}
+              size="1.6rem"
             />
           )}
         <Icon iconId="gi-angle_down" />

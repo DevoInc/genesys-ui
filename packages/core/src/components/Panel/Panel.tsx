@@ -38,7 +38,6 @@ export interface BasePanelProps
     >,
     Pick<PanelFooterProps, 'helpTooltip' | 'helpUrl'> {
   children?: React.ReactNode;
-  className?: string;
   bodySettings?: BodySettingsProps;
   footerSettings?: FooterSettingsProps;
   headerSettings?: HeaderSettingsProps;
@@ -53,7 +52,6 @@ const InternalPanel: React.FC<PanelProps> = ({
   // PanelContainerProps
   as,
   bordered,
-  className,
   colorScheme,
   display,
   elevation = 'raised',
@@ -88,7 +86,6 @@ const InternalPanel: React.FC<PanelProps> = ({
       display={display}
       as={as}
       bordered={bordered}
-      className={className}
       colorScheme={colorScheme}
       elevation={elevation}
       id={id}

@@ -11,7 +11,6 @@ export interface ContextualLoaderProps
 
 export const ContextualLoader: React.FC<ContextualLoaderProps> = ({
   alignItems,
-  className,
   colorScheme = 'inherited',
   fixed,
   justifyContent,
@@ -31,7 +30,6 @@ export const ContextualLoader: React.FC<ContextualLoaderProps> = ({
       {...nativeProps}
       {...(styles ? { styles } : { subcomponentStyles })}
       alignItems={alignItems}
-      className={className}
       colorScheme={colorScheme}
       fixed={fixed}
       progressIcon={progressIcon}

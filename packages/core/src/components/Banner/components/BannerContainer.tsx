@@ -22,7 +22,6 @@ export interface BannerContainerProps
 export const BannerContainer: React.FC<BannerContainerProps> = ({
   as,
   children,
-  className,
   id,
   role,
   status,
@@ -33,7 +32,6 @@ export const BannerContainer: React.FC<BannerContainerProps> = ({
   <StyledBanner
     {...ariaProps}
     as={as}
-    className={className}
     css={styles}
     id={id}
     role={role}

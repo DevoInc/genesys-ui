@@ -17,13 +17,10 @@ export interface DevoLogoLoaderProps
     StyledPolymorphicProps,
     StyledOverloadCssProps,
     GlobalAttrProps,
-    GlobalAriaProps {
-  className?: string;
-}
+    GlobalAriaProps {}
 
 export const DevoLogoLoader: React.FC<DevoLogoLoaderProps> = ({
   animation = 'flow',
-  className,
   colorScheme = 'dark',
   size = 'md',
   styles,
@@ -33,7 +30,6 @@ export const DevoLogoLoader: React.FC<DevoLogoLoaderProps> = ({
   <StyledDevoLogoLoader
     {...nativeProps}
     animation={animation}
-    className={className}
     colorScheme={colorScheme}
     css={styles}
     size={size}
