@@ -7,6 +7,8 @@ import {
   GlobalAriaProps,
   GlobalAttrProps,
   InputControl,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
 } from '@devoinc/genesys-ui';
 
 import { CalendarProps } from '../../Calendar';
@@ -18,7 +20,9 @@ import { Datetime } from '../../declarations';
 export interface TimeProps
   extends Pick<CalendarProps, 'maxDate' | 'minDate'>,
     Required<Pick<GlobalAriaProps, 'aria-label'>>,
-    Pick<GlobalAttrProps, 'id'> {
+    Pick<GlobalAttrProps, 'id'>,
+    StyledOverloadCssProps,
+    StyledPolymorphicProps {
   /** If hasTime, allow to show the milliseconds. */
   hasMillis?: boolean;
   /** If hasTime, allow to show the seconds. */
@@ -33,14 +37,16 @@ export interface TimeProps
 
 export const Time: React.FC<TimeProps> = ({
   'aria-label': ariaLabel,
+  as,
   hasMillis = false,
   hasSeconds = true,
+  id,
   maxDate: maxMonth,
   minDate: minMonth,
   onChange,
   size = 'md',
+  styles,
   value: defaultValue = new Date().getTime(),
-  id,
 }) => {
   const value = toTimestamp(defaultValue);
   const minDate = toTimestamp(minMonth);
@@ -65,7 +71,7 @@ export const Time: React.FC<TimeProps> = ({
   }, [tmpValue, hasMillis, hasSeconds, maxDate, minDate]);
 
   return (
-    <Flex justifyContent="center">
+    <Flex as={as} justifyContent="center" styles={styles}>
       <Flex.Item flex="0 0 auto" minWidth="9.2rem">
         <InputControl
           aria-label={ariaLabel}

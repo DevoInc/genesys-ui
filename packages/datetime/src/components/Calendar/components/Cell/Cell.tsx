@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { format } from 'date-fns';
 
+import { StyledOverloadCssProps } from '@devoinc/genesys-ui';
+
 import { StyledCalendarCell } from './StyledCalendarCell';
 
-export interface CellProps {
+export interface CellProps extends StyledOverloadCssProps {
   /** classname to add */
   className?: string;
   /** Event fired when selected days change */
@@ -24,6 +26,7 @@ const InternalCell: React.FC<CellProps> = ({
   onMouseEnter,
   onMouseLeave,
   value,
+  styles,
   ts,
 }) => {
   const disabled = className && className.includes('disabled');
@@ -48,6 +51,7 @@ const InternalCell: React.FC<CellProps> = ({
       aria-label={dateFormated}
       aria-selected={className && className.includes('selected') ? true : null}
       className={`day ${className}`}
+      css={styles}
       data-cell={value}
       data-ts={ts}
       title={dateFormated}

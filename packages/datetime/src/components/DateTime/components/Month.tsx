@@ -19,6 +19,8 @@ import {
   HFlex,
   IconButton,
   InputControl,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
 } from '@devoinc/genesys-ui';
 import { CalendarProps } from '../../Calendar';
 import { Datetime } from '../../declarations';
@@ -26,7 +28,9 @@ import { toTimestamp } from '../../utils';
 
 export interface MonthProps
   extends Pick<CalendarProps, 'maxDate' | 'minDate'>,
-    Pick<GlobalAttrProps, 'id'> {
+    Pick<GlobalAttrProps, 'id'>,
+    StyledOverloadCssProps,
+    StyledPolymorphicProps {
   /** The aria-label attribute for the icon button to go to the next month. */
   ariaLabelInput: GlobalAriaProps['aria-label'];
   /** The aria-label attribute for the icon button to go to the next month. */
@@ -53,6 +57,7 @@ export const Month: React.FC<MonthProps> = ({
   ariaLabelInput = 'Select the month',
   ariaLabelNextMonth = 'Go to the next month',
   ariaLabelPrevMonth = 'Go to the previous month',
+  as,
   hasPrevMonthButton = true,
   hasNextMonthButton = true,
   id,
@@ -63,6 +68,7 @@ export const Month: React.FC<MonthProps> = ({
   onClickPrevMonth,
   onClickNextMonth,
   size = 'md',
+  styles,
 }) => {
   const value = toTimestamp(defaultValue);
   const minDate = toTimestamp(minMonth);
@@ -100,7 +106,7 @@ export const Month: React.FC<MonthProps> = ({
   );
 
   return (
-    <HFlex justifyContent="space-between" spacing="0">
+    <HFlex as={as} justifyContent="space-between" spacing="0" styles={styles}>
       {hasPrevMonthButton && (
         <IconButton
           aria-label={ariaLabelPrevMonth}

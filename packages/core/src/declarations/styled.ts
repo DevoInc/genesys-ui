@@ -9,8 +9,6 @@ export interface StyledPolymorphicProps<T = any> {
   /** Polymorphic prop to create a different HTML tag based in the styled components one:
    * https://styled-components.com/docs/api#as-polymorphic-prop */
   as?: HTMLTag | React.ComponentType<T>;
-  /** Only it's necessary when we need to use the polymorphic props 'as'. A string containing one or more class names for the element, used for CSS styling. */
-  className?: AllHTMLAttributes<T>['className'];
 }
 
 /** ---------------------------------------------

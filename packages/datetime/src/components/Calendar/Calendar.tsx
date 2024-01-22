@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
 import {
   getMonthDays,
@@ -6,12 +7,12 @@ import {
   getPrevDays,
   parseDays,
 } from './ephemerides';
-import { StyledCalendar } from './StyledCalendar';
 import { Cell, CellProps } from './components';
 import { checkValidDate } from './validations';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
+  Grid,
   StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '@devoinc/genesys-ui';
@@ -50,7 +51,7 @@ export interface CalendarProps
   weekDays?: [string, string, string, string, string, string, string];
 }
 
-export const Calendar: React.FC<CalendarProps> = ({
+export const InternalCalendar: React.FC<CalendarProps> = ({
   dateForMonth: monthToShow,
   hasLeftHoverEffect = true,
   hasRightHoverEffect = true,
@@ -68,6 +69,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   styles,
   ...nativeProps
 }) => {
+  const theme = useTheme();
   const dateForMonth = toTimestamp(monthToShow);
   const maxDate = toTimestamp(latestDate);
   const minDate = toTimestamp(earliestDate);
@@ -115,7 +117,13 @@ export const Calendar: React.FC<CalendarProps> = ({
   }, [customHoverDay]);
 
   return (
-    <StyledCalendar {...nativeProps} css={styles}>
+    <Grid
+      alignItems="center"
+      gridTemplateColumns="repeat(7, 1fr)"
+      justifyContent="center"
+      rowGap="cmp-xxs"
+      minWidth={theme.cmp.calendar.size.minWidth}
+    >
       {weekDays.map((day) => (
         <Cell key={day} value={day} className="weekDayName" />
       ))}
@@ -150,6 +158,14 @@ export const Calendar: React.FC<CalendarProps> = ({
         .map((_, idx) => (
           <Cell key={`prev${idx}`} />
         ))}
-    </StyledCalendar>
+    </Grid>
   );
 };
+
+export const Calendar = InternalCalendar as typeof InternalCalendar & {
+  Cell: typeof Cell;
+};
+
+Calendar.Cell = Cell;
+
+InternalCalendar.displayName = 'Calendar;';
