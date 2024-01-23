@@ -1,4 +1,5 @@
 import { AvatarSize, AvatarVariant } from './declarations';
+import { BadgeSize } from '../Badge/declarations';
 
 export const AVATAR_SIZE_BORDER_MAP: {
   [key in AvatarSize]?: string;
@@ -22,6 +23,20 @@ export const AVATAR_SIZE_SQUARE_MAP: {
   xl: '5.6rem',
   xxl: '6.4rem',
   xxxl: '7.2rem',
+};
+
+export const AVATAR_SIZE_BADGE_MAP: {
+  [key in AvatarSize]: BadgeSize;
+} = {
+  xxxs: 'sm',
+  xxs: 'sm',
+  xs: 'sm',
+  sm: 'md',
+  md: 'md',
+  lg: 'md',
+  xl: 'lg',
+  xxl: 'lg',
+  xxxl: 'lg',
 };
 
 export const VARIANT_VALUES: { [key in AvatarVariant]?: string } = {

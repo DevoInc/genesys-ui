@@ -1,59 +1,35 @@
 import * as React from 'react';
 
-import { Box } from '../';
-import { StyledScreenReadersOnly } from '../../styled';
-import { getAvatarInitials } from './utils';
+import { AVATAR_SIZE_BADGE_MAP } from './constants';
+
 import {
-  StyledAvatar,
-  StyledAvatarProps,
-  StyledAvatarWrapperClickable,
-  StyledAvatarWrapperClickableProps,
-} from './styled';
-import { AvatarBadge } from './declarations';
-import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  ImageAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-  TriggerAriaProps,
-} from '../../declarations';
+  AvatarContainer,
+  AvatarContainerProps,
+  AvatarInitials,
+  AvatarInitialsProps,
+  AvatarSROnly,
+} from './components';
+
+import { Box } from '../Box';
+import { Badge, BadgeColorScheme, BadgeSize } from '../Badge';
 
 export interface AvatarProps
-  extends Omit<StyledAvatarProps, '$disabled'>,
-    StyledAvatarWrapperClickableProps,
-    //native
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    ImageAttrProps,
-    // StyledAvatarWrapperClickable
-    TriggerAriaProps {
-  /** A Badge block to be shown over the Avatar. We recommend passing a Badge
-   * component, but you can pass any component or node. This Badge may be used
-   * to indicate status, presence... etc.*/
-  badge?: AvatarBadge | React.ReactNode;
-  /** If there is no image provided you can use instead one or two characters (as maximum) as a content. */
-  initials?: string;
-  /** Name of the Avatar used for image alt, default initials, aria-label... etc. */
-  name?: string;
-  /** The function to be triggered on click event. */
-  onClick?: () => void;
-  /** If avatar disabled*/
-  disabled?: boolean;
+  extends Omit<AvatarContainerProps, 'children' | 'aria-label'>,
+    AvatarInitialsProps {
+  /** A Badge block to be shown over the Avatar. We recommend passing a function which renders a Badge
+   * component, but you can render any component or node. The function has default values for 'size' and 'colorScheme'.
+   * This Badge may be used to indicate status, presence... etc.*/
+  badge?: (props: {
+    colorScheme: BadgeColorScheme;
+    size: BadgeSize;
+  }) => React.ReactNode;
 }
 
-export const Avatar: React.FC<AvatarProps> = ({
-  'aria-controls': ariaControls,
-  'aria-expanded': ariaExpanded,
-  'aria-haspopup': ariaHasPopup,
+export const InternalAvatar: React.FC<AvatarProps> = ({
   as,
   badge,
   colorScheme = 'neutral',
-  customSize,
   href,
-  iconOnHover,
   imageFit = 'cover',
   imageSrc,
   initials,
@@ -61,72 +37,53 @@ export const Avatar: React.FC<AvatarProps> = ({
   disabled = false,
   name,
   onClick = undefined,
+  role,
   size = 'md',
-  styles,
-  target,
   tooltip,
   variant = 'circle',
-  ...styledProps
-}) => {
-  const isClickable = href || onClick;
+  ...restContainerProps
+}) => (
+  <Avatar._Container
+    {...restContainerProps}
+    aria-label={name}
+    as={as || (href ? 'a' : onClick ? 'button' : 'span')}
+    bordered={bordered}
+    colorScheme={colorScheme}
+    imageFit={imageFit}
+    imageSrc={imageSrc}
+    onClick={onClick}
+    role={role || (onClick ? 'button' : imageSrc ? 'img' : undefined)}
+    size={size}
+    tooltip={tooltip || name}
+    variant={variant}
+  >
+    {!imageSrc && <Avatar._Initials name={name} initials={initials} />}
+    <Avatar._ScreenReadersOnly>{name}</Avatar._ScreenReadersOnly>
+    {badge && (
+      <Box
+        as="span"
+        position="absolute"
+        positionLeft="100%"
+        positionTop="100%"
+        cssTranslate={variant === 'circle' ? '-75%,-75%' : '-50%,-50%'}
+        zIndex={1}
+      >
+        {badge({ size: AVATAR_SIZE_BADGE_MAP[size], colorScheme: 'info' })}
+      </Box>
+    )}
+  </Avatar._Container>
+);
 
-  const avatarContent = (
-    <StyledAvatar
-      {...(!isClickable && { ...styledProps })}
-      aria-label={name}
-      as={as}
-      colorScheme={colorScheme}
-      customSize={customSize}
-      imageFit={imageFit}
-      imageSrc={imageSrc}
-      bordered={bordered}
-      $disabled={disabled}
-      role={imageSrc ? 'img' : undefined}
-      size={size}
-      styles={styles}
-      title={tooltip || name}
-      variant={variant}
-    >
-      {!imageSrc && (
-        <span aria-hidden="true">{getAvatarInitials({ initials, name })}</span>
-      )}
-      <StyledScreenReadersOnly>{name}</StyledScreenReadersOnly>
-      {badge && (
-        <Box
-          as="span"
-          position="absolute"
-          positionLeft="100%"
-          positionTop="100%"
-          cssTranslate={variant === 'circle' ? '-75%,-75%' : '-50%,-50%'}
-          zIndex={1}
-        >
-          {badge as React.ReactNode}
-        </Box>
-      )}
-    </StyledAvatar>
-  );
-
-  return isClickable ? (
-    <StyledAvatarWrapperClickable
-      {...styledProps}
-      aria-controls={ariaControls}
-      aria-expanded={ariaExpanded}
-      aria-haspopup={ariaHasPopup}
-      as={as || (href ? 'a' : 'button')}
-      customSize={customSize}
-      href={href}
-      iconOnHover={iconOnHover}
-      disabled={disabled}
-      bordered={bordered}
-      onClick={onClick}
-      size={size}
-      target={target}
-      title={tooltip || name}
-      variant={variant}
-    >
-      {avatarContent}
-    </StyledAvatarWrapperClickable>
-  ) : (
-    avatarContent
-  );
+export const Avatar = InternalAvatar as typeof InternalAvatar & {
+  _Container: typeof AvatarContainer;
+  _Initials: typeof AvatarInitials;
+  _ScreenReadersOnly: typeof AvatarSROnly;
+  _Badge: typeof Badge;
 };
+
+Avatar._Container = AvatarContainer;
+Avatar._Initials = AvatarInitials;
+Avatar._ScreenReadersOnly = AvatarSROnly;
+Avatar._Badge = Badge;
+
+InternalAvatar.displayName = 'Avatar';

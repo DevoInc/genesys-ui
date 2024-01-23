@@ -1,2 +1,1 @@
-export * from './StyledAvatar';
-export * from './StyledAvatarWrapperClickable';
+export * from './StyledAvatarContainer';

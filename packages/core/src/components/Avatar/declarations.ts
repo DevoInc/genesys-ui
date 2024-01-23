@@ -1,6 +1,7 @@
 import { PickUnion } from '../../typeFunctions';
+
 import { BaseSize, GlobalSize } from '../../declarations';
-import { BadgeProps } from '../Badge';
+
 import {
   BlendColorScheme,
   BrandColorScheme,
@@ -15,13 +16,6 @@ export type AvatarColorScheme =
   | BlendColorScheme
   | UIColorScheme
   | DataColorScheme;
-
-export type AvatarBadge = {
-  text: string;
-  icon: string;
-  colorScheme: AvatarColorScheme;
-  component: React.ComponentType<BadgeProps>;
-};
 
 export type AvatarSize =
   | BaseSize

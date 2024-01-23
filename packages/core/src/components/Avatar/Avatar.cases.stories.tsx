@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Avatar, Badge, Modal } from '../';
+import { Avatar, Badge, Modal, Typography } from '../';
 
 const EXAMPLE_AVATAR_IMG = 'https://i.pravatar.cc/300';
 
@@ -59,21 +59,29 @@ export const CustomSizeSVG: Story = {
 export const WithBadgeText: Story = {
   args: {
     name: 'Rick Sanchez :: version 9',
-    badge: <Badge text={'9'} />,
+    badge: ({ colorScheme, size }) => (
+      <Badge colorScheme={colorScheme} size={size} text={'9'} />
+    ),
   },
 };
 
 export const WithBadgeIcon: Story = {
   args: {
     name: 'Rick Sanchez :: version 9',
-    badge: <Badge icon="gi-diamond_prize_award_jewellery_ring" />,
+    badge: ({ colorScheme, size }) => (
+      <Badge
+        colorScheme={colorScheme}
+        size={size}
+        icon="gi-diamond_prize_award_jewellery_ring"
+      />
+    ),
   },
 };
 
 export const WithBadgeCustomColor: Story = {
   args: {
     name: 'Rick Sanchez :: online',
-    badge: <Badge colorScheme="success" />,
+    badge: ({ size }) => <Badge colorScheme="success" size={size} />,
     imageSrc: EXAMPLE_AVATAR_IMG,
   },
 };
@@ -94,7 +102,7 @@ export const ButtonEditable: Story = {
   args: {
     'aria-controls': 'modaleditprofile',
     'aria-haspopup': true,
-    customSize: { square: '12rem' },
+    customSize: { square: '8rem' },
     name: 'Edit profile',
     iconOnHover: 'gi-pencil_edit',
   },
@@ -104,8 +112,13 @@ export const ButtonEditable: Story = {
       return (
         <>
           {isOpen && (
-            <Modal onRequestClose={() => setOpen(false)}>
-              (Your avatar edition code goes here)
+            <Modal
+              onRequestClose={() => setOpen(false)}
+              headerTitle="Avatar edition"
+            >
+              <Typography.Paragraph>
+                (Your avatar edition form goes here)
+              </Typography.Paragraph>
             </Modal>
           )}
           <Avatar {...args} onClick={() => setOpen(true)} />
@@ -118,7 +131,7 @@ export const ButtonExpandable: Story = {
   args: {
     'aria-controls': 'lightbox',
     'aria-haspopup': true,
-    customSize: { square: '12rem' },
+    customSize: { square: '8rem' },
     name: 'Expand avatar image',
     iconOnHover: 'gi-zoom_expand_maximize_window',
     onClick: () => console.info('Opening lightbox to expand profile image'),
