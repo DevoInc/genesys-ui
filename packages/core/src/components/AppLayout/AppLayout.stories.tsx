@@ -6,14 +6,13 @@ import { AppBar } from '../AppBar';
 import { Tabs } from '../Tabs';
 import { Panel } from '../Panel';
 
-const meta: Meta<typeof AppLayout.Container> = {
+const meta: Meta<typeof AppLayout> = {
   title: 'Components/Core/Layout/AppLayout',
-  component: AppLayout.Container,
+  component: AppLayout,
   parameters: {
     layout: 'fullscreen',
   },
   subcomponents: {
-    'AppLayout.Container': AppLayout.Container,
     'AppLayout.Bar': AppLayout.Bar,
     'AppLayout.Lead': AppLayout.Lead,
     'AppLayout.Content': AppLayout.Content,
@@ -25,7 +24,7 @@ type Story = StoryObj<typeof AppLayout>;
 
 export const Base: Story = {
   render: () => (
-    <AppLayout.Container>
+    <AppLayout>
       <AppLayout.Bar>
         <AppBar.Container sticky>
           <AppBar.Heading id="bar-heading">Title</AppBar.Heading>
@@ -44,13 +43,13 @@ export const Base: Story = {
           <Panel.Body>Content</Panel.Body>
         </Panel.Container>
       </AppLayout.Content>
-    </AppLayout.Container>
+    </AppLayout>
   ),
 };
 
 export const DoubleNavigation: Story = {
   render: () => (
-    <AppLayout.Container>
+    <AppLayout>
       <AppLayout.Bar>
         <AppBar.Container>
           <AppBar.Heading id="bar-heading">Title</AppBar.Heading>
@@ -76,13 +75,13 @@ export const DoubleNavigation: Story = {
           <Panel.Body>Content</Panel.Body>
         </Panel.Container>
       </AppLayout.Content>
-    </AppLayout.Container>
+    </AppLayout>
   ),
 };
 
 export const ContentPadding: Story = {
   render: () => (
-    <AppLayout.Container>
+    <AppLayout>
       <AppLayout.Bar>
         <AppBar.Container sticky>
           <AppBar.Heading id="bar-heading">Title</AppBar.Heading>
@@ -97,14 +96,14 @@ export const ContentPadding: Story = {
         </AppBar.Container>
       </AppLayout.Bar>
       <AppLayout.Content padding="0">Without padding</AppLayout.Content>
-    </AppLayout.Container>
+    </AppLayout>
   ),
 };
 
 export const NoHeading: Story = {
   render: () => (
-    <AppLayout.Container>
+    <AppLayout>
       <AppLayout.Content>Without heading</AppLayout.Content>
-    </AppLayout.Container>
+    </AppLayout>
   ),
 };
