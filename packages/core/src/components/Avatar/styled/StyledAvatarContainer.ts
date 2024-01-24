@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 import icons from '@devoinc/genesys-icons/dist/icon-variables';
 
+import { AVATAR_SIZE_BORDER_MAP } from '../constants';
 import {
   AvatarColorScheme,
   AvatarFit,
@@ -10,14 +11,14 @@ import {
   AvatarVariant,
   CustomSize,
 } from '../declarations';
-import { AVATAR_SIZE_BORDER_MAP } from '../constants';
+
+import { getAvatarSizeConfig, getVariantValue } from '../utils';
+
 import {
   iconFontMixin,
   pseudoElementOverlayMixin,
   typoMixin,
 } from '../../../styled/';
-import { getAvatarSizeConfig, getVariantValue } from '../utils';
-import * as React from 'react';
 
 export interface StyledAvatarContainerProps {
   /** If the Avatar has a border to differentiate it from the background. */

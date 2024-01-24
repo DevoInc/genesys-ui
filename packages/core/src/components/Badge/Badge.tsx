@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
-// declarations
 import {
   GlobalAriaProps,
   GlobalAttrProps,
@@ -8,27 +8,26 @@ import {
   StyledPolymorphicProps,
 } from '../../declarations';
 
-// styled
-import {
-  StyledBadge,
-  StyledBadgeIcon,
-  StyledBadgeProps,
-  StyledBadgeText,
-} from './StyledBadge';
+import { BadgeContainer, BadgeContainerProps, BadgeText } from './components';
+import { Icon } from '../Icon';
 
 export interface BadgeProps
   extends StyledPolymorphicProps,
     StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps,
-    StyledBadgeProps {
+    BadgeContainerProps {
   /** Defines if the Badge icon is bold */
   hasBoldIcon?: boolean;
+  /** Text for the Badge (it shouldn't be longer than 2 characters) */
+  text?: string;
   /** Tooltip on Badge hover.*/
   tooltip?: string;
+  /** Icon as content of the badge.*/
+  icon?: string;
 }
 
-export const Badge: React.FC<BadgeProps> = ({
+export const InternalBadge: React.FC<BadgeProps> = ({
   colorScheme = 'neutral',
   hasAbsolutePosition = false,
   hasBoldIcon = false,
@@ -39,26 +38,38 @@ export const Badge: React.FC<BadgeProps> = ({
   tooltip,
   styles,
   ...nativeProps
-}) => (
-  <StyledBadge
-    {...nativeProps}
-    colorScheme={colorScheme}
-    css={styles}
-    icon={icon}
-    hasAbsolutePosition={hasAbsolutePosition}
-    inverse={inverse}
-    size={size}
-    text={text}
-    title={tooltip}
-  >
-    {!text && icon && (
-      <StyledBadgeIcon
-        aria-hidden={true}
-        className={icon || 'gi-check_thick'}
-        hasBoldIcon={hasBoldIcon}
-        size={size}
-      />
-    )}
-    {text && <StyledBadgeText>{text}</StyledBadgeText>}
-  </StyledBadge>
-);
+}) => {
+  const theme = useTheme();
+  return (
+    <Badge._Container
+      {...nativeProps}
+      colorScheme={colorScheme}
+      hasAbsolutePosition={hasAbsolutePosition}
+      inverse={inverse}
+      size={size}
+      styles={styles}
+      tooltip={tooltip}
+    >
+      {!text && icon && (
+        <Badge._Icon
+          iconId={icon || 'gi-check_thick'}
+          strong={hasBoldIcon}
+          size={theme.cmp.badge.icon.size.square[size]}
+        />
+      )}
+      {text && <Badge._Text>{text}</Badge._Text>}
+    </Badge._Container>
+  );
+};
+
+export const Badge = InternalBadge as typeof InternalBadge & {
+  _Container: typeof BadgeContainer;
+  _Icon: typeof Icon;
+  _Text: typeof BadgeText;
+};
+
+Badge._Container = BadgeContainer;
+Badge._Icon = Icon;
+Badge._Text = BadgeText;
+
+InternalBadge.displayName = 'Badge';

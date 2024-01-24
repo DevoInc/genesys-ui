@@ -118,7 +118,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
       ? INPUT_CONTROL_ICON_STATUS_MAP[status]
       : icon;
   return (
-    <InputControlContainer
+    <InputControl.Container
       onClick={onClick}
       onMouseDown={onMouseDown}
       onMouseLeave={onMouseLeave}
@@ -138,12 +138,12 @@ const InternalInputControl: React.FC<InputControlProps> = ({
           {addonToLeft}
         </Field.Addon>
       )}
-      <InputControlInnerContainer
+      <InputControl.InnerContainer
         inputWidth={inputWidth}
         styles={subcomponentStyles?.innerContainer}
       >
         {typeIcon && (
-          <InputControlIcon
+          <InputControl.Icon
             icon={typeIcon}
             size={size}
             status={status}
@@ -152,7 +152,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
           />
         )}
         {iconEval && (
-          <InputControlIcon
+          <InputControl.Icon
             icon={iconEval}
             size={size}
             status={status}
@@ -161,14 +161,14 @@ const InternalInputControl: React.FC<InputControlProps> = ({
           />
         )}
         {type === 'password' && (
-          <InputControlShowPassword
+          <InputControl.ShowPassword
             onClick={() => setShowPassword(!showPassword)}
             showPassword={showPassword}
             size={size}
             styles={subcomponentStyles?.showPassword}
           />
         )}
-        <InputControlInput
+        <InputControl.Input
           aria-describedby={ariaDescribedBy}
           aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
           aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
@@ -211,7 +211,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
           type={showPassword ? 'text' : type}
           value={value}
         />
-      </InputControlInnerContainer>
+      </InputControl.InnerContainer>
       {addonToRight && (
         <Field.Addon
           disabled={disabled}
@@ -222,7 +222,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
           {addonToRight}
         </Field.Addon>
       )}
-    </InputControlContainer>
+    </InputControl.Container>
   );
 };
 
@@ -242,3 +242,5 @@ InputControl.Icon = InputControlIcon;
 InputControl.Input = InputControlInput;
 InputControl.InnerContainer = InputControlInnerContainer;
 InputControl.ShowPassword = InputControlShowPassword;
+
+InternalInputControl.displayName = 'InputControl';

@@ -49,6 +49,7 @@ export const InternalAvatar: React.FC<AvatarProps> = ({
     as={as || (href ? 'a' : onClick ? 'button' : 'span')}
     bordered={bordered}
     colorScheme={colorScheme}
+    disabled={disabled}
     imageFit={imageFit}
     imageSrc={imageSrc}
     onClick={onClick}

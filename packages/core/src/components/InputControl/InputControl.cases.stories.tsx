@@ -1,7 +1,7 @@
+import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { HFlex, IconButton, InputControl, VFlex } from '..';
-import * as React from 'react';
 
 const meta: Meta<typeof InputControl> = {
   title: 'Components/Core/Form/InputControl/Cases',

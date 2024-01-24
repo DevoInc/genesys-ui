@@ -12,15 +12,33 @@ Component used to display a small piece of information, either as icon or text.
 
 ## How to import
 
-<Source
-  code={`
-import { Badge } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Badge } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
 <Canvas of={Stories.Base} />
+
+The `Badge` usually is a complement of other functional component as `Button`, `Menu.Item`... etc.
+communicating that something affects to that entity or adding info about states.
+
+<Canvas of={Stories.InOtherComponents} />
+
+We can define a `Badge` with three different content schemes:
+
+- **Empty**: it has no content and it's a bullet as a circle.
+- **Icon**: it has an icon as content, and it's a bullet with square aspect ratio.
+- **Text**: it has text as content, and it's a bullet with square aspect ratio if the text does not
+  have more than one character.
+
+The badge can't have icon and text at the same time. If both are defined, only te text is rendered.
+
+## Custom usage
+
+Sometimes you need something very specific, which is not possible using only the components and its props.
+In these cases, you can use its Internal components (`_` notation) to define that specific usage. We don't
+recommend this usage, but anyway it's available for very specific needs.
+
+<Canvas of={Stories.Custom} />
 
 ## Props
 
