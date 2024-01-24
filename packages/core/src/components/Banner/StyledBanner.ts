@@ -13,6 +13,7 @@ export const StyledBanner = styled.div<StyledBannerProps>`
     return css`
       position: relative;
       display: flex;
+      align-items: flex-start;
       gap: ${cmpTokens.space.padding};
       border: ${cmpTokens.shape.borderSize} solid
         ${cmpTokens.color.border[status]};

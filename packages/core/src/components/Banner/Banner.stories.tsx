@@ -8,15 +8,12 @@ const meta: Meta<typeof Banner> = {
   args: {
     status: 'info',
     closeTooltip: 'Remove message',
+    content: 'This is an example of Banner component content',
+    title: 'Title of Banner',
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Banner>;
 
-export const Base: Story = {
-  args: {
-    content: 'This is an example of Banner component content',
-    title: 'Title of Banner',
-  },
-};
+export const Base: Story = {};

@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { BannerHeadingProps } from './components';
+import { StyledOverloadCssPropsWithRecord } from '../../declarations';
+
 import {
   BannerActions,
   BannerActionsProps,
@@ -10,11 +11,13 @@ import {
   BannerContainerProps,
   BannerContent,
   BannerContentProps,
+  BannerContentContainer,
   BannerHeading,
+  BannerHeadingProps,
   BannerIcon,
 } from './components';
-import { Flex } from '../';
-import { StyledOverloadCssPropsWithRecord } from '../../declarations';
+
+import { BannerContext } from './context';
 
 export interface BaseBannerProps
   extends Omit<BannerContainerProps, 'children'>,
@@ -29,6 +32,8 @@ export interface BaseBannerProps
   hideIcon?: boolean;
   /** Banner title content */
   title?: BannerHeadingProps['children'];
+  /** To define the Banner based in internal components */
+  children?: BannerContainerProps['children'];
 }
 
 export type BannerProps = BaseBannerProps &
@@ -39,6 +44,7 @@ export type BannerProps = BaseBannerProps &
 export const InternalBanner: React.FC<BannerProps> = ({
   actions,
   as,
+  children,
   close,
   closeTooltip = 'Remove message',
   content,
@@ -53,7 +59,7 @@ export const InternalBanner: React.FC<BannerProps> = ({
   ...ariaProps
 }) => {
   return (
-    <BannerContainer
+    <Banner._Container
       {...ariaProps}
       as={as}
       id={id}
@@ -62,54 +68,63 @@ export const InternalBanner: React.FC<BannerProps> = ({
       styles={subcomponentStyles?.container || styles}
       tooltip={tooltip}
     >
-      {!hideIcon && (
-        <Flex.Item alignSelf="flex-start" flex="0 0 auto">
-          <BannerIcon status={status} styles={subcomponentStyles?.icon} />
-        </Flex.Item>
+      {children ? (
+        <BannerContext.Provider value={{ status }}>
+          {children}
+        </BannerContext.Provider>
+      ) : (
+        <>
+          {!hideIcon && (
+            <Banner._Icon status={status} styles={subcomponentStyles?.icon} />
+          )}
+          <Banner._ContentContainer>
+            {title && (
+              <Banner._Heading styles={subcomponentStyles?.heading}>
+                {title}
+              </Banner._Heading>
+            )}
+            {content && (
+              <Banner._Content styles={subcomponentStyles?.content}>
+                {content}
+              </Banner._Content>
+            )}
+            {actions && (
+              <Banner._Actions
+                actions={actions}
+                status={status}
+                styles={subcomponentStyles?.actions}
+              />
+            )}
+          </Banner._ContentContainer>
+          {close && (
+            <Banner._Close
+              onClick={close}
+              tooltip={closeTooltip}
+              styles={subcomponentStyles?.close}
+            />
+          )}
+        </>
       )}
-      <Flex.Item flex="1 1 auto">
-        {title && (
-          <BannerHeading styles={subcomponentStyles?.heading}>
-            {title}
-          </BannerHeading>
-        )}
-        {content && (
-          <BannerContent styles={subcomponentStyles?.content}>
-            {content}
-          </BannerContent>
-        )}
-        {actions && (
-          <BannerActions
-            actions={actions}
-            status={status}
-            styles={subcomponentStyles?.actions}
-          />
-        )}
-      </Flex.Item>
-
-      {close && (
-        <BannerClose
-          onClick={close}
-          tooltip={closeTooltip}
-          styles={subcomponentStyles?.close}
-        />
-      )}
-    </BannerContainer>
+    </Banner._Container>
   );
 };
 
 export const Banner = InternalBanner as typeof InternalBanner & {
-  Actions: typeof BannerActions;
-  Close: typeof BannerClose;
-  Container: typeof BannerContainer;
-  Content: typeof BannerContent;
-  Heading: typeof BannerHeading;
-  Icon: typeof BannerIcon;
+  _Actions: typeof BannerActions;
+  _Close: typeof BannerClose;
+  _Container: typeof BannerContainer;
+  _Content: typeof BannerContent;
+  _ContentContainer: typeof BannerContentContainer;
+  _Heading: typeof BannerHeading;
+  _Icon: typeof BannerIcon;
 };
 
-Banner.Actions = BannerActions;
-Banner.Close = BannerClose;
-Banner.Container = BannerContainer;
-Banner.Content = BannerContent;
-Banner.Heading = BannerHeading;
-Banner.Icon = BannerIcon;
+Banner._Actions = BannerActions;
+Banner._Close = BannerClose;
+Banner._Container = BannerContainer;
+Banner._Content = BannerContent;
+Banner._ContentContainer = BannerContentContainer;
+Banner._Heading = BannerHeading;
+Banner._Icon = BannerIcon;
+
+InternalBanner.displayName = 'Banner';

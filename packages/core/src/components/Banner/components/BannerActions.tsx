@@ -1,7 +1,9 @@
 import * as React from 'react';
 
-import { ButtonProps, HFlex } from '../../index';
+import { HFlex } from '../../HFlex';
+import { ButtonProps } from '../../Button';
 import { BannerContainerProps } from './BannerContainer';
+import { BannerContext } from '../context';
 
 export interface BannerActionsProps
   extends Pick<BannerContainerProps, 'status' | 'styles'> {
@@ -11,24 +13,25 @@ export interface BannerActionsProps
 export const BannerActions: React.FC<BannerActionsProps> = ({
   actions,
   styles,
-  status,
-}) => (
-  <HFlex
-    alignItems="center"
-    justifyContent="flex-end"
-    marginTop="cmp-sm"
-    spacing="cmp-xs"
-    styles={styles}
-  >
-    {React.Children.map(
-      actions,
-      (action, idx) =>
-        action &&
-        React.cloneElement(action, {
-          key: idx,
-          size: action.props.size || 'sm',
-          colorScheme: action.props.colorScheme || status,
-        }),
-    )}
-  </HFlex>
-);
+}) => {
+  const { status } = React.useContext(BannerContext);
+  return (
+    <HFlex
+      alignItems="center"
+      justifyContent="flex-end"
+      spacing="cmp-xs"
+      styles={styles}
+    >
+      {React.Children.map(
+        actions,
+        (action, idx) =>
+          action &&
+          React.cloneElement(action, {
+            key: idx,
+            size: action.props.size || 'sm',
+            colorScheme: action.props.colorScheme || status,
+          }),
+      )}
+    </HFlex>
+  );
+};

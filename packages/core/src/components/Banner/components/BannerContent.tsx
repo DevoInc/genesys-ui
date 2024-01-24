@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { StyledOverloadCssProps } from '../../../declarations';
-import { Typography } from '../../index';
+import { Typography } from '../../Typography';
 
 export interface BannerContentProps extends StyledOverloadCssProps {
   children: React.ReactNode;

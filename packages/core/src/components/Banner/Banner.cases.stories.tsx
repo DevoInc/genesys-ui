@@ -2,15 +2,18 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import Cookies from 'js-cookie';
 
-import { Banner, Button, Flex, VFlex } from '..';
+import { Flex } from '../Flex';
+import { VFlex } from '../VFlex';
+import { Button } from '../Button';
+import { Banner } from './Banner';
+
 import { lorem } from '../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Banner> = {
-  title: 'Components/Core/Layout/Banner/Cases',
+  title: 'Components/Core/Feedback/Banner',
   component: Banner,
   args: {
     status: 'info',
-    closeTooltip: 'Remove message',
   },
 };
 
@@ -19,7 +22,12 @@ type Story = StoryObj<typeof Banner>;
 
 const cookieId = 'genesys-ui-box-message-cookie-example';
 export const Cookie: Story = {
-  args: { content: lorem, title: 'Cookie Example' },
+  name: 'Removable based on cookies',
+  args: {
+    content: lorem,
+    title: 'Cookie Example',
+    closeTooltip: 'Remove message',
+  },
   render: (args) =>
     ((args) => {
       const [show, setShow] = React.useState(
@@ -61,4 +69,21 @@ export const Cookie: Story = {
         </VFlex>
       );
     })(args),
+};
+
+export const Custom: Story = {
+  name: 'Custom based in internal components',
+  render: (args) =>
+    ((args) => (
+      <Banner {...args} status="error">
+        <Banner._Icon />
+        <Banner._ContentContainer>
+          <Banner._Heading>Banner heading</Banner._Heading>
+          <Banner._Content>
+            This is an example of Banner component content
+          </Banner._Content>
+          <Banner._Actions actions={[<Button key="action">Action</Button>]} />
+        </Banner._ContentContainer>
+      </Banner>
+    ))(args),
 };

@@ -13,11 +13,7 @@ Component designed to display a message or notification to the user, with custom
 
 ## How to import
 
-<Source
-  code={`
-import { Banner } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Banner } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
@@ -25,9 +21,19 @@ import { Banner } from '@devoinc/genesys-ui';
 
 ## Cases
 
-### Using cookie
+### Removable using cookie
+
+You can make the `Banner` removable, based on cookies, using the `close` prop.
 
 <Canvas of={CaseStories.Cookie} />
+
+### Custom
+
+Sometimes you need something very specific, which is not possible using only the component and its props.
+In these cases, you can use its internal components (`_` notation) to define that specific usage.
+We don't recommend this usage, but anyway it's available for very specific needs.
+
+<Canvas of={CaseStories.Custom} />
 
 ## Props
 
