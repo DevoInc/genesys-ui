@@ -1,19 +1,12 @@
 import styled, { css } from 'styled-components';
 
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
-
 import { ButtonIconPosition, ButtonSize } from '../../declarations';
 
 export interface StyledButtonAddonProps {
+  /** If the button addon includes space next to it */
   hasSpace?: boolean;
-  /** If the button addon is an icon and what icon is  */
-  icon?: keyof typeof iconDictionary;
   /** If the button addon is a dropdown */
   isDropdown?: boolean;
-  /** If the button addon is a loader */
-  isLoader?: boolean;
-  /** If the button has square format as an IconButton */
-  squared?: boolean;
   /** The position of addon  */
   position?: ButtonIconPosition;
   /** Sets how much spacing, font-size, width... has the button addon etc. */

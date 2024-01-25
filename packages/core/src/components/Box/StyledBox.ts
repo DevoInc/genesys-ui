@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { boxMixin, BoxMixinProps } from '../../styled/';
+import { boxMixin, BoxMixinProps } from '../../styled';
 
 export interface StyledBoxProps extends Omit<BoxMixinProps, 'theme'> {}
 
@@ -72,5 +72,5 @@ export const StyledBox = styled.div<StyledBoxProps>`
       visibility,
       $width,
       zIndex,
-    })}}}
+    })}
 `;

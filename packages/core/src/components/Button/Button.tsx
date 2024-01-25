@@ -1,7 +1,10 @@
 import * as React from 'react';
 
 // constants
-import { BUTTON_BADGE_SIZE_MAP, BUTTON_LOADING_ICON_NAME } from './constants';
+import {
+  BUTTON_BADGE_SIZE_MAP,
+  BUTTON_LOADER_COLOR_SCHEME_MAP,
+} from './constants';
 
 // declarations
 import {
@@ -23,12 +26,17 @@ import { ButtonIconPosition } from './declarations';
 import {
   ButtonAddon,
   ButtonBadge,
+  ButtonDropdownIcon,
+  ButtonIcon,
   ButtonLabel,
+  ButtonLoader,
   ButtonSelection,
 } from './components';
 
-// styled
-import { StyledButton, StyledButtonProps } from './StyledButton';
+import {
+  ButtonContainer,
+  ButtonContainerProps,
+} from './components/ButtonContainer';
 
 export interface ButtonProps
   extends StyledPolymorphicProps,
@@ -41,7 +49,7 @@ export interface ButtonProps
     TriggerEventAttrProps,
     LinkAttrProps,
     Omit<ButtonAttrProps, 'disabled'>,
-    StyledButtonProps {
+    ButtonContainerProps {
   /** Content of the badge */
   badgeText?: string;
   /** Main content of the button */
@@ -54,12 +62,10 @@ export interface ButtonProps
   iconPosition?: ButtonIconPosition;
 }
 
-export const Button = React.forwardRef<HTMLElement, ButtonProps>(
+export const InternalButton = React.forwardRef<HTMLElement, ButtonProps>(
   (
     {
-      'aria-expanded': ariaExpanded,
       'aria-label': ariaLabel,
-      'aria-selected': ariaSelected,
       as,
       badgeText,
       children,
@@ -100,15 +106,11 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
       Boolean(!squared && isLoading) ||
       Boolean(icon && squared && hasDropdown);
     return (
-      <StyledButton
+      <ButtonContainer
         {...restNativeProps}
-        aria-expanded={state === 'expanded' || ariaExpanded}
-        aria-label={tooltip || ariaLabel}
-        aria-selected={isSelected || ariaSelected}
-        as={as || (selectionScheme && 'label') || (href && 'a')}
+        aria-label={ariaLabel}
+        as={as}
         colorScheme={colorScheme}
-        data-squared={squared}
-        disabled={state === 'disabled' || state === 'loading'}
         squared={squared}
         href={href}
         icon={icon}
@@ -116,14 +118,12 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
         circular={circular}
         hasDropdown={hasDropdown}
         wide={wide}
-        onFocus={selectionScheme ? null : onFocus}
-        onBlur={selectionScheme ? null : onBlur}
         ref={ref}
         selectionScheme={selectionScheme}
         size={size}
         state={state}
-        css={styles}
-        title={tooltip}
+        styles={styles}
+        tooltip={tooltip}
       >
         {selectionScheme && (
           <ButtonSelection
@@ -143,19 +143,22 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
         {(icon || isLoading) && (
           <ButtonAddon
             hasSpace={addonHasSpace}
-            icon={
-              state === 'loading-success' || state === 'loading-error'
-                ? BUTTON_LOADING_ICON_NAME[state]
-                : icon
-            }
             id={id}
-            hasBoldIcon={hasBoldIcon}
-            isLoader={state === 'loading'}
             position={defIconPosition}
             size={size}
-            state={state}
-            colorScheme={colorScheme}
-          />
+          >
+            {isLoading ? (
+              <ButtonLoader
+                colorScheme={BUTTON_LOADER_COLOR_SCHEME_MAP[colorScheme]}
+                size={size}
+                state={state}
+              />
+            ) : (
+              icon && (
+                <ButtonIcon hasBoldIcon={hasBoldIcon} icon={icon} size={size} />
+              )
+            )}
+          </ButtonAddon>
         )}
 
         {children && squared ? (
@@ -184,18 +187,37 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
 
         {hasDropdown && (
           <ButtonAddon
-            colorScheme={colorScheme}
             hasSpace={addonHasSpace}
             isDropdown
-            squared={squared}
-            position={'right'}
             size={size}
-            state={state}
-          />
+            position="right"
+          >
+            <ButtonDropdownIcon size={size} state={state} />
+          </ButtonAddon>
         )}
-      </StyledButton>
+      </ButtonContainer>
     );
   },
 );
 
-Button.displayName = 'Button';
+export const Button = InternalButton as typeof InternalButton & {
+  _Addon: typeof ButtonAddon;
+  _Badge: typeof ButtonBadge;
+  _Container: typeof ButtonContainer;
+  _DropdownIcon: typeof ButtonDropdownIcon;
+  _Icon: typeof ButtonIcon;
+  _Label: typeof ButtonLabel;
+  _Loader: typeof ButtonLoader;
+  _Selection: typeof ButtonSelection;
+};
+
+Button._Addon = ButtonAddon;
+Button._Badge = ButtonBadge;
+Button._Container = ButtonContainer;
+Button._DropdownIcon = ButtonDropdownIcon;
+Button._Icon = ButtonIcon;
+Button._Label = ButtonLabel;
+Button._Loader = ButtonLoader;
+Button._Selection = ButtonSelection;
+
+InternalButton.displayName = 'Button';

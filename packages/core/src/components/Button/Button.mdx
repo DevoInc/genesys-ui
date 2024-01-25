@@ -16,11 +16,7 @@ They are typically placed throughout your UI, including in dialogs, modal window
 
 ## How to import
 
-<Source
-  code={`
-import { Button } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Button } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
@@ -80,30 +76,38 @@ To use as a radio group, it must be used only as part of a group with the same v
 This allows the previous selected option to be automatically deselected when another one
 is selected because this type of selection is always unique.
 
-### Selectable multiple
+#### Selectable multiple
 
 When selectionScheme is `multiple`, the `Button` component is used as a form checkbox.
 It can either be uncontrolled or controlled.
 
-#### Uncontrolled
+##### Uncontrolled
 
 <Canvas of={SelectionStories.MultipleUncontrolled} />
 
-#### Controlled
+##### Controlled
 
 <Canvas of={SelectionStories.MultipleControlled} />
 
-### Selectable single
+#### Selectable single
 
 When selectionScheme is `single`, the `Button` component is used as a form radio.
 
-#### Uncontrolled
+##### Uncontrolled
 
 <Canvas of={SelectionStories.SingleUncontrolled} />
 
-#### Controlled
+##### Controlled
 
 <Canvas of={SelectionStories.SingleControlled} />
+
+### Custom based in internal components
+
+Sometimes you need something very specific, which is not possible using only the component and its props.
+In these cases, you can use its internal components (`_` notation) to define that specific usage.
+We don't recommend this usage, but anyway it's available for very specific needs.
+
+<Canvas of={CaseStories.Custom} />
 
 ## Props
 

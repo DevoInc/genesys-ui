@@ -3,17 +3,17 @@ import _ from 'lodash';
 
 import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
 
-import { SelectionScheme } from '../../declarations';
-import { ButtonColorScheme, ButtonState, ButtonSize } from './declarations';
+import { SelectionScheme } from '../../../../declarations';
+import { ButtonColorScheme, ButtonState, ButtonSize } from '../../declarations';
 
 import {
   typoMixin,
   btnResetMixin,
   pseudoElementOverlayMixin,
-} from '../../styled/mixins';
-import { loadingAnimationMixin } from './helpers';
+} from '../../../../styled/mixins';
+import { loadingAnimationMixin } from '../../helpers';
 
-export interface StyledButtonProps {
+export interface StyledButtonContainerProps {
   /** Color scheme: background color, text color, backdrop... etc. */
   colorScheme?: ButtonColorScheme;
   /** Icon Name */
@@ -34,7 +34,7 @@ export interface StyledButtonProps {
   state?: ButtonState;
 }
 
-export const StyledButton = styled.button<StyledButtonProps>`
+export const StyledButtonContainer = styled.button<StyledButtonContainerProps>`
   ${({
     colorScheme = 'neutral',
     icon,
