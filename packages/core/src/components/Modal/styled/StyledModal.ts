@@ -2,7 +2,7 @@ import { CSSProperties } from 'react';
 import styled, { css } from 'styled-components';
 
 import type { WindowSize } from '../declarations';
-import type { GlobalStatus } from '@devoinc/genesys-ui';
+import type { GlobalStatus } from '../../../declarations';
 import { elevationMixin } from '../../../styled';
 
 const windowSizeMap: { [key in WindowSize]: string } = {

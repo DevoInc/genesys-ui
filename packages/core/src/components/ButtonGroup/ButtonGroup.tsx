@@ -5,29 +5,31 @@ import { FLEX_SPACING_SIZE_MAP } from './constants';
 
 import { ButtonGroupSize } from './declarations';
 
-import { ButtonProps, Flex, FlexProps, IconButtonProps } from '../';
+import { Flex, FlexProps } from '../Flex';
+
+import { buttonGroupMixin, ButtonGroupMixinProps } from './helpers';
 
 import {
-  buttonGroupItemMixin,
-  buttonGroupMixin,
-  ButtonGroupMixinProps,
-} from './helpers';
-import { concat } from 'lodash';
+  ButtonGroupButton,
+  ButtonGroupIconButton,
+  ButtonGroupItem,
+} from './components';
+import { ButtonGroupContext } from './context';
+import { ButtonColorScheme } from '../Button';
 
 export interface ButtonGroupProps
   extends Omit<FlexProps, 'as' | 'children'>,
     Omit<ButtonGroupMixinProps, 'theme'> {
-  //TODO: add the Dropdown to this types when it's ready
-  children:
-    | React.ReactElement<ButtonProps>
-    | React.ReactElement<IconButtonProps>
-    | (React.ReactElement<ButtonProps> | React.ReactElement<IconButtonProps>)[];
-  /** The size of the buttons */
+  children: React.ReactElement<any> | React.ReactElement<any>[];
+  /** The size for the children buttons */
   size?: ButtonGroupSize;
+  /** The color scheme for the children buttons */
+  colorScheme?: ButtonColorScheme;
 }
 
-export const ButtonGroup: React.FC<ButtonGroupProps> = ({
+export const InternalButtonGroup: React.FC<ButtonGroupProps> = ({
   alignItems = 'center',
+  colorScheme,
   children,
   flexWrap = 'wrap',
   gap,
@@ -50,25 +52,45 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
       inline={inline}
       styles={buttonGroupMixin({ hidden, theme, visibilityTrigger })}
     >
-      {React.Children.map(children, (child, idx) => (
-        <Flex.Item
-          as="li"
-          key={idx}
-          styles={concat(
-            child.props.styles,
-            buttonGroupItemMixin({
-              quietChildButton: child.props?.colorScheme === 'quiet',
+      {React.Children.map(children, (child, idx) => {
+        const baseChild = (
+          <ButtonGroupContext.Provider
+            value={{
+              colorScheme,
               size,
-              theme,
-            }),
-          )}
-        >
-          {React.cloneElement(child, {
-            key: idx,
-            size: child.props?.size || size,
-          })}
-        </Flex.Item>
-      ))}
+              hasQuietButton:
+                child.props?.children?.props?.colorScheme === 'quiet',
+            }}
+          >
+            {child}
+          </ButtonGroupContext.Provider>
+        );
+        return child.type === ButtonGroupItem ? (
+          baseChild
+        ) : (
+          <ButtonGroup.Item
+            key={idx}
+            hasQuietButton={
+              child.props?.colorScheme === 'quiet' || colorScheme === 'quiet'
+            }
+            size={size}
+          >
+            {baseChild}
+          </ButtonGroup.Item>
+        );
+      })}
     </Flex>
   );
 };
+
+export const ButtonGroup = InternalButtonGroup as typeof InternalButtonGroup & {
+  Button: typeof ButtonGroupButton;
+  IconButton: typeof ButtonGroupIconButton;
+  Item: typeof ButtonGroupItem;
+};
+
+ButtonGroup.Button = ButtonGroupButton;
+ButtonGroup.IconButton = ButtonGroupIconButton;
+ButtonGroup.Item = ButtonGroupItem;
+
+InternalButtonGroup.displayName = 'ButtonGroup';

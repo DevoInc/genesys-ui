@@ -14,15 +14,65 @@ such as a set of actions that are all related to a specific feature or task.
 
 ## How to import
 
-<Source
-  code={`
-import { ButtonGroup } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { ButtonGroup } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
+There are pre-defined components to be used as children of a `ButtonGroup`. They are
+wrappers of other basic components of the library as `Button`, `IconButton` and `Flex.Item`
+ones. We recommend to use these components as children:
+
+- **ButtonGroup.Button**: it's the equivalent to the `Button` component, but it's able to
+  inherit some props automatically from its parent by a React context: size, colorScheme... etc.
+- **ButtonGroup.IconButton**: it's the equivalent to the `IconButton` component, but it's able to
+  inherit some props automatically from its parent by a React context: size, colorScheme... etc.
+- **ButtonGroup.Item**: it's the equivalent to the `Flex.Item` component, but it's able to
+  get some props automatically from its parent by a React context: size, the colorScheme of its children... etc.
+  As the same way of `Flex` contexts, we only have to use this component as container of `ButtonGroup.Button` and
+  `ButtonGroup.IconButton` when we need to apply some specific layout behavior: flex, width, align... etc.
+
+With `ButtonGroup.IconButtons`:
+
 <Canvas of={Stories.Base} />
+
+And with `ButtonGroup.Buttons`:
+
+<Canvas of={Stories.WithButtons} />
+
+In this example we can see how the children, when we use the pre-defined components,
+inherit the props from their parent:
+
+<Canvas of={Stories.InheritingFromParent} />
+
+Anyway, when we talk about inheriting props from its parent, they are overwritten when we define that prop
+directly on the child:
+
+<Canvas of={Stories.SpecificChildPropValue} />
+
+## Using items for custom layout behavior
+
+Sometimes we need to get a specific layout behavior, so in these cases we have to use the `ButtonGroup.Item` component,
+which is a wrapper of the `Flex.Item` component.
+
+<Canvas of={Stories.Items} />
+
+The children are automatically wrapped by this type of component, so we only need to define it if we need a specific
+layout or distribution of the children.
+
+This component can read several props from the context of its parent and its children, as when we have quiet buttons,
+and it reduces automatically the gap between elements to reduce the distance optical effect.
+
+<Canvas of={Stories.ItemsWithQuiet} />
+
+## Using not pre-defined ButtonGroup components
+
+You can use other components which are not the pre-defined ones (`ButtonGroup.Button` and `ButtonGroup.IconButton`),
+but they are not able to read the parent context, so they can't inherit the `colorScheme`, `size`... etc. prop values.
+
+In this example the `ButtonGroup` parent has 'success' `colorScheme` and 'xs' `size`, but the children
+are not inheriting those values:
+
+<Canvas of={Stories.ItemsWithQuietOtherComponents} />
 
 ## Props
 

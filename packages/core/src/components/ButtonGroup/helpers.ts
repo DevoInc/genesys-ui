@@ -50,22 +50,22 @@ export const buttonGroupMixin = ({
 
 export interface ButtonGroupItemMixinProps {
   /** If the child action has 'quiet' colorScheme. */
-  quietChildButton?: boolean;
+  hasQuietButton?: boolean;
   /** The size of the action/s */
   size?: ButtonSize;
   theme: DefaultTheme;
 }
 
 export const buttonGroupItemMixin = ({
-  quietChildButton,
+  hasQuietButton,
   size,
   theme,
 }: ButtonGroupItemMixinProps) => {
   const spacingBetweenButtons = getButtonGroupSpacingSize(size, theme);
   return css`
     list-style: none;
-    // to reduce the optical distancing effect when the buttons are quiet colorScheme
-    margin-left: ${quietChildButton
+    // to reduce the long distance optical effect when the buttons are quiet colorScheme
+    margin-left: ${hasQuietButton
       ? `calc((${spacingBetweenButtons} / 2) * -1)`
       : null};
   `;
