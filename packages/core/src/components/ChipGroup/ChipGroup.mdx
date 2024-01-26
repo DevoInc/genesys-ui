@@ -1,7 +1,6 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './ChipGroup.stories';
-import * as CaseStories from './ChipGroup.cases.stories';
 
 <Meta of={Stories} />
 
@@ -14,15 +13,29 @@ This can be useful when presenting a set of related options or for allowing user
 
 ## How to import
 
-<Source
-  code={`
-import { Badge } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Badge } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
+There is a pre-defined component called `ChipGroup.Chip` to be used as children of a `ChipGroup`.
+It is a simple wrapper of the `Chip`component which is able to inherit some props automatically
+from its parent by a React context: size, selectionScheme, name... etc.
+
 <Canvas of={Stories.Base} />
+
+We recommend to use this component, but anyway you can use also a `Chip` component.
+
+Anyway, when we talk about inheriting props from its parent, they are overwritten when we define that prop
+directly on the child.
+
+## Using not pre-defined ChipGroup components
+
+You can use `Chip` as children instead of the pre-defined `ChipGroup.Chip`,
+but it's not able to read the parent context, so it can't inherit the `selectionScheme`, `size`... etc. prop values.
+
+In this example the `ChipGroup` parent has 'xs' `size`, but the children are not inheriting this value:
+
+<Canvas of={Stories.UseOfChip} />
 
 ## Cases
 
@@ -31,14 +44,14 @@ import { Badge } from '@devoinc/genesys-ui';
 When multiple selection is needed (form checkboxes behavior), you can use the ChipGroup component to
 get a controlled ChipGroup with rendered form checkbox inputs as HTML and their keyboard utility.
 
-<Canvas of={CaseStories.MultipleSelection} />
+<Canvas of={Stories.MultipleSelection} />
 
 ### Single selection
 
 When a single selection is needed (form radios behavior), you can add the selectionScheme prop to 'single' and assign
 the name prop with the same value to every Chip to get a controlled ChipGroup with rendered form radio inputs as HTML and their keyboard utility.
 
-<Canvas of={CaseStories.SingleSelection} />
+<Canvas of={Stories.SingleSelection} />
 
 ## Props
 

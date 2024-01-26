@@ -14,9 +14,9 @@ export const MultiValueLabel = <Option extends SelectOption>({
   selectProps,
 }: MultiValueProps<Option>): React.ReactElement<MultiValueProps<Option>> => {
   return (
-    <React.Fragment>
+    <>
       {data.icon && (
-        <Chip.Icon
+        <Chip._Icon
           iconId={data.icon}
           strong={data.bold}
           size={getChipSize({
@@ -26,6 +26,6 @@ export const MultiValueLabel = <Option extends SelectOption>({
         />
       )}
       {data.label}
-    </React.Fragment>
+    </>
   );
 };

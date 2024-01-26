@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Chip, ChipGroup } from '../';
+import { ChipGroup } from '../ChipGroup';
+import { Chip } from '../Chip';
 
 const meta: Meta<typeof ChipGroup> = {
   title: 'Components/Core/Form/ChipGroup',
@@ -32,10 +33,128 @@ export const Base: Story = {
   args: {
     children: (
       <>
-        <Chip>Chip one</Chip>
-        <Chip>Chip two</Chip>
-        <Chip>Chip three</Chip>
+        <ChipGroup.Chip>Chip one</ChipGroup.Chip>
+        <ChipGroup.Chip>Chip two</ChipGroup.Chip>
+        <ChipGroup.Chip>Chip three</ChipGroup.Chip>
       </>
     ),
   },
+};
+
+export const MultipleSelection: Story = {
+  render: (args) =>
+    ((args) => {
+      const [selectedChips, setSelectedChips] = React.useState({
+        one: false,
+        two: false,
+        three: false,
+        four: false,
+      });
+      return (
+        <ChipGroup {...args} legend="Multiple selection">
+          <ChipGroup.Chip
+            state={selectedChips.one ? 'selected' : 'enabled'}
+            onChange={() => {
+              setSelectedChips({ ...selectedChips, one: !selectedChips?.one });
+            }}
+          >
+            Chip one
+          </ChipGroup.Chip>
+          <ChipGroup.Chip
+            state={selectedChips.two ? 'selected' : 'enabled'}
+            onChange={() => {
+              setSelectedChips({ ...selectedChips, two: !selectedChips?.two });
+            }}
+          >
+            Chip two
+          </ChipGroup.Chip>
+          <ChipGroup.Chip
+            state={selectedChips.three ? 'selected' : 'enabled'}
+            onChange={() => {
+              setSelectedChips({
+                ...selectedChips,
+                three: !selectedChips?.three,
+              });
+            }}
+          >
+            Chip three
+          </ChipGroup.Chip>
+          <ChipGroup.Chip
+            state={selectedChips.four ? 'selected' : 'enabled'}
+            onChange={() => {
+              setSelectedChips({
+                ...selectedChips,
+                four: !selectedChips?.four,
+              });
+            }}
+          >
+            Chip four
+          </ChipGroup.Chip>
+        </ChipGroup>
+      );
+    })(args),
+};
+
+export const SingleSelection: Story = {
+  render: (args) =>
+    ((args) => {
+      const [selectedChip, setSelectedChip] = React.useState(0);
+      return (
+        <ChipGroup
+          {...args}
+          legend="Single selection"
+          name="single-selection"
+          selectionScheme="single"
+        >
+          <ChipGroup.Chip
+            state={selectedChip === 1 ? 'selected' : 'enabled'}
+            onChange={() => {
+              setSelectedChip(1);
+            }}
+          >
+            Chip one
+          </ChipGroup.Chip>
+          <ChipGroup.Chip
+            state={selectedChip === 2 ? 'selected' : 'enabled'}
+            onChange={() => {
+              setSelectedChip(2);
+            }}
+          >
+            Chip two
+          </ChipGroup.Chip>
+          <ChipGroup.Chip
+            state={selectedChip === 3 ? 'selected' : 'enabled'}
+            onChange={() => {
+              setSelectedChip(3);
+            }}
+          >
+            Chip three
+          </ChipGroup.Chip>
+          <ChipGroup.Chip
+            state={selectedChip === 4 ? 'selected' : 'enabled'}
+            onChange={() => {
+              setSelectedChip(4);
+            }}
+          >
+            Chip four
+          </ChipGroup.Chip>
+        </ChipGroup>
+      );
+    })(args),
+};
+
+export const UseOfChip: Story = {
+  tags: ['isHidden'],
+  name: 'Using not pre-defined ChipGroup components',
+  render: (args) =>
+    ((args) => {
+      return (
+        <ChipGroup {...args} size="xs">
+          <Chip>Chip one</Chip>
+          <Chip>Chip two</Chip>
+          <Chip>Chip three</Chip>
+          <Chip>Chip four</Chip>
+        </ChipGroup>
+      );
+    })(args),
 };
