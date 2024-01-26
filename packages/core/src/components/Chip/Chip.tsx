@@ -9,6 +9,7 @@ import {
 } from './components';
 
 import { ChipContent, ChipContentProps } from './components/ChipContent';
+import { ChipContext } from './context';
 
 export interface ChipProps
   extends Omit<ChipContainerProps, 'children'>,
@@ -116,20 +117,24 @@ export const InternalChip: React.FC<ChipProps> = ({
         state={state}
         value={value}
       />
-      {iconId && <ChipIcon iconId={iconId} strong={hasBoldIcon} size={size} />}
+      {iconId && (
+        <ChipContext.Provider value={{ size, iconId }}>
+          <ChipIcon iconId={iconId} strong={hasBoldIcon} size={size} />
+        </ChipContext.Provider>
+      )}
       <ChipContent>{children}</ChipContent>
     </ChipContainer>
   );
 };
 
 export const Chip = InternalChip as typeof InternalChip & {
-  Container: typeof ChipContainer;
-  Content: typeof ChipContent;
-  HiddenInput: typeof ChipHiddenInput;
-  Icon: typeof ChipIcon;
+  _Container: typeof ChipContainer;
+  _Content: typeof ChipContent;
+  _HiddenInput: typeof ChipHiddenInput;
+  _Icon: typeof ChipIcon;
 };
 
-Chip.Container = ChipContainer;
-Chip.Content = ChipContent;
-Chip.HiddenInput = ChipHiddenInput;
-Chip.Icon = ChipIcon;
+Chip._Container = ChipContainer;
+Chip._Content = ChipContent;
+Chip._HiddenInput = ChipHiddenInput;
+Chip._Icon = ChipIcon;

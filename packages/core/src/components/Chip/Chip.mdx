@@ -1,7 +1,6 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './Chip.stories';
-import * as CaseStories from './Chip.cases.stories';
 
 <Meta of={Stories} />
 
@@ -14,11 +13,7 @@ They enable users to enter data, select options, filter content, or trigger spec
 
 ## How to import
 
-<Source
-  code={`
-import { Chip } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Chip } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
@@ -30,7 +25,7 @@ import { Chip } from '@devoinc/genesys-ui';
 
 In scenarios where multiple selections are allowed (using a form checkbox behavior), you can use a controlled Chip with a rendered form checkbox input as HTML and its corresponding keyboard utility.
 
-<Canvas of={CaseStories.MultipleControlled} />
+<Canvas of={Stories.MultipleControlled} />
 
 ### Multiple selection uncontrolled
 
@@ -38,14 +33,14 @@ If you need an uncontrolled behavior, you cannot use the onChange event handler 
 This way you will get an uncontrolled Chip with rendered form checkbox input as HTML and its corresponding keyboard utility.
 However, with an uncontrolled behavior, you cannot manage the change of the icon depending on whether the internal checkbox is checked or not.
 
-<Canvas of={CaseStories.MultipleUncontrolled} />
+<Canvas of={Stories.MultipleUncontrolled} />
 
 ### Single selection controlled
 
 When a single selection is required (using a form radio behavior), you must add the selectionScheme prop and set it to 'single'.
 This way, you will get a controlled Chip with rendered form radio input as HTML and its corresponding keyboard utility.
 
-<Canvas of={CaseStories.SingleControlled} />
+<Canvas of={Stories.SingleControlled} />
 
 ### Single selection uncontrolled
 
@@ -53,7 +48,15 @@ If you need an uncontrolled behavior, you must assign the name prop with the sam
 You cannot use the onChange event handler and must use the native behavior of a radio group.
 This way you will get an uncontrolled Chip with rendered form radio input as HTML and its corresponding keyboard utility.
 
-<Canvas of={CaseStories.SingleUncontrolled} />
+<Canvas of={Stories.SingleUncontrolled} />
+
+### Custom based in internal components
+
+Sometimes you need something very specific, which is not possible using only the component and its props.
+In these cases, you can use its internal components (`_` notation) to define that specific usage.
+We don't recommend this usage, but anyway it's available for very specific needs.
+
+<Canvas of={Stories.Custom} />
 
 ## Props
 

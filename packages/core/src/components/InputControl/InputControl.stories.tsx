@@ -7,9 +7,8 @@ const meta: Meta<typeof InputControl> = {
   component: InputControl,
   args: {
     size: 'md',
-    status: 'warning',
-    type: 'password',
-    icon: 'gi-folder',
+    status: 'base',
+    type: 'text',
   },
   argTypes: {
     addonToLeft: { control: { type: 'text' } },
