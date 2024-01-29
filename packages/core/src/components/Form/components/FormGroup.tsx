@@ -123,6 +123,10 @@ export const FormGroup: React.FC<FormGroupProps> = ({
           justifyContent={justifyContent}
         >
           {children}
+          {(!legend || hideLegend) &&
+            helper &&
+            hasFloatingHelper &&
+            FloatingHelperBlock}
         </FormDistributor>
       </StyledFormGroup>
       {helper && !hasFloatingHelper && (
