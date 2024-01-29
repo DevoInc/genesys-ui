@@ -2,14 +2,28 @@ import * as React from 'react';
 import { css, useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { SpinnerLoader, SpinnerLoaderProps } from '../../../../';
+import { ButtonProps } from '../../Button';
+import { ButtonSize } from '../../declarations';
+
+import { SpinnerLoader, SpinnerLoaderProps } from '../../../SpinnerLoader';
+import { ButtonIcon } from '../ButtonIcon';
+
+import {
+  BUTTON_LOADER_SIZE_MAP,
+  BUTTON_LOADING_ICON_NAME,
+} from '../../constants';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface ButtonLoaderProps extends SpinnerLoaderProps {}
+export interface ButtonLoaderProps
+  extends Omit<SpinnerLoaderProps, 'size'>,
+    Pick<ButtonProps, 'state'> {
+  size?: ButtonSize;
+}
 
 export const ButtonLoader: React.FC<ButtonLoaderProps> = ({
   colorScheme = 'dark',
   size = 'md',
+  state = 'enabled',
   styles,
   ...restSpinnerLoaderProps
 }) => {
@@ -18,12 +32,14 @@ export const ButtonLoader: React.FC<ButtonLoaderProps> = ({
     width: ${square};
     height: ${square};
   `;
-  return (
+  return state === 'loading' ? (
     <SpinnerLoader
       {...restSpinnerLoaderProps}
       colorScheme={colorScheme}
-      size={size}
+      size={BUTTON_LOADER_SIZE_MAP[size]}
       styles={concat(baseStyles, styles)}
     />
+  ) : (
+    <ButtonIcon icon={BUTTON_LOADING_ICON_NAME[state]} size={size} />
   );
 };

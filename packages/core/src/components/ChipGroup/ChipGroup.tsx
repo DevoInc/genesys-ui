@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ChipProps, Form, FormGroupProps } from '../../';
 import { WithRequired } from '../../typeFunctions';
 import { ChipGroupContext } from './context';
-import { ChipGroupChip, ChipGroupChipProps } from './components';
+import { ChipGroupChip } from './components';
 
 export interface ChipGroupProps
   extends WithRequired<
@@ -22,9 +22,7 @@ export interface ChipGroupProps
   size?: ChipProps['size'];
   /** Selection scheme to apply to all the children Chips */
   selectionScheme?: ChipProps['selectionScheme'];
-  children:
-    | React.ReactElement<ChipGroupChipProps>
-    | React.ReactElement<ChipGroupChipProps>[];
+  children: React.ReactElement | React.ReactElement[];
 }
 
 export const InternalChipGroup: React.FC<ChipGroupProps> = ({

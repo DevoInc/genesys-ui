@@ -14,9 +14,7 @@ export interface ChoiceGroupProps
     >,
     Pick<ChoiceGroupIconButtonProps, 'size' | 'selectionScheme'> {
   colorScheme?: 'neutral' | 'quiet';
-  children:
-    | React.ReactElement<ChoiceGroupIconButtonProps>
-    | React.ReactElement<ChoiceGroupIconButtonProps>[];
+  children: React.ReactElement | React.ReactElement[];
 }
 
 export const InternalChoiceGroup: React.FC<ChoiceGroupProps> = ({

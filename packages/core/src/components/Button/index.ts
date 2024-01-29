@@ -1,3 +1,3 @@
 export * from './declarations';
 export * from './Button';
-export * from './StyledButton';
+export * from './components/ButtonContainer/StyledButtonContainer';

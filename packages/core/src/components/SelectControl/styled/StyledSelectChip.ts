@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import icons from '@devoinc/genesys-icons/dist/icon-variables';
 
 import { iconFontMixin, pseudoElementMixin } from '../../../styled/mixins';
-import { StyledButton } from '../../Button/StyledButton';
+import { StyledButtonContainer } from '../../Button/components/ButtonContainer/StyledButtonContainer';
 import { StyledChip } from '../../Chip/styled';
 
 const getSortable = (sortable?: boolean) => {
@@ -60,7 +60,7 @@ export const StyledSelectChip = styled(StyledChip)<StyledSelectChipProps>`
         color: ${aliasTokens.color.text.body.strong};
       }
 
-      ${StyledButton} {
+      ${StyledButtonContainer} {
         margin-left: ${chipRemoveTokens.space.marginLeft};
         margin-right: ${chipRemoveTokens.space.marginRight};
       }

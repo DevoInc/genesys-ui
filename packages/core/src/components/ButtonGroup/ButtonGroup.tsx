@@ -20,7 +20,7 @@ import { ButtonColorScheme } from '../Button';
 export interface ButtonGroupProps
   extends Omit<FlexProps, 'as' | 'children'>,
     Omit<ButtonGroupMixinProps, 'theme'> {
-  children: React.ReactElement<any> | React.ReactElement<any>[];
+  children: React.ReactElement | React.ReactElement[];
   /** The size for the children buttons */
   size?: ButtonGroupSize;
   /** The color scheme for the children buttons */

@@ -18,11 +18,12 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const AsDropdown: Story = {
-  render: () =>
-    (() => {
+  render: (args) =>
+    ((args) => {
       const [expanded, setExpanded] = React.useState(false);
       return (
         <Button
+          {...args}
           hasDropdown
           state={expanded ? 'expanded' : 'enabled'}
           onClick={() => setExpanded(!expanded)}
@@ -30,7 +31,7 @@ export const AsDropdown: Story = {
           Dropdown button
         </Button>
       );
-    })(),
+    })(args),
 };
 
 export const AsLink: Story = {
@@ -40,4 +41,28 @@ export const AsLink: Story = {
     rel: 'noopener noreferrer',
     children: 'Go to Devo ',
   },
+};
+
+export const Custom: Story = {
+  name: 'Custom based in internal components',
+  render: (args) =>
+    ((args) => {
+      const [expanded, setExpanded] = React.useState(false);
+      return (
+        <Button._Container
+          {...args}
+          hasDropdown
+          state={expanded ? 'expanded' : 'enabled'}
+          onClick={() => setExpanded(!expanded)}
+          styles="height: 48px; background-color: gold;"
+        >
+          <Button._Label styles="font-style: italic;">
+            Dropdown button
+          </Button._Label>
+          <Button._Addon hasSpace isDropdown position="right">
+            <Button._DropdownIcon />
+          </Button._Addon>
+        </Button._Container>
+      );
+    })(args),
 };
