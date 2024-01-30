@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Field, InputControl } from '..';
+import { Field } from './Field';
+import { InputControl } from '../InputControl';
 
 const meta: Meta<typeof Field> = {
   title: 'Components/Core/Form/Field/Cases',
@@ -33,20 +34,20 @@ export const AdvancedUsage: Story = {
   name: 'Advanced usage',
   render: () =>
     (() => (
-      <Field.Container>
-        <Field.LabelDistributor>
-          <Field.Label
+      <Field._Container>
+        <Field._LabelDistributor>
+          <Field._Label
             htmlFor="story-field"
             requiredMark={
-              <Field.RequiredMark tooltip="This field is required" />
+              <Field._RequiredMark tooltip="This field is required" />
             }
           >
             Field label
-          </Field.Label>
+          </Field._Label>
           <InputControl aria-label="Field label" id="story-field" />
-        </Field.LabelDistributor>
-        <Field.Helper message="This is the Field helper" />
-      </Field.Container>
+        </Field._LabelDistributor>
+        <Field._Helper message="This is the Field helper" />
+      </Field._Container>
     ))(),
 };
 
@@ -54,11 +55,11 @@ export const AdvancedUsageWithValidation: Story = {
   name: 'Advanced usage with validation',
   render: () =>
     (() => (
-      <Field.Container>
-        <Field.LabelDistributor>
-          <Field.Label
+      <Field._Container>
+        <Field._LabelDistributor>
+          <Field._Label
             requiredMark={
-              <Field.RequiredMark
+              <Field._RequiredMark
                 colorScheme="error"
                 tooltip="This field is required"
               />
@@ -66,18 +67,18 @@ export const AdvancedUsageWithValidation: Story = {
             htmlFor="story-field"
           >
             Field label
-          </Field.Label>
+          </Field._Label>
           <InputControl
             aria-label="Field label"
             id="story-field"
             status="error"
           />
-        </Field.LabelDistributor>
-        <Field.Helper
+        </Field._LabelDistributor>
+        <Field._Helper
           status="error"
           message="This is the Field validation helper"
         />
-      </Field.Container>
+      </Field._Container>
     ))(),
 };
 
@@ -85,33 +86,33 @@ export const AdvancedUsageWithFloatingValidation: Story = {
   name: 'Advanced usage with floating validation',
   render: () =>
     (() => (
-      <Field.Container>
-        <Field.LabelDistributor>
-          <Field.Label
+      <Field._Container>
+        <Field._LabelDistributor>
+          <Field._Label
             htmlFor="story-field"
             requiredMark={
-              <Field.RequiredMark
+              <Field._RequiredMark
                 colorScheme="error"
                 tooltip="This field is required"
               />
             }
             helper={
-              <Field.FloatingHelper
+              <Field._FloatingHelper
                 status="error"
                 message="This is the Field floating validation helper"
               />
             }
           >
             Field label
-          </Field.Label>
-          <Field.ControlDistributor hasFloatingHelper>
+          </Field._Label>
+          <Field._ControlDistributor>
             <InputControl
               aria-label="Field label"
               id="story-field"
               status="error"
             />
-          </Field.ControlDistributor>
-        </Field.LabelDistributor>
-      </Field.Container>
+          </Field._ControlDistributor>
+        </Field._LabelDistributor>
+      </Field._Container>
     ))(),
 };

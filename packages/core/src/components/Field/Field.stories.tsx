@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Field } from '..';
+import { Field } from './Field';
 import { StyledInputControl } from '../InputControl/styled/StyledInputControl';
 
 const meta: Meta<typeof Field> = {

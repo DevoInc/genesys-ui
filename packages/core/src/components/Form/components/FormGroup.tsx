@@ -88,7 +88,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
     </Flex>
   );
   const RequiredMarkBlock = (
-    <Field.RequiredMark colorScheme={hasStatus(status) ? status : 'info'} />
+    <Field._RequiredMark colorScheme={hasStatus(status) ? status : 'info'} />
   );
 
   return (

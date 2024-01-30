@@ -13,9 +13,9 @@ export const SelectContainer: React.FC<ContainerProps> = (props) => {
     <components.SelectContainer {...props}>
       <Flex position="relative">
         {props.selectProps.addonToLeft && (
-          <Field.Addon size={props.selectProps.size}>
+          <Field._Addon size={props.selectProps.size}>
             {props.selectProps.addonToLeft}
-          </Field.Addon>
+          </Field._Addon>
         )}
         <Flex
           flexDirection="column"
@@ -36,9 +36,9 @@ export const SelectContainer: React.FC<ContainerProps> = (props) => {
           {props.children}
         </Flex>
         {props.selectProps.addonToRight && (
-          <Field.Addon position="right" size={props.selectProps.size}>
+          <Field._Addon position="right" size={props.selectProps.size}>
             {props.selectProps.addonToRight}
-          </Field.Addon>
+          </Field._Addon>
         )}
       </Flex>
     </components.SelectContainer>

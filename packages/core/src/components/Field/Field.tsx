@@ -66,7 +66,7 @@ export interface BaseFieldProps
   helper?: React.ReactNode;
   /** Make the label not visible, but still accessible. Anyway aria-label always exits in input control. */
   hideLabel?: boolean;
-  /** The title to be shown on hover of the required marker of the field. */
+  /** The title to be shown on hover of the required marker of the Field._ */
   requiredMarkTooltip?: FieldRequiredMarkProps['tooltip'];
   /** Label for the input (aria-label is the same as Label) */
   label: React.ReactNode;
@@ -74,7 +74,7 @@ export interface BaseFieldProps
   labelPosition?: LabelPosition;
   /** Size of the input: height, padding, font-size... etc. */
   size?: FieldSize;
-  /** This property defines the status color schema for the field. */
+  /** This property defines the status color schema for the Field._ */
   status?: FieldStatus;
 }
 
@@ -118,7 +118,7 @@ export const PartField: React.FC<FieldProps> = ({
   const labelPositionUpper = labelPosition.toUpperCase();
   const direction = FIELD_LABEL_POS_DIRECTION_MAP[labelPositionUpper];
   const RequiredMarkerBlock = (
-    <Field.RequiredMark
+    <Field._RequiredMark
       colorScheme={status as UIColorScheme}
       tooltip={requiredMarkTooltip}
       styles={subcomponentStyles?.requiredMark}
@@ -133,19 +133,19 @@ export const PartField: React.FC<FieldProps> = ({
     />
   );
   return (
-    <Field.Container
+    <Field._Container
       {...mouseEventAttrProps}
       as={as}
       role={role}
       styles={subcomponentStyles?.container || styles}
       tooltip={tooltip}
     >
-      <Field.LabelDistributor
+      <Field._LabelDistributor
         direction={direction}
         styles={subcomponentStyles?.labelDistributor}
       >
         {label && (
-          <Field.Label
+          <Field._Label
             cursor={disabled ? 'not-allowed' : undefined}
             labelPosition={labelPosition}
             srOnly={hideLabel}
@@ -157,9 +157,9 @@ export const PartField: React.FC<FieldProps> = ({
             styles={subcomponentStyles?.label}
           >
             {label}
-          </Field.Label>
+          </Field._Label>
         )}
-        <Field.ControlDistributor
+        <Field._ControlDistributor
           labelPosition={labelPosition}
           size={size}
           styles={subcomponentStyles?.controlDistributor}
@@ -184,8 +184,8 @@ export const PartField: React.FC<FieldProps> = ({
               styles={subcomponentStyles?.floatingHelper}
             />
           )}
-        </Field.ControlDistributor>
-      </Field.LabelDistributor>
+        </Field._ControlDistributor>
+      </Field._LabelDistributor>
       {helper && helperId && !hasFloatingHelper && (
         <Helper
           id={helperId}
@@ -195,26 +195,26 @@ export const PartField: React.FC<FieldProps> = ({
           status={status}
         />
       )}
-    </Field.Container>
+    </Field._Container>
   );
 };
 
 export const Field = PartField as typeof PartField & {
-  Addon: typeof FieldAddon;
-  Container: typeof FieldContainer;
-  ControlDistributor: typeof FieldControlDistributor;
-  FloatingHelper: typeof FloatingHelper;
-  Helper: typeof Helper;
-  Label: typeof FieldLabel;
-  LabelDistributor: typeof FieldLabelDistributor;
-  RequiredMark: typeof FieldRequiredMark;
+  _Addon: typeof FieldAddon;
+  _Container: typeof FieldContainer;
+  _ControlDistributor: typeof FieldControlDistributor;
+  _FloatingHelper: typeof FloatingHelper;
+  _Helper: typeof Helper;
+  _Label: typeof FieldLabel;
+  _LabelDistributor: typeof FieldLabelDistributor;
+  _RequiredMark: typeof FieldRequiredMark;
 };
 
-Field.Addon = FieldAddon;
-Field.Container = FieldContainer;
-Field.ControlDistributor = FieldControlDistributor;
-Field.Helper = Helper;
-Field.FloatingHelper = FloatingHelper;
-Field.Label = FieldLabel;
-Field.LabelDistributor = FieldLabelDistributor;
-Field.RequiredMark = FieldRequiredMark;
+Field._Addon = FieldAddon;
+Field._Container = FieldContainer;
+Field._ControlDistributor = FieldControlDistributor;
+Field._Helper = Helper;
+Field._FloatingHelper = FloatingHelper;
+Field._Label = FieldLabel;
+Field._LabelDistributor = FieldLabelDistributor;
+Field._RequiredMark = FieldRequiredMark;

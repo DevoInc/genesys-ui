@@ -130,13 +130,13 @@ const InternalInputControl: React.FC<InputControlProps> = ({
       tooltip={tooltip}
     >
       {addonToLeft && (
-        <Field.Addon
+        <Field._Addon
           disabled={disabled}
           size={size}
           styles={subcomponentStyles?.addon}
         >
           {addonToLeft}
-        </Field.Addon>
+        </Field._Addon>
       )}
       <InputControl.InnerContainer
         inputWidth={inputWidth}
@@ -213,14 +213,14 @@ const InternalInputControl: React.FC<InputControlProps> = ({
         />
       </InputControl.InnerContainer>
       {addonToRight && (
-        <Field.Addon
+        <Field._Addon
           disabled={disabled}
           position="right"
           size={size}
           styles={subcomponentStyles?.addon}
         >
           {addonToRight}
-        </Field.Addon>
+        </Field._Addon>
       )}
     </InputControl.Container>
   );
@@ -228,7 +228,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
 
 export const InputControl =
   InternalInputControl as typeof InternalInputControl & {
-    Addon: typeof Field.Addon;
+    Addon: typeof Field._Addon;
     Container: typeof InputControlContainer;
     Icon: typeof InputControlIcon;
     Input: typeof InputControlInput;
@@ -236,7 +236,7 @@ export const InputControl =
     ShowPassword: typeof InputControlShowPassword;
   };
 
-InputControl.Addon = Field.Addon;
+InputControl.Addon = Field._Addon;
 InputControl.Container = InputControlContainer;
 InputControl.Icon = InputControlIcon;
 InputControl.Input = InputControlInput;

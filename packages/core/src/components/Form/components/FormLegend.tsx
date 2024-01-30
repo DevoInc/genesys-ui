@@ -41,9 +41,9 @@ export const FormLegend: React.FC<FormLegendProps> = ({
         margin="0"
       >
         {hasLabelFormat ? (
-          <Field.Label helper={helper} requiredMark={requiredMark}>
+          <Field._Label helper={helper} requiredMark={requiredMark}>
             {text}
-          </Field.Label>
+          </Field._Label>
         ) : (
           <Typography.Heading as="span" size="h6">
             {requiredMark}

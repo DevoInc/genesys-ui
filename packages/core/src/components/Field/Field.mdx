@@ -29,13 +29,13 @@ We can get any case of the component using only `Field` and its props as in this
 But if we need a customization, or simply we want to use a specific piece of the component we have its subcomponents
 available following dot notation:
 
-- `Field.Container`: the outermost container which distributes the field control (control, label and floating validation) and the helper.
-- `Field.LabelDistributor`: the container which distributes the inner field control and the label.
-- `Field.ControlDistributor`: the container which distributes the child field control and the floating validation. It also controls the width. Here it's included the FloatingHelper if the Label is hidden.
-- `Field.Label`: The label content. Here it's included the FloatingHelper by its 'helper' prop if the Label is not hidden. Here it's included the RequiredMark by its 'requiredMark' prop if the field is mandatory.
-- `Field.RequiredMark`: The marker to indicate that the field is required or mandatory.
-- `Field.Helper`: The helper message to help the user to fill the field or for the validation message.
-- `Field.FloatingHelper`: The Helper, but displayed as a floating InlineMessage.
+- `Field._Container`: the outermost container which distributes the field control (control, label and floating validation) and the helper.
+- `Field._LabelDistributor`: the container which distributes the inner field control and the label.
+- `Field._ControlDistributor`: the container which distributes the child field control and the floating validation. It also controls the width. Here it's included the FloatingHelper if the Label is hidden.
+- `Field._Label`: The label content. Here it's included the FloatingHelper by its 'helper' prop if the Label is not hidden. Here it's included the RequiredMark by its 'requiredMark' prop if the field is mandatory.
+- `Field._RequiredMark`: The marker to indicate that the field is required or mandatory.
+- `Field._Helper`: The helper message to help the user to fill the field or for the validation message.
+- `Field._FloatingHelper`: The Helper, but displayed as a floating InlineMessage.
 
 This way, we can get the previous example, but using these subcomponents:
 

@@ -11,7 +11,7 @@ import { overlayMixin, OverlayMixinProps } from './helpers';
 import { Flex, FlexProps } from '../Flex';
 
 export interface OverlayProps
-  extends FlexProps,
+  extends Omit<FlexProps, 'opacity'>,
     Omit<OverlayMixinProps, 'theme'>,
     //native props
     MouseEventAttrProps,
