@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { FIELD_FLEX_CONFIG } from '../constants';
+import { StyledOverloadCssProps } from '../../../declarations';
 import { FieldDirection } from '../declarations';
 import { Flex } from '../../Flex';
-import { StyledOverloadCssProps } from '../../../declarations';
+import { FieldContext } from '../context';
 
 export interface FieldLabelDistributorProps extends StyledOverloadCssProps {
   children: React.ReactNode;
@@ -12,10 +13,12 @@ export interface FieldLabelDistributorProps extends StyledOverloadCssProps {
 
 export const FieldLabelDistributor: React.FC<FieldLabelDistributorProps> = ({
   children,
-  direction = 'column',
+  direction,
   styles,
 }) => {
-  const directionUpper = direction.toUpperCase();
+  const context = React.useContext(FieldContext);
+  const evalDirection = direction || context?.direction || 'column';
+  const directionUpper = evalDirection.toUpperCase();
   return (
     <Flex
       alignItems={FIELD_FLEX_CONFIG[directionUpper].AI}

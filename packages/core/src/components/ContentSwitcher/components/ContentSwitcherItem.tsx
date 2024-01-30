@@ -3,18 +3,18 @@ import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
 // constants
-import { CONTENT_SWITCHER_ITEM_SIZE_MAP } from '../../constants';
+import { CONTENT_SWITCHER_ITEM_SIZE_MAP } from '../constants';
 
 // declarations
-import { Button, ButtonProps } from '../../../Button';
-import { BaseSize } from '../../../../declarations';
+import { Button, ButtonProps } from '../../Button';
+import { BaseSize } from '../../../declarations';
 
 // helpers
 import {
   contentSwitcherItemMixin,
   ContentSwitcherItemMixinProps,
 } from './contentSwitcherItemMixin';
-import { ContentSwitcherContext } from '../../context';
+import { ContentSwitcherContext } from '../context';
 
 export interface ContentSwitcherItemProps
   extends Omit<

@@ -5,6 +5,7 @@ import { StyledOverloadCssProps } from '../../../declarations';
 import { getControlWidth } from '../../../styled/';
 import { Flex } from '../../Flex';
 import { FieldProps } from '../Field';
+import { FieldContext } from '../context';
 
 export interface FieldControlDistributorProps
   extends StyledOverloadCssProps,
@@ -21,13 +22,17 @@ export const FieldControlDistributor: React.FC<
   // to get vertically aligned the label with the control block anyway
   const labelLineHeight = theme.alias.typo.lineHeight.body[size];
   const inputWidthEval = getControlWidth({ theme, controlWidth: width });
+  const context = React.useContext(FieldContext);
+  const evalLabelPosition = labelPosition || context.labelPosition;
   return (
     <Flex
       alignItems="center"
       flex={
         inputWidthEval
           ? '0 1 auto'
-          : !wide || labelPosition === 'between' || labelPosition === 'right'
+          : !wide ||
+              evalLabelPosition === 'between' ||
+              evalLabelPosition === 'right'
             ? '0 0 auto'
             : '1 1 auto'
       }

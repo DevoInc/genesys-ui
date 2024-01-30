@@ -1,7 +1,6 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './Field.stories';
-import * as casesStories from './Field.cases.stories';
 
 <Meta of={Stories} />
 
@@ -9,7 +8,9 @@ import * as casesStories from './Field.cases.stories';
 
 ## Overview
 
-Component designed to wrap form controls such as Input, Select, Checkbox, and Textarea, providing additional functionality such as labeling, helper messages, and validation messages.
+Component designed to wrap form controls such as Input, Select, Checkbox, and Textarea, providing additional functionality
+such as labeling, helper messages, and validation messages.
+
 It also manages the layout and distribution of these elements within the field control.
 
 ## How to import
@@ -24,10 +25,11 @@ It also manages the layout and distribution of these elements within the field c
 
 We can get any case of the component using only `Field` and its props as in this example with an Input, label and helper:
 
-<Canvas sourceState="shown" of={casesStories.BasicUsageWithHelper} />
+<Canvas sourceState="shown" of={Stories.BasicUsageWithHelper} />
 
-But if we need a customization, or simply we want to use a specific piece of the component we have its subcomponents
-available following dot notation:
+Sometimes you need something very specific, which is not possible using only the component and its props.
+In these cases, you can use its internal components (`._` notation) to define that specific usage.
+We don't recommend this usage, but anyway it's available for very specific needs, usually for custom styles.
 
 - `Field._Container`: the outermost container which distributes the field control (control, label and floating validation) and the helper.
 - `Field._LabelDistributor`: the container which distributes the inner field control and the label.
@@ -37,18 +39,28 @@ available following dot notation:
 - `Field._Helper`: The helper message to help the user to fill the field or for the validation message.
 - `Field._FloatingHelper`: The Helper, but displayed as a floating InlineMessage.
 
-This way, we can get the previous example, but using these subcomponents:
+This way, we can get the previous example, but using these internal components to get custom styles
+for the color of the helper (Not recommended usage):
 
-<Canvas sourceState="shown" of={casesStories.AdvancedUsage} />
+<Canvas sourceState="shown" of={Stories.AdvancedUsage} />
 
 These are two examples of advanced usage, but with validation:
 
-<Canvas sourceState="shown" of={casesStories.AdvancedUsageWithValidation} />
+<Canvas sourceState="shown" of={Stories.AdvancedUsageWithValidation} />
 
-<Canvas
-  sourceState="shown"
-  of={casesStories.AdvancedUsageWithFloatingValidation}
-/>
+<Canvas sourceState="shown" of={Stories.AdvancedUsageWithFloatingValidation} />
+
+## Related components
+
+- [CheckboxControl](?path=/docs/components-core-form-checkboxcontrol--docs)
+- [InputControl](?path=/docs/components-core-form-inputcontrol--docs)
+- [RadioControl](?path=/docs/components-core-form-radiocontrol--docs)
+- [SelectControl](?path=/docs/components-core-form-selectcontrol--docs)
+- [SwitchControl](?path=/docs/components-core-form-switchcontrol--docs)
+- [TextareaControl](?path=/docs/components-core-form-textareacontrol--docs)
+- [Label](?path=/docs/components-core-form-label--docs)
+- [Helper](?path=/docs/components-core-feedback-helper--docs)
+- [FloatingHelper](?path=/docs/components-core-feedback-floatinghelper--docs)
 
 ## Props
 

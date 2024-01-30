@@ -4,7 +4,8 @@ import {
   StyledFieldRequiredMark,
   StyledFieldRequiredMarkProps,
 } from './StyledFieldRequiredMark';
-import { StyledOverloadCssProps } from '../../../declarations';
+import { StyledOverloadCssProps, UIColorScheme } from '../../../declarations';
+import { FieldContext } from '../context';
 
 export interface FieldRequiredMarkProps
   extends StyledFieldRequiredMarkProps,
@@ -14,13 +15,14 @@ export interface FieldRequiredMarkProps
 }
 
 export const FieldRequiredMark: React.FC<FieldRequiredMarkProps> = ({
-  colorScheme = 'info',
+  colorScheme,
   styles,
   tooltip,
 }) => {
+  const { status } = React.useContext(FieldContext);
   return (
     <StyledFieldRequiredMark
-      colorScheme={colorScheme}
+      colorScheme={colorScheme || (status as UIColorScheme)}
       css={styles}
       title={tooltip}
     >

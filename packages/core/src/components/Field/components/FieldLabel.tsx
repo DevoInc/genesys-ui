@@ -9,7 +9,9 @@ import {
   StyledOverloadCssProps,
 } from '../../../declarations';
 
-import { Flex, Label, LabelProps } from '../../';
+import { Label, LabelProps } from '../../Label';
+import { Flex } from '../../Flex';
+import { FieldContext } from '../context';
 
 export interface FieldLabelProps
   extends Omit<LabelProps, 'as' | 'size' | 'textAlign' | 'truncated'>,
@@ -32,23 +34,26 @@ export const FieldLabel: React.FC<FieldLabelProps> = ({
   helper,
   htmlFor,
   id,
-  labelPosition = 'top',
+  labelPosition,
   requiredMark,
-  size = 'md',
+  size,
   srOnly = false,
   styles,
   ...nativeProps
 }) => {
   // to get vertically aligned the label with the field control block anyway
   const labelLineHeight = useTheme().alias.typo.lineHeight.body[size];
+  const context = React.useContext(FieldContext);
+  const evalSize = size || context.size;
+  const evalLabelPosition = labelPosition || context.labelPosition;
 
-  return !(labelPosition === 'right') && helper && !srOnly ? (
+  return !(evalLabelPosition === 'right') && helper && !srOnly ? (
     <Flex {...nativeProps} alignItems="center" maxWidth="100%" gap="cmp-xxs">
       <Label
         cursor={cursor}
         htmlFor={htmlFor}
         id={id}
-        size={size}
+        size={evalSize}
         srOnly={srOnly}
         styles={styles}
       >
@@ -71,7 +76,7 @@ export const FieldLabel: React.FC<FieldLabelProps> = ({
       cursor={cursor}
       htmlFor={htmlFor}
       id={id}
-      size={size}
+      size={evalSize}
       srOnly={srOnly}
       styles={styles}
       truncated={false}

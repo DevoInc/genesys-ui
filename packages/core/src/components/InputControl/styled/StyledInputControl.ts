@@ -82,9 +82,7 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
     const inputColorPadding = css`calc(${aliasTokens.space.cmp.xxs} / 2)`;
     const inputRangeTrackHeight = css`calc(${aliasTokens.size.height.track.xs})`;
     const inputRangeHandlerSize = aliasTokens.handlers.size.square.md;
-    console.info(
-      `calc(${inputWithShowPasswordPadding} + ${inputWithIconPadding})`,
-    );
+
     return css`
       ${commonInputControlMixin({
         disabled,

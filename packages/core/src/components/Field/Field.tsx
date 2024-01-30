@@ -1,40 +1,35 @@
 import * as React from 'react';
 
 // types and constants
+import { FIELD_LABEL_POS_DIRECTION_MAP } from './constants';
+
 import {
   FieldAttrProps,
   ControlWidth,
   FieldSize,
   FieldStatus,
   GlobalAttrProps,
-  MouseEventAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-  StyledOverloadCssPropsWithRecord,
 } from '../../declarations';
 import { LabelPosition } from './declarations';
-import {
-  FIELD_HELPER_SIZE_MAP,
-  FIELD_LABEL_POS_DIRECTION_MAP,
-} from './constants';
+import { UIColorScheme } from '../../declarations';
 
 // utils
+import { WithRequired } from '../../typeFunctions';
 import { hasStatus } from '../../utils/validations';
 
 // components
-import { Helper } from '../Helper';
-import { FloatingHelper } from '../FloatingHelper';
 import {
   FieldAddon,
   FieldContainer,
+  FieldContainerProps,
   FieldControlDistributor,
+  FieldFloatingHelper,
   FieldLabel,
   FieldLabelDistributor,
   FieldRequiredMark,
   FieldRequiredMarkProps,
 } from './components';
-import { UIColorScheme } from '../../declarations';
-import { WithRequired } from '../../typeFunctions';
+import { FieldHelper } from './components/FieldHelper';
 
 export type FieldChildrenProps = React.ReactElement<{
   'aria-describedby': React.HTMLAttributes<unknown>['aria-describedby'];
@@ -48,12 +43,10 @@ export type FieldChildrenProps = React.ReactElement<{
   [key: string]: unknown;
 }>;
 
-export interface BaseFieldProps
+export interface FieldProps
   extends WithRequired<GlobalAttrProps, 'id'>,
     Pick<FieldAttrProps, 'disabled' | 'required'>,
-    MouseEventAttrProps,
-    StyledOverloadCssProps,
-    StyledPolymorphicProps {
+    Omit<FieldContainerProps, 'children'> {
   /** Children to be passed */
   children: FieldChildrenProps;
   /** Field control predefined width for Input, Select… etc. */
@@ -78,18 +71,6 @@ export interface BaseFieldProps
   status?: FieldStatus;
 }
 
-export type FieldProps = BaseFieldProps &
-  StyledOverloadCssPropsWithRecord<
-    | 'addon'
-    | 'container'
-    | 'controlDistributor'
-    | 'helper'
-    | 'floatingHelper'
-    | 'label'
-    | 'labelDistributor'
-    | 'requiredMark'
-  >;
-
 export const PartField: React.FC<FieldProps> = ({
   as,
   children,
@@ -108,7 +89,6 @@ export const PartField: React.FC<FieldProps> = ({
   size = 'md',
   status = 'base',
   styles,
-  subcomponentStyles,
   tooltip,
   ...mouseEventAttrProps
 }) => {
@@ -121,29 +101,27 @@ export const PartField: React.FC<FieldProps> = ({
     <Field._RequiredMark
       colorScheme={status as UIColorScheme}
       tooltip={requiredMarkTooltip}
-      styles={subcomponentStyles?.requiredMark}
     />
   );
   const FloatingHelperBlock = (
-    <FloatingHelper
+    <Field._FloatingHelper
       message={helper}
       id={helperId}
       status={hasStatus(status) ? status : 'help'}
-      styles={subcomponentStyles?.floatingHelper}
     />
   );
   return (
     <Field._Container
       {...mouseEventAttrProps}
       as={as}
+      direction={direction}
       role={role}
-      styles={subcomponentStyles?.container || styles}
+      size={size}
+      status={status}
+      styles={styles}
       tooltip={tooltip}
     >
-      <Field._LabelDistributor
-        direction={direction}
-        styles={subcomponentStyles?.labelDistributor}
-      >
+      <Field._LabelDistributor direction={direction}>
         {label && (
           <Field._Label
             cursor={disabled ? 'not-allowed' : undefined}
@@ -154,7 +132,6 @@ export const PartField: React.FC<FieldProps> = ({
             id={labelId}
             requiredMark={required ? RequiredMarkerBlock : null}
             size={size}
-            styles={subcomponentStyles?.label}
           >
             {label}
           </Field._Label>
@@ -162,7 +139,6 @@ export const PartField: React.FC<FieldProps> = ({
         <Field._ControlDistributor
           labelPosition={labelPosition}
           size={size}
-          styles={subcomponentStyles?.controlDistributor}
           wide={hasWideControl}
           width={controlWidth}
         >
@@ -176,22 +152,14 @@ export const PartField: React.FC<FieldProps> = ({
             'aria-labelledby':
               children.props['aria-labelledby'] || labelId || undefined,
           })}
-          {hideLabel && showFloatingHelper && (
-            <FloatingHelper
-              message={helper}
-              id={helperId}
-              status={hasStatus(status) ? status : 'help'}
-              styles={subcomponentStyles?.floatingHelper}
-            />
-          )}
+          {hideLabel && showFloatingHelper && FloatingHelperBlock}
         </Field._ControlDistributor>
       </Field._LabelDistributor>
       {helper && helperId && !hasFloatingHelper && (
-        <Helper
+        <Field._Helper
           id={helperId}
           message={helper}
-          size={FIELD_HELPER_SIZE_MAP[size]}
-          styles={subcomponentStyles?.helper}
+          size={size}
           status={status}
         />
       )}
@@ -203,8 +171,8 @@ export const Field = PartField as typeof PartField & {
   _Addon: typeof FieldAddon;
   _Container: typeof FieldContainer;
   _ControlDistributor: typeof FieldControlDistributor;
-  _FloatingHelper: typeof FloatingHelper;
-  _Helper: typeof Helper;
+  _FloatingHelper: typeof FieldFloatingHelper;
+  _Helper: typeof FieldHelper;
   _Label: typeof FieldLabel;
   _LabelDistributor: typeof FieldLabelDistributor;
   _RequiredMark: typeof FieldRequiredMark;
@@ -213,8 +181,8 @@ export const Field = PartField as typeof PartField & {
 Field._Addon = FieldAddon;
 Field._Container = FieldContainer;
 Field._ControlDistributor = FieldControlDistributor;
-Field._Helper = Helper;
-Field._FloatingHelper = FloatingHelper;
+Field._Helper = FieldHelper;
+Field._FloatingHelper = FieldFloatingHelper;
 Field._Label = FieldLabel;
 Field._LabelDistributor = FieldLabelDistributor;
 Field._RequiredMark = FieldRequiredMark;

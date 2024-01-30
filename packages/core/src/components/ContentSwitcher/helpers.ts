@@ -1,7 +1,7 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { CONTENT_SWITCHER_ITEM_SIZE_MAP } from '../../constants';
-import { BaseSize } from '../../../../declarations';
+import { CONTENT_SWITCHER_ITEM_SIZE_MAP } from './constants';
+import { BaseSize } from '../../declarations';
 
 export interface contentSwitcherContainerMixinProps {
   size?: BaseSize;
