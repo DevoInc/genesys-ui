@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { css } from 'styled-components';
 import type { DefaultTheme } from 'styled-components';
 
@@ -41,6 +42,7 @@ export const boxMixin =
     maxWidth,
     minHeight,
     minWidth,
+    opacity,
     overflow,
     overflowX,
     overflowY,
@@ -88,7 +90,8 @@ export const boxMixin =
       /* display and visibility */
       display: ${$display};
       transform: ${cssTranslate && `translate(${cssTranslate})`};
-      /* visibility: ${visibility}; */
+      visibility: ${visibility};
+      opacity: ${opacity};
       vertical-align: ${verticalAlign};
 
       /* clipping */

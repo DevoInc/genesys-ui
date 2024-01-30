@@ -31,6 +31,8 @@ export interface LayoutCommonProps {
   minHeight?: CSSProperties['minHeight'];
   /** Css min-width */
   minWidth?: CSSProperties['minWidth'];
+  /** Css opacity */
+  opacity?: CSSProperties['opacity'];
   /** Css overflow */
   overflow?: CSSProperties['overflow'];
   /** Css overflow-x */

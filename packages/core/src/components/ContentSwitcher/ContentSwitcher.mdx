@@ -1,7 +1,6 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './ContentSwitcher.stories';
-import * as CaseStories from './ContentSwitcher.cases.stories';
 
 <Meta of={Stories} />
 
@@ -13,19 +12,64 @@ Component that allows users to switch between different content sections within 
 
 ## How to import
 
-<Source
-  code={`
-import { ContentSwitcher } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { ContentSwitcher } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
+Is a navigation block whose children are selectable options where only of those
+can be selected at the same time (as in a radio group).
+
+There is a pre-defined component to be used as child: `ContentSwitcher.Item`.
+This component is a wrapper of the `Button` component, but with specific styles
+and ready to read the context props from its parent.
+
 <Canvas of={Stories.Base} />
 
-## Cases
+### Switching content
 
-### Accessible example with content
+In any case, we have the navigation block, but obviously we need also the content blocks to be switched:
+
+<Canvas of={Stories.AccessibleWithContent} />
+
+### Using states
+
+Usually we can get something functional, using a state which defines the selected option
+and the function to change this. There could be multiple ways to do that,
+but this could be an example:
+
+<Source
+  code={`
+    import { ContentSwitcher, Box, VFlex } from '@devoinc/genesys-ui';
+    const customCmp = () => {
+      const [selection, setSelection] = React.useState('first');
+      return (
+        <VFlex>
+          <ContentSwitcher>
+            {data.map((option) => (
+              <ContentSwitcher.Item
+                onChange={() => {
+                  setSelection(option.id);
+                }}
+                state={option.id === selection ? 'selected' : 'enabled'}
+              >
+                {option.label}
+              </ContentSwitcher.Item>
+            ))}
+          </ContentSwitcher>
+          {data.map((option) => (
+            <Box
+              aria-labelledby={option.id}
+              display={option.id === selection ? 'block' : 'none'}
+            >
+              {option.content}
+            </Box>
+          ))}
+        </VFlex>
+      );
+    `}
+/>
+
+### Accessibility
 
 To ensure full accessibility of the component, we need to consider multiple aspects. These include:
 
@@ -34,16 +78,43 @@ To ensure full accessibility of the component, we need to consider multiple aspe
 - Including `role='tabpanel'` in the controlled content blocks.
 - Setting the `tabIndex` of the controlled content blocks to `0` in order to maintain the tabbing focus order.
 
-<Canvas of={CaseStories.AccesibleWithContent} />
-
-## Subcomponents
-
-- [Item](?path=/docs/components-core-navigation-contentswitcher-subcomponents--docs)
-
-## Props
-
-<ArgTypes of={Stories} />
+<Source
+  code={`
+    import { ContentSwitcher, Box, VFlex } from '@devoinc/genesys-ui';
+    ...
+    const customCmp = () => {
+      return (
+        <VFlex>
+          <ContentSwitcher>
+            {data.map((option) => (
+              <ContentSwitcher.Item
+                aria-controls={'content-' + option.id}
+                id={option.id}
+              >
+                ...
+              </ContentSwitcher.Item>
+            ))}
+          </ContentSwitcher>
+          {data.map((option) => (
+            <Box
+              aria-labelledby={option.id}
+              id={'content-' + option.id}
+              role="tabpanel"
+              tabIndex={0}
+            >
+              ...
+            </Box>
+          ))}
+        </VFlex>
+      );
+    `}
+/>
 
 ## Related components
 
 - [Tabs](?path=/docs/components-core-navigation-tabs--docs)
+- [Button](?path=/docs/components-core-button-button--docs)
+
+## Props
+
+<ArgTypes of={Stories} />

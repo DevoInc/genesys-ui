@@ -10,11 +10,30 @@ import {
 } from './helpers';
 
 export interface ContentSwitcherContainerProps
-  extends Omit<FlexProps, 'children'>,
+  extends Omit<
+      FlexProps,
+      | 'alignContent'
+      | 'children'
+      | 'childrenFlex'
+      | 'columnGap'
+      | 'elevation'
+      | 'flexDirection'
+      | 'flexWrap'
+      | 'gap'
+      | 'overflow'
+      | 'overflowX'
+      | 'overflowY'
+      | 'padding'
+      | 'paddingBottom'
+      | 'paddingLeft'
+      | 'paddingRight'
+      | 'paddingTop'
+      | 'rowGap'
+    >,
     Pick<ContentSwitcherItemProps, 'wide'>,
     Omit<contentSwitcherContainerMixinProps, 'theme'> {
   /** ContentSwitcher items */
-  children?: React.ReactElement<ContentSwitcherItemProps>[];
+  children?: React.ReactElement | React.ReactElement[];
 }
 
 export const ContentSwitcherContainer: React.FC<

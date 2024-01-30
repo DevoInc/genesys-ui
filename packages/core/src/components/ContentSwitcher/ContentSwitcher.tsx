@@ -1,21 +1,19 @@
 import * as React from 'react';
 
-// declarations and components
 import { GlobalAriaProps, GlobalAttrProps } from '../../declarations';
+
+import { ContentSwitcherContext } from './context';
+
 import {
   ContentSwitcherContainer,
   ContentSwitcherContainerProps,
   ContentSwitcherItem,
-  ContentSwitcherItemProps,
 } from './subcomponents';
 
 export interface ContentSwitcherProps
   extends Omit<GlobalAttrProps, 'role'>,
     GlobalAriaProps,
-    ContentSwitcherContainerProps {
-  /** ContentSwitcher items */
-  children?: React.ReactElement<ContentSwitcherItemProps>[];
-}
+    ContentSwitcherContainerProps {}
 
 const InternalContentSwitcher: React.FC<ContentSwitcherProps> = ({
   size = 'md',
@@ -30,23 +28,18 @@ const InternalContentSwitcher: React.FC<ContentSwitcherProps> = ({
     tooltip={tooltip}
     wide={wide}
   >
-    {React.Children.map(children, (child, idx) => {
-      return React.cloneElement(child, {
-        key: idx,
-        size: child.props.size || size,
-        wide: child.props.wide || wide,
-      });
-    })}
+    <ContentSwitcherContext.Provider value={{ size, wide }}>
+      {children}
+    </ContentSwitcherContext.Provider>
   </ContentSwitcherContainer>
 );
 
 export const ContentSwitcher =
   InternalContentSwitcher as typeof InternalContentSwitcher & {
     Item: typeof ContentSwitcherItem;
-    Container: typeof ContentSwitcherContainer;
   };
 
 ContentSwitcher.Item = ContentSwitcherItem;
+
+InternalContentSwitcher.displayName = 'ContentSwitcher';
 ContentSwitcher.Item.displayName = 'ContentSwitcher.Item';
-ContentSwitcher.Container = ContentSwitcherContainer;
-ContentSwitcher.Container.displayName = 'ContentSwitcher.Container';

@@ -6,36 +6,33 @@ import { concat } from 'lodash';
 import { CONTENT_SWITCHER_ITEM_SIZE_MAP } from '../../constants';
 
 // declarations
-import { Button, ButtonProps } from '../../..';
-import {
-  BaseSize,
-  FocusEventAttrProps,
-  GlobalAttrProps,
-  MouseEventAttrProps,
-  StyledOverloadCssProps,
-  TriggerAriaProps,
-} from '../../../../declarations';
+import { Button, ButtonProps } from '../../../Button';
+import { BaseSize } from '../../../../declarations';
 
 // helpers
 import {
   contentSwitcherItemMixin,
   ContentSwitcherItemMixinProps,
 } from './contentSwitcherItemMixin';
+import { ContentSwitcherContext } from '../../context';
 
 export interface ContentSwitcherItemProps
-  extends FocusEventAttrProps,
-    MouseEventAttrProps,
-    Pick<TriggerAriaProps, 'aria-controls'>,
-    Omit<GlobalAttrProps, 'role'>,
-    Pick<ButtonProps, 'children' | 'icon' | 'onChange'>,
-    StyledOverloadCssProps,
-    Omit<ContentSwitcherItemMixinProps, 'theme'> {
+  extends Omit<
+      ButtonProps,
+      | 'aria-selected'
+      | 'as'
+      | 'colorScheme'
+      | 'role'
+      | 'selectionScheme'
+      | 'size'
+      | 'state'
+    >,
+    Pick<ContentSwitcherItemMixinProps, 'state'> {
   /** Size options for icon, text, padding... etc. */
   size?: BaseSize;
 }
 
 export const ContentSwitcherItem: React.FC<ContentSwitcherItemProps> = ({
-  'aria-controls': ariaControls,
   children,
   icon,
   id,
@@ -46,12 +43,14 @@ export const ContentSwitcherItem: React.FC<ContentSwitcherItemProps> = ({
   styles,
   tooltip,
   wide,
+  ...restButtonProps
 }) => {
   const theme = useTheme();
   const selected = state === 'selected';
+  const context = React.useContext(ContentSwitcherContext);
   return (
     <Button
-      aria-controls={ariaControls}
+      {...restButtonProps}
       aria-selected={selected}
       as="label"
       colorScheme="quiet"
@@ -61,11 +60,11 @@ export const ContentSwitcherItem: React.FC<ContentSwitcherItemProps> = ({
       onClick={onClick}
       role="tab"
       selectionScheme="single"
-      size={CONTENT_SWITCHER_ITEM_SIZE_MAP[size]}
+      size={CONTENT_SWITCHER_ITEM_SIZE_MAP[context.size || size]}
       state={selected ? 'selected' : state}
       styles={concat(contentSwitcherItemMixin({ state, theme, wide }), styles)}
       tooltip={tooltip}
-      wide={wide}
+      wide={context.wide || wide}
     >
       {children}
     </Button>

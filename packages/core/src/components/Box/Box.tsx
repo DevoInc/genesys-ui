@@ -67,6 +67,7 @@ export const Box = React.forwardRef<HTMLElement, BoxProps>(
       overflow,
       overflowX,
       overflowY,
+      opacity,
       padding,
       paddingBottom,
       paddingLeft,
@@ -105,6 +106,7 @@ export const Box = React.forwardRef<HTMLElement, BoxProps>(
       maxWidth={maxWidth}
       minHeight={minHeight}
       minWidth={minWidth}
+      opacity={opacity}
       overflow={overflow}
       overflowX={overflowX}
       overflowY={overflowY}
