@@ -19,13 +19,18 @@ It also manages the layout and distribution of these elements within the field c
 
 ## Basic usage
 
+The component as a wrapper of an element (usually field controls). In this example we use a non-specific
+block with similar styles to a readonly input:
+
 <Canvas of={Stories.Base} />
 
-## Advanced usage
+## With an InputControl
 
-We can get any case of the component using only `Field` and its props as in this example with an Input, label and helper:
+We can get any case of the component using only `Field` and its props as in this example with an InputControl, label and helper:
 
 <Canvas sourceState="shown" of={Stories.BasicUsageWithHelper} />
+
+## Custom using internal components
 
 Sometimes you need something very specific, which is not possible using only the component and its props.
 In these cases, you can use its internal components (`._` notation) to define that specific usage.
