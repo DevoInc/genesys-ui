@@ -1,2 +1,2 @@
-export * from './StyledHeader';
-export * from './StyledHeaderButton';
+export * from './StyledCollapseContainer';
+export * from './StyledCollapseContainerButton';

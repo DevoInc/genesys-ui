@@ -17,6 +17,9 @@ This can be useful when presenting a set of related options or for allowing user
 
 ## Basic usage
 
+This component is based in a `Form.Group` component as its container, so we have available almost all the props
+of this type. In the same way, the different chip options will be its children.
+
 There is a pre-defined component called `ChipGroup.Chip` to be used as children of a `ChipGroup`.
 It is a simple wrapper of the `Chip`component which is able to inherit some props automatically
 from its parent by a React context: size, selectionScheme, name... etc.
@@ -53,10 +56,11 @@ the name prop with the same value to every Chip to get a controlled ChipGroup wi
 
 <Canvas of={Stories.SingleSelection} />
 
-## Props
-
-<ArgTypes of={Stories} />
-
 ## Related components
 
 - [Chip](?path=/docs/components-core-form-chip--docs)
+- [Form.Group](?path=/docs/components-core-form-form--docs)
+
+## Props
+
+<ArgTypes of={Stories} />

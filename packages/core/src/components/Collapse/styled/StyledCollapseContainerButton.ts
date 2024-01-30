@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const StyledHeaderButton = styled.button`
+export const StyledCollapseContainerButton = styled.button`
   ${({ theme }) => {
     const colorTokens = theme?.alias?.color;
     const elevationTokens = theme?.alias?.elevation;

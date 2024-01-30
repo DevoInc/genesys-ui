@@ -1,3 +1,3 @@
-export * from './CollapseButton';
+export * from './CollapseMarker';
 export * from './CollapseContainer';
 export * from './CollapseHeading';

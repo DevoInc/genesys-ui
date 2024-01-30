@@ -17,6 +17,9 @@ Use this component when it's necessary to display all available options to the u
 
 ## Basic usage
 
+This component is based in a `Form.Group` component as its container, so we have available almost all the props
+of this type. In the same way, the different choice options will be its children.
+
 There is a pre-defined component called `ChoiceGroup.IconButton` to be used as children of a `ChipGroup`.
 It is a simple wrapper of the `IconButton`component which is able to inherit some props automatically
 from its parent by a React context: size, selectionScheme, colorScheme... etc.
@@ -71,6 +74,11 @@ You cannot use the onChange event handler and must use the native behavior of a 
 This way you will get an uncontrolled ChoiceGroup with rendered form radio input as HTML and its corresponding keyboard utility.
 
 <Canvas of={Stories.SingleSelectionUncontrolled} />
+
+## Related components
+
+- [IconButton](?path=/docs/components-core-button-iconbutton--docs)
+- [Form.Group](?path=/docs/components-core-form-form--docs)
 
 ## Props
 

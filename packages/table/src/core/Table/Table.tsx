@@ -45,7 +45,7 @@ export const Table: React.FC<TableProps> = ({
   showFilters,
   onSort,
   data,
-  highlightColumnsOnHover = true,
+  highlightColumnsOnHover = false,
   resizableColumns = false,
   rowHeight = ROW_HEIGHT_MD,
 }) => {

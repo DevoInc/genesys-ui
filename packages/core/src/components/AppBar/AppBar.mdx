@@ -12,13 +12,15 @@ Component used for creating a navigation bar. It can be customized to fit variou
 
 ## How to import
 
-<Source
-  code={`
-import { AppBar } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { AppBar } from '@devoinc/genesys-ui';`} />
 
-## Examples
+## Basic usage
+
+This component is based in a `Box` component as its container, so we have available almost all the props
+of this type. We have also an inner container with an `HFlex` component, so we get flex distribution
+of the different pre-defined blocks as children.
+
+## Cases
 
 ### Base
 
@@ -60,6 +62,13 @@ You can create a custom `AppBar`content using the subcomponents:
 - [Heading](?path=/docs/components-core-navigation-tabs-subcomponents--heading)
 - [Navigation](?path=/docs/components-core-navigation-tabs-subcomponents--navigation)
 - [Options](?path=/docs/components-core-navigation-tabs-subcomponents--options)
+
+## Related components
+
+- [Box](?path=/docs/components-core-layout-box--docs)
+- [HFlex](?path=/docs/components-core-layout-flex-hflex--docs)
+- [Typography.Heading](?path=/docs/components-core-text-typography-block--docs#heading)
+- [Divider](?path=/docs/components-core-layout-divider--docs)
 
 ## Props
 

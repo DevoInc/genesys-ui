@@ -12,13 +12,29 @@ Collapsible container that hides or reveals its `children` on demand.
 
 ## How to import
 
-<Source
-  code={`
-import { Collapse } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Collapse } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
+
+You have to use the `Collapse` component as a trigger of other hidden component or block. Usually, we
+use a `React.useState` to manage if the content is hidden or not:
+
+<Canvas of={Stories.BaseForDocs} />
+
+## Custom based in internal components
+
+Sometimes you need something very specific, which is not possible using only the component and its props.
+In these cases, you can use its internal components (`_` notation) to define that specific usage.
+We don't recommend this usage, but anyway it's available for very specific needs, usually about styles.
+
+<Canvas of={Stories.Custom} />
+
+## Accessibility
+
+You have to add the `aria-controls` prop to the `Collapse` component, and it has to be equal
+to the `id` prop/attribute of the collapsed content. The `aria-expanded` prop is also required
+for the trigger by accessibility, but it's added automatically based in the `expanded` prop.
+You can see it in this example:
 
 <Canvas of={Stories.Base} />
 

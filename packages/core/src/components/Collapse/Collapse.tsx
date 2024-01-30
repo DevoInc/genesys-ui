@@ -1,62 +1,47 @@
 import * as React from 'react';
 
 import {
-  CollapseButton,
+  CollapseMarker,
   CollapseContainer,
   CollapseContainerProps,
   CollapseHeading,
   CollapseHeadingProps,
 } from './components';
-import { StyledOverloadCssPropsWithRecord } from '../../declarations';
 
-export interface BaseCollapseProps
+export interface CollapseProps
   extends CollapseContainerProps,
     Pick<CollapseHeadingProps, 'truncateLine'> {
   heading?: CollapseHeadingProps['children'];
 }
-
-export type CollapseProps = BaseCollapseProps &
-  StyledOverloadCssPropsWithRecord<'button' | 'container' | 'heading'>;
 
 export const InternalCollapse: React.FC<CollapseProps> = ({
   expanded,
   heading,
   onClick,
   styles,
-  subcomponentStyles,
   tooltip,
   truncateLine = 1,
   ...nativeProps
 }) => (
-  <Collapse.Container
+  <Collapse._Container
     {...nativeProps}
     aria-expanded={expanded}
     expanded={expanded}
     onClick={onClick}
-    styles={subcomponentStyles?.container || styles}
+    styles={styles}
     tooltip={tooltip}
   >
-    <Collapse.Button
-      expanded={expanded}
-      onClick={onClick}
-      styles={subcomponentStyles?.button}
-      tooltip={tooltip}
-    />
-    <Collapse.Heading
-      styles={subcomponentStyles?.heading}
-      truncateLine={truncateLine}
-    >
-      {heading}
-    </Collapse.Heading>
-  </Collapse.Container>
+    <Collapse._Marker expanded={expanded} tabIndex={-1} />
+    <Collapse._Heading truncateLine={truncateLine}>{heading}</Collapse._Heading>
+  </Collapse._Container>
 );
 
 export const Collapse = InternalCollapse as typeof InternalCollapse & {
-  Button: typeof CollapseButton;
-  Container: typeof CollapseContainer;
-  Heading: typeof CollapseHeading;
+  _Marker: typeof CollapseMarker;
+  _Container: typeof CollapseContainer;
+  _Heading: typeof CollapseHeading;
 };
 
-Collapse.Button = CollapseButton;
-Collapse.Container = CollapseContainer;
-Collapse.Heading = CollapseHeading;
+Collapse._Marker = CollapseMarker;
+Collapse._Container = CollapseContainer;
+Collapse._Heading = CollapseHeading;

@@ -49,7 +49,7 @@ export const SpecificChildProp: Story = {
   render: (args) =>
     ((args) => {
       return (
-        <ChoiceGroup {...args} size="xs">
+        <ChoiceGroup {...args}>
           <ChoiceGroup.IconButton icon="gi-play" tooltip="Play" />
           <ChoiceGroup.IconButton tooltip="Pause" icon="gi-pause" />
           <ChoiceGroup.IconButton

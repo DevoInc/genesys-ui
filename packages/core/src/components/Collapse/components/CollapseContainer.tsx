@@ -11,10 +11,15 @@ import {
 
 import { Flex } from '../../Flex';
 
-import { StyledHeader, StyledHeaderButton, StyledHeaderProps } from '../styled';
+import {
+  StyledCollapseContainer,
+  StyledCollapseContainerButton,
+  StyledCollapseContainerProps,
+} from '../styled';
+import { CollapseContext } from '../context';
 
 export interface CollapseContainerProps
-  extends StyledHeaderProps,
+  extends StyledCollapseContainerProps,
     StyledPolymorphicProps,
     StyledOverloadCssProps,
     GlobalAttrProps,
@@ -34,8 +39,8 @@ export const CollapseContainer: React.FC<CollapseContainerProps> = ({
   tooltip,
   ...nativeProps
 }) => (
-  <StyledHeader {...nativeProps} css={styles} expanded={expanded}>
-    <StyledHeaderButton
+  <StyledCollapseContainer {...nativeProps} css={styles} expanded={expanded}>
+    <StyledCollapseContainerButton
       aria-controls={ariaControls}
       aria-expanded={expanded}
       aria-label={ariaLabel}
@@ -48,7 +53,9 @@ export const CollapseContainer: React.FC<CollapseContainerProps> = ({
       padding="cmp-xs cmp-sm"
       gap="cmp-sm"
     >
-      {children}
+      <CollapseContext.Provider value={{ expanded }}>
+        {children}
+      </CollapseContext.Provider>
     </Flex>
-  </StyledHeader>
+  </StyledCollapseContainer>
 );

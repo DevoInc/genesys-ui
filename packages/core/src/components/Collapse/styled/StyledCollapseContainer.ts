@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
 
-export interface StyledHeaderProps {
-  expanded: boolean;
+export interface StyledCollapseContainerProps {
+  expanded?: boolean;
 }
 
-export const StyledHeader = styled.div<StyledHeaderProps>`
-  ${({ expanded, theme }) => {
+export const StyledCollapseContainer = styled.div<StyledCollapseContainerProps>`
+  ${({ expanded = false, theme }) => {
     const aliasTokens = theme.alias;
 
     return css`
