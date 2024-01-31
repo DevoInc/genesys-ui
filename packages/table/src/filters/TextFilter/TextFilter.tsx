@@ -1,42 +1,92 @@
 import * as React from 'react';
 
-import { InputControl, HFlex, Button } from '@devoinc/genesys-ui';
-
 import {
-  AdvancedFilter,
-  BasicFilter,
-  FilterContainer,
-  FilterRule,
-  textDefaultValue,
-  textOptions,
-} from '../common';
-import { FilterProps } from '../declarations';
+  InputControl,
+  HFlex,
+  Popover,
+  IconButton,
+  Panel,
+  Menu,
+} from '@devoinc/genesys-ui';
 
-export const TextFilter: React.FC<FilterProps> = ({ colDef }) => (
-  <FilterContainer>
-    <BasicFilter>
-      <InputControl
-        size="sm"
-        aria-label="filter"
-        placeholder="Filter content..."
-      />
-    </BasicFilter>
-    <AdvancedFilter
-      id={`text-adv-filter-${colDef.id}`}
-      footer={
-        <HFlex flex="1">
-          <HFlex.Item marginLeft="auto">
-            <Button colorScheme="accent">Reset</Button>
-          </HFlex.Item>
-        </HFlex>
-      }
-    >
-      <FilterRule
-        defaultValue={textDefaultValue}
-        options={textOptions}
-        label="Filter this column"
-        placeholder="Filter by text..."
-      />
-    </AdvancedFilter>
-  </FilterContainer>
-);
+import { BasicFilter, FilterContainer, textOptions } from '../common';
+import type { FilterContext, FilterProps } from '../declarations';
+import type { TextFilterValue } from './declarations';
+
+export const TextFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
+  const context = colDef?.context as FilterContext;
+  const filterValue = context?.filterValue as TextFilterValue;
+  const value = filterValue?.value ?? '';
+  const operator = filterValue?.operator ?? 'contains';
+  return (
+    <FilterContainer>
+      <BasicFilter>
+        <InputControl
+          size="sm"
+          aria-label="filter"
+          placeholder="Filter content..."
+          value={value}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            onChange(
+              {
+                value: event.currentTarget.value,
+                operator,
+              } as TextFilterValue,
+              'text',
+            );
+          }}
+          disabled={['blank', 'notBlank'].includes(operator)}
+        />
+      </BasicFilter>
+      <HFlex.Item flex="0 0 auto">
+        <Popover id={`text-adv-filter-${colDef.id}`} placement="bottom-start">
+          {({ toggle, ref, isOpened }) => (
+            <IconButton
+              aria-controls={`text-adv-filter-${colDef.id}`}
+              aria-expanded={isOpened}
+              aria-haspopup="true"
+              icon="gi-filter"
+              onClick={toggle}
+              ref={ref}
+              state={isOpened ? 'expanded' : undefined}
+              size="sm"
+              colorScheme="quiet"
+              hasBadge={operator !== 'contains'}
+            />
+          )}
+          <Panel
+            maxHeight="34rem"
+            bodySettings={{
+              removeSpace: true,
+            }}
+            elevation="activated"
+            size="sm"
+            width="28rem"
+          >
+            <Menu>
+              {textOptions.map((option) => (
+                <Menu.Item
+                  selectionScheme="single"
+                  onChange={() => {
+                    onChange(
+                      {
+                        value,
+                        operator: option.value,
+                      } as TextFilterValue,
+                      'text',
+                    );
+                  }}
+                  key={option.value}
+                  state={operator === option.value ? 'selected' : 'enabled'}
+                  name="options"
+                  value={option.value}
+                  label={option.label}
+                />
+              ))}
+            </Menu>
+          </Panel>
+        </Popover>
+      </HFlex.Item>
+    </FilterContainer>
+  );
+};

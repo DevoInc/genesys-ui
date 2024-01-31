@@ -4,3 +4,4 @@ export * from './useTableScroll';
 export * from './useTableVirtualizationColumn';
 export * from './useTableVirtualizationRow';
 export * from './useOrderStruct';
+export * from './useFilterStruct';

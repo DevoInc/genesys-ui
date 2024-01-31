@@ -19,8 +19,6 @@ export const numberOptions = [
   { value: 'less', label: 'Less than' },
   { value: 'lessOrEqual', label: 'Less than or equal to' },
   { value: 'between', label: 'Between' },
-  { value: 'blank', label: 'Blank' },
-  { value: 'notBlank', label: 'Not blank' },
 ];
 
 export const dateOptions = [
@@ -34,7 +32,7 @@ export const dateOptions = [
 ];
 
 export const booleanOptions = [
-  { value: 'all', label: 'All' },
-  { value: 'true', label: 'true' },
-  { value: 'false', label: 'false' },
+  { value: '', label: 'All' },
+  { value: 'true', label: 'True' },
+  { value: 'false', label: 'False' },
 ];

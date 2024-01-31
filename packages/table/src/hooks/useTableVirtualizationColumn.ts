@@ -24,7 +24,7 @@ export const useTableVirtualizationColumn = ({
     const tableWidth = Math.max(minWidth ?? 0, wrapperWidth);
     const getPixels = getPixelsFromPercentage(tableWidth);
 
-    const colWidths = [];
+    const colWidths: number[] = [];
     const colMinWidths: { [key: number]: number } = {};
     let filled = 0;
     let filledCounter = 0;
@@ -48,10 +48,10 @@ export const useTableVirtualizationColumn = ({
     let found = true;
     while (found) {
       found = false;
-      for (const [index, minWidth] of Object.entries(colMinWidths)) {
-        if (minWidth > partition) {
-          colWidths[Number(index)] = minWidth;
-          filled += minWidth;
+      for (const [index, minWidth2] of Object.entries(colMinWidths)) {
+        if (minWidth2 > partition) {
+          colWidths[Number(index)] = minWidth2;
+          filled += minWidth2;
           filledCounter++;
           partition =
             Math.max(tableWidth - filled, 0) / (colDefs.length - filledCounter);

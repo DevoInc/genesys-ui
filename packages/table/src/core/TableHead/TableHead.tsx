@@ -8,6 +8,7 @@ import { ColDef, Data } from '../../declarations';
 import { getColDefByID } from '../utils';
 import { TableContext } from '../../context/TableContext';
 import { HeaderTextRenderer } from '../../headerRenderers';
+import { FilterValue } from '../../filters';
 
 interface TableHeadProps {
   scrolled?: boolean;
@@ -24,7 +25,7 @@ export const TableHead: React.FC<TableHeadProps> = ({
   data,
   width,
 }) => {
-  const { showFilters, resizableColumns, density, onSort } =
+  const { showFilters, resizableColumns, density, onSort, onFilter } =
     React.useContext(TableContext);
   const items = columnVirtualizer?.getVirtualItems() ?? [];
   return (
@@ -62,7 +63,15 @@ export const TableHead: React.FC<TableHeadProps> = ({
                 width={`${virtualColumn.size}px`}
                 offsetX={virtualColumn.start}
               >
-                {colDef.cellFilter ? colDef.cellFilter({ colDef, data }) : null}
+                {colDef.cellFilter
+                  ? colDef.cellFilter({
+                      colDef,
+                      data,
+                      onChange: (value: FilterValue, type: string) => {
+                        onFilter(colDef, value, type);
+                      },
+                    })
+                  : null}
               </HeaderCell>
             );
           })}

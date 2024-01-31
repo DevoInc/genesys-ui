@@ -36,6 +36,7 @@ export const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
             state={isOpened ? 'expanded' : undefined}
             size="sm"
             colorScheme="quiet"
+            hasBadge={true}
           />
         )}
         <Panel
