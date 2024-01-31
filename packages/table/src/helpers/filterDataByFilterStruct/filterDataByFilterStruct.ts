@@ -20,15 +20,30 @@ export const filterDataByFilterStruct =
   (a: Row) => {
     for (const { value, id, type } of filterStruct) {
       if (Object.keys(customFilterFns).includes(id)) {
-        return customFilterFns[id](a[id], value);
+        const res = customFilterFns[id](a[id], value);
+        if (!res) {
+          return false;
+        }
       }
 
       if (type === 'text') {
-        return textFilter(String(a[id]), value as TextFilterValue);
-      } else if (type === 'number') {
-        return numberFilter(Number(a[id]), value as NumberFilterValue);
-      } else if (type === 'boolean') {
-        return booleanFilter(!!a[id], value as BooleanFilterValue);
+        const res = textFilter(String(a[id]), value as TextFilterValue);
+        if (!res) {
+          return false;
+        }
+      }
+
+      if (type === 'number') {
+        const res = numberFilter(Number(a[id]), value as NumberFilterValue);
+        if (!res) {
+          return false;
+        }
+      }
+      if (type === 'boolean') {
+        const res = booleanFilter(!!a[id], value as BooleanFilterValue);
+        if (!res) {
+          return false;
+        }
       }
     }
     return true;
