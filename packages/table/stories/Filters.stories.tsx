@@ -7,6 +7,7 @@ import {
   type FilterContext,
   filterDataByFilterStruct,
   useFilterStruct,
+  filterColDefByFilterStruct,
 } from '../src';
 
 const meta: Meta<typeof BasicTable> = {
@@ -46,7 +47,7 @@ const FilterTable = () => {
       preset: 'number',
       context: {
         showAdvancedFilter: true,
-        showReset: false,
+        showReset: true,
       } as FilterContext,
     },
     {
@@ -77,19 +78,7 @@ const FilterTable = () => {
       onFilter={(curColDef, value, type) => {
         onFilter(curColDef.id, value, type);
       }}
-      colDefs={colDef.map((col) => {
-        const idx = filterStruct.findIndex((filter) => filter.id === col.id);
-        if (idx >= 0) {
-          return {
-            ...col,
-            context: {
-              ...col.context,
-              filterValue: filterStruct[idx].value,
-            },
-          };
-        }
-        return col;
-      })}
+      colDefs={filterColDefByFilterStruct(colDef, filterStruct)}
       data={dataFiltered}
     />
   );
