@@ -38,55 +38,60 @@ export const TextFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
           disabled={['blank', 'notBlank'].includes(operator)}
         />
       </BasicFilter>
-      <HFlex.Item flex="0 0 auto">
-        <Popover id={`text-adv-filter-${colDef.id}`} placement="bottom-start">
-          {({ toggle, ref, isOpened }) => (
-            <IconButton
-              aria-controls={`text-adv-filter-${colDef.id}`}
-              aria-expanded={isOpened}
-              aria-haspopup="true"
-              icon="gi-filter"
-              onClick={toggle}
-              ref={ref}
-              state={isOpened ? 'expanded' : undefined}
-              size="sm"
-              colorScheme="quiet"
-              hasBadge={operator !== 'contains'}
-            />
-          )}
-          <Panel
-            maxHeight="34rem"
-            bodySettings={{
-              removeSpace: true,
-            }}
-            elevation="activated"
-            size="sm"
-            width="28rem"
-          >
-            <Menu>
-              {textOptions.map((option) => (
-                <Menu.Item
-                  selectionScheme="single"
-                  onChange={() => {
-                    onChange(
-                      {
-                        value,
-                        operator: option.value,
-                      } as TextFilterValue,
-                      'text',
-                    );
-                  }}
-                  key={option.value}
-                  state={operator === option.value ? 'selected' : 'enabled'}
-                  name="options"
-                  value={option.value}
-                  label={option.label}
-                />
-              ))}
-            </Menu>
-          </Panel>
-        </Popover>
-      </HFlex.Item>
+      {(context?.showAdvancedFilter ?? true) && (
+        <HFlex.Item flex="0 0 auto">
+          <Popover id={`text-adv-filter-${colDef.id}`} placement="bottom-start">
+            {({ toggle, ref, isOpened }) => (
+              <IconButton
+                aria-controls={`text-adv-filter-${colDef.id}`}
+                aria-expanded={isOpened}
+                aria-haspopup="true"
+                icon="gi-filter"
+                onClick={toggle}
+                ref={ref}
+                state={isOpened ? 'expanded' : undefined}
+                size="sm"
+                colorScheme="quiet"
+                hasBadge={operator !== 'contains'}
+              />
+            )}
+            {({ setOpened }) => (
+              <Panel
+                maxHeight="34rem"
+                bodySettings={{
+                  removeSpace: true,
+                }}
+                elevation="activated"
+                size="sm"
+                width="28rem"
+              >
+                <Menu>
+                  {textOptions.map((option) => (
+                    <Menu.Item
+                      selectionScheme="single"
+                      onChange={() => {
+                        onChange(
+                          {
+                            value,
+                            operator: option.value,
+                          } as TextFilterValue,
+                          'text',
+                        );
+                        setOpened(false);
+                      }}
+                      key={option.value}
+                      state={operator === option.value ? 'selected' : 'enabled'}
+                      name="options"
+                      value={option.value}
+                      label={option.label}
+                    />
+                  ))}
+                </Menu>
+              </Panel>
+            )}
+          </Popover>
+        </HFlex.Item>
+      )}
     </FilterContainer>
   );
 };

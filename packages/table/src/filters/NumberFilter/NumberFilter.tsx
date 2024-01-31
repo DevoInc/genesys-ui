@@ -62,56 +62,61 @@ export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
           />
         </HFlex.Item>
       )}
-      <HFlex.Item flex="0 0 auto">
-        <Popover id={`text-adv-filter-${colDef.id}`} placement="bottom-start">
-          {({ toggle, ref, isOpened }) => (
-            <IconButton
-              aria-controls={`text-adv-filter-${colDef.id}`}
-              aria-expanded={isOpened}
-              aria-haspopup="true"
-              icon="gi-filter"
-              onClick={toggle}
-              ref={ref}
-              state={isOpened ? 'expanded' : undefined}
-              size="sm"
-              colorScheme="quiet"
-              hasBadge={operator !== 'equals'}
-            />
-          )}
-          <Panel
-            maxHeight="34rem"
-            bodySettings={{
-              removeSpace: true,
-            }}
-            elevation="activated"
-            size="sm"
-            width="28rem"
-          >
-            <Menu>
-              {numberOptions.map((option) => (
-                <Menu.Item
-                  selectionScheme="single"
-                  onChange={() => {
-                    onChange(
-                      {
-                        value,
-                        secondValue,
-                        operator: option.value,
-                      } as NumberFilterValue,
-                      'number',
-                    );
-                  }}
-                  key={option.value}
-                  state={operator === option.value ? 'selected' : 'enabled'}
-                  name="options"
-                  value={option.value}
-                  label={option.label}
-                />
-              ))}
-            </Menu>
-          </Panel>
-        </Popover>
-      </HFlex.Item>
+      {(context?.showAdvancedFilter ?? true) && (
+        <HFlex.Item flex="0 0 auto">
+          <Popover id={`text-adv-filter-${colDef.id}`} placement="bottom-start">
+            {({ toggle, ref, isOpened }) => (
+              <IconButton
+                aria-controls={`text-adv-filter-${colDef.id}`}
+                aria-expanded={isOpened}
+                aria-haspopup="true"
+                icon="gi-filter"
+                onClick={toggle}
+                ref={ref}
+                state={isOpened ? 'expanded' : undefined}
+                size="sm"
+                colorScheme="quiet"
+                hasBadge={operator !== 'equals'}
+              />
+            )}
+            {({ setOpened }) => (
+              <Panel
+                maxHeight="34rem"
+                bodySettings={{
+                  removeSpace: true,
+                }}
+                elevation="activated"
+                size="sm"
+                width="28rem"
+              >
+                <Menu>
+                  {numberOptions.map((option) => (
+                    <Menu.Item
+                      selectionScheme="single"
+                      onChange={() => {
+                        onChange(
+                          {
+                            value,
+                            secondValue,
+                            operator: option.value,
+                          } as NumberFilterValue,
+                          'number',
+                        );
+                        setOpened(false);
+                      }}
+                      key={option.value}
+                      state={operator === option.value ? 'selected' : 'enabled'}
+                      name="options"
+                      value={option.value}
+                      label={option.label}
+                    />
+                  ))}
+                </Menu>
+              </Panel>
+            )}
+          </Popover>
+        </HFlex.Item>
+      )}
     </FilterContainer>
   );
 };

@@ -3,7 +3,8 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { BasicTable } from '../src/recipes/BasicTable';
 import {
-  ContextOptions,
+  type ContextOptions,
+  type FilterContext,
   filterDataByFilterStruct,
   useFilterStruct,
 } from '../src';
@@ -43,6 +44,9 @@ const FilterTable = () => {
       id: 'num',
       headerName: 'Number',
       preset: 'number',
+      context: {
+        showAdvancedFilter: true,
+      } as FilterContext,
     },
     {
       id: 'bool',

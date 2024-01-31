@@ -12,4 +12,5 @@ export type FilterProps = {
 
 export type FilterContext = {
   filterValue: FilterValue;
+  showAdvancedFilter: boolean;
 };
