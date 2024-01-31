@@ -1,10 +1,15 @@
 import * as React from 'react';
 
 import { Typography, InlineMessage, HelperProps } from '..';
-import { HELPER_ICON_BUTTON_SIZE_MAP } from '../Helper/constants';
+import { FLOATING_HELPER_ICON_BUTTON_SIZE_MAP } from './constants';
 import { hasStatus } from '../../utils/validations';
+import { FloatingHelperSize } from './declarations';
 
-export const FloatingHelper: React.FC<HelperProps> = ({
+export interface FloatingHelperProps extends Omit<HelperProps, 'size'> {
+  size?: FloatingHelperSize;
+}
+
+export const FloatingHelper: React.FC<FloatingHelperProps> = ({
   id,
   message,
   size = 'md',
@@ -14,7 +19,7 @@ export const FloatingHelper: React.FC<HelperProps> = ({
   return (
     <InlineMessage
       id={id}
-      trigger={{ size: HELPER_ICON_BUTTON_SIZE_MAP[size] }}
+      trigger={{ size: FLOATING_HELPER_ICON_BUTTON_SIZE_MAP[size] }}
       status={hasStatus(status) ? status : 'help'}
       tooltip={tooltip}
     >

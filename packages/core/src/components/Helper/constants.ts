@@ -1,17 +1,8 @@
 import { STATUS_ICON_MAP } from '../../constants';
 import { ActiveStatus, GlobalSpacing } from '../../declarations';
-import { ButtonSize } from '../Button';
 import { IconProps } from '../Icon';
-import { FloatingHelperSize, HelperSize } from './declarations';
+import { HelperSize } from './declarations';
 import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
-
-export const HELPER_ICON_BUTTON_SIZE_MAP: {
-  [key in FloatingHelperSize]: ButtonSize;
-} = {
-  sm: 'xxs',
-  md: 'xs',
-  lg: 'sm',
-} as const;
 
 export const HELPER_ICON_STATUS_MAP: {
   [key in ActiveStatus]: keyof typeof iconDictionary;

@@ -11,7 +11,7 @@ import {
 import { WithRequired } from '../../typeFunctions';
 import { inlineMessageContainerMixin } from './helpers';
 
-import { Box, IconButtonStatusProps, Popover, PopoverProps } from '../';
+import { IconButtonStatusProps, Popover, PopoverProps } from '../';
 import { ButtonExpandableState, ButtonSize } from '../Button';
 
 import {
@@ -103,15 +103,16 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
         />
       )}
       {({ toggle, isOpened, placement, setOpened }) => (
-        <Box
+        <Popover.Panel
           as={as}
-          elevation={'activated'}
           id={`${id}__content`}
+          padding="0"
           role={status === 'error' ? 'alert' : null}
           styles={concat(
             ...inlineMessageContainerMixin({ placement, status, theme }),
             styles,
           )}
+          width="auto"
         >
           {React.isValidElement(children)
             ? children
@@ -122,7 +123,7 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
                   setOpened,
                 })
               : null}
-        </Box>
+        </Popover.Panel>
       )}
     </Popover>
   );

@@ -7,10 +7,7 @@ export const getBorderPlacement = (position: string) => {
     return css`
       padding-bottom: ${borderSize};
 
-      [data-placement='top'] & {
-      }
-
-      &::before {
+      &::after {
         bottom: 0;
         width: 100%;
         height: ${borderSize};
@@ -21,7 +18,7 @@ export const getBorderPlacement = (position: string) => {
     return css`
       padding-left: ${borderSize};
 
-      &::before {
+      &::after {
         left: 0;
         width: ${borderSize};
         height: 100%;
@@ -32,7 +29,7 @@ export const getBorderPlacement = (position: string) => {
     return css`
       padding-top: ${borderSize};
 
-      &::before {
+      &::after {
         top: 0;
         width: 100%;
         height: ${borderSize};
@@ -43,7 +40,7 @@ export const getBorderPlacement = (position: string) => {
     return css`
       padding-right: ${borderSize};
 
-      &::before {
+      &::after {
         right: 0;
         width: ${borderSize};
         width: ${borderSize};

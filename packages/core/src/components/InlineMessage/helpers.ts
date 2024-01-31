@@ -20,7 +20,7 @@ export const inlineMessageContainerMixin = ({
 
     ${status &&
     css`
-      &::before {
+      &::after {
         content: '';
         position: absolute;
         background-color: ${tokens.color.border[status]};

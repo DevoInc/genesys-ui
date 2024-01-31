@@ -12,6 +12,9 @@ Component that provides a floating message to assist the user with a particular 
 Usually is used to provide helping info to the user when is filling a form, and we want to save
 screen space avoiding use docked helpers in the fields.
 
+Usually is located at the right of the label of a form field or directly at the right of the own
+field when the label is hidden.
+
 ## How to import
 
 <Source code={`import { FloatingHelper } from '@devoinc/genesys-ui';`} />
@@ -20,10 +23,13 @@ screen space avoiding use docked helpers in the fields.
 
 <Canvas of={Stories.Base} />
 
+## Related components
+
+- [InlineMessage](?path=/docs/components-core-feedback-inlinemessage--docs)
+- [Helper](?path=/docs/components-core-feedback-helper--docs)
+- [Field](?path=/docs/components-core-form-field--docs)
+- [IconButtonStatus](?path=/docs/components-core-button-iconbuttonstatus--docs)
+
 ## Props
 
 <ArgTypes of={Stories} />
-
-## Related components
-
-- [Helper](?path=/docs/components-core-feedback-helper--docs)
