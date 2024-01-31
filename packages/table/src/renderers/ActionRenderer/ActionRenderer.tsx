@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { GIAngleDown } from '@devoinc/genesys-icons';
+import { GIMenuAltVertical } from '@devoinc/genesys-icons';
 import { Popover, HFlex, IconButton, Menu } from '@devoinc/genesys-ui';
 
 import { CellRendererProps } from '../declarations';
@@ -19,6 +19,7 @@ export const ActionRenderer: React.FC<CellRendererProps> = ({
         <IconButton
           size="xs"
           key={idx}
+          colorScheme="quiet"
           onClick={(event: React.MouseEvent) => {
             if (onClick) {
               onClick(rowIndex, event);
@@ -37,11 +38,12 @@ export const ActionRenderer: React.FC<CellRendererProps> = ({
               aria-label="Open the bulk actions menu"
               aria-expanded={isOpened}
               size={'xs'}
+              colorScheme="quiet"
               onClick={toggle}
               ref={ref}
               state={isOpened ? 'expanded' : undefined}
             >
-              <GIAngleDown size="12" />
+              <GIMenuAltVertical size="12" />
             </IconButton>
           )}
           <Popover.Panel>
