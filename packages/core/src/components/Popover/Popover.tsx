@@ -17,7 +17,7 @@ import {
 } from './components';
 
 type TriggerProps = (props: {
-  ref: any;
+  ref: React.Dispatch<React.SetStateAction<HTMLElement>>;
   toggle: (ev: React.MouseEvent<HTMLElement>) => void;
   isOpened: boolean;
   setOpened: React.Dispatch<React.SetStateAction<boolean>>;
@@ -75,8 +75,10 @@ export const InternalPopover: React.FC<PopoverProps> = ({
   const evalZIndex = zIndex || theme.alias.elevation.zIndex.depth.activated;
   const [opened, setOpened] = React.useState(isOpened);
 
-  const [referenceElement, setReferenceElement] = React.useState(null);
-  const [popperElement, setPopperElement] = React.useState(null);
+  const [referenceElement, setReferenceElement] =
+    React.useState<HTMLElement>(null);
+  const [popperElement, setPopperElement] =
+    React.useState<HTMLDivElement>(null);
   const [arrowRef, setArrowRef] = React.useState<HTMLElement>(null);
   const arrowModifiers = React.useMemo(() => {
     return arrowConfig

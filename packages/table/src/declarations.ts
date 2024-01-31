@@ -1,11 +1,10 @@
 import * as React from 'react';
+
 import { DateContext } from './valueFormatters/date';
 import { FilterProps } from './filters/declarations';
 import { CellRendererProps } from './renderers/declarations';
 import { CellEditorProps } from './editors/declarations';
 import { HeaderRendererProps } from './headerRenderers/declarations';
-
-export type DefaultColDef = Omit<ColDef, 'id'>;
 
 export type Density = 'default' | 'compact' | 'comfortable';
 
@@ -22,10 +21,6 @@ export type TextsType = {
     editorTextLabel?: string;
   };
 };
-
-export type Preset = {
-  id: string;
-} & Omit<ColDef, 'colId'>;
 
 export type CellVerAlign = 'top' | 'bottom' | 'center';
 export type CellHorAlign = 'left' | 'center' | 'right';
@@ -76,6 +71,12 @@ export type ColDef = {
   truncateLine?: number;
   toEdge?: boolean;
 };
+
+export type Preset = {
+  id: string;
+} & Omit<ColDef, 'colId'>;
+
+export type DefaultColDef = Omit<ColDef, 'id'>;
 
 export type Row = { [key: string]: unknown };
 export type Data = Row[];

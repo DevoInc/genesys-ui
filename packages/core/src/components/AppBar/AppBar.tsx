@@ -16,7 +16,6 @@ import {
   AppBarContainerProps,
   AppBarDivider,
   AppBarHeading,
-  AppBarHeadingProps,
   AppBarNavigation,
   AppBarOptions,
 } from './subcomponents';
@@ -32,7 +31,7 @@ interface BaseAppBarProps extends Omit<AppBarContainerProps, 'children'> {
   /** Custom content to be added at the end of the app bar. */
   customContent?: React.ReactNode;
   /** Heading content. */
-  heading?: AppBarHeadingProps['children'];
+  heading?: React.ReactNode;
   /** List of options elements. */
   options?: (
     | React.ReactElement<ButtonProps>

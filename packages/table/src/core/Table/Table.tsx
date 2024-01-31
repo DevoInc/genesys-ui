@@ -11,6 +11,7 @@ import {
 import { TableContext, WrapperContextProvider } from '../../context';
 import { TableWrapper } from '../TableWrapper';
 import { ROW_HEIGHT_MD } from '../../constants';
+import { FilterValue } from '../../filters';
 
 export type TableProps = {
   data: Data;
@@ -31,6 +32,7 @@ export type TableProps = {
   texts?: TextsType;
   showFilters?: boolean;
   onSort?: (colDef: ColDef) => void;
+  onFilter?: (colDef: ColDef, value: FilterValue, type: string) => void;
 };
 
 export const Table: React.FC<TableProps> = ({
@@ -44,6 +46,7 @@ export const Table: React.FC<TableProps> = ({
   minWidth,
   showFilters,
   onSort,
+  onFilter,
   data,
   highlightColumnsOnHover = false,
   resizableColumns = false,
@@ -74,6 +77,7 @@ export const Table: React.FC<TableProps> = ({
         highlightColumnsOnHover,
         resizableColumns,
         onSort,
+        onFilter,
         rowHeight,
       }}
     >

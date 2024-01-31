@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { getPxFromRem } from '@devoinc/genesys-ui';
+
 import { TableHead } from '../TableHead';
 import { TableBody } from '../TableBody';
 import { StyledTable } from './StyledTable';
@@ -12,19 +14,26 @@ import {
   useTableVirtualizationRow,
 } from '../../hooks';
 import { WrapperContext } from '../../context';
+import { useTheme } from 'styled-components';
 
 export const TableWrapper: React.FC = () => {
   const { ref } = useWrapperOberver();
-  const { maxHeight, colDefs, data } = React.useContext(TableContext);
+  const theme = useTheme();
+  const { maxHeight, colDefs, data, showFilters, density } =
+    React.useContext(TableContext);
   const { width: wrapperWidth } = React.useContext(WrapperContext);
 
   const rowVirtualizer = useTableVirtualizationRow({ ref });
   const columnVirtualizer = useTableVirtualizationColumn({ ref });
 
   const { hasScroll } = useTableScroll(rowVirtualizer, ref);
-
   const width = columnVirtualizer.getTotalSize();
-  const height = rowVirtualizer.getTotalSize() + 42;
+  const headHeight = React.useMemo(
+    () => getPxFromRem(theme.cmp.table.head.size.height[density]),
+    [density, theme],
+  );
+  const height =
+    rowVirtualizer.getTotalSize() + headHeight * (showFilters ? 2 : 1);
 
   return (
     <StyledTableWrapper ref={ref} maxHeight={maxHeight}>
