@@ -5,7 +5,6 @@ import {
   IconButton,
   InputControl,
   Menu,
-  Panel,
   Popover,
 } from '@devoinc/genesys-ui';
 import { FilterContainer, numberOptions, NUMBER_ADDON_MAP } from '../common';

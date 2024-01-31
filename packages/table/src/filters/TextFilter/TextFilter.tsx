@@ -5,7 +5,6 @@ import {
   HFlex,
   Popover,
   IconButton,
-  Panel,
   Menu,
 } from '@devoinc/genesys-ui';
 
