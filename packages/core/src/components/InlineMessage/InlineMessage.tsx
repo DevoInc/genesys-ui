@@ -102,7 +102,7 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
           Trigger={trigger?.Component}
         />
       )}
-      {({ toggle, isOpened, setOpened }) => (
+      {({ toggle, isOpened, placement, setOpened }) => (
         <Box
           as={as}
           elevation={'activated'}

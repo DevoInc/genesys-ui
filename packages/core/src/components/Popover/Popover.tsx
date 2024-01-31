@@ -28,6 +28,7 @@ type ChildrenProps =
   | ((props: {
       toggle: (ev: React.MouseEvent<HTMLElement>) => void;
       isOpened: boolean;
+      placement: ComputedPlacement;
       setOpened: React.Dispatch<React.SetStateAction<boolean>>;
     }) => React.ReactNode);
 
@@ -149,6 +150,7 @@ export const InternalPopover: React.FC<PopoverProps> = ({
           ? childrenEl({
               toggle,
               isOpened: opened,
+              placement: (dynamicPlacement as ComputedPlacement) ?? undefined,
               setOpened,
             })
           : null}
