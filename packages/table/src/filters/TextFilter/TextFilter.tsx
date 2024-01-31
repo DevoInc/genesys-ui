@@ -9,7 +9,12 @@ import {
   Menu,
 } from '@devoinc/genesys-ui';
 
-import { BasicFilter, FilterContainer, textOptions } from '../common';
+import {
+  BasicFilter,
+  FilterContainer,
+  textOptions,
+  TEXT_ADDON_MAP,
+} from '../common';
 import type { FilterContext, FilterProps } from '../declarations';
 import type { TextFilterValue } from './declarations';
 
@@ -36,8 +41,30 @@ export const TextFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
             );
           }}
           disabled={['blank', 'notBlank'].includes(operator)}
+          addonToLeft={TEXT_ADDON_MAP[operator] as string}
         />
       </BasicFilter>
+
+      {(context?.showReset ?? true) &&
+        (value !== '' || operator !== 'contains') && (
+          <HFlex.Item flex="0 0 auto">
+            <IconButton
+              icon="gi-exit_close"
+              onClick={() => {
+                onChange(
+                  {
+                    value: '',
+                    operator: 'contains',
+                  } as TextFilterValue,
+                  'text',
+                );
+              }}
+              size="sm"
+              colorScheme="quiet"
+            />
+          </HFlex.Item>
+        )}
+
       {(context?.showAdvancedFilter ?? true) && (
         <HFlex.Item flex="0 0 auto">
           <Popover id={`text-adv-filter-${colDef.id}`} placement="bottom-start">
@@ -52,19 +79,10 @@ export const TextFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
                 state={isOpened ? 'expanded' : undefined}
                 size="sm"
                 colorScheme="quiet"
-                hasBadge={operator !== 'contains'}
               />
             )}
             {({ setOpened }) => (
-              <Panel
-                maxHeight="34rem"
-                bodySettings={{
-                  removeSpace: true,
-                }}
-                elevation="activated"
-                size="sm"
-                width="28rem"
-              >
+              <Popover.Panel maxHeight="34rem" width="28rem">
                 <Menu>
                   {textOptions.map((option) => (
                     <Menu.Item
@@ -87,7 +105,7 @@ export const TextFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
                     />
                   ))}
                 </Menu>
-              </Panel>
+              </Popover.Panel>
             )}
           </Popover>
         </HFlex.Item>

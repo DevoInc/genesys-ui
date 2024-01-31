@@ -9,6 +9,16 @@ export const textOptions = [
   { value: 'blank', label: 'Blank' },
   { value: 'notBlank', label: 'Not blank' },
 ];
+export const TEXT_ADDON_MAP = {
+  contains: null,
+  notContains: '!cont',
+  equals: '=',
+  notEquals: '!=',
+  beginsWith: 'starts',
+  endsWith: 'ends',
+  blank: 'blank',
+  notBlank: '!blank',
+};
 
 export const numberDefaultValue = 'equals';
 export const numberOptions = [
@@ -20,6 +30,15 @@ export const numberOptions = [
   { value: 'lessOrEqual', label: 'Less than or equal to' },
   { value: 'between', label: 'Between' },
 ];
+export const NUMBER_ADDON_MAP = {
+  equals: null,
+  notEquals: '!=',
+  greater: '>',
+  greaterOrEqual: '>=',
+  less: '<',
+  lessOrEqual: '<=',
+  between: null,
+};
 
 export const dateOptions = [
   { value: 'equals', label: 'Equals to' },
@@ -31,8 +50,7 @@ export const dateOptions = [
   { value: 'notBlank', label: 'Not blank' },
 ];
 
-export const booleanOptions = [
-  { value: '', label: 'All' },
+export const BOOLEAN_OPTIONS = [
   { value: 'true', label: 'True' },
   { value: 'false', label: 'False' },
 ];

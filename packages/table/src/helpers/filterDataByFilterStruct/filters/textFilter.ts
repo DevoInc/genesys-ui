@@ -19,7 +19,7 @@ export const textFilter = (
               : operator === 'notEquals'
                 ? data !== value
                 : operator === 'beginsWith'
-                  ? data.startsWith(value)
+                  ? data.toLowerCase().startsWith(value.toLowerCase())
                   : operator === 'endsWith'
-                    ? data.endsWith(value)
+                    ? data.toLowerCase().endsWith(value.toLowerCase())
                     : true;

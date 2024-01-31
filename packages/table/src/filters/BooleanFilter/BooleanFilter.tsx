@@ -3,7 +3,7 @@ import * as React from 'react';
 import { SelectControl, SelectOption } from '@devoinc/genesys-ui';
 
 import type { FilterContext, FilterProps } from '../declarations';
-import { BasicFilter, booleanOptions, FilterContainer } from '../common';
+import { BasicFilter, BOOLEAN_OPTIONS, FilterContainer } from '../common';
 import type { BooleanFilterValue } from './declarations';
 
 export const BooleanFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
@@ -16,11 +16,17 @@ export const BooleanFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
         <SelectControl
           size="sm"
           menuAppendToBody
-          onChange={(option: SelectOption) => {
-            onChange({ value: option.value } as BooleanFilterValue, 'boolean');
+          onChange={(option: SelectOption | null) => {
+            onChange(
+              {
+                value: option === null ? '' : option.value,
+              } as BooleanFilterValue,
+              'boolean',
+            );
           }}
-          options={booleanOptions}
+          options={BOOLEAN_OPTIONS}
           value={value}
+          isClearable
         />
       </BasicFilter>
     </FilterContainer>

@@ -46,6 +46,7 @@ const FilterTable = () => {
       preset: 'number',
       context: {
         showAdvancedFilter: true,
+        showReset: false,
       } as FilterContext,
     },
     {

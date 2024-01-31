@@ -26,10 +26,10 @@ type TriggerProps = (props: {
 type ChildrenProps =
   | React.ReactNode
   | ((props: {
-      toggle: (ev: React.MouseEvent<HTMLElement>) => void;
-      isOpened: boolean;
-      placement: ComputedPlacement;
-      setOpened: React.Dispatch<React.SetStateAction<boolean>>;
+      toggle?: (ev: React.MouseEvent<HTMLElement>) => void;
+      isOpened?: boolean;
+      placement?: ComputedPlacement;
+      setOpened?: React.Dispatch<React.SetStateAction<boolean>>;
     }) => React.ReactNode);
 
 export interface PopoverProps
@@ -146,16 +146,14 @@ export const InternalPopover: React.FC<PopoverProps> = ({
       }}
       {...attributes.popper}
     >
-      {React.isValidElement(childrenEl)
-        ? childrenEl
-        : typeof childrenEl === 'function'
-          ? childrenEl({
-              toggle,
-              isOpened: opened,
-              placement: (dynamicPlacement as ComputedPlacement) ?? undefined,
-              setOpened,
-            })
-          : null}
+      {typeof childrenEl === 'function'
+        ? childrenEl({
+            toggle,
+            isOpened: opened,
+            placement: (dynamicPlacement as ComputedPlacement) ?? undefined,
+            setOpened,
+          })
+        : childrenEl}
       {arrowConfig && (
         <div
           ref={setArrowRef}

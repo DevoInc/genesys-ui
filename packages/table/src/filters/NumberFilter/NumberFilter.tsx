@@ -8,7 +8,7 @@ import {
   Panel,
   Popover,
 } from '@devoinc/genesys-ui';
-import { FilterContainer, numberOptions } from '../common';
+import { FilterContainer, numberOptions, NUMBER_ADDON_MAP } from '../common';
 import type { FilterContext, FilterProps } from '../declarations';
 import type { NumberFilterValue } from './declarations';
 
@@ -24,9 +24,7 @@ export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
         <InputControl
           size="sm"
           aria-label="filter"
-          placeholder={
-            operator === 'between' ? 'Left value...' : 'Filter content...'
-          }
+          placeholder={operator === 'between' ? 'From...' : 'Filter content...'}
           type="number"
           value={value}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,6 +37,7 @@ export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
               'number',
             );
           }}
+          addonToLeft={NUMBER_ADDON_MAP[operator] as string}
         />
       </HFlex.Item>
       {operator === 'between' && (
@@ -46,7 +45,7 @@ export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
           <InputControl
             size="sm"
             aria-label="filter"
-            placeholder="Right value..."
+            placeholder="To..."
             type="number"
             value={secondValue}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,6 +61,27 @@ export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
           />
         </HFlex.Item>
       )}
+
+      {(context?.showReset ?? true) &&
+        (value !== '' || operator !== 'equals') && (
+          <HFlex.Item flex="0 0 auto">
+            <IconButton
+              icon="gi-exit_close"
+              onClick={() => {
+                onChange(
+                  {
+                    value: '',
+                    operator: 'equals',
+                  } as NumberFilterValue,
+                  'number',
+                );
+              }}
+              size="sm"
+              colorScheme="quiet"
+            />
+          </HFlex.Item>
+        )}
+
       {(context?.showAdvancedFilter ?? true) && (
         <HFlex.Item flex="0 0 auto">
           <Popover id={`text-adv-filter-${colDef.id}`} placement="bottom-start">
@@ -76,19 +96,10 @@ export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
                 state={isOpened ? 'expanded' : undefined}
                 size="sm"
                 colorScheme="quiet"
-                hasBadge={operator !== 'equals'}
               />
             )}
             {({ setOpened }) => (
-              <Panel
-                maxHeight="34rem"
-                bodySettings={{
-                  removeSpace: true,
-                }}
-                elevation="activated"
-                size="sm"
-                width="28rem"
-              >
+              <Popover.Panel maxHeight="34rem" width="28rem">
                 <Menu>
                   {numberOptions.map((option) => (
                     <Menu.Item
@@ -112,7 +123,7 @@ export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
                     />
                   ))}
                 </Menu>
-              </Panel>
+              </Popover.Panel>
             )}
           </Popover>
         </HFlex.Item>
