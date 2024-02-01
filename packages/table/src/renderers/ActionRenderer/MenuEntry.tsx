@@ -8,7 +8,7 @@ type Props = {
   entry: ActionMenuEntry;
   rowIndex: number;
   level: number;
-  setOpen: any;
+  setOpen?: any;
 };
 
 export const MenuEntry: React.FC<Props> = ({ entry, level = 0, rowIndex, setOpen }) => {
