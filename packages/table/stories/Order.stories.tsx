@@ -3,7 +3,10 @@ import { Meta, StoryObj } from '@storybook/react';
 import { BasicTable } from '../src/recipes/BasicTable';
 import { useOrderStruct } from '../src/hooks';
 import { ColDef } from '../src/declarations';
-import { orderDataByOrderStruct } from '../src/helpers';
+import {
+  orderColDefByOrderStruct,
+  orderDataByOrderStruct,
+} from '../src/helpers';
 
 const meta: Meta<typeof BasicTable> = {
   title: 'Components/Table/Order',
@@ -72,16 +75,7 @@ const OrderTable = () => {
         editable: false,
         sortable: true,
       }}
-      colDefs={colDefs.map((col) => {
-        const index = orderStruct.findIndex((iter) => iter.id === col.id);
-        return index !== -1
-          ? {
-              ...col,
-              sort: orderStruct[index].sort,
-              sortIndex: orderStruct.length > 1 ? index + 1 : undefined,
-            }
-          : col;
-      })}
+      colDefs={orderColDefByOrderStruct(colDefs, orderStruct)}
       data={dataOrdered}
     />
   );
