@@ -52,7 +52,7 @@ const BulkExample = () => {
       bulkDisabled,
     });
 
-  const popoverId = 'bul-actions-menu-nested';
+  const popoverId = 'bulk-actions-menu-nested';
   return (
     <Flex flexDirection="column" gap="cmp-md">
       <Flex.Item>

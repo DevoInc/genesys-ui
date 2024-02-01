@@ -33,7 +33,9 @@ export const TableHead: React.FC<TableHeadProps> = ({
       <StyledTableHeadRow density={density}>
         {items.map((virtualColumn: VirtualItem) => {
           const colDef = getColDefByID(colDefs, virtualColumn);
-          return (
+          const headerOnFilterPosition =
+            showFilters && (colDef?.headerOnFilterPosition ?? false);
+          return !headerOnFilterPosition ? (
             <HeaderCell
               key={`header-cell-${virtualColumn.key}`}
               colDef={colDef}
@@ -48,14 +50,14 @@ export const TableHead: React.FC<TableHeadProps> = ({
                 <HeaderTextRenderer colDef={colDef} />
               )}
             </HeaderCell>
-          );
+          ) : undefined;
         })}
       </StyledTableHeadRow>
       {showFilters ? (
         <StyledTableHeadRow density={density}>
           {items.map((virtualColumn: VirtualItem) => {
             const colDef = getColDefByID(colDefs, virtualColumn);
-            return (
+            return colDef?.cellFilter || colDef?.headerOnFilterPosition ? (
               <HeaderCell
                 key={`header-filter-cell-${virtualColumn.key}`}
                 colDef={colDef}
@@ -63,17 +65,23 @@ export const TableHead: React.FC<TableHeadProps> = ({
                 width={`${virtualColumn.size}px`}
                 offsetX={virtualColumn.start}
               >
-                {colDef.cellFilter
-                  ? colDef.cellFilter({
+                {colDef?.headerOnFilterPosition ? (
+                  colDef?.headerRenderer ? (
+                    colDef.headerRenderer({ colDef })
+                  ) : (
+                    <HeaderTextRenderer colDef={colDef} />
+                  )
+                ) : colDef.cellFilter ? (
+                  colDef.cellFilter({
                     colDef,
                     data,
                     onChange: (value: FilterValue, type: string) => {
                       onFilter(colDef, value, type);
                     },
                   })
-                  : null}
+                ) : null}
               </HeaderCell>
-            );
+            ) : undefined;
           })}
         </StyledTableHeadRow>
       ) : null}

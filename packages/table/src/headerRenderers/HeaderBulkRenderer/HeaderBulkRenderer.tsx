@@ -22,6 +22,7 @@ export const HeaderBulkRenderer: React.FC<HeaderRendererProps> = ({
         : true
       : false;
   const popoverId = `${colDef.id}-bulk-actions-menu`;
+
   return (
     <HFlex spacing="cmp-xxs">
       <CheckboxControl
@@ -34,7 +35,7 @@ export const HeaderBulkRenderer: React.FC<HeaderRendererProps> = ({
         checked={checked}
         aria-label="Select all rows"
       />
-      {(context?.headerBulkMenu ?? false) && (
+      {context?.headerBulkMenu && (
         <Popover id={popoverId} placement="bottom-start">
           {({ isOpened, toggle, ref }) => (
             <IconButton
@@ -50,9 +51,9 @@ export const HeaderBulkRenderer: React.FC<HeaderRendererProps> = ({
               <GIAngleDown size="12" />
             </IconButton>
           )}
-          {({ setOpened }) => (
+          {({ setOpened, toggle, isOpened }) => (
             <Popover.Panel>
-              {context.headerBulkMenu({ setOpened: setOpened })}
+              {context.headerBulkMenu({ setOpened, toggle, isOpened })}
             </Popover.Panel>
           )}
         </Popover>

@@ -70,6 +70,7 @@ export type ColDef = {
   /** Width of the column expressed in percentage over the width of the table */
   truncateLine?: number;
   toEdge?: boolean;
+  headerOnFilterPosition?: boolean;
 };
 
 export type Preset = {

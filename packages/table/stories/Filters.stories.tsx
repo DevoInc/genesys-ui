@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
+import { Menu } from '@devoinc/genesys-ui';
+
 import { BasicTable } from '../src/recipes/BasicTable';
 import {
   type ContextOptions,
   type FilterContext,
   filterDataByFilterStruct,
   useFilterStruct,
-  filterColDefByFilterStruct,
+  filterColDefsByFilterStruct,
+  useBulkSelection,
+  BulkContext,
 } from '../src';
 
 const meta: Meta<typeof BasicTable> = {
@@ -78,7 +82,7 @@ const FilterTable = () => {
       onFilter={(curColDef, value, type) => {
         onFilter(curColDef.id, value, type);
       }}
-      colDefs={filterColDefByFilterStruct(colDef, filterStruct)}
+      colDefs={filterColDefsByFilterStruct(colDef, filterStruct)}
       data={dataFiltered}
     />
   );
@@ -86,4 +90,103 @@ const FilterTable = () => {
 
 export const Base: Story = {
   render: () => <FilterTable />,
+};
+
+const FilterAndBulkActionsTable = () => {
+  const { bulkSelection, toggleAll, toggle, headerBulkChecked } =
+    useBulkSelection({
+      dataLength: data.length,
+      initialSelection: [],
+    });
+
+  const colDef = [
+    {
+      id: 'bulk',
+      preset: 'bulk',
+      context: {
+        headerBulkMenu:
+          bulkSelection.length > 0
+            ? ({ setOpened }) => (
+                <Menu>
+                  <Menu.Heading>
+                    Bulk actions: {bulkSelection.length} Selected
+                  </Menu.Heading>
+                  <Menu.Separator />
+                  <Menu.Item
+                    onClick={() => {
+                      setOpened(false);
+                    }}
+                  >
+                    Dummy action 1
+                  </Menu.Item>
+                  <Menu.Item
+                    onClick={() => {
+                      setOpened(false);
+                    }}
+                  >
+                    Dummy action 2
+                  </Menu.Item>
+                </Menu>
+              )
+            : undefined,
+        bulkSelection,
+        headerBulkChecked,
+        onBulkCheckboxChange: (rowIndex) => {
+          toggle(rowIndex);
+        },
+        onHeaderBulkCheckboxChange: () => {
+          toggleAll();
+        },
+      } as BulkContext,
+    },
+    {
+      id: 'text',
+      headerName: 'Text',
+      preset: 'text',
+    },
+    {
+      id: 'num',
+      headerName: 'Number',
+      preset: 'number',
+      context: {
+        showAdvancedFilter: true,
+        showReset: true,
+      } as FilterContext,
+    },
+    {
+      id: 'bool',
+      headerName: 'Boolean',
+      preset: 'boolean',
+    },
+    {
+      id: 'option',
+      headerName: 'Options',
+      preset: 'options',
+      context: {
+        options: {
+          A: { label: 'Option A' },
+          B: { label: 'Option B' },
+          C: { label: 'Option C' },
+        },
+      } as ContextOptions,
+    },
+  ];
+
+  const { filterStruct, onFilter } = useFilterStruct();
+  const dataFiltered = [...data].filter(filterDataByFilterStruct(filterStruct));
+
+  return (
+    <BasicTable
+      showFilters
+      onFilter={(curColDef, value, type) => {
+        onFilter(curColDef.id, value, type);
+      }}
+      colDefs={filterColDefsByFilterStruct(colDef, filterStruct)}
+      data={dataFiltered}
+    />
+  );
+};
+
+export const FiltersAndBulkActions: Story = {
+  render: () => <FilterAndBulkActionsTable />,
 };
