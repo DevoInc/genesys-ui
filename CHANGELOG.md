@@ -70,6 +70,11 @@
 
 ## [3.0.0](https://github.com/DevoInc/genesys-ui/compare/v2.4.0...v3.0.0) (2024-01-12)
 
+### ⚠ BREAKING CHANGES
+
+* Renamed DateTimePicker to DateTimeFloatingPicker
+* DateTimePicker turns into a DateTime docked selector
+* Renamed Dropdown to Popover
 
 ### Features
 
