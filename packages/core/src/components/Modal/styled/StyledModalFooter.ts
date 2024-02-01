@@ -10,11 +10,11 @@ export interface StyledModalFooterProps {
 
 export const StyledModalFooter = styled.footer<StyledModalFooterProps>`
   ${({ theme, hasBoxShadow, status }) => {
-    const modalTokens = theme.cmp.modal;
-    const footerTokens = modalTokens.footer;
-    const footerButtonTokens = modalTokens.footerButtons;
+  const modalTokens = theme.cmp.modal;
+  const footerTokens = modalTokens.footer;
+  const footerButtonTokens = modalTokens.footerButtons;
 
-    return css`
+  return css`
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
@@ -25,5 +25,5 @@ export const StyledModalFooter = styled.footer<StyledModalFooterProps>`
         ${footerTokens.space.padding.hor};
       background-color: ${status == 'base' && footerTokens.color.background};
     `;
-  }};
+}};
 `;

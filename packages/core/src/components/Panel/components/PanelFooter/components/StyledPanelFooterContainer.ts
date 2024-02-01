@@ -9,10 +9,10 @@ export interface StyledPanelFooterContainerProps extends FooterSettingsProps {
 
 export const StyledPanelFooterContainer = styled.footer<StyledPanelFooterContainerProps>`
   ${({ bordered, hasBoxShadow, hasBackground, removeSpace, size, theme }) => {
-    const panelFooterTokens = theme.cmp.panel.footer;
-    const footerModalTokens = theme.cmp.modal.footer;
+  const panelFooterTokens = theme.cmp.panel.footer;
+  const footerModalTokens = theme.cmp.modal.footer;
 
-    return css`
+  return css`
       z-index: 1;
       flex-shrink: 0;
       box-shadow: ${hasBoxShadow && panelFooterTokens.elevation.boxShadow};
@@ -26,5 +26,5 @@ export const StyledPanelFooterContainer = styled.footer<StyledPanelFooterContain
         display: none;
       }
     `;
-  }};
+}};
 `;

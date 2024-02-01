@@ -15,21 +15,21 @@ export interface StyledFieldsCombinerItemProps {
 
 export const StyledFieldsCombinerItem = styled.div<StyledFieldsCombinerItemProps>`
   ${({
-    combinedButtons,
-    size,
-    $width,
-    $order,
-    theme,
-    componentType,
-    status,
-  }) => {
-    const fieldTokens = theme.alias.fields;
-    const btnTokens = theme.cmp.button;
-    const height = btnTokens.size.height[size];
-    const checkWidth = btnTokens.size.square[size];
-    const borderRadius = fieldTokens.shape.borderRadius;
+  combinedButtons,
+  size,
+  $width,
+  $order,
+  theme,
+  componentType,
+  status,
+}) => {
+  const fieldTokens = theme.alias.fields;
+  const btnTokens = theme.cmp.button;
+  const height = btnTokens.size.height[size];
+  const checkWidth = btnTokens.size.square[size];
+  const borderRadius = fieldTokens.shape.borderRadius;
 
-    return css`
+  return css`
       position: relative;
       height: ${height};
       width: ${$width};
@@ -97,5 +97,5 @@ export const StyledFieldsCombinerItem = styled.div<StyledFieldsCombinerItemProps
         }
       `}
     `;
-  }};
+}};
 `;

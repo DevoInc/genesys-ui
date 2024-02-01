@@ -56,10 +56,10 @@ export const InlineMessagePanel: React.FC<InlineMessagePanelProps> = ({
           closeSettings={
             onClose
               ? {
-                  cssTranslate: '1.8rem, -1rem',
-                  onClick: onClose,
-                  tooltip: onCloseTooltip,
-                }
+                cssTranslate: '1.8rem, -1rem',
+                onClick: onClose,
+                tooltip: onCloseTooltip,
+              }
               : null
           }
           hasBoxShadow={hasScroll}

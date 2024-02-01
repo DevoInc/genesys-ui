@@ -15,10 +15,10 @@ export interface StyledButtonAddonProps {
 
 export const StyledButtonAddon = styled.span<StyledButtonAddonProps>`
   ${({ hasSpace, isDropdown, position, size, theme }) => {
-    const spacingTokens = theme.cmp.button.icon.space;
-    const marginTokens = spacingTokens.margin;
-    const offsetTokens = spacingTokens.offset;
-    return css`
+  const spacingTokens = theme.cmp.button.icon.space;
+  const marginTokens = spacingTokens.margin;
+  const offsetTokens = spacingTokens.offset;
+  return css`
       display: inline-flex;
       flex: 0;
       user-select: none;
@@ -46,5 +46,5 @@ export const StyledButtonAddon = styled.span<StyledButtonAddonProps>`
         margin-left: auto;
       `};
     `;
-  }}
+}}
 `;

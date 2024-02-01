@@ -71,12 +71,12 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
   const footerActions = showCollapsed
     ? undefined
     : getFooterActions({
-        accent,
-        actionApply,
-        actionReject,
-        closeToast,
-        status,
-      });
+      accent,
+      actionApply,
+      actionReject,
+      closeToast,
+      status,
+    });
   return (
     <>
       <ToastBadge status={status} updates={updates} />

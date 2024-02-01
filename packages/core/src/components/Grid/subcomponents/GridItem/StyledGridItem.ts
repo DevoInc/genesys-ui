@@ -9,18 +9,18 @@ export interface StyledGridItemProps
 
 export const StyledGridItem = styled.div<StyledGridItemProps>`
   ${({
-    alignSelf,
-    gridArea,
-    gridColumn,
-    gridColumnEnd,
-    gridColumnStart,
-    gridRow,
-    gridRowEnd,
-    gridRowStart,
-    justifySelf,
-    theme,
-    ...boxMixinProps
-  }) => css`
+  alignSelf,
+  gridArea,
+  gridColumn,
+  gridColumnEnd,
+  gridColumnStart,
+  gridRow,
+  gridRowEnd,
+  gridRowStart,
+  justifySelf,
+  theme,
+  ...boxMixinProps
+}) => css`
     ${boxMixin(theme)(boxMixinProps)};
     align-self: ${alignSelf};
     grid-area: ${gridArea};

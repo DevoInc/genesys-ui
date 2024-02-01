@@ -40,11 +40,11 @@ export const linkMixin = ({
 
     // text styles
     ${typoMixin({
-      bold: true,
-      size,
-      theme,
-      variant: 'body',
-    })}
+    bold: true,
+    size,
+    theme,
+    variant: 'body',
+  })}
 
     // disabled
     ${state === 'disabled' &&

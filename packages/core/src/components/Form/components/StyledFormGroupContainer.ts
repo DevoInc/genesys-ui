@@ -24,7 +24,7 @@ export interface StyledFormGroupContainerProps
 
 export const StyledFormGroupContainer = styled.div<StyledFormGroupContainerProps>`
   ${({ asFieldset, legendPosition, marginLeft, marginTop, theme }) => {
-    return css`
+  return css`
       display: flex;
       flex-direction: ${legendPosition === 'left' ? 'row' : 'column'};
       align-items: ${legendPosition === 'left' ? 'center' : 'stretch'};
@@ -38,5 +38,5 @@ export const StyledFormGroupContainer = styled.div<StyledFormGroupContainerProps
         min-width: 0;
       `}
     `;
-  }}
+}}
 `;

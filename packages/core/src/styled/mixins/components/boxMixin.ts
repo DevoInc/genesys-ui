@@ -27,46 +27,46 @@ export interface BoxMixinProps extends LayoutCommonProps {
  */
 export const boxMixin =
   (theme: DefaultTheme) =>
-  ({
-    alignSelf,
-    $display,
-    flex,
-    elevation,
-    $height,
-    margin,
-    marginBottom,
-    marginLeft,
-    marginRight,
-    marginTop,
-    maxHeight,
-    maxWidth,
-    minHeight,
-    minWidth,
-    opacity,
-    overflow,
-    overflowX,
-    overflowY,
-    padding,
-    paddingBottom,
-    paddingLeft,
-    paddingRight,
-    paddingTop,
-    position,
-    positionBottom,
-    positionLeft,
-    positionRight,
-    positionTop,
-    cssTranslate,
-    verticalAlign,
-    visibility,
-    $width,
-    zIndex,
-  }: BoxMixinProps) => {
-    const aliasTokens = theme.alias;
-    const elevationTokens = aliasTokens.elevation;
-    const hasBorder =
+    ({
+      alignSelf,
+      $display,
+      flex,
+      elevation,
+      $height,
+      margin,
+      marginBottom,
+      marginLeft,
+      marginRight,
+      marginTop,
+      maxHeight,
+      maxWidth,
+      minHeight,
+      minWidth,
+      opacity,
+      overflow,
+      overflowX,
+      overflowY,
+      padding,
+      paddingBottom,
+      paddingLeft,
+      paddingRight,
+      paddingTop,
+      position,
+      positionBottom,
+      positionLeft,
+      positionRight,
+      positionTop,
+      cssTranslate,
+      verticalAlign,
+      visibility,
+      $width,
+      zIndex,
+    }: BoxMixinProps) => {
+      const aliasTokens = theme.alias;
+      const elevationTokens = aliasTokens.elevation;
+      const hasBorder =
       elevation && elevation !== 'ground' && !elevation.includes('sticky');
-    const hasSpacing =
+      const hasSpacing =
       margin ||
       marginTop ||
       marginRight ||
@@ -77,7 +77,7 @@ export const boxMixin =
       paddingRight ||
       paddingRight ||
       paddingBottom;
-    return css`
+      return css`
       /* position and layout */
       position: ${position || (elevation ? 'relative' : null)};
       top: ${positionTop};
@@ -128,4 +128,4 @@ export const boxMixin =
       getSpacingPropCss(theme)(paddingBottom)};
       padding-left: ${paddingLeft && getSpacingPropCss(theme)(paddingLeft)};
     `;
-  };
+    };

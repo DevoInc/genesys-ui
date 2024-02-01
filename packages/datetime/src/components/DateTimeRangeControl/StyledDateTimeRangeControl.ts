@@ -22,9 +22,9 @@ export const StyledDateTimeRangeControl = styled.div.attrs((props) => ({
   border-style: solid;
 
   ${({ aliasTokens, isOpen, rangeControlTokens, size, wide }) => {
-    const borderColor = rangeControlTokens.color.border.base;
-    const activeBorderColor = rangeControlTokens.color.border.active;
-    return css`
+  const borderColor = rangeControlTokens.color.border.base;
+  const activeBorderColor = rangeControlTokens.color.border.active;
+  return css`
       display: ${wide ? 'flex' : 'inline-flex'};
       transition:
         border-color ease ${rangeControlTokens.mutation.transitionDuration},
@@ -42,5 +42,5 @@ export const StyledDateTimeRangeControl = styled.div.attrs((props) => ({
         border-color: ${activeBorderColor};
       }
     `;
-  }};
+}};
 `;

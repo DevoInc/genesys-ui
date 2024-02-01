@@ -30,10 +30,10 @@ export interface StyledModalProps {
 
 export const StyledModal = styled.div<StyledModalProps>`
   ${({ theme, height, width, windowSize, status, zIndex }) => {
-    const tokensDialog = theme.cmp.dialog;
-    const tokensModal = theme.cmp.modal;
+  const tokensDialog = theme.cmp.dialog;
+  const tokensModal = theme.cmp.modal;
 
-    return css`
+  return css`
       ${elevationMixin(theme)('overlay')};
       display: inline-flex;
       flex-direction: column;
@@ -57,5 +57,5 @@ export const StyledModal = styled.div<StyledModalProps>`
       max-height: ${tokensModal.size.maxHeight};
       width: ${width || tokensModal.size.width};
     `;
-  }};
+}};
 `;

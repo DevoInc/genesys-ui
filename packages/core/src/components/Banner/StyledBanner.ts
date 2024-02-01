@@ -9,8 +9,8 @@ export interface StyledBannerProps {
 
 export const StyledBanner = styled.div<StyledBannerProps>`
   ${({ status = 'info', theme }) => {
-    const cmpTokens = theme.cmp.boxMessage;
-    return css`
+  const cmpTokens = theme.cmp.boxMessage;
+  return css`
       position: relative;
       display: flex;
       align-items: flex-start;
@@ -21,5 +21,5 @@ export const StyledBanner = styled.div<StyledBannerProps>`
       padding: ${cmpTokens.space.padding};
       background-color: ${cmpTokens.color.background[status]};
     `;
-  }}
+}}
 `;

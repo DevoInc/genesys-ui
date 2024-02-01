@@ -63,23 +63,23 @@ export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
 
       {(context?.showReset ?? true) &&
         (value !== '' || operator !== 'equals') && (
-          <HFlex.Item flex="0 0 auto">
-            <IconButton
-              icon="gi-exit_close"
-              onClick={() => {
-                onChange(
+        <HFlex.Item flex="0 0 auto">
+          <IconButton
+            icon="gi-exit_close"
+            onClick={() => {
+              onChange(
                   {
                     value: '',
                     operator: 'equals',
                   } as NumberFilterValue,
                   'number',
-                );
-              }}
-              size="sm"
-              colorScheme="quiet"
-            />
-          </HFlex.Item>
-        )}
+              );
+            }}
+            size="sm"
+            colorScheme="quiet"
+          />
+        </HFlex.Item>
+      )}
 
       {(context?.showAdvancedFilter ?? true) && (
         <HFlex.Item flex="0 0 auto">

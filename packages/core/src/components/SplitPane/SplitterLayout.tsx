@@ -212,29 +212,29 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
     if (typeof secondaryInitialSize !== 'undefined') {
       secPaneSize = secondaryInitialSize;
     } else if (containerRef.current) {
-        const containerRect = containerRef.current.getBoundingClientRect();
+      const containerRect = containerRef.current.getBoundingClientRect();
 
-        const splitterRect = splitterRef.current
-          ? splitterRef.current.getBoundingClientRect()
-          : ({
-              width: DEFAULT_SPLITTER_SIZE,
-              height: DEFAULT_SPLITTER_SIZE,
-            } as DOMRect);
+      const splitterRect = splitterRef.current
+        ? splitterRef.current.getBoundingClientRect()
+        : ({
+          width: DEFAULT_SPLITTER_SIZE,
+          height: DEFAULT_SPLITTER_SIZE,
+        } as DOMRect);
 
-        secPaneSize = getSecondaryPaneSize(
-          containerRect,
-          splitterRect,
-          {
-            left:
+      secPaneSize = getSecondaryPaneSize(
+        containerRect,
+        splitterRect,
+        {
+          left:
               containerRect.left +
               (containerRect.width - splitterRect.width) / 2,
-            top:
+          top:
               containerRect.top +
               (containerRect.height - splitterRect.height) / 2,
-          },
-          false,
-        );
-      }
+        },
+        false,
+      );
+    }
     setSecondaryPaneSize(secPaneSize);
 
     return () => {

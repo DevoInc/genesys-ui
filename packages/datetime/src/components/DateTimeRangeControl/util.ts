@@ -3,13 +3,13 @@ export const getRealTimeDataTip = (state) =>
 
 export const getButtonStateFromRealTimeState = (state) => {
   switch (state) {
-    case 'inactive':
-      return 'enabled';
-    case 'activated':
-      return 'selected';
-    case 'selected':
-      return 'selected';
-    default:
-      return state;
+  case 'inactive':
+    return 'enabled';
+  case 'activated':
+    return 'selected';
+  case 'selected':
+    return 'selected';
+  default:
+    return state;
   }
 };

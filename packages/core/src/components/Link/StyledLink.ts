@@ -22,18 +22,18 @@ export interface StyledLinkProps {
 
 export const StyledLink = styled.a<StyledLinkProps>`
   ${({ colorScheme, underlined, wide, theme, size, state, lineClamp }) => {
-    const linkTokens = theme.cmp.link;
-    return css`
+  const linkTokens = theme.cmp.link;
+  return css`
       ${linkMixin({
-        colorScheme,
-        underlined,
-        wide,
-        size,
-        state,
-        theme,
-        linkTokens,
-        lineClamp,
-      })}
+    colorScheme,
+    underlined,
+    wide,
+    size,
+    state,
+    theme,
+    linkTokens,
+    lineClamp,
+  })}
     `;
-  }}
+}}
 `;

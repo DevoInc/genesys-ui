@@ -13,21 +13,21 @@ export interface StyledPanelBodyProps {
 
 export const StyledPanelBody = styled.div<StyledPanelBodyProps>`
   ${({ bodySettings, hasScroll, size, theme }) => {
-    const panelContentTokens = theme.cmp.panel.content;
+  const panelContentTokens = theme.cmp.panel.content;
 
-    let trackRadius;
-    let padding = panelContentTokens.space.padding[size];
+  let trackRadius;
+  let padding = panelContentTokens.space.padding[size];
 
-    const margin = hasScroll
-      ? panelContentTokens.space.margin[size]
-      : undefined;
+  const margin = hasScroll
+    ? panelContentTokens.space.margin[size]
+    : undefined;
 
-    if (bodySettings?.removeSpace) {
-      trackRadius = '0';
-      padding = '0';
-    }
+  if (bodySettings?.removeSpace) {
+    trackRadius = '0';
+    padding = '0';
+  }
 
-    return css`
+  return css`
       ${scrollbars({ trackRadius, theme })};
       position: relative;
       flex: 1 1 100%;
@@ -35,5 +35,5 @@ export const StyledPanelBody = styled.div<StyledPanelBodyProps>`
       margin: ${margin};
       overflow: auto;
     `;
-  }};
+}};
 `;

@@ -46,33 +46,33 @@ export interface StyledAvatarContainerProps {
 
 export const StyledAvatarContainer = styled.span<StyledAvatarContainerProps>`
   ${({
-    colorScheme,
-    customSize,
-    iconOnHover,
-    imageFit,
-    imageSrc,
-    isClickable,
-    bordered,
-    $disabled,
-    size,
-    theme,
-    variant,
-  }) => {
-    const colorSchemeForTokens = _.camelCase(colorScheme);
-    const aliasTokens = theme?.alias;
-    const bgColor =
+  colorScheme,
+  customSize,
+  iconOnHover,
+  imageFit,
+  imageSrc,
+  isClickable,
+  bordered,
+  $disabled,
+  size,
+  theme,
+  variant,
+}) => {
+  const colorSchemeForTokens = _.camelCase(colorScheme);
+  const aliasTokens = theme?.alias;
+  const bgColor =
       aliasTokens.color.background.feedback[colorSchemeForTokens].weak;
-    const color = aliasTokens.color.text.feedback[colorSchemeForTokens].base;
-    const width = getAvatarSizeConfig({ customSize, size }).width;
-    const height = getAvatarSizeConfig({ customSize, size }).height;
-    const borderRadius = {
-      circle: '50%',
-      rounded: '0.4rem',
-    };
-    const variantValue = getVariantValue(variant);
-    // TODO: remove iconOnHoverEval after the QUV-2059 ticket is finished
-    const iconOnHoverEval = iconOnHover?.replace('gi-', '');
-    return css`
+  const color = aliasTokens.color.text.feedback[colorSchemeForTokens].base;
+  const width = getAvatarSizeConfig({ customSize, size }).width;
+  const height = getAvatarSizeConfig({ customSize, size }).height;
+  const borderRadius = {
+    circle: '50%',
+    rounded: '0.4rem',
+  };
+  const variantValue = getVariantValue(variant);
+  // TODO: remove iconOnHoverEval after the QUV-2059 ticket is finished
+  const iconOnHoverEval = iconOnHover?.replace('gi-', '');
+  return css`
       ${typoMixin({ theme })};
       display: inline-flex;
       justify-content: center;
@@ -116,8 +116,8 @@ export const StyledAvatarContainer = styled.span<StyledAvatarContainerProps>`
         &::after {
           // TODO: remove iconOnHoverEval after the QUV-2059 ticket is finished
           ${pseudoElementOverlayMixin({
-            content: `'${icons[iconOnHoverEval] || ''}'`,
-          })};
+        content: `'${icons[iconOnHoverEval] || ''}'`,
+      })};
           ${iconFontMixin()};
           display: flex;
           justify-content: center;
@@ -143,5 +143,5 @@ export const StyledAvatarContainer = styled.span<StyledAvatarContainerProps>`
         }
       `}
     `;
-  }}
+}}
 `;

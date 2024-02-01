@@ -23,10 +23,10 @@ export const InnerSelectControl = <
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >({
-  styles,
-  componentStyles,
-  ...props
-}: InnerSelectControlProps<Option, IsMulti, Group>): React.ReactElement => {
+    styles,
+    componentStyles,
+    ...props
+  }: InnerSelectControlProps<Option, IsMulti, Group>): React.ReactElement => {
   return props.creatable ? (
     <StyledSelectControl
       as={CreatableSelect<Option, IsMulti, Group>}

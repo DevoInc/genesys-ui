@@ -2,30 +2,30 @@ import { subDays, subMinutes } from 'date-fns';
 
 export const onApply =
   (setDate) =>
-  ({ timestamp, preset }) => {
-    console.table({
-      ...(preset?.from &&
+    ({ timestamp, preset }) => {
+      console.table({
+        ...(preset?.from &&
         preset?.to && {
           preset: {
             from: preset.from,
             to: preset.to,
           },
         }),
-      timestamp: {
-        from: timestamp.from,
-        to: timestamp.to,
-      },
-      // eslint-disable-next-line camelcase
-      timestamp_formatted: {
-        from: new Date(timestamp.from),
-        to: new Date(timestamp.to),
-      },
-    });
-    setDate({
-      from: preset?.from || timestamp.from,
-      to: preset?.to || timestamp.to,
-    });
-  };
+        timestamp: {
+          from: timestamp.from,
+          to: timestamp.to,
+        },
+        // eslint-disable-next-line camelcase
+        timestamp_formatted: {
+          from: new Date(timestamp.from),
+          to: new Date(timestamp.to),
+        },
+      });
+      setDate({
+        from: preset?.from || timestamp.from,
+        to: preset?.to || timestamp.to,
+      });
+    };
 
 export const onChange = (setDate) => (range) => {
   console.log('click onChange');

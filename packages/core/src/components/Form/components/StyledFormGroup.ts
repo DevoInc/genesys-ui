@@ -7,9 +7,9 @@ export interface StyledFormGroupProps {
 
 export const StyledFormGroup = styled.div<StyledFormGroupProps>`
   ${({ boxed = false, theme }) => {
-    const aliasTokens = theme.alias;
-    const spacingTokens = aliasTokens.space;
-    return css`
+  const aliasTokens = theme.alias;
+  const spacingTokens = aliasTokens.space;
+  return css`
       ${boxed &&
       css`
         border: solid ${theme.alias.shape.borderSize.separator.md}
@@ -18,5 +18,5 @@ export const StyledFormGroup = styled.div<StyledFormGroupProps>`
         padding: ${spacingTokens.cmp.md};
       `}
     `;
-  }}
+}}
 `;

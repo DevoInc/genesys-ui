@@ -10,8 +10,8 @@ export interface StyledEditableContentProps extends StyledPolymorphicProps {}
 
 export const StyledEditableContent = styled.div<StyledEditableContentProps>`
   ${({ theme }) => {
-    const iconSize = theme.alias.typo.fontSize.icon.xxxs;
-    return css`
+  const iconSize = theme.alias.typo.fontSize.icon.xxxs;
+  return css`
       position: relative;
       transition: all ease ${theme.alias.mutation.transitionDuration.opacity.sm};
       border-radius: ${theme.alias.shape.borderRadius.elevated};
@@ -28,8 +28,8 @@ export const StyledEditableContent = styled.div<StyledEditableContentProps>`
 
       &::after {
         ${pseudoElementMixin({
-          content: `'${icons.pencil_edit || ''}'`,
-        })};
+    content: `'${icons.pencil_edit || ''}'`,
+  })};
         ${iconFontMixin()};
         right: calc(${iconSize} / 2 * -1);
         top: calc(${iconSize} / 2 * -1);
@@ -43,5 +43,5 @@ export const StyledEditableContent = styled.div<StyledEditableContentProps>`
         opacity: 0;
       }
     `;
-  }}
+}}
 `;

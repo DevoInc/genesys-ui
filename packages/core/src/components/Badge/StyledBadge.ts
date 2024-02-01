@@ -29,25 +29,25 @@ export interface StyledBadgeProps {
 }
 export const StyledBadge = styled.span<StyledBadgeProps>`
   ${({
-    colorScheme = 'neutral',
-    hasAbsolutePosition,
-    hasContent,
-    hasLongText,
-    inverse,
-    size = 'md',
-    theme,
-  }) => {
-    const colorSchemeForTokens = _.camelCase(colorScheme);
-    const contentType = hasContent ? 'hasContent' : 'isEmpty';
-    const cmpTokens = theme.cmp.badge;
-    const squareSize = cmpTokens.size.square[contentType][size];
-    const bgColor = isValidColor(colorScheme)
-      ? colorScheme
-      : cmpTokens.color.background[contentType][colorSchemeForTokens];
-    const textColor = isValidColor(colorScheme)
-      ? getAccTextColor(colorScheme, '#fff', cmpTokens.color.text.neutral)
-      : cmpTokens.color.text[colorSchemeForTokens];
-    return css`
+  colorScheme = 'neutral',
+  hasAbsolutePosition,
+  hasContent,
+  hasLongText,
+  inverse,
+  size = 'md',
+  theme,
+}) => {
+  const colorSchemeForTokens = _.camelCase(colorScheme);
+  const contentType = hasContent ? 'hasContent' : 'isEmpty';
+  const cmpTokens = theme.cmp.badge;
+  const squareSize = cmpTokens.size.square[contentType][size];
+  const bgColor = isValidColor(colorScheme)
+    ? colorScheme
+    : cmpTokens.color.background[contentType][colorSchemeForTokens];
+  const textColor = isValidColor(colorScheme)
+    ? getAccTextColor(colorScheme, '#fff', cmpTokens.color.text.neutral)
+    : cmpTokens.color.text[colorSchemeForTokens];
+  return css`
       position: relative;
       flex: 0 0 auto;
       justify-content: center;
@@ -78,7 +78,7 @@ export const StyledBadge = styled.span<StyledBadgeProps>`
         ? getBadgeInverseModeColor({ colorScheme, textColor: bgColor })
         : textColor};
     `;
-  }}
+}}
 `;
 
 export const StyledBadgeText = styled.span`

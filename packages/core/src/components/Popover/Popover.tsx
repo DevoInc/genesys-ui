@@ -83,22 +83,22 @@ export const InternalPopover: React.FC<PopoverProps> = ({
   const arrowModifiers = React.useMemo(() => {
     return arrowConfig
       ? [
-          {
-            name: 'arrow',
-            options: {
-              element: arrowRef,
-              padding:
+        {
+          name: 'arrow',
+          options: {
+            element: arrowRef,
+            padding:
                 arrowConfig?.padding ??
                 getPxFromRem(theme.cmp.panel.shape.borderRadius) * 2,
-            },
           },
-          {
-            name: 'offset',
-            options: {
-              offset: [0, arrowConfig.size || POPOVER_DEFAULT_ARROW_SIZE],
-            },
+        },
+        {
+          name: 'offset',
+          options: {
+            offset: [0, arrowConfig.size || POPOVER_DEFAULT_ARROW_SIZE],
           },
-        ]
+        },
+      ]
       : [];
   }, [arrowConfig, arrowRef, theme.cmp.panel.shape.borderRadius]);
 
@@ -148,11 +148,11 @@ export const InternalPopover: React.FC<PopoverProps> = ({
     >
       {typeof childrenEl === 'function'
         ? childrenEl({
-            toggle,
-            isOpened: opened,
-            placement: (dynamicPlacement as ComputedPlacement) ?? undefined,
-            setOpened,
-          })
+          toggle,
+          isOpened: opened,
+          placement: (dynamicPlacement as ComputedPlacement) ?? undefined,
+          setOpened,
+        })
         : childrenEl}
       {arrowConfig && (
         <div

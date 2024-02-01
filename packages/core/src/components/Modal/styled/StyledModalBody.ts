@@ -11,9 +11,9 @@ export interface StyledModalBodyProps {
 
 export const StyledModalBody = styled.div<StyledModalBodyProps>`
   ${({ theme, hasBoxShadow, contentPadding }) => {
-    const tokens = theme.cmp.modal.content;
+  const tokens = theme.cmp.modal.content;
 
-    return css`
+  return css`
       ${scrollbars({ theme })};
       overflow-y: auto;
       flex: 1 1 auto;
@@ -25,5 +25,5 @@ export const StyledModalBody = styled.div<StyledModalBodyProps>`
           ${tokens.space.padding.hor}`
       }};
     `;
-  }}
+}}
 `;

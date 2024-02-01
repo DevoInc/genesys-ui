@@ -13,9 +13,9 @@ export interface StyledPanelHeaderContainerProps {
 
 export const StyledPanelHeaderContainer = styled.header<StyledPanelHeaderContainerProps>`
   ${({ hasBoxShadow, bordered, size = 'md', hasSubtitle, theme }) => {
-    const panelHeaderTokens = theme.cmp.panel.header;
+  const panelHeaderTokens = theme.cmp.panel.header;
 
-    return css`
+  return css`
       display: flex;
       flex-shrink: 0;
       align-items: ${hasSubtitle ? 'flex-start' : 'center'};
@@ -29,5 +29,5 @@ export const StyledPanelHeaderContainer = styled.header<StyledPanelHeaderContain
         display: none;
       }
     `;
-  }};
+}};
 `;

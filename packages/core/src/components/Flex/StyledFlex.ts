@@ -10,20 +10,20 @@ export interface StyledFlexProps
 
 export const StyledFlex = styled.div<StyledFlexProps>`
   ${({
-    alignContent,
-    alignItems,
-    childrenFlex,
-    columnGap,
-    flex,
-    flexDirection,
-    flexWrap,
-    gap,
-    justifyContent,
-    inline = false,
-    rowGap,
-    theme,
-    ...boxMixinProps
-  }) => css`
+  alignContent,
+  alignItems,
+  childrenFlex,
+  columnGap,
+  flex,
+  flexDirection,
+  flexWrap,
+  gap,
+  justifyContent,
+  inline = false,
+  rowGap,
+  theme,
+  ...boxMixinProps
+}) => css`
     ${boxMixin(theme)(boxMixinProps)};
     display: ${inline ? 'inline-flex' : 'flex'};
     align-content: ${alignContent};

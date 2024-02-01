@@ -39,59 +39,59 @@ export interface StyledInputControlProps {
 
 export const StyledInputControl = styled.input<StyledInputControlProps>`
   ${({
-    disabled,
-    hasAddonToLeft,
-    hasAddonToRight,
-    hasIcon,
-    hasTypeIcon,
-    inputWidth,
-    readOnly,
-    $size = 'md',
-    status = 'base',
-    theme,
-    type = 'text',
-  }) => {
-    const aliasTokens = theme.alias;
-    const fieldTokens = aliasTokens.fields;
-    const fieldIconTokens = fieldTokens.icon;
-    const iconSize = fieldIconTokens.size.square[$size];
-    const showPasswordSize =
+  disabled,
+  hasAddonToLeft,
+  hasAddonToRight,
+  hasIcon,
+  hasTypeIcon,
+  inputWidth,
+  readOnly,
+  $size = 'md',
+  status = 'base',
+  theme,
+  type = 'text',
+}) => {
+  const aliasTokens = theme.alias;
+  const fieldTokens = aliasTokens.fields;
+  const fieldIconTokens = fieldTokens.icon;
+  const iconSize = fieldIconTokens.size.square[$size];
+  const showPasswordSize =
       theme.cmp.button.size.square[INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP[$size]];
-    const inputBorderRadius = fieldTokens.shape.borderRadius;
-    const inputHeight = fieldTokens.size.height[$size];
-    const inputHorPadding = fieldTokens.space.padding.hor[$size];
-    const inputWithIconPadding =
+  const inputBorderRadius = fieldTokens.shape.borderRadius;
+  const inputHeight = fieldTokens.size.height[$size];
+  const inputHorPadding = fieldTokens.space.padding.hor[$size];
+  const inputWithIconPadding =
       hasIcon || hasTypeIcon
         ? `calc(${iconSize} + (${inputHorPadding} * 2))`
         : '0rem';
-    const inputWithShowPasswordPadding =
+  const inputWithShowPasswordPadding =
       type === 'password'
         ? `calc(${showPasswordSize} + (${inputHorPadding} * 2))`
         : '0rem';
-    const buttonTokens = theme.cmp.button;
-    const clearSearchButtonSize = buttonTokens.size.square.xxs;
-    const pseudoButtonSize =
+  const buttonTokens = theme.cmp.button;
+  const clearSearchButtonSize = buttonTokens.size.square.xxs;
+  const pseudoButtonSize =
       buttonTokens.size.square[INPUT_CONTROL_PSEUDO_ACTIONS_SIZE_MAP[$size]];
-    const pseudoButtonFontSize =
+  const pseudoButtonFontSize =
       buttonTokens.icon.typo.fontSize[
         INPUT_CONTROL_PSEUDO_ACTIONS_SIZE_MAP[$size]
       ];
-    const fileButtonHeight = css`calc(${buttonTokens.size.height[$size]} - 0.6rem)`;
-    const fileButtonPadding = css`calc(${buttonTokens.space.padding[$size]} - 0.2rem)`;
-    const inputFileTopPadding = css`calc((${inputHeight} - ${fileButtonHeight}) / 3)`;
-    const inputColorPadding = css`calc(${aliasTokens.space.cmp.xxs} / 2)`;
-    const inputRangeTrackHeight = css`calc(${aliasTokens.size.height.track.xs})`;
-    const inputRangeHandlerSize = aliasTokens.handlers.size.square.md;
+  const fileButtonHeight = css`calc(${buttonTokens.size.height[$size]} - 0.6rem)`;
+  const fileButtonPadding = css`calc(${buttonTokens.space.padding[$size]} - 0.2rem)`;
+  const inputFileTopPadding = css`calc((${inputHeight} - ${fileButtonHeight}) / 3)`;
+  const inputColorPadding = css`calc(${aliasTokens.space.cmp.xxs} / 2)`;
+  const inputRangeTrackHeight = css`calc(${aliasTokens.size.height.track.xs})`;
+  const inputRangeHandlerSize = aliasTokens.handlers.size.square.md;
 
-    return css`
+  return css`
       ${commonInputControlMixin({
-        disabled,
-        inputWidth,
-        readOnly,
-        $size,
-        status,
-        theme,
-      })};
+    disabled,
+    inputWidth,
+    readOnly,
+    $size,
+    status,
+    theme,
+  })};
 
       ${(hasIcon || type === 'password') &&
       css`
@@ -223,10 +223,10 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
           align-items: center;
           justify-content: center;
           ${typoMixin({
-            variant: 'action',
-            theme,
-            size: $size,
-          })};
+        variant: 'action',
+        theme,
+        size: $size,
+      })};
           position: relative;
           left: calc((${inputHorPadding} - ${inputFileTopPadding}) * -1);
           border-radius: ${buttonTokens.shape.borderRadius.medium};
@@ -277,5 +277,5 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
         }
       `};
     `;
-  }}
+}}
 `;

@@ -65,12 +65,12 @@ export const TableHead: React.FC<TableHeadProps> = ({
               >
                 {colDef.cellFilter
                   ? colDef.cellFilter({
-                      colDef,
-                      data,
-                      onChange: (value: FilterValue, type: string) => {
-                        onFilter(colDef, value, type);
-                      },
-                    })
+                    colDef,
+                    data,
+                    onChange: (value: FilterValue, type: string) => {
+                      onFilter(colDef, value, type);
+                    },
+                  })
                   : null}
               </HeaderCell>
             );

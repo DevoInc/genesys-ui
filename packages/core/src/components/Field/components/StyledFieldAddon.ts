@@ -25,15 +25,15 @@ export interface StyledFieldAddonProps
 
 export const StyledFieldAddon = styled.span<StyledFieldAddonProps>`
   ${({ $disabled, position, size = 'md', theme }) => {
-    const aliasTokens = theme.alias;
-    const fieldTokens = aliasTokens.fields;
-    const borderWidth = fieldTokens.shape.borderSize.base;
+  const aliasTokens = theme.alias;
+  const fieldTokens = aliasTokens.fields;
+  const borderWidth = fieldTokens.shape.borderSize.base;
 
-    return css`
+  return css`
       ${typoMixin({
-        theme,
-        size,
-      })};
+    theme,
+    size,
+  })};
       flex: 0 0 auto;
       align-items: center;
       display: flex;
@@ -64,5 +64,5 @@ export const StyledFieldAddon = styled.span<StyledFieldAddonProps>`
             border-top-left-radius: 0;
           `}
     `;
-  }}
+}}
 `;

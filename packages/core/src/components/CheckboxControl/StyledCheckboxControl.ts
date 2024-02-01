@@ -24,21 +24,21 @@ export const StyledCheckboxControl = styled.input.attrs({
   type: 'checkbox',
 })<StyledCheckboxControlProps>`
   ${({
-    checkedIcon,
-    disabled = false,
-    indeterminate = false,
-    $size = 'md',
-    status = 'base',
-    theme,
-  }) => {
-    const cmpTokens = theme.cmp.checkbox;
-    const controlTokens = cmpTokens.control;
-    const markerTokens = cmpTokens.controlMarker;
-    const cmpMarkerWidth = markerTokens.size.square[$size];
-    const checkRadioTokens = getCheckRadioTokens({ status, theme });
-    const evalCheckedIcon = icons[checkedIcon] || icons.check_thick;
+  checkedIcon,
+  disabled = false,
+  indeterminate = false,
+  $size = 'md',
+  status = 'base',
+  theme,
+}) => {
+  const cmpTokens = theme.cmp.checkbox;
+  const controlTokens = cmpTokens.control;
+  const markerTokens = cmpTokens.controlMarker;
+  const cmpMarkerWidth = markerTokens.size.square[$size];
+  const checkRadioTokens = getCheckRadioTokens({ status, theme });
+  const evalCheckedIcon = icons[checkedIcon] || icons.check_thick;
 
-    return css`
+  return css`
       ${checkRadioMixin({ disabled, size: $size, status, theme })};
       appearance: none;
       margin: 0;
@@ -84,5 +84,5 @@ export const StyledCheckboxControl = styled.input.attrs({
         font-size: ${cmpMarkerWidth};
       }
     `;
-  }}
+}}
 `;

@@ -37,10 +37,10 @@ export const iconButtonGoToDocsMixin = ({
 
     // icon button status styles
     ${iconButtonStatusMixin({
-      state,
-      colorScheme: 'help',
-      theme,
-    })};
+    state,
+    colorScheme: 'help',
+    theme,
+  })};
 
     &::after {
       ${iconFontMixin()};

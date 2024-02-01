@@ -22,11 +22,11 @@ export interface StyledChipProps {
 
 export const StyledChip = styled.label<StyledChipProps>`
   ${({ size = 'md', sortable = false, state = 'enabled', theme }) => {
-    const chipTokens = theme.cmp.chip;
-    const backdropHovered = chipTokens.color.backdrop.hovered;
-    const backdropFocused = chipTokens.color.backdrop.focused;
-    const backdropPressed = chipTokens.color.backdrop.pressed;
-    return css`
+  const chipTokens = theme.cmp.chip;
+  const backdropHovered = chipTokens.color.backdrop.hovered;
+  const backdropFocused = chipTokens.color.backdrop.focused;
+  const backdropPressed = chipTokens.color.backdrop.pressed;
+  return css`
       ${btnResetMixin};
       display: inline-flex;
       align-items: center;
@@ -142,5 +142,5 @@ export const StyledChip = styled.label<StyledChipProps>`
         ${disabledMixin(theme)};
       }
     `;
-  }};
+}};
 `;

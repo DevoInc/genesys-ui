@@ -18,8 +18,8 @@ export interface StyledCellWrapperProps extends Omit<ColDef, 'id'> {
 
 export const StyledCellWrapper = styled.div<StyledCellWrapperProps>`
   ${({ clickable, isEditMode, theme }) => {
-    const tokens = theme.cmp.table.cellClickableWrapper;
-    return css`
+  const tokens = theme.cmp.table.cellClickableWrapper;
+  return css`
       ${clickable &&
       css`
         ${btnResetMixin};
@@ -52,7 +52,7 @@ export const StyledCellWrapper = styled.div<StyledCellWrapperProps>`
         }
       `}
     `;
-  }}
+}}
   ${({ theme, textAlign }) => typoMixin({ theme, textAlign })};
   position: absolute;
   top: 0;

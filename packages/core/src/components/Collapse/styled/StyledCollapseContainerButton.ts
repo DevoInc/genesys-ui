@@ -2,10 +2,10 @@ import styled, { css } from 'styled-components';
 
 export const StyledCollapseContainerButton = styled.button`
   ${({ theme }) => {
-    const colorTokens = theme?.alias?.color;
-    const elevationTokens = theme?.alias?.elevation;
+  const colorTokens = theme?.alias?.color;
+  const elevationTokens = theme?.alias?.elevation;
 
-    return css`
+  return css`
       all: unset;
       position: absolute;
       left: 0;
@@ -26,7 +26,7 @@ export const StyledCollapseContainerButton = styled.button`
 
       &:hover::before {
         background-color: ${colorTokens?.background?.surface?.backdrop?.base
-          ?.hovered};
+    ?.hovered};
       }
 
       &:focus-visible {
@@ -34,5 +34,5 @@ export const StyledCollapseContainerButton = styled.button`
         box-shadow: ${elevationTokens?.boxShadow?.base?.focused};
       }
     `;
-  }}
+}}
 `;

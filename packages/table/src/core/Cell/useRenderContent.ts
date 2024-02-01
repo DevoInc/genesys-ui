@@ -13,22 +13,22 @@ export const useRenderContent = (
 
   const viewContent = colDef.cellRenderer
     ? colDef.cellRenderer({
-        value: colDef.valueFormatter
-          ? colDef.valueFormatter(data, colDef.context)
-          : data,
-        colDef,
-        rowIndex,
-      })
+      value: colDef.valueFormatter
+        ? colDef.valueFormatter(data, colDef.context)
+        : data,
+      colDef,
+      rowIndex,
+    })
     : '';
 
   const [isEditMode, setIsEditMode] = React.useState<boolean>(false);
 
   const editionContent = colDef.cellEditor
     ? colDef.cellEditor({
-        value: data,
-        colDef,
-        rowIndex,
-      })
+      value: data,
+      colDef,
+      rowIndex,
+    })
     : null;
 
   const onDoubleClick = React.useCallback(

@@ -19,13 +19,13 @@ export interface StyledTextareaControlProps
 
 export const StyledTextareaControl = styled.textarea<StyledTextareaControlProps>`
   ${({ disabled, readOnly, resize = 'both', $size, status, theme }) => {
-    const fieldTokens = theme.alias.fields;
-    const fieldLineHeight = getLineHeight({ tokens: theme, size: $size });
+  const fieldTokens = theme.alias.fields;
+  const fieldLineHeight = getLineHeight({ tokens: theme, size: $size });
 
-    const fieldHeight = fieldTokens.size.height[$size];
-    const verPadding = css`calc((${fieldHeight} - ${fieldLineHeight}) / 2)`;
+  const fieldHeight = fieldTokens.size.height[$size];
+  const verPadding = css`calc((${fieldHeight} - ${fieldLineHeight}) / 2)`;
 
-    return css`
+  return css`
       ${commonInputControlMixin({ disabled, readOnly, $size, status, theme })};
       ${scrollbars({ theme })};
       resize: ${!(disabled || readOnly) ? resize : 'none'};
@@ -33,5 +33,5 @@ export const StyledTextareaControl = styled.textarea<StyledTextareaControlProps>
       padding-top: ${verPadding};
       padding-bottom: ${verPadding};
     `;
-  }}
+}}
 `;

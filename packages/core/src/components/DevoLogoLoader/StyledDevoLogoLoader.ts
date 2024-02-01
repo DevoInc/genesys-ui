@@ -28,9 +28,9 @@ export interface StyledDevoLogoLoaderProps {
 
 export const StyledDevoLogoLoader = styled.div<StyledDevoLogoLoaderProps>`
   ${({ animation, colorScheme, size, theme }) => {
-    const { width, height } = getSize(size);
+  const { width, height } = getSize(size);
 
-    return css`
+  return css`
       display: inline-block;
       width: ${width};
       height: ${height};
@@ -205,5 +205,5 @@ export const StyledDevoLogoLoader = styled.div<StyledDevoLogoLoaderProps>`
         }
       `}
     `;
-  }}
+}}
 `;

@@ -6,9 +6,9 @@ export interface StyledCollapseContainerProps {
 
 export const StyledCollapseContainer = styled.div<StyledCollapseContainerProps>`
   ${({ expanded = false, theme }) => {
-    const aliasTokens = theme.alias;
+  const aliasTokens = theme.alias;
 
-    return css`
+  return css`
       position: relative;
       transition: border-color ${aliasTokens.mutation.transitionDuration.action}
         ease;
@@ -24,5 +24,5 @@ export const StyledCollapseContainer = styled.div<StyledCollapseContainerProps>`
         background-color: ${aliasTokens.color.background.surface.base.expanded};
       `}
     `;
-  }}
+}}
 `;

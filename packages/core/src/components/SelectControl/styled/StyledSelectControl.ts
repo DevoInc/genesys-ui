@@ -18,50 +18,50 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
   }),
 )`
   ${({
-    addonToLeft,
-    addonToRight,
-    classNamePrefix,
-    isDisabled,
-    hideSelectedOptions,
-    hideStatusIcon,
-    isClearable,
-    isMulti,
-    menuIsOpen,
-    readOnly,
-    size = 'md',
-    sortable,
-    status,
-    theme,
-    value,
-    options,
-  }) => {
-    const state = getFieldState({ readOnly });
-    const statusEval = getFieldStatus(status);
-    const aliasTokens = theme.alias;
-    const spacingTokens = aliasTokens.space;
-    const fieldTokens = aliasTokens.fields;
-    const fieldTransitionDuration = fieldTokens.mutation.transitionDuration;
-    const selectTokens = theme.cmp.select;
-    const defaultHorPadding = fieldTokens.space.padding.hor[size];
-    const scrollSpacing = selectTokens.space.padding.scroll;
-    const scrollOffset = spacingTokens.cmp.xxs;
-    const indicatorWidth = `calc(${selectTokens.indicator.size.width[size]} * ${
+  addonToLeft,
+  addonToRight,
+  classNamePrefix,
+  isDisabled,
+  hideSelectedOptions,
+  hideStatusIcon,
+  isClearable,
+  isMulti,
+  menuIsOpen,
+  readOnly,
+  size = 'md',
+  sortable,
+  status,
+  theme,
+  value,
+  options,
+}) => {
+  const state = getFieldState({ readOnly });
+  const statusEval = getFieldStatus(status);
+  const aliasTokens = theme.alias;
+  const spacingTokens = aliasTokens.space;
+  const fieldTokens = aliasTokens.fields;
+  const fieldTransitionDuration = fieldTokens.mutation.transitionDuration;
+  const selectTokens = theme.cmp.select;
+  const defaultHorPadding = fieldTokens.space.padding.hor[size];
+  const scrollSpacing = selectTokens.space.padding.scroll;
+  const scrollOffset = spacingTokens.cmp.xxs;
+  const indicatorWidth = `calc(${selectTokens.indicator.size.width[size]} * ${
       hasStatus(statusEval) && !hideStatusIcon ? 2 : 1
     })`;
-    const hasDropdownIndicator = menuIsOpen
-      ? 0
-      : (isMulti &&
+  const hasDropdownIndicator = menuIsOpen
+    ? 0
+    : (isMulti &&
             hideSelectedOptions &&
             (value && (value as MultiValue<SelectOption>).length) !==
               (options && options.length)) ||
           !isMulti ||
           !hideSelectedOptions
-        ? 1
-        : 0;
-    const hasClearIndicator = isClearable === false ? 0 : 1;
-    const sortableSpacing = sortable ? scrollSpacing : '0rem';
+      ? 1
+      : 0;
+  const hasClearIndicator = isClearable === false ? 0 : 1;
+  const sortableSpacing = sortable ? scrollSpacing : '0rem';
 
-    return css`
+  return css`
       flex: 1 1 auto;
 
       .${classNamePrefix} {
@@ -305,5 +305,5 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
         ///////////////////////////////////////////////////////// END DISABLED
       }
     `;
-  }}
+}}
 `;

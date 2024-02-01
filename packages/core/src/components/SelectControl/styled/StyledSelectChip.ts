@@ -37,11 +37,11 @@ interface StyledSelectChipProps {
 
 export const StyledSelectChip = styled(StyledChip)<StyledSelectChipProps>`
   ${({ theme, sortable }) => {
-    const selectTokens = theme.cmp.select;
-    const aliasTokens = theme.alias;
-    const chipTokens = selectTokens.chip;
-    const chipRemoveTokens = selectTokens.chipRemove;
-    return css`
+  const selectTokens = theme.cmp.select;
+  const aliasTokens = theme.alias;
+  const chipTokens = selectTokens.chip;
+  const chipRemoveTokens = selectTokens.chipRemove;
+  return css`
       padding-right: 0.8rem;
       margin: ${chipTokens.space.margin};
       white-space: pre;
@@ -70,5 +70,5 @@ export const StyledSelectChip = styled(StyledChip)<StyledSelectChipProps>`
         font-weight: bold;
       }
     `;
-  }}
+}}
 `;

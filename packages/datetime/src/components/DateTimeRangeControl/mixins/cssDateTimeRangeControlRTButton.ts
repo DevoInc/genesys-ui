@@ -8,12 +8,12 @@ export interface cssDateTimeRangeControlRTButtonProps
 
 export const cssDateTimeRangeControlRTButton: CSSProp = css`
   ${({ size }: cssDateTimeRangeControlRTButtonProps): CSSProp => {
-    return css`
+  return css`
       ${({ theme }) => {
-        const RTButtonTokens = theme.cmp.dateTimeRangeControl.realTimeButton;
-        const buttonSquare = RTButtonTokens.size.square[size];
-        const buttonIconSize = RTButtonTokens.typo.fontSize[size];
-        return css`
+    const RTButtonTokens = theme.cmp.dateTimeRangeControl.realTimeButton;
+    const buttonSquare = RTButtonTokens.size.square[size];
+    const buttonIconSize = RTButtonTokens.typo.fontSize[size];
+    return css`
           width: ${buttonSquare};
           height: ${buttonSquare};
 
@@ -22,7 +22,7 @@ export const cssDateTimeRangeControlRTButton: CSSProp = css`
             width: ${buttonIconSize};
           }
         `;
-      }}
-    `;
   }}
+    `;
+}}
 `;

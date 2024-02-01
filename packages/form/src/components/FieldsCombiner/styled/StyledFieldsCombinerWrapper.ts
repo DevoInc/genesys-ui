@@ -5,10 +5,10 @@ export interface StyledFieldsCombinerWrapperProps {}
 
 export const StyledFieldsCombinerWrapper = styled.div<StyledFieldsCombinerWrapperProps>`
   ${() => {
-    return css`
+  return css`
       display: flex;
       flex-direction: row;
       flex: 1 1 100%;
     `;
-  }}
+}}
 `;

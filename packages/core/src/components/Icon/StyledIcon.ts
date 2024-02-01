@@ -24,13 +24,13 @@ export const StyledIcon = styled.i<StyledIconProps>`
   justify-content: center;
   flex-shrink: 0;
   ${({ color, colorScheme, size, strong, theme }) => {
-    return css`
+  return css`
       font-weight: ${strong && 'bold'};
       font-size: ${getIconSize(theme)(size)};
       color: ${getIconColor(theme)({
-        color,
-        colorScheme,
-      })};
+    color,
+    colorScheme,
+  })};
     `;
-  }}
+}}
 `;

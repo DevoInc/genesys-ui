@@ -5,16 +5,16 @@ import { getFieldControlTypoObj } from '@devoinc/genesys-ui';
 
 export const StyledSketchPicker = styled(SketchPicker)`
   ${({ theme }) => {
-    const aliasTokens = theme.alias;
-    const fieldTokens = aliasTokens.fields;
-    const spacingTokens = aliasTokens.space;
-    const sketchPickerTokens = theme.cmp.colorPicker.sketchPicker;
+  const aliasTokens = theme.alias;
+  const fieldTokens = aliasTokens.fields;
+  const spacingTokens = aliasTokens.space;
+  const sketchPickerTokens = theme.cmp.colorPicker.sketchPicker;
 
-    const typoObj = getFieldControlTypoObj({ theme, size: 'sm' });
-    const transitionDuration = fieldTokens.mutation.transitionDuration;
-    const baseTextColor = aliasTokens.color.text.body.base;
+  const typoObj = getFieldControlTypoObj({ theme, size: 'sm' });
+  const transitionDuration = fieldTokens.mutation.transitionDuration;
+  const baseTextColor = aliasTokens.color.text.body.base;
 
-    return css`
+  return css`
       position: absolute;
       z-index: ${aliasTokens.elevation.zIndex.depth.activated};
       transform: translateY(0.6rem);
@@ -71,5 +71,5 @@ export const StyledSketchPicker = styled(SketchPicker)`
         padding-top: ${spacingTokens.cmp.sm} !important;
       }
     `;
-  }};
+}};
 `;

@@ -60,21 +60,21 @@ export interface StyledProgressBarStandardProps
 
 export const StyledProgressBarStandard = styled.div<StyledProgressBarStandardProps>`
   ${({
-    animated,
-    colorScheme,
-    indeterminate,
-    percent,
-    size,
+  animated,
+  colorScheme,
+  indeterminate,
+  percent,
+  size,
+  status,
+  theme,
+}) => {
+  const progressBarTokens = theme.cmp.progressBar;
+  const height = progressBarTokens.size.height[size];
+  const progressBgColor = getProgressBgColor({
     status,
-    theme,
-  }) => {
-    const progressBarTokens = theme.cmp.progressBar;
-    const height = progressBarTokens.size.height[size];
-    const progressBgColor = getProgressBgColor({
-      status,
-      tokens: progressBarTokens,
-    });
-    const percentBarWidth =
+    tokens: progressBarTokens,
+  });
+  const percentBarWidth =
       indeterminate && status === 'progressing'
         ? '30%'
         : indeterminate
@@ -82,19 +82,19 @@ export const StyledProgressBarStandard = styled.div<StyledProgressBarStandardPro
           : percent
             ? `${percent}%`
             : null;
-    const percentMinorBarWidth =
+  const percentMinorBarWidth =
       indeterminate && status === 'progressing'
         ? '15%'
         : indeterminate
           ? '0'
           : null;
-    return css`
+  return css`
       flex: 1 1 auto;
       background-color: ${getTrackBgColor({
-        colorScheme,
-        status,
-        tokens: progressBarTokens,
-      })};
+    colorScheme,
+    status,
+    tokens: progressBarTokens,
+  })};
       position: relative;
       height: ${height};
       border-radius: ${progressBarTokens.shape.borderRadius};
@@ -163,5 +163,5 @@ export const StyledProgressBarStandard = styled.div<StyledProgressBarStandardPro
         }
       `};
     `;
-  }};
+}};
 `;

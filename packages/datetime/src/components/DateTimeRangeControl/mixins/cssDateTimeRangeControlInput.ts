@@ -14,9 +14,9 @@ export const cssDateTimeRangeControlInput = ({
   const hasStatus = status && status !== 'base';
   return css`
     ${({ theme }) => {
-      const fieldTokens = theme.alias.fields;
-      const rangeControlInputTokens = theme.cmp.dateTimeRangeControl.input;
-      return css`
+    const fieldTokens = theme.alias.fields;
+    const rangeControlInputTokens = theme.cmp.dateTimeRangeControl.input;
+    return css`
         border: ${!hasStatus && 'none'};
         height: ${rangeControlInputTokens.size.height[size]};
         padding: ${rangeControlInputTokens.space.padding[size]};
@@ -25,6 +25,6 @@ export const cssDateTimeRangeControlInput = ({
           box-shadow: inset ${fieldTokens.elevation.boxShadow[status].focused};
         }
       `;
-    }};
+  }};
   `;
 };

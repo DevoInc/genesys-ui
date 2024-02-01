@@ -36,48 +36,48 @@ export interface StyledButtonContainerProps {
 
 export const StyledButtonContainer = styled.button<StyledButtonContainerProps>`
   ${({
-    colorScheme = 'neutral',
-    icon,
-    circular = false,
-    hasDropdown = false,
-    squared = false,
-    wide = false,
-    selectionScheme,
-    size,
-    state,
-    theme,
-  }) => {
-    const isIconButtonDropdown = icon && squared && hasDropdown;
-    const colorSchemeForTokens = _.camelCase(colorScheme);
-    const buttonTokens = theme.cmp.button;
-    const IconButtonDropdownTokens = theme.cmp.iconButtonDropdown;
-    const boxShadowTokens = buttonTokens.elevation.boxShadow;
-    const boxShadowFocused = (
-      boxShadowTokens[colorSchemeForTokens] || boxShadowTokens.base
-    ).focused;
-    const bgColorTokens = buttonTokens.color.background[colorSchemeForTokens];
-    const backdropColorTokens = buttonTokens.color.backdrop;
-    const textColorTokens = buttonTokens.color.text[colorSchemeForTokens];
-    const borderRadius = () => {
-      if ((circular && wide) || (circular && isIconButtonDropdown))
-        return buttonTokens.shape.borderRadius.pill;
-      if (circular) return buttonTokens.shape.borderRadius.full;
-      return buttonTokens.shape.borderRadius.medium;
-    };
+  colorScheme = 'neutral',
+  icon,
+  circular = false,
+  hasDropdown = false,
+  squared = false,
+  wide = false,
+  selectionScheme,
+  size,
+  state,
+  theme,
+}) => {
+  const isIconButtonDropdown = icon && squared && hasDropdown;
+  const colorSchemeForTokens = _.camelCase(colorScheme);
+  const buttonTokens = theme.cmp.button;
+  const IconButtonDropdownTokens = theme.cmp.iconButtonDropdown;
+  const boxShadowTokens = buttonTokens.elevation.boxShadow;
+  const boxShadowFocused = (
+    boxShadowTokens[colorSchemeForTokens] || boxShadowTokens.base
+  ).focused;
+  const bgColorTokens = buttonTokens.color.background[colorSchemeForTokens];
+  const backdropColorTokens = buttonTokens.color.backdrop;
+  const textColorTokens = buttonTokens.color.text[colorSchemeForTokens];
+  const borderRadius = () => {
+    if ((circular && wide) || (circular && isIconButtonDropdown))
+      return buttonTokens.shape.borderRadius.pill;
+    if (circular) return buttonTokens.shape.borderRadius.full;
+    return buttonTokens.shape.borderRadius.medium;
+  };
     // height, width and min-width depends on there is children or not (icon button) and other props
-    const height = buttonTokens.size.height[size];
-    const width = wide
-      ? '100%'
-      : isIconButtonDropdown
-        ? IconButtonDropdownTokens.size.width[size]
-        : squared
-          ? height
-          : 'auto';
-    const padding =
+  const height = buttonTokens.size.height[size];
+  const width = wide
+    ? '100%'
+    : isIconButtonDropdown
+      ? IconButtonDropdownTokens.size.width[size]
+      : squared
+        ? height
+        : 'auto';
+  const padding =
       squared && !hasDropdown ? '0' : `0 ${buttonTokens.space.padding[size]}`;
-    const minWidth = !squared && buttonTokens.size.minWidth[size];
-    const animationTime = buttonTokens.mutation.transitionDuration;
-    return css`
+  const minWidth = !squared && buttonTokens.size.minWidth[size];
+  const animationTime = buttonTokens.mutation.transitionDuration;
+  return css`
       // button styles reset
       ${btnResetMixin};
 
@@ -87,10 +87,10 @@ export const StyledButtonContainer = styled.button<StyledButtonContainerProps>`
       flex: ${wide ? '1 1 100%' : '0 0 auto'};
       display: ${wide ? 'flex' : 'inline-flex'};
       opacity: ${() => {
-        if (state === 'disabled') return '.4';
-        if (state === 'loading') return '.8';
-        return '1';
-      }};
+    if (state === 'disabled') return '.4';
+    if (state === 'loading') return '.8';
+    return '1';
+  }};
       transition:
         background-color ${animationTime} ease,
         color ${animationTime} ease,
@@ -107,10 +107,10 @@ export const StyledButtonContainer = styled.button<StyledButtonContainerProps>`
         ? 'not-allowed'
         : 'pointer'};
       ${typoMixin({
-        variant: 'action',
-        theme,
-        size,
-      })};
+          variant: 'action',
+          theme,
+          size,
+        })};
       text-decoration: none;
       color: ${textColorTokens[state]};
 
@@ -133,19 +133,19 @@ export const StyledButtonContainer = styled.button<StyledButtonContainerProps>`
       ${state === 'loading-success' &&
       css`
         ${loadingAnimationMixin({
-          tokens: buttonTokens,
-          colorScheme: colorSchemeForTokens,
-          loadingType: 'success',
-        })};
+        tokens: buttonTokens,
+        colorScheme: colorSchemeForTokens,
+        loadingType: 'success',
+      })};
       `}
 
       ${state === 'loading-error' &&
       css`
         ${loadingAnimationMixin({
-          tokens: buttonTokens,
-          colorScheme: colorSchemeForTokens,
-          loadingType: 'error',
-        })};
+        tokens: buttonTokens,
+        colorScheme: colorSchemeForTokens,
+        loadingType: 'error',
+      })};
       `}
 
       ${state !== 'disabled' &&
@@ -215,5 +215,5 @@ export const StyledButtonContainer = styled.button<StyledButtonContainerProps>`
         ]};
       }
     `;
-  }}
+}}
 `;

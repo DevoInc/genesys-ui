@@ -12,21 +12,21 @@ export const StyledPopoverArrow = styled.div<StyledPopoverArrowProps>`
   border-style: solid;
 
   ${({ placement, size = POPOVER_DEFAULT_ARROW_SIZE, theme }) => {
-    const bgColor = theme.cmp.panel.color.background;
-    // TODO: get border-color token from Panel component QUV-2019. Wait until QUV-2018 is finished.
-    const borderColor = theme.alias.color.border.elevation.activated;
-    // TODO: Tokenize the Popover component QUV-2016
-    const arrowSize = `${size}px`;
-    const arrowOuterSize = `${size + 1}px`;
-    const panelBorderSize = theme.alias.shape.borderSize.panel.base;
-    const commonStyles = css`
+  const bgColor = theme.cmp.panel.color.background;
+  // TODO: get border-color token from Panel component QUV-2019. Wait until QUV-2018 is finished.
+  const borderColor = theme.alias.color.border.elevation.activated;
+  // TODO: Tokenize the Popover component QUV-2016
+  const arrowSize = `${size}px`;
+  const arrowOuterSize = `${size + 1}px`;
+  const panelBorderSize = theme.alias.shape.borderSize.panel.base;
+  const commonStyles = css`
       position: relative;
       width: 0;
       height: 0;
       border-style: solid;
       border-color: transparent;
     `;
-    return css`
+  return css`
       ${commonStyles};
 
       &::after {
@@ -93,5 +93,5 @@ export const StyledPopoverArrow = styled.div<StyledPopoverArrowProps>`
         }
       `};
     `;
-  }};
+}};
 `;

@@ -16,8 +16,8 @@ export const PopoverPanel: React.FC<PopoverPanelProps> = ({
     return childrenAsArray.some((x) => {
       return React.isValidElement(x)
         ? ['PanelHeader', 'PanelBody'].includes(
-            (x.type as React.FC).displayName,
-          )
+          (x.type as React.FC).displayName,
+        )
         : false;
     });
   }, [children]);

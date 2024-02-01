@@ -82,16 +82,16 @@ export const getTypoCss = ({
 
   // text styles
   ${typoMixin({
-    variant,
-    textAlign,
-    theme,
-    size,
-  })};
+  variant,
+  textAlign,
+  theme,
+  size,
+})};
 
   // text color styles
   ${typoColorMixin({
-    variant: variant === 'heading' || variant === 'hero' ? 'heading' : 'body',
-    colorScheme,
-    theme,
-  })};
+  variant: variant === 'heading' || variant === 'hero' ? 'heading' : 'body',
+  colorScheme,
+  theme,
+})};
 `;

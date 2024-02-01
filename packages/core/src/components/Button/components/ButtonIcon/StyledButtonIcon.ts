@@ -12,12 +12,12 @@ export interface StyledButtonIconProps extends StyledPolymorphicProps {
 
 export const StyledButtonIcon = styled.i<StyledButtonIconProps>`
   ${({ hasBoldIcon, size, theme }) => {
-    const tokens = theme.cmp.button.icon;
-    return css`
+  const tokens = theme.cmp.button.icon;
+  return css`
       position: relative;
       transition: transform ease 0.15s;
       font-size: ${tokens.typo.fontSize[size]};
       font-weight: ${hasBoldIcon && 'bold'};
     `;
-  }}
+}}
 `;

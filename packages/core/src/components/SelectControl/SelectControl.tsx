@@ -48,13 +48,13 @@ export const SelectControl = <
   IsMulti extends boolean = boolean,
   Group extends GroupBase<Option> = GroupBase<Option>,
 >({
-  components,
-  componentStyles,
-  styles,
-  value,
-  isClearable,
-  ...rest
-}: SelectControlProps<Option, IsMulti, Group>) => {
+    components,
+    componentStyles,
+    styles,
+    value,
+    isClearable,
+    ...rest
+  }: SelectControlProps<Option, IsMulti, Group>) => {
   const defaultStyles = React.useMemo(
     () => ({
       menuPortal: (base: CSSObjectWithLabel) => ({

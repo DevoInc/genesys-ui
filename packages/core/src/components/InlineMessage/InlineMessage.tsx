@@ -118,10 +118,10 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
             ? children
             : typeof children === 'function'
               ? children({
-                  toggle,
-                  isOpened,
-                  setOpened,
-                })
+                toggle,
+                isOpened,
+                setOpened,
+              })
               : null}
         </Popover.Panel>
       )}

@@ -26,17 +26,17 @@ export const wrapperOnChange =
     onChange: Props<Option>['onChange'];
     value: MultiValue<Option>;
   }) =>
-  (newValue: PropsValue<Option>, actionMeta: ActionMeta<Option>): void => {
-    const REMOVE_ACTIONS = ['remove-value', 'pop-value'];
-    const isRemoveAction = REMOVE_ACTIONS.includes(actionMeta.action);
-    const isClearAction = actionMeta.action === 'clear';
+    (newValue: PropsValue<Option>, actionMeta: ActionMeta<Option>): void => {
+      const REMOVE_ACTIONS = ['remove-value', 'pop-value'];
+      const isRemoveAction = REMOVE_ACTIONS.includes(actionMeta.action);
+      const isClearAction = actionMeta.action === 'clear';
 
-    if (isRemoveAction && actionMeta.removedValue.fixed) return;
+      if (isRemoveAction && actionMeta.removedValue.fixed) return;
 
-    if (isClearAction) newValue = value.filter(({ fixed }) => fixed);
+      if (isClearAction) newValue = value.filter(({ fixed }) => fixed);
 
-    onChange?.(newValue, actionMeta);
-  };
+      onChange?.(newValue, actionMeta);
+    };
 
 /**
  * A function that takes selectProps object as input and returns a boolean value

@@ -8,21 +8,21 @@ export interface StyledGridProps
 
 export const StyledGrid = styled.div<StyledGridProps>`
   ${({
-    alignContent,
-    alignItems,
-    gridTemplateAreas,
-    gridTemplateColumns,
-    gridAutoFlow,
-    gap,
-    columnGap,
-    inline = false,
-    justifyContent,
-    justifyItems,
-    gridTemplateRows,
-    rowGap,
-    theme,
-    ...boxMixinProps
-  }) => css`
+  alignContent,
+  alignItems,
+  gridTemplateAreas,
+  gridTemplateColumns,
+  gridAutoFlow,
+  gap,
+  columnGap,
+  inline = false,
+  justifyContent,
+  justifyItems,
+  gridTemplateRows,
+  rowGap,
+  theme,
+  ...boxMixinProps
+}) => css`
     ${boxMixin(theme)(boxMixinProps)};
     display: ${inline ? 'inline-grid' : 'grid'};
     align-content: ${alignContent};
