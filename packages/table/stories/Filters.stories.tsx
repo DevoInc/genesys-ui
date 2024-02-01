@@ -3,7 +3,6 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Menu } from '@devoinc/genesys-ui';
 
-import { BasicTable } from '../src/recipes/BasicTable';
 import {
   type ContextOptions,
   type FilterContext,
@@ -12,6 +11,7 @@ import {
   filterColDefsByFilterStruct,
   useBulkSelection,
   BulkContext,
+  BasicTable,
 } from '../src';
 
 const meta: Meta<typeof BasicTable> = {
@@ -38,41 +38,41 @@ const data = [
   { text: 'Brandon Robertson', num: 41, bool: true, option: 'C' },
 ];
 
-const FilterTable = () => {
-  const colDef = [
-    {
-      id: 'text',
-      headerName: 'Text',
-      preset: 'text',
-    },
-    {
-      id: 'num',
-      headerName: 'Number',
-      preset: 'number',
-      context: {
-        showAdvancedFilter: true,
-        showReset: true,
-      } as FilterContext,
-    },
-    {
-      id: 'bool',
-      headerName: 'Boolean',
-      preset: 'boolean',
-    },
-    {
-      id: 'option',
-      headerName: 'Options',
-      preset: 'options',
-      context: {
-        options: {
-          A: { label: 'Option A' },
-          B: { label: 'Option B' },
-          C: { label: 'Option C' },
-        },
-      } as ContextOptions,
-    },
-  ];
+const colDefs = [
+  {
+    id: 'text',
+    headerName: 'Text',
+    preset: 'text',
+  },
+  {
+    id: 'num',
+    headerName: 'Number',
+    preset: 'number',
+    context: {
+      showAdvancedFilter: true,
+      showReset: true,
+    } as FilterContext,
+  },
+  {
+    id: 'bool',
+    headerName: 'Boolean',
+    preset: 'boolean',
+  },
+  {
+    id: 'option',
+    headerName: 'Options',
+    preset: 'options',
+    context: {
+      options: {
+        A: { label: 'Option A' },
+        B: { label: 'Option B' },
+        C: { label: 'Option C' },
+      },
+    } as ContextOptions,
+  },
+];
 
+const FilterTable = () => {
   const { filterStruct, onFilter } = useFilterStruct();
   const dataFiltered = [...data].filter(filterDataByFilterStruct(filterStruct));
 
@@ -82,7 +82,7 @@ const FilterTable = () => {
       onFilter={(curColDef, value, type) => {
         onFilter(curColDef.id, value, type);
       }}
-      colDefs={filterColDefsByFilterStruct(colDef, filterStruct)}
+      colDefs={filterColDefsByFilterStruct(colDefs, filterStruct)}
       data={dataFiltered}
     />
   );
@@ -90,6 +90,13 @@ const FilterTable = () => {
 
 export const Base: Story = {
   render: () => <FilterTable />,
+  parameters: {
+    docs: {
+      source: {
+        state: 'hide',
+      },
+    },
+  },
 };
 
 const FilterAndBulkActionsTable = () => {

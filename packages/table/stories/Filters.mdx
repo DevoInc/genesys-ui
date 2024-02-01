@@ -1,4 +1,4 @@
-import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Meta, Story, Source } from '@storybook/blocks';
 
 import * as Stories from './Filters.stories';
 
@@ -6,4 +6,159 @@ import * as Stories from './Filters.stories';
 
 # Filters
 
-<Canvas of={Stories.Base} />
+<Story of={Stories.Base} />
+
+Filters are defined on the colDef of each column using the prop `cellFilter`,
+and some of the presets has a predefined filter, also there is a several
+functions for work with your data and apply this predefined presets, and as
+filters are integrated on the table you will have a prop `showFilters` on the
+table to show them or not.
+
+The next are a simple example
+
+<Source
+  language='tsx'
+  code={`
+import {
+  type ContextOptions,
+  type FilterContext,
+  filterDataByFilterStruct,
+  useFilterStruct,
+  filterColDefsByFilterStruct,
+  BasicTable,
+} from '@devoinc/genesys-ui-table';
+
+const data = [
+  { text: 'Christine Jimenez', num: 60, bool: false, option: 'A' },
+  { text: 'Ina Osborne', num: 20, bool: true, option: 'B' },
+  { text: 'Jimmy Hogan', num: 20, bool: true, option: 'C' },
+  { text: 'Myra Bell', num: 57, bool: true, option: 'C' },
+  { text: 'Jane Padilla', num: 46, bool: false, option: 'B' },
+  { text: 'Isabelle Gardner', num: 31, bool: true, option: 'A' },
+  { text: 'Sean Parsons', num: 31, bool: true, option: 'A' },
+  { text: 'Alvin Castro', num: 55, bool: false, option: 'B' },
+  { text: 'Lawrence Holland', num: 56, bool: false, option: 'B' },
+  { text: 'Brandon Robertson', num: 41, bool: true, option: 'C' },
+];
+
+const colDefs = [
+  {
+    id: 'text',
+    headerName: 'Text',
+    preset: 'text',
+  },
+  {
+    id: 'num',
+    headerName: 'Number',
+    preset: 'number',
+    context: {
+      showAdvancedFilter: true,
+      showReset: true,
+    } as FilterContext,
+  },
+  {
+    id: 'bool',
+    headerName: 'Boolean',
+    preset: 'boolean',
+  },
+  {
+    id: 'option',
+    headerName: 'Options',
+    preset: 'options',
+    context: {
+      options: {
+        A: { label: 'Option A' },
+        B: { label: 'Option B' },
+        C: { label: 'Option C' },
+      },
+    } as ContextOptions,
+  },
+];
+
+const FilterTable = () => {
+  const { filterStruct, onFilter } = useFilterStruct();
+  const dataFiltered = [...data].filter(filterDataByFilterStruct(filterStruct));
+
+  return (
+    <BasicTable
+      showFilters
+      onFilter={(curColDef, value, type) => {
+        onFilter(curColDef.id, value, type);
+      }}
+      colDefs={filterColDefsByFilterStruct(colDefs, filterStruct)}
+      data={dataFiltered}
+    />
+  );
+};
+`}
+/>
+
+## The hook `useFilterStruct`
+
+This hook store the current filters state and provide this state and a function
+for update the state
+
+<Source
+  language="tsx"
+  code={`
+const { filterStruct, onFilter } = useFilterStruct();
+`}
+/>
+
+We could see how to use the `onFilter` function in the example
+
+<Source
+  language="tsx"
+  code={`
+<BasicTable
+  ...
+  onFilter={(curColDef, value, type) => {
+    onFilter(curColDef.id, value, type);
+  }}
+  ...
+/>
+`}
+/>
+
+The function accept the column `id` the value of the `filter` and the `type` of the
+filter. The `value` of the filter could be whatever the filter need, sometimes
+it will be a string other could be a complex structure. The `type` is a string
+with some identification over the kind of the filter we are providing, each
+predefined filters has one with the same name as the column that represents, for
+example the `TextFilter` use the type `text`, etc... This type will help us
+later on apply the right filter to our data.
+
+## Filtering our data
+
+As we have our filter structure stored now is the time to apply it on our data
+
+<Source
+  language="tsx"
+  code={`
+const dataFiltered = [...data].filter(filterDataByFilterStruct(filterStruct));
+`}
+/>
+
+The function is called `filterDataByFilterStruct` and accept the `filterStruct`
+defined on the hook. Remember that this `filterStruct` accept any `value` and
+`type` so if we need to build a custom filter we still be able to apply it to
+our data using this function but using the second parameter for pass an object
+of filter functions with the `type` as key (we will see an example of this
+later).
+
+## Updating our `colDefs`
+
+Ok, right now we have filtered our data, but the table are mainly stateless so
+how we are telling to our filters that they need to update, for this we have the
+next function
+
+<Source
+  language="tsx"
+  code={`
+<BasicTable
+  ...
+  colDefs={filterColDefsByFilterStruct(colDefs, filterStruct)}
+  ...
+/>
+`}
+/>
