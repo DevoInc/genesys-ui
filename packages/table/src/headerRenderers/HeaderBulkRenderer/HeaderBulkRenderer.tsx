@@ -50,7 +50,11 @@ export const HeaderBulkRenderer: React.FC<HeaderRendererProps> = ({
               <GIAngleDown size="12" />
             </IconButton>
           )}
-          <Popover.Panel>{context.headerBulkMenu}</Popover.Panel>
+          {({ setOpened }) => (
+            <Popover.Panel>
+              {context.headerBulkMenu({ setOpened: setOpened })}
+            </Popover.Panel>
+          )}
         </Popover>
       )}
     </HFlex>

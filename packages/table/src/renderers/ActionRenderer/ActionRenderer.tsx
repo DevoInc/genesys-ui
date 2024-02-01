@@ -46,18 +46,23 @@ export const ActionRenderer: React.FC<CellRendererProps> = ({
               <GIMenuAltVertical size="12" />
             </IconButton>
           )}
-          <Popover.Panel>
-            <Menu>
-              {context.actionMenu.map((entry, idx) => (
-                <MenuEntry
-                  key={idx}
-                  entry={entry}
-                  level={0}
-                  rowIndex={rowIndex}
-                />
-              ))}
-            </Menu>
-          </Popover.Panel>
+          {({ setOpened }) => (
+            <Popover.Panel>
+              <Menu>
+                {context.actionMenu.map((entry, idx) => {
+                  return (
+                    <MenuEntry
+                      key={idx}
+                      entry={entry}
+                      level={0}
+                      rowIndex={rowIndex}
+                      setOpen={setOpened}
+                    />
+                  );
+                })}
+              </Menu>
+            </Popover.Panel>
+          )}
         </Popover>
       ) : null}
     </HFlex>

@@ -84,56 +84,66 @@ const BulkExample = () => {
               width: 64,
               context: {
                 headerBulkMenu:
-                  bulkSelection.length > 0 ? (
-                    <Menu>
-                      <Menu.Heading>
-                        Bulk actions: {bulkSelection.length} Selected
-                      </Menu.Heading>
-                      <Menu.Separator />
-                      <Menu.Item>Dummy action 1</Menu.Item>
-                      <Menu.Item>Dummy action 2</Menu.Item>
-                      <Popover placement="right-start" id={popoverId}>
-                        {({ toggle, ref, isOpened, setOpened }) => (
-                          <Menu.Item
-                            aria-controls={popoverId}
-                            aria-haspopup="true"
-                            aria-expanded={isOpened}
-                            ref={ref}
-                            onClick={() => {
-                              setOpened(true);
-                            }}
-                            onMouseLeave={toggle}
-                            onMouseOver={() => {
-                              setOpened(true);
-                            }}
-                            expandable
-                            state={isOpened ? 'expanded' : undefined}
-                          >
-                            Danger actions
-                          </Menu.Item>
-                        )}
-                        <Popover.Panel>
+                  bulkSelection.length > 0
+                    ? ({ setOpened }) => {
+                        return (
                           <Menu>
-                            <Menu.Item>Dummy action 1</Menu.Item>
-                            <Menu.Item>Dummy action 2</Menu.Item>
+                            <Menu.Heading>
+                              Bulk actions: {bulkSelection.length} Selected
+                            </Menu.Heading>
+                            <Menu.Separator />
                             <Menu.Item
                               onClick={() => {
-                                setData((prev) =>
-                                  prev.filter(
-                                    (_, index) =>
-                                      !bulkSelection.includes(index),
-                                  ),
-                                );
-                                clear();
+                                setOpened(false);
                               }}
                             >
-                              Remove row(s)
+                              Dummy action
                             </Menu.Item>
+                            <Menu.Item>Dummy action 2</Menu.Item>
+                            <Popover placement="right-start" id={popoverId}>
+                              {({ toggle, ref, isOpened, setOpened }) => (
+                                <Menu.Item
+                                  aria-controls={popoverId}
+                                  aria-haspopup="true"
+                                  aria-expanded={isOpened}
+                                  ref={ref}
+                                  onClick={() => {
+                                    setOpened(true);
+                                  }}
+                                  onMouseLeave={toggle}
+                                  onMouseOver={() => {
+                                    setOpened(true);
+                                  }}
+                                  expandable
+                                  state={isOpened ? 'expanded' : undefined}
+                                >
+                                  Danger actions
+                                </Menu.Item>
+                              )}
+                              <Popover.Panel>
+                                <Menu>
+                                  <Menu.Item>Dummy action 1</Menu.Item>
+                                  <Menu.Item>Dummy action 2</Menu.Item>
+                                  <Menu.Item
+                                    onClick={() => {
+                                      setData((prev) =>
+                                        prev.filter(
+                                          (_, index) =>
+                                            !bulkSelection.includes(index),
+                                        ),
+                                      );
+                                      clear();
+                                    }}
+                                  >
+                                    Remove row(s)
+                                  </Menu.Item>
+                                </Menu>
+                              </Popover.Panel>
+                            </Popover>
                           </Menu>
-                        </Popover.Panel>
-                      </Popover>
-                    </Menu>
-                  ) : undefined,
+                        );
+                      }
+                    : undefined,
                 bulkSelection,
                 bulkDisabled,
                 headerBulkChecked,

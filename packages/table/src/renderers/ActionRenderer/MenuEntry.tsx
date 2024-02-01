@@ -8,9 +8,10 @@ type Props = {
   entry: ActionMenuEntry;
   rowIndex: number;
   level: number;
+  setOpen: any;
 };
 
-export const MenuEntry: React.FC<Props> = ({ entry, level = 0, rowIndex }) => {
+export const MenuEntry: React.FC<Props> = ({ entry, level = 0, rowIndex, setOpen }) => {
   if (entry?.component === 'separator') {
     return <Menu.Separator />;
   } else if (entry?.children) {
@@ -38,14 +39,16 @@ export const MenuEntry: React.FC<Props> = ({ entry, level = 0, rowIndex }) => {
         )}
         <Popover.Panel>
           <Menu>
-            {(entry?.children ?? []).map((childEntry, index) => (
-              <MenuEntry
-                key={index}
-                level={level + 1}
-                entry={childEntry}
-                rowIndex={rowIndex}
-              />
-            ))}
+            {(entry?.children ?? []).map((childEntry, index) => {
+              return (
+                <MenuEntry
+                  key={index}
+                  level={level + 1}
+                  entry={childEntry}
+                  rowIndex={rowIndex}
+                />
+              );
+            })}
           </Menu>
         </Popover.Panel>
       </Popover>
@@ -58,6 +61,7 @@ export const MenuEntry: React.FC<Props> = ({ entry, level = 0, rowIndex }) => {
         if (entry?.onClick) {
           entry.onClick(rowIndex, event);
         }
+        setOpen(false);
       }}
       icon={Icon ? <Icon size={12} /> : null}
     >

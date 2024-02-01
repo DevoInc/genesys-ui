@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export type BulkContext = {
-  headerBulkMenu?: React.ReactNode;
+  headerBulkMenu?: any;
   headerBulkChecked?: boolean | 'indeterminate';
   onHeaderBulkCheckboxChange?: (event: React.FormEvent<Element>) => void;
   bulkSelection?: number[];
