@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-form",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "description": "",
   "type": "module",
   "scripts": {
@@ -29,7 +29,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@devoinc/genesys-icons": "3.x.x",
-    "@devoinc/genesys-ui": "^4.2.0",
+    "@devoinc/genesys-ui": "^4.3.0",
     "filepond-plugin-file-validate-size": "2.x.x",
     "filepond-plugin-file-validate-type": "1.x.x",
     "filepond-plugin-image-preview": "4.x.x",
