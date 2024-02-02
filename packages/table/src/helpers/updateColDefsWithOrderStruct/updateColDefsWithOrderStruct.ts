@@ -1,7 +1,7 @@
 import { ColDef } from '../../declarations';
 import { OrderColumn } from '../../hooks';
 
-export const orderColDefByOrderStruct = (
+export const updateColDefsWithOrderStruct = (
   colDefs: ColDef[],
   orderStruct: OrderColumn[],
 ) =>

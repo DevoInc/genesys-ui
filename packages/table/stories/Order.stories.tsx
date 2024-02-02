@@ -4,7 +4,7 @@ import { BasicTable } from '../src/recipes/BasicTable';
 import { useOrderStruct } from '../src/hooks';
 import { ColDef } from '../src/declarations';
 import {
-  orderColDefByOrderStruct,
+  updateColDefsWithOrderStruct,
   orderDataByOrderStruct,
 } from '../src/helpers';
 
@@ -75,7 +75,7 @@ const OrderTable = () => {
         editable: false,
         sortable: true,
       }}
-      colDefs={orderColDefByOrderStruct(colDefs, orderStruct)}
+      colDefs={updateColDefsWithOrderStruct(colDefs, orderStruct)}
       data={dataOrdered}
     />
   );

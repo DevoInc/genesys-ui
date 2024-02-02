@@ -1,7 +1,7 @@
 import { ColDef } from '../../declarations';
 import { FilterColumn } from '../../hooks';
 
-export const filterColDefsByFilterStruct = (
+export const updateColDefsWithFilterStruct = (
   colDefs: ColDef[],
   filterStruct: FilterColumn[],
 ) =>
