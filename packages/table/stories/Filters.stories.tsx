@@ -103,6 +103,7 @@ const FilterAndBulkActionsTable = () => {
     {
       id: 'bulk',
       preset: 'bulk',
+      width: 64,
       context: {
         headerBulkMenu:
           bulkSelection.length > 0
