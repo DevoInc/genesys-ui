@@ -90,13 +90,6 @@ const FilterTable = () => {
 
 export const Base: Story = {
   render: () => <FilterTable />,
-  parameters: {
-    docs: {
-      source: {
-        state: 'hide',
-      },
-    },
-  },
 };
 
 const FilterAndBulkActionsTable = () => {
