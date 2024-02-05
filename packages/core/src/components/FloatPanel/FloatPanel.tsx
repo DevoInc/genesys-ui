@@ -3,7 +3,6 @@ import { useTheme } from 'styled-components';
 import { Dock } from 'react-dock';
 
 import { Box, BoxProps } from '../Box';
-import { FloatPanelClose } from './components';
 
 export interface FloatPanelProps
   extends Omit<BoxProps, 'position' | 'visibility'> {
@@ -15,7 +14,7 @@ export interface FloatPanelProps
   size?: number;
 }
 
-export const InternalFloatPanel: React.FC<FloatPanelProps> = ({
+export const FloatPanel: React.FC<FloatPanelProps> = ({
   as,
   children,
   defaultSize,
@@ -57,11 +56,3 @@ export const InternalFloatPanel: React.FC<FloatPanelProps> = ({
     </Box>
   );
 };
-
-export const FloatPanel = InternalFloatPanel as typeof InternalFloatPanel & {
-  Close: typeof FloatPanelClose;
-};
-
-FloatPanel.Close = FloatPanelClose;
-
-InternalFloatPanel.displayName = 'FloatPanel';

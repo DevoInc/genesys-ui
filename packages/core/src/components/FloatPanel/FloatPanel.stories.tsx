@@ -41,20 +41,20 @@ export const Base: Story = {
 };
 
 export const Closable: Story = {
-  name: 'Closable with FloatPanel.Close component',
-  render: (args) =>
-    ((args) => {
+  name: 'Closable using Panel component',
+  render: () =>
+    (() => {
       const [closed, setClosed] = React.useState(false);
       return closed ? (
         <Button onClick={() => setClosed(false)}>Open FloatPanel</Button>
       ) : (
-        <FloatPanel {...args}>
+        <FloatPanel position="left">
           <Panel
-            title="FloatPanel"
             closeSettings={{ onClick: () => setClosed(true) }}
+            elevation="ground"
             headerSettings={{ bordered: true }}
             height="100%"
-            elevation="ground"
+            title="FloatPanel"
           >
             <Typography.Paragraph>
               Culture science Euclid intelligent beings hydrogen atoms citizens
@@ -72,5 +72,5 @@ export const Closable: Story = {
           </Panel>
         </FloatPanel>
       );
-    })(args),
+    })(),
 };
