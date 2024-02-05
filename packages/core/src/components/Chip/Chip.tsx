@@ -71,7 +71,7 @@ export const InternalChip: React.FC<ChipProps> = ({
   const isSelected = state === 'selected';
   const iconId = isSelected ? iconSelected : icon;
   return (
-    <ChipContainer
+    <Chip._Container
       as={as}
       id={id}
       onClick={onClick}
@@ -104,7 +104,7 @@ export const InternalChip: React.FC<ChipProps> = ({
       styles={styles}
       tooltip={tooltip}
     >
-      <ChipHiddenInput
+      <Chip._HiddenInput
         aria-label={ariaLabel || children?.toString()}
         defaultSelected={defaultSelected}
         disabled={state === 'disabled'}
@@ -119,11 +119,11 @@ export const InternalChip: React.FC<ChipProps> = ({
       />
       {iconId && (
         <ChipContext.Provider value={{ size, iconId }}>
-          <ChipIcon iconId={iconId} strong={hasBoldIcon} size={size} />
+          <Chip._Icon iconId={iconId} strong={hasBoldIcon} size={size} />
         </ChipContext.Provider>
       )}
-      <ChipContent>{children}</ChipContent>
-    </ChipContainer>
+      <Chip._Content>{children}</Chip._Content>
+    </Chip._Container>
   );
 };
 

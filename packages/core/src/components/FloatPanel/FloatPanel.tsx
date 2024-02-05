@@ -1,57 +1,68 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
+import { Dock } from 'react-dock';
 
-import { StyledOverloadCssPropsWithRecord } from '../../declarations';
-import {
-  FloatPanelClose,
-  FloatPanelContainer,
-  FloatPanelContainerProps,
-} from './components';
+import { Box, BoxProps } from '../Box';
+import { FloatPanelClose } from './components';
 
-export interface BaseFloatPanelProps extends FloatPanelContainerProps {
-  hasClose: boolean;
-  onClose: () => void;
+export interface FloatPanelProps
+  extends Omit<BoxProps, 'position' | 'visibility'> {
+  defaultSize?: number;
+  dimMode?: 'none' | 'transparent' | 'opaque';
+  hideWhileResizing?: boolean;
+  visible?: boolean;
+  position?: 'left' | 'right' | 'top' | 'bottom';
+  size?: number;
 }
 
-export type FloatPanelProps = BaseFloatPanelProps &
-  StyledOverloadCssPropsWithRecord<'container' | 'close'>;
-
 export const InternalFloatPanel: React.FC<FloatPanelProps> = ({
-  'aria-expanded': ariaExpanded,
+  as,
   children,
   defaultSize,
   dimMode = 'none',
-  hasClose = false,
+  height = '100%',
   hideWhileResizing = false,
   visible = true,
-  onClose,
   position = 'right',
   size,
   styles,
-  subcomponentStyles,
-  ...nativeProps
-}) => (
-  <FloatPanel.Container
-    {...nativeProps}
-    aria-expanded={ariaExpanded || visible}
-    defaultSize={defaultSize}
-    dimMode={dimMode}
-    hideWhileResizing={hideWhileResizing}
-    visible={visible}
-    position={position}
-    size={size}
-    styles={subcomponentStyles?.container || styles}
-  >
-    {hasClose && (
-      <FloatPanel.Close onClick={onClose} styles={subcomponentStyles?.close} />
-    )}
-    {children}
-  </FloatPanel.Container>
-);
+  ...restBoxProps
+}) => {
+  const theme = useTheme();
+  return (
+    <Box as={as}>
+      <Dock
+        defaultSize={defaultSize}
+        dimMode={dimMode}
+        dockStyle={{
+          background: theme.alias.color.background.surface.base.base,
+        }}
+        isVisible={visible}
+        position={position}
+        size={size}
+        fluid
+      >
+        {({ isResizing }) => {
+          const contentVisible = !(isResizing && hideWhileResizing);
+          return (
+            <Box
+              {...restBoxProps}
+              height={height}
+              visibility={contentVisible ? 'visible' : 'hidden'}
+            >
+              {children}
+            </Box>
+          );
+        }}
+      </Dock>
+    </Box>
+  );
+};
 
 export const FloatPanel = InternalFloatPanel as typeof InternalFloatPanel & {
   Close: typeof FloatPanelClose;
-  Container: typeof FloatPanelContainer;
 };
 
 FloatPanel.Close = FloatPanelClose;
-FloatPanel.Container = FloatPanelContainer;
+
+InternalFloatPanel.displayName = 'FloatPanel';
