@@ -8,10 +8,15 @@ type Props = {
   entry: ActionMenuEntry;
   rowIndex: number;
   level: number;
-  setOpen?: any;
+  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const MenuEntry: React.FC<Props> = ({ entry, level = 0, rowIndex, setOpen }) => {
+export const MenuEntry: React.FC<Props> = ({
+  entry,
+  level = 0,
+  rowIndex,
+  setOpen,
+}) => {
   if (entry?.component === 'separator') {
     return <Menu.Separator />;
   } else if (entry?.children) {

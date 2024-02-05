@@ -11,7 +11,12 @@ export const TextRenderer: React.FC<CellRendererProps> = ({
   const truncateLine =
     colDef?.truncateLine || (colDef?.preset === 'longText' ? 2 : 1);
   return (
-    <Typography.Paragraph as="div" truncateLine={truncateLine} gutterBottom="0">
+    <Typography.Paragraph
+      as="div"
+      truncateLine={truncateLine}
+      gutterBottom="0"
+      tooltip={String(value)}
+    >
       {value as string}
     </Typography.Paragraph>
   );

@@ -8,7 +8,7 @@ import {
   type FilterContext,
   filterDataByFilterStruct,
   useFilterStruct,
-  filterColDefsByFilterStruct,
+  updateColDefsWithFilterStruct,
   useBulkSelection,
   BulkContext,
   BasicTable,
@@ -82,7 +82,7 @@ const FilterTable = () => {
       onFilter={(curColDef, value, type) => {
         onFilter(curColDef.id, value, type);
       }}
-      colDefs={filterColDefsByFilterStruct(colDefs, filterStruct)}
+      colDefs={updateColDefsWithFilterStruct(colDefs, filterStruct)}
       data={dataFiltered}
     />
   );
@@ -182,7 +182,7 @@ const FilterAndBulkActionsTable = () => {
       onFilter={(curColDef, value, type) => {
         onFilter(curColDef.id, value, type);
       }}
-      colDefs={filterColDefsByFilterStruct(colDef, filterStruct)}
+      colDefs={updateColDefsWithFilterStruct(colDef, filterStruct)}
       data={dataFiltered}
     />
   );

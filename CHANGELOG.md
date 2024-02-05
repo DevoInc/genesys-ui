@@ -1,5 +1,54 @@
 # Changelog
 
+## [4.3.0](https://github.com/DevoInc/genesys-ui/compare/v4.2.0...v4.3.0) (2024-02-02)
+
+
+### Features
+
+* **AppLayout:** code internal structure improvements. ([0aa94c8](https://github.com/DevoInc/genesys-ui/commit/0aa94c8538ef16b39d2641271fb6345d68870e95))
+* **Avatar:** code internal structure improvements. ([e21491d](https://github.com/DevoInc/genesys-ui/commit/e21491dcbcfef7f1445039d9a6c2fe3506a89d9f))
+* **Badge:** code internal structure improvements. ([f3436f2](https://github.com/DevoInc/genesys-ui/commit/f3436f29f5560ffac351db2dfebe2c76bb2aeec3))
+* **Banner:** code internal structure improvements. ([6461e7c](https://github.com/DevoInc/genesys-ui/commit/6461e7c16e44c16d563701461b4b0907a04e575c))
+* **Button:** code internal structure improvements. ([fdf1e88](https://github.com/DevoInc/genesys-ui/commit/fdf1e88dcea27260de1d7b2dbeddf31f7887a30e))
+* **ButtonGroup:** code internal structure improvements. ([3a5c75e](https://github.com/DevoInc/genesys-ui/commit/3a5c75e3b18ea1a6a05ca74afe87425eb81f7881))
+* **Chip:** code internal structure improvements. ([e83fd65](https://github.com/DevoInc/genesys-ui/commit/e83fd65cd67441b6dd9852b0573d9121a36fd7ff))
+* **ChipGroup:** code internal structure improvements. ([1a5e9ef](https://github.com/DevoInc/genesys-ui/commit/1a5e9ef58b85b0461297191ba9d251485f2ccbeb))
+* **ChoiceGroup:** code internal structure improvements. ([8d142a3](https://github.com/DevoInc/genesys-ui/commit/8d142a35e323c59e6913b55978a34f022b68dbb8))
+* **Collapse:** code internal structure improvements. ([5fd19bc](https://github.com/DevoInc/genesys-ui/commit/5fd19bc76e1f03569e2fe58e8d30626691bc80a4))
+* **ContentSwitcher:** code internal structure improvements. ([8bd6123](https://github.com/DevoInc/genesys-ui/commit/8bd61233ad046fc624d8168c43d645fffae3431e))
+* **DateTime:** QUV-1302 Included Css overlapping and polymorphism in date-time components. ([614da4f](https://github.com/DevoInc/genesys-ui/commit/614da4f6712cfcbff2d175bd75d471145e084fbc))
+* **Field:** added some documentation ([859d066](https://github.com/DevoInc/genesys-ui/commit/859d066ecef419fa1edc2dd91eda318ec4af4560))
+* **Field:** code internal structure improvements. ([a1206f4](https://github.com/DevoInc/genesys-ui/commit/a1206f428b2041fbc242ebe7134804bf46185aaa))
+* **Field:** some new documentation ([7efd8c4](https://github.com/DevoInc/genesys-ui/commit/7efd8c41cdfb536523e308a5c9ac5b0b0bfba649))
+* improvements for Helper, InlineMessage and FloatingHelper. ([1f08c0f](https://github.com/DevoInc/genesys-ui/commit/1f08c0f4f9192f17efb0815e5be91f97adba1f68))
+* **table:** added bulk preset ([7326f8d](https://github.com/DevoInc/genesys-ui/commit/7326f8d33b0d88ec3cde6e7f538dff8cb9c5a337))
+* **table:** added colDef prop headerOnFilterPosition ([ed78e12](https://github.com/DevoInc/genesys-ui/commit/ed78e12932954969ece61e3ecff9832929b2766a))
+* **table:** added filterColDefByFilterStruct helper ([211dca4](https://github.com/DevoInc/genesys-ui/commit/211dca4064869979b7093a09147c9d5af0fb0905))
+* **table:** added helper order colDefs & fixed typo helper filter colDefs ([8d0c9d0](https://github.com/DevoInc/genesys-ui/commit/8d0c9d0428db8d970ae5c5fe575a30f7a5dede55))
+* **table:** added indicators to the filters and clear buttons ([bb20cda](https://github.com/DevoInc/genesys-ui/commit/bb20cda3e75e46bf3070af68a8b1307af5359111))
+* **table:** initial implementation of filters ([61a4afe](https://github.com/DevoInc/genesys-ui/commit/61a4afe234502b042c28ff3eae04a61938d79398))
+* **table:** TextRenderer show tooltip ([fe1b545](https://github.com/DevoInc/genesys-ui/commit/fe1b545fe74af1a852c4ccfe57010e3ad4d4ce86))
+
+
+### Bug Fixes
+
+* fixed build problems ([60f732a](https://github.com/DevoInc/genesys-ui/commit/60f732a8ada765e4f06493763555ed558a0115d6))
+* fixed display name. ([f00bc8e](https://github.com/DevoInc/genesys-ui/commit/f00bc8e68a1822316ff17717d9ea0003409c0332))
+* **InlineMessage:** added param to the children function to get the computed placement and render the border in the correct place. ([130da6f](https://github.com/DevoInc/genesys-ui/commit/130da6f8bbd2d6dbf047387f2a7899616cfe6977))
+* Made 'setOpen' property optional in MenuEntry component ([a114e9f](https://github.com/DevoInc/genesys-ui/commit/a114e9f8aa6cabc27dfcdaaf0cd0d2397eeb2f78))
+* Refactor bulk actions and action renderer for improved menu handling ([32db34b](https://github.com/DevoInc/genesys-ui/commit/32db34b75b723b3c8e4f90c6646f8eeadd820895))
+* removed classname from interfaces. ([e707100](https://github.com/DevoInc/genesys-ui/commit/e7071007610fc28afbac4d6a0402740ae4857744))
+* **table:** actions with quiet scheme and menu with three vertical dots ([26c70a6](https://github.com/DevoInc/genesys-ui/commit/26c70a69fa5b4b394ecd4cec3809ebc9b95e2eaf))
+* **table:** comment out the unfinished cellFilters from presets ([e872225](https://github.com/DevoInc/genesys-ui/commit/e872225b241a4cee65ad30f812dbb97f93540ab1))
+* **table:** right header size ([5c175a3](https://github.com/DevoInc/genesys-ui/commit/5c175a37d4138a42076fe642ad0a6ee5ac7abd18))
+* **table:** several filters could apply to the same row ([f28f6c6](https://github.com/DevoInc/genesys-ui/commit/f28f6c650ec325b664f9efeabbd6f2710cbc4275))
+* **table:** several glitches on the filters ([6b81a9e](https://github.com/DevoInc/genesys-ui/commit/6b81a9e73abec137de91be0623cad6cbc88fc7d7))
+
+
+### Vulnerabilities
+
+* **deps-dev:** bump vite from 5.0.11 to 5.0.12 ([cc600ab](https://github.com/DevoInc/genesys-ui/commit/cc600ab3a34064a829312c12ab0a01b438e91ed3))
+
 ## [4.2.0](https://github.com/DevoInc/genesys-ui/compare/v4.1.0...v4.2.0) (2024-01-21)
 
 
