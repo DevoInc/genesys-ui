@@ -25,7 +25,6 @@ export const InternalFloatPanel: React.FC<FloatPanelProps> = ({
   visible = true,
   position = 'right',
   size,
-  styles,
   ...restBoxProps
 }) => {
   const theme = useTheme();
