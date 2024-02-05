@@ -42,11 +42,14 @@ import { SelectControl } from '@devoinc/genesys-ui';
 ### Multiple subtle
 
 A variant of the multi value component with a 'subtle' look & feel and behavior:
-strings instead of chips for each selected value, lighter and ñess high menu options
+strings instead of chips for each selected value, lighter and less high menu options
 with checkboxes instead of background color as selected marker... etc.
 
 It's useful for small contexts, because in addition the select control
 doesn't grow vertically when the options don't have enough space.
+
+Don't forget you have to apply `closeMenuOnSelect={false}` and `hideSelectedOptions={false}` when you
+use the subtle variant to get the right behavior.
 
 <Canvas of={CaseStories.MultipleBasic} />
 

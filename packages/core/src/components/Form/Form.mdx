@@ -1,7 +1,6 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './Form.stories';
-import * as CaseStories from './Form.cases.stories';
 
 <Meta of={Stories} />
 
@@ -17,11 +16,7 @@ These subcomponents can be accessed through the Form component and allow you to 
 
 ## How to import
 
-<Source
-  code={`
-import { Form } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Form } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
@@ -31,9 +26,11 @@ import { Form } from '@devoinc/genesys-ui';
 
 ### Multiple forms
 
-<Canvas of={CaseStories.MultipleForms} />
+<Canvas of={Stories.MultipleGroups} />
 
-## Subcomponents
+## Components
+
+The dot notation components to be used when we create a complex form.
 
 - [Buttons](?path=/story/components-core-form-form-subcomponents--docs#buttons)
 - [Group](?path=/story/components-core-form-form-subcomponents--docs#group)

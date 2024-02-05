@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Form } from '../..';
 
 const meta: Meta<typeof Form.Legend> = {
-  title: 'Components/Core/Form/Form/Subcomponents',
+  title: 'Components/Core/Form/Form/Components',
   component: Form.Legend,
   args: {
     text: 'Legend',

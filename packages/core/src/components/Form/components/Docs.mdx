@@ -1,4 +1,4 @@
-import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as FormStories from './FormButtons.stories';
 import * as GroupStories from './FormGroup.stories';
@@ -12,13 +12,12 @@ import * as LegendStories from './FormLegend.stories';
 Use each subcomponent as a dot notation component.
 
 <Source
-  code={`
-import { Form } from '@devoinc/genesys-ui';
-
+  code={`import { Form } from '@devoinc/genesys-ui';
 <Form.Group />
 <Form.Buttons />
 <Form.Item />
-`} />
+`}
+/>
 
 ## Form.Buttons
 

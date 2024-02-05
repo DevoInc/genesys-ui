@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { CommonBoxProps } from '../Box';
-import { GridItem } from './subcomponents';
+import { GridItem } from './components';
 import { StyledGrid, StyledGridProps } from './StyledGrid';
 
 export interface GridProps extends StyledGridProps, CommonBoxProps {}

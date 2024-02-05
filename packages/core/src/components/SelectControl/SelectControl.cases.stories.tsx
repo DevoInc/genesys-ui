@@ -216,13 +216,13 @@ export const MultipleSubtle: Story = {
           {...args}
           isMulti
           multipleSubtle
-          menuIsOpen
           closeMenuOnSelect={false}
           selectAllBtn
           hideSelectedOptions={false}
           onChange={(value) => setValue(value)}
           options={getOptions(50)}
           value={value}
+          id="subtle-variant"
         />
       );
     })(args),

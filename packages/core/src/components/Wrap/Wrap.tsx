@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components';
 import { Flex, FlexProps } from '../';
 import { GlobalSpacing } from '../../declarations';
 import { getChildrenByRowFlex } from './helpers';
-import { FlexItem } from '../Flex/subcomponents';
+import { FlexItem } from '../Flex/components';
 
 export interface WrapProps
   extends Omit<FlexProps, 'gap' | 'columnGap' | 'rowGap'> {

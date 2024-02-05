@@ -7,7 +7,9 @@ import { showMenuAndDropDown } from '../utils';
 import { SelectControlContext } from '../context';
 
 import { Button } from '../../Button';
-import { Checkbox } from '@devoinc/genesys-ui-form';
+import { CheckboxControl } from '../../CheckboxControl';
+import { Field } from '../../Field';
+
 import { StyledSelectMenu, StyledSelectAll } from '../styled';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -25,6 +27,10 @@ export const Menu = <Option extends SelectOption>(
       values.length > 0 ? 'deselect-option' : 'select-option',
     );
   }, [options, values]);
+  const selectAllLabel = '(Select all)';
+  const selectAllId = props.selectProps.id
+    ? `${props.selectProps.id}__select-all`
+    : null;
   return (
     showMenuAndDropDown<Option>(props.selectProps) &&
     components.Menu && (
@@ -49,19 +55,21 @@ export const Menu = <Option extends SelectOption>(
               size={props.selectProps.size}
             >
               {props.selectProps.multipleSubtle ? (
-                <Checkbox
-                  label="(Select all)"
-                  onChange={() => {
-                    handleSelectAll();
-                  }}
-                  checked={isAllSelected}
-                  indeterminate={values.length > 0 && !isAllSelected}
-                  id={
-                    props.selectProps.id
-                      ? `${props.selectProps.id}__select-all`
-                      : null
-                  }
-                />
+                <Field
+                  id={selectAllId}
+                  label={selectAllLabel}
+                  labelPosition="right"
+                >
+                  <CheckboxControl
+                    aria-label={selectAllLabel}
+                    id={selectAllId}
+                    onChange={() => {
+                      handleSelectAll();
+                    }}
+                    checked={isAllSelected}
+                    indeterminate={values.length > 0 && !isAllSelected}
+                  />
+                </Field>
               ) : (
                 <Button
                   onClick={handleSelectAll}

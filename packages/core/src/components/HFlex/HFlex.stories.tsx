@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Flex, HFlex } from '..';
+import { Flex } from '../Flex';
+import { HFlex } from './HFlex';
 import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 const meta: Meta<typeof HFlex> = {

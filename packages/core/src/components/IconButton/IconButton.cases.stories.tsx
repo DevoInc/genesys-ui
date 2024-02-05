@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box, SpinnerLoader, IconButton } from '../..';
+import { Box } from '../Box';
+import { SpinnerLoader } from '../SpinnerLoader';
+import { IconButton } from './IconButton';
 
 const meta: Meta<typeof IconButton> = {
   title: 'Components/Core/Button/IconButton/Cases',
@@ -37,6 +39,39 @@ export const AsLink: Story = {
     rel: 'noopener noreferrer',
     icon: 'gi-connections_links',
   },
+};
+
+export const WithDropdown: Story = {
+  name: 'With dropdown',
+  render: () =>
+    (() => {
+      const [expanded, setExpanded] = React.useState(false);
+      return (
+        <IconButton
+          state={expanded ? 'expanded' : 'enabled'}
+          onClick={() => setExpanded(!expanded)}
+          icon="gi-time_edit"
+          hasDropdown
+        />
+      );
+    })(),
+};
+
+export const Custom: Story = {
+  name: 'Custom based in internal components',
+  render: () =>
+    (() => {
+      const [expanded, setExpanded] = React.useState(false);
+      return (
+        <IconButton._Container
+          state={expanded ? 'expanded' : 'enabled'}
+          onClick={() => setExpanded(!expanded)}
+          styles="height: 4.8rem; width: 4.8rem;"
+        >
+          <IconButton._Icon icon="gi-folder" styles="font-size: 2.8rem;" />
+        </IconButton._Container>
+      );
+    })(),
 };
 
 export const MultipleUncontrolled: Story = {

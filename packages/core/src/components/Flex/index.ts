@@ -1,2 +1,2 @@
 export * from './Flex';
-export type { FlexItemProps } from './subcomponents';
+export type { FlexItemProps } from './components';

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { Typography, Icon, Flex, HFlex } from '../';
 import {
   HELPER_ICON_SIZE_MAP,
   HELPER_ICON_STATUS_MAP,
@@ -14,8 +13,14 @@ import {
   StyledPolymorphicProps,
 } from '../../declarations';
 import { HelperSize } from './declarations';
-import { getLineHeight } from '../../styled';
+
 import { hasStatus } from '../../utils/validations';
+import { getLineHeight } from '../../styled';
+
+import { Flex } from '../Flex';
+import { HFlex } from '../HFlex';
+import { Icon } from '../Icon';
+import { Typography } from '../Typography';
 
 export interface HelperProps
   extends GlobalAttrProps,

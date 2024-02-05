@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { Flex, FlexProps } from '../';
+import { Flex, FlexProps } from '../Flex';
 import { GlobalSpacing } from '../../declarations';
-import { FlexItem } from '../Flex/subcomponents';
+import { FlexItem } from '../Flex/components';
 
 export interface HFlexProps
   extends Omit<FlexProps, 'gap' | 'columnGap' | 'rowGap'> {

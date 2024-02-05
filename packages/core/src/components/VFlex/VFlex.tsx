@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Flex, FlexProps } from '../';
 import { GlobalSpacing } from '../../declarations';
-import { FlexItem } from '../Flex/subcomponents';
+import { FlexItem } from '../Flex/components';
 
 export interface VFlexProps
   extends Omit<FlexProps, 'gap' | 'columnGap' | 'rowGap'> {

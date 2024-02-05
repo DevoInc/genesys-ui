@@ -5,7 +5,7 @@ import { Grid } from '../..';
 import { StyledLayoutGridContent } from '../../../../../stories/components/styled';
 
 const meta: Meta<typeof Grid.Item> = {
-  title: 'Components/Core/Layout/Grid/Subcomponents',
+  title: 'Components/Core/Layout/Grid/Components',
   component: Grid.Item,
 };
 
@@ -18,7 +18,7 @@ export const Base: Story = {
     justifySelf: 'center',
     children: (
       <StyledLayoutGridContent height="100px" width="100px">
-        Grid Item
+        Grid.Item content
       </StyledLayoutGridContent>
     ),
   },

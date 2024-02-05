@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { FlexItem } from './subcomponents';
+import { FlexItem } from './components';
 import { StyledFlex, type StyledFlexProps } from './StyledFlex';
 import {
   type Resolve,

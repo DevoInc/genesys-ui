@@ -16,11 +16,7 @@ They are also appropriate for toggle buttons that allow a single choice to be se
 
 ## How to import
 
-<Source
-  code={`
-import { IconButton } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { IconButton } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
@@ -33,28 +29,14 @@ import { IconButton } from '@devoinc/genesys-ui';
 In some cases, you may need to use an IconButton to control a dropdown as well.
 To indicate that the IconButton has a dropdown, you can use the hasDropdown prop.
 
-<Source
-  code={`
-<IconButton icon="time_edit" hasDropdown />
-`}
-/>
+<Canvas of={CaseStories.WithDropdown} />
 
 ### As link
 
 To use the IconButton as a link, simply add the href prop.
 This will generate an `<a>` HTML tag instead of a `<button>` tag.
 
-<Source
-  code={`
-<IconButton
-  href="https://www.devo.com"
-  icon="connections_links"
-  rel="noopener noreferrer"
-  target="_blank"
-  title="Go to Devo"
-/>
-`}
-/>
+<Canvas of={CaseStories.AsLink} />
 
 ### With children
 
@@ -72,17 +54,11 @@ This allows the previously selected option to be automatically deselected when a
 
 #### Uncontrolled
 
-<Source
-  code={`
-<IconButton
-  selectionScheme="multiple"
-  value="option"
-  icon="like_heart_favorite_rating_love"
-/>
-`}
-/>
+<Canvas of={CaseStories.MultipleUncontrolled} />
 
 #### Controlled
+
+<Canvas of={CaseStories.MultipleControlled} sourceState="none" />
 
 <Source
   code={`
@@ -103,18 +79,11 @@ return (
 
 #### Uncontrolled
 
-<Source
-  code={`
-<IconButton
-  name="option"
-  selectionScheme="single"
-  value="option"
-  icon="like_heart_favorite_rating_love"
-/>
-`}
-/>
+<Canvas of={CaseStories.SingleUncontrolled} />
 
 #### Controlled
+
+<Canvas of={CaseStories.SingleControlled} sourceState="none" />
 
 <Source
   code={`
@@ -131,6 +100,14 @@ return (
 );
 `}
 />
+
+### Custom based in internal components
+
+Sometimes you need something very specific, which is not possible using only the component and its props.
+In these cases, you can use its internal components (`_` notation) to define that specific usage.
+We don't recommend this usage, but anyway it's available for very specific needs.
+
+<Canvas of={CaseStories.Custom} />
 
 ## Props
 

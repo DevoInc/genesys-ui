@@ -1,3 +1,3 @@
-import { FlexItem } from '../../Flex/subcomponents/FlexItem';
+import { FlexItem } from '../../Flex/components/FlexItem';
 
 export const FormItem = FlexItem;

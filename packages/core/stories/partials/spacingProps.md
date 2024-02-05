@@ -1,4 +1,4 @@
-## [Spacing props](#spacing-props)
+## Spacing props
 
 In a flex structure, we can apply spacing to margin or padding properties on any edge (top, right, bottom, and left).
 

@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { InputControl, Form } from '../..';
 
 const meta: Meta<typeof Form.Group> = {
-  title: 'Components/Core/Form/Form/Subcomponents',
+  title: 'Components/Core/Form/Form/Components',
   component: Form.Group,
   args: {
     direction: 'column',
