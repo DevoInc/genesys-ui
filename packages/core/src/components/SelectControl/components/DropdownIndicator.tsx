@@ -3,13 +3,15 @@ import {
   components,
   DropdownIndicatorProps as RSDropdownIndicatorProps,
 } from 'react-select';
-
-import { Icon } from '../..';
-import { showMenuAndDropDown } from '../utils';
 import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
-import { SelectOption } from '../declarations';
+
 import { STATUS_ICON_MAP } from '../../../constants';
+import { SelectOption } from '../declarations';
 import { InnerSelectControlProps } from '../InnerSelectControl';
+
+import { showMenuAndDropDown } from '../utils';
+
+import { Icon } from '../../Icon';
 
 const mapStatusIcon: {
   [key in RSDropdownIndicatorProps['selectProps']['status']]: keyof typeof iconDictionary;
@@ -38,12 +40,12 @@ export const DropdownIndicator = <Option extends SelectOption>({
         {selectProps.status &&
           selectProps.status !== 'base' &&
           !selectProps.hideStatusIcon && (
-          <Icon
-            iconId={mapStatusIcon[selectProps.status]}
-            colorScheme={selectProps.status}
-            size="1.6rem"
-          />
-        )}
+            <Icon
+              iconId={mapStatusIcon[selectProps.status]}
+              colorScheme={selectProps.status}
+              size="1.6rem"
+            />
+          )}
         <Icon iconId="gi-angle_down" />
       </components.DropdownIndicator>
     )

@@ -24,27 +24,27 @@ export const StyledCheckboxControl = styled.input.attrs({
   type: 'checkbox',
 })<StyledCheckboxControlProps>`
   ${({
-  checkedIcon,
-  disabled = false,
-  indeterminate = false,
-  $size = 'md',
-  status = 'base',
-  theme,
-}) => {
-  const cmpTokens = theme.cmp.checkbox;
-  const controlTokens = cmpTokens.control;
-  const markerTokens = cmpTokens.controlMarker;
-  const cmpMarkerWidth = markerTokens.size.square[$size];
-  const checkRadioTokens = getCheckRadioTokens({ status, theme });
-  const evalCheckedIcon = icons[checkedIcon] || icons.check_thick;
+    checkedIcon,
+    disabled = false,
+    indeterminate = false,
+    $size = 'md',
+    status = 'base',
+    theme,
+  }) => {
+    const cmpTokens = theme.cmp.checkbox;
+    const controlTokens = cmpTokens.control;
+    const markerTokens = cmpTokens.controlMarker;
+    const cmpMarkerWidth = markerTokens.size.square[$size];
+    const checkRadioTokens = getCheckRadioTokens({ status, theme });
+    const evalCheckedIcon = icons[checkedIcon] || icons.check_thick;
 
-  return css`
+    return css`
       ${checkRadioMixin({ disabled, size: $size, status, theme })};
       appearance: none;
       margin: 0;
       border-radius: ${controlTokens.shape.borderRadius};
 
-      &:after {
+      &::after {
         position: absolute;
         overflow: hidden;
         opacity: 0;
@@ -73,8 +73,8 @@ export const StyledCheckboxControl = styled.input.attrs({
         background-color: ${checkRadioTokens.bgColorChecked};
       }
 
-      &:checked:after,
-      &:indeterminate:after {
+      &:checked::after,
+      &[aria-checked='mixed']::after {
         opacity: 1;
         transform: ${!indeterminate && 'scale(1, 1.1)'};
         transition: all ease-in-out ${checkRadioTokens.animationTime};
@@ -84,5 +84,5 @@ export const StyledCheckboxControl = styled.input.attrs({
         font-size: ${cmpMarkerWidth};
       }
     `;
-}}
+  }}
 `;

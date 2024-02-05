@@ -11,6 +11,8 @@ const meta: Meta<typeof SwitchControl> = {
     size: 'md',
     autoFocus: true,
     status: 'base',
+    checkedContent: 'OR',
+    uncheckedContent: 'AND',
   },
   argTypes: {
     'aria-label': {

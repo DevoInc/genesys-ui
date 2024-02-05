@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-
-import { SelectControl, SelectControlProps } from '..';
 import { Props, PropsValue } from 'react-select';
+
 import { SelectOption } from './declarations';
+
+import { SelectControl, SelectControlProps } from './SelectControl';
+
+// TODO: QUV-2116 Problem using components as value for options object
+//import { ESFlag, EUFlag, PTFlag, USFlag } from './__stories__/assets';
 
 interface SelectControlOption extends SelectOption {
   isDisabled?: boolean;
@@ -39,6 +43,7 @@ export default meta;
 type Story = StoryObj<SelectControlProps>;
 
 export const SingleOption: Story = {
+  name: 'Single selection',
   render: (args) =>
     ((args) => {
       const [value, setValue] = React.useState<SelectControlProps['value']>();
@@ -58,7 +63,75 @@ export const SingleOption: Story = {
     })(args),
 };
 
+export const SingleOptionWithIcons: Story = {
+  name: 'Single selection with option/value icons',
+  render: (args) =>
+    ((args) => {
+      const [value, setValue] = React.useState<SelectControlProps['value']>();
+      return (
+        <SelectControl
+          {...args}
+          onChange={(opt: SelectOption) => setValue(opt.value)}
+          options={[
+            { value: 1, label: 'Option one', icon: 'gi-check_ok_rounded' },
+            { value: 2, label: 'Option two', icon: 'gi-info_round' },
+            {
+              value: 3,
+              label: 'Option three',
+              icon: 'gi-attention_error_alert_caution',
+            },
+            {
+              value: 4,
+              label: 'Option four',
+              icon: 'gi-delete_exit_remove_close_rounded',
+            },
+          ]}
+          value={value}
+        />
+      );
+    })(args),
+};
+
+export const SingleOptionWithPrependContent: Story = {
+  name: 'Single selection with option/value prepend contents',
+  render: (args) =>
+    ((args) => {
+      const [value, setValue] = React.useState<SelectControlProps['value']>();
+      return (
+        // TODO: QUV-2116 Problem using components as value for options object
+        <SelectControl
+          {...args}
+          onChange={(opt: SelectOption) => setValue(opt.value)}
+          options={[
+            {
+              value: 1,
+              label: 'Spain',
+              //prependContent: <ESFlag />,
+            },
+            {
+              value: 2,
+              label: 'Portugal',
+              //prependContent: <PTFlag />,
+            },
+            {
+              value: 3,
+              label: 'USA',
+              //prependContent: <USFlag />,
+            },
+            {
+              value: 4,
+              label: 'EU',
+              //prependContent: <EUFlag />,
+            },
+          ]}
+          value={value}
+        />
+      );
+    })(args),
+};
+
 export const SingleWithOptionsGroups: Story = {
+  name: 'Single selection with options group',
   render: (args) =>
     ((args) => {
       const demoOptionsWithGroups: Props<SelectControlOption>['options'] = [
@@ -94,6 +167,7 @@ export const SingleWithOptionsGroups: Story = {
 };
 
 export const MultipleBasic: Story = {
+  name: 'Multiple selection',
   render: (args) =>
     ((args) => {
       const getOptions = (
@@ -104,7 +178,6 @@ export const MultipleBasic: Story = {
           .map((_el, idx) => ({
             value: `item${idx}`,
             label: `Item ${idx}`,
-            icon: 'gi-folder',
           }));
       };
       const [value, setValue] =
@@ -112,6 +185,7 @@ export const MultipleBasic: Story = {
       return (
         <SelectControl
           {...args}
+          closeMenuOnSelect={false}
           isMulti
           onChange={(value) => setValue(value)}
           options={getOptions(50)}
@@ -121,7 +195,41 @@ export const MultipleBasic: Story = {
     })(args),
 };
 
+export const MultipleSubtle: Story = {
+  name: 'Multiple selection subtle variant',
+  render: (args) =>
+    ((args) => {
+      const getOptions = (
+        optionsNumber: number,
+      ): Props<SelectControlOption>['options'] => {
+        return Array(optionsNumber)
+          .fill(null)
+          .map((_el, idx) => ({
+            value: `item${idx}`,
+            label: `Item ${idx}`,
+          }));
+      };
+      const [value, setValue] =
+        React.useState<PropsValue<SelectControlOption>>();
+      return (
+        <SelectControl
+          {...args}
+          isMulti
+          multipleSubtle
+          menuIsOpen
+          closeMenuOnSelect={false}
+          selectAllBtn
+          hideSelectedOptions={false}
+          onChange={(value) => setValue(value)}
+          options={getOptions(50)}
+          value={value}
+        />
+      );
+    })(args),
+};
+
 export const MultipleSortable: Story = {
+  name: 'Multiple selection sortable',
   render: (args) =>
     ((args) => {
       const getOptions = (
@@ -152,6 +260,7 @@ export const MultipleSortable: Story = {
 };
 
 export const MultipleCreatable: Story = {
+  name: 'Multiple selection creatable',
   render: (args) =>
     ((args) => {
       const getOptions = (
@@ -180,6 +289,7 @@ export const MultipleCreatable: Story = {
 };
 
 export const MultipleSelectAll: Story = {
+  name: 'Multiple selection with select all',
   render: (args) =>
     ((args) => {
       const getOptions = (
@@ -211,6 +321,7 @@ export const MultipleSelectAll: Story = {
 };
 
 export const MultipleFixedOptions: Story = {
+  name: 'Multiple selection with fixed options',
   render: (args) =>
     ((args) => {
       const options: Props<SelectControlOption>['options'] = Array(20)
@@ -241,6 +352,7 @@ export const MultipleFixedOptions: Story = {
 };
 
 export const VirtualizedOptions: Story = {
+  name: 'Multiple selection with virtualized options',
   render: (args) =>
     ((args) => {
       const options: Props<SelectControlOption>['options'] = Array(20000)

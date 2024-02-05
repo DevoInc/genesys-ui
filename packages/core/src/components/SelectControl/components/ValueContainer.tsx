@@ -4,10 +4,15 @@ import {
   ValueContainerProps as RSValueContainerProps,
 } from 'react-select';
 import { arrayMove } from '@dnd-kit/sortable';
-
-import { SortableList } from '.';
 import { DragEndEvent } from '@dnd-kit/core';
+
 import { SelectOption } from '../declarations';
+
+import { SelectControlContext } from '../context';
+
+import { Typography } from '../../Typography';
+import { HFlex } from '../../HFlex';
+import { SortableList } from './';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ValueContainerProps extends RSValueContainerProps {}
@@ -16,6 +21,7 @@ export const ValueContainer: React.FC<ValueContainerProps> = ({
   children,
   ...props
 }) => {
+  const { values } = React.useContext(SelectControlContext);
   const containerRef = React.createRef<HTMLDivElement>();
   const [containerClass, setContainerClass] =
     React.useState<React.AllHTMLAttributes<HTMLDivElement>['className']>();
@@ -53,7 +59,6 @@ export const ValueContainer: React.FC<ValueContainerProps> = ({
         props.setValue(newItems, 'select-option');
       }
     };
-
     return (
       <div ref={containerRef} className={containerClass}>
         <components.ValueContainer {...props}>
@@ -72,7 +77,16 @@ export const ValueContainer: React.FC<ValueContainerProps> = ({
     return (
       <div ref={containerRef} className={containerClass}>
         <components.ValueContainer {...props}>
-          {children}
+          {props.selectProps.multipleSubtle && values.length > 0 ? (
+            <HFlex spacing="cmp-xxs">
+              <Typography.Caption colorScheme="weaker">
+                ({values.length})
+              </Typography.Caption>
+              {children}
+            </HFlex>
+          ) : (
+            children
+          )}
         </components.ValueContainer>
       </div>
     );

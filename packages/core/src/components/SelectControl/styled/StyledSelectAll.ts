@@ -5,11 +5,20 @@ import { CommonSelectCmpsProps } from '../declarations';
 export interface StyledSelectAllProps extends CommonSelectCmpsProps {}
 
 export const StyledSelectAll = styled.div<StyledSelectAllProps>`
-  ${({ size, theme }) => {
-  const tokens = theme.cmp.select.selectAll;
-  return css`
-      border-bottom: ${tokens.shape.border};
-      padding: ${tokens.space.margin[size]};
+  ${({ multipleSubtle, size, theme }) => {
+    const tokens = theme.cmp.select.selectAll;
+    const fieldControlHorSpace = theme.alias.fields.space.padding.hor[size];
+    const menuHorSpace = theme.alias.menus.wrapper.space.margin;
+    return css`
+      ${multipleSubtle
+        ? css`
+            padding: calc(${menuHorSpace} * 2) ${menuHorSpace} ${menuHorSpace}
+              calc(${fieldControlHorSpace} + ${menuHorSpace});
+          `
+        : css`
+            border-bottom: ${tokens.shape.border};
+            padding: ${tokens.space.margin[size]};
+          `}
     `;
-}}
+  }}
 `;

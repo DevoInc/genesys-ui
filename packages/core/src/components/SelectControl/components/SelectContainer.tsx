@@ -2,7 +2,9 @@ import * as React from 'react';
 import { components, ContainerProps as RSContainerProps } from 'react-select';
 import { useTheme } from 'styled-components';
 
-import { Field, Flex } from '../../';
+import { SelectControlContext } from '../context';
+
+import { Field, Flex, SelectOption } from '../../';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ContainerProps extends RSContainerProps {}
@@ -33,7 +35,15 @@ export const SelectContainer: React.FC<ContainerProps> = (props) => {
               : '100%'
           }
         >
-          {props.children}
+          <SelectControlContext.Provider
+            value={{
+              size: props.selectProps.size,
+              values: props.getValue() as SelectOption[],
+              options: props.selectProps.options as SelectOption[],
+            }}
+          >
+            {props.children}
+          </SelectControlContext.Provider>
         </Flex>
         {props.selectProps.addonToRight && (
           <Field._Addon position="right" size={props.selectProps.size}>

@@ -1,15 +1,12 @@
 import { ActionMeta, MultiValue, Props, PropsValue } from 'react-select';
+import {
+  FIELD_SIZE_TO_CHIP_SIZE,
+  FIELD_SIZE_TO_VALUE_ICON_SIZE,
+} from './constants';
 import { ChipSize } from '../Chip/declarations';
 import { FieldSize } from '../../declarations';
 import { SelectOption } from './declarations';
 import { SelectControlProps } from './SelectControl';
-
-/** A map of field sizes to chip sizes. */
-export const fieldSizeToChipSize: { [key in FieldSize]: ChipSize } = {
-  sm: 'xs',
-  md: 'sm',
-  lg: 'md',
-} as const;
 
 /**
  * A function that takes an object with onChange and value properties as input
@@ -140,7 +137,18 @@ export const getChipSize = ({
 }: {
   size?: FieldSize | ChipSize;
   chipSize?: ChipSize;
-}): ChipSize => {
-  if (chipSize) return chipSize;
-  return fieldSizeToChipSize[size];
-};
+}): ChipSize => chipSize || FIELD_SIZE_TO_CHIP_SIZE[size || 'xs'];
+
+/**
+ * A function that takes an object with size and chipSize properties as input
+ * and returns the value chip icon based on the values of chipSize and size.
+ * If chipSize is present, it returns chipSize, otherwise,
+ * it returns the ChipSize based on the value of size.
+ */
+export const getValueIconSize = ({
+  size,
+  chipSize,
+}: {
+  size?: FieldSize | ChipSize;
+  chipSize?: ChipSize;
+}): ChipSize => chipSize || FIELD_SIZE_TO_VALUE_ICON_SIZE[size || 'xxs'];

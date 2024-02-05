@@ -10,3 +10,4 @@ export * from './SingleValue';
 export * from './SelectContainer';
 export * from './SorteableList';
 export * from './ValueContainer';
+export * from './ValueIcon';

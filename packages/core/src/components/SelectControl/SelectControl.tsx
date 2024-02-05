@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { get } from 'lodash';
 
-import * as defaultComponents from './components';
+import { CUSTOM_HEIGHT } from './constants';
+
 import { wrapperOnChange, findValue } from './utils';
+
+import * as defaultComponents from './components';
 import {
   InnerSelectControl,
   InnerSelectControlProps,
 } from './InnerSelectControl';
-import { CUSTOM_HEIGHT } from './constants';
 
 import type {
   FieldAriaProps,
@@ -48,13 +50,13 @@ export const SelectControl = <
   IsMulti extends boolean = boolean,
   Group extends GroupBase<Option> = GroupBase<Option>,
 >({
-    components,
-    componentStyles,
-    styles,
-    value,
-    isClearable,
-    ...rest
-  }: SelectControlProps<Option, IsMulti, Group>) => {
+  components,
+  componentStyles,
+  styles,
+  value,
+  isClearable,
+  ...rest
+}: SelectControlProps<Option, IsMulti, Group>) => {
   const defaultStyles = React.useMemo(
     () => ({
       menuPortal: (base: CSSObjectWithLabel) => ({

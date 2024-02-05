@@ -4,8 +4,12 @@ import {
   SingleValueProps as RSSingleValueProps,
 } from 'react-select';
 
-import { Icon } from '../..';
 import { SelectOption } from '../declarations';
+
+import { getValueIconSize } from '../utils';
+
+import { HFlex } from '../../HFlex';
+import { ValueIcon } from './ValueIcon';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface SingleValueProps<Option> extends RSSingleValueProps<Option> {}
@@ -16,8 +20,19 @@ export const SingleValue = <Option extends SelectOption>(
   return (
     components.SingleValue && (
       <components.SingleValue {...props}>
-        {props.data.icon && <Icon iconId={props.data.icon} />}
-        {props.data.label}
+        <HFlex spacing="cmp-xxs">
+          {props.data.prependContent}
+          {props.data.icon && (
+            <ValueIcon
+              iconId={props.data.icon}
+              strong={props.data.bold}
+              size={getValueIconSize({
+                size: props.selectProps.size,
+              })}
+            />
+          )}
+          {props.data.label}
+        </HFlex>
       </components.SingleValue>
     )
   );

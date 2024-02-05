@@ -26,6 +26,7 @@ export interface StyledSelectMenuProps {
   menuLevel?: number;
   menuQuiet?: boolean;
   menuRelative?: boolean;
+  multipleSubtle?: boolean;
   minMenuHeight: React.CSSProperties['minHeight'];
   minMenuWidth: React.CSSProperties['minWidth'];
   size: FieldSize;
@@ -33,45 +34,48 @@ export interface StyledSelectMenuProps {
 
 export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`
   ${({
-  alignOptions = 'left',
-  classNamePrefix = 'react-select',
-  maxMenuHeight,
-  menuIsOpen,
-  menuLevel = 3,
-  menuQuiet,
-  menuRelative,
-  minMenuHeight = 0,
-  minMenuWidth,
-  size = 'sm',
-  theme,
-}) => {
-  const aliasTokens = theme.alias;
-  const surfaceTokens = aliasTokens.color.background.surface;
-  const fieldTokens = aliasTokens.fields;
-  const fieldTransitionDuration = fieldTokens.mutation.transitionDuration;
+    alignOptions = 'left',
+    classNamePrefix = 'react-select',
+    maxMenuHeight,
+    menuIsOpen,
+    menuLevel = 3,
+    menuQuiet,
+    menuRelative,
+    minMenuHeight = 0,
+    minMenuWidth,
+    multipleSubtle,
+    size = 'sm',
+    theme,
+  }) => {
+    const aliasTokens = theme.alias;
+    const surfaceTokens = aliasTokens.color.background.surface;
+    const fieldTokens = aliasTokens.fields;
+    const fieldTransitionDuration = fieldTokens.mutation.transitionDuration;
 
-  const menuTokens = aliasTokens.menus;
-  const wrapperTokens = menuTokens.wrapper;
-  const listTokens = menuTokens.list;
-  const optionTokens = menuTokens.item;
-  const optionIconTokens = menuTokens.itemIcon;
-  const optionGroupTokens = menuTokens.itemGroup;
-  const optionHeight = optionTokens.size.minHeight;
-  const optionHorSpacing = fieldTokens.space.padding.hor[size];
-  const elevation =
+    const menuTokens = aliasTokens.menus;
+    const wrapperTokens = menuTokens.wrapper;
+    const listTokens = menuTokens.list;
+    const optionTokens = menuTokens.item;
+    const optionGroupTokens = menuTokens.itemGroup;
+    const optionHeight = multipleSubtle
+      ? `calc(${optionTokens.size.minHeight} - 0.4rem)`
+      : optionTokens.size.minHeight;
+    const optionHorSpacing = fieldTokens.space.padding.hor[size];
+    const elevation =
       FIELD_MENU_LEVEL_ELEVATION_MAP[menuLevel >= 0 ? menuLevel : 3];
-  return css`
+
+    return css`
       .${classNamePrefix} {
         // SELECT__MENU ////////////////////////////////////////////////////////
         &__menu {
           position: ${menuRelative || menuQuiet ? 'relative' : 'absolute'};
           top: ${menuRelative && 'auto'};
           margin-top: ${() => {
-    if (menuQuiet) return menuTokens.space.marginTop.isQuiet;
-    if (menuIsOpen && menuLevel === 0)
-      return menuTokens.space.marginTop.isGroundLevel;
-    return menuTokens.space.marginTop.base;
-  }};
+            if (menuQuiet) return menuTokens.space.marginTop.isQuiet;
+            if (menuIsOpen && menuLevel === 0)
+              return menuTokens.space.marginTop.isGroundLevel;
+            return menuTokens.space.marginTop.base;
+          }};
           margin-bottom: ${menuQuiet && '0'};
           ${elevationMixin(theme)(menuQuiet ? 'ground' : elevation)};
           min-width: ${minMenuWidth};
@@ -112,8 +116,6 @@ export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`
 
           i {
             display: inline-block;
-            margin-right: ${optionIconTokens.space.marginRight[size]};
-            font-size: ${optionIconTokens.size.square[size]};
           }
 
           &,
@@ -141,7 +143,9 @@ export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`
             &:hover,
             &:focus,
             &:active {
-              background-color: ${optionTokens.color.background.activated};
+              background-color: ${multipleSubtle
+                ? 'transparent'
+                : optionTokens.color.background.activated};
               color: ${optionTokens.color.text.activated};
             }
           }
@@ -165,11 +169,11 @@ export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`
           &-heading {
             ${truncateTypoMixin()};
             ${typoMixin({
-                textAlign: alignOptions,
-                size: 'md',
-                theme,
-                variant: 'overline',
-              })};
+              textAlign: alignOptions,
+              size: 'md',
+              theme,
+              variant: 'overline',
+            })};
             position: relative;
             margin-bottom: 0;
             min-height: ${optionHeight};
@@ -188,5 +192,5 @@ export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`
         margin-top: ${optionGroupTokens.space.marginTop};
       }
     `;
-}};
+  }};
 `;

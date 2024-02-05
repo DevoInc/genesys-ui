@@ -18,50 +18,52 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
   }),
 )`
   ${({
-  addonToLeft,
-  addonToRight,
-  classNamePrefix,
-  isDisabled,
-  hideSelectedOptions,
-  hideStatusIcon,
-  isClearable,
-  isMulti,
-  menuIsOpen,
-  readOnly,
-  size = 'md',
-  sortable,
-  status,
-  theme,
-  value,
-  options,
-}) => {
-  const state = getFieldState({ readOnly });
-  const statusEval = getFieldStatus(status);
-  const aliasTokens = theme.alias;
-  const spacingTokens = aliasTokens.space;
-  const fieldTokens = aliasTokens.fields;
-  const fieldTransitionDuration = fieldTokens.mutation.transitionDuration;
-  const selectTokens = theme.cmp.select;
-  const defaultHorPadding = fieldTokens.space.padding.hor[size];
-  const scrollSpacing = selectTokens.space.padding.scroll;
-  const scrollOffset = spacingTokens.cmp.xxs;
-  const indicatorWidth = `calc(${selectTokens.indicator.size.width[size]} * ${
+    addonToLeft,
+    addonToRight,
+    classNamePrefix,
+    isDisabled,
+    hideSelectedOptions,
+    hideStatusIcon,
+    isClearable,
+    isMulti,
+    menuIsOpen,
+    multipleSubtle,
+    readOnly,
+    size = 'md',
+    sortable,
+    status,
+    theme,
+    value,
+    options,
+  }) => {
+    const state = getFieldState({ readOnly });
+    const statusEval = getFieldStatus(status);
+    const aliasTokens = theme.alias;
+    const spacingTokens = aliasTokens.space;
+    const fieldTokens = aliasTokens.fields;
+    const fieldTransitionDuration = fieldTokens.mutation.transitionDuration;
+    const selectTokens = theme.cmp.select;
+    const defaultHorPadding = fieldTokens.space.padding.hor[size];
+    const scrollSpacing = selectTokens.space.padding.scroll;
+    const scrollOffset = spacingTokens.cmp.xxs;
+    const indicatorWidth = `calc(${selectTokens.indicator.size.width[size]} * ${
       hasStatus(statusEval) && !hideStatusIcon ? 2 : 1
     })`;
-  const hasDropdownIndicator = menuIsOpen
-    ? 0
-    : (isMulti &&
+    const hasDropdownIndicator = menuIsOpen
+      ? 0
+      : (isMulti &&
             hideSelectedOptions &&
             (value && (value as MultiValue<SelectOption>).length) !==
               (options && options.length)) ||
           !isMulti ||
           !hideSelectedOptions
-      ? 1
-      : 0;
-  const hasClearIndicator = isClearable === false ? 0 : 1;
-  const sortableSpacing = sortable ? scrollSpacing : '0rem';
+        ? 1
+        : 0;
+    const hasClearIndicator = isClearable === false ? 0 : 1;
+    const sortableSpacing = sortable ? scrollSpacing : '0rem';
+    const minHeight = fieldTokens.size.height[size];
 
-  return css`
+    return css`
       flex: 1 1 auto;
 
       .${classNamePrefix} {
@@ -76,7 +78,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
           border-style: solid;
           border-color: ${fieldTokens.color.border[statusEval][state]};
           border-radius: ${fieldTokens.shape.borderRadius};
-          min-height: ${fieldTokens.size.height[size]};
+          min-height: ${minHeight};
           background-color: ${fieldTokens.color.background[statusEval][state]};
           ${getFieldControlTypo({ theme, size })};
 
@@ -137,8 +139,11 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
           // MULTIPLE
           ${isMulti &&
           css`
-            max-height: ${selectTokens.size.maxHeight.isMultiple[size]};
-            overflow-y: auto;
+            max-height: ${multipleSubtle
+              ? minHeight
+              : selectTokens.size.maxHeight.isMultiple[size]};
+            overflow-y: ${multipleSubtle ? 'hidden' : 'auto'};
+            max-width: ${multipleSubtle && '100%'};
           `};
 
           // SCROLLBAR
@@ -146,9 +151,16 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
 
           // MULTIPLE
           .${classNamePrefix}__value-container.${classNamePrefix}__value-container--is-multi {
-            padding-right: calc(
+            padding-right: ${!multipleSubtle &&
+            `calc(
               ${indicatorWidth} * ${hasDropdownIndicator} + ${defaultHorPadding}
-            );
+            )`};
+            max-width: ${multipleSubtle &&
+            `calc(100% - (${indicatorWidth} * ${hasDropdownIndicator} + ${defaultHorPadding}))`};
+            padding-top: ${multipleSubtle && '0'};
+            padding-bottom: ${multipleSubtle && '0'};
+            white-space: ${multipleSubtle && 'nowrap'};
+            max-height: ${minHeight};
 
             // when select is sortable, an inline styles div without class name is rendered
             > [style] {
@@ -157,31 +169,40 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
 
             // MULTIPLE & HAS VALUE
             &.${classNamePrefix}__value-container--has-value {
-              padding-right: calc(
+              padding-right: ${!multipleSubtle &&
+              `calc(
                 ${indicatorWidth} * ${hasDropdownIndicator} + ${sortableSpacing} +
                   ${indicatorWidth} * ${hasClearIndicator} +
                   ${defaultHorPadding}
-              );
+              )`};
+              max-width: ${multipleSubtle &&
+              `calc(100% - (${indicatorWidth} * ${hasDropdownIndicator} + ${sortableSpacing} +
+                  ${indicatorWidth} * ${hasClearIndicator} +
+                  ${defaultHorPadding}))`};
             }
           }
 
           // MULTIPLE & HAS SCROLL
           &--has-scroll {
-            margin: ${scrollOffset};
+            margin: ${!multipleSubtle && scrollOffset};
+
             .${classNamePrefix}__value-container.${classNamePrefix}__value-container--is-multi {
-              padding-left: calc(${defaultHorPadding} - ${scrollOffset});
-              padding-right: calc(
+              padding-left: ${!multipleSubtle &&
+              `calc(${defaultHorPadding} - ${scrollOffset})`};
+              padding-right: ${!multipleSubtle &&
+              `calc(
                 ${indicatorWidth} * ${hasDropdownIndicator} + ${scrollSpacing} +
                   ${defaultHorPadding}
-              );
+              )`};
 
               // MULTIPLE & HAS SCROLL & HAS VALUE
               &.${classNamePrefix}__value-container--has-value {
-                padding-right: calc(
+                padding-right: ${!multipleSubtle &&
+                `calc(
                   ${indicatorWidth} * ${hasDropdownIndicator} +
                     ${indicatorWidth} * ${hasClearIndicator} + ${scrollSpacing} +
                     ${sortableSpacing} + ${defaultHorPadding} + ${scrollOffset}
-                );
+                )`};
               }
             }
 
@@ -197,6 +218,8 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
         &__input-container {
           overflow-y: hidden;
           color: ${fieldTokens.color.text[statusEval][state]};
+          margin: 0;
+          padding: 0;
 
           &::-webkit-scrollbar {
             display: none;
@@ -235,12 +258,6 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
               align-items: center;
               margin: 0;
               color: ${fieldTokens.color.text[statusEval][state]};
-
-              i {
-                margin-right: ${selectTokens.valueIcon.space.marginRight[size]};
-                font-size: ${selectTokens.valueIcon.size.square[size]};
-                color: ${fieldTokens.color.text[statusEval][state]};
-              }
             }
           }
         }
@@ -305,5 +322,5 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
         ///////////////////////////////////////////////////////// END DISABLED
       }
     `;
-}}
+  }}
 `;

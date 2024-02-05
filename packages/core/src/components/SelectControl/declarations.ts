@@ -8,6 +8,7 @@ export type SelectOption = {
   readonly label: string;
 
   readonly icon?: string;
+  readonly prependContent?: React.ReactNode;
   readonly bold?: boolean;
   readonly fixed?: boolean;
 };
@@ -53,4 +54,5 @@ export interface CommonSelectCmpsProps {
   creatable?: boolean;
   /** Enable virtualization for select options. Useful for large lists */
   virtualizeOptions?: boolean;
+  multipleSubtle?: boolean;
 }

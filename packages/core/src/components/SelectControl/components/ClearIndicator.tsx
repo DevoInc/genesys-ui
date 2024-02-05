@@ -4,7 +4,7 @@ import {
   ClearIndicatorProps as RSClearIndicatorProps,
 } from 'react-select';
 
-import { Icon } from '../..';
+import { Icon } from '../../Icon';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ClearIndicatorProps extends RSClearIndicatorProps {}

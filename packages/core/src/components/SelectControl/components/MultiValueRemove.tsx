@@ -3,10 +3,12 @@ import {
   components,
   MultiValueRemoveProps as RSMultiValueRemoveProps,
 } from 'react-select';
+
 import { SelectOption } from '../declarations';
 
-import { IconButtonRemove } from '../..';
 import { getChipSize } from '../utils';
+
+import { IconButtonRemove } from '../../IconButton';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MultiValueRemoveProps<Option>
@@ -17,7 +19,7 @@ export const MultiValueRemove = <Option extends SelectOption>(
 ): React.ReactElement<MultiValueRemoveProps<Option>> => {
   if (props.data.fixed) return null;
 
-  return (
+  return props.selectProps.multipleSubtle ? null : (
     <components.MultiValueRemove {...props}>
       <IconButtonRemove
         as="span"

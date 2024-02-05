@@ -32,25 +32,27 @@ export const CheckboxControl: React.FC<CheckboxControlProps> = ({
   'aria-errormessage': ariaErrorMessage,
   'aria-invalid': ariaInvalid,
   checked,
-  indeterminate = false,
+  indeterminate,
   onChange,
   size = 'md',
   status = 'base',
   styles,
   tooltip,
   ...restNativeProps
-}) => (
-  <StyledCheckboxControl
-    {...restNativeProps}
-    onChange={onChange}
-    aria-checked={ariaChecked ?? (indeterminate && checked) ? 'mixed' : checked}
-    aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
-    aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
-    checked={onChange ? checked : undefined}
-    css={styles}
-    indeterminate={indeterminate}
-    $size={size}
-    status={status}
-    title={tooltip}
-  />
-);
+}) => {
+  return (
+    <StyledCheckboxControl
+      {...restNativeProps}
+      onChange={onChange}
+      aria-checked={ariaChecked ?? indeterminate ? 'mixed' : checked}
+      aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
+      aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
+      checked={onChange ? checked : undefined}
+      css={styles}
+      indeterminate={indeterminate}
+      $size={size}
+      status={status}
+      title={tooltip}
+    />
+  );
+};
