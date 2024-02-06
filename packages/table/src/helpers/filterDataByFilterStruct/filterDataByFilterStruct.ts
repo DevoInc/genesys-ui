@@ -1,10 +1,20 @@
 /* eslint-disable indent */
 
 import { Row } from '../../declarations';
-import { FilterValue, NumberFilterValue, TextFilterValue } from '../../filters';
-import { BooleanFilterValue } from '../../filters/BooleanFilter/declarations';
+import {
+  FilterValue,
+  NumberFilterValue,
+  OptionsFilterValue,
+  TextFilterValue,
+  BooleanFilterValue,
+} from '../../filters';
 import { FilterColumn } from '../../hooks';
-import { booleanFilter, numberFilter, textFilter } from './filters';
+import {
+  booleanFilter,
+  numberFilter,
+  optionsFilter,
+  textFilter,
+} from './filters';
 
 export type CustomFilterFn = (
   data: unknown,
@@ -41,6 +51,12 @@ export const filterDataByFilterStruct =
       }
       if (type === 'boolean') {
         const res = booleanFilter(!!a[id], value as BooleanFilterValue);
+        if (!res) {
+          return false;
+        }
+      }
+      if (type === 'options') {
+        const res = optionsFilter(a[id] as string, value as OptionsFilterValue);
         if (!res) {
           return false;
         }
