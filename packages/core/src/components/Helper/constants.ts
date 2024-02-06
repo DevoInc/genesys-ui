@@ -2,7 +2,7 @@ import { STATUS_ICON_MAP } from '../../constants';
 import { ActiveStatus, GlobalSpacing } from '../../declarations';
 import { IconProps } from '../Icon';
 import { HelperSize } from './declarations';
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
 
 export const HELPER_ICON_STATUS_MAP: {
   [key in ActiveStatus]: keyof typeof iconDictionary;

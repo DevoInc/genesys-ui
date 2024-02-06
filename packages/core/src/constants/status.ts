@@ -1,4 +1,4 @@
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
 
 import type { ActiveStatus } from '../declarations';
 

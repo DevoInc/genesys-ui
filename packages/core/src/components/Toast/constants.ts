@@ -1,6 +1,6 @@
 import { STATUS_ICON_MAP } from '../../constants';
 import { ToastStatus } from './declarations';
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
 
 export const toastStatusToIconMap: {
   [key in ToastStatus]: keyof typeof iconDictionary;

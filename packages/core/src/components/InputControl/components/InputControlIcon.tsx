@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
 
 import { StyledInputControlIcon, StyledInputControlIconProps } from '../styled';
 import { StyledOverloadCssProps } from '../../../declarations';

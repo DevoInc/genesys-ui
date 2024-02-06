@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import icons from '@devoinc/genesys-icons/dist/icon-variables';
+import icons from '@devoinc/genesys-icons/dist/icon-variables.js';
 
 import { iconFontMixin, pseudoElementMixin } from '../../../styled/mixins';
 import { StyledButtonContainer } from '../../Button/components/ButtonContainer/StyledButtonContainer';

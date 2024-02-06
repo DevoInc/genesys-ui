@@ -3,7 +3,7 @@ import {
   components,
   DropdownIndicatorProps as RSDropdownIndicatorProps,
 } from 'react-select';
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
 
 import { STATUS_ICON_MAP } from '../../../constants';
 import { SelectOption } from '../declarations';

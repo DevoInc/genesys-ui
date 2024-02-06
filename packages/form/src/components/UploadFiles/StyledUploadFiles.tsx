@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
-import icons from '@devoinc/genesys-icons/dist/icon-variables';
+import icons from '@devoinc/genesys-icons/dist/icon-variables.js';
 import { linkMixin, scrollbars, disabledMixin } from '@devoinc/genesys-ui';
 
 import {
@@ -84,20 +84,20 @@ export const StyledUploadFiles = styled((props) => (
   <FilePond {...props} />
 ))<StyledUploadFilesProps>`
   ${({ disabled, height, maxHeight, showLabelIcon, theme }) => {
-  const aliasTokens = theme.alias;
-  const typoTokens = aliasTokens.typographies.typo;
-  const spacingTokens = aliasTokens.space;
-  const minHeight = aliasTokens.size.height.surface.md;
-  const bgTokens = aliasTokens.color.background.feedback;
-  const colorTokens = aliasTokens.color.text;
-  const bgSurface = aliasTokens.color.background.surface.base.base;
-  const linkTokens = theme.cmp.link;
-  const cmpTokens = theme.cmp.uploadFiles;
-  const buttonTokens = theme.cmp.button;
-  const borderWidth = cmpTokens.shape.border;
-  const borderRadius = cmpTokens.shape.borderRadius;
+    const aliasTokens = theme.alias;
+    const typoTokens = aliasTokens.typographies.typo;
+    const spacingTokens = aliasTokens.space;
+    const minHeight = aliasTokens.size.height.surface.md;
+    const bgTokens = aliasTokens.color.background.feedback;
+    const colorTokens = aliasTokens.color.text;
+    const bgSurface = aliasTokens.color.background.surface.base.base;
+    const linkTokens = theme.cmp.link;
+    const cmpTokens = theme.cmp.uploadFiles;
+    const buttonTokens = theme.cmp.button;
+    const borderWidth = cmpTokens.shape.border;
+    const borderRadius = cmpTokens.shape.borderRadius;
 
-  return css`
+    return css`
   /* -----------------------------------------------------------------------------
                               ROOT -  FILEPOND
 ----------------------------------------------------------------------------- */
@@ -1005,5 +1005,5 @@ export const StyledUploadFiles = styled((props) => (
       }
   }
   `;
-}}
+  }}
 `;

@@ -1,6 +1,6 @@
 import type { UIColorScheme } from '../../../../';
 import { STATUS_ICON_MAP } from '../../../../constants';
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables';
+import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
 
 // ICON BUTTON STATUS - ICON PROP VALUES ------------------------------------ //
 

@@ -1,5 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
-import icons from '@devoinc/genesys-icons/dist/icon-variables';
+import icons from '@devoinc/genesys-icons/dist/icon-variables.js';
 
 import { ButtonSize, ButtonState } from '../../../Button';
 import { getMarkerSize } from './utils';
@@ -37,10 +37,10 @@ export const iconButtonGoToDocsMixin = ({
 
     // icon button status styles
     ${iconButtonStatusMixin({
-    state,
-    colorScheme: 'help',
-    theme,
-  })};
+      state,
+      colorScheme: 'help',
+      theme,
+    })};
 
     &::after {
       ${iconFontMixin()};
