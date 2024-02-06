@@ -55,36 +55,41 @@ export const SelectControl = <
   styles,
   value,
   isClearable,
+  status = 'base',
+  size = 'md',
+  menuAppendToBody = true,
+  menuPlacement = 'auto',
+  menuLevel = 3,
   ...rest
 }: SelectControlProps<Option, IsMulti, Group>) => {
   const defaultStyles = React.useMemo(
     () => ({
       menuPortal: (base: CSSObjectWithLabel) => ({
         ...base,
-        zIndex: rest.menuAppendToBody ? 10000 : '',
+        zIndex: menuAppendToBody ? 10000 : '',
       }),
       menuList: (base: CSSObjectWithLabel) => ({
         ...base,
         maxHeight: rest.maxMenuHeight
           ? rest.selectAllBtn
-            ? rest.maxMenuHeight - CUSTOM_HEIGHT[rest.size]
+            ? rest.maxMenuHeight - CUSTOM_HEIGHT[size]
             : rest.maxMenuHeight
           : rest.selectAllBtn
-            ? 200 - CUSTOM_HEIGHT[rest.size]
+            ? 200 - CUSTOM_HEIGHT[size]
             : 200,
         minHeight:
           rest.minMenuHeight && rest.selectAllBtn
-            ? rest.minMenuHeight - CUSTOM_HEIGHT[rest.size]
+            ? rest.minMenuHeight - CUSTOM_HEIGHT[size]
             : rest.minMenuHeight,
       }),
       multiValueRemove: () => ({}),
     }),
     [
       rest.maxMenuHeight,
-      rest.menuAppendToBody,
+      menuAppendToBody,
       rest.minMenuHeight,
       rest.selectAllBtn,
-      rest.size,
+      size,
     ],
   );
 
@@ -109,14 +114,14 @@ export const SelectControl = <
   );
 
   const menuPortalTarget = React.useMemo(
-    () => (rest.menuAppendToBody ? document.body : rest.menuPortalTarget),
-    [rest.menuAppendToBody, rest.menuPortalTarget],
+    () => (menuAppendToBody ? document.body : rest.menuPortalTarget),
+    [menuAppendToBody, rest.menuPortalTarget],
   );
 
   const handleCloseMenuOnScroll = React.useCallback(
     // To avoid closing of dropdown menu when the scroll is within itself
     (ev) =>
-      (rest.menuAppendToBody || rest.closeMenuOnScroll) &&
+      (menuAppendToBody || rest.closeMenuOnScroll) &&
       // Only return true when an open menu is detected, otherwise
       // react-select will be constantly changing the state and re-rendering
       // all the selects, even the closed ones.
@@ -126,13 +131,18 @@ export const SelectControl = <
         `${rest.classNamePrefix}__control--menu-is-open`,
       ).length &&
       !ev.srcElement.classList.contains(`${rest.classNamePrefix}__menu-list`),
-    [rest.classNamePrefix, rest.closeMenuOnScroll, rest.menuAppendToBody],
+    [rest.classNamePrefix, rest.closeMenuOnScroll, menuAppendToBody],
   );
 
   return (
     <InnerSelectControl<Option, IsMulti, Group>
       {...rest}
       minMenuHeight={0}
+      size={size}
+      menuAppendToBody={menuAppendToBody}
+      menuPlacement={menuPlacement}
+      menuLevel={menuLevel}
+      status={status}
       menuPortalTarget={rest.menuRelative ? null : menuPortalTarget}
       isClearable={clearable}
       {...(onChange && { onChange })}

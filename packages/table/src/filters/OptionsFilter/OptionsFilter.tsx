@@ -16,8 +16,8 @@ export const OptionsFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
     <FilterContainer>
       <SelectControl
         isMulti
+        size="sm"
         multipleSubtle
-        menuIsOpen
         closeMenuOnSelect={false}
         selectAllBtn
         hideSelectedOptions={false}

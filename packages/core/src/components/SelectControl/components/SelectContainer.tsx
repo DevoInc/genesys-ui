@@ -37,7 +37,7 @@ export const SelectContainer: React.FC<ContainerProps> = (props) => {
         >
           <SelectControlContext.Provider
             value={{
-              size: props.selectProps.size,
+              size: props.selectProps.size ?? 'md',
               values: props.getValue() as SelectOption[],
               options: props.selectProps.options as SelectOption[],
             }}

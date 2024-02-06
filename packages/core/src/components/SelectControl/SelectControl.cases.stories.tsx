@@ -30,8 +30,8 @@ const meta: Meta<SelectControlProps<SelectControlOption>> = {
       { value: 6, label: 'Option six' },
       { value: 7, label: 'Option seven' },
     ],
-    size: 'md',
     status: 'base',
+    size: 'md',
   },
   argTypes: {
     addonToLeft: { control: { type: 'text' } },
@@ -216,6 +216,7 @@ export const MultipleSubtle: Story = {
           {...args}
           isMulti
           multipleSubtle
+          //menuIsOpen
           closeMenuOnSelect={false}
           selectAllBtn
           hideSelectedOptions={false}
