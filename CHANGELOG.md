@@ -1,5 +1,22 @@
 # Changelog
 
+## [4.4.0](https://github.com/DevoInc/genesys-ui/compare/v4.3.0...v4.4.0) (2024-02-06)
+
+
+### Features
+
+* **FloatPanel:** code internal structure improvements. ([5584dd3](https://github.com/DevoInc/genesys-ui/commit/5584dd3e0e52ba6e71e6448259d22777fa9b07c2))
+* **FloatPanel:** removed unnecessary components and added stories ([da04bfd](https://github.com/DevoInc/genesys-ui/commit/da04bfdaa1e1268c94cd3c7d16716270daad24a1))
+* **SelectControl:** QUV-2109 added subtle variant. ([db19d4f](https://github.com/DevoInc/genesys-ui/commit/db19d4ff8424650b222af0070feeb81cf66456ac))
+* several components code improvements ([f4867f1](https://github.com/DevoInc/genesys-ui/commit/f4867f1512f07104ea7a1969c847ec6544068985))
+* **table:** added OptionsFilter with subtle select control ([3bf08b4](https://github.com/DevoInc/genesys-ui/commit/3bf08b4a3810f7e1d1d230cc7f7a91d36f0a30c3))
+
+
+### Bug Fixes
+
+* added extension for imported file ([bf75da8](https://github.com/DevoInc/genesys-ui/commit/bf75da83ab30d47ecdeb0c276ec99112345cb029))
+* fixed lint problem ([224d727](https://github.com/DevoInc/genesys-ui/commit/224d727c5a5832f056595a1aa97695dacfd05d5b))
+
 ## [4.3.0](https://github.com/DevoInc/genesys-ui/compare/v4.2.0...v4.3.0) (2024-02-02)
 
 
