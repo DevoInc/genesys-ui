@@ -32,8 +32,10 @@ export const TableWrapper: React.FC = () => {
     () => getPxFromRem(theme.cmp.table.head.size.height[density]),
     [density, theme],
   );
+  const rowsTotalSize = rowVirtualizer.getTotalSize();
   const height =
-    rowVirtualizer.getTotalSize() + headHeight * (showFilters ? 2 : 1);
+    (rowsTotalSize === 0 ? 1 : rowsTotalSize) +
+    headHeight * (showFilters ? 2 : 1);
 
   return (
     <StyledTableWrapper ref={ref} maxHeight={maxHeight}>
@@ -47,9 +49,7 @@ export const TableWrapper: React.FC = () => {
             width={width}
           />
           <TableBody
-            colDefs={colDefs}
             columnVirtualizer={columnVirtualizer}
-            data={data}
             rowVirtualizer={rowVirtualizer}
             width={width}
             height={height}

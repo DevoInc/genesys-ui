@@ -1,0 +1,17 @@
+import { Meta, Canvas, Source } from '@storybook/blocks';
+
+import * as Stories from './Table.stories';
+
+<Meta of={Stories} />
+
+# Table
+
+## Empty table
+
+You could reach an empty case by the source of your data or because you are
+filtering the data and the filters output data is empty, in any case you would
+like to show a message to the user, for this we are recommending the
+`StatusMessage` component from core, here is an example
+
+<Canvas of={Stories.Empty} />
+

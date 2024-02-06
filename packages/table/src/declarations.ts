@@ -9,10 +9,6 @@ import { HeaderRendererProps } from './headerRenderers/declarations';
 export type Density = 'default' | 'compact' | 'comfortable';
 
 export type TextsType = {
-  general: {
-    noData?: React.ReactNode;
-    noResults?: React.ReactNode;
-  };
   cell: {
     editTooltip?: string;
     editSaveTooltip?: string;
