@@ -20,48 +20,44 @@ This component is based in a `Box` component as its container, so we have availa
 of this type. We have also an inner container with an `HFlex` component, so we get flex distribution
 of the different pre-defined blocks as children.
 
-## Cases
+You have available some props to define quickly the most common contents of this component: `heading` and `tabs`,
+but anyway you can use also the pre-defined components `AppBar.Item`, `AppBar.Navigation`, `AppBar.Heading` and
+`AppBar.Divider` if you need something custom, or use only `children`... etc.
 
-### Base
+Therefore, you have a lot of different ways of defining the content of the `AppBar`:
+
+- Only using the props (`heading` and `tabs`).
+- Using the props `heading` and `tabs`, combined with `children`.
+- Only using `children`.
+- Only using pre-defined components `AppBar.Item`, `AppBar.Navigation`, `AppBar.Heading` and `AppBar.Divider`.
+- A mix using props and pre-defined components.
+- ...
 
 <Canvas of={Stories.Base} />
 
-### With heading and actions
+## Cases
 
-You can specify a custom heading using the `heading` prop or add custom
-actions at the right side of the `AppBar`. `actions` prop receive an array
-of `Buttons`or `IconButton`.
+### Compact
 
-<Canvas of={Stories.WithHeadingAndActions} />
+Sometimes, your app or page has its own app bar, so in these cases you can use the `compact` variant
+with less height and spacing.
 
-### With options
+<Canvas of={Stories.Compact} />
 
-`options` are the same of `actions` prop but adding a `Divider` at the beging.
-`options` prop receive an array of `Buttons`or `IconButton`.
-
-<Canvas of={Stories.WithOptions} />
+<Canvas of={Stories.CompactWithAnotherToolbar} />
 
 ### Custom content
 
-You can create a custom `AppBar`content using the subcomponents:
-
-- `AppBar.Container`
-- `AppBar.Navigation`
-- `AppBar.Actions`
-- `AppBar.Options`
-- `AppBar.Heading`
-- `AppBar.Divider`
+You can create a custom `AppBar`content using the pre-defined components (`AppBar.Item`, `AppBar.Navigation`,
+`AppBar.Heading` and `AppBar.Divider`) or using the props `heading` and `tabs`, combined with children:
 
 <Canvas of={Stories.Custom} />
 
-## Subcomponents
+## Components
 
-- [Actions](?path=/docs/components-core-navigation-appbar-subcomponents--actions)
-- [Container](?path=/docs/components-core-navigation-tabs-subcomponents--container)
-- [Divider](?path=/docs/components-core-navigation-tabs-subcomponents--divider)
-- [Heading](?path=/docs/components-core-navigation-tabs-subcomponents--heading)
-- [Navigation](?path=/docs/components-core-navigation-tabs-subcomponents--navigation)
-- [Options](?path=/docs/components-core-navigation-tabs-subcomponents--options)
+- [Divider](?path=/docs/components-core-navigation-appbar-components--divider)
+- [Heading](?path=/docs/components-core-navigation-appbar-components--heading)
+- [Navigation](?path=/docs/components-core-navigation-appbar-components--navigation)
 
 ## Related components
 

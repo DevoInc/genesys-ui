@@ -37,7 +37,7 @@ export const Base: Story = {
               {...args}
               onRequestClose={() => closeModal('onRequestClose')}
             >
-              <Typography.Paragraph>
+              <Typography.Paragraph gutterBottom="cmp-md">
                 A still more glorious dawn awaits finite but unbounded Hypatia
                 Cambrian explosion white dwarf the carbon in our apple pies.
                 Vanquish the impossible the sky calls to us Flatland two ghostly

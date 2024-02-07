@@ -1,74 +1,27 @@
 import * as React from 'react';
+import {
+  GIAboutQuestionFaqHelp,
+  GIBellRingerAlarmSound,
+  GISearchFindZoom,
+} from '@devoinc/genesys-icons';
 
-import { Button } from '../../Button';
 import { IconButton, IconButtonProps } from '../../IconButton';
-import { Divider } from '../../Divider';
 import { Tabs, TabsItemProps } from '../../Tabs';
-import { STATUS_ICON_MAP } from '../../../constants';
+import { ButtonGroup } from '../../ButtonGroup';
 
-export const mainActions = (size: IconButtonProps['size'] = 'md') => [
-  <IconButton
-    size={size}
-    aria-label="avatar"
-    tooltip="Avatar"
-    key={1}
-    icon="gi-user_profile_avatar_man_male"
-    circular
-    colorScheme="quiet"
-  />,
-  <IconButton
-    size={size}
-    aria-label="Search"
-    tooltip="Search"
-    key={2}
-    icon="gi-search_thicker"
-    circular
-    colorScheme="quiet"
-  />,
-  <IconButton
-    size={size}
-    aria-label="Notifications"
-    tooltip="Notifications"
-    key={3}
-    icon="gi-bell_ringer_alarm_sound_solid"
-    circular
-    colorScheme="quiet"
-  />,
-  <IconButton
-    size={size}
-    aria-label="Help"
-    tooltip="Help"
-    key={4}
-    icon={STATUS_ICON_MAP.filled.help}
-    circular
-    colorScheme="quiet"
-  />,
-  <IconButton
-    size={size}
-    aria-label="Time zone"
-    tooltip="Time zone"
-    key={5}
-    icon="gi-time_zone"
-    circular
-    colorScheme="quiet"
-  />,
-];
-
-export const userOptions = [
-  <Button key={1} icon="gi-user_profile_avatar_man_male">
-    Preferences
-  </Button>,
-  <Button key={2} icon="gi-folder_documents_revert_history">
-    History
-  </Button>,
-  <Button key={3} icon="gi-settings_gear_preferences_strong">
-    Other
-  </Button>,
-  <Divider key={4} vertical />,
-  <Button key={5} icon="gi-power_on_off">
-    Logout
-  </Button>,
-];
+export const mainActions = (size: IconButtonProps['size'] = 'xs') => (
+  <ButtonGroup marginLeft="auto">
+    <IconButton key="actions-01" size={size} colorScheme="quiet" circular>
+      <GISearchFindZoom size="1.8rem" style={{ position: 'relative' }} />
+    </IconButton>
+    <IconButton key="actions-02" size={size} colorScheme="quiet" circular>
+      <GIBellRingerAlarmSound size="1.8rem" style={{ position: 'relative' }} />
+    </IconButton>
+    <IconButton key="actions-03" size={size} colorScheme="quiet" circular>
+      <GIAboutQuestionFaqHelp size="2.2rem" style={{ position: 'relative' }} />
+    </IconButton>
+  </ButtonGroup>
+);
 
 export const tabs: React.ReactElement<TabsItemProps>[] = [
   <Tabs.Item
@@ -80,9 +33,3 @@ export const tabs: React.ReactElement<TabsItemProps>[] = [
   <Tabs.Item size="lg" key="item-4" label="Injections" />,
   <Tabs.Item size="lg" key="item-3" label="Permalinks" />,
 ];
-
-export const customBlock = (
-  <div style={{ backgroundColor: 'lightblue', padding: '1.6rem' }}>
-    Custom Content
-  </div>
-);

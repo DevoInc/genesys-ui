@@ -4,7 +4,7 @@ import { Input } from '@devoinc/genesys-ui-form';
 
 export const ModalDemoContent = (
   <VFlex alignItems="stretch">
-    <Typography.Paragraph gutterBottom="0">
+    <Typography.Paragraph>
       A still more glorious dawn awaits finite but unbounded Hypatia Cambrian
       explosion white dwarf the carbon in our apple pies. Vanquish the
       impossible the sky calls to us Flatland two ghostly white figures in

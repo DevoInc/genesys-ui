@@ -24,8 +24,10 @@ type Story = StoryObj<typeof Overlay>;
 export const Base: Story = {
   render: (args) => (
     <Box position="relative">
-      <Typography.Paragraph>{lorem}</Typography.Paragraph>
-      <Typography.Paragraph>{lorem2}</Typography.Paragraph>
+      <Typography.Paragraph gutterBottom="cmp-md">{lorem}</Typography.Paragraph>
+      <Typography.Paragraph gutterBottom="cmp-md">
+        {lorem2}
+      </Typography.Paragraph>
       <Typography.Paragraph>{lorem3}</Typography.Paragraph>
       <Overlay {...args}>Children of Overlay</Overlay>
     </Box>

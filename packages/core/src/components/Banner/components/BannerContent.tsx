@@ -12,9 +12,7 @@ export const BannerContent: React.FC<BannerContentProps> = ({
   styles,
 }) =>
   typeof children === 'string' ? (
-    <Typography.Paragraph gutterBottom="0" styles={styles}>
-      {children}
-    </Typography.Paragraph>
+    <Typography.Paragraph styles={styles}>{children}</Typography.Paragraph>
   ) : React.isValidElement(children) ? (
     children
   ) : null;

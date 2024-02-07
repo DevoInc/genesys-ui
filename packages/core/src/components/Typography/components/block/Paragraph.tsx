@@ -21,7 +21,7 @@ export interface ParagraphProps
 
 export const Paragraph: React.FC<ParagraphProps> = ({
   colorScheme = 'base',
-  gutterBottom = 'cmp-md',
+  gutterBottom,
   size = 'md',
   textAlign = 'left',
   truncateLine,

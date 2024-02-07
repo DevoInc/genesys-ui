@@ -100,7 +100,6 @@ export const InlineMessageTrigger = React.forwardRef<
             <Typography.Paragraph
               as="span"
               colorScheme={'strong'}
-              gutterBottom="0"
               truncateLine={1}
               size={size}
               styles={inlineMessageTriggerParagraphMixin({ state })}
@@ -112,7 +111,6 @@ export const InlineMessageTrigger = React.forwardRef<
             <Typography.Paragraph
               as="span"
               colorScheme={'weak'}
-              gutterBottom="0"
               truncateLine={1}
               size={size}
               styles={inlineMessageTriggerParagraphMixin({ last: true, state })}

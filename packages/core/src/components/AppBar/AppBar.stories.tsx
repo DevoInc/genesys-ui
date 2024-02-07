@@ -1,34 +1,22 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
+import { mainActions, tabs } from './__stories__/content';
+
 import { AppBar } from './AppBar';
-import { mainActions, userOptions, tabs } from './__stories__/content';
-import { css } from 'styled-components';
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  HFlex,
-  IconButton,
-  InputControl,
-  Typography,
-} from '../../components';
-import {
-  GIAboutQuestionFaqHelp,
-  GIBellRingerAlarmSound,
-  GISearchFindZoom,
-} from '@devoinc/genesys-icons';
+import { Button } from '../Button';
+import { ButtonGroup } from '../ButtonGroup';
+import { InputControl } from '../InputControl';
+import { Typography } from '../Typography';
 
 const meta: Meta<typeof AppBar> = {
-  title: 'Components/Core/Navigation/AppBar/Examples',
+  title: 'Components/Core/Navigation/AppBar',
   component: AppBar,
   subcomponents: {
     'AppBar.Heading': AppBar.Heading,
-    'AppBar.Container': AppBar.Container,
     'AppBar.Navigation': AppBar.Navigation,
-    'AppBar.Actions': AppBar.Actions,
-    'AppBar.Options': AppBar.Options,
     'AppBar.Divider': AppBar.Divider,
+    'AppBar.Item': AppBar.Item,
   },
 };
 
@@ -37,25 +25,16 @@ type Story = StoryObj<typeof AppBar>;
 
 export const Base: Story = {
   args: {
-    tabItems: tabs,
+    heading: 'AppBar heading',
     sticky: true,
-  },
-};
-
-export const WithHeadingAndActions: Story = {
-  args: {
-    tabItems: tabs,
-    heading: 'App',
-    actions: mainActions(),
-    sticky: true,
+    tabs: tabs,
   },
 };
 
 export const Compact: Story = {
   args: {
     compact: true,
-    heading: 'Compact bar',
-    actions: mainActions('xs'),
+    heading: 'Compact App Bar',
     sticky: true,
   },
 };
@@ -65,119 +44,41 @@ export const CompactWithAnotherToolbar: Story = {
     (() => {
       return (
         <>
-          <AppBar
-            bordered
-            compact
-            heading="Compact app bar"
-            actions={[
-              <IconButton
-                key="actions-01"
-                size="sm"
-                colorScheme="quiet"
-                circular
-              >
-                <GISearchFindZoom
-                  size="1.8rem"
-                  style={{ position: 'relative' }}
-                />
-              </IconButton>,
-              <IconButton
-                key="actions-02"
-                size="sm"
-                colorScheme="quiet"
-                circular
-              >
-                <GIBellRingerAlarmSound
-                  size="1.8rem"
-                  style={{ position: 'relative' }}
-                />
-              </IconButton>,
-              <IconButton
-                key="actions-03"
-                size="sm"
-                colorScheme="quiet"
-                circular
-              >
-                <GIAboutQuestionFaqHelp
-                  size="2.2rem"
-                  style={{ position: 'relative' }}
-                />
-              </IconButton>,
-            ]}
-          />
-          <AppBar bordered>
-            <HFlex flex="1 1 auto" justifyContent="space-between">
-              <HFlex.Item>
-                <InputControl
-                  aria-label="Filter"
-                  placeholder="Filter widgets..."
-                  type="search"
-                />
-              </HFlex.Item>
-              <HFlex.Item>
-                <ButtonGroup>
-                  <Button icon="gi-reload_refresh_update">Reload</Button>
-                </ButtonGroup>
-              </HFlex.Item>
-            </HFlex>
+          <AppBar bordered compact heading="Compact app bar">
+            {mainActions()}
+          </AppBar>
+          <AppBar bordered justifyContent="space-between">
+            <AppBar.Item>
+              <InputControl
+                aria-label="Filter"
+                placeholder="Filter widgets..."
+                type="search"
+              />
+            </AppBar.Item>
+            <AppBar.Item>
+              <ButtonGroup>
+                <Button icon="gi-reload_refresh_update">Reload</Button>
+              </ButtonGroup>
+            </AppBar.Item>
           </AppBar>
         </>
       );
     })(),
 };
 
-export const CustomContentBlock: Story = {
-  args: {
-    customContent: (
-      <Box marginLeft="auto">
-        <Typography.Paragraph>Custom content</Typography.Paragraph>
-      </Box>
-    ),
-    heading: 'Custom content bar',
-    sticky: true,
-    tabItems: tabs,
-  },
-};
-
-export const WithOptions: Story = {
-  args: {
-    tabItems: tabs,
-    options: userOptions,
-    sticky: true,
-  },
-};
-
 export const Custom: Story = {
   render: () =>
     (() => {
-      const id = 'custom';
       return (
-        <AppBar.Container sticky={true}>
-          <AppBar.Heading id={id}>Hello</AppBar.Heading>
-          <AppBar.Navigation id={id}>
-            <Typography.Paragraph>Custom navigation</Typography.Paragraph>
-          </AppBar.Navigation>
-          <AppBar.Actions id={id}>
-            <Typography.Paragraph>Custom actions</Typography.Paragraph>
-          </AppBar.Actions>
-        </AppBar.Container>
+        <AppBar sticky={true}>
+          <AppBar.Heading styles="font-style: italic;">Hello</AppBar.Heading>
+          <AppBar.Divider />
+          <AppBar.Navigation tabs={tabs} flex="0 0 auto" />
+          <Typography.Paragraph>Custom block next to tabs</Typography.Paragraph>
+          <AppBar.Item marginLeft="auto">
+            <Typography.Paragraph>Block to right</Typography.Paragraph>
+          </AppBar.Item>
+        </AppBar>
       );
     })(),
-};
-
-export const CustomStyles: Story = {
-  args: {
-    tabItems: tabs,
-    heading: 'App',
-    actions: mainActions(),
-    subcomponentStyles: {
-      heading: css`
-        > div {
-          color: orange;
-        }
-      `,
-      actions: 'background-color: #eee; border-radius: 0.4rem;',
-    },
-    sticky: true,
-  },
 };

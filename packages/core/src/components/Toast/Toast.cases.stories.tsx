@@ -47,8 +47,12 @@ export const WithScroll: Story = {
   args: {
     content: (
       <>
-        <Typography.Paragraph>{lorem}</Typography.Paragraph>
-        <Typography.Paragraph>{lorem2}</Typography.Paragraph>
+        <Typography.Paragraph gutterBottom="cmp-md">
+          {lorem}
+        </Typography.Paragraph>
+        <Typography.Paragraph gutterBottom="cmp-md">
+          {lorem2}
+        </Typography.Paragraph>
         <Typography.Paragraph>{lorem3}</Typography.Paragraph>
       </>
     ),
@@ -77,8 +81,12 @@ export const CollapsableContent: Story = {
     collapsable: true,
     content: (
       <>
-        <Typography.Paragraph>{lorem}</Typography.Paragraph>
-        <Typography.Paragraph>{lorem2}</Typography.Paragraph>
+        <Typography.Paragraph gutterBottom="cmp-md">
+          {lorem}
+        </Typography.Paragraph>
+        <Typography.Paragraph gutterBottom="cmp-md">
+          {lorem2}
+        </Typography.Paragraph>
         <Typography.Paragraph>{lorem3}</Typography.Paragraph>
       </>
     ),

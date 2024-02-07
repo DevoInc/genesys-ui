@@ -31,7 +31,7 @@ export const Scrolled: Story = {
       overflow={'auto'}
       padding={'cmp-md cmp-lg'}
     >
-      <Typography.Paragraph>
+      <Typography.Paragraph gutterBottom="cmp-md">
         Cosmic ocean a still more glorious dawn awaits the ash of stellar
         alchemy of brilliant syntheses decipherment the only home we have ever
         known. A very small stage in a vast cosmic arena encyclopaedia galactica

@@ -95,7 +95,6 @@ export const ProgressBarInfo: React.FC<ProgressBarInfoProps> = ({
             <Typography.Paragraph
               as="span"
               colorScheme={status === 'error' ? colorSchemeEval : 'base'}
-              gutterBottom="0"
               size={size}
               styles={
                 type === 'circular' && status === 'complete'

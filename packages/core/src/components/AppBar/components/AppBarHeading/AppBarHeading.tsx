@@ -1,16 +1,17 @@
 import * as React from 'react';
 
 import {
+  GlobalAttrProps,
   StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../../../declarations';
 
-import { Flex, Typography } from '../../..';
+import { Typography } from '../../../Typography';
 
 export interface AppBarHeadingProps
   extends StyledPolymorphicProps,
-    StyledOverloadCssProps {
-  id: string;
+    StyledOverloadCssProps,
+    Pick<GlobalAttrProps, 'id'> {
   /** Heading content */
   children: React.ReactNode;
 }
@@ -21,13 +22,13 @@ export const AppBarHeading: React.FC<AppBarHeadingProps> = ({
   id,
   styles,
 }) => (
-  <Flex.Item id={id ? `${id}__heading` : null} as={as} styles={styles}>
-    {typeof children === 'string' ? (
-      <Typography.Heading colorScheme="weak" size="overline-md">
-        {children}
-      </Typography.Heading>
-    ) : (
-      children
-    )}
-  </Flex.Item>
+  <Typography.Heading
+    as={as}
+    id={id}
+    styles={styles}
+    colorScheme="weak"
+    size="overline-md"
+  >
+    {children}
+  </Typography.Heading>
 );

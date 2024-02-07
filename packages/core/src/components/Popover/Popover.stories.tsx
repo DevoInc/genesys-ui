@@ -223,7 +223,7 @@ export const AccessToStateFromContent: Story = {
         )}
         {({ setOpened }) => (
           <Popover.Panel padding="cmp-sm">
-            <Typography.Paragraph>
+            <Typography.Paragraph gutterBottom="cmp-md">
               This is the content of the Popover.
             </Typography.Paragraph>
             <ButtonGroup justifyContent="flex-end">
@@ -306,7 +306,7 @@ export const ComplexPanel: Story = {
         <Popover.Panel width="28rem" padding="0">
           <Panel.Header bordered size="sm" title="Panel title" />
           <Panel.Body size="sm">
-            <Typography.Paragraph>
+            <Typography.Paragraph gutterBottom="cmp-md">
               Tesseract laws of physics Rig Veda concept of the number one
               quasar light years? Citizens of distant epochs rich in heavy atoms
               Apollonius
@@ -343,7 +343,7 @@ export const DisabledOutsideEvent: Story = {
         )}
         {({ setOpened }) => (
           <Popover.Panel padding="cmp-sm">
-            <Typography.Paragraph>
+            <Typography.Paragraph gutterBottom="cmp-md">
               This is the content of the Popover.
             </Typography.Paragraph>
             <ButtonGroup justifyContent="flex-end">

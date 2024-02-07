@@ -24,7 +24,7 @@ export const FloatingHelper: React.FC<FloatingHelperProps> = ({
       tooltip={tooltip}
     >
       <InlineMessage.Panel>
-        <Typography.Paragraph gutterBottom="0">{message}</Typography.Paragraph>
+        <Typography.Paragraph>{message}</Typography.Paragraph>
       </InlineMessage.Panel>
     </InlineMessage>
   );

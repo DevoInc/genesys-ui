@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { css, useTheme } from 'styled-components';
-
-import { Box, BoxProps, HFlex } from '../../..';
 import { concat } from 'lodash';
 
+import { Box, BoxProps } from '../../../Box';
+import { HFlex } from '../../../HFlex';
+import { FlexProps } from '../../../Flex';
+
 export interface AppBarContainerProps
-  extends Omit<BoxProps, 'elevation' | 'position'> {
+  extends Omit<BoxProps, 'elevation' | 'position'>,
+    Pick<FlexProps, 'alignItems' | 'justifyContent'> {
   /** If the app bar has a bottom-border */
   bordered?: boolean;
   /** Define the elevation styles of the container */
@@ -15,10 +18,12 @@ export interface AppBarContainerProps
 }
 
 export const AppBarContainer: React.FC<AppBarContainerProps> = ({
+  alignItems = 'center',
   bordered,
   children,
   compact,
   id,
+  justifyContent,
   paddingLeft = 'cmp-md',
   paddingRight = 'cmp-md',
   sticky = false,
@@ -50,12 +55,13 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
       )}
     >
       <HFlex
-        alignItems="center"
+        alignItems={alignItems}
         height={
           compact
             ? `calc(${tabsContainerTokens.size.height.lg} - 2rem)`
             : tabsContainerTokens.size.height.lg
         }
+        justifyContent={justifyContent}
       >
         {children}
       </HFlex>
