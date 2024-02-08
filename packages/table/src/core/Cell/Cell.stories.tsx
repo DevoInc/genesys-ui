@@ -18,7 +18,7 @@ export const Base: Story = {
   args: {
     colDef: {
       id: 'column',
-      cellRenderer: ({ value }) => value,
+      cellRenderer: ({ value }) => String(value),
     },
     width: 300,
     height: 60,
@@ -30,7 +30,7 @@ export const Editor: Story = {
   args: {
     colDef: {
       id: 'column',
-      cellRenderer: ({ value }) => value,
+      cellRenderer: ({ value }) => String(value),
       editable: true,
       cellEditor: (({ value, onChange }) => {
         const popoverId = 'story-id';
@@ -58,8 +58,7 @@ export const Editor: Story = {
                       colorScheme="accent"
                       onClick={() => {
                         setOpened(false);
-                        // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-                        onChange(value + 'a');
+                        onChange(`${String(value)}a`);
                       }}
                       wide
                     >

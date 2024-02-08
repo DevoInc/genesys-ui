@@ -6,8 +6,8 @@ import React from 'react';
  * @param onClose callback to be executed at the time the component is destroyed
  */
 export const useInitialState = (
-  state: any,
-  onClose?: (initialState: any, state: any) => void,
+  state: unknown,
+  onClose?: (initialState: unknown, state: unknown) => void,
 ) => {
   const [initialValue] = React.useState(state);
 

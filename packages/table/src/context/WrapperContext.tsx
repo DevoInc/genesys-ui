@@ -1,9 +1,17 @@
 import * as React from 'react';
 
-export const WrapperContext = React.createContext({
+type WrapperContextProps = {
+  width: number;
+  height: number;
+  setSize: React.Dispatch<
+    React.SetStateAction<{ width: number; height: number }>
+  >;
+};
+
+export const WrapperContext = React.createContext<WrapperContextProps>({
   width: 0,
   height: 0,
-  setSize: null,
+  setSize: () => null,
 });
 
 export const WrapperContextProvider: React.FC<{

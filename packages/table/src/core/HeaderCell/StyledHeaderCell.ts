@@ -20,7 +20,9 @@ export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
   ${({ theme }) => cellMixin({ theme })}
   left: 0;
   justify-content: ${({ horAlign }) =>
-    CELL_ALIGN_MAP[horAlign || 'space-between']};
+    horAlign
+      ? (CELL_ALIGN_MAP[horAlign] as React.CSSProperties['justifyContent'])
+      : 'space-between'};
   gap: ${({ theme }) => getSpacingPropCss(theme)('cmp-xs')};
   transform: ${({ offsetX }) => `translateX(${offsetX}px)`};
   width: ${({ $width }) => $width};

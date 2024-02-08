@@ -36,10 +36,10 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
       onClick={
         colDef.sortable
           ? () => {
-            if (onSort) {
-              onSort(colDef);
+              if (onSort) {
+                onSort(colDef);
+              }
             }
-          }
           : null
       }
     >

@@ -15,7 +15,7 @@ export const Base: Story = {
     colDefs: [
       {
         id: 'col1',
-        cellRenderer: ({ value }) => value,
+        cellRenderer: ({ value }) => String(value),
       },
     ],
   },

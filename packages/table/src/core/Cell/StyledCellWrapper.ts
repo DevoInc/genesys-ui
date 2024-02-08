@@ -16,6 +16,7 @@ export interface StyledCellWrapperProps extends Omit<ColDef, 'id'> {
   density?: Density;
 }
 
+// prettier-ignore
 export const StyledCellWrapper = styled.div<StyledCellWrapperProps>`
   ${({ clickable, isEditMode, theme }) => {
   const tokens = theme.cmp.table.cellClickableWrapper;
@@ -58,8 +59,12 @@ export const StyledCellWrapper = styled.div<StyledCellWrapperProps>`
   top: 0;
   left: 0;
   display: flex;
-  align-items: ${({ verAlign }) => CELL_ALIGN_MAP[verAlign || 'center']};
-  justify-content: ${({ horAlign }) => CELL_ALIGN_MAP[horAlign || 'left']};
+  align-items: ${({ verAlign }) =>
+    CELL_ALIGN_MAP[verAlign || 'center'] as React.CSSProperties['alignItems']};
+  justify-content: ${({ horAlign }) =>
+    CELL_ALIGN_MAP[
+      horAlign || 'left'
+    ] as React.CSSProperties['justifyContent']};
   width: 100%;
   height: 100%;
   padding: ${({ toEdge, density, theme }) =>

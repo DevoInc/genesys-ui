@@ -34,10 +34,10 @@ export const useBulkSelection = ({
         return new Array(dataLength)
           .fill(null)
           .reduce(
-            (arr, _, index: number) =>
-              bulkDisabled.includes(index) ? arr : [...arr, index],
+            (arr: number[], _, index: number) =>
+              bulkDisabled.includes(index) ? arr : arr.concat([index]),
             [],
-          );
+          ) as number[];
       }
       return [];
     });

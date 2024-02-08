@@ -1,3 +1,5 @@
+import { enUS } from 'date-fns/locale';
+
 import { DateContext, dateFormatter } from './date';
 
 const cases: [
@@ -9,19 +11,19 @@ const cases: [
   [
     'Value is undefined',
     undefined,
-    { tz: 'Madrid/Europe', formatDate: 'PPpp', locale: 'en-US' },
+    { tz: 'Madrid/Europe', formatDate: 'PPpp', locale: enUS },
     'undefined',
   ],
   [
     'Value is null',
     null,
-    { tz: 'Madrid/Europe', formatDate: 'PPpp', locale: 'en-US' },
+    { tz: 'Madrid/Europe', formatDate: 'PPpp', locale: enUS },
     'null',
   ],
   [
     'Value is not a valid number',
     -1,
-    { tz: 'Madrid/Europe', formatDate: 'PPpp', locale: 'en-US' },
+    { tz: 'Madrid/Europe', formatDate: 'PPpp', locale: enUS },
     '-1',
   ],
 ];

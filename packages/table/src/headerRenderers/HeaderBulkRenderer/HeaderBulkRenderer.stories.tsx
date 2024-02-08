@@ -23,6 +23,7 @@ export const Base: Story = {
           <Menu>
             <Menu.Item
               onClick={() => {
+                // eslint-disable-next-line no-console
                 console.log('This is the first action');
               }}
             >
@@ -30,6 +31,7 @@ export const Base: Story = {
             </Menu.Item>
             <Menu.Item
               onClick={() => {
+                // eslint-disable-next-line no-console
                 console.log('This is the second action');
               }}
             >

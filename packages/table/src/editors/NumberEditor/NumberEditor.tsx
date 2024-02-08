@@ -13,7 +13,7 @@ export const NumberEditor: React.FC<CellEditorProps> = ({
     aria-label={'Number input'}
     value={String(value)}
     onChange={(event: FormEvent) => {
-      onChange(parseInt((event.target as HTMLInputElement).value));
+      onChange(parseInt((event.target as HTMLInputElement).value, 10));
     }}
     autoFocus
   />

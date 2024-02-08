@@ -11,7 +11,7 @@ export const TextAreaEditor: React.FC<CellEditorProps> = ({
     <TextareaControl
       rows={6}
       aria-label={'TextArea input'}
-      value={value.toString()}
+      value={String(value)}
       onChange={(event: FormEvent) => {
         if (onChange) {
           onChange((event.target as HTMLInputElement).value);

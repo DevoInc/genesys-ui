@@ -14,7 +14,7 @@ export const OptionsRenderer: React.FC<CellRendererProps> = ({
   return (
     <Box overflow="hidden">
       <TagGroup flexWrap="nowrap">
-        {realValue.map((tag) => {
+        {realValue.map((tag: string) => {
           const option = Object.entries(options).find(([k]) => k === tag);
           const optionParams = option ? (option[1] as ContextOption) : {};
           return (

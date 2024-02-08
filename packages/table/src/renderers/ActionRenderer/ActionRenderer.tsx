@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { GIMenuAltVertical } from '@devoinc/genesys-icons';
+import { GIMenuAltVertical, IconContext } from '@devoinc/genesys-icons';
 import {
   Popover,
   HFlex,
@@ -27,20 +27,22 @@ export const ActionRenderer: React.FC<CellRendererProps> = ({
   );
   return (
     <HFlex spacing="cmp-xxs" alignItems="end">
-      {(context?.quickActions ?? []).map(({ Icon, onClick }, idx) => (
-        <IconButton
-          size={iconButtonSize}
-          key={idx}
-          colorScheme={iconButtonColorScheme}
-          onClick={(event: React.MouseEvent) => {
-            if (onClick) {
-              onClick(rowIndex, event);
-            }
-          }}
-        >
-          <Icon size={iconSize} />
-        </IconButton>
-      ))}
+      <IconContext.Provider value={{ size: iconSize }}>
+        {(context?.quickActions ?? []).map(({ Icon, onClick }, idx) => (
+          <IconButton
+            size={iconButtonSize}
+            key={idx}
+            colorScheme={iconButtonColorScheme}
+            onClick={(event: React.MouseEvent) => {
+              if (onClick) {
+                onClick(rowIndex, event);
+              }
+            }}
+          >
+            {Icon}
+          </IconButton>
+        ))}
+      </IconContext.Provider>
       {context?.actionMenu ? (
         <Popover id={popoverId} placement="bottom-end">
           {({ isOpened, toggle, ref }) => (

@@ -1,19 +1,19 @@
-import { format } from 'date-fns';
+import { isValid, format, type Locale } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
-import * as Locales from 'date-fns/locale';
+import { enUS } from 'date-fns/locale';
 
 export interface DateContext {
   tz?: string;
   formatDate?: string;
-  locale?: string;
+  locale?: Locale;
 }
 
-export const dateFormatter = (value: unknown, context: DateContext): string => {
-  return typeof value === 'string' ||
-    (typeof value === 'number' && value >= 0) ||
-    value instanceof Date
-    ? format(utcToZonedTime(value, context.tz), context?.formatDate ?? 'PPpp', {
-      locale: Locales[context?.locale ?? 'en'],
-    })
-    : String(value);
-};
+// prettier-ignore
+export const dateFormatter = (value: unknown, context: DateContext): string =>
+  !isValid(value)
+    ? String(value)
+    : format(
+      utcToZonedTime(value as string | number | Date, context.tz),
+      context?.formatDate ?? 'PPpp',
+      { locale: context?.locale || enUS },
+    );
