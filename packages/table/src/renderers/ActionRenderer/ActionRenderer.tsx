@@ -18,12 +18,14 @@ export const ActionRenderer: React.FC<CellRendererProps> = ({
   colDef,
   rowIndex,
 }) => {
+  const theme = useTheme();
   const context = colDef?.context as ActionContext;
   const popoverId = `${colDef.id}-actions-menu-${rowIndex}`;
   const iconButtonSize = 'sm';
   const iconButtonColorScheme = 'quiet';
-  const iconSize = getPxFromRem(
-    useTheme().cmp.button.icon.typo.fontSize[iconButtonSize],
+  const iconSize = React.useMemo(
+    () => getPxFromRem(theme.cmp.button.icon.typo.fontSize[iconButtonSize]),
+    [theme],
   );
   return (
     <HFlex spacing="cmp-xxs" alignItems="end">
