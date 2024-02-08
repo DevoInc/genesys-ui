@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { DateEditor } from './DateEditor';
 
 const meta: Meta<typeof DateEditor> = {
-  title: 'Components/Table/Editors/DateEditor',
+  title: 'Components/Layout/Table/Editors/DateEditor',
   component: DateEditor,
   argTypes: { onChange: { action: 'onChange' } },
 };

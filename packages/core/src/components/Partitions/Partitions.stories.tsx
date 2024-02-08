@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Partitions } from '..';
 
 const meta: Meta<typeof Partitions> = {
-  title: 'Components/Core/Feedback/Partitions',
+  title: 'Components/Feedback/Partitions',
   component: Partitions,
   args: {
     size: 'md',

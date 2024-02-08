@@ -6,7 +6,7 @@ import { HFlex } from '../HFlex';
 import { Button } from '../Button';
 
 const meta: Meta<typeof Badge> = {
-  title: 'Components/Core/Feedback/Badge',
+  title: 'Components/Feedback/Badge',
   component: Badge,
   args: {
     size: 'md',

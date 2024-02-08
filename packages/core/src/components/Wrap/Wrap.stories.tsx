@@ -5,7 +5,7 @@ import { Flex, Wrap } from '..';
 import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 const meta: Meta<typeof Wrap> = {
-  title: 'Components/Core/Layout/Flex/Wrap',
+  title: 'Components/Layout/Flex/Wrap',
   component: Wrap,
   args: {
     alignContent: 'flex-start',

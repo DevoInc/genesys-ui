@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { ProgressBar } from '..';
 
 const meta: Meta<typeof ProgressBar> = {
-  title: 'Components/Core/Feedback/ProgressBar',
+  title: 'Components/Feedback/ProgressBar',
   component: ProgressBar,
   args: {
     colorScheme: 'dark',

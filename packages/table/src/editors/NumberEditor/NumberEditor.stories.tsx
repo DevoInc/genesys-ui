@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { NumberEditor } from './NumberEditor';
 
 const meta: Meta<typeof NumberEditor> = {
-  title: 'Components/Table/Editors/NumberEditor',
+  title: 'Components/Layout/Table/Editors/NumberEditor',
   component: NumberEditor,
   argTypes: { onChange: { action: 'onChange' } },
 };

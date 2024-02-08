@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { PanelBody } from './PanelBody';
 
 const meta: Meta<typeof PanelBody> = {
-  title: 'Components/Core/Layout/Panel/Subcomponents',
+  title: 'Components/Layout/Panel/Subcomponents',
   component: PanelBody,
 };
 

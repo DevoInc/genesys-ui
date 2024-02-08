@@ -5,7 +5,7 @@ import { ChipGroup } from '../ChipGroup';
 import { Chip } from '../Chip';
 
 const meta: Meta<typeof ChipGroup> = {
-  title: 'Components/Core/Form/ChipGroup',
+  title: 'Components/Form/ChipGroup',
   component: ChipGroup,
   args: {
     direction: 'row',

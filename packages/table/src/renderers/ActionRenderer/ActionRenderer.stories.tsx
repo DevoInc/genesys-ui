@@ -7,7 +7,7 @@ import { ActionRenderer } from './ActionRenderer';
 import { ActionContext } from '../../facade';
 
 const meta: Meta<typeof ActionRenderer> = {
-  title: 'Components/Table/Renderers/ActionRenderer',
+  title: 'Components/Layout/Table/Renderers/ActionRenderer',
   component: ActionRenderer,
 };
 

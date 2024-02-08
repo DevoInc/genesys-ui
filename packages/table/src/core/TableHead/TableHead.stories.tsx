@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { TableHead } from './TableHead';
 
 const meta: Meta<typeof TableHead> = {
-  title: 'Components/Table/Core/TableHead',
+  title: 'Components/Layout/Table/Core/TableHead',
   component: TableHead,
 };
 

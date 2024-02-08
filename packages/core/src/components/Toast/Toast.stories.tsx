@@ -6,7 +6,7 @@ import { lorem } from '../../../stories/utils/fillerTexts';
 import { ToastPanel } from './components';
 
 const meta: Meta<typeof toast> = {
-  title: 'Components/Core/Feedback/Toast',
+  title: 'Components/Feedback/Toast',
   component: ToastPanel,
   args: {
     id: 'default-toast',

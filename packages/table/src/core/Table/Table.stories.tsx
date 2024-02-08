@@ -7,7 +7,7 @@ import { Table } from './Table';
 import { Data } from '../../declarations';
 
 const meta: Meta<typeof Table> = {
-  title: 'Components/Table/Core/Table',
+  title: 'Components/Layout/Table/Core/Table',
   component: Table,
   parameters: {
     layout: 'fullscreen',

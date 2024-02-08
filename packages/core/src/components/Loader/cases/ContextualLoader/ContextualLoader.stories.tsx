@@ -9,7 +9,7 @@ import {
 } from '../../../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Loader.Contextual> = {
-  title: 'Components/Core/feedback/Loader/Contextual',
+  title: 'Components/feedback/Loader/Contextual',
   component: Loader.Contextual,
   args: {
     colorScheme: 'inherited',

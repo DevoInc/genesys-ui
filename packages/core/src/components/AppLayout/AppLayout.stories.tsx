@@ -7,7 +7,7 @@ import { Tabs } from '../Tabs';
 import { Panel } from '../Panel';
 
 const meta: Meta<typeof AppLayout> = {
-  title: 'Components/Core/Layout/AppLayout',
+  title: 'Components/Layout/AppLayout',
   component: AppLayout,
   parameters: {
     layout: 'fullscreen',
@@ -26,17 +26,18 @@ export const Base: Story = {
   render: () => (
     <AppLayout>
       <AppLayout.Bar>
-        <AppBar.Container sticky>
+        <AppBar sticky>
           <AppBar.Heading id="bar-heading">Title</AppBar.Heading>
-          <AppBar.Divider id="bar-divider" />
-          <AppBar.Navigation id="bar-navigation">
-            <Tabs colorScheme="primary" contained={false}>
-              <Tabs.Item size="lg" state={'selected'} label="Item 1" />
-              <Tabs.Item size="lg" label="Item 2" />
-              <Tabs.Item size="lg" label="Item 3" />
-            </Tabs>
-          </AppBar.Navigation>
-        </AppBar.Container>
+          <AppBar.Divider />
+          <AppBar.Navigation
+            id="bar-navigation"
+            tabs={[
+              <Tabs.Item key="1" size="lg" state={'selected'} label="Item 1" />,
+              <Tabs.Item key="2" size="lg" label="Item 2" />,
+              <Tabs.Item key="3" size="lg" label="Item 3" />,
+            ]}
+          />
+        </AppBar>
       </AppLayout.Bar>
       <AppLayout.Content>
         <Panel.Container height="100%">
@@ -51,17 +52,18 @@ export const DoubleNavigation: Story = {
   render: () => (
     <AppLayout>
       <AppLayout.Bar>
-        <AppBar.Container>
+        <AppBar>
           <AppBar.Heading id="bar-heading">Title</AppBar.Heading>
-          <AppBar.Divider id="bar-divider" />
-          <AppBar.Navigation id="bar-navigation">
-            <Tabs colorScheme="primary" contained={false}>
-              <Tabs.Item size="lg" state={'selected'} label="Item 1" />
-              <Tabs.Item size="lg" label="Item 2" />
-              <Tabs.Item size="lg" label="Item 3" />
-            </Tabs>
-          </AppBar.Navigation>
-        </AppBar.Container>
+          <AppBar.Divider />
+          <AppBar.Navigation
+            id="bar-navigation"
+            tabs={[
+              <Tabs.Item key="1" size="lg" state={'selected'} label="Item 1" />,
+              <Tabs.Item key="2" size="lg" label="Item 2" />,
+              <Tabs.Item key="3" size="lg" label="Item 3" />,
+            ]}
+          />
+        </AppBar>
       </AppLayout.Bar>
       <AppLayout.Lead>
         <Tabs contained>
@@ -83,17 +85,18 @@ export const ContentPadding: Story = {
   render: () => (
     <AppLayout>
       <AppLayout.Bar>
-        <AppBar.Container sticky>
+        <AppBar sticky>
           <AppBar.Heading id="bar-heading">Title</AppBar.Heading>
-          <AppBar.Divider id="bar-divider" />
-          <AppBar.Navigation id="bar-navigation">
-            <Tabs colorScheme="primary" contained={false}>
-              <Tabs.Item size="lg" state={'selected'} label="Item 1" />
-              <Tabs.Item size="lg" label="Item 2" />
-              <Tabs.Item size="lg" label="Item 3" />
-            </Tabs>
-          </AppBar.Navigation>
-        </AppBar.Container>
+          <AppBar.Divider />
+          <AppBar.Navigation
+            id="bar-navigation"
+            tabs={[
+              <Tabs.Item key="1" size="lg" state={'selected'} label="Item 1" />,
+              <Tabs.Item key="2" size="lg" label="Item 2" />,
+              <Tabs.Item key="3" size="lg" label="Item 3" />,
+            ]}
+          />
+        </AppBar>
       </AppLayout.Bar>
       <AppLayout.Content padding="0">Without padding</AppLayout.Content>
     </AppLayout>

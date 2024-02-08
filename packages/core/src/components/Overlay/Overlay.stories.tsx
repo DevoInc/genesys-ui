@@ -5,7 +5,7 @@ import { Box, Typography, Overlay } from '..';
 import { lorem, lorem2, lorem3 } from '../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Overlay> = {
-  title: 'Components/Core/Feedback/Overlay',
+  title: 'Components/Feedback/Overlay',
   component: Overlay,
   args: {
     alignItems: 'center',

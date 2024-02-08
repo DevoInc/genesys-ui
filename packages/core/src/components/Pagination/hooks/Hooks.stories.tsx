@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Pagination, usePagination } from '../..';
 
 const meta: Meta<typeof Pagination> = {
-  title: 'Components/Core/Navigation/Pagination/Hooks',
+  title: 'Components/Navigation/Pagination/Hooks',
   component: Pagination,
   args: {},
 };

@@ -2,14 +2,14 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Holo } from '@devoinc/holo';
-import { Box, Button, Menu, Popover, Typography } from '@devoinc/genesys-ui';
+import { Button, Menu, Popover } from '@devoinc/genesys-ui';
 import { GIEyeViewFilled, GIPencilEdit } from '@devoinc/genesys-icons';
 
 import { ActionContext, BasicTable } from '../src';
 import { ROW_HEIGHT_MD } from '../src/constants';
 
 const meta: Meta<typeof BasicTable> = {
-  title: 'Components/Table/BasicTable',
+  title: 'Components/Layout/Table/BasicTable',
   component: BasicTable,
   parameters: {
     layout: 'fullscreen',

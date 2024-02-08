@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { TextAreaEditor } from './TextAreaEditor';
 
 const meta: Meta<typeof TextAreaEditor> = {
-  title: 'Components/Table/Editors/TextAreaEditor',
+  title: 'Components/Layout/Table/Editors/TextAreaEditor',
   component: TextAreaEditor,
   argTypes: { onChange: { action: 'onChange' } },
 };

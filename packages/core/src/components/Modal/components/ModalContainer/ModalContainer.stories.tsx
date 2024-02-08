@@ -4,7 +4,7 @@ import { ModalContainer } from './ModalContainer';
 import { Button } from '../../../Button';
 
 const meta: Meta<typeof ModalContainer> = {
-  title: 'Components/Core/Layout/Modal/Subcomponents',
+  title: 'Components/Layout/Modal/Subcomponents',
   component: ModalContainer,
 };
 

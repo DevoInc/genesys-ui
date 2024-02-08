@@ -5,7 +5,7 @@ import { Link } from './Link';
 import { Typography } from '../';
 
 const meta: Meta<typeof Link> = {
-  title: 'Components/Core/Navigation/Link',
+  title: 'Components/Navigation/Link',
   component: Link,
   args: {
     colorScheme: 'base',

@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { FloatingHelper } from './FloatingHelper';
 
 const meta: Meta<typeof FloatingHelper> = {
-  title: 'Components/Core/Feedback/FloatingHelper',
+  title: 'Components/Feedback/FloatingHelper',
   component: FloatingHelper,
   args: { visible: false, size: 'md', status: 'base' },
 };

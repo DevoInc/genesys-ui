@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { StatusMessage } from '..';
 
 const meta: Meta<typeof StatusMessage> = {
-  title: 'Components/Core/Feedback/StatusMessage',
+  title: 'Components/Feedback/StatusMessage',
   component: StatusMessage,
 };
 

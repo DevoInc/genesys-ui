@@ -4,7 +4,7 @@ import { SwitchControl } from '..';
 import * as React from 'react';
 
 const meta: Meta<typeof SwitchControl> = {
-  title: 'Components/Core/Form/SwitchControl',
+  title: 'Components/Form/SwitchControl',
   component: SwitchControl,
   args: {
     'aria-label': 'Story label',

@@ -6,7 +6,7 @@ import { lorem } from '../../../stories/utils/fillerTexts';
 import { Typography } from '../Typography';
 
 const meta: Meta<typeof EditableContent> = {
-  title: 'Components/Core/Text/EditableContent',
+  title: 'Components/Text/EditableContent',
   component: EditableContent,
 };
 

@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { SplitPane } from '.';
 
 const meta: Meta<typeof SplitPane> = {
-  title: 'Components/Core/Layout/SplitPane',
+  title: 'Components/Layout/SplitPane',
   component: SplitPane,
   parameters: {
     info: {

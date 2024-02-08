@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { StoryCol as Col, StoryRow as Row } from '../__stories__';
 
 const meta: Meta<typeof Row> = {
-  title: 'Components/Core/Layout/Fluid/Row',
+  title: 'Components/Layout/Fluid/Row',
   component: Row,
 };
 

@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Banner } from '../';
 
 const meta: Meta<typeof Banner> = {
-  title: 'Components/Core/Feedback/Banner',
+  title: 'Components/Feedback/Banner',
   component: Banner,
   args: {
     status: 'info',

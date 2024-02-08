@@ -24,7 +24,7 @@ import {
 import { ModalDemoContent } from './__stories__/components';
 
 const meta: Meta<typeof Modal> = {
-  title: 'Components/Core/Layout/Modal/Cases',
+  title: 'Components/Layout/Modal/Cases',
   component: Modal,
   parameters: {
     controls: false,

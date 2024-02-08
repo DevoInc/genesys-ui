@@ -5,7 +5,7 @@ import { Flex, VFlex } from '..';
 import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 const meta: Meta<typeof VFlex> = {
-  title: 'Components/Core/Layout/Flex/VFlex',
+  title: 'Components/Layout/Flex/VFlex',
   component: VFlex,
   args: {
     alignItems: 'flex-start',

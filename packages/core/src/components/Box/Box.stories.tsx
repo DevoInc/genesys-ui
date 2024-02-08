@@ -5,7 +5,7 @@ import { Box } from '../';
 import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 const meta: Meta<typeof Box> = {
-  title: 'Components/Core/Layout/Box',
+  title: 'Components/Layout/Box',
   component: Box,
 };
 

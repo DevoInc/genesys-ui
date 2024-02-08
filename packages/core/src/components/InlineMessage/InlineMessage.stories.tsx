@@ -5,7 +5,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Box, InlineMessage, Typography } from '..';
 
 const meta: Meta<typeof InlineMessage> = {
-  title: 'Components/Core/Feedback/InlineMessage',
+  title: 'Components/Feedback/InlineMessage',
   component: InlineMessage,
   args: {
     placement: 'right',

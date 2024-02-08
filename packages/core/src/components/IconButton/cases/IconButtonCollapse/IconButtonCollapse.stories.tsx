@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { IconButtonCollapse } from '..';
 
 const meta: Meta<typeof IconButtonCollapse> = {
-  title: 'Components/Core/Button/IconButtonCollapse',
+  title: 'Components/Button/IconButtonCollapse',
   component: IconButtonCollapse,
   args: {
     state: 'enabled',

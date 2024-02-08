@@ -8,7 +8,7 @@ import { Typography } from '../Typography';
 import { lorem } from '../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Collapse> = {
-  title: 'Components/Core/Navigation/Collapse',
+  title: 'Components/Navigation/Collapse',
   component: Collapse,
   args: {
     heading: 'Collapse heading',

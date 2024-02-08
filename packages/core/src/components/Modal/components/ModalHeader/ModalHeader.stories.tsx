@@ -9,7 +9,7 @@ import { useTheme } from 'styled-components';
 import { ButtonGroup } from '../../../ButtonGroup';
 
 const meta: Meta<typeof Modal.Header> = {
-  title: 'Components/Core/Layout/Modal/Subcomponents',
+  title: 'Components/Layout/Modal/Subcomponents',
   component: Modal.Header,
 };
 

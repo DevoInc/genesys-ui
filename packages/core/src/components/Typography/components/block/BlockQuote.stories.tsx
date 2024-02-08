@@ -4,7 +4,7 @@ import { Typography } from '../../../';
 import { lorem } from '../../../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Typography.BlockQuote> = {
-  title: 'Components/Core/Text/Typography/Block',
+  title: 'Components/Text/Typography/Block',
   component: Typography.BlockQuote,
 };
 

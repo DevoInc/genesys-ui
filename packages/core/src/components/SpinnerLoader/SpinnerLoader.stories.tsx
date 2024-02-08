@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { SpinnerLoader } from '..';
 
 const meta: Meta<typeof SpinnerLoader> = {
-  title: 'Components/Core/Feedback/SpinnerLoader',
+  title: 'Components/Feedback/SpinnerLoader',
   component: SpinnerLoader,
   args: {
     colorScheme: 'dark',

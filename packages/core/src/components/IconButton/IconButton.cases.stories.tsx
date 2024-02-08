@@ -6,7 +6,7 @@ import { SpinnerLoader } from '../SpinnerLoader';
 import { IconButton } from './IconButton';
 
 const meta: Meta<typeof IconButton> = {
-  title: 'Components/Core/Button/IconButton/Cases',
+  title: 'Components/Button/IconButton/Cases',
   component: IconButton,
   args: {
     colorScheme: 'neutral',

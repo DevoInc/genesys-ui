@@ -5,7 +5,7 @@ import { Tabs } from '..';
 import { useTabsConfig } from '.';
 
 const meta: Meta<typeof Tabs> = {
-  title: 'Components/Core/Navigation/Tabs/Hooks',
+  title: 'Components/Navigation/Tabs/Hooks',
   component: Tabs,
   args: {
     colorScheme: 'default',

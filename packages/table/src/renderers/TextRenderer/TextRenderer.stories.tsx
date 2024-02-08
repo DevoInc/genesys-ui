@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { TextRenderer } from './TextRenderer';
 
 const meta: Meta<typeof TextRenderer> = {
-  title: 'Components/Table/Renderers/TextRenderer',
+  title: 'Components/Layout/Table/Renderers/TextRenderer',
   component: TextRenderer,
 };
 

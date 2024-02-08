@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Stepper, HFlex, Button, StepperProps } from '..';
 
 const meta: Meta<typeof Stepper> = {
-  title: 'Components/Core/Navigation/Stepper/Cases',
+  title: 'Components/Navigation/Stepper/Cases',
   component: Stepper,
   args: {
     size: 'sm',

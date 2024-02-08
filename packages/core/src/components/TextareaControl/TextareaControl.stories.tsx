@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { TextareaControl, VFlex } from '..';
 
 const meta: Meta<typeof TextareaControl> = {
-  title: 'Components/Core/Form/TextareaControl',
+  title: 'Components/Form/TextareaControl',
   component: TextareaControl,
   args: {
     size: 'md',
@@ -24,9 +24,9 @@ type Story = StoryObj<typeof TextareaControl>;
 
 export const Base: Story = {
   render: (args) =>
-    ((args) => (
+    ((props) => (
       <VFlex maxWidth="72rem">
-        <TextareaControl {...args} />
+        <TextareaControl {...props} />
       </VFlex>
     ))(args),
   args: {

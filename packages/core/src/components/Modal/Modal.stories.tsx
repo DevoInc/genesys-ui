@@ -8,7 +8,7 @@ import { Typography } from '../Typography';
 import { Input } from '../Input';
 
 const meta: Meta<typeof Modal> = {
-  title: 'Components/Core/Layout/Modal',
+  title: 'Components/Layout/Modal',
   component: Modal,
   args: {
     status: 'base',

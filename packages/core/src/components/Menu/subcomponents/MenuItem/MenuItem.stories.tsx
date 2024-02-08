@@ -15,7 +15,7 @@ import {
 import { GITimeZone } from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof Menu.Item> = {
-  title: 'Components/Core/Navigation/Menu/Subcomponents/Item',
+  title: 'Components/Navigation/Menu/Subcomponents/Item',
   component: Menu.Item,
 };
 

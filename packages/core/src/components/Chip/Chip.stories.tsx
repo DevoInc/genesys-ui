@@ -4,7 +4,7 @@ import { Chip } from '..';
 import * as React from 'react';
 
 const meta: Meta<typeof Chip> = {
-  title: 'Components/Core/Form/Chip',
+  title: 'Components/Form/Chip',
   component: Chip,
   args: {
     children: 'Favorite',

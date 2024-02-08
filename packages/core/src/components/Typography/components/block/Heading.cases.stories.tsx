@@ -5,7 +5,7 @@ import { EditableContent, Typography } from '../../..';
 import { lorem } from '../../../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Typography.Heading> = {
-  title: 'Components/Core/Text/Typography/Block/Heading/Cases',
+  title: 'Components/Text/Typography/Block/Heading/Cases',
   component: Typography.Heading,
 };
 

@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { LinkRenderer } from './LinkRenderer';
 
 const meta: Meta<typeof LinkRenderer> = {
-  title: 'Components/Table/Renderers/LinkRenderer',
+  title: 'Components/Layout/Table/Renderers/LinkRenderer',
   component: LinkRenderer,
 };
 

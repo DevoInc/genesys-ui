@@ -7,7 +7,7 @@ import { HeaderBulkRenderer } from './HeaderBulkRenderer';
 import { BulkContext } from '../../facade';
 
 const meta: Meta<typeof HeaderBulkRenderer> = {
-  title: 'Components/Table/HeaderRenderers/HeaderBulkRenderer',
+  title: 'Components/Layout/Table/HeaderRenderers/HeaderBulkRenderer',
   component: HeaderBulkRenderer,
 };
 

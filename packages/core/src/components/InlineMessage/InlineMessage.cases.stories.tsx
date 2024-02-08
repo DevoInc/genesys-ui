@@ -6,7 +6,7 @@ import { inlineMessageContentFS } from './__stories__/utils';
 import { lorem, lorem2, lorem3 } from '../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof InlineMessage> = {
-  title: 'Components/Core/Feedback/InlineMessage/Cases',
+  title: 'Components/Feedback/InlineMessage/Cases',
   component: InlineMessage,
   args: {
     placement: 'right',

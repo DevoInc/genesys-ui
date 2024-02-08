@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Tag, TagGroup } from '..';
 
 const meta: Meta<typeof TagGroup> = {
-  title: 'Components/Core/Feedback/TagGroup',
+  title: 'Components/Feedback/TagGroup',
   component: TagGroup,
   args: {
     labelPosition: 'left',

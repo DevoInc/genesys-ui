@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { OptionsFilter } from './OptionsFilter';
 
 const meta: Meta<typeof OptionsFilter> = {
-  title: 'Components/Table/Filters/OptionsFilter',
+  title: 'Components/Layout/Table/Filters/OptionsFilter',
   component: OptionsFilter,
 };
 

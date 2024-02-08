@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { BooleanFilter } from './BooleanFilter';
 
 const meta: Meta<typeof BooleanFilter> = {
-  title: 'Components/Table/Filters/BooleanFilter',
+  title: 'Components/Layout/Table/Filters/BooleanFilter',
   component: BooleanFilter,
 };
 

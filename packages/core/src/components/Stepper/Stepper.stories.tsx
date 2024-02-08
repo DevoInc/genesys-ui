@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Stepper, StepperProps } from '..';
 
 const meta: Meta<typeof Stepper> = {
-  title: 'Components/Core/Navigation/Stepper',
+  title: 'Components/Navigation/Stepper',
   component: Stepper,
   args: {
     size: 'sm',

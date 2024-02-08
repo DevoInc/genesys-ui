@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Helper } from './Helper';
 
 const meta: Meta<typeof Helper> = {
-  title: 'Components/Core/Feedback/Helper',
+  title: 'Components/Feedback/Helper',
   component: Helper,
   args: { size: 'md', status: 'base' },
 };

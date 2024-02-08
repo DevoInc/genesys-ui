@@ -6,7 +6,7 @@ import { FormButtons } from './components/FormButtons';
 import { FormGroup } from './components/FormGroup';
 
 const meta: Meta<typeof Form> = {
-  title: 'Components/Core/Form/Form',
+  title: 'Components/Form/Form',
   component: Form,
   subcomponents: { FormGroup, FormButtons },
   args: {

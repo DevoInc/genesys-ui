@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Box, Button, Badge, Typography } from '..';
 
 const meta: Meta<typeof Box> = {
-  title: 'Components/Core/Layout/Box/Cases',
+  title: 'Components/Layout/Box/Cases',
   component: Box,
 };
 

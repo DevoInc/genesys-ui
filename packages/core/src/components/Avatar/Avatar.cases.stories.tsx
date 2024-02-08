@@ -6,7 +6,7 @@ import { Avatar, Badge, Modal, Typography } from '../';
 const EXAMPLE_AVATAR_IMG = 'https://i.pravatar.cc/300';
 
 const meta: Meta<typeof Avatar> = {
-  title: 'Components/Core/Media/Avatar/Cases',
+  title: 'Components/Media/Avatar/Cases',
   component: Avatar,
   args: {
     bordered: false,

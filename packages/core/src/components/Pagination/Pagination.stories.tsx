@@ -5,7 +5,7 @@ import { Pagination, usePagination } from '../';
 import { Item } from './declarations';
 
 const meta: Meta<typeof Pagination> = {
-  title: 'Components/Core/Navigation/Pagination',
+  title: 'Components/Navigation/Pagination',
   component: Pagination,
   args: {
     size: 'md',

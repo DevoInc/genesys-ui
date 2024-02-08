@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Toolbar } from '../../..';
 
 const meta: Meta<typeof Toolbar.Item> = {
-  title: 'Components/Core/Layout/Toolbar/Subcomponents',
+  title: 'Components/Layout/Toolbar/Subcomponents',
   component: Toolbar.Item,
 };
 

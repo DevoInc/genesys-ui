@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { BooleanRenderer } from './BooleanRenderer';
 
 const meta: Meta<typeof BooleanRenderer> = {
-  title: 'Components/Table/Renderers/BooleanRenderer',
+  title: 'Components/Layout/Table/Renderers/BooleanRenderer',
   component: BooleanRenderer,
 };
 

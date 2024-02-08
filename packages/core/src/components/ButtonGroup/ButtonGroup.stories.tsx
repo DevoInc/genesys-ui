@@ -5,7 +5,7 @@ import { ButtonGroup } from './ButtonGroup';
 import { IconButton } from '../IconButton';
 
 const meta: Meta<typeof ButtonGroup> = {
-  title: 'Components/Core/Button/ButtonGroup',
+  title: 'Components/Button/ButtonGroup',
   component: ButtonGroup,
   args: {
     alignItems: 'center',

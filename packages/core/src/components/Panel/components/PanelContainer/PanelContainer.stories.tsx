@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { PanelContainer } from './PanelContainer';
 
 const meta: Meta<typeof PanelContainer> = {
-  title: 'Components/Core/Layout/Panel/Subcomponents',
+  title: 'Components/Layout/Panel/Subcomponents',
   component: PanelContainer,
 };
 

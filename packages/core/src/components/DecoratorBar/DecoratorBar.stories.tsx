@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { DecoratorBar } from './DecoratorBar';
 
 const meta: Meta<typeof DecoratorBar> = {
-  title: 'Components/Core/Feedback/DecoratorBar',
+  title: 'Components/Feedback/DecoratorBar',
   component: DecoratorBar,
   args: { direction: 'vertical', size: '100%' },
 };

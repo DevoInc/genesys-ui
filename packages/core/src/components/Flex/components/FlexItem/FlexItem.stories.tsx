@@ -5,7 +5,7 @@ import { Flex } from '../../';
 import { StyledLayoutContentHelper } from '../../../../../stories/components/styled';
 
 const meta: Meta<typeof Flex.Item> = {
-  title: 'Components/Core/Layout/Flex/Flex/Components',
+  title: 'Components/Layout/Flex/Flex/Components',
   component: Flex.Item,
 };
 

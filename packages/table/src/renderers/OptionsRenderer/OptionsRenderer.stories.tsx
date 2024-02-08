@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { OptionsRenderer } from './OptionsRenderer';
 
 const meta: Meta<typeof OptionsRenderer> = {
-  title: 'Components/Table/Renderers/OptionsRenderer',
+  title: 'Components/Layout/Table/Renderers/OptionsRenderer',
   component: OptionsRenderer,
 };
 

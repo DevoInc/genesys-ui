@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { NumberFilter } from './NumberFilter';
 
 const meta: Meta<typeof NumberFilter> = {
-  title: 'Components/Table/Filters/NumberFilter',
+  title: 'Components/Layout/Table/Filters/NumberFilter',
   component: NumberFilter,
 };
 

@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { MenuItem, MenuSeparator } from '../../subcomponents';
 
 const meta: Meta<typeof MenuSeparator> = {
-  title: 'Components/Core/Navigation/Menu/Subcomponents',
+  title: 'Components/Navigation/Menu/Subcomponents',
   component: MenuSeparator,
 };
 

@@ -6,7 +6,7 @@ import { useVirtualizer } from '@tanstack/react-virtual';
 import { DEFAULT_VIRTUAL_ROW } from '../../constants';
 
 const meta: Meta<typeof Row> = {
-  title: 'Components/Table/Core/Row',
+  title: 'Components/Layout/Table/Core/Row',
   component: Row,
 };
 

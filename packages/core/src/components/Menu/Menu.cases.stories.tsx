@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Menu } from '.';
 
 const meta: Meta<typeof Menu> = {
-  title: 'Components/Core/Navigation/Menu/Cases',
+  title: 'Components/Navigation/Menu/Cases',
   component: Menu,
   subcomponents: {
     Heading: Menu.Heading,

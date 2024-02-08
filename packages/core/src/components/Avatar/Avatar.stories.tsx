@@ -5,7 +5,7 @@ import { Avatar } from '../';
 const EXAMPLE_AVATAR_IMG = 'https://i.pravatar.cc/300';
 
 const meta: Meta<typeof Avatar> = {
-  title: 'Components/Core/Media/Avatar',
+  title: 'Components/Media/Avatar',
   component: Avatar,
   args: {
     bordered: false,

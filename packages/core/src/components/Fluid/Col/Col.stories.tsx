@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { StoryCol as Col } from '../__stories__';
 
 const meta: Meta<typeof Col> = {
-  title: 'Components/Core/Layout/Fluid/Col',
+  title: 'Components/Layout/Fluid/Col',
   component: Col,
 };
 

@@ -15,7 +15,7 @@ import {
 } from '../src';
 
 const meta: Meta<typeof BasicTable> = {
-  title: 'Components/Table/Filters',
+  title: 'Components/Layout/Table/Filters',
   component: BasicTable,
   parameters: {
     layout: 'fullscreen',

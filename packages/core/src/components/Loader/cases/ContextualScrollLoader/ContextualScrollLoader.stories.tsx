@@ -9,7 +9,7 @@ import {
 } from '../../../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Loader.ContextualScroll> = {
-  title: 'Components/Core/feedback/Loader/ContextualScroll',
+  title: 'Components/feedback/Loader/ContextualScroll',
   component: Loader.ContextualScroll,
   args: {
     spinnerOffset: 'cmp-xs',

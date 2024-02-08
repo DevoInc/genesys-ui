@@ -6,7 +6,7 @@ import { HFlex } from './HFlex';
 import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 const meta: Meta<typeof HFlex> = {
-  title: 'Components/Core/Layout/Flex/HFlex',
+  title: 'Components/Layout/Flex/HFlex',
   component: HFlex,
   args: {
     alignItems: 'center',

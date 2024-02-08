@@ -8,7 +8,7 @@ interface SelectControlOption extends SelectOption {
 }
 
 const meta: Meta<SelectControlProps<SelectControlOption>> = {
-  title: 'Components/Core/Form/SelectControl',
+  title: 'Components/Form/SelectControl',
   component: SelectControl,
   args: {
     menuAppendToBody: true,

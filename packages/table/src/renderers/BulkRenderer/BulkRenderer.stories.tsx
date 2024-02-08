@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { BulkRenderer } from './BulkRenderer';
 
 const meta: Meta<typeof BulkRenderer> = {
-  title: 'Components/Table/Renderers/BulkRenderer',
+  title: 'Components/Layout/Table/Renderers/BulkRenderer',
   component: BulkRenderer,
 };
 

@@ -10,7 +10,7 @@ import { Banner } from './Banner';
 import { lorem } from '../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Banner> = {
-  title: 'Components/Core/Feedback/Banner',
+  title: 'Components/Feedback/Banner',
   component: Banner,
   args: {
     status: 'info',

@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Thumbnail } from '..';
 
 const meta: Meta<typeof Thumbnail> = {
-  title: 'Components/Core/Media/Thumbnail',
+  title: 'Components/Media/Thumbnail',
   component: Thumbnail,
 };
 

@@ -4,7 +4,7 @@ import { PanelSection } from '..';
 import { TextBlock } from '../Panel/__stories__/helpers';
 
 const meta: Meta<typeof PanelSection> = {
-  title: 'Components/Core/Layout/PanelSection',
+  title: 'Components/Layout/PanelSection',
   component: PanelSection,
   args: {
     backwardTooltip: 'Back',

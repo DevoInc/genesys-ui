@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { CheckboxControl } from './CheckboxControl';
 
 const meta: Meta<typeof CheckboxControl> = {
-  title: 'Components/Core/Form/CheckboxControl/Cases',
+  title: 'Components/Form/CheckboxControl/Cases',
   component: CheckboxControl,
   args: {
     'aria-label': 'Checkbox label',

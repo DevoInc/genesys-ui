@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { BooleanEditor } from './BooleanEditor';
 
 const meta: Meta<typeof BooleanEditor> = {
-  title: 'Components/Table/Editors/BooleanEditor',
+  title: 'Components/Layout/Table/Editors/BooleanEditor',
   component: BooleanEditor,
   argTypes: { onChange: { action: 'onChange' } },
 };

@@ -5,7 +5,7 @@ import { Container } from '../../';
 import { StoryCol as Col, StoryRow as Row } from '../__stories__';
 
 const meta: Meta<typeof Container> = {
-  title: 'Components/Core/Layout/Fluid/Container',
+  title: 'Components/Layout/Fluid/Container',
   component: Container,
   args: {
     gutter: 'layout-sm',

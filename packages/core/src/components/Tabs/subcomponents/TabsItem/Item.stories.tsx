@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Tabs, TabsItem } from '../../..';
 
 const meta: Meta<typeof TabsItem> = {
-  title: 'Components/Core/Navigation/Tabs/Subcomponents',
+  title: 'Components/Navigation/Tabs/Subcomponents',
   component: TabsItem,
 };
 

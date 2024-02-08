@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Typography } from '../../..';
 
 const meta: Meta<typeof Typography.List> = {
-  title: 'Components/Core/Text/Typography/Block/List',
+  title: 'Components/Text/Typography/Block/List',
   component: Typography.List,
   args: {
     colorScheme: 'base',

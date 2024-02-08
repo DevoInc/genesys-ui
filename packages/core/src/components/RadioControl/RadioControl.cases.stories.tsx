@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { RadioControl, HFlex } from '..';
 
 const meta: Meta<typeof RadioControl> = {
-  title: 'Components/Core/Form/RadioControl/Cases',
+  title: 'Components/Form/RadioControl/Cases',
   component: RadioControl,
   args: {
     'aria-label': 'Radio label',

@@ -9,7 +9,7 @@ import {
 } from '../src/helpers';
 
 const meta: Meta<typeof BasicTable> = {
-  title: 'Components/Table/Order',
+  title: 'Components/Layout/Table/Order',
   component: BasicTable,
   parameters: {
     layout: 'fullscreen',

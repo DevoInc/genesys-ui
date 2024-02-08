@@ -10,7 +10,7 @@ import { InputControl } from '../InputControl';
 import { Typography } from '../Typography';
 
 const meta: Meta<typeof AppBar> = {
-  title: 'Components/Core/Navigation/AppBar',
+  title: 'Components/Navigation/AppBar',
   component: AppBar,
   subcomponents: {
     'AppBar.Heading': AppBar.Heading,

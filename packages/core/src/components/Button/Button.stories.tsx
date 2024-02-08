@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../..';
 
 const meta: Meta<typeof Button> = {
-  title: 'Components/Core/Button/Button',
+  title: 'Components/Button/Button',
   component: Button,
   args: {
     children: 'Button label',

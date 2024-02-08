@@ -4,7 +4,7 @@ import { Typography } from '../../..';
 import { lorem } from '../../../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Typography.Paragraph> = {
-  title: 'Components/Core/Text/Typography/Block/Paragraph',
+  title: 'Components/Text/Typography/Block/Paragraph',
   component: Typography.Paragraph,
 };
 

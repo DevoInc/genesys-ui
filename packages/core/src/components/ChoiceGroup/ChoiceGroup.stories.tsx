@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { ChoiceGroup, IconButton } from '../';
 
 const meta: Meta<typeof ChoiceGroup> = {
-  title: 'Components/Core/Form/ChoiceGroup',
+  title: 'Components/Form/ChoiceGroup',
   component: ChoiceGroup,
   args: {
     colorScheme: 'quiet',

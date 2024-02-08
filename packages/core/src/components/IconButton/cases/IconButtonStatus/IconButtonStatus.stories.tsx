@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { IconButtonStatus } from '..';
 
 const meta: Meta<typeof IconButtonStatus> = {
-  title: 'Components/Core/Button/IconButtonStatus',
+  title: 'Components/Button/IconButtonStatus',
   component: IconButtonStatus,
   args: {
     state: 'enabled',

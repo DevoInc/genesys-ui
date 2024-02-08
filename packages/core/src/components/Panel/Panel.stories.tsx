@@ -5,7 +5,7 @@ import { Panel, Button, IconButton, IconButtonClose } from '..';
 import { TextBlock } from './__stories__/helpers';
 
 const meta: Meta<typeof Panel> = {
-  title: 'Components/Core/Layout/Panel/Examples',
+  title: 'Components/Layout/Panel/Examples',
   component: Panel,
   args: {
     elevation: 'raised',

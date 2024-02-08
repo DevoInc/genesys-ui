@@ -5,7 +5,7 @@ import { Box, Loader, Typography } from '../..';
 import { lorem, lorem2, lorem3 } from '../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Loader> = {
-  title: 'Components/Core/Feedback/Loader',
+  title: 'Components/Feedback/Loader',
   component: Loader,
   args: {
     colorScheme: 'inherited',

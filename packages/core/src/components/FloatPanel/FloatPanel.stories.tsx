@@ -8,7 +8,7 @@ import { Typography } from '../Typography';
 import { VFlex } from '../VFlex';
 
 const meta: Meta<typeof FloatPanel> = {
-  title: 'Components/Core/Layout/FloatPanel',
+  title: 'Components/Layout/FloatPanel',
   component: FloatPanel,
   args: {
     position: 'left',

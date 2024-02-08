@@ -7,7 +7,7 @@ import { GIEyeViewFilled, GIPencilEdit } from '@devoinc/genesys-icons';
 import { type ActionContext, BasicTable, type Data } from '../src';
 
 const meta: Meta<typeof BasicTable> = {
-  title: 'Components/Table/Actions',
+  title: 'Components/Layout/Table/Actions',
   component: BasicTable,
   parameters: {
     layout: 'fullscreen',

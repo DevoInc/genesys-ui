@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { IconButtonRemove, Tabs, TabsItem, TabsAside } from '..';
 
 const meta: Meta<typeof Tabs> = {
-  title: 'Components/Core/Navigation/Tabs',
+  title: 'Components/Navigation/Tabs',
   component: Tabs,
   subcomponents: { TabsItem, TabsAside },
   args: {

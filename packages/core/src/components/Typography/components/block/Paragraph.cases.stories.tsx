@@ -5,7 +5,7 @@ import { EditableContent, Typography } from '../../..';
 import { lorem } from '../../../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Typography.Paragraph> = {
-  title: 'Components/Core/Text/Typography/Block/Paragraph/Cases',
+  title: 'Components/Text/Typography/Block/Paragraph/Cases',
   component: Typography.Paragraph,
 };
 

@@ -8,7 +8,7 @@ import { Typography } from '../Typography';
 import { VFlex } from '../VFlex';
 
 const meta: Meta<typeof ContentSwitcher> = {
-  title: 'Components/Core/Navigation/ContentSwitcher',
+  title: 'Components/Navigation/ContentSwitcher',
   component: ContentSwitcher,
   args: {
     size: 'md',

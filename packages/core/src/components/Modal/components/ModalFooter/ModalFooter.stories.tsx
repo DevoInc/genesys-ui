@@ -6,7 +6,7 @@ import { IconButtonGoToDocs } from '../../../IconButton';
 import { Button } from '../../../Button';
 
 const meta: Meta<typeof ModalFooter> = {
-  title: 'Components/Core/Layout/Modal/Subcomponents',
+  title: 'Components/Layout/Modal/Subcomponents',
   component: ModalFooter,
 };
 

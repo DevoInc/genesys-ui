@@ -14,7 +14,7 @@ import {
 } from '../src';
 
 const meta: Meta<typeof Table> = {
-  title: 'Components/Table/BulkActions',
+  title: 'Components/Layout/Table/BulkActions',
   component: Table,
   parameters: {
     layout: 'fullscreen',

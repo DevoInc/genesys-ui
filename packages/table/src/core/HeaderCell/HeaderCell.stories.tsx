@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { HeaderCell } from './HeaderCell';
 
 const meta: Meta<typeof HeaderCell> = {
-  title: 'Components/Table/Core/HeaderCell',
+  title: 'Components/Layout/Table/Core/HeaderCell',
   component: HeaderCell,
 };
 

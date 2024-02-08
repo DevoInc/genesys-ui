@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { OptionsEditor } from './OptionsEditor';
 
 const meta: Meta<typeof OptionsEditor> = {
-  title: 'Components/Table/Editors/OptionsEditor',
+  title: 'Components/Layout/Table/Editors/OptionsEditor',
   component: OptionsEditor,
   argTypes: { onChange: { action: 'onChange' } },
 };

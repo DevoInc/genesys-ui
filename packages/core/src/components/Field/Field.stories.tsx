@@ -6,7 +6,7 @@ import { StyledInputControl } from '../InputControl/styled/StyledInputControl';
 import { InputControl } from '../InputControl';
 
 const meta: Meta<typeof Field> = {
-  title: 'Components/Core/Form/Field',
+  title: 'Components/Form/Field',
   component: Field,
   args: {
     labelPosition: 'top',

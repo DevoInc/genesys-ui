@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { InputControl } from '..';
 
 const meta: Meta<typeof InputControl> = {
-  title: 'Components/Core/Form/InputControl',
+  title: 'Components/Form/InputControl',
   component: InputControl,
   args: {
     size: 'md',

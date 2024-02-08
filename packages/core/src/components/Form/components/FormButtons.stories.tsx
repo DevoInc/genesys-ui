@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Button, Form } from '../../';
 
 const meta: Meta<typeof Form.Buttons> = {
-  title: 'Components/Core/Form/Form/Components',
+  title: 'Components/Form/Form/Components',
   component: Form.Buttons,
   args: {
     buttonsPosition: 'right',
