@@ -1,9 +1,10 @@
+import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Holo } from '@devoinc/holo';
 import { GIEyeViewFilled, GIPencilEdit } from '@devoinc/genesys-icons';
 
-import { ActionContext, BasicTable } from '../src';
+import { type ActionContext, BasicTable, type Data } from '../src';
 
 const meta: Meta<typeof BasicTable> = {
   title: 'Components/Table/Actions',
@@ -47,14 +48,16 @@ export const Base: Story = {
         context: {
           quickActions: [
             {
-              Icon: GIEyeViewFilled,
+              Icon: <GIEyeViewFilled />,
               onClick: (rowIndex) => {
+                // eslint-disable-next-line no-console
                 console.log(`Quick action 1 on row ${rowIndex}`);
               },
             },
             {
-              Icon: GIPencilEdit,
+              Icon: <GIPencilEdit />,
               onClick: (rowIndex) => {
+                // eslint-disable-next-line no-console
                 console.log(`Quick action 2 on row ${rowIndex}`);
               },
             },
@@ -63,12 +66,14 @@ export const Base: Story = {
             {
               text: 'Action 1',
               onClick: (rowIndex) => {
+                // eslint-disable-next-line no-console
                 console.log(`Action 1 on row ${rowIndex}`);
               },
             },
             {
               text: 'Action 2',
               onClick: (rowIndex) => {
+                // eslint-disable-next-line no-console
                 console.log(`Action 2 on row ${rowIndex}`);
               },
             },
@@ -76,6 +81,7 @@ export const Base: Story = {
             {
               text: 'Action 3',
               onClick: (rowIndex) => {
+                // eslint-disable-next-line no-console
                 console.log(`Action 3 on row ${rowIndex}`);
               },
             },
@@ -92,6 +98,6 @@ export const Base: Story = {
         company: 'company',
       })
       .repeat(10)
-      .generate(),
+      .generate() as Data,
   },
 };
