@@ -1,5 +1,24 @@
 # Changelog
 
+## [6.0.0](https://github.com/DevoInc/genesys-ui/compare/v5.0.0...v6.0.0) (2024-02-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* split form package to core, color, and upload
+* **table:** fix the change on the actions for use directly the icons
+
+### Features
+
+* added onChange prop to several components and optimized and tokenized the ActionRenderer. ([998cb32](https://github.com/DevoInc/genesys-ui/commit/998cb32645efa3fa726f91de1e86cf19eadee8a0))
+* split form package to core, color, and upload ([3683d1c](https://github.com/DevoInc/genesys-ui/commit/3683d1c5e4b58a09e14f54915fad9cbb2c275146))
+* **table:** memoize the iconSize for ActionRenderer ([538ec2f](https://github.com/DevoInc/genesys-ui/commit/538ec2f11b4723660c529640d93f9cf331547f10))
+
+
+### Bug Fixes
+
+* **table:** fix the change on the actions for use directly the icons ([c6ad258](https://github.com/DevoInc/genesys-ui/commit/c6ad258a619681a72b6ee962046cea5b3c20bbb2))
+
 ## [5.0.0](https://github.com/DevoInc/genesys-ui/compare/v4.4.0...v5.0.0) (2024-02-07)
 
 
