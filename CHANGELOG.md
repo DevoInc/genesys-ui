@@ -1,5 +1,22 @@
 # Changelog
 
+## [5.0.0](https://github.com/DevoInc/genesys-ui/compare/v4.4.0...v5.0.0) (2024-02-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* In AppBar component, the props 'actions', 'options' and 'customContent' has been removed. Now this kind of content is defined directly in 'children' prop. In addition, the name of 'tabItems' prop has been changed to 'tabs'.
+
+### Features
+
+* New way of defining the content on the AppBar and removed default value for gutterBottom in Typography.Paragraph ([5e2c3fd](https://github.com/DevoInc/genesys-ui/commit/5e2c3fd235e92f115eaefecc2b0829d473139e14))
+* **SelectControl:** added default values for some props. ([bd3d21c](https://github.com/DevoInc/genesys-ui/commit/bd3d21cf3f1a34070dda39b8f2418ad64db75115))
+
+
+### Bug Fixes
+
+* fixed tests ([ef8941f](https://github.com/DevoInc/genesys-ui/commit/ef8941f2754a5b15518ce869cdf61fe3c1f9fa96))
+
 ## [4.4.0](https://github.com/DevoInc/genesys-ui/compare/v4.3.0...v4.4.0) (2024-02-06)
 
 
