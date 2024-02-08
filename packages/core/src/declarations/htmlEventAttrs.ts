@@ -29,6 +29,8 @@ export interface ContainerEventAttrProps<T = Element> {
   onClick?: DOMAttributes<T>['onClick'];
   /** A function that is called when the right mouse button is clicked on the element */
   onContextMenu?: DOMAttributes<T>['onContextMenu'];
+  /** A function that is called when the element is changed */
+  onChange?: DOMAttributes<T>['onChange'];
   /** A function that is called when the user copies the content of the element */
   onCopy?: DOMAttributes<T>['onCopy'];
   /** A function that is called when the user cuts the content of the element */

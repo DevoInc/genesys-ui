@@ -1,11 +1,18 @@
 import * as React from 'react';
 
 import { GIMenuAltVertical } from '@devoinc/genesys-icons';
-import { Popover, HFlex, IconButton, Menu } from '@devoinc/genesys-ui';
+import {
+  Popover,
+  HFlex,
+  IconButton,
+  Menu,
+  getPxFromRem,
+} from '@devoinc/genesys-ui';
 
 import { CellRendererProps } from '../declarations';
 import { ActionContext } from '../../facade';
 import { MenuEntry } from './MenuEntry';
+import { useTheme } from 'styled-components';
 
 export const ActionRenderer: React.FC<CellRendererProps> = ({
   colDef,
@@ -13,20 +20,25 @@ export const ActionRenderer: React.FC<CellRendererProps> = ({
 }) => {
   const context = colDef?.context as ActionContext;
   const popoverId = `${colDef.id}-actions-menu-${rowIndex}`;
+  const iconButtonSize = 'sm';
+  const iconButtonColorScheme = 'quiet';
+  const iconSize = getPxFromRem(
+    useTheme().cmp.button.icon.typo.fontSize[iconButtonSize],
+  );
   return (
     <HFlex spacing="cmp-xxs" alignItems="end">
       {(context?.quickActions ?? []).map(({ Icon, onClick }, idx) => (
         <IconButton
-          size="xs"
+          size={iconButtonSize}
           key={idx}
-          colorScheme="quiet"
+          colorScheme={iconButtonColorScheme}
           onClick={(event: React.MouseEvent) => {
             if (onClick) {
               onClick(rowIndex, event);
             }
           }}
         >
-          <Icon size={12} />
+          <Icon size={iconSize} />
         </IconButton>
       ))}
       {context?.actionMenu ? (
@@ -37,13 +49,13 @@ export const ActionRenderer: React.FC<CellRendererProps> = ({
               aria-haspopup="true"
               aria-label="Open the bulk actions menu"
               aria-expanded={isOpened}
-              size={'xs'}
-              colorScheme="quiet"
+              size={iconButtonSize}
+              colorScheme={iconButtonColorScheme}
               onClick={toggle}
               ref={ref}
               state={isOpened ? 'expanded' : undefined}
             >
-              <GIMenuAltVertical size="12" />
+              <GIMenuAltVertical size={iconSize} />
             </IconButton>
           )}
           {({ setOpened }) => (

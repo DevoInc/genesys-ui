@@ -1,23 +1,29 @@
 import * as React from 'react';
 
-import { ChipProps, Form, FormGroupProps } from '../../';
+import {
+  ChipProps,
+  ContainerEventAttrProps,
+  Form,
+  FormGroupProps,
+} from '../../';
 import { WithRequired } from '../../typeFunctions';
 import { ChipGroupContext } from './context';
 import { ChipGroupChip } from './components';
 
 export interface ChipGroupProps
   extends WithRequired<
-    Omit<
-      FormGroupProps,
-      | 'alignItems'
-      | 'flexWrap'
-      | 'justifyContent'
-      | 'itemsGap'
-      | 'boxed'
-      | 'children'
+      Omit<
+        FormGroupProps,
+        | 'alignItems'
+        | 'flexWrap'
+        | 'justifyContent'
+        | 'itemsGap'
+        | 'boxed'
+        | 'children'
+      >,
+      'legend'
     >,
-    'legend'
-  > {
+    Pick<ContainerEventAttrProps, 'onChange'> {
   /** Size to apply to all the children Chips */
   size?: ChipProps['size'];
   /** Selection scheme to apply to all the children Chips */

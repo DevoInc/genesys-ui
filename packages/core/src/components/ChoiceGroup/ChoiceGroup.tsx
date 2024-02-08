@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Form, FormGroupProps } from '../../';
+import { ContainerEventAttrProps, Form, FormGroupProps } from '../../';
 import { ChoiceGroupContext } from './context';
 import {
   ChoiceGroupIconButton,
@@ -12,6 +12,7 @@ export interface ChoiceGroupProps
       FormGroupProps,
       'children' | 'direction' | 'justifyContent' | 'itemsGap' | 'boxed'
     >,
+    Pick<ContainerEventAttrProps, 'onChange'>,
     Pick<ChoiceGroupIconButtonProps, 'size' | 'selectionScheme'> {
   colorScheme?: 'neutral' | 'quiet';
   children: React.ReactElement | React.ReactElement[];
