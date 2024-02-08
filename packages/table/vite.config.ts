@@ -18,7 +18,6 @@ export default defineConfig({
       external: [
         '@devoinc/genesys-ui',
         '@devoinc/genesys-ui-datetime',
-        '@devoinc/genesys-ui-form',
         '@devoinc/genesys-icons',
         '@tanstack/react-virtual',
         'react',

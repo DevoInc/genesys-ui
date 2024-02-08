@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Banner, Typography, VFlex } from '../../../components';
-import { Input } from '@devoinc/genesys-ui-form';
+import { Input } from '../../Input';
 
 export const ModalDemoContent = (
   <VFlex alignItems="stretch">

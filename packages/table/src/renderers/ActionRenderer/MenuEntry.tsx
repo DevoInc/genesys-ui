@@ -62,13 +62,13 @@ export const MenuEntry: React.FC<Props> = ({
   const Icon = entry?.Icon;
   return (
     <Menu.Item
-      onClick={(event) => {
+      onClick={(event: React.MouseEvent) => {
         if (entry?.onClick) {
           entry.onClick(rowIndex, event);
         }
         setOpen(false);
       }}
-      icon={Icon ? <Icon size={12} /> : null}
+      icon={Icon}
     >
       {entry?.text}
     </Menu.Item>

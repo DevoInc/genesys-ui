@@ -31,7 +31,6 @@
     "@devoinc/genesys-icons": "3.x.x",
     "@devoinc/genesys-ui": "^5.0.0",
     "@devoinc/genesys-ui-datetime": "^5.0.0",
-    "@devoinc/genesys-ui-form": "^5.0.0",
     "@tanstack/react-virtual": "3.x.x",
     "date-fns": "2.x.x",
     "date-fns-tz": "2.x.x",

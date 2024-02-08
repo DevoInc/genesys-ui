@@ -2,8 +2,10 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { Button, Modal, Typography } from '../';
-import { Input } from '@devoinc/genesys-ui-form';
+import { Button } from '../Button';
+import { Modal } from '../Modal';
+import { Typography } from '../Typography';
+import { Input } from '../Input';
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/Core/Layout/Modal',

@@ -12,26 +12,36 @@ The project is built using `npm workspaces` and includes the following packages:
 
 [![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui/latest?label=%40devoinc%2Fgenesys-ui@latest)](https://www.npmjs.com/package/@devoinc/genesys-ui)
 
-[![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui-form/latest?label=%40devoinc%2Fgenesys-ui-form@latest)](https://www.npmjs.com/package/@devoinc/genesys-ui-form)
+[![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui-color/latest?label=%40devoinc%2Fgenesys-ui-color@latest)](https://www.npmjs.com/package/@devoinc/genesys-ui-color)
+
+[![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui-upload/latest?label=%40devoinc%2Fgenesys-ui-upload@latest)](https://www.npmjs.com/package/@devoinc/genesys-ui-upload)
 
 [![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui-datetime/latest?label=%40devoinc%2Fgenesys-ui-datetime@latest)](https://www.npmjs.com/package/@devoinc/genesys-ui-datetime)
 
 [![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui-code/latest?label=%40devoinc%2Fgenesys-ui-code@latest)](https://www.npmjs.com/package/@devoinc/genesys-ui-code)
 
+[![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui-table/latest?label=%40devoinc%2Fgenesys-ui-table@latest)](https://www.npmjs.com/package/@devoinc/genesys-ui-table)
+
 - **genesys-ui:** Core package containing base components.
-- **genesys-ui-form:** Form components.
+- **genesys-ui-color:** Color components.
+- **genesys-ui-upload:** Upload components.
 - **genesys-ui-datetime:** Date and time components.
 - **genesys-ui-code:** Code editing and code visualization components.
+- **genesys-ui-table:** Table components.
 
 The packages have the following interdependencies:
 
 ```
 ├─┬ @devoinc/genesys-ui-datetime
 │ └── @devoinc/genesys-ui
-├─┬ @devoinc/genesys-ui-form
+├─┬ @devoinc/genesys-ui-color
+│ ├── @devoinc/genesys-ui
+├─┬ @devoinc/genesys-ui-upload
 │ ├── @devoinc/genesys-ui
 ├─┬ @devoinc/genesys-ui
 ├─┬ @devoinc/genesys-ui-code
+│ ├── @devoinc/genesys-ui
+├─┬ @devoinc/genesys-ui-table
 │ ├── @devoinc/genesys-ui
 ```
 
@@ -68,7 +78,11 @@ npm run lint
 
 ### Linking external packages
 
-This project uses [Vite](https://vitejs.dev/) for development. Vite serves the code via native ES Module imports during development. Therefore, Vite converts all dependencies that are shipped as CommonJS modules to ES modules. To improve the performance, it [pre-bundles](https://vitejs.dev/guide/dep-pre-bundling.html) and caches them inside the `node_modules/.cache` directory.
+This project uses [Vite](https://vitejs.dev/) for development. Vite serves the code via native
+ES Module imports during development. Therefore, Vite converts all dependencies that are shipped
+as CommonJS modules to ES modules. To improve the performance, it
+[pre-bundles](https://vitejs.dev/guide/dep-pre-bundling.html) and caches them
+inside the `node_modules/.cache` directory.
 
 If you want to link an external package to the project, you need to make sure that the package is available in **ESM format**. Besides, you have to ensure that the package is **not listed in the `optimizeDeps.include` section** of the `main.ts` file. If the package is listed there, Vite will pre-bundle it and will always use the cached version, even if you link a local version of the package. In that case, you will have to temporarily remove or comment the package from the `optimizeDeps.include` section.
 
@@ -100,7 +114,9 @@ Note: You might have to reload the browser o every change you make to the linked
 For detailed documentation please refer to the READMEs of the internal packages:
 
 - [genesys-ui/README.md](./packages/core/README.md)
-- [genesys-ui-form/README.md](./packages/form/README.md)
+- [genesys-ui-color/README.md](./packages/color/README.md)
+- [genesys-ui-upload/README.md](./packages/upload/README.md)
+- [genesys-ui-table/README.md](./packages/table/README.md)
 - [genesys-ui-datetime/README.md](./packages/datetime/README.md)
 - [genesys-ui-code/README.md](./packages/code/README.md)
 

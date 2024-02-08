@@ -1,0 +1,26 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './ColorPicker.stories';
+
+<Meta of={Stories} />
+
+# ColorPicker
+
+Graphical tool that allows users to select a color from a range of available colors.
+It is based on the SketchPicker from the [react-color](https://casesandberg.github.io/react-color/) library.
+
+## How to import
+
+<Source
+  code={`
+import { ColorPicker } from '@devoinc/genesys-ui-color';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Props
+
+<ArgTypes of={Stories} />

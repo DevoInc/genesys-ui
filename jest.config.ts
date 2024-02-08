@@ -25,10 +25,17 @@ const config: JestConfigWithTsJest = {
       moduleNameMapper: globalModuleNameMapper,
     },
     {
-      displayName: 'form',
+      displayName: 'color',
       testEnvironment: 'jsdom',
       preset: 'ts-jest',
-      testMatch: ['<rootDir>/packages/form/src/**/*.test.ts?(x)'],
+      testMatch: ['<rootDir>/packages/color/src/**/*.test.ts?(x)'],
+      moduleNameMapper: globalModuleNameMapper,
+    },
+    {
+      displayName: 'upload',
+      testEnvironment: 'jsdom',
+      preset: 'ts-jest',
+      testMatch: ['<rootDir>/packages/upload/src/**/*.test.ts?(x)'],
       moduleNameMapper: globalModuleNameMapper,
     },
     {

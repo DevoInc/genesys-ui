@@ -89,7 +89,8 @@
     "packages/core",
     "packages/code",
     "packages/datetime",
-    "packages/form",
+    "packages/color",
+    "packages/upload",
     "packages/table"
   ],
   "engines": {

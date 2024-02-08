@@ -1,0 +1,37 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Radio.stories';
+
+<Meta of={Stories} />
+
+# Radio
+
+Component used to create radio buttons, which are part of radio groups that describe a set of related options.
+Radio buttons are typically represented as small circles, which are filled or highlighted when selected.
+A radio group allows only one radio button to be selected at a time, making it useful for options where the user can make only one selection.
+It provides a range of customization options to control the appearance and behavior of the switch,
+as well as additional props for accessibility and guidance.
+
+Radio is a wrapper over the [RadioControl](?path=/docs/components-core-form-radiocontrol--docs)
+component, and uses the [Field](?path=/docs/components-core-form-field--docs)
+component to provide additional functionality such as labelling, helper error messages, and validation.
+
+## How to import
+
+<Source
+  code={`
+import { Radio } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Props
+
+<ArgTypes of={Stories} />
+
+## Related components
+
+- [RadioControl](?path=/docs/components-core-form-radiocontrol--docs)

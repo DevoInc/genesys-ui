@@ -10,7 +10,7 @@ export interface DateContext {
 
 // prettier-ignore
 export const dateFormatter = (value: unknown, context: DateContext): string =>
-  !isValid(value)
+  !isValid(value) || (typeof value === 'number' && value < 0)
     ? String(value)
     : format(
       utcToZonedTime(value as string | number | Date, context.tz),

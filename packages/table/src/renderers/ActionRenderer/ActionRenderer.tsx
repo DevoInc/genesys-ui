@@ -28,8 +28,8 @@ export const ActionRenderer: React.FC<CellRendererProps> = ({
     [theme],
   );
   return (
-    <HFlex spacing="cmp-xxs" alignItems="end">
-      <IconContext.Provider value={{ size: iconSize }}>
+    <IconContext.Provider value={{ size: iconSize }}>
+      <HFlex spacing="cmp-xxs" alignItems="end">
         {(context?.quickActions ?? []).map(({ Icon, onClick }, idx) => (
           <IconButton
             size={iconButtonSize}
@@ -44,43 +44,43 @@ export const ActionRenderer: React.FC<CellRendererProps> = ({
             {Icon}
           </IconButton>
         ))}
-      </IconContext.Provider>
-      {context?.actionMenu ? (
-        <Popover id={popoverId} placement="bottom-end">
-          {({ isOpened, toggle, ref }) => (
-            <IconButton
-              aria-controls={popoverId}
-              aria-haspopup="true"
-              aria-label="Open the bulk actions menu"
-              aria-expanded={isOpened}
-              size={iconButtonSize}
-              colorScheme={iconButtonColorScheme}
-              onClick={toggle}
-              ref={ref}
-              state={isOpened ? 'expanded' : undefined}
-            >
-              <GIMenuAltVertical size={iconSize} />
-            </IconButton>
-          )}
-          {({ setOpened }) => (
-            <Popover.Panel>
-              <Menu>
-                {context.actionMenu.map((entry, idx) => {
-                  return (
-                    <MenuEntry
-                      key={idx}
-                      entry={entry}
-                      level={0}
-                      rowIndex={rowIndex}
-                      setOpen={setOpened}
-                    />
-                  );
-                })}
-              </Menu>
-            </Popover.Panel>
-          )}
-        </Popover>
-      ) : null}
-    </HFlex>
+        {context?.actionMenu ? (
+          <Popover id={popoverId} placement="bottom-end">
+            {({ isOpened, toggle, ref }) => (
+              <IconButton
+                aria-controls={popoverId}
+                aria-haspopup="true"
+                aria-label="Open the bulk actions menu"
+                aria-expanded={isOpened}
+                size={iconButtonSize}
+                colorScheme={iconButtonColorScheme}
+                onClick={toggle}
+                ref={ref}
+                state={isOpened ? 'expanded' : undefined}
+              >
+                <GIMenuAltVertical />
+              </IconButton>
+            )}
+            {({ setOpened }) => (
+              <Popover.Panel>
+                <Menu>
+                  {context.actionMenu.map((entry, idx) => {
+                    return (
+                      <MenuEntry
+                        key={idx}
+                        entry={entry}
+                        level={0}
+                        rowIndex={rowIndex}
+                        setOpen={setOpened}
+                      />
+                    );
+                  })}
+                </Menu>
+              </Popover.Panel>
+            )}
+          </Popover>
+        ) : null}
+      </HFlex>
+    </IconContext.Provider>
   );
 };

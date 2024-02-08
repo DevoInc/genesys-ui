@@ -17,3 +17,5 @@ export const ButtonGroupIconButton = React.forwardRef<
     </IconButton>
   );
 });
+
+ButtonGroupIconButton.displayName = 'ButtonGroupIconButton';

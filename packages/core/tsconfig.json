@@ -5,12 +5,7 @@
     "declaration": true,
     "declarationMap": true,
     "outDir": "./dist",
-    "noErrorTruncation": true,
-    "paths": {
-      "@": [
-        "src"
-      ]
-    }
+    "noErrorTruncation": true
   },
   "include": [
     "src",

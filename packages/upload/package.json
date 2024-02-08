@@ -1,0 +1,51 @@
+{
+  "name": "@devoinc/genesys-ui-upload",
+  "version": "5.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "compile": "tsc --project tsconfig.json",
+    "compile:watch": "npm run compile -- --watch",
+    "build": "vite build && tsc --project tsconfig.build.json",
+    "build:watch": "vite build --watch && tsc --project tsconfig.build.json",
+    "depcruise": "sh ../../depcruise.sh \"$npm_package_name\"",
+    "analyzer": "npx vite-bundle-visualizer -o 'dist/stats.html'",
+    "stryker": "npx stryker run"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/types/src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "@devoinc/genesys-icons": "3.x.x",
+    "@devoinc/genesys-ui": "^5.0.0",
+    "filepond-plugin-file-validate-size": "2.x.x",
+    "filepond-plugin-file-validate-type": "1.x.x",
+    "filepond-plugin-image-preview": "4.x.x",
+    "react": "16.x || 17.x || 18.x",
+    "react-filepond": "7.x.x",
+    "styled-components": "5.x.x"
+  },
+  "engine": {
+    "node": ">=16",
+    "npm": ">=7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DevoInc/genesys-ui.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
