@@ -47,7 +47,7 @@ export const jason: Language = {
         [/:\s"((.|-|\n|\r)*)"/, 'value'],
         [/:\s[0-9]+([,.][0-9]+)?/, 'digit'],
         [/true|false|null/, 'boolean'],
-        [/[{}()\[\]]/, '@brackets'],
+        [/[{}()[\]]/, '@brackets'],
         [/[;,.]/, 'delimiter'],
       ],
     },

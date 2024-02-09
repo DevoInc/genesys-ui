@@ -30,7 +30,6 @@ module.exports = {
     'no-use-before-define': 'warn',
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/no-redundant-type-constituents': 'warn',
-    'no-useless-escape': 'warn',
     '@typescript-eslint/unbound-method': 'warn',
     '@typescript-eslint/no-base-to-string': 'warn',
     radix: 'warn',
