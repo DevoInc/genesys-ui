@@ -29,7 +29,6 @@ module.exports = {
     '@typescript-eslint/no-unsafe-argument': 'warn',
     'no-use-before-define': 'warn',
     '@typescript-eslint/no-explicit-any': 'warn',
-    'no-alert': 'warn',
     '@typescript-eslint/no-redundant-type-constituents': 'warn',
     'no-useless-escape': 'warn',
     '@typescript-eslint/unbound-method': 'warn',

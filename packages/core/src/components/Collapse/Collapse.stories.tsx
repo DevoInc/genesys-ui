@@ -21,14 +21,14 @@ type Story = StoryObj<typeof Collapse>;
 
 export const Base: Story = {
   render: (args) =>
-    ((args) => {
-      const [expanded, setExpanded] = React.useState(args.expanded);
+    ((props) => {
+      const [expanded, setExpanded] = React.useState(props.expanded);
       const contentId = 'accessibility';
       return (
         <Flex flexDirection={'column'}>
           <Collapse
-            {...args}
-            aria-controls={args['aria-controls'] || contentId}
+            {...props}
+            aria-controls={props['aria-controls'] || contentId}
             expanded={expanded}
             onClick={() => {
               setExpanded(!expanded);
@@ -92,7 +92,10 @@ export const Custom = () => {
       >
         <Box
           position="relative"
-          onClick={() => alert('Clock on Collapse marker')}
+          onClick={() => {
+            // eslint-disable-next-line no-alert
+            alert('Clock on Collapse marker');
+          }}
         >
           <Collapse._Marker />
         </Box>

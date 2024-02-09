@@ -26,7 +26,10 @@ export const WithScroll: Story = {
     helpUrl: 'https://www.devo.com/',
     helpTooltip: 'Go to docs',
     height: '300px',
-    onClickBackwardNav: () => alert('Going back!'),
+    onClickBackwardNav: () => {
+      // eslint-disable-next-line no-alert
+      alert('Going back!');
+    },
     children: TextBlock,
   },
 };

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Button, ToastContainer, toast, Typography } from '../';
+import { Button } from '../Button';
+import { ToastContainer, ToastProps, toast } from '../Toast';
+import { Typography } from '../Typography';
 import { lorem, lorem2, lorem3 } from '../../../stories/utils/fillerTexts';
 import { ToastPanel } from './components';
 
@@ -22,14 +24,14 @@ const meta: Meta<typeof toast> = {
   },
 };
 
-const baseToast = (args, id) => (
+const BaseToast = ({ id, ...rest }: ToastProps) => (
   <>
     <Button
       colorScheme={'info'}
       onClick={() => {
         toast({
           id: id,
-          ...args,
+          ...rest,
         });
       }}
     >
@@ -57,7 +59,7 @@ export const WithScroll: Story = {
       </>
     ),
   },
-  render: (args) => baseToast(args, 'toast-scrolled-content'),
+  render: (args) => <BaseToast id="toast-scrolled-content" {...args} />,
 };
 
 export const WithActions: Story = {
@@ -65,14 +67,20 @@ export const WithActions: Story = {
   args: {
     actionApply: {
       label: 'Apply',
-      action: () => alert('Action applied'),
+      action: () => {
+        // eslint-disable-next-line no-alert
+        alert('Action applied');
+      },
     },
     actionReject: {
       label: 'Cancel',
-      action: () => alert('Action rejected'),
+      action: () => {
+        // eslint-disable-next-line no-alert
+        alert('Action rejected');
+      },
     },
   },
-  render: (args) => baseToast(args, 'toast-width-actions'),
+  render: (args) => <BaseToast id="toast-width-actions" {...args} />,
 };
 
 export const CollapsableContent: Story = {
@@ -91,5 +99,5 @@ export const CollapsableContent: Story = {
       </>
     ),
   },
-  render: (args) => baseToast(args, 'toast-collapsable-content'),
+  render: (args) => <BaseToast id="toast-collapsable-content" {...args} />,
 };
