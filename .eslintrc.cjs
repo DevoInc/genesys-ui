@@ -32,7 +32,6 @@ module.exports = {
     '@typescript-eslint/no-redundant-type-constituents': 'warn',
     '@typescript-eslint/unbound-method': 'warn',
     '@typescript-eslint/no-base-to-string': 'warn',
-    radix: 'warn',
     'consistent-return': 'warn',
     indent: [
       'warn',

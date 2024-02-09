@@ -26,7 +26,7 @@ export const PaginationRange: React.FC<PaginationRangeProps> = ({
   );
 
   const onChangeRangeSelect = React.useCallback(
-    (option) => setPageSize(parseInt(option.value)),
+    (option) => setPageSize(parseInt(option.value, 10)),
     [setPageSize],
   );
   const noOptionsMessage = React.useCallback(() => '', []);
