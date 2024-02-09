@@ -12,6 +12,7 @@ const meta: Meta<typeof DateTime> = {
     hasMillis: false,
     hasSeconds: true,
     onChange: (ts: number) => {
+      // eslint-disable-next-line no-console
       console.log('Here onChange', ts, new Date(ts));
     },
     validateDate: (ts) => ts < new Date().getTime(),

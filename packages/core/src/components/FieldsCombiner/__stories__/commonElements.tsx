@@ -84,7 +84,10 @@ export const ElemInputControl = (
   <FieldsCombiner.Input
     id="test-3"
     aria-label="Label for story"
-    onChange={() => console.log('change')}
+    onChange={() => {
+      // eslint-disable-next-line no-console
+      console.log('change');
+    }}
   />
 );
 
@@ -92,7 +95,10 @@ export const ElemInputControlCustomWidth = (
   <FieldsCombiner.Input
     id="test-3"
     aria-label="Label for story"
-    onChange={() => console.log('change')}
+    onChange={() => {
+      // eslint-disable-next-line no-console
+      console.log('change');
+    }}
     width="70%"
   />
 );

@@ -28,7 +28,6 @@ module.exports = {
     '@typescript-eslint/no-unsafe-return': 'warn',
     '@typescript-eslint/no-unsafe-argument': 'warn',
     'no-use-before-define': 'warn',
-    'no-console': 'warn',
     '@typescript-eslint/no-explicit-any': 'warn',
     'no-alert': 'warn',
     '@typescript-eslint/no-redundant-type-constituents': 'warn',
