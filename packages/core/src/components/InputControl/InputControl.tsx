@@ -9,7 +9,6 @@ import { hasStatus } from '../../utils/validations';
 // declarations
 import {
   StyledOverloadCssProps,
-  StyledOverloadCssPropsWithRecord,
   WithRequiredAriaLabelOrAriaLabelledByProps,
 } from '../../declarations';
 import type {
@@ -28,7 +27,7 @@ import {
   InputControlShowPassword,
 } from './components';
 
-export interface InputControlProps
+export interface BaseInputControlProps
   extends Omit<InputControlInputProps, 'hasIcon' | 'hasTypeIcon'>,
     Pick<InputControlIconProps, 'icon'>,
     Pick<InputControlInnerContainerProps, 'inputWidth'>,
@@ -44,6 +43,9 @@ export interface InputControlProps
    *  E.g. when the InputControl is type search, but it's combined with an IconButton which has already the search icon. */
   hideTypeIcon?: boolean;
 }
+
+export type InputControlProps =
+  WithRequiredAriaLabelOrAriaLabelledByProps<BaseInputControlProps>;
 
 const InternalInputControl: React.FC<InputControlProps> = ({
   addonToLeft,
