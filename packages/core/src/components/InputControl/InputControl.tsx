@@ -28,7 +28,7 @@ import {
   InputControlShowPassword,
 } from './components';
 
-export interface BaseInputControlProps
+export interface InputControlProps
   extends Omit<InputControlInputProps, 'hasIcon' | 'hasTypeIcon'>,
     Pick<InputControlIconProps, 'icon'>,
     Pick<InputControlInnerContainerProps, 'inputWidth'>,
@@ -44,17 +44,6 @@ export interface BaseInputControlProps
    *  E.g. when the InputControl is type search, but it's combined with an IconButton which has already the search icon. */
   hideTypeIcon?: boolean;
 }
-
-export type InputControlProps =
-  WithRequiredAriaLabelOrAriaLabelledByProps<BaseInputControlProps> &
-    StyledOverloadCssPropsWithRecord<
-      | 'addon'
-      | 'container'
-      | 'icon'
-      | 'input'
-      | 'innerContainer'
-      | 'showPassword'
-    >;
 
 const InternalInputControl: React.FC<InputControlProps> = ({
   addonToLeft,
@@ -105,7 +94,6 @@ const InternalInputControl: React.FC<InputControlProps> = ({
   status = 'base',
   step,
   styles,
-  subcomponentStyles,
   tooltip,
   type = 'text',
   value,
@@ -118,7 +106,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
       ? INPUT_CONTROL_ICON_STATUS_MAP[status]
       : icon;
   return (
-    <InputControl.Container
+    <InputControl._Container
       onClick={onClick}
       onMouseDown={onMouseDown}
       onMouseLeave={onMouseLeave}
@@ -126,49 +114,39 @@ const InternalInputControl: React.FC<InputControlProps> = ({
       onMouseOut={onMouseOut}
       onMouseOver={onMouseOver}
       onMouseUp={onMouseUp}
-      styles={subcomponentStyles?.container || styles}
+      styles={styles}
       tooltip={tooltip}
     >
       {addonToLeft && (
-        <Field._Addon
-          disabled={disabled}
-          size={size}
-          styles={subcomponentStyles?.addon}
-        >
+        <Field._Addon disabled={disabled} size={size}>
           {addonToLeft}
         </Field._Addon>
       )}
-      <InputControl.InnerContainer
-        inputWidth={inputWidth}
-        styles={subcomponentStyles?.innerContainer}
-      >
+      <InputControl._InnerContainer inputWidth={inputWidth}>
         {typeIcon && (
-          <InputControl.Icon
+          <InputControl._Icon
             icon={typeIcon}
             size={size}
             status={status}
-            styles={subcomponentStyles?.icon}
             isTypeIcon
           />
         )}
         {iconEval && (
-          <InputControl.Icon
+          <InputControl._Icon
             icon={iconEval}
             size={size}
             status={status}
-            styles={subcomponentStyles?.icon}
             type={type}
           />
         )}
         {type === 'password' && (
-          <InputControl.ShowPassword
+          <InputControl._ShowPassword
             onClick={() => setShowPassword(!showPassword)}
             showPassword={showPassword}
             size={size}
-            styles={subcomponentStyles?.showPassword}
           />
         )}
-        <InputControl.Input
+        <InputControl._Input
           aria-describedby={ariaDescribedBy}
           aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
           aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
@@ -206,41 +184,35 @@ const InternalInputControl: React.FC<InputControlProps> = ({
           hasTypeIcon={Boolean(typeIcon)}
           size={size}
           status={status}
-          styles={subcomponentStyles?.input}
           step={step}
           type={showPassword ? 'text' : type}
           value={value}
         />
-      </InputControl.InnerContainer>
+      </InputControl._InnerContainer>
       {addonToRight && (
-        <Field._Addon
-          disabled={disabled}
-          position="right"
-          size={size}
-          styles={subcomponentStyles?.addon}
-        >
+        <Field._Addon disabled={disabled} position="right" size={size}>
           {addonToRight}
         </Field._Addon>
       )}
-    </InputControl.Container>
+    </InputControl._Container>
   );
 };
 
 export const InputControl =
   InternalInputControl as typeof InternalInputControl & {
-    Addon: typeof Field._Addon;
-    Container: typeof InputControlContainer;
-    Icon: typeof InputControlIcon;
-    Input: typeof InputControlInput;
-    InnerContainer: typeof InputControlInnerContainer;
-    ShowPassword: typeof InputControlShowPassword;
+    _Addon: typeof Field._Addon;
+    _Container: typeof InputControlContainer;
+    _Icon: typeof InputControlIcon;
+    _Input: typeof InputControlInput;
+    _InnerContainer: typeof InputControlInnerContainer;
+    _ShowPassword: typeof InputControlShowPassword;
   };
 
-InputControl.Addon = Field._Addon;
-InputControl.Container = InputControlContainer;
-InputControl.Icon = InputControlIcon;
-InputControl.Input = InputControlInput;
-InputControl.InnerContainer = InputControlInnerContainer;
-InputControl.ShowPassword = InputControlShowPassword;
+InputControl._Addon = Field._Addon;
+InputControl._Container = InputControlContainer;
+InputControl._Icon = InputControlIcon;
+InputControl._Input = InputControlInput;
+InputControl._InnerContainer = InputControlInnerContainer;
+InputControl._ShowPassword = InputControlShowPassword;
 
 InternalInputControl.displayName = 'InputControl';

@@ -19,7 +19,7 @@ export const TextEditor: React.FC<CellEditorProps> = ({
 }) => {
   const { density, rowHeight } = React.useContext(TableContext);
   return (
-    <InputControl.Input
+    <InputControl._Input
       size={density === 'compact' && rowHeight <= ROW_HEIGHT_MD ? 'sm' : 'md'}
       autoFocus
       aria-label={

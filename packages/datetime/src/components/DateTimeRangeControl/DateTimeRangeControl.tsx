@@ -183,7 +183,7 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
         hideLabel
         status={statusFrom}
       >
-        <InputControl.Input
+        <InputControl._Input
           styles={cssDateTimeRangeControlInput({
             hasMillis,
             hasSeconds,
@@ -214,7 +214,7 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
         hideLabel
         status={statusTo}
       >
-        <InputControl.Input
+        <InputControl._Input
           styles={cssDateTimeRangeControlInput({
             hasMillis,
             hasSeconds,

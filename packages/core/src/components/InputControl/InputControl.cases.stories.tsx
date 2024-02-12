@@ -24,19 +24,26 @@ export const AdvancedUsage: Story = {
   name: 'Advanced usage',
   render: () =>
     (() => (
-      <InputControl.Container>
-        <InputControl.Addon position="left">Addon to left</InputControl.Addon>
-        <InputControl.InnerContainer>
-          <InputControl.Icon icon="gi-check_thick" />
-          <InputControl.Input
+      <InputControl._Container>
+        <InputControl._Addon position="left" styles="background-color: orange">
+          Addon to left
+        </InputControl._Addon>
+        <InputControl._InnerContainer>
+          <InputControl._Icon icon="gi-check_thick" styles="color: purple;" />
+          <InputControl._Input
             aria-label="story example"
             hasAddonToLeft
             hasAddonToRight
             hasIcon
           />
-        </InputControl.InnerContainer>
-        <InputControl.Addon position="right">Addon to right</InputControl.Addon>
-      </InputControl.Container>
+        </InputControl._InnerContainer>
+        <InputControl._Addon
+          position="right"
+          styles="background-color: darkblue; color: white;"
+        >
+          Addon to right
+        </InputControl._Addon>
+      </InputControl._Container>
     ))(),
 };
 

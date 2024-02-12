@@ -30,7 +30,7 @@ export const FieldsCombinerInput: React.FC<FieldsCombinerInputProps> = ({
       status={status}
       width={width}
     >
-      <InputControl.Input
+      <InputControl._Input
         {...restInputControlProps}
         aria-label={ariaLabel}
         status={status}
