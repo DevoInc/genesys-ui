@@ -107,7 +107,7 @@ export const ButtonEditable: Story = {
     iconOnHover: 'gi-pencil_edit',
   },
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [isOpen, setOpen] = React.useState(false);
       return (
         <>
@@ -121,7 +121,7 @@ export const ButtonEditable: Story = {
               </Typography.Paragraph>
             </Modal>
           )}
-          <Avatar {...args} onClick={() => setOpen(true)} />
+          <Avatar {...props} onClick={() => setOpen(true)} />
         </>
       );
     })(args),
@@ -134,7 +134,10 @@ export const ButtonExpandable: Story = {
     customSize: { square: '8rem' },
     name: 'Expand avatar image',
     iconOnHover: 'gi-zoom_expand_maximize_window',
-    onClick: () => console.info('Opening lightbox to expand profile image'),
+    onClick: () => {
+      // eslint-disable-next-line no-console
+      console.info('Opening lightbox to expand profile image');
+    },
   },
 };
 
@@ -150,7 +153,10 @@ export const Clickable: Story = {
     imageFit: 'cover',
     imageSrc: EXAMPLE_AVATAR_IMG,
     name: 'Expand avatar image',
-    onClick: () => console.info('Opening lightbox to expand profile image'),
+    onClick: () => {
+      // eslint-disable-next-line no-console
+      console.info('Opening lightbox to expand profile image');
+    },
     size: 'md',
     variant: 'circle',
   },

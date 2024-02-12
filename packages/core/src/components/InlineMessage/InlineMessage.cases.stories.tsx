@@ -36,6 +36,7 @@ export const WithPanel: Story = {
                 colorScheme="quiet"
                 key="btn-1"
                 onClick={() => {
+                  // eslint-disable-next-line no-alert
                   alert('Cancel');
                   setOpened(false);
                 }}
@@ -46,6 +47,7 @@ export const WithPanel: Story = {
                 colorScheme="neutral"
                 key="btn-2"
                 onClick={() => {
+                  // eslint-disable-next-line no-alert
                   alert('Apply');
                   setOpened(false);
                 }}
@@ -61,6 +63,7 @@ export const WithPanel: Story = {
               <Button
                 colorScheme={'accent'}
                 onClick={() => {
+                  // eslint-disable-next-line no-alert
                   alert('Hello world!');
                   setOpened(false);
                 }}
@@ -77,10 +80,10 @@ export const WithPanel: Story = {
 export const TriggerWithText: Story = {
   name: 'Default trigger with text',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       return (
         <InlineMessage
-          {...args}
+          {...props}
           trigger={{
             icon: 'gi-rocket_space_nasa',
             text: 'Text',
@@ -125,9 +128,9 @@ export const CustomTrigger: Story = {
 
 export const Banner: Story = {
   render: (args) =>
-    ((args) => {
+    ((props) => {
       return (
-        <InlineMessage {...args} status={args.status}>
+        <InlineMessage {...props} status={props.status}>
           {({ setOpened }) => (
             <Box
               maxWidth="40rem"
@@ -140,6 +143,7 @@ export const Banner: Story = {
                   <Button
                     key="BannerAction-1"
                     onClick={() => {
+                      // eslint-disable-next-line no-alert
                       alert('Apply');
                       setOpened(false);
                     }}
@@ -149,18 +153,19 @@ export const Banner: Story = {
                 ]}
                 content={lorem}
                 title="Banner one"
-                {...args}
+                {...props}
               />
               <InlineMessage.Banner
                 content={lorem2}
                 title="Banner two"
-                {...args}
+                {...props}
               />
               <InlineMessage.Banner
                 actions={[
                   <Button
                     key="BannerAction-1"
                     onClick={() => {
+                      // eslint-disable-next-line no-alert
                       alert('Apply');
                       setOpened(false);
                     }}
@@ -170,7 +175,7 @@ export const Banner: Story = {
                 ]}
                 content={lorem3}
                 title="Banner three"
-                {...args}
+                {...props}
               />
             </Box>
           )}

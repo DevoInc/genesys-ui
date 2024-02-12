@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-
 import { subDays } from 'date-fns';
 
 import { DateTimeRange } from './DateTimeRange';
+import type { DateRange } from '../declarations';
 
 const meta: Meta<typeof DateTimeRange> = {
   title: 'Components/Datetime/DateTimeRange',
@@ -19,9 +19,11 @@ const meta: Meta<typeof DateTimeRange> = {
     hasTime: true,
     id: 'story-demo',
     onChange: (dates) => {
+      // eslint-disable-next-line no-console
       console.log('new range ', new Date(dates.from), new Date(dates.to));
     },
     onChangePresetDate: (range) => {
+      // eslint-disable-next-line no-console
       console.log('new preset ', range);
     },
     weekDays: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
@@ -39,7 +41,8 @@ export const Base: Story = {
         to: new Date().getTime(),
       });
 
-      const onChangeCallback = React.useCallback((range) => {
+      const onChangeCallback = React.useCallback((range: DateRange) => {
+        // eslint-disable-next-line no-console
         console.log('new date', new Date(range.from), new Date(range.to));
         setDate(range);
       }, []);

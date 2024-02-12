@@ -70,7 +70,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
   // Functions
   const onInputChange = React.useCallback(
     () => (ev: Event) =>
-      goToPage(parseInt((ev.target as HTMLInputElement)?.value) - 1),
+      goToPage(parseInt((ev.target as HTMLInputElement)?.value, 10) - 1),
     [goToPage],
   );
   const noOptionsMessage = React.useCallback(() => '', []);

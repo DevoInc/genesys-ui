@@ -49,6 +49,7 @@ export const CustomLang = ({
   };
 
   const handleValidate = (markers) => {
+    // eslint-disable-next-line no-console
     console.log('Errors found', markers);
   };
 

@@ -29,7 +29,6 @@
   "license": "MIT",
   "peerDependencies": {
     "@devoinc/genesys-ui": "^6.0.0",
-    "lodash": "4.x.x",
     "polished": "4.x.x",
     "react": "16.x || 17.x || 18.x",
     "react-color": "2.x.x",

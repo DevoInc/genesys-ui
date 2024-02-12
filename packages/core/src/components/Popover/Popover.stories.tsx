@@ -230,6 +230,7 @@ export const AccessToStateFromContent: Story = {
               <Button
                 colorScheme="quiet"
                 onClick={() => {
+                  // eslint-disable-next-line no-alert
                   alert('Cancel!');
                   setOpened(false);
                 }}
@@ -239,6 +240,7 @@ export const AccessToStateFromContent: Story = {
               <Button
                 colorScheme="accent"
                 onClick={() => {
+                  // eslint-disable-next-line no-alert
                   alert('Apply!');
                   setOpened(false);
                 }}

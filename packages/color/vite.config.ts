@@ -21,7 +21,6 @@ export default defineConfig({
         'react-dom',
         'react/jsx-runtime',
         'styled-components',
-        'lodash',
         'react-color',
         'polished',
       ],

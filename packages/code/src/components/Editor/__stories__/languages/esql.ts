@@ -34,7 +34,7 @@ export const esql: Language = {
         [/[0-9]*[smhd]/, 'time'],
         [/\d/, 'digit'],
         [/\/\/.+$/, 'comment'],
-        [/[{}()\[\]]/, '@brackets'],
+        [/[{}()[\]]/, '@brackets'],
       ],
     },
   },

@@ -4,11 +4,7 @@ import styled, { css, keyframes } from 'styled-components';
 import icons from '@devoinc/genesys-icons/dist/icon-variables.js';
 import { linkMixin, scrollbars, disabledMixin } from '@devoinc/genesys-ui';
 
-import {
-  FilePond,
-  FilePondProps as FilePondAllProps,
-  registerPlugin,
-} from 'react-filepond';
+import { FilePond, registerPlugin } from 'react-filepond';
 
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
@@ -76,9 +72,6 @@ export interface StyledUploadFilesProps {
   /** Whether to show the upload icon inside the component */
   showLabelIcon?: boolean;
 }
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface FilePondProps extends FilePondAllProps {}
 
 export const StyledUploadFiles = styled((props) => (
   <FilePond {...props} />

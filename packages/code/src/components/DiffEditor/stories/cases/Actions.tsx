@@ -17,8 +17,13 @@ export const Actions = ({ ...props }: Partial<DiffEditorProps>) => {
     const value = editorRef.current.getModifiedEditor().getValue();
     navigator.clipboard
       .writeText(value)
-      .then(() => console.log('Copied to clipboard:', value))
-      .catch((err) => console.error('Failed to copy to clipboard', err));
+      .then(() => {
+        // eslint-disable-next-line no-console
+        console.log('Copied to clipboard:', value);
+      })
+      .catch((err) => {
+        console.error('Failed to copy to clipboard', err);
+      });
   };
 
   const handlePasteToEditor = () => {

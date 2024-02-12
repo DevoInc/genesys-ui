@@ -1,16 +1,12 @@
 import * as React from 'react';
+import { FilePondProps } from 'react-filepond';
 
-// utils
-import { buildErrorMessage, detectUnknownTypes } from './utils';
-
-// components and declarations
 import { Box, Field, FieldAttrProps, FieldProps } from '@devoinc/genesys-ui';
 
-// styled and filepond
+import { buildErrorMessage, detectUnknownTypes } from './utils';
 import {
-  FilePondProps,
   StyledUploadFiles,
-  StyledUploadFilesProps,
+  type StyledUploadFilesProps,
 } from './StyledUploadFiles';
 
 export interface UploadFilesProps

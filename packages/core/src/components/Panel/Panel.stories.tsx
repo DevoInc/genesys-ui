@@ -25,14 +25,20 @@ export const Base: Story = {
       actions: [
         <Button
           key={1}
-          onClick={() => alert('Cancel click')}
+          onClick={() => {
+            // eslint-disable-next-line no-alert
+            alert('Cancel click');
+          }}
           colorScheme="quiet"
         >
           Cancel
         </Button>,
         <Button
           key={2}
-          onClick={() => alert('Apply click')}
+          onClick={() => {
+            // eslint-disable-next-line no-alert
+            alert('Apply click');
+          }}
           colorScheme="accent"
         >
           Apply
@@ -48,7 +54,10 @@ export const Base: Story = {
           hasBoldIcon
           circular
           icon="gi-heart_full"
-          onClick={() => alert('Clicked!')}
+          onClick={() => {
+            // eslint-disable-next-line no-alert
+            alert('Clicked!');
+          }}
           size="sm"
         />,
       ],
@@ -73,13 +82,22 @@ export const ClosableBackwardNavigation: Story = {
     },
     footerSettings: {
       actions: [
-        <Button key="btn-1" onClick={() => alert('Cancel click')}>
+        <Button
+          key="btn-1"
+          onClick={() => {
+            // eslint-disable-next-line no-alert
+            alert('Cancel click');
+          }}
+        >
           Cancel
         </Button>,
         <Button
           key="btn-2"
           colorScheme="accent"
-          onClick={() => alert('Apply click')}
+          onClick={() => {
+            // eslint-disable-next-line no-alert
+            alert('Apply click');
+          }}
         >
           Apply
         </Button>,
@@ -94,13 +112,19 @@ export const ClosableBackwardNavigation: Story = {
           hasBoldIcon
           circular
           icon="gi-arrow_left"
-          onClick={() => alert('Close Panel!')}
+          onClick={() => {
+            // eslint-disable-next-line no-alert
+            alert('Close Panel!');
+          }}
           colorScheme="quiet"
           size="sm"
         />,
         <IconButtonClose
           key="btn-close"
-          onClick={() => alert('Back to previous Panel!')}
+          onClick={() => {
+            // eslint-disable-next-line no-alert
+            alert('Back to previous Panel!');
+          }}
           tooltip="Back to previous Panel"
         />,
       ],

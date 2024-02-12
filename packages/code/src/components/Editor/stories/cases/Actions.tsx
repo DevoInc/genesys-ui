@@ -17,8 +17,13 @@ export const Actions = ({ ...props }: Partial<EditorProps>) => {
     const value = editorRef.current.getValue();
     navigator.clipboard
       .writeText(value)
-      .then(() => console.log('Copied to clipboard:', value))
-      .catch((err) => console.error('Failed to copy to clipboard', err));
+      .then(() => {
+        // eslint-disable-next-line no-console
+        console.log('Copied to clipboard:', value);
+      })
+      .catch((err) => {
+        console.error('Failed to copy to clipboard', err);
+      });
   };
 
   const handlePasteToEditor = () => {
@@ -29,7 +34,9 @@ export const Actions = ({ ...props }: Partial<EditorProps>) => {
         const currentValue = editorRef.current.getValue();
         editorRef.current.setValue(currentValue.concat(value));
       })
-      .catch((err) => console.error('Failed to paste from clipboard', err));
+      .catch((err) => {
+        console.error('Failed to paste from clipboard', err);
+      });
   };
 
   return (

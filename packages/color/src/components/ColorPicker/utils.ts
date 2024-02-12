@@ -1,5 +1,4 @@
 import { parseToRgb } from 'polished';
-import {isEqual as _isEqual} from 'lodash';
 import { RgbaColor } from 'polished/lib/types/color';
 
 /**
@@ -23,15 +22,15 @@ export const colorFromColorPickerValue = (c: {
   g: number;
   b: number;
   a?: number;
-}): RgbaColor => {
-  return { red: c.r, green: c.g, blue: c.b, alpha: c.a || 1 };
-};
+}): RgbaColor => ({ red: c.r, green: c.g, blue: c.b, alpha: c.a || 1 });
 
 /**
  * Compare two RGBA object format (Inner format):
  * { red: ..., green: ..., blue: ..., alpha: ... }
  * Alpha always presents, even if it is equal to 1.
  */
-export const checkEqualColors = (c1: RgbaColor, c2: RgbaColor): boolean => {
-  return _isEqual(c1, c2);
-};
+export const checkEqualColors = (c1: RgbaColor, c2: RgbaColor): boolean =>
+  c1.red === c2.red &&
+  c1.green === c2.green &&
+  c1.blue === c2.blue &&
+  c1.alpha === c2.alpha;

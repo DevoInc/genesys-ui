@@ -3,6 +3,7 @@ import { subDays, subMinutes } from 'date-fns';
 export const onApply =
   (setDate) =>
     ({ timestamp, preset }) => {
+      // eslint-disable-next-line no-console
       console.table({
         ...(preset?.from &&
         preset?.to && {
@@ -28,6 +29,7 @@ export const onApply =
     };
 
 export const onChange = (setDate) => (range) => {
+  // eslint-disable-next-line no-console
   console.log('click onChange');
   setDate(range);
 };

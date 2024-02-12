@@ -9,9 +9,11 @@ const meta: Meta<typeof DateTimeFloatingPicker> = {
   args: {
     value: new Date().getTime(),
     onApply: (ts: number) => {
+      // eslint-disable-next-line no-console
       console.log('Apply clicked', new Date(ts));
     },
     onCancel: () => {
+      // eslint-disable-next-line no-console
       console.log('Cancel clicked');
     },
   },
@@ -22,8 +24,8 @@ type Story = StoryObj<typeof DateTimeFloatingPicker>;
 
 export const Base: Story = {
   render: (args) =>
-    ((args) => {
-      const [date, setDate] = React.useState(args.value);
+    ((props) => {
+      const [date, setDate] = React.useState(props.value);
 
       const onApply = (ts: number) => {
         setDate(ts);
@@ -32,13 +34,13 @@ export const Base: Story = {
       const onChange = (event) => {
         const target = event.target as HTMLInputElement;
         if (!target.validity.valid) return;
-        const date = new Date(target.value).getTime();
-        setDate(date);
+        const d = new Date(target.value).getTime();
+        setDate(d);
       };
 
       return (
         <DateTimeFloatingPicker
-          {...args}
+          {...props}
           value={date}
           onApply={onApply}
           onChange={onChange}
