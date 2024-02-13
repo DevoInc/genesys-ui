@@ -2,6 +2,7 @@ import { ColDef } from '../declarations';
 // import { DateEditor } from '../editors';
 import { TextRenderer } from '../renderers';
 import { dateFormatter } from '../valueFormatters/date';
+import { enUS } from 'date-fns/locale';
 
 export const date: ColDef = {
   id: 'date',
@@ -11,8 +12,6 @@ export const date: ColDef = {
   context: {
     formatDate: 'dd/MM/yyyy HH:mm:ss',
     tz: 'Europe/Madrid',
-    locale: 'es',
+    locale: enUS,
   },
 };
-
-// TODO: Review the merge of global context with column context
