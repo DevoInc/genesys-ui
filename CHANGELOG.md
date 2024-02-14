@@ -1,5 +1,19 @@
 # Changelog
 
+## [6.1.0](https://github.com/DevoInc/genesys-ui/compare/v6.0.0...v6.1.0) (2024-02-12)
+
+
+### Features
+
+* **Button:** added default type to avoid problems inside forms. ([f3bcc5f](https://github.com/DevoInc/genesys-ui/commit/f3bcc5f349003134f111a344b5eac340646be5c9))
+* **color:** removed lodash from dependencies ([10900c6](https://github.com/DevoInc/genesys-ui/commit/10900c63e7b4a30a7bb10399a1fbbb0c07287d3a))
+* **InputControl:** improvements of internal structure ([c213220](https://github.com/DevoInc/genesys-ui/commit/c2132208ec8b6a4e3f189d6ca799728621db39be))
+
+
+### Bug Fixes
+
+* fixed lint problems ([24cb37e](https://github.com/DevoInc/genesys-ui/commit/24cb37e5e498adc36216d44d72a7bc61db037867))
+
 ## [6.0.0](https://github.com/DevoInc/genesys-ui/compare/v5.0.0...v6.0.0) (2024-02-08)
 
 
