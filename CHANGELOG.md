@@ -1,5 +1,18 @@
 # Changelog
 
+## [6.2.0](https://github.com/DevoInc/genesys-ui/compare/v6.1.0...v6.2.0) (2024-02-14)
+
+
+### Features
+
+* deleted files ([27cc4a6](https://github.com/DevoInc/genesys-ui/commit/27cc4a6d4456f2bd70e3f52e4ac30da50d2d25df))
+* **RealTimeButton:** Export DateTimeRangeControlRTButton to be used outside its parent component ([8372be8](https://github.com/DevoInc/genesys-ui/commit/8372be81afa5a8e835fe4cf9f0ae2d1bd907f8d3))
+
+
+### Bug Fixes
+
+* fixed name for prop ([3c42541](https://github.com/DevoInc/genesys-ui/commit/3c42541aae786b2ef5ba406b574d40c9eda39cc0))
+
 ## [6.1.0](https://github.com/DevoInc/genesys-ui/compare/v6.0.0...v6.1.0) (2024-02-12)
 
 
