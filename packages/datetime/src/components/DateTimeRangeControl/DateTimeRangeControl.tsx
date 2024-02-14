@@ -25,7 +25,7 @@ import {
 import {
   cssDateTimeRangeControlInput,
   CssDateTimeRangeControlInputProps,
-} from './mixins';
+} from './helpers';
 import {
   StyledDateTimeRangeControl,
   StyledDateTimeRangeControlProps,
@@ -34,9 +34,9 @@ import {
 // local components
 import { RealtimeState } from './declarations';
 import {
-  DateTimeRangeControlRTButton,
+  RealTimeButton,
   DateTimeRangeControlRTButtonProps,
-} from './DateTimeRangeControlRTButton';
+} from '../RealTimeButton';
 
 export interface DateTimeRangeControlProps
   extends Required<Pick<GlobalAttrProps, 'id'>>,
@@ -233,7 +233,7 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
         />
       </Field>
       {hasRealTime(realTime) && (
-        <DateTimeRangeControlRTButton
+        <RealTimeButton
           onClick={onRealTimeClick}
           state={realTime}
           size={size}
