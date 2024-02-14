@@ -33,10 +33,7 @@ import {
 
 // local components
 import { RealtimeState } from './declarations';
-import {
-  RealTimeButton,
-  DateTimeRangeControlRTButtonProps,
-} from '../RealTimeButton';
+import { RealTimeButton, RealTimeButtonProps } from '../RealTimeButton';
 
 export interface DateTimeRangeControlProps
   extends Required<Pick<GlobalAttrProps, 'id'>>,
@@ -71,14 +68,14 @@ export interface DateTimeRangeControlProps
     to: InputControlProps['value'];
   }) => void;
   /** handler method after realTime button is clicked. */
-  onRealTimeClick?: DateTimeRangeControlRTButtonProps['onClick'];
+  onRealTimeClick?: RealTimeButtonProps['onClick'];
   /** A text hint that describes the expected value of the `from` field */
   placeholderFrom?: InputControlProps['placeholder'];
   /** A text hint that describes the expected value of the `to` field */
   placeholderTo?: InputControlProps['placeholder'];
   /** Defines the realTime state. If the value is 'hidden', realTime button will
    * not be shown. */
-  realTime?: DateTimeRangeControlRTButtonProps['state'];
+  realTime?: RealTimeButtonProps['state'];
   /** Size for the HTML input elements. */
   size?: FieldSize;
   /** Status for `from` input field */
