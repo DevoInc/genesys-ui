@@ -1,5 +1,7 @@
 # Changelog
 
+## [6.2.1](https://github.com/DevoInc/genesys-ui/compare/v6.2.0...v6.2.1) (2024-02-15)
+
 ## [6.2.0](https://github.com/DevoInc/genesys-ui/compare/v6.1.0...v6.2.0) (2024-02-14)
 
 
