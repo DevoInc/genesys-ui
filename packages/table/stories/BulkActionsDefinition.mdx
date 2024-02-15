@@ -1,0 +1,32 @@
+import { Meta } from '@storybook/blocks';
+
+import * as Stories from './BulkActions.stories';
+
+<Meta of={Stories} />
+
+# Bulk actions definition
+
+Bulk actions allow us to select and execute a series of actions on the selected elements.
+Now we will define a series of behaviors in the different cases that may arise.
+
+## Select all data
+
+When we execute the action of selecting all elements, by default, all existing elements on
+the current page will be selected.
+
+When the action menu is displayed you will see the number of selected rows. Also in the table
+you will see a warning of the number of selected rows where you can select all the available
+rows of the table.
+
+## Select data filter
+
+The status of the selected rows will be maintained when a filter is applied. So you can make
+a combined selection with different filters. 
+
+Note here that the actions will have an effect on the rows visible in the filter. If you have
+selected rows that are not visible in the new filter they will not apply the executed action.
+
+## When there is no data in the applied filter
+
+In case a filter has no data the bulkactions checkbox will appear as disabled.
+
