@@ -6,7 +6,7 @@ const meta: Meta<typeof RealTimeButton> = {
   title: 'Components/Datetime/RealTimeButton',
   component: RealTimeButton,
   args: {
-    size: 'sm',
+    size: 'md',
     state: 'inactive',
   },
 };

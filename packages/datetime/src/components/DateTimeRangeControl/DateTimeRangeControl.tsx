@@ -34,6 +34,7 @@ import {
 // local components
 import { RealtimeState } from './declarations';
 import { RealTimeButton, RealTimeButtonProps } from '../RealTimeButton';
+import { REAL_TIME_SIZE_MAP } from './constants';
 
 export interface DateTimeRangeControlProps
   extends Required<Pick<GlobalAttrProps, 'id'>>,
@@ -233,7 +234,7 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
         <RealTimeButton
           onClick={onRealTimeClick}
           state={realTime}
-          size={size}
+          size={REAL_TIME_SIZE_MAP[size]}
         />
       )}
     </StyledDateTimeRangeControl>
