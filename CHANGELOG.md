@@ -1,5 +1,17 @@
 # Changelog
 
+## [6.4.0](https://github.com/DevoInc/genesys-ui/compare/v6.3.0...v6.4.0) (2024-02-16)
+
+
+### Features
+
+* **Loader:** improvements for internal structure ([87a21f5](https://github.com/DevoInc/genesys-ui/commit/87a21f57d5be85e0a8388e8c6cd67d00260802d9))
+
+
+### Bug Fixes
+
+* Added disabled bulk selection when data is empty and checked false for empty data ([7e4febb](https://github.com/DevoInc/genesys-ui/commit/7e4febbf918ddce89216c55bafeb8a34b7bdce9c))
+
 ## [6.3.0](https://github.com/DevoInc/genesys-ui/compare/v6.2.1...v6.3.0) (2024-02-15)
 
 
