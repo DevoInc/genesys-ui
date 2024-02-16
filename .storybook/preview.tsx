@@ -1,8 +1,9 @@
 import * as React from 'react';
+import { ThemeProvider } from 'styled-components';
+
 import { Preview } from '@storybook/react';
 import { DocsContainer, DocsContainerProps } from '@storybook/addon-docs';
 import { create } from '@storybook/theming';
-import { ThemeProvider } from 'styled-components';
 
 import { light, dark } from '@devoinc/genesys-brand-devo';
 import '@devoinc/genesys-base-styles/dist/styles.css';

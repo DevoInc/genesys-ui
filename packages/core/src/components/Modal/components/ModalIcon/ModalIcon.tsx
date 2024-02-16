@@ -16,7 +16,7 @@ import type {
   StyledOverloadCssProps,
 } from '../../../../declarations';
 
-export const statusIconMap: { [key in ActiveStatus]: IconType } = {
+const statusIconMap: { [key in ActiveStatus]: IconType } = {
   success: GICheckOkRoundedFilled,
   help: GIAboutQuestionFaqHelpFilled,
   info: GIInfoRound,

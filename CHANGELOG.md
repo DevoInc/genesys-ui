@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.3.0](https://github.com/DevoInc/genesys-ui/compare/v6.2.1...v6.3.0) (2024-02-15)
+
+
+### Features
+
+* **RealTimeButton:** simplified structure, size mapping and added quiet colorScheme. ([ac091f9](https://github.com/DevoInc/genesys-ui/commit/ac091f9aee1366336dc578ca98169c6a95b7d4c2))
+
 ## [6.2.1](https://github.com/DevoInc/genesys-ui/compare/v6.2.0...v6.2.1) (2024-02-15)
 
 ## [6.2.0](https://github.com/DevoInc/genesys-ui/compare/v6.1.0...v6.2.0) (2024-02-14)
