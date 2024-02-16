@@ -10,7 +10,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
     project: ['./packages/*/tsconfig.json'],
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'react-refresh'],
   settings: {
     react: {
       version: 'detect',
@@ -21,6 +21,7 @@ module.exports = {
     es2021: true,
   },
   rules: {
+    'react-refresh/only-export-components': 'error',
     '@typescript-eslint/no-unsafe-member-access': 'warn',
     '@typescript-eslint/no-unsafe-assignment': 'warn',
     '@typescript-eslint/no-unsafe-call': 'warn',

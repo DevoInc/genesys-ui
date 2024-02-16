@@ -16,7 +16,7 @@ import {
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-export const renderBackwardNavigation = ({
+const renderBackwardNavigation = ({
   backwardTooltip,
   onClickBackwardNav,
 }: {
