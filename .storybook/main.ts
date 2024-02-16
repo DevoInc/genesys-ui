@@ -33,7 +33,6 @@ const config: StorybookConfig = {
           '@storybook/blocks',
           '@devoinc/genesys-ui',
           '@devoinc/genesys-ui-datetime',
-          '@devoinc/genesys-ui-form',
           '@devoinc/genesys-ui-table',
           '@storybook/addon-actions',
           '@storybook/addon-docs',
