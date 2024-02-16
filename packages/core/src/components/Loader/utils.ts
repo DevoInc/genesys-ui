@@ -1,26 +1,12 @@
 import {
-  LoaderSize,
   ContextualScrollLoaderSize,
   ContextualScrollLoaderType,
+  LoaderBasicColorScheme,
+  LoaderColorScheme,
 } from './declarations';
 import { BaseSize } from '../../';
-import { SpinnerSize } from '../SpinnerLoader/constants';
-import { ProgressBarSize } from '../ProgressBar/declarations';
-
-export const CONTEXTUAL_SCROLL_LOADER_SIZE_MAP: {
-  [key in ContextualScrollLoaderType]: {
-    [key in ContextualScrollLoaderSize]: BaseSize;
-  };
-} = {
-  progress: {
-    md: 'md',
-    lg: 'sm',
-  },
-  spinner: {
-    md: 'md',
-    lg: 'lg',
-  },
-} as const;
+import { DefaultTheme } from 'styled-components';
+import { CONTEXTUAL_SCROLL_LOADER_SIZE_MAP } from './constants';
 
 export const getSizeByType = (
   type: ContextualScrollLoaderType,
@@ -29,28 +15,17 @@ export const getSizeByType = (
   CONTEXTUAL_SCROLL_LOADER_SIZE_MAP[type]?.[size] ||
   CONTEXTUAL_SCROLL_LOADER_SIZE_MAP.spinner.md;
 
-export const LOADER_SIZE_PROGRESS_AND_SPINNER: {
-  [key in LoaderSize]: { progress: ProgressBarSize; spinner: SpinnerSize };
-} = {
-  xs: {
-    progress: 'sm',
-    spinner: 'sm',
-  },
-  sm: {
-    progress: 'sm',
-    spinner: 'md',
-  },
-  md: {
-    progress: 'md',
-    spinner: 'lg',
-  },
-  lg: {
-    progress: 'md',
-    spinner: 'xl',
-  },
-} as const;
-
-export const getSize = (
-  size: LoaderSize,
-): { progress: ProgressBarSize; spinner: SpinnerSize } =>
-  LOADER_SIZE_PROGRESS_AND_SPINNER[size || 'md'];
+export const getLoaderContentColorScheme = ({
+  colorScheme,
+  theme,
+}: {
+  colorScheme: LoaderColorScheme;
+  theme: DefaultTheme;
+}): LoaderBasicColorScheme => {
+  const evalColorScheme =
+    colorScheme === 'inherited'
+      ? (theme.meta.scheme as LoaderBasicColorScheme)
+      : colorScheme;
+  if (evalColorScheme === 'dark') return 'light';
+  return 'dark';
+};

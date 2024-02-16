@@ -8,23 +8,83 @@ import * as Stories from './Loader.stories';
 
 ## Overview
 
-The `Loader` component serves to notify the user of a waiting period, temporarily halting their interaction with the application.
-The `Loader` is comprised of several elements, including an `Overlay` which fills a designated area, and a visually engaging component that captures the user's attention.
-This can take the form of an animated logo, spinner, or progress bar (determined by the prop type).
+The `Loader` component serves to notify the user of a waiting period, temporarily halting their interaction
+with the application.
 
-There are established usage patterns for the `Loader`, which fall into two categories: global loading and contextual loading.
+The `Loader` is based on an `Overlay` component which fills a designated area, and a visually engaging component
+that captures the user's attention. This can take the form of an animated logo, spinner, or progress bar,
+determined by its children.
 
 ## How to import
 
-<Source
-  code={`
-import { Loader } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Loader } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
+There are pre-defined components to be used as children of a `Loader`. They are
+wrappers of other basic components of the library as `Spinner`, `ProgressBar` and `DevoLogoSpinner` ones.
+We recommend to use these components as children, because of design patterns and because they are able to
+inherit some props (colorScheme, size... etc.) automatically from their parent by a React context:
+
+- **Loader.Spinner**: it's the equivalent to the `Spinner` component. It's used as child in contextual usages.
+- **Loader.ProgressBar**: it's the equivalent to the `ProgressBar` component. It's used as child in contextual usages.
+- **Loader.DevoLogoSpinner**: it's the equivalent to the `DevoLogoSpinner` component.
+  It's used as child in global usages.
+
 <Canvas of={Stories.Base} />
+
+There are established usage patterns for the `Loader`, which fall into two categories:
+**global loading** and **contextual loading**.
+
+## Contextual Loading
+
+For contexts of loading content relative to a particular component, such as the content of a `Panel`.
+It utilizes a light overlay that is positioned relative to a designated container, and can be customized to display
+either a spinner or progress bar as the loading indicator, depending on the loading time is measurable.
+
+### Spinner
+
+For the `Loader.Spinner` case you should use the default size (`md`).
+
+<Canvas of={Stories.ContextualSpinner} />
+
+### ProgressBar
+
+For the `Loader.ProgressBar` case you usually should use the `sm` size, because usually it will be used in small contexts,
+but if the context is big, then could fit the `md` size.
+
+<Canvas of={Stories.Progress} />
+
+### For infinite scroll
+
+This usage is designed to be used with the infinite scroll functionality, such as in a Table that loads new rows from
+the backend while scrolling.
+
+<Canvas of={Stories.Scroll} />
+
+This case offers the same options for loading indicators as in contextual loading,
+so you can also include a `Loader.ProgressBar`, but we recommend in this case to use it with `size` prop to 'sm'.
+
+<Canvas of={Stories.ScrollProgress} />
+
+The position of the gradient is 'bottom' by default, but it's also possible to align the loader to the 'top', 'right'
+and 'left' side of the content.
+
+<Canvas of={Stories.ScrollToTop} />
+
+<Canvas of={Stories.ScrollToRight} />
+
+<Canvas of={Stories.ScrollToLeft} />
+
+## Global Loading
+
+This usage is for global loading scenarios such as refreshing the browser, performing login/logout actions,
+or switching between different sections of the platform.
+
+When active, the global Loader displays a dark, fixed overlay that covers the entire page and utilizes an animated logo
+as the loading indicator.
+
+<Canvas of={Stories.Global} />
 
 ## Props
 

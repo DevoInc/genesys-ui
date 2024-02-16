@@ -8,6 +8,7 @@ export interface ProgressBarContainerProps
 
 export const ProgressBarContainer: React.FC<ProgressBarContainerProps> = ({
   children,
+  width = '100%',
   ...VFlexProps
 }) => {
   return (
@@ -16,6 +17,7 @@ export const ProgressBarContainer: React.FC<ProgressBarContainerProps> = ({
       childrenFitFullWidth
       position="relative"
       spacing="cmp-xxs"
+      width={width}
     >
       {children}
     </VFlex>

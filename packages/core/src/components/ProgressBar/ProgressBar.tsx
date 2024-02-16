@@ -6,7 +6,6 @@ import {
   GlobalAriaProps,
   GlobalAttrProps,
   StyledOverloadCssProps,
-  StyledOverloadCssPropsWithRecord,
   StyledPolymorphicProps,
 } from '../../declarations';
 
@@ -22,7 +21,7 @@ import {
   ProgressBarStandardBar,
 } from './components';
 
-export interface BasicProgressBarProps
+export interface ProgressBarProps
   extends Omit<GlobalAttrProps, 'role'>,
     GlobalAriaProps,
     StyledPolymorphicProps,
@@ -51,17 +50,6 @@ export interface BasicProgressBarProps
   type?: ProgressBarType;
 }
 
-export type ProgressBarProps = BasicProgressBarProps &
-  StyledOverloadCssPropsWithRecord<
-    | 'container'
-    | 'customInfo'
-    | 'helper'
-    | 'info'
-    | 'innerContainer'
-    | 'standardBar'
-    | 'circularBar'
-  >;
-
 const InternalProgressBar: React.FC<ProgressBarProps> = ({
   animated,
   colorScheme = 'dark',
@@ -77,21 +65,13 @@ const InternalProgressBar: React.FC<ProgressBarProps> = ({
   showStatus,
   size = 'md',
   styles,
-  subcomponentStyles,
   type = 'standard',
   ...nativeProps
 }) => {
   const helperId = id ? `${id}-progress-helper` : null;
   return (
-    <ProgressBarContainer
-      {...nativeProps}
-      id={id}
-      styles={subcomponentStyles?.container || styles}
-    >
-      <ProgressBarInnerContainer
-        type={type}
-        styles={subcomponentStyles?.innerContainer}
-      >
+    <ProgressBarContainer {...nativeProps} id={id} styles={styles}>
+      <ProgressBarInnerContainer type={type}>
         {(type === 'standard' || !type) && (
           <ProgressBarStandardBar
             animated={animated}
@@ -107,7 +87,6 @@ const InternalProgressBar: React.FC<ProgressBarProps> = ({
             status={getStatus({ percent, status })}
             showStatus={showStatus}
             size={size}
-            styles={subcomponentStyles?.standardBar}
           />
         )}
         {type === 'circular' && (
@@ -124,7 +103,6 @@ const InternalProgressBar: React.FC<ProgressBarProps> = ({
             showStatus={showStatus}
             size={size}
             status={getStatus({ percent, status })}
-            styles={subcomponentStyles?.circularBar}
           />
         )}
         {showStatus && (
@@ -137,7 +115,6 @@ const InternalProgressBar: React.FC<ProgressBarProps> = ({
             size={size}
             status={status}
             statusHelper={statusHelper}
-            styles={subcomponentStyles?.info}
             type={type}
           />
         )}
@@ -148,7 +125,6 @@ const InternalProgressBar: React.FC<ProgressBarProps> = ({
           size={size}
           status={status}
           startInfo={customInfo.startInfo}
-          styles={subcomponentStyles?.customInfo}
         />
       )}
       {showStatus && statusHelper && !hasFloatingStatusHelper && (
@@ -158,7 +134,6 @@ const InternalProgressBar: React.FC<ProgressBarProps> = ({
             size={size}
             status={status}
             statusHelper={statusHelper}
-            styles={subcomponentStyles?.helper}
           />
         </Flex>
       )}

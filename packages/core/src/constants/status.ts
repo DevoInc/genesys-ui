@@ -17,7 +17,7 @@ export const STATUS_ICON_MAP: {
     error: 'gi-error_warning_danger_stop',
     help: 'gi-about_question_faq_help',
     info: 'gi-info_round',
-    success: 'gi-ok_successful_check',
+    success: 'gi-check_thick',
     warning: 'gi-attention_error_alert_caution',
   },
 } as const;

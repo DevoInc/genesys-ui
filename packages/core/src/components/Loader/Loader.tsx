@@ -1,40 +1,31 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { LOADER_SIZE_MAP } from './constants';
+import { Overlay, OverlayProps } from '../Overlay';
 
-import {
-  DevoLogoLoader,
-  Overlay,
-  OverlayProps,
-  ProgressBar,
-  ProgressBarProps,
-  SpinnerLoader,
-} from '../';
-
-import {
-  ContextualLoader,
-  ContextualScrollLoader,
-  GlobalLoader,
-} from './cases';
-
-import {
+import type {
   GlobalAriaProps,
   GlobalAttrProps,
-  StyledOverloadCssPropsWithRecord,
+  StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../declarations';
-import {
+import type {
   LoaderSize,
-  LoaderType,
   LoaderColorScheme,
-  GradientConfig,
   LoaderBasicColorScheme,
 } from './declarations';
-import { getSize } from './utils';
-import { LoaderGradientContainer, LoaderGradientOverlay } from './components';
 
-export interface BaseLoaderProps
+import { LoaderContext } from './context';
+
+import {
+  LoaderDevoLogoSpinner,
+  LoaderGradientContainer,
+  LoaderProgressBar,
+  LoaderSpinner,
+} from './components';
+import { getLoaderContentColorScheme } from './utils';
+
+export interface LoaderProps
   extends Pick<
       OverlayProps,
       'alignItems' | 'fixed' | 'zIndex' | 'justifyContent' | 'padding'
@@ -42,45 +33,29 @@ export interface BaseLoaderProps
     // native
     GlobalAttrProps,
     GlobalAriaProps,
-    StyledPolymorphicProps {
+    StyledPolymorphicProps,
+    StyledOverloadCssProps {
+  children: React.ReactElement;
   /** The definition of color scheme: based in the scheme of the theme (inherited), light, dark... etc. It defines if the overlay is dark and the content light or vice versa.*/
   colorScheme?: LoaderColorScheme;
-  gradientConfig?: GradientConfig;
-  loadPercent?: ProgressBarProps['percent'];
+  /** If the Overlay is opaque.*/
   opaque?: boolean;
-  progressIcon?: ProgressBarProps['icon'];
+  /** The pre-defined size for its children: Spinner, ProgressBar... etc. .*/
   size?: LoaderSize;
-  type?: LoaderType;
 }
-
-export type LoaderProps = BaseLoaderProps &
-  StyledOverloadCssPropsWithRecord<
-    | 'gradientContainer'
-    | 'gradientOverlay'
-    | 'overlay'
-    | 'progress'
-    | 'logo'
-    | 'spinner'
-  >;
 
 const InternalLoader: React.FC<LoaderProps> = ({
   alignItems,
-  as,
+  children,
   colorScheme = 'inherited',
   fixed,
-  gradientConfig,
-  progressIcon,
   justifyContent,
-  loadPercent,
   opaque,
   padding,
   size = 'md',
-  type = 'spinner',
   zIndex = 10,
-  //native
   role,
   styles,
-  subcomponentStyles,
   tooltip,
   ...nativeProps
 }) => {
@@ -89,90 +64,49 @@ const InternalLoader: React.FC<LoaderProps> = ({
     colorScheme === 'inherited'
       ? (theme.meta.scheme as LoaderBasicColorScheme)
       : colorScheme;
-  const contentColor = evalColorScheme === 'dark' ? 'light' : 'dark';
-  const contentSize = size;
-
-  const getContent = () => {
-    if (type === 'progress' || loadPercent) {
-      return (
-        <ProgressBar
-          {...nativeProps}
-          colorScheme={contentColor}
-          icon={progressIcon}
-          percent={loadPercent}
-          showStatus
-          size={LOADER_SIZE_MAP[size].progress}
-          styles={subcomponentStyles?.progress}
-          type="circular"
-        />
-      );
-    }
-
-    if (type === 'logo') {
-      return (
-        <DevoLogoLoader
-          {...nativeProps}
-          role={role}
-          colorScheme={contentColor}
-          size={size}
-          styles={subcomponentStyles?.logo}
-        />
-      );
-    }
-
-    return (
-      <SpinnerLoader
-        {...nativeProps}
-        role={role}
-        colorScheme={contentColor}
-        size={getSize(contentSize).spinner}
-        styles={subcomponentStyles?.spinner}
-      />
-    );
-  };
-  const renderContent = () => {
-    if (gradientConfig) {
-      return (
-        <LoaderGradientContainer
-          as={as}
-          height={gradientConfig.height}
-          styles={subcomponentStyles?.gradientContainer}
-        >
-          <LoaderGradientOverlay styles={subcomponentStyles?.gradientOverlay}>
-            {getContent()}
-          </LoaderGradientOverlay>
-        </LoaderGradientContainer>
-      );
-    } else {
-      return getContent();
-    }
-  };
+  const hasGradient = children.type === LoaderGradientContainer;
+  const evalDefaultPadding = hasGradient ? '0' : 'cmp-lg';
   return (
     <Overlay
+      {...nativeProps}
       alignItems={alignItems}
       bgColorScheme={evalColorScheme}
-      bgColor={gradientConfig && 'transparent'}
+      bgColor={hasGradient && 'transparent'}
       fixed={fixed}
-      hasInteractionBehind={Boolean(gradientConfig)}
-      justifyContent={gradientConfig ? 'flex-end' : justifyContent}
+      hasInteractionBehind={hasGradient}
+      justifyContent={justifyContent}
       opacity={opaque ? 1 : 0.8}
-      padding={gradientConfig ? '0' : String(padding)}
-      styles={subcomponentStyles?.overlay || styles}
+      padding={String(padding) || evalDefaultPadding}
+      role={role}
+      styles={styles}
       tooltip={tooltip}
-      zIndex={zIndex}
+      zIndex={zIndex || (fixed ? 99999 : undefined)}
     >
-      {renderContent()}
+      <LoaderContext.Provider
+        value={{
+          size,
+          colorScheme: getLoaderContentColorScheme({
+            colorScheme,
+            theme,
+          }),
+        }}
+      >
+        {children}
+      </LoaderContext.Provider>
     </Overlay>
   );
 };
 
 export const Loader = InternalLoader as typeof InternalLoader & {
-  Contextual: typeof ContextualLoader;
-  ContextualScroll: typeof ContextualScrollLoader;
-  Global: typeof GlobalLoader;
+  DevoLogoSpinner: typeof LoaderDevoLogoSpinner;
+  GradientContainer: typeof LoaderGradientContainer;
+  ProgressBar: typeof LoaderProgressBar;
+  Spinner: typeof LoaderSpinner;
 };
 
-Loader.Contextual = ContextualLoader;
-Loader.Contextual = ContextualLoader;
-Loader.ContextualScroll = ContextualScrollLoader;
-Loader.Global = GlobalLoader;
+Loader.DevoLogoSpinner = LoaderDevoLogoSpinner;
+Loader.GradientContainer = LoaderGradientContainer;
+Loader.ProgressBar = LoaderProgressBar;
+Loader.Spinner = LoaderSpinner;
+
+InternalLoader.displayName = 'Loader';

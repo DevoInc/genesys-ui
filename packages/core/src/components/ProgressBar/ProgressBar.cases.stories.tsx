@@ -21,7 +21,7 @@ export const Circular: Story = {
     percent: 75,
     type: 'circular',
     showStatus: true,
-    status: 'warning',
+    customInfo: { startInfo: 'pepe', endInfo: 'manolo' },
   },
 };
 

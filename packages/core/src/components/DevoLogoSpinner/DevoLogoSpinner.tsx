@@ -7,19 +7,19 @@ import {
 } from '../../declarations';
 
 import {
-  StyledDevoLogoLoader,
-  StyledDevoLogoLoaderProps,
-} from './StyledDevoLogoLoader';
+  StyledDevoLogoSpinner,
+  StyledDevoLogoSpinnerProps,
+} from './StyledDevoLogoSpinner';
 
-export interface DevoLogoLoaderProps
-  extends StyledDevoLogoLoaderProps,
+export interface DevoLogoSpinnerProps
+  extends StyledDevoLogoSpinnerProps,
     // native
     StyledPolymorphicProps,
     StyledOverloadCssProps,
     GlobalAttrProps,
     GlobalAriaProps {}
 
-export const DevoLogoLoader: React.FC<DevoLogoLoaderProps> = ({
+export const DevoLogoSpinner: React.FC<DevoLogoSpinnerProps> = ({
   animation = 'flow',
   colorScheme = 'dark',
   size = 'md',
@@ -27,7 +27,7 @@ export const DevoLogoLoader: React.FC<DevoLogoLoaderProps> = ({
   tooltip,
   ...nativeProps
 }) => (
-  <StyledDevoLogoLoader
+  <StyledDevoLogoSpinner
     {...nativeProps}
     animation={animation}
     colorScheme={colorScheme}
@@ -110,5 +110,5 @@ export const DevoLogoLoader: React.FC<DevoLogoLoaderProps> = ({
         />
       </g>
     </svg>
-  </StyledDevoLogoLoader>
+  </StyledDevoLogoSpinner>
 );

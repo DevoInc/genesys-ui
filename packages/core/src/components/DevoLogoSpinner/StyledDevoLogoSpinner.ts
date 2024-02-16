@@ -20,17 +20,17 @@ import {
   WOBBLE_ANIMATION,
 } from './constants';
 
-export interface StyledDevoLogoLoaderProps {
+export interface StyledDevoLogoSpinnerProps {
   colorScheme?: DevoLogoColorScheme;
   size?: DevoLogoSize;
   animation?: DevoLogoAnimation;
 }
 
-export const StyledDevoLogoLoader = styled.div<StyledDevoLogoLoaderProps>`
+export const StyledDevoLogoSpinner = styled.div<StyledDevoLogoSpinnerProps>`
   ${({ animation, colorScheme, size, theme }) => {
-  const { width, height } = getSize(size);
+    const { width, height } = getSize(size);
 
-  return css`
+    return css`
       display: inline-block;
       width: ${width};
       height: ${height};
@@ -205,5 +205,5 @@ export const StyledDevoLogoLoader = styled.div<StyledDevoLogoLoaderProps>`
         }
       `}
     `;
-}}
+  }}
 `;

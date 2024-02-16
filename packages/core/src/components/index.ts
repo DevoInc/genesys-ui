@@ -15,7 +15,7 @@ export * from './ChoiceGroup';
 export * from './Collapse';
 export * from './ContentSwitcher';
 export * from './DecoratorBar';
-export * from './DevoLogoLoader';
+export * from './DevoLogoSpinner';
 export * from './Divider';
 export * from './EditableContent';
 export * from './Field';
