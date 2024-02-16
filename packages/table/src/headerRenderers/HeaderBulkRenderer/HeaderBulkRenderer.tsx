@@ -34,6 +34,7 @@ export const HeaderBulkRenderer: React.FC<HeaderRendererProps> = ({
         indeterminate={context?.headerBulkChecked === 'indeterminate'}
         checked={checked}
         aria-label="Select all rows"
+        disabled={context?.headerDisabled}
       />
       {context?.headerBulkMenu && (
         <Popover id={popoverId} placement="bottom-start">
