@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { VFlex, VFlexProps } from '../VFlex';
-import { MenuHeading, MenuItem, MenuSeparator } from './subcomponents';
+import { MenuHeading, MenuItem, MenuSeparator } from './components';
 
 export interface MenuProps extends Omit<VFlexProps, 'role'> {
   cmpRole?: 'menu' | 'nav';

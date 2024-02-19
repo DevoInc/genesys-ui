@@ -2,6 +2,20 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Menu } from './';
+import {
+  GIBinTrashRecycleDeleteGarbageEmpty,
+  GICalendarMonthDayPlannerEvents,
+  GIDownload,
+  GIExpandRows,
+  GINetworkConnectionComputerFolder,
+  GIPasteClipboard,
+  GIPencilEdit,
+  GIPinBookmark,
+  GISettingsGearPreferences,
+  GITagPriceSale,
+  GIToBack,
+  GIUsersProfileGroupTwoShareSolid,
+} from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof Menu> = {
   title: 'Components/Navigation/Menu',
@@ -20,46 +34,57 @@ export default meta;
 type Story = StoryObj<typeof Menu>;
 
 export const Base: Story = {
-  render: () => (
-    <Menu>
-      <Menu.Item icon="gi-to_back" label="Open in a new tab" />
+  args: {
+    children: [
+      <Menu.Item key={1} icon={<GIToBack />} label="Open in a new tab" />,
       <Menu.Item
-        icon="gi-network_connection_computer_folder"
+        key={2}
+        icon={<GINetworkConnectionComputerFolder />}
         label="Network manager"
-      />
-      <Menu.Item icon="gi-pin_bookmark" label="Set as default" />
-      <Menu.Item icon="gi-tag_price_sale" label="Manage user tags" />
-      <Menu.Separator />
-      <Menu.Item icon="gi-download_file" label="Export to PDF" />
+      />,
+      <Menu.Item key={3} icon={<GIPinBookmark />} label="Set as default" />,
+      <Menu.Item key={4} icon={<GITagPriceSale />} label="Manage user tags" />,
+      <Menu.Separator key={5} />,
+      <Menu.Item key={6} icon={<GIDownload />} label="Export to PDF" />,
       <Menu.Item
-        icon="gi-calendar_month_day_planner_events"
+        key={7}
+        icon={<GICalendarMonthDayPlannerEvents />}
         label="Add scheduled report"
-      />
-      <Menu.Separator />
-      <Menu.Item label="Make Activeboard visible" selectionScheme="multiple" />
+      />,
+      <Menu.Separator key={8} />,
+      <Menu.Item key={9} label="Make Activeboard visible" />,
       <Menu.Item
-        icon="gi-users_profile_group_two_share_solid"
+        key={10}
+        icon={<GIUsersProfileGroupTwoShareSolid />}
         label="Share with roles"
         state="disabled"
-      />
-      <Menu.Separator />
-      <Menu.Item icon="gi-pencil_edit" label="Edit details" expandable />
+      />,
+      <Menu.Separator key={11} />,
       <Menu.Item
-        icon="gi-settings_gear_preferences"
+        key={12}
+        icon={<GIPencilEdit />}
+        label="Edit details"
+        expandable
+      />,
+      <Menu.Item
+        key={13}
+        icon={<GISettingsGearPreferences />}
         label="Edit raw configuration"
-      />
+      />,
       <Menu.Item
-        icon="gi-paste_clipboard"
+        key={14}
+        icon={<GIPasteClipboard />}
         label="Paste widget"
         state="disabled"
-      />
-      <Menu.Separator />
-      <Menu.Item icon="gi-expand_rows" label="Clone" />
+      />,
+      <Menu.Separator key={15} />,
+      <Menu.Item key={16} icon={<GIExpandRows />} label="Clone" />,
       <Menu.Item
-        icon="gi-bin_trash_recycle_delete_garbage_empty"
+        key={17}
+        icon={<GIBinTrashRecycleDeleteGarbageEmpty />}
         label="Delete"
         state="deleted"
-      />
-    </Menu>
-  ),
+      />,
+    ],
+  },
 };

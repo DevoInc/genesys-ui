@@ -1,21 +1,21 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import {
-  Badge,
-  Box,
-  Flex,
-  HFlex,
-  Icon,
-  Menu,
-  ProgressBar,
-  Tag,
-  Typography,
-  VFlex,
-} from '../../../../components';
-import { GITimeZone } from '@devoinc/genesys-icons';
+import { GIIdea, GITimeZone } from '@devoinc/genesys-icons';
+
+import { Badge } from '../../../Badge';
+import { Box } from '../../../Box';
+import { Flex } from '../../../Flex';
+import { HFlex } from '../../../HFlex';
+import { Icon } from '../../../Icon';
+import { Menu } from '../../../Menu';
+import { ProgressBar } from '../../../ProgressBar';
+import { Tag } from '../../../Tag';
+import { Typography } from '../../../Typography';
+import { VFlex } from '../../../VFlex';
+import { MenuItem } from './MenuItem';
 
 const meta: Meta<typeof Menu.Item> = {
-  title: 'Components/Navigation/Menu/Subcomponents/Item',
+  title: 'Components/Navigation/Menu/Components/Item',
   component: Menu.Item,
 };
 
@@ -158,7 +158,11 @@ export const CustomContent: Story = {
           onChange={onOptionChange}
           state={selected ? 'selected' : 'enabled'}
           unlimitedHeight
+          hasExtraLeftSpace
         >
+          <MenuItem._Icon size="2rem">
+            <GIIdea />
+          </MenuItem._Icon>
           <VFlex spacing="cmp-xxs" padding="cmp-xs">
             <Typography.Heading size="h6">Menu item heading</Typography.Heading>
             <Typography.Paragraph colorScheme="weak">

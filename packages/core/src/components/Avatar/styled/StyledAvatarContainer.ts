@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import _ from 'lodash';
+import { camelCase } from 'lodash';
 
 import icons from '@devoinc/genesys-icons/dist/icon-variables.js';
 
@@ -58,7 +58,7 @@ export const StyledAvatarContainer = styled.span<StyledAvatarContainerProps>`
     theme,
     variant,
   }) => {
-    const colorSchemeForTokens = _.camelCase(colorScheme);
+    const colorSchemeForTokens = camelCase(colorScheme);
     const aliasTokens = theme?.alias;
     const bgColor =
       aliasTokens.color.background.feedback[colorSchemeForTokens].weak;

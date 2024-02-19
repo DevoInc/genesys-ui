@@ -185,7 +185,7 @@ export const Nested: Story = {
                         state={isOpened ? 'expanded' : undefined}
                       />
                     )}
-                    <Popover.Panel>
+                    <Popover.Panel as={'ul'}>
                       <Menu>
                         <Menu.Item label="Option 4.3.1" />
                         <Menu.Item label="Option 4.3.3" />

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { MenuItem, MenuHeading } from '../../subcomponents';
+import { MenuItem } from '../MenuItem';
+import { MenuHeading } from './MenuHeading';
 
 const meta: Meta<typeof MenuHeading> = {
-  title: 'Components/Navigation/Menu/Subcomponents',
+  title: 'Components/Navigation/Menu/Components',
   component: MenuHeading,
 };
 

@@ -70,13 +70,7 @@ const preview: Preview = {
     },
     options: {
       storySort: (a, b) => {
-        const storySortOrder = [
-          'Docs',
-          'Base',
-          'Cases',
-          'Hooks',
-          'Subcomponents',
-        ];
+        const storySortOrder = ['Docs', 'Base', 'Cases', 'Hooks', 'Components'];
 
         // Lower depth goes first
         const aDepth = a.title.split('/').length;

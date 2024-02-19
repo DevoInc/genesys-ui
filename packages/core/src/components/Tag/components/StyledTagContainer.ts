@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import * as _ from 'lodash';
+import { camelCase } from 'lodash';
 
 import { FeedbackColorScheme, FeedbackSize } from '../../../declarations';
 
@@ -24,23 +24,23 @@ export interface StyledTagContainerProps {
 
 export const StyledTagContainer = styled.span<StyledTagContainerProps>`
   ${({ colorScheme = 'neutral', bold, quiet, wide, size = 'md', theme }) => {
-  const colorSchemeForTokens = _.camelCase(colorScheme);
+    const colorSchemeForTokens = camelCase(colorScheme);
 
-  const isBlendColorScheme =
+    const isBlendColorScheme =
       colorScheme === 'blend-base' || colorScheme === 'blend-inverse';
-  const quietColorScheme = isBlendColorScheme ? colorScheme : 'neutral';
-  const cmpTokens = theme.cmp.tag;
+    const quietColorScheme = isBlendColorScheme ? colorScheme : 'neutral';
+    const cmpTokens = theme.cmp.tag;
 
-  const colorBackground = quiet ? 'quiet' : colorSchemeForTokens;
-  const colorText = quiet ? quietColorScheme : colorSchemeForTokens;
+    const colorBackground = quiet ? 'quiet' : colorSchemeForTokens;
+    const colorText = quiet ? quietColorScheme : colorSchemeForTokens;
 
-  const bgColor = isValidColor(colorScheme)
-    ? colorScheme
-    : cmpTokens.color.background[colorBackground];
-  const textColor = isValidColor(colorScheme)
-    ? getAccTextColor(colorScheme, '#fff', cmpTokens.color.text.neutral)
-    : cmpTokens.color.text[colorText];
-  return css`
+    const bgColor = isValidColor(colorScheme)
+      ? colorScheme
+      : cmpTokens.color.background[colorBackground];
+    const textColor = isValidColor(colorScheme)
+      ? getAccTextColor(colorScheme, '#fff', cmpTokens.color.text.neutral)
+      : cmpTokens.color.text[colorText];
+    return css`
       position: relative;
       display: inline-flex;
       align-items: center;
@@ -61,5 +61,5 @@ export const StyledTagContainer = styled.span<StyledTagContainerProps>`
         flex: 1 1 100%;
       `};
     `;
-}}
+  }}
 `;

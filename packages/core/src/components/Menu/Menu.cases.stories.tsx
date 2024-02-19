@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Menu } from '.';
+import { Popover } from '../Popover';
+import { Button } from '../Button';
 
 const meta: Meta<typeof Menu> = {
   title: 'Components/Navigation/Menu/Cases',
@@ -61,6 +63,7 @@ export const Selectable: Story = {
 };
 
 export const AsNavigation: Story = {
+  name: 'As navigation',
   render: () => (
     <Menu cmpRole="nav">
       <Menu.Heading>Platform</Menu.Heading>
@@ -102,4 +105,98 @@ export const AsNavigation: Story = {
       />
     </Menu>
   ),
+};
+
+export const AsDropdownMenu: Story = {
+  name: 'As dropdown menu',
+  render: () => {
+    const popoverId = 'nested';
+    return (
+      <Popover id={popoverId} placement="bottom-start">
+        {({ toggle, ref, isOpened }) => (
+          <Button
+            aria-controls={popoverId}
+            aria-expanded={isOpened}
+            aria-haspopup={true}
+            onClick={toggle}
+            ref={ref}
+            state={isOpened ? 'expanded' : undefined}
+          >
+            TriggerElement
+          </Button>
+        )}
+        <Popover.Panel>
+          <Menu>
+            <Menu.Item label="Option 1" />
+            <Menu.Item label="Option 2" />
+            <Menu.Item label="Option 3" />
+            <Popover
+              id={`${popoverId}-1`}
+              appendTo={null}
+              modifiers={[
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 4],
+                  },
+                },
+              ]}
+            >
+              {({ toggle, ref, isOpened }) => (
+                <Menu.Item
+                  aria-controls={`${popoverId}-1`}
+                  aria-expanded={isOpened}
+                  aria-haspopup={true}
+                  expandable
+                  label="Option 4"
+                  onClick={toggle}
+                  ref={ref}
+                  state={isOpened ? 'expanded' : undefined}
+                />
+              )}
+              <Popover.Panel>
+                <Menu>
+                  <Menu.Item label="Option 4.1" />
+                  <Menu.Item label="Option 4.2" />
+                  <Menu.Item label="Option 4.3" />
+                  <Popover
+                    id={`${popoverId}-2`}
+                    appendTo={null}
+                    modifiers={[
+                      {
+                        name: 'offset',
+                        options: {
+                          offset: [0, 4],
+                        },
+                      },
+                    ]}
+                  >
+                    {({ toggle, ref, isOpened }) => (
+                      <Menu.Item
+                        aria-controls={`${popoverId}-2`}
+                        aria-expanded={isOpened}
+                        aria-haspopup={true}
+                        expandable
+                        label="Option 4.3.1"
+                        onClick={toggle}
+                        ref={ref}
+                        state={isOpened ? 'expanded' : undefined}
+                      />
+                    )}
+                    <Popover.Panel as={'ul'}>
+                      <Menu>
+                        <Menu.Item label="Option 4.3.1" />
+                        <Menu.Item label="Option 4.3.3" />
+                        <Menu.Item label="Option 4.3.2" />
+                      </Menu>
+                    </Popover.Panel>
+                  </Popover>
+                </Menu>
+              </Popover.Panel>
+            </Popover>
+          </Menu>
+        </Popover.Panel>
+      </Popover>
+    );
+  },
 };

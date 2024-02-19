@@ -1,9 +1,10 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { MenuItem, MenuSeparator } from '../../subcomponents';
+import { MenuItem } from '../MenuItem';
+import { MenuSeparator } from './MenuSeparator';
 
 const meta: Meta<typeof MenuSeparator> = {
-  title: 'Components/Navigation/Menu/Subcomponents',
+  title: 'Components/Navigation/Menu/Components',
   component: MenuSeparator,
 };
 

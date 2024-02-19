@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { debounce } from 'lodash';
 import * as React from 'react';
 
 export const useHeadsObserver = (headings: HTMLHeadingElement[]) => {
@@ -33,7 +33,7 @@ export const useHeadsObserver = (headings: HTMLHeadingElement[]) => {
             // If heading is not in viewport and in list of visible headings, remove it.
             // Only remove if there is more than one visible heading
             newSelectedHeadings = newSelectedHeadings.filter(
-              (id) => id !== heading.id
+              (id) => id !== heading.id,
             );
           }
         }
@@ -43,7 +43,7 @@ export const useHeadsObserver = (headings: HTMLHeadingElement[]) => {
   }, [headings]);
 
   // Debounce function to avoid performance issues
-  const getVisibleHeadingsDebounced = _.debounce(getVisibleHeadings, 5);
+  const getVisibleHeadingsDebounced = debounce(getVisibleHeadings, 5);
 
   // Update list of visible headings headings change
   React.useEffect(() => {

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import _ from 'lodash';
+import { camelCase } from 'lodash';
 
 import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
 
@@ -48,7 +48,7 @@ export const StyledButtonContainer = styled.button<StyledButtonContainerProps>`
     theme,
   }) => {
     const isIconButtonDropdown = icon && squared && hasDropdown;
-    const colorSchemeForTokens = _.camelCase(colorScheme);
+    const colorSchemeForTokens = camelCase(colorScheme);
     const buttonTokens = theme.cmp.button;
     const IconButtonDropdownTokens = theme.cmp.iconButtonDropdown;
     const boxShadowTokens = buttonTokens.elevation.boxShadow;

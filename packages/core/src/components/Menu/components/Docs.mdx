@@ -4,11 +4,11 @@ import * as ItemStories from './MenuItem/MenuItem.stories';
 import * as HeadingStories from './MenuHeading/MenuHeading.stories';
 import * as SeparatorStories from './MenuSeparator/MenuSeparator.stories';
 
-<Meta title="Components/Navigation/Menu/Subcomponents/Docs" />
+<Meta title="Components/Navigation/Menu/Components/Docs" />
 
-# Subcomponents
+# Components
 
-Set of subcomponents that can be used to build a `Menu` component.
+Set of pre-defined components that can be used to build a `Menu` component.
 
 ## Item
 
@@ -38,6 +38,9 @@ is rendered inside the item, but it's not visible, because its purpose is manage
 You can add all the content of the `Menu.Item` by its prop `children`. You have to keep in mind
 that the content probably will weed some extra space, specially vertical one. This way the mouse
 events and selectable behavior still work.
+
+Also, there are several internal pre-defined components as `MenuItem._Container`, `MenuItem._Icon`... etc.
+so you can use them directly, just in case you need small visual adjustments.
 
 <Canvas of={ItemStories.CustomContent} />
 
