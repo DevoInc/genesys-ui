@@ -14,6 +14,7 @@ export type BulkContext = {
   onHeaderBulkCheckboxChange?: (event: React.FormEvent<Element>) => void;
   bulkSelection?: number[];
   bulkDisabled?: number[];
+  headerDisabled?: boolean;
   onBulkCheckboxChange?: (
     rowIndex: number,
     event: React.FormEvent<Element>,

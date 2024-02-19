@@ -64,6 +64,7 @@ export const TableHead: React.FC<TableHeadProps> = ({
                 resizable={false}
                 width={`${virtualColumn.size}px`}
                 offsetX={virtualColumn.start}
+                showFilters={showFilters}
               >
                 {colDef?.headerOnFilterPosition ? (
                   colDef?.headerRenderer ? (

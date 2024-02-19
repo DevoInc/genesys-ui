@@ -72,6 +72,13 @@ const BulkExample = () => {
         >
           Add row
         </Button>
+        <Button
+          onClick={() => {
+            setData([]);
+          }}
+        >
+          Empty data
+        </Button>
       </Flex.Item>
       <Flex.Item>
         <Table
@@ -83,6 +90,7 @@ const BulkExample = () => {
               headerRenderer: HeaderBulkRenderer,
               width: 64,
               context: {
+                headerDisabled: data.length === 0,
                 headerBulkMenu:
                   bulkSelection.length > 0
                     ? ({ setOpened }) => {
