@@ -43,6 +43,7 @@ const colDefs = [
     id: 'text',
     headerName: 'Text',
     preset: 'text',
+    sortable: true,
   },
   {
     id: 'num',

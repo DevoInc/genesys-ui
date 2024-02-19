@@ -14,6 +14,7 @@ interface HeaderCellProps {
   children: React.ReactNode;
   resizable?: boolean;
   onSort?: (colDef: ColDef) => void;
+  showFilters?: boolean;
 }
 
 export const HeaderCell: React.FC<HeaderCellProps> = ({
@@ -23,6 +24,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   children,
   resizable = true,
   onSort,
+  showFilters,
 }) => {
   const { density } = React.useContext(TableContext);
   return (
@@ -44,7 +46,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
       }
     >
       {children}
-      {colDef.sortable && <OrderIndicator colDef={colDef} />}
+      {colDef.sortable && !showFilters && <OrderIndicator colDef={colDef} />}
       {resizable && (
         <StyledHeaderCellResizer
           density={density}
