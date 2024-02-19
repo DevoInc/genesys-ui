@@ -15,12 +15,7 @@ export const HeaderBulkRenderer: React.FC<HeaderRendererProps> = ({
   colDef,
 }) => {
   const context = colDef?.context as BulkContext;
-  const checked =
-    context?.headerBulkChecked ?? false
-      ? context.headerBulkChecked === 'indeterminate'
-        ? true
-        : true
-      : false;
+  const checked = context?.headerBulkChecked as boolean;
   const popoverId = `${colDef.id}-bulk-actions-menu`;
 
   return (
