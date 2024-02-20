@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.5.1](https://github.com/DevoInc/genesys-ui/compare/v6.5.0...v6.5.1) (2024-02-20)
+
+
+### Bug Fixes
+
+* **InlineMessage:** fixed position of the arrow. ([35ef15e](https://github.com/DevoInc/genesys-ui/commit/35ef15e4ab225648f33ad40355feb2a241f9ae45))
+
 ## [6.5.0](https://github.com/DevoInc/genesys-ui/compare/v6.4.0...v6.5.0) (2024-02-19)
 
 
