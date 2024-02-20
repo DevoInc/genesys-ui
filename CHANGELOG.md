@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.5.2](https://github.com/DevoInc/genesys-ui/compare/v6.5.1...v6.5.2) (2024-02-20)
+
+
+### Bug Fixes
+
+* **InlineMessage:** correct order of styles. ([e267168](https://github.com/DevoInc/genesys-ui/commit/e267168b502229f8520138e57efa9dac9823c363))
+
 ## [6.5.1](https://github.com/DevoInc/genesys-ui/compare/v6.5.0...v6.5.1) (2024-02-20)
 
 
