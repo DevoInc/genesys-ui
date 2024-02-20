@@ -147,8 +147,8 @@ export const InternalPopover: React.FC<PopoverProps> = ({
           ref={setArrowRef}
           style={{
             zIndex: evalZIndex + 1,
-            ...arrowDefaultStyles(),
             ...styles.arrow,
+            ...arrowDefaultStyles(),
           }}
         >
           {arrowConfig.component({
