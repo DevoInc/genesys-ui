@@ -1,5 +1,18 @@
 # Changelog
 
+## [6.5.0](https://github.com/DevoInc/genesys-ui/compare/v6.4.0...v6.5.0) (2024-02-19)
+
+
+### Features
+
+* **Menu:** improvements for internal structure. ([ff35503](https://github.com/DevoInc/genesys-ui/commit/ff35503e38a1bc06c9911577a557125095f8563e))
+
+
+### Bug Fixes
+
+* Added 'showFilters' prop to HeaderCell and TableHead components ([b429bf1](https://github.com/DevoInc/genesys-ui/commit/b429bf1b642bb6f05de902d579942cf50a575685))
+* Simplify checked assignment in HeaderBulkRenderer.tsx ([9578ec7](https://github.com/DevoInc/genesys-ui/commit/9578ec70a014e6d656cc8f48b3680c076565c15e))
+
 ## [6.4.0](https://github.com/DevoInc/genesys-ui/compare/v6.3.0...v6.4.0) (2024-02-16)
 
 
