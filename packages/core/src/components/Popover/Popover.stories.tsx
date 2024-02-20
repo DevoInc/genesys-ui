@@ -46,10 +46,14 @@ export const Base: Story = {
 
 export const WithArrow: Story = {
   name: 'With arrow',
-  render: () => {
+  parameters: {
+    layout: 'centered',
+  },
+  render: (args) => {
     const popoverId = 'with-arrow';
     return (
       <Popover
+        {...args}
         id={popoverId}
         arrowConfig={{
           component: ({ placement, size }) => (

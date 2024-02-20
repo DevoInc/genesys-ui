@@ -20,7 +20,7 @@ when there are multiple choices available.
 
 This component is based on [Popper JS library](https://popper.js.org/).
 
-<Canvas of={Stories.Base} story={{ height: '160px' }} />
+<Canvas of={Stories.Base} />
 
 ## How to import
 
@@ -62,7 +62,7 @@ due to problems with the `ref`, we have to define `appendTo={null}`
 in the nested popovers. This way, the first parent container will be appended
 by default to the end of the `body`, and the nested ones will be rendered inside this one.
 
-<Source of={Stories.Nested} />
+<Canvas of={Stories.Nested} />
 
 ## Access to state from content
 
@@ -72,7 +72,7 @@ Sometimes you need to access to the Popover state from its content, like when we
 To do that we have to use the 'render-props' technique and include the content as a function
 instead of a node.
 
-<Source of={Stories.AccessToStateFromContent} />
+<Canvas of={Stories.AccessToStateFromContent} />
 
 ## Arrow
 
@@ -86,7 +86,7 @@ with these variables:
 - `padding`: the separation of the arrow from the edge of the content. More info in [PopperJS](https://popper.js.org/docs/v2/modifiers/arrow/#padding).
 - `size`: the square size of the arrow which will be used to define the `offset` of the content.
 
-<Source of={Stories.WithArrow} />
+<Canvas of={Stories.WithArrow} story={{ height: '16rem' }} />
 
 ## Disabled outside event
 
@@ -94,7 +94,7 @@ The Popover is closed by default on `click` and `blur` events. Sometimes you mig
 this and delegate the close action only to a specific event as an inside button click. You only
 need to use the `disableOutsideEvent`:
 
-<Source of={Stories.DisabledOutsideEvent} />
+<Canvas of={Stories.DisabledOutsideEvent} />
 
 ## Accessibility
 

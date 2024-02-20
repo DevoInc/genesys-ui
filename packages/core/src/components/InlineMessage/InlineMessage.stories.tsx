@@ -25,6 +25,9 @@ export default meta;
 type Story = StoryObj<typeof InlineMessage>;
 
 export const Base: Story = {
+  parameters: {
+    layout: 'centered',
+  },
   args: {
     children: (
       <Box padding="cmp-xs">
