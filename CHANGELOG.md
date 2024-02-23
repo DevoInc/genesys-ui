@@ -1,5 +1,26 @@
 # Changelog
 
+## [7.0.0](https://github.com/DevoInc/genesys-ui/compare/v6.5.2...v7.0.0) (2024-02-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Panel:** Now you have to use Panel, Panel.Header, Panel.Body and Panel.Footer to create a final Panel component.
+
+### Features
+
+* **Panel:** refactor of Panel to be created only by its internal components and dot notation. ([41f563a](https://github.com/DevoInc/genesys-ui/commit/41f563a8dd5a5e72406b9fd9aecbccf4fd45f24b))
+
+
+### Bug Fixes
+
+* fixed panel tests. ([7752289](https://github.com/DevoInc/genesys-ui/commit/77522897437f0ef4858a2ba2d576d9e755617b6a))
+
+
+### Vulnerabilities
+
+* **deps-dev:** bump ip from 2.0.0 to 2.0.1 ([2da4d60](https://github.com/DevoInc/genesys-ui/commit/2da4d6098a404d60cea119f71584563cde6e16a2))
+
 ## [6.5.2](https://github.com/DevoInc/genesys-ui/compare/v6.5.1...v6.5.2) (2024-02-20)
 
 
