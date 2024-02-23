@@ -20,6 +20,7 @@
     "analyzer": "npm run analyzer -ws --if-present",
     "test": "jest",
     "test:ci": "jest --coverage",
+    "dpdm": "npm run dpdm -ws --if-present",
     "release": "release-it --dry-run",
     "release:ci": "release-it --ci"
   },
@@ -58,6 +59,7 @@
     "@vitejs/plugin-react": "^4.2.1",
     "babel-plugin-styled-components": "^2.1.4",
     "dependency-cruiser": "^16.2.0",
+    "dpdm": "^3.14.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest": "^27.6.3",
