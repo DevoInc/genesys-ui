@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import dts from 'vite-plugin-dts';
 
 export default defineConfig({
   resolve: {
@@ -23,7 +24,7 @@ export default defineConfig({
         'react-popper',
         'date-fns',
         '@devoinc/genesys-icons',
-        'styled-components'
+        'styled-components',
       ],
     },
   },
@@ -42,6 +43,10 @@ export default defineConfig({
           ],
         ],
       },
+    }),
+    dts({
+      entryRoot: './src/',
+      exclude: ['./src/**/*.test.ts?(x)', './src/**/*.stories.tsx'],
     }),
   ],
 });
