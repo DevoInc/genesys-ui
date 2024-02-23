@@ -5,7 +5,7 @@ import { DiffEditor, type DiffEditorProps } from '../../DiffEditor';
 
 export const Shortcuts = ({ ...props }: Partial<DiffEditorProps>) => {
   const registerShortcuts = (editor: monaco.editor.IStandaloneDiffEditor) => {
-    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_E, () => {
+    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyE, () => {
       const blob = new Blob([editor.getModifiedEditor().getValue()], {
         type: 'text/plain;charset=utf-8',
       });

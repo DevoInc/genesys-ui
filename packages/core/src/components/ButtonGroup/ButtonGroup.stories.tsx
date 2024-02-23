@@ -23,8 +23,8 @@ type Story = StoryObj<typeof ButtonGroup>;
 
 export const Base: Story = {
   render: (args) =>
-    ((args) => (
-      <ButtonGroup {...args}>
+    ((props) => (
+      <ButtonGroup {...props}>
         <ButtonGroup.IconButton icon="gi-custom_date" />
         <ButtonGroup.IconButton icon="gi-reload_refresh_update" />
         <ButtonGroup.IconButton icon="gi-pin_bookmark" />
@@ -35,8 +35,8 @@ export const Base: Story = {
 export const WithButtons: Story = {
   tags: ['isHidden'],
   render: (args) =>
-    ((args) => (
-      <ButtonGroup {...args}>
+    ((props) => (
+      <ButtonGroup {...props}>
         <ButtonGroup.Button icon="gi-custom_date" size="lg">
           Define date
         </ButtonGroup.Button>
@@ -53,8 +53,8 @@ export const WithButtons: Story = {
 export const InheritingFromParent: Story = {
   tags: ['isHidden'],
   render: (args) =>
-    ((args) => (
-      <ButtonGroup {...args} colorScheme="info" size="xs">
+    ((props) => (
+      <ButtonGroup {...props} colorScheme="info" size="xs">
         <ButtonGroup.IconButton icon="gi-custom_date" />
         <ButtonGroup.IconButton icon="gi-reload_refresh_update" />
         <ButtonGroup.IconButton icon="gi-pin_bookmark" />
@@ -65,8 +65,8 @@ export const InheritingFromParent: Story = {
 export const SpecificChildPropValue: Story = {
   tags: ['isHidden'],
   render: (args) =>
-    ((args) => (
-      <ButtonGroup {...args} colorScheme="success">
+    ((props) => (
+      <ButtonGroup {...props} colorScheme="success">
         <ButtonGroup.IconButton icon="gi-custom_date" />
         <ButtonGroup.IconButton icon="gi-reload_refresh_update" />
         <ButtonGroup.IconButton icon="gi-pin_bookmark" colorScheme="error" />
@@ -77,8 +77,8 @@ export const SpecificChildPropValue: Story = {
 export const Items: Story = {
   name: 'Using Items for custom layout',
   render: (args) =>
-    ((args) => (
-      <ButtonGroup {...args} inline={false} justifyContent="flex-start">
+    ((props) => (
+      <ButtonGroup {...props} inline={false} justifyContent="flex-start">
         <ButtonGroup.IconButton icon="gi-custom_date" />
         <ButtonGroup.IconButton icon="gi-reload_refresh_update" />
         <ButtonGroup.Item marginLeft="auto">
@@ -91,8 +91,8 @@ export const Items: Story = {
 export const ItemsWithQuiet: Story = {
   tags: ['isHidden'],
   render: (args) =>
-    ((args) => (
-      <ButtonGroup {...args} colorScheme="quiet">
+    ((props) => (
+      <ButtonGroup {...props} colorScheme="quiet">
         <ButtonGroup.IconButton icon="gi-custom_date" />
         <ButtonGroup.IconButton icon="gi-reload_refresh_update" />
         <ButtonGroup.IconButton icon="gi-pin_bookmark" />
@@ -103,8 +103,8 @@ export const ItemsWithQuiet: Story = {
 export const ItemsWithQuietOtherComponents: Story = {
   tags: ['isHidden'],
   render: (args) =>
-    ((args) => (
-      <ButtonGroup {...args} colorScheme="success" size="xs">
+    ((props) => (
+      <ButtonGroup {...props} colorScheme="success" size="xs">
         <IconButton icon="gi-custom_date" />
         <IconButton icon="gi-reload_refresh_update" />
         <IconButton icon="gi-pin_bookmark" />

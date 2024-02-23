@@ -89,11 +89,11 @@ export const MultipleControlled: Story = {
     selectionScheme: 'multiple',
   },
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [selected, setSelected] = React.useState(false);
       return (
         <IconButton
-          {...args}
+          {...props}
           icon={
             selected ? 'gi-heart_full' : 'gi-like_heart_favorite_rating_love'
           }
@@ -122,11 +122,11 @@ export const SingleControlled: Story = {
     name: 'option',
   },
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [selected, setSelected] = React.useState(false);
       return (
         <IconButton
-          {...args}
+          {...props}
           icon={selected ? 'gi-bookmark_tag_solid' : 'gi-bookmark_tag'}
           onChange={() => setSelected(!selected)}
           state={selected ? 'selected' : 'enabled'}

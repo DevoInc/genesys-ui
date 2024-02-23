@@ -25,14 +25,14 @@ type Story = StoryObj<typeof DateTimeRangePicker>;
 
 export const WithPresets: Story = {
   render: (args) =>
-    ((args) => {
-      const [date, setDate] = React.useState(args.value);
+    ((props) => {
+      const [date, setDate] = React.useState(props.value);
 
       const presets = useDefaultPresets();
 
       return (
         <DateTimeRangePicker
-          {...args}
+          {...props}
           value={date}
           onApply={onApply(setDate)}
           onChange={onChange(setDate)}

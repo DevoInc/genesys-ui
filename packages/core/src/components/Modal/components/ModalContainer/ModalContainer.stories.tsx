@@ -14,13 +14,13 @@ type Story = StoryObj<typeof ModalContainer>;
 
 export const Container: Story = {
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [open, setOpen] = React.useState(false);
       return (
         <>
           {open && (
             <ModalContainer
-              {...args}
+              {...props}
               onRequestClose={() => setOpen(false)}
             ></ModalContainer>
           )}

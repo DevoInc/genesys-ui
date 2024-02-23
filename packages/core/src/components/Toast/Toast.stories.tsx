@@ -27,7 +27,7 @@ type Story = StoryObj<typeof toast>;
 
 export const Base: Story = {
   render: (args) =>
-    ((args) => (
+    ((props) => (
       <>
         <Button
           aria-controls="base-toast"
@@ -35,7 +35,7 @@ export const Base: Story = {
           onClick={() => {
             toast({
               id: 'base-toast',
-              ...args,
+              ...props,
             });
           }}
         >

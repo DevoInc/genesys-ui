@@ -25,11 +25,11 @@ export const MultipleControlled: Story = {
     children: 'Option',
   },
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [selected, setSelected] = React.useState(false);
       return (
         <Button
-          {...args}
+          {...props}
           onChange={() => setSelected(!selected)}
           state={selected ? 'selected' : 'enabled'}
         >
@@ -56,11 +56,11 @@ export const SingleControlled: Story = {
     name: 'option',
   },
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [selected, setSelected] = React.useState(false);
       return (
         <Button
-          {...args}
+          {...props}
           onChange={() => setSelected(!selected)}
           state={selected ? 'selected' : 'enabled'}
         >

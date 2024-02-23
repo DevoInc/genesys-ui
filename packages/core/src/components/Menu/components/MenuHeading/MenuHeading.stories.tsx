@@ -15,10 +15,10 @@ type Story = StoryObj<typeof MenuHeading>;
 export const Heading: Story = {
   args: { children: 'Heading' },
   render: (args) =>
-    ((args) => (
+    ((props) => (
       <>
         <MenuItem label="Menu item one" />
-        <MenuHeading {...args} />
+        <MenuHeading {...props} />
         <MenuItem label="Menu item two" />
         <MenuItem label="Menu item three" />
         <MenuItem label="Menu item four" />

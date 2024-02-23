@@ -43,7 +43,7 @@ export const Base: Story = {
 
 export const MultipleSelection: Story = {
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [selectedChips, setSelectedChips] = React.useState({
         one: false,
         two: false,
@@ -51,7 +51,7 @@ export const MultipleSelection: Story = {
         four: false,
       });
       return (
-        <ChipGroup {...args} legend="Multiple selection">
+        <ChipGroup {...props} legend="Multiple selection">
           <ChipGroup.Chip
             state={selectedChips.one ? 'selected' : 'enabled'}
             onChange={() => {
@@ -97,11 +97,11 @@ export const MultipleSelection: Story = {
 
 export const SingleSelection: Story = {
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [selectedChip, setSelectedChip] = React.useState(0);
       return (
         <ChipGroup
-          {...args}
+          {...props}
           legend="Single selection"
           name="single-selection"
           selectionScheme="single"
@@ -147,9 +147,9 @@ export const UseOfChip: Story = {
   tags: ['isHidden'],
   name: 'Using not pre-defined ChipGroup components',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       return (
-        <ChipGroup {...args} size="xs">
+        <ChipGroup {...props} size="xs">
           <Chip>Chip one</Chip>
           <Chip>Chip two</Chip>
           <Chip>Chip three</Chip>

@@ -19,11 +19,11 @@ type Story = StoryObj<typeof Button>;
 
 export const AsDropdown: Story = {
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [expanded, setExpanded] = React.useState(false);
       return (
         <Button
-          {...args}
+          {...props}
           hasDropdown
           state={expanded ? 'expanded' : 'enabled'}
           onClick={() => setExpanded(!expanded)}
@@ -46,11 +46,11 @@ export const AsLink: Story = {
 export const Custom: Story = {
   name: 'Custom based in internal components',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [expanded, setExpanded] = React.useState(false);
       return (
         <Button._Container
-          {...args}
+          {...props}
           hasDropdown
           state={expanded ? 'expanded' : 'enabled'}
           onClick={() => setExpanded(!expanded)}

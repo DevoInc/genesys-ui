@@ -17,8 +17,8 @@ type Story = StoryObj<typeof TagGroup>;
 
 export const Base: Story = {
   render: (args) =>
-    ((args) => (
-      <TagGroup {...args}>
+    ((props) => (
+      <TagGroup {...props}>
         <Tag text="Category one" />
         <Tag colorScheme="secondary" text="Category two" />
         <Tag colorScheme="data-dusk" text="Category three" />

@@ -17,7 +17,7 @@ export const Base: Story = {
     children: 'Col',
   },
   render: (args) =>
-    ((args) => {
-      return <Col {...args} />;
+    ((props) => {
+      return <Col {...props} />;
     })(args),
 };

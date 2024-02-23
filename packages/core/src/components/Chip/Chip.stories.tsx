@@ -22,11 +22,11 @@ export const Base: Story = {};
 
 export const MultipleControlled: Story = {
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [selected, setSelected] = React.useState(false);
       return (
         <Chip
-          {...args}
+          {...props}
           icon="gi-like_heart_favorite_rating_love"
           iconSelected="gi-heart_full"
           onChange={() => setSelected(!selected)}
@@ -48,11 +48,11 @@ export const MultipleUncontrolled: Story = {
 
 export const SingleControlled: Story = {
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [selected, setSelected] = React.useState(false);
       return (
         <Chip
-          {...args}
+          {...props}
           icon="gi-like_heart_favorite_rating_love"
           iconSelected="gi-heart_full"
           name="single"
@@ -78,10 +78,10 @@ export const SingleUncontrolled: Story = {
 export const Custom: Story = {
   name: 'Custom based in internal components',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [selected, setSelected] = React.useState(false);
       return (
-        <Chip._Container {...args} state={selected ? 'selected' : 'enabled'}>
+        <Chip._Container {...props} state={selected ? 'selected' : 'enabled'}>
           <Chip._HiddenInput
             onChange={() => setSelected(!selected)}
             selectionScheme="multiple"

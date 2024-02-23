@@ -44,7 +44,7 @@ export const WithCharacterCounter: Story = {
       'It is possible to add a character counter to keep track of the text length and inform of a possible limit',
   },
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const MAX_CHARACTERS = 10;
       const [counter, setCounter] = React.useState<number>(0);
       const errorMessage = `The max character length permitted is ${MAX_CHARACTERS}.`;
@@ -54,7 +54,7 @@ export const WithCharacterCounter: Story = {
 
       return (
         <Textarea
-          {...args}
+          {...props}
           onChange={onChange}
           helper={
             <HFlex
@@ -65,7 +65,7 @@ export const WithCharacterCounter: Story = {
               <Typography.Paragraph
                 colorScheme={counter > MAX_CHARACTERS ? 'error' : 'weak'}
               >
-                {counter > MAX_CHARACTERS ? errorMessage : args.helper}
+                {counter > MAX_CHARACTERS ? errorMessage : props.helper}
               </Typography.Paragraph>
               <Typography.Paragraph
                 colorScheme={counter > MAX_CHARACTERS ? 'error' : 'weak'}

@@ -25,7 +25,7 @@ export const Base: Story = {
     headerTitle: 'Modal window',
   },
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [isOpen, setOpen] = React.useState<boolean>(false);
       const closeModal = (msg: string) => {
         action(msg);
@@ -36,7 +36,7 @@ export const Base: Story = {
         <>
           {isOpen && (
             <Modal
-              {...args}
+              {...props}
               onRequestClose={() => closeModal('onRequestClose')}
             >
               <Typography.Paragraph gutterBottom="cmp-md">

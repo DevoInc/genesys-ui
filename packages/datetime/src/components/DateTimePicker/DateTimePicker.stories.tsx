@@ -15,8 +15,8 @@ type Story = StoryObj<typeof DateTimePicker>;
 
 export const Base: Story = {
   render: (args) =>
-    ((args) => {
-      const [date, setDate] = React.useState(args.value);
+    ((props) => {
+      const [date, setDate] = React.useState(props.value);
 
       const onChange = (event) => {
         const target = event.target as HTMLInputElement;
@@ -27,7 +27,7 @@ export const Base: Story = {
 
       return (
         <div style={{ width: '400px' }}>
-          <DateTimePicker {...args} value={date} onChange={onChange} />
+          <DateTimePicker {...props} value={date} onChange={onChange} />
         </div>
       );
     })(args),

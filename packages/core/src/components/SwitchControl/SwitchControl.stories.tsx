@@ -26,11 +26,11 @@ type Story = StoryObj<typeof SwitchControl>;
 
 export const Base: Story = {
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [checked, setChecked] = React.useState(false);
       return (
         <SwitchControl
-          {...args}
+          {...props}
           checked={checked}
           onChange={() => setChecked(!checked)}
         />

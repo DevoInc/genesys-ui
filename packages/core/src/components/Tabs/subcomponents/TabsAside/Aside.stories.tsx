@@ -14,10 +14,10 @@ type Story = StoryObj<typeof TabsAside>;
 
 export const Aside: Story = {
   render: (args) =>
-    ((args) => (
+    ((props) => (
       <Tabs>
-        <Tabs.Item {...args} state="selected" label="Tab 1" />
-        <Tabs.Item {...args} label="Tab 2" />
+        <Tabs.Item {...props} state="selected" label="Tab 1" />
+        <Tabs.Item {...props} label="Tab 2" />
         <Tabs.Aside>Tabs Aside</Tabs.Aside>
       </Tabs>
     ))(args),

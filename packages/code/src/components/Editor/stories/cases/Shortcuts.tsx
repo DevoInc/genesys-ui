@@ -6,7 +6,7 @@ import { Editor, EditorProps } from '../../';
 
 export const Shortcuts = ({ ...props }: Partial<EditorProps>) => {
   const registerShortcuts = (editor: monaco.editor.IStandaloneCodeEditor) => {
-    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_E, () => {
+    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyE, () => {
       const blob = new Blob([editor.getValue()], {
         type: 'text/plain;charset=utf-8',
       });

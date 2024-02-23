@@ -32,7 +32,7 @@ export const Base: Story = {
     'aria-label': 'DemoTabs',
   },
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const tabs = [
         { label: 'Tiny' },
         { label: 'Tab with a very very long title' },
@@ -47,7 +47,7 @@ export const Base: Story = {
       )) as never;
 
       return (
-        <Tabs {...args}>
+        <Tabs {...props}>
           {children}
           <Tabs.Aside>Aside area</Tabs.Aside>
         </Tabs>

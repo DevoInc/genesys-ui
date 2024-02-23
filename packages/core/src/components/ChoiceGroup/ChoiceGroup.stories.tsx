@@ -47,9 +47,9 @@ export const SpecificChildProp: Story = {
   tags: ['isHidden'],
   name: 'Specific prop value for a child',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       return (
-        <ChoiceGroup {...args}>
+        <ChoiceGroup {...props}>
           <ChoiceGroup.IconButton icon="gi-play" tooltip="Play" />
           <ChoiceGroup.IconButton tooltip="Pause" icon="gi-pause" />
           <ChoiceGroup.IconButton
@@ -70,9 +70,9 @@ export const UseOfIconButton: Story = {
   tags: ['isHidden'],
   name: 'Using not pre-defined ChoiceGroup components',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       return (
-        <ChoiceGroup {...args} size="xs">
+        <ChoiceGroup {...props} size="xs">
           <IconButton icon="gi-play" tooltip="Play" />
           <IconButton tooltip="Pause" icon="gi-pause" />
           <IconButton icon="gi-arrows_play_shuffle" tooltip="Shuffle" />

@@ -17,15 +17,15 @@ type Story = StoryObj<typeof IconButtonCollapse>;
 
 export const Base: Story = {
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [expanded, setExpanded] = React.useState(false);
       return (
         <IconButtonCollapse
-          {...args}
+          {...props}
           onClick={() => {
             setExpanded(!expanded);
           }}
-          state={expanded ? 'expanded' : args.state}
+          state={expanded ? 'expanded' : props.state}
         />
       );
     })(args),

@@ -45,11 +45,11 @@ type Story = StoryObj<SelectControlProps>;
 export const SingleOption: Story = {
   name: 'Single selection',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [value, setValue] = React.useState<SelectControlProps['value']>();
       return (
         <SelectControl
-          {...args}
+          {...props}
           onChange={(opt: SelectOption) => setValue(opt.value)}
           options={[
             { value: 1, label: 'Option one' },
@@ -66,11 +66,11 @@ export const SingleOption: Story = {
 export const SingleOptionWithIcons: Story = {
   name: 'Single selection with option/value icons',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [value, setValue] = React.useState<SelectControlProps['value']>();
       return (
         <SelectControl
-          {...args}
+          {...props}
           onChange={(opt: SelectOption) => setValue(opt.value)}
           options={[
             { value: 1, label: 'Option one', icon: 'gi-check_ok_rounded' },
@@ -95,12 +95,12 @@ export const SingleOptionWithIcons: Story = {
 export const SingleOptionWithPrependContent: Story = {
   name: 'Single selection with option/value prepend contents',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [value, setValue] = React.useState<SelectControlProps['value']>();
       return (
         // TODO: QUV-2116 Problem using components as value for options object
         <SelectControl
-          {...args}
+          {...props}
           onChange={(opt: SelectOption) => setValue(opt.value)}
           options={[
             {
@@ -133,7 +133,7 @@ export const SingleOptionWithPrependContent: Story = {
 export const SingleWithOptionsGroups: Story = {
   name: 'Single selection with options group',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const demoOptionsWithGroups: Props<SelectControlOption>['options'] = [
         { value: 1, label: 'Option one' },
         {
@@ -157,8 +157,8 @@ export const SingleWithOptionsGroups: Story = {
       );
       return (
         <SelectControl
-          {...args}
-          onChange={(value) => setValue(value)}
+          {...props}
+          onChange={(val) => setValue(val)}
           options={demoOptionsWithGroups}
           value={value}
         />
@@ -169,7 +169,7 @@ export const SingleWithOptionsGroups: Story = {
 export const MultipleBasic: Story = {
   name: 'Multiple selection',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const getOptions = (
         optionsNumber: number,
       ): Props<SelectControlOption>['options'] => {
@@ -184,10 +184,10 @@ export const MultipleBasic: Story = {
         React.useState<PropsValue<SelectControlOption>>();
       return (
         <SelectControl
-          {...args}
+          {...props}
           closeMenuOnSelect={false}
           isMulti
-          onChange={(value) => setValue(value)}
+          onChange={(val) => setValue(val)}
           options={getOptions(50)}
           value={value}
         />
@@ -198,7 +198,7 @@ export const MultipleBasic: Story = {
 export const MultipleSubtle: Story = {
   name: 'Multiple selection subtle variant',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const getOptions = (
         optionsNumber: number,
       ): Props<SelectControlOption>['options'] => {
@@ -213,14 +213,14 @@ export const MultipleSubtle: Story = {
         React.useState<PropsValue<SelectControlOption>>();
       return (
         <SelectControl
-          {...args}
+          {...props}
           isMulti
           multipleSubtle
           //menuIsOpen
           closeMenuOnSelect={false}
           selectAllBtn
           hideSelectedOptions={false}
-          onChange={(value) => setValue(value)}
+          onChange={(val) => setValue(val)}
           options={getOptions(50)}
           value={value}
           id="subtle-variant"
@@ -232,13 +232,13 @@ export const MultipleSubtle: Story = {
 export const MultipleSortable: Story = {
   name: 'Multiple selection sortable',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const getOptions = (
         optionsNumber: number,
       ): Props<SelectControlOption>['options'] => {
         return Array(optionsNumber)
           .fill(null)
-          .map((el, idx) => ({
+          .map((_, idx) => ({
             value: `item${idx}`,
             label: `Item ${idx}`,
           }));
@@ -247,11 +247,11 @@ export const MultipleSortable: Story = {
         React.useState<PropsValue<SelectControlOption>>();
       return (
         <SelectControl
-          {...args}
+          {...props}
           isMulti
           sortable
-          onChange={(value) => {
-            setValue(value);
+          onChange={(val) => {
+            setValue(val);
           }}
           options={getOptions(10)}
           value={value}
@@ -263,13 +263,13 @@ export const MultipleSortable: Story = {
 export const MultipleCreatable: Story = {
   name: 'Multiple selection creatable',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const getOptions = (
         optionsNumber: number,
       ): Props<SelectControlOption>['options'] => {
         return Array(optionsNumber)
           .fill(null)
-          .map((el, idx) => ({
+          .map((_, idx) => ({
             value: `item${idx}`,
             label: `Item ${idx}`,
           }));
@@ -278,10 +278,12 @@ export const MultipleCreatable: Story = {
         React.useState<PropsValue<SelectControlOption>>();
       return (
         <SelectControl
-          {...args}
+          {...props}
           isMulti
           creatable
-          onChange={(value) => setValue(value)}
+          onChange={(val) => {
+            setValue(val);
+          }}
           options={getOptions(10)}
           value={value}
         />
@@ -292,13 +294,13 @@ export const MultipleCreatable: Story = {
 export const MultipleSelectAll: Story = {
   name: 'Multiple selection with select all',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const getOptions = (
         optionsNumber: number,
       ): Props<SelectControlOption>['options'] => {
         return Array(optionsNumber)
           .fill(null)
-          .map((el, idx) => ({
+          .map((_, idx) => ({
             value: `item${idx}`,
             label: `Item ${idx}`,
           }));
@@ -307,12 +309,14 @@ export const MultipleSelectAll: Story = {
         React.useState<PropsValue<SelectControlOption>>();
       return (
         <SelectControl
-          {...args}
+          {...props}
           isMulti
           hideSelectedOptions={false}
           menuIsOpen
           menuLevel={0}
-          onChange={(value) => setValue(value)}
+          onChange={(val) => {
+            setValue(val);
+          }}
           options={getOptions(20)}
           selectAllBtn
           value={value}
@@ -324,10 +328,10 @@ export const MultipleSelectAll: Story = {
 export const MultipleFixedOptions: Story = {
   name: 'Multiple selection with fixed options',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const options: Props<SelectControlOption>['options'] = Array(20)
         .fill(20)
-        .map((el, idx) => ({
+        .map((_, idx) => ({
           fixed: idx === 5 || idx === 8,
           value: `item${idx}`,
           label: `Item ${idx}`,
@@ -338,11 +342,12 @@ export const MultipleFixedOptions: Story = {
           { value: 'item8', label: 'Item 8' },
         ],
       );
-      const onChange = (opts) => setValue(opts);
       return (
         <SelectControl
-          {...args}
-          onChange={onChange}
+          {...props}
+          onChange={(val) => {
+            setValue(val);
+          }}
           options={options}
           value={value}
           isMulti
@@ -355,19 +360,21 @@ export const MultipleFixedOptions: Story = {
 export const VirtualizedOptions: Story = {
   name: 'Multiple selection with virtualized options',
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const options: Props<SelectControlOption>['options'] = Array(20000)
         .fill(null)
-        .map((el, idx) => ({
+        .map((_, idx) => ({
           value: `item${idx}`,
           label: `Item ${idx}`,
         }));
-      const [value, setValue] = React.useState();
-      const onChange = (opts) => setValue(opts);
+      const [value, setValue] =
+        React.useState<PropsValue<SelectControlOption>>();
       return (
         <SelectControl<SelectControlOption>
-          {...args}
-          onChange={onChange}
+          {...props}
+          onChange={(val) => {
+            setValue(val);
+          }}
           options={options}
           value={value}
           virtualizeOptions={true}

@@ -20,10 +20,10 @@ type Story = StoryObj<typeof ContentSwitcher>;
 
 export const Base: Story = {
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [selection, setSelection] = React.useState('first');
       return (
-        <ContentSwitcher {...args}>
+        <ContentSwitcher {...props}>
           {storiesData.map((option) => (
             <ContentSwitcher.Item
               aria-controls={`content-${option.id}`}

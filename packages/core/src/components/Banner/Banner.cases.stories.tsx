@@ -29,7 +29,7 @@ export const Cookie: Story = {
     closeTooltip: 'Remove message',
   },
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [show, setShow] = React.useState(
         Cookies.get(cookieId) !== 'accepted',
       );
@@ -38,7 +38,7 @@ export const Cookie: Story = {
           {show && (
             <Flex.Item>
               <Banner
-                {...args}
+                {...props}
                 actions={[
                   <Button
                     key="accept"
@@ -74,8 +74,8 @@ export const Cookie: Story = {
 export const Custom: Story = {
   name: 'Custom based in internal components',
   render: (args) =>
-    ((args) => (
-      <Banner {...args} status="error">
+    ((props) => (
+      <Banner {...props} status="error">
         <Banner._Icon />
         <Banner._ContentContainer>
           <Banner._Heading>Banner heading</Banner._Heading>

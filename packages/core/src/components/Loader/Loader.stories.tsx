@@ -80,7 +80,7 @@ export const Progress: Story = {
 export const Scroll: Story = {
   name: 'Contextual for infinite scroll',
   render: (args) =>
-    ((args) => (
+    ((props) => (
       <Box position="relative">
         <Typography.Paragraph gutterBottom="cmp-md">
           {lorem}
@@ -94,7 +94,7 @@ export const Scroll: Story = {
         <Typography.Paragraph gutterBottom="cmp-md">
           {lorem3}
         </Typography.Paragraph>
-        <Loader {...args}>
+        <Loader {...props}>
           <Loader.GradientContainer>
             <Loader.Spinner />
           </Loader.GradientContainer>
@@ -106,7 +106,7 @@ export const Scroll: Story = {
 export const ScrollProgress: Story = {
   tags: ['isHidden'],
   render: (args) =>
-    ((args) => (
+    ((props) => (
       <Box position="relative">
         <Typography.Paragraph gutterBottom="cmp-md">
           {lorem}
@@ -114,7 +114,7 @@ export const ScrollProgress: Story = {
         <Typography.Paragraph gutterBottom="cmp-md">
           {lorem2}
         </Typography.Paragraph>
-        <Loader {...args}>
+        <Loader {...props}>
           <Loader.GradientContainer>
             <Loader.ProgressBar percent={48} size="sm" />
           </Loader.GradientContainer>
@@ -126,7 +126,7 @@ export const ScrollProgress: Story = {
 export const ScrollToTop: Story = {
   tags: ['isHidden'],
   render: (args) =>
-    ((args) => (
+    ((props) => (
       <Box position="relative">
         <Typography.Paragraph gutterBottom="cmp-md">
           {lorem}
@@ -137,7 +137,7 @@ export const ScrollToTop: Story = {
         <Typography.Paragraph gutterBottom="cmp-md">
           {lorem3}
         </Typography.Paragraph>
-        <Loader {...args}>
+        <Loader {...props}>
           <Loader.GradientContainer position="top">
             <Loader.Spinner />
           </Loader.GradientContainer>
@@ -149,7 +149,7 @@ export const ScrollToTop: Story = {
 export const ScrollToRight: Story = {
   tags: ['isHidden'],
   render: (args) =>
-    ((args) => (
+    ((props) => (
       <Box position="relative">
         <Typography.Paragraph gutterBottom="cmp-md">
           {lorem}
@@ -157,7 +157,7 @@ export const ScrollToRight: Story = {
         <Typography.Paragraph gutterBottom="cmp-md">
           {lorem2}
         </Typography.Paragraph>
-        <Loader {...args}>
+        <Loader {...props}>
           <Loader.GradientContainer position="right">
             <Loader.Spinner />
           </Loader.GradientContainer>
@@ -169,7 +169,7 @@ export const ScrollToRight: Story = {
 export const ScrollToLeft: Story = {
   tags: ['isHidden'],
   render: (args) =>
-    ((args) => (
+    ((props) => (
       <Box position="relative">
         <Typography.Paragraph gutterBottom="cmp-md">
           {lorem}
@@ -177,7 +177,7 @@ export const ScrollToLeft: Story = {
         <Typography.Paragraph gutterBottom="cmp-md">
           {lorem2}
         </Typography.Paragraph>
-        <Loader {...args}>
+        <Loader {...props}>
           <Loader.GradientContainer position="left">
             <Loader.Spinner />
           </Loader.GradientContainer>
@@ -189,7 +189,7 @@ export const ScrollToLeft: Story = {
 export const Global: Story = {
   args: { colorScheme: 'dark', fixed: true, zIndex: 99999 },
   render: (args) =>
-    ((args) => (
+    ((props) => (
       <Box position="relative">
         <Typography.Paragraph gutterBottom="cmp-md">
           {lorem}
@@ -207,7 +207,7 @@ export const Global: Story = {
           {lorem2}
         </Typography.Paragraph>
         <Typography.Paragraph>{lorem}</Typography.Paragraph>
-        <Loader {...args} fixed colorScheme="dark">
+        <Loader {...props} fixed colorScheme="dark">
           <Loader.DevoLogoSpinner />
         </Loader>
       </Box>

@@ -25,8 +25,8 @@ export const Nested: Story = {
     secondaryInitialSize,
   },
   render: (args) =>
-    ((args) => (
-      <SplitPane {...args}>
+    ((props) => (
+      <SplitPane {...props}>
         <SplitPane vertical={true}>
           <div>Block One</div>
           <div>Block Two</div>

@@ -18,8 +18,8 @@ type Story = StoryObj<typeof SplitPane>;
 
 export const Base: Story = {
   render: (args) =>
-    ((args) => (
-      <SplitPane {...args}>
+    ((props) => (
+      <SplitPane {...props}>
         <div>Block One</div>
         <div>Block Two</div>
       </SplitPane>
