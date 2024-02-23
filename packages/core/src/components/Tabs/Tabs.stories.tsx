@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { IconButtonRemove, Tabs, TabsItem, TabsAside } from '..';
+import { IconButtonRemove, Tabs } from '..';
 
 const meta: Meta<typeof Tabs> = {
   title: 'Components/Navigation/Tabs',
   component: Tabs,
-  subcomponents: { TabsItem, TabsAside },
   args: {
     colorScheme: 'default',
   },
@@ -18,10 +17,10 @@ type Story = StoryObj<typeof Tabs>;
 export const Base: Story = {
   args: { contained: true, 'aria-label': 'DemoTabs' },
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const [activeTab, setActiveTab] = React.useState(0);
       return (
-        <Tabs {...args}>
+        <Tabs {...props}>
           <Tabs.Item
             icon="gi-check_thick"
             label="Tiny"

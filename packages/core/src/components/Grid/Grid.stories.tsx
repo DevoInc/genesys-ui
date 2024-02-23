@@ -7,7 +7,6 @@ import { StyledLayoutGridContent } from '../../../stories/components/styled';
 const meta: Meta<typeof Grid> = {
   title: 'Components/Layout/Grid',
   component: Grid,
-  subcomponents: { 'Grid.Item': Grid.Item },
   args: {
     inline: false,
     as: 'span',

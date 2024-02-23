@@ -12,11 +12,6 @@ const meta: Meta<typeof AppLayout> = {
   parameters: {
     layout: 'fullscreen',
   },
-  subcomponents: {
-    'AppLayout.Bar': AppLayout.Bar,
-    'AppLayout.Lead': AppLayout.Lead,
-    'AppLayout.Content': AppLayout.Content,
-  },
 };
 
 export default meta;

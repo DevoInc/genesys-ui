@@ -2,13 +2,10 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Button, Form, IconButtonGoToDocs, InputControl } from '../';
-import { FormButtons } from './components/FormButtons';
-import { FormGroup } from './components/FormGroup';
 
 const meta: Meta<typeof Form> = {
   title: 'Components/Form/Form',
   component: Form,
-  subcomponents: { FormGroup, FormButtons },
   args: {
     direction: 'column',
   },

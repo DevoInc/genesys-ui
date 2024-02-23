@@ -12,12 +12,6 @@ import { Typography } from '../Typography';
 const meta: Meta<typeof AppBar> = {
   title: 'Components/Navigation/AppBar',
   component: AppBar,
-  subcomponents: {
-    'AppBar.Heading': AppBar.Heading,
-    'AppBar.Navigation': AppBar.Navigation,
-    'AppBar.Divider': AppBar.Divider,
-    'AppBar.Item': AppBar.Item,
-  },
 };
 
 export default meta;

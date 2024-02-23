@@ -8,11 +8,6 @@ import { Button } from '../Button';
 const meta: Meta<typeof Menu> = {
   title: 'Components/Navigation/Menu/Cases',
   component: Menu,
-  subcomponents: {
-    Heading: Menu.Heading,
-    Item: Menu.Item,
-    Separator: Menu.Separator,
-  },
   args: {
     cmpRole: 'menu',
   },

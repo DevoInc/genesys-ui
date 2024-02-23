@@ -6,11 +6,6 @@ import { Toolbar } from '.';
 const meta: Meta<typeof Toolbar> = {
   title: 'Components/Layout/Toolbar',
   component: Toolbar,
-  subcomponents: {
-    'Toolbar.Item': Toolbar.Item,
-    'Toolbar.Group': Toolbar.Group,
-    'Toolbar.Separator': Toolbar.Separator,
-  },
   args: {
     size: 'md',
     elevation: 'stickyBottom',
