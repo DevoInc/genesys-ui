@@ -236,8 +236,14 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
           <Panel.Footer
             bordered
             actions={[
-              <Button key={'cancel'} onClick={() => setOpened(false)}>
-                {cancelButtonText}{' '}
+              <Button
+                key={'cancel'}
+                onClick={() => {
+                  onCancel();
+                  setOpened(false);
+                }}
+              >
+                {cancelButtonText}
               </Button>,
               <Button
                 colorScheme={'accent'}

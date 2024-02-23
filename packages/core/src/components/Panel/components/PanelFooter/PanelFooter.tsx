@@ -18,7 +18,7 @@ export interface PanelFooterProps
 
 export const InternalPanelFooter: React.FC<PanelFooterProps> = ({
   actions,
-  as,
+  as = 'footer',
   bordered = false,
   children,
   hasBackground = false,

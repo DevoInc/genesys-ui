@@ -31,7 +31,7 @@ export interface PanelHeaderProps
 
 export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
   actions,
-  as,
+  as = 'header',
   bordered,
   children,
   closeSettings,
