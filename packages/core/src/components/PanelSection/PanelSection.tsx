@@ -1,20 +1,22 @@
 import * as React from 'react';
 import { DOMAttributes } from 'react';
+import { useTheme } from 'styled-components';
 
-import {
-  HeaderSettingsProps as PanelHeaderSettings,
-  FooterSettingsProps as PanelFooterSettingsProps,
-} from '../Panel/declarations';
+import { PanelContainerAttrs, PanelHelpAttrs } from '../Panel/declarations';
+import { PanelHeadingAttrs } from '../Panel/components/PanelHeader/declarations';
 
-import { IconButton, Divider, Panel, HFlex, PanelProps } from '..';
 import { useDetectScroll } from '../../hooks';
+
 import {
   panelSectionBodyMixin,
   panelSectionFooterMixin,
   panelSectionHeaderMixin,
 } from './helpers';
-import { useTheme } from 'styled-components';
-import { concat } from 'lodash';
+
+import { HFlex } from '../HFlex';
+import { IconButton } from '../IconButton';
+import { Divider } from '../Divider';
+import { Panel, PanelProps } from '../Panel';
 
 const renderBackwardNavigation = ({
   backwardTooltip,
@@ -42,25 +44,15 @@ const renderBackwardNavigation = ({
 };
 
 export interface PanelSectionProps
-  extends Pick<
-    PanelProps,
-    | 'children'
-    | 'display'
-    | 'helpTooltip'
-    | 'helpUrl'
-    | 'id'
-    | 'styles'
-    | 'subcomponentStyles'
-    | 'subtitle'
-    | 'title'
-    | 'visibility'
-  > {
+  extends Pick<PanelProps, 'display' | 'id' | 'styles' | 'visibility'>,
+    PanelHelpAttrs,
+    Pick<PanelHeadingAttrs, 'title' | 'subtitle'> {
   backwardTooltip?: string;
   children?: React.ReactElement;
-  footerActions?: PanelFooterSettingsProps['actions'];
+  footerActions?: PanelContainerAttrs['actions'];
   footerContent?: React.ReactElement;
   footerHasBackground?: boolean;
-  headerActions?: PanelHeaderSettings['actions'];
+  headerActions?: PanelContainerAttrs['actions'];
   height?: React.CSSProperties['height'];
   navigation?: React.ReactElement;
   onClickBackwardNav?: DOMAttributes<any>['onClick'];
@@ -85,7 +77,6 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
   removeContentSpace = false,
   renderActions,
   styles,
-  subcomponentStyles,
   subtitle,
   title,
   visibility,
@@ -93,20 +84,20 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
   const theme = useTheme();
   const { hasScroll, targetElRef } = useDetectScroll();
   return (
-    <Panel.Container
+    <Panel
       display={display}
       id={id}
       height={height}
-      styles={subcomponentStyles?.container || styles}
+      styles={styles}
       visibility={visibility}
     >
       {(onClickBackwardNav || title || headerActions || renderActions) && (
-        <Panel.Header.Container
+        <Panel.Header._Container
           bordered={!navigation}
-          hasBoxShadow
-          styles={concat('padding: 0;', subcomponentStyles?.header)}
+          hasBoxShadow={hasScroll}
+          styles="padding: 0;"
         >
-          <Panel.Header.Container
+          <Panel.Header._Container
             as="div"
             bordered={false}
             hasBoxShadow={false}
@@ -118,30 +109,26 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
                 onClickBackwardNav,
               })}
             {title && (
-              <Panel.Header.Heading
+              <Panel.Header._Heading
                 subtitle={subtitle}
                 title={title}
                 helpUrl={helpUrl}
                 helpTooltip={helpTooltip}
               />
             )}
-            {headerActions && <Panel.Header.Actions actions={headerActions} />}
+            {headerActions && <Panel.Header._Actions actions={headerActions} />}
             {renderActions}
-          </Panel.Header.Container>
-        </Panel.Header.Container>
+          </Panel.Header._Container>
+        </Panel.Header._Container>
       )}
       <Panel.Body
-        hasScroll={hasScroll}
         removeSpace={removeContentSpace}
-        panelBodyRef={targetElRef}
-        styles={concat(
-          panelSectionBodyMixin({
-            hasScroll,
-            removeSpace: removeContentSpace,
-            theme,
-          }),
-          subcomponentStyles?.body,
-        )}
+        ref={targetElRef}
+        styles={panelSectionBodyMixin({
+          hasScroll: hasScroll,
+          removeSpace: removeContentSpace,
+          theme,
+        })}
       >
         {children}
       </Panel.Body>
@@ -149,15 +136,13 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
         <Panel.Footer
           actions={footerActions}
           hasBackground={footerHasBackground}
-          hasBoxShadow
-          styles={concat(
-            panelSectionFooterMixin({ theme }),
-            subcomponentStyles.footer,
-          )}
+          hasBoxShadow={hasScroll}
+          bordered
+          styles={panelSectionFooterMixin({ theme })}
         >
           {footerContent}
         </Panel.Footer>
       )}
-    </Panel.Container>
+    </Panel>
   );
 };

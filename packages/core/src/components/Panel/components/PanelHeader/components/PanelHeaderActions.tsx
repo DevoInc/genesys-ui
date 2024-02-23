@@ -2,33 +2,37 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat, isEmpty } from 'lodash';
 
-//TODO: add the component Dropdown when it's ready
-
-import { PanelHeaderActionsType, PanelHeaderSize } from '../declarations';
-import { StyledOverloadCssProps } from '../../../../../declarations';
+import {
+  PanelActions,
+  PanelBaseAttrs,
+  PanelContainerAttrs,
+} from '../../../declarations';
 
 import { panelHeaderAppendMixin } from '../helpers';
 
-import { Flex } from '../../../../Flex';
+import { ButtonGroup } from '../../../../ButtonGroup';
 
-export interface PanelHeaderActionsProps extends StyledOverloadCssProps {
-  actions?: PanelHeaderActionsType;
-  size?: PanelHeaderSize;
+export interface PanelHeaderActionsProps
+  extends PanelBaseAttrs,
+    Pick<PanelContainerAttrs, 'size' | 'actions'> {
+  actions: PanelActions;
 }
 
 export const PanelHeaderActions: React.FC<PanelHeaderActionsProps> = ({
   actions,
+  as,
   size = 'md',
   styles,
 }) => {
-  const filteredActions: PanelHeaderActionsType = React.useMemo(
-    () => actions && actions.filter((action) => !isEmpty(action)),
+  const filteredActions: PanelActions = React.useMemo(
+    () => (actions ? actions.filter((action) => !isEmpty(action)) : []),
     [actions],
   );
   const theme = useTheme();
   const baseStyles = panelHeaderAppendMixin({ size, theme });
   return (
-    <Flex
+    <ButtonGroup
+      as={as}
       alignItems="flex-start"
       alignSelf="stretch"
       styles={concat(baseStyles, styles)}
@@ -36,6 +40,6 @@ export const PanelHeaderActions: React.FC<PanelHeaderActionsProps> = ({
       marginLeft="auto"
     >
       {filteredActions?.map((action) => action)}
-    </Flex>
+    </ButtonGroup>
   );
 };

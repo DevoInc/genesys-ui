@@ -72,7 +72,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
     <Popover
       appendTo={appendTo}
       disableOutsideEvent
-      id={`${id}__popover`}
+      id={id ? `${id}__popover` : null}
       isOpened={isOpened}
     >
       {({ ref, toggle }) => (
@@ -90,11 +90,25 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
         </div>
       )}
       {({ setOpened }) => (
-        <Panel
+        <Popover.Panel
           as={as}
-          elevation="activated"
-          footerSettings={{
-            actions: [
+          styles={customStyles}
+          width="auto"
+          id={id ? `${id}__popover-panel` : null}
+        >
+          <Panel.Body>
+            <DateTime
+              {...restDateTimeProps}
+              hasSeconds={hasSeconds}
+              hasMillis={hasMillis}
+              hasTime={hasTime}
+              value={value}
+              onChange={onChangeCallback}
+            />
+          </Panel.Body>
+          <Panel.Footer
+            bordered
+            actions={[
               <Button
                 key={'cancel'}
                 onClick={() => {
@@ -114,20 +128,9 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
               >
                 {applyButtonText}
               </Button>,
-            ],
-            bordered: true,
-          }}
-          styles={customStyles}
-        >
-          <DateTime
-            {...restDateTimeProps}
-            hasSeconds={hasSeconds}
-            hasMillis={hasMillis}
-            hasTime={hasTime}
-            value={value}
-            onChange={onChangeCallback}
+            ]}
           />
-        </Panel>
+        </Popover.Panel>
       )}
     </Popover>
   );

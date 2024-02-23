@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { usePopper } from 'react-popper';
-import ReactDOM from 'react-dom';
 
 import {
   Panel,
@@ -8,6 +6,8 @@ import {
   GlobalAttrProps,
   StyledOverloadCssProps,
   StyledPolymorphicProps,
+  Popover,
+  PopoverProps,
 } from '@devoinc/genesys-ui';
 
 import {
@@ -20,13 +20,10 @@ import { format } from 'date-fns';
 import { ApplyValue, DateRange } from '../declarations';
 import { isManageableDate, toTSorPreset } from '../utils';
 import { PresetRange } from '../Presets/declarations';
-import { useTheme } from 'styled-components';
-
-const defaultAppendToProp =
-  typeof window !== 'undefined' ? document.body : null;
 
 export interface DateTimeRangePickerProps
-  extends Pick<
+  extends Pick<PopoverProps, 'appendTo' | 'isOpened'>,
+    Pick<
       DateTimeRangeProps,
       | 'ariaLabelNextMonth'
       | 'ariaLabelPrevMonth'
@@ -65,9 +62,6 @@ export interface DateTimeRangePickerProps
     StyledPolymorphicProps {
   /** Initial value for the input. */
   value: { from: string | number | Date; to: string | number | Date };
-  /** DOM element where the popper is appended. It is appended to the body
-   * by default. */
-  appendTo?: HTMLElement;
   /** Apply button text. */
   applyButtonText?: string;
   /** Cancel button text. */
@@ -79,20 +73,21 @@ export interface DateTimeRangePickerProps
   /** Function called when Cancel button is clicked. */
   onCancel: () => void;
   /** Transformation function for time. It is used to transform a time expression to timestamp. Required if there are presets. */
-  expresionToTime?: (expresion: string) => number;
+  expressionToTime?: (expression: string) => number;
 }
 
 export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
   ariaLabelNextMonth = 'Go to the next month',
   ariaLabelPrevMonth = 'Go to the previous month',
-  appendTo = defaultAppendToProp,
+  appendTo,
   applyButtonText = 'Apply',
   cancelButtonText = 'Cancel',
   disableApplyButton = false,
-  expresionToTime,
+  expressionToTime,
   hasMillis = false,
   hasSeconds = true,
   hasTime = true,
+  isOpened,
   id,
   onApply,
   onBlur,
@@ -105,12 +100,6 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
   const datetimeFormat = `yyyy-MM-dd ${
     hasTime ? getFormatTimeStr(hasSeconds, hasMillis) : ''
   }`;
-
-  const [referenceElement, setReferenceElement] = React.useState(null);
-  const [popperElement, setPopperElement] = React.useState(null);
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
-    modifiers: [],
-  });
 
   // Convert value type to numeric if it's a Date type
   const value = {
@@ -133,12 +122,12 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
       setDate({ from: Number(value.from), to: Number(value.to) });
     } else {
       setDate({
-        from: expresionToTime?.(String(value.from)),
-        to: expresionToTime?.(String(value.to)),
+        from: expressionToTime?.(String(value.from)),
+        to: expressionToTime?.(String(value.to)),
       });
     }
   }, [
-    expresionToTime,
+    expressionToTime,
     isManageableFromDate,
     isManageableToDate,
     value.from,
@@ -155,19 +144,7 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [visible, setVisible] = React.useState(false);
-
-  const onCancelCallback = React.useCallback(() => {
-    setVisible(false);
-    onCancel?.();
-  }, [onCancel]);
-
-  const onClickInputCallback = React.useCallback(() => {
-    setVisible(true);
-  }, []);
-
   const onApplyCallback = React.useCallback(() => {
-    setVisible(false);
     onApply({
       timestamp: { from: date.from, to: date.to },
       ...(preset?.from &&
@@ -192,12 +169,12 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
   const onChangePresetDateCallback = React.useCallback(
     (range) => {
       setDate({
-        from: expresionToTime?.(range.from) || null,
-        to: expresionToTime?.(range.to) || null,
+        from: expressionToTime?.(range.from) || null,
+        to: expressionToTime?.(range.to) || null,
       });
       setPreset(range);
     },
-    [expresionToTime],
+    [expressionToTime],
   );
 
   const onChangeDateTimeCallback = React.useCallback((range: DateRange) => {
@@ -205,86 +182,78 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
     setPreset({ from: undefined, to: undefined });
   }, []);
 
-  const theme = useTheme();
-
-  const PopperCmp = (
-    <div
-      aria-modal
-      id={id ? `${id}-range-selector` : null}
-      ref={setPopperElement}
-      role="dialog"
-      style={{
-        zIndex: theme.alias.elevation.zIndex.depth.activated,
-        ...styles.popper,
-      }}
-      {...attributes.popper}
-    >
-      <Panel
-        ref={null}
-        elevation="activated"
-        footerSettings={{
-          actions: [
-            <Button key={'cancel'} onClick={onCancelCallback}>
-              {cancelButtonText}{' '}
-            </Button>,
-            <Button
-              colorScheme={'accent'}
-              key={'apply'}
-              onClick={onApplyCallback}
-              state={disableApplyButton ? 'disabled' : 'enabled'}
-            >
-              {applyButtonText}
-            </Button>,
-          ],
-          bordered: true,
-        }}
-      >
-        <DateTimeRange
-          {...restDateTimeRangeProps}
-          ariaLabelNextMonth={ariaLabelNextMonth}
-          ariaLabelPrevMonth={ariaLabelPrevMonth}
-          hasMillis={hasMillis}
-          hasSeconds={hasSeconds}
-          hasTime={hasTime}
-          id={id ? `${id}-datetime-range` : null}
-          selectedDates={date}
-          selectedPreset={preset}
-          onChange={onChangeDateTimeCallback}
-          onChangePresetDate={onChangePresetDateCallback}
-        />
-      </Panel>
-    </div>
-  );
-
   return (
-    <>
-      <div ref={setReferenceElement}>
-        <DateTimeRangeControl
-          {...restDateTimeRangeProps}
-          aria-controls={`${id}-range-selector`}
-          hasMillis={hasMillis}
-          hasSeconds={hasSeconds}
-          hasTime={hasTime}
-          id={id ? `${id}-range-control` : null}
-          isOpen={visible}
-          from={
-            isManageableFromDate
-              ? format(value.from as number, datetimeFormat)
-              : value.from
-          }
-          to={
-            isManageableToDate
-              ? format(value.to as number, datetimeFormat)
-              : value.to
-          }
-          onClick={onClickInputCallback}
-          onChange={onChangeCallback}
-          onBlur={onBlurCallback}
-          size={size}
-        />
-      </div>
-      {visible &&
-        (appendTo ? ReactDOM.createPortal(PopperCmp, appendTo) : PopperCmp)}
-    </>
+    <Popover
+      appendTo={appendTo}
+      disableOutsideEvent
+      id={`${id}__popover`}
+      isOpened={isOpened}
+    >
+      {({ ref, toggle }) => (
+        <div ref={ref}>
+          <DateTimeRangeControl
+            {...restDateTimeRangeProps}
+            aria-controls={`${id}-range-selector`}
+            hasMillis={hasMillis}
+            hasSeconds={hasSeconds}
+            hasTime={hasTime}
+            id={id ? `${id}-range-control` : null}
+            isOpen={isOpened}
+            from={
+              isManageableFromDate
+                ? format(value.from as number, datetimeFormat)
+                : value.from
+            }
+            to={
+              isManageableToDate
+                ? format(value.to as number, datetimeFormat)
+                : value.to
+            }
+            onClick={toggle}
+            onChange={onChangeCallback}
+            onBlur={onBlurCallback}
+            size={size}
+          />
+        </div>
+      )}
+      {({ setOpened }) => (
+        <Popover.Panel width="auto" id={`${id}-popover-panel`}>
+          <Panel.Body>
+            <DateTimeRange
+              {...restDateTimeRangeProps}
+              ariaLabelNextMonth={ariaLabelNextMonth}
+              ariaLabelPrevMonth={ariaLabelPrevMonth}
+              hasMillis={hasMillis}
+              hasSeconds={hasSeconds}
+              hasTime={hasTime}
+              id={id ? `${id}-datetime-range` : null}
+              selectedDates={date}
+              selectedPreset={preset}
+              onChange={onChangeDateTimeCallback}
+              onChangePresetDate={onChangePresetDateCallback}
+            />
+          </Panel.Body>
+          <Panel.Footer
+            bordered
+            actions={[
+              <Button key={'cancel'} onClick={() => setOpened(false)}>
+                {cancelButtonText}{' '}
+              </Button>,
+              <Button
+                colorScheme={'accent'}
+                key={'apply'}
+                onClick={() => {
+                  onApplyCallback();
+                  setOpened(false);
+                }}
+                state={disableApplyButton ? 'disabled' : 'enabled'}
+              >
+                {applyButtonText}
+              </Button>,
+            ]}
+          />
+        </Popover.Panel>
+      )}
+    </Popover>
   );
 };

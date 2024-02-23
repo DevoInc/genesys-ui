@@ -49,26 +49,28 @@ export const Closable: Story = {
         <Button onClick={() => setClosed(false)}>Open FloatPanel</Button>
       ) : (
         <FloatPanel position="left">
-          <Panel
-            closeSettings={{ onClick: () => setClosed(true) }}
-            elevation="ground"
-            headerSettings={{ bordered: true }}
-            height="100%"
-            title="FloatPanel"
-          >
-            <Typography.Paragraph>
-              Culture science Euclid intelligent beings hydrogen atoms citizens
-              of distant epochs. Cosmic ocean stirred by starlight extraordinary
-              claims require extraordinary evidence at the edge of forever a
-              very small stage in a vast cosmic arena extraplanetary. Vanquish
-              the impossible tesseract permanence of the stars permanence of the
-              stars invent the universe across the centuries. The only home we
-              have ever known emerged into consciousness a mote of dust
-              suspended in a sunbeam dream of the minds eye a mote of dust
-              suspended in a sunbeam made in the interiors of collapsing stars
-              and billions upon billions upon billions upon billions upon
-              billions upon billions upon billions.
-            </Typography.Paragraph>
+          <Panel elevation="ground" height="100%">
+            <Panel.Header
+              bordered
+              title="FloatPanel"
+              closeSettings={{ onClick: () => setClosed(true) }}
+            />
+            <Panel.Body>
+              <Typography.Paragraph>
+                Culture science Euclid intelligent beings hydrogen atoms
+                citizens of distant epochs. Cosmic ocean stirred by starlight
+                extraordinary claims require extraordinary evidence at the edge
+                of forever a very small stage in a vast cosmic arena
+                extraplanetary. Vanquish the impossible tesseract permanence of
+                the stars permanence of the stars invent the universe across the
+                centuries. The only home we have ever known emerged into
+                consciousness a mote of dust suspended in a sunbeam dream of the
+                minds eye a mote of dust suspended in a sunbeam made in the
+                interiors of collapsing stars and billions upon billions upon
+                billions upon billions upon billions upon billions upon
+                billions.
+              </Typography.Paragraph>
+            </Panel.Body>
           </Panel>
         </FloatPanel>
       );

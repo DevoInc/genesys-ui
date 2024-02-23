@@ -18,7 +18,7 @@ import { ButtonGroupContext } from './context';
 import { ButtonColorScheme } from '../Button';
 
 export interface ButtonGroupProps
-  extends Omit<FlexProps, 'as' | 'children'>,
+  extends Omit<FlexProps, 'children'>,
     Omit<ButtonGroupMixinProps, 'theme'> {
   children: React.ReactElement | React.ReactElement[];
   /** The size for the children buttons */
@@ -29,6 +29,7 @@ export interface ButtonGroupProps
 
 export const InternalButtonGroup: React.FC<ButtonGroupProps> = ({
   alignItems = 'center',
+  as = 'ul',
   colorScheme,
   children,
   flexWrap = 'wrap',
@@ -45,7 +46,7 @@ export const InternalButtonGroup: React.FC<ButtonGroupProps> = ({
     <Flex
       {...restFlexProps}
       alignItems={alignItems}
-      as="ul"
+      as={as}
       flexWrap={flexWrap}
       gap={gap || `cmp-${FLEX_SPACING_SIZE_MAP[size]}`}
       justifyContent={justifyContent}

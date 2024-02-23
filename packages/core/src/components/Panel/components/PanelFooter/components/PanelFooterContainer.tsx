@@ -1,44 +1,48 @@
 import * as React from 'react';
+import { concat } from 'lodash';
+import { useTheme } from 'styled-components';
 
-import {
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-} from '../../../../../declarations';
-
-import {
-  StyledPanelFooterContainer,
-  StyledPanelFooterContainerProps,
-} from './StyledPanelFooterContainer';
+import { PanelFooterAttrs } from '../declarations';
+import { panelFooterContainerMixin } from '../helpers';
+import { Flex, FlexProps } from '../../../../Flex';
 
 export interface PanelFooterContainerProps
-  extends StyledPanelFooterContainerProps,
-    StyledOverloadCssProps,
-    StyledPolymorphicProps {
-  /** Footer content */
-  children?: React.ReactNode;
-}
+  extends PanelFooterAttrs,
+    FlexProps {}
 
 export const PanelFooterContainer: React.FC<PanelFooterContainerProps> = ({
-  as,
+  alignItems = 'center',
   hasBoxShadow,
   bordered,
   children,
+  flex = '0 0 auto',
   hasBackground,
   removeSpace,
   size = 'md',
   styles,
+  zIndex = 1,
+  ...restFlexProps
 }) => {
+  const theme = useTheme();
   return (
-    <StyledPanelFooterContainer
-      as={as}
-      hasBoxShadow={hasBoxShadow}
-      hasBackground={hasBackground}
-      bordered={bordered}
-      css={styles}
-      removeSpace={removeSpace}
-      size={size}
+    <Flex
+      {...restFlexProps}
+      zIndex={zIndex}
+      flex={flex}
+      alignItems={alignItems}
+      styles={concat(
+        panelFooterContainerMixin({
+          bordered,
+          hasBackground,
+          hasBoxShadow,
+          removeSpace,
+          size,
+          theme,
+        }),
+        styles,
+      )}
     >
       {children}
-    </StyledPanelFooterContainer>
+    </Flex>
   );
 };

@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Panel, Button, IconButton, IconButtonClose } from '..';
-import { TextBlock } from './__stories__/helpers';
+import { Panel, Button, IconButton, Typography } from '..';
+import { TextBlock, TextBlockSM } from './__stories__/helpers';
+import { GIChartFlame } from '@devoinc/genesys-icons';
+import { lorem, lorem2 } from '../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Panel> = {
-  title: 'Components/Layout/Panel/Examples',
+  title: 'Components/Layout/Panel',
   component: Panel,
   args: {
     elevation: 'raised',
@@ -18,122 +20,118 @@ type Story = StoryObj<typeof Panel>;
 
 export const Base: Story = {
   args: {
-    bodySettings: {
-      removeSpace: false,
-    },
-    footerSettings: {
-      actions: [
-        <Button
-          key={1}
-          onClick={() => {
-            // eslint-disable-next-line no-alert
-            alert('Cancel click');
-          }}
-          colorScheme="quiet"
-        >
-          Cancel
-        </Button>,
-        <Button
-          key={2}
-          onClick={() => {
-            // eslint-disable-next-line no-alert
-            alert('Apply click');
-          }}
-          colorScheme="accent"
-        >
-          Apply
-        </Button>,
-      ],
-      bordered: false,
-      hasBoxShadow: true,
-    },
-    headerSettings: {
-      actions: [
-        <IconButton
-          key="btn-1"
-          hasBoldIcon
-          circular
-          icon="gi-heart_full"
-          onClick={() => {
-            // eslint-disable-next-line no-alert
-            alert('Clicked!');
-          }}
-          size="sm"
-        />,
-      ],
-      bordered: false,
-      hasBoxShadow: true,
-    },
+    children: [
+      <Panel.Header
+        key="header-1"
+        bordered
+        icon={<GIChartFlame />}
+        title="Header tittle"
+        actions={[
+          <IconButton
+            colorScheme="quiet"
+            key="header-action-1"
+            hasBoldIcon
+            circular
+            icon="gi-menu_alt_vertical"
+            size="sm"
+          />,
+        ]}
+        subtitle="Intelligent beings from which we spring bits of moving fluff paroxysm of global death."
+      />,
+      <Panel.Body key="body-1">{TextBlock}</Panel.Body>,
+      <Panel.Footer
+        key="footer-1"
+        bordered
+        helpUrl="https://docs.devo.com/"
+        actions={[
+          <Button
+            key={1}
+            onClick={() => {
+              // eslint-disable-next-line no-alert
+              alert('Cancel click');
+            }}
+            colorScheme="quiet"
+          >
+            Cancel
+          </Button>,
+          <Button
+            key={2}
+            onClick={() => {
+              // eslint-disable-next-line no-alert
+              alert('Apply click');
+            }}
+            colorScheme="accent"
+          >
+            Apply
+          </Button>,
+        ]}
+      />,
+    ],
     height: '50rem',
-    helpUrl: 'https://docs.devo.com/confluence/ndt',
-    icon: 'gi-chart_flame',
-    subtitle:
-      'Intelligent beings from which we spring bits of moving fluff paroxysm of global death.',
-    title: 'Intelligent beings',
     width: '50rem',
-    children: TextBlock,
   },
 };
 
-export const ClosableBackwardNavigation: Story = {
+export const Closable: Story = {
+  render: () =>
+    (() => {
+      const [closed, setClosed] = React.useState(false);
+      return closed ? (
+        <Button colorScheme="accent" onClick={() => setClosed(false)}>
+          Show the Panel
+        </Button>
+      ) : (
+        <Panel width="36rem">
+          <Panel.Header
+            bordered
+            icon={<GIChartFlame />}
+            title="Header tittle"
+            closeSettings={{ onClick: () => setClosed(true) }}
+          />
+          <Panel.Body>
+            <Typography.Paragraph gutterBottom="cmp-md">
+              {lorem}
+            </Typography.Paragraph>
+            <Typography.Paragraph gutterBottom="cmp-md">
+              {lorem2}
+            </Typography.Paragraph>
+          </Panel.Body>
+        </Panel>
+      );
+    })(),
+};
+
+export const BackwardNavigation: Story = {
+  name: 'With backward navigation',
   args: {
-    bodySettings: {
-      removeSpace: false,
-    },
-    footerSettings: {
-      actions: [
-        <Button
-          key="btn-1"
-          onClick={() => {
-            // eslint-disable-next-line no-alert
-            alert('Cancel click');
-          }}
-        >
-          Cancel
-        </Button>,
-        <Button
-          key="btn-2"
-          colorScheme="accent"
-          onClick={() => {
-            // eslint-disable-next-line no-alert
-            alert('Apply click');
-          }}
-        >
-          Apply
-        </Button>,
-      ],
-      bordered: false,
-      hasBoxShadow: true,
-    },
-    headerSettings: {
-      actions: [
-        <IconButton
-          key="btn-back"
-          hasBoldIcon
-          circular
-          icon="gi-arrow_left"
-          onClick={() => {
-            // eslint-disable-next-line no-alert
-            alert('Close Panel!');
-          }}
-          colorScheme="quiet"
-          size="sm"
-        />,
-        <IconButtonClose
-          key="btn-close"
-          onClick={() => {
-            // eslint-disable-next-line no-alert
-            alert('Back to previous Panel!');
-          }}
-          tooltip="Back to previous Panel"
-        />,
-      ],
-      bordered: false,
-      hasBoxShadow: true,
-    },
-    icon: null,
     width: '36rem',
-    children: TextBlock,
-    title: 'Intelligent beings',
+    children: [
+      <Panel.Header
+        key="header-2"
+        bordered
+        icon={<GIChartFlame />}
+        title="Header tittle"
+        actions={[
+          <Button
+            key="btn-back"
+            hasBoldIcon
+            icon="gi-arrow_left"
+            colorScheme="quiet"
+            size="sm"
+          >
+            Previous
+          </Button>,
+        ]}
+      />,
+      <Panel.Body key="body-2">{TextBlockSM}</Panel.Body>,
+    ],
+  },
+};
+
+export const OnlyContent: Story = {
+  name: 'Without header and footer',
+  args: {
+    width: '36rem',
+    children: [<Panel.Body key="body-3">{TextBlockSM}</Panel.Body>],
   },
 };

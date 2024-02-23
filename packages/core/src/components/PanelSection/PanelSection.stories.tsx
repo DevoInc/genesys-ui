@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import * as React from 'react';
 
 import { PanelSection } from '..';
 import { TextBlock } from '../Panel/__stories__/helpers';
@@ -19,7 +20,7 @@ type Story = StoryObj<typeof PanelSection>;
 
 export const Base: Story = {
   args: {
-    children: TextBlock,
+    children: <>{TextBlock}</>,
     title: 'PanelSection title',
   },
 };

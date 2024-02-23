@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
 import type { AllHTMLAttributes, AriaAttributes } from 'react';
 
 /** ---------------------------------------------------------------------------------------
@@ -7,7 +6,7 @@ import type { AllHTMLAttributes, AriaAttributes } from 'react';
  * ----------------------------------------------------------------------------------------
  * ---------------------------------------------------------------------------------------- */
 export interface MiscelaneaProps<T = Element> {
-  /** A boolean attribute indicating whether or not the element's contents are editable by the user */
+  /** A boolean attribute indicating whether the element's contents are editable by the user */
   contentEditable: AllHTMLAttributes<T>['contentEditable'];
   /** A string attribute indicating the text directionality of the element's contents */
   dir: AllHTMLAttributes<T>['dir'];

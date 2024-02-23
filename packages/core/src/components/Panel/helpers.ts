@@ -1,28 +1,29 @@
 import * as React from 'react';
 import { css, DefaultTheme } from 'styled-components';
 
-import { BoxProps } from '../../../Box';
+import { BoxProps } from '../Box';
 
-import { pseudoElementOverlayMixin } from '../../../../styled';
+import { pseudoElementOverlayMixin } from '../../styled';
 
-export interface PanelContainerMixinProps extends BoxProps {
+export interface PanelMixinProps
+  extends Pick<BoxProps, 'display' | 'elevation'> {
   bordered?: boolean;
   colorScheme?: React.CSSProperties['backgroundColor'];
   theme: DefaultTheme;
 }
 
 /**
- * Get the PanelContainer custom styles applied to a Box component.
+ * Get the Panel custom styles applied to a Box component.
  *
  * @return object with the css.
  */
-export const panelContainerMixin = ({
+export const panelMixin = ({
   bordered,
   colorScheme,
   display,
   elevation,
   theme,
-}: PanelContainerMixinProps) => {
+}: PanelMixinProps) => {
   const aliasTokens = theme.alias;
   // TODO: Add border-color token to Panel component QUV-2018
   const borderColor = aliasTokens.color.border.surface.base.weak;

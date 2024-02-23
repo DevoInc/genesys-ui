@@ -1,27 +1,26 @@
 import * as React from 'react';
 import { css, useTheme } from 'styled-components';
 
-import { HEADER_SIZES } from './constants';
+import { PANEL_HEADER_SIZES } from './constants';
 
-import { PanelHeaderSize } from '../declarations';
-import { StyledOverloadCssProps } from '../../../../../declarations';
+import { PanelHeadingAttrs } from '../declarations';
 
 import { Flex, IconButtonGoToDocs, Typography } from '../../../../index';
-import { PanelHeaderIcon, PanelHeaderIconProps } from './PanelHeaderIcon';
+import { PanelHeaderIcon } from './PanelHeaderIcon';
+import {
+  PanelContainerAttrs,
+  PanelBaseAttrs,
+  PanelHelpAttrs,
+} from '../../../declarations';
 
-export interface PanelHeaderHeadingProps extends StyledOverloadCssProps {
-  icon?: PanelHeaderIconProps['icon'];
-  size?: PanelHeaderSize;
-  helpUrl?: string;
-  legend?: React.ReactNode;
-  helpTooltip?: string;
-  /** The tooltip for the header title block */
-  title?: string;
-  subtitle?: string;
-  titleTooltip?: string;
-}
+export interface PanelHeaderHeadingProps
+  extends PanelBaseAttrs,
+    PanelHeadingAttrs,
+    Pick<PanelContainerAttrs, 'size'>,
+    PanelHelpAttrs {}
 
 export const PanelHeaderHeading: React.FC<PanelHeaderHeadingProps> = ({
+  as,
   size = 'md',
   helpUrl,
   icon,
@@ -41,13 +40,19 @@ export const PanelHeaderHeading: React.FC<PanelHeaderHeadingProps> = ({
     max-width: ${theme.cmp.panel.headerTitle.size.maxWidth};
   `;
   return (
-    <Flex alignItems="center" flex="1 1 auto" minWidth="0" styles={styles}>
+    <Flex
+      as={as}
+      alignItems="center"
+      flex="1 1 auto"
+      minWidth="0"
+      styles={styles}
+    >
       {icon && <PanelHeaderIcon icon={icon} size={size} />}
       <Flex.Item minWidth="0">
         {!helpUrl && !legend ? (
           <Typography.Heading
             truncateLine={2}
-            size={HEADER_SIZES[size].title}
+            size={PANEL_HEADER_SIZES[size].title}
             styles={headingStyles}
           >
             {title}
@@ -56,7 +61,7 @@ export const PanelHeaderHeading: React.FC<PanelHeaderHeadingProps> = ({
           <Flex alignItems="center" inline width="100%">
             <Typography.Heading
               truncateLine={2}
-              size={HEADER_SIZES[size].title}
+              size={PANEL_HEADER_SIZES[size].title}
               tooltip={titleTooltip}
             >
               {title}
@@ -70,7 +75,7 @@ export const PanelHeaderHeading: React.FC<PanelHeaderHeadingProps> = ({
                     tooltip={helpTooltip}
                   />
                 )}
-                {legend && legend}
+                {legend}
               </Flex>
             )}
           </Flex>
@@ -78,7 +83,7 @@ export const PanelHeaderHeading: React.FC<PanelHeaderHeadingProps> = ({
         <Typography.Paragraph
           colorScheme="weak"
           truncateLine={3}
-          size={HEADER_SIZES[size].subtitle.size}
+          size={PANEL_HEADER_SIZES[size].subtitle.size}
           styles={css`
             margin-top: ${theme.cmp.panel.headerSubtitle.space.marginTop};
             max-width: ${theme.cmp.panel.headerSubtitle.size.maxWidth};

@@ -1,42 +1,51 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { Box, Typography } from '../../..';
+import { PanelBaseAttrs, PanelContainerAttrs } from '../../declarations';
+import { PanelBodyAttrs } from './declarations';
+import { PanelContext } from '../../context';
 
-import { StyledOverloadCssProps } from '../../../../declarations';
-import { panelBodyMixin, PanelBodyMixinProps } from './helpers';
-import { useTheme } from 'styled-components';
+import { panelBodyMixin } from './helpers';
+
+import { Box } from '../../../Box';
+import { Typography } from '../../../Typography';
 
 export interface PanelBodyProps
-  extends Omit<PanelBodyMixinProps, 'theme'>,
-    StyledOverloadCssProps {
-  children?: React.ReactNode;
-  panelBodyRef?: (node: HTMLDivElement) => void;
-}
+  extends PanelBaseAttrs,
+    PanelBodyAttrs,
+    Pick<PanelContainerAttrs, 'size' | 'children'> {}
 
-export const PanelBody: React.FC<PanelBodyProps> = ({
-  children,
-  removeSpace,
-  hasScroll,
-  panelBodyRef,
-  size = 'md',
-  styles,
-}) => {
-  const theme = useTheme();
-  const baseStyles = panelBodyMixin({ hasScroll, removeSpace, size, theme });
-  return (
-    <Box
-      position="relative"
-      flex="1 1 100%"
-      overflow="auto"
-      ref={panelBodyRef}
-      styles={concat(baseStyles, styles)}
-    >
-      {typeof children === 'string' ? (
-        <Typography.Paragraph size={size}>{children}</Typography.Paragraph>
-      ) : (
-        children
-      )}
-    </Box>
-  );
-};
+export const PanelBody = React.forwardRef<HTMLElement, PanelBodyProps>(
+  ({ children, removeSpace, hasScroll, size, styles }, ref) => {
+    const theme = useTheme();
+    const context = React.useContext(PanelContext);
+    const evalSize = size || context.size || 'md';
+
+    return (
+      <Box
+        position="relative"
+        flex="1 1 100%"
+        overflow="auto"
+        ref={ref || context.bodyRef}
+        styles={concat(
+          panelBodyMixin({
+            hasScroll: hasScroll || context.scrolledBodyContent,
+            removeSpace,
+            size: evalSize,
+            theme,
+          }),
+          styles,
+        )}
+      >
+        {typeof children === 'string' ? (
+          <Typography.Paragraph>{children}</Typography.Paragraph>
+        ) : (
+          children
+        )}
+      </Box>
+    );
+  },
+);
+
+PanelBody.displayName = 'PanelBody';

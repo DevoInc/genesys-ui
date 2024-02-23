@@ -40,9 +40,9 @@ export const Base: Story = {
         </AppBar>
       </AppLayout.Bar>
       <AppLayout.Content>
-        <Panel.Container height="100%">
+        <Panel height="100%">
           <Panel.Body>Content</Panel.Body>
-        </Panel.Container>
+        </Panel>
       </AppLayout.Content>
     </AppLayout>
   ),
@@ -73,9 +73,9 @@ export const DoubleNavigation: Story = {
         </Tabs>
       </AppLayout.Lead>
       <AppLayout.Content>
-        <Panel.Container height="100%">
+        <Panel height="100%">
           <Panel.Body>Content</Panel.Body>
-        </Panel.Container>
+        </Panel>
       </AppLayout.Content>
     </AppLayout>
   ),

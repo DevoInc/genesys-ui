@@ -2,14 +2,14 @@ import * as React from 'react';
 import { css, useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { PanelHeaderSize } from '../declarations';
-
 import { Flex } from '../../../../Flex';
 import { Icon, IconProps } from '../../../../Icon';
+import { PanelContainerAttrs } from '../../../declarations';
 
-export interface PanelHeaderIconProps extends Omit<IconProps, 'iconId'> {
-  icon: IconProps['iconId'];
-  size: PanelHeaderSize;
+export interface PanelHeaderIconProps
+  extends Omit<IconProps, 'iconId' | 'size'>,
+    Pick<PanelContainerAttrs, 'size'> {
+  icon: React.ReactNode;
 }
 
 export const PanelHeaderIcon: React.FC<PanelHeaderIconProps> = ({
@@ -34,10 +34,11 @@ export const PanelHeaderIcon: React.FC<PanelHeaderIconProps> = ({
     >
       <Icon
         {...restIconProps}
-        iconId={icon}
         color={iconTokens.color.text}
         size={iconTokens.typo.fontSize[size]}
-      />
+      >
+        {icon}
+      </Icon>
     </Flex>
   );
 };

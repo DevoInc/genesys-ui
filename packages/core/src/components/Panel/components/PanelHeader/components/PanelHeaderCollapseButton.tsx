@@ -6,20 +6,17 @@ import {
   IconButtonCollapse,
   IconButtonCollapseProps,
 } from '../../../../IconButton';
-import { PanelHeaderSize } from '../declarations';
 
 import { Flex } from '../../../../Flex';
+import { PanelContainerAttrs } from '../../../declarations';
 
-export interface PanelHeaderCollapseProps extends IconButtonCollapseProps {
-  size?: PanelHeaderSize;
-}
+export interface PanelHeaderCollapseButtonProps
+  extends Omit<IconButtonCollapseProps, 'size'>,
+    Pick<PanelContainerAttrs, 'size'> {}
 
-export const PanelHeaderCollapse: React.FC<PanelHeaderCollapseProps> = ({
-  size,
-  state = 'enabled',
-  styles,
-  ...restIconButtonCollapseProps
-}) => {
+export const PanelHeaderCollapseButton: React.FC<
+  PanelHeaderCollapseButtonProps
+> = ({ size, state = 'enabled', styles, ...restIconButtonCollapseProps }) => {
   const theme = useTheme();
   const baseStyles = css`
     margin-right: ${theme.cmp.panel.headerPrepend.space.marginRight[size]};

@@ -39,23 +39,12 @@ export const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
             hasBadge={true}
           />
         )}
-        <Panel
-          maxHeight="34rem"
-          bodySettings={{
-            removeSpace: true,
-          }}
-          elevation="activated"
-          size="sm"
-          width="28rem"
-          footerSettings={{
-            bordered: true,
-            renderContent: footer,
-          }}
-          headerSettings={{
-            renderContent: header,
-          }}
-        >
-          <Form padding="cmp-sm">{children}</Form>
+        <Panel maxHeight="34rem" elevation="activated" size="sm" width="28rem">
+          <Panel.Header>{header}</Panel.Header>
+          <Panel.Body>
+            <Form padding="cmp-sm">{children}</Form>
+          </Panel.Body>
+          <Panel.Footer bordered>{footer}</Panel.Footer>
         </Panel>
       </Popover>
     </HFlex.Item>

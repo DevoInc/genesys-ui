@@ -1,20 +1,20 @@
 import * as React from 'react';
 
+import { PanelContext } from '../../context';
+import { PanelFooterAttrs } from './declarations';
+import { PanelBaseAttrs, PanelHelpAttrs } from '../../declarations';
+
 import {
   PanelFooterActions,
-  PanelFooterActionsProps,
   PanelFooterContainer,
-  PanelFooterContainerProps,
   PanelFooterHelp,
-  PanelFooterHelpProps,
 } from './components';
+import { Typography } from '../../../Typography';
 
 export interface PanelFooterProps
-  extends PanelFooterContainerProps,
-    PanelFooterHelpProps,
-    PanelFooterActionsProps {
-  children?: React.ReactNode;
-}
+  extends PanelBaseAttrs,
+    PanelFooterAttrs,
+    PanelHelpAttrs {}
 
 export const InternalPanelFooter: React.FC<PanelFooterProps> = ({
   actions,
@@ -22,35 +22,43 @@ export const InternalPanelFooter: React.FC<PanelFooterProps> = ({
   bordered = false,
   children,
   hasBackground = false,
-  hasBoxShadow = false,
+  hasBoxShadow,
   helpTooltip = 'Go to Docs to get help',
   helpUrl,
   removeSpace,
-  size = 'md',
+  size,
   styles,
 }) => {
+  const context = React.useContext(PanelContext);
+  const evalSize = size || context.size || 'md';
   return (
     <PanelFooterContainer
       as={as}
-      hasBoxShadow={hasBoxShadow}
+      hasBoxShadow={hasBoxShadow ?? context.scrolledBodyContent}
       hasBackground={hasBackground}
       bordered={bordered}
       removeSpace={removeSpace}
       styles={styles}
-      size={size}
+      size={evalSize}
     >
       {children ? (
-        children
+        typeof children === 'string' ? (
+          <Typography.Paragraph size={evalSize}>
+            {children}
+          </Typography.Paragraph>
+        ) : (
+          children
+        )
       ) : (
         <>
           {helpUrl && (
             <PanelFooterHelp
-              size={size}
+              size={evalSize}
               helpUrl={helpUrl}
               helpTooltip={helpTooltip}
             />
           )}
-          {actions && <PanelFooterActions actions={actions} size={size} />}
+          {actions && <PanelFooterActions actions={actions} size={evalSize} />}
         </>
       )}
     </PanelFooterContainer>
@@ -58,13 +66,13 @@ export const InternalPanelFooter: React.FC<PanelFooterProps> = ({
 };
 
 export const PanelFooter = InternalPanelFooter as typeof InternalPanelFooter & {
-  Container: typeof PanelFooterContainer;
-  Help: typeof PanelFooterHelp;
-  Actions: typeof PanelFooterActions;
+  _Container: typeof PanelFooterContainer;
+  _Help: typeof PanelFooterHelp;
+  _Actions: typeof PanelFooterActions;
 };
 
-PanelFooter.Container = PanelFooterContainer;
-PanelFooter.Help = PanelFooterHelp;
-PanelFooter.Actions = PanelFooterActions;
+PanelFooter._Container = PanelFooterContainer;
+PanelFooter._Help = PanelFooterHelp;
+PanelFooter._Actions = PanelFooterActions;
 
 PanelFooter.displayName = 'PanelFooter';

@@ -2,55 +2,49 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import {
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-} from '../../../../../declarations';
-import { Flex, FlexProps } from '../../../../Flex';
-import { PanelHeaderSize } from '../declarations';
+import { PanelHeaderAttrs } from '../declarations';
 import { panelHeaderContainerMixin } from '../helpers';
+import { Flex, FlexProps } from '../../../../Flex';
+import { PanelContext } from '../../../context';
 
 export interface PanelHeaderContainerProps
   extends FlexProps,
-    StyledOverloadCssProps,
-    StyledPolymorphicProps {
-  /** Apply bordered styles */
-  bordered?: boolean;
-  /** Apply shadow styles */
-  hasBoxShadow?: boolean;
-  hasSubtitle?: boolean;
-  removeSpace?: boolean;
-  size?: PanelHeaderSize;
-  children: React.ReactNode;
-}
+    Omit<PanelHeaderAttrs, 'actions'> {}
 
 export const PanelHeaderContainer: React.FC<PanelHeaderContainerProps> = ({
+  alignItems,
   as = 'header',
   bordered,
   children,
+  flex = '0 0 auto',
   hasBoxShadow,
   hasSubtitle,
   removeSpace,
   size = 'md',
   styles,
+  zIndex = 1,
   ...restFlexProps
 }) => {
   const theme = useTheme();
-  const baseStyles = panelHeaderContainerMixin({
-    bordered,
-    hasBoxShadow,
-    removeSpace,
-    size,
-    theme,
-  });
+  const context = React.useContext(PanelContext);
+  const evalHasBoxShadow = hasBoxShadow ?? context.scrolledBodyContent;
   return (
     <Flex
       {...restFlexProps}
-      alignItems={hasSubtitle ? 'flex-start' : 'center'}
+      alignItems={alignItems || (hasSubtitle ? 'flex-start' : 'center')}
       as={as}
-      flex="0 0 auto"
-      styles={concat(baseStyles, styles)}
-      zIndex={1}
+      flex={flex}
+      styles={concat(
+        panelHeaderContainerMixin({
+          bordered,
+          hasBoxShadow: evalHasBoxShadow,
+          removeSpace,
+          size,
+          theme,
+        }),
+        styles,
+      )}
+      zIndex={zIndex}
     >
       {children}
     </Flex>

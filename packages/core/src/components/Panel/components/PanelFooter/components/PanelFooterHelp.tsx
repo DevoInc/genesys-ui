@@ -1,25 +1,21 @@
 import * as React from 'react';
-import { css, useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
+import { concat } from 'lodash';
 
+import { PanelHelpAttrs } from '../../../declarations';
+import { PanelFooterAttrs } from '../declarations';
+
+import { Flex } from '../../../../Flex';
 import {
-  Flex,
   IconButtonGoToDocs,
   IconButtonGoToDocsProps,
-  Typography,
-} from '../../../../index';
-
-import { PanelFooterSize } from '../declarations';
+} from '../../../../IconButton';
+import { Typography } from '../../../../Typography';
 
 export interface PanelFooterHelpProps
-  extends Omit<IconButtonGoToDocsProps, 'href' | 'size' | 'tooltip'> {
-  children?: React.ReactNode;
-  /** URL for the help icon */
-  helpUrl?: IconButtonGoToDocsProps['href'];
-  /** Title attribute for the help icon */
-  helpTooltip?: IconButtonGoToDocsProps['tooltip'];
-  /** Footer size */
-  size?: PanelFooterSize;
-}
+  extends Omit<IconButtonGoToDocsProps, 'href' | 'size' | 'tooltip'>,
+    Pick<PanelFooterAttrs, 'size' | 'children'>,
+    PanelHelpAttrs {}
 
 export const PanelFooterHelp: React.FC<PanelFooterHelpProps> = ({
   children,
@@ -33,14 +29,12 @@ export const PanelFooterHelp: React.FC<PanelFooterHelpProps> = ({
   return (
     <Flex.Item
       flex="0 0 auto"
-      styles={
-        styles ||
-        css`
-          margin-right: ${theme.cmp.panel.footerPrepend.space.marginRight[
-            size
-          ]};
+      styles={concat(
         `
-      }
+          margin-right: ${theme.cmp.panel.footerPrepend.space.marginRight[size]};
+        `,
+        styles,
+      )}
     >
       {children ? (
         typeof children === 'string' ? (

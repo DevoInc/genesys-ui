@@ -1,13 +1,13 @@
 import { HeadingType } from '../../../../Typography/constants';
 import { PanelSize } from '../../../declarations';
 
-interface HeaderSizes {
+interface PanelHeaderSizes {
   xs: { title: HeadingType; subtitle: { size: PanelSize } };
   sm: { title: HeadingType; subtitle: { size: PanelSize } };
   md: { title: HeadingType; subtitle: { size: PanelSize } };
 }
 
-export const HEADER_SIZES: HeaderSizes = {
+export const PANEL_HEADER_SIZES: PanelHeaderSizes = {
   xs: {
     title: 'h6',
     subtitle: {

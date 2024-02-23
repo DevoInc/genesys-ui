@@ -1,51 +1,32 @@
 import * as React from 'react';
 
-import {
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-} from '../../../../declarations';
-import { PanelFooterProps } from '../PanelFooter';
-import { HeaderSettingsProps, PanelSize } from '../../declarations';
+import { PanelBaseAttrs, PanelHelpAttrs } from '../../declarations';
+
+import { PanelContext } from '../../context';
 
 import { Typography } from '../../../Typography';
 import {
-  PanelHeaderCollapse,
   PanelHeaderContainer,
-  PanelHeaderContainerProps,
   PanelHeaderActions,
   PanelHeaderHeading,
-  PanelHeaderHeadingProps,
-  PanelHeaderCollapseProps,
-  PanelHeaderCloseProps,
+  PanelHeaderCollapseButton,
   PanelHeaderClose,
   PanelHeaderIcon,
 } from './components';
+import {
+  PanelCloseAttrs,
+  PanelCollapseAttrs,
+  PanelHeaderAttrs,
+  PanelHeadingAttrs,
+} from './declarations';
 
 export interface PanelHeaderProps
-  extends StyledOverloadCssProps,
-    Pick<StyledPolymorphicProps, 'as'>,
-    Omit<HeaderSettingsProps, 'renderContent'>,
-    Pick<PanelHeaderContainerProps, 'hasBoxShadow'>,
-    Pick<
-      PanelHeaderHeadingProps,
-      'legend' | 'subtitle' | 'title' | 'titleTooltip'
-    >,
-    Pick<PanelFooterProps, 'helpTooltip' | 'helpUrl'> {
-  children?: React.ReactNode;
-  closeSettings?: {
-    cssTranslate?: PanelHeaderCloseProps['cssTranslate'];
-    onClick: PanelHeaderCloseProps['onClick'];
-    tooltip?: PanelHeaderCloseProps['tooltip'];
-  };
-  collapseSettings?: {
-    expanded?: boolean;
-    onClick: PanelHeaderCollapseProps['onClick'];
-    tooltip?: PanelHeaderCollapseProps['tooltip'];
-  };
-  removeSpace?: boolean;
-  /** Set size for Panel header components */
-  size?: PanelSize;
-  icon?: string;
+  extends PanelBaseAttrs,
+    PanelHeaderAttrs,
+    PanelHelpAttrs,
+    PanelHeadingAttrs {
+  closeSettings?: PanelCloseAttrs;
+  collapseSettings?: PanelCollapseAttrs;
 }
 
 export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
@@ -61,34 +42,38 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
   icon,
   legend,
   removeSpace,
-  size = 'md',
+  size,
   styles,
   subtitle,
   title,
   titleTooltip,
 }) => {
+  const context = React.useContext(PanelContext);
+  const evalSize = size || context.size || 'md';
   return (
     <PanelHeaderContainer
       as={as}
-      hasBoxShadow={hasBoxShadow}
+      hasBoxShadow={hasBoxShadow ?? context.scrolledBodyContent}
       bordered={bordered}
       hasSubtitle={Boolean(subtitle)}
       removeSpace={removeSpace}
-      size={size}
+      size={evalSize}
       styles={styles}
     >
       {children ? (
         typeof children === 'string' ? (
-          <Typography.Paragraph size={size}>{children}</Typography.Paragraph>
+          <Typography.Paragraph size={evalSize}>
+            {children}
+          </Typography.Paragraph>
         ) : (
           children
         )
       ) : (
         <>
           {collapseSettings && (
-            <PanelHeaderCollapse
+            <PanelHeaderCollapseButton
               onClick={collapseSettings?.onClick}
-              size={size}
+              size={evalSize}
               state={collapseSettings.expanded ? 'expanded' : 'enabled'}
               tooltip={collapseSettings?.tooltip}
             />
@@ -99,18 +84,18 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
               helpUrl={helpUrl}
               icon={icon}
               legend={legend}
-              size={size}
+              size={evalSize}
               subtitle={subtitle}
               title={title}
               titleTooltip={titleTooltip}
             />
           )}
-          {actions && <PanelHeaderActions actions={actions} size={size} />}
+          {actions && <PanelHeaderActions actions={actions} size={evalSize} />}
           {closeSettings && (
             <PanelHeaderClose
               cssTranslate={closeSettings.cssTranslate}
               onClick={closeSettings.onClick}
-              size={size}
+              size={evalSize}
               tooltip={closeSettings.tooltip}
             />
           )}
@@ -121,19 +106,19 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
 };
 
 export const PanelHeader = InternalPanelHeader as typeof InternalPanelHeader & {
-  Actions: typeof PanelHeaderActions;
-  Close: typeof PanelHeaderClose;
-  Collapse: typeof PanelHeaderCollapse;
-  Container: typeof PanelHeaderContainer;
-  Heading: typeof PanelHeaderHeading;
-  Icon: typeof PanelHeaderIcon;
+  _Actions: typeof PanelHeaderActions;
+  _Close: typeof PanelHeaderClose;
+  _CollapseButton: typeof PanelHeaderCollapseButton;
+  _Container: typeof PanelHeaderContainer;
+  _Heading: typeof PanelHeaderHeading;
+  _Icon: typeof PanelHeaderIcon;
 };
 
-PanelHeader.Actions = PanelHeaderActions;
-PanelHeader.Close = PanelHeaderClose;
-PanelHeader.Collapse = PanelHeaderCollapse;
-PanelHeader.Container = PanelHeaderContainer;
-PanelHeader.Heading = PanelHeaderHeading;
-PanelHeader.Icon = PanelHeaderIcon;
+PanelHeader._Actions = PanelHeaderActions;
+PanelHeader._Close = PanelHeaderClose;
+PanelHeader._CollapseButton = PanelHeaderCollapseButton;
+PanelHeader._Container = PanelHeaderContainer;
+PanelHeader._Heading = PanelHeaderHeading;
+PanelHeader._Icon = PanelHeaderIcon;
 
 PanelHeader.displayName = 'PanelHeader';

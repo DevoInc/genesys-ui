@@ -71,26 +71,19 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
   const footerActions = showCollapsed
     ? undefined
     : getFooterActions({
-      accent,
-      actionApply,
-      actionReject,
-      closeToast,
-      status,
-    });
+        accent,
+        actionApply,
+        actionReject,
+        closeToast,
+        status,
+      });
   return (
     <>
       <ToastBadge status={status} updates={updates} />
       <Panel
         ref={null}
         colorScheme={backgroundColor}
-        bodySettings={{ removeSpace: showCollapsed }}
         elevation={TOAST_ELEVATION_LEVEL}
-        footerSettings={{ hasBoxShadow: true, actions: footerActions }}
-        headerSettings={{
-          hasBoxShadow: collapsable ? collapsable && !collapsed : undefined,
-          removeSpace: true,
-          renderContent: headerContent,
-        }}
         maxHeight={maxHeight}
         styles={concat(
           toastPanelMixinProps({
@@ -102,7 +95,16 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
           styles,
         )}
       >
-        <ToastContent content={content} collapsed={showCollapsed} />
+        <Panel.Header
+          hasBoxShadow={collapsable ? collapsable && !collapsed : undefined}
+          removeSpace
+        >
+          {headerContent}
+        </Panel.Header>
+        <Panel.Body removeSpace={showCollapsed}>
+          <ToastContent content={content} collapsed={showCollapsed} />
+        </Panel.Body>
+        <Panel.Footer actions={footerActions} />
       </Panel>
     </>
   );

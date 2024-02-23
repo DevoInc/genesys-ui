@@ -2,23 +2,18 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { PanelHeaderSize } from '../declarations';
-import { BoxProps } from '../../../../Box';
+import { PanelHeaderAttrs, PanelCloseAttrs } from '../declarations';
 
 import { panelHeaderAppendMixin } from '../helpers';
 
-import {
-  IconButtonClose,
-  Box,
-  IconButtonCloseProps,
-} from '../../../../../index';
 import { Flex } from '../../../../Flex';
+import { Box } from '../../../../Box';
+import { IconButtonClose, IconButtonCloseProps } from '../../../../IconButton';
 
 export interface PanelHeaderCloseProps
-  extends Pick<BoxProps, 'cssTranslate'>,
-    Omit<IconButtonCloseProps, 'size'> {
-  size: PanelHeaderSize;
-}
+  extends Pick<PanelCloseAttrs, 'cssTranslate'>,
+    Omit<IconButtonCloseProps, 'size'>,
+    Pick<PanelHeaderAttrs, 'size'> {}
 
 export const PanelHeaderClose: React.FC<PanelHeaderCloseProps> = ({
   cssTranslate,

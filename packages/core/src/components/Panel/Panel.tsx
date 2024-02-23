@@ -1,152 +1,99 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
+import { concat } from 'lodash';
 
 import { useDetectScroll } from '../../hooks';
 
-import {
-  BodySettingsProps,
-  FooterSettingsProps,
-  HeaderSettingsProps,
-  PanelSize,
-} from './declarations';
+import { PanelSize } from './declarations';
 import {
   StyledOverloadCssProps,
-  StyledOverloadCssPropsWithRecord,
+  StyledPolymorphicProps,
 } from '../../declarations';
 
+import { PanelContext } from './context';
+
+import { panelMixin, PanelMixinProps } from './helpers';
+
+import { Box, BoxProps } from '../Box';
 import {
-  PanelContainer,
   PanelBody,
-  PanelContainerProps,
   PanelFooter,
   PanelHeader,
   PanelFooterProps,
   PanelHeaderProps,
 } from './components';
 
-export interface BasePanelProps
-  extends StyledOverloadCssProps,
-    Omit<PanelContainerProps, 'children'>,
-    Pick<
-      PanelHeaderProps,
-      | 'closeSettings'
-      | 'collapseSettings'
-      | 'icon'
-      | 'legend'
-      | 'subtitle'
-      | 'title'
-      | 'titleTooltip'
-    >,
-    Pick<PanelFooterProps, 'helpTooltip' | 'helpUrl'> {
-  children?: React.ReactNode;
-  bodySettings?: BodySettingsProps;
-  footerSettings?: FooterSettingsProps;
-  headerSettings?: HeaderSettingsProps;
+export interface PanelProps
+  extends BoxProps,
+    StyledOverloadCssProps,
+    StyledPolymorphicProps,
+    Omit<PanelMixinProps, 'theme'> {
+  children?:
+    | [
+        React.ReactElement<PanelHeaderProps>,
+        React.ReactNode,
+        React.ReactElement<PanelFooterProps>,
+      ]
+    | [React.ReactElement<PanelHeaderProps>, React.ReactNode]
+    | React.ReactNode;
+  removeContentSpace?: boolean;
   /** Set size for Panel components */
   size?: PanelSize;
 }
 
-export type PanelProps = BasePanelProps &
-  StyledOverloadCssPropsWithRecord<'container' | 'header' | 'body' | 'footer'>;
-
-const InternalPanel: React.FC<PanelProps> = ({
-  // PanelContainerProps
-  as,
-  bordered,
-  colorScheme,
-  display,
-  elevation = 'raised',
-  id,
-  visibility,
-  position,
-  styles,
-  subcomponentStyles,
-  // PanelHeaderProps
-  headerSettings,
-  closeSettings,
-  collapseSettings,
-  subtitle,
-  title,
-  titleTooltip,
-  legend,
-  icon,
-  // PanelBodyProps
-  bodySettings,
-  // PanelFooterProps
-  footerSettings,
-  helpUrl,
-  helpTooltip,
-  // commons
-  size = 'md',
-  children,
-  ...boxProps
-}) => {
-  const { hasScroll, targetElRef } = useDetectScroll();
-  return (
-    <PanelContainer
-      display={display}
-      as={as}
-      bordered={bordered}
-      colorScheme={colorScheme}
-      elevation={elevation}
-      id={id}
-      position={position}
-      visibility={visibility}
-      styles={subcomponentStyles?.container || styles}
-      {...boxProps}
-    >
-      <PanelHeader
-        hasBoxShadow={headerSettings?.hasBoxShadow ?? hasScroll}
-        actions={headerSettings?.actions}
-        bordered={headerSettings?.bordered}
-        closeSettings={closeSettings}
-        collapseSettings={collapseSettings}
-        helpUrl={!footerSettings ? helpUrl : undefined}
-        helpTooltip={!footerSettings ? helpTooltip : undefined}
-        icon={icon}
-        legend={legend}
-        removeSpace={headerSettings?.removeSpace}
-        size={size}
-        styles={subcomponentStyles?.header}
-        subtitle={subtitle}
-        title={title}
-        titleTooltip={titleTooltip}
+const InternalPanel = React.forwardRef<HTMLElement, PanelProps>(
+  (
+    {
+      bordered,
+      colorScheme,
+      display,
+      elevation = 'raised',
+      styles,
+      size = 'md',
+      children,
+      ...restBoxProps
+    },
+    ref,
+  ) => {
+    const theme = useTheme();
+    const { hasScroll, targetElRef } = useDetectScroll();
+    return (
+      <Box
+        {...restBoxProps}
+        ref={ref}
+        elevation={elevation}
+        styles={concat(
+          panelMixin({
+            bordered,
+            colorScheme,
+            display,
+            elevation,
+            theme,
+          }),
+          styles,
+        )}
       >
-        {headerSettings?.renderContent}
-      </PanelHeader>
-      <PanelBody
-        hasScroll={hasScroll}
-        panelBodyRef={targetElRef}
-        removeSpace={bodySettings?.removeSpace}
-        size={size}
-        styles={subcomponentStyles?.body}
-      >
-        {children}
-      </PanelBody>
-      <PanelFooter
-        actions={footerSettings?.actions}
-        bordered={footerSettings?.bordered}
-        hasBoxShadow={hasScroll}
-        hasBackground={footerSettings?.hasBackground}
-        helpUrl={helpUrl}
-        helpTooltip={helpTooltip}
-        removeSpace={footerSettings?.removeSpace}
-        size={size}
-        styles={subcomponentStyles?.footer}
-      >
-        {footerSettings?.renderContent}
-      </PanelFooter>
-    </PanelContainer>
-  );
-};
+        <PanelContext.Provider
+          value={{ scrolledBodyContent: hasScroll, size, bodyRef: targetElRef }}
+        >
+          {children}
+        </PanelContext.Provider>
+      </Box>
+    );
+  },
+);
 
 export const Panel = InternalPanel as typeof InternalPanel & {
-  Container: typeof PanelContainer;
   Header: typeof PanelHeader;
   Body: typeof PanelBody;
   Footer: typeof PanelFooter;
 };
 
-Panel.Container = PanelContainer;
 Panel.Header = PanelHeader;
 Panel.Body = PanelBody;
 Panel.Footer = PanelFooter;
+
+InternalPanel.displayName = 'Panel';
+Panel.Header.displayName = 'Panel.Header';
+Panel.Body.displayName = 'Panel.Body';
+Panel.Footer.displayName = 'Panel.Footer';

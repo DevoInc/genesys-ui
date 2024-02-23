@@ -2,31 +2,31 @@ import { subDays, subMinutes } from 'date-fns';
 
 export const onApply =
   (setDate) =>
-    ({ timestamp, preset }) => {
-      // eslint-disable-next-line no-console
-      console.table({
-        ...(preset?.from &&
+  ({ timestamp, preset }) => {
+    // eslint-disable-next-line no-console
+    console.table({
+      ...(preset?.from &&
         preset?.to && {
           preset: {
             from: preset.from,
             to: preset.to,
           },
         }),
-        timestamp: {
-          from: timestamp.from,
-          to: timestamp.to,
-        },
-        // eslint-disable-next-line camelcase
-        timestamp_formatted: {
-          from: new Date(timestamp.from),
-          to: new Date(timestamp.to),
-        },
-      });
-      setDate({
-        from: preset?.from || timestamp.from,
-        to: preset?.to || timestamp.to,
-      });
-    };
+      timestamp: {
+        from: timestamp.from,
+        to: timestamp.to,
+      },
+      // eslint-disable-next-line camelcase
+      timestamp_formatted: {
+        from: new Date(timestamp.from),
+        to: new Date(timestamp.to),
+      },
+    });
+    setDate({
+      from: preset?.from || timestamp.from,
+      to: preset?.to || timestamp.to,
+    });
+  };
 
 export const onChange = (setDate) => (range) => {
   // eslint-disable-next-line no-console
@@ -34,7 +34,7 @@ export const onChange = (setDate) => (range) => {
   setDate(range);
 };
 
-export const expresionToTimeCallback = () => {
+export const expressionToTimeCallback = () => {
   return new Date().getTime();
 };
 
@@ -45,7 +45,7 @@ export const expressionValuesMap = {
   'now() - 15d': () => subDays(new Date(), 15).getTime(),
 };
 
-// export const expresionToTimeCallback = (preset) => {
+// export const expressionToTimeCallback = (preset) => {
 //   const value = expressionValuesMap[preset]();
 //   return value;
 // };

@@ -1,21 +1,10 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { StyledOverloadCssProps } from '../../../../declarations';
 
-import { useDetectScroll } from '../../../../hooks';
-
-import {
-  inlineMessagePanelBodyMixin,
-  inlineMessagePanelHeaderMixin,
-  InlineMessagePanelMixinProps,
-} from './helpers';
-
 import { Panel } from '../../../Panel';
 
-interface InlineMessagePanelProps
-  extends StyledOverloadCssProps,
-    Pick<InlineMessagePanelMixinProps, 'hasScroll'> {
+interface InlineMessagePanelProps extends StyledOverloadCssProps {
   actions?: React.ReactElement[];
   children?: React.ReactNode;
   helpUrl?: string;
@@ -39,10 +28,8 @@ export const InlineMessagePanel: React.FC<InlineMessagePanelProps> = ({
   styles,
   title,
 }) => {
-  const theme = useTheme();
-  const { hasScroll, targetElRef } = useDetectScroll();
   return (
-    <Panel.Container
+    <Panel
       elevation={'ground'}
       maxHeight="40rem"
       id={id}
@@ -50,36 +37,27 @@ export const InlineMessagePanel: React.FC<InlineMessagePanelProps> = ({
       width="fit-content"
       minWidth="30rem"
       maxWidth="40rem"
+      size="sm"
     >
       {
         <Panel.Header
           closeSettings={
             onClose
               ? {
-                cssTranslate: '1.8rem, -1rem',
-                onClick: onClose,
-                tooltip: onCloseTooltip,
-              }
+                  cssTranslate: '0.6rem, -0.6rem',
+                  onClick: onClose,
+                  tooltip: onCloseTooltip,
+                }
               : null
           }
-          hasBoxShadow={hasScroll}
           subtitle={subtitle}
           title={title}
-          size="sm"
           helpUrl={helpUrl}
           icon={icon}
-          styles={inlineMessagePanelHeaderMixin({ hasScroll, theme })}
         />
       }
-      <Panel.Body
-        hasScroll={hasScroll}
-        panelBodyRef={targetElRef}
-        size="sm"
-        styles={inlineMessagePanelBodyMixin({ hasScroll, theme })}
-      >
-        {children}
-      </Panel.Body>
-      <Panel.Footer hasBoxShadow={hasScroll} size="sm" actions={actions} />
-    </Panel.Container>
+      <Panel.Body>{children}</Panel.Body>
+      <Panel.Footer actions={actions} />
+    </Panel>
   );
 };

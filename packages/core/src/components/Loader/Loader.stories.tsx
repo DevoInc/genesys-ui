@@ -40,14 +40,19 @@ export const Base: Story = {
 export const ContextualSpinner: Story = {
   name: 'Contextual with spinner',
   render: (args) => (
-    <Panel title="Panel loading" headerSettings={{ bordered: true }}>
-      <Typography.Paragraph gutterBottom="cmp-md">{lorem}</Typography.Paragraph>
-      <Typography.Paragraph gutterBottom="cmp-md">
-        {lorem2}
-      </Typography.Paragraph>
-      <Loader {...args}>
-        <Loader.Spinner />
-      </Loader>
+    <Panel>
+      <Panel.Header title="Panel loading" bordered />
+      <Panel.Body>
+        <Typography.Paragraph gutterBottom="cmp-md">
+          {lorem}
+        </Typography.Paragraph>
+        <Typography.Paragraph gutterBottom="cmp-md">
+          {lorem2}
+        </Typography.Paragraph>
+        <Loader {...args}>
+          <Loader.Spinner />
+        </Loader>
+      </Panel.Body>
     </Panel>
   ),
 };
@@ -55,14 +60,19 @@ export const ContextualSpinner: Story = {
 export const Progress: Story = {
   name: 'Contextual with progress',
   render: (args) => (
-    <Panel title="Panel loading" headerSettings={{ bordered: true }}>
-      <Typography.Paragraph gutterBottom="cmp-md">{lorem}</Typography.Paragraph>
-      <Typography.Paragraph gutterBottom="cmp-md">
-        {lorem2}
-      </Typography.Paragraph>
-      <Loader {...args}>
-        <Loader.ProgressBar percent={60} />
-      </Loader>
+    <Panel>
+      <Panel.Header title="Panel loading" bordered />
+      <Panel.Body>
+        <Typography.Paragraph gutterBottom="cmp-md">
+          {lorem}
+        </Typography.Paragraph>
+        <Typography.Paragraph gutterBottom="cmp-md">
+          {lorem2}
+        </Typography.Paragraph>
+        <Loader {...args}>
+          <Loader.ProgressBar percent={60} />
+        </Loader>
+      </Panel.Body>
     </Panel>
   ),
 };

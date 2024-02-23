@@ -1,39 +1,44 @@
 import * as React from 'react';
 
-import { ButtonProps, IconButtonProps } from '../';
-import { GlobalSize } from '../../declarations';
+import { ButtonProps, IconButtonProps, PopoverProps } from '../';
+import {
+  GlobalAttrProps,
+  GlobalSize,
+  LinkAttrProps,
+  StyledOverloadCssProps,
+  StyledPolymorphicProps,
+} from '../../declarations';
 import { PickUnion } from '../../typeFunctions';
 
-export interface commonSettingsProps {
-  removeSpace?: boolean;
-}
-
-export interface HeaderSettingsProps extends commonSettingsProps {
-  actions?: (
-    | React.ReactElement<ButtonProps>
-    | React.ReactElement<IconButtonProps>
-  )[];
-  bordered?: boolean;
-  renderContent?: React.ReactNode;
-  hasBoxShadow?: boolean;
-}
-
-export interface FooterSettingsProps extends commonSettingsProps {
-  actions?: (
-    | React.ReactElement<ButtonProps>
-    | React.ReactElement<IconButtonProps>
-  )[];
-  /** Apply border at the top of the footer */
-  bordered?: boolean;
-  /** Configuration for the footer content */
-  renderContent?: React.ReactNode;
-  /** Apply the background color to the footer */
-  hasBackground?: boolean;
-  /** Apply box-shadow to the footer */
-  hasBoxShadow?: boolean;
-}
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface BodySettingsProps extends commonSettingsProps {}
-
 export type PanelSize = PickUnion<GlobalSize, 'xs' | 'sm' | 'md'>;
+export type PanelRemoveSpace = boolean;
+export type PanelBordered = boolean;
+export type PanelBoxShadow = boolean;
+export type PanelChildren = React.ReactNode;
+export type PanelActions = (
+  | React.ReactElement<ButtonProps>
+  | React.ReactElement<IconButtonProps>
+  | React.ReactElement<PopoverProps>
+)[];
+export type PanelIcon = React.ReactNode;
+
+export interface PanelHelpAttrs {
+  helpTooltip?: GlobalAttrProps['tooltip'];
+  helpUrl?: LinkAttrProps['href'];
+}
+
+export interface PanelBaseAttrs
+  extends StyledPolymorphicProps,
+    StyledOverloadCssProps {}
+
+export interface PanelContainerAttrs {
+  /** Apply border at the top of the footer or bottom of the header */
+  bordered?: PanelBordered;
+  /** Configuration for the header/footer actions */
+  actions?: PanelActions;
+  /** Apply box-shadow at the top of the footer or bottom of the header */
+  hasBoxShadow?: PanelBoxShadow;
+  /** Set the size for Panel header/footer components: spacing, size of internals... etc. */
+  size?: PanelSize;
+  children?: PanelChildren;
+}
