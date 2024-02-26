@@ -1,11 +1,4 @@
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
-
-import type { ActiveStatus } from '../declarations';
-
-export const STATUS_ICON_MAP: {
-  filled: { [key in ActiveStatus]: keyof typeof iconDictionary };
-  stroke: { [key in ActiveStatus]: keyof typeof iconDictionary };
-} = {
+export const STATUS_ICON_MAP = {
   filled: {
     error: 'gi-error_warning_danger_stop_filled',
     help: 'gi-about_question_faq_help_filled',

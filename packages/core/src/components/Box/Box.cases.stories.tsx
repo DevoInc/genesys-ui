@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box, Button, Badge, Typography } from '..';
+import { Badge } from '../Badge';
+import { Box } from './Box';
+import { Button } from '../Button';
+import { Typography } from '../Typography';
 
 const meta: Meta<typeof Box> = {
   title: 'Components/Layout/Box/Cases',

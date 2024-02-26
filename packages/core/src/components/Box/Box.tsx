@@ -1,49 +1,10 @@
 import * as React from 'react';
-import {
-  ContainerEventAttrProps,
-  DragAndDropAriaProps,
-  DragDropEventAttrProps,
-  FocusEventAttrProps,
-  GlobalAriaProps,
-  GlobalAttrProps,
-  LayoutAriaProps,
-  LayoutAttrProps,
-  LayoutCommonProps,
-  LayoutTransientProps,
-  MouseEventAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-  TriggerAriaProps,
-} from '../../declarations';
+import { ILayoutBox } from '../../declarations';
 
-import { StyledBox, StyledBoxProps } from './StyledBox';
+import { StyledBox } from './StyledBox';
 
-export interface CommonBoxProps
-  extends LayoutTransientProps,
-    LayoutCommonProps,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    DragAndDropAriaProps,
-    LayoutAttrProps,
-    LayoutAriaProps,
-    Pick<TriggerAriaProps, 'aria-expanded'>,
-    ContainerEventAttrProps,
-    FocusEventAttrProps,
-    DragDropEventAttrProps,
-    MouseEventAttrProps {
-  /** Children */
-  children?: React.ReactNode;
-}
-
-export interface BoxProps
-  extends StyledOverloadCssProps,
-    CommonBoxProps,
-    Omit<StyledBoxProps, '$display' | '$height' | '$width'> {
-  /** Css display */
-  display?: React.CSSProperties['display'];
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface BoxProps extends ILayoutBox {}
 
 export const Box = React.forwardRef<HTMLElement, BoxProps>(
   (

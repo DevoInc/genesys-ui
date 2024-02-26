@@ -1,26 +1,43 @@
 import * as React from 'react';
+import { concat } from 'lodash';
 
-import { CommonBoxProps } from '../../../Box';
-import { StyledGridItem, StyledGridItemProps } from './StyledGridItem';
+import { ILayoutGridItemCss } from '../../../../declarations';
+import { gridItemMixin } from './mixins';
+import { Box, BoxProps } from '../../../Box';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface GridItemProps extends StyledGridItemProps, CommonBoxProps {}
+export interface GridItemProps extends ILayoutGridItemCss, BoxProps {}
 
 export const GridItem: React.FC<GridItemProps> = ({
+  alignSelf,
   children,
-  height,
+  gridArea,
+  gridColumn,
+  gridColumnEnd,
+  gridColumnStart,
+  gridRow,
+  gridRowEnd,
+  gridRowStart,
+  justifySelf,
   styles,
-  tooltip,
-  width,
-  ...styledProps
+  ...restBoxProps
 }) => (
-  <StyledGridItem
-    {...styledProps}
-    css={styles}
-    title={tooltip}
-    $width={width}
-    $height={height}
+  <Box
+    {...restBoxProps}
+    styles={concat(
+      gridItemMixin({
+        alignSelf,
+        gridArea,
+        gridColumn,
+        gridColumnEnd,
+        gridColumnStart,
+        gridRow,
+        gridRowEnd,
+        gridRowStart,
+        justifySelf,
+      }),
+      styles,
+    )}
   >
     {children}
-  </StyledGridItem>
+  </Box>
 );

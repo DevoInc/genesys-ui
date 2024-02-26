@@ -6,7 +6,7 @@ import {
 } from '../../declarations';
 import {
   GlobalAttrProps,
-  LayoutCommonProps,
+  ILayoutBoxCss,
   MouseEventAttrProps,
 } from '../../../../declarations';
 
@@ -17,7 +17,7 @@ export interface PanelHeaderAttrs extends PanelContainerAttrs {
 }
 
 export interface PanelCloseAttrs {
-  cssTranslate?: LayoutCommonProps['cssTranslate'];
+  cssTranslate?: ILayoutBoxCss['cssTranslate'];
   onClick: MouseEventAttrProps['onClick'];
   tooltip?: GlobalAttrProps['tooltip'];
 }

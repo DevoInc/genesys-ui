@@ -1,8 +1,10 @@
-import * as React from 'react';
 import { css } from 'styled-components';
 import type { DefaultTheme } from 'styled-components';
 
-import type { LayoutCommonProps } from '../../../declarations';
+import {
+  ILayoutTransientForStyled,
+  ILayoutBoxCss,
+} from '../../../declarations';
 import { scrollbars } from '../scrollbars';
 import {
   elevationBoxShadowMixin,
@@ -11,14 +13,7 @@ import {
 } from '../state';
 import { getSpacingPropCss } from '../../../helpers';
 
-export interface BoxMixinProps extends LayoutCommonProps {
-  /** The display CSS property sets whether an element is treated as a block or inline element and the layout used for its children, such as flow layout, grid or flex. */
-  $display?: React.CSSProperties['display'];
-  /** Css height */
-  $height?: React.CSSProperties['height'];
-  /** Css width */
-  $width?: React.CSSProperties['width'];
-}
+export interface IBoxMixin extends ILayoutBoxCss, ILayoutTransientForStyled {}
 
 /**
  * Get the box model styles to be used in Box and another layout component ones.
@@ -27,46 +22,46 @@ export interface BoxMixinProps extends LayoutCommonProps {
  */
 export const boxMixin =
   (theme: DefaultTheme) =>
-    ({
-      alignSelf,
-      $display,
-      flex,
-      elevation,
-      $height,
-      margin,
-      marginBottom,
-      marginLeft,
-      marginRight,
-      marginTop,
-      maxHeight,
-      maxWidth,
-      minHeight,
-      minWidth,
-      opacity,
-      overflow,
-      overflowX,
-      overflowY,
-      padding,
-      paddingBottom,
-      paddingLeft,
-      paddingRight,
-      paddingTop,
-      position,
-      positionBottom,
-      positionLeft,
-      positionRight,
-      positionTop,
-      cssTranslate,
-      verticalAlign,
-      visibility,
-      $width,
-      zIndex,
-    }: BoxMixinProps) => {
-      const aliasTokens = theme.alias;
-      const elevationTokens = aliasTokens.elevation;
-      const hasBorder =
+  ({
+    alignSelf,
+    $display,
+    flex,
+    elevation,
+    $height,
+    margin,
+    marginBottom,
+    marginLeft,
+    marginRight,
+    marginTop,
+    maxHeight,
+    maxWidth,
+    minHeight,
+    minWidth,
+    opacity,
+    overflow,
+    overflowX,
+    overflowY,
+    padding,
+    paddingBottom,
+    paddingLeft,
+    paddingRight,
+    paddingTop,
+    position,
+    positionBottom,
+    positionLeft,
+    positionRight,
+    positionTop,
+    cssTranslate,
+    verticalAlign,
+    visibility,
+    $width,
+    zIndex,
+  }: IBoxMixin) => {
+    const aliasTokens = theme.alias;
+    const elevationTokens = aliasTokens.elevation;
+    const hasBorder =
       elevation && elevation !== 'ground' && !elevation.includes('sticky');
-      const hasSpacing =
+    const hasSpacing =
       margin ||
       marginTop ||
       marginRight ||
@@ -77,7 +72,7 @@ export const boxMixin =
       paddingRight ||
       paddingRight ||
       paddingBottom;
-      return css`
+    return css`
       /* position and layout */
       position: ${position || (elevation ? 'relative' : null)};
       top: ${positionTop};
@@ -128,4 +123,4 @@ export const boxMixin =
       getSpacingPropCss(theme)(paddingBottom)};
       padding-left: ${paddingLeft && getSpacingPropCss(theme)(paddingLeft)};
     `;
-    };
+  };

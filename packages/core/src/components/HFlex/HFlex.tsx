@@ -5,7 +5,10 @@ import { GlobalSpacing } from '../../declarations';
 import { FlexItem } from '../Flex/components';
 
 export interface HFlexProps
-  extends Omit<FlexProps, 'gap' | 'columnGap' | 'rowGap'> {
+  extends Omit<
+    FlexProps,
+    'flexDirection' | 'flexWrap' | 'gap' | 'columnGap' | 'rowGap'
+  > {
   /** If the children fit full width of the HFlex parent*/
   childrenFitFullWidth?: boolean;
   /** Horizontal spacing between children items (column-gap). */
@@ -36,3 +39,6 @@ export const HFlex = InternalHFlex as typeof InternalHFlex & {
 };
 
 HFlex.Item = FlexItem;
+
+InternalHFlex.displayName = 'HFlex';
+HFlex.Item.displayName = 'HFlex.Item';

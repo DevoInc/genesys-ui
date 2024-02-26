@@ -1,34 +1,24 @@
 import * as React from 'react';
+import { concat } from 'lodash';
 
-import { StyledFlexItem, type StyledFlexItemProps } from './StyledFlexItem';
-import {
-  type Resolve,
-  type StyledOverloadCssProps,
-  type CommonBoxProps,
-} from '../../../../index';
+import { type ILayoutFlexItem } from '../../../../declarations';
+import { type Resolve } from '../../../../typeFunctions';
 
-export interface FlexItemProps
-  extends CommonBoxProps,
-    StyledFlexItemProps,
-    StyledOverloadCssProps {}
+import { Box, type BoxProps } from '../../../Box';
+
+export interface FlexItemProps extends BoxProps, ILayoutFlexItem {}
 
 export const FlexItem: React.FC<Resolve<FlexItemProps>> = ({
   children,
-  height,
   styles,
-  tooltip,
-  width,
-  ...styledProps
+  order,
+  ...restBoxProps
 }) => {
   return (
-    <StyledFlexItem
-      {...styledProps}
-      $height={height}
-      $width={width}
-      title={tooltip}
-      css={styles}
-    >
+    <Box {...restBoxProps} styles={concat(`order: ${order};`, styles)}>
       {children}
-    </StyledFlexItem>
+    </Box>
   );
 };
+
+FlexItem.displayName = 'Flex.Item';

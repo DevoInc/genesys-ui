@@ -5,7 +5,7 @@ import { GlobalSpacing } from '../../declarations';
 import { FlexItem } from '../Flex/components';
 
 export interface VFlexProps
-  extends Omit<FlexProps, 'gap' | 'columnGap' | 'rowGap'> {
+  extends Omit<FlexProps, 'flexDirection' | 'gap' | 'columnGap' | 'rowGap'> {
   /** Vertical spacing between children items (row-gap). */
   spacing?: GlobalSpacing;
   /** If the children fit full width of the VFlex parent*/

@@ -122,3 +122,10 @@ PanelHeader._Heading = PanelHeaderHeading;
 PanelHeader._Icon = PanelHeaderIcon;
 
 PanelHeader.displayName = 'PanelHeader';
+
+PanelHeader._Actions.displayName = 'PanelHeader._Actions';
+PanelHeader._Close.displayName = 'PanelHeader._Close';
+PanelHeader._CollapseButton.displayName = 'PanelHeader._CollapseButton';
+PanelHeader._Container.displayName = 'PanelHeader._Container';
+PanelHeader._Heading.displayName = 'PanelHeader._Heading';
+PanelHeader._Icon.displayName = 'PanelHeader._Icon';

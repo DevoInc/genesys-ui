@@ -76,3 +76,7 @@ PanelFooter._Help = PanelFooterHelp;
 PanelFooter._Actions = PanelFooterActions;
 
 PanelFooter.displayName = 'PanelFooter';
+
+PanelFooter._Container.displayName = 'PanelFooter._Container';
+PanelFooter._Help.displayName = 'PanelFooter._Help';
+PanelFooter._Actions.displayName = 'PanelFooter._Actions';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   GlobalAriaProps,
   GlobalAttrProps,
-  LayoutTransientProps,
+  ILayoutTransientProps,
   StyledOverloadCssProps,
 } from '../../declarations';
 
@@ -13,7 +13,7 @@ export interface ThumbnailProps
     // native
     GlobalAttrProps,
     GlobalAriaProps,
-    LayoutTransientProps,
+    ILayoutTransientProps,
     StyledOverloadCssProps {}
 
 export const Thumbnail: React.FC<ThumbnailProps> = ({

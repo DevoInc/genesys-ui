@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Flex, VFlex } from '..';
+import { Flex } from '../Flex';
+import { VFlex } from './VFlex';
 import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 const meta: Meta<typeof VFlex> = {

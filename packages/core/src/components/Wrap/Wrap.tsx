@@ -1,13 +1,16 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { Flex, FlexProps } from '../';
+import { Flex, FlexProps } from '../Flex';
 import { GlobalSpacing } from '../../declarations';
 import { getChildrenByRowFlex } from './helpers';
 import { FlexItem } from '../Flex/components';
 
 export interface WrapProps
-  extends Omit<FlexProps, 'gap' | 'columnGap' | 'rowGap'> {
+  extends Omit<
+    FlexProps,
+    'flexDirection' | 'flexWrap' | 'gap' | 'columnGap' | 'rowGap'
+  > {
   /** Number of children by row. This will generate a grid of child elements with same width columns.*/
   childrenByRow?: number;
   /** Horizontal spacing between children items (column-gap). */

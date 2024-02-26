@@ -1,20 +1,56 @@
 import * as React from 'react';
+import { concat } from 'lodash';
 
-import { CommonBoxProps } from '../Box';
+import { ILayoutGridCss } from '../../declarations';
+import { Box, BoxProps } from '../Box';
+
+import { gridMixin } from './mixins';
+
 import { GridItem } from './components';
-import { StyledGrid, StyledGridProps } from './StyledGrid';
 
-export interface GridProps extends StyledGridProps, CommonBoxProps {}
+export interface GridProps extends ILayoutGridCss, BoxProps {}
 
 const InternalGrid: React.FC<GridProps> = ({
+  alignContent,
+  alignItems,
+  gridTemplateAreas,
+  gridTemplateColumns,
+  gridAutoFlow,
+  gap,
+  columnGap,
+  inline,
+  justifyContent,
+  justifyItems,
+  gridTemplateRows,
+  rowGap,
   children,
   styles,
-  tooltip,
-  ...styledProps
+  ...restBoxProps
 }) => (
-  <StyledGrid {...styledProps} css={styles} title={tooltip}>
-    {children}
-  </StyledGrid>
+  <>
+    <Box
+      {...restBoxProps}
+      styles={concat(
+        gridMixin({
+          alignContent,
+          alignItems,
+          gridTemplateAreas,
+          gridTemplateColumns,
+          gridAutoFlow,
+          gap,
+          columnGap,
+          inline,
+          justifyContent,
+          justifyItems,
+          gridTemplateRows,
+          rowGap,
+        }),
+        styles,
+      )}
+    >
+      {children}
+    </Box>
+  </>
 );
 
 export const Grid = InternalGrid as typeof InternalGrid & {
@@ -22,3 +58,6 @@ export const Grid = InternalGrid as typeof InternalGrid & {
 };
 
 Grid.Item = GridItem;
+
+InternalGrid.displayName = 'Grid';
+Grid.Item.displayName = 'Grid.Item';

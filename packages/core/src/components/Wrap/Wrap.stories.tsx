@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Flex, Wrap } from '..';
+import { Flex } from '../Flex';
+import { Wrap } from './Wrap';
 import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 const meta: Meta<typeof Wrap> = {

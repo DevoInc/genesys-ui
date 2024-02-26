@@ -9,7 +9,6 @@ const meta: Meta<typeof Grid> = {
   component: Grid,
   args: {
     inline: false,
-    as: 'span',
   },
 };
 

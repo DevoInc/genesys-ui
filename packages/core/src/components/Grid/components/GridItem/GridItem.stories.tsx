@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Grid } from '../..';
+import { GridItem } from './GridItem';
 import { StyledLayoutGridContent } from '../../../../../stories/components/styled';
 
-const meta: Meta<typeof Grid.Item> = {
+const meta: Meta<typeof GridItem> = {
   title: 'Components/Layout/Grid/Components',
-  component: Grid.Item,
+  component: GridItem,
 };
 
 export default meta;
-type Story = StoryObj<typeof Grid.Item>;
+type Story = StoryObj<typeof GridItem>;
 
 export const Base: Story = {
   args: {
@@ -18,7 +18,7 @@ export const Base: Story = {
     justifySelf: 'center',
     children: (
       <StyledLayoutGridContent height="100px" width="100px">
-        Grid.Item content
+        GridItem content
       </StyledLayoutGridContent>
     ),
   },

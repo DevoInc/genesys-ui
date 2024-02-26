@@ -23,7 +23,7 @@ export const getSpacingValuesMap = (theme: DefaultTheme) => {
 /**
  * Get the spacing value translated into css units
  * cmp-md -> Xrem, ...
- * could be composed as: 'cmp-md cmp-md' for margin or padding attributes (for
+ * could be composed as: 'cmp-sm cmp-md' for margin or padding attributes (for
  * example)
  */
 export const getSpacingPropCss = (theme: DefaultTheme) => (spacing: string) => {
