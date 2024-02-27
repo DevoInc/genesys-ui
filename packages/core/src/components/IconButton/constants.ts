@@ -1,4 +1,4 @@
-import { ButtonSize } from '../../';
+import { ButtonSize } from '../Button';
 
 export const ICON_BUTTON_REDUCED_SIZE_PROP_MAP: {
   [key in ButtonSize]: ButtonSize;

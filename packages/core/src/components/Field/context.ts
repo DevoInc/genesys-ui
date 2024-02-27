@@ -1,13 +1,14 @@
 import * as React from 'react';
 
-import { FieldProps } from './Field';
+import { FieldSize, FieldStatus } from '../../declarations';
+import { LabelPosition } from './declarations';
 
 export interface FieldContextProps {
   direction?: 'between' | 'row' | 'column' | 'reverse';
-  hasWideControl?: FieldProps['hasWideControl'];
-  labelPosition?: FieldProps['labelPosition'];
-  size?: FieldProps['size'];
-  status?: FieldProps['status'];
+  hasWideControl?: boolean;
+  labelPosition?: LabelPosition;
+  size?: FieldSize;
+  status?: FieldStatus;
 }
 
 export const FieldContext = React.createContext<FieldContextProps>({

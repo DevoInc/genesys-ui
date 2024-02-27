@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ButtonExpandableState } from '../../../Button';
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 
-import { IconButton, IconButtonProps } from '../../';
+import { IconButton, IconButtonProps } from '../../IconButton';
 
 export interface IconButtonCollapseProps
   extends Omit<

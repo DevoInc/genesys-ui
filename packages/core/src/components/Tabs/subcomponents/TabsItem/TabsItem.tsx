@@ -1,10 +1,8 @@
 import * as React from 'react';
 
-import {
-  type Resolve,
-  type GlobalAttrProps,
-  type LinkProps,
-} from '../../../../index';
+import { type Resolve } from '../../../../typeFunctions';
+import { type GlobalAttrProps } from '../../../../declarations';
+import { type LinkProps } from '../../../Link';
 import {
   TabsItemClose,
   type TabsItemCloseProps,

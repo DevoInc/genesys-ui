@@ -1,16 +1,16 @@
 import styled, { css } from 'styled-components';
 
-import { ActiveStatus } from '../../';
+import { BannerStatus } from './declarations';
 
 export interface StyledBannerProps {
   /** Banner status */
-  status?: ActiveStatus;
+  status?: BannerStatus;
 }
 
 export const StyledBanner = styled.div<StyledBannerProps>`
   ${({ status = 'info', theme }) => {
-  const cmpTokens = theme.cmp.boxMessage;
-  return css`
+    const cmpTokens = theme.cmp.boxMessage;
+    return css`
       position: relative;
       display: flex;
       align-items: flex-start;
@@ -21,5 +21,5 @@ export const StyledBanner = styled.div<StyledBannerProps>`
       padding: ${cmpTokens.space.padding};
       background-color: ${cmpTokens.color.background[status]};
     `;
-}}
+  }}
 `;

@@ -6,9 +6,11 @@ import type {
   FieldSize,
   FieldStatus,
 } from '../../../declarations';
-import { getFieldState } from '../../../components';
-import { disabledMixin } from '../';
-import { getFieldControlTypo } from '../../../components';
+import {
+  getFieldState,
+  getFieldControlTypo,
+} from '../../../components/Field/helpers';
+import { disabledMixin } from '../state';
 
 interface commonInputControlMixinProps {
   disabled?: boolean;

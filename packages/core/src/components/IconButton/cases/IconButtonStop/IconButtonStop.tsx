@@ -4,7 +4,7 @@ import { concat } from 'lodash';
 
 import { ButtonActionState } from '../../../Button';
 
-import { IconButton, IconButtonProps } from '../../';
+import { IconButton, IconButtonProps } from '../../IconButton';
 
 import { iconButtonStopMixin } from './helpers';
 

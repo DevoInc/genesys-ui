@@ -1,7 +1,8 @@
 import { GlobalAriaProps, GlobalAttrProps } from '../../../declarations';
 import * as React from 'react';
 
-import { Box, Flex, FlexProps } from '../../';
+import { Box } from '../../Box';
+import { Flex, type FlexProps } from '../../Flex';
 import { FormDistributor } from './FormDistributor';
 
 export interface FormButtonsProps

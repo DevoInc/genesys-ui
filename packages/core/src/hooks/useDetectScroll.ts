@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { updateHasScroll } from '../utils/scroll';
-import { useContainerDimensions } from '.';
+import { useContainerDimensions } from './useContainerDimensions';
 
 export const useDetectScroll = () => {
   const { setRef: targetElRef, size: measures } = useContainerDimensions();

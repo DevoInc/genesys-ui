@@ -1,18 +1,22 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { StyledOverloadCssProps } from '../../../declarations';
+import {
+  ControlWidth,
+  FieldSize,
+  StyledOverloadCssProps,
+} from '../../../declarations';
+import { LabelPosition } from '../declarations';
 import { getControlWidth } from '../../../styled/';
-import { Flex } from '../../Flex';
-import { FieldProps } from '../Field';
 import { FieldContext } from '../context';
+import { Flex } from '../../Flex';
 
-export interface FieldControlDistributorProps
-  extends StyledOverloadCssProps,
-    Pick<FieldProps, 'size' | 'labelPosition'> {
+export interface FieldControlDistributorProps extends StyledOverloadCssProps {
   children?: React.ReactNode;
-  wide?: FieldProps['hasWideControl'];
-  width?: FieldProps['controlWidth'];
+  labelPosition?: LabelPosition;
+  size?: FieldSize;
+  wide?: boolean;
+  width?: ControlWidth;
 }
 
 export const FieldControlDistributor: React.FC<

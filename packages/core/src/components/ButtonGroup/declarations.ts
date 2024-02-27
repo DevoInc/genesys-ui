@@ -2,6 +2,6 @@
 
 // ButtonGroup - Size
 
-import { ButtonSize } from '../../';
+import { ButtonSize } from '../Button';
 
 export type ButtonGroupSize = ButtonSize;

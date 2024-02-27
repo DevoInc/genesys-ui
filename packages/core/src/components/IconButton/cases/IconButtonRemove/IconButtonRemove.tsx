@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 
-import { IconButton, IconButtonProps } from '../../';
+import { IconButton, IconButtonProps } from '../../IconButton';
 
 import { ButtonBasicState } from '../../../Button/declarations';
 

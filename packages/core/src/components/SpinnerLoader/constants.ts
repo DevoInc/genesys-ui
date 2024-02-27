@@ -1,6 +1,6 @@
 import { keyframes } from 'styled-components';
 import { PickUnion } from '../../typeFunctions';
-import { UIColorScheme, GlobalSize } from '../../';
+import { UIColorScheme, GlobalSize } from '../../declarations/commonProps';
 
 // ANIMATIONS - CONSTANTS --------------------------------------------------- //
 

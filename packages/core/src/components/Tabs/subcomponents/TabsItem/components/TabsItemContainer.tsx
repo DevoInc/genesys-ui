@@ -2,7 +2,8 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import { type TabsItemSize } from '../../../declarations';
-import { type Resolve, Flex, type FlexProps } from '../../../../../index';
+import { type Resolve } from '../../../../../typeFunctions';
+import { Flex, type FlexProps } from '../../../../Flex';
 
 export interface TabsItemContainerProps extends Omit<FlexProps, 'size'> {
   /** Sizes options for icon and text */

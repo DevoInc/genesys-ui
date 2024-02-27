@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-import { Typography, InlineMessage, HelperProps } from '..';
+import { Typography } from '../Typography';
+import { InlineMessage } from '../InlineMessage';
+import { type HelperProps } from '../Helper';
 import { FLOATING_HELPER_ICON_BUTTON_SIZE_MAP } from './constants';
 import { hasStatus } from '../../utils/validations';
 import { FloatingHelperSize } from './declarations';

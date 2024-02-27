@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Flex, FlexProps } from '../';
 import { GlobalSpacing } from '../../declarations';
+import { Flex, FlexProps } from '../Flex';
 import { FlexItem } from '../Flex/components';
 
 export interface VFlexProps

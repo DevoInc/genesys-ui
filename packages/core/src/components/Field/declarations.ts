@@ -1,4 +1,8 @@
-import { BasicState, ReadonlyState, BaseSize } from '../../';
+import {
+  BasicState,
+  ReadonlyState,
+  BaseSize,
+} from '../../declarations/commonProps';
 
 // FIELD SIZE - PROP VALUES - CONSTANTS ------------------------------------------- //
 // Same as in InputControl.

@@ -2,8 +2,7 @@ import * as React from 'react';
 import { css, useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { ButtonProps } from '../../Button';
-import { ButtonSize } from '../../declarations';
+import { ButtonSize, ButtonState } from '../../declarations';
 
 import { SpinnerLoader, SpinnerLoaderProps } from '../../../SpinnerLoader';
 import { ButtonIcon } from '../ButtonIcon';
@@ -14,10 +13,9 @@ import {
 } from '../../constants';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface ButtonLoaderProps
-  extends Omit<SpinnerLoaderProps, 'size'>,
-    Pick<ButtonProps, 'state'> {
+export interface ButtonLoaderProps extends Omit<SpinnerLoaderProps, 'size'> {
   size?: ButtonSize;
+  state?: ButtonState;
 }
 
 export const ButtonLoader: React.FC<ButtonLoaderProps> = ({

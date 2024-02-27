@@ -1,14 +1,14 @@
 import * as React from 'react';
 
-import { ButtonGroupProps } from './ButtonGroup';
-import { ButtonGroupItemProps } from './components';
+import { ButtonColorScheme } from '../Button';
+import { ButtonGroupSize } from './declarations';
 
-export interface ButtonGroupContextProps {
-  colorScheme?: ButtonGroupProps['colorScheme'];
-  hasQuietButton?: ButtonGroupItemProps['hasQuietButton'];
-  size: ButtonGroupProps['size'];
+export interface IButtonGroupContext {
+  colorScheme?: ButtonColorScheme;
+  hasQuietButton?: boolean;
+  size: ButtonGroupSize;
 }
 
-export const ButtonGroupContext = React.createContext<ButtonGroupContextProps>({
+export const ButtonGroupContext = React.createContext<IButtonGroupContext>({
   size: 'md',
 });

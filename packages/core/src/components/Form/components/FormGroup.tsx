@@ -1,24 +1,27 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
-import { FieldAttrProps, FieldProps, StyledOverloadCssProps } from '../../../';
+import type { FieldProps } from '../../Field';
+import type { StyledOverloadCssProps } from '../../../declarations/styled';
+import type { FieldAttrProps } from '../../../declarations/htmlAttrs';
 
 import {
   Field,
   Flex,
-  FlexProps,
+  type FlexProps,
   FloatingHelper,
   FormDistributor,
-  FormDistributorProps,
+  type FormDistributorProps,
   FormLegend,
   Helper,
 } from '../../';
 
-import { StyledFormGroup, StyledFormGroupProps } from './StyledFormGroup';
 import { hasStatus } from '../../../utils/validations';
-import { useTheme } from 'styled-components';
+
+import { StyledFormGroup, type StyledFormGroupProps } from './StyledFormGroup';
 import {
   StyledFormGroupContainer,
-  StyledFormGroupContainerProps,
+  type StyledFormGroupContainerProps,
 } from './StyledFormGroupContainer';
 
 export interface FormGroupProps

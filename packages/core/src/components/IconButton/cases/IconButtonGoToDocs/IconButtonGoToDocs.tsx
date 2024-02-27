@@ -1,13 +1,13 @@
 import * as React from 'react';
+import { concat } from 'lodash';
+import { useTheme } from 'styled-components';
 
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
+import { STATUS_ICON_MAP } from '../../../../constants';
 
-import { IconButton, IconButtonProps } from '../../';
+import { IconButton, IconButtonProps } from '../../IconButton';
 
 import { iconButtonGoToDocsMixin } from './helpers';
-import { useTheme } from 'styled-components';
-import { concat } from 'lodash';
-import { STATUS_ICON_MAP } from '../../../../constants';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IconButtonGoToDocsProps

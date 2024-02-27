@@ -1,4 +1,4 @@
-import { ButtonSize } from '../../';
+import { ButtonSize } from '../Button';
 
 export const FLEX_SPACING_SIZE_MAP: { [key in ButtonSize]: ButtonSize } = {
   xxs: 'xxs',

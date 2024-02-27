@@ -11,7 +11,7 @@ import {
 
 import { iconButtonStatusMixin } from './helpers';
 
-import { IconButton, IconButtonProps } from '../../';
+import { IconButton, IconButtonProps } from '../../IconButton';
 
 export interface IconButtonStatusProps
   extends Omit<

@@ -3,10 +3,29 @@ import { css, DefaultTheme } from 'styled-components';
 import {
   truncateTypoMixin,
   typoMixin,
-  disabledMixin,
-} from '../../../styled/mixins';
-import { StyledLinkProps } from '../StyledLink';
+} from '../../../styled/mixins/typography';
+import { disabledMixin } from '../../../styled/mixins/state';
 import { getLinkColor } from './linkColor';
+import { LinkColorScheme, LinkSize, LinkState } from '../declarations';
+
+export interface ILinkMixin {
+  /** This property defines the color scheme for the Link. */
+  colorScheme?: LinkColorScheme;
+  /** If the Link is underlined to make it more prominent. */
+  underlined?: boolean;
+  /** If the Link fits the full available width of its parent. Makes it behavior as a block.*/
+  wide?: boolean;
+  /** Size of the component. */
+  size?: LinkSize;
+  /** Interaction state of the component. */
+  state?: LinkState;
+  /** This property as boolean defines if the Link is shown in one line with
+   * ellipsis or, as a number, it defines the number of lines before
+   * ellipsis (css line-clamp). */
+  lineClamp?: number;
+  theme: DefaultTheme;
+  linkTokens: DefaultTheme['cmp']['link'];
+}
 
 export const linkMixin = ({
   colorScheme = 'base',
@@ -17,10 +36,7 @@ export const linkMixin = ({
   theme,
   linkTokens,
   lineClamp,
-}: StyledLinkProps & {
-  theme: DefaultTheme;
-  linkTokens: DefaultTheme['cmp']['link'];
-}) => {
+}: ILinkMixin) => {
   const getLinkColorByState = (linkState = state) =>
     getLinkColor({
       colorScheme,
@@ -40,11 +56,11 @@ export const linkMixin = ({
 
     // text styles
     ${typoMixin({
-    bold: true,
-    size,
-    theme,
-    variant: 'body',
-  })}
+      bold: true,
+      size,
+      theme,
+      variant: 'body',
+    })}
 
     // disabled
     ${state === 'disabled' &&

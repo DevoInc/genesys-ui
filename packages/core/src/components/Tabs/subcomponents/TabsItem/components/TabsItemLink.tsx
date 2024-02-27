@@ -4,7 +4,8 @@ import { useTheme } from 'styled-components';
 
 import { linkStateMap } from '../../../utils';
 import { tabsLinkMixin, TabsLinkMixinProps } from './helpers';
-import { type Resolve, Link, type LinkProps } from '../../../../../index';
+import { type Resolve } from '../../../../../typeFunctions';
+import { Link, type LinkProps } from '../../../../Link';
 
 export interface TabsItemLinkProps
   extends Omit<LinkProps, 'size' | 'state'>,

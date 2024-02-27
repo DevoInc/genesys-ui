@@ -1,17 +1,21 @@
 import * as React from 'react';
 
 // declarations
-import {
+import type {
   CheckAttrProps,
   FieldAttrProps,
-  FocusEventAttrProps,
   GlobalAttrProps,
   InputAttrProps,
-  SelectionScheme,
+} from '../../../../declarations/htmlAttrs';
+import type {
+  FocusEventAttrProps,
+  TriggerEventAttrProps,
+} from '../../../../declarations/htmlEventAttrs';
+import type { SelectionScheme } from '../../../../declarations/commonProps';
+import type {
   StyledOverloadCssProps,
   StyledPolymorphicProps,
-  TriggerEventAttrProps,
-} from '../../../../';
+} from '../../../../declarations/styled';
 
 // styled
 import { StyledButtonSelection } from './StyledButtonSelection';

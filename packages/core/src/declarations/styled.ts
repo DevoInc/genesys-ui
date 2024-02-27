@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { ReactHTML } from 'react';
 import { CSSProp, DefaultTheme } from 'styled-components';
-import { HTMLTag } from './commonProps';
 
 /** ---------------------------------------------
  * Polymorphic props for styled components
@@ -8,7 +7,7 @@ import { HTMLTag } from './commonProps';
 export interface StyledPolymorphicProps<T = any> {
   /** Polymorphic prop to create a different HTML tag based in the styled components one:
    * https://styled-components.com/docs/api#as-polymorphic-prop */
-  as?: HTMLTag | React.ComponentType<T>;
+  as?: keyof ReactHTML | React.ComponentType<T>;
 }
 
 /** ---------------------------------------------

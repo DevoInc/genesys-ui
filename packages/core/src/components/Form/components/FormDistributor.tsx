@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Flex, FlexProps } from '../../';
+import { Flex, type FlexProps } from '../../Flex';
 import { FormGroup } from './FormGroup';
 import { FormButtons } from './FormButtons';
 import { FormGap } from '../declarations';
