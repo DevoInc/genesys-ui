@@ -6,13 +6,13 @@ import { Elevation } from '../../../declarations';
 describe('elevationZIndexMixin', () => {
   test('raised', () => {
     expect(elevationZIndexMixin(theme)('raised').join('')).toContain(
-      `z-index: ${theme.alias.elevation.zIndex.depth.raised};`,
+      `z-index:${theme.alias.elevation.zIndex.depth.raised};`,
     );
   });
 
   test('not valid elevation', () => {
     expect(elevationZIndexMixin(theme)('bad' as Elevation).join('')).toContain(
-      'z-index: ;',
+      'z-index:;',
     );
   });
 });

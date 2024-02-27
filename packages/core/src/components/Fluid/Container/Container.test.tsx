@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { render, screen } from 'test-utils';
 
+import { render, screen } from '@test';
 import { Container } from './Container';
 import { Row } from '../Row';
 import { Col } from '../Col';

@@ -9,24 +9,24 @@ describe('elevationBoxShadowMixin', () => {
     [
       'styckyBottom',
       'stickyBottom',
-      `box-shadow: ${boxShadowTokens.depth.sticky.bottom};`,
+      `box-shadow:${boxShadowTokens.depth.sticky.bottom};`,
     ],
     [
       'styckyLeft',
       'stickyLeft',
-      `box-shadow: ${boxShadowTokens.depth.sticky.left};`,
+      `box-shadow:${boxShadowTokens.depth.sticky.left};`,
     ],
     [
       'styckyRight',
       'stickyRight',
-      `box-shadow: ${boxShadowTokens.depth.sticky.right};`,
+      `box-shadow:${boxShadowTokens.depth.sticky.right};`,
     ],
     [
       'styckyTop',
       'stickyTop',
-      `box-shadow: ${boxShadowTokens.depth.sticky.top};`,
+      `box-shadow:${boxShadowTokens.depth.sticky.top};`,
     ],
-    ['raised', 'raised', `box-shadow: ${boxShadowTokens.depth.raised};`],
+    ['raised', 'raised', `box-shadow:${boxShadowTokens.depth.raised};`],
   ];
 
   it.each(cases)('%s', (_title, elevation, expected) => {
@@ -38,13 +38,13 @@ describe('elevationBoxShadowMixin', () => {
   test('not valid sticky elevation', () => {
     expect(
       elevationBoxShadowMixin(theme)('stickyBad' as Elevation).join(''),
-    ).toContain('box-shadow: ;');
+    ).toContain('box-shadow:;');
   });
 
   test('not valid elevation', () => {
     expect(
       elevationBoxShadowMixin(theme)('bad' as Elevation).join(''),
-    ).toContain('box-shadow: ;');
+    ).toContain('box-shadow:;');
   });
 
   test('undefined', () => {

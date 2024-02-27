@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { render } from 'test-utils';
+
+import { render } from '@test';
 import { ToolbarSeparator } from './ToolbarSeparator';
 
 describe('ToolbarSeparator', () => {

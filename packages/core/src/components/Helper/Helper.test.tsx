@@ -1,6 +1,7 @@
 import * as React from 'react';
+
+import { render, screen } from '@test';
 import { Helper } from './Helper';
-import { render, screen } from 'test-utils';
 
 const MESSAGE_STRING = 'This is a test message';
 const MESSAGE_REACT = <span>{MESSAGE_STRING}</span>;

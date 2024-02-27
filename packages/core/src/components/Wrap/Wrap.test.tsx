@@ -1,15 +1,16 @@
 import * as React from 'react';
-import { render, screen } from 'test-utils';
+import { cleanup } from '@testing-library/react';
 
+import { render, screen } from '@test';
 import { Wrap } from './Wrap';
 
 describe('Wrap', () => {
-  test('default render', () => {
+  it('default render', () => {
     render(<Wrap>test</Wrap>);
     expect(screen.getByText('test')).toBeInTheDocument();
   });
 
-  test('css props', () => {
+  it('css props', () => {
     render(
       <Wrap
         height="30rem"
@@ -30,5 +31,9 @@ describe('Wrap', () => {
       overflow: 'auto',
       width: '60rem',
     });
+  });
+
+  afterEach(() => {
+    cleanup();
   });
 });

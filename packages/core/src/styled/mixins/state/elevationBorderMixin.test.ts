@@ -10,27 +10,27 @@ describe('elevationBorderMixin', () => {
     [
       'stickyTop',
       'stickyTop',
-      `border-top: ${width} solid ${themeElevation.sticky.top};`,
+      `border-top:${width} solid ${themeElevation.sticky.top};`,
     ],
     [
       'stickyRight',
       'stickyRight',
-      `border-right: ${width} solid ${themeElevation.sticky.right};`,
+      `border-right:${width} solid ${themeElevation.sticky.right};`,
     ],
     [
       'stickyLeft',
       'stickyLeft',
-      `border-left: ${width} solid ${themeElevation.sticky.left};`,
+      `border-left:${width} solid ${themeElevation.sticky.left};`,
     ],
     [
       'stickyBottom',
       'stickyBottom',
-      `border-bottom: ${width} solid ${themeElevation.sticky.bottom};`,
+      `border-bottom:${width} solid ${themeElevation.sticky.bottom};`,
     ],
     [
       'not sticky but valid elevation',
       'raised',
-      `border: ${width} solid ${themeElevation.raised};`,
+      `border:${width} solid ${themeElevation.raised};`,
     ],
   ];
 

@@ -1,6 +1,7 @@
 import * as React from 'react';
+
+import { render } from '@test';
 import { StyledBanner } from './StyledBanner';
-import { render } from 'test-utils';
 
 describe('StyledBanner', () => {
   test('Component renders with default styles', () => {

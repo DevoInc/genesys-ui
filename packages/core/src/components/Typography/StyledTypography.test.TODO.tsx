@@ -1,6 +1,7 @@
 import * as React from 'react';
+
+import { render } from '@test';
 import { StyledParagraph, StyledHeading } from './StyledTypography';
-import { render } from 'test-utils';
 
 describe('StyledTypography', () => {
   test('StyledParagraph renders with default styles', () => {

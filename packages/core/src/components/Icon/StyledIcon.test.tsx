@@ -1,6 +1,7 @@
 import * as React from 'react';
+
+import { render } from '@test';
 import { StyledIcon } from './StyledIcon';
-import { render } from 'test-utils';
 
 describe('StyledIcon', () => {
   test('Component renders with default styles', () => {

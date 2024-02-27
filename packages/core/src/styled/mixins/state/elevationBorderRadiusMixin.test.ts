@@ -15,7 +15,7 @@ describe('elevationBorderRadiusMixin', () => {
 
   test('valid elevation', () => {
     expect(elevationBorderRadiusMixin(theme)('raised').join('')).toContain(
-      `border-radius: ${theme.alias.shape.borderRadius.elevated}`,
+      `border-radius:${theme.alias.shape.borderRadius.elevated}`,
     );
   });
 });

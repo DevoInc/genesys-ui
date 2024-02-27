@@ -1,6 +1,7 @@
 import * as React from 'react';
+
+import { render } from '@test';
 import { StyledModalFooter } from './StyledModalFooter';
-import { render } from 'test-utils';
 
 describe('StyledModalFooter', () => {
   test('Component renders with default styles', () => {
