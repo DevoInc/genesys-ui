@@ -1,6 +1,8 @@
+/// <reference types="vitest" />
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tsconfigPaths from 'vite-tsconfig-paths';
 import dts from 'vite-plugin-dts';
 
 export default defineConfig({
@@ -27,6 +29,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    tsconfigPaths(),
     react({
       babel: {
         plugins: [
@@ -47,4 +50,9 @@ export default defineConfig({
       exclude: ['./src/**/*.test.ts?(x)', './src/**/*.stories.tsx'],
     }),
   ],
+  test: {
+    environment: 'jsdom',
+    include: ['**/*.test.ts?(x)'],
+    globals: true,
+  },
 });

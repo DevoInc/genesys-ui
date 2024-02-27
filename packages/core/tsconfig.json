@@ -5,7 +5,12 @@
     "declaration": true,
     "declarationMap": true,
     "outDir": "./dist",
-    "noErrorTruncation": true
+    "noErrorTruncation": true,
+    "paths": {
+      "@test": [
+        "../../test/test-utils.tsx"
+      ]
+    }
   },
   "include": [
     "src",
