@@ -5,8 +5,10 @@ import { SelectControl, type SelectControlProps } from '../../SelectControl';
 
 import { fieldsCombinerInputAndSelectMixin } from '../helpers';
 import { FieldsCombinerElemContext } from '../context';
-import { FieldsCombiner } from '../FieldsCombiner';
-import { FieldsCombinerItemProps } from './FieldsCombinerItem';
+import {
+  FieldsCombinerItem,
+  FieldsCombinerItemProps,
+} from './FieldsCombinerItem';
 
 export interface FieldsCombinerSelectProps
   extends Omit<SelectControlProps, 'size'> {
@@ -22,7 +24,7 @@ export const FieldsCombinerSelect: React.FC<FieldsCombinerSelectProps> = ({
     FieldsCombinerElemContext,
   );
   return (
-    <FieldsCombiner.Item
+    <FieldsCombinerItem
       componentType="field"
       size={size}
       order={order}
@@ -41,6 +43,6 @@ export const FieldsCombinerSelect: React.FC<FieldsCombinerSelectProps> = ({
           styles,
         )}
       />
-    </FieldsCombiner.Item>
+    </FieldsCombinerItem>
   );
 };

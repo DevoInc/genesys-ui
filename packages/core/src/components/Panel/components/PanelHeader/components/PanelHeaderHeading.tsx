@@ -5,7 +5,9 @@ import { PANEL_HEADER_SIZES } from './constants';
 
 import { PanelHeadingAttrs } from '../declarations';
 
-import { Flex, IconButtonGoToDocs, Typography } from '../../../../index';
+import { Typography } from '../../../../Typography';
+import { Flex } from '../../../../Flex';
+import { IconButtonGoToDocs } from '../../../../IconButton';
 import { PanelHeaderIcon } from './PanelHeaderIcon';
 import {
   PanelContainerAttrs,

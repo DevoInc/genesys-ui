@@ -6,8 +6,8 @@ import { chipIconMixin } from '../helpers';
 
 import { ChipContext } from '../context';
 
-import { ChipContainerProps } from '../components';
-import { Icon, IconProps } from '../../Icon';
+import { Icon, type IconProps } from '../../Icon';
+import type { ChipContainerProps } from '../components/ChipContainer';
 
 export interface ChipIconProps
   extends Omit<IconProps, 'size'>,

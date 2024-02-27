@@ -6,7 +6,7 @@ import {
 import { ChipSize } from '../Chip/declarations';
 import { FieldSize } from '../../declarations';
 import { SelectOption } from './declarations';
-import { SelectControlProps } from './SelectControl';
+import { InnerSelectControlProps } from './InnerSelectControl';
 
 /**
  * A function that takes an object with onChange and value properties as input
@@ -23,17 +23,17 @@ export const wrapperOnChange =
     onChange: Props<Option>['onChange'];
     value: MultiValue<Option>;
   }) =>
-    (newValue: PropsValue<Option>, actionMeta: ActionMeta<Option>): void => {
-      const REMOVE_ACTIONS = ['remove-value', 'pop-value'];
-      const isRemoveAction = REMOVE_ACTIONS.includes(actionMeta.action);
-      const isClearAction = actionMeta.action === 'clear';
+  (newValue: PropsValue<Option>, actionMeta: ActionMeta<Option>): void => {
+    const REMOVE_ACTIONS = ['remove-value', 'pop-value'];
+    const isRemoveAction = REMOVE_ACTIONS.includes(actionMeta.action);
+    const isClearAction = actionMeta.action === 'clear';
 
-      if (isRemoveAction && actionMeta.removedValue.fixed) return;
+    if (isRemoveAction && actionMeta.removedValue.fixed) return;
 
-      if (isClearAction) newValue = value.filter(({ fixed }) => fixed);
+    if (isClearAction) newValue = value.filter(({ fixed }) => fixed);
 
-      onChange?.(newValue, actionMeta);
-    };
+    onChange?.(newValue, actionMeta);
+  };
 
 /**
  * A function that takes selectProps object as input and returns a boolean value
@@ -78,7 +78,7 @@ const flattenOptionsFn = <Option extends SelectOption>(
  * Values are always initialized as '' when undefined inputs are found
  */
 export const findValue = <Option extends SelectOption>(
-  value: SelectControlProps<Option>['value'],
+  value: InnerSelectControlProps<Option>['value'],
   options: Props<Option>['options'],
   isMulti: boolean,
 ) => {

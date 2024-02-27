@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
-import { FieldSize, FieldStatus, InputAttrProps } from '../../../';
+import type { FieldSize, FieldStatus } from '../../../declarations/commonProps';
+import type { InputAttrProps } from '../../../declarations/htmlAttrs';
 import { INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP } from '../constants';
 
 export interface StyledInputControlIconProps {
@@ -15,14 +16,14 @@ export interface StyledInputControlIconProps {
 
 export const StyledInputControlIcon = styled.span<StyledInputControlIconProps>`
   ${({ isTypeIcon, size = 'md', status = 'base', theme, type }) => {
-  const fieldTokens = theme.alias.fields;
-  const fieldIconTokens = fieldTokens.icon;
-  const position = fieldTokens.space.padding.hor[size];
-  const fs = fieldIconTokens.size.square[size];
-  const showPasswordSize =
+    const fieldTokens = theme.alias.fields;
+    const fieldIconTokens = fieldTokens.icon;
+    const position = fieldTokens.space.padding.hor[size];
+    const fs = fieldIconTokens.size.square[size];
+    const showPasswordSize =
       theme.cmp.button.size.square[INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP[size]];
 
-  return css`
+    return css`
       display: flex;
       align-items: center;
       justify-content: center;
@@ -47,5 +48,5 @@ export const StyledInputControlIcon = styled.span<StyledInputControlIconProps>`
               : position};
           `};
     `;
-}};
+  }};
 `;

@@ -1,12 +1,13 @@
 import * as React from 'react';
 
-import { FieldProps, Flex } from '../../';
-
-import { Typography, Field, FieldLabelProps, FormGroupProps } from '../../';
+import { Flex } from '../../Flex';
+import type { FormGroupProps } from '../../Form/components';
+import { Typography } from '../../Typography';
+import { Field, type FieldProps, type FieldLabelProps } from '../../Field';
 
 import {
   StyledFormLegendContainer,
-  StyledFormLegendContainerProps,
+  type StyledFormLegendContainerProps,
 } from './StyledFormLegendContainer';
 
 export interface FormLegendProps

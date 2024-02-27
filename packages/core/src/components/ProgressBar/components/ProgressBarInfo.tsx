@@ -5,15 +5,11 @@ import { BaseProgressBarProps } from '../declarations';
 
 import { getPercent, getColorSchemeFromStatus, getStatus } from '../utils';
 
-import {
-  Box,
-  Flex,
-  FlexProps,
-  FloatingHelper,
-  Icon,
-  IconProps,
-  Typography,
-} from '../../';
+import { Box } from '../../Box';
+import { Flex, type FlexProps } from '../../Flex';
+import { FloatingHelper } from '../../FloatingHelper';
+import { Icon, type IconProps } from '../../Icon';
+import { Typography } from '../../Typography';
 
 export interface ProgressBarInfoProps
   extends FlexProps,

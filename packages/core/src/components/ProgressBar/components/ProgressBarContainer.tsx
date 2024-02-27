@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { VFlex, VFlexProps } from '../../';
+import { VFlex, type VFlexProps } from '../../VFlex';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ProgressBarContainerProps

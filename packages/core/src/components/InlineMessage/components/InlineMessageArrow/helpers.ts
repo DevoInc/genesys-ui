@@ -1,13 +1,15 @@
 import { css, DefaultTheme } from 'styled-components';
-import { InlineMessageProps } from '../../InlineMessage';
+
+import type { PopoverProps } from '../../../Popover';
+import type { IconButtonStatusProps } from '../../../IconButton';
 
 export const inlineMessageArrowMixin = ({
   placement,
   status = 'help',
   theme,
 }: {
-  placement: InlineMessageProps['placement'];
-  status: InlineMessageProps['status'];
+  placement: PopoverProps['placement'];
+  status: IconButtonStatusProps['colorScheme'];
   theme: DefaultTheme;
 }) => {
   const bgColor = theme.cmp.inlineMessage.color.border[status];

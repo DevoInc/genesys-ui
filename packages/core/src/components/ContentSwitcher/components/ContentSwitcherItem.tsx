@@ -7,7 +7,7 @@ import { CONTENT_SWITCHER_ITEM_SIZE_MAP } from '../constants';
 
 // declarations
 import { Button, ButtonProps } from '../../Button';
-import { BaseSize } from '../../../declarations';
+import { BaseSize } from '../../../declarations/commonProps';
 
 // helpers
 import {

@@ -1,17 +1,19 @@
 import * as React from 'react';
 
 // declarations
-import {
+import type { GlobalAriaProps } from '../../../declarations/ariaAttrs';
+import type {
   ButtonAttrProps,
-  FieldEventAttrProps,
-  FocusEventAttrProps,
-  GlobalAriaProps,
   GlobalAttrProps,
   InputAttrProps,
-  SelectionScheme,
-  StyledOverloadCssProps,
-} from '../../../declarations';
-import { ChipContainerProps } from './ChipContainer';
+} from '../../../declarations/htmlAttrs';
+import type { SelectionScheme } from '../../../declarations/commonProps';
+import type {
+  FieldEventAttrProps,
+  FocusEventAttrProps,
+} from '../../../declarations/htmlEventAttrs';
+import type { StyledOverloadCssProps } from '../../../declarations/styled';
+import type { ChipContainerProps } from './ChipContainer';
 
 // styled
 import { StyledHiddenInput } from '../../../styled';

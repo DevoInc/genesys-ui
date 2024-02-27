@@ -1,12 +1,14 @@
 import * as React from 'react';
 
-import {
-  FieldAriaProps,
-  GlobalAriaProps,
-  GlobalAttrProps,
+import type {
   StyledOverloadCssProps,
   StyledPolymorphicProps,
-} from '../../../declarations';
+} from '../../../declarations/styled';
+import type {
+  FieldAriaProps,
+  GlobalAriaProps,
+} from '../../../declarations/ariaAttrs';
+import type { GlobalAttrProps } from '../../../declarations/htmlAttrs';
 
 import {
   StyledProgressBarStandard,

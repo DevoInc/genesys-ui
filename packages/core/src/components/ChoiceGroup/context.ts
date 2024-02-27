@@ -1,11 +1,12 @@
 import * as React from 'react';
 
-import { ChoiceGroupProps } from './ChoiceGroup';
+import type { TChoiceGroupColorScheme } from './declarations';
+import type { IconButtonProps } from '../IconButton';
 
 export interface ChoiceGroupContextProps {
-  colorScheme?: ChoiceGroupProps['colorScheme'];
-  selectionScheme: ChoiceGroupProps['selectionScheme'];
-  size: ChoiceGroupProps['size'];
+  colorScheme?: TChoiceGroupColorScheme;
+  selectionScheme: IconButtonProps['selectionScheme'];
+  size: IconButtonProps['size'];
 }
 
 export const ChoiceGroupContext = React.createContext<ChoiceGroupContextProps>({

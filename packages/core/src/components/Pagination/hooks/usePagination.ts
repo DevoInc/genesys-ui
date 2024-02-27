@@ -1,35 +1,8 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { Item } from '../declarations';
 import { useIsMounted } from '../../../hooks/useIsMounted';
-export interface PaginationInfo {
-  readonly page: number;
-  readonly lastPage: number;
-  readonly pageFirstItem: number;
-  readonly pageLastItem: number;
-  readonly totalItems: number;
-  readonly pageData: Item[];
-  readonly pageSize: number;
-  readonly pageSizeOptions: number[];
-  setPageSize: (value: number) => void;
-  goToNextPage: () => void;
-  goToPreviousPage: () => void;
-  goToFirstPage: () => void;
-  goToLastPage: () => void;
-  goToPage: (page: number) => void;
-}
+import type { IPaginationHook } from './declarations';
 
-interface UsePaginationParams {
-  list: Item[];
-  conf: {
-    initialPageSize: number;
-    initialPage?: number;
-    pageSizeOptions?: number[];
-  };
-}
-
-export type PaginationHook = (params: UsePaginationParams) => PaginationInfo;
-
-export const usePagination: PaginationHook = ({ list, conf }) => {
+export const usePagination: IPaginationHook = ({ list, conf }) => {
   const {
     initialPageSize = 10,
     initialPage,

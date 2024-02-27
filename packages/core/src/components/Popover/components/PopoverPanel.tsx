@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Panel, PanelProps } from '../../../components';
+import { Panel, type PanelProps } from '../../Panel';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PopoverPanelProps extends Omit<PanelProps, 'elevation'> {}

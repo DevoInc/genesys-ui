@@ -1,7 +1,11 @@
-import type { ChipProps } from '..';
 import * as React from 'react';
 
-import { BaseSize, ControlWidth, FieldStatus } from '../../declarations';
+import type { ChipProps } from '../Chip';
+import {
+  BaseSize,
+  ControlWidth,
+  FieldStatus,
+} from '../../declarations/commonProps';
 
 export type SelectOption = {
   readonly value: string | number;

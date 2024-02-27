@@ -4,11 +4,9 @@ import styled, { css } from 'styled-components';
 import { ChipSize, ChipState } from '../declarations';
 
 // helpers
-import {
-  pseudoElementOverlayMixin,
-  disabledMixin,
-  btnResetMixin,
-} from '../../../';
+import { disabledMixin } from '../../../styled/mixins/state';
+import { btnResetMixin } from '../../../styled/mixins/components';
+import { pseudoElementOverlayMixin } from '../../../styled/mixins/pseudoElement';
 import { getPadding } from '../helpers';
 
 export interface StyledChipProps {
@@ -22,11 +20,11 @@ export interface StyledChipProps {
 
 export const StyledChip = styled.label<StyledChipProps>`
   ${({ size = 'md', sortable = false, state = 'enabled', theme }) => {
-  const chipTokens = theme.cmp.chip;
-  const backdropHovered = chipTokens.color.backdrop.hovered;
-  const backdropFocused = chipTokens.color.backdrop.focused;
-  const backdropPressed = chipTokens.color.backdrop.pressed;
-  return css`
+    const chipTokens = theme.cmp.chip;
+    const backdropHovered = chipTokens.color.backdrop.hovered;
+    const backdropFocused = chipTokens.color.backdrop.focused;
+    const backdropPressed = chipTokens.color.backdrop.pressed;
+    return css`
       ${btnResetMixin};
       display: inline-flex;
       align-items: center;
@@ -142,5 +140,5 @@ export const StyledChip = styled.label<StyledChipProps>`
         ${disabledMixin(theme)};
       }
     `;
-}};
+  }};
 `;

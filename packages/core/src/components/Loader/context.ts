@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { LoaderProps } from './Loader';
+import type { LoaderColorScheme, LoaderSize } from './declarations';
 
 export interface LoaderContextProps {
-  colorScheme?: LoaderProps['colorScheme'];
-  size?: LoaderProps['size'];
+  colorScheme?: LoaderColorScheme;
+  size?: LoaderSize;
 }
 
 export const LoaderContext = React.createContext<LoaderContextProps>({});

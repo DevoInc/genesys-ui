@@ -6,13 +6,13 @@ import {
 import { arrayMove } from '@dnd-kit/sortable';
 import { DragEndEvent } from '@dnd-kit/core';
 
-import { SelectOption } from '../declarations';
+import type { SelectOption } from '../declarations';
 
 import { SelectControlContext } from '../context';
 
 import { Typography } from '../../Typography';
 import { HFlex } from '../../HFlex';
-import { SortableList } from './';
+import { SortableList } from './SorteableList';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ValueContainerProps extends RSValueContainerProps {}

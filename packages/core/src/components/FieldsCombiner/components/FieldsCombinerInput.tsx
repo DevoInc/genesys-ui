@@ -5,12 +5,17 @@ import { InputControl, type InputControlProps } from '../../InputControl';
 
 import { fieldsCombinerInputAndSelectMixin } from '../helpers';
 import { FieldsCombinerElemContext } from '../context';
-import { FieldsCombiner } from '../FieldsCombiner';
-import { FieldsCombinerItemProps } from './FieldsCombinerItem';
+
+import {
+  FieldsCombinerItem,
+  type FieldsCombinerItemProps,
+} from './FieldsCombinerItem';
+import { FieldProps } from '../../Field';
 
 export interface FieldsCombinerInputProps
   extends Omit<InputControlProps, 'size'> {
   width?: FieldsCombinerItemProps['width'];
+  size?: FieldProps['size'];
 }
 
 export const FieldsCombinerInput: React.FC<FieldsCombinerInputProps> = ({
@@ -23,7 +28,7 @@ export const FieldsCombinerInput: React.FC<FieldsCombinerInputProps> = ({
     FieldsCombinerElemContext,
   );
   return (
-    <FieldsCombiner.Item
+    <FieldsCombinerItem
       componentType="field"
       size={size}
       order={order}
@@ -43,6 +48,6 @@ export const FieldsCombinerInput: React.FC<FieldsCombinerInputProps> = ({
           styles,
         )}
       />
-    </FieldsCombiner.Item>
+    </FieldsCombinerItem>
   );
 };

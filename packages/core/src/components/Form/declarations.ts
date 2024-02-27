@@ -1,6 +1,6 @@
 import type { DOMAttributes, FormHTMLAttributes } from 'react';
 import { PickUnion } from '../../typeFunctions';
-import { GlobalSize } from '../../';
+import { GlobalSize } from '../../declarations/commonProps';
 
 export type FormGap = PickUnion<GlobalSize, 'xxs' | 'xs' | 'sm' | 'md'>;
 

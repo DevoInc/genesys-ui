@@ -1,11 +1,12 @@
 import * as React from 'react';
 
-import { ChipGroupProps } from './ChipGroup';
+import type { ChipProps } from '../Chip';
+import type { FormGroupProps } from '../Form';
 
 export interface ChipGroupContextProps {
-  name?: ChipGroupProps['name'];
-  selectionScheme?: ChipGroupProps['selectionScheme'];
-  size: ChipGroupProps['size'];
+  name?: FormGroupProps['name'];
+  selectionScheme?: ChipProps['selectionScheme'];
+  size: ChipProps['size'];
 }
 
 export const ChipGroupContext = React.createContext<ChipGroupContextProps>({

@@ -11,10 +11,11 @@ import {
   ProgressBarColorScheme,
   ProgressBarSize,
   ProgressBarStatus,
+  TProgressBarCustomInfo,
 } from './declarations';
 
 import { SQUARE, STATUS_COLOR_SCHEME_MAP } from './constants';
-import { ProgressBarProps } from './ProgressBar';
+import type { IconProps } from '../Icon';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ProgressBarBaseUtilsProps
@@ -22,8 +23,9 @@ interface ProgressBarBaseUtilsProps
 
 interface ProgressBarUtilsProps
   extends ProgressBarBaseUtilsProps,
-    Pick<BaseProgressBarProps, 'type'>,
-    Pick<ProgressBarProps, 'icon'> {}
+    Pick<BaseProgressBarProps, 'type'> {
+  icon?: IconProps['iconId'];
+}
 
 /**
  * Get the status based also in the percent prop
@@ -59,7 +61,7 @@ export const getPercent = ({ percent, status }: ProgressBarBaseUtilsProps) =>
  *
  * @return boolean
  */
-export const hasCustomInfo = (customInfo: ProgressBarProps['customInfo']) =>
+export const hasCustomInfo = (customInfo: TProgressBarCustomInfo) =>
   customInfo && (customInfo.startInfo || customInfo.endInfo);
 
 /**

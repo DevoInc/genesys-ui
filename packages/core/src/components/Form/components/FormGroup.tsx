@@ -5,16 +5,15 @@ import type { FieldProps } from '../../Field';
 import type { StyledOverloadCssProps } from '../../../declarations/styled';
 import type { FieldAttrProps } from '../../../declarations/htmlAttrs';
 
+import { Flex, type FlexProps } from '../../Flex';
+import { Field } from '../../Field';
+import { FloatingHelper } from '../../FloatingHelper';
 import {
-  Field,
-  Flex,
-  type FlexProps,
-  FloatingHelper,
   FormDistributor,
   type FormDistributorProps,
   FormLegend,
-  Helper,
-} from '../../';
+} from '../../Form';
+import { Helper } from '../../Helper';
 
 import { hasStatus } from '../../../utils/validations';
 

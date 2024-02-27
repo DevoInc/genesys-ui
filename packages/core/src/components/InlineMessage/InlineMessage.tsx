@@ -2,17 +2,18 @@ import * as React from 'react';
 import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
-import {
-  GlobalAttrProps,
+import type { GlobalAttrProps } from '../../declarations/htmlAttrs';
+import type {
   StyledOverloadCssProps,
   StyledPolymorphicProps,
-} from '../../declarations';
+} from '../../declarations/styled';
 
 import { WithRequired } from '../../typeFunctions';
 import { inlineMessageContainerMixin } from './helpers';
 
-import { IconButtonStatusProps, Popover, PopoverProps } from '../';
-import { ButtonExpandableState, ButtonSize } from '../Button';
+import { Popover, type PopoverProps } from '../Popover';
+import type { IconButtonStatusProps } from '../IconButton';
+import type { ButtonExpandableState, ButtonSize } from '../Button';
 
 import {
   InlineMessageArrow,
@@ -118,10 +119,10 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
             ? children
             : typeof children === 'function'
               ? children({
-                toggle,
-                isOpened,
-                setOpened,
-              })
+                  toggle,
+                  isOpened,
+                  setOpened,
+                })
               : null}
         </Popover.Panel>
       )}

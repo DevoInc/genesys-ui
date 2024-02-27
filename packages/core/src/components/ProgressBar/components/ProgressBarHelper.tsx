@@ -2,14 +2,16 @@ import * as React from 'react';
 
 import { STATUS_COLOR_SCHEME_MAP } from '../constants';
 
-import { BaseProgressBarProps } from '../declarations';
-import {
-  GlobalAttrProps,
+import type { BaseProgressBarProps } from '../declarations';
+import type {
   StyledOverloadCssProps,
   StyledPolymorphicProps,
-} from '../../../declarations';
+} from '../../../declarations/styled';
 
-import { Flex, Helper } from '../..';
+import type { GlobalAttrProps } from '../../../declarations/htmlAttrs';
+
+import { Flex } from '../../Flex';
+import { Helper } from '../../Helper';
 
 export interface ProgressBarHelperProps
   extends Pick<GlobalAttrProps, 'id'>,

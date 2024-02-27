@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { SelectOption } from './declarations';
-import { SelectControlProps } from './SelectControl';
+import { Props } from 'react-select';
+import { CommonSelectCmpsProps, SelectOption } from './declarations';
 
 export interface SelectControlContextProps<SelectOption> {
-  size?: SelectControlProps['size'];
+  size?: CommonSelectCmpsProps['size'];
   values?: SelectOption[];
-  options?: SelectControlProps['options'];
+  options?: Props['options'];
 }
 
 export const SelectControlContext = React.createContext<

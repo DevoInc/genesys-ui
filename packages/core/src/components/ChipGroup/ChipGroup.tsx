@@ -1,11 +1,8 @@
 import * as React from 'react';
 
-import {
-  ChipProps,
-  ContainerEventAttrProps,
-  Form,
-  FormGroupProps,
-} from '../../';
+import type { ChipProps } from '../Chip';
+import type { ContainerEventAttrProps } from '../../declarations/htmlEventAttrs';
+import { Form, type FormGroupProps } from '../Form';
 import { WithRequired } from '../../typeFunctions';
 import { ChipGroupContext } from './context';
 import { ChipGroupChip } from './components';

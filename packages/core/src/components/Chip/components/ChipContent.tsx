@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ChipContainerProps } from '../components';
+import { ChipContainerProps } from '../components/ChipContainer';
 
 import { StyledChipLabel } from '../styled';
 

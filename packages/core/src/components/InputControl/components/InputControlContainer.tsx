@@ -1,13 +1,11 @@
 import * as React from 'react';
 
 // declarations
-import {
-  FieldControlCommonProps,
-  StyledOverloadCssProps,
-} from '../../../declarations';
+import type { StyledOverloadCssProps } from '../../../declarations/styled';
+import type { FieldControlCommonProps } from '../../../declarations/commonProps';
 
 // components
-import { Flex } from '../../';
+import { Flex } from '../../Flex';
 
 export interface InputControlContainerProps
   extends Pick<FieldControlCommonProps, 'tooltip'>,

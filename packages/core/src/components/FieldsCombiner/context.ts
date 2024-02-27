@@ -3,18 +3,18 @@ import { DefaultTheme } from 'styled-components';
 
 import { light } from '@devoinc/genesys-brand-devo';
 
-import {
+import type {
   FieldsCombinerCombinedButtons,
   FieldsCombinerOrder,
 } from './declarations';
 
-import { FieldsCombinerProps } from './FieldsCombiner';
+import type { FieldProps } from '../Field';
 
 export interface FieldsCombinerElemContextProps {
   order: FieldsCombinerOrder;
   combinedButtons: FieldsCombinerCombinedButtons;
-  size: FieldsCombinerProps['size'];
-  status: FieldsCombinerProps['status'];
+  size: FieldProps['size'];
+  status: FieldProps['status'];
   theme: DefaultTheme;
 }
 

@@ -1,17 +1,24 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { IconButtonStatus, IconButtonStatusProps } from '../../../IconButton';
+import {
+  IconButtonStatus,
+  type IconButtonStatusProps,
+} from '../../../IconButton';
 import { Typography } from '../../../Typography';
 import { useAddPropsToChildren } from '../../../../hooks';
-import { Button, ButtonExpandableState, ButtonSize } from '../../../Button';
 import {
+  Button,
+  type ButtonExpandableState,
+  ButtonSize,
+} from '../../../Button';
+import type {
   GlobalAriaProps,
-  GlobalAttrProps,
   TextBoxAriaProps,
   TriggerAriaProps,
-  TriggerEventAttrProps,
-} from '../../../../';
+} from '../../../../declarations/ariaAttrs';
+import type { GlobalAttrProps } from '../../../../declarations/htmlAttrs';
+import type { TriggerEventAttrProps } from '../../../../declarations/htmlEventAttrs';
 import {
   inlineMessageTriggerMixin,
   inlineMessageTriggerParagraphMixin,

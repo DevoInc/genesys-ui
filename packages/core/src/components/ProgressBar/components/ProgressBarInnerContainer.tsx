@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { Flex, FlexProps } from '../../';
+import { Flex, type FlexProps } from '../../Flex';
 
-import { ProgressBarType } from '../declarations';
+import type { ProgressBarType } from '../declarations';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ProgressBarInnerContainerProps extends FlexProps {

@@ -1,12 +1,12 @@
-import {
+import { DefaultTheme } from 'styled-components';
+import { CONTEXTUAL_SCROLL_LOADER_SIZE_MAP } from './constants';
+import type {
   ContextualScrollLoaderSize,
   ContextualScrollLoaderType,
   LoaderBasicColorScheme,
   LoaderColorScheme,
 } from './declarations';
-import { BaseSize } from '../../';
-import { DefaultTheme } from 'styled-components';
-import { CONTEXTUAL_SCROLL_LOADER_SIZE_MAP } from './constants';
+import type { BaseSize } from '../../declarations/commonProps';
 
 export const getSizeByType = (
   type: ContextualScrollLoaderType,

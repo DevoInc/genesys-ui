@@ -1,13 +1,19 @@
 import * as React from 'react';
 
-import { Flex, IconProps } from '../';
-import { BaseProgressBarProps, ProgressBarType } from './declarations';
-import {
-  GlobalAriaProps,
-  GlobalAttrProps,
+import type {
   StyledOverloadCssProps,
   StyledPolymorphicProps,
-} from '../../declarations';
+} from '../../declarations/styled';
+import type { GlobalAttrProps } from '../../declarations/htmlAttrs';
+import type { GlobalAriaProps } from '../../declarations/ariaAttrs';
+import type { IconProps } from '../Icon';
+import {
+  BaseProgressBarProps,
+  ProgressBarType,
+  TProgressBarCustomInfo,
+} from './declarations';
+
+import { Flex } from '../Flex';
 
 import { getIcon, getPercent, getStatus, hasCustomInfo } from './utils';
 
@@ -40,10 +46,7 @@ export interface ProgressBarProps
       | 'animated'
     > {
   /** Custom info bellow the progress bar */
-  customInfo?: {
-    startInfo: string;
-    endInfo: string;
-  };
+  customInfo?: TProgressBarCustomInfo;
   /** Custom icon for progress info */
   icon?: IconProps['iconId'];
   /** The type of the progress bar: standard or circular */

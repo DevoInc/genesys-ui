@@ -1,17 +1,19 @@
 import * as React from 'react';
 
 // declarations
-import {
+import type {
   ContainerEventAttrProps,
   DragDropEventAttrProps,
-  GlobalAttrProps,
   MouseEventAttrProps,
+} from '../../../declarations/htmlEventAttrs';
+import type { GlobalAttrProps } from '../../../declarations/htmlAttrs';
+import type {
   StyledOverloadCssProps,
   StyledPolymorphicProps,
-} from '../../../declarations';
+} from '../../../declarations/styled';
 
 // styled
-import { StyledChip, StyledChipProps } from '../styled';
+import { StyledChip, type StyledChipProps } from '../styled';
 
 export interface ChipContainerProps
   extends GlobalAttrProps,

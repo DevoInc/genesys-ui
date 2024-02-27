@@ -7,8 +7,10 @@ import {
 
 import { FieldsCombinerElemContext } from '../context';
 
-import { FieldsCombiner } from '../FieldsCombiner';
-import { type FieldsCombinerItemProps } from './FieldsCombinerItem';
+import {
+  FieldsCombinerItem,
+  type FieldsCombinerItemProps,
+} from './FieldsCombinerItem';
 
 export interface FieldsCombinerCheckboxProps
   extends Omit<CheckboxControlProps, 'size'> {
@@ -22,7 +24,7 @@ export const FieldsCombinerCheckbox: React.FC<FieldsCombinerCheckboxProps> = ({
 }) => {
   const { order, size, status } = React.useContext(FieldsCombinerElemContext);
   return (
-    <FieldsCombiner.Item
+    <FieldsCombinerItem
       componentType="check"
       size={size}
       order={order}
@@ -34,6 +36,6 @@ export const FieldsCombinerCheckbox: React.FC<FieldsCombinerCheckboxProps> = ({
         aria-label={ariaLabel}
         status={status}
       />
-    </FieldsCombiner.Item>
+    </FieldsCombinerItem>
   );
 };

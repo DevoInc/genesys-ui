@@ -1,12 +1,9 @@
 import * as React from 'react';
 
-import {
-  Box,
-  ButtonGroup,
-  Flex,
-  IconButtonClose,
-  IconButtonGoToDocs,
-} from '../';
+import { Box } from '../Box';
+import { ButtonGroup } from '../ButtonGroup';
+import { Flex } from '../Flex';
+import { IconButtonClose, IconButtonGoToDocs } from '../IconButton';
 import { Heading } from '../Typography/components/block';
 import {
   ModalFooter,
@@ -18,8 +15,8 @@ import {
 
 import { useDetectScroll } from '../../hooks';
 
-import type { GlobalStatus } from '../../declarations';
-import { StyledOverloadCssPropsWithRecord } from '../../declarations';
+import type { GlobalStatus } from '../../declarations/commonProps';
+import type { StyledOverloadCssPropsWithRecord } from '../../declarations/styled';
 import type {
   ModalFooterProps,
   ModalBodyProps,

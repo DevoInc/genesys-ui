@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { CollapseProps } from './Collapse';
+import type { StyledCollapseContainerProps } from './styled';
 
 export interface CollapseContextProps {
-  expanded?: CollapseProps['expanded'];
+  expanded?: StyledCollapseContainerProps['expanded'];
 }
 
 export const CollapseContext = React.createContext<CollapseContextProps>({

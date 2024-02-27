@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import {
   ChipContainer,
-  ChipContainerProps,
+  type ChipContainerProps,
   ChipHiddenInput,
-  ChipHiddenInputProps,
+  type ChipHiddenInputProps,
   ChipIcon,
 } from './components';
 
-import { ChipContent, ChipContentProps } from './components/ChipContent';
+import { ChipContent, type ChipContentProps } from './components/ChipContent';
 import { ChipContext } from './context';
 
 export interface ChipProps

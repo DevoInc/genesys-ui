@@ -3,7 +3,7 @@ import {
   GlobalAttrProps,
   StyledOverloadCssProps,
 } from '../../declarations';
-import { PaginationInfo } from './hooks';
+import type { IPaginationInfo } from './hooks/declarations';
 
 export type Item = string | number;
 
@@ -11,7 +11,7 @@ export interface PaginationCommonInterface
   extends Pick<GlobalAttrProps, 'id'>,
     StyledOverloadCssProps {
   /** If you want to override pagination internal state, use the usePagination hook in the parent and pass the props. */
-  paginationHook?: PaginationInfo;
+  paginationHook?: IPaginationInfo;
   size?: BaseSize;
   /** Texts for tooltips and accessibility: aria-labels... etc. */
   texts?: TextProps;

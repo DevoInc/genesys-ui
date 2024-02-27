@@ -12,6 +12,10 @@ export type ProgressBarColorScheme = 'light' | 'dark';
 export type ProgressBarSize = 'sm' | 'md';
 
 export type ProgressBarType = 'standard' | 'circular';
+export type TProgressBarCustomInfo = {
+  startInfo: string;
+  endInfo: string;
+};
 
 export interface BaseProgressBarProps {
   /** Color scheme of the progressbar */

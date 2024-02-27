@@ -4,10 +4,11 @@ import { BaseProgressBarProps } from '../declarations';
 import {
   StyledOverloadCssProps,
   StyledPolymorphicProps,
-} from '../../../declarations';
+} from '../../../declarations/styled';
 import { STATUS_COLOR_SCHEME_MAP } from '../constants';
 
-import { Flex, Typography } from '../../';
+import { Flex } from '../../Flex';
+import { Typography } from '../../Typography';
 
 export interface ProgressBarCustomInfoProps
   extends StyledPolymorphicProps,

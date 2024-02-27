@@ -1,12 +1,12 @@
-import {
+import type {
   ContextualScrollLoaderSize,
   ContextualScrollLoaderType,
   LoaderSize,
 } from './declarations';
+import type { LoaderGradientContainerProps } from './components/LoaderGradientContainer';
 import { ProgressBarSize } from '../ProgressBar/declarations';
 import { SpinnerSize } from '../SpinnerLoader/constants';
 import { BaseSize } from '../../declarations';
-import { LoaderGradientContainerProps } from './components';
 import { OverlayProps } from '../Overlay';
 
 export const LOADER_SIZE_PROGRESS_AND_SPINNER: {

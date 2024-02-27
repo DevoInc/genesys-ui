@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { ChipProps } from './Chip';
+import { ChipSize } from './declarations';
 
 export interface ChipContextProps {
-  size: ChipProps['size'];
-  iconId?: ChipProps['icon'];
+  size: ChipSize;
+  iconId?: string;
 }
 
 export const ChipContext = React.createContext<ChipContextProps>({

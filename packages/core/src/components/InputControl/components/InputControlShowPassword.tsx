@@ -1,16 +1,17 @@
 import * as React from 'react';
 
-import { InputControlProps } from '../InputControl';
 import { INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP } from '../constants';
 
 import { IconButton, IconButtonProps } from '../../IconButton';
 
 import { StyledInputControlShowPassword } from '../styled/StyledInputControlShowPassword';
+import { FieldSize, StyledOverloadCssProps } from '../../../declarations';
 
 export interface InputControlShowPasswordProps
-  extends Pick<InputControlProps, 'size' | 'styles'>,
+  extends StyledOverloadCssProps,
     Pick<IconButtonProps, 'onClick'> {
   showPassword?: boolean;
+  size?: FieldSize;
 }
 
 export const InputControlShowPassword: React.FC<

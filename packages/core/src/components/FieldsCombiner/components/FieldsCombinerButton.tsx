@@ -6,8 +6,10 @@ import type { UIColorScheme } from '../../../declarations';
 
 import { fieldsCombinerButtonMixin } from '../helpers';
 import { FieldsCombinerElemContext } from '../context';
-import { FieldsCombiner } from '../FieldsCombiner';
-import { FieldsCombinerItemProps } from './FieldsCombinerItem';
+import {
+  FieldsCombinerItem,
+  type FieldsCombinerItemProps,
+} from './FieldsCombinerItem';
 
 export interface FieldsCombinerButtonProps extends Omit<ButtonProps, 'size'> {
   width?: FieldsCombinerItemProps['width'];
@@ -21,7 +23,7 @@ export const FieldsCombinerButton = React.forwardRef<
     FieldsCombinerElemContext,
   );
   return (
-    <FieldsCombiner.Item
+    <FieldsCombinerItem
       componentType="button"
       size={size}
       order={order}
@@ -46,7 +48,7 @@ export const FieldsCombinerButton = React.forwardRef<
           styles,
         )}
       />
-    </FieldsCombiner.Item>
+    </FieldsCombinerItem>
   );
 });
 

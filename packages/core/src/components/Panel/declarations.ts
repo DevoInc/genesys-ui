@@ -1,13 +1,14 @@
 import * as React from 'react';
 
-import { ButtonProps, IconButtonProps, PopoverProps } from '../';
-import {
-  GlobalAttrProps,
-  GlobalSize,
-  LinkAttrProps,
+import type {
   StyledOverloadCssProps,
   StyledPolymorphicProps,
-} from '../../declarations';
+} from '../../declarations/styled';
+import type { GlobalSize } from '../../declarations/commonProps';
+import type {
+  GlobalAttrProps,
+  LinkAttrProps,
+} from '../../declarations/htmlAttrs';
 import { PickUnion } from '../../typeFunctions';
 
 export type PanelSize = PickUnion<GlobalSize, 'xs' | 'sm' | 'md'>;
@@ -15,11 +16,7 @@ export type PanelRemoveSpace = boolean;
 export type PanelBordered = boolean;
 export type PanelBoxShadow = boolean;
 export type PanelChildren = React.ReactNode;
-export type PanelActions = (
-  | React.ReactElement<ButtonProps>
-  | React.ReactElement<IconButtonProps>
-  | React.ReactElement<PopoverProps>
-)[];
+export type PanelActions = React.ReactElement[];
 export type PanelIcon = React.ReactNode;
 
 export interface PanelHelpAttrs {

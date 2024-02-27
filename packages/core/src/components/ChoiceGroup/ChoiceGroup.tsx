@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-import { ContainerEventAttrProps, Form, FormGroupProps } from '../../';
+import type { ContainerEventAttrProps } from '../../declarations/htmlEventAttrs';
+import { Form, type FormGroupProps } from '../Form';
+import { TChoiceGroupColorScheme } from './declarations';
 import { ChoiceGroupContext } from './context';
 import {
   ChoiceGroupIconButton,
@@ -14,7 +16,7 @@ export interface ChoiceGroupProps
     >,
     Pick<ContainerEventAttrProps, 'onChange'>,
     Pick<ChoiceGroupIconButtonProps, 'size' | 'selectionScheme'> {
-  colorScheme?: 'neutral' | 'quiet';
+  colorScheme?: TChoiceGroupColorScheme;
   children: React.ReactElement | React.ReactElement[];
 }
 

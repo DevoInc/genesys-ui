@@ -4,7 +4,9 @@ import { useTheme } from 'styled-components';
 
 import { SelectControlContext } from '../context';
 
-import { Field, Flex, SelectOption } from '../../';
+import type { SelectOption } from '../declarations';
+import { Field } from '../../Field';
+import { Flex } from '../../Flex';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ContainerProps extends RSContainerProps {}

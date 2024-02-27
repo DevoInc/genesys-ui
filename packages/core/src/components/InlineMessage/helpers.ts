@@ -1,14 +1,15 @@
 import { css, DefaultTheme } from 'styled-components';
-import { InlineMessageProps } from './InlineMessage';
 import { getBorderPlacement } from './utils';
+import type { IconButtonStatusProps } from '../IconButton';
+import type { PopoverProps } from '../Popover';
 
 export const inlineMessageContainerMixin = ({
   placement,
   status = 'help',
   theme,
 }: {
-  placement: InlineMessageProps['placement'];
-  status: InlineMessageProps['status'];
+  placement: PopoverProps['placement'];
+  status: IconButtonStatusProps['colorScheme'];
   theme: DefaultTheme;
 }) => {
   const tokens = theme.cmp.inlineMessage;
