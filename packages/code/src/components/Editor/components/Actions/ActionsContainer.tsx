@@ -1,6 +1,7 @@
 import * as React from 'react';
+
+import { type BoxProps } from '@devoinc/genesys-ui';
 import { StyledActionsContainer } from './StyledActionsContainer';
-import { BoxProps } from '@devoinc/genesys-ui';
 
 export interface ActionsContainerProps extends BoxProps {
   children: React.ReactNode;
