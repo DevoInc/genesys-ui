@@ -11,6 +11,7 @@ import type {
 import type { StyledPolymorphicProps } from '../../../declarations/styled';
 
 import { getSpacingPropCss } from '../../../helpers';
+import { formGroupSpacingMixin } from './helpers';
 
 export interface StyledFormGroupContainerProps
   extends StyledPolymorphicProps,
@@ -32,8 +33,12 @@ export const StyledFormGroupContainer = styled.div<StyledFormGroupContainerProps
       align-items: ${legendPosition === 'left' ? 'center' : 'stretch'};
       position: relative;
       gap: ${getSpacingPropCss(theme)('cmp-xs')};
-      margin-top: ${marginTop && getSpacingPropCss(theme)(marginTop)};
-      margin-left: ${marginTop && getSpacingPropCss(theme)(marginLeft)};
+      margin-top: ${marginTop || formGroupSpacingMixin(theme)};
+      margin-left: ${marginLeft && getSpacingPropCss(theme)(marginLeft)};
+
+      &:first-child {
+        margin-top: 0;
+      }
 
       ${asFieldset &&
       css`

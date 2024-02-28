@@ -1,9 +1,9 @@
 import * as monaco from 'monaco-editor-core';
 import { defaultOptions } from './defaults';
-import { type UseEditorParams } from './useEditor';
+import { type IUseEditorParams } from './declarations';
 
 export const buildEditorOptions = (
-  options: UseEditorParams['options'],
+  options: IUseEditorParams['options'],
 ): monaco.editor.IStandaloneEditorConstructionOptions => ({
   // default options
   ...defaultOptions,

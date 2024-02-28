@@ -3,7 +3,7 @@ import {
   BodyColorScheme,
   BaseSize,
 } from '../../declarations';
-import { BadgeSize } from '../../';
+import { BadgeSize } from '../Badge';
 
 export type StepperSize = BaseSize;
 

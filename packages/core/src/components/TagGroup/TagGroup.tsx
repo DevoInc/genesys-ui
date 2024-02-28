@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-import { TagProps } from '../Tag';
-import { StyledOverloadCssPropsWithRecord } from '../../';
+import type { TagProps } from '../Tag';
+import type { StyledOverloadCssPropsWithRecord } from '../../declarations';
 
 import {
   TagGroupContainer,
-  TagGroupContainerProps,
+  type TagGroupContainerProps,
   TagGroupLabel,
-  TagGroupLabelProps,
+  type TagGroupLabelProps,
   TagGroupList,
-  TagGroupListProps,
+  type TagGroupListProps,
 } from './components';
 
 export interface BaseTagGroupProps

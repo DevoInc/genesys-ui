@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { CommonTagGroupProps } from '../declarations';
-import { TagProps } from '../../Tag';
-import { Flex, FlexProps } from '../../../';
+import type { TagProps } from '../../Tag';
+import { Flex, type FlexProps } from '../../Flex';
 
 export interface TagGroupContainerProps
   extends CommonTagGroupProps,

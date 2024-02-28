@@ -1,10 +1,9 @@
 import * as React from 'react';
 
-import {
-  GlobalStatus,
-  StyledOverloadCssPropsWithRecord,
-} from '../../declarations';
-import { IconProps, ButtonGroupProps } from '../';
+import type { GlobalStatus } from '../../declarations/commonProps';
+import type { StyledOverloadCssPropsWithRecord } from '../../declarations/styled';
+import type { ButtonGroupProps } from '../ButtonGroup';
+import type { IconProps } from '../Icon';
 
 import {
   StatusMessageButtons,

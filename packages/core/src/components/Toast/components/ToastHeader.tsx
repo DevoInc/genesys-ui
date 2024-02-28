@@ -1,18 +1,15 @@
-import { MouseEventAttrProps } from '../../../declarations';
 import * as React from 'react';
 
 import { toastStatusToIconMap } from '../constants';
-import { ToastStatus } from '../declarations';
+import type { MouseEventAttrProps } from '../../../declarations';
+import type { ToastStatus } from '../declarations';
 
-import {
-  Divider,
-  Flex,
-  HFlex,
-  IconButtonClose,
-  IconButtonCollapse,
-  Typography,
-  VFlex,
-} from '../..';
+import { Divider } from '../../Divider';
+import { Flex } from '../../Flex';
+import { HFlex } from '../../HFlex';
+import { IconButtonClose, IconButtonCollapse } from '../../IconButton';
+import { Typography } from '../../Typography';
+import { VFlex } from '../../VFlex';
 
 import { ToastHeaderIcon } from './ToastHeaderIcon';
 

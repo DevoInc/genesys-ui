@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { Label, LabelProps } from '../../';
-import { CommonTagGroupProps } from '../declarations';
+import { Label, type LabelProps } from '../../Label';
+import type { CommonTagGroupProps } from '../declarations';
 
 import { tagGroupLabelMixin } from '../helpers';
 

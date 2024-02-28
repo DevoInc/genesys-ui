@@ -10,7 +10,7 @@ import {
   StyledPolymorphicProps,
 } from '../../../declarations';
 
-import { VFlex, VFlexProps } from '../../';
+import { VFlex, VFlexProps } from '../../VFlex';
 import { statusMessageMixin, StatusMessageMixinProps } from '../helpers';
 
 export interface StatusMessageContainerProps

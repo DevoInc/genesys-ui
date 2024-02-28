@@ -1,11 +1,7 @@
-import {
-  BaseSize,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-} from '../../declarations';
+import type { BaseSize } from '../../declarations/commonProps';
+import type { GlobalAttrProps } from '../../declarations/htmlAttrs';
+import type { StyledOverloadCssProps } from '../../declarations/styled';
 import type { IPaginationInfo } from './hooks/declarations';
-
-export type Item = string | number;
 
 export interface PaginationCommonInterface
   extends Pick<GlobalAttrProps, 'id'>,

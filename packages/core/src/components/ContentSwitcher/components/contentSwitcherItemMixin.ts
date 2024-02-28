@@ -1,7 +1,7 @@
 import { css, DefaultTheme } from 'styled-components';
 
 // declarations
-import { ButtonProps, ButtonSelectableState } from '../../index';
+import type { ButtonProps, ButtonSelectableState } from '../../Button';
 
 export interface ContentSwitcherItemMixinProps {
   /** Sets the color scheme according to component state */

@@ -2,63 +2,11 @@ import * as React from 'react';
 import * as monaco from 'monaco-editor-core';
 import { useUpdateEffect } from 'ahooks';
 
+import type { TUseEditor } from './declarations';
+
 import { buildEditorOptions } from './buildEditorOptions';
 
-type Monaco = typeof monaco;
-
-export interface UseEditorParams {
-  /**
-   * Value of the current model
-   */
-  value?: string;
-  /**
-   * Theme data to customize the editor
-   */
-  theme?: { id: string; themeData: monaco.editor.IStandaloneThemeData };
-  /**
-   * Language of the current model
-   */
-  language?: string;
-  /**
-   * An event is emitted before the editor is mounted
-   * Defaults to "noop"
-   */
-  beforeMount?: (monaco: Monaco) => void;
-  /**
-   * An event is emitted when the editor is mounted
-   * Defaults to "noop"
-   */
-  onMount?: (
-    editor: monaco.editor.IStandaloneCodeEditor,
-    monaco: Monaco,
-  ) => void;
-  /**
-   * An event is emitted when the content of the current model is changed
-   * Defaults to "noop"
-   */
-  onChange?: (
-    value: string | undefined,
-    ev: monaco.editor.IModelContentChangedEvent,
-    editor: monaco.editor.IStandaloneCodeEditor,
-    monaco: Monaco,
-  ) => void;
-  /**
-   * An event is emitted when the content of the current model is changed
-   * and the current model markers are ready
-   * Defaults to "noop"
-   */
-  onValidate?: (markers: monaco.editor.IMarker[]) => void;
-  /**
-   * IStandaloneEditorConstructionOptions
-   */
-  options?: monaco.editor.IStandaloneEditorConstructionOptions;
-}
-
-export type UseEditor = (params: UseEditorParams) => {
-  containerRef: React.MutableRefObject<HTMLDivElement | null>;
-};
-
-export const useEditor: UseEditor = ({
+export const useEditor: TUseEditor = ({
   value = '',
   theme,
   language,

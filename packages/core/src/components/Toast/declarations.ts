@@ -1,4 +1,4 @@
-import { ActiveStatus } from '../../';
+import type { ActiveStatus } from '../../declarations';
 import { OmitUnion } from '../../typeFunctions/omitUnion';
 
 export interface ToastAction {

@@ -1,10 +1,14 @@
 import * as React from 'react';
 
-import { defaultTexts, PaginationCommonInterface } from '../declarations';
+import { defaultTexts, type PaginationCommonInterface } from '../declarations';
 
 import { usePaginationStyles } from '../usePaginationStyles';
 
-import { HFlex, IconButton, InputControl, SelectControl, Flex } from '../..';
+import { HFlex } from '../../HFlex';
+import { IconButton } from '../../IconButton';
+import { InputControl } from '../../InputControl';
+import { SelectControl } from '../../SelectControl';
+import { Flex } from '../../Flex';
 
 export interface PaginationNavProps extends PaginationCommonInterface {
   hideFirstPageBtn?: boolean;

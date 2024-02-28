@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Typography } from '../../';
-import { ParagraphProps } from '../../Typography/components/block';
+import { Typography } from '../../Typography';
+import type { ParagraphProps } from '../../Typography/components/block';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StatusMessageDescriptionProps extends ParagraphProps {

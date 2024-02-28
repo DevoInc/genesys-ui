@@ -1,5 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
-import { ToastStatus } from '../declarations';
+import type { ToastStatus } from '../declarations';
 
 export interface ToastPanelMixinProps {
   /** Accent color schema */
@@ -14,7 +14,7 @@ export interface ToastPanelMixinProps {
  *
  * @return object with the css.
  */
-export const toastPanelMixinProps = ({
+export const toastPanelMixin = ({
   accent,
   showProgressBar,
   status,

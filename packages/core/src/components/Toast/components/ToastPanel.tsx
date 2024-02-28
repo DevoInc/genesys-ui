@@ -2,15 +2,15 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { ToastAction } from '../declarations';
 import { TOAST_ELEVATION_LEVEL } from '../constants';
-import { ToastBadge, ToastBadgeProps } from './ToastBadge';
-import { ToastContent, ToastContentProps } from './ToastContent';
+import type { StyledOverloadCssProps } from '../../../declarations';
+import { ToastAction } from '../declarations';
 import { getHeaderContent, getFooterActions } from '../utils';
-import { ToastHeaderProps } from './ToastHeader';
+import { type ToastPanelMixinProps, toastPanelMixin } from './helpers';
+import { ToastBadge, type ToastBadgeProps } from './ToastBadge';
+import { ToastContent, type ToastContentProps } from './ToastContent';
+import { type ToastHeaderProps } from './ToastHeader';
 import { Panel } from '../../Panel';
-import { ToastPanelMixinProps, toastPanelMixinProps } from './helpers';
-import { StyledOverloadCssProps } from '../../../declarations';
 
 export interface ToastPanelProps
   extends StyledOverloadCssProps,
@@ -86,7 +86,7 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
         elevation={TOAST_ELEVATION_LEVEL}
         maxHeight={maxHeight}
         styles={concat(
-          toastPanelMixinProps({
+          toastPanelMixin({
             accent,
             showProgressBar,
             status,

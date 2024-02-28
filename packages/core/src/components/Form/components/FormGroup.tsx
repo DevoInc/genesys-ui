@@ -4,15 +4,13 @@ import { useTheme } from 'styled-components';
 import type { FieldProps } from '../../Field';
 import type { StyledOverloadCssProps } from '../../../declarations/styled';
 import type { FieldAttrProps } from '../../../declarations/htmlAttrs';
+import type { TLegendPosition } from '../declarations';
 
 import { Flex, type FlexProps } from '../../Flex';
 import { Field } from '../../Field';
 import { FloatingHelper } from '../../FloatingHelper';
-import {
-  FormDistributor,
-  type FormDistributorProps,
-  FormLegend,
-} from '../../Form';
+import { FormDistributor, type FormDistributorProps } from './FormDistributor';
+import { FormLegend } from './FormLegend';
 import { Helper } from '../../Helper';
 
 import { hasStatus } from '../../../utils/validations';
@@ -43,7 +41,7 @@ export interface FormGroupProps
   /** Text as legend for the group of fields. You can add it, but maintaining it hidden and accessible by the 'hideLegend' prop. */
   legend?: string;
   /** The position of the legend relative to the group. */
-  legendPosition?: 'top' | 'left';
+  legendPosition?: TLegendPosition;
   /** Children */
   children: React.ReactNode;
 }

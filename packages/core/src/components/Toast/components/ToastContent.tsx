@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-import { HFlex, Flex, Typography } from '../..';
+import { Flex } from '../../Flex';
+import { HFlex } from '../../HFlex';
+import { Typography } from '../../Typography';
 
 export interface ToastContentProps {
   /** Return panel content if not collapsed */

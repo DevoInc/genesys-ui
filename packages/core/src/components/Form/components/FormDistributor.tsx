@@ -1,8 +1,5 @@
 import * as React from 'react';
-
 import { Flex, type FlexProps } from '../../Flex';
-import { FormGroup } from './FormGroup';
-import { FormButtons } from './FormButtons';
 import { FormGap } from '../declarations';
 
 export interface FormDistributorProps
@@ -29,29 +26,7 @@ export const FormDistributor: React.FC<FormDistributorProps> = ({
       gap={`cmp-${itemsGap}`}
       role="group"
     >
-      {childrenArr.map((child, idx) => {
-        const hasExtraSpacing =
-          child?.type?.name === FormButtons.name ||
-          child?.type?.displayName === FormButtons.name ||
-          ((child?.type?.name === FormGroup.name ||
-            child?.type?.displayName === FormGroup.name) &&
-            idx !== 0 &&
-            child?.props?.legend &&
-            !child?.props?.hideLegend);
-        if (hasExtraSpacing) {
-          return React.cloneElement(child, {
-            key: idx,
-            marginTop:
-              child?.props?.marginTop || direction === 'column'
-                ? 'cmp-xs'
-                : null,
-            marginLeft:
-              child?.props?.marginLeft || direction === 'row' ? 'cmp-xs' : null,
-          });
-        } else {
-          return child;
-        }
-      })}
+      {children}
     </Flex>
   );
 };

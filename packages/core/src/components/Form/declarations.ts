@@ -3,6 +3,7 @@ import { PickUnion } from '../../typeFunctions';
 import { GlobalSize } from '../../declarations/commonProps';
 
 export type FormGap = PickUnion<GlobalSize, 'xxs' | 'xs' | 'sm' | 'md'>;
+export type TLegendPosition = 'top' | 'left';
 
 export interface FormAttrProps {
   /** The character encoding the form will submit the data in */

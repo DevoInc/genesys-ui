@@ -1,9 +1,10 @@
 import * as React from 'react';
 
-import { GlobalAriaProps, StyledPolymorphicProps } from '../../../declarations';
-import { PaginationCommonInterface } from '../declarations';
+import type { GlobalAriaProps } from '../../../declarations/ariaAttrs';
+import type { StyledPolymorphicProps } from '../../../declarations/styled';
+import type { PaginationCommonInterface } from '../declarations';
 
-import { HFlex } from '../..';
+import { HFlex } from '../../HFlex';
 
 export interface PaginationContainerProps
   extends PaginationCommonInterface,

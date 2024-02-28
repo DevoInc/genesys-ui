@@ -1,7 +1,9 @@
 import * as React from 'react';
 
-import { defaultTexts, PaginationCommonInterface } from '../declarations';
-import { HFlex, Label, SelectControl } from '../../';
+import { defaultTexts, type PaginationCommonInterface } from '../declarations';
+import { HFlex } from '../../HFlex';
+import { Label } from '../../Label';
+import { SelectControl } from '../../SelectControl';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface PaginationRangeProps extends PaginationCommonInterface {}

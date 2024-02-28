@@ -1,18 +1,18 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
+import type { StyledOverloadCssProps } from '../../../declarations';
+import type { BaseSwitchControlProps } from '../declarations';
+import { getSpacingPropCss } from '../../../helpers';
+import { Flex, FlexProps } from '../../Flex';
 import {
   StyledSwitchControlTextChecked,
   StyledSwitchControlTextUnchecked,
 } from '../styled';
-import { SwitchControlProps } from '../SwitchControl';
-import { StyledOverloadCssProps } from '../../../declarations';
-import { Flex, FlexProps } from '../../Flex';
-import { getSpacingPropCss } from '../../../helpers';
-import { useTheme } from 'styled-components';
 
 export interface SwitchControlTextProps
   extends FlexProps,
-    Pick<SwitchControlProps, 'checked'>,
+    Pick<BaseSwitchControlProps, 'checked'>,
     StyledOverloadCssProps {
   /** Optional content to be included inside the switch track when it's checked */
   checkedContent?: React.ReactNode;

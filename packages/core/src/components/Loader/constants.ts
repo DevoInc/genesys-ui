@@ -2,12 +2,12 @@ import type {
   ContextualScrollLoaderSize,
   ContextualScrollLoaderType,
   LoaderSize,
+  TLoaderGradientPosition,
 } from './declarations';
-import type { LoaderGradientContainerProps } from './components/LoaderGradientContainer';
-import { ProgressBarSize } from '../ProgressBar/declarations';
-import { SpinnerSize } from '../SpinnerLoader/constants';
-import { BaseSize } from '../../declarations';
-import { OverlayProps } from '../Overlay';
+import type { ProgressBarSize } from '../ProgressBar/declarations';
+import type { SpinnerSize } from '../SpinnerLoader/constants';
+import type { BaseSize } from '../../declarations';
+import type { OverlayProps } from '../Overlay';
 
 export const LOADER_SIZE_PROGRESS_AND_SPINNER: {
   [key in LoaderSize]: { progress: ProgressBarSize; spinner: SpinnerSize };
@@ -38,7 +38,7 @@ export const CONTEXTUAL_SCROLL_LOADER_SIZE_MAP: {
 } as const;
 
 export const POSITION_GRADIENT_DIR_MAP: {
-  [key in LoaderGradientContainerProps['position']]: LoaderGradientContainerProps['position'];
+  [key in TLoaderGradientPosition]: TLoaderGradientPosition;
 } = {
   top: 'bottom',
   right: 'left',
@@ -47,7 +47,7 @@ export const POSITION_GRADIENT_DIR_MAP: {
 } as const;
 
 export const POSITION_GRADIENT_FLEX_DIR_MAP: {
-  [key in LoaderGradientContainerProps['position']]: OverlayProps['flexDirection'];
+  [key in TLoaderGradientPosition]: OverlayProps['flexDirection'];
 } = {
   top: 'column',
   right: 'row',
@@ -56,7 +56,7 @@ export const POSITION_GRADIENT_FLEX_DIR_MAP: {
 } as const;
 
 export const POSITION_GRADIENT_FLEX_JUSTIFY_MAP: {
-  [key in LoaderGradientContainerProps['position']]: OverlayProps['justifyContent'];
+  [key in TLoaderGradientPosition]: OverlayProps['justifyContent'];
 } = {
   top: 'flex-start',
   right: 'flex-end',

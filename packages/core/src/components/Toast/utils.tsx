@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button, ButtonProps } from '../';
+import { Button, type ButtonProps } from '../Button';
 import { ToastHeader, ToastHeaderProps } from './components/ToastHeader';
 import { ToastAction, ToastStatus } from './declarations';
 

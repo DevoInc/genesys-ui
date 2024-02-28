@@ -1,6 +1,6 @@
-import { UseEditorParams } from './useEditor';
+import type { IUseEditorParams } from './declarations';
 
-export const defaultOptions: UseEditorParams['options'] = {
+export const defaultOptions: IUseEditorParams['options'] = {
   automaticLayout: true,
   // Fixes Windows cursor problems
   disableMonospaceOptimizations: true,

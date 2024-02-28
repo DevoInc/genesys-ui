@@ -7,17 +7,18 @@ import {
   POSITION_GRADIENT_FLEX_JUSTIFY_MAP,
 } from '../constants';
 
-import { CmpSpacing } from '../../../declarations';
+import type { CmpSpacing } from '../../../declarations';
+import type { TLoaderGradientPosition } from '../declarations';
 
 import { Box } from '../../Box';
-import { Overlay, OverlayProps } from '../../Overlay';
+import { Overlay, type OverlayProps } from '../../Overlay';
 
 export interface LoaderGradientContainerProps
   extends Omit<
     OverlayProps,
     'alignItems' | 'justifyContent' | 'hasInteractionBehind' | 'position'
   > {
-  position?: 'top' | 'right' | 'bottom' | 'left';
+  position?: TLoaderGradientPosition;
   spinnerOffset?: CmpSpacing;
 }
 

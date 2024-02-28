@@ -1,7 +1,8 @@
 import * as React from 'react';
 
+import { TLegendPosition } from '../declarations';
+
 import { Flex } from '../../Flex';
-import type { FormGroupProps } from '../../Form/components';
 import { Typography } from '../../Typography';
 import { Field, type FieldProps, type FieldLabelProps } from '../../Field';
 
@@ -13,12 +14,12 @@ import {
 export interface FormLegendProps
   extends StyledFormLegendContainerProps,
     Pick<FieldProps, 'helper'>,
-    Pick<FieldLabelProps, 'requiredMark'>,
-    Pick<FormGroupProps, 'legendPosition'> {
+    Pick<FieldLabelProps, 'requiredMark'> {
   /** If it's rendered as a legend HTML tag. */
   asLegend?: boolean;
   /** If the form group legend has label format. Usually when the form group is a checkbox or radio group. */
   hasLabelFormat?: boolean;
+  legendPosition?: TLegendPosition;
   /** The text of the legend. */
   text: string;
 }

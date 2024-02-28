@@ -2,8 +2,8 @@ import * as React from 'react';
 import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
-import { Flex, FlexProps } from '../../Flex';
-import { FieldSize, FieldStatus } from '../../../declarations';
+import { Flex, type FlexProps } from '../../Flex';
+import type { FieldSize, FieldStatus } from '../../../declarations';
 import { getPxFromRem } from '../../../helpers';
 import {
   switchControlContainerMixin,

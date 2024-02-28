@@ -4,6 +4,8 @@ import * as React from 'react';
 import { Box } from '../../Box';
 import { Flex, type FlexProps } from '../../Flex';
 import { FormDistributor } from './FormDistributor';
+import { formGroupSpacingMixin } from './helpers';
+import { useTheme } from 'styled-components';
 
 export interface FormButtonsProps
   extends GlobalAttrProps,
@@ -26,6 +28,7 @@ export const FormButtons: React.FC<FormButtonsProps> = ({
   marginLeft,
   ...nativeProps
 }) => {
+  const theme = useTheme();
   return (
     <Flex
       {...nativeProps}
@@ -38,6 +41,7 @@ export const FormButtons: React.FC<FormButtonsProps> = ({
       marginTop={marginTop}
       marginLeft={marginLeft}
       gap="cmp-md"
+      styles={formGroupSpacingMixin(theme)}
     >
       {helper && (
         <Box

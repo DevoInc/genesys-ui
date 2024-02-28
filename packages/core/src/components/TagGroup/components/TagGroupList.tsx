@@ -2,8 +2,9 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { Flex, FlexProps, TagProps } from '../../';
-import { CommonTagGroupProps } from '../declarations';
+import { Flex, type FlexProps } from '../../Flex';
+import type { TagProps } from '../../Tag';
+import type { CommonTagGroupProps } from '../declarations';
 
 import { tagGroupFlexSpacingMixin } from '../helpers';
 

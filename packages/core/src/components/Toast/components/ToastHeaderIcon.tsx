@@ -2,7 +2,7 @@ import * as React from 'react';
 import { concat } from 'lodash';
 import { css, useTheme } from 'styled-components';
 
-import { Icon, IconProps } from '../../Icon';
+import { Icon, type IconProps } from '../../Icon';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ToastHeaderIconProps extends IconProps {}

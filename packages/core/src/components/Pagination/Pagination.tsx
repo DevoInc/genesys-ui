@@ -1,19 +1,19 @@
 import * as React from 'react';
 
+import type { StyledOverloadCssPropsWithRecord } from '../../declarations/styled';
 import {
   defaultTexts,
-  HideParts,
-  PaginationCommonInterface,
+  type HideParts,
+  type PaginationCommonInterface,
 } from './declarations';
+
+import { Label } from '../Label';
 import {
   PaginationContainer,
-  PaginationContainerProps,
-  PaginationNav,
-  PaginationRange,
-} from './components';
-import { StyledOverloadCssPropsWithRecord } from '../../declarations';
-
-import { Label } from '../';
+  type PaginationContainerProps,
+} from './components/PaginationContainer';
+import { PaginationNav } from './components/PaginationNav';
+import { PaginationRange } from './components/PaginationRange';
 
 const defaultHideParts = {
   infoLabel: false,

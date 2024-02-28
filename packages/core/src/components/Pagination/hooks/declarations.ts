@@ -1,4 +1,4 @@
-import { Item } from '../declarations';
+export type IPaginationItem = string | number;
 
 export interface IPaginationInfo {
   readonly page: number;
@@ -6,7 +6,7 @@ export interface IPaginationInfo {
   readonly pageFirstItem: number;
   readonly pageLastItem: number;
   readonly totalItems: number;
-  readonly pageData: Item[];
+  readonly pageData: IPaginationItem[];
   readonly pageSize: number;
   readonly pageSizeOptions: number[];
   setPageSize: (value: number) => void;
@@ -18,7 +18,7 @@ export interface IPaginationInfo {
 }
 
 interface IUsePaginationParams {
-  list: Item[];
+  list: IPaginationItem[];
   conf: {
     initialPageSize: number;
     initialPage?: number;
