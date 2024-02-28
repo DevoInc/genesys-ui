@@ -102,6 +102,9 @@ jobs:
       - name: Run unit tests
         run: npm run test:ci
 
+      - name: Run dpdm (circular dependencies)
+        run: npm run dpdm
+
   deploy:
     needs: [lint, test]
     if: github.ref == 'refs/heads/master'
