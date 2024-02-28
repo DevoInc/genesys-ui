@@ -1,8 +1,11 @@
 import * as React from 'react';
 
-import { TableProps } from '../core/Table';
+import { ITable } from '../declarations';
 
-export const TableContext = React.createContext<TableProps>({
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface TableContextProps extends ITable {}
+
+export const TableContext = React.createContext<TableContextProps>({
   density: 'default',
   data: [],
   striped: false,

@@ -1,10 +1,6 @@
 import * as React from 'react';
 
 import { DateContext } from './valueFormatters/date';
-import { FilterProps } from './filters/declarations';
-import { CellRendererProps } from './renderers/declarations';
-import { CellEditorProps } from './editors/declarations';
-import { HeaderRendererProps } from './headerRenderers/declarations';
 
 export type Density = 'default' | 'compact' | 'comfortable';
 
@@ -95,4 +91,59 @@ export interface SizesConfig {
     horPad: number;
     verPad: number;
   };
+}
+
+export type FilterValue = {
+  [key: string]: unknown;
+};
+
+export type FilterProps = {
+  colDef?: ColDef;
+  data?: Data;
+  onChange: (value: FilterValue, type: string) => void;
+};
+
+export type FilterContext = {
+  filterValue: FilterValue;
+  showAdvancedFilter: boolean;
+  showReset: boolean;
+};
+
+export type CellRendererProps = {
+  value: unknown;
+  colDef: ColDef;
+  rowIndex: number;
+};
+
+export type HeaderRendererProps = {
+  colDef: ColDef;
+};
+
+export type CellEditorProps = {
+  value?: unknown;
+  onChange?: (value: unknown) => void;
+  colDef?: ColDef;
+  rowIndex: number;
+};
+
+export interface ITable {
+  data: Data;
+  colDefs?: ColDef[];
+  defaultColDef?: DefaultColDef;
+  columnPresets?: Preset[];
+  context?: {
+    [key: string]: unknown;
+  };
+  density?: Density;
+  striped?: boolean;
+  maxHeight?: React.CSSProperties['maxHeight'];
+  minWidth?: number;
+  minHeight?: number;
+  rowHeight?: number;
+  resizableColumns?: boolean;
+  highlightColumnsOnHover?: boolean;
+  texts?: TextsType;
+  showFilters?: boolean;
+  onSort?: (colDef: ColDef) => void;
+  onFilter?: (colDef: ColDef, value: FilterValue, type: string) => void;
 }

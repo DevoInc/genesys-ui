@@ -18,7 +18,6 @@ export const FormDistributor: React.FC<FormDistributorProps> = ({
   itemsGap = 'md',
   ...flexProps
 }) => {
-  const childrenArr = Array.isArray(children) ? children : [children];
   return (
     <Flex
       {...flexProps}
