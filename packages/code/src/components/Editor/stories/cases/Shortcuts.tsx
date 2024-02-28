@@ -2,7 +2,7 @@ import * as React from 'react';
 import { saveAs } from 'file-saver';
 import * as monaco from 'monaco-editor-core';
 
-import { Editor, EditorProps } from '../../';
+import { Editor, type EditorProps } from '../../Editor';
 
 export const Shortcuts = ({ ...props }: Partial<EditorProps>) => {
   const registerShortcuts = (editor: monaco.editor.IStandaloneCodeEditor) => {

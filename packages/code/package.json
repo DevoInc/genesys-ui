@@ -51,6 +51,7 @@
     "access": "public"
   },
   "devDependencies": {
+    "@types/file-saver": "^2.0.7",
     "file-saver": "^2.0.5"
   }
 }
