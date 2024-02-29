@@ -1,54 +1,45 @@
 import styled, { css } from 'styled-components';
 import { camelCase } from 'lodash';
 
-import icons from '@devoinc/genesys-icons/dist/icon-variables.js';
-
 import { AVATAR_SIZE_BORDER_MAP } from '../constants';
 import {
-  AvatarColorScheme,
-  AvatarFit,
-  AvatarSize,
-  AvatarVariant,
-  CustomSize,
+  TAvatarColorScheme,
+  TAvatarFit,
+  TAvatarSize,
+  TAvatarVariant,
+  TAvatarCustomSize,
 } from '../declarations';
 
-import { getAvatarSizeConfig, getVariantValue } from '../utils';
+import { getAvatarSizeConfig } from '../utils';
 
-import {
-  iconFontMixin,
-  pseudoElementOverlayMixin,
-  typoMixin,
-} from '../../../styled/';
+import { typoMixin } from '../../../styled/';
 
 export interface StyledAvatarContainerProps {
   /** If the Avatar has a border to differentiate it from the background. */
   bordered?: boolean;
   /** Color scheme: background color, text color, badge color scheme... etc. */
-  colorScheme?: AvatarColorScheme;
+  colorScheme?: TAvatarColorScheme;
   /** The custom size (width and height) defined by an object.
    * If the variable square is defined, then it's assigned that value to the width and to the height. */
-  customSize?: CustomSize;
+  customSize?: TAvatarCustomSize;
   /** If the Avatar has visual styles as disabled, and it gets that attribute if it's clickable. */
   $disabled?: boolean;
-  /** Icon to be shown on hover-focus of the avatar.E.g. a pencil icon to denotate it's editable. */
-  iconOnHover?: string;
   /** The way of the background image fits the space */
-  imageFit?: AvatarFit;
+  imageFit?: TAvatarFit;
   /** Path of the image file. */
   imageSrc?: string;
   /** The size of the avatar: a group of predefined width-height squared combinations. */
-  size?: AvatarSize;
+  size?: TAvatarSize;
   /** If the Avatar is clickable as a button or link. */
   isClickable?: boolean;
   /** The shape variant of the avatar: circular, square... etc. */
-  variant?: AvatarVariant;
+  variant?: TAvatarVariant;
 }
 
 export const StyledAvatarContainer = styled.span<StyledAvatarContainerProps>`
   ${({
     colorScheme,
     customSize,
-    iconOnHover,
     imageFit,
     imageSrc,
     isClickable,
@@ -69,9 +60,6 @@ export const StyledAvatarContainer = styled.span<StyledAvatarContainerProps>`
       circle: '50%',
       rounded: '0.4rem',
     };
-    const variantValue = getVariantValue(variant);
-    // TODO: remove iconOnHoverEval after the QUV-2059 ticket is finished
-    const iconOnHoverEval = iconOnHover?.replace('gi-', '');
     return css`
       ${typoMixin({ theme })};
       display: inline-flex;
@@ -109,39 +97,6 @@ export const StyledAvatarContainer = styled.span<StyledAvatarContainerProps>`
           ${size ? AVATAR_SIZE_BORDER_MAP[size] : AVATAR_SIZE_BORDER_MAP.md}
           ${aliasTokens.color.border.separator.base.strongest}`
         : 'none'};
-
-      ${!$disabled &&
-      isClickable &&
-      css`
-        &::after {
-          // TODO: remove iconOnHoverEval after the QUV-2059 ticket is finished
-          ${pseudoElementOverlayMixin({
-            content: `'${icons[iconOnHoverEval] || ''}'`,
-          })};
-          ${iconFontMixin()};
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          transition: all ease 0.2s;
-          border-radius: ${variantValue};
-          background-color: transparent;
-          color: #eee;
-          font-size: 0.4rem;
-          opacity: 0;
-        }
-
-        &:hover::after,
-        &:focus::after {
-          background-color: rgba(0, 0, 0, 0.36);
-          opacity: 1;
-          font-size: 2rem;
-        }
-
-        &:focus,
-        &:focus-visible {
-          box-shadow: ${theme.alias.elevation.boxShadow.base.focused};
-        }
-      `}
     `;
   }}
 `;

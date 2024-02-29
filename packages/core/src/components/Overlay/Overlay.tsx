@@ -9,6 +9,7 @@ import {
 import { overlayMixin, OverlayMixinProps } from './helpers';
 
 import { Flex, FlexProps } from '../Flex';
+import { concat } from 'lodash';
 
 export interface OverlayProps
   extends Omit<FlexProps, 'opacity'>,
@@ -44,8 +45,7 @@ export const Overlay: React.FC<OverlayProps> = ({
       flexWrap={flexWrap}
       justifyContent={justifyContent}
       padding={padding}
-      styles={
-        styles ||
+      styles={concat(
         overlayMixin({
           bgColor,
           bgColorScheme,
@@ -54,8 +54,9 @@ export const Overlay: React.FC<OverlayProps> = ({
           hasInteractionBehind,
           opacity: opacity > 1 ? 1 : opacity,
           theme,
-        })
-      }
+        }),
+        styles,
+      )}
       tooltip={tooltip}
       zIndex={zIndex}
     >

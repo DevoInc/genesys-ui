@@ -13,6 +13,10 @@ import {
 } from '../../../declarations';
 
 import { StyledAvatarContainer, StyledAvatarContainerProps } from '../styled';
+import { Overlay } from '../../Overlay';
+import { avatarBackdropMixin } from './mixins';
+import { useTheme } from 'styled-components';
+import { Icon } from '../../Icon';
 
 export interface AvatarContainerProps
   extends Omit<StyledAvatarContainerProps, '$disabled'>,
@@ -27,6 +31,8 @@ export interface AvatarContainerProps
     MouseEventAttrProps {
   disabled?: boolean;
   children: React.ReactNode;
+  /** Icon to be shown on hover-focus of the avatar.E.g. a pencil icon to denote it's editable. */
+  iconOnHover?: React.ReactNode;
 }
 
 export const AvatarContainer: React.FC<AvatarContainerProps> = ({
@@ -34,6 +40,7 @@ export const AvatarContainer: React.FC<AvatarContainerProps> = ({
   children,
   colorScheme = 'neutral',
   href,
+  iconOnHover,
   imageFit = 'cover',
   disabled = false,
   onClick = undefined,
@@ -41,6 +48,7 @@ export const AvatarContainer: React.FC<AvatarContainerProps> = ({
   variant = 'circle',
   ...restProps
 }) => {
+  const theme = useTheme();
   const isClickable = href || onClick;
   return (
     <StyledAvatarContainer
@@ -55,6 +63,15 @@ export const AvatarContainer: React.FC<AvatarContainerProps> = ({
       variant={variant}
       $disabled={disabled}
     >
+      {isClickable && iconOnHover && (
+        <Overlay
+          opacity={0.4}
+          bgColorScheme="dark"
+          styles={avatarBackdropMixin({ theme, variant })}
+        >
+          <Icon size="2rem">{iconOnHover}</Icon>
+        </Overlay>
+      )}
       {children}
     </StyledAvatarContainer>
   );

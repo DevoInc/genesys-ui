@@ -2,6 +2,10 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Avatar, Badge, Modal, Typography } from '../';
+import {
+  GIPencilEdit,
+  GIZoomExpandMaximizeWindow,
+} from '@devoinc/genesys-icons';
 
 const EXAMPLE_AVATAR_IMG = 'https://i.pravatar.cc/300';
 
@@ -104,7 +108,7 @@ export const ButtonEditable: Story = {
     'aria-haspopup': true,
     customSize: { square: '8rem' },
     name: 'Edit profile',
-    iconOnHover: 'gi-pencil_edit',
+    iconOnHover: <GIPencilEdit />,
   },
   render: (args) =>
     ((props) => {
@@ -133,7 +137,7 @@ export const ButtonExpandable: Story = {
     'aria-haspopup': true,
     customSize: { square: '8rem' },
     name: 'Expand avatar image',
-    iconOnHover: 'gi-zoom_expand_maximize_window',
+    iconOnHover: <GIZoomExpandMaximizeWindow />,
     onClick: () => {
       // eslint-disable-next-line no-console
       console.info('Opening lightbox to expand profile image');
@@ -149,7 +153,7 @@ export const Clickable: Story = {
     colorScheme: 'neutral',
     customSize: { square: '12rem' },
     disabled: false,
-    iconOnHover: 'gi-zoom_expand_maximize_window',
+    iconOnHover: <GIZoomExpandMaximizeWindow />,
     imageFit: 'cover',
     imageSrc: EXAMPLE_AVATAR_IMG,
     name: 'Expand avatar image',

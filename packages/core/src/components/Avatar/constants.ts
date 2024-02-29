@@ -1,8 +1,8 @@
-import { AvatarSize, AvatarVariant } from './declarations';
-import { BadgeSize } from '../Badge/declarations';
+import type { TAvatarSize, TAvatarVariant } from './declarations';
+import type { BadgeSize } from '../Badge/declarations';
 
 export const AVATAR_SIZE_BORDER_MAP: {
-  [key in AvatarSize]?: string;
+  [key in TAvatarSize]?: string;
 } = {
   xs: '1px',
   sm: '1px',
@@ -12,7 +12,7 @@ export const AVATAR_SIZE_BORDER_MAP: {
 };
 
 export const AVATAR_SIZE_SQUARE_MAP: {
-  [key in AvatarSize]: string;
+  [key in TAvatarSize]: string;
 } = {
   xxxs: '2rem',
   xxs: '2.4rem',
@@ -26,7 +26,7 @@ export const AVATAR_SIZE_SQUARE_MAP: {
 };
 
 export const AVATAR_SIZE_BADGE_MAP: {
-  [key in AvatarSize]: BadgeSize;
+  [key in TAvatarSize]: BadgeSize;
 } = {
   xxxs: 'sm',
   xxs: 'sm',
@@ -39,7 +39,7 @@ export const AVATAR_SIZE_BADGE_MAP: {
   xxxl: 'lg',
 };
 
-export const VARIANT_VALUES: { [key in AvatarVariant]?: string } = {
+export const VARIANT_VALUES: { [key in TAvatarVariant]?: string } = {
   circle: '50%',
   rounded: '0.4rem',
 };

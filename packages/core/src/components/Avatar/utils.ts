@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { AVATAR_SIZE_SQUARE_MAP, VARIANT_VALUES } from './constants';
-import { AvatarSize, AvatarVariant, CustomSize } from './declarations';
+import { TAvatarSize, TAvatarVariant, TAvatarCustomSize } from './declarations';
 
 /**
  * Get the width and the height for the Avatar
@@ -15,8 +15,8 @@ export const getAvatarSizeConfig = ({
   customSize,
   size,
 }: {
-  customSize: CustomSize;
-  size: AvatarSize;
+  customSize: TAvatarCustomSize;
+  size: TAvatarSize;
 }): {
   width: React.CSSProperties['width'];
   height: React.CSSProperties['height'];
@@ -54,5 +54,5 @@ export const getAvatarInitials = ({
   return nameInitials.toUpperCase().substring(0, 2);
 };
 
-export const getVariantValue = (variant: AvatarVariant) =>
+export const getVariantValue = (variant: TAvatarVariant) =>
   variant ? VARIANT_VALUES[variant] ?? undefined : undefined;

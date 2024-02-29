@@ -1,6 +1,6 @@
 import { PickUnion } from '../../typeFunctions';
 
-import { BaseSize, GlobalSize } from '../../declarations';
+import type { BaseSize, GlobalSize } from '../../declarations';
 
 import {
   BlendColorScheme,
@@ -10,23 +10,23 @@ import {
   NeutralColorScheme,
 } from '../../declarations';
 
-export type AvatarColorScheme =
+export type TAvatarColorScheme =
   | BrandColorScheme
   | NeutralColorScheme
   | BlendColorScheme
   | UIColorScheme
   | DataColorScheme;
 
-export type AvatarSize =
+export type TAvatarSize =
   | BaseSize
   | PickUnion<GlobalSize, 'xxxs' | 'xxs' | 'xs' | 'xl' | 'xxl' | 'xxxl'>;
 
-export type CustomSize = {
+export type TAvatarCustomSize = {
   square?: string;
   width?: string;
   height?: string;
 };
 
-export type AvatarVariant = 'circle' | 'square' | 'rounded';
+export type TAvatarVariant = 'circle' | 'square' | 'rounded';
 
-export type AvatarFit = 'cover' | 'contain';
+export type TAvatarFit = 'cover' | 'contain';

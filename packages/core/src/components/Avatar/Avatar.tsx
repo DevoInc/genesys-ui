@@ -4,14 +4,14 @@ import { AVATAR_SIZE_BADGE_MAP } from './constants';
 
 import {
   AvatarContainer,
-  AvatarContainerProps,
+  type AvatarContainerProps,
   AvatarInitials,
-  AvatarInitialsProps,
+  type AvatarInitialsProps,
   AvatarSROnly,
 } from './components';
 
 import { Box } from '../Box';
-import { Badge, BadgeColorScheme, BadgeSize } from '../Badge';
+import { Badge, type BadgeColorScheme, type BadgeSize } from '../Badge';
 
 export interface AvatarProps
   extends Omit<AvatarContainerProps, 'children' | 'aria-label'>,
