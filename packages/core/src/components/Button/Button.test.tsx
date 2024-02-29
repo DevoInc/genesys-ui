@@ -1,4 +1,6 @@
+import { describe, test, expect, afterEach } from 'vitest';
 import * as React from 'react';
+import { cleanup } from '@testing-library/react';
 
 import { render, screen } from '@test';
 import { Button } from './Button';
@@ -69,6 +71,10 @@ describe('BaseButton', () => {
       expect(
         screen.getByRole('checkbox', { name: 'Selectable button' }),
       ).toBeInTheDocument();
+    });
+
+    afterEach(() => {
+      cleanup();
     });
   });
 });

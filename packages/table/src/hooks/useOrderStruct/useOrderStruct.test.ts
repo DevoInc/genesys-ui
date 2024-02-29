@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { renderHook } from '@testing-library/react';
 
 import { useOrderStruct } from './useOrderStruct';
@@ -15,7 +16,7 @@ describe('getOptionsFromData', () => {
     ['sort none', [], 'c1', [{ id: 'c1', sort: 'asc' }]],
   ];
 
-  it.each(cases)('%s', (_title, initial, id, expected) => {
+  test.each(cases)('%s', (_title, initial, id, expected) => {
     const { result } = renderHook(() => useOrderStruct(initial));
     renderHook(() => result.current.onSort(id));
     expect(result.current.orderStruct).toEqual(expected);

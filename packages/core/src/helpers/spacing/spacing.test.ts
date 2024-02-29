@@ -1,3 +1,5 @@
+import { describe, test, expect } from 'vitest';
+
 import { light as theme } from '@devoinc/genesys-brand-devo';
 
 import { getSpacingPropCss } from './spacing';
@@ -13,7 +15,7 @@ describe('spacing', () => {
       ],
     ];
 
-    it.each(cases)('%s', (_title, spacing, expected) => {
+    test.each(cases)('%s', (_title, spacing, expected) => {
       expect(getSpacingPropCss(theme)(spacing)).toEqual(expected);
     });
   });

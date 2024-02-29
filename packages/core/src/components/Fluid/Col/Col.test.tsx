@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import * as React from 'react';
 
 import { render, screen } from '@test';

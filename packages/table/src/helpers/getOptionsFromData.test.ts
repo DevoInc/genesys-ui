@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { SelectOption } from '@devoinc/genesys-ui';
 
 import type { Data } from '../declarations';
@@ -23,7 +24,7 @@ describe('getOptionsFromData', () => {
     ],
   ];
 
-  it.each(cases)('%s', (_title, data, id, expected) => {
+  test.each(cases)('%s', (_title, data, id, expected) => {
     expect(getOptionsFromData(data, id)).toEqual(expected);
   });
 });

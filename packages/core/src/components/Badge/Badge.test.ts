@@ -1,3 +1,5 @@
+import { describe, test, expect } from 'vitest';
+
 const fn = (a: number, b: number) => a + b;
 
 describe('test example', () => {
@@ -6,7 +8,7 @@ describe('test example', () => {
     ['Case 2', 10, -10, 0],
   ];
 
-  it.each(cases)('%s', (_title, a, b, expected) => {
+  test.each(cases)('%s', (_title, a, b, expected) => {
     expect(fn(a, b)).toEqual(expected);
   });
 });

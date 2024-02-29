@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { addDays } from 'date-fns';
 
 import {
@@ -20,7 +21,7 @@ describe('CalendarHelper', () => {
       ],
     ];
 
-    it.each(cases)('%s', (_title, locale, expected) => {
+    test.each(cases)('%s', (_title, locale, expected) => {
       expect(getWeekDays(locale)).toEqual(expected);
     });
   });
@@ -32,7 +33,7 @@ describe('CalendarHelper', () => {
       ['Feb 28th, 2022 has 28 prev days', new Date(2022, 1, 28).getTime(), 28],
     ];
 
-    it.each(cases)('%s', (_title, ts, expected) => {
+    test.each(cases)('%s', (_title, ts, expected) => {
       expect(getMonthDays(ts)).toHaveLength(expected);
     });
   });
@@ -44,7 +45,7 @@ describe('CalendarHelper', () => {
       ['Feb 28th, 2022 has 1 prev days', new Date(2022, 1, 28).getTime(), 1],
     ];
 
-    it.each(cases)('%s', (_title, ts, expected) => {
+    test.each(cases)('%s', (_title, ts, expected) => {
       expect(getPrevDays(ts)).toEqual(expected);
     });
   });
@@ -56,7 +57,7 @@ describe('CalendarHelper', () => {
       ['Feb 28th, 2022 has 12 prev days', new Date(2022, 1, 28).getTime(), 12],
     ];
 
-    it.each(cases)('%s', (_title, ts, expected) => {
+    test.each(cases)('%s', (_title, ts, expected) => {
       expect(getNextDays(ts)).toEqual(expected);
     });
   });
@@ -175,7 +176,7 @@ describe('CalendarHelper', () => {
       ],
     ];
 
-    it.each(cases)('%s', (_title, params, expected) => {
+    test.each(cases)('%s', (_title, params, expected) => {
       expect(parseDays(params)).toEqual(expected);
     });
   });

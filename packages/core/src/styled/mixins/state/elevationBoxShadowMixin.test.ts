@@ -1,3 +1,5 @@
+import { describe, test, expect } from 'vitest';
+
 import { light as theme } from '@devoinc/genesys-brand-devo';
 
 import { elevationBoxShadowMixin } from './elevationBoxShadowMixin';
@@ -29,7 +31,7 @@ describe('elevationBoxShadowMixin', () => {
     ['raised', 'raised', `box-shadow:${boxShadowTokens.depth.raised};`],
   ];
 
-  it.each(cases)('%s', (_title, elevation, expected) => {
+  test.each(cases)('%s', (_title, elevation, expected) => {
     expect(elevationBoxShadowMixin(theme)(elevation).join('')).toContain(
       expected,
     );

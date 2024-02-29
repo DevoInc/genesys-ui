@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { enUS } from 'date-fns/locale';
 
 import { DateContext, dateFormatter } from './date';
@@ -32,7 +33,7 @@ describe('Table', () => {
   describe('Cell', () => {
     describe('Formatters', () => {
       describe('dateformatter', () => {
-        it.each(cases)('%s', (_title, value, context, expected) => {
+        test.each(cases)('%s', (_title, value, context, expected) => {
           expect(dateFormatter(value, context)).toBe(expected);
         });
       });

@@ -1,3 +1,5 @@
+import { describe, test, expect } from 'vitest';
+
 import { OrderColumn } from './declarations';
 import { updateOrderStruct } from './updateOrderStruct';
 
@@ -25,7 +27,7 @@ describe('updateOrderStruct', () => {
     ],
   ];
 
-  it.each(cases)('%s', (_title, orderStruct, id, expected) => {
+  test.each(cases)('%s', (_title, orderStruct, id, expected) => {
     expect(updateOrderStruct(orderStruct, id)).toStrictEqual(expected);
   });
 });

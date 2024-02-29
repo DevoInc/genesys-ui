@@ -1,3 +1,5 @@
+import { describe, test, expect } from 'vitest';
+
 import { light as theme } from '@devoinc/genesys-brand-devo';
 
 import { elevationBorderRadiusMixin } from './elevationBorderRadiusMixin';
@@ -9,7 +11,7 @@ describe('elevationBorderRadiusMixin', () => {
     ['ground elevation return null', 'ground'],
   ];
 
-  it.each(cases)('%s', (_title, elevation) => {
+  test.each(cases)('%s', (_title, elevation) => {
     expect(elevationBorderRadiusMixin(theme)(elevation)).toBeNull();
   });
 

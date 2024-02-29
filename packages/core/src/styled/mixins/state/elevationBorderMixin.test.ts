@@ -1,3 +1,5 @@
+import { describe, test, expect } from 'vitest';
+
 import { light as theme } from '@devoinc/genesys-brand-devo';
 
 import { elevationBorderMixin } from './elevationBorderMixin';
@@ -34,7 +36,7 @@ describe('elevationBorderMixin', () => {
     ],
   ];
 
-  it.each(cases)('%s', (_title, elevation, expected) => {
+  test.each(cases)('%s', (_title, elevation, expected) => {
     expect(elevationBorderMixin(theme)(elevation).join('')).toContain(expected);
   });
 

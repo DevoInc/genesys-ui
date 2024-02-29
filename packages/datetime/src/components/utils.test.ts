@@ -1,3 +1,5 @@
+import { describe, test, expect } from 'vitest';
+
 import { Datetime } from './declarations';
 import { toTSorPreset, isManageableDate } from './utils';
 
@@ -15,7 +17,7 @@ describe('toTSorPreset', () => {
     ['undefined', undefined, undefined],
   ];
 
-  it.each(cases)('%s', (_title, ts, expected) => {
+  test.each(cases)('%s', (_title, ts, expected) => {
     expect(toTSorPreset(ts)).toBe(expected);
   });
 });
@@ -28,7 +30,7 @@ describe('isManageableDate', () => {
     ['null', null, false],
   ];
 
-  it.each(cases)('%s', (_title, ts, expected) => {
+  test.each(cases)('%s', (_title, ts, expected) => {
     expect(isManageableDate(ts)).toBe(expected);
   });
 });

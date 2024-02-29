@@ -1,4 +1,6 @@
+import { describe, test, expect, afterEach } from 'vitest';
 import * as React from 'react';
+import { cleanup } from '@testing-library/react';
 
 import { render, screen } from '@test';
 import { VFlex } from './VFlex';
@@ -16,5 +18,9 @@ describe('VFlex', () => {
     expect(screen.getByText('test')).toHaveStyle({
       alignItems: 'stretch',
     });
+  });
+
+  afterEach(() => {
+    cleanup();
   });
 });

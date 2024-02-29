@@ -1,5 +1,7 @@
-import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_COLDEF } from './../../constants';
+import { describe, test, expect } from 'vitest';
 import { VirtualItem } from '@tanstack/react-virtual';
+
+import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_COLDEF } from './../../constants';
 import { ColDef, DefaultColDef } from '../../declarations';
 import { getColDefByID, getCollatedColumns } from './columns';
 
@@ -42,7 +44,7 @@ describe('Table', () => {
   describe('Utils', () => {
     describe('Columns', () => {
       describe('getColDefByID', () => {
-        it.each(getColDefByIDCases)(
+        test.each(getColDefByIDCases)(
           '%s',
           (_title, colDefs, virtualColumn, expected) => {
             expect(getColDefByID(colDefs, virtualColumn)).toEqual(expected);
@@ -50,7 +52,7 @@ describe('Table', () => {
         );
       });
       describe('getCollatedColumns', () => {
-        it.each(getCollatedColumnsCases)(
+        test.each(getCollatedColumnsCases)(
           '%s',
           (_title, defaultColDef, column, presets, expected) => {
             expect(getCollatedColumns(defaultColDef, column, presets)).toEqual(

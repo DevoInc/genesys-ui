@@ -1,4 +1,6 @@
+import { describe, test, expect, afterEach } from 'vitest';
 import * as React from 'react';
+import { cleanup } from '@testing-library/react';
 
 import { render, screen } from '@test';
 import { Helper } from './Helper';
@@ -27,5 +29,9 @@ describe('Helper', () => {
     render(<Helper data-testid={TEST_ID} message={null} />);
     expect(screen.getAllByTestId(TEST_ID)[0].children[0].tagName).toBe('P');
     expect(screen.getAllByTestId(TEST_ID)[0].children[0].innerHTML).toBe('');
+  });
+
+  afterEach(() => {
+    cleanup();
   });
 });

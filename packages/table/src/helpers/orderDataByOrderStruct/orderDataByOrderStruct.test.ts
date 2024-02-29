@@ -1,3 +1,5 @@
+import { describe, test, expect } from 'vitest';
+
 import { OrderColumn } from '../../hooks';
 import { Data, Row } from '../../declarations';
 import {
@@ -92,7 +94,7 @@ describe('orderDataByOrderStruct', () => {
     ],
   ];
 
-  it.each(cases)('%s', (_title, data, orderStruct, customSortFns, expected) => {
+  test.each(cases)('%s', (_title, data, orderStruct, customSortFns, expected) => {
     expect(
       data.sort(orderDataByOrderStruct(orderStruct, customSortFns)),
     ).toEqual(expected);
