@@ -17,8 +17,8 @@ export const StyledTableHead = styled.thead<StyledTableHeadProps>`
   width: ${({ $width }) => ($width ? `${$width}px` : '100%')};
 
   ${({ scrolled, theme }) => {
-  const tableHeadRowTokens = theme.cmp.table.headRow;
-  return css`
+    const tableHeadRowTokens = theme.cmp.table.headRow;
+    return css`
       ${scrolled
         ? elevationMixin(theme)('stickyBottom')
         : css`
@@ -28,5 +28,5 @@ export const StyledTableHead = styled.thead<StyledTableHeadProps>`
       z-index: ${getTableZIndexMap(theme).head};
       background-color: ${theme.cmp.table.head.color.background};
     `;
-}}
+  }}
 `;

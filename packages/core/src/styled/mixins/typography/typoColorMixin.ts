@@ -4,14 +4,19 @@ import { isValidColor } from '../../../helpers';
 import { TypoColorScheme } from '../../../components/Typography/constants';
 import { TypoVariant } from './declarations';
 
+type TUITokens = DefaultTheme['alias']['color']['text']['feedback'];
+
 /**
  * Get the UI body color value based in colorScheme of the typographic element
  *
- * @param {Object} uiTokens Object with UI design tokens
- * @param {String} uiColorScheme error, success-weak... etc.
- * @return {String} Color value
+ * @param uiTokens Object with UI design tokens
+ * @param uiColorScheme error, success-weak... etc.
+ * @return Color value
  */
-const getUiTokenValueByColorScheme = (uiTokens, uiColorScheme) => {
+const getUiTokenValueByColorScheme = (
+  uiTokens: TUITokens,
+  uiColorScheme: TypoColorScheme,
+): string => {
   const hyphenPos = uiColorScheme.indexOf('-');
   const isBaseContrast = hyphenPos === -1;
   const uiType = isBaseContrast

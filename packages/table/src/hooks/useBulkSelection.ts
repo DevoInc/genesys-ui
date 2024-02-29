@@ -17,7 +17,11 @@ export const useBulkSelection = ({
   >(initialSelection.length === dataLength);
 
   React.useEffect(() => {
-    if ((bulkSelection.length > 0 && dataLength > 0) && bulkSelection.length === dataLength) {
+    if (
+      bulkSelection.length > 0 &&
+      dataLength > 0 &&
+      bulkSelection.length === dataLength
+    ) {
       setHeaderBulkChecked(true);
     } else if (bulkSelection.length === 0) {
       setHeaderBulkChecked(false);

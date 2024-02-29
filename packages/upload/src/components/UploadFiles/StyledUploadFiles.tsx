@@ -73,9 +73,7 @@ export interface StyledUploadFilesProps {
   showLabelIcon?: boolean;
 }
 
-export const StyledUploadFiles = styled((props) => (
-  <FilePond {...props} />
-))<StyledUploadFilesProps>`
+export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
   ${({ disabled, height, maxHeight, showLabelIcon, theme }) => {
     const aliasTokens = theme.alias;
     const typoTokens = aliasTokens.typographies.typo;

@@ -54,14 +54,14 @@ export const getIconColorSchemeMap = (theme: DefaultTheme) => ({
  */
 export const getIconColor =
   (theme: DefaultTheme) =>
-    ({
-      color,
-      colorScheme,
-    }: {
+  ({
+    color,
+    colorScheme,
+  }: {
     color?: string;
     colorScheme?: AllColorScheme;
   }) => {
-      if (isValidColor(color)) return color;
-      if (colorScheme) return getIconColorSchemeMap(theme)[colorScheme];
-      return 'inherit';
-    };
+    if (isValidColor(color)) return color;
+    if (colorScheme) return getIconColorSchemeMap(theme)[colorScheme];
+    return 'inherit';
+  };

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Typography } from '@devoinc/genesys-ui';
 
-import { CellRendererProps } from '../declarations';
+import type { CellRendererProps } from '../../declarations';
 
 export const TextRenderer: React.FC<CellRendererProps> = ({
   colDef,

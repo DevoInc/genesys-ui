@@ -54,8 +54,8 @@ export const Time: React.FC<TimeProps> = ({
 
   const tmpValue = value ? value : new Date().getTime();
 
-  const [min, setMin] = React.useState(null);
-  const [max, setMax] = React.useState(null);
+  const [min, setMin] = React.useState<string>();
+  const [max, setMax] = React.useState<string>();
 
   React.useEffect(() => {
     setMin(

@@ -13,14 +13,14 @@ export interface StyledInternalEditorProps extends StyledOverloadCssProps {
 
 export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
   ${({
-  $height,
-  lineNumbers = true,
-  readOnly,
-  $width,
-  theme,
-  bordered,
-  minimap,
-}) => css`
+    $height,
+    lineNumbers = true,
+    readOnly,
+    $width,
+    theme,
+    bordered,
+    minimap,
+  }) => css`
     // Variables - Smart Editor - Style
 
     --read-only-bg-color: ${theme.alias.fields.color.background.base.readonly};

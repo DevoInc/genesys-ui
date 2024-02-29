@@ -34,9 +34,9 @@ export interface StyledBlockQuoteProps {
 
 export const StyledBlockQuote = styled.blockquote<StyledBlockQuoteProps>`
   ${({ gutterBottom, size, textAlign, theme }) => {
-  const aliasTokens = theme.alias;
-  const spacingTokens = aliasTokens.space;
-  return css`
+    const aliasTokens = theme.alias;
+    const spacingTokens = aliasTokens.space;
+    return css`
       ${getTypoCss({ variant: 'lead', textAlign, theme, size })};
 
       padding: ${textAlign === 'right'
@@ -61,7 +61,7 @@ export const StyledBlockQuote = styled.blockquote<StyledBlockQuoteProps>`
         color: ${rgba(aliasTokens.color.text.body.weakest, 0.3)};
       }
     `;
-}}
+  }}
 `;
 
 export interface StyledCodeBlockWrapperProps {
@@ -71,9 +71,9 @@ export interface StyledCodeBlockWrapperProps {
 
 export const StyledCodeBlockWrapper = styled.div<StyledCodeBlockWrapperProps>`
   ${({ gutterBottom, theme }) => {
-  const aliasTokens = theme.alias;
-  const spacingTokens = aliasTokens.space;
-  return css`
+    const aliasTokens = theme.alias;
+    const spacingTokens = aliasTokens.space;
+    return css`
       margin-bottom: ${getSpacingPropCss(theme)(gutterBottom)};
       padding: ${spacingTokens.cmp.sm} ${spacingTokens.cmp.md};
       background: ${aliasTokens.color.background.surface.base.raised};
@@ -82,7 +82,7 @@ export const StyledCodeBlockWrapper = styled.div<StyledCodeBlockWrapperProps>`
         margin-bottom: 0;
       }
     `;
-}}
+  }}
 `;
 
 export interface StyledCodeBlockProps {
@@ -99,12 +99,12 @@ export interface StyledCodeBlockProps {
 export const StyledCodeBlock = styled.code<StyledCodeBlockProps>`
   ${({ size, textAlign, theme, truncateLine }) => css`
     ${getTypoCss({
-  variant: 'mono',
-  textAlign,
-  theme,
-  truncateLine,
-  size,
-})};
+      variant: 'mono',
+      textAlign,
+      theme,
+      truncateLine,
+      size,
+    })};
     display: block;
     word-break: break-word;
   `}
@@ -112,16 +112,16 @@ export const StyledCodeBlock = styled.code<StyledCodeBlockProps>`
 
 export const StyledCodeInline = styled.code`
   ${({ theme }) => {
-  const cmpTokens = theme.cmp.codeInline;
-  const typoTokens = theme.alias.typographies.typo;
-  return css`
+    const cmpTokens = theme.cmp.codeInline;
+    const typoTokens = theme.alias.typographies.typo;
+    return css`
       padding: 0 ${theme.alias.space.cmp.xxs};
       border-radius: ${cmpTokens.shape.borderRadius};
       border: ${cmpTokens.shape.border} solid ${cmpTokens.color.border};
       background: ${cmpTokens.color.background};
       font-family: ${typoTokens.fontFamily.mono.fontFaceName};
     `;
-}}
+  }}
 `;
 
 export const StyledDeleted = styled.del`
@@ -165,27 +165,27 @@ export const StyledList = styled.ul<StyledListProps>`
     margin-bottom: ${getSpacingPropCss(theme)(gutterBottom)};
     padding-left: ${theme.alias.space.cmp.md};
     ${() => {
-  if (listStyle === 'ordered')
-    return css`
+      if (listStyle === 'ordered')
+        return css`
           list-style: decimal none outside;
         `;
-  if (listStyle === 'none')
-    return css`
+      if (listStyle === 'none')
+        return css`
           list-style: none;
           padding-left: 0;
         `;
-  return css`
+      return css`
         list-style: disc none outside;
       `;
-}};
+    }};
 
     ${getTypoCss({
-  variant: 'body',
-  colorScheme,
-  textAlign,
-  theme,
-  size,
-})};
+      variant: 'body',
+      colorScheme,
+      textAlign,
+      theme,
+      size,
+    })};
 
     &:last-child {
       margin-bottom: 0;
@@ -214,22 +214,22 @@ export interface StyledParagraphProps {
 
 export const StyledParagraph = styled.p<StyledParagraphProps>`
   ${({
-  colorScheme,
-  gutterBottom,
-  size,
-  textAlign,
-  theme,
-  truncateLine,
-}) => css`
+    colorScheme,
+    gutterBottom,
+    size,
+    textAlign,
+    theme,
+    truncateLine,
+  }) => css`
     margin-bottom: ${getSpacingPropCss(theme)(gutterBottom)};
     ${getTypoCss({
-  variant: 'body',
-  colorScheme,
-  textAlign,
-  theme,
-  truncateLine,
-  size,
-})};
+      variant: 'body',
+      colorScheme,
+      textAlign,
+      theme,
+      truncateLine,
+      size,
+    })};
 
     word-break: break-word;
     &:last-child {
@@ -253,22 +253,22 @@ export interface StyledHeadingProps {
 
 export const StyledHeading = styled.div<StyledHeadingProps>`
   ${({
-  colorScheme,
-  gutterBottom,
-  size = 'h4',
-  textAlign,
-  theme,
-  truncateLine,
-}) => css`
+    colorScheme,
+    gutterBottom,
+    size = 'h4',
+    textAlign,
+    theme,
+    truncateLine,
+  }) => css`
     margin-bottom: ${getSpacingPropCss(theme)(gutterBottom)};
     ${getTypoCss({
-  variant: getHeadingCategoryAndType(size).category,
-  colorScheme,
-  textAlign,
-  theme,
-  truncateLine,
-  size: getHeadingCategoryAndType(size).type,
-})};
+      variant: getHeadingCategoryAndType(size).category,
+      colorScheme,
+      textAlign,
+      theme,
+      truncateLine,
+      size: getHeadingCategoryAndType(size).type,
+    })};
   `}
 `;
 
@@ -287,22 +287,22 @@ export interface StyledLeadProps {
 
 export const StyledLead = styled.p<StyledLeadProps>`
   ${({
-  colorScheme,
-  gutterBottom,
-  size,
-  textAlign,
-  theme,
-  truncateLine,
-}) => css`
+    colorScheme,
+    gutterBottom,
+    size,
+    textAlign,
+    theme,
+    truncateLine,
+  }) => css`
     margin-bottom: ${getSpacingPropCss(theme)(gutterBottom)};
     ${getTypoCss({
-  variant: 'lead',
-  colorScheme,
-  textAlign,
-  theme,
-  truncateLine,
-  size,
-})};
+      variant: 'lead',
+      colorScheme,
+      textAlign,
+      theme,
+      truncateLine,
+      size,
+    })};
     &:last-child {
       margin-bottom: 0;
     }
@@ -324,23 +324,23 @@ export interface StyledCaptionProps {
 
 export const StyledCaption = styled.span<StyledCaptionProps>`
   ${({
-  colorScheme,
-  gutterBottom,
-  size,
-  textAlign,
-  theme,
-  truncateLine,
-}) => css`
+    colorScheme,
+    gutterBottom,
+    size,
+    textAlign,
+    theme,
+    truncateLine,
+  }) => css`
     display: inline-block;
     margin-bottom: ${getSpacingPropCss(theme)(gutterBottom)};
     ${getTypoCss({
-  variant: 'body',
-  colorScheme,
-  textAlign,
-  theme,
-  truncateLine,
-  size,
-})};
+      variant: 'body',
+      colorScheme,
+      textAlign,
+      theme,
+      truncateLine,
+      size,
+    })};
   `}
 `;
 
@@ -358,13 +358,13 @@ interface StyledStringProps {
 
 export const StyledStrong = styled.strong<StyledStringProps>`
   ${({ bolder, theme }) => {
-  const cmpTokens = theme.cmp.strong;
-  return css`
+    const cmpTokens = theme.cmp.strong;
+    return css`
       font-weight: ${bolder
         ? cmpTokens.typo.fontWeight.strong
         : cmpTokens.typo.fontWeight.base};
     `;
-}}
+  }}
 `;
 
 export const StyledSub = styled.sub`

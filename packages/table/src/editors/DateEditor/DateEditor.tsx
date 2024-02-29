@@ -5,7 +5,7 @@ import { DateTimePicker } from '@devoinc/genesys-ui-datetime';
 import { TableContext } from '../../context/TableContext';
 import { ROW_HEIGHT_MD } from '../../constants';
 import { Popover, getPxFromRem } from '@devoinc/genesys-ui';
-import { CellEditorProps } from '../declarations';
+import type { CellEditorProps } from '../../declarations';
 import { useTheme } from 'styled-components';
 
 export const DateEditor: React.FC<CellEditorProps> = ({

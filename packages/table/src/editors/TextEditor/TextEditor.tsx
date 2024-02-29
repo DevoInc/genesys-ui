@@ -3,7 +3,7 @@ import * as React from 'react';
 import { InputControl } from '@devoinc/genesys-ui';
 
 import { TableContext } from '../../context/TableContext';
-import { CellEditorProps } from '../declarations';
+import type { CellEditorProps } from '../../declarations';
 import { ROW_HEIGHT_MD } from '../../constants';
 
 export type ContextTextEditorParams = {

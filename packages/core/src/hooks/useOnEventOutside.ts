@@ -16,6 +16,7 @@ export const useOnEventOutside = ({
   handler,
   references,
 }) => {
+  // eslint-disable-next-line consistent-return
   React.useEffect(() => {
     if (!disabled) {
       const listener = (event) => {

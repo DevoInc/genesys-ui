@@ -1,4 +1,4 @@
-import { colors } from './colors';
+import { colors as defaultColors } from './colors';
 import { Color } from './definitions';
 import { findColorByName } from './getters';
 
@@ -16,4 +16,4 @@ export const isValidColor = (color: string) =>
     color.startsWith('#') ||
     color.startsWith('rgb') ||
     color.startsWith('rgba') ||
-    isValidColorName(colors)(color));
+    isValidColorName(defaultColors)(color));

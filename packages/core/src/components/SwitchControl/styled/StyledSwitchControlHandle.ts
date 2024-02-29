@@ -9,14 +9,14 @@ export interface StyledSwitchControlHandleProps {
 
 export const StyledSwitchControlHandle = styled.span<StyledSwitchControlHandleProps>`
   ${({ $disabled = false, $checked, switchHeight, diameter, theme }) => {
-  const switchTokens = theme.cmp.switchControl;
-  const handlerTokens = switchTokens.handler;
-  const offset = +((switchHeight - diameter) / 2).toFixed(2);
-  const checkedCss = css`
+    const switchTokens = theme.cmp.switchControl;
+    const handlerTokens = switchTokens.handler;
+    const offset = +((switchHeight - diameter) / 2).toFixed(2);
+    const checkedCss = css`
       left: calc(100% - ${offset}px);
       transform: translateX(-100%);
     `;
-  return css`
+    return css`
       content: '';
       position: absolute;
       top: ${offset}px;
@@ -45,5 +45,5 @@ export const StyledSwitchControlHandle = styled.span<StyledSwitchControlHandlePr
         ${checkedCss};
       }
     `;
-}};
+  }};
 `;

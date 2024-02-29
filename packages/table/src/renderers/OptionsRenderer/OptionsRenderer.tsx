@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Box, Tag, TagGroup } from '@devoinc/genesys-ui';
 
-import { CellRendererProps } from '../declarations';
+import type { CellRendererProps } from '../../declarations';
 import { ContextOptions, ContextOption } from '../../facade';
 
 export const OptionsRenderer: React.FC<CellRendererProps> = ({

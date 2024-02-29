@@ -9,7 +9,7 @@ import {
   dateOptions,
   FilterContainer,
 } from '../common';
-import { FilterProps } from '../declarations';
+import type { FilterProps } from '../../declarations';
 
 export const DateFilter: React.FC<FilterProps> = ({ colDef }) => (
   <FilterContainer>

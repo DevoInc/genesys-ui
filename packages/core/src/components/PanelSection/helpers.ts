@@ -66,15 +66,15 @@ export const panelSectionBodyMixin = ({
 }: getPanelSectionBodySpacingProps) => {
   return css`
     padding: ${getPanelSectionBodySpacing({
-    hasScroll,
-    removeSpace,
-    theme,
-  }).contentPadding};
+      hasScroll,
+      removeSpace,
+      theme,
+    }).contentPadding};
     margin: ${getPanelSectionBodySpacing({
-    hasScroll,
-    removeSpace,
-    theme,
-  }).contentMargin};
+      hasScroll,
+      removeSpace,
+      theme,
+    }).contentMargin};
   `;
 };
 

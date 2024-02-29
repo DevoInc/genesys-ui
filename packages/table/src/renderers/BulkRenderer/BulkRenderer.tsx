@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { CheckboxControl } from '@devoinc/genesys-ui';
 
-import { CellRendererProps } from '../declarations';
+import type { CellRendererProps } from '../../declarations';
 import { BulkContext } from '../../facade';
 
 export const BulkRenderer: React.FC<CellRendererProps> = ({

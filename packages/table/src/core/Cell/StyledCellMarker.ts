@@ -17,10 +17,10 @@ export const StyledCellMarker = styled.span`
   }
 
   ${({ theme }) => {
-  const tokens = theme.cmp.table.cellMarker;
-  const square = theme.cmp.table.cellExpandMarker.typo.fontSize;
-  const transitionDuration = tokens.mutation.transitionDuration;
-  return css`
+    const tokens = theme.cmp.table.cellMarker;
+    const square = theme.cmp.table.cellExpandMarker.typo.fontSize;
+    const transitionDuration = tokens.mutation.transitionDuration;
+    return css`
       transition:
         opacity ease ${transitionDuration},
         color ease ${transitionDuration};
@@ -34,5 +34,5 @@ export const StyledCellMarker = styled.span`
         color: ${tokens.color.text.hovered};
       }
     `;
-}}
+  }}
 `;

@@ -94,9 +94,12 @@ describe('orderDataByOrderStruct', () => {
     ],
   ];
 
-  test.each(cases)('%s', (_title, data, orderStruct, customSortFns, expected) => {
-    expect(
-      data.sort(orderDataByOrderStruct(orderStruct, customSortFns)),
-    ).toEqual(expected);
-  });
+  test.each(cases)(
+    '%s',
+    (_title, data, orderStruct, customSortFns, expected) => {
+      expect(
+        data.sort(orderDataByOrderStruct(orderStruct, customSortFns)),
+      ).toEqual(expected);
+    },
+  );
 });

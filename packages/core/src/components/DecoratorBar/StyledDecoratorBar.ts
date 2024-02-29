@@ -12,9 +12,9 @@ export interface StyledDecoratorBarProps {
 
 export const StyledDecoratorBar = styled.div<StyledDecoratorBarProps>`
   ${({ direction, size, theme }) => {
-  const tokensDecoratorBar = theme.cmp.decoratorBar;
+    const tokensDecoratorBar = theme.cmp.decoratorBar;
 
-  return css`
+    return css`
       width: ${direction === 'horizontal'
         ? size
         : tokensDecoratorBar.shape.stroke};
@@ -25,5 +25,5 @@ export const StyledDecoratorBar = styled.div<StyledDecoratorBarProps>`
         ? `linear-gradient(to right, ${tokensDecoratorBar.color.background})`
         : `linear-gradient(to bottom, ${tokensDecoratorBar.color.background})`};
     `;
-}}
+  }}
 `;

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { SelectControl } from '@devoinc/genesys-ui';
 
 import { EditorFloatingWrapper } from '../components';
-import { CellEditorProps } from '../declarations';
+import type { CellEditorProps } from '../../declarations';
 import { ContextOptions, getSelectOptions } from '../../facade';
 
 export const OptionsEditor: React.FC<CellEditorProps> = ({

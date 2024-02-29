@@ -21,8 +21,8 @@ export const Base: Story = {
       const onChange = (event) => {
         const target = event.target as HTMLInputElement;
         if (!target.validity.valid) return;
-        const date = new Date(target.value).getTime();
-        setDate(date);
+        const d = new Date(target.value).getTime();
+        setDate(d);
       };
 
       return (

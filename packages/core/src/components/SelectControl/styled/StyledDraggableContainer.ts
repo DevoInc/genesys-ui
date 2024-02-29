@@ -6,10 +6,10 @@ export interface StyledDraggableContainerProps {
 
 export const StyledDraggableContainer = styled.div<StyledDraggableContainerProps>`
   ${({ isDragging, theme }) => {
-  const colorTokens = theme?.alias?.color;
-  const elevationTokens = theme?.alias?.elevation;
+    const colorTokens = theme?.alias?.color;
+    const elevationTokens = theme?.alias?.elevation;
 
-  return css`
+    return css`
       all: unset;
       position: absolute;
       left: 0;
@@ -30,7 +30,7 @@ export const StyledDraggableContainer = styled.div<StyledDraggableContainerProps
 
       &:hover::before {
         background-color: ${colorTokens?.background?.surface?.backdrop?.base
-    ?.hovered};
+          ?.hovered};
       }
 
       &:focus-visible {
@@ -38,5 +38,5 @@ export const StyledDraggableContainer = styled.div<StyledDraggableContainerProps
         box-shadow: ${elevationTokens?.boxShadow?.base?.focused};
       }
     `;
-}}
+  }}
 `;

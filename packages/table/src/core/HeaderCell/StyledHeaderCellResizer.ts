@@ -22,10 +22,10 @@ export const StyledHeaderCellResizer = styled.span<StyledHeaderCellResizerProps>
   cursor: col-resize;
 
   ${({ density, theme }) => {
-  const grabberTokens = theme.cmp.table.headCellGrabber;
-  const transitionDuration = grabberTokens.mutation.transitionDuration;
-  const separatorTokens = theme.cmp.table.headCellSeparator;
-  return css`
+    const grabberTokens = theme.cmp.table.headCellGrabber;
+    const transitionDuration = grabberTokens.mutation.transitionDuration;
+    const separatorTokens = theme.cmp.table.headCellSeparator;
+    return css`
       z-index: ${theme.alias.elevation.zIndex.depth.overlay};
       transition:
         background-color ${transitionDuration} ease,
@@ -73,5 +73,5 @@ export const StyledHeaderCellResizer = styled.span<StyledHeaderCellResizerProps>
         }
       }
     `;
-}}
+  }}
 `;

@@ -23,8 +23,8 @@ export const LOADER_SIZE_PROGRESS_AND_SPINNER: {
 } as const;
 
 export const CONTEXTUAL_SCROLL_LOADER_SIZE_MAP: {
-  [key in ContextualScrollLoaderType]: {
-    [key in ContextualScrollLoaderSize]: BaseSize;
+  [key1 in ContextualScrollLoaderType]: {
+    [key2 in ContextualScrollLoaderSize]: BaseSize;
   };
 } = {
   progress: {

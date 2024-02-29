@@ -71,9 +71,9 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
       id={id}
       placement={placement}
       arrowConfig={{
-        component: ({ placement, size }) => (
+        component: ({ placement: innerPlacement, size }) => (
           <InlineMessage.Arrow
-            placement={placement}
+            placement={innerPlacement}
             size={size}
             status={status}
           />
@@ -84,18 +84,18 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
       strategy={strategy}
       zIndex={zIndex}
     >
-      {({ toggle, ref, isOpened }) => (
+      {({ toggle, ref, isOpened: innerIsOpened }) => (
         <InlineMessage.Trigger
           ref={ref}
           onClick={toggle}
           aria-activedescendant={id}
-          aria-expanded={isOpened}
+          aria-expanded={innerIsOpened}
           aria-controls={id}
           aria-haspopup="true"
           icon={trigger?.icon}
           id={`${id}__trigger`}
           size={trigger?.size}
-          state={isOpened ? 'expanded' : state}
+          state={innerIsOpened ? 'expanded' : state}
           status={status}
           secondaryText={trigger?.secondaryText}
           text={trigger?.text}
@@ -103,14 +103,23 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
           Trigger={trigger?.Component}
         />
       )}
-      {({ toggle, isOpened, placement, setOpened }) => (
+      {({
+        toggle,
+        isOpened: innerIsOpened,
+        placement: innerPlacement,
+        setOpened,
+      }) => (
         <Popover.Panel
           as={as}
           id={`${id}__content`}
           padding="0"
           role={status === 'error' ? 'alert' : null}
           styles={concat(
-            ...inlineMessageContainerMixin({ placement, status, theme }),
+            ...inlineMessageContainerMixin({
+              placement: innerPlacement,
+              status,
+              theme,
+            }),
             styles,
           )}
           width="auto"
@@ -120,7 +129,7 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
             : typeof children === 'function'
               ? children({
                   toggle,
-                  isOpened,
+                  isOpened: innerIsOpened,
                   setOpened,
                 })
               : null}
