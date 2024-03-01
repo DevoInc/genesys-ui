@@ -14,6 +14,7 @@ import {
 import { DateTime, DateTimeProps } from '../DateTime';
 import { getFormatTimeStr } from '../DateTime/utils/format';
 import { toTimestamp } from '../utils';
+import { GICalendarMonthDayPlannerEvents } from '@devoinc/genesys-icons';
 
 export interface DateTimePickerProps
   extends Omit<DateTimeProps, 'onChange' | 'selectedDates'>,
@@ -51,7 +52,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
     <VFlex alignItems={'stretch'}>
       <InputControl
         aria-label={ariaLabel}
-        icon="gi-calendar_month_day_planner_events"
+        icon={<GICalendarMonthDayPlannerEvents />}
         id={id}
         value={format(date, datetimeFormat)}
         onChange={onChange}

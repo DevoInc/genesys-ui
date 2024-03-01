@@ -17,6 +17,7 @@ import { HFlex } from '../HFlex';
 import { IconButton } from '../IconButton';
 import { Divider } from '../Divider';
 import { Panel, PanelProps } from '../Panel';
+import { GIArrowLeft } from '@devoinc/genesys-icons';
 
 const renderBackwardNavigation = ({
   backwardTooltip,
@@ -34,7 +35,7 @@ const renderBackwardNavigation = ({
     >
       <IconButton
         hasBoldIcon
-        icon="gi-arrow_left"
+        icon={<GIArrowLeft />}
         onClick={onClickBackwardNav}
         tooltip={backwardTooltip}
       />

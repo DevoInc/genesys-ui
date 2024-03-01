@@ -1,15 +1,19 @@
 import { Meta, StoryObj } from '@storybook/react';
+import * as React from 'react';
+import {
+  GIHeartFull,
+  GILikeHeartFavoriteRatingLove,
+} from '@devoinc/genesys-icons';
 
 import { Chip } from '..';
-import * as React from 'react';
 
 const meta: Meta<typeof Chip> = {
   title: 'Components/Form/Chip',
   component: Chip,
   args: {
     children: 'Favorite',
-    icon: 'gi-like_heart_favorite_rating_love',
-    iconSelected: 'gi-heart_full',
+    icon: <GILikeHeartFavoriteRatingLove />,
+    iconSelected: <GIHeartFull />,
     selectionScheme: 'multiple',
     size: 'md',
   },
@@ -27,8 +31,8 @@ export const MultipleControlled: Story = {
       return (
         <Chip
           {...props}
-          icon="gi-like_heart_favorite_rating_love"
-          iconSelected="gi-heart_full"
+          icon={<GILikeHeartFavoriteRatingLove />}
+          iconSelected={<GIHeartFull />}
           onChange={() => setSelected(!selected)}
           state={selected ? 'selected' : 'enabled'}
           value="favorite"
@@ -41,7 +45,7 @@ export const MultipleControlled: Story = {
 
 export const MultipleUncontrolled: Story = {
   args: {
-    icon: 'gi-like_heart_favorite_rating_love',
+    icon: <GILikeHeartFavoriteRatingLove />,
     children: 'Favorite',
   },
 };
@@ -53,8 +57,8 @@ export const SingleControlled: Story = {
       return (
         <Chip
           {...props}
-          icon="gi-like_heart_favorite_rating_love"
-          iconSelected="gi-heart_full"
+          icon={<GILikeHeartFavoriteRatingLove />}
+          iconSelected={<GIHeartFull />}
           name="single"
           onChange={() => setSelected(!selected)}
           selectionScheme="single"
@@ -68,7 +72,7 @@ export const SingleControlled: Story = {
 
 export const SingleUncontrolled: Story = {
   args: {
-    icon: 'gi-like_heart_favorite_rating_love',
+    icon: <GILikeHeartFavoriteRatingLove />,
     children: 'Favorite',
     selectionScheme: 'single',
     name: 'single',
@@ -87,12 +91,9 @@ export const Custom: Story = {
             selectionScheme="multiple"
             state={selected ? 'selected' : 'enabled'}
           />
-          <Chip._Icon
-            iconId={
-              selected ? 'gi-heart_full' : 'gi-like_heart_favorite_rating_love'
-            }
-            styles="font-size: 2rem;"
-          />
+          <Chip._Icon size="2rem">
+            {selected ? <GIHeartFull /> : <GILikeHeartFavoriteRatingLove />}
+          </Chip._Icon>
           <Chip._Content styles="font-style: italic;">Favorite</Chip._Content>
         </Chip._Container>
       );

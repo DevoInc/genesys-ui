@@ -1,6 +1,8 @@
+import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { IconButton } from '../..';
+import { GIHeartFull } from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof IconButton> = {
   title: 'Components/Button/IconButton',
@@ -16,5 +18,8 @@ export default meta;
 type Story = StoryObj<typeof IconButton>;
 
 export const Base: Story = {
-  args: { icon: 'gi-heart_full', tooltip: 'Favourite' },
+  args: {
+    icon: <GIHeartFull />,
+    tooltip: 'Favourite',
+  },
 };

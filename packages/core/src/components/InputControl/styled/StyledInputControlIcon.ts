@@ -1,13 +1,11 @@
 import styled, { css } from 'styled-components';
-import type { FieldSize, FieldStatus } from '../../../declarations/commonProps';
+import type { FieldSize } from '../../../declarations/commonProps';
 import type { InputAttrProps } from '../../../declarations/htmlAttrs';
 import { INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP } from '../constants';
 
 export interface StyledInputControlIconProps {
   /** Size of the input: height, padding, font-size... etc. */
   size?: FieldSize;
-  /** This property defines the status color schema for the input */
-  status?: FieldStatus;
   /** If the icon is related with the input type */
   isTypeIcon?: boolean;
   /** The type of the parent Input */
@@ -15,11 +13,9 @@ export interface StyledInputControlIconProps {
 }
 
 export const StyledInputControlIcon = styled.span<StyledInputControlIconProps>`
-  ${({ isTypeIcon, size = 'md', status = 'base', theme, type }) => {
+  ${({ isTypeIcon, size = 'md', theme, type }) => {
     const fieldTokens = theme.alias.fields;
-    const fieldIconTokens = fieldTokens.icon;
     const position = fieldTokens.space.padding.hor[size];
-    const fs = fieldIconTokens.size.square[size];
     const showPasswordSize =
       theme.cmp.button.size.square[INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP[size]];
 
@@ -32,10 +28,6 @@ export const StyledInputControlIcon = styled.span<StyledInputControlIconProps>`
       z-index: 2;
       transition: all ease 0.3s;
       height: 100%;
-      font-size: ${fs};
-      color: ${status === 'base'
-        ? fieldIconTokens.color.text[status]
-        : status && fieldTokens.color.border[status].enabled};
       pointer-events: none;
 
       ${isTypeIcon

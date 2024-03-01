@@ -4,6 +4,17 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '../Box';
 import { SpinnerLoader } from '../SpinnerLoader';
 import { IconButton } from './IconButton';
+import {
+  GIBookmarkTag,
+  GIBookmarkTagSolid,
+  GIConnectionsLinks,
+  GIFolder,
+  GIHeartFull,
+  GILikeHeartFavoriteRatingLove,
+  GIRealTime,
+  GITextStyleBold,
+  GITimeEdit,
+} from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof IconButton> = {
   title: 'Components/Button/IconButton/Cases',
@@ -22,7 +33,7 @@ export const WithChildren: Story = {
   name: 'With children',
   args: {
     circular: true,
-    icon: 'gi-real_time',
+    icon: <GIRealTime />,
     children: (
       <Box position="absolute" width="100%" height="100%">
         <SpinnerLoader />
@@ -37,7 +48,7 @@ export const AsLink: Story = {
     href: 'https://www.devo.com',
     target: '_blank',
     rel: 'noopener noreferrer',
-    icon: 'gi-connections_links',
+    icon: <GIConnectionsLinks />,
   },
 };
 
@@ -50,7 +61,7 @@ export const WithDropdown: Story = {
         <IconButton
           state={expanded ? 'expanded' : 'enabled'}
           onClick={() => setExpanded(!expanded)}
-          icon="gi-time_edit"
+          icon={<GITimeEdit />}
           hasDropdown
         />
       );
@@ -68,7 +79,9 @@ export const Custom: Story = {
           onClick={() => setExpanded(!expanded)}
           styles="height: 4.8rem; width: 4.8rem;"
         >
-          <IconButton._Icon icon="gi-folder" styles="font-size: 2.8rem;" />
+          <IconButton._Icon style={{ fontSize: '2.8rem' }}>
+            <GIFolder />
+          </IconButton._Icon>
         </IconButton._Container>
       );
     })(),
@@ -79,7 +92,7 @@ export const MultipleUncontrolled: Story = {
   args: {
     selectionScheme: 'multiple',
     value: 'option',
-    icon: 'gi-text_style_bold',
+    icon: <GITextStyleBold />,
   },
 };
 
@@ -94,9 +107,7 @@ export const MultipleControlled: Story = {
       return (
         <IconButton
           {...props}
-          icon={
-            selected ? 'gi-heart_full' : 'gi-like_heart_favorite_rating_love'
-          }
+          icon={selected ? <GIHeartFull /> : <GILikeHeartFavoriteRatingLove />}
           onChange={() => setSelected(!selected)}
           state={selected ? 'selected' : 'enabled'}
         />
@@ -110,7 +121,7 @@ export const SingleUncontrolled: Story = {
     selectionScheme: 'single',
     name: 'option',
     value: 'option',
-    icon: 'gi-bookmark_tag',
+    icon: <GIBookmarkTag />,
   },
 };
 
@@ -127,7 +138,7 @@ export const SingleControlled: Story = {
       return (
         <IconButton
           {...props}
-          icon={selected ? 'gi-bookmark_tag_solid' : 'gi-bookmark_tag'}
+          icon={selected ? <GIBookmarkTagSolid /> : <GIBookmarkTag />}
           onChange={() => setSelected(!selected)}
           state={selected ? 'selected' : 'enabled'}
         />

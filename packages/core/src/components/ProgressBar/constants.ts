@@ -1,27 +1,27 @@
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
+import React from 'react';
 
 import type { ProgressBarSize, ProgressBarStatus } from './declarations';
 import type { GlobalSize, GlobalStatus } from '../../declarations';
-import { STATUS_ICON_MAP as BASE_STATUS_ICON_MAP } from '../../constants';
+import { STATUS_ICON_MAP } from '../../constants';
 
 export const MAX_PERCENT = 100;
 
-export const STATUS_ICON_MAP: {
-  [key in ProgressBarStatus]: keyof typeof iconDictionary;
+export const PROGRESSBAR_STATUS_ICON_MAP: {
+  [key in ProgressBarStatus]: React.ReactNode;
 } = {
   progressing: null,
-  error: BASE_STATUS_ICON_MAP.filled.error,
-  warning: BASE_STATUS_ICON_MAP.filled.warning,
-  complete: BASE_STATUS_ICON_MAP.filled.success,
+  error: STATUS_ICON_MAP.filled.error,
+  warning: STATUS_ICON_MAP.filled.warning,
+  complete: STATUS_ICON_MAP.filled.success,
 } as const;
 
 export const STATUS_ICON_CIRCULAR_MAP: {
-  [key in ProgressBarStatus]: keyof typeof iconDictionary;
+  [key in ProgressBarStatus]: React.ReactNode;
 } = {
   progressing: null,
-  error: BASE_STATUS_ICON_MAP.stroke.error,
-  warning: BASE_STATUS_ICON_MAP.stroke.warning,
-  complete: BASE_STATUS_ICON_MAP.stroke.success,
+  error: STATUS_ICON_MAP.stroke.error,
+  warning: STATUS_ICON_MAP.stroke.warning,
+  complete: STATUS_ICON_MAP.stroke.success,
 } as const;
 
 export const ICON_CIRCULAR_SIZE_MAP: {

@@ -25,6 +25,7 @@ import {
 import { CalendarProps } from '../../Calendar';
 import { Datetime } from '../../declarations';
 import { toTimestamp } from '../../utils';
+import { GIAngleLeft, GIAngleRight } from '@devoinc/genesys-icons';
 
 export interface MonthProps
   extends Pick<CalendarProps, 'maxDate' | 'minDate'>,
@@ -112,7 +113,7 @@ export const Month: React.FC<MonthProps> = ({
           aria-label={ariaLabelPrevMonth}
           colorScheme={'quiet'}
           hasBoldIcon
-          icon="gi-angle_left"
+          icon={<GIAngleLeft />}
           onClick={onClickPrevMonth}
           size={size}
           state={stateMin}
@@ -163,7 +164,7 @@ export const Month: React.FC<MonthProps> = ({
           aria-label={ariaLabelNextMonth}
           colorScheme={'quiet'}
           hasBoldIcon
-          icon="gi-angle_right"
+          icon={<GIAngleRight />}
           onClick={onClickNextMonth}
           size={size}
           state={stateMax}

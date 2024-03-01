@@ -3,6 +3,13 @@ import * as React from 'react';
 import { Popover } from '../../Popover';
 import { Menu } from '../../Menu';
 import { FieldsCombiner } from '../FieldsCombiner';
+import {
+  GIAngleDown,
+  GICalendarMonthDayPlannerEvents,
+  GIReloadRefreshUpdate,
+  GIUserProfileAvatarManMale,
+  GIUserProfileSuccessfulCheckVerified,
+} from '@devoinc/genesys-icons';
 
 export const ElemButton = (
   <FieldsCombiner.Button colorScheme={'accent'}>Send</FieldsCombiner.Button>
@@ -12,7 +19,7 @@ export const ElemIconButton = (
   <FieldsCombiner.IconButton
     colorScheme="accent"
     tooltip="Refresh"
-    icon="gi-reload_refresh_update"
+    icon={<GIReloadRefreshUpdate />}
   />
 );
 
@@ -20,7 +27,7 @@ export const ElemIconButtonDropdown = (
   <FieldsCombiner.IconButton
     colorScheme="accent"
     tooltip="Open options"
-    icon="gi-angle_down"
+    icon={<GIAngleDown />}
   />
 );
 
@@ -36,20 +43,20 @@ export const ElemPopover = (
         state={isOpened ? 'expanded' : undefined}
         tooltip="Open options"
         colorScheme={'accent'}
-        icon="gi-angle_down"
+        icon={<GIAngleDown />}
       />
     )}
     <Popover.Panel>
       <Menu>
         <Menu.Item
           label="Schedule send"
-          icon="gi-calendar_month_day_planner_events"
+          icon={<GICalendarMonthDayPlannerEvents />}
         />
         <Menu.Item
           label="Send to all the domain users"
-          icon="gi-user_profile_successful_check_verified"
+          icon={<GIUserProfileSuccessfulCheckVerified />}
         />
-        <Menu.Item label="Send to all" icon="gi-user_profile_avatar_man_male" />
+        <Menu.Item label="Send to all" icon={<GIUserProfileAvatarManMale />} />
       </Menu>
     </Popover.Panel>
   </Popover>

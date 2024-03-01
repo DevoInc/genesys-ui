@@ -4,6 +4,7 @@ import { cleanup } from '@testing-library/react';
 
 import { render, screen } from '@test';
 import { Button } from './Button';
+import { GIHeartFull } from '@devoinc/genesys-icons';
 
 describe('BaseButton', () => {
   describe('Elements', () => {
@@ -30,13 +31,19 @@ describe('BaseButton', () => {
     test('When is dropdown', () => {
       render(<Button data-testid={'test'} hasDropdown />);
       const button = screen.getByTestId('test');
-      expect(button.getElementsByTagName('i')[0]).toHaveClass('gi-angle_down');
+      expect(button.querySelector('svg')).toHaveAttribute(
+        'data-name',
+        'gi-angle_down',
+      );
     });
 
     test('When has icon', () => {
-      render(<Button data-testid={'test'} icon={'gi-heart_full'} />);
+      render(<Button data-testid={'test'} icon={<GIHeartFull />} />);
       const button = screen.getByTestId('test');
-      expect(button.getElementsByTagName('i')[0]).toHaveClass('gi-heart_full');
+      expect(button.querySelector('svg')).toHaveAttribute(
+        'data-name',
+        'gi-heart_full',
+      );
     });
 
     test('When has children', () => {

@@ -31,7 +31,7 @@
     "@devoinc/eslint-config-devo": "^1.0.2",
     "@devoinc/genesys-base-styles": "^1.2.1",
     "@devoinc/genesys-brand-devo": "^6.3.0",
-    "@devoinc/genesys-icons": "^3.6.0",
+    "@devoinc/genesys-icons": "^3.8.0",
     "@devoinc/genesys-tokens-types": "^6.4.0",
     "@devoinc/holo": "^1.0.5",
     "@devoinc/prettier-config": "^1.0.0",

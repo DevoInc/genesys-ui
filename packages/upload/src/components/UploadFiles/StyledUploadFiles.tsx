@@ -1,8 +1,12 @@
 import * as React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
-import icons from '@devoinc/genesys-icons/dist/icon-variables.js';
-import { linkMixin, scrollbars, disabledMixin } from '@devoinc/genesys-ui';
+import {
+  linkMixin,
+  scrollbars,
+  disabledMixin,
+  getSpacingPropCss,
+} from '@devoinc/genesys-ui';
 
 import { FilePond, registerPlugin } from 'react-filepond';
 
@@ -241,27 +245,14 @@ export const StyledUploadFiles = styled((props) => (
 
       label {
         display: block;
-        padding: 1em 0;
+        padding: ${showLabelIcon ? `${getSpacingPropCss(theme)('layout-md')} 0 1em 0` : '1em 0'} ;
         margin: 0;
         font-size: ${aliasTokens.typo.fontSize.body.md};
         line-height: ${aliasTokens.typo.lineHeight.body.md};
         font-weight: normal;
         text-align: center;
         cursor: ${disabled ? 'not-allowed' : 'pointer'};
-        
-        ${
-          showLabelIcon &&
-          css`
-            &::before {
-              content: '${icons.drag_drop}';
-              position: relative;
-              display: block;
-              font-family: 'gi', sans-serif;
-              font-size: 3rem;
-              line-height: 1.5;
-            }
-          `
-        }
+        padding-top: ${showLabelIcon ? getSpacingPropCss(theme)('layout-md') : null};
       }
     }
 
@@ -307,15 +298,6 @@ export const StyledUploadFiles = styled((props) => (
       };
       color: ${buttonTokens.color.text.blendBase.enabled};
       cursor: pointer;
-
-      svg {
-        width: 1.625em;
-        height: 1.625em;
-      }
-
-      i {
-        font-weight: bold;
-      }
 
       &.filepond--action-remove-item i {
         font-size: 0.9em;

@@ -1,4 +1,7 @@
+import * as React from 'react';
 import { css } from 'styled-components';
+import { ButtonState } from './declarations';
+import { GICheckThick, GIExitClose } from '@devoinc/genesys-icons';
 
 /**
  * Loading animation mixin (css function)
@@ -37,3 +40,10 @@ export const loadingAnimationMixin = ({ colorScheme, loadingType, tokens }) => {
     animation-fill-mode: forwards;
   `;
 };
+
+export const getLoadingStateIcon = (state: ButtonState) =>
+  state === 'loading-success' ? (
+    <GICheckThick />
+  ) : state === 'loading-error' ? (
+    <GIExitClose />
+  ) : null;

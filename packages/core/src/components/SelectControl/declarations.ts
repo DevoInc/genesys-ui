@@ -11,7 +11,7 @@ export type SelectOption = {
   readonly value: string | number;
   readonly label: string;
 
-  readonly icon?: string;
+  readonly icon?: React.ReactNode;
   readonly prependContent?: React.ReactNode;
   readonly bold?: boolean;
   readonly fixed?: boolean;

@@ -50,6 +50,7 @@ export const InternalAvatar: React.FC<AvatarProps> = ({
     bordered={bordered}
     colorScheme={colorScheme}
     disabled={disabled}
+    href={href}
     imageFit={imageFit}
     imageSrc={imageSrc}
     onClick={onClick}

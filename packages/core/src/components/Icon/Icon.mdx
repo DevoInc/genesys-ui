@@ -21,7 +21,18 @@ import { Icon } from '@devoinc/genesys-ui';
 
 ## Basic usage
 
+You have to use the `Icon` component as a wrapper of a React component from `@devoinc/genesys-icons`,
+as `<GIActivity />`, `<GIAngleDown />`... etc.
+
 <Canvas of={Stories.Base} />
+
+## Overwriting props
+
+This wrapper `Icon` use a context which applies default styles based in props, so we can get easily the
+most used sizes, the tokenized colors... etc. but eventually they can be overwritten in the own child component
+from `@devoinc/genesys-icons`:
+
+<Canvas of={Stories.OverwritingProps} />
 
 ## Props
 

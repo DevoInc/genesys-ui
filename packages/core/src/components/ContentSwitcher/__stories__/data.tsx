@@ -1,16 +1,21 @@
 import * as React from 'react';
 import { Link } from '../../Link';
+import {
+  GIActivity,
+  GIFingerprintScanSecurityAccess,
+  GIGaugeDashboardFullFuel,
+} from '@devoinc/genesys-icons';
 
 export const storiesData = [
   {
-    icon: 'gi-activity',
+    icon: <GIActivity />,
     id: 'first',
     label: 'First content',
     content:
       'Tesseract great turbulent clouds globular star cluster trillion citizens of distant epochs Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
   },
   {
-    icon: 'gi-gauge_dashboard_full_fuel',
+    icon: <GIGaugeDashboardFullFuel />,
     id: 'second',
     label: 'Second large content',
     content: (
@@ -27,7 +32,7 @@ export const storiesData = [
     ),
   },
   {
-    icon: 'gi-fingerprint_scan_security_access',
+    icon: <GIFingerprintScanSecurityAccess />,
     id: 'third',
     label: 'Third content',
     content:

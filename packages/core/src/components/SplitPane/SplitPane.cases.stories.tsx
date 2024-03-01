@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { SplitPane } from '.';
+import { Box } from '../Box';
 
 const meta: Meta<typeof SplitPane> = {
   title: 'Components/Layout/SplitPane/Cases',
@@ -26,12 +27,14 @@ export const Nested: Story = {
   },
   render: (args) =>
     ((props) => (
-      <SplitPane {...props}>
-        <SplitPane vertical={true}>
-          <div>Block One</div>
-          <div>Block Two</div>
+      <Box height="60rem">
+        <SplitPane {...props}>
+          <SplitPane vertical={true}>
+            <div>Block One</div>
+            <div>Block Two</div>
+          </SplitPane>
+          <div>Block Three</div>
         </SplitPane>
-        <div>Block Three</div>
-      </SplitPane>
+      </Box>
     ))(args),
 };

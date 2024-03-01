@@ -1,15 +1,6 @@
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
 import { ButtonColorScheme, ButtonSize } from './declarations';
 import { BadgeSize } from '../Badge';
 import { SpinnerColorScheme, SpinnerSize } from '../SpinnerLoader/constants';
-
-export const BUTTON_LOADING_ICON_NAME: Record<
-  string,
-  keyof typeof iconDictionary
-> = {
-  'loading-success': 'gi-check_thick',
-  'loading-error': 'gi-exit_close',
-} as const;
 
 export const BUTTON_BADGE_SIZE_MAP: { [key in ButtonSize]: BadgeSize } = {
   xxs: 'sm',

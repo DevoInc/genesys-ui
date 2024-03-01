@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+import { GICheckThick, GISearchFindZoom } from '@devoinc/genesys-icons';
 
 import { HFlex, IconButton, InputControl, VFlex } from '..';
 
@@ -29,7 +30,7 @@ export const AdvancedUsage: Story = {
           Addon to left
         </InputControl._Addon>
         <InputControl._InnerContainer>
-          <InputControl._Icon icon="gi-check_thick" styles="color: purple;" />
+          <InputControl._Icon icon={<GICheckThick />} styles="color: purple;" />
           <InputControl._Input
             aria-label="story example"
             hasAddonToLeft
@@ -64,7 +65,7 @@ export const SearchType: Story = {
             placeholder="Without type icon"
             type="search"
           />
-          <IconButton icon="gi-search_find_zoom" />
+          <IconButton icon={<GISearchFindZoom />} />
         </HFlex>
       </VFlex>
     ))(),
@@ -75,6 +76,6 @@ export const WithAddonsAndIcons: Story = {
   args: {
     addonToLeft: 'Addon to left',
     addonToRight: 'Addon to right',
-    icon: 'gi-check_thick',
+    icon: <GICheckThick />,
   },
 };

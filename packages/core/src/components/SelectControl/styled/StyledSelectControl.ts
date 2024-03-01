@@ -125,8 +125,10 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
 
             // MENU OPEN
             &--menu-is-open {
-            .${classNamePrefix}__dropdown-indicator i:last-child {
+            .${classNamePrefix}__dropdown-indicator *:last-child {
               transform: rotate(180deg);
+              overflow: visible;
+              transform-origin: center;
             }
           }
         }
@@ -271,16 +273,16 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
               justify-content: center;
               min-width: ${indicatorWidth};
               padding: ${selectTokens.indicator.space.padding};
+              color: ${fieldTokens.color.text[statusEval][state]};
 
-              > i {
+              > * {
                 &:last-child {
+                  transform-origin: center;
                   transition: ${selectTokens.indicator.mutation
                     .transitionDuration};
-                  font-weight: bold;
-                  color: ${fieldTokens.color.text[statusEval][state]};
                 }
 
-                & + i {
+                & + span {
                   margin-left: ${spacingTokens.cmp.xxs};
                 }
               }
@@ -288,10 +290,6 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
 
             &__dropdown-indicator {
               display: ${menuIsOpen && 'none'};
-
-              i {
-                transition: transform 0.4s;
-              }
             }
 
             &__indicator-separator {

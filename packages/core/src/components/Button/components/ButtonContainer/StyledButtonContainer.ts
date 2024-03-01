@@ -1,7 +1,6 @@
+import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { camelCase } from 'lodash';
-
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
 
 import { SelectionScheme } from '../../../../declarations';
 import { ButtonColorScheme, ButtonState, ButtonSize } from '../../declarations';
@@ -17,7 +16,7 @@ export interface StyledButtonContainerProps {
   /** Color scheme: background color, text color, backdrop... etc. */
   colorScheme?: ButtonColorScheme;
   /** Icon Name */
-  icon?: keyof typeof iconDictionary;
+  icon?: React.ReactNode;
   /** Border Radius 50% */
   circular?: boolean;
   /** The button has the dropdown marker. */

@@ -4,6 +4,7 @@ import { concat } from 'lodash';
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 
 import { IconButton, IconButtonProps } from '../../IconButton';
+import { GIExitClose } from '@devoinc/genesys-icons';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IconButtonCloseProps
@@ -40,7 +41,7 @@ export const IconButtonClose = React.forwardRef<
     <IconButton
       {...restIconButtonProps}
       colorScheme="blend-base"
-      icon="gi-exit_close"
+      icon={<GIExitClose />}
       circular
       hasBoldIcon
       ref={ref}

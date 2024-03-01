@@ -6,6 +6,10 @@ import { IconButton, IconButtonProps } from '../../IconButton';
 
 import { StyledInputControlShowPassword } from '../styled/StyledInputControlShowPassword';
 import { FieldSize, StyledOverloadCssProps } from '../../../declarations';
+import {
+  GIEyeViewFilled,
+  GIEyeVisibilityShowVisible,
+} from '@devoinc/genesys-icons';
 
 export interface InputControlShowPasswordProps
   extends StyledOverloadCssProps,
@@ -19,9 +23,7 @@ export const InputControlShowPassword: React.FC<
 > = ({ onClick, showPassword, size, styles }) => (
   <StyledInputControlShowPassword $size={size} css={styles}>
     <IconButton
-      icon={
-        showPassword ? 'gi-eye_view_filled' : 'gi-eye_visibility_show_visible'
-      }
+      icon={showPassword ? <GIEyeViewFilled /> : <GIEyeVisibilityShowVisible />}
       circular
       onClick={onClick}
       size={INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP[size]}

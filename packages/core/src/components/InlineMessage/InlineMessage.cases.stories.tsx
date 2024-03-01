@@ -4,6 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Box, Button, Typography, InlineMessage } from '..';
 import { inlineMessageContentFS } from './__stories__/utils';
 import { lorem, lorem2, lorem3 } from '../../../stories/utils/fillerTexts';
+import { GIRocketSpaceNasa } from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof InlineMessage> = {
   title: 'Components/Feedback/InlineMessage/Cases',
@@ -85,7 +86,7 @@ export const TriggerWithText: Story = {
         <InlineMessage
           {...props}
           trigger={{
-            icon: 'gi-rocket_space_nasa',
+            icon: <GIRocketSpaceNasa />,
             text: 'Text',
             secondaryText: 'secondary text',
           }}

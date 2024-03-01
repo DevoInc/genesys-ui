@@ -17,6 +17,7 @@ import {
 import { DateTime, DateTimeProps } from '../DateTime';
 import { getFormatTimeStr } from '../DateTime/utils/format';
 import { toTimestamp } from '../utils';
+import { GICalendarMonthDayPlannerEvents } from '@devoinc/genesys-icons';
 
 export interface DateTimeFloatingPickerProps
   extends Pick<PopoverProps, 'appendTo' | 'isOpened'>,
@@ -79,7 +80,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
         <div ref={ref}>
           <InputControl
             aria-label={ariaLabel}
-            icon="gi-calendar_month_day_planner_events"
+            icon={<GICalendarMonthDayPlannerEvents />}
             id={id}
             value={value && format(value, datetimeFormat)}
             onChange={onChange}

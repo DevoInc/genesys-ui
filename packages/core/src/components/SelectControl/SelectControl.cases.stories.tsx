@@ -5,6 +5,12 @@ import { Props, PropsValue } from 'react-select';
 import { SelectOption } from './declarations';
 
 import { SelectControl, SelectControlProps } from './SelectControl';
+import {
+  GIAttentionErrorAlertCaution,
+  GICheckOkRounded,
+  GIDeleteExitRemoveCloseRounded,
+  GIInfoRound,
+} from '@devoinc/genesys-icons';
 
 // TODO: QUV-2116 Problem using components as value for options object
 //import { ESFlag, EUFlag, PTFlag, USFlag } from './__stories__/assets';
@@ -50,6 +56,7 @@ export const SingleOption: Story = {
       return (
         <SelectControl
           {...props}
+          //menuIsOpen
           onChange={(opt: SelectOption) => setValue(opt.value)}
           options={[
             { value: 1, label: 'Option one' },
@@ -73,17 +80,17 @@ export const SingleOptionWithIcons: Story = {
           {...props}
           onChange={(opt: SelectOption) => setValue(opt.value)}
           options={[
-            { value: 1, label: 'Option one', icon: 'gi-check_ok_rounded' },
-            { value: 2, label: 'Option two', icon: 'gi-info_round' },
+            { value: 1, label: 'Option one', icon: <GICheckOkRounded /> },
+            { value: 2, label: 'Option two', icon: <GIInfoRound /> },
             {
               value: 3,
               label: 'Option three',
-              icon: 'gi-attention_error_alert_caution',
+              icon: <GIAttentionErrorAlertCaution />,
             },
             {
               value: 4,
               label: 'Option four',
-              icon: 'gi-delete_exit_remove_close_rounded',
+              icon: <GIDeleteExitRemoveCloseRounded />,
             },
           ]}
           value={value}

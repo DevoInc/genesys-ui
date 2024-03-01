@@ -32,7 +32,7 @@ export interface InlineMessageTriggerProps
       TriggerAriaProps,
       'aria-expanded' | 'aria-controls' | 'aria-haspopup'
     > {
-  icon?: string;
+  icon?: React.ReactNode;
   onClick?: TriggerEventAttrProps['onClick'];
   size?: ButtonSize;
   state: ButtonExpandableState;

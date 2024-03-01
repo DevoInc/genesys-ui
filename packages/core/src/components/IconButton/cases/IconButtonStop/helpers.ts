@@ -29,16 +29,9 @@ export const iconButtonStopMixin = ({
   const circle = `calc(${tokens.size.height[size]} - 0.8rem)`;
   return css`
     -webkit-font-smoothing: antialiased;
-
-    i {
-      font-size: ${iconTokens.icon.size.square[size]};
-      color: ${state !== 'disabled' && iconTokens.icon.color.text};
-    }
-
     ${state !== 'loading' &&
     size !== 'xxs' &&
     size !== 'xs' &&
-    size !== 'sm' &&
     css`
       &::after {
         ${pseudoElementMixin};

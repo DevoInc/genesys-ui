@@ -3,15 +3,14 @@ import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
-import { ButtonExpandableState } from '../../../Button';
-import {
-  ICON_BUTTON_STATUS_ICON_PROP_MAP,
-  IconButtonStatusColorScheme,
-} from './constants';
 
-import { iconButtonStatusMixin } from './helpers';
+import type { ButtonExpandableState } from '../../../Button';
+import type { UIColorScheme } from '../../../../declarations';
 
-import { IconButton, IconButtonProps } from '../../IconButton';
+import { iconButtonStatusMixin } from './mixins';
+import { getIconButtonStatusIcon } from './utils';
+
+import { IconButton, type IconButtonProps } from '../../IconButton';
 
 export interface IconButtonStatusProps
   extends Omit<
@@ -33,7 +32,7 @@ export interface IconButtonStatusProps
     | 'target'
     | 'value'
   > {
-  colorScheme?: IconButtonStatusColorScheme;
+  colorScheme?: UIColorScheme;
   state?: ButtonExpandableState;
 }
 
@@ -44,7 +43,7 @@ export const IconButtonStatus = React.forwardRef<
   (
     {
       colorScheme = 'help',
-      icon = ICON_BUTTON_STATUS_ICON_PROP_MAP[colorScheme],
+      icon,
       size = 'md',
       state = 'enabled',
       styles,
@@ -57,7 +56,7 @@ export const IconButtonStatus = React.forwardRef<
       <IconButton
         {...restIconButtonProps}
         colorScheme={colorScheme}
-        icon={icon}
+        icon={icon || getIconButtonStatusIcon(colorScheme)}
         circular
         ref={ref}
         size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}

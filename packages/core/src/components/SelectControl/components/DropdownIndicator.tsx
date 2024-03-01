@@ -1,20 +1,23 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 import {
   components,
   DropdownIndicatorProps as RSDropdownIndicatorProps,
 } from 'react-select';
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
 
 import { STATUS_ICON_MAP } from '../../../constants';
-import { SelectOption } from '../declarations';
-import { InnerSelectControlProps } from '../InnerSelectControl';
+import type { SelectOption } from '../declarations';
+import type { InnerSelectControlProps } from '../InnerSelectControl';
 
 import { showMenuAndDropDown } from '../utils';
+import { getFontSize } from '../../../styled';
 
 import { Icon } from '../../Icon';
+import { GIAngleDown } from '@devoinc/genesys-icons';
+import { Flex } from '../../Flex';
 
 const mapStatusIcon: {
-  [key in RSDropdownIndicatorProps['selectProps']['status']]: keyof typeof iconDictionary;
+  [key in RSDropdownIndicatorProps['selectProps']['status']]: React.ReactNode;
 } = {
   base: '' as RSDropdownIndicatorProps['selectProps']['status'],
   error: STATUS_ICON_MAP.filled.error,
@@ -33,6 +36,11 @@ export const DropdownIndicator = <Option extends SelectOption>({
 }: DropdownIndicatorProps<Option>): React.ReactElement<
   DropdownIndicatorProps<Option>
 > => {
+  const theme = useTheme();
+  const dropdownIconSize = getFontSize({
+    tokens: theme,
+    size: selectProps.size,
+  });
   return (
     showMenuAndDropDown<Option>(selectProps) &&
     components.DropdownIndicator && (
@@ -40,13 +48,15 @@ export const DropdownIndicator = <Option extends SelectOption>({
         {selectProps.status &&
           selectProps.status !== 'base' &&
           !selectProps.hideStatusIcon && (
-            <Icon
-              iconId={mapStatusIcon[selectProps.status]}
-              colorScheme={selectProps.status}
-              size="1.6rem"
-            />
+            <Icon colorScheme={selectProps.status} size="1.6rem">
+              {mapStatusIcon[selectProps.status]}
+            </Icon>
           )}
-        <Icon iconId="gi-angle_down" />
+        <Flex as="span">
+          <Icon size={dropdownIconSize} strong>
+            <GIAngleDown />
+          </Icon>
+        </Flex>
       </components.DropdownIndicator>
     )
   );

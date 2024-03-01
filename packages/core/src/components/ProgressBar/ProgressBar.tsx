@@ -48,7 +48,7 @@ export interface ProgressBarProps
   /** Custom info bellow the progress bar */
   customInfo?: TProgressBarCustomInfo;
   /** Custom icon for progress info */
-  icon?: IconProps['iconId'];
+  icon?: IconProps['children'];
   /** The type of the progress bar: standard or circular */
   type?: ProgressBarType;
 }

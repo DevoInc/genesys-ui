@@ -1,42 +1,10 @@
 import styled, { css } from 'styled-components';
 
-import icons from '@devoinc/genesys-icons/dist/icon-variables.js';
-
-import { iconFontMixin, pseudoElementMixin } from '../../../styled/mixins';
 import { StyledButtonContainer } from '../../Button/components/ButtonContainer/StyledButtonContainer';
 import { StyledChip } from '../../Chip/styled';
 
-const getSortable = (sortable?: boolean) => {
-  if (!sortable) return null;
-  return css`
-    cursor: move;
-
-    &::after {
-      ${pseudoElementMixin({ content: `'${icons.row_drag_drop}'` })}
-      ${iconFontMixin()};
-      transition: opacity 0.1s ease-in-out;
-      transform: translate(0, -50%);
-      opacity: 0.4;
-      left: 0;
-      top: 50%;
-      font-size: 2.2rem;
-      height: 0.8rem;
-      overflow: hidden;
-    }
-
-    &:hover::after,
-    &:focus::after {
-      opacity: 1;
-    }
-  `;
-};
-
-interface StyledSelectChipProps {
-  sortable?: boolean;
-}
-
-export const StyledSelectChip = styled(StyledChip)<StyledSelectChipProps>`
-  ${({ theme, sortable }) => {
+export const StyledSelectChip = styled(StyledChip)`
+  ${({ theme }) => {
     const selectTokens = theme.cmp.select;
     const aliasTokens = theme.alias;
     const chipTokens = selectTokens.chip;
@@ -47,8 +15,6 @@ export const StyledSelectChip = styled(StyledChip)<StyledSelectChipProps>`
       margin: ${chipTokens.space.margin};
       white-space: pre;
       cursor: default;
-
-      ${getSortable(sortable)};
 
       &:hover::before,
       &:focus::before {

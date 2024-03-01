@@ -1,15 +1,20 @@
 import * as React from 'react';
 
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
-
 import { StyledInputControlIcon, StyledInputControlIconProps } from '../styled';
-import { StyledOverloadCssProps } from '../../../declarations';
+import {
+  type FieldStatus,
+  StyledOverloadCssProps,
+} from '../../../declarations';
+import { Icon, IconProps } from '../../Icon';
+import { useTheme } from 'styled-components';
 
 export interface InputControlIconProps
   extends StyledInputControlIconProps,
     StyledOverloadCssProps {
-  /** Name of the Icon from icon library font */
-  icon?: keyof typeof iconDictionary;
+  /** The Icon svg from icon library */
+  icon?: IconProps['children'];
+  /** This property defines the status color schema for the input */
+  status?: FieldStatus;
 }
 
 export const InputControlIcon: React.FC<InputControlIconProps> = ({
@@ -19,14 +24,29 @@ export const InputControlIcon: React.FC<InputControlIconProps> = ({
   size,
   styles,
   type,
-}) => (
-  <StyledInputControlIcon
-    aria-hidden
-    className={icon as string}
-    size={size}
-    status={status}
-    isTypeIcon={isTypeIcon}
-    css={styles}
-    type={type}
-  />
-);
+}) => {
+  const theme = useTheme();
+  const fieldTokens = theme.alias.fields;
+  const fieldIconTokens = fieldTokens.icon;
+  const fs = fieldIconTokens.size.square[size];
+  return (
+    <StyledInputControlIcon
+      aria-hidden
+      size={size}
+      isTypeIcon={isTypeIcon}
+      css={styles}
+      type={type}
+    >
+      <Icon
+        color={
+          status === 'base'
+            ? fieldIconTokens.color.text[status]
+            : status && fieldTokens.color.border[status].enabled
+        }
+        size={fs}
+      >
+        {icon}
+      </Icon>
+    </StyledInputControlIcon>
+  );
+};

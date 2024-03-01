@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { concat } from 'lodash';
-import { css, useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 
 import { Icon, type IconProps } from '../../Icon';
 
@@ -9,21 +8,21 @@ export interface ToastHeaderIconProps extends IconProps {}
 
 export const ToastHeaderIcon: React.FC<ToastHeaderIconProps> = ({
   colorScheme,
-  iconId,
-  styles,
+  children,
+  size,
   ...restIconProps
 }) => {
   const tokensToast = useTheme().cmp.toast;
-  const baseStyles = css`
-    align-items: flex-start;
-    font-size: ${tokensToast.headerIcon.typo.fontSize.md};
-    color: ${tokensToast.headerIcon.color.text[colorScheme]};
-  `;
   return (
     <Icon
       {...restIconProps}
-      iconId={iconId}
-      styles={concat(baseStyles, styles)}
-    />
+      size={size || tokensToast.headerIcon.typo.fontSize.md}
+      style={{
+        alignItems: 'flex-start',
+        color: tokensToast.headerIcon.color.text[colorScheme],
+      }}
+    >
+      {children}
+    </Icon>
   );
 };

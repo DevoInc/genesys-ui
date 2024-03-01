@@ -6,7 +6,11 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import { useDetectScroll } from '../../hooks';
 
-import { GICheckOkRoundedFilled } from '@devoinc/genesys-icons';
+import {
+  GIAutoLayers,
+  GICheckOkRoundedFilled,
+  GIToBack,
+} from '@devoinc/genesys-icons';
 import {
   Box,
   Button,
@@ -98,7 +102,7 @@ export const WithActions: Story = {
       <IconButton
         key={'back'}
         tooltip={'Back'}
-        icon={'gi-to_back'}
+        icon={<GIToBack />}
         onClick={() => {
           action('back clicked');
         }}
@@ -106,7 +110,7 @@ export const WithActions: Story = {
       <IconButton
         key={'layers'}
         tooltip={'Layers'}
-        icon={'gi-auto_layers'}
+        icon={<GIAutoLayers />}
         onClick={() => {
           action('layers clicked');
         }}

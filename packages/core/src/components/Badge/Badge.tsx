@@ -10,6 +10,7 @@ import {
 
 import { BadgeContainer, BadgeContainerProps, BadgeText } from './components';
 import { Icon } from '../Icon';
+import { GICheckThick } from '@devoinc/genesys-icons';
 
 export interface BadgeProps
   extends StyledPolymorphicProps,
@@ -24,7 +25,7 @@ export interface BadgeProps
   /** Tooltip on Badge hover.*/
   tooltip?: string;
   /** Icon as content of the badge.*/
-  icon?: string;
+  icon?: React.ReactNode;
 }
 
 export const InternalBadge: React.FC<BadgeProps> = ({
@@ -52,10 +53,11 @@ export const InternalBadge: React.FC<BadgeProps> = ({
     >
       {!text && icon && (
         <Badge._Icon
-          iconId={icon || 'gi-check_thick'}
           strong={hasBoldIcon}
           size={theme.cmp.badge.icon.size.square[size]}
-        />
+        >
+          {icon || <GICheckThick />}
+        </Badge._Icon>
       )}
       {text && <Badge._Text>{text}</Badge._Text>}
     </Badge._Container>

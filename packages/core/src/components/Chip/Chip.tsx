@@ -16,11 +16,11 @@ export interface ChipProps
     Pick<ChipContentProps, 'children'>,
     ChipHiddenInputProps {
   /** The icon name-id to be rendered at the left of the content.*/
-  icon?: string;
+  icon?: React.ReactNode;
   /** If the icon is rendered with bold style.*/
   hasBoldIcon?: boolean;
   /** The icon when the Chip is selected. It doesn't work in uncontrolled mode. */
-  iconSelected?: string;
+  iconSelected?: React.ReactNode;
 }
 
 export const InternalChip: React.FC<ChipProps> = ({
@@ -69,7 +69,7 @@ export const InternalChip: React.FC<ChipProps> = ({
   value,
 }) => {
   const isSelected = state === 'selected';
-  const iconId = isSelected ? iconSelected : icon;
+  const evalIcon = isSelected ? iconSelected : icon;
   return (
     <Chip._Container
       as={as}
@@ -117,9 +117,11 @@ export const InternalChip: React.FC<ChipProps> = ({
         state={state}
         value={value}
       />
-      {iconId && (
-        <ChipContext.Provider value={{ size, iconId }}>
-          <Chip._Icon iconId={iconId} strong={hasBoldIcon} size={size} />
+      {icon && (
+        <ChipContext.Provider value={{ size, icon }}>
+          <Chip._Icon strong={hasBoldIcon} size={size}>
+            {evalIcon}
+          </Chip._Icon>
         </ChipContext.Provider>
       )}
       <Chip._Content>{children}</Chip._Content>

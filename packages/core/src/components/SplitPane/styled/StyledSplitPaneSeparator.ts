@@ -8,9 +8,9 @@ export interface StyledSplitPaneSeparatorProps {
 
 export const StyledSplitPaneSeparator = styled.div<StyledSplitPaneSeparatorProps>`
   ${({ vertical = false, layoutChanging = false, theme }) => {
-  const aliasTokens = theme.alias;
-  const separatorSize = '1rem';
-  return css`
+    const aliasTokens = theme.alias;
+    const separatorSize = '1rem';
+    return css`
       position: relative;
       display: flex;
       justify-content: center;
@@ -19,24 +19,20 @@ export const StyledSplitPaneSeparator = styled.div<StyledSplitPaneSeparatorProps
       transition: background ease
         ${aliasTokens.mutation.transitionDuration.blink};
       background: ${aliasTokens.color.background.surface.base.raised};
+      color: ${aliasTokens.color.text.body.base};
+
+      &:hover {
+        color: ${aliasTokens.color.text.body.stronger};
+      }
 
       &::before {
         ${pseudoElementOverlayMixin};
-      }
-
-      i {
-        position: relative;
-        color: ${aliasTokens.color.text.body.base};
       }
 
       &:hover {
         &::before {
           background-color: ${aliasTokens.color.background.surface.backdrop.base
             .hovered};
-        }
-
-        i {
-          color: ${aliasTokens.color.text.body.stronger};
         }
       }
 
@@ -72,12 +68,12 @@ export const StyledSplitPaneSeparator = styled.div<StyledSplitPaneSeparatorProps
         width: 100%;
         cursor: row-resize;
 
-        i {
+        svg {
           transform: rotate(90deg);
         }
       `};
 
       border-color: ${aliasTokens.color.border.separator.base.weak};
     `;
-}}
+  }}
 `;

@@ -4,3 +4,4 @@ export * from './styled';
 export * from './typeFunctions';
 export * from './hooks';
 export * from './helpers';
+export * from './utils';

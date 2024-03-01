@@ -8,8 +8,9 @@ import {
   Popover,
 } from '@devoinc/genesys-ui';
 import { FilterContainer, numberOptions, NUMBER_ADDON_MAP } from '../common';
-import type { FilterContext, FilterProps } from '../declarations';
+import type { FilterContext, FilterProps } from '../../declarations';
 import type { NumberFilterValue } from './declarations';
+import { GIExitClose, GIFilter } from '@devoinc/genesys-icons';
 
 export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
   const context = colDef?.context as FilterContext;
@@ -63,23 +64,23 @@ export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
 
       {(context?.showReset ?? true) &&
         (value !== '' || operator !== 'equals') && (
-        <HFlex.Item flex="0 0 auto">
-          <IconButton
-            icon="gi-exit_close"
-            onClick={() => {
-              onChange(
+          <HFlex.Item flex="0 0 auto">
+            <IconButton
+              icon={<GIExitClose />}
+              onClick={() => {
+                onChange(
                   {
                     value: '',
                     operator: 'equals',
                   } as NumberFilterValue,
                   'number',
-              );
-            }}
-            size="sm"
-            colorScheme="quiet"
-          />
-        </HFlex.Item>
-      )}
+                );
+              }}
+              size="sm"
+              colorScheme="quiet"
+            />
+          </HFlex.Item>
+        )}
 
       {(context?.showAdvancedFilter ?? true) && (
         <HFlex.Item flex="0 0 auto">
@@ -89,7 +90,7 @@ export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
                 aria-controls={`text-adv-filter-${colDef.id}`}
                 aria-expanded={isOpened}
                 aria-haspopup="true"
-                icon="gi-filter"
+                icon={<GIFilter />}
                 onClick={toggle}
                 ref={ref}
                 state={isOpened ? 'expanded' : undefined}

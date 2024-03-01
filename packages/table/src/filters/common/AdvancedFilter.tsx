@@ -8,6 +8,7 @@ import {
   Popover,
   PopoverProps,
 } from '@devoinc/genesys-ui';
+import { GIFilter } from '@devoinc/genesys-icons';
 
 type AdvancedFilterProps = {
   children: React.ReactNode;
@@ -30,7 +31,7 @@ export const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
             aria-controls={id}
             aria-expanded={isOpened}
             aria-haspopup="true"
-            icon="gi-filter"
+            icon={<GIFilter />}
             onClick={toggle}
             ref={ref}
             state={isOpened ? 'expanded' : undefined}

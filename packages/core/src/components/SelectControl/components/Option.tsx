@@ -25,7 +25,7 @@ export const Option = <Option extends SelectOption>(
         )}
         <HFlex spacing="cmp-xxs">
           {props.data.prependContent}
-          {props.data.icon && <Icon size="xs" iconId={props.data.icon} />}
+          {props.data.icon && <Icon size="xs">{props.data.icon}</Icon>}
           {props.data.label}
         </HFlex>
       </HFlex>

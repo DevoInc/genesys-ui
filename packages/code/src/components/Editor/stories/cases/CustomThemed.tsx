@@ -3,6 +3,7 @@ import * as React from 'react';
 import { IconButton } from '@devoinc/genesys-ui';
 import { Editor } from '../../Editor';
 import { useEditorTheme } from '../../hooks';
+import { GIHeartFull } from '@devoinc/genesys-icons';
 
 export const CustomThemed = () => {
   const editorTheme = useEditorTheme();
@@ -26,7 +27,7 @@ export const CustomThemed = () => {
         value="I'm being built from my inner parts"
       />
       <Editor.ActionsContainer>
-        <IconButton icon="gi-heart_full" />
+        <IconButton icon={<GIHeartFull />} />
       </Editor.ActionsContainer>
     </Editor.Container>
   );

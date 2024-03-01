@@ -25,7 +25,7 @@ export interface ProgressBarInfoProps
       | 'statusHelper'
       | 'type'
     > {
-  icon?: IconProps['iconId'];
+  icon?: IconProps['children'];
 }
 
 export const ProgressBarInfo: React.FC<ProgressBarInfoProps> = ({
@@ -91,9 +91,10 @@ export const ProgressBarInfo: React.FC<ProgressBarInfoProps> = ({
                     ? ICON_CIRCULAR_SIZE_MAP[size]
                     : ICON_STANDARD_SIZE_MAP[size]
                 }
-                iconId={icon}
                 colorScheme={colorSchemeEval}
-              />
+              >
+                {icon}
+              </Icon>
             </Flex>
           )}
           {!indeterminate && (

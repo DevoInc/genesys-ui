@@ -1,6 +1,12 @@
+import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { OptionsRenderer } from './OptionsRenderer';
+import {
+  GICheckOk,
+  GIErrorWarningAlertAttention,
+  GIExitClose,
+} from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof OptionsRenderer> = {
   title: 'Components/Layout/Table/Renderers/OptionsRenderer',
@@ -39,9 +45,9 @@ export const Icon: Story = {
       id: 'test',
       context: {
         options: {
-          'Item 1': { icon: 'gi-check_ok' },
-          'Item 2': { icon: 'gi-error_warning_alert_attention' },
-          'Item 3': { icon: 'gi-exit_close' },
+          'Item 1': { icon: <GICheckOk /> },
+          'Item 2': { icon: <GIErrorWarningAlertAttention /> },
+          'Item 3': { icon: <GIExitClose /> },
         },
       },
     },

@@ -20,7 +20,6 @@ export default defineConfig({
     rollupOptions: {
       external: [
         '@devoinc/genesys-ui',
-        '@devoinc/genesys-icons/dist/icon-variables',
         'react',
         'react-dom',
         'react/jsx-runtime',

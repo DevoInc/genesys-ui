@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { IconButtonRemove, Tabs } from '..';
+import { GICheckThick } from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof Tabs> = {
   title: 'Components/Navigation/Tabs',
@@ -22,14 +23,14 @@ export const Base: Story = {
       return (
         <Tabs {...props}>
           <Tabs.Item
-            icon="gi-check_thick"
+            icon={<GICheckThick />}
             label="Tiny"
             onClick={() => setActiveTab(0)}
             state={activeTab === 0 ? 'selected' : undefined}
             wide={false}
           />
           <Tabs.Item
-            icon="gi-check_thick"
+            icon={<GICheckThick />}
             label="Tab with a very very long title"
             onClick={() => setActiveTab(1)}
             state={activeTab === 1 ? 'selected' : undefined}

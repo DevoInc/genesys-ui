@@ -1,41 +1,34 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
-import iconDictionary from '@devoinc/genesys-icons/dist/icon-variables.js';
+import type { ButtonSize } from '../../declarations';
+import { Icon, type IconProps } from '../../../Icon';
 
-import { ButtonState } from '../../declarations';
-
-import { StyledButtonIcon, StyledButtonIconProps } from './StyledButtonIcon';
-import {
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-} from '../../../../declarations';
-
-export interface ButtonIconProps
-  extends StyledButtonIconProps,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps {
+export interface ButtonIconProps extends Pick<IconProps, 'strong' | 'style'> {
+  /** Sets padding, line-height, font-size, etc. */
+  size?: ButtonSize;
   /** Icon name/id  */
-  icon?: keyof typeof iconDictionary;
-  /** Sets the color scheme according to component state */
-  state?: ButtonState;
+  children?: React.ReactNode;
 }
 
 export const ButtonIcon: React.FC<ButtonIconProps> = ({
-  as,
-  icon,
-  hasBoldIcon,
+  children,
   size = 'md',
-  state = 'enabled',
-  styles,
-}) => (
-  <StyledButtonIcon
-    aria-hidden={true}
-    as={as}
-    className={icon || 'gi-check_thick'}
-    css={styles}
-    icon={icon}
-    hasBoldIcon={hasBoldIcon}
-    size={size}
-    state={state}
-  />
-);
+  strong,
+  style,
+}) => {
+  const theme = useTheme();
+  return (
+    <Icon
+      size={theme.cmp.button.icon.typo.fontSize[size]}
+      strong={strong}
+      style={{
+        position: 'relative',
+        transition: 'transform ease 0.15s',
+        ...style,
+      }}
+    >
+      {children}
+    </Icon>
+  );
+};

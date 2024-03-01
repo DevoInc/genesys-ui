@@ -7,10 +7,8 @@ import { ButtonSize, ButtonState } from '../../declarations';
 import { SpinnerLoader, SpinnerLoaderProps } from '../../../SpinnerLoader';
 import { ButtonIcon } from '../ButtonIcon';
 
-import {
-  BUTTON_LOADER_SIZE_MAP,
-  BUTTON_LOADING_ICON_NAME,
-} from '../../constants';
+import { BUTTON_LOADER_SIZE_MAP } from '../../constants';
+import { getLoadingStateIcon } from '../../helpers';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ButtonLoaderProps extends Omit<SpinnerLoaderProps, 'size'> {
@@ -38,6 +36,6 @@ export const ButtonLoader: React.FC<ButtonLoaderProps> = ({
       styles={concat(baseStyles, styles)}
     />
   ) : (
-    <ButtonIcon icon={BUTTON_LOADING_ICON_NAME[state]} size={size} />
+    <ButtonIcon size={size}>{getLoadingStateIcon(state)}</ButtonIcon>
   );
 };

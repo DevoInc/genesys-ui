@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
 import { Icon, IconProps } from '../../Icon';
@@ -8,13 +7,13 @@ import { Icon, IconProps } from '../../Icon';
 export interface TagIconProps extends IconProps {}
 
 export const TagIcon: React.FC<TagIconProps> = ({
+  children,
   colorScheme = 'neutral',
   size = 'md',
-  styles,
+  style,
   ...restIconProps
 }) => {
-  const theme = useTheme();
-  const cmpTokens = theme.cmp.tag.icon;
+  const cmpTokens = useTheme().cmp.tag.icon;
   const square = cmpTokens.size.square[size];
   const marginRight = cmpTokens.space.marginRight[size];
   return (
@@ -22,7 +21,12 @@ export const TagIcon: React.FC<TagIconProps> = ({
       {...restIconProps}
       colorScheme={colorScheme}
       size={square}
-      styles={concat(`margin-right: ${marginRight}`, styles)}
-    />
+      style={{
+        marginRight: marginRight,
+        ...style,
+      }}
+    >
+      {children}
+    </Icon>
   );
 };

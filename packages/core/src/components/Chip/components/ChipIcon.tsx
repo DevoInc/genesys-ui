@@ -1,21 +1,15 @@
 import * as React from 'react';
-import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
-
-import { chipIconMixin } from '../helpers';
 
 import { ChipContext } from '../context';
 
 import { Icon, type IconProps } from '../../Icon';
-import type { ChipContainerProps } from '../components/ChipContainer';
 
-export interface ChipIconProps
-  extends Omit<IconProps, 'size'>,
-    Pick<ChipContainerProps, 'size'> {}
+export interface ChipIconProps extends IconProps {}
 
 export const ChipIcon: React.FC<ChipIconProps> = ({
   size = 'md',
-  styles,
+  style,
   ...restIconProps
 }) => {
   const tokens = useTheme().cmp.chip.icon;
@@ -24,7 +18,13 @@ export const ChipIcon: React.FC<ChipIconProps> = ({
     <Icon
       {...context}
       {...restIconProps}
-      styles={concat(chipIconMixin({ size, tokens }), styles)}
+      style={{
+        position: 'relative',
+        fontSize: tokens.typo.fontSize[size],
+        marginLeft: tokens.space.offset[size],
+        marginRight: tokens.space.margin[size],
+        ...style,
+      }}
     />
   );
 };

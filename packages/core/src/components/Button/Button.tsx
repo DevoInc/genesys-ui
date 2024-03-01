@@ -157,7 +157,9 @@ export const InternalButton = React.forwardRef<HTMLElement, ButtonProps>(
               />
             ) : (
               icon && (
-                <ButtonIcon hasBoldIcon={hasBoldIcon} icon={icon} size={size} />
+                <ButtonIcon strong={hasBoldIcon} size={size}>
+                  {icon}
+                </ButtonIcon>
               )
             )}
           </ButtonAddon>

@@ -6,6 +6,7 @@ import { BADGE_COLOR } from '../../../constants';
 import { StepperSize, StepperStatus } from '../../../declarations';
 
 import { Badge, BadgeProps } from '../../../../Badge';
+import { GICheckThick } from '@devoinc/genesys-icons';
 
 export interface StepperItemIndicatorProps extends Omit<BadgeProps, 'size'> {
   size?: StepperSize;
@@ -32,7 +33,7 @@ export const StepperItemIndicator: React.FC<StepperItemIndicatorProps> = ({
     <Badge
       {...restBadgeProps}
       colorScheme={colorScheme || BADGE_COLOR[status]}
-      icon={isCompletedStep ? 'gi-check_thick' : icon}
+      icon={isCompletedStep ? <GICheckThick /> : icon}
       inverse={inverse || status === 'current'}
       size={size}
       styles={concat(baseStyles, styles)}

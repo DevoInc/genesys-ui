@@ -25,7 +25,7 @@ export interface BaseStatusMessageProps
   /** Buttons of the status message */
   buttons: ButtonGroupProps['children'];
   /** Icon for the top of the panel */
-  icon?: string;
+  icon?: React.ReactNode;
   /** If it's true then the content box is not centered and it's scrollable */
   hasLongMessage?: boolean;
   /** The status of the message: error, warning... etc. */
@@ -72,7 +72,7 @@ export const InternalStatusMessage = ({
   }
 
   return (
-    <StatusMessage.Container
+    <StatusMessageContainer
       aria-describedby={ariaDescribedBy}
       aria-details={ariaDetails}
       aria-label={ariaLabel}
@@ -94,31 +94,31 @@ export const InternalStatusMessage = ({
       tooltip={tooltip}
       width={width}
     >
-      <StatusMessage.Icon
+      <StatusMessageIcon
         colorScheme={status === 'base' ? 'stronger' : status}
-        iconId={icon}
         size={iconSize}
-        styles={subcomponentStyles?.icon}
-      />
+      >
+        {icon}
+      </StatusMessageIcon>
       {title && (
-        <StatusMessage.Title styles={subcomponentStyles?.title}>
+        <StatusMessageTitle styles={subcomponentStyles?.title}>
           {title}
-        </StatusMessage.Title>
+        </StatusMessageTitle>
       )}
       {description && (
-        <StatusMessage.Description
+        <StatusMessageDescription
           isLong={hasLongMessage}
           styles={subcomponentStyles?.description}
         >
           {description}
-        </StatusMessage.Description>
+        </StatusMessageDescription>
       )}
       {Array.isArray(buttons) && (
-        <StatusMessage.Buttons styles={subcomponentStyles?.buttons}>
+        <StatusMessageButtons styles={subcomponentStyles?.buttons}>
           {buttons}
-        </StatusMessage.Buttons>
+        </StatusMessageButtons>
       )}
-    </StatusMessage.Container>
+    </StatusMessageContainer>
   );
 };
 

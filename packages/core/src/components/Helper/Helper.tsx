@@ -1,11 +1,7 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import {
-  HELPER_ICON_SIZE_MAP,
-  HELPER_ICON_STATUS_MAP,
-  HELPER_SIZE_SPACE_MAP,
-} from './constants';
+import { HELPER_ICON_SIZE_MAP, HELPER_SIZE_SPACE_MAP } from './constants';
 import {
   GlobalAttrProps,
   GlobalStatus,
@@ -21,6 +17,7 @@ import { Flex } from '../Flex';
 import { HFlex } from '../HFlex';
 import { Icon } from '../Icon';
 import { Typography } from '../Typography';
+import { getHelperStatusIcon } from './utils';
 
 export interface HelperProps
   extends GlobalAttrProps,
@@ -54,16 +51,17 @@ export const Helper: React.FC<HelperProps> = ({
       tooltip={tooltip}
     >
       {hasStatus(status) && (
-        <Flex height={getLineHeight({ tokens, size })}>
+        <Flex height={getLineHeight({ tokens, size })} alignItems="center">
           <Icon
             color={
               iconColorTokens[status][
                 status === 'warning' ? 'strong' : 'stronger'
               ]
             }
-            iconId={HELPER_ICON_STATUS_MAP[status]}
             size={HELPER_ICON_SIZE_MAP[size]}
-          />
+          >
+            {getHelperStatusIcon(status)}
+          </Icon>
         </Flex>
       )}
       {React.isValidElement(message) ? (

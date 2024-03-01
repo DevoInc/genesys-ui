@@ -42,7 +42,7 @@ export interface InlineMessageProps
   tooltip?: string;
   trigger?: {
     Component?: React.ReactNode;
-    icon?: string;
+    icon?: React.ReactNode;
     size?: ButtonSize;
     secondaryText?: string;
     text?: string;

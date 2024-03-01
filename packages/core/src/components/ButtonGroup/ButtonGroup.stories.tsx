@@ -3,6 +3,11 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { ButtonGroup } from './ButtonGroup';
 import { IconButton } from '../IconButton';
+import {
+  GICustomDate,
+  GIPinBookmark,
+  GIReloadRefreshUpdate,
+} from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof ButtonGroup> = {
   title: 'Components/Button/ButtonGroup',
@@ -25,9 +30,9 @@ export const Base: Story = {
   render: (args) =>
     ((props) => (
       <ButtonGroup {...props}>
-        <ButtonGroup.IconButton icon="gi-custom_date" />
-        <ButtonGroup.IconButton icon="gi-reload_refresh_update" />
-        <ButtonGroup.IconButton icon="gi-pin_bookmark" />
+        <ButtonGroup.IconButton icon={<GICustomDate />} />
+        <ButtonGroup.IconButton icon={<GIReloadRefreshUpdate />} />
+        <ButtonGroup.IconButton icon={<GIPinBookmark />} />
       </ButtonGroup>
     ))(args),
 };
@@ -37,13 +42,13 @@ export const WithButtons: Story = {
   render: (args) =>
     ((props) => (
       <ButtonGroup {...props}>
-        <ButtonGroup.Button icon="gi-custom_date" size="lg">
+        <ButtonGroup.Button icon={<GICustomDate />} size="lg">
           Define date
         </ButtonGroup.Button>
-        <ButtonGroup.Button icon="gi-reload_refresh_update">
+        <ButtonGroup.Button icon={<GIReloadRefreshUpdate />}>
           Refresh context
         </ButtonGroup.Button>
-        <ButtonGroup.Button icon="gi-pin_bookmark">
+        <ButtonGroup.Button icon={<GIPinBookmark />}>
           Set as default
         </ButtonGroup.Button>
       </ButtonGroup>
@@ -55,9 +60,9 @@ export const InheritingFromParent: Story = {
   render: (args) =>
     ((props) => (
       <ButtonGroup {...props} colorScheme="info" size="xs">
-        <ButtonGroup.IconButton icon="gi-custom_date" />
-        <ButtonGroup.IconButton icon="gi-reload_refresh_update" />
-        <ButtonGroup.IconButton icon="gi-pin_bookmark" />
+        <ButtonGroup.IconButton icon={<GICustomDate />} />
+        <ButtonGroup.IconButton icon={<GIReloadRefreshUpdate />} />
+        <ButtonGroup.IconButton icon={<GIPinBookmark />} />
       </ButtonGroup>
     ))(args),
 };
@@ -67,9 +72,9 @@ export const SpecificChildPropValue: Story = {
   render: (args) =>
     ((props) => (
       <ButtonGroup {...props} colorScheme="success">
-        <ButtonGroup.IconButton icon="gi-custom_date" />
-        <ButtonGroup.IconButton icon="gi-reload_refresh_update" />
-        <ButtonGroup.IconButton icon="gi-pin_bookmark" colorScheme="error" />
+        <ButtonGroup.IconButton icon={<GICustomDate />} />
+        <ButtonGroup.IconButton icon={<GIReloadRefreshUpdate />} />
+        <ButtonGroup.IconButton icon={<GIPinBookmark />} colorScheme="error" />
       </ButtonGroup>
     ))(args),
 };
@@ -79,10 +84,10 @@ export const Items: Story = {
   render: (args) =>
     ((props) => (
       <ButtonGroup {...props} inline={false} justifyContent="flex-start">
-        <ButtonGroup.IconButton icon="gi-custom_date" />
-        <ButtonGroup.IconButton icon="gi-reload_refresh_update" />
+        <ButtonGroup.IconButton icon={<GICustomDate />} />
+        <ButtonGroup.IconButton icon={<GIReloadRefreshUpdate />} />
         <ButtonGroup.Item marginLeft="auto">
-          <ButtonGroup.IconButton icon="gi-pin_bookmark" />
+          <ButtonGroup.IconButton icon={<GIPinBookmark />} />
         </ButtonGroup.Item>
       </ButtonGroup>
     ))(args),
@@ -93,9 +98,9 @@ export const ItemsWithQuiet: Story = {
   render: (args) =>
     ((props) => (
       <ButtonGroup {...props} colorScheme="quiet">
-        <ButtonGroup.IconButton icon="gi-custom_date" />
-        <ButtonGroup.IconButton icon="gi-reload_refresh_update" />
-        <ButtonGroup.IconButton icon="gi-pin_bookmark" />
+        <ButtonGroup.IconButton icon={<GICustomDate />} />
+        <ButtonGroup.IconButton icon={<GIReloadRefreshUpdate />} />
+        <ButtonGroup.IconButton icon={<GIPinBookmark />} />
       </ButtonGroup>
     ))(args),
 };
@@ -105,9 +110,9 @@ export const ItemsWithQuietOtherComponents: Story = {
   render: (args) =>
     ((props) => (
       <ButtonGroup {...props} colorScheme="success" size="xs">
-        <IconButton icon="gi-custom_date" />
-        <IconButton icon="gi-reload_refresh_update" />
-        <IconButton icon="gi-pin_bookmark" />
+        <IconButton icon={<GICustomDate />} />
+        <IconButton icon={<GIReloadRefreshUpdate />} />
+        <IconButton icon={<GIPinBookmark />} />
       </ButtonGroup>
     ))(args),
 };

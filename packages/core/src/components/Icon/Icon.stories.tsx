@@ -1,6 +1,8 @@
+import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Icon } from './Icon';
+import { GIActivity } from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof Icon> = {
   title: 'Components/Feedback/Icon',
@@ -13,6 +15,12 @@ type Story = StoryObj<typeof Icon>;
 
 export const Base: Story = {
   args: {
-    iconId: 'gi-activity',
+    children: <GIActivity />,
+  },
+};
+
+export const OverwritingProps: Story = {
+  args: {
+    children: <GIActivity size={120} />,
   },
 };

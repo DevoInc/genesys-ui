@@ -1,10 +1,11 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+import { GIMenuAlt } from '@devoinc/genesys-icons';
 
 import { Box, Button, IconButton, Popover } from '@devoinc/genesys-ui';
 
 import { Cell } from './Cell';
-import { CellEditorProps } from '../../editors/declarations';
+import type { CellEditorProps } from '../../declarations';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Layout/Table/Core/Cell',
@@ -45,7 +46,7 @@ export const Editor: Story = {
                 onClick={toggle}
                 ref={ref}
                 state={isOpened ? 'expanded' : undefined}
-                icon="gi-menu_alt"
+                icon={<GIMenuAlt />}
                 tooltip="Open Popover"
               />
             )}

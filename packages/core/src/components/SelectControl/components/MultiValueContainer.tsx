@@ -9,6 +9,10 @@ import { getChipSize } from '../utils';
 import { SelectControlContext } from '../context';
 
 import { StyledSelectChip, StyledDraggableContainer } from '../styled';
+import { Icon } from '../../Icon';
+import { GIRowDragDrop } from '@devoinc/genesys-icons';
+import { css, useTheme } from 'styled-components';
+import { Box } from '../../Box';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MultiValueContainerProps<Option>
@@ -21,6 +25,7 @@ export const MultiValueContainer = <Option extends SelectOption>({
 }: MultiValueContainerProps<Option>): React.ReactElement<
   MultiValueContainerProps<Option>
 > => {
+  const theme = useTheme();
   const id = data.value;
   const {
     attributes,
@@ -50,7 +55,33 @@ export const MultiValueContainer = <Option extends SelectOption>({
           size: selectProps.size,
           chipSize: selectProps.chipSize,
         })}
+        css={css`
+          &:hover > *,
+          &:focus > * {
+            opacity: 1;
+          }
+        `}
       >
+        {selectProps.sortable && (
+          <Box
+            as="span"
+            styles={css`
+              position: absolute;
+              top: 50%;
+              left: 0;
+              opacity: 0.4;
+              height: 0.8rem;
+              overflow: hidden;
+              transform: translate(0, -50%);
+              transition: opacity ease
+                ${theme.alias.mutation.transitionDuration.opacity.md};
+            `}
+          >
+            <Icon size="2.2rem">
+              <GIRowDragDrop />
+            </Icon>
+          </Box>
+        )}
         {selectProps.sortable && (
           <StyledDraggableContainer
             id={id.toString()}

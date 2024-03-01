@@ -3,6 +3,10 @@ import type * as monaco from 'monaco-editor-core';
 
 import { IconButton, ButtonGroup } from '@devoinc/genesys-ui';
 import { DiffEditor, type DiffEditorProps } from '../../DiffEditor';
+import {
+  GIDocumentsFilesPaperTextArchiveCopy,
+  GIPasteClipboard,
+} from '@devoinc/genesys-icons';
 
 export const Actions = ({ ...props }: Partial<DiffEditorProps>) => {
   const editorRef = React.useRef<monaco.editor.IStandaloneDiffEditor>();
@@ -49,13 +53,13 @@ export const Actions = ({ ...props }: Partial<DiffEditorProps>) => {
         <ButtonGroup>
           <IconButton
             key="copy"
-            icon="gi-documents_files_paper_text_archive_copy" // copy
+            icon={<GIDocumentsFilesPaperTextArchiveCopy />} // copy
             onClick={handleCopyToClipboard}
             tooltip="Copy to clipboard"
           />
           <IconButton
             key="paste"
-            icon="gi-paste_clipboard"
+            icon={<GIPasteClipboard />}
             onClick={handlePasteToEditor}
             tooltip="Paste to editor"
           />

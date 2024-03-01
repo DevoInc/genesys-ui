@@ -3,6 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Avatar, Badge, Modal, Typography } from '../';
 import {
+  GIDiamondPrizeAwardJewelleryRing,
   GIPencilEdit,
   GIZoomExpandMaximizeWindow,
 } from '@devoinc/genesys-icons';
@@ -76,7 +77,7 @@ export const WithBadgeIcon: Story = {
       <Badge
         colorScheme={colorScheme}
         size={size}
-        icon="gi-diamond_prize_award_jewellery_ring"
+        icon={<GIDiamondPrizeAwardJewelleryRing />}
       />
     ),
   },
@@ -177,6 +178,7 @@ export const Link: Story = {
     imageSrc: EXAMPLE_AVATAR_IMG,
     name: 'Example',
     onClick: undefined,
+    rel: 'noopener noreferrer',
     size: 'md',
     target: '_blank',
     variant: 'circle',

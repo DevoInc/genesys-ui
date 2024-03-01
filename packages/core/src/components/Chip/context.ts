@@ -4,7 +4,7 @@ import { ChipSize } from './declarations';
 
 export interface ChipContextProps {
   size: ChipSize;
-  iconId?: string;
+  icon?: React.ReactNode;
 }
 
 export const ChipContext = React.createContext<ChipContextProps>({

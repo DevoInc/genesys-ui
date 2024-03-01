@@ -3,6 +3,7 @@ import * as React from 'react';
 import { IconButton } from '@devoinc/genesys-ui';
 import { DiffEditor } from '../../DiffEditor';
 import { useDiffEditorTheme } from '../../hooks';
+import { GIHeartFull } from '@devoinc/genesys-icons';
 
 export const CustomThemed = () => {
   const editorTheme = useDiffEditorTheme();
@@ -27,7 +28,7 @@ export const CustomThemed = () => {
         modifiedValue="I'm being built from scratch"
       />
       <DiffEditor.ActionsContainer>
-        <IconButton icon="gi-heart_full" />
+        <IconButton icon={<GIHeartFull />} />
       </DiffEditor.ActionsContainer>
     </DiffEditor.Container>
   );

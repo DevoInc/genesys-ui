@@ -3,7 +3,11 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Panel, Button, IconButton, Typography } from '..';
 import { TextBlock, TextBlockSM } from './__stories__/helpers';
-import { GIChartFlame } from '@devoinc/genesys-icons';
+import {
+  GIArrowLeft,
+  GIChartFlame,
+  GIMenuAltVertical,
+} from '@devoinc/genesys-icons';
 import { lorem, lorem2 } from '../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Panel> = {
@@ -32,7 +36,7 @@ export const Base: Story = {
             key="header-action-1"
             hasBoldIcon
             circular
-            icon="gi-menu_alt_vertical"
+            icon={<GIMenuAltVertical />}
             size="sm"
           />,
         ]}
@@ -115,7 +119,7 @@ export const BackwardNavigation: Story = {
           <Button
             key="btn-back"
             hasBoldIcon
-            icon="gi-arrow_left"
+            icon={<GIArrowLeft />}
             colorScheme="quiet"
             size="sm"
           >

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
+import { GIStopSquare } from '@devoinc/genesys-icons';
 
 import { ButtonActionState } from '../../../Button';
 
@@ -43,7 +44,13 @@ export const IconButtonStop = React.forwardRef<
     <IconButton
       {...restIconButtonProps}
       colorScheme="neutral"
-      icon="gi-stop_square"
+      icon={
+        <GIStopSquare
+          color={
+            state !== 'disabled' && theme.cmp.iconButtonStop.icon.color.text
+          }
+        />
+      }
       ref={ref}
       size={size}
       state={state}

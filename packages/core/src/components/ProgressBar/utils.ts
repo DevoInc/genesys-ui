@@ -3,7 +3,7 @@ import { DefaultTheme } from 'styled-components';
 import {
   MAX_PERCENT,
   STATUS_ICON_CIRCULAR_MAP,
-  STATUS_ICON_MAP,
+  PROGRESSBAR_STATUS_ICON_MAP,
 } from './constants';
 
 import {
@@ -24,7 +24,7 @@ interface ProgressBarBaseUtilsProps
 interface ProgressBarUtilsProps
   extends ProgressBarBaseUtilsProps,
     Pick<BaseProgressBarProps, 'type'> {
-  icon?: IconProps['iconId'];
+  icon?: IconProps['children'];
 }
 
 /**
@@ -77,7 +77,9 @@ export const getIcon = ({
 }: ProgressBarUtilsProps) => {
   if (icon) return icon;
   const iconMap =
-    type === 'circular' ? STATUS_ICON_CIRCULAR_MAP : STATUS_ICON_MAP;
+    type === 'circular'
+      ? STATUS_ICON_CIRCULAR_MAP
+      : PROGRESSBAR_STATUS_ICON_MAP;
   if (getStatus({ percent, status }) === 'complete') return iconMap.complete;
   return iconMap[status] || null;
 };

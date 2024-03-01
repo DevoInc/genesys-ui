@@ -9,6 +9,12 @@ import { IconButton } from '../../IconButton';
 import { InputControl } from '../../InputControl';
 import { SelectControl } from '../../SelectControl';
 import { Flex } from '../../Flex';
+import {
+  GIAngleDoubleLeft,
+  GIAngleDoubleRight,
+  GIAngleLeft,
+  GIAngleRight,
+} from '@devoinc/genesys-icons';
 
 export interface PaginationNavProps extends PaginationCommonInterface {
   hideFirstPageBtn?: boolean;
@@ -95,7 +101,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
         <Flex.Item as="li">
           <IconButton
             hasBoldIcon
-            icon="gi-angle_double_left"
+            icon={<GIAngleDoubleLeft />}
             onClick={goToFirstPage}
             size={actionsSize}
             state={page === 0 ? 'disabled' : 'enabled'}
@@ -107,7 +113,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
         <Flex.Item as="li">
           <IconButton
             hasBoldIcon
-            icon="gi-angle_left"
+            icon={<GIAngleLeft />}
             onClick={goToPreviousPage}
             size={actionsSize}
             state={page === 0 ? 'disabled' : 'enabled'}
@@ -151,7 +157,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
           <IconButton
             aria-label={nextPageTooltipText}
             hasBoldIcon
-            icon="gi-angle_right"
+            icon={<GIAngleRight />}
             onClick={goToNextPage}
             size={actionsSize}
             state={page === lastPage ? 'disabled' : 'enabled'}
@@ -164,7 +170,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
           <IconButton
             aria-label={lastPageTooltipText}
             hasBoldIcon
-            icon="gi-angle_double_right"
+            icon={<GIAngleDoubleRight />}
             onClick={goToLastPage}
             size={actionsSize}
             state={page === lastPage ? 'disabled' : 'enabled'}

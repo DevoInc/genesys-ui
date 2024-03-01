@@ -8,6 +8,7 @@ import { Button } from '../Button';
 import { ButtonGroup } from '../ButtonGroup';
 import { InputControl } from '../InputControl';
 import { Typography } from '../Typography';
+import { GIReloadRefreshUpdate } from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof AppBar> = {
   title: 'Components/Navigation/AppBar',
@@ -51,7 +52,7 @@ export const CompactWithAnotherToolbar: Story = {
             </AppBar.Item>
             <AppBar.Item>
               <ButtonGroup>
-                <Button icon="gi-reload_refresh_update">Reload</Button>
+                <Button icon={<GIReloadRefreshUpdate />}>Reload</Button>
               </ButtonGroup>
             </AppBar.Item>
           </AppBar>

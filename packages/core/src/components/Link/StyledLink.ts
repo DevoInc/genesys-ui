@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components';
 import { ILinkMixin, linkMixin } from './utils/linkMixin';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface StyledLinkProps extends ILinkMixin {}
+export interface StyledLinkProps
+  extends Omit<ILinkMixin, 'theme' | 'linkTokens'> {}
 
 export const StyledLink = styled.a<StyledLinkProps>`
   ${({ colorScheme, underlined, wide, theme, size, state, lineClamp }) => {

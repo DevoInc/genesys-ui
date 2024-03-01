@@ -10,6 +10,8 @@ import type {
 } from '../../declarations';
 import { Pane, PaneProps } from './Pane';
 import { StyledSplitPane, StyledSplitPaneSeparator } from './styled';
+import { GIRowDragDrop } from '@devoinc/genesys-icons';
+import { Icon } from '../Icon';
 
 // TODO: maybe this need a refactor or improve
 const clearSelection = () => {
@@ -217,20 +219,19 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
       const splitterRect = splitterRef.current
         ? splitterRef.current.getBoundingClientRect()
         : ({
-          width: DEFAULT_SPLITTER_SIZE,
-          height: DEFAULT_SPLITTER_SIZE,
-        } as DOMRect);
+            width: DEFAULT_SPLITTER_SIZE,
+            height: DEFAULT_SPLITTER_SIZE,
+          } as DOMRect);
 
       secPaneSize = getSecondaryPaneSize(
         containerRect,
         splitterRect,
         {
           left:
-              containerRect.left +
-              (containerRect.width - splitterRect.width) / 2,
+            containerRect.left + (containerRect.width - splitterRect.width) / 2,
           top:
-              containerRect.top +
-              (containerRect.height - splitterRect.height) / 2,
+            containerRect.top +
+            (containerRect.height - splitterRect.height) / 2,
         },
         false,
       );
@@ -318,7 +319,9 @@ export const SplitterLayout: React.FC<SplitterLayoutProps> = ({
           ref={splitterRef}
           onMouseDown={handleSplitterMouseDown}
         >
-          <i className={'gi-row_drag_drop'} />
+          <Icon size="sm" style={{ overflow: 'visible' }}>
+            <GIRowDragDrop />
+          </Icon>
         </StyledSplitPaneSeparator>
       )}
       {wrappedChildren.length > 1 && wrappedChildren[1]}

@@ -26,6 +26,7 @@ import {
   InputControlInput,
   InputControlShowPassword,
 } from './components';
+import { GISearchFindZoom } from '@devoinc/genesys-icons';
 
 export interface BaseInputControlProps
   extends Omit<InputControlInputProps, 'hasIcon' | 'hasTypeIcon'>,
@@ -102,7 +103,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
 }) => {
   const [showPassword, setShowPassword] = React.useState(false);
   const typeIcon =
-    type === 'search' && !hideTypeIcon ? 'gi-search_find_zoom' : null;
+    type === 'search' && !hideTypeIcon ? <GISearchFindZoom /> : null;
   const iconEval =
     hasStatus(status) && !hideStatusIcon
       ? INPUT_CONTROL_ICON_STATUS_MAP[status]

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // declarations
-import {
+import type {
   GlobalAriaProps,
   GlobalAttrProps,
   StyledOverloadCssProps,
@@ -10,7 +10,7 @@ import {
 } from '../../declarations';
 
 // styled
-import { StyledTagContainerProps } from './components/StyledTagContainer';
+import type { StyledTagContainerProps } from './components/StyledTagContainer';
 
 // components
 import { TagBadge, TagContainer, TagIcon, TagLabel } from './components';
@@ -22,7 +22,7 @@ export interface BaseTagProps
     GlobalAriaProps,
     StyledTagContainerProps {
   /** The name of the icon for the tag */
-  icon?: string;
+  icon?: React.ReactNode;
   /** Text for the tag */
   text: string;
 }
@@ -63,12 +63,9 @@ export const InternalTag: React.FC<TagProps> = ({
         />
       )}
       {text && icon && !quiet && (
-        <TagIcon
-          iconId={icon}
-          strong={bold}
-          size={size}
-          styles={subcomponentStyles?.icon}
-        />
+        <TagIcon strong={bold} size={size}>
+          {icon}
+        </TagIcon>
       )}
       {text && <TagLabel styles={subcomponentStyles?.label}>{text}</TagLabel>}
     </TagContainer>

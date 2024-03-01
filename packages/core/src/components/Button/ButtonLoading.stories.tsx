@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Button, ButtonProps, Typography } from '../..';
+import { GIDownloadCloudFileSync } from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button/Button/Cases',
@@ -13,7 +14,7 @@ type Story = StoryObj<typeof Button>;
 
 export const Loading: Story = {
   args: {
-    icon: 'gi-download_cloud_file_sync',
+    icon: <GIDownloadCloudFileSync />,
     state: 'loading',
     children: 'Downloading...',
   },
@@ -21,7 +22,7 @@ export const Loading: Story = {
 
 export const Success: Story = {
   args: {
-    icon: 'gi-download_cloud_file_sync',
+    icon: <GIDownloadCloudFileSync />,
     state: 'loading',
     children: 'Downloading...',
   },
@@ -48,7 +49,7 @@ export const Success: Story = {
             Click on the button to get the <code>loading-success</code> state.
           </Typography.Paragraph>
           <Button
-            icon="gi-download_cloud_file_sync"
+            icon={<GIDownloadCloudFileSync />}
             onClick={onClick}
             state={load}
           >
@@ -61,7 +62,7 @@ export const Success: Story = {
 
 export const Error: Story = {
   args: {
-    icon: 'gi-download_cloud_file_sync',
+    icon: <GIDownloadCloudFileSync />,
     state: 'loading',
     children: 'Downloading...',
   },
@@ -88,7 +89,7 @@ export const Error: Story = {
             Click on the button to get the <code>loading-error</code> state.
           </Typography.Paragraph>
           <Button
-            icon="gi-download_cloud_file_sync"
+            icon={<GIDownloadCloudFileSync />}
             onClick={onClick}
             state={load}
           >

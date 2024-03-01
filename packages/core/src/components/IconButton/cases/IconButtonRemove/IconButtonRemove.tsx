@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { GIExitClose } from '@devoinc/genesys-icons';
 
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 
@@ -40,7 +41,7 @@ export const IconButtonRemove = React.forwardRef<
   <IconButton
     {...restIconButtonProps}
     colorScheme={'blend-base'}
-    icon="gi-exit_close"
+    icon={<GIExitClose />}
     circular
     hasBoldIcon
     ref={ref}

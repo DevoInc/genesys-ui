@@ -30,7 +30,6 @@ export default defineConfig({
         'react-popper',
         '@popperjs/core',
         '@devoinc/genesys-icons',
-        '@devoinc/genesys-icons/dist/icon-variables',
         'react-dock',
         'styled-components',
         'react-toastify',

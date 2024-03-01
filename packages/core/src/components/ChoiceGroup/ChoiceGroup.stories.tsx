@@ -2,6 +2,21 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { ChoiceGroup, IconButton } from '../';
+import {
+  GIArrowsPlayRepeat,
+  GIArrowsPlayShuffle,
+  GIBookmarkTag,
+  GIBookmarkTagSolid,
+  GIChart,
+  GIChartAgg,
+  GIChartDonut,
+  GIChartSankey,
+  GIHeartFull,
+  GILikeHeartFavoriteRatingLove,
+  GIPause,
+  GIPinBookmark,
+  GIPlay,
+} from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof ChoiceGroup> = {
   title: 'Components/Form/ChoiceGroup',
@@ -31,13 +46,16 @@ export const Base: Story = {
   args: {
     children: (
       <>
-        <ChoiceGroup.IconButton icon="gi-play" tooltip="Play" />
-        <ChoiceGroup.IconButton tooltip="Pause" icon="gi-pause" />
+        <ChoiceGroup.IconButton icon={<GIPlay />} tooltip="Play" />
+        <ChoiceGroup.IconButton tooltip="Pause" icon={<GIPause />} />
         <ChoiceGroup.IconButton
-          icon="gi-arrows_play_shuffle"
+          icon={<GIArrowsPlayShuffle />}
           tooltip="Shuffle"
         />
-        <ChoiceGroup.IconButton icon="gi-arrows_play_repeat" tooltip="Repeat" />
+        <ChoiceGroup.IconButton
+          icon={<GIArrowsPlayRepeat />}
+          tooltip="Repeat"
+        />
       </>
     ),
   },
@@ -50,14 +68,14 @@ export const SpecificChildProp: Story = {
     ((props) => {
       return (
         <ChoiceGroup {...props}>
-          <ChoiceGroup.IconButton icon="gi-play" tooltip="Play" />
-          <ChoiceGroup.IconButton tooltip="Pause" icon="gi-pause" />
+          <ChoiceGroup.IconButton icon={<GIPlay />} tooltip="Play" />
+          <ChoiceGroup.IconButton tooltip="Pause" icon={<GIPause />} />
           <ChoiceGroup.IconButton
-            icon="gi-arrows_play_shuffle"
+            icon={<GIArrowsPlayShuffle />}
             tooltip="Shuffle"
           />
           <ChoiceGroup.IconButton
-            icon="gi-arrows_play_repeat"
+            icon={<GIArrowsPlayRepeat />}
             tooltip="Repeat"
             colorScheme="neutral"
           />
@@ -73,10 +91,10 @@ export const UseOfIconButton: Story = {
     ((props) => {
       return (
         <ChoiceGroup {...props} size="xs">
-          <IconButton icon="gi-play" tooltip="Play" />
-          <IconButton tooltip="Pause" icon="gi-pause" />
-          <IconButton icon="gi-arrows_play_shuffle" tooltip="Shuffle" />
-          <IconButton icon="gi-arrows_play_repeat" tooltip="Repeat" />
+          <IconButton icon={<GIPlay />} tooltip="Play" />
+          <IconButton tooltip="Pause" icon={<GIPause />} />
+          <IconButton icon={<GIArrowsPlayShuffle />} tooltip="Shuffle" />
+          <IconButton icon={<GIArrowsPlayRepeat />} tooltip="Repeat" />
         </ChoiceGroup>
       );
     })(args),
@@ -94,9 +112,11 @@ export const MultipleSelectionControlled: Story = {
         <ChoiceGroup>
           <ChoiceGroup.IconButton
             icon={
-              selectedButtons?.one
-                ? 'gi-heart_full'
-                : 'gi-like_heart_favorite_rating_love'
+              selectedButtons?.one ? (
+                <GIHeartFull />
+              ) : (
+                <GILikeHeartFavoriteRatingLove />
+              )
             }
             onChange={() => {
               setSelectedButtons({
@@ -108,7 +128,7 @@ export const MultipleSelectionControlled: Story = {
           />
           <ChoiceGroup.IconButton
             icon={
-              selectedButtons.two ? 'gi-bookmark_tag_solid' : 'gi-bookmark_tag'
+              selectedButtons.two ? <GIBookmarkTagSolid /> : <GIBookmarkTag />
             }
             onChange={() => {
               setSelectedButtons({
@@ -119,7 +139,7 @@ export const MultipleSelectionControlled: Story = {
             state={selectedButtons.two ? 'selected' : 'enabled'}
           />
           <ChoiceGroup.IconButton
-            icon={selectedButtons.three ? 'gi-pin_bookmark' : 'gi-pin_bookmark'}
+            icon={<GIPinBookmark />}
             onChange={() => {
               setSelectedButtons({
                 ...selectedButtons,
@@ -137,8 +157,8 @@ export const MultipleSelectionUncontrolled: Story = {
   args: {
     children: (
       <>
-        <ChoiceGroup.IconButton icon="gi-like_heart_favorite_rating_love" />
-        <ChoiceGroup.IconButton icon="gi-bookmark_tag" />
+        <ChoiceGroup.IconButton icon={<GILikeHeartFavoriteRatingLove />} />
+        <ChoiceGroup.IconButton icon={<GIBookmarkTag />} />
       </>
     ),
   },
@@ -151,7 +171,7 @@ export const SingleSelectionControlled: Story = {
       return (
         <ChoiceGroup>
           <ChoiceGroup.IconButton
-            icon="gi-chart"
+            icon={<GIChart />}
             onChange={() => {
               setSelectedButton(1);
             }}
@@ -159,7 +179,7 @@ export const SingleSelectionControlled: Story = {
             state={selectedButton === 1 ? 'selected' : 'enabled'}
           />
           <ChoiceGroup.IconButton
-            icon="gi-chart_agg"
+            icon={<GIChartAgg />}
             onChange={() => {
               setSelectedButton(2);
             }}
@@ -167,7 +187,7 @@ export const SingleSelectionControlled: Story = {
             state={selectedButton === 2 ? 'selected' : 'enabled'}
           />
           <ChoiceGroup.IconButton
-            icon="gi-chart_donut"
+            icon={<GIChartDonut />}
             onChange={() => {
               setSelectedButton(3);
             }}
@@ -175,7 +195,7 @@ export const SingleSelectionControlled: Story = {
             state={selectedButton === 3 ? 'selected' : 'enabled'}
           />
           <ChoiceGroup.IconButton
-            icon="gi-chart_sankey"
+            icon={<GIChartSankey />}
             onChange={() => {
               setSelectedButton(4);
             }}
@@ -192,22 +212,22 @@ export const SingleSelectionUncontrolled: Story = {
     children: (
       <>
         <ChoiceGroup.IconButton
-          icon="gi-chart"
+          icon={<GIChart />}
           name="uncontrolled"
           selectionScheme="single"
         />
         <ChoiceGroup.IconButton
-          icon="gi-chart_agg"
+          icon={<GIChartAgg />}
           name="uncontrolled"
           selectionScheme="single"
         />
         <ChoiceGroup.IconButton
-          icon="gi-chart_donut"
+          icon={<GIChartDonut />}
           name="uncontrolled"
           selectionScheme="single"
         />
         <ChoiceGroup.IconButton
-          icon="gi-chart_sankey"
+          icon={<GIChartSankey />}
           name="uncontrolled"
           selectionScheme="single"
         />

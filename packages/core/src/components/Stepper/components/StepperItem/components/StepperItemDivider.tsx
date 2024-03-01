@@ -1,26 +1,27 @@
 import * as React from 'react';
-import { useTheme, css } from 'styled-components';
-import { concat } from 'lodash';
+import { useTheme } from 'styled-components';
+import { GIAngleRight } from '@devoinc/genesys-icons';
 
 import { Icon, IconProps } from '../../../../Icon';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface StepperItemDividerProps extends Omit<IconProps, 'iconId'> {}
+export interface StepperItemDividerProps extends Omit<IconProps, 'children'> {}
 
 export const StepperItemDivider: React.FC<StepperItemDividerProps> = ({
-  styles,
+  style,
   ...restIconProps
 }) => {
   const theme = useTheme();
-  const baseStyles = css`
-    color: ${theme.cmp.stepper.separator.color.background};
-    margin-right: ${theme.cmp.stepper.separator.space.marginHor};
-  `;
   return (
     <Icon
       {...restIconProps}
-      iconId="gi-angle_right"
-      styles={concat(baseStyles, styles)}
-    />
+      style={{
+        color: theme.cmp.stepper.separator.color.background,
+        marginRight: theme.cmp.stepper.separator.space.marginHor,
+        ...style,
+      }}
+    >
+      <GIAngleRight />
+    </Icon>
   );
 };

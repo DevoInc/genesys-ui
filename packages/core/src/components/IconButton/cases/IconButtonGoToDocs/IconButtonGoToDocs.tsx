@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { concat } from 'lodash';
-import { useTheme } from 'styled-components';
+import { css, useTheme } from 'styled-components';
 
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 import { STATUS_ICON_MAP } from '../../../../constants';
 
 import { IconButton, IconButtonProps } from '../../IconButton';
 
-import { iconButtonGoToDocsMixin } from './helpers';
+import { Box } from '../../../Box';
+import { getMarkerSize } from './utils';
+import { GIAngleUp } from '@devoinc/genesys-icons';
+import { Icon } from '../../../Icon';
+import { iconButtonStatusMixin } from '../IconButtonStatus/mixins';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IconButtonGoToDocsProps
@@ -52,6 +56,12 @@ export const IconButtonGoToDocs = React.forwardRef<
     ref,
   ) => {
     const theme = useTheme();
+    const markerTokens = theme.cmp.iconButtonGoToDocs.marker;
+    const markerSize =
+      size && getMarkerSize({ tokens: markerTokens, size }).fontSize;
+    const offset = size && getMarkerSize({ tokens: markerTokens, size }).offset;
+    const offsetHovered =
+      size && getMarkerSize({ tokens: markerTokens, size }).offsetHovered;
     return (
       <IconButton
         {...restIconButtonProps}
@@ -63,8 +73,41 @@ export const IconButtonGoToDocs = React.forwardRef<
         circular
         ref={ref}
         size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
-        styles={concat(iconButtonGoToDocsMixin({ size, state, theme }), styles)}
-      />
+        styles={concat(
+          iconButtonStatusMixin({
+            state,
+            colorScheme: 'help',
+            theme,
+          }),
+          styles,
+        )}
+      >
+        <Box
+          as="span"
+          position="absolute"
+          positionTop={offset}
+          positionRight={offset}
+          styles={css`
+            transition: all 0.2s ease;
+            *:hover > &,
+            *:focus > &,
+            *:active > & {
+              top: ${offsetHovered};
+              right: ${offsetHovered};
+            }
+          `}
+        >
+          <Icon strong>
+            <GIAngleUp
+              size={markerSize}
+              style={{
+                transform: 'rotate(45deg)',
+                transition: 'all 0.2s ease',
+              }}
+            />
+          </Icon>
+        </Box>
+      </IconButton>
     );
   },
 );

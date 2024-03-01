@@ -59,7 +59,7 @@ export const InternalBanner: React.FC<BannerProps> = ({
   ...ariaProps
 }) => {
   return (
-    <Banner._Container
+    <BannerContainer
       {...ariaProps}
       as={as}
       id={id}
@@ -75,13 +75,13 @@ export const InternalBanner: React.FC<BannerProps> = ({
       ) : (
         <>
           {!hideIcon && (
-            <Banner._Icon status={status} styles={subcomponentStyles?.icon} />
+            <BannerIcon status={status} styles={subcomponentStyles?.icon} />
           )}
-          <Banner._ContentContainer>
+          <BannerContentContainer>
             {title && (
-              <Banner._Heading styles={subcomponentStyles?.heading}>
+              <BannerHeading styles={subcomponentStyles?.heading}>
                 {title}
-              </Banner._Heading>
+              </BannerHeading>
             )}
             {content && (
               <Banner._Content styles={subcomponentStyles?.content}>
@@ -95,9 +95,9 @@ export const InternalBanner: React.FC<BannerProps> = ({
                 styles={subcomponentStyles?.actions}
               />
             )}
-          </Banner._ContentContainer>
+          </BannerContentContainer>
           {close && (
-            <Banner._Close
+            <BannerClose
               onClick={close}
               tooltip={closeTooltip}
               styles={subcomponentStyles?.close}
@@ -105,7 +105,7 @@ export const InternalBanner: React.FC<BannerProps> = ({
           )}
         </>
       )}
-    </Banner._Container>
+    </BannerContainer>
   );
 };
 

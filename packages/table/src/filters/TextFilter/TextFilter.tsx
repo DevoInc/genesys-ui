@@ -16,6 +16,7 @@ import {
 } from '../common';
 import type { FilterContext, FilterProps } from '../declarations';
 import type { TextFilterValue } from './declarations';
+import { GIExitClose, GIFilter } from '@devoinc/genesys-icons';
 
 export const TextFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
   const context = colDef?.context as FilterContext;
@@ -46,23 +47,23 @@ export const TextFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
 
       {(context?.showReset ?? true) &&
         (value !== '' || operator !== 'contains') && (
-        <HFlex.Item flex="0 0 auto">
-          <IconButton
-            icon="gi-exit_close"
-            onClick={() => {
-              onChange(
+          <HFlex.Item flex="0 0 auto">
+            <IconButton
+              icon={<GIExitClose />}
+              onClick={() => {
+                onChange(
                   {
                     value: '',
                     operator: 'contains',
                   } as TextFilterValue,
                   'text',
-              );
-            }}
-            size="sm"
-            colorScheme="quiet"
-          />
-        </HFlex.Item>
-      )}
+                );
+              }}
+              size="sm"
+              colorScheme="quiet"
+            />
+          </HFlex.Item>
+        )}
 
       {(context?.showAdvancedFilter ?? true) && (
         <HFlex.Item flex="0 0 auto">
@@ -72,7 +73,7 @@ export const TextFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
                 aria-controls={`text-adv-filter-${colDef.id}`}
                 aria-expanded={isOpened}
                 aria-haspopup="true"
-                icon="gi-filter"
+                icon={<GIFilter />}
                 onClick={toggle}
                 ref={ref}
                 state={isOpened ? 'expanded' : undefined}

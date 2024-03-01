@@ -1,14 +1,30 @@
+import { useTheme } from 'styled-components';
 import * as React from 'react';
 import { FilePondProps } from 'react-filepond';
 
-import { Box, Field, FieldAttrProps, FieldProps } from '@devoinc/genesys-ui';
+import {
+  Box,
+  Field,
+  FieldAttrProps,
+  FieldProps,
+  Flex,
+  getCmpMarkup,
+  getSpacingPropCss,
+  Icon,
+} from '@devoinc/genesys-ui';
 
 import { buildErrorMessage, detectUnknownTypes } from './utils';
 import {
   StyledUploadFiles,
   type StyledUploadFilesProps,
 } from './StyledUploadFiles';
-
+import {
+  GIDragDrop,
+  GIExitClose,
+  GIRotateSync,
+  GIUndoReset,
+  GIUploadLoadShare,
+} from '@devoinc/genesys-icons';
 export interface UploadFilesProps
   extends Omit<FieldProps, 'children' | 'role'>,
     Pick<FieldAttrProps, 'name'>,
@@ -75,8 +91,27 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
     showLabelIcon,
     ...restNativeProps
   } = props;
+  const theme = useTheme();
   const detectType = detectUnknownTypes(acceptedFileTypes);
   const errorMessage = buildErrorMessage(acceptedFileTypes);
+
+  const iconSize = '1.4rem';
+  const iconProcessStaticMarkup = getCmpMarkup({
+    cmp: <GIUploadLoadShare size={iconSize} stroke-width={1} />,
+    theme,
+  });
+  const iconRemoveStaticMarkup = getCmpMarkup({
+    cmp: <GIExitClose size={iconSize} stroke-width={1} />,
+    theme,
+  });
+  const iconRetryStaticMarkup = getCmpMarkup({
+    cmp: <GIRotateSync size={iconSize} stroke-width={1} />,
+    theme,
+  });
+  const iconUndoStaticMarkup = getCmpMarkup({
+    cmp: <GIUndoReset size={iconSize} stroke-width={1} />,
+    theme,
+  });
 
   return (
     <Field
@@ -101,7 +136,21 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
       styles={styles}
       tooltip={tooltip}
     >
-      <Box flex="1 1 100%">
+      <Box flex="1 1 100%" position="relative">
+        {showLabelIcon && (
+          <Box
+            position="absolute"
+            positionTop={getSpacingPropCss(theme)('cmp-md')}
+            zIndex={1}
+            width="100%"
+          >
+            <Flex justifyContent="center">
+              <Icon size="xxl">
+                <GIDragDrop />
+              </Icon>
+            </Flex>
+          </Box>
+        )}
         <StyledUploadFiles
           {...restNativeProps}
           acceptedFileTypes={acceptedFileTypes}
@@ -113,17 +162,17 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
           fileValidateTypeDetectType={detectType}
           fileValidateTypeLabelExpectedTypes={errorMessage}
           height={height}
-          iconProcess='<i class="gi-upload_load_share" />'
-          iconRemove='<i class="gi-exit_close" />'
-          iconRetry='<i class="gi-rotate_sync" />'
-          iconUndo='<i class="gi-undo_reset" />'
+          iconProcess={iconProcessStaticMarkup}
+          iconRemove={iconRemoveStaticMarkup}
+          iconRetry={iconRetryStaticMarkup}
+          iconUndo={iconUndoStaticMarkup}
           id={id}
           imagePreviewHeight={imagePreviewHeight}
           imagePreviewMaxFileSize={imagePreviewMaxFileSize}
           imagePreviewMaxHeight={imagePreviewMaxHeight}
           imagePreviewMinHeight={imagePreviewMinHeight}
           imagePreviewTransparencyIndicator={imagePreviewTransparencyIndicator}
-          labelButtonAbortItemProcessing='<i class="gi-exit_close" />'
+          labelButtonAbortItemProcessing={iconRemoveStaticMarkup}
           labelButtonRemoveItem=""
           labelButtonRetryItemProcessing=""
           maxFileSize={maxFileSize}

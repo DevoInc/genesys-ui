@@ -1,4 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
+import * as React from 'react';
+import { GITagPriceSale } from '@devoinc/genesys-icons';
 
 import { Tag } from './Tag';
 
@@ -16,7 +18,7 @@ type Story = StoryObj<typeof Tag>;
 
 export const Base: Story = {
   args: {
-    icon: 'gi-tag_price_sale',
+    icon: <GITagPriceSale />,
     text: 'Category',
   },
 };

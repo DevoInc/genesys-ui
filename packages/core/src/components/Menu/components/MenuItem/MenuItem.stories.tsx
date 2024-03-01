@@ -1,6 +1,10 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { GIIdea, GITimeZone } from '@devoinc/genesys-icons';
+import {
+  GIDiamondPrizeAwardJewelleryRing,
+  GIIdea,
+  GITimeZone,
+} from '@devoinc/genesys-icons';
 
 import { Badge } from '../../../Badge';
 import { Box } from '../../../Box';
@@ -114,11 +118,9 @@ export const ReadOnly: Story = {
           }
           bottomContent={
             <HFlex spacing="cmp-xxs" paddingLeft="cmp-xl">
-              <Icon
-                iconId="gi-diamond_prize_award_jewellery_ring"
-                size="xxs"
-                colorScheme="weak"
-              />
+              <Icon size="xxs" colorScheme="weak">
+                <GIDiamondPrizeAwardJewelleryRing />
+              </Icon>
               <Typography.Paragraph colorScheme="weak">
                 admin
               </Typography.Paragraph>
