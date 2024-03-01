@@ -27,14 +27,14 @@ export interface StyledProgressBarCircularCircleInnerProps
 
 export const StyledProgressBarCircularCircleInner = styled.circle<StyledProgressBarCircularCircleInnerProps>`
   ${({ indeterminate, status, percent, rad, theme }) => {
-  const progressBarTokens = theme.cmp.progressBar;
+    const progressBarTokens = theme.cmp.progressBar;
 
-  return css`
+    return css`
       transition: stroke-dashoffset ease 0.3s;
       stroke: ${getProgressBgColor({
-    status,
-    tokens: progressBarTokens,
-  })};
+        status,
+        tokens: progressBarTokens,
+      })};
       stroke-dasharray: ${rad};
       stroke-linecap: round;
 
@@ -56,5 +56,5 @@ export const StyledProgressBarCircularCircleInner = styled.circle<StyledProgress
         stroke-dashoffset: 0;
       `};
     `;
-}};
+  }};
 `;

@@ -9,13 +9,13 @@ export const StyledCalendarCell = styled.div`
   // day container
   span {
     ${({ theme }) => {
-  const cellSquare = theme.alias.size.square.handler.lg;
-  return css`
+      const cellSquare = theme.alias.size.square.handler.lg;
+      return css`
         width: ${cellSquare};
         height: ${cellSquare};
         border-radius: ${theme.alias.shape.borderRadius.full};
       `;
-}};
+    }};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,8 +34,8 @@ export const StyledCalendarCell = styled.div`
 
   // range marker
   ${({ theme }) => {
-  const rangeMarkerBR = theme.alias.shape.borderRadius.pill;
-  const rangeMarkerCss = css`
+    const rangeMarkerBR = theme.alias.shape.borderRadius.pill;
+    const rangeMarkerCss = css`
       content: '';
       position: absolute;
       top: 50%;
@@ -43,7 +43,7 @@ export const StyledCalendarCell = styled.div`
       width: 100%;
       height: 1.8rem;
     `;
-  return css`
+    return css`
       &:nth-child(7n),
       &:last-child {
         &::before {
@@ -83,16 +83,16 @@ export const StyledCalendarCell = styled.div`
         }
       }
     `;
-}};
+  }};
 
   ${({ theme }) => {
-  const {
-    week: weekTokens,
-    day: dayTokens,
-    interval: intervalTokens,
-  } = theme.cmp.calendar;
+    const {
+      week: weekTokens,
+      day: dayTokens,
+      interval: intervalTokens,
+    } = theme.cmp.calendar;
 
-  return css`
+    return css`
       color: ${dayTokens.color.text.base};
 
       /* Week days name */
@@ -337,5 +337,5 @@ export const StyledCalendarCell = styled.div`
         }
       }
     `;
-}};
+  }};
 `;

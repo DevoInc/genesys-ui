@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { SelectControl, type SelectOption } from '@devoinc/genesys-ui';
 
-import type { FilterContext, FilterProps } from '../declarations';
+import type { FilterContext, FilterProps } from '../../declarations';
 import type { OptionsFilterValue } from './declarations';
 import { FilterContainer } from '../common';
 import { ContextOptions, getSelectOptions } from '../../facade';

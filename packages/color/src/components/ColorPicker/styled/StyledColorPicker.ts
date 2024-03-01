@@ -17,28 +17,28 @@ export interface StyledColorPickerProps {
 
 export const StyledColorPicker = styled.button<StyledColorPickerProps>`
   ${({
-  disabled,
-  colorIndicatorType,
-  readOnly,
-  size,
-  status = 'base',
-  theme,
-}) => {
-  const state = getFieldState({ readOnly });
-  const isSquare =
+    disabled,
+    colorIndicatorType,
+    readOnly,
+    size,
+    status = 'base',
+    theme,
+  }) => {
+    const state = getFieldState({ readOnly });
+    const isSquare =
       colorIndicatorType === 'square' || colorIndicatorType === 'circle';
-  const isCircle = colorIndicatorType === 'circle';
+    const isCircle = colorIndicatorType === 'circle';
 
-  const fieldTokens = theme.alias.fields;
-  const colorPickerTokens = theme.cmp.colorPicker;
+    const fieldTokens = theme.alias.fields;
+    const colorPickerTokens = theme.cmp.colorPicker;
 
-  const transitionDuration = fieldTokens.mutation.transitionDuration;
-  const height = colorPickerTokens.size.height[size];
-  const width = colorPickerTokens.size[isSquare ? 'height' : 'width'][size];
-  const spacing = colorPickerTokens.space;
-  const borderRadius =
+    const transitionDuration = fieldTokens.mutation.transitionDuration;
+    const height = colorPickerTokens.size.height[size];
+    const width = colorPickerTokens.size[isSquare ? 'height' : 'width'][size];
+    const spacing = colorPickerTokens.space;
+    const borderRadius =
       colorPickerTokens.shape.borderRadius[isCircle ? 'isCircle' : 'base'];
-  return css`
+    return css`
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -85,5 +85,5 @@ export const StyledColorPicker = styled.button<StyledColorPickerProps>`
         border-radius: ${borderRadius};
       }
     `;
-}};
+  }};
 `;

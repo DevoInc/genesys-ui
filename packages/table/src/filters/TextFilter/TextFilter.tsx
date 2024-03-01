@@ -14,7 +14,7 @@ import {
   textOptions,
   TEXT_ADDON_MAP,
 } from '../common';
-import type { FilterContext, FilterProps } from '../declarations';
+import type { FilterContext, FilterProps } from '../../declarations';
 import type { TextFilterValue } from './declarations';
 import { GIExitClose, GIFilter } from '@devoinc/genesys-icons';
 

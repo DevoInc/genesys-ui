@@ -8,10 +8,10 @@ export interface StyledTabsMarkProps {
 
 export const StyledTabsMark = styled.div<StyledTabsMarkProps>`
   ${({ colorScheme, theme }) => {
-  const tokens = theme.cmp.tabs.mark;
-  const transitionDuration =
+    const tokens = theme.cmp.tabs.mark;
+    const transitionDuration =
       theme.alias.mutation.transitionDuration.translation.hor.sm;
-  return css`
+    return css`
       position: absolute;
       bottom: 0;
       transition: all ease-in-out ${transitionDuration};
@@ -25,5 +25,5 @@ export const StyledTabsMark = styled.div<StyledTabsMarkProps>`
         border-radius: ${tokens.shape.borderRadius};
       }
     `;
-}}
+  }}
 `;

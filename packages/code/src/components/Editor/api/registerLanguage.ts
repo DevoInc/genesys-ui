@@ -37,5 +37,6 @@ export const registerLanguage = (
     },
   };
 
+  // eslint-disable-next-line consistent-return
   return register;
 };

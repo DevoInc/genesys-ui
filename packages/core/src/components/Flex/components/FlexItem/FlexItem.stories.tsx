@@ -15,8 +15,8 @@ type Story = StoryObj<typeof FlexItem>;
 
 export const Item: Story = {
   render: (args) =>
-    ((args) => (
-      <Flex.Item {...args}>
+    ((props) => (
+      <Flex.Item {...props}>
         <StyledLayoutContentHelper>Flex.Item content</StyledLayoutContentHelper>
       </Flex.Item>
     ))(args),

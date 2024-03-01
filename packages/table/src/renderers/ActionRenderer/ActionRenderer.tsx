@@ -9,7 +9,7 @@ import {
   getPxFromRem,
 } from '@devoinc/genesys-ui';
 
-import { CellRendererProps } from '../declarations';
+import type { CellRendererProps } from '../../declarations';
 import { ActionContext } from '../../facade';
 import { MenuEntry } from './MenuEntry';
 import { useTheme } from 'styled-components';

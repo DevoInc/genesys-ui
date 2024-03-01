@@ -31,16 +31,16 @@ export interface StyledLabelProps extends Pick<LabelAttrProps, 'htmlFor'> {
 
 export const StyledLabel = styled.span<StyledLabelProps>`
   ${({
-  colorScheme,
-  cursor,
-  htmlFor,
-  size,
-  srOnly,
-  textAlign,
-  theme,
-  truncated,
-}) => {
-  return css`
+    colorScheme,
+    cursor,
+    htmlFor,
+    size,
+    srOnly,
+    textAlign,
+    theme,
+    truncated,
+  }) => {
+    return css`
       position: relative;
       display: block;
       word-break: break-word;
@@ -51,21 +51,21 @@ export const StyledLabel = styled.span<StyledLabelProps>`
 
       // typo styles
       ${typoMixin({
-    variant: 'body',
-    textAlign,
-    theme,
-    size,
-  })};
+        variant: 'body',
+        textAlign,
+        theme,
+        size,
+      })};
 
       // text color
       ${typoColorMixin({
-    variant: 'body',
-    colorScheme: colorScheme,
-    theme,
-  })};
+        variant: 'body',
+        colorScheme: colorScheme,
+        theme,
+      })};
 
       // hidden but being accessible
       ${srOnly && srOnlyMixin}
     `;
-}};
+  }};
 `;

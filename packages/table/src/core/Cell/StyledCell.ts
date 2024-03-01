@@ -34,9 +34,9 @@ export const StyledCell = styled.td.attrs(
   ${({ theme }) => cellMixin({ theme })};
 
   ${({ highlightColumnsOnHover, wrapperHeight = 9999, theme, density }) => {
-  const tokens = theme.cmp.table.cell;
-  return highlightColumnsOnHover
-    ? css`
+    const tokens = theme.cmp.table.cell;
+    return highlightColumnsOnHover
+      ? css`
           &:focus,
           &:has(*:focus),
           &:has([aria-expanded='true']),
@@ -51,6 +51,6 @@ export const StyledCell = styled.td.attrs(
             }
           }
         `
-    : '';
-}}
+      : '';
+  }}
 `;

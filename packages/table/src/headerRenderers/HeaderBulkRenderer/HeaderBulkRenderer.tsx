@@ -8,7 +8,7 @@ import {
   IconButton,
 } from '@devoinc/genesys-ui';
 
-import { HeaderRendererProps } from '../declarations';
+import type { HeaderRendererProps } from '../../declarations';
 import { BulkContext } from '../../facade';
 
 export const HeaderBulkRenderer: React.FC<HeaderRendererProps> = ({

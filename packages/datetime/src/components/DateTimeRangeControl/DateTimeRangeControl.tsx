@@ -35,6 +35,7 @@ import {
 import { RealtimeState } from './declarations';
 import { RealTimeButton, RealTimeButtonProps } from '../RealTimeButton';
 import { REAL_TIME_SIZE_MAP } from './constants';
+import { getInputWidth } from './theme';
 
 export interface DateTimeRangeControlProps
   extends Required<Pick<GlobalAttrProps, 'id'>>,
@@ -144,19 +145,7 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
     [from, onChange],
   );
 
-  const dateTimeRangeControlTokens = useTheme().cmp.dateTimeRangeControl;
-
-  const getInputWidth = ({ hasMillis, hasSeconds, hasTime, size }) => {
-    return dateTimeRangeControlTokens.input.size.width[
-      hasMillis
-        ? 'withMillis'
-        : hasSeconds
-          ? 'withSeconds'
-          : hasTime
-            ? 'withTime'
-            : 'base'
-    ][size];
-  };
+  const theme = useTheme();
 
   return (
     <StyledDateTimeRangeControl
@@ -173,7 +162,13 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
       wide={wide}
     >
       <Field
-        controlWidth={getInputWidth({ hasMillis, hasSeconds, hasTime, size })}
+        controlWidth={getInputWidth({
+          hasMillis,
+          hasSeconds,
+          hasTime,
+          size,
+          theme,
+        })}
         label={ariaLabelFrom}
         id={`${id}-input-from`}
         hasFloatingHelper
@@ -200,11 +195,17 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
         />
       </Field>
       <GIArrowRight
-        size={dateTimeRangeControlTokens.arrow.size.square[size]}
-        color={dateTimeRangeControlTokens.arrow.color.fill}
+        size={theme.cmp.dateTimeRangeControl.arrow.size.square[size]}
+        color={theme.cmp.dateTimeRangeControl.arrow.color.fill}
       />
       <Field
-        controlWidth={getInputWidth({ hasMillis, hasSeconds, hasTime, size })}
+        controlWidth={getInputWidth({
+          hasMillis,
+          hasSeconds,
+          hasTime,
+          size,
+          theme,
+        })}
         label={ariaLabelFrom}
         id={`${id}-input-to`}
         hasFloatingHelper

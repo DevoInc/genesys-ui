@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 import {
-  GlobalAttrProps,
+  type GlobalAttrProps,
   SelectControl,
-  SelectControlProps,
-  StyledOverloadCssProps,
+  type SelectControlProps,
+  type SelectOption,
+  type StyledOverloadCssProps,
 } from '@devoinc/genesys-ui';
 
 import type { Preset, PresetRange, PresetGroup } from './declarations';
@@ -36,8 +37,10 @@ const InternalPresets: React.FC<PresetsProps> = ({
   ...restSelectAttrs
 }) => {
   const handleChange = React.useCallback(
-    (option) => {
-      onChange?.(JSON.parse(option.value));
+    (option: SelectOption) => {
+      if (onChange) {
+        onChange(JSON.parse(option.value as string) as PresetRange);
+      }
     },
     [onChange],
   );

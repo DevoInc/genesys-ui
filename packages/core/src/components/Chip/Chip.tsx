@@ -105,7 +105,7 @@ export const InternalChip: React.FC<ChipProps> = ({
       tooltip={tooltip}
     >
       <Chip._HiddenInput
-        aria-label={ariaLabel || children?.toString()}
+        aria-label={ariaLabel || String(children)}
         defaultSelected={defaultSelected}
         disabled={state === 'disabled'}
         id={id ? `chip-input-${id}` : null}

@@ -11,10 +11,10 @@ export interface StyledModalHeaderProps {
 
 export const StyledModalHeader = styled.header<StyledModalHeaderProps>`
   ${({ theme, hasBoxShadow, status }) => {
-  const modalHeaderTokens = theme.cmp.modal.header;
-  const aliasTokens = theme.alias;
+    const modalHeaderTokens = theme.cmp.modal.header;
+    const aliasTokens = theme.alias;
 
-  return css`
+    return css`
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -33,5 +33,5 @@ export const StyledModalHeader = styled.header<StyledModalHeaderProps>`
         ? theme.cmp.dialog.header.color.background[status]
         : 'inherit'};
     `;
-}}
+  }}
 `;

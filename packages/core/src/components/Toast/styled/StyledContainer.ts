@@ -9,10 +9,10 @@ export interface StyledContainerProps extends ToastContainerProps {}
 
 export const StyledContainer = styled(ToastContainer)`
   ${({ theme }) => {
-  const tokensPanel = theme.cmp.panel;
-  const tokensToast = theme.cmp.toast;
+    const tokensPanel = theme.cmp.panel;
+    const tokensToast = theme.cmp.toast;
 
-  return css`
+    return css`
       width: ${tokensToast.size.width.default};
 
       .toast {
@@ -53,5 +53,5 @@ export const StyledContainer = styled(ToastContainer)`
         }
       }
     `;
-}}
+  }}
 `;

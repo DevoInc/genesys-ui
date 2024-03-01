@@ -31,15 +31,15 @@ export const getAccTextColor = (
     isRGB &&
     (isRGBA
       ? bgColor
-        .substring(5, bgColor.length - 1)
-        .replace(' ', '')
-        .split(',')
-        .map(parseInt)
+          .substring(5, bgColor.length - 1)
+          .replace(' ', '')
+          .split(',')
+          .map(parseInt)
       : bgColor
-        .substring(4, bgColor.length - 1)
-        .replace(' ', '')
-        .split(',')
-        .map(parseInt));
+          .substring(4, bgColor.length - 1)
+          .replace(' ', '')
+          .split(',')
+          .map(parseInt));
 
   const hRed = isHex || named ? hexToR(bgColor) : rgbArray[0];
   const hGreen = isHex || named ? hexToG(bgColor) : rgbArray[1];

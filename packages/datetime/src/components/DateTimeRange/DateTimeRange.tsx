@@ -119,11 +119,11 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
         value.from && value.to
           ? value.to
             ? set(subMonths(value.to, 1), {
-              hours: getHours(value.from),
-              minutes: getMinutes(value.from),
-              seconds: getSeconds(value.from),
-              milliseconds: getMilliseconds(value.from),
-            }).getTime()
+                hours: getHours(value.from),
+                minutes: getMinutes(value.from),
+                seconds: getSeconds(value.from),
+                milliseconds: getMilliseconds(value.from),
+              }).getTime()
             : value.from
           : dateForMonth
             ? subMonths(dateForMonth, 1).getTime()

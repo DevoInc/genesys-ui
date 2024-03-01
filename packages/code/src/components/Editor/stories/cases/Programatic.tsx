@@ -10,12 +10,13 @@ export const Programatic = ({ ...props }: Partial<EditorProps>) => {
   );
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor>();
 
-  const handleEditorMount = (editor) => (editorRef.current = editor);
+  const handleEditorMount = (editor: monaco.editor.IStandaloneCodeEditor) =>
+    (editorRef.current = editor);
 
   const focusEditor = () => editorRef.current?.focus();
   const updateValue = () => {
-    const value = editorRef.current?.getValue();
-    setValue(value + "\nHelp! I'm being updated programatically");
+    const val = editorRef.current?.getValue();
+    setValue(val + "\nHelp! I'm being updated programatically");
   };
 
   return (

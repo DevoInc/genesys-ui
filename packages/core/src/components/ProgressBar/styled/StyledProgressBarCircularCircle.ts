@@ -10,13 +10,13 @@ export interface StyledProgressBarCircularProps
 
 export const StyledProgressBarCircular = styled.circle<StyledProgressBarCircularProps>`
   ${({ colorScheme, status, theme }) => {
-  const progressBarTokens = theme.cmp.progressBar;
-  return css`
+    const progressBarTokens = theme.cmp.progressBar;
+    return css`
       stroke: ${getTrackBgColor({
-    colorScheme,
-    status,
-    tokens: progressBarTokens,
-  })};
+        colorScheme,
+        status,
+        tokens: progressBarTokens,
+      })};
     `;
-}}
+  }}
 `;

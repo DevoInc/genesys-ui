@@ -9,14 +9,15 @@ const value = "Help! I'm being updated programatically";
 export const Programatic = ({ ...props }: Partial<DiffEditorProps>) => {
   const editorRef = React.useRef<monaco.editor.IStandaloneDiffEditor>();
 
-  const handleEditorMount = (editor) => (editorRef.current = editor);
+  const handleEditorMount = (editor: monaco.editor.IStandaloneDiffEditor) =>
+    (editorRef.current = editor);
 
   const focusEditor = () => editorRef.current?.focus();
 
   const updateValue = () => {
     const rightEditor = editorRef.current?.getModifiedEditor();
-    const value = rightEditor.getValue();
-    rightEditor.setValue(value + '\n' + value);
+    const val = rightEditor.getValue();
+    rightEditor.setValue(val + '\n' + value);
   };
 
   return (

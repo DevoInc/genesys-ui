@@ -42,14 +42,14 @@ export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
   width: 100%;
 
   ${({ even, isAfterRow, draggable, isDragging, striped, state, theme }) => {
-  const evenOddType = striped && even ? 'even' : 'odd';
-  const aliasTokens = theme.alias;
-  const rowTokens = theme.cmp.table.row;
-  const transitionDuration = rowTokens.mutation.transitionDuration;
-  const hoverBgColor = striped
-    ? theme.cmp.table.cell.color.background.backdrop.hovered.strong
-    : theme.cmp.table.cell.color.background.backdrop.hovered.base;
-  return css`
+    const evenOddType = striped && even ? 'even' : 'odd';
+    const aliasTokens = theme.alias;
+    const rowTokens = theme.cmp.table.row;
+    const transitionDuration = rowTokens.mutation.transitionDuration;
+    const hoverBgColor = striped
+      ? theme.cmp.table.cell.color.background.backdrop.hovered.strong
+      : theme.cmp.table.cell.color.background.backdrop.hovered.base;
+    return css`
       @keyframes modifiedBlink {
         0% {
           background-color: ${rowTokens.color.background[evenOddType].base};
@@ -157,5 +157,5 @@ export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
           ${rowTokens.color.background.after};
       `}
     `;
-}}
+  }}
 `;

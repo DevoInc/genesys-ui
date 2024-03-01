@@ -132,7 +132,7 @@ export const InternalButton = React.forwardRef<HTMLElement, ButtonProps>(
             id={id}
             disabled={state === 'disabled'}
             checked={onChange ? isSelected : null}
-            label={ariaLabel || tooltip || children?.toString()}
+            label={ariaLabel || tooltip || String(children)}
             name={name}
             onBlur={onBlur}
             onChange={onChange}

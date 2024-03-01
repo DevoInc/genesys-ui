@@ -21,10 +21,10 @@ export const elevationBorderMixin =
       : elevation?.startsWith('sticky')
         ? Object.keys(colorMap).includes(elevation)
           ? getTemplate(
-            colorMap[elevation].side,
-            elevationBorder,
-            colorMap[elevation].color,
-          )
+              colorMap[elevation].side,
+              elevationBorder,
+              colorMap[elevation].color,
+            )
           : null
         : Object.keys(elevations).includes(elevation)
           ? css`

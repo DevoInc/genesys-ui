@@ -16,9 +16,9 @@ export interface StyledFieldRequiredMarkProps {
 
 export const StyledFieldRequiredMark = styled.abbr<StyledFieldRequiredMarkProps>`
   ${({ colorScheme = 'info', theme }) => {
-  const { marker } = theme.cmp.label;
-  const spacingTokens = theme.alias.space;
-  return css`
+    const { marker } = theme.cmp.label;
+    const spacingTokens = theme.alias.space;
+    return css`
       margin-right: ${spacingTokens.cmp.xxs};
       text-decoration: none;
       color: ${colorSchemeFeedback.includes(colorScheme)
@@ -26,5 +26,5 @@ export const StyledFieldRequiredMark = styled.abbr<StyledFieldRequiredMarkProps>
         : marker.color.text.base};
       cursor: help;
     `;
-}};
+  }};
 `;

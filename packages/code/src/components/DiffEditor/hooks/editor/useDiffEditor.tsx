@@ -3,12 +3,12 @@ import * as monaco from 'monaco-editor-core';
 import { useUpdateEffect } from 'ahooks';
 
 import { buildEditorOptions } from '../../../Editor/hooks/editor/buildEditorOptions';
-import { type UseEditorParams } from '../../../Editor';
+import { type IUseEditorParams } from '../../../Editor/hooks/editor/declarations';
 
 type Monaco = typeof monaco;
 
 export interface UseDiffEditorParams
-  extends Pick<UseEditorParams, 'theme' | 'language'> {
+  extends Pick<IUseEditorParams, 'theme' | 'language'> {
   /**
    * Value of the original editor (leftmost)
    */
