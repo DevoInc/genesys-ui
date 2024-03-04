@@ -3,36 +3,7 @@ import * as React from 'react';
 import { UIColorScheme } from '../../declarations';
 import { STATUS_ICON_MAP } from '../../constants';
 import { Button, type ButtonProps } from '../Button';
-import { ToastHeader, ToastHeaderProps } from './components/ToastHeader';
 import { ToastAction, ToastStatus } from './declarations';
-
-export const getHeaderContent = ({
-  closeToast,
-  closeTooltip,
-  collapsable,
-  collapseTooltip,
-  onCollapse,
-  expandTooltip,
-  collapsed,
-  status,
-  subtitle,
-  title,
-}: ToastHeaderProps) => {
-  return (
-    <ToastHeader
-      closeToast={closeToast}
-      closeTooltip={closeTooltip}
-      collapsable={collapsable}
-      collapseTooltip={collapseTooltip}
-      expandTooltip={expandTooltip}
-      collapsed={collapsed}
-      onCollapse={onCollapse}
-      status={status}
-      subtitle={subtitle}
-      title={title}
-    />
-  );
-};
 
 export const getFooterActions = ({
   accent,

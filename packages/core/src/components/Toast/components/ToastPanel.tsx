@@ -5,11 +5,11 @@ import { concat } from 'lodash';
 import { TOAST_ELEVATION_LEVEL } from '../constants';
 import type { StyledOverloadCssProps } from '../../../declarations';
 import { ToastAction } from '../declarations';
-import { getHeaderContent, getFooterActions } from '../utils';
+import { getFooterActions } from '../utils';
 import { type ToastPanelMixinProps, toastPanelMixin } from './helpers';
 import { ToastBadge, type ToastBadgeProps } from './ToastBadge';
 import { ToastContent, type ToastContentProps } from './ToastContent';
-import { type ToastHeaderProps } from './ToastHeader';
+import { ToastHeader, type ToastHeaderProps } from './ToastHeader';
 import { Panel } from '../../Panel';
 
 export interface ToastPanelProps
@@ -55,19 +55,6 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
     ? theme.cmp.toast.color.background[status]
     : undefined;
 
-  const headerContent = getHeaderContent({
-    closeToast,
-    closeTooltip,
-    collapsable,
-    collapseTooltip,
-    expandTooltip,
-    collapsed,
-    onCollapse,
-    status,
-    subtitle,
-    title,
-  });
-
   const footerActions = showCollapsed
     ? undefined
     : getFooterActions({
@@ -99,7 +86,18 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
           hasBoxShadow={collapsable ? collapsable && !collapsed : undefined}
           removeSpace
         >
-          {headerContent}
+          <ToastHeader
+            closeToast={closeToast}
+            closeTooltip={closeTooltip}
+            collapsable={collapsable}
+            collapseTooltip={collapseTooltip}
+            expandTooltip={expandTooltip}
+            collapsed={collapsed}
+            onCollapse={onCollapse}
+            status={status}
+            subtitle={subtitle}
+            title={title}
+          />
         </Panel.Header>
         <Panel.Body removeSpace={showCollapsed}>
           <ToastContent content={content} collapsed={showCollapsed} />
