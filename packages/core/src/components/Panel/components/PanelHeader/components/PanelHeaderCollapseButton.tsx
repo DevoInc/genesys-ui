@@ -8,11 +8,11 @@ import {
 } from '../../../../IconButton';
 
 import { Flex } from '../../../../Flex';
-import { PanelContainerAttrs } from '../../../declarations';
+import { IPanelContainerAttrs } from '../../../declarations';
 
 export interface PanelHeaderCollapseButtonProps
   extends Omit<IconButtonCollapseProps, 'size'>,
-    Pick<PanelContainerAttrs, 'size'> {}
+    Pick<IPanelContainerAttrs, 'size'> {}
 
 export const PanelHeaderCollapseButton: React.FC<
   PanelHeaderCollapseButtonProps

@@ -1,5 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
-import { PanelBodyProps } from '../Panel/components';
+import type { PanelBodyProps } from '../Panel/components';
 
 interface getPanelSectionBodySpacingProps {
   removeSpace: PanelBodyProps['removeSpace'];

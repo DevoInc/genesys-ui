@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { PanelContext } from '../../context';
-import { PanelFooterAttrs } from './declarations';
-import { PanelBaseAttrs, PanelHelpAttrs } from '../../declarations';
+import { IPanelFooterAttrs } from './declarations';
+import { IPanelBaseAttrs, IPanelHelpAttrs } from '../../declarations';
 
 import {
   PanelFooterActions,
@@ -12,9 +12,9 @@ import {
 import { Typography } from '../../../Typography';
 
 export interface PanelFooterProps
-  extends PanelBaseAttrs,
-    PanelFooterAttrs,
-    PanelHelpAttrs {}
+  extends IPanelBaseAttrs,
+    IPanelFooterAttrs,
+    IPanelHelpAttrs {}
 
 export const InternalPanelFooter: React.FC<PanelFooterProps> = ({
   actions,
@@ -75,7 +75,7 @@ PanelFooter._Container = PanelFooterContainer;
 PanelFooter._Help = PanelFooterHelp;
 PanelFooter._Actions = PanelFooterActions;
 
-PanelFooter.displayName = 'PanelFooter';
+InternalPanelFooter.displayName = 'PanelFooter';
 
 PanelFooter._Container.displayName = 'PanelFooter._Container';
 PanelFooter._Help.displayName = 'PanelFooter._Help';

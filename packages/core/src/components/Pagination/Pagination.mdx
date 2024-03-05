@@ -9,6 +9,17 @@ import * as Stories from './Pagination.stories';
 ## Overview
 
 Component that provides a set of controls to navigate through a large set of data that is divided into pages.
+There is a set of components which has to be used to create a `Pagination` component.
+These are the pre-defined components based on dot notation:
+
+- `Pagination.Label`: The initial info block. Usually to show how many items
+  are rendered. E.g. '1 - 5 of 150 items'.
+- `Pagination.Range`: The selector to define the range of items per page.
+- `Pagination.Nav`: The page navigation.
+
+Depending on the space or other circumstances you can use all these components
+or only some of them. In the same way, the `Pagination.Nav` component has props
+to hide some parts.
 
 ## How to import
 
@@ -20,7 +31,7 @@ Component that provides a set of controls to navigate through a large set of dat
 
 ## Hooks
 
-- [usePagination](?path=/docs/components-core-navigation-pagination-hooks--docs)
+- [usePagination](?path=/docs/components-navigation-pagination-hooks--docs)
 
 ## Props
 

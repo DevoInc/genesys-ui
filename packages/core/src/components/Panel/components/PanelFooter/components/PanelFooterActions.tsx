@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { isEmpty } from 'lodash';
 
-import { PanelFooterAttrs } from '../declarations';
-import { PanelBaseAttrs } from '../../../declarations';
+import { IPanelFooterAttrs } from '../declarations';
+import { IPanelBaseAttrs } from '../../../declarations';
 
 import { Flex } from '../../../../Flex';
 import { ButtonGroup } from '../../../../ButtonGroup';
 
 export interface PanelFooterActionsProps
-  extends PanelBaseAttrs,
-    Pick<PanelFooterAttrs, 'actions' | 'children' | 'size'> {}
+  extends IPanelBaseAttrs,
+    Pick<IPanelFooterAttrs, 'actions' | 'children' | 'size'> {}
 
 export const PanelFooterActions: React.FC<PanelFooterActionsProps> = ({
   actions,

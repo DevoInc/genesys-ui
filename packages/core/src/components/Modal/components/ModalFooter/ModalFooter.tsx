@@ -1,21 +1,31 @@
 import * as React from 'react';
-import { StyledModalFooter, StyledModalFooterProps } from '../../styled';
-import { StyledOverloadCssProps } from '../../../../declarations';
+import { concat } from 'lodash';
 
+import type { IModal } from '../../declarations';
+import { modalFooterMixin } from './mixins';
+import { Panel, PanelFooterProps } from '../../../Panel';
+import { useTheme } from 'styled-components';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ModalFooterProps
-  extends StyledModalFooterProps,
-    StyledOverloadCssProps {
-  /** Sets array of buttons displayed on the bottom */
-  children: React.ReactNode;
-}
+  extends PanelFooterProps,
+    Pick<IModal, 'status'> {}
 
 export const ModalFooter: React.FC<ModalFooterProps> = ({
   children,
-  hasBoxShadow,
+  hasBackground = true,
   status,
   styles,
-}) => (
-  <StyledModalFooter css={styles} status={status} hasBoxShadow={hasBoxShadow}>
-    {children}
-  </StyledModalFooter>
-);
+  ...restPanelFooterProps
+}) => {
+  const theme = useTheme();
+  return (
+    <Panel.Footer
+      {...restPanelFooterProps}
+      hasBackground={hasBackground}
+      styles={concat(modalFooterMixin({ status, theme }), styles)}
+    >
+      {children}
+    </Panel.Footer>
+  );
+};

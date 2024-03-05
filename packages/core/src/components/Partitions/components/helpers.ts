@@ -1,11 +1,9 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { PartitionsItemProps } from './PartitionsItem';
+import type { IPartitions } from '../declarations';
 
 export interface partitionsContainerMixinProps
-  extends Pick<PartitionsItemProps, 'size'> {
-  /** If there is visual separators between the partition items. */
-  hasSeparators?: boolean;
+  extends Pick<IPartitions, 'size' | 'hasSeparators'> {
   theme: DefaultTheme;
 }
 

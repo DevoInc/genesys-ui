@@ -2,23 +2,21 @@ import * as React from 'react';
 import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
-import {
+import type {
   GlobalAriaProps,
   GlobalAttrProps,
   StyledOverloadCssProps,
 } from '../../../declarations';
-import {
-  partitionsContainerMixin,
-  partitionsContainerMixinProps,
-} from './helpers';
+import { partitionsContainerMixin } from './helpers';
 
+import type { IPartitions } from '../declarations';
 import { Flex } from '../../Flex';
 
 export interface PartitionsContainerProps
   extends Pick<GlobalAttrProps, 'id' | 'role'>,
     GlobalAriaProps,
     StyledOverloadCssProps,
-    partitionsContainerMixinProps {
+    Pick<IPartitions, 'hasSeparators' | 'size'> {
   children: React.ReactNode;
 }
 

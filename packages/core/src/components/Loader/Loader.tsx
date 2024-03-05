@@ -110,3 +110,7 @@ Loader.ProgressBar = LoaderProgressBar;
 Loader.Spinner = LoaderSpinner;
 
 InternalLoader.displayName = 'Loader';
+Loader.DevoLogoSpinner.displayName = 'Loader.DevoLogoSpinner';
+Loader.GradientContainer.displayName = 'Loader.GradientContainer';
+Loader.ProgressBar.displayName = 'Loader.ProgressBar';
+Loader.Spinner.displayName = 'Loader.Spinner';

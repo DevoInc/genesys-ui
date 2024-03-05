@@ -192,3 +192,5 @@ Popover.Arrow = StyledPopoverArrow;
 Popover.Panel = PopoverPanel;
 
 InternalPopover.displayName = 'Popover';
+Popover.Arrow.displayName = 'Popover.Arrow';
+Popover.Panel.displayName = 'Popover.Panel';

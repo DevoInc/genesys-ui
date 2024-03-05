@@ -15,15 +15,57 @@ input in a separate pop-up window without disrupting the main flow of the applic
 
 ## How to import
 
-<Source
-  code={`
-import { Modal } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Modal } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
 <Canvas of={Stories.Base} />
+
+There is a set of components which have to/should be used to build a `Modal` component.
+There are three components which are the base of the `Modal` component. This one is
+based on `Panel` component, so these internal components are based in too:
+
+- `Modal.Header`: it's equivalent to the `Panel.Header` component, but with more limited available props.
+- `Modal.Body`: it's equivalent to the `Panel.Body` component, but with more limited available props.
+- `Modal.Footer`: it's equivalent to the `Panel.Footer` component, but with more limited available props.
+  This last one is not strictly required to create a `Modal`.
+
+<Source
+  code={`
+<Modal>
+  <Modal.Header />
+  <Modal.Body>{children}</Modal.Body>
+  <Modal.Footer />
+</Modal>
+`}
+/>
+
+There are also optional components, which are not strictly necessary to build the main `Modal`
+component and therefore they have the `_` prefix:
+
+- `Modal._Backdrop`: it's the `Overlay` component as clickable background of the `Modal`.
+- `Modal._Panel`: it's the `panel` component as direct parent of the `Panel` based internal components
+  (`Panel.Header`... etc.).
+
+This way, the `Modal` component used as the wrapper of the `Modal.Header`, `Modal.Body` and
+`Modal.Footer` is a combination of a `Modal._Backdrop` and `Modal._Panel` components,
+so the real internal structure is:
+
+<Source
+  code={`
+<Modal._Backdrop>
+  <Modal._Panel>
+    <Modal.Header />
+    <Modal.Body>{children}</Modal.Body>
+    <Modal.Footer />
+  </Modal._Panel>
+</Modal._Backdrop>
+`}
+/>
+
+Anyway, define the component with this structure is only necessary when you need to apply custom styles to the
+`Modal._Backdrop` or `Modal._Panel`. That's the reason these types of component have the prefix `_`,
+because they are optional for building the main component.
 
 ## Cases
 

@@ -4,8 +4,6 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { useDetectScroll } from '../../hooks';
-
 import {
   GIAutoLayers,
   GICheckOkRoundedFilled,
@@ -21,7 +19,6 @@ import {
   IconButtonGoToDocs,
   IconButtonStatus,
   Modal,
-  ModalProps,
   Typography,
 } from '..';
 
@@ -35,8 +32,8 @@ const meta: Meta<typeof Modal> = {
   },
   args: {
     status: 'base',
-    shouldCloseOnOverlayClick: true,
-    windowSize: 'medium',
+    disableCloseOnOverlayClick: false,
+    windowSize: 'md',
     zIndex: 100,
   },
 };
@@ -44,41 +41,40 @@ const meta: Meta<typeof Modal> = {
 export default meta;
 type Story = StoryObj<typeof Modal>;
 
-const ModalWithButtons = (props: ModalProps) => {
+const ModalWithButtons = () => {
   const [isOpen, setOpen] = React.useState<boolean>(false);
   const closeModal = (msg: string) => {
     action(msg);
     setOpen(false);
   };
-
   return (
     <>
       {isOpen && (
-        <Modal
-          {...props}
-          footerButtons={[
-            <Button
-              colorScheme={'quiet'}
-              key={'cancel'}
-              onClick={() => {
-                closeModal('cancel');
-              }}
-            >
-              Cancel
-            </Button>,
-            <Button
-              colorScheme={'accent'}
-              key={'apply'}
-              onClick={() => {
-                closeModal('apply');
-              }}
-            >
-              Apply
-            </Button>,
-          ]}
-          onRequestClose={() => closeModal('onRequestClose')}
-        >
-          {ModalDemoContent}
+        <Modal onRequestClose={() => closeModal('onRequestClose')}>
+          <Modal.Header title="Modal title" />
+          <Modal.Body>{ModalDemoContent}</Modal.Body>
+          <Modal.Footer
+            actions={[
+              <Button
+                colorScheme={'quiet'}
+                key={'cancel'}
+                onClick={() => {
+                  closeModal('cancel');
+                }}
+              >
+                Cancel
+              </Button>,
+              <Button
+                colorScheme={'accent'}
+                key={'apply'}
+                onClick={() => {
+                  closeModal('apply');
+                }}
+              >
+                Apply
+              </Button>,
+            ]}
+          />
         </Modal>
       )}
       <Button onClick={() => setOpen(true)} colorScheme="accent-high">
@@ -89,44 +85,89 @@ const ModalWithButtons = (props: ModalProps) => {
 };
 
 export const WithButtons: Story = {
-  args: {
-    headerTitle: 'Modal window',
-  },
-  render: (args) => <ModalWithButtons {...args} />,
+  name: 'With footer buttons',
+  render: () => <ModalWithButtons />,
 };
 
 export const WithActions: Story = {
-  args: {
-    headerTitle: 'Modal window',
-    headerActions: [
-      <IconButton
-        key={'back'}
-        tooltip={'Back'}
-        icon={<GIToBack />}
-        onClick={() => {
-          action('back clicked');
-        }}
-      />,
-      <IconButton
-        key={'layers'}
-        tooltip={'Layers'}
-        icon={<GIAutoLayers />}
-        onClick={() => {
-          action('layers clicked');
-        }}
-      />,
-    ],
-  },
-  render: (args) => <ModalWithButtons {...args} />,
+  name: 'With header actions',
+  render: () =>
+    (() => {
+      const [isOpen, setOpen] = React.useState<boolean>(false);
+      const closeModal = (msg: string) => {
+        action(msg);
+        setOpen(false);
+      };
+      return (
+        <>
+          {isOpen && (
+            <Modal onRequestClose={() => closeModal('onRequestClose')}>
+              <Modal.Header
+                title="Modal title"
+                actions={[
+                  <IconButton
+                    key={'back'}
+                    colorScheme="quiet"
+                    circular
+                    tooltip={'Back'}
+                    icon={<GIToBack />}
+                    onClick={() => {
+                      action('back clicked');
+                    }}
+                  />,
+                  <IconButton
+                    key={'layers'}
+                    colorScheme="quiet"
+                    circular
+                    tooltip={'Layers'}
+                    icon={<GIAutoLayers />}
+                    onClick={() => {
+                      action('layers clicked');
+                    }}
+                  />,
+                ]}
+              />
+              <Modal.Body>{ModalDemoContent}</Modal.Body>
+              <Modal.Footer
+                actions={[
+                  <Button
+                    colorScheme={'quiet'}
+                    key={'cancel'}
+                    onClick={() => {
+                      closeModal('cancel');
+                    }}
+                  >
+                    Cancel
+                  </Button>,
+                  <Button
+                    colorScheme={'accent'}
+                    key={'apply'}
+                    onClick={() => {
+                      closeModal('apply');
+                    }}
+                  >
+                    Apply
+                  </Button>,
+                ]}
+              />
+            </Modal>
+          )}
+          <Button onClick={() => setOpen(true)} colorScheme="accent-high">
+            Open modal
+          </Button>
+        </>
+      );
+    })(),
 };
 
 export const Animated: Story = {
   render: () =>
     (() => {
       const [isOpen, setOpen] = React.useState<boolean>(false);
-      const onClickCallback = React.useCallback(() => {
-        setOpen(true);
-      }, []);
+      const closeModal = (msg: string) => {
+        action(msg);
+        setOpen(false);
+      };
       return (
         <AnimatePresence>
           {isOpen && (
@@ -140,16 +181,13 @@ export const Animated: Story = {
                 zIndex: 100,
               }}
             >
-              <Modal
-                headerTitle="Animated modal"
-                onRequestClose={() => setOpen(false)}
-                zIndex={100}
-              >
-                {ModalDemoContent}
+              <Modal onRequestClose={() => closeModal('onRequestClose')}>
+                <Modal.Header title="Modal title" />
+                <Modal.Body>{ModalDemoContent}</Modal.Body>
               </Modal>
             </motion.div>
           )}
-          <Button onClick={onClickCallback} colorScheme="accent-high">
+          <Button onClick={() => setOpen(true)} colorScheme="accent-high">
             Open modal
           </Button>
         </AnimatePresence>
@@ -160,52 +198,51 @@ export const Animated: Story = {
 export const Custom: Story = {
   render: () =>
     (() => {
-      const { hasScroll, targetElRef } = useDetectScroll();
       const [isOpen, setOpen] = React.useState<boolean>(false);
-
       const tokens = useTheme();
       const dialogHeaderIconTokens = tokens.cmp.dialog.headerIcon;
 
       return (
         <>
           {isOpen && (
-            <Modal.Container onRequestClose={() => setOpen(false)} zIndex={100}>
-              <Modal.Header>
-                <Flex alignItems="center" gap="cmp-sm">
-                  <GICheckOkRoundedFilled
-                    size={22}
-                    color={dialogHeaderIconTokens.color.background.success}
-                  />
-                  <Typography.Heading size="h4" truncateLine={1}>
-                    My custom Modal
-                  </Typography.Heading>
-                </Flex>
-                <Flex marginLeft="auto">
-                  <ButtonGroup size="md" gap="lg">
-                    <IconButtonStatus tooltip="Info" />
-                    <IconButtonClose tooltip="Close" />
+            <Modal._Backdrop zIndex={100} bgColor="lightseagreen">
+              <Modal._Panel styles="border-radius: 0;">
+                <Modal.Header onRequestClose={() => setOpen(false)}>
+                  <Flex alignItems="center" gap="cmp-sm">
+                    <GICheckOkRoundedFilled
+                      size={22}
+                      color={dialogHeaderIconTokens.color.background.success}
+                    />
+                    <Typography.Heading size="h4" truncateLine={1}>
+                      My custom Modal
+                    </Typography.Heading>
+                  </Flex>
+                  <Flex marginLeft="auto">
+                    <ButtonGroup size="md" gap="lg">
+                      <IconButtonStatus tooltip="Info" />
+                      <IconButtonClose tooltip="Close" />
+                    </ButtonGroup>
+                  </Flex>
+                </Modal.Header>
+                <Modal.Body>{ModalDemoContent}</Modal.Body>
+                <Modal.Footer>
+                  <Box marginRight="auto">
+                    <IconButtonGoToDocs
+                      href="https://www.google.com/"
+                      tooltip="Go to Docs"
+                    />
+                  </Box>
+                  <ButtonGroup>
+                    <Button colorScheme={'quiet'} key={0}>
+                      Cancel
+                    </Button>
+                    <Button colorScheme={'accent'} key={1}>
+                      Apply
+                    </Button>
                   </ButtonGroup>
-                </Flex>
-              </Modal.Header>
-              <Modal.Body modalBodyRef={targetElRef}>
-                {ModalDemoContent}
-              </Modal.Body>
-              <Modal.Footer hasBoxShadow={hasScroll}>
-                <Box marginRight="auto">
-                  <IconButtonGoToDocs
-                    href="https://www.google.com/"
-                    tooltip="Go to Docs"
-                  />
-                </Box>
-
-                <Button colorScheme={'quiet'} key={0}>
-                  Cancel
-                </Button>
-                <Button colorScheme={'accent'} key={1}>
-                  Apply
-                </Button>
-              </Modal.Footer>
-            </Modal.Container>
+                </Modal.Footer>
+              </Modal._Panel>
+            </Modal._Backdrop>
           )}
           <Button onClick={() => setOpen(true)} colorScheme="accent-high">
             Open modal

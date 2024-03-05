@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { PanelBaseAttrs, PanelHelpAttrs } from '../../declarations';
+import { IPanelBaseAttrs, IPanelHelpAttrs } from '../../declarations';
 
 import { PanelContext } from '../../context';
 
@@ -14,19 +14,19 @@ import {
   PanelHeaderIcon,
 } from './components';
 import {
-  PanelCloseAttrs,
-  PanelCollapseAttrs,
-  PanelHeaderAttrs,
-  PanelHeadingAttrs,
+  IPanelCloseAttrs,
+  IPanelCollapseAttrs,
+  IPanelHeaderAttrs,
+  IPanelHeadingAttrs,
 } from './declarations';
 
 export interface PanelHeaderProps
-  extends PanelBaseAttrs,
-    PanelHeaderAttrs,
-    PanelHelpAttrs,
-    PanelHeadingAttrs {
-  closeSettings?: PanelCloseAttrs;
-  collapseSettings?: PanelCollapseAttrs;
+  extends IPanelBaseAttrs,
+    IPanelHeaderAttrs,
+    IPanelHelpAttrs,
+    IPanelHeadingAttrs {
+  closeSettings?: IPanelCloseAttrs;
+  collapseSettings?: IPanelCollapseAttrs;
 }
 
 export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
@@ -121,7 +121,7 @@ PanelHeader._Container = PanelHeaderContainer;
 PanelHeader._Heading = PanelHeaderHeading;
 PanelHeader._Icon = PanelHeaderIcon;
 
-PanelHeader.displayName = 'PanelHeader';
+InternalPanelHeader.displayName = 'PanelHeader';
 
 PanelHeader._Actions.displayName = 'PanelHeader._Actions';
 PanelHeader._Close.displayName = 'PanelHeader._Close';

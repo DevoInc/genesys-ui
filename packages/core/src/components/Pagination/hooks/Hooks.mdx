@@ -34,7 +34,7 @@ It returns an object with the following values:
 
 <Canvas of={Stories.UsePagination} />
 
-#### Parameters
+### Parameters
 
 It receives the following parameters:
 
@@ -51,39 +51,6 @@ It receives the following parameters:
 `}
 />
 
-#### Usage
+### Usage
 
-<Source
-code={`
-const list = [...Array(22).keys()];
-    const paginationHook = usePagination({
-      list,
-      conf: {
-        initialPageSize: 5,
-      },
-    });
-
-    return (
-      <>
-        <Pagination {...args} paginationHook={paginationHook} />
-        {paginationHook.pageData.map((data, idx) => (
-          <p
-            key={idx}
-            style={{
-              margin: '1rem 0',
-              padding: '1rem',
-              color: '#484848',
-              fontSize: '1.4rem',
-              textAlign: 'center',
-              backgroundColor: 'rgba(210,210,210,0.45)',
-              borderRadius: '0.4rem',
-            }}
-          >
-            Item {Number(data) + 1}
-          </p>
-        ))}
-      </>
-    );
-
-`}
-/>
+<Source of={Stories.UsePagination} />

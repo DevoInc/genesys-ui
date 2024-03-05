@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { PanelHelpAttrs } from '../../../declarations';
-import { PanelFooterAttrs } from '../declarations';
+import { IPanelHelpAttrs } from '../../../declarations';
+import { IPanelFooterAttrs } from '../declarations';
 
 import { Flex } from '../../../../Flex';
 import {
@@ -14,8 +14,8 @@ import { Typography } from '../../../../Typography';
 
 export interface PanelFooterHelpProps
   extends Omit<IconButtonGoToDocsProps, 'href' | 'size' | 'tooltip'>,
-    Pick<PanelFooterAttrs, 'size' | 'children'>,
-    PanelHelpAttrs {}
+    Pick<IPanelFooterAttrs, 'size' | 'children'>,
+    IPanelHelpAttrs {}
 
 export const PanelFooterHelp: React.FC<PanelFooterHelpProps> = ({
   children,

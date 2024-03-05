@@ -11,31 +11,31 @@ import type {
 } from '../../declarations/htmlAttrs';
 import { PickUnion } from '../../typeFunctions';
 
-export type PanelSize = PickUnion<GlobalSize, 'xs' | 'sm' | 'md'>;
-export type PanelRemoveSpace = boolean;
-export type PanelBordered = boolean;
-export type PanelBoxShadow = boolean;
-export type PanelChildren = React.ReactNode;
-export type PanelActions = React.ReactElement[];
-export type PanelIcon = React.ReactNode;
+export type TPanelSize = PickUnion<GlobalSize, 'xs' | 'sm' | 'md'>;
+export type TPanelRemoveSpace = boolean;
+export type TPanelBordered = boolean;
+export type TPanelBoxShadow = boolean;
+export type TPanelChildren = React.ReactNode;
+export type TPanelActions = React.ReactElement[];
+export type TPanelIcon = React.ReactNode;
 
-export interface PanelHelpAttrs {
+export interface IPanelHelpAttrs {
   helpTooltip?: GlobalAttrProps['tooltip'];
   helpUrl?: LinkAttrProps['href'];
 }
 
-export interface PanelBaseAttrs
+export interface IPanelBaseAttrs
   extends StyledPolymorphicProps,
     StyledOverloadCssProps {}
 
-export interface PanelContainerAttrs {
+export interface IPanelContainerAttrs {
   /** Apply border at the top of the footer or bottom of the header */
-  bordered?: PanelBordered;
+  bordered?: TPanelBordered;
   /** Configuration for the header/footer actions */
-  actions?: PanelActions;
+  actions?: TPanelActions;
   /** Apply box-shadow at the top of the footer or bottom of the header */
-  hasBoxShadow?: PanelBoxShadow;
+  hasBoxShadow?: TPanelBoxShadow;
   /** Set the size for Panel header/footer components: spacing, size of internals... etc. */
-  size?: PanelSize;
-  children?: PanelChildren;
+  size?: TPanelSize;
+  children?: TPanelChildren;
 }

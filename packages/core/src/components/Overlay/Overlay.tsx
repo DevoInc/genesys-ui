@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
+import { concat } from 'lodash';
 
-import {
+import type {
   ContainerEventAttrProps,
   MouseEventAttrProps,
 } from '../../declarations';
+import type { IOverlay } from './declarations';
 
-import { overlayMixin, OverlayMixinProps } from './helpers';
+import { overlayMixin } from './helpers';
 
-import { Flex, FlexProps } from '../Flex';
-import { concat } from 'lodash';
+import { Flex, type FlexProps } from '../Flex';
 
 export interface OverlayProps
   extends Omit<FlexProps, 'opacity'>,
-    Omit<OverlayMixinProps, 'theme'>,
-    //native props
+    IOverlay,
     MouseEventAttrProps,
     Pick<ContainerEventAttrProps, 'onKeyUp' | 'onKeyDown'> {}
 

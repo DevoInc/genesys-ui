@@ -1,20 +1,15 @@
 import * as React from 'react';
 
-import { GlobalAriaProps, GlobalAttrProps } from '../../../declarations';
-import {
-  StyledPartitionsItem,
-  StyledPartitionsItemProps,
-} from './StyledPartitionsItem';
+import type { GlobalAriaProps, GlobalAttrProps } from '../../../declarations';
+import { StyledPartitionsItem } from './StyledPartitionsItem';
+import type { IPartitions, IPartitionsItem } from '../declarations';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface PartitionsItemProps
-  extends Pick<StyledPartitionsItemProps, 'size'>,
-    Pick<GlobalAttrProps, 'tooltip'>,
-    Pick<GlobalAriaProps, 'aria-label'> {
-  /** The background color of the partition item. */
-  color?: string;
-  /** The width in percentage [0-1]. The sum of all item widths must be one. */
-  width?: number;
-}
+  extends Pick<GlobalAttrProps, 'tooltip'>,
+    Pick<GlobalAriaProps, 'aria-label'>,
+    Pick<IPartitions, 'size'>,
+    IPartitionsItem {}
 
 export const PartitionsItem: React.FC<PartitionsItemProps> = ({
   'aria-label': ariaLabel,
@@ -26,7 +21,7 @@ export const PartitionsItem: React.FC<PartitionsItemProps> = ({
   return (
     <StyledPartitionsItem
       aria-label={ariaLabel}
-      size={size}
+      $size={size}
       title={tooltip}
       $color={color}
       $width={width}

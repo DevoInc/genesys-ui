@@ -4,7 +4,7 @@ import { concat } from 'lodash';
 
 import { useDetectScroll } from '../../hooks';
 
-import { PanelSize } from './declarations';
+import { TPanelSize } from './declarations';
 import {
   StyledOverloadCssProps,
   StyledPolymorphicProps,
@@ -38,7 +38,7 @@ export interface PanelProps
     | React.ReactNode;
   removeContentSpace?: boolean;
   /** Set size for Panel components */
-  size?: PanelSize;
+  size?: TPanelSize;
 }
 
 const InternalPanel = React.forwardRef<HTMLElement, PanelProps>(

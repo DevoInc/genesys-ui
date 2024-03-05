@@ -4,11 +4,11 @@ import { concat } from 'lodash';
 
 import { Flex } from '../../../../Flex';
 import { Icon, IconProps } from '../../../../Icon';
-import { PanelContainerAttrs } from '../../../declarations';
+import { IPanelContainerAttrs } from '../../../declarations';
 
 export interface PanelHeaderIconProps
   extends Omit<IconProps, 'iconId' | 'size'>,
-    Pick<PanelContainerAttrs, 'size'> {
+    Pick<IPanelContainerAttrs, 'size'> {
   icon: React.ReactNode;
 }
 

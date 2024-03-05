@@ -12,8 +12,8 @@ const meta: Meta<typeof Modal> = {
   component: Modal,
   args: {
     status: 'base',
-    shouldCloseOnOverlayClick: true,
-    windowSize: 'default',
+    disableCloseOnOverlayClick: false,
+    windowSize: 'md',
   },
 };
 
@@ -21,11 +21,8 @@ export default meta;
 type Story = StoryObj<typeof Modal>;
 
 export const Base: Story = {
-  args: {
-    headerTitle: 'Modal window',
-  },
-  render: (args) =>
-    ((props) => {
+  render: () =>
+    (() => {
       const [isOpen, setOpen] = React.useState<boolean>(false);
       const closeModal = (msg: string) => {
         action(msg);
@@ -35,18 +32,19 @@ export const Base: Story = {
       return (
         <>
           {isOpen && (
-            <Modal
-              {...props}
-              onRequestClose={() => closeModal('onRequestClose')}
-            >
-              <Typography.Paragraph gutterBottom="cmp-md">
-                A still more glorious dawn awaits finite but unbounded Hypatia
-                Cambrian explosion white dwarf the carbon in our apple pies.
-                Vanquish the impossible the sky calls to us Flatland two ghostly
-                white figures in coveralls and helmets are softly dancing are
-                creatures of the cosmos tendrils of gossamer clouds?
-              </Typography.Paragraph>
-              <Input label="Demo input" id="demo-input" />
+            <Modal onRequestClose={() => closeModal('onRequestClose')}>
+              <Modal.Header title="Modal title" />
+              <Modal.Body>
+                <Typography.Paragraph gutterBottom="cmp-md">
+                  A still more glorious dawn awaits finite but unbounded Hypatia
+                  Cambrian explosion white dwarf the carbon in our apple pies.
+                  Vanquish the impossible the sky calls to us Flatland two
+                  ghostly white figures in coveralls and helmets are softly
+                  dancing are creatures of the cosmos tendrils of gossamer
+                  clouds?
+                </Typography.Paragraph>
+                <Input label="Demo input" id="demo-input" />
+              </Modal.Body>
             </Modal>
           )}
           <Button onClick={() => setOpen(true)} colorScheme="accent-high">
@@ -54,5 +52,5 @@ export const Base: Story = {
           </Button>
         </>
       );
-    })(args),
+    })(),
 };

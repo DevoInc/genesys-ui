@@ -1,8 +1,8 @@
-import { PanelRemoveSpace } from '../../declarations';
+import { TPanelRemoveSpace } from '../../declarations';
 
-export interface PanelBodyAttrs {
+export interface IPanelBodyAttrs {
   /** If the body content is scrolled */
   hasScroll?: boolean;
   /** To remove the spacing in the footer (usually padding) */
-  removeSpace?: PanelRemoveSpace;
+  removeSpace?: TPanelRemoveSpace;
 }

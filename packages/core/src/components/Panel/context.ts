@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { PanelSize } from './declarations';
+import { TPanelSize } from './declarations';
 
 export interface PanelContextProps {
   scrolledBodyContent?: boolean;
-  size?: PanelSize;
+  size?: TPanelSize;
   bodyRef?: (node: HTMLElement) => void;
 }
 

@@ -6,8 +6,8 @@ import {
   GIAboutQuestionFaqHelpFilled,
   GIAttentionErrorAlertCautionFilled,
   GIErrorWarningDangerStopFilled,
-  GIInfoRound,
   GICheckOkRoundedFilled,
+  GIInfoRoundFilled,
 } from '@devoinc/genesys-icons';
 import type { IconType } from '@devoinc/genesys-icons';
 import type {
@@ -19,7 +19,7 @@ import type {
 const statusIconMap: { [key in ActiveStatus]: IconType } = {
   success: GICheckOkRoundedFilled,
   help: GIAboutQuestionFaqHelpFilled,
-  info: GIInfoRound,
+  info: GIInfoRoundFilled,
   error: GIErrorWarningDangerStopFilled,
   warning: GIAttentionErrorAlertCautionFilled,
 } as const;

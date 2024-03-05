@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ButtonSize } from '../Button';
+import type { ButtonSize } from '../Button';
 
 export const usePaginationStyles = ({ pageSizeOptions, size, lastPage }) => {
   // Width calc - Range Selector - Pagination

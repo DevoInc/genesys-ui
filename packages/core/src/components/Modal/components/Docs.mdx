@@ -1,34 +1,84 @@
 import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
 
-import * as ContainerStories from './ModalContainer/ModalContainer.stories';
+import * as BackdropStories from './ModalBackdrop/ModalBackdrop.stories';
+import * as PanelStories from './ModalPanel/ModalPanel.stories';
 import * as HeaderStories from './ModalHeader/ModalHeader.stories';
 import * as BodyStories from './ModalBody/ModalBody.stories';
 import * as FooterStories from './ModalFooter/ModalFooter.stories';
 
-<Meta
-  title="Components/Layout/Modal/Subcomponents/Docs"
-  of={ContainerStories}
-/>
+<Meta title="Components/Layout/Modal/Components/Docs" of={PanelStories} />
 
-# Subcomponents
+# Components
 
-Set of subcomponents that can be used to build a custom `Modal` component.
+There is a set of components which have to/should be used to build a `Modal` component.
+There are three components which are the base of the `Modal` component. This one is
+based on `Panel` component, so these internal components are based in too:
 
-## Container
+- `Modal.Header`: it's equivalent to the `Panel.Header` component, but with more limited available props.
+- `Modal.Body`: it's equivalent to the `Panel.Body` component, but with more limited available props.
+- `Modal.Footer`: it's equivalent to the `Panel.Footer` component, but with more limited available props.
+  This last one is not strictly required to create a `Modal`.
 
-Container for the `Modal` component. It includes the Overlay and the Modal itself.
+There are also optional components, which are not strictly necessary to build the main `Modal`
+component and therefore they have the `_` prefix:
+
+- `Modal._Backdrop`: it's the `Overlay` component as clickable background of the `Modal`.
+- `Modal._Panel`: it's the `panel` component as direct parent of the `Panel` based internal components
+  (`Panel.Header`... etc.).
+
+This way, the `Modal` component used as the wrapper of the `Modal.Header`, `Modal.Body` and
+`Modal.Footer` is a combination of a `Modal._Backdrop` and `Modal._Panel` components,
+so the real internal structure is:
+
+```jsx
+<Modal._Backdrop>
+  <Modal._Panel>
+    <Modal.Header />
+    <Modal.Body>{children}</Modal.Body>
+    <Modal.Footer />
+  </Modal._Panel>
+</Modal._Backdrop>
+```
+
+Anyway, define the component with this structure is only necessary when you need to apply custom styles to the
+`Modal._Backdrop` or `Modal._Panel`. That's the reason these types of component have the prefix `_`,
+because they are optional for building the main component. Therefore, the most times you will use this structure:
+
+```jsx
+<Modal>
+  <Modal.Header />
+  <Modal.Body>{children}</Modal.Body>
+  <Modal.Footer />
+</Modal>
+```
+
+## Modal.\_Backdrop
+
+Overlay for the `Modal` component.
 
 ### Basic usage
 
-<Canvas of={ContainerStories.Container} />
+<Canvas of={BackdropStories.Backdrop} story={{ height: '20rem' }} />
 
 ### Props
 
-<ArgTypes of={ContainerStories} />
+<ArgTypes of={BackdropStories} />
 
-## Header
+## Modal.\_Panel
 
-Header of the `Modal` component.
+Panel used as parent for the `Panel` based components.
+
+### Basic usage
+
+<Canvas of={PanelStories.Panel} />
+
+### Props
+
+<ArgTypes of={PanelStories} />
+
+## Modal.Header
+
+Header of the `Modal` component based on the `Panel.Header` component.
 
 ### Basic usage
 
@@ -38,9 +88,9 @@ Header of the `Modal` component.
 
 <ArgTypes of={HeaderStories} />
 
-## Body
+## Modal.Body
 
-Body of the `Modal` component.
+Body of the `Modal` component based on the `Panel.Body` component.
 
 ### Basic usage
 
@@ -50,9 +100,9 @@ Body of the `Modal` component.
 
 <ArgTypes of={BodyStories} />
 
-## Footer
+## Modal.Footer
 
-Footer of the `Modal` component.
+Footer of the `Modal` component based on the `Panel.Footer` component.
 
 ### Basic usage
 

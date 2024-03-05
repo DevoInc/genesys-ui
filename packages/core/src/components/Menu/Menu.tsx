@@ -47,3 +47,8 @@ export const Menu = InternalMenu as typeof InternalMenu & {
 Menu.Heading = MenuHeading;
 Menu.Item = MenuItem;
 Menu.Separator = MenuSeparator;
+
+InternalMenu.displayName = 'Menu';
+Menu.Heading.displayName = 'Menu.Heading';
+Menu.Item.displayName = 'Menu.Item';
+Menu.Separator.displayName = 'Menu.Separator';

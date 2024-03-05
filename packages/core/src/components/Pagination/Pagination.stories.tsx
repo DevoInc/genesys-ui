@@ -1,8 +1,17 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
+import type { TItem } from './declarations';
 import { Pagination, usePagination } from '../';
-import { Item } from './declarations';
+const itemStyle: React.CSSProperties = {
+  margin: '1rem 0',
+  padding: '1rem',
+  color: '#484848',
+  fontSize: '1.4rem',
+  textAlign: 'center',
+  backgroundColor: 'rgba(210,210,210,0.45)',
+  borderRadius: '0.4rem',
+};
 
 const meta: Meta<typeof Pagination> = {
   title: 'Components/Navigation/Pagination',
@@ -17,7 +26,7 @@ type Story = StoryObj<typeof Pagination>;
 
 export const Base: Story = {
   render: (args) =>
-    (() => {
+    ((args) => {
       const list = React.useMemo(() => [...Array(150).keys()], []);
       const paginationHook = usePagination({
         list,
@@ -28,24 +37,19 @@ export const Base: Story = {
 
       return (
         <>
-          <Pagination {...args} paginationHook={paginationHook} />
-          {paginationHook.pageData.map((data: Item, idx: number) => (
-            <p
-              key={idx}
-              style={{
-                margin: '1rem 0',
-                padding: '1rem',
-                color: '#484848',
-                fontSize: '1.4rem',
-                textAlign: 'center',
-                backgroundColor: 'rgba(210,210,210,0.45)',
-                borderRadius: '0.4rem',
-              }}
-            >
-              Item {(data as number) + 1}
-            </p>
-          ))}
+          <Pagination {...args} paginationHook={paginationHook}>
+            <Pagination.Label />
+            <Pagination.Range />
+            <Pagination.Nav />
+          </Pagination>
+          <ul>
+            {paginationHook.pageData.map((data: TItem, idx: number) => (
+              <li key={idx} style={itemStyle}>
+                Item {(data as number) + 1}
+              </li>
+            ))}
+          </ul>
         </>
       );
-    })(),
+    })(args),
 };

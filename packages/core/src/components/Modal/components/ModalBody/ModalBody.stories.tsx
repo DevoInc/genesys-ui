@@ -3,7 +3,7 @@ import { ModalBody } from './ModalBody';
 import { lorem } from '../../../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof ModalBody> = {
-  title: 'Components/Layout/Modal/Subcomponents',
+  title: 'Components/Layout/Modal/Components',
   component: ModalBody,
 };
 

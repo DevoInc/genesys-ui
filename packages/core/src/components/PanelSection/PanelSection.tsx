@@ -2,8 +2,8 @@ import * as React from 'react';
 import { DOMAttributes } from 'react';
 import { useTheme } from 'styled-components';
 
-import { PanelContainerAttrs, PanelHelpAttrs } from '../Panel/declarations';
-import { PanelHeadingAttrs } from '../Panel/components/PanelHeader/declarations';
+import { IPanelContainerAttrs, IPanelHelpAttrs } from '../Panel/declarations';
+import { IPanelHeadingAttrs } from '../Panel/components/PanelHeader/declarations';
 
 import { useDetectScroll } from '../../hooks';
 
@@ -46,14 +46,14 @@ const renderBackwardNavigation = ({
 
 export interface PanelSectionProps
   extends Pick<PanelProps, 'display' | 'id' | 'styles' | 'visibility'>,
-    PanelHelpAttrs,
-    Pick<PanelHeadingAttrs, 'title' | 'subtitle'> {
+    IPanelHelpAttrs,
+    Pick<IPanelHeadingAttrs, 'title' | 'subtitle'> {
   backwardTooltip?: string;
-  children?: React.ReactElement;
-  footerActions?: PanelContainerAttrs['actions'];
+  children?: React.ReactElement | React.ReactElement[];
+  footerActions?: IPanelContainerAttrs['actions'];
   footerContent?: React.ReactElement;
   footerHasBackground?: boolean;
-  headerActions?: PanelContainerAttrs['actions'];
+  headerActions?: IPanelContainerAttrs['actions'];
   height?: React.CSSProperties['height'];
   navigation?: React.ReactElement;
   onClickBackwardNav?: DOMAttributes<any>['onClick'];

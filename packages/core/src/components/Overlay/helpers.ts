@@ -1,8 +1,7 @@
-import * as React from 'react';
 import { rgba } from 'polished';
 import { css, DefaultTheme } from 'styled-components';
 
-import { OverlayBgColorScheme } from './declarations';
+import type { IOverlay, TOverlayBgColorScheme } from './declarations';
 
 import { isValidColor } from '../../helpers';
 
@@ -24,10 +23,10 @@ export const getOverlayBg = ({
   opacity,
   overlayBgTokens,
 }: {
-  bgColor: React.CSSProperties['backgroundColor'];
-  bgColorScheme: OverlayBgColorScheme;
-  bgGradient: React.CSSProperties['background'];
-  opacity: number;
+  bgColor: IOverlay['bgColor'];
+  bgColorScheme: TOverlayBgColorScheme;
+  bgGradient: IOverlay['bgGradient'];
+  opacity: IOverlay['opacity'];
   overlayBgTokens: DefaultTheme['cmp']['overlay']['color']['background'];
 }) => {
   if (bgGradient) {
@@ -49,19 +48,7 @@ export const getOverlayBg = ({
     : overlayBgTokens.light.opacity;
 };
 
-export interface OverlayMixinProps {
-  /** Specific background color of the overlay */
-  bgColor?: React.CSSProperties['backgroundColor'];
-  /** Predefined the color scheme for the background */
-  bgColorScheme?: OverlayBgColorScheme;
-  /** Specific gradient background */
-  bgGradient?: React.CSSProperties['background'];
-  /** It defines if the position overlay is fixed  */
-  fixed?: boolean;
-  /** If the Overlay allows to interact with the elements behind it */
-  hasInteractionBehind?: boolean;
-  /** Opacity of the overlay (value between 0 and 1) */
-  opacity?: number;
+export interface OverlayMixinProps extends IOverlay {
   theme: DefaultTheme;
 }
 

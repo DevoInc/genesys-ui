@@ -1,5 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
-import { PanelFooterAttrs } from './declarations';
+import { IPanelFooterAttrs } from './declarations';
 
 /**
  * Get the specific styles for Flex component when it's used as a PanelFooterContainer component
@@ -15,11 +15,11 @@ export const panelFooterContainerMixin = ({
   size,
   theme,
 }: {
-  bordered: PanelFooterAttrs['bordered'];
-  hasBackground: PanelFooterAttrs['hasBackground'];
-  hasBoxShadow: PanelFooterAttrs['hasBoxShadow'];
-  removeSpace: PanelFooterAttrs['removeSpace'];
-  size: PanelFooterAttrs['size'];
+  bordered: IPanelFooterAttrs['bordered'];
+  hasBackground: IPanelFooterAttrs['hasBackground'];
+  hasBoxShadow: IPanelFooterAttrs['hasBoxShadow'];
+  removeSpace: IPanelFooterAttrs['removeSpace'];
+  size: IPanelFooterAttrs['size'];
   theme: DefaultTheme;
 }) => {
   const panelFooterTokens = theme.cmp.panel.footer;

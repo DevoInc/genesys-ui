@@ -12,10 +12,10 @@ const InternalPartitions: React.FC<PartitionsProps> = ({
   size = 'md',
   hasSeparators,
   data = [
-    { value: 0.4, color: '#D62433' },
-    { value: 0.2, color: '#F7B94F' },
-    { value: 0.3, color: '#53BAED' },
-    { value: 0.1, color: '#03855A' },
+    { value: 0.4, color: 'error' },
+    { value: 0.2, color: 'warning' },
+    { value: 0.3, color: 'info' },
+    { value: 0.1, color: 'success' },
   ],
   ...nativeProps
 }) => {
@@ -42,9 +42,13 @@ const InternalPartitions: React.FC<PartitionsProps> = ({
 };
 
 export const Partitions = InternalPartitions as typeof InternalPartitions & {
-  Container: typeof PartitionsContainer;
-  Item: typeof PartitionsItem;
+  _Container: typeof PartitionsContainer;
+  _Item: typeof PartitionsItem;
 };
 
-Partitions.Container = PartitionsContainer;
-Partitions.Item = PartitionsItem;
+Partitions._Container = PartitionsContainer;
+Partitions._Item = PartitionsItem;
+
+InternalPartitions.displayName = 'Partitions';
+Partitions._Container.displayName = 'Partitions._Container';
+Partitions._Item.displayName = 'Partitions._Item';

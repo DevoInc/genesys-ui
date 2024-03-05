@@ -1,8 +1,8 @@
-import { PanelContainerAttrs, PanelRemoveSpace } from '../../declarations';
+import { IPanelContainerAttrs, TPanelRemoveSpace } from '../../declarations';
 
-export interface PanelFooterAttrs extends PanelContainerAttrs {
+export interface IPanelFooterAttrs extends IPanelContainerAttrs {
   /** Apply the raised surface background color to the footer */
   hasBackground?: boolean;
   /** To remove the spacing in the footer (usually padding) */
-  removeSpace?: PanelRemoveSpace;
+  removeSpace?: TPanelRemoveSpace;
 }

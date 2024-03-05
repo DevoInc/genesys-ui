@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box, InlineMessage, Typography } from '..';
+import { InlineMessage, Typography } from '..';
 
 const meta: Meta<typeof InlineMessage> = {
   title: 'Components/Feedback/InlineMessage',
@@ -30,9 +30,9 @@ export const Base: Story = {
   },
   args: {
     children: (
-      <Box padding="cmp-xs">
+      <InlineMessage.Panel>
         <Typography.Paragraph>This is an inline message</Typography.Paragraph>
-      </Box>
+      </InlineMessage.Panel>
     ),
   },
 };

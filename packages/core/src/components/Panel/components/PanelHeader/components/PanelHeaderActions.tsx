@@ -3,9 +3,9 @@ import { useTheme } from 'styled-components';
 import { concat, isEmpty } from 'lodash';
 
 import {
-  PanelActions,
-  PanelBaseAttrs,
-  PanelContainerAttrs,
+  TPanelActions,
+  IPanelBaseAttrs,
+  IPanelContainerAttrs,
 } from '../../../declarations';
 
 import { panelHeaderAppendMixin } from '../helpers';
@@ -13,9 +13,9 @@ import { panelHeaderAppendMixin } from '../helpers';
 import { ButtonGroup } from '../../../../ButtonGroup';
 
 export interface PanelHeaderActionsProps
-  extends PanelBaseAttrs,
-    Pick<PanelContainerAttrs, 'size' | 'actions'> {
-  actions: PanelActions;
+  extends IPanelBaseAttrs,
+    Pick<IPanelContainerAttrs, 'size' | 'actions'> {
+  actions: TPanelActions;
 }
 
 export const PanelHeaderActions: React.FC<PanelHeaderActionsProps> = ({
@@ -24,7 +24,7 @@ export const PanelHeaderActions: React.FC<PanelHeaderActionsProps> = ({
   size = 'md',
   styles,
 }) => {
-  const filteredActions: PanelActions = React.useMemo(
+  const filteredActions: TPanelActions = React.useMemo(
     () => (actions ? actions.filter((action) => !isEmpty(action)) : []),
     [actions],
   );

@@ -1,30 +1,38 @@
 import * as React from 'react';
 
-import { defaultTexts, type PaginationCommonInterface } from '../declarations';
+import { DEFAULT_TEXTS } from '../constants';
+import type { IPaginationCommonInterface } from '../declarations';
+import { PaginationContext } from '../context';
+
 import { HFlex } from '../../HFlex';
 import { Label } from '../../Label';
 import { SelectControl } from '../../SelectControl';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface PaginationRangeProps extends PaginationCommonInterface {}
+export interface PaginationRangeProps extends IPaginationCommonInterface {}
 
 export const PaginationRange: React.FC<PaginationRangeProps> = ({
   id,
   paginationHook,
-  size = 'md',
+  size,
   styles,
   texts,
 }) => {
+  const context = React.useContext(PaginationContext);
+  const evalSize = size || context.size;
+  const evalPaginationHook = paginationHook || context.paginationHook;
+  const evalTexts = texts || context.texts;
+
   // State
   const { pageSize, setPageSize, pageSizeOptions } = React.useMemo(
-    () => paginationHook,
-    [paginationHook],
+    () => evalPaginationHook,
+    [evalPaginationHook],
   );
 
   // Constants
   const { rangeText } = React.useMemo(
-    () => ({ ...defaultTexts, ...texts }),
-    [texts],
+    () => ({ ...DEFAULT_TEXTS, ...evalTexts }),
+    [evalTexts],
   );
 
   const onChangeRangeSelect = React.useCallback(
@@ -34,19 +42,19 @@ export const PaginationRange: React.FC<PaginationRangeProps> = ({
   const noOptionsMessage = React.useCallback(() => '', []);
 
   return (
-    <HFlex spacing="cmp-xxs" styles={styles}>
+    <HFlex spacing="cmp-xxs" styles={styles} flex="0 0 auto">
       <SelectControl
-        id={id ? `${id}-page-range-selector` : null}
+        id={id ? `${id}__page-range-selector` : null}
         noOptionsMessage={noOptionsMessage}
         onChange={onChangeRangeSelect}
         options={pageSizeOptions.map((item) => ({
           value: String(item),
           label: String(item),
         }))}
-        size={size}
+        size={evalSize}
         value={{ value: pageSize, label: String(pageSize) }}
       />
-      <Label size={size}>{rangeText}</Label>
+      <Label size={evalSize}>{rangeText}</Label>
     </HFlex>
   );
 };

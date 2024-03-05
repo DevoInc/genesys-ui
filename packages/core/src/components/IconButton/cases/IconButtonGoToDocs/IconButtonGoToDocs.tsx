@@ -62,6 +62,15 @@ export const IconButtonGoToDocs = React.forwardRef<
     const offset = size && getMarkerSize({ tokens: markerTokens, size }).offset;
     const offsetHovered =
       size && getMarkerSize({ tokens: markerTokens, size }).offsetHovered;
+    const hoveredMixin = css`
+      transition: all 0.2s ease;
+      &:hover > *:last-child,
+      &:focus > *:last-child,
+      &:active > *:last-child {
+        top: ${offsetHovered};
+        right: ${offsetHovered};
+      }
+    `;
     return (
       <IconButton
         {...restIconButtonProps}
@@ -79,6 +88,7 @@ export const IconButtonGoToDocs = React.forwardRef<
             colorScheme: 'help',
             theme,
           }),
+          hoveredMixin,
           styles,
         )}
       >
@@ -87,15 +97,6 @@ export const IconButtonGoToDocs = React.forwardRef<
           position="absolute"
           positionTop={offset}
           positionRight={offset}
-          styles={css`
-            transition: all 0.2s ease;
-            *:hover > &,
-            *:focus > &,
-            *:active > & {
-              top: ${offsetHovered};
-              right: ${offsetHovered};
-            }
-          `}
         >
           <Icon strong>
             <GIAngleUp

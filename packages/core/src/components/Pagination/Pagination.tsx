@@ -1,53 +1,28 @@
 import * as React from 'react';
 
-import type { StyledOverloadCssPropsWithRecord } from '../../declarations/styled';
-import {
-  defaultTexts,
-  type HideParts,
-  type PaginationCommonInterface,
-} from './declarations';
+import type { IPaginationCommonInterface } from './declarations';
+import { DEFAULT_TEXTS } from './constants';
+import { PaginationContext } from './context';
 
-import { Label } from '../Label';
-import {
-  PaginationContainer,
-  type PaginationContainerProps,
-} from './components/PaginationContainer';
 import { PaginationNav } from './components/PaginationNav';
 import { PaginationRange } from './components/PaginationRange';
+import { PaginationLabel } from './components';
+import { HFlex, type HFlexProps } from '../HFlex';
 
-const defaultHideParts = {
-  infoLabel: false,
-  rangeSelector: false,
-  firstPageBtn: false,
-  prevPageBtn: false,
-  nextPageBtn: false,
-  lastPageBtn: false,
-};
-
-export interface BasePaginationProps
-  extends PaginationCommonInterface,
-    Pick<
-      PaginationContainerProps,
-      'aria-label' | 'aria-describedby' | 'as' | 'WrapperComponent'
-    > {
-  hideParts?: HideParts;
-}
-
-export type PaginationProps = BasePaginationProps &
-  StyledOverloadCssPropsWithRecord<'container' | 'info' | 'range' | 'nav'>;
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface PaginationProps
+  extends IPaginationCommonInterface,
+    HFlexProps {}
 
 export const InternalPagination: React.FC<PaginationProps> = ({
-  'aria-label': ariaLabel,
-  'aria-describedby': ariaDescribedBy,
   as = 'nav',
-  hideParts = defaultHideParts,
-  id,
+  children,
+  justifyContent = 'flex-end',
   paginationHook,
   size = 'md',
-  styles,
-  subcomponentStyles,
+  spacing,
   texts,
-  WrapperComponent,
+  ...restHFlexProps
 }) => {
   // State
   const { pageFirstItem, pageLastItem, totalItems, pageSize } = React.useMemo(
@@ -57,7 +32,7 @@ export const InternalPagination: React.FC<PaginationProps> = ({
 
   // Constants
   const { infoTextFn } = React.useMemo(
-    () => ({ ...defaultTexts, ...texts }),
+    () => ({ ...DEFAULT_TEXTS, ...texts }),
     [texts],
   );
 
@@ -73,52 +48,32 @@ export const InternalPagination: React.FC<PaginationProps> = ({
   );
 
   return (
-    <PaginationContainer
-      aria-label={ariaLabel}
-      aria-describedby={ariaDescribedBy}
+    <HFlex
+      {...restHFlexProps}
       as={as}
-      id={id}
-      size={size}
-      styles={subcomponentStyles?.container || styles}
-      WrapperComponent={WrapperComponent}
+      justifyContent={justifyContent}
+      spacing={spacing || `cmp-${size}`}
     >
-      {!hideParts?.infoLabel && (
-        <Label size={size} styles={subcomponentStyles?.info}>
-          {paginationInfoText}
-        </Label>
-      )}
-      {!hideParts?.rangeSelector && (
-        <PaginationRange
-          id={id}
-          paginationHook={paginationHook}
-          texts={texts}
-          size={size}
-          styles={subcomponentStyles?.range}
-        />
-      )}
-      <PaginationNav
-        hideFirstPageBtn={hideParts.firstPageBtn}
-        hideLastPageBtn={hideParts.lastPageBtn}
-        hideNextPageBtn={hideParts.nextPageBtn}
-        hidePrevPageBtn={hideParts.prevPageBtn}
-        id={id}
-        paginationHook={paginationHook}
-        size={size}
-        styles={subcomponentStyles?.nav}
-        texts={texts}
-      />
-    </PaginationContainer>
+      <PaginationContext.Provider
+        value={{ size, texts, paginationHook, paginationInfoText }}
+      >
+        {children}
+      </PaginationContext.Provider>
+    </HFlex>
   );
 };
 
 export const Pagination = InternalPagination as typeof InternalPagination & {
-  Container: typeof PaginationContainer;
-  Info: typeof Label;
+  Label: typeof PaginationLabel;
   Nav: typeof PaginationNav;
   Range: typeof PaginationRange;
 };
 
-Pagination.Container = PaginationContainer;
-Pagination.Info = Label;
+Pagination.Label = PaginationLabel;
 Pagination.Nav = PaginationNav;
 Pagination.Range = PaginationRange;
+
+InternalPagination.displayName = 'Pagination';
+Pagination.Label.displayName = 'Pagination.Label';
+Pagination.Nav.displayName = 'Pagination.Nav';
+Pagination.Range.displayName = 'Pagination.Range';

@@ -2,12 +2,12 @@ import * as React from 'react';
 import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
-import { PanelFooterAttrs } from '../declarations';
+import { IPanelFooterAttrs } from '../declarations';
 import { panelFooterContainerMixin } from '../helpers';
 import { Flex, FlexProps } from '../../../../Flex';
 
 export interface PanelFooterContainerProps
-  extends PanelFooterAttrs,
+  extends IPanelFooterAttrs,
     FlexProps {}
 
 export const PanelFooterContainer: React.FC<PanelFooterContainerProps> = ({

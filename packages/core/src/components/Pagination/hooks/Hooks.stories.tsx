@@ -1,6 +1,15 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
+const itemStyle: React.CSSProperties = {
+  margin: '1rem 0',
+  padding: '1rem',
+  color: '#484848',
+  fontSize: '1.4rem',
+  textAlign: 'center',
+  backgroundColor: 'rgba(210,210,210,0.45)',
+  borderRadius: '0.4rem',
+};
 import { Pagination, usePagination } from '../..';
 
 const meta: Meta<typeof Pagination> = {
@@ -13,7 +22,7 @@ export default meta;
 type Story = StoryObj<typeof Pagination>;
 
 export const UsePagination: Story = {
-  render: (args) =>
+  render: () =>
     (() => {
       const list = React.useMemo(() => [...Array(22).keys()], []);
       const paginationHook = usePagination({
@@ -25,20 +34,13 @@ export const UsePagination: Story = {
 
       return (
         <>
-          <Pagination {...args} paginationHook={paginationHook} />
+          <Pagination paginationHook={paginationHook}>
+            <Pagination.Label />
+            <Pagination.Range />
+            <Pagination.Nav />
+          </Pagination>
           {paginationHook.pageData.map((data, idx) => (
-            <p
-              key={idx}
-              style={{
-                margin: '1rem 0',
-                padding: '1rem',
-                color: '#484848',
-                fontSize: '1.4rem',
-                textAlign: 'center',
-                backgroundColor: 'rgba(210,210,210,0.45)',
-                borderRadius: '0.4rem',
-              }}
-            >
+            <p key={idx} style={itemStyle}>
               Item {Number(data) + 1}
             </p>
           ))}

@@ -2,14 +2,14 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { PanelHeaderAttrs } from '../declarations';
+import { IPanelHeaderAttrs } from '../declarations';
 import { panelHeaderContainerMixin } from '../helpers';
 import { Flex, FlexProps } from '../../../../Flex';
 import { PanelContext } from '../../../context';
 
 export interface PanelHeaderContainerProps
   extends FlexProps,
-    Omit<PanelHeaderAttrs, 'actions'> {}
+    Omit<IPanelHeaderAttrs, 'actions'> {}
 
 export const PanelHeaderContainer: React.FC<PanelHeaderContainerProps> = ({
   alignItems,

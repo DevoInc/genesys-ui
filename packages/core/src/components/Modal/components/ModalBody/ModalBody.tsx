@@ -1,33 +1,36 @@
 import * as React from 'react';
-import { StyledModalBody, StyledModalBodyProps } from '../../styled';
-import { StyledOverloadCssProps } from '../../../../declarations';
+import { useTheme } from 'styled-components';
+import { concat } from 'lodash';
 
+import type { ILayoutBoxCss } from '../../../../declarations';
+import { PanelContext } from '../../../Panel/context';
+import { modalBodyMixin } from './mixins';
+import { Panel, type PanelBodyProps } from '../../../Panel';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ModalBodyProps
-  extends Omit<StyledModalBodyProps, 'hasBoxShadow'>,
-    StyledOverloadCssProps {
-  /** Whether the container has scroll */
-  hasScroll?: StyledModalBodyProps['hasBoxShadow'];
-  /** Ref for the modal content */
-  modalBodyRef?: (node: HTMLDivElement) => void;
-  /** Children of the modal content */
-  children: React.ReactNode;
-}
+  extends PanelBodyProps,
+    Pick<ILayoutBoxCss, 'padding'> {}
 
 export const ModalBody: React.FC<ModalBodyProps> = ({
-  contentPadding,
+  padding,
   children,
-  hasScroll,
-  modalBodyRef,
   styles,
 }) => {
+  const theme = useTheme();
+  const context = React.useContext(PanelContext);
   return (
-    <StyledModalBody
-      ref={modalBodyRef}
-      contentPadding={contentPadding}
-      hasBoxShadow={hasScroll}
-      css={styles}
+    <Panel.Body
+      styles={concat(
+        modalBodyMixin({
+          theme,
+          padding,
+          scrolledBodyContent: context.scrolledBodyContent,
+        }),
+        styles,
+      )}
     >
       {children}
-    </StyledModalBody>
+    </Panel.Body>
   );
 };

@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { PanelBaseAttrs, PanelContainerAttrs } from '../../declarations';
-import { PanelBodyAttrs } from './declarations';
+import { IPanelBaseAttrs, IPanelContainerAttrs } from '../../declarations';
+import { IPanelBodyAttrs } from './declarations';
 import { PanelContext } from '../../context';
 
 import { panelBodyMixin } from './helpers';
@@ -12,9 +12,9 @@ import { Box } from '../../../Box';
 import { Typography } from '../../../Typography';
 
 export interface PanelBodyProps
-  extends PanelBaseAttrs,
-    PanelBodyAttrs,
-    Pick<PanelContainerAttrs, 'size' | 'children'> {}
+  extends IPanelBaseAttrs,
+    IPanelBodyAttrs,
+    Pick<IPanelContainerAttrs, 'size' | 'children'> {}
 
 export const PanelBody = React.forwardRef<HTMLElement, PanelBodyProps>(
   ({ children, removeSpace, hasScroll, size, styles }, ref) => {

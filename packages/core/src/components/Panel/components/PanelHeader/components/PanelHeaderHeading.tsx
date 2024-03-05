@@ -3,23 +3,23 @@ import { css, useTheme } from 'styled-components';
 
 import { PANEL_HEADER_SIZES } from './constants';
 
-import { PanelHeadingAttrs } from '../declarations';
+import { IPanelHeadingAttrs } from '../declarations';
 
 import { Typography } from '../../../../Typography';
 import { Flex } from '../../../../Flex';
 import { IconButtonGoToDocs } from '../../../../IconButton';
 import { PanelHeaderIcon } from './PanelHeaderIcon';
 import {
-  PanelContainerAttrs,
-  PanelBaseAttrs,
-  PanelHelpAttrs,
+  IPanelContainerAttrs,
+  IPanelBaseAttrs,
+  IPanelHelpAttrs,
 } from '../../../declarations';
 
 export interface PanelHeaderHeadingProps
-  extends PanelBaseAttrs,
-    PanelHeadingAttrs,
-    Pick<PanelContainerAttrs, 'size'>,
-    PanelHelpAttrs {}
+  extends IPanelBaseAttrs,
+    IPanelHeadingAttrs,
+    Pick<IPanelContainerAttrs, 'size'>,
+    IPanelHelpAttrs {}
 
 export const PanelHeaderHeading: React.FC<PanelHeaderHeadingProps> = ({
   as,

@@ -124,15 +124,13 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
           )}
           width="auto"
         >
-          {React.isValidElement(children)
-            ? children
-            : typeof children === 'function'
-              ? children({
-                  toggle,
-                  isOpened: innerIsOpened,
-                  setOpened,
-                })
-              : null}
+          {typeof children === 'function'
+            ? children({
+                toggle,
+                isOpened: innerIsOpened,
+                setOpened,
+              })
+            : children}
         </Popover.Panel>
       )}
     </Popover>

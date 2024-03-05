@@ -1,12 +1,12 @@
 import { css, DefaultTheme } from 'styled-components';
 
 import { scrollbars } from '../../../../styled';
-import { PanelContainerAttrs } from '../../declarations';
-import { PanelBodyAttrs } from './declarations';
+import { IPanelContainerAttrs } from '../../declarations';
+import { IPanelBodyAttrs } from './declarations';
 
 export interface PanelBodyMixinProps
-  extends Pick<PanelContainerAttrs, 'size'>,
-    PanelBodyAttrs {
+  extends Pick<IPanelContainerAttrs, 'size'>,
+    IPanelBodyAttrs {
   theme: DefaultTheme;
 }
 
