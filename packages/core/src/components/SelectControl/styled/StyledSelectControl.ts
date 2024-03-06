@@ -65,6 +65,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
 
     return css`
       flex: 1 1 auto;
+      min-width: 0;
 
       .${classNamePrefix} {
         // CONTROL ///////////////////////////////////////////////////////////
@@ -162,7 +163,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
             padding-top: ${multipleSubtle && '0'};
             padding-bottom: ${multipleSubtle && '0'};
             white-space: ${multipleSubtle && 'nowrap'};
-            max-height: ${minHeight};
+            max-height: ${multipleSubtle && minHeight};
 
             // when select is sortable, an inline styles div without class name is rendered
             > [style] {
