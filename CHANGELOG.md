@@ -1,5 +1,28 @@
 # Changelog
 
+## [8.0.0](https://github.com/DevoInc/genesys-ui/compare/v7.0.0...v8.0.0) (2024-03-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* Now you have to use dot notation and only composition instead of props to create Modal, Panel and Pagination components.
+* Now the use of icons in components is only based on react components from genesys-icons library.
+
+### Features
+
+* **Avatar:** removed usage of icons based on fonts. ([aec171d](https://github.com/DevoInc/genesys-ui/commit/aec171d2d9701b28c230c082eebf0294e316b9e4))
+* New definition of Modal, Panel and Pagination components based in dot notation and only composition instead of props. ([dbe836f](https://github.com/DevoInc/genesys-ui/commit/dbe836f2f89cb011291f83bb3655f9937ba1460c))
+* refactor of layout interfaces ([e84a249](https://github.com/DevoInc/genesys-ui/commit/e84a24904e2d1a86621ba11af8b17b647c0288ae))
+* Removed use of icons based on fonts. ([5fe7b24](https://github.com/DevoInc/genesys-ui/commit/5fe7b24988aa01004e8314b8040e8543d3341d6b))
+* replace eslint rules with recommended ones ([4187d90](https://github.com/DevoInc/genesys-ui/commit/4187d901877543cdebcc423fdf5fbcae98d0020b))
+
+
+### Bug Fixes
+
+* avoid circular dependencies. ([a73f80e](https://github.com/DevoInc/genesys-ui/commit/a73f80e73d80f6c59e508f13eef90522486a4395))
+* removed unnecessary tests ([09a0da4](https://github.com/DevoInc/genesys-ui/commit/09a0da4d4de4b9a5f2555a3f08902554594d7ad3))
+* **Select:** fixed problem of filling space and max-height only when it's multipleSubtle variant. ([3472c23](https://github.com/DevoInc/genesys-ui/commit/3472c235b29d0c249db8b13c301f27f04b994d03))
+
 ## [7.0.0](https://github.com/DevoInc/genesys-ui/compare/v6.5.2...v7.0.0) (2024-02-23)
 
 
