@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 
-import { BaseProgressBarProps } from '../declarations';
+import type { IBaseProgressBar } from '../declarations';
 
 import { getProgressBgColor } from '../utils';
 
@@ -21,7 +21,7 @@ const sizeStroke = keyframes`
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledProgressBarCircularCircleInnerProps
-  extends Pick<BaseProgressBarProps, 'indeterminate' | 'percent' | 'status'> {
+  extends Pick<IBaseProgressBar, 'indeterminate' | 'percent' | 'status'> {
   rad: number;
 }
 

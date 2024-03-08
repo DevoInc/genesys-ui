@@ -1,13 +1,13 @@
 import React from 'react';
 
-import type { ProgressBarSize, ProgressBarStatus } from './declarations';
-import type { GlobalSize, GlobalStatus } from '../../declarations';
 import { STATUS_ICON_MAP } from '../../constants';
+import type { TProgressBarSize, TProgressBarStatus } from './declarations';
+import type { GlobalSize, GlobalStatus } from '../../declarations';
 
 export const MAX_PERCENT = 100;
 
 export const PROGRESSBAR_STATUS_ICON_MAP: {
-  [key in ProgressBarStatus]: React.ReactNode;
+  [key in TProgressBarStatus]: React.ReactNode;
 } = {
   progressing: null,
   error: STATUS_ICON_MAP.filled.error,
@@ -16,7 +16,7 @@ export const PROGRESSBAR_STATUS_ICON_MAP: {
 } as const;
 
 export const STATUS_ICON_CIRCULAR_MAP: {
-  [key in ProgressBarStatus]: React.ReactNode;
+  [key in TProgressBarStatus]: React.ReactNode;
 } = {
   progressing: null,
   error: STATUS_ICON_MAP.stroke.error,
@@ -25,14 +25,14 @@ export const STATUS_ICON_CIRCULAR_MAP: {
 } as const;
 
 export const ICON_CIRCULAR_SIZE_MAP: {
-  [key in ProgressBarSize]: GlobalSize;
+  [key in TProgressBarSize]: GlobalSize;
 } = {
   sm: 'xxxs',
   md: 'sm',
 } as const;
 
 export const ICON_STANDARD_SIZE_MAP: {
-  [key in ProgressBarSize]: GlobalSize;
+  [key in TProgressBarSize]: GlobalSize;
 } = {
   sm: 'xxxxs',
   md: 'xxxs',
@@ -48,7 +48,7 @@ export const STATUS_COLOR_SCHEME_MAP: {
 } as const;
 
 export const SQUARE: {
-  [key in ProgressBarSize]: number;
+  [key in TProgressBarSize]: number;
 } = {
   sm: 40,
   md: 60,

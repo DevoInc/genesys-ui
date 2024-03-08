@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { LoaderContext } from '../context';
 import { LOADER_SIZE_PROGRESS_AND_SPINNER } from '../constants';
-import { ProgressBarColorScheme } from '../../ProgressBar/declarations';
+import { TProgressBarColorScheme } from '../../ProgressBar/declarations';
 
 import { ProgressBar, ProgressBarProps } from '../../ProgressBar';
 
@@ -19,7 +19,7 @@ export const LoaderProgressBar: React.FC<LoaderProgressBarProps> = ({
     <ProgressBar
       {...restProgressBarProps}
       colorScheme={
-        colorScheme || (context.colorScheme as ProgressBarColorScheme)
+        colorScheme || (context.colorScheme as TProgressBarColorScheme)
       }
       showStatus
       size={LOADER_SIZE_PROGRESS_AND_SPINNER[size || context.size].progress}

@@ -4,13 +4,13 @@ import type {
   LoaderSize,
   TLoaderGradientPosition,
 } from './declarations';
-import type { ProgressBarSize } from '../ProgressBar/declarations';
+import type { TProgressBarSize } from '../ProgressBar/declarations';
 import type { SpinnerSize } from '../SpinnerLoader/constants';
 import type { BaseSize } from '../../declarations';
 import type { OverlayProps } from '../Overlay';
 
 export const LOADER_SIZE_PROGRESS_AND_SPINNER: {
-  [key in LoaderSize]: { progress: ProgressBarSize; spinner: SpinnerSize };
+  [key in LoaderSize]: { progress: TProgressBarSize; spinner: SpinnerSize };
 } = {
   sm: {
     progress: 'sm',

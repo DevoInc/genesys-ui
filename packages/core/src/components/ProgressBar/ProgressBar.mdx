@@ -57,6 +57,23 @@ you can use the `hasFloatingValidation` prop to include that info in a floating 
 
 <Canvas of={CaseStories.AccessibleFloatingValidation} />
 
+### Custom based in internal components
+
+Sometimes you need something very specific, which is not possible using only the component and its props.
+In these cases, you can use its internal components (`_` notation) to define that specific usage.
+We don't recommend this usage, but anyway it's available for very specific needs.
+
+These components are inheriting automatically some props by context from its parent `ProgressBar._Container`:
+
+- colorScheme.
+- percent.
+- size.
+- status.
+- type.
+- withCustomInfo.
+
+<Canvas of={CaseStories.Custom} />
+
 ## Props
 
 <ArgTypes of={Stories} />

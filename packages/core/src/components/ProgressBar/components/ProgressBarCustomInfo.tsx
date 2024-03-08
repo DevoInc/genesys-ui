@@ -1,11 +1,12 @@
 import * as React from 'react';
 
-import { BaseProgressBarProps } from '../declarations';
-import {
+import { STATUS_COLOR_SCHEME_MAP } from '../constants';
+import type { IBaseProgressBar } from '../declarations';
+import type {
   StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../../declarations/styled';
-import { STATUS_COLOR_SCHEME_MAP } from '../constants';
+import { ProgressBarContext } from '../context';
 
 import { Flex } from '../../Flex';
 import { Typography } from '../../Typography';
@@ -13,7 +14,7 @@ import { Typography } from '../../Typography';
 export interface ProgressBarCustomInfoProps
   extends StyledPolymorphicProps,
     StyledOverloadCssProps,
-    Pick<Partial<BaseProgressBarProps>, 'status' | 'size'> {
+    Pick<Partial<IBaseProgressBar>, 'status' | 'size'> {
   children?: React.ReactNode;
   endInfo?: string;
   startInfo?: string;
@@ -28,6 +29,9 @@ export const ProgressBarCustomInfo: React.FC<ProgressBarCustomInfoProps> = ({
   status,
   styles,
 }) => {
+  const context = React.useContext(ProgressBarContext);
+  const evalSize = size || context.size;
+  const evalStatus = status || context.status;
   return (
     <Flex
       as={as}
@@ -36,7 +40,9 @@ export const ProgressBarCustomInfo: React.FC<ProgressBarCustomInfoProps> = ({
     >
       {children ? (
         typeof children === 'string' ? (
-          <Typography.Paragraph size={size}>{children}</Typography.Paragraph>
+          <Typography.Paragraph size={evalSize}>
+            {children}
+          </Typography.Paragraph>
         ) : (
           children
         )
@@ -45,8 +51,8 @@ export const ProgressBarCustomInfo: React.FC<ProgressBarCustomInfoProps> = ({
           {startInfo && (
             <Flex.Item>
               <Typography.Paragraph
-                size={size}
-                colorScheme={STATUS_COLOR_SCHEME_MAP[status]}
+                size={evalSize}
+                colorScheme={STATUS_COLOR_SCHEME_MAP[evalStatus]}
               >
                 {startInfo}
               </Typography.Paragraph>
@@ -55,8 +61,8 @@ export const ProgressBarCustomInfo: React.FC<ProgressBarCustomInfoProps> = ({
           {endInfo && (
             <Flex.Item>
               <Typography.Paragraph
-                size={size}
-                colorScheme={STATUS_COLOR_SCHEME_MAP[status]}
+                size={evalSize}
+                colorScheme={STATUS_COLOR_SCHEME_MAP[evalStatus]}
               >
                 {endInfo}
               </Typography.Paragraph>

@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 
-import { BaseProgressBarProps } from '../declarations';
+import type { IBaseProgressBar } from '../declarations';
 
 import { getProgressBgColor, getTrackBgColor } from '../utils';
 
@@ -48,7 +48,7 @@ const movingStripes = (height) => keyframes`
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledProgressBarStandardProps
   extends Pick<
-    BaseProgressBarProps,
+    IBaseProgressBar,
     | 'animated'
     | 'colorScheme'
     | 'indeterminate'

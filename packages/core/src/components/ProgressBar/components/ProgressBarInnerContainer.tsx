@@ -1,14 +1,13 @@
 import * as React from 'react';
 
+import type { IBaseProgressBar } from '../declarations';
+import { ProgressBarContext } from '../context';
 import { Flex, type FlexProps } from '../../Flex';
 
-import type { ProgressBarType } from '../declarations';
-
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface ProgressBarInnerContainerProps extends FlexProps {
-  /** The type of the progress bar: standard or circular */
-  type?: ProgressBarType;
-}
+export interface ProgressBarInnerContainerProps
+  extends FlexProps,
+    Pick<IBaseProgressBar, 'type'> {}
 
 export const ProgressBarInnerContainer: React.FC<
   ProgressBarInnerContainerProps
@@ -21,13 +20,17 @@ export const ProgressBarInnerContainer: React.FC<
   type,
   ...restFlexProps
 }) => {
+  const context = React.useContext(ProgressBarContext);
+  const evalType = type || context.type;
   return (
     <Flex
       {...restFlexProps}
       alignItems={alignItems}
-      flexDirection={flexDirection || (type === 'circular' ? 'column' : 'row')}
+      flexDirection={
+        flexDirection || (evalType === 'circular' ? 'column' : 'row')
+      }
       justifyContent={
-        justifyContent || (type === 'circular' ? 'center' : 'space-between')
+        justifyContent || (evalType === 'circular' ? 'center' : 'space-between')
       }
       position={position}
     >

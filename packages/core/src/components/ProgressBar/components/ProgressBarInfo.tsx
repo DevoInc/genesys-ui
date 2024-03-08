@@ -1,20 +1,21 @@
 import * as React from 'react';
 
 import { ICON_CIRCULAR_SIZE_MAP, ICON_STANDARD_SIZE_MAP } from '../constants';
-import { BaseProgressBarProps } from '../declarations';
+import { IBaseProgressBar } from '../declarations';
 
-import { getPercent, getColorSchemeFromStatus, getStatus } from '../utils';
+import { getColorSchemeFromStatus } from '../utils';
 
 import { Box } from '../../Box';
 import { Flex, type FlexProps } from '../../Flex';
 import { FloatingHelper } from '../../FloatingHelper';
 import { Icon, type IconProps } from '../../Icon';
 import { Typography } from '../../Typography';
+import { ProgressBarContext } from '../context';
 
 export interface ProgressBarInfoProps
   extends FlexProps,
     Pick<
-      BaseProgressBarProps,
+      IBaseProgressBar,
       | 'floatingStatusHelperTooltip'
       | 'floatingStatusHelperId'
       | 'hasFloatingStatusHelper'
@@ -48,23 +49,32 @@ export const ProgressBarInfo: React.FC<ProgressBarInfoProps> = ({
   type,
   ...restFlexProps
 }) => {
-  const colorSchemeEval = getColorSchemeFromStatus({ percent, status });
-  const statusEval = getStatus({ percent, status });
+  const context = React.useContext(ProgressBarContext);
+  const evalSize = size || context.size;
+  const evalType = type || context.type;
+  const evalStatus = status || context.status;
+  const evalPercent = percent || context.percent;
+  const colorSchemeEval = getColorSchemeFromStatus({
+    percent: evalPercent,
+    status: evalStatus,
+  });
   return (
     <Flex
       {...restFlexProps}
       alignItems={alignItems}
-      flexDirection={flexDirection || (type === 'circular' ? 'column' : 'row')}
+      flexDirection={
+        flexDirection || (evalType === 'circular' ? 'column' : 'row')
+      }
       flexWrap={flexWrap}
       justifyContent={
-        justifyContent || (type === 'circular' ? 'center' : 'space-between')
+        justifyContent || (evalType === 'circular' ? 'center' : 'space-between')
       }
-      marginLeft={marginLeft || (type === 'circular' ? '0' : 'cmp-md')}
-      position={position || (type === 'circular' ? 'absolute' : 'relative')}
+      marginLeft={marginLeft || (evalType === 'circular' ? '0' : 'cmp-md')}
+      position={position || (evalType === 'circular' ? 'absolute' : 'relative')}
     >
       {children ? (
         typeof children === 'string' ? (
-          <Typography.Paragraph as="span" size={size}>
+          <Typography.Paragraph as="span" size={evalSize}>
             {children}
           </Typography.Paragraph>
         ) : (
@@ -76,20 +86,20 @@ export const ProgressBarInfo: React.FC<ProgressBarInfoProps> = ({
             <Flex
               as="span"
               margin={
-                statusEval === 'complete'
+                evalStatus === 'complete'
                   ? '0'
-                  : type === 'circular'
-                    ? size === 'sm'
+                  : evalType === 'circular'
+                    ? evalSize === 'sm'
                       ? '0 0 cmp-xxs 0'
                       : '0 0 cmp-xs 0'
-                    : '0 cmp-xs 0 0'
+                    : '0 0 0 cmp-xs'
               }
             >
               <Icon
                 size={
-                  type === 'circular'
-                    ? ICON_CIRCULAR_SIZE_MAP[size]
-                    : ICON_STANDARD_SIZE_MAP[size]
+                  evalType === 'circular'
+                    ? ICON_CIRCULAR_SIZE_MAP[evalSize]
+                    : ICON_STANDARD_SIZE_MAP[evalSize]
                 }
                 colorScheme={colorSchemeEval}
               >
@@ -100,37 +110,37 @@ export const ProgressBarInfo: React.FC<ProgressBarInfoProps> = ({
           {!indeterminate && (
             <Typography.Paragraph
               as="span"
-              colorScheme={status === 'error' ? colorSchemeEval : 'base'}
-              size={size}
+              colorScheme={evalStatus === 'error' ? colorSchemeEval : 'base'}
+              size={evalSize}
               styles={
-                type === 'circular' && statusEval === 'complete'
+                evalType === 'circular' && evalStatus === 'complete'
                   ? 'display: none;'
-                  : type === 'circular'
+                  : evalType === 'circular'
                     ? 'line-height: 1;'
                     : null
               }
             >
-              {getPercent({ percent, status })}%
+              {evalPercent}%
             </Typography.Paragraph>
           )}
           {statusHelper && hasFloatingStatusHelper && (
             <Box
               as="span"
               margin={
-                statusEval === 'complete'
+                evalStatus === 'complete'
                   ? '0'
-                  : type === 'circular'
-                    ? size === 'sm'
+                  : evalType === 'circular'
+                    ? evalSize === 'sm'
                       ? '0 0 cmp-xxs 0'
                       : '0 0 cmp-xs 0'
-                    : '0 cmp-xs 0 0'
+                    : '0 0 0 cmp-xs'
               }
             >
               <FloatingHelper
                 id={floatingStatusHelperId}
                 message={statusHelper}
                 status={colorSchemeEval}
-                size={size}
+                size={evalSize}
                 tooltip={floatingStatusHelperTooltip}
               />
             </Box>

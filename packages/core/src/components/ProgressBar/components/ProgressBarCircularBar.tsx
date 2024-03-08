@@ -18,15 +18,9 @@ import {
   StyledProgressBarCircularSVG,
   StyledProgressBarCircularSVGProps,
 } from '../styled';
-import {
-  getCxy,
-  getPercent,
-  getRadiant,
-  getRadio,
-  getStatus,
-  getStroke,
-} from '../utils';
+import { getCxy, getRadiant, getRadio, getStroke } from '../utils';
 import { SQUARE } from '../constants';
+import { ProgressBarContext } from '../context';
 
 export interface ProgressBarCircularBarProps
   extends GlobalAttrProps,
@@ -48,37 +42,41 @@ export const ProgressBarCircularBar: React.FC<ProgressBarCircularBarProps> = ({
   styles,
   ...nativeProps
 }) => {
+  const context = React.useContext(ProgressBarContext);
+  const evalSize = size || context.size;
+  const evalStatus = status || context.status;
+  const evalPercent = percent || context.percent;
   return (
     <StyledProgressBarCircularSVG
       {...nativeProps}
       css={styles}
       indeterminate={indeterminate}
-      percent={getPercent({ percent, status })}
-      status={getStatus({ percent, status })}
+      percent={evalPercent}
+      status={evalStatus}
       showStatus={showStatus}
-      width={SQUARE[size]}
-      height={SQUARE[size]}
-      data-tip={!showStatus ? percent + '%' : null}
+      width={SQUARE[evalSize]}
+      height={SQUARE[evalSize]}
+      data-tip={!showStatus ? evalPercent + '%' : null}
     >
       <StyledProgressBarCircular
-        colorScheme={colorScheme}
-        status={status}
-        size={size}
-        cx={getCxy(size)}
-        cy={getCxy(size)}
-        strokeWidth={getStroke(size)}
-        r={getRadio(size)}
+        colorScheme={colorScheme || context.colorScheme}
+        status={evalStatus}
+        size={evalSize}
+        cx={getCxy(evalSize)}
+        cy={getCxy(evalSize)}
+        strokeWidth={getStroke(evalSize)}
+        r={getRadio(evalSize)}
         fill={'none'}
       />
       <StyledProgressBarCircularCircleInner
         indeterminate={indeterminate}
-        percent={getPercent({ percent, status })}
-        status={getStatus({ percent, status })}
-        cx={getCxy(size)}
-        cy={getCxy(size)}
-        strokeWidth={getStroke(size)}
-        r={getRadio(size)}
-        rad={getRadiant(size)}
+        percent={evalPercent}
+        status={evalStatus}
+        cx={getCxy(evalSize)}
+        cy={getCxy(evalSize)}
+        strokeWidth={getStroke(evalSize)}
+        r={getRadio(evalSize)}
+        rad={getRadiant(evalSize)}
         fill={'none'}
       />
     </StyledProgressBarCircularSVG>

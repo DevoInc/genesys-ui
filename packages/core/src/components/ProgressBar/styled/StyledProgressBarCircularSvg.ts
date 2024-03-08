@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 
-import { BaseProgressBarProps } from '../declarations';
+import type { IBaseProgressBar } from '../declarations';
 
 const rotationInfinite = keyframes`
   from {
@@ -14,7 +14,7 @@ const rotationInfinite = keyframes`
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledProgressBarCircularSVGProps
   extends Pick<
-    BaseProgressBarProps,
+    IBaseProgressBar,
     'indeterminate' | 'percent' | 'status' | 'showStatus'
   > {}
 

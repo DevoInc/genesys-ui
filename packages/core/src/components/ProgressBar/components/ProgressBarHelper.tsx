@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { STATUS_COLOR_SCHEME_MAP } from '../constants';
 
-import type { BaseProgressBarProps } from '../declarations';
+import type { IBaseProgressBar } from '../declarations';
 import type {
   StyledOverloadCssProps,
   StyledPolymorphicProps,
@@ -17,7 +17,7 @@ export interface ProgressBarHelperProps
   extends Pick<GlobalAttrProps, 'id'>,
     StyledPolymorphicProps,
     StyledOverloadCssProps,
-    Pick<Partial<BaseProgressBarProps>, 'status' | 'size' | 'statusHelper'> {}
+    Pick<Partial<IBaseProgressBar>, 'status' | 'size' | 'statusHelper'> {}
 
 export const ProgressBarHelper: React.FC<ProgressBarHelperProps> = ({
   status,

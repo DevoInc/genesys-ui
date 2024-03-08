@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { ProgressBar } from '..';
@@ -62,4 +63,23 @@ export const AccessibleFloatingValidation: Story = {
     type: 'standard',
     percent: 48,
   },
+};
+
+export const Custom: Story = {
+  name: 'Custom based in internal components',
+  render: () =>
+    (() => {
+      return (
+        <ProgressBar._Container percent={30} status="error" type="standard">
+          <ProgressBar._InnerContainer>
+            <ProgressBar._StandardBar />
+            <ProgressBar._Info
+              hasFloatingStatusHelper
+              statusHelper={'Status helper content'}
+            />
+          </ProgressBar._InnerContainer>
+          <ProgressBar._CustomInfo startInfo="This is the start custom info" />
+        </ProgressBar._Container>
+      );
+    })(),
 };

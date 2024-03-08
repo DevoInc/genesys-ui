@@ -7,10 +7,10 @@ import {
 } from './constants';
 
 import {
-  BaseProgressBarProps,
-  ProgressBarColorScheme,
-  ProgressBarSize,
-  ProgressBarStatus,
+  IBaseProgressBar,
+  TProgressBarColorScheme,
+  TProgressBarSize,
+  TProgressBarStatus,
   TProgressBarCustomInfo,
 } from './declarations';
 
@@ -19,11 +19,11 @@ import type { IconProps } from '../Icon';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ProgressBarBaseUtilsProps
-  extends Pick<BaseProgressBarProps, 'percent' | 'status'> {}
+  extends Pick<IBaseProgressBar, 'percent' | 'status'> {}
 
 interface ProgressBarUtilsProps
   extends ProgressBarBaseUtilsProps,
-    Pick<BaseProgressBarProps, 'type'> {
+    Pick<IBaseProgressBar, 'type'> {
   icon?: IconProps['children'];
 }
 
@@ -62,7 +62,7 @@ export const getPercent = ({ percent, status }: ProgressBarBaseUtilsProps) =>
  * @return boolean
  */
 export const hasCustomInfo = (customInfo: TProgressBarCustomInfo) =>
-  customInfo && (customInfo.startInfo || customInfo.endInfo);
+  Boolean(customInfo?.startInfo) || Boolean(customInfo?.endInfo);
 
 /**
  * Get the icon for the ProgressBar not only based in the icon prop, but also in type, percent and status
@@ -87,23 +87,23 @@ export const getIcon = ({
 /**
  * Get the x & y coordinates for svg circle.
  * */
-export const getCxy = (size: ProgressBarSize): number => SQUARE[size] / 2;
+export const getCxy = (size: TProgressBarSize): number => SQUARE[size] / 2;
 
 /**
  * Get the stroke width for svg circle.
  * */
-export const getStroke = (size: ProgressBarSize): number => SQUARE[size] / 10;
+export const getStroke = (size: TProgressBarSize): number => SQUARE[size] / 10;
 
 /**
  * Get the radio for svg circle.
  * */
-export const getRadio = (size: ProgressBarSize): number =>
+export const getRadio = (size: TProgressBarSize): number =>
   getCxy(size) - getStroke(size) / 2;
 
 /**
  * Get the radiant for svg circle.
  * */
-export const getRadiant = (size: ProgressBarSize): number =>
+export const getRadiant = (size: TProgressBarSize): number =>
   getRadio(size) * Math.PI * 2;
 
 /**
@@ -113,7 +113,7 @@ export const getProgressBgColor = ({
   status,
   tokens,
 }: {
-  status: ProgressBarStatus;
+  status: TProgressBarStatus;
   tokens: DefaultTheme['cmp']['progressBar'];
 }): string => {
   const statusEval = STATUS_COLOR_SCHEME_MAP[status];
@@ -128,8 +128,8 @@ export const getTrackBgColor = ({
   status,
   tokens,
 }: {
-  colorScheme: ProgressBarColorScheme;
-  status: ProgressBarStatus;
+  colorScheme: TProgressBarColorScheme;
+  status: TProgressBarStatus;
   tokens: DefaultTheme['cmp']['progressBar'];
 }): string => {
   const statusEval = STATUS_COLOR_SCHEME_MAP[status];

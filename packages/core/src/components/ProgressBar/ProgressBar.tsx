@@ -8,8 +8,8 @@ import type { GlobalAttrProps } from '../../declarations/htmlAttrs';
 import type { GlobalAriaProps } from '../../declarations/ariaAttrs';
 import type { IconProps } from '../Icon';
 import {
-  BaseProgressBarProps,
-  ProgressBarType,
+  IBaseProgressBar,
+  TProgressBarType,
   TProgressBarCustomInfo,
 } from './declarations';
 
@@ -33,7 +33,7 @@ export interface ProgressBarProps
     StyledPolymorphicProps,
     StyledOverloadCssProps,
     Pick<
-      Partial<BaseProgressBarProps>,
+      Partial<IBaseProgressBar>,
       | 'colorScheme'
       | 'status'
       | 'size'
@@ -50,7 +50,7 @@ export interface ProgressBarProps
   /** Custom icon for progress info */
   icon?: IconProps['children'];
   /** The type of the progress bar: standard or circular */
-  type?: ProgressBarType;
+  type?: TProgressBarType;
 }
 
 const InternalProgressBar: React.FC<ProgressBarProps> = ({
@@ -72,22 +72,33 @@ const InternalProgressBar: React.FC<ProgressBarProps> = ({
   ...nativeProps
 }) => {
   const helperId = id ? `${id}-progress-helper` : null;
+  const evalPercent = getPercent({ percent, status });
+  const evalStatus = getStatus({ percent, status });
+  const withCustomInfo = showStatus && hasCustomInfo(customInfo);
   return (
-    <ProgressBarContainer {...nativeProps} id={id} styles={styles}>
+    <ProgressBarContainer
+      {...nativeProps}
+      colorScheme={colorScheme}
+      id={id}
+      percent={evalPercent}
+      size={size}
+      status={evalStatus}
+      styles={styles}
+      type={type}
+      withCustomInfo={withCustomInfo}
+    >
       <ProgressBarInnerContainer type={type}>
         {(type === 'standard' || !type) && (
           <ProgressBarStandardBar
             animated={animated}
             aria-errormessage={status === 'error' ? helperId : null}
             aria-invalid={status === 'error'}
-            aria-valuenow={
-              indeterminate ? null : getPercent({ percent, status })
-            }
+            aria-valuenow={indeterminate ? null : evalPercent}
             colorScheme={colorScheme}
             indeterminate={indeterminate}
-            percent={getPercent({ percent, status })}
+            percent={evalPercent}
             role="progressbar"
-            status={getStatus({ percent, status })}
+            status={evalStatus}
             showStatus={showStatus}
             size={size}
           />
@@ -96,16 +107,14 @@ const InternalProgressBar: React.FC<ProgressBarProps> = ({
           <ProgressBarCircularBar
             aria-errormessage={status === 'error' ? helperId : null}
             aria-invalid={status === 'error'}
-            aria-valuenow={
-              indeterminate ? null : getPercent({ percent, status })
-            }
+            aria-valuenow={indeterminate ? null : evalPercent}
             colorScheme={colorScheme}
             indeterminate={indeterminate}
-            percent={getPercent({ percent, status })}
+            percent={evalPercent}
             role="progressbar"
             showStatus={showStatus}
             size={size}
-            status={getStatus({ percent, status })}
+            status={evalStatus}
           />
         )}
         {showStatus && (
@@ -114,9 +123,9 @@ const InternalProgressBar: React.FC<ProgressBarProps> = ({
             floatingStatusHelperId={helperId}
             hasFloatingStatusHelper={hasFloatingStatusHelper}
             icon={getIcon({ type, icon, percent, status })}
-            percent={percent}
+            percent={evalPercent}
             size={size}
-            status={status}
+            status={evalStatus}
             statusHelper={statusHelper}
             type={type}
           />
@@ -126,7 +135,7 @@ const InternalProgressBar: React.FC<ProgressBarProps> = ({
         <ProgressBarCustomInfo
           endInfo={customInfo.endInfo}
           size={size}
-          status={status}
+          status={evalStatus}
           startInfo={customInfo.startInfo}
         />
       )}
@@ -135,7 +144,7 @@ const InternalProgressBar: React.FC<ProgressBarProps> = ({
           <ProgressBarHelper
             id={helperId}
             size={size}
-            status={status}
+            status={evalStatus}
             statusHelper={statusHelper}
           />
         </Flex>
@@ -145,19 +154,29 @@ const InternalProgressBar: React.FC<ProgressBarProps> = ({
 };
 
 export const ProgressBar = InternalProgressBar as typeof InternalProgressBar & {
-  Container: typeof ProgressBarContainer;
-  CustomInfo: typeof ProgressBarCustomInfo;
-  Helper: typeof ProgressBarHelper;
-  Info: typeof ProgressBarInfo;
-  InnerContainer: typeof ProgressBarInnerContainer;
-  StandardBar: typeof ProgressBarStandardBar;
-  CircularBar: typeof ProgressBarCircularBar;
+  _Container: typeof ProgressBarContainer;
+  _CustomInfo: typeof ProgressBarCustomInfo;
+  _Helper: typeof ProgressBarHelper;
+  _Info: typeof ProgressBarInfo;
+  _InnerContainer: typeof ProgressBarInnerContainer;
+  _StandardBar: typeof ProgressBarStandardBar;
+  _CircularBar: typeof ProgressBarCircularBar;
 };
 
-ProgressBar.Container = ProgressBarContainer;
-ProgressBar.CustomInfo = ProgressBarCustomInfo;
-ProgressBar.Helper = ProgressBarHelper;
-ProgressBar.Info = ProgressBarInfo;
-ProgressBar.InnerContainer = ProgressBarInnerContainer;
-ProgressBar.StandardBar = ProgressBarStandardBar;
-ProgressBar.CircularBar = ProgressBarCircularBar;
+ProgressBar._Container = ProgressBarContainer;
+ProgressBar._CustomInfo = ProgressBarCustomInfo;
+ProgressBar._Helper = ProgressBarHelper;
+ProgressBar._Info = ProgressBarInfo;
+ProgressBar._InnerContainer = ProgressBarInnerContainer;
+ProgressBar._StandardBar = ProgressBarStandardBar;
+ProgressBar._CircularBar = ProgressBarCircularBar;
+
+InternalProgressBar.displayName = 'ProgressBar';
+
+ProgressBar._Container.displayName = 'ProgressBar._Container';
+ProgressBar._CustomInfo.displayName = 'ProgressBar._CustomInfo';
+ProgressBar._Helper.displayName = 'ProgressBar._Helper';
+ProgressBar._Info.displayName = 'ProgressBar._Info';
+ProgressBar._InnerContainer.displayName = 'ProgressBar._InnerContainer';
+ProgressBar._StandardBar.displayName = 'ProgressBar._StandardBar';
+ProgressBar._CircularBar.displayName = 'ProgressBar._CircularBar';

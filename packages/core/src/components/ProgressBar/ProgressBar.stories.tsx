@@ -8,7 +8,7 @@ const meta: Meta<typeof ProgressBar> = {
   args: {
     colorScheme: 'dark',
     status: 'progressing',
-    size: 'lg',
+    size: 'md',
     type: 'standard',
     percent: 48,
   },

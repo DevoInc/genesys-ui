@@ -9,11 +9,10 @@ import type {
   GlobalAriaProps,
 } from '../../../declarations/ariaAttrs';
 import type { GlobalAttrProps } from '../../../declarations/htmlAttrs';
+import type { IBaseProgressBar } from '../declarations';
+import { ProgressBarContext } from '../context';
 
-import {
-  StyledProgressBarStandard,
-  StyledProgressBarStandardProps,
-} from '../styled';
+import { StyledProgressBarStandard } from '../styled';
 
 export interface ProgressBarStandardBarProps
   extends GlobalAttrProps,
@@ -21,7 +20,16 @@ export interface ProgressBarStandardBarProps
     Pick<FieldAriaProps, 'aria-errormessage' | 'aria-invalid'>,
     StyledPolymorphicProps,
     StyledOverloadCssProps,
-    StyledProgressBarStandardProps {}
+    Pick<
+      IBaseProgressBar,
+      | 'animated'
+      | 'colorScheme'
+      | 'indeterminate'
+      | 'percent'
+      | 'status'
+      | 'showStatus'
+      | 'size'
+    > {}
 
 export const ProgressBarStandardBar: React.FC<ProgressBarStandardBarProps> = ({
   animated,
@@ -34,17 +42,18 @@ export const ProgressBarStandardBar: React.FC<ProgressBarStandardBarProps> = ({
   styles,
   ...nativeProps
 }) => {
+  const context = React.useContext(ProgressBarContext);
   return (
     <StyledProgressBarStandard
       {...nativeProps}
       animated={animated}
-      colorScheme={colorScheme}
+      colorScheme={colorScheme || context.colorScheme}
       css={styles}
       indeterminate={indeterminate}
-      percent={percent}
+      percent={percent || context.percent}
       showStatus={showStatus}
-      size={size}
-      status={status}
+      size={size || context.size}
+      status={status || context.status}
       title={`${percent}%`}
     />
   );
