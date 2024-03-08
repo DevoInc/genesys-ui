@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.1.0](https://github.com/DevoInc/genesys-ui/compare/v8.0.0...v8.1.0) (2024-03-08)
+
+
+### Features
+
+* **ProgressBar:** added context for internal components and renamed types and interfaces. ([9a16b55](https://github.com/DevoInc/genesys-ui/commit/9a16b557e8a1103816367d93073c0d6f1dc2e94f))
+
 ## [8.0.0](https://github.com/DevoInc/genesys-ui/compare/v7.0.0...v8.0.0) (2024-03-06)
 
 
