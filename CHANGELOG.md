@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.1.1](https://github.com/DevoInc/genesys-ui/compare/v8.1.0...v8.1.1) (2024-03-11)
+
+
+### Bug Fixes
+
+* **Code:** import of wrong types ([05dffa7](https://github.com/DevoInc/genesys-ui/commit/05dffa7b22f0f2425ac493fc27ae23ee2feccfae))
+
 ## [8.1.0](https://github.com/DevoInc/genesys-ui/compare/v8.0.0...v8.1.0) (2024-03-08)
 
 
