@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { GIEyeViewFilled, GIPencilEdit } from '@devoinc/genesys-icons';
+import { GIEyeViewFilled, GIIdea, GIPencilEdit } from '@devoinc/genesys-icons';
 
 import { ActionRenderer } from './ActionRenderer';
 import { ActionContext } from '../../facade';
@@ -45,6 +45,7 @@ export const Base: Story = {
           },
           {
             text: 'Action 2',
+            Icon: <GIIdea />,
             onClick: () => {
               // eslint-disable-next-line no-console
               console.debug('Menu action 2');
