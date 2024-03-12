@@ -1,6 +1,6 @@
 {
   "name": "genesys-ui",
-  "version": "8.0.0",
+  "version": "8.1.1",
   "description": "",
   "type": "module",
   "private": true,
@@ -30,7 +30,7 @@
   "devDependencies": {
     "@devoinc/genesys-base-styles": "^1.2.1",
     "@devoinc/genesys-brand-devo": "^6.3.0",
-    "@devoinc/genesys-icons": "^3.8.0",
+    "@devoinc/genesys-icons": "^4.0.0",
     "@devoinc/genesys-tokens-types": "^6.4.0",
     "@devoinc/holo": "^1.0.5",
     "@release-it-plugins/workspaces": "^4.2.0",

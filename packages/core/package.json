@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui",
-  "version": "8.0.0",
+  "version": "8.1.1",
   "description": "",
   "type": "module",
   "types": "./dist/index.d.ts",
@@ -26,7 +26,7 @@
     "dpdm": "dpdm --exit-code circular:1 ./src/index.ts"
   },
   "peerDependencies": {
-    "@devoinc/genesys-icons": "3.x.x",
+    "@devoinc/genesys-icons": "^4.0.0",
     "@devoinc/genesys-tokens-types": "6.x.x",
     "@dnd-kit/core": "6.x.x",
     "@dnd-kit/sortable": "7.x.x",
@@ -34,8 +34,8 @@
     "lodash": "4.x.x",
     "polished": "4.x.x",
     "react": "16.x || 17.x || 18.x",
-    "react-dom": "16.x || 17.x || 18.x",
     "react-dock": "0.x.x",
+    "react-dom": "16.x || 17.x || 18.x",
     "react-grid-system": "8.x.x",
     "react-popper": "2.x.x",
     "react-select": "5.x.x",

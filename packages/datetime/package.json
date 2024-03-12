@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-datetime",
-  "version": "8.0.0",
+  "version": "8.1.1",
   "description": "",
   "type": "module",
   "scripts": {
@@ -29,8 +29,8 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "@devoinc/genesys-icons": "3.x.x",
-    "@devoinc/genesys-ui": "^8.0.0",
+    "@devoinc/genesys-icons": "^4.0.0",
+    "@devoinc/genesys-ui": "^8.1.1",
     "date-fns": "2.x.x",
     "react": "16.x || 17.x || 18.x",
     "react-popper": "2.x.x",

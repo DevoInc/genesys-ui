@@ -3,10 +3,11 @@ import {
   StyledInternalEditor,
   type StyledInternalEditorProps,
 } from './StyledInternalEditor';
-import { type UseEditorParams, useEditor } from '../../hooks';
+import { useEditor } from '../../hooks';
+import { IUseEditorParams } from '../../hooks/editor/declarations';
 
 export interface InternalEditorProps
-  extends UseEditorParams,
+  extends IUseEditorParams,
     Pick<StyledInternalEditorProps, 'bordered'> {
   /**
    * Width of the editor wrapper
