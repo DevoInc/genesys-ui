@@ -1,5 +1,5 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
-import { useIsMounted } from '../../../hooks/useIsMounted';
+import * as React from 'react';
+import { useMount } from 'ahooks';
 import type { IPaginationHook } from './declarations';
 
 export const usePagination: IPaginationHook = ({ list, conf }) => {
@@ -11,26 +11,30 @@ export const usePagination: IPaginationHook = ({ list, conf }) => {
     initialPageSize: 10,
   };
   const isHookActive = Boolean(conf);
-  const { current: isMounted } = useIsMounted();
-  const [page, setPage] = useState(initialPage || 0);
-  const [pageSize, setPageSize] = useState(initialPageSize || 10);
-  const [pageData, setPageData] = useState(list.slice(0, pageSize));
+  const [isMounted, setIsMounted] = React.useState(false);
+  const [page, setPage] = React.useState(initialPage || 0);
+  const [pageSize, setPageSize] = React.useState(initialPageSize || 10);
+  const [pageData, setPageData] = React.useState(list.slice(0, pageSize));
 
-  const lastPage = useMemo(
+  useMount(() => {
+    setIsMounted(true);
+  });
+
+  const lastPage = React.useMemo(
     () => Math.floor(((list.length || 1) - 1) / pageSize),
     [list.length, pageSize],
   );
-  const pageFirstItem = useMemo(() => page * pageSize, [page, pageSize]);
-  const pageLastItem = useMemo(
+  const pageFirstItem = React.useMemo(() => page * pageSize, [page, pageSize]);
+  const pageLastItem = React.useMemo(
     () => (page === lastPage ? list.length - 1 : pageFirstItem + pageSize - 1),
     [page, lastPage, pageFirstItem, pageSize, list.length],
   );
-  const totalItems = useMemo(() => list.length, [list.length]);
+  const totalItems = React.useMemo(() => list.length, [list.length]);
 
   /**
    * Sets the page to the given value, then updates de pageData
    */
-  const goToPage = useCallback(
+  const goToPage = React.useCallback(
     (pageNumber: number) => {
       if (pageNumber !== page) {
         pageNumber = Math.min(Math.max(0, pageNumber), lastPage); // Restrict page number to range
@@ -39,12 +43,12 @@ export const usePagination: IPaginationHook = ({ list, conf }) => {
     },
     [page, lastPage],
   );
-  const goToNextPage = useCallback(() => setPage(page + 1), [page]);
-  const goToPreviousPage = useCallback(() => setPage(page - 1), [page]);
-  const goToFirstPage = useCallback(() => setPage(0), []);
-  const goToLastPage = useCallback(() => setPage(lastPage), [lastPage]);
+  const goToNextPage = React.useCallback(() => setPage(page + 1), [page]);
+  const goToPreviousPage = React.useCallback(() => setPage(page - 1), [page]);
+  const goToFirstPage = React.useCallback(() => setPage(0), []);
+  const goToLastPage = React.useCallback(() => setPage(lastPage), [lastPage]);
 
-  const updatePageSize = useCallback(
+  const updatePageSize = React.useCallback(
     (newPageSize: number) => {
       const newPage = Math.floor(pageFirstItem / newPageSize);
       setPage(newPage);
@@ -71,7 +75,7 @@ export const usePagination: IPaginationHook = ({ list, conf }) => {
     }
   };
 
-  useEffect(updatePageDataOrResetPage, [
+  React.useEffect(updatePageDataOrResetPage, [
     list,
     page,
     pageFirstItem,
