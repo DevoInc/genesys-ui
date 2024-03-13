@@ -2,23 +2,18 @@ import * as React from 'react';
 import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
-import { Flex, type FlexProps } from '../../Flex';
-import type { FieldSize, FieldStatus } from '../../../declarations';
+import { IField } from '../../Field/declarations';
 import { getPxFromRem } from '../../../helpers';
-import {
-  switchControlContainerMixin,
-  SwitchControlContainerMixinProps,
-} from '../helpers';
+import { switchControlContainerMixin } from '../helpers';
+
+import { Flex, type FlexProps } from '../../Flex';
 
 export interface SwitchControlContainerProps
   extends FlexProps,
-    Omit<SwitchControlContainerMixinProps, 'theme'> {
-  heightPx: number;
-  disabled?: boolean;
+    Pick<IField, 'disabled' | 'size' | 'status'> {
   checked?: boolean;
+  heightPx: number;
   handleDiameter: number;
-  size: FieldSize;
-  status: FieldStatus;
 }
 
 export const SwitchControlContainer: React.FC<SwitchControlContainerProps> = ({
@@ -30,6 +25,7 @@ export const SwitchControlContainer: React.FC<SwitchControlContainerProps> = ({
   flexDirection,
   handleDiameter,
   height,
+  id,
   heightPx,
   minWidth,
   padding,
@@ -52,6 +48,7 @@ export const SwitchControlContainer: React.FC<SwitchControlContainerProps> = ({
       as={as}
       flexDirection={flexDirection || (checked ? 'row' : 'row-reverse')}
       height={height || `${heightPx}px`}
+      id={id ? `${id}-container` : undefined}
       inline
       minWidth={minWidth || `${minWidthPx}px`}
       padding={

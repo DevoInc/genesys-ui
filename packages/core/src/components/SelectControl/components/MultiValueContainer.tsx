@@ -3,7 +3,7 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { MultiValueProps as RSMultiValueProps } from 'react-select';
 
-import { SelectOption } from '../declarations';
+import { TSelectOption } from '../declarations';
 
 import { getChipSize } from '../utils';
 import { SelectControlContext } from '../context';
@@ -18,7 +18,7 @@ import { Box } from '../../Box';
 export interface MultiValueContainerProps<Option>
   extends RSMultiValueProps<Option> {}
 
-export const MultiValueContainer = <Option extends SelectOption>({
+export const MultiValueContainer = <Option extends TSelectOption>({
   data,
   selectProps,
   children,

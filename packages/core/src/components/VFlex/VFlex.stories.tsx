@@ -9,8 +9,7 @@ const meta: Meta<typeof VFlex> = {
   title: 'Components/Layout/Flex/VFlex',
   component: VFlex,
   args: {
-    alignItems: 'flex-start',
-    childrenFitFullWidth: true,
+    alignItems: 'stretch',
     childrenFitFullHeight: false,
     inline: false,
     justifyContent: 'flex-start',

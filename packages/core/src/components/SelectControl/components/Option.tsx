@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { components, OptionProps as RSOptionProps } from 'react-select';
 
-import { SelectOption } from '../declarations';
+import { TSelectOption } from '../declarations';
 
 import { CheckboxControl } from '../../CheckboxControl';
 import { HFlex } from '../../HFlex';
@@ -10,7 +10,7 @@ import { Icon } from '../../Icon';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface OptionProps<Option> extends RSOptionProps<Option> {}
 
-export const Option = <Option extends SelectOption>(
+export const Option = <Option extends TSelectOption>(
   props: OptionProps<Option>,
 ): React.ReactElement<OptionProps<Option>> => {
   return (

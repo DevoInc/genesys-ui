@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
-import { CommonSelectCmpsProps } from '../declarations';
+import { ICommonSelectCmps } from '../declarations';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface StyledSelectAllProps extends CommonSelectCmpsProps {}
+export interface StyledSelectAllProps extends ICommonSelectCmps {}
 
 export const StyledSelectAll = styled.div<StyledSelectAllProps>`
   ${({ multipleSubtle, size, theme }) => {

@@ -1,17 +1,17 @@
 import * as React from 'react';
 
+import type { IField } from '../declarations';
+
 import {
   StyledFieldRequiredMark,
-  StyledFieldRequiredMarkProps,
+  type StyledFieldRequiredMarkProps,
 } from './StyledFieldRequiredMark';
-import { StyledOverloadCssProps, UIColorScheme } from '../../../declarations';
-import { FieldContext } from '../context';
 
 export interface FieldRequiredMarkProps
   extends StyledFieldRequiredMarkProps,
-    StyledOverloadCssProps {
+    Pick<IField, 'styles'> {
   /** A title or description of the element, typically displayed as a tooltip when hovering over the element */
-  tooltip?: string;
+  tooltip?: IField['tooltip'];
 }
 
 export const FieldRequiredMark: React.FC<FieldRequiredMarkProps> = ({
@@ -19,10 +19,9 @@ export const FieldRequiredMark: React.FC<FieldRequiredMarkProps> = ({
   styles,
   tooltip,
 }) => {
-  const { status } = React.useContext(FieldContext);
   return (
     <StyledFieldRequiredMark
-      colorScheme={colorScheme || (status as UIColorScheme)}
+      colorScheme={colorScheme}
       css={styles}
       title={tooltip}
     >

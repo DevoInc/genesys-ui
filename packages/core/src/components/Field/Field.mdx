@@ -24,6 +24,25 @@ block with similar styles to a readonly input:
 
 <Canvas of={Stories.Base} />
 
+## Context
+
+There is defined a React context for the Field component, so its children are able to inherit som generic props
+used usually by field control components (`InputControl`, `SelectControl`, `CheckboxControl`... etc.). This context
+is integrated with the `Field` component wrapping its children. This way there are some generic props
+which can be inherited by its children:
+
+- **ariaErrorMessage**: it's the `helper` id prop when the status is error.
+- **ariaDescribedBy**: it's the `helper` id with any status.
+- **ariaLabelledBy**: it's the `label` id when the status is error.
+- **direction**.
+- **disabled**.
+- **hasWideControl**.
+- **id**.
+- **labelPosition**.
+- **required**.
+- **size**.
+- **status**.
+
 ## With an InputControl
 
 We can get any case of the component using only `Field` and its props as in this example with an InputControl, label and helper:
@@ -44,8 +63,10 @@ We don't recommend this usage, but anyway it's available for very specific needs
 - `Field._Helper`: The helper message to help the user to fill the field or for the validation message.
 - `Field._FloatingHelper`: The Helper, but displayed as a floating InlineMessage.
 
+These internal components don't inherit the context props, so you have to define the needed props in each one.
+
 This way, we can get the previous example, but using these internal components to get custom styles
-for the color of the helper (Not recommended usage):
+for the color of the helper (Not recommended usage, only for explanation purpose):
 
 <Canvas sourceState="shown" of={Stories.AdvancedUsage} />
 

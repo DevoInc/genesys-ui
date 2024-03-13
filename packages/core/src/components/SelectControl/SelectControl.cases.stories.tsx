@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Props, PropsValue } from 'react-select';
 
-import { SelectOption } from './declarations';
+import { TSelectOption } from './declarations';
 
 import { SelectControl, SelectControlProps } from './SelectControl';
 import {
@@ -15,7 +15,7 @@ import {
 // TODO: QUV-2116 Problem using components as value for options object
 //import { ESFlag, EUFlag, PTFlag, USFlag } from './__stories__/assets';
 
-interface SelectControlOption extends SelectOption {
+interface SelectControlOption extends TSelectOption {
   isDisabled?: boolean;
   fixed?: boolean;
 }
@@ -57,7 +57,7 @@ export const SingleOption: Story = {
         <SelectControl
           {...props}
           //menuIsOpen
-          onChange={(opt: SelectOption) => setValue(opt.value)}
+          onChange={(opt: TSelectOption) => setValue(opt.value)}
           options={[
             { value: 1, label: 'Option one' },
             { value: 2, label: 'Option two' },
@@ -78,7 +78,7 @@ export const SingleOptionWithIcons: Story = {
       return (
         <SelectControl
           {...props}
-          onChange={(opt: SelectOption) => setValue(opt.value)}
+          onChange={(opt: TSelectOption) => setValue(opt.value)}
           options={[
             { value: 1, label: 'Option one', icon: <GICheckOkRounded /> },
             { value: 2, label: 'Option two', icon: <GIInfoRound /> },
@@ -108,7 +108,7 @@ export const SingleOptionWithPrependContent: Story = {
         // TODO: QUV-2116 Problem using components as value for options object
         <SelectControl
           {...props}
-          onChange={(opt: SelectOption) => setValue(opt.value)}
+          onChange={(opt: TSelectOption) => setValue(opt.value)}
           options={[
             {
               value: 1,

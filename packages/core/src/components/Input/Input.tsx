@@ -8,7 +8,7 @@ export interface InputProps
   extends Omit<FieldProps, 'children' | 'role'>,
     Omit<
       InputControlProps,
-      'id' | 'size' | 'status' | 'disabled' | 'required' | 'subcomponentStyles'
+      'id' | 'size' | 'status' | 'disabled' | 'required'
     > {
   /** Name of the Icon from icon library font to be included in the input control. */
   inputControlIcon?: string;
@@ -69,12 +69,7 @@ export const Input: React.FC<InputProps> = ({
         {...restNativeInputProps}
         hideStatusIcon={helper && hasStatus(status)}
         aria-label={ariaLabel}
-        disabled={disabled}
         icon={helper && hasStatus(status) ? undefined : inputControlIcon}
-        id={id}
-        required={required}
-        size={size}
-        status={status}
         type={type}
       />
     </Field>

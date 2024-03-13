@@ -6,7 +6,7 @@ import {
 import { arrayMove } from '@dnd-kit/sortable';
 import { DragEndEvent } from '@dnd-kit/core';
 
-import type { SelectOption } from '../declarations';
+import type { TSelectOption } from '../declarations';
 
 import { SelectControlContext } from '../context';
 
@@ -51,7 +51,7 @@ export const ValueContainer: React.FC<ValueContainerProps> = ({
       const { active, over } = event;
 
       if (over && active.id !== over.id) {
-        const pp = props.getValue().map((e: SelectOption) => e.value);
+        const pp = props.getValue().map((e: TSelectOption) => e.value);
         const oldIndex = pp.indexOf(active.id);
         const newIndex = pp.indexOf(over.id);
 

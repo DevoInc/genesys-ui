@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components';
 
 import type { FieldProps } from '../../Field';
 import type { StyledOverloadCssProps } from '../../../declarations/styled';
-import type { FieldAttrProps } from '../../../declarations/htmlAttrs';
+import type { IFieldAttrs } from '../../../declarations/htmlAttrs';
 import type { TLegendPosition } from '../declarations';
 
 import { Flex, type FlexProps } from '../../Flex';
@@ -31,7 +31,7 @@ export interface FormGroupProps
       FormDistributorProps,
       'alignItems' | 'direction' | 'flexWrap' | 'itemsGap' | 'justifyContent'
     >,
-    Omit<FieldAttrProps, 'required'> {
+    Omit<IFieldAttrs, 'required'> {
   /** If the form group legend has label format. Usually when the form group is a checkbox or radio group. */
   hasLegendLabelFormat?: boolean;
   /** You can hide the legend, but maintaining it accessible by this prop. */

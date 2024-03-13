@@ -6,7 +6,7 @@ import {
 } from 'react-select';
 
 import { STATUS_ICON_MAP } from '../../../constants';
-import type { SelectOption } from '../declarations';
+import type { TSelectOption } from '../declarations';
 import type { InnerSelectControlProps } from '../InnerSelectControl';
 
 import { showMenuAndDropDown } from '../utils';
@@ -21,7 +21,7 @@ const mapStatusIcon: {
 } = {
   base: '' as RSDropdownIndicatorProps['selectProps']['status'],
   error: STATUS_ICON_MAP.filled.error,
-  success: STATUS_ICON_MAP.filled.error,
+  success: STATUS_ICON_MAP.filled.success,
   warning: STATUS_ICON_MAP.filled.warning,
 } as const;
 
@@ -30,7 +30,7 @@ export interface DropdownIndicatorProps<Option>
   extends RSDropdownIndicatorProps<Option>,
     Pick<InnerSelectControlProps, 'hideStatusIcon'> {}
 
-export const DropdownIndicator = <Option extends SelectOption>({
+export const DropdownIndicator = <Option extends TSelectOption>({
   selectProps,
   ...props
 }: DropdownIndicatorProps<Option>): React.ReactElement<

@@ -4,22 +4,22 @@ import { Field, type FieldProps } from '../Field';
 import {
   SelectControl,
   type SelectControlProps,
-  type SelectOption,
+  type TSelectOption,
 } from '../SelectControl';
 
-export interface ExtendedSelectOption extends SelectOption {
+export interface ExtendedTSelectOption extends TSelectOption {
   isDisabled?: boolean;
 }
 
 export interface SelectProps
   extends Omit<FieldProps, 'children'>,
     Omit<
-      SelectControlProps<ExtendedSelectOption>,
-      'id' | 'size' | 'aria-label'
+      SelectControlProps<ExtendedTSelectOption>,
+      'id' | 'size' | 'status' | 'required'
     > {}
 
 export const Select: React.FC<SelectProps> = ({
-  // COMMON ---------------------------------
+  'aria-label': ariaLabel,
   'aria-describedby': ariaDescribedBy,
   'aria-errormessage': ariaErrorMessage,
   'aria-invalid': ariaInvalid,
@@ -28,7 +28,6 @@ export const Select: React.FC<SelectProps> = ({
   required,
   size = 'md',
   status = 'base',
-  // FIELD ----------------------------------
   hasFloatingHelper,
   helper,
   hideLabel,
@@ -36,38 +35,28 @@ export const Select: React.FC<SelectProps> = ({
   labelPosition = 'top',
   styles,
   tooltip,
-  // SELECT ----------------------------------
   ...props
 }) => (
   <Field
-    // Common
-    aria-invalid={ariaInvalid}
     aria-describedby={ariaDescribedBy}
     aria-errormessage={ariaErrorMessage}
+    aria-invalid={ariaInvalid}
     disabled={disabled}
-    status={status}
-    id={id}
-    required={required}
-    size={size}
-    // FieldProps
     hasFloatingHelper={hasFloatingHelper}
     helper={helper}
     hideLabel={hideLabel}
+    id={id}
     label={label}
     labelPosition={labelPosition}
+    required={required}
+    size={size}
+    status={status}
     styles={styles}
     tooltip={tooltip}
   >
     <SelectControl
-      // Common
+      aria-label={ariaLabel}
       aria-invalid={ariaInvalid}
-      aria-describedby={ariaDescribedBy}
-      aria-errormessage={ariaErrorMessage}
-      status={status}
-      id={id}
-      required={required}
-      size={size}
-      // Select
       {...props}
     />
   </Field>

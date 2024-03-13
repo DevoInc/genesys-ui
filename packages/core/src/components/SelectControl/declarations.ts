@@ -1,13 +1,13 @@
 import * as React from 'react';
 
 import type { ChipProps } from '../Chip';
-import {
+import type {
   BaseSize,
   ControlWidth,
-  FieldStatus,
+  TFieldStatus,
 } from '../../declarations/commonProps';
 
-export type SelectOption = {
+export type TSelectOption = {
   readonly value: string | number;
   readonly label: string;
 
@@ -17,7 +17,7 @@ export type SelectOption = {
   readonly fixed?: boolean;
 };
 
-export interface CommonSelectCmpsProps {
+export interface ICommonSelectCmps {
   /** Fixed block of content at the beginning of the select */
   addonToLeft?: React.ReactNode;
   /** Fixed block of content at the end of the select */
@@ -46,7 +46,7 @@ export interface CommonSelectCmpsProps {
   /** Allow sorting options in a multivalue select */
   sortable?: boolean;
   /** This property defines the status color schema for the input */
-  status?: FieldStatus;
+  status?: TFieldStatus;
   /** This property defines whether the component is read-only */
   readOnly?: boolean;
   /** If it's set to true then the portal for dropdown menu is appended

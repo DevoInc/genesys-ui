@@ -5,7 +5,7 @@ import type { GlobalAriaProps } from '../../../declarations/ariaAttrs';
 import type {
   ButtonAttrProps,
   GlobalAttrProps,
-  InputAttrProps,
+  IInputAttrs,
 } from '../../../declarations/htmlAttrs';
 import type { SelectionScheme } from '../../../declarations/commonProps';
 import type {
@@ -25,7 +25,7 @@ export interface ChipHiddenInputProps
     Pick<ButtonAttrProps, 'name'>,
     FocusEventAttrProps,
     FieldEventAttrProps,
-    Pick<InputAttrProps, 'value'>,
+    Pick<IInputAttrs, 'value'>,
     StyledOverloadCssProps {
   /** It's equivalent to the native defaultChecked prop, and it has to be used only in uncontrolled mode.*/
   defaultSelected?: boolean;

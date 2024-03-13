@@ -1,16 +1,14 @@
 import * as React from 'react';
 
-// declarations
-import type { StyledOverloadCssProps } from '../../../declarations/styled';
-import type { FieldControlCommonProps } from '../../../declarations/commonProps';
+import type { IFieldControl } from '../../../declarations/commonProps';
+import { IField } from '../../Field/declarations';
 
-// components
 import { Flex } from '../../Flex';
 
 export interface InputControlContainerProps
-  extends Pick<FieldControlCommonProps, 'tooltip'>,
+  extends Pick<IField, 'styles'>,
     Pick<
-      FieldControlCommonProps,
+      IFieldControl,
       | 'onClick'
       | 'onMouseDown'
       | 'onMouseLeave'
@@ -18,8 +16,8 @@ export interface InputControlContainerProps
       | 'onMouseOut'
       | 'onMouseOver'
       | 'onMouseUp'
-    >,
-    StyledOverloadCssProps {
+      | 'tooltip'
+    > {
   children: React.ReactNode;
 }
 

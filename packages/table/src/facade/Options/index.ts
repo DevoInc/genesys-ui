@@ -1,2 +1,2 @@
 export * from './ContextOptions';
-export * from './getSelectOptions';
+export * from './getTSelectOptions';

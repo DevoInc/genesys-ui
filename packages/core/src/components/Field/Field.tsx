@@ -1,75 +1,26 @@
 import * as React from 'react';
 
-// types and constants
 import { FIELD_LABEL_POS_DIRECTION_MAP } from './constants';
 
-import {
-  FieldAttrProps,
-  ControlWidth,
-  FieldSize,
-  FieldStatus,
-  GlobalAttrProps,
-} from '../../declarations';
-import { LabelPosition } from './declarations';
-import { UIColorScheme } from '../../declarations';
+import type { IField } from './declarations';
+import type { UIColorScheme } from '../../declarations';
 
-// utils
-import { WithRequired } from '../../typeFunctions';
 import { hasStatus } from '../../utils/validations';
 
-// components
 import {
   FieldAddon,
   FieldContainer,
-  FieldContainerProps,
   FieldControlDistributor,
   FieldFloatingHelper,
   FieldLabel,
   FieldLabelDistributor,
   FieldRequiredMark,
-  FieldRequiredMarkProps,
 } from './components';
 import { FieldHelper } from './components/FieldHelper';
+import { FieldContext } from './context';
 
-export type FieldChildrenProps = React.ReactElement<{
-  'aria-describedby': React.HTMLAttributes<unknown>['aria-describedby'];
-  'aria-errormessage': React.HTMLAttributes<unknown>['aria-errormessage'];
-  'aria-label': React.HTMLAttributes<unknown>['aria-label'];
-  'aria-labelledby': React.HTMLAttributes<unknown>['aria-labelledby'];
-  id: string;
-  required: boolean;
-  size: FieldSize;
-  status: FieldStatus;
-  [key: string]: unknown;
-}>;
-
-export interface FieldProps
-  extends WithRequired<GlobalAttrProps, 'id'>,
-    Pick<FieldAttrProps, 'disabled' | 'required'>,
-    Omit<FieldContainerProps, 'children'> {
-  /** Children to be passed */
-  children: FieldChildrenProps;
-  /** Field control predefined width for Input, Select… etc. */
-  controlWidth?: ControlWidth;
-  /** If the Helper is rendered as a floating element displayed by clicking a trigger. */
-  hasFloatingHelper?: boolean;
-  /** If the field control is rendered filling all the available space (e.g. Input component) or only its own width (e.g. Switch component). */
-  hasWideControl?: boolean;
-  /** The message for the Helper: it's displayed as extra info to fill the form or the field or as status message if there are error, warning or success contexts. */
-  helper?: React.ReactNode;
-  /** Make the label not visible, but still accessible. Anyway aria-label always exits in input control. */
-  hideLabel?: boolean;
-  /** The title to be shown on hover of the required marker of the Field._ */
-  requiredMarkTooltip?: FieldRequiredMarkProps['tooltip'];
-  /** Label for the input (aria-label is the same as Label) */
-  label: React.ReactNode;
-  /** Position of the label text relative to the input control. The position 'right' for the label is only recommended for checkbox and radio controls. */
-  labelPosition?: LabelPosition;
-  /** Size of the input: height, padding, font-size... etc. */
-  size?: FieldSize;
-  /** This property defines the status color schema for the Field._ */
-  status?: FieldStatus;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface FieldProps extends IField {}
 
 export const PartField: React.FC<FieldProps> = ({
   as,
@@ -92,8 +43,8 @@ export const PartField: React.FC<FieldProps> = ({
   tooltip,
   ...mouseEventAttrProps
 }) => {
-  const helperId = helper ? `${id}-field-helper` : undefined;
-  const labelId = label ? `${id}-field-label` : undefined;
+  const helperId = helper ? `${id}-helper` : undefined;
+  const labelId = label ? `${id}-label` : undefined;
   const showFloatingHelper = helper && hasFloatingHelper;
   const labelPositionUpper = labelPosition.toUpperCase();
   const direction = FIELD_LABEL_POS_DIRECTION_MAP[labelPositionUpper];
@@ -114,10 +65,7 @@ export const PartField: React.FC<FieldProps> = ({
     <Field._Container
       {...mouseEventAttrProps}
       as={as}
-      direction={direction}
       role={role}
-      size={size}
-      status={status}
       styles={styles}
       tooltip={tooltip}
     >
@@ -142,16 +90,23 @@ export const PartField: React.FC<FieldProps> = ({
           wide={hasWideControl}
           width={controlWidth}
         >
-          {React.cloneElement(children, {
-            'aria-describedby':
-              children.props['aria-describedby'] || helperId || undefined,
-            'aria-errormessage':
-              status === 'error'
-                ? children.props['aria-errormessage'] || helperId
-                : undefined,
-            'aria-labelledby':
-              children.props['aria-labelledby'] || labelId || undefined,
-          })}
+          <FieldContext.Provider
+            value={{
+              ariaErrorMessage: helperId,
+              ariaDescribedBy: helperId,
+              ariaLabelledBy: labelId,
+              direction,
+              disabled,
+              hasWideControl,
+              id,
+              labelPosition,
+              required,
+              size,
+              status,
+            }}
+          >
+            {children}
+          </FieldContext.Provider>
           {hideLabel && showFloatingHelper && FloatingHelperBlock}
         </Field._ControlDistributor>
       </Field._LabelDistributor>

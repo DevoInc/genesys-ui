@@ -71,6 +71,7 @@ export const AdvancedUsage: Story = {
       <Field._Container>
         <Field._LabelDistributor>
           <Field._Label
+            size="sm"
             htmlFor="story-field"
             requiredMark={
               <Field._RequiredMark tooltip="This field is required" />
@@ -78,9 +79,10 @@ export const AdvancedUsage: Story = {
           >
             Field label
           </Field._Label>
-          <InputControl aria-label="Field label" id="story-field" />
+          <InputControl size="sm" aria-label="Field label" id="story-field" />
         </Field._LabelDistributor>
         <Field._Helper
+          size="sm"
           message="This is the Field helper"
           styles="p {color: purple}"
         />
@@ -124,15 +126,21 @@ export const AdvancedUsageWithFloatingValidation: Story = {
   tags: ['isHidden'],
   render: () =>
     (() => (
-      <Field._Container status="error">
+      <Field._Container>
         <Field._LabelDistributor>
           <Field._Label
             htmlFor="story-field"
             requiredMark={
-              <Field._RequiredMark tooltip="This field is required" />
+              <Field._RequiredMark
+                colorScheme="error"
+                tooltip="This field is required"
+              />
             }
             helper={
-              <Field._FloatingHelper message="This is the Field floating validation helper" />
+              <Field._FloatingHelper
+                status="error"
+                message="This is the Field floating validation helper"
+              />
             }
           >
             Field label
@@ -152,7 +160,7 @@ export const AdvancedUsageWithFloatingValidationHiddenLabel: Story = {
   tags: ['isHidden'],
   render: () =>
     (() => (
-      <Field._Container status="error">
+      <Field._Container>
         <Field._LabelDistributor>
           <Field._Label
             htmlFor="story-field"
@@ -169,7 +177,10 @@ export const AdvancedUsageWithFloatingValidationHiddenLabel: Story = {
               id="story-field"
               status="error"
             />
-            <Field._FloatingHelper message="This is the Field floating validation helper" />
+            <Field._FloatingHelper
+              status="error"
+              message="This is the Field floating validation helper"
+            />
           </Field._ControlDistributor>
         </Field._LabelDistributor>
       </Field._Container>

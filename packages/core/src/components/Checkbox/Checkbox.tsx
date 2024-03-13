@@ -63,10 +63,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       {...restNativeInputProps}
       aria-labelledby={ariaLabelledBy}
       disabled={disabled}
-      id={id}
       required={required}
-      size={size}
-      status={status}
     />
   </Field>
 );

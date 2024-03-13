@@ -1,6 +1,6 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import type { FieldSize, FieldStatus } from '../../declarations';
+import type { TFieldSize, TFieldStatus } from '../../declarations';
 import type {
   FieldsCombinerCombinedButtons,
   FieldsCombinerOrder,
@@ -9,8 +9,8 @@ import type {
 export interface FieldsCombinerMixinsProps {
   combinedButtons?: FieldsCombinerCombinedButtons;
   order: FieldsCombinerOrder;
-  size: FieldSize;
-  status?: FieldStatus;
+  size: TFieldSize;
+  status?: TFieldStatus;
   theme: DefaultTheme;
 }
 

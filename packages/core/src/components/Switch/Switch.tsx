@@ -61,15 +61,7 @@ export const Switch: React.FC<SwitchProps> = ({
       styles={styles}
       tooltip={tooltip}
     >
-      <SwitchControl
-        {...restSwitchControlProps}
-        aria-label={ariaLabel}
-        disabled={disabled}
-        id={id}
-        required={required}
-        size={size}
-        status={status}
-      />
+      <SwitchControl {...restSwitchControlProps} aria-label={ariaLabel} />
     </Field>
   );
 };

@@ -1,24 +1,20 @@
 import * as React from 'react';
 import { FIELD_FLEX_CONFIG } from '../constants';
-import { StyledOverloadCssProps } from '../../../declarations';
-import { FieldDirection } from '../declarations';
+import type { IField, TFieldDirection } from '../declarations';
 import { Flex } from '../../Flex';
-import { FieldContext } from '../context';
 
-export interface FieldLabelDistributorProps extends StyledOverloadCssProps {
+export interface FieldLabelDistributorProps extends Pick<IField, 'styles'> {
   children: React.ReactNode;
   /** The direction of the field based in the desired label position: to the left (row), to the top (column... etc.)*/
-  direction?: FieldDirection;
+  direction?: TFieldDirection;
 }
 
 export const FieldLabelDistributor: React.FC<FieldLabelDistributorProps> = ({
   children,
-  direction,
+  direction = 'column',
   styles,
 }) => {
-  const context = React.useContext(FieldContext);
-  const evalDirection = direction || context?.direction || 'column';
-  const directionUpper = evalDirection.toUpperCase();
+  const directionUpper = direction.toUpperCase();
   return (
     <Flex
       alignItems={FIELD_FLEX_CONFIG[directionUpper].AI}

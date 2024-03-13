@@ -3,16 +3,16 @@ import styled, { css } from 'styled-components';
 import {
   getFieldState,
   disabledMixin,
-  FieldSize,
-  FieldStatus,
+  TFieldSize,
+  TFieldStatus,
 } from '@devoinc/genesys-ui';
 
 export interface StyledColorPickerProps {
   colorIndicatorType?: 'square' | 'circle';
   disabled?: boolean;
   readOnly?: boolean;
-  size?: FieldSize;
-  status?: FieldStatus;
+  size?: TFieldSize;
+  status?: TFieldStatus;
 }
 
 export const StyledColorPicker = styled.button<StyledColorPickerProps>`

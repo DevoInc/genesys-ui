@@ -1,25 +1,23 @@
 import * as React from 'react';
 
-import { StyledOverloadCssPropsWithRecord } from '../../declarations';
-
 import {
   BannerActions,
-  BannerActionsProps,
+  type BannerActionsProps,
   BannerClose,
-  BannerCloseProps,
+  type BannerCloseProps,
   BannerContainer,
-  BannerContainerProps,
+  type BannerContainerProps,
   BannerContent,
-  BannerContentProps,
+  type BannerContentProps,
   BannerContentContainer,
   BannerHeading,
-  BannerHeadingProps,
+  type BannerHeadingProps,
   BannerIcon,
 } from './components';
 
 import { BannerContext } from './context';
 
-export interface BaseBannerProps
+export interface BannerProps
   extends Omit<BannerContainerProps, 'children'>,
     Pick<BannerActionsProps, 'actions'> {
   /** onClick function for close button */
@@ -36,11 +34,6 @@ export interface BaseBannerProps
   children?: BannerContainerProps['children'];
 }
 
-export type BannerProps = BaseBannerProps &
-  StyledOverloadCssPropsWithRecord<
-    'container' | 'actions' | 'close' | 'content' | 'heading' | 'icon'
-  >;
-
 export const InternalBanner: React.FC<BannerProps> = ({
   actions,
   as,
@@ -53,7 +46,6 @@ export const InternalBanner: React.FC<BannerProps> = ({
   role,
   status = 'info',
   styles,
-  subcomponentStyles,
   title,
   tooltip,
   ...ariaProps
@@ -65,7 +57,7 @@ export const InternalBanner: React.FC<BannerProps> = ({
       id={id}
       role={role}
       status={status}
-      styles={subcomponentStyles?.container || styles}
+      styles={styles}
       tooltip={tooltip}
     >
       {children ? (
@@ -75,34 +67,14 @@ export const InternalBanner: React.FC<BannerProps> = ({
       ) : (
         <>
           {!hideIcon && (
-            <BannerIcon status={status} styles={subcomponentStyles?.icon} />
+            <BannerIcon status={status} style={{ flex: '0 0 auto' }} />
           )}
           <BannerContentContainer>
-            {title && (
-              <BannerHeading styles={subcomponentStyles?.heading}>
-                {title}
-              </BannerHeading>
-            )}
-            {content && (
-              <Banner._Content styles={subcomponentStyles?.content}>
-                {content}
-              </Banner._Content>
-            )}
-            {actions && (
-              <Banner._Actions
-                actions={actions}
-                status={status}
-                styles={subcomponentStyles?.actions}
-              />
-            )}
+            {title && <BannerHeading>{title}</BannerHeading>}
+            {content && <Banner._Content>{content}</Banner._Content>}
+            {actions && <Banner._Actions actions={actions} status={status} />}
           </BannerContentContainer>
-          {close && (
-            <BannerClose
-              onClick={close}
-              tooltip={closeTooltip}
-              styles={subcomponentStyles?.close}
-            />
-          )}
+          {close && <BannerClose onClick={close} tooltip={closeTooltip} />}
         </>
       )}
     </BannerContainer>

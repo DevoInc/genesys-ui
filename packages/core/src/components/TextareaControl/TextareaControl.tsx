@@ -1,24 +1,24 @@
 import * as React from 'react';
 
-// declarations
-import {
+import type {
   ContainerEventAttrProps,
-  FieldControlCommonProps,
-  FieldSize,
+  IFieldControl,
+  TFieldSize,
   TextareaAttrProps,
   TextareaEventAttrs,
   TextBoxAriaProps,
   WithRequiredAriaLabelOrAriaLabelledByProps,
 } from '../../declarations';
+import { FieldContext } from '../Field/context';
+import { getFieldContextProps } from '../Field';
 
-// styled
 import {
   StyledTextareaControl,
   StyledTextareaControlProps,
 } from './StyledTextareaControl';
 
 interface CommonTextareaControlProps
-  extends FieldControlCommonProps,
+  extends IFieldControl,
     Pick<TextBoxAriaProps, 'aria-invalid' | 'aria-activedescendant'>,
     Omit<TextareaAttrProps, 'cols'>,
     TextareaEventAttrs,
@@ -28,7 +28,7 @@ interface CommonTextareaControlProps
     >,
     Omit<StyledTextareaControlProps, '$size'> {
   /** The size for the textarea. It affects to its padding, font-size... etc. */
-  size?: FieldSize;
+  size?: TFieldSize;
 }
 
 export type TextareaControlProps =
@@ -36,22 +36,54 @@ export type TextareaControlProps =
 
 export const TextareaControl: React.FC<TextareaControlProps> = ({
   'aria-errormessage': ariaErrorMessage,
+  'aria-describedby': ariaDescribedBy,
   'aria-invalid': ariaInvalid,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
+  disabled,
+  id,
+  required,
   rows = 4,
-  size = 'md',
-  status = 'base',
+  size,
+  status,
   styles,
   tooltip,
   ...restNativeProps
-}) => (
-  <StyledTextareaControl
-    {...restNativeProps}
-    aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
-    aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
-    css={styles}
-    rows={rows}
-    $size={size}
-    status={status}
-    title={tooltip}
-  />
-);
+}) => {
+  const fieldContext = React.useContext(FieldContext);
+  const contextBasedProps = getFieldContextProps({
+    ariaDescribedBy,
+    ariaErrorMessage,
+    ariaLabelledBy,
+    context: fieldContext,
+    disabled,
+    id,
+    required,
+    size,
+    status,
+  });
+  return (
+    <StyledTextareaControl
+      {...restNativeProps}
+      aria-describedby={contextBasedProps.ariaDescribedBy}
+      aria-errormessage={
+        contextBasedProps.status === 'error'
+          ? contextBasedProps.ariaErrorMessage
+          : undefined
+      }
+      aria-invalid={
+        ariaInvalid ?? (contextBasedProps.status === 'error' ? true : undefined)
+      }
+      aria-label={ariaLabel}
+      aria-labelledby={contextBasedProps.ariaLabelledBy}
+      css={styles}
+      disabled={contextBasedProps.disabled}
+      id={contextBasedProps.id}
+      required={contextBasedProps.required}
+      rows={rows}
+      $size={contextBasedProps.size}
+      status={contextBasedProps.status}
+      title={tooltip}
+    />
+  );
+};

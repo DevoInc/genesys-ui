@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 import {
-  CheckAttrProps,
-  FieldAttrProps,
+  ICheckAttrs,
+  IFieldAttrs,
   FocusEventAttrProps,
   GlobalAriaProps,
   GlobalAttrProps,
-  InputAttrProps,
+  IInputAttrs,
   SelectionScheme,
 } from '../declarations';
 
@@ -16,9 +16,9 @@ export interface StyledHiddenInputProps
   extends Pick<GlobalAriaProps, 'aria-label'>,
     Pick<GlobalAttrProps, 'id'>,
     Pick<FocusEventAttrProps, 'onBlur' | 'onFocus'>,
-    Pick<FieldAttrProps, 'disabled' | 'name'>,
-    Pick<InputAttrProps, 'value'>,
-    CheckAttrProps {
+    Pick<IFieldAttrs, 'disabled' | 'name'>,
+    Pick<IInputAttrs, 'value'>,
+    ICheckAttrs {
   selectionScheme?: SelectionScheme;
 }
 

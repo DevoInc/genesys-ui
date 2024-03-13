@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { WithRequired } from '../../typeFunctions';
 
-import { Form, FormGroupProps } from '../Form';
+import { Form, type FormGroupProps } from '../Form';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface RadioGroupProps

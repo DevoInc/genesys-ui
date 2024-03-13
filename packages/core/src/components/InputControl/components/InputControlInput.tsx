@@ -3,9 +3,9 @@ import * as React from 'react';
 // declarations
 import {
   ContainerEventAttrProps,
-  FieldControlCommonProps,
-  FieldSize,
-  InputAttrProps,
+  IFieldControl,
+  TFieldSize,
+  IInputAttrs,
   InputEventAttrs,
   StyledOverloadCssProps,
   TextBoxAriaProps,
@@ -15,10 +15,10 @@ import {
 import { StyledInputControl, StyledInputControlProps } from '../styled';
 
 export interface InputControlInputProps
-  extends FieldControlCommonProps,
+  extends IFieldControl,
     StyledOverloadCssProps,
     Pick<TextBoxAriaProps, 'aria-invalid'>,
-    Omit<InputAttrProps, 'size' | 'multiple'>,
+    Omit<IInputAttrs, 'size' | 'multiple'>,
     InputEventAttrs,
     Pick<
       ContainerEventAttrProps,
@@ -26,7 +26,7 @@ export interface InputControlInputProps
     >,
     Omit<StyledInputControlProps, '$size'> {
   /** Size of the input: height, padding, font-size... etc. */
-  size?: FieldSize;
+  size?: TFieldSize;
 }
 
 export const InputControlInput: React.FC<InputControlInputProps> = ({
@@ -34,6 +34,7 @@ export const InputControlInput: React.FC<InputControlInputProps> = ({
   'aria-describedby': ariaDescribedBy,
   'aria-invalid': ariaInvalid,
   'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
   accept,
   autoComplete,
   autoFocus,
@@ -89,6 +90,7 @@ export const InputControlInput: React.FC<InputControlInputProps> = ({
       aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
       aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
       aria-label={ariaLabel}
+      aria-labelledby={ariaLabelledBy}
       accept={accept}
       autoComplete={autoComplete}
       autoFocus={autoFocus}

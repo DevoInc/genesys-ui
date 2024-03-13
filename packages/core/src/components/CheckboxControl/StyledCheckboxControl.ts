@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import type { FieldSize, FieldStatus } from '../../declarations/commonProps';
+import type { TFieldSize, TFieldStatus } from '../../declarations/commonProps';
 
 import {
   checkRadioMixin,
@@ -14,9 +14,9 @@ export interface StyledCheckboxControlProps {
   /** If the checkbox has indeterminate format and state: instead of a check mark, it contains an intermediate one.*/
   indeterminate?: HTMLInputElement['indeterminate'];
   /** The size for the checkbox. It affects to its width, height, font-size... etc. */
-  $size?: FieldSize;
+  $size?: TFieldSize;
   /** The status for the checkbox: success, error... etc. */
-  status?: FieldStatus;
+  status?: TFieldStatus;
 }
 
 export const StyledCheckboxControl = styled.input.attrs({

@@ -1,5 +1,5 @@
-import { type SelectOption } from '@devoinc/genesys-ui';
+import { type TSelectOption } from '@devoinc/genesys-ui';
 
 export type OptionsFilterValue = {
-  value: SelectOption[];
+  value: TSelectOption[];
 };

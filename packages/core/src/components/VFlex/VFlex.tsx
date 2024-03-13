@@ -8,25 +8,23 @@ export interface VFlexProps
   extends Omit<FlexProps, 'flexDirection' | 'gap' | 'columnGap' | 'rowGap'> {
   /** Vertical spacing between children items (row-gap). */
   spacing?: GlobalSpacing;
-  /** If the children fit full width of the VFlex parent*/
-  childrenFitFullWidth?: boolean;
   /** If the children fit full height of the VFlex parent. Firstly you should assign to the VFlex a bigger height than the one defined by its children. */
   childrenFitFullHeight?: boolean;
 }
 
 const InternalVFlex: React.FC<VFlexProps> = ({
-  alignItems = 'flex-start',
+  alignItems = 'stretch',
   children,
+  childrenFlex,
   childrenFitFullHeight = false,
-  childrenFitFullWidth = false,
   justifyContent = 'flex-start',
   spacing = 'cmp-md',
   ...flexProps
 }) => (
   <Flex
     {...flexProps}
-    alignItems={childrenFitFullWidth ? 'stretch' : alignItems}
-    childrenFlex={childrenFitFullHeight && '1'}
+    alignItems={alignItems}
+    childrenFlex={childrenFlex || (childrenFitFullHeight ? '1' : undefined)}
     flexDirection="column"
     justifyContent={justifyContent}
     rowGap={spacing}

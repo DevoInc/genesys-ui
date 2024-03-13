@@ -23,7 +23,7 @@ export const DateFilter: React.FC<FilterProps> = ({ colDef }) => (
     <AdvancedFilter id={`date-adv-filter-${colDef.id}`}>
       <SelectControl
         menuAppendToBody
-        // onChange={(opt: SelectOption) => setValue(opt.value)}
+        // onChange={(opt: TSelectOption) => setValue(opt.value)}
         options={dateOptions}
         // value={value}
       />

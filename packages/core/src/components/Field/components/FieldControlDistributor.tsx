@@ -1,22 +1,16 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import {
-  ControlWidth,
-  FieldSize,
-  StyledOverloadCssProps,
-} from '../../../declarations';
-import { LabelPosition } from '../declarations';
+import type { IField } from '../declarations';
 import { getControlWidth } from '../../../styled/';
-import { FieldContext } from '../context';
+
 import { Flex } from '../../Flex';
 
-export interface FieldControlDistributorProps extends StyledOverloadCssProps {
+export interface FieldControlDistributorProps
+  extends Pick<IField, 'labelPosition' | 'size' | 'styles'> {
   children?: React.ReactNode;
-  labelPosition?: LabelPosition;
-  size?: FieldSize;
-  wide?: boolean;
-  width?: ControlWidth;
+  wide?: IField['hasWideControl'];
+  width?: IField['controlWidth'];
 }
 
 export const FieldControlDistributor: React.FC<
@@ -26,17 +20,13 @@ export const FieldControlDistributor: React.FC<
   // to get vertically aligned the label with the control block anyway
   const labelLineHeight = theme.alias.typo.lineHeight.body[size];
   const inputWidthEval = getControlWidth({ theme, controlWidth: width });
-  const context = React.useContext(FieldContext);
-  const evalLabelPosition = labelPosition || context.labelPosition;
   return (
     <Flex
       alignItems="center"
       flex={
         inputWidthEval
           ? '0 1 auto'
-          : !wide ||
-              evalLabelPosition === 'between' ||
-              evalLabelPosition === 'right'
+          : !wide || labelPosition === 'between' || labelPosition === 'right'
             ? '0 0 auto'
             : '1 1 auto'
       }

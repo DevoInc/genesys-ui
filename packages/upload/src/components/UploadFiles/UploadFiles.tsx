@@ -5,7 +5,7 @@ import { FilePondProps } from 'react-filepond';
 import {
   Box,
   Field,
-  FieldAttrProps,
+  IFieldAttrs,
   FieldProps,
   Flex,
   getCmpMarkup,
@@ -27,7 +27,7 @@ import {
 } from '@devoinc/genesys-icons';
 export interface UploadFilesProps
   extends Omit<FieldProps, 'children' | 'role'>,
-    Pick<FieldAttrProps, 'name'>,
+    Pick<IFieldAttrs, 'name'>,
     Omit<StyledUploadFilesProps, 'disabled'>,
     Partial<
       Pick<

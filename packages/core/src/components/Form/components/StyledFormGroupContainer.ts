@@ -4,7 +4,7 @@ import type { FlexProps } from '../../Flex';
 
 import type { GlobalAriaProps } from '../../../declarations/ariaAttrs';
 import type {
-  FieldAttrProps,
+  IFieldAttrs,
   GlobalAttrProps,
 } from '../../../declarations/htmlAttrs';
 
@@ -18,7 +18,7 @@ export interface StyledFormGroupContainerProps
     GlobalAttrProps,
     GlobalAriaProps,
     Pick<FlexProps, 'marginLeft' | 'marginTop'>,
-    Omit<FieldAttrProps, 'required'> {
+    Omit<IFieldAttrs, 'required'> {
   /** It defines if the group is rendered as a fieldset, and therefore it can get its related html attributes.*/
   asFieldset?: boolean;
   /** The position of the legend relative to the group. */

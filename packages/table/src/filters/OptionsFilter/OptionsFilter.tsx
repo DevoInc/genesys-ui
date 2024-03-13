@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import { SelectControl, type SelectOption } from '@devoinc/genesys-ui';
+import { SelectControl, type TSelectOption } from '@devoinc/genesys-ui';
 
 import type { FilterContext, FilterProps } from '../../declarations';
 import type { OptionsFilterValue } from './declarations';
 import { FilterContainer } from '../common';
-import { ContextOptions, getSelectOptions } from '../../facade';
+import { ContextOptions, getTSelectOptions } from '../../facade';
 
 export const OptionsFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
   const context = colDef?.context as ContextOptions & FilterContext;
@@ -21,12 +21,12 @@ export const OptionsFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
         closeMenuOnSelect={false}
         selectAllBtn
         hideSelectedOptions={false}
-        onChange={(val: SelectOption[]) => {
+        onChange={(val: TSelectOption[]) => {
           onChange({ value: val } as OptionsFilterValue, 'options');
         }}
         menuAppendToBody
         defaultInputValue={colDef?.context?.defaultValue as string}
-        options={getSelectOptions(options)}
+        options={getTSelectOptions(options)}
         value={value}
       />
     </FilterContainer>

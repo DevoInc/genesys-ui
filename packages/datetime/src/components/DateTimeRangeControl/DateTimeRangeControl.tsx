@@ -7,7 +7,7 @@ import { GIArrowRight } from '@devoinc/genesys-icons';
 // core
 import type {
   FieldProps,
-  FieldSize,
+  TFieldSize,
   GlobalAriaProps,
   GlobalAttrProps,
   InputControlProps,
@@ -79,7 +79,7 @@ export interface DateTimeRangeControlProps
    * not be shown. */
   realTime?: RealTimeButtonProps['state'];
   /** Size for the HTML input elements. */
-  size?: FieldSize;
+  size?: TFieldSize;
   /** Status for `from` input field */
   statusFrom?: FieldProps['status'];
   /** Status for `from` input field */

@@ -1,15 +1,15 @@
 import styled, { css } from 'styled-components';
-import type { FieldSize } from '../../../declarations/commonProps';
-import type { InputAttrProps } from '../../../declarations/htmlAttrs';
+import type { TFieldSize } from '../../../declarations/commonProps';
+import type { IInputAttrs } from '../../../declarations/htmlAttrs';
 import { INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP } from '../constants';
 
 export interface StyledInputControlIconProps {
   /** Size of the input: height, padding, font-size... etc. */
-  size?: FieldSize;
+  size?: TFieldSize;
   /** If the icon is related with the input type */
   isTypeIcon?: boolean;
   /** The type of the parent Input */
-  type?: InputAttrProps['type'];
+  type?: IInputAttrs['type'];
 }
 
 export const StyledInputControlIcon = styled.span<StyledInputControlIconProps>`

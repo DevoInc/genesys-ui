@@ -4,8 +4,8 @@ import {
   FIELD_SIZE_TO_VALUE_ICON_SIZE,
 } from './constants';
 import { ChipSize } from '../Chip/declarations';
-import { FieldSize } from '../../declarations';
-import { SelectOption } from './declarations';
+import { TFieldSize } from '../../declarations';
+import { TSelectOption } from './declarations';
 import { InnerSelectControlProps } from './InnerSelectControl';
 
 /**
@@ -16,7 +16,7 @@ import { InnerSelectControlProps } from './InnerSelectControl';
  */
 
 export const wrapperOnChange =
-  <Option extends SelectOption>({
+  <Option extends TSelectOption>({
     onChange,
     value,
   }: {
@@ -41,7 +41,7 @@ export const wrapperOnChange =
  * or not based on the values of its properties such as isMulti, hideSelectedOptions,
  * creatable, value, and options."
  */
-export const showMenuAndDropDown = <Option extends SelectOption>(
+export const showMenuAndDropDown = <Option extends TSelectOption>(
   selectProps: Props<Option>,
 ): boolean => {
   return (
@@ -60,7 +60,7 @@ export const showMenuAndDropDown = <Option extends SelectOption>(
  * a single-level array by either concatenating
  * the nested options or adding the option to the accumulator."
  */
-const flattenOptionsFn = <Option extends SelectOption>(
+const flattenOptionsFn = <Option extends TSelectOption>(
   acc: Option[],
   option: Props<Option>,
 ) => {
@@ -77,7 +77,7 @@ const flattenOptionsFn = <Option extends SelectOption>(
  * It takes into account multi valued inputs.
  * Values are always initialized as '' when undefined inputs are found
  */
-export const findValue = <Option extends SelectOption>(
+export const findValue = <Option extends TSelectOption>(
   value: InnerSelectControlProps<Option>['value'],
   options: Props<Option>['options'],
   isMulti: boolean,
@@ -135,7 +135,7 @@ export const getChipSize = ({
   size,
   chipSize,
 }: {
-  size?: FieldSize | ChipSize;
+  size?: TFieldSize | ChipSize;
   chipSize?: ChipSize;
 }): ChipSize => chipSize || FIELD_SIZE_TO_CHIP_SIZE[size || 'xs'];
 
@@ -149,6 +149,6 @@ export const getValueIconSize = ({
   size,
   chipSize,
 }: {
-  size?: FieldSize | ChipSize;
+  size?: TFieldSize | ChipSize;
   chipSize?: ChipSize;
 }): ChipSize => chipSize || FIELD_SIZE_TO_VALUE_ICON_SIZE[size || 'xxs'];

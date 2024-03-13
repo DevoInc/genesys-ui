@@ -1,27 +1,29 @@
 import * as React from 'react';
 
-import {
-  FieldSize,
-  FieldControlCommonProps,
-  CheckAttrProps,
-  CheckAriaProps,
-  InputAttrProps,
+import type {
+  TFieldSize,
+  IFieldControl,
+  ICheckAttrs,
+  ICheckAriaAttrs,
+  IInputAttrs,
   WithRequiredAriaLabelOrAriaLabelledByProps,
 } from '../../declarations';
+import { FieldContext } from '../Field/context';
+import { getFieldContextProps } from '../Field';
 
 import {
   StyledCheckboxControl,
-  StyledCheckboxControlProps,
+  type StyledCheckboxControlProps,
 } from './StyledCheckboxControl';
 
 interface CommonCheckboxControlProps
-  extends FieldControlCommonProps,
-    CheckAttrProps,
-    CheckAriaProps,
-    Pick<InputAttrProps, 'value'>,
+  extends IFieldControl,
+    ICheckAttrs,
+    ICheckAriaAttrs,
+    Pick<IInputAttrs, 'value'>,
     Omit<StyledCheckboxControlProps, '$size'> {
   /** The size for the checkbox. It affects to its width, height, font-size... etc. */
-  size?: FieldSize;
+  size?: TFieldSize;
 }
 
 export type CheckboxControlProps =
@@ -29,29 +31,57 @@ export type CheckboxControlProps =
 
 export const CheckboxControl: React.FC<CheckboxControlProps> = ({
   'aria-checked': ariaChecked,
+  'aria-describedby': ariaDescribedBy,
   'aria-errormessage': ariaErrorMessage,
   'aria-invalid': ariaInvalid,
+  'aria-labelledby': ariaLabelledBy,
   checked,
+  disabled,
+  id,
   indeterminate,
   onChange,
-  size = 'md',
-  status = 'base',
+  required,
+  size,
+  status,
   styles,
   tooltip,
   ...restNativeProps
 }) => {
+  const fieldContext = React.useContext(FieldContext);
+  const contextBasedProps = getFieldContextProps({
+    ariaDescribedBy,
+    ariaErrorMessage,
+    ariaLabelledBy,
+    disabled,
+    context: fieldContext,
+    id,
+    required,
+    size,
+    status,
+  });
   return (
     <StyledCheckboxControl
       {...restNativeProps}
-      onChange={onChange}
+      aria-describedby={contextBasedProps.ariaDescribedBy}
       aria-checked={ariaChecked ?? indeterminate ? 'mixed' : checked}
-      aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
-      aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
+      aria-errormessage={
+        contextBasedProps.status === 'error'
+          ? contextBasedProps.ariaErrorMessage
+          : undefined
+      }
+      aria-invalid={
+        ariaInvalid ?? (contextBasedProps.status === 'error' ? true : undefined)
+      }
+      aria-labelledby={contextBasedProps.ariaLabelledBy}
       checked={onChange ? checked : undefined}
       css={styles}
+      disabled={contextBasedProps.disabled}
+      id={contextBasedProps.id}
       indeterminate={indeterminate}
-      $size={size}
-      status={status}
+      onChange={onChange}
+      required={contextBasedProps.required}
+      $size={contextBasedProps.size}
+      status={contextBasedProps.status}
       title={tooltip}
     />
   );

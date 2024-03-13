@@ -1,10 +1,10 @@
 import React from 'react';
 import { STATUS_ICON_MAP } from '../../constants';
-import type { FieldStatus } from '../../declarations';
+import type { TFieldStatus } from '../../declarations';
 import { OmitUnion } from '../../typeFunctions/omitUnion';
 
 export const INPUT_CONTROL_ICON_STATUS_MAP: {
-  [key in OmitUnion<FieldStatus, 'base'>]: React.ReactNode;
+  [key in OmitUnion<TFieldStatus, 'base'>]: React.ReactNode;
 } = {
   error: STATUS_ICON_MAP.filled.error,
   success: STATUS_ICON_MAP.filled.success,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MultiValueProps as RSMultiValueProps } from 'react-select';
 
-import { SelectOption } from '../declarations';
+import { TSelectOption } from '../declarations';
 
 import { getValueIconSize } from '../utils';
 
@@ -11,7 +11,7 @@ import { ValueIcon } from './ValueIcon';
 export interface MultiValueLabelProps<Option>
   extends RSMultiValueProps<Option> {}
 
-export const MultiValueLabel = <Option extends SelectOption>({
+export const MultiValueLabel = <Option extends TSelectOption>({
   data,
   selectProps,
 }: MultiValueLabelProps<Option>): React.ReactElement<

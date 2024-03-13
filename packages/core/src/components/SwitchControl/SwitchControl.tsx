@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import {
-  StyledOverloadCssPropsWithRecord,
-  WithRequiredAriaLabelOrAriaLabelledByProps,
-} from '../../declarations';
-import { BaseSwitchControlProps } from './declarations';
+import type { WithRequiredAriaLabelOrAriaLabelledByProps } from '../../declarations';
+import type { BaseSwitchControlProps } from './declarations';
+import { FieldContext } from '../Field/context';
 
 import { getPxFromRem } from '../../helpers';
+import { getFieldContextProps } from '../Field';
 
 import {
   SwitchControlContainer,
@@ -17,16 +16,18 @@ import {
 } from './components';
 
 export type SwitchControlProps =
-  WithRequiredAriaLabelOrAriaLabelledByProps<BaseSwitchControlProps> &
-    StyledOverloadCssPropsWithRecord<'container' | 'handle' | 'text'>;
+  WithRequiredAriaLabelOrAriaLabelledByProps<BaseSwitchControlProps>;
 
 export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
   'aria-errormessage': ariaErrorMessage,
+  'aria-describedby': ariaDescribedBy,
   'aria-invalid': ariaInvalid,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
   autoFocus,
   checked,
   checkedContent,
-  disabled = false,
+  disabled,
   id,
   onChange,
   onClick,
@@ -36,28 +37,43 @@ export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
   onMouseOut,
   onMouseOver,
   onMouseUp,
-  size = 'md',
-  status = 'base',
+  required,
+  size,
+  status,
   styles,
-  subcomponentStyles,
   tooltip,
   uncheckedContent,
   ...restNativeProps
 }) => {
+  const fieldContext = React.useContext(FieldContext);
+  const contextBasedProps = getFieldContextProps({
+    ariaDescribedBy,
+    ariaErrorMessage,
+    ariaLabelledBy,
+    context: fieldContext,
+    disabled,
+    id,
+    required,
+    size,
+    status,
+  });
+  const evalStatus = contextBasedProps.status;
+  const evalSize = contextBasedProps.size;
+  const evalDisabled = contextBasedProps.disabled;
   const tokens = useTheme();
   const switchTokens = tokens.cmp.switchControl;
   const trackTokens = switchTokens.track;
   const handlerTokens = switchTokens.handler;
-  const handleDiameter = getPxFromRem(handlerTokens.size.square[size]);
-  const switchHeight = getPxFromRem(trackTokens.size.height[size]);
+  const handleDiameter = getPxFromRem(handlerTokens.size.square[evalSize]);
+  const switchHeight = getPxFromRem(trackTokens.size.height[evalSize]);
 
   return (
     <SwitchControlContainer
-      disabled={disabled}
+      disabled={evalDisabled}
       checked={checked}
       heightPx={switchHeight}
       handleDiameter={handleDiameter}
-      id={id}
+      id={contextBasedProps.id}
       onClick={onClick}
       onMouseDown={onMouseDown}
       onMouseLeave={onMouseLeave}
@@ -65,35 +81,43 @@ export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
       onMouseOut={onMouseOut}
       onMouseOver={onMouseOver}
       onMouseUp={onMouseUp}
-      size={size}
-      status={status}
-      styles={subcomponentStyles?.container || styles}
+      size={evalSize}
+      status={evalStatus}
+      styles={styles}
       tooltip={tooltip}
     >
       <SwitchControlInput
         {...restNativeProps}
-        aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
-        aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
+        aria-describedby={contextBasedProps.ariaDescribedBy}
+        aria-errormessage={
+          evalStatus === 'error'
+            ? contextBasedProps.ariaErrorMessage
+            : undefined
+        }
+        aria-invalid={
+          ariaInvalid ?? (evalStatus === 'error' ? true : undefined)
+        }
+        aria-label={ariaLabel}
+        aria-labelledby={contextBasedProps.ariaLabelledBy}
         autoFocus={autoFocus}
         checked={onChange ? checked : undefined}
-        disabled={disabled}
-        id={`${id}-switch-input`}
+        disabled={evalDisabled}
+        id={contextBasedProps.id}
         onChange={onChange}
+        required={contextBasedProps.required}
         role="switch"
         type="checkbox"
       />
       <SwitchControlText
         checked={checked}
         checkedContent={checkedContent}
-        styles={subcomponentStyles?.text}
         uncheckedContent={uncheckedContent}
       />
       <SwitchControlHandle
         aria-hidden
         checked={checked}
         diameter={handleDiameter}
-        disabled={disabled}
-        styles={subcomponentStyles?.handle}
+        disabled={evalDisabled}
         switchHeight={switchHeight}
       />
     </SwitchControlContainer>

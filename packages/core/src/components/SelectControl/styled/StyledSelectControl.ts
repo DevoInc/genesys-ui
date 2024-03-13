@@ -2,12 +2,12 @@ import styled, { css } from 'styled-components';
 import ReactSelect, { MultiValue } from 'react-select';
 import {
   getFieldState,
-  getFieldStatus,
+  getTFieldStatus,
   getFieldControlTypo,
 } from '../../Field';
 import { hasStatus } from '../../../utils/validations';
 import { scrollbars } from '../../../styled/mixins/scrollbars';
-import { SelectOption } from '../declarations';
+import { TSelectOption } from '../declarations';
 import { disabledMixin, truncateTypoMixin } from '../../../styled';
 
 export const StyledSelectControl = styled(ReactSelect).attrs(
@@ -37,7 +37,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
     options,
   }) => {
     const state = getFieldState({ readOnly });
-    const statusEval = getFieldStatus(status);
+    const statusEval = getTFieldStatus(status);
     const aliasTokens = theme.alias;
     const spacingTokens = aliasTokens.space;
     const fieldTokens = aliasTokens.fields;
@@ -53,7 +53,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
       ? 0
       : (isMulti &&
             hideSelectedOptions &&
-            (value && (value as MultiValue<SelectOption>).length) !==
+            (value && (value as MultiValue<TSelectOption>).length) !==
               (options && options.length)) ||
           !isMulti ||
           !hideSelectedOptions

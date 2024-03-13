@@ -1,6 +1,6 @@
 import { type DefaultTheme } from 'styled-components';
 
-import type { FieldSize } from '@devoinc/genesys-ui';
+import type { TFieldSize } from '@devoinc/genesys-ui';
 
 export const getInputWidth = ({
   hasMillis,
@@ -12,7 +12,7 @@ export const getInputWidth = ({
   hasMillis: boolean;
   hasSeconds: boolean;
   hasTime: boolean;
-  size: FieldSize;
+  size: TFieldSize;
   theme: DefaultTheme;
 }) =>
   theme.cmp.dateTimeRangeControl.input.size.width[

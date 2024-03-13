@@ -2,10 +2,10 @@ import * as React from 'react';
 
 // declarations
 import type {
-  CheckAttrProps,
-  FieldAttrProps,
+  ICheckAttrs,
+  IFieldAttrs,
   GlobalAttrProps,
-  InputAttrProps,
+  IInputAttrs,
 } from '../../../../declarations/htmlAttrs';
 import type {
   FocusEventAttrProps,
@@ -22,9 +22,9 @@ import { StyledButtonSelection } from './StyledButtonSelection';
 
 export interface ButtonSelectionProps
   extends Pick<GlobalAttrProps, 'id'>,
-    Pick<CheckAttrProps, 'checked' | 'defaultChecked'>,
-    Pick<FieldAttrProps, 'disabled' | 'name'>,
-    Pick<InputAttrProps, 'value'>,
+    Pick<ICheckAttrs, 'checked' | 'defaultChecked'>,
+    Pick<IFieldAttrs, 'disabled' | 'name'>,
+    Pick<IInputAttrs, 'value'>,
     FocusEventAttrProps,
     TriggerEventAttrProps,
     StyledPolymorphicProps,

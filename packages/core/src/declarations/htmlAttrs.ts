@@ -64,8 +64,7 @@ export interface TextBoxAttrProps<T = Element> {
  * Common declarations for input component
  * - Input
  * --------------------------------------------- */
-export interface InputAttrProps<T = HTMLInputElement>
-  extends TextBoxAttrProps<T> {
+export interface IInputAttrs<T = HTMLInputElement> extends TextBoxAttrProps<T> {
   /** The defaultValue property sets or returns the default value of a text field. */
   defaultValue?: AllHTMLAttributes<T>['defaultValue'];
   /** The maximum value of the input field */
@@ -124,7 +123,7 @@ export interface SelectAttrProps<T = HTMLSelectElement> {
  * - Switch
  * - ...
  * --------------------------------------------- */
-export interface FieldAttrProps<T = Element> {
+export interface IFieldAttrs<T = Element> {
   /** A boolean indicating whether the field should be disabled or not */
   disabled?: AllHTMLAttributes<T>['disabled'];
   /** A string indicating the form the field belongs to */
@@ -142,7 +141,7 @@ export interface FieldAttrProps<T = Element> {
  * - Switch
  * - ...
  * --------------------------------------------- */
-export interface CheckAttrProps<T = Element> {
+export interface ICheckAttrs<T = Element> {
   /** When present, it specifies that an \<input\> element is selected (checked). */
   checked?: AllHTMLAttributes<T>['checked'];
   /** When present, it specifies that an \<input\> element should be pre-selected (checked) when the page loads. */

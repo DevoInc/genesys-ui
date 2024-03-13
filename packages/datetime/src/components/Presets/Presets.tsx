@@ -4,7 +4,7 @@ import {
   type GlobalAttrProps,
   SelectControl,
   type SelectControlProps,
-  type SelectOption,
+  type TSelectOption,
   type StyledOverloadCssProps,
 } from '@devoinc/genesys-ui';
 
@@ -37,7 +37,7 @@ const InternalPresets: React.FC<PresetsProps> = ({
   ...restSelectAttrs
 }) => {
   const handleChange = React.useCallback(
-    (option: SelectOption) => {
+    (option: TSelectOption) => {
       if (onChange) {
         onChange(JSON.parse(option.value as string) as PresetRange);
       }

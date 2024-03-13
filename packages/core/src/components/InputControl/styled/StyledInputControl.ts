@@ -10,9 +10,9 @@ import {
 // declarations
 import type {
   ControlWidth,
-  FieldStatus,
+  TFieldStatus,
 } from '../../../declarations/commonProps';
-import type { FieldSize } from '../../Field/declarations';
+import type { TFieldSize } from '../../Field/declarations';
 
 // utils and helpers
 import { typoMixin } from '../../../styled/mixins/typography';
@@ -34,9 +34,9 @@ export interface StyledInputControlProps {
   /** Width of the input control based in predefined values as 'xxs', 'xs', 'sm'... etc. or directly in a css value. It should reflect the length of the content you expect the user to enter. */
   inputWidth?: ControlWidth;
   /** Size of the input: height, padding, font-size... etc. */
-  $size?: FieldSize;
+  $size?: TFieldSize;
   /** This property defines the status color schema for the input */
-  status?: FieldStatus;
+  status?: TFieldStatus;
 }
 
 export const StyledInputControl = styled.input<StyledInputControlProps>`
@@ -137,7 +137,14 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
           border-right-width: 0;
         `}
       `}
-      
+
+
+      // type number
+      ${type === 'number' &&
+      css`
+        color-scheme: ${theme.meta.scheme === 'dark' && theme.meta.scheme};
+      `};
+
       // type color
       ${type === 'color' &&
       css`

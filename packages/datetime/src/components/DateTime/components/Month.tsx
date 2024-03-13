@@ -12,7 +12,7 @@ import {
 } from 'date-fns';
 
 import {
-  FieldSize,
+  TFieldSize,
   Flex,
   GlobalAriaProps,
   GlobalAttrProps,
@@ -49,7 +49,7 @@ export interface MonthProps
   /** Function called when click on next month button. */
   onClickNextMonth?: () => void;
   /** The size of the different elements of the Month: inputs, buttons... etc. */
-  size?: FieldSize;
+  size?: TFieldSize;
   /** Initial value. One of `number` or `Date`. */
   value?: Datetime;
 }

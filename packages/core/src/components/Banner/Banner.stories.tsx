@@ -9,7 +9,7 @@ const meta: Meta<typeof Banner> = {
     status: 'info',
     closeTooltip: 'Remove message',
     content: 'This is an example of Banner component content',
-    title: 'Title of Banner',
+    //title: 'Title of Banner',
   },
 };
 

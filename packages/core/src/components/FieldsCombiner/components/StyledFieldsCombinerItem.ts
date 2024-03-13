@@ -2,15 +2,15 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 
 import type { FieldsCombinerOrder, FieldsCombinerType } from '../declarations';
-import type { FieldSize, FieldStatus } from '../../../declarations';
+import type { TFieldSize, TFieldStatus } from '../../../declarations';
 
 export interface StyledFieldsCombinerItemProps {
   combinedButtons?: boolean;
   $width?: React.CSSProperties['width'];
   $order: FieldsCombinerOrder;
   componentType?: FieldsCombinerType;
-  size: FieldSize;
-  status: FieldStatus;
+  size: TFieldSize;
+  status: TFieldStatus;
 }
 
 export const StyledFieldsCombinerItem = styled.div<StyledFieldsCombinerItemProps>`

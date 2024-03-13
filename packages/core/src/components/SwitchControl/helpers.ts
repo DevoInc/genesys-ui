@@ -1,12 +1,12 @@
 import { css, DefaultTheme } from 'styled-components';
-import { FieldStatus } from '../../declarations';
+import { TFieldStatus } from '../../declarations';
 import { disabledMixin, typoMixin } from '../../styled';
 
 export interface SwitchControlContainerMixinProps {
   checked?: boolean;
   disabled?: boolean;
   handleDiameter: number;
-  status: FieldStatus;
+  status: TFieldStatus;
   theme: DefaultTheme;
 }
 

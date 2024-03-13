@@ -60,7 +60,7 @@ export interface TextBoxAriaProps
  * - Checkbox
  * - Radio
  * --------------------------------------------- */
-export interface CheckAriaProps extends Pick<AriaAttributes, 'aria-checked'> {}
+export interface ICheckAriaAttrs extends Pick<AriaAttributes, 'aria-checked'> {}
 
 /** ---------------------------------------------
  * Common aria declarations for table components

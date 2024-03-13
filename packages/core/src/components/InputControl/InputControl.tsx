@@ -1,38 +1,59 @@
 import * as React from 'react';
+import { GISearchFindZoom } from '@devoinc/genesys-icons';
 
-// constants
 import { INPUT_CONTROL_ICON_STATUS_MAP } from './constants';
-
-// utils
-import { hasStatus } from '../../utils/validations';
-
-// declarations
-import {
-  StyledOverloadCssProps,
+import type {
+  IFieldControl,
   WithRequiredAriaLabelOrAriaLabelledByProps,
 } from '../../declarations';
 import type {
   InputControlIconProps,
   InputControlInputProps,
 } from './components';
+import { FieldContext } from '../Field/context';
+import { hasStatus } from '../../utils/validations';
 
-// components
-import { Field } from '../Field';
+import { Field, getFieldContextProps } from '../Field';
 import {
   InputControlContainer,
   InputControlIcon,
   InputControlInnerContainer,
-  InputControlInnerContainerProps,
+  type InputControlInnerContainerProps,
   InputControlInput,
   InputControlShowPassword,
 } from './components';
-import { GISearchFindZoom } from '@devoinc/genesys-icons';
 
 export interface BaseInputControlProps
-  extends Omit<InputControlInputProps, 'hasIcon' | 'hasTypeIcon'>,
+  extends IFieldControl,
+    Pick<
+      InputControlInputProps,
+      | 'accept'
+      | 'autoComplete'
+      | 'autoFocus'
+      | 'defaultValue'
+      | 'formAction'
+      | 'max'
+      | 'maxLength'
+      | 'min'
+      | 'minLength'
+      | 'onInput'
+      | 'onInvalid'
+      | 'onKeyDown'
+      | 'onKeyUp'
+      | 'onLoad'
+      | 'onPaste'
+      | 'onWheel'
+      | 'pattern'
+      | 'placeholder'
+      | 'readOnly'
+      | 'size'
+      | 'status'
+      | 'step'
+      | 'type'
+      | 'value'
+    >,
     Pick<InputControlIconProps, 'icon'>,
-    Pick<InputControlInnerContainerProps, 'inputWidth'>,
-    StyledOverloadCssProps {
+    Pick<InputControlInnerContainerProps, 'inputWidth'> {
   /** Fixed block of content at the beginning of the input */
   addonToLeft?: React.ReactNode;
   /** Fixed block of content at the end of the input */
@@ -55,6 +76,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
   'aria-describedby': ariaDescribedBy,
   'aria-invalid': ariaInvalid,
   'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
   accept,
   autoComplete,
   autoFocus,
@@ -93,21 +115,37 @@ const InternalInputControl: React.FC<InputControlProps> = ({
   placeholder,
   readOnly,
   required,
-  size = 'md',
-  status = 'base',
+  size,
+  status,
   step,
   styles,
   tooltip,
   type = 'text',
   value,
 }) => {
+  const fieldContext = React.useContext(FieldContext);
+  const contextBasedProps = getFieldContextProps({
+    ariaDescribedBy,
+    ariaErrorMessage,
+    ariaLabelledBy,
+    disabled,
+    context: fieldContext,
+    id,
+    required,
+    size,
+    status,
+  });
+  const evalStatus = contextBasedProps.status;
+  const evalSize = contextBasedProps.size;
+  const evalDisabled = contextBasedProps.disabled;
   const [showPassword, setShowPassword] = React.useState(false);
   const typeIcon =
     type === 'search' && !hideTypeIcon ? <GISearchFindZoom /> : null;
   const iconEval =
-    hasStatus(status) && !hideStatusIcon
-      ? INPUT_CONTROL_ICON_STATUS_MAP[status]
+    hasStatus(evalStatus) && !hideStatusIcon
+      ? INPUT_CONTROL_ICON_STATUS_MAP[evalStatus]
       : icon;
+  console.info(contextBasedProps);
   return (
     <InputControl._Container
       onClick={onClick}
@@ -121,7 +159,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
       tooltip={tooltip}
     >
       {addonToLeft && (
-        <Field._Addon disabled={disabled} size={size}>
+        <Field._Addon disabled={evalDisabled} size={evalSize}>
           {addonToLeft}
         </Field._Addon>
       )}
@@ -129,16 +167,16 @@ const InternalInputControl: React.FC<InputControlProps> = ({
         {typeIcon && (
           <InputControl._Icon
             icon={typeIcon}
-            size={size}
-            status={status}
+            size={evalSize}
+            status={evalStatus}
             isTypeIcon
           />
         )}
         {iconEval && (
           <InputControl._Icon
             icon={iconEval}
-            size={size}
-            status={status}
+            size={evalSize}
+            status={evalStatus}
             type={type}
           />
         )}
@@ -146,24 +184,31 @@ const InternalInputControl: React.FC<InputControlProps> = ({
           <InputControl._ShowPassword
             onClick={() => setShowPassword(!showPassword)}
             showPassword={showPassword}
-            size={size}
+            size={evalSize}
           />
         )}
         <InputControl._Input
-          aria-describedby={ariaDescribedBy}
-          aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
-          aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
+          aria-describedby={contextBasedProps.ariaDescribedBy}
+          aria-errormessage={
+            evalStatus === 'error'
+              ? contextBasedProps.ariaErrorMessage
+              : undefined
+          }
+          aria-invalid={
+            ariaInvalid ?? (evalStatus === 'error' ? true : undefined)
+          }
           aria-label={ariaLabel}
+          aria-labelledby={contextBasedProps.ariaLabelledBy}
           accept={accept}
           autoComplete={autoComplete}
           autoFocus={autoFocus}
           defaultValue={defaultValue}
-          disabled={disabled}
+          disabled={evalDisabled}
           form={form}
           formAction={formAction}
           hasAddonToLeft={Boolean(addonToLeft)}
           hasAddonToRight={Boolean(addonToRight)}
-          id={id}
+          id={contextBasedProps.id}
           max={max}
           maxLength={maxLength}
           min={min}
@@ -182,18 +227,18 @@ const InternalInputControl: React.FC<InputControlProps> = ({
           pattern={pattern}
           placeholder={placeholder}
           readOnly={readOnly}
-          required={required}
+          required={contextBasedProps.required}
           hasIcon={Boolean(iconEval)}
           hasTypeIcon={Boolean(typeIcon)}
-          size={size}
-          status={status}
+          size={evalSize}
+          status={evalStatus}
           step={step}
           type={showPassword ? 'text' : type}
           value={value}
         />
       </InputControl._InnerContainer>
       {addonToRight && (
-        <Field._Addon disabled={disabled} position="right" size={size}>
+        <Field._Addon disabled={evalDisabled} position="right" size={evalSize}>
           {addonToRight}
         </Field._Addon>
       )}

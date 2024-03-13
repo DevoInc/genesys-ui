@@ -1,13 +1,13 @@
 import styled, { css } from 'styled-components';
 
-import { FieldSize, FieldStatus } from '../../declarations';
+import type { TFieldSize, TFieldStatus } from '../../declarations';
 import { checkRadioMixin, getCheckRadioTokens } from '../../styled/mixins';
 
 export interface StyledRadioControlProps {
   /** The size for the checkbox. It affects to its width, height, font-size... etc. */
-  $size?: FieldSize;
+  $size?: TFieldSize;
   /** The status for the checkbox: success, error... etc. */
-  status?: FieldStatus;
+  status?: TFieldStatus;
 }
 
 export const StyledRadioControl = styled.input.attrs({

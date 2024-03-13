@@ -1,12 +1,12 @@
 import { css } from 'styled-components';
 import type { DefaultTheme } from 'styled-components';
 
-import type { FieldSize, FieldStatus } from '../../../declarations';
+import type { TFieldSize, TFieldStatus } from '../../../declarations';
 
 interface CheckRadioProps {
   disabled?: boolean;
-  size?: FieldSize;
-  status?: FieldStatus;
+  size?: TFieldSize;
+  status?: TFieldStatus;
   theme: DefaultTheme;
 }
 

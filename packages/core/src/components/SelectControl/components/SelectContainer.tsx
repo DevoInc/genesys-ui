@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components';
 
 import { SelectControlContext } from '../context';
 
-import type { SelectOption } from '../declarations';
+import type { TSelectOption } from '../declarations';
 import { Field } from '../../Field';
 import { Flex } from '../../Flex';
 
@@ -40,8 +40,8 @@ export const SelectContainer: React.FC<ContainerProps> = (props) => {
           <SelectControlContext.Provider
             value={{
               size: props.selectProps.size ?? 'md',
-              values: props.getValue() as SelectOption[],
-              options: props.selectProps.options as SelectOption[],
+              values: props.getValue() as TSelectOption[],
+              options: props.selectProps.options as TSelectOption[],
             }}
           >
             {props.children}

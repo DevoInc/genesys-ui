@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import { GroupBase } from 'react-select';
-import { CommonSelectCmpsProps } from './declarations';
+import { ICommonSelectCmps } from './declarations';
 
 // Use module augmentation to extend the react-select types with our own.
 declare module 'react-select/dist/declarations/src/Select' {
@@ -9,5 +9,5 @@ declare module 'react-select/dist/declarations/src/Select' {
     Option,
     IsMulti extends boolean,
     Group extends GroupBase<Option>,
-  > extends CommonSelectCmpsProps {}
+  > extends ICommonSelectCmps {}
 }

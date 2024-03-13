@@ -1,12 +1,12 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { LabelPosition } from './declarations';
+import { TLabelPosition } from './declarations';
 import { StyledTagContainerProps } from '../Tag/components/StyledTagContainer';
 import { TagProps } from '../Tag';
 
 export interface TagGroupLabelMixinProps
   extends Pick<StyledTagContainerProps, 'size'> {
-  labelPosition: LabelPosition;
+  labelPosition: TLabelPosition;
   theme: DefaultTheme;
 }
 

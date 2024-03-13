@@ -60,10 +60,7 @@ export const Textarea: React.FC<TextareaProps> = ({
       {...restNativeTextareaProps}
       aria-label={ariaLabel}
       disabled={disabled}
-      id={id}
       required={required}
-      status={status}
-      size={size}
     />
   </Field>
 );

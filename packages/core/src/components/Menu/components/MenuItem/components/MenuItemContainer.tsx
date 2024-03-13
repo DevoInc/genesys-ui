@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import {
   ButtonAttrProps,
-  FieldAttrProps,
+  IFieldAttrs,
   FocusEventAttrProps,
   GlobalAriaProps,
   GlobalAttrProps,
@@ -23,7 +23,7 @@ import {
 export interface MenuItemContainerProps
   extends StyledPolymorphicProps,
     GlobalAttrProps,
-    FieldAttrProps,
+    IFieldAttrs,
     GlobalAriaProps,
     TriggerAriaProps,
     LayoutAttrProps,

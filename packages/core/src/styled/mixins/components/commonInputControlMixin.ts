@@ -3,8 +3,8 @@ import type { DefaultTheme } from 'styled-components';
 
 import type {
   ControlWidth,
-  FieldSize,
-  FieldStatus,
+  TFieldSize,
+  TFieldStatus,
 } from '../../../declarations';
 import {
   getFieldState,
@@ -16,8 +16,8 @@ interface commonInputControlMixinProps {
   disabled?: boolean;
   inputWidth?: ControlWidth;
   readOnly?: boolean;
-  $size?: FieldSize;
-  status?: FieldStatus;
+  $size?: TFieldSize;
+  status?: TFieldStatus;
   theme: DefaultTheme;
 }
 

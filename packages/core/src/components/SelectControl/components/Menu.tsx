@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { components, MenuProps as RSMenuProps, MultiValue } from 'react-select';
 
-import { SelectOption } from '../declarations';
+import { TSelectOption } from '../declarations';
 
 import { showMenuAndDropDown } from '../utils';
 import { SelectControlContext } from '../context';
@@ -15,7 +15,7 @@ import { StyledSelectMenu, StyledSelectAll } from '../styled';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MenuProps<Option> extends RSMenuProps<Option> {}
 
-export const Menu = <Option extends SelectOption>(
+export const Menu = <Option extends TSelectOption>(
   props: MenuProps<Option>,
 ): React.ReactElement<MenuProps<Option>> => {
   const { options } = props;

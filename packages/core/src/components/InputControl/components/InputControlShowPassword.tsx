@@ -5,7 +5,7 @@ import { INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP } from '../constants';
 import { IconButton, IconButtonProps } from '../../IconButton';
 
 import { StyledInputControlShowPassword } from '../styled/StyledInputControlShowPassword';
-import { FieldSize, StyledOverloadCssProps } from '../../../declarations';
+import { TFieldSize, StyledOverloadCssProps } from '../../../declarations';
 import {
   GIEyeViewFilled,
   GIEyeVisibilityShowVisible,
@@ -15,7 +15,7 @@ export interface InputControlShowPasswordProps
   extends StyledOverloadCssProps,
     Pick<IconButtonProps, 'onClick'> {
   showPassword?: boolean;
-  size?: FieldSize;
+  size?: TFieldSize;
 }
 
 export const InputControlShowPassword: React.FC<

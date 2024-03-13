@@ -22,10 +22,13 @@ export interface FormLegendProps
   legendPosition?: TLegendPosition;
   /** The text of the legend. */
   text: string;
+  /** The children if we need a custom content. */
+  children: React.ReactNode;
 }
 
 export const FormLegend: React.FC<FormLegendProps> = ({
   asLegend,
+  children,
   text,
   hasLabelFormat = false,
   requiredMark,
@@ -42,17 +45,18 @@ export const FormLegend: React.FC<FormLegendProps> = ({
         as={asLegend ? 'legend' : null}
         margin="0"
       >
-        {hasLabelFormat ? (
-          <Field._Label helper={helper} requiredMark={requiredMark}>
-            {text}
-          </Field._Label>
-        ) : (
-          <Typography.Heading as="span" size="h6">
-            {requiredMark}
-            {text}
-            {helper}
-          </Typography.Heading>
-        )}
+        {children ||
+          (hasLabelFormat ? (
+            <Field._Label helper={helper} requiredMark={requiredMark}>
+              {text}
+            </Field._Label>
+          ) : (
+            <Typography.Heading as="span" size="h6">
+              {requiredMark}
+              {text}
+              {helper}
+            </Typography.Heading>
+          ))}
       </Flex>
     </StyledFormLegendContainer>
   );

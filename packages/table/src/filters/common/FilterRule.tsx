@@ -1,9 +1,13 @@
 import * as React from 'react';
 
-import { SelectControl, InputControl, SelectOption } from '@devoinc/genesys-ui';
+import {
+  SelectControl,
+  InputControl,
+  TSelectOption,
+} from '@devoinc/genesys-ui';
 
 type FilterRuleProps = {
-  options: SelectOption[];
+  options: TSelectOption[];
   defaultValue: string;
   label: string;
   placeholder: string;

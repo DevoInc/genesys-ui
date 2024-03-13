@@ -4,7 +4,7 @@ import {
   SingleValueProps as RSSingleValueProps,
 } from 'react-select';
 
-import { SelectOption } from '../declarations';
+import { TSelectOption } from '../declarations';
 
 import { getValueIconSize } from '../utils';
 
@@ -14,7 +14,7 @@ import { ValueIcon } from './ValueIcon';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface SingleValueProps<Option> extends RSSingleValueProps<Option> {}
 
-export const SingleValue = <Option extends SelectOption>(
+export const SingleValue = <Option extends TSelectOption>(
   props: SingleValueProps<Option>,
 ): React.ReactElement<SingleValueProps<Option>> => {
   return (

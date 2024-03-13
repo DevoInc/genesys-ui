@@ -4,6 +4,8 @@ import { get } from 'lodash';
 import { CUSTOM_HEIGHT } from './constants';
 
 import { wrapperOnChange, findValue } from './utils';
+import { getFieldContextProps } from '../Field';
+import { FieldContext } from '../Field/context';
 
 import * as defaultComponents from './components';
 import {
@@ -18,7 +20,7 @@ import type {
   StyledOverloadCssProps,
 } from '../../declarations';
 import { SelectComponents } from 'react-select/dist/declarations/src/components';
-import { SelectOption } from './declarations';
+import { TSelectOption } from './declarations';
 import {
   CSSObjectWithLabel,
   GroupBase,
@@ -29,7 +31,7 @@ import {
 } from 'react-select';
 
 export interface SelectControlProps<
-  Option extends SelectOption = SelectOption,
+  Option extends TSelectOption = TSelectOption,
   IsMulti extends boolean = boolean,
   Group extends GroupBase<Option> = GroupBase<Option>,
 > extends Omit<
@@ -46,17 +48,23 @@ export interface SelectControlProps<
 }
 
 export const SelectControl = <
-  Option extends SelectOption = SelectOption,
+  Option extends TSelectOption = TSelectOption,
   IsMulti extends boolean = boolean,
   Group extends GroupBase<Option> = GroupBase<Option>,
 >({
+  'aria-errormessage': ariaErrorMessage,
+  'aria-describedby': ariaDescribedBy,
+  'aria-labelledby': ariaLabelledBy,
   components,
+  isDisabled,
   componentStyles,
+  id,
   styles,
   value,
   isClearable,
-  status = 'base',
-  size = 'md',
+  required,
+  status,
+  size,
   menuAppendToBody = true,
   menuPlacement = 'auto',
   menuLevel = 3,
@@ -133,16 +141,36 @@ export const SelectControl = <
       !ev.srcElement.classList.contains(`${rest.classNamePrefix}__menu-list`),
     [rest.classNamePrefix, rest.closeMenuOnScroll, menuAppendToBody],
   );
-
+  const fieldContext = React.useContext(FieldContext);
+  const contextBasedProps = getFieldContextProps({
+    ariaDescribedBy,
+    ariaErrorMessage,
+    ariaLabelledBy,
+    disabled: isDisabled,
+    context: fieldContext,
+    id,
+    required,
+    size,
+    status,
+  });
+  const evalStatus = contextBasedProps.status;
+  console.info(evalStatus);
   return (
     <InnerSelectControl<Option, IsMulti, Group>
       {...rest}
-      minMenuHeight={0}
-      size={size}
+      aria-describedby={contextBasedProps.ariaDescribedBy}
+      aria-errormessage={
+        evalStatus === 'error' ? contextBasedProps.ariaErrorMessage : undefined
+      }
+      aria-labelledby={contextBasedProps.ariaLabelledBy}
+      isDisabled={contextBasedProps.disabled}
       menuAppendToBody={menuAppendToBody}
       menuPlacement={menuPlacement}
       menuLevel={menuLevel}
-      status={status}
+      minMenuHeight={0}
+      required={contextBasedProps.required}
+      size={contextBasedProps.size}
+      status={evalStatus}
       menuPortalTarget={rest.menuRelative ? null : menuPortalTarget}
       isClearable={clearable}
       {...(onChange && { onChange })}

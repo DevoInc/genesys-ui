@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { SelectControl, SelectOption } from '@devoinc/genesys-ui';
+import { SelectControl, TSelectOption } from '@devoinc/genesys-ui';
 
 import type { FilterContext, FilterProps } from '../../declarations';
 import { BasicFilter, BOOLEAN_OPTIONS, FilterContainer } from '../common';
@@ -16,7 +16,7 @@ export const BooleanFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
         <SelectControl
           size="sm"
           menuAppendToBody
-          onChange={(option: SelectOption | null) => {
+          onChange={(option: TSelectOption | null) => {
             onChange(
               {
                 value: option === null ? '' : option.value,

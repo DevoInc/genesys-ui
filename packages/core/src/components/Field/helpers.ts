@@ -1,8 +1,10 @@
 import * as React from 'react';
-
 import { DefaultTheme } from 'styled-components';
-import { FieldSize, GlobalState, GlobalStatus } from '../../declarations';
+
+import type { TFieldSize, GlobalState, GlobalStatus } from '../../declarations';
+import type { FieldContextProps } from './context';
 import { typoMixin, getTypoObject } from '../../styled/mixins/typography';
+import type { IField } from './declarations';
 
 export const getFieldControlTypo = ({
   textAlign,
@@ -11,7 +13,7 @@ export const getFieldControlTypo = ({
 }: {
   textAlign?: React.CSSProperties['textAlign'];
   theme: DefaultTheme;
-  size?: FieldSize;
+  size?: TFieldSize;
 }) =>
   typoMixin({
     textAlign,
@@ -36,10 +38,47 @@ export const getFieldControlTypoObj = ({
   size,
 }: {
   theme: DefaultTheme;
-  size?: FieldSize;
+  size?: TFieldSize;
 }) => getTypoObject({ theme, size: size });
 
-export const getFieldStatus = (status: GlobalStatus = 'base') => {
+export const getTFieldStatus = (status: GlobalStatus = 'base') => {
   if (status === 'help') return 'base';
   return status;
 };
+
+interface IGetFieldContextProps {
+  ariaDescribedBy?: FieldContextProps['ariaDescribedBy'];
+  ariaErrorMessage?: FieldContextProps['ariaErrorMessage'];
+  ariaLabelledBy?: FieldContextProps['ariaLabelledBy'];
+  context?: FieldContextProps;
+  disabled?: IField['disabled'];
+  id?: FieldContextProps['id'];
+  required?: IField['required'];
+  size?: FieldContextProps['size'];
+  status?: FieldContextProps['status'];
+}
+/**
+ * Get the evaluated props based in the Field context for its children (usually a field control: InputControl, CheckboxControl... etc.)
+ *
+ * @return Evaluated props object
+ */
+export const getFieldContextProps = ({
+  ariaDescribedBy,
+  ariaErrorMessage,
+  ariaLabelledBy,
+  context,
+  disabled,
+  id,
+  required,
+  size,
+  status,
+}: IGetFieldContextProps) => ({
+  ariaDescribedBy: ariaDescribedBy || context?.ariaDescribedBy,
+  ariaErrorMessage: ariaErrorMessage || context?.ariaErrorMessage,
+  ariaLabelledBy: ariaLabelledBy || context?.ariaLabelledBy,
+  disabled: disabled || context?.disabled,
+  id: id || context?.id,
+  required: required || context?.required,
+  size: size || context?.size,
+  status: status || context?.status,
+});

@@ -1,11 +1,11 @@
 import { describe, test, expect } from 'vitest';
-import { SelectOption } from '@devoinc/genesys-ui';
+import { TSelectOption } from '@devoinc/genesys-ui';
 
 import type { Data } from '../declarations';
 import { getOptionsFromData } from './getOptionsFromData';
 
 describe('getOptionsFromData', () => {
-  const cases: [string, Data, string, SelectOption[]][] = [
+  const cases: [string, Data, string, TSelectOption[]][] = [
     [
       'basic',
       [

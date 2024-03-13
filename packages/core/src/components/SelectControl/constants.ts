@@ -1,4 +1,4 @@
-import { BaseSize, FieldSize } from '../../declarations';
+import { BaseSize, TFieldSize } from '../../declarations';
 import { ChipSize } from '../Chip/declarations';
 import { IconProps } from '../Icon';
 
@@ -9,7 +9,7 @@ export const CUSTOM_HEIGHT: { [key in BaseSize]: number } = {
 } as const;
 
 /** A map of field sizes to chip sizes. */
-export const FIELD_SIZE_TO_CHIP_SIZE: { [key in FieldSize]: ChipSize } = {
+export const FIELD_SIZE_TO_CHIP_SIZE: { [key in TFieldSize]: ChipSize } = {
   sm: 'xxs',
   md: 'xs',
   lg: 'sm',
@@ -17,7 +17,7 @@ export const FIELD_SIZE_TO_CHIP_SIZE: { [key in FieldSize]: ChipSize } = {
 
 /** A map of field sizes to chip sizes. */
 export const FIELD_SIZE_TO_VALUE_ICON_SIZE: {
-  [key in FieldSize]: IconProps['size'];
+  [key in TFieldSize]: IconProps['size'];
 } = {
   sm: 'xxxs',
   md: 'xxs',

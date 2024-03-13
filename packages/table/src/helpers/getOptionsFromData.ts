@@ -1,9 +1,9 @@
-import { type SelectOption } from '@devoinc/genesys-ui';
+import { type TSelectOption } from '@devoinc/genesys-ui';
 
 import type { Data } from '../declarations';
 
-export const getOptionsFromData = (data: Data, id: string): SelectOption[] => {
-  const result: SelectOption[] = [];
+export const getOptionsFromData = (data: Data, id: string): TSelectOption[] => {
+  const result: TSelectOption[] = [];
   const cache = [];
   for (const row of data) {
     // Get the current value of the row

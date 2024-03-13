@@ -1,14 +1,25 @@
 import * as React from 'react';
 
-import { FieldSize, FieldStatus } from '../../declarations';
-import { LabelPosition } from './declarations';
+import type {
+  FieldAriaProps,
+  GlobalAriaProps,
+  TFieldSize,
+  TFieldStatus,
+} from '../../declarations';
+import type { IField, TFieldDirection, TLabelPosition } from './declarations';
 
 export interface FieldContextProps {
-  direction?: 'between' | 'row' | 'column' | 'reverse';
+  ariaErrorMessage?: FieldAriaProps['aria-errormessage'];
+  ariaDescribedBy?: GlobalAriaProps['aria-describedby'];
+  ariaLabelledBy?: GlobalAriaProps['aria-labelledby'];
+  direction?: TFieldDirection;
+  disabled?: IField['disabled'];
   hasWideControl?: boolean;
-  labelPosition?: LabelPosition;
-  size?: FieldSize;
-  status?: FieldStatus;
+  id?: IField['id'];
+  labelPosition?: TLabelPosition;
+  required?: IField['required'];
+  size?: TFieldSize;
+  status?: TFieldStatus;
 }
 
 export const FieldContext = React.createContext<FieldContextProps>({

@@ -6,7 +6,7 @@ import { getFieldControlTypo } from '../../Field';
 import { disabledMixin, elevationMixin } from '../../../styled';
 import { scrollbars } from '../../../styled';
 import { truncateTypoMixin, typoMixin } from '../../../styled';
-import { Elevation, FieldSize } from '../../../declarations';
+import { Elevation, TFieldSize } from '../../../declarations';
 
 const FIELD_MENU_LEVEL_ELEVATION_MAP: Elevation[] = [
   'ground',
@@ -29,7 +29,7 @@ export interface StyledSelectMenuProps {
   multipleSubtle?: boolean;
   minMenuHeight: React.CSSProperties['minHeight'];
   minMenuWidth: React.CSSProperties['minWidth'];
-  size: FieldSize;
+  size: TFieldSize;
 }
 
 export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`

@@ -19,7 +19,7 @@ export const MenuItemIcon: React.FC<MenuItemIconProps> = ({
 
   return (
     <StyledMenuItemIcon>
-      <Icon {...restIconProps} size={size || defaultIconSize} role={'img'}>
+      <Icon {...restIconProps} size={size || defaultIconSize}>
         {children}
       </Icon>
     </StyledMenuItemIcon>

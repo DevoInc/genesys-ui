@@ -2,7 +2,7 @@ import * as React from 'react';
 import { format, set } from 'date-fns';
 
 import {
-  FieldSize,
+  TFieldSize,
   Flex,
   GlobalAriaProps,
   GlobalAttrProps,
@@ -30,7 +30,7 @@ export interface TimeProps
   /** Function called when change the time value.  */
   onChange: (ts: number) => void;
   /** The size of the Time, specially the input. */
-  size?: FieldSize;
+  size?: TFieldSize;
   /** Initial value. One of `number` or `Date`. */
   value?: Datetime;
 }

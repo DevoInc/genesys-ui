@@ -1,26 +1,13 @@
 import styled, { css } from 'styled-components';
-import { FieldAddonPosition } from '../declarations';
+import type { IField, TFieldAddonPosition } from '../declarations';
 import { typoMixin } from '../../../styled/mixins';
-import {
-  FieldSize,
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledPolymorphicProps,
-} from '../../../declarations';
 import { disabledMixin } from '../../../styled/';
 
-export interface StyledFieldAddonProps
-  extends StyledPolymorphicProps,
-    GlobalAttrProps,
-    GlobalAriaProps {
-  /** Class name html attribute of the tag */
-  children: React.ReactNode;
+export interface StyledFieldAddonProps extends Pick<IField, 'size'> {
   /** If the addon belongs to a disabled field (transient prop version) */
-  $disabled?: boolean;
+  $disabled?: IField['disabled'];
   /** The position on the form field */
-  position?: FieldAddonPosition;
-  /** Size of the input: height, padding, font-size... etc. */
-  size?: FieldSize;
+  position?: TFieldAddonPosition;
 }
 
 export const StyledFieldAddon = styled.span<StyledFieldAddonProps>`

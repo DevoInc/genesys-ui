@@ -63,10 +63,7 @@ export const Radio: React.FC<RadioProps> = ({
       {...restNativeInputProps}
       aria-labelledby={ariaLabelledBy}
       disabled={disabled}
-      id={id}
       required={required}
-      size={size}
-      status={status}
     />
   </Field>
 );

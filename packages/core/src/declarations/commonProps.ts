@@ -1,7 +1,7 @@
 import { ReactHTML } from 'react';
 import { PickUnion } from '../typeFunctions';
 import { GLOBAL_SPACING } from '../constants';
-import { FieldAttrProps, GlobalAttrProps } from './htmlAttrs';
+import { IFieldAttrs, GlobalAttrProps } from './htmlAttrs';
 import { FieldAriaProps, GlobalAriaProps } from './ariaAttrs';
 import {
   FieldEventAttrProps,
@@ -56,12 +56,12 @@ export type GlobalSpacing = (typeof GLOBAL_SPACING)[number];
 /** ---------------------------------------------
  * Field size declaration: size for all the field controls and components: InputControl, Input, Switch... etc.
  * --------------------------------------------- */
-export type FieldSize = BaseSize;
+export type TFieldSize = BaseSize;
 
 /** ---------------------------------------------
  * Field status declaration: size for all the field controls and components: InputControl, Input, Switch... etc.
  * --------------------------------------------- */
-export type FieldStatus = PickUnion<
+export type TFieldStatus = PickUnion<
   GlobalStatus,
   'base' | 'success' | 'error' | 'warning'
 >;
@@ -240,12 +240,12 @@ export type Elevation =
 /** ---------------------------------------------
  * Form field controls: InputControl, CheckboxControl... etc. common interface
  * --------------------------------------------- */
-export interface FieldControlCommonProps<T = Element>
+export interface IFieldControl<T = Element>
   extends GlobalAttrProps<T>,
     Pick<GlobalAriaProps, 'aria-describedby' | 'aria-labelledby'>,
     Required<Pick<GlobalAriaProps, 'aria-label'>>,
     Omit<FieldAriaProps, 'aria-required'>,
-    FieldAttrProps<T>,
+    IFieldAttrs<T>,
     FieldEventAttrProps<T>,
     FocusEventAttrProps<T>,
     MouseEventAttrProps<T>,

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { StyledInputControlIcon, StyledInputControlIconProps } from '../styled';
 import {
-  type FieldStatus,
+  type TFieldStatus,
   StyledOverloadCssProps,
 } from '../../../declarations';
 import { Icon, IconProps } from '../../Icon';
@@ -14,7 +14,7 @@ export interface InputControlIconProps
   /** The Icon svg from icon library */
   icon?: IconProps['children'];
   /** This property defines the status color schema for the input */
-  status?: FieldStatus;
+  status?: TFieldStatus;
 }
 
 export const InputControlIcon: React.FC<InputControlIconProps> = ({
