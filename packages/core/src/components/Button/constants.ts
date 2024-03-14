@@ -1,6 +1,9 @@
 import { ButtonColorScheme, ButtonSize } from './declarations';
 import { BadgeSize } from '../Badge';
-import { SpinnerColorScheme, SpinnerSize } from '../SpinnerLoader/constants';
+import {
+  TSpinnerColorScheme,
+  TSpinnerSize,
+} from '../SpinnerLoader/declarations';
 
 export const BUTTON_BADGE_SIZE_MAP: { [key in ButtonSize]: BadgeSize } = {
   xxs: 'sm',
@@ -10,7 +13,7 @@ export const BUTTON_BADGE_SIZE_MAP: { [key in ButtonSize]: BadgeSize } = {
   lg: 'md',
 } as const;
 
-export const BUTTON_LOADER_SIZE_MAP: { [key in ButtonSize]: SpinnerSize } = {
+export const BUTTON_LOADER_SIZE_MAP: { [key in ButtonSize]: TSpinnerSize } = {
   xxs: 'xxxs',
   xs: 'xxs',
   sm: 'xs',
@@ -19,7 +22,7 @@ export const BUTTON_LOADER_SIZE_MAP: { [key in ButtonSize]: SpinnerSize } = {
 } as const;
 
 export const BUTTON_LOADER_COLOR_SCHEME_MAP: {
-  [key in ButtonColorScheme]: SpinnerColorScheme;
+  [key in ButtonColorScheme]: TSpinnerColorScheme;
 } = {
   accent: 'lightTrans',
   'accent-high': 'darkTrans',

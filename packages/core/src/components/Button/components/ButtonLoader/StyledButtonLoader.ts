@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-import { SpinnerSize } from '../../../SpinnerLoader/constants';
+import { TSpinnerSize } from '../../../SpinnerLoader/constants';
 
 export interface StyledButtonLoaderProps {
   /** Sets width, height, stroke... etc. */
-  size?: SpinnerSize;
+  size?: TSpinnerSize;
 }
 
 export const StyledButtonLoader = styled.svg.attrs(() => ({

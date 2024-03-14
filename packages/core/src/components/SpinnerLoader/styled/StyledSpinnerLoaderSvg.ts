@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
 
-import { getSize, ROTATE_ANIMATION, SpinnerSize } from '../constants';
+import { getSize, ROTATE_ANIMATION } from '../constants';
+import { TSpinnerSize } from '../declarations';
 
-export interface StyledSpinnerLoaderSvgProps {
-  size?: SpinnerSize;
+interface StyledSpinnerLoaderSvgProps {
+  size?: TSpinnerSize;
 }
 
 export const StyledSpinnerLoaderSvg = styled.svg<StyledSpinnerLoaderSvgProps>`

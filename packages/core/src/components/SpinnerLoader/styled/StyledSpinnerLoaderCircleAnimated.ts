@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
 
-import { DASH_ANIMATION, SpinnerColorScheme } from '../constants';
+import { DASH_ANIMATION } from '../constants';
+import { TSpinnerColorScheme } from '../declarations';
 
 interface StyledSpinnerLoaderCircleAnimatedProps {
-  colorScheme?: SpinnerColorScheme;
+  colorScheme?: TSpinnerColorScheme;
 }
 
 export const StyledSpinnerLoaderCircleAnimated = styled.circle<StyledSpinnerLoaderCircleAnimatedProps>`

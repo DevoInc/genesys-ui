@@ -4,7 +4,7 @@ import { LoaderContext } from '../context';
 import { LOADER_SIZE_PROGRESS_AND_SPINNER } from '../constants';
 
 import { SpinnerLoader, SpinnerLoaderProps } from '../../SpinnerLoader';
-import { SpinnerColorScheme } from '../../SpinnerLoader/constants';
+import { TSpinnerColorScheme } from '../../SpinnerLoader/declarations';
 
 export const LoaderSpinner: React.FC<SpinnerLoaderProps> = ({
   colorScheme,
@@ -15,7 +15,7 @@ export const LoaderSpinner: React.FC<SpinnerLoaderProps> = ({
   return (
     <SpinnerLoader
       {...restSpinnerLoaderProps}
-      colorScheme={colorScheme || (context.colorScheme as SpinnerColorScheme)}
+      colorScheme={colorScheme || (context.colorScheme as TSpinnerColorScheme)}
       size={LOADER_SIZE_PROGRESS_AND_SPINNER[size || context.size].spinner}
     />
   );

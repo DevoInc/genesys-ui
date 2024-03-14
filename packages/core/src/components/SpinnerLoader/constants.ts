@@ -1,6 +1,5 @@
 import { keyframes } from 'styled-components';
-import { PickUnion } from '../../typeFunctions';
-import { UIColorScheme, GlobalSize } from '../../declarations/commonProps';
+import type { TSpinnerSize } from './declarations';
 
 // ANIMATIONS - CONSTANTS --------------------------------------------------- //
 
@@ -33,21 +32,6 @@ export const ROTATE_ANIMATION = keyframes`
 
 // Color Scheme - Prop values
 
-export type SpinnerColorScheme =
-  | UIColorScheme
-  | 'brand'
-  | 'dark'
-  | 'darkTrans'
-  | 'light'
-  | 'lightTrans';
-
-// Size - Prop values
-
-export type SpinnerSize = PickUnion<
-  GlobalSize,
-  'xxxs' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
->;
-
 // GET - CONSTANTS ---------------------------------------------------------- //
 const SIZE_VALUES = {
   xxxs: '1.2rem',
@@ -59,5 +43,5 @@ const SIZE_VALUES = {
   xl: '4.4rem',
 } as const;
 
-export const getSize = (size: SpinnerSize) =>
+export const getSize = (size: TSpinnerSize) =>
   SIZE_VALUES[size] || SIZE_VALUES.md;

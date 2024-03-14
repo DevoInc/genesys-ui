@@ -4,7 +4,7 @@ import { SelectControl } from '@devoinc/genesys-ui';
 
 import { EditorFloatingWrapper } from '../components';
 import type { CellEditorProps } from '../../declarations';
-import { ContextOptions, getTSelectOptions } from '../../facade';
+import { ContextOptions, getSelectOptions } from '../../facade';
 
 export const OptionsEditor: React.FC<CellEditorProps> = ({
   value,
@@ -21,7 +21,7 @@ export const OptionsEditor: React.FC<CellEditorProps> = ({
         creatable
         isMulti={Array.isArray(value)}
         menuAppendToBody
-        options={getTSelectOptions(options)}
+        options={getSelectOptions(options)}
         autoFocus
       />
     </EditorFloatingWrapper>

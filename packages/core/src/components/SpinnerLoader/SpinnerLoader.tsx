@@ -1,17 +1,16 @@
 import * as React from 'react';
 
-import {
+import type {
   GlobalAriaProps,
   GlobalAttrProps,
   StyledOverloadCssProps,
   StyledPolymorphicProps,
 } from '../../declarations';
+import { TSpinnerColorScheme, TSpinnerSize } from './declarations';
 
 import {
   StyledSpinnerLoaderSvg,
-  StyledSpinnerLoaderSvgProps,
   StyledSpinnerLoaderCircle,
-  StyledSpinnerLoaderCircleProps,
   StyledSpinnerLoaderCircleAnimated,
 } from './styled';
 
@@ -19,9 +18,10 @@ export interface SpinnerLoaderProps
   extends StyledPolymorphicProps,
     StyledOverloadCssProps,
     GlobalAttrProps,
-    GlobalAriaProps,
-    StyledSpinnerLoaderSvgProps,
-    StyledSpinnerLoaderCircleProps {}
+    GlobalAriaProps {
+  colorScheme?: TSpinnerColorScheme;
+  size?: TSpinnerSize;
+}
 
 export const SpinnerLoader: React.FC<SpinnerLoaderProps> = ({
   colorScheme = 'dark',

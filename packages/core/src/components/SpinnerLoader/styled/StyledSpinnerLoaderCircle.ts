@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
-import { SpinnerColorScheme } from '../constants';
+import { TSpinnerColorScheme } from '../declarations';
 
-export interface StyledSpinnerLoaderCircleProps {
-  colorScheme?: SpinnerColorScheme;
+interface StyledSpinnerLoaderCircleProps {
+  colorScheme?: TSpinnerColorScheme;
 }
 
 export const StyledSpinnerLoaderCircle = styled.circle<StyledSpinnerLoaderCircleProps>`

@@ -7,7 +7,7 @@ export interface MenuProps extends Omit<VFlexProps, 'role'> {
 }
 
 const InternalMenu: React.FC<MenuProps> = ({
-  as,
+  as = 'nav',
   children,
   childrenFitFullWidth = true,
   cmpRole = 'menu',
@@ -17,7 +17,7 @@ const InternalMenu: React.FC<MenuProps> = ({
   return cmpRole === 'nav' ? (
     <VFlex
       {...restVFlexProps}
-      as={as || 'nav'}
+      as={as}
       spacing={spacing}
       childrenFitFullWidth={childrenFitFullWidth}
     >
