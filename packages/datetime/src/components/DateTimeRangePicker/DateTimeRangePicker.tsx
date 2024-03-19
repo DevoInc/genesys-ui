@@ -55,6 +55,7 @@ export interface DateTimeRangePickerProps
       | 'statusTo'
       | 'onChange'
       | 'onBlur'
+      | 'onRealTimeClick'
       | 'wide'
     >,
     Required<Pick<GlobalAttrProps, 'id'>>,

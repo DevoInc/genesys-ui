@@ -33,6 +33,30 @@ export const Base: Story = {
           value={date}
           onApply={onApply(setDate)}
           onChange={onChange(setDate)}
+          onRealTimeClick={(event) => {
+            console.log('He pisado RT', event);
+          }}
+          presets={[
+            {
+              label: 'Relative too',
+              options: [
+                {
+                  value: {
+                    from: 'now() - 30s',
+                    to: 'now()',
+                  },
+                  label: 'Last 30 seconds',
+                },
+                {
+                  value: {
+                    from: 'now() - 1m',
+                    to: 'now()',
+                  },
+                  label: 'Last minute',
+                },
+              ],
+            },
+          ]}
         />
       );
     })(args),
