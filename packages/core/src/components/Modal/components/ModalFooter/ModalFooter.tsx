@@ -22,7 +22,7 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({
   return (
     <Panel.Footer
       {...restPanelFooterProps}
-      hasBackground={hasBackground}
+      hasBackground={status === 'base' ? hasBackground : undefined}
       styles={concat(modalFooterMixin({ status, theme }), styles)}
     >
       {children}

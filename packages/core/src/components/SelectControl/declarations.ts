@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import type { ChipProps } from '../Chip';
 import type {
-  BaseSize,
-  ControlWidth,
+  TBaseSize,
+  TControlWidth,
   TFieldStatus,
 } from '../../declarations/commonProps';
 
@@ -40,9 +40,9 @@ export interface ICommonSelectCmps {
   /** Show select all button when select is multi */
   selectAllBtn?: boolean;
   /** Predefined width of the select. It should reflect the length of the content you expect the user to enter */
-  selectWidth?: ControlWidth;
+  selectWidth?: TControlWidth;
   /** Size of the input: height, padding, font-size... etc. */
-  size?: BaseSize;
+  size?: TBaseSize;
   /** Allow sorting options in a multivalue select */
   sortable?: boolean;
   /** This property defines the status color schema for the input */

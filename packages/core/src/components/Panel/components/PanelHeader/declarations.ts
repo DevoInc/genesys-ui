@@ -5,9 +5,9 @@ import {
   TPanelRemoveSpace,
 } from '../../declarations';
 import {
-  GlobalAttrProps,
+  IGlobalAttrs,
   ILayoutBoxCss,
-  MouseEventAttrProps,
+  IMouseEventAttrs,
 } from '../../../../declarations';
 
 export interface IPanelHeaderAttrs extends IPanelContainerAttrs {
@@ -18,14 +18,14 @@ export interface IPanelHeaderAttrs extends IPanelContainerAttrs {
 
 export interface IPanelCloseAttrs {
   cssTranslate?: ILayoutBoxCss['cssTranslate'];
-  onClick: MouseEventAttrProps['onClick'];
-  tooltip?: GlobalAttrProps['tooltip'];
+  onClick: IMouseEventAttrs['onClick'];
+  tooltip?: IGlobalAttrs['tooltip'];
 }
 
 export interface IPanelCollapseAttrs {
   expanded?: boolean;
-  onClick: MouseEventAttrProps['onClick'];
-  tooltip?: GlobalAttrProps['tooltip'];
+  onClick: IMouseEventAttrs['onClick'];
+  tooltip?: IGlobalAttrs['tooltip'];
 }
 
 export interface IPanelHeadingAttrs {

@@ -2,11 +2,11 @@ import * as React from 'react';
 import { format } from 'date-fns';
 import { AllHTMLAttributes } from 'react';
 
-import { StyledOverloadCssProps } from '@devoinc/genesys-ui';
+import { IStyledOverloadCss } from '@devoinc/genesys-ui';
 
 import { StyledCalendarCell } from './StyledCalendarCell';
 
-export interface CellProps extends StyledOverloadCssProps {
+export interface CellProps extends IStyledOverloadCss {
   /** classname to add */
   className?: AllHTMLAttributes<HTMLElement>['className'];
   /** Event fired when selected days change */

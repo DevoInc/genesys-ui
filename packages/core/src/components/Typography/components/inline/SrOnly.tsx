@@ -1,12 +1,12 @@
-import { GlobalAriaProps, GlobalAttrProps } from '../../../../declarations';
+import { IGlobalAriaAttrs, IGlobalAttrs } from '../../../../declarations';
 import * as React from 'react';
 
 import { StyledSrOnly } from '../../StyledTypography';
 
 export interface SrOnlyProps
   // native
-  extends Pick<GlobalAttrProps, 'role' | 'id'>,
-    GlobalAriaProps {
+  extends Pick<IGlobalAttrs, 'role' | 'id'>,
+    IGlobalAriaAttrs {
   children?: React.ReactNode;
 }
 

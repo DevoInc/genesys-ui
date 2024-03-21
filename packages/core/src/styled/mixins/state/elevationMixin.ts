@@ -1,6 +1,6 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { Elevation } from '../../../declarations';
+import { TElevation } from '../../../declarations';
 import { elevationBoxShadowMixin } from './elevationBoxShadowMixin';
 import { elevationBorderMixin } from './elevationBorderMixin';
 import { elevationBorderRadiusMixin } from './elevationBorderRadiusMixin';
@@ -10,7 +10,7 @@ import { elevationZIndexMixin } from './elevationZIndexMixin';
  * Get the generic elevation styles based in the theme design tokens and type
  */
 export const elevationMixin =
-  (theme: DefaultTheme) => (elevation: Elevation) =>
+  (theme: DefaultTheme) => (elevation: TElevation) =>
     elevation
       ? css`
           ${elevationBoxShadowMixin(theme)(elevation)};

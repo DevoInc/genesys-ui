@@ -14,10 +14,10 @@ import {
 } from './InnerSelectControl';
 
 import type {
-  FieldAriaProps,
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
+  IFieldAriaAttrs,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
 } from '../../declarations';
 import { SelectComponents } from 'react-select/dist/declarations/src/components';
 import { TSelectOption } from './declarations';
@@ -39,10 +39,10 @@ export interface SelectControlProps<
       'value' | 'option'
     >,
     //native
-    FieldAriaProps,
-    GlobalAriaProps,
-    StyledOverloadCssProps,
-    Omit<GlobalAttrProps, 'tooltip'> {
+    IFieldAriaAttrs,
+    IGlobalAriaAttrs,
+    IStyledOverloadCss,
+    Omit<IGlobalAttrs, 'tooltip'> {
   value?: PropsValue<Option> | Option['value'];
   onChange?: (value: PropsValue<Option>) => void;
 }
@@ -154,7 +154,7 @@ export const SelectControl = <
     status,
   });
   const evalStatus = contextBasedProps.status;
-  console.info(evalStatus);
+
   return (
     <InnerSelectControl<Option, IsMulti, Group>
       {...rest}

@@ -6,9 +6,9 @@ import { StepperSize } from '../../declarations';
 
 import { stepperContainerMixin } from './helpers';
 
-import { Flex, FlexProps } from '../../../Flex';
+import { HFlex, type HFlexProps } from '../../../HFlex';
 
-export interface StepperContainerProps extends Omit<FlexProps, 'size'> {
+export interface StepperContainerProps extends Omit<HFlexProps, 'spacing'> {
   /** Sizes options for icon and text */
   size?: StepperSize;
 }
@@ -17,6 +17,8 @@ export const StepperContainer: React.FC<StepperContainerProps> = ({
   alignItems = 'center',
   as = 'ol',
   children,
+  height,
+  padding,
   size,
   styles,
   ...restFlexProps
@@ -24,16 +26,16 @@ export const StepperContainer: React.FC<StepperContainerProps> = ({
   const theme = useTheme();
   const containerTokens = theme.cmp.stepper.container;
   return (
-    <Flex
+    <HFlex
       {...restFlexProps}
       alignItems={alignItems}
       as={as}
-      gap={containerTokens.space.gap}
-      height={theme.cmp.stepper.container.size.height[size]}
-      padding={`0 ${containerTokens.space.padding}`}
+      spacing="cmp-md"
+      height={height || containerTokens.size.height[size]}
+      padding={padding || `0 ${containerTokens.space.padding}`}
       styles={concat(stepperContainerMixin({ size, theme }), styles)}
     >
       {children}
-    </Flex>
+    </HFlex>
   );
 };

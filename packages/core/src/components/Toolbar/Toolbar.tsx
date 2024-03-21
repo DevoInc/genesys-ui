@@ -5,7 +5,7 @@ import { OmitUnion } from '../../typeFunctions';
 
 import { toolbarContainerMixin } from './helpers';
 
-import { BaseSize } from '../../declarations';
+import { TBaseSize } from '../../declarations';
 
 import { ToolbarGroup } from './components/ToolbarGroup';
 import { ToolbarSeparator } from './components/ToolbarSeparator';
@@ -15,7 +15,7 @@ import { Flex, FlexProps } from '../Flex';
 export interface ToolbarProps
   extends Omit<FlexProps, 'as' | 'alignItems' | 'justifyContent'> {
   /** Size of the component */
-  size?: OmitUnion<BaseSize, 'lg'>;
+  size?: OmitUnion<TBaseSize, 'lg'>;
 }
 
 const InternalToolbar: React.FC<ToolbarProps> = ({

@@ -1,16 +1,13 @@
 import * as React from 'react';
 
 import { StyledInputControlIcon, StyledInputControlIconProps } from '../styled';
-import {
-  type TFieldStatus,
-  StyledOverloadCssProps,
-} from '../../../declarations';
+import { type TFieldStatus, IStyledOverloadCss } from '../../../declarations';
 import { Icon, IconProps } from '../../Icon';
 import { useTheme } from 'styled-components';
 
 export interface InputControlIconProps
   extends StyledInputControlIconProps,
-    StyledOverloadCssProps {
+    IStyledOverloadCss {
   /** The Icon svg from icon library */
   icon?: IconProps['children'];
   /** This property defines the status color schema for the input */

@@ -4,7 +4,7 @@ import { GISearchFindZoom } from '@devoinc/genesys-icons';
 import { INPUT_CONTROL_ICON_STATUS_MAP } from './constants';
 import type {
   IFieldControl,
-  WithRequiredAriaLabelOrAriaLabelledByProps,
+  IWithRequiredAriaLabelOrAriaLabelledByAttr,
 } from '../../declarations';
 import type {
   InputControlIconProps,
@@ -67,7 +67,7 @@ export interface BaseInputControlProps
 }
 
 export type InputControlProps =
-  WithRequiredAriaLabelOrAriaLabelledByProps<BaseInputControlProps>;
+  IWithRequiredAriaLabelOrAriaLabelledByAttr<BaseInputControlProps>;
 
 const InternalInputControl: React.FC<InputControlProps> = ({
   addonToLeft,
@@ -145,7 +145,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
     hasStatus(evalStatus) && !hideStatusIcon
       ? INPUT_CONTROL_ICON_STATUS_MAP[evalStatus]
       : icon;
-  console.info(contextBasedProps);
+
   return (
     <InputControl._Container
       onClick={onClick}

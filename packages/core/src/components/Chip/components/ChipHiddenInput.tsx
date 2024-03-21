@@ -1,18 +1,18 @@
 import * as React from 'react';
 
 // declarations
-import type { GlobalAriaProps } from '../../../declarations/ariaAttrs';
+import type { IGlobalAriaAttrs } from '../../../declarations/ariaAttrs';
 import type {
-  ButtonAttrProps,
-  GlobalAttrProps,
+  IButtonAttrs,
+  IGlobalAttrs,
   IInputAttrs,
 } from '../../../declarations/htmlAttrs';
-import type { SelectionScheme } from '../../../declarations/commonProps';
+import type { TSelectionScheme } from '../../../declarations/commonProps';
 import type {
-  FieldEventAttrProps,
-  FocusEventAttrProps,
+  IFieldEventAttrs,
+  IFocusEventAttrs,
 } from '../../../declarations/htmlEventAttrs';
-import type { StyledOverloadCssProps } from '../../../declarations/styled';
+import type { IStyledOverloadCss } from '../../../declarations/styled';
 import type { ChipContainerProps } from './ChipContainer';
 
 // styled
@@ -20,18 +20,18 @@ import { StyledHiddenInput } from '../../../styled';
 
 export interface ChipHiddenInputProps
   extends Pick<ChipContainerProps, 'state'>,
-    Pick<GlobalAriaProps, 'aria-label'>,
-    Pick<GlobalAttrProps, 'id'>,
-    Pick<ButtonAttrProps, 'name'>,
-    FocusEventAttrProps,
-    FieldEventAttrProps,
+    Pick<IGlobalAriaAttrs, 'aria-label'>,
+    Pick<IGlobalAttrs, 'id'>,
+    Pick<IButtonAttrs, 'name'>,
+    IFocusEventAttrs,
+    IFieldEventAttrs,
     Pick<IInputAttrs, 'value'>,
-    StyledOverloadCssProps {
+    IStyledOverloadCss {
   /** It's equivalent to the native defaultChecked prop, and it has to be used only in uncontrolled mode.*/
   defaultSelected?: boolean;
   disabled?: boolean;
   /** If it's multiple the selection behavior is as a checkbox and if it's single as a radio */
-  selectionScheme?: SelectionScheme;
+  selectionScheme?: TSelectionScheme;
 }
 
 export const ChipHiddenInput: React.FC<ChipHiddenInputProps> = ({

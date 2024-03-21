@@ -1,22 +1,22 @@
 import * as React from 'react';
 
 import {
-  type GlobalAttrProps,
+  type IGlobalAttrs,
   SelectControl,
   type SelectControlProps,
   type TSelectOption,
-  type StyledOverloadCssProps,
+  type IStyledOverloadCss,
 } from '@devoinc/genesys-ui';
 
 import type { Preset, PresetRange, PresetGroup } from './declarations';
 import { WithRequired } from '../../typeFunctions';
 
 export interface PresetsProps
-  extends WithRequired<GlobalAttrProps, 'id'>,
-    Pick<GlobalAttrProps, 'tooltip'>,
+  extends WithRequired<IGlobalAttrs, 'id'>,
+    Pick<IGlobalAttrs, 'tooltip'>,
     Partial<Pick<HTMLInputElement, 'placeholder'>>,
     Partial<Pick<SelectControlProps, 'maxMenuHeight' | 'size'>>,
-    StyledOverloadCssProps {
+    IStyledOverloadCss {
   /** Function called when selected a preset. */
   onChange: (preset: PresetRange) => void;
   /** Custom list of presets values. */

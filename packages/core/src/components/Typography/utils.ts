@@ -6,7 +6,7 @@ import {
   truncateTypoMixin,
   typoMixin,
 } from '../../styled/mixins';
-import { TypoBodySize, TypoHeadingSize, TypoSize } from '../../declarations';
+import { TTypoBodySize, TTypoHeadingSize, TTypoSize } from '../../declarations';
 
 /**
  * Get the heading category name based in type prop
@@ -26,10 +26,10 @@ const getCategory = (typeProp: HeadingType): TypoCategories => {
  * @param typeProp h1, h2, hero-sm... etc.
  * @return type name
  */
-const getType = (typeProp: HeadingType): TypoSize => {
+const getType = (typeProp: HeadingType): TTypoSize => {
   const hyphenPos = typeProp.indexOf('-');
-  if (hyphenPos > -1) return typeProp.substring(hyphenPos + 1) as TypoBodySize;
-  return typeProp as TypoHeadingSize;
+  if (hyphenPos > -1) return typeProp.substring(hyphenPos + 1) as TTypoBodySize;
+  return typeProp as TTypoHeadingSize;
 };
 
 /**
@@ -51,7 +51,7 @@ interface GetTypoCssProps {
   textAlign?: React.CSSProperties['textAlign'];
   theme?: DefaultTheme;
   truncateLine?: number;
-  size?: TypoSize;
+  size?: TTypoSize;
 }
 
 /**

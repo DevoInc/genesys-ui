@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../declarations';
 
 import {
@@ -14,10 +14,10 @@ import {
 export interface DevoLogoSpinnerProps
   extends StyledDevoLogoSpinnerProps,
     // native
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps {}
+    IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs {}
 
 export const DevoLogoSpinner: React.FC<DevoLogoSpinnerProps> = ({
   animation = 'flow',

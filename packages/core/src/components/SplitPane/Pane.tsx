@@ -1,14 +1,15 @@
 // Based on the work of:
 // https://github.com/zesik/react-splitter-layout
-
 import * as React from 'react';
 
-import { StyledSplitPanePane, StyledSplitPanePaneProps } from './styled';
+import type { ISplitter } from './declarations';
+import { StyledSplitPanePane } from './styled';
 
 export interface PaneProps
-  extends Pick<StyledSplitPanePaneProps, 'vertical' | 'primary' | 'padding'> {
-  size?: number | string;
-  percentage?: boolean;
+  extends Pick<
+    ISplitter,
+    'vertical' | 'size' | 'primary' | 'padding' | 'percentage'
+  > {
   children?: React.ReactNode;
 }
 

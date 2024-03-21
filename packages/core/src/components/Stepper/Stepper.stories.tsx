@@ -6,7 +6,7 @@ const meta: Meta<typeof Stepper> = {
   title: 'Components/Navigation/Stepper',
   component: Stepper,
   args: {
-    size: 'sm',
+    size: 'md',
   },
 };
 

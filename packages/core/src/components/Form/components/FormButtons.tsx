@@ -1,4 +1,4 @@
-import { GlobalAriaProps, GlobalAttrProps } from '../../../declarations';
+import { IGlobalAriaAttrs, IGlobalAttrs } from '../../../declarations';
 import * as React from 'react';
 
 import { Box } from '../../Box';
@@ -8,8 +8,8 @@ import { formGroupSpacingMixin } from './helpers';
 import { useTheme } from 'styled-components';
 
 export interface FormButtonsProps
-  extends GlobalAttrProps,
-    GlobalAriaProps,
+  extends IGlobalAttrs,
+    IGlobalAriaAttrs,
     Pick<FlexProps, 'alignItems' | 'marginTop' | 'marginLeft'> {
   /** If the buttons block is aligned to left or to right.*/
   buttonsPosition?: 'left' | 'right';

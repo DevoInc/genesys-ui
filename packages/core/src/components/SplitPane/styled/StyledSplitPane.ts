@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
+import type { ISplitter } from '../declarations';
 
-export interface StyledSplitPaneProps {
-  vertical?: boolean;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface StyledSplitPaneProps extends Pick<ISplitter, 'vertical'> {}
 
 export const StyledSplitPane = styled.div<StyledSplitPaneProps>`
   ${({ vertical = false }) => css`

@@ -2,26 +2,26 @@ import * as React from 'react';
 
 // declarations
 import type {
-  ContainerEventAttrProps,
-  DragDropEventAttrProps,
-  MouseEventAttrProps,
+  IContainerEventAttrs,
+  IDragDropEventAttrs,
+  IMouseEventAttrs,
 } from '../../../declarations/htmlEventAttrs';
-import type { GlobalAttrProps } from '../../../declarations/htmlAttrs';
+import type { IGlobalAttrs } from '../../../declarations/htmlAttrs';
 import type {
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../declarations/styled';
 
 // styled
 import { StyledChip, type StyledChipProps } from '../styled';
 
 export interface ChipContainerProps
-  extends GlobalAttrProps,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    MouseEventAttrProps,
-    DragDropEventAttrProps,
-    Omit<ContainerEventAttrProps, 'onClick'>,
+  extends IGlobalAttrs,
+    IStyledPolymorphic,
+    IStyledOverloadCss,
+    IMouseEventAttrs,
+    IDragDropEventAttrs,
+    Omit<IContainerEventAttrs, 'onClick'>,
     StyledChipProps {
   children: React.ReactNode;
 }

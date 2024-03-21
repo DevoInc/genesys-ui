@@ -1,12 +1,12 @@
-import { GlobalAriaProps, GlobalAttrProps } from '../../../../declarations';
+import { IGlobalAriaAttrs, IGlobalAttrs } from '../../../../declarations';
 import * as React from 'react';
 
 import { StyledItalic } from '../../StyledTypography';
 
 export interface ItalicProps
   // native
-  extends GlobalAttrProps,
-    GlobalAriaProps {
+  extends IGlobalAttrs,
+    IGlobalAriaAttrs {
   children?: React.ReactNode;
 }
 

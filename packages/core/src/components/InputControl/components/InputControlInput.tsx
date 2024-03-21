@@ -2,13 +2,13 @@ import * as React from 'react';
 
 // declarations
 import {
-  ContainerEventAttrProps,
+  IContainerEventAttrs,
   IFieldControl,
   TFieldSize,
   IInputAttrs,
-  InputEventAttrs,
-  StyledOverloadCssProps,
-  TextBoxAriaProps,
+  IInputEventAttrs,
+  IStyledOverloadCss,
+  ITextBoxAriaAttrs,
 } from '../../../declarations';
 
 // styled
@@ -16,14 +16,11 @@ import { StyledInputControl, StyledInputControlProps } from '../styled';
 
 export interface InputControlInputProps
   extends IFieldControl,
-    StyledOverloadCssProps,
-    Pick<TextBoxAriaProps, 'aria-invalid'>,
+    IStyledOverloadCss,
+    Pick<ITextBoxAriaAttrs, 'aria-invalid'>,
     Omit<IInputAttrs, 'size' | 'multiple'>,
-    InputEventAttrs,
-    Pick<
-      ContainerEventAttrProps,
-      'onKeyDown' | 'onKeyUp' | 'onPaste' | 'onWheel'
-    >,
+    IInputEventAttrs,
+    Pick<IContainerEventAttrs, 'onKeyDown' | 'onKeyUp' | 'onPaste' | 'onWheel'>,
     Omit<StyledInputControlProps, '$size'> {
   /** Size of the input: height, padding, font-size... etc. */
   size?: TFieldSize;

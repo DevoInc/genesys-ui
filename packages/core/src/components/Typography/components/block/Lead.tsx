@@ -1,8 +1,8 @@
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../../declarations';
 import * as React from 'react';
 
@@ -11,10 +11,10 @@ import { StyledLead, StyledLeadProps } from '../../StyledTypography';
 export interface LeadProps
   extends StyledLeadProps,
     // native
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps {
+    IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs {
   /** Content of the lead */
   children?: React.ReactNode;
 }

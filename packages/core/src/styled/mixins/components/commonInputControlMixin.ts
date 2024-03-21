@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 import type { DefaultTheme } from 'styled-components';
 
 import type {
-  ControlWidth,
+  TControlWidth,
   TFieldSize,
   TFieldStatus,
 } from '../../../declarations';
@@ -14,7 +14,7 @@ import { disabledMixin } from '../state';
 
 interface commonInputControlMixinProps {
   disabled?: boolean;
-  inputWidth?: ControlWidth;
+  inputWidth?: TControlWidth;
   readOnly?: boolean;
   $size?: TFieldSize;
   status?: TFieldStatus;
@@ -94,7 +94,7 @@ export const commonInputControlMixin = ({
 };
 
 interface GetControlWidthProps {
-  controlWidth: ControlWidth;
+  controlWidth: TControlWidth;
   theme: DefaultTheme;
 }
 

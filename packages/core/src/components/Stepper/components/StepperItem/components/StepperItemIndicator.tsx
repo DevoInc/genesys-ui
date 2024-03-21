@@ -1,18 +1,17 @@
 import * as React from 'react';
 import { css } from 'styled-components';
 import { concat } from 'lodash';
-
-import { BADGE_COLOR } from '../../../constants';
-import { StepperSize, StepperStatus } from '../../../declarations';
-
-import { Badge, BadgeProps } from '../../../../Badge';
 import { GICheckThick } from '@devoinc/genesys-icons';
 
-export interface StepperItemIndicatorProps extends Omit<BadgeProps, 'size'> {
-  size?: StepperSize;
-  status?: StepperStatus;
-  stepNumberPos?: number;
-}
+import { STEPPER_BADGE_COLOR_MAP } from '../../../constants';
+import type { IStepperItem } from '../declarations';
+
+import { Badge, type BadgeProps } from '../../../../Badge';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface StepperItemIndicatorProps
+  extends Omit<BadgeProps, 'size'>,
+    Pick<IStepperItem, 'stepNumberPos' | 'size' | 'status'> {}
 
 export const StepperItemIndicator: React.FC<StepperItemIndicatorProps> = ({
   colorScheme,
@@ -20,7 +19,7 @@ export const StepperItemIndicator: React.FC<StepperItemIndicatorProps> = ({
   inverse,
   stepNumberPos,
   size,
-  status,
+  status = 'pending',
   styles,
   text,
   ...restBadgeProps
@@ -32,7 +31,7 @@ export const StepperItemIndicator: React.FC<StepperItemIndicatorProps> = ({
   return (
     <Badge
       {...restBadgeProps}
-      colorScheme={colorScheme || BADGE_COLOR[status]}
+      colorScheme={colorScheme || STEPPER_BADGE_COLOR_MAP[status]}
       icon={isCompletedStep ? <GICheckThick /> : icon}
       inverse={inverse || status === 'current'}
       size={size}

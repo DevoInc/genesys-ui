@@ -1,17 +1,17 @@
 import {
-  BlendColorScheme,
-  BrandColorScheme,
-  DataColorScheme,
-  UIColorScheme,
-  NeutralColorScheme,
-  BaseSize,
+  TBlendColorScheme,
+  TBrandColorScheme,
+  TDataColorScheme,
+  TUIColorScheme,
+  TNeutralColorScheme,
+  TBaseSize,
 } from '../../declarations';
 
 export type BadgeColorScheme =
-  | BrandColorScheme
-  | NeutralColorScheme
-  | BlendColorScheme
-  | UIColorScheme
-  | DataColorScheme;
+  | TBrandColorScheme
+  | TNeutralColorScheme
+  | TBlendColorScheme
+  | TUIColorScheme
+  | TDataColorScheme;
 
-export type BadgeSize = BaseSize;
+export type BadgeSize = TBaseSize;

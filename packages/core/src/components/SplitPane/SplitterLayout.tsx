@@ -2,16 +2,18 @@
 // https://github.com/zesik/react-splitter-layout
 
 import * as React from 'react';
-import type {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-} from '../../declarations';
-import { Pane, PaneProps } from './Pane';
-import { StyledSplitPane, StyledSplitPaneSeparator } from './styled';
 import { GIRowDragDrop } from '@devoinc/genesys-icons';
+
+import type {
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
+} from '../../declarations';
+import type { ISplitter } from './declarations';
+import { Pane } from './Pane';
 import { Icon } from '../Icon';
+import { StyledSplitPane, StyledSplitPaneSeparator } from './styled';
 
 // TODO: maybe this need a refactor or improve
 const clearSelection = () => {
@@ -43,12 +45,11 @@ interface ClientPositionProps {
 }
 
 export interface SplitterLayoutProps
-  extends Pick<PaneProps, 'vertical' | 'padding' | 'percentage'>,
-    // native
-    GlobalAttrProps,
-    GlobalAriaProps,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps {
+  extends IGlobalAttrs,
+    IGlobalAriaAttrs,
+    IStyledPolymorphic,
+    IStyledOverloadCss,
+    Pick<ISplitter, 'vertical' | 'padding' | 'percentage'> {
   primaryIndex?: number;
   primaryMinSize?: number;
   secondaryInitialSize?: number;

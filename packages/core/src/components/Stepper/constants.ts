@@ -1,4 +1,4 @@
-export const BADGE_COLOR = {
+export const STEPPER_BADGE_COLOR_MAP = {
   completed: 'success',
   current: 'secondary',
   pending: 'neutral',

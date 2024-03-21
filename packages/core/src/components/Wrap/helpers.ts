@@ -1,4 +1,4 @@
-import { GlobalSpacing } from '../../declarations';
+import { TGlobalSpacing } from '../../declarations';
 import { getSpacingPropCss } from '../../helpers';
 import { DefaultTheme } from 'styled-components';
 
@@ -17,7 +17,7 @@ export const getChildrenByRowFlex = ({
   theme,
 }: {
   childrenByRow: number;
-  hSpacing: GlobalSpacing;
+  hSpacing: TGlobalSpacing;
   theme: DefaultTheme;
 }) => {
   if (childrenByRow <= 0) return undefined;

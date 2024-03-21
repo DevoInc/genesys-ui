@@ -4,10 +4,10 @@ import { useTheme } from 'styled-components';
 // components
 import { Flex } from '../../Flex';
 import { StyledInputControlProps } from '../styled';
-import { StyledOverloadCssProps } from '../../../declarations';
+import { IStyledOverloadCss } from '../../../declarations';
 
 export interface InputControlInnerContainerProps
-  extends StyledOverloadCssProps,
+  extends IStyledOverloadCss,
     Pick<StyledInputControlProps, 'inputWidth'> {
   children: React.ReactNode;
 }

@@ -8,12 +8,13 @@ export interface StatusMessageTitleProps extends HeadingProps {}
 
 export const StatusMessageTitle = ({
   children,
-  ...headingProps
+  textAlign = 'center',
+  ...restHeadingProps
 }: StatusMessageTitleProps) => {
   return children && React.isValidElement(children) ? (
     children
   ) : children ? (
-    <Typography.Heading {...headingProps} textAlign="center">
+    <Typography.Heading {...restHeadingProps} textAlign={textAlign}>
       {children}
     </Typography.Heading>
   ) : null;

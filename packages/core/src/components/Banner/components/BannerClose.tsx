@@ -1,17 +1,14 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import {
-  MouseEventAttrProps,
-  StyledOverloadCssProps,
-} from '../../../declarations';
+import { IMouseEventAttrs, IStyledOverloadCss } from '../../../declarations';
 
 import { IconButtonRemove } from '../../IconButton';
 import { Box } from '../../Box';
 
 export interface BannerCloseProps
-  extends StyledOverloadCssProps,
-    Pick<MouseEventAttrProps, 'onClick'> {
+  extends IStyledOverloadCss,
+    Pick<IMouseEventAttrs, 'onClick'> {
   tooltip?: string;
 }
 

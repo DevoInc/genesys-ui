@@ -3,26 +3,26 @@ import { css, useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
 import type {
-  ContainerEventAttrProps,
-  FieldEventAttrProps,
-  FocusEventAttrProps,
-  GlobalAttrProps,
-  MouseEventAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IContainerEventAttrs,
+  IFieldEventAttrs,
+  IFocusEventAttrs,
+  IGlobalAttrs,
+  IMouseEventAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../declarations';
 import { Icon } from '../Icon';
 import { GIPencilEdit } from '@devoinc/genesys-icons';
 import { StyledEditableContent } from './StyledEditableContent';
 
 export interface EditableContentProps
-  extends GlobalAttrProps,
-    MouseEventAttrProps,
-    FocusEventAttrProps,
-    ContainerEventAttrProps,
-    FieldEventAttrProps,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps {
+  extends IGlobalAttrs,
+    IMouseEventAttrs,
+    IFocusEventAttrs,
+    IContainerEventAttrs,
+    IFieldEventAttrs,
+    IStyledPolymorphic,
+    IStyledOverloadCss {
   children?: React.ReactNode;
 }
 

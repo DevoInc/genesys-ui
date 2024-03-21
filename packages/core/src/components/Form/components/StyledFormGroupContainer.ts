@@ -2,21 +2,21 @@ import styled, { css } from 'styled-components';
 
 import type { FlexProps } from '../../Flex';
 
-import type { GlobalAriaProps } from '../../../declarations/ariaAttrs';
+import type { IGlobalAriaAttrs } from '../../../declarations/ariaAttrs';
 import type {
   IFieldAttrs,
-  GlobalAttrProps,
+  IGlobalAttrs,
 } from '../../../declarations/htmlAttrs';
 
-import type { StyledPolymorphicProps } from '../../../declarations/styled';
+import type { IStyledPolymorphic } from '../../../declarations/styled';
 
 import { getSpacingPropCss } from '../../../helpers';
 import { formGroupSpacingMixin } from './helpers';
 
 export interface StyledFormGroupContainerProps
-  extends StyledPolymorphicProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
+  extends IStyledPolymorphic,
+    IGlobalAttrs,
+    IGlobalAriaAttrs,
     Pick<FlexProps, 'marginLeft' | 'marginTop'>,
     Omit<IFieldAttrs, 'required'> {
   /** It defines if the group is rendered as a fieldset, and therefore it can get its related html attributes.*/

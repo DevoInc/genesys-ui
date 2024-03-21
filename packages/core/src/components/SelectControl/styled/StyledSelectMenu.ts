@@ -6,9 +6,9 @@ import { getFieldControlTypo } from '../../Field';
 import { disabledMixin, elevationMixin } from '../../../styled';
 import { scrollbars } from '../../../styled';
 import { truncateTypoMixin, typoMixin } from '../../../styled';
-import { Elevation, TFieldSize } from '../../../declarations';
+import { TElevation, TFieldSize } from '../../../declarations';
 
-const FIELD_MENU_LEVEL_ELEVATION_MAP: Elevation[] = [
+const FIELD_MENU_LEVEL_ELEVATION_MAP: TElevation[] = [
   'ground',
   'raised',
   'stickyTop',

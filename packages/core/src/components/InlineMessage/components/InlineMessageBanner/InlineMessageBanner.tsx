@@ -7,7 +7,7 @@ import { inlineMessageBannerMixin } from './helpers';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface InlineMessageBannerProps
-  extends Omit<BannerProps, 'children' | 'subcomponentStyles'> {}
+  extends Omit<BannerProps, 'children'> {}
 
 export const InlineMessageBanner: React.FC<InlineMessageBannerProps> = ({
   actions,

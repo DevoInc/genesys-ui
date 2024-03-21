@@ -7,7 +7,7 @@ import { CONTENT_SWITCHER_ITEM_SIZE_MAP } from '../constants';
 
 // declarations
 import { Button, ButtonProps } from '../../Button';
-import { BaseSize } from '../../../declarations/commonProps';
+import { TBaseSize } from '../../../declarations/commonProps';
 
 // helpers
 import {
@@ -29,7 +29,7 @@ export interface ContentSwitcherItemProps
     >,
     Pick<ContentSwitcherItemMixinProps, 'state'> {
   /** Size options for icon, text, padding... etc. */
-  size?: BaseSize;
+  size?: TBaseSize;
 }
 
 export const ContentSwitcherItem: React.FC<ContentSwitcherItemProps> = ({

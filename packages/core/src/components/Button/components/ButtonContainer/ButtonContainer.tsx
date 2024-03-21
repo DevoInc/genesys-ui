@@ -1,16 +1,16 @@
 import * as React from 'react';
 
 import {
-  ButtonAttrProps,
-  FocusEventAttrProps,
-  GlobalAriaProps,
-  GlobalAttrProps,
-  LinkAttrProps,
-  MouseEventAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-  TriggerAriaProps,
-  TriggerEventAttrProps,
+  IButtonAttrs,
+  IFocusEventAttrs,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  ILinkAttrs,
+  IMouseEventAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
+  ITriggerAriaAttrs,
+  ITriggerEventAttrs,
 } from '../../../../declarations';
 
 import {
@@ -19,16 +19,16 @@ import {
 } from './StyledButtonContainer';
 
 export interface ButtonContainerProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    TriggerAriaProps,
-    FocusEventAttrProps,
-    MouseEventAttrProps,
-    TriggerEventAttrProps,
-    LinkAttrProps,
-    Omit<ButtonAttrProps, 'disabled' | 'name'>,
+  extends IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs,
+    ITriggerAriaAttrs,
+    IFocusEventAttrs,
+    IMouseEventAttrs,
+    ITriggerEventAttrs,
+    ILinkAttrs,
+    Omit<IButtonAttrs, 'disabled' | 'name'>,
     StyledButtonContainerProps {
   /** Main content of the button */
   children?: React.ReactNode;

@@ -1,16 +1,16 @@
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
 } from '../../../../declarations';
 import * as React from 'react';
 
 import { StyledListItem } from '../../StyledTypography';
 
 export interface ListItemProps
-  extends GlobalAttrProps,
-    GlobalAriaProps,
-    StyledOverloadCssProps {
+  extends IGlobalAttrs,
+    IGlobalAriaAttrs,
+    IStyledOverloadCss {
   children?: React.ReactNode;
 }
 

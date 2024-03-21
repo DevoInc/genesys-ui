@@ -7,7 +7,10 @@ import type {
   IInputAttrs,
 } from '../../declarations';
 
-export interface BaseSwitchControlProps
+export type TSwitchHeight = number;
+export type TSwitchDiameter = number;
+
+export interface ISwitch
   extends IFieldControl,
     Pick<IInputAttrs, 'autoFocus' | 'defaultValue' | 'value'>,
     ICheckAttrs {

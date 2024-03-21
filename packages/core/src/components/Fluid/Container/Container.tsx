@@ -13,7 +13,7 @@ import {
   CONTAINER_WIDTH_DEFAULT_VALUES,
 } from '../constants';
 import { ContainerSpacing } from '../declarations';
-import { GlobalAttrProps } from '../../../declarations';
+import { IGlobalAttrs } from '../../../declarations';
 
 import { getSpacingPropCss } from '../../../helpers';
 import { getPxFromRem } from '../../../helpers';
@@ -21,7 +21,7 @@ import { RowProps } from '../Row';
 
 export interface ContainerProps
   extends Omit<ReactGridContainerProps, 'component'>,
-    Pick<GlobalAttrProps<HTMLDivElement>, 'tooltip'> {
+    Pick<IGlobalAttrs<HTMLDivElement>, 'tooltip'> {
   /** The gutter between the different cols.*/
   gutter?: ContainerSpacing;
   /** Css margin-bottom. More info about spacing values in

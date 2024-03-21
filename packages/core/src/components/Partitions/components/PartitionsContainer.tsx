@@ -3,9 +3,9 @@ import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
 import type {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
 } from '../../../declarations';
 import { partitionsContainerMixin } from './helpers';
 
@@ -13,9 +13,9 @@ import type { IPartitions } from '../declarations';
 import { Flex } from '../../Flex';
 
 export interface PartitionsContainerProps
-  extends Pick<GlobalAttrProps, 'id' | 'role'>,
-    GlobalAriaProps,
-    StyledOverloadCssProps,
+  extends Pick<IGlobalAttrs, 'id' | 'role'>,
+    IGlobalAriaAttrs,
+    IStyledOverloadCss,
     Pick<IPartitions, 'hasSeparators' | 'size'> {
   children: React.ReactNode;
 }

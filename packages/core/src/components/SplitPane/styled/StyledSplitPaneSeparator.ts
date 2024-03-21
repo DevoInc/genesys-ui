@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 import { pseudoElementOverlayMixin } from '../../../styled/mixins';
+import type { ISplitter } from '../declarations';
 
-export interface StyledSplitPaneSeparatorProps {
-  vertical?: boolean;
-  layoutChanging?: boolean;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface StyledSplitPaneSeparatorProps
+  extends Pick<ISplitter, 'layoutChanging' | 'vertical'> {}
 
 export const StyledSplitPaneSeparator = styled.div<StyledSplitPaneSeparatorProps>`
   ${({ vertical = false, layoutChanging = false, theme }) => {

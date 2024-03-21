@@ -1,8 +1,8 @@
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../../declarations';
 import * as React from 'react';
 
@@ -11,10 +11,10 @@ import { StyledCaption, StyledCaptionProps } from '../../StyledTypography';
 export interface CaptionProps
   extends StyledCaptionProps,
     //native
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps {
+    IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs {
   children?: React.ReactNode;
 }
 

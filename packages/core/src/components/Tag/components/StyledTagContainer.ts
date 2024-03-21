@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { camelCase } from 'lodash';
 
-import { FeedbackColorScheme, FeedbackSize } from '../../../declarations';
+import { TFeedbackColorScheme, TFeedbackSize } from '../../../declarations';
 
 import { typoMixin } from '../../../styled';
 import { getAccTextColor, isValidColor } from '../../../helpers';
@@ -11,7 +11,7 @@ export interface StyledTagContainerProps {
    * There are predefined types: primary, secondary... etc.
    * It's possible to use a custom color used for the background color and
    * auto-generated for the text based on this one to maintain AA accessible contrast.*/
-  colorScheme?: FeedbackColorScheme;
+  colorScheme?: TFeedbackColorScheme;
   /** Defines if the tag content is bold */
   bold?: boolean;
   /** Defines if the tag has background color or use a marker */
@@ -19,7 +19,7 @@ export interface StyledTagContainerProps {
   /** It Defines if the tag spans the full width of its parent */
   wide?: boolean;
   /** Size to define padding, line-height, font-size... etc. of the Tag. */
-  size?: FeedbackSize;
+  size?: TFeedbackSize;
 }
 
 export const StyledTagContainer = styled.span<StyledTagContainerProps>`

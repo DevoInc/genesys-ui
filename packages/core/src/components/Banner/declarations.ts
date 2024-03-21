@@ -1,3 +1,3 @@
-import type { ActiveStatus } from '../../declarations/commonProps';
+import type { TActiveStatus } from '../../declarations/commonProps';
 
-export type BannerStatus = ActiveStatus;
+export type BannerStatus = TActiveStatus;

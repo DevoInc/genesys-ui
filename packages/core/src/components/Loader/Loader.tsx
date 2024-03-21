@@ -4,10 +4,10 @@ import { useTheme } from 'styled-components';
 import { Overlay, OverlayProps } from '../Overlay';
 
 import type {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../declarations';
 import type {
   LoaderSize,
@@ -31,10 +31,10 @@ export interface LoaderProps
       'alignItems' | 'fixed' | 'zIndex' | 'justifyContent' | 'padding'
     >,
     // native
-    GlobalAttrProps,
-    GlobalAriaProps,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps {
+    IGlobalAttrs,
+    IGlobalAriaAttrs,
+    IStyledPolymorphic,
+    IStyledOverloadCss {
   children: React.ReactElement;
   /** The definition of color scheme: based in the scheme of the theme (inherited), light, dark... etc. It defines if the overlay is dark and the content light or vice versa.*/
   colorScheme?: LoaderColorScheme;

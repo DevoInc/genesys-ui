@@ -1,12 +1,12 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { Elevation } from '../../../declarations';
+import { TElevation } from '../../../declarations';
 
 /**
  * Get the box-shadow elevation styles based in the theme design tokens and type
  */
 export const elevationBoxShadowMixin =
-  (theme: DefaultTheme) => (elevation: Elevation) => {
+  (theme: DefaultTheme) => (elevation: TElevation) => {
     const boxShadowTokens = theme?.alias?.elevation.boxShadow;
     return elevation
       ? css`

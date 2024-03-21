@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { UIColorScheme } from '../../declarations';
+import { TUIColorScheme } from '../../declarations';
 import { STATUS_ICON_MAP } from '../../constants';
 import { Button, type ButtonProps } from '../Button';
 import { ToastAction, ToastStatus } from './declarations';
@@ -51,5 +51,5 @@ export const getFooterActions = ({
   return footerActions.length > 0 ? footerActions : undefined;
 };
 
-export const getToastStatusIcon = (status: UIColorScheme) =>
+export const getToastStatusIcon = (status: TUIColorScheme) =>
   STATUS_ICON_MAP.filled[status];

@@ -1,8 +1,8 @@
 import type { DOMAttributes, FormHTMLAttributes } from 'react';
 import { PickUnion } from '../../typeFunctions';
-import { GlobalSize } from '../../declarations/commonProps';
+import { TGlobalSize } from '../../declarations/commonProps';
 
-export type FormGap = PickUnion<GlobalSize, 'xxs' | 'xs' | 'sm' | 'md'>;
+export type FormGap = PickUnion<TGlobalSize, 'xxs' | 'xs' | 'sm' | 'md'>;
 export type TLegendPosition = 'top' | 'left';
 
 export interface FormAttrProps {

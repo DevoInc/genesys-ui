@@ -1,20 +1,20 @@
 import {
-  BasicState,
-  MouseState,
-  GlobalSize,
-  UIColorScheme,
-  BaseSize,
-  AllColorScheme,
+  TBasicState,
+  TMouseState,
+  TGlobalSize,
+  TUIColorScheme,
+  TBaseSize,
+  TAllColorScheme,
 } from '../../declarations';
 import { PickUnion } from '../../typeFunctions';
 
 // LINK - COLOR SCHEME -------------------------------------- //
 export type LinkColorScheme =
-  | PickUnion<AllColorScheme, 'base' | 'inverse'>
-  | UIColorScheme;
+  | PickUnion<TAllColorScheme, 'base' | 'inverse'>
+  | TUIColorScheme;
 
 // LINK - SIZE --------------------------------------------- //
-export type LinkSize = BaseSize | PickUnion<GlobalSize, 'xs'>;
+export type LinkSize = TBaseSize | PickUnion<TGlobalSize, 'xs'>;
 
 // LINK - STATE -------------------------------------------- //
-export type LinkState = BasicState | MouseState;
+export type LinkState = TBasicState | TMouseState;

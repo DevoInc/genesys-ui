@@ -2,76 +2,34 @@ import * as React from 'react';
 import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
-import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  MouseEventAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-} from '../../../declarations';
+import type { TStatusMessageBordered } from '../declarations';
+import { statusMessageMixin } from '../helpers';
 
-import { VFlex, VFlexProps } from '../../VFlex';
-import { statusMessageMixin, StatusMessageMixinProps } from '../helpers';
+import { VFlex, type VFlexProps } from '../../VFlex';
 
 export interface StatusMessageContainerProps
-  extends StyledPolymorphicProps,
-    Pick<VFlexProps, 'height' | 'margin' | 'padding' | 'width'>,
-    Pick<StatusMessageMixinProps, 'bordered'>,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    Omit<GlobalAriaProps, 'aria-hidden'>,
-    Omit<MouseEventAttrProps, 'onClick'> {
-  children?: React.ReactNode;
-  bordered?: boolean;
+  extends Omit<VFlexProps, 'childrenFitFullWidth'> {
+  bordered?: TStatusMessageBordered;
 }
 
 export const StatusMessageContainer = ({
-  'aria-describedby': ariaDescribedBy,
-  'aria-details': ariaDetails,
-  'aria-label': ariaLabel,
-  'aria-labelledby': ariaLabelledBy,
-  as,
-  children,
+  alignItems = 'center',
   bordered,
-  height,
-  id,
-  margin,
-  onMouseDown,
-  onMouseLeave,
-  onMouseMove,
-  onMouseOut,
-  onMouseOver,
-  onMouseUp,
+  children,
+  justifyContent = 'center',
   padding = 'cmp-md',
-  role,
   styles,
-  tooltip,
-  width,
+  ...restVFlexProps
 }: StatusMessageContainerProps) => {
   const theme = useTheme();
   return (
     <VFlex
-      aria-describedby={ariaDescribedBy}
-      aria-details={ariaDetails}
-      aria-label={ariaLabel}
-      aria-labelledby={ariaLabelledBy}
-      as={as}
-      alignItems="center"
-      height={height}
-      id={id}
-      justifyContent="center"
-      margin={margin}
-      onMouseDown={onMouseDown}
-      onMouseLeave={onMouseLeave}
-      onMouseMove={onMouseMove}
-      onMouseOut={onMouseOut}
-      onMouseOver={onMouseOver}
-      onMouseUp={onMouseUp}
+      {...restVFlexProps}
+      alignItems={alignItems}
+      childrenFitFullWidth={false}
+      justifyContent={justifyContent}
       padding={padding}
-      role={role}
       styles={concat(statusMessageMixin({ bordered, theme }), styles)}
-      tooltip={tooltip}
-      width={width}
     >
       {children}
     </VFlex>

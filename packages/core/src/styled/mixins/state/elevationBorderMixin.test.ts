@@ -3,12 +3,12 @@ import { describe, test, expect } from 'vitest';
 import { light as theme } from '@devoinc/genesys-brand-devo';
 
 import { elevationBorderMixin } from './elevationBorderMixin';
-import { Elevation } from '../../../declarations';
+import { TElevation } from '../../../declarations';
 
 describe('elevationBorderMixin', () => {
   const themeElevation = theme.alias.color.border.elevation;
   const width = theme.alias.shape.borderSize.panel.base;
-  const cases: [string, Elevation, string][] = [
+  const cases: [string, TElevation, string][] = [
     [
       'stickyTop',
       'stickyTop',
@@ -41,7 +41,7 @@ describe('elevationBorderMixin', () => {
   });
 
   test('not valid sticky', () => {
-    expect(elevationBorderMixin(theme)('stickyTest' as Elevation)).toBeNull();
+    expect(elevationBorderMixin(theme)('stickyTest' as TElevation)).toBeNull();
   });
 
   test('ground', () => {

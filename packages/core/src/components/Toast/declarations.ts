@@ -1,4 +1,4 @@
-import type { ActiveStatus } from '../../declarations';
+import type { TActiveStatus } from '../../declarations';
 import { OmitUnion } from '../../typeFunctions/omitUnion';
 
 export interface ToastAction {
@@ -6,4 +6,4 @@ export interface ToastAction {
   action: () => void;
 }
 
-export type ToastStatus = OmitUnion<ActiveStatus, 'help'>;
+export type ToastStatus = OmitUnion<TActiveStatus, 'help'>;

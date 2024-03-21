@@ -1,10 +1,10 @@
 import * as React from 'react';
-import type { UIColorScheme } from '../../declarations';
+import type { TUIColorScheme } from '../../declarations';
 import { PickUnion } from '../../typeFunctions';
 
 export type TProgressBarStatus =
   | 'progressing'
-  | PickUnion<UIColorScheme, 'warning' | 'error'>
+  | PickUnion<TUIColorScheme, 'warning' | 'error'>
   | 'complete';
 
 export type TProgressBarColorScheme = 'light' | 'dark';

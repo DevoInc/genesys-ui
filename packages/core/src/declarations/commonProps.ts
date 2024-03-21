@@ -1,21 +1,21 @@
 import { ReactHTML } from 'react';
 import { PickUnion } from '../typeFunctions';
 import { GLOBAL_SPACING } from '../constants';
-import { IFieldAttrs, GlobalAttrProps } from './htmlAttrs';
-import { FieldAriaProps, GlobalAriaProps } from './ariaAttrs';
-import {
-  FieldEventAttrProps,
-  FocusEventAttrProps,
-  MouseEventAttrProps,
+import type { IFieldAttrs, IGlobalAttrs } from './htmlAttrs';
+import type { IFieldAriaAttrs, IGlobalAriaAttrs } from './ariaAttrs';
+import type {
+  IFieldEventAttrs,
+  IFocusEventAttrs,
+  IMouseEventAttrs,
 } from './htmlEventAttrs';
-import { StyledOverloadCssProps, StyledPolymorphicProps } from './styled';
+import type { IStyledOverloadCss, IStyledPolymorphic } from './styled';
 
 /** ---------------------------------------------
  * COMMON PROPS
  * --------------------------------------------- */
 export type HTMLTag = keyof ReactHTML;
 
-export type GlobalSize =
+export type TGlobalSize =
   | 'xxxxs'
   | 'xxxs'
   | 'xxs'
@@ -28,64 +28,67 @@ export type GlobalSize =
   | 'xxxl'
   | 'xxxxl';
 
-export type BaseSize = PickUnion<GlobalSize, 'sm' | 'md' | 'lg'>;
+export type TBaseSize = PickUnion<TGlobalSize, 'sm' | 'md' | 'lg'>;
 
-export type TypoBodySize =
-  | BaseSize
-  | PickUnion<GlobalSize, 'xxs' | 'xs' | 'xl'>;
+export type TTypoBodySize =
+  | TBaseSize
+  | PickUnion<TGlobalSize, 'xxs' | 'xs' | 'xl'>;
 
-export type TypoHeadingSize = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type TTypoHeadingSize = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-export type TypoSize = TypoBodySize | TypoHeadingSize;
+export type TTypoSize = TTypoBodySize | TTypoHeadingSize;
 
 /** ---------------------------------------------
  * Global status declaration
  * --------------------------------------------- */
-export type GlobalStatus = 'base' | ActiveStatus;
+export type TGlobalStatus = 'base' | TActiveStatus;
 
 /** ---------------------------------------------
  * Active status declaration: status for components with required UI context
  * --------------------------------------------- */
-export type ActiveStatus = 'success' | 'error' | 'warning' | 'help' | 'info';
+export type TActiveStatus = 'success' | 'error' | 'warning' | 'help' | 'info';
 
 /** ---------------------------------------------
  * Global Spacing declaration: space values for props as margin, padding, gap... etc.
  * --------------------------------------------- */
-export type GlobalSpacing = (typeof GLOBAL_SPACING)[number];
+export type TGlobalSpacing = (typeof GLOBAL_SPACING)[number];
 
 /** ---------------------------------------------
  * Field size declaration: size for all the field controls and components: InputControl, Input, Switch... etc.
  * --------------------------------------------- */
-export type TFieldSize = BaseSize;
+export type TFieldSize = TBaseSize;
 
 /** ---------------------------------------------
  * Field status declaration: size for all the field controls and components: InputControl, Input, Switch... etc.
  * --------------------------------------------- */
 export type TFieldStatus = PickUnion<
-  GlobalStatus,
+  TGlobalStatus,
   'base' | 'success' | 'error' | 'warning'
 >;
 
 /** ---------------------------------------------
  * Width of the field control based in predefined values as 'xxs', 'xs', 'sm'... etc. or directly in a css value. It should reflect the length of the content you expect the user to enter.
  * --------------------------------------------- */
-export type ControlWidth = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string;
+export type TControlWidth = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string;
 
 /** ---------------------------------------------
  * Feedback components size declaration: tag, Badge... etc.
  * --------------------------------------------- */
-export type FeedbackSize = BaseSize;
+export type TFeedbackSize = TBaseSize;
 
 /** ---------------------------------------------
  * Common scheme spacing declaration: space values for props as margin, padding, gap... etc.
  * --------------------------------------------- */
-export type CommonSpacing = PickUnion<GlobalSpacing, '0' | 'auto' | 'inherit'>;
+export type TCommonSpacing = PickUnion<
+  TGlobalSpacing,
+  '0' | 'auto' | 'inherit'
+>;
 
 /** ---------------------------------------------
  * Component scheme spacing declaration: space values for props as margin, padding, gap... etc.
  * --------------------------------------------- */
-export type CmpSpacing = PickUnion<
-  GlobalSpacing,
+export type TCmpSpacing = PickUnion<
+  TGlobalSpacing,
   | 'cmp-xxs'
   | 'cmp-xs'
   | 'cmp-sm'
@@ -99,8 +102,8 @@ export type CmpSpacing = PickUnion<
 /** ---------------------------------------------
  * Layout scheme spacing declaration: space values for props as margin, padding, gap... etc.
  * --------------------------------------------- */
-export type LayoutSpacing = PickUnion<
-  GlobalSpacing,
+export type TLayoutSpacing = PickUnion<
+  TGlobalSpacing,
   | 'layout-xxs'
   | 'layout-xs'
   | 'layout-sm'
@@ -114,41 +117,41 @@ export type LayoutSpacing = PickUnion<
 /** ---------------------------------------------
  * States for form and interactive components
  * --------------------------------------------- */
-export type GlobalState =
-  | BasicState
-  | MouseState
-  | ExpandedState
-  | SelectedState
-  | LoadingState
-  | ReadonlyState;
+export type TGlobalState =
+  | TBasicState
+  | TMouseState
+  | TExpandedState
+  | TSelectedState
+  | TLoadingState
+  | TReadonlyState;
 
-export type BasicState = 'disabled' | 'enabled';
+export type TBasicState = 'disabled' | 'enabled';
 
-export type MouseState = 'focused' | 'hovered' | 'pressed';
+export type TMouseState = 'focused' | 'hovered' | 'pressed';
 
-export type LoadingState = 'loading' | 'loading-error' | 'loading-success';
+export type TLoadingState = 'loading' | 'loading-error' | 'loading-success';
 
-export type SelectedState = 'selected';
+export type TSelectedState = 'selected';
 
-export type ExpandedState = 'expanded';
+export type TExpandedState = 'expanded';
 
-export type FeaturedState = 'featured';
+export type TFeaturedState = 'featured';
 
-export type ActiveState = 'active';
+export type TActiveState = 'active';
 
-export type ReadonlyState = 'readonly';
+export type TReadonlyState = 'readonly';
 
-export type UIState = 'created' | 'deleted';
+export type TUIState = 'created' | 'deleted';
 
 /** ---------------------------------------------
  * Selection behavior: checkbox (multiple) or radio (single)
  * --------------------------------------------- */
-export type SelectionScheme = 'multiple' | 'single';
+export type TSelectionScheme = 'multiple' | 'single';
 
 /** ---------------------------------------------
  * colorScheme to define background, text color, border color... etc.
  * --------------------------------------------- */
-export type BodyColorScheme =
+export type TBodyColorScheme =
   | 'base'
   | 'inverse'
   | 'strong'
@@ -157,29 +160,29 @@ export type BodyColorScheme =
   | 'weaker'
   | 'weakest';
 
-export type UIColorScheme = 'success' | 'error' | 'warning' | 'help' | 'info';
+export type TUIColorScheme = 'success' | 'error' | 'warning' | 'help' | 'info';
 
-export type UIStrongColorScheme =
+export type TUIStrongColorScheme =
   | 'success-strong'
   | 'error-strong'
   | 'warning-strong'
   | 'help-strong'
   | 'info-strong';
 
-export type UIWeakColorScheme =
+export type TUIWeakColorScheme =
   | 'success-weak'
   | 'error-weak'
   | 'warning-weak'
   | 'help-weak'
   | 'info-weak';
 
-export type BrandColorScheme = 'primary' | 'secondary';
+export type TBrandColorScheme = 'primary' | 'secondary';
 
-export type NeutralColorScheme = 'neutral';
+export type TNeutralColorScheme = 'neutral';
 
-export type BlendColorScheme = 'blend-base' | 'blend-inverse';
+export type TBlendColorScheme = 'blend-base' | 'blend-inverse';
 
-export type DataColorScheme =
+export type TDataColorScheme =
   | 'data-blue'
   | 'data-bronze'
   | 'data-dusk'
@@ -192,40 +195,40 @@ export type DataColorScheme =
   | 'data-slate'
   | 'data-teal';
 
-export type FeedbackColorScheme =
-  | BrandColorScheme
-  | NeutralColorScheme
-  | BlendColorScheme
-  | UIColorScheme
-  | DataColorScheme;
+export type TFeedbackColorScheme =
+  | TBrandColorScheme
+  | TNeutralColorScheme
+  | TBlendColorScheme
+  | TUIColorScheme
+  | TDataColorScheme;
 
-export type AllColorScheme =
-  | BodyColorScheme
-  | UIColorScheme
-  | UIStrongColorScheme
-  | UIWeakColorScheme
-  | BrandColorScheme
-  | NeutralColorScheme
-  | BlendColorScheme
-  | DataColorScheme;
+export type TAllColorScheme =
+  | TBodyColorScheme
+  | TUIColorScheme
+  | TUIStrongColorScheme
+  | TUIWeakColorScheme
+  | TBrandColorScheme
+  | TNeutralColorScheme
+  | TBlendColorScheme
+  | TDataColorScheme;
 
 /** ---------------------------------------------
  * Coordinates to position elements.
  * --------------------------------------------- */
-export type BaseCoords = 'top' | 'bottom' | 'left' | 'right';
+export type TBaseCoords = 'top' | 'bottom' | 'left' | 'right';
 
-export type Coords =
+export type TCoords =
   | 'all'
-  | BaseCoords
+  | TBaseCoords
   | 'topLeft'
   | 'topRight'
   | 'bottomLeft'
   | 'bottomRight';
 
 /** ---------------------------------------------
- * Elevation to define box-shadow, z-index, shape... etc.
+ * TElevation to define box-shadow, z-index, shape... etc.
  * --------------------------------------------- */
-export type Elevation =
+export type TElevation =
   | 'ground'
   | 'raised'
   | 'stickyTop'
@@ -241,13 +244,13 @@ export type Elevation =
  * Form field controls: InputControl, CheckboxControl... etc. common interface
  * --------------------------------------------- */
 export interface IFieldControl<T = Element>
-  extends GlobalAttrProps<T>,
-    Pick<GlobalAriaProps, 'aria-describedby' | 'aria-labelledby'>,
-    Required<Pick<GlobalAriaProps, 'aria-label'>>,
-    Omit<FieldAriaProps, 'aria-required'>,
+  extends IGlobalAttrs<T>,
+    Pick<IGlobalAriaAttrs, 'aria-describedby' | 'aria-labelledby'>,
+    Required<Pick<IGlobalAriaAttrs, 'aria-label'>>,
+    Omit<IFieldAriaAttrs, 'aria-required'>,
     IFieldAttrs<T>,
-    FieldEventAttrProps<T>,
-    FocusEventAttrProps<T>,
-    MouseEventAttrProps<T>,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps {}
+    IFieldEventAttrs<T>,
+    IFocusEventAttrs<T>,
+    IMouseEventAttrs<T>,
+    IStyledPolymorphic,
+    IStyledOverloadCss {}

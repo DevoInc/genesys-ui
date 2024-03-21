@@ -1,15 +1,15 @@
 import * as React from 'react';
 
 import {
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../../declarations';
 
 import { StyledButtonLabel } from './StyledButtonLabel';
 
 export interface ButtonLabelProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps {
+  extends IStyledPolymorphic,
+    IStyledOverloadCss {
   children: React.ReactNode;
 }
 

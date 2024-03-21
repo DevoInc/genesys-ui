@@ -1,7 +1,7 @@
-import { GlobalSpacing, HTMLTag, LayoutSpacing } from '../../declarations';
+import { TGlobalSpacing, HTMLTag, TLayoutSpacing } from '../../declarations';
 import { PickUnion } from '../../typeFunctions';
 
-export type ContainerSpacing = PickUnion<GlobalSpacing, '0'> | LayoutSpacing;
+export type ContainerSpacing = PickUnion<TGlobalSpacing, '0'> | TLayoutSpacing;
 
 export type FluidProp =
   | boolean

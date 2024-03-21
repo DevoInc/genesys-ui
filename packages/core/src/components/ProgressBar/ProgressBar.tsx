@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 import type {
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../declarations/styled';
-import type { GlobalAttrProps } from '../../declarations/htmlAttrs';
-import type { GlobalAriaProps } from '../../declarations/ariaAttrs';
+import type { IGlobalAttrs } from '../../declarations/htmlAttrs';
+import type { IGlobalAriaAttrs } from '../../declarations/ariaAttrs';
 import type { IconProps } from '../Icon';
 import {
   IBaseProgressBar,
@@ -28,10 +28,10 @@ import {
 } from './components';
 
 export interface ProgressBarProps
-  extends Omit<GlobalAttrProps, 'role'>,
-    GlobalAriaProps,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
+  extends Omit<IGlobalAttrs, 'role'>,
+    IGlobalAriaAttrs,
+    IStyledPolymorphic,
+    IStyledOverloadCss,
     Pick<
       Partial<IBaseProgressBar>,
       | 'colorScheme'

@@ -1,12 +1,12 @@
 import * as React from 'react';
 
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-  TriggerAriaProps,
-  TriggerEventAttrProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
+  ITriggerAriaAttrs,
+  ITriggerEventAttrs,
 } from '../../../declarations';
 
 import { Flex } from '../../Flex';
@@ -20,12 +20,12 @@ import { CollapseContext } from '../context';
 
 export interface CollapseContainerProps
   extends StyledCollapseContainerProps,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    Pick<TriggerAriaProps, 'aria-controls'>,
-    Pick<TriggerEventAttrProps, 'onClick'> {
+    IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs,
+    Pick<ITriggerAriaAttrs, 'aria-controls'>,
+    Pick<ITriggerEventAttrs, 'onClick'> {
   children?: React.ReactNode;
 }
 

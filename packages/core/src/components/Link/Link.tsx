@@ -1,27 +1,29 @@
 import * as React from 'react';
 
 import {
-  FocusEventAttrProps,
-  GlobalAriaProps,
-  GlobalAttrProps,
-  LinkAttrProps,
-  MouseEventAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-  TriggerAriaProps,
+  IButtonAttrs,
+  IFocusEventAttrs,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  ILinkAttrs,
+  IMouseEventAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
+  ITriggerAriaAttrs,
 } from '../../declarations';
 
 import { StyledLink, StyledLinkProps } from './StyledLink';
 
 export interface LinkProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    LinkAttrProps,
-    TriggerAriaProps,
-    FocusEventAttrProps,
-    MouseEventAttrProps,
+  extends IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs,
+    Pick<IButtonAttrs, 'tabIndex'>,
+    ILinkAttrs,
+    ITriggerAriaAttrs,
+    IFocusEventAttrs,
+    IMouseEventAttrs,
     StyledLinkProps {
   /** Children to be passed */
   children?: React.ReactNode;
@@ -36,6 +38,7 @@ export const Link: React.FC<LinkProps> = ({
   size = 'md',
   state = 'enabled',
   styles,
+  tabIndex,
   tooltip,
   underlined,
   ...restNativeProps
@@ -54,12 +57,12 @@ export const Link: React.FC<LinkProps> = ({
       {...restNativeProps}
       colorScheme={colorScheme}
       css={styles}
-      href={href || (onClick && '#')}
+      href={href}
       lineClamp={lineClamp}
       onClick={onLinkClick}
       size={size}
       state={state}
-      tabIndex={state === 'disabled' ? -1 : 0}
+      tabIndex={tabIndex || (state === 'disabled' ? -1 : 0)}
       title={tooltip}
       underlined={underlined}
     >

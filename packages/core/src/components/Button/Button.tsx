@@ -8,17 +8,17 @@ import {
 
 // declarations
 import {
-  ButtonAttrProps,
-  FocusEventAttrProps,
-  GlobalAriaProps,
-  GlobalAttrProps,
-  LinkAttrProps,
-  MouseEventAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-  TriggerAriaProps,
-  TriggerEventAttrProps,
-  UIColorScheme,
+  IButtonAttrs,
+  IFocusEventAttrs,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  ILinkAttrs,
+  IMouseEventAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
+  ITriggerAriaAttrs,
+  ITriggerEventAttrs,
+  TUIColorScheme,
 } from '../../declarations';
 import { ButtonIconPosition } from './declarations';
 
@@ -39,16 +39,16 @@ import {
 } from './components/ButtonContainer';
 
 export interface ButtonProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    TriggerAriaProps,
-    FocusEventAttrProps,
-    MouseEventAttrProps,
-    TriggerEventAttrProps,
-    LinkAttrProps,
-    Omit<ButtonAttrProps, 'disabled'>,
+  extends IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs,
+    ITriggerAriaAttrs,
+    IFocusEventAttrs,
+    IMouseEventAttrs,
+    ITriggerEventAttrs,
+    ILinkAttrs,
+    Omit<IButtonAttrs, 'disabled'>,
     ButtonContainerProps {
   /** Content of the badge */
   badgeText?: string;
@@ -180,7 +180,7 @@ export const InternalButton = React.forwardRef<HTMLElement, ButtonProps>(
                   ? 'secondary'
                   : colorScheme === 'quiet'
                     ? 'neutral'
-                    : (colorScheme as UIColorScheme)
+                    : (colorScheme as TUIColorScheme)
             }
             hasCircularParent={circular}
             id={id}

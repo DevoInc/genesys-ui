@@ -1,13 +1,13 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { Elevation } from '../../../declarations';
+import { TElevation } from '../../../declarations';
 import { getTemplate } from './elevationBorderMixinTemplate';
 
 /**
  * Get the border elevation styles based in the theme design tokens and type
  */
 export const elevationBorderMixin =
-  (theme: DefaultTheme) => (elevation: Elevation) => {
+  (theme: DefaultTheme) => (elevation: TElevation) => {
     const elevations = theme.alias.color.border.elevation;
     const colorMap = {
       stickyTop: { color: elevations.sticky.top, side: 'top' },

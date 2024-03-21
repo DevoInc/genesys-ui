@@ -6,7 +6,7 @@ import type {
   ICheckAttrs,
   ICheckAriaAttrs,
   IInputAttrs,
-  WithRequiredAriaLabelOrAriaLabelledByProps,
+  IWithRequiredAriaLabelOrAriaLabelledByAttr,
 } from '../../declarations';
 import { FieldContext } from '../Field/context';
 import { getFieldContextProps } from '../Field';
@@ -27,7 +27,7 @@ interface CommonCheckboxControlProps
 }
 
 export type CheckboxControlProps =
-  WithRequiredAriaLabelOrAriaLabelledByProps<CommonCheckboxControlProps>;
+  IWithRequiredAriaLabelOrAriaLabelledByAttr<CommonCheckboxControlProps>;
 
 export const CheckboxControl: React.FC<CheckboxControlProps> = ({
   'aria-checked': ariaChecked,

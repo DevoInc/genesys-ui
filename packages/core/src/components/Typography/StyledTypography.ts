@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { rgba } from 'polished';
 
 // global constants
-import { TypoBodySize } from '../../declarations';
+import { TTypoBodySize } from '../../declarations';
 
 // local constants
 import {
@@ -25,7 +25,7 @@ export const StyledAbbr = styled.abbr`
 
 export interface StyledBlockQuoteProps {
   /** This property defines multiple styles: font-size, line-height... etc. */
-  size?: TypoBodySize;
+  size?: TTypoBodySize;
   /** Css text-align property. */
   textAlign?: React.CSSProperties['textAlign'];
   /** Bottom margin to separate from another components. */
@@ -87,7 +87,7 @@ export const StyledCodeBlockWrapper = styled.div<StyledCodeBlockWrapperProps>`
 
 export interface StyledCodeBlockProps {
   /** This property defines multiple styles: font-size, line-height... etc. */
-  size?: TypoBodySize;
+  size?: TTypoBodySize;
   /** Css text-align property. */
   textAlign?: React.CSSProperties['textAlign'];
   /** Bottom margin to separate from another components. */
@@ -149,7 +149,7 @@ export const StyledItalic = styled.em`
 
 export interface StyledListProps {
   /** This property defines multiple styles: font-size, line-height... etc. */
-  size?: TypoBodySize;
+  size?: TTypoBodySize;
   /** Css text-align property. */
   textAlign?: React.CSSProperties['textAlign'];
   /** Bottom margin to separate from another components. */
@@ -201,7 +201,7 @@ export const StyledListItem = styled.li`
 
 export interface StyledParagraphProps {
   /** This property defines multiple styles: font-size, line-height... etc. */
-  size?: TypoBodySize;
+  size?: TTypoBodySize;
   /** Css text-align property. */
   textAlign?: React.CSSProperties['textAlign'];
   /** Bottom margin to separate from another components. */
@@ -274,7 +274,7 @@ export const StyledHeading = styled.div<StyledHeadingProps>`
 
 export interface StyledLeadProps {
   /** This property defines multiple styles: font-size, line-height... etc. */
-  size?: TypoBodySize;
+  size?: TTypoBodySize;
   /** Css text-align property. */
   textAlign?: React.CSSProperties['textAlign'];
   /** Bottom margin to separate from another components. */
@@ -311,7 +311,7 @@ export const StyledLead = styled.p<StyledLeadProps>`
 
 export interface StyledCaptionProps {
   /** This property defines multiple styles: font-size, line-height... etc. */
-  size?: TypoBodySize;
+  size?: TTypoBodySize;
   /** Css text-align property. */
   textAlign?: React.CSSProperties['textAlign'];
   /** Bottom margin to separate from another components. */

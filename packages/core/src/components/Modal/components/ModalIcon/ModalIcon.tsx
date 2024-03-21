@@ -11,12 +11,12 @@ import {
 } from '@devoinc/genesys-icons';
 import type { IconType } from '@devoinc/genesys-icons';
 import type {
-  ActiveStatus,
-  GlobalStatus,
-  StyledOverloadCssProps,
+  TActiveStatus,
+  TGlobalStatus,
+  IStyledOverloadCss,
 } from '../../../../declarations';
 
-const statusIconMap: { [key in ActiveStatus]: IconType } = {
+const statusIconMap: { [key in TActiveStatus]: IconType } = {
   success: GICheckOkRoundedFilled,
   help: GIAboutQuestionFaqHelpFilled,
   info: GIInfoRoundFilled,
@@ -24,9 +24,9 @@ const statusIconMap: { [key in ActiveStatus]: IconType } = {
   warning: GIAttentionErrorAlertCautionFilled,
 } as const;
 
-export interface ModalIconProps extends StyledOverloadCssProps {
+export interface ModalIconProps extends IStyledOverloadCss {
   /** Status of the modal **/
-  status?: GlobalStatus;
+  status?: TGlobalStatus;
 }
 
 export const ModalIcon: React.FC<ModalIconProps> = ({ status, styles }) => {

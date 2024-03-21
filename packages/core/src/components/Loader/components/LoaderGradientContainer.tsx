@@ -7,7 +7,7 @@ import {
   POSITION_GRADIENT_FLEX_JUSTIFY_MAP,
 } from '../constants';
 
-import type { CmpSpacing } from '../../../declarations';
+import type { TCmpSpacing } from '../../../declarations';
 import type { TLoaderGradientPosition } from '../declarations';
 
 import { Box } from '../../Box';
@@ -19,7 +19,7 @@ export interface LoaderGradientContainerProps
     'alignItems' | 'justifyContent' | 'hasInteractionBehind' | 'position'
   > {
   position?: TLoaderGradientPosition;
-  spinnerOffset?: CmpSpacing;
+  spinnerOffset?: TCmpSpacing;
 }
 
 export const LoaderGradientContainer: React.FC<

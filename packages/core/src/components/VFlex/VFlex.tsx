@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import { GlobalSpacing } from '../../declarations';
+import { TGlobalSpacing } from '../../declarations';
 import { Flex, FlexProps } from '../Flex';
 import { FlexItem } from '../Flex/components';
 
 export interface VFlexProps
   extends Omit<FlexProps, 'flexDirection' | 'gap' | 'columnGap' | 'rowGap'> {
   /** Vertical spacing between children items (row-gap). */
-  spacing?: GlobalSpacing;
+  spacing?: TGlobalSpacing;
   /** If the children fit full width of the VFlex parent*/
   childrenFitFullWidth?: boolean;
   /** If the children fit full height of the VFlex parent. Firstly you should assign to the VFlex a bigger height than the one defined by its children. */

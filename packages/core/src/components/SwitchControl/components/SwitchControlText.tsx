@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import type { StyledOverloadCssProps } from '../../../declarations';
-import type { BaseSwitchControlProps } from '../declarations';
+import type { ISwitch } from '../declarations';
 import { getSpacingPropCss } from '../../../helpers';
-import { Flex, FlexProps } from '../../Flex';
+import { Flex, type FlexProps } from '../../Flex';
 import {
   StyledSwitchControlTextChecked,
   StyledSwitchControlTextUnchecked,
@@ -12,12 +11,11 @@ import {
 
 export interface SwitchControlTextProps
   extends FlexProps,
-    Pick<BaseSwitchControlProps, 'checked'>,
-    StyledOverloadCssProps {
+    Pick<ISwitch, 'checked' | 'styles'> {
   /** Optional content to be included inside the switch track when it's checked */
-  checkedContent?: React.ReactNode;
+  checkedContent?: ISwitch['checkedContent'];
   /** Optional content to be included inside the switch track when it's unchecked */
-  uncheckedContent?: React.ReactNode;
+  uncheckedContent?: ISwitch['uncheckedContent'];
 }
 
 export const SwitchControlText: React.FC<SwitchControlTextProps> = ({

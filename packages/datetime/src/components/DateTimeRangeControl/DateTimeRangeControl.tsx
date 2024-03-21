@@ -8,17 +8,17 @@ import { GIArrowRight } from '@devoinc/genesys-icons';
 import type {
   FieldProps,
   TFieldSize,
-  GlobalAriaProps,
-  GlobalAttrProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
   InputControlProps,
   MouseEventAttrProps,
-  TriggerAriaProps,
+  ITriggerAriaAttrs,
 } from '@devoinc/genesys-ui';
 import {
   Field,
   InputControl,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
 
 // styles
@@ -38,19 +38,19 @@ import { REAL_TIME_SIZE_MAP } from './constants';
 import { getInputWidth } from './theme';
 
 export interface DateTimeRangeControlProps
-  extends Required<Pick<GlobalAttrProps, 'id'>>,
-    Pick<TriggerAriaProps, 'aria-controls'>,
+  extends Required<Pick<IGlobalAttrs, 'id'>>,
+    Pick<ITriggerAriaAttrs, 'aria-controls'>,
     Pick<
       CssDateTimeRangeControlInputProps,
       'hasMillis' | 'hasSeconds' | 'hasTime'
     >,
     Pick<StyledDateTimeRangeControlProps, 'isOpen' | 'wide'>,
-    StyledOverloadCssProps,
-    StyledPolymorphicProps {
+    IStyledOverloadCss,
+    IStyledPolymorphic {
   /** aria-label attribute for `from` input */
-  ariaLabelFrom?: GlobalAriaProps['aria-label'];
+  ariaLabelFrom?: IGlobalAriaAttrs['aria-label'];
   /** aria-label attribute for `to` input */
-  ariaLabelTo?: GlobalAriaProps['aria-label'];
+  ariaLabelTo?: IGlobalAriaAttrs['aria-label'];
   /** Value for the first input. */
   from?: InputControlProps['value'];
   /** Floating status message or helper for `from` input field */

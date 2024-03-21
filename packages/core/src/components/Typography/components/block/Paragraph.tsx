@@ -1,8 +1,8 @@
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../../declarations';
 import * as React from 'react';
 
@@ -11,10 +11,10 @@ import { StyledParagraph, StyledParagraphProps } from '../../StyledTypography';
 export interface ParagraphProps
   extends StyledParagraphProps,
     // native
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps {
+    IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs {
   /** Content of the Paragraph */
   children?: React.ReactNode;
 }

@@ -11,7 +11,7 @@ export interface FieldRequiredMarkProps
   extends StyledFieldRequiredMarkProps,
     Pick<IField, 'styles'> {
   /** A title or description of the element, typically displayed as a tooltip when hovering over the element */
-  tooltip?: IField['tooltip'];
+  tooltip?: IField['requiredMarkTooltip'];
 }
 
 export const FieldRequiredMark: React.FC<FieldRequiredMarkProps> = ({

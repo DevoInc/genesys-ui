@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 import type { ButtonProps } from '../Button';
-import type { BaseSize } from '../../declarations/commonProps';
+import type { TBaseSize } from '../../declarations/commonProps';
 
 export interface ContentSwitcherContextProps {
   wide?: ButtonProps['wide'];
-  size?: BaseSize;
+  size?: TBaseSize;
 }
 
 export const ContentSwitcherContext =

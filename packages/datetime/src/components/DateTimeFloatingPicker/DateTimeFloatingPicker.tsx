@@ -6,10 +6,10 @@ import {
   Button,
   InputControl,
   InputControlProps,
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
   Popover,
   PopoverProps,
 } from '@devoinc/genesys-ui';
@@ -23,10 +23,10 @@ export interface DateTimeFloatingPickerProps
   extends Pick<PopoverProps, 'appendTo' | 'isOpened'>,
     Omit<DateTimeProps, 'onChange' | 'selectedDates'>,
     Pick<InputControlProps, 'onChange' | 'placeholder' | 'size'>,
-    Pick<GlobalAriaProps, 'aria-label'>,
-    Pick<GlobalAttrProps, 'id'>,
-    Pick<StyledOverloadCssProps, 'styles'>,
-    Pick<StyledPolymorphicProps, 'as'> {
+    Pick<IGlobalAriaAttrs, 'aria-label'>,
+    Pick<IGlobalAttrs, 'id'>,
+    Pick<IStyledOverloadCss, 'styles'>,
+    Pick<IStyledPolymorphic, 'as'> {
   /** Apply button text */
   applyButtonText?: string;
   /** Cancel button text */

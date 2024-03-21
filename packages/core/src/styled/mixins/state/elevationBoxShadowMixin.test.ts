@@ -3,11 +3,11 @@ import { describe, test, expect } from 'vitest';
 import { light as theme } from '@devoinc/genesys-brand-devo';
 
 import { elevationBoxShadowMixin } from './elevationBoxShadowMixin';
-import { Elevation } from '../../../declarations';
+import { TElevation } from '../../../declarations';
 
 describe('elevationBoxShadowMixin', () => {
   const boxShadowTokens = theme?.alias?.elevation.boxShadow;
-  const cases: [string, Elevation, string][] = [
+  const cases: [string, TElevation, string][] = [
     [
       'styckyBottom',
       'stickyBottom',
@@ -39,17 +39,17 @@ describe('elevationBoxShadowMixin', () => {
 
   test('not valid sticky elevation', () => {
     expect(
-      elevationBoxShadowMixin(theme)('stickyBad' as Elevation).join(''),
+      elevationBoxShadowMixin(theme)('stickyBad' as TElevation).join(''),
     ).toContain('box-shadow:;');
   });
 
   test('not valid elevation', () => {
     expect(
-      elevationBoxShadowMixin(theme)('bad' as Elevation).join(''),
+      elevationBoxShadowMixin(theme)('bad' as TElevation).join(''),
     ).toContain('box-shadow:;');
   });
 
   test('undefined', () => {
-    expect(elevationBoxShadowMixin(theme)(undefined as Elevation)).toBeNull();
+    expect(elevationBoxShadowMixin(theme)(undefined as TElevation)).toBeNull();
   });
 });

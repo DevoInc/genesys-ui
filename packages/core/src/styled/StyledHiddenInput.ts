@@ -3,23 +3,23 @@ import styled from 'styled-components';
 import {
   ICheckAttrs,
   IFieldAttrs,
-  FocusEventAttrProps,
-  GlobalAriaProps,
-  GlobalAttrProps,
+  IFocusEventAttrs,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
   IInputAttrs,
-  SelectionScheme,
+  TSelectionScheme,
 } from '../declarations';
 
-import { srOnlyMixin } from './mixins';
+import { srOnlyMixin } from './mixins/screenReader';
 
 export interface StyledHiddenInputProps
-  extends Pick<GlobalAriaProps, 'aria-label'>,
-    Pick<GlobalAttrProps, 'id'>,
-    Pick<FocusEventAttrProps, 'onBlur' | 'onFocus'>,
+  extends Pick<IGlobalAriaAttrs, 'aria-label'>,
+    Pick<IGlobalAttrs, 'id'>,
+    Pick<IFocusEventAttrs, 'onBlur' | 'onFocus'>,
     Pick<IFieldAttrs, 'disabled' | 'name'>,
     Pick<IInputAttrs, 'value'>,
     ICheckAttrs {
-  selectionScheme?: SelectionScheme;
+  selectionScheme?: TSelectionScheme;
 }
 
 export const StyledHiddenInput = styled.input.attrs(

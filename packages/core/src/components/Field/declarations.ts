@@ -1,23 +1,19 @@
 import * as React from 'react';
 import { WithRequired } from '../../typeFunctions';
 import type {
-  BaseSize,
+  TBaseSize,
   TFieldStatus,
-  ControlWidth,
+  TControlWidth,
 } from '../../declarations/commonProps';
 import type {
-  GlobalAttrProps,
+  IGlobalAttrs,
   IFieldAttrs,
-  MouseEventAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IMouseEventAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../declarations';
-import type {
-  FieldLabelDistributorProps,
-  FieldRequiredMarkProps,
-} from './components';
 
-export type TFieldSize = BaseSize;
+export type TFieldSize = TBaseSize;
 export type TLabelPosition = 'top' | 'left' | 'between' | 'right';
 export type TFieldDirection = 'between' | 'row' | 'column' | 'reverse';
 export type TFieldAddonPosition = 'left' | 'right';
@@ -27,7 +23,7 @@ export type TFieldChildren = React.ReactElement<{
   'aria-errormessage': React.HTMLAttributes<unknown>['aria-errormessage'];
   'aria-label': React.HTMLAttributes<unknown>['aria-label'];
   'aria-labelledby': React.HTMLAttributes<unknown>['aria-labelledby'];
-  id: GlobalAttrProps['id'];
+  id: IGlobalAttrs['id'];
   required: IFieldAttrs['required'];
   size: TFieldSize;
   status: TFieldStatus;
@@ -35,17 +31,18 @@ export type TFieldChildren = React.ReactElement<{
 }>;
 
 export interface IField
-  extends MouseEventAttrProps,
-    StyledOverloadCssProps,
-    StyledPolymorphicProps,
-    Pick<GlobalAttrProps, 'tooltip' | 'role'>,
-    WithRequired<GlobalAttrProps, 'id'>,
-    Pick<IFieldAttrs, 'disabled' | 'required'>,
-    Pick<FieldLabelDistributorProps, 'direction'> {
+  extends IMouseEventAttrs,
+    IStyledOverloadCss,
+    IStyledPolymorphic,
+    Pick<IGlobalAttrs, 'tooltip' | 'role'>,
+    WithRequired<IGlobalAttrs, 'id'>,
+    Pick<IFieldAttrs, 'disabled' | 'required'> {
   /** Children of the Field, usually a form control as InputControl, SelectControl... etc. */
   children: TFieldChildren;
   /** Field control predefined width for Input, Select… etc. */
-  controlWidth?: ControlWidth;
+  controlWidth?: TControlWidth;
+  /** The direction of the field based in the desired label position: to the left (row), to the top (column... etc.)*/
+  direction?: TFieldDirection;
   /** If the Helper is rendered as a floating element displayed by clicking a trigger. */
   hasFloatingHelper?: boolean;
   /** If the field control is rendered filling all the available space (e.g. Input component) or only its own width (e.g. Switch component). */
@@ -59,7 +56,7 @@ export interface IField
   /** Position of the label text relative to the field control. The position 'right' for the label is only recommended for checkbox and radio controls. */
   labelPosition?: TLabelPosition;
   /** The title to be shown on hover of the required marker of the Field._ */
-  requiredMarkTooltip?: FieldRequiredMarkProps['tooltip'];
+  requiredMarkTooltip?: IGlobalAttrs['tooltip'];
   /** Size of the field and its internal components: height, padding, font-size... etc. */
   size?: TFieldSize;
   /** This property defines the status color scheme for the Field. */

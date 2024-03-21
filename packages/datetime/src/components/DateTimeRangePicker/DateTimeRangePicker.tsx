@@ -3,9 +3,9 @@ import * as React from 'react';
 import {
   Panel,
   Button,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
   Popover,
   PopoverProps,
 } from '@devoinc/genesys-ui';
@@ -57,9 +57,9 @@ export interface DateTimeRangePickerProps
       | 'onBlur'
       | 'wide'
     >,
-    Required<Pick<GlobalAttrProps, 'id'>>,
-    StyledOverloadCssProps,
-    StyledPolymorphicProps {
+    Required<Pick<IGlobalAttrs, 'id'>>,
+    IStyledOverloadCss,
+    IStyledPolymorphic {
   /** Initial value for the input. */
   value: { from: string | number | Date; to: string | number | Date };
   /** Apply button text. */

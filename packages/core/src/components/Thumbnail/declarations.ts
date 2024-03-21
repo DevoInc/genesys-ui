@@ -1,7 +1,7 @@
-import { BaseSize, GlobalSize } from '../../declarations';
+import { TBaseSize, TGlobalSize } from '../../declarations';
 import { PickUnion } from '../../typeFunctions';
 
 export type ThumbnailSize =
-  | BaseSize
-  | PickUnion<GlobalSize, 'xs' | 'xl'>
+  | TBaseSize
+  | PickUnion<TGlobalSize, 'xs' | 'xl'>
   | 'fullWidth';

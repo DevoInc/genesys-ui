@@ -1,7 +1,7 @@
 import { DefaultTheme } from 'styled-components';
 
 import { TypoVariant } from './declarations';
-import { TypoSize } from '../../../declarations';
+import { TTypoSize } from '../../../declarations';
 
 /**
  * Get the font-family value based in variant of the typographic element
@@ -75,7 +75,7 @@ export const getTypoObject = ({
 }: {
   variant?: TypoVariant;
   theme: DefaultTheme;
-  size?: TypoSize;
+  size?: TTypoSize;
 }): {
   'font-family': React.CSSProperties['fontFamily'];
   'font-size': React.CSSProperties['fontSize'];

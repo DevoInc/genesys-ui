@@ -4,10 +4,10 @@ import { format } from 'date-fns';
 import {
   InputControl,
   InputControlProps,
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
   VFlex,
 } from '@devoinc/genesys-ui';
 
@@ -19,10 +19,10 @@ import { GICalendarMonthDayPlannerEvents } from '@devoinc/genesys-icons';
 export interface DateTimePickerProps
   extends Omit<DateTimeProps, 'onChange' | 'selectedDates'>,
     Pick<InputControlProps, 'onChange' | 'placeholder' | 'size'>,
-    Pick<GlobalAriaProps, 'aria-label'>,
-    Pick<GlobalAttrProps, 'id'>,
-    StyledOverloadCssProps,
-    StyledPolymorphicProps {}
+    Pick<IGlobalAriaAttrs, 'aria-label'>,
+    Pick<IGlobalAttrs, 'id'>,
+    IStyledOverloadCss,
+    IStyledPolymorphic {}
 
 export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   'aria-label': ariaLabel = 'datetime',

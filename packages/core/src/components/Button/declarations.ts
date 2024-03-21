@@ -1,16 +1,16 @@
 import {
-  UIColorScheme,
-  BaseSize,
-  BlendColorScheme,
-  NeutralColorScheme,
+  TUIColorScheme,
+  TBaseSize,
+  TBlendColorScheme,
+  TNeutralColorScheme,
 } from '../../declarations';
 
 export type ButtonIconPosition = 'left' | 'right';
 
 export type ButtonColorScheme =
-  | BlendColorScheme
-  | NeutralColorScheme
-  | UIColorScheme
+  | TBlendColorScheme
+  | TNeutralColorScheme
+  | TUIColorScheme
   | 'accent'
   | 'accent-high'
   | 'quiet';
@@ -38,6 +38,6 @@ export type ButtonState =
   | ButtonSelectableState
   | ButtonExpandableState;
 
-export type ButtonSize = BaseSize | 'xxs' | 'xs';
+export type ButtonSize = TBaseSize | 'xxs' | 'xs';
 
-export type ButtonLoaderSize = BaseSize | 'xs';
+export type ButtonLoaderSize = TBaseSize | 'xs';

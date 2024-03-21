@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { DefaultTheme } from 'styled-components';
 
-import type { TFieldSize, GlobalState, GlobalStatus } from '../../declarations';
+import type {
+  TFieldSize,
+  TGlobalState,
+  TGlobalStatus,
+} from '../../declarations';
 import type { FieldContextProps } from './context';
 import { typoMixin, getTypoObject } from '../../styled/mixins/typography';
 import type { IField } from './declarations';
@@ -26,8 +30,8 @@ export const getFieldState = ({
   state,
 }: {
   readOnly?: boolean;
-  state?: GlobalState;
-}): GlobalState => {
+  state?: TGlobalState;
+}): TGlobalState => {
   if (state) return state;
   if (readOnly) return 'readonly';
   return 'enabled';
@@ -41,7 +45,7 @@ export const getFieldControlTypoObj = ({
   size?: TFieldSize;
 }) => getTypoObject({ theme, size: size });
 
-export const getTFieldStatus = (status: GlobalStatus = 'base') => {
+export const getTFieldStatus = (status: TGlobalStatus = 'base') => {
   if (status === 'help') return 'base';
   return status;
 };

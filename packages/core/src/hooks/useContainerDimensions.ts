@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { throttle } from 'lodash';
-import { ClientSize } from '../declarations/dom';
+import { IClientSize } from '../declarations/dom';
 
 const DEFAULT_PROPS = { delay: 0 };
 
 export const useContainerDimensions = ({ delay } = DEFAULT_PROPS): {
-  size: ClientSize;
+  size: IClientSize;
   setRef: (node: HTMLDivElement) => void;
   nodeRef: React.RefObject<HTMLDivElement>;
 } => {
-  const [size, setSize] = React.useState<ClientSize>(null);
+  const [size, setSize] = React.useState<IClientSize>(null);
   const nodeRef = React.useRef<HTMLDivElement>(null);
 
   const updateSize = React.useCallback(() => {

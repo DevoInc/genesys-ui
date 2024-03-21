@@ -1,12 +1,12 @@
 import * as React from 'react';
 
 import type {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../declarations';
-import { TSpinnerColorScheme, TSpinnerSize } from './declarations';
+import type { TSpinnerColorScheme, TSpinnerSize } from './declarations';
 
 import {
   StyledSpinnerLoaderSvg,
@@ -15,10 +15,10 @@ import {
 } from './styled';
 
 export interface SpinnerLoaderProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps {
+  extends IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs {
   colorScheme?: TSpinnerColorScheme;
   size?: TSpinnerSize;
 }

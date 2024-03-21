@@ -1,8 +1,8 @@
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../../declarations';
 import * as React from 'react';
 
@@ -12,10 +12,10 @@ import { ListItem } from './ListItem';
 export interface ListProps
   extends StyledListProps,
     // native
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps {
+    IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs {
   /** Content of the list */
   children?: React.ReactNode;
 }

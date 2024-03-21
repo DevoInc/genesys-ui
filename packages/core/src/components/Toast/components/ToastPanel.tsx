@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
 import { TOAST_ELEVATION_LEVEL } from '../constants';
-import type { StyledOverloadCssProps } from '../../../declarations';
+import type { IStyledOverloadCss } from '../../../declarations';
 import { ToastAction } from '../declarations';
 import { getFooterActions } from '../utils';
 import { type ToastPanelMixinProps, toastPanelMixin } from './helpers';
@@ -13,7 +13,7 @@ import { ToastHeader, type ToastHeaderProps } from './ToastHeader';
 import { Panel } from '../../Panel';
 
 export interface ToastPanelProps
-  extends StyledOverloadCssProps,
+  extends IStyledOverloadCss,
     ToastHeaderProps,
     Pick<ToastBadgeProps, 'updates'>,
     Pick<ToastContentProps, 'content'>,

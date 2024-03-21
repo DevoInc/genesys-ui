@@ -3,7 +3,7 @@ import * as React from 'react';
 import { FIELD_LABEL_POS_DIRECTION_MAP } from './constants';
 
 import type { IField } from './declarations';
-import type { UIColorScheme } from '../../declarations';
+import type { TUIColorScheme } from '../../declarations';
 
 import { hasStatus } from '../../utils/validations';
 
@@ -50,7 +50,7 @@ export const PartField: React.FC<FieldProps> = ({
   const direction = FIELD_LABEL_POS_DIRECTION_MAP[labelPositionUpper];
   const RequiredMarkerBlock = (
     <Field._RequiredMark
-      colorScheme={status as UIColorScheme}
+      colorScheme={status as TUIColorScheme}
       tooltip={requiredMarkTooltip}
     />
   );

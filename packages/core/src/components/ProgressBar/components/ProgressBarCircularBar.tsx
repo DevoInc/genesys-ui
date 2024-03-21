@@ -1,14 +1,14 @@
 import * as React from 'react';
 
 import type {
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../declarations/styled';
 import type {
-  FieldAriaProps,
-  GlobalAriaProps,
+  IFieldAriaAttrs,
+  IGlobalAriaAttrs,
 } from '../../../declarations/ariaAttrs';
-import type { GlobalAttrProps } from '../../../declarations/htmlAttrs';
+import type { IGlobalAttrs } from '../../../declarations/htmlAttrs';
 
 import {
   StyledProgressBarCircular,
@@ -23,11 +23,11 @@ import { SQUARE } from '../constants';
 import { ProgressBarContext } from '../context';
 
 export interface ProgressBarCircularBarProps
-  extends GlobalAttrProps,
-    GlobalAriaProps,
-    Pick<FieldAriaProps, 'aria-errormessage' | 'aria-invalid'>,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
+  extends IGlobalAttrs,
+    IGlobalAriaAttrs,
+    Pick<IFieldAriaAttrs, 'aria-errormessage' | 'aria-invalid'>,
+    IStyledPolymorphic,
+    IStyledOverloadCss,
     StyledProgressBarCircularSVGProps,
     StyledProgressBarCircularProps,
     Omit<StyledProgressBarCircularCircleInnerProps, 'rad'> {}

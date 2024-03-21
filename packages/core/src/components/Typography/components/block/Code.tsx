@@ -1,8 +1,8 @@
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../../declarations';
 import * as React from 'react';
 
@@ -17,10 +17,10 @@ export interface CodeProps
   extends StyledCodeBlockProps,
     StyledCodeBlockWrapperProps,
     //native
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps {
+    IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs {
   /** The function to be triggered on the click event. */
   onClick?: () => void;
   /** Children */

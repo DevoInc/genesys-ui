@@ -5,7 +5,7 @@ import { useTheme } from 'styled-components';
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 
 import type { ButtonExpandableState } from '../../../Button';
-import type { UIColorScheme } from '../../../../declarations';
+import type { TUIColorScheme } from '../../../../declarations';
 
 import { iconButtonStatusMixin } from './mixins';
 import { getIconButtonStatusIcon } from './utils';
@@ -32,7 +32,7 @@ export interface IconButtonStatusProps
     | 'target'
     | 'value'
   > {
-  colorScheme?: UIColorScheme;
+  colorScheme?: TUIColorScheme;
   state?: ButtonExpandableState;
 }
 

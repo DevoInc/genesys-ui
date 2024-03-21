@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../../declarations';
 
 import {
@@ -14,10 +14,10 @@ import {
 export interface BlockQuoteProps
   extends StyledBlockQuoteProps,
     //native
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps {
+    IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs {
   /** Content of the BlockQuote */
   children?: React.ReactNode;
 }

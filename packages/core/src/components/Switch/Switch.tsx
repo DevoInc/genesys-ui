@@ -4,10 +4,7 @@ import { Field, FieldProps } from '../Field';
 import { SwitchControl, type SwitchControlProps } from '../SwitchControl';
 
 export interface SwitchProps
-  extends Omit<
-      FieldProps,
-      'children' | 'hasWideControl' | 'role' | 'subcomponentStyles'
-    >,
+  extends Omit<FieldProps, 'children' | 'hasWideControl' | 'role'>,
     Omit<
       SwitchControlProps,
       'id' | 'size' | 'status' | 'disabled' | 'required'

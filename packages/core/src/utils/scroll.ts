@@ -1,7 +1,7 @@
-import { ClientSize } from '../declarations/dom';
+import { IClientSize } from '../declarations/dom';
 
 export const updateHasScroll = (
-  measures: ClientSize,
+  measures: IClientSize,
   hasScroll: boolean,
   hasScrollSetter: React.Dispatch<React.SetStateAction<boolean>>,
 ) => {

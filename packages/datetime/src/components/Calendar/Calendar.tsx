@@ -10,11 +10,11 @@ import {
 import { Cell, CellProps } from './components';
 import { checkValidDate } from './validations';
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
   Grid,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
 import { Datetime } from '../declarations';
 import { toTimestamp } from '../utils';
@@ -23,10 +23,10 @@ import { lastDayOfMonth as lastDayOfMonthFNS } from 'date-fns';
 export interface CalendarProps
   extends Pick<CellProps, 'onClick' | 'onMouseEnter' | 'onMouseLeave'>,
     //native
-    GlobalAttrProps,
-    GlobalAriaProps,
-    StyledOverloadCssProps,
-    StyledPolymorphicProps {
+    IGlobalAttrs,
+    IGlobalAriaAttrs,
+    IStyledOverloadCss,
+    IStyledPolymorphic {
   /** The date for the month. One of `number` or `Date`. */
   dateForMonth?: Datetime;
   /** Disable hover effect. It could be combined with hoverDay, onMouseEnter and onMouseLeave properties for custom control. */

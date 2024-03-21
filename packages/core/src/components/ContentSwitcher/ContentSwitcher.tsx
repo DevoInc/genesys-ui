@@ -2,7 +2,7 @@ import * as React from 'react';
 import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
-import { GlobalAriaProps, GlobalAttrProps } from '../../declarations';
+import { IGlobalAriaAttrs, IGlobalAttrs } from '../../declarations';
 
 import { ContentSwitcherContext } from './context';
 
@@ -37,8 +37,8 @@ export interface ContentSwitcherProps
     >,
     Pick<ContentSwitcherItemProps, 'wide'>,
     Omit<contentSwitcherContainerMixinProps, 'theme'>,
-    Omit<GlobalAttrProps, 'role'>,
-    GlobalAriaProps {
+    Omit<IGlobalAttrs, 'role'>,
+    IGlobalAriaAttrs {
   children?: React.ReactElement[];
 }
 

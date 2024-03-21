@@ -1,5 +1,5 @@
 import type { AllHTMLAttributes } from 'react';
-import { DOMAttributes } from 'react';
+import type { DOMAttributes } from 'react';
 
 /** ---------------------------------------------------------------------------------------
  * ----------------------------------------------------------------------------------------
@@ -10,7 +10,7 @@ import { DOMAttributes } from 'react';
 /** ---------------------------------------------
  * Common declarations for all components
  * ---------------------------------------------- */
-export interface GlobalAttrProps<T = Element> {
+export interface IGlobalAttrs<T = Element> {
   /** A unique identifier for the element */
   id?: AllHTMLAttributes<T>['id'];
   /** A title or description of the element, typically displayed as a tooltip when hovering over the element */
@@ -25,7 +25,7 @@ export interface GlobalAttrProps<T = Element> {
  * - Flex
  * - ...
  * --------------------------------------------- */
-export interface LayoutAttrProps<T = Element> {
+export interface ILayoutAttrs<T = Element> {
   /** A shortcut key to activate or focus the element */
   accessKey?: AllHTMLAttributes<T>['accessKey'];
   /** A boolean value indicating whether the element should be hidden */
@@ -41,7 +41,7 @@ export interface LayoutAttrProps<T = Element> {
  * - Textarea
  * - Input
  * --------------------------------------------- */
-export interface TextBoxAttrProps<T = Element> {
+export interface ITextBoxAttrs<T = Element> {
   /** The MIME types that the server will accept */
   accept?: AllHTMLAttributes<T>['accept'];
   /** A string indicating whether the text field should have autocomplete on or off */
@@ -64,7 +64,7 @@ export interface TextBoxAttrProps<T = Element> {
  * Common declarations for input component
  * - Input
  * --------------------------------------------- */
-export interface IInputAttrs<T = HTMLInputElement> extends TextBoxAttrProps<T> {
+export interface IInputAttrs<T = HTMLInputElement> extends ITextBoxAttrs<T> {
   /** The defaultValue property sets or returns the default value of a text field. */
   defaultValue?: AllHTMLAttributes<T>['defaultValue'];
   /** The maximum value of the input field */
@@ -89,8 +89,8 @@ export interface IInputAttrs<T = HTMLInputElement> extends TextBoxAttrProps<T> {
  * Common declarations for textarea component
  * - Textarea
  * --------------------------------------------- */
-export interface TextareaAttrProps<T = HTMLTextAreaElement>
-  extends TextBoxAttrProps<T> {
+export interface ITextareaAttrs<T = HTMLTextAreaElement>
+  extends ITextBoxAttrs<T> {
   /** The number of visible character columns in the text area */
   cols?: AllHTMLAttributes<T>['cols'];
   /** The number of visible text lines in the text area */
@@ -103,7 +103,7 @@ export interface TextareaAttrProps<T = HTMLTextAreaElement>
  * Common declarations for select component
  * - Select
  * --------------------------------------------- */
-export interface SelectAttrProps<T = HTMLSelectElement> {
+export interface ISelectAttrs<T = HTMLSelectElement> {
   /** A string indicating whether the select field should have autocomplete on or off */
   autoComplete?: AllHTMLAttributes<T>['autoComplete'];
   /** A boolean indicating whether the select field should automatically get focus when the page loads */
@@ -153,7 +153,7 @@ export interface ICheckAttrs<T = Element> {
  * - Button
  * - IconButton
  * --------------------------------------------- */
-export interface ButtonAttrProps<T = HTMLButtonElement> {
+export interface IButtonAttrs<T = HTMLButtonElement> {
   /** A boolean indicating whether the button should automatically get focus when the page loads */
   autoFocus?: AllHTMLAttributes<T>['autoFocus'];
   /** A boolean indicating whether the button should be disabled or not */
@@ -176,7 +176,7 @@ export interface ButtonAttrProps<T = HTMLButtonElement> {
  * Common declarations for link component
  * - Link
  * --------------------------------------------- */
-export interface LinkAttrProps<T = HTMLLinkElement> {
+export interface ILinkAttrs<T = HTMLLinkElement> {
   /** A string that specifies the URL of the link */
   href?: AllHTMLAttributes<T>['href'];
   /** A string that specifies the file name to use for the downloaded resource when the link is clicked */
@@ -190,7 +190,7 @@ export interface LinkAttrProps<T = HTMLLinkElement> {
 /** ---------------------------------------------
  * Common declarations for audio-video components
  * --------------------------------------------- */
-export interface AudioVideoAttrProps<T = HTMLAudioElement | HTMLVideoElement> {
+export interface IAudioVideoAttrs<T = HTMLAudioElement | HTMLVideoElement> {
   /** A boolean indicating whether the audio/video should automatically play when the page loads */
   autoPlay?: AllHTMLAttributes<T>['autoPlay'];
   /** A boolean indicating whether the audio/video controls should be displayed */
@@ -208,7 +208,7 @@ export interface AudioVideoAttrProps<T = HTMLAudioElement | HTMLVideoElement> {
 /** ---------------------------------------------
  * Common declarations for video components
  * --------------------------------------------- */
-export interface VideoAttrProps<T = HTMLVideoElement> {
+export interface IVideoAttrs<T = HTMLVideoElement> {
   /** A number that specifies the height of the video */
   height?: AllHTMLAttributes<T>['height'];
   /** A string that specifies the URL of an image to display as a placeholder before the video is played */
@@ -220,7 +220,7 @@ export interface VideoAttrProps<T = HTMLVideoElement> {
 /** ---------------------------------------------
  * Common declarations for label components
  * --------------------------------------------- */
-export interface LabelAttrProps<T = HTMLImageElement> {
+export interface ILabelAttrs<T = HTMLImageElement> {
   /** A string that specifies which form element a label is bound to */
   htmlFor?: AllHTMLAttributes<T>['htmlFor'];
   /** A string indicating the form the image belongs to */
@@ -232,7 +232,7 @@ export interface LabelAttrProps<T = HTMLImageElement> {
  * - Thumbnail
  * - Avatar
  * --------------------------------------------- */
-export interface ImageAttrProps<T = HTMLImageElement> {
+export interface IImageAttrs<T = HTMLImageElement> {
   /** A string that specifies an alternative text description of the image */
   alt?: AllHTMLAttributes<T>['alt'];
   /** A number that specifies the height of the image */
@@ -250,7 +250,7 @@ export interface ImageAttrProps<T = HTMLImageElement> {
 /** ---------------------------------------------
  * Common declarations for area components
  * --------------------------------------------- */
-export interface AreaAttrProps<T = HTMLAreaElement> {
+export interface IAreaAttrs<T = HTMLAreaElement> {
   /** A string that specifies an alternative text description of the area */
   alt?: AllHTMLAttributes<T>['alt'];
   /** A string that specifies the file name to use for the downloaded resource when the area is clicked */

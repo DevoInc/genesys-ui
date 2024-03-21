@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { MouseEventAttrProps } from '../../../declarations';
+import type { IMouseEventAttrs } from '../../../declarations';
 import type { ToastStatus } from '../declarations';
 
 import { Divider } from '../../Divider';
@@ -26,7 +26,7 @@ export interface ToastHeaderProps {
   /** Show notification collapsed or expanded */
   collapsed?: boolean;
   /** Action of collapse button */
-  onCollapse?: MouseEventAttrProps['onClick'];
+  onCollapse?: IMouseEventAttrs['onClick'];
   /** Notification status */
   status?: ToastStatus;
   /** Notification subtitle */

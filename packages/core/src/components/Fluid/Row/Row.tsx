@@ -5,7 +5,7 @@ import {
   RowProps as ReactGridRowProps,
 } from 'react-grid-system';
 
-import { GlobalAttrProps } from '../../../declarations';
+import { IGlobalAttrs } from '../../../declarations';
 import { ContainerSpacing, FluidAs } from '../declarations';
 
 import { getSpacingPropCss } from '../../../helpers';
@@ -13,7 +13,7 @@ import { getPxFromRem } from '../../../helpers';
 
 export interface RowProps
   extends Omit<ReactGridRowProps, 'component' | 'gutterWidth'>,
-    Pick<GlobalAttrProps<HTMLDivElement>, 'tooltip'> {
+    Pick<IGlobalAttrs<HTMLDivElement>, 'tooltip'> {
   as?: FluidAs;
   /** The gutter between the different cols.*/
   gutter?: ContainerSpacing;

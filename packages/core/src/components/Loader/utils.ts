@@ -6,12 +6,12 @@ import type {
   LoaderBasicColorScheme,
   LoaderColorScheme,
 } from './declarations';
-import type { BaseSize } from '../../declarations/commonProps';
+import type { TBaseSize } from '../../declarations/commonProps';
 
 export const getSizeByType = (
   type: ContextualScrollLoaderType,
   size: ContextualScrollLoaderSize,
-): BaseSize =>
+): TBaseSize =>
   CONTEXTUAL_SCROLL_LOADER_SIZE_MAP[type]?.[size] ||
   CONTEXTUAL_SCROLL_LOADER_SIZE_MAP.spinner.md;
 

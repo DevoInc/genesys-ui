@@ -1,15 +1,15 @@
 import * as React from 'react';
 
 import {
-  FocusEventAttrProps,
-  GlobalAriaProps,
-  GlobalAttrProps,
-  ImageAttrProps,
-  LinkAttrProps,
-  MouseEventAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-  TriggerAriaProps,
+  IFocusEventAttrs,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IImageAttrs,
+  ILinkAttrs,
+  IMouseEventAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
+  ITriggerAriaAttrs,
 } from '../../../declarations';
 
 import { StyledAvatarContainer, StyledAvatarContainerProps } from '../styled';
@@ -20,15 +20,15 @@ import { Icon } from '../../Icon';
 
 export interface AvatarContainerProps
   extends Omit<StyledAvatarContainerProps, '$disabled'>,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    ImageAttrProps,
-    LinkAttrProps,
-    TriggerAriaProps,
-    FocusEventAttrProps,
-    MouseEventAttrProps {
+    IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs,
+    IImageAttrs,
+    ILinkAttrs,
+    ITriggerAriaAttrs,
+    IFocusEventAttrs,
+    IMouseEventAttrs {
   disabled?: boolean;
   children: React.ReactNode;
   /** Icon to be shown on hover-focus of the avatar.E.g. a pencil icon to denote it's editable. */

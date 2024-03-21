@@ -1,7 +1,7 @@
 import { DefaultTheme } from 'styled-components';
 
 import { isValidColor } from '../color';
-import { AllColorScheme } from '../../declarations';
+import { TAllColorScheme } from '../../declarations';
 
 export const getIconColorSchemeMap = (theme: DefaultTheme) => ({
   base: theme.alias.color.text.body.base,
@@ -59,7 +59,7 @@ export const getIconColor =
     colorScheme,
   }: {
     color?: string;
-    colorScheme?: AllColorScheme;
+    colorScheme?: TAllColorScheme;
   }) => {
     if (isValidColor(color)) return color;
     if (colorScheme) return getIconColorSchemeMap(theme)[colorScheme];

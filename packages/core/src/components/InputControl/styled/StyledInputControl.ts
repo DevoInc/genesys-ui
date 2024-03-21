@@ -9,7 +9,7 @@ import {
 
 // declarations
 import type {
-  ControlWidth,
+  TControlWidth,
   TFieldStatus,
 } from '../../../declarations/commonProps';
 import type { TFieldSize } from '../../Field/declarations';
@@ -32,7 +32,7 @@ export interface StyledInputControlProps {
   /** Whether the component displays an icon related with type. */
   hasTypeIcon?: boolean;
   /** Width of the input control based in predefined values as 'xxs', 'xs', 'sm'... etc. or directly in a css value. It should reflect the length of the content you expect the user to enter. */
-  inputWidth?: ControlWidth;
+  inputWidth?: TControlWidth;
   /** Size of the input: height, padding, font-size... etc. */
   $size?: TFieldSize;
   /** This property defines the status color schema for the input */

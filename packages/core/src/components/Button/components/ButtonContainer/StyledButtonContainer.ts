@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { camelCase } from 'lodash';
 
-import { SelectionScheme } from '../../../../declarations';
+import { TSelectionScheme } from '../../../../declarations';
 import { ButtonColorScheme, ButtonState, ButtonSize } from '../../declarations';
 
 import {
@@ -26,7 +26,7 @@ export interface StyledButtonContainerProps {
   /** Button fully adjusts the width of its parent container */
   wide?: boolean;
   /** If it's multiple we use a checkbox and if it's single we use a radio */
-  selectionScheme?: SelectionScheme;
+  selectionScheme?: TSelectionScheme;
   /** Sets padding, line-height, font-size, etc. */
   size?: ButtonSize;
   /** Sets the color scheme according to component state */

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { SplitterLayout, SplitterLayoutProps } from './SplitterLayout';
+import { SplitterLayout, type SplitterLayoutProps } from './SplitterLayout';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface SplitPaneProps extends SplitterLayoutProps {}

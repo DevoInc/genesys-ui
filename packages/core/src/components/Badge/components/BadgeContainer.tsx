@@ -1,19 +1,19 @@
 import * as React from 'react';
 
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../declarations';
 
 import { StyledBadge, StyledBadgeProps } from '../StyledBadge';
 
 export interface BadgeContainerProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
+  extends IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs,
     Omit<StyledBadgeProps, 'hasContent' | 'hasLongText'> {
   /** Tooltip on Badge hover.*/
   tooltip?: string;

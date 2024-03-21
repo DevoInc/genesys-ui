@@ -1,13 +1,13 @@
 import * as React from 'react';
 
 import type {
-  ContainerEventAttrProps,
+  IContainerEventAttrs,
   IFieldControl,
   TFieldSize,
-  TextareaAttrProps,
-  TextareaEventAttrs,
-  TextBoxAriaProps,
-  WithRequiredAriaLabelOrAriaLabelledByProps,
+  ITextareaAttrs,
+  ITextareaEventAttrs,
+  ITextBoxAriaAttrs,
+  IWithRequiredAriaLabelOrAriaLabelledByAttr,
 } from '../../declarations';
 import { FieldContext } from '../Field/context';
 import { getFieldContextProps } from '../Field';
@@ -19,11 +19,11 @@ import {
 
 interface CommonTextareaControlProps
   extends IFieldControl,
-    Pick<TextBoxAriaProps, 'aria-invalid' | 'aria-activedescendant'>,
-    Omit<TextareaAttrProps, 'cols'>,
-    TextareaEventAttrs,
+    Pick<ITextBoxAriaAttrs, 'aria-invalid' | 'aria-activedescendant'>,
+    Omit<ITextareaAttrs, 'cols'>,
+    ITextareaEventAttrs,
     Pick<
-      ContainerEventAttrProps<HTMLTextAreaElement>,
+      IContainerEventAttrs<HTMLTextAreaElement>,
       'onKeyDown' | 'onKeyUp' | 'onPaste' | 'onWheel'
     >,
     Omit<StyledTextareaControlProps, '$size'> {
@@ -32,7 +32,7 @@ interface CommonTextareaControlProps
 }
 
 export type TextareaControlProps =
-  WithRequiredAriaLabelOrAriaLabelledByProps<CommonTextareaControlProps>;
+  IWithRequiredAriaLabelOrAriaLabelledByAttr<CommonTextareaControlProps>;
 
 export const TextareaControl: React.FC<TextareaControlProps> = ({
   'aria-errormessage': ariaErrorMessage,

@@ -2,22 +2,18 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { IconContext } from '@devoinc/genesys-icons';
 
-import {
-  AllColorScheme,
-  GlobalAttrProps,
-  GlobalSize,
-} from '../../declarations';
+import { TAllColorScheme, IGlobalAttrs, TGlobalSize } from '../../declarations';
 
 import { getIconColor, getIconSize } from '../../helpers';
 
-export interface IconProps extends Pick<GlobalAttrProps, 'tooltip'> {
+export interface IconProps extends Pick<IGlobalAttrs, 'tooltip'> {
   children?: React.ReactNode;
   /** This property defines the custom icon color */
   color?: string;
   /** It defines the color scheme for the icon color. There are predefined types: primary, secondary... etc. auto-generated for the text based on this one to maintain AA accessible contrast.*/
-  colorScheme?: AllColorScheme;
+  colorScheme?: TAllColorScheme;
   /** This property defines the custom icon font size */
-  size?: string | GlobalSize;
+  size?: string | TGlobalSize;
   /** If the icon has this property its font-weight changes to bold */
   strong?: boolean;
   style?: React.CSSProperties;

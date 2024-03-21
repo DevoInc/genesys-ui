@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import { StyledTagLabel } from './StyledTagLabel';
-import { StyledOverloadCssProps } from '../../../declarations';
+import { IStyledOverloadCss } from '../../../declarations';
 
-export interface TagLabelProps extends StyledOverloadCssProps {
+export interface TagLabelProps extends IStyledOverloadCss {
   children?: React.ReactNode;
 }
 

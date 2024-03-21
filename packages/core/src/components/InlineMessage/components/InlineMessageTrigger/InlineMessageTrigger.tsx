@@ -13,27 +13,27 @@ import {
   ButtonSize,
 } from '../../../Button';
 import type {
-  GlobalAriaProps,
-  TextBoxAriaProps,
-  TriggerAriaProps,
+  IGlobalAriaAttrs,
+  ITextBoxAriaAttrs,
+  ITriggerAriaAttrs,
 } from '../../../../declarations/ariaAttrs';
-import type { GlobalAttrProps } from '../../../../declarations/htmlAttrs';
-import type { TriggerEventAttrProps } from '../../../../declarations/htmlEventAttrs';
+import type { IGlobalAttrs } from '../../../../declarations/htmlAttrs';
+import type { ITriggerEventAttrs } from '../../../../declarations/htmlEventAttrs';
 import {
   inlineMessageTriggerMixin,
   inlineMessageTriggerParagraphMixin,
 } from './helpers';
 
 export interface InlineMessageTriggerProps
-  extends Omit<GlobalAttrProps, 'role'>,
-    GlobalAriaProps,
-    Pick<TextBoxAriaProps, 'aria-activedescendant'>,
+  extends Omit<IGlobalAttrs, 'role'>,
+    IGlobalAriaAttrs,
+    Pick<ITextBoxAriaAttrs, 'aria-activedescendant'>,
     Pick<
-      TriggerAriaProps,
+      ITriggerAriaAttrs,
       'aria-expanded' | 'aria-controls' | 'aria-haspopup'
     > {
   icon?: React.ReactNode;
-  onClick?: TriggerEventAttrProps['onClick'];
+  onClick?: ITriggerEventAttrs['onClick'];
   size?: ButtonSize;
   state: ButtonExpandableState;
   status?: IconButtonStatusProps['colorScheme'];

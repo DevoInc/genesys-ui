@@ -1,57 +1,46 @@
 import * as React from 'react';
 
-import { StyledOverloadCssPropsWithRecord } from '../../../../declarations';
-
+import type { IStepperItem } from './declarations';
 import {
   StepperItemContainer,
-  StepperItemContainerProps,
   StepperItemDivider,
   StepperItemHiddenStatus,
-  StepperItemHiddenStatusProps,
   StepperItemIndicator,
-  StepperItemIndicatorProps,
   StepperItemContent,
 } from './components';
 
-export interface BaseStepperItemProps
-  extends StepperItemIndicatorProps,
-    StepperItemContainerProps {
-  hasDivider?: boolean;
-  hiddenStatusText?: StepperItemHiddenStatusProps['children'];
-}
-
-export type StepperItemProps = BaseStepperItemProps &
-  StyledOverloadCssPropsWithRecord<
-    'container' | 'content' | 'divider' | 'indicator'
-  >;
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface StepperItemProps
+  extends Pick<
+    IStepperItem,
+    | 'children'
+    | 'hasDivider'
+    | 'hiddenStatusText'
+    | 'stepNumberPos'
+    | 'size'
+    | 'status'
+    | 'styles'
+  > {}
 
 export const InternalStepperItem: React.FC<StepperItemProps> = ({
   children,
   hasDivider,
   hiddenStatusText,
   size = 'md',
-  status,
+  status = 'pending',
   styles,
-  subcomponentStyles,
   stepNumberPos,
 }) => {
   return (
-    <StepperItemContainer styles={subcomponentStyles?.container || styles}>
-      {hasDivider && (
-        <StepperItemDivider styles={subcomponentStyles?.divider} />
-      )}
+    <StepperItemContainer styles={styles}>
+      {hasDivider && <StepperItemDivider />}
       <StepperItemIndicator
         stepNumberPos={stepNumberPos}
         size={size}
         status={status}
-        styles={subcomponentStyles?.indicator}
       />
       <StepperItemHiddenStatus>{hiddenStatusText}</StepperItemHiddenStatus>
-      <StepperItemContent
-        size={size}
-        status={status}
-        styles={subcomponentStyles?.content}
-      >
+      <StepperItemContent size={size} status={status}>
         {children}
       </StepperItemContent>
     </StepperItemContainer>
@@ -59,15 +48,15 @@ export const InternalStepperItem: React.FC<StepperItemProps> = ({
 };
 
 export const StepperItem = InternalStepperItem as typeof InternalStepperItem & {
-  Container: typeof StepperItemContainer;
-  Content: typeof StepperItemContent;
-  Divider: typeof StepperItemDivider;
-  HiddenStatus: typeof StepperItemHiddenStatus;
-  Indicator: typeof StepperItemIndicator;
+  _Container: typeof StepperItemContainer;
+  _Content: typeof StepperItemContent;
+  _Divider: typeof StepperItemDivider;
+  _HiddenStatus: typeof StepperItemHiddenStatus;
+  _Indicator: typeof StepperItemIndicator;
 };
 
-StepperItem.Container = StepperItemContainer;
-StepperItem.Content = StepperItemContent;
-StepperItem.Divider = StepperItemDivider;
-StepperItem.HiddenStatus = StepperItemHiddenStatus;
-StepperItem.Indicator = StepperItemIndicator;
+StepperItem._Container = StepperItemContainer;
+StepperItem._Content = StepperItemContent;
+StepperItem._Divider = StepperItemDivider;
+StepperItem._HiddenStatus = StepperItemHiddenStatus;
+StepperItem._Indicator = StepperItemIndicator;

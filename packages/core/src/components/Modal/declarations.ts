@@ -1,19 +1,19 @@
 import * as React from 'react';
 import type {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  GlobalStatus,
-  StyledOverloadCssProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  TGlobalStatus,
+  IStyledOverloadCss,
 } from '../../declarations';
 
 export type TModalWindowSize = 'sm' | 'md' | 'lg' | 'xl' | 'fullscreen';
 
-export type TModalStatus = GlobalStatus;
+export type TModalStatus = TGlobalStatus;
 
 export interface IModal
-  extends Pick<GlobalAttrProps, 'id'>,
-    Pick<GlobalAriaProps, 'aria-describedby' | 'aria-labelledby'>,
-    StyledOverloadCssProps {
+  extends Pick<IGlobalAttrs, 'id'>,
+    Pick<IGlobalAriaAttrs, 'aria-describedby' | 'aria-labelledby'>,
+    IStyledOverloadCss {
   children: React.ReactNode;
   /** Height of the modal */
   height?: React.CSSProperties['height'];
@@ -31,7 +31,7 @@ export interface IModal
   /** Aurea proportion size */
   windowSize?: TModalWindowSize;
   /** Status of the modal */
-  status?: GlobalStatus;
+  status?: TGlobalStatus;
   /** z-index of the modal */
   zIndex?: React.CSSProperties['zIndex'];
 }

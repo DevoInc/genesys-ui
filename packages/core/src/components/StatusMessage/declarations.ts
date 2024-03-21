@@ -1,0 +1,1 @@
+export type TStatusMessageBordered = boolean;

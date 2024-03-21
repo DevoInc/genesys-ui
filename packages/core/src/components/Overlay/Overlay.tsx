@@ -3,8 +3,8 @@ import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
 import type {
-  ContainerEventAttrProps,
-  MouseEventAttrProps,
+  IContainerEventAttrs,
+  IMouseEventAttrs,
 } from '../../declarations';
 import type { IOverlay } from './declarations';
 
@@ -15,8 +15,8 @@ import { Flex, type FlexProps } from '../Flex';
 export interface OverlayProps
   extends Omit<FlexProps, 'opacity'>,
     IOverlay,
-    MouseEventAttrProps,
-    Pick<ContainerEventAttrProps, 'onKeyUp' | 'onKeyDown'> {}
+    IMouseEventAttrs,
+    Pick<IContainerEventAttrs, 'onKeyUp' | 'onKeyDown'> {}
 
 export const Overlay: React.FC<OverlayProps> = ({
   alignItems = 'center',

@@ -6,7 +6,7 @@ import type {
   IFieldControl,
   TFieldSize,
   IInputAttrs,
-  WithRequiredAriaLabelOrAriaLabelledByProps,
+  IWithRequiredAriaLabelOrAriaLabelledByAttr,
 } from '../../declarations';
 import { FieldContext } from '../Field/context';
 import { getFieldContextProps } from '../Field';
@@ -26,7 +26,7 @@ interface CommonRadioControlProps
 }
 
 export type RadioControlProps =
-  WithRequiredAriaLabelOrAriaLabelledByProps<CommonRadioControlProps>;
+  IWithRequiredAriaLabelOrAriaLabelledByAttr<CommonRadioControlProps>;
 
 export const RadioControl: React.FC<RadioControlProps> = ({
   'aria-describedby': ariaDescribedBy,

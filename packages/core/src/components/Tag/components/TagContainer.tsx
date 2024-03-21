@@ -2,10 +2,10 @@ import * as React from 'react';
 
 // declarations
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../declarations';
 
 // styled
@@ -15,10 +15,10 @@ import {
 } from './StyledTagContainer';
 
 export interface TagContainerProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
+  extends IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs,
     StyledTagContainerProps {
   children: React.ReactNode;
 }

@@ -1,4 +1,4 @@
-import { BaseSize, GlobalSize } from '../../declarations';
+import { TBaseSize, TGlobalSize } from '../../declarations';
 import { PickUnion } from '../../typeFunctions';
 import { LoaderColorScheme } from '../Loader/declarations';
 
@@ -17,4 +17,6 @@ export type DevoLogoAnimation =
   | 'tada'
   | 'wobble';
 
-export type DevoLogoSize = BaseSize | PickUnion<GlobalSize, 'xs' | 'lg' | 'xl'>;
+export type DevoLogoSize =
+  | TBaseSize
+  | PickUnion<TGlobalSize, 'xs' | 'lg' | 'xl'>;

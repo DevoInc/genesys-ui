@@ -1,1 +1,3 @@
-export * from './useTabsConfig';
+export * from './useClosableTabs';
+export * from './useTabsAccessibility';
+export * from './useTabsMark';

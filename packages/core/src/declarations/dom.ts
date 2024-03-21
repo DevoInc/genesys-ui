@@ -1,4 +1,4 @@
-export interface ClientSize extends Partial<DOMRect> {
+export interface IClientSize extends Partial<DOMRect> {
   clientHeight?: number;
   clientWidth?: number;
   scrollHeight?: number;

@@ -3,9 +3,9 @@ import { useTheme } from 'styled-components';
 import { addMonths, set, subMonths } from 'date-fns';
 
 import {
-  GlobalAriaProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
   VFlex,
 } from '@devoinc/genesys-ui';
 
@@ -29,12 +29,12 @@ export interface DateTimeProps
       | 'weekDays'
     >,
     Pick<TimeProps, 'hasMillis' | 'hasSeconds'>,
-    StyledOverloadCssProps,
-    StyledPolymorphicProps {
+    IStyledOverloadCss,
+    IStyledPolymorphic {
   /** aria-label attribute for month input. */
-  ariaLabelMonth?: GlobalAriaProps['aria-label'];
+  ariaLabelMonth?: IGlobalAriaAttrs['aria-label'];
   /** aria-label attribute for time input. */
-  ariaLabelTime?: GlobalAriaProps['aria-label'];
+  ariaLabelTime?: IGlobalAriaAttrs['aria-label'];
   /**  Show the time input HTML element. */
   hasTime?: boolean;
   /** Function called when clicking a cell or editing time input HTML.  */

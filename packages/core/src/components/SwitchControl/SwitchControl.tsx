@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import type { WithRequiredAriaLabelOrAriaLabelledByProps } from '../../declarations';
-import type { BaseSwitchControlProps } from './declarations';
+import type { IWithRequiredAriaLabelOrAriaLabelledByAttr } from '../../declarations';
+import type { ISwitch } from './declarations';
 import { FieldContext } from '../Field/context';
 
 import { getPxFromRem } from '../../helpers';
@@ -16,7 +16,7 @@ import {
 } from './components';
 
 export type SwitchControlProps =
-  WithRequiredAriaLabelOrAriaLabelledByProps<BaseSwitchControlProps>;
+  IWithRequiredAriaLabelOrAriaLabelledByAttr<ISwitch>;
 
 export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
   'aria-errormessage': ariaErrorMessage,

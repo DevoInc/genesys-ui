@@ -2,7 +2,7 @@ import * as React from 'react';
 import { concat } from 'lodash';
 
 import { IconButton, type IconButtonProps } from '../../IconButton';
-import type { UIColorScheme } from '../../../declarations';
+import type { TUIColorScheme } from '../../../declarations';
 
 import { fieldsCombinerButtonMixin } from '../helpers';
 import { FieldsCombinerElemContext } from '../context';
@@ -35,7 +35,7 @@ export const FieldsCombinerIconButton = React.forwardRef<
         {...restIconButtonProps}
         colorScheme={
           colorScheme ||
-          (status !== 'base' ? (status as UIColorScheme) : 'neutral')
+          (status !== 'base' ? (status as TUIColorScheme) : 'neutral')
         }
         ref={ref}
         styles={concat(

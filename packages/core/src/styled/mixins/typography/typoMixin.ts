@@ -5,7 +5,7 @@ import {
 } from 'styled-components';
 
 import { TypoVariant } from './declarations';
-import { TypoSize } from '../../../declarations';
+import { TTypoSize } from '../../../declarations';
 import { getTypoObject } from './tokens';
 
 /**
@@ -29,7 +29,7 @@ export const typoMixin = ({
   variant?: TypoVariant;
   textAlign?: React.CSSProperties['textAlign'];
   theme: DefaultTheme;
-  size?: TypoSize;
+  size?: TTypoSize;
 }): FlattenSimpleInterpolation => {
   const typoObject = getTypoObject({
     variant,

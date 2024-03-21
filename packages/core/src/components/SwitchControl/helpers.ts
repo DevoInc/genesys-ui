@@ -1,12 +1,10 @@
 import { css, DefaultTheme } from 'styled-components';
-import { TFieldStatus } from '../../declarations';
+import type { ISwitch, TSwitchDiameter } from './declarations';
 import { disabledMixin, typoMixin } from '../../styled';
 
-export interface SwitchControlContainerMixinProps {
-  checked?: boolean;
-  disabled?: boolean;
-  handleDiameter: number;
-  status: TFieldStatus;
+export interface SwitchControlContainerMixinProps
+  extends Pick<ISwitch, 'checked' | 'disabled' | 'status'> {
+  handleDiameter: TSwitchDiameter;
   theme: DefaultTheme;
 }
 

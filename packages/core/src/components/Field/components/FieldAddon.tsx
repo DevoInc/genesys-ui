@@ -1,9 +1,9 @@
 import * as React from 'react';
 import type {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../declarations';
 import type { IField } from '../declarations';
 import {
@@ -12,10 +12,10 @@ import {
 } from './StyledFieldAddon';
 
 export interface FieldAddonProps
-  extends StyledPolymorphicProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    StyledOverloadCssProps,
+  extends IStyledPolymorphic,
+    IGlobalAttrs,
+    IGlobalAriaAttrs,
+    IStyledOverloadCss,
     Pick<StyledFieldAddonProps, 'position' | 'size'> {
   children: React.ReactNode;
   /** If the addon belongs to a disabled field */

@@ -1,25 +1,25 @@
 import { PickUnion } from '../../typeFunctions';
 
-import type { BaseSize, GlobalSize } from '../../declarations';
+import type { TBaseSize, TGlobalSize } from '../../declarations';
 
 import {
-  BlendColorScheme,
-  BrandColorScheme,
-  DataColorScheme,
-  UIColorScheme,
-  NeutralColorScheme,
+  TBlendColorScheme,
+  TBrandColorScheme,
+  TDataColorScheme,
+  TUIColorScheme,
+  TNeutralColorScheme,
 } from '../../declarations';
 
 export type TAvatarColorScheme =
-  | BrandColorScheme
-  | NeutralColorScheme
-  | BlendColorScheme
-  | UIColorScheme
-  | DataColorScheme;
+  | TBrandColorScheme
+  | TNeutralColorScheme
+  | TBlendColorScheme
+  | TUIColorScheme
+  | TDataColorScheme;
 
 export type TAvatarSize =
-  | BaseSize
-  | PickUnion<GlobalSize, 'xxxs' | 'xxs' | 'xs' | 'xl' | 'xxl' | 'xxxl'>;
+  | TBaseSize
+  | PickUnion<TGlobalSize, 'xxxs' | 'xxs' | 'xs' | 'xl' | 'xxl' | 'xxxl'>;
 
 export type TAvatarCustomSize = {
   square?: string;

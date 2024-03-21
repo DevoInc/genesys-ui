@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
 import type { DOMAttributes } from 'react';
 
 /** ---------------------------------------------------------------------------------------
@@ -13,7 +12,7 @@ import type { DOMAttributes } from 'react';
  * - Select
  * - Textare
  * --------------------------------------------- */
-export interface FieldEventAttrProps<T = Element> {
+export interface IFieldEventAttrs<T = Element> {
   /** A function that is called when the element is changed */
   onChange?: DOMAttributes<T>['onChange'];
 }
@@ -24,7 +23,7 @@ export interface FieldEventAttrProps<T = Element> {
  * - Box
  * - ...
  * --------------------------------------------- */
-export interface ContainerEventAttrProps<T = Element> {
+export interface IContainerEventAttrs<T = Element> {
   /** A function that is called when the element is clicked */
   onClick?: DOMAttributes<T>['onClick'];
   /** A function that is called when the right mouse button is clicked on the element */
@@ -52,7 +51,7 @@ export interface ContainerEventAttrProps<T = Element> {
 /** ---------------------------------------------
  * Focus events
  * --------------------------------------------- */
-export interface FocusEventAttrProps<T = Element> {
+export interface IFocusEventAttrs<T = Element> {
   /** A function that is called when the element loses focus */
   onBlur?: DOMAttributes<T>['onBlur'];
   /** A function that is called when the element gains focus */
@@ -62,7 +61,7 @@ export interface FocusEventAttrProps<T = Element> {
 /** ---------------------------------------------
  * Mouse events
  * --------------------------------------------- */
-export interface MouseEventAttrProps<T = Element> {
+export interface IMouseEventAttrs<T = Element> {
   /** A function that is called when the element is clicked */
   onClick?: DOMAttributes<T>['onClick'];
   /** A function that is called when the mouse button is pressed on the element */
@@ -82,7 +81,7 @@ export interface MouseEventAttrProps<T = Element> {
 /** ---------------------------------------------
  * Trigger events
  * --------------------------------------------- */
-export interface TriggerEventAttrProps<T = Element> {
+export interface ITriggerEventAttrs<T = Element> {
   /** A function that is called when the element is clicked */
   onClick?: DOMAttributes<T>['onClick'];
   /** A function that is called when the element is changed */
@@ -92,7 +91,7 @@ export interface TriggerEventAttrProps<T = Element> {
 /** ---------------------------------------------
  * Drag & Drop events
  * --------------------------------------------- */
-export interface DragDropEventAttrProps<T = Element> {
+export interface IDragDropEventAttrs<T = Element> {
   /** A function that is called when an element or text selection is being dragged */
   onDrag?: DOMAttributes<T>['onDrag'];
   /** A function that is called when an element or text selection is dragged into a valid drop target */
@@ -112,7 +111,9 @@ export interface DragDropEventAttrProps<T = Element> {
 /** ---------------------------------------------
  * Audio & Video events
  * --------------------------------------------- */
-export interface AudioVideoEventAttrs<T = HTMLVideoElement | HTMLAudioElement> {
+export interface IAudioVideoEventAttrs<
+  T = HTMLVideoElement | HTMLAudioElement,
+> {
   /** A function that is called when the audio/video is stopped before it finishes playing */
   onAbort: DOMAttributes<T>['onAbort'];
   /** A function that is called when the browser can start playing the audio/video */
@@ -162,7 +163,7 @@ export interface AudioVideoEventAttrs<T = HTMLVideoElement | HTMLAudioElement> {
 /** ---------------------------------------------
  * Image events
  * --------------------------------------------- */
-export interface ImageEventAttrs<T = HTMLImageElement> {
+export interface IImageEventAttrs<T = HTMLImageElement> {
   /** A function that is called when the image is stopped before it finishes loading */
   onAbort?: DOMAttributes<T>['onAbort'];
   /**  A function that is called when an error occurs while loading the image  */
@@ -174,7 +175,9 @@ export interface ImageEventAttrs<T = HTMLImageElement> {
 /** ---------------------------------------------
  * Text box events: input and textarea
  * --------------------------------------------- */
-export interface TextBoxEventAttrs<T = HTMLInputElement | HTMLTextAreaElement> {
+export interface ITextBoxEventAttrs<
+  T = HTMLInputElement | HTMLTextAreaElement,
+> {
   /** A function that is called when the element's content is selected */
   onSelect?: DOMAttributes<T>['onSelect'];
 }
@@ -182,7 +185,7 @@ export interface TextBoxEventAttrs<T = HTMLInputElement | HTMLTextAreaElement> {
 /** ---------------------------------------------
  * Textarea events
  * --------------------------------------------- */
-export interface TextareaEventAttrs<T = HTMLTextAreaElement> {
+export interface ITextareaEventAttrs<T = HTMLTextAreaElement> {
   /** A function that is called when the content of a textarea field changes */
   onInput?: DOMAttributes<T>['onInput'];
 }
@@ -190,7 +193,7 @@ export interface TextareaEventAttrs<T = HTMLTextAreaElement> {
 /** ---------------------------------------------
  * Input events
  * --------------------------------------------- */
-export interface InputEventAttrs<T = HTMLInputElement> {
+export interface IInputEventAttrs<T = HTMLInputElement> {
   /** A function that is called when the value of an input field changes */
   onInput?: DOMAttributes<T>['onInput'];
   /** A function that is called when a user submits a form with an invalid input */

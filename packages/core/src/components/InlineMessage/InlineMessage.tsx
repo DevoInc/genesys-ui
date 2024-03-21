@@ -2,10 +2,10 @@ import * as React from 'react';
 import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
-import type { GlobalAttrProps } from '../../declarations/htmlAttrs';
+import type { IGlobalAttrs } from '../../declarations/htmlAttrs';
 import type {
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../declarations/styled';
 
 import { WithRequired } from '../../typeFunctions';
@@ -23,9 +23,9 @@ import {
 } from './components';
 
 export interface InlineMessageProps
-  extends WithRequired<Omit<GlobalAttrProps, 'title'>, 'id'>,
-    StyledOverloadCssProps,
-    StyledPolymorphicProps,
+  extends WithRequired<Omit<IGlobalAttrs, 'title'>, 'id'>,
+    IStyledOverloadCss,
+    IStyledPolymorphic,
     Omit<PopoverProps, 'children'> {
   children?:
     | React.ReactNode

@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import type { TagProps } from '../Tag';
-import type { StyledOverloadCssPropsWithRecord } from '../../declarations';
 
 import {
   TagGroupContainer,
@@ -12,16 +11,13 @@ import {
   type TagGroupListProps,
 } from './components';
 
-export interface BaseTagGroupProps
+export interface TagGroupProps
   extends Omit<TagGroupContainerProps, 'children'>,
     Pick<TagGroupListProps, 'children'>,
     Pick<TagProps, 'size'> {
   /** Text within the label. (aria-label is the same as Label) */
   label?: TagGroupLabelProps['children'];
 }
-
-export type TagGroupProps = BaseTagGroupProps &
-  StyledOverloadCssPropsWithRecord<'container' | 'label' | 'list'>;
 
 export const InternalTagGroup: React.FC<TagGroupProps> = ({
   children,
@@ -30,25 +26,16 @@ export const InternalTagGroup: React.FC<TagGroupProps> = ({
   label,
   size = 'md',
   styles,
-  subcomponentStyles,
   ...restNativeProps
 }) => {
   return (
     <TagGroup.Container
       {...restNativeProps}
       labelPosition={labelPosition}
-      styles={subcomponentStyles?.container || styles}
+      styles={styles}
     >
-      {label && (
-        <TagGroup.Label size={size} styles={subcomponentStyles?.label}>
-          {label}
-        </TagGroup.Label>
-      )}
-      <TagGroup.List
-        flexWrap={flexWrap}
-        styles={subcomponentStyles?.list}
-        size={size}
-      >
+      {label && <TagGroup.Label size={size}>{label}</TagGroup.Label>}
+      <TagGroup.List flexWrap={flexWrap} size={size}>
         {children}
       </TagGroup.List>
     </TagGroup.Container>

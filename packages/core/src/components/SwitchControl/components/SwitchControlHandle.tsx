@@ -1,16 +1,13 @@
 import * as React from 'react';
 
-import type { StyledOverloadCssProps } from '../../../declarations';
-import type { BaseSwitchControlProps } from '../declarations';
-import {
-  StyledSwitchControlHandle,
-  StyledSwitchControlHandleProps,
-} from '../styled';
+import type { ISwitch, TSwitchDiameter, TSwitchHeight } from '../declarations';
+import { StyledSwitchControlHandle } from '../styled';
 
 export interface SwitchControlHandleProps
-  extends Omit<StyledSwitchControlHandleProps, '$checked' | '$disabled'>,
-    Pick<BaseSwitchControlProps, 'checked' | 'disabled'>,
-    StyledOverloadCssProps {}
+  extends Pick<ISwitch, 'checked' | 'disabled' | 'styles'> {
+  switchHeight: TSwitchHeight;
+  diameter: TSwitchDiameter;
+}
 
 export const SwitchControlHandle: React.FC<SwitchControlHandleProps> = ({
   disabled,

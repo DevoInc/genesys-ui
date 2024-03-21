@@ -1,17 +1,17 @@
 import * as React from 'react';
 
 import type {
-  FieldAriaProps,
-  GlobalAriaProps,
+  IFieldAriaAttrs,
+  IGlobalAriaAttrs,
   TFieldSize,
   TFieldStatus,
 } from '../../declarations';
 import type { IField, TFieldDirection, TLabelPosition } from './declarations';
 
 export interface FieldContextProps {
-  ariaErrorMessage?: FieldAriaProps['aria-errormessage'];
-  ariaDescribedBy?: GlobalAriaProps['aria-describedby'];
-  ariaLabelledBy?: GlobalAriaProps['aria-labelledby'];
+  ariaErrorMessage?: IFieldAriaAttrs['aria-errormessage'];
+  ariaDescribedBy?: IGlobalAriaAttrs['aria-describedby'];
+  ariaLabelledBy?: IGlobalAriaAttrs['aria-labelledby'];
   direction?: TFieldDirection;
   disabled?: IField['disabled'];
   hasWideControl?: boolean;

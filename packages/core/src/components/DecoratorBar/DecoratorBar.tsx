@@ -1,9 +1,6 @@
 import * as React from 'react';
 
-import {
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-} from '../../declarations';
+import { IStyledOverloadCss, IStyledPolymorphic } from '../../declarations';
 
 import {
   StyledDecoratorBar,
@@ -12,8 +9,8 @@ import {
 
 export interface DecoratorBarProps
   extends StyledDecoratorBarProps,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps {}
+    IStyledPolymorphic,
+    IStyledOverloadCss {}
 
 export const DecoratorBar: React.FC<DecoratorBarProps> = ({
   as,

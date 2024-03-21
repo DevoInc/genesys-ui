@@ -1,8 +1,8 @@
-import { BaseSize, TFieldSize } from '../../declarations';
+import { TBaseSize, TFieldSize } from '../../declarations';
 import { ChipSize } from '../Chip/declarations';
 import { IconProps } from '../Icon';
 
-export const CUSTOM_HEIGHT: { [key in BaseSize]: number } = {
+export const CUSTOM_HEIGHT: { [key in TBaseSize]: number } = {
   sm: 27,
   md: 32,
   lg: 38,

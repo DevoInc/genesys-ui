@@ -2,7 +2,7 @@ import React from 'react';
 
 import { STATUS_ICON_MAP } from '../../constants';
 import type { TProgressBarSize, TProgressBarStatus } from './declarations';
-import type { GlobalSize, GlobalStatus } from '../../declarations';
+import type { TGlobalSize, TGlobalStatus } from '../../declarations';
 
 export const MAX_PERCENT = 100;
 
@@ -25,21 +25,21 @@ export const STATUS_ICON_CIRCULAR_MAP: {
 } as const;
 
 export const ICON_CIRCULAR_SIZE_MAP: {
-  [key in TProgressBarSize]: GlobalSize;
+  [key in TProgressBarSize]: TGlobalSize;
 } = {
   sm: 'xxxs',
   md: 'sm',
 } as const;
 
 export const ICON_STANDARD_SIZE_MAP: {
-  [key in TProgressBarSize]: GlobalSize;
+  [key in TProgressBarSize]: TGlobalSize;
 } = {
   sm: 'xxxxs',
   md: 'xxxs',
 } as const;
 
 export const STATUS_COLOR_SCHEME_MAP: {
-  [key: string]: GlobalStatus;
+  [key: string]: TGlobalStatus;
 } = {
   progressing: 'base',
   complete: 'success',

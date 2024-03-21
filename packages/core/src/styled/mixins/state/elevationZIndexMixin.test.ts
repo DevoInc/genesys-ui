@@ -3,7 +3,7 @@ import { describe, test, expect } from 'vitest';
 import { light as theme } from '@devoinc/genesys-brand-devo';
 
 import { elevationZIndexMixin } from './elevationZIndexMixin';
-import { Elevation } from '../../../declarations';
+import { TElevation } from '../../../declarations';
 
 describe('elevationZIndexMixin', () => {
   test('raised', () => {
@@ -13,7 +13,7 @@ describe('elevationZIndexMixin', () => {
   });
 
   test('not valid elevation', () => {
-    expect(elevationZIndexMixin(theme)('bad' as Elevation).join('')).toContain(
+    expect(elevationZIndexMixin(theme)('bad' as TElevation).join('')).toContain(
       'z-index:;',
     );
   });

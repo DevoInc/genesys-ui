@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import type { FieldProps } from '../../Field';
-import type { StyledOverloadCssProps } from '../../../declarations/styled';
+import type { IStyledOverloadCss } from '../../../declarations/styled';
 import type { IFieldAttrs } from '../../../declarations/htmlAttrs';
 import type { TLegendPosition } from '../declarations';
 
@@ -24,7 +24,7 @@ import {
 export interface FormGroupProps
   extends StyledFormGroupContainerProps,
     StyledFormGroupProps,
-    StyledOverloadCssProps,
+    IStyledOverloadCss,
     Pick<FieldProps, 'helper' | 'hasFloatingHelper' | 'status'>,
     Pick<FlexProps, 'marginLeft' | 'marginTop'>,
     Pick<

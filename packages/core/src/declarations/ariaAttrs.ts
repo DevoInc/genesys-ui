@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
 import type { AriaAttributes } from 'react';
 
 /** ---------------------------------------------------------------------------------------
@@ -10,7 +9,7 @@ import type { AriaAttributes } from 'react';
 /** ---------------------------------------------
  * Common aria declarations for all components
  * --------------------------------------------- */
-export interface GlobalAriaProps
+export interface IGlobalAriaAttrs
   extends Pick<
     AriaAttributes,
     | 'aria-describedby'
@@ -26,7 +25,7 @@ export interface GlobalAriaProps
  * - Flex
  * - ...
  * --------------------------------------------- */
-export interface LayoutAriaProps
+export interface ILayoutAriaAttrs
   extends Pick<
     AriaAttributes,
     | 'aria-expanded'
@@ -44,7 +43,7 @@ export interface LayoutAriaProps
  * - Textarea
  * - Input
  * --------------------------------------------- */
-export interface TextBoxAriaProps
+export interface ITextBoxAriaAttrs
   extends Pick<
     AriaAttributes,
     | 'aria-activedescendant'
@@ -66,7 +65,7 @@ export interface ICheckAriaAttrs extends Pick<AriaAttributes, 'aria-checked'> {}
  * Common aria declarations for table components
  * - Table
  * --------------------------------------------- */
-export interface TableAriaProps
+export interface ITableAriaAttrs
   extends Pick<
     AriaAttributes,
     | 'aria-colcount'
@@ -82,7 +81,7 @@ export interface TableAriaProps
  * Common aria declarations for drag&drop components
  * - ...
  * --------------------------------------------- */
-export interface DragAndDropAriaProps
+export interface IDragAndDropAriaAttrs
   extends Pick<AriaAttributes, 'aria-dropeffect' | 'aria-grabbed'> {}
 
 /** ---------------------------------------------
@@ -90,7 +89,7 @@ export interface DragAndDropAriaProps
  * - Range
  * - Input type range
  * --------------------------------------------- */
-export interface RangeAriaProps
+export interface IRangeAriaAttrs
   extends Pick<
     AriaAttributes,
     | 'aria-valuemax'
@@ -107,10 +106,11 @@ export interface RangeAriaProps
  * - Chip
  * - ...
  * --------------------------------------------- */
-export interface TriggerAriaProps
+export interface ITriggerAriaAttrs
   extends Pick<
     AriaAttributes,
     | 'aria-controls'
+    | 'aria-disabled'
     | 'aria-expanded'
     | 'aria-haspopup'
     | 'aria-keyshortcuts'
@@ -123,7 +123,7 @@ export interface TriggerAriaProps
  * - MenuItem
  * - ...
  * --------------------------------------------- */
-export interface NavigationAriaProps
+export interface INavigationAriaAttrs
   extends Pick<AriaAttributes, 'aria-current'> {}
 
 /** ---------------------------------------------
@@ -133,7 +133,7 @@ export interface NavigationAriaProps
  * - Switch
  * - ...
  * --------------------------------------------- */
-export interface FieldAriaProps
+export interface IFieldAriaAttrs
   extends Pick<
     AriaAttributes,
     'aria-errormessage' | 'aria-required' | 'aria-invalid'
@@ -142,20 +142,20 @@ export interface FieldAriaProps
 /** ---------------------------------------------
  * Common aria declarations for tree components
  * --------------------------------------------- */
-export interface TreeAriaProps extends Pick<AriaAttributes, 'aria-level'> {}
+export interface ITreeAriaAttrs extends Pick<AriaAttributes, 'aria-level'> {}
 
 /** ---------------------------------------------
  * Common interface with required aria-label or aria-labelledby. Always there has to be defined one,
  * but not both at the same time.
  * --------------------------------------------- */
-export type WithRequiredAriaLabelOrAriaLabelledByProps<T> = (
+export type IWithRequiredAriaLabelOrAriaLabelledByAttr<T> = (
   | {
-      'aria-label': GlobalAriaProps['aria-label'];
+      'aria-label': IGlobalAriaAttrs['aria-label'];
       'aria-labelledby'?: string;
     }
   | {
       'aria-label'?: string;
-      'aria-labelledby': GlobalAriaProps['aria-label'];
+      'aria-labelledby': IGlobalAriaAttrs['aria-label'];
     }
 ) &
   Omit<T, 'aria-label' | 'aria-labelledby'>;

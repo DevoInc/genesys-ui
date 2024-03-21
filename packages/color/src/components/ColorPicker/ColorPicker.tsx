@@ -11,7 +11,7 @@ import { DropdownPicker, DropdownPickerProps } from './components';
 import {
   Field,
   FieldProps,
-  GlobalAriaProps,
+  IGlobalAriaAttrs,
   Popover,
   PopoverProps,
 } from '@devoinc/genesys-ui';
@@ -19,7 +19,7 @@ import {
 import { StyledColorPicker, StyledColorPickerProps } from './styled';
 
 export interface ColorPickerProps
-  extends Pick<GlobalAriaProps, 'aria-label'>,
+  extends Pick<IGlobalAriaAttrs, 'aria-label'>,
     Omit<FieldProps, 'children' | 'hasWideControl' | 'role' | 'onClick'>,
     Omit<DropdownPickerProps, 'expanded' | 'id'>,
     Omit<StyledColorPickerProps, 'disabled' | 'size' | 'status'> {

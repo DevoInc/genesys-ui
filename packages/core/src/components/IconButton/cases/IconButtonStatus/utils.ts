@@ -1,5 +1,5 @@
-import { UIColorScheme } from '../../../../declarations';
+import { TUIColorScheme } from '../../../../declarations';
 import { STATUS_ICON_MAP } from '../../../../constants';
 
-export const getIconButtonStatusIcon = (status: UIColorScheme) =>
+export const getIconButtonStatusIcon = (status: TUIColorScheme) =>
   STATUS_ICON_MAP.filled[status];

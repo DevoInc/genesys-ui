@@ -1,15 +1,15 @@
 import styled, { css } from 'styled-components';
 import {
-  ActiveState,
-  BasicState,
-  ButtonAttrProps,
-  ExpandedState,
-  FeaturedState,
-  LinkAttrProps,
-  MouseState,
-  ReadonlyState,
-  SelectedState,
-  UIState,
+  TActiveState,
+  TBasicState,
+  IButtonAttrs,
+  TExpandedState,
+  TFeaturedState,
+  ILinkAttrs,
+  TMouseState,
+  TReadonlyState,
+  TSelectedState,
+  TUIState,
 } from '../../../../../declarations';
 import {
   btnResetMixin,
@@ -21,22 +21,22 @@ import { menuItemBackdropMixin } from '../helpers';
 import { menuItemSizeConfig } from '../constants';
 
 export interface StyledMenuItemInnerProps
-  extends Pick<ButtonAttrProps, 'tabIndex' | 'value'>,
-    LinkAttrProps {
+  extends Pick<IButtonAttrs, 'tabIndex' | 'value'>,
+    ILinkAttrs {
   /** If the menu item has a reserved left space for markers: icon, selection mark... etc. */
   hasExtraLeftSpace?: boolean;
   /** If the menu item has unlimited height, and it's added a vertical padding. */
   unlimitedHeight?: boolean;
   /** State of the menu item */
   state?:
-    | BasicState
-    | ActiveState
-    | MouseState
-    | FeaturedState
-    | ReadonlyState
-    | SelectedState
-    | ExpandedState
-    | UIState;
+    | TBasicState
+    | TActiveState
+    | TMouseState
+    | TFeaturedState
+    | TReadonlyState
+    | TSelectedState
+    | TExpandedState
+    | TUIState;
 }
 
 export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`

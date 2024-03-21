@@ -1,16 +1,20 @@
 import styled from 'styled-components';
-import * as React from 'react';
+import type { ISplitter } from '../declarations';
 
-export interface StyledSplitPanePaneProps {
-  flex?: React.CSSProperties['flex'];
-  height?: React.CSSProperties['height'];
-  horizontal?: boolean;
-  padding?: React.CSSProperties['padding'];
-  primary?: boolean;
-  size?: number | string;
-  vertical?: boolean;
-  width?: React.CSSProperties['width'];
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface StyledSplitPanePaneProps
+  extends Pick<
+    ISplitter,
+    | 'flex'
+    | 'height'
+    | 'horizontal'
+    | 'layoutChanging'
+    | 'padding'
+    | 'primary'
+    | 'size'
+    | 'vertical'
+    | 'width'
+  > {}
 
 export const StyledSplitPanePane = styled.div.attrs<StyledSplitPanePaneProps>(
   ({

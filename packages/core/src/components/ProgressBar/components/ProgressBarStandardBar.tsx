@@ -1,25 +1,25 @@
 import * as React from 'react';
 
 import type {
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../declarations/styled';
 import type {
-  FieldAriaProps,
-  GlobalAriaProps,
+  IFieldAriaAttrs,
+  IGlobalAriaAttrs,
 } from '../../../declarations/ariaAttrs';
-import type { GlobalAttrProps } from '../../../declarations/htmlAttrs';
+import type { IGlobalAttrs } from '../../../declarations/htmlAttrs';
 import type { IBaseProgressBar } from '../declarations';
 import { ProgressBarContext } from '../context';
 
 import { StyledProgressBarStandard } from '../styled';
 
 export interface ProgressBarStandardBarProps
-  extends GlobalAttrProps,
-    GlobalAriaProps,
-    Pick<FieldAriaProps, 'aria-errormessage' | 'aria-invalid'>,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps,
+  extends IGlobalAttrs,
+    IGlobalAriaAttrs,
+    Pick<IFieldAriaAttrs, 'aria-errormessage' | 'aria-invalid'>,
+    IStyledPolymorphic,
+    IStyledOverloadCss,
     Pick<
       IBaseProgressBar,
       | 'animated'

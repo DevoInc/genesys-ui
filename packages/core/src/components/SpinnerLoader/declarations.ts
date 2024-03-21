@@ -1,8 +1,8 @@
 import { PickUnion } from '../../typeFunctions';
-import { GlobalSize, UIColorScheme } from '../../declarations';
+import type { TGlobalSize, TUIColorScheme } from '../../declarations';
 
 export type TSpinnerColorScheme =
-  | UIColorScheme
+  | TUIColorScheme
   | 'brand'
   | 'dark'
   | 'darkTrans'
@@ -10,6 +10,6 @@ export type TSpinnerColorScheme =
   | 'lightTrans';
 
 export type TSpinnerSize = PickUnion<
-  GlobalSize,
+  TGlobalSize,
   'xxxs' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 >;

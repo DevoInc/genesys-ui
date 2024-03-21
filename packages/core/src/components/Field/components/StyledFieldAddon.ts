@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import type { IField, TFieldAddonPosition } from '../declarations';
 import { typoMixin } from '../../../styled/mixins';
-import { disabledMixin } from '../../../styled/';
+import { disabledMixin } from '../../../styled/mixins/state';
 
 export interface StyledFieldAddonProps extends Pick<IField, 'size'> {
   /** If the addon belongs to a disabled field (transient prop version) */

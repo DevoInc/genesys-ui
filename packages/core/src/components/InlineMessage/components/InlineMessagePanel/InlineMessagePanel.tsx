@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { StyledOverloadCssProps } from '../../../../declarations';
+import { IStyledOverloadCss } from '../../../../declarations';
 
 import { Panel } from '../../../Panel';
 
-interface InlineMessagePanelProps extends StyledOverloadCssProps {
+interface InlineMessagePanelProps extends IStyledOverloadCss {
   actions?: React.ReactElement[];
   children?: React.ReactNode;
   helpUrl?: string;

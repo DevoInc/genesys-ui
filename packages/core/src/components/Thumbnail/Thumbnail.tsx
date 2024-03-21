@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
   ILayoutBoxCss,
-  StyledOverloadCssProps,
+  IStyledOverloadCss,
 } from '../../declarations';
 
 import { StyledThumbnail, StyledThumbnailProps } from './StyledThumbnail';
@@ -11,10 +11,10 @@ import { StyledThumbnail, StyledThumbnailProps } from './StyledThumbnail';
 export interface ThumbnailProps
   extends StyledThumbnailProps,
     // native
-    GlobalAttrProps,
-    GlobalAriaProps,
+    IGlobalAttrs,
+    IGlobalAriaAttrs,
     Pick<ILayoutBoxCss, 'display' | 'height' | 'width'>,
-    StyledOverloadCssProps {}
+    IStyledOverloadCss {}
 
 export const Thumbnail: React.FC<ThumbnailProps> = ({
   size = 'md',

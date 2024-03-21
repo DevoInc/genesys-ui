@@ -1,12 +1,12 @@
-import { GlobalAriaProps, GlobalAttrProps } from '../../../../declarations';
+import { IGlobalAriaAttrs, IGlobalAttrs } from '../../../../declarations';
 import * as React from 'react';
 
 import { StyledAbbr } from '../../StyledTypography';
 
 export interface AbbrProps
   // native
-  extends GlobalAttrProps,
-    GlobalAriaProps {
+  extends IGlobalAttrs,
+    IGlobalAriaAttrs {
   /** Content of the Abbr */
   children?: React.ReactNode;
 }

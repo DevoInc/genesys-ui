@@ -1,21 +1,21 @@
 import * as React from 'react';
 import {
-  BaseSize,
-  BlendColorScheme,
-  BrandColorScheme,
-  DataColorScheme,
-  NeutralColorScheme,
-  UIColorScheme,
+  TBaseSize,
+  TBlendColorScheme,
+  TBrandColorScheme,
+  TDataColorScheme,
+  TNeutralColorScheme,
+  TUIColorScheme,
 } from '../../declarations';
 
-export type TPartitionsSize = BaseSize;
+export type TPartitionsSize = TBaseSize;
 
 export type TPartitionsColorScheme =
-  | BrandColorScheme
-  | NeutralColorScheme
-  | BlendColorScheme
-  | UIColorScheme
-  | DataColorScheme;
+  | TBrandColorScheme
+  | TNeutralColorScheme
+  | TBlendColorScheme
+  | TUIColorScheme
+  | TDataColorScheme;
 
 export interface IPartitions {
   /** The size of the partitions. */

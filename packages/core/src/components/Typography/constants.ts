@@ -1,16 +1,16 @@
 // global constants
 import {
-  BodyColorScheme,
-  UIColorScheme,
-  UIStrongColorScheme,
-  UIWeakColorScheme,
-  CommonSpacing,
-  CmpSpacing,
+  TBodyColorScheme,
+  TUIColorScheme,
+  TUIStrongColorScheme,
+  TUIWeakColorScheme,
+  TCommonSpacing,
+  TCmpSpacing,
 } from '../../declarations';
 
 // GUTTER BOTTOM - PROP VALUES - CONSTANTS ---------------------------------- //
 
-export type GutterBottom = CommonSpacing | CmpSpacing;
+export type GutterBottom = TCommonSpacing | TCmpSpacing;
 
 // HEADING_TYPE - PROP VALUES - CONSTANTS ----------------------------------- //
 
@@ -46,7 +46,7 @@ export type TypoCategories =
 // TYPO_COLOR_SCHEME - PROP VALUES - CONSTANTS ------------------------------ //
 
 export type TypoColorScheme =
-  | BodyColorScheme
-  | UIColorScheme
-  | UIStrongColorScheme
-  | UIWeakColorScheme;
+  | TBodyColorScheme
+  | TUIColorScheme
+  | TUIStrongColorScheme
+  | TUIWeakColorScheme;

@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { FIELD_FLEX_CONFIG } from '../constants';
-import type { IField, TFieldDirection } from '../declarations';
+import type { IField } from '../declarations';
 import { Flex } from '../../Flex';
 
-export interface FieldLabelDistributorProps extends Pick<IField, 'styles'> {
+export interface FieldLabelDistributorProps
+  extends Pick<IField, 'direction' | 'styles'> {
   children: React.ReactNode;
-  /** The direction of the field based in the desired label position: to the left (row), to the top (column... etc.)*/
-  direction?: TFieldDirection;
 }
 
 export const FieldLabelDistributor: React.FC<FieldLabelDistributorProps> = ({

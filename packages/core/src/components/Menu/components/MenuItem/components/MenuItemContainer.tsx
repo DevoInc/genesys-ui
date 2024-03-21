@@ -1,17 +1,17 @@
 import * as React from 'react';
 
 import {
-  ButtonAttrProps,
+  IButtonAttrs,
   IFieldAttrs,
-  FocusEventAttrProps,
-  GlobalAriaProps,
-  GlobalAttrProps,
-  LayoutAttrProps,
-  LinkAttrProps,
-  MouseEventAttrProps,
-  NavigationAriaProps,
-  StyledPolymorphicProps,
-  TriggerAriaProps,
+  IFocusEventAttrs,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  ILayoutAttrs,
+  ILinkAttrs,
+  IMouseEventAttrs,
+  INavigationAriaAttrs,
+  IStyledPolymorphic,
+  ITriggerAriaAttrs,
 } from '../../../../../declarations';
 
 import {
@@ -21,17 +21,17 @@ import {
 } from '../styled';
 
 export interface MenuItemContainerProps
-  extends StyledPolymorphicProps,
-    GlobalAttrProps,
+  extends IStyledPolymorphic,
+    IGlobalAttrs,
     IFieldAttrs,
-    GlobalAriaProps,
-    TriggerAriaProps,
-    LayoutAttrProps,
-    LinkAttrProps,
-    FocusEventAttrProps,
-    MouseEventAttrProps,
-    NavigationAriaProps,
-    Pick<ButtonAttrProps, 'name' | 'value'>,
+    IGlobalAriaAttrs,
+    ITriggerAriaAttrs,
+    ILayoutAttrs,
+    ILinkAttrs,
+    IFocusEventAttrs,
+    IMouseEventAttrs,
+    INavigationAriaAttrs,
+    Pick<IButtonAttrs, 'name' | 'value'>,
     StyledMenuItemInnerProps {
   children?: React.ReactNode;
   isItem?: boolean;

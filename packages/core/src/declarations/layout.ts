@@ -1,20 +1,20 @@
 import * as React from 'react';
 
-import { Elevation, GlobalSpacing } from './commonProps';
-import { GlobalAttrProps, LayoutAttrProps } from './htmlAttrs';
-import {
-  ContainerEventAttrProps,
-  DragDropEventAttrProps,
-  FocusEventAttrProps,
-  MouseEventAttrProps,
+import type { TElevation, TGlobalSpacing } from './commonProps';
+import type { IGlobalAttrs, ILayoutAttrs } from './htmlAttrs';
+import type {
+  IContainerEventAttrs,
+  IDragDropEventAttrs,
+  IFocusEventAttrs,
+  IMouseEventAttrs,
 } from './htmlEventAttrs';
-import {
-  DragAndDropAriaProps,
-  GlobalAriaProps,
-  LayoutAriaProps,
-  TriggerAriaProps,
+import type {
+  IDragAndDropAriaAttrs,
+  IGlobalAriaAttrs,
+  ILayoutAriaAttrs,
+  ITriggerAriaAttrs,
 } from './ariaAttrs';
-import { StyledOverloadCssProps, StyledPolymorphicProps } from './styled';
+import type { IStyledOverloadCss, IStyledPolymorphic } from './styled';
 
 export interface ILayoutBoxCss {
   /** The align-self CSS property overrides a flex item's align-items value. In Flexbox, it aligns the item on the cross axis.*/
@@ -22,7 +22,7 @@ export interface ILayoutBoxCss {
   /** Css display */
   display?: React.CSSProperties['display'];
   /** The elevation level of the element, related with its box-shadow, shape... etc. */
-  elevation?: Elevation;
+  elevation?: TElevation;
   /** This is the shorthand for flex-grow, flex-shrink and flex-basis combined.
    * The second and third parameters (flex-shrink and flex-basis) are optional.
    * Use only when its parent has display flex or flex-inline.
@@ -35,13 +35,13 @@ export interface ILayoutBoxCss {
   margin?: string;
   /** Css margin-bottom. More info about spacing values in
    * [Spacing tokens page](?path=/story/docs-design-tokens-spacing-tokens--page) */
-  marginBottom?: GlobalSpacing;
+  marginBottom?: TGlobalSpacing;
   /** Css margin-left */
-  marginLeft?: GlobalSpacing;
+  marginLeft?: TGlobalSpacing;
   /** Css margin-right */
-  marginRight?: GlobalSpacing;
+  marginRight?: TGlobalSpacing;
   /** Css margin-top */
-  marginTop?: GlobalSpacing;
+  marginTop?: TGlobalSpacing;
   /** Css max-height */
   maxHeight?: React.CSSProperties['maxHeight'];
   /** Css max-width */
@@ -62,13 +62,13 @@ export interface ILayoutBoxCss {
    * alias values used in the other padding types e.g. 'cmp-xs cmp-md' */
   padding?: string;
   /** Css padding-bottom */
-  paddingBottom?: GlobalSpacing;
+  paddingBottom?: TGlobalSpacing;
   /** Css padding-left */
-  paddingLeft?: GlobalSpacing;
+  paddingLeft?: TGlobalSpacing;
   /** Css padding-right */
-  paddingRight?: GlobalSpacing;
+  paddingRight?: TGlobalSpacing;
   /** Css padding-top */
-  paddingTop?: GlobalSpacing;
+  paddingTop?: TGlobalSpacing;
   /** Css position */
   position?: React.CSSProperties['position'];
   /** Position coordinates: top */
@@ -99,7 +99,7 @@ export interface ILayoutFlexCss {
   /** The desired css flex property value for the children. */
   childrenFlex?: string;
   /** The column-gap CSS property sets the size of the gap (gutter) between an element's columns. Use in the same way you assign spacing props as padding, margin...etc. using the alias values e.g. 'cmp-sm, cmp-md...etc.'*/
-  columnGap?: GlobalSpacing;
+  columnGap?: TGlobalSpacing;
   /** The flex CSS shorthand property sets how a flex item will grow or shrink to fit the space available in its flex container.*/
   flex?: React.CSSProperties['flex'];
   /** The flex-direction CSS property sets how flex items are placed in the flex container defining the main axis and the direction (normal or reversed).*/
@@ -113,7 +113,7 @@ export interface ILayoutFlexCss {
   /** If it is set to true, then the display is inline-flex instead of flex. */
   inline?: boolean;
   /** The row-gap CSS property sets the size of the gap (gutter) between an element's rows. Use in the same way you assign spacing props as padding, margin...etc. using the alias values e.g. 'cmp-sm, cmp-md... etc.' */
-  rowGap?: GlobalSpacing;
+  rowGap?: TGlobalSpacing;
 }
 
 export interface ILayoutFlexItem {
@@ -127,7 +127,7 @@ export interface ILayoutGridCss {
   /** The CSS align-items property sets the align-self value on all direct children as a group. In Grid Layout, it controls the alignment of items on the Block Axis within their grid area.*/
   alignItems?: React.CSSProperties['alignItems'];
   /** The column-gap CSS property sets the size of the gap (gutter) between an element's columns. Use in the same way you assign spacing props as padding, margin...etc. using the alias values e.g. 'cmp-sm, cmp-md...etc.'*/
-  columnGap?: GlobalSpacing;
+  columnGap?: TGlobalSpacing;
   /** The gap CSS property sets the gaps (gutters) between rows and columns. It is a shorthand for row-gap and column-gap. Use in the same way you assign spacing props padding, margin...etc. using the alias values e.g. 'cmp-sm, cmp-xs cmp-md...etc.' */
   gap?: string;
   /** The grid-auto-flow CSS property controls how the auto-placement algorithm works, specifying exactly how auto-placed items get flowed into the grid.*/
@@ -145,7 +145,7 @@ export interface ILayoutGridCss {
   /** The CSS justify-items property defines the default justify-self for all items of the box, giving them all a default way of justifying each box along the appropriate axis.*/
   justifyItems?: React.CSSProperties['justifyItems'];
   /** The row-gap CSS property sets the size of the gap (gutter) between an element's rows. Use in the same way you assign spacing props as padding, margin...etc. using the alias values e.g. 'cmp-sm, cmp-md... etc.' */
-  rowGap?: GlobalSpacing;
+  rowGap?: TGlobalSpacing;
 }
 
 export interface ILayoutGridItemCss {
@@ -179,18 +179,18 @@ export interface ILayoutTransientForStyled {
 }
 
 export interface ILayoutBox
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    DragAndDropAriaProps,
-    LayoutAttrProps,
-    LayoutAriaProps,
-    Pick<TriggerAriaProps, 'aria-expanded'>,
-    ContainerEventAttrProps,
-    FocusEventAttrProps,
-    DragDropEventAttrProps,
-    MouseEventAttrProps,
+  extends IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs,
+    IDragAndDropAriaAttrs,
+    ILayoutAttrs,
+    ILayoutAriaAttrs,
+    Pick<ITriggerAriaAttrs, 'aria-expanded'>,
+    IContainerEventAttrs,
+    IFocusEventAttrs,
+    IDragDropEventAttrs,
+    IMouseEventAttrs,
     ILayoutBoxCss {
   children?: React.ReactNode;
 }

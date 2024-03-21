@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { GIAngleRight } from '@devoinc/genesys-icons';
 
-import { Icon, IconProps } from '../../../../Icon';
+import { Icon, type IconProps } from '../../../../Icon';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StepperItemDividerProps extends Omit<IconProps, 'children'> {}

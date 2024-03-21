@@ -9,7 +9,7 @@ import {
   ModalIcon,
 } from './components';
 
-import type { GlobalStatus } from '../../declarations/commonProps';
+import type { TGlobalStatus } from '../../declarations/commonProps';
 import {
   ModalBackdrop,
   type ModalBackdropProps,
@@ -22,7 +22,7 @@ export interface ModalProps
   /** Function that will be called right after the modal is open */
   onAfterOpen?: () => void;
   /** Manages dialog status **/
-  status?: GlobalStatus;
+  status?: TGlobalStatus;
 }
 
 export const InternalModal: React.FC<ModalProps> = ({

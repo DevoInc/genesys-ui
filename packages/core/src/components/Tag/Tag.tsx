@@ -2,11 +2,10 @@ import * as React from 'react';
 
 // declarations
 import type {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledOverloadCssPropsWithRecord,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../declarations';
 
 // styled
@@ -15,20 +14,17 @@ import type { StyledTagContainerProps } from './components/StyledTagContainer';
 // components
 import { TagBadge, TagContainer, TagIcon, TagLabel } from './components';
 
-export interface BaseTagProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
+export interface TagProps
+  extends IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs,
     StyledTagContainerProps {
   /** The name of the icon for the tag */
   icon?: React.ReactNode;
   /** Text for the tag */
   text: string;
 }
-
-export type TagProps = BaseTagProps &
-  StyledOverloadCssPropsWithRecord<'badge' | 'container' | 'icon' | 'label'>;
 
 export const InternalTag: React.FC<TagProps> = ({
   colorScheme = 'neutral',
@@ -38,7 +34,6 @@ export const InternalTag: React.FC<TagProps> = ({
   wide,
   size = 'md',
   styles,
-  subcomponentStyles,
   text,
   tooltip,
   ...restNativeProps
@@ -51,23 +46,16 @@ export const InternalTag: React.FC<TagProps> = ({
       quiet={quiet}
       wide={wide}
       size={size}
-      styles={subcomponentStyles?.container || styles}
+      styles={styles}
       tooltip={tooltip}
     >
-      {quiet && (
-        <TagBadge
-          colorScheme={colorScheme}
-          icon={icon}
-          size={size}
-          styles={subcomponentStyles?.badge}
-        />
-      )}
+      {quiet && <TagBadge colorScheme={colorScheme} icon={icon} size={size} />}
       {text && icon && !quiet && (
         <TagIcon strong={bold} size={size}>
           {icon}
         </TagIcon>
       )}
-      {text && <TagLabel styles={subcomponentStyles?.label}>{text}</TagLabel>}
+      {text && <TagLabel>{text}</TagLabel>}
     </TagContainer>
   );
 };

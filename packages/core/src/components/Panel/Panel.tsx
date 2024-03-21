@@ -5,10 +5,7 @@ import { concat } from 'lodash';
 import { useDetectScroll } from '../../hooks';
 
 import { TPanelSize } from './declarations';
-import {
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
-} from '../../declarations';
+import { IStyledOverloadCss, IStyledPolymorphic } from '../../declarations';
 
 import { PanelContext } from './context';
 
@@ -25,8 +22,8 @@ import {
 
 export interface PanelProps
   extends BoxProps,
-    StyledOverloadCssProps,
-    StyledPolymorphicProps,
+    IStyledOverloadCss,
+    IStyledPolymorphic,
     Omit<PanelMixinProps, 'theme'> {
   children?:
     | [

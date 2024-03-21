@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import type { ChipProps } from '../Chip';
-import type { ContainerEventAttrProps } from '../../declarations/htmlEventAttrs';
+import type { IContainerEventAttrs } from '../../declarations/htmlEventAttrs';
 import { Form, type FormGroupProps } from '../Form';
 import { WithRequired } from '../../typeFunctions';
 import { ChipGroupContext } from './context';
@@ -20,7 +20,7 @@ export interface ChipGroupProps
       >,
       'legend'
     >,
-    Pick<ContainerEventAttrProps, 'onChange'> {
+    Pick<IContainerEventAttrs, 'onChange'> {
   /** Size to apply to all the children Chips */
   size?: ChipProps['size'];
   /** Selection scheme to apply to all the children Chips */

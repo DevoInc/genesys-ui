@@ -1,8 +1,8 @@
 import type * as monaco from 'monaco-editor-core';
-import { type StyledOverloadCssProps } from '@devoinc/genesys-ui';
+import { type IStyledOverloadCss } from '@devoinc/genesys-ui';
 import styled, { css } from 'styled-components';
 
-export interface StyledInternalEditorProps extends StyledOverloadCssProps {
+export interface StyledInternalEditorProps extends IStyledOverloadCss {
   $height: string | number;
   $width: string | number;
   readOnly?: boolean;

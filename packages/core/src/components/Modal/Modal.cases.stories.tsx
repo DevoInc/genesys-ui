@@ -23,6 +23,8 @@ import {
 } from '..';
 
 import { ModalDemoContent } from './__stories__/components';
+import { TModalStatus } from './declarations';
+import { TUIColorScheme } from '../../declarations';
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/Layout/Modal/Cases',
@@ -41,7 +43,19 @@ const meta: Meta<typeof Modal> = {
 export default meta;
 type Story = StoryObj<typeof Modal>;
 
-const ModalWithButtons = () => {
+const ModalWithButtons = ({
+  applyText = 'Apply',
+  content = ModalDemoContent,
+  status = 'base',
+  title = 'Modal title',
+  triggerText = 'Open modal',
+}: {
+  applyText?: string;
+  content?: React.ReactNode;
+  status?: TModalStatus;
+  title?: string;
+  triggerText?: string;
+}) => {
   const [isOpen, setOpen] = React.useState<boolean>(false);
   const closeModal = (msg: string) => {
     action(msg);
@@ -50,13 +64,16 @@ const ModalWithButtons = () => {
   return (
     <>
       {isOpen && (
-        <Modal onRequestClose={() => closeModal('onRequestClose')}>
-          <Modal.Header title="Modal title" />
-          <Modal.Body>{ModalDemoContent}</Modal.Body>
+        <Modal
+          onRequestClose={() => closeModal('onRequestClose')}
+          status={status}
+        >
+          <Modal.Header title={title} />
+          <Modal.Body>{content}</Modal.Body>
           <Modal.Footer
             actions={[
               <Button
-                colorScheme={'quiet'}
+                colorScheme="quiet"
                 key={'cancel'}
                 onClick={() => {
                   closeModal('cancel');
@@ -65,23 +82,43 @@ const ModalWithButtons = () => {
                 Cancel
               </Button>,
               <Button
-                colorScheme={'accent'}
+                colorScheme={
+                  status !== 'base' ? (status as TUIColorScheme) : 'accent'
+                }
                 key={'apply'}
                 onClick={() => {
                   closeModal('apply');
                 }}
               >
-                Apply
+                {applyText}
               </Button>,
             ]}
           />
         </Modal>
       )}
-      <Button onClick={() => setOpen(true)} colorScheme="accent-high">
-        Open modal
+      <Button
+        onClick={() => setOpen(true)}
+        colorScheme={
+          status !== 'base' ? (status as TUIColorScheme) : 'accent-high'
+        }
+      >
+        {triggerText}
       </Button>
     </>
   );
+};
+
+export const Dialog: Story = {
+  name: 'As Dialog',
+  render: () => (
+    <ModalWithButtons
+      status="error"
+      title="Delete entity"
+      applyText="Delete"
+      content="You are going to delete this entity. This action can not be undone."
+      triggerText="Open dialog"
+    />
+  ),
 };
 
 export const WithButtons: Story = {
@@ -106,10 +143,10 @@ export const WithActions: Story = {
                 title="Modal title"
                 actions={[
                   <IconButton
-                    key={'back'}
+                    key="back"
                     colorScheme="quiet"
                     circular
-                    tooltip={'Back'}
+                    tooltip="Back"
                     icon={<GIToBack />}
                     onClick={() => {
                       action('back clicked');

@@ -4,11 +4,11 @@ import { format, set } from 'date-fns';
 import {
   TFieldSize,
   Flex,
-  GlobalAriaProps,
-  GlobalAttrProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
   InputControl,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
 
 import { CalendarProps } from '../../Calendar';
@@ -19,10 +19,10 @@ import { Datetime } from '../../declarations';
 
 export interface TimeProps
   extends Pick<CalendarProps, 'maxDate' | 'minDate'>,
-    Required<Pick<GlobalAriaProps, 'aria-label'>>,
-    Pick<GlobalAttrProps, 'id'>,
-    StyledOverloadCssProps,
-    StyledPolymorphicProps {
+    Required<Pick<IGlobalAriaAttrs, 'aria-label'>>,
+    Pick<IGlobalAttrs, 'id'>,
+    IStyledOverloadCss,
+    IStyledPolymorphic {
   /** If hasTime, allow to show the milliseconds. */
   hasMillis?: boolean;
   /** If hasTime, allow to show the seconds. */

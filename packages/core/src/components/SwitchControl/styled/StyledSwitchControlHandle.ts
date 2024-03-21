@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
+import type { ISwitch, TSwitchDiameter, TSwitchHeight } from '../declarations';
 
 export interface StyledSwitchControlHandleProps {
-  $disabled?: boolean;
-  $checked?: boolean;
-  switchHeight: number;
-  diameter: number;
+  $checked?: ISwitch['checked'];
+  $disabled?: ISwitch['disabled'];
+  switchHeight: TSwitchHeight;
+  diameter: TSwitchDiameter;
 }
 
 export const StyledSwitchControlHandle = styled.span<StyledSwitchControlHandleProps>`

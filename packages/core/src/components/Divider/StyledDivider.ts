@@ -1,17 +1,17 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import { AllColorScheme, GlobalSpacing } from '../../declarations';
+import { TAllColorScheme, TGlobalSpacing } from '../../declarations';
 import { getSpacingPropCss } from '../../helpers';
 import { getDividerColorTokens } from './helpers';
 
 export interface StyledDividerProps {
   /** This property defines the status color schema for the divider */
-  colorScheme?: AllColorScheme;
+  colorScheme?: TAllColorScheme;
   /** This property defines a custom color of the divider */
   customColor?: React.CSSProperties['color'];
   /** Vertical or horizontal Css margin, depending on the Divider is vertical. */
-  margin?: string | GlobalSpacing;
+  margin?: string | TGlobalSpacing;
   /** This property defines if the divider is vertical */
   vertical?: boolean;
   /** Css height */

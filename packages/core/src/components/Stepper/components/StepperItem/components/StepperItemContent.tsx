@@ -1,21 +1,17 @@
 import * as React from 'react';
 
-import {
-  StyledStepperItemContent,
-  StyledStepperItemContentProps,
-} from './StyledStepperItemContent';
-import { StyledOverloadCssProps } from '../../../../../declarations';
+import type { IStepperItem } from '../declarations';
 
+import { StyledStepperItemContent } from './StyledStepperItemContent';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StepperItemContentProps
-  extends StyledStepperItemContentProps,
-    StyledOverloadCssProps {
-  children: React.ReactNode;
-}
+  extends Pick<IStepperItem, 'children' | 'size' | 'status' | 'styles'> {}
 
 export const StepperItemContent: React.FC<StepperItemContentProps> = ({
   children,
   size,
-  status,
+  status = 'pending',
   styles,
 }) => {
   return (

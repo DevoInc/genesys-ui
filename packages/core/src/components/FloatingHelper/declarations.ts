@@ -1,3 +1,3 @@
-import { BaseSize } from '../../declarations/commonProps';
+import { TBaseSize } from '../../declarations/commonProps';
 
-export type FloatingHelperSize = BaseSize;
+export type FloatingHelperSize = TBaseSize;

@@ -3,8 +3,8 @@ import * as React from 'react';
 import { STATUS_COLOR_SCHEME_MAP } from '../constants';
 import type { IBaseProgressBar } from '../declarations';
 import type {
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../declarations/styled';
 import { ProgressBarContext } from '../context';
 
@@ -12,8 +12,8 @@ import { Flex } from '../../Flex';
 import { Typography } from '../../Typography';
 
 export interface ProgressBarCustomInfoProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
+  extends IStyledPolymorphic,
+    IStyledOverloadCss,
     Pick<Partial<IBaseProgressBar>, 'status' | 'size'> {
   children?: React.ReactNode;
   endInfo?: string;

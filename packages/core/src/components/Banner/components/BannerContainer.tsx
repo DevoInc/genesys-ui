@@ -1,22 +1,22 @@
 import * as React from 'react';
 
 import {
-  ActiveStatus,
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  TActiveStatus,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../declarations';
 
 import { StyledBanner } from '../StyledBanner';
 
 export interface BannerContainerProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps {
+  extends IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs {
   children: React.ReactNode;
-  status?: ActiveStatus;
+  status?: TActiveStatus;
 }
 
 export const BannerContainer: React.FC<BannerContainerProps> = ({

@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
-import { UIColorScheme } from '../../../declarations';
+import { TUIColorScheme } from '../../../declarations';
 
-const colorSchemeFeedback: UIColorScheme[] = [
+const colorSchemeFeedback: TUIColorScheme[] = [
   'success',
   'error',
   'warning',
@@ -11,7 +11,7 @@ const colorSchemeFeedback: UIColorScheme[] = [
 ];
 
 export interface StyledFieldRequiredMarkProps {
-  colorScheme?: UIColorScheme;
+  colorScheme?: TUIColorScheme;
 }
 
 export const StyledFieldRequiredMark = styled.abbr<StyledFieldRequiredMarkProps>`

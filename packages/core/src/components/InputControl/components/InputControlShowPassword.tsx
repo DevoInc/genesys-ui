@@ -5,14 +5,14 @@ import { INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP } from '../constants';
 import { IconButton, IconButtonProps } from '../../IconButton';
 
 import { StyledInputControlShowPassword } from '../styled/StyledInputControlShowPassword';
-import { TFieldSize, StyledOverloadCssProps } from '../../../declarations';
+import { TFieldSize, IStyledOverloadCss } from '../../../declarations';
 import {
   GIEyeViewFilled,
   GIEyeVisibilityShowVisible,
 } from '@devoinc/genesys-icons';
 
 export interface InputControlShowPasswordProps
-  extends StyledOverloadCssProps,
+  extends IStyledOverloadCss,
     Pick<IconButtonProps, 'onClick'> {
   showPassword?: boolean;
   size?: TFieldSize;

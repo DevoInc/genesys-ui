@@ -3,10 +3,10 @@ import { describe, test, expect } from 'vitest';
 import { light as theme } from '@devoinc/genesys-brand-devo';
 
 import { elevationBorderRadiusMixin } from './elevationBorderRadiusMixin';
-import { Elevation } from '../../../declarations';
+import { TElevation } from '../../../declarations';
 
 describe('elevationBorderRadiusMixin', () => {
-  const cases: [string, Elevation][] = [
+  const cases: [string, TElevation][] = [
     ['stycky elevation return null', 'stickyTop'],
     ['ground elevation return null', 'ground'],
   ];

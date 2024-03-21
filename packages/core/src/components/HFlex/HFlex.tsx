@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Flex, FlexProps } from '../Flex';
-import { GlobalSpacing } from '../../declarations';
+import { TGlobalSpacing } from '../../declarations';
 import { FlexItem } from '../Flex/components';
 
 export interface HFlexProps
@@ -12,7 +12,7 @@ export interface HFlexProps
   /** If the children fit full width of the HFlex parent*/
   childrenFitFullWidth?: boolean;
   /** Horizontal spacing between children items (column-gap). */
-  spacing?: GlobalSpacing;
+  spacing?: TGlobalSpacing;
 }
 
 const InternalHFlex: React.FC<HFlexProps> = ({

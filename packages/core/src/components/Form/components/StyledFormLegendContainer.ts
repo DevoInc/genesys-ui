@@ -1,17 +1,17 @@
 import styled, { css } from 'styled-components';
 
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledPolymorphic,
 } from '../../../declarations';
 
 import { srOnlyMixin } from '../../../styled/mixins';
 
 export interface StyledFormLegendContainerProps
-  extends StyledPolymorphicProps,
-    GlobalAttrProps,
-    GlobalAriaProps {
+  extends IStyledPolymorphic,
+    IGlobalAttrs,
+    IGlobalAriaAttrs {
   /** If the heading of the form group is hidden (always exists for accessibility reasons). */
   srOnly?: boolean;
 }

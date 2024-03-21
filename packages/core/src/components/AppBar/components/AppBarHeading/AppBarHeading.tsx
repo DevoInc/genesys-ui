@@ -1,17 +1,17 @@
 import * as React from 'react';
 
 import {
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../../declarations';
 
 import { Typography } from '../../../Typography';
 
 export interface AppBarHeadingProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    Pick<GlobalAttrProps, 'id'> {
+  extends IStyledPolymorphic,
+    IStyledOverloadCss,
+    Pick<IGlobalAttrs, 'id'> {
   /** Heading content */
   children: React.ReactNode;
 }

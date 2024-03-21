@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
 import {
-  BodyColorScheme,
-  UIColorScheme,
-  LabelAttrProps,
+  TBodyColorScheme,
+  TUIColorScheme,
+  ILabelAttrs,
 } from '../../declarations';
 import { LabelSize } from './declarations';
 import {
@@ -14,11 +14,11 @@ import {
 } from '../../styled/mixins';
 import * as React from 'react';
 
-export interface StyledLabelProps extends Pick<LabelAttrProps, 'htmlFor'> {
+export interface StyledLabelProps extends Pick<ILabelAttrs, 'htmlFor'> {
   /** This property defines the color scheme for the Label.
    * There are predefined types: base, error... etc.
    * It's possible to use a custom color too.*/
-  colorScheme?: BodyColorScheme | UIColorScheme;
+  colorScheme?: TBodyColorScheme | TUIColorScheme;
   cursor?: React.CSSProperties['cursor'];
   /** Size of the Label.*/
   size?: LabelSize;

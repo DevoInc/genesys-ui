@@ -1,8 +1,8 @@
 import { ButtonBasicState } from '../Button';
 import { LinkState } from '../Link/declarations';
-import { TabsItemState } from './declarations';
+import { TTabsItemState } from './declarations';
 
-type StateMap<T> = { [key in TabsItemState]: T };
+type StateMap<T> = { [key in TTabsItemState]: T };
 
 const stateMap = {
   enabled: 'enabled',

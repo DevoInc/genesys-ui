@@ -1,21 +1,21 @@
 import * as React from 'react';
 
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  LabelAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  ILabelAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../declarations';
 
 import { StyledLabel, StyledLabelProps } from './StyledLabel';
 
 export interface LabelProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
-    Pick<LabelAttrProps, 'form'>,
+  extends IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs,
+    Pick<ILabelAttrs, 'form'>,
     StyledLabelProps {
   /** Content of the Label.*/
   children: React.ReactNode;

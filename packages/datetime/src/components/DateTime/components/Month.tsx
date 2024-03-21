@@ -14,13 +14,13 @@ import {
 import {
   TFieldSize,
   Flex,
-  GlobalAriaProps,
-  GlobalAttrProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
   HFlex,
   IconButton,
   InputControl,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
 import { CalendarProps } from '../../Calendar';
 import { Datetime } from '../../declarations';
@@ -29,11 +29,11 @@ import { GIAngleLeft, GIAngleRight } from '@devoinc/genesys-icons';
 
 export interface MonthProps
   extends Pick<CalendarProps, 'maxDate' | 'minDate'>,
-    Pick<GlobalAttrProps, 'id'>,
-    StyledOverloadCssProps,
-    StyledPolymorphicProps {
+    Pick<IGlobalAttrs, 'id'>,
+    IStyledOverloadCss,
+    IStyledPolymorphic {
   /** The aria-label attribute for the icon button to go to the next month. */
-  ariaLabelInput: GlobalAriaProps['aria-label'];
+  ariaLabelInput: IGlobalAriaAttrs['aria-label'];
   /** The aria-label attribute for the icon button to go to the next month. */
   ariaLabelNextMonth?: string;
   /** The aria-label attribute for the icon button to go to the previous month. */

@@ -3,7 +3,7 @@ import { GroupBase, Props } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 
 import { ICommonSelectCmps, TSelectOption } from './declarations';
-import { StyledOverloadCssProps } from '../../declarations';
+import { IStyledOverloadCss } from '../../declarations';
 
 import { StyledSelectControl } from './styled';
 
@@ -14,7 +14,7 @@ export interface InnerSelectControlProps<
   // React-select requires a concrete theme schema which is not compatible with ours.
 > extends Omit<Props<Option, IsMulti, Group>, 'theme' | 'styles'>,
     ICommonSelectCmps,
-    StyledOverloadCssProps {
+    IStyledOverloadCss {
   componentStyles?: Props<Option, IsMulti, Group>['styles'];
 }
 

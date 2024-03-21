@@ -2,7 +2,7 @@ import * as React from 'react';
 import { concat } from 'lodash';
 
 import { Button, type ButtonProps } from '../../Button';
-import type { UIColorScheme } from '../../../declarations';
+import type { TUIColorScheme } from '../../../declarations';
 
 import { fieldsCombinerButtonMixin } from '../helpers';
 import { FieldsCombinerElemContext } from '../context';
@@ -35,7 +35,7 @@ export const FieldsCombinerButton = React.forwardRef<
         ref={ref}
         colorScheme={
           colorScheme ||
-          (status !== 'base' ? (status as UIColorScheme) : 'neutral')
+          (status !== 'base' ? (status as TUIColorScheme) : 'neutral')
         }
         styles={concat(
           fieldsCombinerButtonMixin({

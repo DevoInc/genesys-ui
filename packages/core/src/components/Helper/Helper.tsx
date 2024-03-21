@@ -3,10 +3,10 @@ import { useTheme } from 'styled-components';
 
 import { HELPER_ICON_SIZE_MAP, HELPER_SIZE_SPACE_MAP } from './constants';
 import {
-  GlobalAttrProps,
-  GlobalStatus,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAttrs,
+  TGlobalStatus,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../declarations';
 import { HelperSize } from './declarations';
 
@@ -20,15 +20,15 @@ import { Typography } from '../Typography';
 import { getHelperStatusIcon } from './utils';
 
 export interface HelperProps
-  extends GlobalAttrProps,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps {
+  extends IGlobalAttrs,
+    IStyledPolymorphic,
+    IStyledOverloadCss {
   /** Content of the helper message. */
   message: string | React.ReactNode;
   /** Size of the helper: spacing, font-size... etc. */
   size?: HelperSize;
   /** This property defines the status color schema for the helper */
-  status?: GlobalStatus;
+  status?: TGlobalStatus;
 }
 
 export const Helper: React.FC<HelperProps> = ({

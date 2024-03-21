@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
 
 import { switchControlTextMixin } from '../helpers';
+import type { ISwitch } from '../declarations';
 
 interface StyledSwitchControlTextUncheckedProps {
-  $checked?: boolean;
+  $checked?: ISwitch['checked'];
 }
 
 export const StyledSwitchControlTextUnchecked = styled.span<StyledSwitchControlTextUncheckedProps>`

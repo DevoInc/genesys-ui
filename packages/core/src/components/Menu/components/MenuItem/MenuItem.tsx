@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // declarations
-import { FieldEventAttrProps, SelectionScheme } from '../../../../declarations';
+import { IFieldEventAttrs, TSelectionScheme } from '../../../../declarations';
 
 // components
 import { GICheckThick } from '@devoinc/genesys-icons';
@@ -21,7 +21,7 @@ import { StyledHiddenInput } from '../../../../styled/';
 
 export interface MenuItemProps
   extends MenuItemContainerProps,
-    FieldEventAttrProps {
+    IFieldEventAttrs {
   appendContent?: React.ReactNode;
   bottomContent?: React.ReactNode;
   children?: React.ReactNode;
@@ -30,7 +30,7 @@ export interface MenuItemProps
   label?: React.ReactNode;
   prependContent?: React.ReactNode;
   //ref: React.Ref<HTMLElement>;
-  selectionScheme?: SelectionScheme;
+  selectionScheme?: TSelectionScheme;
   /** Shortcut text for the item. */
   shortcut?: string;
   /** Component used as sub-menu child of the <li> element. */

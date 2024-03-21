@@ -2,7 +2,7 @@ import * as React from 'react';
 import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
-import { IField } from '../../Field/declarations';
+import type { ISwitch, TSwitchDiameter, TSwitchHeight } from '../declarations';
 import { getPxFromRem } from '../../../helpers';
 import { switchControlContainerMixin } from '../helpers';
 
@@ -10,10 +10,9 @@ import { Flex, type FlexProps } from '../../Flex';
 
 export interface SwitchControlContainerProps
   extends FlexProps,
-    Pick<IField, 'disabled' | 'size' | 'status'> {
-  checked?: boolean;
-  heightPx: number;
-  handleDiameter: number;
+    Pick<ISwitch, 'checked' | 'disabled' | 'size' | 'status'> {
+  heightPx: TSwitchHeight;
+  handleDiameter: TSwitchDiameter;
 }
 
 export const SwitchControlContainer: React.FC<SwitchControlContainerProps> = ({

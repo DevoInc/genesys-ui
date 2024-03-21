@@ -2,10 +2,10 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../declarations';
 
 import { BadgeContainer, BadgeContainerProps, BadgeText } from './components';
@@ -13,10 +13,10 @@ import { Icon } from '../Icon';
 import { GICheckThick } from '@devoinc/genesys-icons';
 
 export interface BadgeProps
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps,
-    GlobalAttrProps,
-    GlobalAriaProps,
+  extends IStyledPolymorphic,
+    IStyledOverloadCss,
+    IGlobalAttrs,
+    IGlobalAriaAttrs,
     BadgeContainerProps {
   /** Defines if the Badge icon is bold */
   hasBoldIcon?: boolean;

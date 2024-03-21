@@ -6,7 +6,7 @@ import type {
 } from './declarations';
 import type { TProgressBarSize } from '../ProgressBar/declarations';
 import type { TSpinnerSize } from '../SpinnerLoader/constants';
-import type { BaseSize } from '../../declarations';
+import type { TBaseSize } from '../../declarations';
 import type { OverlayProps } from '../Overlay';
 
 export const LOADER_SIZE_PROGRESS_AND_SPINNER: {
@@ -24,7 +24,7 @@ export const LOADER_SIZE_PROGRESS_AND_SPINNER: {
 
 export const CONTEXTUAL_SCROLL_LOADER_SIZE_MAP: {
   [key1 in ContextualScrollLoaderType]: {
-    [key2 in ContextualScrollLoaderSize]: BaseSize;
+    [key2 in ContextualScrollLoaderSize]: TBaseSize;
   };
 } = {
   progress: {

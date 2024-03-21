@@ -7,47 +7,42 @@ import * as React from 'react';
 import { HIDDEN_TEXT } from './constants';
 
 import {
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledOverloadCssPropsWithRecord,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../declarations';
 import { WithRequired } from '../../typeFunctions';
 import { StepperStatus, StepperSize } from './declarations';
 
 import { StepperContainer, StepperItem } from './components';
 
-export interface BaseStepperProps
-  extends WithRequired<Pick<GlobalAttrProps, 'id' | 'tooltip'>, 'id'>,
+export interface StepperProps
+  extends WithRequired<Pick<IGlobalAttrs, 'id' | 'tooltip'>, 'id'>,
     WithRequired<
-      Pick<GlobalAriaProps, 'aria-label' | 'aria-describedby'>,
+      Pick<IGlobalAriaAttrs, 'aria-label' | 'aria-describedby'>,
       'aria-label'
     >,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps {
+    IStyledPolymorphic,
+    IStyledOverloadCss {
   /** Stepper size */
   size?: StepperSize;
   /** Stepper model */
   steps: { name: string; label: string; status: StepperStatus }[];
 }
 
-export type StepperProps = BaseStepperProps &
-  StyledOverloadCssPropsWithRecord<'container' | 'item'>;
-
 export const InternalStepper: React.FC<StepperProps> = ({
-  size = 'sm',
+  size = 'md',
   steps = [],
   tooltip,
   styles,
-  subcomponentStyles,
   ...nativeProps
 }) => (
   <StepperContainer
     {...nativeProps}
     size={size}
     tooltip={tooltip}
-    styles={subcomponentStyles?.container || styles}
+    styles={styles}
   >
     {steps.map((el, idx) => (
       <StepperItem
@@ -59,7 +54,6 @@ export const InternalStepper: React.FC<StepperProps> = ({
         size={size}
         status={el.status}
         stepNumberPos={idx}
-        styles={subcomponentStyles?.item}
       >
         {el.label}
       </StepperItem>

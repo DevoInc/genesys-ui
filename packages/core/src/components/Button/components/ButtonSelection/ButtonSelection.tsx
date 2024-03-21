@@ -4,35 +4,35 @@ import * as React from 'react';
 import type {
   ICheckAttrs,
   IFieldAttrs,
-  GlobalAttrProps,
+  IGlobalAttrs,
   IInputAttrs,
 } from '../../../../declarations/htmlAttrs';
 import type {
-  FocusEventAttrProps,
-  TriggerEventAttrProps,
+  IFocusEventAttrs,
+  ITriggerEventAttrs,
 } from '../../../../declarations/htmlEventAttrs';
-import type { SelectionScheme } from '../../../../declarations/commonProps';
+import type { TSelectionScheme } from '../../../../declarations/commonProps';
 import type {
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../../declarations/styled';
 
 // styled
 import { StyledButtonSelection } from './StyledButtonSelection';
 
 export interface ButtonSelectionProps
-  extends Pick<GlobalAttrProps, 'id'>,
+  extends Pick<IGlobalAttrs, 'id'>,
     Pick<ICheckAttrs, 'checked' | 'defaultChecked'>,
     Pick<IFieldAttrs, 'disabled' | 'name'>,
     Pick<IInputAttrs, 'value'>,
-    FocusEventAttrProps,
-    TriggerEventAttrProps,
-    StyledPolymorphicProps,
-    StyledOverloadCssProps {
+    IFocusEventAttrs,
+    ITriggerEventAttrs,
+    IStyledPolymorphic,
+    IStyledOverloadCss {
   /** Label for input (checkbox or radio type) */
   label?: string;
   /** If it's multiple we use a checkbox and if it's single we use a radio */
-  selectionScheme?: SelectionScheme;
+  selectionScheme?: TSelectionScheme;
 }
 
 export const ButtonSelection: React.FC<ButtonSelectionProps> = ({

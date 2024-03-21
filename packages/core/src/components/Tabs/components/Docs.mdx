@@ -1,0 +1,47 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as ItemStories from './TabsItem/TabsItem.stories';
+import * as AsideStories from './TabsAside/TabsAside.stories';
+import * as DividerStories from './TabsDivider/TabsDivider.stories';
+
+<Meta title="Components/Navigation/Tabs/components/Docs" of={ItemStories} />
+
+# Components
+
+Set of internal components that are used to build a `Tabs` component.
+
+## Item
+
+The `Tabs.Item` component is used to define the individual tabs.
+
+### Basic usage
+
+<Canvas of={ItemStories.Item} />
+
+### Props
+
+<ArgTypes of={ItemStories} />
+
+## Aside
+
+The `Tabs.Aside` component is used to add custom content to be placed before or/and after the tab list items block.
+
+### Basic usage
+
+<Canvas of={AsideStories.Aside} />
+
+### Props
+
+<ArgTypes of={AsideStories} />
+
+## Divider
+
+The `Tabs.Divider` component is used to separate items or the aside content from the tabs item block.
+
+### Basic usage
+
+<Canvas of={DividerStories.Divider} />
+
+### Props
+
+<ArgTypes of={DividerStories} />

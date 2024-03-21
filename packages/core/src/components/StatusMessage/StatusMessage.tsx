@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import type { GlobalStatus } from '../../declarations/commonProps';
-import type { StyledOverloadCssPropsWithRecord } from '../../declarations/styled';
+import type { TGlobalStatus } from '../../declarations/commonProps';
 import type { ButtonGroupProps } from '../ButtonGroup';
 import type { IconProps } from '../Icon';
 
@@ -14,7 +13,7 @@ import {
   StatusMessageTitle,
 } from './components';
 
-export interface BaseStatusMessageProps
+export interface StatusMessageProps
   extends Omit<StatusMessageContainerProps, 'children'> {
   /** This property defines the font size of the icon */
   iconSize?: IconProps['size'];
@@ -29,13 +28,8 @@ export interface BaseStatusMessageProps
   /** If it's true then the content box is not centered and it's scrollable */
   hasLongMessage?: boolean;
   /** The status of the message: error, warning... etc. */
-  status?: GlobalStatus;
+  status?: TGlobalStatus;
 }
-
-export type StatusMessageProps = BaseStatusMessageProps &
-  StyledOverloadCssPropsWithRecord<
-    'container' | 'title' | 'icon' | 'description' | 'buttons'
-  >;
 
 export const InternalStatusMessage = ({
   'aria-describedby': ariaDescribedBy,
@@ -62,7 +56,6 @@ export const InternalStatusMessage = ({
   role,
   status,
   styles,
-  subcomponentStyles,
   title,
   tooltip,
   width,
@@ -90,7 +83,7 @@ export const InternalStatusMessage = ({
       onMouseUp={onMouseUp}
       padding={padding}
       role={role}
-      styles={subcomponentStyles?.container || styles}
+      styles={styles}
       tooltip={tooltip}
       width={width}
     >
@@ -100,23 +93,14 @@ export const InternalStatusMessage = ({
       >
         {icon}
       </StatusMessageIcon>
-      {title && (
-        <StatusMessageTitle styles={subcomponentStyles?.title}>
-          {title}
-        </StatusMessageTitle>
-      )}
+      {title && <StatusMessageTitle>{title}</StatusMessageTitle>}
       {description && (
-        <StatusMessageDescription
-          isLong={hasLongMessage}
-          styles={subcomponentStyles?.description}
-        >
+        <StatusMessageDescription isLong={hasLongMessage}>
           {description}
         </StatusMessageDescription>
       )}
       {Array.isArray(buttons) && (
-        <StatusMessageButtons styles={subcomponentStyles?.buttons}>
-          {buttons}
-        </StatusMessageButtons>
+        <StatusMessageButtons>{buttons}</StatusMessageButtons>
       )}
     </StatusMessageContainer>
   );

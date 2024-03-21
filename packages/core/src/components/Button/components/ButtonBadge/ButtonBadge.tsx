@@ -3,8 +3,8 @@ import { useTheme } from 'styled-components';
 import { AllHTMLAttributes } from 'react';
 
 import {
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '../../../../declarations';
 import { BadgeColorScheme } from '../../../Badge';
 
@@ -14,8 +14,8 @@ import { Badge, BadgeSize } from '../../../Badge';
 import { Box } from '../../../Box';
 
 export interface ButtonBadgeProps<T = Element>
-  extends StyledPolymorphicProps,
-    StyledOverloadCssProps {
+  extends IStyledPolymorphic,
+    IStyledOverloadCss {
   /** ColorScheme and status */
   colorScheme?: BadgeColorScheme;
   /** If the button parent is circular */

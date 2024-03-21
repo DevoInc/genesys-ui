@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import type { GlobalAriaProps, GlobalAttrProps } from '../../../declarations';
+import type { IGlobalAriaAttrs, IGlobalAttrs } from '../../../declarations';
 import { StyledPartitionsItem } from './StyledPartitionsItem';
 import type { IPartitions, IPartitionsItem } from '../declarations';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface PartitionsItemProps
-  extends Pick<GlobalAttrProps, 'tooltip'>,
-    Pick<GlobalAriaProps, 'aria-label'>,
+  extends Pick<IGlobalAttrs, 'tooltip'>,
+    Pick<IGlobalAriaAttrs, 'aria-label'>,
     Pick<IPartitions, 'size'>,
     IPartitionsItem {}
 

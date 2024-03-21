@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { StyledOverloadCssProps } from '../../../declarations/styled';
+import { IStyledOverloadCss } from '../../../declarations/styled';
 
 import { StyledBadgeText } from '../StyledBadge';
 
-export interface BadgeTextProps extends StyledOverloadCssProps {
+export interface BadgeTextProps extends IStyledOverloadCss {
   children: string;
   color?: string;
 }

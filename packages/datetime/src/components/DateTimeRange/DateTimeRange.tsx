@@ -14,10 +14,10 @@ import {
 import {
   HFlex,
   VFlex,
-  GlobalAriaProps,
-  GlobalAttrProps,
-  StyledOverloadCssProps,
-  StyledPolymorphicProps,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
 
 import {
@@ -44,17 +44,17 @@ export interface DateTimeRangeProps
     Pick<TimeProps, 'hasMillis' | 'hasSeconds'>,
     Pick<MonthProps, 'ariaLabelNextMonth' | 'ariaLabelPrevMonth'>,
     Pick<PresetsProps, 'presets'>,
-    Required<Pick<GlobalAttrProps, 'id'>>,
-    StyledOverloadCssProps,
-    StyledPolymorphicProps {
+    Required<Pick<IGlobalAttrs, 'id'>>,
+    IStyledOverloadCss,
+    IStyledPolymorphic {
   /** aria-label attribute for from month input. */
-  ariaLabelFromMonth?: GlobalAriaProps['aria-label'];
+  ariaLabelFromMonth?: IGlobalAriaAttrs['aria-label'];
   /** aria-label attribute for from time input. */
-  ariaLabelFromTime?: GlobalAriaProps['aria-label'];
+  ariaLabelFromTime?: IGlobalAriaAttrs['aria-label'];
   /** aria-label attribute for to month input. */
-  ariaLabelToMonth?: GlobalAriaProps['aria-label'];
+  ariaLabelToMonth?: IGlobalAriaAttrs['aria-label'];
   /** aria-label attribute for to time input. */
-  ariaLabelToTime?: GlobalAriaProps['aria-label'];
+  ariaLabelToTime?: IGlobalAriaAttrs['aria-label'];
   /**  Show the time input HTML element. */
   hasTime?: boolean;
   /** Function called when clicking a cell or editing a time input HTML.  */

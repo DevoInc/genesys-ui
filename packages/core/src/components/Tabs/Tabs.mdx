@@ -1,6 +1,7 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './Tabs.stories';
+import { tabsBasicUsageCode, tabsMarkCode } from './__stories__';
 
 <Meta of={Stories} />
 
@@ -13,24 +14,130 @@ It can be used to create a horizontal set of tabs, with each tab corresponding t
 
 ## How to import
 
-<Source
-  code={`
-import { Tabs } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Tabs } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+There is a set of components which should be used to build a `Tabs` component.
+
+- `Tabs`: the outer container of the component, which receives most of the props
+  and allow its children to inherit them from the `TabsContext`.
+- `Tabs.List`: the tab list items of the component.
+- `Tabs.Item`: each tab of the component.
+- `Tabs.Aside`: the custom content to be placed before or/and after the tab list items block.
+- `Tabs.Divider`: the divider to apply separation between tab items or between the tabs block and the aside ones.
+- `Tabs.Mark`: the active mark for the tab item which moves along the Tabs block.
+
+This way, using all the available `Tabs` components we could have a structure as this:
+
+```jsx
+<Tabs>
+  <Tabs.Aside />
+  <Tabs.List>
+    <Tabs.Item />
+    <Tabs.Item />
+    <Tabs.Item />
+  </Tabs.List>
+  <Tabs.Divider />
+  <Tabs.Aside />
+</Tabs>
+```
+
+In the other hand, to manage the active tab item and the movement of the active mark, we have to use the
+`UseActiveTab` hook [(More info)](#useactivetab) and integrate what it provides with our components.
+
+<Canvas of={Stories.Base} sourceState="none" />
+
+<Source code={tabsBasicUsageCode} />
+
+## Context
+
+The `Tabs` component uses internally a React context which allows children to inherit some props:
+
+- `colorScheme`.
+- `size`.
+- `wide`.
+
+This way you only have to pass these props to the `Tabs` parent component and its children
+will inherit them automatically, as in this example:
+
+<Canvas of={Stories.Context} />
+
+## Keyboard support
+
+If you use the provided hook `useActiveTab` then the keyboard support will be available for the `Tabs`.
+
+### Tab
+
+- When focus moves into the tab list, places focus on the active tab element.
+- When the tab list contains the focus, moves focus to the next element in the tab sequence, which usually is the 'tabpanel' element.
+
+### Right arrow
+
+- Moves focus to the next tab.
+- If focus is on the last tab, moves focus to the first tab.
+- Activates the newly focused tab.
+
+### Left arrow
+
+- Moves focus to the previous tab.
+- If focus is on the first tab, moves focus to the last tab.
+- Activates the newly focused tab.
+
+### Home
+
+Moves focus to the first tab and activates it.
+
+### End
+
+Moves focus to the last tab and activates it.
 
 ## Hooks
 
-- [useTabsConfig](?path=/docs/components-core-navigation-tabs-hooks--docs)
+### How to import
 
-## Subcomponents
+<Source
+  code={`import { useActiveTab, useTabsMark } from '@devoinc/genesys-ui';`}
+/>
 
-- [Item](?path=/docs/components-core-navigation-tabs-subcomponents--docs)
-- [Aside](?path=/docs/components-core-navigation-tabs-subcomponents--docs)
+### useActiveTab
+
+Hook to manage the active tab and the keyboard support. This hook provides:
+
+- The state of the active tab item with `activeTab` and `setActiveTab`. It's the index number of the active tab item.
+  This value has to be passed to the tab items to make active any of them and to the `Tabs.List` component to
+  allow to manage the position and width of the tabs active mark.
+- The `ref` of the tabs container which is provided by `tabsRef`. It has to be passed as `ref` prop
+  to the parent container.
+
+<Source code={tabsBasicUsageCode} />
+
+#### Parameters
+
+<Source
+  code={`{initialActiveTab} // default active tab index. Default value '0'`}
+/>
+
+### useTabsMark
+
+Hook to manage the active tab mark: its width and position based in the active tab item and its parent container.
+This hook provides:
+
+- The `ref` of the tabs items parent container which is provided by `tabsListRef`.
+  It has to be passed as `ref` prop to its direct parent container.
+- The `ref` of the tabs mark which is provided by `markRef`. It has to be passed as `ref` prop to the component which
+  acts as mark.
+
+<Source code={tabsMarkCode} />
+
+#### Parameters
+
+<Source code={`{activeTabIndex} // Active tab item index.`} />
+
+## Components
+
+- [Item](?path=/docs/components-core-navigation-tabs-components--docs)
+- [Aside](?path=/docs/components-core-navigation-tabs-components--docs)
 
 ## Props
 

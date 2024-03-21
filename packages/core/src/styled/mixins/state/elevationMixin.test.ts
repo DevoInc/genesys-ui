@@ -3,7 +3,7 @@ import { describe, test, expect } from 'vitest';
 import { light as theme } from '@devoinc/genesys-brand-devo';
 
 import { elevationMixin } from './elevationMixin';
-import { Elevation } from '../../../declarations';
+import { TElevation } from '../../../declarations';
 
 describe('elevationMixin', () => {
   test('raised', () => {
@@ -23,7 +23,7 @@ describe('elevationMixin', () => {
   });
 
   test('not valid elevation', () => {
-    const mixin = elevationMixin(theme)('badElevation' as Elevation).join('');
+    const mixin = elevationMixin(theme)('badElevation' as TElevation).join('');
     expect(mixin).toContain('box-shadow:;');
     expect(mixin).toContain('border-radius:0.6rem;');
     expect(mixin).toContain('z-index:;');
