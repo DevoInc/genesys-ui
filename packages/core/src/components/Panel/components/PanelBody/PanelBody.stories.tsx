@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
+import { lorem } from '../../../../../stories/utils/fillerTexts';
 import { PanelBody } from './PanelBody';
 
 const meta: Meta<typeof PanelBody> = {
@@ -12,6 +13,6 @@ type Story = StoryObj<typeof PanelBody>;
 
 export const Body: Story = {
   args: {
-    children: 'body',
+    children: lorem,
   },
 };

@@ -17,7 +17,7 @@ export interface PanelBodyProps
     Pick<IPanelContainerAttrs, 'size' | 'children'> {}
 
 export const PanelBody = React.forwardRef<HTMLElement, PanelBodyProps>(
-  ({ children, removeSpace, hasScroll, size, styles }, ref) => {
+  ({ children, removeSpace, hasScrollSpacing, size, styles }, ref) => {
     const theme = useTheme();
     const context = React.useContext(PanelContext);
     const evalSize = size || context.size || 'md';
@@ -30,7 +30,7 @@ export const PanelBody = React.forwardRef<HTMLElement, PanelBodyProps>(
         ref={ref || context.bodyRef}
         styles={concat(
           panelBodyMixin({
-            hasScroll: hasScroll || context.scrolledBodyContent,
+            hasScrollSpacing: hasScrollSpacing ?? context.scrolledBodyContent,
             removeSpace,
             size: evalSize,
             theme,
