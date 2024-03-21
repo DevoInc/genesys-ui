@@ -145,6 +145,14 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
     [from, onChange],
   );
 
+  const onClickRTCallback = React.useCallback(
+    (event) => {
+      event.stopPropagation();
+      onRealTimeClick(event);
+    },
+    [onRealTimeClick],
+  );
+
   const theme = useTheme();
 
   return (
@@ -233,7 +241,7 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
       </Field>
       {hasRealTime(realTime) && (
         <RealTimeButton
-          onClick={onRealTimeClick}
+          onClick={onClickRTCallback}
           state={realTime}
           size={REAL_TIME_SIZE_MAP[size]}
         />
