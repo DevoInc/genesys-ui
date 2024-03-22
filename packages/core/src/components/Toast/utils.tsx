@@ -1,9 +1,16 @@
 import * as React from 'react';
 
-import { TUIColorScheme } from '../../declarations';
 import { STATUS_ICON_MAP } from '../../constants';
+import { TUIColorScheme } from '../../declarations';
+import type { IToast } from './declarations';
 import { Button, type ButtonProps } from '../Button';
-import { ToastAction, ToastStatus } from './declarations';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface IGetFooterActions
+  extends Pick<
+    IToast,
+    'accent' | 'actionApply' | 'actionReject' | 'closeToast' | 'status'
+  > {}
 
 export const getFooterActions = ({
   accent,
@@ -11,13 +18,7 @@ export const getFooterActions = ({
   actionReject,
   closeToast,
   status,
-}: {
-  accent: boolean;
-  actionApply?: ToastAction;
-  actionReject?: ToastAction;
-  closeToast: () => void;
-  status: ToastStatus;
-}): React.ReactElement<ButtonProps>[] => {
+}: IGetFooterActions): React.ReactElement<ButtonProps>[] => {
   const footerActions = [];
 
   if (actionReject?.label && actionReject?.action) {

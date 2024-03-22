@@ -1,26 +1,22 @@
 import * as React from 'react';
 
-// declarations
 import {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../declarations';
+import { ITag } from '../declarations';
 
-// styled
-import {
-  StyledTagContainer,
-  StyledTagContainerProps,
-} from './StyledTagContainer';
+import { StyledTagContainer } from './StyledTagContainer';
 
 export interface TagContainerProps
   extends IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
     IGlobalAriaAttrs,
-    StyledTagContainerProps {
-  children: React.ReactNode;
+    ITag {
+  children?: React.ReactNode;
 }
 
 export const TagContainer: React.FC<TagContainerProps> = ({

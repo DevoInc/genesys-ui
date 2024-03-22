@@ -1,17 +1,17 @@
-import {
+import * as React from 'react';
+
+import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../../declarations';
-import * as React from 'react';
 
-import { StyledList, StyledListProps } from '../../StyledTypography';
+import { StyledList, type StyledListProps } from '../../StyledTypography';
 import { ListItem } from './ListItem';
 
 export interface ListProps
   extends StyledListProps,
-    // native
     IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,

@@ -1,15 +1,13 @@
 import * as React from 'react';
 
+import type { IToast } from '../declarations';
 import { Flex } from '../../Flex';
 import { HFlex } from '../../HFlex';
 import { Typography } from '../../Typography';
 
-export interface ToastContentProps {
-  /** Return panel content if not collapsed */
-  collapsed?: boolean;
-  /** Panel content */
-  content?: React.ReactNode;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface ToastContentProps
+  extends Pick<IToast, 'collapsed' | 'content'> {}
 
 export const ToastContent: React.FC<ToastContentProps> = ({
   content,

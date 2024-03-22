@@ -1,16 +1,15 @@
-import {
+import * as React from 'react';
+import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../../declarations';
-import * as React from 'react';
 
-import { StyledCaption, StyledCaptionProps } from '../../StyledTypography';
+import { StyledCaption, type StyledCaptionProps } from '../../StyledTypography';
 
 export interface CaptionProps
   extends StyledCaptionProps,
-    //native
     IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,

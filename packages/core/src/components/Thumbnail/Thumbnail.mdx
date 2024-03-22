@@ -12,43 +12,50 @@ Component used for displaying a thumbnail image.
 
 ## How to import
 
-<Source
-  code={`
-import { Thumbnail } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Thumbnail } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
 <Canvas of={Stories.Base} />
 
-## Cases
+## Aspect ratio
 
-When using `size="fullWidth"` the component instance needs to be wrapped
-inside an element with it CSS width property defined. Otherwise the Thumbnail won't be visible.
+Using the `width`, `height`, `objectFit` and `objectPosition` props we can get any aspect ratio, size or position
+for the img object. These are different examples of how it's possible to combine this props in most common ways.
 
-Without a wrapper
+Although you use custom width or height, the proportion is maintained, because the default value for
+`objectFit` is cover, so the image is sized to maintain its aspect ratio while filling the element's entire content box.
+If the object's aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.
 
-<Source
-  code={`
-<Thumbnail size={'fullWidth'} img={'https://picsum.photos/200/300'} />
-`}
-/>
+### Custom width and height
 
-With a wrapper
+When you need a specific width and height for the image.
 
-<Source
-  code={`
-<div
-  style={{
-    width: '90px',
-    height: '90px',
-  }}
->
-  <Thumbnail size={'fullWidth'} img={'https://picsum.photos/200/300'} />
-</div>
-`}
-/>
+<Canvas of={Stories.CustomSize} />
+
+### Width to fit container and custom height
+
+When you want the image width to fit its container, and you need a specific height.
+
+<Canvas of={Stories.FitContainerCustomHeight} />
+
+### Width to fit container and height auto
+
+When you want the image width to fit its container, and you need a height auto.
+
+<Canvas of={Stories.FitContainerHeightAuto} />
+
+### Custom img object position
+
+When you need a specific aspect ratio, but you want a custom image object position.
+
+<Canvas of={Stories.CustomObjectPosition} />
+
+## Radius
+
+It's possible to specify the radius of the img based in the border-radius css property.
+
+<Canvas of={Stories.Radius} />
 
 ## Props
 

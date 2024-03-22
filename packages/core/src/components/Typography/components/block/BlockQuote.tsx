@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {
+import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
@@ -8,12 +8,11 @@ import {
 
 import {
   StyledBlockQuote,
-  StyledBlockQuoteProps,
+  type StyledBlockQuoteProps,
 } from '../../StyledTypography';
 
 export interface BlockQuoteProps
   extends StyledBlockQuoteProps,
-    //native
     IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,

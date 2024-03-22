@@ -40,38 +40,36 @@ export const Input: React.FC<InputProps> = ({
   tooltip,
   type = 'text',
   ...restNativeInputProps
-}) => {
-  return (
-    <Field
-      disabled={disabled}
-      controlWidth={inputWidth}
-      hasFloatingHelper={hasFloatingHelper}
-      helper={helper}
-      hideLabel={hideLabel}
-      id={id}
-      label={label}
-      labelPosition={labelPosition}
-      onClick={onClick}
-      onMouseDown={onMouseDown}
-      onMouseLeave={onMouseLeave}
-      onMouseMove={onMouseMove}
-      onMouseOut={onMouseOut}
-      onMouseOver={onMouseOver}
-      onMouseUp={onMouseUp}
-      required={required}
-      requiredMarkTooltip={requiredMarkTooltip}
-      size={size}
-      status={status}
-      styles={styles}
-      tooltip={tooltip}
-    >
-      <InputControl
-        {...restNativeInputProps}
-        hideStatusIcon={helper && hasStatus(status)}
-        aria-label={ariaLabel}
-        icon={helper && hasStatus(status) ? undefined : inputControlIcon}
-        type={type}
-      />
-    </Field>
-  );
-};
+}) => (
+  <Field
+    disabled={disabled}
+    controlWidth={inputWidth}
+    hasFloatingHelper={hasFloatingHelper}
+    helper={helper}
+    hideLabel={hideLabel}
+    id={id}
+    label={label}
+    labelPosition={labelPosition}
+    onClick={onClick}
+    onMouseDown={onMouseDown}
+    onMouseLeave={onMouseLeave}
+    onMouseMove={onMouseMove}
+    onMouseOut={onMouseOut}
+    onMouseOver={onMouseOver}
+    onMouseUp={onMouseUp}
+    required={required}
+    requiredMarkTooltip={requiredMarkTooltip}
+    size={size}
+    status={status}
+    styles={styles}
+    tooltip={tooltip}
+  >
+    <InputControl
+      {...restNativeInputProps}
+      hideStatusIcon={helper && hasStatus(status)}
+      aria-label={ariaLabel}
+      icon={helper && hasStatus(status) ? undefined : inputControlIcon}
+      type={type}
+    />
+  </Field>
+);

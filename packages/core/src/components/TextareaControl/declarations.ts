@@ -1,1 +1,1 @@
-export type Resize = 'both' | 'none' | 'vertical' | 'horizontal';
+export type TTextareaResize = 'both' | 'none' | 'vertical' | 'horizontal';

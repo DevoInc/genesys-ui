@@ -1,9 +1,10 @@
-import {
+import * as React from 'react';
+
+import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
 } from '../../../../declarations';
-import * as React from 'react';
 
 import { StyledListItem } from '../../StyledTypography';
 

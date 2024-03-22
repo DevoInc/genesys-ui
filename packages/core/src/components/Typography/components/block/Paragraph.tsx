@@ -1,16 +1,18 @@
-import {
+import * as React from 'react';
+import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../../declarations';
-import * as React from 'react';
 
-import { StyledParagraph, StyledParagraphProps } from '../../StyledTypography';
+import {
+  StyledParagraph,
+  type StyledParagraphProps,
+} from '../../StyledTypography';
 
 export interface ParagraphProps
   extends StyledParagraphProps,
-    // native
     IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,

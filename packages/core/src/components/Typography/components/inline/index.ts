@@ -1,3 +1,16 @@
+import { Abbr } from './Abbr';
+import { CodeInline } from './CodeInline';
+import { Deleted } from './Deleted';
+import { Highlighted } from './Highlighted';
+import { Inserted } from './Inserted';
+import { Italic } from './Italic';
+import { Small } from './Small';
+import { SrOnly } from './SrOnly';
+import { Strong } from './Strong';
+import { Sub } from './Sub';
+import { Sup } from './Sup';
+import { Underlined } from './Underlined';
+
 export * from './Abbr';
 export * from './CodeInline';
 export * from './Deleted';
@@ -10,3 +23,16 @@ export * from './Strong';
 export * from './Sub';
 export * from './Sup';
 export * from './Underlined';
+
+Abbr.displayName = 'Typography.Abbr';
+CodeInline.displayName = 'Typography.CodeInline';
+Deleted.displayName = 'Typography.Deleted';
+Highlighted.displayName = 'Typography.Highlighted';
+Inserted.displayName = 'Typography.Inserted';
+Italic.displayName = 'Typography.Italic';
+Small.displayName = 'Typography.Small';
+SrOnly.displayName = 'Typography.SrOnly';
+Strong.displayName = 'Typography.Strong';
+Sub.displayName = 'Typography.Sub';
+Sup.displayName = 'Typography.Sup';
+Underlined.displayName = 'Typography.Underlined';

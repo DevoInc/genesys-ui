@@ -1,22 +1,21 @@
-import {
+import * as React from 'react';
+import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../../declarations';
-import * as React from 'react';
 
 import {
   StyledCodeBlock,
-  StyledCodeBlockProps,
+  type StyledCodeBlockProps,
   StyledCodeBlockWrapper,
-  StyledCodeBlockWrapperProps,
+  type StyledCodeBlockWrapperProps,
 } from '../../StyledTypography';
 
 export interface CodeProps
   extends StyledCodeBlockProps,
     StyledCodeBlockWrapperProps,
-    //native
     IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,

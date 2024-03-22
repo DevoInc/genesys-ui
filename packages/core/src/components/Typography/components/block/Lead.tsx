@@ -1,16 +1,15 @@
-import {
+import * as React from 'react';
+import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../../declarations';
-import * as React from 'react';
 
-import { StyledLead, StyledLeadProps } from '../../StyledTypography';
+import { StyledLead, type StyledLeadProps } from '../../StyledTypography';
 
 export interface LeadProps
   extends StyledLeadProps,
-    // native
     IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,

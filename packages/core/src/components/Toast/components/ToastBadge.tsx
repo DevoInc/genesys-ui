@@ -3,15 +3,13 @@ import { css, useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
 import { TOAST_ELEVATION_LEVEL } from '../constants';
-import { ToastStatus } from '../declarations';
+import type { IToast } from '../declarations';
 import { Badge, type BadgeProps } from '../../Badge';
 
-export interface ToastBadgeProps extends BadgeProps {
-  /** Status of notification */
-  status?: ToastStatus;
-  /** Number of instances for the same notification */
-  updates?: number;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface ToastBadgeProps
+  extends BadgeProps,
+    Pick<IToast, 'status' | 'updates'> {}
 
 export const ToastBadge: React.FC<ToastBadgeProps> = ({
   colorScheme,

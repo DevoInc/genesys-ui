@@ -3,25 +3,26 @@ import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 import { OmitUnion } from '../../typeFunctions';
 
+import type { TBaseSize } from '../../declarations';
+
 import { toolbarContainerMixin } from './helpers';
 
-import { TBaseSize } from '../../declarations';
-
 import { ToolbarGroup } from './components/ToolbarGroup';
-import { ToolbarSeparator } from './components/ToolbarSeparator';
-import { ToolbarItem } from './components/ToolbarItem';
-import { Flex, FlexProps } from '../Flex';
+import { ToolbarDivider } from './components/ToolbarDivider';
+import { Flex, type FlexProps } from '../Flex';
 
-export interface ToolbarProps
-  extends Omit<FlexProps, 'as' | 'alignItems' | 'justifyContent'> {
+export interface ToolbarProps extends FlexProps {
   /** Size of the component */
   size?: OmitUnion<TBaseSize, 'lg'>;
 }
 
 const InternalToolbar: React.FC<ToolbarProps> = ({
+  alignItems = 'center',
   children,
   size = 'md',
+  gap = 'layout-xs',
   height,
+  justifyContent = 'space-between',
   elevation = 'stickyBottom',
   padding = '0 cmp-sm',
   role = 'group',
@@ -33,10 +34,10 @@ const InternalToolbar: React.FC<ToolbarProps> = ({
   return (
     <Flex
       {...restFlexProps}
-      alignItems="center"
+      alignItems={alignItems}
       elevation={elevation}
-      gap="layout-xs"
-      justifyContent="space-between"
+      gap={gap}
+      justifyContent={justifyContent}
       height={height || surfaceHeightTokens[size]}
       padding={padding}
       role={role}
@@ -49,10 +50,15 @@ const InternalToolbar: React.FC<ToolbarProps> = ({
 
 export const Toolbar = InternalToolbar as typeof InternalToolbar & {
   Group: typeof ToolbarGroup;
-  Item: typeof ToolbarItem;
-  Separator: typeof ToolbarSeparator;
+  Item: typeof Flex;
+  Divider: typeof ToolbarDivider;
 };
 
 Toolbar.Group = ToolbarGroup;
-Toolbar.Item = ToolbarItem;
-Toolbar.Separator = ToolbarSeparator;
+Toolbar.Item = Flex;
+Toolbar.Divider = ToolbarDivider;
+
+InternalToolbar.displayName = 'Toolbar';
+Toolbar.Group.displayName = 'Toolbar.Group';
+Toolbar.Item.displayName = 'Toolbar.item';
+Toolbar.Divider.displayName = 'Toolbar.Divider';

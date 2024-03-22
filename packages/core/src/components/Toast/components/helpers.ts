@@ -1,11 +1,8 @@
 import { css, DefaultTheme } from 'styled-components';
-import type { ToastStatus } from '../declarations';
+import type { IToast } from '../declarations';
 
-export interface ToastPanelMixinProps {
-  /** Accent color schema */
-  accent?: boolean;
-  showProgressBar?: boolean;
-  status?: ToastStatus;
+export interface IToastPanelMixin
+  extends Pick<IToast, 'accent' | 'showProgressBar' | 'status'> {
   theme: DefaultTheme;
 }
 
@@ -19,7 +16,7 @@ export const toastPanelMixin = ({
   showProgressBar,
   status,
   theme,
-}: ToastPanelMixinProps) => {
+}: IToastPanelMixin) => {
   const tokensPanel = theme.cmp.panel;
   const tokensToast = theme.cmp.toast;
 

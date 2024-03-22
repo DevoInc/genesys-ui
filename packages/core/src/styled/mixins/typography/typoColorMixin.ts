@@ -1,7 +1,7 @@
 import { css, DefaultTheme } from 'styled-components';
 
 import { isValidColor } from '../../../helpers';
-import { TypoColorScheme } from '../../../components/Typography/constants';
+import { TTypoColorScheme } from '../../../components/Typography/declarations';
 import { TypoVariant } from './declarations';
 
 type TUITokens = DefaultTheme['alias']['color']['text']['feedback'];
@@ -15,7 +15,7 @@ type TUITokens = DefaultTheme['alias']['color']['text']['feedback'];
  */
 const getUiTokenValueByColorScheme = (
   uiTokens: TUITokens,
-  uiColorScheme: TypoColorScheme,
+  uiColorScheme: TTypoColorScheme,
 ): string => {
   const hyphenPos = uiColorScheme.indexOf('-');
   const isBaseContrast = hyphenPos === -1;
@@ -42,7 +42,7 @@ export const typoColorMixin = ({
   theme: tokens,
 }: {
   variant?: TypoVariant;
-  colorScheme?: TypoColorScheme;
+  colorScheme?: TTypoColorScheme;
   theme: DefaultTheme;
 }) => {
   const aliasTexColoTokens = tokens.alias.color.text;

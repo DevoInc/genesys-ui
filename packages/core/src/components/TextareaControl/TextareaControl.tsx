@@ -14,7 +14,7 @@ import { getFieldContextProps } from '../Field';
 
 import {
   StyledTextareaControl,
-  StyledTextareaControlProps,
+  type StyledTextareaControlProps,
 } from './StyledTextareaControl';
 
 interface CommonTextareaControlProps

@@ -1,12 +1,16 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { HeadingType, TypoCategories, TypoColorScheme } from './constants';
+import type {
+  TTypoBodySize,
+  TTypoHeadingSize,
+  TTypoSize,
+} from '../../declarations';
+import { ITypography, THeadingType, TTypoCategories } from './declarations';
 import {
   typoColorMixin,
   truncateTypoMixin,
   typoMixin,
 } from '../../styled/mixins';
-import { TTypoBodySize, TTypoHeadingSize, TTypoSize } from '../../declarations';
 
 /**
  * Get the heading category name based in type prop
@@ -14,7 +18,7 @@ import { TTypoBodySize, TTypoHeadingSize, TTypoSize } from '../../declarations';
  * @param typeProp h1, h2, hero-sm... etc.
  * @return category name
  */
-const getCategory = (typeProp: HeadingType): TypoCategories => {
+const getCategory = (typeProp: THeadingType): TTypoCategories => {
   if (typeProp?.startsWith('hero')) return 'hero';
   if (typeProp?.startsWith('overline')) return 'overline';
   return 'heading';
@@ -26,7 +30,7 @@ const getCategory = (typeProp: HeadingType): TypoCategories => {
  * @param typeProp h1, h2, hero-sm... etc.
  * @return type name
  */
-const getType = (typeProp: HeadingType): TTypoSize => {
+const getType = (typeProp: THeadingType): TTypoSize => {
   const hyphenPos = typeProp.indexOf('-');
   if (hyphenPos > -1) return typeProp.substring(hyphenPos + 1) as TTypoBodySize;
   return typeProp as TTypoHeadingSize;
@@ -38,20 +42,21 @@ const getType = (typeProp: HeadingType): TTypoSize => {
  * @param typeProp prop type of the heading component h1, h2, hero-sm... etc.
  * @return category and type values in an object
  */
-export const getHeadingCategoryAndType = (typeProp: HeadingType) => {
+export const getHeadingCategoryAndType = (typeProp: THeadingType) => {
   return {
     category: getCategory(typeProp),
     type: getType(typeProp),
   };
 };
 
-interface GetTypoCssProps {
-  variant?: TypoCategories;
-  colorScheme?: TypoColorScheme;
-  textAlign?: React.CSSProperties['textAlign'];
+interface GetTypoCssProps
+  extends Pick<
+    ITypography,
+    'colorScheme' | 'gutterBottom' | 'textAlign' | 'truncateLine'
+  > {
+  variant?: TTypoCategories;
   theme?: DefaultTheme;
-  truncateLine?: number;
-  size?: TTypoSize;
+  size?: ITypography['bodySize'];
 }
 
 /**

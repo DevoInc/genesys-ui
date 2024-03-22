@@ -62,8 +62,8 @@ export const WithAsideContent: Story = {
       const [activeTab, setActiveTab] = React.useState(0);
       useTabsAccessibility({ activeTab, tabsRef });
       return (
-        <Tabs aria-label="Demo tabs" ref={tabsRef} contained>
-          <Tabs.List>
+        <Tabs aria-label="Demo tabs" contained>
+          <Tabs.List activeTabIndex={activeTab} ref={tabsRef}>
             <Tabs.Item
               icon={<GIChart />}
               label="Tiny"
@@ -109,10 +109,10 @@ export const Closable: Story = {
       ]);
       useTabsAccessibility({ activeTab, tabsRef });
       //useClosableTabs({ activeTab, tabsRef, tabsLength: tabs.length });
-
+      console.log(activeTab);
       return (
         <Tabs aria-label="Demo tabs" contained>
-          <Tabs.Aside marginLeft="0">
+          <Tabs.Aside marginLeft="0" marginRight="cmp-sm">
             <Button
               size="sm"
               tooltip="Close all tabs"
@@ -171,8 +171,8 @@ export const Context: Story = {
       const [activeTab, setActiveTab] = React.useState(0);
       useTabsAccessibility({ activeTab, tabsRef });
       return (
-        <Tabs ref={tabsRef} colorScheme="primary" size="lg" wide>
-          <Tabs.List activeTabIndex={activeTab}>
+        <Tabs colorScheme="primary" size="lg" wide>
+          <Tabs.List activeTabIndex={activeTab} ref={tabsRef}>
             <Tabs.Item
               icon={<GIChart />}
               label="Tiny"

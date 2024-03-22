@@ -1,18 +1,8 @@
 import styled, { css } from 'styled-components';
 import { rgba } from 'polished';
 
-// global constants
-import { TTypoBodySize } from '../../declarations';
+import type { ITypography } from './declarations';
 
-// local constants
-import {
-  GutterBottom,
-  HeadingType,
-  ListStyle,
-  TypoColorScheme,
-} from './constants';
-
-// utils
 import { getHeadingCategoryAndType, getTypoCss } from './utils';
 import { getSpacingPropCss } from '../../helpers';
 import { srOnlyMixin } from '../../styled/mixins';
@@ -23,13 +13,10 @@ export const StyledAbbr = styled.abbr`
   border-bottom: 0;
 `;
 
-export interface StyledBlockQuoteProps {
+export interface StyledBlockQuoteProps
+  extends Pick<ITypography, 'gutterBottom' | 'textAlign'> {
   /** This property defines multiple styles: font-size, line-height... etc. */
-  size?: TTypoBodySize;
-  /** Css text-align property. */
-  textAlign?: React.CSSProperties['textAlign'];
-  /** Bottom margin to separate from another components. */
-  gutterBottom?: GutterBottom;
+  size?: ITypography['bodySize'];
 }
 
 export const StyledBlockQuote = styled.blockquote<StyledBlockQuoteProps>`
@@ -64,10 +51,9 @@ export const StyledBlockQuote = styled.blockquote<StyledBlockQuoteProps>`
   }}
 `;
 
-export interface StyledCodeBlockWrapperProps {
-  /** Bottom margin to separate from another components. */
-  gutterBottom?: GutterBottom;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface StyledCodeBlockWrapperProps
+  extends Pick<ITypography, 'gutterBottom'> {}
 
 export const StyledCodeBlockWrapper = styled.div<StyledCodeBlockWrapperProps>`
   ${({ gutterBottom, theme }) => {
@@ -85,15 +71,10 @@ export const StyledCodeBlockWrapper = styled.div<StyledCodeBlockWrapperProps>`
   }}
 `;
 
-export interface StyledCodeBlockProps {
+export interface StyledCodeBlockProps
+  extends Pick<ITypography, 'gutterBottom' | 'textAlign' | 'truncateLine'> {
   /** This property defines multiple styles: font-size, line-height... etc. */
-  size?: TTypoBodySize;
-  /** Css text-align property. */
-  textAlign?: React.CSSProperties['textAlign'];
-  /** Bottom margin to separate from another components. */
-  gutterBottom?: GutterBottom;
-  /** The number of lines before get truncated text with overflow to ellipsis (Css line-clamp property). */
-  truncateLine?: number;
+  size?: ITypography['bodySize'];
 }
 
 export const StyledCodeBlock = styled.code<StyledCodeBlockProps>`
@@ -147,17 +128,13 @@ export const StyledItalic = styled.em`
   font-style: italic;
 `;
 
-export interface StyledListProps {
+export interface StyledListProps
+  extends Pick<
+    ITypography,
+    'colorScheme' | 'gutterBottom' | 'listStyle' | 'textAlign' | 'truncateLine'
+  > {
   /** This property defines multiple styles: font-size, line-height... etc. */
-  size?: TTypoBodySize;
-  /** Css text-align property. */
-  textAlign?: React.CSSProperties['textAlign'];
-  /** Bottom margin to separate from another components. */
-  gutterBottom?: GutterBottom;
-  /** Css List style type. */
-  listStyle: ListStyle;
-  /** Pre defined color scheme for the text: base, weak, error... etc. */
-  colorScheme?: TypoColorScheme;
+  size?: ITypography['bodySize'];
 }
 
 export const StyledList = styled.ul<StyledListProps>`
@@ -199,17 +176,13 @@ export const StyledListItem = styled.li`
   }
 `;
 
-export interface StyledParagraphProps {
+export interface StyledParagraphProps
+  extends Pick<
+    ITypography,
+    'colorScheme' | 'gutterBottom' | 'textAlign' | 'truncateLine'
+  > {
   /** This property defines multiple styles: font-size, line-height... etc. */
-  size?: TTypoBodySize;
-  /** Css text-align property. */
-  textAlign?: React.CSSProperties['textAlign'];
-  /** Bottom margin to separate from another components. */
-  gutterBottom?: GutterBottom;
-  /** Pre-defined color scheme for the text: base, weak, error... etc. */
-  colorScheme?: TypoColorScheme;
-  /** The number of lines before get truncated text with overflow to ellipsis (Css line-clamp property). */
-  truncateLine?: number;
+  size?: ITypography['bodySize'];
 }
 
 export const StyledParagraph = styled.p<StyledParagraphProps>`
@@ -238,17 +211,13 @@ export const StyledParagraph = styled.p<StyledParagraphProps>`
   `}
 `;
 
-export interface StyledHeadingProps {
-  /** Css text-align property. */
-  textAlign?: React.CSSProperties['textAlign'];
-  /** Bottom margin to separate from another components. */
-  gutterBottom?: GutterBottom;
-  /** Pre defined color scheme for the text: base, weak, error... etc. */
-  colorScheme?: TypoColorScheme;
-  /** The number of lines before get truncated text with overflow to ellipsis (Css line-clamp property). */
-  truncateLine?: number;
-  /** Type of the Heading: h1-h8, hero, caps... which defines the specific styles of the heading: bold, uppercase... etc. */
-  size?: HeadingType;
+export interface StyledHeadingProps
+  extends Pick<
+    ITypography,
+    'colorScheme' | 'gutterBottom' | 'textAlign' | 'truncateLine'
+  > {
+  /** This property defines multiple styles: font-size, line-height... etc. */
+  size?: ITypography['headingSize'];
 }
 
 export const StyledHeading = styled.div<StyledHeadingProps>`
@@ -272,17 +241,13 @@ export const StyledHeading = styled.div<StyledHeadingProps>`
   `}
 `;
 
-export interface StyledLeadProps {
+export interface StyledLeadProps
+  extends Pick<
+    ITypography,
+    'colorScheme' | 'gutterBottom' | 'textAlign' | 'truncateLine'
+  > {
   /** This property defines multiple styles: font-size, line-height... etc. */
-  size?: TTypoBodySize;
-  /** Css text-align property. */
-  textAlign?: React.CSSProperties['textAlign'];
-  /** Bottom margin to separate from another components. */
-  gutterBottom?: GutterBottom;
-  /** Pre defined color scheme for the text: base, weak, error... etc. */
-  colorScheme?: TypoColorScheme;
-  /** The number of lines before get truncated text with overflow to ellipsis (Css line-clamp property). */
-  truncateLine?: number;
+  size?: ITypography['bodySize'];
 }
 
 export const StyledLead = styled.p<StyledLeadProps>`
@@ -309,17 +274,13 @@ export const StyledLead = styled.p<StyledLeadProps>`
   `}
 `;
 
-export interface StyledCaptionProps {
+export interface StyledCaptionProps
+  extends Pick<
+    ITypography,
+    'colorScheme' | 'gutterBottom' | 'textAlign' | 'truncateLine'
+  > {
   /** This property defines multiple styles: font-size, line-height... etc. */
-  size?: TTypoBodySize;
-  /** Css text-align property. */
-  textAlign?: React.CSSProperties['textAlign'];
-  /** Bottom margin to separate from another components. */
-  gutterBottom?: GutterBottom;
-  /** Pre defined color scheme for the text: base, weak, error... etc. */
-  colorScheme?: TypoColorScheme;
-  /** The number of lines before get truncated text with overflow to ellipsis (Css line-clamp property). */
-  truncateLine?: number;
+  size?: ITypography['bodySize'];
 }
 
 export const StyledCaption = styled.span<StyledCaptionProps>`

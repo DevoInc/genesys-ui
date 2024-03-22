@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-// declarations
 import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
@@ -8,18 +7,20 @@ import type {
   IStyledPolymorphic,
 } from '../../declarations';
 
-// styled
-import type { StyledTagContainerProps } from './components/StyledTagContainer';
-
-// components
-import { TagBadge, TagContainer, TagIcon, TagLabel } from './components';
+import {
+  TagBadge,
+  TagContainer,
+  type TagContainerProps,
+  TagIcon,
+  TagLabel,
+} from './components';
 
 export interface TagProps
   extends IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
     IGlobalAriaAttrs,
-    StyledTagContainerProps {
+    TagContainerProps {
   /** The name of the icon for the tag */
   icon?: React.ReactNode;
   /** Text for the tag */
@@ -61,13 +62,20 @@ export const InternalTag: React.FC<TagProps> = ({
 };
 
 export const Tag = InternalTag as typeof InternalTag & {
-  Badge: typeof TagBadge;
-  Container: typeof TagContainer;
-  Icon: typeof TagIcon;
-  Label: typeof TagLabel;
+  _Badge: typeof TagBadge;
+  _Container: typeof TagContainer;
+  _Icon: typeof TagIcon;
+  _Label: typeof TagLabel;
 };
 
-Tag.Badge = TagBadge;
-Tag.Container = TagContainer;
-Tag.Icon = TagIcon;
-Tag.Label = TagLabel;
+Tag._Badge = TagBadge;
+Tag._Container = TagContainer;
+Tag._Icon = TagIcon;
+Tag._Label = TagLabel;
+
+InternalTag.displayName = 'Tag';
+
+Tag._Badge.displayName = 'Tag._Badge';
+Tag._Container.displayName = 'Tag._Container';
+Tag._Icon.displayName = 'Tag._Icon';
+Tag._Label.displayName = 'Tag._Label';

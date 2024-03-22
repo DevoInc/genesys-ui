@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { IMouseEventAttrs } from '../../../declarations';
-import type { ToastStatus } from '../declarations';
+
+import type { IToast } from '../declarations';
 
 import { Divider } from '../../Divider';
 import { Flex } from '../../Flex';
@@ -12,28 +12,21 @@ import { VFlex } from '../../VFlex';
 import { ToastHeaderIcon } from './ToastHeaderIcon';
 import { getToastStatusIcon } from '../utils';
 
-export interface ToastHeaderProps {
-  /** react-toastify's function to close itself */
-  closeToast?: () => void;
-  /** Header close button tooltip */
-  closeTooltip?: string;
-  /** Allow collapse notification */
-  collapsable?: boolean;
-  /** Header collapse button tooltip */
-  collapseTooltip?: string;
-  /** Header expand button tooltip */
-  expandTooltip?: string;
-  /** Show notification collapsed or expanded */
-  collapsed?: boolean;
-  /** Action of collapse button */
-  onCollapse?: IMouseEventAttrs['onClick'];
-  /** Notification status */
-  status?: ToastStatus;
-  /** Notification subtitle */
-  subtitle?: string;
-  /** Notification title */
-  title?: string;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface ToastHeaderProps
+  extends Pick<
+    IToast,
+    | 'closeToast'
+    | 'closeTooltip'
+    | 'collapsable'
+    | 'collapsed'
+    | 'collapseTooltip'
+    | 'expandTooltip'
+    | 'onCollapse'
+    | 'status'
+    | 'subtitle'
+    | 'title'
+  > {}
 
 export const ToastHeader: React.FC<ToastHeaderProps> = ({
   closeToast,

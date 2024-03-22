@@ -1,4 +1,5 @@
 import { BadgeColorScheme } from './declarations';
+import React from 'react';
 
 /**
  * Get a solid text color in inverse mode
@@ -10,7 +11,7 @@ export const getBadgeInverseModeColor = ({
   colorScheme,
   textColor,
 }: {
-  colorScheme: BadgeColorScheme;
+  colorScheme: BadgeColorScheme | React.CSSProperties['backgroundColor'];
   textColor: string;
 }) => {
   if (colorScheme === 'neutral' || colorScheme === 'blend-base') return '#fff';

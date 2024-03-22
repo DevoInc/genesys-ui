@@ -1,4 +1,4 @@
-import type { AllHTMLAttributes } from 'react';
+import { AllHTMLAttributes, ImgHTMLAttributes } from 'react';
 import type { DOMAttributes } from 'react';
 
 /** ---------------------------------------------------------------------------------------
@@ -220,7 +220,7 @@ export interface IVideoAttrs<T = HTMLVideoElement> {
 /** ---------------------------------------------
  * Common declarations for label components
  * --------------------------------------------- */
-export interface ILabelAttrs<T = HTMLImageElement> {
+export interface ILabelAttrs<T = HTMLLabelElement> {
   /** A string that specifies which form element a label is bound to */
   htmlFor?: AllHTMLAttributes<T>['htmlFor'];
   /** A string indicating the form the image belongs to */
@@ -237,9 +237,13 @@ export interface IImageAttrs<T = HTMLImageElement> {
   alt?: AllHTMLAttributes<T>['alt'];
   /** A number that specifies the height of the image */
   height?: AllHTMLAttributes<T>['height'];
+  /** Specifies whether a browser should load an image immediately or to defer loading of images until some conditions are met. */
+  loading?: ImgHTMLAttributes<T>['loading'];
+  /** Specifies which referrer information to use when fetching an image. */
+  referrerPolicy?: ImgHTMLAttributes<T>['referrerPolicy'];
   /** A string that specifies the URL of the image */
   src?: AllHTMLAttributes<T>['src'];
-  /** A string that specifies a set of URLs of different images to be used at different screen resolutions */
+  /** A string that specifies a set of URLs of different images to be used at different screen resolutions. E.g. 'elva-fairy-480w.jpg 480w, elva-fairy-800w.jpg 800w' */
   srcSet?: AllHTMLAttributes<T>['srcSet'];
   /** A string that specifies the name of an image map to use with the image */
   useMap?: AllHTMLAttributes<T>['useMap'];

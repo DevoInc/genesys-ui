@@ -1,8 +1,10 @@
 export const tabsBasicUsageCode: string = `
-  const { activeTab, setActiveTab, tabsRef } = useActiveTab();
+  const tabsRef = React.useRef<HTMLDivElement>();
+  const [activeTab, setActiveTab] = React.useState(0);
+  useTabsAccessibility({ activeTab, tabsRef });
 return (
-  <Tabs {...props} ref={tabsRef}>
-    <Tabs.List activeTabIndex={activeTab}>
+  <Tabs {...props}>
+    <Tabs.List activeTabIndex={activeTab} ref={tabsRef}>
       <Tabs.Item
         icon={<GIChart />}
         label="Tiny"
@@ -31,11 +33,13 @@ return (
 `;
 
 export const tabsMarkCode: string = `
-  const { activeTab, setActiveTab, tabsRef } = useActiveTab();
-const { tabsListRef, markRef } = useTabsMark({ activeTabIndex });
+  const tabsRef = React.useRef<HTMLDivElement>();
+  const [activeTab, setActiveTab] = React.useState(0);
+  const { markRef } = useTabsMark({ activeTabIndex, tabsRef });
+  useTabsAccessibility({ activeTab, tabsRef });
 return (
-  <CustomTabs ref={tabsRef}>
-    <CustomTabsList ref={tabsListRef} activeTabIndex={activeTab}>
+  <CustomTabs>
+    <CustomTabsList ref={tabsRef} activeTabIndex={activeTab}>
       <Tabs.Item
         label="Tiny"
         onClick={() => setActiveTab(0)}

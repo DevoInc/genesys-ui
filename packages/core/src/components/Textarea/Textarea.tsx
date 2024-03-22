@@ -56,11 +56,6 @@ export const Textarea: React.FC<TextareaProps> = ({
     styles={styles}
     tooltip={tooltip}
   >
-    <TextareaControl
-      {...restNativeTextareaProps}
-      aria-label={ariaLabel}
-      disabled={disabled}
-      required={required}
-    />
+    <TextareaControl {...restNativeTextareaProps} aria-label={ariaLabel} />
   </Field>
 );

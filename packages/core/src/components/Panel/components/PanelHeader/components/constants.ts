@@ -1,10 +1,10 @@
-import { HeadingType } from '../../../../Typography/constants';
+import { THeadingType } from '../../../../Typography/constants';
 import { TPanelSize } from '../../../declarations';
 
 interface PanelHeaderSizes {
-  xs: { title: HeadingType; subtitle: { size: TPanelSize } };
-  sm: { title: HeadingType; subtitle: { size: TPanelSize } };
-  md: { title: HeadingType; subtitle: { size: TPanelSize } };
+  xs: { title: THeadingType; subtitle: { size: TPanelSize } };
+  sm: { title: THeadingType; subtitle: { size: TPanelSize } };
+  md: { title: THeadingType; subtitle: { size: TPanelSize } };
 }
 
 export const PANEL_HEADER_SIZES: PanelHeaderSizes = {

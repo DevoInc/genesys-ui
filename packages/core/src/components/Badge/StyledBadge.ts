@@ -8,6 +8,7 @@ import { BadgeColorScheme, BadgeSize } from './declarations';
 import { isValidColor, getAccTextColor } from '../../helpers';
 import { truncateTypoMixin } from '../../styled/mixins';
 import { getBadgeInverseModeColor } from './helpers';
+import React from 'react';
 
 export interface StyledBadgeProps {
   /** Size to define padding, line-height, font-size... etc. of the Badge. */
@@ -25,7 +26,7 @@ export interface StyledBadgeProps {
    * There are predefined types: primary, secondary... etc.
    * It's possible to use a custom color used for the background color and
    * auto-generated for the text based on this one to maintain AA accessible contrast.*/
-  colorScheme?: BadgeColorScheme;
+  colorScheme?: BadgeColorScheme | React.CSSProperties['backgroundColor'];
 }
 export const StyledBadge = styled.span<StyledBadgeProps>`
   ${({
@@ -45,7 +46,7 @@ export const StyledBadge = styled.span<StyledBadgeProps>`
       ? colorScheme
       : cmpTokens.color.background[contentType][colorSchemeForTokens];
     const textColor = isValidColor(colorScheme)
-      ? getAccTextColor(colorScheme, '#fff', cmpTokens.color.text.neutral)
+      ? getAccTextColor(colorScheme, '#fff', cmpTokens.color.text.help)
       : cmpTokens.color.text[colorSchemeForTokens];
     return css`
       position: relative;
@@ -74,7 +75,7 @@ export const StyledBadge = styled.span<StyledBadgeProps>`
       background-color: ${inverse ? textColor : bgColor};
 
       // color
-      color: ${inverse
+      color: ${inverse && !isValidColor(colorScheme)
         ? getBadgeInverseModeColor({ colorScheme, textColor: bgColor })
         : textColor};
     `;

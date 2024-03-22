@@ -29,7 +29,7 @@ export const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
     const context = React.useContext(TabsContext);
     const { markRef } = useTabsMark({
       activeTabIndex,
-      tabsListRef: ref as React.MutableRefObject<HTMLDivElement>,
+      tabsRef: ref as React.MutableRefObject<HTMLDivElement>,
     });
 
     return (

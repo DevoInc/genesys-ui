@@ -4,29 +4,20 @@ import { concat } from 'lodash';
 
 import { TOAST_ELEVATION_LEVEL } from '../constants';
 import type { IStyledOverloadCss } from '../../../declarations';
-import { ToastAction } from '../declarations';
-import { getFooterActions } from '../utils';
-import { type ToastPanelMixinProps, toastPanelMixin } from './helpers';
-import { ToastBadge, type ToastBadgeProps } from './ToastBadge';
-import { ToastContent, type ToastContentProps } from './ToastContent';
-import { ToastHeader, type ToastHeaderProps } from './ToastHeader';
-import { Panel } from '../../Panel';
+import type { IToast } from '../declarations';
 
+import { getFooterActions } from '../utils';
+import { toastPanelMixin } from './helpers';
+import { Panel, type PanelProps } from '../../Panel';
+import { ToastBadge } from './ToastBadge';
+import { ToastContent } from './ToastContent';
+import { ToastHeader } from './ToastHeader';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ToastPanelProps
   extends IStyledOverloadCss,
-    ToastHeaderProps,
-    Pick<ToastBadgeProps, 'updates'>,
-    Pick<ToastContentProps, 'content'>,
-    Pick<ToastPanelMixinProps, 'accent' | 'showProgressBar'> {
-  /** Apply action */
-  actionApply?: ToastAction;
-  /** Reject action */
-  actionReject?: ToastAction;
-  /** Max height that panel body could have. */
-  maxHeight?: string;
-  /** Show the progress bar */
-  showProgressBar?: boolean;
-}
+    Pick<PanelProps, 'maxHeight'>,
+    IToast {}
 
 export const ToastPanel: React.FC<ToastPanelProps> = ({
   accent,

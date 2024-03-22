@@ -1,26 +1,12 @@
 import styled, { css } from 'styled-components';
 import { camelCase } from 'lodash';
 
-import { TFeedbackColorScheme, TFeedbackSize } from '../../../declarations';
-
 import { typoMixin } from '../../../styled';
 import { getAccTextColor, isValidColor } from '../../../helpers';
+import type { ITag } from '../declarations';
 
-export interface StyledTagContainerProps {
-  /** It defines the color scheme for the background and text color.
-   * There are predefined types: primary, secondary... etc.
-   * It's possible to use a custom color used for the background color and
-   * auto-generated for the text based on this one to maintain AA accessible contrast.*/
-  colorScheme?: TFeedbackColorScheme;
-  /** Defines if the tag content is bold */
-  bold?: boolean;
-  /** Defines if the tag has background color or use a marker */
-  quiet?: boolean;
-  /** It Defines if the tag spans the full width of its parent */
-  wide?: boolean;
-  /** Size to define padding, line-height, font-size... etc. of the Tag. */
-  size?: TFeedbackSize;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface StyledTagContainerProps extends ITag {}
 
 export const StyledTagContainer = styled.span<StyledTagContainerProps>`
   ${({ colorScheme = 'neutral', bold, quiet, wide, size = 'md', theme }) => {
@@ -38,7 +24,7 @@ export const StyledTagContainer = styled.span<StyledTagContainerProps>`
       ? colorScheme
       : cmpTokens.color.background[colorBackground];
     const textColor = isValidColor(colorScheme)
-      ? getAccTextColor(colorScheme, '#fff', cmpTokens.color.text.neutral)
+      ? getAccTextColor(colorScheme, '#fff', cmpTokens.color.text.help)
       : cmpTokens.color.text[colorText];
     return css`
       position: relative;
