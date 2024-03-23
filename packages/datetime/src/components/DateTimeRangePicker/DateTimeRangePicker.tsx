@@ -21,7 +21,7 @@ import {
 } from '../DateTimeRangeControl';
 
 export interface DateTimeRangePickerProps
-  extends Pick<PopoverProps, 'appendTo' | 'isOpened'>,
+  extends Pick<PopoverProps, 'appendTo' | 'isOpened' | 'placement'>,
     Pick<
       DateTimeRangeProps,
       | 'ariaLabelNextMonth'
@@ -95,6 +95,7 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
   onCancel,
   onChange,
   showCalendarIcon,
+  placement,
   size = 'md',
   value: customValue = { from: null, to: null },
   ...restDateTimeRangeProps
@@ -190,6 +191,7 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
       disableOutsideEvent
       id={`${id}__popover`}
       isOpened={isOpened}
+      placement={placement}
     >
       {({ ref, toggle }) => (
         <div ref={ref}>
