@@ -34,6 +34,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   placeholder,
   size,
   value: customValue,
+  autofocus = false,
   ...restDateTimeProps
 }) => {
   const value = toTimestamp(customValue);
@@ -47,7 +48,6 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   const onChangeCallback = React.useCallback((ts: number) => {
     setDate(ts);
   }, []);
-
   return (
     <VFlex alignItems={'stretch'}>
       <InputControl
@@ -58,6 +58,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
         onChange={onChange}
         placeholder={placeholder}
         size={size}
+        autoFocus={autofocus}
       />
       <DateTime
         {...restDateTimeProps}

@@ -43,6 +43,7 @@ export const DateEditor: React.FC<CellEditorProps> = ({
             onChange(event.currentTarget.value)
           }
           value={new Date(value as Date)}
+          autofocus={true}
         />
       </Popover.Panel>
     </Popover>
