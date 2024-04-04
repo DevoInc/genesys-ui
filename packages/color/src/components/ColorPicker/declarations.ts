@@ -1,12 +1,12 @@
-interface RGBColor {
+interface IRGBColor {
   r: number;
   g: number;
   b: number;
 }
-interface HSLColor {
+interface IHSLColor {
   h: number;
   s: number;
   l: number;
 }
 
-export type Color = string | RGBColor | HSLColor;
+export type TColor = string | IRGBColor | IHSLColor;

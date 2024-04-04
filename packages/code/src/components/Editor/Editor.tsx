@@ -1,9 +1,9 @@
 import * as React from 'react';
 
+import { useEditorTheme } from './hooks';
 import { ActionsContainer } from './components/Actions';
 import { Container } from './components/Container/Container';
-import { InternalEditor, InternalEditorProps } from './components';
-import { useEditorTheme } from './hooks';
+import { InternalEditor, type InternalEditorProps } from './components';
 
 export interface EditorProps extends Omit<InternalEditorProps, 'theme'> {
   /**

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { useDiffEditor, type UseDiffEditorParams } from '../../hooks';
+import { useDiffEditor, type IUseDiffEditor } from '../../hooks';
 import {
   StyledInternalDiffEditor,
   type StyledInternalDiffEditorProps,
 } from './StyledInternalDiffEditor';
 
 export interface InternalDiffEditorProps
-  extends UseDiffEditorParams,
+  extends IUseDiffEditor,
     Pick<StyledInternalDiffEditorProps, 'bordered'> {
   /**
    * Width of the editor wrapper

@@ -1,25 +1,20 @@
 import * as React from 'react';
+
+import type { IUseEditor } from '../../hooks/editor/declarations';
+import { useEditor } from '../../hooks';
 import {
   StyledInternalEditor,
   type StyledInternalEditorProps,
 } from './StyledInternalEditor';
-import { useEditor } from '../../hooks';
-import { IUseEditorParams } from '../../hooks/editor/declarations';
 
 export interface InternalEditorProps
-  extends IUseEditorParams,
+  extends IUseEditor,
     Pick<StyledInternalEditorProps, 'bordered'> {
-  /**
-   * Width of the editor wrapper
-   */
+  /** Width of the editor wrapper */
   width?: number | string;
-  /**
-   * Height of the editor wrapper
-   */
+  /** Height of the editor wrapper */
   height?: number | string;
-  /**
-   * Add border to the editor wrapper
-   */
+  /** Add border to the editor wrapper */
   bordered?: boolean;
 }
 

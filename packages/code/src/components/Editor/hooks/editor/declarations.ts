@@ -3,7 +3,7 @@ import * as React from 'react';
 
 type Monaco = typeof monaco;
 
-export interface IUseEditorParams {
+export interface IUseEditor {
   /**
    * Value of the current model
    */
@@ -51,6 +51,6 @@ export interface IUseEditorParams {
   options?: monaco.editor.IStandaloneEditorConstructionOptions;
 }
 
-export type TUseEditor = (params: IUseEditorParams) => {
+export type TUseEditor = (params: IUseEditor) => {
   containerRef: React.MutableRefObject<HTMLDivElement | null>;
 };

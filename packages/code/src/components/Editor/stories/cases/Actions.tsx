@@ -2,7 +2,7 @@ import * as React from 'react';
 import type * as monaco from 'monaco-editor-core';
 
 import { IconButton, ButtonGroup } from '@devoinc/genesys-ui';
-import { Editor, EditorProps } from '../../';
+import { Editor, type EditorProps } from '../../';
 import {
   GIDocumentsFilesPaperTextArchiveCopy,
   GIPasteClipboard,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type * as monaco from 'monaco-editor-core';
 
-import { Editor, EditorProps, registerLanguage } from '../../';
+import { Editor, type EditorProps, registerLanguage } from '../../';
 import { jason } from '../../__stories__/languages/jason';
 import { esql } from '../../__stories__/languages/esql';
 

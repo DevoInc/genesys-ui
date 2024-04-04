@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { toColorString } from 'polished';
+import { RgbaColor } from 'polished/lib/types/color';
 
 import { FieldProps } from '@devoinc/genesys-ui';
-import { Color } from '../declarations';
+import { TColor } from '../declarations';
 import { StyledSketchPicker } from '../styled';
-import { RgbaColor } from 'polished/lib/types/color';
 
 export interface DropdownPickerProps extends Pick<FieldProps, 'id'> {
   color?: RgbaColor;
   onChange?: (color: string) => void;
-  presetColors?: Color[];
+  presetColors?: TColor[];
   disableAlpha?: boolean;
   liveUpdate?: boolean;
 }

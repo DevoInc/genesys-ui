@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Flex } from '@devoinc/genesys-ui';
-import { EditorProps } from '../../';
+import type { EditorProps } from '../../';
 import { CustomLang } from './CustomLang';
 
 export const MultipleEds = ({ ...props }: Partial<EditorProps>) => {

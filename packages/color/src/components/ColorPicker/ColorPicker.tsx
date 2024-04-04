@@ -2,21 +2,21 @@ import * as React from 'react';
 import { toColorString } from 'polished';
 
 import {
+  Field,
+  type FieldProps,
+  type IGlobalAriaAttrs,
+  Popover,
+  type PopoverProps,
+} from '@devoinc/genesys-ui';
+
+import {
   strColorToRGBAColor,
   colorFromColorPickerValue,
   checkEqualColors,
 } from './utils';
 
-import { DropdownPicker, DropdownPickerProps } from './components';
-import {
-  Field,
-  FieldProps,
-  IGlobalAriaAttrs,
-  Popover,
-  PopoverProps,
-} from '@devoinc/genesys-ui';
-
-import { StyledColorPicker, StyledColorPickerProps } from './styled';
+import { DropdownPicker, type DropdownPickerProps } from './components';
+import { StyledColorPicker, type StyledColorPickerProps } from './styled';
 
 export interface ColorPickerProps
   extends Pick<IGlobalAriaAttrs, 'aria-label'>,

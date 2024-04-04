@@ -3,12 +3,11 @@ import * as monaco from 'monaco-editor-core';
 import { useUpdateEffect } from 'ahooks';
 
 import { buildEditorOptions } from '../../../Editor/hooks/editor/buildEditorOptions';
-import { type IUseEditorParams } from '../../../Editor/hooks/editor/declarations';
+import type { IUseEditor } from '../../../Editor/hooks/editor/declarations';
 
 type Monaco = typeof monaco;
 
-export interface UseDiffEditorParams
-  extends Pick<IUseEditorParams, 'theme' | 'language'> {
+export interface IUseDiffEditor extends Pick<IUseEditor, 'theme' | 'language'> {
   /**
    * Value of the original editor (leftmost)
    */
@@ -51,7 +50,7 @@ export interface UseDiffEditorParams
   options?: monaco.editor.IDiffEditorConstructionOptions;
 }
 
-export type UseDiffEditor = (params: UseDiffEditorParams) => {
+export type UseDiffEditor = (params: IUseDiffEditor) => {
   containerRef: React.MutableRefObject<HTMLDivElement | null>;
 };
 
