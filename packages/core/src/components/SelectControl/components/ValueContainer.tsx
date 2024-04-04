@@ -9,10 +9,8 @@ import { DragEndEvent } from '@dnd-kit/core';
 import type { TSelectOption } from '../declarations';
 
 import { SelectControlContext } from '../context';
-
-import { Typography } from '../../Typography';
-import { HFlex } from '../../HFlex';
 import { SortableList } from './SorteableList';
+import { ChildrenValueContainer } from './ChildrenValueContainer';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ValueContainerProps extends RSValueContainerProps {}
@@ -77,16 +75,12 @@ export const ValueContainer: React.FC<ValueContainerProps> = ({
     return (
       <div ref={containerRef} className={containerClass}>
         <components.ValueContainer {...props}>
-          {props.selectProps.multipleSubtle && values.length > 0 ? (
-            <HFlex spacing="cmp-xxs">
-              <Typography.Caption colorScheme="weaker">
-                ({values.length})
-              </Typography.Caption>
-              {children}
-            </HFlex>
-          ) : (
-            children
-          )}
+          <ChildrenValueContainer
+            values={values}
+            multipleSubtle={props.selectProps.multipleSubtle}
+          >
+            {children}
+          </ChildrenValueContainer>
         </components.ValueContainer>
       </div>
     );
