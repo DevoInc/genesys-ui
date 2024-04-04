@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { Field, FieldProps } from '../Field';
+import { Field, type FieldProps } from '../Field';
 import { Popover } from '../Popover';
 
 import { FieldsCombinerElemContext } from './context';

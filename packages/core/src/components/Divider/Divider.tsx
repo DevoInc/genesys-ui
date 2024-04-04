@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { StyledDivider, StyledDividerProps } from './StyledDivider';
-import { IStyledOverloadCss } from '../../declarations';
+import { StyledDivider, type StyledDividerProps } from './StyledDivider';
+import type { IStyledOverloadCss } from '../../declarations';
 
 export interface DividerProps
   extends Omit<StyledDividerProps, '$height' | '$width'>,

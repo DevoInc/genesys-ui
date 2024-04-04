@@ -1,6 +1,9 @@
 import styled from 'styled-components';
+import type {
+  ILayoutBoxCss,
+  ILayoutTransientForStyled,
+} from '../../declarations';
 import { boxMixin } from '../../styled/mixins/components/boxMixin';
-import { ILayoutBoxCss, ILayoutTransientForStyled } from '../../declarations';
 
 interface StyledBoxProps
   extends Omit<ILayoutBoxCss, 'display' | 'height' | 'width'>,

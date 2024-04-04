@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
-import {
+import type {
   IFocusEventAttrs,
   IGlobalAriaAttrs,
   IGlobalAttrs,
@@ -12,11 +13,13 @@ import {
   ITriggerAriaAttrs,
 } from '../../../declarations';
 
-import { StyledAvatarContainer, StyledAvatarContainerProps } from '../styled';
-import { Overlay } from '../../Overlay';
 import { avatarBackdropMixin } from './mixins';
-import { useTheme } from 'styled-components';
+import { Overlay } from '../../Overlay';
 import { Icon } from '../../Icon';
+import {
+  StyledAvatarContainer,
+  type StyledAvatarContainerProps,
+} from '../styled';
 
 export interface AvatarContainerProps
   extends Omit<StyledAvatarContainerProps, '$disabled'>,

@@ -1,10 +1,10 @@
-export type FieldsCombinerType =
+export type TFieldsCombinerType =
   | 'button'
   | 'check'
   | 'field'
   | 'other'
   | 'popover';
 
-export type FieldsCombinerOrder = 'first' | 'last';
+export type TFieldsCombinerOrder = 'first' | 'last';
 
-export type FieldsCombinerCombinedButtons = boolean;
+export type TFieldsCombinerCombinedButtons = boolean;

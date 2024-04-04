@@ -1,5 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
-import { IPanelHeaderAttrs } from './declarations';
+import type { IPanelHeaderAttrs } from './declarations';
 
 /**
  * Get the specific styles for Flex component when it's used as a PanelHeader append component

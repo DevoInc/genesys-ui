@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {
+import type {
   IButtonAttrs,
   IFieldAttrs,
   IFocusEventAttrs,
@@ -17,7 +17,7 @@ import {
 import {
   StyledMenuItem,
   StyledMenuItemInner,
-  StyledMenuItemInnerProps,
+  type StyledMenuItemInnerProps,
 } from '../styled';
 
 export interface MenuItemContainerProps

@@ -1,4 +1,4 @@
-import {
+import type {
   TBasicState,
   TMouseState,
   TGlobalSize,
@@ -9,12 +9,12 @@ import {
 import { PickUnion } from '../../typeFunctions';
 
 // LINK - COLOR SCHEME -------------------------------------- //
-export type LinkColorScheme =
+export type TLinkColorScheme =
   | PickUnion<TAllColorScheme, 'base' | 'inverse'>
   | TUIColorScheme;
 
 // LINK - SIZE --------------------------------------------- //
-export type LinkSize = TBaseSize | PickUnion<TGlobalSize, 'xs'>;
+export type TLinkSize = TBaseSize | PickUnion<TGlobalSize, 'xs'>;
 
 // LINK - STATE -------------------------------------------- //
-export type LinkState = TBasicState | TMouseState;
+export type TLinkState = TBasicState | TMouseState;

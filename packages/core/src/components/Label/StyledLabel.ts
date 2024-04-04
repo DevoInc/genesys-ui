@@ -1,18 +1,18 @@
+import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import {
+import type {
   TBodyColorScheme,
   TUIColorScheme,
   ILabelAttrs,
 } from '../../declarations';
-import { LabelSize } from './declarations';
+import type { TLabelSize } from './declarations';
 import {
   truncateTypoMixin,
   typoColorMixin,
   typoMixin,
   srOnlyMixin,
 } from '../../styled/mixins';
-import * as React from 'react';
 
 export interface StyledLabelProps extends Pick<ILabelAttrs, 'htmlFor'> {
   /** This property defines the color scheme for the Label.
@@ -21,7 +21,7 @@ export interface StyledLabelProps extends Pick<ILabelAttrs, 'htmlFor'> {
   colorScheme?: TBodyColorScheme | TUIColorScheme;
   cursor?: React.CSSProperties['cursor'];
   /** Size of the Label.*/
-  size?: LabelSize;
+  size?: TLabelSize;
   /** The label is hidden but accessible for screen-readers.*/
   srOnly?: boolean;
   textAlign?: React.CSSProperties['textAlign'];

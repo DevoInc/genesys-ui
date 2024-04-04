@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { ButtonGroupContext } from '../context';
 
-import { Button, ButtonProps } from '../../Button';
+import { Button, type ButtonProps } from '../../Button';
 
 export interface ButtonGroupButtonProps extends ButtonProps {}
 

@@ -1,12 +1,12 @@
 import { DefaultTheme } from 'styled-components';
-import { ChipSize } from './declarations';
+import type { TChipSize } from './declarations';
 
 export const getPadding = ({
   size,
   sortable,
   tokens,
 }: {
-  size: ChipSize;
+  size: TChipSize;
   sortable?: boolean;
   tokens: DefaultTheme['cmp']['chip'];
 }) => {

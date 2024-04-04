@@ -1,4 +1,7 @@
-import { IPanelContainerAttrs, TPanelRemoveSpace } from '../../declarations';
+import type {
+  IPanelContainerAttrs,
+  TPanelRemoveSpace,
+} from '../../declarations';
 
 export interface IPanelFooterAttrs extends IPanelContainerAttrs {
   /** Apply the raised surface background color to the footer */

@@ -1,8 +1,8 @@
-import { TGlobalSpacing } from '../../declarations';
-import { IconProps } from '../Icon';
-import { HelperSize } from './declarations';
+import type { TGlobalSpacing } from '../../declarations';
+import type { IconProps } from '../Icon';
+import type { THelperSize } from './declarations';
 
-export const HELPER_ICON_SIZE_MAP: { [key in HelperSize]: IconProps['size'] } =
+export const HELPER_ICON_SIZE_MAP: { [key in THelperSize]: IconProps['size'] } =
   {
     xxs: 'xxxxs',
     xs: 'xxxs',
@@ -11,7 +11,7 @@ export const HELPER_ICON_SIZE_MAP: { [key in HelperSize]: IconProps['size'] } =
     lg: 'sm',
   } as const;
 
-export const HELPER_SIZE_SPACE_MAP: { [key in HelperSize]: TGlobalSpacing } = {
+export const HELPER_SIZE_SPACE_MAP: { [key in THelperSize]: TGlobalSpacing } = {
   xxs: 'cmp-xs',
   xs: 'cmp-xs',
   sm: 'cmp-xs',

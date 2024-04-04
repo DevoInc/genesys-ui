@@ -1,9 +1,9 @@
 import { css, DefaultTheme, StyledComponent } from 'styled-components';
-import { ButtonSize } from '../Button';
+import type { TButtonSize } from '../Button';
 import { FLEX_SPACING_SIZE_MAP } from './constants';
 
 export const getButtonGroupSpacingSize = (
-  size: ButtonSize,
+  size: TButtonSize,
   theme: DefaultTheme,
 ) => {
   const sizeForSpacing = FLEX_SPACING_SIZE_MAP[size];
@@ -52,7 +52,7 @@ export interface ButtonGroupItemMixinProps {
   /** If the child action has 'quiet' colorScheme. */
   hasQuietButton?: boolean;
   /** The size of the action/s */
-  size?: ButtonSize;
+  size?: TButtonSize;
   theme: DefaultTheme;
 }
 

@@ -3,8 +3,8 @@ import { useTheme } from 'styled-components';
 
 // components
 import { Flex } from '../../Flex';
-import { StyledInputControlProps } from '../styled';
-import { IStyledOverloadCss } from '../../../declarations';
+import type { StyledInputControlProps } from '../styled';
+import type { IStyledOverloadCss } from '../../../declarations';
 
 export interface InputControlInnerContainerProps
   extends IStyledOverloadCss,

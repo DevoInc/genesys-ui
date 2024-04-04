@@ -5,7 +5,6 @@ import { css } from 'styled-components';
  *
  * @return styles for Panel component
  */
-
 export const modalPanelMixin = ({ theme }) => {
   const tokensModal = theme.cmp.modal;
   return css`

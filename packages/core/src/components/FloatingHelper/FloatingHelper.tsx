@@ -1,14 +1,15 @@
 import * as React from 'react';
 
+import { FLOATING_HELPER_ICON_BUTTON_SIZE_MAP } from './constants';
+import type { HelperProps } from '../Helper';
+import type { TFloatingHelperSize } from './declarations';
+import { hasStatus } from '../../utils/validations';
+
 import { Typography } from '../Typography';
 import { InlineMessage } from '../InlineMessage';
-import { type HelperProps } from '../Helper';
-import { FLOATING_HELPER_ICON_BUTTON_SIZE_MAP } from './constants';
-import { hasStatus } from '../../utils/validations';
-import { FloatingHelperSize } from './declarations';
 
 export interface FloatingHelperProps extends Omit<HelperProps, 'size'> {
-  size?: FloatingHelperSize;
+  size?: TFloatingHelperSize;
 }
 
 export const FloatingHelper: React.FC<FloatingHelperProps> = ({

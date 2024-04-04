@@ -1,14 +1,17 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import type { FieldsCombinerOrder, FieldsCombinerType } from '../declarations';
+import type {
+  TFieldsCombinerOrder,
+  TFieldsCombinerType,
+} from '../declarations';
 import type { TFieldSize, TFieldStatus } from '../../../declarations';
 
 export interface StyledFieldsCombinerItemProps {
   combinedButtons?: boolean;
   $width?: React.CSSProperties['width'];
-  $order: FieldsCombinerOrder;
-  componentType?: FieldsCombinerType;
+  $order: TFieldsCombinerOrder;
+  componentType?: TFieldsCombinerType;
   size: TFieldSize;
   status: TFieldStatus;
 }

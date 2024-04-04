@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { BannerStatus } from './declarations';
+import type { TBannerStatus } from './declarations';
 
 export interface BannerContextProps {
-  status: BannerStatus;
+  status: TBannerStatus;
 }
 
 export const BannerContext = React.createContext<BannerContextProps>({

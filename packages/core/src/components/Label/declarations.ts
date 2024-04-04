@@ -1,4 +1,6 @@
 import { PickUnion } from '../../typeFunctions';
 import type { TBaseSize, TGlobalSize } from '../../declarations/commonProps';
 
-export type LabelSize = TBaseSize | PickUnion<TGlobalSize, 'xxs' | 'xs' | 'xl'>;
+export type TLabelSize =
+  | TBaseSize
+  | PickUnion<TGlobalSize, 'xxs' | 'xs' | 'xl'>;

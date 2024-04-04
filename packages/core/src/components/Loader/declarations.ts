@@ -1,9 +1,9 @@
-import { TGlobalSize } from '../../declarations';
+import type { TGlobalSize } from '../../declarations';
 import { PickUnion } from '../../typeFunctions';
 
-export type ContextualScrollLoaderSize = PickUnion<TGlobalSize, 'md' | 'lg'>;
-export type ContextualScrollLoaderType = 'progress' | 'spinner';
-export type LoaderBasicColorScheme = 'dark' | 'light';
-export type LoaderColorScheme = LoaderBasicColorScheme | 'inherited';
-export type LoaderSize = 'md' | 'sm';
+export type TContextualScrollLoaderSize = PickUnion<TGlobalSize, 'md' | 'lg'>;
+export type TContextualScrollLoaderType = 'progress' | 'spinner';
+export type TLoaderBasicColorScheme = 'dark' | 'light';
+export type TLoaderColorScheme = TLoaderBasicColorScheme | 'inherited';
+export type TLoaderSize = 'md' | 'sm';
 export type TLoaderGradientPosition = 'top' | 'right' | 'bottom' | 'left';

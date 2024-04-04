@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button, ButtonContainerProps } from '../../Button';
+import { Button, type ButtonContainerProps } from '../../Button';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IconButtonContainerProps

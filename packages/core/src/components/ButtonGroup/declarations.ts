@@ -1,7 +1,3 @@
-// PROP TYPES - DECLARATIONS -------------------------------------------------- //
+import { TButtonSize } from '../Button';
 
-// ButtonGroup - Size
-
-import { ButtonSize } from '../Button';
-
-export type ButtonGroupSize = ButtonSize;
+export type TButtonGroupSize = TButtonSize;

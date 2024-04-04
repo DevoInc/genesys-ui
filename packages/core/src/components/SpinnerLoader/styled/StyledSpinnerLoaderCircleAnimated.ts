@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { DASH_ANIMATION } from '../constants';
-import { TSpinnerColorScheme } from '../declarations';
+import type { TSpinnerColorScheme } from '../declarations';
 
 interface StyledSpinnerLoaderCircleAnimatedProps {
   colorScheme?: TSpinnerColorScheme;

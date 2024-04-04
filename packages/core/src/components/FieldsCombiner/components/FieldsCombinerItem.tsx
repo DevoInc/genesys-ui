@@ -4,12 +4,12 @@ import {
   StyledFieldsCombinerItem,
   StyledFieldsCombinerItemProps,
 } from './StyledFieldsCombinerItem';
-import { FieldsCombinerType } from '../declarations';
+import { TFieldsCombinerType } from '../declarations';
 
 export interface FieldsCombinerItemProps
   extends Omit<StyledFieldsCombinerItemProps, '$order' | '$width'> {
   children: React.ReactNode;
-  componentType: FieldsCombinerType;
+  componentType: TFieldsCombinerType;
   width?: StyledFieldsCombinerItemProps['$width'];
   order?: StyledFieldsCombinerItemProps['$order'];
 }

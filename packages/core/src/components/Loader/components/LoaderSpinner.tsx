@@ -3,8 +3,8 @@ import * as React from 'react';
 import { LoaderContext } from '../context';
 import { LOADER_SIZE_PROGRESS_AND_SPINNER } from '../constants';
 
-import { SpinnerLoader, SpinnerLoaderProps } from '../../SpinnerLoader';
-import { TSpinnerColorScheme } from '../../SpinnerLoader/declarations';
+import { SpinnerLoader, type SpinnerLoaderProps } from '../../SpinnerLoader';
+import type { TSpinnerColorScheme } from '../../SpinnerLoader/declarations';
 
 export const LoaderSpinner: React.FC<SpinnerLoaderProps> = ({
   colorScheme,

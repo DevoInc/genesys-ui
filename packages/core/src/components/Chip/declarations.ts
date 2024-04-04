@@ -3,7 +3,7 @@ import type {
   TMouseState,
   TSelectedState,
 } from '../../declarations/commonProps';
-import type { ButtonSize } from '../Button';
+import type { TButtonSize } from '../Button';
 
-export type ChipSize = ButtonSize;
-export type ChipState = TBasicState | TMouseState | TSelectedState;
+export type TChipSize = TButtonSize;
+export type TChipState = TBasicState | TMouseState | TSelectedState;

@@ -1,7 +1,10 @@
 import * as React from 'react';
 
 // declarations
-import { IFieldEventAttrs, TSelectionScheme } from '../../../../declarations';
+import type {
+  IFieldEventAttrs,
+  TSelectionScheme,
+} from '../../../../declarations';
 
 // components
 import { GICheckThick } from '@devoinc/genesys-icons';
@@ -9,7 +12,7 @@ import { VFlex } from '../../../VFlex';
 import { HFlex } from '../../../HFlex';
 import {
   MenuItemContainer,
-  MenuItemContainerProps,
+  type MenuItemContainerProps,
   MenuItemExpandableMark,
   MenuItemIcon,
   MenuItemShortCut,

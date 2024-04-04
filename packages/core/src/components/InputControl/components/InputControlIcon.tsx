@@ -1,8 +1,11 @@
 import * as React from 'react';
 
-import { StyledInputControlIcon, StyledInputControlIconProps } from '../styled';
-import { type TFieldStatus, IStyledOverloadCss } from '../../../declarations';
-import { Icon, IconProps } from '../../Icon';
+import {
+  StyledInputControlIcon,
+  type StyledInputControlIconProps,
+} from '../styled';
+import type { TFieldStatus, IStyledOverloadCss } from '../../../declarations';
+import { Icon, type IconProps } from '../../Icon';
 import { useTheme } from 'styled-components';
 
 export interface InputControlIconProps

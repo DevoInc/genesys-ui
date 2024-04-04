@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { getSize, ROTATE_ANIMATION } from '../constants';
-import { TSpinnerSize } from '../declarations';
+import type { TSpinnerSize } from '../declarations';
 
 interface StyledSpinnerLoaderSvgProps {
   size?: TSpinnerSize;

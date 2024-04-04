@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { ButtonColorScheme } from '../Button';
-import { ButtonGroupSize } from './declarations';
+import type { TButtonColorScheme } from '../Button';
+import type { TButtonGroupSize } from './declarations';
 
 export interface IButtonGroupContext {
-  colorScheme?: ButtonColorScheme;
+  colorScheme?: TButtonColorScheme;
   hasQuietButton?: boolean;
-  size: ButtonGroupSize;
+  size: TButtonGroupSize;
 }
 
 export const ButtonGroupContext = React.createContext<IButtonGroupContext>({

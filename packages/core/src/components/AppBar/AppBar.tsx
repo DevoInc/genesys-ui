@@ -3,11 +3,11 @@ import * as React from 'react';
 import { FlexItem } from '../Flex/components';
 import {
   AppBarContainer,
-  AppBarContainerProps,
+  type AppBarContainerProps,
   AppBarDivider,
   AppBarHeading,
   AppBarNavigation,
-  AppBarNavigationProps,
+  type AppBarNavigationProps,
 } from './components';
 
 interface AppBarProps extends AppBarContainerProps {

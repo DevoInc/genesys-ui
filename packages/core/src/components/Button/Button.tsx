@@ -7,7 +7,7 @@ import {
 } from './constants';
 
 // declarations
-import {
+import type {
   IButtonAttrs,
   IFocusEventAttrs,
   IGlobalAriaAttrs,
@@ -20,7 +20,7 @@ import {
   ITriggerEventAttrs,
   TUIColorScheme,
 } from '../../declarations';
-import { ButtonIconPosition } from './declarations';
+import type { TButtonIconPosition } from './declarations';
 
 // components
 import {
@@ -35,7 +35,7 @@ import {
 
 import {
   ButtonContainer,
-  ButtonContainerProps,
+  type ButtonContainerProps,
 } from './components/ButtonContainer';
 
 export interface ButtonProps
@@ -59,7 +59,7 @@ export interface ButtonProps
   /** Icon needs a higher font-weight */
   hasBoldIcon?: boolean;
   /** Icon Position */
-  iconPosition?: ButtonIconPosition;
+  iconPosition?: TButtonIconPosition;
 }
 
 export const InternalButton = React.forwardRef<HTMLElement, ButtonProps>(
@@ -95,7 +95,7 @@ export const InternalButton = React.forwardRef<HTMLElement, ButtonProps>(
     },
     ref,
   ) => {
-    const defIconPosition: ButtonIconPosition =
+    const defIconPosition: TButtonIconPosition =
       squared && !hasDropdown ? null : iconPosition;
     const isLoading =
       state === 'loading' ||

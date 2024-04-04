@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { TUIColorScheme } from '../../../../declarations/commonProps';
+import type { TUIColorScheme } from '../../../../declarations/commonProps';
 
 import {
   StyledPopoverArrow,
-  StyledPopoverArrowProps,
+  type StyledPopoverArrowProps,
 } from '../../../Popover/components';
 
 import { inlineMessageArrowMixin } from './helpers';

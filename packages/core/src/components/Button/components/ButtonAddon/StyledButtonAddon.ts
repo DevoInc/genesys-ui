@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { ButtonIconPosition, ButtonSize } from '../../declarations';
+import type { TButtonIconPosition, TButtonSize } from '../../declarations';
 
 export interface StyledButtonAddonProps {
   /** If the button addon includes space next to it */
@@ -8,9 +8,9 @@ export interface StyledButtonAddonProps {
   /** If the button addon is a dropdown */
   isDropdown?: boolean;
   /** The position of addon  */
-  position?: ButtonIconPosition;
+  position?: TButtonIconPosition;
   /** Sets how much spacing, font-size, width... has the button addon etc. */
-  size?: ButtonSize;
+  size?: TButtonSize;
 }
 
 export const StyledButtonAddon = styled.span<StyledButtonAddonProps>`

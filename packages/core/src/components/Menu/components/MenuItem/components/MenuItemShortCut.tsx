@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { CaptionProps } from '../../../../Typography/components/block';
+import type { CaptionProps } from '../../../../Typography/components/block';
 
 import { Flex } from '../../../../Flex';
 import { Typography } from '../../../../Typography';

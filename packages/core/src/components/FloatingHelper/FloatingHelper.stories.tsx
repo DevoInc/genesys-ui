@@ -5,7 +5,7 @@ import { FloatingHelper } from './FloatingHelper';
 const meta: Meta<typeof FloatingHelper> = {
   title: 'Components/Feedback/FloatingHelper',
   component: FloatingHelper,
-  args: { visible: false, size: 'md', status: 'base' },
+  args: { size: 'md', status: 'base' },
 };
 
 export default meta;

@@ -1,8 +1,11 @@
 import * as React from 'react';
 
 import { LoaderContext } from '../context';
-import { DevoLogoColorScheme } from '../../DevoLogoSpinner/declarations';
-import { DevoLogoSpinner, DevoLogoSpinnerProps } from '../../DevoLogoSpinner';
+import type { TDevoLogoColorScheme } from '../../DevoLogoSpinner/declarations';
+import {
+  DevoLogoSpinner,
+  type DevoLogoSpinnerProps,
+} from '../../DevoLogoSpinner';
 
 export const LoaderDevoLogoSpinner: React.FC<DevoLogoSpinnerProps> = ({
   colorScheme,
@@ -13,7 +16,7 @@ export const LoaderDevoLogoSpinner: React.FC<DevoLogoSpinnerProps> = ({
   return (
     <DevoLogoSpinner
       {...restDevoLogoProps}
-      colorScheme={colorScheme || (context.colorScheme as DevoLogoColorScheme)}
+      colorScheme={colorScheme || (context.colorScheme as TDevoLogoColorScheme)}
       size={size || context.size}
     />
   );

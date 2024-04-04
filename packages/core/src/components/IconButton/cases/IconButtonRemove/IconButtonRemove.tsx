@@ -3,9 +3,9 @@ import { GIExitClose } from '@devoinc/genesys-icons';
 
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 
-import { IconButton, IconButtonProps } from '../../IconButton';
+import { IconButton, type IconButtonProps } from '../../IconButton';
 
-import { ButtonBasicState } from '../../../Button/declarations';
+import type { TButtonBasicState } from '../../../Button/declarations';
 
 export interface IconButtonRemoveProps
   extends Omit<
@@ -31,7 +31,7 @@ export interface IconButtonRemoveProps
     | 'target'
     | 'value'
   > {
-  state?: ButtonBasicState;
+  state?: TButtonBasicState;
 }
 
 export const IconButtonRemove = React.forwardRef<

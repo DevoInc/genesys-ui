@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Flex, FlexItemProps } from '../../../Flex';
-import { Tabs, TabsItemProps } from '../../../Tabs';
+import { Flex, type FlexItemProps } from '../../../Flex';
+import { Tabs, type TabsItemProps } from '../../../Tabs';
 
 export interface AppBarNavigationProps extends FlexItemProps {
   /** List of Tabs.Item elements. */

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {
+import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
@@ -8,15 +8,14 @@ import {
   ITriggerAriaAttrs,
   ITriggerEventAttrs,
 } from '../../../declarations';
+import { CollapseContext } from '../context';
 
 import { Flex } from '../../Flex';
-
 import {
   StyledCollapseContainer,
   StyledCollapseContainerButton,
-  StyledCollapseContainerProps,
+  type StyledCollapseContainerProps,
 } from '../styled';
-import { CollapseContext } from '../context';
 
 export interface CollapseContainerProps
   extends StyledCollapseContainerProps,

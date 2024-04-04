@@ -1,4 +1,4 @@
-import { BadgeColorScheme } from './declarations';
+import { TBadgeColorScheme } from './declarations';
 import React from 'react';
 
 /**
@@ -11,7 +11,7 @@ export const getBadgeInverseModeColor = ({
   colorScheme,
   textColor,
 }: {
-  colorScheme: BadgeColorScheme | React.CSSProperties['backgroundColor'];
+  colorScheme: TBadgeColorScheme | React.CSSProperties['backgroundColor'];
   textColor: string;
 }) => {
   if (colorScheme === 'neutral' || colorScheme === 'blend-base') return '#fff';

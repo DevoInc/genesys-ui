@@ -13,7 +13,7 @@ import { inlineMessageContainerMixin } from './helpers';
 
 import { Popover, type PopoverProps } from '../Popover';
 import type { IconButtonStatusProps } from '../IconButton';
-import type { ButtonExpandableState, ButtonSize } from '../Button';
+import type { TButtonExpandableState, TButtonSize } from '../Button';
 
 import {
   InlineMessageArrow,
@@ -37,13 +37,13 @@ export interface InlineMessageProps
   disabled?: boolean;
   focused?: boolean;
   hovered?: boolean;
-  state?: ButtonExpandableState;
+  state?: TButtonExpandableState;
   status?: IconButtonStatusProps['colorScheme'];
   tooltip?: string;
   trigger?: {
     Component?: React.ReactNode;
     icon?: React.ReactNode;
-    size?: ButtonSize;
+    size?: TButtonSize;
     secondaryText?: string;
     text?: string;
     tooltip?: string;

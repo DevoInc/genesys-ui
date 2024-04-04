@@ -4,20 +4,23 @@ import { concat } from 'lodash';
 
 import { useDetectScroll } from '../../hooks';
 
-import { TPanelSize } from './declarations';
-import { IStyledOverloadCss, IStyledPolymorphic } from '../../declarations';
+import type { TPanelSize } from './declarations';
+import type {
+  IStyledOverloadCss,
+  IStyledPolymorphic,
+} from '../../declarations';
 
 import { PanelContext } from './context';
 
-import { panelMixin, PanelMixinProps } from './helpers';
+import { panelMixin, type PanelMixinProps } from './helpers';
 
-import { Box, BoxProps } from '../Box';
+import { Box, type BoxProps } from '../Box';
 import {
   PanelBody,
   PanelFooter,
   PanelHeader,
-  PanelFooterProps,
-  PanelHeaderProps,
+  type PanelFooterProps,
+  type PanelHeaderProps,
 } from './components';
 
 export interface PanelProps

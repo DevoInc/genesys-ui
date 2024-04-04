@@ -2,11 +2,11 @@ import * as React from 'react';
 
 import type { IContainerEventAttrs } from '../../declarations/htmlEventAttrs';
 import { Form, type FormGroupProps } from '../Form';
-import { TChoiceGroupColorScheme } from './declarations';
+import type { TChoiceGroupColorScheme } from './declarations';
 import { ChoiceGroupContext } from './context';
 import {
   ChoiceGroupIconButton,
-  ChoiceGroupIconButtonProps,
+  type ChoiceGroupIconButtonProps,
 } from './components';
 
 export interface ChoiceGroupProps

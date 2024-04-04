@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import { TAllColorScheme, TGlobalSpacing } from '../../declarations';
+import type { TAllColorScheme, TGlobalSpacing } from '../../declarations';
 import { getSpacingPropCss } from '../../helpers';
 import { getDividerColorTokens } from './helpers';
 

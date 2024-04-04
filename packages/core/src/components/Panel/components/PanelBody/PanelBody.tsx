@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { IPanelBaseAttrs, IPanelContainerAttrs } from '../../declarations';
-import { IPanelBodyAttrs } from './declarations';
+import type { IPanelBaseAttrs, IPanelContainerAttrs } from '../../declarations';
+import type { IPanelBodyAttrs } from './declarations';
 import { PanelContext } from '../../context';
 
 import { panelBodyMixin } from './helpers';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { Banner, BannerProps } from '../../../Banner';
+import { Banner, type BannerProps } from '../../../Banner';
 import { inlineMessageBannerMixin } from './helpers';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

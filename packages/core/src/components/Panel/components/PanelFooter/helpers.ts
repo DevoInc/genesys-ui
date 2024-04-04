@@ -1,5 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
-import { IPanelFooterAttrs } from './declarations';
+import type { IPanelFooterAttrs } from './declarations';
 
 /**
  * Get the specific styles for Flex component when it's used as a PanelFooterContainer component

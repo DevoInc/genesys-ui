@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { camelCase } from 'lodash';
 
 // declarations
-import { BadgeColorScheme, BadgeSize } from './declarations';
+import { TBadgeColorScheme, TBadgeSize } from './declarations';
 
 // utils and helpers
 import { isValidColor, getAccTextColor } from '../../helpers';
@@ -12,7 +12,7 @@ import React from 'react';
 
 export interface StyledBadgeProps {
   /** Size to define padding, line-height, font-size... etc. of the Badge. */
-  size?: BadgeSize;
+  size?: TBadgeSize;
   /** If the color scheme is inverse: text color becomes background color and vice versa */
   inverse?: boolean;
   /** If the badge is used with position absolute inside another component
@@ -26,7 +26,7 @@ export interface StyledBadgeProps {
    * There are predefined types: primary, secondary... etc.
    * It's possible to use a custom color used for the background color and
    * auto-generated for the text based on this one to maintain AA accessible contrast.*/
-  colorScheme?: BadgeColorScheme | React.CSSProperties['backgroundColor'];
+  colorScheme?: TBadgeColorScheme | React.CSSProperties['backgroundColor'];
 }
 export const StyledBadge = styled.span<StyledBadgeProps>`
   ${({

@@ -1,12 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { getSize, getColor } from './helpers';
-import {
-  DevoLogoAnimation,
-  DevoLogoColorScheme,
-  DevoLogoSize,
-} from './declarations';
-
 import {
   BOUNCE_ANIMATION,
   BOUNCE_DOT_ANIMATION,
@@ -20,10 +13,18 @@ import {
   WOBBLE_ANIMATION,
 } from './constants';
 
+import type {
+  TDevoLogoAnimation,
+  TDevoLogoColorScheme,
+  TDevoLogoSize,
+} from './declarations';
+
+import { getSize, getColor } from './helpers';
+
 export interface StyledDevoLogoSpinnerProps {
-  colorScheme?: DevoLogoColorScheme;
-  size?: DevoLogoSize;
-  animation?: DevoLogoAnimation;
+  colorScheme?: TDevoLogoColorScheme;
+  size?: TDevoLogoSize;
+  animation?: TDevoLogoAnimation;
 }
 
 export const StyledDevoLogoSpinner = styled.div<StyledDevoLogoSpinnerProps>`

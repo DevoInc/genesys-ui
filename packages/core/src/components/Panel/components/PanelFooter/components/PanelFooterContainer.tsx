@@ -2,9 +2,9 @@ import * as React from 'react';
 import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
-import { IPanelFooterAttrs } from '../declarations';
+import type { IPanelFooterAttrs } from '../declarations';
 import { panelFooterContainerMixin } from '../helpers';
-import { Flex, FlexProps } from '../../../../Flex';
+import { Flex, type FlexProps } from '../../../../Flex';
 
 export interface PanelFooterContainerProps
   extends IPanelFooterAttrs,

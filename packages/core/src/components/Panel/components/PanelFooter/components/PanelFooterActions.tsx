@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { isEmpty } from 'lodash';
 
-import { IPanelFooterAttrs } from '../declarations';
-import { IPanelBaseAttrs } from '../../../declarations';
+import type { IPanelFooterAttrs } from '../declarations';
+import type { IPanelBaseAttrs } from '../../../declarations';
 
 import { Flex } from '../../../../Flex';
 import { ButtonGroup } from '../../../../ButtonGroup';

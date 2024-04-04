@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { DOMAttributes } from 'react';
 import { useTheme } from 'styled-components';
+import { GIArrowLeft } from '@devoinc/genesys-icons';
 
-import { IPanelContainerAttrs, IPanelHelpAttrs } from '../Panel/declarations';
-import { IPanelHeadingAttrs } from '../Panel/components/PanelHeader/declarations';
+import type {
+  IPanelContainerAttrs,
+  IPanelHelpAttrs,
+} from '../Panel/declarations';
+import type { IPanelHeadingAttrs } from '../Panel/components/PanelHeader/declarations';
 
 import { useDetectScroll } from '../../hooks';
 
@@ -16,8 +20,7 @@ import {
 import { HFlex } from '../HFlex';
 import { IconButton } from '../IconButton';
 import { Divider } from '../Divider';
-import { Panel, PanelProps } from '../Panel';
-import { GIArrowLeft } from '@devoinc/genesys-icons';
+import { Panel, type PanelProps } from '../Panel';
 
 const renderBackwardNavigation = ({
   backwardTooltip,

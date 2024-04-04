@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { Flex, FlexItemProps } from '../../Flex';
+import { Flex, type FlexItemProps } from '../../Flex';
 
-import { buttonGroupItemMixin, ButtonGroupItemMixinProps } from '../helpers';
+import {
+  buttonGroupItemMixin,
+  type ButtonGroupItemMixinProps,
+} from '../helpers';
 import { ButtonGroupContext } from '../context';
 
 export interface ButtonGroupItemProps

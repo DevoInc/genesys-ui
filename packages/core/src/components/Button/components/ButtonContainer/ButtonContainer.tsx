@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {
+import type {
   IButtonAttrs,
   IFocusEventAttrs,
   IGlobalAriaAttrs,
@@ -15,7 +15,7 @@ import {
 
 import {
   StyledButtonContainer,
-  StyledButtonContainerProps,
+  type StyledButtonContainerProps,
 } from './StyledButtonContainer';
 
 export interface ButtonContainerProps

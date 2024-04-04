@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // declarations
-import {
+import type {
   IContainerEventAttrs,
   IFieldControl,
   TFieldSize,
@@ -12,7 +12,7 @@ import {
 } from '../../../declarations';
 
 // styled
-import { StyledInputControl, StyledInputControlProps } from '../styled';
+import { StyledInputControl, type StyledInputControlProps } from '../styled';
 
 export interface InputControlInputProps
   extends IFieldControl,

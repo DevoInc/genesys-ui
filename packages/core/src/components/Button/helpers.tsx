@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from 'styled-components';
-import { ButtonState } from './declarations';
+import { TButtonState } from './declarations';
 import { GICheckThick, GIExitClose } from '@devoinc/genesys-icons';
 
 /**
@@ -41,7 +41,7 @@ export const loadingAnimationMixin = ({ colorScheme, loadingType, tokens }) => {
   `;
 };
 
-export const getLoadingStateIcon = (state: ButtonState) =>
+export const getLoadingStateIcon = (state: TButtonState) =>
   state === 'loading-success' ? (
     <GICheckThick />
   ) : state === 'loading-error' ? (

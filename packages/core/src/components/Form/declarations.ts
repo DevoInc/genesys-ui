@@ -1,11 +1,11 @@
 import type { DOMAttributes, FormHTMLAttributes } from 'react';
 import { PickUnion } from '../../typeFunctions';
-import { TGlobalSize } from '../../declarations/commonProps';
+import type { TGlobalSize } from '../../declarations/commonProps';
 
-export type FormGap = PickUnion<TGlobalSize, 'xxs' | 'xs' | 'sm' | 'md'>;
+export type TFormGap = PickUnion<TGlobalSize, 'xxs' | 'xs' | 'sm' | 'md'>;
 export type TLegendPosition = 'top' | 'left';
 
-export interface FormAttrProps {
+export interface IFormAttrs {
   /** The character encoding the form will submit the data in */
   acceptCharset?: FormHTMLAttributes<HTMLFormElement>['acceptCharset'];
   /** The URL to which the form's data will be sent */
@@ -26,7 +26,7 @@ export interface FormAttrProps {
   target?: FormHTMLAttributes<HTMLFormElement>['target'];
 }
 
-export interface FormEventAttrs {
+export interface IFormEventAttrs {
   /** A function that is called when the form is reset */
   onReset?: DOMAttributes<HTMLFormElement>['onReset'];
   /** A function that is called when the form is submitted */

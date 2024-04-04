@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ILayoutBox } from '../../declarations';
+import type { ILayoutBox } from '../../declarations';
 
 import { StyledBox } from './StyledBox';
 

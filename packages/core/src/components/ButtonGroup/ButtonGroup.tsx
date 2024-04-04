@@ -3,28 +3,26 @@ import { useTheme } from 'styled-components';
 
 import { FLEX_SPACING_SIZE_MAP } from './constants';
 
-import { ButtonGroupSize } from './declarations';
+import type { TButtonGroupSize } from './declarations';
+import type { TButtonColorScheme } from '../Button';
+import { ButtonGroupContext } from './context';
+import { buttonGroupMixin, type ButtonGroupMixinProps } from './helpers';
 
-import { Flex, FlexProps } from '../Flex';
-
-import { buttonGroupMixin, ButtonGroupMixinProps } from './helpers';
-
+import { Flex, type FlexProps } from '../Flex';
 import {
   ButtonGroupButton,
   ButtonGroupIconButton,
   ButtonGroupItem,
 } from './components';
-import { ButtonGroupContext } from './context';
-import { ButtonColorScheme } from '../Button';
 
 export interface ButtonGroupProps
   extends Omit<FlexProps, 'children'>,
     Omit<ButtonGroupMixinProps, 'theme'> {
   children: React.ReactElement | React.ReactElement[];
   /** The size for the children buttons */
-  size?: ButtonGroupSize;
+  size?: TButtonGroupSize;
   /** The color scheme for the children buttons */
-  colorScheme?: ButtonColorScheme;
+  colorScheme?: TButtonColorScheme;
 }
 
 export const InternalButtonGroup: React.FC<ButtonGroupProps> = ({

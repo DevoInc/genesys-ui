@@ -3,7 +3,7 @@ import { concat } from 'lodash';
 
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 
-import { IconButton, IconButtonProps } from '../../IconButton';
+import { IconButton, type IconButtonProps } from '../../IconButton';
 import { GIExitClose } from '@devoinc/genesys-icons';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

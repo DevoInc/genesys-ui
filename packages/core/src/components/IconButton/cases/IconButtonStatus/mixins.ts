@@ -1,10 +1,10 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { ButtonColorScheme, ButtonState } from '../../../Button';
+import { TButtonColorScheme, TButtonState } from '../../../Button';
 
 interface IconButtonStatusMixinProps {
-  colorScheme?: ButtonColorScheme;
-  state?: ButtonState;
+  colorScheme?: TButtonColorScheme;
+  state?: TButtonState;
   theme: DefaultTheme;
 }
 

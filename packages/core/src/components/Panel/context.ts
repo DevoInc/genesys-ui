@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { TPanelSize } from './declarations';
+import type { TPanelSize } from './declarations';
 
 export interface PanelContextProps {
   scrolledBodyContent?: boolean;

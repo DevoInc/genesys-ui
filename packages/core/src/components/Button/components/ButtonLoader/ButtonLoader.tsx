@@ -2,9 +2,9 @@ import * as React from 'react';
 import { css, useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { ButtonSize, ButtonState } from '../../declarations';
+import type { TButtonSize, TButtonState } from '../../declarations';
 
-import { SpinnerLoader, SpinnerLoaderProps } from '../../../SpinnerLoader';
+import { SpinnerLoader, type SpinnerLoaderProps } from '../../../SpinnerLoader';
 import { ButtonIcon } from '../ButtonIcon';
 
 import { BUTTON_LOADER_SIZE_MAP } from '../../constants';
@@ -12,8 +12,8 @@ import { getLoadingStateIcon } from '../../helpers';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ButtonLoaderProps extends Omit<SpinnerLoaderProps, 'size'> {
-  size?: ButtonSize;
-  state?: ButtonState;
+  size?: TButtonSize;
+  state?: TButtonState;
 }
 
 export const ButtonLoader: React.FC<ButtonLoaderProps> = ({

@@ -1,11 +1,11 @@
 import { css, DefaultTheme } from 'styled-components';
 
 // declarations
-import type { ButtonProps, ButtonSelectableState } from '../../Button';
+import type { ButtonProps, TButtonSelectableState } from '../../Button';
 
 export interface ContentSwitcherItemMixinProps {
   /** Sets the color scheme according to component state */
-  state?: ButtonSelectableState;
+  state?: TButtonSelectableState;
   /** If the item occupies all the available space. */
   wide?: ButtonProps['wide'];
   theme: DefaultTheme;

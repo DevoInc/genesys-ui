@@ -2,22 +2,22 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import { HELPER_ICON_SIZE_MAP, HELPER_SIZE_SPACE_MAP } from './constants';
-import {
+import type {
   IGlobalAttrs,
   TGlobalStatus,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../declarations';
-import { HelperSize } from './declarations';
+import type { THelperSize } from './declarations';
 
 import { hasStatus } from '../../utils/validations';
 import { getLineHeight } from '../../styled';
+import { getHelperStatusIcon } from './utils';
 
 import { Flex } from '../Flex';
 import { HFlex } from '../HFlex';
 import { Icon } from '../Icon';
 import { Typography } from '../Typography';
-import { getHelperStatusIcon } from './utils';
 
 export interface HelperProps
   extends IGlobalAttrs,
@@ -26,7 +26,7 @@ export interface HelperProps
   /** Content of the helper message. */
   message: string | React.ReactNode;
   /** Size of the helper: spacing, font-size... etc. */
-  size?: HelperSize;
+  size?: THelperSize;
   /** This property defines the status color schema for the helper */
   status?: TGlobalStatus;
 }

@@ -1,4 +1,4 @@
-import { TPanelRemoveSpace } from '../../declarations';
+import type { TPanelRemoveSpace } from '../../declarations';
 
 export interface IPanelBodyAttrs {
   /** If the body content has special spacing when it's scrolled to separate the scrollbar from the edge. */

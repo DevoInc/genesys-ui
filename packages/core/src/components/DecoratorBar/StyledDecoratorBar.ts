@@ -1,11 +1,11 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import { Direction } from './declarations';
+import type { TDirection } from './declarations';
 
 export interface StyledDecoratorBarProps {
   /** Horizontal or Vertical direction **/
-  direction?: Direction;
+  direction?: TDirection;
   /** Css width or height base on direction prop **/
   size?: React.CSSProperties['height'];
 }

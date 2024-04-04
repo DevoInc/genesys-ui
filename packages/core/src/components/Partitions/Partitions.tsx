@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { PartitionsContainerProps } from './components';
+import type { PartitionsContainerProps } from './components';
 import { PartitionsContainer, PartitionsItem } from './components';
 
 export interface PartitionsProps extends PartitionsContainerProps {

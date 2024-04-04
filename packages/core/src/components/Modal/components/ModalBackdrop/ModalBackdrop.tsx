@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 import type { IModal } from '../../declarations';
-import { Overlay, OverlayProps } from '../../../Overlay';
+import { Overlay, type OverlayProps } from '../../../Overlay';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ModalBackdropProps

@@ -2,8 +2,8 @@ import * as React from 'react';
 import { GroupBase, Props } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 
-import { ICommonSelectCmps, TSelectOption } from './declarations';
-import { IStyledOverloadCss } from '../../declarations';
+import type { ICommonSelectCmps, TSelectOption } from './declarations';
+import type { IStyledOverloadCss } from '../../declarations';
 
 import { StyledSelectControl } from './styled';
 

@@ -1,16 +1,20 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
+import { GICheckThick } from '@devoinc/genesys-icons';
 
-import {
+import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../declarations';
 
-import { BadgeContainer, BadgeContainerProps, BadgeText } from './components';
+import {
+  BadgeContainer,
+  type BadgeContainerProps,
+  BadgeText,
+} from './components';
 import { Icon } from '../Icon';
-import { GICheckThick } from '@devoinc/genesys-icons';
 
 export interface BadgeProps
   extends IStyledPolymorphic,

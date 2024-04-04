@@ -11,7 +11,7 @@ import {
 } from './components';
 
 import { Box } from '../Box';
-import { Badge, type BadgeColorScheme, type BadgeSize } from '../Badge';
+import { Badge, type TBadgeColorScheme, type TBadgeSize } from '../Badge';
 
 export interface AvatarProps
   extends Omit<AvatarContainerProps, 'children' | 'aria-label'>,
@@ -20,8 +20,8 @@ export interface AvatarProps
    * component, but you can render any component or node. The function has default values for 'size' and 'colorScheme'.
    * This Badge may be used to indicate status, presence... etc.*/
   badge?: (props: {
-    colorScheme: BadgeColorScheme;
-    size: BadgeSize;
+    colorScheme: TBadgeColorScheme;
+    size: TBadgeSize;
   }) => React.ReactNode;
 }
 

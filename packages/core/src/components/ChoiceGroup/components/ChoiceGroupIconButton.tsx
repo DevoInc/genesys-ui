@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { ChoiceGroupContext } from '../context';
 
-import { IconButton, IconButtonProps } from '../../IconButton';
+import { IconButton, type IconButtonProps } from '../../IconButton';
 
 export interface ChoiceGroupIconButtonProps
   extends Omit<IconButtonProps, 'colorScheme'> {

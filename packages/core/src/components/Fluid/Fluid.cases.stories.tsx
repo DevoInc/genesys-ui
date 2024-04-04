@@ -155,7 +155,7 @@ export const HorizontalAlignment: Story = {
 };
 
 export const Order: Story = {
-  name: 'Direction prop for order and orientation',
+  name: 'TDirection prop for order and orientation',
   render: () => (
     <Container fluid>
       <Row align="center" justify="center" direction="row">

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { css, useTheme } from 'styled-components';
 import { concat } from 'lodash';
+import { GIPencilEdit } from '@devoinc/genesys-icons';
 
 import type {
   IContainerEventAttrs,
@@ -12,7 +13,6 @@ import type {
   IStyledPolymorphic,
 } from '../../declarations';
 import { Icon } from '../Icon';
-import { GIPencilEdit } from '@devoinc/genesys-icons';
 import { StyledEditableContent } from './StyledEditableContent';
 
 export interface EditableContentProps

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { concat } from 'lodash';
 
-import { type ILayoutFlexItem } from '../../../../declarations';
-import { type Resolve } from '../../../../typeFunctions';
+import type { ILayoutFlexItem } from '../../../../declarations';
+import type { Resolve } from '../../../../typeFunctions';
 
 import { Box, type BoxProps } from '../../../Box';
 

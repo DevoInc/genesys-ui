@@ -3,10 +3,10 @@ import {
   FIELD_SIZE_TO_CHIP_SIZE,
   FIELD_SIZE_TO_VALUE_ICON_SIZE,
 } from './constants';
-import { ChipSize } from '../Chip/declarations';
-import { TFieldSize } from '../../declarations';
-import { TSelectOption } from './declarations';
-import { InnerSelectControlProps } from './InnerSelectControl';
+import type { TChipSize } from '../Chip/declarations';
+import type { TFieldSize } from '../../declarations';
+import type { TSelectOption } from './declarations';
+import type { InnerSelectControlProps } from './InnerSelectControl';
 
 /**
  * A function that takes an object with onChange and value properties as input
@@ -135,9 +135,9 @@ export const getChipSize = ({
   size,
   chipSize,
 }: {
-  size?: TFieldSize | ChipSize;
-  chipSize?: ChipSize;
-}): ChipSize => chipSize || FIELD_SIZE_TO_CHIP_SIZE[size || 'xs'];
+  size?: TFieldSize | TChipSize;
+  chipSize?: TChipSize;
+}): TChipSize => chipSize || FIELD_SIZE_TO_CHIP_SIZE[size || 'xs'];
 
 /**
  * A function that takes an object with size and chipSize properties as input
@@ -149,6 +149,6 @@ export const getValueIconSize = ({
   size,
   chipSize,
 }: {
-  size?: TFieldSize | ChipSize;
-  chipSize?: ChipSize;
-}): ChipSize => chipSize || FIELD_SIZE_TO_VALUE_ICON_SIZE[size || 'xxs'];
+  size?: TFieldSize | TChipSize;
+  chipSize?: TChipSize;
+}): TChipSize => chipSize || FIELD_SIZE_TO_VALUE_ICON_SIZE[size || 'xxs'];

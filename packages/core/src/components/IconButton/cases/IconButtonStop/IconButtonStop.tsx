@@ -3,9 +3,9 @@ import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 import { GIStopSquare } from '@devoinc/genesys-icons';
 
-import { ButtonActionState } from '../../../Button';
+import type { TButtonActionState } from '../../../Button';
 
-import { IconButton, IconButtonProps } from '../../IconButton';
+import { IconButton, type IconButtonProps } from '../../IconButton';
 
 import { iconButtonStopMixin } from './helpers';
 
@@ -32,7 +32,7 @@ export interface IconButtonStopProps
     | 'target'
     | 'value'
   > {
-  state?: ButtonActionState;
+  state?: TButtonActionState;
 }
 
 export const IconButtonStop = React.forwardRef<

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { ILinkMixin, linkMixin } from './utils/linkMixin';
+import { type ILinkMixin, linkMixin } from './utils/linkMixin';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledLinkProps

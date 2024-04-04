@@ -1,6 +1,6 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { TModalStatus } from '../../declarations';
+import type { TModalStatus } from '../../declarations';
 
 export interface IModalHeaderMixin {
   removeSpace?: boolean;

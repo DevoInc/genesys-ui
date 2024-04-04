@@ -2,24 +2,19 @@ import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
 
 import * as Stories from './HFlex.stories';
 import spacingProps from '../../../stories/partials/spacingProps.md?raw';
-import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
-<Meta of={Stories} />
+<Meta of={Stories} />;
 
 # HFlex
 
 ## Overview
 
 Use `HFlex` to create a stacked group of children components distributed
-in a single row. Each children can be separated horizontally using the prop `spacing`.
+in a single row. Each child can be separated horizontally using the prop `spacing`.
 
 ## How to import
 
-<Source
-  code={`
-import { HFlex } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { HFlex } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
@@ -45,16 +40,16 @@ It allows these components to be rendered as any HTML tag, such as div, li, sect
 <Source
   code={`
 import * as React from 'react';
-import { Flex } from '@devoinc/genesys-ui';
+import { HFlex } from '@devoinc/genesys-ui';
 
 const MyFlexCmp = () => (
 
 {' '}
 
-<Flex as={'ul'}>
-  <Flex.Item as={'li'}>Child 1</Flex.Item>
-  <Flex.Item as={'li'}>Child 2</Flex.Item>
-  <Flex.Item as={'li'}>Child 3</Flex.Item>
+<HFlex as={'ul'}>
+  <HFlex.Item as={'li'}>Child 1</Flex.Item>
+  <HFlex.Item as={'li'}>Child 2</Flex.Item>
+  <HFlex.Item as={'li'}>Child 3</Flex.Item>
 </Flex>
 ); `} />
 

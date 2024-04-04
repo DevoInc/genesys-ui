@@ -5,8 +5,8 @@ import {
   RowProps as ReactGridRowProps,
 } from 'react-grid-system';
 
-import { IGlobalAttrs } from '../../../declarations';
-import { ContainerSpacing, FluidAs } from '../declarations';
+import type { IGlobalAttrs } from '../../../declarations';
+import type { TContainerSpacing, TFluidAs } from '../declarations';
 
 import { getSpacingPropCss } from '../../../helpers';
 import { getPxFromRem } from '../../../helpers';
@@ -14,21 +14,21 @@ import { getPxFromRem } from '../../../helpers';
 export interface RowProps
   extends Omit<ReactGridRowProps, 'component' | 'gutterWidth'>,
     Pick<IGlobalAttrs<HTMLDivElement>, 'tooltip'> {
-  as?: FluidAs;
+  as?: TFluidAs;
   /** The gutter between the different cols.*/
-  gutter?: ContainerSpacing;
+  gutter?: TContainerSpacing;
   /** Css margin-bottom. More info about spacing values in
    * [Spacing tokens page](?path=/story/docs-design-tokens-spacing-tokens--page) */
-  marginBottom?: ContainerSpacing;
+  marginBottom?: TContainerSpacing;
   /** Css margin-top. More info about spacing values in
    * [Spacing tokens page](?path=/story/docs-design-tokens-spacing-tokens--page) */
-  marginTop?: ContainerSpacing;
+  marginTop?: TContainerSpacing;
   /** Css padding-bottom. More info about spacing values in
    * [Spacing tokens page](?path=/story/docs-design-tokens-spacing-tokens--page) */
-  paddingBottom?: ContainerSpacing;
+  paddingBottom?: TContainerSpacing;
   /** Css padding-top. More info about spacing values in
    * [Spacing tokens page](?path=/story/docs-design-tokens-spacing-tokens--page) */
-  paddingTop?: ContainerSpacing;
+  paddingTop?: TContainerSpacing;
   /** Content of row */
   children?: React.ReactNode;
 }

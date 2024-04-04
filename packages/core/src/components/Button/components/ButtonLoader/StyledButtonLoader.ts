@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { TSpinnerSize } from '../../../SpinnerLoader/constants';
+import type { TSpinnerSize } from '../../../SpinnerLoader/declarations';
 
 export interface StyledButtonLoaderProps {
   /** Sets width, height, stroke... etc. */

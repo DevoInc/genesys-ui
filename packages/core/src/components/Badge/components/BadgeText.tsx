@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IStyledOverloadCss } from '../../../declarations/styled';
+import type { IStyledOverloadCss } from '../../../declarations/styled';
 
 import { StyledBadgeText } from '../StyledBadge';
 

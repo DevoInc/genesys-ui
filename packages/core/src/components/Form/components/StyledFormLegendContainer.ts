@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import {
+import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledPolymorphic,

@@ -3,9 +3,9 @@ import * as React from 'react';
 import {
   CollapseMarker,
   CollapseContainer,
-  CollapseContainerProps,
+  type CollapseContainerProps,
   CollapseHeading,
-  CollapseHeadingProps,
+  type CollapseHeadingProps,
 } from './components';
 
 export interface CollapseProps

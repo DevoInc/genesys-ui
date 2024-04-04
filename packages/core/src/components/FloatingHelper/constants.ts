@@ -1,8 +1,8 @@
-import { ButtonSize } from '../Button';
-import { FloatingHelperSize } from './declarations';
+import type { TButtonSize } from '../Button';
+import type { TFloatingHelperSize } from './declarations';
 
 export const FLOATING_HELPER_ICON_BUTTON_SIZE_MAP: {
-  [key in FloatingHelperSize]: ButtonSize;
+  [key in TFloatingHelperSize]: TButtonSize;
 } = {
   sm: 'xxs',
   md: 'xs',

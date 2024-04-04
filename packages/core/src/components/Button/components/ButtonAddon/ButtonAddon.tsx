@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { AllHTMLAttributes } from 'react';
 
-import {
+import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../../declarations';
 
-import { StyledButtonAddon, StyledButtonAddonProps } from './StyledButtonAddon';
+import {
+  StyledButtonAddon,
+  type StyledButtonAddonProps,
+} from './StyledButtonAddon';
 
 export interface ButtonAddonProps<T = Element>
   extends StyledButtonAddonProps,

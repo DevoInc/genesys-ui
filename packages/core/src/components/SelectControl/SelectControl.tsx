@@ -10,7 +10,7 @@ import { FieldContext } from '../Field/context';
 import * as defaultComponents from './components';
 import {
   InnerSelectControl,
-  InnerSelectControlProps,
+  type InnerSelectControlProps,
 } from './InnerSelectControl';
 
 import type {

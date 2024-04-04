@@ -1,5 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
-import { ILayoutFlexCss } from '../../declarations';
+import type { ILayoutFlexCss } from '../../declarations';
 
 import { getSpacingPropCss } from '../../helpers';
 

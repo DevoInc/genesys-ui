@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { IStyledPolymorphic } from '../../declarations';
+import type { IStyledPolymorphic } from '../../declarations';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledEditableContentProps extends IStyledPolymorphic {}

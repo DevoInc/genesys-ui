@@ -1,5 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
-import { ButtonExpandableState } from '../../../Button';
+import type { TButtonExpandableState } from '../../../Button';
 import { getSpacingPropCss } from '../../../../helpers/spacing';
 
 export const inlineMessageTriggerMixin = ({
@@ -33,7 +33,7 @@ export const inlineMessageTriggerParagraphMixin = ({
   state,
 }: {
   last?: boolean;
-  state: ButtonExpandableState;
+  state: TButtonExpandableState;
 }) => css`
   opacity: ${state === 'disabled' && 0.4};
   font-weight: 700;

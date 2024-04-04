@@ -11,17 +11,17 @@ import { POPOVER_DEFAULT_ARROW_SIZE } from './constants';
 import {
   PopoverPanel,
   StyledPopoverArrow,
-  StyledPopoverArrowProps,
+  type StyledPopoverArrowProps,
 } from './components';
 
-type TriggerProps = (props: {
+type TTriggerProps = (props: {
   ref: React.Dispatch<React.SetStateAction<HTMLElement>>;
   toggle: (ev: React.MouseEvent<HTMLElement>) => void;
   isOpened: boolean;
   setOpened: React.Dispatch<React.SetStateAction<boolean>>;
 }) => React.ReactNode;
 
-type ChildrenProps =
+type TChildrenProps =
   | React.ReactNode
   | ((props: {
       toggle?: (ev: React.MouseEvent<HTMLElement>) => void;
@@ -41,7 +41,7 @@ export interface PopoverProps
   disableOutsideEvent?: boolean;
   /** The HTML id attribute which is added to the wrapper div of the floating content and should be used as 'aria-controls' value of the trigger. */
   id: React.HTMLAttributes<HTMLDivElement>['id'];
-  children?: [TriggerProps, ChildrenProps];
+  children?: [TTriggerProps, TChildrenProps];
   /** If the floating content is visible/opened by default. */
   isOpened?: boolean;
   /** The configuration for the popover arrow: used component, padding... etc. */

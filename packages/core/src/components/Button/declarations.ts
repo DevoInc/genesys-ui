@@ -1,13 +1,13 @@
-import {
+import type {
   TUIColorScheme,
   TBaseSize,
   TBlendColorScheme,
   TNeutralColorScheme,
 } from '../../declarations';
 
-export type ButtonIconPosition = 'left' | 'right';
+export type TButtonIconPosition = 'left' | 'right';
 
-export type ButtonColorScheme =
+export type TButtonColorScheme =
   | TBlendColorScheme
   | TNeutralColorScheme
   | TUIColorScheme
@@ -15,29 +15,29 @@ export type ButtonColorScheme =
   | 'accent-high'
   | 'quiet';
 
-export type ButtonBasicState =
+export type TButtonBasicState =
   | 'disabled'
   | 'enabled'
   | 'focused'
   | 'hovered'
   | 'pressed';
 
-export type ButtonActionState =
-  | ButtonBasicState
+export type TButtonActionState =
+  | TButtonBasicState
   | 'expanded'
   | 'loading'
   | 'loading-error'
   | 'loading-success';
 
-export type ButtonSelectableState = ButtonBasicState | 'selected';
+export type TButtonSelectableState = TButtonBasicState | 'selected';
 
-export type ButtonExpandableState = ButtonBasicState | 'expanded';
+export type TButtonExpandableState = TButtonBasicState | 'expanded';
 
-export type ButtonState =
-  | ButtonActionState
-  | ButtonSelectableState
-  | ButtonExpandableState;
+export type TButtonState =
+  | TButtonActionState
+  | TButtonSelectableState
+  | TButtonExpandableState;
 
-export type ButtonSize = TBaseSize | 'xxs' | 'xs';
+export type TButtonSize = TBaseSize | 'xxs' | 'xs';
 
-export type ButtonLoaderSize = TBaseSize | 'xs';
+export type TButtonLoaderSize = TBaseSize | 'xs';

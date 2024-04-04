@@ -1,5 +1,5 @@
 import type { TAvatarSize, TAvatarVariant } from './declarations';
-import type { BadgeSize } from '../Badge/declarations';
+import type { TBadgeSize } from '../Badge/declarations';
 
 export const AVATAR_SIZE_BORDER_MAP: {
   [key in TAvatarSize]?: string;
@@ -26,7 +26,7 @@ export const AVATAR_SIZE_SQUARE_MAP: {
 };
 
 export const AVATAR_SIZE_BADGE_MAP: {
-  [key in TAvatarSize]: BadgeSize;
+  [key in TAvatarSize]: TBadgeSize;
 } = {
   xxxs: 'sm',
   xxs: 'sm',

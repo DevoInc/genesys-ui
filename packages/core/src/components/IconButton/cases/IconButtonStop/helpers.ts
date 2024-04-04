@@ -1,12 +1,12 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { ButtonSize, ButtonState } from '../../../Button';
+import { TButtonSize, TButtonState } from '../../../Button';
 
 import { pseudoElementMixin } from '../../../../styled';
 
 interface IconButtonStopMixinProps {
-  size?: ButtonSize;
-  state?: ButtonState;
+  size?: TButtonSize;
+  state?: TButtonState;
   theme: DefaultTheme;
 }
 

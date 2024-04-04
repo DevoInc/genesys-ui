@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import {
+import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../declarations';
 
-import { StyledBadge, StyledBadgeProps } from '../StyledBadge';
+import { StyledBadge, type StyledBadgeProps } from '../StyledBadge';
 
 export interface BadgeContainerProps
   extends IStyledPolymorphic,

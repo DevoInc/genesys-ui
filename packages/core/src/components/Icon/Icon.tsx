@@ -2,7 +2,11 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { IconContext } from '@devoinc/genesys-icons';
 
-import { TAllColorScheme, IGlobalAttrs, TGlobalSize } from '../../declarations';
+import type {
+  TAllColorScheme,
+  IGlobalAttrs,
+  TGlobalSize,
+} from '../../declarations';
 
 import { getIconColor, getIconSize } from '../../helpers';
 

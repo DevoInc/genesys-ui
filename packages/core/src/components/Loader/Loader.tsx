@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { Overlay, OverlayProps } from '../Overlay';
+import { Overlay, type OverlayProps } from '../Overlay';
 
 import type {
   IGlobalAriaAttrs,
@@ -10,11 +10,12 @@ import type {
   IStyledPolymorphic,
 } from '../../declarations';
 import type {
-  LoaderSize,
-  LoaderColorScheme,
-  LoaderBasicColorScheme,
+  TLoaderSize,
+  TLoaderColorScheme,
+  TLoaderBasicColorScheme,
 } from './declarations';
 
+import { getLoaderContentColorScheme } from './utils';
 import { LoaderContext } from './context';
 
 import {
@@ -23,7 +24,6 @@ import {
   LoaderProgressBar,
   LoaderSpinner,
 } from './components';
-import { getLoaderContentColorScheme } from './utils';
 
 export interface LoaderProps
   extends Pick<
@@ -37,11 +37,11 @@ export interface LoaderProps
     IStyledOverloadCss {
   children: React.ReactElement;
   /** The definition of color scheme: based in the scheme of the theme (inherited), light, dark... etc. It defines if the overlay is dark and the content light or vice versa.*/
-  colorScheme?: LoaderColorScheme;
+  colorScheme?: TLoaderColorScheme;
   /** If the Overlay is opaque.*/
   opaque?: boolean;
   /** The pre-defined size for its children: Spinner, ProgressBar... etc. .*/
-  size?: LoaderSize;
+  size?: TLoaderSize;
 }
 
 const InternalLoader: React.FC<LoaderProps> = ({
@@ -62,7 +62,7 @@ const InternalLoader: React.FC<LoaderProps> = ({
   const theme = useTheme();
   const evalColorScheme =
     colorScheme === 'inherited'
-      ? (theme.meta.scheme as LoaderBasicColorScheme)
+      ? (theme.meta.scheme as TLoaderBasicColorScheme)
       : colorScheme;
   const hasGradient = children.type === LoaderGradientContainer;
   const evalDefaultPadding = hasGradient ? '0' : 'cmp-lg';

@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-import { BannerStatus } from './declarations';
+import type { TBannerStatus } from './declarations';
 
 export interface StyledBannerProps {
   /** Banner status */
-  status?: BannerStatus;
+  status?: TBannerStatus;
 }
 
 export const StyledBanner = styled.div<StyledBannerProps>`

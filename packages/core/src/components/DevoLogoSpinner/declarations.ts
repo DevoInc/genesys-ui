@@ -1,11 +1,11 @@
 import { TBaseSize, TGlobalSize } from '../../declarations';
 import { PickUnion } from '../../typeFunctions';
-import { LoaderColorScheme } from '../Loader/declarations';
+import { TLoaderColorScheme } from '../Loader/declarations';
 
-export type DevoLogoColorScheme = LoaderColorScheme | 'brand';
-export type DevoLogoPathType = 'logoOddPath' | 'logoEvenPath';
+export type TDevoLogoColorScheme = TLoaderColorScheme | 'brand';
+export type TDevoLogoPathType = 'logoOddPath' | 'logoEvenPath';
 
-export type DevoLogoAnimation =
+export type TDevoLogoAnimation =
   | 'bounce'
   | 'bounce-dot'
   | 'flow'
@@ -17,6 +17,6 @@ export type DevoLogoAnimation =
   | 'tada'
   | 'wobble';
 
-export type DevoLogoSize =
+export type TDevoLogoSize =
   | TBaseSize
   | PickUnion<TGlobalSize, 'xs' | 'lg' | 'xl'>;

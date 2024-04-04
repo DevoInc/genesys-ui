@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { ChipSize } from './declarations';
+import type { TChipSize } from './declarations';
 
 export interface ChipContextProps {
-  size: ChipSize;
+  size: TChipSize;
   icon?: React.ReactNode;
 }
 

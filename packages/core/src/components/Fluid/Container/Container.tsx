@@ -12,7 +12,7 @@ import {
   BREAKPOINTS_DEFAULT_VALUES,
   CONTAINER_WIDTH_DEFAULT_VALUES,
 } from '../constants';
-import { ContainerSpacing } from '../declarations';
+import { TContainerSpacing } from '../declarations';
 import { IGlobalAttrs } from '../../../declarations';
 
 import { getSpacingPropCss } from '../../../helpers';
@@ -23,20 +23,20 @@ export interface ContainerProps
   extends Omit<ReactGridContainerProps, 'component'>,
     Pick<IGlobalAttrs<HTMLDivElement>, 'tooltip'> {
   /** The gutter between the different cols.*/
-  gutter?: ContainerSpacing;
+  gutter?: TContainerSpacing;
   /** Css margin-bottom. More info about spacing values in
    * [Spacing tokens page](?path=/story/docs-design-tokens-spacing-tokens--page) */
-  marginBottom?: ContainerSpacing;
+  marginBottom?: TContainerSpacing;
   /** Css margin-top. More info about spacing values in
    * [Spacing tokens page](?path=/story/docs-design-tokens-spacing-tokens--page) */
-  marginTop?: ContainerSpacing;
+  marginTop?: TContainerSpacing;
   maxScreen?: ScreenClass;
   /** Css padding-bottom. More info about spacing values in
    * [Spacing tokens page](?path=/story/docs-design-tokens-spacing-tokens--page) */
-  paddingBottom?: ContainerSpacing;
+  paddingBottom?: TContainerSpacing;
   /** Css padding-top. More info about spacing values in
    * [Spacing tokens page](?path=/story/docs-design-tokens-spacing-tokens--page) */
-  paddingTop?: ContainerSpacing;
+  paddingTop?: TContainerSpacing;
   /** Content of the container (Rows) */
   children?: React.ReactElement<RowProps> | React.ReactElement<RowProps>[];
 }

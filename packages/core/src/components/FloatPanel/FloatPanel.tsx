@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { Dock } from 'react-dock';
 
-import { Box, BoxProps } from '../Box';
+import { Box, type BoxProps } from '../Box';
 
 export interface FloatPanelProps
   extends Omit<BoxProps, 'position' | 'visibility'> {

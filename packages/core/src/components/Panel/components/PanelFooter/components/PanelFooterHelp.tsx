@@ -2,13 +2,13 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { IPanelHelpAttrs } from '../../../declarations';
-import { IPanelFooterAttrs } from '../declarations';
+import type { IPanelHelpAttrs } from '../../../declarations';
+import type { IPanelFooterAttrs } from '../declarations';
 
 import { Flex } from '../../../../Flex';
 import {
   IconButtonGoToDocs,
-  IconButtonGoToDocsProps,
+  type IconButtonGoToDocsProps,
 } from '../../../../IconButton';
 import { Typography } from '../../../../Typography';
 

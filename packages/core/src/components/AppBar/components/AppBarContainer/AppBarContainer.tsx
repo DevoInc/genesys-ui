@@ -2,9 +2,9 @@ import * as React from 'react';
 import { css, useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { Box, BoxProps } from '../../../Box';
+import { Box, type BoxProps } from '../../../Box';
 import { HFlex } from '../../../HFlex';
-import { FlexProps } from '../../../Flex';
+import type { FlexProps } from '../../../Flex';
 
 export interface AppBarContainerProps
   extends Omit<BoxProps, 'elevation' | 'position'>,

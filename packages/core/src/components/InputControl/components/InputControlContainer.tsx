@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import type { IFieldControl } from '../../../declarations/commonProps';
-import { IField } from '../../Field/declarations';
+import type { IField } from '../../Field/declarations';
 
 import { Flex } from '../../Flex';
 

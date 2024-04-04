@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {
+import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
@@ -8,7 +8,7 @@ import {
 
 import {
   StyledDevoLogoSpinner,
-  StyledDevoLogoSpinnerProps,
+  type StyledDevoLogoSpinnerProps,
 } from './StyledDevoLogoSpinner';
 
 export interface DevoLogoSpinnerProps

@@ -2,17 +2,20 @@ import * as React from 'react';
 import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
-import { IGlobalAriaAttrs, IGlobalAttrs } from '../../declarations';
+import type { IGlobalAriaAttrs, IGlobalAttrs } from '../../declarations';
 
 import { ContentSwitcherContext } from './context';
 
 import {
   contentSwitcherContainerMixin,
-  contentSwitcherContainerMixinProps,
+  type contentSwitcherContainerMixinProps,
 } from './helpers';
 
-import { Flex, FlexProps } from '../Flex';
-import { ContentSwitcherItem, ContentSwitcherItemProps } from './components';
+import { Flex, type FlexProps } from '../Flex';
+import {
+  ContentSwitcherItem,
+  type ContentSwitcherItemProps,
+} from './components';
 
 export interface ContentSwitcherProps
   extends Omit<

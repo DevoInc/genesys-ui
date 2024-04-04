@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { StyledInputControlProps } from './StyledInputControl';
+import type { StyledInputControlProps } from './StyledInputControl';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledInputControlShowPasswordProps

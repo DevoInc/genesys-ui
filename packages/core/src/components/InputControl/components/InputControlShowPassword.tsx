@@ -1,15 +1,15 @@
 import * as React from 'react';
-
-import { INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP } from '../constants';
-
-import { IconButton, IconButtonProps } from '../../IconButton';
-
-import { StyledInputControlShowPassword } from '../styled/StyledInputControlShowPassword';
-import { TFieldSize, IStyledOverloadCss } from '../../../declarations';
 import {
   GIEyeViewFilled,
   GIEyeVisibilityShowVisible,
 } from '@devoinc/genesys-icons';
+
+import { INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP } from '../constants';
+import type { TFieldSize, IStyledOverloadCss } from '../../../declarations';
+
+import { IconButton, type IconButtonProps } from '../../IconButton';
+
+import { StyledInputControlShowPassword } from '../styled/StyledInputControlShowPassword';
 
 export interface InputControlShowPasswordProps
   extends IStyledOverloadCss,

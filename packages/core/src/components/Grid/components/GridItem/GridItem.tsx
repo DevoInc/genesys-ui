@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { concat } from 'lodash';
 
-import { ILayoutGridItemCss } from '../../../../declarations';
+import type { ILayoutGridItemCss } from '../../../../declarations';
 import { gridItemMixin } from './mixins';
-import { Box, BoxProps } from '../../../Box';
+import { Box, type BoxProps } from '../../../Box';
 
 export interface GridItemProps extends ILayoutGridItemCss, BoxProps {}
 

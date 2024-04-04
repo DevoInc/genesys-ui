@@ -1,4 +1,4 @@
-import {
+import type {
   TBlendColorScheme,
   TBrandColorScheme,
   TDataColorScheme,
@@ -7,11 +7,11 @@ import {
   TBaseSize,
 } from '../../declarations';
 
-export type BadgeColorScheme =
+export type TBadgeColorScheme =
   | TBrandColorScheme
   | TNeutralColorScheme
   | TBlendColorScheme
   | TUIColorScheme
   | TDataColorScheme;
 
-export type BadgeSize = TBaseSize;
+export type TBadgeSize = TBaseSize;

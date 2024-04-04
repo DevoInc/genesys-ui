@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { ILayoutGridCss } from '../../declarations';
+import type { ILayoutGridCss } from '../../declarations';
 
 /**
  * Get the specific styles for Box component when it's used as a Grid component

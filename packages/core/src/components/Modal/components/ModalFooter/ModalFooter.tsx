@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { concat } from 'lodash';
+import { useTheme } from 'styled-components';
 
 import type { IModal } from '../../declarations';
 import { modalFooterMixin } from './mixins';
-import { Panel, PanelFooterProps } from '../../../Panel';
-import { useTheme } from 'styled-components';
+import { Panel, type PanelFooterProps } from '../../../Panel';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ModalFooterProps

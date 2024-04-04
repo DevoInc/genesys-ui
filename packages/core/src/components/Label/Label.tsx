@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {
+import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   ILabelAttrs,
@@ -8,7 +8,7 @@ import {
   IStyledPolymorphic,
 } from '../../declarations';
 
-import { StyledLabel, StyledLabelProps } from './StyledLabel';
+import { StyledLabel, type StyledLabelProps } from './StyledLabel';
 
 export interface LabelProps
   extends IStyledPolymorphic,

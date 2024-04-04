@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components';
 
 import { STATUS_ICON_MAP } from '../../../constants';
 
-import type { BannerStatus } from '../declarations';
+import type { TBannerStatus } from '../declarations';
 
 import { BannerContext } from '../context';
 
@@ -11,7 +11,7 @@ import { Icon, type IconProps } from '../../Icon';
 
 export interface BannerIconProps
   extends Omit<IconProps, 'color' | 'colorScheme' | 'size'> {
-  status?: BannerStatus;
+  status?: TBannerStatus;
 }
 
 export const BannerIcon: React.FC<BannerIconProps> = ({

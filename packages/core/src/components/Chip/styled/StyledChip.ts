@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 // declarations
-import { ChipSize, ChipState } from '../declarations';
+import type { TChipSize, TChipState } from '../declarations';
 
 // helpers
 import { disabledMixin } from '../../../styled/mixins/state';
@@ -11,9 +11,9 @@ import { getPadding } from '../helpers';
 
 export interface StyledChipProps {
   /** It sets padding, line-height, font-size, etc. */
-  size?: ChipSize;
+  size?: TChipSize;
   /** It sets the color scheme and the selection behavior. */
-  state?: ChipState;
+  state?: TChipState;
   /** If you can drag & drop the Chip. */
   sortable?: boolean;
 }

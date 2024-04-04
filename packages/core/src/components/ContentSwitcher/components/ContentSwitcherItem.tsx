@@ -2,17 +2,14 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-// constants
 import { CONTENT_SWITCHER_ITEM_SIZE_MAP } from '../constants';
 
-// declarations
-import { Button, ButtonProps } from '../../Button';
-import { TBaseSize } from '../../../declarations/commonProps';
+import { Button, type ButtonProps } from '../../Button';
+import type { TBaseSize } from '../../../declarations/commonProps';
 
-// helpers
 import {
   contentSwitcherItemMixin,
-  ContentSwitcherItemMixinProps,
+  type ContentSwitcherItemMixinProps,
 } from './contentSwitcherItemMixin';
 import { ContentSwitcherContext } from '../context';
 

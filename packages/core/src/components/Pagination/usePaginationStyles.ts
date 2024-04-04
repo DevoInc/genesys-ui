@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import type { ButtonSize } from '../Button';
+import type { TButtonSize } from '../Button';
 
 export const usePaginationStyles = ({ pageSizeOptions, size, lastPage }) => {
   // Width calc - Range Selector - Pagination
@@ -23,7 +23,7 @@ export const usePaginationStyles = ({ pageSizeOptions, size, lastPage }) => {
           ? (4.4 + lengthLastPage * 0.6).toFixed(1)
           : (4.6 + lengthLastPage * 0.8).toFixed(1)
       }rem;`,
-      actionsSize: size as ButtonSize,
+      actionsSize: size as TButtonSize,
     };
   }, [size, lastPage]);
 

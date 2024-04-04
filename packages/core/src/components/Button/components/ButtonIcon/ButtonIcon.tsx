@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import type { ButtonSize } from '../../declarations';
+import type { TButtonSize } from '../../declarations';
 import { Icon, type IconProps } from '../../../Icon';
 
 export interface ButtonIconProps extends Pick<IconProps, 'strong' | 'style'> {
   /** Sets padding, line-height, font-size, etc. */
-  size?: ButtonSize;
+  size?: TButtonSize;
   /** Icon name/id  */
   children?: React.ReactNode;
 }

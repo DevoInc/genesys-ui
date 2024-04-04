@@ -2,8 +2,12 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { camelCase } from 'lodash';
 
-import { TSelectionScheme } from '../../../../declarations';
-import { ButtonColorScheme, ButtonState, ButtonSize } from '../../declarations';
+import type { TSelectionScheme } from '../../../../declarations';
+import type {
+  TButtonColorScheme,
+  TButtonState,
+  TButtonSize,
+} from '../../declarations';
 
 import {
   typoMixin,
@@ -14,7 +18,7 @@ import { loadingAnimationMixin } from '../../helpers';
 
 export interface StyledButtonContainerProps {
   /** Color scheme: background color, text color, backdrop... etc. */
-  colorScheme?: ButtonColorScheme;
+  colorScheme?: TButtonColorScheme;
   /** Icon Name */
   icon?: React.ReactNode;
   /** Border Radius 50% */
@@ -28,9 +32,9 @@ export interface StyledButtonContainerProps {
   /** If it's multiple we use a checkbox and if it's single we use a radio */
   selectionScheme?: TSelectionScheme;
   /** Sets padding, line-height, font-size, etc. */
-  size?: ButtonSize;
+  size?: TButtonSize;
   /** Sets the color scheme according to component state */
-  state?: ButtonState;
+  state?: TButtonState;
 }
 
 export const StyledButtonContainer = styled.button<StyledButtonContainerProps>`

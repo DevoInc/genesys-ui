@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {
+import type {
   IButtonAttrs,
   IFocusEventAttrs,
   IGlobalAriaAttrs,
@@ -12,7 +12,7 @@ import {
   ITriggerAriaAttrs,
 } from '../../declarations';
 
-import { StyledLink, StyledLinkProps } from './StyledLink';
+import { StyledLink, type StyledLinkProps } from './StyledLink';
 
 export interface LinkProps
   extends IStyledPolymorphic,

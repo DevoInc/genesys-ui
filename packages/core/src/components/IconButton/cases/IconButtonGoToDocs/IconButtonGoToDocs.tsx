@@ -5,7 +5,7 @@ import { css, useTheme } from 'styled-components';
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 import { STATUS_ICON_MAP } from '../../../../constants';
 
-import { IconButton, IconButtonProps } from '../../IconButton';
+import { IconButton, type IconButtonProps } from '../../IconButton';
 
 import { Box } from '../../../Box';
 import { getMarkerSize } from './utils';

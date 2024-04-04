@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VFlex, VFlexProps } from '../VFlex';
+import { VFlex, type VFlexProps } from '../VFlex';
 import { MenuHeading, MenuItem, MenuSeparator } from './components';
 
 export interface MenuProps extends Omit<VFlexProps, 'role'> {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { TLegendPosition } from '../declarations';
+import type { TLegendPosition } from '../declarations';
 
 import { Flex } from '../../Flex';
 import { Typography } from '../../Typography';
@@ -21,9 +21,9 @@ export interface FormLegendProps
   hasLabelFormat?: boolean;
   legendPosition?: TLegendPosition;
   /** The text of the legend. */
-  text: string;
+  text?: string;
   /** The children if we need a custom content. */
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const FormLegend: React.FC<FormLegendProps> = ({

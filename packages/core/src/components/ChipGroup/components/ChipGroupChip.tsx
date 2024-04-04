@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { ChipGroupContext } from '../context';
 
-import { Chip, ChipProps } from '../../Chip';
+import { Chip, type ChipProps } from '../../Chip';
 
 export interface ChipGroupChipProps extends ChipProps {}
 

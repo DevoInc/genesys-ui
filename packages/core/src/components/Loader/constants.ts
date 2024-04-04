@@ -1,16 +1,16 @@
 import type {
-  ContextualScrollLoaderSize,
-  ContextualScrollLoaderType,
-  LoaderSize,
+  TContextualScrollLoaderSize,
+  TContextualScrollLoaderType,
+  TLoaderSize,
   TLoaderGradientPosition,
 } from './declarations';
 import type { TProgressBarSize } from '../ProgressBar/declarations';
-import type { TSpinnerSize } from '../SpinnerLoader/constants';
+import type { TSpinnerSize } from '../SpinnerLoader/declarations';
 import type { TBaseSize } from '../../declarations';
 import type { OverlayProps } from '../Overlay';
 
 export const LOADER_SIZE_PROGRESS_AND_SPINNER: {
-  [key in LoaderSize]: { progress: TProgressBarSize; spinner: TSpinnerSize };
+  [key in TLoaderSize]: { progress: TProgressBarSize; spinner: TSpinnerSize };
 } = {
   sm: {
     progress: 'sm',
@@ -23,8 +23,8 @@ export const LOADER_SIZE_PROGRESS_AND_SPINNER: {
 } as const;
 
 export const CONTEXTUAL_SCROLL_LOADER_SIZE_MAP: {
-  [key1 in ContextualScrollLoaderType]: {
-    [key2 in ContextualScrollLoaderSize]: TBaseSize;
+  [key1 in TContextualScrollLoaderType]: {
+    [key2 in TContextualScrollLoaderSize]: TBaseSize;
   };
 } = {
   progress: {

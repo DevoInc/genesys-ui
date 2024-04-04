@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { ButtonExpandableState } from '../../../Button';
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
+import type { TButtonExpandableState } from '../../../Button';
 
-import { IconButton, IconButtonProps } from '../../IconButton';
+import { IconButton, type IconButtonProps } from '../../IconButton';
 
 export interface IconButtonCollapseProps
   extends Omit<
@@ -28,7 +28,7 @@ export interface IconButtonCollapseProps
     | 'target'
     | 'value'
   > {
-  state: ButtonExpandableState;
+  state: TButtonExpandableState;
 }
 
 export const IconButtonCollapse = React.forwardRef<

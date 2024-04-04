@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IStyledOverloadCss } from '../../../../declarations';
+import type { IStyledOverloadCss } from '../../../../declarations';
 
 import { Panel } from '../../../Panel';
 

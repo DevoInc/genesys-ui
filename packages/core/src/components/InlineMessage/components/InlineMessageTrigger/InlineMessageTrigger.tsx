@@ -9,8 +9,8 @@ import { Typography } from '../../../Typography';
 import { useAddPropsToChildren } from '../../../../hooks';
 import {
   Button,
-  type ButtonExpandableState,
-  ButtonSize,
+  type TButtonExpandableState,
+  TButtonSize,
 } from '../../../Button';
 import type {
   IGlobalAriaAttrs,
@@ -34,8 +34,8 @@ export interface InlineMessageTriggerProps
     > {
   icon?: React.ReactNode;
   onClick?: ITriggerEventAttrs['onClick'];
-  size?: ButtonSize;
-  state: ButtonExpandableState;
+  size?: TButtonSize;
+  state: TButtonExpandableState;
   status?: IconButtonStatusProps['colorScheme'];
   secondaryText?: string;
   text?: string;

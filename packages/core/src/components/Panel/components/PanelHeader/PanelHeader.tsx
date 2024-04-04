@@ -1,6 +1,12 @@
 import * as React from 'react';
 
-import { IPanelBaseAttrs, IPanelHelpAttrs } from '../../declarations';
+import type { IPanelBaseAttrs, IPanelHelpAttrs } from '../../declarations';
+import type {
+  IPanelCloseAttrs,
+  IPanelCollapseAttrs,
+  IPanelHeaderAttrs,
+  IPanelHeadingAttrs,
+} from './declarations';
 
 import { PanelContext } from '../../context';
 
@@ -13,12 +19,6 @@ import {
   PanelHeaderClose,
   PanelHeaderIcon,
 } from './components';
-import {
-  IPanelCloseAttrs,
-  IPanelCollapseAttrs,
-  IPanelHeaderAttrs,
-  IPanelHeadingAttrs,
-} from './declarations';
 
 export interface PanelHeaderProps
   extends IPanelBaseAttrs,

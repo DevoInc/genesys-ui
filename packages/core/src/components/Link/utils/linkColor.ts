@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components';
 
-import { LinkColorScheme, LinkState } from '../declarations';
+import { TLinkColorScheme, TLinkState } from '../declarations';
 
 import { darken, lighten } from 'polished';
 
@@ -10,9 +10,9 @@ export const getLinkColor = ({
   state = 'enabled',
   colorTokens,
 }: {
-  colorScheme: LinkColorScheme;
+  colorScheme: TLinkColorScheme;
   themeScheme: DefaultTheme['meta']['scheme'];
-  state: LinkState;
+  state: TLinkState;
   colorTokens: DefaultTheme['cmp']['link']['color']['text'];
 }): string => {
   if (state === 'hovered')

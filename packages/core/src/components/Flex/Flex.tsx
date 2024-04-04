@@ -7,7 +7,7 @@ import type { Resolve } from '../../typeFunctions';
 
 import { flexMixin } from './mixins';
 
-import { Box, BoxProps } from '../Box';
+import { Box, type BoxProps } from '../Box';
 import { FlexItem } from './components';
 
 export interface FlexProps extends BoxProps, ILayoutFlexCss {}

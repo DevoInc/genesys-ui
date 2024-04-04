@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {
+import type {
   IPanelContainerAttrs,
   TPanelIcon,
   TPanelRemoveSpace,
 } from '../../declarations';
-import {
+import type {
   IGlobalAttrs,
   ILayoutBoxCss,
   IMouseEventAttrs,

@@ -1,18 +1,18 @@
 import * as React from 'react';
 
+import type { IFormAttrs, IFormEventAttrs } from './declarations';
+import { FlexItem } from '../Flex/components';
 import {
   FormButtons,
   FormDistributor,
-  FormDistributorProps,
+  type FormDistributorProps,
   FormGroup,
   FormLegend,
-  FormItem,
 } from './components';
-import { FormAttrProps, FormEventAttrs } from './declarations';
 
 export interface FormProps
-  extends FormAttrProps,
-    FormEventAttrs,
+  extends IFormAttrs,
+    IFormEventAttrs,
     FormDistributorProps {
   /** Text as heading for the form. */
   heading?: string;
@@ -63,11 +63,17 @@ const PartForm: React.FC<FormProps> = ({
 export const Form = PartForm as typeof PartForm & {
   Buttons: typeof FormButtons;
   Group: typeof FormGroup;
-  Item: typeof FormItem;
+  Item: typeof FlexItem;
   Legend: typeof FormLegend;
 };
 
 Form.Buttons = FormButtons;
 Form.Group = FormGroup;
-Form.Item = FormItem;
+Form.Item = FlexItem;
 Form.Legend = FormLegend;
+
+PartForm.displayName = 'Form';
+Form.Buttons.displayName = 'Form.Buttons';
+Form.Group.displayName = 'Form.Group';
+Form.Item.displayName = 'Form.Item';
+Form.Legend.displayName = 'Form.Legend';

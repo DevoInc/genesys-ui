@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { concat } from 'lodash';
 
-import { ILayoutGridCss } from '../../declarations';
-import { Box, BoxProps } from '../Box';
+import type { ILayoutGridCss } from '../../declarations';
+import { Box, type BoxProps } from '../Box';
 
 import { gridMixin } from './mixins';
 

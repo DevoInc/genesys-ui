@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css, DefaultTheme } from 'styled-components';
 
-import { BoxProps } from '../Box';
+import type { BoxProps } from '../Box';
 
 import { pseudoElementOverlayMixin } from '../../styled';
 

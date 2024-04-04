@@ -2,13 +2,13 @@ import { css, DefaultTheme } from 'styled-components';
 
 import type { TFieldSize, TFieldStatus } from '../../declarations';
 import type {
-  FieldsCombinerCombinedButtons,
-  FieldsCombinerOrder,
+  TFieldsCombinerCombinedButtons,
+  TFieldsCombinerOrder,
 } from './declarations';
 
 export interface FieldsCombinerMixinsProps {
-  combinedButtons?: FieldsCombinerCombinedButtons;
-  order: FieldsCombinerOrder;
+  combinedButtons?: TFieldsCombinerCombinedButtons;
+  order: TFieldsCombinerOrder;
   size: TFieldSize;
   status?: TFieldStatus;
   theme: DefaultTheme;

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { camelCase } from 'lodash';
 
 import { AVATAR_SIZE_BORDER_MAP } from '../constants';
-import {
+import type {
   TAvatarColorScheme,
   TAvatarFit,
   TAvatarSize,

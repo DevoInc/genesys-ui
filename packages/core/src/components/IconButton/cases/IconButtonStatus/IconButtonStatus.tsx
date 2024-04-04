@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components';
 
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 
-import type { ButtonExpandableState } from '../../../Button';
+import type { TButtonExpandableState } from '../../../Button';
 import type { TUIColorScheme } from '../../../../declarations';
 
 import { iconButtonStatusMixin } from './mixins';
@@ -33,7 +33,7 @@ export interface IconButtonStatusProps
     | 'value'
   > {
   colorScheme?: TUIColorScheme;
-  state?: ButtonExpandableState;
+  state?: TButtonExpandableState;
 }
 
 export const IconButtonStatus = React.forwardRef<

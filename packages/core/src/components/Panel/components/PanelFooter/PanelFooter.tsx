@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { PanelContext } from '../../context';
-import { IPanelFooterAttrs } from './declarations';
-import { IPanelBaseAttrs, IPanelHelpAttrs } from '../../declarations';
+import type { IPanelFooterAttrs } from './declarations';
+import type { IPanelBaseAttrs, IPanelHelpAttrs } from '../../declarations';
 
 import {
   PanelFooterActions,

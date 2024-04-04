@@ -1,10 +1,13 @@
 import * as React from 'react';
 
-import { IStyledOverloadCss, IStyledPolymorphic } from '../../declarations';
+import type {
+  IStyledOverloadCss,
+  IStyledPolymorphic,
+} from '../../declarations';
 
 import {
   StyledDecoratorBar,
-  StyledDecoratorBarProps,
+  type StyledDecoratorBarProps,
 } from './StyledDecoratorBar';
 
 export interface DecoratorBarProps

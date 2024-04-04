@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { TSpinnerColorScheme } from '../declarations';
+import type { TSpinnerColorScheme } from '../declarations';
 
 interface StyledSpinnerLoaderCircleProps {
   colorScheme?: TSpinnerColorScheme;

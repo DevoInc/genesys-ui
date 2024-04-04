@@ -2,27 +2,27 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { AllHTMLAttributes } from 'react';
 
-import {
+import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../../declarations';
-import { BadgeColorScheme } from '../../../Badge';
+import type { TBadgeColorScheme } from '../../../Badge';
 
 import { getTranslate } from './utils';
 
-import { Badge, BadgeSize } from '../../../Badge';
+import { Badge, type TBadgeSize } from '../../../Badge';
 import { Box } from '../../../Box';
 
 export interface ButtonBadgeProps<T = Element>
   extends IStyledPolymorphic,
     IStyledOverloadCss {
   /** ColorScheme and status */
-  colorScheme?: BadgeColorScheme;
+  colorScheme?: TBadgeColorScheme;
   /** If the button parent is circular */
   hasCircularParent?: boolean;
   id?: AllHTMLAttributes<T>['id'];
   /** Sets padding, line-height, font-size, etc. */
-  size?: BadgeSize;
+  size?: TBadgeSize;
   /** Badge text */
   text?: string;
 }
