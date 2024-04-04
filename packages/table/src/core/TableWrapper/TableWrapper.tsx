@@ -8,7 +8,7 @@ import { StyledTable } from './StyledTable';
 import { StyledTableWrapper } from './StyledTableWrapper';
 import { TableContext } from '../../context/TableContext';
 import {
-  useWrapperOberver,
+  useWrapperObserver,
   useTableScroll,
   useTableVirtualizationColumn,
   useTableVirtualizationRow,
@@ -17,7 +17,7 @@ import { WrapperContext } from '../../context';
 import { useTheme } from 'styled-components';
 
 export const TableWrapper: React.FC = () => {
-  const { ref } = useWrapperOberver();
+  const { ref } = useWrapperObserver();
   const theme = useTheme();
   const { maxHeight, colDefs, data, showFilters, density } =
     React.useContext(TableContext);

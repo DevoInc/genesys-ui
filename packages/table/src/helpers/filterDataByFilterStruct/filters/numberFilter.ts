@@ -1,8 +1,8 @@
-import { NumberFilterValue } from '../../../filters';
+import { TNumberFilterValue } from '../../../filters';
 
 export const numberFilter = (
   data: number,
-  { value, secondValue, operator }: NumberFilterValue,
+  { value, secondValue, operator }: TNumberFilterValue,
 ) =>
   value === ''
     ? true

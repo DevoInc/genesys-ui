@@ -8,13 +8,11 @@ import {
   IconButton,
 } from '@devoinc/genesys-ui';
 
-import type { HeaderRendererProps } from '../../declarations';
-import { BulkContext } from '../../facade';
+import type { THeaderRenderer } from '../../declarations';
+import type { TBulkContext } from '../../facade';
 
-export const HeaderBulkRenderer: React.FC<HeaderRendererProps> = ({
-  colDef,
-}) => {
-  const context = colDef?.context as BulkContext;
+export const HeaderBulkRenderer: React.FC<THeaderRenderer> = ({ colDef }) => {
+  const context = colDef?.context as TBulkContext;
   const checked = context?.headerBulkChecked as boolean;
   const popoverId = `${colDef.id}-bulk-actions-menu`;
 

@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { OrderColumn } from './declarations';
+import type { TOrderColumn } from './declarations';
 import { updateOrderStruct } from './updateOrderStruct';
 
-export const useOrderStruct = (initial: OrderColumn[] = []) => {
-  const [orderStruct, setOrderStruct] = React.useState<OrderColumn[]>(initial);
+export const useOrderStruct = (initial: TOrderColumn[] = []) => {
+  const [orderStruct, setOrderStruct] = React.useState<TOrderColumn[]>(initial);
 
   const onSort = React.useCallback(
     (id: string) => {

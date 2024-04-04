@@ -2,10 +2,10 @@ import * as React from 'react';
 
 import { Popover, Menu } from '@devoinc/genesys-ui';
 
-import { ActionMenuEntry } from '../../facade';
+import { TActionMenuEntry } from '../../facade';
 
 type Props = {
-  entry: ActionMenuEntry;
+  entry: TActionMenuEntry;
   hasExtraLeftSpace: boolean;
   rowIndex: number;
   level: number;

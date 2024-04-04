@@ -7,14 +7,15 @@ import {
   Menu,
   Popover,
 } from '@devoinc/genesys-ui';
-import { FilterContainer, numberOptions, NUMBER_ADDON_MAP } from '../common';
-import type { FilterContext, FilterProps } from '../../declarations';
-import type { NumberFilterValue } from './declarations';
 import { GIExitClose, GIFilter } from '@devoinc/genesys-icons';
 
-export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
-  const context = colDef?.context as FilterContext;
-  const filterValue = context?.filterValue as NumberFilterValue;
+import { FilterContainer, NUMBER_OPTIONS, NUMBER_ADDON_MAP } from '../common';
+import type { TFilterContext, TFilter } from '../../declarations';
+import type { TNumberFilterValue } from './declarations';
+
+export const NumberFilter: React.FC<TFilter> = ({ colDef, onChange }) => {
+  const context = colDef?.context as TFilterContext;
+  const filterValue = context?.filterValue as TNumberFilterValue;
   const value = filterValue?.value ?? '';
   const secondValue = filterValue?.secondValue ?? '';
   const operator = filterValue?.operator ?? 'equals';
@@ -33,7 +34,7 @@ export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
                 value: event.currentTarget.value,
                 secondValue,
                 operator,
-              } as NumberFilterValue,
+              } as TNumberFilterValue,
               'number',
             );
           }}
@@ -54,7 +55,7 @@ export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
                   value,
                   secondValue: event.currentTarget.value,
                   operator,
-                } as NumberFilterValue,
+                } as TNumberFilterValue,
                 'number',
               );
             }}
@@ -72,7 +73,7 @@ export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
                   {
                     value: '',
                     operator: 'equals',
-                  } as NumberFilterValue,
+                  } as TNumberFilterValue,
                   'number',
                 );
               }}
@@ -101,7 +102,7 @@ export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
             {({ setOpened }) => (
               <Popover.Panel maxHeight="34rem" width="28rem">
                 <Menu>
-                  {numberOptions.map((option) => (
+                  {NUMBER_OPTIONS.map((option) => (
                     <Menu.Item
                       selectionScheme="single"
                       onChange={() => {
@@ -110,7 +111,7 @@ export const NumberFilter: React.FC<FilterProps> = ({ colDef, onChange }) => {
                             value,
                             secondValue,
                             operator: option.value,
-                          } as NumberFilterValue,
+                          } as TNumberFilterValue,
                           'number',
                         );
                         setOpened(false);

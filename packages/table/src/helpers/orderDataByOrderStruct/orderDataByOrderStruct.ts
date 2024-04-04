@@ -1,18 +1,18 @@
 /* eslint-disable indent */
 
-import { Row } from '../../declarations';
-import { OrderColumn } from '../../hooks';
+import { TRow } from '../../declarations';
+import { TOrderColumn } from '../../hooks';
 import { numberSorter, stringSorter } from './sorters';
 
-export type CustomSortFn = (a: Row, b: Row, sort: 'asc' | 'desc') => number;
+export type TCustomSortFn = (a: TRow, b: TRow, sort: 'asc' | 'desc') => number;
 
-export type CustomSortFns = {
-  [key: string]: CustomSortFn;
+export type TCustomSortFns = {
+  [key: string]: TCustomSortFn;
 };
 
 export const orderDataByOrderStruct =
-  (orderStruct: OrderColumn[], customSortFns: CustomSortFns = {}) =>
-  (a: Row, b: Row) => {
+  (orderStruct: TOrderColumn[], customSortFns: TCustomSortFns = {}) =>
+  (a: TRow, b: TRow) => {
     for (const { sort, id } of orderStruct) {
       if (Object.keys(customSortFns).includes(id)) {
         const result = customSortFns[id](a, b, sort);

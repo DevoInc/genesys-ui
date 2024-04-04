@@ -1,14 +1,14 @@
 import * as React from 'react';
-
-import { DateTimePicker } from '@devoinc/genesys-ui-datetime';
-
-import { TableContext } from '../../context/TableContext';
-import { ROW_HEIGHT_MD } from '../../constants';
-import { Popover, getPxFromRem } from '@devoinc/genesys-ui';
-import type { CellEditorProps } from '../../declarations';
 import { useTheme } from 'styled-components';
 
-export const DateEditor: React.FC<CellEditorProps> = ({
+import { DateTimePicker } from '@devoinc/genesys-ui-datetime';
+import { Popover, getPxFromRem } from '@devoinc/genesys-ui';
+
+import { ROW_HEIGHT_MD } from '../../constants';
+import type { TCellEditor } from '../../declarations';
+import { TableContext } from '../../context/TableContext';
+
+export const DateEditor: React.FC<TCellEditor> = ({
   value,
   onChange,
   colDef,

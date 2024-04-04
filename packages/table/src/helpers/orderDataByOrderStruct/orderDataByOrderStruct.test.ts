@@ -1,16 +1,16 @@
 import { describe, test, expect } from 'vitest';
 
-import { OrderColumn } from '../../hooks';
-import { Data, Row } from '../../declarations';
+import type { TOrderColumn } from '../../hooks';
+import type { TData, TRow } from '../../declarations';
 import {
-  CustomSortFns,
+  TCustomSortFns,
   orderDataByOrderStruct,
 } from '../orderDataByOrderStruct/orderDataByOrderStruct';
 
 const statusOrder = ['success', 'warning', 'error'];
 
 describe('orderDataByOrderStruct', () => {
-  const cases: [string, Data, OrderColumn[], CustomSortFns, Data][] = [
+  const cases: [string, TData, TOrderColumn[], TCustomSortFns, TData][] = [
     [
       'Order number desc',
       [{ c1: 1 }, { c1: 2 }],
@@ -81,7 +81,7 @@ describe('orderDataByOrderStruct', () => {
       [{ c1: 'error' }, { c1: 'success' }, { c1: 'warning' }],
       [{ id: 'c1', sort: 'asc' }],
       {
-        c1: (a: Row, b: Row, sort: 'asc' | 'desc') =>
+        c1: (a: TRow, b: TRow, sort: 'asc' | 'desc') =>
           sort === 'asc'
             ? statusOrder.indexOf(String(a.c1)) -
               statusOrder.indexOf(String(b.c1))

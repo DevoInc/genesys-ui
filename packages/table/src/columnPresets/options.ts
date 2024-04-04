@@ -1,8 +1,8 @@
-import { ColDef } from '../declarations';
+import { TColDef } from '../declarations';
 import { OptionsFilter } from '../filters';
 import { OptionsRenderer } from '../renderers';
 
-export const options: ColDef = {
+export const options: TColDef = {
   id: 'options',
   cellRenderer: OptionsRenderer,
   cellFilter: OptionsFilter,

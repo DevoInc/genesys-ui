@@ -1,4 +1,4 @@
-export type NumberFilterValue = {
+export type TNumberFilterValue = {
   value: string;
   secondValue?: string;
   operator:

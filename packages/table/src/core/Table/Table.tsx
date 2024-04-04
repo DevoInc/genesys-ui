@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import type { ColDef, ITable } from '../../declarations';
+import { ROW_HEIGHT_MD } from '../../constants';
+import type { TColDef, ITable } from '../../declarations';
 import { TableContext, WrapperContextProvider } from '../../context';
 import { TableWrapper } from '../TableWrapper';
-import { ROW_HEIGHT_MD } from '../../constants';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TableProps extends ITable {}
@@ -25,7 +25,7 @@ export const Table: React.FC<TableProps> = ({
   resizableColumns = false,
   rowHeight = ROW_HEIGHT_MD,
 }) => {
-  const mergedColDefs: ColDef[] = React.useMemo(
+  const mergedColDefs: TColDef[] = React.useMemo(
     () =>
       colDefs.map((column) => {
         const preset = columnPresets.find(

@@ -3,7 +3,7 @@ import { useVirtualizer } from '@tanstack/react-virtual';
 
 import { WrapperContext, TableContext } from '../context';
 
-type UseVirtualizationParamsColumn = {
+type TUseVirtualizationParamsColumn = {
   ref: React.MutableRefObject<HTMLDivElement>;
 };
 
@@ -15,7 +15,7 @@ const getPixelsFromPercentage =
 
 export const useTableVirtualizationColumn = ({
   ref,
-}: UseVirtualizationParamsColumn) => {
+}: TUseVirtualizationParamsColumn) => {
   const { colDefs, minWidth } = React.useContext(TableContext);
   const { width: wrapperWidth } = React.useContext(WrapperContext);
 

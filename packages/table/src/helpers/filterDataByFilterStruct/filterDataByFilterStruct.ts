@@ -1,14 +1,13 @@
 /* eslint-disable indent */
 
-import { Row } from '../../declarations';
+import type { TRow, TFilterValue } from '../../declarations';
 import {
-  FilterValue,
-  NumberFilterValue,
-  OptionsFilterValue,
-  TextFilterValue,
-  BooleanFilterValue,
+  TNumberFilterValue,
+  type TOptionsFilterValue,
+  type TTextFilterValue,
+  TBooleanFilterValue,
 } from '../../filters';
-import { FilterColumn } from '../../hooks';
+import type { TFilterColumn } from '../../hooks';
 import {
   booleanFilter,
   numberFilter,
@@ -16,18 +15,18 @@ import {
   textFilter,
 } from './filters';
 
-export type CustomFilterFn = (
+export type TCustomFilterFn = (
   data: unknown,
-  filterValue: FilterValue,
+  filterValue: TFilterValue,
 ) => boolean;
 
 export type CustomFilterFns = {
-  [key: string]: CustomFilterFn;
+  [key: string]: TCustomFilterFn;
 };
 
 export const filterDataByFilterStruct =
-  (filterStruct: FilterColumn[], customFilterFns: CustomFilterFns = {}) =>
-  (a: Row) => {
+  (filterStruct: TFilterColumn[], customFilterFns: CustomFilterFns = {}) =>
+  (a: TRow) => {
     for (const { value, id, type } of filterStruct) {
       if (Object.keys(customFilterFns).includes(id)) {
         const res = customFilterFns[id](a[id], value);
@@ -37,26 +36,29 @@ export const filterDataByFilterStruct =
       }
 
       if (type === 'text') {
-        const res = textFilter(String(a[id]), value as TextFilterValue);
+        const res = textFilter(String(a[id]), value as TTextFilterValue);
         if (!res) {
           return false;
         }
       }
 
       if (type === 'number') {
-        const res = numberFilter(Number(a[id]), value as NumberFilterValue);
+        const res = numberFilter(Number(a[id]), value as TNumberFilterValue);
         if (!res) {
           return false;
         }
       }
       if (type === 'boolean') {
-        const res = booleanFilter(!!a[id], value as BooleanFilterValue);
+        const res = booleanFilter(!!a[id], value as TBooleanFilterValue);
         if (!res) {
           return false;
         }
       }
       if (type === 'options') {
-        const res = optionsFilter(a[id] as string, value as OptionsFilterValue);
+        const res = optionsFilter(
+          a[id] as string,
+          value as TOptionsFilterValue,
+        );
         if (!res) {
           return false;
         }

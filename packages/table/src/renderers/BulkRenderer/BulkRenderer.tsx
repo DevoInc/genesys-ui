@@ -2,15 +2,15 @@ import * as React from 'react';
 
 import { CheckboxControl } from '@devoinc/genesys-ui';
 
-import type { CellRendererProps } from '../../declarations';
-import { BulkContext } from '../../facade';
+import type { TCellRenderer } from '../../declarations';
+import type { TBulkContext } from '../../facade';
 
-export const BulkRenderer: React.FC<CellRendererProps> = ({
+export const BulkRenderer: React.FC<TCellRenderer> = ({
   value,
   rowIndex,
   colDef,
 }) => {
-  const context = colDef?.context as BulkContext;
+  const context = colDef?.context as TBulkContext;
 
   let checked = false;
   if (context?.bulkSelection) {

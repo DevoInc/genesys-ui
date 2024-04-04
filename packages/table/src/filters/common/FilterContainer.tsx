@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import { HFlex } from '@devoinc/genesys-ui';
 
-type FilterContainerProps = {
+interface FilterContainerProps {
   children: React.ReactNode;
-};
+}
 
 export const FilterContainer: React.FC<FilterContainerProps> = ({
   children,

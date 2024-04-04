@@ -3,9 +3,9 @@ import { useTheme } from 'styled-components';
 
 import { GICheckOk, GIExitClose } from '@devoinc/genesys-icons';
 
-import { CellRendererProps } from '../declarations';
+import type { TCellRenderer } from '../../declarations';
 
-export const BooleanRenderer: React.FC<CellRendererProps> = ({ value }) => {
+export const BooleanRenderer: React.FC<TCellRenderer> = ({ value }) => {
   const bool = typeof value === 'string' ? value === 'true' : value;
   const theme = useTheme();
   const iconColor = theme.alias.color.text.body.base;

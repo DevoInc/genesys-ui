@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { StyledTableProps } from '../TableWrapper/StyledTable';
-import { ITable } from '../../declarations';
+import type { StyledTableProps } from '../TableWrapper/StyledTable';
+import type { ITable } from '../../declarations';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface StyledTableBodyProps

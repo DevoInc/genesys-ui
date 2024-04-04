@@ -5,7 +5,7 @@ import { keyframes } from 'styled-components';
  * --------------------------------------------------------------------------- */
 
 /* Spin - Keyframes */
-export const spin = keyframes`
+export const spinCssKeyFrame = keyframes`
   0% {
     transform: rotateZ(0deg);
   }
@@ -15,7 +15,7 @@ export const spin = keyframes`
 `;
 
 /* Fall - Keyframes */
-export const fall = keyframes`
+export const fallCssKeyFrame = keyframes`
   0% {
     opacity: 0;
     transform: scale(0.5);
@@ -33,7 +33,7 @@ export const fall = keyframes`
 `;
 
 /* Shake - Keyframes */
-export const shake = keyframes`
+export const shakeCssKeyFrame = keyframes`
   10%,
   90% {
     transform: translateX(-0.0625em);

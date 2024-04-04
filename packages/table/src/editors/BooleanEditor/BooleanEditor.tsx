@@ -1,11 +1,8 @@
 import * as React from 'react';
 import { SwitchControl } from '@devoinc/genesys-ui';
-import { CellEditorProps } from '../declarations';
+import { TCellEditor } from '../../declarations';
 
-export const BooleanEditor: React.FC<CellEditorProps> = ({
-  value,
-  onChange,
-}) => (
+export const BooleanEditor: React.FC<TCellEditor> = ({ value, onChange }) => (
   <SwitchControl
     size="sm"
     autoFocus

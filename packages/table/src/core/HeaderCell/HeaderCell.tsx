@@ -1,19 +1,19 @@
 import React from 'react';
 
-import { ColDef } from '../../declarations';
+import type { TColDef } from '../../declarations';
+import { TableContext } from '../../context/TableContext';
 
+import { OrderIndicator } from './OrderIndicator';
 import { StyledHeaderCell } from './StyledHeaderCell';
 import { StyledHeaderCellResizer } from './StyledHeaderCellResizer';
-import { TableContext } from '../../context/TableContext';
-import { OrderIndicator } from './OrderIndicator';
 
 interface HeaderCellProps {
-  colDef: ColDef;
+  colDef: TColDef;
   width: React.CSSProperties['width'];
   offsetX: number;
   children: React.ReactNode;
   resizable?: boolean;
-  onSort?: (colDef: ColDef) => void;
+  onSort?: (colDef: TColDef) => void;
   showFilters?: boolean;
 }
 

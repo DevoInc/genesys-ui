@@ -2,17 +2,17 @@ import { describe, test, expect } from 'vitest';
 import { VirtualItem } from '@tanstack/react-virtual';
 
 import { DEFAULT_VIRTUAL_COLUMN, DEFAULT_COLDEF } from './../../constants';
-import { ColDef, DefaultColDef } from '../../declarations';
+import { TColDef, TDefaultColDef } from '../../declarations';
 import { getColDefByID, getCollatedColumns } from './columns';
 
-const colDefsMock: ColDef[] = [
+const colDefsMock: TColDef[] = [
   { id: 'col0' },
   { id: 'col1' },
   { id: 'example' },
   { id: 'col3' },
 ];
 
-const getColDefByIDCases: [string, ColDef[], VirtualItem, ColDef][] = [
+const getColDefByIDCases: [string, TColDef[], VirtualItem, TColDef][] = [
   ['No column definitions', [], DEFAULT_VIRTUAL_COLUMN, undefined],
   ['No virtual column', colDefsMock, null, undefined],
   ['Standard case', colDefsMock, DEFAULT_VIRTUAL_COLUMN, colDefsMock[2]],
@@ -26,10 +26,10 @@ const getColDefByIDCases: [string, ColDef[], VirtualItem, ColDef][] = [
 
 const getCollatedColumnsCases: [
   string,
-  DefaultColDef,
-  ColDef,
-  ColDef[],
-  ColDef,
+  TDefaultColDef,
+  TColDef,
+  TColDef[],
+  TColDef,
 ][] = [
   [
     'No column definitions',

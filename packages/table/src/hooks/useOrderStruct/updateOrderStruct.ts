@@ -1,9 +1,9 @@
-import { OrderColumn } from './declarations';
+import type { TOrderColumn } from './declarations';
 
 export const updateOrderStruct = (
-  orderStruct: OrderColumn[],
+  orderStruct: TOrderColumn[],
   id: string,
-): OrderColumn[] => {
+): TOrderColumn[] => {
   const prev = orderStruct.find((col) => col.id === id);
   if (prev?.sort === 'asc') {
     return orderStruct.map((col) =>

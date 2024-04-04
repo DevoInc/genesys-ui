@@ -6,12 +6,12 @@ import { SelectControl } from '@devoinc/genesys-ui';
 import {
   AdvancedFilter,
   BasicFilter,
-  dateOptions,
+  DATE_OPTIONS,
   FilterContainer,
 } from '../common';
-import type { FilterProps } from '../../declarations';
+import type { TFilter } from '../../declarations';
 
-export const DateFilter: React.FC<FilterProps> = ({ colDef }) => (
+export const DateFilter: React.FC<TFilter> = ({ colDef }) => (
   <FilterContainer>
     <BasicFilter>
       <DateTimeFloatingPicker
@@ -24,7 +24,7 @@ export const DateFilter: React.FC<FilterProps> = ({ colDef }) => (
       <SelectControl
         menuAppendToBody
         // onChange={(opt: TSelectOption) => setValue(opt.value)}
-        options={dateOptions}
+        options={DATE_OPTIONS}
         // value={value}
       />
       <DateTimeFloatingPicker

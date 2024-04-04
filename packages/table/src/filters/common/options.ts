@@ -1,5 +1,6 @@
-export const textDefaultValue = 'contains';
-export const textOptions = [
+export const TEXT_DEFAULT_VALUE = 'contains';
+
+export const TEXT_OPTIONS = [
   { value: 'contains', label: 'Contains' },
   { value: 'notContains', label: 'Does not contain' },
   { value: 'equals', label: 'Equals to' },
@@ -9,6 +10,7 @@ export const textOptions = [
   { value: 'blank', label: 'Blank' },
   { value: 'notBlank', label: 'Not blank' },
 ];
+
 export const TEXT_ADDON_MAP = {
   contains: null,
   notContains: '!cont',
@@ -20,8 +22,9 @@ export const TEXT_ADDON_MAP = {
   notBlank: '!blank',
 };
 
-export const numberDefaultValue = 'equals';
-export const numberOptions = [
+export const NUMBER_DEFAULT_VALUE = 'equals';
+
+export const NUMBER_OPTIONS = [
   { value: 'equals', label: 'Equals to' },
   { value: 'notEquals', label: 'Does not equal to' },
   { value: 'greater', label: 'Greater than' },
@@ -30,6 +33,7 @@ export const numberOptions = [
   { value: 'lessOrEqual', label: 'Less than or equal to' },
   { value: 'between', label: 'Between' },
 ];
+
 export const NUMBER_ADDON_MAP = {
   equals: null,
   notEquals: '!=',
@@ -40,7 +44,7 @@ export const NUMBER_ADDON_MAP = {
   between: null,
 };
 
-export const dateOptions = [
+export const DATE_OPTIONS = [
   { value: 'equals', label: 'Equals to' },
   { value: 'notEquals', label: 'Does not equal to' },
   { value: 'before', label: 'Before' },

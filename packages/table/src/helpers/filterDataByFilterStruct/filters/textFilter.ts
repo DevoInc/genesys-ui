@@ -1,8 +1,8 @@
-import { TextFilterValue } from '../../../filters';
+import type { TTextFilterValue } from '../../../filters';
 
 export const textFilter = (
   data: string,
-  { value, operator }: TextFilterValue,
+  { value, operator }: TTextFilterValue,
 ) =>
   value === ''
     ? true

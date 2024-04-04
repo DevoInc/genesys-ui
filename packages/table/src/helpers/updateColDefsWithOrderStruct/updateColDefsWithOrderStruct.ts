@@ -1,9 +1,9 @@
-import { ColDef } from '../../declarations';
-import { OrderColumn } from '../../hooks';
+import type { TColDef } from '../../declarations';
+import type { TOrderColumn } from '../../hooks';
 
 export const updateColDefsWithOrderStruct = (
-  colDefs: ColDef[],
-  orderStruct: OrderColumn[],
+  colDefs: TColDef[],
+  orderStruct: TOrderColumn[],
 ) =>
   colDefs.map((col) => {
     const index = orderStruct.findIndex((iter) => iter.id === col.id);

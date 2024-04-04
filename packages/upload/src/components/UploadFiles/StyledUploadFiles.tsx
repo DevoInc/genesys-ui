@@ -13,60 +13,16 @@ import { FilePond, registerPlugin } from 'react-filepond';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
+import {
+  fallCssKeyFrame,
+  shakeCssKeyFrame,
+  spinCssKeyFrame,
+} from './keyframes';
 
 // Register the plugins
 registerPlugin(FilePondPluginImagePreview);
 registerPlugin(FilePondPluginFileValidateType);
 registerPlugin(FilePondPluginFileValidateSize);
-
-/* Spin - Keyframes */
-const spin = keyframes`
-  0% {
-    transform: rotateZ(0deg);
-  }
-  100% {
-    transform: rotateZ(359deg);
-  }
-`;
-
-/* Fall - Keyframes */
-const fall = keyframes`
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-    animation-timing-function: ease-out;
-  }
-  70% {
-    opacity: 1;
-    transform: scale(1.1);
-    animation-timing-function: ease-in-out;
-  }
-  100% {
-    transform: scale(1);
-    animation-timing-function: ease-out;
-  }
-`;
-
-/* Shake - Keyframes */
-const shake = keyframes`
-  10%,
-  90% {
-    transform: translateX(-0.0625em);
-  }
-  20%,
-  80% {
-    transform: translateX(0.125em);
-  }
-  30%,
-  50%,
-  70% {
-    transform: translateX(-0.25em);
-  }
-  40%,
-  60% {
-    transform: translateX(0.25em);
-  }
-`;
 
 export interface StyledUploadFilesProps {
   /** Height for the box */
@@ -716,7 +672,7 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
   [data-filepond-item-state='processing-complete'] {
     .filepond--action-revert-item-processing {
       svg {
-        animation: ${fall} 0.5s 0.125s linear both;
+        animation: ${fallCssKeyFrame} 0.5s 0.125s linear both;
       }
 
       ~ .filepond--file-info .filepond--file-info-sub,
@@ -737,13 +693,13 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
   [data-filepond-item-state*='invalid'] .filepond--file-wrapper,
   [data-filepond-item-state*='error'] .filepond--panel,
   [data-filepond-item-state*='error'] .filepond--file-wrapper {
-    animation: ${shake} 0.65s linear both;
+    animation: ${shakeCssKeyFrame} 0.65s linear both;
   }
 
   /* Progress Indicator - Data - FilePond */
 
   [data-filepond-item-state*='busy'] .filepond--progress-indicator svg {
-    animation: ${spin} 0.8s linear infinite;
+    animation: ${spinCssKeyFrame} 0.8s linear infinite;
   }
 
   /* Item Panel - Data - FilePond */

@@ -1,8 +1,11 @@
-import { type TSelectOption } from '@devoinc/genesys-ui';
+import type { TSelectOption } from '@devoinc/genesys-ui';
 
-import type { Data } from '../declarations';
+import type { TData } from '../declarations';
 
-export const getOptionsFromData = (data: Data, id: string): TSelectOption[] => {
+export const getOptionsFromData = (
+  data: TData,
+  id: string,
+): TSelectOption[] => {
   const result: TSelectOption[] = [];
   const cache = [];
   for (const row of data) {

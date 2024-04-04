@@ -1,3 +1,3 @@
-export type BooleanFilterValue = {
+export type TBooleanFilterValue = {
   value: 'true' | 'false' | '';
 };

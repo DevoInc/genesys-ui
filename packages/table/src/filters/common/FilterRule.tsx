@@ -3,16 +3,16 @@ import * as React from 'react';
 import {
   SelectControl,
   InputControl,
-  TSelectOption,
+  type TSelectOption,
 } from '@devoinc/genesys-ui';
 
-type FilterRuleProps = {
+interface FilterRuleProps {
   options: TSelectOption[];
   defaultValue: string;
   label: string;
   placeholder: string;
   type?: 'number';
-};
+}
 
 export const FilterRule: React.FC<FilterRuleProps> = ({
   options = [],

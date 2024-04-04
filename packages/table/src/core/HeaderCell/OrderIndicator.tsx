@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { ColDef } from '../../declarations';
-import { HFlex, Typography, VFlex } from '@devoinc/genesys-ui';
-import { GISortAscCarets, GISortDescCarets } from '@devoinc/genesys-icons';
 import { css, useTheme } from 'styled-components';
 
+import { HFlex, Typography, VFlex } from '@devoinc/genesys-ui';
+import { GISortAscCarets, GISortDescCarets } from '@devoinc/genesys-icons';
+import type { TColDef } from '../../declarations';
+
 interface OrderIndicatorProps {
-  colDef: ColDef;
+  colDef: TColDef;
 }
 
 export const OrderIndicator: React.FC<OrderIndicatorProps> = ({ colDef }) => {

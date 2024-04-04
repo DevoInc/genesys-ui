@@ -3,15 +3,15 @@ import { GIMenuAltVertical } from '@devoinc/genesys-icons';
 
 import { Popover, HFlex, IconButton, Menu } from '@devoinc/genesys-ui';
 
-import type { CellRendererProps } from '../../declarations';
-import { ActionContext } from '../../facade';
+import type { TCellRenderer } from '../../declarations';
+import type { TActionContext } from '../../facade';
 import { MenuEntry } from './MenuEntry';
 
-export const ActionRenderer: React.FC<CellRendererProps> = ({
+export const ActionRenderer: React.FC<TCellRenderer> = ({
   colDef,
   rowIndex,
 }) => {
-  const context = colDef?.context as ActionContext;
+  const context = colDef?.context as TActionContext;
   const popoverId = `${colDef.id}-actions-menu-${rowIndex}`;
   const iconButtonSize = 'sm';
   const iconButtonColorScheme = 'quiet';

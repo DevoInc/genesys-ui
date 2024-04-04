@@ -4,13 +4,13 @@ import { useVirtualizer } from '@tanstack/react-virtual';
 import { TableContext } from '../context/TableContext';
 import { ROW_HEIGHT_MD } from '../constants';
 
-type UseVirtualizationParamsRow = {
+type TUseVirtualizationParamsRow = {
   ref: React.MutableRefObject<HTMLDivElement>;
 };
 
 export const useTableVirtualizationRow = ({
   ref,
-}: UseVirtualizationParamsRow) => {
+}: TUseVirtualizationParamsRow) => {
   const { rowHeight, colDefs, data } = React.useContext(TableContext);
 
   const height = React.useMemo(() => {

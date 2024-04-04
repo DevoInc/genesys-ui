@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type BulkContext = {
+export type TBulkContext = {
   headerBulkMenu?: ({
     setOpened,
     toggle,

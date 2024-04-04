@@ -2,10 +2,10 @@ import * as React from 'react';
 
 import { useOnEventOutside } from '@devoinc/genesys-ui';
 
-import { ColDef } from '../../declarations';
+import type { TColDef } from '../../declarations';
 
 export const useRenderContent = (
-  colDef: ColDef,
+  colDef: TColDef,
   data: unknown,
   rowIndex: number,
 ) => {

@@ -2,10 +2,10 @@ import styled, { css } from 'styled-components';
 
 import { pseudoElementMixin } from '@devoinc/genesys-ui';
 
-import { Density } from '../../declarations';
+import type { TDensity } from '../../declarations';
 
 interface StyledHeaderCellResizerProps {
-  density: Density;
+  density: TDensity;
 }
 
 export const StyledHeaderCellResizer = styled.span<StyledHeaderCellResizerProps>`

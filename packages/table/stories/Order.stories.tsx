@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { BasicTable } from '../src/recipes/BasicTable';
 import { useOrderStruct } from '../src/hooks';
-import { ColDef } from '../src/declarations';
+import { TColDef } from '../src/declarations';
 import {
   updateColDefsWithOrderStruct,
   orderDataByOrderStruct,
@@ -69,7 +69,7 @@ const OrderTable = () => {
 
   return (
     <BasicTable
-      onSort={(colDef: ColDef) => {
+      onSort={(colDef: TColDef) => {
         onSort(colDef.id);
       }}
       defaultColDef={{

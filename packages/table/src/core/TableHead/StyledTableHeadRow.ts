@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { Density } from '../../declarations';
+import type { TDensity } from '../../declarations';
 
 interface StyledTableHeadRowProps {
-  density: Density;
+  density: TDensity;
 }
 
 export const StyledTableHeadRow = styled.tr<StyledTableHeadRowProps>`

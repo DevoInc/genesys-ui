@@ -1,12 +1,12 @@
-import { useTheme } from 'styled-components';
 import * as React from 'react';
-import { FilePondProps } from 'react-filepond';
+import { useTheme } from 'styled-components';
+import type { FilePondProps } from 'react-filepond';
 
 import {
   Box,
   Field,
-  IFieldAttrs,
-  FieldProps,
+  type IFieldAttrs,
+  type FieldProps,
   Flex,
   getCmpMarkup,
   getSpacingPropCss,

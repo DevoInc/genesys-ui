@@ -2,17 +2,17 @@ import * as React from 'react';
 
 import { InputControl } from '@devoinc/genesys-ui';
 
-import { TableContext } from '../../context/TableContext';
-import type { CellEditorProps } from '../../declarations';
 import { ROW_HEIGHT_MD } from '../../constants';
+import type { TCellEditor } from '../../declarations';
+import { TableContext } from '../../context/TableContext';
 
-export type ContextTextEditorParams = {
+export type TContextTextEditorParams = {
   texts: {
     editorLabel: string;
   };
 };
 
-export const TextEditor: React.FC<CellEditorProps> = ({
+export const TextEditor: React.FC<TCellEditor> = ({
   value,
   onChange,
   colDef,
@@ -23,7 +23,7 @@ export const TextEditor: React.FC<CellEditorProps> = ({
       size={density === 'compact' && rowHeight <= ROW_HEIGHT_MD ? 'sm' : 'md'}
       autoFocus
       aria-label={
-        (colDef?.context as ContextTextEditorParams)?.texts?.editorLabel
+        (colDef?.context as TContextTextEditorParams)?.texts?.editorLabel
       }
       value={String(value)}
       onChange={(event: React.FormEvent) =>

@@ -1,10 +1,10 @@
 import { describe, test, expect } from 'vitest';
 
-import { OrderColumn } from './declarations';
+import type { TOrderColumn } from './declarations';
 import { updateOrderStruct } from './updateOrderStruct';
 
 describe('updateOrderStruct', () => {
-  const cases: [string, OrderColumn[], string, OrderColumn[]][] = [
+  const cases: [string, TOrderColumn[], string, TOrderColumn[]][] = [
     ['update existing desc column', [{ id: 'c1', sort: 'desc' }], 'c1', []],
     [
       'update existing asc column',

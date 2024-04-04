@@ -1,12 +1,9 @@
 import React, { FormEvent } from 'react';
 import { TextareaControl } from '@devoinc/genesys-ui';
+import { TCellEditor } from '../../declarations';
 import { EditorFloatingWrapper } from '../components';
-import { CellEditorProps } from '../declarations';
 
-export const TextAreaEditor: React.FC<CellEditorProps> = ({
-  value,
-  onChange,
-}) => (
+export const TextAreaEditor: React.FC<TCellEditor> = ({ value, onChange }) => (
   <EditorFloatingWrapper>
     <TextareaControl
       rows={6}

@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import { DateContext } from './valueFormatters/date';
 
-export type Density = 'default' | 'compact' | 'comfortable';
+export type TDensity = 'default' | 'compact' | 'comfortable';
 
-export type TextsType = {
+export type TTextsType = {
   cell: {
     editTooltip?: string;
     editSaveTooltip?: string;
@@ -14,10 +14,10 @@ export type TextsType = {
   };
 };
 
-export type CellVerAlign = 'top' | 'bottom' | 'center';
-export type CellHorAlign = 'left' | 'center' | 'right';
+export type TCellVerAlign = 'top' | 'bottom' | 'center';
+export type TCellHorAlign = 'left' | 'center' | 'right';
 
-export type ColDef = {
+export type TColDef = {
   id: string;
   headerName?: string;
   // type?: string;
@@ -25,20 +25,18 @@ export type ColDef = {
 
   editable?: boolean;
   cellEditor?:
-    | React.FC<CellEditorProps>
-    | (({ value, onChange }: CellEditorProps) => React.ReactNode);
+    | React.FC<TCellEditor>
+    | (({ value, onChange }: TCellEditor) => React.ReactNode);
 
   valueFormatter?: (value: unknown, context: DateContext) => void;
   cellRenderer?:
-    | React.FC<CellRendererProps>
-    | (({ value, colDef }: CellRendererProps) => React.ReactNode);
+    | React.FC<TCellRenderer>
+    | (({ value, colDef }: TCellRenderer) => React.ReactNode);
   headerRenderer?:
-    | React.FC<HeaderRendererProps>
-    | (({ colDef }: HeaderRendererProps) => React.ReactNode);
+    | React.FC<THeaderRenderer>
+    | (({ colDef }: THeaderRenderer) => React.ReactNode);
 
-  cellFilter?:
-    | React.FC<FilterProps>
-    | (({ colDef }: FilterProps) => React.ReactNode);
+  cellFilter?: React.FC<TFilter> | (({ colDef }: TFilter) => React.ReactNode);
 
   context?: {
     [key: string]: unknown;
@@ -56,8 +54,8 @@ export type ColDef = {
   rowHeight?: number;
   minWidth?: number | string;
   width?: number | string;
-  align?: CellHorAlign;
-  verticalAlign?: CellVerAlign;
+  align?: TCellHorAlign;
+  verticalAlign?: TCellVerAlign;
   textAlign?: React.CSSProperties['textAlign'];
   /** Width of the column expressed in percentage over the width of the table */
   truncateLine?: number;
@@ -65,18 +63,18 @@ export type ColDef = {
   headerOnFilterPosition?: boolean;
 };
 
-export type Preset = {
+export type TPreset = {
   id: string;
-} & Omit<ColDef, 'colId'>;
+} & Omit<TColDef, 'colId'>;
 
-export type DefaultColDef = Omit<ColDef, 'id'>;
+export type TDefaultColDef = Omit<TColDef, 'id'>;
 
-export type Row = { [key: string]: unknown };
-export type Data = Row[];
+export type TRow = { [key: string]: unknown };
+export type TData = TRow[];
 
-export type RowHeight = 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
+export type TRowHeight = 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
 
-export interface SizesConfig {
+export interface TSizesConfig {
   head: { height: number };
   row: {
     height: {
@@ -93,48 +91,48 @@ export interface SizesConfig {
   };
 }
 
-export type FilterValue = {
+export type TFilterValue = {
   [key: string]: unknown;
 };
 
-export type FilterProps = {
-  colDef?: ColDef;
-  data?: Data;
-  onChange: (value: FilterValue, type: string) => void;
+export type TFilter = {
+  colDef?: TColDef;
+  data?: TData;
+  onChange: (value: TFilterValue, type: string) => void;
 };
 
-export type FilterContext = {
-  filterValue: FilterValue;
+export type TFilterContext = {
+  filterValue: TFilterValue;
   showAdvancedFilter: boolean;
   showReset: boolean;
 };
 
-export type CellRendererProps = {
+export type TCellRenderer = {
   value: unknown;
-  colDef: ColDef;
+  colDef: TColDef;
   rowIndex: number;
 };
 
-export type HeaderRendererProps = {
-  colDef: ColDef;
+export type THeaderRenderer = {
+  colDef: TColDef;
 };
 
-export type CellEditorProps = {
+export type TCellEditor = {
   value?: unknown;
   onChange?: (value: unknown) => void;
-  colDef?: ColDef;
+  colDef?: TColDef;
   rowIndex: number;
 };
 
 export interface ITable {
-  data: Data;
-  colDefs?: ColDef[];
-  defaultColDef?: DefaultColDef;
-  columnPresets?: Preset[];
+  data: TData;
+  colDefs?: TColDef[];
+  defaultColDef?: TDefaultColDef;
+  columnPresets?: TPreset[];
   context?: {
     [key: string]: unknown;
   };
-  density?: Density;
+  density?: TDensity;
   striped?: boolean;
   maxHeight?: React.CSSProperties['maxHeight'];
   minWidth?: number;
@@ -142,8 +140,8 @@ export interface ITable {
   rowHeight?: number;
   resizableColumns?: boolean;
   highlightColumnsOnHover?: boolean;
-  texts?: TextsType;
+  texts?: TTextsType;
   showFilters?: boolean;
-  onSort?: (colDef: ColDef) => void;
-  onFilter?: (colDef: ColDef, value: FilterValue, type: string) => void;
+  onSort?: (colDef: TColDef) => void;
+  onFilter?: (colDef: TColDef, value: TFilterValue, type: string) => void;
 }

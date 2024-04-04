@@ -1,19 +1,20 @@
 import styled, { css } from 'styled-components';
 
-import { Density } from '../../declarations';
+import { pseudoElementOverlayMixin } from '@devoinc/genesys-ui';
+
+import type { TDensity } from '../../declarations';
 
 import { cellMixin } from '../helpers';
-import { pseudoElementOverlayMixin } from '@devoinc/genesys-ui';
 import { getTableZIndexMap } from '../utils';
 
-type StyledCellProps = {
+interface StyledCellProps {
   wrapperHeight?: number;
-  density?: Density;
+  density?: TDensity;
   highlightColumnsOnHover?: boolean;
   offsetX: number;
   $width: number;
   $height: number;
-};
+}
 
 export const StyledCell = styled.td.attrs(
   ({ $width, $height, offsetX }: StyledCellProps) => ({

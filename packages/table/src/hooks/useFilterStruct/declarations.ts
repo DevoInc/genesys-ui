@@ -1,7 +1,7 @@
-import { FilterValue } from '../../filters';
+import type { TTextFilterValue } from '../../filters';
 
-export type FilterColumn = {
+export type TFilterColumn = {
   id: string;
-  value: FilterValue;
+  value: TTextFilterValue;
   type: string;
 };

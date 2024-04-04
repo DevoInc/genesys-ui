@@ -6,16 +6,16 @@ import {
   IconButton,
   Panel,
   Popover,
-  PopoverProps,
+  type PopoverProps,
 } from '@devoinc/genesys-ui';
 import { GIFilter } from '@devoinc/genesys-icons';
 
-type AdvancedFilterProps = {
+interface AdvancedFilterProps {
   children: React.ReactNode;
   footer?: React.ReactNode;
   header?: React.ReactNode;
   id: PopoverProps['id'];
-};
+}
 
 export const AdvancedFilter: React.FC<AdvancedFilterProps> = ({
   children,

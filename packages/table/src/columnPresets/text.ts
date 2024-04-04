@@ -1,9 +1,9 @@
-import { ColDef } from '../declarations';
+import { TColDef } from '../declarations';
 import { TextEditor } from '../editors';
 import { TextFilter } from '../filters';
 import { TextRenderer } from '../renderers';
 
-export const text: ColDef = {
+export const text: TColDef = {
   id: 'text',
   cellRenderer: TextRenderer,
   cellEditor: TextEditor,

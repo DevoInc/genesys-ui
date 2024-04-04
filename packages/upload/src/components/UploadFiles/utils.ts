@@ -1,4 +1,4 @@
-import { FilePondProps } from 'react-filepond';
+import type { FilePondProps } from 'react-filepond';
 
 export const detectUnknownTypes =
   (

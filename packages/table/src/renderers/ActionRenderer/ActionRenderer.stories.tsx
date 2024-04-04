@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { GIEyeViewFilled, GIIdea, GIPencilEdit } from '@devoinc/genesys-icons';
 
 import { ActionRenderer } from './ActionRenderer';
-import { ActionContext } from '../../facade';
+import type { TActionContext } from '../../facade';
 
 const meta: Meta<typeof ActionRenderer> = {
   title: 'Components/Layout/Table/Renderers/ActionRenderer',
@@ -74,7 +74,7 @@ export const Base: Story = {
           // eslint-disable-next-line no-console
           { text: 'Action 4', onClick: () => console.debug('Menu action 4') },
         ],
-      } as ActionContext,
+      } as TActionContext,
     },
   },
 };

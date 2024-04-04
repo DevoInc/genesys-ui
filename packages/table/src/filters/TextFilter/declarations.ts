@@ -1,4 +1,4 @@
-export type TextFilterValue = {
+export type TTextFilterValue = {
   value: string;
   operator:
     | 'contains'

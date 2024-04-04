@@ -1,19 +1,21 @@
 import styled, { css } from 'styled-components';
-import { CELL_ALIGN_MAP } from '../../constants';
-import {
-  CellHorAlign,
-  CellVerAlign,
-  ColDef,
-  Density,
-} from '../../declarations';
+
 import { btnResetMixin, typoMixin } from '@devoinc/genesys-ui';
 
-export interface StyledCellWrapperProps extends Omit<ColDef, 'id'> {
+import { CELL_ALIGN_MAP } from '../../constants';
+import type {
+  TCellHorAlign,
+  TCellVerAlign,
+  TColDef,
+  TDensity,
+} from '../../declarations';
+
+export interface StyledCellWrapperProps extends Omit<TColDef, 'id'> {
   clickable?: boolean;
-  horAlign?: CellHorAlign;
+  horAlign?: TCellHorAlign;
   isEditMode?: boolean;
-  verAlign?: CellVerAlign;
-  density?: Density;
+  verAlign?: TCellVerAlign;
+  density?: TDensity;
 }
 
 // prettier-ignore

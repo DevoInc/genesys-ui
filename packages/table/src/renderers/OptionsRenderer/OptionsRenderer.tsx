@@ -2,21 +2,21 @@ import * as React from 'react';
 
 import { Box, Tag, TagGroup } from '@devoinc/genesys-ui';
 
-import type { CellRendererProps } from '../../declarations';
-import { ContextOptions, ContextOption } from '../../facade';
+import type { TCellRenderer } from '../../declarations';
+import type { TContextOptions, TContextOption } from '../../facade';
 
-export const OptionsRenderer: React.FC<CellRendererProps> = ({
+export const OptionsRenderer: React.FC<TCellRenderer> = ({
   value = [],
   colDef,
 }) => {
   const realValue = Array.isArray(value) ? value : [value];
-  const options = (colDef?.context as ContextOptions)?.options ?? [];
+  const options = (colDef?.context as TContextOptions)?.options ?? [];
   return (
     <Box overflow="hidden">
       <TagGroup flexWrap="nowrap">
         {realValue.map((tag: string) => {
           const option = Object.entries(options).find(([k]) => k === tag);
-          const optionParams = option ? (option[1] as ContextOption) : {};
+          const optionParams = option ? (option[1] as TContextOption) : {};
           return (
             <Tag
               colorScheme={optionParams?.colorScheme}

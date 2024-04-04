@@ -1,13 +1,14 @@
-import type { FeedbackColorScheme } from '@devoinc/genesys-ui';
+import * as React from 'react';
+import type { TFeedbackColorScheme } from '@devoinc/genesys-ui';
 
-export type ContextOption = {
-  colorScheme?: FeedbackColorScheme;
+export type TContextOption = {
+  colorScheme?: TFeedbackColorScheme;
   icon?: React.ReactNode;
   label?: string;
 };
 
-export type ContextOptions = {
+export type TContextOptions = {
   options?: {
-    [key: string]: ContextOption;
+    [key: string]: TContextOption;
   };
 };

@@ -3,8 +3,8 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { StatusMessage } from '@devoinc/genesys-ui';
 
+import type { TData } from '../../declarations';
 import { Table } from './Table';
-import { Data } from '../../declarations';
 
 const meta: Meta<typeof Table> = {
   title: 'Components/Layout/Table/Core/Table',
@@ -40,7 +40,7 @@ export const Empty: Story = {
 };
 
 // Get rows
-const getData = (cols: number, rows: number, iter: number = 0): Data =>
+const getData = (cols: number, rows: number, iter: number = 0): TData =>
   Array(rows)
     .fill(null)
     .map(() =>
@@ -66,13 +66,13 @@ const chunkRows = 5; // number of rows on each iteration
 const iterations = 5;
 
 const PerformanceTable = () => {
-  const [data, setData] = React.useState<Data>(getData(cols, chunkRows));
+  const [data, setData] = React.useState<TData>(getData(cols, chunkRows));
 
   React.useEffect(() => {
     let id: NodeJS.Timeout = null;
     let counter = 0;
     const fn = () => {
-      setData((old: Data) => {
+      setData((old: TData) => {
         return [...old, ...getData(cols, chunkRows, counter + 1)];
       });
       counter++;

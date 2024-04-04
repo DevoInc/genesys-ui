@@ -1,20 +1,20 @@
 import React from 'react';
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 
+import type { TColDef, TData } from '../../declarations';
+import { TableContext } from '../../context/TableContext';
+import { getColDefByID } from '../utils';
+import { TTextFilterValue } from '../../filters';
+import { HeaderTextRenderer } from '../../headerRenderers';
+import { HeaderCell } from '../HeaderCell';
 import { StyledTableHead } from './StyledTableHead';
 import { StyledTableHeadRow } from './StyledTableHeadRow';
-import { HeaderCell } from '../HeaderCell';
-import { ColDef, Data } from '../../declarations';
-import { getColDefByID } from '../utils';
-import { TableContext } from '../../context/TableContext';
-import { HeaderTextRenderer } from '../../headerRenderers';
-import { FilterValue } from '../../filters';
 
 interface TableHeadProps {
   scrolled?: boolean;
   columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
-  colDefs: ColDef[];
-  data: Data;
+  colDefs: TColDef[];
+  data: TData;
   width: number;
 }
 
@@ -76,7 +76,7 @@ export const TableHead: React.FC<TableHeadProps> = ({
                   colDef.cellFilter({
                     colDef,
                     data,
-                    onChange: (value: FilterValue, type: string) => {
+                    onChange: (value: TTextFilterValue, type: string) => {
                       onFilter(colDef, value, type);
                     },
                   })

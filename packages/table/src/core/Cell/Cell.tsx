@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { StyledCell } from './StyledCell';
-import { useRenderContent } from './useRenderContent';
-import { ColDef } from '../../declarations';
-import { useInitialState } from '../../editors/useInitialState';
-import { StyledCellWrapper } from './StyledCellWrapper';
 import { GIPencilEditFilled } from '@devoinc/genesys-icons';
-import { StyledCellMarker } from './StyledCellMarker';
+
+import type { TColDef } from '../../declarations';
+import { useRenderContent } from './useRenderContent';
+import { useInitialState } from '../../editors/useInitialState';
 import { TableContext, WrapperContext } from '../../context';
+
+import { StyledCellWrapper } from './StyledCellWrapper';
+import { StyledCell } from './StyledCell';
+import { StyledCellMarker } from './StyledCellMarker';
 
 interface CellProps {
   data: unknown;
-  colDef: ColDef;
+  colDef: TColDef;
   width?: number;
   height?: number;
   offsetX?: number;

@@ -2,12 +2,9 @@ import * as React from 'react';
 
 import { Typography } from '@devoinc/genesys-ui';
 
-import type { CellRendererProps } from '../../declarations';
+import type { TCellRenderer } from '../../declarations';
 
-export const TextRenderer: React.FC<CellRendererProps> = ({
-  colDef,
-  value,
-}) => {
+export const TextRenderer: React.FC<TCellRenderer> = ({ colDef, value }) => {
   const truncateLine =
     colDef?.truncateLine || (colDef?.preset === 'longText' ? 2 : 1);
   return (

@@ -1,9 +1,9 @@
-import { ColDef } from '../../declarations';
-import { FilterColumn } from '../../hooks';
+import type { TColDef } from '../../declarations';
+import type { TFilterColumn } from '../../hooks';
 
 export const updateColDefsWithFilterStruct = (
-  colDefs: ColDef[],
-  filterStruct: FilterColumn[],
+  colDefs: TColDef[],
+  filterStruct: TFilterColumn[],
 ) =>
   colDefs.map((col) => {
     const idx = filterStruct.findIndex((filter) => filter.id === col.id);

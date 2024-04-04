@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-type UseBulkDataProps = {
+type TUseBulkData = {
   dataLength: number;
   initialSelection?: number[];
   bulkDisabled?: number[];
@@ -10,7 +10,7 @@ export const useBulkSelection = ({
   dataLength,
   initialSelection = [],
   bulkDisabled = [],
-}: UseBulkDataProps) => {
+}: TUseBulkData) => {
   const [bulkSelection, setBulkSelection] = React.useState(initialSelection);
   const [headerBulkChecked, setHeaderBulkChecked] = React.useState<
     boolean | 'indeterminate'

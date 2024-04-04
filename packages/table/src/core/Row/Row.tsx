@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
-import { Cell } from '../Cell';
-import { StyledTableRow, StyledTableRowProps } from './StyledTableRow';
 import { TableContext } from '../../context/TableContext';
+import { Cell } from '../Cell';
+import { StyledTableRow, type StyledTableRowProps } from './StyledTableRow';
 
 interface RowProps extends StyledTableRowProps {
   data: { [key: string]: unknown };

@@ -1,18 +1,18 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { CELL_ALIGN_MAP } from '../../constants';
-
-import { StyledCellWrapperProps } from '../Cell/StyledCellWrapper';
-import { cellMixin } from '../helpers';
-import { Density } from '../../declarations';
 import { getSpacingPropCss } from '@devoinc/genesys-ui';
+
+import { CELL_ALIGN_MAP } from '../../constants';
+import { TDensity } from '../../declarations';
+import type { StyledCellWrapperProps } from '../Cell/StyledCellWrapper';
+import { cellMixin } from '../helpers';
 
 interface StyledHeaderCellProps
   extends Pick<StyledCellWrapperProps, 'horAlign'> {
   $width: React.CSSProperties['width'];
   offsetX?: number;
-  density?: Density;
+  density?: TDensity;
   sortable?: boolean;
 }
 

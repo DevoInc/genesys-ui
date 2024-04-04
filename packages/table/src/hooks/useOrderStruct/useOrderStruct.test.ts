@@ -2,10 +2,10 @@ import { describe, test, expect } from 'vitest';
 import { renderHook } from '@testing-library/react';
 
 import { useOrderStruct } from './useOrderStruct';
-import { OrderColumn } from './declarations';
+import type { TOrderColumn } from './declarations';
 
 describe('getOptionsFromData', () => {
-  const cases: [string, OrderColumn[], string, OrderColumn[]][] = [
+  const cases: [string, TOrderColumn[], string, TOrderColumn[]][] = [
     ['sort desc', [{ id: 'c1', sort: 'desc' }], 'c1', []],
     [
       'sort asc',

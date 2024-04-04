@@ -7,20 +7,20 @@ import {
   IconButton,
   Menu,
 } from '@devoinc/genesys-ui';
+import { GIExitClose, GIFilter } from '@devoinc/genesys-icons';
 
 import {
   BasicFilter,
   FilterContainer,
-  textOptions,
+  TEXT_OPTIONS,
   TEXT_ADDON_MAP,
 } from '../common';
-import type { FilterContext, FilterProps } from '../../declarations';
-import type { TextFilterValue } from './declarations';
-import { GIExitClose, GIFilter } from '@devoinc/genesys-icons';
+import type { TFilterContext, TFilter } from '../../declarations';
+import type { TTextFilterValue } from './declarations';
 
-export const TextFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
-  const context = colDef?.context as FilterContext;
-  const filterValue = context?.filterValue as TextFilterValue;
+export const TextFilter: React.FC<TFilter> = ({ onChange, colDef }) => {
+  const context = colDef?.context as TFilterContext;
+  const filterValue = context?.filterValue as TTextFilterValue;
   const value = filterValue?.value ?? '';
   const operator = filterValue?.operator ?? 'contains';
   return (
@@ -36,7 +36,7 @@ export const TextFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
               {
                 value: event.currentTarget.value,
                 operator,
-              } as TextFilterValue,
+              } as TTextFilterValue,
               'text',
             );
           }}
@@ -55,7 +55,7 @@ export const TextFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
                   {
                     value: '',
                     operator: 'contains',
-                  } as TextFilterValue,
+                  } as TTextFilterValue,
                   'text',
                 );
               }}
@@ -84,7 +84,7 @@ export const TextFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
             {({ setOpened }) => (
               <Popover.Panel maxHeight="34rem" width="28rem">
                 <Menu>
-                  {textOptions.map((option) => (
+                  {TEXT_OPTIONS.map((option) => (
                     <Menu.Item
                       selectionScheme="single"
                       onChange={() => {
@@ -92,7 +92,7 @@ export const TextFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
                           {
                             value,
                             operator: option.value,
-                          } as TextFilterValue,
+                          } as TTextFilterValue,
                           'text',
                         );
                         setOpened(false);

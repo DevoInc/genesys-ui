@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Menu } from '@devoinc/genesys-ui';
 
 import { HeaderBulkRenderer } from './HeaderBulkRenderer';
-import { BulkContext } from '../../facade';
+import type { TBulkContext } from '../../facade';
 
 const meta: Meta<typeof HeaderBulkRenderer> = {
   title: 'Components/Layout/Table/HeaderRenderers/HeaderBulkRenderer',
@@ -39,7 +39,7 @@ export const Base: Story = {
             </Menu.Item>
           </Menu>
         ),
-      } as BulkContext,
+      } as TBulkContext,
     },
   },
 };

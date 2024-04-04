@@ -1,14 +1,14 @@
 import * as React from 'react';
 
-import { SelectControl, TSelectOption } from '@devoinc/genesys-ui';
+import { SelectControl, type TSelectOption } from '@devoinc/genesys-ui';
 
-import type { FilterContext, FilterProps } from '../../declarations';
+import type { TFilterContext, TFilter } from '../../declarations';
 import { BasicFilter, BOOLEAN_OPTIONS, FilterContainer } from '../common';
-import type { BooleanFilterValue } from './declarations';
+import type { TBooleanFilterValue } from './declarations';
 
-export const BooleanFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
-  const context = colDef?.context as FilterContext;
-  const filterValue = context?.filterValue as BooleanFilterValue;
+export const BooleanFilter: React.FC<TFilter> = ({ onChange, colDef }) => {
+  const context = colDef?.context as TFilterContext;
+  const filterValue = context?.filterValue as TBooleanFilterValue;
   const value = filterValue?.value ?? '';
   return (
     <FilterContainer>
@@ -20,7 +20,7 @@ export const BooleanFilter: React.FC<FilterProps> = ({ onChange, colDef }) => {
             onChange(
               {
                 value: option === null ? '' : option.value,
-              } as BooleanFilterValue,
+              } as TBooleanFilterValue,
               'boolean',
             );
           }}

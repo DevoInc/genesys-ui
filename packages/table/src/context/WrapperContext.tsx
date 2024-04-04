@@ -1,14 +1,14 @@
 import * as React from 'react';
 
-type WrapperContextProps = {
+interface IWrapperContext {
   width: number;
   height: number;
   setSize: React.Dispatch<
     React.SetStateAction<{ width: number; height: number }>
   >;
-};
+}
 
-export const WrapperContext = React.createContext<WrapperContextProps>({
+export const WrapperContext = React.createContext<IWrapperContext>({
   width: 0,
   height: 0,
   setSize: () => null,

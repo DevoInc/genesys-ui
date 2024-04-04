@@ -1,11 +1,11 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { GIMenuAlt } from '@devoinc/genesys-icons';
 
 import { Box, Button, IconButton, Popover } from '@devoinc/genesys-ui';
+import { GIMenuAlt } from '@devoinc/genesys-icons';
 
+import type { TCellEditor } from '../../declarations';
 import { Cell } from './Cell';
-import type { CellEditorProps } from '../../declarations';
 
 const meta: Meta<typeof Cell> = {
   title: 'Components/Layout/Table/Core/Cell',
@@ -71,7 +71,7 @@ export const Editor: Story = {
             )}
           </Popover>
         );
-      }) as React.FC<CellEditorProps>,
+      }) as React.FC<TCellEditor>,
     },
     width: 300,
     height: 60,

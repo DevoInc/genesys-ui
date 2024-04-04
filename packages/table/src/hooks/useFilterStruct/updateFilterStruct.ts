@@ -1,12 +1,12 @@
-import { FilterValue } from '../../filters';
-import { FilterColumn } from './declarations';
+import type { TTextFilterValue } from '../../filters';
+import type { TFilterColumn } from './declarations';
 
 export const updateFilterStruct = (
-  filterStruct: FilterColumn[],
+  filterStruct: TFilterColumn[],
   id: string,
-  value: FilterValue,
+  value: TTextFilterValue,
   type: string,
-): FilterColumn[] => {
+): TFilterColumn[] => {
   const prev = filterStruct.find((col) => col.id === id);
   if (prev && value !== null) {
     return filterStruct.map((col) =>

@@ -2,12 +2,9 @@ import React, { FormEvent } from 'react';
 
 import { InputControl } from '@devoinc/genesys-ui';
 
-import type { CellEditorProps } from '../declarations';
+import type { TCellEditor } from '../../declarations';
 
-export const NumberEditor: React.FC<CellEditorProps> = ({
-  value,
-  onChange,
-}) => (
+export const NumberEditor: React.FC<TCellEditor> = ({ value, onChange }) => (
   <InputControl
     type={'number'}
     aria-label={'Number input'}

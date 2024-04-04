@@ -3,7 +3,7 @@ import * as React from 'react';
 import { debounce } from '../effects';
 import { WrapperContext } from '../context';
 
-export const useWrapperOberver = () => {
+export const useWrapperObserver = () => {
   const ref = React.useRef<HTMLDivElement>();
   const { setSize } = React.useContext(WrapperContext);
 

@@ -1,8 +1,8 @@
-import type { ColDef } from '../declarations';
+import type { TColDef } from '../declarations';
 import { HeaderBulkRenderer } from '../headerRenderers';
 import { BulkRenderer } from '../renderers';
 
-export const bulk: ColDef = {
+export const bulk: TColDef = {
   id: 'bulk',
   cellRenderer: BulkRenderer,
   headerRenderer: HeaderBulkRenderer,
