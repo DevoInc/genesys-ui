@@ -4,7 +4,6 @@ import type { TRow, TFilterValue } from '../../declarations';
 import {
   TNumberFilterValue,
   type TOptionsFilterValue,
-  type TTextFilterValue,
   TBooleanFilterValue,
 } from '../../filters';
 import type { TFilterColumn } from '../../hooks';
@@ -36,7 +35,7 @@ export const filterDataByFilterStruct =
       }
 
       if (type === 'text') {
-        const res = textFilter(String(a[id]), value as TTextFilterValue);
+        const res = textFilter(String(a[id]), value);
         if (!res) {
           return false;
         }
