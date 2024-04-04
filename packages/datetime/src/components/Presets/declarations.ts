@@ -1,14 +1,14 @@
-export type PresetRange = {
+export type TPresetRange = {
   from: string | number;
   to: string | number;
 };
 
-export type Preset = {
-  value: PresetRange;
+export type TPreset = {
+  value: TPresetRange;
   label: string;
 };
 
-export type PresetGroup = {
+export type TPresetGroup = {
   label: string;
-  options: Preset[];
+  options: TPreset[];
 };

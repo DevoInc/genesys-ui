@@ -1,12 +1,9 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { TLabelPosition } from './declarations';
-import { StyledTagContainerProps } from '../Tag/components/StyledTagContainer';
-import { TagProps } from '../Tag';
+import { ITagGroup, TTagGroupLabelPosition } from './declarations';
 
-export interface TagGroupLabelMixinProps
-  extends Pick<StyledTagContainerProps, 'size'> {
-  labelPosition: TLabelPosition;
+export interface TagGroupLabelMixinProps extends Pick<ITagGroup, 'size'> {
+  labelPosition: TTagGroupLabelPosition;
   theme: DefaultTheme;
 }
 
@@ -15,7 +12,6 @@ export interface TagGroupLabelMixinProps
  *
  * @return specific styles for Label
  */
-
 export const tagGroupLabelMixin = ({
   labelPosition,
   size,
@@ -36,7 +32,7 @@ export const tagGroupLabelMixin = ({
   `;
 };
 
-export interface TagGroupFlexSpacingMixinProps extends Pick<TagProps, 'size'> {
+export interface TagGroupFlexSpacingMixinProps extends Pick<ITagGroup, 'size'> {
   theme: DefaultTheme;
 }
 

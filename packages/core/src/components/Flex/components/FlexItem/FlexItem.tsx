@@ -20,5 +20,3 @@ export const FlexItem: React.FC<Resolve<FlexItemProps>> = ({
     </Box>
   );
 };
-
-FlexItem.displayName = 'Flex.Item';

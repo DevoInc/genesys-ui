@@ -8,7 +8,7 @@ import {
   type IStyledOverloadCss,
 } from '@devoinc/genesys-ui';
 
-import type { Preset, PresetRange, PresetGroup } from './declarations';
+import type { TPreset, TPresetRange, TPresetGroup } from './declarations';
 import { WithRequired } from '../../typeFunctions';
 
 export interface PresetsProps
@@ -18,11 +18,11 @@ export interface PresetsProps
     Partial<Pick<SelectControlProps, 'maxMenuHeight' | 'size'>>,
     IStyledOverloadCss {
   /** Function called when selected a preset. */
-  onChange: (preset: PresetRange) => void;
+  onChange: (preset: TPresetRange) => void;
   /** Custom list of presets values. */
-  presets: (Preset | PresetGroup)[];
+  presets: (TPreset | TPresetGroup)[];
   /** Default preset range value. */
-  value?: PresetRange;
+  value?: TPresetRange;
   id: string;
 }
 
@@ -39,7 +39,7 @@ const InternalPresets: React.FC<PresetsProps> = ({
   const handleChange = React.useCallback(
     (option: TSelectOption) => {
       if (onChange) {
-        onChange(JSON.parse(option.value as string) as PresetRange);
+        onChange(JSON.parse(option.value as string) as TPresetRange);
       }
     },
     [onChange],

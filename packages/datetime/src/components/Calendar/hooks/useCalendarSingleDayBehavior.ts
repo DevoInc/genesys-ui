@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { startOfDay } from 'date-fns';
-import type { HookCommonReturnParams } from './declarations';
+import type { IHookCommonReturnParams } from './declarations';
 
-export interface useCalendarSingleDayBehaviorProps {
+export interface IUseCalendarSingleDayBehavior {
   /** Initial timestamp date */
   day?: number;
 }
 
 export const useCalendarSingleDayBehavior = ({
   day: defaultDay = null,
-}: useCalendarSingleDayBehaviorProps): HookCommonReturnParams => {
+}: IUseCalendarSingleDayBehavior): IHookCommonReturnParams => {
   const [day, setDay] = React.useState(null);
 
   React.useEffect(() => {

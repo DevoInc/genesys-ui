@@ -1,16 +1,16 @@
 import * as React from 'react';
 
+import type { IStyledPolymorphic } from '../../../src';
 import {
   StyledStoryWrapper,
   StyledStoryWrapperProps,
 } from './StyledStoryWrapper';
 
-export interface StoryWrapperProps extends StyledStoryWrapperProps {
-  /** Polymorphic prop to create a different tag or styled component
-   * https://styled-components.com/docs/api#as-polymorphic-prop */
-  as?: string | React.ComponentType<any>;
+export interface StoryWrapperProps
+  extends StyledStoryWrapperProps,
+    IStyledPolymorphic {
   children?: React.ReactNode;
-  className?: string;
+  className?: React.AllHTMLAttributes<HTMLElement>['className'];
   display?: React.CSSProperties['display'];
   /** Css height */
   height?: React.CSSProperties['height'];

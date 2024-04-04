@@ -1,49 +1,38 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-// icons
 import { GIArrowRight } from '@devoinc/genesys-icons';
-
-// core
 import type {
   FieldProps,
   TFieldSize,
   IGlobalAriaAttrs,
   IGlobalAttrs,
   InputControlProps,
-  MouseEventAttrProps,
-  ITriggerAriaAttrs,
-} from '@devoinc/genesys-ui';
-import {
-  Field,
-  InputControl,
+  IMouseEventAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
+  ITriggerAriaAttrs,
 } from '@devoinc/genesys-ui';
+import { Field, InputControl } from '@devoinc/genesys-ui';
 
-// styles
 import {
   cssDateTimeRangeControlInput,
-  CssDateTimeRangeControlInputProps,
+  ICssDateTimeRangeControlInput,
 } from './helpers';
 import {
   StyledDateTimeRangeControl,
-  StyledDateTimeRangeControlProps,
+  type StyledDateTimeRangeControlProps,
 } from './StyledDateTimeRangeControl';
 
-// local components
-import { RealtimeState } from './declarations';
-import { RealTimeButton, RealTimeButtonProps } from '../RealTimeButton';
+import { TRealtimeState } from './declarations';
 import { REAL_TIME_SIZE_MAP } from './constants';
 import { getInputWidth } from './theme';
+import { RealTimeButton, type RealTimeButtonProps } from '../RealTimeButton';
 
 export interface DateTimeRangeControlProps
   extends Required<Pick<IGlobalAttrs, 'id'>>,
     Pick<ITriggerAriaAttrs, 'aria-controls'>,
-    Pick<
-      CssDateTimeRangeControlInputProps,
-      'hasMillis' | 'hasSeconds' | 'hasTime'
-    >,
+    Pick<ICssDateTimeRangeControlInput, 'hasMillis' | 'hasSeconds' | 'hasTime'>,
     Pick<StyledDateTimeRangeControlProps, 'isOpen' | 'wide'>,
     IStyledOverloadCss,
     IStyledPolymorphic {
@@ -58,7 +47,7 @@ export interface DateTimeRangeControlProps
   /** Floating status message or helper for `to` input field */
   helperTo?: FieldProps['helper'];
   /** Handler method after either 'from' or 'to' inputs field cliked  */
-  onClick?: MouseEventAttrProps['onClick'];
+  onClick?: IMouseEventAttrs['onClick'];
   /** Handler method after either 'from' or 'to' inputs lost focus. */
   onBlur?: (range: {
     from: InputControlProps['value'];
@@ -88,7 +77,7 @@ export interface DateTimeRangeControlProps
   to?: InputControlProps['value'];
 }
 
-const hasRealTime = (realTime: RealtimeState) => realTime !== 'hidden';
+const hasRealTime = (realTime: TRealtimeState) => realTime !== 'hidden';
 
 export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
   'aria-controls': ariaControls,

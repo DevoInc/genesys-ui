@@ -43,3 +43,4 @@ export const VFlex = InternalVFlex as typeof InternalVFlex & {
 VFlex.Item = FlexItem;
 
 InternalVFlex.displayName = 'VFlex';
+VFlex.Item.displayName = 'VFlex.Item';

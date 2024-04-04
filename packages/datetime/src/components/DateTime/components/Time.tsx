@@ -11,11 +11,11 @@ import {
   IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
 
-import { CalendarProps } from '../../Calendar';
+import type { CalendarProps } from '../../Calendar';
+import type { TDatetime } from '../../declarations';
 import { getFormatTimeStr } from '../utils/format';
 import { isSameDay } from '../../Calendar/validations';
 import { toTimestamp } from '../../utils';
-import { Datetime } from '../../declarations';
 
 export interface TimeProps
   extends Pick<CalendarProps, 'maxDate' | 'minDate'>,
@@ -32,7 +32,7 @@ export interface TimeProps
   /** The size of the Time, specially the input. */
   size?: TFieldSize;
   /** Initial value. One of `number` or `Date`. */
-  value?: Datetime;
+  value?: TDatetime;
 }
 
 export const Time: React.FC<TimeProps> = ({

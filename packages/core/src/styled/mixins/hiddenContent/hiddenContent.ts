@@ -1,7 +1,7 @@
-import { css, DefaultTheme } from 'styled-components';
 import React from 'react';
+import { css, DefaultTheme } from 'styled-components';
 
-export interface HiddenContentMixinProps {
+export interface IHiddenContentMixin {
   showOnHover?: boolean;
   showOnFocus?: boolean;
   transition?: React.CSSProperties['transition'];
@@ -13,13 +13,12 @@ export interface HiddenContentMixinProps {
  *
  * @return styles for Box as HiddenContent
  */
-
 export const hiddenContentMixin = ({
   showOnHover = true,
   showOnFocus = true,
   transition,
   theme,
-}: HiddenContentMixinProps) => css`
+}: IHiddenContentMixin) => css`
   opacity: 0;
   transition: ${transition ||
   `ease-in-out ${theme.alias.mutation.transitionDuration.opacity.md} opacity,

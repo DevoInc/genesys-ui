@@ -1,8 +1,9 @@
-import { TagProps } from '../Tag';
+import { ITag } from '../Tag';
 
-export type TLabelPosition = 'left' | 'top';
+export type TTagGroupLabelPosition = 'left' | 'top';
 
-export interface CommonTagGroupProps extends Pick<TagProps, 'size'> {
-  /** Position of the label text relative to the tags */
-  labelPosition?: TLabelPosition;
+export interface ITagGroup
+  extends Pick<ITag, 'colorScheme' | 'quiet' | 'size'> {
+  /** Position of the label text relative to the tags. */
+  labelPosition?: TTagGroupLabelPosition;
 }

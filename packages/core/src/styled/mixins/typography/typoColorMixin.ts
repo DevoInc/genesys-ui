@@ -2,7 +2,7 @@ import { css, DefaultTheme } from 'styled-components';
 
 import { isValidColor } from '../../../helpers';
 import { TTypoColorScheme } from '../../../components/Typography/declarations';
-import { TypoVariant } from './declarations';
+import { TTypoVariant } from './declarations';
 
 type TUITokens = DefaultTheme['alias']['color']['text']['feedback'];
 
@@ -41,7 +41,7 @@ export const typoColorMixin = ({
   colorScheme = 'base',
   theme: tokens,
 }: {
-  variant?: TypoVariant;
+  variant?: TTypoVariant;
   colorScheme?: TTypoColorScheme;
   theme: DefaultTheme;
 }) => {

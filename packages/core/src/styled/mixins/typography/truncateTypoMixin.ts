@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import * as React from 'react';
 
 /**
  * Get typography styles for truncated text
@@ -12,7 +13,7 @@ export const truncateTypoMixin = (
     maxWidth,
     lineClamp,
   }: {
-    maxWidth?: string;
+    maxWidth?: React.CSSProperties['maxWidth'];
     lineClamp?: number;
   } = { maxWidth: '100%', lineClamp: 1 },
 ) => css`

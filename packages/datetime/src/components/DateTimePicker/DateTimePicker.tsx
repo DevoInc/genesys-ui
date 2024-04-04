@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { format } from 'date-fns';
 
+import { GICalendarMonthDayPlannerEvents } from '@devoinc/genesys-icons';
 import {
   InputControl,
-  InputControlProps,
-  IGlobalAriaAttrs,
-  IGlobalAttrs,
-  IStyledOverloadCss,
-  IStyledPolymorphic,
+  type InputControlProps,
+  type IGlobalAriaAttrs,
+  type IGlobalAttrs,
+  type IStyledOverloadCss,
+  type IStyledPolymorphic,
   VFlex,
 } from '@devoinc/genesys-ui';
 
-import { DateTime, DateTimeProps } from '../DateTime';
 import { getFormatTimeStr } from '../DateTime/utils/format';
 import { toTimestamp } from '../utils';
-import { GICalendarMonthDayPlannerEvents } from '@devoinc/genesys-icons';
+import { DateTime, type DateTimeProps } from '../DateTime';
 
 export interface DateTimePickerProps
   extends Omit<DateTimeProps, 'onChange' | 'selectedDates'>,

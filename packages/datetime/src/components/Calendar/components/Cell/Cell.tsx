@@ -31,7 +31,7 @@ const InternalCell: React.FC<CellProps> = ({
   ts,
 }) => {
   const disabled = className && className.includes('disabled');
-  const dateFormated = ts ? format(new Date(ts), 'PPPP') : null;
+  const formattedDate = ts ? format(new Date(ts), 'PPPP') : null;
   return (
     <StyledCalendarCell
       onClick={() => {
@@ -49,13 +49,13 @@ const InternalCell: React.FC<CellProps> = ({
           onMouseLeave();
         }
       }}
-      aria-label={dateFormated}
+      aria-label={formattedDate}
       aria-selected={className && className.includes('selected') ? true : null}
       className={`day ${className}`}
       css={styles}
       data-cell={value}
       data-ts={ts}
-      title={dateFormated}
+      title={formattedDate}
     >
       {value && <span>{value}</span>}
     </StyledCalendarCell>
@@ -63,4 +63,5 @@ const InternalCell: React.FC<CellProps> = ({
 };
 
 export const Cell = React.memo(InternalCell);
-Cell.displayName = 'Cell';
+
+InternalCell.displayName = 'Cell';

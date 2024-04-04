@@ -1,10 +1,11 @@
+import * as React from 'react';
 import {
   css,
   DefaultTheme,
   FlattenSimpleInterpolation,
 } from 'styled-components';
 
-import { TypoVariant } from './declarations';
+import { TTypoVariant } from './declarations';
 import { TTypoSize } from '../../../declarations';
 import { getTypoObject } from './tokens';
 
@@ -26,7 +27,7 @@ export const typoMixin = ({
   size = 'md',
 }: {
   bold?: boolean;
-  variant?: TypoVariant;
+  variant?: TTypoVariant;
   textAlign?: React.CSSProperties['textAlign'];
   theme: DefaultTheme;
   size?: TTypoSize;

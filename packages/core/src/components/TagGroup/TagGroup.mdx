@@ -1,7 +1,6 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './TagGroup.stories';
-import * as StoriesCases from './TagGroup.cases.stories';
 
 <Meta of={Stories} />
 
@@ -19,19 +18,40 @@ It also provides the ability to set a label for the group and adjust the size of
 
 ## How to import
 
-<Source
-  code={`
-import { TagGroup } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { TagGroup } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
+There is a pre-defined component called `TagGroup.Tag` to be used as children of a `TagGroup`.
+It is a simple wrapper of the `Tag` component which is able to inherit some props automatically
+from its parent by a React context: size, quiet, colorScheme... etc.
+
 <Canvas of={Stories.Base} />
+
+We recommend to use this component, but anyway you can use also a `Tag` component.
+
+Anyway, when we talk about inheriting props from its parent, they are overwritten when we define that prop
+directly on the child.
+
+You can use `Tag` as children instead of the pre-defined `TagGroup.Tag`,
+but it's not able to read the parent context, so it can't inherit the `colorScheme`, `size`... etc. prop values.
+
+In this example the `TagGroup` parent has 'error' `colorScheme`, but the children are not inheriting this value:
+
+<Canvas of={Stories.UseOfTag} />
 
 ## As legend
 
-<Canvas of={StoriesCases.AsLegend} />
+If you apply the `quiet` prop to the `TagGroup` parent, then you get a group of tags as a legend.
+
+<Canvas of={Stories.AsLegend} />
+
+## With label
+
+You can add a label to the `TagGroup` to add more context to the group. If this prop value is type string,
+then automatically it's added as `aria-label` value to the group.
+
+<Canvas of={Stories.WithLabel} />
 
 ## Props
 

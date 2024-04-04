@@ -1,4 +1,4 @@
-export type TypoVariant =
+export type TTypoVariant =
   | 'action'
   | 'body'
   | 'heading'

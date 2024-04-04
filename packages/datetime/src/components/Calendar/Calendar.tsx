@@ -7,18 +7,18 @@ import {
   getPrevDays,
   parseDays,
 } from './ephemerides';
-import { Cell, CellProps } from './components';
 import { checkValidDate } from './validations';
 import {
-  IGlobalAriaAttrs,
-  IGlobalAttrs,
+  type IGlobalAriaAttrs,
+  type IGlobalAttrs,
   Grid,
-  IStyledOverloadCss,
-  IStyledPolymorphic,
+  type IStyledOverloadCss,
+  type IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
-import { Datetime } from '../declarations';
+import type { TDatetime } from '../declarations';
 import { toTimestamp } from '../utils';
 import { lastDayOfMonth as lastDayOfMonthFNS } from 'date-fns';
+import { Cell, type CellProps } from './components';
 
 export interface CalendarProps
   extends Pick<CellProps, 'onClick' | 'onMouseEnter' | 'onMouseLeave'>,
@@ -28,23 +28,23 @@ export interface CalendarProps
     IStyledOverloadCss,
     IStyledPolymorphic {
   /** The date for the month. One of `number` or `Date`. */
-  dateForMonth?: Datetime;
+  dateForMonth?: TDatetime;
   /** Disable hover effect. It could be combined with hoverDay, onMouseEnter and onMouseLeave properties for custom control. */
   disableHoverDay?: boolean;
   /** The latest day to accept. One of `number` or `Date`. */
-  maxDate?: Datetime;
+  maxDate?: TDatetime;
   /** The earliest day to accept. One of `number` or `Date`. */
-  minDate?: Datetime;
+  minDate?: TDatetime;
   /** Allow hover efect when mouse is left of a selected cell. */
   hasLeftHoverEffect?: boolean;
   /** Allow hover efect when mouse is right of a selected cell. */
   hasRightHoverEffect?: boolean;
   /** Set custom day to simulate the hover effect. It could be combined with hoverDay, onMouseEnter and onMouseLeave properties for custom control. One of `number` or `Date`. */
-  hoverDay?: Datetime;
+  hoverDay?: TDatetime;
   /** List of day not valid. */
-  invalidDates?: Datetime[];
+  invalidDates?: TDatetime[];
   /** Selected range days. */
-  selectedDates?: { from: Datetime; to: Datetime };
+  selectedDates?: { from: TDatetime; to: TDatetime };
   /** Validate if a date is selectable.  */
   validateDate?: (ts: number) => boolean;
   /** Days of the week to show in the calendar. The first day of the week is Monday. */

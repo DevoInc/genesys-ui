@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components';
 
-import { TypoVariant } from './declarations';
+import { TTypoVariant } from './declarations';
 import { TTypoSize } from '../../../declarations';
 
 /**
@@ -73,7 +73,7 @@ export const getTypoObject = ({
   theme: tokens,
   size = 'md',
 }: {
-  variant?: TypoVariant;
+  variant?: TTypoVariant;
   theme: DefaultTheme;
   size?: TTypoSize;
 }): {

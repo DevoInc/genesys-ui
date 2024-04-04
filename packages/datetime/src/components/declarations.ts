@@ -1,16 +1,16 @@
-export type DateRange = {
+export type TDateRange = {
   from: number;
   to: number;
 };
 
-export type DateRangeExtended = {
+export type TDateRangeExtended = {
   from: number | string;
   to: number | string;
 };
 
-export type ApplyValue = {
-  timestamp: DateRange;
-  preset: DateRangeExtended;
+export type TDateApplyValue = {
+  timestamp: TDateRange;
+  preset: TDateRangeExtended;
 };
 
-export type Datetime = number | Date;
+export type TDatetime = number | Date;

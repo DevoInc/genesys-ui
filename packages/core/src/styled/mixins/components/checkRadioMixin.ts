@@ -3,7 +3,7 @@ import type { DefaultTheme } from 'styled-components';
 
 import type { TFieldSize, TFieldStatus } from '../../../declarations';
 
-interface CheckRadioProps {
+interface ICheckRadioMixin {
   disabled?: boolean;
   size?: TFieldSize;
   status?: TFieldStatus;
@@ -23,7 +23,7 @@ export const getCheckRadioTokens = ({
   size = 'md',
   status = 'base',
   theme,
-}: CheckRadioProps) => {
+}: ICheckRadioMixin) => {
   const fieldTokens = theme.alias.fields;
   return {
     borderColor: fieldTokens.color.border[status].enabled,
@@ -54,7 +54,7 @@ export const checkRadioMixin = ({
   size = 'md',
   status = 'base',
   theme,
-}: CheckRadioProps) => {
+}: ICheckRadioMixin) => {
   const checkRadioTokens = getCheckRadioTokens({
     size,
     status,

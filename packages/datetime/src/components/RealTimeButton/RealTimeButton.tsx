@@ -8,11 +8,11 @@ import {
   Box,
   getPxFromRem,
   IconButton,
-  IconButtonProps,
+  type IconButtonProps,
   SpinnerLoader,
 } from '@devoinc/genesys-ui';
 
-import { RealtimeState } from '../DateTimeRangeControl/declarations';
+import type { TRealtimeState } from '../DateTimeRangeControl/declarations';
 
 import { cssRealTimeButtonSpinner } from './helpers';
 
@@ -26,7 +26,7 @@ export interface RealTimeButtonProps
     IconButtonProps,
     'colorScheme' | 'icon' | 'circular' | 'state' | 'wide'
   > {
-  state?: RealtimeState;
+  state?: TRealtimeState;
   quiet?: boolean;
 }
 

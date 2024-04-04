@@ -5,9 +5,9 @@ import styled, { css } from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface StyledContainerProps extends ToastContainerProps {}
+export interface StyledToastContainerProps extends ToastContainerProps {}
 
-export const StyledContainer = styled(ToastContainer)`
+export const StyledToastContainer = styled(ToastContainer)`
   ${({ theme }) => {
     const tokensPanel = theme.cmp.panel;
     const tokensToast = theme.cmp.toast;

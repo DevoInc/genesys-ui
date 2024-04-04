@@ -12,18 +12,19 @@ import {
 } from 'date-fns';
 
 import {
-  TFieldSize,
+  type TFieldSize,
   Flex,
-  IGlobalAriaAttrs,
-  IGlobalAttrs,
+  type IGlobalAriaAttrs,
+  type IGlobalAttrs,
   HFlex,
   IconButton,
   InputControl,
-  IStyledOverloadCss,
-  IStyledPolymorphic,
+  type IStyledOverloadCss,
+  type IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
-import { CalendarProps } from '../../Calendar';
-import { Datetime } from '../../declarations';
+import type { CalendarProps } from '../../Calendar';
+import type { TDatetime } from '../../declarations';
+
 import { toTimestamp } from '../../utils';
 import { GIAngleLeft, GIAngleRight } from '@devoinc/genesys-icons';
 
@@ -51,7 +52,7 @@ export interface MonthProps
   /** The size of the different elements of the Month: inputs, buttons... etc. */
   size?: TFieldSize;
   /** Initial value. One of `number` or `Date`. */
-  value?: Datetime;
+  value?: TDatetime;
 }
 
 export const Month: React.FC<MonthProps> = ({

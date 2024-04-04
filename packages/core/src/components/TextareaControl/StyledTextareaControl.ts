@@ -5,16 +5,11 @@ import { TTextareaResize } from './declarations';
 import {
   commonInputControlMixin,
   getLineHeight,
+  type ICommonInputControlMixin,
   scrollbars,
 } from '../../styled/mixins';
 
-import type { StyledInputControlProps } from '../InputControl/styled';
-
-export interface StyledTextareaControlProps
-  extends Omit<
-    StyledInputControlProps,
-    'addonToLeft' | 'addonToRight' | 'hasIcon' | 'hasTypeIcon'
-  > {
+export interface StyledTextareaControlProps extends ICommonInputControlMixin {
   /** The number of visible text lines for the control. If it is specified, it must be a positive integer. If it is not specified, the default value is 2. */
   rows?: HTMLTextAreaElement['rows'];
   /** The resize CSS property sets whether an element is resizable, and if so, in which directions.*/

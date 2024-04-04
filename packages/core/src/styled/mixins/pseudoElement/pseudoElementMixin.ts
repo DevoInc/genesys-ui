@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 /**
  * Get the pseudo-element styles but generate an overlay.
  *
@@ -9,9 +11,9 @@ export const pseudoElementMixin = ({
   display,
   pos,
 }: {
-  content: string;
-  display: string;
-  pos: string;
+  content: React.CSSProperties['content'];
+  display: React.CSSProperties['display'];
+  pos: React.CSSProperties['position'];
 }) => `
   content: ${content ?? '""'};
   display: ${display ?? 'block'};

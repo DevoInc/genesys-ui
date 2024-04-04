@@ -14,21 +14,26 @@ import {
 import {
   HFlex,
   VFlex,
-  IGlobalAriaAttrs,
-  IGlobalAttrs,
-  IStyledOverloadCss,
-  IStyledPolymorphic,
+  type IGlobalAriaAttrs,
+  type IGlobalAttrs,
+  type IStyledOverloadCss,
+  type IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
 
+import { Presets, type PresetsProps } from '../Presets';
+import {
+  Month,
+  type MonthProps,
+  Time,
+  type TimeProps,
+} from '../DateTime/components';
+import type { TPresetRange } from '../Presets/declarations';
+import { toTimestamp } from '../utils';
 import {
   Calendar,
-  CalendarProps,
+  type CalendarProps,
   useCalendarForwardBackwardBehavior,
 } from '../Calendar';
-import { Presets, PresetsProps } from '../Presets';
-import { Month, MonthProps, Time, TimeProps } from '../DateTime/components';
-import { PresetRange } from '../Presets/declarations';
-import { toTimestamp } from '../utils';
 
 export interface DateTimeRangeProps
   extends Pick<
@@ -226,7 +231,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   );
 
   const onChangePresetDateCallback = React.useCallback(
-    (preset: PresetRange) => {
+    (preset: TPresetRange) => {
       setFirsTime(true);
       onChangePresetDate(preset);
     },

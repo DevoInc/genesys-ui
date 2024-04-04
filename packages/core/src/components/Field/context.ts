@@ -6,7 +6,11 @@ import type {
   TFieldSize,
   TFieldStatus,
 } from '../../declarations';
-import type { IField, TFieldDirection, TLabelPosition } from './declarations';
+import type {
+  IField,
+  TFieldDirection,
+  TTagGroupLabelPosition,
+} from './declarations';
 
 export interface FieldContextProps {
   ariaErrorMessage?: IFieldAriaAttrs['aria-errormessage'];
@@ -16,7 +20,7 @@ export interface FieldContextProps {
   disabled?: IField['disabled'];
   hasWideControl?: boolean;
   id?: IField['id'];
-  labelPosition?: TLabelPosition;
+  labelPosition?: TTagGroupLabelPosition;
   required?: IField['required'];
   size?: TFieldSize;
   status?: TFieldStatus;

@@ -12,7 +12,7 @@ import {
 } from '../../../components/Field/helpers';
 import { disabledMixin } from '../state';
 
-interface commonInputControlMixinProps {
+export interface ICommonInputControlMixin {
   disabled?: boolean;
   inputWidth?: TControlWidth;
   readOnly?: boolean;
@@ -40,7 +40,7 @@ export const commonInputControlMixin = ({
   $size = 'md',
   status = 'base',
   theme,
-}: commonInputControlMixinProps) => {
+}: ICommonInputControlMixin) => {
   const state = getFieldState({ readOnly });
   const aliasTokens = theme.alias;
   const fieldTokens = aliasTokens.fields;

@@ -1,4 +1,5 @@
-import { IClientSize } from '../declarations/dom';
+import * as React from 'react';
+import type { IClientSize } from '../declarations/dom';
 
 export const updateHasScroll = (
   measures: IClientSize,

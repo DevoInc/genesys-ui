@@ -2,7 +2,6 @@ import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
 
 import * as Stories from './Wrap.stories';
 import spacingProps from '../../../stories/partials/spacingProps.md?raw';
-import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 <Meta of={Stories} />
 
@@ -11,57 +10,45 @@ import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 ## Overview
 
 Use `Wrap` to create a stacked group of children components distributed
-in columns and rows. Each children can be separated horizontally using
+in columns and rows. Each child can be separated horizontally using
 the prop `hSpacing` and vertically using `vSpacing`.
 
 ## How to import
 
-<Source
-  code={`
-import { Wrap } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Wrap } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
+You only have to add children to the component and wrap them.
+
 <Canvas of={Stories.Base} />
 
-## Cases
+## childrenByRow
 
-### childrenByRow
+You can use prop `childrenByRow` to define a specific number of columns with the same width for each child.
+In this example you can see four children by row:
 
-You can use prop `childrenByRow` to define columns with the same width for each child:
+<Canvas of={Stories.ChildrenByRow} />
 
-<Source
-  code={`
-<Wrap childrenByRow={4}>
-  ...
-</Wrap>
-`}
-/>
+## Using the as property
 
-### Using the as property
+The `as` property allow these components to be rendered as any HTML tag: 'div', 'li', 'section'... etc.
 
-The `as` property allow these components to be rendered as any HTML tag:
-'div', 'li', 'section'... etc.
-
-If you want to use the `Flex` component rendered with a different HTML tag, you can use the `as` property.
+If you want to use the `Wrap` component rendered with a different HTML tag, you can use the `as` property.
 It allows these components to be rendered as any HTML tag, such as div, li, section, and so on.
 
 <Source
   code={`
 import * as React from 'react';
-import { Flex } from '@devoinc/genesys-ui';
+import { Wrap } from '@devoinc/genesys-ui';
 
-const MyFlexCmp = () => (
+const MyWrapCmp = () => (
 
-{' '}
-
-<Flex as={'ul'}>
-  <Flex.Item as={'li'}>Child 1</Flex.Item>
-  <Flex.Item as={'li'}>Child 2</Flex.Item>
-  <Flex.Item as={'li'}>Child 3</Flex.Item>
-</Flex>
+<Wrap as={'ul'}>
+  <Wrap.Item as={'li'}>Child 1</Wrap.Item>
+  <Wrap.Item as={'li'}>Child 2</Wrap.Item>
+  <Wrap.Item as={'li'}>Child 3</Wrap.Item>
+</Wrap>
 ); `} />
 
 <Markdown>{spacingProps}</Markdown>

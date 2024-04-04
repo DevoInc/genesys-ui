@@ -21,7 +21,7 @@ export interface WrapProps
 
 export const InternalWrap: React.FC<WrapProps> = ({
   alignContent = 'flex-start',
-  alignItems = 'center',
+  alignItems = 'flex-start',
   children,
   childrenByRow,
   hSpacing = 'cmp-md',
@@ -50,3 +50,5 @@ export const Wrap = InternalWrap as typeof InternalWrap & {
 };
 
 Wrap.Item = FlexItem;
+InternalWrap.displayName = 'Wrap';
+Wrap.Item.displayName = 'Wrap.Item';

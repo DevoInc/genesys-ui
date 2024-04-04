@@ -3,13 +3,13 @@ import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
 import { Label, type LabelProps } from '../../Label';
-import type { CommonTagGroupProps } from '../declarations';
+import type { ITagGroup } from '../declarations';
 
 import { tagGroupLabelMixin } from '../helpers';
 
 export interface TagGroupLabelProps
   extends Omit<LabelProps, 'size'>,
-    CommonTagGroupProps {}
+    ITagGroup {}
 
 export const TagGroupLabel: React.FC<TagGroupLabelProps> = ({
   children,

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { startOfDay } from 'date-fns';
-import type { HookCommonReturnParams } from './declarations';
+import type { IHookCommonReturnParams } from './declarations';
 
-export interface useCalendarForwardBehaviorProps {
+export interface IUseCalendarForwardBehavior {
   /** Initial start timestamp date */
   from?: number;
   /** Initial end timestamp date */
@@ -12,7 +12,7 @@ export interface useCalendarForwardBehaviorProps {
 export const useCalendarForwardBehavior = ({
   from: defaultFrom = null,
   to: defaultTo = null,
-}: useCalendarForwardBehaviorProps): HookCommonReturnParams => {
+}: IUseCalendarForwardBehavior): IHookCommonReturnParams => {
   const [from, setFrom] = React.useState(null);
   const [to, setTo] = React.useState(null);
 

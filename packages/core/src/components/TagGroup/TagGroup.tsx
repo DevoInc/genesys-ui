@@ -1,53 +1,67 @@
 import * as React from 'react';
 
-import type { TagProps } from '../Tag';
-
 import {
   TagGroupContainer,
   type TagGroupContainerProps,
   TagGroupLabel,
-  type TagGroupLabelProps,
   TagGroupList,
-  type TagGroupListProps,
+  TagGroupTag,
 } from './components';
+import { ITagGroup } from './declarations';
 
 export interface TagGroupProps
-  extends Omit<TagGroupContainerProps, 'children'>,
-    Pick<TagGroupListProps, 'children'>,
-    Pick<TagProps, 'size'> {
-  /** Text within the label. (aria-label is the same as Label) */
-  label?: TagGroupLabelProps['children'];
+  extends TagGroupContainerProps,
+    Pick<ITagGroup, 'colorScheme' | 'quiet' | 'size'> {
+  label?: React.ReactNode;
 }
 
 export const InternalTagGroup: React.FC<TagGroupProps> = ({
+  'aria-label': ariaLabel,
   children,
+  colorScheme,
   flexWrap = 'wrap',
   labelPosition = 'left',
   label,
+  quiet,
   size = 'md',
   styles,
-  ...restNativeProps
+  ...restProps
 }) => {
   return (
-    <TagGroup.Container
-      {...restNativeProps}
+    <TagGroupContainer
+      {...restProps}
+      colorScheme={colorScheme}
       labelPosition={labelPosition}
+      quiet={quiet}
+      size={size}
       styles={styles}
     >
-      {label && <TagGroup.Label size={size}>{label}</TagGroup.Label>}
-      <TagGroup.List flexWrap={flexWrap} size={size}>
+      {label && <TagGroupLabel size={size}>{label}</TagGroupLabel>}
+      <TagGroupList
+        aria-label={typeof label === 'string' ? label : ariaLabel}
+        flexWrap={flexWrap}
+        size={size}
+      >
         {children}
-      </TagGroup.List>
-    </TagGroup.Container>
+      </TagGroupList>
+    </TagGroupContainer>
   );
 };
 
 export const TagGroup = InternalTagGroup as typeof InternalTagGroup & {
-  Container: typeof TagGroupContainer;
-  Label: typeof TagGroupLabel;
-  List: typeof TagGroupList;
+  _Container: typeof TagGroupContainer;
+  _Label: typeof TagGroupLabel;
+  _List: typeof TagGroupList;
+  Tag: typeof TagGroupTag;
 };
 
-TagGroup.Container = TagGroupContainer;
-TagGroup.Label = TagGroupLabel;
-TagGroup.List = TagGroupList;
+TagGroup._Container = TagGroupContainer;
+TagGroup._Label = TagGroupLabel;
+TagGroup._List = TagGroupList;
+TagGroup.Tag = TagGroupTag;
+
+InternalTagGroup.displayName = 'TagGroup';
+TagGroup._Container.displayName = 'TagGroup._Container';
+TagGroup._Label.displayName = 'TagGroup._Label';
+TagGroup._List.displayName = 'TagGroup._List';
+TagGroup.Tag.displayName = 'TagGroup.Tag';

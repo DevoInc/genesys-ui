@@ -1,6 +1,6 @@
 import { css, DefaultTheme } from 'styled-components';
 
-interface ScrollbarConfig {
+interface IScrollbarMixin {
   cornerColor?: string;
   size?: string;
   thumbColor?: string;
@@ -37,7 +37,7 @@ export const scrollbars = ({
   trackColor,
   trackRadius,
   theme,
-}: ScrollbarConfig) => {
+}: IScrollbarMixin) => {
   const scrollbarTokens = theme.alias.scrollbars;
   const sizeEval = size || scrollbarTokens.size.square.md || '0.8rem';
   return css`

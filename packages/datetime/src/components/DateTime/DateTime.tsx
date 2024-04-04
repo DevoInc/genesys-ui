@@ -3,20 +3,20 @@ import { useTheme } from 'styled-components';
 import { addMonths, set, subMonths } from 'date-fns';
 
 import {
-  IGlobalAriaAttrs,
-  IStyledOverloadCss,
-  IStyledPolymorphic,
+  type IGlobalAriaAttrs,
+  type IStyledOverloadCss,
+  type IStyledPolymorphic,
   VFlex,
 } from '@devoinc/genesys-ui';
 
+import type { TDatetime } from '../declarations';
 import {
   Calendar,
-  CalendarProps,
+  type CalendarProps,
   useCalendarSingleDayBehavior,
 } from '../Calendar';
 import { Month, Time, TimeProps } from './components';
 import { toTimestamp } from '../utils';
-import { Datetime } from '../declarations';
 
 export interface DateTimeProps
   extends Pick<
@@ -40,7 +40,7 @@ export interface DateTimeProps
   /** Function called when clicking a cell or editing time input HTML.  */
   onChange?: (ts: number) => void;
   /** Initial value. One of `number` or `Date`. */
-  value?: Datetime;
+  value?: TDatetime;
 }
 
 export const DateTime: React.FC<DateTimeProps> = ({

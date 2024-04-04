@@ -1,12 +1,4 @@
-export type RangeInputStates =
-  | 'success'
-  | 'error'
-  | 'warning'
-  | 'info'
-  | 'help'
-  | 'default';
-
-export type RealtimeState =
+export type TRealtimeState =
   | 'hidden'
   | 'disabled'
   | 'inactive'

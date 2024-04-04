@@ -27,6 +27,7 @@ export const StyledTagContainer = styled.span<StyledTagContainerProps>`
       ? getAccTextColor(colorScheme, '#fff', cmpTokens.color.text.help)
       : cmpTokens.color.text[colorText];
     return css`
+      ${typoMixin({ bold: bold, theme, size })};
       position: relative;
       display: inline-flex;
       align-items: center;
@@ -38,7 +39,6 @@ export const StyledTagContainer = styled.span<StyledTagContainerProps>`
       height: ${cmpTokens.size.height[size]};
       padding: ${quiet ? '0' : `0 ${cmpTokens.space.padding.hor[size]}`};
       background-color: ${bgColor};
-      ${typoMixin({ bold: bold, theme, size })};
       color: ${textColor};
 
       ${wide &&

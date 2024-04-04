@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { PresetGroup } from '../declarations';
+import { TPresetGroup } from '../declarations';
 
-export const useDefaultPresets = (): PresetGroup[] => {
+export const useDefaultPresets = (): TPresetGroup[] => {
   return React.useMemo(
     () => [
       {

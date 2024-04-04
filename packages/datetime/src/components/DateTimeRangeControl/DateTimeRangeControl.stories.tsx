@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { DateTimeRangeControl } from './DateTimeRangeControl';
-import type { DateRange } from '../declarations';
+import type { TDateRange } from '../declarations';
 
 const meta: Meta<typeof DateTimeRangeControl> = {
   title: 'Components/Datetime/DateTimeRangeControl',
@@ -38,12 +38,12 @@ export const Base: Story = {
       const [from, setFrom] = React.useState(props.from);
       const [to, setTo] = React.useState(props.to);
 
-      const onBlurCallback = React.useCallback((range: DateRange) => {
+      const onBlurCallback = React.useCallback((range: TDateRange) => {
         setFrom(range.from);
         setTo(range.to);
       }, []);
 
-      const onChangeCallback = React.useCallback((range: DateRange) => {
+      const onChangeCallback = React.useCallback((range: TDateRange) => {
         setFrom(range.from);
         setTo(range.to);
       }, []);

@@ -10,15 +10,11 @@ import spacingProps from '../../../stories/partials/spacingProps.md?raw';
 ## Overview
 
 Use `VFlex` to create a stacked group of children components distributed
-in a single column. Each children can be separated horizontally using the prop `spacing`.
+in a single column. Each child can be separated vertically using the prop `spacing`.
 
 ## How to import
 
-<Source
-  code={`
-import { VFlex } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { VFlex } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
@@ -40,8 +36,6 @@ import * as React from 'react';
 import { Flex } from '@devoinc/genesys-ui';
 
 const MyFlexCmp = () => (
-
-{' '}
 
 <Flex as={'ul'}>
   <Flex.Item as={'li'}>Child 1</Flex.Item>

@@ -1,11 +1,11 @@
 import type { IconButtonProps } from '@devoinc/genesys-ui';
-import type { RealtimeState } from './declarations';
+import type { TRealtimeState } from './declarations';
 
 export const getRealTimeDataTip = (state) =>
   state === 'inactive' ? 'Activate real-time' : 'Deactivate real-time';
 
 export const getButtonStateFromRealTimeState = (
-  state: RealtimeState = 'inactive',
+  state: TRealtimeState = 'inactive',
 ): IconButtonProps['state'] => {
   switch (state) {
     case 'inactive':

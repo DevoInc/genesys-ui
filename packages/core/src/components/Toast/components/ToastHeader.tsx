@@ -11,6 +11,7 @@ import { VFlex } from '../../VFlex';
 
 import { ToastHeaderIcon } from './ToastHeaderIcon';
 import { getToastStatusIcon } from '../utils';
+import { Panel } from '../../Panel';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ToastHeaderProps
@@ -40,40 +41,49 @@ export const ToastHeader: React.FC<ToastHeaderProps> = ({
   subtitle,
   title,
 }) => (
-  <HFlex
-    alignItems="stretch"
-    flex="1 1 auto"
-    padding="cmp-sm cmp-xs cmp-sm cmp-md"
-    spacing="cmp-sm"
+  <Panel.Header
+    hasBoxShadow={collapsable ? collapsable && !collapsed : undefined}
+    removeSpace
   >
-    {collapsable && (
-      <>
-        <Flex.Item alignSelf="center" flex="0 0 auto">
-          <IconButtonCollapse
-            onClick={onCollapse}
-            size="md"
-            state={collapsed ? undefined : 'expanded'}
-            tooltip={collapsed ? expandTooltip : collapseTooltip}
-          />
-        </Flex.Item>
-        <Divider height="auto" margin="0" vertical />
-      </>
-    )}
-    <ToastHeaderIcon colorScheme={status}>
-      {status ? getToastStatusIcon(status) : null}
-    </ToastHeaderIcon>
-    <VFlex spacing={'cmp-xs'}>
-      <Flex alignItems="center" minHeight="2rem">
-        <Typography.Heading truncateLine={2} size="h5">
-          {title}
+    <HFlex
+      alignItems="stretch"
+      flex="1 1 auto"
+      padding="cmp-sm cmp-xs cmp-sm cmp-md"
+      spacing="cmp-sm"
+    >
+      {collapsable && (
+        <>
+          <Flex.Item alignSelf="center" flex="0 0 auto">
+            <IconButtonCollapse
+              onClick={onCollapse}
+              size="md"
+              state={collapsed ? undefined : 'expanded'}
+              tooltip={collapsed ? expandTooltip : collapseTooltip}
+            />
+          </Flex.Item>
+          <Divider height="auto" margin="0" vertical />
+        </>
+      )}
+      <ToastHeaderIcon colorScheme={status}>
+        {status ? getToastStatusIcon(status) : null}
+      </ToastHeaderIcon>
+      <VFlex spacing={'cmp-xs'}>
+        <Flex alignItems="center" minHeight="2rem">
+          <Typography.Heading truncateLine={2} size="h5">
+            {title}
+          </Typography.Heading>
+        </Flex>
+        <Typography.Heading colorScheme="weak" truncateLine={3} size="h6">
+          {subtitle}
         </Typography.Heading>
-      </Flex>
-      <Typography.Heading colorScheme="weak" truncateLine={3} size="h6">
-        {subtitle}
-      </Typography.Heading>
-    </VFlex>
-    <Flex.Item marginLeft="auto" flex="0 0 auto">
-      <IconButtonClose tooltip={closeTooltip} onClick={closeToast} size="md" />
-    </Flex.Item>
-  </HFlex>
+      </VFlex>
+      <Flex.Item marginLeft="auto" flex="0 0 auto">
+        <IconButtonClose
+          tooltip={closeTooltip}
+          onClick={closeToast}
+          size="md"
+        />
+      </Flex.Item>
+    </HFlex>
+  </Panel.Header>
 );

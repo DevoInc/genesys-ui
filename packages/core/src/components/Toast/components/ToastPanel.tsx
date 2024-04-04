@@ -10,7 +10,7 @@ import { getFooterActions } from '../utils';
 import { toastPanelMixin } from './helpers';
 import { Panel, type PanelProps } from '../../Panel';
 import { ToastBadge } from './ToastBadge';
-import { ToastContent } from './ToastContent';
+import { ToastBody } from './ToastBody';
 import { ToastHeader } from './ToastHeader';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -73,26 +73,19 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
           styles,
         )}
       >
-        <Panel.Header
-          hasBoxShadow={collapsable ? collapsable && !collapsed : undefined}
-          removeSpace
-        >
-          <ToastHeader
-            closeToast={closeToast}
-            closeTooltip={closeTooltip}
-            collapsable={collapsable}
-            collapseTooltip={collapseTooltip}
-            expandTooltip={expandTooltip}
-            collapsed={collapsed}
-            onCollapse={onCollapse}
-            status={status}
-            subtitle={subtitle}
-            title={title}
-          />
-        </Panel.Header>
-        <Panel.Body removeSpace={showCollapsed}>
-          <ToastContent content={content} collapsed={showCollapsed} />
-        </Panel.Body>
+        <ToastHeader
+          closeToast={closeToast}
+          closeTooltip={closeTooltip}
+          collapsable={collapsable}
+          collapseTooltip={collapseTooltip}
+          expandTooltip={expandTooltip}
+          collapsed={collapsed}
+          onCollapse={onCollapse}
+          status={status}
+          subtitle={subtitle}
+          title={title}
+        />
+        <ToastBody content={content} collapsed={showCollapsed} />
         <Panel.Footer actions={footerActions} />
       </Panel>
     </>

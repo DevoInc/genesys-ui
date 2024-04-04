@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import {
+import type {
   ICheckAttrs,
   IFieldAttrs,
   IFocusEventAttrs,

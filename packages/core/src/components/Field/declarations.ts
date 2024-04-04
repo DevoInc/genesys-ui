@@ -14,7 +14,7 @@ import type {
 } from '../../declarations';
 
 export type TFieldSize = TBaseSize;
-export type TLabelPosition = 'top' | 'left' | 'between' | 'right';
+export type TTagGroupLabelPosition = 'top' | 'left' | 'between' | 'right';
 export type TFieldDirection = 'between' | 'row' | 'column' | 'reverse';
 export type TFieldAddonPosition = 'left' | 'right';
 
@@ -54,7 +54,7 @@ export interface IField
   /** Label for the field (aria-label is the same as Label) */
   label: React.ReactNode;
   /** Position of the label text relative to the field control. The position 'right' for the label is only recommended for checkbox and radio controls. */
-  labelPosition?: TLabelPosition;
+  labelPosition?: TTagGroupLabelPosition;
   /** The title to be shown on hover of the required marker of the Field._ */
   requiredMarkTooltip?: IGlobalAttrs['tooltip'];
   /** Size of the field and its internal components: height, padding, font-size... etc. */

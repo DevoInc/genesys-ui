@@ -1,25 +1,24 @@
 import * as React from 'react';
+import { format } from 'date-fns';
 
 import {
   Panel,
   Button,
-  IGlobalAttrs,
-  IStyledOverloadCss,
-  IStyledPolymorphic,
+  type IGlobalAttrs,
+  type IStyledOverloadCss,
+  type IStyledPolymorphic,
   Popover,
-  PopoverProps,
+  type PopoverProps,
 } from '@devoinc/genesys-ui';
-
+import type { TDateApplyValue, TDateRange } from '../declarations';
+import type { TPresetRange } from '../Presets/declarations';
+import { getFormatTimeStr } from '../DateTime/utils/format';
+import { isManageableDate, toTSorPreset } from '../utils';
+import { DateTimeRange, type DateTimeRangeProps } from '../DateTimeRange';
 import {
   DateTimeRangeControl,
-  DateTimeRangeControlProps,
+  type DateTimeRangeControlProps,
 } from '../DateTimeRangeControl';
-import { DateTimeRange, DateTimeRangeProps } from '../DateTimeRange';
-import { getFormatTimeStr } from '../DateTime/utils/format';
-import { format } from 'date-fns';
-import { ApplyValue, DateRange } from '../declarations';
-import { isManageableDate, toTSorPreset } from '../utils';
-import { PresetRange } from '../Presets/declarations';
 
 export interface DateTimeRangePickerProps
   extends Pick<PopoverProps, 'appendTo' | 'isOpened'>,
@@ -70,7 +69,7 @@ export interface DateTimeRangePickerProps
   /** Enable or disable the Apply button.  */
   disableApplyButton: boolean;
   /** Function called when Apply button is clicked. */
-  onApply: (range: ApplyValue) => void;
+  onApply: (range: TDateApplyValue) => void;
   /** Function called when Cancel button is clicked. */
   onCancel: () => void;
   /** Transformation function for time. It is used to transform a time expression to timestamp. Required if there are presets. */
@@ -112,11 +111,11 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
   const isManageableFromDate = isManageableDate(value.from);
   const isManageableToDate = isManageableDate(value.to);
 
-  const [preset, setPreset] = React.useState<PresetRange>({
+  const [preset, setPreset] = React.useState<TPresetRange>({
     from: null,
     to: null,
   });
-  const [date, setDate] = React.useState<DateRange>({ from: null, to: null });
+  const [date, setDate] = React.useState<TDateRange>({ from: null, to: null });
 
   React.useEffect(() => {
     if (isManageableFromDate && isManageableToDate) {
@@ -178,7 +177,7 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
     [expressionToTime],
   );
 
-  const onChangeDateTimeCallback = React.useCallback((range: DateRange) => {
+  const onChangeDateTimeCallback = React.useCallback((range: TDateRange) => {
     setDate(range);
     setPreset({ from: undefined, to: undefined });
   }, []);

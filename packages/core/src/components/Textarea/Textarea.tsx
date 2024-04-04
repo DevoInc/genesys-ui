@@ -1,10 +1,11 @@
 import * as React from 'react';
 
-import { Field, type FieldProps } from '../Field';
+import { IField } from '../Field/declarations';
+import { Field } from '../Field';
 import { TextareaControl, type TextareaControlProps } from '../TextareaControl';
 
 export interface TextareaProps
-  extends Omit<FieldProps, 'children' | 'role'>,
+  extends Omit<IField, 'children' | 'role'>,
     Omit<
       TextareaControlProps,
       'id' | 'size' | 'status' | 'disabled' | 'required'

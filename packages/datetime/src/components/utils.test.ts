@@ -1,10 +1,10 @@
 import { describe, test, expect } from 'vitest';
 
-import { Datetime } from './declarations';
+import { TDatetime } from './declarations';
 import { toTSorPreset, isManageableDate } from './utils';
 
 describe('toTSorPreset', () => {
-  const cases: [string, string | Datetime, number | string][] = [
+  const cases: [string, string | TDatetime, number | string][] = [
     ['Date type', new Date(2022, 11, 1), new Date(2022, 11, 1).getTime()],
     [
       'string type',
