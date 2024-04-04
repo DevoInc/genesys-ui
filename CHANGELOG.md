@@ -1,5 +1,38 @@
 # Changelog
 
+## [9.0.0](https://github.com/DevoInc/genesys-ui/compare/v8.1.1...v9.0.0) (2024-04-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* Now the Tabs component is defined by composition and has a new structure.
+
+### Features
+
+* improvements for several core components. ([4f62c6f](https://github.com/DevoInc/genesys-ui/commit/4f62c6f574ef0cc46897111762e9ac98169692a5))
+* multiple components improvements. ([d76759c](https://github.com/DevoInc/genesys-ui/commit/d76759cef8c2e75d13b06100e4d6642069fc869a))
+* New naming for types and interfaces and new way of defining the Tabs component. ([c1c20ee](https://github.com/DevoInc/genesys-ui/commit/c1c20ee0c69e9a47773b4ee08adebdacf1d5ad09))
+* **PanelBody:** new name for prop and style adjustments. ([97c6242](https://github.com/DevoInc/genesys-ui/commit/97c6242f8559625ad32086ad26b0fc9843331db7))
+* Rename types and interfaces with the 'T' and 'I' prefixes. ([73854df](https://github.com/DevoInc/genesys-ui/commit/73854df38b7fee5cfe681eab7f474f816224b48d))
+* Rename types and interfaces with the 'T' and 'I' prefixes. ([4b4b764](https://github.com/DevoInc/genesys-ui/commit/4b4b76496b35e25354687045ec5c49922bcd3d11))
+* Updated the naming pattern of types and interfaces. Replaced cloneElement with context in Field component. ([7493964](https://github.com/DevoInc/genesys-ui/commit/7493964e7fa930539d20418a7f1b97dfe6660dd6))
+
+
+### Bug Fixes
+
+* Date cell editor with autofocus ([8db5348](https://github.com/DevoInc/genesys-ui/commit/8db5348b8367df789690cf056be4255939f68938))
+* fixed eslint ([08dad20](https://github.com/DevoInc/genesys-ui/commit/08dad208889f14baa3524e00560b6a0a3b851cde))
+* fixed typo in function. ([085aa4b](https://github.com/DevoInc/genesys-ui/commit/085aa4b09dec15566b1a6a741a05720d58bf257b))
+* Select menu doesn't close on click outside sometimes in multipleSubtle variant ([9a02d0a](https://github.com/DevoInc/genesys-ui/commit/9a02d0a6145144c247c4377566ad31ca7e5a0563))
+* stopPorpagation on RT button ([132fdda](https://github.com/DevoInc/genesys-ui/commit/132fdda83d10ef20164641abacfa26281065cbbd))
+* **Table:** ActionRenderer MenuItems now use the proper props instead of children. ([7d20678](https://github.com/DevoInc/genesys-ui/commit/7d2067802ace5771d309d903a255a7efef73702c))
+
+
+### Vulnerabilities
+
+* **deps-dev:** bump express from 4.18.3 to 4.19.2 ([4b1e3b6](https://github.com/DevoInc/genesys-ui/commit/4b1e3b6139f8d659abad81a94f0685178c73263f))
+* **deps-dev:** bump vite from 5.1.6 to 5.1.7 ([fbb1c0a](https://github.com/DevoInc/genesys-ui/commit/fbb1c0a23147bb9a193a225ac4f25a7a5069ceaf))
+
 ## [8.1.1](https://github.com/DevoInc/genesys-ui/compare/v8.1.0...v8.1.1) (2024-03-11)
 
 
