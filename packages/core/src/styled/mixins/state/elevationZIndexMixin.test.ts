@@ -3,7 +3,7 @@ import { describe, test, expect } from 'vitest';
 import { light as theme } from '@devoinc/genesys-brand-devo';
 
 import { elevationZIndexMixin } from './elevationZIndexMixin';
-import { TElevation } from '../../../declarations';
+import type { TElevation } from '../../../declarations';
 
 describe('elevationZIndexMixin', () => {
   test('raised', () => {

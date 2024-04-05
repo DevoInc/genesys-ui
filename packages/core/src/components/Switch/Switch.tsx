@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Field, FieldProps } from '../Field';
+import { Field, type FieldProps } from '../Field';
 import { SwitchControl, type SwitchControlProps } from '../SwitchControl';
 
 export interface SwitchProps

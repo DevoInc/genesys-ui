@@ -1,6 +1,6 @@
-import { css, DefaultTheme } from 'styled-components';
+import { css, type DefaultTheme } from 'styled-components';
 
-import { TElevation } from '../../../declarations';
+import type { TElevation } from '../../../declarations';
 
 /**
  * Get the z-index elevation styles based in the theme design tokens and type

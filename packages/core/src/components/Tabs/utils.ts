@@ -1,6 +1,6 @@
-import { TButtonBasicState } from '../Button';
-import { TLinkState } from '../Link/declarations';
-import { TTabsItemState } from './declarations';
+import type { TButtonBasicState } from '../Button';
+import type { TLinkState } from '../Link/declarations';
+import type { TTabsItemState } from './declarations';
 
 type StateMap<T> = { [key in TTabsItemState]: T };
 

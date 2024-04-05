@@ -1,8 +1,8 @@
 import { css, DefaultTheme } from 'styled-components';
 
 import { isValidColor } from '../../../helpers';
-import { TTypoColorScheme } from '../../../components/Typography/declarations';
-import { TTypoVariant } from './declarations';
+import type { TTypoColorScheme } from '../../../components/Typography/declarations';
+import type { TTypoVariant } from './declarations';
 
 type TUITokens = DefaultTheme['alias']['color']['text']['feedback'];
 

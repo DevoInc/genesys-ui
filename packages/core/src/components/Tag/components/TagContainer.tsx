@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import {
+import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../declarations';
-import { ITag } from '../declarations';
+import type { ITag } from '../declarations';
 
 import { StyledTagContainer } from './StyledTagContainer';
 

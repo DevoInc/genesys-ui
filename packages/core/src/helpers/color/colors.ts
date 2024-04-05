@@ -1,6 +1,6 @@
-import { Color } from './definitions';
+import type { IColor } from './definitions';
 
-export const colors: Color[] = [
+export const COLORS: IColor[] = [
   {
     colorId: 0,
     hexString: '#000000',

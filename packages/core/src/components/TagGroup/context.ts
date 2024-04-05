@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import { ITag } from '../Tag';
+import type { ITag } from '../Tag';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface TagGroupContextProps
+export interface ITagGroupContext
   extends Pick<ITag, 'colorScheme' | 'quiet' | 'size'> {}
 
-export const TagGroupContext = React.createContext<TagGroupContextProps>({
+export const TagGroupContext = React.createContext<ITagGroupContext>({
   size: 'md',
 });

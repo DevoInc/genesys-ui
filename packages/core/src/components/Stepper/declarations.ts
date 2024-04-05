@@ -1,5 +1,5 @@
-import { TBaseSize } from '../../declarations';
+import type { TBaseSize } from '../../declarations';
 
-export type StepperSize = TBaseSize;
+export type TStepperSize = TBaseSize;
 
-export type StepperStatus = 'completed' | 'current' | 'pending' | 'disabled';
+export type TStepperStatus = 'completed' | 'current' | 'pending' | 'disabled';

@@ -9,7 +9,7 @@ import { tagGroupLabelMixin } from '../helpers';
 
 export interface TagGroupLabelProps
   extends Omit<LabelProps, 'size'>,
-    ITagGroup {}
+    Omit<ITagGroup, 'colorScheme'> {}
 
 export const TagGroupLabel: React.FC<TagGroupLabelProps> = ({
   children,

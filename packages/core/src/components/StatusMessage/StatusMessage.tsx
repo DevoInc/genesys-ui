@@ -7,7 +7,7 @@ import type { IconProps } from '../Icon';
 import {
   StatusMessageButtons,
   StatusMessageContainer,
-  StatusMessageContainerProps,
+  type StatusMessageContainerProps,
   StatusMessageDescription,
   StatusMessageIcon,
   StatusMessageTitle,

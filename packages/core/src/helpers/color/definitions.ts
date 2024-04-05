@@ -1,4 +1,4 @@
-export interface Color {
+export interface IColor {
   colorId: number;
   hexString: string;
   rgb: { r: number; g: number; b: number };

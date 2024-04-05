@@ -1,13 +1,13 @@
 import { css, DefaultTheme } from 'styled-components';
 
 import { TABS_ITEM_CLOSABLE_BUTTON_SIZE } from './constants';
-import { TTabsItemState, TTabsSize } from '../../../declarations';
+import type { TTabsItemState, TTabsSize } from '../../../declarations';
 import { typoMixin } from '../../../../../styled';
 
 export const getTabsItemClosableButtonSquare = (theme: DefaultTheme) =>
   theme.cmp.button.size.square[TABS_ITEM_CLOSABLE_BUTTON_SIZE];
 
-export interface TabsLinkMixinProps {
+export interface ITabsLinkMixin {
   /** If the Tab item link has a closable button as sibling, so it needs specific styles. */
   closable?: boolean;
   /** The size of the component: font-size, height... etc. */
@@ -32,7 +32,7 @@ export const tabsLinkMixin = ({
   size = 'md',
   state = 'enabled',
   theme,
-}: TabsLinkMixinProps) => {
+}: ITabsLinkMixin) => {
   const tokens = theme.cmp.tabs.item;
   const borderRadius = tokens.shape.borderRadius;
   const paddingHor = tokens.space.padding;

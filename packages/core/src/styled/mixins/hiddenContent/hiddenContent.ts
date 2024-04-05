@@ -1,5 +1,5 @@
 import React from 'react';
-import { css, DefaultTheme } from 'styled-components';
+import { css, type DefaultTheme } from 'styled-components';
 
 export interface IHiddenContentMixin {
   showOnHover?: boolean;

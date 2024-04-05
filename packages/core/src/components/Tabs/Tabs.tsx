@@ -5,7 +5,7 @@ import type {
   IGlobalAttrs,
   IStyledOverloadCss,
 } from '../../declarations';
-import { ITabs } from './declarations';
+import type { ITabs } from './declarations';
 import { TabsContext } from './context';
 
 import {

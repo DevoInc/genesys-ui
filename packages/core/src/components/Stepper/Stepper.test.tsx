@@ -2,7 +2,7 @@ import { describe, test, expect } from 'vitest';
 import * as React from 'react';
 
 import { render, screen } from '@test';
-import { Stepper, StepperProps } from './Stepper';
+import { Stepper, type StepperProps } from './Stepper';
 
 describe('Stepper', () => {
   const steps: StepperProps['steps'] = [

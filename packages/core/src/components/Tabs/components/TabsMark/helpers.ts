@@ -1,8 +1,8 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { TTabsColorScheme } from '../../declarations';
+import type { TTabsColorScheme } from '../../declarations';
 
-export interface TabsMarkMixinProps {
+export interface ITabsMarkMixin {
   /** The color scheme of the tabs mark. */
   colorScheme?: TTabsColorScheme;
   /** The common theme object with all the tokens. */
@@ -14,7 +14,7 @@ export interface TabsMarkMixinProps {
  *
  * @return object with the css.
  */
-export const tabsMarkMixin = ({ colorScheme, theme }: TabsMarkMixinProps) => {
+export const tabsMarkMixin = ({ colorScheme, theme }: ITabsMarkMixin) => {
   const tokens = theme.cmp.tabs.mark;
   const transitionDuration =
     theme.alias.mutation.transitionDuration.translation.hor.sm;

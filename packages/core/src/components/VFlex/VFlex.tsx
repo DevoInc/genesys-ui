@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { TGlobalSpacing } from '../../declarations';
-import { Flex, FlexProps } from '../Flex';
+import type { TGlobalSpacing } from '../../declarations';
+import { Flex, type FlexProps } from '../Flex';
 import { FlexItem } from '../Flex/components';
 
 export interface VFlexProps

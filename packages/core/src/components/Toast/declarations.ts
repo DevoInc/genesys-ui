@@ -1,6 +1,6 @@
-import type { IMouseEventAttrs, TActiveStatus } from '../../declarations';
-import { OmitUnion } from '../../typeFunctions/omitUnion';
 import * as React from 'react';
+import { OmitUnion } from '../../typeFunctions/omitUnion';
+import type { IMouseEventAttrs, TActiveStatus } from '../../declarations';
 
 export interface TToastAction {
   label: string;

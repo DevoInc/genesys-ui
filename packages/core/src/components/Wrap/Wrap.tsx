@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { Flex, FlexProps } from '../Flex';
-import { TGlobalSpacing } from '../../declarations';
+import { Flex, type FlexProps } from '../Flex';
+import type { TGlobalSpacing } from '../../declarations';
 import { getChildrenByRowFlex } from './helpers';
 import { FlexItem } from '../Flex/components';
 

@@ -1,7 +1,7 @@
 import { DefaultTheme } from 'styled-components';
 
 import { isValidColor } from '../color';
-import { TAllColorScheme } from '../../declarations';
+import type { TAllColorScheme } from '../../declarations';
 
 export const getIconColorSchemeMap = (theme: DefaultTheme) => ({
   base: theme.alias.color.text.body.base,

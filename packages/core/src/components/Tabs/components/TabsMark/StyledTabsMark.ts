@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { TTabsColorScheme } from '../../declarations';
+import type { TTabsColorScheme } from '../../declarations';
 
 export interface StyledTabsMarkProps {
   colorScheme?: TTabsColorScheme;

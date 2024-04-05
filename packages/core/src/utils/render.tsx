@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { DefaultTheme, ThemeProvider } from 'styled-components';
+import { type DefaultTheme, ThemeProvider } from 'styled-components';
 
 /**
  * Get the static HTML markup of a React component

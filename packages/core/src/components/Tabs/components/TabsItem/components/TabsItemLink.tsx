@@ -3,13 +3,13 @@ import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
 import { linkStateMap } from '../../../utils';
-import { tabsLinkMixin, type TabsLinkMixinProps } from './helpers';
-import { type Resolve } from '../../../../../typeFunctions';
+import { tabsLinkMixin, type ITabsLinkMixin } from './helpers';
+import type { Resolve } from '../../../../../typeFunctions';
 import { Link, type LinkProps } from '../../../../Link';
 
 export interface TabsItemLinkProps
   extends Omit<LinkProps, 'role' | 'size' | 'state'>,
-    Omit<TabsLinkMixinProps, 'theme'> {
+    Omit<ITabsLinkMixin, 'theme'> {
   children?: React.ReactNode;
 }
 

@@ -1,4 +1,4 @@
-import { colors } from './colors';
+import { COLORS } from './colors';
 import { isValidColor } from './validation';
 import { getHexName } from './getters';
 
@@ -26,7 +26,7 @@ export const getAccTextColor = (
   const isRGBA = bgColor.startsWith('rgba');
   const named = !isHex && !isRGB && !isRGBA;
   bgColor =
-    isValidColor(bgColor) && !named ? bgColor : getHexName(colors, bgColor);
+    isValidColor(bgColor) && !named ? bgColor : getHexName(COLORS, bgColor);
   const rgbArray =
     isRGB &&
     (isRGBA

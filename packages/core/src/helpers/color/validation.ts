@@ -1,8 +1,8 @@
-import { colors as defaultColors } from './colors';
-import { Color } from './definitions';
+import { COLORS as defaultColors } from './colors';
+import type { IColor } from './definitions';
 import { findColorByName } from './getters';
 
-export const isValidColorName = (colors: Color[]) => (name: string) =>
+export const isValidColorName = (colors: IColor[]) => (name: string) =>
   !!findColorByName(colors)(name);
 
 /**

@@ -1,8 +1,8 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { ITagGroup, TTagGroupLabelPosition } from './declarations';
+import type { ITagGroup, TTagGroupLabelPosition } from './declarations';
 
-export interface TagGroupLabelMixinProps extends Pick<ITagGroup, 'size'> {
+export interface ITagGroupLabelMixin extends Pick<ITagGroup, 'size'> {
   labelPosition: TTagGroupLabelPosition;
   theme: DefaultTheme;
 }
@@ -16,7 +16,7 @@ export const tagGroupLabelMixin = ({
   labelPosition,
   size,
   theme,
-}: TagGroupLabelMixinProps) => {
+}: ITagGroupLabelMixin) => {
   const tokens = theme.cmp.tagGroup.label;
   return css`
     display: flex;

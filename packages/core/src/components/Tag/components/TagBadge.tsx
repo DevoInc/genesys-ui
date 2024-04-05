@@ -2,7 +2,7 @@ import * as React from 'react';
 import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
-import { Badge, BadgeProps } from '../../Badge';
+import { Badge, type BadgeProps } from '../../Badge';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TagBadgeProps extends BadgeProps {}

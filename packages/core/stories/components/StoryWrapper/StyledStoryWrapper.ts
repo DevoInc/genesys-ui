@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import { boxMixin, IBoxMixin } from '../../../src';
+import { boxMixin, type IBoxMixin } from '../../../src';
 
 export interface StyledStoryWrapperProps extends Omit<IBoxMixin, 'theme'> {
   bgColor?: React.CSSProperties['backgroundColor'];

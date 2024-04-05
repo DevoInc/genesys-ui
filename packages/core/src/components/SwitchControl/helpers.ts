@@ -2,7 +2,7 @@ import { css, DefaultTheme } from 'styled-components';
 import type { ISwitch, TSwitchDiameter } from './declarations';
 import { disabledMixin, typoMixin } from '../../styled';
 
-export interface SwitchControlContainerMixinProps
+export interface ISwitchControlContainerMixin
   extends Pick<ISwitch, 'checked' | 'disabled' | 'status'> {
   handleDiameter: TSwitchDiameter;
   theme: DefaultTheme;
@@ -19,7 +19,7 @@ export const switchControlContainerMixin = ({
   handleDiameter,
   status,
   theme,
-}: SwitchControlContainerMixinProps) => {
+}: ISwitchControlContainerMixin) => {
   const switchTokens = theme.cmp.switchControl;
   const textTokens = switchTokens.text;
   const trackTokens = switchTokens.track;

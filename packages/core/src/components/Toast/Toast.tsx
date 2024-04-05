@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { toast as reactToastify } from 'react-toastify';
 
-import { ToastPanel, ToastPanelProps } from './components/ToastPanel';
+import { ToastPanel, type ToastPanelProps } from './components/ToastPanel';
+
 import 'react-toastify/dist/ReactToastify.css';
 const activeToastsUpdates = {};
+
 export interface ToastProps extends ToastPanelProps {
   /** Id */
   id: string;

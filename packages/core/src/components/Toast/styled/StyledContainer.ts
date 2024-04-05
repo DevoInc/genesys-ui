@@ -1,6 +1,6 @@
-import { ToastContainer } from 'react-toastify';
-import { ToastContainerProps } from 'react-toastify/dist/types';
 import styled, { css } from 'styled-components';
+import { ToastContainer } from 'react-toastify';
+import type { ToastContainerProps } from 'react-toastify/dist/types';
 
 import 'react-toastify/dist/ReactToastify.css';
 

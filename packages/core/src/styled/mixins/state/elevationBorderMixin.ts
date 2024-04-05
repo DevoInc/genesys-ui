@@ -1,6 +1,6 @@
-import { css, DefaultTheme } from 'styled-components';
+import { css, type DefaultTheme } from 'styled-components';
 
-import { TElevation } from '../../../declarations';
+import type { TElevation } from '../../../declarations';
 import { getTemplate } from './elevationBorderMixinTemplate';
 
 /**

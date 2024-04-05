@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { throttle } from 'lodash';
-import { IClientSize } from '../declarations/dom';
+import type { IClientSize } from '../declarations/dom';
 
 const DEFAULT_PROPS = { delay: 0 };
 

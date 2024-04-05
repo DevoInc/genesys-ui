@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { TTextareaResize } from './declarations';
+import type { TTextareaResize } from './declarations';
 
 import {
   commonInputControlMixin,

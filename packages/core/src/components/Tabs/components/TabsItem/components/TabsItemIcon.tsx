@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { Icon, IconProps } from '../../../../Icon';
+import { Icon, type IconProps } from '../../../../Icon';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TabsItemIconProps extends IconProps {}

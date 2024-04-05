@@ -1,4 +1,4 @@
-import { ITag } from '../Tag';
+import type { ITag } from '../Tag';
 
 export type TTagGroupLabelPosition = 'left' | 'top';
 

@@ -1,8 +1,8 @@
 import { css, DefaultTheme } from 'styled-components';
-import { StepperSize } from '../../declarations';
+import type { TStepperSize } from '../../declarations';
 
-export interface StepperContainerMixinProps {
-  size?: StepperSize;
+export interface IStepperContainerMixin {
+  size?: TStepperSize;
   theme: DefaultTheme;
 }
 
@@ -14,7 +14,7 @@ export interface StepperContainerMixinProps {
 export const stepperContainerMixin = ({
   size = 'md',
   theme,
-}: StepperContainerMixinProps) => {
+}: IStepperContainerMixin) => {
   const borderColor = theme.cmp.stepper.container.color.border;
   const borderSize = theme.cmp.stepper.container.shape.borderSize;
   const boxShadow = `inset 0px ${borderSize} 0px ${borderColor},

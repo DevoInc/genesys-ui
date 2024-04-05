@@ -1,4 +1,4 @@
-import { css, DefaultTheme } from 'styled-components';
+import { css, type DefaultTheme } from 'styled-components';
 
 interface IScrollbarMixin {
   cornerColor?: string;

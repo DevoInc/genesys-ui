@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components';
 
-import { TGlobalSize } from '../../declarations';
+import type { TGlobalSize } from '../../declarations';
 
 /**
  * Given an icon size as 'md', 'lg', .... this function will transform into a

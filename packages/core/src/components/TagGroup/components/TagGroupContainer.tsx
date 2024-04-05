@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ITagGroup } from '../declarations';
+import type { ITagGroup } from '../declarations';
 import type { TagProps } from '../../Tag';
 import { Flex, type FlexProps } from '../../Flex';
 import { TagGroupContext } from '../context';

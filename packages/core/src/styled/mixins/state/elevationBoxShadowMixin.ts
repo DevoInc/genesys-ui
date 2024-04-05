@@ -1,6 +1,6 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { TElevation } from '../../../declarations';
+import type { TElevation } from '../../../declarations';
 
 /**
  * Get the box-shadow elevation styles based in the theme design tokens and type

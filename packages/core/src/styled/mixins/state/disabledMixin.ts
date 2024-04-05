@@ -1,4 +1,4 @@
-import { DefaultTheme, css } from 'styled-components';
+import { type DefaultTheme, css } from 'styled-components';
 
 /**
  * Get the generic disabled styles based in the theme design tokens

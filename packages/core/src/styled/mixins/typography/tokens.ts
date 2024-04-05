@@ -1,7 +1,7 @@
-import { DefaultTheme } from 'styled-components';
+import type { DefaultTheme } from 'styled-components';
 
-import { TTypoVariant } from './declarations';
-import { TTypoSize } from '../../../declarations';
+import type { TTypoVariant } from './declarations';
+import type { TTypoSize } from '../../../declarations';
 
 /**
  * Get the font-family value based in variant of the typographic element

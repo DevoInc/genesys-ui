@@ -1,4 +1,4 @@
-import { TGlobalStatus, TActiveStatus } from '../declarations';
+import type { TGlobalStatus, TActiveStatus } from '../declarations';
 
 /**
  * Get if there is a status different from base.

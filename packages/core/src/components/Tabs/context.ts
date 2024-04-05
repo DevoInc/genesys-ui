@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ITabs, TTabsColorScheme } from './declarations';
+import type { ITabs, TTabsColorScheme } from './declarations';
 
 export interface TabsContextProps extends Pick<ITabs, 'size'> {
   colorScheme?: TTabsColorScheme;

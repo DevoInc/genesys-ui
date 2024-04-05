@@ -5,7 +5,11 @@ import type {
   TTypoHeadingSize,
   TTypoSize,
 } from '../../declarations';
-import { ITypography, THeadingType, TTypoCategories } from './declarations';
+import type {
+  ITypography,
+  THeadingType,
+  TTypoCategories,
+} from './declarations';
 import {
   typoColorMixin,
   truncateTypoMixin,
@@ -49,14 +53,14 @@ export const getHeadingCategoryAndType = (typeProp: THeadingType) => {
   };
 };
 
-interface GetTypoCssProps
+interface IGetTypoCss
   extends Pick<
     ITypography,
     'colorScheme' | 'gutterBottom' | 'textAlign' | 'truncateLine'
   > {
   variant?: TTypoCategories;
   theme?: DefaultTheme;
-  size?: ITypography['bodySize'];
+  size?: TTypoSize;
 }
 
 /**
@@ -79,7 +83,7 @@ export const getTypoCss = ({
   theme,
   truncateLine = 0,
   size = 'md',
-}: GetTypoCssProps = {}) => css`
+}: IGetTypoCss = {}) => css`
   position: relative;
 
   // truncated text styles

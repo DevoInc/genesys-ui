@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IField } from '../Field/declarations';
+import type { IField } from '../Field/declarations';
 import { Field } from '../Field';
 import { TextareaControl, type TextareaControlProps } from '../TextareaControl';
 

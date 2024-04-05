@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
   css,
-  DefaultTheme,
+  type DefaultTheme,
   FlattenSimpleInterpolation,
 } from 'styled-components';
 
-import { TTypoVariant } from './declarations';
-import { TTypoSize } from '../../../declarations';
+import type { TTypoVariant } from './declarations';
+import type { TTypoSize } from '../../../declarations';
 import { getTypoObject } from './tokens';
 
 /**

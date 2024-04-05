@@ -2,11 +2,9 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
-import { Flex, type FlexProps } from '../../Flex';
-
-import { ITagGroup } from '../declarations';
-
+import type { ITagGroup } from '../declarations';
 import { tagGroupFlexSpacingMixin } from '../helpers';
+import { Flex, type FlexProps } from '../../Flex';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TagGroupListProps

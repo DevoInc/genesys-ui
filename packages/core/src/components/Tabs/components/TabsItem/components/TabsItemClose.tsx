@@ -2,13 +2,13 @@ import * as React from 'react';
 import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
-import { type TTabsItemState } from '../../../declarations';
+import type { TTabsItemState } from '../../../declarations';
 import {
   IconButtonRemove,
   type IconButtonRemoveProps,
 } from '../../../../IconButton';
 
-import { type Resolve } from '../../../../../typeFunctions';
+import type { Resolve } from '../../../../../typeFunctions';
 
 import { buttonStateMap } from '../../../utils';
 import { TABS_ITEM_CLOSABLE_BUTTON_SIZE } from './constants';

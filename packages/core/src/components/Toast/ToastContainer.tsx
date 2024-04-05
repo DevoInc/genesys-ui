@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { StyledToastContainerProps, StyledToastContainer } from './styled';
+import { type StyledToastContainerProps, StyledToastContainer } from './styled';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ToastContainerProps

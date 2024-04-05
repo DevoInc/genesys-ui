@@ -7,7 +7,7 @@ import {
   TagGroupList,
   TagGroupTag,
 } from './components';
-import { ITagGroup } from './declarations';
+import type { ITagGroup } from './declarations';
 
 export interface TagGroupProps
   extends TagGroupContainerProps,

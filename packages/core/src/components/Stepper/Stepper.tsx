@@ -1,19 +1,18 @@
 // https://www.w3.org/WAI/tutorials/forms/multi-page/#using-step-by-step-indicator
 // https://designsystem.digital.gov/components/step-indicator/
 // https://stackoverflow.com/questions/52932018/making-a-step-progress-indicator-accessible-for-screen-readers
-
 import * as React from 'react';
 
 import { HIDDEN_TEXT } from './constants';
 
-import {
+import { WithRequired } from '../../typeFunctions';
+import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../declarations';
-import { WithRequired } from '../../typeFunctions';
-import { StepperStatus, StepperSize } from './declarations';
+import type { TStepperStatus, TStepperSize } from './declarations';
 
 import { StepperContainer, StepperItem } from './components';
 
@@ -26,9 +25,9 @@ export interface StepperProps
     IStyledPolymorphic,
     IStyledOverloadCss {
   /** Stepper size */
-  size?: StepperSize;
+  size?: TStepperSize;
   /** Stepper model */
-  steps: { name: string; label: string; status: StepperStatus }[];
+  steps: { name: string; label: string; status: TStepperStatus }[];
 }
 
 export const InternalStepper: React.FC<StepperProps> = ({

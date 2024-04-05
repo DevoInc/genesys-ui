@@ -3,7 +3,7 @@ import * as React from 'react';
 import type { IStyledPolymorphic } from '../../../src';
 import {
   StyledStoryWrapper,
-  StyledStoryWrapperProps,
+  type StyledStoryWrapperProps,
 } from './StyledStoryWrapper';
 
 export interface StoryWrapperProps
