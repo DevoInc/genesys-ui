@@ -28,6 +28,20 @@ const meta: Meta<typeof Avatar> = {
 export default meta;
 type Story = StoryObj<typeof Avatar>;
 
+export const CustomUsage: Story = {
+  tags: ['isHidden'],
+  args: {
+    size: 'xl',
+  },
+  render: (args) =>
+    ((args) => (
+      <Avatar._Container {...args}>
+        <Avatar._ScreenReadersOnly>Rick Sanchez</Avatar._ScreenReadersOnly>
+        <Avatar._Badge size="lg" styles="background-color: orange;" />
+      </Avatar._Container>
+    ))(args),
+};
+
 export const CustomSizeSquare: Story = {
   args: {
     customSize: { square: '12rem' },
@@ -117,13 +131,13 @@ export const ButtonEditable: Story = {
       return (
         <>
           {isOpen && (
-            <Modal
-              onRequestClose={() => setOpen(false)}
-              headerTitle="Avatar edition"
-            >
-              <Typography.Paragraph>
-                (Your avatar edition form goes here)
-              </Typography.Paragraph>
+            <Modal onRequestClose={() => setOpen(false)}>
+              <Modal.Header title="Avatar edition" />
+              <Modal.Body>
+                <Typography.Paragraph>
+                  (Your avatar edition form goes here)
+                </Typography.Paragraph>
+              </Modal.Body>
             </Modal>
           )}
           <Avatar {...props} onClick={() => setOpen(true)} />

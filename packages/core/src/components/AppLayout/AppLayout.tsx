@@ -37,3 +37,6 @@ AppLayout.Content = AppLayoutContent;
 AppLayout.Lead = AppLayoutLead;
 
 InternalAppLayout.displayName = 'AppLayout';
+AppLayout.Bar.displayName = 'AppLayout.Bar';
+AppLayout.Content.displayName = 'AppLayout.Content';
+AppLayout.Lead.displayName = 'AppLayout.Lead';

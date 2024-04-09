@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { mainActions, tabs } from './__stories__/content';
+import { mainActions, TabsCmp } from './__stories__/content';
 
 import { AppBar } from './AppBar';
 import { Button } from '../Button';
@@ -22,7 +22,7 @@ export const Base: Story = {
   args: {
     heading: 'AppBar heading',
     sticky: true,
-    tabs: tabs,
+    tabs: <TabsCmp />,
   },
 };
 
@@ -68,7 +68,9 @@ export const Custom: Story = {
         <AppBar sticky={true}>
           <AppBar.Heading styles="font-style: italic;">Hello</AppBar.Heading>
           <AppBar.Divider />
-          <AppBar.Navigation tabs={tabs} flex="0 0 auto" />
+          <AppBar.Navigation>
+            <TabsCmp />
+          </AppBar.Navigation>
           <Typography.Paragraph>Custom block next to tabs</Typography.Paragraph>
           <AppBar.Item marginLeft="auto">
             <Typography.Paragraph>Block to right</Typography.Paragraph>

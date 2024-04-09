@@ -2,6 +2,7 @@ import { css, DefaultTheme } from 'styled-components';
 
 import { getVariantValue } from '../utils';
 import type { TAvatarVariant } from '../declarations';
+import { StyledAvatarContainer } from '../styled';
 
 export interface IAvatarBackdropMixin {
   theme: DefaultTheme;
@@ -26,9 +27,9 @@ export const avatarBackdropMixin = ({
     transform: scale(0.1);
     transform-origin: center;
 
-    *:hover > &,
-    *:focus > &,
-    *:focus-visible > & {
+    ${StyledAvatarContainer}:hover > &,
+    ${StyledAvatarContainer}:focus > &,
+    ${StyledAvatarContainer}:focus-visible > & {
       opacity: 1;
       font-size: 2rem;
       width: 100%;
@@ -36,8 +37,8 @@ export const avatarBackdropMixin = ({
       transform: scale(1);
     }
 
-    *:focus > &,
-    *:focus-visible > & {
+    ${StyledAvatarContainer}:focus > &,
+    ${StyledAvatarContainer}:focus-visible > & {
       box-shadow: ${theme.alias.elevation.boxShadow.base.focused};
     }
   `;

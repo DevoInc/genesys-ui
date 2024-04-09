@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { GIArrowRight } from '@devoinc/genesys-icons';
+import {
+  GIArrowRight,
+  GICalendarMonthDayPlannerEvents,
+} from '@devoinc/genesys-icons';
 import type {
   FieldProps,
   TFieldSize,
@@ -67,6 +70,8 @@ export interface DateTimeRangeControlProps
   /** Defines the realTime state. If the value is 'hidden', realTime button will
    * not be shown. */
   realTime?: RealTimeButtonProps['state'];
+  /** If a calendar icon is shown at the beginning of the control. */
+  showCalendarIcon?: boolean;
   /** Size for the HTML input elements. */
   size?: TFieldSize;
   /** Status for `from` input field */
@@ -98,6 +103,7 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
   placeholderFrom,
   placeholderTo,
   realTime = 'hidden',
+  showCalendarIcon,
   to,
   isOpen = false,
   wide,
@@ -158,6 +164,12 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
       tabIndex={0}
       wide={wide}
     >
+      {showCalendarIcon && (
+        <GICalendarMonthDayPlannerEvents
+          color={theme.cmp.dateTimeRangeControl.arrow.color.fill}
+          size={theme.cmp.dateTimeRangeControl.arrow.size.square[size]}
+        />
+      )}
       <Field
         controlWidth={getInputWidth({
           hasMillis,

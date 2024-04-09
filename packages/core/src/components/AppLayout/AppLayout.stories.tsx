@@ -5,6 +5,8 @@ import { AppLayout } from './AppLayout';
 import { AppBar } from '../AppBar';
 import { Tabs } from '../Tabs';
 import { Panel } from '../Panel';
+import { Typography } from '../Typography';
+import { TabsCmp } from './__stories__';
 
 const meta: Meta<typeof AppLayout> = {
   title: 'Components/Layout/AppLayout',
@@ -18,29 +20,25 @@ export default meta;
 type Story = StoryObj<typeof AppLayout>;
 
 export const Base: Story = {
-  render: () => (
-    <AppLayout>
-      <AppLayout.Bar>
-        <AppBar sticky>
-          <AppBar.Heading id="bar-heading">Title</AppBar.Heading>
-          <AppBar.Divider />
-          <AppBar.Navigation
-            id="bar-navigation"
-            tabs={[
-              <Tabs.Item key="1" size="lg" state={'selected'} label="Item 1" />,
-              <Tabs.Item key="2" size="lg" label="Item 2" />,
-              <Tabs.Item key="3" size="lg" label="Item 3" />,
-            ]}
-          />
-        </AppBar>
-      </AppLayout.Bar>
-      <AppLayout.Content>
-        <Panel height="100%">
-          <Panel.Body>Content</Panel.Body>
-        </Panel>
-      </AppLayout.Content>
-    </AppLayout>
-  ),
+  render: (args) =>
+    ((args) => (
+      <AppLayout {...args}>
+        <AppLayout.Bar>
+          <AppBar sticky>
+            <AppBar.Heading id="bar-heading">Title</AppBar.Heading>
+            <AppBar.Divider />
+            <AppBar.Navigation id="bar-navigation">
+              <TabsCmp />
+            </AppBar.Navigation>
+          </AppBar>
+        </AppLayout.Bar>
+        <AppLayout.Content>
+          <Panel height="100%">
+            <Panel.Body>Content</Panel.Body>
+          </Panel>
+        </AppLayout.Content>
+      </AppLayout>
+    ))(args),
 };
 
 export const DoubleNavigation: Story = {
@@ -50,14 +48,9 @@ export const DoubleNavigation: Story = {
         <AppBar>
           <AppBar.Heading id="bar-heading">Title</AppBar.Heading>
           <AppBar.Divider />
-          <AppBar.Navigation
-            id="bar-navigation"
-            tabs={[
-              <Tabs.Item key="1" size="lg" state={'selected'} label="Item 1" />,
-              <Tabs.Item key="2" size="lg" label="Item 2" />,
-              <Tabs.Item key="3" size="lg" label="Item 3" />,
-            ]}
-          />
+          <AppBar.Navigation id="bar-navigation">
+            <TabsCmp />
+          </AppBar.Navigation>
         </AppBar>
       </AppLayout.Bar>
       <AppLayout.Lead>
@@ -77,31 +70,32 @@ export const DoubleNavigation: Story = {
 };
 
 export const ContentPadding: Story = {
-  render: () => (
-    <AppLayout>
-      <AppLayout.Bar>
-        <AppBar sticky>
-          <AppBar.Heading id="bar-heading">Title</AppBar.Heading>
-          <AppBar.Divider />
-          <AppBar.Navigation
-            id="bar-navigation"
-            tabs={[
-              <Tabs.Item key="1" size="lg" state={'selected'} label="Item 1" />,
-              <Tabs.Item key="2" size="lg" label="Item 2" />,
-              <Tabs.Item key="3" size="lg" label="Item 3" />,
-            ]}
-          />
-        </AppBar>
-      </AppLayout.Bar>
-      <AppLayout.Content padding="0">Without padding</AppLayout.Content>
-    </AppLayout>
-  ),
+  render: () => {
+    return (
+      <AppLayout>
+        <AppLayout.Bar>
+          <AppBar sticky>
+            <AppBar.Heading id="bar-heading">Title</AppBar.Heading>
+            <AppBar.Divider />
+            <AppBar.Navigation id="bar-navigation">
+              <TabsCmp />
+            </AppBar.Navigation>
+          </AppBar>
+        </AppLayout.Bar>
+        <AppLayout.Content padding="0">
+          <Typography.Paragraph>Without padding</Typography.Paragraph>
+        </AppLayout.Content>
+      </AppLayout>
+    );
+  },
 };
 
-export const NoHeading: Story = {
+export const NoHeader: Story = {
   render: () => (
     <AppLayout>
-      <AppLayout.Content>Without heading</AppLayout.Content>
+      <AppLayout.Content>
+        <Typography.Paragraph>Without header</Typography.Paragraph>
+      </AppLayout.Content>
     </AppLayout>
   ),
 };

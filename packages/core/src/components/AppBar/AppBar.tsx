@@ -7,12 +7,13 @@ import {
   AppBarDivider,
   AppBarHeading,
   AppBarNavigation,
-  type AppBarNavigationProps,
+  AppBarNavigationProps,
 } from './components';
 
 interface AppBarProps extends AppBarContainerProps {
   heading?: React.ReactNode;
-  tabs?: AppBarNavigationProps['tabs'];
+  /** The navigation Tabs component. */
+  tabs?: AppBarNavigationProps['children'];
 }
 
 const InternalAppBar: React.FC<AppBarProps> = ({
@@ -34,7 +35,9 @@ const InternalAppBar: React.FC<AppBarProps> = ({
       <AppBarHeading id={id ? `${id}__heading` : null}>{heading}</AppBarHeading>
     )}
     {heading && tabs && <AppBarDivider />}
-    {tabs && <AppBarNavigation id={id ? `${id}__tabs` : null} tabs={tabs} />}
+    {tabs && (
+      <AppBarNavigation id={id ? `${id}__tabs` : null}>{tabs}</AppBarNavigation>
+    )}
     {children}
   </AppBarContainer>
 );
@@ -52,3 +55,7 @@ AppBar.Item = FlexItem;
 AppBar.Navigation = AppBarNavigation;
 
 InternalAppBar.displayName = 'AppBar';
+AppBar.Divider.displayName = 'AppBar.Divider';
+AppBar.Heading.displayName = 'AppBar.Heading';
+AppBar.Item.displayName = 'AppBar.Item';
+AppBar.Navigation.displayName = 'AppBar.Navigation';

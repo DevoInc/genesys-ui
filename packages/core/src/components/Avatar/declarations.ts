@@ -9,6 +9,8 @@ import {
   TUIColorScheme,
   TNeutralColorScheme,
 } from '../../declarations';
+import type { TBadgeColorScheme, TBadgeSize } from '../Badge';
+import * as React from 'react';
 
 export type TAvatarColorScheme =
   | TBrandColorScheme
@@ -30,3 +32,8 @@ export type TAvatarCustomSize = {
 export type TAvatarVariant = 'circle' | 'square' | 'rounded';
 
 export type TAvatarFit = 'cover' | 'contain';
+
+export type TAvatarBadgeFn = (props: {
+  colorScheme: TBadgeColorScheme;
+  size: TBadgeSize;
+}) => React.ReactNode;

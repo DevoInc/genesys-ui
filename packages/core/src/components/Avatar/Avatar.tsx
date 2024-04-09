@@ -2,7 +2,10 @@ import * as React from 'react';
 
 import { AVATAR_SIZE_BADGE_MAP } from './constants';
 
+import type { TAvatarBadgeFn } from './declarations';
+
 import {
+  AvatarBadge,
   AvatarContainer,
   type AvatarContainerProps,
   AvatarInitials,
@@ -11,7 +14,6 @@ import {
 } from './components';
 
 import { Box } from '../Box';
-import { Badge, type TBadgeColorScheme, type TBadgeSize } from '../Badge';
 
 export interface AvatarProps
   extends Omit<AvatarContainerProps, 'children' | 'aria-label'>,
@@ -19,16 +21,13 @@ export interface AvatarProps
   /** A Badge block to be shown over the Avatar. We recommend passing a function which renders a Badge
    * component, but you can render any component or node. The function has default values for 'size' and 'colorScheme'.
    * This Badge may be used to indicate status, presence... etc.*/
-  badge?: (props: {
-    colorScheme: TBadgeColorScheme;
-    size: TBadgeSize;
-  }) => React.ReactNode;
+  badge?: TAvatarBadgeFn;
 }
 
 export const InternalAvatar: React.FC<AvatarProps> = ({
   as,
   badge,
-  colorScheme = 'neutral',
+  colorScheme = 'info',
   href,
   imageFit = 'cover',
   imageSrc,
@@ -43,7 +42,7 @@ export const InternalAvatar: React.FC<AvatarProps> = ({
   variant = 'circle',
   ...restContainerProps
 }) => (
-  <Avatar._Container
+  <AvatarContainer
     {...restContainerProps}
     aria-label={name}
     as={as || (href ? 'a' : onClick ? 'button' : 'span')}
@@ -59,8 +58,8 @@ export const InternalAvatar: React.FC<AvatarProps> = ({
     tooltip={tooltip || name}
     variant={variant}
   >
-    {!imageSrc && <Avatar._Initials name={name} initials={initials} />}
-    <Avatar._ScreenReadersOnly>{name}</Avatar._ScreenReadersOnly>
+    {!imageSrc && <AvatarInitials name={name} initials={initials} />}
+    <AvatarSROnly>{name}</AvatarSROnly>
     {badge && (
       <Box
         as="span"
@@ -73,19 +72,23 @@ export const InternalAvatar: React.FC<AvatarProps> = ({
         {badge({ size: AVATAR_SIZE_BADGE_MAP[size], colorScheme: 'info' })}
       </Box>
     )}
-  </Avatar._Container>
+  </AvatarContainer>
 );
 
 export const Avatar = InternalAvatar as typeof InternalAvatar & {
   _Container: typeof AvatarContainer;
   _Initials: typeof AvatarInitials;
   _ScreenReadersOnly: typeof AvatarSROnly;
-  _Badge: typeof Badge;
+  _Badge: typeof AvatarBadge;
 };
 
 Avatar._Container = AvatarContainer;
 Avatar._Initials = AvatarInitials;
 Avatar._ScreenReadersOnly = AvatarSROnly;
-Avatar._Badge = Badge;
+Avatar._Badge = AvatarBadge;
 
 InternalAvatar.displayName = 'Avatar';
+Avatar._Container.displayName = 'Avatar._Container';
+Avatar._Initials.displayName = 'Avatar._Initials';
+Avatar._ScreenReadersOnly.displayName = 'Avatar._ScreenReadersOnly';
+Avatar._Badge.displayName = 'Avatar._Badge';

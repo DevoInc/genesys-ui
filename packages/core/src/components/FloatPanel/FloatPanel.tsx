@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { Dock } from 'react-dock';
 
+import type { IContainerEventAttrs } from '../../declarations';
 import { Box, type BoxProps } from '../Box';
 
 export interface FloatPanelProps
@@ -12,6 +13,7 @@ export interface FloatPanelProps
   visible?: boolean;
   position?: 'left' | 'right' | 'top' | 'bottom';
   size?: number;
+  onSizeChange?: IContainerEventAttrs['onChange'];
 }
 
 export const FloatPanel: React.FC<FloatPanelProps> = ({
@@ -21,6 +23,7 @@ export const FloatPanel: React.FC<FloatPanelProps> = ({
   dimMode = 'none',
   height = '100%',
   hideWhileResizing = false,
+  onSizeChange,
   visible = true,
   position = 'right',
   size,
@@ -28,7 +31,7 @@ export const FloatPanel: React.FC<FloatPanelProps> = ({
 }) => {
   const theme = useTheme();
   return (
-    <Box as={as}>
+    <Box as={as} onChange={onSizeChange}>
       <Dock
         defaultSize={defaultSize}
         dimMode={dimMode}

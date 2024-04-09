@@ -13,17 +13,17 @@ Component to display a visual representation of a user or an entity, typically i
 
 ## How to import
 
-<Source
-  code={`
-import { Avatar } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Avatar } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
 The simplest way to use Avatar is to pass a URL for the image:
 
 <Canvas of={Stories.Base} />
+
+Sometimes you need something very specific, which is not possible using only the components and its props.
+In these cases, you can use its Internal components (\_ notation) to define that specific usage.
+We don't recommend this usage, but anyway it's available for very specific needs.
 
 ## Cases
 
@@ -120,6 +120,24 @@ By defining the _href_ property, the avatar behaves as a link. Additionally, it 
 to set the _target_ mode for the URL to open.
 
 <Canvas of={CaseStories.Link} />
+
+## Custom usage
+
+Sometimes you need something very specific, which is not possible using only the component and its props.
+In these cases, you can use its Internal components (`_` notation) to define that specific usage. We don't
+recommend this usage, but anyway it's available for very specific needs.
+
+<Source
+  code={`
+<Avatar._Container>
+  <Avatar._Initials />
+  <Avatar._ScreenReadersOnly />
+  <Avatar._Badge />
+</Avatar._Container>
+`}
+/>
+
+<Canvas of={CaseStories.CustomUsage} />
 
 ## Props
 

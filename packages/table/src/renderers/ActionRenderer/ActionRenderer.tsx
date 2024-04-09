@@ -17,19 +17,23 @@ export const ActionRenderer: React.FC<TCellRenderer> = ({
   const iconButtonColorScheme = 'quiet';
   return (
     <HFlex spacing="cmp-xxs" alignItems="end">
-      {(context?.quickActions ?? []).map(({ Icon, onClick }, idx) => (
-        <IconButton
-          icon={Icon}
-          size={iconButtonSize}
-          key={idx}
-          colorScheme={iconButtonColorScheme}
-          onClick={(event: React.MouseEvent) => {
-            if (onClick) {
-              onClick(rowIndex, event);
-            }
-          }}
-        />
-      ))}
+      {(context?.quickActions ?? []).map(
+        ({ badgeText, hasBadge, Icon, onClick }, idx) => (
+          <IconButton
+            badgeText={badgeText}
+            hasBadge={hasBadge}
+            icon={Icon}
+            size={iconButtonSize}
+            key={idx}
+            colorScheme={iconButtonColorScheme}
+            onClick={(event: React.MouseEvent) => {
+              if (onClick) {
+                onClick(rowIndex, event);
+              }
+            }}
+          />
+        ),
+      )}
       {context?.actionMenu ? (
         <Popover id={popoverId} placement="bottom-end">
           {({ isOpened, toggle, ref }) => (

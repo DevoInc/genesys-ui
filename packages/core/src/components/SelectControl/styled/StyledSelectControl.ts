@@ -104,6 +104,12 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
               border-right-width: 0;
             `}
           `}
+          
+          // READONLY
+          ${readOnly &&
+          css`
+            pointer-events: none;
+          `}
 
             // MOUSE STATES
             ${!isDisabled &&
@@ -268,6 +274,11 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
 
         // INDICATORS ////////////////////////////////////////////////////////
         &__indicators {
+          ${readOnly &&
+          css`
+            display: none;
+          `}
+
           .${classNamePrefix} {
             &__indicator {
               align-items: center;

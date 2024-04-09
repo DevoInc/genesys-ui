@@ -26,6 +26,8 @@ export const Base: Story = {
               // eslint-disable-next-line no-console
               console.debug('Quick action 1');
             },
+            hasBadge: true,
+            badgeText: 8,
           },
           {
             Icon: <GIPencilEdit />,

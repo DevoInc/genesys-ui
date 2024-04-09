@@ -7,7 +7,8 @@ interface PopoverPanelProps extends Omit<PanelProps, 'elevation'> {}
 export const PopoverPanel: React.FC<PopoverPanelProps> = ({
   children,
   padding,
-  width = '20rem',
+  minWidth = '22rem',
+  maxWidth = '40rem',
   ...restPanelProps
 }) => {
   const hasComplexPanel = React.useMemo(() => {
@@ -25,7 +26,8 @@ export const PopoverPanel: React.FC<PopoverPanelProps> = ({
       {...restPanelProps}
       elevation="activated"
       padding={padding || (hasComplexPanel ? '0' : 'cmp-xxs')}
-      width={width}
+      maxWidth={maxWidth}
+      minWidth={minWidth}
     >
       {children}
     </Panel>

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { toast as reactToastify } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+import { TOAST_AUTO_CLOSE } from './constants';
 import { ToastPanel, type ToastPanelProps } from './components/ToastPanel';
 
-import 'react-toastify/dist/ReactToastify.css';
 const activeToastsUpdates = {};
 
 export interface ToastProps extends ToastPanelProps {
@@ -20,13 +21,25 @@ export const toast = ({
   id,
   maxHeight,
   content,
+  showProgressBar,
   subtitle,
   title,
   status,
   ...nativeProps
 }: ToastProps): void => {
+  activeToastsUpdates[id] = activeToastsUpdates[id] + 1 || 1;
+  const activeToastsLength = Object.keys(activeToastsUpdates).length;
+
   const autoClose =
-    accent || actionApply || actionReject || collapsable ? false : 5000;
+    showProgressBar === true
+      ? TOAST_AUTO_CLOSE
+      : activeToastsLength > 1 ||
+          accent ||
+          actionApply ||
+          actionReject ||
+          collapsable
+        ? false
+        : TOAST_AUTO_CLOSE;
 
   const notificationProps = {
     accent,
@@ -41,9 +54,6 @@ export const toast = ({
     subtitle,
     title,
   };
-
-  activeToastsUpdates[id] = activeToastsUpdates[id] + 1 || 1;
-  const activeToastsLength = Object.keys(activeToastsUpdates).length;
 
   const startNextToastProgress = () => {
     const isFirstToast = Object.keys(activeToastsUpdates)[0] === id;
@@ -74,7 +84,7 @@ export const toast = ({
           startNextToastProgress();
           delete activeToastsUpdates[id];
         },
-        hideProgressBar: autoClose && activeToastsLength > 1,
+        hideProgressBar: !autoClose,
         progressClassName: getProgressClassName,
         toastId: id,
       },

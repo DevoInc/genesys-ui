@@ -20,6 +20,7 @@ import {
   StyledAvatarContainer,
   type StyledAvatarContainerProps,
 } from '../styled';
+import { AvatarContext } from '../context';
 
 export interface AvatarContainerProps
   extends Omit<StyledAvatarContainerProps, '$disabled'>,
@@ -75,7 +76,9 @@ export const AvatarContainer: React.FC<AvatarContainerProps> = ({
           <Icon size="2rem">{iconOnHover}</Icon>
         </Overlay>
       )}
-      {children}
+      <AvatarContext.Provider value={{ size, variant }}>
+        {children}
+      </AvatarContext.Provider>
     </StyledAvatarContainer>
   );
 };

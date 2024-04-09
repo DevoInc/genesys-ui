@@ -50,6 +50,7 @@ export interface DateTimeRangePickerProps
       | 'placeholderFrom'
       | 'placeholderTo'
       | 'realTime'
+      | 'showCalendarIcon'
       | 'statusFrom'
       | 'statusTo'
       | 'onChange'
@@ -93,6 +94,7 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
   onBlur,
   onCancel,
   onChange,
+  showCalendarIcon,
   size = 'md',
   value: customValue = { from: null, to: null },
   ...restDateTimeRangeProps
@@ -212,6 +214,7 @@ export const DateTimeRangePicker: React.FC<DateTimeRangePickerProps> = ({
             onClick={toggle}
             onChange={onChangeCallback}
             onBlur={onBlurCallback}
+            showCalendarIcon={showCalendarIcon}
             size={size}
           />
         </div>
