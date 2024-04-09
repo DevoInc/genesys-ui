@@ -93,7 +93,6 @@ ButtonGroup.IconButton = ButtonGroupIconButton;
 ButtonGroup.Item = ButtonGroupItem;
 
 InternalButtonGroup.displayName = 'ButtonGroup';
-
 ButtonGroup.Button.displayName = 'ButtonGroup.Button';
 ButtonGroup.IconButton.displayName = 'ButtonGroup.IconButton';
 ButtonGroup.Item.displayName = 'ButtonGroup.Item';

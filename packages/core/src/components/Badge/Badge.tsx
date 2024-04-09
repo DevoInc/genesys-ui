@@ -79,3 +79,6 @@ Badge._Icon = Icon;
 Badge._Text = BadgeText;
 
 InternalBadge.displayName = 'Badge';
+Badge._Container.displayName = 'Badge._Container';
+Badge._Icon.displayName = 'Badge._Icon';
+Badge._Text.displayName = 'Badge._Text';

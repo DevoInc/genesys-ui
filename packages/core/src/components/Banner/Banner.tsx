@@ -100,3 +100,10 @@ Banner._Heading = BannerHeading;
 Banner._Icon = BannerIcon;
 
 InternalBanner.displayName = 'Banner';
+Banner._Actions.displayName = 'Banner._Actions';
+Banner._Close.displayName = 'Banner._Close';
+Banner._Container.displayName = 'Banner._Container';
+Banner._Content.displayName = 'Banner._Content';
+Banner._ContentContainer.displayName = 'Banner._ContentContainer';
+Banner._Heading.displayName = 'Banner._Heading';
+Banner._Icon.displayName = 'Banner._Icon';

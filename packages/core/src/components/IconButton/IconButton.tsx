@@ -57,3 +57,8 @@ IconButton._Loader = ButtonLoader;
 IconButton._Selection = ButtonSelection;
 
 InternalIconButton.displayName = 'IconButton';
+IconButton._Badge.displayName = 'IconButton._Badge';
+IconButton._Container.displayName = 'IconButton._Container';
+IconButton._Icon.displayName = 'IconButtonC._Icon';
+IconButton._Loader.displayName = 'IconButton._Loader';
+IconButton._Selection.displayName = 'IconButton._Selection';

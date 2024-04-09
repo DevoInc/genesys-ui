@@ -225,3 +225,11 @@ Button._Loader = ButtonLoader;
 Button._Selection = ButtonSelection;
 
 InternalButton.displayName = 'Button';
+Button._Addon.displayName = 'Button._Addon';
+Button._Badge.displayName = 'Button._Badge';
+Button._Container.displayName = 'Button._Container';
+Button._DropdownIcon.displayName = 'Button._DropdownIcon';
+Button._Icon.displayName = 'Button._Icon';
+Button._Label.displayName = 'Button._Label';
+Button._Loader.displayName = 'Button._Loader';
+Button._Selection.displayName = 'Button._Selection';

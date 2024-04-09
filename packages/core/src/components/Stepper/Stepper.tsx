@@ -66,3 +66,7 @@ export const Stepper = InternalStepper as typeof InternalStepper & {
 };
 
 Stepper.Container = StepperContainer;
+
+InternalStepper.displayName = 'Stepper';
+Stepper.Container.displayName = 'Stepper.Container';
+Stepper.Item.displayName = 'Stepper.Item';

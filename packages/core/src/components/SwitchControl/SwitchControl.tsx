@@ -126,13 +126,19 @@ export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
 
 export const SwitchControl =
   InternalSwitchControl as typeof InternalSwitchControl & {
-    Container: typeof SwitchControlContainer;
-    Handle: typeof SwitchControlHandle;
-    Input: typeof SwitchControlInput;
-    Text: typeof SwitchControlText;
+    _Container: typeof SwitchControlContainer;
+    _Handle: typeof SwitchControlHandle;
+    _Input: typeof SwitchControlInput;
+    _Text: typeof SwitchControlText;
   };
 
-SwitchControl.Container = SwitchControlContainer;
-SwitchControl.Handle = SwitchControlHandle;
-SwitchControl.Input = SwitchControlInput;
-SwitchControl.Text = SwitchControlText;
+SwitchControl._Container = SwitchControlContainer;
+SwitchControl._Handle = SwitchControlHandle;
+SwitchControl._Input = SwitchControlInput;
+SwitchControl._Text = SwitchControlText;
+
+InternalSwitchControl.displayName = 'SwitchControl';
+SwitchControl._Container.displayName = 'SwitchControl._Container';
+SwitchControl._Handle.displayName = 'SwitchControl._Handle';
+SwitchControl._Input.displayName = 'SwitchControl._Input';
+SwitchControl._Text.displayName = 'SwitchControl._Text';

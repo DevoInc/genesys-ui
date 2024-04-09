@@ -140,3 +140,9 @@ Chip._Container = ChipContainer;
 Chip._Content = ChipContent;
 Chip._HiddenInput = ChipHiddenInput;
 Chip._Icon = ChipIcon;
+
+InternalChip.displayName = 'Chip';
+Chip._Container.displayName = 'Chip._Container';
+Chip._Content.displayName = 'Chip._Content';
+Chip._HiddenInput.displayName = 'Chip._HiddenInput';
+Chip._Icon.displayName = 'Chip._Icon';

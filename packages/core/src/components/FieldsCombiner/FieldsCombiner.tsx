@@ -97,4 +97,10 @@ FieldsCombiner.Input = FieldsCombinerInput;
 FieldsCombiner.Select = FieldsCombinerSelect;
 FieldsCombiner.Checkbox = FieldsCombinerCheckbox;
 
-FieldsCombiner.displayName = 'FieldsCombiner';
+InternalFieldsCombiner.displayName = 'FieldsCombiner';
+FieldsCombiner.Button.displayName = 'FieldsCombiner.Button';
+FieldsCombiner.IconButton.displayName = 'FieldsCombiner.IconButton';
+FieldsCombiner.Item.displayName = 'FieldsCombiner.Item';
+FieldsCombiner.Input.displayName = 'FieldsCombiner.Input';
+FieldsCombiner.Select.displayName = 'FieldsCombiner.Select';
+FieldsCombiner.Checkbox.displayName = 'FieldsCombiner.Checkbox';

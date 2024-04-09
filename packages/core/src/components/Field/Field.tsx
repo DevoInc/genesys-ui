@@ -6,6 +6,7 @@ import type { IField } from './declarations';
 import type { TUIColorScheme } from '../../declarations';
 
 import { hasStatus } from '../../utils/validations';
+import { FieldContext } from './context';
 
 import {
   FieldAddon,
@@ -17,12 +18,11 @@ import {
   FieldRequiredMark,
 } from './components';
 import { FieldHelper } from './components/FieldHelper';
-import { FieldContext } from './context';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface FieldProps extends IField {}
 
-export const PartField: React.FC<FieldProps> = ({
+export const InternalField: React.FC<FieldProps> = ({
   as,
   children,
   disabled = false,
@@ -122,7 +122,7 @@ export const PartField: React.FC<FieldProps> = ({
   );
 };
 
-export const Field = PartField as typeof PartField & {
+export const Field = InternalField as typeof InternalField & {
   _Addon: typeof FieldAddon;
   _Container: typeof FieldContainer;
   _ControlDistributor: typeof FieldControlDistributor;
@@ -141,3 +141,13 @@ Field._FloatingHelper = FieldFloatingHelper;
 Field._Label = FieldLabel;
 Field._LabelDistributor = FieldLabelDistributor;
 Field._RequiredMark = FieldRequiredMark;
+
+InternalField.displayName = 'Field';
+Field._Addon.displayName = 'Field._Addon';
+Field._Container.displayName = 'Field._Container';
+Field._ControlDistributor.displayName = 'Field._ControlDistributor';
+Field._Helper.displayName = 'Field._Helper';
+Field._FloatingHelper.displayName = 'Field._FloatingHelper';
+Field._Label.displayName = 'Field._Label';
+Field._LabelDistributor.displayName = 'Field._LabelDistributor';
+Field._RequiredMark.displayName = 'Field._RequiredMark';

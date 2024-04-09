@@ -31,7 +31,7 @@ export interface StatusMessageProps
   status?: TGlobalStatus;
 }
 
-export const InternalStatusMessage = ({
+export const InternalStatusMessage: React.FC<StatusMessageProps> = ({
   'aria-describedby': ariaDescribedBy,
   'aria-details': ariaDetails,
   'aria-label': ariaLabel,
@@ -108,15 +108,22 @@ export const InternalStatusMessage = ({
 
 export const StatusMessage =
   InternalStatusMessage as typeof InternalStatusMessage & {
-    Buttons: typeof StatusMessageButtons;
-    Container: typeof StatusMessageContainer;
-    Description: typeof StatusMessageDescription;
-    Icon: typeof StatusMessageIcon;
-    Title: typeof StatusMessageTitle;
+    _Buttons: typeof StatusMessageButtons;
+    _Container: typeof StatusMessageContainer;
+    _Description: typeof StatusMessageDescription;
+    _Icon: typeof StatusMessageIcon;
+    _Title: typeof StatusMessageTitle;
   };
 
-StatusMessage.Buttons = StatusMessageButtons;
-StatusMessage.Container = StatusMessageContainer;
-StatusMessage.Description = StatusMessageDescription;
-StatusMessage.Icon = StatusMessageIcon;
-StatusMessage.Title = StatusMessageTitle;
+StatusMessage._Buttons = StatusMessageButtons;
+StatusMessage._Container = StatusMessageContainer;
+StatusMessage._Description = StatusMessageDescription;
+StatusMessage._Icon = StatusMessageIcon;
+StatusMessage._Title = StatusMessageTitle;
+
+InternalStatusMessage.displayName = 'StatusMessage';
+StatusMessage._Buttons.displayName = 'StatusMessage._Buttons';
+StatusMessage._Container.displayName = 'StatusMessage._Container';
+StatusMessage._Description.displayName = 'StatusMessage._Description';
+StatusMessage._Icon.displayName = 'StatusMessage._Icon';
+StatusMessage._Title.displayName = 'StatusMessage._Title';

@@ -82,3 +82,4 @@ export const ChipGroup = InternalChipGroup as typeof InternalChipGroup & {
 ChipGroup.Chip = ChipGroupChip;
 
 InternalChipGroup.displayName = 'ChipGroup';
+ChipGroup.Chip.displayName = 'ChipGroup.Chip';

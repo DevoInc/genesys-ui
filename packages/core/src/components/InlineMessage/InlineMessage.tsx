@@ -148,3 +148,9 @@ InlineMessage.Arrow = InlineMessageArrow;
 InlineMessage.Banner = InlineMessageBanner;
 InlineMessage.Panel = InlineMessagePanel;
 InlineMessage.Trigger = InlineMessageTrigger;
+
+PartInlineMessage.displayName = 'InlineMessage';
+InlineMessage.Arrow.displayName = 'InlineMessage.Arrow';
+InlineMessage.Banner.displayName = 'InlineMessage.Banner';
+InlineMessage.Panel.displayName = 'InlineMessage.Panel';
+InlineMessage.Trigger.displayName = 'InlineMessage.Trigger';

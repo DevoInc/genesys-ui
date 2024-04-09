@@ -264,3 +264,9 @@ InputControl._InnerContainer = InputControlInnerContainer;
 InputControl._ShowPassword = InputControlShowPassword;
 
 InternalInputControl.displayName = 'InputControl';
+InputControl._Addon.displayName = 'InputControl._Addon';
+InputControl._Container.displayName = 'InputControl._Container';
+InputControl._Icon.displayName = 'InputControl._Icon';
+InputControl._Input.displayName = 'InputControl._Input';
+InputControl._InnerContainer.displayName = 'InputControl._InnerContainer';
+InputControl._ShowPassword.displayName = 'InputControl._ShowPassword';

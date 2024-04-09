@@ -42,6 +42,11 @@ export const Collapse = InternalCollapse as typeof InternalCollapse & {
   _Heading: typeof CollapseHeading;
 };
 
-Collapse._Marker = CollapseMarker;
 Collapse._Container = CollapseContainer;
 Collapse._Heading = CollapseHeading;
+Collapse._Marker = CollapseMarker;
+
+InternalCollapse.displayName = 'Collapse';
+Collapse._Container.displayName = 'Collapse._Container';
+Collapse._Heading.displayName = 'Collapse._Heading';
+Collapse._Marker.displayName = 'Collapse._Marker';

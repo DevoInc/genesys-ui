@@ -69,3 +69,4 @@ export const ChoiceGroup = InternalChoiceGroup as typeof InternalChoiceGroup & {
 ChoiceGroup.IconButton = ChoiceGroupIconButton;
 
 InternalChoiceGroup.displayName = 'ChoiceGroup';
+ChoiceGroup.IconButton.displayName = 'ChoiceGroup.IconButton';

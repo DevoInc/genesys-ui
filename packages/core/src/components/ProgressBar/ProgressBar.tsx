@@ -172,7 +172,6 @@ ProgressBar._StandardBar = ProgressBarStandardBar;
 ProgressBar._CircularBar = ProgressBarCircularBar;
 
 InternalProgressBar.displayName = 'ProgressBar';
-
 ProgressBar._Container.displayName = 'ProgressBar._Container';
 ProgressBar._CustomInfo.displayName = 'ProgressBar._CustomInfo';
 ProgressBar._Helper.displayName = 'ProgressBar._Helper';
