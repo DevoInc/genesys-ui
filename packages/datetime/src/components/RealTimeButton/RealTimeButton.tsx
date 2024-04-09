@@ -45,7 +45,12 @@ export const RealTimeButton: React.FC<RealTimeButtonProps> = ({
   );
 
   return (
-    <Box marginLeft="auto" paddingLeft="cmp-xxs" position="relative">
+    <Box
+      marginLeft="auto"
+      paddingLeft="cmp-xxs"
+      position="relative"
+      visibility={state === 'hidden' ? 'hidden' : undefined}
+    >
       {state === 'activated' && (
         <Box position="absolute" zIndex={1} css="pointer-events: none">
           <SpinnerLoader

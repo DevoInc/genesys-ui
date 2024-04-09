@@ -8,6 +8,8 @@ export const getButtonStateFromRealTimeState = (
   state: TRealtimeState = 'inactive',
 ): IconButtonProps['state'] => {
   switch (state) {
+    case 'disabled':
+      return 'disabled';
     case 'inactive':
       return 'enabled';
     case 'activated':
