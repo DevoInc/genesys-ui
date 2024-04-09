@@ -122,7 +122,6 @@ PanelHeader._Heading = PanelHeaderHeading;
 PanelHeader._Icon = PanelHeaderIcon;
 
 InternalPanelHeader.displayName = 'PanelHeader';
-
 PanelHeader._Actions.displayName = 'PanelHeader._Actions';
 PanelHeader._Close.displayName = 'PanelHeader._Close';
 PanelHeader._CollapseButton.displayName = 'PanelHeader._CollapseButton';

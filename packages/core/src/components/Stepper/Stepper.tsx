@@ -61,12 +61,13 @@ export const InternalStepper: React.FC<StepperProps> = ({
 );
 
 export const Stepper = InternalStepper as typeof InternalStepper & {
-  Container: typeof StepperContainer;
-  Item: typeof StepperItem;
+  _Container: typeof StepperContainer;
+  _Item: typeof StepperItem;
 };
 
-Stepper.Container = StepperContainer;
+Stepper._Container = StepperContainer;
+Stepper._Item = StepperItem;
 
 InternalStepper.displayName = 'Stepper';
-Stepper.Container.displayName = 'Stepper.Container';
-Stepper.Item.displayName = 'Stepper.Item';
+Stepper._Container.displayName = 'Stepper.Container';
+Stepper._Item.displayName = 'Stepper.Item';

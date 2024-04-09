@@ -60,3 +60,10 @@ StepperItem._Content = StepperItemContent;
 StepperItem._Divider = StepperItemDivider;
 StepperItem._HiddenStatus = StepperItemHiddenStatus;
 StepperItem._Indicator = StepperItemIndicator;
+
+InternalStepperItem.displayName = 'StepperItem';
+StepperItem._Container.displayName = 'StepperItem._Container';
+StepperItem._Content.displayName = 'StepperItem._Content';
+StepperItem._Divider.displayName = 'StepperItem._Divider';
+StepperItem._HiddenStatus.displayName = 'StepperItem._HiddenStatus';
+StepperItem._Indicator.displayName = 'StepperItem._Indicator';
