@@ -12,19 +12,20 @@ import type {
   IStyledPolymorphic,
   ITriggerAriaAttrs,
 } from '../../../declarations';
+import type { IAvatar } from '../declarations';
 
 import { avatarBackdropMixin } from './mixins';
+import { AvatarContext } from '../context';
 import { Overlay } from '../../Overlay';
 import { Icon } from '../../Icon';
 import {
   StyledAvatarContainer,
   type StyledAvatarContainerProps,
 } from '../styled';
-import { AvatarContext } from '../context';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AvatarContainerProps
-  extends Omit<StyledAvatarContainerProps, '$disabled'>,
-    IStyledPolymorphic,
+  extends IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
     IGlobalAriaAttrs,
@@ -32,12 +33,9 @@ export interface AvatarContainerProps
     ILinkAttrs,
     ITriggerAriaAttrs,
     IFocusEventAttrs,
-    IMouseEventAttrs {
-  disabled?: boolean;
-  children: React.ReactNode;
-  /** Icon to be shown on hover-focus of the avatar.E.g. a pencil icon to denote it's editable. */
-  iconOnHover?: React.ReactNode;
-}
+    IMouseEventAttrs,
+    Omit<StyledAvatarContainerProps, '$disabled'>,
+    Pick<IAvatar, 'children' | 'disabled' | 'iconOnHover'> {}
 
 export const AvatarContainer: React.FC<AvatarContainerProps> = ({
   bordered = false,

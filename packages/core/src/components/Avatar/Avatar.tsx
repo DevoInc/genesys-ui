@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { AVATAR_SIZE_BADGE_MAP } from './constants';
 
-import type { TAvatarBadgeFn } from './declarations';
+import type { IAvatar, TAvatarBadgeFn } from './declarations';
 
 import {
   AvatarBadge,
@@ -15,14 +15,13 @@ import {
 
 import { Box } from '../Box';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AvatarProps
-  extends Omit<AvatarContainerProps, 'children' | 'aria-label'>,
-    AvatarInitialsProps {
-  /** A Badge block to be shown over the Avatar. We recommend passing a function which renders a Badge
-   * component, but you can render any component or node. The function has default values for 'size' and 'colorScheme'.
-   * This Badge may be used to indicate status, presence... etc.*/
-  badge?: TAvatarBadgeFn;
-}
+  extends Omit<
+      AvatarContainerProps,
+      'children' | 'aria-label' | 'disabled' | 'iconOnHover'
+    >,
+    Pick<IAvatar, 'badge' | 'disabled' | 'iconOnHover' | 'initials' | 'name'> {}
 
 export const InternalAvatar: React.FC<AvatarProps> = ({
   as,

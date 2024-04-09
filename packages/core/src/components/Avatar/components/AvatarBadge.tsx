@@ -1,15 +1,15 @@
 import * as React from 'react';
 
 import { AVATAR_SIZE_BADGE_MAP } from '../constants';
+import type { IAvatar } from '../declarations';
 import { AvatarContext } from '../context';
 import { Badge, type BadgeProps } from '../../Badge';
 import { Box, type BoxProps } from '../../Box';
-import type { AvatarProps } from '../Avatar';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AvatarBadgeProps
   extends Omit<BadgeProps, 'colorScheme' | 'size'>,
-    Pick<AvatarProps, 'colorScheme' | 'size' | 'variant'>,
+    Pick<IAvatar, 'colorScheme' | 'size' | 'variant'>,
     Pick<
       BoxProps,
       | 'children'
