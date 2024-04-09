@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { css } from 'styled-components';
 
 /**
  * Get the pseudo-element styles but generate an overlay.
@@ -20,8 +21,11 @@ export const pseudoElementMixin = (
     display: 'block',
     pos: 'absolute',
   },
-) => `
-  content: ${content};
-  display: ${display};
-  position: ${pos};
-`;
+) => {
+  console.info(content);
+  return css`
+    content: ${content};
+    display: ${display};
+    position: ${pos};
+  `;
+};

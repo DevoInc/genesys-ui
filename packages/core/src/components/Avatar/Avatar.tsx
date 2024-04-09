@@ -2,14 +2,13 @@ import * as React from 'react';
 
 import { AVATAR_SIZE_BADGE_MAP } from './constants';
 
-import type { IAvatar, TAvatarBadgeFn } from './declarations';
+import type { IAvatar } from './declarations';
 
 import {
   AvatarBadge,
   AvatarContainer,
   type AvatarContainerProps,
   AvatarInitials,
-  type AvatarInitialsProps,
   AvatarSROnly,
 } from './components';
 
