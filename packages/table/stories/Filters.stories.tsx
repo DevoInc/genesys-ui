@@ -4,13 +4,13 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Menu } from '@devoinc/genesys-ui';
 
 import {
-  type ContextOptions,
-  type FilterContext,
+  type TContextOptions,
+  type TFilterContext,
   filterDataByFilterStruct,
   useFilterStruct,
   updateColDefsWithFilterStruct,
   useBulkSelection,
-  BulkContext,
+  TBulkContext,
   BasicTable,
 } from '../src';
 
@@ -52,7 +52,7 @@ const colDefs = [
     context: {
       showAdvancedFilter: true,
       showReset: true,
-    } as FilterContext,
+    } as TFilterContext,
   },
   {
     id: 'bool',
@@ -69,7 +69,7 @@ const colDefs = [
         B: { label: 'Option B' },
         C: { label: 'Option C' },
       },
-    } as ContextOptions,
+    } as TContextOptions,
   },
 ];
 
@@ -139,7 +139,7 @@ const FilterAndBulkActionsTable = () => {
         onHeaderBulkCheckboxChange: () => {
           toggleAll();
         },
-      } as BulkContext,
+      } as TBulkContext,
     },
     {
       id: 'text',
@@ -153,7 +153,7 @@ const FilterAndBulkActionsTable = () => {
       context: {
         showAdvancedFilter: true,
         showReset: true,
-      } as FilterContext,
+      } as TFilterContext,
     },
     {
       id: 'bool',
@@ -170,7 +170,7 @@ const FilterAndBulkActionsTable = () => {
           B: { label: 'Option B' },
           C: { label: 'Option C' },
         },
-      } as ContextOptions,
+      } as TContextOptions,
     },
   ];
 

@@ -9,7 +9,7 @@ import {
   Table,
   TextRenderer,
   HeaderBulkRenderer,
-  BulkContext,
+  TBulkContext,
   useBulkSelection,
 } from '../src';
 
@@ -161,7 +161,7 @@ const BulkExample = () => {
                 onHeaderBulkCheckboxChange: () => {
                   toggleAll();
                 },
-              } as BulkContext,
+              } as TBulkContext,
             },
             { id: 'text', cellRenderer: TextRenderer, headerName: 'Text' },
             { id: 'num', cellRenderer: TextRenderer, headerName: 'Num' },
