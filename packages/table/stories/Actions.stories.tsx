@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Holo } from '@devoinc/holo';
 import { GIEyeViewFilled, GIPencilEdit } from '@devoinc/genesys-icons';
 
-import { type ActionContext, BasicTable, type Data } from '../src';
+import { type TActionContext, BasicTable, type TData } from '../src';
 
 const meta: Meta<typeof BasicTable> = {
   title: 'Components/Layout/Table/Actions',
@@ -86,7 +86,7 @@ export const Base: Story = {
               },
             },
           ],
-        } as ActionContext,
+        } as TActionContext,
       },
     ],
     data: Holo.of()
@@ -98,6 +98,6 @@ export const Base: Story = {
         company: 'company',
       })
       .repeat(10)
-      .generate() as Data,
+      .generate() as TData,
   },
 };

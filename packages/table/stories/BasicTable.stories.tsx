@@ -5,7 +5,7 @@ import { Holo } from '@devoinc/holo';
 import { Button, Menu, Popover } from '@devoinc/genesys-ui';
 import { GIEyeViewFilled, GIPencilEdit } from '@devoinc/genesys-icons';
 
-import { ActionContext, BasicTable } from '../src';
+import { TActionContext, BasicTable } from '../src';
 import { ROW_HEIGHT_MD } from '../src/constants';
 
 const meta: Meta<typeof BasicTable> = {
@@ -173,7 +173,7 @@ export const Base: Story = {
               },
             },
           ],
-        } as ActionContext,
+        } as TActionContext,
       },
     ],
     data: Holo.of()
