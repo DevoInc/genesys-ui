@@ -26,7 +26,7 @@ export const StyledSplitPaneSeparator = styled.div<StyledSplitPaneSeparatorProps
       }
 
       &::before {
-        ${pseudoElementOverlayMixin};
+        ${pseudoElementOverlayMixin()};
       }
 
       &:hover {

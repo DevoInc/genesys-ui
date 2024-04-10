@@ -49,7 +49,7 @@ export const panelMixin = ({
     background-color: ${panelTokens.color.background};
 
     &::before {
-      ${pseudoElementOverlayMixin};
+      ${pseudoElementOverlayMixin()};
       border-radius: ${borderRadius};
       background-color: ${colorScheme};
     }

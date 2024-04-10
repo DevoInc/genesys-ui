@@ -90,7 +90,7 @@ export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
 
       // hovered
       &::before {
-        ${pseudoElementOverlayMixin({})};
+        ${pseudoElementOverlayMixin()};
         transition: background-color ease-in-out
           ${theme.cmp.table.cell.mutation.transitionDuration};
         background-color: transparent;

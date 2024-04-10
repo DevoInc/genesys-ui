@@ -25,7 +25,7 @@ export const StyledCell = styled.td.attrs(
     },
   }),
 )<StyledCellProps>`
-  &:after {
+  &::after {
     ${pseudoElementOverlayMixin()};
     z-index: -1;
     background-color: transparent;

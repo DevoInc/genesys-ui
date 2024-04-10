@@ -40,6 +40,7 @@ export const Cell: React.FC<CellProps> = ({
 
   return (
     <StyledCell
+      density={density}
       $height={height}
       $width={width}
       offsetX={offsetX}

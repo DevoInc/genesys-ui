@@ -178,7 +178,9 @@ export const SelectControl = <
         defaultStyles as StylesConfig,
         componentStyles,
       )}
-      {...(value && { value: findValue(value, rest.options, rest.isMulti) })}
+      {...(value && {
+        value: findValue(value as TSelectOption, rest.options, rest.isMulti),
+      })}
       components={
         { ...defaultComponents, ...components } as Partial<
           SelectComponents<Option, IsMulti, Group>
