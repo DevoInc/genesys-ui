@@ -7,6 +7,6 @@ export interface TabsContextProps extends Pick<ITabs, 'size'> {
 }
 
 export const TabsContext = React.createContext<TabsContextProps>({
-  colorScheme: 'default',
+  colorScheme: 'base',
   size: 'md',
 });

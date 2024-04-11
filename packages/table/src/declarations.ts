@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { DateContext } from './valueFormatters/date';
 
-export type TDensity = 'default' | 'compact' | 'comfortable';
+export type TDensity = 'base' | 'compact' | 'comfortable';
 
 export type TTextsType = {
   cell: {

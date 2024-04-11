@@ -16,6 +16,7 @@ export interface ITabsMarkMixin {
  */
 export const tabsMarkMixin = ({ colorScheme, theme }: ITabsMarkMixin) => {
   const tokens = theme.cmp.tabs.mark;
+  const ColorSchemeForTokens = colorScheme === 'base' ? 'default' : colorScheme;
   const transitionDuration =
     theme.alias.mutation.transitionDuration.translation.hor.sm;
   return css`
@@ -28,7 +29,7 @@ export const tabsMarkMixin = ({ colorScheme, theme }: ITabsMarkMixin) => {
       content: '';
       display: block;
       height: ${tokens.size.height};
-      background: ${tokens.color.fill[colorScheme]};
+      background: ${tokens.color.fill[ColorSchemeForTokens]};
       border-radius: ${tokens.shape.borderRadius};
     }
   `;

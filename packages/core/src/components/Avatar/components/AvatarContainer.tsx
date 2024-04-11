@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import type {
   IFocusEventAttrs,
@@ -14,11 +13,11 @@ import type {
 } from '../../../declarations';
 import type { IAvatar } from '../declarations';
 
-import { avatarBackdropMixin } from './mixins';
 import { AvatarContext } from '../context';
 import { Overlay } from '../../Overlay';
 import { Icon } from '../../Icon';
 import {
+  StyledAvatarBackdrop,
   StyledAvatarContainer,
   type StyledAvatarContainerProps,
 } from '../styled';
@@ -50,7 +49,6 @@ export const AvatarContainer: React.FC<AvatarContainerProps> = ({
   variant = 'circle',
   ...restProps
 }) => {
-  const theme = useTheme();
   const isClickable = href || onClick;
   return (
     <StyledAvatarContainer
@@ -66,13 +64,11 @@ export const AvatarContainer: React.FC<AvatarContainerProps> = ({
       $disabled={disabled}
     >
       {isClickable && iconOnHover && (
-        <Overlay
-          opacity={0.4}
-          bgColorScheme="dark"
-          styles={avatarBackdropMixin({ theme, variant })}
-        >
-          <Icon size="2rem">{iconOnHover}</Icon>
-        </Overlay>
+        <StyledAvatarBackdrop variant={variant}>
+          <Overlay opacity={0.4} bgColorScheme="dark">
+            <Icon size="2rem">{iconOnHover}</Icon>
+          </Overlay>
+        </StyledAvatarBackdrop>
       )}
       <AvatarContext.Provider value={{ size, variant }}>
         {children}

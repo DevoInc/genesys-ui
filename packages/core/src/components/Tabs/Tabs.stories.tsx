@@ -9,7 +9,7 @@ const meta: Meta<typeof Tabs> = {
   title: 'Components/Navigation/Tabs',
   component: Tabs,
   args: {
-    colorScheme: 'default',
+    colorScheme: 'base',
     size: 'md',
   },
 };

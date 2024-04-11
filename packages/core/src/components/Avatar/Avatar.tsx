@@ -14,9 +14,14 @@ import {
 
 import { Box } from '../Box';
 
+interface TestDataProps {
+  [key: `data-${string}`]: unknown;
+}
+
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AvatarProps
-  extends Omit<
+  extends TestDataProps,
+    Omit<
       AvatarContainerProps,
       'children' | 'aria-label' | 'disabled' | 'iconOnHover'
     >,

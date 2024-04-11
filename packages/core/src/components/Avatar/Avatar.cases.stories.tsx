@@ -140,7 +140,7 @@ export const ButtonEditable: Story = {
               </Modal.Body>
             </Modal>
           )}
-          <Avatar {...props} onClick={() => setOpen(true)} />
+          <Avatar data-pepe="manolo" {...props} onClick={() => setOpen(true)} />
         </>
       );
     })(args),

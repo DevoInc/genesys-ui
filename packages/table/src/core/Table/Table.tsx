@@ -12,7 +12,7 @@ export const Table: React.FC<TableProps> = ({
   defaultColDef,
   colDefs = [],
   columnPresets = [],
-  density = 'default',
+  density = 'base',
   striped = false,
   maxHeight = 'none',
   minHeight,

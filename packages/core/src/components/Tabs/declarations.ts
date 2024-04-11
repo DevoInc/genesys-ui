@@ -4,8 +4,7 @@ import type {
   TSelectedState,
 } from '../../declarations/commonProps';
 
-export type TTabsColorScheme = 'default' | 'primary';
-export type TTabsItemSize = TBaseSize;
+export type TTabsColorScheme = 'base' | 'primary';
 export type TTabsSize = TBaseSize;
 export type TTabsItemState = TBasicState | TSelectedState;
 

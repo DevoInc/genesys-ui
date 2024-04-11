@@ -30,7 +30,7 @@ const InternalTabs = React.forwardRef<HTMLDivElement, TabsProps>(
   (
     {
       children = [],
-      colorScheme = 'default',
+      colorScheme = 'base',
       contained,
       size = 'md',
       wide,
