@@ -33,7 +33,7 @@ Using the predefined DiffEditor is as simple as importing the 'DiffEditor' tag.
 import * as React from 'react';
 import { DiffEditor } from '@devoinc/genesys-ui-code';
 
-export const MyDiffEditor = () => 
+export const MyDiffEditor = () =>
   <DiffEditor originalValue="I'm smart!" modifiedValue="I'm not smart!" />
 `}
 />
@@ -52,20 +52,20 @@ import { DiffEditor, useDiffEditorTheme } from '@devoinc/genesys-ui-code';
 export const CustomThemed = () => {
   const editorTheme = useDiffEditorTheme();
 
-  return (
-    <DiffEditor.Container bordered={true}>
-      <DiffEditor.Editor
-        height="300px"
-        bordered={true}
-        theme={editorTheme}
-        originalValue="I'm being built from my inner parts"
-        modifiedValue="I'm being built from scratch"
-      />
-      <DiffEditor.ActionsContainer>
-        <IconButton icon="gi-heart_full" />
-      </DiffEditor.ActionsContainer>
-    </DiffEditor.Container>
-  );
+return (
+<DiffEditor.Container bordered={true}>
+<DiffEditor.Editor
+height="300px"
+bordered={true}
+theme={editorTheme}
+originalValue="I'm being built from my inner parts"
+modifiedValue="I'm being built from scratch"
+/>
+<DiffEditor.ActionsContainer>
+<IconButton icon="gi-heart_full" />
+</DiffEditor.ActionsContainer>
+</DiffEditor.Container>
+);
 };
 
 `}
@@ -76,7 +76,7 @@ export const CustomThemed = () => {
 The Editor supports custom languages. To use a custom language, the language and its configuration must be registered with the editor using the `registerLanguage` function.
 **Please, refrain from directly using monaco editor's `monaco.languages.register` function, as it might side-effect other editors.**
 
-For more a more advanced use case, visit [Custom Language With Validation](#custom-language-with-validation). See also [Monaco Editor - Custom Languages](https://microsoft.github.io/monaco-editor/monarch.html) 
+For more a more advanced use case, visit [Custom Language With Validation](#custom-language-with-validation). See also [Monaco Editor - Custom Languages](https://microsoft.github.io/monaco-editor/monarch.html)
 and [Monaco Editor - Custom Autocompletion](https://microsoft.github.io/monaco-editor/playground.html#extending-language-services-custom-languages)
 for more information regarding language definitions and autocompletion.
 
@@ -90,42 +90,43 @@ import { DiffEditor, registerLanguage } from '@devoinc/genesys-ui-code';
 const languageId = 'myLang';
 
 const language = {
-  keywords: ['"keyword"'],
-  tokenizer: {
-    root: [
-      [
-        /"[A-Za-z0-9_]*"/,
-        {
-          cases: {
-            '@keywords': 'keyword',
-            '@default': 'default',
-          },
-        },
-      ],
-      [/:\s"((.|-|\n|\r)*)"/, 'value'],
-    ],
-  },
+keywords: ['"keyword"'],
+tokenizer: {
+root: [
+[
+/"[A-Za-z0-9_]_"/,
+{
+cases: {
+'@keywords': 'keyword',
+'@default': 'default',
+},
+},
+],
+[/:\s"((.|-|\n|\r)_)"/, 'value'],
+],
+},
 };
 
 const completionProvider = {
-  provideCompletionItems: (model, position) => {
-    const word = model.getWordUntilPosition(position);
-    const suggestions = [
-      {
-        label: 'keyword',
-        kind: monaco.languages.CompletionItemKind.Field,
-        insertText: '"keyword"',
-        range: {
-          startLineNumber: position.lineNumber,
-          endLineNumber: position.lineNumber,
-          startColumn: word.startColumn,
-          endColumn: word.endColumn,
-        },
-      },
-    ];
+provideCompletionItems: (model, position) => {
+const word = model.getWordUntilPosition(position);
+const suggestions = [
+{
+label: 'keyword',
+kind: monaco.languages.CompletionItemKind.Field,
+insertText: '"keyword"',
+range: {
+startLineNumber: position.lineNumber,
+endLineNumber: position.lineNumber,
+startColumn: word.startColumn,
+endColumn: word.endColumn,
+},
+},
+];
 
     return { suggestions: suggestions };
-  },
+
+},
 };
 
 export const CustomLang = () => {
@@ -137,19 +138,18 @@ export const CustomLang = () => {
       .registerCompletionProvider(completionProvider);
   };
 
-  return (
-    <DiffEditor
-      height="300px"
-      language={languageId}
-      bordered={true}
-      originalValue={'{ "keyword": true, "not_keyword": 123 }'}
-      modifiedValue={'{\n "keyword": true,\n "not_keyword": 1234\n}'}
-      beforeMount={registerLanguageProviders}
-    />
-  );
+return (
+<DiffEditor
+height="300px"
+language={languageId}
+bordered={true}
+originalValue={'{ "keyword": true, "not_keyword": 123 }'}
+modifiedValue={'{\n "keyword": true,\n "not_keyword": 1234\n}'}
+beforeMount={registerLanguageProviders}
+/>
+);
 };
 `} />
-
 
 ## Hooks
 
@@ -170,26 +170,26 @@ import {
 export const CustomThemed = () => {
   const editorTheme = useDiffEditorTheme();
 
-  const { containerRef } = useDiffEditor({
-    originalValue: 'Hey there!',
-    modifiedValue: 'Hey hey!',
-    theme: editorTheme,
-    language: '',
-    beforeMount: () => console.log('beforeMount'),
-    onMount: () => console.log('onMount'),
-    onChange: () => console.log('onChange'),
-    onValidate: () => console.log('onValidate'),
-    options: {},
-  });
+const { containerRef } = useDiffEditor({
+originalValue: 'Hey there!',
+modifiedValue: 'Hey hey!',
+theme: editorTheme,
+language: '',
+beforeMount: () => console.log('beforeMount'),
+onMount: () => console.log('onMount'),
+onChange: () => console.log('onChange'),
+onValidate: () => console.log('onValidate'),
+options: {},
+});
 
-  return (
-    <DiffEditor.Container>
-      <Box ref={containerRef} height="100%" />
-      <DiffEditor.ActionsContainer>
-        <IconButton icon="gi-heart_full" />
-      </DiffEditor.ActionsContainer>
-    </DiffEditor.Container>
-  );
+return (
+<DiffEditor.Container>
+<Box ref={containerRef} height="100%" />
+<DiffEditor.ActionsContainer>
+<IconButton icon="gi-heart_full" />
+</DiffEditor.ActionsContainer>
+</DiffEditor.Container>
+);
 };
 
 `} />
@@ -218,20 +218,20 @@ export const CustomThemed = () => {
     },
   };
 
-  return (
-    <DiffEditor.Container bordered={true}>
-      <DiffEditor.Editor
-        height="300px"
-        bordered={true}
-        theme={customEditorTheme}
-        originalValue="I'm being built from my inner parts"
-        modifiedValue="I'm being built from scratch"
-      />
-      <DiffEditor.ActionsContainer>
-        <IconButton icon="gi-heart_full" />
-      </DiffEditor.ActionsContainer>
-    </DiffEditor.Container>
-  );
+return (
+<DiffEditor.Container bordered={true}>
+<DiffEditor.Editor
+height="300px"
+bordered={true}
+theme={customEditorTheme}
+originalValue="I'm being built from my inner parts"
+modifiedValue="I'm being built from scratch"
+/>
+<DiffEditor.ActionsContainer>
+<IconButton icon="gi-heart_full" />
+</DiffEditor.ActionsContainer>
+</DiffEditor.Container>
+);
 };
 `} />
 
@@ -295,7 +295,7 @@ Visit [stories/cases/MultipleEds.tsx](https://github.com/DevoInc/genesys-ui/blob
 
 <ArgTypes of={Stories} />
 
-## Subcomponents
+## Components
 
 The DiffEditor is made up of 3 main components:
 

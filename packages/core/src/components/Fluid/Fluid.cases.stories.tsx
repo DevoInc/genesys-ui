@@ -18,8 +18,8 @@ type Story = StoryObj<typeof Container>;
 
 export const EqualWidth: Story = {
   name: 'Equal width',
-  render: () => (
-    <Container fluid>
+  render: (args) => (
+    <Container {...args} fluid>
       <Row>
         <Col>Col 1</Col>
         <Col>Col 2</Col>
@@ -31,8 +31,8 @@ export const EqualWidth: Story = {
 
 export const Stacked: Story = {
   name: 'Stacked to horizontal',
-  render: () => (
-    <Container fluid>
+  render: (args) => (
+    <Container {...args} fluid>
       <Row>
         <Col md={3}>md = 3</Col>
         <Col md={4}>md = 4</Col>
@@ -64,8 +64,8 @@ export const Stacked: Story = {
 
 export const ColumnWrapping: Story = {
   name: 'Column wrapping',
-  render: () => (
-    <Container fluid>
+  render: (args) => (
+    <Container {...args} fluid>
       <Row>
         <Col xs={9}>xs = 9</Col>
         <Col xs={4}>
@@ -80,8 +80,8 @@ export const ColumnWrapping: Story = {
 
 export const VerticalAlignment: Story = {
   name: 'Vertical alignment',
-  render: () => (
-    <Container fluid>
+  render: (args) => (
+    <Container {...args} fluid>
       <Row
         align="start"
         style={{ height: '10rem', backgroundColor: '#f5f9dd' }}
@@ -123,8 +123,8 @@ export const VerticalAlignment: Story = {
 
 export const HorizontalAlignment: Story = {
   name: 'Horizontal alignment',
-  render: () => (
-    <Container fluid>
+  render: (args) => (
+    <Container {...args} fluid>
       <Row justify="start" style={{ backgroundColor: '#f5f9dd' }}>
         <Col xs={3}>1 of 3</Col>
         <Col xs={3}>2 of 3</Col>
@@ -156,8 +156,8 @@ export const HorizontalAlignment: Story = {
 
 export const Order: Story = {
   name: 'TDirection prop for order and orientation',
-  render: () => (
-    <Container fluid>
+  render: (args) => (
+    <Container {...args} fluid>
       <Row align="center" justify="center" direction="row">
         <Col xs={3}>1 of 3</Col>
         <Col xs={3}>2 of 3</Col>
@@ -199,8 +199,8 @@ export const Order: Story = {
 
 export const Offsetting: Story = {
   name: 'Offsetting columns',
-  render: () => (
-    <Container fluid>
+  render: (args) => (
+    <Container {...args} fluid>
       <Row>
         <Col md={4}>md=4</Col>
         <Col md={4} offset={{ md: 4 }}>
@@ -226,8 +226,8 @@ export const Offsetting: Story = {
 
 export const NestingColumns: Story = {
   name: 'Nesting columns',
-  render: () => (
-    <Container fluid>
+  render: (args) => (
+    <Container {...args} fluid>
       <Row>
         <Col sm={9}>
           Level 1: sm=9
@@ -247,8 +247,8 @@ export const NestingColumns: Story = {
 
 export const AdaptedContent: Story = {
   name: 'Column width adapted to content',
-  render: () => (
-    <Container fluid>
+  render: (args) => (
+    <Container {...args} fluid>
       <Row>
         <Col>
           <Typography.Paragraph>{lorem}</Typography.Paragraph>
@@ -261,9 +261,9 @@ export const AdaptedContent: Story = {
 
 export const GutterDefinition: Story = {
   name: 'Gutter definition by Container',
-  render: () => (
+  render: (args) => (
     <>
-      <Container fluid gutter="layout-xxs">
+      <Container {...args} fluid gutter="layout-xxs">
         <Row>
           <Col>
             Col 1 - gutter xxs
@@ -282,7 +282,7 @@ export const GutterDefinition: Story = {
           </Col>
         </Row>
       </Container>
-      <Container fluid marginTop="layout-sm" gutter="layout-xs">
+      <Container {...args} fluid marginTop="layout-sm" gutter="layout-xs">
         <Row>
           <Col>
             Col 1 - gutter xxs
@@ -301,7 +301,7 @@ export const GutterDefinition: Story = {
           </Col>
         </Row>
       </Container>
-      <Container fluid marginTop="layout-sm" gutter="layout-sm">
+      <Container {...args} fluid marginTop="layout-sm" gutter="layout-sm">
         <Row>
           <Col>
             Col 1 - gutter xxs
@@ -320,7 +320,7 @@ export const GutterDefinition: Story = {
           </Col>
         </Row>
       </Container>
-      <Container fluid marginTop="layout-sm" gutter="layout-md">
+      <Container {...args} fluid marginTop="layout-sm" gutter="layout-md">
         <Row>
           <Col>
             Col 1 - gutter xxs
@@ -339,7 +339,7 @@ export const GutterDefinition: Story = {
           </Col>
         </Row>
       </Container>
-      <Container fluid marginTop="layout-sm" gutter="layout-lg">
+      <Container {...args} fluid marginTop="layout-sm" gutter="layout-lg">
         <Row>
           <Col>
             Col 1 - gutter xxs
@@ -358,7 +358,7 @@ export const GutterDefinition: Story = {
           </Col>
         </Row>
       </Container>
-      <Container fluid marginTop="layout-sm" gutter="layout-xl">
+      <Container {...args} fluid marginTop="layout-sm" gutter="layout-xl">
         <Row>
           <Col>
             Col 1 - gutter xxs
@@ -377,7 +377,7 @@ export const GutterDefinition: Story = {
           </Col>
         </Row>
       </Container>
-      <Container fluid marginTop="layout-sm" gutter="layout-xxl">
+      <Container {...args} fluid marginTop="layout-sm" gutter="layout-xxl">
         <Row>
           <Col>
             Col 1 - gutter xxs
@@ -402,8 +402,8 @@ export const GutterDefinition: Story = {
 
 export const GutterDefinitionByRow: Story = {
   name: 'Gutter definition by Row',
-  render: () => (
-    <Container fluid>
+  render: (args) => (
+    <Container {...args} fluid>
       <Row gutter="layout-xxs">
         <Col>
           Col 1 - gutter xxs

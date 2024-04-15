@@ -52,6 +52,7 @@ export interface PopoverProps
   };
   modifiers?: StrictModifier[];
   zIndex?: number;
+  onClose?: () => void;
 }
 
 const defaultAppendToProp =
@@ -65,6 +66,7 @@ export const InternalPopover: React.FC<PopoverProps> = ({
   id,
   isOpened = false,
   modifiers = [],
+  onClose,
   placement,
   strategy = 'fixed',
   zIndex,
@@ -123,12 +125,16 @@ export const InternalPopover: React.FC<PopoverProps> = ({
 
     if (!isChild) {
       setOpened((prevState) => !prevState);
+      opened && onClose?.();
     }
   };
 
   useOnEventOutside({
     references: [referenceElement, popperElement],
-    handler: () => setOpened(false),
+    handler: () => {
+      setOpened(false);
+      opened && onClose?.();
+    },
     disabled: disableOutsideEvent,
   });
 

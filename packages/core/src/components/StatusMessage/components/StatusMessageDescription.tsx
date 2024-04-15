@@ -8,14 +8,16 @@ export interface StatusMessageDescriptionProps extends ParagraphProps {
   isLong?: boolean;
 }
 
-export const StatusMessageDescription = ({
+export const StatusMessageDescription: React.FC<
+  StatusMessageDescriptionProps
+> = ({
   colorScheme = 'weak',
   children,
   gutterBottom = '0',
   isLong,
   textAlign,
   ...paragraphProps
-}: StatusMessageDescriptionProps) => {
+}) => {
   return children && React.isValidElement(children) ? (
     children
   ) : children ? (

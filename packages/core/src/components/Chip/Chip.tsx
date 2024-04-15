@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import type { TChipIcon } from './declarations';
 import {
   ChipContainer,
   type ChipContainerProps,
@@ -9,14 +10,13 @@ import {
 } from './components';
 
 import { ChipContent, type ChipContentProps } from './components/ChipContent';
-import { ChipContext } from './context';
 
 export interface ChipProps
   extends Omit<ChipContainerProps, 'children'>,
     Pick<ChipContentProps, 'children'>,
     ChipHiddenInputProps {
   /** The icon name-id to be rendered at the left of the content.*/
-  icon?: React.ReactNode;
+  icon?: TChipIcon;
   /** If the icon is rendered with bold style.*/
   hasBoldIcon?: boolean;
   /** The icon when the Chip is selected. It doesn't work in uncontrolled mode. */
@@ -118,11 +118,9 @@ export const InternalChip: React.FC<ChipProps> = ({
         value={value}
       />
       {icon && (
-        <ChipContext.Provider value={{ size, icon }}>
-          <Chip._Icon strong={hasBoldIcon} size={size}>
-            {evalIcon}
-          </Chip._Icon>
-        </ChipContext.Provider>
+        <Chip._Icon strong={hasBoldIcon} size={size}>
+          {evalIcon}
+        </Chip._Icon>
       )}
       <Chip._Content>{children}</Chip._Content>
     </Chip._Container>

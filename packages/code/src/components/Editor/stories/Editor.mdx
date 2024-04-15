@@ -70,7 +70,7 @@ return (
 The Editor supports custom languages. To use a custom language, the language and its configuration must be registered with the editor using the `registerLanguage` function.
 **Please, refrain from directly using monaco editor's `monaco.languages.register` function, as it might side-effect other editors.**
 
-For more a more advanced use case, visit [Custom Language With Validation](#custom-language-with-validation). See also [Monaco Editor - Custom Languages](https://microsoft.github.io/monaco-editor/monarch.html) 
+For more a more advanced use case, visit [Custom Language With Validation](#custom-language-with-validation). See also [Monaco Editor - Custom Languages](https://microsoft.github.io/monaco-editor/monarch.html)
 and [Monaco Editor - Custom Autocompletion](https://microsoft.github.io/monaco-editor/playground.html#extending-language-services-custom-languages)
 for more information regarding language definitions and autocompletion.
 
@@ -84,42 +84,43 @@ import { Editor, registerLanguage } from '@devoinc/genesys-ui-code';
 const languageId = 'myLang';
 
 const language = {
-  keywords: ['"keyword"'],
-  tokenizer: {
-    root: [
-      [
-        /"[A-Za-z0-9_]*"/,
-        {
-          cases: {
-            '@keywords': 'keyword',
-            '@default': 'default',
-          },
-        },
-      ],
-      [/:\s"((.|-|\n|\r)*)"/, 'value'],
-    ],
-  },
+keywords: ['"keyword"'],
+tokenizer: {
+root: [
+[
+/"[A-Za-z0-9_]_"/,
+{
+cases: {
+'@keywords': 'keyword',
+'@default': 'default',
+},
+},
+],
+[/:\s"((.|-|\n|\r)_)"/, 'value'],
+],
+},
 };
 
 const completionProvider = {
-  provideCompletionItems: (model, position) => {
-    const word = model.getWordUntilPosition(position);
-    const suggestions = [
-      {
-        label: 'keyword',
-        kind: monaco.languages.CompletionItemKind.Field,
-        insertText: '"keyword"',
-        range: {
-          startLineNumber: position.lineNumber,
-          endLineNumber: position.lineNumber,
-          startColumn: word.startColumn,
-          endColumn: word.endColumn,
-        },
-      },
-    ];
+provideCompletionItems: (model, position) => {
+const word = model.getWordUntilPosition(position);
+const suggestions = [
+{
+label: 'keyword',
+kind: monaco.languages.CompletionItemKind.Field,
+insertText: '"keyword"',
+range: {
+startLineNumber: position.lineNumber,
+endLineNumber: position.lineNumber,
+startColumn: word.startColumn,
+endColumn: word.endColumn,
+},
+},
+];
 
     return { suggestions: suggestions };
-  },
+
+},
 };
 
 export const CustomLang = () => {
@@ -131,15 +132,15 @@ export const CustomLang = () => {
       .registerCompletionProvider(completionProvider);
   };
 
-  return (
-    <Editor
-      height="300px"
-      language={languageId}
-      bordered={true}
-      value={'{ "keyword": true, "not_keyword": 123 }'}
-      beforeMount={registerLanguageProviders}
-    />
-  );
+return (
+<Editor
+height="300px"
+language={languageId}
+bordered={true}
+value={'{ "keyword": true, "not_keyword": 123 }'}
+beforeMount={registerLanguageProviders}
+/>
+);
 };
 
 `} />
@@ -288,7 +289,7 @@ Visit [stories/cases/MultipleEds.tsx](https://github.com/DevoInc/genesys-ui/blob
 
 <ArgTypes of={Stories} />
 
-## Subcomponents
+## Components
 
 The Editor is made up of 3 main components:
 

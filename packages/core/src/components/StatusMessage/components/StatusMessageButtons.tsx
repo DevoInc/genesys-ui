@@ -5,9 +5,7 @@ import { ButtonGroup, type ButtonGroupProps } from '../../ButtonGroup';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StatusMessageButtonsProps extends ButtonGroupProps {}
 
-export const StatusMessageButtons = ({
+export const StatusMessageButtons: React.FC<StatusMessageButtonsProps> = ({
   children,
   ...buttonGroupProps
-}: StatusMessageButtonsProps) => (
-  <ButtonGroup {...buttonGroupProps}>{children}</ButtonGroup>
-);
+}) => <ButtonGroup {...buttonGroupProps}>{children}</ButtonGroup>;

@@ -64,7 +64,7 @@ export const StyledCheckboxControl = styled.input.attrs({
               background-color: ${checkRadioTokens.bgColor};
             `
           : css`
-              ${pseudoElementMixin({})}
+              ${pseudoElementMixin()};
               width: ${cmpMarkerSVGWidth};
               height: ${cmpMarkerSVGWidth};
               background-image: ${evalCheckedIcon};

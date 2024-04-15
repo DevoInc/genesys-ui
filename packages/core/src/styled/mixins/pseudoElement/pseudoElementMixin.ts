@@ -13,7 +13,6 @@ export const pseudoElementMixin = ({
   display,
   pos,
 }: IPseudoMixin = PSEUDO_MIXIN_DEFAULT_PARAMS) => {
-  console.info(content);
   return css`
     content: ${content ?? ''};
     display: ${display};

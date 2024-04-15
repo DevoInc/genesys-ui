@@ -8,14 +8,6 @@ const meta: Meta<typeof DateTimeFloatingPicker> = {
   component: DateTimeFloatingPicker,
   args: {
     value: new Date().getTime(),
-    onApply: (ts: number) => {
-      // eslint-disable-next-line no-console
-      console.log('Apply clicked', new Date(ts));
-    },
-    onCancel: () => {
-      // eslint-disable-next-line no-console
-      console.log('Cancel clicked');
-    },
   },
 };
 
@@ -27,8 +19,38 @@ export const Base: Story = {
     ((props) => {
       const [date, setDate] = React.useState(props.value);
 
+      const onChange = (event) => {
+        const target = event.target as HTMLInputElement;
+        if (!target.validity.valid) return;
+        console.info(target.value);
+        const d = new Date(target.value).getTime();
+        setDate(d);
+      };
+
+      return (
+        <DateTimeFloatingPicker
+          {...props}
+          value={date}
+          onChange={onChange}
+          onChangeCalendar={(ts) => setDate(ts)}
+        />
+      );
+    })(args),
+  args: {
+    value: new Date().getTime(),
+  },
+};
+
+export const WithButtons: Story = {
+  name: 'With apply and cancel buttons',
+  render: (args) =>
+    ((props) => {
+      const [initDateValue, setInitDateValue] = React.useState(props.value);
+      const [date, setDate] = React.useState(props.value);
+
       const onApply = (ts: number) => {
         setDate(ts);
+        setInitDateValue(ts);
       };
 
       const onChange = (event) => {
@@ -38,12 +60,19 @@ export const Base: Story = {
         setDate(d);
       };
 
+      const onCancel = () => {
+        setDate(initDateValue);
+      };
+
       return (
         <DateTimeFloatingPicker
           {...props}
           value={date}
           onApply={onApply}
           onChange={onChange}
+          onChangeCalendar={(ts) => setDate(ts)}
+          onCancel={onCancel}
+          onClose={onCancel}
         />
       );
     })(args),

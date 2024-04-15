@@ -12,7 +12,7 @@ export interface StatusMessageContainerProps
   bordered?: TStatusMessageBordered;
 }
 
-export const StatusMessageContainer = ({
+export const StatusMessageContainer: React.FC<StatusMessageContainerProps> = ({
   alignItems = 'center',
   bordered,
   children,
@@ -20,7 +20,7 @@ export const StatusMessageContainer = ({
   padding = 'cmp-md',
   styles,
   ...restVFlexProps
-}: StatusMessageContainerProps) => {
+}) => {
   const theme = useTheme();
   return (
     <VFlex

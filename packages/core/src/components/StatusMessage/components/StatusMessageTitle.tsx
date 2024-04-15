@@ -6,11 +6,11 @@ import type { HeadingProps } from '../../Typography/components/block';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StatusMessageTitleProps extends HeadingProps {}
 
-export const StatusMessageTitle = ({
+export const StatusMessageTitle: React.FC<StatusMessageTitleProps> = ({
   children,
   textAlign = 'center',
   ...restHeadingProps
-}: StatusMessageTitleProps) => {
+}) => {
   return children && React.isValidElement(children) ? (
     children
   ) : children ? (

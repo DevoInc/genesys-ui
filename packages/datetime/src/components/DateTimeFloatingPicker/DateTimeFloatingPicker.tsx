@@ -20,7 +20,7 @@ import { toTimestamp } from '../utils';
 import { GICalendarMonthDayPlannerEvents } from '@devoinc/genesys-icons';
 
 export interface DateTimeFloatingPickerProps
-  extends Pick<PopoverProps, 'appendTo' | 'isOpened'>,
+  extends Pick<PopoverProps, 'appendTo' | 'isOpened' | 'onClose'>,
     Omit<DateTimeProps, 'onChange' | 'selectedDates'>,
     Pick<InputControlProps, 'onChange' | 'placeholder' | 'size'>,
     Pick<IGlobalAriaAttrs, 'aria-label'>,
@@ -35,6 +35,8 @@ export interface DateTimeFloatingPickerProps
   onApply: (ts: number) => void;
   /** Function called when Cancel button is clicked. */
   onCancel: () => void;
+  /** Function called when any enabled calendar cell is clicked. */
+  onChangeCalendar: (ts: number) => void;
 }
 
 export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
@@ -51,6 +53,8 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
   onApply,
   onCancel,
   onChange,
+  onChangeCalendar,
+  onClose,
   placeholder,
   size,
   styles: customStyles,
@@ -67,14 +71,15 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
 
   const onChangeCallback = React.useCallback((ts: number) => {
     setDate(ts);
+    onChangeCalendar && onChangeCalendar(ts);
   }, []);
 
   return (
     <Popover
       appendTo={appendTo}
-      disableOutsideEvent
       id={id ? `${id}__popover` : null}
       isOpened={isOpened}
+      onClose={onClose}
     >
       {({ ref, toggle }) => (
         <div ref={ref}>
@@ -90,26 +95,11 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
           />
         </div>
       )}
-      {({ setOpened }) => (
-        <Popover.Panel
-          as={as}
-          styles={customStyles}
-          width="auto"
-          id={id ? `${id}__popover-panel` : null}
-        >
-          <Panel.Body>
-            <DateTime
-              {...restDateTimeProps}
-              hasSeconds={hasSeconds}
-              hasMillis={hasMillis}
-              hasTime={hasTime}
-              value={value}
-              onChange={onChangeCallback}
-            />
-          </Panel.Body>
-          <Panel.Footer
-            bordered
-            actions={[
+      {({ setOpened }) => {
+        const getActions = () => {
+          const actionsArr = [];
+          if (onCancel) {
+            actionsArr.push(
               <Button
                 key={'cancel'}
                 onClick={() => {
@@ -119,6 +109,10 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
               >
                 {cancelButtonText}
               </Button>,
+            );
+          }
+          if (onApply) {
+            actionsArr.push(
               <Button
                 key={'apply'}
                 colorScheme={'accent'}
@@ -129,10 +123,33 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
               >
                 {applyButtonText}
               </Button>,
-            ]}
-          />
-        </Popover.Panel>
-      )}
+            );
+          }
+          return actionsArr;
+        };
+        return (
+          <Popover.Panel
+            as={as}
+            styles={customStyles}
+            width="auto"
+            id={id ? `${id}__popover-panel` : null}
+          >
+            <Panel.Body>
+              <DateTime
+                {...restDateTimeProps}
+                hasSeconds={hasSeconds}
+                hasMillis={hasMillis}
+                hasTime={hasTime}
+                value={value}
+                onChange={onChangeCallback}
+              />
+            </Panel.Body>
+            {getActions().length > 0 && (
+              <Panel.Footer bordered actions={getActions()} />
+            )}
+          </Popover.Panel>
+        );
+      }}
     </Popover>
   );
 };

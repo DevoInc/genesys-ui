@@ -18,7 +18,16 @@ a date and time in several ways.
 
 ## Basic usage
 
+Usually you have to use a state to control the date, based on an initial one from the value prop.
+
 <Canvas of={Stories.Base} />
+
+## With apply and cancel buttons
+
+This way you need to execute the `onApply` prop to save the changes, so you need one more state to define the initial
+date which will be used as the reset value if you cancel or close the popover.
+
+<Canvas of={Stories.WithButtons} />
 
 ## Props
 

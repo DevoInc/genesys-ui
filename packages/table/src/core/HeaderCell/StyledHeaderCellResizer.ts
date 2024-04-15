@@ -33,7 +33,7 @@ export const StyledHeaderCellResizer = styled.span<StyledHeaderCellResizerProps>
 
       &::before,
       &::after {
-        ${pseudoElementMixin({})};
+        ${pseudoElementMixin()};
         right: 0;
         cursor: col-resize;
       }

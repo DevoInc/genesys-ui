@@ -11,9 +11,11 @@ import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../declarations/styled';
+import type { TChipIcon } from '../declarations';
 
 // styled
 import { StyledChip, type StyledChipProps } from '../styled';
+import { ChipContext } from '../context';
 
 export interface ChipContainerProps
   extends IGlobalAttrs,
@@ -23,12 +25,14 @@ export interface ChipContainerProps
     IDragDropEventAttrs,
     Omit<IContainerEventAttrs, 'onClick'>,
     StyledChipProps {
+  icon?: TChipIcon;
   children: React.ReactNode;
 }
 
 export const ChipContainer: React.FC<ChipContainerProps> = ({
   as,
   children,
+  icon,
   id,
   onClick,
   onContextMenu,
@@ -94,7 +98,9 @@ export const ChipContainer: React.FC<ChipContainerProps> = ({
       state={state}
       title={tooltip}
     >
-      {children}
+      <ChipContext.Provider value={{ size, icon }}>
+        {children}
+      </ChipContext.Provider>
     </StyledChip>
   );
 };
