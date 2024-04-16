@@ -6,7 +6,7 @@ import type { ITable } from '../declarations';
 export interface ITableContext extends ITable {}
 
 export const TableContext = React.createContext<ITableContext>({
-  density: 'base',
+  density: 'default',
   data: [],
   striped: false,
   maxHeight: 'none',

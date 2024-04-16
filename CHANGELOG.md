@@ -1,5 +1,28 @@
 # Changelog
 
+## [9.1.0](https://github.com/DevoInc/genesys-ui/compare/v9.0.0...v9.1.0) (2024-04-15)
+
+
+### Features
+
+* Add bulk actions by ID functionality and update density terminology in Table component ([f06b83d](https://github.com/DevoInc/genesys-ui/commit/f06b83dd24c91edb2edcdf4c8d6ebfdbf9df1a9c))
+* added displayName to several components based on dot notation. ([ecd516d](https://github.com/DevoInc/genesys-ui/commit/ecd516d40ccbfc6d5a289bf9fc72efeaad9a4e5d))
+* added ListItem to exported Typography components. ([12a3534](https://github.com/DevoInc/genesys-ui/commit/12a35341e78889394615bdf081edb0b4bcff870f))
+* improvements for several components. ([9b76369](https://github.com/DevoInc/genesys-ui/commit/9b763698c3670389d46d97f12778b4947e0a3ba0))
+* improvements for several components. ([530bdbd](https://github.com/DevoInc/genesys-ui/commit/530bdbdfa1c8c3c237d6960780aa777d3884ab12))
+* improvements for several stories. ([535d302](https://github.com/DevoInc/genesys-ui/commit/535d30276859b67fed6916fab9fcd310c1c7a24b))
+* Rename types and interfaces with the 'T' and 'I' prefixes. ([7ac169c](https://github.com/DevoInc/genesys-ui/commit/7ac169c54c9c80efa49e19aa5be71a509e555ccb))
+* Rename types and interfaces with the 'T' and 'I' prefixes. ([43caf9d](https://github.com/DevoInc/genesys-ui/commit/43caf9d0323187e2cae630d6214f4a75f451820c))
+
+
+### Bug Fixes
+
+* added disabled state to the IconButton of RealTimeButton. ([6e09c77](https://github.com/DevoInc/genesys-ui/commit/6e09c7787a94ba34ff3ce0749c52fe554ab0e84c))
+* eslint ([33c2173](https://github.com/DevoInc/genesys-ui/commit/33c2173f9812db8fc7baad2f7b81aaeab7a9956e))
+* fixed circular dependencies. ([ee465b0](https://github.com/DevoInc/genesys-ui/commit/ee465b00a6e391772518d401a09b79c178c9b677))
+* fixed css pseudo mixins to get correctly the highlighting of table columns and rows. ([7a57b97](https://github.com/DevoInc/genesys-ui/commit/7a57b97d6689fdcd52d767c85e2757a964d9f144))
+* fixed test. ([1980b10](https://github.com/DevoInc/genesys-ui/commit/1980b10a6a99a82290ac6a6f7f1f8f033cecb265))
+
 ## [9.0.0](https://github.com/DevoInc/genesys-ui/compare/v8.1.1...v9.0.0) (2024-04-04)
 
 
