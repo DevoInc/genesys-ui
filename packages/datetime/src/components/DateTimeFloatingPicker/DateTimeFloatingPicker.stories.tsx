@@ -21,17 +21,22 @@ export const Base: Story = {
 
       const onChange = (event) => {
         const target = event.target as HTMLInputElement;
-        if (!target.validity.valid) return;
-        console.info(target.value);
-        const d = new Date(target.value).getTime();
-        setDate(d);
+        setDate(target.value);
       };
 
       return (
         <DateTimeFloatingPicker
           {...props}
           value={date}
-          onChange={onChange}
+          onInputBlur={(e) => {
+            console.log('onBlurInput', e);
+          }}
+          onInputKeyUp={(e) => {
+            console.log('onKeyUpInput', e);
+          }}
+          onInputChange={(e) => {
+            console.log('onChangeInput', e);
+          }}
           onChangeCalendar={(ts) => setDate(ts)}
         />
       );
