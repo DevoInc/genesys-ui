@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 
 import { TDatetime } from './declarations';
-import { toTSorPreset, isManageableDate } from './utils';
+import { toTSorPreset, isManageableDate, parseToTimestamp } from './utils';
 
 describe('toTSorPreset', () => {
   const cases: [string, string | TDatetime, number | string][] = [
@@ -32,5 +32,21 @@ describe('isManageableDate', () => {
 
   test.each(cases)('%s', (_title, ts, expected) => {
     expect(isManageableDate(ts)).toBe(expected);
+  });
+});
+
+describe('isValidDate', () => {
+  const cases: [string, TDatetime | string, number | null][] = [
+    ['base string case', '2023-12-01 00:00:00', 1701385200000],
+    ['string without hours', '2023-12-01', 1701385200000],
+    ['wrong string', 'str-12-01', null],
+    ['base numeric', 1702425600000, 1702425600000],
+    ['wrong numeric', 0, null],
+    ['numeric as string', '987654', null],
+    ['null', null, null],
+  ];
+
+  test.each(cases)('%s', (_title, date, expected) => {
+    expect(parseToTimestamp(date)).toBe(expected);
   });
 });
