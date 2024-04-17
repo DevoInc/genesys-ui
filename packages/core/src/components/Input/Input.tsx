@@ -9,10 +9,7 @@ export interface InputProps
     Omit<
       InputControlProps,
       'id' | 'size' | 'status' | 'disabled' | 'required'
-    > {
-  /** Name of the Icon from icon library font to be included in the input control. */
-  inputControlIcon?: string;
-}
+    > {}
 
 export const Input: React.FC<InputProps> = ({
   'aria-label': ariaLabel,
@@ -21,7 +18,7 @@ export const Input: React.FC<InputProps> = ({
   helper,
   hideLabel,
   id,
-  inputControlIcon,
+  icon,
   inputWidth,
   label,
   labelPosition = 'top',
@@ -68,7 +65,7 @@ export const Input: React.FC<InputProps> = ({
       {...restNativeInputProps}
       hideStatusIcon={helper && hasStatus(status)}
       aria-label={ariaLabel}
-      icon={helper && hasStatus(status) ? undefined : inputControlIcon}
+      icon={helper && hasStatus(status) ? undefined : icon}
       type={type}
     />
   </Field>
