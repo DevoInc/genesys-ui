@@ -13,9 +13,8 @@ import {
 
 import type { CalendarProps } from '../../Calendar';
 import type { TDatetime } from '../../declarations';
-import { getFormatTimeStr } from '../utils/format';
+import { getFormatTimeStr, toTimestamp } from '../../../utils';
 import { isSameDay } from '../../Calendar/validations';
-import { toTimestamp } from '../../utils';
 
 export interface TimeProps
   extends Pick<CalendarProps, 'maxDate' | 'minDate'>,

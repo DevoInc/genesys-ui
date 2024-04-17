@@ -16,7 +16,7 @@ import {
   type IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
 import type { TDatetime } from '../declarations';
-import { toTimestamp } from '../utils';
+import { toTimestamp } from '../../utils';
 import { lastDayOfMonth as lastDayOfMonthFNS } from 'date-fns';
 import { Cell, type CellProps } from './components';
 

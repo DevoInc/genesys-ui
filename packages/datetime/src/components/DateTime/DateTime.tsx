@@ -16,7 +16,7 @@ import {
   useCalendarSingleDayBehavior,
 } from '../Calendar';
 import { Month, Time, TimeProps } from './components';
-import { toTimestamp } from '../utils';
+import { toTimestamp } from '../../utils';
 
 export interface DateTimeProps
   extends Pick<

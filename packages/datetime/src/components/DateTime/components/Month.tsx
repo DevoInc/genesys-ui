@@ -25,7 +25,7 @@ import {
 import type { CalendarProps } from '../../Calendar';
 import type { TDatetime } from '../../declarations';
 
-import { toTimestamp } from '../../utils';
+import { toTimestamp } from '../../../utils';
 import { GIAngleLeft, GIAngleRight } from '@devoinc/genesys-icons';
 
 export interface MonthProps
