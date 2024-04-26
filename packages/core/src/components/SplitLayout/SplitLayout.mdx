@@ -1,0 +1,45 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './SplitLayout.stories';
+
+<Meta of={Stories} />
+
+# SplitLayout
+
+## Overview
+
+The SplitLayout component is a layout element that enables the division of the screen
+into multiple blocks that are resizables.
+It is based on [split.js](https://split.js.org/), so you could use all of the
+properties of split.js.
+With SplitLayout, you can easily create a split view layout, allowing users to view
+multiple pieces of content simultaneously.
+
+It can also be nested, allowing for the creation of more complex layouts, and
+split vertically or horizontally, depending on the needs of the user interface.
+
+## How to import
+
+<Source
+  code={`
+import { SplitLayout } from '@devoinc/genesys-ui';
+`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Cases
+
+### Three blocks
+
+<Canvas of={Stories.Three} />
+
+### Nested
+
+<Canvas of={Stories.Nested} />
+
+## Props
+
+<ArgTypes of={Stories} />
