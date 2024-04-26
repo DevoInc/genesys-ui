@@ -6,8 +6,23 @@ import * as Stories from './DateTimePicker.stories';
 
 # DateTimePicker
 
-The DateTimePicker is an extension of the DateTime component.
-It renders a date type input and a DateTime component, allowing users to select a date and time in several ways.
+The `DateTimePicker` is an enhancement of the `DateTime` component,
+designed to offer extended functionality.
+It presents a date type input field and the `DateTime` component,
+enabling users to conveniently select a date and time through various means.
+
+Users can manipulate the value either directly from the `DateTime` component
+or via the input text field.
+
+Each time the input text field value is modified, it undergoes validation
+against accepted date formats.
+The first value in the `dateFormats` array serves as the default value to display.
+If no format is specified, the default value will be `YYYY-mm-dd HH:mm:ss`.
+
+When the `Enter` or `Escape` key is pressed, or when focus is lost,
+the `onChange` method of the component is triggered.
+
+Any change made to the `DateTime` component triggers the `onChange` method.
 
 ## How to import
 
