@@ -188,6 +188,12 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
               `calc(100% - (${indicatorWidth} * ${hasDropdownIndicator} + ${sortableSpacing} +
                   ${indicatorWidth} * ${hasClearIndicator} +
                   ${defaultHorPadding}))`};
+
+              > div:last-child {
+                display: flex;
+                align-items: center;
+                column-gap: ${aliasTokens.space.cmp.xxs};
+              }
             }
           }
 
@@ -244,6 +250,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
             margin-top: 0;
             margin-bottom: 0;
             padding: 0;
+            display: grid;
           }
 
           .${classNamePrefix} {
