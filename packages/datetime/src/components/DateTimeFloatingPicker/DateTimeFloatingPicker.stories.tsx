@@ -8,6 +8,7 @@ const meta: Meta<typeof DateTimeFloatingPicker> = {
   component: DateTimeFloatingPicker,
   args: {
     value: new Date().getTime(),
+    label: 'My calendar',
   },
 };
 
@@ -19,30 +20,20 @@ export const Base: Story = {
     ((props) => {
       const [date, setDate] = React.useState(props.value);
 
-      const onChange = (event) => {
-        const target = event.target as HTMLInputElement;
-        setDate(target.value);
-      };
-
       return (
         <DateTimeFloatingPicker
           {...props}
           value={date}
-          onInputBlur={(e) => {
-            console.log('onBlurInput', e);
+          onChange={(ts) => {
+            setDate(ts);
+            console.log(`date changed ${ts}`);
           }}
-          onInputKeyUp={(e) => {
-            console.log('onKeyUpInput', e);
-          }}
-          onInputChange={(e) => {
-            console.log('onChangeInput', e);
-          }}
-          onChangeCalendar={(ts) => setDate(ts)}
         />
       );
     })(args),
   args: {
     value: new Date().getTime(),
+    label: 'My calendar',
   },
 };
 
@@ -50,23 +41,14 @@ export const WithButtons: Story = {
   name: 'With apply and cancel buttons',
   render: (args) =>
     ((props) => {
-      const [initDateValue, setInitDateValue] = React.useState(props.value);
       const [date, setDate] = React.useState(props.value);
-
       const onApply = (ts: number) => {
         setDate(ts);
-        setInitDateValue(ts);
-      };
-
-      const onChange = (event) => {
-        const target = event.target as HTMLInputElement;
-        if (!target.validity.valid) return;
-        const d = new Date(target.value).getTime();
-        setDate(d);
+        console.log(`Apply ${ts}`);
       };
 
       const onCancel = () => {
-        setDate(initDateValue);
+        console.log('Cancel button pressed');
       };
 
       return (
@@ -74,8 +56,9 @@ export const WithButtons: Story = {
           {...props}
           value={date}
           onApply={onApply}
-          onChange={onChange}
-          onChangeCalendar={(ts) => setDate(ts)}
+          onChange={(ts) => {
+            console.log(`OnChange ${ts}`);
+          }}
           onCancel={onCancel}
           onClose={onCancel}
         />

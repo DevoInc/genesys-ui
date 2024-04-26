@@ -6,9 +6,24 @@ import * as Stories from './DateTimeFloatingPicker.stories';
 
 # DateTimeFloatingPicker
 
-The DateTimeFloatingPicker is an extension of the DateTime component.
-It renders a date type input that shows the aforementioned DateTime component when clicked, allowing users to select
-a date and time in several ways.
+The `DateTimeFloatingPicker` is an enhancement of the `DateTime` component,
+designed to offer extended functionality.
+It presents a date type input field that, upon interaction, displays the
+`DateTime` component in a floating form (using a `Popover` component),
+enabling users to conveniently select a date and time through various means.
+
+Users can manipulate the value either directly from the `DateTime` component
+or via `DateTimeInput` component (input text field).
+
+Each time the input text field value is modified, it undergoes validation
+against accepted date formats.
+The first value in the `dateFormats` array serves as the default value to display.
+If no format is specified, the default value will be `YYYY-mm-dd HH:mm:ss`.
+
+When the `Enter` key is pressed the `onApply` method is called (if it exists).
+When the `Escape` key is pressed the `onCancel` method is called (if it exists).
+
+Any change made to the `DateTime` component triggers the `onChange` method.
 
 ## How to import
 
@@ -18,16 +33,26 @@ a date and time in several ways.
 
 ## Basic usage
 
-Usually you have to use a state to control the date, based on an initial one from the value prop.
+Most of cases you only need to set the `value` property and perform some action
+with the `onchange` method.
 
 <Canvas of={Stories.Base} />
 
 ## With apply and cancel buttons
 
-This way you need to execute the `onApply` prop to save the changes, so you need one more state to define the initial
-date which will be used as the reset value if you cancel or close the popover.
+In some complex cases you only want to perform an action when calling the `onApply`
+and `onCancel` methods.
+When these methods are defined, two buttons for this purpose will be shown in the
+component footer
 
 <Canvas of={Stories.WithButtons} />
+
+## Related components
+
+- [Calendar](?path=/docs/components-datetime-calendar--docs)
+- [DateTimeInput](?path=/docs/components-datetime-datetimeinput--docs)
+- [DateTime](?path=/docs/components-datetime-datetime--docs)
+- [Popover](?path=/docs/components-navigation-popover--docs)
 
 ## Props
 

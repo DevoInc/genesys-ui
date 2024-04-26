@@ -1,11 +1,8 @@
 import * as React from 'react';
-import { formatDate, isValidFormat } from '../DateTime/utils/format';
 
 import {
   Panel,
   Button,
-  InputControl,
-  type InputControlProps,
   type IGlobalAriaAttrs,
   type IGlobalAttrs,
   type IStyledOverloadCss,
@@ -15,13 +12,18 @@ import {
 } from '@devoinc/genesys-ui';
 
 import { DateTime, type DateTimeProps } from '../DateTime';
-import { GICalendarMonthDayPlannerEvents } from '@devoinc/genesys-icons';
-import { parseToTimestamp, toTimestamp } from '../utils';
+import { toTimestamp } from '../../utils/time';
+import { DateTimeInput, DateTimeInputProps } from '../DateTimeInput';
+import { formatDate, parseDate as parseDateFN } from '../../utils';
+import { TDatetime } from '../declarations';
 
 export interface DateTimeFloatingPickerProps
   extends Pick<PopoverProps, 'appendTo' | 'isOpened' | 'onClose'>,
     Omit<DateTimeProps, 'onChange' | 'selectedDates'>,
-    Pick<InputControlProps, 'placeholder' | 'size'>,
+    Omit<
+      DateTimeInputProps,
+      'onChange' | 'hasMillis' | 'hasSeconds' | 'hasTIme' | 'value'
+    >,
     Pick<IGlobalAriaAttrs, 'aria-label'>,
     Pick<IGlobalAttrs, 'id'>,
     Pick<IStyledOverloadCss, 'styles'>,
@@ -31,17 +33,11 @@ export interface DateTimeFloatingPickerProps
   /** Cancel button text */
   cancelButtonText?: string;
   /** Function called when Apply button is clicked. */
-  onApply: (ts: number) => void;
+  onApply?: (ts: number) => void;
   /** Function called when Cancel button is clicked. */
-  onCancel: () => void;
-  /** Function called when any enabled calendar cell is clicked. */
-  onChangeCalendar: (ts: number) => void;
-  /** Funcion called when input text is changed. */
-  onInputChange: InputControlProps['onChange'];
-  onInputBlur: InputControlProps['onBlur'];
-  onInputKeyUp: InputControlProps['onKeyUp'];
-  /** Valid date format. Check https://date-fns.org/docs/format */
-  validDateFormats: string[];
+  onCancel?: () => void;
+  /** Function called when any enabled calendar cell is clicked or the time input changed. */
+  onChange?: DateTimeProps['onChange'];
 }
 
 export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
@@ -50,7 +46,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
   applyButtonText = 'Apply',
   as,
   cancelButtonText = 'Cancel',
-  validDateFormats: formatStr,
+  dateFormats,
   hasMillis = false,
   hasSeconds = true,
   hasTime = true,
@@ -58,57 +54,61 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
   isOpened,
   onApply,
   onCancel,
-  onChangeCalendar,
-  onInputBlur: onBlurInput,
-  onInputChange: onChangeInput,
-  onInputKeyUp: onKeyUpInput,
+  onChange,
   onClose,
-  placeholder,
-  size,
+  parseDate = parseDateFN,
   styles: customStyles,
-  value: customValue,
+  value: customValue = new Date().getTime(),
   ...restDateTimeProps
 }) => {
   const value = toTimestamp(customValue);
 
-  const [date, setDate] = React.useState(value ? value : new Date().getTime());
-  const [formatedDate, setFormatDate] = React.useState(
-    formatDate({
-      format: formatStr?.[0],
-      hasMillis,
-      hasSeconds,
-      hasTime,
-      ts: value,
-    }),
-  );
+  const [inputDate, setInputDate] = React.useState<number>(value);
 
-  const onBlurInputCallback = React.useCallback(
-    (event) => {
-      const inputValue = (event?.target?.value as string) || ('' as string);
-      // TODO: debo yo revisar esto?
-      if (isValidFormat(inputValue, formatStr)) {
-        onApply?.(parseToTimestamp(inputValue));
-      }
-      onBlurInput?.(event.target.value);
-    },
-    [onBlurInput],
-  );
+  const setOpenendRef =
+    React.useRef<React.Dispatch<React.SetStateAction<boolean>>>();
 
-  const onChangeInputCallback = React.useCallback(
-    (event) => {
-      setFormatDate(event.target.value);
-      onChangeInput?.(event.target.value);
-    },
-    [onChangeInput],
-  );
-
-  const onChangeCallback = React.useCallback(
+  const onInputChangeCallback = React.useCallback(
     (ts: number) => {
-      console.log('onChangeCalendar');
-      setDate(ts);
-      onChangeCalendar && onChangeCalendar(ts);
+      onChange?.(ts);
+      onApply?.(ts);
     },
-    [onChangeCalendar],
+    [onApply, onChange],
+  );
+
+  const onDateTimeChangeCallback = React.useCallback(
+    (ts: number) => {
+      setInputDate(ts);
+      onChange?.(ts);
+    },
+    [onChange],
+  );
+
+  const onInputKeyUpCallback = React.useCallback(
+    (event: React.KeyboardEvent<Element>) => {
+      if (
+        event.type === 'keyup' &&
+        (event.code === 'Escape' || event.code === 'Enter')
+      ) {
+        setOpenendRef.current(false);
+      }
+    },
+    [],
+  );
+
+  const validateDateCallback = React.useCallback(
+    (ts: TDatetime) => {
+      const strDate = formatDate({
+        format: dateFormats?.[0],
+        hasMillis,
+        hasSeconds,
+        hasTime,
+        ts,
+      });
+
+      return parseDate(strDate).isValid;
+    },
+    [dateFormats, hasMillis, hasSeconds, hasTime, parseDate],
   );
 
   return (
@@ -118,23 +118,21 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
       isOpened={isOpened}
       onClose={onClose}
     >
-      {({ ref, toggle }) => (
+      {({ ref, setOpened }) => (
         <div ref={ref}>
-          <InputControl
-            aria-label={ariaLabel as string}
-            icon={<GICalendarMonthDayPlannerEvents />}
-            id={id as string}
-            onBlur={onBlurInputCallback}
-            onChange={onChangeInputCallback}
-            onClick={toggle}
-            onKeyUp={onKeyUpInput}
-            placeholder={placeholder}
-            size={size}
-            value={formatedDate}
+          <DateTimeInput
+            {...restDateTimeProps}
+            aria-label={ariaLabel}
+            id={id}
+            onKeyUp={onInputKeyUpCallback}
+            onChange={onInputChangeCallback}
+            onClick={() => setOpened(true)}
+            value={inputDate}
           />
         </div>
       )}
       {({ setOpened }) => {
+        setOpenendRef.current = setOpened;
         const getActions = () => [
           ...(onCancel
             ? [
@@ -142,7 +140,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
                   key={'cancel'}
                   onClick={() => {
                     setOpened(false);
-                    onCancel();
+                    onCancel?.();
                   }}
                 >
                   {cancelButtonText}
@@ -156,7 +154,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
                   colorScheme={'accent'}
                   onClick={() => {
                     setOpened(false);
-                    onApply(date);
+                    onApply?.(inputDate);
                   }}
                 >
                   {applyButtonText}
@@ -175,11 +173,12 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
             <Panel.Body>
               <DateTime
                 {...restDateTimeProps}
-                hasSeconds={hasSeconds}
                 hasMillis={hasMillis}
+                hasSeconds={hasSeconds}
                 hasTime={hasTime}
+                onChange={onDateTimeChangeCallback}
+                validateDate={validateDateCallback}
                 value={value}
-                onChange={onChangeCallback}
               />
             </Panel.Body>
             {getActions().length > 0 && (
