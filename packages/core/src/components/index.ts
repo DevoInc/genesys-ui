@@ -51,7 +51,7 @@ export * from './RadioGroup';
 export * from './Select';
 export * from './SelectControl';
 export * from './SpinnerLoader';
-export * from './SplitPane';
+export * from './SplitLayout';
 export * from './StatusMessage';
 export * from './Stepper';
 export * from './Switch';
