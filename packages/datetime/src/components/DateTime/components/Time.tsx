@@ -11,21 +11,17 @@ import {
   IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
 
-import type { CalendarProps } from '../../Calendar';
-import type { TDatetime } from '../../declarations';
+import type { ITime, TDatetime } from '../../declarations';
 import { getFormatTimeStr, toTimestamp } from '../../../utils';
 import { isSameDay } from '../../Calendar/validations';
 
 export interface TimeProps
-  extends Pick<CalendarProps, 'maxDate' | 'minDate'>,
+  extends Pick<ITime, 'maxDate' | 'minDate'>,
     Required<Pick<IGlobalAriaAttrs, 'aria-label'>>,
     Pick<IGlobalAttrs, 'id'>,
+    Pick<ITime, 'hasMillis' | 'hasSeconds'>,
     IStyledOverloadCss,
     IStyledPolymorphic {
-  /** If hasTime, allow to show the milliseconds. */
-  hasMillis?: boolean;
-  /** If hasTime, allow to show the seconds. */
-  hasSeconds?: boolean;
   /** Function called when change the time value.  */
   onChange: (ts: number) => void;
   /** The size of the Time, specially the input. */

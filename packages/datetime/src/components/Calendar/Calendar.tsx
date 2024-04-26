@@ -15,13 +15,14 @@ import {
   type IStyledOverloadCss,
   type IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
-import type { TDatetime } from '../declarations';
+import type { ITime, TDatetime } from '../declarations';
 import { toTimestamp } from '../../utils';
 import { lastDayOfMonth as lastDayOfMonthFNS } from 'date-fns';
 import { Cell, type CellProps } from './components';
 
 export interface CalendarProps
   extends Pick<CellProps, 'onClick' | 'onMouseEnter' | 'onMouseLeave'>,
+    Pick<ITime, 'maxDate' | 'minDate'>,
     //native
     IGlobalAttrs,
     IGlobalAriaAttrs,
@@ -31,10 +32,6 @@ export interface CalendarProps
   dateForMonth?: TDatetime;
   /** Disable hover effect. It could be combined with hoverDay, onMouseEnter and onMouseLeave properties for custom control. */
   disableHoverDay?: boolean;
-  /** The latest day to accept. One of `number` or `Date`. */
-  maxDate?: TDatetime;
-  /** The earliest day to accept. One of `number` or `Date`. */
-  minDate?: TDatetime;
   /** Allow hover efect when mouse is left of a selected cell. */
   hasLeftHoverEffect?: boolean;
   /** Allow hover efect when mouse is right of a selected cell. */

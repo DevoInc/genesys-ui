@@ -22,14 +22,13 @@ import {
   type IStyledOverloadCss,
   type IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
-import type { CalendarProps } from '../../Calendar';
-import type { TDatetime } from '../../declarations';
+import type { ITime, TDatetime } from '../../declarations';
 
 import { toTimestamp } from '../../../utils';
 import { GIAngleLeft, GIAngleRight } from '@devoinc/genesys-icons';
 
 export interface MonthProps
-  extends Pick<CalendarProps, 'maxDate' | 'minDate'>,
+  extends Pick<ITime, 'maxDate' | 'minDate'>,
     Pick<IGlobalAttrs, 'id'>,
     IStyledOverloadCss,
     IStyledPolymorphic {
