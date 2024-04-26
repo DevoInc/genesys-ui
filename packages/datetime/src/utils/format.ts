@@ -11,6 +11,13 @@ import { TDatetime } from '../components/declarations';
 export const getFormatTimeStr = (hasSeconds = true, hasMillis = false) =>
   hasSeconds ? (hasMillis ? 'HH:mm:ss.sss' : 'HH:mm:ss') : 'HH:mm';
 
+export interface FormatDateResult {
+  format?: string;
+  hasMillis?: boolean;
+  hasSeconds?: boolean;
+  hasTime?: boolean;
+  ts: TDatetime;
+}
 /**
  * Formats a date string based on the provided parameters.
  * @param options - An object containing options for formatting the date.
@@ -27,29 +34,29 @@ export const formatDate = ({
   hasMillis = false,
   hasSeconds = true,
   hasTime = true,
-}: {
-  format?: string;
-  hasMillis?: boolean;
-  hasSeconds?: boolean;
-  hasTime?: boolean;
-  ts: TDatetime;
-}): string => {
+}: FormatDateResult): string => {
   const formatStr =
     format ||
     `yyyy-MM-dd${hasTime ? ` ${getFormatTimeStr(hasSeconds, hasMillis)}` : ''}`;
   return formatFNS(ts, formatStr);
 };
 
+export interface ParseDateResult {
+  isValid: boolean;
+  value: number;
+  errors: string[];
+}
+
 /**
- * Checks if a given date string is in one of the valid formats.
- * @param dateStr - The date string to validate.
- * @param validFormats - An array of valid date formats. (Default: ['yyyy-MM-ss HH:mm:ss'])
- * @returns - timestamp value if the date string is in one of the valid formats, false otherwise.
+ * Parses a date string into milliseconds since epoch.
+ * @param {string} dateStr - The date string to parse.
+ * @param {string[]} validFormats - Array of valid date formats to parse. Defaults to ['yyyy-MM-dd HH:mm:ss'].
+ * @returns {ParseDateResult} An object containing information about the parsed date.
  */
-export const isValidFormat = (
+export const parseDate = (
   dateStr: string,
   validFormats: string[] = ['yyyy-MM-dd HH:mm:ss'],
-) => {
+): ParseDateResult => {
   for (const format of validFormats) {
     try {
       const fechaParseada = parse(dateStr, format, new Date());
@@ -57,11 +64,15 @@ export const isValidFormat = (
         !isNaN(fechaParseada.getTime()) &&
         format.length === dateStr.trim().length
       ) {
-        return fechaParseada.getTime();
+        return {
+          isValid: true,
+          value: fechaParseada.getTime(),
+          errors: [],
+        };
       }
     } catch (e) {
-      return false;
+      return { isValid: false, value: null, errors: ['Invalid date'] };
     }
   }
-  return false;
+  return { isValid: false, value: null, errors: ['Invalid date'] };
 };

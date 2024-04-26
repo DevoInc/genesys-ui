@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 
-import { formatDate, getFormatTimeStr, isValidFormat } from './format';
+import { formatDate, getFormatTimeStr, parseDate } from './format';
 
 describe('getFormatTimeStr', () => {
   test('with seconds and millis', () => {
@@ -60,18 +60,32 @@ describe('formatDate function', () => {
   });
 });
 
-describe('validarFormatoFecha', () => {
-  test('should return true if the date has a valid format', () => {
-    const dateStr = '15-04-2024';
-    const formats = ['dd-MM-yyyy', 'yyyy-MM-dd', 'MM-dd-yyyy'];
-    expect(isValidFormat(dateStr, formats)).toBe(
-      new Date(2024, 3, 15, 0, 0, 0).getTime(),
-    );
+describe('parseDate function', () => {
+  test('should parse a valid date string correctly', () => {
+    const result = parseDate('2024-04-26 12:00:00');
+    expect(result.isValid).toBe(true);
+    expect(result.value).toEqual(new Date('2024-04-26 12:00:00').getTime());
+    expect(result.errors).toHaveLength(0);
   });
 
-  test('should return false if the date does not have a valid format', () => {
-    const dateStr = '2024-15-04';
-    const formats = ['dd-MM-yyyy', 'yyyy-MM-dd', 'MM-dd-yyyy'];
-    expect(isValidFormat(dateStr, formats)).toBe(false);
+  test('should return isValid as false for an invalid date string', () => {
+    const result = parseDate('invalid date');
+    expect(result.isValid).toBe(false);
+    expect(result.value).toBeNull();
+    expect(result.errors).toContain('Invalid date');
+  });
+
+  test('should handle custom valid date formats', () => {
+    const result = parseDate('2024/04/26 12:00:00', ['yyyy/MM/dd HH:mm:ss']);
+    expect(result.isValid).toBe(true);
+    expect(result.value).toEqual(new Date('2024/04/26 12:00:00').getTime());
+    expect(result.errors).toHaveLength(0);
+  });
+
+  test('should return isValid as false for an empty date string', () => {
+    const result = parseDate('');
+    expect(result.isValid).toBe(false);
+    expect(result.value).toBeNull();
+    expect(result.errors).toContain('Invalid date');
   });
 });
