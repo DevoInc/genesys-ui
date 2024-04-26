@@ -1,15 +1,27 @@
 import * as React from 'react';
 
-import { VFlex } from '../../VFlex';
+import type { IBanner } from '../declarations';
+import { Flex } from '../../Flex';
+import { BannerContext } from '../context';
 
-export interface BannerContentContainerProps {
-  children: React.ReactNode;
-}
+export interface BannerContentContainerProps
+  extends Pick<IBanner, 'children' | 'subtle'> {}
 
 export const BannerContentContainer: React.FC<BannerContentContainerProps> = ({
   children,
-}) => (
-  <VFlex flex="1 1 auto" spacing="cmp-sm">
-    {children}
-  </VFlex>
-);
+  subtle,
+}) => {
+  const context = React.useContext(BannerContext);
+  const evalSubtle = subtle || context.subtle;
+  return (
+    <Flex
+      flex="1 1 auto"
+      gap={evalSubtle ? 'cmp-xxs' : 'cmp-sm'}
+      alignItems={evalSubtle ? 'center' : undefined}
+      flexDirection={evalSubtle ? 'row' : 'column'}
+      minWidth="0"
+    >
+      {children}
+    </Flex>
+  );
+};

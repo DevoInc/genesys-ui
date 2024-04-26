@@ -1,37 +1,24 @@
 import * as React from 'react';
 
+import type { IBanner } from '../declarations';
+import type { IStyledOverloadCss } from '../../../declarations';
 import { HFlex } from '../../HFlex';
-import { ButtonProps } from '../../Button';
-import { BannerContainerProps } from './BannerContainer';
-import { BannerContext } from '../context';
 
 export interface BannerActionsProps
-  extends Pick<BannerContainerProps, 'status' | 'styles'> {
-  actions?: React.ReactElement<ButtonProps>[];
-}
+  extends IStyledOverloadCss,
+    Pick<IBanner, 'children'> {}
 
 export const BannerActions: React.FC<BannerActionsProps> = ({
-  actions,
+  children,
   styles,
-}) => {
-  const { status } = React.useContext(BannerContext);
-  return (
-    <HFlex
-      alignItems="center"
-      justifyContent="flex-end"
-      spacing="cmp-xs"
-      styles={styles}
-    >
-      {React.Children.map(
-        actions,
-        (action, idx) =>
-          action &&
-          React.cloneElement(action, {
-            key: idx,
-            size: action.props.size || 'sm',
-            colorScheme: action.props.colorScheme || status,
-          }),
-      )}
-    </HFlex>
-  );
-};
+}) => (
+  <HFlex
+    alignItems="center"
+    flex="0 0 auto"
+    justifyContent="flex-end"
+    spacing="cmp-xs"
+    styles={styles}
+  >
+    {children}
+  </HFlex>
+);

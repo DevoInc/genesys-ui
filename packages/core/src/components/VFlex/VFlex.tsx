@@ -15,7 +15,7 @@ export interface VFlexProps
 }
 
 const InternalVFlex: React.FC<VFlexProps> = ({
-  alignItems = 'stretch',
+  alignItems = 'flex-start',
   children,
   childrenFlex,
   childrenFitFullHeight = false,

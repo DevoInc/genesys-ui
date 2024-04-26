@@ -53,3 +53,5 @@ export const Icon: React.FC<IconProps> = ({
     </IconContext.Provider>
   );
 };
+
+Icon.displayName = 'Icon';

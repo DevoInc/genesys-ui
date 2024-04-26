@@ -12,6 +12,7 @@ export default meta;
 type Story = StoryObj<typeof ModalBody>;
 
 export const Body: Story = {
+  name: 'ModalBody',
   args: {
     children: lorem,
   },

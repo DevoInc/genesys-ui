@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import type { TBannerStatus } from './declarations';
+import type { IBanner } from './declarations';
 
-export interface BannerContextProps {
-  status: TBannerStatus;
-}
+export interface BannerContextProps
+  extends Pick<IBanner, 'status' | 'subtle'> {}
 
 export const BannerContext = React.createContext<BannerContextProps>({
   status: 'info',
+  subtle: false,
 });

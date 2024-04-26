@@ -20,8 +20,8 @@ export const BannerIcon: React.FC<BannerIconProps> = ({
   ...restIconProps
 }) => {
   const theme = useTheme();
-  const { status: contextStatus } = React.useContext(BannerContext);
-  const statusEval = status || contextStatus;
+  const context = React.useContext(BannerContext);
+  const statusEval = status || context.status;
 
   return (
     <Icon

@@ -13,6 +13,7 @@ export default meta;
 type Story = StoryObj<typeof ModalPanel>;
 
 export const Panel: Story = {
+  name: 'ModalPanel',
   render: (args) =>
     ((props) => {
       return (

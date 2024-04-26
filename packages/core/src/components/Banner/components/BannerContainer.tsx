@@ -1,12 +1,13 @@
 import * as React from 'react';
 
-import {
-  TActiveStatus,
+import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../declarations';
+import type { IBanner } from '../declarations';
+import { BannerContext } from '../context';
 
 import { StyledBanner } from '../StyledBanner';
 
@@ -14,10 +15,8 @@ export interface BannerContainerProps
   extends IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
-    IGlobalAriaAttrs {
-  children: React.ReactNode;
-  status?: TActiveStatus;
-}
+    IGlobalAriaAttrs,
+    Pick<IBanner, 'children' | 'status' | 'subtle'> {}
 
 export const BannerContainer: React.FC<BannerContainerProps> = ({
   as,
@@ -26,6 +25,7 @@ export const BannerContainer: React.FC<BannerContainerProps> = ({
   role,
   status,
   styles,
+  subtle,
   tooltip,
   ...ariaProps
 }) => (
@@ -36,8 +36,11 @@ export const BannerContainer: React.FC<BannerContainerProps> = ({
     id={id}
     role={role}
     status={status}
+    subtle={subtle}
     title={tooltip}
   >
-    {children}
+    <BannerContext.Provider value={{ status, subtle }}>
+      {children}
+    </BannerContext.Provider>
   </StyledBanner>
 );
