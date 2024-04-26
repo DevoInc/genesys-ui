@@ -1,0 +1,40 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './DateTimeInput.stories';
+
+<Meta of={Stories} />
+
+# DateTimeInput
+
+The `DateTimeInput` component is a customization of the `Input` component
+adapted to display its value in a specific date format, allowing validation
+of date formats.
+
+Each time the input text field value is modified, it undergoes validation
+against accepted date formats.
+The first value in the `dateFormats` array serves as the default value to display.
+If no format is specified, the default value will be `YYYY-mm-dd HH:mm:ss`.
+
+When the `Enter` key is pressed or when focus is lost and the value of the input
+is valid, the `onChange` method of the component is triggered,
+and the internal value is set to the new one.
+
+When the `Escape` key is pressed the value is retored to last valid setted value.
+
+## How to import
+
+<Source code={`import { DateTimePicker } from '@devo/genesys-ui-datetime';`} />
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Custom validation
+
+In the following examples, dates outside of 2023 will not be valid.
+
+<Canvas of={Stories.Base} />
+
+## Props
+
+<ArgTypes of={Stories} />
