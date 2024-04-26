@@ -1,5 +1,13 @@
 # Changelog
 
+## [9.1.1](https://github.com/DevoInc/genesys-ui/compare/v9.1.0...v9.1.1) (2024-04-26)
+
+
+### Bug Fixes
+
+* Add export for addBulkColumnData helper function in table package ([487d1f9](https://github.com/DevoInc/genesys-ui/commit/487d1f994cc5484a499d40363b89ea0bd624246b))
+* QUV-2277 fixed the position of cursor in SelectControl component when there is placeholder or value. ([b5be66a](https://github.com/DevoInc/genesys-ui/commit/b5be66a9e440198e7e7c1fb5e5fffb17ea883061))
+
 ## [9.1.0](https://github.com/DevoInc/genesys-ui/compare/v9.0.0...v9.1.0) (2024-04-15)
 
 
