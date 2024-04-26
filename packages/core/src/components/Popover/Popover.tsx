@@ -73,7 +73,7 @@ export const InternalPopover: React.FC<PopoverProps> = ({
 }) => {
   const theme = useTheme();
   const evalZIndex = zIndex || theme.alias.elevation.zIndex.depth.activated;
-  const [opened, setOpened] = React.useState(isOpened);
+  const [opened, setOpened] = React.useState<boolean>(isOpened);
 
   const [referenceElement, setReferenceElement] =
     React.useState<HTMLElement>(null);
