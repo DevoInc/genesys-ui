@@ -78,7 +78,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
   const invalidDates = notValidDates.map((date) => toTimestamp(date));
   const lastDayOfMonth = lastDayOfMonthFNS(dateForMonth).getTime();
 
-  const [hoverDay, setHoverDay] = React.useState(null);
+  const [hoverDay, setHoverDay] = React.useState<number>(null);
 
   const validateDateCallback = React.useCallback(
     (ts: number) => {
