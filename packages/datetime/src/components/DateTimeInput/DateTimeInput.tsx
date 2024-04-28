@@ -89,7 +89,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   });
 
   const onChangeCallback = React.useCallback(
-    (event: React.ChangeEvent<Element>) => {
+    (event: React.ChangeEvent<HTMLInputElement>) => {
       const element = event.target as HTMLInputElement;
       setInputValue(element.value);
       const result = parseDate(element.value, formatStr);
