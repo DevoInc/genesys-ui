@@ -7,8 +7,20 @@ import * as Stories from './DateTimeRangeControl.stories';
 # DateTimeRangeControl
 
 Component used for selecting a range of date-time values.
-The component provides options for specifying the format of the range, including real-time control and shift modifiers.
+The component provides options for specifying the format of the range,
+including real-time control and shift modifiers.
 The component also allows for the specification of labels and status messages to provide additional information and feedback to the user.
+
+Each time the input text field value is modified, it undergoes validation
+against accepted date formats.
+The first value in the `dateFormats` array serves as the default value to display.
+If no format is specified, the default value will be `YYYY-mm-dd HH:mm:ss`.
+
+When the `Enter` key is pressed or when focus is lost and the value of the input
+is valid, the `onChange` method of the component is triggered,
+and the internal value is set to the new one.
+
+When the `Escape` key is pressed the value is retored to last valid setted value.
 
 ## How to import
 
@@ -20,6 +32,26 @@ The component also allows for the specification of labels and status messages to
 
 <Canvas of={Stories.Base} />
 
+## Range validation
+
+You can validate the range with the `onChange` property.
+In the following example, `to` datetime can not be earlier than `from` datetime
+and the `from` datetime can not be earlier than 10 days prior.
+
+<Canvas of={Stories.RangeValidation} />
+
+## Using expressions
+
+The following example is a dummy example where the `parseExpression` property
+validate that the text have the `now` string to be considered has a valid expression.
+
+<Canvas of={Stories.UsingExpressions} />
+
+## Related components
+
+- [Input](?path=/docs/components-form-input--docs)
+
 ## Props
 
 <ArgTypes of={Stories} />
+UsingExpressions

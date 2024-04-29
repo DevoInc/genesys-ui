@@ -31,38 +31,46 @@ import { TRealtimeState } from './declarations';
 import { REAL_TIME_SIZE_MAP } from './constants';
 import { getInputWidth } from './theme';
 import { RealTimeButton, type RealTimeButtonProps } from '../RealTimeButton';
+import {
+  toTSorPreset,
+  parseExpression as parseExpressionFN,
+  isManageableDate,
+  formatDate,
+  ParseExpressionResult,
+} from '../../utils';
+import { TDatetime } from '../declarations';
 
 export interface DateTimeRangeControlProps
   extends Required<Pick<IGlobalAttrs, 'id'>>,
     Pick<ITriggerAriaAttrs, 'aria-controls'>,
     Pick<ICssDateTimeRangeControlInput, 'hasMillis' | 'hasSeconds' | 'hasTime'>,
     Pick<StyledDateTimeRangeControlProps, 'isOpen' | 'wide'>,
+    Pick<FieldProps, 'label' | 'helper' | 'required'>,
     IStyledOverloadCss,
     IStyledPolymorphic {
   /** aria-label attribute for `from` input */
   ariaLabelFrom?: IGlobalAriaAttrs['aria-label'];
   /** aria-label attribute for `to` input */
   ariaLabelTo?: IGlobalAriaAttrs['aria-label'];
+  /** Valid date format. Check https://date-fns.org/docs/format */
+  dateFormats: string[];
   /** Value for the first input. */
-  from?: InputControlProps['value'];
+  from?: string | TDatetime;
   /** Floating status message or helper for `from` input field */
-  helperFrom?: FieldProps['helper'];
+  helperFrom?: string;
   /** Floating status message or helper for `to` input field */
-  helperTo?: FieldProps['helper'];
+  helperTo?: string;
   /** Handler method after either 'from' or 'to' inputs field cliked  */
   onClick?: IMouseEventAttrs['onClick'];
-  /** Handler method after either 'from' or 'to' inputs lost focus. */
-  onBlur?: (range: {
-    from: InputControlProps['value'];
-    to: InputControlProps['value'];
-  }) => void;
   /** Handler method after either 'from' or 'to' inputs values change. */
   onChange?: (range: {
-    from: InputControlProps['value'];
-    to: InputControlProps['value'];
+    from: { value: number | string; str: string };
+    to: { value: number | string; str: string };
   }) => void;
   /** handler method after realTime button is clicked. */
   onRealTimeClick?: RealTimeButtonProps['onClick'];
+  /** Transformation function for time. It is used to transform a time expression to timestamp. Required if there are presets. */
+  parseExpression?: (expression: string) => ParseExpressionResult;
   /** A text hint that describes the expected value of the `from` field */
   placeholderFrom?: InputControlProps['placeholder'];
   /** A text hint that describes the expected value of the `to` field */
@@ -74,12 +82,12 @@ export interface DateTimeRangeControlProps
   showCalendarIcon?: boolean;
   /** Size for the HTML input elements. */
   size?: TFieldSize;
-  /** Status for `from` input field */
-  statusFrom?: FieldProps['status'];
-  /** Status for `from` input field */
-  statusTo?: FieldProps['status'];
+  /** Initial state for `from` input field */
+  statusFrom: 'base' | 'error';
+  /** Initial state for `to` input field */
+  statusTo: 'base' | 'error';
   /** Value for the second input. If such value is not set, its input will not be shown. */
-  to?: InputControlProps['value'];
+  to?: string | TDatetime;
 }
 
 const hasRealTime = (realTime: TRealtimeState) => realTime !== 'hidden';
@@ -89,164 +97,433 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
   ariaLabelFrom = 'from',
   ariaLabelTo = 'to',
   as,
-  from,
+  from: customFrom,
   hasMillis,
   hasSeconds,
   hasTime,
+  helper,
+  label,
   helperFrom,
   helperTo,
   id,
-  onBlur,
   onChange,
   onClick,
   onRealTimeClick,
   placeholderFrom,
   placeholderTo,
   realTime = 'hidden',
+  required,
   showCalendarIcon,
-  to,
+  to: customTo,
   isOpen = false,
   wide,
+  size = 'md',
   statusFrom = 'base',
   statusTo = 'base',
-  size = 'md',
   styles,
+  parseExpression = parseExpressionFN,
+  dateFormats,
 }) => {
-  const onBlurFromCallback = React.useCallback(
-    (event: React.FocusEvent<HTMLInputElement>) => {
-      onBlur({ from: event.target.value, to });
-    },
-    [onBlur, to],
+  const theme = useTheme();
+
+  const value = React.useMemo(
+    () => ({
+      from: toTSorPreset(customFrom),
+      to: toTSorPreset(customTo),
+    }),
+    [customFrom, customTo],
   );
 
-  const onBlurToCallback = React.useCallback(
-    (event: React.FocusEvent<HTMLInputElement>) => {
-      onBlur({ from, to: event.target.value });
-    },
-    [from, onBlur],
+  const isManageableFromDate = isManageableDate(value.from);
+  const isManageableToDate = isManageableDate(value.to);
+
+  const strValue = React.useMemo(
+    () => ({
+      from: isManageableFromDate
+        ? formatDate({
+            format: dateFormats?.[0],
+            hasMillis,
+            hasSeconds,
+            hasTime,
+            ts: value.from as number,
+          })
+        : (value.from as string),
+      to: isManageableToDate
+        ? formatDate({
+            format: dateFormats?.[0],
+            hasMillis,
+            hasSeconds,
+            hasTime,
+            ts: value.to as number,
+          })
+        : (value.to as string),
+    }),
+    [
+      dateFormats,
+      hasMillis,
+      hasSeconds,
+      hasTime,
+      isManageableFromDate,
+      isManageableToDate,
+      value.from,
+      value.to,
+    ],
   );
+
+  const [initialDate, setInitialDate] = React.useState(value);
+  const [inputValue, setInputValue] = React.useState<{
+    from: string;
+    to: string;
+  }>(strValue);
+  const [status, setStatus] = React.useState<{
+    from: { status: 'base' | 'error'; helper: string };
+    to: { status: 'base' | 'error'; helper: string };
+  }>(() => {
+    const resultFrom = parseExpressionFN(
+      strValue.from,
+      dateFormats,
+      parseExpression,
+    );
+    const resultTo = parseExpressionFN(
+      strValue.to,
+      dateFormats,
+      parseExpression,
+    );
+    return {
+      from: resultFrom.isValid
+        ? { status: statusFrom, helper: helperFrom }
+        : { status: 'error', helper: resultFrom.errors.join('. ') },
+      to: resultTo.isValid
+        ? { status: statusTo, helper: helperTo }
+        : { status: 'error', helper: resultTo.errors.join('. ') },
+    };
+  });
 
   const onChangeFromCallback = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      onChange({ from: event.target.value, to });
+      const element = event.target as HTMLInputElement;
+      setInputValue({ ...inputValue, from: element.value });
+      const result = parseExpressionFN(
+        element.value,
+        dateFormats,
+        parseExpression,
+      );
+      if (result.isValid) {
+        setStatus({
+          ...status,
+          from: { status: statusFrom, helper: helperFrom },
+        });
+      } else {
+        setStatus({
+          ...status,
+          from: { status: 'error', helper: result.errors.join('. ') },
+        });
+      }
     },
-    [onChange, to],
+    [dateFormats, helperFrom, inputValue, parseExpression, status, statusFrom],
   );
 
   const onChangeToCallback = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      onChange({ from, to: event.target.value });
+      const element = event.target as HTMLInputElement;
+      setInputValue({ ...inputValue, to: element.value });
+      const result = parseExpressionFN(
+        element.value,
+        dateFormats,
+        parseExpression,
+      );
+      if (result.isValid) {
+        setStatus({ ...status, to: { status: statusTo, helper: helperTo } });
+      } else {
+        setStatus({
+          ...status,
+          to: { status: 'error', helper: result.errors.join('. ') },
+        });
+      }
     },
-    [from, onChange],
+    [dateFormats, helperTo, inputValue, parseExpression, status, statusTo],
   );
 
-  const onClickRTCallback = React.useCallback(
-    (event) => {
-      event.stopPropagation();
-      onRealTimeClick(event);
+  const updateFromDateCallback = React.useCallback(() => {
+    const result = parseExpressionFN(
+      inputValue.from,
+      dateFormats,
+      parseExpression,
+    );
+    if (result.isValid) {
+      setInitialDate({ ...initialDate, from: result.value });
+      onChange?.({
+        to: { value: initialDate.to, str: inputValue.to },
+        from: { value: result.value, str: inputValue.from },
+      });
+      setStatus({
+        ...status,
+        from: { status: statusFrom, helper: helperFrom },
+      });
+    } else {
+      setStatus({
+        ...status,
+        from: { status: 'error', helper: result.errors.join('. ') },
+      });
+    }
+  }, [
+    inputValue.from,
+    inputValue.to,
+    dateFormats,
+    parseExpression,
+    initialDate,
+    onChange,
+    status,
+    statusFrom,
+    helperFrom,
+  ]);
+
+  const updateToDateCallback = React.useCallback(() => {
+    const result = parseExpressionFN(
+      inputValue.to,
+      dateFormats,
+      parseExpression,
+    );
+    if (result.isValid) {
+      setInitialDate({ ...initialDate, to: result.value });
+      onChange?.({
+        from: { value: initialDate.from, str: inputValue.from },
+        to: { value: result.value, str: inputValue.to },
+      });
+      setStatus({ ...status, to: { status: statusTo, helper: helperTo } });
+    } else {
+      setStatus({
+        ...status,
+        to: { status: 'error', helper: result.errors.join('. ') },
+      });
+    }
+  }, [
+    inputValue.to,
+    inputValue.from,
+    dateFormats,
+    parseExpression,
+    initialDate,
+    onChange,
+    status,
+    statusTo,
+    helperTo,
+  ]);
+
+  const onKeyUpFromCallback = React.useCallback(
+    (event: React.KeyboardEvent<Element>) => {
+      if (
+        event.type === 'keyup' &&
+        event.code === 'Enter' &&
+        status.from.status === 'base'
+      ) {
+        updateFromDateCallback();
+      } else if (event.type === 'keyup' && event.code === 'Escape') {
+        setInputValue({
+          ...inputValue,
+          from: formatDate({
+            ts: initialDate.from as number,
+            format: dateFormats?.[0],
+            hasMillis,
+            hasSeconds,
+            hasTime,
+          }),
+        });
+        setStatus({
+          ...status,
+          from: { status: statusFrom, helper: helperFrom },
+        });
+      }
     },
-    [onRealTimeClick],
+    [
+      status,
+      updateFromDateCallback,
+      inputValue,
+      initialDate.from,
+      dateFormats,
+      hasMillis,
+      hasSeconds,
+      hasTime,
+      statusFrom,
+      helperFrom,
+    ],
   );
 
-  const theme = useTheme();
+  const onKeyUpToCallback = React.useCallback(
+    (event: React.KeyboardEvent<Element>) => {
+      if (
+        event.type === 'keyup' &&
+        event.code === 'Enter' &&
+        status.to.status === 'base'
+      ) {
+        updateToDateCallback();
+      } else if (event.type === 'keyup' && event.code === 'Escape') {
+        setInputValue({
+          ...inputValue,
+          to: formatDate({
+            ts: initialDate.to as number,
+            format: dateFormats?.[0],
+            hasMillis,
+            hasSeconds,
+            hasTime,
+          }),
+        });
+        setStatus({
+          ...status,
+          to: { status: statusTo, helper: helperTo },
+        });
+      }
+    },
+    [
+      status,
+      updateToDateCallback,
+      inputValue,
+      initialDate.to,
+      dateFormats,
+      hasMillis,
+      hasSeconds,
+      hasTime,
+      statusTo,
+      helperTo,
+    ],
+  );
+
+  React.useEffect(() => {
+    const resultTo = parseExpressionFN(
+      strValue.to,
+      dateFormats,
+      parseExpression,
+    );
+    const resultFrom = parseExpressionFN(
+      strValue.from,
+      dateFormats,
+      parseExpression,
+    );
+
+    setInitialDate({
+      from: resultFrom.isValid ? resultFrom.value : value.from,
+      to: resultTo.isValid ? resultTo.value : value.from,
+    });
+    setInputValue(strValue);
+    setStatus({
+      from: resultFrom.isValid
+        ? { status: statusFrom, helper: helperFrom }
+        : { status: 'error', helper: resultFrom.errors.join('. ') },
+      to: resultTo.isValid
+        ? { status: statusTo, helper: helperTo }
+        : { status: 'error', helper: resultTo.errors.join('. ') },
+    });
+  }, [
+    dateFormats,
+    helperFrom,
+    helperTo,
+    parseExpression,
+    statusFrom,
+    statusTo,
+    strValue,
+    value,
+  ]);
 
   return (
-    <StyledDateTimeRangeControl
-      aria-controls={isOpen ? ariaControls : null}
-      aria-haspopup
-      as={as}
-      css={styles}
-      hideRealTime={hasRealTime(realTime)}
-      id={id}
-      isOpen={isOpen}
-      onClick={onClick}
-      size={size}
-      tabIndex={0}
-      wide={wide}
-    >
-      {showCalendarIcon && (
-        <GICalendarMonthDayPlannerEvents
+    <Field label={label} id={id} helper={helper} required={required}>
+      <StyledDateTimeRangeControl
+        aria-controls={isOpen ? ariaControls : null}
+        aria-haspopup
+        as={as}
+        css={styles}
+        hideRealTime={hasRealTime(realTime)}
+        id={id}
+        isOpen={isOpen}
+        onClick={onClick}
+        size={size}
+        tabIndex={0}
+        wide={wide}
+      >
+        {showCalendarIcon && (
+          <GICalendarMonthDayPlannerEvents
+            color={theme.cmp.dateTimeRangeControl.arrow.color.fill}
+            size={theme.cmp.dateTimeRangeControl.arrow.size.square[size]}
+          />
+        )}
+        <Field
+          controlWidth={getInputWidth({
+            hasMillis,
+            hasSeconds,
+            hasTime,
+            size,
+            theme,
+          })}
+          hasFloatingHelper
+          helper={status.from.helper}
+          hideLabel
+          id={`${id}-input-from`}
+          label={ariaLabelFrom}
+          status={status.from.status}
+        >
+          <InputControl._Input
+            aria-label={ariaLabelFrom}
+            id={`${id}-input-from`}
+            onBlur={updateFromDateCallback}
+            onChange={onChangeFromCallback}
+            onKeyUp={onKeyUpFromCallback}
+            placeholder={placeholderFrom}
+            size={size}
+            status={status.from.status}
+            styles={cssDateTimeRangeControlInput({
+              hasMillis,
+              hasSeconds,
+              hasTime,
+              size,
+              status: status.from.status,
+            })}
+            value={inputValue.from}
+          />
+        </Field>
+        <GIArrowRight
           color={theme.cmp.dateTimeRangeControl.arrow.color.fill}
           size={theme.cmp.dateTimeRangeControl.arrow.size.square[size]}
         />
-      )}
-      <Field
-        controlWidth={getInputWidth({
-          hasMillis,
-          hasSeconds,
-          hasTime,
-          size,
-          theme,
-        })}
-        label={ariaLabelFrom}
-        id={`${id}-input-from`}
-        hasFloatingHelper
-        helper={helperFrom}
-        hideLabel
-        status={statusFrom}
-      >
-        <InputControl._Input
-          styles={cssDateTimeRangeControlInput({
+        <Field
+          controlWidth={getInputWidth({
             hasMillis,
             hasSeconds,
             hasTime,
             size,
-            status: statusFrom,
+            theme,
           })}
-          aria-label={ariaLabelFrom}
-          id={`${id}-input-from`}
-          placeholder={placeholderFrom}
-          status={statusFrom}
-          value={from}
-          size={size}
-          onBlur={onBlurFromCallback}
-          onChange={onChangeFromCallback}
-        />
-      </Field>
-      <GIArrowRight
-        size={theme.cmp.dateTimeRangeControl.arrow.size.square[size]}
-        color={theme.cmp.dateTimeRangeControl.arrow.color.fill}
-      />
-      <Field
-        controlWidth={getInputWidth({
-          hasMillis,
-          hasSeconds,
-          hasTime,
-          size,
-          theme,
-        })}
-        label={ariaLabelFrom}
-        id={`${id}-input-to`}
-        hasFloatingHelper
-        helper={helperTo}
-        hideLabel
-        status={statusTo}
-      >
-        <InputControl._Input
-          styles={cssDateTimeRangeControlInput({
-            hasMillis,
-            hasSeconds,
-            hasTime,
-            size,
-            status: statusTo,
-          })}
-          aria-label={ariaLabelTo}
+          hasFloatingHelper
+          helper={status.to.helper}
+          hideLabel
           id={`${id}-input-to`}
-          placeholder={placeholderTo}
-          status={statusTo}
-          value={to}
-          size={size}
-          onBlur={onBlurToCallback}
-          onChange={onChangeToCallback}
-        />
-      </Field>
-      {hasRealTime(realTime) && (
-        <RealTimeButton
-          onClick={onClickRTCallback}
-          state={realTime}
-          size={REAL_TIME_SIZE_MAP[size]}
-        />
-      )}
-    </StyledDateTimeRangeControl>
+          label={ariaLabelFrom}
+          status={status.to.status}
+        >
+          <InputControl._Input
+            aria-label={ariaLabelTo}
+            id={`${id}-input-to`}
+            onBlur={updateToDateCallback}
+            onChange={onChangeToCallback}
+            onKeyUp={onKeyUpToCallback}
+            placeholder={placeholderTo}
+            size={size}
+            status={status.to.status}
+            styles={cssDateTimeRangeControlInput({
+              hasMillis,
+              hasSeconds,
+              hasTime,
+              size,
+              status: status.to.status,
+            })}
+            value={inputValue.to}
+          />
+        </Field>
+        {hasRealTime(realTime) && (
+          <RealTimeButton
+            onClick={onRealTimeClick}
+            size={REAL_TIME_SIZE_MAP[size]}
+            state={realTime}
+          />
+        )}
+      </StyledDateTimeRangeControl>
+    </Field>
   );
 };
