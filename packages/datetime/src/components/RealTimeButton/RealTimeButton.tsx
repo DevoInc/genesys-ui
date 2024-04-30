@@ -12,14 +12,14 @@ import {
   SpinnerLoader,
 } from '@devoinc/genesys-ui';
 
-import type { TRealtimeState } from '../DateTimeRangeControl/declarations';
+import type { TRealtimeState } from '../DateTimeRangeInput/declarations';
 
 import { cssRealTimeButtonSpinner } from './helpers';
 
 import {
   getButtonStateFromRealTimeState,
   getRealTimeDataTip,
-} from '../DateTimeRangeControl/util';
+} from '../DateTimeRangeInput/util';
 
 export interface RealTimeButtonProps
   extends Omit<

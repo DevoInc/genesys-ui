@@ -28,7 +28,7 @@ import {
   type TimeProps,
 } from '../DateTime/components';
 import type { TPresetRange } from '../Presets/declarations';
-import { toTimestamp } from '../utils';
+import { toTimestamp } from '../../utils/time';
 import {
   Calendar,
   type CalendarProps,
@@ -145,7 +145,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
 
   const [previewDate, setPreviewDate] = React.useState(initialPreviewDate);
   const [firstTime, setFirsTime] = React.useState(true);
-  const [hoverDay, setHoverDay] = React.useState(null);
+  const [hoverDay, setHoverDay] = React.useState<number>(null);
 
   React.useEffect(() => {
     setPreviewDate({

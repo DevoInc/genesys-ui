@@ -38,7 +38,7 @@ export const formatDate = ({
   const formatStr =
     format ||
     `yyyy-MM-dd${hasTime ? ` ${getFormatTimeStr(hasSeconds, hasMillis)}` : ''}`;
-  return formatFNS(ts, formatStr);
+  return formatFNS(ts || undefined, formatStr);
 };
 
 export interface ParseDateResult {
@@ -75,4 +75,29 @@ export const parseDate = (
     }
   }
   return { isValid: false, value: null, errors: ['Invalid date'] };
+};
+
+export interface ParseExpressionResult {
+  isValid: boolean;
+  value: number;
+  errors: string[];
+}
+
+/**
+ * Checks if a expression is valid.
+ * First check if the expression is a valid date string.
+ * If not, check if it's a valid expression
+ * @param expression The time expression to validate.
+ * @param formats The accepted time formats.
+ * @param expressionFn The function that parses the time expression.
+ * @returns true if the expression is valid, false otherwise.
+ */
+export const parseExpression = (
+  expression: string,
+  formats: string[] = ['yyyy-MM-dd HH:mm:ss'],
+  expressionFn: (str: string) => ParseExpressionResult = null,
+): ParseExpressionResult => {
+  const result = parseDate(expression, formats);
+  if (result.isValid || (!result.isValid && !expressionFn)) return result;
+  return expressionFn?.(expression);
 };
