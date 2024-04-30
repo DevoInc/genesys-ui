@@ -18,14 +18,11 @@ import type {
 } from '@devoinc/genesys-ui';
 import { Field, InputControl } from '@devoinc/genesys-ui';
 
+import { cssDateTimeRangeInput, ICssDateTimeRangeInput } from './helpers';
 import {
-  cssDateTimeRangeControlInput,
-  ICssDateTimeRangeControlInput,
-} from './helpers';
-import {
-  StyledDateTimeRangeControl,
-  type StyledDateTimeRangeControlProps,
-} from './StyledDateTimeRangeControl';
+  StyledDateTimeRangeInput,
+  type StyledDateTimeRangeInputProps,
+} from './StyledDateTimeRangeInput';
 
 import { TRealtimeState } from './declarations';
 import { REAL_TIME_SIZE_MAP } from './constants';
@@ -40,12 +37,12 @@ import {
 } from '../../utils';
 import { TDatetime } from '../declarations';
 
-export interface DateTimeRangeControlProps
+export interface DateTimeRangeInputProps
   extends Required<Pick<IGlobalAttrs, 'id'>>,
     Pick<ITriggerAriaAttrs, 'aria-controls'>,
-    Pick<ICssDateTimeRangeControlInput, 'hasMillis' | 'hasSeconds' | 'hasTime'>,
-    Pick<StyledDateTimeRangeControlProps, 'isOpen' | 'wide'>,
-    Pick<FieldProps, 'label' | 'helper' | 'required'>,
+    Pick<ICssDateTimeRangeInput, 'hasMillis' | 'hasSeconds' | 'hasTime'>,
+    Pick<StyledDateTimeRangeInputProps, 'isOpen' | 'wide'>,
+    Pick<FieldProps, 'helper' | 'required'>,
     IStyledOverloadCss,
     IStyledPolymorphic {
   /** aria-label attribute for `from` input */
@@ -56,6 +53,8 @@ export interface DateTimeRangeControlProps
   dateFormats: string[];
   /** Value for the first input. */
   from?: string | TDatetime;
+  /** Value for label prop */
+  label?: FieldProps['label'];
   /** Floating status message or helper for `from` input field */
   helperFrom?: string;
   /** Floating status message or helper for `to` input field */
@@ -83,26 +82,26 @@ export interface DateTimeRangeControlProps
   /** Size for the HTML input elements. */
   size?: TFieldSize;
   /** Initial state for `from` input field */
-  statusFrom: 'base' | 'error';
+  statusFrom?: 'base' | 'error';
   /** Initial state for `to` input field */
-  statusTo: 'base' | 'error';
+  statusTo?: 'base' | 'error';
   /** Value for the second input. If such value is not set, its input will not be shown. */
   to?: string | TDatetime;
 }
 
 const hasRealTime = (realTime: TRealtimeState) => realTime !== 'hidden';
 
-export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
+export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
   'aria-controls': ariaControls,
   ariaLabelFrom = 'from',
   ariaLabelTo = 'to',
   as,
   from: customFrom,
-  hasMillis,
-  hasSeconds,
-  hasTime,
-  helper,
-  label,
+  hasMillis = false,
+  hasSeconds = true,
+  hasTime = true,
+  helper = '',
+  label = '',
   helperFrom,
   helperTo,
   id,
@@ -423,9 +422,19 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
     value,
   ]);
 
+  console.log(
+    getInputWidth({
+      hasMillis,
+      hasSeconds,
+      hasTime,
+      size: 'lg',
+      theme,
+    }),
+  );
+
   return (
     <Field label={label} id={id} helper={helper} required={required}>
-      <StyledDateTimeRangeControl
+      <StyledDateTimeRangeInput
         aria-controls={isOpen ? ariaControls : null}
         aria-haspopup
         as={as}
@@ -462,13 +471,12 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
           <InputControl._Input
             aria-label={ariaLabelFrom}
             id={`${id}-input-from`}
-            onBlur={updateFromDateCallback}
             onChange={onChangeFromCallback}
             onKeyUp={onKeyUpFromCallback}
             placeholder={placeholderFrom}
             size={size}
             status={status.from.status}
-            styles={cssDateTimeRangeControlInput({
+            styles={cssDateTimeRangeInput({
               hasMillis,
               hasSeconds,
               hasTime,
@@ -500,13 +508,12 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
           <InputControl._Input
             aria-label={ariaLabelTo}
             id={`${id}-input-to`}
-            onBlur={updateToDateCallback}
             onChange={onChangeToCallback}
             onKeyUp={onKeyUpToCallback}
             placeholder={placeholderTo}
             size={size}
             status={status.to.status}
-            styles={cssDateTimeRangeControlInput({
+            styles={cssDateTimeRangeInput({
               hasMillis,
               hasSeconds,
               hasTime,
@@ -523,7 +530,7 @@ export const DateTimeRangeControl: React.FC<DateTimeRangeControlProps> = ({
             state={realTime}
           />
         )}
-      </StyledDateTimeRangeControl>
+      </StyledDateTimeRangeInput>
     </Field>
   );
 };

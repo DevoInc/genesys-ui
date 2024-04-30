@@ -1,16 +1,16 @@
 import { css, CSSProp } from 'styled-components';
 
 import type { InputControlProps } from '@devoinc/genesys-ui';
-import type { DateTimeRangeProps } from '../DateTimeRange';
+import { ITime } from '../declarations';
 
-export interface ICssDateTimeRangeControlInput
+export interface ICssDateTimeRangeInput
   extends Pick<InputControlProps, 'size' | 'status'>,
-    Pick<DateTimeRangeProps, 'hasMillis' | 'hasSeconds' | 'hasTime'> {}
+    Pick<ITime, 'hasMillis' | 'hasSeconds' | 'hasTime'> {}
 
-export const cssDateTimeRangeControlInput = ({
+export const cssDateTimeRangeInput = ({
   size,
   status,
-}: ICssDateTimeRangeControlInput): CSSProp => {
+}: ICssDateTimeRangeInput): CSSProp => {
   const hasStatus = status && status !== 'base';
   return css`
     ${({ theme }) => {

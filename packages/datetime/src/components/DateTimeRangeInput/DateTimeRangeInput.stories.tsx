@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { DateTimeRangeControl } from './DateTimeRangeControl';
+import { DateTimeRangeInput } from './DateTimeRangeInput';
 
-const meta: Meta<typeof DateTimeRangeControl> = {
-  title: 'Components/Datetime/DateTimeRangeControl',
-  component: DateTimeRangeControl,
+const meta: Meta<typeof DateTimeRangeInput> = {
+  title: 'Components/Datetime/DateTimeRangeInput',
+  component: DateTimeRangeInput,
   args: {
     ariaLabelFrom: 'from',
     ariaLabelTo: 'to',
@@ -29,7 +29,7 @@ const meta: Meta<typeof DateTimeRangeControl> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof DateTimeRangeControl>;
+type Story = StoryObj<typeof DateTimeRangeInput>;
 
 export const Base: Story = {
   render: (args) =>
@@ -49,7 +49,7 @@ export const Base: Story = {
       );
 
       return (
-        <DateTimeRangeControl
+        <DateTimeRangeInput
           {...props}
           from={from}
           to={to}
@@ -60,7 +60,7 @@ export const Base: Story = {
   args: {
     from: new Date().getTime() - 3600000,
     to: new Date().getTime(),
-    label: 'My DateTimeRange',
+    label: '',
   },
 };
 
@@ -106,7 +106,7 @@ export const RangeValidation: Story = {
       );
 
       return (
-        <DateTimeRangeControl
+        <DateTimeRangeInput
           {...props}
           from={from}
           to={to}
@@ -149,7 +149,7 @@ export const UsingExpressions: Story = {
       );
 
       return (
-        <DateTimeRangeControl
+        <DateTimeRangeInput
           {...props}
           from={from}
           to={to}
