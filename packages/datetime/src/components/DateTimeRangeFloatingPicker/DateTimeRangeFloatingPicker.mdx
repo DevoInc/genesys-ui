@@ -1,7 +1,6 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './DateTimeRangeFloatingPicker.stories';
-import * as CaseStories from './DateTimeRangeFloatingPicker.cases.stories';
 
 <Meta of={Stories} />
 
@@ -35,9 +34,8 @@ Any change made to the `DateTimeRange` component triggers the `onChange` method.
 
 ## Cases
 
-<Canvas of={CaseStories.CustomPresets} />
+<Canvas of={Stories.CustomPresets} />
 
 ## Props
 
 <ArgTypes of={Stories} />
-./DateTimeRangeFloatingPicker.cases.stories./DateTimeRangeFloatingPicker.stories

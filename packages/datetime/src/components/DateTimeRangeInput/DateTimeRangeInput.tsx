@@ -24,7 +24,7 @@ import {
   type StyledDateTimeRangeInputProps,
 } from './StyledDateTimeRangeInput';
 
-import { TRealtimeState } from './declarations';
+import { TOnChangeRange, TRealtimeState } from './declarations';
 import { REAL_TIME_SIZE_MAP } from './constants';
 import { getInputWidth } from './theme';
 import { RealTimeButton, type RealTimeButtonProps } from '../RealTimeButton';
@@ -62,10 +62,7 @@ export interface DateTimeRangeInputProps
   /** Handler method after either 'from' or 'to' inputs field cliked  */
   onClick?: IMouseEventAttrs['onClick'];
   /** Handler method after either 'from' or 'to' inputs values change. */
-  onChange?: (range: {
-    from: { value: number | string; str: string };
-    to: { value: number | string; str: string };
-  }) => void;
+  onChange?: (range: TOnChangeRange) => void;
   /** handler method after realTime button is clicked. */
   onRealTimeClick?: RealTimeButtonProps['onClick'];
   /** Transformation function for time. It is used to transform a time expression to timestamp. Required if there are presets. */
@@ -421,16 +418,6 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
     strValue,
     value,
   ]);
-
-  console.log(
-    getInputWidth({
-      hasMillis,
-      hasSeconds,
-      hasTime,
-      size: 'lg',
-      theme,
-    }),
-  );
 
   return (
     <Field label={label} id={id} helper={helper} required={required}>

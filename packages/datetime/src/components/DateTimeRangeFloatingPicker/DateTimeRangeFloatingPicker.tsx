@@ -18,12 +18,19 @@ import {
   toTSorPreset,
 } from '../../utils';
 
-import type { ITime, TDateApplyValue, TDatetime } from '../declarations';
+import type {
+  ITime,
+  TDateApplyValue,
+  TDatetime,
+  TPresetRange,
+  TTimestampRange,
+} from '../declarations';
 import { DateTimeRange, type DateTimeRangeProps } from '../DateTimeRange';
 import {
   DateTimeRangeInput,
   type DateTimeRangeInputProps,
 } from '../DateTimeRangeInput';
+import { TOnChangeRange } from '../DateTimeRangeInput/declarations';
 
 export interface DateTimeRangeFloatingPickerProps
   extends Pick<
@@ -112,8 +119,6 @@ export const DateTimeRangeFloatingPicker: React.FC<
   value: customValue = { from: null, to: null },
   ...restDateTimeRangeProps
 }) => {
-  // Convert value type to numeric if it's a Date type
-
   const value = React.useMemo(
     () => ({
       from: toTSorPreset(customValue?.from),
@@ -126,17 +131,11 @@ export const DateTimeRangeFloatingPicker: React.FC<
   const isManageableToDate = isManageableDate(value.to);
 
   const [inputDate, setInputDate] = React.useState(value);
-  const [calendarValue, setCalendarValue] = React.useState<{
-    from: number;
-    to: number;
-  }>({
+  const [calendarValue, setCalendarValue] = React.useState<TTimestampRange>({
     from: null,
     to: null,
   });
-  const [presetValue, setPresetValue] = React.useState<{
-    from: string;
-    to: string;
-  }>({
+  const [presetValue, setPresetValue] = React.useState<TPresetRange>({
     from: null,
     to: null,
   });
@@ -160,13 +159,10 @@ export const DateTimeRangeFloatingPicker: React.FC<
   }, []);
 
   const onInputsChangeCallback = React.useCallback(
-    (range: {
-      from: { value: number; str: string };
-      to: { value: number; str: string };
-    }) => {
+    (range: TOnChangeRange) => {
       const resultFrom = parseDate(range.from.str, dateFormats);
       const resultTo = parseDate(range.from.str, dateFormats);
-      console.log('input changed', range, resultFrom, resultTo);
+
       if (resultFrom.isValid && resultTo.isValid) {
         setCalendarValue({ from: resultFrom.value, to: resultTo.value });
         setPresetValue({ from: undefined, to: undefined });
@@ -188,8 +184,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
   );
 
   const onCalendarChangeCallback = React.useCallback(
-    (range: { from: number; to: number }) => {
-      console.log('range changed', range);
+    (range: TTimestampRange) => {
       setInputDate(range);
       setCalendarValue(range);
       setPresetValue({ from: null, to: null });
@@ -202,8 +197,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
   );
 
   const onPresetChangeCallback = React.useCallback(
-    (range: { from: string; to: string }) => {
-      console.log('preset changed', range);
+    (range: TPresetRange) => {
       setInputDate(range);
       setPresetValue(range);
       setCalendarValue({ from: undefined, to: undefined });
@@ -216,14 +210,12 @@ export const DateTimeRangeFloatingPicker: React.FC<
   );
 
   const onCancelCallback = React.useCallback(() => {
-    console.log('canceled');
     setInputDate(value);
     onCancel?.();
     setOpenendRef.current(false);
   }, [value, onCancel]);
 
   const onApplyCallback = React.useCallback(() => {
-    console.log('Applied');
     onApply?.({
       timestamp: { from: calendarValue.from, to: calendarValue.to },
       preset: { from: presetValue.from, to: presetValue.to },
