@@ -1,10 +1,6 @@
 import * as React from 'react';
-import { format } from 'date-fns';
 
-import { GICalendarMonthDayPlannerEvents } from '@devoinc/genesys-icons';
 import {
-  InputControl,
-  type InputControlProps,
   type IGlobalAriaAttrs,
   type IGlobalAttrs,
   type IStyledOverloadCss,
@@ -12,13 +8,17 @@ import {
   VFlex,
 } from '@devoinc/genesys-ui';
 
-import { getFormatTimeStr } from '../DateTime/utils/format';
-import { toTimestamp } from '../utils';
+import { formatDate, toTimestamp, parseDate as parseDateFN } from '../../utils';
 import { DateTime, type DateTimeProps } from '../DateTime';
+import { DateTimeInput, DateTimeInputProps } from '../DateTimeInput';
+import { TDatetime } from '../declarations';
 
 export interface DateTimePickerProps
-  extends Omit<DateTimeProps, 'onChange' | 'selectedDates'>,
-    Pick<InputControlProps, 'autoFocus' | 'onChange' | 'placeholder' | 'size'>,
+  extends Omit<DateTimeProps, 'selectedDates' | 'validateDate'>,
+    Omit<
+      DateTimeInputProps,
+      'onChange' | 'hasMillis' | 'hasSeconds' | 'hasTime' | 'value'
+    >,
     Pick<IGlobalAriaAttrs, 'aria-label'>,
     Pick<IGlobalAttrs, 'id'>,
     IStyledOverloadCss,
@@ -29,44 +29,50 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   hasMillis = false,
   hasSeconds = true,
   hasTime = true,
+  dateFormats,
   id,
   onChange,
-  placeholder,
-  size,
+  parseDate = parseDateFN,
   value: customValue,
-  autoFocus,
   ...restDateTimeProps
 }) => {
   const value = toTimestamp(customValue);
 
-  const datetimeFormat = `yyyy-MM-dd ${
-    hasTime ? getFormatTimeStr(hasSeconds, hasMillis) : ''
-  }`;
+  const validateDateCallback = React.useCallback(
+    (ts: TDatetime) => {
+      const strDate = formatDate({
+        format: dateFormats?.[0],
+        hasMillis,
+        hasSeconds,
+        hasTime,
+        ts,
+      });
 
-  const [date, setDate] = React.useState(value ? value : new Date().getTime());
+      return parseDate(strDate).isValid;
+    },
+    [dateFormats, hasMillis, hasSeconds, hasTime, parseDate],
+  );
 
-  const onChangeCallback = React.useCallback((ts: number) => {
-    setDate(ts);
-  }, []);
   return (
     <VFlex alignItems={'stretch'}>
-      <InputControl
+      <DateTimeInput
+        {...restDateTimeProps}
         aria-label={ariaLabel}
-        icon={<GICalendarMonthDayPlannerEvents />}
+        dateFormats={dateFormats}
         id={id}
-        value={format(date, datetimeFormat)}
         onChange={onChange}
-        placeholder={placeholder}
-        size={size}
-        autoFocus={autoFocus}
+        parseDate={parseDate}
+        value={value}
       />
+
       <DateTime
         {...restDateTimeProps}
-        hasSeconds={hasSeconds}
         hasMillis={hasMillis}
+        hasSeconds={hasSeconds}
         hasTime={hasTime}
+        onChange={onChange}
+        validateDate={validateDateCallback}
         value={value}
-        onChange={onChangeCallback}
       />
     </VFlex>
   );

@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 
-import { TDatetime } from './declarations';
-import { toTSorPreset, isManageableDate } from './utils';
+import { TDatetime } from '../components/declarations';
+import { toTSorPreset, isManageableDate } from './time';
 
 describe('toTSorPreset', () => {
   const cases: [string, string | TDatetime, number | string][] = [

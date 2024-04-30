@@ -2,20 +2,20 @@ import styled, { css } from 'styled-components';
 
 import { InputControlProps } from '@devoinc/genesys-ui';
 
-export interface StyledDateTimeRangeControlProps
+export interface StyledDateTimeRangeInputProps
   extends Pick<InputControlProps, 'size'> {
   /** Set styles when is open a component */
   isOpen?: boolean;
   /** Set styles when RT is visible */
   hideRealTime?: boolean;
-  /** If the DateTimeRangeControl fills the whole space of the parent container. */
+  /** If the DateTimeRangeInput fills the whole space of the parent container. */
   wide?: boolean;
 }
 
-export const StyledDateTimeRangeControl = styled.div.attrs((props) => ({
+export const StyledDateTimeRangeInput = styled.div.attrs((props) => ({
   rangeControlTokens: props.theme.cmp.dateTimeRangeControl,
   aliasTokens: props.theme.alias,
-}))<StyledDateTimeRangeControlProps>`
+}))<StyledDateTimeRangeInputProps>`
   position: relative;
   flex-wrap: nowrap;
   align-items: center;

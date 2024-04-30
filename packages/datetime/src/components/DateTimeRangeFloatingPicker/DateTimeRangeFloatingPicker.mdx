@@ -1,0 +1,41 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './DateTimeRangeFloatingPicker.stories';
+
+<Meta of={Stories} />
+
+# DateTimeRangeFloatingPicker
+
+The `DateTimeRangeFloatingPicker` component is an combination of the `DateTimeRange`
+component and `DateTimeRangeInput` component.
+
+Users can manipulate the value either directly from the `DateTimeRange` component
+or via `DateTimeRangeInput` component.
+
+Each time the inputs text field value are modified, it undergoes validation
+against accepted date formats.
+The first value in the `dateFormats` array serves as the default value to display.
+If no format is specified, the default value will be `YYYY-mm-dd HH:mm:ss`.
+
+When the `Enter` key is pressed and `DateTimeRange` componets has de focus
+the `onChange` method of the component is triggered.
+
+Any change made to the `DateTimeRange` component triggers the `onChange` method.
+
+## How to import
+
+<Source
+  code={`import { DateTimeRangeFloatingPicker } from '@devo/genesys-ui-datetime';`}
+/>
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Cases
+
+<Canvas of={Stories.CustomPresets} />
+
+## Props
+
+<ArgTypes of={Stories} />

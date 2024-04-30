@@ -18,16 +18,15 @@ export const Base: Story = {
     ((props) => {
       const [date, setDate] = React.useState(props.value);
 
-      const onChange = (event) => {
-        const target = event.target as HTMLInputElement;
-        if (!target.validity.valid) return;
-        const d = new Date(target.value).getTime();
-        setDate(d);
-      };
+      const onChangeCallback = React.useCallback((ts: number) => {
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        console.log(`CHANGED ${new Date(ts)}`);
+        setDate(ts);
+      }, []);
 
       return (
         <div style={{ width: '400px' }}>
-          <DateTimePicker {...props} value={date} onChange={onChange} />
+          <DateTimePicker {...props} value={date} onChange={onChangeCallback} />
         </div>
       );
     })(args),

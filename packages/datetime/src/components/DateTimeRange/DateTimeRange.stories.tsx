@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { subDays } from 'date-fns';
 
 import { DateTimeRange } from './DateTimeRange';
-import type { TDateRange } from '../declarations';
+import type { TTimestampRange } from '../declarations';
 
 const meta: Meta<typeof DateTimeRange> = {
   title: 'Components/Datetime/DateTimeRange',
@@ -41,7 +41,7 @@ export const Base: Story = {
         to: new Date().getTime(),
       });
 
-      const onChangeCallback = React.useCallback((range: TDateRange) => {
+      const onChangeCallback = React.useCallback((range: TTimestampRange) => {
         // eslint-disable-next-line no-console
         console.log('new date', new Date(range.from), new Date(range.to));
         setDate(range);

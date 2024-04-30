@@ -9,34 +9,27 @@ import {
   VFlex,
 } from '@devoinc/genesys-ui';
 
-import type { TDatetime } from '../declarations';
+import type { ITime, TDatetime } from '../declarations';
 import {
   Calendar,
   type CalendarProps,
   useCalendarSingleDayBehavior,
 } from '../Calendar';
-import { Month, Time, TimeProps } from './components';
-import { toTimestamp } from '../utils';
+import { Month, Time } from './components';
+import { toTimestamp } from '../../utils';
 
 export interface DateTimeProps
   extends Pick<
       CalendarProps,
-      | 'dateForMonth'
-      | 'invalidDates'
-      | 'maxDate'
-      | 'minDate'
-      | 'validateDate'
-      | 'weekDays'
+      'dateForMonth' | 'invalidDates' | 'validateDate' | 'weekDays'
     >,
-    Pick<TimeProps, 'hasMillis' | 'hasSeconds'>,
+    Pick<ITime, 'hasMillis' | 'hasSeconds' | 'hasTime' | 'maxDate' | 'minDate'>,
     IStyledOverloadCss,
     IStyledPolymorphic {
   /** aria-label attribute for month input. */
   ariaLabelMonth?: IGlobalAriaAttrs['aria-label'];
   /** aria-label attribute for time input. */
   ariaLabelTime?: IGlobalAriaAttrs['aria-label'];
-  /**  Show the time input HTML element. */
-  hasTime?: boolean;
   /** Function called when clicking a cell or editing time input HTML.  */
   onChange?: (ts: number) => void;
   /** Initial value. One of `number` or `Date`. */
