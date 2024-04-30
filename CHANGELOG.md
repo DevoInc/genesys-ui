@@ -6,6 +6,11 @@
 ### ⚠ BREAKING CHANGES
 
 * refactor SplitPane into SplitLayout
+* removed DateTimeRangeControl
+* removed DateTimeRangePicker
+* General refactor in DateTimePicker component. Some properties have change (i.e. onChange) and removed (i.e. validateDate)
+* General refactor in DateTimeFloatingPicker component. Some properties have change (i.e. onChange) and removed (i.e. validateDate)
+
 
 ### Features
 
@@ -15,6 +20,7 @@
 * DateTimeRangeControl ([8cde20b](https://github.com/DevoInc/genesys-ui/commit/8cde20be25b623439355b2e21359d787db0af109))
 * New subtle variant of Banner component and new FloatingMessage for messages in small or ephemeral contexts. ([f3e7134](https://github.com/DevoInc/genesys-ui/commit/f3e7134d7286566ece256e8c28db73a08d7e746d))
 * refactor SplitPane into SplitLayout ([91795a1](https://github.com/DevoInc/genesys-ui/commit/91795a1fe32f65459a836100f0b3d3cee32d4000))
+* new **DateTimeInput** component
 
 
 ### Bug Fixes
