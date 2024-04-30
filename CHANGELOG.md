@@ -1,5 +1,26 @@
 # Changelog
 
+## [10.0.0](https://github.com/DevoInc/genesys-ui/compare/v9.1.1...v10.0.0) (2024-04-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* refactor SplitPane into SplitLayout
+
+### Features
+
+* **DataTimeRange:** added placement prop ([cbc626d](https://github.com/DevoInc/genesys-ui/commit/cbc626d6bf40773e5cc0a8de920d46f96c8753da))
+* **DataTimeRange:** added placement prop ([b3d155e](https://github.com/DevoInc/genesys-ui/commit/b3d155e09510b66251ce9c92ec71c0f97afe743e))
+* **DateTimeFloatingPicker:** new methods ([e2af815](https://github.com/DevoInc/genesys-ui/commit/e2af8151c25aa12d20847c229a394d446c50660c))
+* DateTimeRangeControl ([8cde20b](https://github.com/DevoInc/genesys-ui/commit/8cde20be25b623439355b2e21359d787db0af109))
+* New subtle variant of Banner component and new FloatingMessage for messages in small or ephemeral contexts. ([f3e7134](https://github.com/DevoInc/genesys-ui/commit/f3e7134d7286566ece256e8c28db73a08d7e746d))
+* refactor SplitPane into SplitLayout ([91795a1](https://github.com/DevoInc/genesys-ui/commit/91795a1fe32f65459a836100f0b3d3cee32d4000))
+
+
+### Bug Fixes
+
+* **Input:** icon attribute ([3905b60](https://github.com/DevoInc/genesys-ui/commit/3905b60c819d311dabb1260d7cb16642c82aa193))
+
 ## [9.1.1](https://github.com/DevoInc/genesys-ui/compare/v9.1.0...v9.1.1) (2024-04-26)
 
 
