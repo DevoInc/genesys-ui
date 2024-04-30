@@ -18,7 +18,7 @@ import { formatDate, parseDate as parseDateFN } from '../../utils';
 import { TDatetime } from '../declarations';
 
 export interface DateTimeFloatingPickerProps
-  extends Pick<PopoverProps, 'appendTo' | 'isOpened' | 'onClose'>,
+  extends Pick<PopoverProps, 'appendTo' | 'isOpened' | 'onClose' | 'placement'>,
     Omit<DateTimeProps, 'onChange' | 'selectedDates'>,
     Omit<
       DateTimeInputProps,
