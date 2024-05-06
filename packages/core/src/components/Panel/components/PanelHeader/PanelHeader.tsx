@@ -55,6 +55,7 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
       as={as}
       hasBoxShadow={hasBoxShadow ?? context.scrolledBodyContent}
       bordered={bordered}
+      customContent={Boolean(children)}
       hasSubtitle={Boolean(subtitle)}
       removeSpace={removeSpace}
       size={evalSize}

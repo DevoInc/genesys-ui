@@ -51,7 +51,7 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
       )}
     >
       {children || (
-        <>
+        <Flex alignItems="center">
           <Flex alignItems="inherit">
             <ModalIcon status={evalStatus} />
             <Heading
@@ -77,7 +77,7 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
               ]}
             </ButtonGroup>
           </Flex>
-        </>
+        </Flex>
       )}
     </Panel.Header>
   );

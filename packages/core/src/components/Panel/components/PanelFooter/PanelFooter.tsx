@@ -34,6 +34,7 @@ export const InternalPanelFooter: React.FC<PanelFooterProps> = ({
   return (
     <PanelFooterContainer
       as={as}
+      customContent={Boolean(children)}
       hasBoxShadow={hasBoxShadow ?? context.scrolledBodyContent}
       hasBackground={hasBackground}
       bordered={bordered}

@@ -245,20 +245,22 @@ export const Custom: Story = {
             <Modal._Backdrop zIndex={100} bgColor="lightseagreen">
               <Modal._Panel styles="border-radius: 0;">
                 <Modal.Header onRequestClose={() => setOpen(false)}>
-                  <Flex alignItems="center" gap="cmp-sm">
-                    <GICheckOkRoundedFilled
-                      size={22}
-                      color={dialogHeaderIconTokens.color.background.success}
-                    />
-                    <Typography.Heading size="h4" truncateLine={1}>
-                      My custom Modal
-                    </Typography.Heading>
-                  </Flex>
-                  <Flex marginLeft="auto">
-                    <ButtonGroup size="md" gap="lg">
-                      <IconButtonStatus tooltip="Info" />
-                      <IconButtonClose tooltip="Close" />
-                    </ButtonGroup>
+                  <Flex alignItems="center">
+                    <Flex alignItems="center" gap="cmp-sm">
+                      <GICheckOkRoundedFilled
+                        size={22}
+                        color={dialogHeaderIconTokens.color.background.success}
+                      />
+                      <Typography.Heading size="h4" truncateLine={1}>
+                        My custom Modal
+                      </Typography.Heading>
+                    </Flex>
+                    <Flex marginLeft="auto">
+                      <ButtonGroup size="md" gap="lg">
+                        <IconButtonStatus tooltip="Info" />
+                        <IconButtonClose tooltip="Close" />
+                      </ButtonGroup>
+                    </Flex>
                   </Flex>
                 </Modal.Header>
                 <Modal.Body>{ModalDemoContent}</Modal.Body>
