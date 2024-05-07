@@ -11,8 +11,8 @@ import {
   IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
 
-import type { ITime, TDatetime } from '../../declarations';
-import { getFormatTimeStr, toTimestamp } from '../../../utils';
+import type { ITime, TDatetime } from '../../../declarations';
+import { getFormatTimeStr, toTimestamp } from '../../../helpers';
 import { isSameDay } from '../../Calendar/validations';
 
 export interface TimeProps

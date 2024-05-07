@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { subDays } from 'date-fns';
 
 import { DateTimeRange } from './DateTimeRange';
-import type { TTimestampRange } from '../declarations';
+import type { TTimestampRange } from '../../declarations';
 
 const meta: Meta<typeof DateTimeRange> = {
   title: 'Components/Datetime/DateTimeRange',

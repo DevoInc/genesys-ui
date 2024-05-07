@@ -8,10 +8,10 @@ import {
   VFlex,
 } from '@devoinc/genesys-ui';
 
-import { formatDate, toTimestamp, parseDate as parseDateFN } from '../../utils';
+import { formatDate, toTimestamp, parseDate as parseDateFN } from '../../helpers';
 import { DateTime, type DateTimeProps } from '../DateTime';
 import { DateTimeInput, DateTimeInputProps } from '../DateTimeInput';
-import { TDatetime } from '../declarations';
+import { TDatetime } from '../../declarations';
 
 export interface DateTimePickerProps
   extends Omit<DateTimeProps, 'selectedDates' | 'validateDate'>,

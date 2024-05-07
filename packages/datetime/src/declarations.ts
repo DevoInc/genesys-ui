@@ -27,3 +27,9 @@ export interface ITime {
   /** The earliest day to accept. One of `number` or `Date`. */
   minDate?: TDatetime;
 }
+
+export interface IParseResult {
+  isValid: boolean;
+  value: number;
+  errors: string[];
+}

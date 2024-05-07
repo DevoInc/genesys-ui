@@ -1,4 +1,4 @@
-import { TDatetime } from '../components/declarations';
+import { TDatetime } from '../declarations';
 
 /**
  * Convert a date to timestamp

@@ -28,7 +28,7 @@ import {
   type TimeProps,
 } from '../DateTime/components';
 import type { TPresetRange } from '../Presets/declarations';
-import { toTimestamp } from '../../utils/time';
+import { toTimestamp } from '../../helpers/time';
 import {
   Calendar,
   type CalendarProps,
