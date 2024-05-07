@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.1.0](https://github.com/DevoInc/genesys-ui/compare/v10.0.0...v10.1.0) (2024-05-07)
+
+
+### Features
+
+* when the content of Panel.Header and the Panel.Footer is defined by children, then there is no inherited flex styles. ([01569c1](https://github.com/DevoInc/genesys-ui/commit/01569c1528c7ef23771b73c67ce3950455da38ca))
+
 ## [10.0.0](https://github.com/DevoInc/genesys-ui/compare/v9.1.1...v10.0.0) (2024-04-30)
 
 
