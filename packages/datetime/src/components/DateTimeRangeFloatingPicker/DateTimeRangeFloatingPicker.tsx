@@ -13,8 +13,6 @@ import {
 import {
   isManageableDate,
   parseDate,
-  parseExpression as parseExpressionFN,
-  ParseExpressionResult,
   toTSorPreset,
 } from '../../helpers';
 
@@ -30,7 +28,6 @@ import {
   DateTimeRangeInput,
   type DateTimeRangeInputProps,
 } from '../DateTimeRangeInput';
-import { TOnChangeRange } from '../DateTimeRangeInput/declarations';
 
 export interface DateTimeRangeFloatingPickerProps
   extends Pick<

@@ -1,9 +1,5 @@
 import * as React from 'react';
-import type {
-  TActiveStatus,
-  IGlobalAttrs,
-  IMouseEventAttrs,
-} from '../../declarations';
+import type { TActiveStatus, IGlobalAttrs } from '../../declarations';
 
 export type TBannerStatus = TActiveStatus;
 
@@ -13,9 +9,9 @@ export interface IBanner {
   /** To define the Banner based in internal components */
   children?: React.ReactNode;
   /** onClick function for close button */
-  close?: Pick<IMouseEventAttrs, 'onClick'>;
+  close?: React.MouseEventHandler;
   /** Tooltip for close button */
-  closeTooltip?: Pick<IGlobalAttrs, 'tooltip'>;
+  closeTooltip?: string;
   /** Banner content */
   content?: React.ReactNode;
   /** This prop hides the Banner icon */
