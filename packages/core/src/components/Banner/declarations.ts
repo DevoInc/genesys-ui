@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { TActiveStatus, IGlobalAttrs } from '../../declarations';
+import type { TActiveStatus } from '../../declarations';
 
 export type TBannerStatus = TActiveStatus;
 
