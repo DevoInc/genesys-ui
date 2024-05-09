@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, type RenderOptions } from '@testing-library/react';
+import { RenderResult, render, type RenderOptions } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import '@testing-library/jest-dom/vitest';
 
@@ -12,7 +12,7 @@ const AllTheProviders: React.FC<{ children: React.ReactNode }> = ({
 const customRender = (
   ui: React.ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>,
-) => render(ui, { wrapper: AllTheProviders, ...options });
+): RenderResult => render(ui, { wrapper: AllTheProviders, ...options });
 
 export * from '@testing-library/react';
 export { customRender as render };

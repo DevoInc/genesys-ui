@@ -1,17 +1,16 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
-import { Editor } from '../';
-
+import { Editor } from './Editor';
 import * as Stories from './Editor.stories';
-import * as CaseStories from './Editor.cases.stories';
 
-<Meta title="Components/Code/Editor/Docs" />
+<Meta of={Stories} />
 
 # Editor
 
 ## Overview
 
-React implementation of [**monaco editor**](https://microsoft.github.io/monaco-editor/).
+React implementation of
+[**monaco editor**](https://microsoft.github.io/monaco-editor/).
 
 <Canvas of={Stories.Base} sourceState="none" />
 
@@ -38,7 +37,8 @@ export const MyEditor = () => <Editor value="I'm smart!" />
 
 ## Advanced usage
 
-For more specific customizations, the Editor can also be constructed from its individual components.
+For more specific customizations, the Editor can also be constructed from its
+individual components.
 
 <Source
   code={`
@@ -50,28 +50,35 @@ import { Editor, useEditorTheme } from '@devoinc/genesys-ui-code';
 export const CustomThemed = () => {
   const editorTheme = useEditorTheme();
 
-return (
-
-<Editor.Container bordered={true}>
-  <Editor.Editor
-    height="300px"
-    bordered={true}
-    theme={editorTheme}
-    value="I'm being built from my inner parts"
-  />
-  <Editor.ActionsContainer>
-    <IconButton icon="gi-heart_full" />
-  </Editor.ActionsContainer>
-</Editor.Container>
-); }; `} />
+  return (
+    <Editor.Container bordered={true}>
+      <Editor.Editor
+        height="300px"
+        bordered={true}
+        theme={editorTheme}
+        value="I'm being built from my inner parts"
+      />
+      <Editor.ActionsContainer>
+        <IconButton icon="gi-heart_full" />
+      </Editor.ActionsContainer>
+    </Editor.Container>
+  );
+};
+`} />
 
 ## Registering a custom language
 
-The Editor supports custom languages. To use a custom language, the language and its configuration must be registered with the editor using the `registerLanguage` function.
-**Please, refrain from directly using monaco editor's `monaco.languages.register` function, as it might side-effect other editors.**
+The Editor supports custom languages. To use a custom language, the language
+and its configuration must be registered with the editor using the
+`registerLanguage` function.
+**Please, refrain from directly using monaco editor's
+`monaco.languages.register` function, as it might side-effect other editors.**
 
-For more a more advanced use case, visit [Custom Language With Validation](#custom-language-with-validation). See also [Monaco Editor - Custom Languages](https://microsoft.github.io/monaco-editor/monarch.html)
-and [Monaco Editor - Custom Autocompletion](https://microsoft.github.io/monaco-editor/playground.html#extending-language-services-custom-languages)
+For more a more advanced use case, visit
+[Custom Language With Validation](#custom-language-with-validation). See also
+[Monaco Editor - Custom Languages](https://microsoft.github.io/monaco-editor/monarch.html)
+and
+[Monaco Editor - Custom Autocompletion](https://microsoft.github.io/monaco-editor/playground.html#extending-language-services-custom-languages)
 for more information regarding language definitions and autocompletion.
 
 <Source
@@ -84,43 +91,41 @@ import { Editor, registerLanguage } from '@devoinc/genesys-ui-code';
 const languageId = 'myLang';
 
 const language = {
-keywords: ['"keyword"'],
-tokenizer: {
-root: [
-[
-/"[A-Za-z0-9_]_"/,
-{
-cases: {
-'@keywords': 'keyword',
-'@default': 'default',
-},
-},
-],
-[/:\s"((.|-|\n|\r)_)"/, 'value'],
-],
-},
+  keywords: ['"keyword"'],
+  tokenizer: {
+    root: [
+      [
+        /"[A-Za-z0-9_]_"/,
+        {
+          cases: {
+            '@keywords': 'keyword',
+            '@default': 'default',
+          },
+        },
+      ],
+      [/:\\s"((.|-|\\n|\\r)_)"/, 'value'],
+    ],
+  },
 };
 
 const completionProvider = {
-provideCompletionItems: (model, position) => {
-const word = model.getWordUntilPosition(position);
-const suggestions = [
-{
-label: 'keyword',
-kind: monaco.languages.CompletionItemKind.Field,
-insertText: '"keyword"',
-range: {
-startLineNumber: position.lineNumber,
-endLineNumber: position.lineNumber,
-startColumn: word.startColumn,
-endColumn: word.endColumn,
-},
-},
-];
-
+  provideCompletionItems: (model, position) => {
+    const word = model.getWordUntilPosition(position);
+    const suggestions = [
+      {
+        label: 'keyword',
+        kind: monaco.languages.CompletionItemKind.Field,
+        insertText: '"keyword"',
+        range: {
+          startLineNumber: position.lineNumber,
+          endLineNumber: position.lineNumber,
+          startColumn: word.startColumn,
+          endColumn: word.endColumn,
+        },
+      },
+    ];
     return { suggestions: suggestions };
-
-},
+  },
 };
 
 export const CustomLang = () => {
@@ -132,24 +137,24 @@ export const CustomLang = () => {
       .registerCompletionProvider(completionProvider);
   };
 
-return (
-<Editor
-height="300px"
-language={languageId}
-bordered={true}
-value={'{ "keyword": true, "not_keyword": 123 }'}
-beforeMount={registerLanguageProviders}
-/>
-);
+  return (
+    <Editor
+      height="300px"
+      language={languageId}
+      bordered={true}
+      value={'{ "keyword": true, "not_keyword": 123 }'}
+      beforeMount={registerLanguageProviders}
+    />
+  );
 };
-
 `} />
 
 ## Hooks
 
 ### useEditor
 
-If the React tag doesn't suit a particular use case, the Editor can also be integrated using the 'useEditor' hook.
+If the React tag doesn't suit a particular use case, the Editor can also be
+integrated using the 'useEditor' hook.
 
 <Source code={`
 import * as React from 'react';
@@ -163,32 +168,36 @@ import {
 export const CustomThemed = () => {
   const editorTheme = useEditorTheme();
 
-const { containerRef } = useEditor({
-originalValue: 'Hey there!',
-modifiedValue: 'Hey hey!',
-theme: editorTheme,
-language: '',
-beforeMount: () => console.log('beforeMount'),
-onMount: () => console.log('onMount'),
-onChange: () => console.log('onChange'),
-onValidate: () => console.log('onValidate'),
-options: {},
-});
+  const { containerRef } = useEditor({
+    originalValue: 'Hey there!',
+    modifiedValue: 'Hey hey!',
+    theme: editorTheme,
+    language: '',
+    beforeMount: () => console.log('beforeMount'),
+    onMount: () => console.log('onMount'),
+    onChange: () => console.log('onChange'),
+    onValidate: () => console.log('onValidate'),
+    options: {},
+  });
 
-return (
-
-<Editor.Container>
-  <Box ref={containerRef} height="100%" />
-  <Editor.ActionsContainer>
-    <IconButton icon="gi-heart_full" />
-  </Editor.ActionsContainer>
-</Editor.Container>
-); }; `} />
+  return (
+    <Editor.Container>
+      <Box ref={containerRef} height="100%" />
+      <Editor.ActionsContainer>
+        <IconButton icon="gi-heart_full" />
+      </Editor.ActionsContainer>
+    </Editor.Container>
+  );
+};
+`} />
 
 ### useEditorTheme
 
-When using the Editor's components, the theme to be used by the editor can be generated using the 'useEditorTheme' hook by passing the current theme as an argument.
-Using this hook also allows for customizing the theme by passing a custom theme object.
+When using the Editor's components, the theme to be used by the editor can be
+generated using the 'useEditorTheme' hook by passing the current theme as an
+argument.
+Using this hook also allows for customizing the theme by passing a custom theme
+object.
 
 <Source code={`
 import * as React from 'react';
@@ -210,20 +219,21 @@ export const CustomThemed = () => {
     },
   };
 
-return (
-
-<Editor.Container bordered={true}>
-  <Editor.Editor
-    height="300px"
-    bordered={true}
-    theme={customEditorTheme}
-    value="I'm being built from my inner parts"
-  />
-  <Editor.ActionsContainer>
-    <IconButton icon="gi-heart_full" />
-  </Editor.ActionsContainer>
-</Editor.Container>
-); }; `} />
+  return (
+    <Editor.Container bordered={true}>
+      <Editor.Editor
+        height="300px"
+        bordered={true}
+        theme={customEditorTheme}
+        value="I'm being built from my inner parts"
+      />
+      <Editor.ActionsContainer>
+        <IconButton icon="gi-heart_full" />
+      </Editor.ActionsContainer>
+    </Editor.Container>
+  );
+};
+`} />
 
 ## Custom Configurations
 
@@ -247,43 +257,44 @@ Here are some of the most common configurations.
 
 ## Cases
 
-The Editor can be extensively customized to accommodate even the most complex use cases.
+The Editor can be extensively customized to accommodate even the most complex
+use cases.
 
 ### Custom Language With Validation
 
 Visit [stories/cases/CustomLang.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/CustomLang.tsx) for a code example.
 
-<Canvas of={CaseStories.CustomLanguageWithValidation} sourceState="none" />
+<Canvas of={Stories.CustomLanguageWithValidation} sourceState="none" />
 
 ### With Actions
 
 Visit [stories/cases/Actions.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/Actions.tsx) for a code example.
 
-<Canvas of={CaseStories.WithActions} sourceState="none" />
+<Canvas of={Stories.WithActions} sourceState="none" />
 
 ### Programatic Actions
 
 Visit [stories/cases/Programatic.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/Programatic.tsx) for a code example.
 
-<Canvas of={CaseStories.ProgramaticActions} sourceState="none" />
+<Canvas of={Stories.ProgramaticActions} sourceState="none" />
 
 ### With Shortcuts
 
 Visit [stories/cases/Shortcuts.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/Shortcuts.tsx) for a code example.
 
-<Canvas of={CaseStories.WithShortcuts} sourceState="none" />
+<Canvas of={Stories.WithShortcuts} sourceState="none" />
 
 ### Custom Theme
 
 Visit [stories/cases/CustomTheme.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/CustomThemed.tsx) for a code example.
 
-<Canvas of={CaseStories.CustomTheme} sourceState="none" />
+<Canvas of={Stories.CustomTheme} sourceState="none" />
 
 ### Multiple Editors
 
 Visit [stories/cases/MultipleEds.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/Editor/stories/cases/MultipleEds.tsx) for a code example.
 
-<Canvas of={CaseStories.MultipleEditors} sourceState="none" />
+<Canvas of={Stories.MultipleEditors} sourceState="none" />
 
 ## Props
 

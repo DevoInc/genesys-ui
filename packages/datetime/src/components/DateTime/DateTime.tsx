@@ -9,14 +9,14 @@ import {
   VFlex,
 } from '@devoinc/genesys-ui';
 
-import type { ITime, TDatetime } from '../declarations';
+import type { ITime, TDatetime } from '../../declarations';
 import {
   Calendar,
   type CalendarProps,
   useCalendarSingleDayBehavior,
 } from '../Calendar';
 import { Month, Time } from './components';
-import { toTimestamp } from '../../utils';
+import { toTimestamp } from '../../helpers';
 
 export interface DateTimeProps
   extends Pick<

@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-upload",
-  "version": "10.0.0",
+  "version": "10.1.0",
   "description": "",
   "type": "module",
   "scripts": {
@@ -30,13 +30,13 @@
   "license": "MIT",
   "peerDependencies": {
     "@devoinc/genesys-icons": "^4.0.0",
-    "@devoinc/genesys-ui": "^10.0.0",
+    "@devoinc/genesys-ui": "^10.1.0",
     "filepond-plugin-file-validate-size": "2.x.x",
     "filepond-plugin-file-validate-type": "1.x.x",
     "filepond-plugin-image-preview": "4.x.x",
     "react": "16.x || 17.x || 18.x",
     "react-filepond": "7.x.x",
-    "styled-components": "5.x.x"
+    "styled-components": "^6.1.9"
   },
   "engine": {
     "node": ">=16",

@@ -12,10 +12,10 @@ import {
 } from '@devoinc/genesys-ui';
 
 import { DateTime, type DateTimeProps } from '../DateTime';
-import { toTimestamp } from '../../utils/time';
+import { toTimestamp } from '../../helpers/time';
 import { DateTimeInput, DateTimeInputProps } from '../DateTimeInput';
-import { formatDate, parseDate as parseDateFN } from '../../utils';
-import { TDatetime } from '../declarations';
+import { formatDate, parseDate as parseDateFN } from '../../helpers';
+import { TDatetime } from '../../declarations';
 
 export interface DateTimeFloatingPickerProps
   extends Pick<PopoverProps, 'appendTo' | 'isOpened' | 'onClose' | 'placement'>,

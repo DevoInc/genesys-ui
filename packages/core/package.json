@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui",
-  "version": "10.0.0",
+  "version": "10.1.0",
   "description": "",
   "type": "module",
   "types": "./dist/index.d.ts",
@@ -43,7 +43,7 @@
     "react-split": "2.x.x",
     "react-toastify": "8.x.x || 9.x.x",
     "react-windowed-select": "5.1.0",
-    "styled-components": "5.x.x"
+    "styled-components": "^6.1.9"
   },
   "author": "",
   "license": "MIT",

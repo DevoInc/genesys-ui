@@ -1,5 +1,5 @@
 import React, { ReactHTML } from 'react';
-import { CSSProp, DefaultTheme } from 'styled-components';
+import { CSSProp } from 'styled-components';
 
 /** ---------------------------------------------
  * Polymorphic props for styled components
@@ -15,5 +15,5 @@ export interface IStyledPolymorphic<T = any> {
  * --------------------------------------------- */
 export interface IStyledOverloadCss {
   /** Sometimes you don't want to create an extra component just to apply a bit of styling. The styles prop is a convenient way to iterate on your components without settling on fixed component boundaries yet. */
-  styles?: CSSProp<DefaultTheme>;
+  styles?: CSSProp;
 }

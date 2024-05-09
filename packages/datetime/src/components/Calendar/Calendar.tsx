@@ -15,8 +15,8 @@ import {
   type IStyledOverloadCss,
   type IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
-import type { ITime, TDatetime } from '../declarations';
-import { toTimestamp } from '../../utils';
+import type { ITime, TDatetime } from '../../declarations';
+import { toTimestamp } from '../../helpers';
 import { lastDayOfMonth as lastDayOfMonthFNS } from 'date-fns';
 import { Cell, type CellProps } from './components';
 

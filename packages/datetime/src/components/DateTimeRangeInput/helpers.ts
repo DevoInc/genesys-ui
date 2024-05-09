@@ -1,7 +1,7 @@
 import { css, CSSProp } from 'styled-components';
 
 import type { InputControlProps } from '@devoinc/genesys-ui';
-import { ITime } from '../declarations';
+import { ITime } from '../../declarations';
 
 export interface ICssDateTimeRangeInput
   extends Pick<InputControlProps, 'size' | 'status'>,

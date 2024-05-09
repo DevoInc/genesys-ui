@@ -1,11 +1,12 @@
 import { useTheme } from 'styled-components';
+import { editor } from 'monaco-editor-core';
 
 import { convertRGBAToHexA } from './colorConvertions';
-import { type UseEditorParams } from '../editor';
 
-export type UseEditorTheme = () => UseEditorParams['theme'];
-
-export const useEditorTheme: UseEditorTheme = () => {
+export const useEditorTheme = (): {
+  id: string;
+  themeData: editor.IStandaloneThemeData;
+} => {
   const theme = useTheme();
   return {
     // TODO: id should be more specific when possible.

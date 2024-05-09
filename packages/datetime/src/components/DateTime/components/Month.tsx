@@ -22,9 +22,9 @@ import {
   type IStyledOverloadCss,
   type IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
-import type { ITime, TDatetime } from '../../declarations';
+import type { ITime, TDatetime } from '../../../declarations';
 
-import { toTimestamp } from '../../../utils';
+import { toTimestamp } from '../../../helpers';
 import { GIAngleLeft, GIAngleRight } from '@devoinc/genesys-icons';
 
 export interface MonthProps
