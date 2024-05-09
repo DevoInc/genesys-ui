@@ -24,7 +24,6 @@ export const fieldsCombinerInputAndSelectMixin = ({
   const height = btnTokens.size.height[size];
   return css`
     // Input, Select, Button and IconButton
-    &,
     .react-select__control {
       min-height: ${height};
       height: 100%;
