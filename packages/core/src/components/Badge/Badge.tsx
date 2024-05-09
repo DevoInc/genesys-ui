@@ -12,6 +12,7 @@ import type {
 import {
   BadgeContainer,
   type BadgeContainerProps,
+  BadgeIcon,
   BadgeText,
 } from './components';
 import { Icon } from '../Icon';
@@ -46,7 +47,7 @@ export const InternalBadge: React.FC<BadgeProps> = ({
 }) => {
   const theme = useTheme();
   return (
-    <Badge._Container
+    <BadgeContainer
       {...nativeProps}
       colorScheme={colorScheme}
       hasAbsolutePosition={hasAbsolutePosition}
@@ -56,26 +57,26 @@ export const InternalBadge: React.FC<BadgeProps> = ({
       tooltip={tooltip}
     >
       {!text && icon && (
-        <Badge._Icon
+        <Icon
           strong={hasBoldIcon}
           size={theme.cmp.badge.icon.size.square[size]}
         >
           {icon || <GICheckThick />}
-        </Badge._Icon>
+        </Icon>
       )}
       {text && <Badge._Text>{text}</Badge._Text>}
-    </Badge._Container>
+    </BadgeContainer>
   );
 };
 
 export const Badge = InternalBadge as typeof InternalBadge & {
   _Container: typeof BadgeContainer;
-  _Icon: typeof Icon;
+  _Icon: typeof BadgeIcon;
   _Text: typeof BadgeText;
 };
 
 Badge._Container = BadgeContainer;
-Badge._Icon = Icon;
+Badge._Icon = BadgeIcon;
 Badge._Text = BadgeText;
 
 InternalBadge.displayName = 'Badge';

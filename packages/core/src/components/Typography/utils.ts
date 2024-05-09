@@ -9,6 +9,7 @@ import type {
   ITypography,
   THeadingType,
   TTypoCategories,
+  TTypographyFormat,
 } from './declarations';
 import {
   typoColorMixin,
@@ -53,11 +54,30 @@ export const getHeadingCategoryAndType = (typeProp: THeadingType) => {
   };
 };
 
+/**
+ * Get the variant and the size based in format prop
+ *
+ * @param formatProp body-sm, heading-h1, hero-sm... etc.
+ * @return object with the variant and the size values
+ */
+export const getTypoVariantAndSizeFromFormat = (
+  formatProp: TTypographyFormat,
+): { size: TTypoSize; variant: TTypoCategories } => {
+  const hyphenPos = formatProp.indexOf('-');
+  if (hyphenPos > -1)
+    return {
+      size: formatProp.substring(hyphenPos + 1) as TTypoSize,
+      variant: formatProp.substring(0, hyphenPos) as TTypoCategories,
+    };
+  return { size: 'md', variant: 'body' };
+};
+
 interface IGetTypoCss
   extends Pick<
     ITypography,
     'colorScheme' | 'gutterBottom' | 'textAlign' | 'truncateLine'
   > {
+  bold?: boolean;
   variant?: TTypoCategories;
   theme?: DefaultTheme;
   size?: TTypoSize;
@@ -77,6 +97,7 @@ interface IGetTypoCss
  * @return typography styles
  */
 export const getTypoCss = ({
+  bold = false,
   variant = 'body',
   colorScheme = 'base',
   textAlign = 'left',
@@ -91,6 +112,7 @@ export const getTypoCss = ({
 
   // text styles
   ${typoMixin({
+    bold,
     variant,
     textAlign,
     theme,

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { DefaultTheme } from 'styled-components';
 
 import type { TTypoVariant } from './declarations';
@@ -6,8 +7,8 @@ import type { TTypoSize } from '../../../declarations';
 /**
  * Get the font-family value based in variant of the typographic element
  *
- * @param object.tokens Object with all the design tokens
- * @param object.variant heading, body, action, overline, hero... etc.
+ * @param tokens Object with all the design tokens
+ * @param variant heading, body, action, overline, hero... etc.
  * @return line-height value: '2rem', '2.4rem'... etc.
  */
 export const getFontFamily = ({ tokens, variant = 'body' }) => {

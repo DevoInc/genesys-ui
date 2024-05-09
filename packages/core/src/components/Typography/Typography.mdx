@@ -1,0 +1,70 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Typography.stories';
+
+<Meta title="Components/Text/Typography" component={Stories} />
+
+# Typography
+
+## Overview
+
+The `Typography` component can render any of the type block components: `Typography.Paragraph`, `Typography.Heading`,
+`Typography.Mono`... etc. combining two props: 'format' and 'colorScheme'. The prop format is a quick way of defining the variant-size scheme
+of the typographic element: body-sm, heading-h2, hero-sm... etc.
+
+## How to import
+
+<Source code={`import { Typography } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Usage based in dot notation
+
+With this component you can also define with dot notation several typographic block and inline components.
+
+### Block components
+
+You can read the documentation about this group of components [here](?path=/docs/components-text-typography-block--docs).
+
+- Typography.BlockQuote
+- Typography.Caption
+- Typography.Code
+- Typography.Lead
+- Typography.Heading
+- Typography.List
+- Typography.ListItem
+- Typography.Paragraph
+
+<Source
+  code={`
+  <Typography.Heading size="h4">Typography heading</Typography.Heading>
+`}
+/>
+
+### Inline components
+
+You can read the documentation about this group of components [here](?path=/docs/components-text-typography-inline--docs).
+
+- Typography.Abbr
+- Typography.CodeInline
+- Typography.Deleted
+- Typography.Highlighted
+- Typography.Inserted
+- Typography.Italic
+- Typography.Small
+- Typography.Strong
+- Typography.Sub
+- Typography.Sup
+- Typography.Underlined
+
+<Source
+  code={`
+  <Typography.Abbr>Typography abbr</Typography.Abbr>
+`}
+/>
+
+## Props
+
+<ArgTypes of={Stories} />

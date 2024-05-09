@@ -1,4 +1,2 @@
-import * as Block from './block';
-import * as Inline from './inline';
-
-export const Typography = { ...Block, ...Inline };
+export * from './block';
+export * from './inline';

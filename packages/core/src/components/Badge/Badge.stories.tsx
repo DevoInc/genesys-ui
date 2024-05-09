@@ -21,6 +21,7 @@ type Story = StoryObj<typeof Badge>;
 export const Base: Story = {};
 
 export const InOtherComponents: Story = {
+  tags: ['isHidden'],
   name: 'As part of other component',
   render: () =>
     (() => (
@@ -44,6 +45,7 @@ export const ContentSchemes: Story = {
 };
 
 export const Custom: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => (
       <HFlex spacing="cmp-xs">

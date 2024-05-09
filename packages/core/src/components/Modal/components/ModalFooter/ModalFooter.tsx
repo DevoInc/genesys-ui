@@ -15,7 +15,7 @@ export interface ModalFooterProps
 export const ModalFooter: React.FC<ModalFooterProps> = ({
   children,
   hasBackground = true,
-  status,
+  status = 'base',
   styles,
   ...restPanelFooterProps
 }) => {

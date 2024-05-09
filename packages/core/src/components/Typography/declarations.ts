@@ -28,16 +28,47 @@ export type TListStyle = 'none' | 'ordered' | 'unordered';
 export type TTypoCategories =
   | 'action'
   | 'body'
-  | 'overline'
   | 'heading'
   | 'hero'
   | 'lead'
-  | 'mono';
+  | 'mono'
+  | 'overline';
 export type TTypoColorScheme =
   | TBodyColorScheme
   | TUIColorScheme
   | TUIStrongColorScheme
   | TUIWeakColorScheme;
+
+export type TTypographyFormat =
+  | 'action-xxs'
+  | 'action-xs'
+  | 'action-sm'
+  | 'action-md'
+  | 'action-lg'
+  | 'action-xl'
+  | 'body-xxs'
+  | 'body-xs'
+  | 'body-sm'
+  | 'body-md'
+  | 'body-lg'
+  | 'heading-h1'
+  | 'heading-h2'
+  | 'heading-h3'
+  | 'heading-h4'
+  | 'heading-h5'
+  | 'heading-h6'
+  | 'hero-sm'
+  | 'hero-md'
+  | 'hero-lg'
+  | 'lead-sm'
+  | 'lead-md'
+  | 'lead-lg'
+  | 'mono-sm'
+  | 'mono-md'
+  | 'mono-lg'
+  | 'overline-sm'
+  | 'overline-md'
+  | 'overline-lg';
 
 export interface ITypography {
   /** This property defines multiple styles: font-size, line-height... etc. */

@@ -21,7 +21,9 @@ Component used to display a small piece of information, either as icon or text.
 The `Badge` usually is a complement of other functional component as `Button`, `Menu.Item`... etc.
 communicating that something affects to that entity or adding info about states.
 
-<Canvas of={Stories.InOtherComponents} />
+<Canvas of={Stories.InOtherComponents} sourceState="none" />
+
+## Content schemes
 
 We can define a `Badge` with three different content schemes:
 
@@ -32,6 +34,8 @@ We can define a `Badge` with three different content schemes:
 
 The badge can't have icon and text at the same time. If both are defined, only te text is rendered.
 
+<Canvas of={Stories.ContentSchemes} />
+
 ## Custom usage
 
 Sometimes you need something very specific, which is not possible using only the components and its props.
@@ -40,13 +44,13 @@ recommend this usage, but anyway it's available for very specific needs.
 
 <Canvas of={Stories.Custom} />
 
-## Props
-
-<ArgTypes of={Stories} />
-
 ## Related components
 
 - [Avatar](?path=/components-core-navigation-stepper-doc--page)
 - [ButtonBadge](/?path=/components-core-navigation-stepper-doc--page)
 - [Stepper](/?path=/components-core-navigation-stepper-doc--page)
 - [Toast](/?path=/components-core-navigation-stepper-doc--page)
+
+## Props
+
+<ArgTypes of={Stories} />
