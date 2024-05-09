@@ -1,21 +1,27 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Avatar } from '../';
+import {
+  AVATAR_COLOR_SCHEME_DEFAULT_VALUE,
+  AVATAR_IMAGE_FIT_DEFAULT_VALUE,
+  AVATAR_IMAGE_POSITION_DEFAULT_VALUE,
+  AVATAR_SIZE_DEFAULT_VALUE,
+  AVATAR_VARIANT_DEFAULT_VALUE,
+} from './constants';
 
 const EXAMPLE_AVATAR_IMG = 'https://i.pravatar.cc/300';
+import { Avatar } from '../';
 
 const meta: Meta<typeof Avatar> = {
   title: 'Components/Media/Avatar',
   component: Avatar,
   args: {
-    bordered: false,
-    disabled: false,
-    colorScheme: 'neutral',
-    imageFit: 'cover',
-    size: 'md',
-    variant: 'circle',
+    colorScheme: AVATAR_COLOR_SCHEME_DEFAULT_VALUE,
+    imageFit: AVATAR_IMAGE_FIT_DEFAULT_VALUE,
+    imagePosition: AVATAR_IMAGE_POSITION_DEFAULT_VALUE,
     imageSrc: EXAMPLE_AVATAR_IMG,
-    onClick: undefined,
+    name: 'Rick Sanchez',
+    size: AVATAR_SIZE_DEFAULT_VALUE,
+    variant: AVATAR_VARIANT_DEFAULT_VALUE,
   },
 };
 

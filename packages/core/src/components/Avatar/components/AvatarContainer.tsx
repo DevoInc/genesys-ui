@@ -13,6 +13,11 @@ import type {
 } from '../../../declarations';
 import type { IAvatar } from '../declarations';
 
+import {
+  AVATAR_COLOR_SCHEME_DEFAULT_VALUE,
+  AVATAR_SIZE_DEFAULT_VALUE,
+  AVATAR_VARIANT_DEFAULT_VALUE,
+} from '../constants';
 import { AvatarContext } from '../context';
 import { Overlay } from '../../Overlay';
 import { Icon } from '../../Icon';
@@ -34,19 +39,30 @@ export interface AvatarContainerProps
     IFocusEventAttrs,
     IMouseEventAttrs,
     Omit<StyledAvatarContainerProps, '$disabled'>,
-    Pick<IAvatar, 'children' | 'disabled' | 'iconOnHover'> {}
+    Pick<
+      IAvatar,
+      | 'children'
+      | 'disabled'
+      | 'iconOnHover'
+      | 'imageFit'
+      | 'imagePosition'
+      | 'imageSrc'
+    > {}
 
 export const AvatarContainer: React.FC<AvatarContainerProps> = ({
-  bordered = false,
+  bordered,
   children,
-  colorScheme = 'neutral',
+  colorScheme = AVATAR_COLOR_SCHEME_DEFAULT_VALUE,
   href,
   iconOnHover,
-  imageFit = 'cover',
-  disabled = false,
-  onClick = undefined,
-  size = 'md',
-  variant = 'circle',
+  imageFit,
+  imagePosition,
+  imageSrc,
+  disabled,
+  onClick,
+  size = AVATAR_SIZE_DEFAULT_VALUE,
+  tooltip,
+  variant = AVATAR_VARIANT_DEFAULT_VALUE,
   ...restProps
 }) => {
   const isClickable = href || onClick;
@@ -57,11 +73,11 @@ export const AvatarContainer: React.FC<AvatarContainerProps> = ({
       colorScheme={colorScheme}
       href={href}
       isClickable={isClickable}
-      imageFit={imageFit}
       onClick={onClick}
       size={size}
       variant={variant}
       $disabled={disabled}
+      title={tooltip}
     >
       {isClickable && iconOnHover && (
         <StyledAvatarBackdrop variant={variant}>
@@ -70,7 +86,9 @@ export const AvatarContainer: React.FC<AvatarContainerProps> = ({
           </Overlay>
         </StyledAvatarBackdrop>
       )}
-      <AvatarContext.Provider value={{ size, variant }}>
+      <AvatarContext.Provider
+        value={{ imageFit, imagePosition, imageSrc, size, variant }}
+      >
         {children}
       </AvatarContext.Provider>
     </StyledAvatarContainer>

@@ -1,6 +1,12 @@
 import type { TAvatarSize, TAvatarVariant } from './declarations';
 import type { TBadgeSize } from '../Badge/declarations';
 
+export const AVATAR_SIZE_DEFAULT_VALUE = 'md';
+export const AVATAR_COLOR_SCHEME_DEFAULT_VALUE = 'info';
+export const AVATAR_IMAGE_FIT_DEFAULT_VALUE = 'cover';
+export const AVATAR_IMAGE_POSITION_DEFAULT_VALUE = 'center center';
+export const AVATAR_VARIANT_DEFAULT_VALUE = 'circle';
+
 export const AVATAR_SIZE_BORDER_MAP: {
   [key in TAvatarSize]?: string;
 } = {

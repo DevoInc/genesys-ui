@@ -14,8 +14,6 @@ export interface StyledAvatarContainerProps
     | 'bordered'
     | 'colorScheme'
     | 'customSize'
-    | 'imageFit'
-    | 'imageSrc'
     | 'isClickable'
     | 'size'
     | 'variant'
@@ -28,8 +26,6 @@ export const StyledAvatarContainer = styled.span<StyledAvatarContainerProps>`
   ${({
     colorScheme,
     customSize,
-    imageFit,
-    imageSrc,
     isClickable,
     bordered,
     $disabled,
@@ -44,10 +40,10 @@ export const StyledAvatarContainer = styled.span<StyledAvatarContainerProps>`
     const color = aliasTokens.color.text.feedback[colorSchemeForTokens].base;
     const width = getAvatarSizeConfig({ customSize, size }).width;
     const height = getAvatarSizeConfig({ customSize, size }).height;
-    const borderRadius = {
-      circle: '50%',
-      rounded: '0.4rem',
-    };
+    const borderRadius =
+      aliasTokens.shape.borderRadius[
+        variant === 'circle' ? 'full' : variant === 'rounded' ? 'md' : '0'
+      ];
     return css`
       ${typoMixin({ theme })};
       display: inline-flex;
@@ -56,7 +52,12 @@ export const StyledAvatarContainer = styled.span<StyledAvatarContainerProps>`
       flex-shrink: 0;
       position: relative;
       opacity: ${$disabled && '0.4'};
-      border-radius: ${borderRadius[variant]};
+      border: ${bordered
+        ? `solid
+          ${size ? AVATAR_SIZE_BORDER_MAP[size] : AVATAR_SIZE_BORDER_MAP.md}
+          ${aliasTokens.color.border.separator.base.strongest}`
+        : 'none'};
+      border-radius: ${borderRadius};
       padding: 0;
       width: ${width};
       height: ${height};
@@ -70,21 +71,6 @@ export const StyledAvatarContainer = styled.span<StyledAvatarContainerProps>`
         : isClickable
           ? 'pointer'
           : 'default'};
-
-      ${imageSrc &&
-      css`
-        object-fit: ${imageFit};
-        background-image: ${`url("${imageSrc}")`};
-        background-size: ${imageFit};
-        background-position: center;
-        background-repeat: no-repeat;
-      `}
-
-      border: ${bordered
-        ? `solid
-          ${size ? AVATAR_SIZE_BORDER_MAP[size] : AVATAR_SIZE_BORDER_MAP.md}
-          ${aliasTokens.color.border.separator.base.strongest}`
-        : 'none'};
     `;
   }}
 `;

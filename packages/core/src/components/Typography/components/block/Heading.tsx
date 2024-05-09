@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type {
-  ContentEditableAttrProps,
+  IContentEditableAttrs,
   IFocusEventAttrs,
   IGlobalAriaAttrs,
   IGlobalAttrs,
@@ -15,7 +15,7 @@ export interface HeadingProps
     IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
-    ContentEditableAttrProps,
+    IContentEditableAttrs,
     IGlobalAriaAttrs,
     IFocusEventAttrs {
   /** Content of the heading */

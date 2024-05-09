@@ -11,11 +11,16 @@ export interface StyledAvatarBackdropProps {
 
 export const StyledAvatarBackdrop = styled.span<StyledAvatarBackdropProps>`
   ${({ theme, variant }) => {
+    const aliasTokens = theme.alias;
     const variantValue = getVariantValue(variant);
     return css`
-      transition: all ease-in-out 0.2s;
+      position: absolute;
+      transition: all ease-in-out
+        ${aliasTokens.mutation.transitionDuration.opacity.md};
       border-radius: ${variantValue};
-      color: #eee;
+      color: ${theme.meta.scheme === 'light'
+        ? aliasTokens.color.text.body.inverse
+        : aliasTokens.color.text.body.strong};
       opacity: 0;
       width: 100%;
       height: 100%;
@@ -26,9 +31,10 @@ export const StyledAvatarBackdrop = styled.span<StyledAvatarBackdropProps>`
       *:hover > &,
       *:focus > &,
       *:focus-visible > & {
-        transition: all ease-in-out 0.2s;
+        transition: all ease-in-out
+          ${aliasTokens.mutation.transitionDuration.opacity.md};
         opacity: 1;
-        font-size: 2rem;
+        font-size: ${aliasTokens.size.square.icon.base.lg};
         width: 100%;
         height: 100%;
         transform: scale(1);

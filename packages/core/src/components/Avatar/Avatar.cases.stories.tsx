@@ -1,12 +1,20 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-
-import { Avatar, Badge, Modal, Typography } from '../';
 import {
   GIDiamondPrizeAwardJewelleryRing,
   GIPencilEdit,
   GIZoomExpandMaximizeWindow,
 } from '@devoinc/genesys-icons';
+
+import {
+  AVATAR_COLOR_SCHEME_DEFAULT_VALUE,
+  AVATAR_IMAGE_FIT_DEFAULT_VALUE,
+  AVATAR_IMAGE_POSITION_DEFAULT_VALUE,
+  AVATAR_SIZE_DEFAULT_VALUE,
+  AVATAR_VARIANT_DEFAULT_VALUE,
+} from './constants';
+
+import { Avatar, Badge, Modal, Typography } from '../';
 
 const EXAMPLE_AVATAR_IMG = 'https://i.pravatar.cc/300';
 
@@ -14,14 +22,13 @@ const meta: Meta<typeof Avatar> = {
   title: 'Components/Media/Avatar/Cases',
   component: Avatar,
   args: {
-    bordered: false,
-    disabled: false,
-    colorScheme: 'neutral',
-    imageFit: 'cover',
-    size: 'md',
-    variant: 'circle',
+    colorScheme: AVATAR_COLOR_SCHEME_DEFAULT_VALUE,
+    imageFit: AVATAR_IMAGE_FIT_DEFAULT_VALUE,
+    imagePosition: AVATAR_IMAGE_POSITION_DEFAULT_VALUE,
     imageSrc: EXAMPLE_AVATAR_IMG,
-    onClick: undefined,
+    size: AVATAR_SIZE_DEFAULT_VALUE,
+    name: 'Rick Sanchez',
+    variant: AVATAR_VARIANT_DEFAULT_VALUE,
   },
 };
 
@@ -36,6 +43,7 @@ export const CustomUsage: Story = {
   render: (args) =>
     ((args) => (
       <Avatar._Container {...args}>
+        <Avatar._Image />
         <Avatar._ScreenReadersOnly>Rick Sanchez</Avatar._ScreenReadersOnly>
         <Avatar._Badge size="lg" styles="background-color: orange;" />
       </Avatar._Container>
@@ -126,7 +134,7 @@ export const ButtonEditable: Story = {
     iconOnHover: <GIPencilEdit />,
   },
   render: (args) =>
-    ((props) => {
+    ((args) => {
       const [isOpen, setOpen] = React.useState(false);
       return (
         <>
@@ -140,7 +148,7 @@ export const ButtonEditable: Story = {
               </Modal.Body>
             </Modal>
           )}
-          <Avatar data-pepe="manolo" {...props} onClick={() => setOpen(true)} />
+          <Avatar {...args} onClick={() => setOpen(true)} />
         </>
       );
     })(args),

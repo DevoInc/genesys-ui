@@ -1,48 +1,65 @@
 import * as React from 'react';
 
-import { AVATAR_SIZE_BADGE_MAP } from './constants';
+import {
+  AVATAR_COLOR_SCHEME_DEFAULT_VALUE,
+  AVATAR_IMAGE_FIT_DEFAULT_VALUE,
+  AVATAR_IMAGE_POSITION_DEFAULT_VALUE,
+  AVATAR_SIZE_BADGE_MAP,
+  AVATAR_SIZE_DEFAULT_VALUE,
+  AVATAR_VARIANT_DEFAULT_VALUE,
+} from './constants';
 
+import type { IDataAttrs } from '../../declarations';
 import type { IAvatar } from './declarations';
 
 import {
   AvatarBadge,
   AvatarContainer,
   type AvatarContainerProps,
+  AvatarImage,
   AvatarInitials,
   AvatarSROnly,
 } from './components';
 
 import { Box } from '../Box';
 
-interface TestDataProps {
-  [key: `data-${string}`]: unknown;
-}
-
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AvatarProps
-  extends TestDataProps,
+  extends IDataAttrs,
     Omit<
       AvatarContainerProps,
       'children' | 'aria-label' | 'disabled' | 'iconOnHover'
     >,
-    Pick<IAvatar, 'badge' | 'disabled' | 'iconOnHover' | 'initials' | 'name'> {}
+    Pick<
+      IAvatar,
+      | 'badge'
+      | 'disabled'
+      | 'iconOnHover'
+      | 'initials'
+      | 'name'
+      | 'imageSrc'
+      | 'imageFit'
+      | 'imagePosition'
+    > {}
 
 export const InternalAvatar: React.FC<AvatarProps> = ({
   as,
   badge,
-  colorScheme = 'info',
+  colorScheme = AVATAR_COLOR_SCHEME_DEFAULT_VALUE,
+  customSize,
   href,
-  imageFit = 'cover',
+  imageFit = AVATAR_IMAGE_FIT_DEFAULT_VALUE,
+  imagePosition = AVATAR_IMAGE_POSITION_DEFAULT_VALUE,
   imageSrc,
   initials,
-  bordered = false,
-  disabled = false,
+  bordered,
+  disabled,
   name,
-  onClick = undefined,
+  onClick,
   role,
-  size = 'md',
+  size = AVATAR_SIZE_DEFAULT_VALUE,
   tooltip,
-  variant = 'circle',
+  variant = AVATAR_VARIANT_DEFAULT_VALUE,
   ...restContainerProps
 }) => (
   <AvatarContainer
@@ -51,9 +68,11 @@ export const InternalAvatar: React.FC<AvatarProps> = ({
     as={as || (href ? 'a' : onClick ? 'button' : 'span')}
     bordered={bordered}
     colorScheme={colorScheme}
+    customSize={customSize}
     disabled={disabled}
     href={href}
     imageFit={imageFit}
+    imagePosition={imagePosition}
     imageSrc={imageSrc}
     onClick={onClick}
     role={role || (onClick ? 'button' : imageSrc ? 'img' : undefined)}
@@ -61,7 +80,19 @@ export const InternalAvatar: React.FC<AvatarProps> = ({
     tooltip={tooltip || name}
     variant={variant}
   >
-    {!imageSrc && <AvatarInitials name={name} initials={initials} />}
+    {imageSrc ? (
+      <AvatarImage
+        alt={name}
+        customSize={customSize}
+        src={imageSrc}
+        size={size}
+        variant={variant}
+        imageFit={imageFit}
+        imagePosition={imagePosition}
+      />
+    ) : (
+      <AvatarInitials name={name} initials={initials} />
+    )}
     <AvatarSROnly>{name}</AvatarSROnly>
     {badge && (
       <Box
@@ -80,18 +111,21 @@ export const InternalAvatar: React.FC<AvatarProps> = ({
 
 export const Avatar = InternalAvatar as typeof InternalAvatar & {
   _Container: typeof AvatarContainer;
+  _Image: typeof AvatarImage;
   _Initials: typeof AvatarInitials;
   _ScreenReadersOnly: typeof AvatarSROnly;
   _Badge: typeof AvatarBadge;
 };
 
 Avatar._Container = AvatarContainer;
+Avatar._Image = AvatarImage;
 Avatar._Initials = AvatarInitials;
 Avatar._ScreenReadersOnly = AvatarSROnly;
 Avatar._Badge = AvatarBadge;
 
 InternalAvatar.displayName = 'Avatar';
 Avatar._Container.displayName = 'Avatar._Container';
+Avatar._Image.displayName = 'Avatar._Image';
 Avatar._Initials.displayName = 'Avatar._Initials';
 Avatar._ScreenReadersOnly.displayName = 'Avatar._ScreenReadersOnly';
 Avatar._Badge.displayName = 'Avatar._Badge';

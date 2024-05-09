@@ -279,9 +279,16 @@ export interface IAreaAttrs<T = HTMLAreaElement> {
  * - Paragraph
  * - ...
  * --------------------------------------------- */
-export interface ContentEditableAttrProps<T = Element> {
+export interface IContentEditableAttrs<T = Element> {
   /** The contenteditable global attribute is an enumerated attribute indicating if the element should be editable by the user. If so, the browser modifies its widget to allow editing.*/
   contentEditable?: AllHTMLAttributes<T>['contentEditable'];
   /** A function that is called when the element is changed */
   onChange?: DOMAttributes<T>['onChange'];
+}
+
+/** ---------------------------------------------
+ * Common declarations for all the components to define 'data-...' attributes
+ * --------------------------------------------- */
+export interface IDataAttrs {
+  [key: `data-${string}`]: unknown;
 }

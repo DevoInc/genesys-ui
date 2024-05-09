@@ -31,7 +31,8 @@ export type TAvatarCustomSize = {
 
 export type TAvatarVariant = 'circle' | 'square' | 'rounded';
 
-export type TAvatarFit = 'cover' | 'contain';
+export type TAvatarFit = React.CSSProperties['objectFit'];
+export type TAvatarPosition = React.CSSProperties['objectPosition'];
 
 export type TAvatarBadgeFn = (props: {
   colorScheme: TBadgeColorScheme;
@@ -54,7 +55,9 @@ export interface IAvatar {
   disabled?: boolean;
   /** Icon to be shown on hover-focus of the avatar.E.g. a pencil icon to denote it's editable. */
   iconOnHover?: React.ReactNode;
-  /** The way of the background image fits the space */
+  /** The way of the image is positioned relative to the space (equivalent to css property `object-position`). */
+  imagePosition?: TAvatarPosition;
+  /** The way of the image fits the space (equivalent to css property `object-fit`). */
   imageFit?: TAvatarFit;
   /** Path of the image file. */
   imageSrc?: string;

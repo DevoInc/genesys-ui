@@ -62,15 +62,59 @@ approximate size of a `Badge` component.
 
 With text content:
 
-<Canvas of={CaseStories.WithBadgeText} />
+<Canvas of={CaseStories.WithBadgeText} sourceState="none" />
+
+<Source
+  code={`
+<Avatar
+  name="Rick Sanchez :: version 9"
+  badge={({ colorScheme, size }) => (
+    <Badge
+      colorScheme={colorScheme}
+      size={size}
+      text="9"
+    />
+  )}
+/>
+    `}
+/>
 
 With icon content:
 
-<Canvas of={CaseStories.WithBadgeIcon} />
+<Canvas of={CaseStories.WithBadgeIcon} sourceState="none" />
+
+<Source
+  code={`
+<Avatar
+  name="Rick Sanchez :: version 9"
+  badge={({ colorScheme, size }) => (
+    <Badge
+      colorScheme={colorScheme}
+      size={size}
+      icon={<GIDiamondPrizeAwardJewelleryRing />}
+    />
+  )}
+/>
+    `}
+/>
 
 As a bubble with no content and specific `colorScheme`:
 
-<Canvas of={CaseStories.WithBadgeCustomColor} />
+<Canvas of={CaseStories.WithBadgeCustomColor} sourceState="none" />
+
+<Source
+  code={`
+<Avatar
+  name="Rick Sanchez :: online"
+  badge={({ size }) => (
+    <Badge
+      colorScheme="success"
+      size={size}
+    />
+  )}
+/>
+    `}
+/>
 
 ### Initials instead of image
 
@@ -130,12 +174,22 @@ recommend this usage, but anyway it's available for very specific needs.
 <Source
   code={`
 <Avatar._Container>
+  <Avatar._Image />
   <Avatar._Initials />
   <Avatar._ScreenReadersOnly />
   <Avatar._Badge />
 </Avatar._Container>
 `}
 />
+
+There are some props which are inherited by the internal components from a React context,
+but they also can be overwritten defining them directly in each internal component:
+
+- imageFit
+- imagePosition
+- imageSrc
+- size
+- variant
 
 <Canvas of={CaseStories.CustomUsage} />
 
