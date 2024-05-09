@@ -27,6 +27,7 @@ export const StyledAvatarBackdrop = styled.span<StyledAvatarBackdropProps>`
       transform: scale(0.1);
       transform-origin: center;
       overflow: hidden;
+      z-index: 1;
 
       *:hover > &,
       *:focus > &,

@@ -3,7 +3,7 @@ import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
 import * as Stories from './HFlex.stories';
 import spacingProps from '../../../stories/partials/spacingProps.md?raw';
 
-<Meta of={Stories} />;
+<Meta of={Stories} />
 
 # HFlex
 
@@ -41,15 +41,12 @@ import * as React from 'react';
 import { HFlex } from '@devoinc/genesys-ui';
 
 const MyFlexCmp = () => (
-
-{' '}
-
 <HFlex as={'ul'}>
-  <HFlex.Item as={'li'}>Child 1</Flex.Item>
-  <HFlex.Item as={'li'}>Child 2</Flex.Item>
-  <HFlex.Item as={'li'}>Child 3</Flex.Item>
+<HFlex.Item as={'li'}>Child 1</Flex.Item>
+<HFlex.Item as={'li'}>Child 2</Flex.Item>
+<HFlex.Item as={'li'}>Child 3</Flex.Item>
 </Flex>
-); `} />
+);`} />
 
 <Markdown>{spacingProps}</Markdown>
 

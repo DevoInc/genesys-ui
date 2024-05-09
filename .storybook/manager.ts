@@ -2,8 +2,9 @@ import { addons } from '@storybook/manager-api';
 import { create } from '@storybook/theming/create';
 
 const iconMap = {
-  Components: '📱',
-  'Getting started': '🚀',
+  Components: '',
+  'Getting started': '',
+  Develop: '',
 };
 
 addons.setConfig({
@@ -23,7 +24,7 @@ addons.setConfig({
     filters: {
       patternns: (item) => {
         return !(item?.tags?.includes('isHidden') ?? false);
-      }
-    }
+      },
+    },
   },
 });

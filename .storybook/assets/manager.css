@@ -18,6 +18,14 @@
   color: #5b6870;
 }
 
+.sidebar-container .search-result-item > div:first-child {
+  display: none;
+}
+
+.sidebar-container .search-result-item > div:last-child > div:first-child {
+  font-weight: 600;
+}
+
 .sidebar-container .sidebar-subheading {
   display: flex;
   align-items: center;
@@ -56,33 +64,19 @@
 .sidebar-container #storybook-explorer-tree a,
 .sidebar-container #storybook-explorer-tree button {
   transition: background-color ease-out 0.1s;
-  border-radius: 0;
   padding-top: 6px;
   padding-bottom: 6px;
   padding-right: 12px;
   line-height: 20px;
 }
 
-.sidebar-container
-  #storybook-explorer-tree
-  button:not([data-selected='true']):hover {
-  background: rgba(0, 0, 0, 0.08);
+.sidebar-container #storybook-explorer-tree .sidebar-item {
+  transition: background-color ease-out 0.1s;
 }
 
-.sidebar-container #storybook-explorer-tree a:not([data-selected='true']):hover,
-.sidebar-container
-  #storybook-explorer-tree
-  button:not([data-selected='true']):hover,
-.sidebar-container #storybook-explorer-tree a:not([data-selected='true']):focus,
-.sidebar-container
-  #storybook-explorer-tree
-  button:not([data-selected='true']):focus {
+.sidebar-container #storybook-explorer-tree .sidebar-item:not([data-selected='true']):hover,
+.sidebar-container #storybook-explorer-tree .sidebar-item:focus {
   background: rgba(0, 0, 0, 0.08);
-}
-
-.sidebar-container #storybook-explorer-tree a:focus,
-.sidebar-container #storybook-explorer-tree button:focus {
-  color: inherit;
 }
 
 .sidebar-container #storybook-explorer-tree [data-selected='true'] {
@@ -91,8 +85,21 @@
   font-weight: 600;
 }
 
-.sidebar-container #storybook-explorer-tree a svg,
-.sidebar-container #storybook-explorer-tree button svg {
+.sidebar-container #storybook-explorer-tree .sidebar-item {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-container #storybook-explorer-tree .sidebar-subheading {
+  pointer-events: none;
+}
+
+.sidebar-container #storybook-explorer-tree .sidebar-subheading > button > div {
+  display: none;
+}
+
+.sidebar-container #storybook-explorer-tree .sidebar-item > div > svg,
+.sidebar-container #storybook-explorer-tree .sidebar-item > a > div{
   display: none;
 }
 

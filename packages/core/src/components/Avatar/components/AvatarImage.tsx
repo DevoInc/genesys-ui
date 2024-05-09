@@ -1,23 +1,29 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
-import {
-  StyledAvatarImage,
-  type StyledAvatarImageProps,
-} from '../styled/StyledAvatarImage';
+import type { IAvatar } from '../declarations';
 import { AvatarContext } from '../context';
-import { IStyledOverloadCss } from '../../../declarations';
+import { getAvatarSizeConfig } from '../utils';
+import { Thumbnail, type ThumbnailProps } from '../../Thumbnail';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AvatarImageProps
-  extends IStyledOverloadCss,
-    StyledAvatarImageProps {}
+  extends Pick<ThumbnailProps, 'alt' | 'styles'>,
+    Pick<
+      IAvatar,
+      | 'customSize'
+      | 'imageFit'
+      | 'imagePosition'
+      | 'imageSrc'
+      | 'size'
+      | 'variant'
+    > {}
 
 export const AvatarImage: React.FC<AvatarImageProps> = ({
   alt,
   customSize,
   imageFit,
   imagePosition,
-  src,
+  imageSrc,
   size,
   styles,
   variant,
@@ -25,17 +31,24 @@ export const AvatarImage: React.FC<AvatarImageProps> = ({
   const context = React.useContext(AvatarContext);
   const evalVariant = variant || context.variant;
   const evalSize = size || context.size;
-  const evalSrc = src || context.imageSrc;
+  const evalSrc = imageSrc || context.imageSrc;
+  const evalImageFit = imageFit || context.imageFit;
+  const evalImagePosition = imagePosition || context.imagePosition;
+  const theme = useTheme();
+  const borderRadius =
+    theme.alias.shape.borderRadius[
+      evalVariant === 'circle' ? 'full' : evalVariant === 'rounded' ? 'md' : '0'
+    ];
   return (
-    <StyledAvatarImage
+    <Thumbnail
       alt={alt}
-      css={styles}
-      customSize={customSize}
-      imageFit={imageFit}
-      imagePosition={imagePosition}
+      width={getAvatarSizeConfig({ customSize, size: evalSize }).width}
+      height={getAvatarSizeConfig({ customSize, size: evalSize }).height}
+      objectFit={evalImageFit}
+      objectPosition={evalImagePosition}
+      borderRadius={borderRadius}
       src={evalSrc}
-      size={evalSize}
-      variant={evalVariant}
+      styles={styles}
     />
   );
 };
