@@ -20,27 +20,42 @@ split vertically or horizontally, depending on the needs of the user interface.
 
 ## How to import
 
-<Source
-  code={`
-import { SplitLayout } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { SplitLayout } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
+Add directly the desired blocks as children of the SplitLayout.
+
 <Canvas of={Stories.Base} />
 
-## Cases
+## Without minSize
 
-### Three blocks
+If you don't define a minSize for the blocks, when we resize one to the maximum the other ends in
+`width: 0` or `height: 0`, so we recommend adding `overflow: hidden` to the children blocks,
+to avoid maintaining visible undesired contents or spaces. In the same way, you should also
+add the internal padding to a nested children of the block, instead of directly to it, because of
+the box model, which maintains the space of the padding although the width or height is '0'.
+
+This is an example without minSize, but with padding in the children blocks, instead of in a nested one,
+and without applying `overflow:hidden`. We can see how the content is not completely hidden
+when we resize the other one to the maximum:
+
+<Canvas of={Stories.WithoutMinSizeBad} />
+
+In this example we apply `overflow:hidden` and the padding is defined in nested blocks, so we can see how the content
+is completely hidden when we resize the other one to the maximum:
+
+<Canvas of={Stories.WithoutMinSizeGood} />
+
+## Three blocks
 
 <Canvas of={Stories.Three} />
 
-### Nested
+## Nested
 
 <Canvas of={Stories.Nested} />
 
-### Hidden content
+## Dynamic content
 
 <Canvas of={Stories.HiddenContent} />
 

@@ -6,6 +6,7 @@ import { SplitLayout } from './SplitLayout';
 import { Button } from '../Button';
 import { Typography } from '../Typography';
 import { HFlex } from '../HFlex';
+import { Divider } from '../Divider';
 
 const meta: Meta<typeof SplitLayout> = {
   title: 'Components/Layout/SplitLayout',
@@ -26,14 +27,57 @@ export const Base: Story = {
     ((props) => (
       <Box height="30rem">
         <SplitLayout {...props}>
-          <div>Block One</div>
-          <div>Block Two</div>
+          <Box padding="cmp-md">
+            <Typography.Paragraph>Block one</Typography.Paragraph>
+          </Box>
+          <Box padding="cmp-md">
+            <Typography.Paragraph>Block two</Typography.Paragraph>
+          </Box>
+        </SplitLayout>
+      </Box>
+    ))(args),
+};
+
+export const WithoutMinSizeBad: Story = {
+  name: 'Without minSize bad',
+  render: (args) =>
+    ((props) => (
+      <Box height="30rem">
+        <SplitLayout {...props} expandToMin={false} minSize={0}>
+          <Box padding="cmp-md">
+            <Typography.Paragraph>Block one</Typography.Paragraph>
+          </Box>
+          <Box padding="cmp-md">
+            <Typography.Paragraph>Block two</Typography.Paragraph>
+          </Box>
+        </SplitLayout>
+      </Box>
+    ))(args),
+};
+
+export const WithoutMinSizeGood: Story = {
+  name: 'Without minSize good',
+  render: (args) =>
+    ((props) => (
+      <Box height="30rem">
+        <SplitLayout {...props} expandToMin={false} minSize={0}>
+          <Box overflow="hidden">
+            <Box padding="cmp-md">
+              <Typography.Paragraph>Block one</Typography.Paragraph>
+            </Box>
+          </Box>
+          <Box overflow="hidden">
+            <Box padding="cmp-md">
+              <Typography.Paragraph>Block two</Typography.Paragraph>
+            </Box>
+          </Box>
         </SplitLayout>
       </Box>
     ))(args),
 };
 
 export const Three: Story = {
+  name: 'Three blocks',
   args: {
     sizes: [25, 50, 25],
   },
@@ -41,30 +85,44 @@ export const Three: Story = {
     ((props) => (
       <Box height="30rem">
         <SplitLayout {...props}>
-          <div>Block One</div>
-          <div>Block Two</div>
-          <div>Block Three</div>
+          <Box padding="cmp-md">
+            <Typography.Paragraph>Block one</Typography.Paragraph>
+          </Box>
+          <Box padding="cmp-md">
+            <Typography.Paragraph>Block two</Typography.Paragraph>
+          </Box>
+          <Box padding="cmp-md">
+            <Typography.Paragraph>Block three</Typography.Paragraph>
+          </Box>
         </SplitLayout>
       </Box>
     ))(args),
 };
 
 export const Nested: Story = {
+  name: 'Nested blocks',
   render: (args) =>
     ((props) => (
       <Box height="30rem">
         <SplitLayout {...props}>
           <SplitLayout direction={'vertical'}>
-            <div>Block One</div>
-            <div>Block Two</div>
+            <Box padding="cmp-md">
+              <Typography.Paragraph>Block one</Typography.Paragraph>
+            </Box>
+            <Box padding="cmp-md">
+              <Typography.Paragraph>Block two</Typography.Paragraph>
+            </Box>
           </SplitLayout>
-          <div>Block Three</div>
+          <Box padding="cmp-md">
+            <Typography.Paragraph>Block three</Typography.Paragraph>
+          </Box>
         </SplitLayout>
       </Box>
     ))(args),
 };
 
 export const HiddenContent: Story = {
+  name: 'Dynamic content',
   render: () =>
     (() => {
       const [showMenu, setShowMenu] = React.useState(true);
@@ -79,53 +137,71 @@ export const HiddenContent: Story = {
       };
 
       return (
-        <Box height="30rem">
-          <HFlex padding="cmp-md">
+        <>
+          <HFlex>
             <Button onClick={toggleMenu}>
-              {showMenu ? 'Hide menu' : 'Hide menu'}
+              {showMenu ? 'Hide menu' : 'Show menu'}
             </Button>
             <Button onClick={toggleFooter}>
               {showFooter ? 'Hide footer' : 'Show footer'}
             </Button>
           </HFlex>
-
-          <SplitLayout
-            sizes={showMenu ? [25, 75] : [0, 100]}
-            minSize={0}
-            expandToMin={false}
-            gutterSize={showMenu ? 10 : 0}
-            gutterAlign="center"
-            snapOffset={30}
-            dragInterval={1}
-            direction="horizontal"
-            cursor="col-resize"
-          >
-            <Box padding="cmp-xs">
-              {showMenu && (
-                <Typography.Paragraph>Menu content</Typography.Paragraph>
-              )}
-            </Box>
+          <Divider margin="cmp-md 0 0 0" colorScheme="weak" />
+          <Box height="30rem">
             <SplitLayout
-              direction={'vertical'}
-              sizes={showFooter ? [75, 25] : [100, 0]}
-              cursor="col-resize"
-              gutterSize={showFooter ? 10 : 0}
+              sizes={showMenu ? [25, 75] : [0, 100]}
+              minSize={0}
+              expandToMin={false}
+              gutterSize={showMenu ? 10 : 0}
               gutterAlign="center"
               snapOffset={30}
               dragInterval={1}
-              minSize={0}
+              direction="horizontal"
+              cursor="col-resize"
             >
-              <Box padding="cmp-xs">
-                <Typography.Heading>Main area</Typography.Heading>
+              <Box
+                overflow="hidden"
+                styles="background-color: rgba(63, 187, 226, 0.2)"
+              >
+                <Box padding="cmp-sm">
+                  {showMenu && (
+                    <Typography.Paragraph>Menu</Typography.Paragraph>
+                  )}
+                </Box>
               </Box>
-              <Box>
-                {showFooter && (
-                  <Typography.Code>print Hello world!</Typography.Code>
-                )}
-              </Box>
+              <SplitLayout
+                direction={'vertical'}
+                sizes={showFooter ? [75, 25] : [100, 0]}
+                cursor="col-resize"
+                gutterSize={showFooter ? 10 : 0}
+                gutterAlign="center"
+                snapOffset={30}
+                dragInterval={1}
+                minSize={0}
+              >
+                <Box
+                  overflow="hidden"
+                  styles="background-color: rgba(182, 23, 226, 0.2)"
+                >
+                  <Box padding="cmp-sm">
+                    <Typography.Paragraph>Main</Typography.Paragraph>
+                  </Box>
+                </Box>
+                <Box
+                  padding="cmp-sm"
+                  overflow="hidden"
+                  styles="background-color: rgba(51, 255, 159, 0.2);"
+                >
+                  {showFooter && (
+                    <Box padding="cmp-sm">
+                      <Typography.Paragraph>Footer</Typography.Paragraph>
+                    </Box>
+                  )}
+                </Box>
+              </SplitLayout>
             </SplitLayout>
-          </SplitLayout>
-        </Box>
+          </Box>
+        </>
       );
     })(),
 };

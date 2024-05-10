@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
 import Split from 'react-split';
-import { pseudoElementMixin } from '../../styled';
+import { pseudoElementMixin, pseudoElementOverlayMixin } from '../../styled';
 
 export const StyledSplitLayout = styled(Split)`
+  overflow: hidden;
   height: 100%;
 
   ${({ direction }) =>
@@ -22,11 +23,18 @@ export const StyledSplitLayout = styled(Split)`
       // gutter
       .gutter {
         position: relative;
+        overflow: hidden;
         transition: all ease
           ${theme.alias.mutation.transitionDuration.opacity.md};
         background-color: ${theme.alias.color.background.surface.base.raised};
-        border-style: solid;
-        border-color: ${theme.alias.color.border.separator.base.weak};
+
+        // to hide borders when the width = 0
+        &::before {
+          ${pseudoElementOverlayMixin()};
+          border-style: solid;
+          border-color: ${theme.alias.color.border.separator.base.weak};
+          border-width: 0;
+        }
 
         &::after {
           ${pseudoElementMixin()};
@@ -45,21 +53,30 @@ export const StyledSplitLayout = styled(Split)`
         &:hover {
           background-color: ${theme.alias.color.background.surface.base
             .expanded};
-          border-color: ${theme.alias.color.border.separator.base.base};
+
+          &::before {
+            border-color: ${theme.alias.color.border.separator.base.base};
+          }
         }
 
         // gutter horizontal
         &.gutter-horizontal {
           cursor: col-resize;
-          border-right-width: ${theme.alias.shape.borderSize.separator.md};
-          border-left-width: ${theme.alias.shape.borderSize.separator.md};
+
+          &::before {
+            border-right-width: ${theme.alias.shape.borderSize.separator.md};
+            border-left-width: ${theme.alias.shape.borderSize.separator.md};
+          }
         }
 
         // gutter vertical
         &.gutter-vertical {
-          border-top-width: ${theme.alias.shape.borderSize.separator.md};
-          border-bottom-width: ${theme.alias.shape.borderSize.separator.md};
           cursor: row-resize;
+
+          &::before {
+            border-top-width: ${theme.alias.shape.borderSize.separator.md};
+            border-bottom-width: ${theme.alias.shape.borderSize.separator.md};
+          }
 
           &::after {
             transform: translate(-50%, -50%) rotate(90deg);
