@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { lorem, lorem2 } from '../../../stories/utils/fillerTexts';
+import { lorem } from '../../../stories/utils/fillerTexts';
 
 import { Box } from '../Box';
 import { SplitLayout } from './SplitLayout';
