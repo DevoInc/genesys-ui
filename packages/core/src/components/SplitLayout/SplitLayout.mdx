@@ -24,9 +24,15 @@ split vertically or horizontally, depending on the needs of the user interface.
 
 ## Basic usage
 
-Add directly the desired blocks as children of the SplitLayout.
+Add the desired blocks as direct children of the SplitLayout. For each block a resizable area is automatically created.
+Usually we need to define a height for the parent container of the `SplitLayout` if we want a pre-defined height
+regardless of whether there is content or not.
 
 <Canvas of={Stories.Base} />
+
+Anyway, the resizable areas will adapt their height to their contents, although there is no defined height.
+
+<Canvas of={Stories.BaseWithoutHeight} />
 
 ## Without minSize
 
@@ -49,9 +55,13 @@ is completely hidden when we resize the other one to the maximum:
 
 ## Three blocks
 
+This an example with three blocks with different sizes which define the widths of the blocks:
+
 <Canvas of={Stories.Three} />
 
 ## Nested
+
+Yoi can create nested resizable areas simply nesting `SplitLayout`components:
 
 <Canvas of={Stories.Nested} />
 

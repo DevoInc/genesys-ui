@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+import { lorem, lorem2 } from '../../../stories/utils/fillerTexts';
 
 import { Box } from '../Box';
 import { SplitLayout } from './SplitLayout';
@@ -7,6 +8,7 @@ import { Button } from '../Button';
 import { Typography } from '../Typography';
 import { HFlex } from '../HFlex';
 import { Divider } from '../Divider';
+import { VFlex } from '../VFlex';
 
 const meta: Meta<typeof SplitLayout> = {
   title: 'Components/Layout/SplitLayout',
@@ -25,7 +27,7 @@ type Story = StoryObj<typeof SplitLayout>;
 export const Base: Story = {
   render: (args) =>
     ((props) => (
-      <Box height="30rem">
+      <Box height="20rem">
         <SplitLayout {...props}>
           <Box padding="cmp-md">
             <Typography.Paragraph>Block one</Typography.Paragraph>
@@ -38,11 +40,28 @@ export const Base: Story = {
     ))(args),
 };
 
-export const WithoutMinSizeBad: Story = {
-  name: 'Without minSize bad',
+export const BaseWithoutHeight: Story = {
+  tags: ['isHidden'],
   render: (args) =>
     ((props) => (
-      <Box height="30rem">
+      <Box>
+        <SplitLayout {...props}>
+          <Box padding="cmp-md">
+            <Typography.Paragraph>{lorem}</Typography.Paragraph>
+          </Box>
+          <Box padding="cmp-md">
+            <Typography.Paragraph>Block two</Typography.Paragraph>
+          </Box>
+        </SplitLayout>
+      </Box>
+    ))(args),
+};
+
+export const WithoutMinSizeBad: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <Box height="20rem">
         <SplitLayout {...props} expandToMin={false} minSize={0}>
           <Box padding="cmp-md">
             <Typography.Paragraph>Block one</Typography.Paragraph>
@@ -56,10 +75,10 @@ export const WithoutMinSizeBad: Story = {
 };
 
 export const WithoutMinSizeGood: Story = {
-  name: 'Without minSize good',
+  tags: ['isHidden'],
   render: (args) =>
     ((props) => (
-      <Box height="30rem">
+      <Box height="20rem">
         <SplitLayout {...props} expandToMin={false} minSize={0}>
           <Box overflow="hidden">
             <Box padding="cmp-md">
@@ -83,7 +102,7 @@ export const Three: Story = {
   },
   render: (args) =>
     ((props) => (
-      <Box height="30rem">
+      <Box height="20rem">
         <SplitLayout {...props}>
           <Box padding="cmp-md">
             <Typography.Paragraph>Block one</Typography.Paragraph>
@@ -123,8 +142,8 @@ export const Nested: Story = {
 
 export const HiddenContent: Story = {
   name: 'Dynamic content',
-  render: () =>
-    (() => {
+  render: (args) =>
+    ((args) => {
       const [showMenu, setShowMenu] = React.useState(true);
       const [showFooter, setShowFooter] = React.useState(false);
 
@@ -137,7 +156,7 @@ export const HiddenContent: Story = {
       };
 
       return (
-        <>
+        <VFlex spacing="0">
           <HFlex>
             <Button onClick={toggleMenu}>
               {showMenu ? 'Hide menu' : 'Show menu'}
@@ -170,6 +189,7 @@ export const HiddenContent: Story = {
                 </Box>
               </Box>
               <SplitLayout
+                {...args}
                 direction={'vertical'}
                 sizes={showFooter ? [75, 25] : [100, 0]}
                 cursor="col-resize"
@@ -188,7 +208,6 @@ export const HiddenContent: Story = {
                   </Box>
                 </Box>
                 <Box
-                  padding="cmp-sm"
                   overflow="hidden"
                   styles="background-color: rgba(51, 255, 159, 0.2);"
                 >
@@ -201,7 +220,7 @@ export const HiddenContent: Story = {
               </SplitLayout>
             </SplitLayout>
           </Box>
-        </>
+        </VFlex>
       );
-    })(),
+    })(args),
 };
