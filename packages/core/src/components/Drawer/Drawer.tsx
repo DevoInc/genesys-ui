@@ -5,8 +5,7 @@ import { Dock } from 'react-dock';
 import type { IContainerEventAttrs } from '../../declarations';
 import { Box, type BoxProps } from '../Box';
 
-export interface FloatPanelProps
-  extends Omit<BoxProps, 'position' | 'visibility'> {
+export interface DrawerProps extends Omit<BoxProps, 'position' | 'visibility'> {
   defaultSize?: number;
   dimMode?: 'none' | 'transparent' | 'opaque';
   hideWhileResizing?: boolean;
@@ -16,7 +15,7 @@ export interface FloatPanelProps
   onSizeChange?: IContainerEventAttrs['onChange'];
 }
 
-export const FloatPanel: React.FC<FloatPanelProps> = ({
+export const Drawer: React.FC<DrawerProps> = ({
   as,
   children,
   defaultSize,

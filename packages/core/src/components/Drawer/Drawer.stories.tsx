@@ -2,21 +2,21 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from '../Button';
-import { FloatPanel } from './FloatPanel';
+import { Drawer } from './Drawer';
 import { Panel } from '../Panel';
 import { Typography } from '../Typography';
 import { VFlex } from '../VFlex';
 
-const meta: Meta<typeof FloatPanel> = {
-  title: 'Components/Layout/FloatPanel',
-  component: FloatPanel,
+const meta: Meta<typeof Drawer> = {
+  title: 'Components/Layout/Drawer',
+  component: Drawer,
   args: {
     position: 'left',
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof FloatPanel>;
+type Story = StoryObj<typeof Drawer>;
 
 export const Base: Story = {
   args: {
@@ -48,7 +48,7 @@ export const Closable: Story = {
       return closed ? (
         <Button onClick={() => setClosed(false)}>Open FloatPanel</Button>
       ) : (
-        <FloatPanel position="left">
+        <Drawer position="left">
           <Panel elevation="ground" height="100%">
             <Panel.Header
               bordered
@@ -72,7 +72,7 @@ export const Closable: Story = {
               </Typography.Paragraph>
             </Panel.Body>
           </Panel>
-        </FloatPanel>
+        </Drawer>
       );
     })(),
 };
