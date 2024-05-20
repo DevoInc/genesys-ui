@@ -1,53 +1,34 @@
-import { formatWithOptions } from 'date-fns/fp';
 import {
-  addDays,
-  startOfWeek,
   startOfMonth,
   eachDayOfInterval,
   endOfMonth,
   startOfDay,
-  subDays,
+  getDate,
+  getTime,
 } from 'date-fns';
-import * as locales from 'date-fns/locale';
-
-/**
- * Get the weekdays in the specified locale
- */
-export const getWeekDays = (locale: string): string[] => {
-  const loc = locales[locale];
-  const formatDays = formatWithOptions({ locale: loc }, 'EEEEEE');
-  const start = startOfWeek(new Date(), { locale: loc });
-  const incDays = (day: Date, idx: number) => addDays(day, idx);
-  return Array(7).fill(start).map(incDays).map(formatDays);
-};
+import { IParseResult, TParseDate } from '../../declarations';
 
 /**
  * Get Date of each day in the month
  */
-export const getMonthDays = (ts: number) =>
+export const getMonthDays = (dt: Date | number) =>
   eachDayOfInterval({
-    start: startOfMonth(ts),
-    end: endOfMonth(ts),
+    start: startOfMonth(dt),
+    end: endOfMonth(dt),
   });
 
 /**
  * Get the the blank days until the first of the month
  */
-export const getPrevDays = (ts: number) => {
-  return subDays(startOfMonth(ts), 1).getDay();
+export const getPrevDays = (dt: Date | number, weekStart: number) => {
+  return startOfMonth(dt).getDay() - weekStart;
 };
-
-/**
- * Rest of days until 42 days (for 6 rows of 7 cols)
- */
-export const getNextDays = (ts: number) =>
-  42 - getPrevDays(ts) - endOfMonth(ts).getDate() - 1;
 
 interface ClassConditionParams {
   from: number;
   to: number;
   hover: number;
-  dayTime: number;
+  ts: number;
   hasLeftHoverEffect?: boolean;
   hasRightHoverEffect?: boolean;
 }
@@ -56,29 +37,24 @@ interface ClassConditionParams {
  * Determines whether a given day is disabled based on the specified criteria.
  */
 const hasDisabled = ({
-  dayTime,
-  validateDate,
-  invalidDates,
+  ts,
+  parseDate,
 }: {
-  dayTime: number;
-  validateDate: (ts: number) => boolean;
-  invalidDates: number[];
-}): boolean => {
-  const invalids = invalidDates.map((day) => startOfDay(day).getTime());
-  return !validateDate(dayTime) || invalids.includes(dayTime);
-};
+  ts: number;
+  parseDate: TParseDate;
+}): boolean => !parseDate(ts).isValid;
 
 /**
  * Determines if a day should have the "right hover" class based on the specified criteria.
  */
-const rightHover = ({ hover, from, dayTime }: ClassConditionParams) =>
-  hover && hover > from && dayTime === hover;
+const rightHover = ({ hover, from, ts }: ClassConditionParams) =>
+  hover && hover > from && ts === hover;
 
 /**
  * Determines if a day should have a box shadow on the right side based on the specified criteria.
  */
 const hasBoxShadowRight = ({
-  dayTime,
+  ts,
   from,
   hasRightHoverEffect,
   hover,
@@ -87,16 +63,16 @@ const hasBoxShadowRight = ({
   (hasRightHoverEffect || !to) &&
   from &&
   hover &&
-  dayTime >= from &&
-  dayTime <= hover &&
-  dayTime > to &&
+  ts >= from &&
+  ts <= hover &&
+  ts > to &&
   ((!to && hover > from) || (to && hover > to));
 
 /**
  * Determines if a day should have a box shadow on the left side based on the specified criteria.
  */
 const hasBoxShadowLeft = ({
-  dayTime,
+  ts,
   from,
   hasLeftHoverEffect,
   hover,
@@ -105,12 +81,12 @@ const hasBoxShadowLeft = ({
   (hasLeftHoverEffect || !to) &&
   from &&
   hover &&
-  dayTime <= from &&
-  dayTime >= hover &&
+  ts <= from &&
+  ts >= hover &&
   ((!from && hover < to) || (from && hover < from));
 
 const hasNextBoxShadow = ({
-  dayTime,
+  ts,
   from,
   hasRightHoverEffect,
   hover,
@@ -119,13 +95,13 @@ const hasNextBoxShadow = ({
   hasRightHoverEffect &&
   from &&
   hover &&
-  dayTime >= from &&
-  dayTime <= hover &&
-  to == dayTime &&
+  ts >= from &&
+  ts <= hover &&
+  to == ts &&
   hover > to;
 
 const hasPrevBoxShadow = ({
-  dayTime,
+  ts,
   from,
   hasLeftHoverEffect,
   hover,
@@ -134,93 +110,88 @@ const hasPrevBoxShadow = ({
   hasLeftHoverEffect &&
   to &&
   hover &&
-  dayTime <= to &&
-  dayTime >= hover &&
-  from == dayTime &&
+  ts <= to &&
+  ts >= hover &&
+  from == ts &&
   hover < from;
 
 const getClassesForDay = ({
-  dayTime,
+  ts,
   from,
   hasLeftHoverEffect,
   hasRightHoverEffect,
   hover,
-  invalidDates = [],
   lastDayOfMonth,
   to,
-  validateDate,
+  parseDate,
 }: ClassConditionParams & {
-  invalidDates: number[];
   lastDayOfMonth: number;
-  validateDate: (ts: number) => boolean;
+  parseDate: (dt: Date | number) => IParseResult;
 }): string[] => [
-  ...(hasDisabled({ dayTime, validateDate, invalidDates }) ? ['disabled'] : []),
-  ...(dayTime === from || dayTime === to ? ['selected'] : []),
-  ...(dayTime === from && to ? ['from-selected'] : []),
-  ...(dayTime === lastDayOfMonth ? ['month-last-day'] : []),
-  ...(dayTime === to && from ? ['to-selected'] : []),
-  ...(dayTime >= from && dayTime <= to ? ['highlight'] : []),
-  ...(hasBoxShadowRight({ hover, from, to, dayTime, hasRightHoverEffect })
+  ...(hasDisabled({ ts, parseDate }) ? ['disabled'] : []),
+  ...(ts === from || ts === to ? ['selected'] : []),
+  ...(ts === from && to ? ['from-selected'] : []),
+  ...(ts === lastDayOfMonth ? ['month-last-day'] : []),
+  ...(ts === to && from ? ['to-selected'] : []),
+  ...(ts >= from && ts <= to ? ['highlight'] : []),
+  ...(hasBoxShadowRight({ hover, from, to, ts, hasRightHoverEffect })
     ? ['box-shadow']
     : []),
-  ...(hasBoxShadowLeft({ hover, from, to, dayTime, hasLeftHoverEffect })
+  ...(hasBoxShadowLeft({ hover, from, to, ts, hasLeftHoverEffect })
     ? ['box-shadow']
     : []),
-  ...(hasNextBoxShadow({ hover, from, to, dayTime, hasRightHoverEffect })
+  ...(hasNextBoxShadow({ hover, from, to, ts, hasRightHoverEffect })
     ? ['next-box-shadow']
     : []),
-  ...(hasPrevBoxShadow({ hover, from, to, dayTime, hasLeftHoverEffect })
+  ...(hasPrevBoxShadow({ hover, from, to, ts, hasLeftHoverEffect })
     ? ['prev-box-shadow']
     : []),
-  ...(rightHover({ hover, from, to, dayTime }) ? ['rightmost'] : []),
+  ...(rightHover({ hover, from, to, ts }) ? ['rightmost'] : []),
 ];
 
 /**
  * Parser for the month days
  */
 export const parseDays = ({
-  days,
+  dates,
   from,
   hasLeftHoverEffect,
   hasRightHoverEffect,
   hover,
-  invalidDates = [],
   lastDayOfMonth,
   to,
-  validateDate,
+  parseDate,
 }: {
-  days: Date[];
+  dates: Date[];
   from: number;
   hasLeftHoverEffect: boolean;
   hasRightHoverEffect: boolean;
   hover: number;
-  invalidDates: number[];
   lastDayOfMonth: number;
   to: number;
-  validateDate: (ts: number) => boolean;
+  parseDate: (dt: Date | number) => IParseResult;
 }): { value: string; ts: number; classes: string }[] =>
-  days.map((day) => {
-    const dayTime = day.getTime();
-    const dayDate = day.getDate();
+  dates.map((date) => {
+    const monthDay = getDate(date);
+    const ts = getTime(date);
 
     const startOfFrom = from && startOfDay(from).getTime();
     const startOfTo = to && startOfDay(to).getTime();
 
     const classes: string[] = getClassesForDay({
-      dayTime,
+      ts,
       from: startOfFrom,
       hasLeftHoverEffect,
       hasRightHoverEffect,
       hover,
-      invalidDates,
       lastDayOfMonth,
       to: startOfTo,
-      validateDate,
+      parseDate,
     });
 
     return {
-      value: String(dayDate),
+      value: String(monthDay),
       classes: classes.join(' '),
-      ts: dayTime,
+      ts,
     };
   });

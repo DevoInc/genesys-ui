@@ -6,9 +6,15 @@ import * as Stories from './Calendar.stories';
 
 # Calendar
 
-The Calendar is a component designed to work with dates.
-It allows users to select a single date or a range of dates within a particular month.
+The Calendar is a component designed to work with `(number | Date)[]` that
+could be a timestamp in millis or a js native Date, **always in UTC**.
+
+It allows users to select a single date or a range of dates within a particular
+month.
+
 The calendar displays the days of the month in a grid format.
+
+The Calendar use `date-fns` internally for date operations.
 
 ## How to import
 
@@ -16,7 +22,195 @@ The calendar displays the days of the month in a grid format.
 
 ## Basic usage
 
+The Calendar has several main concepts as props:
+
+- `selectedDates`: Array of dates (Date | number), that create the both versions
+  of Calendar one for a single day, two for a range.
+- `monthDate`: This is the date for the month that is showed (could be different
+  from the selected dates).
+- `hasLeftHoverEffect` & `hasRightHoverEffect`: are booleans that define if the
+  hover behavior take the range into consideration.
+- `parseDate`: is a function that resolve into a parse result object, that take
+  each calendar day and use this function to know if the day is available or
+  not. An example could be:
+
+<Source language="tsx" code={`export const parseDateNoFuture = (dt: Date | number): IParseResult => {
+  const result = compareDesc(dt, new Date().getTime());
+  const isValid = result >= 0;
+  return {
+    isValid: isValid,
+    value: dt,
+    errors: isValid ? [] : ['Date is invalid'],
+  };
+};`} />
+
+This is an example of range selected dates:
+
 <Canvas of={Stories.Base} />
+
+This is an example of single selected date:
+
+<Canvas of={Stories.Single} />
+
+## Events
+
+This component has one main event:
+
+- `onChange`: when the user click on any day
+
+## I18n
+
+We can use the next props for internacionalization:
+
+- `weekDays`: array of week days for the header, staring on Sunday
+- `weekStart`: number of the week day that would bi the first (0 - Sunday, 1 -
+  Monday)
+
+Here is an example of the *Spanish* version:
+
+<Canvas of={Stories.I18n} />
+
+## Hooks
+
+These hooks provide pre-defined behaviors to be applied in the Calendar component.
+Each hook returns an object with values that can be passed to the Calendar component.
+
+<Source
+  code={`
+{
+  selectedDates, // selectedDates Calendar property
+  hasLeftHoverEffect, // hasLeftHoverEffect Calendar property
+  hasRightHoverEffect, // hasRightHoverEffect Calendar property
+  handleDateChange, // onClick handler Calendar property
+}
+`}
+/>
+
+### Single Day Hook
+
+Defines a single day selection in the calendar.
+Accepts a timestamp with the default day selected.
+
+<Canvas of={Stories.HookSingleDay} />
+
+#### Parameters
+
+<Source
+  code={`
+[day] // Initial day selected
+`}
+/>
+
+#### Usage
+
+<Source
+code={`
+import { useCalendarSingleDay } from '@devoinc/genesys-ui-datetime';
+
+const {
+  handleDateChange,
+  hasLeftHoverEffect,
+  hasRightHoverEffect,
+  selectedDates,
+} = useCalendarSingleDay([day]);
+`}
+/>
+
+### Forward Hook
+
+Defines a way to select a range of days in which the range can only be expanded forward.
+Once the range has been selected, the range can only be expanded forward by selecting cells.
+If the cell selection is between the range, the end day of the range will be changed.
+Otherwise, the range of days to be selected will be restarted.
+
+<Canvas of={Stories.HookForward} />
+
+#### Parameters
+
+<Source
+  code={`
+[
+  from, // Initial day of the range
+  to, // Final day of the range
+]
+`}
+/>
+
+#### Usage
+
+<Source
+code={`import { useCalendarForward } from '@devoinc/genesys-ui-datetime';
+
+const {
+  handleDateChange,
+  hasLeftHoverEffect,
+  hasRightHoverEffect,
+  selectedDates
+} = useCalendarForward([from, to]);
+`}
+/>
+
+#### Helper
+
+If you would like to build your own hooks you could use:
+
+<Source
+code={`import { forwardBehavior } from '@devoinc/genesys-ui-datetime';
+
+const newRange = forwardBehavior([from, to], newDate: number | Date);
+`}
+/>
+
+### Forward Backward Hook
+
+Defines a way to select a range of days in which the range can be expanded either forward or backward.
+Once the range has been selected, to expand the range it must be done in a cell opposite the last selection.
+If the cell selection is between the range, the end day of the range will be changed.
+Otherwise, the range of days to be selected will be restarted.
+
+<Canvas of={Stories.HookForwardBackward} />
+
+#### Parameters
+
+<Source
+  code={`
+[ 
+  from, // Initial day of the range
+  to, // Final day of the range
+]: (number | Date)[],
+initialBehavior: 'forward' | 'backward'
+`}
+/>
+
+#### Usage
+
+<Source
+code={`
+import { useCalendarForwardBackward } from '@devoinc/genesys-ui-datetime';
+
+const {
+  handleDateChange,
+  hasLeftHoverEffect,
+  hasRightHoverEffect,
+  selectedDates
+} = useCalendarForwardBackward([from, to], initialBehavior);
+`}
+/>
+
+#### Helper
+
+If you would like to build your own hooks you could use:
+
+<Source
+code={`import { forwardBackwardBehavior } from '@devoinc/genesys-ui-datetime';
+
+const newRange = forwardBackwardBehavior(
+  [from, to],
+  newDate: number | Date,
+  reverse: boolean
+);
+`}
+/>
 
 ## Props
 

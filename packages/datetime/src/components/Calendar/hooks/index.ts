@@ -1,3 +1,3 @@
-export * from './useCalendarForwardBackwardBehavior';
-export * from './useCalendarForwardBehavior';
-export * from './useCalendarSingleDayBehavior';
+export * from './useCalendarForward';
+export * from './useCalendarForwardBackward';
+export * from './useCalendarSingleDay';

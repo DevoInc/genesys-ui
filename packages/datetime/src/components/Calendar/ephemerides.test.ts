@@ -2,30 +2,14 @@ import { describe, test, expect } from 'vitest';
 import { addDays } from 'date-fns';
 
 import {
-  getWeekDays,
   getPrevDays,
-  getNextDays,
   parseDays,
   getMonthDays,
 } from './ephemerides';
+import { parseDateNoFuture } from './defaults';
+import { TParseDate } from '../../declarations';
 
 describe('CalendarHelper', () => {
-  describe('getWeekDays', () => {
-    const cases: [string, string, string[]][] = [
-      ['locale es', 'es', ['lu', 'ma', 'mi', 'ju', 'vi', 'sá', 'do']],
-      ['locale enUS', 'enUS', ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']],
-      [
-        'non existing locale use enUS',
-        'invented',
-        ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-      ],
-    ];
-
-    test.each(cases)('%s', (_title, locale, expected) => {
-      expect(getWeekDays(locale)).toEqual(expected);
-    });
-  });
-
   describe('getMonthDays', () => {
     const cases: [string, number, number][] = [
       ['Dec 1th, 2022 has 31 days', new Date(2022, 11, 1).getTime(), 31],
@@ -46,19 +30,7 @@ describe('CalendarHelper', () => {
     ];
 
     test.each(cases)('%s', (_title, ts, expected) => {
-      expect(getPrevDays(ts)).toEqual(expected);
-    });
-  });
-
-  describe('getNextDays', () => {
-    const cases: [string, number, number][] = [
-      ['Dec 1th, 2022 has 7 next days', new Date(2022, 11, 1).getTime(), 7],
-      ['Nov 10th, 2022 has 10 prev days', new Date(2022, 10, 10).getTime(), 10],
-      ['Feb 28th, 2022 has 12 prev days', new Date(2022, 1, 28).getTime(), 12],
-    ];
-
-    test.each(cases)('%s', (_title, ts, expected) => {
-      expect(getNextDays(ts)).toEqual(expected);
+      expect(getPrevDays(ts, 0)).toEqual(expected);
     });
   });
 
@@ -72,8 +44,7 @@ describe('CalendarHelper', () => {
         hover: number;
         hasLeftHoverEffect: boolean;
         hasRightHoverEffect: boolean;
-        validateDate: (ts: number) => boolean;
-        invalidDates: number[];
+        parseDate: TParseDate;
         lastDayOfMonth: number;
       },
       { value: string; classes: string; ts: number }[],
@@ -96,8 +67,7 @@ describe('CalendarHelper', () => {
           hover: null,
           hasLeftHoverEffect: true,
           hasRightHoverEffect: true,
-          validateDate: (ts) => ts < new Date(2022, 12, 14).getTime(),
-          invalidDates: [],
+          parseDate: parseDateNoFuture,
           lastDayOfMonth: 30,
         },
         [
@@ -150,8 +120,7 @@ describe('CalendarHelper', () => {
           hover: null,
           hasLeftHoverEffect: true,
           hasRightHoverEffect: true,
-          validateDate: (ts) => ts < new Date().getTime(),
-          invalidDates: [],
+          parseDate: parseDateNoFuture,
           lastDayOfMonth: 30,
         },
         [

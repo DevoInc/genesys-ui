@@ -1,6 +1,6 @@
 export interface IHookCommonReturnParams {
-  selectedDates: { from: number; to: number };
+  selectedDates: (number | Date)[];
   hasLeftHoverEffect: boolean;
   hasRightHoverEffect: boolean;
-  handleDateChange: (ts: number) => void;
+  handleDateChange: (dt: number | Date) => void;
 }
