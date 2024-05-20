@@ -11,9 +11,9 @@ import {
   IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
 
-import type { ITime } from '../../../declarations';
-import { getFormatTimeStr, toTimestamp } from '../../../helpers';
-import { isSameDay } from '../../Calendar/validations';
+import type { ITime } from '../../declarations';
+import { getFormatTimeStr, toTimestamp } from '../../helpers';
+import { isSameDay } from '../Calendar/validations';
 
 export interface TimeProps
   extends Pick<ITime, 'maxDate' | 'minDate'>,

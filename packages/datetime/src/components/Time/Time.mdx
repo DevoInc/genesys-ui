@@ -1,0 +1,19 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Time.stories';
+
+<Meta of={Stories} />
+
+# Time
+
+## How to import
+
+<Source code={`import { Time } from '@devo/genesys-ui-datetime';`} />
+
+## Basic usage
+
+<Canvas of={Stories.Base} />
+
+## Props
+
+<ArgTypes of={Stories} />

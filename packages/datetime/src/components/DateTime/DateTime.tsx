@@ -22,7 +22,7 @@ import {
 
 import type { ITime } from '../../declarations';
 import { Calendar, type CalendarProps } from '../Calendar';
-import { Time } from './components';
+import { Time } from '../Time';
 import { MonthSelector } from '../MonthSelector';
 import { parseDateNoFuture } from '../Calendar/defaults';
 
