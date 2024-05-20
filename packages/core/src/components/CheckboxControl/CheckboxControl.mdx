@@ -1,7 +1,6 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './CheckboxControl.stories';
-import * as CaseStories from './CheckboxControl.cases.stories';
 
 <Meta of={Stories} />
 
@@ -20,19 +19,17 @@ By default, when a checkbox is selected, it displays a checkmark or a tick insid
 
 <Canvas of={Stories.Base} />
 
-## Cases
+## Uncontrolled
 
-### Uncontrolled
+<Canvas of={Stories.Uncontrolled} />
 
-<Canvas of={CaseStories.Uncontrolled} />
+## Controlled
 
-### Controlled
+<Canvas of={Stories.Controlled} />
 
-<Canvas of={CaseStories.Controlled} />
+## Indeterminate
 
-### Indeterminate
-
-<Canvas of={CaseStories.Indeterminate} />
+<Canvas of={Stories.Indeterminate} />
 
 ## Related components
 

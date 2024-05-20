@@ -20,14 +20,23 @@ in a single row. Each child can be separated horizontally using the prop `spacin
 
 <Canvas of={Stories.Base} />
 
-## Cases
+## Using HFlex.Item
 
-### childrenFitFullWidth
+We can use `HFlex.Item` component in a flex structure wrapping children to assign flex,
+order, and align-self CSS styles to each child component. It's only necessary when we need
+those specific styles for any child.
+
+Here is an example that demonstrates different CSS flex and align-self
+settings for each child component of a Flex component:
+
+<Canvas of={Stories.HFlexAndHFlexItems} />
+
+## childrenFitFullWidth
 
 You can use prop `childrenFitFullWidth` to get the same width for each child and
 make them to fit the full width of the `HFlex` parent component:
 
-### Using the as property
+## Using the as property
 
 The `as` property allow these components to be rendered as any HTML tag:
 'div', 'li', 'section'... etc.
@@ -41,6 +50,7 @@ import * as React from 'react';
 import { HFlex } from '@devoinc/genesys-ui';
 
 const MyFlexCmp = () => (
+
 <HFlex as={'ul'}>
 <HFlex.Item as={'li'}>Child 1</Flex.Item>
 <HFlex.Item as={'li'}>Child 2</Flex.Item>

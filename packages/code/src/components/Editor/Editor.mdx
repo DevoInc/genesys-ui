@@ -16,11 +16,7 @@ React implementation of
 
 ## How to import
 
-<Source
-  code={`
-import { Editor } from '@devoinc/genesys-ui-code';
-`}
-/>
+<Source code={`import { Editor } from '@devoinc/genesys-ui-code';`} />
 
 ## Basic usage
 
@@ -50,19 +46,19 @@ import { Editor, useEditorTheme } from '@devoinc/genesys-ui-code';
 export const CustomThemed = () => {
   const editorTheme = useEditorTheme();
 
-  return (
-    <Editor.Container bordered={true}>
-      <Editor.Editor
-        height="300px"
-        bordered={true}
-        theme={editorTheme}
-        value="I'm being built from my inner parts"
-      />
-      <Editor.ActionsContainer>
-        <IconButton icon="gi-heart_full" />
-      </Editor.ActionsContainer>
-    </Editor.Container>
-  );
+return (
+<Editor.Container bordered={true}>
+<Editor.Editor
+height="300px"
+bordered={true}
+theme={editorTheme}
+value="I'm being built from my inner parts"
+/>
+<Editor.ActionsContainer>
+<IconButton icon="gi-heart_full" />
+</Editor.ActionsContainer>
+</Editor.Container>
+);
 };
 `} />
 
@@ -91,41 +87,41 @@ import { Editor, registerLanguage } from '@devoinc/genesys-ui-code';
 const languageId = 'myLang';
 
 const language = {
-  keywords: ['"keyword"'],
-  tokenizer: {
-    root: [
-      [
-        /"[A-Za-z0-9_]_"/,
-        {
-          cases: {
-            '@keywords': 'keyword',
-            '@default': 'default',
-          },
-        },
-      ],
-      [/:\\s"((.|-|\\n|\\r)_)"/, 'value'],
-    ],
-  },
+keywords: ['"keyword"'],
+tokenizer: {
+root: [
+[
+/"[A-Za-z0-9_]_"/,
+{
+cases: {
+'@keywords': 'keyword',
+'@default': 'default',
+},
+},
+],
+[/:\\s"((.|-|\\n|\\r)_)"/, 'value'],
+],
+},
 };
 
 const completionProvider = {
-  provideCompletionItems: (model, position) => {
-    const word = model.getWordUntilPosition(position);
-    const suggestions = [
-      {
-        label: 'keyword',
-        kind: monaco.languages.CompletionItemKind.Field,
-        insertText: '"keyword"',
-        range: {
-          startLineNumber: position.lineNumber,
-          endLineNumber: position.lineNumber,
-          startColumn: word.startColumn,
-          endColumn: word.endColumn,
-        },
-      },
-    ];
-    return { suggestions: suggestions };
-  },
+provideCompletionItems: (model, position) => {
+const word = model.getWordUntilPosition(position);
+const suggestions = [
+{
+label: 'keyword',
+kind: monaco.languages.CompletionItemKind.Field,
+insertText: '"keyword"',
+range: {
+startLineNumber: position.lineNumber,
+endLineNumber: position.lineNumber,
+startColumn: word.startColumn,
+endColumn: word.endColumn,
+},
+},
+];
+return { suggestions: suggestions };
+},
 };
 
 export const CustomLang = () => {
@@ -137,15 +133,15 @@ export const CustomLang = () => {
       .registerCompletionProvider(completionProvider);
   };
 
-  return (
-    <Editor
-      height="300px"
-      language={languageId}
-      bordered={true}
-      value={'{ "keyword": true, "not_keyword": 123 }'}
-      beforeMount={registerLanguageProviders}
-    />
-  );
+return (
+<Editor
+height="300px"
+language={languageId}
+bordered={true}
+value={'{ "keyword": true, "not_keyword": 123 }'}
+beforeMount={registerLanguageProviders}
+/>
+);
 };
 `} />
 
@@ -168,26 +164,26 @@ import {
 export const CustomThemed = () => {
   const editorTheme = useEditorTheme();
 
-  const { containerRef } = useEditor({
-    originalValue: 'Hey there!',
-    modifiedValue: 'Hey hey!',
-    theme: editorTheme,
-    language: '',
-    beforeMount: () => console.log('beforeMount'),
-    onMount: () => console.log('onMount'),
-    onChange: () => console.log('onChange'),
-    onValidate: () => console.log('onValidate'),
-    options: {},
-  });
+const { containerRef } = useEditor({
+originalValue: 'Hey there!',
+modifiedValue: 'Hey hey!',
+theme: editorTheme,
+language: '',
+beforeMount: () => console.log('beforeMount'),
+onMount: () => console.log('onMount'),
+onChange: () => console.log('onChange'),
+onValidate: () => console.log('onValidate'),
+options: {},
+});
 
-  return (
-    <Editor.Container>
-      <Box ref={containerRef} height="100%" />
-      <Editor.ActionsContainer>
-        <IconButton icon="gi-heart_full" />
-      </Editor.ActionsContainer>
-    </Editor.Container>
-  );
+return (
+<Editor.Container>
+<Box ref={containerRef} height="100%" />
+<Editor.ActionsContainer>
+<IconButton icon="gi-heart_full" />
+</Editor.ActionsContainer>
+</Editor.Container>
+);
 };
 `} />
 
@@ -219,19 +215,19 @@ export const CustomThemed = () => {
     },
   };
 
-  return (
-    <Editor.Container bordered={true}>
-      <Editor.Editor
-        height="300px"
-        bordered={true}
-        theme={customEditorTheme}
-        value="I'm being built from my inner parts"
-      />
-      <Editor.ActionsContainer>
-        <IconButton icon="gi-heart_full" />
-      </Editor.ActionsContainer>
-    </Editor.Container>
-  );
+return (
+<Editor.Container bordered={true}>
+<Editor.Editor
+height="300px"
+bordered={true}
+theme={customEditorTheme}
+value="I'm being built from my inner parts"
+/>
+<Editor.ActionsContainer>
+<IconButton icon="gi-heart_full" />
+</Editor.ActionsContainer>
+</Editor.Container>
+);
 };
 `} />
 

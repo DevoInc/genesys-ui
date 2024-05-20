@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import { FlexItem } from '../Flex/components';
 import {
   AppBarContainer,
   type AppBarContainerProps,
   AppBarDivider,
   AppBarHeading,
+  AppBarItem,
   AppBarNavigation,
   AppBarNavigationProps,
 } from './components';
@@ -45,13 +45,13 @@ const InternalAppBar: React.FC<AppBarProps> = ({
 export const AppBar = InternalAppBar as typeof InternalAppBar & {
   Divider: typeof AppBarDivider;
   Heading: typeof AppBarHeading;
-  Item: typeof FlexItem;
+  Item: typeof AppBarItem;
   Navigation: typeof AppBarNavigation;
 };
 
 AppBar.Divider = AppBarDivider;
 AppBar.Heading = AppBarHeading;
-AppBar.Item = FlexItem;
+AppBar.Item = AppBarItem;
 AppBar.Navigation = AppBarNavigation;
 
 InternalAppBar.displayName = 'AppBar';

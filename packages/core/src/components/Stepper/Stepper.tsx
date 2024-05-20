@@ -7,6 +7,7 @@ import { HIDDEN_TEXT } from './constants';
 
 import { WithRequired } from '../../typeFunctions';
 import type {
+  IDataAttrs,
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
@@ -22,6 +23,7 @@ export interface StepperProps
       Pick<IGlobalAriaAttrs, 'aria-label' | 'aria-describedby'>,
       'aria-label'
     >,
+    IDataAttrs,
     IStyledPolymorphic,
     IStyledOverloadCss {
   /** Stepper size */

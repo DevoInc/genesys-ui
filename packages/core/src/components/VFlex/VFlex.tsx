@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import type { TGlobalSpacing } from '../../declarations';
 import { Flex, type FlexProps } from '../Flex';
-import { FlexItem } from '../Flex/components';
+import { VFlexItem } from './components';
 
 export interface VFlexProps
   extends Omit<FlexProps, 'flexDirection' | 'gap' | 'columnGap' | 'rowGap'> {
@@ -37,10 +37,10 @@ const InternalVFlex: React.FC<VFlexProps> = ({
 );
 
 export const VFlex = InternalVFlex as typeof InternalVFlex & {
-  Item: typeof FlexItem;
+  Item: typeof VFlexItem;
 };
 
-VFlex.Item = FlexItem;
+VFlex.Item = VFlexItem;
 
 InternalVFlex.displayName = 'VFlex';
 VFlex.Item.displayName = 'VFlex.Item';

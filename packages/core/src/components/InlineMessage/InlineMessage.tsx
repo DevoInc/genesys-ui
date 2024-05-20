@@ -2,7 +2,7 @@ import * as React from 'react';
 import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
-import type { IGlobalAttrs } from '../../declarations/htmlAttrs';
+import type { IDataAttrs, IGlobalAttrs } from '../../declarations/htmlAttrs';
 import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
@@ -23,7 +23,8 @@ import {
 } from './components';
 
 export interface InlineMessageProps
-  extends WithRequired<Omit<IGlobalAttrs, 'title'>, 'id'>,
+  extends IDataAttrs,
+    WithRequired<Omit<IGlobalAttrs, 'title'>, 'id'>,
     IStyledOverloadCss,
     IStyledPolymorphic,
     Omit<PopoverProps, 'children'> {
@@ -63,6 +64,7 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
   tooltip,
   trigger,
   zIndex,
+  ...restDataProps
 }) => {
   const theme = useTheme();
   return (
@@ -86,6 +88,7 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
     >
       {({ toggle, ref, isOpened: innerIsOpened }) => (
         <InlineMessage.Trigger
+          {...restDataProps}
           ref={ref}
           onClick={toggle}
           aria-activedescendant={id}

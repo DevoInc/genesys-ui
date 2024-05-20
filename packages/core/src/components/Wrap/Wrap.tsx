@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components';
 import { Flex, type FlexProps } from '../Flex';
 import type { TGlobalSpacing } from '../../declarations';
 import { getChildrenByRowFlex } from './helpers';
-import { FlexItem } from '../Flex/components';
+import { WrapItem } from './components';
 
 export interface WrapProps
   extends Omit<
@@ -46,9 +46,9 @@ export const InternalWrap: React.FC<WrapProps> = ({
 };
 
 export const Wrap = InternalWrap as typeof InternalWrap & {
-  Item: typeof FlexItem;
+  Item: typeof WrapItem;
 };
 
-Wrap.Item = FlexItem;
+Wrap.Item = WrapItem;
 InternalWrap.displayName = 'Wrap';
 Wrap.Item.displayName = 'Wrap.Item';

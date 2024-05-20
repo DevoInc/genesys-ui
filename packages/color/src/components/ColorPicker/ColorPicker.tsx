@@ -4,6 +4,7 @@ import { toColorString } from 'polished';
 import {
   Field,
   type FieldProps,
+  type IDataAttrs,
   type IGlobalAriaAttrs,
   Popover,
   type PopoverProps,
@@ -19,7 +20,8 @@ import { DropdownPicker, type DropdownPickerProps } from './components';
 import { StyledColorPicker, type StyledColorPickerProps } from './styled';
 
 export interface ColorPickerProps
-  extends Pick<IGlobalAriaAttrs, 'aria-label'>,
+  extends IDataAttrs,
+    Pick<IGlobalAriaAttrs, 'aria-label'>,
     Omit<FieldProps, 'children' | 'hasWideControl' | 'role' | 'onClick'>,
     Omit<DropdownPickerProps, 'expanded' | 'id'>,
     Omit<StyledColorPickerProps, 'disabled' | 'size' | 'status'> {
@@ -65,6 +67,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
   styles,
   tooltip,
   value,
+  ...restDataProps
 }) => {
   const [color, setColor] = React.useState(
     strColorToRGBAColor(value, defaultValue),
@@ -116,6 +119,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
       >
         {({ toggle, ref, isOpened }) => (
           <StyledColorPicker
+            {...restDataProps}
             ref={ref}
             aria-label={ariaLabel}
             aria-controls={popoverId}

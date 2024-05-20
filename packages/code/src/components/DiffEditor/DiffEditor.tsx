@@ -1,15 +1,17 @@
 import * as React from 'react';
 
+import type { IDataAttrs } from '@devoinc/genesys-ui';
+import { useDiffEditorTheme } from './hooks';
 import { Container } from '../Editor/components/Container/Container';
 import {
   InternalDiffEditor,
   type InternalDiffEditorProps,
 } from './components/InternalDiffEditor/InternalDiffEditor';
 import { ActionsContainer } from './components';
-import { useDiffEditorTheme } from './hooks';
 
 export interface DiffEditorProps
-  extends Omit<InternalDiffEditorProps, 'theme'> {
+  extends IDataAttrs,
+    Omit<InternalDiffEditorProps, 'theme'> {
   /**
    * Array of actions to be added to the editor
    */
@@ -29,11 +31,13 @@ const BaseDiffEditor: React.FC<DiffEditorProps> = ({
   onValidate,
   actions,
   options = {},
+  ...restDataProps
 }) => {
   const editorTheme = useDiffEditorTheme();
   return (
     <Container bordered={bordered}>
       <InternalDiffEditor
+        {...restDataProps}
         bordered={bordered}
         originalValue={originalValue}
         modifiedValue={modifiedValue}

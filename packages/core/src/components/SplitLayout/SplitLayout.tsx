@@ -1,12 +1,16 @@
 import * as React from 'react';
-
-import { StyledSplitLayout } from './StyledSplitLayout';
 import { SplitProps } from 'react-split';
 
-export interface SplitLayoutProps extends SplitProps {
+import type { IDataAttrs } from '../../declarations';
+import { StyledSplitLayout } from './StyledSplitLayout';
+
+export interface SplitLayoutProps extends IDataAttrs, SplitProps {
   children: React.ReactNode;
 }
 
-export const SplitLayout: React.FC<SplitProps> = ({ children, ...rest }) => {
+export const SplitLayout: React.FC<SplitLayoutProps> = ({
+  children,
+  ...rest
+}) => {
   return <StyledSplitLayout {...rest}>{children}</StyledSplitLayout>;
 };

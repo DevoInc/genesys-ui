@@ -14,6 +14,7 @@ import {
 } from './InnerSelectControl';
 
 import type {
+  IDataAttrs,
   IFieldAriaAttrs,
   IGlobalAriaAttrs,
   IGlobalAttrs,
@@ -41,6 +42,7 @@ export interface SelectControlProps<
     //native
     IFieldAriaAttrs,
     IGlobalAriaAttrs,
+    IDataAttrs,
     IStyledOverloadCss,
     Omit<IGlobalAttrs, 'tooltip'> {
   value?: PropsValue<Option> | Option['value'];

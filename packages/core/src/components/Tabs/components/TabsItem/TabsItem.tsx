@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import type {
+  IDataAttrs,
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IMouseEventAttrs,
@@ -23,6 +24,7 @@ import {
 export interface TabsItemProps
   extends IGlobalAttrs,
     IGlobalAriaAttrs,
+    IDataAttrs,
     IStyledOverloadCss,
     IStyledPolymorphic,
     IMouseEventAttrs,
@@ -54,6 +56,7 @@ export const InternalTabsItem: React.FC<Resolve<TabsItemProps>> = ({
   target,
   tooltip,
   wide,
+  ...dataProps
 }) => {
   const context = React.useContext(TabsContext);
   const evalWide = wide || context.wide;
@@ -62,6 +65,7 @@ export const InternalTabsItem: React.FC<Resolve<TabsItemProps>> = ({
   return (
     <TabsItemContainer as={as} size={evalSize} wide={evalWide}>
       <TabsItemLink
+        {...dataProps}
         state={state}
         size={evalSize}
         onClick={state === 'disabled' ? undefined : onClick}

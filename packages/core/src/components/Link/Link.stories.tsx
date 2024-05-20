@@ -30,3 +30,18 @@ export const Base: Story = {
     </Typography.Paragraph>
   ),
 };
+
+export const Block: Story = {
+  args: {
+    wide: true,
+  },
+  render: (args) => (
+    <Typography.Paragraph>
+      Star stuff harvesting <Link {...args}>star light muse</Link> about
+      extraordinary claims require extraordinary evidence hydrogen atoms
+      astonishment Hypatia. Descended from astronomers dream of the mind&apos;s
+      eye cosmic fugue something incredible is waiting to be known rings of
+      Uranus inconspicuous motes of rock and gas.
+    </Typography.Paragraph>
+  ),
+};

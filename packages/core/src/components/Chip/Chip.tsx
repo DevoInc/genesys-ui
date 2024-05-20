@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import type { IDataAttrs } from '../../declarations';
 import type { TChipIcon } from './declarations';
 import {
   ChipContainer,
@@ -12,7 +13,8 @@ import {
 import { ChipContent, type ChipContentProps } from './components/ChipContent';
 
 export interface ChipProps
-  extends Omit<ChipContainerProps, 'children'>,
+  extends IDataAttrs,
+    Omit<ChipContainerProps, 'children'>,
     Pick<ChipContentProps, 'children'>,
     ChipHiddenInputProps {
   /** The icon name-id to be rendered at the left of the content.*/
@@ -67,11 +69,13 @@ export const InternalChip: React.FC<ChipProps> = ({
   styles,
   tooltip,
   value,
+  ...restDataProps
 }) => {
   const isSelected = state === 'selected';
   const evalIcon = isSelected ? iconSelected : icon;
   return (
     <Chip._Container
+      {...restDataProps}
       as={as}
       id={id}
       onClick={onClick}

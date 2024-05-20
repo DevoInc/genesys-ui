@@ -20,5 +20,5 @@ export default meta;
 type Story = StoryObj<typeof ModalBackdrop>;
 
 export const Backdrop: Story = {
-  name: 'ModalBackdrop',
+  name: 'Modal._Backdrop',
 };

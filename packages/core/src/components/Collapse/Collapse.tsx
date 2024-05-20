@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import type { IDataAttrs } from '../../declarations';
 import {
   CollapseMarker,
   CollapseContainer,
@@ -9,7 +10,8 @@ import {
 } from './components';
 
 export interface CollapseProps
-  extends CollapseContainerProps,
+  extends IDataAttrs,
+    CollapseContainerProps,
     Pick<CollapseHeadingProps, 'truncateLine'> {
   heading?: CollapseHeadingProps['children'];
 }

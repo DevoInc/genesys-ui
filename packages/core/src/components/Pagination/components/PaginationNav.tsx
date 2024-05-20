@@ -32,6 +32,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
   size = 'md',
   styles,
   texts,
+  ...dataProps
 }) => {
   const context = React.useContext(PaginationContext);
   const evalSize = size || context.size;
@@ -90,7 +91,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
   const onMenuClose = React.useCallback(() => setMenuOpen(false), []);
 
   return (
-    <Box as="nav">
+    <Box as="nav" {...dataProps}>
       <HFlex
         as="ul"
         id={id ? `${id}__page-navigation` : null}

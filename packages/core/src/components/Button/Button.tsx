@@ -9,6 +9,7 @@ import {
 // declarations
 import type {
   IButtonAttrs,
+  IDataAttrs,
   IFocusEventAttrs,
   IGlobalAriaAttrs,
   IGlobalAttrs,
@@ -39,7 +40,8 @@ import {
 } from './components/ButtonContainer';
 
 export interface ButtonProps
-  extends IStyledPolymorphic,
+  extends IDataAttrs,
+    IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
     IGlobalAriaAttrs,

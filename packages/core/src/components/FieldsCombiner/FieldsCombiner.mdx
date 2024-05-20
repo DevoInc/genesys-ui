@@ -1,7 +1,6 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './FieldsCombiner.stories';
-import * as CasesStories from './FieldsCombiner.cases.stories';
 
 <Meta of={Stories} />
 
@@ -35,32 +34,30 @@ so the visual integration is as accurate as possible:
 These components allow to add custom styles and some layout props as `width` to the
 original components.
 
-## Cases
-
-There are multiple combinations of the form fields, but these are the most usual.
+There are multiple combinations of the form fields, but these are the most usual:
 
 ### Button and Popover
 
 When we add a Popover as a piece of the `FieldsCombiner` we only have to use
 the `FieldsCombiner.Button` or `FieldsCombiner.IconButton` as the trigger:
 
-<Canvas of={CasesStories.ButtonAndPopover} />
+<Canvas of={Stories.ButtonAndPopover} />
 
 ### Input and Button or IconButton
 
 By default, the field fills all the space available and the button only the necessary.
 Anyway, you can use the `width` prop available in every pre-defined child component.
 
-<Canvas of={CasesStories.InputAndButton} />
+<Canvas of={Stories.InputAndButton} />
 
-<Canvas of={CasesStories.InputAndIconButton} />
+<Canvas of={Stories.InputAndIconButton} />
 
 ### Select and Input with custom widths
 
 By default, the fields fill all the space available, but you can use the `width` prop
 available in every pre-defined child component to distribute them in a custom way.
 
-<Canvas of={CasesStories.CustomWidths} />
+<Canvas of={Stories.CustomWidths} />
 
 ### Validation
 
@@ -68,7 +65,7 @@ You only have to add the desired validation status to the `FieldsCombiner` compo
 its children will inherit it automatically. In addition, for accessibility reasons
 you always have to add a validation message by the `helper` prop.
 
-<Canvas of={CasesStories.WithValidation} />
+<Canvas of={Stories.WithValidation} />
 
 ## Props
 

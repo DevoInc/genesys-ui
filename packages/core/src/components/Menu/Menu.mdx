@@ -1,7 +1,6 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './Menu.stories';
-import * as CaseStories from './Menu.cases.stories';
 
 <Meta of={Stories} />
 
@@ -24,17 +23,15 @@ The `Menu` is used as a container of a group of `Menu.Item` and these can be sep
 
 <Canvas of={Stories.Base} />
 
-## Cases
-
-### Selectable options
+## Selectable options
 
 The menu items can be used as selectable options. The role `menuitemcheckbox` or `menuitemradio`
 is added automatically based in the `selectionScheme` prop value. In addition, a checkbox or radio
 is rendered inside the menu item, but it's not visible, its purpose is manage the selection behavior.
 
-<Canvas of={CaseStories.Selectable} />
+<Canvas of={Stories.Selectable} />
 
-### As navigation
+## As navigation
 
 If the `Menu` is used as navigation we have to use the prop `cmpRole` to `nav`. This way we get
 an HTML5 `nav` tag as container without `role` attribute because it's implicit. In this case
@@ -45,14 +42,14 @@ In addition, as a link, the `Menu.Item` has no role because it's not allowed to 
 the pre-defined roles (menuitem, menuitemcheckbox and menuitemradio) if it's not a child of
 a `role="menu"` component.
 
-<Canvas of={CaseStories.AsNavigation} />
+<Canvas of={Stories.AsNavigation} />
 
-### As dropdown menu
+## As dropdown menu
 
 we can use the `Menu` component as a dropdown menu if we integrate it with the `Popover` component.
 We even can nest menus using the `Menu.Item` components as triggers.
 
-<Canvas of={CaseStories.AsNavigation} />
+<Canvas of={Stories.AsNavigation} />
 
 ## Components
 
@@ -60,10 +57,10 @@ We even can nest menus using the `Menu.Item` components as triggers.
 - [Heading](?path=/story/components-core-navigation-menu-components--heading)
 - [Separator](?path=/story/components-core-navigation-menu-components--separator)
 
-## Props
-
-<ArgTypes of={Stories} />
-
 ## Related components
 
 - [Popover as DropdownMenu](?path=/story/components-navigation-popover--as-dropdown-menu)
+
+## Props
+
+<ArgTypes of={Stories} />

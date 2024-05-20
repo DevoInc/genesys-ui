@@ -1,7 +1,6 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './PanelSection.stories';
-import * as CaseStories from './PanelSection.cases.stories';
 
 <Meta of={Stories} />
 
@@ -15,25 +14,19 @@ It can be used to group related content together and create a more structured la
 
 ## How to import
 
-<Source
-  code={`
-import { PanelSection } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { PanelSection } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
 <Canvas of={Stories.Base} />
 
-## Cases
+## With scroll and remove space
 
-### With scroll and remove space
+<Canvas of={Stories.WithScroll} />
 
-<Canvas of={CaseStories.WithScroll} />
+## With footer actions
 
-### With footer actions
-
-<Canvas of={CaseStories.WithFooterActions} />
+<Canvas of={Stories.WithFooterActions} />
 
 ## Props
 

@@ -13,7 +13,6 @@ export const inlineMessageArrowMixin = ({
   theme: DefaultTheme;
 }) => {
   const bgColor = theme.cmp.inlineMessage.color.border[status];
-
   return css`
     ::after {
       content: none;
@@ -22,21 +21,25 @@ export const inlineMessageArrowMixin = ({
     ${placement?.includes('top') &&
     css`
       border-top-color: ${bgColor};
+      overflow: hidden;
     `};
 
     ${placement?.includes('bottom') &&
     css`
       border-bottom-color: ${bgColor};
+      overflow: hidden;
     `};
 
     ${placement?.includes('right') &&
     css`
       border-right-color: ${bgColor};
+      overflow: hidden;
     `};
 
     ${placement?.includes('left') &&
     css`
       border-left-color: ${bgColor};
+      overflow: hidden;
     `};
   `;
 };

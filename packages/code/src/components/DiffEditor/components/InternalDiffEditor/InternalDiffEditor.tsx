@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { IDataAttrs } from '@devoinc/genesys-ui';
 import { useDiffEditor, type IUseDiffEditor } from '../../hooks';
 import {
   StyledInternalDiffEditor,
@@ -6,7 +7,8 @@ import {
 } from './StyledInternalDiffEditor';
 
 export interface InternalDiffEditorProps
-  extends IUseDiffEditor,
+  extends IDataAttrs,
+    IUseDiffEditor,
     Pick<StyledInternalDiffEditorProps, 'bordered'> {
   /**
    * Width of the editor wrapper
@@ -31,6 +33,7 @@ export const InternalDiffEditor: React.FC<InternalDiffEditorProps> = ({
   onChange,
   onValidate,
   options,
+  ...restDataProps
 }) => {
   const { containerRef } = useDiffEditor({
     originalValue,
@@ -46,6 +49,7 @@ export const InternalDiffEditor: React.FC<InternalDiffEditorProps> = ({
 
   return (
     <StyledInternalDiffEditor
+      {...restDataProps}
       originalEditable={options?.originalEditable}
       bordered={bordered}
       ref={containerRef}

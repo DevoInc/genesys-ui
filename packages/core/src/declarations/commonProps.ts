@@ -1,7 +1,7 @@
 import { ReactHTML } from 'react';
 import { PickUnion } from '../typeFunctions';
 import { GLOBAL_SPACING } from '../constants';
-import type { IFieldAttrs, IGlobalAttrs } from './htmlAttrs';
+import type { IDataAttrs, IFieldAttrs, IGlobalAttrs } from './htmlAttrs';
 import type { IFieldAriaAttrs, IGlobalAriaAttrs } from './ariaAttrs';
 import type {
   IFieldEventAttrs,
@@ -247,6 +247,7 @@ export interface IFieldControl<T = Element>
   extends IGlobalAttrs<T>,
     Pick<IGlobalAriaAttrs, 'aria-describedby' | 'aria-labelledby'>,
     Required<Pick<IGlobalAriaAttrs, 'aria-label'>>,
+    IDataAttrs,
     Omit<IFieldAriaAttrs, 'aria-required'>,
     IFieldAttrs<T>,
     IFieldEventAttrs<T>,

@@ -1,10 +1,21 @@
+import * as React from 'react';
 import { type Meta, type StoryObj } from '@storybook/react';
 
-import { DiffEditor } from '../DiffEditor';
+import { DiffEditor } from './DiffEditor';
 import {
   modifiedValue,
   originalValue,
-} from '../../Editor/__stories__/mockContent';
+} from '../Editor/__stories__/mockContent';
+import {
+  Actions,
+  CustomLang,
+  CustomThemed,
+  MultipleEds,
+  Programatic,
+  Shortcuts,
+} from './stories/cases';
+
+type DiffEditorStory = StoryObj<typeof DiffEditor>;
 
 const meta: Meta<typeof DiffEditor> = {
   title: 'Components/Code/DiffEditor',
@@ -13,7 +24,7 @@ const meta: Meta<typeof DiffEditor> = {
     bordered: true,
     originalValue: originalValue.concat(originalValue),
     modifiedValue: modifiedValue,
-    height: '300px',
+    height: '30rem',
   },
 };
 
@@ -65,4 +76,31 @@ export const SmallerTextSize: Story = {
       fontSize: 10,
     },
   },
+};
+
+export const CustomLanguageWithValidation: DiffEditorStory = {
+  render: CustomLang,
+};
+
+export const WithActions: DiffEditorStory = {
+  render: Actions,
+};
+
+export const ProgramaticActions: DiffEditorStory = {
+  render: Programatic,
+};
+
+export const WithShortcuts: DiffEditorStory = {
+  render: Shortcuts,
+};
+
+export const CustomTheme: DiffEditorStory = {
+  render: CustomThemed,
+};
+
+export const MultipleDiffEditors: DiffEditorStory = {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  render: ({ originalValue, modifiedValue, ...props }) => (
+    <MultipleEds {...props} />
+  ),
 };

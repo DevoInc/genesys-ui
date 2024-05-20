@@ -3,13 +3,12 @@ import { Meta, Canvas, Source, Markdown } from '@storybook/blocks';
 import spacingProps from '../../../../stories/partials/spacingProps.md?raw';
 import flexComponent from './partials/flexComponent.md?raw';
 
-import * as FlexStories from './Flex.stories';
-import * as CaseFlexStories from './Flex.cases.stories';
-import * as HFlexStories from '../../HFlex/HFlex.stories';
-import * as VFlexStories from '../../VFlex/VFlex.stories';
-import * as WrapStories from '../../Wrap/Wrap.stories';
+import * as FlexStories from './Flex.stories.tsx';
+import * as HFlexStories from '../../HFlex/HFlex.stories.tsx';
+import * as VFlexStories from '../../VFlex/VFlex.stories.tsx';
+import * as WrapStories from '../../Wrap/Wrap.stories.tsx';
 
-<Meta title="Components/Layout/Flex/Docs" />
+<Meta title="Components/Layout/Flex" />
 
 # Flex components
 
@@ -30,9 +29,7 @@ offer simplified solutions for specific stack configurations:
 ## How to import
 
 <Source
-  code={`
-import { Flex, HFlex, VFlex, Wrap } from '@devoinc/genesys-ui';
-`}
+  code={`import { Flex, HFlex, VFlex, Wrap } from '@devoinc/genesys-ui';`}
 />
 
 Likewise, their `as` property allow these components to be rendered as any HTML tag:
@@ -119,7 +116,7 @@ With a flex structure, we can customize the flex, order, and align-self
 CSS styles for each child using the corresponding props of Flex.Item.
 Below is an example of a Flex component with each child having different flex and align-self styles:
 
-<Canvas of={CaseFlexStories.FlexAndFlexItems} />
+<Canvas of={FlexStories.FlexAndFlexItems} />
 
 ## Component use cases
 
@@ -133,6 +130,8 @@ Below is an example of a Flex component with each child having different flex an
 
 HFlex creates a group of children components distributed in a single row.
 Use the spacing prop to adjust the space between each child.
+
+[View story](?path=/docs/components-layout-flex-hflex--docs)
 
 <Canvas of={HFlexStories.Base} />
 

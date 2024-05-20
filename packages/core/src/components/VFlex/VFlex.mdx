@@ -20,9 +20,18 @@ in a single column. Each child can be separated vertically using the prop `spaci
 
 <Canvas of={Stories.Base} />
 
-## Cases
+## Using VFlex.Item
 
-### Using the as property
+We can use `VFlex.Item` component in a flex structure wrapping children to assign flex,
+order, and align-self CSS styles to each child component. It's only necessary when we need
+those specific styles for any child.
+
+Here is an example that demonstrates different CSS flex and align-self
+settings for each child component of a Flex component:
+
+<Canvas of={Stories.VFlexAndVFlexItems} />
+
+## Using the as property
 
 The `as` property allow these components to be rendered as any HTML tag:
 'div', 'li', 'section'... etc.

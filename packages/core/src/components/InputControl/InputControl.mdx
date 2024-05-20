@@ -1,7 +1,6 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './InputControl.stories';
-import * as casesStories from './InputControl.cases.stories';
 
 <Meta of={Stories} />
 
@@ -16,11 +15,7 @@ This ensures that the input is validated and processed correctly.
 
 ## How to import
 
-<Source
-  code={`
-import { InputControl } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { InputControl } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
@@ -30,7 +25,7 @@ import { InputControl } from '@devoinc/genesys-ui';
 
 We can get any case of the component using only `InputControl` and its props as in this example with addons and icon:
 
-<Canvas sourceState="shown" of={casesStories.WithAddonsAndIcons} />
+<Canvas sourceState="shown" of={Stories.WithAddonsAndIcons} />
 
 But if we need a customization, or simply we want to use a specific piece of the component we have its internal components
 available following dot notation.
@@ -44,21 +39,21 @@ available following dot notation.
 We don't recommend this usage, but anyway it's available for very specific needs, usually because we need custom styles
 for some piece of the component.
 
-<Canvas sourceState="shown" of={casesStories.AdvancedUsage} />
+<Canvas sourceState="shown" of={Stories.AdvancedUsage} />
 
 ## Search type
 
 We can hide the auto-rendered type search icon whe it might be redundant. E.g. when the `InputControl`
 is combined with an `IconButton` or a `Button` which they already have the usual search icon.
 
-<Canvas sourceState="shown" of={casesStories.SearchType} />
-
-## Props
-
-<ArgTypes of={Stories} />
+<Canvas sourceState="shown" of={Stories.SearchType} />
 
 ## Related components
 
 - [Input](?path=/docs/components-form-input--docs)
 - [Pagination](?path=/docs/components-core-navigation-pagination--docs)
 - [Month & Time](?path=/docs/components-datetime-datetimerange--docs): they are used in DateTimeRange component.
+
+## Props
+
+<ArgTypes of={Stories} />

@@ -20,7 +20,7 @@ export const getChildrenByRowFlex = ({
   hSpacing: TGlobalSpacing;
   theme: DefaultTheme;
 }) => {
-  if (childrenByRow <= 0) return undefined;
+  if (!childrenByRow) return undefined;
   const childrenEqualWidthPercent = 100 / childrenByRow + '%';
   // Horizontal gap compensation applied to each flex item: horizontal space * number of gutters / number of items
   const hSpacingCssValue = getSpacingPropCss(theme)(hSpacing);

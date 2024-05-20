@@ -1,7 +1,6 @@
 import { Meta, Canvas, Source, Markdown, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './Box.stories';
-import * as CaseStories from './Box.cases.stories';
 
 import spacingProps from '../../../stories/partials/spacingProps.md?raw';
 
@@ -16,11 +15,7 @@ By wrapping another component with the Box component, you can easily pass layout
 
 ## How to import
 
-<Source
-  code={`
-import { Box } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Box } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
@@ -45,13 +40,13 @@ const MyFlexCmp = () => <Box as={'span'}>Box content</Box>;
 This is an example with `Button` and `Badge`. We place the `Badge` in absolute
 way, relative to the `Button`:
 
-<Canvas of={CaseStories.PlacingFunctionalComponents} />
+<Canvas of={Stories.PlacingFunctionalComponents} />
 
 This is another typical use case: to generate vertical scroll in a content.
 A group of `Paragraph` components wrapped by a `Box` with specific 'max-height'
 and 'overflow' to auto:
 
-<Canvas of={CaseStories.Scrolled} />
+<Canvas of={Stories.Scrolled} />
 
 <Markdown>{spacingProps}</Markdown>
 

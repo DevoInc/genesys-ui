@@ -1,7 +1,6 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './RadioControl.stories';
-import * as CaseStories from './RadioControl.cases.stories';
 
 <Meta of={Stories} />
 
@@ -15,25 +14,19 @@ A radio group allows only one radio button to be selected at a time, making it u
 
 ## How to import
 
-<Source
-  code={`
-import { RadioControl } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { RadioControl } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
 <Canvas of={Stories.Base} />
 
-## Cases
+## Uncontrolled
 
-### Uncontrolled
+<Canvas of={Stories.Uncontrolled} />
 
-<Canvas of={CaseStories.Uncontrolled} />
+## Controlled
 
-### Controlled
-
-<Canvas of={CaseStories.Controlled} />
+<Canvas of={Stories.Controlled} />
 
 ## Props
 

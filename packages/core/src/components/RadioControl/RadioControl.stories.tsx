@@ -1,6 +1,7 @@
+import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { RadioControl } from '..';
+import { HFlex, RadioControl } from '..';
 
 const meta: Meta<typeof RadioControl> = {
   title: 'Components/Form/RadioControl',
@@ -21,3 +22,37 @@ export default meta;
 type Story = StoryObj<typeof RadioControl>;
 
 export const Base: Story = {};
+
+export const Uncontrolled: Story = {
+  render: () => (
+    <HFlex spacing="cmp-xs">
+      <RadioControl name="radio" aria-label="radio one" defaultChecked />
+      <RadioControl name="radio" aria-label="radio two" />
+    </HFlex>
+  ),
+};
+
+export const Controlled: Story = {
+  render: () =>
+    (() => {
+      const [selectedRadio, setSelectedRadio] = React.useState(2);
+      return (
+        <HFlex spacing="cmp-xs">
+          <RadioControl
+            aria-label="radio one"
+            checked={selectedRadio === 1}
+            onChange={() => {
+              setSelectedRadio(1);
+            }}
+          />
+          <RadioControl
+            aria-label="radio two"
+            checked={selectedRadio === 2}
+            onChange={() => {
+              setSelectedRadio(2);
+            }}
+          />
+        </HFlex>
+      );
+    })(),
+};

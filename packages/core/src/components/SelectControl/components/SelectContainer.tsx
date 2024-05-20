@@ -13,9 +13,12 @@ export interface ContainerProps extends RSContainerProps {}
 
 export const SelectContainer: React.FC<ContainerProps> = (props) => {
   const theme = useTheme();
+  const filteredDataProps = Object.fromEntries(
+    Object.entries(props.selectProps).filter((x) => x[0].includes('data-')),
+  );
   return (
     <components.SelectContainer {...props}>
-      <Flex position="relative">
+      <Flex position="relative" {...filteredDataProps}>
         {props.selectProps.addonToLeft && (
           <Field._Addon size={props.selectProps.size}>
             {props.selectProps.addonToLeft}

@@ -38,6 +38,7 @@ export const InternalModal: React.FC<ModalProps> = ({
   disableCloseOnOverlayClick,
   styles,
   zIndex,
+  ...dataProps
 }) => {
   return (
     <ModalBackdrop
@@ -48,6 +49,7 @@ export const InternalModal: React.FC<ModalProps> = ({
       zIndex={zIndex}
     >
       <ModalPanel
+        {...dataProps}
         aria-describedby={ariaDescribedBy}
         aria-labelledby={ariaLabelledBy}
         disableCloseOnOverlayClick={disableCloseOnOverlayClick}

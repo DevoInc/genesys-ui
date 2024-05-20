@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 import type { FilePondProps } from 'react-filepond';
+import {
+  GIDragDrop,
+  GIExitClose,
+  GIRotateSync,
+  GIUndoReset,
+  GIUploadLoadShare,
+} from '@devoinc/genesys-icons';
 
 import {
   Box,
@@ -11,6 +18,7 @@ import {
   getCmpMarkup,
   getSpacingPropCss,
   Icon,
+  type IDataAttrs,
 } from '@devoinc/genesys-ui';
 
 import { buildErrorMessage, detectUnknownTypes } from './utils';
@@ -18,15 +26,10 @@ import {
   StyledUploadFiles,
   type StyledUploadFilesProps,
 } from './StyledUploadFiles';
-import {
-  GIDragDrop,
-  GIExitClose,
-  GIRotateSync,
-  GIUndoReset,
-  GIUploadLoadShare,
-} from '@devoinc/genesys-icons';
+
 export interface UploadFilesProps
-  extends Omit<FieldProps, 'children' | 'role'>,
+  extends IDataAttrs,
+    Omit<FieldProps, 'children' | 'role'>,
     Pick<IFieldAttrs, 'name'>,
     Omit<StyledUploadFilesProps, 'disabled'>,
     Partial<
@@ -51,8 +54,13 @@ export interface UploadFilesProps
 
 export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
   const {
+    as,
+    controlWidth,
+    direction,
     disabled,
+    fileValidateTypeDetectType,
     hasFloatingHelper,
+    hasWideControl,
     helper,
     hideLabel,
     id,
@@ -68,6 +76,7 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
     onMouseUp,
     required,
     requiredMarkTooltip,
+    server,
     size = 'md',
     status = 'base',
     styles,
@@ -89,7 +98,7 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
     height,
     maxHeight,
     showLabelIcon,
-    ...restNativeProps
+    ...dataProps
   } = props;
   const theme = useTheme();
   const detectType = detectUnknownTypes(acceptedFileTypes);
@@ -115,8 +124,12 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
 
   return (
     <Field
+      as={as}
+      controlWidth={controlWidth}
+      direction={direction}
       disabled={disabled}
       hasFloatingHelper={hasFloatingHelper}
+      hasWideControl={hasWideControl}
       helper={helper}
       hideLabel={hideLabel}
       id={id}
@@ -136,7 +149,7 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
       styles={styles}
       tooltip={tooltip}
     >
-      <Box flex="1 1 100%" position="relative">
+      <Box {...dataProps} flex="1 1 100%" position="relative">
         {showLabelIcon && (
           <Box
             position="absolute"
@@ -152,14 +165,13 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
           </Box>
         )}
         <StyledUploadFiles
-          {...restNativeProps}
           acceptedFileTypes={acceptedFileTypes}
           allowFileSizeValidation={allowFileSizeValidation}
           allowFileTypeValidation={(acceptedFileTypes || []).length > 0}
           allowImagePreview={allowImagePreview}
           allowMultiple={allowMultiple}
           disabled={disabled}
-          fileValidateTypeDetectType={detectType}
+          fileValidateTypeDetectType={fileValidateTypeDetectType || detectType}
           fileValidateTypeLabelExpectedTypes={errorMessage}
           height={height}
           iconProcess={iconProcessStaticMarkup}
@@ -181,6 +193,7 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
           minFileSize={minFileSize}
           name={name}
           required={required}
+          server={server}
           showLabelIcon={showLabelIcon}
         />
       </Box>

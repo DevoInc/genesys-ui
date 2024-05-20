@@ -15,7 +15,7 @@ export default meta;
 type Story = StoryObj<typeof ModalFooter>;
 
 export const Footer: Story = {
-  name: 'ModalFooter',
+  name: 'Modal.Footer',
   args: {
     children: (
       <>

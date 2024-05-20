@@ -1,11 +1,9 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
-import { DiffEditor } from '../';
+import { DiffEditor } from './DiffEditor';
+import * as Stories from './DiffEditor.stories.tsx';
 
-import * as Stories from './DiffEditor.stories';
-import * as CaseStories from './DiffEditor.cases.stories';
-
-<Meta title="Components/Code/DiffEditor/Docs" />
+<Meta of={Stories} />
 
 # DiffEditor
 
@@ -18,11 +16,7 @@ the [Editor](/docs/components-code-editor-docs--docs) component in this same lib
 
 ## How to import
 
-<Source
-  code={`
-import { DiffEditor } from '@devoinc/genesys-ui-code';
-`}
-/>
+<Source code={`import { DiffEditor } from '@devoinc/genesys-ui-code';`} />
 
 ## Basic usage
 
@@ -53,20 +47,20 @@ export const CustomThemed = () => {
   const editorTheme = useDiffEditorTheme();
 
 return (
+
 <DiffEditor.Container bordered={true}>
-<DiffEditor.Editor
-height="300px"
-bordered={true}
-theme={editorTheme}
-originalValue="I'm being built from my inner parts"
-modifiedValue="I'm being built from scratch"
-/>
-<DiffEditor.ActionsContainer>
-<IconButton icon="gi-heart_full" />
-</DiffEditor.ActionsContainer>
+  <DiffEditor.Editor
+    height="300px"
+    bordered={true}
+    theme={editorTheme}
+    originalValue="I'm being built from my inner parts"
+    modifiedValue="I'm being built from scratch"
+  />
+  <DiffEditor.ActionsContainer>
+    <IconButton icon="gi-heart_full" />
+  </DiffEditor.ActionsContainer>
 </DiffEditor.Container>
-);
-};
+); };
 
 `}
 />
@@ -139,17 +133,16 @@ export const CustomLang = () => {
   };
 
 return (
+
 <DiffEditor
-height="300px"
-language={languageId}
-bordered={true}
-originalValue={'{ "keyword": true, "not_keyword": 123 }'}
-modifiedValue={'{\n "keyword": true,\n "not_keyword": 1234\n}'}
-beforeMount={registerLanguageProviders}
+  height="300px"
+  language={languageId}
+  bordered={true}
+  originalValue={'{ "keyword": true, "not_keyword": 123 }'}
+  modifiedValue={'{\n "keyword": true,\n "not_keyword": 1234\n}'}
+  beforeMount={registerLanguageProviders}
 />
-);
-};
-`} />
+); }; `} />
 
 ## Hooks
 
@@ -183,14 +176,14 @@ options: {},
 });
 
 return (
+
 <DiffEditor.Container>
-<Box ref={containerRef} height="100%" />
-<DiffEditor.ActionsContainer>
-<IconButton icon="gi-heart_full" />
-</DiffEditor.ActionsContainer>
+  <Box ref={containerRef} height="100%" />
+  <DiffEditor.ActionsContainer>
+    <IconButton icon="gi-heart_full" />
+  </DiffEditor.ActionsContainer>
 </DiffEditor.Container>
-);
-};
+); };
 
 `} />
 
@@ -219,21 +212,20 @@ export const CustomThemed = () => {
   };
 
 return (
+
 <DiffEditor.Container bordered={true}>
-<DiffEditor.Editor
-height="300px"
-bordered={true}
-theme={customEditorTheme}
-originalValue="I'm being built from my inner parts"
-modifiedValue="I'm being built from scratch"
-/>
-<DiffEditor.ActionsContainer>
-<IconButton icon="gi-heart_full" />
-</DiffEditor.ActionsContainer>
+  <DiffEditor.Editor
+    height="300px"
+    bordered={true}
+    theme={customEditorTheme}
+    originalValue="I'm being built from my inner parts"
+    modifiedValue="I'm being built from scratch"
+  />
+  <DiffEditor.ActionsContainer>
+    <IconButton icon="gi-heart_full" />
+  </DiffEditor.ActionsContainer>
 </DiffEditor.Container>
-);
-};
-`} />
+); }; `} />
 
 ## Custom Configurations
 
@@ -259,41 +251,37 @@ The DiffEditor can be extensively customized to accommodate even the most comple
 
 Visit [stories/cases/CustomLang.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/CustomLang.tsx) for a code example.
 
-<Canvas of={CaseStories.CustomLanguageWithValidation} sourceState="none" />
+<Canvas of={Stories.CustomLanguageWithValidation} sourceState="none" />
 
 ### With Actions
 
 Visit [stories/cases/Actions.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/Actions.tsx) for a code example.
 
-<Canvas of={CaseStories.WithActions} sourceState="none" />
+<Canvas of={Stories.WithActions} sourceState="none" />
 
 ### Programatic Actions
 
 Visit [stories/cases/Programatic.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/Programatic.tsx) for a code example.
 
-<Canvas of={CaseStories.ProgramaticActions} sourceState="none" />
+<Canvas of={Stories.ProgramaticActions} sourceState="none" />
 
 ### With Shortcuts
 
 Visit [stories/cases/Shortcuts.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/Shortcuts.tsx) for a code example.
 
-<Canvas of={CaseStories.WithShortcuts} sourceState="none" />
+<Canvas of={Stories.WithShortcuts} sourceState="none" />
 
 ### Custom Theme
 
 Visit [stories/cases/CustomTheme.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/CustomThemed.tsx) for a code example.
 
-<Canvas of={CaseStories.CustomTheme} sourceState="none" />
+<Canvas of={Stories.CustomTheme} sourceState="none" />
 
 ### Multiple DiffEditors
 
 Visit [stories/cases/MultipleEds.tsx](https://github.com/DevoInc/genesys-ui/blob/master/packages/code/src/components/DiffEditor/stories/cases/MultipleEds.tsx) for a code example.
 
-<Canvas of={CaseStories.MultipleDiffEditors} sourceState="none" />
-
-## Props
-
-<ArgTypes of={Stories} />
+<Canvas of={Stories.MultipleDiffEditors} sourceState="none" />
 
 ## Components
 
@@ -316,3 +304,7 @@ Actual editor. Uses `useEditor` under the hood.
 Placement element for positioning floating actions in the Diffeditor.
 
 <ArgTypes of={DiffEditor.ActionsContainer} />
+
+## Props
+
+<ArgTypes of={Stories} />

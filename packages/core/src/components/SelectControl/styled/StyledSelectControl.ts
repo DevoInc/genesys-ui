@@ -11,10 +11,11 @@ import { TSelectOption } from '../declarations';
 import { disabledMixin, truncateTypoMixin } from '../../../styled';
 
 export const StyledSelectControl = styled(ReactSelect).attrs(
-  ({ className, classNamePrefix, tooltip }) => ({
+  ({ className, classNamePrefix, tooltip, ...props }) => ({
     classNamePrefix: classNamePrefix || 'react-select',
     className: className || 'react-select__container',
     title: tooltip,
+    ...props,
   }),
 )`
   ${({

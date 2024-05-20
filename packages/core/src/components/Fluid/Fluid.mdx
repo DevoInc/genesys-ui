@@ -1,6 +1,6 @@
 import { Meta, Canvas, Source } from '@storybook/blocks';
 
-import * as CasesStories from './Fluid.cases.stories';
+import * as CasesStories from './Fluid.stories';
 
 <Meta title="Components/Layout/Fluid" />
 
@@ -23,55 +23,53 @@ See below for more details about our components, because they are not identical 
 
 <Source code={`import { Container, Row, Col } from '@devoinc/genesys-ui';`} />
 
-## Examples
-
-### Equal width
+## Equal width
 
 If you don't assign any distribution prop to the `Col` components, then each one fills the same space.
 
 <Canvas of={CasesStories.EqualWidth} />
 
-### Stacked to horizontal
+## Stacked to horizontal
 
 Resize your browser or load on different devices to test the grid system.
 
 <Canvas of={CasesStories.Stacked} />
 
-### Column wrapping
+## Column wrapping
 
 If the sum of the widths of the columns is greater than the col numbers defined in the main configuration
 (by default 12), then the last column gets wrapped onto a new line as one contiguous unit.
 
 <Canvas of={CasesStories.ColumnWrapping} />
 
-### Vertical alignment
+## Vertical alignment
 
 <Canvas of={CasesStories.VerticalAlignment} />
 
-### Horizontal alignment
+## Horizontal alignment
 
 <Canvas of={CasesStories.HorizontalAlignment} />
 
-### Direction prop for order and orientation
+## Direction prop for order and orientation
 
 <Canvas of={CasesStories.Order} />
 
-### Offsetting
+## Offsetting
 
 <Canvas of={CasesStories.Offsetting} />
 
-### Nesting columns
+## Nesting columns
 
 <Canvas of={CasesStories.NestingColumns} />
 
-### Column width adapted to content
+## Column width adapted to content
 
 If you want that one of the columns get its width based in its own content, you only need to assign
 'content' value to any of the breakpoints (xs, sm, md... etc.) to define the width.
 
 <Canvas of={CasesStories.AdaptedContent} />
 
-### Gutter definition by Container
+## Gutter definition by Container
 
 You should define the 'gutter' prop by the `Container` parent component, because it's better
 that all the child `Row` components inherit the same gutter from its parent. The parent container
@@ -80,7 +78,7 @@ with the adjusted margins and paddings.
 
 <Canvas of={CasesStories.GutterDefinition} />
 
-### Gutter definition by each Row
+## Gutter definition by each Row
 
 Anyway you can define a specific 'gutter' in the `Row` component level, but the padding of the
 parent `Container` won't adjust to all the rows.

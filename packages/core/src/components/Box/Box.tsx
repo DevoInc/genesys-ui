@@ -1,10 +1,10 @@
 import * as React from 'react';
-import type { ILayoutBox } from '../../declarations';
+import type { IDataAttrs, ILayoutBox } from '../../declarations';
 
 import { StyledBox } from './StyledBox';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface BoxProps extends ILayoutBox {}
+export interface BoxProps extends IDataAttrs, ILayoutBox {}
 
 export const Box = React.forwardRef<HTMLElement, BoxProps>(
   (

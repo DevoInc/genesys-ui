@@ -15,7 +15,10 @@ export const FlexItem: React.FC<Resolve<FlexItemProps>> = ({
   ...restBoxProps
 }) => {
   return (
-    <Box {...restBoxProps} styles={concat(`order: ${order};`, styles)}>
+    <Box
+      {...restBoxProps}
+      styles={concat(order ? `order: ${order};` : [], styles)}
+    >
       {children}
     </Box>
   );

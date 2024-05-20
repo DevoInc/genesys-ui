@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
 import { TOAST_ELEVATION_LEVEL } from '../constants';
-import type { IStyledOverloadCss } from '../../../declarations';
+import type { IDataAttrs, IStyledOverloadCss } from '../../../declarations';
 import type { IToast } from '../declarations';
 
 import { getFooterActions } from '../utils';
@@ -16,6 +16,7 @@ import { ToastHeader } from './ToastHeader';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ToastPanelProps
   extends IStyledOverloadCss,
+    IDataAttrs,
     Pick<PanelProps, 'maxHeight'>,
     IToast {}
 
@@ -36,6 +37,7 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
   status,
   styles,
   updates,
+  ...dataProps
 }) => {
   const [collapsed, setCollapsed] = React.useState(true);
 
@@ -59,6 +61,7 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
     <>
       <ToastBadge status={status} updates={updates} />
       <Panel
+        {...dataProps}
         ref={null}
         colorScheme={backgroundColor}
         elevation={TOAST_ELEVATION_LEVEL}

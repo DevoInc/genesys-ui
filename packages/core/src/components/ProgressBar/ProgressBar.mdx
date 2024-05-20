@@ -1,7 +1,6 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './ProgressBar.stories';
-import * as CaseStories from './ProgressBar.cases.stories';
 
 <Meta of={Stories} />
 
@@ -16,48 +15,42 @@ and helps to improve the user experience by giving them a sense of how much time
 
 ## How to import
 
-<Source
-  code={`
-import { ProgressBar } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { ProgressBar } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
 <Canvas of={Stories.Base} />
 
-## Cases
-
-### Circular
+## Circular
 
 ProgressBar can be used in circular mode.
 
-<Canvas of={CaseStories.Circular} />
+<Canvas of={Stories.Circular} />
 
-### With custom info
+## With custom info
 
 Or in linear mode with extra information.
 
-<Canvas of={CaseStories.WithCustomInfo} />
+<Canvas of={Stories.WithCustomInfo} />
 
-### With validation helper and accessible
+## With validation helper and accessible
 
 In case you need to add a validation/status helper, you can make the component more
 accessible if you add an `id` value. This way, not only a `aria-invalid` is added to
 the progress, but also we connect this one with its validation helper message through
 the `aria-errormessage` attribute which is automatically added.
 
-<Canvas of={CaseStories.AccessibleValidation} />
+<Canvas of={Stories.AccessibleValidation} />
 
-### With floating validation helper and accessible
+## With floating validation helper and accessible
 
 Sometimes you might need to offer the validation helper to the user, but you don't have
 enough space or the location of the progress doesn't allow to do that. In these cases
 you can use the `hasFloatingValidation` prop to include that info in a floating `InlineMessage`.
 
-<Canvas of={CaseStories.AccessibleFloatingValidation} />
+<Canvas of={Stories.AccessibleFloatingValidation} />
 
-### Custom based in internal components
+## Custom based in internal components
 
 Sometimes you need something very specific, which is not possible using only the component and its props.
 In these cases, you can use its internal components (`_` notation) to define that specific usage.
@@ -72,7 +65,7 @@ These components are inheriting automatically some props by context from its par
 - type.
 - withCustomInfo.
 
-<Canvas of={CaseStories.Custom} />
+<Canvas of={Stories.Custom} />
 
 ## Props
 

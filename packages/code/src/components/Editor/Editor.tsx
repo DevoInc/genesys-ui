@@ -1,11 +1,14 @@
 import * as React from 'react';
+import type { IDataAttrs } from '@devoinc/genesys-ui';
 
 import { useEditorTheme } from './hooks';
 import { ActionsContainer } from './components/Actions';
 import { Container } from './components/Container/Container';
 import { InternalEditor, type InternalEditorProps } from './components';
 
-export interface EditorProps extends Omit<InternalEditorProps, 'theme'> {
+export interface EditorProps
+  extends IDataAttrs,
+    Omit<InternalEditorProps, 'theme'> {
   /**
    * Array of actions to be added to the editor
    */
@@ -24,12 +27,14 @@ const BaseEditor: React.FC<EditorProps> = ({
   onValidate,
   actions,
   options = {},
+  ...restDataProps
 }) => {
   const editorTheme = useEditorTheme();
 
   return (
     <Container bordered={bordered} readOnly={options.readOnly}>
       <InternalEditor
+        {...restDataProps}
         value={value}
         theme={editorTheme}
         language={language}

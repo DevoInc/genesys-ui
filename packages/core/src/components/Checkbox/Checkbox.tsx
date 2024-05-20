@@ -1,13 +1,12 @@
 import * as React from 'react';
 
+import type { IDataAttrs } from '../../declarations';
 import { Field, type FieldProps } from '../Field';
 import { CheckboxControl, type CheckboxControlProps } from '../CheckboxControl';
 
 export interface CheckboxProps
-  extends Omit<
-      FieldProps,
-      'children' | 'hasWideControl' | 'labelPosition' | 'role'
-    >,
+  extends IDataAttrs,
+    Omit<FieldProps, 'children' | 'hasWideControl' | 'labelPosition' | 'role'>,
     Omit<
       CheckboxControlProps,
       'id' | 'size' | 'status' | 'disabled' | 'required' | 'aria-label'

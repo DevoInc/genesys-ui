@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { Flex, type FlexProps } from '../Flex';
 import type { TGlobalSpacing } from '../../declarations';
-import { FlexItem } from '../Flex/components';
+import { Flex, type FlexProps } from '../Flex';
+import { HFlexItem } from './components';
 
 export interface HFlexProps
   extends Omit<
@@ -35,10 +35,10 @@ const InternalHFlex: React.FC<HFlexProps> = ({
 );
 
 export const HFlex = InternalHFlex as typeof InternalHFlex & {
-  Item: typeof FlexItem;
+  Item: typeof HFlexItem;
 };
 
-HFlex.Item = FlexItem;
+HFlex.Item = HFlexItem;
 
 InternalHFlex.displayName = 'HFlex';
 HFlex.Item.displayName = 'HFlex.Item';

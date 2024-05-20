@@ -2,7 +2,6 @@ import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
 
 import flexComponent from './partials/flexComponent.md?raw';
 import * as Stories from './Flex.stories';
-import * as CaseStories from './Flex.cases.stories';
 
 <Meta of={Stories} />
 
@@ -20,9 +19,7 @@ import * as CaseStories from './Flex.cases.stories';
 
 <Canvas of={Stories.Base} />
 
-## Cases
-
-### Using the as property
+## Using the as property
 
 The `as` property allow these components to be rendered as any HTML tag:
 'div', 'li', 'section'... etc.
@@ -46,14 +43,15 @@ const MyFlexCmp = () => (
 </Flex>
 ); `} />
 
-### Flex.Item props
+## Using Flex.Item
 
-We use each Flex.Item prop in a flex structure to assign flex,
-order, and align-self CSS styles to each child component.
+We can use `Flex.Item` component in a flex structure wrapping children to assign flex,
+order, and align-self CSS styles to each child component. It's only necessary when we need
+those specific styles for any child.
 Here is an example that demonstrates different CSS flex and align-self
 settings for each child component of a Flex component:
 
-<Canvas of={CaseStories.FlexAndFlexItems} />
+<Canvas of={Stories.FlexAndFlexItems} />
 
 ## Props
 

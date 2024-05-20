@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { IDataAttrs } from '@devoinc/genesys-ui';
 
 import type { IUseEditor } from '../../hooks/editor/declarations';
 import { useEditor } from '../../hooks';
@@ -8,7 +9,8 @@ import {
 } from './StyledInternalEditor';
 
 export interface InternalEditorProps
-  extends IUseEditor,
+  extends IDataAttrs,
+    IUseEditor,
     Pick<StyledInternalEditorProps, 'bordered'> {
   /** Width of the editor wrapper */
   width?: number | string;
@@ -30,6 +32,7 @@ export const InternalEditor: React.FC<InternalEditorProps> = ({
   onChange,
   onValidate,
   options,
+  ...restDataProps
 }) => {
   const { containerRef } = useEditor({
     value,
@@ -44,6 +47,7 @@ export const InternalEditor: React.FC<InternalEditorProps> = ({
 
   return (
     <StyledInternalEditor
+      {...restDataProps}
       ref={containerRef}
       $height={height}
       $width={width}

@@ -1,7 +1,6 @@
-import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './IconButton.stories';
-import * as CaseStories from './IconButton.cases.stories';
 
 <Meta of={Stories} />
 
@@ -22,43 +21,41 @@ They are also appropriate for toggle buttons that allow a single choice to be se
 
 <Canvas of={Stories.Base} />
 
-## Cases
-
-### Combined with dropdown
+## Combined with dropdown
 
 In some cases, you may need to use an IconButton to control a dropdown as well.
 To indicate that the IconButton has a dropdown, you can use the hasDropdown prop.
 
-<Canvas of={CaseStories.WithDropdown} />
+<Canvas of={Stories.WithDropdown} />
 
-### As link
+## As link
 
 To use the IconButton as a link, simply add the href prop.
 This will generate an `<a>` HTML tag instead of a `<button>` tag.
 
-<Canvas of={CaseStories.AsLink} />
+<Canvas of={Stories.AsLink} />
 
-### With children
+## With children
 
 Although it is not a common use case, you can add children to the IconButton,
 as shown in this example using the SpinnerLoader component.
 
-<Canvas of={CaseStories.WithChildren} />
+<Canvas of={Stories.WithChildren} />
 
-### Selectable multiple
+## Selectable multiple
 
 The IconButton component can also be used as a form Radio or Checkbox.
 When used this way, the generated HTML is a `<label>` with an `<input type='radio'>` or `<input type='checkbox'>` inside.
 To use the IconButton as a Radio group, it must be used only as part of a group with the same value for the name prop.
 This allows the previously selected option to be automatically deselected when a new option is selected.
 
-#### Uncontrolled
+### Uncontrolled
 
-<Canvas of={CaseStories.MultipleUncontrolled} />
+<Canvas of={Stories.MultipleUncontrolled} />
 
-#### Controlled
+### Controlled
 
-<Canvas of={CaseStories.MultipleControlled} sourceState="none" />
+<Canvas of={Stories.MultipleControlled} sourceState="none" />
 
 <Source
   code={`
@@ -75,15 +72,15 @@ return (
 `}
 />
 
-### Selectable single
+## Selectable single
 
-#### Uncontrolled
+### Uncontrolled
 
-<Canvas of={CaseStories.SingleUncontrolled} />
+<Canvas of={Stories.SingleUncontrolled} />
 
-#### Controlled
+### Controlled
 
-<Canvas of={CaseStories.SingleControlled} sourceState="none" />
+<Canvas of={Stories.SingleControlled} sourceState="none" />
 
 <Source
   code={`
@@ -101,13 +98,13 @@ return (
 `}
 />
 
-### Custom based in internal components
+## Custom based in internal components
 
 Sometimes you need something very specific, which is not possible using only the component and its props.
 In these cases, you can use its internal components (`_` notation) to define that specific usage.
 We don't recommend this usage, but anyway it's available for very specific needs.
 
-<Canvas of={CaseStories.Custom} />
+<Canvas of={Stories.Custom} />
 
 ## Props
 

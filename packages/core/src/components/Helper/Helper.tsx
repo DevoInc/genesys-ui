@@ -3,6 +3,7 @@ import { useTheme } from 'styled-components';
 
 import { HELPER_ICON_SIZE_MAP, HELPER_SIZE_SPACE_MAP } from './constants';
 import type {
+  IDataAttrs,
   IGlobalAttrs,
   TGlobalStatus,
   IStyledOverloadCss,
@@ -21,6 +22,7 @@ import { Typography } from '../Typography';
 
 export interface HelperProps
   extends IGlobalAttrs,
+    IDataAttrs,
     IStyledPolymorphic,
     IStyledOverloadCss {
   /** Content of the helper message. */

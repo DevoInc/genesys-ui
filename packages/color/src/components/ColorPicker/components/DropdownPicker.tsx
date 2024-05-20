@@ -2,11 +2,13 @@ import * as React from 'react';
 import { toColorString } from 'polished';
 import { RgbaColor } from 'polished/lib/types/color';
 
-import { FieldProps } from '@devoinc/genesys-ui';
+import { FieldProps, type IDataAttrs } from '@devoinc/genesys-ui';
 import { TColor } from '../declarations';
 import { StyledSketchPicker } from '../styled';
 
-export interface DropdownPickerProps extends Pick<FieldProps, 'id'> {
+export interface DropdownPickerProps
+  extends IDataAttrs,
+    Pick<FieldProps, 'id'> {
   color?: RgbaColor;
   onChange?: (color: string) => void;
   presetColors?: TColor[];
@@ -21,8 +23,10 @@ export const DropdownPicker: React.FC<DropdownPickerProps> = ({
   presetColors,
   disableAlpha,
   liveUpdate,
+  ...restDataProps
 }) => (
   <StyledSketchPicker
+    {...restDataProps}
     disableAlpha={disableAlpha}
     id={id}
     presetColors={presetColors}

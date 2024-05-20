@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import type {
   IButtonAttrs,
+  IDataAttrs,
   IFocusEventAttrs,
   IGlobalAriaAttrs,
   IGlobalAttrs,
@@ -19,6 +20,7 @@ export interface LinkProps
     IStyledOverloadCss,
     IGlobalAttrs,
     IGlobalAriaAttrs,
+    IDataAttrs,
     Pick<IButtonAttrs, 'tabIndex'>,
     ILinkAttrs,
     ITriggerAriaAttrs,

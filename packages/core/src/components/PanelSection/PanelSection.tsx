@@ -3,6 +3,7 @@ import { DOMAttributes } from 'react';
 import { useTheme } from 'styled-components';
 import { GIArrowLeft } from '@devoinc/genesys-icons';
 
+import type { IDataAttrs } from '../../declarations';
 import type {
   IPanelContainerAttrs,
   IPanelHelpAttrs,
@@ -48,7 +49,8 @@ const renderBackwardNavigation = ({
 };
 
 export interface PanelSectionProps
-  extends Pick<PanelProps, 'display' | 'id' | 'styles' | 'visibility'>,
+  extends IDataAttrs,
+    Pick<PanelProps, 'display' | 'id' | 'styles' | 'visibility'>,
     IPanelHelpAttrs,
     Pick<IPanelHeadingAttrs, 'title' | 'subtitle'> {
   backwardTooltip?: string;
@@ -84,11 +86,13 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
   subtitle,
   title,
   visibility,
+  ...dataProps
 }) => {
   const theme = useTheme();
   const { hasScroll, targetElRef } = useDetectScroll();
   return (
     <Panel
+      {...dataProps}
       display={display}
       id={id}
       height={height}

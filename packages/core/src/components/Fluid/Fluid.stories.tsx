@@ -6,7 +6,7 @@ import { Container, Typography } from '../..';
 import { StoryCol as Col, StoryRow as Row } from './__stories__';
 
 const meta: Meta<typeof Container> = {
-  title: 'Components/Layout/Fluid/Cases',
+  title: 'Components/Layout/Fluid',
   component: Container,
 };
 

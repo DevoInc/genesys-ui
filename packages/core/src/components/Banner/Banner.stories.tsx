@@ -12,6 +12,7 @@ const meta: Meta<typeof Banner> = {
     status: 'info',
     content: 'This is an example of Banner component content.',
   },
+  parameters: { alias: ['alert'] },
 };
 
 export default meta;

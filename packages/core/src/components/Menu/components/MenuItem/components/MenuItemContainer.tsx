@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import type {
   IButtonAttrs,
+  IDataAttrs,
   IFieldAttrs,
   IFocusEventAttrs,
   IGlobalAriaAttrs,
@@ -23,6 +24,7 @@ import {
 export interface MenuItemContainerProps
   extends IStyledPolymorphic,
     IGlobalAttrs,
+    IDataAttrs,
     IFieldAttrs,
     IGlobalAriaAttrs,
     ITriggerAriaAttrs,

@@ -17,7 +17,10 @@ import type {
   ITextBoxAriaAttrs,
   ITriggerAriaAttrs,
 } from '../../../../declarations/ariaAttrs';
-import type { IGlobalAttrs } from '../../../../declarations/htmlAttrs';
+import type {
+  IDataAttrs,
+  IGlobalAttrs,
+} from '../../../../declarations/htmlAttrs';
 import type { ITriggerEventAttrs } from '../../../../declarations/htmlEventAttrs';
 import {
   inlineMessageTriggerMixin,
@@ -25,7 +28,8 @@ import {
 } from './helpers';
 
 export interface InlineMessageTriggerProps
-  extends Omit<IGlobalAttrs, 'role'>,
+  extends IDataAttrs,
+    Omit<IGlobalAttrs, 'role'>,
     IGlobalAriaAttrs,
     Pick<ITextBoxAriaAttrs, 'aria-activedescendant'>,
     Pick<
@@ -63,6 +67,7 @@ export const InlineMessageTrigger = React.forwardRef<
       text,
       tooltip,
       Trigger,
+      ...restDataProps
     },
     ref,
   ) => {
@@ -82,6 +87,7 @@ export const InlineMessageTrigger = React.forwardRef<
     if (text || secondaryText) {
       return (
         <Button
+          {...restDataProps}
           aria-activedescendant={ariaActiveDescendant}
           aria-controls={ariaControls}
           aria-expanded={ariaExpanded}
@@ -135,6 +141,7 @@ export const InlineMessageTrigger = React.forwardRef<
 
     return (
       <IconButtonStatus
+        {...restDataProps}
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
         aria-haspopup={ariaHasPopup}

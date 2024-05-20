@@ -4,7 +4,7 @@ import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../declarations/styled';
-import type { IGlobalAttrs } from '../../declarations/htmlAttrs';
+import type { IDataAttrs, IGlobalAttrs } from '../../declarations/htmlAttrs';
 import type { IGlobalAriaAttrs } from '../../declarations/ariaAttrs';
 import type { IconProps } from '../Icon';
 import {
@@ -30,6 +30,7 @@ import {
 export interface ProgressBarProps
   extends Omit<IGlobalAttrs, 'role'>,
     IGlobalAriaAttrs,
+    IDataAttrs,
     IStyledPolymorphic,
     IStyledOverloadCss,
     Pick<

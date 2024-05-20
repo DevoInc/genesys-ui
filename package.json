@@ -76,6 +76,7 @@
     "react-dom": "^18.3.1",
     "react-syntax-highlighter": "^15.5.0",
     "release-it": "^16.2.1",
+    "remark-gfm": "^4.0.0",
     "resize-observer-polyfill": "^1.5.1",
     "sass": "^1.77.0",
     "storybook": "^8.0.10",

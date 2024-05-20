@@ -63,9 +63,11 @@ export const ChipContainer: React.FC<ChipContainerProps> = ({
   state,
   styles,
   tooltip,
+  ...restDataProps
 }) => {
   return (
     <StyledChip
+      {...restDataProps}
       as={as}
       css={styles}
       id={id}

@@ -3,27 +3,29 @@ import { useTheme } from 'styled-components';
 import { concat } from 'lodash';
 
 import { MODAL_WINDOW_SIZE_MAP } from '../../constants';
+import type { IDataAttrs } from '../../../../declarations';
 import type { IModal } from '../../declarations';
 import { modalPanelMixin } from './mixins';
 import { Panel } from '../../../Panel';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ModalPanelProps
-  extends Pick<
-    IModal,
-    | 'aria-describedby'
-    | 'aria-labelledby'
-    | 'children'
-    | 'disableCloseOnOverlayClick'
-    | 'height'
-    | 'id'
-    | 'onRequestClose'
-    | 'status'
-    | 'styles'
-    | 'width'
-    | 'windowSize'
-    | 'zIndex'
-  > {}
+  extends IDataAttrs,
+    Pick<
+      IModal,
+      | 'aria-describedby'
+      | 'aria-labelledby'
+      | 'children'
+      | 'disableCloseOnOverlayClick'
+      | 'height'
+      | 'id'
+      | 'onRequestClose'
+      | 'status'
+      | 'styles'
+      | 'width'
+      | 'windowSize'
+      | 'zIndex'
+    > {}
 
 export const ModalPanel: React.FC<ModalPanelProps> = ({
   'aria-describedby': ariaDescribedBy,
@@ -36,12 +38,14 @@ export const ModalPanel: React.FC<ModalPanelProps> = ({
   width,
   windowSize = 'md',
   zIndex,
+  ...dataProps
 }) => {
   const theme = useTheme();
   const tokensDialog = theme.cmp.dialog;
   const tokensModal = theme.cmp.modal;
   return (
     <Panel
+      {...dataProps}
       aria-describedby={ariaDescribedBy}
       aria-labelledby={ariaLabelledBy}
       aria-modal

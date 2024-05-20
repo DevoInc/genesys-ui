@@ -16,5 +16,5 @@ export default meta;
 type Story = StoryObj<typeof ModalHeader>;
 
 export const Header: Story = {
-  name: 'ModalHeader',
+  name: 'Modal.Header',
 };

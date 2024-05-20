@@ -39,3 +39,30 @@ export const Base: Story = {
     ),
   },
 };
+
+export const HFlexAndHFlexItems: Story = {
+  name: 'Using HFlex.Item',
+  render: (args) =>
+    ((args) => (
+      <HFlex {...args}>
+        <HFlex.Item flex={'1 1 50%'}>
+          <StyledLayoutContentHelper>
+            1. Rogue from which.
+          </StyledLayoutContentHelper>
+        </HFlex.Item>
+        <HFlex.Item paddingLeft={'cmp-md'} flex={'1 1 25%'}>
+          <StyledLayoutContentHelper>
+            2. Rogue from which we spring.
+          </StyledLayoutContentHelper>
+        </HFlex.Item>
+        <HFlex.Item paddingLeft={'cmp-md'} flex={'1 1 25%'}>
+          <StyledLayoutContentHelper>
+            3. Rogue from which we spring galaxies.
+          </StyledLayoutContentHelper>
+        </HFlex.Item>
+        <HFlex.Item paddingLeft={'cmp-md'} flex={'0'} alignSelf={'flex-end'}>
+          <StyledLayoutContentHelper>4. Rogue.</StyledLayoutContentHelper>
+        </HFlex.Item>
+      </HFlex>
+    ))(args),
+};

@@ -7,8 +7,7 @@ import type { TBaseSize } from '../../declarations';
 
 import { toolbarContainerMixin } from './helpers';
 
-import { ToolbarGroup } from './components/ToolbarGroup';
-import { ToolbarDivider } from './components/ToolbarDivider';
+import { ToolbarDivider, ToolbarGroup, ToolBarItem } from './components';
 import { Flex, type FlexProps } from '../Flex';
 
 export interface ToolbarProps extends FlexProps {
@@ -50,12 +49,12 @@ const InternalToolbar: React.FC<ToolbarProps> = ({
 
 export const Toolbar = InternalToolbar as typeof InternalToolbar & {
   Group: typeof ToolbarGroup;
-  Item: typeof Flex;
+  Item: typeof ToolBarItem;
   Divider: typeof ToolbarDivider;
 };
 
 Toolbar.Group = ToolbarGroup;
-Toolbar.Item = Flex;
+Toolbar.Item = ToolBarItem;
 Toolbar.Divider = ToolbarDivider;
 
 InternalToolbar.displayName = 'Toolbar';

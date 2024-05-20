@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type {
+  IDataAttrs,
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
@@ -17,7 +18,8 @@ export interface DevoLogoSpinnerProps
     IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
-    IGlobalAriaAttrs {}
+    IGlobalAriaAttrs,
+    IDataAttrs {}
 
 export const DevoLogoSpinner: React.FC<DevoLogoSpinnerProps> = ({
   animation = 'flow',

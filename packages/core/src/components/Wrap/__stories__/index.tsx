@@ -1,14 +1,9 @@
 import * as React from 'react';
-import { Wrap } from '../Wrap';
 import { StyledLayoutContentHelper } from '../../../../stories/components/styled';
 
 export const WrapStoryContent = (
   <>
-    <Wrap.Item>
-      <StyledLayoutContentHelper>
-        1. Rogue from which.
-      </StyledLayoutContentHelper>
-    </Wrap.Item>
+    <StyledLayoutContentHelper>1. Rogue from which.</StyledLayoutContentHelper>
     <StyledLayoutContentHelper>
       2. Rogue from which we spring.
     </StyledLayoutContentHelper>

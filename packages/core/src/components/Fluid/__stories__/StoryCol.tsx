@@ -32,4 +32,4 @@ export const StoryCol = React.forwardRef<HTMLDivElement, StoryColProps>(
   ),
 );
 
-StoryCol.displayName = 'StoryCol';
+StoryCol.displayName = 'Col';

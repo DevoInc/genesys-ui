@@ -4,12 +4,10 @@ import * as BlockQuoteStories from './BlockQuote.stories';
 import * as CaptionStories from './Caption.stories';
 import * as CodeStories from './Code.stories';
 import * as HeadingStories from './Heading.stories';
-import * as HeadingCasesStories from './Heading.cases.stories';
 import * as LeadStories from './Lead.stories';
 import * as ListStories from './List.stories';
 import * as ListItemStories from './ListItem.stories';
 import * as ParagraphStories from './Paragraph.stories';
-import * as ParagraphCasesStories from './Paragraph.cases.stories';
 
 <Meta
   title="Components/Layout/Toolbar/Components/Block/Docs"
@@ -22,11 +20,7 @@ Typographic block components are used either within other components such as `He
 
 ## How to import
 
-<Source
-  code={`
-import { Typography } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Typography } from '@devoinc/genesys-ui';`} />
 
 ## BlockQuote
 
@@ -90,7 +84,7 @@ although they can be any structural grouping of related content.
 
 ### Editable
 
-<Canvas of={ParagraphCasesStories.ParagraphEditable} />
+<Canvas of={ParagraphStories.ParagraphEditable} />
 
 ### Props
 
@@ -142,23 +136,19 @@ For commercial or onboarding contexts that require extra-large headings, we can
 use any 'hero-' value for the 'type' prop. Here's an example:
 
 <Source
-  code={`
-<Typography.Heading type={'hero-md'} >Heading</ Typography.Heading>
-`}
+  code={`<Typography.Heading type={'hero-md'} >Heading</ Typography.Heading>`}
 />
 
 For a subtle heading to group menu items, form fields, and similar items, we can
 use any 'overline-' value for the 'type' prop.
 
 <Source
-  code={`
-<Typography.Heading type={'overline-md'} >Heading</ Typography.Heading>
-`}
+  code={`<Typography.Heading type={'overline-md'} >Heading</ Typography.Heading>`}
 />
 
-Editable heading
+## Editable heading
 
-<Canvas of={HeadingCasesStories.HeadingEditable} />
+<Canvas of={HeadingStories.HeadingEditable} />
 
 ### Props
 

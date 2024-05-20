@@ -1,7 +1,6 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './Modal.stories';
-import * as CaseStories from './Modal.cases.stories';
 
 <Meta of={Stories} />
 
@@ -67,34 +66,33 @@ Anyway, define the component with this structure is only necessary when you need
 `Modal._Backdrop` or `Modal._Panel`. That's the reason these types of component have the prefix `_`,
 because they are optional for building the main component.
 
-## Cases
-
-### With actions
+## With actions
 
 The Modal component can also be used to display a header with actions.
 
-<Canvas of={CaseStories.WithActions} />
+<Canvas of={Stories.WithActions} />
 
-### Adding animations
+## Adding animations
 
 If you want to add animations to your Modal component,
 you can use a third-party animation library to achieve this effect.
 For example, you can use `framer-motion` library along with a simple fade animation to create a more visually appealing display of the modal window.
 
-<Canvas of={CaseStories.Animated} />
+<Canvas of={Stories.Animated} />
 
-### Custom modal
+## Custom modal
 
 If you want to build a custom modal, you can use the internal components.
 
-<Canvas of={CaseStories.Custom} />
+<Canvas of={Stories.Custom} />
 
 ## Components
 
-- [Container](?path=/story/components-core-layout-modal-components--docs)
-- [Header](?path=/story/components-core-layout-modal-components--docs)
-- [Body](?path=/story/components-core-layout-modal-components--docs)
-- [Footer](?path=/story/components-core-layout-modal-components--docs)
+- [Modal.\_Backdrop](?path=/docs/components-layout-modal-components--docs#modal_backdrop)
+- [Modal.\_Panel](?path=/docs/components-layout-modal-components--docs#modal_panel)
+- [Modal.Header](?path=/docs/components-layout-modal-components--docs#modalheader)
+- [Modal.Body](?path=/docs/components-layout-modal-components--docs#modalbody)
+- [Modal.Footer](?path=/docs/components-layout-modal-components--docs#modalfooter)
 
 ## Props
 

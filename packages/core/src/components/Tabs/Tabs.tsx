@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import type {
+  IDataAttrs,
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
@@ -21,6 +22,7 @@ import {
 export interface TabsProps
   extends IGlobalAttrs,
     IGlobalAriaAttrs,
+    IDataAttrs,
     IStyledOverloadCss,
     ITabs {
   children?: React.ReactNode;

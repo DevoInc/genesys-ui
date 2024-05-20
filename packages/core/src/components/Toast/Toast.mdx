@@ -1,7 +1,6 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './Toast.stories';
-import * as CasesStories from './Toast.cases.stories';
 
 <Meta of={Stories} />
 
@@ -13,7 +12,7 @@ The Toast component is a wrapper around the [react-toastify](https://fkhadra.git
 emitter that provides additional custom props to configure its styles and content.
 It is used to display non-intrusive, temporary messages to the user, such as notifications, success messages, or errors.
 
-**Important:**
+**Important**
 
 It is important to note that the ToastContainer component must
 be rendered only once in the application tree to properly display the toasts.
@@ -26,27 +25,27 @@ For more information on installation and usage, refer to the [react-toastify doc
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Base} story={{ height: '24rem' }} />
 
 ## Scrolled content
 
 The Toast panel has a `maxHeight` prop value of '30rem' by default, so if the content is longer
 than the available space, we get scrolled content.
 
-<Canvas of={CasesStories.WithScroll} />
+<Canvas of={Stories.WithScroll} story={{ height: '34rem' }} />
 
 ## With actions
 
 You can add a `applyAction` and `cancelAction` prop to get actions at the footer of the
 Toast panel.
 
-<Canvas of={CasesStories.WithActions} />
+<Canvas of={Stories.WithActions} story={{ height: '30rem' }} />
 
 ## Collapsable content
 
 With the `collapsable` prop you can get the content collapsable, to get a more compact notification.
 
-<Canvas of={CasesStories.CollapsableContent} />
+<Canvas of={Stories.CollapsableContent} story={{ height: '34rem' }} />
 
 ## Props
 

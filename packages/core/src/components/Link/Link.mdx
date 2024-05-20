@@ -1,7 +1,6 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './Link.stories';
-import * as CaseStories from './Link.cases.stories';
 
 <Meta of={Stories} />
 
@@ -14,25 +13,19 @@ To make the navigation possible, several props such as `href` or `onClick` are a
 
 ## How to import
 
-<Source
-  code={`
-import { Link } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Link } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
 <Canvas of={Stories.Base} />
 
-## Cases
-
-### Block behavior
+## Block behavior
 
 The Link component can be utilized as either an inline or block element.
 By default, the component is displayed as inline-flex and is integrated with the flow of its parent content.
 However, by using the `wide` prop, the Link is displayed as flex and becomes a block element that is separate from the surrounding content.
 
-<Canvas of={CaseStories.Block} />
+<Canvas of={Stories.Block} />
 
 ## Props
 

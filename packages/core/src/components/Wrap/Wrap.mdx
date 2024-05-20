@@ -23,6 +23,17 @@ You only have to add children to the component and wrap them.
 
 <Canvas of={Stories.Base} />
 
+## Using Wrap.Item
+
+We can use `Wrap.Item` component in a flex structure wrapping children to assign flex,
+order, and align-self CSS styles to each child component. It's only necessary when we need
+those specific styles for any child.
+
+Here is an example that demonstrates different CSS flex and align-self
+settings for each child component of a Flex component:
+
+<Canvas of={Stories.WrapAndWrapItems} />
+
 ## childrenByRow
 
 You can use prop `childrenByRow` to define a specific number of columns with the same width for each child.

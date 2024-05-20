@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import type {
+  IDataAttrs,
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
@@ -18,7 +19,8 @@ export interface SpinnerLoaderProps
   extends IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
-    IGlobalAriaAttrs {
+    IGlobalAriaAttrs,
+    IDataAttrs {
   colorScheme?: TSpinnerColorScheme;
   size?: TSpinnerSize;
 }

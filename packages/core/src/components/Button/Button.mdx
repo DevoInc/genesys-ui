@@ -1,9 +1,6 @@
 import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './Button.stories';
-import * as CaseStories from './Button.cases.stories';
-import * as LoadingStories from './ButtonLoading.stories';
-import * as SelectionStories from './ButtonSelection.stories';
 
 <Meta of={Stories} />
 
@@ -22,21 +19,19 @@ They are typically placed throughout your UI, including in dialogs, modal window
 
 <Canvas of={Stories.Base} />
 
-## Cases
-
-### Button as dropdown trigger
+## As dropdown trigger
 
 The `Button` component can be used as a dropdown trigger.
 
-<Canvas of={CaseStories.AsDropdown} />
+<Canvas of={Stories.AsDropdown} />
 
-### Button as link
+## As link
 
 It can also be used as a link. In this case, the `href` prop must be used instead of the `onClick` prop.
 
-<Canvas of={CaseStories.AsLink} />
+<Canvas of={Stories.AsLink} />
 
-### Button Loading
+## Loading
 
 The `Button` component has loading states to indicate that a process launched with its action
 is currently running, or has finished successfully or with errors.
@@ -48,27 +43,27 @@ You can use different values for `children` and `icon` based on each `state`
 loading values to better inform the user about the process.
 Here are some examples:
 
-<Canvas of={LoadingStories.Loading} />
+<Canvas of={Stories.Loading} />
 
-### Button Loading success
+### Loading success
 
 When the `state` prop value is `loading-success`, a check icon is always rendered at the left of the `Button`.
 If there is an icon at the left, it will be replaced by the check icon, but only for a few seconds.
 Additionally, there is an animation that changes the color scheme from the original to
 the success scheme and back again a few seconds later.
 
-<Canvas of={LoadingStories.Success} />
+<Canvas of={Stories.Success} />
 
-### Button Loading error
+### Loading error
 
 When the `state` prop value is `loading-error`, an error icon is always rendered
 at the left of the `Button`. If there is an icon at the left, it will be replaced
 by the error icon, but only for a few seconds. Additionally, there is an animation
 that changes the color scheme from the original to the error scheme and back again a few seconds later.
 
-<Canvas of={LoadingStories.Error} />
+<Canvas of={Stories.Error} />
 
-### Selectable
+## Selectable
 
 Buttons can be used as form radio or form checkbox.
 In fact, the generated HTML is a `<label>` with an `<input type='radio'>` or `<input type='checkbox'>` inside.
@@ -76,38 +71,38 @@ To use as a radio group, it must be used only as part of a group with the same v
 This allows the previous selected option to be automatically deselected when another one
 is selected because this type of selection is always unique.
 
-#### Selectable multiple
+### Selectable multiple
 
 When selectionScheme is `multiple`, the `Button` component is used as a form checkbox.
 It can either be uncontrolled or controlled.
 
-##### Uncontrolled
+#### Uncontrolled
 
-<Canvas of={SelectionStories.MultipleUncontrolled} />
+<Canvas of={Stories.MultipleUncontrolled} />
 
-##### Controlled
+#### Controlled
 
-<Canvas of={SelectionStories.MultipleControlled} />
+<Canvas of={Stories.MultipleControlled} />
 
-#### Selectable single
+### Selectable single
 
 When selectionScheme is `single`, the `Button` component is used as a form radio.
 
-##### Uncontrolled
+#### Uncontrolled
 
-<Canvas of={SelectionStories.SingleUncontrolled} />
+<Canvas of={Stories.SingleUncontrolled} />
 
-##### Controlled
+#### Controlled
 
-<Canvas of={SelectionStories.SingleControlled} />
+<Canvas of={Stories.SingleControlled} />
 
-### Custom based in internal components
+## Custom based in internal components
 
 Sometimes you need something very specific, which is not possible using only the component and its props.
 In these cases, you can use its internal components (`_` notation) to define that specific usage.
 We don't recommend this usage, but anyway it's available for very specific needs.
 
-<Canvas of={CaseStories.Custom} />
+<Canvas of={Stories.Custom} />
 
 ## Props
 

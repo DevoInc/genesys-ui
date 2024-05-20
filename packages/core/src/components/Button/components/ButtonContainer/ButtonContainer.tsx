@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import type {
   IButtonAttrs,
+  IDataAttrs,
   IFocusEventAttrs,
   IGlobalAriaAttrs,
   IGlobalAttrs,
@@ -19,7 +20,8 @@ import {
 } from './StyledButtonContainer';
 
 export interface ButtonContainerProps
-  extends IStyledPolymorphic,
+  extends IDataAttrs,
+    IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
     IGlobalAriaAttrs,

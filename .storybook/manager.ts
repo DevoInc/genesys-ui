@@ -21,6 +21,7 @@ addons.setConfig({
         ? `${iconMap[name] ? iconMap[name] : ''} ${name}`
         : name;
     },
+    showRoots: true,
     filters: {
       patternns: (item) => {
         return !(item?.tags?.includes('isHidden') ?? false);
