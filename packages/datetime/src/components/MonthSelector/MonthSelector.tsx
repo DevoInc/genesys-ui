@@ -22,9 +22,9 @@ import {
   type IStyledOverloadCss,
   type IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
-import type { ITime, TDatetime } from '../../../declarations';
+import type { ITime } from '../../declarations';
 
-import { toTimestamp } from '../../../helpers';
+import { toTimestamp } from '../../helpers';
 import { GIAngleLeft, GIAngleRight } from '@devoinc/genesys-icons';
 
 export interface MonthProps
@@ -51,10 +51,10 @@ export interface MonthProps
   /** The size of the different elements of the Month: inputs, buttons... etc. */
   size?: TFieldSize;
   /** Initial value. One of `number` or `Date`. */
-  value?: TDatetime;
+  value?: Date | number;
 }
 
-export const Month: React.FC<MonthProps> = ({
+export const MonthSelector: React.FC<MonthProps> = ({
   ariaLabelInput = 'Select the month',
   ariaLabelNextMonth = 'Go to the next month',
   ariaLabelPrevMonth = 'Go to the previous month',
@@ -63,7 +63,7 @@ export const Month: React.FC<MonthProps> = ({
   hasNextMonthButton = true,
   id,
   maxDate: maxMonth,
-  minDate: minMonth,
+  minDate: minMonth = 0,
   value: defaultValue = new Date().getTime(),
   onChange,
   onClickPrevMonth,

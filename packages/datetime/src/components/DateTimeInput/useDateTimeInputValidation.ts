@@ -8,24 +8,32 @@ export const useDateTimeInputValidation = ({
   reprDate,
   parseDate,
 }: {
-  value: number;
-  onChange: (value: number) => void;
-  reprDate: (value: number) => string;
+  value: Date | number;
+  onChange: (value: Date | number) => void;
+  reprDate: (value: Date | number) => string;
   parseDate: (str: string) => IParseResult;
 }) => {
-  const [{ inputValue, errors }, setState] = React.useState({
-    inputValue: reprDate(value),
-    errors: [],
+  const [{ inputValue, errors }, setState] = React.useState(() => {
+    const valueStr = reprDate(value);
+    const result = parseDate(valueStr);
+    return { inputValue: valueStr, errors: result.errors };
   });
-  const inputOnChange = (newValue: string) => {
-    const result = parseDate(newValue);
+
+  const inputOnChange = (newStrValue: string) => {
+    const result = parseDate(newStrValue);
+    setState({ inputValue: newStrValue, errors: result.errors });
     if (result.isValid) {
       onChange(result.value);
-      setState({ inputValue: newValue, errors: [] });
-    } else {
-      setState({ inputValue: newValue, errors: result.errors });
     }
   };
 
-  return { inputValue, inputOnChange, errors };
+  const updateValue = (dt: Date | number) => {
+    const valueStr = reprDate(dt);
+    if (valueStr !== inputValue) {
+      const result = parseDate(valueStr);
+      setState({ inputValue: valueStr, errors: result.errors });
+    }
+  };
+
+  return { inputValue, inputOnChange, errors, updateValue };
 };

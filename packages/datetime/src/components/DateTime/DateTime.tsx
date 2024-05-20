@@ -1,6 +1,17 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import { addMonths, set, subMonths } from 'date-fns';
+import {
+  addMonths,
+  subMonths,
+  set,
+  getYear,
+  getMonth,
+  getDate,
+  getHours,
+  getMinutes,
+  getSeconds,
+  getMilliseconds,
+} from 'date-fns';
 
 import {
   type IGlobalAriaAttrs,
@@ -9,20 +20,14 @@ import {
   VFlex,
 } from '@devoinc/genesys-ui';
 
-import type { ITime, TDatetime } from '../../declarations';
-import {
-  Calendar,
-  type CalendarProps,
-  useCalendarSingleDayBehavior,
-} from '../Calendar';
-import { Month, Time } from './components';
-import { toTimestamp } from '../../helpers';
+import type { ITime } from '../../declarations';
+import { Calendar, type CalendarProps } from '../Calendar';
+import { Time } from './components';
+import { MonthSelector } from '../MonthSelector';
+import { parseDateNoFuture } from '../Calendar/defaults';
 
 export interface DateTimeProps
-  extends Pick<
-      CalendarProps,
-      'dateForMonth' | 'invalidDates' | 'validateDate' | 'weekDays'
-    >,
+  extends Pick<CalendarProps, 'monthDate' | 'parseDate' | 'weekDays' | 'weekStart'>,
     Pick<ITime, 'hasMillis' | 'hasSeconds' | 'hasTime' | 'maxDate' | 'minDate'>,
     IStyledOverloadCss,
     IStyledPolymorphic {
@@ -31,104 +36,28 @@ export interface DateTimeProps
   /** aria-label attribute for time input. */
   ariaLabelTime?: IGlobalAriaAttrs['aria-label'];
   /** Function called when clicking a cell or editing time input HTML.  */
-  onChange?: (ts: number) => void;
+  onChange?: (dt: Date | number) => void;
   /** Initial value. One of `number` or `Date`. */
-  value?: TDatetime;
+  onChangeMonthDate: (dt: Date | number) => void;
+  value: Date | number;
 }
 
 export const DateTime: React.FC<DateTimeProps> = ({
   ariaLabelMonth = 'month',
   ariaLabelTime = 'time',
   as,
-  dateForMonth: monthToShow,
+  monthDate = new Date().getTime(),
   hasMillis = false,
   hasSeconds = true,
   hasTime = true,
-  invalidDates: notValidDates = [],
-  maxDate: maximunDae,
-  minDate: minimunDate,
   onChange,
   styles,
-  validateDate = (ts) => ts < new Date().getTime(),
-  value: customValue,
+  parseDate = parseDateNoFuture,
   weekDays,
+  weekStart,
+  onChangeMonthDate = () => null,
+  value,
 }) => {
-  const value = toTimestamp(customValue);
-  const minDate = toTimestamp(minimunDate);
-  const maxDate = toTimestamp(maximunDae);
-  const dateForMonth = toTimestamp(monthToShow);
-  const invalidDates = notValidDates.map((date) => toTimestamp(date));
-
-  const iniDate = value
-    ? value
-    : dateForMonth
-      ? dateForMonth
-      : new Date().getTime();
-
-  const [tmpMonth, setTmpMonth] = React.useState(iniDate);
-  const [tmpTime, setTmpTime] = React.useState(iniDate);
-  const [firstTime, setFirsTime] = React.useState(true);
-
-  const {
-    selectedDates,
-    hasLeftHoverEffect,
-    hasRightHoverEffect,
-    handleDateChange,
-  } = useCalendarSingleDayBehavior({ day: value });
-
-  React.useEffect(() => {
-    if (value) {
-      setTmpMonth(value);
-      setTmpTime(value);
-    }
-  }, [value]);
-
-  React.useEffect(() => {
-    if (firstTime) return;
-
-    const tmp = new Date(tmpTime);
-    onChange(
-      set(selectedDates.from, {
-        hours: tmp.getHours(),
-        minutes: tmp.getMinutes(),
-        seconds: tmp.getSeconds(),
-        milliseconds: tmp.getMilliseconds(),
-      }).getTime(),
-    );
-  }, [selectedDates, tmpTime, firstTime, onChange]);
-
-  const onClickNextMonthCallback = React.useCallback(() => {
-    setTmpMonth((oldDate) => addMonths(new Date(oldDate), 1).getTime());
-  }, []);
-
-  const onClickPrevMonthCallback = React.useCallback(() => {
-    setTmpMonth((oldDate) => subMonths(new Date(oldDate), 1).getTime());
-  }, []);
-
-  const onChangeMonth = React.useCallback((ts: number) => {
-    setTmpMonth(ts);
-  }, []);
-
-  const onChangeTime = React.useCallback((ts: number) => {
-    const tmp = new Date(ts);
-    setFirsTime(false);
-    setTmpTime((oldValues) =>
-      set(oldValues, {
-        hours: tmp.getHours(),
-        minutes: tmp.getMinutes(),
-        seconds: tmp.getSeconds(),
-        milliseconds: tmp.getMilliseconds(),
-      }).getTime(),
-    );
-  }, []);
-
-  const onClickCallback = React.useCallback(
-    (ts: number) => {
-      handleDateChange(ts);
-      setFirsTime(false);
-    },
-    [handleDateChange],
-  );
   const theme = useTheme();
   return (
     <VFlex
@@ -137,40 +66,55 @@ export const DateTime: React.FC<DateTimeProps> = ({
       minWidth={theme.cmp.calendar.size.minWidth}
       styles={styles}
     >
-      <Month
+      <MonthSelector
         ariaLabelInput={ariaLabelMonth}
         hasNextMonthButton
         hasPrevMonthButton
-        maxDate={maxDate}
-        minDate={minDate}
-        onChange={onChangeMonth}
-        onClickPrevMonth={onClickPrevMonthCallback}
-        onClickNextMonth={onClickNextMonthCallback}
+        onChange={onChangeMonthDate}
+        onClickPrevMonth={() => {
+          onChangeMonthDate(subMonths(monthDate, 1).getTime());
+        }}
+        onClickNextMonth={() => {
+          onChangeMonthDate(addMonths(monthDate, 1).getTime());
+        }}
         size="sm"
-        value={tmpMonth}
+        value={monthDate}
       />
       <Calendar
-        dateForMonth={tmpMonth}
-        hasLeftHoverEffect={hasLeftHoverEffect}
-        hasRightHoverEffect={hasRightHoverEffect}
-        invalidDates={invalidDates}
-        maxDate={maxDate}
-        minDate={minDate}
-        onClick={onClickCallback}
-        selectedDates={selectedDates}
-        validateDate={validateDate}
+        monthDate={monthDate}
+        hasLeftHoverEffect={false}
+        hasRightHoverEffect={false}
+        onClick={(ts) => {
+          onChange(
+            set(ts, {
+              hours: getHours(value),
+              minutes: getMinutes(value),
+              seconds: getSeconds(value),
+              milliseconds: getMilliseconds(value),
+            }),
+          );
+        }}
+        selectedDates={[value]}
+        parseDate={parseDate}
         weekDays={weekDays}
+        weekStart={weekStart}
       />
       {hasTime && (
         <Time
           aria-label={ariaLabelTime}
-          maxDate={maxDate}
-          minDate={minDate}
           hasMillis={hasMillis}
           hasSeconds={hasSeconds}
-          onChange={onChangeTime}
+          onChange={(ts) => {
+            onChange(
+              set(ts, {
+                year: getYear(value),
+                month: getMonth(value),
+                date: getDate(value),
+              }),
+            );
+          }}
           size="sm"
-          value={tmpTime}
+          value={value}
         />
       )}
     </VFlex>

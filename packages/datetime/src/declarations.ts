@@ -13,8 +13,6 @@ export type TDateApplyValue = {
   preset: TPresetRange;
 };
 
-export type TDatetime = number | Date;
-
 export interface ITime {
   /** If hasTime, allow to show the milliseconds. */
   hasMillis?: boolean;
@@ -23,13 +21,15 @@ export interface ITime {
   /**  Show the time input HTML element. */
   hasTime?: boolean;
   /** The latest day to accept. One of `number` or `Date`. */
-  maxDate?: TDatetime;
+  maxDate?: number | Date;
   /** The earliest day to accept. One of `number` or `Date`. */
-  minDate?: TDatetime;
+  minDate?: number | Date;
 }
 
 export interface IParseResult {
   isValid: boolean;
-  value: number;
+  value: number | Date;
   errors: string[];
 }
+
+export type TParseDate = (dt: number | Date) => IParseResult;

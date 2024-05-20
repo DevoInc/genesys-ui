@@ -10,16 +10,11 @@ import {
   type PopoverProps,
 } from '@devoinc/genesys-ui';
 
-import {
-  isManageableDate,
-  parseDate,
-  toTSorPreset,
-} from '../../helpers';
+import { isManageableDate, parseDate, toTSorPreset } from '../../helpers';
 
 import type {
   ITime,
   TDateApplyValue,
-  TDatetime,
   TPresetRange,
   TTimestampRange,
 } from '../../declarations';
@@ -73,7 +68,7 @@ export interface DateTimeRangeFloatingPickerProps
     IStyledOverloadCss,
     IStyledPolymorphic {
   /** Initial value for the input. */
-  value: { from: string | TDatetime; to: string | TDatetime };
+  value: { from: string | Date | number; to: string | Date | number };
   /** Apply button text. */
   applyButtonText?: string;
   /** Cancel button text. */

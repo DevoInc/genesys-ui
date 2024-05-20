@@ -1,7 +1,5 @@
 import { format as formatFNS } from 'date-fns';
 
-import { TDatetime } from '../declarations';
-
 export const getFormatDateTimeStr = (hasSecons = true, hasMillis = false) =>
   `yyyy-MM-dd HH:mm${hasSecons ? `:ss${hasMillis ? '.sss' : ''}` : ''}`;
 
@@ -27,6 +25,6 @@ export const getFormatDateStr = () => 'yyyy-MM-dd';
  * @returns - The formatted date string.
  */
 export const formatDate = (
-  ts: TDatetime,
+  dt: Date | number,
   format: string = 'yyyy-MM-dd HH:mm:ss',
-): string => formatFNS(ts, format);
+): string => formatFNS(dt, format);

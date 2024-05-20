@@ -1,12 +1,11 @@
 import { describe, test, expect } from 'vitest';
 
 import { validateRange } from './dateValidations';
-import { TDatetime } from '../declarations';
 
 describe('helpers', () => {
   describe('dateValidations', () => {
     describe('validateRange', () => {
-      const cases: [string, TDatetime[], boolean][] = [
+      const cases: [string, (Date | number)[], boolean][] = [
         [
           'two point range',
           [

@@ -1,6 +1,4 @@
-import { TDatetime } from '../declarations';
-
-export const validateRange = (range: TDatetime[]) => {
+export const validateRange = (range: (Date | number)[]) => {
   if (range.length < 2) {
     return false;
   }
