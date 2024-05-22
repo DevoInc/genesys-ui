@@ -11,3 +11,9 @@ export const parseDateNoFuture = (dt: Date | number): IParseResult => {
     errors: isValid ? [] : ['Date is invalid'],
   };
 };
+
+export const parseDateAll = (dt: Date | number): IParseResult => ({
+  isValid: true,
+  value: dt,
+  errors: [],
+});

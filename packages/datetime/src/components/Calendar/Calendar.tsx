@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import { lastDayOfMonth as lastDayOfMonthFNS, getTime } from 'date-fns';
+import { getTime, lastDayOfMonth as lastDayOfMonthFNS } from 'date-fns';
 
 import { getMonthDays, getPrevDays, parseDays } from './ephemerides';
 import {
@@ -13,7 +13,7 @@ import {
 import type { IParseResult } from '../../declarations';
 import { toTimestamp } from '../../helpers';
 import { Cell, type CellProps } from './components';
-import { parseDateNoFuture } from './defaults';
+import { parseDateAll } from './defaults';
 import { rotateWeekDays, WEEK_DAYS } from './weekDays';
 
 export interface CalendarProps
@@ -54,7 +54,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
   onMouseEnter,
   onMouseLeave,
   selectedDates = [],
-  parseDate = parseDateNoFuture,
+  parseDate = parseDateAll,
   weekDays = WEEK_DAYS,
   weekStart = 0,
   disableHoverDay = false,
