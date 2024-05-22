@@ -17,10 +17,8 @@ import {
   DateTimeInputProps,
   useDateTimeInputValidation,
 } from '../DateTimeInput';
-import {
-  formatDate as formatDateHelper,
-  parseDate as parseDateHelper,
-} from '../../helpers';
+import { formatDate as formatDateHelper } from '../../helpers';
+import { parseStrDate } from '../../parsers';
 import type { IParseResult } from '../../declarations';
 
 export interface DateTimeFloatingPickerProps
@@ -44,8 +42,11 @@ export interface DateTimeFloatingPickerProps
     Pick<IGlobalAttrs, 'id'>,
     Pick<IStyledOverloadCss, 'styles'>,
     Pick<IStyledPolymorphic, 'as'> {
-  /** Apply button text */
-  applyButtonText?: string;
+  /** i18n texts */
+  i18n?: {
+    apply: string;
+    cancel: string;
+  };
   /** Cancel button text */
   cancelButtonText?: string;
   /** Function called when Apply button is clicked. */
@@ -63,9 +64,11 @@ export interface DateTimeFloatingPickerProps
 export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
   'aria-label': ariaLabel = 'datetime',
   appendTo,
-  applyButtonText = 'Apply',
+  i18n = {
+    apply: 'Apply',
+    cancel: 'Cancel',
+  },
   as,
-  cancelButtonText = 'Cancel',
   formatDate = formatDateHelper,
   hasMillis = false,
   hasSeconds = true,
@@ -77,7 +80,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
   onChange = () => null,
   autoApply = false,
   onClose = () => null,
-  parseDate = parseDateHelper,
+  parseDate = parseStrDate,
   styles: customStyles,
   value = new Date().getTime(),
   helper,
@@ -91,60 +94,25 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
   size,
   label,
 }) => {
-  console.log({ value: new Date(value) });
-
   const [tmpValue, setTmpValue] = React.useState<Date | number>(value);
   const [monthDate, setMonthDate] = React.useState<Date | number>(
     initialMonthDate,
   );
-  React.useEffect(() => {
-    setTmpValue(value);
-  }, [value]);
 
-  console.log({ tmpValue: new Date(tmpValue) });
-
-  const { inputValue, inputOnChange, errors } = useDateTimeInputValidation({
-    value: tmpValue,
-    onChange: (newValue) => {
-      if (autoApply) {
-        onChange(newValue);
-      } else {
-        setTmpValue(newValue);
-      }
-    },
-    reprDate: formatDate,
-    parseDate,
-  });
-
-  console.log({ inputValue });
-  console.log('----------------------------------------------------------');
-
-  const onDateTimeChangeCallback = React.useCallback(
-    (ts: number) => {
-      if (autoApply) {
-        onChange(ts);
-      } else {
-        setTmpValue(ts);
-      }
-    },
-    [onChange, autoApply],
-  );
-
-  const onInputKeyUpCallback = React.useCallback(
-    (setOpened: React.Dispatch<React.SetStateAction<boolean>>) =>
-      (event: React.KeyboardEvent<Element>) => {
-        if (
-          event.type === 'keyup' &&
-          ['Escape', 'Enter'].includes(event.code)
-        ) {
-          if (event.code === 'Enter' && !autoApply) {
-            onChange(tmpValue);
-          }
-          setOpened(false);
+  const { inputValue, inputOnChange, errors, updateValue } =
+    useDateTimeInputValidation({
+      value: tmpValue,
+      onChange: (dt) => {
+        setMonthDate(dt);
+        if (autoApply) {
+          onChange(dt);
+        } else {
+          setTmpValue(dt);
         }
       },
-    [],
-  );
+      reprDate: formatDate,
+      parseDate,
+    });
 
   return (
     <Popover
@@ -162,7 +130,17 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
             label={label}
             aria-label={ariaLabel}
             id={id}
-            onKeyUp={onInputKeyUpCallback(setOpened)}
+            onKeyUp={(event) => {
+              if (
+                event.type === 'keyup' &&
+                ['Escape', 'Enter'].includes(event.code)
+              ) {
+                if (event.code === 'Enter' && !autoApply) {
+                  onChange(tmpValue);
+                }
+                setOpened(false);
+              }
+            }}
             onChange={inputOnChange}
             onClick={() => {
               setOpened(true);
@@ -191,7 +169,13 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
               hasMillis={hasMillis}
               hasSeconds={hasSeconds}
               hasTime={hasTime}
-              onChange={onDateTimeChangeCallback}
+              onChange={(dt: number | Date) => {
+                if (autoApply) {
+                  onChange(dt);
+                } else {
+                  setTmpValue(dt);
+                }
+              }}
               parseDate={(dt: Date | number) => parseDate(formatDate(dt))}
               value={tmpValue}
             />
@@ -208,18 +192,19 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
                     onCancel();
                   }}
                 >
-                  {cancelButtonText}
+                  {i18n.cancel}
                 </Button>,
                 <Button
                   key={'apply'}
                   colorScheme={'accent'}
                   onClick={() => {
+                    updateValue(tmpValue);
                     onChange(tmpValue);
                     setOpened(false);
                     onApply();
                   }}
                 >
-                  {applyButtonText}
+                  {i18n.apply}
                 </Button>,
               ]}
             />

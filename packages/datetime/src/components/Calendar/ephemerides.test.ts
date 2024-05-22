@@ -1,13 +1,10 @@
 import { describe, test, expect } from 'vitest';
 import { addDays } from 'date-fns';
 
-import {
-  getPrevDays,
-  parseDays,
-  getMonthDays,
-} from './ephemerides';
-import { parseDateNoFuture } from './defaults';
+import { getPrevDays, parseDays, getMonthDays } from './ephemerides';
+import { parseNoFutureDates } from '../../parsers';
 import { TParseDate } from '../../declarations';
+import { gt } from '../../helpers';
 
 describe('CalendarHelper', () => {
   describe('getMonthDays', () => {
@@ -23,14 +20,15 @@ describe('CalendarHelper', () => {
   });
 
   describe('getPrevDays', () => {
-    const cases: [string, number, number][] = [
-      ['Dec 1th, 2022 has 3 prev days', new Date(2022, 11, 1).getTime(), 3],
-      ['Nov 10th, 2022 has 1 prev days', new Date(2022, 10, 10).getTime(), 1],
-      ['Feb 28th, 2022 has 1 prev days', new Date(2022, 1, 28).getTime(), 1],
+    const cases: [string, number | Date, number, number][] = [
+      ['Dec, 2024 has 0 prev days', new Date(2024, 11), 0, 0],
+      ['Nov, 2024 has 5 prev days', new Date(2024, 10), 0, 5],
+      ['Feb, 2024 has 4 prev days', new Date(2024, 1), 0, 4],
+      ['Feb, 2024 starting on Monday has 3 prev days', new Date(2024, 1), 1, 3],
     ];
 
-    test.each(cases)('%s', (_title, ts, expected) => {
-      expect(getPrevDays(ts, 0)).toEqual(expected);
+    test.each(cases)('%s', (_title, dt, weekStart, expected) => {
+      expect(getPrevDays(dt, weekStart)).toEqual(expected);
     });
   });
 
@@ -38,7 +36,7 @@ describe('CalendarHelper', () => {
     const cases: [
       string,
       {
-        days: Date[];
+        dates: Date[];
         from: number;
         to: number;
         hover: number;
@@ -52,7 +50,7 @@ describe('CalendarHelper', () => {
       [
         'full range of days',
         {
-          days: [
+          dates: [
             new Date(2022, 11, 1),
             new Date(2022, 11, 2),
             new Date(2022, 11, 3),
@@ -67,7 +65,14 @@ describe('CalendarHelper', () => {
           hover: null,
           hasLeftHoverEffect: true,
           hasRightHoverEffect: true,
-          parseDate: parseDateNoFuture,
+          parseDate: (dt) => {
+            const isValid = !gt(dt, new Date(2022, 12, 14));
+            return {
+              isValid,
+              value: dt,
+              errors: isValid ? [] : ['Out of range'],
+            };
+          },
           lastDayOfMonth: 30,
         },
         [
@@ -108,7 +113,7 @@ describe('CalendarHelper', () => {
       [
         'short selected days',
         {
-          days: [
+          dates: [
             new Date(2022, 11, 1),
             new Date(2022, 11, 2),
             new Date(2022, 11, 3),
@@ -120,7 +125,7 @@ describe('CalendarHelper', () => {
           hover: null,
           hasLeftHoverEffect: true,
           hasRightHoverEffect: true,
-          parseDate: parseDateNoFuture,
+          parseDate: parseNoFutureDates,
           lastDayOfMonth: 30,
         },
         [

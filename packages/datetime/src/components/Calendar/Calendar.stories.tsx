@@ -3,11 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { startOfMonth, addDays, subDays, endOfMonth } from 'date-fns';
 
 import { Calendar } from './Calendar';
-import {
-  useCalendarForwardBackward,
-  useCalendarForward,
-  useCalendarSingleDay,
-} from './hooks';
+import { useCalendarRange, useCalendarSingle } from './hooks';
 
 const meta: Meta<typeof Calendar> = {
   title: 'Components/Datetime/Calendar',
@@ -22,10 +18,7 @@ const now = new Date();
 export const Base: Story = {
   args: {
     monthDate: now,
-    selectedDates: [
-      addDays(startOfMonth(now), 10),
-      subDays(endOfMonth(now), 10),
-    ],
+    range: [addDays(startOfMonth(now), 10), subDays(endOfMonth(now), 10)],
   },
 };
 
@@ -35,7 +28,7 @@ export const Single: Story = {
     monthDate: now,
     hasLeftHoverEffect: false,
     hasRightHoverEffect: false,
-    selectedDates: [now],
+    range: [now],
   },
 };
 
@@ -48,81 +41,41 @@ export const I18n: Story = {
 };
 I18n.storyName = 'I18n';
 
-export const HookSingleDay: Story = {
+export const SingleHook: Story = {
   tags: ['isHidden'],
   render: () =>
     (() => {
-      const {
-        handleDateChange,
-        hasLeftHoverEffect: hasLeftHoverEffect,
-        hasRightHoverEffect: hasRightHoverEffect,
-        selectedDates,
-      } = useCalendarSingleDay([new Date()]);
+      const { handleNewDate, range } = useCalendarSingle([new Date()]);
       return (
         <Calendar
-          hasLeftHoverEffect={hasLeftHoverEffect}
-          hasRightHoverEffect={hasRightHoverEffect}
+          hasLeftHoverEffect={false}
+          hasRightHoverEffect={false}
           monthDate={new Date(2022, 0)}
-          selectedDates={selectedDates}
-          onClick={handleDateChange}
+          range={range}
+          onClick={handleNewDate}
         />
       );
     })(),
-  parameters: {
-    controls: false,
-  },
 };
 
-export const HookForward: Story = {
+export const RangeHook: Story = {
   tags: ['isHidden'],
   render: () =>
     (() => {
-      const {
-        handleDateChange,
-        hasLeftHoverEffect,
-        hasRightHoverEffect,
-        selectedDates,
-      } = useCalendarForward([new Date('10-7-1993'), new Date('10-10-1993')]);
-      return (
-        <Calendar
-          monthDate={new Date('10-10-1993')}
-          selectedDates={selectedDates}
-          hasLeftHoverEffect={hasLeftHoverEffect}
-          hasRightHoverEffect={hasRightHoverEffect}
-          onClick={handleDateChange}
-        />
-      );
-    })(),
-  parameters: {
-    controls: false,
-  },
-};
-
-export const HookForwardBackward: Story = {
-  tags: ['isHidden'],
-  render: () =>
-    (() => {
-      const {
-        handleDateChange,
-        hasLeftHoverEffect,
-        hasRightHoverEffect,
-        selectedDates,
-      } = useCalendarForwardBackward([
-        new Date('10-7-1993').getTime(),
-        new Date('10-10-1993').getTime(),
-      ]);
+      const { hasLeftHoverEffect, hasRightHoverEffect, range, handleNewDate } =
+        useCalendarRange([
+          new Date(1993, 10, 7).getTime(),
+          new Date(1993, 10, 10).getTime(),
+        ]);
 
       return (
         <Calendar
           monthDate={new Date('10-10-1993')}
-          selectedDates={selectedDates}
+          range={range}
           hasLeftHoverEffect={hasLeftHoverEffect}
           hasRightHoverEffect={hasRightHoverEffect}
-          onClick={handleDateChange}
+          onClick={handleNewDate}
         />
       );
     })(),
-  parameters: {
-    controls: false,
-  },
 };

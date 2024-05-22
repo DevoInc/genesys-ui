@@ -27,7 +27,7 @@ import type { ITime } from '../../declarations';
 import { toTimestamp } from '../../helpers';
 import { GIAngleLeft, GIAngleRight } from '@devoinc/genesys-icons';
 
-export interface MonthProps
+export interface MonthSelectorProps
   extends Pick<ITime, 'maxDate' | 'minDate'>,
     Pick<IGlobalAttrs, 'id'>,
     IStyledOverloadCss,
@@ -36,6 +36,11 @@ export interface MonthProps
   ariaLabelInput: IGlobalAriaAttrs['aria-label'];
   /** The aria-label attribute for the icon button to go to the next month. */
   ariaLabelNextMonth?: string;
+  i18n?: {
+    nextMonth: string;
+    prevMonth: string;
+    inputMonth: string;
+  };
   /** The aria-label attribute for the icon button to go to the previous month. */
   ariaLabelPrevMonth?: string;
   /** Show the prev month button. */
@@ -54,10 +59,12 @@ export interface MonthProps
   value?: Date | number;
 }
 
-export const MonthSelector: React.FC<MonthProps> = ({
-  ariaLabelInput = 'Select the month',
-  ariaLabelNextMonth = 'Go to the next month',
-  ariaLabelPrevMonth = 'Go to the previous month',
+export const MonthSelector: React.FC<MonthSelectorProps> = ({
+  i18n = {
+    nextMonth: 'Go to the next month',
+    prevMonth: 'Go to the previous month',
+    inputMonth: 'Select the month',
+  },
   as,
   hasPrevMonthButton = true,
   hasNextMonthButton = true,
@@ -110,14 +117,14 @@ export const MonthSelector: React.FC<MonthProps> = ({
     <HFlex as={as} justifyContent="space-between" spacing="0" styles={styles}>
       {hasPrevMonthButton && (
         <IconButton
-          aria-label={ariaLabelPrevMonth}
+          aria-label={i18n.prevMonth}
           colorScheme={'quiet'}
           hasBoldIcon
           icon={<GIAngleLeft />}
           onClick={onClickPrevMonth}
           size={size}
           state={stateMin}
-          tooltip={ariaLabelPrevMonth}
+          tooltip={i18n.prevMonth}
         />
       )}
       <Flex.Item
@@ -149,7 +156,7 @@ export const MonthSelector: React.FC<MonthProps> = ({
         width={'16.8rem'}
       >
         <InputControl
-          aria-label={ariaLabelInput}
+          aria-label={i18n.inputMonth}
           id={id}
           max={max}
           min={min}
@@ -161,14 +168,14 @@ export const MonthSelector: React.FC<MonthProps> = ({
       </Flex.Item>
       {hasNextMonthButton && (
         <IconButton
-          aria-label={ariaLabelNextMonth}
+          aria-label={i18n.nextMonth}
           colorScheme={'quiet'}
           hasBoldIcon
           icon={<GIAngleRight />}
           onClick={onClickNextMonth}
           size={size}
           state={stateMax}
-          tooltip={ariaLabelNextMonth}
+          tooltip={i18n.nextMonth}
         />
       )}
     </HFlex>

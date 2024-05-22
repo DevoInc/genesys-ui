@@ -20,9 +20,8 @@ export const getMonthDays = (dt: Date | number) =>
 /**
  * Get the the blank days until the first of the month
  */
-export const getPrevDays = (dt: Date | number, weekStart: number) => {
-  return startOfMonth(dt).getDay() - weekStart;
-};
+export const getPrevDays = (dt: Date | number, weekStart = 0) =>
+  startOfMonth(dt).getDay() - weekStart;
 
 interface ClassConditionParams {
   from: number;

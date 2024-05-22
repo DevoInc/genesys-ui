@@ -7,5 +7,5 @@ import { compareDesc } from 'date-fns';
  *   range then a new range is returned with the given date as the first point
  * - In other cases the the given date is used as second point for the range
  */
-export const forwardBehavior = (range: (number | Date)[], dt: number | Date) =>
+export const singleBehavior = (range: (number | Date)[], dt: number | Date) =>
   range.length === 0 || compareDesc(dt, range[0]) > 0 ? [dt] : [range[0], dt];

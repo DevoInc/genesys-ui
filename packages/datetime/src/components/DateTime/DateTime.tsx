@@ -24,10 +24,13 @@ import type { ITime } from '../../declarations';
 import { Calendar, type CalendarProps } from '../Calendar';
 import { Time } from '../Time';
 import { MonthSelector } from '../MonthSelector';
-import { parseDateNoFuture } from '../Calendar/defaults';
+import { parseAllDates } from '../../parsers';
 
 export interface DateTimeProps
-  extends Pick<CalendarProps, 'monthDate' | 'parseDate' | 'weekDays' | 'weekStart'>,
+  extends Pick<
+      CalendarProps,
+      'monthDate' | 'parseDate' | 'weekDays' | 'weekStart'
+    >,
     Pick<ITime, 'hasMillis' | 'hasSeconds' | 'hasTime' | 'maxDate' | 'minDate'>,
     IStyledOverloadCss,
     IStyledPolymorphic {
@@ -52,7 +55,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
   hasTime = true,
   onChange,
   styles,
-  parseDate = parseDateNoFuture,
+  parseDate = parseAllDates,
   weekDays,
   weekStart,
   onChangeMonthDate = () => null,
@@ -94,7 +97,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
             }),
           );
         }}
-        selectedDates={[value]}
+        range={[value]}
         parseDate={parseDate}
         weekDays={weekDays}
         weekStart={weekStart}

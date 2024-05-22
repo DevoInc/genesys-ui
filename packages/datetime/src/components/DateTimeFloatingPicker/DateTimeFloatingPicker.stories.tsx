@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { isWeekend } from 'date-fns';
 
 import { DateTimeFloatingPicker } from './DateTimeFloatingPicker';
-import { parseDate as parseDateHelper } from '../../helpers';
+import { parseStrDate } from '../../parsers';
 
 const meta: Meta<typeof DateTimeFloatingPicker> = {
   title: 'Components/Datetime/DateTimeFloatingPicker',
@@ -28,16 +28,7 @@ export const Base: Story = {
           value={value}
           onChange={(ts) => {
             setValue(ts);
-            console.log(`date changed ${ts}`);
-          }}
-          onApply={() => {
-            console.log('onApply');
-          }}
-          onCancel={() => {
-            console.log('onCancel');
-          }}
-          onClose={() => {
-            console.log('onClose');
+            console.log({ onChange: ts });
           }}
         />
       );
@@ -83,7 +74,7 @@ export const CustomParser: Story = {
           value={value}
           autoApply={true}
           parseDate={(str: string) => {
-            const result = parseDateHelper(str);
+            const result = parseStrDate(str);
             if (result.isValid) {
               const check = !isWeekend(result.value);
               if (!check) {

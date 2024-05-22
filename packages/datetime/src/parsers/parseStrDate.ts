@@ -8,7 +8,7 @@ import type { IParseResult } from '../declarations';
  *   ['yyyy-MM-dd HH:mm:ss'].
  * @returns An object containing information about the parsed date.
  */
-export const parseDate = (
+export const parseStrDate = (
   dateStr: string,
   validFormats: string[] = ['yyyy-MM-dd HH:mm:ss'],
 ): IParseResult => {

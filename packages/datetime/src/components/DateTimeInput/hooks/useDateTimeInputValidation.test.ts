@@ -12,11 +12,11 @@ describe('useDateTimeInputValidation', () => {
         onChange: fn,
         reprDate: (num) => String(num),
         parseDate: (str) => {
-          const result = parseInt(str);
-          const isValid = !isNaN(result);
+          const res = parseInt(str);
+          const isValid = !isNaN(res);
           return {
             isValid,
-            value: result,
+            value: res,
             errors: !isValid ? ['error message'] : [],
           };
         },
@@ -61,11 +61,11 @@ describe('useDateTimeInputValidation', () => {
         onChange: fn,
         reprDate: (num) => String(num),
         parseDate: (str) => {
-          const result = Number(str);
-          const isValid = !isNaN(result) && result >= 0;
+          const res = Number(str);
+          const isValid = !isNaN(res) && res >= 0;
           return {
             isValid,
-            value: result,
+            value: res,
             errors: !isValid ? ['error message'] : [],
           };
         },

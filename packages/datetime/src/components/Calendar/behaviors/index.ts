@@ -1,2 +1,2 @@
-export * from './forwardBehavior';
-export * from './forwardBackwardsBehavior';
+export * from './singleBehavior';
+export * from './rangeBehavior';

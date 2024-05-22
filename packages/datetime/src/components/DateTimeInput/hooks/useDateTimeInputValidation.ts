@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import type { IParseResult } from '../../declarations';
+import type { IParseResult } from '../../../declarations';
 
 export const useDateTimeInputValidation = ({
   value,
@@ -12,8 +12,16 @@ export const useDateTimeInputValidation = ({
   onChange: (value: Date | number) => void;
   reprDate: (value: Date | number) => string;
   parseDate: (str: string) => IParseResult;
-}) => {
-  const [{ inputValue, errors }, setState] = React.useState(() => {
+}): {
+  inputValue: string;
+  inputOnChange: (str: string) => void;
+  errors: string[];
+  updateValue: (value: Date | number) => void;
+} => {
+  const [{ inputValue, errors }, setState] = React.useState<{
+    inputValue: string;
+    errors: string[];
+  }>(() => {
     const valueStr = reprDate(value);
     const result = parseDate(valueStr);
     return { inputValue: valueStr, errors: result.errors };

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { addMonths, set, subMonths } from 'date-fns';
+import { addMonths, subMonths } from 'date-fns';
 
-export const useDateTime = ({ value: outterValue }) => {
-  const [value, setValue] = React.useState<Date | number>(outterValue);
+export const useDateTime = (initialValue: number | Date) => {
+  const [value, setValue] = React.useState(initialValue);
 
   const onClickNextMonth = React.useCallback(() => {
     setValue((prev) => addMonths(prev, 1).getTime());

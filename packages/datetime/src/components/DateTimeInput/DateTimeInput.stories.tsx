@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { DateTimeInput } from './DateTimeInput';
-import { useDateTimeInputValidation } from './useDateTimeInputValidation';
-import { formatDate, parseDate } from '../../helpers';
+import { useDateTimeInputValidation } from './hooks';
+import { formatDate } from '../../helpers';
+import { parseStrDate } from '../../parsers';
 
 const meta: Meta<typeof DateTimeInput> = {
   title: 'Components/Datetime/DateTimeInput',
@@ -16,24 +17,22 @@ type Story = StoryObj<typeof DateTimeInput>;
 export const Base: Story = {
   render: (args) =>
     ((props) => {
-      const [value, setValue] = React.useState(new Date().getTime());
+      const [value, setValue] = React.useState<number | Date>(new Date());
       const { inputValue, inputOnChange, errors } = useDateTimeInputValidation({
         value,
         onChange: setValue,
         reprDate: (ts: number) => formatDate(ts),
-        parseDate,
+        parseDate: parseStrDate,
       });
 
       return (
-        <div style={{ width: '400px' }}>
-          <DateTimeInput
-            {...props}
-            value={inputValue}
-            onChange={inputOnChange}
-            helper={errors.length > 0 ? errors[0] : "I'm the helper"}
-            status={errors.length > 0 ? 'error' : 'base'}
-          />
-        </div>
+        <DateTimeInput
+          {...props}
+          value={inputValue}
+          onChange={inputOnChange}
+          helper={errors.length > 0 ? errors[0] : "I'm the helper"}
+          status={errors.length > 0 ? 'error' : 'base'}
+        />
       );
     })(args),
   args: {

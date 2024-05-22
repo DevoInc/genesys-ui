@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 
-import { forwardBehavior } from './forwardBehavior';
+import { singleBehavior } from './singleBehavior';
 
 const HOUR = 60 * 60 * 1000;
 const now = new Date().getTime();
@@ -20,6 +20,6 @@ describe('forwardBehavior', () => {
     ];
 
   test.each(cases)('%s', (_title, range, dt, expected) => {
-    expect(forwardBehavior(range, dt)).toEqual(expected);
+    expect(singleBehavior(range, dt)).toEqual(expected);
   });
 });

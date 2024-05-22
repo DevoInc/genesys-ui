@@ -8,10 +8,8 @@ import {
   VFlex,
 } from '@devoinc/genesys-ui';
 
-import {
-  formatDate as formatDateHelper,
-  parseDate as parseDateHelper,
-} from '../../helpers';
+import { formatDate as formatDateHelper } from '../../helpers';
+import { parseStrDate } from '../../parsers';
 import { DateTime, type DateTimeProps } from '../DateTime';
 import {
   DateTimeInput,
@@ -25,7 +23,7 @@ export interface DateTimePickerProps
       DateTimeProps,
       | 'ariaLabelMonth'
       | 'ariaLabelTime'
-      | 'dateForMonth'
+      | 'monthDate'
       | 'hasMillis'
       | 'hasSeconds'
       | 'hasTime'
@@ -53,27 +51,29 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   formatDate = formatDateHelper,
   id,
   onChange = () => null,
-  parseDate = parseDateHelper,
+  parseDate = parseStrDate,
   value,
   helper,
   ariaLabelMonth,
   ariaLabelTime,
-  dateForMonth,
+  monthDate: initialMonthDate,
   weekDays,
   autoFocus,
   placeholder,
   size,
   label,
 }) => {
-  console.log({ 'cmp-value-before': new Date(value) });
+  const [monthDate, setMonthDate] = React.useState(initialMonthDate);
   const { inputValue, inputOnChange, errors, updateValue } =
     useDateTimeInputValidation({
       value,
-      onChange,
+      onChange: (dt) => {
+        setMonthDate(dt);
+        onChange(dt);
+      },
       reprDate: formatDate,
       parseDate,
     });
-  console.log({ 'cmp-value-after': new Date(value) });
 
   return (
     <VFlex alignItems={'stretch'}>
@@ -92,7 +92,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
       <DateTime
         ariaLabelMonth={ariaLabelMonth}
         ariaLabelTime={ariaLabelTime}
-        dateForMonth={dateForMonth}
+        monthDate={monthDate}
         weekDays={weekDays}
         hasMillis={hasMillis}
         hasSeconds={hasSeconds}
@@ -100,6 +100,9 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
         onChange={(dt: Date | number) => {
           updateValue(dt);
           onChange(dt);
+        }}
+        onChangeMonthDate={(dt) => {
+          setMonthDate(dt);
         }}
         parseDate={(dt: Date | number) => parseDate(formatDate(dt))}
         value={value}

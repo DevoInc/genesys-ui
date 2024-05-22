@@ -12,9 +12,9 @@ import {
 } from '@devoinc/genesys-ui';
 import type { IParseResult } from '../../declarations';
 import { toTimestamp } from '../../helpers';
+import { parseAllDates } from '../../parsers';
 import { Cell, type CellProps } from './components';
-import { parseDateAll } from './defaults';
-import { rotateWeekDays, WEEK_DAYS } from './weekDays';
+import { rotateWeekDays, WEEK_DAYS } from '../../helpers';
 
 export interface CalendarProps
   extends Pick<CellProps, 'onClick' | 'onMouseEnter' | 'onMouseLeave'>,
@@ -37,7 +37,7 @@ export interface CalendarProps
    * One of `number` or `Date`. */
   hoverDay?: Date | number;
   /** Selected range days. */
-  selectedDates?: (Date | number)[];
+  range?: (number | Date)[];
   /** Parse date for selectable dates.  */
   parseDate?: (dt: Date | number) => IParseResult;
   /** Days of the week to show in the calendar. The first day of the week is Monday. */
@@ -53,8 +53,8 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
   onClick,
   onMouseEnter,
   onMouseLeave,
-  selectedDates = [],
-  parseDate = parseDateAll,
+  range = [],
+  parseDate = parseAllDates,
   weekDays = WEEK_DAYS,
   weekStart = 0,
   disableHoverDay = false,
@@ -125,12 +125,12 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
         ))}
       {parseDays({
         dates: getMonthDays(monthDate),
-        from: getTime(selectedDates[0] ?? 0),
+        from: getTime(range[0] ?? 0),
         hasLeftHoverEffect,
         hasRightHoverEffect,
         hover: hoverDay,
         lastDayOfMonth,
-        to: getTime(selectedDates[1] ?? selectedDates[0] ?? 0),
+        to: getTime(range[1] ?? range[0] ?? 0),
         parseDate,
       }).map((day) => (
         <Cell

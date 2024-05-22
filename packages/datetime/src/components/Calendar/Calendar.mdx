@@ -24,7 +24,7 @@ The Calendar use `date-fns` internally for date operations.
 
 The Calendar has several main concepts as props:
 
-- `selectedDates`: Array of dates (Date | number), that create the both versions
+- `range`: Array of dates (Date | number), that create the both versions
   of Calendar one for a single day, two for a range.
 - `monthDate`: This is the date for the month that is showed (could be different
   from the selected dates).
@@ -78,20 +78,20 @@ Each hook returns an object with values that can be passed to the Calendar compo
 <Source
   code={`
 {
-  selectedDates, // selectedDates Calendar property
+  range, // range Calendar property
+  onRangeChange, // onClick handler Calendar property
   hasLeftHoverEffect, // hasLeftHoverEffect Calendar property
   hasRightHoverEffect, // hasRightHoverEffect Calendar property
-  handleDateChange, // onClick handler Calendar property
 }
 `}
 />
 
-### Single Day Hook
+### Single Hook
 
 Defines a single day selection in the calendar.
 Accepts a timestamp with the default day selected.
 
-<Canvas of={Stories.HookSingleDay} />
+<Canvas of={Stories.SingleHook} />
 
 #### Parameters
 
@@ -105,70 +105,32 @@ Accepts a timestamp with the default day selected.
 
 <Source
 code={`
-import { useCalendarSingleDay } from '@devoinc/genesys-ui-datetime';
+import { useCalendarSingle } from '@devoinc/genesys-ui-datetime';
 
 const {
-  handleDateChange,
+  range,
+  onRangeChange,
   hasLeftHoverEffect,
   hasRightHoverEffect,
-  selectedDates,
-} = useCalendarSingleDay([day]);
+} = useCalendarSingle([day]);
+
+<Calendar
+  range={range}
+  hasLeftHoverEffect={hasLeftHoverEffect}
+  hasRightHoverEffect={hasRightHoverEffect}
+  onClick={onRangeChange}
 `}
 />
 
-### Forward Hook
+### Range Hook
 
-Defines a way to select a range of days in which the range can only be expanded forward.
-Once the range has been selected, the range can only be expanded forward by selecting cells.
-If the cell selection is between the range, the end day of the range will be changed.
+Defines a way to select a range of days in which the range can be expanded
+either forward or backward. Once the range has been selected, to expand the
+range it must be done in a cell opposite the last selection. If the cell
+selection is between the range, the end day of the range will be changed.
 Otherwise, the range of days to be selected will be restarted.
 
-<Canvas of={Stories.HookForward} />
-
-#### Parameters
-
-<Source
-  code={`
-[
-  from, // Initial day of the range
-  to, // Final day of the range
-]
-`}
-/>
-
-#### Usage
-
-<Source
-code={`import { useCalendarForward } from '@devoinc/genesys-ui-datetime';
-
-const {
-  handleDateChange,
-  hasLeftHoverEffect,
-  hasRightHoverEffect,
-  selectedDates
-} = useCalendarForward([from, to]);
-`}
-/>
-
-#### Helper
-
-If you would like to build your own hooks you could use:
-
-<Source
-code={`import { forwardBehavior } from '@devoinc/genesys-ui-datetime';
-
-const newRange = forwardBehavior([from, to], newDate: number | Date);
-`}
-/>
-
-### Forward Backward Hook
-
-Defines a way to select a range of days in which the range can be expanded either forward or backward.
-Once the range has been selected, to expand the range it must be done in a cell opposite the last selection.
-If the cell selection is between the range, the end day of the range will be changed.
-Otherwise, the range of days to be selected will be restarted.
-
-<Canvas of={Stories.HookForwardBackward} />
+<Canvas of={Stories.RangeHook} />
 
 #### Parameters
 
@@ -186,7 +148,7 @@ initialBehavior: 'forward' | 'backward'
 
 <Source
 code={`
-import { useCalendarForwardBackward } from '@devoinc/genesys-ui-datetime';
+import { useCalendarRange } from '@devoinc/genesys-ui-datetime';
 
 const {
   handleDateChange,
@@ -202,12 +164,14 @@ const {
 If you would like to build your own hooks you could use:
 
 <Source
-code={`import { forwardBackwardBehavior } from '@devoinc/genesys-ui-datetime';
+code={`import { rangeBehavior } from '@devoinc/genesys-ui-datetime';
 
-const newRange = forwardBackwardBehavior(
-  [from, to],
+const newRange = rangeBehavior(
+  [
+    from: number | Date,
+    to: number | Date
+  ],
   newDate: number | Date,
-  reverse: boolean
 );
 `}
 />
