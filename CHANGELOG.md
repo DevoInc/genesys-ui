@@ -1,5 +1,32 @@
 # Changelog
 
+## [11.0.0](https://github.com/DevoInc/genesys-ui/compare/v10.1.0...v11.0.0) (2024-05-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* Now you have to use the Drawer component instead of the FloatPanel one, but anyway the interface is exactly the same.
+* upgrade styled-components 6
+* externalized DateTime[Range]Input to hooks
+
+### Features
+
+* externalized DateTime[Range]Input to hooks ([80c9e73](https://github.com/DevoInc/genesys-ui/commit/80c9e736b7731e33b38069290c1910f7902dff0e))
+* FloatPanel renamed to Drawer. ([4575be2](https://github.com/DevoInc/genesys-ui/commit/4575be28c6de264bb1cd9e12a25ebc4f4cbd75dc))
+* improvements for SplitLayout and its stories ([c54a25b](https://github.com/DevoInc/genesys-ui/commit/c54a25b02a7666c22f676e6d53dd79f4ff0aab77))
+* new KeyValue and Typography components created and minor adjustments for Badge. ([a99b913](https://github.com/DevoInc/genesys-ui/commit/a99b9132b483e95680c83ac75a8bf126741160de))
+* QUV-2275 Transform the Avatar into an img instead of a span with background-image. ([63578ca](https://github.com/DevoInc/genesys-ui/commit/63578cab49eb663638f380c119d5dbb5320a1ac9))
+* QUV-2318 applied original styles to new SpiltLayout component. ([97b7205](https://github.com/DevoInc/genesys-ui/commit/97b7205f1047b0583b15a13a34fb5d39e4afb277))
+* removed cases from every story, added 'data-' attributes to each interactive component and installed remark-gfm to render correctly the tables in mdx. ([6558c0c](https://github.com/DevoInc/genesys-ui/commit/6558c0ce41c9442f7ab72caf239fc73df8188601))
+* style adjustments for sidebar menu after updating storybook and use of Thumbnail instead of a styled component in Avatar. ([28dd997](https://github.com/DevoInc/genesys-ui/commit/28dd997e68855181bef03bcc70bd2363d34bfa22))
+* upgrade styled-components 6 ([9d1df81](https://github.com/DevoInc/genesys-ui/commit/9d1df81dbb53243e5029d96741cd9709ff922db5))
+
+
+### Bug Fixes
+
+* **FieldCombiner:** QUV-2224 Wrong behaviour in FieldCombiner component ([193f64b](https://github.com/DevoInc/genesys-ui/commit/193f64b0acd3932a08f41bd8602cb7b2e014555e))
+* panel footer rendering children container only if they exist. ([4d3bed8](https://github.com/DevoInc/genesys-ui/commit/4d3bed8c784a2c52aa8026bb3428c158fb509d0d))
+
 ## [10.1.0](https://github.com/DevoInc/genesys-ui/compare/v10.0.0...v10.1.0) (2024-05-07)
 
 
