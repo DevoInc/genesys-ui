@@ -1,6 +1,4 @@
-import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-vite';
-import { mergeConfig } from 'vite';
 import remarkGfm from 'remark-gfm';
 
 const config: StorybookConfig = {
@@ -12,14 +10,12 @@ const config: StorybookConfig = {
     '../packages/*/stories/**/*.mdx',
   ],
   framework: {
-    name: getAbsolutePath('@storybook/react-vite'),
+    name: '@storybook/react-vite',
     options: {},
   },
   addons: [
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-links'),
-    getAbsolutePath('@storybook/addon-a11y'),
-    getAbsolutePath('@storybook/preset-scss'),
+    '@storybook/addon-links',
+    '@storybook/addon-actions',
     {
       name: '@storybook/addon-docs',
       options: {
@@ -30,8 +26,13 @@ const config: StorybookConfig = {
         },
       },
     },
+    '@storybook/addon-controls',
+    '@storybook/addon-a11y',
+    '@storybook/addon-themes',
+    '@storybook/preset-scss',
   ],
   async viteFinal(config) {
+    const { mergeConfig } = await import('vite');
     // Merge custom configuration into the default config
     return mergeConfig(config, {
       // Add dependencies to pre-optimization
@@ -40,7 +41,6 @@ const config: StorybookConfig = {
           '@storybook/theming',
           '@storybook/components',
           '@devoinc/genesys-brand-devo',
-          '@storybook/addon-essentials/docs/mdx-react-shim',
           '@storybook/blocks',
           '@devoinc/genesys-ui',
           '@devoinc/genesys-ui-datetime',
@@ -48,6 +48,7 @@ const config: StorybookConfig = {
           '@storybook/addon-actions',
           '@storybook/addon-docs',
           '@storybook/addon-docs/blocks',
+          '@storybook/addon-themes',
           'styled-components',
           'lodash',
           '@devoinc/genesys-icons',
@@ -99,7 +100,3 @@ const config: StorybookConfig = {
 };
 
 export default config;
-
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, 'package.json')));
-}
