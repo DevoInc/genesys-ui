@@ -15,7 +15,7 @@ export interface VFlexProps
 }
 
 const InternalVFlex: React.FC<VFlexProps> = ({
-  alignItems = 'flex-start',
+  alignItems,
   children,
   childrenFlex,
   childrenFitFullHeight = false,
@@ -26,7 +26,7 @@ const InternalVFlex: React.FC<VFlexProps> = ({
 }) => (
   <Flex
     {...flexProps}
-    alignItems={childrenFitFullWidth ? 'stretch' : alignItems}
+    alignItems={alignItems || childrenFitFullWidth ? 'stretch' : 'flex-start'}
     childrenFlex={childrenFlex || (childrenFitFullHeight ? '1' : undefined)}
     flexDirection="column"
     justifyContent={justifyContent}
