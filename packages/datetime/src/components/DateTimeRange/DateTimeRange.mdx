@@ -11,15 +11,54 @@ It is a composition of two `DateTime` components placed side by side.
 
 ## How to import
 
-<Source code={`import { DateTimeRange } from '@devo/genesys-ui-datetime';`} />
+<Source code={`import { DateTimeRange } from '@devoinc/genesys-ui-datetime';`} />
 
 ## Basic usage
 
 <Canvas of={Stories.Base} />
 
+## Preserving time
+
+<Canvas of={Stories.PreservingTime} />
+
+For preserve the time between range changes we can use the next hook
+
+<Source language="tsx" code={`
+import { DateTimeRange, useTimeRangePreserve } from '@devoinc/genesys-ui-datetime';
+
+export const ExampleDateTimeRange = () => {
+  const [value, setValue] = React.useState<(number | Date)[]>([]);
+  const [monthDate, setMonthDate] = React.useState<number | Date>(
+    new Date(),
+  );
+  const { onChangeRange } = useTimeRangePreserve(setValue);
+
+  return (
+    <DateTimeRange
+      {...args}
+      value={value}
+      onChange={onChangeRange}
+      monthDate={monthDate}
+      onChangeMonthDate={(dt) => {
+        setMonthDate(dt);
+      }}
+    />
+  );
+};
+`} />
+
+The hook `useTimeRangePreserve` return a callback that is aware of changes in
+the range from calendars or from time pickers and is modifying the final range
+result to give it to the state management of the upper layer.
+
+## With presets
+
+<Canvas of={Stories.WithPresets} />
+
 ## Related components
 
 - [DateTime](?path=/docs/components-datetime-datetime--docs)
+- [Presets](?path=/docs/components-datetime-presets--docs)
 
 ## Props
 

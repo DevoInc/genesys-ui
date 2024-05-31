@@ -1,17 +1,9 @@
 import * as React from 'react';
-import {
-  addMonths,
-  getHours,
-  getMilliseconds,
-  getMinutes,
-  getMonth,
-  getSeconds,
-  set,
-  startOfDay,
-  subMonths,
-} from 'date-fns';
+import { set, getYear, getMonth, getDate, addMonths } from 'date-fns';
 
 import {
+  Box,
+  Flex,
   HFlex,
   VFlex,
   type IGlobalAriaAttrs,
@@ -22,32 +14,26 @@ import {
 
 import { Presets, type PresetsProps } from '../Presets';
 import {
-  Month,
-  type MonthProps,
-  Time,
-  type TimeProps,
-} from '../DateTime/components';
-import type { TPresetRange } from '../Presets/declarations';
-import { toTimestamp } from '../../helpers/time';
+  MonthSelector,
+  useMonthSelectorRange,
+  type MonthSelectorProps,
+} from '../MonthSelector';
+import { Time, type TimeProps } from '../Time';
+import { Calendar, type CalendarProps, rangeBehavior } from '../Calendar';
+import { parseAllDates } from '../../parsers';
+import { TDateTimeRangeSource } from './declarations';
 import {
-  Calendar,
-  type CalendarProps,
-  useCalendarForwardBackwardBehavior,
-} from '../Calendar';
+  DATE_TIME_RANGE_SOURCE_CAL_LEFT,
+  DATE_TIME_RANGE_SOURCE_CAL_RIGHT,
+  DATE_TIME_RANGE_SOURCE_TIME_LEFT,
+  DATE_TIME_RANGE_SOURCE_TIME_RIGHT,
+} from './constants';
+import { TPreset } from '../Presets/declarations';
 
 export interface DateTimeRangeProps
-  extends Pick<
-      CalendarProps,
-      | 'dateForMonth'
-      | 'invalidDates'
-      | 'maxDate'
-      | 'minDate'
-      | 'selectedDates'
-      | 'validateDate'
-      | 'weekDays'
-    >,
+  extends Pick<CalendarProps, 'monthDate' | 'parseDate' | 'value' | 'weekDays'>,
     Pick<TimeProps, 'hasMillis' | 'hasSeconds'>,
-    Pick<MonthProps, 'ariaLabelNextMonth' | 'ariaLabelPrevMonth'>,
+    Pick<MonthSelectorProps, 'ariaLabelNextMonth' | 'ariaLabelPrevMonth'>,
     Pick<PresetsProps, 'presets'>,
     Required<Pick<IGlobalAttrs, 'id'>>,
     IStyledOverloadCss,
@@ -63,13 +49,16 @@ export interface DateTimeRangeProps
   /**  Show the time input HTML element. */
   hasTime?: boolean;
   /** Function called when clicking a cell or editing a time input HTML.  */
-  onChange?: ({ from, to }: { from: number; to: number }) => void;
-  /** Function called when clicking an option from preset date list.  */
-  onChangePresetDate?: PresetsProps['onChange'];
+  onChange?: (value: (number | Date)[], source: TDateTimeRangeSource) => void;
   /** Placeholder for the presets list */
   presetsPlaceholder?: PresetsProps['placeholder'];
+  /** Function called when the displayed month is changed (the left one). One
+   * of `number` or `Date`. */
+  onChangeMonthDate?: (monthDate: number | Date) => void;
+  /** Function called when clicking an option from preset date list.  */
+  onChangePreset?: (preset: string) => void;
   /** Selected preset */
-  selectedPreset?: PresetsProps['value'];
+  preset?: string;
 }
 
 export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
@@ -80,163 +69,29 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   ariaLabelToMonth = 'To month',
   ariaLabelToTime = 'To time',
   as,
-  dateForMonth: monthToShow,
+  monthDate = new Date(),
+  onChangeMonthDate,
   hasMillis = false,
   hasSeconds = true,
   hasTime = true,
   id,
-  invalidDates,
-  maxDate,
-  minDate,
   onChange,
-  onChangePresetDate,
-  selectedDates: defaultValue = { from: null, to: null },
-  validateDate,
+  value = [new Date(), new Date()],
+  parseDate = parseAllDates,
   weekDays,
   presetsPlaceholder,
   presets,
-  selectedPreset,
+  preset,
+  onChangePreset = () => null,
   styles,
 }) => {
-  const value = React.useMemo(
-    () => ({
-      from: toTimestamp(defaultValue?.from),
-      to: toTimestamp(defaultValue?.to),
-    }),
-    [defaultValue?.from, defaultValue?.to],
-  );
-
-  const timeValue = React.useMemo(
-    () => ({
-      from: value?.from || startOfDay(new Date()).getTime(),
-      to: value?.to || startOfDay(new Date()).getTime(),
-    }),
-    [value?.from, value?.to],
-  );
-
-  const dateForMonth = React.useMemo(() => {
-    return toTimestamp(monthToShow);
-  }, [monthToShow]);
-
-  const initialPreviewDate = React.useMemo(
-    () => ({
-      from:
-        value.from && value.to
-          ? value.to
-            ? set(subMonths(value.to, 1), {
-                hours: getHours(value.from),
-                minutes: getMinutes(value.from),
-                seconds: getSeconds(value.from),
-                milliseconds: getMilliseconds(value.from),
-              }).getTime()
-            : value.from
-          : dateForMonth
-            ? subMonths(dateForMonth, 1).getTime()
-            : subMonths(new Date(), 1).getTime(),
-      to: value.to
-        ? value.to
-        : dateForMonth
-          ? dateForMonth
-          : new Date().getTime(),
-    }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
-  );
-
-  const [previewDate, setPreviewDate] = React.useState(initialPreviewDate);
-  const [firstTime, setFirsTime] = React.useState(true);
-  const [hoverDay, setHoverDay] = React.useState<number>(null);
-
-  React.useEffect(() => {
-    setPreviewDate({
-      from: initialPreviewDate.from,
-      to: initialPreviewDate.to,
-    });
-  }, [initialPreviewDate.from, initialPreviewDate.to]);
-
   const {
-    selectedDates,
-    hasLeftHoverEffect,
-    hasRightHoverEffect,
-    handleDateChange,
-  } = useCalendarForwardBackwardBehavior({ ...value });
-
-  React.useEffect(() => {
-    if (!firstTime) {
-      const tmpFrom = value.from
-        ? new Date(value.from)
-        : startOfDay(new Date());
-      const tmpTo = value.to ? new Date(value.to) : startOfDay(new Date());
-
-      onChange?.({
-        from: set(selectedDates.from, {
-          hours: tmpFrom.getHours(),
-          minutes: tmpFrom.getMinutes(),
-          seconds: tmpFrom.getSeconds(),
-          milliseconds: tmpFrom.getMilliseconds(),
-        }).getTime(),
-        to:
-          selectedDates.to &&
-          set(selectedDates.to, {
-            hours: tmpTo.getHours(),
-            minutes: tmpTo.getMinutes(),
-            seconds: tmpTo.getSeconds(),
-            milliseconds: tmpTo.getMilliseconds(),
-          }).getTime(),
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedDates.from, selectedDates.to, firstTime, onChange]);
-
-  const onClickPrevMonthCallback = React.useCallback(() => {
-    setPreviewDate((oldDate) => ({
-      from: subMonths(new Date(oldDate.from), 1).getTime(),
-      to: subMonths(new Date(oldDate.to), 1).getTime(),
-    }));
-  }, []);
-
-  const onClickNextMonthCallback = React.useCallback(() => {
-    setPreviewDate((oldDate) => ({
-      from: addMonths(new Date(oldDate.from), 1).getTime(),
-      to: addMonths(new Date(oldDate.to), 1).getTime(),
-    }));
-  }, []);
-
-  const onChangeMonthFrom = React.useCallback((ts: number) => {
-    setPreviewDate({
-      from: ts,
-      to: set(ts, { month: getMonth(ts) + 1 }).getTime(),
-    });
-  }, []);
-
-  const onChangeMonthTo = React.useCallback((ts: number) => {
-    setPreviewDate({
-      from: set(ts, { month: getMonth(ts) - 1 }).getTime(),
-      to: ts,
-    });
-  }, []);
-
-  const onChangeTimeFrom = React.useCallback(
-    (ts: number) => {
-      onChange({ from: ts, to: value.to });
-    },
-    [onChange, value.to],
-  );
-
-  const onChangeTimeTo = React.useCallback(
-    (ts: number) => {
-      onChange({ from: value.from, to: ts });
-    },
-    [onChange, value.from],
-  );
-
-  const onChangePresetDateCallback = React.useCallback(
-    (preset: TPresetRange) => {
-      setFirsTime(true);
-      onChangePresetDate(preset);
-    },
-    [onChangePresetDate],
-  );
+    onClickNextMonth,
+    onClickPrevMonth,
+    onChangeMonthLeft,
+    onChangeMonthRight,
+  } = useMonthSelectorRange({ monthDate, onChangeMonthDate });
+  const [hoverDay, setHoverDay] = React.useState<number>(null);
 
   const onMouseEnterCallback = React.useCallback((ts: number) => {
     setHoverDay(ts);
@@ -246,111 +101,151 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
     setHoverDay(null);
   }, []);
 
-  const onClickCalendarCallback = React.useCallback(
-    (ts: number) => {
-      handleDateChange(ts);
-      setFirsTime(false);
-    },
-    [handleDateChange],
-  );
-
   return (
     <HFlex as={as} alignItems={'flex-start'} styles={styles}>
       <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
-        <Month
+        <MonthSelector
           ariaLabelInput={ariaLabelFromMonth}
           ariaLabelPrevMonth={ariaLabelPrevMonth}
           hasNextMonthButton={false}
           id={`${id}-month-from`}
-          maxDate={maxDate}
-          minDate={minDate}
-          onChange={onChangeMonthFrom}
-          onClickPrevMonth={onClickPrevMonthCallback}
+          onChange={onChangeMonthLeft}
+          onClickPrevMonth={onClickPrevMonth}
           size="sm"
-          value={previewDate.from}
+          value={monthDate}
         />
-        <Calendar
-          dateForMonth={previewDate.from}
-          disableHoverDay={true}
-          hasLeftHoverEffect={hasLeftHoverEffect}
-          hasRightHoverEffect={hasRightHoverEffect}
-          hoverDay={hoverDay}
-          invalidDates={invalidDates}
-          maxDate={maxDate}
-          minDate={minDate}
-          onClick={onClickCalendarCallback}
-          onMouseEnter={onMouseEnterCallback}
-          onMouseLeave={onMouseLeaveCallback}
-          selectedDates={selectedDates}
-          validateDate={validateDate}
-          weekDays={weekDays}
-        />
-        {hasTime && (
-          <Time
-            aria-label={ariaLabelFromTime}
-            hasMillis={hasMillis}
-            hasSeconds={hasSeconds}
-            id={`${id}-time-from`}
-            maxDate={maxDate}
-            minDate={minDate}
-            onChange={onChangeTimeFrom}
-            size="sm"
-            value={timeValue.from}
+        <Box height={'165px'}>
+          <Calendar
+            monthDate={monthDate}
+            disableHoverDay={true}
+            onClick={(dt) => {
+              onChange(
+                rangeBehavior(
+                  value,
+                  set(dt, {
+                    hours: 0,
+                    minutes: 0,
+                    seconds: 0,
+                    milliseconds: 0,
+                  }),
+                ),
+                DATE_TIME_RANGE_SOURCE_CAL_LEFT,
+              );
+            }}
+            value={value}
+            hasLeftHoverEffect={value.length === 1}
+            hasRightHoverEffect={value.length === 1}
+            parseDate={parseDate}
+            weekDays={weekDays}
+            hoverDay={hoverDay}
+            onMouseEnter={onMouseEnterCallback}
+            onMouseLeave={onMouseLeaveCallback}
           />
+        </Box>
+        {hasTime && (
+          <Flex justifyContent={'flex-end'}>
+            <Time
+              aria-label={ariaLabelFromTime}
+              hasMillis={hasMillis}
+              hasSeconds={hasSeconds}
+              id={`${id}-time-from`}
+              onChange={(dt) => {
+                onChange(
+                  [
+                    set(dt, {
+                      year: getYear(value[0]),
+                      month: getMonth(value[0]),
+                      date: getDate(value[0]),
+                    }),
+                    value[1],
+                  ],
+                  DATE_TIME_RANGE_SOURCE_TIME_LEFT,
+                );
+              }}
+              size="sm"
+              value={value.length >= 2 ? value[0] : null}
+              disabled={value.length < 2}
+            />
+          </Flex>
         )}
       </VFlex>
       <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
-        <Month
+        <MonthSelector
           ariaLabelInput={ariaLabelToMonth}
           ariaLabelNextMonth={ariaLabelNextMonth}
           hasPrevMonthButton={false}
           id={`${id}-month-to`}
-          maxDate={maxDate}
-          minDate={minDate}
-          onChange={onChangeMonthTo}
-          onClickNextMonth={onClickNextMonthCallback}
+          onChange={onChangeMonthRight}
+          onClickNextMonth={onClickNextMonth}
           size="sm"
-          value={previewDate.to}
+          value={addMonths(monthDate, 1)}
         />
-        <Calendar
-          dateForMonth={previewDate.to}
-          disableHoverDay={true}
-          hasLeftHoverEffect={hasLeftHoverEffect}
-          hasRightHoverEffect={hasRightHoverEffect}
-          invalidDates={invalidDates}
-          hoverDay={hoverDay}
-          maxDate={maxDate}
-          minDate={minDate}
-          onClick={onClickCalendarCallback}
-          onMouseEnter={onMouseEnterCallback}
-          onMouseLeave={onMouseLeaveCallback}
-          selectedDates={selectedDates}
-          validateDate={validateDate}
-          weekDays={weekDays}
-        />
-        {hasTime && (
-          <Time
-            aria-label={ariaLabelToTime}
-            hasMillis={hasMillis}
-            hasSeconds={hasSeconds}
-            id={`${id}-time-to`}
-            maxDate={maxDate}
-            minDate={minDate}
-            onChange={onChangeTimeTo}
-            size="sm"
-            value={timeValue.to}
+        <Box height={'165px'}>
+          <Calendar
+            monthDate={addMonths(monthDate, 1)}
+            disableHoverDay={true}
+            onClick={(dt) => {
+              onChange(
+                rangeBehavior(
+                  value,
+                  set(dt, {
+                    hours: 23,
+                    minutes: 59,
+                    seconds: 59,
+                    milliseconds: 999,
+                  }),
+                ),
+                DATE_TIME_RANGE_SOURCE_CAL_RIGHT,
+              );
+            }}
+            value={value}
+            hasLeftHoverEffect={value.length === 1}
+            hasRightHoverEffect={value.length === 1}
+            parseDate={parseDate}
+            weekDays={weekDays}
+            hoverDay={hoverDay}
+            onMouseEnter={onMouseEnterCallback}
+            onMouseLeave={onMouseLeaveCallback}
           />
+        </Box>
+        {hasTime && (
+          <Flex>
+            <Time
+              aria-label={ariaLabelToTime}
+              hasMillis={hasMillis}
+              hasSeconds={hasSeconds}
+              id={`${id}-time-to`}
+              onChange={(dt) => {
+                onChange(
+                  [
+                    value[0],
+                    set(dt, {
+                      year: getYear(value[1]),
+                      month: getMonth(value[1]),
+                      date: getDate(value[1]),
+                    }),
+                  ],
+                  DATE_TIME_RANGE_SOURCE_TIME_RIGHT,
+                );
+              }}
+              size="sm"
+              value={value.length >= 2 ? value[1] : null}
+              disabled={value.length < 2}
+            />
+          </Flex>
         )}
       </VFlex>
       {presets && (
         <VFlex flex={'1 1 30%'} alignItems="stretch" minWidth="16rem">
           <Presets
-            value={selectedPreset}
+            value={preset}
             id={`${id}-presets`}
             maxMenuHeight={224}
             placeholder={presetsPlaceholder}
             presets={presets}
-            onChange={onChangePresetDateCallback}
+            onChange={(newPreset) => {
+              onChangePreset(newPreset);
+            }}
           />
         </VFlex>
       )}

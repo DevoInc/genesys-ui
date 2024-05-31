@@ -26,6 +26,7 @@ export interface TimeProps
   size?: TFieldSize;
   /** Initial value. One of `number` or `Date`. */
   value?: Date | number;
+  disabled?: boolean;
 }
 
 export const Time: React.FC<TimeProps> = ({
@@ -37,7 +38,8 @@ export const Time: React.FC<TimeProps> = ({
   onChange,
   size = 'md',
   styles,
-  value = new Date(),
+  value,
+  disabled = false,
 }) => {
   return (
     <Flex as={as} justifyContent="center" styles={styles}>
@@ -70,7 +72,12 @@ export const Time: React.FC<TimeProps> = ({
           size={size}
           step={hasSeconds ? 1 : null}
           type={'time'}
-          value={format(value, getFormatTimeStr(hasSeconds, hasMillis))}
+          value={
+            value === null || value === undefined
+              ? null
+              : format(value, getFormatTimeStr(hasSeconds, hasMillis))
+          }
+          disabled={disabled}
         />
       </Flex.Item>
     </Flex>

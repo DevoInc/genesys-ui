@@ -10,7 +10,8 @@ import {
   type PopoverProps,
 } from '@devoinc/genesys-ui';
 
-import { isManageableDate, parseDate, toTSorPreset } from '../../helpers';
+import { isManageableDate, toTSorPreset } from '../../helpers';
+import { parseStrDate } from '../../parsers';
 
 import type {
   ITime,
@@ -37,30 +38,20 @@ export interface DateTimeRangeFloatingPickerProps
       | 'ariaLabelPrevMonth'
       | 'ariaLabelToMonth'
       | 'ariaLabelToTime'
-      | 'dateForMonth'
-      | 'invalidDates'
+      | 'monthDate'
       | 'presets'
       | 'presetsPlaceholder'
-      | 'validateDate'
       | 'weekDays'
     >,
     Pick<
       DateTimeRangeInputProps,
-      | 'ariaLabelFrom'
-      | 'ariaLabelTo'
       | 'onRealTimeClick'
-      | 'parseExpression'
-      | 'placeholderFrom'
-      | 'placeholderTo'
       | 'realTime'
       | 'showCalendarIcon'
       | 'size'
-      | 'statusFrom'
-      | 'statusTo'
-      | 'helperFrom'
-      | 'helperTo'
+      | 'status'
+      | 'helper'
       | 'wide'
-      | 'dateFormats'
       | 'helper'
     >,
     ITime,
@@ -152,8 +143,8 @@ export const DateTimeRangeFloatingPicker: React.FC<
 
   const onInputsChangeCallback = React.useCallback(
     (range: TOnChangeRange) => {
-      const resultFrom = parseDate(range.from.str, dateFormats);
-      const resultTo = parseDate(range.from.str, dateFormats);
+      const resultFrom = parseStrDate(range.from.str, dateFormats);
+      const resultTo = parseStrDate(range.from.str, dateFormats);
 
       if (resultFrom.isValid && resultTo.isValid) {
         setCalendarValue({ from: resultFrom.value, to: resultTo.value });

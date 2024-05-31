@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IParseResult } from '../../declarations';
+import { IParseResult } from '../../../declarations';
 
 type Setter<T = string> = (arr: T[], index: number, newValue: T) => T[];
 const setter: Setter<string | number | string[]> = (arr, index, newValue) =>

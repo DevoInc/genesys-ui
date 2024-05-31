@@ -6,8 +6,9 @@ import * as Stories from './Presets.stories';
 
 # Presets
 
-Component used to display a list of preset date ranges that can be selected by the user.
-The preset date ranges can be organized into categories, with each category having a label and a list of preset ranges.
+Component used to display a list of presets intended to be used on date ranges
+that can be selected by the user. The preset date ranges can be organized into
+groups, with each group having a label.
 
 ## How to import
 
@@ -19,76 +20,52 @@ The preset date ranges can be organized into categories, with each category havi
 
 ## How to use
 
-The Presets component accepts a prop called `presets` shaped as an array of objects that defines the list of preset ranges that are displayed.
+The Presets component accepts a prop called `presets` shaped as an array of
+objects that defines the list of preset ranges that are displayed.
 
 The list can be either a one-level structure:
 
 <Source
   code={`
 [
-    {
-      value: {
-        from: 'now() - 30s',
-        to: 'now()',
-      },
-      label: 'Last 30 seconds',
-    },
-    {
-      value: {
-        from: 'now() - 1m',
-        to: 'now()',
-      },
-      label: 'Last minute',
-    },
+  { value: 'last-30-seconds', label: 'Last 30 seconds' },
+  { value: 'last-minute', label: 'Last minute' },
 ],
-
 `}
 />
 
-or multi-level if categories are required:
+Or multi-level if groups are required:
 
 <Source
   code={`
 [
-      {
-        label: 'Relative to',
-        options: [
-          {
-            value: {
-              from: 'now() - 30s',
-              to: 'now()',
-            },
-            label: 'Last 30 seconds',
-          },
-          {
-            value: {
-              from: 'now() - 1m',
-              to: 'now()',
-            },
-            label: 'Last minute',
-          },
-        ],
-      },
-      {
-        label: 'Snap to',
-        options: [
-          {
-            value: {
-              from: 'now() @ 1m',
-              to: 'now()',
-            },
-            label: 'Minute',
-          },
-
-        ],
-      },
-    ]
-
+  { label: 'Relative to' },
+  { value: 'last-30-seconds', label: 'Last 30 seconds' },
+  { value: 'last-minute', label: 'Last minute' },
+  { label: 'Snap to' },
+  { value: 'minute', label: 'Minute' },
+]
 `}
 />
 
-The Presets component also accepts a prop called `value` which is an object representing the currently selected date range.
-The value object has a `from` and a `to` property.
+The Presets component also accepts a prop called `value` which is an string
+representing the currently selected value.
+
+## Defaults
+
+There is a default presets list that you can use from
+
+<Source code={`import { defaultPresets } from '@devoinc/genesys-ui-datetime';`} />
+
+And there is also a map for a range for each one of the preset
+
+<Source code={`import { presetsMapToRanges } from '@devoinc/genesys-ui-datetime';`} />
+
+So you can do as in the next example
+
+<Canvas of={Stories.Default} />
+
+Also here you can see in action the prop `maxMenuHeight`.
 
 ## Props
 

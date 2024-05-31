@@ -1,4 +1,4 @@
-import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+import { Meta, Canvas, Story, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './RealTimeButton.stories';
 
@@ -6,8 +6,9 @@ import * as Stories from './RealTimeButton.stories';
 
 # RealTimeButton
 
-It's a component based in `IconButton` component which is used to activate/deactivate the real time state in contexts,
-as date time controls, widgets, panels... etc.
+It's a component based in `IconButton` component which is used to
+activate/deactivate the real time state in contexts, as date time controls,
+widgets, panels... etc.
 
 ## How to import
 
@@ -16,6 +17,20 @@ as date time controls, widgets, panels... etc.
 ## Basic usage
 
 <Canvas of={Stories.Base} />
+
+## States
+
+### Activated
+
+<Story of={Stories.Activated} />
+
+### Disabled
+
+<Story of={Stories.Disabled} />
+
+### Selected
+
+<Story of={Stories.Selected} />
 
 ## Props
 

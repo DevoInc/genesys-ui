@@ -23,7 +23,7 @@ import {
 import type { ITime } from '../../declarations';
 import { Calendar, type CalendarProps } from '../Calendar';
 import { Time } from '../Time';
-import { MonthSelector } from '../MonthSelector';
+import { MonthSelector, useMonthSelector } from '../MonthSelector';
 import { parseAllDates } from '../../parsers';
 
 export interface DateTimeProps
@@ -40,7 +40,8 @@ export interface DateTimeProps
   ariaLabelTime?: IGlobalAriaAttrs['aria-label'];
   /** Function called when clicking a cell or editing time input HTML.  */
   onChange?: (dt: Date | number) => void;
-  /** Initial value. One of `number` or `Date`. */
+  /** Function called when the displayed month is changed. One of `number` or
+   * `Date`. */
   onChangeMonthDate: (dt: Date | number) => void;
   value: Date | number;
 }
@@ -61,6 +62,8 @@ export const DateTime: React.FC<DateTimeProps> = ({
   onChangeMonthDate = () => null,
   value,
 }) => {
+  const { onChangeMonth, onClickNextMonth, onClickPrevMonth } =
+    useMonthSelector({ monthDate, onChangeMonthDate });
   const theme = useTheme();
   return (
     <VFlex
@@ -73,13 +76,9 @@ export const DateTime: React.FC<DateTimeProps> = ({
         ariaLabelInput={ariaLabelMonth}
         hasNextMonthButton
         hasPrevMonthButton
-        onChange={onChangeMonthDate}
-        onClickPrevMonth={() => {
-          onChangeMonthDate(subMonths(monthDate, 1).getTime());
-        }}
-        onClickNextMonth={() => {
-          onChangeMonthDate(addMonths(monthDate, 1).getTime());
-        }}
+        onChange={onChangeMonth}
+        onClickPrevMonth={onClickPrevMonth}
+        onClickNextMonth={onClickNextMonth}
         size="sm"
         value={monthDate}
       />
@@ -97,7 +96,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
             }),
           );
         }}
-        range={[value]}
+        value={[value]}
         parseDate={parseDate}
         weekDays={weekDays}
         weekStart={weekStart}

@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { DateTimeRangeInput } from './DateTimeRangeInput';
-import { useDateTimeRangeInputValidation } from './useDateTimeRangeInputValidation';
-import { formatDate, parseDate, validateRange } from '../../helpers';
+import { useDateTimeRangeInputValidation } from './hooks';
+import { formatDate, validateRange } from '../../helpers';
+import { parseStrDate } from '../../parsers';
 
 const meta: Meta<typeof DateTimeRangeInput> = {
   title: 'Components/Datetime/DateTimeRangeInput',
@@ -45,7 +46,7 @@ export const Base: Story = {
           value,
           onChange: setValue,
           reprDate: (ts: number) => formatDate(ts),
-          parseDate,
+          parseDate: parseStrDate,
         });
 
       return (
@@ -64,6 +65,7 @@ export const Base: Story = {
 };
 
 export const RangeValidation: Story = {
+  tags: ['isHidden'],
   render: (args) =>
     ((props) => {
       const [value, setValue] = React.useState([
@@ -76,7 +78,7 @@ export const RangeValidation: Story = {
           value,
           onChange: setValue,
           reprDate: (ts: number) => formatDate(ts),
-          parseDate,
+          parseDate: parseStrDate,
         });
 
       const isValidRange = validateRange(value);
@@ -98,56 +100,42 @@ export const RangeValidation: Story = {
   },
 };
 
-// export const UsingExpressions: Story = {
-//   render: (args) =>
-//     ((props) => {
-//       const [from, setFrom] = React.useState(props.from);
-//       const [to, setTo] = React.useState(props.to);
-//
-//       const onChangeCallback = React.useCallback(
-//         (range: {
-//           from: { value: number; str: string };
-//           to: { value: number; str: string };
-//         }) => {
-//           console.log('cambiado', range);
-//           if (range.from.str.includes('now') || range.to.str.includes('now')) {
-//             setFrom(range.from.str);
-//             setTo(range.to.str);
-//           } else {
-//             setFrom(range.from.value);
-//             setTo(range.to.value);
-//           }
-//         },
-//         [],
-//       );
-//
-//       return (
-//         <DateTimeRangeInput
-//           {...props}
-//           from={from}
-//           to={to}
-//           // onBlur={onBlurCallback}
-//           onChange={onChangeCallback}
-//         />
-//       );
-//     })(args),
-//   args: {
-//     from: '15m - now()',
-//     to: 'now()',
-//     parseExpression: (exp: string) => {
-//       if (exp.includes('now')) {
-//         return {
-//           isValid: true,
-//           value: new Date().getTime(),
-//           errors: [],
-//         };
-//       } else {
-//         return {
-//           isValid: false,
-//           value: null,
-//           errors: ['Invalid expression'],
-//         };
-//       }
-//     },
-//   },
-// };
+export const UsingExpressions: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => {
+      const [value, setValue] = React.useState(props.value);
+
+      return (
+        <DateTimeRangeInput
+          {...props}
+          value={value}
+          // onBlur={onBlurCallback}
+          onChange={(index: number, newValue: string) => {
+            const newRange = [...value];
+            newRange[index] = newValue;
+            setValue(newRange);
+          }}
+          status={value.every((val) => val.includes('now')) ? 'base' : 'error'}
+        />
+      );
+    })(args),
+  args: {
+    value: ['15m - now()', 'now()'],
+    // parseExpression: (exp: string) => {
+    //   if (exp.includes('now')) {
+    //     return {
+    //       isValid: true,
+    //       value: new Date().getTime(),
+    //       errors: [],
+    //     };
+    //   } else {
+    //     return {
+    //       isValid: false,
+    //       value: null,
+    //       errors: ['Invalid expression'],
+    //     };
+    //   }
+    // },
+  },
+};

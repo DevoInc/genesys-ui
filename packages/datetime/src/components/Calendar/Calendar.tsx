@@ -36,8 +36,8 @@ export interface CalendarProps
    * hoverDay, onMouseEnter and onMouseLeave properties for custom control.
    * One of `number` or `Date`. */
   hoverDay?: Date | number;
-  /** Selected range days. */
-  range?: (number | Date)[];
+  /** Selected range. */
+  value?: (number | Date)[];
   /** Parse date for selectable dates.  */
   parseDate?: (dt: Date | number) => IParseResult;
   /** Days of the week to show in the calendar. The first day of the week is Monday. */
@@ -53,7 +53,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
   onClick,
   onMouseEnter,
   onMouseLeave,
-  range = [],
+  value = [],
   parseDate = parseAllDates,
   weekDays = WEEK_DAYS,
   weekStart = 0,
@@ -125,12 +125,12 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
         ))}
       {parseDays({
         dates: getMonthDays(monthDate),
-        from: getTime(range[0] ?? 0),
+        from: getTime(value[0] ?? 0),
         hasLeftHoverEffect,
         hasRightHoverEffect,
         hover: hoverDay,
         lastDayOfMonth,
-        to: getTime(range[1] ?? range[0] ?? 0),
+        to: getTime(value[1] ?? value[0] ?? 0),
         parseDate,
       }).map((day) => (
         <Cell

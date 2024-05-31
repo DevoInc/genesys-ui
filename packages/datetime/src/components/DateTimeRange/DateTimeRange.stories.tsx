@@ -1,33 +1,13 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { subDays } from 'date-fns';
 
 import { DateTimeRange } from './DateTimeRange';
-import type { TTimestampRange } from '../../declarations';
+import { useTimeRangePreserve } from './hooks';
+import { defaultPresets } from '../Presets';
 
 const meta: Meta<typeof DateTimeRange> = {
   title: 'Components/Datetime/DateTimeRange',
   component: DateTimeRange,
-  args: {
-    ariaLabelFromMonth: 'from month',
-    ariaLabelFromTime: 'from time',
-    ariaLabelToMonth: 'to month',
-    ariaLabelToTime: 'to time',
-    dateForMonth: new Date().getTime(),
-    hasMillis: false,
-    hasSeconds: true,
-    hasTime: true,
-    id: 'story-demo',
-    onChange: (dates) => {
-      // eslint-disable-next-line no-console
-      console.log('new range ', new Date(dates.from), new Date(dates.to));
-    },
-    onChangePresetDate: (range) => {
-      // eslint-disable-next-line no-console
-      console.log('new preset ', range);
-    },
-    weekDays: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
-  },
 };
 
 export default meta;
@@ -36,23 +16,71 @@ type Story = StoryObj<typeof DateTimeRange>;
 export const Base: Story = {
   render: () =>
     ((args) => {
-      const [date, setDate] = React.useState({
-        from: subDays(new Date(), 5).getTime(),
-        to: new Date().getTime(),
-      });
-
-      const onChangeCallback = React.useCallback((range: TTimestampRange) => {
-        // eslint-disable-next-line no-console
-        console.log('new date', new Date(range.from), new Date(range.to));
-        setDate(range);
-      }, []);
+      const [value, setValue] = React.useState<(number | Date)[]>([]);
+      const [monthDate, setMonthDate] = React.useState<number | Date>(
+        new Date(),
+      );
 
       return (
         <DateTimeRange
           {...args}
-          selectedDates={date}
-          onChange={onChangeCallback}
+          value={value}
+          onChange={setValue}
+          monthDate={monthDate}
+          onChangeMonthDate={(dt) => {
+            setMonthDate(dt);
+          }}
         />
       );
     })(),
+};
+
+export const PreservingTime: Story = {
+  tags: ['isHidden'],
+  render: () =>
+    ((args) => {
+      const [value, setValue] = React.useState<(number | Date)[]>([]);
+      const [monthDate, setMonthDate] = React.useState<number | Date>(
+        new Date(),
+      );
+      const { onChangeRange } = useTimeRangePreserve(setValue);
+
+      return (
+        <DateTimeRange
+          {...args}
+          value={value}
+          onChange={onChangeRange}
+          monthDate={monthDate}
+          onChangeMonthDate={(dt) => {
+            setMonthDate(dt);
+          }}
+        />
+      );
+    })(),
+};
+
+export const WithPresets: Story = {
+  tags: ['isHidden'],
+  render: () => {
+    return ((args) => {
+      const [value, setValue] = React.useState<(number | Date)[]>([]);
+      const [monthDate, setMonthDate] = React.useState<number | Date>(
+        new Date(),
+      );
+      const { onChangeRange } = useTimeRangePreserve(setValue);
+
+      return (
+        <DateTimeRange
+          {...args}
+          value={value}
+          onChange={onChangeRange}
+          monthDate={monthDate}
+          onChangeMonthDate={(dt) => {
+            setMonthDate(dt);
+          }}
+          presets={defaultPresets}
+        />
+      );
+    })();
+  },
 };

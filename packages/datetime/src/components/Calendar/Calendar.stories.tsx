@@ -18,7 +18,7 @@ const now = new Date();
 export const Base: Story = {
   args: {
     monthDate: now,
-    range: [addDays(startOfMonth(now), 10), subDays(endOfMonth(now), 10)],
+    value: [addDays(startOfMonth(now), 10), subDays(endOfMonth(now), 10)],
   },
 };
 
@@ -28,7 +28,7 @@ export const Single: Story = {
     monthDate: now,
     hasLeftHoverEffect: false,
     hasRightHoverEffect: false,
-    range: [now],
+    value: [now],
   },
 };
 
@@ -51,7 +51,7 @@ export const SingleHook: Story = {
           hasLeftHoverEffect={false}
           hasRightHoverEffect={false}
           monthDate={new Date(2022, 0)}
-          range={range}
+          value={range}
           onClick={handleNewDate}
         />
       );
@@ -71,7 +71,7 @@ export const RangeHook: Story = {
       return (
         <Calendar
           monthDate={new Date('10-10-1993')}
-          range={range}
+          value={range}
           hasLeftHoverEffect={hasLeftHoverEffect}
           hasRightHoverEffect={hasRightHoverEffect}
           onClick={handleNewDate}
