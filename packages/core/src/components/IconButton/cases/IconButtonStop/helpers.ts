@@ -34,7 +34,7 @@ export const iconButtonStopMixin = ({
     size !== 'xs' &&
     css`
       &::after {
-        ${pseudoElementMixin};
+        ${pseudoElementMixin()};
         top: auto;
         left: auto;
         width: ${circle};
