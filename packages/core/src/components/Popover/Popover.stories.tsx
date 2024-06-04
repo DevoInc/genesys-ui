@@ -261,81 +261,82 @@ export const AccessToStateFromContent: Story = {
 
 export const OnHover: Story = {
   name: 'On hover',
-  render: () => {
-    const popoverId = 'on-hover';
+  render: () =>
+    (() => {
+      const popoverId = 'on-hover';
 
-    const setOpenedMenu = React.useRef(null);
-    const setOpenedSubMenu = React.useRef(null);
+      const setOpenedMenu = React.useRef(null);
+      const setOpenedSubMenu = React.useRef(null);
 
-    const closeSubmenu = React.useCallback(() => {
-      setOpenedSubMenu.current?.(false);
-    }, [setOpenedSubMenu.current]);
+      const closeSubmenu = React.useCallback(() => {
+        setOpenedSubMenu.current?.(false);
+      }, [setOpenedSubMenu.current]);
 
-    return (
-      <Popover id={popoverId} placement="bottom-start">
-        {({ toggle, ref, isOpened, setOpened }) => {
-          setOpenedMenu.current = setOpened;
-          return (
-            <Button
-              aria-controls={popoverId}
-              aria-expanded={isOpened}
-              aria-haspopup={true}
-              onClick={toggle}
-              ref={ref}
-              state={isOpened ? 'expanded' : undefined}
-            >
-              TriggerElement
-            </Button>
-          );
-        }}
-        <Popover.Panel>
-          <Menu>
-            <Menu.Item label="Option 1" onMouseOver={closeSubmenu} />
-            <Menu.Item label="Option 2" onMouseOver={closeSubmenu} />
-            <Menu.Item label="Option 3" onMouseOver={closeSubmenu} />
-            <Popover
-              id={`${popoverId}-1`}
-              appendTo={null}
-              modifiers={[
-                {
-                  name: 'offset',
-                  options: {
-                    offset: [0, 4],
-                  },
-                },
-              ]}
-            >
-              {({ toggle, ref, isOpened, setOpened }) => {
-                setOpenedSubMenu.current = setOpened;
-                return (
-                  <Menu.Item
-                    aria-controls={`${popoverId}-1`}
-                    aria-expanded={isOpened}
-                    aria-haspopup={true}
-                    expandable
-                    label="Option 4"
-                    onClick={() => setOpenedSubMenu.current(!isOpened)}
-                    onMouseOver={() => setOpenedSubMenu.current(true)}
-                    ref={ref}
-                    state={isOpened ? 'expanded' : undefined}
-                  />
-                );
-              }}
-              <Popover.Panel
-                onMouseLeave={() => setOpenedSubMenu.current(false)}
+      return (
+        <Popover id={popoverId} placement="bottom-start">
+          {({ toggle, ref, isOpened, setOpened }) => {
+            setOpenedMenu.current = setOpened;
+            return (
+              <Button
+                aria-controls={popoverId}
+                aria-expanded={isOpened}
+                aria-haspopup={true}
+                onClick={toggle}
+                ref={ref}
+                state={isOpened ? 'expanded' : undefined}
               >
-                <Menu>
-                  <Menu.Item label="Option 4.1" />
-                  <Menu.Item label="Option 4.2" />
-                  <Menu.Item label="Option 4.3" />
-                </Menu>
-              </Popover.Panel>
-            </Popover>
-          </Menu>
-        </Popover.Panel>
-      </Popover>
-    );
-  },
+                TriggerElement
+              </Button>
+            );
+          }}
+          <Popover.Panel>
+            <Menu>
+              <Menu.Item label="Option 1" onMouseOver={closeSubmenu} />
+              <Menu.Item label="Option 2" onMouseOver={closeSubmenu} />
+              <Menu.Item label="Option 3" onMouseOver={closeSubmenu} />
+              <Popover
+                id={`${popoverId}-1`}
+                appendTo={null}
+                modifiers={[
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [0, 4],
+                    },
+                  },
+                ]}
+              >
+                {({ ref, isOpened, setOpened }) => {
+                  setOpenedSubMenu.current = setOpened;
+                  return (
+                    <Menu.Item
+                      aria-controls={`${popoverId}-1`}
+                      aria-expanded={isOpened}
+                      aria-haspopup={true}
+                      expandable
+                      label="Option 4"
+                      onClick={() => setOpenedSubMenu.current(!isOpened)}
+                      onMouseOver={() => setOpenedSubMenu.current(true)}
+                      ref={ref}
+                      state={isOpened ? 'expanded' : undefined}
+                    />
+                  );
+                }}
+                <Popover.Panel
+                  onMouseLeave={() => setOpenedSubMenu.current(false)}
+                >
+                  <Menu>
+                    <Menu.Item label="Option 4.1" />
+                    <Menu.Item label="Option 4.2" />
+                    <Menu.Item label="Option 4.3" />
+                  </Menu>
+                </Popover.Panel>
+              </Popover>
+            </Menu>
+          </Popover.Panel>
+        </Popover>
+      );
+    })(),
 };
 
 export const ComplexPanel: Story = {

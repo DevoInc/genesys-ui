@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Button, IconButtonRemove, Tabs, Tag } from '..';
+import { Button, IconButtonRemove, Tabs } from '..';
 import { GIChart, GICheckThick } from '@devoinc/genesys-icons';
 import { useTabsAccessibility } from './hooks';
 
@@ -88,7 +88,13 @@ export const WithAsideContent: Story = {
             />
           </Tabs.List>
           <Tabs.Aside marginLeft="0">
-            <Tag colorScheme="info" size="sm" text="Aside content" />
+            <IconButtonRemove
+              onClick={(e) => {
+                e?.stopPropagation();
+              }}
+              size="sm"
+              tooltip="Close all tabs"
+            />
           </Tabs.Aside>
         </Tabs>
       );
