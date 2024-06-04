@@ -1,5 +1,13 @@
 # Changelog
 
+## [11.0.1](https://github.com/DevoInc/genesys-ui/compare/v11.0.0...v11.0.1) (2024-06-04)
+
+
+### Bug Fixes
+
+* changed priority of prop values in VFlex ([5ad3bc7](https://github.com/DevoInc/genesys-ui/commit/5ad3bc77385b99246ae5dc0433e637c00fd5ac69))
+* fixed specific styles for IconButtonStop. ([66fe796](https://github.com/DevoInc/genesys-ui/commit/66fe796992452b098497f0d8438f37061960a1b3))
+
 ## [11.0.0](https://github.com/DevoInc/genesys-ui/compare/v10.1.0...v11.0.0) (2024-05-27)
 
 
