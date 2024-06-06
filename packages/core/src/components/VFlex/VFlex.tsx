@@ -26,7 +26,7 @@ const InternalVFlex: React.FC<VFlexProps> = ({
 }) => (
   <Flex
     {...flexProps}
-    alignItems={alignItems || childrenFitFullWidth ? 'stretch' : 'flex-start'}
+    alignItems={alignItems || (childrenFitFullWidth ? 'stretch' : 'flex-start')}
     childrenFlex={childrenFlex || (childrenFitFullHeight ? '1' : undefined)}
     flexDirection="column"
     justifyContent={justifyContent}
