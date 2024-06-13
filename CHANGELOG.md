@@ -1,5 +1,7 @@
 # Changelog
 
+## [11.0.3](https://github.com/DevoInc/genesys-ui/compare/v11.0.2...v11.0.3) (2024-06-13)
+
 ## [11.0.2](https://github.com/DevoInc/genesys-ui/compare/v11.0.1...v11.0.2) (2024-06-06)
 
 
