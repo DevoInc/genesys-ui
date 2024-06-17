@@ -1,5 +1,14 @@
 # Changelog
 
+## [11.0.3](https://github.com/DevoInc/genesys-ui/compare/v11.0.2...v11.0.3) (2024-06-13)
+
+## [11.0.2](https://github.com/DevoInc/genesys-ui/compare/v11.0.1...v11.0.2) (2024-06-06)
+
+
+### Bug Fixes
+
+* fixed conditional structure in VFlex alignItems prop. ([14e006a](https://github.com/DevoInc/genesys-ui/commit/14e006aa0296d593dd5da2f97b8ffd8a4a9386fa))
+
 ## [11.0.1](https://github.com/DevoInc/genesys-ui/compare/v11.0.0...v11.0.1) (2024-06-04)
 
 

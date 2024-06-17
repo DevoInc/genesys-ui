@@ -25,6 +25,7 @@ export default defineConfig({
         'react',
         'react/jsx-runtime',
         'styled-components',
+        'lodash',
       ],
     },
   },
