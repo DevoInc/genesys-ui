@@ -1,18 +1,3 @@
-export type TTimestampRange = {
-  from: number;
-  to: number;
-};
-
-export type TPresetRange = {
-  from: string;
-  to: string;
-};
-
-export type TDateApplyValue = {
-  timestamp: TTimestampRange;
-  preset: TPresetRange;
-};
-
 export interface ITime {
   /** If hasTime, allow to show the milliseconds. */
   hasMillis?: boolean;

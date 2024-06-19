@@ -26,6 +26,7 @@ export interface TimeProps
   size?: TFieldSize;
   /** Initial value. One of `number` or `Date`. */
   value?: Date | number;
+  /** Diable the time field */
   disabled?: boolean;
 }
 
@@ -40,46 +41,47 @@ export const Time: React.FC<TimeProps> = ({
   styles,
   value,
   disabled = false,
-}) => {
-  return (
-    <Flex as={as} justifyContent="center" styles={styles}>
-      <Flex.Item flex="0 0 auto" minWidth="9.2rem">
-        <InputControl
-          aria-label={ariaLabel}
-          id={id}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            const target = event.target;
+}) => (
+  <Flex as={as} justifyContent="center" styles={styles}>
+    <Flex.Item
+      flex="0 0 auto"
+      minWidth={hasMillis ? '16rem' : hasSeconds ? '13rem' : '11rem'}
+    >
+      <InputControl
+        aria-label={ariaLabel}
+        id={id}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+          const target = event.target;
 
-            const currentValue = target.value.split(':');
+          const currentValue = target.value.split(':');
 
-            const time = {
-              hours: Number(currentValue[0]),
-              minutes: Number(currentValue[1]),
-              seconds: 0,
-              milliseconds: 0,
-            };
+          const time = {
+            hours: Number(currentValue[0]),
+            minutes: Number(currentValue[1]),
+            seconds: 0,
+            milliseconds: 0,
+          };
 
-            if (hasSeconds && currentValue[2]) {
-              const secs = currentValue[2].split('.');
-              time.seconds = Number(secs[0]);
-              if (hasMillis) {
-                time.milliseconds = Number(secs[1]);
-              }
+          if (hasSeconds && currentValue[2]) {
+            const secs = currentValue[2].split('.');
+            time.seconds = Number(secs[0]);
+            if (hasMillis) {
+              time.milliseconds = Number(secs[1]);
             }
-
-            onChange(set(new Date(value), time).getTime());
-          }}
-          size={size}
-          step={hasSeconds ? 1 : null}
-          type={'time'}
-          value={
-            value === null || value === undefined
-              ? null
-              : format(value, getFormatTimeStr(hasSeconds, hasMillis))
           }
-          disabled={disabled}
-        />
-      </Flex.Item>
-    </Flex>
-  );
-};
+
+          onChange(set(new Date(value), time).getTime());
+        }}
+        size={size}
+        step={hasSeconds ? 1 : null}
+        type={'time'}
+        value={
+          value === null || value === undefined
+            ? null
+            : format(value, getFormatTimeStr(hasSeconds, hasMillis))
+        }
+        disabled={disabled}
+      />
+    </Flex.Item>
+  </Flex>
+);

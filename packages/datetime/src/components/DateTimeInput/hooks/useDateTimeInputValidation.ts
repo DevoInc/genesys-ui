@@ -35,7 +35,7 @@ export const useDateTimeInputValidation = ({
     }
   };
 
-  const updateValue = (dt: Date | number) => {
+  const updateValue = (dt: number | Date) => {
     const valueStr = reprDate(dt);
     if (valueStr !== inputValue) {
       const result = parseDate(valueStr);

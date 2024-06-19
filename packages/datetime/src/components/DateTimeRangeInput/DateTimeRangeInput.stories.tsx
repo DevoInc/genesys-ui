@@ -36,7 +36,7 @@ type Story = StoryObj<typeof DateTimeRangeInput>;
 export const Base: Story = {
   render: (args) =>
     ((props) => {
-      const [value, setValue] = React.useState([
+      const [value, setValue] = React.useState<(string | number | Date)[]>([
         new Date().getTime() - 60 * 60 * 1000,
         new Date().getTime(),
       ]);

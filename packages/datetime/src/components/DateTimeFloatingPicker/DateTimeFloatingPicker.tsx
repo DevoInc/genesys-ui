@@ -94,8 +94,8 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
   size,
   label,
 }) => {
-  const [tmpValue, setTmpValue] = React.useState<Date | number>(value);
-  const [monthDate, setMonthDate] = React.useState<Date | number>(
+  const [tmpValue, setTmpValue] = React.useState<number | Date>(value);
+  const [monthDate, setMonthDate] = React.useState<number | Date>(
     initialMonthDate,
   );
 

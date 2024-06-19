@@ -13,15 +13,11 @@ import {
 } from '@devoinc/genesys-ui';
 
 import { Presets, type PresetsProps } from '../Presets';
-import {
-  MonthSelector,
-  useMonthSelectorRange,
-  type MonthSelectorProps,
-} from '../MonthSelector';
+import { MonthSelector, useMonthSelectorRange } from '../MonthSelector';
 import { Time, type TimeProps } from '../Time';
 import { Calendar, type CalendarProps, rangeBehavior } from '../Calendar';
 import { parseAllDates } from '../../parsers';
-import { TDateTimeRangeSource } from './declarations';
+import { TDateTimeRangeI18n, TDateTimeRangeSource } from './declarations';
 import {
   DATE_TIME_RANGE_SOURCE_CAL_LEFT,
   DATE_TIME_RANGE_SOURCE_CAL_RIGHT,
@@ -29,23 +25,18 @@ import {
   DATE_TIME_RANGE_SOURCE_TIME_RIGHT,
 } from './constants';
 import { TPreset } from '../Presets/declarations';
+import { defaultDateTimeRangeI18n } from './i18n';
+import { useMergeI18n } from '../../hooks';
 
 export interface DateTimeRangeProps
   extends Pick<CalendarProps, 'monthDate' | 'parseDate' | 'value' | 'weekDays'>,
     Pick<TimeProps, 'hasMillis' | 'hasSeconds'>,
-    Pick<MonthSelectorProps, 'ariaLabelNextMonth' | 'ariaLabelPrevMonth'>,
     Pick<PresetsProps, 'presets'>,
     Required<Pick<IGlobalAttrs, 'id'>>,
     IStyledOverloadCss,
     IStyledPolymorphic {
-  /** aria-label attribute for from month input. */
-  ariaLabelFromMonth?: IGlobalAriaAttrs['aria-label'];
-  /** aria-label attribute for from time input. */
-  ariaLabelFromTime?: IGlobalAriaAttrs['aria-label'];
-  /** aria-label attribute for to month input. */
-  ariaLabelToMonth?: IGlobalAriaAttrs['aria-label'];
-  /** aria-label attribute for to time input. */
-  ariaLabelToTime?: IGlobalAriaAttrs['aria-label'];
+  /** Internacionalization object */
+  i18n?: TDateTimeRangeI18n;
   /**  Show the time input HTML element. */
   hasTime?: boolean;
   /** Function called when clicking a cell or editing a time input HTML.  */
@@ -62,12 +53,7 @@ export interface DateTimeRangeProps
 }
 
 export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
-  ariaLabelNextMonth = 'Go to the next month',
-  ariaLabelPrevMonth = 'Go to the previous month',
-  ariaLabelFromMonth = 'From month',
-  ariaLabelFromTime = 'From time',
-  ariaLabelToMonth = 'To month',
-  ariaLabelToTime = 'To time',
+  i18n: userI18n = defaultDateTimeRangeI18n,
   as,
   monthDate = new Date(),
   onChangeMonthDate,
@@ -85,6 +71,10 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   onChangePreset = () => null,
   styles,
 }) => {
+  const i18n = useMergeI18n(
+    userI18n,
+    defaultDateTimeRangeI18n,
+  ) as TDateTimeRangeI18n;
   const {
     onClickNextMonth,
     onClickPrevMonth,
@@ -105,8 +95,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
     <HFlex as={as} alignItems={'flex-start'} styles={styles}>
       <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
         <MonthSelector
-          ariaLabelInput={ariaLabelFromMonth}
-          ariaLabelPrevMonth={ariaLabelPrevMonth}
+          i18n={i18n}
           hasNextMonthButton={false}
           id={`${id}-month-from`}
           onChange={onChangeMonthLeft}
@@ -145,7 +134,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
         {hasTime && (
           <Flex justifyContent={'flex-end'}>
             <Time
-              aria-label={ariaLabelFromTime}
+              aria-label={i18n.fromTime}
               hasMillis={hasMillis}
               hasSeconds={hasSeconds}
               id={`${id}-time-from`}
@@ -171,8 +160,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
       </VFlex>
       <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
         <MonthSelector
-          ariaLabelInput={ariaLabelToMonth}
-          ariaLabelNextMonth={ariaLabelNextMonth}
+          i18n={i18n}
           hasPrevMonthButton={false}
           id={`${id}-month-to`}
           onChange={onChangeMonthRight}
@@ -211,7 +199,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
         {hasTime && (
           <Flex>
             <Time
-              aria-label={ariaLabelToTime}
+              aria-label={i18n.toTime}
               hasMillis={hasMillis}
               hasSeconds={hasSeconds}
               id={`${id}-time-to`}

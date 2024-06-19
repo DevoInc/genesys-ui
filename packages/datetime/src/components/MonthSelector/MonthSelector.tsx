@@ -14,7 +14,6 @@ import {
 import {
   type TFieldSize,
   Flex,
-  type IGlobalAriaAttrs,
   type IGlobalAttrs,
   HFlex,
   IconButton,
@@ -22,27 +21,19 @@ import {
   type IStyledOverloadCss,
   type IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
-import type { ITime } from '../../declarations';
 
 import { toTimestamp } from '../../helpers';
 import { GIAngleLeft, GIAngleRight } from '@devoinc/genesys-icons';
+import { defaultMonthSelectorI18n } from './i18n';
+import { useMergeI18n } from '../../hooks';
+import { TMonthSelectorI18n } from './declarations';
 
 export interface MonthSelectorProps
-  extends Pick<ITime, 'maxDate' | 'minDate'>,
-    Pick<IGlobalAttrs, 'id'>,
+  extends Pick<IGlobalAttrs, 'id'>,
     IStyledOverloadCss,
     IStyledPolymorphic {
-  /** The aria-label attribute for the icon button to go to the next month. */
-  ariaLabelInput: IGlobalAriaAttrs['aria-label'];
-  /** The aria-label attribute for the icon button to go to the next month. */
-  ariaLabelNextMonth?: string;
-  i18n?: {
-    nextMonth: string;
-    prevMonth: string;
-    inputMonth: string;
-  };
-  /** The aria-label attribute for the icon button to go to the previous month. */
-  ariaLabelPrevMonth?: string;
+  /** Internacionalization object */
+  i18n?: TMonthSelectorI18n;
   /** Show the prev month button. */
   hasPrevMonthButton?: boolean;
   /** Show the next month button. */
@@ -57,20 +48,20 @@ export interface MonthSelectorProps
   size?: TFieldSize;
   /** Initial value. One of `number` or `Date`. */
   value?: Date | number;
+  /** The latest day to accept. One of `number` or `Date`. */
+  maxDate?: number | Date;
+  /** The earliest day to accept. One of `number` or `Date`. */
+  minDate?: number | Date;
 }
 
 export const MonthSelector: React.FC<MonthSelectorProps> = ({
-  i18n = {
-    nextMonth: 'Go to the next month',
-    prevMonth: 'Go to the previous month',
-    inputMonth: 'Select the month',
-  },
+  i18n: userI18n = defaultMonthSelectorI18n,
   as,
   hasPrevMonthButton = true,
   hasNextMonthButton = true,
   id,
-  maxDate: maxMonth,
-  minDate: minMonth = 0,
+  maxDate,
+  minDate,
   value: defaultValue = new Date().getTime(),
   onChange,
   onClickPrevMonth,
@@ -78,12 +69,11 @@ export const MonthSelector: React.FC<MonthSelectorProps> = ({
   size = 'md',
   styles,
 }) => {
+  const i18n = useMergeI18n(
+    userI18n,
+    defaultMonthSelectorI18n,
+  ) as TMonthSelectorI18n;
   const value = toTimestamp(defaultValue);
-  const minDate = toTimestamp(minMonth);
-  const maxDate = toTimestamp(maxMonth);
-
-  const min = minDate ? format(new Date(minDate), 'yyyy-MM') : null;
-  const max = maxDate ? format(new Date(maxDate), 'yyyy-MM') : null;
 
   const stateMax =
     startOfMonth(addMonths(maxDate, 1)) <=
@@ -158,8 +148,8 @@ export const MonthSelector: React.FC<MonthSelectorProps> = ({
         <InputControl
           aria-label={i18n.inputMonth}
           id={id}
-          max={max}
-          min={min}
+          max={maxDate ? format(maxDate, 'yyyy-MM') : null}
+          min={minDate ? format(minDate, 'yyyy-MM') : null}
           onChange={onChangeMonth}
           size={size}
           type={'month'}
