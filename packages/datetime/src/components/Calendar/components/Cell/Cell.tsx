@@ -1,12 +1,9 @@
 import * as React from 'react';
-import { format } from 'date-fns';
 import { AllHTMLAttributes } from 'react';
-
-import { IStyledOverloadCss } from '@devoinc/genesys-ui';
 
 import { StyledCalendarCell } from './StyledCalendarCell';
 
-export interface CellProps extends IStyledOverloadCss {
+export interface CellProps {
   /** classname to add */
   className?: AllHTMLAttributes<HTMLElement>['className'];
   /** Event fired when selected days change */
@@ -19,49 +16,52 @@ export interface CellProps extends IStyledOverloadCss {
   value?: number | string;
   /** Timestamp value */
   ts?: number;
+  tooltip?: string;
+  disabled?: boolean;
+  label: string;
 }
 
-const InternalCell: React.FC<CellProps> = ({
+export const Cell: React.FC<CellProps> = ({
   className,
   onClick,
   onMouseEnter,
   onMouseLeave,
   value,
-  styles,
   ts,
-}) => {
-  const disabled = className && className.includes('disabled');
-  const formattedDate = ts ? format(new Date(ts), 'PPPP') : null;
-  return (
-    <StyledCalendarCell
-      onClick={() => {
-        if (!disabled && onClick && value) {
-          onClick(ts);
-        }
-      }}
-      onMouseEnter={() => {
-        if (!disabled && onMouseEnter && value) {
-          onMouseEnter(ts);
-        }
-      }}
-      onMouseLeave={() => {
-        if (!disabled && onMouseLeave && value) {
-          onMouseLeave();
-        }
-      }}
-      aria-label={formattedDate}
-      aria-selected={className && className.includes('selected') ? true : null}
-      className={`day ${className}`}
-      css={styles}
-      data-cell={value}
-      data-ts={ts}
-      title={formattedDate}
-    >
-      {value && <span>{value}</span>}
-    </StyledCalendarCell>
-  );
-};
-
-export const Cell = React.memo(InternalCell);
-
-InternalCell.displayName = 'Cell';
+  tooltip,
+  disabled = false,
+  label,
+}) => (
+  <StyledCalendarCell
+    onClick={
+      !disabled && onClick && value
+        ? () => {
+            onClick(ts);
+          }
+        : null
+    }
+    onMouseEnter={
+      !disabled && onMouseEnter && value
+        ? () => {
+            onMouseEnter(ts);
+          }
+        : null
+    }
+    onMouseLeave={
+      !disabled && onMouseLeave && value
+        ? () => {
+            onMouseLeave();
+          }
+        : null
+    }
+    aria-label={label}
+    aria-selected={className && className.includes('selected') ? true : null}
+    aria-disabled={disabled}
+    className={`day ${className}`}
+    data-cell={value}
+    data-ts={ts}
+    title={tooltip}
+  >
+    <span>{value}</span>
+  </StyledCalendarCell>
+);

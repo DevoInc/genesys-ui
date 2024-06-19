@@ -22,7 +22,10 @@ export const StyledCalendarCell = styled.div`
   }
 
   &:not(:empty) {
-    cursor: pointer;
+    cursor: ${({ 'aria-disabled': ariaDisabled, className }) =>
+      ariaDisabled || className.includes('weekDayName')
+        ? 'inherit'
+        : 'pointer'};
   }
 
   /* Highlight & Shadow Area ------------------------------------------------ */
@@ -101,28 +104,28 @@ export const StyledCalendarCell = styled.div`
       color: inherit;
     }
 
-    &:hover,
-    &:focus,
-    &:active {
-      > span {
-        background-color: transparent;
-        color: ${({ theme }) => theme.cmp.calendar.week.color.text.base};
-        cursor: default;
+    &:not(.selected):not(.highlight):not(.box-shadow) {
+      &:hover,
+      &:focus,
+      &:active {
+        > span {
+          background-color: transparent;
+          color: ${({ theme }) => theme.cmp.calendar.week.color.text.base};
+          cursor: default;
+        }
       }
-    }
 
-    &::after {
-      display: none;
+      &::after {
+        display: none;
+      }
     }
   }
 
   /* Disabled days */
   /* -------------------------------------------------------------------- */
 
-  &.disabled {
-    opacity: 0.4;
-    pointer-events: none;
-  }
+  opacity: ${({ 'aria-disabled': ariaDisabled }) =>
+    ariaDisabled ? '0.4' : '1'};
 
   /* First and last selected days */
   /* -------------------------------------------------------------------- */

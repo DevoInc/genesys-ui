@@ -2,7 +2,8 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { getTime, lastDayOfMonth as lastDayOfMonthFNS } from 'date-fns';
 
-import { getMonthDays, getPrevDays, parseDays } from './ephemerides';
+import { getClassNameFromProperties, getDayProperties } from './day';
+import { getMonthDays, getPrevDays } from './month';
 import {
   type IGlobalAriaAttrs,
   type IGlobalAttrs,
@@ -13,8 +14,10 @@ import {
 import type { IParseResult } from '../../declarations';
 import { toTimestamp } from '../../helpers';
 import { parseAllDates } from '../../parsers';
-import { Cell, type CellProps } from './components';
+import { CalendarWeekDay, Cell, type CellProps } from './components';
 import { rotateWeekDays, WEEK_DAYS } from '../../helpers';
+import { defaultDateRepr } from './day';
+import { defaultErrorsRepr } from './errors';
 
 export interface CalendarProps
   extends Pick<CellProps, 'onClick' | 'onMouseEnter' | 'onMouseLeave'>,
@@ -38,12 +41,18 @@ export interface CalendarProps
   hoverDay?: Date | number;
   /** Selected range. */
   value?: (number | Date)[];
-  /** Parse date for selectable dates.  */
-  parseDate?: (dt: Date | number) => IParseResult;
   /** Days of the week to show in the calendar. The first day of the week is Monday. */
   weekDays?: [string, string, string, string, string, string, string];
   weekStart?: number;
   tz?: string;
+  /** Parse date for selectable dates.  */
+  parseDate?: (dt: Date | number) => IParseResult;
+  /** Max date allowed */
+  minDate?: number | Date;
+  /** Min date allowed */
+  maxDate?: number | Date;
+  dateRepr?: (ts: number) => string;
+  errorsRepr?: (errors: string[]) => string;
 }
 
 export const InternalCalendar: React.FC<CalendarProps> = ({
@@ -69,6 +78,8 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
   'aria-label': ariaLabel,
   'aria-labelledby': ariaLabelledby,
   as,
+  dateRepr = defaultDateRepr,
+  errorsRepr = defaultErrorsRepr,
 }) => {
   const theme = useTheme();
   const customHoverDay = toTimestamp(mouseHoverDay);
@@ -116,33 +127,46 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
       styles={styles}
     >
       {rotateWeekDays(weekDays, weekStart).map((day) => (
-        <Cell key={day} value={day} className="weekDayName" />
+        <CalendarWeekDay key={day} value={day} />
       ))}
       {Array(getPrevDays(monthDate, weekStart))
         .fill(null)
         .map((_, idx) => (
-          <Cell key={`prev${idx}`} />
+          <div key={`prev${idx}`} />
         ))}
-      {parseDays({
-        dates: getMonthDays(monthDate),
-        from: getTime(value[0] ?? 0),
-        hasLeftHoverEffect,
-        hasRightHoverEffect,
-        hover: hoverDay,
-        lastDayOfMonth,
-        to: getTime(value[1] ?? value[0] ?? 0),
-        parseDate,
-      }).map((day) => (
-        <Cell
-          key={`day${day.value}`}
-          className={`dayName ${day.classes}`}
-          onClick={onClick}
-          onMouseEnter={onMouseEnterCallback}
-          onMouseLeave={onMouseLeaveCallback}
-          ts={day.ts}
-          value={day.value}
-        />
-      ))}
+      {getMonthDays(monthDate)
+        .map(
+          getDayProperties(
+            getTime(value[0] ?? 0),
+            getTime(value[1] ?? value[0] ?? 0),
+            lastDayOfMonth,
+            parseDate,
+            hoverDay,
+            hasRightHoverEffect,
+            hasLeftHoverEffect,
+          ),
+        )
+        .map((dayProps) => {
+          const classes = getClassNameFromProperties(dayProps);
+          return (
+            <Cell
+              key={`day${dayProps.ts}`}
+              className={`dayName ${classes.join(' ')}`}
+              onClick={onClick}
+              onMouseEnter={onMouseEnterCallback}
+              onMouseLeave={onMouseLeaveCallback}
+              ts={dayProps.ts}
+              value={String(dayProps.monthDay)}
+              disabled={dayProps.isDisabled}
+              label={dateRepr(dayProps.ts)}
+              tooltip={
+                dayProps.isDisabled
+                  ? errorsRepr(dayProps.errors)
+                  : dateRepr(dayProps.ts)
+              }
+            />
+          );
+        })}
     </Grid>
   );
 };

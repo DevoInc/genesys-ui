@@ -1,6 +1,14 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { startOfMonth, addDays, subDays, endOfMonth } from 'date-fns';
+import {
+  startOfMonth,
+  addDays,
+  subDays,
+  endOfMonth,
+  isWeekend,
+  getDate,
+  set,
+} from 'date-fns';
 
 import { Calendar } from './Calendar';
 import { useCalendarRange, useCalendarSingle } from './hooks';
@@ -13,12 +21,14 @@ const meta: Meta<typeof Calendar> = {
 export default meta;
 type Story = StoryObj<typeof Calendar>;
 
-const now = new Date();
+const now = new Date(2024, 5, 1);
+const singleValue = [set(now, { date: 10 })];
+const rangeValue = [set(now, { date: 10 }), set(now, { date: 20 })];
 
 export const Base: Story = {
   args: {
     monthDate: now,
-    value: [addDays(startOfMonth(now), 10), subDays(endOfMonth(now), 10)],
+    value: rangeValue,
   },
 };
 
@@ -28,8 +38,38 @@ export const Single: Story = {
     monthDate: now,
     hasLeftHoverEffect: false,
     hasRightHoverEffect: false,
-    value: [now],
+    value: singleValue,
   },
+};
+
+export const ParseDate: Story = {
+  tags: ['isHidden'],
+  render: () =>
+    (() => {
+      const { hasLeftHoverEffect, hasRightHoverEffect, range, handleNewDate } =
+        useCalendarRange(rangeValue);
+      return (
+        <Calendar
+          monthDate={now}
+          value={range}
+          hasLeftHoverEffect={hasLeftHoverEffect}
+          hasRightHoverEffect={hasRightHoverEffect}
+          onClick={handleNewDate}
+          parseDate={(dt: Date | number) => {
+            const weekend = isWeekend(dt);
+            const even = getDate(dt) % 2 === 0;
+            return {
+              isValid: !weekend && !even,
+              value: dt,
+              errors: [
+                ...(weekend ? ['Is weekend'] : []),
+                ...(even ? ['Is even'] : []),
+              ],
+            };
+          }}
+        />
+      );
+    })(),
 };
 
 export const I18n: Story = {
@@ -37,6 +77,8 @@ export const I18n: Story = {
   args: {
     weekDays: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
     weekStart: 1,
+    monthDate: now,
+    value: singleValue,
   },
 };
 I18n.storyName = 'I18n';
@@ -45,12 +87,12 @@ export const SingleHook: Story = {
   tags: ['isHidden'],
   render: () =>
     (() => {
-      const { handleNewDate, range } = useCalendarSingle([new Date()]);
+      const { handleNewDate, range } = useCalendarSingle(singleValue);
       return (
         <Calendar
+          monthDate={now}
           hasLeftHoverEffect={false}
           hasRightHoverEffect={false}
-          monthDate={new Date(2022, 0)}
           value={range}
           onClick={handleNewDate}
         />
@@ -63,14 +105,11 @@ export const RangeHook: Story = {
   render: () =>
     (() => {
       const { hasLeftHoverEffect, hasRightHoverEffect, range, handleNewDate } =
-        useCalendarRange([
-          new Date(1993, 10, 7).getTime(),
-          new Date(1993, 10, 10).getTime(),
-        ]);
+        useCalendarRange(rangeValue);
 
       return (
         <Calendar
-          monthDate={new Date('10-10-1993')}
+          monthDate={now}
           value={range}
           hasLeftHoverEffect={hasLeftHoverEffect}
           hasRightHoverEffect={hasRightHoverEffect}
