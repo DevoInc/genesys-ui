@@ -2,5 +2,7 @@ blank_issues_enabled: true
 contact_links:
   - name: Need help with genesys-ui?
     url: https://devoinc.github.io/genesys-ui/?path=/docs/getting-started-overview--docs
+    about: Storybook view to review documentation.
   - name: You have solved your question, visit issues questions
     url: https://github.com/DevoInc/genesys-ui/issues?q=is%3Aopen+is%3Aissue+label%3Aquestion
+    about: List of open questions in the project.
