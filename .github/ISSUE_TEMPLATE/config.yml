@@ -1,0 +1,7 @@
+blank_issues_enabled: true
+contact_links:
+  - name: ⁉️ Need help with genesys-ui?
+    url: https://devoinc.github.io/genesys-ui/?path=/docs/getting-started-overview--docs
+  - name: You have solved your question, visit issues questions
+    url: https://github.com/DevoInc/genesys-ui/issues?q=is%3Aopen+is%3Aissue+label%3Aquestion
+    about: Please file an issue in the Node.js website repo.
