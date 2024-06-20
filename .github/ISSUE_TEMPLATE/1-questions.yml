@@ -11,14 +11,6 @@ body:
         If you have not solved your question, please describe it as best as possible.
   - type: textarea
     attributes:
-      label: What is the problem this feature will solve?
+      label: How can we help you?
     validations:
       required: true
-  - type: textarea
-    attributes:
-      label: What is the feature you are proposing to solve the problem?
-    validations:
-      required: true
-  - type: textarea
-    attributes:
-      label: What alternatives have you considered?
