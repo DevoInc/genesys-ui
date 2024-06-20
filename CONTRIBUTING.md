@@ -4,6 +4,14 @@ Please ensure you have read the [Code of Conduct](./CODE_OF_CONDUCT.md) before m
 
 ## How to contribute
 
+### Issues
+
+Add new issues:
+- [For doubts or questions about the project](https://github.com/DevoInc/genesys-ui/issues/new?assignees=&labels=question&projects=&template=1-questions.yml).
+- [Report bugs](https://github.com/DevoInc/genesys-ui/issues/new?assignees=&labels=bug%2Ctriage&projects=&template=2-bug-report.yml)
+- [New features](https://github.com/DevoInc/genesys-ui/issues/new?assignees=&labels=enhancement&projects=&template=3-feature-request.yml)
+
+### Pull requests
 Contributions are made by opening pull requests from a forked copy of the repo. See detailed instructions below.
 
 - Create a fork from the project on [Github](https://github.com/devoinc/genesys-ui).
