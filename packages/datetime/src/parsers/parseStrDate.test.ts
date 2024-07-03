@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 
-import { parseStrDate } from '../helpers/parseStrDateseStrDate';
+import { parseStrDate } from './parseStrDate';
 
 describe('helpers', () => {
   describe('dateParser', () => {

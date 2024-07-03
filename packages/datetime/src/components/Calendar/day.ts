@@ -1,7 +1,8 @@
 import { getDate, getTime, format } from 'date-fns';
 
 import type { TParseDate } from '../../declarations';
-import type { TConditionFunction, TDayProperties } from './declarations';
+import type { TCalendarI18n, TConditionFunction, TDayProperties } from './declarations';
+import { gt, lt } from '../../helpers';
 
 export const defaultDateRepr = (ts: number) => format(ts, 'PPPP');
 
@@ -99,18 +100,26 @@ export const getDayProperties =
     hover: number,
     hasRightHoverEffect: boolean,
     hasLeftHoverEffect: boolean,
+    minDate: number | Date = new Date(-8640000000000000),
+    maxDate: number | Date = new Date(8640000000000000),
+    i18n: TCalendarI18n,
   ) =>
   (day: Date): TDayProperties => {
     const ts = getTime(day);
     const monthDay = getDate(day);
     const result = parse(day);
+    const isValid = gt(ts, minDate) && lt(ts, maxDate) && result.isValid;
+    const errors =
+      lt(ts, minDate) || gt(ts, maxDate)
+        ? [i18n.outOfRange].concat(result.errors)
+        : result.errors;
 
     return {
       ts,
       monthDay,
-      isValid: result.isValid,
-      errors: result.errors,
-      isDisabled: !result.isValid,
+      isValid,
+      errors,
+      isDisabled: !isValid,
       isSelected: ts === from || ts === to,
       isFrom: ts === from && !!to,
       isTo: ts === to && !!from,

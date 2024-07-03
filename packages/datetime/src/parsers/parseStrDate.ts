@@ -15,11 +15,7 @@ export const parseStrDate = (
   for (const format of validFormats) {
     const parsedDate = parse(dateStr, format, new Date());
     if (isValid(parsedDate) && format.length === dateStr.trim().length) {
-      return {
-        isValid: true,
-        value: parsedDate.getTime(),
-        errors: [],
-      };
+      return { isValid: true, value: parsedDate.getTime(), errors: [] };
     }
   }
   return { isValid: false, value: null, errors: ['Invalid date'] };

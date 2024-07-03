@@ -18,6 +18,9 @@ import { CalendarWeekDay, Cell, type CellProps } from './components';
 import { rotateWeekDays, WEEK_DAYS } from '../../helpers';
 import { defaultDateRepr } from './day';
 import { defaultErrorsRepr } from './errors';
+import { TCalendarI18n } from './declarations';
+import { defaultCalendarI18n } from './i18n';
+import { useMergeI18n } from '../../hooks';
 
 export interface CalendarProps
   extends Pick<CellProps, 'onClick' | 'onMouseEnter' | 'onMouseLeave'>,
@@ -53,12 +56,15 @@ export interface CalendarProps
   maxDate?: number | Date;
   dateRepr?: (ts: number) => string;
   errorsRepr?: (errors: string[]) => string;
+  /** Internacionalization object */
+  i18n?: TCalendarI18n;
+  disabled?: boolean;
 }
 
 export const InternalCalendar: React.FC<CalendarProps> = ({
   monthDate = new Date(),
-  hasLeftHoverEffect = true,
-  hasRightHoverEffect = true,
+  hasLeftHoverEffect = false,
+  hasRightHoverEffect = false,
   onClick,
   onMouseEnter,
   onMouseLeave,
@@ -80,7 +86,11 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
   as,
   dateRepr = defaultDateRepr,
   errorsRepr = defaultErrorsRepr,
+  minDate,
+  maxDate,
+  i18n: userI18n = defaultCalendarI18n,
 }) => {
+  const i18n = useMergeI18n(userI18n, defaultCalendarI18n) as TCalendarI18n;
   const theme = useTheme();
   const customHoverDay = toTimestamp(mouseHoverDay);
   const lastDayOfMonth = lastDayOfMonthFNS(monthDate).getTime();
@@ -144,6 +154,9 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
             hoverDay,
             hasRightHoverEffect,
             hasLeftHoverEffect,
+            minDate,
+            maxDate,
+            i18n,
           ),
         )
         .map((dayProps) => {

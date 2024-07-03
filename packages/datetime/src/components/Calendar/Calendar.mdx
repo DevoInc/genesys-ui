@@ -52,12 +52,22 @@ This is an example of single selected date:
 
 <Canvas of={Stories.Single} />
 
-## parseDate
+## Disable days
+
+For disable days we can use two mechanism:
+- `parseDate` function that let us define the invalid days and a message for the
+  user to know why are these days invalid
+- or `minDate` and `maxDate` properties that let us define limits for the
+  selectable days
 
 Lets see an example with a `parseDate` that avoid the even days and the weekend
 days:
 
 <Canvas of={Stories.ParseDate} />
+
+And another example but with `minDate` and `maxDate`:
+
+<Canvas of={Stories.MinMaxDate} />
 
 ## Events
 

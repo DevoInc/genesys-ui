@@ -1,14 +1,6 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import {
-  startOfMonth,
-  addDays,
-  subDays,
-  endOfMonth,
-  isWeekend,
-  getDate,
-  set,
-} from 'date-fns';
+import { isWeekend, getDate, set } from 'date-fns';
 
 import { Calendar } from './Calendar';
 import { useCalendarRange, useCalendarSingle } from './hooks';
@@ -36,8 +28,6 @@ export const Single: Story = {
   tags: ['isHidden'],
   args: {
     monthDate: now,
-    hasLeftHoverEffect: false,
-    hasRightHoverEffect: false,
     value: singleValue,
   },
 };
@@ -67,6 +57,26 @@ export const ParseDate: Story = {
               ],
             };
           }}
+        />
+      );
+    })(),
+};
+
+export const MinMaxDate: Story = {
+  tags: ['isHidden'],
+  render: () =>
+    (() => {
+      const { hasLeftHoverEffect, hasRightHoverEffect, range, handleNewDate } =
+        useCalendarRange(rangeValue);
+      return (
+        <Calendar
+          monthDate={now}
+          value={range}
+          hasLeftHoverEffect={hasLeftHoverEffect}
+          hasRightHoverEffect={hasRightHoverEffect}
+          onClick={handleNewDate}
+          minDate={set(now, { date: 6 })}
+          maxDate={set(now, { date: 26 })}
         />
       );
     })(),
