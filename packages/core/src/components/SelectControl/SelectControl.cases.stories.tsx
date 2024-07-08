@@ -70,6 +70,33 @@ export const SingleOption: Story = {
     })(args),
 };
 
+export const SingleOptionWithReset: Story = {
+  name: 'Single selection with reset',
+  render: (args) =>
+    ((props) => {
+      const [value, setValue] = React.useState<SelectControlProps['value']>();
+      return (
+        <>
+          <SelectControl
+            {...props}
+            //menuIsOpen
+            onChange={(opt: TSelectOption) => {
+              setValue(opt.value)
+            }}
+            options={[
+              { value: 1, label: 'Option one' },
+              { value: 2, label: 'Option two' },
+              { value: 3, label: 'Option three' },
+              { value: 4, label: 'Option four' },
+            ]}
+            value={value}
+          />
+          <button onClick={() => setValue(undefined)}>RESET</button>
+        </>
+      );
+    })(args),
+};
+
 export const SingleOptionWithIcons: Story = {
   name: 'Single selection with option/value icons',
   render: (args) =>
