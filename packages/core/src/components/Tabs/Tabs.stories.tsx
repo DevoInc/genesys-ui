@@ -115,6 +115,7 @@ export const Closable: Story = {
       ]);
       useTabsAccessibility({ activeTab, tabsRef });
       //useClosableTabs({ activeTab, tabsRef, tabsLength: tabs.length });
+      // eslint-disable-next-line no-console
       console.log(activeTab);
       return (
         <Tabs aria-label="Demo tabs" contained>

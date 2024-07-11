@@ -35,6 +35,7 @@ export const Base: Story = {
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
+            // eslint-disable-next-line no-console
             console.log('Has changed', newValue);
           }}
         />
@@ -53,9 +54,11 @@ export const DefaultPresets: Story = {
           value={date}
           onApply={onApply(setDate)}
           onChange={(range) => {
+            // eslint-disable-next-line no-console
             console.log('something has changed', range);
           }}
           onRealTimeClick={(event) => {
+            // eslint-disable-next-line no-console
             console.log('RT button clicked', event);
           }}
           presets={defaultPresets}

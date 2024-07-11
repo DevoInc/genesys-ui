@@ -28,6 +28,7 @@ export const Base: Story = {
           value={value}
           onChange={(ts) => {
             setValue(ts);
+            // eslint-disable-next-line no-console
             console.log({ onChange: ts });
           }}
         />
@@ -52,6 +53,7 @@ export const WithoutButtons: Story = {
           autoApply={true}
           onChange={(ts) => {
             setValue(ts);
+            // eslint-disable-next-line no-console
             console.log(`OnChange ${ts}`);
           }}
         />
@@ -86,6 +88,7 @@ export const CustomParser: Story = {
           }}
           onChange={(ts) => {
             setValue(ts);
+            // eslint-disable-next-line no-console
             console.log(`OnChange ${ts}`);
           }}
         />

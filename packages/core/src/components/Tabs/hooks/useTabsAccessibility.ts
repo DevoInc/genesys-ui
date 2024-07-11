@@ -34,13 +34,11 @@ export const useTabsAccessibility = ({
     'rightarrow',
     () => {
       const items = tabsRef.current.querySelectorAll('[aria-selected]');
-      console.log(items);
       const nextEnabledTabItem = getEnabledItemByIncrement({
         items,
         currentItemIndex: activeTab,
         inc: 1,
       });
-      console.log(nextEnabledTabItem);
       nextEnabledTabItem.focus();
       nextEnabledTabItem.click();
     },
