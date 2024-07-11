@@ -29,7 +29,7 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "@devoinc/genesys-icons": "^4.0.0",
+    "@devoinc/genesys-icons": "4.x.x || 5.x.x",
     "@devoinc/genesys-ui": "^11.0.4",
     "@devoinc/genesys-ui-datetime": "^11.0.4",
     "@tanstack/react-virtual": "3.x.x",

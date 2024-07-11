@@ -6,7 +6,7 @@ import { create } from '@storybook/theming';
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 
 import { light, dark } from '@devoinc/genesys-brand-devo';
-import '@devoinc/genesys-base-styles/dist/styles.css';
+import '@devoinc/genesys-base-styles/dist/css/styles.css';
 import '@devoinc/genesys-icons/dist/gi-styles.css';
 
 import { BackToTop, TableOfContents } from './docs/blocks';
