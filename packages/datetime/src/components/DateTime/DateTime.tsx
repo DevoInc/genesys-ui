@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 import {
-  addMonths,
-  subMonths,
   set,
   getYear,
   getMonth,
@@ -14,7 +12,6 @@ import {
 } from 'date-fns';
 
 import {
-  type IGlobalAriaAttrs,
   type IStyledOverloadCss,
   type IStyledPolymorphic,
   VFlex,
@@ -25,6 +22,9 @@ import { Calendar, type CalendarProps } from '../Calendar';
 import { Time } from '../Time';
 import { MonthSelector, useMonthSelector } from '../MonthSelector';
 import { parseAllDates } from '../../parsers';
+import { TDateTimeI18n } from './declarations';
+import { defaultDateTimeI18n } from './i18n';
+import { useMergeI18n } from '../../hooks';
 
 export interface DateTimeProps
   extends Pick<
@@ -34,10 +34,7 @@ export interface DateTimeProps
     Pick<ITime, 'hasMillis' | 'hasSeconds' | 'hasTime' | 'maxDate' | 'minDate'>,
     IStyledOverloadCss,
     IStyledPolymorphic {
-  /** aria-label attribute for month input. */
-  ariaLabelMonth?: IGlobalAriaAttrs['aria-label'];
-  /** aria-label attribute for time input. */
-  ariaLabelTime?: IGlobalAriaAttrs['aria-label'];
+  i18n?: TDateTimeI18n;
   /** Function called when clicking a cell or editing time input HTML.  */
   onChange?: (dt: Date | number) => void;
   /** Function called when the displayed month is changed. One of `number` or
@@ -47,8 +44,7 @@ export interface DateTimeProps
 }
 
 export const DateTime: React.FC<DateTimeProps> = ({
-  ariaLabelMonth = 'month',
-  ariaLabelTime = 'time',
+  i18n: userI18n = defaultDateTimeI18n,
   as,
   monthDate = new Date().getTime(),
   hasMillis = false,
@@ -62,6 +58,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
   onChangeMonthDate = () => null,
   value,
 }) => {
+  const i18n = useMergeI18n(userI18n, defaultDateTimeI18n) as TDateTimeI18n;
   const { onChangeMonth, onClickNextMonth, onClickPrevMonth } =
     useMonthSelector({ monthDate, onChangeMonthDate });
   const theme = useTheme();
@@ -73,7 +70,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
       styles={styles}
     >
       <MonthSelector
-        ariaLabelInput={ariaLabelMonth}
+        i18n={i18n}
         hasNextMonthButton
         hasPrevMonthButton
         onChange={onChangeMonth}
@@ -103,7 +100,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
       />
       {hasTime && (
         <Time
-          aria-label={ariaLabelTime}
+          i18n={i18n}
           hasMillis={hasMillis}
           hasSeconds={hasSeconds}
           onChange={(ts) => {

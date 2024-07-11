@@ -82,6 +82,15 @@ export const MinMaxDate: Story = {
     })(),
 };
 
+export const Disabled: Story = {
+  tags: ['isHidden'],
+  args: {
+    disabled: true,
+    monthDate: now,
+    value: singleValue,
+  },
+};
+
 export const I18n: Story = {
   tags: ['isHidden'],
   args: {
@@ -89,9 +98,12 @@ export const I18n: Story = {
     weekStart: 1,
     monthDate: now,
     value: singleValue,
+    maxDate: set(now, { date: 20 }),
+    i18n: {
+      outOfRange: 'Fuera de rango',
+    },
   },
 };
-I18n.storyName = 'I18n';
 
 export const SingleHook: Story = {
   tags: ['isHidden'],
@@ -101,8 +113,6 @@ export const SingleHook: Story = {
       return (
         <Calendar
           monthDate={now}
-          hasLeftHoverEffect={false}
-          hasRightHoverEffect={false}
           value={range}
           onClick={handleNewDate}
         />

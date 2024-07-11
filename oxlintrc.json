@@ -3,6 +3,7 @@
     "browser": true
   },
   "rules": {
-    "no-inner-declaration": "error"
+    "no-inner-declaration": "error",
+    "no-console": "error"
   }
 }

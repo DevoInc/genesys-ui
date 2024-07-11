@@ -57,6 +57,7 @@ const config: StorybookConfig = {
           'react-toastify',
           'react-select',
           'react-split',
+          'react-mermaid2',
           'ahooks',
           'react-windowed-select',
           '@dnd-kit/sortable',

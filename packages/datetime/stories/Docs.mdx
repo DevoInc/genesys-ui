@@ -1,12 +1,38 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Source } from '@storybook/blocks';
+import Mermaid from 'react-mermaid2';
 
-<Meta title="Develop/Packages/Datetime" />
+<Meta title="Components/Datetime" />
 
-# Datetime
+# DateTime
 
-## Diagram of internal dependencies
+## Composite architecture
 
-* [Complete with all relationships](./images/depcruise-extended-genesys-ui-datetime.svg)
-* Simplified version (depth limited to 3 levels):
+<Mermaid chart={`
+  graph TD;
+      Calendar-->DateTime;
+      Time-->DateTime;
+      MonthSelector-->DateTime;
+      DateTime-->DateTimePicker;
+      DateTimeInput-->DateTimePicker;
+      DateTimePicker-->DateTimeFloatingPicker;
+      Calendar-->DateTimeRange;
+      Time-->DateTimeRange;
+      MonthSelector-->DateTimeRange;
+      Presets-->DateTimeRange;
+      DateTimeRange-->DateTimeRangeFloatingPicker;
+      DateTimeRangeInput-->DateTimeRangeFloatingPicker;
+`} />
 
-[![Diagram of dependencies](./images/depcruise-simple-genesys-ui-datetime.svg)](./images/depcruise-simple-genesys-ui-datetime.svg)
+## Working with UTC
+
+All the components work in UTC if you want to use TZ you should transform the
+dates by yourself previously, that way allow you to use whatever library you
+want, here is an example using `date-fns-tz`:
+
+<Source code={`import { zonedTimeToUtc, utcToZonedTime } from 'date-fns-tz';
+...
+// Before use in the component
+const dateInZone = utcToZonedTime(date, "Europe/Madrid");
+// After change in component
+const dateInUtc = zonedTimeToUtc(dateInZone, "Europe/Madrid");
+...`} />

@@ -1,7 +1,11 @@
-import { getDate, getTime, format } from 'date-fns';
+import { set, getDate, getTime, format } from 'date-fns';
 
 import type { TParseDate } from '../../declarations';
-import type { TCalendarI18n, TConditionFunction, TDayProperties } from './declarations';
+import type {
+  TCalendarI18n,
+  TConditionFunction,
+  TDayProperties,
+} from './declarations';
 import { gt, lt } from '../../helpers';
 
 export const defaultDateRepr = (ts: number) => format(ts, 'PPPP');
@@ -100,12 +104,14 @@ export const getDayProperties =
     hover: number,
     hasRightHoverEffect: boolean,
     hasLeftHoverEffect: boolean,
-    minDate: number | Date = new Date(-8640000000000000),
-    maxDate: number | Date = new Date(8640000000000000),
+    minDate: number | Date = -8640000000000000,
+    maxDate: number | Date = 8640000000000000,
     i18n: TCalendarI18n,
   ) =>
   (day: Date): TDayProperties => {
-    const ts = getTime(day);
+    const ts = getTime(
+      set(day, { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 }),
+    );
     const monthDay = getDate(day);
     const result = parse(day);
     const isValid = gt(ts, minDate) && lt(ts, maxDate) && result.isValid;
@@ -174,3 +180,26 @@ export const getClassNameFromProperties = (dayProps: TDayProperties) => [
   ...(dayProps.isPrevBoxShadow ? ['prev-box-shadow'] : []),
   ...(dayProps.isRightHover ? ['rightmost'] : []),
 ];
+
+export const getFrom = (value: (number | Date)[]) => {
+  if (value[0] && getTime(value[0]) > 0) {
+    return getTime(
+      set(value[0], { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 }),
+    );
+  }
+  return 0;
+};
+
+export const getTo = (value: (number | Date)[]) => {
+  if (value[1] && getTime(value[1]) > 0) {
+    return getTime(
+      set(value[1], {
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+        milliseconds: 0,
+      }),
+    );
+  }
+  return getFrom(value);
+};

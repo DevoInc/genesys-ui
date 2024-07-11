@@ -22,11 +22,10 @@ export const Base: Story = {
         new Date().getTime(),
       );
 
-      console.log({ 'sb-value': new Date(value) });
       return (
         <DateTime
           onChange={(ts) => {
-            setValue(new Date(ts));
+            setValue(ts);
           }}
           monthDate={monthDate}
           onChangeMonthDate={(dt) => {

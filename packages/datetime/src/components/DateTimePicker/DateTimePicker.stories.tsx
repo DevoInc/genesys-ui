@@ -18,18 +18,14 @@ export const Base: Story = {
   render: (args) =>
     ((props) => {
       const [value, setValue] = React.useState(props.value);
-      console.log({ 'sb-value': new Date(value) });
       return (
-        <div style={{ width: '400px' }}>
-          <DateTimePicker
-            {...props}
-            value={value}
-            onChange={(ts: number) => {
-              console.log(`CHANGED ${new Date(ts)}`);
-              setValue(ts);
-            }}
-          />
-        </div>
+        <DateTimePicker
+          {...props}
+          value={value}
+          onChange={(ts: number) => {
+            setValue(ts);
+          }}
+        />
       );
     })(args),
   args: {

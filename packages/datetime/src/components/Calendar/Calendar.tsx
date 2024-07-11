@@ -1,8 +1,13 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import { getTime, lastDayOfMonth as lastDayOfMonthFNS } from 'date-fns';
+import { lastDayOfMonth as lastDayOfMonthFNS } from 'date-fns';
 
-import { getClassNameFromProperties, getDayProperties } from './day';
+import {
+  getClassNameFromProperties,
+  getDayProperties,
+  getTo,
+  getFrom,
+} from './day';
 import { getMonthDays, getPrevDays } from './month';
 import {
   type IGlobalAriaAttrs,
@@ -89,6 +94,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
   minDate,
   maxDate,
   i18n: userI18n = defaultCalendarI18n,
+  disabled = false,
 }) => {
   const i18n = useMergeI18n(userI18n, defaultCalendarI18n) as TCalendarI18n;
   const theme = useTheme();
@@ -124,7 +130,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
       aria-describedby={ariaDescribedby}
       aria-details={ariaDetails}
       aria-hidden={ariaHidden}
-      aria-lable={ariaLabel}
+      aria-label={ariaLabel}
       aria-labelledby={ariaLabelledby}
       as={as}
       id={id}
@@ -147,8 +153,8 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
       {getMonthDays(monthDate)
         .map(
           getDayProperties(
-            getTime(value[0] ?? 0),
-            getTime(value[1] ?? value[0] ?? 0),
+            getFrom(value),
+            getTo(value),
             lastDayOfMonth,
             parseDate,
             hoverDay,
@@ -170,7 +176,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
               onMouseLeave={onMouseLeaveCallback}
               ts={dayProps.ts}
               value={String(dayProps.monthDay)}
-              disabled={dayProps.isDisabled}
+              disabled={disabled || dayProps.isDisabled}
               label={dateRepr(dayProps.ts)}
               tooltip={
                 dayProps.isDisabled
