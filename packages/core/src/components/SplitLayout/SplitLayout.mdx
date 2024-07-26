@@ -8,12 +8,10 @@ import * as Stories from './SplitLayout.stories';
 
 ## Overview
 
-The SplitLayout component is a layout element that enables the division of the screen
-into multiple blocks that are resizables.
-It is based on [split.js](https://split.js.org/), so you could use all of the
-properties of split.js.
-With SplitLayout, you can easily create a split view layout, allowing users to view
-multiple pieces of content simultaneously.
+The SplitLayout component is a layout element that enables the division of the
+screen into multiple blocks that are resizables.
+With SplitLayout, you can easily create a split view layout, allowing users to
+view multiple pieces of content simultaneously.
 
 It can also be nested, allowing for the creation of more complex layouts, and
 split vertically or horizontally, depending on the needs of the user interface.
@@ -24,34 +22,102 @@ split vertically or horizontally, depending on the needs of the user interface.
 
 ## Basic usage
 
-Add the desired blocks as direct children of the SplitLayout. For each block a resizable area is automatically created.
-Usually we need to define a height for the parent container of the `SplitLayout` if we want a pre-defined height
+Add the desired blocks as direct children of the SplitLayout. For each block a
+resizable area is automatically created. Usually we need to define a height for
+the parent container of the `SplitLayout` if we want a pre-defined height
 regardless of whether there is content or not.
 
 <Canvas of={Stories.Base} />
 
-Anyway, the resizable areas will adapt their height to their contents, although there is no defined height.
+Contained areas are rescaled as indicated by the areas themselves, for example,
+in the next story we could see that
+
+<Source code={`...
+<Box>
+  <SplitLayout ... >
+    <Box>Lorem ...</Box>
+    ...
+  </SplitLayout>
+</Box>
+...`} />
+
+The container `Box` doesn't have `height` and the contained `Box` don't do
+anything special
 
 <Canvas of={Stories.BaseWithoutHeight} />
 
-## Without minSize
+But if we do specify the `height`
 
-If you don't define a minSize for the blocks, when we resize one to the maximum the other ends in
-`width: 0` or `height: 0`, so we recommend adding `overflow: hidden` to the children blocks,
-to avoid maintaining visible undesired contents or spaces. In the same way, you should also
-add the internal padding to a nested children of the block, instead of directly to it, because of
-the box model, which maintains the space of the padding although the width or height is '0'.
+<Source code={`...
+<Box height="20rem">
+  <SplitLayout ... >
+    <Box overflow="auto">Lorem ...</Box>
+    ...
+  </SplitLayout>
+</Box>
+...`} />
 
-This is an example without minSize, but with padding in the children blocks, instead of in a nested one,
-and without applying `overflow:hidden`. We can see how the content is not completely hidden
-when we resize the other one to the maximum:
+And set the contained `Box` with an `overflow="auto"`, this lead to this
+behavior:
 
-<Canvas of={Stories.WithoutMinSizeBad} />
+<Canvas of={Stories.BaseWithHeight} />
 
-In this example we apply `overflow:hidden` and the padding is defined in nested blocks, so we can see how the content
-is completely hidden when we resize the other one to the maximum:
+## Hooks
+
+### `useAsyncSplitResize`
+
+<Source code={`import { SplitLayout, useAsyncSplitResize } from '@devoinc/genesys-ui';
+...
+const [sizes, setSizes] = React.useState<TSizes>(props?.sizes);
+const { onChange } = useAsyncSplitResize({ setSizes });
+...
+return (
+  <Box height="20rem">
+    <SplitLayout sizes={sizes} onChange={onChange} ... >
+      <Box overflow="auto">Lorem ...</Box>
+      ...
+    </SplitLayout>
+  </Box>
+);
+...`} />
+
+<Canvas of={Stories.AsyncHook} />
+
+### `useSyncSplitResize`
+
+Is like the previous hook but modify the size with each dragged mouse movement.
+There is a special property that we need to use with this hook: `showDragGhost:
+false`, or the user will have twice the distance of the movement
+
+<Canvas of={Stories.Base} />
+
+## Min/Max size
+
+If you need to define some limits for the panes you could use the min/max size
+prop of each resize hook.
+
+<Canvas of={Stories.MinSize} />
+
+If you don't define a minSize for the blocks, when we resize one to the maximum
+the other ends in `width: 0` or `height: 0`, so we recommend adding
+`overflow: hidden` to the children blocks, to avoid maintaining visible
+undesired contents or spaces. In the same way, you should also add the internal
+padding to a nested children of the block, instead of directly to it, because of
+the box model, which maintains the space of the padding although the width or
+height is '0'.
+
+This is an example without minimum, but with padding in the children blocks,
+instead of in a nested one, and without applying `overflow:hidden`. We can see
+how the content is not completely hidden when we resize the other one to the
+maximum:
 
 <Canvas of={Stories.WithoutMinSizeGood} />
+
+In this example we apply `overflow:hidden` and the padding is defined in nested
+blocks, so we can see how the content is completely hidden when we resize the
+other one to the maximum:
+
+<Canvas of={Stories.WithOverflowAndPadding} />
 
 ## Three blocks
 

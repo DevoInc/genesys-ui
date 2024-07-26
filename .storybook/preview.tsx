@@ -93,11 +93,14 @@ const preview: Preview = {
     },
   },
   decorators: [
-    (Story) => (
-      <StoryWrapper padding={'cmp-md'} position="relative">
+    (Story, parameters) =>
+      !parameters.tags.includes('noWrap') ? (
+        <StoryWrapper padding={'cmp-md'} position="relative">
+          <Story />
+        </StoryWrapper>
+      ) : (
         <Story />
-      </StoryWrapper>
-    ),
+      ),
     withThemeFromJSXProvider({
       themes: {
         light,
