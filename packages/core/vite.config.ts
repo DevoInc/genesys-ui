@@ -37,7 +37,6 @@ export default defineConfig({
         'react-toastify',
         'react-windowed-select',
         'polished',
-        'react-split',
         'ahooks',
       ],
     },
