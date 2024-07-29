@@ -1,5 +1,5 @@
 import { Meta, Source } from '@storybook/blocks';
-import Mermaid from 'react-mermaid2';
+import { Mermaid } from '../../../.storybook/docs/blocks/Mermaid.tsx';
 
 <Meta title="Components/Datetime" />
 
@@ -8,19 +8,19 @@ import Mermaid from 'react-mermaid2';
 ## Composite architecture
 
 <Mermaid chart={`
-  graph TD;
-      Calendar-->DateTime;
-      Time-->DateTime;
-      MonthSelector-->DateTime;
-      DateTime-->DateTimePicker;
-      DateTimeInput-->DateTimePicker;
-      DateTimePicker-->DateTimeFloatingPicker;
-      Calendar-->DateTimeRange;
-      Time-->DateTimeRange;
-      MonthSelector-->DateTimeRange;
-      Presets-->DateTimeRange;
-      DateTimeRange-->DateTimeRangeFloatingPicker;
-      DateTimeRangeInput-->DateTimeRangeFloatingPicker;
+graph TD
+  Calendar-->DateTime
+  Time-->DateTime
+  MonthSelector-->DateTime
+  DateTime-->DateTimePicker
+  DateTimeInput-->DateTimePicker
+  DateTimePicker-->DateTimeFloatingPicker
+  Calendar-->DateTimeRange
+  Time-->DateTimeRange
+  MonthSelector-->DateTimeRange
+  Presets-->DateTimeRange
+  DateTimeRange-->DateTimeRangeFloatingPicker
+  DateTimeRangeInput-->DateTimeRangeFloatingPicker
 `} />
 
 ## Working with UTC
