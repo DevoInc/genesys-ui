@@ -7,7 +7,6 @@ import {
 
 import type { IGlobalAttrs } from '../../../declarations';
 import type { TContainerSpacing, TFluidAs } from '../declarations';
-
 import { getSpacingPropCss } from '../../../helpers';
 import { getPxFromRem } from '../../../helpers';
 

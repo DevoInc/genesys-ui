@@ -46,7 +46,7 @@ export const CustomUsage: Story = {
       <Avatar._Container {...args}>
         <Avatar._Image alt="example" />
         <Avatar._ScreenReadersOnly>Rick Sanchez</Avatar._ScreenReadersOnly>
-        <Avatar._Badge size="lg" styles="background-color: orange;" />
+        <Avatar._Badge size="lg" style={{ backgroundColor: 'orange' }} />
       </Avatar._Container>
     ))(args),
 };

@@ -27,7 +27,7 @@ export const ButtonAddon: React.FC<ButtonAddonProps> = ({
   isDropdown,
   position,
   size = 'md',
-  styles,
+  style,
 }) => (
   <StyledButtonAddon
     as={as}
@@ -36,7 +36,7 @@ export const ButtonAddon: React.FC<ButtonAddonProps> = ({
     isDropdown={isDropdown}
     position={position}
     size={size}
-    css={styles}
+    style={style}
   >
     {children}
   </StyledButtonAddon>

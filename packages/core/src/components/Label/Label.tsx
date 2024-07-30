@@ -7,7 +7,6 @@ import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../declarations';
-
 import { StyledLabel, type StyledLabelProps } from './StyledLabel';
 
 export interface LabelProps
@@ -27,23 +26,21 @@ export const Label: React.FC<LabelProps> = ({
   colorScheme = 'strong',
   htmlFor,
   size = 'md',
-  styles,
+  style,
   tooltip,
   truncated = true,
   ...restNativeProps
-}) => {
-  return (
-    <StyledLabel
-      {...restNativeProps}
-      as={as || (htmlFor ? 'label' : 'span')}
-      colorScheme={colorScheme}
-      css={styles}
-      htmlFor={htmlFor}
-      size={size}
-      title={tooltip}
-      truncated={truncated}
-    >
-      {children}
-    </StyledLabel>
-  );
-};
+}) => (
+  <StyledLabel
+    {...restNativeProps}
+    as={as || (htmlFor ? 'label' : 'span')}
+    colorScheme={colorScheme}
+    css={style}
+    htmlFor={htmlFor}
+    size={size}
+    title={tooltip}
+    truncated={truncated}
+  >
+    {children}
+  </StyledLabel>
+);

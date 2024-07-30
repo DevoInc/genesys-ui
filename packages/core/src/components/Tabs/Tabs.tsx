@@ -8,7 +8,6 @@ import type {
 } from '../../declarations';
 import type { ITabs } from './declarations';
 import { TabsContext } from './context';
-
 import {
   TabsAside,
   TabsContainer,

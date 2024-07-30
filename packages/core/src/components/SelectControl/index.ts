@@ -1,4 +1,4 @@
 export * from './SelectControl';
-export * from './styled/StyledSelectControl';
+export * from './StyledSelectControl';
 
 export type { TSelectOption } from './declarations';

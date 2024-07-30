@@ -63,19 +63,17 @@ export const CompactWithAnotherToolbar: Story = {
 
 export const Custom: Story = {
   render: () =>
-    (() => {
-      return (
-        <AppBar sticky={true}>
-          <AppBar.Heading styles="font-style: italic;">Hello</AppBar.Heading>
-          <AppBar.Divider />
-          <AppBar.Navigation>
-            <TabsCmp />
-          </AppBar.Navigation>
-          <Typography.Paragraph>Custom block next to tabs</Typography.Paragraph>
-          <AppBar.Item marginLeft="auto">
-            <Typography.Paragraph>Block to right</Typography.Paragraph>
-          </AppBar.Item>
-        </AppBar>
-      );
-    })(),
+    (() => (
+      <AppBar sticky={true}>
+        <AppBar.Heading style={{ fontStyle: 'italic' }}>Hello</AppBar.Heading>
+        <AppBar.Divider />
+        <AppBar.Navigation>
+          <TabsCmp />
+        </AppBar.Navigation>
+        <Typography.Paragraph>Custom block next to tabs</Typography.Paragraph>
+        <AppBar.Item marginLeft="auto">
+          <Typography.Paragraph>Block to right</Typography.Paragraph>
+        </AppBar.Item>
+      </AppBar>
+    ))(),
 };

@@ -1,4 +1,4 @@
-import React, { ReactHTML } from 'react';
+import * as React from 'react';
 import { CSSProp } from 'styled-components';
 
 /** ---------------------------------------------
@@ -8,7 +8,7 @@ export interface IStyledPolymorphic<T = any> {
   /** Polymorphic prop to create a different HTML tag based in the styled
    * components one:
    * https://styled-components.com/docs/api#as-polymorphic-prop */
-  as?: keyof ReactHTML | React.ComponentType<T>;
+  as?: keyof React.ReactHTML | React.ComponentType<T>;
 }
 
 /** ---------------------------------------------

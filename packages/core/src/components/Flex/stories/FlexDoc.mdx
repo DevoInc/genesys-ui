@@ -12,16 +12,19 @@ import * as WrapStories from '../../Wrap/Wrap.stories.tsx';
 
 # Flex components
 
-Flex container components are a powerful tool for creating stacked groups of child components.
+Flex container components are a powerful tool for creating stacked groups of
+child components.
 These stacks can be arranged in various configurations, including a row,
-a column with children stacked vertically, or a mixed wrapped structure with rows and columns.
+a column with children stacked vertically, or a mixed wrapped structure with
+rows and columns.
 
 The `Flex` component is the foundation, while `HFlex`, `VFlex`, and `Wrap`
 are variations built upon it. Using `Flex` with `Flex.Item` children allows
 for complete control over the stack structure, while the other versions
 offer simplified solutions for specific stack configurations:
 
-- **Flex**: Allows for any stack type, including a single row, a single column, or a mixed configuration of rows and columns.
+- **Flex**: Allows for any stack type, including a single row, a single column,
+  or a mixed configuration of rows and columns.
 - **HFlex**: Creates a single row stack.
 - **VFlex**: Creates a single column stack.
 - **Wrap**: Creates a mixed stack of columns and rows.
@@ -32,11 +35,13 @@ offer simplified solutions for specific stack configurations:
   code={`import { Flex, HFlex, VFlex, Wrap } from '@devoinc/genesys-ui';`}
 />
 
-Likewise, their `as` property allow these components to be rendered as any HTML tag:
-'div', 'li', 'section'... etc.
+Likewise, their `as` property allow these components to be rendered as any HTML
+tag: 'div', 'li', 'section'... etc.
 
-If you want to use the `Flex` component rendered with a different HTML tag, you can use the `as` property.
-It allows these components to be rendered as any HTML tag, such as div, li, section, and so on.
+If you want to use the `Flex` component rendered with a different HTML tag, you
+can use the `as` property.
+It allows these components to be rendered as any HTML tag, such as div, li,
+section, and so on.
 
 <Source
   code={`
@@ -54,8 +59,8 @@ const MyFlexCmp = () => (
 </Flex>
 ); `} />
 
-You can easily apply basic layout styles to flex components
-such as margin, padding, width, height, min-width, max-width, min-height, and max-height.
+You can easily apply basic layout styles to flex components such as margin,
+padding, width, height, min-width, max-width, min-height, and max-height.
 To do so, simply use the props with the corresponding names on the component.
 
 <Source
@@ -114,7 +119,8 @@ we need a specific configuration (width, height, flex...) for any child:
 
 With a flex structure, we can customize the flex, order, and align-self
 CSS styles for each child using the corresponding props of Flex.Item.
-Below is an example of a Flex component with each child having different flex and align-self styles:
+Below is an example of a Flex component with each child having different flex
+and align-self styles:
 
 <Canvas of={FlexStories.FlexAndFlexItems} />
 

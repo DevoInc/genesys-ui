@@ -47,14 +47,14 @@ export const ButtonSelection: React.FC<ButtonSelectionProps> = ({
   onChange,
   onFocus,
   selectionScheme = 'multiple',
-  styles,
+  style,
   value,
 }) => (
   <StyledButtonSelection
     as={as}
     aria-label={label}
     checked={checked}
-    css={styles}
+    style={style}
     defaultChecked={defaultChecked}
     disabled={disabled}
     id={id ? `${id}-button-input` : null}

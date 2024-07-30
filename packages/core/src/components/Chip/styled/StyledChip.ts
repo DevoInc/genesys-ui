@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, CSSProp } from 'styled-components';
 
 // declarations
 import type { TChipSize, TChipState } from '../declarations';
@@ -16,6 +16,8 @@ export interface StyledChipProps {
   state?: TChipState;
   /** If you can drag & drop the Chip. */
   sortable?: boolean;
+  // TODO: interface only for satisfy the type error with TS and inherit CSSProp
+  css?: CSSProp;
 }
 
 export const StyledChip = styled.label<StyledChipProps>`

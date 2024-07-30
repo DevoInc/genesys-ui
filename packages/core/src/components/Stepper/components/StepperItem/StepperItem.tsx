@@ -9,7 +9,6 @@ import {
   StepperItemContent,
 } from './components';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StepperItemProps
   extends Pick<
     IStepperItem,
@@ -19,7 +18,7 @@ export interface StepperItemProps
     | 'stepNumberPos'
     | 'size'
     | 'status'
-    | 'styles'
+    | 'style'
   > {}
 
 export const InternalStepperItem: React.FC<StepperItemProps> = ({
@@ -28,24 +27,22 @@ export const InternalStepperItem: React.FC<StepperItemProps> = ({
   hiddenStatusText,
   size = 'md',
   status = 'pending',
-  styles,
+  style,
   stepNumberPos,
-}) => {
-  return (
-    <StepperItemContainer styles={styles}>
-      {hasDivider && <StepperItemDivider />}
-      <StepperItemIndicator
-        stepNumberPos={stepNumberPos}
-        size={size}
-        status={status}
-      />
-      <StepperItemHiddenStatus>{hiddenStatusText}</StepperItemHiddenStatus>
-      <StepperItemContent size={size} status={status}>
-        {children}
-      </StepperItemContent>
-    </StepperItemContainer>
-  );
-};
+}) => (
+  <StepperItemContainer style={style}>
+    {hasDivider && <StepperItemDivider />}
+    <StepperItemIndicator
+      stepNumberPos={stepNumberPos}
+      size={size}
+      status={status}
+    />
+    <StepperItemHiddenStatus>{hiddenStatusText}</StepperItemHiddenStatus>
+    <StepperItemContent size={size} status={status}>
+      {children}
+    </StepperItemContent>
+  </StepperItemContainer>
+);
 
 export const StepperItem = InternalStepperItem as typeof InternalStepperItem & {
   _Container: typeof StepperItemContainer;

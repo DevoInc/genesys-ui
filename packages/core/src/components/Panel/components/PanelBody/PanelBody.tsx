@@ -1,15 +1,13 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import { concat } from 'lodash';
 
 import type { IPanelBaseAttrs, IPanelContainerAttrs } from '../../declarations';
 import type { IPanelBodyAttrs } from './declarations';
 import { PanelContext } from '../../context';
-
 import { panelBodyMixin } from './helpers';
-
 import { Box } from '../../../Box';
 import { Typography } from '../../../Typography';
+import { mergeStyles } from '../../../../helpers';
 
 export interface PanelBodyProps
   extends IPanelBaseAttrs,
@@ -17,7 +15,7 @@ export interface PanelBodyProps
     Pick<IPanelContainerAttrs, 'size' | 'children'> {}
 
 export const PanelBody = React.forwardRef<HTMLElement, PanelBodyProps>(
-  ({ children, removeSpace, hasScrollSpacing, size, styles }, ref) => {
+  ({ children, removeSpace, hasScrollSpacing, size, style }, ref) => {
     const theme = useTheme();
     const context = React.useContext(PanelContext);
     const evalSize = size || context.size || 'md';
@@ -28,14 +26,14 @@ export const PanelBody = React.forwardRef<HTMLElement, PanelBodyProps>(
         flex="1 1 100%"
         overflow="auto"
         ref={ref || context.bodyRef}
-        styles={concat(
+        style={mergeStyles(
           panelBodyMixin({
             hasScrollSpacing: hasScrollSpacing ?? context.scrolledBodyContent,
             removeSpace,
             size: evalSize,
             theme,
           }),
-          styles,
+          style,
         )}
       >
         {typeof children === 'string' ? (

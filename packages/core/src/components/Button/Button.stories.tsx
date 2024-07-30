@@ -206,9 +206,9 @@ export const Custom: Story = {
           hasDropdown
           state={expanded ? 'expanded' : 'enabled'}
           onClick={() => setExpanded(!expanded)}
-          styles="height: 48px; background-color: gold;"
+          style={{ height: '48px', backgroundColor: 'gold' }}
         >
-          <Button._Label styles="font-style: italic;">
+          <Button._Label style={{ fontStyle: 'italic' }}>
             Dropdown button
           </Button._Label>
           <Button._Addon hasSpace isDropdown position="right">

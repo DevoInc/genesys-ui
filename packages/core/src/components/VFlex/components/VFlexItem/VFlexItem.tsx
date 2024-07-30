@@ -7,6 +7,4 @@ export interface VFlexItemProps extends FlexItemProps {}
 export const VFlexItem: React.FC<VFlexItemProps> = ({
   children,
   ...restFlexItemProps
-}) => {
-  return <FlexItem {...restFlexItemProps}>{children}</FlexItem>;
-};
+}) => <FlexItem {...restFlexItemProps}>{children}</FlexItem>;

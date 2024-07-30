@@ -35,7 +35,8 @@ export const getStatus = ({ percent, status }: ProgressBarBaseUtilsProps) =>
   percent >= MAX_PERCENT ? 'complete' : status;
 
 /**
- * Get the colorScheme value (for internal components which use that prop) based in the status prop
+ * Get the colorScheme value (for internal components which use that prop) based
+ * in the status prop
  *
  * @return colorScheme value
  */
@@ -64,7 +65,8 @@ export const hasCustomInfo = (customInfo: TProgressBarCustomInfo) =>
   Boolean(customInfo?.startInfo) || Boolean(customInfo?.endInfo);
 
 /**
- * Get the icon for the ProgressBar not only based in the icon prop, but also in type, percent and status
+ * Get the icon for the ProgressBar not only based in the icon prop, but also in
+ * type, percent and status
  *
  * @return icon name
  */

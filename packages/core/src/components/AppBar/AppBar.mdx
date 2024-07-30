@@ -8,7 +8,8 @@ import * as Stories from './AppBar.stories';
 
 ## Overview
 
-Component used for creating a navigation bar. It can be customized to fit various use cases.
+Component used for creating a navigation bar. It can be customized to fit
+various use cases.
 
 ## How to import
 
@@ -16,30 +17,36 @@ Component used for creating a navigation bar. It can be customized to fit variou
 
 ## Basic usage
 
-This component is based in a `Box` component as its container, so we have available almost all the props
-of this type. We have also an inner container with an `HFlex` component, so we get flex distribution
-of the different pre-defined blocks as children.
+This component is based in a `Box` component as its container, so we have
+available almost all the props of this type. We have also an inner container
+with an `HFlex` component, so we get flex distribution of the different
+pre-defined blocks as children.
 
-You have available some props to define quickly the most common contents of this component: `heading` and `tabs`,
-but anyway you can use also the pre-defined components `AppBar.Item`, `AppBar.Navigation`, `AppBar.Heading` and
+You have available some props to define quickly the most common contents of
+this component: `heading` and `tabs`, but anyway you can use also the
+pre-defined components `AppBar.Item`, `AppBar.Navigation`, `AppBar.Heading` and
 `AppBar.Divider` if you need something custom, or use only `children`... etc.
 
 These are the pre-defined components:
 
-- **AppBar.Item**: it's the equivalent to the `Flex.Item` component, and we only have to use it when we need to apply
-  some specific layout behavior to the child: flex, width, align... etc.
-- **AppBar.Divider**: it's based on the `Divider` component, and it's used as separator between the children.
-- **AppBar.Heading**: it's based on the `Typography.Heading` component, and it's used at the beginning of the bar as
-  the content title.
-- **AppBar.Navigation**: it's the navigation block, and its child should be a `Tabs` component with the prop
-  `colorScheme` to 'primary'.
+- **AppBar.Item**: it's the equivalent to the `Flex.Item` component, and we only
+  have to use it when we need to apply some specific layout behavior to the
+  child: flex, width, align... etc.
+- **AppBar.Divider**: it's based on the `Divider` component, and it's used as
+  separator between the children.
+- **AppBar.Heading**: it's based on the `Typography.Heading` component, and
+  it's used at the beginning of the bar as the content title.
+- **AppBar.Navigation**: it's the navigation block, and its child should be a
+  `Tabs` component with the prop `colorScheme` to 'primary'.
 
-Therefore, you have a lot of different ways of defining the content of the `AppBar`:
+Therefore, you have a lot of different ways of defining the content of the
+`AppBar`:
 
 - Only using the props (`heading` and `tabs`).
 - Using the props `heading` and `tabs`, combined with `children`.
 - Only using `children`.
-- Only using pre-defined components `AppBar.Item`, `AppBar.Navigation`, `AppBar.Heading` and `AppBar.Divider`.
+- Only using pre-defined components `AppBar.Item`, `AppBar.Navigation`,
+  `AppBar.Heading` and `AppBar.Divider`.
 - A mix using props and pre-defined components.
 - ...
 
@@ -49,8 +56,8 @@ Therefore, you have a lot of different ways of defining the content of the `AppB
 
 ### Compact
 
-Sometimes, your app or page has its own app bar, so in these cases you can use the `compact` variant
-with less height and spacing.
+Sometimes, your app or page has its own app bar, so in these cases you can use
+the `compact` variant with less height and spacing.
 
 <Canvas of={Stories.Compact} />
 
@@ -58,8 +65,9 @@ with less height and spacing.
 
 ### Custom content
 
-You can create a custom `AppBar`content using the pre-defined components (`AppBar.Item`, `AppBar.Navigation`,
-`AppBar.Heading` and `AppBar.Divider`) or using the props `heading` and `tabs`, combined with children:
+You can create a custom `AppBar`content using the pre-defined components
+(`AppBar.Item`, `AppBar.Navigation`, `AppBar.Heading` and `AppBar.Divider`) or
+using the props `heading` and `tabs`, combined with children:
 
 <Canvas of={Stories.Custom} />
 

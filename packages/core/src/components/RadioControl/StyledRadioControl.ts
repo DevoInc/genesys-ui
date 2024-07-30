@@ -4,26 +4,27 @@ import type { TFieldSize, TFieldStatus } from '../../declarations';
 import { checkRadioMixin, getCheckRadioTokens } from '../../styled/mixins';
 
 export interface StyledRadioControlProps {
-  /** The size for the checkbox. It affects to its width, height, font-size... etc. */
+  /** The size for the checkbox. It affects to its width, height, font-size...
+   * etc. */
   $size?: TFieldSize;
   /** The status for the checkbox: success, error... etc. */
-  status?: TFieldStatus;
+  $status?: TFieldStatus;
 }
 
 export const StyledRadioControl = styled.input.attrs({
   type: 'radio',
 })<StyledRadioControlProps>`
-  ${({ disabled = false, $size = 'md', status = 'base', theme }) => {
+  ${({ disabled = false, $size = 'md', $status = 'base', theme }) => {
     const cmpTokens = theme.cmp.radio;
     const controlTokens = cmpTokens.control;
     const markerTokens = cmpTokens.controlMarker;
-    const checkRadioTokens = getCheckRadioTokens({ status, theme });
+    const checkRadioTokens = getCheckRadioTokens({ status: $status, theme });
     const markerSquare = markerTokens.size.square[$size];
     const borderRadius = controlTokens.shape.borderRadius;
     const transition = `all ease-in-out ${checkRadioTokens.animationTime}`;
 
     return css`
-      ${checkRadioMixin({ disabled, size: $size, status, theme })};
+      ${checkRadioMixin({ disabled, size: $size, status: $status, theme })};
       appearance: none;
       margin: 0;
       border-radius: ${borderRadius};

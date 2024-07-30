@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Thumbnail, Typography, VFlex } from '..';
+import { Thumbnail } from './Thumbnail';
+import { Typography } from '../Typography';
+import { VFlex } from '../VFlex';
 
 const meta: Meta<typeof Thumbnail> = {
   title: 'Components/Media/Thumbnail',

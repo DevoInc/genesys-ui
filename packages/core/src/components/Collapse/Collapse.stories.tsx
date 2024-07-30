@@ -99,7 +99,7 @@ export const Custom = () => {
         >
           <Collapse._Marker />
         </Box>
-        <Collapse._Heading styles="font-style: italic;">
+        <Collapse._Heading style={{ fontStyle: 'italic' }}>
           Custom collapse
         </Collapse._Heading>
       </Collapse._Container>

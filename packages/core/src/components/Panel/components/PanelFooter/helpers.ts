@@ -1,4 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
+
 import type { IPanelFooterAttrs } from './declarations';
 
 /**
@@ -6,7 +7,6 @@ import type { IPanelFooterAttrs } from './declarations';
  *
  * @return styles for PanelFooterContainer
  */
-
 export const panelFooterContainerMixin = ({
   bordered,
   hasBackground,

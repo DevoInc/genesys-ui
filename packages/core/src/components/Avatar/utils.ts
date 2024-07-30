@@ -55,4 +55,4 @@ export const getAvatarInitials = ({
 };
 
 export const getVariantValue = (variant: TAvatarVariant) =>
-  variant ? VARIANT_VALUES[variant] ?? undefined : undefined;
+  variant ? (VARIANT_VALUES[variant] ?? undefined) : undefined;

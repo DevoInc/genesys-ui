@@ -24,29 +24,27 @@ export const InternalTagGroup: React.FC<TagGroupProps> = ({
   label,
   quiet,
   size = 'md',
-  styles,
+  style,
   ...restProps
-}) => {
-  return (
-    <TagGroupContainer
-      {...restProps}
-      colorScheme={colorScheme}
-      labelPosition={labelPosition}
-      quiet={quiet}
+}) => (
+  <TagGroupContainer
+    {...restProps}
+    colorScheme={colorScheme}
+    labelPosition={labelPosition}
+    quiet={quiet}
+    size={size}
+    style={style}
+  >
+    {label && <TagGroupLabel size={size}>{label}</TagGroupLabel>}
+    <TagGroupList
+      aria-label={typeof label === 'string' ? label : ariaLabel}
+      flexWrap={flexWrap}
       size={size}
-      styles={styles}
     >
-      {label && <TagGroupLabel size={size}>{label}</TagGroupLabel>}
-      <TagGroupList
-        aria-label={typeof label === 'string' ? label : ariaLabel}
-        flexWrap={flexWrap}
-        size={size}
-      >
-        {children}
-      </TagGroupList>
-    </TagGroupContainer>
-  );
-};
+      {children}
+    </TagGroupList>
+  </TagGroupContainer>
+);
 
 export const TagGroup = InternalTagGroup as typeof InternalTagGroup & {
   _Container: typeof TagGroupContainer;

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import { STATUS_ICON_MAP } from '../../constants';
 import type { TProgressBarSize, TProgressBarStatus } from './declarations';

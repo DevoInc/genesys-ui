@@ -25,7 +25,7 @@ export const DevoLogoSpinner: React.FC<DevoLogoSpinnerProps> = ({
   animation = 'flow',
   colorScheme = 'dark',
   size = 'md',
-  styles,
+  style,
   tooltip,
   ...nativeProps
 }) => (
@@ -33,7 +33,7 @@ export const DevoLogoSpinner: React.FC<DevoLogoSpinnerProps> = ({
     {...nativeProps}
     animation={animation}
     colorScheme={colorScheme}
-    css={styles}
+    css={style}
     size={size}
     title={tooltip}
   >

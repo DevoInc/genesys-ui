@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { css, useTheme } from 'styled-components';
-import { concat } from 'lodash';
+import { useTheme } from 'styled-components';
 
 import { Box, type BoxProps } from '../../../Box';
 import { HFlex } from '../../../HFlex';
 import type { FlexProps } from '../../../Flex';
+import { mergeStyles } from '../../../../helpers';
 
 export interface AppBarContainerProps
   extends Omit<BoxProps, 'elevation' | 'position'>,
@@ -27,7 +27,7 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
   paddingLeft = 'cmp-md',
   paddingRight = 'cmp-md',
   sticky = false,
-  styles,
+  style,
   ...boxProps
 }) => {
   const theme = useTheme();
@@ -42,16 +42,14 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
       paddingLeft={paddingLeft}
       paddingRight={paddingRight}
       position="relative"
-      styles={concat(
-        css`
-          background-color: ${theme.cmp.appBar.color.background};
-          ${bordered &&
-          css`
-            border-bottom: solid ${theme.alias.shape.borderSize.separator.md}
-              ${theme.alias.color.border.separator.base.weak};
-          `}
-        `,
-        styles,
+      style={mergeStyles(
+        { backgroundColor: theme.cmp.appBar.color.background },
+        bordered
+          ? {
+              borderBottom: `solid ${theme.alias.shape.borderSize.separator.md} ${theme.alias.color.border.separator.base.weak}`,
+            }
+          : undefined,
+        style,
       )}
     >
       <HFlex

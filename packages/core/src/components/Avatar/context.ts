@@ -8,7 +8,6 @@ import {
   AVATAR_VARIANT_DEFAULT_VALUE,
 } from './constants';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AvatarContextProps
   extends Pick<
     IAvatar,

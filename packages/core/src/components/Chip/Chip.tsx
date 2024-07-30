@@ -10,7 +10,7 @@ import {
   ChipIcon,
 } from './components';
 
-import { ChipContent, type ChipContentProps } from './components/ChipContent';
+import { ChipContent, type ChipContentProps } from './components/ChipContent/ChipContent';
 
 export interface ChipProps
   extends IDataAttrs,
@@ -66,7 +66,7 @@ export const InternalChip: React.FC<ChipProps> = ({
   size = 'md',
   sortable,
   state,
-  styles,
+  style,
   tooltip,
   value,
   ...restDataProps
@@ -105,7 +105,7 @@ export const InternalChip: React.FC<ChipProps> = ({
       size={size}
       sortable={sortable}
       state={state}
-      styles={styles}
+      style={style}
       tooltip={tooltip}
     >
       <Chip._HiddenInput

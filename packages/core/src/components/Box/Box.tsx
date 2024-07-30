@@ -1,9 +1,8 @@
 import * as React from 'react';
-import type { IDataAttrs, ILayoutBox } from '../../declarations';
 
+import type { IDataAttrs, ILayoutBox } from '../../declarations';
 import { StyledBox } from './StyledBox';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface BoxProps extends IDataAttrs, ILayoutBox {}
 
 export const Box = React.forwardRef<HTMLElement, BoxProps>(
@@ -39,7 +38,7 @@ export const Box = React.forwardRef<HTMLElement, BoxProps>(
       positionLeft,
       positionRight,
       positionTop,
-      styles,
+      style,
       tooltip,
       verticalAlign,
       visibility,
@@ -52,7 +51,7 @@ export const Box = React.forwardRef<HTMLElement, BoxProps>(
     <StyledBox
       {...nativeProps}
       alignSelf={alignSelf}
-      css={styles}
+      css={style}
       cssTranslate={cssTranslate}
       $display={display}
       elevation={elevation}

@@ -38,7 +38,7 @@ export const InternalBanner: React.FC<BannerProps> = ({
   id,
   role,
   status = 'info',
-  styles,
+  style,
   subtle,
   title,
   tooltip,
@@ -51,7 +51,7 @@ export const InternalBanner: React.FC<BannerProps> = ({
       id={id}
       role={role}
       status={status}
-      styles={styles}
+      style={style}
       subtle={subtle}
       tooltip={tooltip}
     >

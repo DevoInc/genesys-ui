@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { css, type DefaultTheme } from 'styled-components';
 
 export interface IHiddenContentMixin {

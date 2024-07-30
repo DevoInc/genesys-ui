@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 
 import { type ILinkMixin, linkMixin } from './utils/linkMixin';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledLinkProps
   extends Omit<ILinkMixin, 'theme' | 'linkTokens'> {}
 

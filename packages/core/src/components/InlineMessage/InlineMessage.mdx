@@ -9,10 +9,12 @@ import * as Stories from './InlineMessage.stories';
 ## Overview
 
 Component designed to position a container in relation to a trigger.
-It uses the [Popover component](?path=/docs/components-core-navigation-popover--docs) under the hood.
+It uses the
+[Popover component](?path=/docs/components-core-navigation-popover--docs) under
+the hood.
 
-It's usually used to display contextual floating help and status info, without reducing
-the amount of screen space.
+It's usually used to display contextual floating help and status info, without
+reducing the amount of screen space.
 
 <Canvas of={Stories.Base} />
 
@@ -22,30 +24,35 @@ the amount of screen space.
 
 ## Basic usage
 
-The `InlineMessage` component must have one children component which will be the floating content to be displayed by a trigger.
+The `InlineMessage` component must have one children component which will be the
+floating content to be displayed by a trigger.
 
-This trigger is an `IconButtonStatus` by default, and it can be modified using the `trigger` prop,
-even adding some text to the default icon button.
+This trigger is an `IconButtonStatus` by default, and it can be modified using
+the `trigger` prop, even adding some text to the default icon button.
 
 <Source of={Stories.Base} />
 
-## InlineMessage.Panel
+## `InlineMessage.Panel`
 
-One of the most frequent use of the InlineMessage component is to include an `InlineMessage.Panel` as a child.
-This component uses `Panel` components as base, but adding some styles and default prop values.
+One of the most frequent use of the `InlineMessage` component is to include an
+`InlineMessage.Panel` as a child.
+This component uses `Panel` components as base, but adding some styles and
+default prop values.
 
 <Source of={Stories.WithPanel} />
 
 ## Custom trigger
 
-The default trigger is an `IconButtonStatus` but you can define a custom one by the `trigger.Component` prop.
+The default trigger is an `IconButtonStatus` but you can define a custom one by
+the `trigger.Component` prop.
 
 <Source of={Stories.CustomTrigger} />
 
 ## Banner
 
-Another atypical use of the InlineMessage component is to include an `InlineMessage.Banner` as a child.
-This is a case with docked banners as the content of the InlineMessage.
+Another atypical use of the `InlineMessage` component is to include an
+`InlineMessage.Banner` as a child.
+This is a case with docked banners as the content of the `InlineMessage`.
 
 <Source of={Stories.Banner} />
 

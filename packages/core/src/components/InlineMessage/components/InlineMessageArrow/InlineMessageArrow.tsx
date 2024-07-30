@@ -6,7 +6,7 @@ import type { TUIColorScheme } from '../../../../declarations/commonProps';
 import {
   StyledPopoverArrow,
   type StyledPopoverArrowProps,
-} from '../../../Popover/components';
+} from '../../../Popover/StyledPopoverArrow';
 
 import { inlineMessageArrowMixin } from './helpers';
 

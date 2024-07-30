@@ -14,7 +14,7 @@ export const InternalAppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     <Grid
       gridTemplateAreas='"app-bar" "app-lead" "app-content"'
       gridTemplateRows="auto auto 1fr"
-      styles={{
+      style={{
         width: '100%',
         height: '100vh',
         backgroundColor: theme.alias.color.background.app,

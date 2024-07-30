@@ -52,7 +52,7 @@ export const StyledDevoLogoSpinner = styled.div<StyledDevoLogoSpinnerProps>`
           }
         }
 
-        // ANIMATIONS - DEVO LOGO LOADER -------------------------------------- //
+        // ANIMATIONS - DEVO LOGO LOADER ------------------------------------ //
 
         // Bounce - Animation
 

@@ -19,7 +19,6 @@ import {
 } from './components';
 import { FieldHelper } from './components/FieldHelper';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface FieldProps extends IField {}
 
 export const InternalField: React.FC<FieldProps> = ({
@@ -39,7 +38,7 @@ export const InternalField: React.FC<FieldProps> = ({
   role,
   size = 'md',
   status = 'base',
-  styles,
+  style,
   tooltip,
   ...mouseEventAttrProps
 }) => {
@@ -66,7 +65,7 @@ export const InternalField: React.FC<FieldProps> = ({
       {...mouseEventAttrProps}
       as={as}
       role={role}
-      styles={styles}
+      style={style}
       tooltip={tooltip}
     >
       <Field._LabelDistributor direction={direction}>

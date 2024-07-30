@@ -1,4 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
+
 import type { IModal } from '../../declarations';
 
 export interface IModalFooterMixin extends Pick<IModal, 'status'> {
@@ -10,7 +11,6 @@ export interface IModalFooterMixin extends Pick<IModal, 'status'> {
  *
  * @return styles for Panel.Footer component
  */
-
 export const modalFooterMixin = ({ status, theme }: IModalFooterMixin) => {
   const footerTokens = theme.cmp.modal.footer;
   return css`

@@ -84,15 +84,16 @@ interface IGetTypoCss
 }
 
 /**
- * Get the typography css based in category and type of the component: font-size,
- * line-height, font-weight, color... etc.
+ * Get the typography css based in category and type of the component:
+ * font-size, line-height, font-weight, color... etc.
  *
- * @param props object with all the props
  * @param props.theme object with all the design tokens
  * @param props.variant heading, body, action, overline, hero... etc.
- * @param props.colorScheme The color for the text based in a predefined scheme list.
+ * @param props.colorScheme The color for the text based in a predefined scheme
+ * list.
  * @param props.size The size inside the category: h1, h2, xs, sm, md... etc.
- * @param props.truncateLine It the text has text overflow ellipsis and from which number of lines.
+ * @param props.truncateLine It the text has text overflow ellipsis and from
+ * which number of lines.
  * @param props.textAlign The css text-align for the text.
  * @return typography styles
  */

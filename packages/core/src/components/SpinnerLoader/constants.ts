@@ -1,4 +1,5 @@
 import { keyframes } from 'styled-components';
+
 import type { TSpinnerSize } from './declarations';
 
 // ANIMATIONS - CONSTANTS --------------------------------------------------- //

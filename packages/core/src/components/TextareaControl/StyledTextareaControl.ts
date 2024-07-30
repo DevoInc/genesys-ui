@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 import type { TTextareaResize } from './declarations';
-
 import {
   commonInputControlMixin,
   getLineHeight,
@@ -10,9 +9,12 @@ import {
 } from '../../styled/mixins';
 
 export interface StyledTextareaControlProps extends ICommonInputControlMixin {
-  /** The number of visible text lines for the control. If it is specified, it must be a positive integer. If it is not specified, the default value is 2. */
+  /** The number of visible text lines for the control. If it is specified, it
+   * must be a positive integer. If it is not specified, the default value is
+   * 2. */
   rows?: HTMLTextAreaElement['rows'];
-  /** The resize CSS property sets whether an element is resizable, and if so, in which directions.*/
+  /** The resize CSS property sets whether an element is resizable, and if so,
+   * in which directions.*/
   resize?: TTextareaResize;
 }
 

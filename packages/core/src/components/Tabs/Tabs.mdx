@@ -9,8 +9,10 @@ import { tabsBasicUsageCode, tabsMarkCode } from './__stories__';
 
 ## Overview
 
-Navigation component that allows users to switch between different sections of content in a tabbed interface.
-It can be used to create a horizontal set of tabs, with each tab corresponding to a different section of content.
+Navigation component that allows users to switch between different sections of
+content in a tabbed interface.
+It can be used to create a horizontal set of tabs, with each tab corresponding
+to a different section of content.
 
 ## How to import
 
@@ -24,11 +26,15 @@ There is a set of components which should be used to build a `Tabs` component.
   and allow its children to inherit them from the `TabsContext`.
 - `Tabs.List`: the tab list items of the component.
 - `Tabs.Item`: each tab of the component.
-- `Tabs.Aside`: the custom content to be placed before or/and after the tab list items block.
-- `Tabs.Divider`: the divider to apply separation between tab items or between the tabs block and the aside ones.
-- `Tabs.Mark`: the active mark for the tab item which moves along the Tabs block.
+- `Tabs.Aside`: the custom content to be placed before or/and after the tab
+  list items block.
+- `Tabs.Divider`: the divider to apply separation between tab items or between
+  the tabs block and the aside ones.
+- `Tabs.Mark`: the active mark for the tab item which moves along the Tabs
+  block.
 
-This way, using all the available `Tabs` components we could have a structure as this:
+This way, using all the available `Tabs` components we could have a structure
+as this:
 
 ```jsx
 <Tabs>
@@ -43,8 +49,9 @@ This way, using all the available `Tabs` components we could have a structure as
 </Tabs>
 ```
 
-In the other hand, to manage the active tab item and the movement of the active mark, we have to use the
-`UseActiveTab` hook [(More info)](#useactivetab) and integrate what it provides with our components.
+In the other hand, to manage the active tab item and the movement of the active
+mark, we have to use the `UseActiveTab` hook [(More info)](#useactivetab) and
+integrate what it provides with our components.
 
 <Canvas of={Stories.Base} sourceState="none" />
 
@@ -52,25 +59,28 @@ In the other hand, to manage the active tab item and the movement of the active 
 
 ## Context
 
-The `Tabs` component uses internally a React context which allows children to inherit some props:
+The `Tabs` component uses internally a React context which allows children to
+inherit some props:
 
 - `colorScheme`.
 - `size`.
 - `wide`.
 
-This way you only have to pass these props to the `Tabs` parent component and its children
-will inherit them automatically, as in this example:
+This way you only have to pass these props to the `Tabs` parent component and
+its children will inherit them automatically, as in this example:
 
 <Canvas of={Stories.Context} />
 
 ## Keyboard support
 
-If you use the provided hook `useTabsAccessibility` then the keyboard support will be available for the `Tabs`.
+If you use the provided hook `useTabsAccessibility` then the keyboard support
+will be available for the `Tabs`.
 
 ### Tab
 
 - When focus moves into the tab list, places focus on the active tab element.
-- When the tab list contains the focus, moves focus to the next element in the tab sequence, which usually is the 'tabpanel' element.
+- When the tab list contains the focus, moves focus to the next element in the
+  tab sequence, which usually is the 'tabpanel' element.
 
 ### Right arrow
 
@@ -113,11 +123,12 @@ Hook to manage the accessibility getting [keyboard support](#keyboard-support).
 
 ### useTabsMark
 
-Hook to manage the active tab mark: its width and position based in the active tab item and its parent container.
+Hook to manage the active tab mark: its width and position based in the active
+tab item and its parent container.
 This hook provides:
 
-- The `ref` of the tabs mark which is provided by `markRef`. It has to be passed as `ref` prop to the component which
-  acts as mark.
+- The `ref` of the tabs mark which is provided by `markRef`. It has to be
+  passed as `ref` prop to the component which acts as mark.
 
 #### Parameters
 

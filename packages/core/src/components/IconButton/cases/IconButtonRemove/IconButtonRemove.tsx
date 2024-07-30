@@ -1,10 +1,9 @@
 import * as React from 'react';
+
 import { GIExitClose } from '@devoinc/genesys-icons';
 
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
-
 import { IconButton, type IconButtonProps } from '../../IconButton';
-
 import type { TButtonBasicState } from '../../../Button/declarations';
 
 export interface IconButtonRemoveProps

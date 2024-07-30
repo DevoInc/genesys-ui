@@ -1,9 +1,12 @@
 import * as React from 'react';
-
 import { Meta, StoryObj } from '@storybook/react';
 
 import { GIRocketSpaceNasa } from '@devoinc/genesys-icons';
-import { Box, Button, InlineMessage, Typography } from '..';
+
+import { Box } from '../Box';
+import { Button } from '../Button';
+import { InlineMessage } from '../InlineMessage';
+import { Typography } from '../Typography';
 import { inlineMessageContentFS } from './__stories__/utils';
 import { lorem, lorem2, lorem3 } from '../../../stories/utils/fillerTexts';
 

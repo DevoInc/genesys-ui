@@ -19,13 +19,13 @@ export const DecoratorBar: React.FC<DecoratorBarProps> = ({
   as,
   direction = 'vertical',
   size = '100%',
-  styles,
+  style,
 }) => {
   return (
     <StyledDecoratorBar
       aria-hidden={true}
       as={as}
-      css={styles}
+      css={style}
       direction={direction}
       size={size}
     />

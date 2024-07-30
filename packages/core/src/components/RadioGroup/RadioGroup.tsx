@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { WithRequired } from '../../typeFunctions';
-
 import { Form, type FormGroupProps } from '../Form';
 
 export interface RadioGroupProps

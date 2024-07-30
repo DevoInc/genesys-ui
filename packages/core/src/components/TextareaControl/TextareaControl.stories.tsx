@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { TextareaControl, VFlex } from '..';
+import { TextareaControl } from './TextareaControl';
+import { VFlex } from '../VFlex';
 
 const meta: Meta<typeof TextareaControl> = {
   title: 'Components/Form/TextareaControl',

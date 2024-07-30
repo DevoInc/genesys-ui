@@ -1,0 +1,158 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as BlockQuoteStories from './BlockQuote/BlockQuote.stories';
+import * as CaptionStories from './Caption/Caption.stories';
+import * as CodeBlockStories from './CodeBlock/CodeBlock.stories';
+import * as HeadingStories from './Heading/Heading.stories';
+import * as LeadStories from './Lead/Lead.stories';
+import * as ListStories from './List/List.stories';
+import * as ListItemStories from './ListItem/ListItem.stories';
+import * as ParagraphStories from './Paragraph/Paragraph.stories';
+
+<Meta title="Components/Layout/Toolbar/Components/Block/Docs" />
+
+# Block components
+
+Typographic block components are used either within other components such as
+`HelperMessage`, `ValidationMessage`, `FieldLabel`, or as a base for them.
+
+## How to import
+
+<Source code={`import { Typography } from '@devoinc/genesys-ui';`} />
+
+## BlockQuote
+
+`Typography.BlockQuote` renders an HTML Block Quotation Element. It indicates
+that the enclosed text is an extended quotation. A URL for the source of the
+quotation may be given using the 'cite' attribute.
+
+### Basic usage
+
+<Canvas of={BlockQuoteStories.BaseBlockQuote} />
+
+### Props
+
+<ArgTypes of={BlockQuoteStories} />
+
+## CodeBlock
+
+`Typography.CodeBlock` displays its contents styled in a fashion intended to
+indicate that the text is a fragment of computer code.
+
+### Basic usage
+
+<Canvas of={CodeBlockStories.BaseCodeBlock} />
+
+### Props
+
+<ArgTypes of={CodeBlockStories} />
+
+## List and List.Item
+
+`Typography.List` component can render an unordered list (by default,
+represented as an HTML `<ul>`) or an ordered list (represented as an HTML
+`<ol>`). These lists typically display items as bullets or numbered items.
+
+To render a list with `Typography.List`, each child component must be a
+`Typography.List.Item`, which renders an HTML `<li>` element.
+
+### List - Basic usage
+
+<Canvas of={ListStories.BaseList} />
+
+### List - API
+
+<ArgTypes of={ListStories} />
+
+### List.Item - Basic usage
+
+<Canvas of={ListItemStories.BaseListItem} />
+
+### List.Item - API
+
+<ArgTypes of={ListItemStories} />
+
+## Paragraph
+
+`Typography.Paragraph` renders an HTML `<p>`. Paragraphs are usually represented
+in visual media as blocks of text separated from adjacent blocks by blank lines,
+although they can be any structural grouping of related content.
+
+### Basic usage
+
+<Canvas of={ParagraphStories.BaseParagraph} />
+
+### Editable
+
+<Canvas of={ParagraphStories.ParagraphEditable} />
+
+### Props
+
+<ArgTypes of={ParagraphStories} />
+
+## Caption
+
+`Typography.Caption` component is similar to `Paragraph`, but it is intended to
+be used for short text blocks. Therefore, by default, it is limited to one line
+and the `sm` size prop value.
+
+### Basic usage
+
+<Canvas of={CaptionStories.BaseCaption} />
+
+### Props
+
+<ArgTypes of={CaptionStories} />
+
+## Lead
+
+The `Typography.Lead` component is designed to be used as a
+subtitle or summary block alongside a Heading component.
+
+### Basic usage
+
+<Canvas of={LeadStories.BaseLead} />
+
+### Props
+
+<ArgTypes of={LeadStories} />
+
+## Heading
+
+`Typography.Heading` component generates HTML headings that serve as titles or
+subtitles for various components, such as Panel Header titles, `BoxMessage`
+titles, and Grouping titles in menus and forms.
+
+To use standard HTML headings (`h1`-`h6`) with Typography.Heading, set the type
+prop to any 'h-' value. By default, they render as an HTML div. However, it's
+possible to render them as any `h1` to `h6` element by using the 'as' prop.
+
+### Basic usage
+
+<Canvas of={HeadingStories.BaseHeading} />
+
+### Cases
+
+For commercial or on-boarding contexts that require extra-large headings, we can
+use any 'hero-' value for the 'type' prop. Here's an example:
+
+<Source
+  code={`<Typography.Heading type={'hero-md'} >Heading</ Typography.Heading>`}
+/>
+
+For a subtle heading to group menu items, form fields, and similar items, we can
+use any `overline-` value for the 'type' prop.
+
+<Source code={`
+<Typography.Heading type={'overline-md'}>
+  Heading
+</Typography.Heading>
+`} />
+
+## Editable heading
+
+<Canvas of={HeadingStories.HeadingEditable} />
+
+### Props
+
+<ArgTypes of={HeadingStories} />

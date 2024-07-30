@@ -1,17 +1,15 @@
 import * as React from 'react';
-import { concat } from 'lodash';
 import { css, useTheme } from 'styled-components';
 
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 import { STATUS_ICON_MAP } from '../../../../constants';
-
 import { IconButton, type IconButtonProps } from '../../IconButton';
-
 import { Box } from '../../../Box';
 import { getMarkerSize } from './utils';
 import { GIAngleUp } from '@devoinc/genesys-icons';
 import { Icon } from '../../../Icon';
 import { iconButtonStatusMixin } from '../IconButtonStatus/mixins';
+import { mergeStyles } from '../../../../helpers';
 
 export interface IconButtonGoToDocsProps
   extends Omit<
@@ -48,7 +46,7 @@ export const IconButtonGoToDocs = React.forwardRef<
       rel = 'noreferrer noopener',
       size = 'md',
       state = 'enabled',
-      styles,
+      style,
       target = '_blank',
       ...restIconButtonProps
     },
@@ -81,14 +79,14 @@ export const IconButtonGoToDocs = React.forwardRef<
         circular
         ref={ref}
         size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
-        styles={concat(
+        style={mergeStyles(
           iconButtonStatusMixin({
             state,
             colorScheme: 'help',
             theme,
           }),
           hoveredMixin,
-          styles,
+          style,
         )}
       >
         <Box

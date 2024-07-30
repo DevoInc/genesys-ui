@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Button, ToastContainer, toast, ToastProps, Typography } from '../';
+import { Button } from '../Button';
+import { ToastContainer } from './ToastContainer';
+import { toast, type ToastProps } from './Toast';
+import { Typography } from '../Typography';
 import { lorem, lorem2, lorem3 } from '../../../stories/utils/fillerTexts';
 import { ToastPanel } from './components';
 

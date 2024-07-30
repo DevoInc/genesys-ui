@@ -41,7 +41,6 @@ export interface TagGroupFlexSpacingMixinProps extends Pick<ITagGroup, 'size'> {
  *
  * @return specific styles for Label
  */
-
 export const tagGroupFlexSpacingMixin = ({
   size,
   theme,

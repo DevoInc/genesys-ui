@@ -1,4 +1,5 @@
-import React from 'react';
+import * as React from 'react';
+
 import { STATUS_ICON_MAP } from '../../constants';
 import type { TFieldStatus } from '../../declarations';
 import { OmitUnion } from '../../typeFunctions/omitUnion';

@@ -1,6 +1,7 @@
+import { DefaultTheme } from 'styled-components';
+
 import { TGlobalSpacing } from '../../declarations';
 import { getSpacingPropCss } from '../../helpers';
-import { DefaultTheme } from 'styled-components';
 
 /**
  * Get the children flex css value when they fit the whole space creating rows

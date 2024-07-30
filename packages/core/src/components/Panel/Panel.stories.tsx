@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Panel, Button, IconButton, Typography } from '..';
-import { TextBlock, TextBlockSM } from './__stories__/helpers';
 import {
   GIArrowLeft,
   GIChartFlame,
   GIMenuAltVertical,
 } from '@devoinc/genesys-icons';
+
+import { Panel } from './Panel';
+import { Button } from '../Button';
+import { IconButton } from '../IconButton';
+import { Typography } from '../Typography';
+import { TextBlock, TextBlockSM } from './__stories__/helpers';
 import { lorem, lorem2 } from '../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Panel> = {

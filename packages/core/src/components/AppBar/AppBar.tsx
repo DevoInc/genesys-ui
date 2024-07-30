@@ -22,14 +22,14 @@ const InternalAppBar: React.FC<AppBarProps> = ({
   sticky = false,
   tabs,
   heading,
-  styles,
+  style,
   ...restContainerProps
 }) => (
   <AppBarContainer
     {...restContainerProps}
     id={id}
     sticky={sticky}
-    styles={styles}
+    style={style}
   >
     {heading && (
       <AppBarHeading id={id ? `${id}__heading` : null}>{heading}</AppBarHeading>

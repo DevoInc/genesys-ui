@@ -4,8 +4,7 @@
 import * as React from 'react';
 
 import { HIDDEN_TEXT } from './constants';
-
-import { WithRequired } from '../../typeFunctions';
+import type { WithRequired } from '../../typeFunctions';
 import type {
   IDataAttrs,
   IGlobalAriaAttrs,
@@ -14,7 +13,6 @@ import type {
   IStyledPolymorphic,
 } from '../../declarations';
 import type { TStepperStatus, TStepperSize } from './declarations';
-
 import { StepperContainer, StepperItem } from './components';
 
 export interface StepperProps
@@ -36,14 +34,14 @@ export const InternalStepper: React.FC<StepperProps> = ({
   size = 'md',
   steps = [],
   tooltip,
-  styles,
+  style,
   ...nativeProps
 }) => (
   <StepperContainer
     {...nativeProps}
     size={size}
     tooltip={tooltip}
-    styles={styles}
+    style={style}
   >
     {steps.map((el, idx) => (
       <StepperItem

@@ -46,7 +46,7 @@ export const TextareaControl: React.FC<TextareaControlProps> = ({
   rows = 4,
   size,
   status,
-  styles,
+  style,
   tooltip,
   ...restNativeProps
 }) => {
@@ -76,7 +76,7 @@ export const TextareaControl: React.FC<TextareaControlProps> = ({
       }
       aria-label={ariaLabel}
       aria-labelledby={contextBasedProps.ariaLabelledBy}
-      css={styles}
+      css={style}
       disabled={contextBasedProps.disabled}
       id={contextBasedProps.id}
       required={contextBasedProps.required}

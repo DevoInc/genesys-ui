@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+
 import { ModalHeader } from '../../components';
 
 const meta: Meta<typeof ModalHeader> = {
@@ -12,7 +13,6 @@ const meta: Meta<typeof ModalHeader> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof ModalHeader>;
 
 export const Header: Story = {

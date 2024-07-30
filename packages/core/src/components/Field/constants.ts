@@ -1,4 +1,3 @@
-// FIELD - FIELD LABEL POSITION & DIRECTION - MAP - CONSTANTS --------------- //
 export const FIELD_LABEL_POS_DIRECTION_MAP = {
   BETWEEN: 'between',
   LEFT: 'row',
@@ -6,7 +5,6 @@ export const FIELD_LABEL_POS_DIRECTION_MAP = {
   RIGHT: 'reverse',
 } as const;
 
-// FIELD - FLEX CONFIGURATION - MAP - CONSTANTS ----------------------------------- //
 export const ROW = {
   GAP: 'cmp-xs',
   FD: 'row',
@@ -37,7 +35,6 @@ export const COLUMN = {
 
 export const FIELD_FLEX_CONFIG = { ROW, REVERSE, BETWEEN, COLUMN } as const;
 
-// FIELD - FIELD SIZE & HELPER SIZE - MAP - CONSTANTS ----------------------- //
 export const FIELD_HELPER_SIZE_MAP = {
   sm: 'xs',
   md: 'sm',

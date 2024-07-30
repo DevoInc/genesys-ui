@@ -6,7 +6,6 @@ import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../declarations';
-
 import {
   TagBadge,
   TagContainer,
@@ -34,32 +33,30 @@ export const InternalTag: React.FC<TagProps> = ({
   quiet,
   wide,
   size = 'md',
-  styles,
+  style,
   text,
   tooltip,
   ...restNativeProps
-}) => {
-  return (
-    <TagContainer
-      {...restNativeProps}
-      colorScheme={colorScheme}
-      bold={bold}
-      quiet={quiet}
-      wide={wide}
-      size={size}
-      styles={styles}
-      tooltip={tooltip}
-    >
-      {quiet && <TagBadge colorScheme={colorScheme} icon={icon} size={size} />}
-      {text && icon && !quiet && (
-        <TagIcon strong={bold} size={size}>
-          {icon}
-        </TagIcon>
-      )}
-      {text && <TagLabel>{text}</TagLabel>}
-    </TagContainer>
-  );
-};
+}) => (
+  <TagContainer
+    {...restNativeProps}
+    colorScheme={colorScheme}
+    bold={bold}
+    quiet={quiet}
+    wide={wide}
+    size={size}
+    style={style}
+    tooltip={tooltip}
+  >
+    {quiet && <TagBadge colorScheme={colorScheme} icon={icon} size={size} />}
+    {text && icon && !quiet && (
+      <TagIcon strong={bold} size={size}>
+        {icon}
+      </TagIcon>
+    )}
+    {text && <TagLabel>{text}</TagLabel>}
+  </TagContainer>
+);
 
 export const Tag = InternalTag as typeof InternalTag & {
   _Badge: typeof TagBadge;

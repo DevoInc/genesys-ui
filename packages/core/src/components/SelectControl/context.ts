@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Props } from 'react-select';
+
 import type { ICommonSelectCmps, TSelectOption } from './declarations';
 
 export interface SelectControlContextProps<TSelectOption> {

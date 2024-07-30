@@ -22,7 +22,8 @@ interface CommonCheckboxControlProps
     ICheckAriaAttrs,
     Pick<IInputAttrs, 'value'>,
     Omit<StyledCheckboxControlProps, '$size'> {
-  /** The size for the checkbox. It affects to its width, height, font-size... etc. */
+  /** The size for the checkbox. It affects to its width, height, font-size...
+   * etc. */
   size?: TFieldSize;
 }
 
@@ -43,7 +44,7 @@ export const CheckboxControl: React.FC<CheckboxControlProps> = ({
   required,
   size,
   status,
-  styles,
+  style,
   tooltip,
   ...restNativeProps
 }) => {
@@ -74,7 +75,7 @@ export const CheckboxControl: React.FC<CheckboxControlProps> = ({
       }
       aria-labelledby={contextBasedProps.ariaLabelledBy}
       checked={onChange ? checked : undefined}
-      css={styles}
+      css={style}
       disabled={contextBasedProps.disabled}
       id={contextBasedProps.id}
       indeterminate={indeterminate}

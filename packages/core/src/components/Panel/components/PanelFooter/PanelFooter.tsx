@@ -3,7 +3,6 @@ import * as React from 'react';
 import { PanelContext } from '../../context';
 import type { IPanelFooterAttrs } from './declarations';
 import type { IPanelBaseAttrs, IPanelHelpAttrs } from '../../declarations';
-
 import {
   PanelFooterActions,
   PanelFooterContainer,
@@ -27,7 +26,7 @@ export const InternalPanelFooter: React.FC<PanelFooterProps> = ({
   helpUrl,
   removeSpace,
   size,
-  styles,
+  style,
 }) => {
   const context = React.useContext(PanelContext);
   const evalSize = size || context.size || 'md';
@@ -39,7 +38,7 @@ export const InternalPanelFooter: React.FC<PanelFooterProps> = ({
       hasBackground={hasBackground}
       bordered={bordered}
       removeSpace={removeSpace}
-      styles={styles}
+      style={style}
       size={evalSize}
     >
       {children ? (

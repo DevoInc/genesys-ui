@@ -1,4 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
+
 import type { ISwitch, TSwitchDiameter } from './declarations';
 import { disabledMixin, typoMixin } from '../../styled';
 

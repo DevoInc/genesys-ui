@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { InputControl, Form } from '../..';
+import { Form } from '../Form';
+import { InputControl } from '../../InputControl';
 
 const meta: Meta<typeof Form.Item> = {
   title: 'Components/Form/Form/Components',

@@ -8,9 +8,10 @@ import * as Stories from './Modal.stories';
 
 ## Overview
 
-Component designed to display content or messages in a pop-up window that appears on top of the current screen.
-It provides a flexible and customizable way to display important information or prompt the user for
-input in a separate pop-up window without disrupting the main flow of the application.
+Component designed to display content or messages in a pop-up window that
+appears on top of the current screen. It provides a flexible and customizable
+way to display important information or prompt the user for input in a separate
+pop-up window without disrupting the main flow of the application.
 
 ## How to import
 
@@ -20,38 +21,40 @@ input in a separate pop-up window without disrupting the main flow of the applic
 
 <Canvas of={Stories.Base} />
 
-There is a set of components which have to/should be used to build a `Modal` component.
-There are three components which are the base of the `Modal` component. This one is
-based on `Panel` component, so these internal components are based in too:
+There is a set of components which have to/should be used to build a `Modal`
+component. There are three components which are the base of the `Modal`
+component. This one is based on `Panel` component, so these internal components
+are based in too:
 
-- `Modal.Header`: it's equivalent to the `Panel.Header` component, but with more limited available props.
-- `Modal.Body`: it's equivalent to the `Panel.Body` component, but with more limited available props.
-- `Modal.Footer`: it's equivalent to the `Panel.Footer` component, but with more limited available props.
-  This last one is not strictly required to create a `Modal`.
+- `Modal.Header`: it's equivalent to the `Panel.Header` component, but with more
+  limited available props.
+- `Modal.Body`: it's equivalent to the `Panel.Body` component, but with more
+  limited available props.
+- `Modal.Footer`: it's equivalent to the `Panel.Footer` component, but with
+  more limited available props. This last one is not strictly required to create
+  a `Modal`.
 
-<Source
-  code={`
+<Source code={`
 <Modal>
   <Modal.Header />
   <Modal.Body>{children}</Modal.Body>
   <Modal.Footer />
 </Modal>
-`}
-/>
+`} />
 
-There are also optional components, which are not strictly necessary to build the main `Modal`
-component and therefore they have the `_` prefix:
+There are also optional components, which are not strictly necessary to build
+the main `Modal` component and therefore they have the `_` prefix:
 
-- `Modal._Backdrop`: it's the `Overlay` component as clickable background of the `Modal`.
-- `Modal._Panel`: it's the `panel` component as direct parent of the `Panel` based internal components
-  (`Panel.Header`... etc.).
+- `Modal._Backdrop`: it's the `Overlay` component as clickable background of
+  the `Modal`.
+- `Modal._Panel`: it's the `panel` component as direct parent of the `Panel`
+  based internal components (`Panel.Header`... etc.).
 
-This way, the `Modal` component used as the wrapper of the `Modal.Header`, `Modal.Body` and
-`Modal.Footer` is a combination of a `Modal._Backdrop` and `Modal._Panel` components,
-so the real internal structure is:
+This way, the `Modal` component used as the wrapper of the `Modal.Header`,
+`Modal.Body` and `Modal.Footer` is a combination of a `Modal._Backdrop` and
+`Modal._Panel` components, so the real internal structure is:
 
-<Source
-  code={`
+<Source code={`
 <Modal._Backdrop>
   <Modal._Panel>
     <Modal.Header />
@@ -59,12 +62,12 @@ so the real internal structure is:
     <Modal.Footer />
   </Modal._Panel>
 </Modal._Backdrop>
-`}
-/>
+`} />
 
-Anyway, define the component with this structure is only necessary when you need to apply custom styles to the
-`Modal._Backdrop` or `Modal._Panel`. That's the reason these types of component have the prefix `_`,
-because they are optional for building the main component.
+Anyway, define the component with this structure is only necessary when you need
+to apply custom styles to the `Modal._Backdrop` or `Modal._Panel`. That's the
+reason these types of component have the prefix `_`, because they are optional
+for building the main component.
 
 ## With actions
 
@@ -74,9 +77,10 @@ The Modal component can also be used to display a header with actions.
 
 ## Adding animations
 
-If you want to add animations to your Modal component,
-you can use a third-party animation library to achieve this effect.
-For example, you can use `framer-motion` library along with a simple fade animation to create a more visually appealing display of the modal window.
+If you want to add animations to your Modal component, you can use a
+third-party animation library to achieve this effect.
+For example, you can use `framer-motion` library along with a simple fade
+animation to create a more visually appealing display of the modal window.
 
 <Canvas of={Stories.Animated} />
 

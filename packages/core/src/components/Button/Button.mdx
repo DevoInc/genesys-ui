@@ -9,7 +9,8 @@ import * as Stories from './Button.stories';
 ## Overview
 
 Buttons enable users to take actions or make choices with a single tap.
-They are typically placed throughout your UI, including in dialogs, modal windows, forms, cards, or toolbars.
+They are typically placed throughout your UI, including in dialogs, modal
+windows, forms, cards, or toolbars.
 
 ## How to import
 
@@ -27,16 +28,19 @@ The `Button` component can be used as a dropdown trigger.
 
 ## As link
 
-It can also be used as a link. In this case, the `href` prop must be used instead of the `onClick` prop.
+It can also be used as a link. In this case, the `href` prop must be used
+instead of the `onClick` prop.
 
 <Canvas of={Stories.AsLink} />
 
 ## Loading
 
-The `Button` component has loading states to indicate that a process launched with its action
-is currently running, or has finished successfully or with errors.
+The `Button` component has loading states to indicate that a process launched
+with its action is currently running, or has finished successfully or with
+errors.
 
-When the `state` prop value is `loading`, a spinner is always rendered at the left of the `Button`.
+When the `state` prop value is `loading`, a spinner is always rendered at the
+left of the `Button`.
 If there is an icon at the left, it will be replaced by the spinner.
 
 You can use different values for `children` and `icon` based on each `state`
@@ -47,33 +51,39 @@ Here are some examples:
 
 ### Loading success
 
-When the `state` prop value is `loading-success`, a check icon is always rendered at the left of the `Button`.
-If there is an icon at the left, it will be replaced by the check icon, but only for a few seconds.
-Additionally, there is an animation that changes the color scheme from the original to
-the success scheme and back again a few seconds later.
+When the `state` prop value is `loading-success`, a check icon is always
+rendered at the left of the `Button`.
+If there is an icon at the left, it will be replaced by the check icon, but only
+for a few seconds.
+Additionally, there is an animation that changes the color scheme from the
+original to the success scheme and back again a few seconds later.
 
 <Canvas of={Stories.Success} />
 
 ### Loading error
 
 When the `state` prop value is `loading-error`, an error icon is always rendered
-at the left of the `Button`. If there is an icon at the left, it will be replaced
-by the error icon, but only for a few seconds. Additionally, there is an animation
-that changes the color scheme from the original to the error scheme and back again a few seconds later.
+at the left of the `Button`. If there is an icon at the left, it will be
+replaced by the error icon, but only for a few seconds. Additionally, there is
+an animation that changes the color scheme from the original to the error scheme
+and back again a few seconds later.
 
 <Canvas of={Stories.Error} />
 
 ## Selectable
 
 Buttons can be used as form radio or form checkbox.
-In fact, the generated HTML is a `<label>` with an `<input type='radio'>` or `<input type='checkbox'>` inside.
-To use as a radio group, it must be used only as part of a group with the same value for the `name` prop.
-This allows the previous selected option to be automatically deselected when another one
-is selected because this type of selection is always unique.
+In fact, the generated HTML is a `<label>` with an `<input type='radio'>` or
+`<input type='checkbox'>` inside.
+To use as a radio group, it must be used only as part of a group with the same
+value for the `name` prop.
+This allows the previous selected option to be automatically deselected when
+another one is selected because this type of selection is always unique.
 
 ### Selectable multiple
 
-When selectionScheme is `multiple`, the `Button` component is used as a form checkbox.
+When `selectionScheme` is `multiple`, the `Button` component is used as a form
+`checkbox`.
 It can either be uncontrolled or controlled.
 
 #### Uncontrolled
@@ -86,7 +96,8 @@ It can either be uncontrolled or controlled.
 
 ### Selectable single
 
-When selectionScheme is `single`, the `Button` component is used as a form radio.
+When `selectionScheme` is `single`, the `Button` component is used as a form
+radio.
 
 #### Uncontrolled
 
@@ -98,9 +109,12 @@ When selectionScheme is `single`, the `Button` component is used as a form radio
 
 ## Custom based in internal components
 
-Sometimes you need something very specific, which is not possible using only the component and its props.
-In these cases, you can use its internal components (`_` notation) to define that specific usage.
-We don't recommend this usage, but anyway it's available for very specific needs.
+Sometimes you need something very specific, which is not possible using only the
+component and its props.
+In these cases, you can use its internal components (`_` notation) to define
+that specific usage.
+We don't recommend this usage, but anyway it's available for very specific
+needs.
 
 <Canvas of={Stories.Custom} />
 

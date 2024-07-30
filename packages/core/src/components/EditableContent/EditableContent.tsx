@@ -14,6 +14,7 @@ import type {
 } from '../../declarations';
 import { Icon } from '../Icon';
 import { StyledEditableContent } from './StyledEditableContent';
+import { mergeStyles } from '../../helpers';
 
 export interface EditableContentProps
   extends IGlobalAttrs,
@@ -29,19 +30,19 @@ export interface EditableContentProps
 export const EditableContent: React.FC<EditableContentProps> = React.forwardRef<
   HTMLDivElement,
   EditableContentProps
->(({ children, tooltip, styles, ...nativeProps }, ref) => {
+>(({ children, tooltip, style, ...nativeProps }, ref) => {
   const theme = useTheme();
   const iconSize = theme.alias.typo.fontSize.icon.xxxs;
   return (
     <StyledEditableContent
       {...nativeProps}
-      css={concat(
+      css={mergeStyles(
         css`
           &:focus > svg {
             opacity: 0;
           }
         `,
-        styles,
+        style,
       )}
       contentEditable
       ref={ref}

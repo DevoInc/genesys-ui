@@ -17,14 +17,14 @@ export const Divider: React.FC<DividerProps> = ({
   customColor,
   height,
   margin,
-  styles,
+  style,
   vertical = false,
   width,
 }) => (
   <StyledDivider
     role={'separator'}
     colorScheme={colorScheme}
-    css={styles}
+    css={style}
     customColor={customColor}
     $height={height}
     margin={margin}

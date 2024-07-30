@@ -3,6 +3,7 @@ import { useTheme } from 'styled-components';
 
 import type { TButtonSize } from '../../declarations';
 import { Icon, type IconProps } from '../../../Icon';
+import { mergeStyles } from '../../../../helpers';
 
 export interface ButtonIconProps extends Pick<IconProps, 'strong' | 'style'> {
   /** Sets padding, line-height, font-size, etc. */
@@ -22,11 +23,13 @@ export const ButtonIcon: React.FC<ButtonIconProps> = ({
     <Icon
       size={theme.cmp.button.icon.typo.fontSize[size]}
       strong={strong}
-      style={{
-        position: 'relative',
-        transition: 'transform ease 0.15s',
-        ...style,
-      }}
+      style={mergeStyles(
+        {
+          position: 'relative',
+          transition: 'transform ease 0.15s',
+        },
+        style,
+      )}
     >
       {children}
     </Icon>

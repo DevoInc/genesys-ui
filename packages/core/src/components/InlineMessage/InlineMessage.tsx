@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
 import type { IDataAttrs, IGlobalAttrs } from '../../declarations/htmlAttrs';
@@ -7,20 +6,18 @@ import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../declarations/styled';
-
 import { WithRequired } from '../../typeFunctions';
 import { inlineMessageContainerMixin } from './helpers';
-
 import { Popover, type PopoverProps } from '../Popover';
 import type { IconButtonStatusProps } from '../IconButton';
 import type { TButtonExpandableState, TButtonSize } from '../Button';
-
 import {
   InlineMessageArrow,
   InlineMessageBanner,
   InlineMessagePanel,
   InlineMessageTrigger,
 } from './components';
+import { mergeStyles } from '../../helpers';
 
 export interface InlineMessageProps
   extends IDataAttrs,
@@ -60,7 +57,7 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
   state = 'enabled',
   status = 'help',
   strategy = 'fixed',
-  styles,
+  style,
   tooltip,
   trigger,
   zIndex,
@@ -117,13 +114,13 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
           id={`${id}__content`}
           padding="0"
           role={status === 'error' ? 'alert' : null}
-          styles={concat(
+          style={mergeStyles(
             ...inlineMessageContainerMixin({
               placement: innerPlacement,
               status,
               theme,
             }),
-            styles,
+            style,
           )}
           width="auto"
         >

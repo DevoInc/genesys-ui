@@ -12,7 +12,6 @@ import type {
   IStyledPolymorphic,
   ITriggerAriaAttrs,
 } from '../../declarations';
-
 import { StyledLink, type StyledLinkProps } from './StyledLink';
 
 export interface LinkProps
@@ -39,13 +38,13 @@ export const Link: React.FC<LinkProps> = ({
   onClick,
   size = 'md',
   state = 'enabled',
-  styles,
+  style,
   tabIndex,
   tooltip,
   underlined,
   ...restNativeProps
 }) => {
-  const onLinkClick = (event) => {
+  const onLinkClick = (event: React.MouseEvent) => {
     if (!href) {
       event.preventDefault();
     }
@@ -58,7 +57,7 @@ export const Link: React.FC<LinkProps> = ({
     <StyledLink
       {...restNativeProps}
       colorScheme={colorScheme}
-      css={styles}
+      css={style}
       href={href}
       lineClamp={lineClamp}
       onClick={onLinkClick}

@@ -8,11 +8,11 @@ import * as Stories from './KeyValue.stories';
 
 ## Overview
 
-It's an easy way to represent any type of data: new alerts, new messages, number of visits, temperature... etc.
-with a key-value format.
+It's an easy way to represent any type of data: new alerts, new messages, number
+of visits, temperature... etc. with a key-value format.
 
-Useful when we need to represent data in a structured way, associate a key with a value or when we need to draw
-attention to some short info.
+Useful when we need to represent data in a structured way, associate a key with
+a value or when we need to draw attention to some short info.
 
 ## How to import
 
@@ -24,54 +24,63 @@ This is an example of a canonical usage with data based in key-value format:
 
 <Canvas of={Stories.Base} />
 
-But not always is strictly a key-value data. For instance, sometimes you want to use this component to represent
-a data with format title-description as in this info message:
+But not always is strictly a key-value data. For instance, sometimes you want to
+use this component to represent a data with format title-description as in this
+info message:
 
 <Canvas of={Stories.TitleDescription} />
 
 ## Supporting visual
 
-We can add a visual supporting at the beginning of the component by `SupportingVisual` prop. This prop expects a
-`React.Reactnode`, so we can use almost any content, but typically we will use three types of content:
+We can add a visual supporting at the beginning of the component by
+`SupportingVisual` prop. This prop expects a `React.Reactnode`, so we can use
+almost any content, but typically we will use three types of content:
 
-- Icon react component from genesys-icons library as `<GIUserRoleAdmin />`, `<GIWeatherSunSummer>`... etc.
-  They get automatically the perfect size inheriting the size from the component context.
-- HTML image which can link to an image (jpg, png... etc.) or SVG code. In this case you must define
-  the width and height, because it doesn't inherit form the context. These values must be 36-40px to adjust
-  to the height of the content block with 'base' format or 24-28px with 'row' one.
-- Any other visual component of the library as `Avatar`, `Thumbnail`, `Icon`... etc.
+- Icon react component from genesys-icons library as `<GIUserRoleAdmin />`,
+  `<GIWeatherSunSummer>`... etc. They get automatically the perfect size
+  inheriting the size from the component context.
+- HTML image which can link to an image (jpg, png... etc.) or SVG code. In this
+  case you must define the width and height, because it doesn't inherit form the
+  context. These values must be 36-40px to adjust to the height of the content
+  block with 'base' format or 24-28px with 'row' one.
+- Any other visual component of the library as `Avatar`, `Thumbnail`, `Icon`...
+  etc.
 
 <Canvas of={Stories.SupportingVisual} />
 
 ## With unit
 
-It's possible to add a unit at the end fo the value block which is very useful when we talk about data volume (Gb),
-temperature (ºC), money ($)... etc.
+It's possible to add a unit at the end fo the value block which is very useful
+when we talk about data volume (Gb), temperature (ºC), money ($)... etc.
 
 <Canvas of={Stories.WithUnit} />
 
 ## Defining which is the bold content
 
-Sometimes you want to highlight the key, but other times you want to highlight the value, depending on which block
-you want to draw the attention to. Usually the value is highlighted when is auto-explained, as in name, description,
-temperature, state... etc. Then you can use the `boldContent` prop ('key' by default) to define the value
-as the bold content.
+Sometimes you want to highlight the key, but other times you want to highlight
+the value, depending on which block you want to draw the attention to. Usually
+the value is highlighted when is auto-explained, as in name, description,
+temperature, state... etc. Then you can use the `boldContent` prop ('key' by
+default) to define the value as the bold content.
 
 <Canvas of={Stories.BoldContent} />
 
 ## Inverting order
 
-Anyway, sometimes you might need to draw the attention to the value, in spite of it's not auto-explained,
-maybe because it's a recurrent data info which the user read a lot of times, then you can also invert the order of the
-blocks with the `invertOrder` prop. Usually if this prop is 'true' it's accompanied by 'value' `boldContent` prop value.
+Anyway, sometimes you might need to draw the attention to the value, in spite of
+it's not auto-explained, maybe because it's a recurrent data info which the user
+read a lot of times, then you can also invert the order of the blocks with the
+`invertOrder` prop. Usually if this prop is 'true' it's accompanied by 'value'
+`boldContent` prop value.
 
 <Canvas of={Stories.InvertedOrder} />
 
 ## Custom usage
 
-Sometimes you need something very specific, which is not possible using only the components and its props.
-In these cases, you can use its Internal components (`_` notation) to define that specific usage. We don't
-recommend this usage, but anyway it's available for very specific needs.
+Sometimes you need something very specific, which is not possible using only the
+components and its props. In these cases, you can use its Internal components
+(`_` notation) to define that specific usage. We don't recommend this usage, but
+anyway it's available for very specific needs.
 
 <Canvas of={Stories.Custom} />
 

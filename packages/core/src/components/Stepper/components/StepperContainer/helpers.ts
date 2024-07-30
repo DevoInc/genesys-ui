@@ -1,4 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
+
 import type { TStepperSize } from '../../declarations';
 
 export interface IStepperContainerMixin {

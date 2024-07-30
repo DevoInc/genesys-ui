@@ -8,12 +8,9 @@ import type {
   IStyledPolymorphic,
 } from '../../declarations';
 import type { TSpinnerColorScheme, TSpinnerSize } from './declarations';
-
-import {
-  StyledSpinnerLoaderSvg,
-  StyledSpinnerLoaderCircle,
-  StyledSpinnerLoaderCircleAnimated,
-} from './styled';
+import { StyledSpinnerLoaderSvg } from './StyledSpinnerLoaderSvg';
+import { StyledSpinnerLoaderCircle } from './StyledSpinnerLoaderCircle';
+import { StyledSpinnerLoaderCircleAnimated } from './StyledSpinnerLoaderCircleAnimated';
 
 export interface SpinnerLoaderProps
   extends IStyledPolymorphic,
@@ -28,7 +25,7 @@ export interface SpinnerLoaderProps
 export const SpinnerLoader: React.FC<SpinnerLoaderProps> = ({
   colorScheme = 'dark',
   size = 'md',
-  styles,
+  style,
   tooltip,
   ...restNativeProps
 }) => {
@@ -36,7 +33,7 @@ export const SpinnerLoader: React.FC<SpinnerLoaderProps> = ({
     <StyledSpinnerLoaderSvg
       {...restNativeProps}
       colorScheme={colorScheme}
-      css={styles}
+      css={style}
       size={size}
       title={tooltip}
       viewBox={'0 0 50 50'}

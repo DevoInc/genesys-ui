@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { VFlex, type VFlexProps } from '../VFlex';
 import { MenuHeading, MenuItem, MenuSeparator } from './components';
 
@@ -13,8 +14,8 @@ const InternalMenu: React.FC<MenuProps> = ({
   cmpRole = 'menu',
   spacing = '0',
   ...restVFlexProps
-}) => {
-  return cmpRole === 'nav' ? (
+}) =>
+  cmpRole === 'nav' ? (
     <VFlex
       {...restVFlexProps}
       as={as}
@@ -36,7 +37,6 @@ const InternalMenu: React.FC<MenuProps> = ({
       {children}
     </VFlex>
   );
-};
 
 export const Menu = InternalMenu as typeof InternalMenu & {
   Heading: typeof MenuHeading;

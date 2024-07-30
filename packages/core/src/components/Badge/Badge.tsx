@@ -42,7 +42,7 @@ export const InternalBadge: React.FC<BadgeProps> = ({
   size = 'md',
   text,
   tooltip,
-  styles,
+  style,
   ...nativeProps
 }) => {
   const theme = useTheme();
@@ -53,7 +53,7 @@ export const InternalBadge: React.FC<BadgeProps> = ({
       hasAbsolutePosition={hasAbsolutePosition}
       inverse={inverse}
       size={size}
-      styles={styles}
+      style={style}
       tooltip={tooltip}
     >
       {!text && icon && (

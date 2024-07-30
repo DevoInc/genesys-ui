@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import { concat } from 'lodash';
 
 import { Banner, type BannerProps } from '../../../Banner';
 import { inlineMessageBannerMixin } from './helpers';
+import { mergeStyles } from '../../../../helpers';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface InlineMessageBannerProps
   extends Omit<BannerProps, 'children'> {}
 
@@ -14,7 +13,7 @@ export const InlineMessageBanner: React.FC<InlineMessageBannerProps> = ({
   content,
   id,
   status,
-  styles,
+  style,
   title,
 }) => {
   const theme = useTheme();
@@ -25,7 +24,7 @@ export const InlineMessageBanner: React.FC<InlineMessageBannerProps> = ({
       hideIcon
       id={id}
       status={status}
-      styles={concat(inlineMessageBannerMixin({ theme }), styles)}
+      style={mergeStyles(inlineMessageBannerMixin({ theme }), style)}
       title={title}
     />
   );

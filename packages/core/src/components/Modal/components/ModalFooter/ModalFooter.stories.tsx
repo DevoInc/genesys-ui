@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+
 import { ModalFooter } from './ModalFooter';
 import { Box } from '../../../Box';
 import { IconButtonGoToDocs } from '../../../IconButton';
@@ -11,7 +12,6 @@ const meta: Meta<typeof ModalFooter> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof ModalFooter>;
 
 export const Footer: Story = {

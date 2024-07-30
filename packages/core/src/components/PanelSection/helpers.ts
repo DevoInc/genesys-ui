@@ -1,4 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
+
 import type { PanelBodyProps } from '../Panel/components';
 
 interface getPanelSectionBodySpacingProps {

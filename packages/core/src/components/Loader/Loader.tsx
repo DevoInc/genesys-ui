@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import { Overlay, type OverlayProps } from '../Overlay';
-
 import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
@@ -14,10 +13,8 @@ import type {
   TLoaderColorScheme,
   TLoaderBasicColorScheme,
 } from './declarations';
-
 import { getLoaderContentColorScheme } from './utils';
 import { LoaderContext } from './context';
-
 import {
   LoaderDevoLogoSpinner,
   LoaderGradientContainer,
@@ -55,7 +52,7 @@ const InternalLoader: React.FC<LoaderProps> = ({
   size = 'md',
   zIndex = 10,
   role,
-  styles,
+  style,
   tooltip,
   ...nativeProps
 }) => {
@@ -78,7 +75,7 @@ const InternalLoader: React.FC<LoaderProps> = ({
       opacity={opaque ? 1 : 0.8}
       padding={String(padding) || evalDefaultPadding}
       role={role}
-      styles={styles}
+      style={style}
       tooltip={tooltip}
       zIndex={zIndex || (fixed ? 99999 : undefined)}
     >

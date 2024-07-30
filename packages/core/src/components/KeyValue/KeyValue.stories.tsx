@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+
 import {
   GIAlerts,
   GIUserRoleAdmin,
   GIUsersProfileGroupTwo,
   GIWeatherSunSummer,
 } from '@devoinc/genesys-icons';
-import exampleSVG from './__stories__/undraw_cooking.svg';
 
+import exampleSVG from './__stories__/undraw_cooking.svg';
 import { KeyValue } from './KeyValue';
 import { HFlex } from '../HFlex';
 import { Avatar } from '../Avatar';

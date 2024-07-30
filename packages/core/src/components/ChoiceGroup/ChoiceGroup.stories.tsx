@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { ChoiceGroup, IconButton } from '../';
 import {
   GIArrowsPlayRepeat,
   GIArrowsPlayShuffle,
@@ -17,6 +16,8 @@ import {
   GIPinBookmark,
   GIPlay,
 } from '@devoinc/genesys-icons';
+
+import { ChoiceGroup, IconButton } from '../';
 
 const meta: Meta<typeof ChoiceGroup> = {
   title: 'Components/Form/ChoiceGroup',
