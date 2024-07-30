@@ -14,7 +14,6 @@ import { getToastStatusIcon } from '../utils';
 import { Panel } from '../../Panel';
 import { PanelContext } from '../../Panel/context';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ToastHeaderProps
   extends Pick<
     IToast,

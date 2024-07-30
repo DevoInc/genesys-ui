@@ -4,7 +4,6 @@ import type { IBaseProgressBar } from '../declarations';
 import { ProgressBarContext } from '../context';
 import { Flex, type FlexProps } from '../../Flex';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ProgressBarInnerContainerProps
   extends FlexProps,
     Pick<IBaseProgressBar, 'type'> {}

@@ -4,7 +4,6 @@ import { StyledSwitchControlInput } from '../styled';
 import { InputControlInputProps } from '../../InputControl/components';
 import { CheckboxControlProps } from '../../CheckboxControl';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface SwitchControlInputProps
   extends InputControlInputProps,
     Pick<CheckboxControlProps, 'checked'> {}

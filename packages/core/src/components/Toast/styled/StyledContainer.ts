@@ -4,7 +4,6 @@ import type { ToastContainerProps } from 'react-toastify/dist/types';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledToastContainerProps extends ToastContainerProps {}
 
 export const StyledToastContainer = styled(ToastContainer)`

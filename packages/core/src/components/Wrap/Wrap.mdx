@@ -25,9 +25,9 @@ You only have to add children to the component and wrap them.
 
 ## Using Wrap.Item
 
-We can use `Wrap.Item` component in a flex structure wrapping children to assign flex,
-order, and align-self CSS styles to each child component. It's only necessary when we need
-those specific styles for any child.
+We can use `Wrap.Item` component in a flex structure wrapping children to assign
+flex, order, and align-self CSS styles to each child component. It's only
+necessary when we need those specific styles for any child.
 
 Here is an example that demonstrates different CSS flex and align-self
 settings for each child component of a Flex component:
@@ -36,30 +36,30 @@ settings for each child component of a Flex component:
 
 ## childrenByRow
 
-You can use prop `childrenByRow` to define a specific number of columns with the same width for each child.
-In this example you can see four children by row:
+You can use prop `childrenByRow` to define a specific number of columns with the
+same width for each child. In this example you can see four children by row:
 
 <Canvas of={Stories.ChildrenByRow} />
 
 ## Using the as property
 
-The `as` property allow these components to be rendered as any HTML tag: 'div', 'li', 'section'... etc.
+The `as` property allow these components to be rendered as any HTML tag: 'div',
+'li', 'section'... etc.
 
-If you want to use the `Wrap` component rendered with a different HTML tag, you can use the `as` property.
-It allows these components to be rendered as any HTML tag, such as div, li, section, and so on.
+If you want to use the `Wrap` component rendered with a different HTML tag, you
+can use the `as` property.
+It allows these components to be rendered as any HTML tag, such as div, li,
+section, and so on.
 
-<Source
-  code={`
-import * as React from 'react';
+<Source code={`import * as React from 'react';
 import { Wrap } from '@devoinc/genesys-ui';
 
 const MyWrapCmp = () => (
-
-<Wrap as={'ul'}>
-  <Wrap.Item as={'li'}>Child 1</Wrap.Item>
-  <Wrap.Item as={'li'}>Child 2</Wrap.Item>
-  <Wrap.Item as={'li'}>Child 3</Wrap.Item>
-</Wrap>
+  <Wrap as={'ul'}>
+    <Wrap.Item as={'li'}>Child 1</Wrap.Item>
+    <Wrap.Item as={'li'}>Child 2</Wrap.Item>
+    <Wrap.Item as={'li'}>Child 3</Wrap.Item>
+  </Wrap>
 ); `} />
 
 <Markdown>{spacingProps}</Markdown>

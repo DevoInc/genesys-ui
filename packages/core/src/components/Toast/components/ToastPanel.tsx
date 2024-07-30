@@ -13,7 +13,6 @@ import { ToastBadge } from './ToastBadge';
 import { ToastBody } from './ToastBody';
 import { ToastHeader } from './ToastHeader';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ToastPanelProps
   extends IStyledOverloadCss,
     IDataAttrs,

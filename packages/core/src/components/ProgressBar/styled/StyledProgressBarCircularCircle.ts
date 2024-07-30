@@ -4,7 +4,6 @@ import type { IBaseProgressBar } from '../declarations';
 
 import { getTrackBgColor } from '../utils';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledProgressBarCircularProps
   extends Pick<IBaseProgressBar, 'colorScheme' | 'status' | 'size'> {}
 

@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { Divider, type DividerProps } from '../../../Divider';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ToolbarDividerProps extends Omit<DividerProps, 'vertical'> {}
 
 export const ToolbarDivider: React.FC<ToolbarDividerProps> = ({

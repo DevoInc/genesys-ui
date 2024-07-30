@@ -8,7 +8,8 @@ import * as Stories from './Banner.stories';
 
 ## Overview
 
-Component designed to display a message or notification to the user, with customizable content, title, and status.
+Component designed to display a message or notification to the user, with
+customizable content, title, and status.
 
 ## How to import
 
@@ -20,20 +21,23 @@ Component designed to display a message or notification to the user, with custom
 
 ## With actions
 
-You can add actions at the end of the `Banner` adding the `actions` prop. This prop admits a React node,
-but we recommend to use the `Banner.Action` or the `Banner.SubtleAction` if it's the subtle variant,
-because they inherit automatically some props from their parent.
+You can add actions at the end of the `Banner` adding the `actions` prop. This
+prop admits a React node, but we recommend to use the `Banner.Action` or the
+`Banner.SubtleAction` if it's the subtle variant, because they inherit
+automatically some props from their parent.
 
-For instance, we have here two actions: one which inherits the `colorScheme` from the `status` of the parent,
-and another one which specifies its own `colorScheme`.
+For instance, we have here two actions: one which inherits the `colorScheme`
+from the `status` of the parent, and another one which specifies its own
+`colorScheme`.
 
 <Canvas of={Stories.Actions} />
 
 ## Subtle variant
 
-This is a variant for the `Banner` component when you need to use it in small contexts or
-for not an important and/or temporary message. This variant implies less size,
-spacing, less heavy background-color, content and actions in a unique line... etc.
+This is a variant for the `Banner` component when you need to use it in small
+contexts or for not an important and/or temporary message. This variant implies
+less size, spacing, less heavy background-color, content and actions in a unique
+line... etc.
 
 <Canvas of={Stories.Subtle} />
 
@@ -45,12 +49,15 @@ You can make the `Banner` removable, based on cookies, using the `close` prop.
 
 ## Custom usage
 
-Sometimes you need something very specific, which is not possible using only the component and its props.
-In these cases, you can use its internal components (`_` notation) to define that specific usage.
-We don't recommend this usage, but anyway it's available for very specific needs.
+Sometimes you need something very specific, which is not possible using only the
+component and its props.
+In these cases, you can use its internal components (`_` notation) to define
+that specific usage.
+We don't recommend this usage, but anyway it's available for very specific
+needs.
 
-The `Banner._Icon` and the `Banner._Actions` inherit automatically the `status` prop from its parent `Banner._Container`
-by context.
+The `Banner._Icon` and the `Banner._Actions` inherit automatically the `status`
+prop from its parent `Banner._Container` by context.
 
 <Canvas of={Stories.Custom} />
 

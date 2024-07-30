@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { type StyledToastContainerProps, StyledToastContainer } from './styled';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ToastContainerProps
   extends Omit<StyledToastContainerProps, 'theme' | 'containerId'> {}
 

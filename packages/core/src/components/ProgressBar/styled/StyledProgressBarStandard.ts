@@ -45,7 +45,6 @@ const movingStripes = (height) => keyframes`
   }
 `;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledProgressBarStandardProps
   extends Pick<
     IBaseProgressBar,

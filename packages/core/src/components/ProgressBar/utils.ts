@@ -17,7 +17,6 @@ import {
 import { SQUARE, STATUS_COLOR_SCHEME_MAP } from './constants';
 import type { IconProps } from '../Icon';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ProgressBarBaseUtilsProps
   extends Pick<IBaseProgressBar, 'percent' | 'status'> {}
 

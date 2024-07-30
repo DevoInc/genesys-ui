@@ -3,7 +3,6 @@ import { useTheme } from 'styled-components';
 
 import { Icon, type IconProps } from '../../../../Icon';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TabsItemIconProps extends IconProps {}
 
 export const TabsItemIcon: React.FC<TabsItemIconProps> = ({
@@ -13,7 +12,7 @@ export const TabsItemIcon: React.FC<TabsItemIconProps> = ({
 }) => {
   const marginRight = useTheme().cmp.tabs.item.space.margin.iconToText;
   return (
-    <Icon {...restIconProps} style={{ marginRight: marginRight, ...style }}>
+    <Icon {...restIconProps} style={{ marginRight, ...style }}>
       {children}
     </Icon>
   );

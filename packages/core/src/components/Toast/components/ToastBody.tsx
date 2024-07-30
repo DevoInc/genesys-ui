@@ -6,7 +6,6 @@ import { HFlex } from '../../HFlex';
 import { Typography } from '../../Typography';
 import { Panel } from '../../Panel';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ToastBodyProps extends Pick<IToast, 'collapsed' | 'content'> {}
 
 export const ToastBody: React.FC<ToastBodyProps> = ({ content, collapsed }) => {

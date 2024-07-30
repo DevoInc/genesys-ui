@@ -13,7 +13,6 @@ import { GIAngleUp } from '@devoinc/genesys-icons';
 import { Icon } from '../../../Icon';
 import { iconButtonStatusMixin } from '../IconButtonStatus/mixins';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IconButtonGoToDocsProps
   extends Omit<
     IconButtonProps,

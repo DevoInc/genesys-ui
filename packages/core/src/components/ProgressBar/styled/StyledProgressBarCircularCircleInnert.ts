@@ -19,7 +19,6 @@ const sizeStroke = keyframes`
   }
 `;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface StyledProgressBarCircularCircleInnerProps
   extends Pick<IBaseProgressBar, 'indeterminate' | 'percent' | 'status'> {
   rad: number;
