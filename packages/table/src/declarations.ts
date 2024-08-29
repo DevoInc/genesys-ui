@@ -61,7 +61,24 @@ export type TColDef = {
   truncateLine?: number;
   toEdge?: boolean;
   headerOnFilterPosition?: boolean;
+  hide?: boolean,
 };
+
+export type TRowDef = {
+  hide?: boolean,
+  id: string,
+}
+
+export type TAfterRow = {
+  hide?: boolean,
+  id: string,
+}
+
+export type TCellDef = {
+  idColumn: string,
+  idRow: string,
+  hide?: boolean,
+}
 
 export type TPreset = {
   id: string;
@@ -127,6 +144,8 @@ export type TCellEditor = {
 export interface ITable {
   data: TData;
   colDefs?: TColDef[];
+  rowDefs?: TRowDef[];
+  afterRowDefs?: TAfterRow[];
   defaultColDef?: TDefaultColDef;
   columnPresets?: TPreset[];
   context?: {

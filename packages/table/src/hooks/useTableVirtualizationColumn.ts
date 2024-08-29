@@ -32,7 +32,7 @@ export const useTableVirtualizationColumn = ({
       const col = colDefs[index];
       const width = col?.width
         ? Math.max(getPixels(col.width), getPixels(col?.minWidth ?? 0))
-        : null;
+        : col?.hide ? 0 : null;
       colWidths[index] = width;
       if (width !== null) {
         filled += width ?? 0;
