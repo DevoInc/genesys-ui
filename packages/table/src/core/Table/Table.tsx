@@ -11,6 +11,7 @@ export interface TableProps extends ITable {}
 export const Table: React.FC<TableProps> = ({
   defaultColDef,
   colDefs = [],
+  rowDefs = {}, 
   columnPresets = [],
   density = 'default',
   striped = false,
@@ -52,6 +53,7 @@ export const Table: React.FC<TableProps> = ({
         onSort,
         onFilter,
         rowHeight,
+        rowDefs,
       }}
     >
       <WrapperContextProvider>
