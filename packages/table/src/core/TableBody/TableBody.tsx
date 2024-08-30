@@ -32,6 +32,7 @@ export const TableBody: React.FC<TableBodyProps> = ({
             columnVirtualizer={columnVirtualizer}
             data={data[virtualRow.index]}
             virtualRow={virtualRow}
+            rowVirtualizer={rowVirtualizer}
           />
         );
       })}

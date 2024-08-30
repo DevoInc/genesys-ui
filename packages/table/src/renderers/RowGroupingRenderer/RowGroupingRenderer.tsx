@@ -9,6 +9,8 @@ export const RowGroupingRenderer: React.FC<TCellRenderer> = ({
   value,
   rowIndex,
   colDef,
+  virtualRow,
+  rowVirtualizer,
 }) => {
   const context = colDef?.context as TRowGroupingContext;
 

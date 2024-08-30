@@ -8,6 +8,9 @@ export const useRenderContent = (
   colDef: TColDef,
   data: unknown,
   rowIndex: number,
+  rowVirtualizer,
+  virtualRow,
+  rowDef
 ) => {
   const cellRef = React.useRef<HTMLTableCellElement>();
 
@@ -18,6 +21,9 @@ export const useRenderContent = (
           : data,
         colDef,
         rowIndex,
+        rowVirtualizer,
+        virtualRow,
+        rowDef
       })
     : '';
 
