@@ -81,8 +81,17 @@ const BasicCmp = () => {
     data: dataOrdered,
     rowDefs: [],
     colDefs: colDefsInitial,
-    renderAfterRow: (row) => row.name
+    renderAfterRow: ({ value, virtualRow, rowVirtualizer, rowDef }) => {
+      //debugger;
+      if (!rowDef.hide) {
+        rowVirtualizer.resizeItem(virtualRow, 36);
+      } else {
+        rowVirtualizer.resizeItem(virtualRow, 0);
+      }
+      return value.name;
+    },
   });
+
   return (
     <Flex flexDirection="column" gap="cmp-md">
       <Flex.Item>
