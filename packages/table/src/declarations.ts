@@ -61,24 +61,27 @@ export type TColDef = {
   truncateLine?: number;
   toEdge?: boolean;
   headerOnFilterPosition?: boolean;
-  hide?: boolean,
+  hide?: boolean;
 };
 
 export type TRowDef = {
-  hide?: boolean,
-  id: string,
-}
+  hide?: boolean;
+  id: string;
+  cellRenderer?:
+    | React.FC<TCellRenderer>
+    | (({ value, colDef, rowIndex, row }: TCellRenderer) => React.ReactNode);
+};
 
 export type TAfterRow = {
-  hide?: boolean,
-  id: string,
-}
+  hide?: boolean;
+  id: string;
+};
 
 export type TCellDef = {
-  idColumn: string,
-  idRow: string,
-  hide?: boolean,
-}
+  idColumn: string;
+  idRow: string;
+  hide?: boolean;
+};
 
 export type TPreset = {
   id: string;
@@ -128,6 +131,7 @@ export type TCellRenderer = {
   value: unknown;
   colDef: TColDef;
   rowIndex: number;
+  row: TRow;
 };
 
 export type THeaderRenderer = {

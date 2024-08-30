@@ -1,3 +1,4 @@
+export * from './afterRow';
 export * from './addBulkColumnData';
 export * from './getOptionsFromData';
 export * from './orderDataByOrderStruct';

@@ -3,6 +3,7 @@ import { useVirtualizer } from '@tanstack/react-virtual';
 
 import { TableContext } from '../context/TableContext';
 import { ROW_HEIGHT_MD } from '../constants';
+import { getRowDef } from '../core/Row/utils';
 
 type TUseVirtualizationParamsRow = {
   ref: React.MutableRefObject<HTMLDivElement>;
@@ -11,14 +12,14 @@ type TUseVirtualizationParamsRow = {
 export const useTableVirtualizationRow = ({
   ref,
 }: TUseVirtualizationParamsRow) => {
-  const { rowHeight, colDefs, data } = React.useContext(TableContext);
+  const { rowHeight, colDefs, data, rowDefs } = React.useContext(TableContext);
 
   const height = React.useMemo(() => {
     const maxHeight =
       rowHeight ??
       colDefs.reduce(
         (prev: number, curr) =>
-          curr?.rowHeight ?? 0 > prev ? curr.rowHeight : prev,
+          (curr?.rowHeight ?? 0 > prev) ? curr.rowHeight : prev,
         0,
       );
     return maxHeight > 0 ? maxHeight : ROW_HEIGHT_MD;
@@ -27,7 +28,11 @@ export const useTableVirtualizationRow = ({
   return useVirtualizer({
     count: data.length,
     getScrollElement: () => ref.current,
-    estimateSize: () => height,
+    estimateSize: (index: number) => {
+      const rowDef = getRowDef(rowDefs, data[index].id as string);
+      return rowDef?.hide ? 0 : height;
+    },
     overscan: 10,
   });
 };
+
