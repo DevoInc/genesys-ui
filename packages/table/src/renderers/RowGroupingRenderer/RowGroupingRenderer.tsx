@@ -6,22 +6,20 @@ import type { TCellRenderer } from '../../declarations';
 import { TRowGroupingContext } from '../../facade';
 
 export const RowGroupingRenderer: React.FC<TCellRenderer> = ({
-  value,
-  rowIndex,
   colDef,
-  virtualRow,
-  rowVirtualizer,
+  row,
 }) => {
   const context = colDef?.context as TRowGroupingContext;
+  const isOpened = context.selection.includes(row.id as string);
 
   return (
     <IconButtonCollapse
-      onClick={(event) => {
-        if (context?.onRowGroupingChange) {
-          context.onRowGroupingChange(rowIndex, event);
+      onClick={() => {
+        if (context?.onClick) {
+          context.onClick(row.id as string);
         }
       }}
-      state={value ? 'expanded' : 'enabled'}
+      state={isOpened ? 'expanded' : 'enabled'}
     />
   );
 };

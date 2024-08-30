@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useUpdateEffect } from 'ahooks';
 
 import { getPxFromRem } from '@devoinc/genesys-ui';
 
@@ -19,7 +20,7 @@ import { useTheme } from 'styled-components';
 export const TableWrapper: React.FC = () => {
   const { ref } = useWrapperObserver();
   const theme = useTheme();
-  const { maxHeight, colDefs, data, showFilters, density } =
+  const { maxHeight, colDefs, data, showFilters, density, rowDefs } =
     React.useContext(TableContext);
   const { width: wrapperWidth } = React.useContext(WrapperContext);
 
@@ -35,6 +36,10 @@ export const TableWrapper: React.FC = () => {
   const height =
     (rowsTotalSize === 0 ? 1 : rowsTotalSize) +
     headHeight * (showFilters ? 2 : 1);
+
+  useUpdateEffect(() => {
+    rowVirtualizer.measure();
+  }, [rowDefs, data]);
 
   return (
     <StyledTableWrapper ref={ref} maxHeight={maxHeight}>

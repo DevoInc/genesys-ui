@@ -2,15 +2,13 @@ import * as React from 'react';
 
 import { useOnEventOutside } from '@devoinc/genesys-ui';
 
-import type { TColDef } from '../../declarations';
+import type { TColDef, TRow } from '../../declarations';
 
 export const useRenderContent = (
   colDef: TColDef,
   data: unknown,
   rowIndex: number,
-  rowVirtualizer,
-  virtualRow,
-  rowDef
+  row: TRow,
 ) => {
   const cellRef = React.useRef<HTMLTableCellElement>();
 
@@ -21,9 +19,7 @@ export const useRenderContent = (
           : data,
         colDef,
         rowIndex,
-        rowVirtualizer,
-        virtualRow,
-        rowDef
+        row,
       })
     : '';
 
