@@ -25,7 +25,6 @@ export const TableWrapper: React.FC = () => {
 
   const rowVirtualizer = useTableVirtualizationRow({ ref });
   const columnVirtualizer = useTableVirtualizationColumn({ ref });
-debugger;
   const { hasScroll } = useTableScroll(rowVirtualizer, ref);
   const width = columnVirtualizer.getTotalSize();
   const headHeight = React.useMemo(
