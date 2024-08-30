@@ -23,7 +23,6 @@ export const Row: React.FC<RowProps> = ({
     React.useContext(TableContext);
 
   const rowDef = getRowDef(rowDefs, data.id as string);
-debugger;
   return rowDef?.cellRenderer ? (
     <StyledTableRow
       $height={`${virtualRow.size}px`}
