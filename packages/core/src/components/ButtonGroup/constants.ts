@@ -6,4 +6,4 @@ export const FLEX_SPACING_SIZE_MAP: { [key in TButtonSize]: TButtonSize } = {
   sm: 'xs',
   md: 'xs',
   lg: 'sm',
-} as const;
+};

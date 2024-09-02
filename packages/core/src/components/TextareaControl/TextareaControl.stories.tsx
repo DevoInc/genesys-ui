@@ -11,7 +11,6 @@ const meta: Meta<typeof TextareaControl> = {
     size: 'md',
     status: 'base',
     rows: 4,
-    resize: 'both',
   },
   argTypes: {
     // because the storybook doesn't recognize the WithRequired utility

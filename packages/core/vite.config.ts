@@ -59,9 +59,8 @@ export default defineConfig({
       },
     }),
     dts({
-      rollupTypes: true,
-      // entryRoot: './src/',
-      // exclude: ['./src/**/*.test.ts?(x)', './src/**/*.stories.tsx'],
+      entryRoot: './src/',
+      exclude: ['./src/**/*.test.ts?(x)', './src/**/*.stories.tsx'],
     }),
   ],
   test: {

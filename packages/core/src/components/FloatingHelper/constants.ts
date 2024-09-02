@@ -7,4 +7,4 @@ export const FLOATING_HELPER_ICON_BUTTON_SIZE_MAP: {
   sm: 'xxs',
   md: 'xs',
   lg: 'sm',
-} as const;
+};

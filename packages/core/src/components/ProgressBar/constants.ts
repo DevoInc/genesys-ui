@@ -13,7 +13,7 @@ export const PROGRESSBAR_STATUS_ICON_MAP: {
   error: STATUS_ICON_MAP.filled.error,
   warning: STATUS_ICON_MAP.filled.warning,
   complete: STATUS_ICON_MAP.filled.success,
-} as const;
+};
 
 export const STATUS_ICON_CIRCULAR_MAP: {
   [key in TProgressBarStatus]: React.ReactNode;
@@ -22,21 +22,21 @@ export const STATUS_ICON_CIRCULAR_MAP: {
   error: STATUS_ICON_MAP.stroke.error,
   warning: STATUS_ICON_MAP.stroke.warning,
   complete: STATUS_ICON_MAP.stroke.success,
-} as const;
+};
 
 export const ICON_CIRCULAR_SIZE_MAP: {
   [key in TProgressBarSize]: TGlobalSize;
 } = {
   sm: 'xxxs',
   md: 'sm',
-} as const;
+};
 
 export const ICON_STANDARD_SIZE_MAP: {
   [key in TProgressBarSize]: TGlobalSize;
 } = {
   sm: 'xxxxs',
   md: 'xxxs',
-} as const;
+};
 
 export const STATUS_COLOR_SCHEME_MAP: {
   [key: string]: TGlobalStatus;
@@ -45,11 +45,11 @@ export const STATUS_COLOR_SCHEME_MAP: {
   complete: 'success',
   error: 'error',
   warning: 'warning',
-} as const;
+};
 
 export const SQUARE: {
   [key in TProgressBarSize]: number;
 } = {
   sm: 40,
   md: 60,
-} as const;
+};

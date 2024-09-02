@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import { CONTENT_SWITCHER_ITEM_SIZE_MAP } from '../../constants';
-import { Button, type ButtonProps } from '../../../Button';
+import { Button, type TButtonSize, type ButtonProps } from '../../../Button';
 import type { TBaseSize } from '../../../../declarations/commonProps';
 import {
   contentSwitcherItemMixin,
@@ -55,7 +55,7 @@ export const ContentSwitcherItem: React.FC<ContentSwitcherItemProps> = ({
       onClick={onClick}
       role="tab"
       selectionScheme="single"
-      size={CONTENT_SWITCHER_ITEM_SIZE_MAP[context.size || size]}
+      size={CONTENT_SWITCHER_ITEM_SIZE_MAP[context.size || size] as TButtonSize}
       state={selected ? 'selected' : state}
       style={mergeStyles(
         contentSwitcherItemMixin({ state, theme, wide }),

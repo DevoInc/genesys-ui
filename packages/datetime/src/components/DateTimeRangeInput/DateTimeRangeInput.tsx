@@ -24,7 +24,7 @@ import {
   type StyledDateTimeRangeInputProps,
 } from './StyledDateTimeRangeInput';
 
-import { TRealtimeState } from './declarations';
+import { TRealtimeState } from '../RealTimeButton/declarations';
 import { REAL_TIME_SIZE_MAP } from './constants';
 import { RealTimeButton, type RealTimeButtonProps } from '../RealTimeButton';
 
@@ -91,7 +91,7 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
   wide,
   size = 'md',
   statuses = ['base', 'base'],
-  styles,
+  style,
   controlWidth,
   status = 'base',
 }) => {
@@ -109,7 +109,7 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
         aria-controls={isOpen ? ariaControls : null}
         aria-haspopup
         as={as}
-        css={styles}
+        css={style}
         hideRealTime={hasRealTime(realTime)}
         id={id}
         isOpen={isOpen}
@@ -151,7 +151,7 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
             placeholder={placeholders[0]}
             size={size}
             status={statuses[0]}
-            styles={cssDateTimeRangeInput({ size, status: statuses[0] })}
+            style={cssDateTimeRangeInput({ size, status: statuses[0] })}
             value={value[0]}
           />
         </Field>
@@ -186,7 +186,7 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
             placeholder={placeholders[1]}
             size={size}
             status={statuses[1]}
-            styles={cssDateTimeRangeInput({ size, status: statuses[1] })}
+            style={cssDateTimeRangeInput({ size, status: statuses[1] })}
             value={value[1]}
           />
         </Field>

@@ -22,7 +22,7 @@ const mapStatusIcon: {
   error: STATUS_ICON_MAP.filled.error,
   success: STATUS_ICON_MAP.filled.success,
   warning: STATUS_ICON_MAP.filled.warning,
-} as const;
+};
 
 export interface DropdownIndicatorProps<Option>
   extends RSDropdownIndicatorProps<Option>,

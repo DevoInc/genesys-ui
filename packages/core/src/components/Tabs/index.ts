@@ -9,5 +9,4 @@ export type {
 } from './components';
 export * from './context';
 export * from './declarations';
-export * from './utils';
 export * from './hooks';

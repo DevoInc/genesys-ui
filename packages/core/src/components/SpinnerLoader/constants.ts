@@ -42,7 +42,7 @@ const SIZE_VALUES = {
   md: '2.8rem',
   lg: '3.2rem',
   xl: '4.4rem',
-} as const;
+};
 
 export const getSize = (size: TSpinnerSize) =>
   SIZE_VALUES[size] || SIZE_VALUES.md;

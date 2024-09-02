@@ -24,7 +24,7 @@ const statusIconMap: { [key in TActiveStatus]: React.FC<IIcon> } = {
   info: GIInfoRoundFilled,
   error: GIErrorWarningDangerStopFilled,
   warning: GIAttentionErrorAlertCautionFilled,
-} as const;
+};
 
 export interface ModalIconProps extends IStyledOverloadCss {
   /** Status of the modal **/

@@ -9,7 +9,7 @@ export const HELPER_ICON_SIZE_MAP: { [key in THelperSize]: IconProps['size'] } =
     sm: 'xxs',
     md: 'xs',
     lg: 'sm',
-  } as const;
+  };
 
 export const HELPER_SIZE_SPACE_MAP: { [key in THelperSize]: TGlobalSpacing } = {
   xxs: 'cmp-xs',
@@ -17,4 +17,4 @@ export const HELPER_SIZE_SPACE_MAP: { [key in THelperSize]: TGlobalSpacing } = {
   sm: 'cmp-xs',
   md: 'cmp-sm',
   lg: 'cmp-sm',
-} as const;
+};

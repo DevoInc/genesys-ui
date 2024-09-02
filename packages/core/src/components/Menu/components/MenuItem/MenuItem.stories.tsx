@@ -114,7 +114,7 @@ export const ReadOnly: Story = {
             <Badge
               text="RS"
               size="sm"
-              styles="width: 2.4rem; height: 2.4rem; padding: 0;"
+              style="width: 2.4rem; height: 2.4rem; padding: 0;"
             />
           }
           bottomContent={

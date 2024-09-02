@@ -35,7 +35,7 @@ export interface DateTimePickerProps
     >,
     Pick<IGlobalAriaAttrs, 'aria-label'>,
     Pick<IGlobalAttrs, 'id'>,
-    Pick<IStyledOverloadCss, 'styles'>,
+    Pick<IStyledOverloadCss, 'style'>,
     Pick<IStyledPolymorphic, 'as'> {
   onChange?: DateTimeProps['onChange'];
   value?: Date | number;

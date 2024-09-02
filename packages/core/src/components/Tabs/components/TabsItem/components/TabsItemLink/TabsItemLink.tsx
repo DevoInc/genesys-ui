@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { linkStateMap } from '../../../../utils';
 import { tabsLinkMixin, type ITabsLinkMixin } from '../helpers';
 import type { Resolve } from '../../../../../../typeFunctions';
 import { Link, type LinkProps } from '../../../../../Link';
@@ -30,7 +29,7 @@ export const TabsItemLink: React.FC<Resolve<TabsItemLinkProps>> = ({
       aria-selected={ariaSelected || state === 'selected'}
       aria-disabled={state === 'disabled' ? true : undefined}
       role="tab"
-      state={linkStateMap[state]}
+      state={state === 'selected' ? 'enabled' : state}
       style={mergeStyles(
         tabsLinkMixin({ closable, theme, size, state }),
         style,

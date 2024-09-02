@@ -51,7 +51,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
   hasSeconds = true,
   hasTime = true,
   onChange,
-  styles,
+  style,
   parseDate = parseAllDates,
   weekDays,
   weekStart,
@@ -67,7 +67,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
       as={as}
       alignItems="stretch"
       minWidth={theme.cmp.calendar.size.minWidth}
-      styles={styles}
+      style={style}
     >
       <MonthSelector
         i18n={i18n}

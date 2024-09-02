@@ -514,7 +514,7 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
 
       // SCROLLBAR
       ${scrollbars({
-        cornerColor: cmpTokens.color.background,
+        $cornerColor: cmpTokens.color.background,
         theme,
       })};
     }

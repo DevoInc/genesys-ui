@@ -10,6 +10,7 @@ import type { IStyledOverloadCss } from '../../../../declarations';
 import { IconButton, type IconButtonProps } from '../../../IconButton';
 import { StyledInputControlShowPassword } from './StyledInputControlShowPassword';
 import type { IInputControlShowPassword } from './declarations';
+import { type TButtonSize } from 'src/components/Button';
 
 export interface InputControlShowPasswordProps
   extends IInputControlShowPassword,
@@ -24,7 +25,7 @@ export const InputControlShowPassword: React.FC<
       icon={showPassword ? <GIEyeViewFilled /> : <GIEyeVisibilityShowVisible />}
       circular
       onClick={onClick}
-      size={INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP[size]}
+      size={INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP[size] as TButtonSize}
       state={showPassword ? 'selected' : 'enabled'}
     />
   </StyledInputControlShowPassword>
