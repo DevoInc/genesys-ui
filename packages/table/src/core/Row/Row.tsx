@@ -8,7 +8,6 @@ import { getRowDef } from './utils';
 interface RowProps extends StyledTableRowProps {
   data: { [key: string]: unknown };
   columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
-  rowVirtualizer: Virtualizer<HTMLDivElement, Element>;
   virtualRow: VirtualItem;
 }
 
