@@ -86,4 +86,8 @@ export interface ITypography {
   /** The number of lines before get truncated text with overflow to ellipsis
    * (Css line-clamp property). */
   truncateLine?: number;
+  /** Definition of variant and size in the same value: hero-sm, heading-h1,
+   * body-sm... etc. */
+  format?: TTypographyFormat;
+  bold?: boolean;
 }

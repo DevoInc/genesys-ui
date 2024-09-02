@@ -1,20 +1,26 @@
 import * as React from 'react';
+
 import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../../declarations';
-
-import { StyledCaption, type StyledCaptionProps } from './StyledCaption';
+import { StyledCaption } from './StyledCaption';
+import type { ITypography } from '../../declarations';
 
 export interface CaptionProps
-  extends StyledCaptionProps,
+  extends Pick<
+      ITypography,
+      'colorScheme' | 'gutterBottom' | 'textAlign' | 'truncateLine'
+    >,
     IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
     IGlobalAriaAttrs {
   children?: React.ReactNode;
+  /** This property defines multiple styles: font-size, line-height... etc. */
+  size?: ITypography['bodySize'];
 }
 
 export const Caption: React.FC<CaptionProps> = ({
@@ -30,12 +36,12 @@ export const Caption: React.FC<CaptionProps> = ({
 }) => (
   <StyledCaption
     {...nativeProps}
-    colorScheme={colorScheme}
-    style={style}
-    truncateLine={truncateLine}
-    gutterBottom={gutterBottom}
-    size={size}
-    textAlign={textAlign}
+    $colorScheme={colorScheme}
+    css={style}
+    $truncateLine={truncateLine}
+    $gutterBottom={gutterBottom}
+    $size={size}
+    $textAlign={textAlign}
     title={tooltip}
   >
     {children}

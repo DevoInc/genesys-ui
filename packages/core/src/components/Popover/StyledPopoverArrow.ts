@@ -1,11 +1,11 @@
 import styled, { css, CSSProp } from 'styled-components';
-import * as PopperJS from '@popperjs/core';
+import { ComputedPlacement } from '@popperjs/core';
 
 import { POPOVER_DEFAULT_ARROW_SIZE } from './constants';
 
 export interface StyledPopoverArrowProps {
-  placement?: PopperJS.ComputedPlacement;
-  size?: number;
+  $placement?: ComputedPlacement;
+  $size?: number;
   // TODO: interface only for satisfy the type error with TS and inherit CSSProp
   css?: CSSProp;
 }
@@ -14,13 +14,13 @@ export const StyledPopoverArrow = styled.div<StyledPopoverArrowProps>`
   border-color: transparent;
   border-style: solid;
 
-  ${({ placement, size = POPOVER_DEFAULT_ARROW_SIZE, theme }) => {
+  ${({ $placement, $size = POPOVER_DEFAULT_ARROW_SIZE, theme }) => {
     const bgColor = theme.cmp.panel.color.background;
     // TODO: get border-color token from Panel component QUV-2019. Wait until QUV-2018 is finished.
     const borderColor = theme.alias.color.border.elevation.activated;
     // TODO: Tokenize the Popover component QUV-2016
-    const arrowSize = `${size}px`;
-    const arrowOuterSize = `${size + 1}px`;
+    const arrowSize = `${$size}px`;
+    const arrowOuterSize = `${$size + 1}px`;
     const panelBorderSize = theme.alias.shape.borderSize.panel.base;
     const commonStyles = css`
       position: relative;
@@ -41,7 +41,7 @@ export const StyledPopoverArrow = styled.div<StyledPopoverArrowProps>`
         height: 0;
       }
 
-      ${placement?.includes('top') &&
+      ${$placement?.includes('top') &&
       css`
         height: calc(${arrowOuterSize} * 1);
         width: calc(${arrowOuterSize} * 2);
@@ -57,7 +57,7 @@ export const StyledPopoverArrow = styled.div<StyledPopoverArrowProps>`
         }
       `};
 
-      ${placement?.includes('bottom') &&
+      ${$placement?.includes('bottom') &&
       css`
         height: calc(${arrowOuterSize} * 1);
         width: calc(${arrowOuterSize} * 2);
@@ -73,7 +73,7 @@ export const StyledPopoverArrow = styled.div<StyledPopoverArrowProps>`
         }
       `};
 
-      ${placement?.includes('right') &&
+      ${$placement?.includes('right') &&
       css`
         width: calc(${arrowOuterSize} * 1);
         height: calc(${arrowOuterSize} * 2);
@@ -90,7 +90,7 @@ export const StyledPopoverArrow = styled.div<StyledPopoverArrowProps>`
         }
       `};
 
-      ${placement?.includes('left') &&
+      ${$placement?.includes('left') &&
       css`
         width: calc(${arrowOuterSize} * 1);
         height: calc(${arrowOuterSize} * 2);

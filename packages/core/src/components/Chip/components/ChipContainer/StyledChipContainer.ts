@@ -1,27 +1,18 @@
 import styled, { css, CSSProp } from 'styled-components';
 
-// declarations
-import type { TChipSize, TChipState } from '../declarations';
+import { disabledMixin } from '../../../../styled/mixins/state';
+import { btnResetMixin } from '../../../../styled/mixins/components';
+import { pseudoElementOverlayMixin } from '../../../../styled/mixins/pseudoElement';
+import { getPadding } from '../../helpers';
+import { type IChipContainerStyled } from './declarations';
 
-// helpers
-import { disabledMixin } from '../../../styled/mixins/state';
-import { btnResetMixin } from '../../../styled/mixins/components';
-import { pseudoElementOverlayMixin } from '../../../styled/mixins/pseudoElement';
-import { getPadding } from '../helpers';
-
-export interface StyledChipProps {
-  /** It sets padding, line-height, font-size, etc. */
-  size?: TChipSize;
-  /** It sets the color scheme and the selection behavior. */
-  state?: TChipState;
-  /** If you can drag & drop the Chip. */
-  sortable?: boolean;
+export interface StyledChipContainerProps extends IChipContainerStyled {
   // TODO: interface only for satisfy the type error with TS and inherit CSSProp
   css?: CSSProp;
 }
 
-export const StyledChip = styled.label<StyledChipProps>`
-  ${({ size = 'md', sortable = false, state = 'enabled', theme }) => {
+export const StyledChipContainer = styled.label<StyledChipContainerProps>`
+  ${({ $size = 'md', $sortable = false, $state = 'enabled', theme }) => {
     const chipTokens = theme.cmp.chip;
     const backdropHovered = chipTokens.color.backdrop.hovered;
     const backdropFocused = chipTokens.color.backdrop.focused;
@@ -37,13 +28,13 @@ export const StyledChip = styled.label<StyledChipProps>`
       overflow: hidden;
       border: none;
       border-radius: ${chipTokens.shape.borderRadius};
-      min-width: ${chipTokens.size.minWidth[size]};
-      height: ${chipTokens.size.height[size]};
-      padding: ${getPadding({ size, sortable, tokens: chipTokens })};
+      min-width: ${chipTokens.size.minWidth[$size]};
+      height: ${chipTokens.size.height[$size]};
+      padding: ${getPadding({ $size, $sortable, tokens: chipTokens })};
       background-color: ${chipTokens.color.background.enabled};
-      font-size: ${chipTokens.label.typo.fontSize[size]};
-      line-height: ${chipTokens.label.typo.lineHeight[size]};
-      text-shadow: ${state === 'selected' && '0 0 .05rem'};
+      font-size: ${chipTokens.label.typo.fontSize[$size]};
+      line-height: ${chipTokens.label.typo.lineHeight[$size]};
+      text-shadow: ${$state === 'selected' && '0 0 .05rem'};
       color: ${chipTokens.color.text.selected};
 
       // backdrop for states
@@ -56,12 +47,12 @@ export const StyledChip = styled.label<StyledChipProps>`
 
       // states
 
-      ${state === 'disabled' &&
+      ${$state === 'disabled' &&
       css`
         ${disabledMixin(theme)}
       `}
 
-      ${state !== 'disabled' &&
+      ${$state !== 'disabled' &&
       css`
         &&&:not(:disabled):not(:has(:disabled)) {
           &:hover,
@@ -100,7 +91,7 @@ export const StyledChip = styled.label<StyledChipProps>`
             background-color: ${backdropPressed};
           }
 
-          ${state === 'hovered' &&
+          ${$state === 'hovered' &&
           css`
             color: ${chipTokens.color.text.hovered};
 
@@ -109,7 +100,7 @@ export const StyledChip = styled.label<StyledChipProps>`
             }
           `};
 
-          ${state === 'focused' &&
+          ${$state === 'focused' &&
           css`
             box-shadow: ${chipTokens.elevation.boxShadow.focused};
             color: ${chipTokens.color.text.focused};
@@ -119,7 +110,7 @@ export const StyledChip = styled.label<StyledChipProps>`
             }
           `};
 
-          ${state === 'pressed' &&
+          ${$state === 'pressed' &&
           css`
             color: ${chipTokens.color.text.pressed};
 

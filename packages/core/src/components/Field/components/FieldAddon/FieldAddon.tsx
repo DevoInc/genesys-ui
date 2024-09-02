@@ -34,7 +34,7 @@ export const FieldAddon: React.FC<FieldAddonProps> = ({
     {...styledProps}
     $disabled={disabled}
     $position={position}
-    size={size}
+    $size={size}
     css={style}
   >
     {children}

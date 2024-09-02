@@ -1,48 +1,42 @@
 import styled, { css } from 'styled-components';
 
-import type {
-  ITypography,
-  TTypoCategories,
-  TTypographyFormat,
-} from './declarations';
+import type { ITypography, TTypoCategories } from './declarations';
 
 import { getTypoCss } from './utils';
 import { getSpacingPropCss } from '../../helpers';
 import { TTypoSize } from '../../declarations';
 
-export interface StyledTypographyProps
-  extends Pick<
-    ITypography,
-    'colorScheme' | 'gutterBottom' | 'textAlign' | 'truncateLine'
-  > {
-  bold?: boolean;
-  /** Definition of variant and size in the same value: hero-sm, heading-h1,
-   * body-sm... etc. */
-  format?: TTypographyFormat;
-  size?: TTypoSize;
-  variant?: TTypoCategories;
+export interface StyledTypographyProps {
+  $colorScheme?: ITypography['colorScheme'];
+  $gutterBottom?: ITypography['gutterBottom'];
+  $textAlign?: ITypography['textAlign'];
+  $truncateLine?: ITypography['truncateLine'];
+  $format?: ITypography['format'];
+  $bold?: ITypography['bold'];
+  $size?: TTypoSize;
+  $variant?: TTypoCategories;
 }
 
 export const StyledTypography = styled.div<StyledTypographyProps>`
   ${({
-    bold,
-    colorScheme,
-    gutterBottom,
-    size,
-    textAlign,
+    $bold,
+    $colorScheme,
+    $gutterBottom,
+    $size,
+    $textAlign,
     theme,
-    truncateLine,
-    variant,
+    $truncateLine,
+    $variant,
   }) => css`
-    margin-bottom: ${getSpacingPropCss(theme)(gutterBottom)};
+    margin-bottom: ${getSpacingPropCss(theme)($gutterBottom)};
     ${getTypoCss({
-      bold,
-      colorScheme,
-      textAlign,
+      $bold,
+      $colorScheme,
+      $textAlign,
       theme,
-      truncateLine,
-      size,
-      variant,
+      $truncateLine,
+      $size,
+      $variant,
     })};
   `}
 `;

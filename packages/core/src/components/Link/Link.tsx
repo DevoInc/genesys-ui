@@ -12,10 +12,12 @@ import type {
   IStyledPolymorphic,
   ITriggerAriaAttrs,
 } from '../../declarations';
-import { StyledLink, type StyledLinkProps } from './StyledLink';
+import { StyledLink } from './StyledLink';
+import type { ILink } from './declarations';
 
 export interface LinkProps
-  extends IStyledPolymorphic,
+  extends ILink,
+    IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
     IGlobalAriaAttrs,
@@ -24,8 +26,7 @@ export interface LinkProps
     ILinkAttrs,
     ITriggerAriaAttrs,
     IFocusEventAttrs,
-    IMouseEventAttrs,
-    StyledLinkProps {
+    IMouseEventAttrs {
   /** Children to be passed */
   children?: React.ReactNode;
 }
@@ -42,6 +43,7 @@ export const Link: React.FC<LinkProps> = ({
   tabIndex,
   tooltip,
   underlined,
+  wide,
   ...restNativeProps
 }) => {
   const onLinkClick = (event: React.MouseEvent) => {
@@ -56,16 +58,17 @@ export const Link: React.FC<LinkProps> = ({
   return (
     <StyledLink
       {...restNativeProps}
-      colorScheme={colorScheme}
+      $colorScheme={colorScheme}
       css={style}
       href={href}
-      lineClamp={lineClamp}
+      $lineClamp={lineClamp}
       onClick={onLinkClick}
-      size={size}
-      state={state}
+      $size={size}
+      $state={state}
       tabIndex={tabIndex || (state === 'disabled' ? -1 : 0)}
       title={tooltip}
-      underlined={underlined}
+      $underlined={underlined}
+      $wide={wide}
     >
       {children}
     </StyledLink>

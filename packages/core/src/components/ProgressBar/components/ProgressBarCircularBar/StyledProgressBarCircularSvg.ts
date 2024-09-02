@@ -11,21 +11,20 @@ const rotationInfinite = keyframes`
   }
 `;
 
-export interface StyledProgressBarCircularSVGProps
-  extends Pick<
-    IBaseProgressBar,
-    'indeterminate' | 'percent' | 'status' | 'showStatus'
-  > {}
+export interface StyledProgressBarCircularSVGProps {
+  $indeterminate?: IBaseProgressBar['indeterminate'];
+  $status?: IBaseProgressBar['status'];
+}
 
 export const StyledProgressBarCircularSVG = styled.svg<StyledProgressBarCircularSVGProps>`
-  ${({ indeterminate, status }) => css`
-    ${!indeterminate &&
+  ${({ $indeterminate, $status }) => css`
+    ${!$indeterminate &&
     css`
       transform: rotate(-90deg);
     `};
 
-    ${indeterminate &&
-    (!status || status === 'progressing') &&
+    ${$indeterminate &&
+    (!$status || $status === 'progressing') &&
     css`
       animation: ${rotationInfinite} linear 0.6s infinite;
     `};

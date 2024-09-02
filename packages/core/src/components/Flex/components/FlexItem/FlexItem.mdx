@@ -2,7 +2,7 @@ import { Meta, Canvas, ArgTypes, Source, Markdown } from '@storybook/blocks';
 
 import spacingProps from '../../../../../stories/partials/spacingProps.md?raw';
 import * as Stories from './FlexItem.stories';
-import * as FlexStories from '../../stories/Flex.stories';
+import * as FlexStories from '../../Flex.stories';
 
 <Meta of={Stories} />
 
@@ -20,7 +20,7 @@ to wrap each child.
 
 ## Basic usage
 
-<Canvas of={Stories.Item} />
+<Canvas of={Stories.Base} />
 
 To apply spacing and flex styles such as flex, align-self, order, width, and
 margin, you can use Flex.Item props.

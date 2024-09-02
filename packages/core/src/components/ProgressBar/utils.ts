@@ -111,13 +111,13 @@ export const getRadiant = (size: TProgressBarSize): number =>
  * Get the background color for ProgressBar track.
  * */
 export const getProgressBgColor = ({
-  status,
+  $status,
   tokens,
 }: {
-  status: TProgressBarStatus;
+  $status: TProgressBarStatus;
   tokens: DefaultTheme['cmp']['progressBar'];
 }): string => {
-  const statusEval = STATUS_COLOR_SCHEME_MAP[status];
+  const statusEval = STATUS_COLOR_SCHEME_MAP[$status];
   return tokens?.progress?.color?.background[statusEval];
 };
 
@@ -125,16 +125,16 @@ export const getProgressBgColor = ({
  * Get the background color for ProgressBar track.
  * */
 export const getTrackBgColor = ({
-  colorScheme,
-  status,
+  $colorScheme,
+  $status,
   tokens,
 }: {
-  colorScheme: TProgressBarColorScheme;
-  status: TProgressBarStatus;
+  $colorScheme: TProgressBarColorScheme;
+  $status: TProgressBarStatus;
   tokens: DefaultTheme['cmp']['progressBar'];
 }): string => {
-  const statusEval = STATUS_COLOR_SCHEME_MAP[status];
-  return colorScheme === 'light'
+  const statusEval = STATUS_COLOR_SCHEME_MAP[$status];
+  return $colorScheme === 'light'
     ? 'rgba(255,255,255,0.08)' // this color because gets the same contrast (4.09) with dark theme overlay than p.theme.feedbackSecondary with light theme one
     : tokens?.track?.color?.background[statusEval];
 };

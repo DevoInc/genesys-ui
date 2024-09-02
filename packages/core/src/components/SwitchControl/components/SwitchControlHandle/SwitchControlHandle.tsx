@@ -24,7 +24,7 @@ export const SwitchControlHandle: React.FC<SwitchControlHandleProps> = ({
     $disabled={disabled}
     $checked={checked}
     css={style}
-    diameter={diameter}
-    switchHeight={switchHeight}
+    $diameter={diameter}
+    $switchHeight={switchHeight}
   />
 );

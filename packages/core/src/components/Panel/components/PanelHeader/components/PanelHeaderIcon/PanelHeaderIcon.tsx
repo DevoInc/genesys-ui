@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { css, useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 
 import { Flex } from '../../../../../Flex';
 import { Icon, IconProps } from '../../../../../Icon';
 import { IPanelContainerAttrs } from '../../../../declarations';
-import { mergeStyles } from '../../../../../../helpers';
 
 export interface PanelHeaderIconProps
   extends Omit<IconProps, 'iconId' | 'size'>,
@@ -19,16 +18,16 @@ export const PanelHeaderIcon: React.FC<PanelHeaderIconProps> = ({
   ...restIconProps
 }) => {
   const iconTokens = useTheme().cmp.panel.headerIcon;
-  const baseStyles = css`
-    margin-right: ${iconTokens.space.marginRight[size]};
-  `;
   return (
     <Flex
       alignSelf="flex-start"
       alignItems="center"
       justifyContent="center"
       inline
-      style={mergeStyles(baseStyles, style)}
+      style={{
+        marginRight: iconTokens.space.marginRight[size],
+        ...style,
+      }}
       flex="0 0 auto"
       height={iconTokens.size.height[size]}
     >

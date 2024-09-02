@@ -11,6 +11,7 @@ export default meta;
 type Story = StoryObj<typeof Highlighted>;
 
 export const BaseHighlighted: Story = {
+  tags: ['isHidden'],
   args: {
     children: 'Important text',
   },

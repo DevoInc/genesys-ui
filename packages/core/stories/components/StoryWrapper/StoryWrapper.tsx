@@ -1,13 +1,29 @@
 import * as React from 'react';
 
-import type { IStyledPolymorphic } from '../../../src';
-import {
-  StyledStoryWrapper,
-  type StyledStoryWrapperProps,
-} from './StyledStoryWrapper';
+import type { ILayoutBoxCss, IStyledPolymorphic } from '../../../src';
+import { StyledStoryWrapper } from './StyledStoryWrapper';
 
 export interface StoryWrapperProps
-  extends StyledStoryWrapperProps,
+  extends Pick<
+      ILayoutBoxCss,
+      | 'margin'
+      | 'maxHeight'
+      | 'maxWidth'
+      | 'minHeight'
+      | 'minWidth'
+      | 'overflow'
+      | 'overflowX'
+      | 'overflowY'
+      | 'padding'
+      | 'position'
+      | 'positionBottom'
+      | 'positionLeft'
+      | 'positionRight'
+      | 'positionTop'
+      | 'cssTranslate'
+      | 'visibility'
+      | 'zIndex'
+    >,
     IStyledPolymorphic {
   children?: React.ReactNode;
   className?: React.AllHTMLAttributes<HTMLElement>['className'];
@@ -16,6 +32,7 @@ export interface StoryWrapperProps
   height?: React.CSSProperties['height'];
   /** Css width */
   width?: React.CSSProperties['width'];
+  bgColor?: React.CSSProperties['backgroundColor'];
 }
 
 export const StoryWrapper: React.FC<StoryWrapperProps> = ({
@@ -43,34 +60,32 @@ export const StoryWrapper: React.FC<StoryWrapperProps> = ({
   visibility,
   width,
   zIndex,
-}) => {
-  return (
-    <StyledStoryWrapper
-      as={as}
-      bgColor={bgColor}
-      className={className}
-      $display={display}
-      $height={height}
-      margin={margin}
-      maxHeight={maxHeight}
-      maxWidth={maxWidth}
-      minHeight={minHeight}
-      minWidth={minWidth}
-      overflow={overflow}
-      overflowX={overflowX}
-      overflowY={overflowY}
-      padding={padding}
-      position={position}
-      positionBottom={positionBottom}
-      positionLeft={positionLeft}
-      positionRight={positionRight}
-      positionTop={positionTop}
-      translate={cssTranslate}
-      visibility={visibility}
-      $width={width}
-      zIndex={zIndex}
-    >
-      {children}
-    </StyledStoryWrapper>
-  );
-};
+}) => (
+  <StyledStoryWrapper
+    as={as}
+    $bgColor={bgColor}
+    className={className}
+    $display={display}
+    $height={height}
+    $margin={margin}
+    $maxHeight={maxHeight}
+    $maxWidth={maxWidth}
+    $minHeight={minHeight}
+    $minWidth={minWidth}
+    $overflow={overflow}
+    $overflowX={overflowX}
+    $overflowY={overflowY}
+    $padding={padding}
+    $position={position}
+    $positionBottom={positionBottom}
+    $positionLeft={positionLeft}
+    $positionRight={positionRight}
+    $positionTop={positionTop}
+    $translate={cssTranslate}
+    $visibility={visibility}
+    $width={width}
+    $zIndex={zIndex}
+  >
+    {children}
+  </StyledStoryWrapper>
+);

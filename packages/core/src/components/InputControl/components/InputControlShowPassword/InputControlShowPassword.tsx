@@ -6,16 +6,15 @@ import {
 } from '@devoinc/genesys-icons';
 
 import { INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP } from '../../constants';
-import type { TFieldSize, IStyledOverloadCss } from '../../../../declarations';
+import type { IStyledOverloadCss } from '../../../../declarations';
 import { IconButton, type IconButtonProps } from '../../../IconButton';
 import { StyledInputControlShowPassword } from './StyledInputControlShowPassword';
+import type { IInputControlShowPassword } from './declarations';
 
 export interface InputControlShowPasswordProps
-  extends IStyledOverloadCss,
-    Pick<IconButtonProps, 'onClick'> {
-  showPassword?: boolean;
-  size?: TFieldSize;
-}
+  extends IInputControlShowPassword,
+    IStyledOverloadCss,
+    Pick<IconButtonProps, 'onClick'> {}
 
 export const InputControlShowPassword: React.FC<
   InputControlShowPasswordProps

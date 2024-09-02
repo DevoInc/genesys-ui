@@ -14,10 +14,8 @@ import type {
   ITriggerEventAttrs,
 } from '../../../../declarations';
 
-import {
-  StyledButtonContainer,
-  type StyledButtonContainerProps,
-} from './StyledButtonContainer';
+import { StyledButtonContainer } from './StyledButtonContainer';
+import type { IButtonContainer } from './declarations';
 
 export interface ButtonContainerProps
   extends IDataAttrs,
@@ -31,7 +29,7 @@ export interface ButtonContainerProps
     ITriggerEventAttrs,
     ILinkAttrs,
     Omit<IButtonAttrs, 'disabled' | 'name'>,
-    StyledButtonContainerProps {
+    IButtonContainer {
   /** Main content of the button */
   children?: React.ReactNode;
 }
@@ -72,22 +70,22 @@ export const ButtonContainer = React.forwardRef<
       aria-label={tooltip || ariaLabel}
       aria-selected={state === 'selected' || ariaSelected}
       as={as || (selectionScheme && 'label') || (href && 'a')}
-      colorScheme={colorScheme}
+      $colorScheme={colorScheme}
       data-squared={squared}
       disabled={state === 'disabled' || state === 'loading'}
-      squared={squared}
+      $squared={squared}
       href={href}
-      icon={icon}
+      $icon={icon}
       id={id}
-      circular={circular}
-      hasDropdown={hasDropdown}
-      wide={wide}
+      $circular={circular}
+      $hasDropdown={hasDropdown}
+      $wide={wide}
       onFocus={selectionScheme ? null : onFocus}
       onBlur={selectionScheme ? null : onBlur}
       ref={ref}
-      selectionScheme={selectionScheme}
-      size={size}
-      state={state}
+      $selectionScheme={selectionScheme}
+      $size={size}
+      $state={state}
       css={style}
       title={tooltip}
     >

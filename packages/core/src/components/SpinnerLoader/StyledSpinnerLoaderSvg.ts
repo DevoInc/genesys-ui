@@ -4,14 +4,14 @@ import { getSize, ROTATE_ANIMATION } from './constants';
 import type { TSpinnerSize } from './declarations';
 
 interface StyledSpinnerLoaderSvgProps {
-  size?: TSpinnerSize;
+  $size?: TSpinnerSize;
 }
 
 export const StyledSpinnerLoaderSvg = styled.svg<StyledSpinnerLoaderSvgProps>`
-  ${({ size }) => css`
+  ${({ $size }) => css`
     position: relative;
     animation: ${ROTATE_ANIMATION} 2s linear infinite;
-    width: ${getSize(size)};
-    height: ${getSize(size)};
+    width: ${getSize($size)};
+    height: ${getSize($size)};
   `};
 `;

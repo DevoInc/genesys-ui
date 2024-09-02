@@ -7,29 +7,16 @@ import type {
   IStyledPolymorphic,
 } from '../../../../declarations';
 
-import type { TBadgeColorScheme } from '../../declarations';
-import {
-  StyledBadgeContainer,
-  type StyledBadgeContainerProps,
-} from './StyledBadgeContainer';
+import { StyledBadgeContainer } from './StyledBadgeContainer';
+import { IBadgeContainer } from './declarations';
 
 export interface BadgeContainerProps
   extends IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
     IGlobalAriaAttrs,
-    Omit<
-      StyledBadgeContainerProps,
-      'hasContent' | 'hasLongText' | '$colorScheme'
-    > {
-  /** Tooltip on Badge hover.*/
-  tooltip?: string;
+    IBadgeContainer {
   children?: React.ReactNode;
-  /** It defines the color schema for the background and text color.
-   * There are predefined types: primary, secondary... etc.
-   * It's possible to use a custom color used for the background color and
-   * auto-generated for the text based on this one to maintain AA accessible contrast.*/
-  colorScheme?: TBadgeColorScheme | React.CSSProperties['backgroundColor'];
 }
 
 export const BadgeContainer: React.FC<BadgeContainerProps> = ({
@@ -63,11 +50,11 @@ export const BadgeContainer: React.FC<BadgeContainerProps> = ({
       {...nativeProps}
       $colorScheme={colorScheme}
       css={style}
-      hasAbsolutePosition={hasAbsolutePosition}
-      hasContent={hasContent}
-      hasLongText={hasLongText}
-      inverse={inverse}
-      size={size}
+      $hasAbsolutePosition={hasAbsolutePosition}
+      $hasContent={hasContent}
+      $hasLongText={hasLongText}
+      $inverse={inverse}
+      $size={size}
       title={tooltip}
     >
       {children}

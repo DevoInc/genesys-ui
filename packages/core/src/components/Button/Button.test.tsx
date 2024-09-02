@@ -30,20 +30,12 @@ describe('BaseButton', () => {
 
     test('When is dropdown', () => {
       render(<Button data-testid={'test'} hasDropdown />);
-      const button = screen.getByTestId('test');
-      expect(button.querySelector('svg')).toHaveAttribute(
-        'data-name',
-        'gi-angle_down',
-      );
+      expect(screen.getByLabelText('GIAngleDown')).toBeInTheDocument();
     });
 
     test('When has icon', () => {
       render(<Button data-testid={'test'} icon={<GIHeartFull />} />);
-      const button = screen.getByTestId('test');
-      expect(button.querySelector('svg')).toHaveAttribute(
-        'data-name',
-        'gi-heart_full',
-      );
+      expect(screen.getByLabelText('GIHeartFull')).toBeInTheDocument();
     });
 
     test('When has children', () => {

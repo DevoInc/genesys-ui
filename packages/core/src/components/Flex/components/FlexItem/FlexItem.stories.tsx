@@ -6,14 +6,14 @@ import { StyledLayoutContentHelper } from '../../../../../stories/components/sty
 import { Flex } from '../../Flex';
 
 const meta: Meta<typeof FlexItem> = {
-  title: 'Components/Layout/Flex/Flex/Components',
+  title: 'Components/Layout/Flex/Components/Flex.Item',
   component: FlexItem,
 };
 
 export default meta;
 type Story = StoryObj<typeof FlexItem>;
 
-export const Item: Story = {
+export const Base: Story = {
   render: (args) =>
     ((props) => (
       <Flex.Item {...props}>

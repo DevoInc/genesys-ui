@@ -1,20 +1,17 @@
 import * as React from 'react';
+
 import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../../declarations';
-
-import { StyledCodeBlock, type StyledCodeBlockProps } from './StyledCodeBlock';
-import {
-  StyledCodeBlockWrapper,
-  type StyledCodeBlockWrapperProps,
-} from './StyledCodeBlockWrapper';
+import { StyledCodeBlock } from './StyledCodeBlock';
+import { StyledCodeBlockWrapper } from './StyledCodeBlockWrapper';
+import type { ITypography } from '../../declarations';
 
 export interface CodeProps
-  extends StyledCodeBlockProps,
-    StyledCodeBlockWrapperProps,
+  extends Pick<ITypography, 'textAlign' | 'truncateLine' | 'gutterBottom'>,
     IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
@@ -23,6 +20,8 @@ export interface CodeProps
   onClick?: () => void;
   /** Children */
   children?: React.ReactNode;
+  /** This property defines multiple styles: font-size, line-height... etc. */
+  size?: ITypography['bodySize'];
 }
 
 export const CodeBlock: React.FC<CodeProps> = ({
@@ -38,15 +37,15 @@ export const CodeBlock: React.FC<CodeProps> = ({
 }) => (
   <StyledCodeBlockWrapper
     {...nativeProps}
-    style={style}
-    gutterBottom={gutterBottom}
+    css={style}
+    $gutterBottom={gutterBottom}
     onClick={onClick}
     title={tooltip}
   >
     <StyledCodeBlock
-      size={size}
-      textAlign={textAlign}
-      truncateLine={truncateLine}
+      $size={size}
+      $textAlign={textAlign}
+      $truncateLine={truncateLine}
     >
       {children}
     </StyledCodeBlock>

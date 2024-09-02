@@ -5,8 +5,8 @@ import type { TFieldSize, TFieldStatus } from '../../../declarations';
 
 interface ICheckRadioMixin {
   disabled?: boolean;
-  size?: TFieldSize;
-  status?: TFieldStatus;
+  $size?: TFieldSize;
+  $status?: TFieldStatus;
   theme: DefaultTheme;
 }
 
@@ -20,23 +20,23 @@ interface ICheckRadioMixin {
  * @return object with the specific tokens.
  */
 export const getCheckRadioTokens = ({
-  size = 'md',
-  status = 'base',
+  $size = 'md',
+  $status = 'base',
   theme,
 }: ICheckRadioMixin) => {
   const fieldTokens = theme.alias.fields;
   return {
-    borderColor: fieldTokens.color.border[status].enabled,
-    borderColorChecked: fieldTokens.color.border[status].checked,
-    borderColorHovered: fieldTokens.color.border[status].hovered,
-    borderColorFocused: fieldTokens.color.border[status].focused,
+    borderColor: fieldTokens.color.border[$status].enabled,
+    borderColorChecked: fieldTokens.color.border[$status].checked,
+    borderColorHovered: fieldTokens.color.border[$status].hovered,
+    borderColorFocused: fieldTokens.color.border[$status].focused,
     borderWidth: fieldTokens.shape.borderSize.check,
-    bgColor: fieldTokens.color.background[status].enabled,
-    boxShadow: fieldTokens.elevation.boxShadow[status].focused,
-    bgColorChecked: fieldTokens.color.background[status].checked,
+    bgColor: fieldTokens.color.background[$status].enabled,
+    boxShadow: fieldTokens.elevation.boxShadow[$status].focused,
+    bgColorChecked: fieldTokens.color.background[$status].checked,
     disabledOpacity: fieldTokens.shape.opacity.disabled,
-    square: fieldTokens.size.square[size],
-    textColor: fieldTokens.color.text[status].checked,
+    square: fieldTokens.size.square[$size],
+    textColor: fieldTokens.color.text[$status].checked,
     animationTime: fieldTokens.mutation.transitionDuration,
   };
 };
@@ -51,13 +51,13 @@ export const getCheckRadioTokens = ({
  * @return object with the css.
  */
 export const checkRadioMixin = ({
-  size = 'md',
-  status = 'base',
+  $size = 'md',
+  $status = 'base',
   theme,
 }: ICheckRadioMixin) => {
   const checkRadioTokens = getCheckRadioTokens({
-    size,
-    status,
+    $size,
+    $status,
     theme,
   });
   const square = checkRadioTokens.square;

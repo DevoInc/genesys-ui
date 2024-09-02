@@ -11,13 +11,17 @@ import type {
 import { Icon, type IconProps } from '../../../Icon';
 import { useTheme } from 'styled-components';
 
-export interface InputControlIconProps
-  extends StyledInputControlIconProps,
-    IStyledOverloadCss {
+export interface InputControlIconProps extends IStyledOverloadCss {
   /** The Icon svg from icon library */
   icon?: IconProps['children'];
   /** This property defines the status color schema for the input */
   status?: TFieldStatus;
+  /** Size of the input: height, padding, font-size... etc. */
+  size?: StyledInputControlIconProps['$size'];
+  /** If the icon is related with the input type */
+  isTypeIcon?: boolean;
+  /** The type of the parent Input */
+  type?: StyledInputControlIconProps['$type'];
 }
 
 export const InputControlIcon: React.FC<InputControlIconProps> = ({
@@ -35,10 +39,10 @@ export const InputControlIcon: React.FC<InputControlIconProps> = ({
   return (
     <StyledInputControlIcon
       aria-hidden
-      size={size}
-      isTypeIcon={isTypeIcon}
+      $size={size}
+      $isTypeIcon={isTypeIcon}
       css={style}
-      type={type}
+      $type={type}
     >
       <Icon
         color={

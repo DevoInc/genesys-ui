@@ -6,19 +6,19 @@ import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../../declarations';
-import {
-  StyledBlockQuote,
-  type StyledBlockQuoteProps,
-} from './StyledBlockQuote';
+import { StyledBlockQuote } from './StyledBlockQuote';
+import { ITypography } from '../../declarations';
 
 export interface BlockQuoteProps
-  extends StyledBlockQuoteProps,
+  extends Pick<ITypography, 'gutterBottom' | 'textAlign'>,
     IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
     IGlobalAriaAttrs {
   /** Content of the BlockQuote */
   children?: React.ReactNode;
+  /** This property defines multiple styles: font-size, line-height... etc. */
+  size?: ITypography['bodySize'];
 }
 
 export const BlockQuote: React.FC<BlockQuoteProps> = ({
@@ -32,10 +32,10 @@ export const BlockQuote: React.FC<BlockQuoteProps> = ({
 }) => (
   <StyledBlockQuote
     {...nativeProps}
-    style={style}
-    gutterBottom={gutterBottom}
-    size={size}
-    textAlign={textAlign}
+    css={style}
+    $gutterBottom={gutterBottom}
+    $size={size}
+    $textAlign={textAlign}
     title={tooltip}
   >
     {children}

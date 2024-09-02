@@ -11,6 +11,7 @@ export default meta;
 type Story = StoryObj<typeof Small>;
 
 export const BaseSmall: Story = {
+  tags: ['isHidden'],
   args: {
     children: 'Small text for big thoughts',
   },

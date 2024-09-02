@@ -11,6 +11,7 @@ export default meta;
 type Story = StoryObj<typeof Underlined>;
 
 export const BaseUnderlined: Story = {
+  tags: ['isHidden'],
   args: {
     children: 'Underlined text',
   },

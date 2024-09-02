@@ -12,6 +12,7 @@ export default meta;
 type Story = StoryObj<typeof BlockQuote>;
 
 export const BaseBlockQuote: Story = {
+  tags: ['isHidden'],
   args: {
     children: lorem,
   },

@@ -49,8 +49,8 @@ export const MultiValueContainer = <Option extends TSelectOption>({
   ) : (
     <div style={style} {...attributes} ref={setNodeRef} tabIndex={-1}>
       <StyledSelectChip
-        sortable={selectProps.sortable}
-        size={getChipSize({
+        $sortable={selectProps.sortable}
+        $size={getChipSize({
           size: selectProps.size,
           chipSize: selectProps.chipSize,
         })}
@@ -84,7 +84,7 @@ export const MultiValueContainer = <Option extends TSelectOption>({
         {selectProps.sortable && (
           <StyledDraggableContainer
             id={id.toString()}
-            isDragging={isDragging}
+            $isDragging={isDragging}
             ref={setActivatorNodeRef}
             {...listeners}
           />

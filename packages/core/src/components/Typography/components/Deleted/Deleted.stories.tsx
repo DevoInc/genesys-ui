@@ -11,6 +11,7 @@ export default meta;
 type Story = StoryObj<typeof Deleted>;
 
 export const BaseDeleted: Story = {
+  tags: ['isHidden'],
   args: {
     children: 'Crossed-out text',
   },

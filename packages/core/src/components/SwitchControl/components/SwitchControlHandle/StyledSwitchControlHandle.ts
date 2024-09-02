@@ -8,17 +8,17 @@ import type {
 export interface StyledSwitchControlHandleProps {
   $checked?: ISwitch['checked'];
   $disabled?: ISwitch['disabled'];
-  switchHeight: TSwitchHeight;
-  diameter: TSwitchDiameter;
+  $switchHeight: TSwitchHeight;
+  $diameter: TSwitchDiameter;
   // TODO: interface only for satisfy the type error with TS and inherit CSSProp
   css?: CSSProp;
 }
 
 export const StyledSwitchControlHandle = styled.span<StyledSwitchControlHandleProps>`
-  ${({ $disabled = false, $checked, switchHeight, diameter, theme }) => {
+  ${({ $disabled = false, $checked, $switchHeight, $diameter, theme }) => {
     const switchTokens = theme.cmp.switchControl;
     const handlerTokens = switchTokens.handler;
-    const offset = +((switchHeight - diameter) / 2).toFixed(2);
+    const offset = +(($switchHeight - $diameter) / 2).toFixed(2);
     const checkedCss = css`
       left: calc(100% - ${offset}px);
       transform: translateX(-100%);
@@ -30,9 +30,9 @@ export const StyledSwitchControlHandle = styled.span<StyledSwitchControlHandlePr
       left: ${offset}px;
       transition: all ease ${handlerTokens.mutation.transitionDuration};
       box-shadow: ${handlerTokens.elevation.boxShadow.enabled};
-      border-radius: ${diameter}px;
-      width: ${diameter}px;
-      height: ${diameter}px;
+      border-radius: ${$diameter}px;
+      width: ${$diameter}px;
+      height: ${$diameter}px;
       background-color: ${handlerTokens.color.background};
 
       ${!$disabled &&

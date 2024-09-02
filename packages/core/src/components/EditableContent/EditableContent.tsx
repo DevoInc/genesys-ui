@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { css, useTheme } from 'styled-components';
-import { concat } from 'lodash';
+import { useTheme } from 'styled-components';
+import { useFocusWithin } from 'ahooks';
+import type { BasicTarget } from 'ahooks/lib/utils/domTarget';
+
 import { GIPencilEdit } from '@devoinc/genesys-icons';
 
 import type {
@@ -14,7 +16,7 @@ import type {
 } from '../../declarations';
 import { Icon } from '../Icon';
 import { StyledEditableContent } from './StyledEditableContent';
-import { mergeStyles } from '../../helpers';
+import { StyledEditableContentWrapper } from './StyledEditableContentWrapper';
 
 export interface EditableContentProps
   extends IGlobalAttrs,
@@ -33,36 +35,33 @@ export const EditableContent: React.FC<EditableContentProps> = React.forwardRef<
 >(({ children, tooltip, style, ...nativeProps }, ref) => {
   const theme = useTheme();
   const iconSize = theme.alias.typo.fontSize.icon.xxxs;
+  const isFocusWithin = useFocusWithin(ref as BasicTarget);
   return (
-    <StyledEditableContent
-      {...nativeProps}
-      css={mergeStyles(
-        css`
-          &:focus > svg {
-            opacity: 0;
-          }
-        `,
-        style,
-      )}
-      contentEditable
-      ref={ref}
-      title={tooltip}
-    >
-      {children}
-      <Icon
-        size={iconSize}
-        color={theme.alias.color.text.body.weaker}
-        style={{
-          position: 'absolute',
-          top: `calc(${iconSize} / 2 * -1)`,
-          right: `calc(${iconSize} / 2 * -1)`,
-          transition: `opacity ease
-          ${theme.alias.mutation.transitionDuration.opacity.md}`,
-        }}
+    <StyledEditableContentWrapper>
+      <StyledEditableContent
+        {...nativeProps}
+        css={style}
+        contentEditable
+        ref={ref}
+        title={tooltip}
       >
-        <GIPencilEdit />
-      </Icon>
-    </StyledEditableContent>
+        {children}
+      </StyledEditableContent>
+      {!isFocusWithin && (
+        <Icon
+          size={iconSize}
+          color={theme.alias.color.text.body.weaker}
+          style={{
+            position: 'absolute',
+            top: `calc(${iconSize} / 2 * -1)`,
+            right: `calc(${iconSize} / 2 * -1)`,
+            transition: `opacity ease ${theme.alias.mutation.transitionDuration.opacity.md}`,
+          }}
+        >
+          <GIPencilEdit />
+        </Icon>
+      )}
+    </StyledEditableContentWrapper>
   );
 });
 

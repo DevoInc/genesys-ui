@@ -72,15 +72,15 @@ export const getTypoVariantAndSizeFromFormat = (
   return { size: 'md', variant: 'body' };
 };
 
-interface IGetTypoCss
-  extends Pick<
-    ITypography,
-    'colorScheme' | 'gutterBottom' | 'textAlign' | 'truncateLine'
-  > {
-  bold?: boolean;
-  variant?: TTypoCategories;
+interface IGetTypoCss {
+  $colorScheme?: ITypography['colorScheme'];
+  $gutterBottom?: ITypography['gutterBottom'];
+  $textAlign?: ITypography['textAlign'];
+  $truncateLine?: ITypography['truncateLine'];
+  $bold?: boolean;
+  $variant?: TTypoCategories;
   theme?: DefaultTheme;
-  size?: TTypoSize;
+  $size?: TTypoSize;
 }
 
 /**
@@ -98,32 +98,33 @@ interface IGetTypoCss
  * @return typography styles
  */
 export const getTypoCss = ({
-  bold = false,
-  variant = 'body',
-  colorScheme = 'base',
-  textAlign = 'left',
+  $bold = false,
+  $variant = 'body',
+  $colorScheme = 'base',
+  $textAlign = 'left',
   theme,
-  truncateLine = 0,
-  size = 'md',
+  $truncateLine = 0,
+  $size = 'md',
 }: IGetTypoCss = {}) => css`
   position: relative;
 
   // truncated text styles
-  ${truncateLine && truncateTypoMixin({ lineClamp: truncateLine })};
+  ${$truncateLine && truncateTypoMixin({ $lineClamp: $truncateLine })};
 
   // text styles
   ${typoMixin({
-    bold,
-    variant,
-    textAlign,
+    $bold,
+    $variant,
+    $textAlign,
     theme,
-    size,
+    $size,
   })};
 
   // text color styles
   ${typoColorMixin({
-    variant: variant === 'heading' || variant === 'hero' ? 'heading' : 'body',
-    colorScheme,
+    $variant:
+      $variant === 'heading' || $variant === 'hero' ? 'heading' : 'body',
+    $colorScheme,
     theme,
   })};
 `;

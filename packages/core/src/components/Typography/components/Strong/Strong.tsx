@@ -17,7 +17,7 @@ export const Strong: React.FC<StrongProps> = ({
   tooltip,
   ...nativeProps
 }) => (
-  <StyledStrong {...nativeProps} bolder={bolder} title={tooltip}>
+  <StyledStrong {...nativeProps} $bolder={bolder} title={tooltip}>
     {children}
   </StyledStrong>
 );

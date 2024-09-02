@@ -42,8 +42,12 @@ export const AvatarImage: React.FC<AvatarImageProps> = ({
   return (
     <Thumbnail
       alt={alt}
-      width={getAvatarSizeConfig({ customSize, size: evalSize }).width}
-      height={getAvatarSizeConfig({ customSize, size: evalSize }).height}
+      width={
+        getAvatarSizeConfig({ $customSize: customSize, $size: evalSize }).width
+      }
+      height={
+        getAvatarSizeConfig({ $customSize: customSize, $size: evalSize }).height
+      }
       objectFit={evalImageFit}
       objectPosition={evalImagePosition}
       borderRadius={borderRadius}

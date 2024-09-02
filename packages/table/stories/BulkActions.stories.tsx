@@ -24,7 +24,7 @@ const meta: Meta<typeof Table> = {
 export default meta;
 type Story = StoryObj<typeof Table>;
 
-const initialData = new Array(10).fill(null).map((_, index) => ({
+const initialData = Array.from({ length: 10 }).map((_, index) => ({
   text: `text ${index}`,
   num: index + 10,
   bool: false,

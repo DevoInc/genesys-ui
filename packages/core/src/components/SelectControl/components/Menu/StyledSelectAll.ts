@@ -2,22 +2,25 @@ import styled, { css } from 'styled-components';
 
 import type { ICommonSelectCmps } from '../../declarations';
 
-export interface StyledSelectAllProps extends ICommonSelectCmps {}
+export interface StyledSelectAllProps {
+  $multipleSubtle?: ICommonSelectCmps['multipleSubtle'];
+  $size?: ICommonSelectCmps['size'];
+}
 
 export const StyledSelectAll = styled.div<StyledSelectAllProps>`
-  ${({ multipleSubtle, size, theme }) => {
+  ${({ $multipleSubtle, $size, theme }) => {
     const tokens = theme.cmp.select.selectAll;
-    const fieldControlHorSpace = theme.alias.fields.space.padding.hor[size];
+    const fieldControlHorSpace = theme.alias.fields.space.padding.hor[$size];
     const menuHorSpace = theme.alias.menus.wrapper.space.margin;
     return css`
-      ${multipleSubtle
+      ${$multipleSubtle
         ? css`
             padding: calc(${menuHorSpace} * 2) ${menuHorSpace} ${menuHorSpace}
               calc(${fieldControlHorSpace} + ${menuHorSpace});
           `
         : css`
             border-bottom: ${tokens.shape.border};
-            padding: ${tokens.space.margin[size]};
+            padding: ${tokens.space.margin[$size]};
           `}
     `;
   }}

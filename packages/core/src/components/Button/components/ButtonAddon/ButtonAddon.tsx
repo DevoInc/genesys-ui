@@ -6,13 +6,11 @@ import type {
   IStyledPolymorphic,
 } from '../../../../declarations';
 
-import {
-  StyledButtonAddon,
-  type StyledButtonAddonProps,
-} from './StyledButtonAddon';
+import { StyledButtonAddon } from './StyledButtonAddon';
+import type { IButtonAddon } from './declarations';
 
 export interface ButtonAddonProps<T = Element>
-  extends StyledButtonAddonProps,
+  extends IButtonAddon,
     IStyledPolymorphic,
     IStyledOverloadCss {
   children: React.ReactNode;
@@ -31,12 +29,12 @@ export const ButtonAddon: React.FC<ButtonAddonProps> = ({
 }) => (
   <StyledButtonAddon
     as={as}
-    hasSpace={hasSpace}
+    $hasSpace={hasSpace}
     id={id ? `${id}__button-addon` : null}
-    isDropdown={isDropdown}
-    position={position}
-    size={size}
-    style={style}
+    $isDropdown={isDropdown}
+    $position={position}
+    $size={size}
+    css={style}
   >
     {children}
   </StyledButtonAddon>

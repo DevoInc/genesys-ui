@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import type {
   IDataAttrs,
   IGlobalAriaAttrs,
@@ -6,14 +7,11 @@ import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../declarations';
-
-import {
-  StyledDevoLogoSpinner,
-  type StyledDevoLogoSpinnerProps,
-} from './StyledDevoLogoSpinner';
+import { StyledDevoLogoSpinner } from './StyledDevoLogoSpinner';
+import type { IDevoLogoSpinner } from './declarations';
 
 export interface DevoLogoSpinnerProps
-  extends StyledDevoLogoSpinnerProps,
+  extends IDevoLogoSpinner,
     // native
     IStyledPolymorphic,
     IStyledOverloadCss,
@@ -31,10 +29,10 @@ export const DevoLogoSpinner: React.FC<DevoLogoSpinnerProps> = ({
 }) => (
   <StyledDevoLogoSpinner
     {...nativeProps}
-    animation={animation}
-    colorScheme={colorScheme}
+    $animation={animation}
+    $colorScheme={colorScheme}
     css={style}
-    size={size}
+    $size={size}
     title={tooltip}
   >
     <svg className="devo-logo-svg" x="0" y="0" viewBox="0 0 130 75">

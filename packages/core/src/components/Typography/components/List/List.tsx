@@ -7,17 +7,27 @@ import type {
   IStyledPolymorphic,
 } from '../../../../declarations';
 
-import { StyledList, type StyledListProps } from './StyledList';
+import { StyledList } from './StyledList';
 import { ListItem } from '../ListItem';
+import type { ITypography } from '../../declarations';
 
 export interface ListProps
-  extends StyledListProps,
+  extends Pick<
+      ITypography,
+      | 'colorScheme'
+      | 'gutterBottom'
+      | 'listStyle'
+      | 'textAlign'
+      | 'truncateLine'
+    >,
     IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
     IGlobalAriaAttrs {
   /** Content of the list */
   children?: React.ReactNode;
+  /** This property defines multiple styles: font-size, line-height... etc. */
+  size?: ITypography['bodySize'];
 }
 
 const InternalList: React.FC<ListProps> = ({
@@ -35,12 +45,12 @@ const InternalList: React.FC<ListProps> = ({
   <StyledList
     {...nativeProps}
     as={as || (listStyle === 'ordered' ? 'ol' : undefined)}
-    colorScheme={colorScheme}
-    style={style}
-    gutterBottom={gutterBottom}
-    listStyle={listStyle}
-    size={size}
-    textAlign={textAlign}
+    $colorScheme={colorScheme}
+    css={style}
+    $gutterBottom={gutterBottom}
+    $listStyle={listStyle}
+    $size={size}
+    $textAlign={textAlign}
     title={tooltip}
   >
     {children}

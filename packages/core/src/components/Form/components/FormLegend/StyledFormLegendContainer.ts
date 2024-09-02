@@ -1,22 +1,15 @@
 import styled, { css } from 'styled-components';
 
-import type {
-  IGlobalAriaAttrs,
-  IGlobalAttrs,
-  IStyledPolymorphic,
-} from '../../../../declarations';
 import { srOnlyMixin } from '../../../../styled/mixins';
 
-export interface StyledFormLegendContainerProps
-  extends IStyledPolymorphic,
-    IGlobalAttrs,
-    IGlobalAriaAttrs {
-  /** If the heading of the form group is hidden (always exists for accessibility reasons). */
-  srOnly?: boolean;
+export interface StyledFormLegendContainerProps {
+  /** If the heading of the form group is hidden (always exists for
+   * accessibility reasons). */
+  $srOnly?: boolean;
 }
 
 export const StyledFormLegendContainer = styled.div<StyledFormLegendContainerProps>`
-  ${({ srOnly = false, theme }) => {
+  ${({ $srOnly = false, theme }) => {
     const labelLineHeight = theme.alias.typo.lineHeight.body.md;
     return css`
       display: flex;
@@ -24,7 +17,7 @@ export const StyledFormLegendContainer = styled.div<StyledFormLegendContainerPro
       min-height: ${labelLineHeight};
       margin: 0;
 
-      ${srOnly &&
+      ${$srOnly &&
       css`
         ${srOnlyMixin};
       `}

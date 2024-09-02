@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
 
 export interface StyledDraggableContainerProps {
-  isDragging: boolean;
+  $isDragging: boolean;
 }
 
 export const StyledDraggableContainer = styled.div<StyledDraggableContainerProps>`
-  ${({ isDragging, theme }) => {
+  ${({ $isDragging, theme }) => {
     const colorTokens = theme?.alias?.color;
     const elevationTokens = theme?.alias?.elevation;
 
@@ -16,7 +16,7 @@ export const StyledDraggableContainer = styled.div<StyledDraggableContainerProps
       right: 0;
       top: 0;
       bottom: 0;
-      cursor: ${isDragging ? 'grabbing' : 'grab'};
+      cursor: ${$isDragging ? 'grabbing' : 'grab'};
 
       &::after,
       &::before {

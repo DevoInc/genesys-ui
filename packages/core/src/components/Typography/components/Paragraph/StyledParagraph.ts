@@ -4,37 +4,36 @@ import type { ITypography } from '../../declarations';
 import { getTypoCss } from '../../utils';
 import { getSpacingPropCss } from '../../../../helpers';
 
-export interface StyledParagraphProps
-  extends Pick<
-    ITypography,
-    'colorScheme' | 'gutterBottom' | 'textAlign' | 'truncateLine'
-  > {
+export interface StyledParagraphProps {
+  $colorScheme?: ITypography['colorScheme'];
+  $gutterBottom?: ITypography['gutterBottom'];
+  $textAlign?: ITypography['textAlign'];
+  $truncateLine?: ITypography['truncateLine'];
   /** This property defines multiple styles: font-size, line-height... etc. */
-  size?: ITypography['bodySize'];
+  $size?: ITypography['bodySize'];
 }
 
 export const StyledParagraph = styled.p<StyledParagraphProps>`
   ${({
-    colorScheme,
-    gutterBottom,
-    size,
-    textAlign,
+    $colorScheme,
+    $gutterBottom,
+    $size,
+    $textAlign,
     theme,
-    truncateLine,
+    $truncateLine,
   }) => css`
-    margin-bottom: ${getSpacingPropCss(theme)(gutterBottom)};
+    margin-bottom: ${getSpacingPropCss(theme)($gutterBottom)};
     ${getTypoCss({
-      variant: 'body',
-      colorScheme,
-      textAlign,
+      $variant: 'body',
+      $colorScheme,
+      $textAlign,
       theme,
-      truncateLine,
-      size,
+      $truncateLine,
+      $size,
     })};
-
-    word-break: break-word;
-    &:last-child {
-      margin-bottom: 0;
-    }
   `}
+  word-break: break-word;
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;

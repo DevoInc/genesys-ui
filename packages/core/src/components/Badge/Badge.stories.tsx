@@ -32,6 +32,7 @@ export const InOtherComponents: Story = {
 };
 
 export const ContentSchemes: Story = {
+  tags: ['isHidden'],
   name: 'Content schemes',
   render: () =>
     (() => (

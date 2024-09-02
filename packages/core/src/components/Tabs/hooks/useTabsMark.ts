@@ -19,9 +19,9 @@ export const useTabsMark = ({
   const [containerWidth, setContainerWidth] = React.useState(0);
 
   React.useEffect(() => {
-    const activeTab = tabsRef.current.querySelector('[aria-selected="true"]');
+    const activeTab = tabsRef?.current?.querySelector('[aria-selected="true"]');
     const { left: navContainerLeft } =
-      tabsRef.current.getBoundingClientRect() ?? {};
+      tabsRef?.current?.getBoundingClientRect() ?? {};
 
     const { left: activeTabLeft, width: activeTabWidth } =
       activeTab?.getBoundingClientRect() ?? {};
@@ -42,7 +42,7 @@ export const useTabsMark = ({
         }
       }, 10),
     );
-    ro.observe(tabsRef.current);
+    ro.observe(tabsRef?.current);
     return () => {
       ro.disconnect();
     };

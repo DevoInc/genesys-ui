@@ -6,7 +6,7 @@ import { EditableContent } from '../../../EditableContent';
 import { lorem } from '../../../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Heading> = {
-  title: 'Components/Text/Typography/Block/Heading',
+  title: 'Components/Text/Typography/Block',
   component: Heading,
 };
 
@@ -14,12 +14,14 @@ export default meta;
 type Story = StoryObj<typeof Heading>;
 
 export const BaseHeading: Story = {
+  tags: ['isHidden'],
   args: {
     children: 'Heading',
   },
 };
 
 export const HeadingEditable: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [editConfig, setEditConfig] = React.useState({

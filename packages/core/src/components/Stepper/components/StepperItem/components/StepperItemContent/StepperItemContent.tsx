@@ -12,7 +12,7 @@ export const StepperItemContent: React.FC<StepperItemContentProps> = ({
   status = 'pending',
   style,
 }) => (
-  <StyledStepperItemContent size={size} status={status} css={style}>
+  <StyledStepperItemContent $size={size} $status={status} css={style}>
     {children}
   </StyledStepperItemContent>
 );

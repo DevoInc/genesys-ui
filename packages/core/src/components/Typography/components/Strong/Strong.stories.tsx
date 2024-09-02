@@ -11,6 +11,7 @@ export default meta;
 type Story = StoryObj<typeof Strong>;
 
 export const BaseStrong: Story = {
+  tags: ['isHidden'],
   args: {
     children: 'Stronger than iron',
   },

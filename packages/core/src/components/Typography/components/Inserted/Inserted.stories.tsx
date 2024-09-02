@@ -11,6 +11,7 @@ export default meta;
 type Story = StoryObj<typeof Inserted>;
 
 export const BaseInserted: Story = {
+  tags: ['isHidden'],
   args: {
     children: 'Inserted text',
   },

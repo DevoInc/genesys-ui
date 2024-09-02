@@ -30,13 +30,19 @@ import {
   Underlined,
 } from './components';
 
-import {
-  StyledTypography,
-  type StyledTypographyProps,
-} from './StyledTypography';
+import { StyledTypography } from './StyledTypography';
+import { ITypography } from './declarations';
 
 export interface TypographyProps
-  extends Omit<StyledTypographyProps, 'size' | 'variant'>,
+  extends Pick<
+      ITypography,
+      | 'bold'
+      | 'colorScheme'
+      | 'format'
+      | 'gutterBottom'
+      | 'textAlign'
+      | 'truncateLine'
+    >,
     IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
@@ -63,15 +69,15 @@ export const InternalTypography: React.FC<TypographyProps> = ({
   return (
     <StyledTypography
       {...nativeProps}
-      bold={bold}
-      colorScheme={colorScheme}
+      $bold={bold}
+      $colorScheme={colorScheme}
       css={style}
-      truncateLine={truncateLine}
-      gutterBottom={gutterBottom}
-      size={size}
-      textAlign={textAlign}
+      $truncateLine={truncateLine}
+      $gutterBottom={gutterBottom}
+      $size={size}
+      $textAlign={textAlign}
       title={tooltip}
-      variant={variant}
+      $variant={variant}
     >
       {children}
     </StyledTypography>

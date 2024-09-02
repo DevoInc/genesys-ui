@@ -1,14 +1,14 @@
 import { css, type DefaultTheme } from 'styled-components';
 
 interface IScrollbarMixin {
-  cornerColor?: string;
-  size?: string;
-  thumbColor?: string;
-  thumbHoverColor?: string;
-  thumbRadius?: string;
-  thumbTransition?: string;
-  trackColor?: string;
-  trackRadius?: string;
+  $cornerColor?: string;
+  $size?: string;
+  $thumbColor?: string;
+  $thumbHoverColor?: string;
+  $thumbRadius?: string;
+  $thumbTransition?: string;
+  $trackColor?: string;
+  $trackRadius?: string;
   theme: DefaultTheme;
 }
 
@@ -28,22 +28,22 @@ interface IScrollbarMixin {
  * @return the css with the styles object.
  */
 export const scrollbars = ({
-  cornerColor,
-  size,
-  thumbColor,
-  thumbHoverColor,
-  thumbRadius,
-  thumbTransition,
-  trackColor,
-  trackRadius,
+  $cornerColor,
+  $size,
+  $thumbColor,
+  $thumbHoverColor,
+  $thumbRadius,
+  $thumbTransition,
+  $trackColor,
+  $trackRadius,
   theme,
 }: IScrollbarMixin) => {
   const scrollbarTokens = theme.alias.scrollbars;
-  const sizeEval = size || scrollbarTokens.size.square.md || '0.8rem';
+  const sizeEval = $size || scrollbarTokens.size.square.md || '0.8rem';
   return css`
     // For Google Chrome
     &::-webkit-scrollbar-corner {
-      background-color: ${cornerColor || 'transparent'};
+      background-color: ${$cornerColor || 'transparent'};
     }
 
     &::-webkit-scrollbar {
@@ -55,27 +55,27 @@ export const scrollbars = ({
     }
 
     &::-webkit-scrollbar-track {
-      background-color: ${trackColor ||
+      background-color: ${$trackColor ||
       scrollbarTokens.track.color.backdrop ||
       'rgba(0, 0, 0, 0.16)'};
-      border-radius: ${trackRadius ||
+      border-radius: ${$trackRadius ||
       scrollbarTokens.track.shape.borderRadius ||
       '999rem'};
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: ${thumbColor ||
+      background-color: ${$thumbColor ||
       scrollbarTokens.thumb.color.backdrop.base ||
       'rgba(0, 0, 0, 0.24)'};
-      border-radius: ${thumbRadius ||
+      border-radius: ${$thumbRadius ||
       scrollbarTokens.thumb.shape.borderRadius ||
       '999rem'};
-      transition: ${thumbTransition ||
+      transition: ${$thumbTransition ||
       scrollbarTokens.thumb.mutation.transition ||
       'background-color 0.3s ease'};
 
       &:hover {
-        background-color: ${thumbHoverColor ||
+        background-color: ${$thumbHoverColor ||
         scrollbarTokens.thumb.color.backdrop.hovered ||
         'rgba(0, 0, 0, 0.36)'};
       }

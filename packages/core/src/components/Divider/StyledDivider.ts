@@ -1,56 +1,41 @@
-import * as React from 'react';
-import styled, { css, CSSProp } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import type { TAllColorScheme, TGlobalSpacing } from '../../declarations';
 import { getSpacingPropCss } from '../../helpers';
 import { getDividerColorTokens } from './helpers';
+import type { IDividerStyled } from './declarations';
 
-export interface StyledDividerProps {
-  /** This property defines the status color schema for the divider */
-  colorScheme?: TAllColorScheme;
-  /** This property defines a custom color of the divider */
-  customColor?: React.CSSProperties['color'];
-  /** Vertical or horizontal Css margin, depending on the Divider is
-   * vertical. */
-  margin?: string | TGlobalSpacing;
-  /** This property defines if the divider is vertical */
-  vertical?: boolean;
-  /** Css height */
-  $height?: React.CSSProperties['height'];
-  /** Css width */
-  $width?: React.CSSProperties['width'];
-  // TODO: interface only for satisfy the type error with TS and inherit CSSProp
-  css?: CSSProp;
-}
+export interface StyledDividerProps extends IDividerStyled {}
 
 export const StyledDivider = styled.hr<StyledDividerProps>`
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: none;
   ${({
-    customColor,
+    $customColor,
     $height,
-    margin,
-    colorScheme = 'base',
+    $margin,
+    $colorScheme = 'base',
     theme,
-    vertical = false,
+    $vertical = false,
     $width,
   }) => {
-    const defaultSpacing = vertical
+    const defaultSpacing = $vertical
       ? `0 ${theme.alias.space.cmp.md}`
       : `${theme.alias.space.cmp.md} 0`;
-    const spacing = margin ? getSpacingPropCss(theme)(margin) : defaultSpacing;
+    const spacing = $margin
+      ? getSpacingPropCss(theme)($margin)
+      : defaultSpacing;
     const borderSize = theme.alias.shape.borderSize.separator.md;
     const bgColor =
-      customColor ||
-      getDividerColorTokens(theme.alias.color.border)[colorScheme];
+      $customColor ||
+      getDividerColorTokens(theme.alias.color.border)[$colorScheme];
     return css`
-      position: relative;
-      flex-shrink: 0;
-      display: ${vertical ? 'inline-flex' : 'flex'};
-      overflow: hidden;
+      display: ${$vertical ? 'inline-flex' : 'flex'};
       margin: ${spacing};
-      border: none;
-      width: ${$width || (vertical ? borderSize : '100%')};
+      width: ${$width || ($vertical ? borderSize : '100%')};
       height: ${$height ||
-      (vertical ? theme.alias.size.height.surface.xxs : borderSize)};
+      ($vertical ? theme.alias.size.height.surface.xxs : borderSize)};
       background: ${bgColor};
     `;
   }};

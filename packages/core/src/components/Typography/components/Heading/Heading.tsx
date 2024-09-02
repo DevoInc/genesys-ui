@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { StyledHeading, type StyledHeadingProps } from './StyledHeading';
+import { StyledHeading } from './StyledHeading';
 import type {
   IContentEditableAttrs,
   IFocusEventAttrs,
@@ -9,15 +9,16 @@ import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../../declarations';
+import type { ITypographyHeading } from './declarations';
 
 export interface HeadingProps
-  extends StyledHeadingProps,
-    IStyledPolymorphic,
+  extends IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
     IContentEditableAttrs,
     IGlobalAriaAttrs,
-    IFocusEventAttrs {
+    IFocusEventAttrs,
+    ITypographyHeading {
   /** Content of the heading */
   children?: React.ReactNode;
   forwardedRef?: React.Ref<HTMLElement> | null;
@@ -37,13 +38,13 @@ export const Heading: React.FC<HeadingProps> = ({
 }) => (
   <StyledHeading
     {...nativeProps}
-    colorScheme={colorScheme}
-    style={style}
-    truncateLine={truncateLine}
-    gutterBottom={gutterBottom}
+    $colorScheme={colorScheme}
+    css={style}
+    $truncateLine={truncateLine}
+    $gutterBottom={gutterBottom}
     ref={forwardedRef}
-    size={size}
-    textAlign={textAlign}
+    $size={size}
+    $textAlign={textAlign}
     title={tooltip}
   >
     {children}

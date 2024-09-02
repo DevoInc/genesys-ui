@@ -1,9 +1,9 @@
 import styled, { css, CSSProp } from 'styled-components';
 
-import type { StyledInputControlProps } from '../InputControlInput/StyledInputControl';
+import type { IInputControlShowPassword } from './declarations';
 
-export interface StyledInputControlShowPasswordProps
-  extends Pick<StyledInputControlProps, '$size'> {
+export interface StyledInputControlShowPasswordProps {
+  $size?: IInputControlShowPassword['size'];
   // TODO: interface only for satisfy the type error with TS and inherit CSSProp
   css?: CSSProp;
 }

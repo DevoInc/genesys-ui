@@ -5,33 +5,32 @@ import {
   INPUT_CONTROL_PSEUDO_ACTIONS_SIZE_MAP,
   INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP,
 } from '../../constants';
-import type {
-  TControlWidth,
-  TFieldStatus,
-} from '../../../../declarations/commonProps';
-import type { TFieldSize } from '../../../Field/declarations';
 import { typoMixin } from '../../../../styled/mixins/typography';
 import { hasStatus } from '../../../../utils/validations';
 import {
   btnResetMixin,
   commonInputControlMixin,
 } from '../../../../styled/mixins/components';
+import { IInputControlInput } from './declarations';
 
 export interface StyledInputControlProps {
   /** If the Input has an addon to its left, so it needs special styles. */
-  hasAddonToLeft?: boolean;
+  $hasAddonToLeft?: boolean;
   /** If the Input has an addon to its right, so it needs special styles. */
-  hasAddonToRight?: boolean;
+  $hasAddonToRight?: boolean;
   /** Whether the component displays an icon. */
-  hasIcon?: boolean;
+  $hasIcon?: boolean;
   /** Whether the component displays an icon related with type. */
-  hasTypeIcon?: boolean;
-  /** Width of the input control based in predefined values as 'xxs', 'xs', 'sm'... etc. or directly in a css value. It should reflect the length of the content you expect the user to enter. */
-  inputWidth?: TControlWidth;
+  $hasTypeIcon?: boolean;
+  /** Width of the input control based in predefined values as 'xxs', 'xs',
+   * 'sm'... etc. or directly in a css value. It should reflect the length of
+   * the content you expect the user to enter. */
+  $inputWidth?: IInputControlInput['inputWidth'];
   /** Size of the input: height, padding, font-size... etc. */
-  $size?: TFieldSize;
+  $size?: IInputControlInput['size'];
   /** This property defines the status color schema for the input */
-  status?: TFieldStatus;
+  $status?: IInputControlInput['status'];
+  $readOnly?: boolean;
   // TODO: interface only for satisfy the type error with TS and inherit CSSProp
   css?: CSSProp;
 }
@@ -39,14 +38,14 @@ export interface StyledInputControlProps {
 export const StyledInputControl = styled.input<StyledInputControlProps>`
   ${({
     disabled,
-    hasAddonToLeft,
-    hasAddonToRight,
-    hasIcon,
-    hasTypeIcon,
-    inputWidth,
-    readOnly,
+    $hasAddonToLeft,
+    $hasAddonToRight,
+    $hasIcon,
+    $hasTypeIcon,
+    $inputWidth,
+    $readOnly,
     $size = 'md',
-    status = 'base',
+    $status = 'base',
     theme,
     type = 'text',
   }) => {
@@ -60,7 +59,7 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
     const inputHeight = fieldTokens.size.height[$size];
     const inputHorPadding = fieldTokens.space.padding.hor[$size];
     const inputWithIconPadding =
-      hasIcon || hasTypeIcon
+      $hasIcon || $hasTypeIcon
         ? `calc(${iconSize} + (${inputHorPadding} * 2))`
         : '0rem';
     const inputWithShowPasswordPadding =
@@ -85,23 +84,23 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
     return css`
       ${commonInputControlMixin({
         disabled,
-        inputWidth,
-        readOnly,
+        $inputWidth,
+        $readOnly,
         $size,
-        status,
+        $status,
         theme,
       })};
 
-      ${(hasIcon || type === 'password') &&
+      ${($hasIcon || type === 'password') &&
       css`
-        padding-right: ${type === 'password' && hasIcon
+        padding-right: ${type === 'password' && $hasIcon
           ? `calc(${inputWithShowPasswordPadding} + ${inputWithIconPadding})`
           : type === 'password'
             ? inputWithShowPasswordPadding
             : inputWithIconPadding};
       `}
 
-      ${hasTypeIcon &&
+      ${$hasTypeIcon &&
       css`
         padding-left: ${inputWithIconPadding};
       `}
@@ -114,22 +113,22 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
         ) !important;
       `}
 
-      ${hasAddonToLeft &&
+      ${$hasAddonToLeft &&
       css`
         border-bottom-left-radius: 0;
         border-top-left-radius: 0;
-        ${!hasStatus(status) &&
+        ${!hasStatus($status) &&
         css`
           border-left-width: 0;
         `}
       `}
 
-      ${hasAddonToRight &&
+      ${$hasAddonToRight &&
       css`
         z-index: 1;
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
-        ${!hasStatus(status) &&
+        ${!hasStatus($status) &&
         css`
           border-right-width: 0;
         `}
@@ -229,9 +228,9 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
           align-items: center;
           justify-content: center;
           ${typoMixin({
-            variant: 'action',
+            $variant: 'action',
             theme,
-            size: $size,
+            $size,
           })};
           position: relative;
           left: calc((${inputHorPadding} - ${inputFileTopPadding}) * -1);
@@ -260,7 +259,7 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
           border-radius: ${aliasTokens.shape.borderRadius.pill};
           width: 100%;
           height: ${inputRangeTrackHeight};
-          background-color: ${aliasTokens.color.background.track[status]};
+          background-color: ${aliasTokens.color.background.track[$status]};
         }
 
         &::-webkit-slider-thumb {

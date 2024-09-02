@@ -59,12 +59,13 @@ export default defineConfig({
       },
     }),
     dts({
-      entryRoot: './src/',
-      exclude: ['./src/**/*.test.ts?(x)', './src/**/*.stories.tsx'],
+      rollupTypes: true,
+      // entryRoot: './src/',
+      // exclude: ['./src/**/*.test.ts?(x)', './src/**/*.stories.tsx'],
     }),
   ],
   test: {
-    environment: 'jsdom',
-    include: ['**/*.test.ts?(x)'],
+    environment: 'happy-dom',
+    include: ['{src,stories}/**/*.test.ts?(x)'],
   },
 });

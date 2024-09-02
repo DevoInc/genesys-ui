@@ -19,38 +19,40 @@ const sizeStroke = keyframes`
   }
 `;
 
-export interface StyledProgressBarCircularCircleInnerProps
-  extends Pick<IBaseProgressBar, 'indeterminate' | 'percent' | 'status'> {
-  rad: number;
+export interface StyledProgressBarCircularCircleInnerProps {
+  $rad: number;
+  $indeterminate?: IBaseProgressBar['indeterminate'];
+  $percent?: IBaseProgressBar['percent'];
+  $status?: IBaseProgressBar['status'];
 }
 
 export const StyledProgressBarCircularCircleInner = styled.circle<StyledProgressBarCircularCircleInnerProps>`
-  ${({ indeterminate, status, percent, rad, theme }) => {
+  ${({ $indeterminate, $status, $percent, $rad, theme }) => {
     const progressBarTokens = theme.cmp.progressBar;
 
     return css`
       transition: stroke-dashoffset ease 0.3s;
       stroke: ${getProgressBgColor({
-        status,
+        $status,
         tokens: progressBarTokens,
       })};
-      stroke-dasharray: ${rad};
+      stroke-dasharray: ${$rad};
       stroke-linecap: round;
 
-      ${!indeterminate &&
+      ${!$indeterminate &&
       css`
-        stroke-dashoffset: ${rad * ((100 - percent) / 100)};
+        stroke-dashoffset: ${$rad * ((100 - $percent) / 100)};
       `};
 
-      ${indeterminate &&
-      (!status || status === 'progressing') &&
+      ${$indeterminate &&
+      (!$status || $status === 'progressing') &&
       css`
         animation: ${sizeStroke} ease 1s infinite;
         transform: translate3d(0, 0, 0);
       `};
 
-      ${indeterminate &&
-      status !== 'progressing' &&
+      ${$indeterminate &&
+      $status !== 'progressing' &&
       css`
         stroke-dashoffset: 0;
       `};

@@ -61,7 +61,6 @@ export const SplitLayout: React.FC<SplitLayoutProps> = ({
               key={`separator${idx}`}
               id={`separator${idx}`}
               index={idx}
-              resizing={false}
               direction={direction}
               size={gutterSize}
               disabled={disabled}

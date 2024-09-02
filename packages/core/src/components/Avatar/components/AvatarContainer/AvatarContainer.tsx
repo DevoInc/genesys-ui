@@ -20,13 +20,9 @@ import {
 import { AvatarContext } from '../../context';
 import { Overlay } from '../../../Overlay';
 import { Icon } from '../../../Icon';
-import {
-  StyledAvatarContainer,
-  type StyledAvatarContainerProps,
-} from './StyledAvatarContainer';
+import { StyledAvatarContainer } from './StyledAvatarContainer';
 import { StyledAvatarBackdrop } from './StyledAvatarBackdrop';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AvatarContainerProps
   extends IStyledPolymorphic,
     IStyledOverloadCss,
@@ -37,7 +33,6 @@ export interface AvatarContainerProps
     ITriggerAriaAttrs,
     IFocusEventAttrs,
     IMouseEventAttrs,
-    Omit<StyledAvatarContainerProps, '$disabled'>,
     Pick<
       IAvatar,
       | 'children'
@@ -46,6 +41,11 @@ export interface AvatarContainerProps
       | 'imageFit'
       | 'imagePosition'
       | 'imageSrc'
+      | 'bordered'
+      | 'colorScheme'
+      | 'size'
+      | 'customSize'
+      | 'variant'
     > {}
 
 export const AvatarContainer: React.FC<AvatarContainerProps> = ({
@@ -60,26 +60,30 @@ export const AvatarContainer: React.FC<AvatarContainerProps> = ({
   disabled,
   onClick,
   size = AVATAR_SIZE_DEFAULT_VALUE,
+  customSize,
   tooltip,
   variant = AVATAR_VARIANT_DEFAULT_VALUE,
+  style,
   ...restProps
 }) => {
   const isClickable = href || onClick;
   return (
     <StyledAvatarContainer
       {...restProps}
-      bordered={bordered}
-      colorScheme={colorScheme}
+      $bordered={bordered}
+      css={style}
+      $colorScheme={colorScheme}
       href={href}
-      isClickable={isClickable}
+      $isClickable={isClickable}
       onClick={onClick}
-      size={size}
-      variant={variant}
+      $size={size}
+      $customSize={customSize}
+      $variant={variant}
       $disabled={disabled}
       title={tooltip}
     >
       {isClickable && iconOnHover && (
-        <StyledAvatarBackdrop variant={variant}>
+        <StyledAvatarBackdrop $variant={variant}>
           <Overlay opacity={0.4} bgColorScheme="dark">
             <Icon size="2rem">{iconOnHover}</Icon>
           </Overlay>

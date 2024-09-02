@@ -12,6 +12,7 @@ export default meta;
 type Story = StoryObj<typeof Lead>;
 
 export const BaseLead: Story = {
+  tags: ['isHidden'],
   args: {
     children: lorem,
   },

@@ -32,14 +32,13 @@ export const SpinnerLoader: React.FC<SpinnerLoaderProps> = ({
   return (
     <StyledSpinnerLoaderSvg
       {...restNativeProps}
-      colorScheme={colorScheme}
       css={style}
-      size={size}
+      $size={size}
       title={tooltip}
       viewBox={'0 0 50 50'}
     >
       <StyledSpinnerLoaderCircle
-        colorScheme={colorScheme}
+        $colorScheme={colorScheme}
         cx={25}
         cy={25}
         r={22}
@@ -47,7 +46,7 @@ export const SpinnerLoader: React.FC<SpinnerLoaderProps> = ({
         fill={'none'}
       />
       <StyledSpinnerLoaderCircleAnimated
-        colorScheme={colorScheme}
+        $colorScheme={colorScheme}
         cx={25}
         cy={25}
         r={22}

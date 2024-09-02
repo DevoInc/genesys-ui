@@ -18,13 +18,13 @@ export const StyledRadioControl = styled.input.attrs({
     const cmpTokens = theme.cmp.radio;
     const controlTokens = cmpTokens.control;
     const markerTokens = cmpTokens.controlMarker;
-    const checkRadioTokens = getCheckRadioTokens({ status: $status, theme });
+    const checkRadioTokens = getCheckRadioTokens({ $status, theme });
     const markerSquare = markerTokens.size.square[$size];
     const borderRadius = controlTokens.shape.borderRadius;
     const transition = `all ease-in-out ${checkRadioTokens.animationTime}`;
 
     return css`
-      ${checkRadioMixin({ disabled, size: $size, status: $status, theme })};
+      ${checkRadioMixin({ disabled, $size, $status, theme })};
       appearance: none;
       margin: 0;
       border-radius: ${borderRadius};

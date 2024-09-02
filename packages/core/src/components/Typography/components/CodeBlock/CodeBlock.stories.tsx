@@ -12,6 +12,7 @@ export default meta;
 type Story = StoryObj<typeof CodeBlock>;
 
 export const BaseCodeBlock: Story = {
+  tags: ['isHidden'],
   args: {
     children: lorem,
   },

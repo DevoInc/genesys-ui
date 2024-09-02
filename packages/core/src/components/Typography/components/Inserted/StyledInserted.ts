@@ -1,9 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const StyledInserted = styled.ins`
-  ${({ theme }) => css`
-    background: ${theme.cmp.inserted.color.background};
-    color: inherit;
-    text-decoration: none;
-  `}
+  background: ${({ theme }) => theme.cmp.inserted.color.background};
+  color: inherit;
+  text-decoration: none;
 `;

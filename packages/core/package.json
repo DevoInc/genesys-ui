@@ -26,7 +26,7 @@
     "dpdm": "dpdm --exit-code circular:1 ./src/index.ts"
   },
   "peerDependencies": {
-    "@devoinc/genesys-icons": "^4.x.x || ^5.x.x",
+    "@devoinc/genesys-icons": "^4.x.x || ^5.x.x || ^6.x.x",
     "@devoinc/genesys-tokens-types": "6.x.x",
     "@dnd-kit/core": "6.x.x",
     "@dnd-kit/modifiers": "6.x.x",

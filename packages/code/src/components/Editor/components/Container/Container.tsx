@@ -5,7 +5,6 @@ import { useTheme } from 'styled-components';
 import { Box, type BoxProps } from '@devoinc/genesys-ui';
 import { codeContainerMixin, type ICodeContainerMixin } from './helpers';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ContainerProps
   extends BoxProps,
     Omit<ICodeContainerMixin, 'theme'> {}

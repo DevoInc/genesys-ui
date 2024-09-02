@@ -5,7 +5,6 @@ import { Button, Flex, Menu, Popover } from '@devoinc/genesys-ui';
 
 import {
   BooleanRenderer,
-  BulkRenderer,
   Table,
   TextRenderer,
   HeaderBulkRenderer,
@@ -29,7 +28,7 @@ const meta: Meta<typeof Table> = {
 export default meta;
 type Story = StoryObj<typeof Table>;
 
-const initialData = new Array(10).fill(null).map((_, index) => ({
+const initialData = Array.from({ length: 10 }).map((_, index) => ({
   bulk: false,
   text: `text ${index}`,
   num: index + 10,

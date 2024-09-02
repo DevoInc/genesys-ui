@@ -6,14 +6,11 @@ import type {
   TAllColorScheme,
   IGlobalAttrs,
   TGlobalSize,
-  IStyledOverloadCss,
 } from '../../declarations';
 
-import { getIconColor, getIconSize, mergeStyles } from '../../helpers';
+import { getIconColor, getIconSize } from '../../helpers';
 
-export interface IconProps
-  extends Pick<IGlobalAttrs, 'tooltip'>,
-    IStyledOverloadCss {
+export interface IconProps extends Pick<IGlobalAttrs, 'tooltip'> {
   children?: React.ReactNode;
   /** This property defines the custom icon color */
   color?: string;
@@ -25,6 +22,10 @@ export interface IconProps
   size?: string | TGlobalSize;
   /** If the icon has this property its font-weight changes to bold */
   strong?: boolean;
+  /** Sometimes you don't want to create an extra component just to apply a bit
+   * of styling. The styles prop is a convenient way to iterate on your
+   * components without settling on fixed component boundaries yet. */
+  style?: React.CSSProperties;
 }
 
 export const Icon: React.FC<IconProps> = ({
@@ -46,13 +47,11 @@ export const Icon: React.FC<IconProps> = ({
         }),
         size: getIconSize(theme)(size),
         title: tooltip,
-        style: mergeStyles(
-          {
-            position: 'relative',
-            strokeWidth: strong ? 1 : undefined,
-          },
-          style,
-        ),
+        style: {
+          position: 'relative',
+          strokeWidth: strong ? 1 : undefined,
+          ...style,
+        },
       }}
     >
       {children}

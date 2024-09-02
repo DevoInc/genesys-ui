@@ -1,21 +1,27 @@
 import * as React from 'react';
+
 import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../../declarations';
-
-import { StyledLead, type StyledLeadProps } from './StyledLead';
+import { StyledLead } from './StyledLead';
+import type { ITypography } from '../../declarations';
 
 export interface LeadProps
-  extends StyledLeadProps,
+  extends Pick<
+      ITypography,
+      'colorScheme' | 'gutterBottom' | 'textAlign' | 'truncateLine'
+    >,
     IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
     IGlobalAriaAttrs {
   /** Content of the lead */
   children?: React.ReactNode;
+  /** This property defines multiple styles: font-size, line-height... etc. */
+  size?: ITypography['bodySize'];
 }
 
 export const Lead: React.FC<LeadProps> = ({
@@ -31,12 +37,12 @@ export const Lead: React.FC<LeadProps> = ({
 }) => (
   <StyledLead
     {...nativeProps}
-    colorScheme={colorScheme}
-    style={style}
-    truncateLine={truncateLine}
-    gutterBottom={gutterBottom}
-    size={size}
-    textAlign={textAlign}
+    $colorScheme={colorScheme}
+    css={style}
+    $truncateLine={truncateLine}
+    $gutterBottom={gutterBottom}
+    $size={size}
+    $textAlign={textAlign}
     title={tooltip}
   >
     {children}

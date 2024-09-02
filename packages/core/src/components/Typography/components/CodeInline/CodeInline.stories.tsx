@@ -10,7 +10,8 @@ const meta: Meta<typeof CodeInline> = {
 export default meta;
 type Story = StoryObj<typeof CodeInline>;
 
-export const BaseCodeInLine: Story = {
+export const BaseCodeInline: Story = {
+  tags: ['isHidden'],
   args: {
     children: 'const test = true',
   },

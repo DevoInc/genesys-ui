@@ -32,24 +32,24 @@ export const Menu = <Option extends TSelectOption>(
     showMenuAndDropDown<Option>(props.selectProps) &&
     components.Menu && (
       <StyledSelectMenu
-        classNamePrefix={'react-select'}
-        alignOptions={props.selectProps.alignOptions}
+        $classNamePrefix={'react-select'}
+        $alignOptions={props.selectProps.alignOptions}
         className={`${props.selectProps.className}__menu`}
-        size={props.selectProps.size}
-        menuIsOpen={props.selectProps.menuIsOpen}
-        menuLevel={props.selectProps.menuLevel}
-        menuQuiet={props.selectProps.menuQuiet}
-        menuRelative={props.selectProps.menuRelative}
-        maxMenuHeight={props.selectProps.maxMenuHeight}
-        minMenuHeight={props.selectProps.minMenuHeight}
-        minMenuWidth={props.selectProps.minMenuWidth}
-        multipleSubtle={props.selectProps.multipleSubtle}
+        $size={props.selectProps.size}
+        $menuIsOpen={props.selectProps.menuIsOpen}
+        $menuLevel={props.selectProps.menuLevel}
+        $menuQuiet={props.selectProps.menuQuiet}
+        $menuRelative={props.selectProps.menuRelative}
+        $maxMenuHeight={props.selectProps.maxMenuHeight}
+        $minMenuHeight={props.selectProps.minMenuHeight}
+        $minMenuWidth={props.selectProps.minMenuWidth}
+        $multipleSubtle={props.selectProps.multipleSubtle}
       >
         <components.Menu {...props}>
           {props.selectProps.isMulti && props.selectProps.selectAllBtn && (
             <StyledSelectAll
-              multipleSubtle={props.selectProps.multipleSubtle}
-              size={props.selectProps.size}
+              $multipleSubtle={props.selectProps.multipleSubtle}
+              $size={props.selectProps.size}
             >
               {props.selectProps.multipleSubtle ? (
                 <Field

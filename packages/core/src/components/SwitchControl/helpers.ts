@@ -63,7 +63,7 @@ interface switchControlTextMixinProps {
 export const switchControlTextMixin = ({
   theme,
 }: switchControlTextMixinProps) => css`
-  ${typoMixin({ bold: true, theme })};
+  ${typoMixin({ $bold: true, theme })};
   position: relative;
   display: inline-flex;
   white-space: nowrap;

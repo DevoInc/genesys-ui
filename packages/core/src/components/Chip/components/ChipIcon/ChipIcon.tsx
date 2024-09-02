@@ -3,7 +3,6 @@ import { useTheme } from 'styled-components';
 
 import { ChipContext } from '../../context';
 import { Icon, type IconProps } from '../../../Icon';
-import { mergeStyles } from '../../../../helpers';
 
 export interface ChipIconProps extends IconProps {}
 
@@ -18,15 +17,13 @@ export const ChipIcon: React.FC<ChipIconProps> = ({
     <Icon
       {...context}
       {...restIconProps}
-      style={mergeStyles(
-        {
-          position: 'relative',
-          fontSize: tokens.typo.fontSize[size],
-          marginLeft: tokens.space.offset[size],
-          marginRight: tokens.space.margin[size],
-        },
-        style,
-      )}
+      style={{
+        position: 'relative',
+        fontSize: tokens.typo.fontSize[size],
+        marginLeft: tokens.space.offset[size],
+        marginRight: tokens.space.margin[size],
+        ...style,
+      }}
     />
   );
 };

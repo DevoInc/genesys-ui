@@ -7,15 +7,16 @@ import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../declarations';
-import { StyledLabel, type StyledLabelProps } from './StyledLabel';
+import { StyledLabel } from './StyledLabel';
+import type { ILabel } from './declarations';
 
 export interface LabelProps
-  extends IStyledPolymorphic,
+  extends ILabel,
+    IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
     IGlobalAriaAttrs,
-    Pick<ILabelAttrs, 'form'>,
-    StyledLabelProps {
+    Pick<ILabelAttrs, 'form'> {
   /** Content of the Label.*/
   children: React.ReactNode;
 }
@@ -29,17 +30,23 @@ export const Label: React.FC<LabelProps> = ({
   style,
   tooltip,
   truncated = true,
+  cursor,
+  srOnly,
+  textAlign,
   ...restNativeProps
 }) => (
   <StyledLabel
     {...restNativeProps}
     as={as || (htmlFor ? 'label' : 'span')}
-    colorScheme={colorScheme}
+    $colorScheme={colorScheme}
     css={style}
-    htmlFor={htmlFor}
-    size={size}
+    $textAlign={textAlign}
+    $srOnly={srOnly}
+    $htmlFor={htmlFor}
+    $cursor={cursor}
+    $size={size}
     title={tooltip}
-    truncated={truncated}
+    $truncated={truncated}
   >
     {children}
   </StyledLabel>

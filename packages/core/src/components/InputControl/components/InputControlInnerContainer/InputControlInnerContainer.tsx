@@ -2,12 +2,16 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import { Flex } from '../../../Flex';
-import type { StyledInputControlProps } from '../InputControlInput/StyledInputControl';
-import type { IStyledOverloadCss } from '../../../../declarations';
+import type {
+  IStyledOverloadCss,
+  TControlWidth,
+} from '../../../../declarations';
 
-export interface InputControlInnerContainerProps
-  extends IStyledOverloadCss,
-    Pick<StyledInputControlProps, 'inputWidth'> {
+export interface InputControlInnerContainerProps extends IStyledOverloadCss {
+  /** Width of the input control based in predefined values as 'xxs', 'xs',
+   * 'sm'... etc. or directly in a css value. It should reflect the length of
+   * the content you expect the user to enter. */
+  inputWidth?: TControlWidth;
   children: React.ReactNode;
 }
 

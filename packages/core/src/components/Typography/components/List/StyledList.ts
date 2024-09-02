@@ -4,25 +4,33 @@ import type { ITypography } from '../../declarations';
 import { getTypoCss } from '../../utils';
 import { getSpacingPropCss } from '../../../../helpers';
 
-export interface StyledListProps
-  extends Pick<
-    ITypography,
-    'colorScheme' | 'gutterBottom' | 'listStyle' | 'textAlign' | 'truncateLine'
-  > {
+export interface StyledListProps {
+  $colorScheme?: ITypography['colorScheme'];
+  $gutterBottom?: ITypography['gutterBottom'];
+  $listStyle?: ITypography['listStyle'];
+  $textAlign?: ITypography['textAlign'];
+  $truncateLine?: ITypography['truncateLine'];
   /** This property defines multiple styles: font-size, line-height... etc. */
-  size?: ITypography['bodySize'];
+  $size?: ITypography['bodySize'];
 }
 
 export const StyledList = styled.ul<StyledListProps>`
-  ${({ colorScheme, gutterBottom, listStyle, size, textAlign, theme }) => css`
-    margin-bottom: ${getSpacingPropCss(theme)(gutterBottom)};
+  ${({
+    $colorScheme,
+    $gutterBottom,
+    $listStyle,
+    $size,
+    $textAlign,
+    theme,
+  }) => css`
+    margin-bottom: ${getSpacingPropCss(theme)($gutterBottom)};
     padding-left: ${theme.alias.space.cmp.md};
     ${() => {
-      if (listStyle === 'ordered')
+      if ($listStyle === 'ordered')
         return css`
           list-style: decimal none outside;
         `;
-      if (listStyle === 'none')
+      if ($listStyle === 'none')
         return css`
           list-style: none;
           padding-left: 0;
@@ -33,15 +41,14 @@ export const StyledList = styled.ul<StyledListProps>`
     }};
 
     ${getTypoCss({
-      variant: 'body',
-      colorScheme,
-      textAlign,
+      $variant: 'body',
+      $colorScheme,
+      $textAlign,
       theme,
-      size,
+      $size,
     })};
-
-    &:last-child {
-      margin-bottom: 0;
-    }
   `}
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;

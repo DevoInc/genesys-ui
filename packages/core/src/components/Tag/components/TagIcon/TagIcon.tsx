@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import { Icon, type IconProps } from '../../../Icon';
-import { mergeStyles } from '../../../../helpers';
 
 export interface TagIconProps extends IconProps {}
 
@@ -21,12 +20,10 @@ export const TagIcon: React.FC<TagIconProps> = ({
       {...restIconProps}
       colorScheme={colorScheme}
       size={square}
-      style={mergeStyles(
-        {
-          marginRight: marginRight,
-        },
-        style,
-      )}
+      style={{
+        marginRight: marginRight,
+        ...style,
+      }}
     >
       {children}
     </Icon>

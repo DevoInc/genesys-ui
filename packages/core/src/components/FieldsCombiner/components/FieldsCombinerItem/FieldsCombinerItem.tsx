@@ -1,17 +1,10 @@
 import * as React from 'react';
 
-import {
-  StyledFieldsCombinerItem,
-  type StyledFieldsCombinerItemProps,
-} from './StyledFieldsCombinerItem';
-import { TFieldsCombinerType } from '../../declarations';
+import { StyledFieldsCombinerItem } from './StyledFieldsCombinerItem';
+import { IFieldsCombinerItem } from './declarations';
 
-export interface FieldsCombinerItemProps
-  extends Omit<StyledFieldsCombinerItemProps, '$order' | '$width'> {
+export interface FieldsCombinerItemProps extends IFieldsCombinerItem {
   children: React.ReactNode;
-  componentType: TFieldsCombinerType;
-  width?: StyledFieldsCombinerItemProps['$width'];
-  order?: StyledFieldsCombinerItemProps['$order'];
 }
 
 export const FieldsCombinerItem: React.FC<FieldsCombinerItemProps> = ({
@@ -24,11 +17,11 @@ export const FieldsCombinerItem: React.FC<FieldsCombinerItemProps> = ({
   width,
 }) => (
   <StyledFieldsCombinerItem
-    combinedButtons={combinedButtons}
-    componentType={componentType}
-    size={size}
+    $combinedButtons={combinedButtons}
+    $componentType={componentType}
+    $size={size}
     $order={order}
-    status={status}
+    $status={status}
     $width={width}
   >
     {children}

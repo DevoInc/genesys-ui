@@ -6,7 +6,6 @@ import { AvatarContext } from '../../context';
 import { Badge, type BadgeProps } from '../../../Badge';
 import { Box, type BoxProps } from '../../../Box';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AvatarBadgeProps
   extends Omit<BadgeProps, 'colorScheme' | 'size'>,
     Pick<IAvatar, 'colorScheme' | 'size' | 'variant'>,

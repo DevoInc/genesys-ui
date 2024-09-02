@@ -49,25 +49,34 @@ export const Base: Story = {
     })(args),
 };
 
-export const BaseForDocs: Story = {
+export const Custom: Story = {
   tags: ['isHidden'],
   render: () =>
     (() => {
       const [expanded, setExpanded] = React.useState(false);
-      const contentId = 'accessibility';
       return (
         <Flex flexDirection={'column'}>
-          <Collapse
-            aria-controls={contentId}
+          <Collapse._Container
             expanded={expanded}
-            heading="Collapse heading"
             onClick={() => {
               setExpanded(!expanded);
             }}
-          />
+          >
+            <Box
+              position="relative"
+              onClick={() => {
+                // eslint-disable-next-line no-alert
+                alert('Clock on Collapse marker');
+              }}
+            >
+              <Collapse._Marker />
+            </Box>
+            <Collapse._Heading style={{ fontStyle: 'italic' }}>
+              Custom collapse
+            </Collapse._Heading>
+          </Collapse._Container>
           {expanded && (
             <Box
-              id={contentId}
               maxHeight={'190px'}
               overflow={'auto'}
               padding={'cmp-md cmp-lg'}
@@ -78,36 +87,4 @@ export const BaseForDocs: Story = {
         </Flex>
       );
     })(),
-};
-
-export const Custom = () => {
-  const [expanded, setExpanded] = React.useState(false);
-  return (
-    <Flex flexDirection={'column'}>
-      <Collapse._Container
-        expanded={expanded}
-        onClick={() => {
-          setExpanded(!expanded);
-        }}
-      >
-        <Box
-          position="relative"
-          onClick={() => {
-            // eslint-disable-next-line no-alert
-            alert('Clock on Collapse marker');
-          }}
-        >
-          <Collapse._Marker />
-        </Box>
-        <Collapse._Heading style={{ fontStyle: 'italic' }}>
-          Custom collapse
-        </Collapse._Heading>
-      </Collapse._Container>
-      {expanded && (
-        <Box maxHeight={'190px'} overflow={'auto'} padding={'cmp-md cmp-lg'}>
-          <Typography.Paragraph>{lorem}</Typography.Paragraph>
-        </Box>
-      )}
-    </Flex>
-  );
 };

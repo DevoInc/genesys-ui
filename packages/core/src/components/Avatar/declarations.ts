@@ -80,3 +80,15 @@ export interface IAvatar {
   /** The shape variant of the avatar: circular, square... etc. */
   variant?: TAvatarVariant;
 }
+
+export interface IAvatarStyled {
+  $colorScheme?: IAvatar['colorScheme'];
+  $bordered?: IAvatar['bordered'];
+  $customSize?: IAvatar['customSize'];
+  $isClickable?: IAvatar['isClickable'];
+  $size?: IAvatar['size'];
+  $variant?: IAvatar['variant'];
+  /** If the Avatar has visual styles as disabled, and it gets that attribute if
+   * it's clickable. */
+  $disabled?: boolean;
+}

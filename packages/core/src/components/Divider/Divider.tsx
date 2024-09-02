@@ -1,16 +1,10 @@
 import * as React from 'react';
 
-import { StyledDivider, type StyledDividerProps } from './StyledDivider';
+import { StyledDivider } from './StyledDivider';
 import type { IStyledOverloadCss } from '../../declarations';
+import { IDivider } from './declarations';
 
-export interface DividerProps
-  extends Omit<StyledDividerProps, '$height' | '$width'>,
-    IStyledOverloadCss {
-  /** Css height */
-  height?: React.CSSProperties['height'];
-  /** Css width */
-  width?: React.CSSProperties['width'];
-}
+export interface DividerProps extends IDivider, IStyledOverloadCss {}
 
 export const Divider: React.FC<DividerProps> = ({
   colorScheme = 'base',
@@ -23,12 +17,12 @@ export const Divider: React.FC<DividerProps> = ({
 }) => (
   <StyledDivider
     role={'separator'}
-    colorScheme={colorScheme}
+    $colorScheme={colorScheme}
     css={style}
-    customColor={customColor}
+    $customColor={customColor}
     $height={height}
-    margin={margin}
-    vertical={vertical}
+    $margin={margin}
+    $vertical={vertical}
     $width={width}
   />
 );

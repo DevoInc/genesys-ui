@@ -37,7 +37,7 @@ export const panelBodyMixin = ({
   }
 
   return css`
-    ${scrollbars({ trackRadius, theme })};
+    ${scrollbars({ $trackRadius: trackRadius, theme })};
     padding: ${padding};
     margin: ${margin};
   `;

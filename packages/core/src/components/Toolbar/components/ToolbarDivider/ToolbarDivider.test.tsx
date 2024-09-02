@@ -13,9 +13,8 @@ describe('ToolbarDivider', () => {
   test('Component renders with default styles', () => {
     const { container } = render(<ToolbarDivider />);
     expect(container.getElementsByTagName('hr')[0]).toHaveStyle(`
-        height: 2rem;
-        width: 0.1rem;
-        margin: 0 1.6rem;
+        height: 32px;
+        width: 1.6px;
     `);
   });
 });

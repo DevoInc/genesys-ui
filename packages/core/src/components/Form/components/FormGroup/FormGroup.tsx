@@ -3,7 +3,10 @@ import { useTheme } from 'styled-components';
 
 import type { FieldProps } from '../../../Field';
 import type { IStyledOverloadCss } from '../../../../declarations/styled';
-import type { IFieldAttrs } from '../../../../declarations/htmlAttrs';
+import type {
+  IFieldAttrs,
+  IGlobalAttrs,
+} from '../../../../declarations/htmlAttrs';
 import type { TLegendPosition } from '../../declarations';
 import { Flex, type FlexProps } from '../../../Flex';
 import { Field } from '../../../Field';
@@ -16,15 +19,11 @@ import { FormLegend } from '../FormLegend';
 import { Helper } from '../../../Helper';
 import { hasStatus } from '../../../../utils/validations';
 import { StyledFormGroup, type StyledFormGroupProps } from './StyledFormGroup';
-import {
-  StyledFormGroupContainer,
-  type StyledFormGroupContainerProps,
-} from './StyledFormGroupContainer';
+import { StyledFormGroupContainer } from './StyledFormGroupContainer';
 
 export interface FormGroupProps
-  extends StyledFormGroupContainerProps,
-    StyledFormGroupProps,
-    IStyledOverloadCss,
+  extends IStyledOverloadCss,
+    IGlobalAttrs,
     Pick<FieldProps, 'helper' | 'hasFloatingHelper' | 'status'>,
     Pick<FlexProps, 'marginLeft' | 'marginTop'>,
     Pick<
@@ -32,6 +31,8 @@ export interface FormGroupProps
       'alignItems' | 'direction' | 'flexWrap' | 'itemsGap' | 'justifyContent'
     >,
     Omit<IFieldAttrs, 'required'> {
+  /** If the form group is boxed. */
+  boxed?: StyledFormGroupProps['$boxed'];
   /** If the form group legend has label format. Usually when the form group is
    * a checkbox or radio group. */
   hasLegendLabelFormat?: boolean;
@@ -47,6 +48,9 @@ export interface FormGroupProps
   legendPosition?: TLegendPosition;
   /** Children */
   children: React.ReactNode;
+  /** It defines if the group is rendered as a fieldset, and therefore it can
+   * get its related html attributes.*/
+  asFieldset?: boolean;
 }
 
 export const FormGroup: React.FC<FormGroupProps> = ({
@@ -102,10 +106,11 @@ export const FormGroup: React.FC<FormGroupProps> = ({
       disabled={asFieldset ? disabled : null}
       name={asFieldset ? name : null}
       as={asFieldset ? 'fieldset' : 'div'}
-      legendPosition={legendPosition}
-      marginLeft={marginLeft}
-      marginTop={marginTop}
+      $legendPosition={legendPosition}
+      $marginLeft={marginLeft}
+      $marginTop={marginTop}
       title={tooltip}
+      $asFieldset={asFieldset}
     >
       {legend && (
         <FormLegend
@@ -117,7 +122,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
           helper={helper && hasFloatingHelper ? FloatingHelperBlock : null}
         />
       )}
-      <StyledFormGroup boxed={boxed}>
+      <StyledFormGroup $boxed={boxed}>
         <FormDistributor
           alignItems={alignItems}
           direction={direction}

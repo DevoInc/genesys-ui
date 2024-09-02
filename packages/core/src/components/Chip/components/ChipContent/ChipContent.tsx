@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import type { ChipContainerProps } from '../ChipContainer/ChipContainer';
-import { StyledChipLabel } from '../../styled';
+import { StyledChipLabel } from './StyledChipLabel';
 
 export interface ChipContentProps extends Pick<ChipContainerProps, 'style'> {
   children: React.ReactNode;

@@ -9,36 +9,36 @@ import { getTypoObject } from './tokens';
  * Get typography styles based in props
  *
  * @param tokens object with all the design tokens
- * @param variant heading, body, action, overline, hero... etc.
- * @param size h1, h2, xs, sm, md... etc.
- * @param bold It the text is bold.
- * @param textAlign The text-align for the text.
+ * @param $variant heading, body, action, overline, hero... etc.
+ * @param $size h1, h2, xs, sm, md... etc.
+ * @param $bold It the text is bold.
+ * @param $textAlign The text-align for the text.
  * @return typography styles
  */
 export const typoMixin = ({
-  bold = false,
-  variant = 'body',
-  textAlign,
+  $bold = false,
+  $variant = 'body',
+  $textAlign,
   theme: tokens,
-  size = 'md',
+  $size = 'md',
 }: {
-  bold?: boolean;
-  variant?: TTypoVariant;
-  textAlign?: React.CSSProperties['textAlign'];
+  $bold?: boolean;
+  $variant?: TTypoVariant;
+  $textAlign?: React.CSSProperties['textAlign'];
   theme: DefaultTheme;
-  size?: TTypoSize;
+  $size?: TTypoSize;
 }) => {
   const typoObject = getTypoObject({
-    variant,
+    $variant,
     theme: tokens,
-    size,
+    $size,
   });
   return css`
     font-family: ${typoObject['font-family']};
     font-size: ${typoObject['font-size']};
     line-height: ${typoObject['line-height']};
-    font-weight: ${(bold && 'bold') || typoObject['font-weight']};
-    text-align: ${textAlign};
+    font-weight: ${($bold && 'bold') || typoObject['font-weight']};
+    text-align: ${$textAlign};
     letter-spacing: ${typoObject['letter-spacing']};
     text-transform: ${typoObject['text-transform']};
   `;

@@ -6,13 +6,13 @@ import { getVariantValue } from '../../utils';
 
 export interface StyledAvatarBackdropProps {
   theme: DefaultTheme;
-  variant?: TAvatarVariant;
+  $variant?: TAvatarVariant;
 }
 
 export const StyledAvatarBackdrop = styled.span<StyledAvatarBackdropProps>`
-  ${({ theme, variant }) => {
+  ${({ theme, $variant }) => {
     const aliasTokens = theme.alias;
-    const variantValue = getVariantValue(variant);
+    const variantValue = getVariantValue($variant);
     return css`
       position: absolute;
       transition: all ease-in-out

@@ -6,7 +6,7 @@ import { EditableContent } from '../../../EditableContent';
 import { lorem } from '../../../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Paragraph> = {
-  title: 'Components/Text/Typography/Block/Paragraph',
+  title: 'Components/Text/Typography/Block',
   component: Paragraph,
 };
 
@@ -14,12 +14,14 @@ export default meta;
 type Story = StoryObj<typeof Paragraph>;
 
 export const BaseParagraph: Story = {
+  tags: ['isHidden'],
   args: {
     children: lorem,
   },
 };
 
 export const ParagraphEditable: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [editConfig, setEditConfig] = React.useState({

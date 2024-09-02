@@ -3,8 +3,6 @@ import * as React from 'react';
 
 import { render } from '@test';
 import { Panel } from './Panel';
-import ResizeObserver from 'resize-observer-polyfill';
-global.ResizeObserver = ResizeObserver;
 
 describe('Panel', () => {
   test('Simple render', () => {

@@ -27,6 +27,7 @@ export const Base: Story = {
 };
 
 export const Compact: Story = {
+  tags: ['isHidden'],
   args: {
     compact: true,
     heading: 'Compact App Bar',
@@ -35,6 +36,7 @@ export const Compact: Story = {
 };
 
 export const CompactWithAnotherToolbar: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       return (
@@ -62,6 +64,7 @@ export const CompactWithAnotherToolbar: Story = {
 };
 
 export const Custom: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => (
       <AppBar sticky={true}>

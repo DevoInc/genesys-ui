@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { List } from './List';
 
 const meta: Meta<typeof List> = {
-  title: 'Components/Text/Typography/Block/List',
+  title: 'Components/Text/Typography/Block',
   component: List,
   args: {
     colorScheme: 'base',
@@ -19,6 +19,7 @@ export default meta;
 type Story = StoryObj<typeof List>;
 
 export const BaseList: Story = {
+  tags: ['isHidden'],
   args: {
     children: (
       <>

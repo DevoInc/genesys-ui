@@ -7,7 +7,7 @@ export const buildEditorOptions = (
 ): monaco.editor.IStandaloneEditorConstructionOptions => ({
   // default options
   ...defaultOptions,
-  ...{ renderLineHighlight: options.readOnly ? 'none' : 'all' },
+  renderLineHighlight: options.readOnly ? 'none' : 'all',
   // user options
   ...options,
 });

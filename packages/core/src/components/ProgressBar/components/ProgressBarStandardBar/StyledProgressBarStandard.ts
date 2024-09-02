@@ -36,7 +36,7 @@ const movingMinorBar = keyframes`
   }
 `;
 
-const movingStripes = (height) => keyframes`
+const movingStripes = (height: string) => keyframes`
   from {
     background-position: ${height} 0;
     }
@@ -45,53 +45,51 @@ const movingStripes = (height) => keyframes`
   }
 `;
 
-export interface StyledProgressBarStandardProps
-  extends Pick<
-    IBaseProgressBar,
-    | 'animated'
-    | 'colorScheme'
-    | 'indeterminate'
-    | 'percent'
-    | 'status'
-    | 'showStatus'
-    | 'size'
-  > {}
+export interface StyledProgressBarStandardProps {
+  $animated?: IBaseProgressBar['animated'];
+  $colorScheme?: IBaseProgressBar['colorScheme'];
+  $indeterminate?: IBaseProgressBar['indeterminate'];
+  $percent?: IBaseProgressBar['percent'];
+  $status?: IBaseProgressBar['status'];
+  $showStatus?: IBaseProgressBar['showStatus'];
+  $size?: IBaseProgressBar['size'];
+}
 
 export const StyledProgressBarStandard = styled.div<StyledProgressBarStandardProps>`
   ${({
-    animated,
-    colorScheme,
-    indeterminate,
-    percent,
-    size,
-    status,
+    $animated,
+    $colorScheme,
+    $indeterminate,
+    $percent,
+    $size,
+    $status,
     theme,
   }) => {
     const progressBarTokens = theme.cmp.progressBar;
-    const height = progressBarTokens.size.height[size];
+    const height = progressBarTokens.size.height[$size];
     const progressBgColor = getProgressBgColor({
-      status,
+      $status,
       tokens: progressBarTokens,
     });
     const percentBarWidth =
-      indeterminate && status === 'progressing'
+      $indeterminate && $status === 'progressing'
         ? '30%'
-        : indeterminate
+        : $indeterminate
           ? '100%'
-          : percent
-            ? `${percent}%`
+          : $percent
+            ? `${$percent}%`
             : null;
     const percentMinorBarWidth =
-      indeterminate && status === 'progressing'
+      $indeterminate && $status === 'progressing'
         ? '15%'
-        : indeterminate
+        : $indeterminate
           ? '0'
           : null;
     return css`
       flex: 1 1 auto;
       background-color: ${getTrackBgColor({
-        colorScheme,
-        status,
+        $colorScheme,
+        $status,
         tokens: progressBarTokens,
       })};
       position: relative;
@@ -110,7 +108,7 @@ export const StyledProgressBarStandard = styled.div<StyledProgressBarStandardPro
         background-color: ${progressBgColor};
         transition: all ease 0.3s;
         width: ${percentBarWidth};
-        ${animated &&
+        ${$animated &&
         css`
           animation: ${movingStripes(height)} 0.5s linear infinite;
           transform: translate3d(0, 0, 0);
@@ -126,16 +124,16 @@ export const StyledProgressBarStandard = styled.div<StyledProgressBarStandardPro
           );
           background-size: ${`${height} ${height}`};
         `};
-        ${indeterminate &&
-        (!status || status === 'progressing') &&
+        ${$indeterminate &&
+        (!$status || $status === 'progressing') &&
         css`
           animation: ${movingBar} 1.5s infinite ease-out;
           transform: translate3d(0, 0, 0);
         `};
       }
 
-      ${indeterminate &&
-      (!status || status === 'progressing') &&
+      ${$indeterminate &&
+      (!$status || $status === 'progressing') &&
       css`
         &::before,
         &::after {

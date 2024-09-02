@@ -11,6 +11,7 @@ export default meta;
 type Story = StoryObj<typeof Sup>;
 
 export const BaseSup: Story = {
+  tags: ['isHidden'],
   args: {
     children: 'Sup text',
   },

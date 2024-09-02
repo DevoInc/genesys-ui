@@ -51,7 +51,10 @@ export const Helper: React.FC<HelperProps> = ({
       tooltip={tooltip}
     >
       {hasStatus(status) && (
-        <Flex height={getLineHeight({ tokens, size })} alignItems="center">
+        <Flex
+          height={getLineHeight({ tokens, $size: size })}
+          alignItems="center"
+        >
           <Icon
             color={
               iconColorTokens[status][

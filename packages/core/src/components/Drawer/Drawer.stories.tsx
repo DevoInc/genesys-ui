@@ -41,6 +41,7 @@ export const Base: Story = {
 };
 
 export const Closable: Story = {
+  tags: ['isHidden'],
   name: 'Closable using Panel component',
   render: () =>
     (() => {

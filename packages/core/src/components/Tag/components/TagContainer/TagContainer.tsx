@@ -31,12 +31,12 @@ export const TagContainer: React.FC<TagContainerProps> = ({
 }) => (
   <StyledTagContainer
     {...restNativeProps}
-    colorScheme={colorScheme}
+    $colorScheme={colorScheme}
     css={style}
-    bold={bold}
-    quiet={quiet}
-    wide={wide}
-    size={size}
+    $bold={bold}
+    $quiet={quiet}
+    $wide={wide}
+    $size={size}
     title={tooltip}
   >
     {children}

@@ -5,13 +5,11 @@ import type {
   IStyledPolymorphic,
 } from '../../declarations';
 
-import {
-  StyledDecoratorBar,
-  type StyledDecoratorBarProps,
-} from './StyledDecoratorBar';
+import { StyledDecoratorBar } from './StyledDecoratorBar';
+import type { IDecoratorBar } from './declarations';
 
 export interface DecoratorBarProps
-  extends StyledDecoratorBarProps,
+  extends IDecoratorBar,
     IStyledPolymorphic,
     IStyledOverloadCss {}
 
@@ -20,14 +18,12 @@ export const DecoratorBar: React.FC<DecoratorBarProps> = ({
   direction = 'vertical',
   size = '100%',
   style,
-}) => {
-  return (
-    <StyledDecoratorBar
-      aria-hidden={true}
-      as={as}
-      css={style}
-      direction={direction}
-      size={size}
-    />
-  );
-};
+}) => (
+  <StyledDecoratorBar
+    aria-hidden={true}
+    as={as}
+    css={style}
+    $direction={direction}
+    $size={size}
+  />
+);

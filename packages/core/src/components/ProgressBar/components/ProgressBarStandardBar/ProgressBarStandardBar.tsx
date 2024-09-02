@@ -45,14 +45,14 @@ export const ProgressBarStandardBar: React.FC<ProgressBarStandardBarProps> = ({
   return (
     <StyledProgressBarStandard
       {...nativeProps}
-      animated={animated}
-      colorScheme={colorScheme || context.colorScheme}
+      $animated={animated}
+      $colorScheme={colorScheme || context.colorScheme}
       css={style}
-      indeterminate={indeterminate}
-      percent={percent || context.percent}
-      showStatus={showStatus}
-      size={size || context.size}
-      status={status || context.status}
+      $indeterminate={indeterminate}
+      $percent={percent || context.percent}
+      $showStatus={showStatus}
+      $size={size || context.size}
+      $status={status || context.status}
       title={`${percent}%`}
     />
   );

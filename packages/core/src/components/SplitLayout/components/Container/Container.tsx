@@ -65,8 +65,8 @@ export const Container: React.FC<SplitLayoutProps> = ({
     <StyledContainer
       $direction={direction}
       ref={ref}
-      style={{
-        ...(direction === 'horizontal'
+      style={
+        direction === 'horizontal'
           ? {
               gridTemplateColumns: getCSSGridTemplate(
                 getSizesWithSeparators(pxSizes, gutterSize),
@@ -76,8 +76,8 @@ export const Container: React.FC<SplitLayoutProps> = ({
               gridTemplateRows: getCSSGridTemplate(
                 getSizesWithSeparators(pxSizes, gutterSize),
               ),
-            }),
-      }}
+            }
+      }
     >
       {sizeWidth > 0 && sizeHeight > 0 && children}
     </StyledContainer>

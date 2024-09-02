@@ -12,6 +12,7 @@ export default meta;
 type Story = StoryObj<typeof Caption>;
 
 export const BaseCaption: Story = {
+  tags: ['isHidden'],
   args: {
     children: lorem,
   },

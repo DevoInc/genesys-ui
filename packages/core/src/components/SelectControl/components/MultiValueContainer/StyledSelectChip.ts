@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
 import { StyledButtonContainer } from '../../../Button/components/ButtonContainer/StyledButtonContainer';
-import { StyledChip } from '../../../Chip/styled';
+import { StyledChipContainer } from '../../../Chip/components/ChipContainer/StyledChipContainer';
 
-export const StyledSelectChip = styled(StyledChip)`
+export const StyledSelectChip = styled(StyledChipContainer)`
   ${({ theme }) => {
     const selectTokens = theme.cmp.select;
     const aliasTokens = theme.alias;

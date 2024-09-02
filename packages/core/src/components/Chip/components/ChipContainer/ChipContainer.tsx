@@ -11,8 +11,9 @@ import type {
   IStyledPolymorphic,
 } from '../../../../declarations/styled';
 import type { TChipIcon } from '../../declarations';
-import { StyledChip, type StyledChipProps } from '../../styled';
 import { ChipContext } from '../../context';
+import type { IChipContainer } from './declarations';
+import { StyledChipContainer } from './StyledChipContainer';
 
 export interface ChipContainerProps
   extends IGlobalAttrs,
@@ -21,7 +22,7 @@ export interface ChipContainerProps
     IMouseEventAttrs,
     IDragDropEventAttrs,
     Omit<IContainerEventAttrs, 'onClick'>,
-    StyledChipProps {
+    IChipContainer {
   icon?: TChipIcon;
   children: React.ReactNode;
 }
@@ -62,7 +63,7 @@ export const ChipContainer: React.FC<ChipContainerProps> = ({
   tooltip,
   ...restDataProps
 }) => (
-  <StyledChip
+  <StyledChipContainer
     {...restDataProps}
     as={as}
     css={style}
@@ -91,13 +92,13 @@ export const ChipContainer: React.FC<ChipContainerProps> = ({
     onScroll={onScroll}
     onWheel={onWheel}
     role={role}
-    size={size}
-    sortable={sortable}
-    state={state}
+    $size={size}
+    $sortable={sortable}
+    $state={state}
     title={tooltip}
   >
     <ChipContext.Provider value={{ size, icon }}>
       {children}
     </ChipContext.Provider>
-  </StyledChip>
+  </StyledChipContainer>
 );

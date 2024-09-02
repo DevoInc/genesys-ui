@@ -4,7 +4,6 @@ import { useTheme } from 'styled-components';
 import { GIAngleRight } from '@devoinc/genesys-icons';
 
 import { Icon, type IconProps } from '../../../../../Icon';
-import { mergeStyles } from '../../../../../../helpers';
 
 export interface StepperItemDividerProps extends Omit<IconProps, 'children'> {}
 
@@ -16,13 +15,11 @@ export const StepperItemDivider: React.FC<StepperItemDividerProps> = ({
   return (
     <Icon
       {...restIconProps}
-      style={mergeStyles(
-        {
-          color: theme.cmp.stepper.separator.color.background,
-          marginRight: theme.cmp.stepper.separator.space.marginHor,
-        },
-        style,
-      )}
+      style={{
+        color: theme.cmp.stepper.separator.color.background,
+        marginRight: theme.cmp.stepper.separator.space.marginHor,
+        ...style,
+      }}
     >
       <GIAngleRight />
     </Icon>

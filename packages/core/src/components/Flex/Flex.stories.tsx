@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Flex } from '../..';
-import { StyledLayoutContentHelper } from '../../../../stories/components/styled';
+import { Flex } from './Flex';
+import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 const meta: Meta<typeof Flex> = {
-  title: 'Components/Layout/Flex/Flex',
+  title: 'Components/Layout/Flex',
   component: Flex,
   args: {
     gap: 'cmp-md',
@@ -35,6 +35,7 @@ export const Base: Story = {
 };
 
 export const FlexAndFlexItems: Story = {
+  tags: ['isHidden'],
   render: (args) =>
     ((args) => (
       <Flex {...args}>

@@ -9,7 +9,7 @@ import type {
 import type { IBanner } from '../../declarations';
 import { BannerContext } from '../../context';
 
-import { StyledBanner } from '../../StyledBanner';
+import { StyledBannerContainer } from './StyledBannerContainer';
 
 export interface BannerContainerProps
   extends IStyledPolymorphic,
@@ -29,18 +29,18 @@ export const BannerContainer: React.FC<BannerContainerProps> = ({
   tooltip,
   ...ariaProps
 }) => (
-  <StyledBanner
+  <StyledBannerContainer
     {...ariaProps}
     as={as}
     css={style}
     id={id}
     role={role}
-    status={status}
-    subtle={subtle}
+    $status={status}
+    $subtle={subtle}
     title={tooltip}
   >
     <BannerContext.Provider value={{ status, subtle }}>
       {children}
     </BannerContext.Provider>
-  </StyledBanner>
+  </StyledBannerContainer>
 );

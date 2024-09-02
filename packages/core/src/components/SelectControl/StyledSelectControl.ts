@@ -34,7 +34,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
     value,
     options,
   }) => {
-    const state = getFieldState({ readOnly });
+    const state = getFieldState({ $readOnly: readOnly });
     const statusEval = getTFieldStatus(status);
     const aliasTokens = theme.alias;
     const spacingTokens = aliasTokens.space;
@@ -79,7 +79,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
           border-radius: ${fieldTokens.shape.borderRadius};
           min-height: ${minHeight};
           background-color: ${fieldTokens.color.background[statusEval][state]};
-          ${getFieldControlTypo({ theme, size })};
+          ${getFieldControlTypo({ theme, $size: size })};
 
           // WITH ADDON
           ${addonToLeft &&

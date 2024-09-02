@@ -37,7 +37,7 @@ export const DropdownIndicator = <Option extends TSelectOption>({
   const theme = useTheme();
   const dropdownIconSize = getFontSize({
     tokens: theme,
-    size: selectProps.size,
+    $size: selectProps.size,
   });
   return (
     showMenuAndDropDown<Option>(selectProps) &&

@@ -11,6 +11,7 @@ export default meta;
 type Story = StoryObj<typeof Abbr>;
 
 export const BaseAbbr: Story = {
+  tags: ['isHidden'],
   args: {
     children: 'HTML',
   },

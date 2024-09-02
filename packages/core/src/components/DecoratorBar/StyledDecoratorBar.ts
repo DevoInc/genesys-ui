@@ -1,27 +1,21 @@
-import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import type { TDirection } from './declarations';
+import type { IDecoratorBarStyled } from './declarations';
 
-export interface StyledDecoratorBarProps {
-  /** Horizontal or Vertical direction **/
-  direction?: TDirection;
-  /** Css width or height base on direction prop **/
-  size?: React.CSSProperties['height'];
-}
+export interface StyledDecoratorBarProps extends IDecoratorBarStyled {}
 
 export const StyledDecoratorBar = styled.div<StyledDecoratorBarProps>`
-  ${({ direction, size, theme }) => {
+  ${({ $direction, $size, theme }) => {
     const tokensDecoratorBar = theme.cmp.decoratorBar;
 
     return css`
-      width: ${direction === 'horizontal'
-        ? size
+      width: ${$direction === 'horizontal'
+        ? $size
         : tokensDecoratorBar.shape.stroke};
-      height: ${direction === 'horizontal'
+      height: ${$direction === 'horizontal'
         ? tokensDecoratorBar.shape.stroke
-        : size};
-      background-image: ${direction === 'horizontal'
+        : $size};
+      background-image: ${$direction === 'horizontal'
         ? `linear-gradient(to right, ${tokensDecoratorBar.color.background})`
         : `linear-gradient(to bottom, ${tokensDecoratorBar.color.background})`};
     `;

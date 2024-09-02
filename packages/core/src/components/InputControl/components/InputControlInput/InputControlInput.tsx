@@ -3,28 +3,25 @@ import * as React from 'react';
 import type {
   IContainerEventAttrs,
   IFieldControl,
-  TFieldSize,
   IInputAttrs,
   IInputEventAttrs,
   IStyledOverloadCss,
   ITextBoxAriaAttrs,
 } from '../../../../declarations';
-import {
-  StyledInputControl,
-  type StyledInputControlProps,
-} from './StyledInputControl';
+import { StyledInputControl } from './StyledInputControl';
+import type { IInputControlInput } from './declarations';
 
 export interface InputControlInputProps
-  extends IFieldControl,
+  extends IInputControlInput,
+    IFieldControl,
     IStyledOverloadCss,
     Pick<ITextBoxAriaAttrs, 'aria-invalid'>,
     Omit<IInputAttrs, 'size' | 'multiple'>,
     IInputEventAttrs,
-    Pick<IContainerEventAttrs, 'onKeyDown' | 'onKeyUp' | 'onPaste' | 'onWheel'>,
-    Omit<StyledInputControlProps, '$size'> {
-  /** Size of the input: height, padding, font-size... etc. */
-  size?: TFieldSize;
-}
+    Pick<
+      IContainerEventAttrs,
+      'onKeyDown' | 'onKeyUp' | 'onPaste' | 'onWheel'
+    > {}
 
 export const InputControlInput: React.FC<InputControlInputProps> = ({
   'aria-errormessage': ariaErrorMessage,
@@ -80,8 +77,8 @@ export const InputControlInput: React.FC<InputControlInputProps> = ({
   value,
 }) => (
   <StyledInputControl
-    hasAddonToLeft={hasAddonToLeft}
-    hasAddonToRight={hasAddonToRight}
+    $hasAddonToLeft={hasAddonToLeft}
+    $hasAddonToRight={hasAddonToRight}
     aria-describedby={ariaDescribedBy}
     aria-errormessage={status === 'error' ? ariaErrorMessage : undefined}
     aria-invalid={ariaInvalid ?? (status === 'error' ? true : undefined)}
@@ -95,10 +92,10 @@ export const InputControlInput: React.FC<InputControlInputProps> = ({
     disabled={disabled}
     form={form}
     formAction={formAction}
-    hasIcon={hasIcon}
-    hasTypeIcon={hasTypeIcon}
+    $hasIcon={hasIcon}
+    $hasTypeIcon={hasTypeIcon}
     id={id}
-    inputWidth={inputWidth}
+    $inputWidth={inputWidth}
     max={max}
     maxLength={maxLength}
     min={min}
@@ -126,7 +123,7 @@ export const InputControlInput: React.FC<InputControlInputProps> = ({
     readOnly={readOnly}
     required={required}
     $size={size}
-    status={status}
+    $status={status}
     step={step}
     title={tooltip}
     type={type}

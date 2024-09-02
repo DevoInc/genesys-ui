@@ -11,6 +11,7 @@ export default meta;
 type Story = StoryObj<typeof Sub>;
 
 export const BaseSub: Story = {
+  tags: ['isHidden'],
   args: {
     children: 'Sub text',
   },

@@ -1,21 +1,27 @@
 import * as React from 'react';
 
-import { StyledParagraph, type StyledParagraphProps } from './StyledParagraph';
+import { StyledParagraph } from './StyledParagraph';
 import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../../declarations';
+import type { ITypography } from '../../declarations';
 
 export interface ParagraphProps
-  extends StyledParagraphProps,
+  extends Pick<
+      ITypography,
+      'colorScheme' | 'gutterBottom' | 'textAlign' | 'truncateLine'
+    >,
     IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
     IGlobalAriaAttrs {
   /** Content of the Paragraph */
   children?: React.ReactNode;
+  /** This property defines multiple styles: font-size, line-height... etc. */
+  size?: ITypography['bodySize'];
 }
 
 export const Paragraph: React.FC<ParagraphProps> = ({
@@ -31,12 +37,12 @@ export const Paragraph: React.FC<ParagraphProps> = ({
 }) => (
   <StyledParagraph
     {...nativeProps}
-    colorScheme={colorScheme}
-    style={style}
-    truncateLine={truncateLine}
-    gutterBottom={gutterBottom}
-    size={size}
-    textAlign={textAlign}
+    $colorScheme={colorScheme}
+    css={style}
+    $truncateLine={truncateLine}
+    $gutterBottom={gutterBottom}
+    $size={size}
+    $textAlign={textAlign}
     title={tooltip}
   >
     {children}

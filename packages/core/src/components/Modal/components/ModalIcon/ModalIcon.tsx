@@ -7,7 +7,7 @@ import {
   GIErrorWarningDangerStopFilled,
   GICheckOkRoundedFilled,
   GIInfoRoundFilled,
-  type IconType,
+  type IIcon,
 } from '@devoinc/genesys-icons';
 
 import { DecoratorBar } from '../../../DecoratorBar';
@@ -18,7 +18,7 @@ import type {
 } from '../../../../declarations';
 import { mergeStyles } from '../../../../helpers';
 
-const statusIconMap: { [key in TActiveStatus]: IconType } = {
+const statusIconMap: { [key in TActiveStatus]: React.FC<IIcon> } = {
   success: GICheckOkRoundedFilled,
   help: GIAboutQuestionFaqHelpFilled,
   info: GIInfoRoundFilled,
@@ -36,7 +36,7 @@ export const ModalIcon: React.FC<ModalIconProps> = ({ status, style }) => {
 
   const IconElement = React.useMemo(() => {
     if (status && statusIconMap[status]) {
-      const Icon = statusIconMap[status] as IconType;
+      const Icon = statusIconMap[status] as React.FC<IIcon>;
       const modalHeaderIconTokens = tokens.cmp.modal.headerIcon;
       const dialogHeaderIconTokens = tokens.cmp.dialog.headerIcon;
       return (

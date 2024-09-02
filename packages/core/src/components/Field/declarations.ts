@@ -71,3 +71,13 @@ export interface IField
   /** This property defines the status color scheme for the Field. */
   status?: TFieldStatus;
 }
+
+export interface IFieldStyled {
+  /** If the addon belongs to a disabled field (transient prop version) */
+  $disabled?: IField['disabled'];
+  /** Size of the field and its internal components: height, padding,
+   * font-size... etc. */
+  $size?: IField['size'];
+  /** The position on the form field */
+  $position?: TFieldAddonPosition;
+}

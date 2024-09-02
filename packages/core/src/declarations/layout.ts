@@ -169,15 +169,6 @@ export interface ILayoutGridItemCss {
   justifySelf?: React.CSSProperties['justifySelf'];
 }
 
-export interface ILayoutTransientForStyled {
-  /** Css display */
-  $display?: React.CSSProperties['display'];
-  /** Css height */
-  $height?: React.CSSProperties['height'];
-  /** Css width */
-  $width?: React.CSSProperties['width'];
-}
-
 export interface ILayoutBox
   extends IStyledPolymorphic,
     IStyledOverloadCss,
@@ -193,4 +184,40 @@ export interface ILayoutBox
     IMouseEventAttrs,
     ILayoutBoxCss {
   children?: React.ReactNode;
+}
+
+export interface ILayoutBoxStyled {
+  $alignSelf?: ILayoutBoxCss['alignSelf'];
+  $display?: ILayoutBoxCss['display'];
+  $flex?: ILayoutBoxCss['flex'];
+  $elevation?: ILayoutBoxCss['elevation'];
+  $height?: ILayoutBoxCss['height'];
+  $margin?: ILayoutBoxCss['margin'];
+  $marginBottom?: ILayoutBoxCss['marginBottom'];
+  $marginLeft?: ILayoutBoxCss['marginLeft'];
+  $marginRight?: ILayoutBoxCss['marginRight'];
+  $marginTop?: ILayoutBoxCss['marginTop'];
+  $maxHeight?: ILayoutBoxCss['maxHeight'];
+  $maxWidth?: ILayoutBoxCss['maxWidth'];
+  $minHeight?: ILayoutBoxCss['minHeight'];
+  $minWidth?: ILayoutBoxCss['minWidth'];
+  $opacity?: ILayoutBoxCss['opacity'];
+  $overflow?: ILayoutBoxCss['overflow'];
+  $overflowX?: ILayoutBoxCss['overflowX'];
+  $overflowY?: ILayoutBoxCss['overflowY'];
+  $padding?: ILayoutBoxCss['padding'];
+  $paddingBottom?: ILayoutBoxCss['paddingBottom'];
+  $paddingLeft?: ILayoutBoxCss['paddingLeft'];
+  $paddingRight?: ILayoutBoxCss['paddingRight'];
+  $paddingTop?: ILayoutBoxCss['paddingTop'];
+  $position?: ILayoutBoxCss['position'];
+  $positionBottom?: ILayoutBoxCss['positionBottom'];
+  $positionLeft?: ILayoutBoxCss['positionLeft'];
+  $positionRight?: ILayoutBoxCss['positionRight'];
+  $positionTop?: ILayoutBoxCss['positionTop'];
+  $cssTranslate?: ILayoutBoxCss['cssTranslate'];
+  $verticalAlign?: ILayoutBoxCss['verticalAlign'];
+  $visibility?: ILayoutBoxCss['visibility'];
+  $width?: ILayoutBoxCss['width'];
+  $zIndex?: ILayoutBoxCss['zIndex'];
 }

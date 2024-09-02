@@ -52,6 +52,7 @@ export const CustomUsage: Story = {
 };
 
 export const CustomSizeSquare: Story = {
+  tags: ['isHidden'],
   args: {
     customSize: { square: '12rem' },
     name: 'Rick Sanchez',
@@ -59,6 +60,7 @@ export const CustomSizeSquare: Story = {
 };
 
 export const CustomSizeSpecificSize: Story = {
+  tags: ['isHidden'],
   args: {
     customSize: { width: '12rem', height: '3rem' },
     name: 'Rick Sanchez',
@@ -67,6 +69,7 @@ export const CustomSizeSpecificSize: Story = {
 };
 
 export const CustomSizeOnlyOne: Story = {
+  tags: ['isHidden'],
   args: {
     customSize: { width: '12rem' },
     name: 'Rick Sanchez',
@@ -75,6 +78,7 @@ export const CustomSizeOnlyOne: Story = {
 };
 
 export const CustomSizeSVG: Story = {
+  tags: ['isHidden'],
   args: {
     customSize: { width: '5.1rem', height: '7rem' },
     name: 'Download file',
@@ -85,6 +89,7 @@ export const CustomSizeSVG: Story = {
 };
 
 export const WithBadgeText: Story = {
+  tags: ['isHidden'],
   args: {
     name: 'Rick Sanchez :: version 9',
     badge: ({ colorScheme, size }) => (
@@ -94,6 +99,7 @@ export const WithBadgeText: Story = {
 };
 
 export const WithBadgeIcon: Story = {
+  tags: ['isHidden'],
   args: {
     name: 'Rick Sanchez :: version 9',
     badge: ({ colorScheme, size }) => (
@@ -107,6 +113,7 @@ export const WithBadgeIcon: Story = {
 };
 
 export const WithBadgeCustomColor: Story = {
+  tags: ['isHidden'],
   args: {
     name: 'Rick Sanchez :: online',
     badge: ({ size }) => <Badge colorScheme="success" size={size} />,
@@ -115,10 +122,12 @@ export const WithBadgeCustomColor: Story = {
 };
 
 export const InitialsInsteadImage: Story = {
+  tags: ['isHidden'],
   args: { name: 'Rick Sanchez', imageSrc: undefined },
 };
 
 export const WithColorScheme: Story = {
+  tags: ['isHidden'],
   args: {
     name: 'Rick Sanchez',
     colorScheme: 'data-teal',
@@ -127,6 +136,7 @@ export const WithColorScheme: Story = {
 };
 
 export const ButtonEditable: Story = {
+  tags: ['isHidden'],
   args: {
     'aria-controls': 'modaleditprofile',
     'aria-haspopup': true,
@@ -156,6 +166,7 @@ export const ButtonEditable: Story = {
 };
 
 export const ButtonExpandable: Story = {
+  tags: ['isHidden'],
   args: {
     'aria-controls': 'lightbox',
     'aria-haspopup': true,
@@ -170,6 +181,7 @@ export const ButtonExpandable: Story = {
 };
 
 export const Clickable: Story = {
+  tags: ['isHidden'],
   args: {
     'aria-controls': 'lightbox',
     'aria-haspopup': true,
@@ -191,6 +203,7 @@ export const Clickable: Story = {
 };
 
 export const Link: Story = {
+  tags: ['isHidden'],
   args: {
     bordered: false,
     colorScheme: 'neutral',
