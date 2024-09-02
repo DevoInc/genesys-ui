@@ -9,14 +9,10 @@ export const useAfterRow = ({
   rowDefs,
   onRowDefsChange,
   colDefs: originalColDefs,
-  options,
 }: {
   rowDefs: TRowDef[];
   onRowDefsChange: (rowDefs: TRowDef[]) => void;
   colDefs: TColDef[];
-  options?: {
-    onlyOneSelection?: boolean;
-  };
 }) => {
   const [selection, setSelection] = React.useState([]);
 

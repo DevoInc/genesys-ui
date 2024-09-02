@@ -30,7 +30,8 @@ export const useTableVirtualizationRow = ({
     getScrollElement: () => ref.current,
     estimateSize: (index: number) => {
       const rowDef = getRowDef(rowDefs, data[index].id as string);
-      return rowDef?.hide ? 0 : height;
+      const rowDefHeight = rowDef?.height ? rowDef.height : height;
+      return rowDef?.hide ? 0 : rowDefHeight;
     },
     overscan: 10,
   });
