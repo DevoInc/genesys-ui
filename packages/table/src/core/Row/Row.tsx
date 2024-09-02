@@ -23,10 +23,9 @@ export const Row: React.FC<RowProps> = ({
   const { striped, colDefs, rowDefs } = React.useContext(TableContext);
 
   const rowDef = getRowDef(rowDefs, data.id as string);
-
   return rowDef?.cellRenderer ? (
     <StyledTableRow
-      $height={rowDef?.hide ? `${virtualRow.size}px` : 36}
+      $height={virtualRow.size}
       $width={`${columnVirtualizer.getTotalSize()}px`}
       transform={`translateY(${virtualRow.start}px)`}
       $hide={rowDef?.hide ?? false}
@@ -36,7 +35,7 @@ export const Row: React.FC<RowProps> = ({
           id: 'afterRow',
           cellRenderer: rowDef.cellRenderer,
         }}
-        height={rowDef?.hide ? virtualRow.size : 36}
+        height={virtualRow.size}
         key={`cell-0`}
         offsetX={0}
         width={columnVirtualizer.getTotalSize()}
@@ -49,7 +48,7 @@ export const Row: React.FC<RowProps> = ({
   ) : (
     <StyledTableRow
       even={(virtualRow.index + 1) % 2 === 0}
-      $height={rowDef?.hide ? `${virtualRow.size}px` : 36}
+      $height={`${virtualRow.size}px`}
       isAfterRow={isAfterRow}
       isDragging={isDragging}
       state={state}
