@@ -6,7 +6,7 @@ import {
   type TOptionsFilterValue,
   TBooleanFilterValue,
 } from '../../filters';
-import type { TFilterColumn } from '../../hooks';
+import { TFilterColumn } from '../../hooks/useFilterStruct/declarations';
 import {
   booleanFilter,
   numberFilter,

@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 
 import { TRow } from '../../declarations';
-import { TOrderColumn } from '../../hooks';
+import { TOrderColumn } from '../../hooks/useOrderStruct/declarations';
 import { numberSorter, stringSorter } from './sorters';
 
 export type TCustomSortFn = (a: TRow, b: TRow, sort: 'asc' | 'desc') => number;
