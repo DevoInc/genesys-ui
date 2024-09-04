@@ -18,7 +18,6 @@ export const TableBody: React.FC<TableBodyProps> = ({
   height,
 }) => {
   const { highlightColumnsOnHover, data } = React.useContext(TableContext);
-
   return (
     <StyledTableBody
       $height={height}
@@ -32,7 +31,6 @@ export const TableBody: React.FC<TableBodyProps> = ({
             columnVirtualizer={columnVirtualizer}
             data={data[virtualRow.index]}
             virtualRow={virtualRow}
-            rowVirtualizer={rowVirtualizer}
           />
         );
       })}
