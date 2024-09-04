@@ -208,7 +208,7 @@ export const AfterRowTable: Story = {
           />
         </div>
       )}
-      afterRowHeight={100}
+      afterRowHeight={10}
     />
   ),
 };
