@@ -24,7 +24,7 @@ export const useRenderAfterRow = ({
   onRowDefsChange: (rowDefs: TRowDef[]) => void;
   colDefs: TColDef[];
 }) => {
-  const [selection, setSelection] = React.useState(initialSelection);
+  const [selection, setSelection] = React.useState(initialSelection || []);
 
   const colDefs = [
     {

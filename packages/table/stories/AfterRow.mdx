@@ -1,0 +1,110 @@
+import { Meta, Source, ArgTypes, Canvas } from '@storybook/blocks';
+
+import * as Stories from './AfterRow.stories';
+
+<Meta of={Stories} />
+
+# AfterRow
+
+After row is a functionality to expand a row to add more information to that row.
+
+<Canvas of={Stories.Basic} />
+
+For functionality we have two options:
+
+- Start from the **afterRow rendered in the dom** but hidden (top example). This case may impair the initial loading of the table, but will favor a smoother use by the user. It must be remembered that the virtualized table does not render all the elements.
+- The **afterRow is created and deleted as you click on the corresponding row** (example below). If the afterRow renders some very heavy component this option can be good, since it relegates the load until the user decides that he wants to see that content.
+
+> Both options have their pros and cons, we advise to use one or the other depending on the use case.
+
+<Canvas of={Stories.BasicNoRenderDom} />
+
+## AfterRow rendered in the dom (useRenderAfterRow).
+
+### Build dataset
+
+We must add to the data set the rows corresponding to the afterrow we are going to represent. For it we can use the function **addAfterRowsToData** to which we pass the data set and it will return us a new data set with after row. This function will also return an array with the ids of the new rows. This will facilitate the construction of the row definition that we will see later.
+
+```ts
+const [dataWithAfterRows, afterRowIds] = addAfterRowsToData(dataOrdered);
+```
+
+### Build row definition
+
+We can start with an empty row definition or with a row already defined. But we need to add the definition of the new after row in case they are not defined. For this we have the function **addAfterRowsToRowDefs**.
+
+This function has 4 parameters:
+
+- **initalRowDefs**: the initial configuration of rows, always in array format and with an id that allows us to identify it.
+- **afterRowIds**: string array with the ids of the new rows we added in the previous point.
+- **afterRowRenderer**: here we can define the cellrenderer that will be represented in the afterRow. This cell renderer receives the information of the row to which it belongs so that it can make use of the data (it can be seen in the previous examples) or any react component can be represented without making use of these data.
+- **afterRowHeight**: in case we want a custom height for after row in general we can define it here.
+
+```ts
+const [rowDefs, setRowDefs] = React.useState(
+    addAfterRowsToRowDefs(
+      initalRowDefs,
+      afterRowIds,
+      afterRowRenderer,
+      afterRowHeight,
+    ),
+  );
+```
+
+### useRenderAfterRow
+
+We have prepared a hook that allows us to control the behavior of showing or hiding afterRow. This hook will add column definition and click behavior.
+
+This function has 4 parameters:
+
+- **rowDefs**: Definition of rows built in the previous point.
+- **initialSelection**: if we want an after row to be displayed from the beginning we can do it by passing the id of the row.
+- **onRowDefsChange**: callback that allows us to update the row definition change as needed.
+- **colDefs**: definition of initial columns.
+
+Initially this function will return the modified column definition and when clicked will update the row definition.
+
+```ts
+const { colDefs } = useRenderAfterRow({
+    rowDefs,
+    initialSelection,
+    onRowDefsChange: (newRowDefs) => {
+      setRowDefs(newRowDefs);
+    },
+    colDefs: colDefsInitial,
+  });
+```
+
+## AfterRow is created and deleted as you click on the corresponding row (useOnDemandAfterRow).
+
+Unlike the previous option, here we do not need to modify previously neither the data nor the column definitions. Everything is relegated to the hook where all the necessary modifications will be made.
+
+### useOnDemandAfterRow
+
+This hook will allow us to update the data, define columns and define rows. Initially there are no after row rows in the dom. When you click on a row it creates or deletes the corresponding row in the data and modifies the row definition.
+
+This function has 7 parameters:
+
+- **rowDefs**: Definition of rows built in the previous point.
+- **onRowDefsChange**: callback that allows us to update the row definition change as needed.
+- **colDefs**: definition of initial columns.
+- **data**: dataset.
+- **onDataChange**: callback that allows us to update the data change as needed.
+- **afterRowRenderer**: here we can define the cellrenderer that will be represented in the afterRow. This cell renderer receives the information of the row to which it belongs so that it can make use of the data (it can be seen in the previous examples) or any react component can be represented without making use of these data.
+- **afterRowHeight**: in case we want a custom height for after row in general we can define it here.
+
+```ts
+const { colDefs } = useOnDemandAfterRow({
+    rowDefs,
+    onRowDefsChange: (newRowDefs) => {
+      setRowDefs(newRowDefs);
+    },
+    colDefs: colDefsInitial,
+    data,
+    onDataChange: (newData) => {
+      setData(newData);
+    },
+    afterRowRenderer,
+    afterRowHeight,
+  });
+```
