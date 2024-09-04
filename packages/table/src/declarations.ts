@@ -67,6 +67,7 @@ export type TColDef = {
 export type TRowDef = {
   hide?: boolean;
   id: string;
+  height?: React.CSSProperties['height'];
   cellRenderer?:
     | React.FC<TCellRenderer>
     | (({ value, colDef, rowIndex, row }: TCellRenderer) => React.ReactNode);
