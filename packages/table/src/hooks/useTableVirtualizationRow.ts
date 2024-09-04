@@ -3,7 +3,7 @@ import { useVirtualizer } from '@tanstack/react-virtual';
 
 import { TableContext } from '../context/TableContext';
 import { ROW_HEIGHT_MD } from '../constants';
-import { getRowDef } from '../core/Row/utils';
+import { getRowDef } from '../helpers';
 
 type TUseVirtualizationParamsRow = {
   ref: React.MutableRefObject<HTMLDivElement>;
