@@ -9,3 +9,18 @@ export const addAfterRowsToData = (data: TData) => {
   }, [] as TData);
   return [newData, afterRowIds];
 };
+
+export const addAfterRowToData = (data: TData, id: string | number) =>
+  data.reduce(
+    (prev, row) =>
+      row.id === id
+        ? prev.concat([row].concat([{ ...row, id: `afterRow-${id}` }]))
+        : prev.concat([row]),
+    [] as TData,
+  );
+
+export const deleteAfterRowToDataById = (data: TData, id: string) =>
+  data.filter((d) => d.id !== id);
+
+export const findDataById = (data: TData, id: string) =>
+  data.find((d) => d.id === id);
