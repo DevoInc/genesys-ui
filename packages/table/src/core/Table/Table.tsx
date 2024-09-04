@@ -11,7 +11,7 @@ export interface TableProps extends ITable {}
 export const Table: React.FC<TableProps> = ({
   defaultColDef,
   colDefs = [],
-  rowDefs = {}, 
+  rowDefs = [], 
   columnPresets = [],
   density = 'default',
   striped = false,
