@@ -1,5 +1,5 @@
 import type { TColDef } from '../../declarations';
-import type { TOrderColumn } from '../../hooks';
+import { TOrderColumn } from '../../hooks/useOrderStruct/declarations';
 
 export const updateColDefsWithOrderStruct = (
   colDefs: TColDef[],
