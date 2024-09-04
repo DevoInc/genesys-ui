@@ -6,6 +6,7 @@ import { Holo } from '@devoinc/holo';
 import {
   addAfterRowsToData,
   addAfterRowsToRowDefs,
+  BasicTable,
   BooleanRenderer,
   orderDataByOrderStruct,
   Table,
@@ -42,13 +43,13 @@ const initialData = Holo.of()
   .generate();
 
 const colDefsInitial = [
-  {
-    id: 'id',
-    preset: 'text',
-    headerName: 'ID',
-    cellRenderer: TextRenderer,
-    sortable: true,
-  },
+  // {
+  //   id: 'id',
+  //   preset: 'text',
+  //   headerName: 'ID',
+  //   cellRenderer: TextRenderer,
+  //   sortable: true,
+  // },
   {
     id: 'booleanValue',
     headerName: 'Boolean value',
@@ -73,7 +74,7 @@ const initalRowDefs = [
   },
 ];
 
-const initialSelection = ['2']
+const initialSelection = ['2'];
 
 const BasicCmp = ({ afterRowRenderer, afterRowHeight }) => {
   const { orderStruct, onSort } = useOrderStruct([
@@ -174,6 +175,67 @@ export const BasicNoRenderDom: Story = {
     <BasicCmpNoRenderAfterRow
       afterRowRenderer={({ row }) => row.name as string}
       afterRowHeight={36}
+    />
+  ),
+};
+
+export const BasicNullHeight: Story = {
+  render: () => (
+    <BasicCmp
+      afterRowRenderer={({ row }) => row.name as string}
+      afterRowHeight={null}
+    />
+  ),
+};
+
+export const AfterRowTable: Story = {
+  render: () => (
+    <BasicCmp
+      afterRowRenderer={({ row }) => (
+        <div
+          style={{
+            height: '100%',
+            width: '100%',
+          }}
+        >
+          <BasicTable
+            defaultColDef={{
+              editable: false,
+              sortable: true,
+            }}
+            colDefs={colDefsInitial}
+            data={[row]}
+          />
+        </div>
+      )}
+      afterRowHeight={100}
+    />
+  ),
+};
+
+export const Iframe: Story = {
+  render: () => (
+    <BasicCmp
+      afterRowRenderer={({ row }) => (
+        <div
+          style={{
+            height: '100%',
+            width: '100%',
+          }}
+        >
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/oBgDzCTVt64?si=BooD1x0Qm1pFS65o"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      )}
+      afterRowHeight={350}
     />
   ),
 };
