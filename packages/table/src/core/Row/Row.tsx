@@ -3,7 +3,7 @@ import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { TableContext } from '../../context/TableContext';
 import { Cell } from '../Cell';
 import { StyledTableRow, type StyledTableRowProps } from './StyledTableRow';
-import { getRowDef } from './utils';
+import { getRowDef } from '../../helpers';
 
 interface RowProps extends StyledTableRowProps {
   data: { [key: string]: unknown };
@@ -20,7 +20,6 @@ export const Row: React.FC<RowProps> = ({
   virtualRow,
 }) => {
   const { striped, colDefs, rowDefs } = React.useContext(TableContext);
-
   const rowDef = getRowDef(rowDefs, data.id as string);
   return rowDef?.cellRenderer ? (
     <StyledTableRow
