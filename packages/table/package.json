@@ -35,7 +35,8 @@
     "@tanstack/react-virtual": "3.x.x",
     "date-fns": "2.x.x",
     "date-fns-tz": "2.x.x",
-    "react": "16.x || 17.x || 18.x"
+    "react": "16.x || 17.x || 18.x",
+    "styled-components": "5.x || ^6.1.9"
   },
   "engine": {
     "node": ">=16",
@@ -47,8 +48,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "styled-components": "^6.1.9"
   }
 }
