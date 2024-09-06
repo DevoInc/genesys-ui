@@ -10,24 +10,20 @@ import {
   type PopoverProps,
 } from '@devoinc/genesys-ui';
 
-import {
-  isManageableDate,
-  parseDate,
-  toTSorPreset,
-} from '../../helpers';
+import { parseStrDate } from '../../parsers';
+import { formatDate as formatDateHelper } from '../../helpers';
 
-import type {
-  ITime,
-  TDateApplyValue,
-  TDatetime,
-  TPresetRange,
-  TTimestampRange,
-} from '../../declarations';
+import type { IParseResult, ITime } from '../../declarations';
 import { DateTimeRange, type DateTimeRangeProps } from '../DateTimeRange';
 import {
   DateTimeRangeInput,
+  useDateTimeRangeInputValidation,
   type DateTimeRangeInputProps,
 } from '../DateTimeRangeInput';
+import { TDateTimeRangeFloatingPickerI18n } from './declarations';
+import { useMergeI18n } from '../../hooks';
+import { defaultDateTimeRangeFloatingPickerI18n } from './i18n';
+import { defaultPresets } from '../Presets';
 
 export interface DateTimeRangeFloatingPickerProps
   extends Pick<
@@ -36,200 +32,111 @@ export interface DateTimeRangeFloatingPickerProps
     >,
     Pick<
       DateTimeRangeProps,
-      | 'ariaLabelFromMonth'
-      | 'ariaLabelFromTime'
-      | 'ariaLabelNextMonth'
-      | 'ariaLabelPrevMonth'
-      | 'ariaLabelToMonth'
-      | 'ariaLabelToTime'
-      | 'dateForMonth'
-      | 'invalidDates'
+      | 'monthDate'
+      | 'preset'
       | 'presets'
       | 'presetsPlaceholder'
-      | 'validateDate'
+      | 'onChangePreset'
       | 'weekDays'
     >,
     Pick<
       DateTimeRangeInputProps,
-      | 'ariaLabelFrom'
-      | 'ariaLabelTo'
       | 'onRealTimeClick'
-      | 'parseExpression'
-      | 'placeholderFrom'
-      | 'placeholderTo'
       | 'realTime'
       | 'showCalendarIcon'
       | 'size'
-      | 'statusFrom'
-      | 'statusTo'
-      | 'helperFrom'
-      | 'helperTo'
+      | 'status'
+      | 'helper'
       | 'wide'
-      | 'dateFormats'
       | 'helper'
     >,
     ITime,
     Required<Pick<IGlobalAttrs, 'id'>>,
     IStyledOverloadCss,
     IStyledPolymorphic {
+  /** Internacionalization object */
+  i18n?: TDateTimeRangeFloatingPickerI18n;
   /** Initial value for the input. */
-  value: { from: string | TDatetime; to: string | TDatetime };
-  /** Apply button text. */
-  applyButtonText?: string;
-  /** Cancel button text. */
-  cancelButtonText?: string;
+  value: (string | number | Date)[];
   /** Enable or disable the Apply button.  */
   disableApplyButton: boolean;
-  /** Function called when Apply button is clicked. */
-  onApply: (range: TDateApplyValue) => void;
   /** Function called when Cancel button is clicked. */
   onCancel: () => void;
-  /** Transformation function for time. It is used to transform a time expression to timestamp. Required if there are presets. */
-  expressionToTime?: (expression: string) => ParseExpressionResult;
+  parseDate?: (str: string) => IParseResult;
+  formatDate?: (dt: string | Date | number) => string;
 
-  onChange: (range: {
-    timestamp: { from: number; to: number };
-    preset: { from: string; to: string };
-  }) => void;
+  onChange: (range: (string | number | Date)[]) => void;
+  autoApply?: boolean;
 }
 
 export const DateTimeRangeFloatingPicker: React.FC<
   DateTimeRangeFloatingPickerProps
 > = ({
-  ariaLabelNextMonth = 'Go to the next month',
-  ariaLabelPrevMonth = 'Go to the previous month',
+  i18n: userI18n = {},
   appendTo,
-  applyButtonText = 'Apply',
-  cancelButtonText = 'Cancel',
   disableApplyButton = false,
-  dateFormats,
   disableOutsideEvent = false,
   isOpened,
   id,
-  onApply,
   onCancel,
   onChange,
-  onClose,
-  parseExpression = parseExpressionFN,
+  onClose: onCloseCallback,
+  parseDate = parseStrDate,
+  formatDate = formatDateHelper,
   placement,
   size = 'md',
-  value: customValue = { from: null, to: null },
-  ...restDateTimeRangeProps
+  value,
+  preset,
+  presets = defaultPresets,
+  presetsPlaceholder,
+  onChangePreset = () => null,
+  autoApply = false,
 }) => {
-  const value = React.useMemo(
-    () => ({
-      from: toTSorPreset(customValue?.from),
-      to: toTSorPreset(customValue?.to),
-    }),
-    [customValue?.from, customValue?.to],
-  );
-
-  const isManageableFromDate = isManageableDate(value.from);
-  const isManageableToDate = isManageableDate(value.to);
-
-  const [inputDate, setInputDate] = React.useState(value);
-  const [calendarValue, setCalendarValue] = React.useState<TTimestampRange>({
-    from: null,
-    to: null,
-  });
-  const [presetValue, setPresetValue] = React.useState<TPresetRange>({
-    from: null,
-    to: null,
-  });
+  const i18n = useMergeI18n(
+    userI18n,
+    defaultDateTimeRangeFloatingPickerI18n,
+  ) as TDateTimeRangeFloatingPickerI18n;
 
   const setOpenendRef =
     React.useRef<React.Dispatch<React.SetStateAction<boolean>>>();
 
-  React.useEffect(() => {
-    if (!isManageableFromDate && !isManageableToDate) {
-      setPresetValue({
-        from: value.from as string,
-        to: value.to as string,
-      });
+  const [tmpValue, setTmpValue] =
+    React.useState<(string | number | Date)[]>(value);
+
+  const [monthDate, setMonthDate] = React.useState<number | Date>(() => {
+    const from = value[0];
+    let dt: number | Date;
+    if (typeof from === 'string') {
+      const result = parseDate(from);
+      dt = result.value;
     } else {
-      setCalendarValue({
-        from: value.from as number,
-        to: value.to as number,
-      });
+      dt = from;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const onInputsChangeCallback = React.useCallback(
-    (range: TOnChangeRange) => {
-      const resultFrom = parseDate(range.from.str, dateFormats);
-      const resultTo = parseDate(range.from.str, dateFormats);
-
-      if (resultFrom.isValid && resultTo.isValid) {
-        setCalendarValue({ from: resultFrom.value, to: resultTo.value });
-        setPresetValue({ from: undefined, to: undefined });
-        onChange?.({
-          preset: { from: null, to: null },
-          timestamp: { from: resultFrom.value, to: resultTo.value },
-        });
-      } else {
-        setCalendarValue({ from: undefined, to: undefined });
-        setPresetValue({ from: range.from.str, to: range.to.str });
-        onChange?.({
-          preset: { from: range.from.str, to: range.to.str },
-          timestamp: { from: null, to: null },
-        });
-      }
-      setOpenendRef.current(false);
-    },
-    [dateFormats, onChange],
-  );
-
-  const onCalendarChangeCallback = React.useCallback(
-    (range: TTimestampRange) => {
-      setInputDate(range);
-      setCalendarValue(range);
-      setPresetValue({ from: null, to: null });
-      onChange?.({
-        preset: { from: null, to: null },
-        timestamp: { ...range },
-      });
-    },
-    [onChange],
-  );
-
-  const onPresetChangeCallback = React.useCallback(
-    (range: TPresetRange) => {
-      setInputDate(range);
-      setPresetValue(range);
-      setCalendarValue({ from: undefined, to: undefined });
-      onChange?.({
-        preset: { ...range },
-        timestamp: { from: null, to: null },
-      });
-    },
-    [onChange],
-  );
-
-  const onCancelCallback = React.useCallback(() => {
-    setInputDate(value);
-    onCancel?.();
-    setOpenendRef.current(false);
-  }, [value, onCancel]);
-
-  const onApplyCallback = React.useCallback(() => {
-    onApply?.({
-      timestamp: { from: calendarValue.from, to: calendarValue.to },
-      preset: { from: presetValue.from, to: presetValue.to },
+    return dt;
+  });
+  const { inputValue, inputOnChange, errors, updateValue } =
+    useDateTimeRangeInputValidation({
+      value: tmpValue,
+      // onChange: setValue,
+      onChange: (range) => {
+        const from = range[0];
+        let dt: number | Date;
+        if (typeof from === 'string') {
+          const result = parseDate(from);
+          dt = result.value;
+        } else {
+          dt = from;
+        }
+        setMonthDate(dt);
+        if (autoApply) {
+          onChange(range);
+        } else {
+          setTmpValue(range);
+        }
+      },
+      reprDate: (ts: number) => formatDate(ts),
+      parseDate: parseStrDate,
     });
-    setOpenendRef.current(false);
-  }, [
-    calendarValue.from,
-    calendarValue.to,
-    onApply,
-    presetValue.from,
-    presetValue.to,
-  ]);
-
-  const onCloseCallback = React.useCallback(() => {
-    setInputDate(value);
-    onClose?.();
-  }, [onClose, value]);
 
   return (
     <Popover
@@ -243,19 +150,17 @@ export const DateTimeRangeFloatingPicker: React.FC<
       {({ ref, setOpened }) => (
         <div ref={ref}>
           <DateTimeRangeInput
-            {...restDateTimeRangeProps}
             aria-controls={`${id}-range-selector`}
-            dateFormats={dateFormats}
-            from={inputDate.from}
+            value={inputValue}
             id={id ? `${id}-range-control` : null}
             isOpen={isOpened}
-            onChange={onInputsChangeCallback}
+            onChange={inputOnChange}
             onClick={() => {
               setOpened(true);
             }}
-            parseExpression={parseExpression}
             size={size}
-            to={inputDate.to}
+            statuses={errors.map((e) => (e.length > 0 ? 'error' : 'base'))}
+            helpers={errors.map((e) => (e.length > 0 ? e[0] : null))}
           />
         </div>
       )}
@@ -270,32 +175,49 @@ export const DateTimeRangeFloatingPicker: React.FC<
           >
             <Panel.Body>
               <DateTimeRange
-                {...restDateTimeRangeProps}
-                ariaLabelNextMonth={ariaLabelNextMonth}
-                ariaLabelPrevMonth={ariaLabelPrevMonth}
+                i18n={i18n}
                 id={id ? `${id}-datetime-range` : null}
-                onChange={onCalendarChangeCallback}
-                onChangePresetDate={onPresetChangeCallback}
-                selectedDates={calendarValue}
-                selectedPreset={presetValue}
+                onChange={setTmpValue}
+                onChangePreset={onChangePreset}
+                value={tmpValue}
+                preset={preset}
+                presets={presets}
+                presetsPlaceholder={presetsPlaceholder}
+                monthDate={monthDate}
+                onChangeMonthDate={(dt) => {
+                  setMonthDate(dt);
+                }}
               />
             </Panel.Body>
-            <Panel.Footer
-              bordered
-              actions={[
-                <Button key={'cancel'} onClick={onCancelCallback}>
-                  {cancelButtonText}
-                </Button>,
-                <Button
-                  colorScheme={'accent'}
-                  key={'apply'}
-                  onClick={onApplyCallback}
-                  state={disableApplyButton ? 'disabled' : 'enabled'}
-                >
-                  {applyButtonText}
-                </Button>,
-              ]}
-            />
+            {!autoApply && (
+              <Panel.Footer
+                bordered
+                actions={[
+                  <Button
+                    key={'cancel'}
+                    onClick={() => {
+                      setTmpValue(value);
+                      setOpened(false);
+                      onCancel();
+                    }}
+                  >
+                    {i18n.cancelButton}
+                  </Button>,
+                  <Button
+                    colorScheme={'accent'}
+                    key={'apply'}
+                    onClick={() => {
+                      updateValue(tmpValue);
+                      setOpened(false);
+                      onChange(tmpValue);
+                    }}
+                    state={disableApplyButton ? 'disabled' : 'enabled'}
+                  >
+                    {i18n.applyButton}
+                  </Button>,
+                ]}
+              />
+            )}
           </Popover.Panel>
         );
       }}

@@ -1,0 +1,16 @@
+name: Add question
+description: Ask a question to learn about genesys-ui.
+labels: [question]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Remember to visit the [project documentation](https://devoinc.github.io/genesys-ui/?path=/docs/getting-started-overview--docs) and the [list of open questions](https://github.com/DevoInc/genesys-ui/issues?q=is%3Aopen+is%3Aissue+label%3Aquestion),
+        it is possible that your question will be answered in one of the sites.
+        
+        If you have not solved your question, please describe it as best as possible.
+  - type: textarea
+    attributes:
+      label: How can we help you?
+    validations:
+      required: true

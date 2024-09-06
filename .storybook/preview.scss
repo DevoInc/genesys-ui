@@ -8,7 +8,8 @@
 
 @font-face {
   font-family: 'Mono Font';
-  src: url(./fonts/jet-brains-mono-font/JetBrainsMono-Regular.woff2),
+  src:
+    url(./fonts/jet-brains-mono-font/JetBrainsMono-Regular.woff2),
     url(./fonts/jet-brains-mono-font/JetBrainsMono-Regular.ttf)
       format('truetype');
   font-weight: 400;
@@ -17,7 +18,8 @@
 
 @font-face {
   font-family: 'Mono Font';
-  src: url(./fonts/jet-brains-mono-font/JetBrainsMono-Medium.woff2),
+  src:
+    url(./fonts/jet-brains-mono-font/JetBrainsMono-Medium.woff2),
     url(./fonts/jet-brains-mono-font/JetBrainsMono-Medium.ttf)
       format('truetype');
   font-weight: 500;
@@ -26,7 +28,8 @@
 
 @font-face {
   font-family: 'Mono Font';
-  src: url(./fonts/jet-brains-mono-font/JetBrainsMono-Bold.woff2),
+  src:
+    url(./fonts/jet-brains-mono-font/JetBrainsMono-Bold.woff2),
     url(./fonts/jet-brains-mono-font/JetBrainsMono-Bold.ttf) format('truetype');
   font-weight: 700;
   font-style: normal;
@@ -225,4 +228,8 @@ body {
       }
     }
   }
+}
+
+#storybook-root {
+  height: 100%;
 }

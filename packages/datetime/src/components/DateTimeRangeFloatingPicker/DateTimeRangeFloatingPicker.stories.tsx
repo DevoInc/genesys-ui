@@ -5,17 +5,15 @@ import { subMonths } from 'date-fns';
 
 import { DateTimeRangeFloatingPicker } from './DateTimeRangeFloatingPicker';
 import { onApply } from './__stories__/utils';
-import { useDefaultPresets } from '../Presets';
+import { defaultPresets } from '../Presets';
 import { TRealtimeState } from '../DateTimeRangeInput/declarations';
+import { useMonthSelectorRange } from '../MonthSelector';
 
 const meta: Meta<typeof DateTimeRangeFloatingPicker> = {
   title: 'Components/Datetime/DateTimeRangeFloatingPicker',
   component: DateTimeRangeFloatingPicker,
   args: {
-    value: {
-      from: subMonths(new Date(), 1).getTime(),
-      to: new Date().getTime(),
-    },
+    value: [subMonths(new Date(), 1).getTime(), new Date().getTime()],
     id: 'story-demo',
     size: 'md',
   },
@@ -27,15 +25,18 @@ type Story = StoryObj<typeof DateTimeRangeFloatingPicker>;
 export const Base: Story = {
   render: (args) =>
     ((props) => {
-      const [date, setDate] = React.useState(props.value);
+      const [value, setValue] = React.useState(props.value);
 
+      // TODO: Review and move the onApply to a hook
       return (
         <DateTimeRangeFloatingPicker
           {...props}
-          value={date}
-          onApply={onApply(setDate)}
-          onChange={(range) => {
-            console.log('Has changed', range);
+          // onApply={onApply(setValue)}
+          value={value}
+          onChange={(newValue) => {
+            setValue(newValue);
+            // eslint-disable-next-line no-console
+            console.log('Has changed', newValue);
           }}
         />
       );
@@ -47,20 +48,20 @@ export const DefaultPresets: Story = {
     ((props) => {
       const [date, setDate] = React.useState(props.value);
 
-      const presets = useDefaultPresets();
-
       return (
         <DateTimeRangeFloatingPicker
           {...props}
           value={date}
           onApply={onApply(setDate)}
           onChange={(range) => {
+            // eslint-disable-next-line no-console
             console.log('something has changed', range);
           }}
           onRealTimeClick={(event) => {
+            // eslint-disable-next-line no-console
             console.log('RT button clicked', event);
           }}
-          presets={presets}
+          presets={defaultPresets}
           parseExpression={(exp) => {
             for (const word of ['now', 'today', 'yesterday']) {
               if (typeof exp === 'string' && exp.includes(word))

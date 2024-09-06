@@ -6,9 +6,15 @@ import * as Stories from './Calendar.stories';
 
 # Calendar
 
-The Calendar is a component designed to work with dates.
-It allows users to select a single date or a range of dates within a particular month.
+The Calendar is a component designed to work with `(number | Date)[]` that
+could be a timestamp in millis or a js native Date, **always in UTC**.
+
+It allows users to select a single date or a range of dates within a particular
+month.
+
 The calendar displays the days of the month in a grid format.
+
+The Calendar use `date-fns` internally for date operations.
 
 ## How to import
 
@@ -16,7 +22,137 @@ The calendar displays the days of the month in a grid format.
 
 ## Basic usage
 
+The Calendar has several main concepts as props:
+
+- `value`: Array of dates (Date | number), that create the both versions
+  of Calendar one for a single day, two for a range.
+- `monthDate`: This is the date for the month that is showed (could be different
+  from the selected dates).
+
+This is an example of range selected dates:
+
 <Canvas of={Stories.Base} />
+
+This is an example of single selected date:
+
+<Canvas of={Stories.Single} />
+
+## Disable days
+
+For disable days we can use two mechanism:
+
+### `minDate` and `maxDate`
+
+Are properties that let us define limits for the selectable days
+
+<Canvas of={Stories.MinMaxDate} />
+
+### `parseDate`
+
+Is a function that resolve into a parse result object, that take each calendar
+day and use this function to know if the day is available or not. An example
+could be:
+
+<Source language="tsx" code={`export const parseDateNoFuture = (dt: Date | number): IParseResult => {
+  const now = new Date().getTime();
+  const ts = getTime(dt); // Function for get epoch ts from dt
+  const isValid = ts <= now;
+  return {
+    isValid: isValid,
+    value: dt,
+    errors: isValid ? [] : ['Date is invalid'],
+  };
+};`} />
+
+Lets see another example with a `parseDate` that avoid the even days and the
+weekend days:
+
+<Canvas of={Stories.ParseDate} />
+
+### `disabled`
+
+Is property for disable all the calendar
+
+<Canvas of={Stories.Disabled} />
+
+## Events
+
+This component has one main event:
+
+- `onClick`: when the user click on any selectable day
+
+<Source language="tsx" code={`...
+onClick: (ts: number) => {
+  // Here you can update the Calendar value with a state for example
+  setValue(ts);
+  // And let you build any pre-filter or advanced mechanism before update the
+  // calendar
+},
+...`} />
+
+## I18n
+
+We can use the next props for internacionalization:
+
+- `weekDays`: array of week days for the header, staring on Sunday
+- `weekStart`: number of the week day that would bi the first (0 - Sunday, 1 -
+  Monday)
+- `i18.outOfRange`: text for the tooltip that is shown when the user hover a day
+that are out of range using the `minDate` or the `maxDate`
+
+Here is an example of the *Spanish* version:
+
+<Canvas of={Stories.I18n} />
+
+## Hooks
+
+These hooks helps to apply the two main line of action with the calendar, the
+single selection or the range selection.
+
+### `useCalendarSingle`
+
+Defines a single day selection in the calendar.
+Accepts a `number` or `Date` with the selected day.
+
+<Canvas of={Stories.SingleHook} />
+
+### `useCalendarRange`
+
+Defines a way to select a range of days. The hook use the first click as one
+point of the range (could be the start or the end), and a second click with the
+other point of the range, with this last point the hook decide with point is the
+start and witch point is the end of the range
+
+<Canvas of={Stories.RangeHook} />
+
+## `rangeBehavior` helper
+
+If you would like to build your own hooks you could the main behavior of the
+`useCalendarRange` is the next helper function:
+
+<Source code={`import { rangeBehavior } from '@devoinc/genesys-ui-datetime';
+
+...
+const newRange = rangeBehavior(
+  [
+    from: number | Date,
+    to: number | Date
+  ],
+  newDate: number | Date,
+);
+...
+`}
+/>
+
+This function take a range (empty, incomplete or complete), a new date and
+return the next step of the range:
+
+- If empty range is passed the function returns the incomplete range with a
+single point
+- If incomplete range is passed (only one point), the function returns a
+complete range with the two points ordered in ascendant mode
+- If complete range is passed, the function returns a new incomplete range with
+a single point
 
 ## Props
 

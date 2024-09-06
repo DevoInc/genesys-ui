@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+import { isWeekend } from 'date-fns';
 
 import { DateTimeFloatingPicker } from './DateTimeFloatingPicker';
+import { parseStrDate } from '../../parsers';
 
 const meta: Meta<typeof DateTimeFloatingPicker> = {
   title: 'Components/Datetime/DateTimeFloatingPicker',
@@ -18,15 +20,16 @@ type Story = StoryObj<typeof DateTimeFloatingPicker>;
 export const Base: Story = {
   render: (args) =>
     ((props) => {
-      const [date, setDate] = React.useState(props.value);
+      const [value, setValue] = React.useState(props.value);
 
       return (
         <DateTimeFloatingPicker
           {...props}
-          value={date}
+          value={value}
           onChange={(ts) => {
-            setDate(ts);
-            console.log(`date changed ${ts}`);
+            setValue(ts);
+            // eslint-disable-next-line no-console
+            console.log({ onChange: ts });
           }}
         />
       );
@@ -37,30 +40,57 @@ export const Base: Story = {
   },
 };
 
-export const WithButtons: Story = {
-  name: 'With apply and cancel buttons',
+export const WithoutButtons: Story = {
+  tags: ['isHidden'],
   render: (args) =>
     ((props) => {
-      const [date, setDate] = React.useState(props.value);
-      const onApply = (ts: number) => {
-        setDate(ts);
-        console.log(`Apply ${ts}`);
-      };
-
-      const onCancel = () => {
-        console.log('Cancel button pressed');
-      };
+      const [value, setValue] = React.useState(props.value);
 
       return (
         <DateTimeFloatingPicker
           {...props}
-          value={date}
-          onApply={onApply}
+          value={value}
+          autoApply={true}
           onChange={(ts) => {
+            setValue(ts);
+            // eslint-disable-next-line no-console
             console.log(`OnChange ${ts}`);
           }}
-          onCancel={onCancel}
-          onClose={onCancel}
+        />
+      );
+    })(args),
+  args: {
+    value: new Date().getTime(),
+  },
+};
+
+export const CustomParser: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => {
+      const [value, setValue] = React.useState(props.value);
+
+      return (
+        <DateTimeFloatingPicker
+          {...props}
+          value={value}
+          autoApply={true}
+          parseDate={(str: string) => {
+            const result = parseStrDate(str);
+            if (result.isValid) {
+              const check = !isWeekend(result.value);
+              if (!check) {
+                result.isValid = false;
+                result.errors = ['Is weekend!!!'];
+              }
+            }
+            return result;
+          }}
+          onChange={(ts) => {
+            setValue(ts);
+            // eslint-disable-next-line no-console
+            console.log(`OnChange ${ts}`);
+          }}
         />
       );
     })(args),

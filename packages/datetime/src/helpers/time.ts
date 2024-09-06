@@ -1,11 +1,9 @@
-import { TDatetime } from '../declarations';
-
 /**
  * Convert a date to timestamp
  * @param date a timestamp or a Date value
  * @returns a timestamp value
  */
-export const toTSorPreset = (date: string | TDatetime) =>
+export const toTSorPreset = (date: string | Date | number) =>
   date instanceof Date
     ? date.getTime()
     : date === null || date === ''
@@ -19,7 +17,7 @@ export const toTSorPreset = (date: string | TDatetime) =>
  * @param date a timestamp or a Date value
  * @returns a timestamp value
  */
-export const toTimestamp = (date: TDatetime) =>
+export const toTimestamp = (date: Date | number) =>
   date instanceof Date ? date.getTime() : date;
 
 export const isManageableDate = (date: string | number) =>

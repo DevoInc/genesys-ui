@@ -8,70 +8,103 @@ import {
   VFlex,
 } from '@devoinc/genesys-ui';
 
-import { formatDate, toTimestamp, parseDate as parseDateFN } from '../../helpers';
+import { formatDate as formatDateHelper } from '../../helpers';
+import { parseStrDate } from '../../parsers';
 import { DateTime, type DateTimeProps } from '../DateTime';
-import { DateTimeInput, DateTimeInputProps } from '../DateTimeInput';
-import { TDatetime } from '../../declarations';
+import {
+  DateTimeInput,
+  DateTimeInputProps,
+  useDateTimeInputValidation,
+} from '../DateTimeInput';
+import type { IParseResult } from '../../declarations';
 
 export interface DateTimePickerProps
-  extends Omit<DateTimeProps, 'selectedDates' | 'validateDate'>,
-    Omit<
+  extends Pick<
+      DateTimeProps,
+      | 'ariaLabelMonth'
+      | 'ariaLabelTime'
+      | 'monthDate'
+      | 'hasMillis'
+      | 'hasSeconds'
+      | 'hasTime'
+      | 'weekDays'
+    >,
+    Pick<
       DateTimeInputProps,
-      'onChange' | 'hasMillis' | 'hasSeconds' | 'hasTime' | 'value'
+      'autoFocus' | 'placeholder' | 'size' | 'label' | 'helper'
     >,
     Pick<IGlobalAriaAttrs, 'aria-label'>,
     Pick<IGlobalAttrs, 'id'>,
-    IStyledOverloadCss,
-    IStyledPolymorphic {}
+    Pick<IStyledOverloadCss, 'styles'>,
+    Pick<IStyledPolymorphic, 'as'> {
+  onChange?: DateTimeProps['onChange'];
+  value?: Date | number;
+  parseDate?: (str: string) => IParseResult;
+  formatDate?: (dt: Date | number) => string;
+}
 
 export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   'aria-label': ariaLabel = 'datetime',
   hasMillis = false,
   hasSeconds = true,
   hasTime = true,
-  dateFormats,
+  formatDate = formatDateHelper,
   id,
-  onChange,
-  parseDate = parseDateFN,
-  value: customValue,
-  ...restDateTimeProps
+  onChange = () => null,
+  parseDate = parseStrDate,
+  value,
+  helper,
+  ariaLabelMonth,
+  ariaLabelTime,
+  monthDate: initialMonthDate,
+  weekDays,
+  autoFocus,
+  placeholder,
+  size,
+  label,
 }) => {
-  const value = toTimestamp(customValue);
-
-  const validateDateCallback = React.useCallback(
-    (ts: TDatetime) => {
-      const strDate = formatDate({
-        format: dateFormats?.[0],
-        hasMillis,
-        hasSeconds,
-        hasTime,
-        ts,
-      });
-
-      return parseDate(strDate).isValid;
-    },
-    [dateFormats, hasMillis, hasSeconds, hasTime, parseDate],
-  );
+  const [monthDate, setMonthDate] = React.useState(initialMonthDate);
+  const { inputValue, inputOnChange, errors, updateValue } =
+    useDateTimeInputValidation({
+      value,
+      onChange: (dt) => {
+        setMonthDate(dt);
+        onChange(dt);
+      },
+      reprDate: formatDate,
+      parseDate,
+    });
 
   return (
     <VFlex alignItems={'stretch'}>
       <DateTimeInput
-        {...restDateTimeProps}
+        autoFocus={autoFocus}
+        placeholder={placeholder}
+        size={size}
+        label={label}
         aria-label={ariaLabel}
-        dateFormats={dateFormats}
         id={id}
-        onChange={onChange}
-        parseDate={parseDate}
-        value={value}
+        onChange={inputOnChange}
+        value={inputValue}
+        helper={errors.length > 0 ? errors[0] : helper}
+        status={errors.length > 0 ? 'error' : 'base'}
       />
-
       <DateTime
-        {...restDateTimeProps}
+        ariaLabelMonth={ariaLabelMonth}
+        ariaLabelTime={ariaLabelTime}
+        monthDate={monthDate}
+        weekDays={weekDays}
         hasMillis={hasMillis}
         hasSeconds={hasSeconds}
         hasTime={hasTime}
-        onChange={onChange}
-        validateDate={validateDateCallback}
+        onChange={(dt: Date | number) => {
+          updateValue(dt);
+          onChange(dt);
+        }}
+        onChangeMonthDate={(dt) => {
+          setMonthDate(dt);
+        }}
+        parseDate={(dt: Date | number) => parseDate(formatDate(dt))}
         value={value}
       />
     </VFlex>

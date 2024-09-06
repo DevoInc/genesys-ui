@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
+import { lastDayOfMonth as lastDayOfMonthFNS } from 'date-fns';
 
 import {
-  getMonthDays,
-  getNextDays,
-  getPrevDays,
-  parseDays,
-} from './ephemerides';
-import { checkValidDate } from './validations';
+  getClassNameFromProperties,
+  getDayProperties,
+  getTo,
+  getFrom,
+} from './day';
+import { getMonthDays, getPrevDays } from './month';
 import {
   type IGlobalAriaAttrs,
   type IGlobalAttrs,
@@ -15,82 +16,92 @@ import {
   type IStyledOverloadCss,
   type IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
-import type { ITime, TDatetime } from '../../declarations';
+import type { IParseResult } from '../../declarations';
 import { toTimestamp } from '../../helpers';
-import { lastDayOfMonth as lastDayOfMonthFNS } from 'date-fns';
-import { Cell, type CellProps } from './components';
+import { parseAllDates } from '../../parsers';
+import { CalendarWeekDay, Cell, type CellProps } from './components';
+import { rotateWeekDays, WEEK_DAYS } from '../../helpers';
+import { defaultDateRepr } from './day';
+import { defaultErrorsRepr } from './errors';
+import { TCalendarI18n } from './declarations';
+import { defaultCalendarI18n } from './i18n';
+import { useMergeI18n } from '../../hooks';
 
 export interface CalendarProps
   extends Pick<CellProps, 'onClick' | 'onMouseEnter' | 'onMouseLeave'>,
-    Pick<ITime, 'maxDate' | 'minDate'>,
     //native
     IGlobalAttrs,
     IGlobalAriaAttrs,
     IStyledOverloadCss,
     IStyledPolymorphic {
   /** The date for the month. One of `number` or `Date`. */
-  dateForMonth?: TDatetime;
-  /** Disable hover effect. It could be combined with hoverDay, onMouseEnter and onMouseLeave properties for custom control. */
+  monthDate?: Date | number;
+  /** Disable hover effect. It could be combined with hoverDay, onMouseEnter
+   * and onMouseLeave properties for custom control. */
   disableHoverDay?: boolean;
   /** Allow hover efect when mouse is left of a selected cell. */
   hasLeftHoverEffect?: boolean;
   /** Allow hover efect when mouse is right of a selected cell. */
   hasRightHoverEffect?: boolean;
-  /** Set custom day to simulate the hover effect. It could be combined with hoverDay, onMouseEnter and onMouseLeave properties for custom control. One of `number` or `Date`. */
-  hoverDay?: TDatetime;
-  /** List of day not valid. */
-  invalidDates?: TDatetime[];
-  /** Selected range days. */
-  selectedDates?: { from: TDatetime; to: TDatetime };
-  /** Validate if a date is selectable.  */
-  validateDate?: (ts: number) => boolean;
+  /** Set custom day to simulate the hover effect. It could be combined with
+   * hoverDay, onMouseEnter and onMouseLeave properties for custom control.
+   * One of `number` or `Date`. */
+  hoverDay?: Date | number;
+  /** Selected range. */
+  value?: (number | Date)[];
   /** Days of the week to show in the calendar. The first day of the week is Monday. */
   weekDays?: [string, string, string, string, string, string, string];
+  weekStart?: number;
+  tz?: string;
+  /** Parse date for selectable dates.  */
+  parseDate?: (dt: Date | number) => IParseResult;
+  /** Max date allowed */
+  minDate?: number | Date;
+  /** Min date allowed */
+  maxDate?: number | Date;
+  dateRepr?: (ts: number) => string;
+  errorsRepr?: (errors: string[]) => string;
+  /** Internacionalization object */
+  i18n?: TCalendarI18n;
+  disabled?: boolean;
 }
 
 export const InternalCalendar: React.FC<CalendarProps> = ({
-  dateForMonth: monthToShow,
-  hasLeftHoverEffect = true,
-  hasRightHoverEffect = true,
-  invalidDates: notValidDates = [],
-  maxDate: latestDate,
-  minDate: earliestDate,
+  monthDate = new Date(),
+  hasLeftHoverEffect = false,
+  hasRightHoverEffect = false,
   onClick,
   onMouseEnter,
   onMouseLeave,
-  selectedDates: rangeSelected = { from: null, to: null },
-  validateDate = (ts) => ts < new Date().getTime(),
-  weekDays = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+  value = [],
+  parseDate = parseAllDates,
+  weekDays = WEEK_DAYS,
+  weekStart = 0,
   disableHoverDay = false,
   hoverDay: mouseHoverDay,
   styles,
-  ...nativeProps
+  id,
+  tooltip,
+  role,
+  'aria-describedby': ariaDescribedby,
+  'aria-details': ariaDetails,
+  'aria-hidden': ariaHidden,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledby,
+  as,
+  dateRepr = defaultDateRepr,
+  errorsRepr = defaultErrorsRepr,
+  minDate,
+  maxDate,
+  i18n: userI18n = defaultCalendarI18n,
+  disabled = false,
 }) => {
+  const i18n = useMergeI18n(userI18n, defaultCalendarI18n) as TCalendarI18n;
   const theme = useTheme();
-  const dateForMonth = toTimestamp(monthToShow);
-  const maxDate = toTimestamp(latestDate);
-  const minDate = toTimestamp(earliestDate);
-  const selectedDates = {
-    from: toTimestamp(rangeSelected.from),
-    to: toTimestamp(rangeSelected.to),
-  };
   const customHoverDay = toTimestamp(mouseHoverDay);
-  const invalidDates = notValidDates.map((date) => toTimestamp(date));
-  const lastDayOfMonth = lastDayOfMonthFNS(dateForMonth).getTime();
+  const lastDayOfMonth = lastDayOfMonthFNS(monthDate).getTime();
 
   const [hoverDay, setHoverDay] = React.useState<number>(null);
-
-  const validateDateCallback = React.useCallback(
-    (ts: number) => {
-      return checkValidDate({
-        ts,
-        validationFn: validateDate,
-        maxDate,
-        minDate,
-      });
-    },
-    [validateDate, maxDate, minDate],
-  );
 
   const onMouseEnterCallback = React.useCallback(
     (ts: number) => {
@@ -115,7 +126,15 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
 
   return (
     <Grid
-      {...nativeProps}
+      role={role}
+      aria-describedby={ariaDescribedby}
+      aria-details={ariaDetails}
+      aria-hidden={ariaHidden}
+      aria-label={ariaLabel}
+      aria-labelledby={ariaLabelledby}
+      as={as}
+      id={id}
+      tooltip={tooltip}
       alignItems="center"
       gridTemplateColumns="repeat(7, 1fr)"
       justifyContent="center"
@@ -123,40 +142,50 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
       minWidth={theme.cmp.calendar.size.minWidth}
       styles={styles}
     >
-      {weekDays.map((day) => (
-        <Cell key={day} value={day} className="weekDayName" />
+      {rotateWeekDays(weekDays, weekStart).map((day) => (
+        <CalendarWeekDay key={day} value={day} />
       ))}
-      {Array(getPrevDays(dateForMonth))
+      {Array(getPrevDays(monthDate, weekStart))
         .fill(null)
         .map((_, idx) => (
-          <Cell key={`prev${idx}`} />
+          <div key={`prev${idx}`} />
         ))}
-      {parseDays({
-        days: getMonthDays(dateForMonth),
-        from: selectedDates?.from ?? 0,
-        hasLeftHoverEffect,
-        hasRightHoverEffect,
-        hover: hoverDay,
-        invalidDates,
-        lastDayOfMonth,
-        to: selectedDates?.to ?? 0,
-        validateDate: validateDateCallback,
-      }).map((day) => (
-        <Cell
-          key={`day${day.value}`}
-          className={`dayName ${day.classes}`}
-          onClick={onClick}
-          onMouseEnter={onMouseEnterCallback}
-          onMouseLeave={onMouseLeaveCallback}
-          ts={day.ts}
-          value={day.value}
-        />
-      ))}
-      {Array(getNextDays(dateForMonth))
-        .fill(null)
-        .map((_, idx) => (
-          <Cell key={`prev${idx}`} />
-        ))}
+      {getMonthDays(monthDate)
+        .map(
+          getDayProperties(
+            getFrom(value),
+            getTo(value),
+            lastDayOfMonth,
+            parseDate,
+            hoverDay,
+            hasRightHoverEffect,
+            hasLeftHoverEffect,
+            minDate,
+            maxDate,
+            i18n,
+          ),
+        )
+        .map((dayProps) => {
+          const classes = getClassNameFromProperties(dayProps);
+          return (
+            <Cell
+              key={`day${dayProps.ts}`}
+              className={`dayName ${classes.join(' ')}`}
+              onClick={onClick}
+              onMouseEnter={onMouseEnterCallback}
+              onMouseLeave={onMouseLeaveCallback}
+              ts={dayProps.ts}
+              value={String(dayProps.monthDay)}
+              disabled={disabled || dayProps.isDisabled}
+              label={dateRepr(dayProps.ts)}
+              tooltip={
+                dayProps.isDisabled
+                  ? errorsRepr(dayProps.errors)
+                  : dateRepr(dayProps.ts)
+              }
+            />
+          );
+        })}
     </Grid>
   );
 };

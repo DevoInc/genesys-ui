@@ -205,6 +205,7 @@ export const WithActions: Story = {
             console.log('Copied to clipboard:', value);
           })
           .catch((err) => {
+            // eslint-disable-next-line no-console
             console.error('Failed to copy to clipboard', err);
           });
       };
@@ -218,6 +219,7 @@ export const WithActions: Story = {
             editorRef.current.setValue(currentValue.concat(value));
           })
           .catch((err) => {
+            // eslint-disable-next-line no-console
             console.error('Failed to paste from clipboard', err);
           });
       };

@@ -38,7 +38,12 @@ export const Subtle: Story = {
     status: 'success',
     content: 'The comment was created successfully.',
     actions: (
-      <Banner.SubtleAction onClick={() => console.info('Clicked!')}>
+      <Banner.SubtleAction
+        onClick={() => {
+          // eslint-disable-next-line no-console
+          console.info('Clicked!');
+        }}
+      >
         Undo
       </Banner.SubtleAction>
     ),

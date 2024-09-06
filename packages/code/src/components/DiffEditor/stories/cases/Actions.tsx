@@ -26,6 +26,7 @@ export const Actions = ({ ...props }: Partial<DiffEditorProps>) => {
         console.log('Copied to clipboard:', value);
       })
       .catch((err) => {
+        // eslint-disable-next-line no-console
         console.error('Failed to copy to clipboard', err);
       });
   };
@@ -38,7 +39,10 @@ export const Actions = ({ ...props }: Partial<DiffEditorProps>) => {
         const currentEditor = editorRef.current.getModifiedEditor();
         currentEditor.setValue(currentEditor.getValue().concat(value));
       })
-      .catch((err) => console.error('Failed to paste from clipboard', err));
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.error('Failed to paste from clipboard', err);
+      });
   };
 
   return (

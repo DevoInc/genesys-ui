@@ -13,6 +13,7 @@ const input = readFileSync('/dev/stdin').toString();
     writeFileSync('/dev/stdout', Buffer.from(output));
   } catch (error) {
     graph = new Viz({ Module, render });
+    // eslint-disable-next-line no-console
     console.error(error);
   }
 })();

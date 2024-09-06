@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
-
 import { Preview } from '@storybook/react';
 import { DocsContainer, DocsContainerProps } from '@storybook/addon-docs';
 import { create } from '@storybook/theming';
+import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 
 import { light, dark } from '@devoinc/genesys-brand-devo';
-import '@devoinc/genesys-base-styles/dist/styles.css';
+import '@devoinc/genesys-base-styles/dist/css/styles.css';
 import '@devoinc/genesys-icons/dist/gi-styles.css';
 
 import { BackToTop, TableOfContents } from './docs/blocks';
@@ -69,6 +69,7 @@ const preview: Preview = {
       disable: true,
     },
     options: {
+      // storySort: (a: IndexEntry, b: IndexEntry) => {
       storySort: (a, b) => {
         const storySortOrder = ['Docs', 'Base', 'Cases', 'Hooks', 'Components'];
 
@@ -92,32 +93,23 @@ const preview: Preview = {
     },
   },
   decorators: [
-    (Story) => (
-      <StoryWrapper padding={'cmp-md'} position="relative">
+    (Story, parameters) =>
+      !parameters.tags.includes('noWrap') ? (
+        <StoryWrapper padding={'cmp-md'} position="relative">
+          <Story />
+        </StoryWrapper>
+      ) : (
         <Story />
-      </StoryWrapper>
-    ),
-    (Story, { globals }) => (
-      <ThemeProvider theme={{ ...(globals.theme === 'light' ? light : dark) }}>
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
-  globalTypes: {
-    theme: {
-      name: 'Theme',
-      description: 'Global theme for components',
-      defaultValue: 'light',
-      toolbar: {
-        icon: 'paintbrush',
-        items: [
-          { value: 'light', title: 'light' },
-          { value: 'dark', title: 'dark' },
-        ],
-        dynamicTitle: true,
+      ),
+    withThemeFromJSXProvider({
+      themes: {
+        light,
+        dark,
       },
-    },
-  },
+      defaultTheme: 'light',
+      Provider: ThemeProvider,
+    }),
+  ],
 };
 
 export default preview;

@@ -1,5 +1,18 @@
 # Changelog
 
+## [11.0.4](https://github.com/DevoInc/genesys-ui/compare/v11.0.3...v11.0.4) (2024-07-10)
+
+
+### Bug Fixes
+
+* clear value in single select control ([#62](https://github.com/DevoInc/genesys-ui/issues/62)) ([99e0c5b](https://github.com/DevoInc/genesys-ui/commit/99e0c5babab00b3fdefded991b41522e75fb0b00))
+
+
+### Vulnerabilities
+
+* **deps-dev:** bump braces from 3.0.2 to 3.0.3 ([201fc28](https://github.com/DevoInc/genesys-ui/commit/201fc282e4246cd0c3a15433f557d047592478d2))
+* **deps-dev:** bump ws from 8.17.0 to 8.17.1 ([4931982](https://github.com/DevoInc/genesys-ui/commit/49319826fb54304299ec4355797fe37f1da8b292))
+
 ## [11.0.3](https://github.com/DevoInc/genesys-ui/compare/v11.0.2...v11.0.3) (2024-06-13)
 
 ## [11.0.2](https://github.com/DevoInc/genesys-ui/compare/v11.0.1...v11.0.2) (2024-06-06)

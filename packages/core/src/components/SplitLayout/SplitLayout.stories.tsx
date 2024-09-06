@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { lorem } from '../../../stories/utils/fillerTexts';
 
+import { lorem } from '../../../stories/utils/fillerTexts';
 import { Box } from '../Box';
 import { SplitLayout } from './SplitLayout';
 import { Button } from '../Button';
@@ -9,6 +9,8 @@ import { Typography } from '../Typography';
 import { HFlex } from '../HFlex';
 import { Divider } from '../Divider';
 import { VFlex } from '../VFlex';
+import { useAsyncSplitResize, useSyncSplitResize } from './hooks';
+import { TSizes } from './declarations';
 
 const meta: Meta<typeof SplitLayout> = {
   title: 'Components/Layout/SplitLayout',
@@ -25,106 +27,82 @@ export default meta;
 type Story = StoryObj<typeof SplitLayout>;
 
 export const Base: Story = {
+  tags: ['noWrap'],
+  args: {
+    showDragGhost: false,
+  },
   render: (args) =>
-    ((props) => (
-      <Box height="20rem">
-        <SplitLayout {...props}>
-          <Box padding="cmp-md">
-            <Typography.Paragraph>Block one</Typography.Paragraph>
-          </Box>
-          <Box padding="cmp-md">
-            <Typography.Paragraph>Block two</Typography.Paragraph>
-          </Box>
-        </SplitLayout>
-      </Box>
-    ))(args),
+    ((props) => {
+      const [sizes, setSizes] = React.useState<TSizes>(props?.sizes);
+      const { onChange } = useSyncSplitResize({ setSizes });
+      return (
+        <Box height="20rem">
+          <SplitLayout {...props} sizes={sizes} onChange={onChange}>
+            <Box overflow="hidden">
+              <Box padding="cmp-md">
+                <Typography.Paragraph>Left</Typography.Paragraph>
+              </Box>
+            </Box>
+            <Box padding="cmp-md" overflow="hidden">
+              <Typography.Paragraph>Right</Typography.Paragraph>
+            </Box>
+          </SplitLayout>
+        </Box>
+      );
+    })(args),
 };
 
 export const BaseWithoutHeight: Story = {
-  tags: ['isHidden'],
+  tags: ['isHidden', 'noWrap'],
   render: (args) =>
-    ((props) => (
-      <Box>
-        <SplitLayout {...props}>
-          <Box padding="cmp-md">
-            <Typography.Paragraph>{lorem}</Typography.Paragraph>
-          </Box>
-          <Box padding="cmp-md">
-            <Typography.Paragraph>Block two</Typography.Paragraph>
-          </Box>
-        </SplitLayout>
-      </Box>
-    ))(args),
-};
-
-export const WithoutMinSizeBad: Story = {
-  tags: ['isHidden'],
-  render: (args) =>
-    ((props) => (
-      <Box height="20rem">
-        <SplitLayout {...props} expandToMin={false} minSize={0}>
-          <Box padding="cmp-md">
-            <Typography.Paragraph>Block one</Typography.Paragraph>
-          </Box>
-          <Box padding="cmp-md">
-            <Typography.Paragraph>Block two</Typography.Paragraph>
-          </Box>
-        </SplitLayout>
-      </Box>
-    ))(args),
-};
-
-export const WithoutMinSizeGood: Story = {
-  tags: ['isHidden'],
-  render: (args) =>
-    ((props) => (
-      <Box height="20rem">
-        <SplitLayout {...props} expandToMin={false} minSize={0}>
-          <Box overflow="hidden">
+    ((props) => {
+      const [sizes, setSizes] = React.useState<TSizes>(props?.sizes);
+      const { onChange } = useAsyncSplitResize({ setSizes });
+      return (
+        <Box height="20rem">
+          <SplitLayout {...props} sizes={sizes} onChange={onChange}>
             <Box padding="cmp-md">
-              <Typography.Paragraph>Block one</Typography.Paragraph>
+              <Typography.Paragraph>{lorem}</Typography.Paragraph>
             </Box>
-          </Box>
-          <Box overflow="hidden">
             <Box padding="cmp-md">
               <Typography.Paragraph>Block two</Typography.Paragraph>
             </Box>
-          </Box>
-        </SplitLayout>
-      </Box>
-    ))(args),
+          </SplitLayout>
+        </Box>
+      );
+    })(args),
 };
 
-export const Three: Story = {
-  name: 'Three blocks',
-  args: {
-    sizes: [25, 50, 25],
-  },
+export const BaseWithHeight: Story = {
+  tags: ['isHidden', 'noWrap'],
   render: (args) =>
-    ((props) => (
-      <Box height="20rem">
-        <SplitLayout {...props}>
-          <Box padding="cmp-md">
-            <Typography.Paragraph>Block one</Typography.Paragraph>
-          </Box>
-          <Box padding="cmp-md">
-            <Typography.Paragraph>Block two</Typography.Paragraph>
-          </Box>
-          <Box padding="cmp-md">
-            <Typography.Paragraph>Block three</Typography.Paragraph>
-          </Box>
-        </SplitLayout>
-      </Box>
-    ))(args),
+    ((props) => {
+      const [sizes, setSizes] = React.useState<TSizes>(props?.sizes);
+      const { onChange } = useAsyncSplitResize({ setSizes });
+      return (
+        <Box height="20rem">
+          <SplitLayout {...props} sizes={sizes} onChange={onChange}>
+            <Box padding="cmp-md" overflow="auto">
+              <Typography.Paragraph>{lorem}</Typography.Paragraph>
+            </Box>
+            <Box padding="cmp-md">
+              <Typography.Paragraph>Block two</Typography.Paragraph>
+            </Box>
+          </SplitLayout>
+        </Box>
+      );
+    })(args),
 };
 
-export const Nested: Story = {
-  name: 'Nested blocks',
+export const AsyncHook: Story = {
+  tags: ['isHidden', 'noWrap'],
   render: (args) =>
-    ((props) => (
-      <Box height="30rem">
-        <SplitLayout {...props}>
-          <SplitLayout direction={'vertical'}>
+    ((props) => {
+      const [sizes, setSizes] = React.useState<TSizes>(props?.sizes);
+      const { onChange } = useAsyncSplitResize({ setSizes });
+      return (
+        <Box height="20rem">
+          <SplitLayout {...props} sizes={sizes} onChange={onChange}>
             <Box padding="cmp-md">
               <Typography.Paragraph>Block one</Typography.Paragraph>
             </Box>
@@ -132,72 +110,212 @@ export const Nested: Story = {
               <Typography.Paragraph>Block two</Typography.Paragraph>
             </Box>
           </SplitLayout>
-          <Box padding="cmp-md">
-            <Typography.Paragraph>Block three</Typography.Paragraph>
-          </Box>
-        </SplitLayout>
-      </Box>
-    ))(args),
+        </Box>
+      );
+    })(args),
+};
+
+export const MinSize: Story = {
+  tags: ['isHidden', 'noWrap'],
+  args: {
+    showDragGhost: false,
+  },
+  render: (args) =>
+    ((props) => {
+      const [sizes, setSizes] = React.useState<TSizes>(props?.sizes);
+      const { onChange } = useSyncSplitResize({ setSizes, min: [100, 100] });
+      return (
+        <Box height="20rem">
+          <SplitLayout {...props} sizes={sizes} onChange={onChange}>
+            <Box padding="cmp-md">
+              <Typography.Paragraph>Min: 100px</Typography.Paragraph>
+            </Box>
+            <Box padding="cmp-md">
+              <Typography.Paragraph>Min: 100px</Typography.Paragraph>
+            </Box>
+          </SplitLayout>
+        </Box>
+      );
+    })(args),
+};
+
+export const WithoutMinSizeGood: Story = {
+  tags: ['isHidden', 'noWrap'],
+  args: {
+    showDragGhost: false,
+  },
+  render: (args) =>
+    ((props) => {
+      const [sizes, setSizes] = React.useState<TSizes>(props?.sizes);
+      const { onChange } = useSyncSplitResize({ setSizes });
+      return (
+        <Box height="20rem">
+          <SplitLayout {...props} sizes={sizes} onChange={onChange}>
+            <Box padding="cmp-md">
+              <Typography.Paragraph>Left</Typography.Paragraph>
+            </Box>
+            <Box padding="cmp-md">
+              <Typography.Paragraph>Right</Typography.Paragraph>
+            </Box>
+          </SplitLayout>
+        </Box>
+      );
+    })(args),
+};
+
+export const WithOverflowAndPadding: Story = {
+  tags: ['isHidden', 'noWrap'],
+  args: {
+    showDragGhost: false,
+  },
+  render: (args) =>
+    ((props) => {
+      const [sizes, setSizes] = React.useState<TSizes>(props?.sizes);
+      const { onChange } = useSyncSplitResize({ setSizes });
+      return (
+        <Box height="20rem">
+          <SplitLayout {...props} sizes={sizes} onChange={onChange}>
+            <Box overflow="hidden">
+              <Box padding="cmp-md">
+                <Typography.Paragraph>Left</Typography.Paragraph>
+              </Box>
+            </Box>
+            <Box padding="cmp-md" overflow="hidden">
+              <Typography.Paragraph>Right</Typography.Paragraph>
+            </Box>
+          </SplitLayout>
+        </Box>
+      );
+    })(args),
+};
+
+export const Three: Story = {
+  tags: ['isHidden', 'noWrap'],
+  args: {
+    sizes: ['25%', '50%', '25%'],
+    showDragGhost: false,
+  },
+  render: (args) =>
+    ((props) => {
+      const [sizes, setSizes] = React.useState<TSizes>(props?.sizes);
+      const { onChange } = useSyncSplitResize({ setSizes });
+      return (
+        <Box height="20rem">
+          <SplitLayout {...props} sizes={sizes} onChange={onChange}>
+            <Box padding="cmp-md">
+              <Typography.Paragraph>Block one</Typography.Paragraph>
+            </Box>
+            <Box padding="cmp-md">
+              <Typography.Paragraph>Block two</Typography.Paragraph>
+            </Box>
+            <Box padding="cmp-md">
+              <Typography.Paragraph>Block three</Typography.Paragraph>
+            </Box>
+          </SplitLayout>
+        </Box>
+      );
+    })(args),
+};
+
+export const Nested: Story = {
+  tags: ['isHidden', 'noWrap'],
+  args: {
+    showDragGhost: false,
+  },
+  render: (args) =>
+    ((props) => {
+      const [sizesOuter, setSizesOuter] = React.useState<TSizes>(props?.sizes);
+      const { onChange: onChangeOuter } = useSyncSplitResize({
+        setSizes: setSizesOuter,
+      });
+      const [sizesInner, setSizesInner] = React.useState<TSizes>(props?.sizes);
+      const { onChange: onChangeInner } = useSyncSplitResize({
+        setSizes: setSizesInner,
+      });
+      return (
+        <Box height="30rem">
+          <SplitLayout {...props} sizes={sizesOuter} onChange={onChangeOuter}>
+            <SplitLayout
+              direction={'vertical'}
+              sizes={sizesInner}
+              onChange={onChangeInner}
+              showDragGhost={false}
+            >
+              <Box padding="cmp-md">
+                <Typography.Paragraph>Block one</Typography.Paragraph>
+              </Box>
+              <Box padding="cmp-md">
+                <Typography.Paragraph>Block two</Typography.Paragraph>
+              </Box>
+            </SplitLayout>
+            <Box padding="cmp-md">
+              <Typography.Paragraph>Block three</Typography.Paragraph>
+            </Box>
+          </SplitLayout>
+        </Box>
+      );
+    })(args),
 };
 
 export const HiddenContent: Story = {
-  name: 'Dynamic content',
-  render: (args) =>
-    ((args) => {
-      const [showMenu, setShowMenu] = React.useState(true);
-      const [showFooter, setShowFooter] = React.useState(false);
+  tags: ['isHidden', 'noWrap'],
+  render: () =>
+    (() => {
+      const [sizesOuter, setSizesOuter] = React.useState<TSizes>([100, 'auto']);
+      const { onChange: onChangeOuter } = useSyncSplitResize({
+        setSizes: setSizesOuter,
+      });
+      const [sizesInner, setSizesInner] = React.useState<TSizes>(['auto', 100]);
+      const { onChange: onChangeInner } = useSyncSplitResize({
+        setSizes: setSizesInner,
+      });
 
-      const toggleMenu = () => {
-        setShowMenu(!showMenu);
-      };
-
-      const toggleFooter = () => {
-        setShowFooter(!showFooter);
-      };
+      const hasMenu = sizesOuter.length === 2;
+      const hasFooter = sizesInner.length === 2;
 
       return (
-        <VFlex spacing="0">
-          <HFlex>
-            <Button onClick={toggleMenu}>
-              {showMenu ? 'Hide menu' : 'Show menu'}
+        <VFlex spacing="0" height="30rem">
+          <HFlex padding="cmp-md">
+            <Button
+              onClick={() => {
+                setSizesOuter(hasMenu ? ['auto'] : [100, 'auto']);
+              }}
+            >
+              {hasMenu ? 'Hide menu' : 'Show menu'}
             </Button>
-            <Button onClick={toggleFooter}>
-              {showFooter ? 'Hide footer' : 'Show footer'}
+            <Button
+              onClick={() => {
+                setSizesInner(hasFooter ? ['auto'] : ['auto', 100]);
+              }}
+            >
+              {hasFooter ? 'Hide footer' : 'Show footer'}
             </Button>
           </HFlex>
-          <Divider margin="cmp-md 0 0 0" colorScheme="weak" />
-          <Box height="30rem">
+          <Divider margin="0 0 0 0" colorScheme="weak" />
+          <VFlex.Item flex="1 1 auto" overflow="hidden">
             <SplitLayout
-              sizes={showMenu ? [25, 75] : [0, 100]}
-              minSize={0}
-              expandToMin={false}
-              gutterSize={showMenu ? 10 : 0}
-              gutterAlign="center"
-              snapOffset={30}
-              dragInterval={1}
               direction="horizontal"
-              cursor="col-resize"
+              showDragGhost={false}
+              sizes={sizesOuter}
+              onChange={onChangeOuter}
+              hideGutter={!hasMenu}
             >
               <Box
                 overflow="hidden"
-                styles="background-color: rgba(63, 187, 226, 0.2)"
+                styles={{
+                  backgroundColor: 'rgba(63, 187, 226, 0.2)',
+                  display: hasMenu ? 'block' : 'none',
+                }}
               >
                 <Box padding="cmp-sm">
-                  {showMenu && (
-                    <Typography.Paragraph>Menu</Typography.Paragraph>
-                  )}
+                  <Typography.Paragraph>Menu</Typography.Paragraph>
                 </Box>
               </Box>
               <SplitLayout
-                {...args}
                 direction={'vertical'}
-                sizes={showFooter ? [75, 25] : [100, 0]}
-                cursor="col-resize"
-                gutterSize={showFooter ? 10 : 0}
-                gutterAlign="center"
-                snapOffset={30}
-                dragInterval={1}
-                minSize={0}
+                showDragGhost={false}
+                sizes={sizesInner}
+                onChange={onChangeInner}
               >
                 <Box
                   overflow="hidden"
@@ -209,18 +327,19 @@ export const HiddenContent: Story = {
                 </Box>
                 <Box
                   overflow="hidden"
-                  styles="background-color: rgba(51, 255, 159, 0.2);"
+                  styles={{
+                    backgroundColor: 'rgba(51, 255, 159, 0.2)',
+                    display: hasFooter ? 'block' : 'none',
+                  }}
                 >
-                  {showFooter && (
-                    <Box padding="cmp-sm">
-                      <Typography.Paragraph>Footer</Typography.Paragraph>
-                    </Box>
-                  )}
+                  <Box padding="cmp-sm">
+                    <Typography.Paragraph>Footer</Typography.Paragraph>
+                  </Box>
                 </Box>
               </SplitLayout>
             </SplitLayout>
-          </Box>
+          </VFlex.Item>
         </VFlex>
       );
-    })(args),
+    })(),
 };

@@ -14,7 +14,7 @@ functions for work with your data and apply this predefined presets, and as
 filters are integrated on the table you will have a prop `showFilters` on the
 table to show them or not.
 
-The next are a simple example
+The next are a simple example:
 
 <Source
   language='tsx'
@@ -93,10 +93,16 @@ const FilterTable = () => {
 `}
 />
 
-## The hook `useFilterStruct`
+## How to implement filters?.
 
-This hook store the current filters state and provide this state and a function
-for update the state
+> The steps described below are the implementation steps. They are **functions that
+the package provides as a minimum base**. However given the nature of the project
+any of **these steps can be substituted with custom functions as needed**.
+
+### 1. Filter state `useFilterStruct`.
+
+This hook store the current filters state and **provide this state and a function
+for update the state**
 
 <Source
   language="tsx"
@@ -120,15 +126,16 @@ We could see how to use the `onFilter` function in the example
 `}
 />
 
-The function accept the column `id` the value of the `filter` and the `type` of the
-filter. The `value` of the filter could be whatever the filter need, sometimes
-it will be a string other could be a complex structure. The `type` is a string
-with some identification over the kind of the filter we are providing, each
+The function accept the **column id** the value of the `filter` and the **type** of the
+filter. The **value** of the filter could be whatever the filter need, sometimes
+it will be a string other could be a complex structure.
+
+The `type` is a string with some identification over the kind of the filter we are providing, each
 predefined filters has one with the same name as the column that represents, for
 example the `TextFilter` use the type `text`, etc... This type will help us
 later on apply the right filter to our data.
 
-## Filtering our data
+### 2. Filtering our data
 
 As we have our filter structure stored now is the time to apply it on our data
 
@@ -146,10 +153,10 @@ our data using this function but using the second parameter for pass an object
 of filter functions with the `type` as key (we will see an example of this
 later).
 
-## Updating our `colDefs`
+### 3. Updating our `colDefs`
 
 Ok, right now we have filtered our data, but the table are mainly stateless so
-how we are telling to our filters that they need to update, for this we have the
+how we are telling to our **filters that they need to update**, for this we have the
 next function
 
 <Source

@@ -12,14 +12,12 @@ import {
   SpinnerLoader,
 } from '@devoinc/genesys-ui';
 
-import type { TRealtimeState } from '../DateTimeRangeInput/declarations';
-
-import { cssRealTimeButtonSpinner } from './helpers';
-
+import type { TRealtimeState } from './declarations';
 import {
+  cssRealTimeButtonSpinner,
   getButtonStateFromRealTimeState,
   getRealTimeDataTip,
-} from '../DateTimeRangeInput/util';
+} from './helpers';
 
 export interface RealTimeButtonProps
   extends Omit<
@@ -52,10 +50,10 @@ export const RealTimeButton: React.FC<RealTimeButtonProps> = ({
       visibility={state === 'hidden' ? 'hidden' : undefined}
     >
       {state === 'activated' && (
-        <Box position="absolute" zIndex={1} css="pointer-events: none">
+        <Box position="absolute" zIndex={1} styles="pointer-events: none">
           <SpinnerLoader
             colorScheme={themeScheme === 'dark' ? 'lightTrans' : 'darkTrans'}
-            css={cssRealTimeButtonSpinner}
+            styles={cssRealTimeButtonSpinner}
             size={size}
           />
         </Box>

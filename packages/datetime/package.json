@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-datetime",
-  "version": "11.0.3",
+  "version": "11.0.4",
   "description": "",
   "type": "module",
   "scripts": {
@@ -29,12 +29,12 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "@devoinc/genesys-icons": "^4.0.0",
-    "@devoinc/genesys-ui": "^11.0.3",
+    "@devoinc/genesys-icons": "4.x.x || 5.x.x",
+    "@devoinc/genesys-ui": "^11.0.4",
     "date-fns": "2.x.x",
     "react": "16.x || 17.x || 18.x",
     "react-popper": "2.x.x",
-    "styled-components": "^6.1.9"
+    "styled-components": "6.x.x"
   },
   "engine": {
     "node": ">=16",

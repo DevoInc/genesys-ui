@@ -12,11 +12,9 @@ export const useClosableTabs = ({
 }) => {
   const itemsRef = React.useRef<NodeListOf<Element>>([]);
   React.useEffect(() => {
-    console.log(itemsRef.current);
     const removedItemIndex = Array.from(itemsRef.current).findIndex(
       (item) => !document.body.contains(item),
     );
-    console.log(removedItemIndex);
     itemsRef.current = tabsRef.current.querySelectorAll('[aria-selected]');
     if (activeTab > itemsRef.current.length - 1) {
       getEnabledItemByIndex({ items: itemsRef.current, index: 'last' });

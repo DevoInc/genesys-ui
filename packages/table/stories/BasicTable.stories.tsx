@@ -57,6 +57,7 @@ export const Base: Story = {
                   <Menu.Item
                     label="Option 1"
                     onClick={() => {
+                      // eslint-disable-next-line no-console
                       console.log(colDef);
                     }}
                   />
@@ -171,12 +172,14 @@ export const Base: Story = {
             {
               Icon: GIEyeViewFilled,
               onClick: (rowIndex) => {
+                // eslint-disable-next-line no-console
                 console.log(`Action 1 on row ${rowIndex}`);
               },
             },
             {
               Icon: GIPencilEdit,
               onClick: (rowIndex) => {
+                // eslint-disable-next-line no-console
                 console.log(`Action 2 on row ${rowIndex}`);
               },
             },

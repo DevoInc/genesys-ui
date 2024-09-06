@@ -6,4 +6,5 @@ export * from './link';
 export * from './longText';
 export * from './number';
 export * from './options';
+export * from './rowGrouping';
 export * from './text';
