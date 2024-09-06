@@ -99,6 +99,14 @@ export const Base: Story = {
         headerName: 'Status',
         preset: 'options',
         editable: true,
+        context: {
+          options: {
+            done: { colorScheme: 'success' },
+            test: { colorScheme: 'warning' },
+            TODO: { colorScheme: 'data-purple' },
+            inProgress: { colorScheme: 'data-blue' },
+          },
+        },
       },
       {
         id: 'picture',
