@@ -23,6 +23,7 @@ export * from './Field';
 export * from './FieldsCombiner';
 export * from './Flex';
 export * from './FloatingHelper';
+export * from './FloatingMessage';
 export * from './Fluid';
 export * from './Form';
 export * from './Grid';
