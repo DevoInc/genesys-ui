@@ -34,6 +34,7 @@ export * from './IconButton';
 export * from './InlineMessage';
 export * from './Input';
 export * from './InputControl';
+export * from './KeyValue';
 export * from './Label';
 export * from './Link';
 export * from './Loader';
