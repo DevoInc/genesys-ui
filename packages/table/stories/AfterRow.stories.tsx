@@ -10,8 +10,11 @@ import {
   BooleanRenderer,
   orderDataByOrderStruct,
   Table,
+  TCellRenderer,
   TColDef,
+  TData,
   TextRenderer,
+  TRowDef,
   useOrderStruct,
 } from '../src';
 
@@ -31,8 +34,8 @@ export default meta;
 type Story = StoryObj<typeof Table>;
 
 const initialData = Holo.of()
-  .addType('index', (args = {}) => String(args.index + 1))
-  .addType('rowGrouping', (args = {}) => false)
+  .addType('index', (args = {}) => args.index + 1)
+  .addType('rowGrouping', () => false)
   .schema({
     rowGrouping: 'rowGrouping',
     id: 'index',
@@ -40,7 +43,7 @@ const initialData = Holo.of()
     name: 'name',
   })
   .repeat(5)
-  .generate();
+  .generate() as TData;
 
 const colDefsInitial = [
   // {
@@ -76,7 +79,15 @@ const initalRowDefs = [
 
 const initialSelection = ['2'];
 
-const BasicCmp = ({ afterRowRenderer, afterRowHeight }) => {
+const BasicCmp = ({
+  afterRowRenderer,
+  afterRowHeight,
+}: {
+  afterRowRenderer:
+    | React.FC<TCellRenderer>
+    | (({ value, colDef, rowIndex, row }: TCellRenderer) => React.ReactNode);
+  afterRowHeight: number;
+}) => {
   const { orderStruct, onSort } = useOrderStruct([
     { id: 'text', sort: 'desc' },
   ]);
@@ -116,7 +127,6 @@ const BasicCmp = ({ afterRowRenderer, afterRowHeight }) => {
           maxHeight={'80vh'}
           rowHeight={ROW_HEIGHT_MD}
           resizableColumns={true}
-          highlightColumnsOnHover={true}
           showFilters={false}
         />
       </Flex.Item>
@@ -124,10 +134,18 @@ const BasicCmp = ({ afterRowRenderer, afterRowHeight }) => {
   );
 };
 
-const BasicCmpNoRenderAfterRow = ({ afterRowRenderer, afterRowHeight }) => {
+const BasicCmpNoRenderAfterRow = ({
+  afterRowRenderer,
+  afterRowHeight,
+}: {
+  afterRowRenderer:
+    | React.FC<TCellRenderer>
+    | (({ value, colDef, rowIndex, row }: TCellRenderer) => React.ReactNode);
+  afterRowHeight: number;
+}) => {
   const [data, setData] = React.useState(initialData);
 
-  const [rowDefs, setRowDefs] = React.useState([]);
+  const [rowDefs, setRowDefs] = React.useState<TRowDef[]>([]);
 
   const { colDefs } = useOnDemandAfterRow({
     rowDefs,
@@ -153,7 +171,6 @@ const BasicCmpNoRenderAfterRow = ({ afterRowRenderer, afterRowHeight }) => {
           maxHeight={'80vh'}
           rowHeight={ROW_HEIGHT_MD}
           resizableColumns={true}
-          highlightColumnsOnHover={true}
           showFilters={false}
         />
       </Flex.Item>
@@ -216,7 +233,7 @@ export const AfterRowTable: Story = {
 export const Iframe: Story = {
   render: () => (
     <BasicCmp
-      afterRowRenderer={({ row }) => (
+      afterRowRenderer={() => (
         <div
           style={{
             height: '100%',
