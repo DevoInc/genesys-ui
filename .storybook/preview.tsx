@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
-
+import { StrictMode } from 'react';
 import { Preview } from '@storybook/react';
 import { DocsContainer, DocsContainerProps } from '@storybook/addon-docs';
 import { create } from '@storybook/theming';
@@ -93,9 +93,11 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <StoryWrapper padding={'cmp-md'} position="relative">
-        <Story />
-      </StoryWrapper>
+      <StrictMode>
+        <StoryWrapper padding={'cmp-md'} position="relative">
+          <Story />
+        </StoryWrapper>
+      </StrictMode>
     ),
     (Story, { globals }) => (
       <ThemeProvider theme={{ ...(globals.theme === 'light' ? light : dark) }}>
