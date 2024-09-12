@@ -11,7 +11,6 @@ export const useRenderContent = (
   row: TRow,
 ) => {
   const cellRef = React.useRef<HTMLTableCellElement>();
-
   const viewContent = colDef.cellRenderer
     ? colDef.cellRenderer({
         value: colDef.valueFormatter

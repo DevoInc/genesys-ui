@@ -1,7 +1,7 @@
-export const updateSelection = (selection: string[]) => (id: string) =>
-  selection.includes(id)
+export const updateSelection = (selection: string[] | number[]) => (id: string | number) =>
+  (selection.includes(id)
     ? selection.reduce(
-        (prev, curr) => (curr === id ? prev : prev.concat([curr])),
+        (prev, curr) => (curr === id ? prev : prev.concat([curr])) as string[] | number[],
         [],
       )
-    : selection.concat([id]);
+    : selection.concat([id])) as string[] | number[];

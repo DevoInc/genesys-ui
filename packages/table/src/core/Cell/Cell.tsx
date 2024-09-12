@@ -34,7 +34,6 @@ export const Cell: React.FC<CellProps> = ({
   const { density, texts, highlightColumnsOnHover } =
     React.useContext(TableContext);
   const { height: wrapperHeight } = React.useContext(WrapperContext);
-
   const { onReset } = colDef;
 
   useInitialState(data, onReset);
@@ -44,29 +43,29 @@ export const Cell: React.FC<CellProps> = ({
 
   return (
     <StyledCell
-      density={density}
+      $density={density}
       $height={height}
       $width={width}
-      offsetX={offsetX}
+      $offsetX={offsetX}
       colSpan={colSpan}
       highlightColumnsOnHover={highlightColumnsOnHover}
-      wrapperHeight={wrapperHeight}
+      $wrapperHeight={wrapperHeight}
       aria-selected={isEditMode}
       onDoubleClick={onDoubleClick}
       ref={cellRef}
     >
       <StyledCellWrapper
         as={colDef.editable ? 'button' : 'div'}
-        clickable={colDef.editable}
-        isEditMode={isEditMode}
-        density={density}
+        $clickable={colDef.editable}
+        $isEditMode={isEditMode}
+        $density={density}
         tabIndex={colDef.editable ? 0 : -1}
         title={
           isEditMode ? texts?.cell?.editSaveTooltip : texts?.cell?.editTooltip
         }
         toEdge={colDef?.toEdge}
         verAlign={colDef?.verticalAlign}
-        horAlign={
+        $horAlign={
           colDef?.align || (colDef.preset === 'number' ? 'right' : null)
         }
       >
