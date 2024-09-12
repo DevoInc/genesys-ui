@@ -7,7 +7,7 @@ export const addAfterRowsToData = (data: TData) => {
     afterRowIds.push(id);
     return prev.concat([row].concat([{ ...row, id }]));
   }, [] as TData);
-  return [newData, afterRowIds];
+  return [newData, afterRowIds] as [TData, string[]];
 };
 
 export const addAfterRowToData = (data: TData, id: string | number) =>

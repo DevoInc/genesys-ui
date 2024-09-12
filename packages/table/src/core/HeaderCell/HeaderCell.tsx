@@ -30,10 +30,9 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   return (
     <StyledHeaderCell
       $width={width}
-      horAlign={colDef?.align || (colDef.preset === 'number' ? 'right' : null)}
-      sortable={colDef.sortable}
-      offsetX={offsetX}
-      density={density}
+      $horAlign={colDef?.align || (colDef.preset === 'number' ? 'right' : null)}
+      $offsetX={offsetX}
+      $density={density}
       title={colDef.headerName}
       onClick={
         colDef.sortable
@@ -49,7 +48,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
       {colDef.sortable && !showFilters && <OrderIndicator colDef={colDef} />}
       {resizable && (
         <StyledHeaderCellResizer
-          density={density}
+          $density={density}
           role="presentation"
           aria-hidden="false"
         />

@@ -1,4 +1,4 @@
 export type TRowGroupingContext = {
-  selection?: string[];
+  selection?: string[] | number[];
   onClick?: (rowId: string | number) => void;
 };

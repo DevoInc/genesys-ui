@@ -8,20 +8,20 @@ import { cellMixin } from '../helpers';
 import { getTableZIndexMap } from '../utils';
 
 interface StyledCellProps {
-  wrapperHeight?: number;
-  density?: TDensity;
+  $wrapperHeight?: number;
+  $density?: TDensity;
   highlightColumnsOnHover?: boolean;
-  offsetX: number;
+  $offsetX: number;
   $width: number;
   $height: number;
 }
 
 export const StyledCell = styled.td.attrs(
-  ({ $width, $height, offsetX }: StyledCellProps) => ({
+  ({ $width, $height, $offsetX }: StyledCellProps) => ({
     style: {
       width: `${$width}px`,
       height: `${$height}px`,
-      left: `${offsetX}px`,
+      left: `${$offsetX}px`,
     },
   }),
 )<StyledCellProps>`
@@ -34,7 +34,7 @@ export const StyledCell = styled.td.attrs(
 
   ${({ theme }) => cellMixin({ theme })};
 
-  ${({ highlightColumnsOnHover, wrapperHeight = 9999, theme, density }) => {
+  ${({ highlightColumnsOnHover, $wrapperHeight = 9999, theme, $density }) => {
     const tokens = theme.cmp.table.cell;
     return highlightColumnsOnHover
       ? css`
@@ -43,8 +43,8 @@ export const StyledCell = styled.td.attrs(
           &:has([aria-expanded='true']),
           &:hover {
             &::after {
-              top: ${`calc((${wrapperHeight}px - ${theme.cmp.table.head.size.height[density]}) * -1)`};
-              height: ${`calc(${wrapperHeight}px * 2)`};
+              top: ${`calc((${$wrapperHeight}px - ${theme.cmp.table.head.size.height[$density]}) * -1)`};
+              height: ${`calc(${$wrapperHeight}px * 2)`};
               background-color: ${tokens.color.background.backdrop.hovered
                 .base};
               z-index: ${getTableZIndexMap(theme).columnHighlight};

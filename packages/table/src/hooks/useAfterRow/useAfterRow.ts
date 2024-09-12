@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { RowGroupingRenderer } from '../../renderers';
-import { TRowGroupingContext } from '../../facade';
 import { updateSelection } from './selection';
 import { TCellRenderer, TColDef, TData, TRowDef } from '../../declarations';
 import {
@@ -12,6 +11,7 @@ import {
   getRowDef,
   setHideRowDef,
 } from '../../helpers';
+import type { TRowGroupingContext } from '../../facade/RowGrouping/RowGroupingContext';
 
 export const useRenderAfterRow = ({
   rowDefs,
@@ -24,8 +24,7 @@ export const useRenderAfterRow = ({
   onRowDefsChange: (rowDefs: TRowDef[]) => void;
   colDefs: TColDef[];
 }) => {
-  const [selection, setSelection] = React.useState(initialSelection || []);
-
+  const [selection, setSelection] = React.useState<string[] | number[]>(initialSelection || []);
   const colDefs = [
     {
       id: 'rowGrouping',
@@ -58,6 +57,7 @@ export const useRenderAfterRow = ({
 
 export const useOnDemandAfterRow = ({
   rowDefs,
+  initialSelection,
   onRowDefsChange,
   colDefs: originalColDefs,
   data,
@@ -68,13 +68,14 @@ export const useOnDemandAfterRow = ({
   rowDefs: TRowDef[];
   onRowDefsChange: (rowDefs: TRowDef[]) => void;
   colDefs: TColDef[];
-  data: TData[];
-  onDataChange: (data: TData[]) => void;
+  initialSelection: string[];
+  data: TData;
+  onDataChange: (data: TData) => void;
   afterRowRenderer: React.FC<TCellRenderer>
   | (({ value, colDef, rowIndex, row }: TCellRenderer) => React.ReactNode);
   afterRowHeight: React.CSSProperties['height'];
 }) => {
-  const [selection, setSelection] = React.useState([]);
+  const [selection, setSelection] = React.useState<string[] | number[]>(initialSelection || []);
 
   const colDefs = [
     {

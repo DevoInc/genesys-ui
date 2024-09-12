@@ -1,7 +1,8 @@
 import * as React from 'react';
 
-import { ROW_HEIGHT_MD } from '../../constants';
 import type { TColDef, ITable } from '../../declarations';
+
+import { ROW_HEIGHT_MD } from '../../constants';
 import { TableContext, WrapperContextProvider } from '../../context';
 import { TableWrapper } from '../TableWrapper';
 
@@ -10,7 +11,7 @@ export interface TableProps extends ITable {}
 export const Table: React.FC<TableProps> = ({
   defaultColDef,
   colDefs = [],
-  rowDefs = [], 
+  rowDefs = [],
   columnPresets = [],
   density = 'default',
   striped = false,
@@ -35,7 +36,6 @@ export const Table: React.FC<TableProps> = ({
       }),
     [defaultColDef, columnPresets, colDefs],
   );
-
   return (
     <TableContext.Provider
       value={{

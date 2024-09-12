@@ -1,8 +1,10 @@
 import React from 'react';
-import { Row } from '../Row';
-import { StyledTableBody } from './StyledTableBody';
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
+
+import { Row } from '../Row';
 import { TableContext } from '../../context/TableContext';
+
+import { StyledTableBody } from './StyledTableBody';
 
 export interface TableBodyProps {
   columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
@@ -18,6 +20,7 @@ export const TableBody: React.FC<TableBodyProps> = ({
   height,
 }) => {
   const { highlightColumnsOnHover, data } = React.useContext(TableContext);
+
   return (
     <StyledTableBody
       $height={height}

@@ -2,11 +2,14 @@ import React from 'react';
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 
 import type { TColDef, TData } from '../../declarations';
-import { TableContext } from '../../context/TableContext';
+
+import { TableContext } from '../../context';
+
 import { getColDefByID } from '../utils';
 import { TTextFilterValue } from '../../filters';
 import { HeaderTextRenderer } from '../../headerRenderers';
 import { HeaderCell } from '../HeaderCell';
+
 import { StyledTableHead } from './StyledTableHead';
 import { StyledTableHeadRow } from './StyledTableHeadRow';
 
@@ -28,9 +31,10 @@ export const TableHead: React.FC<TableHeadProps> = ({
   const { showFilters, resizableColumns, density, onSort, onFilter } =
     React.useContext(TableContext);
   const items = columnVirtualizer?.getVirtualItems() ?? [];
+
   return (
-    <StyledTableHead scrolled={scrolled} $width={width}>
-      <StyledTableHeadRow density={density}>
+    <StyledTableHead $scrolled={scrolled} $width={width}>
+      <StyledTableHeadRow $density={density}>
         {items.map((virtualColumn: VirtualItem) => {
           const colDef = getColDefByID(colDefs, virtualColumn);
           const headerOnFilterPosition =
@@ -54,9 +58,10 @@ export const TableHead: React.FC<TableHeadProps> = ({
         })}
       </StyledTableHeadRow>
       {showFilters ? (
-        <StyledTableHeadRow density={density}>
+        <StyledTableHeadRow $density={density}>
           {items.map((virtualColumn: VirtualItem) => {
             const colDef = getColDefByID(colDefs, virtualColumn);
+
             return colDef?.cellFilter || colDef?.headerOnFilterPosition ? (
               <HeaderCell
                 key={`header-filter-cell-${virtualColumn.key}`}
