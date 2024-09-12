@@ -16,6 +16,15 @@ export type TTextsType = {
 
 export type TCellVerAlign = 'top' | 'bottom' | 'center';
 export type TCellHorAlign = 'left' | 'center' | 'right';
+export type TStateRow =
+  | 'enabled'
+  | 'disabled'
+  | 'expanded'
+  | 'highlighted'
+  | 'modified'
+  | 'selected'
+  | 'created'
+  | 'deleted';
 
 export type TColDef = {
   id: string;
