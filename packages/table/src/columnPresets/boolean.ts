@@ -1,4 +1,5 @@
 import type { TColDef } from '../declarations';
+
 import { BooleanEditor } from '../editors';
 import { BooleanFilter } from '../filters';
 import { BooleanRenderer } from '../renderers';

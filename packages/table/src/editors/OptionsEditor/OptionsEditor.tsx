@@ -2,8 +2,9 @@ import * as React from 'react';
 
 import { SelectControl } from '@devoinc/genesys-ui';
 
-import { EditorFloatingWrapper } from '../components';
 import type { TCellEditor } from '../../declarations';
+
+import { EditorFloatingWrapper } from '../components';
 import { type TContextOptions, getSelectOptions } from '../../facade';
 
 export const OptionsEditor: React.FC<TCellEditor> = ({

@@ -1,4 +1,5 @@
-import { TColDef } from '../declarations';
+import type { TColDef } from '../declarations';
+
 import { TextEditor } from '../editors';
 import { TextFilter } from '../filters';
 import { LinkRenderer } from '../renderers';

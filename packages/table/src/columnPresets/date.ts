@@ -1,8 +1,10 @@
-import { TColDef } from '../declarations';
+import { enUS } from 'date-fns/locale';
+
+import type { TColDef } from '../declarations';
+
 import { DateEditor } from '../editors';
 import { TextRenderer } from '../renderers';
 import { dateFormatter } from '../valueFormatters/date';
-import { enUS } from 'date-fns/locale';
 
 export const date: TColDef = {
   id: 'date',
