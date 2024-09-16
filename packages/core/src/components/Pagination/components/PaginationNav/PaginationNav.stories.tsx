@@ -6,7 +6,7 @@ import { usePagination } from '../../hooks';
 import { Pagination } from '../../Pagination';
 
 const meta: Meta<typeof PaginationNav> = {
-  title: 'Components/Navigation/Pagination/Components',
+  title: 'Components/Navigation/Pagination/Components/Nav',
   component: PaginationNav,
   args: {
     size: 'md',
@@ -16,7 +16,7 @@ const meta: Meta<typeof PaginationNav> = {
 export default meta;
 type Story = StoryObj<typeof PaginationNav>;
 
-export const Nav: Story = {
+export const Base: Story = {
   render: (args) =>
     (() => {
       const list = React.useMemo(() => [...Array(150).keys()], []);

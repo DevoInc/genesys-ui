@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { PaginationLabel } from './PaginationLabel';
 
 const meta: Meta<typeof PaginationLabel> = {
-  title: 'Components/Navigation/Pagination/Components',
+  title: 'Components/Navigation/Pagination/Components/Label',
   component: PaginationLabel,
   args: {
     size: 'md',
@@ -14,4 +14,4 @@ const meta: Meta<typeof PaginationLabel> = {
 export default meta;
 type Story = StoryObj<typeof PaginationLabel>;
 
-export const Label: Story = {};
+export const Base: Story = {};

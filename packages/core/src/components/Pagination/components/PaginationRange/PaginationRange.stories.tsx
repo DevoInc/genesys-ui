@@ -6,7 +6,7 @@ import { Pagination } from '../../Pagination';
 import { PaginationRange } from './PaginationRange';
 
 const meta: Meta<typeof PaginationRange> = {
-  title: 'Components/Navigation/Pagination/Components',
+  title: 'Components/Navigation/Pagination/Components/Range',
   component: PaginationRange,
   args: {
     size: 'md',
@@ -16,7 +16,7 @@ const meta: Meta<typeof PaginationRange> = {
 export default meta;
 type Story = StoryObj<typeof PaginationRange>;
 
-export const Range: Story = {
+export const Base: Story = {
   render: (args) =>
     (() => {
       const list = React.useMemo(() => [...Array(150).keys()], []);
