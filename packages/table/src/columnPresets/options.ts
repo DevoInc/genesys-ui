@@ -1,4 +1,5 @@
-import { TColDef } from '../declarations';
+import type { TColDef } from '../declarations';
+
 import { OptionsFilter } from '../filters';
 import { OptionsRenderer } from '../renderers';
 import { OptionsEditor } from '../editors';

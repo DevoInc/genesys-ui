@@ -1,6 +1,8 @@
 import React, { FormEvent } from 'react';
 import { TextareaControl } from '@devoinc/genesys-ui';
-import { TCellEditor } from '../../declarations';
+
+import type { TCellEditor } from '../../declarations';
+
 import { EditorFloatingWrapper } from '../components';
 
 export const TextAreaEditor: React.FC<TCellEditor> = ({ value, onChange }) => (

@@ -1,5 +1,6 @@
+import type { TColDef } from '../declarations';
+
 import { ROW_HEIGHT_LG } from '../constants';
-import { TColDef } from '../declarations';
 import { TextAreaEditor } from '../editors';
 import { TextFilter } from '../filters';
 import { TextRenderer } from '../renderers';

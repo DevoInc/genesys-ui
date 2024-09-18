@@ -3,7 +3,7 @@ import * as React from 'react';
 import { IconButtonCollapse } from '@devoinc/genesys-ui';
 
 import type { TCellRenderer } from '../../declarations';
-import { TRowGroupingContext } from '../../facade';
+import { TRowGroupingContext } from '../../facade/RowGrouping/RowGroupingContext';
 
 export const RowGroupingRenderer: React.FC<TCellRenderer> = ({
   colDef,
@@ -11,7 +11,6 @@ export const RowGroupingRenderer: React.FC<TCellRenderer> = ({
 }) => {
   const context = colDef?.context as TRowGroupingContext;
   const isOpened = context.selection.includes(row.id as string);
-
   return (
     <IconButtonCollapse
       onClick={() => {

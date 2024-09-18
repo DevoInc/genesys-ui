@@ -1,4 +1,4 @@
-import { TColDef } from '../declarations';
+import type { TColDef } from '../declarations';
 import { NumberEditor } from '../editors';
 import { NumberFilter } from '../filters';
 import { TextRenderer } from '../renderers';
