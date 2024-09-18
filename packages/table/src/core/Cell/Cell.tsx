@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { GIPencilEditFilled } from '@devoinc/genesys-icons';
 
-import type { TColDef } from '../../declarations';
+import type { TColDef, TRow } from '../../declarations';
 import { useRenderContent } from './useRenderContent';
 import { useInitialState } from '../../editors/useInitialState';
 import { TableContext, WrapperContext } from '../../context';
@@ -17,6 +17,8 @@ interface CellProps {
   height?: number;
   offsetX?: number;
   rowIndex: number;
+  row: TRow;
+  colSpan?: number;
 }
 
 export const Cell: React.FC<CellProps> = ({
@@ -26,9 +28,8 @@ export const Cell: React.FC<CellProps> = ({
   width,
   height,
   offsetX,
-  rowVirtualizer,
-  virtualRow,
-  rowDef,
+  row,
+  colSpan,
 }) => {
   const { density, texts, highlightColumnsOnHover } =
     React.useContext(TableContext);
@@ -39,7 +40,7 @@ export const Cell: React.FC<CellProps> = ({
   useInitialState(data, onReset);
 
   const { cellRef, editionContent, isEditMode, onDoubleClick, viewContent } =
-    useRenderContent(colDef, data, rowIndex, rowVirtualizer, virtualRow, rowDef);
+    useRenderContent(colDef, data, rowIndex, row);
 
   return (
     <StyledCell
@@ -47,6 +48,7 @@ export const Cell: React.FC<CellProps> = ({
       $height={height}
       $width={width}
       offsetX={offsetX}
+      colSpan={colSpan}
       highlightColumnsOnHover={highlightColumnsOnHover}
       wrapperHeight={wrapperHeight}
       aria-selected={isEditMode}

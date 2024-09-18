@@ -23,23 +23,22 @@ export interface StyledTableRowProps {
   striped?: boolean;
   transform?: React.CSSProperties['transform'];
   $width?: React.CSSProperties['width'];
-  display?: React.CSSProperties['display'];
+  $hide?: boolean;
 }
 
 export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
-  ({ $width, $height, transform, display }) => ({
+  ({ $width, $height, transform }) => ({
     style: {
-      position: 'absolute',
       width: $width ?? '100%',
       height: $height,
       transform,
-      display: display,
     },
   }),
 )<StyledTableRowProps>`
+  position: absolute;
   top: 0;
   left: 0;
-  display: flex;
+  display: ${({ $hide }) => ($hide ? 'none' : 'flex')};
   align-items: center;
   width: 100%;
 
