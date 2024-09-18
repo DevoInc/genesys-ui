@@ -24,6 +24,7 @@ export const Base: Story = {
 };
 
 export const PlacingFunctionalComponents: Story = {
+  tags: ['isHidden'],
   render: () => (
     <Box display={'inline-flex'} position={'relative'}>
       <Button>Button text</Button>
@@ -35,6 +36,7 @@ export const PlacingFunctionalComponents: Story = {
 };
 
 export const Scrolled: Story = {
+  tags: ['isHidden'],
   args: {},
   render: () => (
     <Box

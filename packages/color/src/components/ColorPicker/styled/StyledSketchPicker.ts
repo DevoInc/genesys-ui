@@ -10,7 +10,7 @@ export const StyledSketchPicker = styled(SketchPicker)`
     const spacingTokens = aliasTokens.space;
     const sketchPickerTokens = theme.cmp.colorPicker.sketchPicker;
 
-    const typoObj = getFieldControlTypoObj({ theme, size: 'sm' });
+    const typoObj = getFieldControlTypoObj({ theme, $size: 'sm' });
     const transitionDuration = fieldTokens.mutation.transitionDuration;
     const baseTextColor = aliasTokens.color.text.body.base;
 

@@ -5,7 +5,6 @@ import { TUIColorScheme } from '../../declarations';
 import type { IToast } from './declarations';
 import { Button, type ButtonProps } from '../Button';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface IGetFooterActions
   extends Pick<
     IToast,

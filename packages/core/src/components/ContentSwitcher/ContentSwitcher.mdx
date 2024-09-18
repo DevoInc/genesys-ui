@@ -8,7 +8,8 @@ import * as Stories from './ContentSwitcher.stories';
 
 ## Overview
 
-Component that allows users to switch between different content sections within a single UI element, typically within a navigation context.
+Component that allows users to switch between different content sections within
+a single UI element, typically within a navigation context.
 
 ## How to import
 
@@ -27,15 +28,16 @@ and ready to read the context props from its parent.
 
 ### Switching content
 
-In any case, we have the navigation block, but obviously we need also the content blocks to be switched:
+In any case, we have the navigation block, but obviously we need also the
+content blocks to be switched:
 
 <Canvas of={Stories.AccessibleWithContent} />
 
 ### Using states
 
-Usually we can get something functional, using a state which defines the selected option
-and the function to change this. There could be multiple ways to do that,
-but this could be an example:
+Usually we can get something functional, using a state which defines the
+selected option and the function to change this. There could be multiple ways
+to do that, but this could be an example:
 
 <Source
   code={`
@@ -71,12 +73,17 @@ but this could be an example:
 
 ### Accessibility
 
-To ensure full accessibility of the component, we need to consider multiple aspects. These include:
+To ensure full accessibility of the component, we need to consider multiple
+aspects. These include:
 
-- Adding the value of the id attribute of the block controlled by each tab as the value of the `aria-controls` prop. To do this, we must first add the `id` prop to the content block.
-- Assigning an `id` prop value to each tab so that it can be used by the controlled content blocks as the `aria-labelledby` prop value.
+- Adding the value of the id attribute of the block controlled by each tab as
+  the value of the `aria-controls` prop. To do this, we must first add the `id`
+  prop to the content block.
+- Assigning an `id` prop value to each tab so that it can be used by the
+  controlled content blocks as the `aria-labelledby` prop value.
 - Including `role='tabpanel'` in the controlled content blocks.
-- Setting the `tabIndex` of the controlled content blocks to `0` in order to maintain the tabbing focus order.
+- Setting the `tabIndex` of the controlled content blocks to `0` in order to
+  maintain the tabbing focus order.
 
 <Source
   code={`

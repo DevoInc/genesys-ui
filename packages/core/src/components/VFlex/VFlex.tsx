@@ -10,7 +10,8 @@ export interface VFlexProps
   spacing?: TGlobalSpacing;
   /** If the children fit full width of the VFlex parent*/
   childrenFitFullWidth?: boolean;
-  /** If the children fit full height of the VFlex parent. Firstly you should assign to the VFlex a bigger height than the one defined by its children. */
+  /** If the children fit full height of the VFlex parent. Firstly you should
+   * assign to the VFlex a bigger height than the one defined by its children. */
   childrenFitFullHeight?: boolean;
 }
 

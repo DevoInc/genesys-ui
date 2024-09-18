@@ -6,4 +6,4 @@ export const MODAL_WINDOW_SIZE_MAP: { [key in TModalWindowSize]: string } = {
   lg: 'lg',
   xl: 'xl',
   fullscreen: 'full',
-} as const;
+};

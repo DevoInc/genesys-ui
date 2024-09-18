@@ -9,13 +9,11 @@ import { PSEUDO_MIXIN_DEFAULT_PARAMS } from './constants';
  * @return the css width styles.
  */
 export const pseudoElementMixin = ({
-  content,
-  display,
-  pos,
-}: IPseudoMixin = PSEUDO_MIXIN_DEFAULT_PARAMS) => {
-  return css`
-    content: ${content ?? ''};
-    display: ${display};
-    position: ${pos};
-  `;
-};
+  $content,
+  $display,
+  $pos,
+}: IPseudoMixin = PSEUDO_MIXIN_DEFAULT_PARAMS) => css`
+  content: ${$content ?? ''};
+  display: ${$display};
+  position: ${$pos};
+`;

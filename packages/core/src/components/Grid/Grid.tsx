@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { concat } from 'lodash';
 
 import type { ILayoutGridCss } from '../../declarations';
 import { Box, type BoxProps } from '../Box';
@@ -7,6 +6,7 @@ import { Box, type BoxProps } from '../Box';
 import { gridMixin } from './mixins';
 
 import { GridItem } from './components';
+import { mergeStyles } from '../../helpers';
 
 export interface GridProps extends ILayoutGridCss, BoxProps {}
 
@@ -24,33 +24,31 @@ const InternalGrid: React.FC<GridProps> = ({
   gridTemplateRows,
   rowGap,
   children,
-  styles,
+  style,
   ...restBoxProps
 }) => (
-  <>
-    <Box
-      {...restBoxProps}
-      styles={concat(
-        gridMixin({
-          alignContent,
-          alignItems,
-          gridTemplateAreas,
-          gridTemplateColumns,
-          gridAutoFlow,
-          gap,
-          columnGap,
-          inline,
-          justifyContent,
-          justifyItems,
-          gridTemplateRows,
-          rowGap,
-        }),
-        styles,
-      )}
-    >
-      {children}
-    </Box>
-  </>
+  <Box
+    {...restBoxProps}
+    style={mergeStyles(
+      gridMixin({
+        alignContent,
+        alignItems,
+        gridTemplateAreas,
+        gridTemplateColumns,
+        gridAutoFlow,
+        gap,
+        columnGap,
+        inline,
+        justifyContent,
+        justifyItems,
+        gridTemplateRows,
+        rowGap,
+      }),
+      style,
+    )}
+  >
+    {children}
+  </Box>
 );
 
 export const Grid = InternalGrid as typeof InternalGrid & {

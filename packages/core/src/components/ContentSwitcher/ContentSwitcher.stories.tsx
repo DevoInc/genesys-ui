@@ -44,6 +44,7 @@ export const Base: Story = {
 };
 
 export const AccessibleWithContent: Story = {
+  tags: ['isHidden'],
   name: 'With content blocks',
   render: () =>
     (() => {

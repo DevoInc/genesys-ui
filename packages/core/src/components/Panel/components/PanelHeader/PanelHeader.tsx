@@ -7,9 +7,7 @@ import type {
   IPanelHeaderAttrs,
   IPanelHeadingAttrs,
 } from './declarations';
-
 import { PanelContext } from '../../context';
-
 import { Typography } from '../../../Typography';
 import {
   PanelHeaderContainer,
@@ -43,7 +41,7 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
   legend,
   removeSpace,
   size,
-  styles,
+  style,
   subtitle,
   title,
   titleTooltip,
@@ -59,7 +57,7 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
       hasSubtitle={Boolean(subtitle)}
       removeSpace={removeSpace}
       size={evalSize}
-      styles={styles}
+      style={style}
     >
       {children ? (
         typeof children === 'string' ? (

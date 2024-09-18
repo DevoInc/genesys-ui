@@ -32,6 +32,7 @@ export const InOtherComponents: Story = {
 };
 
 export const ContentSchemes: Story = {
+  tags: ['isHidden'],
   name: 'Content schemes',
   render: () =>
     (() => (
@@ -49,12 +50,12 @@ export const Custom: Story = {
   render: () =>
     (() => (
       <HFlex spacing="cmp-xs">
-        <Badge._Container styles="background-color: darkblue">
-          <Badge._Text color="white" styles="font-style: italic;">
+        <Badge._Container style={{ backgroundColor: 'darkblue' }}>
+          <Badge._Text color="white" style={{ fontStyle: 'italic' }}>
             Custom
           </Badge._Text>
         </Badge._Container>
-        <Badge._Container styles="background-color: skyblue">
+        <Badge._Container style={{ backgroundColor: 'skyblue' }}>
           <Badge._Icon color="midnightblue" size="2rem">
             <GIInfo />
           </Badge._Icon>

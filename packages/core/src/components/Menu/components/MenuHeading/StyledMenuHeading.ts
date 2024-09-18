@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+
 import { menuItemSizeConfig } from '../MenuItem/constants';
 
 export const StyledMenuHeading = styled.li`

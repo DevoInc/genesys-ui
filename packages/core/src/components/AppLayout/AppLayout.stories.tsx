@@ -42,6 +42,7 @@ export const Base: Story = {
 };
 
 export const DoubleNavigation: Story = {
+  tags: ['isHidden'],
   render: () => (
     <AppLayout>
       <AppLayout.Bar>
@@ -70,6 +71,7 @@ export const DoubleNavigation: Story = {
 };
 
 export const ContentPadding: Story = {
+  tags: ['isHidden'],
   render: () => {
     return (
       <AppLayout>
@@ -91,6 +93,7 @@ export const ContentPadding: Story = {
 };
 
 export const NoHeader: Story = {
+  tags: ['isHidden'],
   render: () => (
     <AppLayout>
       <AppLayout.Content>

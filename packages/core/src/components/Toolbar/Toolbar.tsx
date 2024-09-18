@@ -1,14 +1,12 @@
 import * as React from 'react';
-import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
+
 import { OmitUnion } from '../../typeFunctions';
-
 import type { TBaseSize } from '../../declarations';
-
 import { toolbarContainerMixin } from './helpers';
-
 import { ToolbarDivider, ToolbarGroup, ToolBarItem } from './components';
 import { Flex, type FlexProps } from '../Flex';
+import { mergeStyles } from '../../helpers';
 
 export interface ToolbarProps extends FlexProps {
   /** Size of the component */
@@ -25,7 +23,7 @@ const InternalToolbar: React.FC<ToolbarProps> = ({
   elevation = 'stickyBottom',
   padding = '0 cmp-sm',
   role = 'group',
-  styles,
+  style,
   ...restFlexProps
 }) => {
   const theme = useTheme();
@@ -40,7 +38,7 @@ const InternalToolbar: React.FC<ToolbarProps> = ({
       height={height || surfaceHeightTokens[size]}
       padding={padding}
       role={role}
-      styles={concat(toolbarContainerMixin({ theme }), styles)}
+      style={mergeStyles(toolbarContainerMixin({ theme }), style)}
     >
       {children}
     </Flex>

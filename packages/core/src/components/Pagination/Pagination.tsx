@@ -4,12 +4,9 @@ import type { IPaginationCommonInterface } from './declarations';
 import { DEFAULT_TEXTS } from './constants';
 import { PaginationContext } from './context';
 
-import { PaginationNav } from './components/PaginationNav';
-import { PaginationRange } from './components/PaginationRange';
-import { PaginationLabel } from './components';
+import { PaginationNav, PaginationRange, PaginationLabel } from './components';
 import { HFlex, type HFlexProps } from '../HFlex';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface PaginationProps
   extends IPaginationCommonInterface,
     HFlexProps {}
@@ -24,13 +21,11 @@ export const InternalPagination: React.FC<PaginationProps> = ({
   texts,
   ...restHFlexProps
 }) => {
-  // State
   const { pageFirstItem, pageLastItem, totalItems, pageSize } = React.useMemo(
     () => paginationHook,
     [paginationHook],
   );
 
-  // Constants
   const { infoTextFn } = React.useMemo(
     () => ({ ...DEFAULT_TEXTS, ...texts }),
     [texts],

@@ -15,7 +15,6 @@ export interface PanelBodyMixinProps
  *
  * @return styles for PanelBody
  */
-
 export const panelBodyMixin = ({
   hasScrollSpacing,
   removeSpace,
@@ -23,7 +22,7 @@ export const panelBodyMixin = ({
   theme,
 }: PanelBodyMixinProps) => {
   const panelBodyTokens = theme.cmp.panel.content;
-  let trackRadius;
+  let trackRadius: string;
   let padding = panelBodyTokens.space.padding[size];
   const margin = hasScrollSpacing
     ? panelBodyTokens.space.margin[size]
@@ -38,7 +37,7 @@ export const panelBodyMixin = ({
   }
 
   return css`
-    ${scrollbars({ trackRadius, theme })};
+    ${scrollbars({ $trackRadius: trackRadius, theme })};
     padding: ${padding};
     margin: ${margin};
   `;

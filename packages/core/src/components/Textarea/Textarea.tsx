@@ -31,7 +31,7 @@ export const Textarea: React.FC<TextareaProps> = ({
   requiredMarkTooltip,
   size = 'md',
   status = 'base',
-  styles,
+  style,
   tooltip,
   ...restNativeTextareaProps
 }) => (
@@ -54,7 +54,7 @@ export const Textarea: React.FC<TextareaProps> = ({
     requiredMarkTooltip={requiredMarkTooltip}
     size={size}
     status={status}
-    styles={styles}
+    style={style}
     tooltip={tooltip}
   >
     <TextareaControl {...restNativeTextareaProps} aria-label={ariaLabel} />

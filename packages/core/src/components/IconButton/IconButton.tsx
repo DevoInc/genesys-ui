@@ -11,7 +11,6 @@ import {
 } from '../Button/components';
 import { IconButtonContainer } from './components';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IconButtonProps
   extends Omit<ButtonProps, 'squared' | 'iconPosition'> {}
 

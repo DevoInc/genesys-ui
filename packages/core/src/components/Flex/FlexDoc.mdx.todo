@@ -1,0 +1,167 @@
+import { Meta, Canvas, Source, Markdown } from '@storybook/blocks';
+
+import spacingProps from '../../../../stories/partials/spacingProps.md?raw';
+
+import * as FlexStories from './Flex.stories.tsx';
+import * as HFlexStories from '../../HFlex/HFlex.stories.tsx';
+import * as VFlexStories from '../../VFlex/VFlex.stories.tsx';
+import * as WrapStories from '../../Wrap/Wrap.stories.tsx';
+
+<Meta title="Components/Layout/Flex" />
+
+# Flex components
+
+Flex container components are a powerful tool for creating stacked groups of
+child components.
+These stacks can be arranged in various configurations, including a row,
+a column with children stacked vertically, or a mixed wrapped structure with
+rows and columns.
+
+The `Flex` component is the foundation, while `HFlex`, `VFlex`, and `Wrap`
+are variations built upon it. Using `Flex` with `Flex.Item` children allows
+for complete control over the stack structure, while the other versions
+offer simplified solutions for specific stack configurations:
+
+- **Flex**: Allows for any stack type, including a single row, a single column,
+  or a mixed configuration of rows and columns.
+- **HFlex**: Creates a single row stack.
+- **VFlex**: Creates a single column stack.
+- **Wrap**: Creates a mixed stack of columns and rows.
+
+## How to import
+
+<Source
+  code={`import { Flex, HFlex, VFlex, Wrap } from '@devoinc/genesys-ui';`}
+/>
+
+Likewise, their `as` property allow these components to be rendered as any HTML
+tag: 'div', 'li', 'section'... etc.
+
+If you want to use the `Flex` component rendered with a different HTML tag, you
+can use the `as` property.
+It allows these components to be rendered as any HTML tag, such as div, li,
+section, and so on.
+
+<Source
+  code={`
+import * as React from 'react';
+import { Flex } from '@devoinc/genesys-ui';
+
+const MyFlexCmp = () => (
+
+{' '}
+
+<Flex as={'ul'}>
+  <Flex.Item as={'li'}>Child 1</Flex.Item>
+  <Flex.Item as={'li'}>Child 2</Flex.Item>
+  <Flex.Item as={'li'}>Child 3</Flex.Item>
+</Flex>
+); `} />
+
+You can easily apply basic layout styles to flex components such as margin,
+padding, width, height, min-width, max-width, min-height, and max-height.
+To do so, simply use the props with the corresponding names on the component.
+
+<Source
+  code={`
+import * as React from 'react';
+import { Flex } from '@devoinc/genesys-ui';
+
+const MyFlexCmp = () => (
+
+{' '}
+
+<Flex marginBottom={'cmp-lg'} height={'100vh'} width={'100%'}>
+  <Flex.Item>Child 1</Flex.Item>
+  <Flex.Item>Child 2</Flex.Item>
+  <Flex.Item>Child 3</Flex.Item>
+</Flex>
+); `} />
+
+## Structure
+
+Flex components are containers that require their content
+to be passed as children. If you want to apply spacing (margin or padding)
+or layout styles (flex, height, width, etc.) to the children,
+you can use the Flex.Item component as a wrapper for each child.
+
+<Source
+  code={`
+import * as React from 'react';
+import { Flex } from '@devoinc/genesys-ui';
+
+const MyFlexCmp = () => (
+
+{' '}
+
+<Flex>
+  <Flex.Item>Child 1</Flex.Item>
+  <Flex.Item>Child 2</Flex.Item>
+  <Flex.Item>Child 3</Flex.Item>
+</Flex>
+);`} />
+
+Similarly, when using HFlex, VFlex, or Wrap components,
+it's necessary to wrap each child with Flex.Item component
+to enable the use of spacing, hSpacing, vSpacing, childrenFitFullHeight,
+and childrenFitFullWidth props. In case you want the parent distribution
+functionality for your children, then you must wrap children with Flex.Item.
+
+If you avoid using Flex.Item to wrap each child, you'll require
+your children to be components with layout styles or props.
+
+Here's an example of a simple Flex structure with children without
+Flex.Item wrapping another component, as we only use them when
+we need a specific configuration (width, height, flex...) for any child:
+
+<Canvas of={FlexStories.Base} />
+
+With a flex structure, we can customize the flex, order, and align-self
+CSS styles for each child using the corresponding props of Flex.Item.
+Below is an example of a Flex component with each child having different flex
+and align-self styles:
+
+<Canvas of={FlexStories.FlexAndFlexItems} />
+
+## Component use cases
+
+### Flex
+
+Component designed to create stacked groups of child components, with the
+flexibility to distribute the children in a single row, a column with the
+children stacked vertically, or in a mixed wrapped structure with rows and
+columns. To separate each child component, Flex.Item props are used.
+
+The Flex component allows us to create any flex structure using CSS flex
+properties such as 'inline' (which uses display inline-flex instead of display
+flex), flex-direction, justify-content, align-items, align-content, and
+flex-wrap. For more information on CSS flex, refer to
+[A Complete Guide to Flexbox | CSS-Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/).
+
+<Canvas of={FlexStories.Base} />
+
+### HFlex
+
+HFlex creates a group of children components distributed in a single row.
+Use the spacing prop to adjust the space between each child.
+
+[View story](?path=/docs/components-layout-flex-hflex--docs)
+
+<Canvas of={HFlexStories.Base} />
+
+### VFlex
+
+VFlex creates a group of children components distributed in a
+single column. Use the spacing prop to adjust the space between each child.
+
+<Canvas of={VFlexStories.Base} />
+
+### Wrap
+
+Wrap creates a stacked group of children components distributed
+in columns and rows. Use the vSpacing prop to adjust the vertical
+spacing between each child and hSpacing to adjust the horizontal spacing.
+
+<Canvas of={WrapStories.Base} />
+
+<Markdown>{spacingProps}</Markdown>

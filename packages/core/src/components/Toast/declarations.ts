@@ -10,7 +10,8 @@ export interface TToastAction {
 export type TToastStatus = OmitUnion<TActiveStatus, 'help'>;
 
 export interface IToast {
-  /** Accent color scheme which applies more prominent styles for background... etc.*/
+  /** Accent color scheme which applies more prominent styles for background...
+   * etc.*/
   accent?: boolean;
   /** Apply action */
   actionApply?: TToastAction;

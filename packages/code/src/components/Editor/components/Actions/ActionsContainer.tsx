@@ -3,7 +3,6 @@ import { useTheme } from 'styled-components';
 
 import { Box, type BoxProps } from '@devoinc/genesys-ui';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ActionsContainerProps extends BoxProps {}
 
 export const ActionsContainer: React.FC<ActionsContainerProps> = ({

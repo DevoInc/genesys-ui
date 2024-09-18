@@ -20,7 +20,7 @@ export const InternalCollapse: React.FC<CollapseProps> = ({
   expanded,
   heading,
   onClick,
-  styles,
+  style,
   tooltip,
   truncateLine = 1,
   ...nativeProps
@@ -30,7 +30,7 @@ export const InternalCollapse: React.FC<CollapseProps> = ({
     aria-expanded={expanded}
     expanded={expanded}
     onClick={onClick}
-    styles={styles}
+    style={style}
     tooltip={tooltip}
   >
     <Collapse._Marker expanded={expanded} tabIndex={-1} />

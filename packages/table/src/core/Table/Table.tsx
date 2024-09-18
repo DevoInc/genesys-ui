@@ -5,7 +5,6 @@ import type { TColDef, ITable } from '../../declarations';
 import { TableContext, WrapperContextProvider } from '../../context';
 import { TableWrapper } from '../TableWrapper';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TableProps extends ITable {}
 
 export const Table: React.FC<TableProps> = ({

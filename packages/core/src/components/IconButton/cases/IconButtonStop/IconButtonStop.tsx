@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import { concat } from 'lodash';
+
 import { GIStopSquare } from '@devoinc/genesys-icons';
 
 import type { TButtonActionState } from '../../../Button';
-
 import { IconButton, type IconButtonProps } from '../../IconButton';
-
 import { iconButtonStopMixin } from './helpers';
+import { mergeStyles } from '../../../../helpers';
 
 export interface IconButtonStopProps
   extends Omit<
@@ -38,7 +37,7 @@ export interface IconButtonStopProps
 export const IconButtonStop = React.forwardRef<
   HTMLElement,
   IconButtonStopProps
->(({ size = 'md', state = 'enabled', styles, ...restIconButtonProps }, ref) => {
+>(({ size = 'md', state = 'enabled', style, ...restIconButtonProps }, ref) => {
   const theme = useTheme();
   return (
     <IconButton
@@ -54,7 +53,7 @@ export const IconButtonStop = React.forwardRef<
       ref={ref}
       size={size}
       state={state}
-      styles={concat(iconButtonStopMixin({ size, state, theme }), styles)}
+      style={mergeStyles(iconButtonStopMixin({ size, state, theme }), style)}
     />
   );
 });

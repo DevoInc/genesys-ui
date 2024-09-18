@@ -1,14 +1,12 @@
 import * as React from 'react';
-import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
 import type { ILayoutFlexCss } from '../../declarations';
 import type { Resolve } from '../../typeFunctions';
-
 import { flexMixin } from './mixins';
-
 import { Box, type BoxProps } from '../Box';
 import { FlexItem } from './components';
+import { mergeStyles } from '../../helpers';
 
 export interface FlexProps extends BoxProps, ILayoutFlexCss {}
 
@@ -27,7 +25,7 @@ const InternalFlex = React.forwardRef<HTMLElement, Resolve<FlexProps>>(
       inline = false,
       rowGap,
       children,
-      styles,
+      style,
       ...restBoxProps
     },
     ref,
@@ -37,7 +35,7 @@ const InternalFlex = React.forwardRef<HTMLElement, Resolve<FlexProps>>(
       <Box
         {...restBoxProps}
         ref={ref}
-        styles={concat(
+        style={mergeStyles(
           flexMixin({
             alignContent,
             alignItems,
@@ -52,7 +50,7 @@ const InternalFlex = React.forwardRef<HTMLElement, Resolve<FlexProps>>(
             rowGap,
             theme,
           }),
-          styles,
+          style,
         )}
       >
         {children}

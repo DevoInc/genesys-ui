@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useMount } from 'ahooks';
+
 import type { IPaginationHook } from './declarations';
 
 export const usePagination: IPaginationHook = ({ list, conf }) => {

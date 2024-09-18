@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Button, HFlex, Stepper, type StepperProps } from '..';
+import { Stepper, type StepperProps } from './Stepper';
+import { Button } from '../Button';
+import { HFlex } from '../HFlex';
 
 const meta: Meta<typeof Stepper> = {
   title: 'Components/Navigation/Stepper',

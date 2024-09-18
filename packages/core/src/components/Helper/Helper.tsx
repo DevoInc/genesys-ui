@@ -10,11 +10,9 @@ import type {
   IStyledPolymorphic,
 } from '../../declarations';
 import type { THelperSize } from './declarations';
-
 import { hasStatus } from '../../utils/validations';
 import { getLineHeight } from '../../styled';
 import { getHelperStatusIcon } from './utils';
-
 import { Flex } from '../Flex';
 import { HFlex } from '../HFlex';
 import { Icon } from '../Icon';
@@ -53,7 +51,10 @@ export const Helper: React.FC<HelperProps> = ({
       tooltip={tooltip}
     >
       {hasStatus(status) && (
-        <Flex height={getLineHeight({ tokens, size })} alignItems="center">
+        <Flex
+          height={getLineHeight({ tokens, $size: size })}
+          alignItems="center"
+        >
           <Icon
             color={
               iconColorTokens[status][

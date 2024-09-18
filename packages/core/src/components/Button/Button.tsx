@@ -89,7 +89,7 @@ export const InternalButton = React.forwardRef<HTMLElement, ButtonProps>(
       selectionScheme,
       size = 'md',
       state = 'enabled',
-      styles,
+      style,
       tooltip,
       type = 'button',
       value,
@@ -125,7 +125,7 @@ export const InternalButton = React.forwardRef<HTMLElement, ButtonProps>(
         selectionScheme={selectionScheme}
         size={size}
         state={state}
-        styles={styles}
+        style={style}
         tooltip={tooltip}
         type={type}
       >

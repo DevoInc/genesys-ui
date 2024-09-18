@@ -1,20 +1,16 @@
 import styled, { css } from 'styled-components';
 
-import type { TButtonIconPosition, TButtonSize } from '../../declarations';
+import type { IButtonAddon } from './declarations';
 
 export interface StyledButtonAddonProps {
-  /** If the button addon includes space next to it */
-  hasSpace?: boolean;
-  /** If the button addon is a dropdown */
-  isDropdown?: boolean;
-  /** The position of addon  */
-  position?: TButtonIconPosition;
-  /** Sets how much spacing, font-size, width... has the button addon etc. */
-  size?: TButtonSize;
+  $hasSpace?: boolean;
+  $isDropdown?: boolean;
+  $position?: IButtonAddon['position'];
+  $size?: IButtonAddon['size'];
 }
 
 export const StyledButtonAddon = styled.span<StyledButtonAddonProps>`
-  ${({ hasSpace, isDropdown, position, size, theme }) => {
+  ${({ $hasSpace, $isDropdown, $position, $size, theme }) => {
     const spacingTokens = theme.cmp.button.icon.space;
     const marginTokens = spacingTokens.margin;
     const offsetTokens = spacingTokens.offset;
@@ -24,24 +20,24 @@ export const StyledButtonAddon = styled.span<StyledButtonAddonProps>`
       user-select: none;
       line-height: 1;
 
-      ${hasSpace &&
+      ${$hasSpace &&
       css`
-        ${position === 'left' &&
+        ${$position === 'left' &&
         css`
-          padding-right: ${marginTokens[size]};
-          margin-left: ${offsetTokens[size]};
+          padding-right: ${marginTokens[$size]};
+          margin-left: ${offsetTokens[$size]};
         `};
-        ${position === 'right' &&
+        ${$position === 'right' &&
         css`
           order: 2;
-          padding-left: ${marginTokens[size]};
-          margin-right: ${offsetTokens[size]};
+          padding-left: ${marginTokens[$size]};
+          margin-right: ${offsetTokens[$size]};
         `};
       `};
 
       // is dropdown and there is position (and label)
-      ${hasSpace &&
-      isDropdown &&
+      ${$hasSpace &&
+      $isDropdown &&
       css`
         margin-left: auto;
       `};

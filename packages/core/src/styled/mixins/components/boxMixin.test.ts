@@ -19,22 +19,22 @@ describe('boxMixin', () => {
   });
 
   test('position', () => {
-    const mixin1 = boxMixin(theme)({ position: 'absolute' }).join('');
+    const mixin1 = boxMixin(theme)({ $position: 'absolute' }).join('');
     expect(mixin1).toContain('position:absolute');
 
-    const mixin2 = boxMixin(theme)({ elevation: 'raised' }).join('');
+    const mixin2 = boxMixin(theme)({ $elevation: 'raised' }).join('');
     expect(mixin2).toContain('position:relative');
     expect(mixin2).toContain(
       `z-index:${theme.alias.elevation.zIndex.depth.raised};`,
     );
 
     const mixin3 = boxMixin(theme)({
-      positionTop: '0',
-      positionRight: '0',
-      positionLeft: '0',
-      positionBottom: '0',
-      zIndex: '3',
-      flex: '1',
+      $positionTop: '0',
+      $positionRight: '0',
+      $positionLeft: '0',
+      $positionBottom: '0',
+      $zIndex: '3',
+      $flex: '1',
     }).join('');
     expect(mixin3).toContain('top:0;');
     expect(mixin3).toContain('left:0;');
@@ -47,8 +47,8 @@ describe('boxMixin', () => {
   test('display', () => {
     const mixin1 = boxMixin(theme)({
       $display: 'block',
-      cssTranslate: '42px, 42px',
-      verticalAlign: 'center',
+      $cssTranslate: '42px, 42px',
+      $verticalAlign: 'center',
     }).join('');
     expect(mixin1).toContain('display:block;');
     expect(mixin1).toContain('transform:translate(42px, 42px);');
@@ -56,19 +56,19 @@ describe('boxMixin', () => {
   });
 
   test('clipping', () => {
-    const mixin1 = boxMixin(theme)({ overflow: 'hidden' }).join('');
+    const mixin1 = boxMixin(theme)({ $overflow: 'hidden' }).join('');
     expect(mixin1).toContain('overflow:hidden;');
 
     const mixin3 = boxMixin(theme)({
-      overflowX: 'scroll',
-      overflowY: 'visible',
+      $overflowX: 'scroll',
+      $overflowY: 'visible',
     }).join('');
     expect(mixin3).toContain('overflow-x:scroll;');
     expect(mixin3).toContain('overflow-y:visible;');
   });
 
   test('elevation', () => {
-    const mixin1 = boxMixin(theme)({ elevation: 'raised' }).join('');
+    const mixin1 = boxMixin(theme)({ $elevation: 'raised' }).join('');
     expect(mixin1).toContain(
       `border-radius:${theme.alias.shape.borderRadius.elevated};`,
     );
@@ -76,23 +76,23 @@ describe('boxMixin', () => {
 
   test('box model', () => {
     const mixin1 = boxMixin(theme)({
-      alignSelf: 'start',
-      margin: 'cmp-md',
-      marginTop: 'cmp-md',
-      marginRight: 'cmp-md',
-      marginBottom: 'cmp-md',
-      marginLeft: 'cmp-md',
+      $alignSelf: 'start',
+      $margin: 'cmp-md',
+      $marginTop: 'cmp-md',
+      $marginRight: 'cmp-md',
+      $marginBottom: 'cmp-md',
+      $marginLeft: 'cmp-md',
       $width: '100%',
-      maxWidth: '100%',
-      minWidth: '100%',
+      $maxWidth: '100%',
+      $minWidth: '100%',
       $height: '100%',
-      maxHeight: '100%',
-      minHeight: '100%',
-      padding: 'cmp-md',
-      paddingTop: 'cmp-md',
-      paddingLeft: 'cmp-md',
-      paddingRight: 'cmp-md',
-      paddingBottom: 'cmp-md',
+      $maxHeight: '100%',
+      $minHeight: '100%',
+      $padding: 'cmp-md',
+      $paddingTop: 'cmp-md',
+      $paddingLeft: 'cmp-md',
+      $paddingRight: 'cmp-md',
+      $paddingBottom: 'cmp-md',
     }).join('');
     expect(mixin1).toContain('align-self:start');
     expect(mixin1).toContain(`margin:${theme.alias.space.cmp.md};`);

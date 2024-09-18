@@ -10,10 +10,8 @@ export const AppBarNavigation: React.FC<AppBarNavigationProps> = ({
   flex = '1 0 auto',
   children,
   ...restFlexItemProps
-}) => {
-  return (
-    <Flex.Item {...restFlexItemProps} flex={flex}>
-      {children}
-    </Flex.Item>
-  );
-};
+}) => (
+  <Flex.Item {...restFlexItemProps} flex={flex}>
+    {children}
+  </Flex.Item>
+);

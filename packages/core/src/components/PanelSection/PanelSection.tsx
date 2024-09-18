@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DOMAttributes } from 'react';
 import { useTheme } from 'styled-components';
+
 import { GIArrowLeft } from '@devoinc/genesys-icons';
 
 import type { IDataAttrs } from '../../declarations';
@@ -9,15 +9,12 @@ import type {
   IPanelHelpAttrs,
 } from '../Panel/declarations';
 import type { IPanelHeadingAttrs } from '../Panel/components/PanelHeader/declarations';
-
 import { useDetectScroll } from '../../hooks';
-
 import {
   panelSectionBodyMixin,
   panelSectionFooterMixin,
   panelSectionHeaderMixin,
 } from './helpers';
-
 import { HFlex } from '../HFlex';
 import { IconButton } from '../IconButton';
 import { Divider } from '../Divider';
@@ -28,7 +25,7 @@ const renderBackwardNavigation = ({
   onClickBackwardNav,
 }: {
   backwardTooltip: string;
-  onClickBackwardNav: DOMAttributes<any>['onClick'];
+  onClickBackwardNav: React.DOMAttributes<any>['onClick'];
 }) => {
   return (
     <HFlex
@@ -50,7 +47,7 @@ const renderBackwardNavigation = ({
 
 export interface PanelSectionProps
   extends IDataAttrs,
-    Pick<PanelProps, 'display' | 'id' | 'styles' | 'visibility'>,
+    Pick<PanelProps, 'display' | 'id' | 'style' | 'visibility'>,
     IPanelHelpAttrs,
     Pick<IPanelHeadingAttrs, 'title' | 'subtitle'> {
   backwardTooltip?: string;
@@ -61,7 +58,7 @@ export interface PanelSectionProps
   headerActions?: IPanelContainerAttrs['actions'];
   height?: React.CSSProperties['height'];
   navigation?: React.ReactElement;
-  onClickBackwardNav?: DOMAttributes<any>['onClick'];
+  onClickBackwardNav?: React.DOMAttributes<any>['onClick'];
   renderActions?: React.ReactElement;
   removeContentSpace?: boolean;
 }
@@ -82,7 +79,7 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
   onClickBackwardNav,
   removeContentSpace = false,
   renderActions,
-  styles,
+  style,
   subtitle,
   title,
   visibility,
@@ -96,20 +93,20 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
       display={display}
       id={id}
       height={height}
-      styles={styles}
+      style={style}
       visibility={visibility}
     >
       {(onClickBackwardNav || title || headerActions || renderActions) && (
         <Panel.Header._Container
           bordered={!navigation}
           hasBoxShadow={hasScroll}
-          styles="padding: 0;"
+          style="padding: 0;"
         >
           <Panel.Header._Container
             as="div"
             bordered={false}
             hasBoxShadow={false}
-            styles={panelSectionHeaderMixin({ theme })}
+            style={panelSectionHeaderMixin({ theme })}
           >
             {onClickBackwardNav &&
               renderBackwardNavigation({
@@ -132,7 +129,7 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
       <Panel.Body
         removeSpace={removeContentSpace}
         ref={targetElRef}
-        styles={panelSectionBodyMixin({
+        style={panelSectionBodyMixin({
           hasScroll: hasScroll,
           removeSpace: removeContentSpace,
           theme,
@@ -146,7 +143,7 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
           hasBackground={footerHasBackground}
           hasBoxShadow={hasScroll}
           bordered
-          styles={panelSectionFooterMixin({ theme })}
+          style={panelSectionFooterMixin({ theme })}
         >
           {footerContent}
         </Panel.Footer>

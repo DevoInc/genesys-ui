@@ -56,7 +56,7 @@ export const StyledCellWrapper = styled.div<StyledCellWrapperProps>`
       `}
     `;
 }}
-  ${({ theme, textAlign }) => typoMixin({ theme, textAlign })};
+  ${({ theme, textAlign }) => typoMixin({ theme, $textAlign: textAlign })};
   position: absolute;
   top: 0;
   left: 0;

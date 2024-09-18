@@ -1,7 +1,7 @@
+import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { SwitchControl } from '..';
-import * as React from 'react';
+import { SwitchControl } from './SwitchControl';
 
 const meta: Meta<typeof SwitchControl> = {
   title: 'Components/Form/SwitchControl',

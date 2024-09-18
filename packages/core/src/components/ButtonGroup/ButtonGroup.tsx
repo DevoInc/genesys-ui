@@ -49,7 +49,7 @@ export const InternalButtonGroup: React.FC<ButtonGroupProps> = ({
       gap={gap || `cmp-${FLEX_SPACING_SIZE_MAP[size]}`}
       justifyContent={justifyContent}
       inline={inline}
-      styles={buttonGroupMixin({ hidden, theme, visibilityTrigger })}
+      style={buttonGroupMixin({ hidden, theme, visibilityTrigger })}
     >
       {React.Children.map(children, (child, idx) => {
         const baseChild = (

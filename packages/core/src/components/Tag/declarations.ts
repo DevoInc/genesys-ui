@@ -1,5 +1,6 @@
-import { TFeedbackColorScheme, TFeedbackSize } from '../../declarations';
 import * as React from 'react';
+
+import type { TFeedbackColorScheme, TFeedbackSize } from '../../declarations';
 
 export interface ITag {
   /** It defines the color scheme for the background and text color.

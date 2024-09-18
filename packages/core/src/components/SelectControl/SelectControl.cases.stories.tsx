@@ -2,15 +2,15 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Props, PropsValue } from 'react-select';
 
-import { TSelectOption } from './declarations';
-
-import { SelectControl, SelectControlProps } from './SelectControl';
 import {
   GIAttentionErrorAlertCaution,
   GICheckOkRounded,
   GIDeleteExitRemoveCloseRounded,
   GIInfoRound,
 } from '@devoinc/genesys-icons';
+
+import { TSelectOption } from './declarations';
+import { SelectControl, SelectControlProps } from './SelectControl';
 
 // TODO: QUV-2116 Problem using components as value for options object
 //import { ESFlag, EUFlag, PTFlag, USFlag } from './__stories__/assets';

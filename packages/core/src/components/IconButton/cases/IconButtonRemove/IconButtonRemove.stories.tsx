@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { IconButtonRemove } from '..';
+import { IconButtonRemove } from './IconButtonRemove';
 
 const meta: Meta<typeof IconButtonRemove> = {
   title: 'Components/Button/IconButtonRemove',

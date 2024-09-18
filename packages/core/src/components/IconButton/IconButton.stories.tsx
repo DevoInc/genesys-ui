@@ -82,7 +82,7 @@ export const Custom: Story = {
         <IconButton._Container
           state={expanded ? 'expanded' : 'enabled'}
           onClick={() => setExpanded(!expanded)}
-          styles="height: 4.8rem; width: 4.8rem;"
+          style="height: 4.8rem; width: 4.8rem;"
         >
           <IconButton._Icon style={{ fontSize: '2.8rem' }}>
             <GIFolder />

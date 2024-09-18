@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { GISearchFindZoom } from '@devoinc/genesys-icons';
 
 import { INPUT_CONTROL_ICON_STATUS_MAP } from './constants';
@@ -12,7 +13,6 @@ import type {
 } from './components';
 import { FieldContext } from '../Field/context';
 import { hasStatus } from '../../utils/validations';
-
 import { Field, getFieldContextProps } from '../Field';
 import {
   InputControlContainer,
@@ -58,11 +58,14 @@ export interface BaseInputControlProps
   addonToLeft?: React.ReactNode;
   /** Fixed block of content at the end of the input */
   addonToRight?: React.ReactNode;
-  /** If the status icon which is shown automatically based on the status is hidden.
-   *  Usually when the InputControl is related with a validation helper to avoid redundancy. */
+  /** If the status icon which is shown automatically based on the status is
+   * hidden.
+   * Usually when the InputControl is related with a validation helper to avoid
+   * redundancy. */
   hideStatusIcon?: boolean;
   /** If the type icon which is shown automatically based on the type is hidden.
-   *  E.g. when the InputControl is type search, but it's combined with an IconButton which has already the search icon. */
+   * E.g. when the InputControl is type search, but it's combined with an
+   * IconButton which has already the search icon. */
   hideTypeIcon?: boolean;
 }
 
@@ -118,7 +121,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
   size,
   status,
   step,
-  styles,
+  style,
   tooltip,
   type = 'text',
   value,
@@ -155,7 +158,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
       onMouseOut={onMouseOut}
       onMouseOver={onMouseOver}
       onMouseUp={onMouseUp}
-      styles={styles}
+      style={style}
       tooltip={tooltip}
     >
       {addonToLeft && (

@@ -6,84 +6,82 @@ import {
 } from '../../../styled/mixins/typography';
 import { disabledMixin } from '../../../styled/mixins/state';
 import { getLinkColor } from './linkColor';
-import { TLinkColorScheme, TLinkSize, TLinkState } from '../declarations';
+import { ILink } from '../declarations';
 
 export interface ILinkMixin {
   /** This property defines the color scheme for the Link. */
-  colorScheme?: TLinkColorScheme;
+  $colorScheme?: ILink['colorScheme'];
   /** If the Link is underlined to make it more prominent. */
-  underlined?: boolean;
+  $underlined?: boolean;
   /** If the Link fits the full available width of its parent. Makes it behavior as a block.*/
-  wide?: boolean;
+  $wide?: boolean;
   /** Size of the component. */
-  size?: TLinkSize;
+  $size?: ILink['size'];
   /** Interaction state of the component. */
-  state?: TLinkState;
+  $state?: ILink['state'];
   /** This property as boolean defines if the Link is shown in one line with
    * ellipsis or, as a number, it defines the number of lines before
    * ellipsis (css line-clamp). */
-  lineClamp?: number;
+  $lineClamp?: number;
   theme: DefaultTheme;
   linkTokens: DefaultTheme['cmp']['link'];
 }
 
 export const linkMixin = ({
-  colorScheme = 'base',
-  underlined,
-  wide,
-  size = 'md',
-  state = 'enabled',
+  $colorScheme = 'base',
+  $underlined,
+  $wide,
+  $size = 'md',
+  $state = 'enabled',
   theme,
   linkTokens,
-  lineClamp,
+  $lineClamp,
 }: ILinkMixin) => {
-  const getLinkColorByState = (linkState = state) =>
-    getLinkColor({
-      colorScheme,
-      themeScheme: theme.meta.scheme,
-      state: linkState,
-      colorTokens: linkTokens.color.text,
-    });
+  const getLinkColorByState = getLinkColor({
+    $colorScheme,
+    themeScheme: theme.meta.scheme,
+    colorTokens: linkTokens.color.text,
+  });
   const linkBoxShadowToken = linkTokens.elevation.boxShadow.focused;
 
   return css`
     position: relative;
     transition: ${linkTokens.mutation.transition};
     color: ${getLinkColorByState()};
-    text-decoration: ${underlined ? 'underline' : 'none'};
+    text-decoration: ${$underlined ? 'underline' : 'none'};
     cursor: pointer;
     outline: none;
 
     // text styles
     ${typoMixin({
-      bold: true,
-      size,
+      $bold: true,
+      $size,
       theme,
-      variant: 'body',
+      $variant: 'body',
     })}
 
     // disabled
-    ${state === 'disabled' &&
+    ${$state === 'disabled' &&
     css`
       ${disabledMixin(theme)};
     `};
 
     // wide
-    ${wide &&
+    ${$wide &&
     css`
       display: flex;
       width: 100%;
     `};
 
     // truncate
-    ${lineClamp &&
+    ${$lineClamp &&
     css`
-      ${truncateTypoMixin({ lineClamp })}
+      ${truncateTypoMixin({ $lineClamp })}
       display: block;
     `};
 
     // mouse states
-    ${state !== 'disabled' &&
+    ${$state !== 'disabled' &&
     css`
       &:hover,
       &:active {
@@ -104,7 +102,7 @@ export const linkMixin = ({
       }
     `};
 
-    ${(state === 'hovered' || state === 'focused' || state === 'pressed') &&
+    ${($state === 'hovered' || $state === 'focused' || $state === 'pressed') &&
     css`
       text-decoration: underline;
       // &&& because we want to override mouse events with prop state

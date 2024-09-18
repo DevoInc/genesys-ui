@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { TSelectOption } from './declarations';
 
-import { SelectControl, SelectControlProps } from './SelectControl';
+import type { TSelectOption } from './declarations';
+import { SelectControl, type SelectControlProps } from './SelectControl';
 
 interface SelectControlOption extends TSelectOption {
   isDisabled?: boolean;

@@ -5,14 +5,12 @@ import { type PopperProps, StrictModifier, usePopper } from 'react-popper';
 import { ComputedPlacement, Padding } from '@popperjs/core';
 
 import { useOnEventOutside } from '../../hooks';
-
 import { POPOVER_DEFAULT_ARROW_SIZE } from './constants';
-
+import { PopoverPanel } from './components';
 import {
-  PopoverPanel,
   StyledPopoverArrow,
   type StyledPopoverArrowProps,
-} from './components';
+} from './StyledPopoverArrow';
 
 type TTriggerProps = (props: {
   ref: React.Dispatch<React.SetStateAction<HTMLElement>>;
@@ -48,7 +46,7 @@ export interface PopoverProps
   arrowConfig?: {
     component: (arrowProps: StyledPopoverArrowProps) => React.ReactNode;
     padding?: Padding;
-    size?: StyledPopoverArrowProps['size'];
+    size?: StyledPopoverArrowProps['$size'];
   };
   modifiers?: StrictModifier[];
   zIndex?: number;
@@ -158,8 +156,8 @@ export const InternalPopover: React.FC<PopoverProps> = ({
           }}
         >
           {arrowConfig.component({
-            placement: (dynamicPlacement as ComputedPlacement) ?? undefined,
-            size: arrowConfig.size ?? undefined,
+            $placement: (dynamicPlacement as ComputedPlacement) ?? undefined,
+            $size: arrowConfig.size ?? undefined,
           })}
         </div>
       )}

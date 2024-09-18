@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import type {
-  TFieldSize,
   IFieldControl,
   ICheckAttrs,
   ICheckAriaAttrs,
@@ -11,20 +10,15 @@ import type {
 import { FieldContext } from '../Field/context';
 import { getFieldContextProps } from '../Field';
 
-import {
-  StyledCheckboxControl,
-  type StyledCheckboxControlProps,
-} from './StyledCheckboxControl';
+import { StyledCheckboxControl } from './StyledCheckboxControl';
+import { ICheckboxControl } from './declarations';
 
 interface CommonCheckboxControlProps
   extends IFieldControl,
     ICheckAttrs,
     ICheckAriaAttrs,
     Pick<IInputAttrs, 'value'>,
-    Omit<StyledCheckboxControlProps, '$size'> {
-  /** The size for the checkbox. It affects to its width, height, font-size... etc. */
-  size?: TFieldSize;
-}
+    ICheckboxControl {}
 
 export type CheckboxControlProps =
   IWithRequiredAriaLabelOrAriaLabelledByAttr<CommonCheckboxControlProps>;
@@ -43,8 +37,9 @@ export const CheckboxControl: React.FC<CheckboxControlProps> = ({
   required,
   size,
   status,
-  styles,
+  style,
   tooltip,
+  checkedIcon,
   ...restNativeProps
 }) => {
   const fieldContext = React.useContext(FieldContext);
@@ -63,7 +58,7 @@ export const CheckboxControl: React.FC<CheckboxControlProps> = ({
     <StyledCheckboxControl
       {...restNativeProps}
       aria-describedby={contextBasedProps.ariaDescribedBy}
-      aria-checked={ariaChecked ?? indeterminate ? 'mixed' : checked}
+      aria-checked={(ariaChecked ?? indeterminate) ? 'mixed' : checked}
       aria-errormessage={
         contextBasedProps.status === 'error'
           ? contextBasedProps.ariaErrorMessage
@@ -72,16 +67,17 @@ export const CheckboxControl: React.FC<CheckboxControlProps> = ({
       aria-invalid={
         ariaInvalid ?? (contextBasedProps.status === 'error' ? true : undefined)
       }
+      $checkedIcon={checkedIcon}
       aria-labelledby={contextBasedProps.ariaLabelledBy}
       checked={onChange ? checked : undefined}
-      css={styles}
+      css={style}
       disabled={contextBasedProps.disabled}
       id={contextBasedProps.id}
-      indeterminate={indeterminate}
+      $indeterminate={indeterminate}
       onChange={onChange}
       required={contextBasedProps.required}
       $size={contextBasedProps.size}
-      status={contextBasedProps.status}
+      $status={contextBasedProps.status}
       title={tooltip}
     />
   );

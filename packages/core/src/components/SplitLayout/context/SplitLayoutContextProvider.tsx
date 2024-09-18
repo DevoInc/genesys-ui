@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { SplitLayoutContext } from './SplitLayoutContext';
-import { TSizes } from '../declarations';
+import type { TSizes } from '../declarations';
 
 export interface SplitLayoutContextProviderProps {
   children: React.ReactNode;

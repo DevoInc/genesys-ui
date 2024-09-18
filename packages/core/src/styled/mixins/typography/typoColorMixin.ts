@@ -37,19 +37,19 @@ const getUiTokenValueByColorScheme = (
  * @return Css Color
  */
 export const typoColorMixin = ({
-  variant = 'body',
-  colorScheme = 'base',
+  $variant = 'body',
+  $colorScheme = 'base',
   theme: tokens,
 }: {
-  variant?: TTypoVariant;
-  colorScheme?: TTypoColorScheme;
+  $variant?: TTypoVariant;
+  $colorScheme?: TTypoColorScheme;
   theme: DefaultTheme;
 }) => {
   const aliasTexColoTokens = tokens.alias.color.text;
   const textColorByToken =
-    aliasTexColoTokens?.[variant]?.[colorScheme] ||
-    getUiTokenValueByColorScheme(aliasTexColoTokens.feedback, colorScheme);
+    aliasTexColoTokens?.[$variant]?.[$colorScheme] ||
+    getUiTokenValueByColorScheme(aliasTexColoTokens.feedback, $colorScheme);
   return css`
-    color: ${isValidColor(colorScheme) ? colorScheme : textColorByToken};
+    color: ${isValidColor($colorScheme) ? $colorScheme : textColorByToken};
   `;
 };

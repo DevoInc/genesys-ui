@@ -1,4 +1,5 @@
 import { ActionMeta, MultiValue, Props, PropsValue } from 'react-select';
+
 import {
   FIELD_SIZE_TO_CHIP_SIZE,
   FIELD_SIZE_TO_VALUE_ICON_SIZE,

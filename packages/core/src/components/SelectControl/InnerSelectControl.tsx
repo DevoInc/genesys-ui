@@ -4,8 +4,7 @@ import CreatableSelect from 'react-select/creatable';
 
 import type { ICommonSelectCmps, TSelectOption } from './declarations';
 import type { IStyledOverloadCss } from '../../declarations';
-
-import { StyledSelectControl } from './styled';
+import { StyledSelectControl } from './StyledSelectControl';
 
 export interface InnerSelectControlProps<
   Option = TSelectOption,
@@ -23,14 +22,14 @@ export const InnerSelectControl = <
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >({
-  styles,
+  style,
   componentStyles,
   ...props
 }: InnerSelectControlProps<Option, IsMulti, Group>): React.ReactElement => {
   return props.creatable ? (
     <StyledSelectControl
       as={CreatableSelect<Option, IsMulti, Group>}
-      css={styles}
+      css={style}
       tooltip={props.tooltip}
       styles={componentStyles}
       {...props}
@@ -38,7 +37,7 @@ export const InnerSelectControl = <
   ) : (
     <StyledSelectControl
       {...props}
-      css={styles}
+      css={style}
       styles={componentStyles}
       tooltip={props.tooltip}
     />

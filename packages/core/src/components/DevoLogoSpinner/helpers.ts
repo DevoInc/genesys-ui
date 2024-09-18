@@ -11,7 +11,7 @@ const SizeMap: { [key in TDevoLogoSize]: { width: string; height: string } } = {
   md: { width: '7rem', height: '4.2rem' },
   lg: { width: '8rem', height: '4.9rem' },
   xl: { width: '9rem', height: '5.4rem' },
-} as const;
+};
 
 export const getSize = (size: TDevoLogoSize) => SizeMap[size] || SizeMap.md;
 

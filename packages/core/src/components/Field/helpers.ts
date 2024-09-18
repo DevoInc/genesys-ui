@@ -11,39 +11,39 @@ import { typoMixin, getTypoObject } from '../../styled/mixins/typography';
 import type { IField } from './declarations';
 
 export const getFieldControlTypo = ({
-  textAlign,
+  $textAlign,
   theme,
-  size,
+  $size,
 }: {
-  textAlign?: React.CSSProperties['textAlign'];
+  $textAlign?: React.CSSProperties['textAlign'];
   theme: DefaultTheme;
-  size?: TFieldSize;
+  $size?: TFieldSize;
 }) =>
   typoMixin({
-    textAlign,
+    $textAlign,
     theme,
-    size,
+    $size,
   });
 
 export const getFieldState = ({
-  readOnly,
+  $readOnly,
   state,
 }: {
-  readOnly?: boolean;
+  $readOnly?: boolean;
   state?: TGlobalState;
 }): TGlobalState => {
   if (state) return state;
-  if (readOnly) return 'readonly';
+  if ($readOnly) return 'readonly';
   return 'enabled';
 };
 
 export const getFieldControlTypoObj = ({
   theme,
-  size,
+  $size,
 }: {
   theme: DefaultTheme;
-  size?: TFieldSize;
-}) => getTypoObject({ theme, size: size });
+  $size?: TFieldSize;
+}) => getTypoObject({ theme, $size });
 
 export const getTFieldStatus = (status: TGlobalStatus = 'base') => {
   if (status === 'help') return 'base';

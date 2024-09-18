@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CSSProp, DefaultTheme } from 'styled-components';
+import { CSSProp } from 'styled-components';
 
 import type { ITabs } from '../../declarations';
 import { useTabsMark } from '../../hooks/useTabsMark';
@@ -11,7 +11,7 @@ export interface TabsListProps extends FlexProps, Pick<ITabs, 'colorScheme'> {
   /** The active tab item index. */
   activeTabIndex?: number;
   /** Specific styles for the tabs mark. */
-  customMarkStyles?: CSSProp<DefaultTheme>;
+  customMarkStyles?: CSSProp;
 }
 
 export const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
@@ -40,7 +40,7 @@ export const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
         <TabsMark
           ref={markRef}
           colorScheme={colorScheme || context.colorScheme}
-          styles={customMarkStyles}
+          style={customMarkStyles}
         />
       </div>
     );

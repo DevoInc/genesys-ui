@@ -1,4 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
+
 import { getBorderPlacement } from './utils';
 import type { IconButtonStatusProps } from '../IconButton';
 import type { PopoverProps } from '../Popover';
@@ -13,7 +14,6 @@ export const inlineMessageContainerMixin = ({
   theme: DefaultTheme;
 }) => {
   const tokens = theme.cmp.inlineMessage;
-
   return css`
     position: relative;
     background-color: ${tokens.color.background};

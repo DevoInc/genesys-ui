@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box, Typography, Overlay } from '..';
+import { Box } from '../Box';
+import { Typography } from '../Typography';
+import { Overlay } from '../Overlay';
 import { lorem, lorem2, lorem3 } from '../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Overlay> = {

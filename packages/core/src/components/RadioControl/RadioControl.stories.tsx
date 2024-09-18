@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { HFlex, RadioControl } from '..';
+import { RadioControl } from './RadioControl';
+import { HFlex } from '../HFlex';
 
 const meta: Meta<typeof RadioControl> = {
   title: 'Components/Form/RadioControl',

@@ -8,8 +8,10 @@ import * as Stories from './Chip.stories';
 
 ## Overview
 
-Chips are small, versatile components that can represent various types of input, characteristics, or activities.
-They enable users to enter data, select options, filter content, or trigger specific functions within an application.
+Chips are small, versatile components that can represent various types of input,
+characteristics, or activities.
+They enable users to enter data, select options, filter content, or trigger
+specific functions within an application.
 
 ## How to import
 
@@ -23,38 +25,51 @@ They enable users to enter data, select options, filter content, or trigger spec
 
 ### Multiple selection controlled
 
-In scenarios where multiple selections are allowed (using a form checkbox behavior), you can use a controlled Chip with a rendered form checkbox input as HTML and its corresponding keyboard utility.
+In scenarios where multiple selections are allowed (using a form checkbox
+behavior), you can use a controlled Chip with a rendered form checkbox input as
+HTML and its corresponding keyboard utility.
 
 <Canvas of={Stories.MultipleControlled} />
 
 ### Multiple selection uncontrolled
 
-If you need an uncontrolled behavior, you cannot use the onChange event handler and must use the native behavior of a checkbox.
-This way you will get an uncontrolled Chip with rendered form checkbox input as HTML and its corresponding keyboard utility.
-However, with an uncontrolled behavior, you cannot manage the change of the icon depending on whether the internal checkbox is checked or not.
+If you need an uncontrolled behavior, you cannot use the onChange event handler
+and must use the native behavior of a checkbox.
+This way you will get an uncontrolled Chip with rendered form checkbox input as
+HTML and its corresponding keyboard utility.
+However, with an uncontrolled behavior, you cannot manage the change of the icon
+depending on whether the internal checkbox is checked or not.
 
 <Canvas of={Stories.MultipleUncontrolled} />
 
 ### Single selection controlled
 
-When a single selection is required (using a form radio behavior), you must add the selectionScheme prop and set it to 'single'.
-This way, you will get a controlled Chip with rendered form radio input as HTML and its corresponding keyboard utility.
+When a single selection is required (using a form radio behavior), you must add
+the selectionScheme prop and set it to 'single'.
+This way, you will get a controlled Chip with rendered form radio input as HTML
+and its corresponding keyboard utility.
 
 <Canvas of={Stories.SingleControlled} />
 
 ### Single selection uncontrolled
 
-If you need an uncontrolled behavior, you must assign the name prop with the same value for every Chip.
-You cannot use the onChange event handler and must use the native behavior of a radio group.
-This way you will get an uncontrolled Chip with rendered form radio input as HTML and its corresponding keyboard utility.
+If you need an uncontrolled behavior, you must assign the name prop with the
+same value for every Chip.
+You cannot use the onChange event handler and must use the native behavior of a
+radio group.
+This way you will get an uncontrolled Chip with rendered form radio input as
+HTML and its corresponding keyboard utility.
 
 <Canvas of={Stories.SingleUncontrolled} />
 
 ### Custom based in internal components
 
-Sometimes you need something very specific, which is not possible using only the component and its props.
-In these cases, you can use its internal components (`_` notation) to define that specific usage.
-We don't recommend this usage, but anyway it's available for very specific needs.
+Sometimes you need something very specific, which is not possible using only the
+component and its props.
+In these cases, you can use its internal components (`_` notation) to define
+that specific usage.
+We don't recommend this usage, but anyway it's available for very specific
+needs.
 
 <Canvas of={Stories.Custom} />
 

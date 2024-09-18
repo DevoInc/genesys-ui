@@ -302,7 +302,7 @@ export const HiddenContent: Story = {
             >
               <Box
                 overflow="hidden"
-                styles={{
+                style={{
                   backgroundColor: 'rgba(63, 187, 226, 0.2)',
                   display: hasMenu ? 'block' : 'none',
                 }}
@@ -319,7 +319,7 @@ export const HiddenContent: Story = {
               >
                 <Box
                   overflow="hidden"
-                  styles="background-color: rgba(182, 23, 226, 0.2)"
+                  style="background-color: rgba(182, 23, 226, 0.2)"
                 >
                   <Box padding="cmp-sm">
                     <Typography.Paragraph>Main</Typography.Paragraph>
@@ -327,7 +327,7 @@ export const HiddenContent: Story = {
                 </Box>
                 <Box
                   overflow="hidden"
-                  styles={{
+                  style={{
                     backgroundColor: 'rgba(51, 255, 159, 0.2)',
                     display: hasFooter ? 'block' : 'none',
                   }}

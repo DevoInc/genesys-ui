@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { IconButtonCollapse } from '..';
+import { IconButtonCollapse } from './IconButtonCollapse';
 
 const meta: Meta<typeof IconButtonCollapse> = {
   title: 'Components/Button/IconButtonCollapse',

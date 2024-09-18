@@ -57,7 +57,7 @@ export default defineConfig({
     }),
   ],
   test: {
-    environment: 'jsdom',
-    include: ['**/*.test.ts?(x)'],
+    environment: 'happy-dom',
+    include: ['{src,stories}/**/*.test.ts?(x)'],
   },
 });

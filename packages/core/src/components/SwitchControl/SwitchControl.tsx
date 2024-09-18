@@ -4,10 +4,8 @@ import { useTheme } from 'styled-components';
 import type { IWithRequiredAriaLabelOrAriaLabelledByAttr } from '../../declarations';
 import type { ISwitch } from './declarations';
 import { FieldContext } from '../Field/context';
-
 import { getPxFromRem } from '../../helpers';
 import { getFieldContextProps } from '../Field';
-
 import {
   SwitchControlContainer,
   SwitchControlHandle,
@@ -40,7 +38,7 @@ export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
   required,
   size,
   status,
-  styles,
+  style,
   tooltip,
   uncheckedContent,
   ...restNativeProps
@@ -83,7 +81,7 @@ export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
       onMouseUp={onMouseUp}
       size={evalSize}
       status={evalStatus}
-      styles={styles}
+      style={style}
       tooltip={tooltip}
     >
       <SwitchControlInput

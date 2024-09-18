@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import { concat } from 'lodash';
 
 import { MODAL_WINDOW_SIZE_MAP } from '../../constants';
 import type { IDataAttrs } from '../../../../declarations';
 import type { IModal } from '../../declarations';
 import { modalPanelMixin } from './mixins';
 import { Panel } from '../../../Panel';
+import { mergeStyles } from '../../../../helpers';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ModalPanelProps
   extends IDataAttrs,
     Pick<
@@ -21,7 +20,7 @@ export interface ModalPanelProps
       | 'id'
       | 'onRequestClose'
       | 'status'
-      | 'styles'
+      | 'style'
       | 'width'
       | 'windowSize'
       | 'zIndex'
@@ -34,7 +33,7 @@ export const ModalPanel: React.FC<ModalPanelProps> = ({
   height,
   id,
   status,
-  styles,
+  style,
   width,
   windowSize = 'md',
   zIndex,
@@ -72,7 +71,7 @@ export const ModalPanel: React.FC<ModalPanelProps> = ({
       }}
       overflow="hidden"
       role="dialog"
-      styles={concat(modalPanelMixin({ theme }), styles)}
+      style={mergeStyles(modalPanelMixin({ theme }), style)}
       width={width || tokensModal.size.width}
       zIndex={
         zIndex

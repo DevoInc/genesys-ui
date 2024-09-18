@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { AnimatePresence, motion } from 'framer-motion';
+
 import {
   GIAutoLayers,
   GICheckOkRoundedFilled,
@@ -274,7 +275,7 @@ export const Custom: Story = {
         <>
           {isOpen && (
             <Modal._Backdrop zIndex={100} bgColor="lightseagreen">
-              <Modal._Panel styles="border-radius: 0;">
+              <Modal._Panel style="border-radius: 0;">
                 <Modal.Header onRequestClose={() => setOpen(false)}>
                   <Flex alignItems="center">
                     <Flex alignItems="center" gap="cmp-sm">

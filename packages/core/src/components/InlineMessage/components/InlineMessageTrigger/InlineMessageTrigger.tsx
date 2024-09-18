@@ -97,7 +97,7 @@ export const InlineMessageTrigger = React.forwardRef<
           ref={ref}
           state={state}
           type="button"
-          styles={inlineMessageTriggerMixin({ theme })}
+          style={inlineMessageTriggerMixin({ theme })}
         >
           {Trigger || (
             <IconButtonStatus
@@ -115,7 +115,7 @@ export const InlineMessageTrigger = React.forwardRef<
               colorScheme={'strong'}
               truncateLine={1}
               size={size}
-              styles={inlineMessageTriggerParagraphMixin({ state })}
+              style={inlineMessageTriggerParagraphMixin({ state })}
             >
               {text}
             </Typography.Paragraph>
@@ -126,7 +126,7 @@ export const InlineMessageTrigger = React.forwardRef<
               colorScheme={'weak'}
               truncateLine={1}
               size={size}
-              styles={inlineMessageTriggerParagraphMixin({ last: true, state })}
+              style={inlineMessageTriggerParagraphMixin({ last: true, state })}
             >
               {secondaryText}
             </Typography.Paragraph>

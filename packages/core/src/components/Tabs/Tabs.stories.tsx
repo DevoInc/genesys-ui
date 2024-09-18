@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Button, IconButtonRemove, Tabs } from '..';
 import { GIChart, GICheckThick } from '@devoinc/genesys-icons';
+
+import { Tabs } from './Tabs';
+import { Button } from '../Button';
+import { IconButtonRemove } from '../IconButton';
 import { useTabsAccessibility } from './hooks';
 
 const meta: Meta<typeof Tabs> = {

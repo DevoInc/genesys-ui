@@ -1,4 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
+
 import type { TStatusMessageBordered } from './declarations';
 
 export interface StatusMessageMixinProps {

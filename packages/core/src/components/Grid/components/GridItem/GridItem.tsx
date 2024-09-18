@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { concat } from 'lodash';
 
 import type { ILayoutGridItemCss } from '../../../../declarations';
 import { gridItemMixin } from './mixins';
 import { Box, type BoxProps } from '../../../Box';
+import { mergeStyles } from '../../../../helpers';
 
 export interface GridItemProps extends ILayoutGridItemCss, BoxProps {}
 
@@ -18,12 +18,12 @@ export const GridItem: React.FC<GridItemProps> = ({
   gridRowEnd,
   gridRowStart,
   justifySelf,
-  styles,
+  style,
   ...restBoxProps
 }) => (
   <Box
     {...restBoxProps}
-    styles={concat(
+    style={mergeStyles(
       gridItemMixin({
         alignSelf,
         gridArea,
@@ -35,7 +35,7 @@ export const GridItem: React.FC<GridItemProps> = ({
         gridRowStart,
         justifySelf,
       }),
-      styles,
+      style,
     )}
   >
     {children}

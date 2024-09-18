@@ -36,29 +36,27 @@ const PartForm: React.FC<FormProps> = ({
   itemsGap = 'md',
   tooltip,
   ...flexProps
-}) => {
-  return (
-    <form
-      acceptCharset={acceptCharset}
-      action={action}
-      autoComplete={autoComplete}
-      encType={encType}
-      method={method}
-      name={name}
-      noValidate={noValidate}
-      onReset={onReset}
-      onSubmit={onSubmit}
-      rel={rel}
-      target={target}
-      title={tooltip}
-    >
-      {heading && <FormLegend text={heading} />}
-      <FormDistributor {...flexProps} direction={direction} itemsGap={itemsGap}>
-        {children}
-      </FormDistributor>
-    </form>
-  );
-};
+}) => (
+  <form
+    acceptCharset={acceptCharset}
+    action={action}
+    autoComplete={autoComplete}
+    encType={encType}
+    method={method}
+    name={name}
+    noValidate={noValidate}
+    onReset={onReset}
+    onSubmit={onSubmit}
+    rel={rel}
+    target={target}
+    title={tooltip}
+  >
+    {heading && <FormLegend text={heading} />}
+    <FormDistributor {...flexProps} direction={direction} itemsGap={itemsGap}>
+      {children}
+    </FormDistributor>
+  </form>
+);
 
 export const Form = PartForm as typeof PartForm & {
   Buttons: typeof FormButtons;

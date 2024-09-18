@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import {
-  Button,
-  Popover,
-  Menu,
-  Panel,
-  Typography,
-  ButtonGroup,
-} from '../../components';
+
+import { Popover } from './Popover';
+import { Button } from '../Button';
+import { Menu } from '../Menu';
+import { Panel } from '../Panel';
+import { Typography } from '../Typography';
+import { ButtonGroup } from '../ButtonGroup';
 
 const meta: Meta<typeof Popover> = {
   title: 'Components/Layout/Popover',
@@ -56,8 +55,8 @@ export const WithArrow: Story = {
         {...args}
         id={popoverId}
         arrowConfig={{
-          component: ({ placement, size }) => (
-            <Popover.Arrow placement={placement} size={size} />
+          component: ({ $placement, $size }) => (
+            <Popover.Arrow $placement={$placement} $size={$size} />
           ),
         }}
       >

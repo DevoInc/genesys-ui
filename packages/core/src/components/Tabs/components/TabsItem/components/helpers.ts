@@ -36,7 +36,7 @@ export const tabsLinkMixin = ({
   const tokens = theme.cmp.tabs.item;
   const borderRadius = tokens.shape.borderRadius;
   const paddingHor = tokens.space.padding;
-  const fontSize = typoMixin({ theme, size });
+  const fontSize = typoMixin({ theme, $size: size });
   const closableButtonSquare = getTabsItemClosableButtonSquare(theme);
   const spaceToClosableButton = theme.cmp.tabs.item.space.margin.iconToText;
   return css`

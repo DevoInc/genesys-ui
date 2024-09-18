@@ -12,24 +12,14 @@ import {
   TADA_ANIMATION,
   WOBBLE_ANIMATION,
 } from './constants';
-
-import type {
-  TDevoLogoAnimation,
-  TDevoLogoColorScheme,
-  TDevoLogoSize,
-} from './declarations';
-
+import type { IDevoLogoSpinnerStyled } from './declarations';
 import { getSize, getColor } from './helpers';
 
-export interface StyledDevoLogoSpinnerProps {
-  colorScheme?: TDevoLogoColorScheme;
-  size?: TDevoLogoSize;
-  animation?: TDevoLogoAnimation;
-}
+export interface StyledDevoLogoSpinnerProps extends IDevoLogoSpinnerStyled {}
 
 export const StyledDevoLogoSpinner = styled.div<StyledDevoLogoSpinnerProps>`
-  ${({ animation, colorScheme, size, theme }) => {
-    const { width, height } = getSize(size);
+  ${({ $animation, $colorScheme, $size, theme }) => {
+    const { width, height } = getSize($size);
 
     return css`
       display: inline-block;
@@ -44,26 +34,26 @@ export const StyledDevoLogoSpinner = styled.div<StyledDevoLogoSpinnerProps>`
       .devo-logo-svg {
         .devo-logo-svg__path {
           &--odd {
-            fill: ${getColor(colorScheme, theme, 'logoOddPath')};
+            fill: ${getColor($colorScheme, theme, 'logoOddPath')};
           }
 
           &--even {
-            fill: ${getColor(colorScheme, theme, 'logoEvenPath')};
+            fill: ${getColor($colorScheme, theme, 'logoEvenPath')};
           }
         }
 
-        // ANIMATIONS - DEVO LOGO LOADER -------------------------------------- //
+        // ANIMATIONS - DEVO LOGO LOADER ------------------------------------ //
 
         // Bounce - Animation
 
-        ${animation === 'bounce' &&
+        ${$animation === 'bounce' &&
         css`
           animation: ${BOUNCE_ANIMATION} linear 1s infinite;
         `};
 
         // Bounce Dot - Animation
 
-        ${animation === 'bounce-dot' &&
+        ${$animation === 'bounce-dot' &&
         css`
           overflow: visible;
 
@@ -84,7 +74,7 @@ export const StyledDevoLogoSpinner = styled.div<StyledDevoLogoSpinnerProps>`
 
         // Flow - Animation
 
-        ${animation === 'flow' &&
+        ${$animation === 'flow' &&
         css`
           overflow: visible;
 
@@ -136,35 +126,35 @@ export const StyledDevoLogoSpinner = styled.div<StyledDevoLogoSpinnerProps>`
 
         // Heart Beat - Animation
 
-        ${animation === 'heart-beat' &&
+        ${$animation === 'heart-beat' &&
         css`
           animation: ${HEART_BEAT_ANIMATION} linear 1s infinite;
         `};
 
         // Jello - Animation
 
-        ${animation === 'jello' &&
+        ${$animation === 'jello' &&
         css`
           animation: ${JELLO_ANIMATION} linear 1s infinite;
         `};
 
         // Rubber Band - Animation
 
-        ${animation === 'rubber-band' &&
+        ${$animation === 'rubber-band' &&
         css`
           animation: ${RUBBER_BAND_ANIMATION} linear 1s infinite;
         `};
 
         // Shake - Animation
 
-        ${animation === 'shake' &&
+        ${$animation === 'shake' &&
         css`
           animation: ${SHAKE_ANIMATION} linear 1s infinite;
         `};
 
         // Swing - Animation
 
-        ${animation === 'swing' &&
+        ${$animation === 'swing' &&
         css`
           animation: ${SWING_ANIMATION} linear 1s infinite;
           transform-origin: top center;
@@ -172,14 +162,14 @@ export const StyledDevoLogoSpinner = styled.div<StyledDevoLogoSpinnerProps>`
 
         // Tada - Animation
 
-        ${animation === 'tada' &&
+        ${$animation === 'tada' &&
         css`
           animation: ${TADA_ANIMATION} linear 1s infinite;
         `};
 
         // Wobble - Animation
 
-        ${animation === 'wobble' &&
+        ${$animation === 'wobble' &&
         css`
           animation: ${WOBBLE_ANIMATION} linear 1s infinite;
         `};
@@ -187,7 +177,7 @@ export const StyledDevoLogoSpinner = styled.div<StyledDevoLogoSpinnerProps>`
 
       // Shadow of the Bounce Dot - Animation
 
-      ${animation === 'bounce-dot' &&
+      ${$animation === 'bounce-dot' &&
       css`
         position: relative;
 
@@ -199,7 +189,7 @@ export const StyledDevoLogoSpinner = styled.div<StyledDevoLogoSpinnerProps>`
           left: 34.9%;
           width: 9px;
           height: 3.5px;
-          background-color: ${getColor(colorScheme, theme, 'logoOddPath')};
+          background-color: ${getColor($colorScheme, theme, 'logoOddPath')};
           filter: blur(2.75px) opacity(80%);
           animation: ${BOUNCE_DOT_ANIMATION.SHADOW} ease 0.5s alternate infinite;
           transform-origin: 50% center;

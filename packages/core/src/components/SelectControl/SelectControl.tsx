@@ -1,27 +1,5 @@
 import * as React from 'react';
 import { get } from 'lodash';
-
-import { CUSTOM_HEIGHT } from './constants';
-
-import { wrapperOnChange, findValue } from './utils';
-import { getFieldContextProps } from '../Field';
-import { FieldContext } from '../Field/context';
-
-import * as defaultComponents from './components';
-import {
-  InnerSelectControl,
-  type InnerSelectControlProps,
-} from './InnerSelectControl';
-
-import type {
-  IDataAttrs,
-  IFieldAriaAttrs,
-  IGlobalAriaAttrs,
-  IGlobalAttrs,
-  IStyledOverloadCss,
-} from '../../declarations';
-import { SelectComponents } from 'react-select/dist/declarations/src/components';
-import { TSelectOption } from './declarations';
 import {
   CSSObjectWithLabel,
   GroupBase,
@@ -30,6 +8,25 @@ import {
   PropsValue,
   StylesConfig,
 } from 'react-select';
+import { SelectComponents } from 'react-select/dist/declarations/src/components';
+
+import { CUSTOM_HEIGHT } from './constants';
+import { wrapperOnChange, findValue } from './utils';
+import { getFieldContextProps } from '../Field';
+import { FieldContext } from '../Field/context';
+import * as defaultComponents from './components';
+import {
+  InnerSelectControl,
+  type InnerSelectControlProps,
+} from './InnerSelectControl';
+import type {
+  IDataAttrs,
+  IFieldAriaAttrs,
+  IGlobalAriaAttrs,
+  IGlobalAttrs,
+  IStyledOverloadCss,
+} from '../../declarations';
+import { TSelectOption } from './declarations';
 
 export interface SelectControlProps<
   Option extends TSelectOption = TSelectOption,
@@ -61,7 +58,7 @@ export const SelectControl = <
   isDisabled,
   componentStyles,
   id,
-  styles,
+  style,
   value,
   isClearable,
   required,
@@ -187,7 +184,7 @@ export const SelectControl = <
         >
       }
       closeMenuOnScroll={handleCloseMenuOnScroll}
-      styles={styles}
+      style={style}
     />
   );
 };

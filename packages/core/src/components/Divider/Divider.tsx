@@ -1,34 +1,28 @@
 import * as React from 'react';
 
-import { StyledDivider, type StyledDividerProps } from './StyledDivider';
+import { StyledDivider } from './StyledDivider';
 import type { IStyledOverloadCss } from '../../declarations';
+import { IDivider } from './declarations';
 
-export interface DividerProps
-  extends Omit<StyledDividerProps, '$height' | '$width'>,
-    IStyledOverloadCss {
-  /** Css height */
-  height?: React.CSSProperties['height'];
-  /** Css width */
-  width?: React.CSSProperties['width'];
-}
+export interface DividerProps extends IDivider, IStyledOverloadCss {}
 
 export const Divider: React.FC<DividerProps> = ({
   colorScheme = 'base',
   customColor,
   height,
   margin,
-  styles,
+  style,
   vertical = false,
   width,
 }) => (
   <StyledDivider
     role={'separator'}
-    colorScheme={colorScheme}
-    css={styles}
-    customColor={customColor}
+    $colorScheme={colorScheme}
+    css={style}
+    $customColor={customColor}
     $height={height}
-    margin={margin}
-    vertical={vertical}
+    $margin={margin}
+    $vertical={vertical}
     $width={width}
   />
 );

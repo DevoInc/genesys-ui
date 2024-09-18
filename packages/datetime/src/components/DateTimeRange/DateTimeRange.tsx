@@ -6,7 +6,6 @@ import {
   Flex,
   HFlex,
   VFlex,
-  type IGlobalAriaAttrs,
   type IGlobalAttrs,
   type IStyledOverloadCss,
   type IStyledPolymorphic,
@@ -24,7 +23,6 @@ import {
   DATE_TIME_RANGE_SOURCE_TIME_LEFT,
   DATE_TIME_RANGE_SOURCE_TIME_RIGHT,
 } from './constants';
-import { TPreset } from '../Presets/declarations';
 import { defaultDateTimeRangeI18n } from './i18n';
 import { useMergeI18n } from '../../hooks';
 
@@ -69,7 +67,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   presets,
   preset,
   onChangePreset = () => null,
-  styles,
+  style,
 }) => {
   const i18n = useMergeI18n(
     userI18n,
@@ -92,7 +90,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   }, []);
 
   return (
-    <HFlex as={as} alignItems={'flex-start'} styles={styles}>
+    <HFlex as={as} alignItems={'flex-start'} style={style}>
       <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
         <MonthSelector
           i18n={i18n}

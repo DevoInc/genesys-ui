@@ -4,7 +4,6 @@ import { WithRequired } from '../../typeFunctions';
 
 import { Form, type FormGroupProps } from '../Form';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface CheckboxGroupProps
   extends WithRequired<
     Omit<FormGroupProps, 'alignItems' | 'justifyContent' | 'itemsGap'>,

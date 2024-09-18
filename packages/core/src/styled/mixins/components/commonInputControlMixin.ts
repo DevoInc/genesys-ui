@@ -12,15 +12,6 @@ import {
 } from '../../../components/Field/helpers';
 import { disabledMixin } from '../state';
 
-export interface ICommonInputControlMixin {
-  disabled?: boolean;
-  inputWidth?: TControlWidth;
-  readOnly?: boolean;
-  $size?: TFieldSize;
-  status?: TFieldStatus;
-  theme: DefaultTheme;
-}
-
 /**
  * Get the InputControl common styles to be used in TextAreaControl too for example.
  *
@@ -35,21 +26,28 @@ export interface ICommonInputControlMixin {
  */
 export const commonInputControlMixin = ({
   disabled,
-  inputWidth,
-  readOnly,
+  $inputWidth,
+  $readOnly,
   $size = 'md',
-  status = 'base',
+  $status = 'base',
   theme,
-}: ICommonInputControlMixin) => {
-  const state = getFieldState({ readOnly });
+}: {
+  disabled?: boolean;
+  $inputWidth?: TControlWidth;
+  $readOnly?: boolean;
+  $size?: TFieldSize;
+  $status?: TFieldStatus;
+  theme: DefaultTheme;
+}) => {
+  const state = getFieldState({ $readOnly });
   const aliasTokens = theme.alias;
   const fieldTokens = aliasTokens.fields;
   const inputBorderRadius = fieldTokens.shape.borderRadius;
-  const inputWidthEval = getControlWidth({ theme, controlWidth: inputWidth });
+  const inputWidthEval = getControlWidth({ theme, controlWidth: $inputWidth });
   const inputHeight = fieldTokens.size.height[$size];
   const inputHorPadding = fieldTokens.space.padding.hor[$size];
   return css`
-    ${getFieldControlTypo({ theme, size: $size })};
+    ${getFieldControlTypo({ theme, $size })};
     display: flex;
     appearance: none;
     position: relative;
@@ -59,13 +57,13 @@ export const commonInputControlMixin = ({
     outline: none;
     border-width: ${fieldTokens.shape.borderSize.base};
     border-style: solid;
-    border-color: ${fieldTokens.color.border[status][state]};
+    border-color: ${fieldTokens.color.border[$status][state]};
     border-radius: ${inputBorderRadius};
     width: ${inputWidthEval || '100%'};
     height: ${inputHeight};
     padding: 0 ${inputHorPadding};
-    background-color: ${fieldTokens.color.background[status][state]};
-    color: ${fieldTokens.color.text[status][state]};
+    background-color: ${fieldTokens.color.background[$status][state]};
+    color: ${fieldTokens.color.text[$status][state]};
 
     ${disabled &&
     css`
@@ -73,22 +71,22 @@ export const commonInputControlMixin = ({
     `};
 
     ${!disabled &&
-    !readOnly &&
+    !$readOnly &&
     css`
       &:hover {
-        border-color: ${fieldTokens.color.border[status].hovered};
-        color: ${fieldTokens.color.text[status].hovered};
+        border-color: ${fieldTokens.color.border[$status].hovered};
+        color: ${fieldTokens.color.text[$status].hovered};
       }
 
       &:focus {
-        box-shadow: ${fieldTokens.elevation.boxShadow[status].focused};
-        border-color: ${fieldTokens.color.border[status].focused};
-        color: ${fieldTokens.color.text[status].focused};
+        box-shadow: ${fieldTokens.elevation.boxShadow[$status].focused};
+        border-color: ${fieldTokens.color.border[$status].focused};
+        color: ${fieldTokens.color.text[$status].focused};
       }
     `}
 
     &::placeholder {
-      color: ${fieldTokens.color.text[status].placeholder};
+      color: ${fieldTokens.color.text[$status].placeholder};
     }
   `;
 };

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import { concat } from 'lodash';
 
 import type { IModal, TModalStatus } from '../../declarations';
 import { modalHeaderMixin } from './mixins';
@@ -8,9 +7,10 @@ import { ModalContext } from '../../context';
 import { Panel, type PanelHeaderProps } from '../../../Panel';
 import { Flex } from '../../../Flex';
 import { ModalIcon } from '../ModalIcon';
-import { Heading } from '../../../Typography/components/block';
+import { Heading } from '../../../Typography/components/Heading';
 import { ButtonGroup } from '../../../ButtonGroup';
 import { IconButtonClose } from '../../../IconButton';
+import { mergeStyles } from '../../../../helpers';
 
 export interface ModalHeaderProps
   extends Pick<
@@ -19,7 +19,7 @@ export interface ModalHeaderProps
     | 'bordered'
     | 'children'
     | 'removeSpace'
-    | 'styles'
+    | 'style'
     | 'title'
     | 'titleTooltip'
   > {
@@ -34,7 +34,7 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
   onRequestClose,
   removeSpace,
   status,
-  styles,
+  style,
   title,
   titleTooltip,
 }) => {
@@ -45,9 +45,9 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
   return (
     <Panel.Header
       bordered={bordered ?? evalStatus === 'base'}
-      styles={concat(
+      style={mergeStyles(
         modalHeaderMixin({ removeSpace, status: evalStatus, theme }),
-        styles,
+        style,
       )}
     >
       {children || (

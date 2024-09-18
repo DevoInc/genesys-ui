@@ -27,4 +27,4 @@ export const STATUS_ICON_MAP = {
     success: <GICheckThick />,
     warning: <GIAttentionErrorAlertCaution />,
   },
-} as const;
+};
