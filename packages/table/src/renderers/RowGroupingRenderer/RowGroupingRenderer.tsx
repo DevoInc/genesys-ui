@@ -10,7 +10,7 @@ export const RowGroupingRenderer: React.FC<TCellRenderer> = ({
   row,
 }) => {
   const context = colDef?.context as TRowGroupingContext;
-  const isOpened = context.selection.includes(row.id as string);
+  const isOpened = context?.selection?.includes(row.id as string);
   return (
     <IconButtonCollapse
       onClick={() => {
