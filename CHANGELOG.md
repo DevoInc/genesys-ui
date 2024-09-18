@@ -1,5 +1,26 @@
 # Changelog
 
+## [11.1.0](https://github.com/DevoInc/genesys-ui/compare/v11.0.4...v11.1.0) (2024-09-05)
+
+
+### Features
+
+* add after row ([75c322c](https://github.com/DevoInc/genesys-ui/commit/75c322cd3071f47a3e84cd4ff86d9fe0ae00334f))
+* add height afterRow ([a15d3f2](https://github.com/DevoInc/genesys-ui/commit/a15d3f28469a147e7ddb2b9149084107d5d49946))
+* add height declaration in TRowDef ([7b2a758](https://github.com/DevoInc/genesys-ui/commit/7b2a7589143603f3909a83a25bfaa5131cc827a2))
+* add resize item ([bb4246c](https://github.com/DevoInc/genesys-ui/commit/bb4246c01a464d86a9a64c56add808a75ad2b8f2))
+* afterRow with helpers ([07d66fa](https://github.com/DevoInc/genesys-ui/commit/07d66fa5a24a8711e01d2b6cd66ab63044530dea))
+
+
+### Bug Fixes
+
+* cahnge default rowDefs ([4d0b18a](https://github.com/DevoInc/genesys-ui/commit/4d0b18ab7a7e34aea7904af4680b3340aa928455))
+* circular dependencies ([650628c](https://github.com/DevoInc/genesys-ui/commit/650628c2049c06fc085f2f15bb075b699de7207c))
+* delete props no used ([7f39fcf](https://github.com/DevoInc/genesys-ui/commit/7f39fcf1fb034fef78d6a765c8d7a574bba99185))
+* delete rowVirtualizer unused ([0a01799](https://github.com/DevoInc/genesys-ui/commit/0a01799d3cf57de0dd11f2114d3252fd374d8cb7))
+* paths and delete unused files ([d5745d1](https://github.com/DevoInc/genesys-ui/commit/d5745d1b648167dcdf1782a51b3ca7132e01c990))
+* paths rowgrouping ([b85385b](https://github.com/DevoInc/genesys-ui/commit/b85385b45beea4093908788dd549ba464fd29ca9))
+
 ## [11.0.4](https://github.com/DevoInc/genesys-ui/compare/v11.0.3...v11.0.4) (2024-07-10)
 
 
