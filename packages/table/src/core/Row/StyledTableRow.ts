@@ -23,15 +23,17 @@ export interface StyledTableRowProps {
   striped?: boolean;
   transform?: React.CSSProperties['transform'];
   $width?: React.CSSProperties['width'];
+  display?: React.CSSProperties['display'];
 }
 
 export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
-  ({ $width, $height, transform }) => ({
+  ({ $width, $height, transform, display }) => ({
     style: {
       position: 'absolute',
       width: $width ?? '100%',
       height: $height,
       transform,
+      display: display,
     },
   }),
 )<StyledTableRowProps>`
