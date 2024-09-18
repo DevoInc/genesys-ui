@@ -26,6 +26,9 @@ export const Cell: React.FC<CellProps> = ({
   width,
   height,
   offsetX,
+  rowVirtualizer,
+  virtualRow,
+  rowDef,
 }) => {
   const { density, texts, highlightColumnsOnHover } =
     React.useContext(TableContext);
@@ -36,7 +39,7 @@ export const Cell: React.FC<CellProps> = ({
   useInitialState(data, onReset);
 
   const { cellRef, editionContent, isEditMode, onDoubleClick, viewContent } =
-    useRenderContent(colDef, data, rowIndex);
+    useRenderContent(colDef, data, rowIndex, rowVirtualizer, virtualRow, rowDef);
 
   return (
     <StyledCell

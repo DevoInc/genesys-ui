@@ -8,10 +8,9 @@ export const useAfterRow = ({
   renderAfterRow,
 }) => {
   const data = [];
-  let rowDefs = [];
 
   const [selection, setSelection] = React.useState([]);
-  const [rowDefsProcess, setRowDefsProcess] = React.useState(rowDefs);
+  const [rowDefsProcess, setRowDefsProcess] = React.useState(originalRowDefs);
 
   const colDefs = [
     {
@@ -21,9 +20,9 @@ export const useAfterRow = ({
       context: {
         selection,
         onRowGroupingChange: (rowIndex) => {
-          toggle(rowIndex, rowDefs);
+          toggle(rowIndex);
           setRowDefsProcess(() =>
-            rowDefs.map((rd) => {
+            rowDefsProcess.map((rd) => {
               if (rd.id === `afterRow-${data[rowIndex].id}`) {
                 rd.hide = !rd.hide;
               }
@@ -42,7 +41,7 @@ export const useAfterRow = ({
       ...element,
       id: `afterRow-${element.id}`,
     });
-    rowDefs.push({
+    rowDefsProcess.push({
       id: `afterRow-${element.id}`,
       hide: true,
       cellRenderer: renderAfterRow,
@@ -50,7 +49,7 @@ export const useAfterRow = ({
   }
 
   const toggle = React.useCallback(
-    (index: number, rowDefs) => {
+    (index: number) => {
       setSelection(() =>
         data.map((d, i) => {
           if (index === i) {
@@ -59,11 +58,6 @@ export const useAfterRow = ({
           return d;
         }),
       );
-      // const rd = rowDefs.find((r) => r.id === `afterRow-${data[index].id}`);
-      // if (rd) {
-      //   rd.hide = !rd.hide;
-      // }
-      // debugger;
     },
     [data],
   );
