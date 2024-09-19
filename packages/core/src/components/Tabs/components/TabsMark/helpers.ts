@@ -25,7 +25,7 @@ export const tabsMarkMixin = ({ colorScheme, theme }: ITabsMarkMixin) => {
     transition: all ease-in-out ${transitionDuration};
     padding: 0 ${tokens.space.padding};
 
-    ::before {
+    &::before {
       content: '';
       display: block;
       height: ${tokens.size.height};
