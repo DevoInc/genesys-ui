@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, CSSProp } from 'styled-components';
 import {
   pseudoElementMixin,
   pseudoElementOverlayMixin,
@@ -18,6 +18,8 @@ export interface StyledTableRowProps {
   transform?: React.CSSProperties['transform'];
   $width?: React.CSSProperties['width'];
   $hide?: boolean;
+  // TODO: interface only for satisfy the type error with TS and inherit CSSProp
+  css?: CSSProp;
 }
 
 export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(

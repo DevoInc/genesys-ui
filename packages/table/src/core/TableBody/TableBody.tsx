@@ -32,7 +32,7 @@ export const TableBody: React.FC<TableBodyProps> = ({
           <Row
             key={'tb_' + virtualRow.key}
             columnVirtualizer={columnVirtualizer}
-            data={data[virtualRow.index]}
+            rowData={data[virtualRow.index]}
             virtualRow={virtualRow}
           />
         );

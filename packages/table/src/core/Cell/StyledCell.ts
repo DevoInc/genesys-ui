@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, CSSProp } from 'styled-components';
 
 import { pseudoElementOverlayMixin } from '@devoinc/genesys-ui';
 
@@ -14,6 +14,8 @@ interface StyledCellProps {
   $offsetX: number;
   $width: number;
   $height: number;
+  // TODO: interface only for satisfy the type error with TS and inherit CSSProp
+  css: CSSProp;
 }
 
 export const StyledCell = styled.td.attrs(

@@ -35,9 +35,8 @@ type Story = StoryObj<typeof Table>;
 
 const initialData = Holo.of()
   .addType('index', (args = {}) => String(args.index + 1))
-  .addType('rowGrouping', () => false)
   .schema({
-    rowGrouping: 'rowGrouping',
+    rowGrouping: false,
     id: 'index',
     booleanValue: 'bool',
     name: 'name',
@@ -72,6 +71,10 @@ const colDefsInitial = [
 
 const initalRowDefs = [
   {
+    id: '2',
+    style: 'background-color: rgb(255,200,200);',
+  },
+  {
     id: `afterRow-2`,
     hide: false,
   },
@@ -91,19 +94,23 @@ const BasicCmp = ({
   const { orderStruct, onSort } = useOrderStruct([
     { id: 'text', sort: 'desc' },
   ]);
-  const dataOrdered = [...initialData].sort(
-    orderDataByOrderStruct(orderStruct),
-  );
-  const [dataWithAfterRows, afterRowIds] = addAfterRowsToData(dataOrdered);
 
-  const [rowDefs, setRowDefs] = React.useState(
-    addAfterRowsToRowDefs(
+  const [rowDefs, setRowDefs] = React.useState<TRowDef[]>();
+
+  const { dataWithAfterRows } = React.useMemo(() => {
+    const dataOrdered = [...initialData].sort(
+      orderDataByOrderStruct(orderStruct),
+    );
+    const [dataWithAfterRows, afterRowIds] = addAfterRowsToData(dataOrdered);
+    const newRowDef = addAfterRowsToRowDefs(
       initalRowDefs,
       afterRowIds,
       afterRowRenderer,
       afterRowHeight,
-    ),
-  );
+    );
+    setRowDefs(newRowDef);
+    return { dataWithAfterRows };
+  }, [initialData]);
 
   const { colDefs } = useRenderAfterRow({
     rowDefs,
@@ -124,6 +131,13 @@ const BasicCmp = ({
           }}
           colDefs={colDefs}
           rowDefs={rowDefs}
+          cellDefs={[
+            {
+              colId: 'name',
+              rowId: '2',
+              style: 'background-color: rgb(200,255,200);',
+            },
+          ]}
           maxHeight={'80vh'}
           rowHeight={ROW_HEIGHT_MD}
           resizableColumns={true}

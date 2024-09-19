@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { CSSProp } from 'styled-components';
 
 import { DateContext } from './valueFormatters/date';
 
@@ -25,6 +26,8 @@ export type TStateRow =
   | 'selected'
   | 'created'
   | 'deleted';
+
+// Definitions
 
 export type TColDef = {
   id: string;
@@ -55,14 +58,13 @@ export type TColDef = {
   sort?: 'asc' | 'desc';
   sortIndex?: React.ReactNode;
 
-  expandedRow?: boolean;
   isDragging?: boolean;
   onReset?: (initialValue: unknown) => void;
   tooltipField?: string;
   resizable?: boolean;
+  minWidth?: number;
+  width?: number;
   rowHeight?: number;
-  minWidth?: number | string;
-  width?: number | string;
   align?: TCellHorAlign;
   verticalAlign?: TCellVerAlign;
   textAlign?: React.CSSProperties['textAlign'];
@@ -71,15 +73,26 @@ export type TColDef = {
   toEdge?: boolean;
   headerOnFilterPosition?: boolean;
   hide?: boolean;
+  style?: CSSProp;
 };
 
 export type TRowDef = {
   hide?: boolean;
   id: string;
-  height?: React.CSSProperties['height'];
+  height?: number;
+  minHeight?: number;
+  isDragging?: boolean;
   cellRenderer?:
     | React.FC<TCellRenderer>
     | (({ value, colDef, rowIndex, row }: TCellRenderer) => React.ReactNode);
+  style?: CSSProp;
+};
+
+export type TCellDef = {
+  colId: string;
+  rowId: string;
+  hide?: boolean;
+  style?: CSSProp;
 };
 
 export type TAfterRow = {
@@ -87,13 +100,7 @@ export type TAfterRow = {
   id: string;
 };
 
-export type TCellDef = {
-  idColumn: string;
-  idRow: string;
-  hide?: boolean;
-};
-
-export type TPreset = {
+export type TColPreset = {
   id: string;
 } & Omit<TColDef, 'colId'>;
 
@@ -159,9 +166,10 @@ export interface ITable {
   data: TData;
   colDefs?: TColDef[];
   rowDefs?: TRowDef[];
+  cellDefs?: TCellDef[];
   afterRowDefs?: TAfterRow[];
   defaultColDef?: TDefaultColDef;
-  columnPresets?: TPreset[];
+  columnPresets?: TColPreset[];
   context?: {
     [key: string]: unknown;
   };

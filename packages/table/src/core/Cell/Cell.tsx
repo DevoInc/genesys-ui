@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { GIPencilEditFilled } from '@devoinc/genesys-icons';
 
-import type { TColDef, TRow } from '../../declarations';
+import { GIPencilEditFilled } from '@devoinc/genesys-icons';
+import { mergeStyles } from '@devoinc/genesys-ui';
+
+import type { TCellDef, TColDef, TRow, TRowDef } from '../../declarations';
 import { useRenderContent } from './useRenderContent';
 import { useInitialState } from '../../editors/useInitialState';
 import { TableContext, WrapperContext } from '../../context';
-
 import { StyledCellWrapper } from './StyledCellWrapper';
 import { StyledCell } from './StyledCell';
 import { StyledCellMarker } from './StyledCellMarker';
@@ -13,6 +14,7 @@ import { StyledCellMarker } from './StyledCellMarker';
 interface CellProps {
   data: unknown;
   colDef: TColDef;
+  cellDef: TCellDef;
   width?: number;
   height?: number;
   offsetX?: number;
@@ -24,6 +26,7 @@ interface CellProps {
 export const Cell: React.FC<CellProps> = ({
   data,
   colDef,
+  cellDef,
   rowIndex,
   width,
   height,
@@ -34,7 +37,9 @@ export const Cell: React.FC<CellProps> = ({
   const { density, texts, highlightColumnsOnHover } =
     React.useContext(TableContext);
   const { height: wrapperHeight } = React.useContext(WrapperContext);
-  const { onReset } = colDef;
+  const onReset = colDef.onReset;
+  const colStyle = colDef?.style ?? '';
+  const cellStyle = cellDef?.style ?? '';
 
   useInitialState(data, onReset);
 
@@ -53,6 +58,7 @@ export const Cell: React.FC<CellProps> = ({
       aria-selected={isEditMode}
       onDoubleClick={onDoubleClick}
       ref={cellRef}
+      css={mergeStyles(colStyle, cellStyle)}
     >
       <StyledCellWrapper
         as={colDef.editable ? 'button' : 'div'}

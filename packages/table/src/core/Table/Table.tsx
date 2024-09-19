@@ -12,6 +12,7 @@ export const Table: React.FC<TableProps> = ({
   defaultColDef,
   colDefs = [],
   rowDefs = [],
+  cellDefs = [],
   columnPresets = [],
   density = 'default',
   striped = false,
@@ -53,6 +54,7 @@ export const Table: React.FC<TableProps> = ({
         onFilter,
         rowHeight,
         rowDefs,
+        cellDefs,
       }}
     >
       <WrapperContextProvider>

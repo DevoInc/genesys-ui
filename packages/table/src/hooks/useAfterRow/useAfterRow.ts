@@ -9,9 +9,9 @@ import {
   deleteAfterRowToDataById,
   findDataById,
   getRowDef,
-  setHideRowDef,
 } from '../../helpers';
 import type { TRowGroupingContext } from '../../facade/RowGrouping/RowGroupingContext';
+import { toggleHideRowDef } from '../../helpers';
 
 export const useRenderAfterRow = ({
   rowDefs,
@@ -24,7 +24,9 @@ export const useRenderAfterRow = ({
   onRowDefsChange: (rowDefs: TRowDef[]) => void;
   colDefs: TColDef[];
 }) => {
-  const [selection, setSelection] = React.useState<string[] | number[]>(initialSelection || []);
+  const [selection, setSelection] = React.useState<string[] | number[]>(
+    initialSelection || [],
+  );
   const colDefs = [
     {
       id: 'rowGrouping',
@@ -71,11 +73,14 @@ export const useOnDemandAfterRow = ({
   initialSelection: string[];
   data: TData;
   onDataChange: (data: TData) => void;
-  afterRowRenderer: React.FC<TCellRenderer>
-  | (({ value, colDef, rowIndex, row }: TCellRenderer) => React.ReactNode);
+  afterRowRenderer:
+    | React.FC<TCellRenderer>
+    | (({ value, colDef, rowIndex, row }: TCellRenderer) => React.ReactNode);
   afterRowHeight: React.CSSProperties['height'];
 }) => {
-  const [selection, setSelection] = React.useState<string[] | number[]>(initialSelection || []);
+  const [selection, setSelection] = React.useState<string[] | number[]>(
+    initialSelection || [],
+  );
 
   const colDefs = [
     {
@@ -87,7 +92,6 @@ export const useOnDemandAfterRow = ({
         onClick: (rowId) => {
           const nextSelection = updateSelection(selection)(rowId as string);
           setSelection(nextSelection);
-          const isOpened = nextSelection.includes(rowId);
 
           onRowDefsChange(
             !getRowDef(rowDefs, `afterRow-${rowId}`)
@@ -97,7 +101,7 @@ export const useOnDemandAfterRow = ({
                   afterRowRenderer,
                   afterRowHeight,
                 )
-              : setHideRowDef(rowDefs, rowId, isOpened),
+              : toggleHideRowDef(rowDefs, `afterRow-${rowId}`),
           );
           onDataChange(
             findDataById(data, `afterRow-${rowId}`)
