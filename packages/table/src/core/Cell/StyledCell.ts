@@ -10,7 +10,7 @@ import { getTableZIndexMap } from '../utils';
 interface StyledCellProps {
   $wrapperHeight?: number;
   $density?: TDensity;
-  highlightColumnsOnHover?: boolean;
+  $highlightColumnsOnHover?: boolean;
   $offsetX: number;
   $width: number;
   $height: number;
@@ -36,9 +36,9 @@ export const StyledCell = styled.td.attrs(
 
   ${({ theme }) => cellMixin({ theme })};
 
-  ${({ highlightColumnsOnHover, $wrapperHeight = 9999, theme, $density }) => {
+  ${({ $highlightColumnsOnHover, $wrapperHeight = 9999, theme, $density }) => {
     const tokens = theme.cmp.table.cell;
-    return highlightColumnsOnHover
+    return $highlightColumnsOnHover
       ? css`
           &:focus,
           &:has(*:focus),
