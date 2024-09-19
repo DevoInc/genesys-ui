@@ -34,7 +34,7 @@ export default meta;
 type Story = StoryObj<typeof Table>;
 
 const initialData = Holo.of()
-  .addType('index', (args = {}) => args.index + 1)
+  .addType('index', (args = {}) => String(args.index + 1))
   .addType('rowGrouping', () => false)
   .schema({
     rowGrouping: 'rowGrouping',
