@@ -70,13 +70,13 @@ export const DoubleNavigation: Story = {
               <Tabs.Item
                 size="sm"
                 label="Subitem 2"
-                onClick={() => setActiveTab(0)}
+                onClick={() => setActiveTab(1)}
                 state={activeTab === 1 ? 'selected' : undefined}
               />
               <Tabs.Item
                 size="sm"
                 label="Subitem 3"
-                onClick={() => setActiveTab(0)}
+                onClick={() => setActiveTab(2)}
                 state={activeTab === 2 ? 'selected' : undefined}
               />
             </Tabs.List>
