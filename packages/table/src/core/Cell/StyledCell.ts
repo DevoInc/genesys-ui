@@ -11,22 +11,11 @@ interface StyledCellProps {
   $wrapperHeight?: number;
   $density?: TDensity;
   $highlightColumnsOnHover?: boolean;
-  $offsetX: number;
-  $width: number;
-  $height: number;
   // TODO: interface only for satisfy the type error with TS and inherit CSSProp
   css: CSSProp;
 }
 
-export const StyledCell = styled.td.attrs(
-  ({ $width, $height, $offsetX }: StyledCellProps) => ({
-    style: {
-      width: `${$width}px`,
-      height: `${$height}px`,
-      left: `${$offsetX}px`,
-    },
-  }),
-)<StyledCellProps>`
+export const StyledCell = styled.td<StyledCellProps>`
   &::after {
     ${pseudoElementOverlayMixin()};
     z-index: -1;

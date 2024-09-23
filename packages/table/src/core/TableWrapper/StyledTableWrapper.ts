@@ -8,7 +8,7 @@ export interface StyledTableWrapperProps {
 
 export const StyledTableWrapper = styled.div<StyledTableWrapperProps>`
   display: inline-block;
-  max-height: ${({ $maxHeight }) => $maxHeight};
+  ${({ $maxHeight }) => $maxHeight && `max-height: ${$maxHeight}`};
   overflow: auto;
   ${({ theme }) => scrollbars({ theme })};
   width: 100%;

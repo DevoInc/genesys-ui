@@ -3,7 +3,7 @@ import * as React from 'react';
 import type { TColDef, ITable } from '../../declarations';
 
 import { ROW_HEIGHT_MD } from '../../constants';
-import { TableContext, WrapperContextProvider } from '../../context';
+import { TableContext } from '../../context';
 import { TableWrapper } from '../TableWrapper';
 
 export interface TableProps extends ITable {}
@@ -16,7 +16,7 @@ export const Table: React.FC<TableProps> = ({
   columnPresets = [],
   density = 'default',
   striped = false,
-  maxHeight = 'none',
+  maxHeight,
   minHeight,
   minWidth,
   showFilters,
@@ -57,9 +57,7 @@ export const Table: React.FC<TableProps> = ({
         cellDefs,
       }}
     >
-      <WrapperContextProvider>
-        <TableWrapper />
-      </WrapperContextProvider>
+      <TableWrapper />
     </TableContext.Provider>
   );
 };

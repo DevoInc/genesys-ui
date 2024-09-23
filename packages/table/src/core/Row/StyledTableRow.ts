@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { css, CSSProp } from 'styled-components';
 import {
   pseudoElementMixin,
@@ -10,27 +9,16 @@ import type { TStateRow } from '../../declarations';
 export interface StyledTableRowProps {
   draggable?: boolean;
   $even?: boolean;
-  $height?: React.CSSProperties['height'];
   isAfterRow?: boolean;
   isDragging?: boolean;
   $state?: TStateRow;
   $striped?: boolean;
-  transform?: React.CSSProperties['transform'];
-  $width?: React.CSSProperties['width'];
   $hide?: boolean;
   // TODO: interface only for satisfy the type error with TS and inherit CSSProp
   css?: CSSProp;
 }
 
-export const StyledTableRow = styled.tr.attrs<StyledTableRowProps>(
-  ({ $width, $height, transform }) => ({
-    style: {
-      width: $width ?? '100%',
-      height: $height,
-      transform,
-    },
-  }),
-)<StyledTableRowProps>`
+export const StyledTableRow = styled.tr<StyledTableRowProps>`
   position: absolute;
   top: 0;
   left: 0;

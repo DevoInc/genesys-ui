@@ -3,10 +3,10 @@ import * as React from 'react';
 import { GIPencilEditFilled } from '@devoinc/genesys-icons';
 import { mergeStyles } from '@devoinc/genesys-ui';
 
-import type { TCellDef, TColDef, TRow, TRowDef } from '../../declarations';
+import type { TCellDef, TColDef, TRow } from '../../declarations';
 import { useRenderContent } from './useRenderContent';
 import { useInitialState } from '../../editors/useInitialState';
-import { TableContext, WrapperContext } from '../../context';
+import { TableContext } from '../../context';
 import { StyledCellWrapper } from './StyledCellWrapper';
 import { StyledCell } from './StyledCell';
 import { StyledCellMarker } from './StyledCellMarker';
@@ -36,7 +36,6 @@ export const Cell: React.FC<CellProps> = ({
 }) => {
   const { density, texts, highlightColumnsOnHover } =
     React.useContext(TableContext);
-  const { height: wrapperHeight } = React.useContext(WrapperContext);
   const onReset = colDef.onReset;
   const colStyle = colDef?.style ?? '';
   const cellStyle = cellDef?.style ?? '';
@@ -49,12 +48,14 @@ export const Cell: React.FC<CellProps> = ({
   return (
     <StyledCell
       $density={density}
-      $height={height}
-      $width={width}
-      $offsetX={offsetX}
+      style={{
+        width: `${width}px`,
+        height: `${height}px`,
+        left: `${offsetX}px`,
+      }}
       colSpan={colSpan}
       $highlightColumnsOnHover={highlightColumnsOnHover}
-      $wrapperHeight={wrapperHeight}
+      $wrapperHeight={9999}
       aria-selected={isEditMode}
       onDoubleClick={onDoubleClick}
       ref={cellRef}
