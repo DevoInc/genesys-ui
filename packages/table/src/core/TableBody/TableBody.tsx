@@ -25,14 +25,14 @@ export const TableBody: React.FC<TableBodyProps> = ({
     <StyledTableBody
       $height={height}
       $width={width}
-      highlightColumnsOnHover={highlightColumnsOnHover}
+      $highlightColumnsOnHover={highlightColumnsOnHover}
     >
       {rowVirtualizer.getVirtualItems().map((virtualRow: VirtualItem) => {
         return (
           <Row
             key={'tb_' + virtualRow.key}
             columnVirtualizer={columnVirtualizer}
-            data={data[virtualRow.index]}
+            rowData={data[virtualRow.index]}
             virtualRow={virtualRow}
           />
         );

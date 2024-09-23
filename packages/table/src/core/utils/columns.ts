@@ -1,5 +1,5 @@
 import { VirtualItem } from '@tanstack/react-virtual';
-import type { TColDef, TDefaultColDef, TPreset } from '../../declarations';
+import type { TColDef, TDefaultColDef, TColPreset } from '../../declarations';
 
 export const getColDefByID = (
   colDefs: TColDef[] = [],
@@ -13,7 +13,7 @@ export const getColDefByID = (
 export const getCollatedColumns = (
   defaultColDef: TDefaultColDef,
   column: TColDef,
-  presets: TPreset[] = [],
+  presets: TColPreset[] = [],
 ): TColDef => {
   const preset = presets.find((element) => element.id === column.preset);
   return { ...defaultColDef, ...preset, ...column };

@@ -3,11 +3,11 @@ import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
 import { TableContext } from '../../context/TableContext';
 import { Cell } from '../Cell';
 import { StyledTableRow, type StyledTableRowProps } from './StyledTableRow';
-import { getRowDef } from '../../helpers';
-import { TStateRow } from '../../declarations';
+import { getCellDef, getRowDef } from '../../helpers';
+import { TColDef, TRowDef, TStateRow } from '../../declarations';
 
 interface RowProps extends StyledTableRowProps {
-  data: { [key: string]: unknown };
+  rowData: { [key: string]: unknown };
   columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
   virtualRow: VirtualItem;
   state?: TStateRow;
@@ -15,16 +15,14 @@ interface RowProps extends StyledTableRowProps {
 
 export const Row: React.FC<RowProps> = ({
   columnVirtualizer,
-  data,
+  rowData,
   isAfterRow,
   isDragging,
   state = 'enabled',
   virtualRow,
 }) => {
-  const { striped, colDefs, rowDefs } = React.useContext(TableContext);
-
-  const rowDef = getRowDef(rowDefs, data.id as string);
-
+  const { striped, colDefs, rowDefs, cellDefs } = React.useContext(TableContext);
+  const rowDef = (getRowDef(rowDefs, rowData.id as string) ?? {}) as TRowDef;
   return (
     <StyledTableRow
       $height={virtualRow.size}
@@ -36,6 +34,7 @@ export const Row: React.FC<RowProps> = ({
       isDragging={isDragging}
       $state={state}
       $striped={striped}
+      css={rowDef?.style}
     >
       {rowDef?.cellRenderer ? (
         <Cell
@@ -43,12 +42,16 @@ export const Row: React.FC<RowProps> = ({
             id: 'afterRow',
             cellRenderer: rowDef.cellRenderer,
           }}
+          cellDef={{
+            colId: 'afterRow',
+            rowId: rowDef.id,
+          }}
           height={virtualRow.size}
           key={`cell-0`}
           offsetX={0}
           width={columnVirtualizer.getTotalSize()}
           rowIndex={virtualRow.index}
-          row={data}
+          row={rowData}
           data={null}
           colSpan={colDefs.length}
         />
@@ -56,16 +59,19 @@ export const Row: React.FC<RowProps> = ({
         columnVirtualizer
           .getVirtualItems()
           .map((virtualColumn: VirtualItem) => {
+            const colDef = (colDefs[virtualColumn.index] ?? {}) as TColDef;
+            const cellDef = getCellDef(cellDefs, colDef.id, rowDef.id);
             return (
               <Cell
-                colDef={colDefs[virtualColumn.index]}
-                data={data[colDefs[virtualColumn.index].id] ?? ''}
+                colDef={colDef}
+                cellDef={cellDef}
+                data={rowData[colDef.id] ?? ''}
                 height={virtualRow.size}
                 key={`cell-${virtualColumn.key}`}
                 offsetX={virtualColumn.start}
                 width={virtualColumn.size}
                 rowIndex={virtualRow.index}
-                row={data}
+                row={rowData}
               />
             );
           })

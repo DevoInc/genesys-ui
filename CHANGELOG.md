@@ -1,5 +1,49 @@
 # Changelog
 
+## [12.0.0](https://github.com/DevoInc/genesys-ui/compare/v11.0.4...v12.0.0) (2024-09-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* normalize 'style' interface for custom styles
+* refactor a new SplitLayout based on composition
+* **Datetime:** refactored DateTimeRange and Presets
+
+### Features
+
+* add after row ([4cc16a7](https://github.com/DevoInc/genesys-ui/commit/4cc16a717a3588860843a6a73e16b7af70a7a68d))
+* add height afterRow ([761d2e2](https://github.com/DevoInc/genesys-ui/commit/761d2e2e8dcc53e5636a1050bf2172a313fe6446))
+* add height declaration in TRowDef ([92a84ee](https://github.com/DevoInc/genesys-ui/commit/92a84ee843bbd1017b362f81a27ac81e237f5699))
+* add resize item ([81f496d](https://github.com/DevoInc/genesys-ui/commit/81f496de5b07fca16e40d357ee3523292dc6db31))
+* afterRow with helpers ([7a688fb](https://github.com/DevoInc/genesys-ui/commit/7a688fb6df60cd7f6a8722fd3d739dd0c12e62d1))
+* **Calendar:** added dateRepr and errorsRepr ([ee23765](https://github.com/DevoInc/genesys-ui/commit/ee237654045ee00e473240cf54d948a27f8973c9))
+* **Calendar:** Added min and max dates ([f1ffec5](https://github.com/DevoInc/genesys-ui/commit/f1ffec5fceb39bb2b0cef15f8604b5b0e27e8ad3))
+* **Datetime:** adapt to new Calendar ([df69f25](https://github.com/DevoInc/genesys-ui/commit/df69f256682acce8950798cba26d5f960b4ad245))
+* **Datetime:** added default parseDates ([d1a4995](https://github.com/DevoInc/genesys-ui/commit/d1a49952ba8f28c43958b357609ce7b67f9190cd))
+* **Datetime:** expose Time component ([31d1009](https://github.com/DevoInc/genesys-ui/commit/31d1009e340f3610c6684a9addef9b922efcd3c7))
+* **DateTimeRangeFloatingPicker:** change to the new arch ([f3cea8e](https://github.com/DevoInc/genesys-ui/commit/f3cea8e6d157f97f578cf712e01eef8ad9624796))
+* **Datetime:** refactored DateTimeRange and Presets ([87101b9](https://github.com/DevoInc/genesys-ui/commit/87101b9bbcdfd35dbe191d3875c64f29bfee08b7))
+* normalize 'style' interface for custom styles ([cb9b229](https://github.com/DevoInc/genesys-ui/commit/cb9b2291c5a558c778391ba2ad7f4ab7605eb625))
+* QUV-2455 New table rowGroupingRenderer preset ([0af7f76](https://github.com/DevoInc/genesys-ui/commit/0af7f7698712d250f87cd1f855e89222d5884b0e))
+* refactor a new SplitLayout based on composition ([77bcc50](https://github.com/DevoInc/genesys-ui/commit/77bcc5075716268fa5623a9f25d2cdbea25225f3))
+* **Table:** OptionsEditor defined as the preset edition view in options type cell and render the select opened at the beginning of the edition. ([5b59a76](https://github.com/DevoInc/genesys-ui/commit/5b59a76fd89a53ba4b4c07dcf93972660f8e9b91))
+
+
+### Bug Fixes
+
+* add styled-components peer dependencie 5.x || ^6.1.9 ([b3bd352](https://github.com/DevoInc/genesys-ui/commit/b3bd3521c3b044ce329b53cdf69db15ffbccef57))
+* added the FloatingMessage to the index of components to be exposed. ([ca5c81c](https://github.com/DevoInc/genesys-ui/commit/ca5c81cb15955b9c5fa8b8abf5cd12e7eea07bcb))
+* added the KeyValue to the index of components to be exposed. ([272652c](https://github.com/DevoInc/genesys-ui/commit/272652ca6be3de2e4f3ba0b1580d74a6049c674d))
+* cahnge default rowDefs ([f2da2b9](https://github.com/DevoInc/genesys-ui/commit/f2da2b97279ef81effee0d61e3872df99052223a))
+* circular dependencies ([04acfce](https://github.com/DevoInc/genesys-ui/commit/04acfcef734d69af20bb4f434b9a8aec4e8ba0b2))
+* delete props no used ([76b16ef](https://github.com/DevoInc/genesys-ui/commit/76b16ef55fa18758fc75040b1e9449c55400fd28))
+* delete rowVirtualizer unused ([8d20f00](https://github.com/DevoInc/genesys-ui/commit/8d20f00d6d964c83076d184a789368a60fc9a82a))
+* error styled props css ([4f4f4bc](https://github.com/DevoInc/genesys-ui/commit/4f4f4bc751a0d67847a2c6d5855c1a305e62b403))
+* exported to index the hooks from SplitLayout and docs minor change ([2b7cde6](https://github.com/DevoInc/genesys-ui/commit/2b7cde677a2f7d05228f0ab0a550b2885e1b89ec))
+* fixed the name of deprecated prop styles and a minor change for TabsMarker styles ([cd81b03](https://github.com/DevoInc/genesys-ui/commit/cd81b039c83e3cf881dec13de0253026cecd77a9))
+* oxlint no-console rule ([d797c63](https://github.com/DevoInc/genesys-ui/commit/d797c633a756d41cd6bbb82b3c8ae31c8488caab))
+* paths and delete unused files ([cb71f24](https://github.com/DevoInc/genesys-ui/commit/cb71f24679fb59952367d1adf9ea35a49a332082))
+
 ## [11.1.1](https://github.com/DevoInc/genesys-ui/compare/v11.1.0...v11.1.1) (2024-09-05)
 
 
