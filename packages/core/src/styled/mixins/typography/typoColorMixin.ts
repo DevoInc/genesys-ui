@@ -45,10 +45,10 @@ export const typoColorMixin = ({
   $colorScheme?: TTypoColorScheme;
   theme: DefaultTheme;
 }) => {
-  const aliasTexColoTokens = tokens.alias.color.text;
+  const aliasTexColorTokens = tokens.alias.color.text;
   const textColorByToken =
-    aliasTexColoTokens?.[$variant]?.[$colorScheme] ||
-    getUiTokenValueByColorScheme(aliasTexColoTokens.feedback, $colorScheme);
+    aliasTexColorTokens?.[$variant]?.[$colorScheme] ||
+    getUiTokenValueByColorScheme(aliasTexColorTokens.feedback, $colorScheme);
   return css`
     color: ${isValidColor($colorScheme) ? $colorScheme : textColorByToken};
   `;

@@ -43,7 +43,7 @@ export const StyledAvatarBackdrop = styled.span<StyledAvatarBackdropProps>`
 
       *:focus > &,
       *:focus-visible > & {
-        box-shadow: ${theme.alias.elevation.boxShadow.base.focused};
+        box-shadow: ${aliasTokens.elevation.boxShadow.base.focused};
       }
     `;
   }};

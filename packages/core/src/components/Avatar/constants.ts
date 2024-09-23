@@ -10,11 +10,15 @@ export const AVATAR_VARIANT_DEFAULT_VALUE = 'circle';
 export const AVATAR_SIZE_BORDER_MAP: {
   [key in TAvatarSize]?: string;
 } = {
-  xs: '1px',
-  sm: '1px',
-  md: '2px',
-  lg: '3px',
-  xl: '4px',
+  xxxs: '0.1rem',
+  xxs: '0.1rem',
+  xs: '0.1rem',
+  sm: '0.1rem',
+  md: '0.2rem',
+  lg: '0.2rem',
+  xl: '0.3rem',
+  xxl: '0.3rem',
+  xxxl: '0.3rem',
 };
 
 export const AVATAR_SIZE_SQUARE_MAP: {
