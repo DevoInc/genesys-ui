@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { useDetectScroll } from '../../hooks';
+import { useIsOverflow } from '../../hooks';
 import type { TPanelSize } from './declarations';
 import type {
   IStyledOverloadCss,
@@ -47,12 +47,14 @@ const InternalPanel = React.forwardRef<HTMLElement, PanelProps>(
       style,
       size = 'md',
       children,
+      removeContentSpace,
       ...restBoxProps
     },
     ref,
   ) => {
     const theme = useTheme();
-    const { hasScroll, targetElRef } = useDetectScroll();
+    const targetElRef = React.useRef<HTMLDivElement>(null);
+    const { hasScroll } = useIsOverflow(targetElRef);
     return (
       <Box
         {...restBoxProps}
@@ -69,7 +71,12 @@ const InternalPanel = React.forwardRef<HTMLElement, PanelProps>(
         )}
       >
         <PanelContext.Provider
-          value={{ scrolledBodyContent: hasScroll, size, bodyRef: targetElRef }}
+          value={{
+            scrolledBodyContent: hasScroll,
+            size,
+            bodyRef: targetElRef,
+            removeContentSpace,
+          }}
         >
           {children}
         </PanelContext.Provider>

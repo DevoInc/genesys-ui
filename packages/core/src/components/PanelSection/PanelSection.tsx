@@ -9,7 +9,7 @@ import type {
   IPanelHelpAttrs,
 } from '../Panel/declarations';
 import type { IPanelHeadingAttrs } from '../Panel/components/PanelHeader/declarations';
-import { useDetectScroll } from '../../hooks';
+import { useIsOverflow } from '../../hooks';
 import {
   panelSectionBodyMixin,
   panelSectionFooterMixin,
@@ -86,7 +86,8 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
   ...dataProps
 }) => {
   const theme = useTheme();
-  const { hasScroll, targetElRef } = useDetectScroll();
+  const targetElRef = React.useRef<HTMLDivElement>(null);
+  const { hasScroll } = useIsOverflow(targetElRef);
   return (
     <Panel
       {...dataProps}
