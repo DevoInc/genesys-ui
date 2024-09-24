@@ -51,6 +51,7 @@
     "@stryker-mutator/vitest-runner": "^8.5.0",
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^22.5.5",
     "@vitejs/plugin-react": "^4.3.1",

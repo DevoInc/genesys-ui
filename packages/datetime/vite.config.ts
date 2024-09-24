@@ -55,5 +55,10 @@ export default defineConfig({
   test: {
     environment: 'happy-dom',
     include: ['{src,stories}/**/*.test.ts?(x)'],
+    server: {
+      deps: {
+        inline: true,
+      },
+    },
   },
 });

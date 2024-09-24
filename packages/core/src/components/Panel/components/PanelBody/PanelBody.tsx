@@ -21,7 +21,6 @@ export const PanelBody = React.forwardRef<HTMLElement, PanelBodyProps>(
     const evalSize = size || context.size || 'md';
     const removeContentSpace =
       removeSpace ?? context?.removeContentSpace ?? false;
-    console.log(removeContentSpace);
 
     return (
       <Box
