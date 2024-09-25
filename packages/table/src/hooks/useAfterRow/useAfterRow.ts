@@ -4,16 +4,16 @@ import { RowGroupingRenderer } from '../../renderers';
 import { updateSelection } from './selection';
 import { TCellRenderer, TColDef, TData, TRowDef } from '../../declarations';
 import {
-  addAfterRowToData,
   addAfterRowToRowDefs,
   addPresetToRowDefs,
-  deleteAfterRowToDataById,
+  deleteAfterRowToRowDefs,
   deletePresetRowDefs,
-  findDataById,
   getRowDef,
+  findDataById,
+  deleteAfterRowToDataById,
+  addAfterRowToData,
 } from '../../helpers';
-import type { TRowGroupingContext } from '../../facade/RowGrouping/RowGroupingContext';
-import { deleteAfterRowToRowDefs } from '../../helpers/afterRow/deleteAfterRowToRowDefs';
+import type { TRowGroupingContext } from '../../facade';
 
 export const useRenderAfterRow = ({
   rowDefs,

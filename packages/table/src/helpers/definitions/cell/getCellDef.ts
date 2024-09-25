@@ -1,4 +1,4 @@
-import type { TCellDef } from '../../declarations';
+import type { TCellDef } from '../../../declarations';
 
 export const getCellDef = (
   cellDefs: TCellDef[],

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import type { TCellRenderer, TRowDef } from '../../declarations';
-import { getRowDef } from '../definitions';
+import type { TCellRenderer, TRowDef } from '../../../declarations';
+import { getRowDef } from '../../definitions';
 
 export const addAfterRowsToRowDefs = (
   rowDefs: TRowDef[],
