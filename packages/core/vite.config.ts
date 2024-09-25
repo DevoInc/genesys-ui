@@ -66,5 +66,9 @@ export default defineConfig({
   test: {
     environment: 'happy-dom',
     include: ['{src,stories}/**/*.test.ts?(x)'],
+    coverage: {
+      provider: 'v8',
+      include: ['{src,stories}/**/*'],
+    },
   },
 });
