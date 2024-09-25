@@ -35,6 +35,7 @@ export const TableBody: React.FC<TableBodyProps> = ({
           index={virtualRow.index}
           height={virtualRow.size}
           start={virtualRow.start}
+          wrapperHeight={height}
         />
       ))}
     </StyledTableBody>

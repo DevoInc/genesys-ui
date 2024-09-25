@@ -21,6 +21,7 @@ interface CellProps {
   rowIndex: number;
   row: TRow;
   colSpan?: number;
+  wrapperHeight?: number;
 }
 
 export const Cell: React.FC<CellProps> = ({
@@ -33,6 +34,7 @@ export const Cell: React.FC<CellProps> = ({
   offsetX,
   row,
   colSpan,
+  wrapperHeight,
 }) => {
   const { density, texts, highlightColumnsOnHover } =
     React.useContext(TableContext);
@@ -55,7 +57,7 @@ export const Cell: React.FC<CellProps> = ({
       }}
       colSpan={colSpan}
       $highlightColumnsOnHover={highlightColumnsOnHover}
-      $wrapperHeight={9999}
+      $wrapperHeight={wrapperHeight}
       aria-selected={isEditMode}
       onDoubleClick={onDoubleClick}
       ref={cellRef}
