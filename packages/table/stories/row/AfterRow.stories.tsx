@@ -6,42 +6,41 @@ import { Holo } from '@devoinc/holo';
 import {
   addAfterRowsToData,
   addAfterRowsToRowDefs,
-  BasicTable,
   BooleanRenderer,
   orderDataByOrderStruct,
-  Table,
   TCellRenderer,
+  BasicTable,
   TColDef,
   TData,
-  TextRenderer,
   TRowDef,
   useOrderStruct,
-} from '../src';
+} from '../../src';
 
-import { ROW_HEIGHT_MD } from '../src/constants';
+import { ROW_HEIGHT_MD } from '../../src/constants';
 import { Flex } from '@devoinc/genesys-ui';
-import { useOnDemandAfterRow, useRenderAfterRow } from '../src/hooks';
+import { useOnDemandAfterRow, useRenderAfterRow } from '../../src/hooks';
 
-const meta: Meta<typeof Table> = {
-  title: 'Components/Layout/Table/AfterRow',
-  component: Table,
+const meta: Meta<typeof BasicTable> = {
+  title: 'Components/Layout/Table/Row/AfterRow',
+  component: BasicTable,
   parameters: {
     layout: 'fullscreen',
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Table>;
+type Story = StoryObj<typeof BasicTable>;
 
 const initialData = Holo.of()
   .addType('index', (args = {}) => String(args.index + 1))
   .schema({
+    check: 'bool',
     rowGrouping: false,
     id: 'index',
     booleanValue: 'bool',
     name: 'name',
   })
-  .repeat(5)
+  .repeat(3)
   .generate() as TData;
 
 const colDefsInitial = [
@@ -64,23 +63,23 @@ const colDefsInitial = [
     headerName: 'Name',
     preset: 'text',
     editable: true,
-    cellRenderer: TextRenderer,
     sortable: true,
   },
 ];
 
-const initalRowDefs = [
-  {
-    id: '2',
-    style: 'background-color: rgb(255,200,200);',
-  },
-  {
-    id: `afterRow-2`,
-    hide: false,
-  },
-];
+// const initalRowDefs = [
+//   {
+//     id: '2',
+//     preset: 'deleted'
+//   },
+//   {
+//     id: `afterRow-2`,
+//     hide: false,
+//   },
+// ];
 
-const initialSelection = ['2'];
+const initalRowDefs = []
+//const initialSelection = ['2'];
 
 const BasicCmp = ({
   afterRowRenderer,
@@ -114,7 +113,7 @@ const BasicCmp = ({
 
   const { colDefs } = useRenderAfterRow({
     rowDefs,
-    initialSelection,
+    initialSelection: [],
     onRowDefsChange: (newRowDefs) => {
       setRowDefs(newRowDefs);
     },
@@ -124,7 +123,7 @@ const BasicCmp = ({
   return (
     <Flex flexDirection="column" gap="cmp-md" height={'auto'}>
       <Flex.Item>
-        <Table
+        <BasicTable
           data={dataWithAfterRows}
           onSort={(colDef: TColDef) => {
             onSort(colDef.id);
@@ -163,6 +162,7 @@ const BasicCmpNoRenderAfterRow = ({
 
   const { colDefs } = useOnDemandAfterRow({
     rowDefs,
+    initialSelection: [],
     onRowDefsChange: (newRowDefs) => {
       setRowDefs(newRowDefs);
     },
@@ -174,11 +174,10 @@ const BasicCmpNoRenderAfterRow = ({
     afterRowRenderer,
     afterRowHeight,
   });
-
   return (
     <Flex flexDirection="column" gap="cmp-md" height={'auto'}>
       <Flex.Item>
-        <Table
+        <BasicTable
           data={data}
           colDefs={colDefs}
           rowDefs={rowDefs}

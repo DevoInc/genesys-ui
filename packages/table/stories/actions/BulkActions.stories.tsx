@@ -11,10 +11,10 @@ import {
   HeaderBulkRenderer,
   TBulkContext,
   useBulkSelection,
-} from '../src';
+} from '../../src';
 
 const meta: Meta<typeof Table> = {
-  title: 'Components/Layout/Table/BulkActions',
+  title: 'Components/Layout/Table/actions/Bulkactions/by Index',
   component: Table,
   parameters: {
     layout: 'fullscreen',

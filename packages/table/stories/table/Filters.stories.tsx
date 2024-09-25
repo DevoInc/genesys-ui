@@ -12,7 +12,7 @@ import {
   useBulkSelection,
   TBulkContext,
   BasicTable,
-} from '../src';
+} from '../../src';
 
 const meta: Meta<typeof BasicTable> = {
   title: 'Components/Layout/Table/Filters',

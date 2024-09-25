@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { BasicTable } from '../src/recipes/BasicTable';
-import { useOrderStruct } from '../src/hooks';
-import { TColDef } from '../src/declarations';
+import { BasicTable } from '../../src/recipes/BasicTable';
+import { useOrderStruct } from '../../src/hooks';
+import { TColDef } from '../../src/declarations';
 import {
   updateColDefsWithOrderStruct,
   orderDataByOrderStruct,
-} from '../src/helpers';
+} from '../../src/helpers';
 
 const meta: Meta<typeof BasicTable> = {
-  title: 'Components/Layout/Table/Order',
+  title: 'Components/Layout/Table/Column/Order',
   component: BasicTable,
   parameters: {
     layout: 'fullscreen',

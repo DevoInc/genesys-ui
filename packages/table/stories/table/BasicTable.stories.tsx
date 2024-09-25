@@ -5,11 +5,11 @@ import { Holo } from '@devoinc/holo';
 import { Button, Menu, Popover } from '@devoinc/genesys-ui';
 import { GIEyeViewFilled, GIPencilEdit } from '@devoinc/genesys-icons';
 
-import { TActionContext, BasicTable } from '../src';
-import { ROW_HEIGHT_MD } from '../src/constants';
+import { TActionContext, BasicTable } from '../../src';
+import { ROW_HEIGHT_MD } from '../../src/constants';
 
 const meta: Meta<typeof BasicTable> = {
-  title: 'Components/Layout/Table/BasicTable',
+  title: 'Components/Layout/Table/Basic',
   component: BasicTable,
   parameters: {
     layout: 'fullscreen',
@@ -30,6 +30,7 @@ export const Base: Story = {
     resizableColumns: true,
     highlightColumnsOnHover: true,
     showFilters: true,
+    striped: true,
     colDefs: [
       {
         id: 'id',
@@ -214,7 +215,7 @@ export const Base: Story = {
         website: 'url',
         secondaryWebsite: 'url',
       })
-      .repeat(200)
+      .repeat(9)
       .generate(),
   },
 };

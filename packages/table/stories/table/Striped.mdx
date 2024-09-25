@@ -1,0 +1,22 @@
+import { Meta, Canvas } from '@storybook/blocks';
+
+import * as Stories from './Striped.stories';
+
+<Meta of={Stories} />
+
+# Striped
+
+With these two properties we will achieve the zebra effect on the board.
+
+<Canvas of={Stories.Striped} />
+
+This functionality is composed of two properties:
+
+- **striped**: boolean that indicates whether or not we want to activate the functionality.
+- **stripedFn**: that allows us to pass the function that allows us to create the rule by which certain rows will be painted or not. By default they are painted in odd and even. StripedFn also supports custom functions by which you can decide with which pattern you want to paint the rows.
+
+```ts
+//(index: number, row: TRow) => boolean
+stripedFn: (index) => (index + 1) % 3 === 0
+```
+<Canvas of={Stories.StripedCustom} />

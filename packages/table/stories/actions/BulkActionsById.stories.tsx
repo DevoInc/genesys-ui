@@ -15,10 +15,10 @@ import {
   orderDataByOrderStruct,
   TColDef,
   updateColDefsWithOrderStruct,
-} from '../src';
+} from '../../src';
 
 const meta: Meta<typeof Table> = {
-  title: 'Components/Layout/Table/BulkActions by id',
+  title: 'Components/Layout/Table/actions/BulkActions/by Id',
   component: Table,
   parameters: {
     layout: 'fullscreen',

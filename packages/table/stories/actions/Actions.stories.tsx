@@ -4,10 +4,10 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Holo } from '@devoinc/holo';
 import { GIEyeViewFilled, GIPencilEdit } from '@devoinc/genesys-icons';
 
-import { type TActionContext, BasicTable, type TData } from '../src';
+import { type TActionContext, BasicTable, type TData } from '../../src';
 
 const meta: Meta<typeof BasicTable> = {
-  title: 'Components/Layout/Table/Actions',
+  title: 'Components/Layout/Table/Actions/actions',
   component: BasicTable,
   parameters: {
     layout: 'fullscreen',

@@ -11,10 +11,10 @@ import {
   TextRenderer,
   useOrderStruct,
   useRowGrouping,
-} from '../src';
+} from '../../src';
 
 const meta: Meta<typeof Table> = {
-  title: 'Components/Layout/Table/RowGrouping',
+  title: 'Components/Layout/Table/Row/Grouping',
   component: Table,
   parameters: {
     layout: 'fullscreen',

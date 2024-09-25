@@ -1,0 +1,21 @@
+import { Meta, Canvas } from '@storybook/blocks';
+
+import * as Stories from './HighlightTable.stories';
+
+<Meta of={Stories} />
+
+# Highlight Table
+
+## Highlight column on hover
+
+The **highlightColumnsOnHover** property by default is set to false, once it is activated and you hover on a cell it will highlight the column.
+
+<Canvas of={Stories.Columns} />
+
+## Highlight row on hover
+
+The highlightRowOnHover property by default is set to false, once it is activated and you hover on a cell it will highlight the row.
+
+<Canvas of={Stories.Row} />
+
+> Both properties can be combined as needed to have both highlighted.
