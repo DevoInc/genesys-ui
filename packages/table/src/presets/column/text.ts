@@ -1,8 +1,7 @@
-import type { TColDef } from '../declarations';
-
-import { TextEditor } from '../editors';
-import { TextFilter } from '../filters';
-import { TextRenderer } from '../renderers';
+import { TColDef } from "../../declarations";
+import { TextEditor } from "../../editors";
+import { TextFilter } from "../../filters";
+import { TextRenderer } from "../../renderers";
 
 export const text: TColDef = {
   id: 'text',

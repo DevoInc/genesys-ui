@@ -1,7 +1,8 @@
-import type { TColDef } from '../declarations';
+import { TColDef } from "../../declarations";
 
-import { HeaderBulkRenderer } from '../headerRenderers';
-import { BulkRenderer } from '../renderers';
+import { HeaderBulkRenderer } from "../../headerRenderers";
+import { BulkRenderer } from "../../renderers";
+
 
 export const bulk: TColDef = {
   id: 'bulk',

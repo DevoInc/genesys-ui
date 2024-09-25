@@ -1,5 +1,5 @@
-import type { TColDef } from '../declarations';
-import { RowGroupingRenderer } from '../renderers';
+import { TColDef } from "../../declarations";
+import { RowGroupingRenderer } from "../../renderers";
 
 export const rowGrouping: TColDef = {
   id: 'rowGrouping',
