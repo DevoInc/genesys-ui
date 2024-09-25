@@ -26,6 +26,7 @@ export const addAfterRowsToRowDefs = (
           hide: true,
           cellRenderer: afterRowRenderer,
           height: afterRowHeight,
+          preset: 'isAfterRow'
         };
 
         return { ...defaultRowDef, ...rowDef };

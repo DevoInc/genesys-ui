@@ -6,12 +6,14 @@ import { TCellRenderer, TColDef, TData, TRowDef } from '../../declarations';
 import {
   addAfterRowToData,
   addAfterRowToRowDefs,
+  addPresetToRowDefs,
   deleteAfterRowToDataById,
+  deletePresetRowDefs,
   findDataById,
   getRowDef,
 } from '../../helpers';
 import type { TRowGroupingContext } from '../../facade/RowGrouping/RowGroupingContext';
-import { toggleHideRowDef } from '../../helpers';
+import { deleteAfterRowToRowDefs } from '../../helpers/afterRow/deleteAfterRowToRowDefs';
 
 export const useRenderAfterRow = ({
   rowDefs,
@@ -38,8 +40,20 @@ export const useRenderAfterRow = ({
           const nextSelection = updateSelection(selection)(rowId as string);
           setSelection(nextSelection);
           const isOpened = nextSelection.includes(rowId);
+
+          let rowDefSelect = getRowDef(rowDefs, rowId);
+          if (!rowDefSelect) {
+            rowDefs.push({ id: rowId });
+          }
+
           onRowDefsChange(
             rowDefs.map((rowDef: TRowDef) => {
+              if (rowDef.id !== `afterRow-${rowId}` && rowId === rowDef.id) {
+                rowDef = isOpened
+                  ? { ...rowDef, preset: 'expanded' }
+                  : { ...rowDef, preset: null };
+              }
+
               if (rowDef.id === `afterRow-${rowId}`) {
                 rowDef.hide = !isOpened;
               }
@@ -76,7 +90,7 @@ export const useOnDemandAfterRow = ({
   afterRowRenderer:
     | React.FC<TCellRenderer>
     | (({ value, colDef, rowIndex, row }: TCellRenderer) => React.ReactNode);
-  afterRowHeight: React.CSSProperties['height'];
+  afterRowHeight: number;
 }) => {
   const [selection, setSelection] = React.useState<string[] | number[]>(
     initialSelection || [],
@@ -95,13 +109,20 @@ export const useOnDemandAfterRow = ({
 
           onRowDefsChange(
             !getRowDef(rowDefs, `afterRow-${rowId}`)
-              ? addAfterRowToRowDefs(
-                  rowDefs,
+              ? addPresetToRowDefs(
+                  addAfterRowToRowDefs(
+                    rowDefs,
+                    rowId,
+                    afterRowRenderer,
+                    afterRowHeight,
+                  ),
                   rowId,
-                  afterRowRenderer,
-                  afterRowHeight,
+                  'expanded',
                 )
-              : toggleHideRowDef(rowDefs, `afterRow-${rowId}`),
+              : deletePresetRowDefs(
+                  deleteAfterRowToRowDefs(rowDefs, rowId),
+                  rowId,
+                ),
           );
           onDataChange(
             findDataById(data, `afterRow-${rowId}`)

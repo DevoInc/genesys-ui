@@ -15,4 +15,5 @@ export const addAfterRowToRowDefs = (
     hide: false,
     cellRenderer: afterRowRenderer,
     height: afterRowHeight,
+    preset: 'isAfterRow',
   });
