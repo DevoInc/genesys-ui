@@ -33,6 +33,7 @@ export const StyledParagraph = styled.p<StyledParagraphProps>`
     })};
   `}
   word-break: break-word;
+
   &:last-child {
     margin-bottom: 0;
   }

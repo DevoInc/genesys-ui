@@ -13,7 +13,7 @@ export interface ClearIndicatorProps extends RSClearIndicatorProps {}
 export const ClearIndicator: React.FC<ClearIndicatorProps> = (props) =>
   components.ClearIndicator && (
     <components.ClearIndicator {...props}>
-      <Icon>
+      <Icon size="xxs">
         <GIExitClose />
       </Icon>
     </components.ClearIndicator>

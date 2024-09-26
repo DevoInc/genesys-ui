@@ -137,6 +137,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
             }
           }
         }
+
         ////////////////////////////////////////////////////////// END CONTROL
 
         // VALUE WRAPPER & VALUE CONTAINER ///////////////////////////////////
@@ -191,6 +192,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
                 display: flex;
                 align-items: center;
                 column-gap: ${aliasTokens.space.cmp.xxs};
+                flex-wrap: ${!multipleSubtle && 'wrap'};
               }
             }
           }

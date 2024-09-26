@@ -54,6 +54,7 @@ export const SelectControl = <
   'aria-errormessage': ariaErrorMessage,
   'aria-describedby': ariaDescribedBy,
   'aria-labelledby': ariaLabelledBy,
+  captureMenuScroll,
   components,
   isDisabled,
   componentStyles,
@@ -184,6 +185,7 @@ export const SelectControl = <
         >
       }
       closeMenuOnScroll={handleCloseMenuOnScroll}
+      captureMenuScroll={captureMenuScroll || (rest.menuRelative && false)}
       style={style}
     />
   );

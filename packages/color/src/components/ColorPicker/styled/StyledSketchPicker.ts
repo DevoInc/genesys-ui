@@ -56,13 +56,8 @@ export const StyledSketchPicker = styled(SketchPicker)`
         color: ${baseTextColor} !important;
       }
 
-      input + span {
-        margin-top: 0.2rem;
-        margin-bottom: 0.1rem;
-      }
-
       > div:nth-child(3) > div:first-child input {
-        max-width: 4.2rem;
+        max-width: 4.5rem;
       }
 
       > .flexbox-fix:last-child {
