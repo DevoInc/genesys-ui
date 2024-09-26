@@ -1,5 +1,28 @@
 # Changelog
 
+## [12.1.0](https://github.com/DevoInc/genesys-ui/compare/v12.0.0...v12.1.0) (2024-09-26)
+
+
+### Features
+
+* added col, row & cell styles by its definitions ([33d7a62](https://github.com/DevoInc/genesys-ui/commit/33d7a621e5beccfacac57707b830b06c98d84e9a))
+* **table:** add preset defaul in Basic table ([c3a7a1e](https://github.com/DevoInc/genesys-ui/commit/c3a7a1ed8cbf2a02f71b106974f228c3ca863c40))
+* **table:** add presets in table components ([f3d6505](https://github.com/DevoInc/genesys-ui/commit/f3d6505f1f8e34b5c6a4dd93b427406a824cb726))
+* **table:** add presets row ([1208e22](https://github.com/DevoInc/genesys-ui/commit/1208e2246b374eed0cb93f14c8200d55709c54dc))
+* **table:** useAfterRow add presets ([8127b01](https://github.com/DevoInc/genesys-ui/commit/8127b01430b81c3eabb8d5782d34526ca82d06a0))
+
+
+### Bug Fixes
+
+* AppLayout tabs mark active fixed ([0560a19](https://github.com/DevoInc/genesys-ui/commit/0560a19988d8ac56d43e27738ebf5cceb3bec20f))
+* **datetime:** right formatDate and step for Time ([ac5a381](https://github.com/DevoInc/genesys-ui/commit/ac5a3811037ea4e1af9bab4aa071bb49645836ca))
+* fixed several minor naming problems and the Tabs mark in AppLayout story for secondary navigation ([85e5699](https://github.com/DevoInc/genesys-ui/commit/85e56998613506b1903efd68103dbb13f676cc6f))
+* QUV-2503 Fixed scroll and chips rendering in SelectControl with multiple selection ([7e16941](https://github.com/DevoInc/genesys-ui/commit/7e16941d388f7423a6c9a5d36b631523a6d5ffbc))
+* **table:** change default value highlightColumnsOnHover ([c85d427](https://github.com/DevoInc/genesys-ui/commit/c85d42793c335fb4d827b3186f8430dabae7cdb8))
+* **table:** remove autoFocus from SwitchControl in BooleanEditor ([6a7d772](https://github.com/DevoInc/genesys-ui/commit/6a7d772a850eeaaad2a356d4203b725e04a6791b))
+* **table:** style-components $ prefix for prop ([be6e9b0](https://github.com/DevoInc/genesys-ui/commit/be6e9b0f791ef428ce27296127f2aaa043f12567))
+* **table:** TRowGroupingContext onclick type string ([03a9605](https://github.com/DevoInc/genesys-ui/commit/03a96053651b2edfbde12dbdc172f62c5d13ed63))
+
 ## [12.0.0](https://github.com/DevoInc/genesys-ui/compare/v11.0.4...v12.0.0) (2024-09-19)
 
 
