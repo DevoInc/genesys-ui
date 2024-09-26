@@ -1,3 +1,2 @@
-export * from './addAfterRowsToData';
-export * from './addAfterRowToRowDefs';
-export * from './addAfterRowsToRowDefs';
+export * from './toData';
+export * from './toRowDefs';

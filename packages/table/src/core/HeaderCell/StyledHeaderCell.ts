@@ -17,16 +17,16 @@ interface StyledHeaderCellProps
 }
 
 export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
-  ${({ theme }) => cellMixin({ theme })}
   left: 0;
+  height: 100%;
+  ${({ theme }) => cellMixin({ theme })}
   justify-content: ${({ $horAlign }) =>
     $horAlign
       ? (CELL_ALIGN_MAP[$horAlign] as React.CSSProperties['justifyContent'])
       : 'space-between'};
   gap: ${({ theme }) => getSpacingPropCss(theme)('cmp-xs')};
   transform: ${({ $offsetX }) => `translateX(${$offsetX}px)`};
-  width: ${({ $width }) => $width};
-  height: 100%;
+  ${({ $width }) => $width && `width: ${$width};`}
   padding: ${({ theme, $density }) =>
     `${theme.cmp.table.cell.space.padding.ver[$density].base} ${theme.cmp.table.cell.space.padding.hor[$density]}`};
   cursor: ${({ sortable }) => sortable && 'pointer'};

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CSSProp } from 'styled-components';
+import { CSSProp, DefaultTheme } from 'styled-components';
 
 import { DateContext } from './valueFormatters/date';
 
@@ -30,9 +30,9 @@ export type TStateRow =
 // Definitions
 
 export type TColDef = {
+  /** Id of the column */
   id: string;
   headerName?: string;
-  // type?: string;
   preset?: string;
 
   editable?: boolean;
@@ -58,7 +58,6 @@ export type TColDef = {
   sort?: 'asc' | 'desc';
   sortIndex?: React.ReactNode;
 
-  isDragging?: boolean;
   onReset?: (initialValue: unknown) => void;
   tooltipField?: string;
   resizable?: boolean;
@@ -76,16 +75,38 @@ export type TColDef = {
   style?: CSSProp;
 };
 
+export type TPresetRow =
+  | 'created'
+  | 'deleted'
+  | 'disabled'
+  | 'draggable'
+  | 'expanded'
+  | 'highlighted'
+  | 'isAfterRow'
+  | 'isDragging'
+  | 'modified'
+  | 'selected';
+
 export type TRowDef = {
   hide?: boolean;
   id: string;
+  preset?: TPresetRow;
   height?: number;
   minHeight?: number;
-  isDragging?: boolean;
   cellRenderer?:
     | React.FC<TCellRenderer>
     | (({ value, colDef, rowIndex, row }: TCellRenderer) => React.ReactNode);
-  style?: CSSProp;
+  style?:
+    | CSSProp
+    | (({
+        theme,
+        evenOddType,
+        striped,
+      }: {
+        theme: DefaultTheme;
+        evenOddType: 'even' | 'odd';
+        striped: boolean;
+      }) => CSSProp);
 };
 
 export type TCellDef = {
@@ -101,10 +122,16 @@ export type TAfterRow = {
 };
 
 export type TColPreset = {
+  /** Id of the preset */
   id: string;
-} & Omit<TColDef, 'colId'>;
+} & Omit<TColDef, 'id'>;
+
+export type TRowPreset = {
+  id: string;
+} & Omit<TRowDef, 'id'>;
 
 export type TDefaultColDef = Omit<TColDef, 'id'>;
+export type TDefaultRowDef = Omit<TRowDef, 'id'>;
 
 export type TRow = { [key: string]: unknown };
 export type TData = TRow[];
@@ -169,18 +196,22 @@ export interface ITable {
   cellDefs?: TCellDef[];
   afterRowDefs?: TAfterRow[];
   defaultColDef?: TDefaultColDef;
+  defaultRowDef?: TDefaultRowDef;
   columnPresets?: TColPreset[];
+  rowPresets?: TRowPreset[];
   context?: {
     [key: string]: unknown;
   };
   density?: TDensity;
   striped?: boolean;
+  stripedFn?: (index: number, row: TRow) => boolean;
   maxHeight?: React.CSSProperties['maxHeight'];
   minWidth?: number;
   minHeight?: number;
   rowHeight?: number;
   resizableColumns?: boolean;
   highlightColumnsOnHover?: boolean;
+  highlightRowOnHover?: boolean;
   texts?: TTextsType;
   showFilters?: boolean;
   onSort?: (colDef: TColDef) => void;

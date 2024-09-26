@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 
-import { TCellDef } from '../../../declarations';
+import type { TCellDef } from '../../../declarations';
 import { getCellDef } from './getCellDef';
 
 describe('helpers', () => {

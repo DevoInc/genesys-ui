@@ -1,16 +1,14 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import { useUpdateEffect } from 'ahooks';
+import { useSize, useUpdateEffect } from 'ahooks';
 
 import { getPxFromRem } from '@devoinc/genesys-ui';
 
 import {
-  useWrapperObserver,
-  useTableScroll,
   useTableVirtualizationColumn,
   useTableVirtualizationRow,
 } from '../../hooks';
-import { TableContext, WrapperContext } from '../../context';
+import { TableContext } from '../../context';
 
 import { TableHead } from '../TableHead';
 import { TableBody } from '../TableBody';
@@ -21,12 +19,15 @@ export const TableWrapper: React.FC = () => {
   const theme = useTheme();
   const { maxHeight, colDefs, data, showFilters, density, rowDefs } =
     React.useContext(TableContext);
-  const { width: wrapperWidth } = React.useContext(WrapperContext);
 
-  const { ref } = useWrapperObserver();
+  const ref = React.useRef<HTMLDivElement>();
+  const size = useSize(ref);
   const rowVirtualizer = useTableVirtualizationRow({ ref });
-  const columnVirtualizer = useTableVirtualizationColumn({ ref });
-  const { hasScroll } = useTableScroll(rowVirtualizer, ref);
+  const columnVirtualizer = useTableVirtualizationColumn({
+    ref,
+    wrapperWidth: size?.width,
+  });
+
   const width = columnVirtualizer.getTotalSize();
   const rowsTotalSize = rowVirtualizer.getTotalSize();
 
@@ -44,12 +45,12 @@ export const TableWrapper: React.FC = () => {
 
   return (
     <StyledTableWrapper ref={ref} $maxHeight={maxHeight}>
-      {wrapperWidth > 0 ? (
+      {size?.width > 0 ? (
         <StyledTable $height={height} $width={width}>
           <TableHead
             colDefs={colDefs}
             columnVirtualizer={columnVirtualizer}
-            scrolled={hasScroll}
+            scrolled={rowVirtualizer.scrollOffset !== 0}
             data={data}
             width={width}
           />

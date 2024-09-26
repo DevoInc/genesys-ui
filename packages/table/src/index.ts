@@ -5,7 +5,7 @@ export * from './headerRenderers';
 export * from './filters';
 export * from './facade';
 export * from './hooks';
-export * from './columnPresets';
+export * from './presets';
 export * from './valueFormatters';
 export * from './recipes';
 export * from './helpers';

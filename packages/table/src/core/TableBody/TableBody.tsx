@@ -27,16 +27,17 @@ export const TableBody: React.FC<TableBodyProps> = ({
       $width={width}
       $highlightColumnsOnHover={highlightColumnsOnHover}
     >
-      {rowVirtualizer.getVirtualItems().map((virtualRow: VirtualItem) => {
-        return (
-          <Row
-            key={'tb_' + virtualRow.key}
-            columnVirtualizer={columnVirtualizer}
-            rowData={data[virtualRow.index]}
-            virtualRow={virtualRow}
-          />
-        );
-      })}
+      {rowVirtualizer.getVirtualItems().map((virtualRow: VirtualItem) => (
+        <Row
+          key={'tb_' + virtualRow.key}
+          columnVirtualizer={columnVirtualizer}
+          rowData={data[virtualRow.index]}
+          index={virtualRow.index}
+          height={virtualRow.size}
+          start={virtualRow.start}
+          wrapperHeight={height}
+        />
+      ))}
     </StyledTableBody>
   );
 };

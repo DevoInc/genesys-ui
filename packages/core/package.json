@@ -18,10 +18,11 @@
   "scripts": {
     "compile": "tsc --project tsconfig.json",
     "compile:watch": "npm run compile -- --watch",
+    "test": "vitest",
     "build": "vite build",
     "build:watch": "vite build --watch",
     "depcruise": "sh ../../depcruise.sh \"$npm_package_name\"",
-    "analyzer": "npx vite-bundle-visualizer -o 'dist/stats.html'",
+    "analyzer": "vite-bundle-visualizer -o 'dist/stats.html'",
     "stryker": "npx stryker run",
     "dpdm": "dpdm --exit-code circular:1 ./src/index.ts"
   },

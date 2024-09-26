@@ -1,0 +1,44 @@
+import { Meta, Canvas } from '@storybook/blocks';
+
+import * as Stories from './PresetsRowTable.stories';
+
+<Meta of={Stories} />
+
+# Presets row
+
+<Canvas of={Stories.StateStriped} />
+
+The table rows can contain different states according to the needs. For it in the definition of rows we can define a preset property that will allow us to pass certain css styles that will be applied to each one of the rows.
+
+From the library we have available a series of presets that will be applied by default when using the basic table component:
+```ts 
+type TPresetRow =
+  | 'created'
+  | 'deleted'
+  | 'disabled'
+  | 'draggable'
+  | 'expanded'
+  | 'highlighted'
+  | 'isAfterRow'
+  | 'isDragging'
+  | 'modified'
+  | 'selected';
+```
+Also with the style property inside rowDefs it will be possible to pass custom styles that are necessary to represent in the row.
+
+```js
+{
+  style?:
+    | CSSProp
+    | (({
+        theme,
+        evenOddType,
+        striped,
+      }: {
+        theme: DefaultTheme;
+        evenOddType: 'even' | 'odd';
+        striped: boolean;
+      }) => CSSProp);
+}
+```
+In the **StatesStriped** and **StatesNoStriped** examples you can see examples of each of the default states and even a custom state.

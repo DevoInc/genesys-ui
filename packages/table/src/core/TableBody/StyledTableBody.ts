@@ -11,8 +11,8 @@ interface StyledTableBodyProps
 export const StyledTableBody = styled.tbody<StyledTableBodyProps>`
   position: relative;
   display: inline-block;
-  height: ${({ $height = 'auto' }) => `${$height}px`};
-  width: ${({ $width = '100%' }) => `${$width}px`};
+  ${({ $height }) => $height && `height: ${$height}px`};
+  ${({ $width }) => $width && `width: ${$width}px`};
   overflow: ${({ $highlightColumnsOnHover }) =>
     $highlightColumnsOnHover ? 'hidden' : null};
 `;

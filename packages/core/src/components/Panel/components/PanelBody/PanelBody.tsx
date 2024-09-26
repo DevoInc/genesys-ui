@@ -19,6 +19,8 @@ export const PanelBody = React.forwardRef<HTMLElement, PanelBodyProps>(
     const theme = useTheme();
     const context = React.useContext(PanelContext);
     const evalSize = size || context.size || 'md';
+    const removeContentSpace =
+      removeSpace ?? context?.removeContentSpace ?? false;
 
     return (
       <Box
@@ -29,7 +31,7 @@ export const PanelBody = React.forwardRef<HTMLElement, PanelBodyProps>(
         style={mergeStyles(
           panelBodyMixin({
             hasScrollSpacing: hasScrollSpacing ?? context.scrolledBodyContent,
-            removeSpace,
+            removeSpace: removeContentSpace,
             size: evalSize,
             theme,
           }),

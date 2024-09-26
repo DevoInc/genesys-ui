@@ -6,7 +6,6 @@ import type { TCellEditor } from '../../declarations';
 export const BooleanEditor: React.FC<TCellEditor> = ({ value, onChange }) => (
   <SwitchControl
     size="sm"
-    autoFocus
     checked={!!value}
     aria-label={'Switch'}
     onChange={() => {

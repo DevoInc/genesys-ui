@@ -59,5 +59,17 @@ export default defineConfig({
   test: {
     environment: 'happy-dom',
     include: ['{src,stories}/**/*.test.ts?(x)'],
+    coverage: {
+      provider: 'v8',
+      include: ['{src,stories}/**/*'],
+    },
+    server: {
+      deps: {
+        inline: [
+          /\/@devoinc\/genesys-ui\//,
+          /\/@devoinc\/genesys-ui-datetime\//,
+        ],
+      },
+    },
   },
 });

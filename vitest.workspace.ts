@@ -1,8 +1,8 @@
 export default [
   'packages/core',
-  'packages/code',
+  // 'packages/code',
   'packages/datetime',
-  'packages/color',
-  'packages/upload',
+  // 'packages/color',
+  // 'packages/upload',
   'packages/table',
 ];
