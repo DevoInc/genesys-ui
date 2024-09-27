@@ -129,22 +129,11 @@ const colDefs: TColDef[] = [
 export default meta;
 type Story = StoryObj<typeof BasicTable>;
 
-export const StateStriped: Story = {
+export const States: Story = {
   args: {
     maxHeight: '80vh',
     rowHeight: ROW_HEIGHT_MD,
     striped: true,
-    rowDefs,
-    colDefs,
-    data,
-  },
-};
-
-export const StateNoStriped: Story = {
-  args: {
-    maxHeight: '80vh',
-    rowHeight: ROW_HEIGHT_MD,
-    striped: false,
     rowDefs,
     colDefs,
     data,
