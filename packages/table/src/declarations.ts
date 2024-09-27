@@ -161,7 +161,6 @@ export type TFilterValue = {
 
 export type TFilter = {
   colDef?: TColDef;
-  data?: TData;
   onChange: (value: TFilterValue, type: string) => void;
 };
 

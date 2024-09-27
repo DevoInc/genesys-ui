@@ -49,9 +49,8 @@ export const TableWrapper: React.FC = () => {
         <StyledTable $height={height} $width={width}>
           <TableHead
             colDefs={colDefs}
-            columnVirtualizer={columnVirtualizer}
+            items={columnVirtualizer?.getVirtualItems() ?? []}
             scrolled={rowVirtualizer.scrollOffset !== 0}
-            data={data}
             width={width}
           />
           <TableBody

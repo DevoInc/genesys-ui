@@ -14,50 +14,48 @@ import { StyledTableHeadRow } from './StyledTableHeadRow';
 
 interface TableHeadProps {
   scrolled?: boolean;
-  columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
+  items: any;
   colDefs: TColDef[];
-  data: TData;
   width: number;
 }
 
 export const TableHead: React.FC<TableHeadProps> = ({
-  columnVirtualizer,
+  items,
   colDefs,
   scrolled,
-  data,
   width,
 }) => {
   const { showFilters, resizableColumns, density, onSort, onFilter } =
     React.useContext(TableContext);
-  const items = columnVirtualizer?.getVirtualItems() ?? [];
 
   return (
     <StyledTableHead $scrolled={scrolled} $width={width}>
       <StyledTableHeadRow $density={density}>
-        {colDefs.map((colDef) => {
-          const virtualColumn = items.find((item) => item.key === colDef.id);
-          const headerOnFilterPosition =
-            showFilters && (colDef?.headerOnFilterPosition ?? false);
-          return (
-            !headerOnFilterPosition &&
-            virtualColumn && (
-              <HeaderCell
-                key={`header-cell-${colDef.id}`}
-                colDef={colDef}
-                width={virtualColumn && `${virtualColumn.size}px`}
-                offsetX={virtualColumn && virtualColumn.start}
-                resizable={colDef?.resizable ?? resizableColumns ?? false}
-                onSort={onSort}
-              >
-                {colDef?.headerRenderer ? (
-                  colDef.headerRenderer({ colDef })
-                ) : (
-                  <HeaderTextRenderer colDef={colDef} />
-                )}
-              </HeaderCell>
-            )
-          );
-        })}
+        {colDefs
+          .map((colDef) => {
+            const virtualColumn = items.find((item) => item.key === colDef.id);
+            const headerOnFilterPosition =
+              showFilters && (colDef?.headerOnFilterPosition ?? false);
+            return (
+              !headerOnFilterPosition &&
+              virtualColumn && (
+                <HeaderCell
+                  key={`header-cell-${colDef.id}`}
+                  colDef={colDef}
+                  width={virtualColumn && `${virtualColumn.size}px`}
+                  offsetX={virtualColumn && virtualColumn.start}
+                  resizable={colDef?.resizable ?? resizableColumns ?? false}
+                  onSort={onSort}
+                >
+                  {colDef?.headerRenderer ? (
+                    colDef.headerRenderer({ colDef })
+                  ) : (
+                    <HeaderTextRenderer colDef={colDef} />
+                  )}
+                </HeaderCell>
+              )
+            );
+          })}
       </StyledTableHeadRow>
       {showFilters ? (
         <StyledTableHeadRow $density={density}>
@@ -83,7 +81,6 @@ export const TableHead: React.FC<TableHeadProps> = ({
                   ) : colDef.cellFilter ? (
                     colDef.cellFilter({
                       colDef,
-                      data,
                       onChange: (value: TTextFilterValue, type: string) => {
                         onFilter(colDef, value, type);
                       },
