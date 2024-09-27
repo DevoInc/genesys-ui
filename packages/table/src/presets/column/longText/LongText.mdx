@@ -1,0 +1,34 @@
+import { Meta, Story, Source } from '@storybook/blocks';
+
+import * as Stories from './LongText.stories';
+
+<Meta of={Stories} />
+
+# Preset `longText`
+
+<Story of={Stories.Base} />
+
+The preset long text is a variation of the `text` preset that do several things:
+
+- Use the `TextRenderer` renderer
+- Use the `TextAreaEditor` as editor
+- Use the `TexFilter` as filter
+- Define a height of twice height for rowHeight (defined at column level)
+
+In the example you are viewing a modified `longText` preset with the next
+configuration:
+
+<Source
+  language="tsx"
+  code={`{
+  ...
+  preset: 'longText',
+  rowHeight: 200,
+  truncateLine: 0,
+  ...
+}`}
+/>
+
+Here the `truncateLine: 0` is telling to the `TextRenderer` to not truncate the
+line. And the `rowHeight: 200` is defining the height for each element of the
+column.

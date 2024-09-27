@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 
-import type { TPresetRow, TRowDef } from '../../../declarations';
+import type { TRowDef } from '../../../declarations';
 import { deletePresetRowDefs } from './deletePresetRowDef';
 
 describe('helpers', () => {
