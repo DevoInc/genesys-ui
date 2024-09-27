@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import type { IGlobalAttrs } from '../../declarations';
 import type { IKeyValue } from './declarations';
-
 import {
   KeyValueContainer,
   KeyValueSupportingVisual,
@@ -27,55 +26,53 @@ export const InternalKeyValue: React.FC<KeyValueProps> = ({
   tooltip,
   unit,
   valueContent,
-}) => {
-  return (
-    <KeyValueContainer
-      format={format}
-      id={id}
-      role={role}
-      size={size}
-      tooltip={tooltip}
-    >
-      {supportingVisual && (
-        <KeyValueSupportingVisual format={format}>
-          {supportingVisual}
-        </KeyValueSupportingVisual>
-      )}
-      <KeyValueTextContainer format={format} size={size}>
-        <KeyValueText
-          bold
-          order={
-            invertOrder && boldScheme === 'value'
-              ? 1
-              : boldScheme === 'value'
+}) => (
+  <KeyValueContainer
+    format={format}
+    id={id}
+    role={role}
+    size={size}
+    tooltip={tooltip}
+  >
+    {supportingVisual && (
+      <KeyValueSupportingVisual format={format}>
+        {supportingVisual}
+      </KeyValueSupportingVisual>
+    )}
+    <KeyValueTextContainer format={format} size={size}>
+      <KeyValueText
+        bold
+        order={
+          invertOrder && boldScheme === 'value'
+            ? 1
+            : boldScheme === 'value'
+              ? 2
+              : invertOrder
                 ? 2
-                : invertOrder
-                  ? 2
-                  : 1
-          }
-          size={size}
-        >
-          {boldScheme === 'key' ? keyContent : valueContent}
-        </KeyValueText>
-        <KeyValueText
-          order={
-            invertOrder && boldScheme === 'value'
+                : 1
+        }
+        size={size}
+      >
+        {boldScheme === 'key' ? keyContent : valueContent}
+      </KeyValueText>
+      <KeyValueText
+        order={
+          invertOrder && boldScheme === 'value'
+            ? 1
+            : boldScheme === 'value'
               ? 1
-              : boldScheme === 'value'
+              : invertOrder
                 ? 1
-                : invertOrder
-                  ? 1
-                  : 2
-          }
-          size={size}
-          unit={unit}
-        >
-          {boldScheme === 'value' ? keyContent : valueContent}
-        </KeyValueText>
-      </KeyValueTextContainer>
-    </KeyValueContainer>
-  );
-};
+                : 2
+        }
+        size={size}
+        unit={unit}
+      >
+        {boldScheme === 'value' ? keyContent : valueContent}
+      </KeyValueText>
+    </KeyValueTextContainer>
+  </KeyValueContainer>
+);
 
 export const KeyValue = InternalKeyValue as typeof InternalKeyValue & {
   _Container: typeof KeyValueContainer;

@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { AppLayout } from './AppLayout';
 import { AppBar } from '../AppBar';
-import { Tabs } from '../Tabs';
+import { Tabs, useTabsAccessibility } from '../Tabs';
 import { Panel } from '../Panel';
 import { Typography } from '../Typography';
 import { TabsCmp } from './__stories__';
@@ -42,34 +42,58 @@ export const Base: Story = {
 };
 
 export const DoubleNavigation: Story = {
-  render: () => (
-    <AppLayout>
-      <AppLayout.Bar>
-        <AppBar>
-          <AppBar.Heading id="bar-heading">Title</AppBar.Heading>
-          <AppBar.Divider />
-          <AppBar.Navigation id="bar-navigation">
-            <TabsCmp />
-          </AppBar.Navigation>
-        </AppBar>
-      </AppLayout.Bar>
-      <AppLayout.Lead>
-        <Tabs contained>
-          <Tabs.Item size="sm" state={'selected'} label="Subitem 1" />
-          <Tabs.Item size="sm" label="Subitem 2" />
-          <Tabs.Item size="sm" label="Subitem 3" />
-        </Tabs>
-      </AppLayout.Lead>
-      <AppLayout.Content>
-        <Panel height="100%">
-          <Panel.Body>Content</Panel.Body>
-        </Panel>
-      </AppLayout.Content>
-    </AppLayout>
-  ),
+  tags: ['isHidden'],
+  render: () => {
+    const tabsRef = React.useRef<HTMLDivElement>();
+    const [activeTab, setActiveTab] = React.useState(0);
+    useTabsAccessibility({ activeTab, tabsRef });
+    return (
+      <AppLayout>
+        <AppLayout.Bar>
+          <AppBar>
+            <AppBar.Heading id="bar-heading">Title</AppBar.Heading>
+            <AppBar.Divider />
+            <AppBar.Navigation id="bar-navigation">
+              <TabsCmp />
+            </AppBar.Navigation>
+          </AppBar>
+        </AppLayout.Bar>
+        <AppLayout.Lead>
+          <Tabs contained>
+            <Tabs.List activeTabIndex={activeTab} ref={tabsRef}>
+              <Tabs.Item
+                size="sm"
+                label="Subitem 1"
+                onClick={() => setActiveTab(0)}
+                state={activeTab === 0 ? 'selected' : undefined}
+              />
+              <Tabs.Item
+                size="sm"
+                label="Subitem 2"
+                onClick={() => setActiveTab(1)}
+                state={activeTab === 1 ? 'selected' : undefined}
+              />
+              <Tabs.Item
+                size="sm"
+                label="Subitem 3"
+                onClick={() => setActiveTab(2)}
+                state={activeTab === 2 ? 'selected' : undefined}
+              />
+            </Tabs.List>
+          </Tabs>
+        </AppLayout.Lead>
+        <AppLayout.Content>
+          <Panel height="100%">
+            <Panel.Body>Content</Panel.Body>
+          </Panel>
+        </AppLayout.Content>
+      </AppLayout>
+    );
+  },
 };
 
 export const ContentPadding: Story = {
+  tags: ['isHidden'],
   render: () => {
     return (
       <AppLayout>
@@ -91,6 +115,7 @@ export const ContentPadding: Story = {
 };
 
 export const NoHeader: Story = {
+  tags: ['isHidden'],
   render: () => (
     <AppLayout>
       <AppLayout.Content>

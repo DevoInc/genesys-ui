@@ -3,7 +3,6 @@ import * as React from 'react';
 import type { TGlobalStatus } from '../../declarations/commonProps';
 import type { ButtonGroupProps } from '../ButtonGroup';
 import type { IconProps } from '../Icon';
-
 import {
   StatusMessageButtons,
   StatusMessageContainer,
@@ -55,7 +54,7 @@ export const InternalStatusMessage: React.FC<StatusMessageProps> = ({
   padding = 'cmp-md',
   role,
   status,
-  styles,
+  style,
   title,
   tooltip,
   width,
@@ -83,7 +82,7 @@ export const InternalStatusMessage: React.FC<StatusMessageProps> = ({
       onMouseUp={onMouseUp}
       padding={padding}
       role={role}
-      styles={styles}
+      style={style}
       tooltip={tooltip}
       width={width}
     >

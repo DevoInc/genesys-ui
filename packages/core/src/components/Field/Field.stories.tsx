@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Field } from './Field';
-import { StyledInputControl } from '../InputControl/styled/StyledInputControl';
+import { StyledInputControl } from '../InputControl/components/InputControlInput/StyledInputControl';
 import { InputControl } from '../InputControl';
 
 const meta: Meta<typeof Field> = {
@@ -84,7 +84,7 @@ export const AdvancedUsage: Story = {
         <Field._Helper
           size="sm"
           message="This is the Field helper"
-          styles="p {color: purple}"
+          style="p {color: purple}"
         />
       </Field._Container>
     ))(),

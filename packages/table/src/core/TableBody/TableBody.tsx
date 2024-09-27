@@ -1,8 +1,10 @@
 import React from 'react';
-import { Row } from '../Row';
-import { StyledTableBody } from './StyledTableBody';
 import { VirtualItem, Virtualizer } from '@tanstack/react-virtual';
+
+import { Row } from '../Row';
 import { TableContext } from '../../context/TableContext';
+
+import { StyledTableBody } from './StyledTableBody';
 
 export interface TableBodyProps {
   columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
@@ -23,18 +25,19 @@ export const TableBody: React.FC<TableBodyProps> = ({
     <StyledTableBody
       $height={height}
       $width={width}
-      highlightColumnsOnHover={highlightColumnsOnHover}
+      $highlightColumnsOnHover={highlightColumnsOnHover}
     >
-      {rowVirtualizer.getVirtualItems().map((virtualRow: VirtualItem) => {
-        return (
-          <Row
-            key={'tb_' + virtualRow.key}
-            columnVirtualizer={columnVirtualizer}
-            data={data[virtualRow.index]}
-            virtualRow={virtualRow}
-          />
-        );
-      })}
+      {rowVirtualizer.getVirtualItems().map((virtualRow: VirtualItem) => (
+        <Row
+          key={'tb_' + virtualRow.key}
+          columnVirtualizer={columnVirtualizer}
+          rowData={data[virtualRow.index]}
+          index={virtualRow.index}
+          height={virtualRow.size}
+          start={virtualRow.start}
+          wrapperHeight={height}
+        />
+      ))}
     </StyledTableBody>
   );
 };

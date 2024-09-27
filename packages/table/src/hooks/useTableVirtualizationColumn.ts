@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 
-import { WrapperContext, TableContext } from '../context';
+import { TableContext } from '../context';
 
 type TUseVirtualizationParamsColumn = {
   ref: React.MutableRefObject<HTMLDivElement>;
+  wrapperWidth: number | undefined;
 };
 
 const getPixelsFromPercentage =
@@ -15,9 +16,9 @@ const getPixelsFromPercentage =
 
 export const useTableVirtualizationColumn = ({
   ref,
+  wrapperWidth,
 }: TUseVirtualizationParamsColumn) => {
   const { colDefs, minWidth } = React.useContext(TableContext);
-  const { width: wrapperWidth } = React.useContext(WrapperContext);
 
   const colsWidth = React.useMemo(() => {
     // get the width of the table
@@ -32,7 +33,9 @@ export const useTableVirtualizationColumn = ({
       const col = colDefs[index];
       const width = col?.width
         ? Math.max(getPixels(col.width), getPixels(col?.minWidth ?? 0))
-        : null;
+        : col?.hide
+          ? 0
+          : null;
       colWidths[index] = width;
       if (width !== null) {
         filled += width ?? 0;

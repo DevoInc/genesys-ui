@@ -2,12 +2,12 @@ import * as React from 'react';
 import { set } from 'date-fns';
 
 import {
-  TFieldSize,
   Flex,
-  IGlobalAttrs,
   InputControl,
-  IStyledOverloadCss,
-  IStyledPolymorphic,
+  type TFieldSize,
+  type IGlobalAttrs,
+  type IStyledOverloadCss,
+  type IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
 
 import type { ITime } from '../../declarations';
@@ -40,7 +40,7 @@ export const Time: React.FC<TimeProps> = ({
   id,
   onChange,
   size = 'md',
-  styles,
+  style,
   value,
   disabled = false,
   i18n: userI18n = defaultTimeI18n,
@@ -49,7 +49,7 @@ export const Time: React.FC<TimeProps> = ({
 }) => {
   const i18n = useMergeI18n(userI18n, defaultTimeI18n) as TTimeI18n;
   return (
-    <Flex as={as} justifyContent="center" styles={styles}>
+    <Flex as={as} justifyContent="center" style={style}>
       <Flex.Item
         flex="0 0 auto"
         minWidth={hasMillis ? '16rem' : hasSeconds ? '13rem' : '11rem'}
@@ -80,16 +80,20 @@ export const Time: React.FC<TimeProps> = ({
             onChange(set(new Date(value), time).getTime());
           }}
           size={size}
-          step={hasSeconds ? 1 : null}
+          step={hasMillis ? '0.001' : hasSeconds ? '1' : null}
           type={'time'}
           value={
-            value === null || value === undefined
-              ? null
-              : formatDate(value, getFormatTimeStr(hasSeconds, hasMillis))
+            value && formatDate(value, getFormatTimeStr(hasSeconds, hasMillis))
           }
           disabled={disabled}
-          min={minDate && formatDate(minDate, getFormatTimeStr(true, true))}
-          max={maxDate && formatDate(maxDate, getFormatTimeStr(true, true))}
+          min={
+            minDate &&
+            formatDate(minDate, getFormatTimeStr(hasSeconds, hasMillis))
+          }
+          max={
+            maxDate &&
+            formatDate(maxDate, getFormatTimeStr(hasSeconds, hasMillis))
+          }
         />
       </Flex.Item>
     </Flex>

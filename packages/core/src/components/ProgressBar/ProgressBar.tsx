@@ -12,11 +12,8 @@ import {
   TProgressBarType,
   TProgressBarCustomInfo,
 } from './declarations';
-
 import { Flex } from '../Flex';
-
 import { getIcon, getPercent, getStatus, hasCustomInfo } from './utils';
-
 import {
   ProgressBarCircularBar,
   ProgressBarContainer,
@@ -68,7 +65,7 @@ const InternalProgressBar: React.FC<ProgressBarProps> = ({
   statusHelper,
   showStatus,
   size = 'md',
-  styles,
+  style,
   type = 'standard',
   ...nativeProps
 }) => {
@@ -84,7 +81,7 @@ const InternalProgressBar: React.FC<ProgressBarProps> = ({
       percent={evalPercent}
       size={size}
       status={evalStatus}
-      styles={styles}
+      style={style}
       type={type}
       withCustomInfo={withCustomInfo}
     >

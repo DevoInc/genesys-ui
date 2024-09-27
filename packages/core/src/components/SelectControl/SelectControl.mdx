@@ -9,17 +9,17 @@ import * as CaseStories from './SelectControl.cases.stories';
 
 ## Overview
 
-The Select component provides a way for users to select an option from a dropdown list.
-It allows users to choose from a set of predefined options, which can be customized to suit the needs of the application.
-The Select component is implemented using the [react-select](https://react-select.com/home) library, which provides a flexible and powerful API for creating customized dropdown menus.
+The Select component provides a way for users to select an option from a
+dropdown list.
+It allows users to choose from a set of predefined options, which can be
+customized to suit the needs of the application.
+The Select component is implemented using the
+[react-select](https://react-select.com/home) library, which provides a flexible
+and powerful API for creating customized dropdown menus.
 
 ## How to import
 
-<Source
-  code={`
-import { SelectControl } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { SelectControl } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
@@ -42,14 +42,15 @@ import { SelectControl } from '@devoinc/genesys-ui';
 ### Multiple subtle
 
 A variant of the multi value component with a 'subtle' look & feel and behavior:
-strings instead of chips for each selected value, lighter and less high menu options
-with checkboxes instead of background color as selected marker... etc.
+strings instead of chips for each selected value, lighter and less high menu
+options with checkboxes instead of background color as selected marker... etc.
 
 It's useful for small contexts, because in addition the select control
 doesn't grow vertically when the options don't have enough space.
 
-Don't forget you have to apply `closeMenuOnSelect={false}` and `hideSelectedOptions={false}` when you
-use the subtle variant to get the right behavior.
+Don't forget you have to apply `closeMenuOnSelect={false}` and
+`hideSelectedOptions={false}` when you use the subtle variant to get the right
+behavior.
 
 <Canvas of={CaseStories.MultipleBasic} />
 

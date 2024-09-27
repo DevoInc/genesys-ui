@@ -1,19 +1,14 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import { concat } from 'lodash';
 
-import { useDetectScroll } from '../../hooks';
-
+import { useIsOverflow } from '../../hooks';
 import type { TPanelSize } from './declarations';
 import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../declarations';
-
 import { PanelContext } from './context';
-
 import { panelMixin, type PanelMixinProps } from './helpers';
-
 import { Box, type BoxProps } from '../Box';
 import {
   PanelBody,
@@ -22,6 +17,7 @@ import {
   type PanelFooterProps,
   type PanelHeaderProps,
 } from './components';
+import { mergeStyles } from '../../helpers';
 
 export interface PanelProps
   extends BoxProps,
@@ -48,33 +44,39 @@ const InternalPanel = React.forwardRef<HTMLElement, PanelProps>(
       colorScheme,
       display,
       elevation = 'raised',
-      styles,
+      style,
       size = 'md',
       children,
+      removeContentSpace,
       ...restBoxProps
     },
     ref,
   ) => {
     const theme = useTheme();
-    const { hasScroll, targetElRef } = useDetectScroll();
+    const targetElRef = React.useRef<HTMLDivElement>(null);
+    const { hasScroll } = useIsOverflow(targetElRef);
     return (
       <Box
         {...restBoxProps}
         ref={ref}
         elevation={elevation}
-        styles={concat(
-          panelMixin({
+        style={mergeStyles(
+          panelMixin(theme)({
             bordered,
             colorScheme,
             display,
             elevation,
-            theme,
           }),
-          styles,
+          style,
         )}
       >
         <PanelContext.Provider
-          value={{ scrolledBodyContent: hasScroll, size, bodyRef: targetElRef }}
+          value={{
+            scrolledBodyContent: hasScroll,
+            size,
+            bodyRef: targetElRef,
+            removeContentSpace,
+          }}
         >
           {children}
         </PanelContext.Provider>

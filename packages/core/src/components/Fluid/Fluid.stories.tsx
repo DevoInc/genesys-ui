@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Container, Typography } from '../..';
-
+import { Container } from './Container';
+import { Typography } from '../Typography';
 import { StoryCol as Col, StoryRow as Row } from './__stories__';
 
 const meta: Meta<typeof Container> = {
@@ -17,6 +17,7 @@ export default meta;
 type Story = StoryObj<typeof Container>;
 
 export const EqualWidth: Story = {
+  tags: ['isHidden'],
   name: 'Equal width',
   render: (args) => (
     <Container {...args} fluid>
@@ -30,6 +31,7 @@ export const EqualWidth: Story = {
 };
 
 export const Stacked: Story = {
+  tags: ['isHidden'],
   name: 'Stacked to horizontal',
   render: (args) => (
     <Container {...args} fluid>
@@ -63,6 +65,7 @@ export const Stacked: Story = {
 };
 
 export const ColumnWrapping: Story = {
+  tags: ['isHidden'],
   name: 'Column wrapping',
   render: (args) => (
     <Container {...args} fluid>
@@ -79,6 +82,7 @@ export const ColumnWrapping: Story = {
 };
 
 export const VerticalAlignment: Story = {
+  tags: ['isHidden'],
   name: 'Vertical alignment',
   render: (args) => (
     <Container {...args} fluid>
@@ -122,6 +126,7 @@ export const VerticalAlignment: Story = {
 };
 
 export const HorizontalAlignment: Story = {
+  tags: ['isHidden'],
   name: 'Horizontal alignment',
   render: (args) => (
     <Container {...args} fluid>
@@ -155,6 +160,7 @@ export const HorizontalAlignment: Story = {
 };
 
 export const Order: Story = {
+  tags: ['isHidden'],
   name: 'TDirection prop for order and orientation',
   render: (args) => (
     <Container {...args} fluid>
@@ -198,6 +204,7 @@ export const Order: Story = {
 };
 
 export const Offsetting: Story = {
+  tags: ['isHidden'],
   name: 'Offsetting columns',
   render: (args) => (
     <Container {...args} fluid>
@@ -225,6 +232,7 @@ export const Offsetting: Story = {
 };
 
 export const NestingColumns: Story = {
+  tags: ['isHidden'],
   name: 'Nesting columns',
   render: (args) => (
     <Container {...args} fluid>
@@ -246,6 +254,7 @@ export const NestingColumns: Story = {
 };
 
 export const AdaptedContent: Story = {
+  tags: ['isHidden'],
   name: 'Column width adapted to content',
   render: (args) => (
     <Container {...args} fluid>
@@ -260,6 +269,7 @@ export const AdaptedContent: Story = {
 };
 
 export const GutterDefinition: Story = {
+  tags: ['isHidden'],
   name: 'Gutter definition by Container',
   render: (args) => (
     <>
@@ -401,6 +411,7 @@ export const GutterDefinition: Story = {
 };
 
 export const GutterDefinitionByRow: Story = {
+  tags: ['isHidden'],
   name: 'Gutter definition by Row',
   render: (args) => (
     <Container {...args} fluid>

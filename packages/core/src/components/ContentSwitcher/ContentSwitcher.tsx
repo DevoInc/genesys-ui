@@ -1,21 +1,18 @@
 import * as React from 'react';
-import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
 import type { IGlobalAriaAttrs, IGlobalAttrs } from '../../declarations';
-
 import { ContentSwitcherContext } from './context';
-
 import {
   contentSwitcherContainerMixin,
   type contentSwitcherContainerMixinProps,
 } from './helpers';
-
 import { Flex, type FlexProps } from '../Flex';
 import {
   ContentSwitcherItem,
   type ContentSwitcherItemProps,
 } from './components';
+import { mergeStyles } from '../../helpers';
 
 export interface ContentSwitcherProps
   extends Omit<
@@ -50,7 +47,7 @@ const InternalContentSwitcher: React.FC<ContentSwitcherProps> = ({
   children,
   inline,
   size = 'md',
-  styles,
+  style,
   wide,
   width,
   ...restProps
@@ -63,7 +60,7 @@ const InternalContentSwitcher: React.FC<ContentSwitcherProps> = ({
       role="tablist"
       inline={inline || !wide}
       width={wide ? '100%' : width}
-      styles={concat(contentSwitcherContainerMixin({ size, theme }), styles)}
+      style={mergeStyles(contentSwitcherContainerMixin({ size, theme }), style)}
     >
       <ContentSwitcherContext.Provider value={{ size, wide }}>
         {children}

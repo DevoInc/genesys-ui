@@ -6,8 +6,7 @@ import { subMonths } from 'date-fns';
 import { DateTimeRangeFloatingPicker } from './DateTimeRangeFloatingPicker';
 import { onApply } from './__stories__/utils';
 import { defaultPresets } from '../Presets';
-import { TRealtimeState } from '../DateTimeRangeInput/declarations';
-import { useMonthSelectorRange } from '../MonthSelector';
+import { TRealtimeState } from '../RealTimeButton/declarations';
 
 const meta: Meta<typeof DateTimeRangeFloatingPicker> = {
   title: 'Components/Datetime/DateTimeRangeFloatingPicker',

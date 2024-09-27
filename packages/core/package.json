@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui",
-  "version": "11.0.4",
+  "version": "12.1.0",
   "description": "",
   "type": "module",
   "types": "./dist/index.d.ts",
@@ -18,15 +18,16 @@
   "scripts": {
     "compile": "tsc --project tsconfig.json",
     "compile:watch": "npm run compile -- --watch",
+    "test": "vitest",
     "build": "vite build",
     "build:watch": "vite build --watch",
     "depcruise": "sh ../../depcruise.sh \"$npm_package_name\"",
-    "analyzer": "npx vite-bundle-visualizer -o 'dist/stats.html'",
+    "analyzer": "vite-bundle-visualizer -o 'dist/stats.html'",
     "stryker": "npx stryker run",
     "dpdm": "dpdm --exit-code circular:1 ./src/index.ts"
   },
   "peerDependencies": {
-    "@devoinc/genesys-icons": "^4.x.x || ^5.x.x",
+    "@devoinc/genesys-icons": "4.x.x || 5.x.x || 6.x.x",
     "@devoinc/genesys-tokens-types": "6.x.x",
     "@dnd-kit/core": "6.x.x",
     "@dnd-kit/modifiers": "6.x.x",
@@ -43,7 +44,7 @@
     "react-select": "5.x.x",
     "react-toastify": "8.x.x || 9.x.x",
     "react-windowed-select": "5.1.0",
-    "styled-components": "6.x.x"
+    "styled-components": "5.x.x || 6.x.x"
   },
   "author": "",
   "license": "MIT",

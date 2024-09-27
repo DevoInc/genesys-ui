@@ -8,9 +8,11 @@ import * as Stories from './FieldsCombiner.stories';
 
 ## Overview
 
-Component used to create complex form block layouts by combining different types of form fields in a single row.
+Component used to create complex form block layouts by combining different
+types of form fields in a single row.
 
-It provides customization options through props to control the appearance and behavior of the combined fields.
+It provides customization options through props to control the appearance and
+behavior of the combined fields.
 
 <Canvas of={Stories.Base} />
 
@@ -20,21 +22,25 @@ It provides customization options through props to control the appearance and be
 
 ## Basic usage
 
-There are a pre-defined components to be used as `FieldsCombiner` pieces. You should not
-use another kind of component to do that, and you only are able to combine two of them.
-These components are wrappers of the form ones to apply custom styles and behavior,
-so the visual integration is as accurate as possible:
+There are a pre-defined components to be used as `FieldsCombiner` pieces. You
+should not use another kind of component to do that, and you only are able to
+combine two of them.
+These components are wrappers of the form ones to apply custom styles and
+behavior, so the visual integration is as accurate as possible:
 
-- `FieldsCombiner.Input`: it's the wrapper for the `InputControl.Input` component.
+- `FieldsCombiner.Input`: it's the wrapper for the `InputControl.Input`
+  component.
 - `FieldsCombiner.Select`: it's the wrapper for the `SelectControl` component.
 - `FieldsCombiner.Button`: it's the wrapper for the `Button` component.
 - `FieldsCombiner.IconButton`: it's the wrapper for the `IconButton` component.
-- `FieldsCombiner.Checkbox`: it's the wrapper for the `CheckboxControl` component.
+- `FieldsCombiner.Checkbox`: it's the wrapper for the `CheckboxControl`
+  component.
 
-These components allow to add custom styles and some layout props as `width` to the
-original components.
+These components allow to add custom styles and some layout props as `width` to
+the original components.
 
-There are multiple combinations of the form fields, but these are the most usual:
+There are multiple combinations of the form fields, but these are the most
+usual:
 
 ### Button and Popover
 
@@ -45,8 +51,10 @@ the `FieldsCombiner.Button` or `FieldsCombiner.IconButton` as the trigger:
 
 ### Input and Button or IconButton
 
-By default, the field fills all the space available and the button only the necessary.
-Anyway, you can use the `width` prop available in every pre-defined child component.
+By default, the field fills all the space available and the button only the
+necessary.
+Anyway, you can use the `width` prop available in every pre-defined child
+component.
 
 <Canvas of={Stories.InputAndButton} />
 
@@ -54,16 +62,18 @@ Anyway, you can use the `width` prop available in every pre-defined child compon
 
 ### Select and Input with custom widths
 
-By default, the fields fill all the space available, but you can use the `width` prop
-available in every pre-defined child component to distribute them in a custom way.
+By default, the fields fill all the space available, but you can use the `width`
+prop available in every pre-defined child component to distribute them in a
+custom way.
 
 <Canvas of={Stories.CustomWidths} />
 
 ### Validation
 
-You only have to add the desired validation status to the `FieldsCombiner` component and
-its children will inherit it automatically. In addition, for accessibility reasons
-you always have to add a validation message by the `helper` prop.
+You only have to add the desired validation status to the `FieldsCombiner`
+component and its children will inherit it automatically. In addition, for
+accessibility reasons you always have to add a validation message by the
+`helper` prop.
 
 <Canvas of={Stories.WithValidation} />
 

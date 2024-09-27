@@ -30,35 +30,33 @@ export const Switch: React.FC<SwitchProps> = ({
   requiredMarkTooltip,
   size = 'md',
   status = 'base',
-  styles,
+  style,
   tooltip,
   ...restSwitchControlProps
-}) => {
-  return (
-    <Field
-      disabled={disabled}
-      hasFloatingHelper={hasFloatingHelper}
-      hasWideControl={false}
-      helper={helper}
-      hideLabel={hideLabel}
-      id={id}
-      label={label}
-      labelPosition={labelPosition}
-      onClick={onClick}
-      onMouseDown={onMouseDown}
-      onMouseLeave={onMouseLeave}
-      onMouseMove={onMouseMove}
-      onMouseOut={onMouseOut}
-      onMouseOver={onMouseOver}
-      onMouseUp={onMouseUp}
-      required={required}
-      requiredMarkTooltip={requiredMarkTooltip}
-      size={size}
-      status={status}
-      styles={styles}
-      tooltip={tooltip}
-    >
-      <SwitchControl {...restSwitchControlProps} aria-label={ariaLabel} />
-    </Field>
-  );
-};
+}) => (
+  <Field
+    disabled={disabled}
+    hasFloatingHelper={hasFloatingHelper}
+    hasWideControl={false}
+    helper={helper}
+    hideLabel={hideLabel}
+    id={id}
+    label={label}
+    labelPosition={labelPosition}
+    onClick={onClick}
+    onMouseDown={onMouseDown}
+    onMouseLeave={onMouseLeave}
+    onMouseMove={onMouseMove}
+    onMouseOut={onMouseOut}
+    onMouseOver={onMouseOver}
+    onMouseUp={onMouseUp}
+    required={required}
+    requiredMarkTooltip={requiredMarkTooltip}
+    size={size}
+    status={status}
+    style={style}
+    tooltip={tooltip}
+  >
+    <SwitchControl {...restSwitchControlProps} aria-label={ariaLabel} />
+  </Field>
+);

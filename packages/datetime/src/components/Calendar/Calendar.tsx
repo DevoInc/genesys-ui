@@ -79,7 +79,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
   weekStart = 0,
   disableHoverDay = false,
   hoverDay: mouseHoverDay,
-  styles,
+  style,
   id,
   tooltip,
   role,
@@ -140,7 +140,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
       justifyContent="center"
       rowGap="cmp-xxs"
       minWidth={theme.cmp.calendar.size.minWidth}
-      styles={styles}
+      style={style}
     >
       {rotateWeekDays(weekDays, weekStart).map((day) => (
         <CalendarWeekDay key={day} value={day} />

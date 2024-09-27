@@ -14,7 +14,6 @@ export interface IModalBodyMixin
  *
  * @return styles for Panel.Body component
  */
-
 export const modalBodyMixin = ({
   theme,
   padding,

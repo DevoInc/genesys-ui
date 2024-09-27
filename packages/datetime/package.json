@@ -1,15 +1,16 @@
 {
   "name": "@devoinc/genesys-ui-datetime",
-  "version": "11.0.4",
+  "version": "12.1.0",
   "description": "",
   "type": "module",
   "scripts": {
     "compile": "tsc --project tsconfig.json",
     "compile:watch": "npm run compile -- --watch",
+    "test": "vitest",
     "build": "vite build",
     "build:watch": "vite build --watch",
     "depcruise": "sh ../../depcruise.sh \"$npm_package_name\"",
-    "analyzer": "npx vite-bundle-visualizer -o 'dist/stats.html'",
+    "analyzer": "vite-bundle-visualizer -o 'dist/stats.html'",
     "stryker": "npx stryker run",
     "dpdm": "dpdm --exit-code circular:1 ./src/index.ts"
   },
@@ -29,12 +30,12 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "@devoinc/genesys-icons": "4.x.x || 5.x.x",
-    "@devoinc/genesys-ui": "^11.0.4",
+    "@devoinc/genesys-icons": "4.x.x || 5.x.x || 6.x.x",
+    "@devoinc/genesys-ui": "^12.1.0",
     "date-fns": "2.x.x",
     "react": "16.x || 17.x || 18.x",
     "react-popper": "2.x.x",
-    "styled-components": "6.x.x"
+    "styled-components": "5.x.x || 6.x.x"
   },
   "engine": {
     "node": ">=16",

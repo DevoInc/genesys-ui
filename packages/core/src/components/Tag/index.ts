@@ -1,7 +1,5 @@
 export * from './Tag';
-
 export * from './declarations';
-
 export type {
   TagBadgeProps,
   TagContainerProps,

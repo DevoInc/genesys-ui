@@ -1,9 +1,8 @@
 import * as React from 'react';
-import type { IDataAttrs, ILayoutBox } from '../../declarations';
 
+import type { IDataAttrs, ILayoutBox } from '../../declarations';
 import { StyledBox } from './StyledBox';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface BoxProps extends IDataAttrs, ILayoutBox {}
 
 export const Box = React.forwardRef<HTMLElement, BoxProps>(
@@ -39,7 +38,7 @@ export const Box = React.forwardRef<HTMLElement, BoxProps>(
       positionLeft,
       positionRight,
       positionTop,
-      styles,
+      style,
       tooltip,
       verticalAlign,
       visibility,
@@ -51,42 +50,42 @@ export const Box = React.forwardRef<HTMLElement, BoxProps>(
   ) => (
     <StyledBox
       {...nativeProps}
-      alignSelf={alignSelf}
-      css={styles}
-      cssTranslate={cssTranslate}
+      $alignSelf={alignSelf}
+      css={style}
+      $cssTranslate={cssTranslate}
       $display={display}
-      elevation={elevation}
-      flex={flex}
+      $elevation={elevation}
+      $flex={flex}
       $height={height}
-      margin={margin}
-      marginBottom={marginBottom}
-      marginLeft={marginLeft}
-      marginRight={marginRight}
-      marginTop={marginTop}
-      maxHeight={maxHeight}
-      maxWidth={maxWidth}
-      minHeight={minHeight}
-      minWidth={minWidth}
-      opacity={opacity}
-      overflow={overflow}
-      overflowX={overflowX}
-      overflowY={overflowY}
-      padding={padding}
-      paddingBottom={paddingBottom}
-      paddingLeft={paddingLeft}
-      paddingRight={paddingRight}
-      paddingTop={paddingTop}
-      position={position}
-      positionBottom={positionBottom}
-      positionLeft={positionLeft}
-      positionRight={positionRight}
-      positionTop={positionTop}
+      $margin={margin}
+      $marginBottom={marginBottom}
+      $marginLeft={marginLeft}
+      $marginRight={marginRight}
+      $marginTop={marginTop}
+      $maxHeight={maxHeight}
+      $maxWidth={maxWidth}
+      $minHeight={minHeight}
+      $minWidth={minWidth}
+      $opacity={opacity}
+      $overflow={overflow}
+      $overflowX={overflowX}
+      $overflowY={overflowY}
+      $padding={padding}
+      $paddingBottom={paddingBottom}
+      $paddingLeft={paddingLeft}
+      $paddingRight={paddingRight}
+      $paddingTop={paddingTop}
+      $position={position}
+      $positionBottom={positionBottom}
+      $positionLeft={positionLeft}
+      $positionRight={positionRight}
+      $positionTop={positionTop}
       ref={ref}
       title={tooltip}
-      verticalAlign={verticalAlign}
-      visibility={visibility}
+      $verticalAlign={verticalAlign}
+      $visibility={visibility}
       $width={width}
-      zIndex={zIndex}
+      $zIndex={zIndex}
     >
       {children}
     </StyledBox>

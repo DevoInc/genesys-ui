@@ -25,7 +25,6 @@ export default defineConfig({
         'react',
         'react/jsx-runtime',
         'styled-components',
-        'lodash',
       ],
     },
   },
@@ -52,7 +51,16 @@ export default defineConfig({
     }),
   ],
   test: {
-    environment: 'jsdom',
-    include: ['**/*.test.ts?(x)'],
+    environment: 'happy-dom',
+    include: ['{src,stories}/**/*.test.ts?(x)'],
+    coverage: {
+      provider: 'v8',
+      include: ['{src,stories}/**/*'],
+    },
+    server: {
+      deps: {
+        inline: [/\/@devoinc\/genesys-ui\//],
+      },
+    },
   },
 });

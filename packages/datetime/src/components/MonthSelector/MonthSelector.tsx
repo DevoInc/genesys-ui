@@ -67,7 +67,7 @@ export const MonthSelector: React.FC<MonthSelectorProps> = ({
   onClickPrevMonth,
   onClickNextMonth,
   size = 'md',
-  styles,
+  style,
 }) => {
   const i18n = useMergeI18n(
     userI18n,
@@ -104,7 +104,7 @@ export const MonthSelector: React.FC<MonthSelectorProps> = ({
   );
 
   return (
-    <HFlex as={as} justifyContent="space-between" spacing="0" styles={styles}>
+    <HFlex as={as} justifyContent="space-between" spacing="0" style={style}>
       {hasPrevMonthButton && (
         <IconButton
           aria-label={i18n.prevMonth}

@@ -2,15 +2,15 @@ import * as React from 'react';
 
 import { useOnEventOutside } from '@devoinc/genesys-ui';
 
-import type { TColDef } from '../../declarations';
+import type { TColDef, TRow } from '../../declarations';
 
 export const useRenderContent = (
   colDef: TColDef,
   data: unknown,
   rowIndex: number,
+  row: TRow,
 ) => {
   const cellRef = React.useRef<HTMLTableCellElement>();
-
   const viewContent = colDef.cellRenderer
     ? colDef.cellRenderer({
         value: colDef.valueFormatter
@@ -18,6 +18,7 @@ export const useRenderContent = (
           : data,
         colDef,
         rowIndex,
+        row,
       })
     : '';
 

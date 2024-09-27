@@ -2,7 +2,9 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import type { TItem } from './declarations';
-import { Pagination, usePagination } from '../';
+import { Pagination } from './Pagination';
+import { usePagination } from './hooks';
+
 const itemStyle: React.CSSProperties = {
   margin: '1rem 0',
   padding: '1rem',

@@ -13,7 +13,6 @@ import type { ITabs, TTabsItemState } from '../../declarations';
 import type { IconProps } from '../../../Icon';
 import type { Resolve } from '../../../../typeFunctions';
 import { TabsContext } from '../../context';
-
 import {
   TabsItemClose,
   TabsItemContainer,

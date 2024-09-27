@@ -66,7 +66,8 @@ behavior:
 
 ### `useAsyncSplitResize`
 
-<Source code={`import { SplitLayout, useAsyncSplitResize } from '@devoinc/genesys-ui';
+<Source code={`
+import { SplitLayout, useAsyncSplitResize } from '@devoinc/genesys-ui';
 ...
 const [sizes, setSizes] = React.useState<TSizes>(props?.sizes);
 const { onChange } = useAsyncSplitResize({ setSizes });
@@ -121,7 +122,8 @@ other one to the maximum:
 
 ## Three blocks
 
-This an example with three blocks with different sizes which define the widths of the blocks:
+This an example with three blocks with different sizes which define the widths
+of the blocks:
 
 <Canvas of={Stories.Three} />
 

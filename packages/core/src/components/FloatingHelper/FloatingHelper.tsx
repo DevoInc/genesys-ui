@@ -22,18 +22,16 @@ export const FloatingHelper: React.FC<FloatingHelperProps> = ({
   status = 'base',
   tooltip,
   ...restDataProps
-}) => {
-  return (
-    <InlineMessage
-      id={id}
-      trigger={{ size: FLOATING_HELPER_ICON_BUTTON_SIZE_MAP[size] }}
-      status={hasStatus(status) ? status : 'help'}
-      tooltip={tooltip}
-      {...restDataProps}
-    >
-      <InlineMessage.Panel>
-        <Typography.Paragraph>{message}</Typography.Paragraph>
-      </InlineMessage.Panel>
-    </InlineMessage>
-  );
-};
+}) => (
+  <InlineMessage
+    id={id}
+    trigger={{ size: FLOATING_HELPER_ICON_BUTTON_SIZE_MAP[size] }}
+    status={hasStatus(status) ? status : 'help'}
+    tooltip={tooltip}
+    {...restDataProps}
+  >
+    <InlineMessage.Panel>
+      <Typography.Paragraph>{message}</Typography.Paragraph>
+    </InlineMessage.Panel>
+  </InlineMessage>
+);

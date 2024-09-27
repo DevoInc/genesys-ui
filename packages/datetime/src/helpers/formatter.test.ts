@@ -11,7 +11,13 @@ describe('helpers', () => {
   describe('formatter', () => {
     describe('getFormatDateTimeStr', () => {
       const cases: [string, boolean, boolean, string][] = [
-        ['with seconds and millis', true, true, 'yyyy-MM-dd HH:mm:ss.sss'],
+        ['with seconds and millis', true, true, 'yyyy-MM-dd HH:mm:ss.SSS'],
+        [
+          'without seconds and with millis',
+          false,
+          true,
+          'yyyy-MM-dd HH:mm:ss.SSS',
+        ],
         ['with seconds and not millis', true, false, 'yyyy-MM-dd HH:mm:ss'],
         ['without seconds and millis', false, false, 'yyyy-MM-dd HH:mm'],
       ];
@@ -29,7 +35,8 @@ describe('helpers', () => {
 
     describe('getFormatTimeStr', () => {
       const cases: [string, boolean, boolean, string][] = [
-        ['with seconds and millis', true, true, 'HH:mm:ss.sss'],
+        ['with seconds and millis', true, true, 'HH:mm:ss.SSS'],
+        ['without seconds but with millis', false, true, 'HH:mm:ss.SSS'],
         ['with seconds and not millis', true, false, 'HH:mm:ss'],
         ['without seconds and millis', false, false, 'HH:mm'],
       ];

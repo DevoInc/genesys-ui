@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
+import { Pagination } from '../Pagination';
+import { usePagination } from '../hooks';
+
 const itemStyle: React.CSSProperties = {
   margin: '1rem 0',
   padding: '1rem',
@@ -10,7 +13,6 @@ const itemStyle: React.CSSProperties = {
   backgroundColor: 'rgba(210,210,210,0.45)',
   borderRadius: '0.4rem',
 };
-import { Pagination, usePagination } from '../..';
 
 const meta: Meta<typeof Pagination> = {
   title: 'Components/Navigation/Pagination/Hooks',

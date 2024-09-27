@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
+
 import type { IModal } from '../../declarations';
 import { Overlay, type OverlayProps } from '../../../Overlay';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ModalBackdropProps
   extends Omit<OverlayProps, 'children'>,
     Pick<
@@ -20,7 +20,7 @@ export const ModalBackdrop: React.FC<ModalBackdropProps> = ({
   disableCloseOnOverlayClick,
   zIndex,
   padding,
-  styles,
+  style,
   children,
   ...restOverlayProps
 }) => {
@@ -34,7 +34,7 @@ export const ModalBackdrop: React.FC<ModalBackdropProps> = ({
       onClick={
         disableCloseOnOverlayClick ? undefined : () => onRequestClose?.()
       }
-      styles={styles}
+      style={style}
       padding={windowSize === 'fullscreen' ? '0' : padding}
     >
       {children}

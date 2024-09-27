@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-color",
-  "version": "11.0.4",
+  "version": "12.1.0",
   "description": "",
   "type": "module",
   "scripts": {
@@ -9,7 +9,7 @@
     "build": "vite build",
     "build:watch": "vite build --watch",
     "depcruise": "sh ../../depcruise.sh \"$npm_package_name\"",
-    "analyzer": "npx vite-bundle-visualizer -o 'dist/stats.html'",
+    "analyzer": "vite-bundle-visualizer -o 'dist/stats.html'",
     "stryker": "npx stryker run",
     "dpdm": "dpdm --exit-code circular:1 ./src/index.ts"
   },
@@ -29,11 +29,11 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "@devoinc/genesys-ui": "^11.0.4",
+    "@devoinc/genesys-ui": "^12.1.0",
     "polished": "4.x.x",
     "react": "16.x || 17.x || 18.x",
     "react-color": "2.x.x",
-    "styled-components": "6.x.x"
+    "styled-components": "5.x.x || 6.x.x"
   },
   "engine": {
     "node": ">=16",

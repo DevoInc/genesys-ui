@@ -20,12 +20,15 @@ Component used for displaying a thumbnail image.
 
 ## Aspect ratio
 
-Using the `width`, `height`, `objectFit` and `objectPosition` props we can get any aspect ratio, size or position
-for the img object. These are different examples of how it's possible to combine this props in most common ways.
+Using the `width`, `height`, `objectFit` and `objectPosition` props we can get
+any aspect ratio, size or position for the `img` object. These are different
+examples of how it's possible to combine this props in most common ways.
 
-Although you use custom width or height, the proportion is maintained, because the default value for
-`objectFit` is cover, so the image is sized to maintain its aspect ratio while filling the element's entire content box.
-If the object's aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.
+Although you use custom width or height, the proportion is maintained, because
+the default value for `objectFit` is cover, so the image is sized to maintain
+its aspect ratio while filling the element's entire content box.
+If the object's aspect ratio does not match the aspect ratio of its box, then
+the object will be clipped to fit.
 
 ### Custom width and height
 
@@ -35,7 +38,8 @@ When you need a specific width and height for the image.
 
 ### Width to fit container and custom height
 
-When you want the image width to fit its container, and you need a specific height.
+When you want the image width to fit its container, and you need a specific
+height.
 
 <Canvas of={Stories.FitContainerCustomHeight} />
 
@@ -47,13 +51,15 @@ When you want the image width to fit its container, and you need a height auto.
 
 ### Custom img object position
 
-When you need a specific aspect ratio, but you want a custom image object position.
+When you need a specific aspect ratio, but you want a custom image object
+position.
 
 <Canvas of={Stories.CustomObjectPosition} />
 
 ## Radius
 
-It's possible to specify the radius of the img based in the border-radius css property.
+It's possible to specify the radius of the img based in the border-radius css
+property.
 
 <Canvas of={Stories.Radius} />
 

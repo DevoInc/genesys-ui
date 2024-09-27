@@ -28,9 +28,9 @@ describe('Wrap', () => {
       'flex-wrap': 'wrap',
       'column-gap': '2.4rem',
       'row-gap': '1.6rem',
-      height: '30rem',
+      height: '480px',
       overflow: 'auto',
-      width: '60rem',
+      width: '960px',
     });
   });
 

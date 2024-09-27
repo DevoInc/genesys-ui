@@ -32,11 +32,11 @@ export const AdvancedUsage: Story = {
   render: () =>
     (() => (
       <InputControl._Container>
-        <InputControl._Addon position="left" styles="background-color: orange">
+        <InputControl._Addon position="left" style="background-color: orange">
           Addon to left
         </InputControl._Addon>
         <InputControl._InnerContainer>
-          <InputControl._Icon icon={<GICheckThick />} styles="color: purple;" />
+          <InputControl._Icon icon={<GICheckThick />} style="color: purple;" />
           <InputControl._Input
             aria-label="story example"
             hasAddonToLeft
@@ -46,7 +46,7 @@ export const AdvancedUsage: Story = {
         </InputControl._InnerContainer>
         <InputControl._Addon
           position="right"
-          styles="background-color: darkblue; color: white;"
+          style="background-color: darkblue; color: white;"
         >
           Addon to right
         </InputControl._Addon>

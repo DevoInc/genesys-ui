@@ -16,5 +16,6 @@ export const useRowGrouping = ({ data, initialSelection = [] }) => {
     },
     [data],
   );
+
   return { rowSelection, toggle };
 };

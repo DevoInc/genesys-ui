@@ -8,9 +8,9 @@ import * as Stories from './Menu.stories';
 
 ## Overview
 
-A `Menu` generally represents a grouping of common actions or functions that the user can invoke.
-It can be also used to create navigation menu based in links, so in this case it's better to use
-the prop `cmpRole` to `nav`.
+A `Menu` generally represents a grouping of common actions or functions that the
+user can invoke. It can be also used to create navigation menu based in links,
+so in this case it's better to use the prop `cmpRole` to `nav`.
 
 ## How to import
 
@@ -18,36 +18,39 @@ the prop `cmpRole` to `nav`.
 
 ## Basic usage
 
-The `Menu` is used as a container of a group of `Menu.Item` and these can be separated or grouped by
-`Menu.Heading` or `Menu.Separator`.
+The `Menu` is used as a container of a group of `Menu.Item` and these can be
+separated or grouped by `Menu.Heading` or `Menu.Separator`.
 
 <Canvas of={Stories.Base} />
 
 ## Selectable options
 
-The menu items can be used as selectable options. The role `menuitemcheckbox` or `menuitemradio`
-is added automatically based in the `selectionScheme` prop value. In addition, a checkbox or radio
-is rendered inside the menu item, but it's not visible, its purpose is manage the selection behavior.
+The menu items can be used as selectable options. The role `menuitemcheckbox`
+or `menuitemradio` is added automatically based in the `selectionScheme` prop
+value. In addition, a checkbox or radio is rendered inside the menu item, but
+it's not visible, its purpose is manage the selection behavior.
 
 <Canvas of={Stories.Selectable} />
 
 ## As navigation
 
-If the `Menu` is used as navigation we have to use the prop `cmpRole` to `nav`. This way we get
-an HTML5 `nav` tag as container without `role` attribute because it's implicit. In this case
-it's important that all the `Menu.Item` are links.
+If the `Menu` is used as navigation we have to use the prop `cmpRole` to `nav`.
+This way we get an HTML5 `nav` tag as container without `role` attribute because
+it's implicit. In this case it's important that all the `Menu.Item` are links.
 
-The `Menu.Item` is rendered automatically as a link (`<a>`) if it has defined the `href` prop.
-In addition, as a link, the `Menu.Item` has no role because it's not allowed to have any of
-the pre-defined roles (menuitem, menuitemcheckbox and menuitemradio) if it's not a child of
-a `role="menu"` component.
+The `Menu.Item` is rendered automatically as a link (`<a>`) if it has defined
+the `href` prop. In addition, as a link, the `Menu.Item` has no role because
+it's not allowed to have any of the pre-defined roles (menuitem,
+menuitemcheckbox and menuitemradio) if it's not a child of a `role="menu"`
+component.
 
 <Canvas of={Stories.AsNavigation} />
 
 ## As dropdown menu
 
-we can use the `Menu` component as a dropdown menu if we integrate it with the `Popover` component.
-We even can nest menus using the `Menu.Item` components as triggers.
+We can use the `Menu` component as a dropdown menu if we integrate it with the
+`Popover` component. We even can nest menus using the `Menu.Item` components as
+triggers.
 
 <Canvas of={Stories.AsNavigation} />
 

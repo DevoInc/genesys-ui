@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-// declarations
 import type {
   ICheckAttrs,
   IFieldAttrs,
@@ -16,8 +15,6 @@ import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../../declarations/styled';
-
-// styled
 import { StyledButtonSelection } from './StyledButtonSelection';
 
 export interface ButtonSelectionProps
@@ -47,14 +44,14 @@ export const ButtonSelection: React.FC<ButtonSelectionProps> = ({
   onChange,
   onFocus,
   selectionScheme = 'multiple',
-  styles,
+  style,
   value,
 }) => (
   <StyledButtonSelection
     as={as}
     aria-label={label}
     checked={checked}
-    css={styles}
+    css={style}
     defaultChecked={defaultChecked}
     disabled={disabled}
     id={id ? `${id}-button-input` : null}

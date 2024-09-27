@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+
 import { ModalPanel } from './ModalPanel';
 import { Typography } from '../../../Typography';
 
@@ -9,7 +10,6 @@ const meta: Meta<typeof ModalPanel> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof ModalPanel>;
 
 export const Panel: Story = {

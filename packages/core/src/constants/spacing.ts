@@ -18,4 +18,4 @@ export const GLOBAL_SPACING = [
   'layout-xl',
   'layout-xxl',
   'layout-xxxl',
-] as const;
+];

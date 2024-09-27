@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
 import { Flex, type FlexProps } from '../../../Flex';
+import { mergeStyles } from '../../../../helpers';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ToolbarGroupProps extends FlexProps {}
 
 export const ToolbarGroup: React.FC<ToolbarGroupProps> = ({
@@ -13,7 +12,7 @@ export const ToolbarGroup: React.FC<ToolbarGroupProps> = ({
   children,
   flex = '1 1 auto',
   role = 'group',
-  styles,
+  style,
   ...restFlexProps
 }) => {
   const theme = useTheme();
@@ -24,9 +23,11 @@ export const ToolbarGroup: React.FC<ToolbarGroupProps> = ({
       alignSelf={alignSelf}
       flex={flex}
       role={role}
-      styles={concat(
-        `background: ${theme.alias.color.background.surface.base.base};`,
-        styles,
+      style={mergeStyles(
+        {
+          background: theme.alias.color.background.surface.base.base,
+        },
+        style,
       )}
     >
       {children}

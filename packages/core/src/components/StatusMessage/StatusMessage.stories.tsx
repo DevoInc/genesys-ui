@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { StatusMessage } from '..';
+import { StatusMessage } from './StatusMessage';
 
 const meta: Meta<typeof StatusMessage> = {
   title: 'Components/Feedback/StatusMessage',

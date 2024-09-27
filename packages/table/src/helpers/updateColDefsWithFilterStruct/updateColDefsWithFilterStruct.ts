@@ -1,5 +1,5 @@
 import type { TColDef } from '../../declarations';
-import type { TFilterColumn } from '../../hooks';
+import { TFilterColumn } from '../../hooks/useFilterStruct/declarations';
 
 export const updateColDefsWithFilterStruct = (
   colDefs: TColDef[],

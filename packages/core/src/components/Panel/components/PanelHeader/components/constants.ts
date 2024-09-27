@@ -1,5 +1,5 @@
-import { THeadingType } from '../../../../Typography/constants';
-import { TPanelSize } from '../../../declarations';
+import type { THeadingType } from '../../../../Typography/declarations';
+import type { TPanelSize } from '../../../declarations';
 
 interface PanelHeaderSizes {
   xs: { title: THeadingType; subtitle: { size: TPanelSize } };

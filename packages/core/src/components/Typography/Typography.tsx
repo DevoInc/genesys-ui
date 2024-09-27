@@ -11,7 +11,7 @@ import {
   Abbr,
   BlockQuote,
   Caption,
-  Code,
+  CodeBlock,
   CodeInline,
   Deleted,
   Heading,
@@ -30,13 +30,19 @@ import {
   Underlined,
 } from './components';
 
-import {
-  StyledTypography,
-  type StyledTypographyProps,
-} from './StyledTypography';
+import { StyledTypography } from './StyledTypography';
+import { ITypography } from './declarations';
 
 export interface TypographyProps
-  extends Omit<StyledTypographyProps, 'size' | 'variant'>,
+  extends Pick<
+      ITypography,
+      | 'bold'
+      | 'colorScheme'
+      | 'format'
+      | 'gutterBottom'
+      | 'textAlign'
+      | 'truncateLine'
+    >,
     IStyledPolymorphic,
     IStyledOverloadCss,
     IGlobalAttrs,
@@ -53,7 +59,7 @@ export const InternalTypography: React.FC<TypographyProps> = ({
   textAlign = 'left',
   truncateLine,
   children,
-  styles,
+  style,
   tooltip,
   ...nativeProps
 }) => {
@@ -63,15 +69,15 @@ export const InternalTypography: React.FC<TypographyProps> = ({
   return (
     <StyledTypography
       {...nativeProps}
-      bold={bold}
-      colorScheme={colorScheme}
-      css={styles}
-      truncateLine={truncateLine}
-      gutterBottom={gutterBottom}
-      size={size}
-      textAlign={textAlign}
+      $bold={bold}
+      $colorScheme={colorScheme}
+      css={style}
+      $truncateLine={truncateLine}
+      $gutterBottom={gutterBottom}
+      $size={size}
+      $textAlign={textAlign}
       title={tooltip}
-      variant={variant}
+      $variant={variant}
     >
       {children}
     </StyledTypography>
@@ -82,7 +88,7 @@ export const Typography = InternalTypography as typeof InternalTypography & {
   Abbr: typeof Abbr;
   BlockQuote: typeof BlockQuote;
   Caption: typeof Caption;
-  Code: typeof Code;
+  CodeBlock: typeof CodeBlock;
   CodeInline: typeof CodeInline;
   Deleted: typeof Deleted;
   Heading: typeof Heading;
@@ -104,7 +110,7 @@ export const Typography = InternalTypography as typeof InternalTypography & {
 Typography.Abbr = Abbr;
 Typography.BlockQuote = BlockQuote;
 Typography.Caption = Caption;
-Typography.Code = Code;
+Typography.CodeBlock = CodeBlock;
 Typography.CodeInline = CodeInline;
 Typography.Deleted = Deleted;
 Typography.Heading = Heading;
@@ -126,7 +132,7 @@ InternalTypography.displayName = 'Typography';
 Typography.BlockQuote.displayName = 'Typography.BlockQuote';
 Typography.Heading.displayName = 'Typography.Heading';
 Typography.Caption.displayName = 'Typography.Caption';
-Typography.Code.displayName = 'Typography.Code';
+Typography.CodeBlock.displayName = 'Typography.CodeBlock';
 Typography.Heading.displayName = 'Typography.Heading';
 Typography.Lead.displayName = 'Typography.Lead';
 Typography.List.displayName = 'Typography.List';

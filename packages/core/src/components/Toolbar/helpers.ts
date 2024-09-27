@@ -5,10 +5,12 @@ import { css, DefaultTheme } from 'styled-components';
  *
  * @return specific styles
  */
-export const toolbarContainerMixin = ({ theme }: { theme: DefaultTheme }) => {
-  return css`
-    grid-area: Toolbar;
-    list-style: none;
-    background-color: ${theme.alias.color.background.surface.base.base};
-  `;
-};
+export const toolbarContainerMixin = ({
+  theme,
+}: {
+  theme: DefaultTheme;
+}) => css`
+  grid-area: Toolbar;
+  list-style: none;
+  background-color: ${theme.alias.color.background.surface.base.base};
+`;

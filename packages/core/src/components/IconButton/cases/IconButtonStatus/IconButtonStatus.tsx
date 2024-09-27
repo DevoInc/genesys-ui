@@ -1,16 +1,13 @@
 import * as React from 'react';
-import { concat } from 'lodash';
 import { useTheme } from 'styled-components';
 
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
-
 import type { TButtonExpandableState } from '../../../Button';
 import type { TUIColorScheme } from '../../../../declarations';
-
 import { iconButtonStatusMixin } from './mixins';
 import { getIconButtonStatusIcon } from './utils';
-
 import { IconButton, type IconButtonProps } from '../../IconButton';
+import { mergeStyles } from '../../../../helpers';
 
 export interface IconButtonStatusProps
   extends Omit<
@@ -46,7 +43,7 @@ export const IconButtonStatus = React.forwardRef<
       icon,
       size = 'md',
       state = 'enabled',
-      styles,
+      style,
       ...restIconButtonProps
     },
     ref,
@@ -61,9 +58,9 @@ export const IconButtonStatus = React.forwardRef<
         ref={ref}
         size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
         state={state}
-        styles={concat(
+        style={mergeStyles(
           iconButtonStatusMixin({ state, colorScheme, theme }),
-          styles,
+          style,
         )}
       />
     );

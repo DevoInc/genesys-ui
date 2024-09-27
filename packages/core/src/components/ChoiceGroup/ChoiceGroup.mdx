@@ -8,8 +8,10 @@ import * as Stories from './ChoiceGroup.stories';
 
 ## Overview
 
-Component designed to allow the user to select a single choice from a collection of options.
-Use this component when it's necessary to display all available options to the user.
+Component designed to allow the user to select a single choice from a collection
+of options.
+Use this component when it's necessary to display all available options to the
+user.
 
 ## How to import
 
@@ -17,29 +19,37 @@ Use this component when it's necessary to display all available options to the u
 
 ## Basic usage
 
-This component is based in a `Form.Group` component as its container, so we have available almost all the props
-of this type. In the same way, the different choice options will be its children.
+This component is based in a `Form.Group` component as its container, so we have
+available almost all the props of this type. In the same way, the different
+choice options will be its children.
 
-There is a pre-defined component called `ChoiceGroup.IconButton` to be used as children of a `ChipGroup`.
-It is a simple wrapper of the `IconButton`component which is able to inherit some props automatically
+There is a pre-defined component called `ChoiceGroup.IconButton` to be used as
+children of a `ChipGroup`.
+It is a simple wrapper of the `IconButton`component which is able to inherit
+some props automatically
 from its parent by a React context: size, selectionScheme, colorScheme... etc.
 
-We recommend to use this component, but anyway you can use also a `IconButton` component.
+We recommend to use this component, but anyway you can use also a `IconButton`
+component.
 
 <Canvas of={Stories.Base} />
 
-Anyway, when we talk about inheriting props from its parent, they are overwritten when we define that prop
-directly on the child. In this example the last component has defined the value of an inherited prop and
-that value prevails.
+Anyway, when we talk about inheriting props from its parent, they are
+overwritten when we define that prop directly on the child. In this example the
+last component has defined the value of an inherited prop and that value
+prevails.
 
 <Canvas of={Stories.SpecificChildProp} />
 
 ## Using a not pre-defined ChoiceGroup.IconButton component
 
-You can use `IconButton` as children instead of the pre-defined `ChoiceGroup.IconButton`,
-but it's not able to read the parent context, so it can't inherit the `selectionScheme`, `size`... etc. prop values.
+You can use `IconButton` as children instead of the pre-defined
+`ChoiceGroup.IconButton`,
+but it's not able to read the parent context, so it can't inherit the
+`selectionScheme`, `size`... etc. prop values.
 
-In this example the `ChoiceGroup` parent has 'xs' `size`, but the children are not inheriting this value:
+In this example the `ChoiceGroup` parent has 'xs' `size`, but the children are
+not inheriting this value:
 
 <Canvas of={Stories.UseOfIconButton} />
 
@@ -47,31 +57,40 @@ In this example the `ChoiceGroup` parent has 'xs' `size`, but the children are n
 
 ### Multiple selection controlled
 
-In scenarios where multiple selections are allowed (using a form checkbox behavior),
-you can use a controlled ChoiceGroup with a rendered form checkbox input as HTML and its corresponding keyboard utility.
+In scenarios where multiple selections are allowed (using a form checkbox
+behavior), you can use a controlled ChoiceGroup with a rendered form checkbox
+input as HTML and its corresponding keyboard utility.
 
 <Canvas of={Stories.MultipleSelectionControlled} />
 
 ### Multiple selection uncontrolled
 
-If you need an uncontrolled behavior, you cannot use the onChange event handler and must use the native behavior of a checkbox.
-This way you will get an uncontrolled ChoiceGroup with rendered form checkbox input as HTML and its corresponding keyboard utility.
-However, with an uncontrolled behavior, you cannot manage the change of the icon depending on whether the internal checkbox is checked or not.
+If you need an uncontrolled behavior, you cannot use the onChange event handler
+and must use the native behavior of a checkbox.
+This way you will get an uncontrolled ChoiceGroup with rendered form checkbox
+input as HTML and its corresponding keyboard utility.
+However, with an uncontrolled behavior, you cannot manage the change of the icon
+depending on whether the internal checkbox is checked or not.
 
 <Canvas of={Stories.MultipleSelectionUncontrolled} />
 
 ### Single selection controlled
 
-When a single selection is required (using a form radio behavior), you must add the selectionScheme prop and set it to 'single'.
-This way, you will get a controlled ChoiceGroup with rendered form radio input as HTML and its corresponding keyboard utility.
+When a single selection is required (using a form radio behavior), you must add
+the selectionScheme prop and set it to 'single'.
+This way, you will get a controlled ChoiceGroup with rendered form radio input
+as HTML and its corresponding keyboard utility.
 
 <Canvas of={Stories.SingleSelectionControlled} />
 
 ### Single selection uncontrolled
 
-If you need an uncontrolled behavior, you must assign the name prop with the same value for every IconButton.
-You cannot use the onChange event handler and must use the native behavior of a radio group.
-This way you will get an uncontrolled ChoiceGroup with rendered form radio input as HTML and its corresponding keyboard utility.
+If you need an uncontrolled behavior, you must assign the name prop with the
+same value for every IconButton.
+You cannot use the onChange event handler and must use the native behavior of a
+radio group.
+This way you will get an uncontrolled ChoiceGroup with rendered form radio input
+as HTML and its corresponding keyboard utility.
 
 <Canvas of={Stories.SingleSelectionUncontrolled} />
 

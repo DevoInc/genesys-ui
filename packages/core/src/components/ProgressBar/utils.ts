@@ -17,7 +17,6 @@ import {
 import { SQUARE, STATUS_COLOR_SCHEME_MAP } from './constants';
 import type { IconProps } from '../Icon';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ProgressBarBaseUtilsProps
   extends Pick<IBaseProgressBar, 'percent' | 'status'> {}
 
@@ -36,7 +35,8 @@ export const getStatus = ({ percent, status }: ProgressBarBaseUtilsProps) =>
   percent >= MAX_PERCENT ? 'complete' : status;
 
 /**
- * Get the colorScheme value (for internal components which use that prop) based in the status prop
+ * Get the colorScheme value (for internal components which use that prop) based
+ * in the status prop
  *
  * @return colorScheme value
  */
@@ -65,7 +65,8 @@ export const hasCustomInfo = (customInfo: TProgressBarCustomInfo) =>
   Boolean(customInfo?.startInfo) || Boolean(customInfo?.endInfo);
 
 /**
- * Get the icon for the ProgressBar not only based in the icon prop, but also in type, percent and status
+ * Get the icon for the ProgressBar not only based in the icon prop, but also in
+ * type, percent and status
  *
  * @return icon name
  */
@@ -110,13 +111,13 @@ export const getRadiant = (size: TProgressBarSize): number =>
  * Get the background color for ProgressBar track.
  * */
 export const getProgressBgColor = ({
-  status,
+  $status,
   tokens,
 }: {
-  status: TProgressBarStatus;
+  $status: TProgressBarStatus;
   tokens: DefaultTheme['cmp']['progressBar'];
 }): string => {
-  const statusEval = STATUS_COLOR_SCHEME_MAP[status];
+  const statusEval = STATUS_COLOR_SCHEME_MAP[$status];
   return tokens?.progress?.color?.background[statusEval];
 };
 
@@ -124,16 +125,16 @@ export const getProgressBgColor = ({
  * Get the background color for ProgressBar track.
  * */
 export const getTrackBgColor = ({
-  colorScheme,
-  status,
+  $colorScheme,
+  $status,
   tokens,
 }: {
-  colorScheme: TProgressBarColorScheme;
-  status: TProgressBarStatus;
+  $colorScheme: TProgressBarColorScheme;
+  $status: TProgressBarStatus;
   tokens: DefaultTheme['cmp']['progressBar'];
 }): string => {
-  const statusEval = STATUS_COLOR_SCHEME_MAP[status];
-  return colorScheme === 'light'
+  const statusEval = STATUS_COLOR_SCHEME_MAP[$status];
+  return $colorScheme === 'light'
     ? 'rgba(255,255,255,0.08)' // this color because gets the same contrast (4.09) with dark theme overlay than p.theme.feedbackSecondary with light theme one
     : tokens?.track?.color?.background[statusEval];
 };

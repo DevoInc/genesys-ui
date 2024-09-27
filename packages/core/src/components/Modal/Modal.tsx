@@ -8,7 +8,6 @@ import {
   type ModalPanelProps,
   ModalIcon,
 } from './components';
-
 import type { TGlobalStatus } from '../../declarations/commonProps';
 import {
   ModalBackdrop,
@@ -36,38 +35,36 @@ export const InternalModal: React.FC<ModalProps> = ({
   status = 'base',
   windowSize = 'md',
   disableCloseOnOverlayClick,
-  styles,
+  style,
   zIndex,
   ...dataProps
-}) => {
-  return (
-    <ModalBackdrop
+}) => (
+  <ModalBackdrop
+    disableCloseOnOverlayClick={disableCloseOnOverlayClick}
+    onRequestClose={onRequestClose}
+    windowSize={windowSize}
+    style={style}
+    zIndex={zIndex}
+  >
+    <ModalPanel
+      {...dataProps}
+      aria-describedby={ariaDescribedBy}
+      aria-labelledby={ariaLabelledBy}
       disableCloseOnOverlayClick={disableCloseOnOverlayClick}
-      onRequestClose={onRequestClose}
+      id={id}
+      height={height}
+      width={width}
       windowSize={windowSize}
-      styles={styles}
+      onRequestClose={onRequestClose}
       zIndex={zIndex}
+      status={status}
     >
-      <ModalPanel
-        {...dataProps}
-        aria-describedby={ariaDescribedBy}
-        aria-labelledby={ariaLabelledBy}
-        disableCloseOnOverlayClick={disableCloseOnOverlayClick}
-        id={id}
-        height={height}
-        width={width}
-        windowSize={windowSize}
-        onRequestClose={onRequestClose}
-        zIndex={zIndex}
-        status={status}
-      >
-        <ModalContext.Provider value={{ onRequestClose, status }}>
-          {children}
-        </ModalContext.Provider>
-      </ModalPanel>
-    </ModalBackdrop>
-  );
-};
+      <ModalContext.Provider value={{ onRequestClose, status }}>
+        {children}
+      </ModalContext.Provider>
+    </ModalPanel>
+  </ModalBackdrop>
+);
 
 export const Modal = InternalModal as typeof InternalModal & {
   Body: typeof ModalBody;

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { SpinnerLoader } from '..';
+import { SpinnerLoader } from './SpinnerLoader';
 
 const meta: Meta<typeof SpinnerLoader> = {
   title: 'Components/Feedback/SpinnerLoader',

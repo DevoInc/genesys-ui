@@ -1,17 +1,18 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+
 import { GIDownloadCloudFileSync } from '@devoinc/genesys-icons';
 
-import { Button, type ButtonProps, Typography } from '../..';
+import { Typography } from '../Typography';
+import { Button, type ButtonProps } from '../Button';
+import { Flex } from '../Flex';
+import { HFlex } from '../HFlex';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button/Button',
   component: Button,
   args: {
     children: 'Button label',
-    iconPosition: 'left',
-    colorScheme: 'neutral',
-    size: 'md',
   },
   parameters: { controls: { sort: 'alpha' } },
 };
@@ -21,7 +22,79 @@ type Story = StoryObj<typeof Button>;
 
 export const Base: Story = {};
 
+export const AccentHigh: Story = {
+  tags: ['isHidden'],
+  args: {
+    colorScheme: 'accent-high',
+    children: 'Accent high',
+  },
+};
+
+export const Accent: Story = {
+  tags: ['isHidden'],
+  args: {
+    colorScheme: 'accent',
+    children: 'Accent',
+  },
+};
+
+export const Neutral: Story = {
+  tags: ['isHidden'],
+  args: {
+    colorScheme: 'neutral',
+    children: 'Neutral',
+  },
+};
+
+export const Blend: Story = {
+  tags: ['isHidden'],
+  render: () => (
+    <HFlex spacing="cmp-md">
+      <Flex.Item flex="1 1 50%">
+        <Button colorScheme="blend-base">Blend base</Button>
+      </Flex.Item>
+      <Flex.Item flex="1 1 50%">
+        <div style={{ backgroundColor: '#222', padding: '2rem' }}>
+          <Button colorScheme="blend-inverse">Blend inverse</Button>
+        </div>
+      </Flex.Item>
+    </HFlex>
+  ),
+};
+
+export const UI: Story = {
+  tags: ['isHidden'],
+  render: () => (
+    <HFlex spacing="cmp-md">
+      <Flex.Item>
+        <Button colorScheme={'error'}>Error</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button colorScheme={'success'}>Success</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button colorScheme={'warning'}>Warning</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button colorScheme={'help'}>Help</Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button colorScheme={'info'}>Info</Button>
+      </Flex.Item>
+    </HFlex>
+  ),
+};
+
+export const Quiet: Story = {
+  tags: ['isHidden'],
+  args: {
+    colorScheme: 'quiet',
+    children: 'Quiet',
+  },
+};
+
 export const AsDropdown: Story = {
+  tags: ['isHidden'],
   render: (args) =>
     ((props) => {
       const [expanded, setExpanded] = React.useState(false);
@@ -39,6 +112,7 @@ export const AsDropdown: Story = {
 };
 
 export const AsLink: Story = {
+  tags: ['isHidden'],
   args: {
     href: 'https://www.devo.com',
     target: '_blank',
@@ -48,6 +122,7 @@ export const AsLink: Story = {
 };
 
 export const Loading: Story = {
+  tags: ['isHidden'],
   args: {
     icon: <GIDownloadCloudFileSync />,
     state: 'loading',
@@ -56,6 +131,7 @@ export const Loading: Story = {
 };
 
 export const Success: Story = {
+  tags: ['isHidden'],
   args: {
     icon: <GIDownloadCloudFileSync />,
     state: 'loading',
@@ -96,6 +172,7 @@ export const Success: Story = {
 };
 
 export const Error: Story = {
+  tags: ['isHidden'],
   args: {
     icon: <GIDownloadCloudFileSync />,
     state: 'loading',
@@ -136,6 +213,7 @@ export const Error: Story = {
 };
 
 export const MultipleUncontrolled: Story = {
+  tags: ['isHidden'],
   args: {
     selectionScheme: 'multiple',
     value: 'option',
@@ -144,6 +222,7 @@ export const MultipleUncontrolled: Story = {
 };
 
 export const MultipleControlled: Story = {
+  tags: ['isHidden'],
   args: {
     selectionScheme: 'multiple',
     children: 'Option',
@@ -165,6 +244,7 @@ export const MultipleControlled: Story = {
 };
 
 export const SingleUncontrolled: Story = {
+  tags: ['isHidden'],
   args: {
     selectionScheme: 'single',
     value: 'option',
@@ -174,6 +254,7 @@ export const SingleUncontrolled: Story = {
 };
 
 export const SingleControlled: Story = {
+  tags: ['isHidden'],
   args: {
     selectionScheme: 'single',
     value: 'Option',
@@ -196,6 +277,7 @@ export const SingleControlled: Story = {
 };
 
 export const Custom: Story = {
+  tags: ['isHidden'],
   name: 'Custom based in internal components',
   render: (args) =>
     ((props) => {
@@ -206,9 +288,9 @@ export const Custom: Story = {
           hasDropdown
           state={expanded ? 'expanded' : 'enabled'}
           onClick={() => setExpanded(!expanded)}
-          styles="height: 48px; background-color: gold;"
+          style={{ height: '48px', backgroundColor: 'gold' }}
         >
-          <Button._Label styles="font-style: italic;">
+          <Button._Label style={{ fontStyle: 'italic' }}>
             Dropdown button
           </Button._Label>
           <Button._Addon hasSpace isDropdown position="right">

@@ -27,6 +27,7 @@ export const Base: Story = {
 };
 
 export const Compact: Story = {
+  tags: ['isHidden'],
   args: {
     compact: true,
     heading: 'Compact App Bar',
@@ -35,6 +36,7 @@ export const Compact: Story = {
 };
 
 export const CompactWithAnotherToolbar: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       return (
@@ -62,20 +64,19 @@ export const CompactWithAnotherToolbar: Story = {
 };
 
 export const Custom: Story = {
+  tags: ['isHidden'],
   render: () =>
-    (() => {
-      return (
-        <AppBar sticky={true}>
-          <AppBar.Heading styles="font-style: italic;">Hello</AppBar.Heading>
-          <AppBar.Divider />
-          <AppBar.Navigation>
-            <TabsCmp />
-          </AppBar.Navigation>
-          <Typography.Paragraph>Custom block next to tabs</Typography.Paragraph>
-          <AppBar.Item marginLeft="auto">
-            <Typography.Paragraph>Block to right</Typography.Paragraph>
-          </AppBar.Item>
-        </AppBar>
-      );
-    })(),
+    (() => (
+      <AppBar sticky={true}>
+        <AppBar.Heading style={{ fontStyle: 'italic' }}>Hello</AppBar.Heading>
+        <AppBar.Divider />
+        <AppBar.Navigation>
+          <TabsCmp />
+        </AppBar.Navigation>
+        <Typography.Paragraph>Custom block next to tabs</Typography.Paragraph>
+        <AppBar.Item marginLeft="auto">
+          <Typography.Paragraph>Block to right</Typography.Paragraph>
+        </AppBar.Item>
+      </AppBar>
+    ))(),
 };

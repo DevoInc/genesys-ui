@@ -4,7 +4,7 @@ import { InputControl } from '@devoinc/genesys-ui';
 
 import { ROW_HEIGHT_MD } from '../../constants';
 import type { TCellEditor } from '../../declarations';
-import { TableContext } from '../../context/TableContext';
+import { TableContext } from '../../context';
 
 export type TContextTextEditorParams = {
   texts: {

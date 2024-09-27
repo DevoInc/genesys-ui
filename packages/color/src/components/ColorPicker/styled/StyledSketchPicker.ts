@@ -10,7 +10,7 @@ export const StyledSketchPicker = styled(SketchPicker)`
     const spacingTokens = aliasTokens.space;
     const sketchPickerTokens = theme.cmp.colorPicker.sketchPicker;
 
-    const typoObj = getFieldControlTypoObj({ theme, size: 'sm' });
+    const typoObj = getFieldControlTypoObj({ theme, $size: 'sm' });
     const transitionDuration = fieldTokens.mutation.transitionDuration;
     const baseTextColor = aliasTokens.color.text.body.base;
 
@@ -56,13 +56,8 @@ export const StyledSketchPicker = styled(SketchPicker)`
         color: ${baseTextColor} !important;
       }
 
-      input + span {
-        margin-top: 0.2rem;
-        margin-bottom: 0.1rem;
-      }
-
       > div:nth-child(3) > div:first-child input {
-        max-width: 4.2rem;
+        max-width: 4.5rem;
       }
 
       > .flexbox-fix:last-child {

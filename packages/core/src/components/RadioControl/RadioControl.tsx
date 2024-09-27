@@ -7,22 +7,22 @@ import type {
   TFieldSize,
   IInputAttrs,
   IWithRequiredAriaLabelOrAriaLabelledByAttr,
+  TFieldStatus,
 } from '../../declarations';
 import { FieldContext } from '../Field/context';
 import { getFieldContextProps } from '../Field';
-import {
-  StyledRadioControl,
-  type StyledRadioControlProps,
-} from './StyledRadioControl';
+import { StyledRadioControl } from './StyledRadioControl';
 
 interface CommonRadioControlProps
   extends IFieldControl,
     ICheckAttrs,
     ICheckAriaAttrs,
-    Pick<IInputAttrs, 'value'>,
-    Omit<StyledRadioControlProps, '$size'> {
-  /** The size for the radio. It affects to its width, height, font-size... etc. */
+    Pick<IInputAttrs, 'value'> {
+  /** The size for the radio. It affects to its width, height, font-size...
+   * etc. */
   size?: TFieldSize;
+  /** The status for the checkbox: success, error... etc. */
+  status?: TFieldStatus;
 }
 
 export type RadioControlProps =
@@ -40,7 +40,7 @@ export const RadioControl: React.FC<RadioControlProps> = ({
   required,
   size,
   status,
-  styles,
+  style,
   tooltip,
   ...restNativeProps
 }) => {
@@ -70,13 +70,13 @@ export const RadioControl: React.FC<RadioControlProps> = ({
       }
       aria-labelledby={contextBasedProps.ariaLabelledBy}
       checked={onChange ? checked : undefined}
-      css={styles}
+      css={style}
       disabled={contextBasedProps.disabled}
       id={contextBasedProps.id}
       onChange={onChange}
       required={contextBasedProps.required}
       $size={contextBasedProps.size}
-      status={contextBasedProps.status}
+      $status={contextBasedProps.status}
       title={tooltip}
     />
   );

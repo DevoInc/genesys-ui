@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Flex, FlexProps } from '../../../Flex';
+import { Flex, type FlexProps } from '../../../Flex';
 
 export interface ToolBarItemProps extends FlexProps {}
 

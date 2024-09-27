@@ -16,9 +16,9 @@ export interface ButtonLabelProps
 export const ButtonLabel: React.FC<ButtonLabelProps> = ({
   as,
   children,
-  styles,
+  style,
 }) => (
-  <StyledButtonLabel as={as} css={styles}>
+  <StyledButtonLabel as={as} style={style}>
     {children}
   </StyledButtonLabel>
 );

@@ -8,7 +8,6 @@ import type {
 } from '../../declarations';
 import type { ITabs } from './declarations';
 import { TabsContext } from './context';
-
 import {
   TabsAside,
   TabsContainer,
@@ -18,7 +17,6 @@ import {
   TabsMark,
 } from './components';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TabsProps
   extends IGlobalAttrs,
     IGlobalAriaAttrs,
@@ -39,26 +37,19 @@ const InternalTabs = React.forwardRef<HTMLDivElement, TabsProps>(
       ...nativeProps
     },
     ref,
-  ) => {
-    return (
-      <TabsContainer
-        {...nativeProps}
-        contained={contained}
-        ref={ref}
-        size={size}
+  ) => (
+    <TabsContainer {...nativeProps} contained={contained} ref={ref} size={size}>
+      <TabsContext.Provider
+        value={{
+          colorScheme,
+          size,
+          wide,
+        }}
       >
-        <TabsContext.Provider
-          value={{
-            colorScheme,
-            size,
-            wide,
-          }}
-        >
-          {children}
-        </TabsContext.Provider>
-      </TabsContainer>
-    );
-  },
+        {children}
+      </TabsContext.Provider>
+    </TabsContainer>
+  ),
 );
 
 export const Tabs = InternalTabs as typeof InternalTabs & {

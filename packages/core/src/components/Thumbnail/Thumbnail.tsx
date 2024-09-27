@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
@@ -7,7 +8,6 @@ import type {
   IStyledOverloadCss,
 } from '../../declarations';
 import type { IThumbnail } from './declarations';
-
 import { StyledThumbnail } from './StyledThumbnail';
 
 export interface ThumbnailProps
@@ -38,7 +38,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   src,
   srcSet,
   disabled,
-  styles,
+  style,
   tooltip,
   useMap,
   width,
@@ -51,14 +51,14 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
     aria-hidden={ariaHidden}
     aria-label={ariaLabel}
     aria-labelledby={ariaLabelledBy}
-    borderRadius={borderRadius}
-    css={styles}
-    display={display}
+    $borderRadius={borderRadius}
+    css={style}
+    $display={display}
     height={height}
     id={id}
     loading={loading}
-    objectFit={objectFit}
-    objectPosition={objectPosition}
+    $objectFit={objectFit}
+    $objectPosition={objectPosition}
     referrerPolicy={referrerPolicy}
     role={role}
     srcSet={srcSet}

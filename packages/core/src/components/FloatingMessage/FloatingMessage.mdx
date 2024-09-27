@@ -8,12 +8,14 @@ import * as Stories from './FloatingMessage.stories';
 
 ## Overview
 
-Component that provides a floating message to inform the user about a particular task or process.
-Usually is used to provide feedback to the user once an action or event is launched.
+Component that provides a floating message to inform the user about a particular
+task or process.
+Usually is used to provide feedback to the user once an action or event is
+launched.
 
-For instance, a floating message which is rendered when a user copies/pastes a content,
-informing about the result of the action: if it's been successful or not. Or a message displayed
-in a code editor when the format is not valid.
+For instance, a floating message which is rendered when a user copies/pastes a
+content, informing about the result of the action: if it's been successful or
+not. Or a message displayed in a code editor when the format is not valid.
 
 ## How to import
 
@@ -25,18 +27,22 @@ in a code editor when the format is not valid.
 
 ## Positioned relative to its parent
 
-The component position is based in an absolute way, so for working properly is needed a parent container with position
-relative or absolute. This is an example with a position relative paretn container and with a code block as sibling of the component.
-The floating message is positioned in an absolute way, but relative to this sibling thanks to the common parent
-with position relative:
+The component position is based in an absolute way, so for working properly is
+needed a parent container with position relative or absolute. This is an example
+with a position relative parent container and with a code block as sibling of
+the component.
+
+The floating message is positioned in an absolute way, but relative to this
+sibling thanks to the common parent with position relative:
 
 <Canvas of={Stories.PositionedToItsParent} />
 
 ## Position demo
 
-This is an example of all the available position values. There is an offset by default based in the position value
-to get the correct location of the message, so although it's not visible in the example code or in the prop value
-it exists, and it's being applied.
+This is an example of all the available position values. There is an offset by
+default based in the position value to get the correct location of the message,
+so although it's not visible in the example code or in the prop value it exists,
+and it's being applied.
 
 <Canvas of={Stories.Position} />
 

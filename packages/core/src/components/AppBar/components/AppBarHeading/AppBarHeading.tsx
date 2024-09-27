@@ -20,12 +20,12 @@ export const AppBarHeading: React.FC<AppBarHeadingProps> = ({
   as,
   children,
   id,
-  styles,
+  style,
 }) => (
   <Typography.Heading
     as={as}
     id={id}
-    styles={styles}
+    style={style}
     colorScheme="weak"
     size="overline-md"
   >

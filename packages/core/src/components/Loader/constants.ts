@@ -20,7 +20,7 @@ export const LOADER_SIZE_PROGRESS_AND_SPINNER: {
     progress: 'md',
     spinner: 'lg',
   },
-} as const;
+};
 
 export const CONTEXTUAL_SCROLL_LOADER_SIZE_MAP: {
   [key1 in TContextualScrollLoaderType]: {
@@ -35,7 +35,7 @@ export const CONTEXTUAL_SCROLL_LOADER_SIZE_MAP: {
     md: 'md',
     lg: 'lg',
   },
-} as const;
+};
 
 export const POSITION_GRADIENT_DIR_MAP: {
   [key in TLoaderGradientPosition]: TLoaderGradientPosition;
@@ -44,7 +44,7 @@ export const POSITION_GRADIENT_DIR_MAP: {
   right: 'left',
   bottom: 'top',
   left: 'right',
-} as const;
+};
 
 export const POSITION_GRADIENT_FLEX_DIR_MAP: {
   [key in TLoaderGradientPosition]: OverlayProps['flexDirection'];
@@ -53,7 +53,7 @@ export const POSITION_GRADIENT_FLEX_DIR_MAP: {
   right: 'row',
   bottom: 'column',
   left: 'row',
-} as const;
+};
 
 export const POSITION_GRADIENT_FLEX_JUSTIFY_MAP: {
   [key in TLoaderGradientPosition]: OverlayProps['justifyContent'];
@@ -62,4 +62,4 @@ export const POSITION_GRADIENT_FLEX_JUSTIFY_MAP: {
   right: 'flex-end',
   bottom: 'flex-end',
   left: 'flex-start',
-} as const;
+};

@@ -1,4 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
+
 import type { PanelBodyProps } from '../Panel/components';
 
 interface getPanelSectionBodySpacingProps {
@@ -63,20 +64,18 @@ export const panelSectionBodyMixin = ({
   hasScroll,
   removeSpace,
   theme,
-}: getPanelSectionBodySpacingProps) => {
-  return css`
-    padding: ${getPanelSectionBodySpacing({
-      hasScroll,
-      removeSpace,
-      theme,
-    }).contentPadding};
-    margin: ${getPanelSectionBodySpacing({
-      hasScroll,
-      removeSpace,
-      theme,
-    }).contentMargin};
-  `;
-};
+}: getPanelSectionBodySpacingProps) => css`
+  padding: ${getPanelSectionBodySpacing({
+    hasScroll,
+    removeSpace,
+    theme,
+  }).contentPadding};
+  margin: ${getPanelSectionBodySpacing({
+    hasScroll,
+    removeSpace,
+    theme,
+  }).contentMargin};
+`;
 
 /**
  * Get the specific styles for PanelFooter component when it's used inside a PanelSection

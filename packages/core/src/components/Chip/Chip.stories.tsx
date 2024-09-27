@@ -94,7 +94,7 @@ export const Custom: Story = {
           <Chip._Icon size="2rem">
             {selected ? <GIHeartFull /> : <GILikeHeartFavoriteRatingLove />}
           </Chip._Icon>
-          <Chip._Content styles="font-style: italic;">Favorite</Chip._Content>
+          <Chip._Content style="font-style: italic;">Favorite</Chip._Content>
         </Chip._Container>
       );
     })(args),

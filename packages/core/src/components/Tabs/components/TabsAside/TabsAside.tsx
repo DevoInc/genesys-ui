@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { Flex, type FlexProps } from '../../../Flex';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TabsAsideProps extends FlexProps {}
 
 export const TabsAside: React.FC<TabsAsideProps> = ({

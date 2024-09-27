@@ -9,7 +9,8 @@ export interface IPaginationCommonInterface
   extends Pick<IGlobalAttrs, 'id'>,
     IDataAttrs,
     IStyledOverloadCss {
-  /** If you want to override pagination internal state, use the usePagination hook in the parent and pass the props. */
+  /** If you want to override pagination internal state, use the usePagination
+   * hook in the parent and pass the props. */
   paginationHook?: IPaginationInfo;
   /** The size for every inner component; SelectControls, IconButtons... etc. */
   size?: TBaseSize;

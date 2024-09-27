@@ -1,12 +1,9 @@
 import * as React from 'react';
 
-// declarations
 import type {
   IFieldEventAttrs,
   TSelectionScheme,
 } from '../../../../declarations';
-
-// components
 import { GICheckThick } from '@devoinc/genesys-icons';
 import { VFlex } from '../../../VFlex';
 import { HFlex } from '../../../HFlex';
@@ -17,9 +14,7 @@ import {
   MenuItemIcon,
   MenuItemShortCut,
 } from './components';
-
-// styled
-import { StyledMenuItemLabel } from './styled';
+import { StyledMenuItemLabel } from './StyledMenuItemLabel';
 import { StyledHiddenInput } from '../../../../styled/';
 
 export interface MenuItemProps

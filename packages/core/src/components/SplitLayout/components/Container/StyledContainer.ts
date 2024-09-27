@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { TDirection } from '../../declarations';
+
+import type { TDirection } from '../../declarations';
 
 export interface StyledContainerProps {
   $direction: TDirection;

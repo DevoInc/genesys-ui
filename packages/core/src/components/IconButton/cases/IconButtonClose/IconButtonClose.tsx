@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { concat } from 'lodash';
 
-import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
-
-import { IconButton, type IconButtonProps } from '../../IconButton';
 import { GIExitClose } from '@devoinc/genesys-icons';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
+import { IconButton, type IconButtonProps } from '../../IconButton';
+import { mergeStyles } from '../../../../helpers';
+
 export interface IconButtonCloseProps
   extends Omit<
     IconButtonProps,
@@ -36,20 +35,18 @@ export interface IconButtonCloseProps
 export const IconButtonClose = React.forwardRef<
   HTMLElement,
   IconButtonCloseProps
->(({ size = 'md', state = 'enabled', styles, ...restIconButtonProps }, ref) => {
-  return (
-    <IconButton
-      {...restIconButtonProps}
-      colorScheme="blend-base"
-      icon={<GIExitClose />}
-      circular
-      hasBoldIcon
-      ref={ref}
-      size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
-      state={state}
-      styles={concat('background-color: transparent;', styles)}
-    />
-  );
-});
+>(({ size = 'md', state = 'enabled', style, ...restIconButtonProps }, ref) => (
+  <IconButton
+    {...restIconButtonProps}
+    colorScheme="blend-base"
+    icon={<GIExitClose />}
+    circular
+    hasBoldIcon
+    ref={ref}
+    size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
+    state={state}
+    style={mergeStyles({ backgroundColor: 'transparent' }, style)}
+  />
+));
 
 IconButtonClose.displayName = 'IconButtonClose';

@@ -64,7 +64,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
   requiredMarkTooltip,
   size = 'md',
   status = 'base',
-  styles,
+  style,
   tooltip,
   value,
   ...restDataProps
@@ -108,7 +108,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
       requiredMarkTooltip={requiredMarkTooltip}
       size={size}
       status={status}
-      styles={styles}
+      style={style}
       tooltip={tooltip}
     >
       <Popover

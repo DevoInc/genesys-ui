@@ -3,8 +3,9 @@ import * as React from 'react';
 import { SelectControl, type TSelectOption } from '@devoinc/genesys-ui';
 
 import type { TFilterContext, TFilter } from '../../declarations';
-import { BasicFilter, BOOLEAN_OPTIONS, FilterContainer } from '../common';
 import type { TBooleanFilterValue } from './declarations';
+
+import { BasicFilter, BOOLEAN_OPTIONS, FilterContainer } from '../common';
 
 export const BooleanFilter: React.FC<TFilter> = ({ onChange, colDef }) => {
   const context = colDef?.context as TFilterContext;

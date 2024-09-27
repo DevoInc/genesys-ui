@@ -10,7 +10,8 @@ import * as Stories from './InputControl.stories';
 
 The Input component provides a way for users to enter free-form text data.
 
-It's important to choose the appropriate text field `type` based on the type of content that users are expected to enter.
+It's important to choose the appropriate text field `type` based on the type of
+content that users are expected to enter.
 This ensures that the input is validated and processed correctly.
 
 ## How to import
@@ -23,28 +24,34 @@ This ensures that the input is validated and processed correctly.
 
 ## Advanced usage
 
-We can get any case of the component using only `InputControl` and its props as in this example with addons and icon:
+We can get any case of the component using only `InputControl` and its props as
+in this example with addons and icon:
 
 <Canvas sourceState="shown" of={Stories.WithAddonsAndIcons} />
 
-But if we need a customization, or simply we want to use a specific piece of the component we have its internal components
-available following dot notation.
+But if we need a customization, or simply we want to use a specific piece of the
+component we have its internal components available following dot notation.
 
-- `InputControl._Container`: the outermost container which distributes the addons and the inner container (input and icon).
-- `InputControl._Addon`: the content block at the right or/and the left of the inner container.
-- `InputControl._InnerContainer`: the inner container which distributes the input and icon.
+- `InputControl._Container`: the outermost container which distributes the
+  addons and the inner container (input and icon).
+- `InputControl._Addon`: the content block at the right or/and the left of the
+  inner container.
+- `InputControl._InnerContainer`: the inner container which distributes the
+  input and icon.
 - `InputControl._Input`: the input control.
-- `InputControl._Icon`: the icon which can be a custom/status icon (to the right) or type icon (e.g. the 'magnifying glass' for type search) to the left.
+- `InputControl._Icon`: the icon which can be a custom/status icon (to the
+  right) or type icon (e.g. the 'magnifying glass' for type search) to the left.
 
-We don't recommend this usage, but anyway it's available for very specific needs, usually because we need custom styles
-for some piece of the component.
+We don't recommend this usage, but anyway it's available for very specific
+needs, usually because we need custom styles for some piece of the component.
 
 <Canvas sourceState="shown" of={Stories.AdvancedUsage} />
 
 ## Search type
 
-We can hide the auto-rendered type search icon whe it might be redundant. E.g. when the `InputControl`
-is combined with an `IconButton` or a `Button` which they already have the usual search icon.
+We can hide the auto-rendered type search icon whe it might be redundant. E.g.
+when the `InputControl` is combined with an `IconButton` or a `Button` which
+they already have the usual search icon.
 
 <Canvas sourceState="shown" of={Stories.SearchType} />
 
@@ -52,7 +59,8 @@ is combined with an `IconButton` or a `Button` which they already have the usual
 
 - [Input](?path=/docs/components-form-input--docs)
 - [Pagination](?path=/docs/components-core-navigation-pagination--docs)
-- [Month & Time](?path=/docs/components-datetime-datetimerange--docs): they are used in DateTimeRange component.
+- [Month & Time](?path=/docs/components-datetime-datetimerange--docs): they are
+  used in DateTimeRange component.
 
 ## Props
 

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { typoMixin } from '@devoinc/genesys-ui';
 
 export const StyledCalendarCell = styled.div`
-  ${({ theme }) => typoMixin({ theme, size: 'sm' })};
+  ${({ theme }) => typoMixin({ theme, $size: 'sm' })};
   position: relative;
   font-weight: 300;
 
@@ -95,7 +95,7 @@ export const StyledCalendarCell = styled.div`
   /* -------------------------------------------------------------------- */
 
   &.weekDayName {
-    ${({ theme }) => typoMixin({ theme, size: 'xs' })};
+    ${({ theme }) => typoMixin({ theme, $size: 'xs' })};
     color: ${({ theme }) => theme.cmp.calendar.week.color.text.base};
     cursor: default;
 

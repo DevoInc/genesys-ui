@@ -13,7 +13,6 @@ export interface IModalHeaderMixin {
  *
  * @return styles for Panel.Header component
  */
-
 export const modalHeaderMixin = ({
   theme,
   removeSpace,

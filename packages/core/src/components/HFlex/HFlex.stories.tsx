@@ -41,6 +41,7 @@ export const Base: Story = {
 };
 
 export const HFlexAndHFlexItems: Story = {
+  tags: ['isHidden'],
   name: 'Using HFlex.Item',
   render: (args) =>
     ((args) => (

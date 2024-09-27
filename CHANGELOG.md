@@ -1,5 +1,100 @@
 # Changelog
 
+## [12.1.0](https://github.com/DevoInc/genesys-ui/compare/v12.0.0...v12.1.0) (2024-09-26)
+
+
+### Features
+
+* added col, row & cell styles by its definitions ([33d7a62](https://github.com/DevoInc/genesys-ui/commit/33d7a621e5beccfacac57707b830b06c98d84e9a))
+* **table:** add preset defaul in Basic table ([c3a7a1e](https://github.com/DevoInc/genesys-ui/commit/c3a7a1ed8cbf2a02f71b106974f228c3ca863c40))
+* **table:** add presets in table components ([f3d6505](https://github.com/DevoInc/genesys-ui/commit/f3d6505f1f8e34b5c6a4dd93b427406a824cb726))
+* **table:** add presets row ([1208e22](https://github.com/DevoInc/genesys-ui/commit/1208e2246b374eed0cb93f14c8200d55709c54dc))
+* **table:** useAfterRow add presets ([8127b01](https://github.com/DevoInc/genesys-ui/commit/8127b01430b81c3eabb8d5782d34526ca82d06a0))
+
+
+### Bug Fixes
+
+* AppLayout tabs mark active fixed ([0560a19](https://github.com/DevoInc/genesys-ui/commit/0560a19988d8ac56d43e27738ebf5cceb3bec20f))
+* **datetime:** right formatDate and step for Time ([ac5a381](https://github.com/DevoInc/genesys-ui/commit/ac5a3811037ea4e1af9bab4aa071bb49645836ca))
+* fixed several minor naming problems and the Tabs mark in AppLayout story for secondary navigation ([85e5699](https://github.com/DevoInc/genesys-ui/commit/85e56998613506b1903efd68103dbb13f676cc6f))
+* QUV-2503 Fixed scroll and chips rendering in SelectControl with multiple selection ([7e16941](https://github.com/DevoInc/genesys-ui/commit/7e16941d388f7423a6c9a5d36b631523a6d5ffbc))
+* **table:** change default value highlightColumnsOnHover ([c85d427](https://github.com/DevoInc/genesys-ui/commit/c85d42793c335fb4d827b3186f8430dabae7cdb8))
+* **table:** remove autoFocus from SwitchControl in BooleanEditor ([6a7d772](https://github.com/DevoInc/genesys-ui/commit/6a7d772a850eeaaad2a356d4203b725e04a6791b))
+* **table:** style-components $ prefix for prop ([be6e9b0](https://github.com/DevoInc/genesys-ui/commit/be6e9b0f791ef428ce27296127f2aaa043f12567))
+* **table:** TRowGroupingContext onclick type string ([03a9605](https://github.com/DevoInc/genesys-ui/commit/03a96053651b2edfbde12dbdc172f62c5d13ed63))
+
+## [12.0.0](https://github.com/DevoInc/genesys-ui/compare/v11.0.4...v12.0.0) (2024-09-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* normalize 'style' interface for custom styles
+* refactor a new SplitLayout based on composition
+* **Datetime:** refactored DateTimeRange and Presets
+
+### Features
+
+* add after row ([4cc16a7](https://github.com/DevoInc/genesys-ui/commit/4cc16a717a3588860843a6a73e16b7af70a7a68d))
+* add height afterRow ([761d2e2](https://github.com/DevoInc/genesys-ui/commit/761d2e2e8dcc53e5636a1050bf2172a313fe6446))
+* add height declaration in TRowDef ([92a84ee](https://github.com/DevoInc/genesys-ui/commit/92a84ee843bbd1017b362f81a27ac81e237f5699))
+* add resize item ([81f496d](https://github.com/DevoInc/genesys-ui/commit/81f496de5b07fca16e40d357ee3523292dc6db31))
+* afterRow with helpers ([7a688fb](https://github.com/DevoInc/genesys-ui/commit/7a688fb6df60cd7f6a8722fd3d739dd0c12e62d1))
+* **Calendar:** added dateRepr and errorsRepr ([ee23765](https://github.com/DevoInc/genesys-ui/commit/ee237654045ee00e473240cf54d948a27f8973c9))
+* **Calendar:** Added min and max dates ([f1ffec5](https://github.com/DevoInc/genesys-ui/commit/f1ffec5fceb39bb2b0cef15f8604b5b0e27e8ad3))
+* **Datetime:** adapt to new Calendar ([df69f25](https://github.com/DevoInc/genesys-ui/commit/df69f256682acce8950798cba26d5f960b4ad245))
+* **Datetime:** added default parseDates ([d1a4995](https://github.com/DevoInc/genesys-ui/commit/d1a49952ba8f28c43958b357609ce7b67f9190cd))
+* **Datetime:** expose Time component ([31d1009](https://github.com/DevoInc/genesys-ui/commit/31d1009e340f3610c6684a9addef9b922efcd3c7))
+* **DateTimeRangeFloatingPicker:** change to the new arch ([f3cea8e](https://github.com/DevoInc/genesys-ui/commit/f3cea8e6d157f97f578cf712e01eef8ad9624796))
+* **Datetime:** refactored DateTimeRange and Presets ([87101b9](https://github.com/DevoInc/genesys-ui/commit/87101b9bbcdfd35dbe191d3875c64f29bfee08b7))
+* normalize 'style' interface for custom styles ([cb9b229](https://github.com/DevoInc/genesys-ui/commit/cb9b2291c5a558c778391ba2ad7f4ab7605eb625))
+* QUV-2455 New table rowGroupingRenderer preset ([0af7f76](https://github.com/DevoInc/genesys-ui/commit/0af7f7698712d250f87cd1f855e89222d5884b0e))
+* refactor a new SplitLayout based on composition ([77bcc50](https://github.com/DevoInc/genesys-ui/commit/77bcc5075716268fa5623a9f25d2cdbea25225f3))
+* **Table:** OptionsEditor defined as the preset edition view in options type cell and render the select opened at the beginning of the edition. ([5b59a76](https://github.com/DevoInc/genesys-ui/commit/5b59a76fd89a53ba4b4c07dcf93972660f8e9b91))
+
+
+### Bug Fixes
+
+* add styled-components peer dependencie 5.x || ^6.1.9 ([b3bd352](https://github.com/DevoInc/genesys-ui/commit/b3bd3521c3b044ce329b53cdf69db15ffbccef57))
+* added the FloatingMessage to the index of components to be exposed. ([ca5c81c](https://github.com/DevoInc/genesys-ui/commit/ca5c81cb15955b9c5fa8b8abf5cd12e7eea07bcb))
+* added the KeyValue to the index of components to be exposed. ([272652c](https://github.com/DevoInc/genesys-ui/commit/272652ca6be3de2e4f3ba0b1580d74a6049c674d))
+* cahnge default rowDefs ([f2da2b9](https://github.com/DevoInc/genesys-ui/commit/f2da2b97279ef81effee0d61e3872df99052223a))
+* circular dependencies ([04acfce](https://github.com/DevoInc/genesys-ui/commit/04acfcef734d69af20bb4f434b9a8aec4e8ba0b2))
+* delete props no used ([76b16ef](https://github.com/DevoInc/genesys-ui/commit/76b16ef55fa18758fc75040b1e9449c55400fd28))
+* delete rowVirtualizer unused ([8d20f00](https://github.com/DevoInc/genesys-ui/commit/8d20f00d6d964c83076d184a789368a60fc9a82a))
+* error styled props css ([4f4f4bc](https://github.com/DevoInc/genesys-ui/commit/4f4f4bc751a0d67847a2c6d5855c1a305e62b403))
+* exported to index the hooks from SplitLayout and docs minor change ([2b7cde6](https://github.com/DevoInc/genesys-ui/commit/2b7cde677a2f7d05228f0ab0a550b2885e1b89ec))
+* fixed the name of deprecated prop styles and a minor change for TabsMarker styles ([cd81b03](https://github.com/DevoInc/genesys-ui/commit/cd81b039c83e3cf881dec13de0253026cecd77a9))
+* oxlint no-console rule ([d797c63](https://github.com/DevoInc/genesys-ui/commit/d797c633a756d41cd6bbb82b3c8ae31c8488caab))
+* paths and delete unused files ([cb71f24](https://github.com/DevoInc/genesys-ui/commit/cb71f24679fb59952367d1adf9ea35a49a332082))
+
+## [11.1.1](https://github.com/DevoInc/genesys-ui/compare/v11.1.0...v11.1.1) (2024-09-05)
+
+
+### Bug Fixes
+
+* add styled-components peer dependencie 5.x || ^6.1.9 ([47d5d22](https://github.com/DevoInc/genesys-ui/commit/47d5d22800f1d28af2f46a46de085d12798a350c))
+
+## [11.1.0](https://github.com/DevoInc/genesys-ui/compare/v11.0.4...v11.1.0) (2024-09-05)
+
+
+### Features
+
+* add after row ([75c322c](https://github.com/DevoInc/genesys-ui/commit/75c322cd3071f47a3e84cd4ff86d9fe0ae00334f))
+* add height afterRow ([a15d3f2](https://github.com/DevoInc/genesys-ui/commit/a15d3f28469a147e7ddb2b9149084107d5d49946))
+* add height declaration in TRowDef ([7b2a758](https://github.com/DevoInc/genesys-ui/commit/7b2a7589143603f3909a83a25bfaa5131cc827a2))
+* add resize item ([bb4246c](https://github.com/DevoInc/genesys-ui/commit/bb4246c01a464d86a9a64c56add808a75ad2b8f2))
+* afterRow with helpers ([07d66fa](https://github.com/DevoInc/genesys-ui/commit/07d66fa5a24a8711e01d2b6cd66ab63044530dea))
+
+
+### Bug Fixes
+
+* cahnge default rowDefs ([4d0b18a](https://github.com/DevoInc/genesys-ui/commit/4d0b18ab7a7e34aea7904af4680b3340aa928455))
+* circular dependencies ([650628c](https://github.com/DevoInc/genesys-ui/commit/650628c2049c06fc085f2f15bb075b699de7207c))
+* delete props no used ([7f39fcf](https://github.com/DevoInc/genesys-ui/commit/7f39fcf1fb034fef78d6a765c8d7a574bba99185))
+* delete rowVirtualizer unused ([0a01799](https://github.com/DevoInc/genesys-ui/commit/0a01799d3cf57de0dd11f2114d3252fd374d8cb7))
+* paths and delete unused files ([d5745d1](https://github.com/DevoInc/genesys-ui/commit/d5745d1b648167dcdf1782a51b3ca7132e01c990))
+* paths rowgrouping ([b85385b](https://github.com/DevoInc/genesys-ui/commit/b85385b45beea4093908788dd549ba464fd29ca9))
+
 ## [11.0.4](https://github.com/DevoInc/genesys-ui/compare/v11.0.3...v11.0.4) (2024-07-10)
 
 

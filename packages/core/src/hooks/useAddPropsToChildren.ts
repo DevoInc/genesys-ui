@@ -1,4 +1,4 @@
-import React, { useMemo, Children, cloneElement } from 'react';
+import * as React from 'react';
 
 /**
  * Hook to pass props to children.
@@ -12,12 +12,12 @@ export const useAddPropsToChildren = (
   children: React.ReactNode,
   props: unknown,
 ) => {
-  return useMemo(() => {
-    return Children.toArray(children).map((child, childIndex) => {
+  return React.useMemo(() => {
+    return React.Children.toArray(children).map((child, childIndex) => {
       if (React.isValidElement(child)) {
         const childProps =
           typeof props === 'function' ? props(child, childIndex) : props;
-        return cloneElement(child, childProps);
+        return React.cloneElement(child, childProps);
       }
       return child;
     });

@@ -1,16 +1,14 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import { concat } from 'lodash';
 
 import type {
   IContainerEventAttrs,
   IMouseEventAttrs,
 } from '../../declarations';
 import type { IOverlay } from './declarations';
-
 import { overlayMixin } from './helpers';
-
 import { Flex, type FlexProps } from '../Flex';
+import { mergeStyles } from '../../helpers';
 
 export interface OverlayProps
   extends Omit<FlexProps, 'opacity'>,
@@ -31,7 +29,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   justifyContent = 'center',
   opacity,
   padding = 'cmp-md cmp-lg',
-  styles,
+  style,
   tooltip,
   zIndex = 0,
   ...restFlexProps
@@ -45,7 +43,7 @@ export const Overlay: React.FC<OverlayProps> = ({
       flexWrap={flexWrap}
       justifyContent={justifyContent}
       padding={padding}
-      styles={concat(
+      style={mergeStyles(
         overlayMixin({
           bgColor,
           bgColorScheme,
@@ -55,7 +53,7 @@ export const Overlay: React.FC<OverlayProps> = ({
           opacity: opacity > 1 ? 1 : opacity,
           theme,
         }),
-        styles,
+        style,
       )}
       tooltip={tooltip}
       zIndex={zIndex}

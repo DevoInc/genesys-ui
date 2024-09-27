@@ -1,4 +1,4 @@
-import { css, DefaultTheme, StyledComponent } from 'styled-components';
+import { css, DefaultTheme, IStyledComponent } from 'styled-components';
 import type { TButtonSize } from '../Button';
 import { FLEX_SPACING_SIZE_MAP } from './constants';
 
@@ -13,8 +13,9 @@ export const getButtonGroupSpacingSize = (
 export interface ButtonGroupMixinProps {
   /** If the actions are hidden opacity to 0. */
   hidden?: boolean;
-  /** The parent styled component which makes actions visible when it's hovered, focused... etc. */
-  visibilityTrigger?: StyledComponent<any, any>;
+  /** The parent styled component which makes actions visible when it's hovered,
+   * focused... etc. */
+  visibilityTrigger?: IStyledComponent<any, any>;
   theme: DefaultTheme;
 }
 
@@ -64,7 +65,8 @@ export const buttonGroupItemMixin = ({
   const spacingBetweenButtons = getButtonGroupSpacingSize(size, theme);
   return css`
     list-style: none;
-    // to reduce the long distance optical effect when the buttons are quiet colorScheme
+    // to reduce the long distance optical effect when the buttons are quiet
+    // colorScheme
     margin-left: ${hasQuietButton
       ? `calc((${spacingBetweenButtons} / 2) * -1)`
       : null};

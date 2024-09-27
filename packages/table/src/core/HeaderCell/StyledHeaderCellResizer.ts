@@ -5,7 +5,7 @@ import { pseudoElementMixin } from '@devoinc/genesys-ui';
 import type { TDensity } from '../../declarations';
 
 interface StyledHeaderCellResizerProps {
-  density: TDensity;
+  $density: TDensity;
 }
 
 export const StyledHeaderCellResizer = styled.span<StyledHeaderCellResizerProps>`
@@ -21,7 +21,7 @@ export const StyledHeaderCellResizer = styled.span<StyledHeaderCellResizerProps>
   height: 100%;
   cursor: col-resize;
 
-  ${({ density, theme }) => {
+  ${({ $density, theme }) => {
     const grabberTokens = theme.cmp.table.headCellGrabber;
     const transitionDuration = grabberTokens.mutation.transitionDuration;
     const separatorTokens = theme.cmp.table.headCellSeparator;
@@ -49,7 +49,7 @@ export const StyledHeaderCellResizer = styled.span<StyledHeaderCellResizerProps>
 
       &::after {
         top: 50%;
-        height: calc(${theme.cmp.table.head.size.height[density]} / 2);
+        height: calc(${theme.cmp.table.head.size.height[$density]} / 2);
         transform: translateY(-50%);
         width: 0.2rem;
         background-color: ${separatorTokens.color.background.after};

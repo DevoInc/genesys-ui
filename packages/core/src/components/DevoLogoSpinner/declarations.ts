@@ -20,3 +20,15 @@ export type TDevoLogoAnimation =
 export type TDevoLogoSize =
   | TBaseSize
   | PickUnion<TGlobalSize, 'xs' | 'lg' | 'xl'>;
+
+export interface IDevoLogoSpinner {
+  colorScheme?: TDevoLogoColorScheme;
+  size?: TDevoLogoSize;
+  animation?: TDevoLogoAnimation;
+}
+
+export interface IDevoLogoSpinnerStyled {
+  $colorScheme?: TDevoLogoColorScheme;
+  $size?: TDevoLogoSize;
+  $animation?: TDevoLogoAnimation;
+}

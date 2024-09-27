@@ -79,7 +79,7 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
     server,
     size = 'md',
     status = 'base',
-    styles,
+    style,
     tooltip,
     // FilePondProps
     acceptedFileTypes,
@@ -146,7 +146,7 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
       requiredMarkTooltip={requiredMarkTooltip}
       size={size}
       status={status}
-      styles={styles}
+      style={style}
       tooltip={tooltip}
     >
       <Box {...dataProps} flex="1 1 100%" position="relative">

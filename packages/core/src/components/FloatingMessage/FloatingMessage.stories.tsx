@@ -35,7 +35,7 @@ export const PositionedToItsParent: Story = {
   render: (args) =>
     ((args) => (
       <Box position="relative">
-        <Typography.Code>{lorem2}</Typography.Code>
+        <Typography.CodeBlock>{lorem2}</Typography.CodeBlock>
         <FloatingMessage {...args} />
       </Box>
     ))(args),
@@ -48,7 +48,7 @@ export const Position: Story = {
       <Box
         position="relative"
         height="16rem"
-        styles="background-color: #f7f7f7; border-radius: 0.6rem;"
+        style="background-color: #f7f7f7; border-radius: 0.6rem;"
       >
         <FloatingMessage
           {...args}
@@ -124,7 +124,7 @@ export const ShowHideButton: Story = {
           spacing="cmp-sm"
           childrenFitFullWidth={false}
         >
-          <Typography.Code gutterBottom="0">{lorem2}</Typography.Code>
+          <Typography.CodeBlock gutterBottom="0">{lorem2}</Typography.CodeBlock>
           <HFlex position="absolute" positionRight="1rem" positionTop="1rem">
             <IconButton
               onClick={() => setIsVisible(true)}
@@ -153,7 +153,7 @@ export const Animated: Story = {
           spacing="cmp-sm"
           childrenFitFullWidth={false}
         >
-          <Typography.Code gutterBottom="0">{lorem2}</Typography.Code>
+          <Typography.CodeBlock gutterBottom="0">{lorem2}</Typography.CodeBlock>
           <HFlex position="absolute" positionRight="1rem" positionTop="1rem">
             <IconButton
               onClick={() => setIsVisible(true)}

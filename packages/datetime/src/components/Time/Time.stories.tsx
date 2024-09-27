@@ -14,7 +14,21 @@ type Story = StoryObj<typeof Time>;
 export const Base: Story = {
   args: {
     value: new Date(),
+    hasMillis: true,
   },
+  render: (args) =>
+    ((props) => {
+      const [value, setValue] = React.useState<number | Date>(props.value);
+      return (
+        <Time
+          {...props}
+          value={value}
+          onChange={(ts: number) => {
+            setValue(ts);
+          }}
+        />
+      );
+    })(args),
 };
 
 export const Limits: Story = {

@@ -5,7 +5,7 @@ import { GridItem } from './GridItem';
 import { StyledLayoutGridContent } from '../../../../../stories/components/styled';
 
 const meta: Meta<typeof GridItem> = {
-  title: 'Components/Layout/Grid/Components',
+  title: 'Components/Layout/Grid/Components/Grid.Item',
   component: GridItem,
 };
 

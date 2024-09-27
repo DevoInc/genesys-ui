@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import type { StyledCollapseContainerProps } from './styled';
+import type { TExpanded } from './definitions';
 
 export interface CollapseContextProps {
-  expanded?: StyledCollapseContainerProps['expanded'];
+  expanded?: TExpanded;
 }
 
 export const CollapseContext = React.createContext<CollapseContextProps>({

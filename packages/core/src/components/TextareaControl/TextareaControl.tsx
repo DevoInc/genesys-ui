@@ -8,14 +8,12 @@ import type {
   ITextareaEventAttrs,
   ITextBoxAriaAttrs,
   IWithRequiredAriaLabelOrAriaLabelledByAttr,
+  TFieldStatus,
 } from '../../declarations';
 import { FieldContext } from '../Field/context';
 import { getFieldContextProps } from '../Field';
 
-import {
-  StyledTextareaControl,
-  type StyledTextareaControlProps,
-} from './StyledTextareaControl';
+import { StyledTextareaControl } from './StyledTextareaControl';
 
 interface CommonTextareaControlProps
   extends IFieldControl,
@@ -25,10 +23,10 @@ interface CommonTextareaControlProps
     Pick<
       IContainerEventAttrs<HTMLTextAreaElement>,
       'onKeyDown' | 'onKeyUp' | 'onPaste' | 'onWheel'
-    >,
-    Omit<StyledTextareaControlProps, '$size'> {
+    > {
   /** The size for the textarea. It affects to its padding, font-size... etc. */
   size?: TFieldSize;
+  status?: TFieldStatus;
 }
 
 export type TextareaControlProps =
@@ -46,7 +44,7 @@ export const TextareaControl: React.FC<TextareaControlProps> = ({
   rows = 4,
   size,
   status,
-  styles,
+  style,
   tooltip,
   ...restNativeProps
 }) => {
@@ -76,7 +74,7 @@ export const TextareaControl: React.FC<TextareaControlProps> = ({
       }
       aria-label={ariaLabel}
       aria-labelledby={contextBasedProps.ariaLabelledBy}
-      css={styles}
+      css={style}
       disabled={contextBasedProps.disabled}
       id={contextBasedProps.id}
       required={contextBasedProps.required}

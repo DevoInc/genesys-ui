@@ -37,13 +37,11 @@ export const useBulkSelection = ({
       if (prev.length === dataLength) {
         return [];
       } else if (prev.length === 0) {
-        return new Array(dataLength)
-          .fill(null)
-          .reduce(
-            (arr: number[], _, index: number) =>
-              bulkDisabled.includes(index) ? arr : arr.concat([index]),
-            [],
-          ) as number[];
+        return Array.from({ length: dataLength }).reduce(
+          (arr: number[], _, index: number) =>
+            bulkDisabled.includes(index) ? arr : arr.concat([index]),
+          [],
+        ) as number[];
       }
       return [];
     });

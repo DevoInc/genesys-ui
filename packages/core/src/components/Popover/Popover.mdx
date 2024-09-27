@@ -60,78 +60,85 @@ of the content instead of at the end of the trigger.
 **IMPORTANT:** to avoid the parent being closed when a nested one is clicked
 due to problems with the `ref`, we have to define `appendTo={null}`
 in the nested popovers. This way, the first parent container will be appended
-by default to the end of the `body`, and the nested ones will be rendered inside this one.
+by default to the end of the `body`, and the nested ones will be rendered inside
+this one.
 
 <Canvas of={Stories.Nested} />
 
 ## Access to state from content
 
-Sometimes you need to access to the Popover state from its content, like when we use a
-'cancel' button or an 'X' close, or when we want the Popover closed clicking on a children action.
+Sometimes you need to access to the Popover state from its content, like when we
+use a 'cancel' button or an 'X' close, or when we want the Popover closed
+clicking on a children action.
 
-To do that we have to use the 'render-props' technique and include the content as a function
-instead of a node.
+To do that we have to use the 'render-props' technique and include the content
+as a function instead of a node.
 
 <Canvas of={Stories.AccessToStateFromContent} />
 
 ## Arrow
 
-You can add an arrow to the Popover content by the `arrowConfig` prop. It's an object
-with these variables:
+You can add an arrow to the Popover content by the `arrowConfig` prop. It's an
+object with these variables:
 
 - `component`: it's a render-props function (depends on placement prop) with the
-  component used as arrow. E.g. `({ placement }) => <Popover.Arrow placement={placement} />`.
-  We have a pre-defined component with the basic needed styles `Popover.Arrow`, but anyway you
-  can add a custom one if you need it.
-- `padding`: the separation of the arrow from the edge of the content. More info in [PopperJS](https://popper.js.org/docs/v2/modifiers/arrow/#padding).
-- `size`: the square size of the arrow which will be used to define the `offset` of the content.
+  component used as arrow. E.g.
+  `({ placement }) => <Popover.Arrow placement={placement} />`.
+  We have a pre-defined component with the basic needed styles `Popover.Arrow`,
+  but anyway you can add a custom one if you need it.
+- `padding`: the separation of the arrow from the edge of the content. More info
+  in [PopperJS](https://popper.js.org/docs/v2/modifiers/arrow/#padding).
+- `size`: the square size of the arrow which will be used to define the `offset`
+  of the content.
 
 <Canvas of={Stories.WithArrow} story={{ height: '16rem' }} />
 
 ## Disabled outside event
 
-The Popover is closed by default on `click` and `blur` events. Sometimes you might need to avoid
-this and delegate the close action only to a specific event as an inside button click. You only
-need to use the `disableOutsideEvent`:
+The Popover is closed by default on `click` and `blur` events. Sometimes you
+might need to avoid this and delegate the close action only to a specific event
+as an inside button click. You only need to use the `disableOutsideEvent`:
 
 <Canvas of={Stories.DisabledOutsideEvent} />
 
 ## Accessibility
 
-To ensure full accessibility of the component, we need to consider multiple aspects.
-These include:
+To ensure full accessibility of the component, we need to consider multiple
+aspects. These include:
 
-- Adding a value for the `id` prop of the component. This value is automatically mapped to the attribute
-  of the 'div' HTML element which wraps the Popover content. This value has to be used as
-  the `aria-controls` prop value of the Popover trigger.
-- Each trigger component should have defined the `onClick` property to get the key events.
+- Adding a value for the `id` prop of the component. This value is
+  automatically mapped to the attribute of the 'div' HTML element which wraps
+  the Popover content. This value has to be used as the `aria-controls` prop
+  value of the Popover trigger.
+- Each trigger component should have defined the `onClick` property to get the
+  key events.
 - Add to the trigger the `aria-haspopup` prop value to true.
-- Add to the trigger the `aria-expanded` prop value to true when the Popover is opened.
-- Add to the trigger the `aria-controls` prop value with the same value of the `id` prop of the component.
+- Add to the trigger the `aria-expanded` prop value to true when the Popover is
+  opened.
+- Add to the trigger the `aria-controls` prop value with the same value of the
+  `id` prop of the component.
 
 ## usePopper
 
-In case you require a specific behavior, you can use the hooks offered by the library
-directly in your code. You can refer to the documentation of [React Popper](https://popper.js.org/react-popper/v2/)
-for further details.
+In case you require a specific behavior, you can use the hooks offered by the
+library directly in your code. You can refer to the documentation of
+[React Popper](https://popper.js.org/react-popper/v2/) for further details.
 
 Below is a brief example showcasing its use:
 
-<Source
-    code={`
+<Source code={`
 import * as React from 'react';
 import { usePopper } from 'react-popper';
 
 const Example = () => {
-const [referenceElement, setReferenceElement] = React.useState(null);
-const [popperElement, setPopperElement] = React.useState(null);
-const [arrowElement, setArrowElement] = React.useState(null);
-const { styles, attributes } = usePopper(referenceElement, popperElement, {
-modifiers: [{ name: 'arrow', options: { element: arrowElement } }],
-});
+  const [referenceElement, setReferenceElement] = React.useState(null);
+  const [popperElement, setPopperElement] = React.useState(null);
+  const [arrowElement, setArrowElement] = React.useState(null);
+  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+    modifiers: [{ name: 'arrow', options: { element: arrowElement } }],
+  });
 
-    return (
-
+  return (
     <>
       <button type="button" ref={setReferenceElement}>
         Reference element
@@ -141,7 +148,9 @@ modifiers: [{ name: 'arrow', options: { element: arrowElement } }],
         <div ref={setArrowElement} style={styles.arrow} />
       </div>
     </>
-    ); }; `} />
+  );
+};
+`} />
 
 ## Props
 

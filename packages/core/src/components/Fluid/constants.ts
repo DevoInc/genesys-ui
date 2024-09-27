@@ -1,5 +1,3 @@
-// BREAKPOINT - FLUID - CONSTANTS ------------------------------------------- //
-
 export const BREAKPOINTS_DEFAULT_VALUES = {
   sm: 576,
   md: 768,
@@ -8,8 +6,6 @@ export const BREAKPOINTS_DEFAULT_VALUES = {
   xxl: 1600,
 };
 
-// CONTAINER - FLUID - CONSTANTS -------------------------------------------- //
-
 export const CONTAINER_WIDTH_DEFAULT_VALUES = {
   sm: 540,
   md: 740,
@@ -17,8 +13,6 @@ export const CONTAINER_WIDTH_DEFAULT_VALUES = {
   xl: 1140,
   xxl: 1540,
 };
-
-// RESET STYLES - FLUID - CONSTANTS ----------------------------------------- //
 
 export const RESET_STYLES = {
   PADDING: {

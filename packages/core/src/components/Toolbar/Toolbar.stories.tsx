@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Toolbar } from '.';
+import { Toolbar } from './Toolbar';
 import { Typography } from '../Typography';
 
 const meta: Meta<typeof Toolbar> = {

@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
+
 import { GITagPriceSale } from '@devoinc/genesys-icons';
 
 import { Tag } from './Tag';

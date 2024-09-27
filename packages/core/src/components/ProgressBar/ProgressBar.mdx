@@ -8,10 +8,12 @@ import * as Stories from './ProgressBar.stories';
 
 ## Overview
 
-The ProgressBar component is used to display the progress of an ongoing task,
-and to communicate either an undefined waiting time or the duration of a process to users.
-It is an important visual indicator that informs users about the status of long-running or complex tasks,
-and helps to improve the user experience by giving them a sense of how much time is left before the task is completed.
+The `ProgressBar` component is used to display the progress of an ongoing task,
+and to communicate either an undefined waiting time or the duration of a process
+to users.
+It is an important visual indicator that informs users about the status of
+long-running or complex tasks, and helps to improve the user experience by
+giving them a sense of how much time is left before the task is completed.
 
 ## How to import
 
@@ -23,7 +25,7 @@ and helps to improve the user experience by giving them a sense of how much time
 
 ## Circular
 
-ProgressBar can be used in circular mode.
+`ProgressBar` can be used in circular mode.
 
 <Canvas of={Stories.Circular} />
 
@@ -35,28 +37,31 @@ Or in linear mode with extra information.
 
 ## With validation helper and accessible
 
-In case you need to add a validation/status helper, you can make the component more
-accessible if you add an `id` value. This way, not only a `aria-invalid` is added to
-the progress, but also we connect this one with its validation helper message through
-the `aria-errormessage` attribute which is automatically added.
+In case you need to add a validation/status helper, you can make the component
+more accessible if you add an `id` value. This way, not only a `aria-invalid` is
+added to the progress, but also we connect this one with its validation helper
+message through the `aria-errormessage` attribute which is automatically added.
 
 <Canvas of={Stories.AccessibleValidation} />
 
 ## With floating validation helper and accessible
 
-Sometimes you might need to offer the validation helper to the user, but you don't have
-enough space or the location of the progress doesn't allow to do that. In these cases
-you can use the `hasFloatingValidation` prop to include that info in a floating `InlineMessage`.
+Sometimes you might need to offer the validation helper to the user, but you
+don't have enough space or the location of the progress doesn't allow to do
+that. In these cases you can use the `hasFloatingValidation` prop to include
+that info in a floating `InlineMessage`.
 
 <Canvas of={Stories.AccessibleFloatingValidation} />
 
 ## Custom based in internal components
 
-Sometimes you need something very specific, which is not possible using only the component and its props.
-In these cases, you can use its internal components (`_` notation) to define that specific usage.
-We don't recommend this usage, but anyway it's available for very specific needs.
+Sometimes you need something very specific, which is not possible using only the
+component and its props. In these cases, you can use its internal components
+(`_` notation) to define that specific usage. We don't recommend this usage, but
+anyway it's available for very specific needs.
 
-These components are inheriting automatically some props by context from its parent `ProgressBar._Container`:
+These components are inheriting automatically some props by context from its
+parent `ProgressBar._Container`:
 
 - colorScheme.
 - percent.

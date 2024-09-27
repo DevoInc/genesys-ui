@@ -1,12 +1,20 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "declaration": true,
     "declarationMap": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "noErrorTruncation": true,
+    "paths": {
+      "@test": [
+        "../../test/test-utils.tsx"
+      ]
+    }
   },
   "include": [
     "src",
+    "stories",
     "vite.config.ts"
   ],
 }

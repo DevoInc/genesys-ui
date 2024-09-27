@@ -8,10 +8,12 @@ import * as Stories from './Field.stories';
 
 ## Overview
 
-Component designed to wrap form controls such as Input, Select, Checkbox, and Textarea, providing additional functionality
-such as labeling, helper messages, and validation messages.
+Component designed to wrap form controls such as Input, Select, Checkbox, and
+Textarea, providing additional functionality such as labeling, helper messages,
+and validation messages.
 
-It also manages the layout and distribution of these elements within the field control.
+It also manages the layout and distribution of these elements within the field
+control.
 
 ## How to import
 
@@ -19,17 +21,18 @@ It also manages the layout and distribution of these elements within the field c
 
 ## Basic usage
 
-The component as a wrapper of an element (usually field controls). In this example we use a non-specific
-block with similar styles to a readonly input:
+The component as a wrapper of an element (usually field controls). In this
+example we use a non-specific block with similar styles to a readonly input:
 
 <Canvas of={Stories.Base} />
 
 ## Context
 
-There is defined a React context for the Field component, so its children are able to inherit som generic props
-used usually by field control components (`InputControl`, `SelectControl`, `CheckboxControl`... etc.). This context
-is integrated with the `Field` component wrapping its children. This way there are some generic props
-which can be inherited by its children:
+There is defined a React context for the Field component, so its children are
+able to inherit som generic props used usually by field control components
+(`InputControl`, `SelectControl`, `CheckboxControl`... etc.). This context
+is integrated with the `Field` component wrapping its children. This way there
+are some generic props which can be inherited by its children:
 
 - **ariaErrorMessage**: it's the `helper` id prop when the status is error.
 - **ariaDescribedBy**: it's the `helper` id with any status.
@@ -45,28 +48,43 @@ which can be inherited by its children:
 
 ## With an InputControl
 
-We can get any case of the component using only `Field` and its props as in this example with an InputControl, label and helper:
+We can get any case of the component using only `Field` and its props as in this
+example with an InputControl, label and helper:
 
 <Canvas sourceState="shown" of={Stories.BasicUsageWithHelper} />
 
 ## Custom using internal components
 
-Sometimes you need something very specific, which is not possible using only the component and its props.
-In these cases, you can use its internal components (`._` notation) to define that specific usage.
-We don't recommend this usage, but anyway it's available for very specific needs, usually for custom styles.
+Sometimes you need something very specific, which is not possible using only the
+component and its props.
+In these cases, you can use its internal components (`._` notation) to define
+that specific usage.
+We don't recommend this usage, but anyway it's available for very specific
+needs, usually for custom styles.
 
-- `Field._Container`: the outermost container which distributes the field control (control, label and floating validation) and the helper.
-- `Field._LabelDistributor`: the container which distributes the inner field control and the label.
-- `Field._ControlDistributor`: the container which distributes the child field control and the floating validation. It also controls the width. Here it's included the FloatingHelper if the Label is hidden.
-- `Field._Label`: The label content. Here it's included the FloatingHelper by its 'helper' prop if the Label is not hidden. Here it's included the RequiredMark by its 'requiredMark' prop if the field is mandatory.
-- `Field._RequiredMark`: The marker to indicate that the field is required or mandatory.
-- `Field._Helper`: The helper message to help the user to fill the field or for the validation message.
-- `Field._FloatingHelper`: The Helper, but displayed as a floating InlineMessage.
+- `Field._Container`: the outermost container which distributes the field
+  control (control, label and floating validation) and the helper.
+- `Field._LabelDistributor`: the container which distributes the inner field
+  control and the label.
+- `Field._ControlDistributor`: the container which distributes the child field
+  control and the floating validation. It also controls the width. Here it's
+  included the FloatingHelper if the Label is hidden.
+- `Field._Label`: The label content. Here it's included the FloatingHelper by
+  its 'helper' prop if the Label is not hidden. Here it's included the
+  RequiredMark by its 'requiredMark' prop if the field is mandatory.
+- `Field._RequiredMark`: The marker to indicate that the field is required or
+  mandatory.
+- `Field._Helper`: The helper message to help the user to fill the field or for
+  the validation message.
+- `Field._FloatingHelper`: The Helper, but displayed as a floating
+  InlineMessage.
 
-These internal components don't inherit the context props, so you have to define the needed props in each one.
+These internal components don't inherit the context props, so you have to
+define the needed props in each one.
 
-This way, we can get the previous example, but using these internal components to get custom styles
-for the color of the helper (Not recommended usage, only for explanation purpose):
+This way, we can get the previous example, but using these internal components
+to get custom styles for the color of the helper (Not recommended usage, only
+for explanation purpose):
 
 <Canvas sourceState="shown" of={Stories.AdvancedUsage} />
 

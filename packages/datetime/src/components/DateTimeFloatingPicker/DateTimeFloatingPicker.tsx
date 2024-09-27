@@ -40,7 +40,7 @@ export interface DateTimeFloatingPickerProps
     >,
     Pick<IGlobalAriaAttrs, 'aria-label'>,
     Pick<IGlobalAttrs, 'id'>,
-    Pick<IStyledOverloadCss, 'styles'>,
+    Pick<IStyledOverloadCss, 'style'>,
     Pick<IStyledPolymorphic, 'as'> {
   /** i18n texts */
   i18n?: {
@@ -81,7 +81,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
   autoApply = false,
   onClose = () => null,
   parseDate = parseStrDate,
-  styles: customStyles,
+  style: customStyles,
   value = new Date().getTime(),
   helper,
   ariaLabelMonth,
@@ -154,7 +154,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
       {({ setOpened }) => (
         <Popover.Panel
           as={as}
-          styles={customStyles}
+          style={customStyles}
           width="auto"
           id={id ? `${id}__popover-panel` : null}
         >

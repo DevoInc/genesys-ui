@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { Banner, Typography, VFlex } from '../../../components';
+
+import { Banner } from '../../Banner';
+import { Typography } from '../../Typography';
+import { VFlex } from '../../VFlex';
 import { Input } from '../../Input';
 
 export const ModalDemoContent = (
