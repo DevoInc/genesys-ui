@@ -1,5 +1,21 @@
 # Changelog
 
+## [12.1.1](https://github.com/DevoInc/genesys-ui/compare/v12.1.0...v12.1.1) (2024-09-30)
+
+
+### Bug Fixes
+
+* delete innecessary data table head ([6af5459](https://github.com/DevoInc/genesys-ui/commit/6af5459574c370f2611f1af5b192970af63159c5))
+* **table:** add css styled component in row presets ([ad1f044](https://github.com/DevoInc/genesys-ui/commit/ad1f0448372128f933ed6323088205ebff530e26))
+* **table:** delete check width in table wrapper ([831e213](https://github.com/DevoInc/genesys-ui/commit/831e2133aad034bce7133f53f6a5330031c5fdda))
+* **table:** pass properties by context ([34c154a](https://github.com/DevoInc/genesys-ui/commit/34c154ad39856f38dbb005635d93acee818bd0c6))
+* **table:** rowHeight override with colDefs ([4280548](https://github.com/DevoInc/genesys-ui/commit/4280548b3f18a08d6e50b34b4efa706c7e584cc1))
+
+
+### Vulnerabilities
+
+* **deps-dev:** bump webpack from 5.92.1 to 5.94.0 ([#72](https://github.com/DevoInc/genesys-ui/issues/72)) ([cf8d331](https://github.com/DevoInc/genesys-ui/commit/cf8d3319c01ceed04bd4025003bffdcf0bf64e3e))
+
 ## [12.1.0](https://github.com/DevoInc/genesys-ui/compare/v12.0.0...v12.1.0) (2024-09-26)
 
 
