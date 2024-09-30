@@ -45,21 +45,19 @@ export const TableWrapper: React.FC = () => {
 
   return (
     <StyledTableWrapper ref={ref} $maxHeight={maxHeight}>
-      {size?.width > 0 ? (
-        <StyledTable $height={height} $width={width}>
-          <TableHead
-            items={columnVirtualizer?.getVirtualItems() ?? []}
-            scrolled={rowVirtualizer.scrollOffset !== 0}
-            width={width}
-          />
-          <TableBody
-            columnVirtualizer={columnVirtualizer}
-            rowVirtualizer={rowVirtualizer}
-            width={width}
-            height={height}
-          />
-        </StyledTable>
-      ) : null}
+      <StyledTable $height={height} $width={width}>
+        <TableHead
+          items={columnVirtualizer?.getVirtualItems() ?? []}
+          scrolled={rowVirtualizer.scrollOffset !== 0}
+          width={width}
+        />
+        <TableBody
+          columnVirtualizer={columnVirtualizer}
+          rowVirtualizer={rowVirtualizer}
+          width={width}
+          height={height}
+        />
+      </StyledTable>
     </StyledTableWrapper>
   );
 };
