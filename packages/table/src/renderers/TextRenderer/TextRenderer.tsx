@@ -6,7 +6,11 @@ import type { TCellRenderer } from '../../declarations';
 
 export const TextRenderer: React.FC<TCellRenderer> = ({ colDef, value }) => {
   const truncateLine =
-    colDef?.truncateLine || (colDef?.preset === 'longText' ? 2 : 1);
+    colDef?.truncateLine !== undefined
+      ? colDef?.truncateLine
+      : colDef?.preset === 'longText'
+        ? 2
+        : 1;
   return (
     <Typography.Paragraph
       as="div"

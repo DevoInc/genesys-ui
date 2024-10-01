@@ -17,7 +17,7 @@ import { StyledTableWrapper } from './StyledTableWrapper';
 
 export const TableWrapper: React.FC = () => {
   const theme = useTheme();
-  const { maxHeight, colDefs, data, showFilters, density, rowDefs } =
+  const { maxHeight, data, showFilters, density, rowDefs } =
     React.useContext(TableContext);
 
   const ref = React.useRef<HTMLDivElement>();
@@ -45,23 +45,19 @@ export const TableWrapper: React.FC = () => {
 
   return (
     <StyledTableWrapper ref={ref} $maxHeight={maxHeight}>
-      {size?.width > 0 ? (
-        <StyledTable $height={height} $width={width}>
-          <TableHead
-            colDefs={colDefs}
-            columnVirtualizer={columnVirtualizer}
-            scrolled={rowVirtualizer.scrollOffset !== 0}
-            data={data}
-            width={width}
-          />
-          <TableBody
-            columnVirtualizer={columnVirtualizer}
-            rowVirtualizer={rowVirtualizer}
-            width={width}
-            height={height}
-          />
-        </StyledTable>
-      ) : null}
+      <StyledTable $height={height} $width={width}>
+        <TableHead
+          items={columnVirtualizer?.getVirtualItems() ?? []}
+          scrolled={rowVirtualizer.scrollOffset !== 0}
+          width={width}
+        />
+        <TableBody
+          columnVirtualizer={columnVirtualizer}
+          rowVirtualizer={rowVirtualizer}
+          width={width}
+          height={height}
+        />
+      </StyledTable>
     </StyledTableWrapper>
   );
 };

@@ -219,3 +219,30 @@ export const Base: Story = {
       .generate(),
   },
 };
+
+const colDefsLoxcope = Holo.of()
+  .addType('index', (args = {}) => String(args.index + 1))
+  .schema({
+    headerName: 'name',
+    preset: () => 'text',
+    id: 'index',
+  })
+  .repeat(10)
+  .generate();
+
+const dataLoxcope = Holo.of()
+  .schema(
+    colDefsLoxcope.reduce((prev, col) => ({ ...prev, [col.id]: 'name' }), {}),
+  )
+  .repeat(100)
+  .generate();
+
+export const Performance: Story = {
+  args: {
+    maxHeight: '80vh',
+    minWidth: 2800,
+    rowHeight: ROW_HEIGHT_MD,
+    colDefs: colDefsLoxcope,
+    data: dataLoxcope,
+  },
+};

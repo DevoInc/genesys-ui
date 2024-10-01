@@ -57,3 +57,14 @@ export const Row: Story = {
     data,
   },
 };
+
+export const RowColumn: Story = {
+  args: {
+    maxHeight: '80vh',
+    rowHeight: ROW_HEIGHT_MD,
+    highlightRowOnHover: true,
+    highlightColumnsOnHover: true,
+    colDefs,
+    data,
+  },
+};

@@ -12,9 +12,6 @@ interface HeaderCellProps {
   width: React.CSSProperties['width'];
   offsetX: number;
   children: React.ReactNode;
-  resizable?: boolean;
-  onSort?: (colDef: TColDef) => void;
-  showFilters?: boolean;
 }
 
 export const HeaderCell: React.FC<HeaderCellProps> = ({
@@ -22,11 +19,9 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   width,
   offsetX,
   children,
-  resizable = true,
-  onSort,
-  showFilters,
 }) => {
-  const { density } = React.useContext(TableContext);
+  const { density, onSort, resizableColumns, showFilters } = React.useContext(TableContext);
+
   return (
     <StyledHeaderCell
       $width={width}
@@ -46,7 +41,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
     >
       {children}
       {colDef.sortable && !showFilters && <OrderIndicator colDef={colDef} />}
-      {resizable && (
+      {(colDef?.resizable ?? resizableColumns) && (
         <StyledHeaderCellResizer
           $density={density}
           role="presentation"

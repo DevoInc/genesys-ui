@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 
-import { TableContext } from '../context';
+import { TableContext } from '../../context';
 
 type TUseVirtualizationParamsColumn = {
   ref: React.MutableRefObject<HTMLDivElement>;
