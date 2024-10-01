@@ -20,12 +20,13 @@ export const SingleValue = <Option extends TSelectOption>(
         {props.data.prependContent}
         {props.data.icon && (
           <ValueIcon
-            iconId={props.data.icon}
             strong={props.data.bold}
             size={getValueIconSize({
               size: props.selectProps.size,
             })}
-          />
+          >
+            {props.data.icon}
+          </ValueIcon>
         )}
         {props.data.label}
       </HFlex>

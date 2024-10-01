@@ -19,13 +19,14 @@ export const MultiValueLabel = <Option extends TSelectOption>({
       {data.prependContent}
       {data.icon && (
         <ValueIcon
-          iconId={data.icon}
           strong={data.bold}
           size={getValueIconSize({
             size: selectProps.size,
             chipSize: selectProps.chipSize,
           })}
-        />
+        >
+          {data.icon}
+        </ValueIcon>
       )}
       {data.label}
     </>

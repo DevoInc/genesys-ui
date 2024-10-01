@@ -247,6 +247,7 @@ export const Animated: Story = {
               transition={{ duration: 0.2 }}
               exit={{ opacity: 0 }}
               style={{
+                position: 'relative',
                 zIndex: 100,
               }}
             >
