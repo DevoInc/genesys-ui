@@ -26,7 +26,6 @@ export const StyledCell = styled.td<StyledCellProps>`
   ${({ theme }) => cellMixin({ theme })};
 
   ${({ $highlightColumnsOnHover, $wrapperHeight = 9999, theme, $density }) => {
-    const tokens = theme.cmp.table.cell;
     return $highlightColumnsOnHover
       ? css`
           &:focus,
@@ -36,7 +35,7 @@ export const StyledCell = styled.td<StyledCellProps>`
             &::after {
               top: ${`calc((${$wrapperHeight}px - ${theme.cmp.table.head.size.height[$density]}) * -1)`};
               height: ${`calc(${$wrapperHeight}px * 2)`};
-              background-color: ${tokens.color.background.backdrop.hovered
+              background-color: ${theme.cmp.table.cell.color.background.backdrop.hovered
                 .base};
               z-index: ${getTableZIndexMap(theme).columnHighlight};
               pointer-events: none;
