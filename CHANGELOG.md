@@ -1,5 +1,14 @@
 # Changelog
 
+## [12.1.2](https://github.com/DevoInc/genesys-ui/compare/v12.1.1...v12.1.2) (2024-10-01)
+
+
+### Bug Fixes
+
+* adjustments in the use of icons and in some story ([436758d](https://github.com/DevoInc/genesys-ui/commit/436758da11c7a1d525e550bd6f0175ded2c7fe3f))
+* **table:** delete unnecesary const in StyledCell ([a23f365](https://github.com/DevoInc/genesys-ui/commit/a23f365ee3e012c870f73d90825f6d00bc9dbce5))
+* **table:** protected wrapperWidth size undefined ([84da64e](https://github.com/DevoInc/genesys-ui/commit/84da64e0e561fafb5b9883ea5e2aa0f7ce069a6c))
+
 ## [12.1.1](https://github.com/DevoInc/genesys-ui/compare/v12.1.0...v12.1.1) (2024-09-30)
 
 
