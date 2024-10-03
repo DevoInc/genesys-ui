@@ -1,24 +1,34 @@
 import { DefaultTheme } from 'styled-components';
-import { GLOBAL_SPACING } from '../../constants/spacing';
+
+import type { TGlobalSpacing } from 'src/declarations';
 
 /**
  * Get the map with spacing prop alias values and prop css values (tokens)
  * based in the theme object.
  */
-export const getSpacingValuesMap = (theme: DefaultTheme) => {
-  const spacingTks = theme.alias.space;
-  return Object.fromEntries(
-    GLOBAL_SPACING.map((valueName) => {
-      const hyphenPos = valueName.indexOf('-');
-      const type = valueName.substring(0, hyphenPos);
-      const size = valueName.substring(hyphenPos + 1, valueName.length);
-      if (valueName === '0' || valueName === 'auto' || valueName === 'inherit')
-        return [valueName, valueName];
-      const spacingTk = spacingTks[type];
-      return [valueName, spacingTk[size]];
-    }),
-  );
-};
+export const getSpacingValuesMap = (
+  theme: DefaultTheme,
+): { [key in TGlobalSpacing]: string } => ({
+  '0': '0',
+  auto: 'auto',
+  inherit: 'inherit',
+  'cmp-xxs': theme.alias.space.cmp.xxs,
+  'cmp-xs': theme.alias.space.cmp.xs,
+  'cmp-sm': theme.alias.space.cmp.sm,
+  'cmp-md': theme.alias.space.cmp.md,
+  'cmp-lg': theme.alias.space.cmp.lg,
+  'cmp-xl': theme.alias.space.cmp.xl,
+  'cmp-xxl': theme.alias.space.cmp.xxl,
+  'cmp-xxxl': theme.alias.space.cmp.xxxl,
+  'layout-xxs': theme.alias.space.layout.xxs,
+  'layout-xs': theme.alias.space.layout.xs,
+  'layout-sm': theme.alias.space.layout.sm,
+  'layout-md': theme.alias.space.layout.md,
+  'layout-lg': theme.alias.space.layout.lg,
+  'layout-xl': theme.alias.space.layout.xl,
+  'layout-xxl': theme.alias.space.layout.xxl,
+  'layout-xxxl': theme.alias.space.layout.xxxl,
+});
 
 /**
  * Get the spacing value translated into css units
@@ -28,6 +38,7 @@ export const getSpacingValuesMap = (theme: DefaultTheme) => {
  */
 export const getSpacingPropCss = (theme: DefaultTheme) => (spacing: string) => {
   const valuesArr = spacing?.split(' ');
-  const cssValuesArr = valuesArr?.map((val) => getSpacingValuesMap(theme)[val]);
+  const spacingMap = getSpacingValuesMap(theme);
+  const cssValuesArr = valuesArr?.map((val) => spacingMap[val]);
   return cssValuesArr?.join(' ');
 };

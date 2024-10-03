@@ -25,7 +25,7 @@ export const TableWrapper: React.FC = () => {
   const rowVirtualizer = useTableVirtualizationRow({ ref });
   const columnVirtualizer = useTableVirtualizationColumn({
     ref,
-    wrapperWidth: size?.width,
+    wrapperWidth: size?.width ?? 0,
   });
 
   const width = columnVirtualizer.getTotalSize();

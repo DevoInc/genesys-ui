@@ -41,8 +41,8 @@ export default meta;
 type Story = StoryObj<typeof Modal>;
 
 export const Base: Story = {
-  render: () =>
-    (() => {
+  render: (args) =>
+    ((props) => {
       const [isOpen, setOpen] = React.useState<boolean>(false);
       const closeModal = (msg: string) => {
         action(msg);
@@ -52,7 +52,10 @@ export const Base: Story = {
       return (
         <>
           {isOpen && (
-            <Modal onRequestClose={() => closeModal('onRequestClose')}>
+            <Modal
+              {...props}
+              onRequestClose={() => closeModal('onRequestClose')}
+            >
               <Modal.Header title="Modal title" />
               <Modal.Body>
                 <Typography.Paragraph gutterBottom="cmp-md">
@@ -72,7 +75,7 @@ export const Base: Story = {
           </Button>
         </>
       );
-    })(),
+    })(args),
 };
 
 const ModalWithButtons = ({

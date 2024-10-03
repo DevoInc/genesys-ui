@@ -1,6 +1,5 @@
 import { ReactHTML } from 'react';
 import { PickUnion } from '../typeFunctions';
-import { GLOBAL_SPACING } from '../constants';
 import type { IDataAttrs, IFieldAttrs, IGlobalAttrs } from './htmlAttrs';
 import type { IFieldAriaAttrs, IGlobalAriaAttrs } from './ariaAttrs';
 import type {
@@ -51,7 +50,26 @@ export type TActiveStatus = 'success' | 'error' | 'warning' | 'help' | 'info';
 /** ---------------------------------------------
  * Global Spacing declaration: space values for props as margin, padding, gap... etc.
  * --------------------------------------------- */
-export type TGlobalSpacing = (typeof GLOBAL_SPACING)[number];
+export type TGlobalSpacing =
+  | '0'
+  | 'auto'
+  | 'inherit'
+  | 'cmp-xxs'
+  | 'cmp-xs'
+  | 'cmp-sm'
+  | 'cmp-md'
+  | 'cmp-lg'
+  | 'cmp-xl'
+  | 'cmp-xxl'
+  | 'cmp-xxxl'
+  | 'layout-xxs'
+  | 'layout-xs'
+  | 'layout-sm'
+  | 'layout-md'
+  | 'layout-lg'
+  | 'layout-xl'
+  | 'layout-xxl'
+  | 'layout-xxxl';
 
 /** ---------------------------------------------
  * Field size declaration: size for all the field controls and components: InputControl, Input, Switch... etc.
