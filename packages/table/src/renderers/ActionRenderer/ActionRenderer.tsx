@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { GIMenuAltVertical } from '@devoinc/genesys-icons';
+import { css, useTheme } from 'styled-components';
 
 import { Popover, HFlex, IconButton, Menu } from '@devoinc/genesys-ui';
 
@@ -15,6 +16,19 @@ export const ActionRenderer: React.FC<TCellRenderer> = ({
   const popoverId = `${colDef.id}-actions-menu-${rowIndex}`;
   const iconButtonSize = 'sm';
   const iconButtonColorScheme = 'quiet';
+  const theme = useTheme();
+  const rowHoverStyles = css`
+    opacity: ${theme.cmp.table.cellQuickActions.shape.opacity};
+    transition: opacity ease-in-out
+      ${theme.cmp.button.mutation.transitionDuration};
+    tr:hover > td &,
+    &:hover,
+    &:focus,
+    &:active,
+    &[aria-expanded='true'] {
+      opacity: 1;
+    }
+  `;
   return (
     <HFlex spacing="cmp-xxs" alignItems="end">
       {(context?.quickActions ?? []).map(
@@ -31,6 +45,7 @@ export const ActionRenderer: React.FC<TCellRenderer> = ({
                 onClick(rowIndex, event);
               }
             }}
+            style={rowHoverStyles}
           />
         ),
       )}
@@ -48,6 +63,7 @@ export const ActionRenderer: React.FC<TCellRenderer> = ({
               onClick={toggle}
               ref={ref}
               state={isOpened ? 'expanded' : undefined}
+              style={rowHoverStyles}
             />
           )}
           {({ setOpened }) => {
