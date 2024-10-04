@@ -22,11 +22,11 @@ export const InputControlShowPassword: React.FC<
 > = ({ onClick, showPassword, size, style }) => (
   <StyledInputControlShowPassword $size={size} css={style}>
     <IconButton
-      icon={showPassword ? <GIEyeViewFilled /> : <GIEyeVisibilityShowVisible />}
+      icon={showPassword ? <GIEyeVisibilityShowVisible /> : <GIEyeViewFilled />}
       circular
       onClick={onClick}
       size={INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP[size] as TButtonSize}
-      state={showPassword ? 'selected' : 'enabled'}
+      tooltip={showPassword ? 'Hide password' : 'Show password'}
     />
   </StyledInputControlShowPassword>
 );

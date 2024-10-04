@@ -169,6 +169,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
             padding-bottom: ${multipleSubtle && '0'};
             white-space: ${multipleSubtle && 'nowrap'};
             max-height: ${multipleSubtle && minHeight};
+            justify-content: ${multipleSubtle && 'flex-start'};
 
             // when select is sortable, an inline styles div without class name is rendered
             > [style] {
@@ -193,6 +194,8 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
                 align-items: center;
                 column-gap: ${aliasTokens.space.cmp.xxs};
                 flex-wrap: ${!multipleSubtle && 'wrap'};
+                justify-content: ${multipleSubtle && 'flex-end'};
+                max-width: ${multipleSubtle && '100%'};
               }
             }
           }
@@ -231,7 +234,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
 
         // INPUT CONTAINER ///////////////////////////////////////////////////
         &__input-container {
-          overflow-y: hidden;
+          overflow-y: ${multipleSubtle ? 'visible' : 'hidden'};
           color: ${fieldTokens.color.text[statusEval][state]};
           margin: 0;
           padding: 0;
@@ -249,7 +252,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
           > div:last-child {
             margin-top: 0;
             margin-bottom: 0;
-            padding: 0;
+            padding: ${!multipleSubtle && '0'};
             display: grid;
           }
 

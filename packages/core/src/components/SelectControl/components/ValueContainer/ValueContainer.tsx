@@ -75,6 +75,8 @@ export const ValueContainer: React.FC<ValueContainerProps> = ({
         <components.ValueContainer {...props}>
           <ChildrenValueContainer
             values={values}
+            size={props.selectProps.size}
+            status={props.selectProps.status}
             multipleSubtle={props.selectProps.multipleSubtle}
           >
             {children}

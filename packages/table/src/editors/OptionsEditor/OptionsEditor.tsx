@@ -14,13 +14,16 @@ export const OptionsEditor: React.FC<TCellEditor> = ({
 }) => {
   const options = (colDef?.context as TContextOptions)?.options;
   const { density, rowHeight } = React.useContext(TableContext);
+  const isMultiple = Array.isArray(value);
   return (
     <SelectControl
       defaultMenuIsOpen
+      hideSelectedOptions={!isMultiple}
       onChange={onChange}
       value={String(value)}
       creatable
-      isMulti={Array.isArray(value)}
+      isMulti={isMultiple}
+      multipleSubtle={isMultiple}
       menuAppendToBody
       options={getSelectOptions(options)}
       autoFocus

@@ -27,7 +27,11 @@ export const StyledFormGroupContainer = styled.div<StyledFormGroupContainerProps
       flex-direction: ${$legendPosition === 'left' ? 'row' : 'column'};
       align-items: ${$legendPosition === 'left' ? 'center' : 'stretch'};
       gap: ${getSpacingPropCss(theme)('cmp-xs')};
-      margin-top: ${$marginTop || formGroupSpacingMixin(theme)};
+      ${$marginTop
+        ? css`
+            margin-top: ${$marginTop};
+          `
+        : formGroupSpacingMixin(theme)};
       margin-left: ${$marginLeft && getSpacingPropCss(theme)($marginLeft)};
       ${$asFieldset &&
       css`

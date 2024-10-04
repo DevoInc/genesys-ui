@@ -27,10 +27,8 @@ export const Base: Story = {
     maxHeight: '80vh',
     minWidth: 2800,
     rowHeight: ROW_HEIGHT_MD,
-    resizableColumns: true,
-    highlightColumnsOnHover: true,
+    highlightRowOnHover: true,
     showFilters: true,
-    striped: true,
     colDefs: [
       {
         id: 'id',
@@ -171,14 +169,14 @@ export const Base: Story = {
         context: {
           quickActions: [
             {
-              Icon: GIEyeViewFilled,
+              Icon: <GIEyeViewFilled />,
               onClick: (rowIndex) => {
                 // eslint-disable-next-line no-console
                 console.log(`Action 1 on row ${rowIndex}`);
               },
             },
             {
-              Icon: GIPencilEdit,
+              Icon: <GIPencilEdit />,
               onClick: (rowIndex) => {
                 // eslint-disable-next-line no-console
                 console.log(`Action 2 on row ${rowIndex}`);

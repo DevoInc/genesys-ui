@@ -10,8 +10,14 @@ export const BooleanRenderer: React.FC<TCellRenderer> = ({ value }) => {
   const theme = useTheme();
   const iconColor = theme.alias.color.text.body.base;
   return bool ? (
-    <GICheckOk size="22" color={iconColor} />
+    <GICheckOk
+      size={`calc(${theme.alias.size.square.icon.base.lg} - 0.2rem)`}
+      color={iconColor}
+    />
   ) : (
-    <GIExitClose size="18" color={iconColor} />
+    <GIExitClose
+      size={theme.alias.size.square.icon.base.sm}
+      color={iconColor}
+    />
   );
 };

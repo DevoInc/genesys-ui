@@ -3,6 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import {
   GIDiamondPrizeAwardJewelleryRing,
+  GIEyeViewFilled,
   GIIdea,
   GITimeZone,
 } from '@devoinc/genesys-icons';
@@ -84,6 +85,20 @@ export const WithAppendPrependAndBottomContent: Story = {
       <Flex as="span" paddingRight="cmp-xs">
         <Badge as="span" colorScheme="info" size="sm" text="9" />
       </Flex>
+    ),
+  },
+};
+
+export const WithDescription: Story = {
+  name: 'With description',
+  args: {
+    icon: <GIEyeViewFilled />,
+    label: 'Menu item title',
+    unlimitedHeight: true,
+    bottomContent: (
+      <Typography.Paragraph size="sm" colorScheme="weak">
+        Apollonius of Perga take root and flourish a still more glorious.
+      </Typography.Paragraph>
     ),
   },
 };

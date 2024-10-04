@@ -56,7 +56,7 @@ export const StyledTableRow = styled.tr<StyledTableRowProps>`
       `}
 
       &:hover,
-      :has(*:focus) {
+      &:has(*:focus) {
         z-index: 1;
 
         &::before {
@@ -64,8 +64,8 @@ export const StyledTableRow = styled.tr<StyledTableRowProps>`
         }
       }
 
-      :has(*:focus),
-      :has([aria-selected='true']) {
+      &:has(*:focus),
+      &:has([aria-selected='true']) {
         z-index: 2;
       }
 

@@ -9,14 +9,10 @@ export interface ModalBackdropProps
   extends Omit<OverlayProps, 'children'>,
     Pick<
       IModal,
-      | 'children'
-      | 'disableCloseOnOverlayClick'
-      | 'onRequestClose'
-      | 'windowSize'
+      'children' | 'disableCloseOnOverlayClick' | 'onRequestClose'
     > {}
 
 export const ModalBackdrop: React.FC<ModalBackdropProps> = ({
-  windowSize,
   onRequestClose,
   disableCloseOnOverlayClick,
   zIndex,
@@ -32,6 +28,7 @@ export const ModalBackdrop: React.FC<ModalBackdropProps> = ({
       justifyContent="center"
       width="100%"
       height="100%"
+      padding={padding}
       position="fixed"
       positionTop="0"
       positionLeft="0"

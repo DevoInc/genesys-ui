@@ -77,6 +77,14 @@ export const SearchType: Story = {
     ))(),
 };
 
+export const PasswordType: Story = {
+  name: 'Type password',
+  args: {
+    type: 'password',
+    defaultValue: '123456',
+  },
+};
+
 export const WithAddonsAndIcons: Story = {
   name: 'With addons and icon',
   args: {
