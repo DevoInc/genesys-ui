@@ -5,7 +5,6 @@ import { Button, Flex, Menu, Popover } from '@devoinc/genesys-ui';
 
 import {
   BooleanRenderer,
-  Table,
   TextRenderer,
   HeaderBulkRenderer,
   TBulkContext,
@@ -15,18 +14,19 @@ import {
   orderDataByOrderStruct,
   TColDef,
   updateColDefsWithOrderStruct,
+  BasicTable,
 } from '../../src';
 
-const meta: Meta<typeof Table> = {
+const meta: Meta<typeof BasicTable> = {
   title: 'Components/Layout/Table/actions/BulkActions/by Id',
-  component: Table,
+  component: BasicTable,
   parameters: {
     layout: 'fullscreen',
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Table>;
+type Story = StoryObj<typeof BasicTable>;
 
 const initialData = Array.from({ length: 10 }).map((_, index) => ({
   bulk: false,
@@ -79,7 +79,7 @@ const BulkExample = () => {
         </Button>
       </Flex.Item>
       <Flex.Item>
-        <Table
+        <BasicTable
           onSort={(colDef: TColDef) => {
             onSort(colDef.id);
           }}
@@ -87,9 +87,7 @@ const BulkExample = () => {
             [
               {
                 id: 'bulk',
-                cellRenderer: BulkRendererById,
-                headerRenderer: HeaderBulkRenderer,
-                width: 64,
+                preset: 'bulk',
                 context: {
                   headerDisabled: data.length === 0,
                   headerBulkMenu: ({ setOpened }) => {

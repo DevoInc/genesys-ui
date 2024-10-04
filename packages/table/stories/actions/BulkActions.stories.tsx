@@ -11,6 +11,7 @@ import {
   HeaderBulkRenderer,
   TBulkContext,
   useBulkSelection,
+  BasicTable,
 } from '../../src';
 
 const meta: Meta<typeof Table> = {
@@ -81,14 +82,12 @@ const BulkExample = () => {
         </Button>
       </Flex.Item>
       <Flex.Item>
-        <Table
+        <BasicTable
           data={data}
           colDefs={[
             {
               id: 'bulk',
-              cellRenderer: BulkRenderer,
-              headerRenderer: HeaderBulkRenderer,
-              width: 64,
+              preset: 'bulk',
               context: {
                 headerDisabled: data.length === 0,
                 headerBulkMenu:
