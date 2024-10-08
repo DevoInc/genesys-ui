@@ -5,25 +5,22 @@ import { Button, Flex, Menu, Popover } from '@devoinc/genesys-ui';
 
 import {
   BooleanRenderer,
-  BulkRenderer,
-  Table,
   TextRenderer,
-  HeaderBulkRenderer,
   TBulkContext,
   useBulkSelection,
   BasicTable,
 } from '../../src';
 
-const meta: Meta<typeof Table> = {
+const meta: Meta<typeof BasicTable> = {
   title: 'Components/Layout/Table/actions/Bulkactions/by Index',
-  component: Table,
+  component: BasicTable,
   parameters: {
     layout: 'fullscreen',
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Table>;
+type Story = StoryObj<typeof BasicTable>;
 
 const initialData = Array.from({ length: 10 }).map((_, index) => ({
   text: `text ${index}`,
