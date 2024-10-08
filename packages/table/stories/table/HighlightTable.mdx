@@ -6,18 +6,57 @@ import * as Stories from './HighlightTable.stories';
 
 # Highlight Table
 
-## Highlight column on hover
+The table supports two types of highlighting: by column and by row. You can apply these highlights individually or together.
 
-The **highlightColumnsOnHover** property by default is set to false, once it is activated and you hover on a cell it will highlight the column.
+## Column
 
+The column definition now has a new **isHighlighted** property. This property tells us if the column should be highlighted or not. By means of events it is possible to control when to add or remove that property.
+
+```ts
+onCellMouseEnter?: ({
+    colDef,
+    rowDef,
+    cellDef,
+  }: {
+    colDef: TColDef;
+    rowDef: TRowDef;
+    cellDef: TCellDef;
+  }) => void;
+onCellMouseLeave?: ({
+  colDef,
+  rowDef,
+  cellDef,
+}: {
+  colDef: TColDef;
+  rowDef: TRowDef;
+  cellDef: TCellDef;
+}) => void
+```
+
+We also provide a hook **useSetHighlight** that allows to add or remove the highlighting depending on the executed event.
+
+```ts 
+const {
+    newColDefs,
+    onCellMouseEnter,
+    onCellMouseLeave,
+  } = useSetHighlight(colDefs);
+```
 <Canvas of={Stories.Columns} />
 
-## Highlight row on hover
 
-The highlightRowOnHover property by default is set to false, once it is activated and you hover on a cell it will highlight the row.
+## Row
+
+The **highlightRowOnHover** property by default is set to false, once it is activated and you hover on a cell it will highlight the row.
 
 <Canvas of={Stories.Row} />
 
-> Both properties can be combined as needed to have both highlighted.
+There is a **highlightRowOnHoverFn** property with which we can use the row definition data to exclude the particular row. By default the rows after row are not highlighted.
+
+```
+highlightRowOnHoverFn?: (rowDef: TRowDef) => boolean;
+```
+
+## Column and row
 
 <Canvas of={Stories.RowColumn} />

@@ -19,13 +19,12 @@ export const TableBody: React.FC<TableBodyProps> = ({
   width,
   height,
 }) => {
-  const { highlightColumnsOnHover, data } = React.useContext(TableContext);
+  const { data } = React.useContext(TableContext);
 
   return (
     <StyledTableBody
       $height={height}
       $width={width}
-      $highlightColumnsOnHover={highlightColumnsOnHover}
     >
       {rowVirtualizer.getVirtualItems().map((virtualRow: VirtualItem) => (
         <Row
@@ -35,7 +34,6 @@ export const TableBody: React.FC<TableBodyProps> = ({
           index={virtualRow.index}
           height={virtualRow.size}
           start={virtualRow.start}
-          wrapperHeight={height}
         />
       ))}
     </StyledTableBody>

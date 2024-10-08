@@ -6,19 +6,16 @@ import { Holo } from '@devoinc/holo';
 import {
   addAfterRowsToData,
   addAfterRowsToRowDefs,
-  BooleanRenderer,
-  orderDataByOrderStruct,
   TCellRenderer,
   BasicTable,
   TColDef,
   TData,
   TRowDef,
-  useOrderStruct,
 } from '../../src';
 
-import { ROW_HEIGHT_MD } from '../../src/constants';
 import { Flex } from '@devoinc/genesys-ui';
 import { useOnDemandAfterRow, useRenderAfterRow } from '../../src/hooks';
+import { useSetHighlight } from '../../src/hooks/useSetHighlight';
 
 const meta: Meta<typeof BasicTable> = {
   title: 'Components/Layout/Table/Row/AfterRow',
@@ -43,7 +40,7 @@ const initialData = Holo.of()
   .repeat(3)
   .generate() as TData;
 
-const colDefsInitial = [
+const colDefsInitial: TColDef[] = [
   // {
   //   id: 'id',
   //   preset: 'text',
@@ -55,52 +52,33 @@ const colDefsInitial = [
     id: 'booleanValue',
     headerName: 'Boolean value',
     preset: 'boolean',
-    editable: true,
-    cellRenderer: BooleanRenderer,
   },
   {
     id: 'name',
     headerName: 'Name',
     preset: 'text',
-    editable: true,
-    sortable: true,
   },
 ];
 
-// const initalRowDefs = [
-//   {
-//     id: '2',
-//     preset: 'deleted'
-//   },
-//   {
-//     id: `afterRow-2`,
-//     hide: false,
-//   },
-// ];
-
-const initalRowDefs = []
-//const initialSelection = ['2'];
+const initalRowDefs = [];
 
 const BasicCmp = ({
   afterRowRenderer,
   afterRowHeight,
+  highlightRowOnHover,
+  highlightColumnOnHover,
 }: {
   afterRowRenderer:
     | React.FC<TCellRenderer>
     | (({ value, colDef, rowIndex, row }: TCellRenderer) => React.ReactNode);
   afterRowHeight: number;
+  highlightRowOnHover?: boolean;
+  highlightColumnOnHover?: boolean;
 }) => {
-  const { orderStruct, onSort } = useOrderStruct([
-    { id: 'text', sort: 'desc' },
-  ]);
-
   const [rowDefs, setRowDefs] = React.useState<TRowDef[]>();
 
   const { dataWithAfterRows } = React.useMemo(() => {
-    const dataOrdered = [...initialData].sort(
-      orderDataByOrderStruct(orderStruct),
-    );
-    const [dataWithAfterRows, afterRowIds] = addAfterRowsToData(dataOrdered);
+    const [dataWithAfterRows, afterRowIds] = addAfterRowsToData(initialData);
     const newRowDef = addAfterRowsToRowDefs(
       initalRowDefs,
       afterRowIds,
@@ -111,13 +89,16 @@ const BasicCmp = ({
     return { dataWithAfterRows };
   }, [initialData]);
 
+  const { newColDefs, onCellMouseEnter, onCellMouseLeave } =
+    useSetHighlight(colDefsInitial);
+
   const { colDefs } = useRenderAfterRow({
     rowDefs,
     initialSelection: [],
     onRowDefsChange: (newRowDefs) => {
       setRowDefs(newRowDefs);
     },
-    colDefs: colDefsInitial,
+    colDefs: highlightColumnOnHover ? newColDefs : colDefsInitial,
   });
 
   return (
@@ -125,22 +106,11 @@ const BasicCmp = ({
       <Flex.Item>
         <BasicTable
           data={dataWithAfterRows}
-          onSort={(colDef: TColDef) => {
-            onSort(colDef.id);
-          }}
           colDefs={colDefs}
           rowDefs={rowDefs}
-          cellDefs={[
-            {
-              colId: 'name',
-              rowId: '2',
-              style: 'background-color: rgb(200,255,200);',
-            },
-          ]}
-          maxHeight={'80vh'}
-          rowHeight={ROW_HEIGHT_MD}
-          resizableColumns={true}
-          showFilters={false}
+          onCellMouseEnter={highlightColumnOnHover && onCellMouseEnter}
+          onCellMouseLeave={highlightColumnOnHover && onCellMouseLeave}
+          highlightRowOnHover={highlightRowOnHover}
         />
       </Flex.Item>
     </Flex>
@@ -177,15 +147,7 @@ const BasicCmpNoRenderAfterRow = ({
   return (
     <Flex flexDirection="column" gap="cmp-md" height={'auto'}>
       <Flex.Item>
-        <BasicTable
-          data={data}
-          colDefs={colDefs}
-          rowDefs={rowDefs}
-          maxHeight={'80vh'}
-          rowHeight={ROW_HEIGHT_MD}
-          resizableColumns={true}
-          showFilters={false}
-        />
+        <BasicTable data={data} colDefs={colDefs} rowDefs={rowDefs} />
       </Flex.Item>
     </Flex>
   );
@@ -196,6 +158,17 @@ export const Basic: Story = {
     <BasicCmp
       afterRowRenderer={({ row }) => row.name as string}
       afterRowHeight={36}
+    />
+  ),
+};
+
+export const BasicHighlighted: Story = {
+  render: () => (
+    <BasicCmp
+      afterRowRenderer={({ row }) => row.name as string}
+      afterRowHeight={36}
+      highlightRowOnHover={true}
+      highlightColumnOnHover={true}
     />
   ),
 };

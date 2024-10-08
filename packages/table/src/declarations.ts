@@ -73,6 +73,7 @@ export type TColDef = {
   headerOnFilterPosition?: boolean;
   hide?: boolean;
   style?: CSSProp;
+  isHighlighted?: boolean;
 };
 
 export type TPresetRow =
@@ -114,11 +115,6 @@ export type TCellDef = {
   rowId: string;
   hide?: boolean;
   style?: CSSProp;
-};
-
-export type TAfterRow = {
-  hide?: boolean;
-  id: string;
 };
 
 export type TColPreset = {
@@ -190,29 +186,55 @@ export type TCellEditor = {
 
 export interface ITable {
   data: TData;
+  // columns
   colDefs?: TColDef[];
-  rowDefs?: TRowDef[];
-  cellDefs?: TCellDef[];
-  afterRowDefs?: TAfterRow[];
   defaultColDef?: TDefaultColDef;
-  defaultRowDef?: TDefaultRowDef;
   columnPresets?: TColPreset[];
+  resizableColumns?: boolean;
+  // rows
+  rowDefs?: TRowDef[];
+  defaultRowDef?: TDefaultRowDef;
   rowPresets?: TRowPreset[];
+  rowHeight?: number;
+  // cell
+  cellDefs?: TCellDef[];
+
   context?: {
     [key: string]: unknown;
   };
   density?: TDensity;
+
   striped?: boolean;
   stripedFn?: (index: number, row: TRow) => boolean;
+
   maxHeight?: React.CSSProperties['maxHeight'];
   minWidth?: number;
   minHeight?: number;
-  rowHeight?: number;
-  resizableColumns?: boolean;
-  highlightColumnsOnHover?: boolean;
-  highlightRowOnHover?: boolean;
+
   texts?: TTextsType;
   showFilters?: boolean;
+
+  highlightRowOnHover?: boolean;
+  highlightRowOnHoverFn?: (rowDef: TRowDef) => boolean;
+
   onSort?: (colDef: TColDef) => void;
   onFilter?: (colDef: TColDef, value: TFilterValue, type: string) => void;
+  onCellMouseEnter?: ({
+    colDef,
+    rowDef,
+    cellDef,
+  }: {
+    colDef: TColDef;
+    rowDef: TRowDef;
+    cellDef: TCellDef;
+  }) => void;
+  onCellMouseLeave?: ({
+    colDef,
+    rowDef,
+    cellDef,
+  }: {
+    colDef: TColDef;
+    rowDef: TRowDef;
+    cellDef: TCellDef;
+  }) => void;
 }
