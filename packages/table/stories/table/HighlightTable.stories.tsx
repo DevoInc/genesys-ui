@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { BasicTable } from '../../src';
-import { ROW_HEIGHT_MD } from '../../src/constants';
 import { useSetHighlight } from '../../src/hooks/useSetHighlight';
 import { Flex } from '@devoinc/genesys-ui';
 

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import type { StyledTableProps } from '../TableWrapper/StyledTable';
-import type { ITable } from '../../declarations';
 
 interface StyledTableBodyProps
   extends Pick<StyledTableProps, '$width' | '$height'> {
