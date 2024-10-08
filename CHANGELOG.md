@@ -1,5 +1,18 @@
 # Changelog
 
+## [12.3.0](https://github.com/DevoInc/genesys-ui/compare/v12.2.0...v12.3.0) (2024-10-08)
+
+
+### Features
+
+* add highlight column and row ([b779882](https://github.com/DevoInc/genesys-ui/commit/b779882e35885643240f04bddfec72fe7bdd8278))
+* **table:** add transition in cell background-color ([7d16908](https://github.com/DevoInc/genesys-ui/commit/7d16908c3d7f7f7703a9be31840e564dce8b2ec5))
+
+
+### Bug Fixes
+
+* delete z index isAfter row ([d81a22f](https://github.com/DevoInc/genesys-ui/commit/d81a22f71297832ea8d49c7ac91e610846adf814))
+
 ## [12.2.0](https://github.com/DevoInc/genesys-ui/compare/v12.1.2...v12.2.0) (2024-10-08)
 
 
