@@ -6,6 +6,7 @@ const meta: Meta<typeof IconButtonRemove> = {
   title: 'Components/Button/IconButtonRemove',
   component: IconButtonRemove,
   args: {
+    colorScheme: 'blend-base',
     state: 'enabled',
     size: 'md',
   },

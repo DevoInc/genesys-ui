@@ -7,6 +7,7 @@ const meta: Meta<typeof IconButtonCollapse> = {
   title: 'Components/Button/IconButtonCollapse',
   component: IconButtonCollapse,
   args: {
+    colorScheme: 'blend-base',
     state: 'enabled',
     size: 'md',
   },

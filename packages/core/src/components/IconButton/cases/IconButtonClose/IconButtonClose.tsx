@@ -3,6 +3,10 @@ import * as React from 'react';
 import { GIExitClose } from '@devoinc/genesys-icons';
 
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
+import type {
+  TBlendColorScheme,
+  TNeutralColorScheme,
+} from '../../../../declarations';
 import { IconButton, type IconButtonProps } from '../../IconButton';
 import { mergeStyles } from '../../../../helpers';
 
@@ -30,23 +34,36 @@ export interface IconButtonCloseProps
     | 'selectionScheme'
     | 'target'
     | 'value'
-  > {}
+  > {
+  colorScheme?: TBlendColorScheme | TNeutralColorScheme;
+}
 
 export const IconButtonClose = React.forwardRef<
   HTMLElement,
   IconButtonCloseProps
->(({ size = 'md', state = 'enabled', style, ...restIconButtonProps }, ref) => (
-  <IconButton
-    {...restIconButtonProps}
-    colorScheme="blend-base"
-    icon={<GIExitClose />}
-    circular
-    hasBoldIcon
-    ref={ref}
-    size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
-    state={state}
-    style={mergeStyles({ backgroundColor: 'transparent' }, style)}
-  />
-));
+>(
+  (
+    {
+      colorScheme = 'neutral',
+      size = 'md',
+      state = 'enabled',
+      style,
+      ...restIconButtonProps
+    },
+    ref,
+  ) => (
+    <IconButton
+      {...restIconButtonProps}
+      colorScheme={colorScheme}
+      icon={<GIExitClose />}
+      circular
+      hasBoldIcon
+      ref={ref}
+      size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
+      state={state}
+      style={mergeStyles({ backgroundColor: 'transparent' }, style)}
+    />
+  ),
+);
 
 IconButtonClose.displayName = 'IconButtonClose';

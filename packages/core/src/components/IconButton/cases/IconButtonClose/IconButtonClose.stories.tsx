@@ -6,6 +6,7 @@ const meta: Meta<typeof IconButtonClose> = {
   title: 'Components/Button/IconButtonClose',
   component: IconButtonClose,
   args: {
+    colorScheme: 'neutral',
     state: 'enabled',
     size: 'md',
   },
