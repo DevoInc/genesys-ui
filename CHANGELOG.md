@@ -1,5 +1,19 @@
 # Changelog
 
+## [12.2.0](https://github.com/DevoInc/genesys-ui/compare/v12.1.2...v12.2.0) (2024-10-08)
+
+
+### Features
+
+* added colorScheme for some IconButton cases which eventually are rendered over a colored surface. ([5c937d7](https://github.com/DevoInc/genesys-ui/commit/5c937d71dc6a2a2d4fb05b6966a5b0755bba1da6))
+* improvements for several components and stories: Form.Group, SelectControl, InputShowPassword, Table... etc. ([82ccbef](https://github.com/DevoInc/genesys-ui/commit/82ccbef8fc11c0605b5a3fee4265b181c5cc4739))
+* **table:** added opacity styles to table actions ([45a86d3](https://github.com/DevoInc/genesys-ui/commit/45a86d3e6c6cdbbd6c9e4a086b03042e0357f0a7))
+
+
+### Bug Fixes
+
+* **modal:** relation between overlay and window ([ca8d2fc](https://github.com/DevoInc/genesys-ui/commit/ca8d2fc8d1f103198e1db121c85f2dc9137aa822))
+
 ## [12.1.2](https://github.com/DevoInc/genesys-ui/compare/v12.1.1...v12.1.2) (2024-10-01)
 
 
