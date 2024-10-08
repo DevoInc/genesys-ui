@@ -20,6 +20,9 @@ export const StyledCell = styled.td<StyledCellProps>`
 
   ${({ theme }) => cellMixin({ theme })};
 
+  transition: background-color ease-in-out
+    ${({ theme }) => theme.cmp.table.cell.mutation.transitionDuration};
+
   ${({ $isHighlighted, theme }) => {
     return (
       $isHighlighted &&
