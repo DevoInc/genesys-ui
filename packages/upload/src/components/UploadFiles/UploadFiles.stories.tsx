@@ -32,5 +32,6 @@ type Story = StoryObj<typeof UploadFiles>;
 export const Base: Story = {
   args: {
     allowMultiple: true,
+    showLabelIcon: true
   },
 };

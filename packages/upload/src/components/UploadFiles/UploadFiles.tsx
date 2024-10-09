@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import type { FilePondProps } from 'react-filepond';
 import {
-  GIDragDrop,
   GIExitClose,
   GIRotateSync,
   GIUndoReset,
@@ -14,10 +13,7 @@ import {
   Field,
   type IFieldAttrs,
   type FieldProps,
-  Flex,
   getCmpMarkup,
-  getSpacingPropCss,
-  Icon,
   type IDataAttrs,
 } from '@devoinc/genesys-ui';
 
@@ -150,20 +146,6 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
       tooltip={tooltip}
     >
       <Box {...dataProps} flex="1 1 100%" position="relative">
-        {showLabelIcon && (
-          <Box
-            position="absolute"
-            positionTop={getSpacingPropCss(theme)('cmp-md')}
-            zIndex={1}
-            width="100%"
-          >
-            <Flex justifyContent="center">
-              <Icon size="xxl">
-                <GIDragDrop />
-              </Icon>
-            </Flex>
-          </Box>
-        )}
         <StyledUploadFiles
           acceptedFileTypes={acceptedFileTypes}
           allowFileSizeValidation={allowFileSizeValidation}
