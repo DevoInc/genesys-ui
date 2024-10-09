@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.3.1](https://github.com/DevoInc/genesys-ui/compare/v12.3.0...v12.3.1) (2024-10-09)
+
+
+### Bug Fixes
+
+* QUV-2530 solved problem with upload icon and height of the container ([5f6f155](https://github.com/DevoInc/genesys-ui/commit/5f6f155c77cbd967b824e4cf10b42d473cebe59a))
+
 ## [12.3.0](https://github.com/DevoInc/genesys-ui/compare/v12.2.0...v12.3.0) (2024-10-08)
 
 
