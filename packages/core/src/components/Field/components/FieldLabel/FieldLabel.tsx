@@ -27,6 +27,7 @@ export const FieldLabel: React.FC<FieldLabelProps> = ({
   style,
   ...nativeProps
 }) => {
+  // TODO: cmpTokens
   // to get vertically aligned the label with the field control block anyway
   const labelLineHeight = useTheme().alias.typo.lineHeight.body[size];
 

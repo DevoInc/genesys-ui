@@ -50,14 +50,13 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
     type = 'text',
   }) => {
     const aliasTokens = theme.alias;
-    const fieldTokens = aliasTokens.fields;
-    const fieldIconTokens = fieldTokens.icon;
-    const iconSize = fieldIconTokens.size.square[$size];
+    const cmpTokens = theme.cmp.inputControl;
+    const iconSize = cmpTokens.icon.size.square[$size];
     const showPasswordSize =
       theme.cmp.button.size.square[INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP[$size]];
-    const inputBorderRadius = fieldTokens.shape.borderRadius;
-    const inputHeight = fieldTokens.size.height[$size];
-    const inputHorPadding = fieldTokens.space.padding.hor[$size];
+    const inputBorderRadius = cmpTokens.shape.borderRadius;
+    const inputHeight = cmpTokens.size.height[$size];
+    const inputHorPadding = cmpTokens.space.padding.hor[$size];
     const inputWithIconPadding =
       $hasIcon || $hasTypeIcon
         ? `calc(${iconSize} + (${inputHorPadding} * 2))`
@@ -77,9 +76,9 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
     const fileButtonHeight = css`calc(${buttonTokens.size.height[$size]} - 0.6rem)`;
     const fileButtonPadding = css`calc(${buttonTokens.space.padding[$size]} - 0.2rem)`;
     const inputFileTopPadding = css`calc((${inputHeight} - ${fileButtonHeight}) / 3)`;
-    const inputColorPadding = css`calc(${aliasTokens.space.cmp.xxs} / 2)`;
-    const inputRangeTrackHeight = css`calc(${aliasTokens.size.height.track.xs})`;
-    const inputRangeHandlerSize = aliasTokens.handlers.size.square.md;
+    const inputColorPadding = cmpTokens.space.padding.typeColor;
+    const inputRangeTrackHeight = cmpTokens.pseudoRange.size.height.track;
+    const inputRangeHandlerSize = cmpTokens.pseudoRange.size.square.thumb;
 
     return css`
       ${commonInputControlMixin({
@@ -185,11 +184,13 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
 
       // type date-time pseudo elements
       &::-webkit-calendar-picker-indicator {
-        background-image: ${fieldTokens.shape.backgroundImage.date};
+        background-image: ${cmpTokens.pseudoCalendar.shape.backgroundImage
+          .picker};
       }
 
       &[type='time']::-webkit-calendar-picker-indicator {
-        background-image: ${fieldTokens.shape.backgroundImage.time};
+        background-image: ${cmpTokens.pseudoCalendar.shape.backgroundImage
+          .timePicker};
       }
 
       // type search
@@ -199,8 +200,8 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
           height: ${clearSearchButtonSize};
           width: ${clearSearchButtonSize};
           background-size: ${buttonTokens.icon.typo.fontSize.xxs};
-          background-image: ${fieldTokens.shape.backgroundImage.searchCancel
-            .base};
+          background-image: ${cmpTokens.pseudoSearch.shape.backgroundImage
+            .enabled};
           background-color: ${buttonTokens.color.background.neutral.enabled};
 
           // Here it's not possible to use the same way based in pseudo-element ::before as in buttons
@@ -210,7 +211,7 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
               buttonTokens.color.background.neutral.hovered,
             )};
 
-            background-image: ${fieldTokens.shape.backgroundImage.searchCancel
+            background-image: ${cmpTokens.pseudoSearch.shape.backgroundImage
               .hovered};
           }
         }
@@ -256,10 +257,12 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
         }
 
         &::-webkit-slider-runnable-track {
-          border-radius: ${aliasTokens.shape.borderRadius.pill};
+          border-radius: ${cmpTokens.pseudoRange.shape.borderRadius.track.base};
           width: 100%;
           height: ${inputRangeTrackHeight};
-          background-color: ${aliasTokens.color.background.track[$status]};
+          background-color: ${cmpTokens.pseudoRange.color.background.track[
+            $status
+          ]};
         }
 
         &::-webkit-slider-thumb {
@@ -267,13 +270,14 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
           cursor: pointer;
           position: relative;
           transition: all ease
-            ${aliasTokens.handlers.mutation.transitionDuration};
+            ${cmpTokens.pseudoRange.mutation.transitionDuration.thumb};
           transform: translate(0, calc(-50% + ${inputRangeTrackHeight} / 2));
-          box-shadow: ${aliasTokens.handlers.elevation.boxShadow.enabled};
-          border-radius: ${aliasTokens.handlers.shape.borderRadius};
+          box-shadow: ${cmpTokens.pseudoRange.elevation.boxShadow.thumb};
+          border-radius: ${cmpTokens.pseudoRange.shape.borderRadius.thumb.base};
           width: ${inputRangeHandlerSize};
           height: ${inputRangeHandlerSize};
-          background-color: ${aliasTokens.handlers.color.background};
+          background-color: ${cmpTokens.pseudoRange.color.background.thumb
+            .base};
         }
 
         &:focus::-webkit-slider-thumb,

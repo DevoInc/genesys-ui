@@ -30,7 +30,6 @@
     "dpdm": "dpdm --exit-code circular:1 ./src/index.ts"
   },
   "peerDependencies": {
-    "@devoinc/genesys-brand-devo": "6.x.x",
     "@devoinc/genesys-ui": "^12.3.0",
     "ahooks": "3.x.x",
     "monaco-editor-core": "0.x.x",

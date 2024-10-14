@@ -3,6 +3,7 @@ import { css, DefaultTheme } from 'styled-components';
 
 import type { BoxProps } from '../Box';
 import { pseudoElementOverlayMixin } from '../../styled';
+import { camelCase } from 'lodash';
 
 export interface PanelMixinProps
   extends Pick<BoxProps, 'display' | 'elevation'> {
@@ -18,16 +19,15 @@ export interface PanelMixinProps
 export const panelMixin =
   (theme: DefaultTheme) =>
   ({ bordered, colorScheme, display, elevation }: PanelMixinProps) => {
-    const aliasTokens = theme.alias;
-    // TODO: Add border-color token to Panel component QUV-2018
-    const borderColor = aliasTokens.color.border.surface.base.weak;
-    const borderWidth = aliasTokens.shape.borderSize.panel.base;
-    const panelTokens = theme.cmp.panel;
+    const elevationForTokens = camelCase(elevation);
+    const tokens = theme.cmp.panel;
+    const borderColor = tokens.color.border[elevationForTokens];
+    const borderWidth = tokens.shape.borderSize;
     const borderRadius =
       elevation &&
       elevation !== 'ground' &&
       !elevation.includes('sticky') &&
-      panelTokens.shape.borderRadius;
+      tokens.shape.borderRadius;
     return css`
       position: relative;
       ${display !== 'none' &&
@@ -40,7 +40,7 @@ export const panelMixin =
       bordered &&
       `solid ${borderWidth} ${borderColor}`};
       // to maintain always a solid background to avoid overlapping problems
-      background-color: ${panelTokens.color.background};
+      background-color: ${tokens.color.background};
 
       &::before {
         ${pseudoElementOverlayMixin()};

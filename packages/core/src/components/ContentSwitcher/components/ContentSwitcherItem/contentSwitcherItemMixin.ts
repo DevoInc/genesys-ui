@@ -16,7 +16,9 @@ export const contentSwitcherItemMixin = ({
   theme,
   wide,
 }: ContentSwitcherItemMixinProps) => {
-  const aliasTokens = theme.alias;
+  const cmpTokens = theme.cmp.contentSwitcher.item;
+  const bgActivated = cmpTokens.color.background.activated;
+  const bsActivated = cmpTokens.elevation.boxShadow.activated;
   return css`
     ${wide &&
     css`
@@ -24,15 +26,15 @@ export const contentSwitcherItemMixin = ({
     `}
 
     &&&:has(:checked) {
-      box-shadow: ${aliasTokens.elevation.boxShadow.depth.raised};
-      background-color: ${aliasTokens.color.background.surface.base.base};
+      box-shadow: ${bsActivated};
+      background-color: ${bgActivated};
     }
 
     ${state === 'selected' &&
     css`
       &&& {
-        box-shadow: ${aliasTokens.elevation.boxShadow.depth.raised};
-        background-color: ${aliasTokens.color.background.surface.base.base};
+        box-shadow: ${bsActivated};
+        background-color: ${bgActivated};
       }
     `}
 
@@ -40,8 +42,7 @@ export const contentSwitcherItemMixin = ({
     state !== 'selected' &&
     css`
       &:hover {
-        background-color: ${theme.cmp.button.color.background.blendBase
-          .hovered};
+        background-color: ${cmpTokens.color.background.hovered};
       }
     `}
   `;

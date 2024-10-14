@@ -24,20 +24,18 @@ export const StyledColorPicker = styled.button<StyledColorPickerProps>`
     status = 'base',
     theme,
   }) => {
-    const state = getFieldState({ readOnly });
+    const state = getFieldState({ $readOnly: readOnly });
     const isSquare =
       colorIndicatorType === 'square' || colorIndicatorType === 'circle';
     const isCircle = colorIndicatorType === 'circle';
-
-    const fieldTokens = theme.alias.fields;
     const colorPickerTokens = theme.cmp.colorPicker;
-
-    const transitionDuration = fieldTokens.mutation.transitionDuration;
+    const transitionDuration = colorPickerTokens.mutation.transitionDuration;
     const height = colorPickerTokens.size.height[size];
     const width = colorPickerTokens.size[isSquare ? 'height' : 'width'][size];
     const spacing = colorPickerTokens.space;
     const borderRadius =
       colorPickerTokens.shape.borderRadius[isCircle ? 'isCircle' : 'base'];
+
     return css`
       display: inline-flex;
       align-items: center;
@@ -48,11 +46,11 @@ export const StyledColorPicker = styled.button<StyledColorPickerProps>`
       transition:
         border ${transitionDuration} ease-in-out,
         box-shadow ${transitionDuration} ease-in-out;
-      border-width: ${fieldTokens.shape.borderSize.base};
+      border-width: ${colorPickerTokens.shape.borderSize};
       border-style: solid;
-      border-color: ${fieldTokens.color.border[status][state]};
+      border-color: ${colorPickerTokens.color.border[status][state]};
       border-radius: ${borderRadius};
-      background-color: ${fieldTokens.color.background.base[state]};
+      background-color: ${colorPickerTokens.color.background.base[state]};
       width: ${width};
       height: ${height};
       cursor: pointer;
@@ -61,15 +59,17 @@ export const StyledColorPicker = styled.button<StyledColorPickerProps>`
       !readOnly &&
       css`
         &:hover {
-          border-color: ${fieldTokens.color.border[status].hovered};
-          color: ${fieldTokens.color.text.base.hovered};
+          border-color: ${colorPickerTokens.color.border[status].hovered};
+          color: ${colorPickerTokens.color.text.base.hovered};
         }
 
         &:focus,
         &:focus-visible {
-          box-shadow: ${fieldTokens.elevation.boxShadow[status].focused};
-          border-color: ${fieldTokens.color.border[status].focused};
-          color: ${fieldTokens.color.text.base.focused};
+          // TODO: cmpTokens
+          //box-shadow: ${colorPickerTokens.elevation.boxShadow[status]
+            .focused};
+          border-color: ${colorPickerTokens.color.border[status].focused};
+          color: ${colorPickerTokens.color.text.base.focused};
           outline: none;
         }
       `}

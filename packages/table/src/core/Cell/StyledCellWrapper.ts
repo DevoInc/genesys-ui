@@ -36,7 +36,7 @@ export const StyledCellWrapper = styled.div<StyledCellWrapperProps>`
           &:active {
             background-color: ${tokens.color.background.hovered};
           }
-
+          // TODO: cmpTokens
           &:focus {
             box-shadow: ${theme.alias.elevation.boxShadow.base.focused};
           }
@@ -48,7 +48,7 @@ export const StyledCellWrapper = styled.div<StyledCellWrapperProps>`
         &:has(:focus) {
           background-color: ${tokens.color.background.hovered};
         }
-
+        // TODO: cmpTokens
         &:not(:has(:focus)) {
           box-shadow: ${theme.alias.elevation.boxShadow.base.focused};
         }

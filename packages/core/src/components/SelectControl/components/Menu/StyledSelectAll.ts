@@ -9,18 +9,15 @@ export interface StyledSelectAllProps {
 
 export const StyledSelectAll = styled.div<StyledSelectAllProps>`
   ${({ $multipleSubtle, $size, theme }) => {
-    const tokens = theme.cmp.select.selectAll;
-    const fieldControlHorSpace = theme.alias.fields.space.padding.hor[$size];
-    const menuHorSpace = theme.alias.menus.wrapper.space.margin;
+    const cmpTokens = theme.cmp.selectControl.selectAll;
     return css`
       ${$multipleSubtle
         ? css`
-            padding: calc(${menuHorSpace} * 2) ${menuHorSpace} ${menuHorSpace}
-              calc(${fieldControlHorSpace} + ${menuHorSpace});
+            padding: ${cmpTokens.space.padding.isMultipleSubtle[$size]};
           `
         : css`
-            border-bottom: ${tokens.shape.border};
-            padding: ${tokens.space.margin[$size]};
+            border-bottom: ${cmpTokens.shape.border.bottom};
+            padding: ${cmpTokens.space.padding.base[$size]};
           `}
     `;
   }}

@@ -16,10 +16,9 @@ export const statusMessageMixin = ({
   bordered,
   theme,
 }: StatusMessageMixinProps) => {
-  const aliasTokens = theme.alias;
-  const borderColor = aliasTokens.color.border.feedback.base.base;
-  const borderSize = aliasTokens.shape.borderSize.separator.md;
-  const borderRadius = aliasTokens.shape.borderRadius.elevated;
+  const borderColor = theme.cmp.statusMessage.color.border;
+  const borderSize = theme.cmp.statusMessage.shape.borderSize;
+  const borderRadius = theme.cmp.statusMessage.shape.borderRadius;
   return css`
     border: ${bordered && `solid ${borderSize} ${borderColor}`};
     border-radius: ${bordered && borderRadius};

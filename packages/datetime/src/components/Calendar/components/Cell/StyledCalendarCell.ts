@@ -9,9 +9,9 @@ export const StyledCalendarCell = styled.div`
 
   // day container
   span {
-    width: ${({ theme }) => theme.alias.size.square.handler.lg};
-    height: ${({ theme }) => theme.alias.size.square.handler.lg};
-    border-radius: ${({ theme }) => theme.alias.shape.borderRadius.full};
+    width: ${({ theme }) => theme.cmp.calendar.day.size.square};
+    height: ${({ theme }) => theme.cmp.calendar.day.size.square};
+    border-radius: ${({ theme }) => theme.cmp.calendar.day.shape.borderRadius};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,12 +35,14 @@ export const StyledCalendarCell = styled.div`
   &:nth-child(7n),
   &:last-child {
     &::before {
+      // TODO: cmpTokens
       border-top-right-radius: ${({ theme }) =>
         theme.alias.shape.borderRadius.pill};
       border-bottom-right-radius: ${({ theme }) =>
         theme.alias.shape.borderRadius.pill};
     }
     &::after {
+      // TODO: cmpTokens
       border-top-right-radius: ${({ theme }) =>
         theme.alias.shape.borderRadius.pill};
       border-bottom-right-radius: ${({ theme }) =>
@@ -51,12 +53,14 @@ export const StyledCalendarCell = styled.div`
   &:nth-child(7n + 1),
   &:empty + :not(:empty) {
     &::before {
+      // TODO: cmpTokens
       border-top-left-radius: ${({ theme }) =>
         theme.alias.shape.borderRadius.pill};
       border-bottom-left-radius: ${({ theme }) =>
         theme.alias.shape.borderRadius.pill};
     }
     &::after {
+      // TODO: cmpTokens
       border-top-left-radius: ${({ theme }) =>
         theme.alias.shape.borderRadius.pill};
       border-bottom-left-radius: ${({ theme }) =>
@@ -72,7 +76,7 @@ export const StyledCalendarCell = styled.div`
       top: 50%;
       transform: translate(0, -50%);
       width: 100%;
-      height: 1.8rem;
+      height: ${({ theme }) => theme.cmp.calendar.interval.size.height};
     }
   }
 
@@ -85,7 +89,7 @@ export const StyledCalendarCell = styled.div`
       top: 50%;
       transform: translate(0, -50%);
       width: 100%;
-      height: 1.8rem;
+      height: ${({ theme }) => theme.cmp.calendar.interval.size.height};
     }
   }
 
@@ -100,7 +104,8 @@ export const StyledCalendarCell = styled.div`
     cursor: default;
 
     span {
-      background-color: transparent;
+      background-color: ${({ theme }) =>
+        theme.cmp.calendar.day.color.background.base};
       color: inherit;
     }
 
@@ -110,7 +115,7 @@ export const StyledCalendarCell = styled.div`
       &:active {
         > span {
           background-color: transparent;
-          color: ${({ theme }) => theme.cmp.calendar.week.color.text.base};
+          color: ${({ theme }) => theme.cmp.calendar.day.color.text.base};
           cursor: default;
         }
       }

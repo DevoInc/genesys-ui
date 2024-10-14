@@ -15,18 +15,21 @@ export const codeContainerMixin = ({
   bordered,
   readOnly,
   theme,
-}: ICodeContainerMixin) => css`
-  position: relative;
-  width: 100%;
-  height: 100%;
+}: ICodeContainerMixin) => {
+  const cmpTokens = theme.cmp.editor;
+  return css`
+    position: relative;
+    width: 100%;
+    height: 100%;
 
-  ${bordered &&
-  css`
-    border-width: ${theme.alias.fields.shape.borderSize.base};
-    border-style: solid;
-    border-color: ${readOnly
-      ? theme.alias.fields.color.background.base.readonly
-      : theme.alias.fields.color.border.base.enabled};
-    border-radius: ${theme.alias.fields.shape.borderRadius};
-  `}
-`;
+    ${bordered &&
+    css`
+      border-width: ${cmpTokens.shape.borderSize};
+      border-style: solid;
+      border-color: ${readOnly
+        ? cmpTokens.color.border.readOnly
+        : cmpTokens.color.border.base};
+      border-radius: ${cmpTokens.shape.borderRadius};
+    `}
+  `;
+};

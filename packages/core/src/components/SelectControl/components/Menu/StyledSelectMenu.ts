@@ -50,20 +50,19 @@ export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`
     $size = 'sm',
     theme,
   }) => {
-    const aliasTokens = theme.alias;
-    const surfaceTokens = aliasTokens.color.background.surface;
-    const fieldTokens = aliasTokens.fields;
-    const fieldTransitionDuration = fieldTokens.mutation.transitionDuration;
+    const cmpTokens = theme.cmp.selectControl;
+    const menuTokens = cmpTokens.menu;
+    const fieldTransitionDuration = cmpTokens.mutation.transitionDuration;
 
-    const menuTokens = aliasTokens.menus;
-    const wrapperTokens = menuTokens.wrapper;
-    const listTokens = menuTokens.list;
-    const optionTokens = menuTokens.item;
-    const optionGroupTokens = menuTokens.itemGroup;
+    const wrapperTokens = cmpTokens.menuWrapper;
+    const listTokens = cmpTokens.menuList;
+    const optionTokens = cmpTokens.menuOption;
+    const optionGroupTokens = cmpTokens.menuGroup;
+    const optionHeadingTokens = cmpTokens.menuHeading;
     const optionHeight = $multipleSubtle
-      ? `calc(${optionTokens.size.minHeight} - 0.4rem)`
-      : optionTokens.size.minHeight;
-    const optionHorSpacing = fieldTokens.space.padding.hor[$size];
+      ? `calc(${optionTokens.size.minHeight.isMultipleSubtle} - 0.4rem)`
+      : optionTokens.size.minHeight.base;
+    const optionHorSpacing = cmpTokens.space.padding.hor[$size];
     const elevation =
       FIELD_MENU_LEVEL_ELEVATION_MAP[$menuLevel >= 0 ? $menuLevel : 3];
 
@@ -82,7 +81,7 @@ export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`
           margin-bottom: ${$menuQuiet && '0'};
           ${elevationMixin(theme)($menuQuiet ? 'ground' : elevation)};
           min-width: ${$minMenuWidth};
-          background: ${surfaceTokens.base.base};
+          background: ${menuTokens.color.background.base};
           ${getFieldControlTypo({ theme, $size })};
           cursor: default;
 
@@ -182,7 +181,7 @@ export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`
             min-height: ${optionHeight};
             padding: 0 ${optionHorSpacing};
             line-height: ${optionHeight};
-            color: ${aliasTokens.color.text.body.weak};
+            color: ${optionHeadingTokens.color.text};
           }
         }
       }
@@ -192,7 +191,7 @@ export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`
         + .${$classNamePrefix}__group,
         .${$classNamePrefix}__group
         + .${$classNamePrefix}__option {
-        margin-top: ${optionGroupTokens.space.marginTop};
+        margin-top: ${optionGroupTokens.space.gap};
       }
     `;
   }};

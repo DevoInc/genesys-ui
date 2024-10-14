@@ -14,6 +14,7 @@ export interface ContainerProps extends RSContainerProps {}
 
 export const SelectContainer: React.FC<ContainerProps> = (props) => {
   const theme = useTheme();
+  const cmpTokens = theme.cmp.selectControl;
   const filteredDataProps = Object.fromEntries(
     Object.entries(props.selectProps).filter((x) => x[0].includes('data-')),
   );
@@ -29,15 +30,13 @@ export const SelectContainer: React.FC<ContainerProps> = (props) => {
           flexDirection="column"
           flex={
             props.selectProps.selectWidth
-              ? `0 1 ${
-                  theme.alias.fields.size.width[props.selectProps.selectWidth]
-                }`
+              ? `0 1 ${cmpTokens.size.width[props.selectProps.selectWidth]}`
               : '1 1 100%'
           }
           position="relative"
           width={
             props.selectProps.selectWidth
-              ? theme.alias.fields.size.width[props.selectProps.selectWidth]
+              ? cmpTokens.size.width[props.selectProps.selectWidth]
               : '100%'
           }
         >

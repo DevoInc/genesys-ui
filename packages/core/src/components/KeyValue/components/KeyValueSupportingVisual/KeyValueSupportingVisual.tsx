@@ -13,6 +13,7 @@ export interface KeyValueSupportingVisualProps
 export const KeyValueSupportingVisual: React.FC<
   KeyValueSupportingVisualProps
 > = ({ children, iconSize }) => {
+  // TODO: cmpTokens
   const theme = useTheme();
   const context = React.useContext(KeyValueContext);
   const evalIconSize = iconSize || context.iconSize;

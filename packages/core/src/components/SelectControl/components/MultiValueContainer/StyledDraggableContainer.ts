@@ -6,8 +6,7 @@ export interface StyledDraggableContainerProps {
 
 export const StyledDraggableContainer = styled.div<StyledDraggableContainerProps>`
   ${({ $isDragging, theme }) => {
-    const colorTokens = theme?.alias?.color;
-    const elevationTokens = theme?.alias?.elevation;
+    const cmpTokens = theme.cmp.selectControl.multiValueDraggable;
 
     return css`
       all: unset;
@@ -23,19 +22,18 @@ export const StyledDraggableContainer = styled.div<StyledDraggableContainerProps
         content: '';
         position: absolute;
         inset: 0 0 0 0;
-        transition: all ease 0.15s;
+        transition: all ease ${cmpTokens.mutation.transitionDuration};
         pointer-events: none;
         background-color: transparent;
       }
 
       &:hover::before {
-        background-color: ${colorTokens?.background?.surface?.backdrop?.base
-          ?.hovered};
+        background-color: ${cmpTokens.color.background.hovered};
       }
 
       &:focus-visible {
         outline: none;
-        box-shadow: ${elevationTokens?.boxShadow?.base?.focused};
+        box-shadow: ${cmpTokens.elevation.boxShadow.focused};
       }
     `;
   }}

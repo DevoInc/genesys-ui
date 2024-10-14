@@ -39,8 +39,8 @@ export const Helper: React.FC<HelperProps> = ({
   tooltip,
   ...restNativeProps
 }) => {
-  const tokens = useTheme();
-  const iconColorTokens = tokens.alias.color.background.feedback;
+  const theme = useTheme();
+  const cmpTokens = theme.cmp.helper.icon;
 
   return (
     <HFlex
@@ -52,15 +52,11 @@ export const Helper: React.FC<HelperProps> = ({
     >
       {hasStatus(status) && (
         <Flex
-          height={getLineHeight({ tokens, $size: size })}
+          height={getLineHeight({ tokens: theme, $size: size })}
           alignItems="center"
         >
           <Icon
-            color={
-              iconColorTokens[status][
-                status === 'warning' ? 'strong' : 'stronger'
-              ]
-            }
+            color={cmpTokens.color.fill[status]}
             size={HELPER_ICON_SIZE_MAP[size]}
           >
             {getHelperStatusIcon(status)}

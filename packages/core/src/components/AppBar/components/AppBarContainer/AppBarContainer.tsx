@@ -30,7 +30,7 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
   style,
   ...boxProps
 }) => {
-  const theme = useTheme();
+  const cmpTokens = useTheme().cmp.appBar;
   const elevation = sticky ? 'stickyBottom' : 'ground';
   const tabsContainerTokens = useTheme().cmp.tabs.container;
 
@@ -43,10 +43,10 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
       paddingRight={paddingRight}
       position="relative"
       style={mergeStyles(
-        { backgroundColor: theme.cmp.appBar.color.background },
+        { backgroundColor: cmpTokens.color.background },
         bordered
           ? {
-              borderBottom: `solid ${theme.alias.shape.borderSize.separator.md} ${theme.alias.color.border.separator.base.weak}`,
+              borderBottom: `solid ${cmpTokens.shape.borderSize} ${cmpTokens.color.border}`,
             }
           : undefined,
         style,

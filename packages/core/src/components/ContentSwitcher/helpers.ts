@@ -1,6 +1,5 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { CONTENT_SWITCHER_ITEM_SIZE_MAP } from './constants';
 import type { TBaseSize } from '../../declarations';
 
 export interface contentSwitcherContainerMixinProps {
@@ -20,19 +19,12 @@ export const contentSwitcherContainerMixin = ({
   size = 'md',
   theme,
 }: contentSwitcherContainerMixinProps) => {
-  const aliasTokens = theme.alias;
-  const buttonTokens = theme.cmp.button;
-  const baseSpace = aliasTokens.space.cmp.xs;
-  const height = css`calc(${
-    buttonTokens.size.height[CONTENT_SWITCHER_ITEM_SIZE_MAP[size]]
-  } + ${baseSpace})`;
-  const horPadding = css`calc(${baseSpace} / 2)`;
-
+  const cmpTokens = theme.cmp.contentSwitcher;
   return css`
-    gap: ${aliasTokens.space.cmp.xxs};
-    border-radius: ${buttonTokens.shape.borderRadius.medium};
-    height: ${height};
-    padding: 0 ${horPadding};
-    background-color: ${aliasTokens.color.background.track.base};
+    gap: ${cmpTokens.space.gap};
+    border-radius: ${cmpTokens.shape.borderRadius};
+    height: ${cmpTokens.size.height[size]};
+    padding: 0 ${cmpTokens.space.padding};
+    background-color: ${cmpTokens.color.background.base};
   `;
 };

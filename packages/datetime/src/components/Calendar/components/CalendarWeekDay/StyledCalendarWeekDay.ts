@@ -8,9 +8,9 @@ export const StyledCalendarWeekDay = styled.div`
   font-weight: 300;
 
   span {
-    width: ${({ theme }) => theme.alias.size.square.handler.lg};
-    height: ${({ theme }) => theme.alias.size.square.handler.lg};
-    border-radius: ${({ theme }) => theme.alias.shape.borderRadius.full};
+    width: ${({ theme }) => theme.cmp.calendar.week.size.square};
+    height: ${({ theme }) => theme.cmp.calendar.week.size.square};
+    border-radius: ${({ theme }) => theme.cmp.calendar.week.shape.borderRadius};
     display: flex;
     align-items: center;
     justify-content: center;

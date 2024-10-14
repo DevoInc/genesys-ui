@@ -26,8 +26,9 @@ export const Base: Story = {
   },
 };
 
-export const WithScroll: Story = {
-  name: 'With scroll and backward navidation',
+export let WithScroll: Story;
+WithScroll = {
+  name: 'With scroll and backward navigation',
   args: {
     title: 'Panel title',
     subtitle: 'Panel subtitle',
@@ -39,6 +40,17 @@ export const WithScroll: Story = {
       alert('Going back!');
     },
     children: TextBlock,
+  },
+  argTypes: {
+    title: {
+      type: 'string',
+    },
+    subtitle: {
+      type: 'string',
+    },
+    height: {
+      type: 'string',
+    },
   },
 };
 

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import type { TFieldSize, TFieldStatus } from '../../declarations';
-import { checkRadioMixin, getCheckRadioTokens } from '../../styled/mixins';
+import { checkRadioMixin } from '../../styled/mixins';
 
 export interface StyledRadioControlProps {
   /** The size for the checkbox. It affects to its width, height, font-size...
@@ -14,17 +14,16 @@ export interface StyledRadioControlProps {
 export const StyledRadioControl = styled.input.attrs({
   type: 'radio',
 })<StyledRadioControlProps>`
-  ${({ disabled = false, $size = 'md', $status = 'base', theme }) => {
-    const cmpTokens = theme.cmp.radio;
-    const controlTokens = cmpTokens.control;
-    const markerTokens = cmpTokens.controlMarker;
-    const checkRadioTokens = getCheckRadioTokens({ $status, theme });
+  ${({ $size = 'md', $status = 'base', theme }) => {
+    const cmpTokens = theme.cmp.radioControl;
+    const markerTokens = cmpTokens.marker;
     const markerSquare = markerTokens.size.square[$size];
-    const borderRadius = controlTokens.shape.borderRadius;
-    const transition = `all ease-in-out ${checkRadioTokens.animationTime}`;
+    const borderRadius = cmpTokens.shape.borderRadius;
+    const bgColorChecked = cmpTokens.color.background[$status].checked;
+    const transition = `all ease-in-out ${cmpTokens.mutation.transitionDuration}`;
 
     return css`
-      ${checkRadioMixin({ disabled, $size, $status, theme })};
+      ${checkRadioMixin({ $size, $status, tokens: cmpTokens })};
       appearance: none;
       margin: 0;
       border-radius: ${borderRadius};
@@ -44,11 +43,11 @@ export const StyledRadioControl = styled.input.attrs({
 
       &:checked,
       &[aria-checked='mixed'] {
-        border-color: ${checkRadioTokens.borderColorChecked};
+        border-color: ${bgColorChecked};
       }
 
       &:checked:after {
-        background-color: ${checkRadioTokens.bgColorChecked};
+        background-color: ${bgColorChecked};
         transition: ${transition};
       }
     `;

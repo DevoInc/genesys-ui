@@ -21,7 +21,8 @@ export const ChildrenValueContainer: React.FC<ChildrenValueContainer> = ({
   status,
 }) => {
   const theme = useTheme();
-  const square = theme.alias.fields.size.height[size];
+  const cmpTokens = theme.cmp.selectControl;
+  const square = cmpTokens.size.height[size];
   return (
     <HFlex spacing="cmp-xxs" paddingLeft={values.length ? 'cmp-md' : undefined}>
       {multipleSubtle && values.length > 0 && (
@@ -36,8 +37,7 @@ export const ChildrenValueContainer: React.FC<ChildrenValueContainer> = ({
             min-width: ${square};
             height: ${square};
             padding: 0 ${theme.alias.space.cmp.xxs};
-            background-color: ${theme.alias.fields.color.background[status]
-              .enabled};
+            background-color: ${cmpTokens.color.background[status].enabled};
           `}
         >
           ({values.length})

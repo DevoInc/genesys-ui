@@ -17,11 +17,9 @@ export const StyledGutter = styled.div<StyledGutterProps>`
   flex: 0 0 auto;
   overflow: hidden;
   transition: background ease
-    ${({ theme }) => theme.alias.mutation.transitionDuration.blink};
-  background: ${({ theme }) =>
-    theme.alias.color.background.surface.base.raised};
+    ${({ theme }) => theme.cmp.splitLayout.mutation.transitionDuration};
+  background: ${({ theme }) => theme.cmp.splitLayout.color.background.base};
   ${({ $direction, $isDragging, theme, $size }) => {
-    const aliasTokens = theme.alias;
     return css`
       &::before {
         ${pseudoElementOverlayMixin()};
@@ -29,30 +27,27 @@ export const StyledGutter = styled.div<StyledGutterProps>`
 
       &:hover {
         &::before {
-          background-color: ${aliasTokens.color.background.surface.backdrop.base
-            .hovered};
+          background-color: ${theme.cmp.splitLayout.color.background.hovered};
         }
       }
 
       &:active {
         &::before {
-          background-color: ${aliasTokens.color.background.surface.backdrop.base
-            .pressed};
+          background-color: ${theme.cmp.splitLayout.color.background.pressed};
         }
       }
 
       ${$isDragging &&
       css`
         &::before {
-          background-color: ${aliasTokens.color.background.surface.backdrop.base
-            .hovered};
+          background-color: ${theme.cmp.splitLayout.color.background.dragging};
         }
       `};
 
       ${$direction === 'horizontal' &&
       css`
-        border-left: ${aliasTokens.shape.borderSize.separator.md} solid;
-        border-right: ${aliasTokens.shape.borderSize.separator.md} solid;
+        border-left: ${theme.cmp.splitLayout.shape.borderSize.horizontal} solid;
+        border-right: ${theme.cmp.splitLayout.shape.borderSize.horizontal} solid;
         width: ${$size}px;
         height: 100%;
         cursor: col-resize;
@@ -60,14 +55,14 @@ export const StyledGutter = styled.div<StyledGutterProps>`
 
       ${$direction === 'vertical' &&
       css`
-        border-top: ${aliasTokens.shape.borderSize.separator.md} solid;
-        border-bottom: ${aliasTokens.shape.borderSize.separator.md} solid;
+        border-top: ${theme.cmp.splitLayout.shape.borderSize.vertical} solid;
+        border-bottom: ${theme.cmp.splitLayout.shape.borderSize.vertical} solid;
         width: 100%;
         height: ${$size}px;
         cursor: row-resize;
       `};
 
-      border-color: ${aliasTokens.color.border.separator.base.weak};
+      border-color: ${theme.cmp.splitLayout.color.border};
     `;
   }};
 `;

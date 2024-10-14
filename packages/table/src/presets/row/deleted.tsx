@@ -3,6 +3,7 @@ import { TRowPreset } from '../../declarations';
 
 export const deleted: TRowPreset = {
   style: ({ theme, striped }) => css`
+    // TODO: cmpTokens
     background-color: ${theme.alias.color.background.surface.base.deleted};
     ${!striped &&
     `

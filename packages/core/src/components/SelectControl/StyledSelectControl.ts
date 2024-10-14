@@ -36,15 +36,12 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
   }) => {
     const state = getFieldState({ $readOnly: readOnly });
     const statusEval = getTFieldStatus(status);
-    const aliasTokens = theme.alias;
-    const spacingTokens = aliasTokens.space;
-    const fieldTokens = aliasTokens.fields;
-    const fieldTransitionDuration = fieldTokens.mutation.transitionDuration;
-    const selectTokens = theme.cmp.select;
-    const defaultHorPadding = fieldTokens.space.padding.hor[size];
-    const scrollSpacing = selectTokens.space.padding.scroll;
-    const scrollOffset = spacingTokens.cmp.xxs;
-    const indicatorWidth = `calc(${selectTokens.indicator.size.width[size]} * ${
+    const cmpTokens = theme.cmp.selectControl;
+    const fieldTransitionDuration = cmpTokens.mutation.transitionDuration;
+    const defaultHorPadding = cmpTokens.space.padding.hor[size];
+    const scrollSpacing = cmpTokens.space.padding.scroll;
+    const scrollOffset = cmpTokens.space.offset.scroll;
+    const indicatorWidth = `calc(${cmpTokens.indicator.size.width[size]} * ${
       hasStatus(statusEval) && !hideStatusIcon ? 2 : 1
     })`;
     const hasDropdownIndicator = menuIsOpen
@@ -59,7 +56,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
         : 0;
     const hasClearIndicator = isClearable === false ? 0 : 1;
     const sortableSpacing = sortable ? scrollSpacing : '0rem';
-    const minHeight = fieldTokens.size.height[size];
+    const minHeight = cmpTokens.size.height[size];
 
     return css`
       flex: 1 1 auto;
@@ -73,12 +70,12 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
           transition:
             border ${fieldTransitionDuration} ease-in-out,
             box-shadow ${fieldTransitionDuration} ease-in-out;
-          border-width: ${fieldTokens.shape.borderSize.base};
+          border-width: ${cmpTokens.shape.borderSize.base};
           border-style: solid;
-          border-color: ${fieldTokens.color.border[statusEval][state]};
-          border-radius: ${fieldTokens.shape.borderRadius};
+          border-color: ${cmpTokens.color.border[statusEval][state]};
+          border-radius: ${cmpTokens.shape.borderRadius};
           min-height: ${minHeight};
-          background-color: ${fieldTokens.color.background[statusEval][state]};
+          background-color: ${cmpTokens.color.background[statusEval][state]};
           ${getFieldControlTypo({ theme, $size: size })};
 
           // WITH ADDON
@@ -115,16 +112,15 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
           css`
             cursor: pointer;
             &:hover {
-              border-color: ${fieldTokens.color.border[statusEval].hovered};
-              color: ${fieldTokens.color.text[statusEval].hovered};
+              border-color: ${cmpTokens.color.border[statusEval].hovered};
+              color: ${cmpTokens.color.text[statusEval].hovered};
             }
 
             &:focus,
             &--is-focused {
-              box-shadow: ${fieldTokens.elevation.boxShadow[statusEval]
-                .focused};
-              border-color: ${fieldTokens.color.border[statusEval].focused};
-              color: ${fieldTokens.color.text[statusEval].focused};
+              box-shadow: ${cmpTokens.elevation.boxShadow[statusEval].focused};
+              border-color: ${cmpTokens.color.border[statusEval].focused};
+              color: ${cmpTokens.color.text[statusEval].focused};
             }
           `}
 
@@ -149,7 +145,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
           css`
             max-height: ${multipleSubtle
               ? minHeight
-              : selectTokens.size.maxHeight.isMultiple[size]};
+              : cmpTokens.size.maxHeight.isMultiple[size]};
             overflow-y: ${multipleSubtle ? 'hidden' : 'auto'};
             max-width: ${multipleSubtle && '100%'};
           `};
@@ -192,7 +188,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
               > div:last-child {
                 display: flex;
                 align-items: center;
-                column-gap: ${aliasTokens.space.cmp.xxs};
+                column-gap: ${theme.alias.space.cmp.xxs};
                 flex-wrap: ${!multipleSubtle && 'wrap'};
                 justify-content: ${multipleSubtle && 'flex-end'};
                 max-width: ${multipleSubtle && '100%'};
@@ -235,7 +231,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
         // INPUT CONTAINER ///////////////////////////////////////////////////
         &__input-container {
           overflow-y: ${multipleSubtle ? 'visible' : 'hidden'};
-          color: ${fieldTokens.color.text[statusEval][state]};
+          color: ${cmpTokens.color.text[statusEval][state]};
           margin: 0;
           padding: 0;
 
@@ -268,7 +264,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
 
             &__placeholder {
               ${truncateTypoMixin()};
-              color: ${fieldTokens.color.text[statusEval].placeholder};
+              color: ${cmpTokens.color.text[statusEval].placeholder};
               text-align: left;
             }
 
@@ -276,7 +272,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
               display: flex;
               align-items: center;
               margin: 0;
-              color: ${fieldTokens.color.text[statusEval][state]};
+              color: ${cmpTokens.color.text[statusEval][state]};
             }
           }
         }
@@ -294,18 +290,18 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
               align-items: center;
               justify-content: center;
               min-width: ${indicatorWidth};
-              padding: ${selectTokens.indicator.space.padding};
-              color: ${fieldTokens.color.text[statusEval][state]};
+              padding: ${cmpTokens.indicator.space.padding};
+              color: ${cmpTokens.color.text[statusEval][state]};
 
               > * {
                 &:last-child {
                   transform-origin: center;
-                  transition: ${selectTokens.indicator.mutation
+                  transition: ${cmpTokens.indicator.mutation
                     .transitionDuration};
                 }
 
                 & + span {
-                  margin-left: ${spacingTokens.cmp.xxs};
+                  margin-left: ${theme.alias.space.cmp.xxs};
                 }
               }
             }

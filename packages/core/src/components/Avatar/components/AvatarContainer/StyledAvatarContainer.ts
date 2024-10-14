@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import { camelCase } from 'lodash';
 
-import { AVATAR_SIZE_BORDER_MAP } from '../../constants';
 import type { IAvatarStyled } from '../../declarations';
 
 import { getAvatarSizeConfig } from '../../utils';
@@ -32,16 +31,13 @@ export const StyledAvatarContainer = styled.span<StyledAvatarContainerProps>`
     $variant,
   }) => {
     const colorSchemeForTokens = camelCase($colorScheme);
-    const aliasTokens = theme?.alias;
-    const bgColor =
-      aliasTokens.color.background.feedback[colorSchemeForTokens].weak;
-    const color = aliasTokens.color.text.feedback[colorSchemeForTokens].base;
-    const width = getAvatarSizeConfig({ $customSize, $size }).width;
-    const height = getAvatarSizeConfig({ $customSize, $size }).height;
+    const cmpTokens = theme.cmp.avatar;
+    const bgColor = cmpTokens.color.background[colorSchemeForTokens];
+    const color = cmpTokens.color.text[colorSchemeForTokens];
+    const width = getAvatarSizeConfig({ $customSize, $size, theme }).width;
+    const height = getAvatarSizeConfig({ $customSize, $size, theme }).height;
     const borderRadius =
-      aliasTokens.shape.borderRadius[
-        $variant === 'circle' ? 'full' : $variant === 'rounded' ? 'md' : '0'
-      ];
+      $variant !== 'square' ? cmpTokens.shape.borderRadius[$variant] : 0;
     return css`
       ${typoMixin({ theme })};
       display: inline-flex;
@@ -51,9 +47,8 @@ export const StyledAvatarContainer = styled.span<StyledAvatarContainerProps>`
       position: relative;
       opacity: ${$disabled && '0.4'};
       border: ${$bordered
-        ? `solid
-          ${$size ? AVATAR_SIZE_BORDER_MAP[$size] : AVATAR_SIZE_BORDER_MAP.md}
-          ${aliasTokens.color.border.separator.base.strongest}`
+        ? `solid ${cmpTokens.shape.borderSize.bordered[$size || 'md']}
+          ${cmpTokens.color.border}`
         : 'none'};
       border-radius: ${borderRadius};
       padding: 0;

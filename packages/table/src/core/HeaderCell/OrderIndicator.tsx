@@ -11,6 +11,7 @@ interface OrderIndicatorProps {
 
 export const OrderIndicator: React.FC<OrderIndicatorProps> = ({ colDef }) => {
   const theme = useTheme();
+  // TODO: cmpTokens
   const iconColor = theme.alias.color.text.body.base;
   const iconSize = 12;
   const iconOffset = iconSize - 5;
@@ -20,6 +21,7 @@ export const OrderIndicator: React.FC<OrderIndicatorProps> = ({ colDef }) => {
       spacing="cmp-xxs"
       style={css`
         opacity: ${colDef.sort ? 1 : 0};
+        // TODO: cmpTokens
         transition: opacity ease-in-out
           ${theme.alias.mutation.transitionDuration.opacity.sm};
 
@@ -34,6 +36,7 @@ export const OrderIndicator: React.FC<OrderIndicatorProps> = ({ colDef }) => {
             color={iconColor}
             size={iconSize}
             style={{
+              // TODO: cmpTokens
               opacity: colDef.sort === 'asc' ? 1 : iconOpacity,
             }}
           />
@@ -43,6 +46,7 @@ export const OrderIndicator: React.FC<OrderIndicatorProps> = ({ colDef }) => {
             color={iconColor}
             size={iconSize}
             style={{
+              // TODO: cmpTokens
               opacity: colDef.sort === 'desc' ? 1 : iconOpacity,
             }}
           />

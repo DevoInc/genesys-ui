@@ -27,6 +27,7 @@ const InternalToolbar: React.FC<ToolbarProps> = ({
   ...restFlexProps
 }) => {
   const theme = useTheme();
+  // TODO: cmpTokens
   const surfaceHeightTokens = theme.alias.size.height.surface;
   return (
     <Flex

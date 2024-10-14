@@ -9,17 +9,18 @@ export const StyledSketchPicker = styled(SketchPicker)`
     const fieldTokens = aliasTokens.fields;
     const spacingTokens = aliasTokens.space;
     const sketchPickerTokens = theme.cmp.colorPicker.sketchPicker;
+    const sketchPickerInputTokens = theme.cmp.colorPicker.sketchPickerInput;
 
     const typoObj = getFieldControlTypoObj({ theme, $size: 'sm' });
-    const transitionDuration = fieldTokens.mutation.transitionDuration;
+    const transitionDuration = sketchPickerTokens.mutation.transitionDuration;
     const baseTextColor = aliasTokens.color.text.body.base;
 
     return css`
       position: absolute;
-      z-index: ${aliasTokens.elevation.zIndex.depth.activated};
+      z-index: ${sketchPickerTokens.elevation.zIndex};
       transform: translateY(0.6rem);
-      box-shadow: ${aliasTokens.elevation.boxShadow.depth.activated} !important;
-      border-radius: ${aliasTokens.shape.borderRadius.elevated} !important;
+      box-shadow: ${sketchPickerTokens.elevation.boxShadow} !important;
+      border-radius: ${sketchPickerTokens.shape.borderRadius} !important;
       background-color: ${sketchPickerTokens.color.background} !important;
 
       input {
@@ -28,7 +29,7 @@ export const StyledSketchPicker = styled(SketchPicker)`
           box-shadow ${transitionDuration} ease-in-out;
         outline: none;
         box-shadow: none !important;
-        border: solid ${fieldTokens.shape.borderSize.base}
+        border: solid ${sketchPickerInputTokens.shape.borderSize.base}
           ${fieldTokens.color.border.base.enabled} !important;
         border-radius: ${fieldTokens.shape.borderRadius};
         width: auto !important;

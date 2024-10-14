@@ -19,7 +19,6 @@ export const modalHeaderMixin = ({
   status,
 }: IModalHeaderMixin) => {
   const modalHeaderTokens = theme.cmp.modal.header;
-  const aliasTokens = theme.alias;
 
   return css`
     padding: ${removeSpace
@@ -28,7 +27,6 @@ export const modalHeaderMixin = ({
       ${modalHeaderTokens.space.padding.right}
       ${modalHeaderTokens.space.padding.ver}
       ${modalHeaderTokens.space.padding.left}`};
-    padding-right: ${aliasTokens.space.cmp.sm};
     background-color: ${status && status !== 'base'
       ? theme.cmp.dialog.header.color.background[status]
       : 'inherit'};

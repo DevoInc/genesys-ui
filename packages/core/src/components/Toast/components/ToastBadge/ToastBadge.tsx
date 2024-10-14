@@ -23,6 +23,7 @@ export const ToastBadge: React.FC<ToastBadgeProps> = ({
     left: 0;
     right: auto;
     transform: translate(-50%, -50%);
+    // TODO: cmpTokens
     z-index: calc(
       ${theme.alias.elevation.zIndex.depth[TOAST_ELEVATION_LEVEL]} + 1
     );

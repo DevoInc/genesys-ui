@@ -16,15 +16,16 @@ export const stepperContainerMixin = ({
   size = 'md',
   theme,
 }: IStepperContainerMixin) => {
-  const borderColor = theme.cmp.stepper.container.color.border;
-  const borderSize = theme.cmp.stepper.container.shape.borderSize;
+  const tokens = theme.cmp.stepper;
+  const borderColor = tokens.container.color.border;
+  const borderSize = tokens.container.shape.borderSize;
   const boxShadow = `inset 0px ${borderSize} 0px ${borderColor},
                        inset 0px -${borderSize} 0px ${borderColor}`;
   return css`
-    gap: ${theme.cmp.stepper.container.space.gap};
-    padding: 0 ${theme.cmp.stepper.container.space.padding};
-    background-color: ${theme.cmp.stepper.container.color.background};
+    gap: ${tokens.container.space.gap};
+    padding: 0 ${tokens.container.space.padding};
+    background-color: ${tokens.container.color.background};
     box-shadow: ${boxShadow};
-    height: ${theme.cmp.stepper.container.size.height[size]};
+    height: ${tokens.container.size.height[size]};
   `;
 };

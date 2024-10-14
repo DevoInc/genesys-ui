@@ -2,7 +2,6 @@ import styled, { css, CSSProp } from 'styled-components';
 
 import type { TFieldSize } from '../../../../declarations/commonProps';
 import type { IInputAttrs } from '../../../../declarations/htmlAttrs';
-import { INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP } from '../../constants';
 
 export interface StyledInputControlIconProps {
   /** Size of the input: height, padding, font-size... etc. */
@@ -17,10 +16,7 @@ export interface StyledInputControlIconProps {
 
 export const StyledInputControlIcon = styled.span<StyledInputControlIconProps>`
   ${({ $isTypeIcon, $size = 'md', theme, $type }) => {
-    const fieldTokens = theme.alias.fields;
-    const position = fieldTokens.space.padding.hor[$size];
-    const showPasswordSize =
-      theme.cmp.button.size.square[INPUT_CONTROL_SHOW_PASSWORD_SIZE_MAP[$size]];
+    const cmpTokens = theme.cmp.inputControl.icon;
 
     return css`
       display: flex;
@@ -35,12 +31,12 @@ export const StyledInputControlIcon = styled.span<StyledInputControlIconProps>`
 
       ${$isTypeIcon
         ? css`
-            left: ${position};
+            left: ${cmpTokens.space.offset.base[$size]};
           `
         : css`
-            right: ${$type === 'password'
-              ? `calc((${position} * 2) + ${showPasswordSize})`
-              : position};
+            right: ${cmpTokens.space.offset[
+              $type === 'password' ? 'password' : 'base'
+            ][$size]};
           `};
     `;
   }};

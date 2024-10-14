@@ -17,6 +17,7 @@ export interface ITabsMarkMixin {
 export const tabsMarkMixin = ({ colorScheme, theme }: ITabsMarkMixin) => {
   const tokens = theme.cmp.tabs.mark;
   const ColorSchemeForTokens = colorScheme === 'base' ? 'default' : colorScheme;
+  // TODO: cmpTokens
   const transitionDuration =
     theme.alias.mutation.transitionDuration.translation.hor.sm;
   return css`

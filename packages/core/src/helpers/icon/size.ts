@@ -8,6 +8,6 @@ import type { TGlobalSize } from '../../declarations';
  */
 export const getIconSize =
   (theme: DefaultTheme) => (size: string | TGlobalSize) => {
-    const sizeTokens = theme.alias.size.square.icon.base;
+    const sizeTokens = theme.cmp.icon.size.square;
     return (size && sizeTokens[size]) || size;
   };

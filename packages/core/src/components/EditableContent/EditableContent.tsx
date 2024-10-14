@@ -33,6 +33,7 @@ export const EditableContent: React.FC<EditableContentProps> = React.forwardRef<
   HTMLDivElement,
   EditableContentProps
 >(({ children, tooltip, style, ...nativeProps }, ref) => {
+  // TODO: cmpTokens
   const theme = useTheme();
   const iconSize = theme.alias.typo.fontSize.icon.xxxs;
   const isFocusWithin = useFocusWithin(ref as BasicTarget);

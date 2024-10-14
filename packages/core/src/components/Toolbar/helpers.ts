@@ -12,5 +12,5 @@ export const toolbarContainerMixin = ({
 }) => css`
   grid-area: Toolbar;
   list-style: none;
-  background-color: ${theme.alias.color.background.surface.base.base};
+  background-color: ${theme.cmp.toolbar.color.background.base};
 `;

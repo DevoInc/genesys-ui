@@ -43,14 +43,13 @@ export interface StyledMenuItemInnerProps
 export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
   ${({ hasExtraLeftSpace, state = 'enabled', theme, unlimitedHeight }) => {
     const stateForTokens = state === 'active' ? 'activated' : state;
-    const aliasTokens = theme.alias;
-    const tokens = aliasTokens.menus.item;
+    const tokens = theme.cmp.menu.item;
     const horPadding = menuItemSizeConfig(theme).horPadding;
     const iconSize = menuItemSizeConfig(theme).iconSize;
     const iconSpace = menuItemSizeConfig(theme).iconSpace;
     const focusedStyles = css`
       ${menuItemBackdropMixin({ tokens, state: 'focused' })};
-      box-shadow: inset ${aliasTokens.elevation.boxShadow.base.focused};
+      box-shadow: inset ${tokens.elevation.boxShadow.focused};
       outline: none;
     `;
     return css`
@@ -65,8 +64,7 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
       width: 100%;
       appearance: none;
       position: relative;
-      transition: all ease-in-out
-        ${aliasTokens.mutation.transitionDuration.action};
+      transition: all ease-in-out ${tokens.mutation.transitionDuration};
       height: ${unlimitedHeight ? 'auto' : tokens.size.minHeight};
       padding: ${unlimitedHeight ? horPadding : `0 ${horPadding}`};
       background-color: ${tokens.color.background[stateForTokens]};

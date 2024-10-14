@@ -23,10 +23,10 @@ export interface StyledTextareaControlProps {
 
 export const StyledTextareaControl = styled.textarea<StyledTextareaControlProps>`
   ${({ disabled, $readOnly, $resize = 'both', $size, $status, theme }) => {
-    const fieldTokens = theme.alias.fields;
+    const cmpTokens = theme.cmp.textareaControl;
     const fieldLineHeight = getLineHeight({ tokens: theme, $size });
 
-    const fieldHeight = fieldTokens.size.height[$size];
+    const fieldHeight = theme.cmp.inputControl.size.height[$size];
     const verPadding = css`calc((${fieldHeight} - ${fieldLineHeight}) / 2)`;
 
     return css`
@@ -39,7 +39,7 @@ export const StyledTextareaControl = styled.textarea<StyledTextareaControlProps>
       })};
       ${scrollbars({ theme })};
       resize: ${!(disabled || $readOnly) ? $resize : 'none'};
-      height: auto;
+      height: ${cmpTokens.size.height.base};
       padding-top: ${verPadding};
       padding-bottom: ${verPadding};
     `;

@@ -42,6 +42,7 @@ export const ModalPanel: React.FC<ModalPanelProps> = ({
   const theme = useTheme();
   const tokensDialog = theme.cmp.dialog;
   const tokensModal = theme.cmp.modal;
+
   return (
     <Panel
       {...dataProps}
@@ -78,7 +79,8 @@ export const ModalPanel: React.FC<ModalPanelProps> = ({
           ? typeof zIndex === 'string'
             ? 1
             : zIndex + 1
-          : theme.alias.elevation.zIndex.depth.popOut
+          : // TODO: cmpTokens
+            theme.alias.elevation.zIndex.depth.popOut
       }
     >
       {children}

@@ -18,6 +18,7 @@ export const KeyValueContainer: React.FC<KeyValueContainerProps> = ({
   size = 'md',
   tooltip,
 }) => {
+  // TODO: cmpTokens
   const theme = useTheme();
   const textLineHeight = theme.alias.typo.lineHeight.body[size];
   const textBlockHeight = `calc(${textLineHeight} * 2)`;

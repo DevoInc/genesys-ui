@@ -19,7 +19,7 @@ export const StyledPartitionsItem = styled.li<StyledPartitionsItemProps>`
     const colorSchemeForTokens = camelCase($color);
     return isValidColor($color)
       ? $color
-      : theme.alias.color.background.feedback[colorSchemeForTokens].strong;
+      : theme.cmp.partitions.color.background[colorSchemeForTokens];
   }};
   width: ${({ $width }) => ($width ? $width * 100 + '%' : '10%')};
   position: relative;
@@ -31,12 +31,12 @@ export const StyledPartitionsItem = styled.li<StyledPartitionsItemProps>`
     title &&
     css`
       *:hover > & {
-        opacity: 0.4;
+        opacity: ${({ theme }) => theme.cmp.partitions.shape.opacity.hovered};
       }
     `}
 
   // hover on itself
   &&&:hover {
-    opacity: 1;
+    opacity: ${({ theme }) => theme.cmp.partitions.shape.opacity.base};
   }
 `;

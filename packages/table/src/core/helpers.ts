@@ -12,5 +12,6 @@ export const cellMixin = ({ theme }: { theme: DefaultTheme }) => css`
   align-items: center;
   box-sizing: border-box;
   flex: 1 1 auto;
+  // TODO: cmpTokens
   color: ${theme.alias.color.text.body.base};
 `;

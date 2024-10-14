@@ -20,14 +20,12 @@ export const fieldsCombinerInputAndSelectMixin = ({
   theme,
 }: FieldsCombinerMixinsProps) => {
   const fieldTokens = theme.alias.fields;
-  const btnTokens = theme.cmp.button;
-  const height = btnTokens.size.height[size];
   return css`
     // Input, Select, Button and IconButton
     .react-select__control {
-      min-height: ${height};
+      min-height: ${theme.cmp.button.size.height[size]};
       height: 100%;
-      transition: all ease ${btnTokens.mutation.transitionDuration};
+      transition: all ease ${theme.cmp.button.mutation.transitionDuration};
     }
 
     &:focus,
@@ -62,15 +60,13 @@ export const fieldsCombinerButtonMixin = ({
   status,
   theme,
 }: FieldsCombinerMixinsProps) => {
-  const aliasTokens = theme.alias;
-  const fieldTokens = aliasTokens.fields;
-  const btnTokens = theme.cmp.button;
-  const height = btnTokens.size.height[size];
+  const cmpTokens = theme.cmp.fieldsCombiner.button;
+  const btnHeight = theme.cmp.button.size.height[size];
 
   return css`
-    min-height: ${height};
+    min-height: ${btnHeight};
     height: 100%;
-    transition: all ease ${btnTokens.mutation.transitionDuration};
+    transition: all ease ${cmpTokens.mutation.transitionDuration};
     position: relative;
     z-index: 1;
 
@@ -78,16 +74,14 @@ export const fieldsCombinerButtonMixin = ({
       ? css`
           border-left: ${order === 'first'
             ? null
-            : `solid ${aliasTokens.shape.borderSize.separator.md} ${
-                theme?.meta?.scheme === 'light'
-                  ? aliasTokens.color.border.separator.blendInverse.strong
-                  : aliasTokens.color.border.separator.blendBase.strong
+            : `solid ${cmpTokens.shape.borderSize.combinedButtons} ${
+                cmpTokens.color.border.combinedButtons[theme?.meta?.scheme]
               }`};
         `
       : css`
           border-style: solid;
-          border-color: ${fieldTokens.color.border[status]?.enabled};
-          border-width: ${fieldTokens.shape.borderSize.base};
+          border-color: ${cmpTokens.color.border[status]};
+          border-width: ${cmpTokens.shape.borderSize.base};
 
           &,
           &::before {
@@ -101,7 +95,7 @@ export const fieldsCombinerButtonMixin = ({
           }
 
           *:hover > * > & {
-            border-color: ${fieldTokens.color.border.base.hovered};
+            border-color: ${cmpTokens.color.border.hovered};
           }
         `}
 
@@ -120,7 +114,7 @@ export const fieldsCombinerButtonMixin = ({
 
     // icon button
     &${'[data-squared]'} {
-      width: ${height};
+      width: ${btnHeight};
     }
   `;
 };

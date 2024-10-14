@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
+import { camelCase } from 'lodash';
 
-import { getSpacingPropCss } from '../../helpers';
-import { getDividerColorTokens } from './helpers';
 import type { IDividerStyled } from './declarations';
+import { getSpacingPropCss } from '../../helpers';
 
 export interface StyledDividerProps extends IDividerStyled {}
 
@@ -20,22 +20,22 @@ export const StyledDivider = styled.hr<StyledDividerProps>`
     $vertical = false,
     $width,
   }) => {
-    const defaultSpacing = $vertical
-      ? `0 ${theme.alias.space.cmp.md}`
-      : `${theme.alias.space.cmp.md} 0`;
+    const cmpTokens = theme.cmp.divider;
+    const colorSchemeForTokens = camelCase($colorScheme);
+    const defaultSpacing =
+      cmpTokens.space.margin[$vertical ? 'vertical' : 'base'];
     const spacing = $margin
       ? getSpacingPropCss(theme)($margin)
       : defaultSpacing;
-    const borderSize = theme.alias.shape.borderSize.separator.md;
-    const bgColor =
-      $customColor ||
-      getDividerColorTokens(theme.alias.color.border)[$colorScheme];
+    const borderSize = cmpTokens.shape.borderSize;
+    // TODO: cmpTokens add the fill after color (cmpTokens.color.fill[...])
+    const bgColor = $customColor || cmpTokens.color[colorSchemeForTokens];
     return css`
       display: ${$vertical ? 'inline-flex' : 'flex'};
       margin: ${spacing};
       width: ${$width || ($vertical ? borderSize : '100%')};
       height: ${$height ||
-      ($vertical ? theme.alias.size.height.surface.xxs : borderSize)};
+      ($vertical ? cmpTokens.size.height.vertical : borderSize)};
       background: ${bgColor};
     `;
   }};

@@ -7,6 +7,7 @@ export interface StyledListItemProps {
 
 export const StyledListItem = styled.li<StyledListItemProps>`
   & + & {
+    // TODO: cmpTokens
     margin-top: ${({ theme }) => theme.alias.space.cmp.xxs};
   }
 `;

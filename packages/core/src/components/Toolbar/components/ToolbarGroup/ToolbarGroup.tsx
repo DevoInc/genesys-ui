@@ -25,7 +25,7 @@ export const ToolbarGroup: React.FC<ToolbarGroupProps> = ({
       role={role}
       style={mergeStyles(
         {
-          background: theme.alias.color.background.surface.base.base,
+          background: theme.cmp.toolbar.group.color.background.base,
         },
         style,
       )}

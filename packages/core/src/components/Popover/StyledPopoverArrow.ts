@@ -1,8 +1,6 @@
 import styled, { css, CSSProp } from 'styled-components';
 import { ComputedPlacement } from '@popperjs/core';
 
-import { POPOVER_DEFAULT_ARROW_SIZE } from './constants';
-
 export interface StyledPopoverArrowProps {
   $placement?: ComputedPlacement;
   $size?: number;
@@ -14,14 +12,16 @@ export const StyledPopoverArrow = styled.div<StyledPopoverArrowProps>`
   border-color: transparent;
   border-style: solid;
 
-  ${({ $placement, $size = POPOVER_DEFAULT_ARROW_SIZE, theme }) => {
+  ${({ $placement, $size, theme }) => {
+    const arrowSize = $size
+      ? `${$size}px`
+      : `${theme.cmp.popover.arrow.size.square.inner}px`;
+    const arrowOuterSize = $size
+      ? `${$size + 1}px`
+      : `${theme.cmp.popover.arrow.size.square.outer}px`;
     const bgColor = theme.cmp.panel.color.background;
-    // TODO: get border-color token from Panel component QUV-2019. Wait until QUV-2018 is finished.
-    const borderColor = theme.alias.color.border.elevation.activated;
-    // TODO: Tokenize the Popover component QUV-2016
-    const arrowSize = `${$size}px`;
-    const arrowOuterSize = `${$size + 1}px`;
-    const panelBorderSize = theme.alias.shape.borderSize.panel.base;
+    const borderColor = theme.cmp.panel.color.border.activated;
+    const arrowBorderSize = theme.cmp.popover.arrow.shape.borderSize;
     const commonStyles = css`
       position: relative;
       border-style: solid;
@@ -50,7 +50,7 @@ export const StyledPopoverArrow = styled.div<StyledPopoverArrowProps>`
         border-width: ${arrowOuterSize} ${arrowOuterSize} 0;
 
         &::after {
-          top: calc(-${arrowSize} - ${panelBorderSize} * 2);
+          top: calc(-${arrowSize} - ${arrowBorderSize} * 2);
           left: -${arrowSize};
           border-top-color: ${bgColor};
           border-width: ${arrowSize} ${arrowSize} 0;
@@ -66,7 +66,7 @@ export const StyledPopoverArrow = styled.div<StyledPopoverArrowProps>`
         border-width: 0 ${arrowOuterSize} ${arrowOuterSize};
 
         &::after {
-          top: calc(${panelBorderSize} * 2);
+          top: calc(${arrowBorderSize} * 2);
           left: -${arrowSize};
           border-bottom-color: ${bgColor};
           border-width: 0 ${arrowSize} ${arrowSize};
@@ -77,14 +77,14 @@ export const StyledPopoverArrow = styled.div<StyledPopoverArrowProps>`
       css`
         width: calc(${arrowOuterSize} * 1);
         height: calc(${arrowOuterSize} * 2);
-        left: calc(-100% + ${panelBorderSize});
+        left: calc(-100% + ${arrowBorderSize});
         border-right-color: ${borderColor};
         border-width: ${arrowOuterSize} ${arrowOuterSize} ${arrowOuterSize} 0;
 
         &::after {
           top: calc(-${arrowSize});
-          left: calc(${panelBorderSize} * 2);
-          right: calc(100% - (${arrowSize} - ${panelBorderSize}));
+          left: calc(${arrowBorderSize} * 2);
+          right: calc(100% - (${arrowSize} - ${arrowBorderSize}));
           border-right-color: ${bgColor};
           border-width: ${arrowSize} ${arrowSize} ${arrowSize} 0;
         }
@@ -94,13 +94,13 @@ export const StyledPopoverArrow = styled.div<StyledPopoverArrowProps>`
       css`
         width: calc(${arrowOuterSize} * 1);
         height: calc(${arrowOuterSize} * 2);
-        right: calc(-100% + ${panelBorderSize});
+        right: calc(-100% + ${arrowBorderSize});
         border-left-color: ${borderColor};
         border-width: ${arrowOuterSize} 0 ${arrowOuterSize} ${arrowOuterSize};
 
         &::after {
-          top: calc(-${arrowSize} - ${panelBorderSize});
-          left: calc(100% - ${arrowOuterSize} - ${panelBorderSize} * 2);
+          top: calc(-${arrowSize} - ${arrowBorderSize});
+          left: calc(100% - ${arrowOuterSize} - ${arrowBorderSize} * 2);
           border-left-color: ${bgColor};
           border-width: ${arrowOuterSize} 0 ${arrowOuterSize} ${arrowOuterSize};
         }

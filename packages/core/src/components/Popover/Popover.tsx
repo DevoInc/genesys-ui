@@ -5,7 +5,6 @@ import { type PopperProps, StrictModifier, usePopper } from 'react-popper';
 import { ComputedPlacement, Padding } from '@popperjs/core';
 
 import { useOnEventOutside } from '../../hooks';
-import { POPOVER_DEFAULT_ARROW_SIZE } from './constants';
 import { PopoverPanel } from './components';
 import {
   StyledPopoverArrow,
@@ -70,7 +69,7 @@ export const InternalPopover: React.FC<PopoverProps> = ({
   zIndex,
 }) => {
   const theme = useTheme();
-  const evalZIndex = zIndex || theme.alias.elevation.zIndex.depth.activated;
+  const evalZIndex = zIndex || theme.cmp.popover.elevation.zIndex.base;
   const [opened, setOpened] = React.useState<boolean>(isOpened);
 
   const [referenceElement, setReferenceElement] =
@@ -91,7 +90,10 @@ export const InternalPopover: React.FC<PopoverProps> = ({
           {
             name: 'offset',
             options: {
-              offset: [0, arrowConfig.size || POPOVER_DEFAULT_ARROW_SIZE],
+              offset: [
+                0,
+                arrowConfig.size || theme.cmp.popover.arrow.size.square.inner,
+              ],
             },
           },
         ]

@@ -26,6 +26,7 @@ export const StyledHeaderCellResizer = styled.span<StyledHeaderCellResizerProps>
     const transitionDuration = grabberTokens.mutation.transitionDuration;
     const separatorTokens = theme.cmp.table.headCellSeparator;
     return css`
+      // TODO: cmpTokens
       z-index: ${theme.alias.elevation.zIndex.depth.overlay};
       transition:
         background-color ${transitionDuration} ease,

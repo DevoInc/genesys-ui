@@ -4,76 +4,42 @@ import type { DefaultTheme } from 'styled-components';
 import type { TFieldSize, TFieldStatus } from '../../../declarations';
 
 interface ICheckRadioMixin {
-  disabled?: boolean;
   $size?: TFieldSize;
   $status?: TFieldStatus;
-  theme: DefaultTheme;
+  tokens:
+    | DefaultTheme['cmp']['checkboxControl']
+    | DefaultTheme['cmp']['radioControl'];
 }
-
-/**
- * Get the checkbox and radio common tokens.
- *
- * @param props The object param
- * @param props.size The size of the element
- * @param props.status The status of the component: error, success... etc.
- * @param props.theme The common theme object with all the tokens
- * @return object with the specific tokens.
- */
-export const getCheckRadioTokens = ({
-  $size = 'md',
-  $status = 'base',
-  theme,
-}: ICheckRadioMixin) => {
-  const fieldTokens = theme.alias.fields;
-  return {
-    borderColor: fieldTokens.color.border[$status].enabled,
-    borderColorChecked: fieldTokens.color.border[$status].checked,
-    borderColorHovered: fieldTokens.color.border[$status].hovered,
-    borderColorFocused: fieldTokens.color.border[$status].focused,
-    borderWidth: fieldTokens.shape.borderSize.check,
-    bgColor: fieldTokens.color.background[$status].enabled,
-    boxShadow: fieldTokens.elevation.boxShadow[$status].focused,
-    bgColorChecked: fieldTokens.color.background[$status].checked,
-    disabledOpacity: fieldTokens.shape.opacity.disabled,
-    square: fieldTokens.size.square[$size],
-    textColor: fieldTokens.color.text[$status].checked,
-    animationTime: fieldTokens.mutation.transitionDuration,
-  };
-};
 
 /**
  * Get the checkbox and radio common styles.
  *
  * @param props The object param
- * @param props.size The size of the element
- * @param props.status The status of the component: error, success... etc.
- * @param props.theme The common theme object with all the tokens
+ * @param props.$size The size of the element
+ * @param props.$status The status of the component: error, success... etc.
+ * @param props.tokens The object with the component tokens
  * @return object with the css.
  */
 export const checkRadioMixin = ({
   $size = 'md',
   $status = 'base',
-  theme,
+  tokens,
 }: ICheckRadioMixin) => {
-  const checkRadioTokens = getCheckRadioTokens({
-    $size,
-    $status,
-    theme,
-  });
-  const square = checkRadioTokens.square;
+  const square = tokens.size.square[$size];
+  const transitionDuration = tokens.mutation.transitionDuration;
   return css`
     display: inline-flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    transition: border-color ease-in-out ${checkRadioTokens.animationTime};
+    transition: border-color ease-in-out ${transitionDuration};
     width: ${square};
     height: ${square};
     line-height: ${square};
-    border: solid ${checkRadioTokens.borderWidth}
-      ${checkRadioTokens.borderColor};
-    background-color: ${checkRadioTokens.bgColor};
-    color: ${checkRadioTokens.textColor};
+    border: solid ${tokens.shape.borderSize[$size]}
+      ${tokens.color.border[$status].enabled};
+    background-color: ${tokens.color.background[$status].enabled};
+    color: ${tokens.color.text[$status].enabled};
     cursor: pointer;
 
     &:not(:disabled) {
@@ -83,21 +49,21 @@ export const checkRadioMixin = ({
     &:disabled {
       background-clip: padding-box;
       cursor: not-allowed;
-      opacity: ${checkRadioTokens.disabledOpacity};
+      opacity: ${tokens.shape.opacity.disabled};
 
       &:not(:checked) {
-        background-color: ${checkRadioTokens.borderColor};
+        background-color: ${tokens.color.border[$status].enabled};
       }
     }
 
     &:not(:checked):not(:disabled):hover,
     &:not(:checked):not(:disabled):hover {
-      border-color: ${checkRadioTokens.borderColorHovered};
+      border-color: ${tokens.color.border[$status].hovered};
     }
 
     &:focus-visible {
-      box-shadow: ${checkRadioTokens.boxShadow};
-      border-color: ${checkRadioTokens.borderColorFocused};
+      box-shadow: ${tokens.elevation.boxShadow[$status].focused};
+      border-color: ${tokens.color.border[$status].focused};
       outline: none;
     }
   `;

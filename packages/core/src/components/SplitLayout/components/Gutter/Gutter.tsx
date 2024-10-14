@@ -55,6 +55,7 @@ export const Gutter: React.FC<GutterProps> = ({
       }}
     >
       <GIRowDragDrop
+        // TODO: cmpTokens cmp.splitLayout.color.text
         color={theme.alias.color.text.body.weak}
         size={20}
         style={{

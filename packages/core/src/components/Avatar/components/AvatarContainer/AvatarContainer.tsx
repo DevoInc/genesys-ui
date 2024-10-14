@@ -16,6 +16,7 @@ import {
   AVATAR_COLOR_SCHEME_DEFAULT_VALUE,
   AVATAR_SIZE_DEFAULT_VALUE,
   AVATAR_VARIANT_DEFAULT_VALUE,
+  REL_FOR_BLANK_TARGET,
 } from '../../constants';
 import { AvatarContext } from '../../context';
 import { Overlay } from '../../../Overlay';
@@ -63,7 +64,9 @@ export const AvatarContainer: React.FC<AvatarContainerProps> = ({
   customSize,
   tooltip,
   variant = AVATAR_VARIANT_DEFAULT_VALUE,
+  rel,
   style,
+  target,
   ...restProps
 }) => {
   const isClickable = href || onClick;
@@ -80,6 +83,8 @@ export const AvatarContainer: React.FC<AvatarContainerProps> = ({
       $customSize={customSize}
       $variant={variant}
       $disabled={disabled}
+      rel={rel || target === '_blank' ? REL_FOR_BLANK_TARGET : undefined}
+      target={target}
       title={tooltip}
     >
       {isClickable && iconOnHover && (

@@ -24,7 +24,7 @@ export const switchControlContainerMixin = ({
   const switchTokens = theme.cmp.switchControl;
   const textTokens = switchTokens.text;
   const trackTokens = switchTokens.track;
-  const focusBoxShadow = theme.alias.elevation.boxShadow.base.focused;
+  const focusBoxShadow = switchTokens.handler.elevation.boxShadow.focused;
   const transitionDuration = trackTokens.mutation.transitionDuration;
   const checkedCss = css`
     background-color: ${trackTokens.color.background.checked[status]};

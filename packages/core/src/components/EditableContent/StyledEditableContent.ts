@@ -5,6 +5,7 @@ import type { IStyledPolymorphic } from '../../declarations';
 export interface StyledEditableContentProps extends IStyledPolymorphic {}
 
 export const StyledEditableContent = styled.div<StyledEditableContentProps>`
+  // TODO: cmpTokens
   position: relative;
   transition: all ease
     ${({ theme }) => theme.alias.mutation.transitionDuration.opacity.sm};

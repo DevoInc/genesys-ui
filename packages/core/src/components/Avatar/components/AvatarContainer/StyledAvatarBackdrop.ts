@@ -2,7 +2,7 @@ import styled, { css, DefaultTheme } from 'styled-components';
 
 import type { TAvatarVariant } from '../../declarations';
 
-import { getVariantValue } from '../../utils';
+import { getBorderRadius } from '../../utils';
 
 export interface StyledAvatarBackdropProps {
   theme: DefaultTheme;
@@ -11,16 +11,14 @@ export interface StyledAvatarBackdropProps {
 
 export const StyledAvatarBackdrop = styled.span<StyledAvatarBackdropProps>`
   ${({ theme, $variant }) => {
-    const aliasTokens = theme.alias;
-    const variantValue = getVariantValue($variant);
+    const cmpTokens = theme.cmp.avatar.backdrop;
     return css`
       position: absolute;
-      transition: all ease-in-out
-        ${aliasTokens.mutation.transitionDuration.opacity.md};
-      border-radius: ${variantValue};
+      transition: all ease-in-out ${cmpTokens.mutation.transitionDuration};
+      border-radius: ${getBorderRadius({ theme, $variant })};
       color: ${theme.meta.scheme === 'light'
-        ? aliasTokens.color.text.body.inverse
-        : aliasTokens.color.text.body.strong};
+        ? cmpTokens.color.text.lightScheme
+        : cmpTokens.color.text.darkScheme};
       opacity: 0;
       width: 100%;
       height: 100%;
@@ -32,10 +30,9 @@ export const StyledAvatarBackdrop = styled.span<StyledAvatarBackdropProps>`
       *:hover > &,
       *:focus > &,
       *:focus-visible > & {
-        transition: all ease-in-out
-          ${aliasTokens.mutation.transitionDuration.opacity.md};
+        transition: all ease-in-out ${cmpTokens.mutation.transitionDuration};
         opacity: 1;
-        font-size: ${aliasTokens.size.square.icon.base.lg};
+        font-size: ${cmpTokens.typo.fontSize};
         width: 100%;
         height: 100%;
         transform: scale(1);
@@ -43,7 +40,7 @@ export const StyledAvatarBackdrop = styled.span<StyledAvatarBackdropProps>`
 
       *:focus > &,
       *:focus-visible > & {
-        box-shadow: ${aliasTokens.elevation.boxShadow.base.focused};
+        box-shadow: ${cmpTokens.elevation.boxShadow};
       }
     `;
   }};

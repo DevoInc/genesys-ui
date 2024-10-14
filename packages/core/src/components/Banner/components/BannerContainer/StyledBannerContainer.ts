@@ -15,6 +15,7 @@ export const StyledBannerContainer = styled.div<StyledBannerContainerProps>`
       position: relative;
       display: flex;
       align-items: ${$subtle ? 'center' : 'flex-start'};
+      //TODO: cmpTokens apply the correct tokens based in subtle or not scheme
       gap: ${$subtle ? aliasTokens.space.cmp.xs : cmpTokens.space.padding};
       border: ${$subtle
         ? 'none'

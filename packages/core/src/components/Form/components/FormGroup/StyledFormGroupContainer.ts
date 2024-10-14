@@ -19,9 +19,11 @@ export interface StyledFormGroupContainerProps {
 export const StyledFormGroupContainer = styled.div<StyledFormGroupContainerProps>`
   display: flex;
   position: relative;
+
   &:first-child {
     margin-top: 0;
   }
+
   ${({ $asFieldset, $legendPosition, $marginLeft, $marginTop, theme }) => {
     return css`
       flex-direction: ${$legendPosition === 'left' ? 'row' : 'column'};

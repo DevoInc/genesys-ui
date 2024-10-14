@@ -10,11 +10,10 @@ export interface StyledFormLegendContainerProps {
 
 export const StyledFormLegendContainer = styled.div<StyledFormLegendContainerProps>`
   ${({ $srOnly = false, theme }) => {
-    const labelLineHeight = theme.alias.typo.lineHeight.body.md;
     return css`
       display: flex;
       align-items: center;
-      min-height: ${labelLineHeight};
+      min-height: ${theme.cmp.form.legend.size.minHeight};
       margin: 0;
 
       ${$srOnly &&

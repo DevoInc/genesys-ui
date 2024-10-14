@@ -2,8 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const StyledCollapseContainerButton = styled.button`
   ${({ theme }) => {
-    const colorTokens = theme?.alias?.color;
-    const elevationTokens = theme?.alias?.elevation;
+    const cmpTokens = theme.cmp.collapse.button;
 
     return css`
       all: unset;
@@ -19,19 +18,18 @@ export const StyledCollapseContainerButton = styled.button`
         content: '';
         position: absolute;
         inset: 0 0 0 0;
-        transition: all ease 0.15s;
+        transition: all ease ${cmpTokens.mutation.transitionDuration};
         pointer-events: none;
-        background-color: transparent;
+        background-color: ${cmpTokens.color.background.base};
       }
 
       &:hover::before {
-        background-color: ${colorTokens?.background?.surface?.backdrop?.base
-          ?.hovered};
+        background-color: ${cmpTokens.color.background.hovered};
       }
 
       &:focus-visible {
         outline: none;
-        box-shadow: ${elevationTokens?.boxShadow?.base?.focused};
+        box-shadow: ${cmpTokens.elevation.bosShadow.focused};
       }
     `;
   }}

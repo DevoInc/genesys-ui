@@ -12,11 +12,10 @@ export const StyledFieldsCombinerItem = styled.div<IFieldsCombinerItemStyled>`
     $componentType,
     $status,
   }) => {
-    const fieldTokens = theme.alias.fields;
-    const btnTokens = theme.cmp.button;
-    const height = btnTokens.size.height[$size];
-    const checkWidth = btnTokens.size.square[$size];
-    const borderRadius = fieldTokens.shape.borderRadius;
+    const cmpTokens = theme.cmp.fieldsCombiner.item;
+    const height = cmpTokens.size.height[$size];
+    const checkWidth = theme.cmp.button.size.square[$size];
+    const borderRadius = theme.alias.fields.shape.borderRadius;
 
     return css`
       position: relative;
@@ -40,12 +39,12 @@ export const StyledFieldsCombinerItem = styled.div<IFieldsCombinerItemStyled>`
         position: relative;
         z-index: 1;
         border-style: solid;
-        border-color: ${fieldTokens.color.border[$status]?.enabled};
-        border-width: ${fieldTokens.shape.borderSize.base};
+        border-color: ${cmpTokens.color.border.checkType[$status]};
+        border-width: ${cmpTokens.shape.checkType.borderSize};
         border-radius: ${borderRadius};
         width: ${checkWidth};
         padding: 0;
-        background-color: ${theme.alias.color.background.surface.base.raised};
+        background-color: ${cmpTokens.color.background.checkType};
 
         ${$order === 'first'
           ? css`
@@ -82,7 +81,7 @@ export const StyledFieldsCombinerItem = styled.div<IFieldsCombinerItemStyled>`
       ${$componentType === 'check' &&
       css`
         *:hover > & {
-          border-color: ${fieldTokens.color.border.base.hovered};
+          border-color: ${cmpTokens.color.border.checkType.hovered};
         }
       `}
     `;

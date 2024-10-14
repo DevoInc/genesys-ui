@@ -10,7 +10,7 @@ export interface StyledCodeBlockWrapperProps {
 export const StyledCodeBlockWrapper = styled.div<StyledCodeBlockWrapperProps>`
   margin-bottom: ${({ theme, $gutterBottom }) =>
     getSpacingPropCss(theme)($gutterBottom)};
-
+  // TODO: cmpTokens
   padding: ${({ theme }) =>
     `${theme.alias.space.cmp.sm} ${theme.alias.space.cmp.md}`};
   background: ${({ theme }) =>

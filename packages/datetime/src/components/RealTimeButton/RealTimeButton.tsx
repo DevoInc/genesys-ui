@@ -38,6 +38,7 @@ export const RealTimeButton: React.FC<RealTimeButtonProps> = ({
 }) => {
   const theme = useTheme();
   const themeScheme = theme.meta.scheme;
+  // TODO: cmpTokens and remove the constant
   const iconSize = getPxFromRem(
     theme.alias.typo.fontSize.icon[REAL_TIME_ICON_SIZE_MAP[size || 'md']],
   );

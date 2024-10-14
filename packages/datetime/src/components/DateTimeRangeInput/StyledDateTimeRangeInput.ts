@@ -12,29 +12,27 @@ export interface StyledDateTimeRangeInputProps
   wide?: boolean;
 }
 
-export const StyledDateTimeRangeInput = styled.div.attrs((props) => ({
-  rangeControlTokens: props.theme.cmp.dateTimeRangeControl,
-  aliasTokens: props.theme.alias,
-}))<StyledDateTimeRangeInputProps>`
+export const StyledDateTimeRangeInput = styled.div<StyledDateTimeRangeInputProps>`
   position: relative;
   flex-wrap: nowrap;
   align-items: center;
   border-style: solid;
 
-  ${({ aliasTokens, isOpen, rangeControlTokens, size, wide }) => {
-    const borderColor = rangeControlTokens.color.border.base;
-    const activeBorderColor = rangeControlTokens.color.border.active;
+  ${({ isOpen, size, theme, wide }) => {
+    const tokens = theme.cmp.dateTimeRangeControl;
+    const borderColor = tokens.color.border.base;
+    const activeBorderColor = tokens.color.border.active;
     return css`
       display: ${wide ? 'flex' : 'inline-flex'};
       transition:
-        border-color ease ${rangeControlTokens.mutation.transitionDuration},
-        width ease ${rangeControlTokens.mutation.transitionDuration};
-      border-width: ${rangeControlTokens.shape.borderSize};
+        border-color ease ${tokens.mutation.transitionDuration},
+        width ease ${tokens.mutation.transitionDuration};
+      border-width: ${tokens.shape.borderSize};
       border-color: ${isOpen ? activeBorderColor : borderColor};
-      border-radius: ${rangeControlTokens.shape.borderRadius};
-      padding: ${rangeControlTokens.space.padding[size]};
-      height: ${rangeControlTokens.size.height[size]};
-      gap: ${aliasTokens.space.cmp.xxs};
+      border-radius: ${tokens.shape.borderRadius};
+      padding: ${tokens.space.padding[size]};
+      height: ${tokens.size.height[size]};
+      gap: ${tokens.space.gap[size]};
 
       &:hover,
       &:active,

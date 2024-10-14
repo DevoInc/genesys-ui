@@ -18,9 +18,8 @@ export interface InputControlInnerContainerProps extends IStyledOverloadCss {
 export const InputControlInnerContainer: React.FC<
   InputControlInnerContainerProps
 > = ({ children, inputWidth, style }) => {
-  const theme = useTheme();
   const inputWidthEval =
-    theme.alias.fields.size.width[inputWidth] || inputWidth;
+    useTheme().cmp.inputControl.size.width[inputWidth] || inputWidth;
   return (
     <Flex
       flex={inputWidth ? `0 1 ${inputWidthEval}` : '1 1 100%'}

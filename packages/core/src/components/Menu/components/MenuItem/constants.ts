@@ -7,7 +7,7 @@ import { DefaultTheme } from 'styled-components';
  * @return object with the css.
  */
 export const menuItemSizeConfig = (theme: DefaultTheme) => ({
-  iconSize: theme.alias.size.square.icon.base.xxs,
-  iconSpace: theme.alias.space.cmp.xs,
-  horPadding: theme.alias.menus.item.space.marginHor,
+  iconSize: theme.cmp.menu.itemIcon.size.square,
+  iconSpace: theme.cmp.menu.itemIcon.space.offset,
+  horPadding: theme.cmp.menu.item.space.paddingHor,
 });

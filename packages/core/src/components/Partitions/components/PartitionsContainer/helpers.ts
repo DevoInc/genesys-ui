@@ -15,14 +15,7 @@ export interface partitionsContainerMixinProps
 export const getPartitionsHeight = ({
   size,
   theme,
-}: partitionsContainerMixinProps) => {
-  const trackTokens = theme.alias.size.height.track;
-  return size === 'sm'
-    ? trackTokens.xs
-    : size === 'lg'
-      ? `calc(${trackTokens.md} - 0.2rem)`
-      : `calc(${trackTokens.sm} - 0.2rem)`;
-};
+}: partitionsContainerMixinProps) => theme.cmp.partitions.size.height[size];
 
 /**
  * Get specific styles for Flex when it's user as PartitionsContainer
@@ -35,6 +28,6 @@ export const partitionsContainerMixin = ({
   theme,
 }: partitionsContainerMixinProps) => css`
   gap: ${hasSeparators && `calc(${getPartitionsHeight({ size, theme })} / 2)`};
-  border-radius: ${theme.alias.shape.borderRadius.pill};
+  border-radius: ${theme.cmp.partitions.shape.borderRadius};
   height: ${getPartitionsHeight({ size, theme })};
 `;

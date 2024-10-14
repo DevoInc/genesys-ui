@@ -5,10 +5,9 @@ import { StyledChipContainer } from '../../../Chip/components/ChipContainer/Styl
 
 export const StyledSelectChip = styled(StyledChipContainer)`
   ${({ theme }) => {
-    const selectTokens = theme.cmp.select;
-    const aliasTokens = theme.alias;
+    const selectTokens = theme.cmp.selectControl;
     const chipTokens = selectTokens.chip;
-    const chipRemoveTokens = selectTokens.chipRemove;
+    const chipRemoveTokens = selectTokens.multiValueContainer;
 
     return css`
       padding-right: 0.8rem;
@@ -24,12 +23,12 @@ export const StyledSelectChip = styled(StyledChipContainer)`
       &:hover,
       &:focus,
       &:active {
-        color: ${aliasTokens.color.text.body.strong};
+        color: ${chipRemoveTokens.color.text.hovered};
       }
 
       ${StyledButtonContainer} {
-        margin-left: ${chipRemoveTokens.space.marginLeft};
-        margin-right: ${chipRemoveTokens.space.marginRight};
+        margin-left: ${chipRemoveTokens.space.marginLeft.button};
+        margin-right: ${chipRemoveTokens.space.marginRight.button};
       }
 
       b,

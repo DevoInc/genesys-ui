@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { AVATAR_SIZE_SQUARE_MAP, VARIANT_VALUES } from './constants';
 import { TAvatarSize, TAvatarVariant, TAvatarCustomSize } from './declarations';
+import { DefaultTheme } from 'styled-components';
 
 /**
  * Get the width and the height for the Avatar
@@ -14,14 +14,16 @@ import { TAvatarSize, TAvatarVariant, TAvatarCustomSize } from './declarations';
 export const getAvatarSizeConfig = ({
   $customSize,
   $size,
+  theme,
 }: {
   $customSize: TAvatarCustomSize;
   $size: TAvatarSize;
+  theme: DefaultTheme;
 }): {
   width: React.CSSProperties['width'];
   height: React.CSSProperties['height'];
 } => {
-  const square = $customSize?.square || AVATAR_SIZE_SQUARE_MAP[$size];
+  const square = $customSize?.square || getAvatarSquareSize({ $size, theme });
   const width = $customSize?.width || square;
   const height = $customSize?.height || square;
   return {
@@ -30,5 +32,34 @@ export const getAvatarSizeConfig = ({
   };
 };
 
-export const getVariantValue = (variant: TAvatarVariant) =>
-  variant ? (VARIANT_VALUES[variant] ?? undefined) : undefined;
+/**
+ * Get the square size of the Avatar container
+ *
+ * @param theme Object with the design tokens
+ * @param $size The pre-defined size of the Avatar
+ * @return The square (same width and height) for the Avatar
+ */
+
+export const getAvatarSquareSize = ({
+  $size,
+  theme,
+}: {
+  $size: TAvatarSize;
+  theme: DefaultTheme;
+}) => theme.cmp.avatar.size.square[$size];
+
+/**
+ * Get the radius for Avatar
+ *
+ * @param theme Object with the design tokens
+ * @param $variant The pre-defined variant of the Avatar
+ * @return The square (same width and height) for the Avatar
+ */
+export const getBorderRadius = ({
+  theme,
+  $variant,
+}: {
+  theme: DefaultTheme;
+  $variant: TAvatarVariant;
+}) =>
+  $variant === 'square' ? 0 : theme.cmp.avatar.shape.borderRadius[$variant];

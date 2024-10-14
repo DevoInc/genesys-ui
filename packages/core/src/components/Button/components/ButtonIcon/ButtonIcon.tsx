@@ -17,14 +17,14 @@ export const ButtonIcon: React.FC<ButtonIconProps> = ({
   strong,
   style,
 }) => {
-  const theme = useTheme();
+  const cmpTokens = useTheme().cmp.button;
   return (
     <Icon
-      size={theme.cmp.button.icon.typo.fontSize[size]}
+      size={cmpTokens.icon.typo.fontSize[size]}
       strong={strong}
       style={{
         position: 'relative',
-        transition: 'transform ease 0.15s',
+        transition: `transform ease ${cmpTokens.mutation.transitionDuration}`,
         ...style,
       }}
     >

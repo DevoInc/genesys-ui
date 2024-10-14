@@ -8,22 +8,19 @@ export interface StyledCollapseContainerProps {
 
 export const StyledCollapseContainer = styled.div<StyledCollapseContainerProps>`
   ${({ $expanded = false, theme }) => {
-    const aliasTokens = theme.alias;
+    const cmpTokens = theme.cmp.collapse;
 
     return css`
       position: relative;
-      transition: border-color ${aliasTokens.mutation.transitionDuration.action}
-        ease;
-      border-bottom: solid ${aliasTokens.shape.borderSize.separator.md}
-        ${$expanded
-          ? 'transparent'
-          : aliasTokens.color.border.separator.base.weak};
-      min-height: ${aliasTokens.size.height.surface.xs};
-      background-color: ${aliasTokens.color.background.surface.base.raised};
+      transition: border-color ${cmpTokens.mutation.transitionDuration} ease;
+      border-bottom: solid ${cmpTokens.shape.borderSize}
+        ${cmpTokens.color.border[$expanded ? 'expanded' : 'base']};
+      min-height: ${cmpTokens.size.minHeight};
+      background-color: ${cmpTokens.color.background.base};
 
       ${$expanded &&
       css`
-        background-color: ${aliasTokens.color.background.surface.base.expanded};
+        background-color: ${cmpTokens.color.background.expanded};
       `}
     `;
   }}

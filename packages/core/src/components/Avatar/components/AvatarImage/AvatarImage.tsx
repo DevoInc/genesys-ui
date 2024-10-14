@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components';
 
 import type { IAvatar } from '../../declarations';
 import { AvatarContext } from '../../context';
-import { getAvatarSizeConfig } from '../../utils';
+import { getAvatarSizeConfig, getBorderRadius } from '../../utils';
 import { Thumbnail, type ThumbnailProps } from '../../../Thumbnail';
 
 export interface AvatarImageProps
@@ -35,18 +35,17 @@ export const AvatarImage: React.FC<AvatarImageProps> = ({
   const evalImageFit = imageFit || context.imageFit;
   const evalImagePosition = imagePosition || context.imagePosition;
   const theme = useTheme();
-  const borderRadius =
-    theme.alias.shape.borderRadius[
-      evalVariant === 'circle' ? 'full' : evalVariant === 'rounded' ? 'md' : '0'
-    ];
+  const borderRadius = getBorderRadius({ theme, $variant: evalVariant });
   return (
     <Thumbnail
       alt={alt}
       width={
-        getAvatarSizeConfig({ $customSize: customSize, $size: evalSize }).width
+        getAvatarSizeConfig({ $customSize: customSize, $size: evalSize, theme })
+          .width
       }
       height={
-        getAvatarSizeConfig({ $customSize: customSize, $size: evalSize }).height
+        getAvatarSizeConfig({ $customSize: customSize, $size: evalSize, theme })
+          .height
       }
       objectFit={evalImageFit}
       objectPosition={evalImagePosition}

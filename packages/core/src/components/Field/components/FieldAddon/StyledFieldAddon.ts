@@ -12,7 +12,7 @@ export const StyledFieldAddon = styled.span<StyledFieldAddonProps>`
     const aliasTokens = theme.alias;
     const fieldTokens = aliasTokens.fields;
     const borderWidth = fieldTokens.shape.borderSize.base;
-
+    // TODO: cmpTokens
     return css`
       ${typoMixin({
         theme,

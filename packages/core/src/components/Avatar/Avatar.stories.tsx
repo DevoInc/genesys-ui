@@ -150,7 +150,7 @@ export const ButtonEditable: Story = {
       return (
         <>
           {isOpen && (
-            <Modal onRequestClose={() => setOpen(false)}>
+            <Modal onRequestClose={() => setOpen(false)} windowSize="sm">
               <Modal.Header title="Avatar edition" />
               <Modal.Body>
                 <Typography.Paragraph>
