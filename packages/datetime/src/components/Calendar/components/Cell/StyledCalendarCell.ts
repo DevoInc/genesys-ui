@@ -11,7 +11,8 @@ export const StyledCalendarCell = styled.div`
   span {
     width: ${({ theme }) => theme.cmp.calendar.day.size.square};
     height: ${({ theme }) => theme.cmp.calendar.day.size.square};
-    border-radius: ${({ theme }) => theme.cmp.calendar.day.shape.borderRadius};
+    border-radius: ${({ theme }) =>
+      theme.cmp.calendar.day.shape.borderRadius.base};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,36 +36,32 @@ export const StyledCalendarCell = styled.div`
   &:nth-child(7n),
   &:last-child {
     &::before {
-      // TODO: cmpTokens
       border-top-right-radius: ${({ theme }) =>
-        theme.alias.shape.borderRadius.pill};
+        theme.cmp.calendar.day.shape.borderRadius.corners};
       border-bottom-right-radius: ${({ theme }) =>
-        theme.alias.shape.borderRadius.pill};
+        theme.cmp.calendar.day.shape.borderRadius.corners};
     }
     &::after {
-      // TODO: cmpTokens
       border-top-right-radius: ${({ theme }) =>
-        theme.alias.shape.borderRadius.pill};
+        theme.cmp.calendar.day.shape.borderRadius.corners};
       border-bottom-right-radius: ${({ theme }) =>
-        theme.alias.shape.borderRadius.pill};
+        theme.cmp.calendar.day.shape.borderRadius.corners};
     }
   }
 
   &:nth-child(7n + 1),
   &:empty + :not(:empty) {
     &::before {
-      // TODO: cmpTokens
       border-top-left-radius: ${({ theme }) =>
-        theme.alias.shape.borderRadius.pill};
+        theme.cmp.calendar.day.shape.borderRadius.corners};
       border-bottom-left-radius: ${({ theme }) =>
-        theme.alias.shape.borderRadius.pill};
+        theme.cmp.calendar.day.shape.borderRadius.corners};
     }
     &::after {
-      // TODO: cmpTokens
       border-top-left-radius: ${({ theme }) =>
-        theme.alias.shape.borderRadius.pill};
+        theme.cmp.calendar.day.shape.borderRadius.corners};
       border-bottom-left-radius: ${({ theme }) =>
-        theme.alias.shape.borderRadius.pill};
+        theme.cmp.calendar.day.shape.borderRadius.corners};
     }
   }
 

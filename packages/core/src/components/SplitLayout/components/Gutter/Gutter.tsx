@@ -55,8 +55,7 @@ export const Gutter: React.FC<GutterProps> = ({
       }}
     >
       <GIRowDragDrop
-        // TODO: cmpTokens cmp.splitLayout.color.text
-        color={theme.alias.color.text.body.weak}
+        color={theme.cmp.splitLayout.color.text.base}
         size={20}
         style={{
           transform: `rotate(${direction === 'vertical' ? '90deg' : '0'})`,

@@ -9,25 +9,21 @@ export interface StyledBannerContainerProps {
 
 export const StyledBannerContainer = styled.div<StyledBannerContainerProps>`
   ${({ $status = 'info', $subtle, theme }) => {
-    const aliasTokens = theme.alias;
     const cmpTokens = theme.cmp.boxMessage;
     return css`
       position: relative;
       display: flex;
       align-items: ${$subtle ? 'center' : 'flex-start'};
-      //TODO: cmpTokens apply the correct tokens based in subtle or not scheme
-      gap: ${$subtle ? aliasTokens.space.cmp.xs : cmpTokens.space.padding};
+      gap: ${cmpTokens.space.gap[$subtle ? 'subtle' : 'base']};
       border: ${$subtle
         ? 'none'
         : `${cmpTokens.shape.borderSize} solid
         ${cmpTokens.color.border[$status]}`};
       border-radius: ${cmpTokens.shape.borderRadius};
-      padding: ${$subtle
-        ? `${aliasTokens.space.cmp.xxs} ${aliasTokens.space.cmp.xs}`
-        : cmpTokens.space.padding};
-      background-color: ${$subtle
-        ? aliasTokens.color.background.surface.base.featured
-        : cmpTokens.color.background[$status]};
+      padding: ${cmpTokens.space.padding[$subtle ? 'subtle' : 'base']};
+      background-color: ${cmpTokens.color.background[
+        $subtle ? 'subtle' : $status
+      ]};
     `;
   }}
 `;

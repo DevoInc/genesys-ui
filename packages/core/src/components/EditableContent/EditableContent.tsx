@@ -33,9 +33,9 @@ export const EditableContent: React.FC<EditableContentProps> = React.forwardRef<
   HTMLDivElement,
   EditableContentProps
 >(({ children, tooltip, style, ...nativeProps }, ref) => {
-  // TODO: cmpTokens
   const theme = useTheme();
-  const iconSize = theme.alias.typo.fontSize.icon.xxxs;
+  const iconTokens = theme.cmp.editableContent.icon;
+  const iconSize = iconTokens.size.square.base;
   const isFocusWithin = useFocusWithin(ref as BasicTarget);
   return (
     <StyledEditableContentWrapper>
@@ -51,12 +51,12 @@ export const EditableContent: React.FC<EditableContentProps> = React.forwardRef<
       {!isFocusWithin && (
         <Icon
           size={iconSize}
-          color={theme.alias.color.text.body.weaker}
+          color={iconTokens.color.fill.base}
           style={{
             position: 'absolute',
             top: `calc(${iconSize} / 2 * -1)`,
             right: `calc(${iconSize} / 2 * -1)`,
-            transition: `opacity ease ${theme.alias.mutation.transitionDuration.opacity.md}`,
+            transition: `opacity ease ${iconTokens.mutation.transitionDuration}`,
           }}
         >
           <GIPencilEdit />

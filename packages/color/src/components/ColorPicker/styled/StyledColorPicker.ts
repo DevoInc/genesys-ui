@@ -65,7 +65,6 @@ export const StyledColorPicker = styled.button<StyledColorPickerProps>`
 
         &:focus,
         &:focus-visible {
-          // TODO: cmpTokens
           //box-shadow: ${colorPickerTokens.elevation.boxShadow[status]
             .focused};
           border-color: ${colorPickerTokens.color.border[status].focused};

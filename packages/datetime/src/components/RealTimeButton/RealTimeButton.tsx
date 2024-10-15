@@ -2,8 +2,6 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { GIRealTime } from '@devoinc/genesys-icons';
 
-import { REAL_TIME_ICON_SIZE_MAP } from './constants';
-
 import {
   Box,
   getPxFromRem,
@@ -38,10 +36,7 @@ export const RealTimeButton: React.FC<RealTimeButtonProps> = ({
 }) => {
   const theme = useTheme();
   const themeScheme = theme.meta.scheme;
-  // TODO: cmpTokens and remove the constant
-  const iconSize = getPxFromRem(
-    theme.alias.typo.fontSize.icon[REAL_TIME_ICON_SIZE_MAP[size || 'md']],
-  );
+  const iconSize = getPxFromRem(theme.cmp.dateRange.realTimeIcon.typo[size]);
 
   return (
     <Box

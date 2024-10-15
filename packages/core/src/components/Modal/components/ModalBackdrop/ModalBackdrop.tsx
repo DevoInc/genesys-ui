@@ -32,8 +32,7 @@ export const ModalBackdrop: React.FC<ModalBackdropProps> = ({
       position="fixed"
       positionTop="0"
       positionLeft="0"
-      // TODO: cmpTokens
-      zIndex={zIndex || theme.alias.elevation.zIndex.depth.overlay}
+      zIndex={zIndex || theme.cmp.modal.backdrop.elevation.zIndex.base}
     >
       <Overlay
         {...restOverlayProps}

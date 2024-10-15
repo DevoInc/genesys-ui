@@ -32,9 +32,8 @@ export const LoaderGradientContainer: React.FC<
   width,
   ...restOverlayProps
 }) => {
-  // TODO: cmpTokens use new loader.gradient
-  const theme = useTheme();
-  const gradientColor = theme.alias.color.background.surface.base.base;
+  const cmpTokens = useTheme().cmp.loader.gradient;
+  const gradientColor = cmpTokens.color.background.base;
   const evalDefaultHeight = ['top', 'bottom'].includes(position)
     ? '16rem'
     : '100%';

@@ -18,10 +18,9 @@ export const StyledBlockQuote = styled.blockquote<StyledBlockQuoteProps>`
   `}
 
   ${({ $textAlign, theme }) => css`
-    // TODO: cmpTokens
-    padding: ${$textAlign === 'right'
-      ? `0 ${theme.alias.space.cmp.xxl} 0 0`
-      : `0 0 0 ${theme.alias.space.cmp.xxl}`};
+    padding: ${theme.cmp.blockQuote.space.padding[
+      $textAlign === 'right' ? 'alignRight' : 'alignLeft'
+    ]};
   `}
 
   ${({ $gutterBottom, theme }) => css`
@@ -41,7 +40,6 @@ export const StyledBlockQuote = styled.blockquote<StyledBlockQuoteProps>`
     text-align: ${({ $textAlign }) => $textAlign};
     font-family: cursive;
     line-height: 1;
-    // TODO: cmpTokens
-    color: ${({ theme }) => rgba(theme.alias.color.text.body.weakest, 0.3)};
+    color: ${({ theme }) => rgba(theme.cmp.blockQuote.color.text.base, 0.3)};
   }
 `;

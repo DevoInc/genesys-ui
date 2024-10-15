@@ -27,9 +27,8 @@ export const FieldLabel: React.FC<FieldLabelProps> = ({
   style,
   ...nativeProps
 }) => {
-  // TODO: cmpTokens
   // to get vertically aligned the label with the field control block anyway
-  const labelLineHeight = useTheme().alias.typo.lineHeight.body[size];
+  const labelHeight = useTheme().cmp.label.size.height[size];
 
   return !(labelPosition === 'right') && helper && !srOnly ? (
     <Flex {...nativeProps} alignItems="center" maxWidth="100%" gap="cmp-xxs">
@@ -46,7 +45,7 @@ export const FieldLabel: React.FC<FieldLabelProps> = ({
       </Label>
       {!srOnly && (
         <Flex
-          height={labelLineHeight}
+          height={labelHeight}
           inline
           verticalAlign="middle"
           alignItems="center"
@@ -69,7 +68,7 @@ export const FieldLabel: React.FC<FieldLabelProps> = ({
       {children}
       {!srOnly && helper && (
         <Flex
-          height={labelLineHeight}
+          height={labelHeight}
           inline
           marginLeft="cmp-xxs"
           verticalAlign="middle"

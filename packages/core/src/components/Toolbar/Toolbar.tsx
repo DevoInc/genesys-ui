@@ -27,8 +27,6 @@ const InternalToolbar: React.FC<ToolbarProps> = ({
   ...restFlexProps
 }) => {
   const theme = useTheme();
-  // TODO: cmpTokens
-  const surfaceHeightTokens = theme.alias.size.height.surface;
   return (
     <Flex
       {...restFlexProps}
@@ -36,7 +34,7 @@ const InternalToolbar: React.FC<ToolbarProps> = ({
       elevation={elevation}
       gap={gap}
       justifyContent={justifyContent}
-      height={height || surfaceHeightTokens[size]}
+      height={height || theme.cmp.toolbar.size.height[size]}
       padding={padding}
       role={role}
       style={mergeStyles(toolbarContainerMixin({ theme }), style)}

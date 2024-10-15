@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { css, useTheme } from 'styled-components';
 
-import { TOAST_ELEVATION_LEVEL } from '../../constants';
 import type { IToast } from '../../declarations';
 import { Badge, type BadgeProps } from '../../../Badge';
 import { mergeStyles } from '../../../../helpers';
@@ -23,10 +22,7 @@ export const ToastBadge: React.FC<ToastBadgeProps> = ({
     left: 0;
     right: auto;
     transform: translate(-50%, -50%);
-    // TODO: cmpTokens
-    z-index: calc(
-      ${theme.alias.elevation.zIndex.depth[TOAST_ELEVATION_LEVEL]} + 1
-    );
+    z-index: ${theme.cmp.toast.badge.elevation.zIndex};
   `;
   return (
     updates > 1 && (
