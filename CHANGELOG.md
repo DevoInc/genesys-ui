@@ -1,5 +1,19 @@
 # Changelog
 
+## [12.4.0](https://github.com/DevoInc/genesys-ui/compare/v12.3.1...v12.4.0) (2024-10-15)
+
+
+### Features
+
+* adapted components to new component tokens from genesys-brand-devo. ([927c795](https://github.com/DevoInc/genesys-ui/commit/927c7953c302fd6a0c6afc57579c63b5d80b9580))
+* use of component tokens instead of alias ones ([606a044](https://github.com/DevoInc/genesys-ui/commit/606a044d771d958064cebdae0c301b379bbcf575))
+* use of component tokens instead of alias ones and fixed the readOnly state of the InputControl ([2239e1a](https://github.com/DevoInc/genesys-ui/commit/2239e1abab9a4642a589ac5db134c08b541f150d))
+
+
+### Bug Fixes
+
+* fixed pipeline dist ([a64bd7c](https://github.com/DevoInc/genesys-ui/commit/a64bd7cde466eb612ad9e67e89607fffa6378e6a))
+
 ## [12.3.1](https://github.com/DevoInc/genesys-ui/compare/v12.3.0...v12.3.1) (2024-10-09)
 
 
