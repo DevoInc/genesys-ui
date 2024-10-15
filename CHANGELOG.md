@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.4.1](https://github.com/DevoInc/genesys-ui/compare/v12.4.0...v12.4.1) (2024-10-15)
+
+
+### Bug Fixes
+
+* **table:** Tables grow from 0 pixels to occupy the entire width, creating a strange visual effect. ([591bb4e](https://github.com/DevoInc/genesys-ui/commit/591bb4ee2e28a6f42ceb38d90fe8b7e8e5f90a2d))
+
 ## [12.4.0](https://github.com/DevoInc/genesys-ui/compare/v12.3.1...v12.4.0) (2024-10-15)
 
 
