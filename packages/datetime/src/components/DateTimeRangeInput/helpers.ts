@@ -22,6 +22,7 @@ export const cssDateTimeRangeInput = ({
         padding: ${rangeControlInputTokens.space.padding[size]};
 
         &:focus {
+          // TODO: cmpTokens
           box-shadow: inset ${fieldTokens.elevation.boxShadow[status].focused};
         }
       `;

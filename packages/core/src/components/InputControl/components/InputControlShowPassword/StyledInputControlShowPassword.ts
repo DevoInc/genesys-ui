@@ -12,7 +12,7 @@ export const StyledInputControlShowPassword = styled.span<StyledInputControlShow
   position: absolute;
   top: 50%;
   right: ${({ $size, theme }) => css`
-    ${theme.alias.fields.space.padding.hor[$size]}
+    ${theme.cmp.inputControl.showPassword.space.offset[$size]}
   `};
   display: flex;
   transform: translate(0, -50%);
