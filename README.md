@@ -8,7 +8,7 @@ Monorepo containing the codebase for the Genesys UI components library.
 > **Warning**
 > This is an `alpha` version and it is not yet production ready.
 
-The project is built using `npm workspaces` and includes the following packages:
+The project is built using `npm workspaces` and includes the following packages: 
 
 [![npm version](https://img.shields.io/npm/v/@devoinc/genesys-ui/latest?label=%40devoinc%2Fgenesys-ui@latest)](https://www.npmjs.com/package/@devoinc/genesys-ui)
 
