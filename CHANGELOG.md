@@ -1,5 +1,16 @@
 # Changelog
 
+## [13.0.0](https://github.com/DevoInc/genesys-ui/compare/v12.4.1...v13.0.0) (2024-10-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **pagination:** refactor pagination component and new example table pagination
+
+### Features
+
+* **pagination:** refactor pagination component and new example table pagination ([f58dc76](https://github.com/DevoInc/genesys-ui/commit/f58dc769fa4168054b32b79ac6cb66f84348a3eb))
+
 ## [12.4.1](https://github.com/DevoInc/genesys-ui/compare/v12.4.0...v12.4.1) (2024-10-15)
 
 
