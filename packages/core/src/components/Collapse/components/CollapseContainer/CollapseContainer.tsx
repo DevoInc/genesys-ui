@@ -22,6 +22,9 @@ export interface CollapseContainerProps
     Pick<ITriggerEventAttrs, 'onClick'> {
   children?: React.ReactNode;
   expanded?: boolean;
+  isDraggable?: boolean;
+  onPointerDown?: React.DOMAttributes<Element>['onPointerDown'];
+  onKeyDown?: React.DOMAttributes<Element>['onKeyDown'];
 }
 
 export const CollapseContainer: React.FC<CollapseContainerProps> = ({
@@ -32,15 +35,26 @@ export const CollapseContainer: React.FC<CollapseContainerProps> = ({
   onClick,
   style,
   tooltip,
+  isDraggable = false,
+  onPointerDown,
+  onKeyDown,
   ...nativeProps
 }) => (
-  <StyledCollapseContainer {...nativeProps} css={style} $expanded={expanded}>
+  <StyledCollapseContainer
+    {...nativeProps}
+    css={style}
+    $expanded={expanded}
+    $isDraggable={isDraggable}
+  >
     <StyledCollapseContainerButton
+      onPointerDown={onPointerDown}
+      onKeyDown={onKeyDown}
       aria-controls={ariaControls}
       aria-expanded={expanded}
       aria-label={ariaLabel}
       onClick={onClick}
       title={tooltip}
+      $isDraggable={isDraggable}
     />
     <Flex
       alignItems="center"
