@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import {
-  Active,
   DndContext,
   PointerSensor,
   useSensor,
@@ -123,13 +122,8 @@ const Item: React.FC<{
   onExpand?: (id: string) => void;
   isGhost?: boolean;
 }> = ({ id, isExpanded, onExpand, isGhost = false }) => {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-  } = useSortable({ id });
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
