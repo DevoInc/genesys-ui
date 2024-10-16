@@ -11,6 +11,7 @@ const config: StorybookConfig = {
     options: {},
   },
   addons: [
+    '@storybook/addon-controls',
     '@storybook/addon-links',
     '@storybook/addon-actions',
     {
@@ -23,7 +24,6 @@ const config: StorybookConfig = {
         },
       },
     },
-    '@storybook/addon-controls',
     '@storybook/addon-a11y',
     '@storybook/addon-themes',
     '@storybook/preset-scss',
