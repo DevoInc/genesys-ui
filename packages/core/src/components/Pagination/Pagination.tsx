@@ -1,11 +1,9 @@
 import * as React from 'react';
 
 import type { IPaginationCommonInterface } from './declarations';
-import { DEFAULT_TEXTS } from './constants';
-import { PaginationContext } from './context';
 
-import { PaginationNav, PaginationRange, PaginationLabel } from './components';
-import { HFlex, type HFlexProps } from '../HFlex';
+import { PaginationNav, PaginationRange, PaginationLabel, PaginationContainer } from './components';
+import {type HFlexProps } from '../HFlex';
 
 export interface PaginationProps
   extends IPaginationCommonInterface,
@@ -13,62 +11,79 @@ export interface PaginationProps
 
 export const InternalPagination: React.FC<PaginationProps> = ({
   as = 'nav',
-  children,
   justifyContent = 'flex-end',
-  paginationHook,
   size = 'md',
   spacing,
   texts,
+
+  totalItems,
+  page = 0,
+  pageSize = 10,
+  pageSizeOptions = [5, 10, 15, 20],
+  onChange,
+  onPageSizeChange,
+
+  goToFirstPage,
+  goToLastPage,
+  goToNextPage,
+  goToPage,
+  goToPreviousPage,
   ...restHFlexProps
 }) => {
-  const { pageFirstItem, pageLastItem, totalItems, pageSize } = React.useMemo(
-    () => paginationHook,
-    [paginationHook],
-  );
-
-  const { infoTextFn } = React.useMemo(
-    () => ({ ...DEFAULT_TEXTS, ...texts }),
-    [texts],
-  );
-
-  const paginationInfoText = React.useMemo(
-    () =>
-      infoTextFn({
-        totalItems,
-        pageSize,
-        pageFirstItem: pageFirstItem + 1,
-        pageLastItem: pageLastItem + 1,
-      }),
-    [infoTextFn, totalItems, pageSize, pageFirstItem, pageLastItem],
-  );
-
   return (
-    <HFlex
+    // HFlex to Pagination.Container
+    <PaginationContainer
       {...restHFlexProps}
       as={as}
+      size={size}
       justifyContent={justifyContent}
       spacing={spacing || `cmp-${size}`}
     >
-      <PaginationContext.Provider
-        value={{ size, texts, paginationHook, paginationInfoText }}
-      >
-        {children}
-      </PaginationContext.Provider>
-    </HFlex>
+      <Pagination._Label
+        texts={texts}
+        size={size}
+        totalItems={totalItems}
+        pageSize={pageSize}
+        page={page}
+      />
+      <Pagination._Range
+        size={size}
+        pageSize={pageSize}
+        pageSizeOptions={pageSizeOptions}
+        texts={texts}
+        onPageSizeChange={onPageSizeChange}
+      />
+      <Pagination._Nav
+        size={size}
+        texts={texts}
+        page={page}
+        totalItems={totalItems}
+        pageSize={pageSize}
+        goToFirstPage={goToFirstPage}
+        goToLastPage={goToLastPage}
+        goToNextPage={goToNextPage}
+        goToPage={goToPage}
+        goToPreviousPage={goToPreviousPage}
+        onChange={onChange}
+      />
+    </PaginationContainer>
   );
 };
 
 export const Pagination = InternalPagination as typeof InternalPagination & {
-  Label: typeof PaginationLabel;
-  Nav: typeof PaginationNav;
-  Range: typeof PaginationRange;
+  _Container: typeof PaginationContainer;
+  _Label: typeof PaginationLabel;
+  _Range: typeof PaginationRange;
+  _Nav: typeof PaginationNav;
 };
 
-Pagination.Label = PaginationLabel;
-Pagination.Nav = PaginationNav;
-Pagination.Range = PaginationRange;
+Pagination._Container = PaginationContainer;
+Pagination._Label = PaginationLabel;
+Pagination._Range = PaginationRange;
+Pagination._Nav = PaginationNav;
 
 InternalPagination.displayName = 'Pagination';
-Pagination.Label.displayName = 'Pagination.Label';
-Pagination.Nav.displayName = 'Pagination.Nav';
-Pagination.Range.displayName = 'Pagination.Range';
+Pagination._Container.displayName = 'Pagination._Container';
+Pagination._Label.displayName = 'Pagination._Label';
+Pagination._Range.displayName = 'Pagination._Range';
+Pagination._Nav.displayName = 'Pagination._Nav';

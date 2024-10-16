@@ -13,8 +13,7 @@ export interface KeyValueSupportingVisualProps
 export const KeyValueSupportingVisual: React.FC<
   KeyValueSupportingVisualProps
 > = ({ children, iconSize }) => {
-  // TODO: cmpTokens
-  const theme = useTheme();
+  const cmpTokens = useTheme().cmp.keyValue.visual;
   const context = React.useContext(KeyValueContext);
   const evalIconSize = iconSize || context.iconSize;
 
@@ -22,7 +21,7 @@ export const KeyValueSupportingVisual: React.FC<
     <Flex.Item flex="0 0 auto" display="flex">
       <IconContext.Provider
         value={{
-          color: theme.alias.color.text.body.base,
+          color: cmpTokens.color.text,
           size: evalIconSize,
           style: {
             position: 'relative',

@@ -7,6 +7,7 @@ export const getButtonGroupSpacingSize = (
   theme: DefaultTheme,
 ) => {
   const sizeForSpacing = FLEX_SPACING_SIZE_MAP[size];
+  // TODO: cmpTokens
   return theme.alias.space.cmp[sizeForSpacing];
 };
 

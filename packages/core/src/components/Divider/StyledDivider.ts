@@ -28,8 +28,7 @@ export const StyledDivider = styled.hr<StyledDividerProps>`
       ? getSpacingPropCss(theme)($margin)
       : defaultSpacing;
     const borderSize = cmpTokens.shape.borderSize;
-    // TODO: cmpTokens add the fill after color (cmpTokens.color.fill[...])
-    const bgColor = $customColor || cmpTokens.color[colorSchemeForTokens];
+    const bgColor = $customColor || cmpTokens.color.fill[colorSchemeForTokens];
     return css`
       display: ${$vertical ? 'inline-flex' : 'flex'};
       margin: ${spacing};

@@ -21,6 +21,7 @@ export interface StyledCellWrapperProps extends Omit<TColDef, 'id'> {
 export const StyledCellWrapper = styled.div<StyledCellWrapperProps>`
   ${({ $clickable, $isEditMode, theme }) => {
     const tokens = theme.cmp.table.cellClickableWrapper;
+    const boxShadow = tokens.elevation.boxShadow;
     return css`
       ${$clickable &&
       css`
@@ -36,9 +37,8 @@ export const StyledCellWrapper = styled.div<StyledCellWrapperProps>`
           &:active {
             background-color: ${tokens.color.background.hovered};
           }
-          // TODO: cmpTokens
           &:focus {
-            box-shadow: ${theme.alias.elevation.boxShadow.base.focused};
+            box-shadow: ${boxShadow};
           }
         `}
       `}
@@ -48,9 +48,8 @@ export const StyledCellWrapper = styled.div<StyledCellWrapperProps>`
         &:has(:focus) {
           background-color: ${tokens.color.background.hovered};
         }
-        // TODO: cmpTokens
         &:not(:has(:focus)) {
-          box-shadow: ${theme.alias.elevation.boxShadow.base.focused};
+          box-shadow: ${boxShadow};
         }
       `}
     `;

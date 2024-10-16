@@ -84,9 +84,7 @@ export const panelSectionBodyMixin = ({
  */
 
 export const panelSectionFooterMixin = ({ theme }: { theme: DefaultTheme }) => {
-  // TODO: cmpTokens
-  const spacingCmpTokes = theme.alias.space.cmp;
   return css`
-    padding: ${spacingCmpTokes.md} ${spacingCmpTokes.lg};
+    padding: ${theme.cmp.panelSection.footer.space.padding};
   `;
 };

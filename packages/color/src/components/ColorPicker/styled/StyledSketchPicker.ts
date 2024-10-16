@@ -6,14 +6,13 @@ import { getFieldControlTypoObj } from '@devoinc/genesys-ui';
 export const StyledSketchPicker = styled(SketchPicker)`
   ${({ theme }) => {
     const aliasTokens = theme.alias;
-    const fieldTokens = aliasTokens.fields;
     const spacingTokens = aliasTokens.space;
     const sketchPickerTokens = theme.cmp.colorPicker.sketchPicker;
     const sketchPickerInputTokens = theme.cmp.colorPicker.sketchPickerInput;
 
     const typoObj = getFieldControlTypoObj({ theme, $size: 'sm' });
     const transitionDuration = sketchPickerTokens.mutation.transitionDuration;
-    const baseTextColor = aliasTokens.color.text.body.base;
+    const baseTextColor = sketchPickerTokens.color.text;
 
     return css`
       position: absolute;
@@ -30,25 +29,27 @@ export const StyledSketchPicker = styled(SketchPicker)`
         outline: none;
         box-shadow: none !important;
         border: solid ${sketchPickerInputTokens.shape.borderSize.base}
-          ${fieldTokens.color.border.base.enabled} !important;
-        border-radius: ${fieldTokens.shape.borderRadius};
+          ${sketchPickerInputTokens.color.border.base} !important;
+        border-radius: ${sketchPickerInputTokens.shape.borderRadius};
         width: auto !important;
         max-width: 2.2rem;
-        background-color: ${fieldTokens.color.background.base.enabled};
+        background-color: ${sketchPickerInputTokens.color.background};
         font-size: ${typoObj['font-size']} !important;
         line-height: ${typoObj['line-height']};
-        color: ${fieldTokens.color.text.base.enabled};
+        color: ${sketchPickerInputTokens.color.text.base};
 
         &:hover {
-          border-color: ${fieldTokens.color.border.base.hovered} !important;
-          color: ${fieldTokens.color.text.base.hovered} !important;
+          border-color: ${sketchPickerInputTokens.color.border
+            .hovered} !important;
+          color: ${sketchPickerInputTokens.color.text.hovered} !important;
         }
 
         &:focus {
-          box-shadow: ${fieldTokens.elevation.boxShadow.base
+          box-shadow: ${sketchPickerInputTokens.elevation.boxShadow
             .focused} !important;
-          border-color: ${fieldTokens.color.border.base.focused} !important;
-          color: ${fieldTokens.color.text.base.focused} !important;
+          border-color: ${sketchPickerInputTokens.color.border
+            .focused} !important;
+          color: ${sketchPickerInputTokens.color.text.focused} !important;
         }
       }
 
@@ -60,7 +61,7 @@ export const StyledSketchPicker = styled(SketchPicker)`
       > div:nth-child(3) > div:first-child input {
         max-width: 4.5rem;
       }
-
+      // TODO: cmpTokens
       > .flexbox-fix:last-child {
         border-color: ${sketchPickerTokens.color.border} !important;
         margin-top: ${spacingTokens.cmp.xxs} !important;

@@ -17,6 +17,7 @@ export const InternalAppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       style={{
         width: '100%',
         height: '100vh',
+        // TODO: cmpTokens
         backgroundColor: theme.alias.color.background.app,
         overflow: 'hidden',
       }}

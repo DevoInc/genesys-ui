@@ -9,10 +9,8 @@ export interface StyledFieldAddonProps
 
 export const StyledFieldAddon = styled.span<StyledFieldAddonProps>`
   ${({ $disabled, $position, $size = 'md', theme }) => {
-    const aliasTokens = theme.alias;
-    const fieldTokens = aliasTokens.fields;
-    const borderWidth = fieldTokens.shape.borderSize.base;
-    // TODO: cmpTokens
+    const cmpTokens = theme.cmp.field.addon;
+    const borderWidth = cmpTokens.shape.borderSize.base;
     return css`
       ${typoMixin({
         theme,
@@ -21,13 +19,13 @@ export const StyledFieldAddon = styled.span<StyledFieldAddonProps>`
       flex: 0 0 auto;
       align-items: center;
       display: flex;
-      border: solid ${fieldTokens.color.border.base.enabled};
+      border: solid ${cmpTokens.color.border.base};
       border-width: ${borderWidth};
-      border-radius: ${fieldTokens.shape.borderRadius};
-      height: ${fieldTokens.size.height[$size]};
-      padding: 0 ${fieldTokens.space.padding.hor[$size]};
-      background: ${aliasTokens.color.background.surface.base.raised};
-      color: ${fieldTokens.color.text.base.enabled};
+      border-radius: ${cmpTokens.shape.borderRadius.base};
+      height: ${cmpTokens.size.height[$size]};
+      padding: 0 ${cmpTokens.space.padding.hor[$size]};
+      background: ${cmpTokens.color.background.base};
+      color: ${cmpTokens.color.text.base};
 
       ${$disabled &&
       css`

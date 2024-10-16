@@ -44,7 +44,11 @@ export const TableWrapper: React.FC = () => {
   }, [rowDefs, data]);
 
   return (
-    <StyledTableWrapper ref={ref} $maxHeight={maxHeight}>
+    <StyledTableWrapper
+      ref={ref}
+      $maxHeight={maxHeight}
+      style={{ opacity: width > 0 ? 1 : 0 }}
+    >
       <StyledTable $height={height} $width={width}>
         <TableHead
           items={columnVirtualizer?.getVirtualItems() ?? []}

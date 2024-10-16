@@ -18,15 +18,13 @@ export interface StyledFieldRequiredMarkProps {
 
 export const StyledFieldRequiredMark = styled.abbr<StyledFieldRequiredMarkProps>`
   ${({ $colorScheme = 'info', theme }) => {
-    // TODO: cmpTokens
-    const { marker } = theme.cmp.label;
-    const spacingTokens = theme.alias.space;
+    const { requiredMark } = theme.cmp.field;
     return css`
-      margin-right: ${spacingTokens.cmp.xxs};
+      margin-right: ${requiredMark.space.marginRight};
       text-decoration: none;
       color: ${colorSchemeFeedback.includes($colorScheme)
-        ? marker.color.text[$colorScheme]
-        : marker.color.text.base};
+        ? requiredMark.color.text[$colorScheme]
+        : requiredMark.color.text.base};
       cursor: help;
     `;
   }};

@@ -8,12 +8,11 @@ export const getIconColorSchemeToken = ({
   colorScheme,
   theme,
 }: {
-  // TODO: cmpTokens add the fill after color (theme.cmp.icon.color.fill[...])
   colorScheme: TAllColorScheme;
   theme: DefaultTheme;
 }) => {
   const colorSchemeForTokens = camelCase(colorScheme);
-  return theme.cmp.icon.color[colorSchemeForTokens];
+  return theme.cmp.icon.color.fill[colorSchemeForTokens];
 };
 
 /**

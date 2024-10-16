@@ -1,22 +1,39 @@
 import * as React from 'react';
 
-import { PaginationContext } from '../../context';
 import { Label, type LabelProps } from '../../../Label';
+import { DEFAULT_TEXTS } from '../../constants';
+import { TTextProps } from '../../declarations';
 
 export interface PaginationLabelProps
   extends Omit<LabelProps, 'children' | 'htmlFor' | 'form'> {
-  content?: LabelProps['children'];
+  texts?: TTextProps;
+  totalItems?: number;
+  pageSize?: number;
+  page?: number;
+  lastPage?: number;
+  content?: string;
 }
 
 export const PaginationLabel: React.FC<PaginationLabelProps> = ({
-  content,
+  texts,
   size,
+  totalItems,
+  pageSize,
+  page,
+  content,
   ...restLabelProps
 }) => {
-  const context = React.useContext(PaginationContext);
+  const { infoTextFn } = { ...DEFAULT_TEXTS, ...texts };
+
+  const infoText = infoTextFn({
+    totalItems: totalItems,
+    pageSize,
+    page,
+  });
+
   return (
-    <Label {...restLabelProps} size={size || context.size}>
-      {content || context.paginationInfoText}
+    <Label {...restLabelProps} size={size}>
+      {content || infoText}
     </Label>
   );
 };

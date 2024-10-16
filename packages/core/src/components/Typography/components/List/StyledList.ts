@@ -24,8 +24,7 @@ export const StyledList = styled.ul<StyledListProps>`
     theme,
   }) => css`
     margin-bottom: ${getSpacingPropCss(theme)($gutterBottom)};
-    // TODO: cmpTokens
-    padding-left: ${theme.alias.space.cmp.md};
+    padding-left: ${theme.cmp.list.space.paddingLeft};
     ${() => {
       if ($listStyle === 'ordered')
         return css`

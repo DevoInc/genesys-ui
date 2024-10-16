@@ -32,12 +32,8 @@ export const InputControlIcon: React.FC<InputControlIconProps> = ({
   style,
   type,
 }) => {
-  // TODO: cmpTokens use the inputControl icon color tokens
   const theme = useTheme();
   const cmpTokens = theme.cmp.inputControl.icon;
-  const fieldTokens = theme.alias.fields;
-  const fieldIconTokens = fieldTokens.icon;
-  const fs = cmpTokens.size.square[size];
   return (
     <StyledInputControlIcon
       aria-hidden
@@ -47,12 +43,8 @@ export const InputControlIcon: React.FC<InputControlIconProps> = ({
       $type={type}
     >
       <Icon
-        color={
-          status === 'base'
-            ? fieldIconTokens.color.text[status]
-            : status && fieldTokens.color.border[status].enabled
-        }
-        size={fs}
+        color={cmpTokens.color.text[status]}
+        size={cmpTokens.size.square[size]}
       >
         {icon}
       </Icon>

@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { usePagination } from '../../hooks';
-import { Pagination } from '../../Pagination';
 import { PaginationRange } from './PaginationRange';
 
 const meta: Meta<typeof PaginationRange> = {
@@ -17,16 +15,21 @@ export default meta;
 type Story = StoryObj<typeof PaginationRange>;
 
 export const Base: Story = {
-  render: (args) =>
+  render: () =>
     (() => {
-      const list = React.useMemo(() => [...Array(150).keys()], []);
-      const paginationHook = usePagination({
-        list,
-        conf: {
-          initialPageSize: 5,
-        },
-      });
+      const [pageSize, setPageSize] = React.useState(10);
 
-      return <Pagination.Range {...args} paginationHook={paginationHook} />;
+      const onPageSizeChange = (newPageSize) => {
+        setPageSize(newPageSize);
+      };
+
+      return (
+        <PaginationRange
+          page={1}
+          pageSize={pageSize}
+          pageSizeOptions={[5, 10, 15]}
+          onPageSizeChange={onPageSizeChange}
+        />
+      );
     })(),
 };

@@ -1,5 +1,37 @@
 # Changelog
 
+## [13.0.0](https://github.com/DevoInc/genesys-ui/compare/v12.4.1...v13.0.0) (2024-10-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **pagination:** refactor pagination component and new example table pagination
+
+### Features
+
+* **pagination:** refactor pagination component and new example table pagination ([f58dc76](https://github.com/DevoInc/genesys-ui/commit/f58dc769fa4168054b32b79ac6cb66f84348a3eb))
+
+## [12.4.1](https://github.com/DevoInc/genesys-ui/compare/v12.4.0...v12.4.1) (2024-10-15)
+
+
+### Bug Fixes
+
+* **table:** Tables grow from 0 pixels to occupy the entire width, creating a strange visual effect. ([591bb4e](https://github.com/DevoInc/genesys-ui/commit/591bb4ee2e28a6f42ceb38d90fe8b7e8e5f90a2d))
+
+## [12.4.0](https://github.com/DevoInc/genesys-ui/compare/v12.3.1...v12.4.0) (2024-10-15)
+
+
+### Features
+
+* adapted components to new component tokens from genesys-brand-devo. ([927c795](https://github.com/DevoInc/genesys-ui/commit/927c7953c302fd6a0c6afc57579c63b5d80b9580))
+* use of component tokens instead of alias ones ([606a044](https://github.com/DevoInc/genesys-ui/commit/606a044d771d958064cebdae0c301b379bbcf575))
+* use of component tokens instead of alias ones and fixed the readOnly state of the InputControl ([2239e1a](https://github.com/DevoInc/genesys-ui/commit/2239e1abab9a4642a589ac5db134c08b541f150d))
+
+
+### Bug Fixes
+
+* fixed pipeline dist ([a64bd7c](https://github.com/DevoInc/genesys-ui/commit/a64bd7cde466eb612ad9e67e89607fffa6378e6a))
+
 ## [12.3.1](https://github.com/DevoInc/genesys-ui/compare/v12.3.0...v12.3.1) (2024-10-09)
 
 

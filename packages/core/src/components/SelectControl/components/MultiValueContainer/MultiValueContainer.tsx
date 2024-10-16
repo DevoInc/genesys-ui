@@ -72,6 +72,7 @@ export const MultiValueContainer = <Option extends TSelectOption>({
               height: 0.8rem;
               overflow: hidden;
               transform: translate(0, -50%);
+              // TODO: cmpTokens
               transition: opacity ease
                 ${theme.alias.mutation.transitionDuration.opacity.md};
             `}

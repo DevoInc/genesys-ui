@@ -35,21 +35,17 @@ export interface StyledUploadFilesProps {
 
 export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
   ${({ disabled, height, maxHeight, showLabelIcon, theme }) => {
-    // TODO: cmpTokens
-    const aliasTokens = theme.alias;
     const cmpTokens = theme.cmp.uploadFiles;
-    const typoTokens = aliasTokens.typographies.typo;
-    const spacingTokens = aliasTokens.space;
     const minHeight = cmpTokens.size.minHeight;
-    const bgTokens = aliasTokens.color.background.feedback;
-    const colorTokens = aliasTokens.color.text;
-    const bgSurface = aliasTokens.color.background.surface.base.base;
-    const linkTokens = theme.cmp.link;
-    const buttonTokens = theme.cmp.button;
     const borderWidth = cmpTokens.shape.borderSize;
     const borderRadius = cmpTokens.shape.borderRadius;
-    const evalFillSvgColor = colorTokens.body.base.replace('#', '%23');
+    const evalFillSvgColor = cmpTokens.labelIcon.color.fill.base.replace(
+      '#',
+      '%23',
+    );
     const bgImage = `url("data:image/svg+xml,%3Csvg aria-hidden='true' aria-label='GIDragDrop' stroke='currentColor' fill='${evalFillSvgColor}' stroke-width='0' data-name='GIDragDrop' data-tags='' viewBox='0 0 32 32' role='img' width='32px' height='32px' xmlns='http://www.w3.org/2000/svg' style='color: inherit; pointer-events: none; position: relative;'%3E%3Ctitle%3EGIDragDrop%3C/title%3E%3Cpath d='M15.506 5.503h-10.141c-0.278 0-0.506 0.225-0.506 0.506 0 0.278 0.225 0.506 0.506 0.506h10.141c0.278 0 0.506-0.225 0.506-0.506s-0.228-0.506-0.506-0.506z'%3E%3C/path%3E%3Cpath d='M15.506 8.531h-10.141c-0.278 0-0.506 0.225-0.506 0.506 0 0.278 0.225 0.506 0.506 0.506h10.141c0.278 0 0.506-0.225 0.506-0.506 0-0.278-0.228-0.506-0.506-0.506z'%3E%3C/path%3E%3Cpath d='M16.012 12.069c0-0.278-0.225-0.506-0.506-0.506h-10.141c-0.278 0-0.506 0.225-0.506 0.506 0 0.278 0.225 0.506 0.506 0.506h10.141c0.278-0.003 0.506-0.228 0.506-0.506z'%3E%3C/path%3E%3Cpath d='M5.366 14.594c-0.278 0-0.506 0.225-0.506 0.506 0 0.278 0.225 0.506 0.506 0.506h5.634c0.278 0 0.506-0.225 0.506-0.506 0-0.278-0.225-0.506-0.506-0.506h-5.634z'%3E%3C/path%3E%3Cpath d='M25.128 25.434c0.097 0 0.194-0.019 0.303-0.028 0-2.334 0.003-4.641-0.003-6.947 0-0.353-0.253-0.572-0.581-0.569-0.334 0.003-0.556 0.219-0.559 0.587-0.009 1.281-0.006 2.563-0.006 3.844 0 0.337 0 0.675 0 1.063-0.097-0.044-0.125-0.047-0.141-0.066-1.256-1.256-2.516-2.509-3.762-3.772l-0.956-0.956c0 0-0.259-0.247-0.344-0.331-2.7-2.7-0.697-0.697-3.397-3.397-0.441-0.441-0.747-0.5-1.034-0.206-0.284 0.291-0.219 0.588 0.228 1.034 4.306 4.306 3.906 3.906 8.212 8.213 0.1 0.1 0.191 0.206 0.347 0.378-0.259 0-0.409 0-0.559 0-1.447 0-2.891-0.003-4.337 0.003-0.516 0.003-0.809 0.422-0.594 0.831 0.141 0.272 0.394 0.322 0.678 0.319 2.169-0.003 4.337 0 6.506 0z'%3E%3C/path%3E%3Cpath d='M15.297 20.153c0.009-0.363-0.266-0.584-0.728-0.587-0.063 0-0.128 0-0.191 0-3.753 0-7.509 0.003-11.262 0-1.225 0-1.956-0.738-1.959-1.972-0.003-4.844-0.003-9.691 0-14.534 0-1.153 0.753-1.903 1.909-1.903 4.2 0 8.403 0 12.603 0v3.388c0 0.278 0.225 0.506 0.506 0.506h3.391c0.003 4.191 0 8.381-0.006 12.572 0 0.009 0 0.016 0 0.025l1.134 0.225c0.003-0.044 0.006-0.091 0.006-0.134 0.022-4.381 0.019-8.762 0.016-13.144 0-0.016 0.003-0.031 0.003-0.050 0-0.016 0-0.034-0.003-0.050 0-0.269 0-0.538 0-0.806v-0.597c0-0.356-0.219-0.575-0.353-0.706l-2.078-2.050c-0.109-0.106-0.313-0.325-0.675-0.325h-0.928c-0.144 0-0.288 0-0.428 0-0.025-0.003-0.053-0.006-0.081-0.006s-0.053 0.003-0.078 0.006c-4.369-0.013-8.738-0.009-13.106 0-1.731 0.003-2.975 1.25-2.978 2.981-0.013 4.909-0.013 9.816 0 14.725 0.003 1.762 1.278 2.997 3.044 3 2.587 0.003 5.175 0 7.762 0 0.147 0 0.294 0 0.453 0 0.006 0.125 0.016 0.197 0.016 0.272 0 0.622-0.006 1.244 0.003 1.866 0.006 0.353 0.234 0.591 0.553 0.603 0.325 0.012 0.566-0.216 0.591-0.559 0.009-0.153 0.003-0.303 0.003-0.456 0-0.566 0-1.131 0-1.722 0.753 0 1.45 0.003 2.147 0 0.441-0.006 0.706-0.219 0.716-0.566zM19.563 3.159v0.553h0.003c0 0.109 0 0.219 0 0.328h-2.884v-2.884c0.172 0 0.344 0 0.516 0v0h0.319l2.047 2.003z'%3E%3C/path%3E%3Cpath d='M31.475 14.797c0.359-0.028 0.534-0.278 0.509-0.916-0.038-0.606-0.35-1.266-0.913-1.803-0.319-0.303-0.656-0.319-0.903-0.059-0.244 0.253-0.212 0.588 0.103 0.897 0.341 0.334 0.531 0.731 0.572 1.203 0.038 0.475 0.256 0.706 0.631 0.678z'%3E%3C/path%3E%3Cpath d='M12.425 29c-0.019-0.328-0.247-0.478-0.506-0.512-0.369-0.006-0.631 0.231-0.631 0.572 0 0.913 0.359 1.672 1.059 2.256 0.253 0.212 0.575 0.169 0.784-0.059 0.2-0.219 0.213-0.572-0.022-0.788-0.431-0.403-0.65-0.884-0.684-1.469z'%3E%3C/path%3E%3Cpath d='M22.478 12.428c0.341 0.012 0.684 0.003 1.025 0.003 0 0 0 0 0 0.003 0.166 0 0.328 0 0.494 0 0.178 0 0.356 0.006 0.531-0.003 0.347-0.019 0.591-0.256 0.587-0.569 0-0.313-0.244-0.569-0.587-0.575-0.684-0.012-1.366-0.009-2.050 0-0.347 0.006-0.584 0.256-0.584 0.572 0 0.322 0.231 0.556 0.584 0.569z'%3E%3C/path%3E%3Cpath d='M31.994 25.559c0-0.341 0.009-0.684-0.003-1.025-0.012-0.353-0.256-0.587-0.572-0.581s-0.566 0.244-0.572 0.587c-0.012 0.684-0.012 1.366 0.003 2.050 0.006 0.341 0.269 0.587 0.575 0.584 0.313-0.003 0.553-0.244 0.566-0.591 0.016-0.344 0.006-0.684 0.003-1.025 0 0 0 0 0 0z'%3E%3C/path%3E%3Cpath d='M16.672 30.85c-0.328-0.009-0.659-0.003-0.988-0.003-0.341 0-0.684-0.009-1.025 0.003-0.35 0.012-0.591 0.244-0.6 0.559-0.009 0.334 0.228 0.578 0.603 0.584 0.672 0.009 1.341 0.009 2.013 0 0.353-0.006 0.594-0.241 0.603-0.553 0.009-0.325-0.244-0.581-0.606-0.591z'%3E%3C/path%3E%3Cpath d='M30.847 22.431c0.009 0.372 0.253 0.622 0.581 0.619 0.316-0.003 0.556-0.241 0.563-0.594 0.013-0.684 0.013-1.366 0-2.050-0.006-0.344-0.262-0.584-0.575-0.581s-0.556 0.247-0.569 0.594c-0.012 0.328-0.003 0.659-0.003 0.988 0.003 0.344-0.006 0.684 0.003 1.025z'%3E%3C/path%3E%3Cpath d='M31.434 15.709c-0.325-0.006-0.578 0.244-0.584 0.612-0.009 0.669-0.009 1.341 0 2.009 0.006 0.35 0.244 0.584 0.563 0.591 0.325 0.006 0.563-0.216 0.578-0.569 0.012-0.328 0.003-0.656 0.003-0.988 0 0 0 0 0.003 0 0-0.341 0.006-0.684-0.003-1.025-0.009-0.381-0.234-0.628-0.559-0.631z'%3E%3C/path%3E%3Cpath d='M31.984 28.569c-0.047-0.325-0.256-0.484-0.575-0.481-0.347 0.003-0.566 0.253-0.556 0.666 0.012 0.519-0.075 1-0.397 1.428-0.241 0.319-0.197 0.669 0.078 0.869 0.269 0.194 0.616 0.122 0.856-0.194 0.409-0.541 0.625-1.15 0.597-1.831 0-0.156 0.016-0.309-0.003-0.456z'%3E%3C/path%3E%3Cpath d='M27.581 12.431c0.353 0 0.709 0.009 1.063-0.003 0.35-0.012 0.587-0.25 0.591-0.563 0.003-0.316-0.234-0.572-0.578-0.578-0.681-0.012-1.366-0.012-2.047 0-0.353 0.006-0.581 0.244-0.584 0.566-0.003 0.331 0.216 0.559 0.572 0.575 0.325 0.012 0.656 0.003 0.984 0.003z'%3E%3C/path%3E%3Cpath d='M20.766 30.847c-0.656-0.006-1.316-0.009-1.972 0-0.375 0.006-0.609 0.244-0.603 0.584 0.006 0.331 0.222 0.547 0.587 0.563 0.341 0.012 0.684 0.003 1.025 0.003 0 0 0 0 0 0 0.328 0 0.659 0.009 0.988-0.003 0.372-0.012 0.619-0.253 0.613-0.581-0.012-0.328-0.259-0.559-0.637-0.566z'%3E%3C/path%3E%3Cpath d='M24.928 30.85c-0.681-0.012-1.366-0.012-2.047 0-0.35 0.006-0.572 0.25-0.569 0.578 0 0.328 0.219 0.55 0.581 0.563 0.341 0.013 0.681 0.003 1.025 0.003 0 0 0 0.003 0 0.003 0.328 0 0.656 0.006 0.988-0.003 0.375-0.009 0.616-0.244 0.613-0.578-0.009-0.319-0.238-0.559-0.591-0.566z'%3E%3C/path%3E%3Cpath d='M12.431 24.953c-0.012-0.356-0.234-0.578-0.563-0.584-0.325-0.003-0.572 0.219-0.578 0.569-0.012 0.681-0.012 1.366 0 2.047 0.006 0.356 0.238 0.578 0.566 0.584 0.328 0.003 0.563-0.216 0.575-0.569 0.012-0.341 0.003-0.681 0.003-1.025-0.003-0.337 0.006-0.678-0.003-1.022z'%3E%3C/path%3E%3Cpath d='M29.034 30.847c-0.669-0.009-1.341-0.009-2.009 0-0.372 0.006-0.606 0.253-0.597 0.591 0.009 0.325 0.231 0.541 0.594 0.55 0.328 0.009 0.656 0.003 0.984 0.003 0.341 0 0.681 0.009 1.025-0.003 0.369-0.012 0.587-0.222 0.594-0.55 0.009-0.337-0.222-0.584-0.591-0.591z'%3E%3C/path%3E%3C/svg%3E")`;
+    const linkTokens = theme.cmp.link;
+    const buttonTokens = theme.cmp.button;
 
     return css`
   /* -----------------------------------------------------------------------------
@@ -65,11 +61,9 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
     position: relative;
     padding-top: 1em;
     /* base font size for whole component */
-      // TODO: cmpTokens
-    font-size: ${typoTokens.fontSize.body.md};
+    font-size: ${cmpTokens.typo.fontSize.base};
     /* base line height */
-      // TODO: cmpTokens
-    line-height: ${typoTokens.lineHeight.body.md};
+    line-height: ${cmpTokens.typo.lineHeight.base};
     /* will increase font weight a bit on Safari */
     text-align: left;
     text-rendering: optimizeLegibility;
@@ -187,8 +181,7 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
       height: 8em;
       margin-left: -4em;
       margin-top: -4em;
-        // TODO: cmpTokens
-      background-color: ${bgTokens.primary.base};
+      background-color: ${cmpTokens.dripBlob.color.background};
       border-radius: 50%;
       will-change: transform, opacity;
     }
@@ -208,7 +201,7 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
       right: 1em;
       top: 0;
       margin: 0;
-      color: ${colorTokens.body.base};
+      color: ${cmpTokens.drop.color.text};
       will-change: transform, opacity;
       z-index: 5;
 
@@ -216,8 +209,8 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
         display: block;
         padding: ${showLabelIcon ? `${getSpacingPropCss(theme)('layout-md')} 0 1em 0` : '1em 0'} ;
         margin: 0;
-        font-size: ${aliasTokens.typo.fontSize.body.md};
-        line-height: ${aliasTokens.typo.lineHeight.body.md};
+        font-size: ${cmpTokens.typo.fontSize.base};
+        line-height: ${cmpTokens.typo.lineHeight.base};
         font-weight: normal;
         text-align: center;
         cursor: ${disabled ? 'not-allowed' : 'pointer'};
@@ -287,8 +280,7 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
       flex-direction: column;
       align-items: flex-start;
       flex: 1;
-        // TODO: cmpTokens
-      margin: 0 ${spacingTokens.cmp.xxs} 0 0;
+      margin: ${cmpTokens.fileInfo.space.margin};
       min-width: 0;
       will-change: transform, opacity;
       pointer-events: none;
@@ -305,7 +297,7 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
         overflow: hidden;
         white-space: nowrap;
         width: 100%;
-        color: ${colorTokens.heading.base};
+        color: ${cmpTokens.fileInfo.color.text.base.main};
       }
 
       .filepond--file-info-sub {
@@ -342,7 +334,7 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
       .filepond--file-status-main {
         font-size: 0.9em;
         line-height: 1.2;
-        color: ${colorTokens.heading.base};
+        color: ${cmpTokens.fileStatus.color.text.base.main};
       }
 
       .filepond--file-status-sub {
@@ -381,7 +373,7 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
       height: 100%;
       align-items: flex-start;
       padding: 0.5625em 0.5625em;
-      color: ${aliasTokens.color.text.body.base};
+      color: ${cmpTokens.file.color.text.base};
       border-radius: ${borderRadius};
 
       .filepond--file-status {
@@ -409,7 +401,7 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
         top: 0.74em;
         right: 0.7em;
         font-size: 0.9em;
-        color: ${colorTokens.feedback.secondary.base};
+        color: ${cmpTokens.fileProgress.color.text.base};
         transform: scale(1.5);
       }
 
@@ -469,7 +461,7 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
       }
 
       > .filepond--panel .filepond--panel-bottom {
-        box-shadow: ${aliasTokens.elevation.boxShadow.depth.raised};
+        box-shadow: ${cmpTokens.itemPanel.elevation.boxShadow};
       }
 
       > .filepond--file-wrapper {
@@ -653,7 +645,7 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
       position: static;
       width: 1.625em;
       height: 1.625em;
-      color: ${aliasTokens.color.text.body.inverse};
+      color: ${cmpTokens.panelProgress.color.text.base};
       margin: 0;
       pointer-events: none;
       will-change: transform, opacity;
@@ -720,37 +712,37 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
   /* Item Panel - Data - FilePond */
 
   .filepond--item-panel {
-    background-color: ${bgSurface};
+    background-color: ${cmpTokens.itemPanel.color.background.base};
   }
 
   [data-filepond-item-state*='complete'] {
     .filepond--item-panel {
-      background-color: ${bgTokens.success.weaker};
+      background-color: ${cmpTokens.itemPanel.color.background.success};
     }
     .filepond--file-info .filepond--file-info-main,
     .filepond--file-status .filepond--file-status-main {
-      color: ${colorTokens.feedback.success.strong}
+      color: ${cmpTokens.fileInfo.color.text.success.main}
     }
 
     .filepond--file-info .filepond--file-info-sub,
     .filepond--file-status .filepond--file-status-sub {
-      color: ${colorTokens.feedback.success.base}
+      color: ${cmpTokens.fileInfo.color.text.success.sub}
     }
   }
 
   [data-filepond-item-state*='invalid'],
   [data-filepond-item-state*='error'] {
     .filepond--item-panel {
-      background-color: ${bgTokens.error.weak};
+      background-color: ${cmpTokens.itemPanel.color.background.error};
     }
     .filepond--file-info .filepond--file-info-main,
     .filepond--file-status .filepond--file-status-main {
-      color: ${colorTokens.feedback.error.strong}
+      color: ${cmpTokens.fileInfo.color.text.error.main}
     }
 
     .filepond--file-info .filepond--file-info-sub,
     .filepond--file-status .filepond--file-status-sub {
-      color: ${colorTokens.feedback.error.base}
+      color: ${cmpTokens.fileInfo.color.text.error.sub}
     }
   }
 
@@ -798,19 +790,19 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
       opacity: 1 !important;
       color: ${
         theme.meta.scheme === 'dark'
-          ? aliasTokens.color.background.surface.blend.dark.stronger
-          : aliasTokens.color.background.surface.blend.light.strongest
+          ? cmpTokens.imagePreview.color.text.dark
+          : cmpTokens.imagePreview.color.text.light
       };
     }
 
     &-success {
       mix-blend-mode: normal;
-      color: ${aliasTokens.color.background.feedback.error.stronger};
+      color: ${cmpTokens.imagePreview.color.text.success};
     }
 
     &-failure {
       mix-blend-mode: normal;
-      color: ${aliasTokens.color.background.feedback.error.weak};
+      color: ${cmpTokens.imagePreview.color.text.error};
     }
   }
 
@@ -860,7 +852,7 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
     height: 100%;
     width: 100%;
     pointer-events: none;
-    background: ${bgSurface};
+    background: ${cmpTokens.imagePreview.color.background};
 
     /* will be animated */
     will-change: transform, opacity;
@@ -877,7 +869,7 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
 
     &[data-transparency-indicator='grid'] img,
     &[data-transparency-indicator='grid'] canvas {
-      background-color: ${bgSurface};
+      background-color: ${cmpTokens.imageClip.color.background};
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' fill='%23eee'%3E%3Cpath d='M0 0 H50 V50 H0'/%3E%3Cpath d='M50 50 H100 V100 H50'/%3E%3C/svg%3E");
       background-size: 1.25em 1.25em;
     }

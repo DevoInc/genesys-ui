@@ -282,6 +282,7 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
 
         &:focus::-webkit-slider-thumb,
         &:hover::-webkit-slider-thumb {
+          // TODO: cmpTokens
           box-shadow: ${aliasTokens.handlers.elevation.boxShadow.hovered};
         }
       `};
