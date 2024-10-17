@@ -74,7 +74,7 @@ export const InternalTabsItem: React.FC<Resolve<TabsItemProps>> = ({
         target={target}
         tooltip={tooltip}
       >
-        {icon && <TabsItemIcon>{icon}</TabsItemIcon>}
+        {icon && <TabsItemIcon size={evalSize}>{icon}</TabsItemIcon>}
         {label}
       </TabsItemLink>
       {onClose && (
