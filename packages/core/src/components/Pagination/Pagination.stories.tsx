@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import type { TItem } from './declarations';
-import { Pagination } from './Pagination';
-import { usePagination } from './hooks';
+import { Pagination } from '../Pagination';
+import { dataRangePagination } from './helpers';
 
 const itemStyle: React.CSSProperties = {
   margin: '1rem 0',
@@ -18,40 +17,40 @@ const itemStyle: React.CSSProperties = {
 const meta: Meta<typeof Pagination> = {
   title: 'Components/Navigation/Pagination',
   component: Pagination,
-  args: {
-    size: 'md',
-  },
+  args: {},
 };
 
 export default meta;
 type Story = StoryObj<typeof Pagination>;
 
-export const Base: Story = {
+export const UsePagination: Story = {
   render: () =>
     (() => {
-      const list = React.useMemo(() => [...Array(150).keys()], []);
-      const paginationHook = usePagination({
-        list,
-        conf: {
-          initialPageSize: 5,
-        },
-      });
+      const list = React.useMemo(() => [...Array(20).keys()], []);
+      const [page, setPage] = React.useState(0);
+      const [pageSize, setPageSize] = React.useState(10);
 
       return (
         <>
-          <Pagination paginationHook={paginationHook}>
-            <Pagination.Label />
-            <Pagination.Range />
-            <Pagination.Nav />
-          </Pagination>
-          <ul>
-            {paginationHook.pageData.map((data: TItem, idx: number) => (
-              <li key={idx} style={itemStyle}>
-                Item {(data as number) + 1}
-              </li>
-            ))}
-          </ul>
+          <Pagination
+            totalItems={list.length}
+            page={page}
+            pageSize={pageSize}
+            onChange={(newPage: number) => {
+              setPage(newPage);
+            }}
+            onPageSizeChange={(newPageSize: number) => {
+              setPage(Math.floor((page * pageSize) / newPageSize))
+              setPageSize(newPageSize);
+            }}
+          />
+          {dataRangePagination(list, page, pageSize).map((data, idx) => (
+            <p key={idx} style={itemStyle}>
+              Item {Number(data) + 1}
+            </p>
+          ))}
         </>
       );
     })(),
+  parameters: { controls: false },
 };

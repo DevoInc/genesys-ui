@@ -1,36 +1,48 @@
 import styled, { css } from 'styled-components';
 
-export const StyledCollapseContainerButton = styled.button`
-  ${({ theme }) => {
-    const cmpTokens = theme.cmp.collapse.button;
+interface Props {
+  $isDraggable?: boolean;
+}
 
-    return css`
-      all: unset;
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      cursor: pointer;
+export const StyledCollapseContainerButton = styled.button<Props>`
+  all: unset;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  cursor: ${({ $isDraggable = false }) => ($isDraggable ? 'grab' : 'pointer')};
 
-      &::after,
-      &::before {
-        content: '';
-        position: absolute;
-        inset: 0 0 0 0;
-        transition: all ease ${cmpTokens.mutation.transitionDuration};
-        pointer-events: none;
-        background-color: ${cmpTokens.color.background.base};
-      }
+  ${({ $isDraggable }) =>
+    $isDraggable
+      ? css`
+          &:active {
+            cursor: grabbing;
+          }
+        `
+      : ''}
 
-      &:hover::before {
-        background-color: ${cmpTokens.color.background.hovered};
-      }
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 0 0;
+    transition: all ease
+      ${({ theme }) =>
+        theme.cmp.collapse.button.mutation.transitionDuration}0.15s;
+    pointer-events: none;
+    background-color: ${({ theme }) =>
+      theme.cmp.collapse.button.color.background.base};
+  }
 
-      &:focus-visible {
-        outline: none;
-        box-shadow: ${cmpTokens.elevation.bosShadow.focused};
-      }
-    `;
-  }}
+  &:hover::before {
+    background-color: ${({ theme }) =>
+      theme.cmp.collapse.button.color.background.hovered};
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: ${({ theme }) =>
+      theme.cmp.collapse.button.elevation.bosShadow.focused};
+  }
 `;
