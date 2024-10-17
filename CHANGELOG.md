@@ -1,5 +1,22 @@
 # Changelog
 
+## [13.1.0](https://github.com/DevoInc/genesys-ui/compare/v13.0.0...v13.1.0) (2024-10-17)
+
+
+### Features
+
+* **Collapse:** added appendContent and draggable props ([0ff5d9a](https://github.com/DevoInc/genesys-ui/commit/0ff5d9aeee0231dac4497a9f01e81cd13a137ad0))
+
+
+### Bug Fixes
+
+* the size for Stepper separator icon was not defined and caused spacing problems. ([1dd6ef9](https://github.com/DevoInc/genesys-ui/commit/1dd6ef9348d779c4442dae124a1eb002f14be5a0))
+
+
+### Vulnerabilities
+
+* **deps:** bump cookie and express ([#87](https://github.com/DevoInc/genesys-ui/issues/87)) ([9718152](https://github.com/DevoInc/genesys-ui/commit/9718152a861f2edfdb0e78adf8e8def77a47185b))
+
 ## [13.0.0](https://github.com/DevoInc/genesys-ui/compare/v12.4.1...v13.0.0) (2024-10-16)
 
 
