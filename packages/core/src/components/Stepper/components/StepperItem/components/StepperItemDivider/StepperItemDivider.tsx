@@ -9,12 +9,14 @@ export interface StepperItemDividerProps extends Omit<IconProps, 'children'> {}
 
 export const StepperItemDivider: React.FC<StepperItemDividerProps> = ({
   style,
+  size,
   ...restIconProps
 }) => {
   const theme = useTheme();
   return (
     <Icon
       {...restIconProps}
+      size="xxxs"
       style={{
         color: theme.cmp.stepper.separator.color.background,
         marginRight: theme.cmp.stepper.separator.space.marginHor,
