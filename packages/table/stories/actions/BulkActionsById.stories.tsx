@@ -13,7 +13,9 @@ import {
   TColDef,
   updateColDefsWithOrderStruct,
   BasicTable,
+  TRowDef,
 } from '../../src';
+import { Holo } from '@devoinc/holo';
 
 const meta: Meta<typeof BasicTable> = {
   title: 'Components/Layout/Table/actions/BulkActions/by Id',
@@ -26,14 +28,18 @@ const meta: Meta<typeof BasicTable> = {
 export default meta;
 type Story = StoryObj<typeof BasicTable>;
 
-const initialData = Array.from({ length: 10 }).map((_, index) => ({
-  bulk: false,
-  text: `text ${index}`,
-  num: index + 10,
-  bool: false,
-  text2: `other text ${index}`,
-  disabled: index === 3,
-}));
+const initialData = Holo.of()
+  .addType('index', (args = {}) => String(args.index))
+  .addType('textIndex', (args = {}) => `${args.index}`)
+  .addType('numIndex', (args = {}) => args.index + 10)
+  .schema({
+    id: 'index',
+    bulk: 'bool',
+    textIndex: 'textIndex',
+    numIndex: 'numIndex',
+  })
+  .repeat(10)
+  .generate();
 
 const BulkExample = () => {
   const [data, setData] = React.useState(initialData);
@@ -49,6 +55,16 @@ const BulkExample = () => {
     data: dataOrdered,
     initialSelection: [],
   });
+
+  const rowDefs: TRowDef[] = dataOrdered.map((d) => {
+    return (
+      d.bulk && {
+        id: d.id,
+        preset: 'selected',
+      }
+    );
+  });
+
   return (
     <Flex flexDirection="column" gap="cmp-md">
       <Flex.Item>
@@ -81,6 +97,7 @@ const BulkExample = () => {
           onSort={(colDef: TColDef) => {
             onSort(colDef.id);
           }}
+          rowDefs={rowDefs}
           colDefs={updateColDefsWithOrderStruct(
             [
               {
@@ -154,14 +171,12 @@ const BulkExample = () => {
                 } as TBulkContext,
               },
               {
-                id: 'text',
+                id: 'textIndex',
                 cellRenderer: TextRenderer,
                 headerName: 'Text',
                 sortable: true,
               },
-              { id: 'num', cellRenderer: TextRenderer, headerName: 'Num' },
-              { id: 'bool', cellRenderer: BooleanRenderer, headerName: 'Bool' },
-              { id: 'text2', cellRenderer: TextRenderer, headerName: 'Text 2' },
+              { id: 'numIndex', cellRenderer: TextRenderer, headerName: 'Num' },
             ],
             orderStruct,
           )}
