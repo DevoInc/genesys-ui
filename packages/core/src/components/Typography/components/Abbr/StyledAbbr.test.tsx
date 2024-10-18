@@ -10,9 +10,9 @@ describe('components', () => {
       test('default styles', () => {
         const { container } = render(<StyledAbbr>{'Hello'}</StyledAbbr>);
         expect(container.getElementsByTagName('abbr')[0]).toHaveStyle(`
-        text-decoration: underline dotted;
-        cursor: help;
-    `);
+          text-decoration: underline dotted;
+          cursor: help;
+        `);
       });
     });
   });

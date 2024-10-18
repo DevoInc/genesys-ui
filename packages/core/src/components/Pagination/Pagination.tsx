@@ -31,8 +31,7 @@ export const InternalPagination: React.FC<PaginationProps> = ({
   ...restHFlexProps
 }) => {
   return (
-    // HFlex to Pagination.Container
-    <PaginationContainer
+    <Pagination._Container
       {...restHFlexProps}
       as={as}
       size={size}
@@ -66,7 +65,7 @@ export const InternalPagination: React.FC<PaginationProps> = ({
         goToPreviousPage={goToPreviousPage}
         onChange={onChange}
       />
-    </PaginationContainer>
+    </Pagination._Container>
   );
 };
 
