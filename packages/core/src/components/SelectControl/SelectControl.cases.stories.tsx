@@ -81,7 +81,7 @@ export const SingleOptionWithReset: Story = {
             {...props}
             //menuIsOpen
             onChange={(opt: TSelectOption) => {
-              setValue(opt.value)
+              setValue(opt.value);
             }}
             options={[
               { value: 1, label: 'Option one' },
@@ -224,6 +224,7 @@ export const MultipleBasic: Story = {
           onChange={(val) => setValue(val)}
           options={getOptions(50)}
           value={value}
+          maxMenuWidth="120px"
         />
       );
     })(args),

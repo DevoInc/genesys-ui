@@ -85,7 +85,7 @@ export interface ITypography {
   textAlign?: React.CSSProperties['textAlign'];
   /** The number of lines before get truncated text with overflow to ellipsis
    * (Css line-clamp property). */
-  truncateLine?: number;
+  truncateLine?: React.CSSProperties['lineClamp'];
   /** Definition of variant and size in the same value: hero-sm, heading-h1,
    * body-sm... etc. */
   format?: TTypographyFormat;

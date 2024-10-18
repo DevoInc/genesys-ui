@@ -20,12 +20,16 @@ export const InternalKeyValue: React.FC<KeyValueProps> = ({
   id,
   invertOrder,
   keyContent,
+  keyTruncateLine = 1,
+  keyWidth,
   role,
   size = 'md',
   supportingVisual,
   tooltip,
   unit,
   valueContent,
+  valueTruncateLine = 1,
+  valueWidth,
 }) => (
   <KeyValueContainer
     format={format}
@@ -51,6 +55,24 @@ export const InternalKeyValue: React.FC<KeyValueProps> = ({
                 ? 2
                 : 1
         }
+        truncateLine={
+          invertOrder && boldScheme === 'value'
+            ? keyTruncateLine
+            : boldScheme === 'value'
+              ? valueTruncateLine
+              : invertOrder
+                ? valueTruncateLine
+                : keyTruncateLine
+        }
+        width={
+          invertOrder && boldScheme === 'value'
+            ? keyWidth
+            : boldScheme === 'value'
+              ? valueWidth
+              : invertOrder
+                ? valueWidth
+                : keyWidth
+        }
         size={size}
       >
         {boldScheme === 'key' ? keyContent : valueContent}
@@ -64,6 +86,24 @@ export const InternalKeyValue: React.FC<KeyValueProps> = ({
               : invertOrder
                 ? 1
                 : 2
+        }
+        truncateLine={
+          invertOrder && boldScheme === 'value'
+            ? keyTruncateLine
+            : boldScheme === 'value'
+              ? keyTruncateLine
+              : invertOrder
+                ? keyTruncateLine
+                : valueTruncateLine
+        }
+        width={
+          invertOrder && boldScheme === 'value'
+            ? keyWidth
+            : boldScheme === 'value'
+              ? keyWidth
+              : invertOrder
+                ? keyWidth
+                : valueWidth
         }
         size={size}
         unit={unit}

@@ -3,6 +3,7 @@ import * as React from 'react';
 import type { TTypoBodySize } from '../../declarations';
 import { PickUnion } from '../../typeFunctions';
 
+import type { ITypography } from '../Typography/declarations';
 export type TKeyValueBoldScheme = 'key' | 'value';
 export type TKeyValueFormat = 'base' | 'row' | 'column';
 
@@ -19,6 +20,11 @@ export interface IKeyValue {
   invertOrder?: boolean;
   /** The content for the key block. */
   keyContent?: React.ReactNode;
+  /** The number of lines before get truncated text with overflow to ellipsis
+   * (Css line-clamp property). */
+  keyTruncateLine?: ITypography['truncateLine'];
+  /** The width for the key block. */
+  keyWidth?: React.CSSProperties['width'];
   /** The size of the component which defines font-size, spacing, line-height...
    * etc. */
   size?: PickUnion<TTypoBodySize, 'xs' | 'sm' | 'md'>;
@@ -29,6 +35,11 @@ export interface IKeyValue {
   unit?: React.ReactNode;
   /** The content for the value block. */
   valueContent?: React.ReactNode;
+  /** The width for the value block. */
+  valueWidth?: React.CSSProperties['width'];
+  /** The number of lines before get truncated text with overflow to ellipsis
+   * (Css line-clamp property). */
+  valueTruncateLine?: ITypography['truncateLine'];
   /** The supporting visual: icon, image, SVG... etc. at the beginning of the
    * component (if it's React Icon component from genesys-icons library it will
    * inherit the perfect size from context). */

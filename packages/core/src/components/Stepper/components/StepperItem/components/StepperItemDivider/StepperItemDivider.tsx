@@ -16,7 +16,7 @@ export const StepperItemDivider: React.FC<StepperItemDividerProps> = ({
   return (
     <Icon
       {...restIconProps}
-      size="xxxs"
+      size={size || 'xxxs'}
       style={{
         color: theme.cmp.stepper.separator.color.background,
         marginRight: theme.cmp.stepper.separator.space.marginHor,

@@ -19,7 +19,13 @@ export const KeyValueTextContainer: React.FC<KeyValueTextContainerProps> = ({
   return (
     <Flex
       flexDirection={evalFormat === 'row' ? evalFormat : 'column'}
-      alignItems={evalFormat !== 'base' ? 'center' : undefined}
+      alignItems={
+        evalFormat === 'column'
+          ? 'center'
+          : evalFormat === 'row'
+            ? 'flex-start'
+            : undefined
+      }
       gap={
         evalFormat === 'row' && evalSize !== 'md'
           ? 'cmp-xxs'
@@ -28,6 +34,7 @@ export const KeyValueTextContainer: React.FC<KeyValueTextContainerProps> = ({
             : undefined
       }
       minWidth="0"
+      width="100%"
     >
       {children}
     </Flex>

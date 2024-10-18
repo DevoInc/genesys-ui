@@ -42,6 +42,7 @@ export const Menu = <Option extends TSelectOption>(
         $menuRelative={props.selectProps.menuRelative}
         $maxMenuHeight={props.selectProps.maxMenuHeight}
         $minMenuHeight={props.selectProps.minMenuHeight}
+        $maxMenuWidth={props.selectProps.maxMenuWidth}
         $minMenuWidth={props.selectProps.minMenuWidth}
         $multipleSubtle={props.selectProps.multipleSubtle}
       >

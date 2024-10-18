@@ -36,6 +36,8 @@ export interface ICommonSelectCmps {
   menuQuiet?: boolean;
   /** Whether the menu is display relative or absolute */
   menuRelative?: boolean;
+  /** Maximum width of the menu */
+  maxMenuWidth?: React.CSSProperties['maxWidth'];
   /** Minimum width of the menu */
   minMenuWidth?: React.CSSProperties['minWidth'];
   /** Show select all button when select is multi */

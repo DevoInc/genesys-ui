@@ -13,6 +13,7 @@ import { KeyValue } from './KeyValue';
 import { HFlex } from '../HFlex';
 import { Avatar } from '../Avatar';
 import { KeyValueText, KeyValueTextContainer } from './components';
+import { VFlex } from '../VFlex';
 
 const meta: Meta<typeof KeyValue> = {
   title: 'Components/Feedback/KeyValue',
@@ -163,4 +164,45 @@ export const Custom: Story = {
         </KeyValueTextContainer>
       </KeyValue._Container>
     ))(args),
+};
+
+export const DescriptionList: Story = {
+  name: 'Description list mode',
+  render: () =>
+    (() => (
+      <VFlex width="50rem">
+        <KeyValue
+          keyContent="Description"
+          keyWidth="25%"
+          valueContent="Add the execution metadata for the current execution to the table. Currently only execution start time and end time in millis are added. This operation works for both Playbook-authoring mode and for batch executions."
+          valueTruncateLine="none"
+          valueWidth="75%"
+          format="row"
+        />
+        <KeyValue
+          keyContent="Signature"
+          keyWidth="25%"
+          valueContent="function addExecutionMetadata(table:TableReference)"
+          valueTruncateLine="none"
+          valueWidth="75%"
+          format="row"
+        />
+        <KeyValue
+          keyContent="Parameters"
+          keyWidth="25%"
+          valueContent="able (TableReference)	-	A table."
+          valueTruncateLine="none"
+          valueWidth="75%"
+          format="row"
+        />
+        <KeyValue
+          keyContent="Returns"
+          keyWidth="25%"
+          valueContent="The input table with an additional lhub_execution_metadata column is returned. lhub_execution_metadata is a JSON object and contains values of execution metadata fields like interval start, end time in milliseconds, and URL that links to the result page of the batch execution."
+          valueTruncateLine="none"
+          valueWidth="75%"
+          format="row"
+        />
+      </VFlex>
+    ))(),
 };

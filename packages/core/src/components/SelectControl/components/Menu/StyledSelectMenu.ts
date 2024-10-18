@@ -31,6 +31,7 @@ export interface StyledSelectMenuProps {
   $menuRelative?: boolean;
   $multipleSubtle?: boolean;
   $minMenuHeight: React.CSSProperties['minHeight'];
+  $maxMenuWidth: React.CSSProperties['maxWidth'];
   $minMenuWidth: React.CSSProperties['minWidth'];
   $size: TFieldSize;
 }
@@ -45,6 +46,7 @@ export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`
     $menuQuiet,
     $menuRelative,
     $minMenuHeight = 0,
+    $maxMenuWidth,
     $minMenuWidth,
     $multipleSubtle,
     $size = 'sm',
@@ -81,6 +83,7 @@ export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`
           margin-bottom: ${$menuQuiet && '0'};
           ${elevationMixin(theme)($menuQuiet ? 'ground' : elevation)};
           min-width: ${$minMenuWidth};
+          max-width: ${$maxMenuWidth};
           background: ${menuTokens.color.background.base};
           ${getFieldControlTypo({ theme, $size })};
           cursor: default;
