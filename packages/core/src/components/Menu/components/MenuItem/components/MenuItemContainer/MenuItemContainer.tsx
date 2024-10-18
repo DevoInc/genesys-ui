@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import type {
+import {
   IButtonAttrs,
   IDataAttrs,
   IFieldAttrs,
@@ -11,6 +11,7 @@ import type {
   ILinkAttrs,
   IMouseEventAttrs,
   INavigationAriaAttrs,
+  IStyledOverloadCss,
   IStyledPolymorphic,
   ITriggerAriaAttrs,
 } from '../../../../../../declarations';
@@ -22,6 +23,7 @@ import { StyledMenuItem } from './StyledMenuItem';
 
 export interface MenuItemContainerProps
   extends IStyledPolymorphic,
+    IStyledOverloadCss,
     IGlobalAttrs,
     IDataAttrs,
     IFieldAttrs,

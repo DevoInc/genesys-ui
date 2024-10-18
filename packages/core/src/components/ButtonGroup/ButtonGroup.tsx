@@ -14,6 +14,7 @@ import {
   ButtonGroupIconButton,
   ButtonGroupItem,
 } from './components';
+import { mergeStyles } from '../../helpers';
 
 export interface ButtonGroupProps
   extends Omit<FlexProps, 'children'>,
@@ -36,6 +37,7 @@ export const InternalButtonGroup: React.FC<ButtonGroupProps> = ({
   inline = true,
   justifyContent = 'center',
   size = 'md',
+  style,
   visibilityTrigger,
   ...restFlexProps
 }) => {
@@ -49,7 +51,10 @@ export const InternalButtonGroup: React.FC<ButtonGroupProps> = ({
       gap={gap || `cmp-${FLEX_SPACING_SIZE_MAP[size]}`}
       justifyContent={justifyContent}
       inline={inline}
-      style={buttonGroupMixin({ hidden, theme, visibilityTrigger })}
+      style={mergeStyles(
+        buttonGroupMixin({ hidden, theme, visibilityTrigger }),
+        style,
+      )}
     >
       {React.Children.map(children, (child, idx) => {
         const baseChild = (
