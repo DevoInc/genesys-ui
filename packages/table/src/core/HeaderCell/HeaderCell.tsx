@@ -12,6 +12,7 @@ interface HeaderCellProps {
   width: React.CSSProperties['width'];
   offsetX: number;
   children: React.ReactNode;
+  title?: string;
 }
 
 export const HeaderCell: React.FC<HeaderCellProps> = ({
@@ -19,6 +20,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   width,
   offsetX,
   children,
+  title,
 }) => {
   const { density, onSort, resizableColumns, showFilters } = React.useContext(TableContext);
 
@@ -28,7 +30,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
       $horAlign={colDef?.align || (colDef.preset === 'number' ? 'right' : null)}
       $offsetX={offsetX}
       $density={density}
-      title={colDef.headerName}
+      title={title}
       onClick={
         colDef.sortable
           ? () => {

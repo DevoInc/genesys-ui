@@ -39,6 +39,7 @@ export const TableHead: React.FC<TableHeadProps> = ({
                   colDef={colDef}
                   width={virtualColumn && `${virtualColumn.size}px`}
                   offsetX={virtualColumn && virtualColumn.start}
+                  title={colDef.headerName}
                 >
                   {colDef?.headerRenderer ? (
                     colDef.headerRenderer({ colDef })
