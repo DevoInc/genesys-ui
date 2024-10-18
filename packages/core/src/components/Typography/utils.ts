@@ -1,13 +1,8 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import type {
-  TTypoBodySize,
-  TTypoHeadingSize,
-  TTypoSize,
-} from '../../declarations';
+import type { TTypoSize } from '../../declarations';
 import type {
   ITypography,
-  THeadingType,
   TTypoCategories,
   TTypographyFormat,
 } from './declarations';
@@ -18,43 +13,6 @@ import {
 } from '../../styled/mixins';
 
 /**
- * Get the heading category name based in type prop
- *
- * @param typeProp h1, h2, hero-sm... etc.
- * @return category name
- */
-const getCategory = (typeProp: THeadingType): TTypoCategories => {
-  if (typeProp?.startsWith('hero')) return 'hero';
-  if (typeProp?.startsWith('overline')) return 'overline';
-  return 'heading';
-};
-
-/**
- * Get the heading type name based in type prop
- *
- * @param typeProp h1, h2, hero-sm... etc.
- * @return type name
- */
-const getType = (typeProp: THeadingType): TTypoSize => {
-  const hyphenPos = typeProp.indexOf('-');
-  if (hyphenPos > -1) return typeProp.substring(hyphenPos + 1) as TTypoBodySize;
-  return typeProp as TTypoHeadingSize;
-};
-
-/**
- * Get the Heading category and type based in its type prop to use as params for typo mixins
- *
- * @param typeProp prop type of the heading component h1, h2, hero-sm... etc.
- * @return category and type values in an object
- */
-export const getHeadingCategoryAndType = (typeProp: THeadingType) => {
-  return {
-    category: getCategory(typeProp),
-    type: getType(typeProp),
-  };
-};
-
-/**
  * Get the variant and the size based in format prop
  *
  * @param formatProp body-sm, heading-h1, hero-sm... etc.
@@ -63,7 +21,7 @@ export const getHeadingCategoryAndType = (typeProp: THeadingType) => {
 export const getTypoVariantAndSizeFromFormat = (
   formatProp: TTypographyFormat,
 ): { size: TTypoSize; variant: TTypoCategories } => {
-  const hyphenPos = formatProp.indexOf('-');
+  const hyphenPos = formatProp?.indexOf('-');
   if (hyphenPos > -1)
     return {
       size: formatProp.substring(hyphenPos + 1) as TTypoSize,
@@ -72,7 +30,7 @@ export const getTypoVariantAndSizeFromFormat = (
   return { size: 'md', variant: 'body' };
 };
 
-interface IGetTypoCss {
+export interface IGetTypoCss {
   $colorScheme?: ITypography['colorScheme'];
   $gutterBottom?: ITypography['gutterBottom'];
   $textAlign?: ITypography['textAlign'];

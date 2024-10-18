@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
 
-import { getHeadingCategoryAndType, getTypoCss } from '../../utils';
+import { getTypoCss } from '../../utils';
 import { getSpacingPropCss } from '../../../../helpers';
 import { ITypographyHeadingStyled } from './declarations';
+import { getCategory, getType } from './utils';
 
 export interface StyledHeadingProps extends ITypographyHeadingStyled {}
 
@@ -17,12 +18,12 @@ export const StyledHeading = styled.div<StyledHeadingProps>`
   }) => css`
     margin-bottom: ${getSpacingPropCss(theme)($gutterBottom)};
     ${getTypoCss({
-      $variant: getHeadingCategoryAndType($size).category,
+      $variant: getCategory($size),
       $colorScheme,
       $textAlign,
       theme,
       $truncateLine,
-      $size: getHeadingCategoryAndType($size).type,
+      $size: getType($size),
     })};
   `}
 `;
