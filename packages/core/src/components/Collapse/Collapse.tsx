@@ -8,6 +8,7 @@ import {
   CollapseHeading,
   type CollapseHeadingProps,
   CollapseAppendContent,
+  CollapseSeparator,
 } from './components';
 
 export interface CollapseProps
@@ -27,6 +28,7 @@ export const InternalCollapse: React.FC<CollapseProps> = ({
   tooltip,
   truncateLine = 1,
   appendContent,
+  quiet,
   isDraggable = false,
   onPointerDown,
   onKeyDown,
@@ -39,6 +41,7 @@ export const InternalCollapse: React.FC<CollapseProps> = ({
     aria-expanded={expanded}
     expanded={expanded}
     onClick={onClick}
+    quiet={quiet}
     style={style}
     tooltip={tooltip}
     isDraggable={isDraggable}
@@ -56,15 +59,18 @@ export const Collapse = InternalCollapse as typeof InternalCollapse & {
   _Container: typeof CollapseContainer;
   _Heading: typeof CollapseHeading;
   _AppendContent: typeof CollapseAppendContent;
+  Separator: typeof CollapseSeparator;
 };
 
 Collapse._Container = CollapseContainer;
 Collapse._Heading = CollapseHeading;
 Collapse._Marker = CollapseMarker;
 Collapse._AppendContent = CollapseAppendContent;
+Collapse.Separator = CollapseSeparator;
 
 InternalCollapse.displayName = 'Collapse';
 Collapse._Container.displayName = 'Collapse._Container';
 Collapse._Heading.displayName = 'Collapse._Heading';
 Collapse._Marker.displayName = 'Collapse._Marker';
 Collapse._AppendContent.displayName = 'Collapse._AppendContent';
+Collapse.Separator.displayName = 'Collapse.Separator';

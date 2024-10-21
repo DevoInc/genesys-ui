@@ -25,6 +25,8 @@ export interface CollapseContainerProps
   isDraggable?: boolean;
   onPointerDown?: React.DOMAttributes<Element>['onPointerDown'];
   onKeyDown?: React.DOMAttributes<Element>['onKeyDown'];
+  /** If the collapse has transparent background */
+  quiet?: boolean;
 }
 
 export const CollapseContainer: React.FC<CollapseContainerProps> = ({
@@ -33,6 +35,7 @@ export const CollapseContainer: React.FC<CollapseContainerProps> = ({
   children,
   expanded,
   onClick,
+  quiet,
   style,
   tooltip,
   isDraggable = false,
@@ -43,6 +46,7 @@ export const CollapseContainer: React.FC<CollapseContainerProps> = ({
   <StyledCollapseContainer
     {...nativeProps}
     css={style}
+    quiet={quiet}
     $expanded={expanded}
     $isDraggable={isDraggable}
   >

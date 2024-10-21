@@ -9,6 +9,7 @@ import type {
   IDataAttrs,
   IGlobalAriaAttrs,
   IGlobalAttrs,
+  ILayoutBox,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../declarations';
@@ -23,7 +24,8 @@ export interface StepperProps
     >,
     IDataAttrs,
     IStyledPolymorphic,
-    IStyledOverloadCss {
+    IStyledOverloadCss,
+    Pick<ILayoutBox, 'padding'> {
   /** Stepper size */
   size?: TStepperSize;
   /** Stepper model */
@@ -33,12 +35,14 @@ export interface StepperProps
 export const InternalStepper: React.FC<StepperProps> = ({
   size = 'md',
   steps = [],
+  padding,
   tooltip,
   style,
   ...nativeProps
 }) => (
   <StepperContainer
     {...nativeProps}
+    padding={padding}
     size={size}
     tooltip={tooltip}
     style={style}

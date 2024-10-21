@@ -6,6 +6,7 @@ import { pseudoElementMixin } from '../../../../styled';
 export interface StyledCollapseContainerProps {
   $expanded?: TExpanded;
   $isDraggable?: boolean;
+  quiet: boolean;
 }
 
 export const StyledCollapseContainer = styled.div<StyledCollapseContainerProps>`
@@ -42,13 +43,16 @@ export const StyledCollapseContainer = styled.div<StyledCollapseContainerProps>`
       }
     `}
 
-  ${({ $expanded = false, theme }) => css`
-    transition: border-color ${theme.cmp.collapse.mutation.transitionDuration}
-      ease;
+  ${({ quiet, $expanded = false, theme }) => css`
+    transition:
+      background-color ${theme.cmp.collapse.mutation.transitionDuration} ease,
+      border-color ${theme.cmp.collapse.mutation.transitionDuration} ease;
     border-bottom: solid ${theme.cmp.collapse.shape.borderSize}
       ${theme.cmp.collapse.color.border[$expanded ? 'expanded' : 'base']};
     min-height: ${theme.cmp.collapse.size.minHeight};
-    background-color: ${theme.cmp.collapse.color.background.base};
+    background-color: ${quiet
+      ? null
+      : theme.cmp.collapse.color.background.base};
 
     ${$expanded &&
     css`

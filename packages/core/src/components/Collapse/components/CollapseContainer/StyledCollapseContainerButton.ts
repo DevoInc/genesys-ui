@@ -28,8 +28,7 @@ export const StyledCollapseContainerButton = styled.button<Props>`
     position: absolute;
     inset: 0 0 0 0;
     transition: all ease
-      ${({ theme }) =>
-        theme.cmp.collapse.button.mutation.transitionDuration}0.15s;
+      ${({ theme }) => theme.cmp.collapse.button.mutation.transitionDuration};
     pointer-events: none;
     background-color: ${({ theme }) =>
       theme.cmp.collapse.button.color.background.base};
