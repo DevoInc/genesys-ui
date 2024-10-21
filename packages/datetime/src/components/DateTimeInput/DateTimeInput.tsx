@@ -4,11 +4,13 @@ import { GICalendarMonthDayPlannerEvents } from '@devoinc/genesys-icons';
 import {
   Input,
   type InputProps,
-  type IGlobalAriaAttrs,
   type IGlobalAttrs,
   type IStyledOverloadCss,
   type IStyledPolymorphic,
 } from '@devoinc/genesys-ui';
+import { defaultDateTimeInputI18n } from './i18n';
+import { useMergeI18n } from '../..//hooks';
+import type { TDateTimeInputI18n } from './declarations';
 
 export interface DateTimeInputProps
   extends Pick<
@@ -23,10 +25,10 @@ export interface DateTimeInputProps
       | 'helper'
       | 'status'
     >,
-    Pick<IGlobalAriaAttrs, 'aria-label'>,
     Pick<IGlobalAttrs, 'id'>,
     IStyledOverloadCss,
     IStyledPolymorphic {
+  i18n?: TDateTimeInputI18n;
   /** Date representation value */
   value: string;
   /** Function called when the value changes */
@@ -34,8 +36,8 @@ export interface DateTimeInputProps
 }
 
 export const DateTimeInput: React.FC<DateTimeInputProps> = ({
-  'aria-label': ariaLabel = 'datetime',
   autoFocus,
+  i18n: userI18n = defaultDateTimeInputI18n,
   id,
   label,
   helper,
@@ -47,23 +49,29 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   size,
   value,
   status,
-}) => (
-  <Input
-    aria-label={ariaLabel}
-    autoFocus={autoFocus}
-    helper={helper}
-    icon={<GICalendarMonthDayPlannerEvents />}
-    id={id}
-    label={label}
-    onClick={onClick}
-    onChange={(event) => {
-      onChange((event.target as HTMLInputElement).value);
-    }}
-    onKeyUp={onKeyUp}
-    onBlur={onBlur}
-    placeholder={placeholder}
-    size={size}
-    status={status}
-    value={value}
-  />
-);
+}) => {
+  const i18n = useMergeI18n(
+    userI18n,
+    defaultDateTimeInputI18n,
+  ) as TDateTimeInputI18n;
+  return (
+    <Input
+      aria-label={i18n.input}
+      autoFocus={autoFocus}
+      helper={helper}
+      icon={<GICalendarMonthDayPlannerEvents />}
+      id={id}
+      label={label}
+      onClick={onClick}
+      onChange={(event) => {
+        onChange((event.target as HTMLInputElement).value);
+      }}
+      onKeyUp={onKeyUp}
+      onBlur={onBlur}
+      placeholder={placeholder}
+      size={size}
+      status={status}
+      value={value}
+    />
+  );
+};

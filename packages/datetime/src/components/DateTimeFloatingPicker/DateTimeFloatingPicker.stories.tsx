@@ -50,7 +50,7 @@ export const WithoutButtons: Story = {
         <DateTimeFloatingPicker
           {...props}
           value={value}
-          autoApply={true}
+          autoApply
           onChange={(ts) => {
             setValue(ts);
             // eslint-disable-next-line no-console
