@@ -2,3 +2,4 @@ export * from './CollapseAppendContent';
 export * from './CollapseContainer';
 export * from './CollapseHeading';
 export * from './CollapseMarker';
+export * from './CollapseSeparator';

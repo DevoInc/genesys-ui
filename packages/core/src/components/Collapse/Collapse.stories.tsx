@@ -279,3 +279,77 @@ export const AppendContent: Story = {
       );
     })(args),
 };
+
+export const Quiet: Story = {
+  args: {
+    quiet: true,
+  },
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => {
+      const [expanded, setExpanded] = React.useState(props.expanded);
+      const contentId = 'accessibility';
+      return (
+        <Flex flexDirection={'column'}>
+          <Collapse
+            {...props}
+            aria-controls={props['aria-controls'] || contentId}
+            expanded={expanded}
+            onClick={() => {
+              setExpanded(!expanded);
+            }}
+          />
+          {expanded && (
+            <Box
+              id={contentId}
+              maxHeight={'190px'}
+              overflow={'auto'}
+              padding={'cmp-md cmp-lg'}
+            >
+              <Typography.Paragraph>{lorem}</Typography.Paragraph>
+            </Box>
+          )}
+        </Flex>
+      );
+    })(args),
+};
+
+export const Separator: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => {
+      const [expanded, setExpanded] = React.useState(true);
+      const contentId = 'accessibility';
+      return (
+        <Flex flexDirection={'column'}>
+          <Collapse
+            {...props}
+            heading="Collapse one"
+            aria-controls={props['aria-controls'] || contentId}
+            expanded={expanded}
+            onClick={() => {
+              setExpanded(!expanded);
+            }}
+          />
+          {expanded && (
+            <>
+              <Box
+                id={contentId}
+                maxHeight={'190px'}
+                overflow={'auto'}
+                padding={'cmp-md cmp-lg'}
+              >
+                <Typography.Paragraph>{lorem}</Typography.Paragraph>
+              </Box>
+              <Collapse.Separator />
+            </>
+          )}
+          <Collapse
+            {...props}
+            heading="Collapse two"
+            aria-controls={props['aria-controls'] || contentId}
+          />
+        </Flex>
+      );
+    })(args),
+};
