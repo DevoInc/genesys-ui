@@ -1,12 +1,12 @@
 /* eslint-disable indent */
 
-import type { TRow, TFilterValue } from '../../declarations';
+import type { TRow, TFilterValue } from '../declarations';
 import {
   TNumberFilterValue,
   type TOptionsFilterValue,
   TBooleanFilterValue,
-} from '../../filters';
-import { TFilterColumn } from '../../hooks/useFilterStruct/declarations';
+} from '../filters';
+import { TFilterColumn } from '../hooks/useFilterStruct/declarations';
 import {
   booleanFilter,
   numberFilter,

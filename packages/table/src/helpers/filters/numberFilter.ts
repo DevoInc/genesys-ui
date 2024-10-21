@@ -1,4 +1,4 @@
-import { TNumberFilterValue } from '../../../filters';
+import { TNumberFilterValue } from '../../filters';
 
 export const numberFilter = (
   data: number,
