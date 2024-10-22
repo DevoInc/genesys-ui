@@ -1,5 +1,23 @@
 # Changelog
 
+## [13.2.0](https://github.com/DevoInc/genesys-ui/compare/v13.1.0...v13.2.0) (2024-10-22)
+
+
+### Features
+
+* added subtitle to ModalHeader and style prop to MenuItem and ButtonGroup ([d3a7239](https://github.com/DevoInc/genesys-ui/commit/d3a7239451b74b671d11c3a2892c61d4d23140b6))
+* new prop to define max-width for SelectMenu and new styles and props for KeyValue to get a description list. ([67d4d86](https://github.com/DevoInc/genesys-ui/commit/67d4d86bc0671788587168b9a369b82b2cee39be))
+* new quiet scheme for Collapse and adjustments for Stepper ([f0d3edb](https://github.com/DevoInc/genesys-ui/commit/f0d3edbbbf87dedb703067e59fd412b67dcb7732))
+* Table global text search ([00b187b](https://github.com/DevoInc/genesys-ui/commit/00b187ba11b97bdf280b0dc90eeaa0ffc14539ea))
+
+
+### Bug Fixes
+
+* **DateTime:** several missing i18n over the datetime package ([2d7a808](https://github.com/DevoInc/genesys-ui/commit/2d7a808787c86fd56f8b30a1c5df4402f3628d6c))
+* fixed render of TabItem icons ([4ea4e10](https://github.com/DevoInc/genesys-ui/commit/4ea4e10f483e4991adb531b0ccfd87206eb1ecd8))
+* **table:** [#92](https://github.com/DevoInc/genesys-ui/issues/92) Tables grow from 0 pixels to occupy the entire width, creating a strange visual effect. ([22edf92](https://github.com/DevoInc/genesys-ui/commit/22edf92f0297f1ad3a3e164da4360e6d73b8c13e))
+* **table:** Delete tooltip filter components ([8f0af8c](https://github.com/DevoInc/genesys-ui/commit/8f0af8c6be6685b8963765605e9410589a5060f9))
+
 ## [13.1.0](https://github.com/DevoInc/genesys-ui/compare/v13.0.0...v13.1.0) (2024-10-17)
 
 
