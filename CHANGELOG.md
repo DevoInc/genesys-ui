@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.0](https://github.com/DevoInc/genesys-ui/compare/v13.2.0...v13.3.0) (2024-10-23)
+
+
+### Features
+
+* integration of components with component tokens instead of alias ones ([55bb8fe](https://github.com/DevoInc/genesys-ui/commit/55bb8feaa111a4d2de3696d5060885956c235d09))
+
 ## [13.2.0](https://github.com/DevoInc/genesys-ui/compare/v13.1.0...v13.2.0) (2024-10-22)
 
 
