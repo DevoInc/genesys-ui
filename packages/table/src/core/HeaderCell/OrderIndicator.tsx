@@ -29,7 +29,7 @@ export const OrderIndicator: React.FC<OrderIndicatorProps> = ({ colDef }) => {
       `}
     >
       <VFlex spacing="0">
-        <VFlex.Item cssTranslate={`0, ${iconOffset}px`}>
+        <VFlex.Item cssTranslate={`0, ${iconOffset}`}>
           <GISortAscCarets
             color={iconColor}
             size={iconSize}
@@ -39,7 +39,7 @@ export const OrderIndicator: React.FC<OrderIndicatorProps> = ({ colDef }) => {
             }}
           />
         </VFlex.Item>
-        <VFlex.Item cssTranslate={`0, -${iconOffset}px`}>
+        <VFlex.Item cssTranslate={`0, calc(${iconOffset} * -1)`}>
           <GISortDescCarets
             color={iconColor}
             size={iconSize}
