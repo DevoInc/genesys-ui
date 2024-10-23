@@ -76,6 +76,7 @@ const OrderTable = () => {
         editable: false,
         sortable: true,
       }}
+      showFilters
       colDefs={updateColDefsWithOrderStruct(colDefs, orderStruct)}
       data={dataOrdered}
     />
