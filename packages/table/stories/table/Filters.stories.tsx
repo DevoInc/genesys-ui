@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Menu } from '@devoinc/genesys-ui';
+import { InputControl, Menu } from '@devoinc/genesys-ui';
 
 import {
   type TContextOptions,
   type TFilterContext,
+  filterDataByText,
   filterDataByFilterStruct,
   useFilterStruct,
   updateColDefsWithFilterStruct,
@@ -192,3 +193,73 @@ const FilterAndBulkActionsTable = () => {
 export const FiltersAndBulkActions: Story = {
   render: () => <FilterAndBulkActionsTable />,
 };
+
+const GlobalTextFilterTable = () => {
+
+  const colDefs = [
+    {
+      id: 'text',
+      headerName: 'Text',
+      preset: 'text',
+    },
+    {
+      id: 'num',
+      headerName: 'Number',
+      preset: 'number',
+      context: {
+        showAdvancedFilter: true,
+        showReset: true,
+      } as TFilterContext,
+    },
+    {
+      id: 'bool',
+      headerName: 'Boolean',
+      preset: 'boolean',
+    },
+    {
+      id: 'option',
+      headerName: 'Options',
+      preset: 'options',
+      context: {
+        options: {
+          A: { label: 'Option A' },
+          B: { label: 'Option B' },
+          C: { label: 'Option C' },
+        },
+      } as TContextOptions,
+    },
+  ];
+
+  const [ textFilter, setTextFilter ] = React.useState(undefined);
+  const { filterStruct, onFilter } = useFilterStruct();
+  const dataFiltered = [...data]
+    .filter(filterDataByText(textFilter, colDefs))
+    .filter(filterDataByFilterStruct(filterStruct));
+
+  return (
+    <>
+      <InputControl
+        aria-label="Contains text..."
+        placeholder="Contains text..."
+        type="search"
+        value={ textFilter }
+        onChange={(ev) => {
+          setTextFilter(ev.target.value);
+        }}
+      />
+      <BasicTable
+        showFilters
+        onFilter={(curColDef, value, type) => {
+          onFilter(curColDef.id, value, type);
+        }}
+        colDefs={updateColDefsWithFilterStruct(colDefs, filterStruct)}
+        data={dataFiltered}
+      />
+    </>
+  );
+};
+
+export const GlobalTextFilter: Story = {
+  render: () => <GlobalTextFilterTable />,
+};
+

@@ -1,9 +1,9 @@
 import * as React from 'react';
+import { useUpdateEffect } from 'ahooks';
 
 import {
   Panel,
   Button,
-  type IGlobalAriaAttrs,
   type IGlobalAttrs,
   type IStyledOverloadCss,
   type IStyledPolymorphic,
@@ -20,13 +20,14 @@ import {
 import { formatDate as formatDateHelper } from '../../helpers';
 import { parseStrDate } from '../../parsers';
 import type { IParseResult } from '../../declarations';
+import { TDateTimeFloatingPickerI18n } from './declarations';
+import { defaultDateTimeFloatingPickerI18n } from './i18n';
+import { useMergeI18n } from '../../hooks';
 
 export interface DateTimeFloatingPickerProps
   extends Pick<PopoverProps, 'appendTo' | 'isOpened' | 'onClose' | 'placement'>,
     Pick<
       DateTimeProps,
-      | 'ariaLabelMonth'
-      | 'ariaLabelTime'
       | 'monthDate'
       | 'hasMillis'
       | 'hasSeconds'
@@ -38,36 +39,28 @@ export interface DateTimeFloatingPickerProps
       DateTimeInputProps,
       'autoFocus' | 'placeholder' | 'size' | 'label' | 'helper'
     >,
-    Pick<IGlobalAriaAttrs, 'aria-label'>,
     Pick<IGlobalAttrs, 'id'>,
     Pick<IStyledOverloadCss, 'style'>,
     Pick<IStyledPolymorphic, 'as'> {
   /** i18n texts */
-  i18n?: {
-    apply: string;
-    cancel: string;
-  };
-  /** Cancel button text */
-  cancelButtonText?: string;
+  i18n?: TDateTimeFloatingPickerI18n;
   /** Function called when Apply button is clicked. */
-  onApply?: () => void;
+  onApply?: (dt: Date | number) => void;
   /** Function called when Cancel button is clicked. */
   onCancel?: () => void;
   /** Function called when any enabled calendar cell is clicked or the time input changed. */
   onChange?: DateTimeProps['onChange'];
+  /** Value of the DateTimeFloatingPicker */
   value?: Date | number;
   parseDate?: (str: string) => IParseResult;
   formatDate?: (dt: Date | number) => string;
+  /** Apply change directly, without extra buttons (nor Apply or Cancel buttons) */
   autoApply?: boolean;
 }
 
 export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
-  'aria-label': ariaLabel = 'datetime',
   appendTo,
-  i18n = {
-    apply: 'Apply',
-    cancel: 'Cancel',
-  },
+  i18n: userI18n = defaultDateTimeFloatingPickerI18n,
   as,
   formatDate = formatDateHelper,
   hasMillis = false,
@@ -84,8 +77,6 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
   style: customStyles,
   value = new Date().getTime(),
   helper,
-  ariaLabelMonth,
-  ariaLabelTime,
   monthDate: initialMonthDate,
   weekDays,
   weekStart,
@@ -94,9 +85,13 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
   size,
   label,
 }) => {
+  const i18n = useMergeI18n(
+    userI18n,
+    defaultDateTimeFloatingPickerI18n,
+  ) as TDateTimeFloatingPickerI18n;
   const [tmpValue, setTmpValue] = React.useState<number | Date>(value);
   const [monthDate, setMonthDate] = React.useState<number | Date>(
-    initialMonthDate,
+    initialMonthDate || value,
   );
 
   const { inputValue, inputOnChange, errors, updateValue } =
@@ -114,6 +109,11 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
       parseDate,
     });
 
+  useUpdateEffect(() => {
+    setTmpValue(value);
+    updateValue(value);
+  }, [value]);
+
   return (
     <Popover
       appendTo={appendTo}
@@ -128,7 +128,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
             placeholder={placeholder}
             size={size}
             label={label}
-            aria-label={ariaLabel}
+            aria-label={i18n.input}
             id={id}
             onKeyUp={(event) => {
               if (
@@ -160,8 +160,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
         >
           <Panel.Body>
             <DateTime
-              ariaLabelMonth={ariaLabelMonth}
-              ariaLabelTime={ariaLabelTime}
+              i18n={i18n}
               monthDate={monthDate}
               onChangeMonthDate={setMonthDate}
               weekDays={weekDays}

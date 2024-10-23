@@ -28,12 +28,12 @@ export const InternalModal: React.FC<ModalProps> = ({
   'aria-describedby': ariaDescribedBy,
   'aria-labelledby': ariaLabelledBy,
   children,
+  windowSize,
   height,
   width,
   id,
   onRequestClose,
   status = 'base',
-  windowSize = 'md',
   disableCloseOnOverlayClick,
   style,
   zIndex,
@@ -42,7 +42,6 @@ export const InternalModal: React.FC<ModalProps> = ({
   <ModalBackdrop
     disableCloseOnOverlayClick={disableCloseOnOverlayClick}
     onRequestClose={onRequestClose}
-    windowSize={windowSize}
     style={style}
     zIndex={zIndex}
   >
@@ -54,7 +53,7 @@ export const InternalModal: React.FC<ModalProps> = ({
       id={id}
       height={height}
       width={width}
-      windowSize={windowSize}
+      windowSize={windowSize || 'md'}
       onRequestClose={onRequestClose}
       zIndex={zIndex}
       status={status}

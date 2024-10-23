@@ -1,4 +1,4 @@
-import type { TTextFilterValue } from '../../../filters';
+import type { TTextFilterValue } from '../../filters';
 
 export const textFilter = (
   data: string,

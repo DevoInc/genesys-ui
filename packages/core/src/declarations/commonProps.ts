@@ -87,7 +87,15 @@ export type TFieldStatus = PickUnion<
 /** ---------------------------------------------
  * Width of the field control based in predefined values as 'xxs', 'xs', 'sm'... etc. or directly in a css value. It should reflect the length of the content you expect the user to enter.
  * --------------------------------------------- */
-export type TControlWidth = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string;
+export type TControlWidth =
+  | 'xxs'
+  | 'xs'
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | 'wide'
+  | string;
 
 /** ---------------------------------------------
  * Feedback components size declaration: tag, Badge... etc.

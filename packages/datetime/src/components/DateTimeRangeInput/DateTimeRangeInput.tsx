@@ -15,14 +15,12 @@ import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
   ITriggerAriaAttrs,
+  TControlWidth,
 } from '@devoinc/genesys-ui';
 import { Field, InputControl } from '@devoinc/genesys-ui';
 
 import { cssDateTimeRangeInput, ICssDateTimeRangeInput } from './helpers';
-import {
-  StyledDateTimeRangeInput,
-  type StyledDateTimeRangeInputProps,
-} from './StyledDateTimeRangeInput';
+import { StyledDateTimeRangeInput } from './StyledDateTimeRangeInput';
 
 import { TRealtimeState } from '../RealTimeButton/declarations';
 import { REAL_TIME_SIZE_MAP } from './constants';
@@ -32,10 +30,11 @@ export interface DateTimeRangeInputProps
   extends Required<Pick<IGlobalAttrs, 'id'>>,
     Pick<ITriggerAriaAttrs, 'aria-controls'>,
     Pick<ICssDateTimeRangeInput, 'hasMillis' | 'hasSeconds' | 'hasTime'>,
-    Pick<StyledDateTimeRangeInputProps, 'isOpen' | 'wide'>,
     Pick<FieldProps, 'helper' | 'required' | 'controlWidth'>,
     IStyledOverloadCss,
     IStyledPolymorphic {
+  /** Set styles when is open a component */
+  isOpen?: boolean;
   /** aria-label attribute for inputs */
   ariaLabel?: IGlobalAriaAttrs['aria-label'][];
   /** Value for the inputs. */
@@ -64,7 +63,8 @@ export interface DateTimeRangeInputProps
   /** Initial state for input fields */
   statuses?: ('base' | 'error')[];
   /** Initial state for the input */
-  status?: ('base' | 'error');
+  status?: 'base' | 'error';
+  innerControlsWidth?: TControlWidth;
 }
 
 const hasRealTime = (realTime: TRealtimeState) => realTime !== 'hidden';
@@ -88,11 +88,11 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
   required,
   showCalendarIcon,
   isOpen = false,
-  wide,
   size = 'md',
   statuses = ['base', 'base'],
   style,
   controlWidth,
+  innerControlsWidth,
   status = 'base',
 }) => {
   const theme = useTheme();
@@ -104,19 +104,19 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
       helper={helper}
       status={status}
       required={required}
+      controlWidth={controlWidth ?? 'auto'}
     >
       <StyledDateTimeRangeInput
         aria-controls={isOpen ? ariaControls : null}
         aria-haspopup
         as={as}
         css={style}
-        hideRealTime={hasRealTime(realTime)}
         id={id}
-        isOpen={isOpen}
+        $isOpen={isOpen}
         onClick={onClick}
         size={size}
         tabIndex={0}
-        wide={wide}
+        $controlWidth={controlWidth}
       >
         {showCalendarIcon && (
           <GICalendarMonthDayPlannerEvents
@@ -126,7 +126,7 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
         )}
         <Field
           controlWidth={
-            controlWidth ??
+            innerControlsWidth ??
             theme.cmp.dateTimeRangeControl.input.size.width.withMillis[size]
           }
           hasFloatingHelper
@@ -161,7 +161,7 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
         />
         <Field
           controlWidth={
-            controlWidth ??
+            innerControlsWidth ??
             theme.cmp.dateTimeRangeControl.input.size.width.withMillis[size]
           }
           hasFloatingHelper

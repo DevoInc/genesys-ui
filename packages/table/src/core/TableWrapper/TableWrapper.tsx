@@ -47,7 +47,7 @@ export const TableWrapper: React.FC = () => {
     <StyledTableWrapper
       ref={ref}
       $maxHeight={maxHeight}
-      style={{ opacity: width > 0 ? 1 : 0 }}
+      style={{ opacity: size?.width > 0 ? 1 : 0 }}
     >
       <StyledTable $height={height} $width={width}>
         <TableHead

@@ -1,4 +1,4 @@
-import { TBooleanFilterValue } from '../../../filters';
+import { TBooleanFilterValue } from '../../filters';
 
 export const booleanFilter = (data: boolean, { value }: TBooleanFilterValue) =>
   value === '' ||
