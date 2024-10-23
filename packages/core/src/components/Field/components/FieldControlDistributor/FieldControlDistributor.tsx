@@ -17,7 +17,7 @@ export const FieldControlDistributor: React.FC<
 > = ({ children, labelPosition, size, style, wide, width }) => {
   const theme = useTheme();
   // to get vertically aligned the label with the control block anyway
-  const labelLineHeight = theme.alias.typo.lineHeight.body[size];
+  const minHeight = theme.cmp.field.controlDistributor.size.minHeight[size];
   const inputWidthEval = getControlWidth({ theme, controlWidth: width });
   return (
     <Flex
@@ -30,7 +30,7 @@ export const FieldControlDistributor: React.FC<
             : '1 1 auto'
       }
       gap="cmp-xxs"
-      minHeight={labelLineHeight}
+      minHeight={minHeight}
       style={style}
       width={inputWidthEval}
     >

@@ -9,7 +9,7 @@ export const isDragging: TRowPreset = {
       border-bottom: solid ${theme.cmp.table.row.shape.borderSize.after}
         ${theme.cmp.table.row.color.background.after};
     `};
-    box-shadow: ${theme.alias.elevation.boxShadow.depth.draggable};
+    box-shadow: ${theme.cmp.table.row.elevation.boxShadow.isDragging};
   `,
   id: 'isDragging',
 };

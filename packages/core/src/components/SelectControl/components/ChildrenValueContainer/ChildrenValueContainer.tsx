@@ -36,7 +36,8 @@ export const ChildrenValueContainer: React.FC<ChildrenValueContainer> = ({
             align-items: center;
             min-width: ${square};
             height: ${square};
-            padding: 0 ${theme.alias.space.cmp.xxs};
+            padding: 0
+              ${cmpTokens.multiValueContainer.space.padding.hor.isSubtle};
             background-color: ${cmpTokens.color.background[status].enabled};
           `}
         >

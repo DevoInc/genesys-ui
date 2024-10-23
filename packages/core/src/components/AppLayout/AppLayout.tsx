@@ -15,10 +15,9 @@ export const InternalAppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       gridTemplateAreas='"app-bar" "app-lead" "app-content"'
       gridTemplateRows="auto auto 1fr"
       style={{
-        width: '100%',
-        height: '100vh',
-        // TODO: cmpTokens
-        backgroundColor: theme.alias.color.background.app,
+        width: theme.cmp.appLayout.size.width,
+        height: theme.cmp.appLayout.size.height,
+        backgroundColor: theme.cmp.appLayout.color.background,
         overflow: 'hidden',
       }}
     >

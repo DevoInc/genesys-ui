@@ -5,9 +5,8 @@ import { getFieldControlTypoObj } from '@devoinc/genesys-ui';
 
 export const StyledSketchPicker = styled(SketchPicker)`
   ${({ theme }) => {
-    const aliasTokens = theme.alias;
-    const spacingTokens = aliasTokens.space;
     const sketchPickerTokens = theme.cmp.colorPicker.sketchPicker;
+    const sketchPickerFlexTokens = theme.cmp.colorPicker.sketchPickerFlexBoxFix;
     const sketchPickerInputTokens = theme.cmp.colorPicker.sketchPickerInput;
 
     const typoObj = getFieldControlTypoObj({ theme, $size: 'sm' });
@@ -61,11 +60,11 @@ export const StyledSketchPicker = styled(SketchPicker)`
       > div:nth-child(3) > div:first-child input {
         max-width: 4.5rem;
       }
-      // TODO: cmpTokens
+
       > .flexbox-fix:last-child {
         border-color: ${sketchPickerTokens.color.border} !important;
-        margin-top: ${spacingTokens.cmp.xxs} !important;
-        padding-top: ${spacingTokens.cmp.sm} !important;
+        margin-top: ${sketchPickerFlexTokens.space.marginTop} !important;
+        padding-top: ${sketchPickerFlexTokens.space.paddingTop} !important;
       }
     `;
   }};

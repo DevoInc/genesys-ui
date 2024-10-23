@@ -1,14 +1,11 @@
 import { css, DefaultTheme, IStyledComponent } from 'styled-components';
 import type { TButtonSize } from '../Button';
-import { FLEX_SPACING_SIZE_MAP } from './constants';
 
 export const getButtonGroupSpacingSize = (
   size: TButtonSize,
   theme: DefaultTheme,
 ) => {
-  const sizeForSpacing = FLEX_SPACING_SIZE_MAP[size];
-  // TODO: cmpTokens
-  return theme.alias.space.cmp[sizeForSpacing];
+  return theme.cmp.buttonGroup.space.gap[size];
 };
 
 export interface ButtonGroupMixinProps {

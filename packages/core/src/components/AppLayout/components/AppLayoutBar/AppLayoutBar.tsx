@@ -13,8 +13,7 @@ export const AppLayoutBar: React.FC<AppLayoutBarProps> = ({ children }) => {
     <Grid.Item
       gridArea="app-bar"
       as="header"
-      // TODO: cmpTokens
-      zIndex={theme.alias.elevation.zIndex.depth.stickyTop}
+      zIndex={theme.cmp.appLayout.bar.elevation.zIndex}
     >
       {children}
     </Grid.Item>

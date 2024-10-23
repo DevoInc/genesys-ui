@@ -49,7 +49,6 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
     theme,
     type = 'text',
   }) => {
-    const aliasTokens = theme.alias;
     const cmpTokens = theme.cmp.inputControl;
     const iconSize = cmpTokens.icon.size.square[$size];
     const showPasswordSize =
@@ -272,7 +271,7 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
           transition: all ease
             ${cmpTokens.pseudoRange.mutation.transitionDuration.thumb};
           transform: translate(0, calc(-50% + ${inputRangeTrackHeight} / 2));
-          box-shadow: ${cmpTokens.pseudoRange.elevation.boxShadow.thumb};
+          box-shadow: ${cmpTokens.pseudoRange.elevation.boxShadow.thumb.base};
           border-radius: ${cmpTokens.pseudoRange.shape.borderRadius.thumb.base};
           width: ${inputRangeHandlerSize};
           height: ${inputRangeHandlerSize};
@@ -282,8 +281,8 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
 
         &:focus::-webkit-slider-thumb,
         &:hover::-webkit-slider-thumb {
-          // TODO: cmpTokens
-          box-shadow: ${aliasTokens.handlers.elevation.boxShadow.hovered};
+          box-shadow: ${cmpTokens.pseudoRange.elevation.boxShadow.thumb
+            .hovered};
         }
       `};
     `;

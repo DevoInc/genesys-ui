@@ -18,10 +18,10 @@ export const useDiffEditorTheme = (): {
       colors: {
         ...editorTheme.themeData.colors,
         'diffEditor.removedTextBackground': convertRGBAToHexA(
-          theme.alias.color.background.surface.blend.error.base,
+          theme.cmp.diffEditor.color.background.removedText,
         ),
         'diffEditor.insertedTextBackground': convertRGBAToHexA(
-          theme.alias.color.background.surface.blend.success.base,
+          theme.cmp.diffEditor.color.background.insertedText,
         ),
       },
     },

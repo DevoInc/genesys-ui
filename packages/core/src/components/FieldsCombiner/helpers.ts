@@ -19,7 +19,6 @@ export const fieldsCombinerInputAndSelectMixin = ({
   size,
   theme,
 }: FieldsCombinerMixinsProps) => {
-  const fieldTokens = theme.alias.fields;
   return css`
     // Input, Select, Button and IconButton
     .react-select__control {
@@ -46,9 +45,12 @@ export const fieldsCombinerInputAndSelectMixin = ({
           `}
     }
 
-    *:hover > * > &,
+    *:hover > * > & {
+      border-color: ${theme.cmp.inputControl.color.border.base.hovered};
+    }
+
     *:hover > * > & .react-select__control {
-      border-color: ${fieldTokens.color.border.base.hovered};
+      border-color: ${theme.cmp.selectControl.color.border.base.hovered};
     }
   `;
 };

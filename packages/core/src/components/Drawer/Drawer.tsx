@@ -35,8 +35,7 @@ export const Drawer: React.FC<DrawerProps> = ({
         defaultSize={defaultSize}
         dimMode={dimMode}
         dockStyle={{
-          // TODO: cmpTokens
-          background: theme.alias.color.background.surface.base.base,
+          background: theme.cmp.drawer.color.background.base,
         }}
         isVisible={visible}
         position={position}

@@ -14,7 +14,9 @@ export const ClearIndicator: React.FC<ClearIndicatorProps> = (props) => {
   return (
     components.ClearIndicator && (
       <components.ClearIndicator {...props}>
-        <GIExitClose size={theme.alias.size.square.icon.base.xxs} />
+        <GIExitClose
+          size={theme.cmp.selectControl.clearIndicator.size.square.base}
+        />
       </components.ClearIndicator>
     )
   );

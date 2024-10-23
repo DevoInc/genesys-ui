@@ -14,16 +14,16 @@ export const cssDateTimeRangeInput = ({
   const hasStatus = status && status !== 'base';
   return css`
     ${({ theme }) => {
-      const fieldTokens = theme.alias.fields;
-      const rangeControlInputTokens = theme.cmp.dateTimeRangeControl.input;
+      const rangeControlTokens = theme.cmp.dateTimeRangeControl;
+      const rangeControlInputTokens = rangeControlTokens.input;
       return css`
         border: ${!hasStatus && 'none'};
         height: ${rangeControlInputTokens.size.height[size]};
         padding: ${rangeControlInputTokens.space.padding[size]};
 
         &:focus {
-          // TODO: cmpTokens
-          box-shadow: inset ${fieldTokens.elevation.boxShadow[status].focused};
+          box-shadow: inset
+            ${rangeControlTokens.elevation.boxShadow[status].focused};
         }
       `;
     }};

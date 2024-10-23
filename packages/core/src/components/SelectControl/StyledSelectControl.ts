@@ -188,8 +188,7 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
               > div:last-child {
                 display: flex;
                 align-items: center;
-                // TODO: cmpTokens
-                column-gap: ${theme.alias.space.cmp.xxs};
+                column-gap: ${cmpTokens.multiValueContainer.space.gap};
                 flex-wrap: ${!multipleSubtle && 'wrap'};
                 justify-content: ${multipleSubtle && 'flex-end'};
                 max-width: ${multipleSubtle && '100%'};

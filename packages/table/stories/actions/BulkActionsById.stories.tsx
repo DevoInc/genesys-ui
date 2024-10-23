@@ -4,7 +4,6 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Button, Flex, Menu, Popover } from '@devoinc/genesys-ui';
 
 import {
-  BooleanRenderer,
   TextRenderer,
   TBulkContext,
   useBulkSelectionById,
