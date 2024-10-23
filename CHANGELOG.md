@@ -1,5 +1,13 @@
 # Changelog
 
+## [13.3.1](https://github.com/DevoInc/genesys-ui/compare/v13.3.0...v13.3.1) (2024-10-23)
+
+
+### Bug Fixes
+
+* fixed use of new component token in OrderIndicator ([cad51ac](https://github.com/DevoInc/genesys-ui/commit/cad51accd512a527a9c7eb4df23cbe17b3cb5e7a))
+* **table:** add filter boolean for no show order indicator in filters ([82109b2](https://github.com/DevoInc/genesys-ui/commit/82109b2fff378e1fb4caaac3ce56ca2ba9a3c60b))
+
 ## [13.3.0](https://github.com/DevoInc/genesys-ui/compare/v13.2.0...v13.3.0) (2024-10-23)
 
 
