@@ -237,4 +237,37 @@ export interface ITable {
     rowDef: TRowDef;
     cellDef: TCellDef;
   }) => void;
+  onDoubleClick?: ({
+    colDef,
+    rowDef,
+    cellDef,
+    rowIndex
+  }: {
+    colDef: TColDef;
+    rowDef: TRowDef;
+    cellDef: TCellDef;
+    rowIndex: number;
+  }) => void;
+  onKeyUp?: ({
+    event,
+    colDef,
+    rowDef,
+    cellDef,
+  }: {
+    event: React.KeyboardEvent
+    colDef: TColDef;
+    rowDef: TRowDef;
+    cellDef: TCellDef;
+  }) => void;
+  onKeyDown?: ({
+    event,
+    colDef,
+    rowDef,
+    cellDef,
+  }: {
+    event: React.KeyboardEvent
+    colDef: TColDef;
+    rowDef: TRowDef;
+    cellDef: TCellDef;
+  }) => void;
 }

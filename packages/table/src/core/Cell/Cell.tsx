@@ -38,12 +38,19 @@ export const Cell: React.FC<CellProps> = ({
   rowDef,
   width,
 }) => {
-  const { density, texts, onCellMouseEnter, onCellMouseLeave } =
-    React.useContext(TableContext);
+  const {
+    density,
+    texts,
+    onCellMouseEnter,
+    onCellMouseLeave,
+    onDoubleClick,
+    onKeyUp,
+    onKeyDown,
+  } = React.useContext(TableContext);
 
   useInitialState(data, colDef.onReset);
 
-  const { cellRef, editionContent, isEditMode, onDoubleClick, viewContent } =
+  const { cellRef, editionContent, isEditMode, viewContent } =
     useRenderContent(colDef, data, rowIndex, row);
 
   return (
@@ -51,7 +58,6 @@ export const Cell: React.FC<CellProps> = ({
       aria-selected={isEditMode}
       colSpan={colSpan}
       css={mergeStyles(colDef?.style ?? '', cellDef?.style ?? '')}
-      onDoubleClick={onDoubleClick}
       ref={cellRef}
       style={{
         width: `${width}px`,
@@ -67,6 +73,21 @@ export const Cell: React.FC<CellProps> = ({
       onMouseLeave={() => {
         if (onCellMouseLeave) {
           onCellMouseLeave({ colDef, cellDef, rowDef });
+        }
+      }}
+      onDoubleClick={() => {
+        if (onDoubleClick) {
+          onDoubleClick({ colDef, cellDef, rowDef, rowIndex });
+        }
+      }}
+      onKeyUp={(event) => {
+        if (onKeyUp) {
+          onKeyUp({ event, colDef, cellDef, rowDef });
+        }
+      }}
+      onKeyDown={(event) => {
+        if (onKeyDown) {
+          onKeyDown({ event, colDef, cellDef, rowDef });
         }
       }}
     >

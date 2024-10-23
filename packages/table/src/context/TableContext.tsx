@@ -8,6 +8,6 @@ export const TableContext = React.createContext<ITableContext>({
   density: 'default',
   data: [],
   striped: false,
-  highlightColumnsOnHover: false,
+  highlightRowOnHover: false,
   resizableColumns: false,
 });
