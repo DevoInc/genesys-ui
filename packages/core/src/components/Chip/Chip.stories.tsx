@@ -34,7 +34,7 @@ export const MultipleControlled: Story = {
           icon={<GILikeHeartFavoriteRatingLove />}
           iconSelected={<GIHeartFull />}
           onChange={() => setSelected(!selected)}
-          state={selected ? 'selected' : 'enabled'}
+          state={selected ? 'selected' : props.state}
           value="favorite"
         >
           Favorite
@@ -62,7 +62,7 @@ export const SingleControlled: Story = {
           name="single"
           onChange={() => setSelected(!selected)}
           selectionScheme="single"
-          state={selected ? 'selected' : 'enabled'}
+          state={selected ? 'selected' : props.state}
         >
           Favorite
         </Chip>
@@ -85,7 +85,7 @@ export const Custom: Story = {
     ((props) => {
       const [selected, setSelected] = React.useState(false);
       return (
-        <Chip._Container {...props} state={selected ? 'selected' : 'enabled'}>
+        <Chip._Container {...props} state={selected ? 'selected' : props.state}>
           <Chip._HiddenInput
             onChange={() => setSelected(!selected)}
             selectionScheme="multiple"

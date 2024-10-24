@@ -27,8 +27,9 @@ export const FieldLabel: React.FC<FieldLabelProps> = ({
   style,
   ...nativeProps
 }) => {
-  // to get vertically aligned the label with the field control block anyway
-  const labelHeight = useTheme().cmp.label.size.height[size];
+  // to get vertically aligned the floating helper with the field control block anyway
+  const labelHelperHeight =
+    useTheme().cmp.field.labelHelper.size.minHeight[size];
 
   return !(labelPosition === 'right') && helper && !srOnly ? (
     <Flex {...nativeProps} alignItems="center" maxWidth="100%" gap="cmp-xxs">
@@ -45,9 +46,9 @@ export const FieldLabel: React.FC<FieldLabelProps> = ({
       </Label>
       {!srOnly && (
         <Flex
-          height={labelHeight}
+          height={labelHelperHeight}
           inline
-          verticalAlign="middle"
+          verticalAlign="text-top"
           alignItems="center"
         >
           {helper}
@@ -68,10 +69,10 @@ export const FieldLabel: React.FC<FieldLabelProps> = ({
       {children}
       {!srOnly && helper && (
         <Flex
-          height={labelHeight}
+          height={labelHelperHeight}
           inline
           marginLeft="cmp-xxs"
-          verticalAlign="middle"
+          verticalAlign="text-top"
         >
           {helper}
         </Flex>

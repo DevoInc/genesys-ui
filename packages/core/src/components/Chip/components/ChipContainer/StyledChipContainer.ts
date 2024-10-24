@@ -31,7 +31,7 @@ export const StyledChipContainer = styled.label<StyledChipContainerProps>`
       min-width: ${chipTokens.size.minWidth[$size]};
       height: ${chipTokens.size.height[$size]};
       padding: ${getPadding({ $size, $sortable, tokens: chipTokens })};
-      background-color: ${chipTokens.color.background.enabled};
+      background-color: ${chipTokens.color.background[$state]};
       font-size: ${chipTokens.label.typo.fontSize[$size]};
       line-height: ${chipTokens.label.typo.lineHeight[$size]};
       text-shadow: ${$state === 'selected' && '0 0 .05rem'};

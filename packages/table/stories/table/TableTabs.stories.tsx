@@ -3,22 +3,9 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Holo } from '@devoinc/holo';
 
-import {
-  BasicTable,
-  TCellHorAlign,
-  TCellRenderer,
-  TColDef,
-  TData,
-} from '../../src';
+import { BasicTable, TColDef, TData } from '../../src';
 
-import {
-  AppBar,
-  AppLayout,
-  Box,
-  Button,
-  PanelSection,
-  Tabs,
-} from '@devoinc/genesys-ui';
+import { AppBar, AppLayout, PanelSection, Tabs } from '@devoinc/genesys-ui';
 
 const meta: Meta<typeof BasicTable> = {
   title: 'Components/Layout/Table/Tabs',
@@ -154,10 +141,7 @@ const DeletingTab = () => {
       <AppLayout.Content>
         {activeTab === 0 && (
           <PanelSection title={'Users'} subtitle={'Registro de usuarios'}>
-            <BasicTable
-              data={initialData1}
-              colDefs={colDefsInitial1}
-            />
+            <BasicTable data={initialData1} colDefs={colDefsInitial1} />
           </PanelSection>
         )}
         {activeTab === 1 && (
