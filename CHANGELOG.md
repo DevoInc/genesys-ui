@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.2](https://github.com/DevoInc/genesys-ui/compare/v13.3.1...v13.3.2) (2024-10-24)
+
+
+### Bug Fixes
+
+* fixed label with floating helper vertical align and chip ([07bea6d](https://github.com/DevoInc/genesys-ui/commit/07bea6d3a724c149f5540ddf1382e38781366421))
+
 ## [13.3.1](https://github.com/DevoInc/genesys-ui/compare/v13.3.0...v13.3.1) (2024-10-23)
 
 
