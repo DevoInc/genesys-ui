@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.3.3](https://github.com/DevoInc/genesys-ui/compare/v13.3.2...v13.3.3) (2024-10-24)
+
+
+### Bug Fixes
+
+* avoid overflow of select block in table column filter when the options are wider than the column head ([dc67dd5](https://github.com/DevoInc/genesys-ui/commit/dc67dd5eac14f72134836c1cbc34521f16920554))
+
 ## [13.3.2](https://github.com/DevoInc/genesys-ui/compare/v13.3.1...v13.3.2) (2024-10-24)
 
 
