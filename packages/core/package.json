@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui",
-  "version": "13.3.3",
+  "version": "13.4.0",
   "description": "",
   "type": "module",
   "types": "./dist/index.d.ts",

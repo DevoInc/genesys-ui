@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.4.0](https://github.com/DevoInc/genesys-ui/compare/v13.3.3...v13.4.0) (2024-10-28)
+
+
+### Features
+
+* added new collapsable variant for FormGroup ([5d02410](https://github.com/DevoInc/genesys-ui/commit/5d02410f9267efd4192c7f4baf69cd65a77ed183))
+
 ## [13.3.3](https://github.com/DevoInc/genesys-ui/compare/v13.3.2...v13.3.3) (2024-10-24)
 
 
