@@ -1,7 +1,10 @@
 import styled, { css } from 'styled-components';
-import { camelCase } from 'lodash';
 
-import { isValidColor, getAccTextColor } from '../../../../helpers';
+import {
+  isValidColor,
+  getAccTextColor,
+  getTokenKeyFromColorScheme,
+} from '../../../../helpers';
 import { getBadgeInverseModeColor } from '../../helpers';
 
 import type { IBadgeContainer } from './declarations';
@@ -28,7 +31,7 @@ export const StyledBadgeContainer = styled.span<StyledBadgeContainerProps>`
     $size = 'md',
     theme,
   }) => {
-    const colorSchemeForTokens = camelCase($colorScheme);
+    const colorSchemeForTokens = getTokenKeyFromColorScheme($colorScheme);
     const contentType = $hasContent ? 'hasContent' : 'isEmpty';
     const cmpTokens = theme.cmp.badge;
     const squareSize = cmpTokens.size.square[contentType][$size];

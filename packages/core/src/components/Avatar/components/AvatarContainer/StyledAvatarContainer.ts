@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
-import { camelCase } from 'lodash';
 
 import type { IAvatarStyled } from '../../declarations';
 
 import { getAvatarSizeConfig } from '../../utils';
 
 import { typoMixin } from '../../../../styled/';
+import { getTokenKeyFromColorScheme } from '../../../../helpers';
 
 export interface StyledAvatarContainerProps
   extends Pick<
@@ -30,7 +30,7 @@ export const StyledAvatarContainer = styled.span<StyledAvatarContainerProps>`
     theme,
     $variant,
   }) => {
-    const colorSchemeForTokens = camelCase($colorScheme);
+    const colorSchemeForTokens = getTokenKeyFromColorScheme($colorScheme);
     const cmpTokens = theme.cmp.avatar;
     const bgColor = cmpTokens.color.background[colorSchemeForTokens];
     const color = cmpTokens.color.text[colorSchemeForTokens];

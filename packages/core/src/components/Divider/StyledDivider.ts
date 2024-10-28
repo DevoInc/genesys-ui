@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components';
-import { camelCase } from 'lodash';
 
 import type { IDividerStyled } from './declarations';
-import { getSpacingPropCss } from '../../helpers';
+import { getSpacingPropCss, getTokenKeyFromColorScheme } from '../../helpers';
 
 export interface StyledDividerProps extends IDividerStyled {}
 
@@ -21,7 +20,7 @@ export const StyledDivider = styled.hr<StyledDividerProps>`
     $width,
   }) => {
     const cmpTokens = theme.cmp.divider;
-    const colorSchemeForTokens = camelCase($colorScheme);
+    const colorSchemeForTokens = getTokenKeyFromColorScheme($colorScheme);
     const defaultSpacing =
       cmpTokens.space.margin[$vertical ? 'vertical' : 'base'];
     const spacing = $margin
