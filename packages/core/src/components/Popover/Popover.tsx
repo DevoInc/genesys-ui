@@ -124,6 +124,7 @@ export const InternalPopover: React.FC<PopoverProps> = ({
     const isChild = to instanceof Node && from?.contains(to);
 
     if (!isChild) {
+      ev.stopPropagation();
       setOpened((prevState) => !prevState);
       opened && onClose?.();
     }

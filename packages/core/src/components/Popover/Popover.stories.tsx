@@ -17,10 +17,13 @@ export default meta;
 type Story = StoryObj<typeof Popover>;
 
 export const Base: Story = {
-  render: () => {
+  parameters: {
+    layout: 'centered',
+  },
+  render: (args) => {
     const popoverId = 'base';
     return (
-      <Popover id={popoverId}>
+      <Popover {...args} id={popoverId}>
         {({ toggle, ref, isOpened }) => (
           <Button
             aria-controls={popoverId}
@@ -48,40 +51,41 @@ export const WithArrow: Story = {
   parameters: {
     layout: 'centered',
   },
-  render: (args) => {
-    const popoverId = 'with-arrow';
-    return (
-      <Popover
-        {...args}
-        id={popoverId}
-        arrowConfig={{
-          component: ({ $placement, $size }) => (
-            <Popover.Arrow $placement={$placement} $size={$size} />
-          ),
-        }}
-      >
-        {({ toggle, ref, isOpened }) => (
-          <Button
-            aria-controls={popoverId}
-            aria-expanded={isOpened}
-            aria-haspopup={true}
-            onClick={toggle}
-            ref={ref}
-            state={isOpened ? 'expanded' : undefined}
-          >
-            TriggerElement
-          </Button>
-        )}
-        <Popover.Panel padding="cmp-sm">
-          <Typography.Paragraph>
-            Explorations from which we spring citizens of distant epochs hearts
-            of the stars something incredible is waiting to be known paroxysm of
-            global death.
-          </Typography.Paragraph>
-        </Popover.Panel>
-      </Popover>
-    );
-  },
+  render: (args) =>
+    ((props) => {
+      const popoverId = 'with-arrow';
+      return (
+        <Popover
+          {...props}
+          id={popoverId}
+          arrowConfig={{
+            component: ({ $placement, $size }) => (
+              <Popover.Arrow $placement={$placement} $size={$size} />
+            ),
+          }}
+        >
+          {({ toggle, ref, isOpened }) => (
+            <Button
+              aria-controls={popoverId}
+              aria-expanded={isOpened}
+              aria-haspopup={true}
+              onClick={toggle}
+              ref={ref}
+              state={isOpened ? 'expanded' : undefined}
+            >
+              TriggerElement
+            </Button>
+          )}
+          <Popover.Panel padding="cmp-sm">
+            <Typography.Paragraph>
+              Explorations from which we spring citizens of distant epochs
+              hearts of the stars something incredible is waiting to be known
+              paroxysm of global death.
+            </Typography.Paragraph>
+          </Popover.Panel>
+        </Popover>
+      );
+    })(args),
 };
 
 export const AsDropdownMenu: Story = {

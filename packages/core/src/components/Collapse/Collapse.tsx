@@ -17,10 +17,10 @@ export interface CollapseProps
     Pick<CollapseHeadingProps, 'truncateLine'> {
   heading?: CollapseHeadingProps['children'];
   appendContent?: React.ReactNode;
-  isDraggable?: boolean;
 }
 
 export const InternalCollapse: React.FC<CollapseProps> = ({
+  children,
   expanded,
   heading,
   onClick,
@@ -46,10 +46,16 @@ export const InternalCollapse: React.FC<CollapseProps> = ({
     tooltip={tooltip}
     isDraggable={isDraggable}
   >
-    <Collapse._Marker expanded={expanded} tabIndex={-1} />
-    <Collapse._Heading truncateLine={truncateLine}>{heading}</Collapse._Heading>
-    {appendContent && (
-      <Collapse._AppendContent>{appendContent}</Collapse._AppendContent>
+    {children || (
+      <>
+        <Collapse._Marker expanded={expanded} tabIndex={-1} />
+        <Collapse._Heading truncateLine={truncateLine}>
+          {heading}
+        </Collapse._Heading>
+        {appendContent && (
+          <Collapse._AppendContent>{appendContent}</Collapse._AppendContent>
+        )}
+      </>
     )}
   </Collapse._Container>
 );

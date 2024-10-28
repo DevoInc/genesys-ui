@@ -5,7 +5,7 @@ import { Field, type FieldProps } from '../Field';
 import { InputControl, type InputControlProps } from '../InputControl';
 
 export interface InputProps
-  extends Omit<FieldProps, 'children' | 'role'>,
+  extends Omit<FieldProps, 'controlWidth' | 'children' | 'direction' | 'role'>,
     Omit<
       InputControlProps,
       'id' | 'size' | 'status' | 'disabled' | 'required'
@@ -15,6 +15,7 @@ export const Input: React.FC<InputProps> = ({
   'aria-label': ariaLabel,
   disabled,
   hasFloatingHelper,
+  hasWideControl,
   helper,
   hideLabel,
   id,
@@ -42,6 +43,7 @@ export const Input: React.FC<InputProps> = ({
     disabled={disabled}
     controlWidth={inputWidth}
     hasFloatingHelper={hasFloatingHelper}
+    hasWideControl={hasWideControl}
     helper={helper}
     hideLabel={hideLabel}
     id={id}

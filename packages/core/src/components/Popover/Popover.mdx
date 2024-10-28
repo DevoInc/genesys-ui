@@ -46,7 +46,28 @@ built with forwardRef.
 - `setOpened`: function to force display or hide the Popover floating content.
 - `isOpened`: a boolean indicating if the Popover floating content is open.
 
-<Source of={Stories.Base} />
+<Source
+  code={`
+  <Popover {...args} id={popoverId}>
+    {({ toggle, ref, isOpened }) => (
+      <Button
+        aria-controls={popoverId}
+        aria-expanded={isOpened}
+        aria-haspopup={true}
+        onClick={toggle}
+        ref={ref}
+        state={isOpened ? 'expanded' : undefined}
+      >
+        TriggerElement
+      </Button>
+    )}
+    <Popover.Panel padding="cmp-sm">
+      <Typography.Paragraph>
+        This is the content of the Popover.
+      </Typography.Paragraph>
+    </Popover.Panel>
+  </Popover>`}
+/>
 
 ## Nested Popover
 
@@ -131,26 +152,25 @@ import * as React from 'react';
 import { usePopper } from 'react-popper';
 
 const Example = () => {
-  const [referenceElement, setReferenceElement] = React.useState(null);
-  const [popperElement, setPopperElement] = React.useState(null);
-  const [arrowElement, setArrowElement] = React.useState(null);
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
-    modifiers: [{ name: 'arrow', options: { element: arrowElement } }],
-  });
+const [referenceElement, setReferenceElement] = React.useState(null);
+const [popperElement, setPopperElement] = React.useState(null);
+const [arrowElement, setArrowElement] = React.useState(null);
+const { styles, attributes } = usePopper(referenceElement, popperElement, {
+modifiers: [{ name: 'arrow', options: { element: arrowElement } }],
+});
 
-  return (
-    <>
-      <button type="button" ref={setReferenceElement}>
-        Reference element
-      </button>
-      <div ref={setPopperElement} style={styles.popper} {...attributes.popper}>
-        Popper element
-        <div ref={setArrowElement} style={styles.arrow} />
-      </div>
-    </>
-  );
-};
-`} />
+return (
+
+<>
+  <button type="button" ref={setReferenceElement}>
+    Reference element
+  </button>
+  <div ref={setPopperElement} style={styles.popper} {...attributes.popper}>
+    Popper element
+    <div ref={setArrowElement} style={styles.arrow} />
+  </div>
+</>
+); }; `} />
 
 ## Props
 

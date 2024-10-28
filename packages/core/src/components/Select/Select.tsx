@@ -12,7 +12,7 @@ export interface ExtendedTSelectOption extends TSelectOption {
 }
 
 export interface SelectProps
-  extends Omit<FieldProps, 'children'>,
+  extends Omit<FieldProps, 'children' | 'direction' | 'controlWidth'>,
     Omit<
       SelectControlProps<ExtendedTSelectOption>,
       'id' | 'size' | 'status' | 'required'

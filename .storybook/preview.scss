@@ -230,6 +230,10 @@ body {
   }
 }
 
+.sb-show-main.sb-main-centered #storybook-root {
+  flex: 1 1 auto;
+}
+
 #storybook-root {
   height: 100%;
 }

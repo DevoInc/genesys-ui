@@ -22,19 +22,37 @@ or not:
 
 <Canvas of={Stories.Base} />
 
-## Custom based in internal components
-
-Sometimes you need something very specific, which is not possible using only the
-component and its props. In these cases, you can use its internal components (`_` notation) to define
-that specific usage. We don't recommend this usage, but anyway it's available for very specific
-needs, usually about styles.
-
 ## Quiet
 
 Sometimes, depending on the context of the collapse, we may need a lighter version. With the `quiet` prop set to true,
 we get a collapse with a transparent background.
 
 <Canvas of={Stories.Quiet} />
+
+## Draggable
+
+<Canvas of={Stories.Draggable} />
+
+## Actions
+
+If you add any action (Button, IconButton... etc.) or any clickable element to the Collapse content, you have to stop
+the onCLick propagation in each of those elements. Except for our Popover component or Popover-based ones
+(as InlineMessage), because their triggers have this stop already integrated.
+
+```jsx
+  onClick={(event) => {
+    event.stopPropagation();
+    ...
+  }}
+```
+
+<Canvas of={Stories.Actions} />
+
+## AppendContent
+
+You can add any content next to the heading using the `appendContent` prop.
+
+<Canvas of={Stories.AppendContent} />
 
 ## Separator
 
@@ -44,13 +62,12 @@ at the end of the opened content block, acting as a separator with the next coll
 
 <Canvas of={Stories.Separator} />
 
-## Draggable
+## Custom based in internal components
 
-<Canvas of={Stories.Draggable} />
-
-## AppendContent
-
-<Canvas of={Stories.AppendContent} />
+Sometimes you need something very specific, which is not possible using only the
+component and its props. In these cases, you can use its internal components (`_` notation) to define
+that specific usage. We don't recommend this usage, but anyway it's available for very specific
+needs, usually about styles.
 
 ## Accessibility
 

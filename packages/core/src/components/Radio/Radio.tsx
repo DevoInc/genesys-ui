@@ -6,7 +6,12 @@ import { RadioControl, type RadioControlProps } from '../RadioControl';
 export interface RadioProps
   extends Omit<
       FieldProps,
-      'children' | 'hasWideControl' | 'labelPosition' | 'role'
+      | 'children'
+      | 'controlWidth'
+      | 'direction'
+      | 'hasWideControl'
+      | 'labelPosition'
+      | 'role'
     >,
     Omit<
       RadioControlProps,

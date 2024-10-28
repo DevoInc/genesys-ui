@@ -6,7 +6,15 @@ import { CheckboxControl, type CheckboxControlProps } from '../CheckboxControl';
 
 export interface CheckboxProps
   extends IDataAttrs,
-    Omit<FieldProps, 'children' | 'hasWideControl' | 'labelPosition' | 'role'>,
+    Omit<
+      FieldProps,
+      | 'children'
+      | 'controlWidth'
+      | 'direction'
+      | 'hasWideControl'
+      | 'labelPosition'
+      | 'role'
+    >,
     Omit<
       CheckboxControlProps,
       'id' | 'size' | 'status' | 'disabled' | 'required' | 'aria-label'

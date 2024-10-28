@@ -16,7 +16,7 @@ export interface FormLegendProps
    * a checkbox or radio group. */
   hasLabelFormat?: boolean;
   /** The text of the legend. */
-  text?: string;
+  text?: React.ReactNode;
   /** The children if we need a custom content. */
   children?: React.ReactNode;
   /** If the heading of the form group is hidden (always exists for
@@ -48,7 +48,7 @@ export const FormLegend: React.FC<FormLegendProps> = ({
             {text}
           </Field._Label>
         ) : (
-          <Typography.Heading as="span" size="h6">
+          <Typography.Heading as="span" size="h6" truncateLine={2}>
             {requiredMark}
             {text}
             {helper}

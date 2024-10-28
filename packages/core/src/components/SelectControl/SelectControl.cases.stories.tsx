@@ -224,7 +224,6 @@ export const MultipleBasic: Story = {
           onChange={(val) => setValue(val)}
           options={getOptions(50)}
           value={value}
-          maxMenuWidth="120px"
         />
       );
     })(args),

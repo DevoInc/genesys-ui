@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import type { TExpanded } from './definitions';
+import type { TExpanded } from './declarations';
 
 export interface CollapseContextProps {
   expanded?: TExpanded;

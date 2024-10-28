@@ -7,6 +7,8 @@ import { mergeStyles } from '../../../../helpers';
 
 export interface CollapseHeadingProps
   extends Omit<HeadingProps, 'truncateLine'> {
+  /** The number of lines before get truncated text with overflow to ellipsis
+   * (Css line-clamp property). */
   truncateLine?: PickUnion<HeadingProps['truncateLine'], 1 | 2>;
 }
 
@@ -20,7 +22,7 @@ export const CollapseHeading: React.FC<CollapseHeadingProps> = ({
     {...restHeadingProps}
     truncateLine={truncateLine}
     size="h6"
-    style={mergeStyles({ position: 'relative', pointerEvents: 'none' }, style)}
+    style={mergeStyles({ position: 'relative', userSelect: 'none' }, style)}
   >
     {children}
   </Typography.Heading>

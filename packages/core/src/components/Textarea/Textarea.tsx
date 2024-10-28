@@ -5,7 +5,7 @@ import { Field } from '../Field';
 import { TextareaControl, type TextareaControlProps } from '../TextareaControl';
 
 export interface TextareaProps
-  extends Omit<IField, 'children' | 'role'>,
+  extends Omit<IField, 'controlWidth' | 'children' | 'direction' | 'role'>,
     Omit<
       TextareaControlProps,
       'id' | 'size' | 'status' | 'disabled' | 'required'

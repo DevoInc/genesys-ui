@@ -29,6 +29,8 @@ import {
 import { ButtonGroup } from '../ButtonGroup';
 import styled from 'styled-components';
 import { TElevation } from 'src/declarations';
+import { HFlex } from '../HFlex';
+import { FloatingHelper } from '../FloatingHelper';
 
 const meta: Meta<typeof Collapse> = {
   title: 'Components/Navigation/Collapse',
@@ -312,6 +314,67 @@ export const Quiet: Story = {
         </Flex>
       );
     })(args),
+};
+
+export const Actions: Story = {
+  tags: ['isHidden'],
+  render: () =>
+    (() => {
+      const [expanded, setExpanded] = React.useState(false);
+      const contentId = 'accessibility';
+      return (
+        <Flex flexDirection={'column'}>
+          <Collapse
+            heading={
+              <HFlex inline spacing="cmp-xs">
+                Genesys
+                <Typography.Caption colorScheme="weaker">
+                  (V15.3.1)
+                </Typography.Caption>
+                <FloatingHelper message={lorem} />
+              </HFlex>
+            }
+            aria-controls={contentId}
+            expanded={expanded}
+            onClick={() => {
+              setExpanded(!expanded);
+            }}
+            appendContent={
+              <ButtonGroup size={'xs'}>
+                <ButtonGroup.IconButton
+                  circular
+                  colorScheme="quiet"
+                  icon={<GIPlusSignAddNew />}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    alert('Add button click');
+                  }}
+                />
+                <ButtonGroup.IconButton
+                  circular
+                  colorScheme="quiet"
+                  icon={<GIBinTrashRecycleDeleteGarbageEmpty />}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    alert('Remove button click');
+                  }}
+                />
+              </ButtonGroup>
+            }
+          />
+          {expanded && (
+            <Box
+              id={contentId}
+              maxHeight={'190px'}
+              overflow={'auto'}
+              padding={'cmp-md cmp-lg'}
+            >
+              <Typography.Paragraph>{lorem}</Typography.Paragraph>
+            </Box>
+          )}
+        </Flex>
+      );
+    })(),
 };
 
 export const Separator: Story = {

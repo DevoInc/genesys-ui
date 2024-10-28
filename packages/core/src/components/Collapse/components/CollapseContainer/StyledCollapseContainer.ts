@@ -1,16 +1,49 @@
 import styled, { css } from 'styled-components';
 
-import type { TExpanded } from '../../definitions';
-import { pseudoElementMixin } from '../../../../styled';
+import type { ICollapse } from '../../declarations';
+import { btnResetMixin, pseudoElementMixin } from '../../../../styled';
 
 export interface StyledCollapseContainerProps {
-  $expanded?: TExpanded;
-  $isDraggable?: boolean;
-  quiet: boolean;
+  $expanded?: ICollapse['expanded'];
+  $isDraggable?: ICollapse['isDraggable'];
+  $quiet: ICollapse['quiet'];
 }
 
 export const StyledCollapseContainer = styled.div<StyledCollapseContainerProps>`
+  ${btnResetMixin};
   position: relative;
+  cursor: ${({ $isDraggable = false }) => ($isDraggable ? 'grab' : 'pointer')};
+
+  ${({ $isDraggable }) =>
+    $isDraggable
+      ? css`
+          &:active {
+            cursor: grabbing;
+          }
+        `
+      : ''}
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 0 0;
+    transition: all ease
+      ${({ theme }) => theme.cmp.collapse.button.mutation.transitionDuration};
+    pointer-events: none;
+    background-color: ${({ theme }) =>
+      theme.cmp.collapse.button.color.background.base};
+  }
+
+  &:hover::before {
+    background-color: ${({ theme }) =>
+      theme.cmp.collapse.button.color.background.hovered};
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: ${({ theme }) =>
+      theme.cmp.collapse.button.elevation.bosShadow.focused};
+  }
 
   ${({ $isDraggable }) =>
     $isDraggable &&
@@ -43,14 +76,14 @@ export const StyledCollapseContainer = styled.div<StyledCollapseContainerProps>`
       }
     `}
 
-  ${({ quiet, $expanded = false, theme }) => css`
+  ${({ $quiet, $expanded = false, theme }) => css`
     transition:
       background-color ${theme.cmp.collapse.mutation.transitionDuration} ease,
       border-color ${theme.cmp.collapse.mutation.transitionDuration} ease;
     border-bottom: solid ${theme.cmp.collapse.shape.borderSize}
       ${theme.cmp.collapse.color.border[$expanded ? 'expanded' : 'base']};
     min-height: ${theme.cmp.collapse.size.minHeight};
-    background-color: ${quiet
+    background-color: ${$quiet
       ? null
       : theme.cmp.collapse.color.background.base};
 

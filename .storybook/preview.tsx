@@ -99,14 +99,34 @@ const preview: Preview = {
         <Story />
       </StrictMode>
     ),
-    (Story, parameters) =>
-      !parameters.tags.includes('noWrap') ? (
-        <StoryWrapper padding={'cmp-md'} position="relative">
+    (Story, parameters) => {
+      console.info(parameters.parameters);
+      return !parameters.tags.includes('noWrap') ? (
+        <StoryWrapper
+          display={
+            parameters.parameters.layout === 'centered' ? 'flex' : undefined
+          }
+          padding={'cmp-md'}
+          position="relative"
+          height={
+            parameters.parameters.layout === 'centered' ? '100%' : undefined
+          }
+          width={
+            parameters.parameters.layout === 'centered' ? '100%' : undefined
+          }
+          alignItems={
+            parameters.parameters.layout === 'centered' ? 'center' : undefined
+          }
+          justifyContent={
+            parameters.parameters.layout === 'centered' ? 'center' : undefined
+          }
+        >
           <Story />
         </StoryWrapper>
       ) : (
         <Story />
-      ),
+      );
+    },
     withThemeFromJSXProvider({
       themes: { light, dark },
       defaultTheme: 'light',

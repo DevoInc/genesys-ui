@@ -20,6 +20,8 @@ import { Helper } from '../../../Helper';
 import { hasStatus } from '../../../../utils/validations';
 import { StyledFormGroup, type StyledFormGroupProps } from './StyledFormGroup';
 import { StyledFormGroupContainer } from './StyledFormGroupContainer';
+import { Collapse } from '../../../Collapse';
+import { formGroupCollapseMixin } from './helpers';
 
 export interface FormGroupProps
   extends IStyledOverloadCss,
@@ -33,6 +35,9 @@ export interface FormGroupProps
     Omit<IFieldAttrs, 'required'> {
   /** If the form group is boxed. */
   boxed?: StyledFormGroupProps['$boxed'];
+  /** If the form group is collapsable and this way the legend acts as a Collapse component which collapse/uncollapse
+   * the fields. */
+  collapsable?: boolean;
   /** If the form group legend has label format. Usually when the form group is
    * a checkbox or radio group. */
   hasLegendLabelFormat?: boolean;
@@ -43,7 +48,7 @@ export interface FormGroupProps
   required?: boolean;
   /** Text as legend for the group of fields. You can add it, but maintaining it
    * hidden and accessible by the 'hideLegend' prop. */
-  legend?: string;
+  legend?: React.ReactNode;
   /** The position of the legend relative to the group. */
   legendPosition?: TLegendPosition;
   /** Children */
@@ -56,9 +61,10 @@ export interface FormGroupProps
 export const FormGroup: React.FC<FormGroupProps> = ({
   alignItems,
   asFieldset = false,
-  direction = 'column',
   boxed = false,
   children,
+  collapsable,
+  direction = 'column',
   disabled,
   flexWrap,
   form,
@@ -80,14 +86,11 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   ...restNativeAttrProps
 }) => {
   // to get vertically aligned the label with the control block anyway
-  const labelLineHeight = useTheme().alias.typo.lineHeight.body.md;
+  const theme = useTheme();
+  const labelLineHeight = theme.cmp.field.labelHelper.size.minHeight.sm;
+  const [expanded, setExpanded] = React.useState(false);
   const FloatingHelperBlock = (
-    <Flex
-      inline
-      verticalAlign="middle"
-      height={labelLineHeight}
-      marginLeft="cmp-xxs"
-    >
+    <Flex inline height={labelLineHeight} marginLeft="cmp-xxs">
       <FloatingHelper
         message={helper}
         status={hasStatus(status) ? status : 'help'}
@@ -102,9 +105,9 @@ export const FormGroup: React.FC<FormGroupProps> = ({
     <StyledFormGroupContainer
       {...restNativeAttrProps}
       css={style}
-      form={asFieldset ? form : null}
-      disabled={asFieldset ? disabled : null}
-      name={asFieldset ? name : null}
+      form={asFieldset ? form : undefined}
+      disabled={asFieldset ? disabled : undefined}
+      name={asFieldset ? name : undefined}
       as={asFieldset ? 'fieldset' : 'div'}
       $legendPosition={legendPosition}
       $marginLeft={marginLeft}
@@ -112,30 +115,59 @@ export const FormGroup: React.FC<FormGroupProps> = ({
       title={tooltip}
       $asFieldset={asFieldset}
     >
-      {legend && (
+      {legend && !collapsable && (
         <FormLegend
           asLegend={asFieldset}
           srOnly={hideLegend}
           text={legend}
           hasLabelFormat={hasLegendLabelFormat}
-          requiredMark={required ? RequiredMarkBlock : null}
-          helper={helper && hasFloatingHelper ? FloatingHelperBlock : null}
+          requiredMark={required ? RequiredMarkBlock : undefined}
+          helper={helper && hasFloatingHelper ? FloatingHelperBlock : undefined}
         />
       )}
-      <StyledFormGroup $boxed={boxed}>
-        <FormDistributor
-          alignItems={alignItems}
-          direction={direction}
-          flexWrap={flexWrap}
-          itemsGap={itemsGap}
-          justifyContent={justifyContent}
-        >
-          {children}
-          {(!legend || hideLegend) &&
-            helper &&
-            hasFloatingHelper &&
-            FloatingHelperBlock}
-        </FormDistributor>
+      <StyledFormGroup
+        $boxed={collapsable || boxed}
+        $collapsable={collapsable}
+        $expanded={expanded}
+      >
+        {collapsable && legend && (
+          <Collapse
+            expanded={expanded}
+            quiet
+            onClick={() => {
+              setExpanded(!expanded);
+            }}
+            heading={
+              <FormLegend
+                asLegend={asFieldset}
+                srOnly={hideLegend}
+                text={legend}
+                hasLabelFormat={hasLegendLabelFormat}
+                requiredMark={required ? RequiredMarkBlock : undefined}
+                helper={
+                  helper && hasFloatingHelper ? FloatingHelperBlock : undefined
+                }
+              />
+            }
+            style={formGroupCollapseMixin({ theme })}
+          />
+        )}
+        {((collapsable && expanded) || !collapsable) && (
+          <FormDistributor
+            paddingTop={expanded ? 'cmp-sm' : null}
+            alignItems={alignItems}
+            direction={direction}
+            flexWrap={flexWrap}
+            itemsGap={itemsGap}
+            justifyContent={justifyContent}
+          >
+            {children}
+            {(!legend || hideLegend) &&
+              helper &&
+              hasFloatingHelper &&
+              FloatingHelperBlock}
+          </FormDistributor>
+        )}
       </StyledFormGroup>
       {helper && !hasFloatingHelper && (
         <Helper message={helper} status={status} />
