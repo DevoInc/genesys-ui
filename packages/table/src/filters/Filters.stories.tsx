@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+import semver from 'semver';
 
-import { Menu } from '@devoinc/genesys-ui';
+import { Menu, InputControl } from '@devoinc/genesys-ui';
 
 import {
   type TContextOptions,
@@ -12,6 +13,8 @@ import {
   useBulkSelection,
   TBulkContext,
   BasicTable,
+  TColDef,
+  TNumberFilterValue,
 } from '../../src';
 
 const meta: Meta<typeof BasicTable> = {
@@ -258,6 +261,82 @@ const FilterAndBulkActionsTable = () => {
   );
 };
 
-export const FiltersAndBulkActions: Story = {
+export const FilterAndBulkActions: Story = {
   render: () => <FilterAndBulkActionsTable />,
+};
+
+const FiltersCustomTable = () => {
+  const colDef: TColDef[] = [
+    {
+      id: 'version',
+      headerName: 'Text',
+      preset: 'text',
+    },
+    {
+      id: 'num',
+      headerName: 'Number',
+      preset: 'number',
+      cellFilter: ({ colDef, onChange }) => {
+        const context = colDef?.context as TFilterContext;
+        const filterValue = context?.filterValue as TNumberFilterValue;
+        const value = filterValue?.value ?? '';
+        return (
+          <InputControl
+            size="sm"
+            aria-label="filter"
+            value={value}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              onChange(
+                {
+                  value: event.currentTarget.value,
+                } as TNumberFilterValue,
+                'number',
+              );
+            }}
+          />
+        );
+      },
+    },
+  ];
+
+  const data = [
+    {
+      version: 'Major',
+      num: '1.0.0',
+    },
+    {
+      version: 'Minor',
+      num: '1.1.0',
+    },
+    {
+      version: 'Patch',
+      num: '1.1.1',
+    },
+  ];
+
+  const { filterStruct, onFilter } = useFilterStruct();
+  const dataFiltered = [...data].filter(
+    filterDataByFilterStruct(filterStruct, {
+      num: (data: string, filterValue: { value: string }) => {
+        return semver.valid(filterValue.value)
+          ? semver.gt(data, filterValue.value)
+          : true;
+      },
+    }),
+  );
+
+  return (
+    <BasicTable
+      showFilters
+      onFilter={(curColDef, value, type) => {
+        onFilter(curColDef.id, value, type);
+      }}
+      colDefs={updateColDefsWithFilterStruct(colDef, filterStruct)}
+      data={dataFiltered}
+    />
+  );
+};
+
+export const FiltersCustom: Story = {
+  render: () => <FiltersCustomTable />,
 };

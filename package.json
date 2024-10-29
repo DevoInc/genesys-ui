@@ -73,6 +73,7 @@
     "release-it": "^17.6.0",
     "remark-gfm": "^4.0.0",
     "sass": "^1.79.3",
+    "semver": "^7.6.3",
     "storybook": "^8.3.1",
     "tocbot": "^4.29.0",
     "ts-node": "^10.9.2",
