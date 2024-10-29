@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.4.2](https://github.com/DevoInc/genesys-ui/compare/v13.4.1...v13.4.2) (2024-10-29)
+
+
+### Bug Fixes
+
+* **table:** sortable only header cell ([5e02e17](https://github.com/DevoInc/genesys-ui/commit/5e02e17bfa7dd66912cda2ed7158bb5a33197b55))
+
 ## [13.4.1](https://github.com/DevoInc/genesys-ui/compare/v13.4.0...v13.4.1) (2024-10-29)
 
 ## [13.4.0](https://github.com/DevoInc/genesys-ui/compare/v13.3.3...v13.4.0) (2024-10-28)
