@@ -1,8 +1,8 @@
 import { DefaultTheme } from 'styled-components';
-import { camelCase } from 'lodash';
 
 import { isValidColor } from '../color';
 import type { TAllColorScheme } from '../../declarations';
+import { getTokenKeyFromColorScheme } from '../color/tokens';
 
 export const getIconColorSchemeToken = ({
   colorScheme,
@@ -11,7 +11,7 @@ export const getIconColorSchemeToken = ({
   colorScheme: TAllColorScheme;
   theme: DefaultTheme;
 }) => {
-  const colorSchemeForTokens = camelCase(colorScheme);
+  const colorSchemeForTokens = getTokenKeyFromColorScheme(colorScheme);
   return theme.cmp.icon.color.fill[colorSchemeForTokens];
 };
 

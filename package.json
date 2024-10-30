@@ -1,6 +1,6 @@
 {
   "name": "genesys-ui",
-  "version": "13.3.3",
+  "version": "13.4.2",
   "description": "",
   "type": "module",
   "private": true,
@@ -63,7 +63,6 @@
     "happy-dom": "^15.7.4",
     "identity-obj-proxy": "^3.0.0",
     "js-cookie": "^3.0.5",
-    "lodash": "^4.17.21",
     "mermaid": "^11.2.1",
     "oxlint": "^0.9.8",
     "polished": "^4.3.1",
@@ -74,6 +73,7 @@
     "release-it": "^17.6.0",
     "remark-gfm": "^4.0.0",
     "sass": "^1.79.3",
+    "semver": "^7.6.3",
     "storybook": "^8.3.1",
     "tocbot": "^4.29.0",
     "ts-node": "^10.9.2",
@@ -96,8 +96,5 @@
   "engines": {
     "node": ">=18",
     "npm": ">=7"
-  },
-  "overrides": {
-    "@types/lodash": "4.14.197"
   }
 }

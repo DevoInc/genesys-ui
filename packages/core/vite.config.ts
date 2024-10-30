@@ -21,7 +21,6 @@ export default defineConfig({
         'react-dom/server',
         'react/jsx-runtime',
         'react-window',
-        'lodash',
         'react-select',
         'react-select/creatable',
         '@dnd-kit/core',

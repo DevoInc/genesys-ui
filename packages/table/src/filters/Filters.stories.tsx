@@ -1,18 +1,20 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+import semver from 'semver';
 
-import { InputControl, Menu } from '@devoinc/genesys-ui';
+import { Menu, InputControl } from '@devoinc/genesys-ui';
 
 import {
   type TContextOptions,
   type TFilterContext,
-  filterDataByText,
   filterDataByFilterStruct,
   useFilterStruct,
   updateColDefsWithFilterStruct,
   useBulkSelection,
   TBulkContext,
   BasicTable,
+  TColDef,
+  TNumberFilterValue,
 } from '../../src';
 
 const meta: Meta<typeof BasicTable> = {
@@ -27,16 +29,76 @@ export default meta;
 type Story = StoryObj<typeof BasicTable>;
 
 const data = [
-  { text: 'Christine Jimenez', num: 60, bool: false, option: 'A' },
-  { text: 'Ina Osborne', num: 20, bool: true, option: 'B' },
-  { text: 'Jimmy Hogan', num: 20, bool: true, option: 'C' },
-  { text: 'Myra Bell', num: 57, bool: true, option: 'C' },
-  { text: 'Jane Padilla', num: 46, bool: false, option: 'B' },
-  { text: 'Isabelle Gardner', num: 31, bool: true, option: 'A' },
-  { text: 'Sean Parsons', num: 31, bool: true, option: 'A' },
-  { text: 'Alvin Castro', num: 55, bool: false, option: 'B' },
-  { text: 'Lawrence Holland', num: 56, bool: false, option: 'B' },
-  { text: 'Brandon Robertson', num: 41, bool: true, option: 'C' },
+  {
+    text: 'Christine Jimenez',
+    num: 60,
+    date: new Date(2024, 9, 1, 0, 0, 0),
+    bool: false,
+    option: 'A',
+  },
+  {
+    text: 'Ina Osborne',
+    num: 20,
+    date: new Date(2024, 9, 2, 0, 0, 0),
+    bool: true,
+    option: 'B',
+  },
+  {
+    text: 'Jimmy Hogan',
+    num: 20,
+    date: new Date(2024, 9, 3, 0, 0, 0),
+    bool: true,
+    option: 'C',
+  },
+  {
+    text: 'Myra Bell',
+    num: 57,
+    date: new Date(2024, 9, 4, 0, 0, 0),
+    bool: true,
+    option: 'C',
+  },
+  {
+    text: 'Jane Padilla',
+    num: 46,
+    date: new Date(2024, 9, 5, 0, 0, 0),
+    bool: false,
+    option: 'B',
+  },
+  {
+    text: 'Isabelle Gardner',
+    num: 31,
+    date: new Date(2024, 9, 6, 0, 0, 0),
+    bool: true,
+    option: 'A',
+  },
+  {
+    text: 'Sean Parsons',
+    num: 31,
+    date: new Date(2024, 9, 7, 0, 0, 0),
+    bool: true,
+    option: 'A',
+  },
+  {
+    text: 'Alvin Castro',
+    num: 55,
+    date: new Date(2024, 9, 8, 0, 0, 0),
+    bool: false,
+    option: 'B',
+  },
+  {
+    text: 'Lawrence Holland',
+    num: 56,
+    date: new Date(2024, 9, 9, 0, 0, 0),
+    bool: false,
+    option: 'B',
+  },
+  {
+    text: 'Brandon Robertson',
+    num: 41,
+    date: new Date(2024, 9, 10, 0, 0, 0),
+    bool: true,
+    option: 'C',
+  },
 ];
 
 const colDefs = [
@@ -50,6 +112,15 @@ const colDefs = [
     id: 'num',
     headerName: 'Number',
     preset: 'number',
+    context: {
+      showAdvancedFilter: true,
+      showReset: true,
+    } as TFilterContext,
+  },
+  {
+    id: 'date',
+    headerName: 'Date',
+    preset: 'date',
     context: {
       showAdvancedFilter: true,
       showReset: true,
@@ -190,15 +261,14 @@ const FilterAndBulkActionsTable = () => {
   );
 };
 
-export const FiltersAndBulkActions: Story = {
+export const FilterAndBulkActions: Story = {
   render: () => <FilterAndBulkActionsTable />,
 };
 
-const GlobalTextFilterTable = () => {
-
-  const colDefs = [
+const FiltersCustomTable = () => {
+  const colDef: TColDef[] = [
     {
-      id: 'text',
+      id: 'version',
       headerName: 'Text',
       preset: 'text',
     },
@@ -206,60 +276,67 @@ const GlobalTextFilterTable = () => {
       id: 'num',
       headerName: 'Number',
       preset: 'number',
-      context: {
-        showAdvancedFilter: true,
-        showReset: true,
-      } as TFilterContext,
-    },
-    {
-      id: 'bool',
-      headerName: 'Boolean',
-      preset: 'boolean',
-    },
-    {
-      id: 'option',
-      headerName: 'Options',
-      preset: 'options',
-      context: {
-        options: {
-          A: { label: 'Option A' },
-          B: { label: 'Option B' },
-          C: { label: 'Option C' },
-        },
-      } as TContextOptions,
+      cellFilter: ({ colDef, onChange }) => {
+        const context = colDef?.context as TFilterContext;
+        const filterValue = context?.filterValue as TNumberFilterValue;
+        const value = filterValue?.value ?? '';
+        return (
+          <InputControl
+            size="sm"
+            aria-label="filter"
+            value={value}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              onChange(
+                {
+                  value: event.currentTarget.value,
+                } as TNumberFilterValue,
+                'number',
+              );
+            }}
+          />
+        );
+      },
     },
   ];
 
-  const [ textFilter, setTextFilter ] = React.useState(undefined);
+  const data = [
+    {
+      version: 'Major',
+      num: '1.0.0',
+    },
+    {
+      version: 'Minor',
+      num: '1.1.0',
+    },
+    {
+      version: 'Patch',
+      num: '1.1.1',
+    },
+  ];
+
   const { filterStruct, onFilter } = useFilterStruct();
-  const dataFiltered = [...data]
-    .filter(filterDataByText(textFilter, colDefs))
-    .filter(filterDataByFilterStruct(filterStruct));
+  const dataFiltered = [...data].filter(
+    filterDataByFilterStruct(filterStruct, {
+      num: (data: string, filterValue: { value: string }) => {
+        return semver.valid(filterValue.value)
+          ? semver.gt(data, filterValue.value)
+          : true;
+      },
+    }),
+  );
 
   return (
-    <>
-      <InputControl
-        aria-label="Contains text..."
-        placeholder="Contains text..."
-        type="search"
-        value={ textFilter }
-        onChange={(ev) => {
-          setTextFilter(ev.target.value);
-        }}
-      />
-      <BasicTable
-        showFilters
-        onFilter={(curColDef, value, type) => {
-          onFilter(curColDef.id, value, type);
-        }}
-        colDefs={updateColDefsWithFilterStruct(colDefs, filterStruct)}
-        data={dataFiltered}
-      />
-    </>
+    <BasicTable
+      showFilters
+      onFilter={(curColDef, value, type) => {
+        onFilter(curColDef.id, value, type);
+      }}
+      colDefs={updateColDefsWithFilterStruct(colDef, filterStruct)}
+      data={dataFiltered}
+    />
   );
 };
 
-export const GlobalTextFilter: Story = {
-  render: () => <GlobalTextFilterTable />,
+export const FiltersCustom: Story = {
+  render: () => <FiltersCustomTable />,
 };
-

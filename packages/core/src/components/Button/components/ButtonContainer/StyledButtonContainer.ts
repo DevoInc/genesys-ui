@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { camelCase } from 'lodash';
 
 import {
   typoMixin,
@@ -8,6 +7,7 @@ import {
 } from '../../../../styled/mixins';
 import { loadingAnimationMixin } from '../../helpers';
 import type { IButtonContainerStyled } from './declarations';
+import { getTokenKeyFromColorScheme } from '../../../../helpers';
 
 export interface StyledButtonContainerProps extends IButtonContainerStyled {}
 
@@ -25,7 +25,7 @@ export const StyledButtonContainer = styled.button<StyledButtonContainerProps>`
     theme,
   }) => {
     const isIconButtonDropdown = $icon && $squared && $hasDropdown;
-    const colorSchemeForTokens = camelCase($colorScheme);
+    const colorSchemeForTokens = getTokenKeyFromColorScheme($colorScheme);
     const buttonTokens = theme.cmp.button;
     const IconButtonDropdownTokens = theme.cmp.iconButtonDropdown;
     const boxShadowTokens = buttonTokens.elevation.boxShadow;

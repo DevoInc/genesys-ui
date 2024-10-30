@@ -14,7 +14,16 @@ export const mergePresets =
     defaultDefinitions: TDefaultColDef | TDefaultRowDef,
   ) =>
   () =>
-    definitions.map((row) => {
-      const preset = presets.find((element) => element.id === row.preset);
-      return { ...defaultDefinitions, ...preset, ...row };
+    definitions.map((rowOrCol: TRowDef | TColDef) => {
+      const preset = presets.find((element) => element.id === rowOrCol.preset);
+      return {
+        ...defaultDefinitions,
+        ...preset,
+        ...rowOrCol,
+        context: {
+          ...defaultDefinitions?.context,
+          ...preset?.context,
+          ...rowOrCol?.context,
+        },
+      };
     });

@@ -27,7 +27,6 @@ export default defineConfig({
         'react-dom',
         'react/jsx-runtime',
         'styled-components',
-        'lodash',
         'date-fns',
         'date-fns-tz',
         'date-fns/locale',

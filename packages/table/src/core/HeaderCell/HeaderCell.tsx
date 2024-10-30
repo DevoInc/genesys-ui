@@ -29,12 +29,12 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   return (
     <StyledHeaderCell
       $width={width}
-      $horAlign={colDef?.align || (colDef.preset === 'number' ? 'right' : null)}
+      $horAlign={colDef?.align}
       $offsetX={offsetX}
       $density={density}
       title={title}
       onClick={
-        colDef.sortable
+        colDef.sortable && !filter
           ? () => {
               if (onSort) {
                 onSort(colDef);

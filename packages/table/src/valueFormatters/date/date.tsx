@@ -8,12 +8,11 @@ export interface DateContext {
   locale?: Locale;
 }
 
-// prettier-ignore
 export const dateFormatter = (value: unknown, context: DateContext): string =>
   !isValid(value) || (typeof value === 'number' && value < 0)
     ? String(value)
     : format(
-      utcToZonedTime(value as string | number | Date, context.tz),
-      context?.formatDate ?? 'PPpp',
-      { locale: context?.locale || enUS },
-    );
+        utcToZonedTime(value as string | number | Date, context.tz),
+        context?.formatDate ?? 'PPpp',
+        { locale: context?.locale || enUS },
+      );

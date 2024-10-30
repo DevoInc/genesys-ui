@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components';
-import { camelCase } from 'lodash';
 
 import type { IPartitionsItem, TPartitionsSize } from '../../declarations';
-import { isValidColor } from '../../../../helpers';
+import { getTokenKeyFromColorScheme, isValidColor } from '../../../../helpers';
 
 export interface StyledPartitionsItemProps {
   /** The size of the partition item. */
@@ -16,7 +15,7 @@ export interface StyledPartitionsItemProps {
 export const StyledPartitionsItem = styled.li<StyledPartitionsItemProps>`
   transition: all 0.15s ease;
   background-color: ${({ $color, theme }) => {
-    const colorSchemeForTokens = camelCase($color);
+    const colorSchemeForTokens = getTokenKeyFromColorScheme($color);
     return isValidColor($color)
       ? $color
       : theme.cmp.partitions.color.background[colorSchemeForTokens];

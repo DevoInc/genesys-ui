@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { get } from 'lodash';
 import {
   CSSObjectWithLabel,
   GroupBase,
@@ -134,7 +133,7 @@ export const SelectControl = <
       // react-select will be constantly changing the state and re-rendering
       // all the selects, even the closed ones.
       ev != null &&
-      get(ev, 'srcElement.classList') != null &&
+      ev?.srcElement?.classList != null &&
       ev.srcElement.getElementsByClassName(
         `${rest.classNamePrefix}__control--menu-is-open`,
       ).length &&

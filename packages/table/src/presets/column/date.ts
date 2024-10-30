@@ -4,6 +4,7 @@ import { TColDef } from '../../declarations';
 import { TextRenderer } from '../../renderers';
 import { dateFormatter } from '../../valueFormatters';
 import { DateEditor } from '../../editors';
+// import { DateFilter } from '../../filters';
 
 export const date: TColDef = {
   id: 'date',
@@ -11,8 +12,9 @@ export const date: TColDef = {
   valueFormatter: dateFormatter,
   cellEditor: DateEditor,
   context: {
-    formatDate: 'dd/MM/yyyy HH:mm:ss',
+    formatDate: 'yyyy-MM-dd HH:mm:ss',
     tz: 'Europe/Madrid',
     locale: enUS,
   },
+  // cellFilter: DateFilter,
 };

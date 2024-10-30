@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui",
-  "version": "13.3.3",
+  "version": "13.4.2",
   "description": "",
   "type": "module",
   "types": "./dist/index.d.ts",
@@ -34,7 +34,6 @@
     "@dnd-kit/sortable": "7.x.x",
     "@popperjs/core": "2.x.x",
     "ahooks": "3.x.x",
-    "lodash": "4.x.x",
     "polished": "4.x.x",
     "react": "16.x || 17.x || 18.x",
     "react-dock": "0.x.x",

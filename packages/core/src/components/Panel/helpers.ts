@@ -3,7 +3,7 @@ import { css, DefaultTheme } from 'styled-components';
 
 import type { BoxProps } from '../Box';
 import { pseudoElementOverlayMixin } from '../../styled';
-import { camelCase } from 'lodash';
+import { getTokenKeyFromColorScheme } from '../../helpers';
 
 export interface PanelMixinProps
   extends Pick<BoxProps, 'display' | 'elevation'> {
@@ -19,7 +19,7 @@ export interface PanelMixinProps
 export const panelMixin =
   (theme: DefaultTheme) =>
   ({ bordered, colorScheme, display, elevation }: PanelMixinProps) => {
-    const elevationForTokens = camelCase(elevation);
+    const elevationForTokens = getTokenKeyFromColorScheme(elevation);
     const tokens = theme.cmp.panel;
     const borderColor = tokens.color.border[elevationForTokens];
     const borderWidth = tokens.shape.borderSize;

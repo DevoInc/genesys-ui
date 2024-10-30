@@ -108,6 +108,9 @@ export type TRowDef = {
         evenOddType: 'even' | 'odd';
         striped: boolean;
       }) => CSSProp);
+  context?: {
+    [key: string]: unknown;
+  };
 };
 
 export type TCellDef = {

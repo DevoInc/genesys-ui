@@ -1,8 +1,11 @@
 import styled, { css } from 'styled-components';
-import { camelCase } from 'lodash';
 
 import { typoMixin } from '../../../../styled';
-import { getAccTextColor, isValidColor } from '../../../../helpers';
+import {
+  getAccTextColor,
+  getTokenKeyFromColorScheme,
+  isValidColor,
+} from '../../../../helpers';
 import type { ITag } from '../../declarations';
 
 export interface StyledTagContainerProps {
@@ -22,7 +25,7 @@ export const StyledTagContainer = styled.span<StyledTagContainerProps>`
     $size = 'md',
     theme,
   }) => {
-    const colorSchemeForTokens = camelCase($colorScheme);
+    const colorSchemeForTokens = getTokenKeyFromColorScheme($colorScheme);
 
     const isBlendColorScheme =
       $colorScheme === 'blend-base' || $colorScheme === 'blend-inverse';
