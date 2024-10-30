@@ -8,10 +8,10 @@ import type {
   ITriggerAriaAttrs,
   ITriggerEventAttrs,
 } from '../../../../declarations';
+import type { ICollapse } from '../../declarations';
 import { CollapseContext } from '../../context';
 import { Flex } from '../../../Flex';
 import { StyledCollapseContainer } from './StyledCollapseContainer';
-import type { ICollapse } from '../../declarations';
 
 export interface CollapseContainerProps
   extends IStyledPolymorphic,
@@ -31,6 +31,7 @@ export const CollapseContainer: React.FC<CollapseContainerProps> = ({
   'aria-controls': ariaControls,
   'aria-label': ariaLabel = 'Collapsible header',
   children,
+  disabled,
   expanded,
   onClick,
   quiet,
@@ -45,19 +46,20 @@ export const CollapseContainer: React.FC<CollapseContainerProps> = ({
 }) => (
   <StyledCollapseContainer
     {...nativeProps}
+    $disabled={disabled}
     role={role}
-    tabIndex={tabIndex}
+    tabIndex={disabled ? -1 : tabIndex}
     css={style}
     $quiet={quiet}
     $expanded={expanded}
-    onPointerDown={onPointerDown}
-    onKeyDown={onKeyDown}
+    onPointerDown={disabled ? null : onPointerDown}
+    onKeyDown={disabled ? null : onKeyDown}
     aria-controls={ariaControls}
     aria-expanded={expanded}
     aria-label={ariaLabel}
-    onClick={onClick}
+    onClick={disabled ? null : onClick}
     title={tooltip}
-    $isDraggable={isDraggable}
+    $isDraggable={disabled ? false : isDraggable}
   >
     <Flex
       alignItems="center"

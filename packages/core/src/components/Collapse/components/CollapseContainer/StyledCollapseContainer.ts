@@ -1,9 +1,14 @@
 import styled, { css } from 'styled-components';
 
 import type { ICollapse } from '../../declarations';
-import { btnResetMixin, pseudoElementMixin } from '../../../../styled';
+import {
+  btnResetMixin,
+  disabledMixin,
+  pseudoElementMixin,
+} from '../../../../styled';
 
 export interface StyledCollapseContainerProps {
+  $disabled?: ICollapse['disabled'];
   $expanded?: ICollapse['expanded'];
   $isDraggable?: ICollapse['isDraggable'];
   $quiet: ICollapse['quiet'];
@@ -44,6 +49,14 @@ export const StyledCollapseContainer = styled.div<StyledCollapseContainerProps>`
     box-shadow: ${({ theme }) =>
       theme.cmp.collapse.button.elevation.bosShadow.focused};
   }
+
+  ${({ theme, $disabled }) => css`
+    ${$disabled ? disabledMixin(theme) : null};
+
+    &::before {
+      content: none;
+    }
+  `}
 
   ${({ $isDraggable }) =>
     $isDraggable &&

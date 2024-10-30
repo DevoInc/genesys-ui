@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+import styled from 'styled-components';
 import {
   DndContext,
   PointerSensor,
@@ -15,22 +16,25 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
+import type { TElevation } from 'src/declarations';
+import { elevationBoxShadowMixin } from '../../styled/mixins';
+import { lorem } from '../../../stories/utils/fillerTexts';
+
+import {
+  GIBinTrashRecycleDeleteGarbageEmpty,
+  GIPlusSignAddNew,
+} from '@devoinc/genesys-icons';
 import { Collapse } from './Collapse';
 import { Flex } from '../Flex';
 import { Box } from '../Box';
 import { Panel } from '../Panel';
 import { Typography } from '../Typography';
-import { elevationBoxShadowMixin } from '../../styled/mixins';
-import { lorem } from '../../../stories/utils/fillerTexts';
-import {
-  GIBinTrashRecycleDeleteGarbageEmpty,
-  GIPlusSignAddNew,
-} from '@devoinc/genesys-icons';
 import { ButtonGroup } from '../ButtonGroup';
-import styled from 'styled-components';
-import { TElevation } from 'src/declarations';
 import { HFlex } from '../HFlex';
 import { FloatingHelper } from '../FloatingHelper';
+import { IconButton } from '../IconButton';
+import { VFlex } from '../VFlex';
+import { Button } from '../Button';
 
 const meta: Meta<typeof Collapse> = {
   title: 'Components/Navigation/Collapse',
@@ -72,6 +76,77 @@ export const Base: Story = {
         </Flex>
       );
     })(args),
+};
+
+export const Disabled: Story = {
+  render: () =>
+    (() => {
+      const [expanded, setExpanded] = React.useState([false, false]);
+      const [disabled, setDisabled] = React.useState(true);
+      const contentId = 'accessibility';
+      return (
+        <VFlex spacing="0">
+          <Collapse
+            heading="Collapse heading one"
+            aria-controls={`${contentId}-one`}
+            expanded={expanded[0]}
+            onClick={() => {
+              setExpanded([!expanded[0], false]);
+            }}
+          />
+          {expanded[0] && (
+            <Box
+              id={`${contentId}-one`}
+              maxHeight={'190px'}
+              overflow={'auto'}
+              padding={'cmp-md cmp-lg'}
+            >
+              <Typography.Paragraph>{lorem}</Typography.Paragraph>
+            </Box>
+          )}
+          <Collapse
+            appendContent={
+              <IconButton
+                state={disabled ? 'disabled' : undefined}
+                icon={<GIPlusSignAddNew />}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  alert('Clicked add button');
+                }}
+              />
+            }
+            disabled={disabled}
+            heading="Collapse heading disabled"
+            aria-controls={`${contentId}-two`}
+            expanded={expanded[1]}
+            onClick={() => {
+              setExpanded([false, !expanded[1]]);
+            }}
+          />
+          {expanded[1] && (
+            <Box
+              id={`${contentId}-two`}
+              maxHeight={'190px'}
+              overflow={'auto'}
+              padding={'cmp-md cmp-lg'}
+            >
+              <Typography.Paragraph>{lorem}</Typography.Paragraph>
+            </Box>
+          )}
+          <HFlex marginTop="cmp-md" justifyContent="flex-end">
+            <Button
+              size="sm"
+              onClick={(event) => {
+                event.stopPropagation();
+                setDisabled(!disabled);
+              }}
+            >
+              {disabled ? 'Enable collapse' : 'Disable collapse'}
+            </Button>
+          </HFlex>
+        </VFlex>
+      );
+    })(),
 };
 
 export const Custom: Story = {

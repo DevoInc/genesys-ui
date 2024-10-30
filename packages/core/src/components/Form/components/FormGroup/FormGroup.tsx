@@ -132,6 +132,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
       >
         {collapsable && legend && (
           <Collapse
+            disabled={disabled}
             expanded={expanded}
             quiet
             onClick={() => {

@@ -100,7 +100,6 @@ const preview: Preview = {
       </StrictMode>
     ),
     (Story, parameters) => {
-      console.info(parameters.parameters);
       return !parameters.tags.includes('noWrap') ? (
         <StoryWrapper
           display={
