@@ -94,6 +94,7 @@ export const AllTypesColumn: TColDef[] = [
     headerName: 'Image (URL)',
     preset: 'link',
     sortable: true,
+    editable: true,
   },
   {
     id: 'timestamp',
@@ -128,6 +129,7 @@ export const AllTypesColumn: TColDef[] = [
     headerName: 'Email',
     preset: 'link',
     sortable: true,
+    editable: true,
   },
   {
     id: 'quote',
@@ -146,6 +148,7 @@ export const AllTypesColumn: TColDef[] = [
     headerName: 'Website',
     preset: 'link',
     sortable: true,
+    editable: true,
   },
   {
     id: 'secondaryWebsite',
