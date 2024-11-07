@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useOnEventOutside } from '@devoinc/genesys-ui';
 
 import type { TColDef, TRow } from '../../declarations';
+import { TableContext } from '../../context';
 
 export const useRenderContent = (
   colDef: TColDef,
@@ -10,7 +11,9 @@ export const useRenderContent = (
   rowIndex: number,
   row: TRow,
 ) => {
+  const { onCellDataChange } = React.useContext(TableContext);
   const cellRef = React.useRef<HTMLTableCellElement>();
+
   const viewContent = colDef.cellRenderer
     ? colDef.cellRenderer({
         value: colDef.valueFormatter
@@ -28,7 +31,9 @@ export const useRenderContent = (
     ? colDef.cellEditor({
         value: data,
         colDef,
-        rowIndex,
+        onChange: (value) => {
+          onCellDataChange({ colDef, value, rowIndex });
+        },
       })
     : null;
 

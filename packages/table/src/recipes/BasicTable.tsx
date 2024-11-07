@@ -7,6 +7,7 @@ export const BasicTable: React.FC<TableProps> = ({
   columnPresets,
   rowPresets,
   highlightRowOnHoverFn,
+  onCellDataChange,
   ...props
 }) => (
   <Table
@@ -15,6 +16,7 @@ export const BasicTable: React.FC<TableProps> = ({
       ...(columnPresets ?? []),
       ...Object.values(listColumnPresets),
     ]}
+    onCellDataChange={onCellDataChange}
     rowPresets={[...(rowPresets ?? []), ...Object.values(listRowPresets)]}
     highlightRowOnHoverFn={highlightRowOnHoverFn || ((rowDef) => rowDef.preset !== 'isAfterRow')}
   />

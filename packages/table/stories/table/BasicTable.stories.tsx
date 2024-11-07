@@ -3,7 +3,13 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Flex } from '@devoinc/genesys-ui';
 
-import { BasicTable, orderDataByOrderStruct, TColDef, updateColDefsWithOrderStruct, useOrderStruct } from '../../src';
+import {
+  BasicTable,
+  orderDataByOrderStruct,
+  TColDef,
+  updateColDefsWithOrderStruct,
+  useOrderStruct,
+} from '../../src';
 import { ROW_HEIGHT_MD } from '../../src/constants';
 import { allTypesData } from './data/allTypesData';
 import { AllTypesColumn } from './column/AllTypesColumn';
@@ -23,8 +29,11 @@ export default meta;
 type Story = StoryObj<typeof BasicTable>;
 
 const BasicCmp = ({ data, colDefs }) => {
+  const [newData, setNewData] = React.useState(data);
   const { orderStruct, onSort } = useOrderStruct([{ id: 'id', sort: 'desc' }]);
-  const dataOrdered = [...data].sort(orderDataByOrderStruct(orderStruct));
+  React.useEffect(() => {
+    setNewData([...newData].sort(orderDataByOrderStruct(orderStruct)));
+  }, []);
   return (
     <Flex flexDirection="column" gap="cmp-md" height={'auto'}>
       <Flex.Item>
@@ -32,7 +41,7 @@ const BasicCmp = ({ data, colDefs }) => {
           onSort={(colDef: TColDef) => {
             onSort(colDef.id);
           }}
-          data={dataOrdered}
+          data={newData}
           colDefs={updateColDefsWithOrderStruct(colDefs, orderStruct)}
           defaultColDef={{
             editable: false,
@@ -42,6 +51,14 @@ const BasicCmp = ({ data, colDefs }) => {
           rowHeight={ROW_HEIGHT_MD}
           highlightRowOnHover={true}
           showFilters={true}
+          onCellDataChange={({ colDef, value, rowIndex }) => {
+            setNewData(newData.map((data, index) => {
+              if(index === rowIndex) {
+                data[colDef.id] = value
+              }
+              return data
+            }))
+          }}
         />
       </Flex.Item>
     </Flex>

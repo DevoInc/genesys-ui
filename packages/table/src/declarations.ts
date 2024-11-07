@@ -38,7 +38,7 @@ export type TColDef = {
   editable?: boolean;
   cellEditor?:
     | React.FC<TCellEditor>
-    | (({ value, onChange }: TCellEditor) => React.ReactNode);
+    | (({ value, onChange, colDef }: TCellEditor) => React.ReactNode);
 
   valueFormatter?: (value: unknown, context: DateContext) => void;
   cellRenderer?:
@@ -184,7 +184,6 @@ export type TCellEditor = {
   value?: unknown;
   onChange?: (value: unknown) => void;
   colDef?: TColDef;
-  rowIndex: number;
 };
 
 export interface ITable {
@@ -201,6 +200,7 @@ export interface ITable {
   rowHeight?: number;
   // cell
   cellDefs?: TCellDef[];
+  onCellDataChange?: ({ colDef, value, rowIndex }) => void;
 
   context?: {
     [key: string]: unknown;

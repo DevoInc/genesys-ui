@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/blocks';
+
+import * as Stories from './Table.stories';
+
+<Meta of={Stories} />
+
+# Editors Table
+
+Through the editable cells we can modify the value of a specific cell. The predefined columns already come with a cell editor defined. However whether it is a predefined column or a 100% custom column **you can use a custom cell editor**.
+
+Editable cells receive the following parameters:
+
+```ts
+(({ value, onChange, colDef }: TCellEditor) => React.ReactNode)
+```
+
+```ts
+// example cell editor custom
+({ value, onChange, colDef }) => {
+  const options = (colDef?.context as TContextOptions)?.options;
+
+  return (
+    <Select
+      id={'test'}
+      label={'custom'}
+      placeholder={'custom'}
+      menuAppendToBody
+      onChange={(event) => {
+        onChange(event.value)
+      }}
+      options={getSelectOptions(options)}
+      value={String(value)}
+    />
+  );
+}
+```
+
+To “hook” to the data changes that happen in the editable cells we will pass to the table a parameter called: **onCellDataChange**.
+
+```ts
+onCellDataChange?: ({ colDef, value, rowIndex }) => void;
+```
+
+This will allow us to receive the necessary information from the modified cell and then do what we need to do. For example:
+
+```ts
+onCellDataChange={({ colDef, value, rowIndex }) => {
+  setNewData(
+    newData.map((data, index) => {
+      if (index === rowIndex) {
+        data[colDef.id] = value;
+      }
+      return data;
+    }),
+  );
+}}
+```
