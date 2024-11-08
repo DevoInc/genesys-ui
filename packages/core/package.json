@@ -42,7 +42,7 @@
     "react-popper": "2.x.x",
     "react-select": "5.x.x",
     "react-toastify": "8.x.x || 9.x.x",
-    "react-windowed-select": "5.x.x",
+    "react-windowed-select": "5.1.0",
     "styled-components": "5.x.x || 6.x.x"
   },
   "author": "",
