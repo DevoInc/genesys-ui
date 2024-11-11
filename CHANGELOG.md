@@ -1,5 +1,17 @@
 # Changelog
 
+## [13.6.0](https://github.com/DevoInc/genesys-ui/compare/v13.5.0...v13.6.0) (2024-11-11)
+
+
+### Features
+
+* changed type for TabsItem label prop to accept also components and fixed problem with Label 'htmlFor' attribute in Fields ([cb95779](https://github.com/DevoInc/genesys-ui/commit/cb95779347b4ae67b45b02d92d9adc3fb993ca15))
+
+
+### Bug Fixes
+
+* solved problem with htmlFor prop and generated html attribute in Label component. ([ef0fdaa](https://github.com/DevoInc/genesys-ui/commit/ef0fdaad95c9596f1f5cc1456008fe4661defc2b))
+
 ## [13.5.0](https://github.com/DevoInc/genesys-ui/compare/v13.4.2...v13.5.0) (2024-11-08)
 
 
