@@ -17,7 +17,7 @@ import { StyledTableWrapper } from './StyledTableWrapper';
 
 export const TableWrapper: React.FC = () => {
   const theme = useTheme();
-  const { maxHeight, data, showFilters, density, rowDefs } =
+  const { maxHeight, data, showFilters, density, rowDefs, colDefs } =
     React.useContext(TableContext);
 
   const ref = React.useRef<HTMLDivElement>();
@@ -49,7 +49,13 @@ export const TableWrapper: React.FC = () => {
       $maxHeight={maxHeight}
       style={{ opacity: size?.width > 0 ? 1 : 0 }}
     >
-      <StyledTable $height={height} $width={width}>
+      <StyledTable
+        $height={height}
+        $width={width}
+        role={'grid'}
+        aria-rowcount={data.length}
+        aria-colcount={colDefs.length}
+      >
         <TableHead
           items={columnVirtualizer?.getVirtualItems() ?? []}
           scrolled={rowVirtualizer.scrollOffset !== 0}

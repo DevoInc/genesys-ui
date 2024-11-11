@@ -11,7 +11,7 @@ import { useTheme } from 'styled-components';
 interface RowProps extends StyledTableRowProps {
   rowData: { [key: string]: unknown };
   columnVirtualizer: Virtualizer<HTMLDivElement, Element>;
-  index: number;
+  rowIndex: number;
   height?: number;
   start?: number;
 }
@@ -19,7 +19,7 @@ interface RowProps extends StyledTableRowProps {
 export const Row: React.FC<RowProps> = ({
   columnVirtualizer,
   rowData,
-  index,
+  rowIndex,
   height,
   start,
 }) => {
@@ -35,7 +35,7 @@ export const Row: React.FC<RowProps> = ({
   const theme = useTheme();
 
   const rowDef = (getRowDef(rowDefs, rowData.id as string) ?? {}) as TRowDef;
-  const stripedConditional = () => (stripedFn(index, rowData) ? 'even' : 'odd');
+  const stripedConditional = () => (stripedFn(rowIndex, rowData) ? 'even' : 'odd');
   return (
     <StyledTableRow
       $even={striped ? stripedConditional() : 'odd'}
@@ -46,7 +46,7 @@ export const Row: React.FC<RowProps> = ({
         typeof rowDef?.style === 'function'
           ? rowDef?.style({
               theme,
-              evenOddType: striped && (index + 1) % 2 === 0 ? 'even' : 'odd',
+              evenOddType: striped && (rowIndex + 1) % 2 === 0 ? 'even' : 'odd',
               striped,
             })
           : rowDef?.style
@@ -56,6 +56,7 @@ export const Row: React.FC<RowProps> = ({
         height: `${height}px`,
         transform: `translateY(${start}px)`,
       }}
+      aria-rowindex={rowIndex}
     >
       {rowDef?.cellRenderer ? (
         <Cell
@@ -67,18 +68,18 @@ export const Row: React.FC<RowProps> = ({
             id: 'afterRow',
             cellRenderer: rowDef.cellRenderer,
           }}
-          colSpan={colDefs.length}
+          colIndex={0}
           data={null}
           height={height}
           key={`cell-0`}
           offsetX={0}
           row={rowData}
-          rowIndex={index}
+          rowIndex={rowIndex}
           rowDef={rowDef}
           width={columnVirtualizer.getTotalSize()}
         />
       ) : (
-        colDefs.map((colDef) => {
+        colDefs.map((colDef, index) => {
           const cellDef = getCellDef(cellDefs, colDef.id, rowDef.id);
           const virtualColumn = columnVirtualizer
             .getVirtualItems()
@@ -93,7 +94,8 @@ export const Row: React.FC<RowProps> = ({
                 key={`cell-${colDef.id}`}
                 offsetX={virtualColumn?.start}
                 row={rowData}
-                rowIndex={index}
+                rowIndex={rowIndex}
+                colIndex={index}
                 rowDef={rowDef}
                 width={virtualColumn?.size}
               />

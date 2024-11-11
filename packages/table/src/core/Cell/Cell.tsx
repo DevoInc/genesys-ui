@@ -16,7 +16,7 @@ import { StyledCellWrapper } from './StyledCellWrapper';
 interface CellProps {
   cellDef: TCellDef;
   colDef: TColDef;
-  colSpan?: number;
+  colIndex?: number;
   data: unknown;
   height?: number;
   offsetX?: number;
@@ -29,7 +29,7 @@ interface CellProps {
 export const Cell: React.FC<CellProps> = ({
   cellDef,
   colDef,
-  colSpan,
+  colIndex,
   data,
   height,
   offsetX,
@@ -49,7 +49,6 @@ export const Cell: React.FC<CellProps> = ({
   return (
     <StyledCell
       aria-selected={isEditMode}
-      colSpan={colSpan}
       css={mergeStyles(colDef?.style ?? '', cellDef?.style ?? '')}
       onDoubleClick={onDoubleClick}
       ref={cellRef}
@@ -69,6 +68,7 @@ export const Cell: React.FC<CellProps> = ({
           onCellMouseLeave({ colDef, cellDef, rowDef });
         }
       }}
+      aria-colindex={colIndex}
     >
       <StyledCellWrapper
         $clickable={colDef.editable}
