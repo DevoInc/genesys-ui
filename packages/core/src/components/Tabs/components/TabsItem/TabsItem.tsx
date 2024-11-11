@@ -34,7 +34,7 @@ export interface TabsItemProps
   /** This property defines the icon type */
   icon?: IconProps['children'];
   /** Tab label */
-  label: string;
+  label: React.ReactNode;
   /** Action when click on close tab button */
   onClose?: () => void;
   /** Possible states */

@@ -1,9 +1,10 @@
 import { css, DefaultTheme } from 'styled-components';
-import type { ILayoutFlexCss } from '../../declarations';
+import type { ILayoutBox, ILayoutFlexCss } from '../../declarations';
 
 import { getSpacingPropCss } from '../../helpers';
 
 export interface IFlexMixin extends ILayoutFlexCss {
+  display?: ILayoutBox['display'];
   theme: DefaultTheme;
 }
 
@@ -17,6 +18,7 @@ export const flexMixin = ({
   alignItems,
   childrenFlex,
   columnGap,
+  display,
   flex,
   flexDirection,
   flexWrap,
@@ -26,7 +28,7 @@ export const flexMixin = ({
   rowGap,
   theme,
 }: IFlexMixin) => css`
-  display: ${inline ? 'inline-flex' : 'flex'};
+  display: ${display || (inline ? 'inline-flex' : 'flex')};
   align-content: ${alignContent};
   align-items: ${alignItems};
   flex: ${flex};
