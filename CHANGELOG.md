@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.4.2](https://github.com/DevoInc/genesys-ui/compare/v12.4.1...v12.4.2) (2024-11-11)
+
+
+### Bug Fixes
+
+* **label:** delete $ in label htmlFor ([d2f726f](https://github.com/DevoInc/genesys-ui/commit/d2f726f9ad1b66e9b509f2765827ce5d96eee31c))
+
 ## [12.4.1](https://github.com/DevoInc/genesys-ui/compare/v12.4.0...v12.4.1) (2024-10-15)
 
 
