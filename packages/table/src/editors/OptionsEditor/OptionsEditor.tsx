@@ -19,7 +19,9 @@ export const OptionsEditor: React.FC<TCellEditor> = ({
     <SelectControl
       defaultMenuIsOpen
       hideSelectedOptions={!isMultiple}
-      onChange={onChange}
+      onChange={(event) => {
+        onChange(event.value)
+      }}
       value={String(value)}
       creatable
       isMulti={isMultiple}

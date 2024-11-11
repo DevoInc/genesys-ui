@@ -1,5 +1,20 @@
 # Changelog
 
+## [13.5.0](https://github.com/DevoInc/genesys-ui/compare/v13.4.2...v13.5.0) (2024-11-08)
+
+
+### Features
+
+* added disabled state to Collapse component. ([658aed2](https://github.com/DevoInc/genesys-ui/commit/658aed215b31456562b91c274d77eab740013211))
+
+
+### Bug Fixes
+
+* **table:** [#98](https://github.com/DevoInc/genesys-ui/issues/98) Table cellEditor not works with select component ([edc266a](https://github.com/DevoInc/genesys-ui/commit/edc266a4e1e85b3abe2157a4074d0531fef83ed8))
+* **table:** add target _blank in link renderer ([b2f637f](https://github.com/DevoInc/genesys-ui/commit/b2f637f692c5da649bec47025b80fe1a0949e43e))
+* update @devoinc/genesys-brand-devo ([35734d3](https://github.com/DevoInc/genesys-ui/commit/35734d3b20beebaeb0aae8a8f4789ded67f671bb))
+* updated to the last version of genesys-brand-devo to get the correct format of a token used in BooleanRenderer ([9f152ca](https://github.com/DevoInc/genesys-ui/commit/9f152caa06c06ecc37d8270390212a46b6c9f5f0))
+
 ## [13.4.2](https://github.com/DevoInc/genesys-ui/compare/v13.4.1...v13.4.2) (2024-10-29)
 
 

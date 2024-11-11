@@ -10,6 +10,11 @@ body:
         This issue tracker is for bugs and issues found within genesys-ui.
 
         Please fill in as much of the following form as you're able.
+  - type: input
+    attributes:
+      label: Affected version
+      description: >
+        Version release
   - type: textarea
     attributes:
       label: What steps will reproduce the bug?
