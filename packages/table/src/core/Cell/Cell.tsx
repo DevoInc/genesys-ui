@@ -1,17 +1,13 @@
 import * as React from 'react';
-
-import { GIPencilEditFilled } from '@devoinc/genesys-icons';
 import { mergeStyles } from '@devoinc/genesys-ui';
 
 import type { TCellDef, TColDef, TRow, TRowDef } from '../../declarations';
 
 import { TableContext } from '../../context';
 import { useInitialState } from '../../editors/useInitialState';
-import { useRenderContent } from './useRenderContent';
 
 import { StyledCell } from './StyledCell';
-import { StyledCellMarker } from './StyledCellMarker';
-import { StyledCellWrapper } from './StyledCellWrapper';
+import { CellWrapper } from '../../wrapper/CellWrapper';
 
 interface CellProps {
   cellDef: TCellDef;
@@ -38,19 +34,22 @@ export const Cell: React.FC<CellProps> = ({
   rowDef,
   width,
 }) => {
-  const { density, texts, onCellMouseEnter, onCellMouseLeave } =
-    React.useContext(TableContext);
+  const {
+    onCellMouseEnter,
+    onCellMouseLeave,
+    onCellDoubleClick,
+    onCellKeyUp,
+    onCellKeyDown,
+    onCellClick,
+  } = React.useContext(TableContext);
 
   useInitialState(data, colDef.onReset);
-
-  const { cellRef, editionContent, isEditMode, onDoubleClick, viewContent } =
-    useRenderContent(colDef, data, rowIndex, row);
-
+  const cellRef = React.useRef<HTMLTableCellElement>();
+  debugger;
   return (
     <StyledCell
-      aria-selected={isEditMode}
+      aria-selected={cellDef?.isEditMode}
       css={mergeStyles(colDef?.style ?? '', cellDef?.style ?? '')}
-      onDoubleClick={onDoubleClick}
       ref={cellRef}
       style={{
         width: `${width}px`,
@@ -69,29 +68,31 @@ export const Cell: React.FC<CellProps> = ({
         }
       }}
       aria-colindex={colIndex}
+      onClick={(event) => {
+        if (onCellClick) {
+          onCellClick({ event, colDef, cellDef, rowDef, rowIndex });
+        }
+      }}
+      onDoubleClick={() => {
+        if (onCellDoubleClick) {
+          onCellDoubleClick({ colDef, cellDef, rowDef, rowIndex });
+        }
+      }}
+      onKeyUp={(event) => {
+        if (onCellKeyUp) {
+          onCellKeyUp({ event, colDef, cellDef, rowDef, rowIndex });
+        }
+      }}
+      onKeyDown={(event) => {
+        if (onCellKeyDown) {
+          onCellKeyDown({ event, colDef, cellDef, rowDef, rowIndex });
+        }
+      }}
+      $isSelected={cellDef?.isSelected}
     >
-      <StyledCellWrapper
-        $clickable={colDef.editable}
-        $density={density}
-        $horAlign={
-          colDef?.align || (colDef.preset === 'number' ? 'right' : null)
-        }
-        $isEditMode={isEditMode}
-        as={colDef.editable ? 'button' : 'div'}
-        tabIndex={colDef.editable ? 0 : -1}
-        title={
-          isEditMode ? texts?.cell?.editSaveTooltip : texts?.cell?.editTooltip
-        }
-        toEdge={colDef?.toEdge}
-        verAlign={colDef?.verticalAlign}
-      >
-        {isEditMode ? editionContent : viewContent}
-        {colDef.editable && !isEditMode && (
-          <StyledCellMarker>
-            <GIPencilEditFilled size={10} />
-          </StyledCellMarker>
-        )}
-      </StyledCellWrapper>
+      {colDef.cellWrapper
+        ? colDef.cellWrapper({ cellDef, colDef, rowIndex, data, row })
+        : CellWrapper({ colDef, rowIndex, data, row })}
     </StyledCell>
   );
 };

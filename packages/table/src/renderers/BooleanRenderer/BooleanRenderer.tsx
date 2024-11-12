@@ -9,6 +9,7 @@ export const BooleanRenderer: React.FC<TCellRenderer> = ({ value }) => {
   const bool = typeof value === 'string' ? value === 'true' : value;
   const cmpTokens = useTheme().cmp.table.cellBoolean;
   const iconColor = cmpTokens.color.text;
+
   return bool ? (
     <GICheckOk size={cmpTokens.size.square.true} color={iconColor} />
   ) : (

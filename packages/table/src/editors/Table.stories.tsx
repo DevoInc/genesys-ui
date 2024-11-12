@@ -77,10 +77,13 @@ const colDefs: TColDef = [
       return (
         <Select
           id={'test'}
+          defaultMenuIsOpen
+          autoFocus
           label={'custom'}
           placeholder={'custom'}
           menuAppendToBody
           onChange={(event) => {
+            debugger;
             onChange(event.value)
           }}
           options={getSelectOptions(options)}

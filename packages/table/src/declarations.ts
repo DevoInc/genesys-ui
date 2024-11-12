@@ -44,6 +44,15 @@ export type TColDef = {
   cellRenderer?:
     | React.FC<TCellRenderer>
     | (({ value, colDef }: TCellRenderer) => React.ReactNode);
+  cellWrapper?:
+    | React.FC<TCellWrapper>
+    | (({
+        cellDef,
+        colDef,
+        rowIndex,
+        data,
+        row,
+      }: TCellWrapper) => React.ReactNode);
   headerRenderer?:
     | React.FC<THeaderRenderer>
     | (({ colDef }: THeaderRenderer) => React.ReactNode);
@@ -118,6 +127,15 @@ export type TCellDef = {
   rowId: string;
   hide?: boolean;
   style?: CSSProp;
+  isSelected?: boolean;
+  isEditMode?: boolean;
+};
+
+export type THeaderCellDef = {
+  colId: string;
+  hide?: boolean;
+  style?: CSSProp;
+  isSelected?: boolean;
 };
 
 export type TColPreset = {
@@ -176,6 +194,14 @@ export type TCellRenderer = {
   row: TRow;
 };
 
+export type TCellWrapper = {
+  colDef: TColDef;
+  rowIndex: number;
+  row: TRow;
+  cellDef: TCellDef;
+  data: unknown;
+};
+
 export type THeaderRenderer = {
   colDef: TColDef;
 };
@@ -202,6 +228,7 @@ export interface ITable {
   // cell
   cellDefs?: TCellDef[];
   onCellDataChange?: ({ colDef, value, rowIndex }) => void;
+  headerCellDefs?: THeaderCellDef[];
 
   context?: {
     [key: string]: unknown;
@@ -240,5 +267,108 @@ export interface ITable {
     colDef: TColDef;
     rowDef: TRowDef;
     cellDef: TCellDef;
+  }) => void;
+  onHeaderCellClick?: ({
+    colDef,
+    rowDef,
+    cellDef,
+    rowIndex,
+    event,
+  }: {
+    colDef?: TColDef;
+    rowDef?: TRowDef;
+    cellDef?: TCellDef;
+    rowIndex?: number;
+    event?: React.MouseEvent;
+  }) => void;
+  onCellClick?: ({
+    colDef,
+    rowDef,
+    cellDef,
+    rowIndex,
+    event,
+  }: {
+    colDef?: TColDef;
+    rowDef?: TRowDef;
+    cellDef?: TCellDef;
+    rowIndex?: number;
+    event: React.MouseEvent;
+  }) => void;
+  onCellDoubleClick?: ({
+    colDef,
+    rowDef,
+    cellDef,
+    rowIndex,
+  }: {
+    colDef?: TColDef;
+    rowDef?: TRowDef;
+    cellDef?: TCellDef;
+    rowIndex?: number;
+  }) => void;
+  onCellKeyUp?: ({
+    colDef,
+    rowDef,
+    cellDef,
+    event,
+    rowIndex,
+  }: {
+    colDef?: TColDef;
+    rowDef?: TRowDef;
+    cellDef?: TCellDef;
+    event?: React.KeyboardEvent;
+    rowIndex?: number;
+  }) => void;
+  onCellKeyDown?: ({
+    colDef,
+    rowDef,
+    cellDef,
+    event,
+    rowIndex,
+  }: {
+    colDef?: TColDef;
+    rowDef?: TRowDef;
+    cellDef?: TCellDef;
+    event?: React.KeyboardEvent;
+    rowIndex?: number;
+  }) => void;
+  onHeaderCellDoubleClick?: ({ colDef }: { colDef: TColDef }) => void;
+  onHeaderCellKeyUp?: ({
+    colDef,
+    event,
+  }: {
+    colDef: TColDef;
+    event: React.KeyboardEvent;
+  }) => void;
+  onHeaderCellKeyDown?: ({
+    colDef,
+    event,
+  }: {
+    colDef: TColDef;
+    event: React.KeyboardEvent;
+  }) => void;
+  onRowDoubleClick?: ({
+    rowDef,
+    rowIndex,
+  }: {
+    rowDef: TRowDef;
+    rowIndex: number;
+  }) => void;
+  onRowKeyUp?: ({
+    event,
+    rowDef,
+    rowIndex,
+  }: {
+    event: React.KeyboardEvent;
+    rowDef: TRowDef;
+    rowIndex: number;
+  }) => void;
+  onRowKeyDown?: ({
+    event,
+    rowDef,
+    rowIndex,
+  }: {
+    event: React.KeyboardEvent;
+    rowDef: TRowDef;
+    rowIndex: number;
   }) => void;
 }

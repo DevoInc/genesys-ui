@@ -20,41 +20,45 @@ export const TableHead: React.FC<TableHeadProps> = ({
   scrolled,
   width,
 }) => {
-  const { showFilters, density, onFilter, colDefs, id } =
+  const { showFilters, density, onFilter, colDefs, id, headerCellDefs } =
     React.useContext(TableContext);
-
   return (
     <StyledTableHead $scrolled={scrolled} $width={width} id={`${id}__head`}>
       <StyledTableHeadRow $density={density}>
-        {colDefs
-          .map((colDef) => {
-            const virtualColumn = items.find((item) => item.key === colDef.id);
-            const headerOnFilterPosition =
-              showFilters && (colDef?.headerOnFilterPosition ?? false);
-            return (
-              !headerOnFilterPosition &&
-              virtualColumn && (
-                <HeaderCell
-                  key={`header-cell-${colDef.id}`}
-                  colDef={colDef}
-                  width={virtualColumn && `${virtualColumn.size}px`}
-                  offsetX={virtualColumn && virtualColumn.start}
-                  title={colDef.headerName}
-                >
-                  {colDef?.headerRenderer ? (
-                    colDef.headerRenderer({ colDef })
-                  ) : (
-                    <HeaderTextRenderer colDef={colDef} />
-                  )}
-                </HeaderCell>
-              )
-            );
-          })}
+        {colDefs.map((colDef) => {
+          const virtualColumn = items.find((item) => item.key === colDef.id);
+          const headerCellDef = headerCellDefs.find(
+            (cell) => cell.colId === colDef.id,
+          );
+
+          const headerOnFilterPosition =
+            showFilters && (colDef?.headerOnFilterPosition ?? false);
+          return (
+            !headerOnFilterPosition &&
+            virtualColumn && (
+              <HeaderCell
+                headerCellDef={headerCellDef || null}
+                key={`header-cell-${colDef.id}`}
+                colDef={colDef}
+                width={virtualColumn && `${virtualColumn.size}px`}
+                offsetX={virtualColumn && virtualColumn.start}
+                title={colDef.headerName}
+              >
+                {colDef?.headerRenderer ? (
+                  colDef.headerRenderer({ colDef })
+                ) : (
+                  <HeaderTextRenderer colDef={colDef} />
+                )}
+              </HeaderCell>
+            )
+          );
+        })}
       </StyledTableHeadRow>
       {showFilters ? (
         <StyledTableHeadRow $density={density}>
           {colDefs.map((colDef) => {
             const virtualColumn = items.find((item) => item.key === colDef.id);
+
             return (
               (colDef?.cellFilter || colDef?.headerOnFilterPosition) &&
               virtualColumn && (

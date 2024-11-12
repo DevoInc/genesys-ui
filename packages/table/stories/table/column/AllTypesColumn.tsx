@@ -2,52 +2,52 @@ import { GIEyeViewFilled, GIPencilEdit } from '@devoinc/genesys-icons';
 import { Button, Menu, Popover } from '@devoinc/genesys-ui';
 import React from 'react';
 import { TActionContext, TColDef } from '../../../src';
+import { CellEditModeWrapper } from '../../../src/wrapper/CellEditModeWrapper';
 
 export const AllTypesColumn: TColDef[] = [
-  {
-    id: 'id',
-    preset: 'text',
-    headerName: 'ID',
-    sortable: true,
-  },
-  {
-    id: 'menu',
-    headerName: 'Menu',
-    cellRenderer: ({ colDef }) => {
-      return (
-        <Popover id="custom-col-menu">
-          {({ toggle, ref, isOpened }) => (
-            <Button
-              aria-expanded={isOpened}
-              aria-haspopup={true}
-              onClick={toggle}
-              ref={ref}
-            >
-              Actions
-            </Button>
-          )}
-          <Popover.Panel>
-            <Menu>
-              <Menu.Item
-                label="Option 1"
-                onClick={() => {
-                  // eslint-disable-next-line no-console
-                  console.log(colDef);
-                }}
-              />
-            </Menu>
-          </Popover.Panel>
-        </Popover>
-      );
-    },
-  },
-  {
-    id: 'booleanValue',
-    headerName: 'Boolean value',
-    preset: 'boolean',
-    editable: true,
-    sortable: true,
-  },
+   {
+     id: 'id',
+     preset: 'text',
+     headerName: 'ID',
+     sortable: true,
+   },
+   {
+     id: 'menu',
+     headerName: 'Menu',
+     cellRenderer: ({ colDef }) => {
+       return (
+         <Popover id="custom-col-menu">
+           {({ toggle, ref, isOpened }) => (
+             <Button
+               aria-expanded={isOpened}
+               aria-haspopup={true}
+               onClick={toggle}
+               ref={ref}
+             >
+               Actions
+             </Button>
+           )}
+           <Popover.Panel>
+             <Menu>
+               <Menu.Item
+                 label="Option 1"
+                 onClick={() => {
+                    //eslint-disable-next-line no-console
+                   console.log(colDef);
+                 }}
+               />
+             </Menu>
+           </Popover.Panel>
+         </Popover>
+       );
+     },
+   },
+   {
+     id: 'booleanValue',
+     headerName: 'Boolean value',
+     preset: 'boolean',
+     sortable: true,
+   },
   {
     id: 'name',
     headerName: 'Name',
