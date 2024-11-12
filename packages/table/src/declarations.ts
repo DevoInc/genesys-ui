@@ -45,7 +45,16 @@ export type TColDef = {
         rowDef,
         rowIndex,
         row,
-      }: TCellRenderer) => React.ReactNode);
+      }: TCellRenderer) => React.ReactNode)
+  cellWrapper?:
+    | React.FC<TCellWrapper>
+    | (({
+        cellDef,
+        colDef,
+        rowIndex,
+        data,
+        row,
+      }: TCellWrapper) => React.ReactNode);
   headerRenderer?:
     | React.FC<THeaderRenderer>
     | (({ colDef }: THeaderRenderer) => React.ReactNode);
@@ -244,6 +253,7 @@ export interface ITable {
     row: TRow;
     rowIndex: number;
   }) => string;
+  headerCellDefs?: THeaderCellDef[];
 
   context?: {
     [key: string]: unknown;
