@@ -17,7 +17,7 @@ import { StyledTableWrapper } from './StyledTableWrapper';
 
 export const TableWrapper: React.FC = () => {
   const theme = useTheme();
-  const { maxHeight, data, showFilters, density, rowDefs, colDefs } =
+  const { maxHeight, data, showFilters, density, rowDefs, colDefs, id } =
     React.useContext(TableContext);
 
   const ref = React.useRef<HTMLDivElement>();
@@ -55,6 +55,7 @@ export const TableWrapper: React.FC = () => {
         role={'grid'}
         aria-rowcount={data.length}
         aria-colcount={colDefs.length}
+        id={id}
       >
         <TableHead
           items={columnVirtualizer?.getVirtualItems() ?? []}

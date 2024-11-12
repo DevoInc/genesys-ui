@@ -38,6 +38,7 @@ const BasicCmp = ({ data, colDefs }) => {
     <Flex flexDirection="column" gap="cmp-md" height={'auto'}>
       <Flex.Item>
         <BasicTable
+          id={'basicTableStorie'}
           onSort={(colDef: TColDef) => {
             onSort(colDef.id);
           }}
@@ -52,12 +53,14 @@ const BasicCmp = ({ data, colDefs }) => {
           highlightRowOnHover={true}
           showFilters={true}
           onCellDataChange={({ colDef, value, rowIndex }) => {
-            setNewData(newData.map((data, index) => {
-              if(index === rowIndex) {
-                data[colDef.id] = value
-              }
-              return data
-            }))
+            setNewData(
+              newData.map((data, index) => {
+                if (index === rowIndex) {
+                  data[colDef.id] = value;
+                }
+                return data;
+              }),
+            );
           }}
         />
       </Flex.Item>

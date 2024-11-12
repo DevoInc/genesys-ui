@@ -19,12 +19,13 @@ export const TableBody: React.FC<TableBodyProps> = ({
   width,
   height,
 }) => {
-  const { data } = React.useContext(TableContext);
+  const { data, id } = React.useContext(TableContext);
 
   return (
     <StyledTableBody
       $height={height}
       $width={width}
+      id={`${id}__body`}
     >
       {rowVirtualizer.getVirtualItems().map((virtualRow: VirtualItem) => (
         <Row

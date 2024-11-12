@@ -32,6 +32,7 @@ export const Table: React.FC<TableProps> = ({
   highlightRowOnHoverFn,
   onCellDataChange,
   data,
+  id,
   resizableColumns = false,
   rowHeight = ROW_HEIGHT_MD,
 }) => {
@@ -46,6 +47,7 @@ export const Table: React.FC<TableProps> = ({
   return (
     <TableContext.Provider
       value={{
+        id,
         data,
         colDefs: mergedColDefs,
         showFilters,

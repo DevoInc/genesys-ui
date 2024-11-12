@@ -20,11 +20,11 @@ export const TableHead: React.FC<TableHeadProps> = ({
   scrolled,
   width,
 }) => {
-  const { showFilters, density, onFilter, colDefs } =
+  const { showFilters, density, onFilter, colDefs, id } =
     React.useContext(TableContext);
 
   return (
-    <StyledTableHead $scrolled={scrolled} $width={width}>
+    <StyledTableHead $scrolled={scrolled} $width={width} id={`${id}__head`}>
       <StyledTableHeadRow $density={density}>
         {colDefs
           .map((colDef) => {

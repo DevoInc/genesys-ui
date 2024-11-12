@@ -187,6 +187,7 @@ export type TCellEditor = {
 };
 
 export interface ITable {
+  id: string;
   data: TData;
   // columns
   colDefs?: TColDef[];

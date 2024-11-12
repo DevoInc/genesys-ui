@@ -8,10 +8,12 @@ export const BasicTable: React.FC<TableProps> = ({
   rowPresets,
   highlightRowOnHoverFn,
   onCellDataChange,
+  id,
   ...props
 }) => (
   <Table
     {...props}
+    id={id}
     columnPresets={[
       ...(columnPresets ?? []),
       ...Object.values(listColumnPresets),
