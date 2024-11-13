@@ -45,7 +45,6 @@ export const Cell: React.FC<CellProps> = ({
 
   useInitialState(data, colDef.onReset);
   const cellRef = React.useRef<HTMLTableCellElement>();
-  debugger;
   return (
     <StyledCell
       aria-selected={cellDef?.isEditMode}

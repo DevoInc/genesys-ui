@@ -105,7 +105,7 @@ export type TRowDef = {
   minHeight?: number;
   cellRenderer?:
     | React.FC<TCellRenderer>
-    | (({ value, colDef, rowIndex, row }: TCellRenderer) => React.ReactNode);
+    | (({ value, colDef, rowIndex, row, rowDef }: TCellRenderer) => React.ReactNode);
   style?:
     | CSSProp
     | (({
@@ -192,6 +192,7 @@ export type TCellRenderer = {
   colDef: TColDef;
   rowIndex: number;
   row: TRow;
+  rowDef: TRowDef;
 };
 
 export type TCellWrapper = {
