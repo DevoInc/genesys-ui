@@ -1,5 +1,19 @@
 # Changelog
 
+## [13.7.0](https://github.com/DevoInc/genesys-ui/compare/v13.6.0...v13.7.0) (2024-11-13)
+
+
+### Features
+
+* **table:** [#99](https://github.com/DevoInc/genesys-ui/issues/99) add props accesibility ([8451ad2](https://github.com/DevoInc/genesys-ui/commit/8451ad2bdc4f9d0d9b2926d3da9982f0f2dbca01))
+* **table:** add prop id ([c21395f](https://github.com/DevoInc/genesys-ui/commit/c21395fe8a570477bfac5e68d2a61112f25a50ab))
+* **table:** add rowDef in cellrenderer ([b5d1778](https://github.com/DevoInc/genesys-ui/commit/b5d1778191f7c57a9ce5a382e3dd4f5bd9b97338))
+
+
+### Bug Fixes
+
+* **table:** delete use useOnEventOutside cell renderer ([fa84d9b](https://github.com/DevoInc/genesys-ui/commit/fa84d9bfe6e8108f781c5b4ba4da5c3fc71b393e))
+
 ## [13.6.0](https://github.com/DevoInc/genesys-ui/compare/v13.5.0...v13.6.0) (2024-11-11)
 
 
