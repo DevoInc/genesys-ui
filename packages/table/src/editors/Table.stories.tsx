@@ -30,7 +30,7 @@ const data = Holo.of()
       Holo.chance.pickone(['read', 'view', 'inProgress', 'completed']),
     picture: 'avatar',
   })
-  .repeat(9)
+  .repeat(1)
   .generate();
 
 const colDefs: TColDef = [
@@ -81,10 +81,10 @@ const colDefs: TColDef = [
           autoFocus
           label={'custom'}
           placeholder={'custom'}
+          hideLabel
           menuAppendToBody
           onChange={(event) => {
-            debugger;
-            onChange(event.value)
+            onChange(event.value);
           }}
           options={getSelectOptions(options)}
           value={String(value)}
