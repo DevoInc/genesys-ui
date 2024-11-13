@@ -30,7 +30,7 @@ const data = Holo.of()
       Holo.chance.pickone(['read', 'view', 'inProgress', 'completed']),
     picture: 'avatar',
   })
-  .repeat(9)
+  .repeat(1)
   .generate();
 
 const colDefs: TColDef = [
@@ -79,9 +79,10 @@ const colDefs: TColDef = [
           id={'test'}
           label={'custom'}
           placeholder={'custom'}
+          hideLabel
           menuAppendToBody
           onChange={(event) => {
-            onChange(event.value)
+            onChange(event.value);
           }}
           options={getSelectOptions(options)}
           value={String(value)}

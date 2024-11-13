@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-import { useOnEventOutside } from '@devoinc/genesys-ui';
+import { useClickAway } from 'ahooks';
 
 import type { TColDef, TRow, TRowDef } from '../../declarations';
 import { TableContext } from '../../context';
@@ -10,7 +9,7 @@ export const useRenderContent = (
   data: unknown,
   rowIndex: number,
   row: TRow,
-  rowDef: TRowDef
+  rowDef: TRowDef,
 ) => {
   const { onCellDataChange } = React.useContext(TableContext);
   const cellRef = React.useRef<HTMLTableCellElement>();
@@ -44,12 +43,9 @@ export const useRenderContent = (
     [colDef.editable],
   );
 
-  useOnEventOutside({
-    references: [cellRef, editionContent, viewContent],
-    handler: () => {
-      setIsEditMode(false);
-    },
-  });
+  useClickAway(() => {
+    setIsEditMode(false);
+  }, [cellRef]);
 
   return {
     cellRef,
