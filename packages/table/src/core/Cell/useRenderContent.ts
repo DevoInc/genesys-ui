@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { useOnEventOutside } from '@devoinc/genesys-ui';
 
-import type { TColDef, TRow } from '../../declarations';
+import type { TColDef, TRow, TRowDef } from '../../declarations';
 import { TableContext } from '../../context';
 
 export const useRenderContent = (
@@ -10,6 +10,7 @@ export const useRenderContent = (
   data: unknown,
   rowIndex: number,
   row: TRow,
+  rowDef: TRowDef
 ) => {
   const { onCellDataChange } = React.useContext(TableContext);
   const cellRef = React.useRef<HTMLTableCellElement>();
@@ -22,6 +23,7 @@ export const useRenderContent = (
         colDef,
         rowIndex,
         row,
+        rowDef,
       })
     : '';
 

@@ -44,7 +44,7 @@ export const Cell: React.FC<CellProps> = ({
   useInitialState(data, colDef.onReset);
 
   const { cellRef, editionContent, isEditMode, onDoubleClick, viewContent } =
-    useRenderContent(colDef, data, rowIndex, row);
+    useRenderContent(colDef, data, rowIndex, row, rowDef);
 
   return (
     <StyledCell

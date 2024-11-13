@@ -43,7 +43,7 @@ export type TColDef = {
   valueFormatter?: (value: unknown, context: DateContext) => void;
   cellRenderer?:
     | React.FC<TCellRenderer>
-    | (({ value, colDef }: TCellRenderer) => React.ReactNode);
+    | (({ value, colDef, rowDef, rowIndex, row }: TCellRenderer) => React.ReactNode);
   headerRenderer?:
     | React.FC<THeaderRenderer>
     | (({ colDef }: THeaderRenderer) => React.ReactNode);
@@ -96,7 +96,7 @@ export type TRowDef = {
   minHeight?: number;
   cellRenderer?:
     | React.FC<TCellRenderer>
-    | (({ value, colDef, rowIndex, row }: TCellRenderer) => React.ReactNode);
+    | (({ value, colDef, rowIndex, row, rowDef }: TCellRenderer) => React.ReactNode);
   style?:
     | CSSProp
     | (({
@@ -174,6 +174,7 @@ export type TCellRenderer = {
   colDef: TColDef;
   rowIndex: number;
   row: TRow;
+  rowDef: TRowDef;
 };
 
 export type THeaderRenderer = {
