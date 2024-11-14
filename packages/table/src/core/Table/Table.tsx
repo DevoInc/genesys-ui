@@ -35,6 +35,8 @@ export const Table: React.FC<TableProps> = ({
   id,
   resizableColumns = false,
   rowHeight = ROW_HEIGHT_MD,
+  texts = { cell: { editTooltip: 'editcell'}},
+  textsCell,
 }) => {
   const mergedColDefs: TColDef[] = React.useMemo(
     mergePresets(colDefs, columnPresets, defaultColDef),
@@ -68,6 +70,8 @@ export const Table: React.FC<TableProps> = ({
         rowHeight,
         rowDefs: mergedRowDefs,
         cellDefs,
+        texts,
+        textsCell,
       }}
     >
       <TableWrapper />

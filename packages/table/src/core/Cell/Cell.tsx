@@ -38,7 +38,7 @@ export const Cell: React.FC<CellProps> = ({
   rowDef,
   width,
 }) => {
-  const { density, texts, onCellMouseEnter, onCellMouseLeave } =
+  const { density, texts, onCellMouseEnter, onCellMouseLeave, textsCell } =
     React.useContext(TableContext);
 
   useInitialState(data, colDef.onReset);
@@ -80,7 +80,9 @@ export const Cell: React.FC<CellProps> = ({
         as={colDef.editable ? 'button' : 'div'}
         tabIndex={colDef.editable ? 0 : -1}
         title={
-          isEditMode ? texts?.cell?.editSaveTooltip : texts?.cell?.editTooltip
+          textsCell
+            ? textsCell({ colDef, rowDef, cellDef, data, row, rowIndex })
+            : colDef.editable && texts?.cell?.editTooltip
         }
         toEdge={colDef?.toEdge}
         verAlign={colDef?.verticalAlign}
