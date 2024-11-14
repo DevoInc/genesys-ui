@@ -38,13 +38,14 @@ const CellTitleCustomCmp = ({ data, colDefs }) => {
   );
 };
 
-const CellTitleDefaultCmp = ({ data, colDefs }) => {
+const CellTitleCmp = ({ data, colDefs }) => {
   return (
     <Flex flexDirection="column" gap="cmp-md" height={'auto'}>
       <Flex.Item>
         <BasicTable
           id={'basicTableStorie'}
           data={data}
+          texts={{ cell: { editTooltip: 'no soy el por defecto' } }}
           colDefs={colDefs}
           defaultColDef={{
             editable: false,
@@ -56,9 +57,13 @@ const CellTitleDefaultCmp = ({ data, colDefs }) => {
 };
 
 export const CellTitleCustom: Story = {
-  render: () => <CellTitleCustomCmp data={allTypesData} colDefs={AllTypesColumn} />,
+  render: () => (
+    <CellTitleCustomCmp data={allTypesData} colDefs={AllTypesColumn} />
+  ),
 };
 
-export const CellTitleDefault: Story = {
-  render: () => <CellTitleDefaultCmp data={allTypesData} colDefs={AllTypesColumn} />,
+export const CellTitle: Story = {
+  render: () => (
+    <CellTitleCmp data={allTypesData} colDefs={AllTypesColumn} />
+  ),
 };
