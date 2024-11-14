@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.7.1](https://github.com/DevoInc/genesys-ui/compare/v13.7.0...v13.7.1) (2024-11-14)
+
+
+### Bug Fixes
+
+* [#102](https://github.com/DevoInc/genesys-ui/issues/102) Cannot set text in table component ([733a96e](https://github.com/DevoInc/genesys-ui/commit/733a96e063ea534590b7340953088d9311453b72))
+
 ## [13.7.0](https://github.com/DevoInc/genesys-ui/compare/v13.6.0...v13.7.0) (2024-11-13)
 
 
