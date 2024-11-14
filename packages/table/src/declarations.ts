@@ -8,10 +8,6 @@ export type TDensity = 'default' | 'compact' | 'comfortable';
 export type TTextsType = {
   cell: {
     editTooltip?: string;
-    editSaveTooltip?: string;
-  };
-  editor: {
-    editorTextLabel?: string;
   };
 };
 
@@ -43,16 +39,13 @@ export type TColDef = {
   valueFormatter?: (value: unknown, context: DateContext) => void;
   cellRenderer?:
     | React.FC<TCellRenderer>
-    | (({ value, colDef }: TCellRenderer) => React.ReactNode);
-  cellWrapper?:
-    | React.FC<TCellWrapper>
     | (({
-        cellDef,
+        value,
         colDef,
+        rowDef,
         rowIndex,
-        data,
         row,
-      }: TCellWrapper) => React.ReactNode);
+      }: TCellRenderer) => React.ReactNode);
   headerRenderer?:
     | React.FC<THeaderRenderer>
     | (({ colDef }: THeaderRenderer) => React.ReactNode);
@@ -105,7 +98,13 @@ export type TRowDef = {
   minHeight?: number;
   cellRenderer?:
     | React.FC<TCellRenderer>
-    | (({ value, colDef, rowIndex, row, rowDef }: TCellRenderer) => React.ReactNode);
+    | (({
+        value,
+        colDef,
+        rowIndex,
+        row,
+        rowDef,
+      }: TCellRenderer) => React.ReactNode);
   style?:
     | CSSProp
     | (({
@@ -230,6 +229,21 @@ export interface ITable {
   cellDefs?: TCellDef[];
   onCellDataChange?: ({ colDef, value, rowIndex }) => void;
   headerCellDefs?: THeaderCellDef[];
+  textsCell?: ({
+    colDef,
+    rowDef,
+    cellDef,
+    data,
+    row,
+    rowIndex,
+  }: {
+    colDef: TColDef;
+    rowDef: TRowDef;
+    cellDef: TCellDef;
+    data: unknown;
+    row: TRow;
+    rowIndex: number;
+  }) => string;
 
   context?: {
     [key: string]: unknown;

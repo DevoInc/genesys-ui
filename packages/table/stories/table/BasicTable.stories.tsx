@@ -42,6 +42,14 @@ const BasicCmp = ({ data, colDefs }) => {
           onSort={(colDef: TColDef) => {
             onSorting(colDef.id);
           }}
+          texts={{
+            cell: {
+              editTooltip: 'editTooltip',
+            },
+          }}
+          textsCell={({ rowIndex }) =>
+            rowIndex % 2 === 0 ? 'soy par' : 'soy impar'
+          }
           data={newData}
           colDefs={updateColDefsWithOrderStruct(colDefs, orderStruct)}
           // defaultColDef={{
