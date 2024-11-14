@@ -2,8 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Tabs } from '../../Tabs';
 import * as React from 'react';
-import { useTabsAccessibility } from '../../hooks';
-import { GIChart, GICheckThick } from '@devoinc/genesys-icons';
+import { GIChart } from '@devoinc/genesys-icons';
 import { Box } from '../../../Box';
 import { Badge } from '../../../Badge';
 

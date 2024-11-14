@@ -33,7 +33,7 @@ const initialData = Holo.of()
   .repeat(3)
   .generate() as TData;
 
-const renderCreateCollectorButton = (rowIndex) => {
+const renderCreateCollectorButton = () => {
   return (
     <Box overflowX="hidden">
       <Button colorScheme={'accent'}>Crear incidencia</Button>
