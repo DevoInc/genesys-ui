@@ -23,7 +23,7 @@ export const TextEditor: React.FC<TCellEditor> = ({
       size={density === 'compact' && rowHeight <= ROW_HEIGHT_MD ? 'sm' : 'md'}
       autoFocus
       aria-label={
-        (colDef?.context as TContextTextEditorParams)?.texts?.editorLabel
+        (colDef?.context as TContextTextEditorParams)?.texts?.editorLabel ?? value as string
       }
       value={String(value)}
       onChange={(event: React.FormEvent) =>

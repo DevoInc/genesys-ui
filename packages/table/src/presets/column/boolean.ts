@@ -10,4 +10,9 @@ export const boolean: TColDef = {
   cellEditor: BooleanEditor,
   cellFilter: BooleanFilter,
   minWidth: 100,
+  context: {
+    texts: {
+      editorLabel: 'Edit this boolean content',
+    },
+  },
 };

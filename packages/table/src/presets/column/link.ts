@@ -9,4 +9,9 @@ export const link: TColDef = {
   cellRenderer: LinkRenderer,
   cellEditor: TextEditor,
   cellFilter: TextFilter,
+  context: {
+    texts: {
+      editorLabel: 'Edit this link content',
+    },
+  },
 };

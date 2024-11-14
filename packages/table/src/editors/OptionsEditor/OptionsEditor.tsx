@@ -6,6 +6,7 @@ import { ROW_HEIGHT_MD } from '../../constants';
 import type { TCellEditor } from '../../declarations';
 import { TableContext } from '../../context';
 import { type TContextOptions, getSelectOptions } from '../../facade';
+import { TContextTextEditorParams } from '../TextEditor';
 
 export const OptionsEditor: React.FC<TCellEditor> = ({
   value,
@@ -30,6 +31,9 @@ export const OptionsEditor: React.FC<TCellEditor> = ({
       options={getSelectOptions(options)}
       autoFocus
       size={density === 'compact' && rowHeight <= ROW_HEIGHT_MD ? 'sm' : 'md'}
+      aria-label={
+        (colDef?.context as TContextTextEditorParams)?.texts?.editorLabel ?? value as string
+      }
     />
   );
 };
