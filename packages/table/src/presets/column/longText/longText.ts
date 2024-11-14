@@ -11,4 +11,9 @@ export const longText: TColDef = {
   cellEditor: TextAreaEditor,
   rowHeight: ROW_HEIGHT_LG,
   cellFilter: TextFilter,
+  context: {
+    texts: {
+      editorLabel: 'Edit this text content',
+    },
+  },
 };

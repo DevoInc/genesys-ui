@@ -30,10 +30,10 @@ const data = Holo.of()
       Holo.chance.pickone(['read', 'view', 'inProgress', 'completed']),
     picture: 'avatar',
   })
-  .repeat(1)
+  .repeat(9)
   .generate();
 
-const colDefs: TColDef = [
+const colDefs: TColDef[] = [
   {
     id: 'id',
     preset: 'text',

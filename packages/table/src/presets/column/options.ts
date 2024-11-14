@@ -9,4 +9,9 @@ export const options: TColDef = {
   cellEditor: OptionsEditor,
   cellFilter: OptionsFilter,
   minWidth: 100,
+  context: {
+    texts: {
+      editorLabel: 'Edit this select content',
+    },
+  },
 };

@@ -9,4 +9,9 @@ export const number: TColDef = {
   cellEditor: NumberEditor,
   align: 'right',
   cellFilter: NumberFilter,
+  context: {
+    texts: {
+      editorLabel: 'Edit this number content',
+    },
+  },
 };
