@@ -3,8 +3,10 @@ import type { TOptionsFilterValue } from '../../filters';
 export const optionsTextFilter = (data: string, { value }: TOptionsFilterValue, colDef: TColDef) =>
   value === ''
     ? true
-    : String(data).includes(String(value))
+    : String(data).toLowerCase().includes(String(value).toLowerCase())
       ? true
-      : colDef?.context?.options[data].label.toLowerCase()
-      .includes(value.toLowerCase());
+      : (data && colDef?.context?.options[data])
+        ? colDef.context.options[data].label.toLowerCase()
+          .includes(value.toLowerCase())
+        : false;
 

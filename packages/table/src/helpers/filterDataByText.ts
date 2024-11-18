@@ -42,7 +42,10 @@ export const filterDataByText =
     if (!searchText) return true;
     for (const colId of restrictedColumns) {
       const colDef = getColDef(colDefs, colId);
-      if (valueFilter(colDef, searchText, a[colId]))
+      const value = colDef.valueFormatter
+        ? colDef.valueFormatter(a[colId], colDef.context)
+        : a[colId];
+      if (valueFilter(colDef, searchText, value))
         return true;
     }
     return false;
