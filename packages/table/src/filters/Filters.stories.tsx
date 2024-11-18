@@ -8,6 +8,7 @@ import {
   type TContextOptions,
   type TFilterContext,
   filterDataByFilterStruct,
+  filterDataByText,
   useFilterStruct,
   updateColDefsWithFilterStruct,
   useBulkSelection,
@@ -340,3 +341,125 @@ const FiltersCustomTable = () => {
 export const FiltersCustom: Story = {
   render: () => <FiltersCustomTable />,
 };
+
+const dataGlobal = [
+  {
+    text: 'Christine Jimenez',
+    num: 60,
+    bool: false,
+    option: { value: 'A', text: 'Option A' }
+  },
+  {
+    text: 'Ina Osborne',
+    num: 20,
+    bool: true,
+    option: { value: 'B', text: 'Option B' }
+  },
+  {
+    text: 'Jimmy Hogan',
+    num: 20,
+    bool: true,
+    option: { value: 'C', text: 'Option C' }
+  },
+  {
+    text: 'Myra Bell',
+    num: 57,
+    bool: true,
+    option: { value: 'C', text: 'Option C' }
+  },
+  {
+    text: 'Jane Padilla', num: 46, bool: false,
+    option: { value: 'B', text: 'Option B' }
+  },
+  {
+    text: 'Isabelle Gardner', num: 31, bool: true,
+    option: { value: 'A', text: 'Option A' }
+  },
+  {
+    text: 'Sean Parsons', num: 31, bool: true,
+    option: { value: 'A', text: 'Option A' }
+  },
+  {
+    text: 'Alvin Castro', num: 55, bool: false,
+    option: { value: 'B', text: 'Option B' }
+  },
+  {
+    text: 'Lawrence Holland', num: 56, bool: false,
+    option: { value: 'B', text: 'Option B' }
+  },
+  {
+    text: 'Brandon Robertson', num: 41, bool: true,
+    option: { value: 'C', text: 'Option C' }
+  },
+];
+
+const GlobalTextFilterTable = () => {
+
+  const colDefs = [
+    {
+      id: 'text',
+      headerName: 'Text',
+      preset: 'text',
+    },
+    {
+      id: 'num',
+      headerName: 'Number',
+      preset: 'number',
+      context: {
+        showAdvancedFilter: true,
+        showReset: true,
+      } as TFilterContext,
+    },
+    {
+      id: 'bool',
+      headerName: 'Boolean',
+      preset: 'boolean',
+    },
+    {
+      id: 'option',
+      headerName: 'Options',
+      preset: 'options',
+      context: {
+        options: {
+          A: { label: 'Option A' },
+          B: { label: 'Option B' },
+          C: { label: 'Option C' },
+        },
+      } as TContextOptions,
+      valueFormatter: (value) => value.text,
+    },
+  ];
+
+  const [ textFilter, setTextFilter ] = React.useState(undefined);
+  const { filterStruct, onFilter } = useFilterStruct();
+  const dataFiltered = [...dataGlobal]
+    .filter(filterDataByText(textFilter, colDefs))
+    .filter(filterDataByFilterStruct(filterStruct));
+
+  return (
+    <>
+      <InputControl
+        aria-label="Contains text..."
+        placeholder="Contains text..."
+        type="search"
+        value={ textFilter }
+        onChange={(ev) => {
+          setTextFilter(ev.target.value);
+        }}
+      />
+      <BasicTable
+        showFilters
+        onFilter={(curColDef, value, type) => {
+          onFilter(curColDef.id, value, type);
+        }}
+        colDefs={updateColDefsWithFilterStruct(colDefs, filterStruct)}
+        data={dataFiltered}
+      />
+    </>
+  );
+};
+
+export const GlobalTextFilter: Story = {
+  render: () => <GlobalTextFilterTable />,
+};
+
