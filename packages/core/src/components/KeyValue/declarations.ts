@@ -44,4 +44,6 @@ export interface IKeyValue {
    * component (if it's React Icon component from genesys-icons library it will
    * inherit the perfect size from context). */
   supportingVisual?: React.ReactNode;
+  /** The supporting visual alignment relative to the text block: center, flex-end... etc. */
+  supportingVisualAlign?: React.CSSProperties['alignItems'];
 }

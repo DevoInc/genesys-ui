@@ -1,43 +1,31 @@
-import * as React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, Canvas } from '@storybook/blocks';
 
-import {
-  Avatar,
-  Box,
-  HFlex,
-  KeyValue,
-  Panel,
-  Popover,
-  SelectControl,
-  type TSelectOption,
-  Typography,
-  VFlex,
-} from '@devoinc/genesys-ui';
+import * as Stories from './customCellRenderer.stories';
 
-import {
-  GIEmailMailPostCard,
-  GIPhoneCallContact,
-  GIUserProfileAvatarManMale,
-} from '@devoinc/genesys-icons';
+<Meta of={Stories} />
 
-import {
-  BasicTable,
-  type TColDef,
-  type TCellRenderer,
-  type TRowDef,
-} from '../../src';
+# Custom Cell renderer
 
-const meta: Meta<typeof BasicTable> = {
-  title: 'Components/Layout/Table/Cell/customCellRenderer',
-  component: BasicTable,
-  parameters: {
-    layout: 'fullscreen',
-  },
-};
+You can define a custom cell renderer for the content of the table cell.
+The function to define a custom cell renderer is able to receive these parameters:
 
-export default meta;
-type Story = StoryObj<typeof BasicTable>;
+- `value`: The value for the cell which is provided from the table data.
+- `colDef`: The column definition which cell belongs to.
+- `rowDef`: The row definition which cell belongs to.
+- `rowIndex`: The index of the row which is automatically generated.
 
+In the following example we can see how to define a custom cell renderer and a possible usage of its params.
+
+<Canvas of={Stories.Base} sourceState="none" />
+
+## Data -> value
+
+In the example this is the data for the table which defines the **value** for the `cellRenderer` function. Each variable
+must match the name with the `colDefs` id value. This way is how the data is connected with the columns. We've separated
+the original data where the table gets the data (`users`), the initial data used by the Table (`initialData`) and the
+options to be used by the cell edition select component (`editionOptions`):
+
+```tsx
 const users = [
   {
     id: '0',
@@ -91,7 +79,7 @@ const initialData = [
   },
 ];
 
-const editionOptions: TSelectOption[] = [
+const editionOptions = [
   { value: users[3].id, label: `${users[3].name} (assign to me)` },
   { value: null, label: 'Unassigned' },
   { isSeparator: true },
@@ -99,7 +87,79 @@ const editionOptions: TSelectOption[] = [
   { value: users[1].id, label: users[1].name },
   { value: users[2].id, label: users[2].name },
 ];
+```
 
+## colDefs
+
+The cellRenderer is defined as a variable of the specific object of the `colDefs` configuration array,
+so we're defining that the content of that column has custom renderer different from presets. Anyway, the `colDef` is
+also available as param for the `cellRenderer` function. We have also to define a `cellEditor` if we want edition for
+this custom cell.
+
+```tsx
+const colDefsInitial: TColDef[] = [
+  {
+    id: 'user',
+    editable: true,
+    headerName: 'Assigned to',
+    cellRenderer: ({ colDef, value, rowDef, rowIndex }: TCellRenderer) =>
+      renderUserInfo({ colDef, value, rowDef, rowIndex }),
+    cellEditor: ({ value, onChange }) => {
+      console.info('init value: ', value);
+      return (
+        <SelectControl
+          autoFocus
+          id={'test'}
+          aria-label={'custom'}
+          placeholder={'Select user option'}
+          menuAppendToBody
+          defaultMenuIsOpen
+          onChange={(event) => {
+            onChange(event.value);
+          }}
+          options={editionOptions}
+          value={value ? String(value) : null}
+        />
+      );
+    },
+    context: {
+      options: {
+        3: { label: `${users[3].name} (me)` },
+        null: { label: 'Unassigned' },
+        0: { label: users[0].name },
+        1: { label: users[1].name },
+        2: { label: users[2].name },
+      },
+    },
+  },
+  {
+    id: 'booleanValue',
+    preset: 'boolean',
+    headerName: 'Editing permissions',
+    width: 140,
+  },
+];
+```
+
+## rowDefs
+
+The cellRenderer can use its specific `rowDef` as param which is defined in the `rowDefs` table prop, and it's connected
+with the `id` value which is the string of the index.
+
+```tsx
+const rowDefsInitial: TRowDef[] = [
+  {
+    id: '1',
+    preset: 'created',
+  },
+];
+```
+
+## cellRenderer function
+
+This is the `cellRenderer` function:
+
+```tsx
 const renderUserInfo = ({ colDef, value, rowDef, rowIndex }) => {
   const setOpenedMenu = React.useRef(null);
   return value ? (
@@ -173,56 +233,13 @@ const renderUserInfo = ({ colDef, value, rowDef, rowIndex }) => {
     />
   );
 };
+```
 
-const colDefsInitial: TColDef[] = [
-  {
-    id: 'user',
-    editable: true,
-    headerName: 'Assigned to',
-    cellRenderer: ({ colDef, value, rowDef, rowIndex }: TCellRenderer) =>
-      renderUserInfo({ colDef, value, rowDef, rowIndex }),
-    cellEditor: ({ value, onChange }) => {
-      return (
-        <SelectControl
-          autoFocus
-          id={'test'}
-          aria-label={'custom'}
-          placeholder={'Select user option'}
-          menuAppendToBody
-          defaultMenuIsOpen
-          onChange={(event) => {
-            onChange(event.value);
-          }}
-          options={editionOptions}
-          value={value ? String(value) : null}
-        />
-      );
-    },
-    context: {
-      options: {
-        3: { label: `${users[3].name} (me)` },
-        null: { label: 'Unassigned' },
-        0: { label: users[0].name },
-        1: { label: users[1].name },
-        2: { label: users[2].name },
-      },
-    },
-  },
-  {
-    id: 'booleanValue',
-    preset: 'boolean',
-    headerName: 'Editing permissions',
-    width: 140,
-  },
-];
+## Table integration
 
-const rowDefsInitial: TRowDef[] = [
-  {
-    id: '1',
-    preset: 'created',
-  },
-];
+The custom `cellRenderer` is integrated with the table component through the `colDefs` prop:
 
+```tsx
 const BasicCmp = () => {
   const [newData, setNewData] = React.useState(initialData);
   return (
@@ -233,6 +250,7 @@ const BasicCmp = () => {
         colDefs={colDefsInitial}
         rowDefs={rowDefsInitial}
         onCellDataChange={({ colDef, value, rowIndex }) => {
+          console.info('changed value: ', value);
           setNewData(
             newData.map((data, index) => {
               if (index === rowIndex) {
@@ -246,7 +264,4 @@ const BasicCmp = () => {
     </VFlex>
   );
 };
-
-export const Base: Story = {
-  render: () => <BasicCmp />,
-};
+```

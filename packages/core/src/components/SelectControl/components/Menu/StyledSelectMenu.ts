@@ -161,7 +161,7 @@ export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`
             &:focus,
             &:active {
               ${disabledMixin(theme)};
-              background-color: ${optionTokens.color.background.activated};
+              background-color: ${optionTokens.color.background.enabled};
               color: ${optionTokens.color.text.enabled};
             }
           }

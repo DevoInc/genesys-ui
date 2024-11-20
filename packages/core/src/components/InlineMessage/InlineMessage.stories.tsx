@@ -159,6 +159,7 @@ export const Banner: Story = {
               <InlineMessage.Banner
                 actions={[
                   <Button
+                    colorScheme="blend-base"
                     key="BannerAction-1"
                     onClick={() => {
                       // eslint-disable-next-line no-alert
@@ -181,6 +182,7 @@ export const Banner: Story = {
               <InlineMessage.Banner
                 actions={[
                   <Button
+                    colorScheme="blend-base"
                     key="BannerAction-1"
                     onClick={() => {
                       // eslint-disable-next-line no-alert

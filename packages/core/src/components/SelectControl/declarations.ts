@@ -7,15 +7,27 @@ import type {
   TFieldStatus,
 } from '../../declarations/commonProps';
 
-export type TSelectOption = {
-  readonly value: string | number;
-  readonly label: string;
-
-  readonly icon?: React.ReactNode;
-  readonly prependContent?: React.ReactNode;
-  readonly bold?: boolean;
-  readonly fixed?: boolean;
-};
+export type TSelectOption =
+  | {
+      readonly isSeparator: boolean;
+      readonly value?: never;
+      readonly label?: never;
+      readonly icon?: never;
+      readonly prependContent?: never;
+      readonly bold?: never;
+      readonly fixed?: never;
+      readonly isDisabled?: never;
+    }
+  | {
+      readonly isSeparator?: never;
+      readonly value: string | number;
+      readonly label: string;
+      readonly icon?: React.ReactNode;
+      readonly prependContent?: React.ReactNode;
+      readonly bold?: boolean;
+      readonly fixed?: boolean;
+      readonly isDisabled?: boolean;
+    };
 
 export interface ICommonSelectCmps {
   /** Fixed block of content at the beginning of the select */
