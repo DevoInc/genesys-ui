@@ -3,13 +3,9 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Holo } from '@devoinc/holo';
 
-import {
-  BasicTable,
-  TColDef,
-  TData,
-} from '../../src';
+import { BasicTable, TColDef, TData } from '../../src';
 
-import { dataRangePagination, Flex, Pagination} from '@devoinc/genesys-ui';
+import { dataRangePagination, Flex, Pagination } from '@devoinc/genesys-ui';
 
 const meta: Meta<typeof BasicTable> = {
   title: 'Components/Layout/Table/pagination',
@@ -57,7 +53,6 @@ const initalRowDefs = [];
 export const Basic: Story = {
   render: () =>
     (() => {
-
       const [page, setPage] = React.useState(0);
       const [pageSize, setPageSize] = React.useState(10);
 
@@ -72,9 +67,10 @@ export const Basic: Story = {
               setPage(newPage);
             }}
             onPageSizeChange={(newPageSize) => {
-              setPage(Math.floor((page * pageSize) / newPageSize))
+              setPage(Math.floor((page * pageSize) / newPageSize));
               setPageSize(newPageSize);
             }}
+            marginBottom="cmp-md"
           />
 
           <Flex flexDirection="column" gap="cmp-md" height={'auto'}>

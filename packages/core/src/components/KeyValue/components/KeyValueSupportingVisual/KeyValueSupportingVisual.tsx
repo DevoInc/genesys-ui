@@ -8,17 +8,20 @@ import { KeyValueContext } from '../../context';
 import { Flex } from '../../../Flex';
 
 export interface KeyValueSupportingVisualProps
-  extends Pick<IKeyValue, 'format' | 'children' | 'iconSize'> {}
+  extends Pick<
+    IKeyValue,
+    'format' | 'children' | 'iconSize' | 'supportingVisualAlign'
+  > {}
 
 export const KeyValueSupportingVisual: React.FC<
   KeyValueSupportingVisualProps
-> = ({ children, iconSize }) => {
+> = ({ children, iconSize, supportingVisualAlign }) => {
   const cmpTokens = useTheme().cmp.keyValue.visual;
   const context = React.useContext(KeyValueContext);
   const evalIconSize = iconSize || context.iconSize;
 
   return (
-    <Flex.Item flex="0 0 auto" display="flex">
+    <Flex.Item flex="0 0 auto" display="flex" alignSelf={supportingVisualAlign}>
       <IconContext.Provider
         value={{
           color: cmpTokens.color.text,

@@ -57,6 +57,7 @@ export const Formats: Story = {
           keyContent="Key content"
           valueContent="Value content"
           supportingVisual={<GIWeatherSunSummer />}
+          supportingVisualAlign="flex-start"
         />
         <KeyValue
           {...args}

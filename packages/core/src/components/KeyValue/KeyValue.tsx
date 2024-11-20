@@ -25,6 +25,7 @@ export const InternalKeyValue: React.FC<KeyValueProps> = ({
   role,
   size = 'md',
   supportingVisual,
+  supportingVisualAlign,
   tooltip,
   unit,
   valueContent,
@@ -39,7 +40,10 @@ export const InternalKeyValue: React.FC<KeyValueProps> = ({
     tooltip={tooltip}
   >
     {supportingVisual && (
-      <KeyValueSupportingVisual format={format}>
+      <KeyValueSupportingVisual
+        supportingVisualAlign={supportingVisualAlign}
+        format={format}
+      >
         {supportingVisual}
       </KeyValueSupportingVisual>
     )}

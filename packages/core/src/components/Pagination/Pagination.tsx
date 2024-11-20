@@ -2,12 +2,17 @@ import * as React from 'react';
 
 import type { IPaginationCommonInterface } from './declarations';
 
-import { PaginationNav, PaginationRange, PaginationLabel, PaginationContainer } from './components';
-import {type HFlexProps } from '../HFlex';
+import {
+  PaginationNav,
+  PaginationRange,
+  PaginationLabel,
+  PaginationContainer,
+} from './components';
+import { type HFlexProps } from '../HFlex';
 
 export interface PaginationProps
   extends IPaginationCommonInterface,
-    HFlexProps {}
+    Omit<HFlexProps, 'onChange'> {}
 
 export const InternalPagination: React.FC<PaginationProps> = ({
   as = 'nav',
