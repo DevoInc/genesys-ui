@@ -1,11 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
 import {
+  GICheckThick,
+  GIExitClose,
   GIHeartFull,
   GILikeHeartFavoriteRatingLove,
 } from '@devoinc/genesys-icons';
 
-import { Chip } from '..';
+import { Button, Chip, HFlex } from '..';
 
 const meta: Meta<typeof Chip> = {
   title: 'Components/Form/Chip',
@@ -22,7 +24,7 @@ const meta: Meta<typeof Chip> = {
 export default meta;
 type Story = StoryObj<typeof Chip>;
 
-export const Base: Story = {};
+export const Playground: Story = {};
 
 export const MultipleControlled: Story = {
   render: (args) =>
@@ -48,6 +50,34 @@ export const MultipleUncontrolled: Story = {
     icon: <GILikeHeartFavoriteRatingLove />,
     children: 'Favorite',
   },
+};
+
+export const Removable: Story = {
+  render: () =>
+    (() => {
+      const [removed, setRemoved] = React.useState(false);
+      return (
+        <HFlex>
+          {!removed && (
+            <Chip
+              removable
+              onRemove={() => setRemoved(true)}
+              selectionScheme="single"
+              state="readonly"
+            >
+              Favorite
+            </Chip>
+          )}
+          <Button
+            icon={removed ? <GICheckThick /> : <GIExitClose />}
+            colorScheme="quiet"
+            onClick={() => setRemoved(!removed)}
+          >
+            {removed ? 'Apply filter' : 'Clear all'}
+          </Button>
+        </HFlex>
+      );
+    })(),
 };
 
 export const SingleControlled: Story = {

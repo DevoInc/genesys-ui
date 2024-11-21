@@ -45,18 +45,19 @@ export const ChipHiddenInput: React.FC<ChipHiddenInputProps> = ({
   selectionScheme,
   state,
   value,
-}) => (
-  <StyledHiddenInput
-    aria-label={ariaLabel}
-    checked={onChange ? state === 'selected' : null}
-    defaultChecked={defaultSelected}
-    disabled={disabled}
-    id={id}
-    name={name}
-    onBlur={onBlur}
-    onChange={onChange}
-    onFocus={onFocus}
-    selectionScheme={selectionScheme}
-    value={value}
-  />
-);
+}) =>
+  state !== 'readonly' ? (
+    <StyledHiddenInput
+      aria-label={ariaLabel}
+      checked={onChange ? state === 'selected' : null}
+      defaultChecked={defaultSelected}
+      disabled={disabled}
+      id={id}
+      name={name}
+      onBlur={onBlur}
+      onChange={onChange}
+      onFocus={onFocus}
+      selectionScheme={selectionScheme}
+      value={value}
+    />
+  ) : null;

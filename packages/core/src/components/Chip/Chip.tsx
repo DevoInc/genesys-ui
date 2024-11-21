@@ -8,9 +8,13 @@ import {
   ChipHiddenInput,
   type ChipHiddenInputProps,
   ChipIcon,
+  ChipRemoveButton,
 } from './components';
 
-import { ChipContent, type ChipContentProps } from './components/ChipContent/ChipContent';
+import {
+  ChipContent,
+  type ChipContentProps,
+} from './components/ChipContent/ChipContent';
 
 export interface ChipProps
   extends IDataAttrs,
@@ -23,6 +27,8 @@ export interface ChipProps
   hasBoldIcon?: boolean;
   /** The icon when the Chip is selected. It doesn't work in uncontrolled mode. */
   iconSelected?: React.ReactNode;
+  /** The function called when the Chip is removable, and the remove icon button is clicked. */
+  onRemove?: () => void;
 }
 
 export const InternalChip: React.FC<ChipProps> = ({
@@ -61,6 +67,8 @@ export const InternalChip: React.FC<ChipProps> = ({
   onBlur,
   onChange,
   onFocus,
+  onRemove,
+  removable,
   role,
   selectionScheme = 'multiple',
   size = 'md',
@@ -101,6 +109,7 @@ export const InternalChip: React.FC<ChipProps> = ({
       onPaste={onPaste}
       onScroll={onScroll}
       onWheel={onWheel}
+      removable={removable}
       role={role}
       size={size}
       sortable={sortable}
@@ -127,6 +136,7 @@ export const InternalChip: React.FC<ChipProps> = ({
         </Chip._Icon>
       )}
       <Chip._Content>{children}</Chip._Content>
+      {removable && <Chip._RemoveButton size={size} onClick={onRemove} />}
     </Chip._Container>
   );
 };
@@ -136,15 +146,18 @@ export const Chip = InternalChip as typeof InternalChip & {
   _Content: typeof ChipContent;
   _HiddenInput: typeof ChipHiddenInput;
   _Icon: typeof ChipIcon;
+  _RemoveButton: typeof ChipRemoveButton;
 };
 
 Chip._Container = ChipContainer;
 Chip._Content = ChipContent;
 Chip._HiddenInput = ChipHiddenInput;
 Chip._Icon = ChipIcon;
+Chip._RemoveButton = ChipRemoveButton;
 
 InternalChip.displayName = 'Chip';
 Chip._Container.displayName = 'Chip._Container';
 Chip._Content.displayName = 'Chip._Content';
 Chip._HiddenInput.displayName = 'Chip._HiddenInput';
 Chip._Icon.displayName = 'Chip._Icon';
+Chip._RemoveButton.displayName = 'Chip._RemoveButton';

@@ -7,6 +7,8 @@ export interface IChipContainer {
   state?: TChipState;
   /** If you can drag & drop the Chip. */
   sortable?: boolean;
+  /** If the Chip renders inside a remove icon button. */
+  removable?: boolean;
 }
 
 export interface IChipContainerStyled {
@@ -16,4 +18,6 @@ export interface IChipContainerStyled {
   $state?: TChipState;
   /** If you can drag & drop the Chip. */
   $sortable?: boolean;
+  /** If the Chip renders inside a remove icon button. */
+  $removable?: boolean;
 }
