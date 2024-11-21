@@ -26,7 +26,28 @@ const meta: Meta<typeof Panel> = {
 export default meta;
 type Story = StoryObj<typeof Panel>;
 
-export const Base: Story = {
+export const Playground: Story = {
+  args: {
+    children: [
+      <Panel.Header key="header-1" bordered title="Header tittle" />,
+      <Panel.Body key="body-1">{lorem}</Panel.Body>,
+      <Panel.Footer
+        key="footer-1"
+        bordered
+        actions={[
+          <Button key={1} colorScheme="quiet">
+            Cancel
+          </Button>,
+          <Button key={2} colorScheme="accent">
+            Apply
+          </Button>,
+        ]}
+      />,
+    ],
+  },
+};
+
+export const Playground2: Story = {
   args: {
     children: [
       <Panel.Header

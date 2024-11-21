@@ -28,6 +28,9 @@ const config: StorybookConfig = {
     '@storybook/addon-themes',
     '@storybook/preset-scss',
   ],
+  docs: {
+    defaultName: 'Overview',
+  },
   async viteFinal(config) {
     const { mergeConfig } = await import('vite');
     // Merge custom configuration into the default config

@@ -53,11 +53,12 @@ export const StyledColorPicker = styled.button<StyledColorPickerProps>`
       background-color: ${colorPickerTokens.color.background.base[state]};
       width: ${width};
       height: ${height};
-      cursor: pointer;
 
       ${!disabled &&
       !readOnly &&
       css`
+        cursor: pointer;
+
         &:hover {
           border-color: ${colorPickerTokens.color.border[status].hovered};
           color: ${colorPickerTokens.color.text.base.hovered};

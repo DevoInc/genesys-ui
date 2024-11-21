@@ -55,6 +55,7 @@ export const ChipContainer: React.FC<ChipContainerProps> = ({
   onPaste,
   onScroll,
   onWheel,
+  removable,
   role,
   size = 'md',
   sortable,
@@ -65,7 +66,7 @@ export const ChipContainer: React.FC<ChipContainerProps> = ({
 }) => (
   <StyledChipContainer
     {...restDataProps}
-    as={as}
+    as={as || state === 'readonly' ? 'div' : undefined}
     css={style}
     id={id}
     onClick={onClick}
@@ -92,6 +93,7 @@ export const ChipContainer: React.FC<ChipContainerProps> = ({
     onScroll={onScroll}
     onWheel={onWheel}
     role={role}
+    $removable={removable}
     $size={size}
     $sortable={sortable}
     $state={state}

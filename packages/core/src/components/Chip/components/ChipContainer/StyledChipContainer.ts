@@ -5,6 +5,8 @@ import { btnResetMixin } from '../../../../styled/mixins/components';
 import { pseudoElementOverlayMixin } from '../../../../styled/mixins/pseudoElement';
 import { getPadding } from '../../helpers';
 import { type IChipContainerStyled } from './declarations';
+import { getSpacingPropCss } from '../../../../helpers';
+import { disabled } from 'happy-dom/lib/PropertySymbol';
 
 export interface StyledChipContainerProps extends IChipContainerStyled {
   // TODO: interface only for satisfy the type error with TS and inherit CSSProp
@@ -12,13 +14,24 @@ export interface StyledChipContainerProps extends IChipContainerStyled {
 }
 
 export const StyledChipContainer = styled.label<StyledChipContainerProps>`
-  ${({ $size = 'md', $sortable = false, $state = 'enabled', theme }) => {
+  ${({
+    $removable,
+    $size = 'md',
+    $sortable = false,
+    $state = 'enabled',
+    theme,
+  }) => {
     const chipTokens = theme.cmp.chip;
     const backdropHovered = chipTokens.color.backdrop.hovered;
     const backdropFocused = chipTokens.color.backdrop.focused;
     const backdropPressed = chipTokens.color.backdrop.pressed;
     return css`
       ${btnResetMixin};
+      cursor: ${$state === 'disabled'
+        ? 'not-allowed'
+        : $state === 'readonly'
+          ? 'default'
+          : 'pointer'};
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -31,7 +44,10 @@ export const StyledChipContainer = styled.label<StyledChipContainerProps>`
       min-width: ${chipTokens.size.minWidth[$size]};
       height: ${chipTokens.size.height[$size]};
       padding: ${getPadding({ $size, $sortable, tokens: chipTokens })};
-      background-color: ${chipTokens.color.background[$state]};
+      padding-right: ${$removable && getSpacingPropCss(theme)('cmp-xxs')};
+      background-color: ${chipTokens.color.background[
+        $state === 'readonly' ? 'enabled' : $state
+      ]};
       font-size: ${chipTokens.label.typo.fontSize[$size]};
       line-height: ${chipTokens.label.typo.lineHeight[$size]};
       text-shadow: ${$state === 'selected' && '0 0 .05rem'};
@@ -53,6 +69,7 @@ export const StyledChipContainer = styled.label<StyledChipContainerProps>`
       `}
 
       ${$state !== 'disabled' &&
+      $state !== 'readonly' &&
       css`
         &&&:not(:disabled):not(:has(:disabled)) {
           &:hover,

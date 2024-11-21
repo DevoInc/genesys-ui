@@ -39,6 +39,45 @@ export const Base: Story = {
       return (
         <ColorPicker
           {...props}
+          readOnly
+          value={state.color}
+          presetColors={['rgba(143,36,36,1)', 'rgba(143,36,36,0.5)']}
+          onChange={(color) => {
+            setState({ color });
+            window.console.debug('Change color to:', color);
+          }}
+        />
+      );
+    })(args),
+};
+
+export const Disabled: Story = {
+  render: (args) =>
+    ((props) => {
+      const [state, setState] = React.useState({ color: '#234567' });
+      return (
+        <ColorPicker
+          {...props}
+          disabled
+          value={state.color}
+          presetColors={['rgba(143,36,36,1)', 'rgba(143,36,36,0.5)']}
+          onChange={(color) => {
+            setState({ color });
+            window.console.debug('Change color to:', color);
+          }}
+        />
+      );
+    })(args),
+};
+
+export const ReadOnly: Story = {
+  render: (args) =>
+    ((props) => {
+      const [state, setState] = React.useState({ color: '#234567' });
+      return (
+        <ColorPicker
+          {...props}
+          readOnly
           value={state.color}
           presetColors={['rgba(143,36,36,1)', 'rgba(143,36,36,0.5)']}
           onChange={(color) => {
