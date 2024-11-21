@@ -347,49 +347,49 @@ const dataGlobal = [
     text: 'Christine Jimenez',
     num: 60,
     bool: false,
-    option: { value: 'A', text: 'Option A' }
+    option: 'A',
   },
   {
     text: 'Ina Osborne',
     num: 20,
     bool: true,
-    option: { value: 'B', text: 'Option B' }
+    option:'B',
   },
   {
     text: 'Jimmy Hogan',
     num: 20,
     bool: true,
-    option: { value: 'C', text: 'Option C' }
+    option: 'C',
   },
   {
     text: 'Myra Bell',
     num: 57,
     bool: true,
-    option: { value: 'C', text: 'Option C' }
+    option: 'C',
   },
   {
     text: 'Jane Padilla', num: 46, bool: false,
-    option: { value: 'B', text: 'Option B' }
+    option: 'B',
   },
   {
     text: 'Isabelle Gardner', num: 31, bool: true,
-    option: { value: 'A', text: 'Option A' }
+    option: 'A',
   },
   {
     text: 'Sean Parsons', num: 31, bool: true,
-    option: { value: 'A', text: 'Option A' }
+    option: 'A',
   },
   {
     text: 'Alvin Castro', num: 55, bool: false,
-    option: { value: 'B', text: 'Option B' }
+    option: 'B',
   },
   {
     text: 'Lawrence Holland', num: 56, bool: false,
-    option: { value: 'B', text: 'Option B' }
+    option: 'B',
   },
   {
     text: 'Brandon Robertson', num: 41, bool: true,
-    option: { value: 'C', text: 'Option C' }
+    option: 'C',
   },
 ];
 
@@ -426,7 +426,6 @@ const GlobalTextFilterTable = () => {
           C: { label: 'Option C' },
         },
       } as TContextOptions,
-      valueFormatter: (value) => value.text,
     },
   ];
 
