@@ -11,6 +11,7 @@ export const CellEditModeWrapper = ({
   colDef,
   rowIndex,
   data,
+  onCellDataChange,
 }) => {
   const { density } = React.useContext(TableContext);
   return (
@@ -26,6 +27,9 @@ export const CellEditModeWrapper = ({
             value: data,
             colDef,
             rowIndex,
+            onChange: (value) => {
+              onCellDataChange({ colDef, value, rowIndex });
+            },
           })
         : colDef.cellRenderer({
             value: colDef.valueFormatter

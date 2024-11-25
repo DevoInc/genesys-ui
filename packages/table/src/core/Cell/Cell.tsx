@@ -42,6 +42,7 @@ export const Cell: React.FC<CellProps> = ({
     onCellKeyUp,
     onCellKeyDown,
     onCellClick,
+    onCellDataChange,
   } = React.useContext(TableContext);
 
   useInitialState(data, colDef.onReset);
@@ -93,7 +94,7 @@ export const Cell: React.FC<CellProps> = ({
       {colDef.cellWrapper
         ? colDef.cellWrapper({ cellDef, colDef, rowIndex, data, row })
         : colDef.editable
-          ? CellEditModeWrapper({ colDef, rowIndex, data, row, cellDef })
+          ? CellEditModeWrapper({ colDef, rowIndex, data, row, cellDef, onCellDataChange })
           : CellWrapper({ colDef, rowIndex, data, row })}
     </StyledCell>
   );

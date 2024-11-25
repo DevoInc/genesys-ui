@@ -54,7 +54,6 @@ export const Table: React.FC<TableProps> = ({
   texts = { cell: { editTooltip: 'editcell'}},
   textsCell,
 }) => {
-  debugger;
   const mergedColDefs: TColDef[] = React.useMemo(
     mergePresets(colDefs, columnPresets, defaultColDef),
     [defaultColDef, columnPresets, colDefs],
