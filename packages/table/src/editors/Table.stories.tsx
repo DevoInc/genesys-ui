@@ -113,6 +113,7 @@ const BasicCmp = ({ data, colDefs }) => {
     <Flex flexDirection="column" gap="cmp-md" height={'auto'}>
       <Flex.Item>
         <BasicTable
+          id={'basic_table'}
           data={newData}
           colDefs={colDefs}
           defaultColDef={{

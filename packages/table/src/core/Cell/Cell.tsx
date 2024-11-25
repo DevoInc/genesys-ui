@@ -8,6 +8,7 @@ import { useInitialState } from '../../editors/useInitialState';
 
 import { StyledCell } from './StyledCell';
 import { CellWrapper } from '../../wrapper/CellWrapper';
+import { CellEditModeWrapper } from '../../wrapper/CellEditModeWrapper';
 
 interface CellProps {
   cellDef: TCellDef;
@@ -91,7 +92,9 @@ export const Cell: React.FC<CellProps> = ({
     >
       {colDef.cellWrapper
         ? colDef.cellWrapper({ cellDef, colDef, rowIndex, data, row })
-        : CellWrapper({ colDef, rowIndex, data, row })}
+        : colDef.editable
+          ? CellEditModeWrapper({ colDef, rowIndex, data, row, cellDef })
+          : CellWrapper({ colDef, rowIndex, data, row })}
     </StyledCell>
   );
 };

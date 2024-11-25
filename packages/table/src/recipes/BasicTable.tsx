@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useClickAway } from 'ahooks';
 
 import { Table, type TableProps } from '../core';
 import { listColumnPresets, listRowPresets, mergePresets } from '../presets';
@@ -29,7 +28,6 @@ export const BasicTable: React.FC<TableProps> = ({
     selectedCells,
     setEditModeCell,
     setKeyEditModeCell,
-    cancellAllEditModeCell,
   } = useCellDefs(cellDefs);
 
   const { newHeaderCellDefs, selectedHeaderCell, sortColumn } =
@@ -44,28 +42,16 @@ export const BasicTable: React.FC<TableProps> = ({
     mergePresets(colDefs, newColumnPresets, defaultColDef),
     [defaultColDef, newColumnPresets, colDefs],
   );
-  // const ref = React.useRef<HTMLDivElement>();
 
-  // useClickAway(
-  //   () => {
-  //     cancellAllEditModeCell();
-  //   },
-  //   () => document.getElementById('test'),
-  // );
   return (
     <Table
       id={id}
       {...props}
-      colDefs={mergedColDefs.map((col) =>
-        col.editable && !col.cellWrapper
-          ? { ...col, cellWrapper: CellEditModeWrapper }
-          : { ...col },
-      )}
+      colDefs={mergedColDefs}
       onCellDataChange={onCellDataChange}
       cellDefs={newCellDefs}
       headerCellDefs={newHeaderCellDefs}
       onCellClick={({ event, colDef, rowDef, rowIndex }) => {
-        debugger;
         selectedCells({ event, colDef, rowDef, rowIndex });
         if (onCellClick) {
           onCellClick({ event, colDef, rowDef, rowIndex });

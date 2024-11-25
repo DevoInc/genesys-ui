@@ -105,7 +105,6 @@ export const Table: React.FC<TableProps> = ({
         headerCellDefs,
         texts,
         textsCell,
-        headerCellDefs,
       }}
     >
       <TableWrapper />

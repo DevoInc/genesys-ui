@@ -12,13 +12,12 @@ export const CellEditModeWrapper = ({
   rowIndex,
   data,
 }) => {
-  const { density, texts } = React.useContext(TableContext);
+  const { density } = React.useContext(TableContext);
   return (
     <StyledEditModeCellWrapper
       $density={density}
       $horAlign={colDef?.align}
       $isEditMode={cellDef?.isEditMode}
-      title={texts?.cell?.editSaveTooltip}
       $toEdge={colDef?.toEdge}
       $verAlign={colDef?.verticalAlign}
     >
