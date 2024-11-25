@@ -45,11 +45,11 @@
     "react-windowed-select": "5.1.0",
     "styled-components": "5.x.x || 6.x.x"
   },
-  "author": "",
+  "author": "Devo, Inc. Quvis Team (https://github.com/orgs/DevoInc/teams/quvis)",
   "license": "MIT",
   "engine": {
-    "node": ">=16",
-    "npm": ">=7"
+    "node": ">=18",
+    "npm": ">=8"
   },
   "repository": {
     "type": "git",
