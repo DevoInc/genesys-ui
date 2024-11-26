@@ -19,6 +19,7 @@ export const CellExpandWrapper: React.FC<TCellWrapper> = ({
 }) => {
   const { density, onCellClickAway } = React.useContext(TableContext);
   const CellRenderer = colDef.cellRenderer;
+  const CellExpand = colDef.cellExpand;
 
   const ref = React.useRef<HTMLButtonElement>(null);
 
@@ -37,34 +38,48 @@ export const CellExpandWrapper: React.FC<TCellWrapper> = ({
       $verAlign={colDef?.verticalAlign}
       ref={ref}
     >
-      {cellDef?.isExpanded && (
+      {cellDef?.isExpanded ? (
         <EditorFloatingWrapper>
           <Panel>
             <Panel.Body>
-              <CellRenderer
-                value={
-                  colDef.valueFormatter
-                    ? colDef.valueFormatter(data, colDef.context)
-                    : data
-                }
-                colDef={colDef}
-                rowIndex={rowIndex}
-                row={row}
-              />
+              {CellExpand ? (
+                <CellExpand
+                  value={
+                    colDef.valueFormatter
+                      ? colDef.valueFormatter(data, colDef.context)
+                      : data
+                  }
+                  colDef={colDef}
+                  rowIndex={rowIndex}
+                  row={row}
+                />
+              ) : (
+                <CellRenderer
+                  value={
+                    colDef.valueFormatter
+                      ? colDef.valueFormatter(data, colDef.context)
+                      : data
+                  }
+                  colDef={colDef}
+                  rowIndex={rowIndex}
+                  row={row}
+                />
+              )}
             </Panel.Body>
           </Panel>
         </EditorFloatingWrapper>
+      ) : (
+        <CellRenderer
+          value={
+            colDef.valueFormatter
+              ? colDef.valueFormatter(data, colDef.context)
+              : data
+          }
+          colDef={colDef}
+          rowIndex={rowIndex}
+          row={row}
+        />
       )}
-      <CellRenderer
-        value={
-          colDef.valueFormatter
-            ? colDef.valueFormatter(data, colDef.context)
-            : data
-        }
-        colDef={colDef}
-        rowIndex={rowIndex}
-        row={row}
-      />
       <StyledCellMarker>
         <GIZoomExpandMaximizeWindow size={10} />
       </StyledCellMarker>

@@ -47,7 +47,12 @@ export type TColDef = {
         rowDef,
         rowIndex,
         row,
-      }: TCellRenderer) => React.ReactNode)
+      }: TCellRenderer) => React.ReactNode);
+  cellExpand?:
+    | React.FC<TCellExpand>
+    | (({
+        value,
+      }: TCellExpand) => React.ReactNode);
   cellWrapper?:
     | React.FC<TCellWrapper>
     | (({
@@ -203,6 +208,11 @@ export type TCellRenderer = {
   rowIndex: number;
   row: TRow;
   rowDef?: TRowDef;
+};
+
+export type TCellExpand = {
+  value: unknown;
+  colDef: TColDef;
 };
 
 export type THeaderRenderer = {
