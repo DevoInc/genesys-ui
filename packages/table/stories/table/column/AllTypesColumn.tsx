@@ -1,7 +1,7 @@
 import { GIEyeViewFilled, GIPencilEdit } from '@devoinc/genesys-icons';
 import { Button, Menu, Popover } from '@devoinc/genesys-ui';
 import React from 'react';
-import { CellExpandWrapper, TActionContext, TColDef } from '../../../src';
+import { TActionContext, TColDef } from '../../../src';
 import { ROW_HEIGHT_MD } from '../../../src/constants';
 
 export const AllTypesColumn: TColDef[] = [
@@ -87,6 +87,7 @@ export const AllTypesColumn: TColDef[] = [
       },
     },
     sortable: true,
+    editable: true,
   },
   {
     id: 'picture',

@@ -7,7 +7,7 @@ import { useOrderStruct } from '../../hooks';
 import { orderDataByOrderStruct, updateColDefsWithOrderStruct } from '../../helpers';
 import { TColDef } from '../../declarations';
 import { ROW_HEIGHT_MD } from '../../constants';
-import { allTypesData } from '../../../stories/table/data/allTypesData';
+import { allTypesData } from './allTypesData';
 import { AllTypesColumn } from './AllTypesColumn';
 
 

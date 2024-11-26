@@ -52,6 +52,7 @@ export type TColDef = {
     | React.FC<TCellExpand>
     | (({
         value,
+        colDef
       }: TCellExpand) => React.ReactNode);
   cellWrapper?:
     | React.FC<TCellWrapper>

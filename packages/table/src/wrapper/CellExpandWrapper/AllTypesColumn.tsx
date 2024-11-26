@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { TColDef } from '../../../src';
 import { ROW_HEIGHT_MD } from '../../../src/constants';
 
@@ -9,9 +10,9 @@ export const AllTypesColumn: TColDef[] = [
     sortable: true,
   },
   {
-    id: 'booleanValue',
-    headerName: 'Boolean value',
-    preset: 'boolean',
+    id: 'longText',
+    headerName: 'longText',
+    preset: 'longText',
     sortable: true,
   },
   {
@@ -19,6 +20,14 @@ export const AllTypesColumn: TColDef[] = [
     headerName: 'Name',
     preset: 'text',
     sortable: true,
+    isExpandable: true,
+    cellExpand: ({ value }) => {
+      return (
+        <div style={{ backgroundColor: 'lightgreen', color: 'white' }}>
+          {value}
+        </div>
+      );
+    },
   },
   {
     id: 'age',
