@@ -1,14 +1,11 @@
 import * as React from 'react';
+
 import { mergeStyles } from '@devoinc/genesys-ui';
 
 import type { TCellDef, TColDef, TRow, TRowDef } from '../../declarations';
-
 import { TableContext } from '../../context';
-import { useInitialState } from '../../editors/useInitialState';
-
 import { StyledCell } from './StyledCell';
-import { CellWrapper } from '../../wrapper/CellWrapper';
-import { CellEditModeWrapper } from '../../wrapper/CellEditModeWrapper';
+import { CellWrapper, CellEditModeWrapper } from '../../wrapper';
 
 interface CellProps {
   cellDef: TCellDef;
@@ -44,9 +41,12 @@ export const Cell: React.FC<CellProps> = ({
     onCellClick,
     onCellDataChange,
   } = React.useContext(TableContext);
-
-  useInitialState(data, colDef.onReset);
   const cellRef = React.useRef<HTMLTableCellElement>();
+  const Wrapper = colDef.cellWrapper
+    ? colDef.cellWrapper
+    : colDef.editable
+      ? CellEditModeWrapper
+      : CellWrapper;
   return (
     <StyledCell
       aria-selected={cellDef?.isEditMode}
@@ -91,11 +91,14 @@ export const Cell: React.FC<CellProps> = ({
       }}
       $isSelected={cellDef?.isSelected}
     >
-      {colDef.cellWrapper
-        ? colDef.cellWrapper({ cellDef, colDef, rowIndex, data, row })
-        : colDef.editable
-          ? CellEditModeWrapper({ colDef, rowIndex, data, row, cellDef, onCellDataChange })
-          : CellWrapper({ colDef, rowIndex, data, row })}
+      <Wrapper
+        colDef={colDef}
+        rowIndex={rowIndex}
+        data={data}
+        row={row}
+        cellDef={cellDef}
+        onCellDataChange={onCellDataChange}
+      />
     </StyledCell>
   );
 };

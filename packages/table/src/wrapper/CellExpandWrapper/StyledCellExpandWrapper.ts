@@ -1,11 +1,16 @@
 import styled, { css } from 'styled-components';
 
 import { btnResetMixin, typoMixin } from '@devoinc/genesys-ui';
-import { CELL_ALIGN_MAP } from '../constants';
-import { TCellHorAlign, TCellVerAlign, TColDef, TDensity } from '../declarations';
 
+import { CELL_ALIGN_MAP } from '../../constants';
+import {
+  TCellHorAlign,
+  TCellVerAlign,
+  TColDef,
+  TDensity,
+} from '../../declarations';
 
-export interface StyledCellWrapperProps extends Omit<TColDef, 'id'> {
+export interface StyledCellExpandWrapperProps extends Omit<TColDef, 'id'> {
   $clickable?: boolean;
   $horAlign?: TCellHorAlign;
   $isEditMode?: boolean;
@@ -14,26 +19,27 @@ export interface StyledCellWrapperProps extends Omit<TColDef, 'id'> {
   $toEdge?: boolean;
 }
 
-export const StyledEditModeCellWrapper = styled.div<StyledCellWrapperProps>`
+export const StyledCellExpandWrapper = styled.button<StyledCellExpandWrapperProps>`
+  ${btnResetMixin};
+  user-select: auto;
+  outline: none;
+  cursor: pointer;
+  transition: background-color ease
+    ${({ theme }) =>
+      theme.cmp.table.cellClickableWrapper.mutation.transitionDuration};
   ${({ $isEditMode, theme }) => {
     const tokens = theme.cmp.table.cellClickableWrapper;
     const boxShadow = tokens.elevation.boxShadow;
     return css`
-        ${btnResetMixin};
-        user-select: auto;
-        outline: none;
-        cursor: pointer;
-        transition: background-color ease ${tokens.mutation.transitionDuration};
-
-        ${!$isEditMode &&
-        css`
-          &:hover,
-          &:active {
-            background-color: ${tokens.color.background.hovered};
-          }
-          &:focus {
-            box-shadow: ${boxShadow};
-          }
+      ${!$isEditMode &&
+      css`
+        &:hover,
+        &:active {
+          background-color: ${tokens.color.background.hovered};
+        }
+        &:focus {
+          box-shadow: ${boxShadow};
+        }
       `}
 
       ${$isEditMode &&
@@ -65,4 +71,3 @@ export const StyledEditModeCellWrapper = styled.div<StyledCellWrapperProps>`
       ? '0'
       : `${theme.cmp.table.cell.space.padding.ver[$density].base} ${theme.cmp.table.cell.space.padding.hor[$density]}`};
 `;
-

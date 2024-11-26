@@ -2,10 +2,10 @@ import * as React from 'react';
 
 import { Table, type TableProps } from '../core';
 import { listColumnPresets, listRowPresets, mergePresets } from '../presets';
-import { CellEditModeWrapper } from '../wrapper/CellEditModeWrapper';
 import { useCellDefs } from '../hooks';
 import { TColDef } from '../declarations';
 import { useHeaderCellDefs } from '../hooks/useHeaderCellDefs';
+import { updatedCellDef } from '../helpers/cellDefs';
 
 export const BasicTable: React.FC<TableProps> = ({
   columnPresets,
@@ -28,6 +28,7 @@ export const BasicTable: React.FC<TableProps> = ({
     selectedCells,
     setEditModeCell,
     setKeyEditModeCell,
+    setCellDefs,
   } = useCellDefs(cellDefs);
 
   const { newHeaderCellDefs, selectedHeaderCell, sortColumn } =
@@ -58,7 +59,17 @@ export const BasicTable: React.FC<TableProps> = ({
         }
       }}
       onCellDoubleClick={({ colDef, rowDef, rowIndex }) => {
-        setEditModeCell({ colDef, rowDef, rowIndex });
+        if (colDef.editable) {
+          setEditModeCell({ colDef, rowDef, rowIndex });
+        } else if (colDef.isExpandable) {
+          setCellDefs(
+            updatedCellDef(newCellDefs, {
+              colId: colDef.id,
+              rowId: rowDef?.id || String(rowIndex),
+              isExpanded: true,
+            }),
+          );
+        }
         if (onCellDoubleClick) {
           onCellDoubleClick({ colDef, rowDef, rowIndex });
         }
@@ -77,7 +88,6 @@ export const BasicTable: React.FC<TableProps> = ({
       }}
       onCellKeyUp={({ event }) => {
         if (event.ctrlKey && (event.key === 'c' || event.key === 'C')) {
-          console.log({ newCellDefs });
           //await navigator.clipboard.writeText(newCellDefs);
         }
       }}

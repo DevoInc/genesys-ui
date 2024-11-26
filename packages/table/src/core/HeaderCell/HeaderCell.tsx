@@ -43,7 +43,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
       $offsetX={offsetX}
       $density={density}
       title={title}
-      tabindex={headerCellDef?.isSelected ? '0' : '1'}
+      tabIndex={headerCellDef?.isSelected ? 0 : 1}
       isSelected={headerCellDef?.isSelected}
       onClick={
         colDef.sortable && !filter

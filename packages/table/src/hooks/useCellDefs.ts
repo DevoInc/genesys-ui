@@ -63,5 +63,6 @@ export const useCellDefs = (cellDefs) => {
     setEditModeCell,
     cancellAllEditModeCell,
     setKeyEditModeCell,
+    setCellDefs,
   };
 };

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { CSSProp, DefaultTheme } from 'styled-components';
 
 import { DateContext } from './valueFormatters/date';
+import type { TCellWrapper } from './wrapper';
 
 export type TDensity = 'default' | 'compact' | 'comfortable';
 
@@ -32,6 +33,7 @@ export type TColDef = {
   preset?: string;
 
   editable?: boolean;
+  isExpandable?: boolean;
   cellEditor?:
     | React.FC<TCellEditor>
     | (({ value, onChange, colDef }: TCellEditor) => React.ReactNode);
@@ -69,7 +71,6 @@ export type TColDef = {
   sort?: 'asc' | 'desc';
   sortIndex?: React.ReactNode;
 
-  onReset?: (initialValue: unknown) => void;
   tooltipField?: string;
   resizable?: boolean;
   minWidth?: number;
@@ -137,6 +138,7 @@ export type TCellDef = {
   style?: CSSProp;
   isSelected?: boolean;
   isEditMode?: boolean;
+  isExpanded?: boolean;
 };
 
 export type THeaderCellDef = {
@@ -200,15 +202,7 @@ export type TCellRenderer = {
   colDef: TColDef;
   rowIndex: number;
   row: TRow;
-  rowDef: TRowDef;
-};
-
-export type TCellWrapper = {
-  colDef: TColDef;
-  rowIndex: number;
-  row: TRow;
-  cellDef: TCellDef;
-  data: unknown;
+  rowDef?: TRowDef;
 };
 
 export type THeaderRenderer = {
@@ -219,6 +213,7 @@ export type TCellEditor = {
   value?: unknown;
   onChange?: (value: unknown) => void;
   colDef?: TColDef;
+  rowIndex?: number;
 };
 
 export interface ITable {

@@ -6,8 +6,8 @@ import {
   TCellVerAlign,
   TColDef,
   TDensity,
-} from '../declarations';
-import { CELL_ALIGN_MAP } from '../constants';
+} from '../../declarations';
+import { CELL_ALIGN_MAP } from '../../constants';
 
 export interface StyledCellWrapperProps extends Omit<TColDef, 'id'> {
   $clickable?: boolean;
