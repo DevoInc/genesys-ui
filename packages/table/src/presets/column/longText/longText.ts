@@ -13,6 +13,7 @@ export const longText: TColDef = {
   cellExpand: TextExpand,
   rowHeight: ROW_HEIGHT_LG,
   cellFilter: TextFilter,
+  truncateLine: 2,
   context: {
     texts: {
       editorLabel: 'Edit this text content',

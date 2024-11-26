@@ -11,9 +11,12 @@ export const OptionsRenderer: React.FC<TCellRenderer> = ({
 }) => {
   const realValue = Array.isArray(value) ? value : [value];
   const options = (colDef?.context as TContextOptions)?.options ?? [];
+  const flexWrap =
+    (colDef?.context?.flexWrap as React.CSSProperties['flexWrap']) ?? 'nowrap';
+
   return (
     <Box overflow="hidden">
-      <TagGroup flexWrap="nowrap">
+      <TagGroup flexWrap={flexWrap}>
         {realValue.map((tag: string) => {
           const option = Object.entries(options).find(([k]) => k === tag);
           const optionParams = option ? (option[1] as TContextOption) : {};
