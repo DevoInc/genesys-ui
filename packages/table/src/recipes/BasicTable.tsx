@@ -51,7 +51,6 @@ export const BasicTable: React.FC<TableProps> = ({
       }),
     );
   };
-
   return (
     <Table
       id={id}
@@ -69,14 +68,30 @@ export const BasicTable: React.FC<TableProps> = ({
       }}
       onCellDoubleClick={({ colDef, rowDef, rowIndex }) => {
         if (colDef.editable) {
-          setEditModeCell({ colDef, rowDef, rowIndex });
+          setCellDefs(
+            updatedCellDef(
+              newCellDefs.map((cell) => {
+                return { ...cell, isEditMode: false };
+              }),
+              {
+                colId: colDef.id,
+                rowId: rowDef?.id || String(rowIndex),
+                isEditMode: true,
+              },
+            ),
+          );
         } else if (colDef.isExpandable) {
           setCellDefs(
-            updatedCellDef(newCellDefs, {
-              colId: colDef.id,
-              rowId: rowDef?.id || String(rowIndex),
-              isExpanded: true,
-            }),
+            updatedCellDef(
+              newCellDefs.map((cell) => {
+                return { ...cell, isExpanded: false };
+              }),
+              {
+                colId: colDef.id,
+                rowId: rowDef?.id || String(rowIndex),
+                isExpanded: true,
+              },
+            ),
           );
         }
         if (onCellDoubleClick) {
@@ -84,13 +99,26 @@ export const BasicTable: React.FC<TableProps> = ({
         }
       }}
       onCellKeyDown={({ event, colDef, rowDef, rowIndex }) => {
-        setKeyEditModeCell({
-          event,
-          key: 'Enter',
-          colDef,
-          rowDef,
-          rowIndex,
-        });
+        if (event.key === 'Enter') {
+          if (colDef.editable) {
+            setCellDefs(
+              updatedCellDef(newCellDefs, {
+                colId: colDef.id,
+                rowId: rowDef?.id || String(rowIndex),
+                isEditMode: true,
+              }),
+            );
+          } else if (colDef.isExpandable) {
+            setCellDefs(
+              updatedCellDef(newCellDefs, {
+                colId: colDef.id,
+                rowId: rowDef?.id || String(rowIndex),
+                isExpanded: true,
+              }),
+            );
+          }
+        }
+
         if (onCellKeyDown) {
           onCellKeyDown({ event, colDef, rowDef, rowIndex });
         }
