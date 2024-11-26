@@ -52,9 +52,9 @@ const BasicCmp = ({ data, colDefs }) => {
           }
           data={newData}
           colDefs={updateColDefsWithOrderStruct(colDefs, orderStruct)}
-          // defaultColDef={{
-          //   editable: true,
-          // }}
+          defaultColDef={{
+            isExpandable: true,
+          }}
           maxHeight="80vh"
           minWidth={2800}
           rowHeight={ROW_HEIGHT_MD}

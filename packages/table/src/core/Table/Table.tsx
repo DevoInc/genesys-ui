@@ -53,6 +53,7 @@ export const Table: React.FC<TableProps> = ({
   rowHeight = ROW_HEIGHT_MD,
   texts = { cell: { editTooltip: 'editcell'}},
   textsCell,
+  onCellClickAway
 }) => {
   const mergedColDefs: TColDef[] = React.useMemo(
     mergePresets(colDefs, columnPresets, defaultColDef),
@@ -86,7 +87,7 @@ export const Table: React.FC<TableProps> = ({
         onCellDoubleClick,
         onCellKeyUp,
         onCellKeyDown,
-
+        onCellClickAway,
         onHeaderCellClick,
         onHeaderCellDoubleClick,
         onHeaderCellKeyUp,

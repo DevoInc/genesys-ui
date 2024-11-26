@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useClickAway } from 'ahooks';
 
 import { GIZoomExpandMaximizeWindow } from '@devoinc/genesys-icons';
 import { Panel } from '@devoinc/genesys-ui';
@@ -16,8 +17,17 @@ export const CellExpandWrapper: React.FC<TCellWrapper> = ({
   row,
   rowIndex,
 }) => {
-  const { density } = React.useContext(TableContext);
+  const { density, onCellClickAway } = React.useContext(TableContext);
   const CellRenderer = colDef.cellRenderer;
+
+  const ref = React.useRef<HTMLButtonElement>(null);
+
+  useClickAway(() => {
+    if (cellDef?.isExpanded) {
+      onCellClickAway('isExpanded');
+    }
+  }, ref);
+
   return (
     <StyledCellExpandWrapper
       $density={density}
@@ -25,16 +35,22 @@ export const CellExpandWrapper: React.FC<TCellWrapper> = ({
       $isEditMode={cellDef?.isEditMode}
       $toEdge={colDef?.toEdge}
       $verAlign={colDef?.verticalAlign}
+      ref={ref}
     >
       {cellDef?.isExpanded && (
         <EditorFloatingWrapper>
           <Panel>
             <Panel.Body>
-              {String(
-                colDef.valueFormatter
-                  ? colDef.valueFormatter(data, colDef.context)
-                  : data,
-              )}
+              <CellRenderer
+                value={
+                  colDef.valueFormatter
+                    ? colDef.valueFormatter(data, colDef.context)
+                    : data
+                }
+                colDef={colDef}
+                rowIndex={rowIndex}
+                row={row}
+              />
             </Panel.Body>
           </Panel>
         </EditorFloatingWrapper>

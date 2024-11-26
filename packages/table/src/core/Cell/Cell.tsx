@@ -5,7 +5,11 @@ import { mergeStyles } from '@devoinc/genesys-ui';
 import type { TCellDef, TColDef, TRow, TRowDef } from '../../declarations';
 import { TableContext } from '../../context';
 import { StyledCell } from './StyledCell';
-import { CellWrapper, CellEditModeWrapper } from '../../wrapper';
+import {
+  CellWrapper,
+  CellEditModeWrapper,
+  CellExpandWrapper,
+} from '../../wrapper';
 
 interface CellProps {
   cellDef: TCellDef;
@@ -46,7 +50,9 @@ export const Cell: React.FC<CellProps> = ({
     ? colDef.cellWrapper
     : colDef.editable
       ? CellEditModeWrapper
-      : CellWrapper;
+      : colDef.isExpandable
+        ? CellExpandWrapper
+        : CellWrapper;
   return (
     <StyledCell
       aria-selected={cellDef?.isEditMode}

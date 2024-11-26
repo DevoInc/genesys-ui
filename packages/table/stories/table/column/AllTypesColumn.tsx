@@ -67,8 +67,6 @@ export const AllTypesColumn: TColDef[] = [
     headerName: 'Company',
     preset: 'text',
     sortable: true,
-    cellWrapper: CellExpandWrapper,
-    isExpandable: true,
   },
   {
     id: 'balance',
@@ -80,7 +78,6 @@ export const AllTypesColumn: TColDef[] = [
     id: 'status',
     headerName: 'Status',
     preset: 'options',
-    editable: true,
     context: {
       options: {
         done: { colorScheme: 'success' },
@@ -109,7 +106,6 @@ export const AllTypesColumn: TColDef[] = [
     id: 'tags',
     headerName: 'Tags',
     preset: 'options',
-    editable: true,
     context: {
       options: {
         Coworker: { colorScheme: 'success' },

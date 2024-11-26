@@ -44,6 +44,14 @@ export const BasicTable: React.FC<TableProps> = ({
     [defaultColDef, newColumnPresets, colDefs],
   );
 
+  const OnCellClickAway = (prop) => {
+    setCellDefs(
+      newCellDefs.map((cell) => {
+        return { ...cell, [prop]: false };
+      }),
+    );
+  };
+
   return (
     <Table
       id={id}
@@ -52,6 +60,7 @@ export const BasicTable: React.FC<TableProps> = ({
       onCellDataChange={onCellDataChange}
       cellDefs={newCellDefs}
       headerCellDefs={newHeaderCellDefs}
+      onCellClickAway={OnCellClickAway}
       onCellClick={({ event, colDef, rowDef, rowIndex }) => {
         selectedCells({ event, colDef, rowDef, rowIndex });
         if (onCellClick) {

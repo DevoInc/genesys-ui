@@ -232,7 +232,6 @@ export interface ITable {
   // cell
   cellDefs?: TCellDef[];
   onCellDataChange?: ({ colDef, value, rowIndex }) => void;
-  headerCellDefs?: THeaderCellDef[];
   textsCell?: ({
     colDef,
     rowDef,
@@ -391,4 +390,5 @@ export interface ITable {
     rowDef: TRowDef;
     rowIndex: number;
   }) => void;
+  onCellClickAway?: (string) => void;
 }

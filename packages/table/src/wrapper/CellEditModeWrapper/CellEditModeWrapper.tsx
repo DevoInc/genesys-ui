@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useClickAway } from 'ahooks';
 
 import { GIPencilEditFilled } from '@devoinc/genesys-icons';
 
@@ -16,9 +17,18 @@ export const CellEditModeWrapper: React.FC<TCellWrapper> = ({
   data,
   onCellDataChange,
 }) => {
-  const { density } = React.useContext(TableContext);
+  const { density, onCellClickAway } = React.useContext(TableContext);
   const CellRenderer: React.FC<TCellRenderer> = colDef.cellRenderer;
   const CellEditor: React.FC<TCellEditor> = colDef.cellEditor;
+
+  const ref = React.useRef<HTMLButtonElement>(null);
+
+  useClickAway(() => {
+    if (cellDef?.isEditMode) {
+      onCellClickAway('isEditMode');
+    }
+  }, ref);
+
   return (
     <StyledEditModeCellWrapper
       $density={density}
@@ -26,6 +36,7 @@ export const CellEditModeWrapper: React.FC<TCellWrapper> = ({
       $isEditMode={cellDef?.isEditMode}
       $toEdge={colDef?.toEdge}
       $verAlign={colDef?.verticalAlign}
+      ref={ref}
     >
       {cellDef?.isEditMode ? (
         <CellEditor
