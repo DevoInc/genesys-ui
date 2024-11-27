@@ -92,7 +92,7 @@ export const useOnDemandAfterRow = ({
     | (({ value, colDef, rowIndex, row }: TCellRenderer) => React.ReactNode);
   afterRowHeight: number;
 }) => {
-  const [selection, setSelection] = React.useState<string[] | number[]>(
+  const [selection, setSelection] = React.useState<(string | number)[]>(
     initialSelection || [],
   );
 
@@ -104,7 +104,7 @@ export const useOnDemandAfterRow = ({
       context: {
         selection,
         onClick: (rowId) => {
-          const nextSelection = updateSelection(selection)(rowId as string);
+          const nextSelection = updateSelection(selection)(rowId);
           setSelection(nextSelection);
 
           onRowDefsChange(

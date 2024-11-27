@@ -69,6 +69,7 @@ const OrderTable = () => {
 
   return (
     <BasicTable
+      id={'tableOrderStorie'}
       onSort={(colDef: TColDef) => {
         onSort(colDef.id);
       }}

@@ -62,6 +62,7 @@ const BasicCmp = () => {
     <Flex flexDirection="column" gap="cmp-md" height={'auto'}>
       <Flex.Item>
         <BasicTable
+          id={'tableCellStyleStorie'}
           data={initialData}
           colDefs={colDefsInitial}
           rowDefs={initalRowDefs}
