@@ -6,7 +6,7 @@ import { Panel } from '@devoinc/genesys-ui';
 
 import { StyledCellMarker } from '../StyledCellMarker';
 import { TableContext } from '../../context';
-import type { TCellWrapper } from '../declarations';
+import type { TCellWrapper } from '../../declarations';
 import { EditorFloatingWrapper } from '../../editors/components';
 import { StyledCellExpandWrapper } from './StyledCellExpandWrapper';
 

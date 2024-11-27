@@ -6,7 +6,7 @@ import type { TFilterContext, TFilter } from '../../declarations';
 import type { TOptionsFilterValue } from './declarations';
 import { FilterContainer } from '../common';
 import type { TContextOptions } from '../../renderers';
-import { getSelectOptions } from '../../helpers';
+import { getSelectOptions } from '../../helpers/selectOptions/getSelectOptions';
 
 export const OptionsFilter: React.FC<TFilter> = ({ colDef, onChange }) => {
   const context = colDef?.context as TContextOptions & TFilterContext;

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { CSSProp, DefaultTheme } from 'styled-components';
 
 import { DateContext } from './valueFormatters/date';
-import type { TCellWrapper } from './wrapper';
 
 export type TDensity = 'default' | 'compact' | 'comfortable';
 
@@ -32,6 +31,18 @@ export type TCoreDef = {
   context?: {
     [key: string]: unknown;
   };
+};
+
+export type TCellWrapper = {
+  colDef: TColDef;
+  rowIndex: number;
+  row: TRow;
+  cellDef: TCellDef;
+  data: unknown;
+  context?: {
+    [key: string]: unknown;
+  };
+  onCellDataChange: ({ colDef, value, rowIndex }) => void;
 };
 
 export type TColDef = TCoreDef & {

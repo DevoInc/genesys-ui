@@ -6,7 +6,7 @@ import { GIPencilEditFilled } from '@devoinc/genesys-icons';
 import { StyledEditModeCellWrapper } from './StyledEditModeCellWrapper';
 import { StyledCellMarker } from '../StyledCellMarker';
 import { TableContext } from '../../context';
-import type { TCellWrapper } from '../declarations';
+import type { TCellWrapper } from '../../declarations';
 import type { TCellEditor, TCellRenderer } from '../../declarations';
 
 export const CellEditModeWrapper: React.FC<TCellWrapper> = ({

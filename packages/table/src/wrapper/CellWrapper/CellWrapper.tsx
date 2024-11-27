@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { StyledCellWrapper } from './StyledCellWrapper';
 import { TableContext } from '../../context';
-import type { TCellWrapper } from '../declarations';
+import type { TCellWrapper } from '../../declarations';
 import { TextRenderer } from '../../renderers';
 
 export const CellWrapper: React.FC<TCellWrapper> = ({
