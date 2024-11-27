@@ -6,7 +6,6 @@ import { pseudoElementOverlayMixin } from '../../../../styled/mixins/pseudoEleme
 import { getPadding } from '../../helpers';
 import { type IChipContainerStyled } from './declarations';
 import { getSpacingPropCss } from '../../../../helpers';
-import { disabled } from 'happy-dom/lib/PropertySymbol';
 
 export interface StyledChipContainerProps extends IChipContainerStyled {
   // TODO: interface only for satisfy the type error with TS and inherit CSSProp

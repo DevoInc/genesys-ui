@@ -28,7 +28,6 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
 }) => {
   const {
     density,
-    onSort,
     resizableColumns,
     onHeaderCellDoubleClick,
     onHeaderCellKeyUp,

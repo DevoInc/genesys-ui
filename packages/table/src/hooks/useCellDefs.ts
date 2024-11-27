@@ -41,10 +41,8 @@ export const useCellDefs = (cellDefs) => {
   };
 
   const cancellAllEditModeCell = () => {
-    debugger;
     setCellDefs(
       newCellDefs.map((cell) => {
-        debugger;
         return { ...cell, isEditMode: false };
       }),
     );
