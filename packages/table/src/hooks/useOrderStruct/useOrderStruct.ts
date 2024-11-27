@@ -6,12 +6,12 @@ import { updateOrderStruct } from './updateOrderStruct';
 export const useOrderStruct = (initial: TOrderColumn[] = []) => {
   const [orderStruct, setOrderStruct] = React.useState<TOrderColumn[]>(initial);
 
-  const onSorting = React.useCallback(
+  const onSort = React.useCallback(
     (id: string) => {
       setOrderStruct(updateOrderStruct(orderStruct, id));
     },
     [orderStruct],
   );
 
-  return { orderStruct, onSorting };
+  return { orderStruct, onSort };
 };

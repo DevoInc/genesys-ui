@@ -26,11 +26,17 @@ export type TStateRow =
 
 // Definitions
 
-export type TColDef = {
-  /** Id of the column */
+export type TCoreDef = {
   id: string;
-  headerName?: string;
   preset?: string;
+  context?: {
+    [key: string]: unknown;
+  };
+};
+
+export type TColDef = TCoreDef & {
+  /** Id of the column */
+  headerName?: string;
 
   editable?: boolean;
   isExpandable?: boolean;
@@ -49,11 +55,8 @@ export type TColDef = {
         row,
       }: TCellRenderer) => React.ReactNode);
   cellExpand?:
-    | React.FC<TCellExpand>
-    | (({
-        value,
-        colDef
-      }: TCellExpand) => React.ReactNode);
+    | React.FC<TCellRenderer>
+    | (({ value, colDef }: TCellRenderer) => React.ReactNode);
   cellWrapper?:
     | React.FC<TCellWrapper>
     | (({
@@ -68,10 +71,6 @@ export type TColDef = {
     | (({ colDef }: THeaderRenderer) => React.ReactNode);
 
   cellFilter?: React.FC<TFilter> | (({ colDef }: TFilter) => React.ReactNode);
-
-  context?: {
-    [key: string]: unknown;
-  };
 
   sortable?: boolean;
   sort?: 'asc' | 'desc';
@@ -94,22 +93,10 @@ export type TColDef = {
   isHighlighted?: boolean;
 };
 
-export type TPresetRow =
-  | 'created'
-  | 'deleted'
-  | 'disabled'
-  | 'draggable'
-  | 'expanded'
-  | 'highlighted'
-  | 'isAfterRow'
-  | 'isDragging'
-  | 'modified'
-  | 'selected';
-
 export type TRowDef = {
   hide?: boolean;
   id: string;
-  preset?: TPresetRow;
+  preset?: string;
   height?: number;
   minHeight?: number;
   cellRenderer?:
@@ -211,11 +198,6 @@ export type TCellRenderer = {
   rowDef?: TRowDef;
 };
 
-export type TCellExpand = {
-  value: unknown;
-  colDef: TColDef;
-};
-
 export type THeaderRenderer = {
   colDef: TColDef;
 };
@@ -304,11 +286,13 @@ export interface ITable {
     cellDef,
     rowIndex,
     event,
+    filter,
   }: {
     colDef?: TColDef;
     rowDef?: TRowDef;
     cellDef?: TCellDef;
     rowIndex?: number;
+    filter?: boolean;
     event?: React.MouseEvent;
   }) => void;
   onCellClick?: ({

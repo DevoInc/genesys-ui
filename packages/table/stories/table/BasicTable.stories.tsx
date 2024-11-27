@@ -30,17 +30,17 @@ type Story = StoryObj<typeof BasicTable>;
 
 const BasicCmp = ({ data, colDefs }) => {
   const [newData, setNewData] = React.useState(data);
-  const { orderStruct, onSorting } = useOrderStruct([{ id: 'id', sort: 'desc' }]);
+  const { orderStruct, onSort } = useOrderStruct([{ id: 'id', sort: 'desc' }]);
   React.useEffect(() => {
     setNewData([...newData].sort(orderDataByOrderStruct(orderStruct)));
-  }, [onSorting]);
+  }, [onSort]);
   return (
     <Flex flexDirection="column" gap="cmp-md" height={'auto'}>
       <Flex.Item>
         <BasicTable
           id={'basicTableStorie'}
           onSort={(colDef: TColDef) => {
-            onSorting(colDef.id);
+            onSort(colDef.id);
           }}
           texts={{
             cell: {
@@ -70,7 +70,6 @@ const BasicCmp = ({ data, colDefs }) => {
               }),
             );
           }}
-          onSorting={onSorting}
         />
       </Flex.Item>
     </Flex>

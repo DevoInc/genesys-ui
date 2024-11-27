@@ -26,7 +26,7 @@ export const useRenderAfterRow = ({
   onRowDefsChange: (rowDefs: TRowDef[]) => void;
   colDefs: TColDef[];
 }) => {
-  const [selection, setSelection] = React.useState<string[] | number[]>(
+  const [selection, setSelection] = React.useState<(string | number)[]>(
     initialSelection || [],
   );
   const colDefs = [
@@ -37,7 +37,7 @@ export const useRenderAfterRow = ({
       context: {
         selection,
         onClick: (rowId) => {
-          const nextSelection = updateSelection(selection)(rowId as string);
+          const nextSelection = updateSelection(selection)(rowId);
           setSelection(nextSelection);
           const isOpened = nextSelection.includes(rowId);
 

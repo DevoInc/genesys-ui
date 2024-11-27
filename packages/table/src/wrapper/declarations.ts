@@ -6,6 +6,9 @@ export type TCellWrapper = {
   row: TRow;
   cellDef: TCellDef;
   data: unknown;
+  context?: {
+    [key: string]: unknown;
+  };
   onCellDataChange: ({ colDef, value, rowIndex }) => void;
 };
 

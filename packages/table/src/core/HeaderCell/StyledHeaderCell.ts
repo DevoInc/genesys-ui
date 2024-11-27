@@ -5,7 +5,7 @@ import { getSpacingPropCss } from '@devoinc/genesys-ui';
 
 import { CELL_ALIGN_MAP } from '../../constants';
 import { TDensity } from '../../declarations';
-import type { StyledCellWrapperProps } from '../Cell/StyledCellWrapper';
+import type { StyledCellWrapperProps } from '../../wrapper/CellWrapper/StyledCellWrapper';
 import { cellMixin } from '../helpers';
 
 interface StyledHeaderCellProps

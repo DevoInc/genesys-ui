@@ -45,16 +45,11 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
       title={title}
       tabIndex={headerCellDef?.isSelected ? 0 : 1}
       isSelected={headerCellDef?.isSelected}
-      onClick={
-        colDef.sortable && !filter
-          ? () => {
-              if (onSort && onHeaderCellClick) {
-                onSort(colDef);
-                onHeaderCellClick({ colDef });
-              }
-            }
-          : null
-      }
+      onClick={() => {
+        if (onHeaderCellClick) {
+          onHeaderCellClick({ colDef, filter });
+        }
+      }}
       onDoubleClick={() => {
         if (onHeaderCellDoubleClick) {
           onHeaderCellDoubleClick({ colDef });

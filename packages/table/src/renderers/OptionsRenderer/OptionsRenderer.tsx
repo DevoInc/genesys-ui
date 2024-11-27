@@ -3,16 +3,16 @@ import * as React from 'react';
 import { Box, Tag, TagGroup } from '@devoinc/genesys-ui';
 
 import type { TCellRenderer } from '../../declarations';
-import type { TContextOptions, TContextOption } from '../../facade';
+import type { TContextOptions, TContextOption } from './declarations';
 
 export const OptionsRenderer: React.FC<TCellRenderer> = ({
   value = [],
   colDef,
 }) => {
   const realValue = Array.isArray(value) ? value : [value];
-  const options = (colDef?.context as TContextOptions)?.options ?? [];
-  const flexWrap =
-    (colDef?.context?.flexWrap as React.CSSProperties['flexWrap']) ?? 'nowrap';
+  const context = (colDef?.context as TContextOptions) ?? {};
+  const options = context?.options ?? [];
+  const flexWrap = context?.flexWrap ?? 'nowrap';
 
   return (
     <Box overflow="hidden">

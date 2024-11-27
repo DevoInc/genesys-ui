@@ -18,20 +18,14 @@ export const BasicTable: React.FC<TableProps> = ({
   onCellKeyDown,
   cellDefs = [],
   defaultColDef,
-  onSorting,
+  onSort,
   onCellDataChange,
   id,
   ...props
 }) => {
-  const {
-    newCellDefs,
-    selectedCells,
-    setEditModeCell,
-    setKeyEditModeCell,
-    setCellDefs,
-  } = useCellDefs(cellDefs);
+  const { newCellDefs, selectedCells, setCellDefs } = useCellDefs(cellDefs);
 
-  const { newHeaderCellDefs, selectedHeaderCell, sortColumn } =
+  const { newHeaderCellDefs, selectedHeaderCell } =
     useHeaderCellDefs(headerCellDefs);
 
   const newColumnPresets = [
@@ -128,13 +122,18 @@ export const BasicTable: React.FC<TableProps> = ({
           //await navigator.clipboard.writeText(newCellDefs);
         }
       }}
-      onHeaderCellClick={({ colDef }) => {
+      onHeaderCellClick={({ colDef, filter }) => {
+        if (colDef.sortable && !filter) {
+          onSort(colDef);
+        }
         selectedHeaderCell({
           colId: colDef.id,
         });
       }}
       onHeaderCellKeyDown={({ event, colDef }) => {
-        sortColumn({ event, key: 'Enter', colDef, onSort: onSorting });
+        if (event.key === 'Enter') {
+          onSort(colDef);
+        }
       }}
       columnPresets={newColumnPresets}
       rowPresets={[...(rowPresets ?? []), ...Object.values(listRowPresets)]}

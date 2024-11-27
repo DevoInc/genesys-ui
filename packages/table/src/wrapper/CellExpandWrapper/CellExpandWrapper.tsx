@@ -19,7 +19,7 @@ export const CellExpandWrapper: React.FC<TCellWrapper> = ({
 }) => {
   const { density, onCellClickAway } = React.useContext(TableContext);
   const CellRenderer = colDef.cellRenderer;
-  const CellExpand = colDef.cellExpand;
+  const CellExpand = colDef?.cellExpand ?? CellRenderer;
 
   const ref = React.useRef<HTMLButtonElement>(null);
 
@@ -41,30 +41,17 @@ export const CellExpandWrapper: React.FC<TCellWrapper> = ({
       {cellDef?.isExpanded ? (
         <EditorFloatingWrapper>
           <Panel>
-            <Panel.Body>
-              {CellExpand ? (
-                <CellExpand
-                  value={
-                    colDef.valueFormatter
-                      ? colDef.valueFormatter(data, colDef.context)
-                      : data
-                  }
-                  colDef={colDef}
-                  rowIndex={rowIndex}
-                  row={row}
-                />
-              ) : (
-                <CellRenderer
-                  value={
-                    colDef.valueFormatter
-                      ? colDef.valueFormatter(data, colDef.context)
-                      : data
-                  }
-                  colDef={colDef}
-                  rowIndex={rowIndex}
-                  row={row}
-                />
-              )}
+            <Panel.Body style={{ textAlign: 'left' }}>
+              <CellExpand
+                value={
+                  colDef.valueFormatter
+                    ? colDef.valueFormatter(data, colDef.context)
+                    : data
+                }
+                colDef={colDef}
+                rowIndex={rowIndex}
+                row={row}
+              />
             </Panel.Body>
           </Panel>
         </EditorFloatingWrapper>
