@@ -18,7 +18,7 @@ describe('getOptionsFromData', () => {
 
   test.each(cases)('%s', (_title, initial, id, expected) => {
     const { result } = renderHook(() => useOrderStruct(initial));
-    renderHook(() => result.current.onSorting(id));
+    renderHook(() => result.current.onSort(id));
     expect(result.current.orderStruct).toEqual(expected);
   });
 });
