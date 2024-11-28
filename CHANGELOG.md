@@ -1,5 +1,11 @@
 # Changelog
 
+## [13.9.0](https://github.com/DevoInc/genesys-ui/compare/v13.8.0...v13.9.0) (2024-11-28)
+
+### Features
+
+* **table:** add cell expand ([#107](https://github.com/DevoInc/genesys-ui/issues/107)) ([e7a3eb4](https://github.com/DevoInc/genesys-ui/commit/e7a3eb42f61db7da4fea25a9d4b1c44008d9e9a0)), closes [#102](https://github.com/DevoInc/genesys-ui/issues/102)
+
 ## [13.8.0](https://github.com/DevoInc/genesys-ui/compare/v13.7.1...v13.8.0) (2024-11-21)
 
 
