@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { TColDef } from '../../declarations';
+import type { TColDef, THeaderCellDef } from '../../declarations';
 import { TableContext } from '../../context/TableContext';
 
 import { OrderIndicator } from './OrderIndicator';
@@ -14,6 +14,7 @@ interface HeaderCellProps {
   children: React.ReactNode;
   title?: string;
   filter?: boolean;
+  headerCellDef?: THeaderCellDef;
 }
 
 export const HeaderCell: React.FC<HeaderCellProps> = ({
@@ -22,9 +23,17 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   offsetX,
   children,
   title,
-  filter
+  filter,
+  headerCellDef,
 }) => {
-  const { density, onSort, resizableColumns } = React.useContext(TableContext);
+  const {
+    density,
+    resizableColumns,
+    onHeaderCellDoubleClick,
+    onHeaderCellKeyUp,
+    onHeaderCellKeyDown,
+    onHeaderCellClick,
+  } = React.useContext(TableContext);
 
   return (
     <StyledHeaderCell
@@ -33,15 +42,28 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
       $offsetX={offsetX}
       $density={density}
       title={title}
-      onClick={
-        colDef.sortable && !filter
-          ? () => {
-              if (onSort) {
-                onSort(colDef);
-              }
-            }
-          : null
-      }
+      tabIndex={headerCellDef?.isSelected ? 0 : 1}
+      isSelected={headerCellDef?.isSelected}
+      onClick={() => {
+        if (onHeaderCellClick) {
+          onHeaderCellClick({ colDef, filter });
+        }
+      }}
+      onDoubleClick={() => {
+        if (onHeaderCellDoubleClick) {
+          onHeaderCellDoubleClick({ colDef });
+        }
+      }}
+      onKeyUp={(event) => {
+        if (onHeaderCellKeyUp) {
+          onHeaderCellKeyUp({ event, colDef });
+        }
+      }}
+      onKeyDown={(event) => {
+        if (onHeaderCellKeyDown) {
+          onHeaderCellKeyDown({ event, colDef });
+        }
+      }}
     >
       {children}
       {colDef.sortable && !filter && <OrderIndicator colDef={colDef} />}

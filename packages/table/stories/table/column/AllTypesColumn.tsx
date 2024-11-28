@@ -2,6 +2,7 @@ import { GIEyeViewFilled, GIPencilEdit } from '@devoinc/genesys-icons';
 import { Button, Menu, Popover } from '@devoinc/genesys-ui';
 import React from 'react';
 import { TActionContext, TColDef } from '../../../src';
+import { ROW_HEIGHT_MD } from '../../../src/constants';
 
 export const AllTypesColumn: TColDef[] = [
   {
@@ -31,7 +32,7 @@ export const AllTypesColumn: TColDef[] = [
               <Menu.Item
                 label="Option 1"
                 onClick={() => {
-                  // eslint-disable-next-line no-console
+                  //eslint-disable-next-line no-console
                   console.log(colDef);
                 }}
               />
@@ -45,7 +46,6 @@ export const AllTypesColumn: TColDef[] = [
     id: 'booleanValue',
     headerName: 'Boolean value',
     preset: 'boolean',
-    editable: true,
     sortable: true,
   },
   {
@@ -78,7 +78,6 @@ export const AllTypesColumn: TColDef[] = [
     id: 'status',
     headerName: 'Status',
     preset: 'options',
-    editable: true,
     context: {
       options: {
         done: { colorScheme: 'success' },
@@ -88,6 +87,7 @@ export const AllTypesColumn: TColDef[] = [
       },
     },
     sortable: true,
+    editable: true,
   },
   {
     id: 'picture',
@@ -107,7 +107,6 @@ export const AllTypesColumn: TColDef[] = [
     id: 'tags',
     headerName: 'Tags',
     preset: 'options',
-    editable: true,
     context: {
       options: {
         Coworker: { colorScheme: 'success' },
@@ -134,8 +133,11 @@ export const AllTypesColumn: TColDef[] = [
   {
     id: 'quote',
     headerName: 'Favourite quote',
-    preset: 'text',
+    preset: 'longText',
+    rowHeight: ROW_HEIGHT_MD,
+    truncateLine: 1,
     sortable: true,
+    editable: true,
   },
   {
     id: 'address',

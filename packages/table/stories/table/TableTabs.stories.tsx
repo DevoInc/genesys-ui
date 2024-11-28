@@ -141,12 +141,20 @@ const DeletingTab = () => {
       <AppLayout.Content>
         {activeTab === 0 && (
           <PanelSection title={'Users'} subtitle={'Registro de usuarios'}>
-            <BasicTable data={initialData1} colDefs={colDefsInitial1} />
+            <BasicTable
+              id={'tableDeletingTabStorie-tab1'}
+              data={initialData1}
+              colDefs={colDefsInitial1}
+            />
           </PanelSection>
         )}
         {activeTab === 1 && (
           <PanelSection title={'Info'} subtitle={'Informacion de usuarios'}>
-            <BasicTable data={initialData2} colDefs={colDefsInitial2} />
+            <BasicTable
+              id={'tableDeletingTabStorie-tab2'}
+              data={initialData2}
+              colDefs={colDefsInitial2}
+            />
           </PanelSection>
         )}
       </AppLayout.Content>
@@ -190,6 +198,7 @@ const MaintainingTab = () => {
       </AppLayout.Bar>
       <AppLayout.Content>
         <BasicTable
+          id={'tableMaintainingTabStorie'}
           data={activeTab === 0 ? initialData1 : initialData2}
           colDefs={activeTab === 0 ? colDefsInitial1 : colDefsInitial2}
         />

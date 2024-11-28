@@ -1,0 +1,45 @@
+import { Meta, Canvas } from '@storybook/blocks';
+
+import * as Stories from './CellExpand.stories';
+
+<Meta of={Stories} />
+
+# Cell expand
+
+When a table cell contains a lot of text, it might not fit within the default cell size. The **"expanded mode"** is a feature that allows you to increase the height of the cell so that all the text is visible without having to scroll horizontally. This is particularly useful for cells containing long descriptions, formulas, or any other type of data that exceeds the standard cell size.
+
+<Canvas of={Stories.CellExpand} />
+
+To define a column as expandable, we must use the isExpandable property in the column definition. If you want the expandable cell to represent something custom, you can use the cellExpand property.
+
+```js
+cellExpand?:
+    | React.FC<TCellExpand>
+    | (({
+        value,
+        colDef
+      }: TCellExpand) => React.ReactNode);
+```
+
+## Custom example
+
+```js
+// You can see the result in the name column of the example above.
+{
+    id: 'name',
+    headerName: 'Name',
+    preset: 'text',
+    sortable: true,
+    isExpandable: true,
+    cellExpand: ({ value }) => {
+      return (
+        <div style={{ backgroundColor: 'lightgreen', color: 'white' }}>
+          {value}
+        </div>
+      );
+    },
+  },
+```
+
+
+

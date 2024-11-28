@@ -31,16 +31,22 @@ export const Row: React.FC<RowProps> = ({
     stripedFn,
     highlightRowOnHover,
     highlightRowOnHoverFn,
+    onRowDoubleClick,
+    onRowKeyUp,
+    onRowKeyDown,
   } = React.useContext(TableContext);
   const theme = useTheme();
 
   const rowDef = (getRowDef(rowDefs, rowData.id as string) ?? {}) as TRowDef;
-  const stripedConditional = () => (stripedFn(rowIndex, rowData) ? 'even' : 'odd');
+  const stripedConditional = () =>
+    stripedFn(rowIndex, rowData) ? 'even' : 'odd';
   return (
     <StyledTableRow
       $even={striped ? stripedConditional() : 'odd'}
       $hide={rowDef?.hide ?? false}
-      $highlightRowOnHover={highlightRowOnHoverFn(rowDef) && highlightRowOnHover}
+      $highlightRowOnHover={
+        highlightRowOnHoverFn(rowDef) && highlightRowOnHover
+      }
       $striped={striped}
       css={
         typeof rowDef?.style === 'function'
@@ -57,6 +63,21 @@ export const Row: React.FC<RowProps> = ({
         transform: `translateY(${start}px)`,
       }}
       aria-rowindex={rowIndex}
+      onDoubleClick={() => {
+        if (onRowDoubleClick) {
+          onRowDoubleClick({ rowDef, rowIndex });
+        }
+      }}
+      onKeyUp={(event) => {
+        if (onRowKeyUp) {
+          onRowKeyUp({ event, rowDef, rowIndex });
+        }
+      }}
+      onKeyDown={(event) => {
+        if (onRowKeyDown) {
+          onRowKeyDown({ event, rowDef, rowIndex });
+        }
+      }}
     >
       {rowDef?.cellRenderer ? (
         <Cell
@@ -80,7 +101,11 @@ export const Row: React.FC<RowProps> = ({
         />
       ) : (
         colDefs.map((colDef, index) => {
-          const cellDef = getCellDef(cellDefs, colDef.id, rowDef.id);
+          const cellDef = getCellDef(
+            cellDefs,
+            colDef.id,
+            rowDef.id || String(rowIndex),
+          );
           const virtualColumn = columnVirtualizer
             .getVirtualItems()
             .find((col) => col.key === colDef.id);

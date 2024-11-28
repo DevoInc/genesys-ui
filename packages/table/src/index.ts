@@ -10,3 +10,4 @@ export * from './valueFormatters';
 export * from './recipes';
 export * from './helpers';
 export * from './declarations';
+export * from './wrapper';

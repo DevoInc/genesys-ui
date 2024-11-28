@@ -1,13 +1,13 @@
 import { describe, test, expect } from 'vitest';
 
-import type { TPresetRow, TRowDef } from '../../../declarations';
+import type { TRowDef } from '../../../declarations';
 import { addPresetToRowDefs } from './addPresetRowDefs';
 
 describe('helpers', () => {
   describe('definitions', () => {
     describe('row', () => {
       describe('addPresetToRowDefs', () => {
-        const cases: [string, TRowDef[], string, TPresetRow, TRowDef[]][] = [
+        const cases: [string, TRowDef[], string, string, TRowDef[]][] = [
           [
             'should add the preset to an existing row',
             [{ id: '1' }, { id: '2' }],

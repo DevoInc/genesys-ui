@@ -1,21 +1,20 @@
 import type {
-  TColDef,
-  TColPreset,
+  TCoreDef,
   TDefaultColDef,
   TDefaultRowDef,
-  TRowDef,
-  TRowPreset,
 } from '../../declarations';
 
 export const mergePresets =
   (
-    definitions: TRowDef[] | TColDef[],
-    presets: TRowPreset[] | TColPreset[],
+    definitions: TCoreDef[],
+    presets: TCoreDef[],
     defaultDefinitions: TDefaultColDef | TDefaultRowDef,
   ) =>
   () =>
-    definitions.map((rowOrCol: TRowDef | TColDef) => {
-      const preset = presets.find((element) => element.id === rowOrCol.preset);
+    definitions.map((rowOrCol: TCoreDef) => {
+      const preset = presets.find(
+        (element) => element.id === rowOrCol.preset,
+      ) ?? { context: {} };
       return {
         ...defaultDefinitions,
         ...preset,

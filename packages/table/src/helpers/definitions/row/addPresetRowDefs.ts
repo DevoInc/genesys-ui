@@ -1,9 +1,9 @@
-import { TPresetRow, TRowDef } from 'packages/table/src/declarations';
+import type { TRowDef } from '../../../declarations';
 
 export const addPresetToRowDefs = (
   rowDefs: TRowDef[],
   id: string,
-  preset: TPresetRow,
+  preset: string,
 ) => {
   return rowDefs?.findIndex((row) => row.id === id) !== -1
     ? rowDefs?.map((row) => {
