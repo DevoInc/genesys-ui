@@ -32,7 +32,7 @@
   "peerDependencies": {
     "@devoinc/genesys-icons": "4.x.x || 5.x.x || 6.x.x",
     "@devoinc/genesys-ui": "^13.9.0",
-    "date-fns": "2.x.x",
+    "date-fns": "4.x.x",
     "react": "16.x || 17.x || 18.x",
     "react-popper": "2.x.x",
     "styled-components": "5.x.x || 6.x.x"

@@ -30,14 +30,14 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "@devoinc/genesys-icons": "^4.x.x || ^5.x.x || ^6.x.x",
+    "@devoinc/genesys-icons": "4.x.x || 5.x.x || 6.x.x",
     "@devoinc/genesys-ui": "^13.9.0",
     "@devoinc/genesys-ui-datetime": "^13.9.0",
     "@tanstack/react-virtual": "3.x.x",
-    "date-fns": "2.x.x",
-    "date-fns-tz": "2.x.x",
+    "date-fns": "4.x.x",
+    "@date-fns/tz": "1.x.x",
     "react": "16.x || 17.x || 18.x",
-    "styled-components": "5.x || ^6.1.9"
+    "styled-components": "5.x.x || 6.x.x"
   },
   "engine": {
     "node": ">=16",
