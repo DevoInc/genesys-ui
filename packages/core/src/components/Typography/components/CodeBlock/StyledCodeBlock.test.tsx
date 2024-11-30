@@ -20,7 +20,7 @@ describe('components', () => {
           font-weight: 500;
           text-align: left;
           letter-spacing: 0px;
-          color: #48545c;
+          color: #48545C;
           display: block;
           word-break: break-word;
         `);
