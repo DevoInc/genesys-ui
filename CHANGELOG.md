@@ -1,5 +1,7 @@
 # Changelog
 
+## [14.0.0](https://github.com/DevoInc/genesys-ui/compare/v13.9.0...v14.0.0) (2024-12-02)
+
 ## [13.9.0](https://github.com/DevoInc/genesys-ui/compare/v13.8.0...v13.9.0) (2024-11-28)
 
 ### Features
