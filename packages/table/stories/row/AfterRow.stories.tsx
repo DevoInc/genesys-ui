@@ -105,6 +105,7 @@ const BasicCmp = ({
     <Flex flexDirection="column" gap="cmp-md" height={'auto'}>
       <Flex.Item>
         <BasicTable
+          id={'tableAfterRowStorie'}
           data={dataWithAfterRows}
           colDefs={colDefs}
           rowDefs={rowDefs}
@@ -147,7 +148,12 @@ const BasicCmpNoRenderAfterRow = ({
   return (
     <Flex flexDirection="column" gap="cmp-md" height={'auto'}>
       <Flex.Item>
-        <BasicTable data={data} colDefs={colDefs} rowDefs={rowDefs} />
+        <BasicTable
+          id={'tableAfterRowNoRenderStorie'}
+          data={data}
+          colDefs={colDefs}
+          rowDefs={rowDefs}
+        />
       </Flex.Item>
     </Flex>
   );
@@ -202,6 +208,7 @@ export const AfterRowTable: Story = {
           }}
         >
           <BasicTable
+            id={'tableAfterRowCaseStorie'}
             defaultColDef={{
               editable: false,
               sortable: true,
@@ -231,10 +238,8 @@ export const Iframe: Story = {
             height="315"
             src="https://www.youtube.com/embed/oBgDzCTVt64?si=BooD1x0Qm1pFS65o"
             title="YouTube video player"
-            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
+            referrerPolicy="strict-origin-when-cross-origin"
           ></iframe>
         </div>
       )}

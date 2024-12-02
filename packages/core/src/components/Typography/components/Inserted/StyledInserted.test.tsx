@@ -13,7 +13,7 @@ describe('components', () => {
         );
 
         expect(container.getElementsByTagName('ins')[0]).toHaveStyle(`
-          background: #e1faf2;
+          background: #E1FAF2;
           color: inherit;
           text-decoration: none;
         `);

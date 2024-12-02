@@ -5,9 +5,9 @@ import type { ITable } from '../declarations';
 export interface ITableContext extends ITable {}
 
 export const TableContext = React.createContext<ITableContext>({
+  id: '',
   density: 'default',
   data: [],
   striped: false,
-  highlightColumnsOnHover: false,
   resizableColumns: false,
 });

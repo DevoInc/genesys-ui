@@ -8,6 +8,7 @@ interface StyledCellProps {
   // TODO: interface only for satisfy the type error with TS and inherit CSSProp
   css: CSSProp;
   $isHighlighted: boolean;
+  $isSelected: boolean;
 }
 
 export const StyledCell = styled.td<StyledCellProps>`
@@ -32,4 +33,15 @@ export const StyledCell = styled.td<StyledCellProps>`
       `
     );
   }}
+
+  ${({ $isSelected, theme }) => {
+    const tokens = theme.cmp.table.cellClickableWrapper;
+    const boxShadow = tokens.elevation.boxShadow;
+    return css`
+      ${$isSelected &&
+      css`
+        box-shadow: ${boxShadow};
+      `}
+    `;
+  }};
 `;

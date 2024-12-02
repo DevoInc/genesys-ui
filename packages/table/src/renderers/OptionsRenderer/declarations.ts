@@ -8,6 +8,7 @@ export type TContextOption = {
 };
 
 export type TContextOptions = {
+  flexWrap?: React.CSSProperties['flexWrap'];
   options?: {
     [key: string]: TContextOption;
   };

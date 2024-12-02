@@ -19,7 +19,7 @@ describe('components', () => {
             font-weight: 300;
             text-align: left;
             letter-spacing: 0px;
-            color: #48545c;
+            color: #48545C;
             padding-top: 0px;
             padding-right: 0px;
             padding-bottom: 0px;

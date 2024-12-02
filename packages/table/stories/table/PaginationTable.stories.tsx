@@ -55,8 +55,6 @@ export const Basic: Story = {
     (() => {
       const [page, setPage] = React.useState(0);
       const [pageSize, setPageSize] = React.useState(10);
-
-      const data = dataRangePagination(initialData, page, pageSize);
       return (
         <>
           <Pagination
@@ -76,7 +74,8 @@ export const Basic: Story = {
           <Flex flexDirection="column" gap="cmp-md" height={'auto'}>
             <Flex.Item>
               <BasicTable
-                data={data}
+                id={'tablePaginationStorie'}
+                data={dataRangePagination(initialData, page, pageSize) as TData}
                 colDefs={colDefsInitial}
                 rowDefs={initalRowDefs}
               />

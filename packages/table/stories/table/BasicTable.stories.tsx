@@ -33,7 +33,7 @@ const BasicCmp = ({ data, colDefs }) => {
   const { orderStruct, onSort } = useOrderStruct([{ id: 'id', sort: 'desc' }]);
   React.useEffect(() => {
     setNewData([...newData].sort(orderDataByOrderStruct(orderStruct)));
-  }, []);
+  }, [onSort]);
   return (
     <Flex flexDirection="column" gap="cmp-md" height={'auto'}>
       <Flex.Item>
@@ -53,7 +53,7 @@ const BasicCmp = ({ data, colDefs }) => {
           data={newData}
           colDefs={updateColDefsWithOrderStruct(colDefs, orderStruct)}
           defaultColDef={{
-            editable: false,
+            isExpandable: true,
           }}
           maxHeight="80vh"
           minWidth={2800}

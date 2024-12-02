@@ -33,14 +33,20 @@ const BulkExample = () => {
   const { orderStruct, onSort } = useOrderStruct([
     { id: 'text', sort: 'desc' },
   ]);
-  const dataOrdered = [...initialData].sort(orderDataByOrderStruct(orderStruct));
+  const dataOrdered = [...initialData].sort(
+    orderDataByOrderStruct(orderStruct),
+  );
 
-  const { rowSelection, toggle } = useRowGrouping({ data: dataOrdered, initialSelection: [] });
+  const { rowSelection, toggle } = useRowGrouping({
+    data: dataOrdered,
+    initialSelection: [],
+  });
 
   return (
     <Flex flexDirection="column" gap="cmp-md">
       <Flex.Item>
         <Table
+          id={'tableBulkExample'}
           data={dataOrdered}
           onSort={(colDef: TColDef) => {
             onSort(colDef.id);
@@ -55,9 +61,14 @@ const BulkExample = () => {
                 onRowGroupingChange: (rowIndex) => {
                   toggle(rowIndex);
                 },
-              }
+              },
             },
-            { id: 'text', cellRenderer: TextRenderer, headerName: 'Text', sortable: true },
+            {
+              id: 'text',
+              cellRenderer: TextRenderer,
+              headerName: 'Text',
+              sortable: true,
+            },
           ]}
         />
       </Flex.Item>

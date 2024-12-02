@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui",
-  "version": "13.7.1",
+  "version": "14.0.0",
   "description": "",
   "type": "module",
   "types": "./dist/index.d.ts",
@@ -30,8 +30,8 @@
     "@devoinc/genesys-icons": "4.x.x || 5.x.x || 6.x.x",
     "@devoinc/genesys-tokens-types": "7.x.x",
     "@dnd-kit/core": "6.x.x",
-    "@dnd-kit/modifiers": "6.x.x",
-    "@dnd-kit/sortable": "7.x.x",
+    "@dnd-kit/modifiers": "8.x.x",
+    "@dnd-kit/sortable": "9.x.x",
     "@popperjs/core": "2.x.x",
     "ahooks": "3.x.x",
     "polished": "4.x.x",
@@ -41,15 +41,15 @@
     "react-grid-system": "8.x.x",
     "react-popper": "2.x.x",
     "react-select": "5.x.x",
-    "react-toastify": "8.x.x || 9.x.x",
+    "react-toastify": "8.x.x || 9.x.x || 10.x.x",
     "react-windowed-select": "5.1.0",
     "styled-components": "5.x.x || 6.x.x"
   },
-  "author": "",
+  "author": "Devo, Inc. Quvis Team (https://github.com/orgs/DevoInc/teams/quvis)",
   "license": "MIT",
   "engine": {
-    "node": ">=16",
-    "npm": ">=7"
+    "node": ">=18",
+    "npm": ">=8"
   },
   "repository": {
     "type": "git",

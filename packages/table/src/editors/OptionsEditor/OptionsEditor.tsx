@@ -5,7 +5,8 @@ import { SelectControl } from '@devoinc/genesys-ui';
 import { ROW_HEIGHT_MD } from '../../constants';
 import type { TCellEditor } from '../../declarations';
 import { TableContext } from '../../context';
-import { type TContextOptions, getSelectOptions } from '../../facade';
+import { getSelectOptions } from '../../helpers';
+import type { TContextOptions } from '../../renderers';
 import { TContextTextEditorParams } from '../TextEditor';
 
 export const OptionsEditor: React.FC<TCellEditor> = ({
@@ -21,7 +22,7 @@ export const OptionsEditor: React.FC<TCellEditor> = ({
       defaultMenuIsOpen
       hideSelectedOptions={!isMultiple}
       onChange={(event) => {
-        onChange(event.value)
+        onChange(event.value);
       }}
       value={String(value)}
       creatable
@@ -32,7 +33,8 @@ export const OptionsEditor: React.FC<TCellEditor> = ({
       autoFocus
       size={density === 'compact' && rowHeight <= ROW_HEIGHT_MD ? 'sm' : 'md'}
       aria-label={
-        (colDef?.context as TContextTextEditorParams)?.texts?.editorLabel ?? value as string
+        (colDef?.context as TContextTextEditorParams)?.texts?.editorLabel ??
+        (value as string)
       }
     />
   );

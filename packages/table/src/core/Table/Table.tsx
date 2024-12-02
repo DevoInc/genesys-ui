@@ -15,6 +15,7 @@ export const Table: React.FC<TableProps> = ({
   colDefs = [],
   rowDefs = [],
   cellDefs = [],
+  headerCellDefs = [],
   columnPresets = [],
   rowPresets = [],
   density = 'default',
@@ -26,8 +27,23 @@ export const Table: React.FC<TableProps> = ({
   showFilters,
   onSort,
   onFilter,
+
   onCellMouseEnter,
   onCellMouseLeave,
+  onCellClick,
+  onCellDoubleClick,
+  onCellKeyUp,
+  onCellKeyDown,
+
+  onHeaderCellClick,
+  onHeaderCellDoubleClick,
+  onHeaderCellKeyUp,
+  onHeaderCellKeyDown,
+
+  onRowDoubleClick,
+  onRowKeyUp,
+  onRowKeyDown,
+
   highlightRowOnHover,
   highlightRowOnHoverFn,
   onCellDataChange,
@@ -37,6 +53,7 @@ export const Table: React.FC<TableProps> = ({
   rowHeight = ROW_HEIGHT_MD,
   texts = { cell: { editTooltip: 'editcell'}},
   textsCell,
+  onCellClickAway
 }) => {
   const mergedColDefs: TColDef[] = React.useMemo(
     mergePresets(colDefs, columnPresets, defaultColDef),
@@ -62,14 +79,30 @@ export const Table: React.FC<TableProps> = ({
         resizableColumns,
         onSort,
         onFilter,
+
         onCellMouseEnter,
         onCellMouseLeave,
         onCellDataChange,
+        onCellClick,
+        onCellDoubleClick,
+        onCellKeyUp,
+        onCellKeyDown,
+        onCellClickAway,
+        onHeaderCellClick,
+        onHeaderCellDoubleClick,
+        onHeaderCellKeyUp,
+        onHeaderCellKeyDown,
+
+        onRowDoubleClick,
+        onRowKeyUp,
+        onRowKeyDown,
+
         highlightRowOnHover,
         highlightRowOnHoverFn,
         rowHeight,
         rowDefs: mergedRowDefs,
         cellDefs,
+        headerCellDefs,
         texts,
         textsCell,
       }}

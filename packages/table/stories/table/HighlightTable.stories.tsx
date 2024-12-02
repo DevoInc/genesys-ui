@@ -92,17 +92,15 @@ const colDefs = [
 export default meta;
 type Story = StoryObj<typeof BasicTable>;
 
-const BasicCmp = ({highlightRowOnHover, highlightColumnOnHover}) => {
-  const {
-    newColDefs,
-    onCellMouseEnter,
-    onCellMouseLeave,
-  } = useSetHighlight(colDefs);
+const BasicCmp = ({ highlightRowOnHover, highlightColumnOnHover }) => {
+  const { newColDefs, onCellMouseEnter, onCellMouseLeave } =
+    useSetHighlight(colDefs);
 
   return (
     <Flex flexDirection="column" gap="cmp-md" height={'auto'}>
       <Flex.Item>
         <BasicTable
+          id={'tableHighlightStorie'}
           data={data}
           colDefs={highlightColumnOnHover ? newColDefs : colDefs}
           onCellMouseEnter={highlightColumnOnHover && onCellMouseEnter}
@@ -117,18 +115,18 @@ const BasicCmp = ({highlightRowOnHover, highlightColumnOnHover}) => {
 
 export const Columns: Story = {
   render: () => (
-    <BasicCmp highlightRowOnHover={false} highlightColumnOnHover={true}/>
+    <BasicCmp highlightRowOnHover={false} highlightColumnOnHover={true} />
   ),
 };
 
 export const Row: Story = {
   render: () => (
-    <BasicCmp highlightRowOnHover={true} highlightColumnOnHover={false}/>
+    <BasicCmp highlightRowOnHover={true} highlightColumnOnHover={false} />
   ),
 };
 
 export const RowColumn: Story = {
   render: () => (
-    <BasicCmp highlightRowOnHover={true} highlightColumnOnHover={true}/>
+    <BasicCmp highlightRowOnHover={true} highlightColumnOnHover={true} />
   ),
 };

@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import type { IIcon } from '@devoinc/genesys-icons';
 import type { IconButtonProps } from '@devoinc/genesys-ui';
 
 export type TActionMenuEntry = {
@@ -14,7 +13,7 @@ export type TActionMenuEntry = {
 export type TQuickActionMenuEntry = {
   badgeText?: IconButtonProps['badgeText'];
   hasBadge?: IconButtonProps['hasBadge'];
-  Icon?: React.FC<IIcon>;
+  Icon?: React.ReactNode;
   onClick?: (rowIndex: number, event: React.MouseEvent) => void;
 };
 

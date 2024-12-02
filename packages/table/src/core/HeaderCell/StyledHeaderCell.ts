@@ -1,11 +1,11 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { getSpacingPropCss } from '@devoinc/genesys-ui';
 
 import { CELL_ALIGN_MAP } from '../../constants';
 import { TDensity } from '../../declarations';
-import type { StyledCellWrapperProps } from '../Cell/StyledCellWrapper';
+import type { StyledCellWrapperProps } from '../../wrapper/CellWrapper/StyledCellWrapper';
 import { cellMixin } from '../helpers';
 
 interface StyledHeaderCellProps
@@ -14,12 +14,19 @@ interface StyledHeaderCellProps
   $offsetX?: number;
   $density?: TDensity;
   sortable?: boolean;
+  isSelected?: boolean;
 }
 
 export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
   left: 0;
   height: 100%;
   ${({ theme }) => cellMixin({ theme })}
+  ${({ theme, isSelected }) =>
+    isSelected &&
+    css`
+      background-color: ${theme.cmp.table.cell.color.background.backdrop.hovered
+        .base};
+    `};
   justify-content: ${({ $horAlign }) =>
     $horAlign
       ? (CELL_ALIGN_MAP[$horAlign] as React.CSSProperties['justifyContent'])

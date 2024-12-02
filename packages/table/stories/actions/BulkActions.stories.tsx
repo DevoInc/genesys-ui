@@ -80,6 +80,7 @@ const BulkExample = () => {
       </Flex.Item>
       <Flex.Item>
         <BasicTable
+          id={'tableBUlkActionStorie'}
           data={data}
           colDefs={[
             {

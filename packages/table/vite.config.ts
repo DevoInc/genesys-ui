@@ -28,7 +28,7 @@ export default defineConfig({
         'react/jsx-runtime',
         'styled-components',
         'date-fns',
-        'date-fns-tz',
+        '@date-fns/tz',
         'date-fns/locale',
       ],
     },

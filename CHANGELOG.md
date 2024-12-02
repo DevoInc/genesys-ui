@@ -1,5 +1,28 @@
 # Changelog
 
+## [14.0.0](https://github.com/DevoInc/genesys-ui/compare/v13.9.0...v14.0.0) (2024-12-02)
+
+## [13.9.0](https://github.com/DevoInc/genesys-ui/compare/v13.8.0...v13.9.0) (2024-11-28)
+
+### Features
+
+* **table:** add cell expand ([#107](https://github.com/DevoInc/genesys-ui/issues/107)) ([e7a3eb4](https://github.com/DevoInc/genesys-ui/commit/e7a3eb42f61db7da4fea25a9d4b1c44008d9e9a0)), closes [#102](https://github.com/DevoInc/genesys-ui/issues/102)
+
+## [13.8.0](https://github.com/DevoInc/genesys-ui/compare/v13.7.1...v13.8.0) (2024-11-21)
+
+
+### Features
+
+* added example of Table custom cell renderer and usage of separators between SelectControl options. ([a31e4cd](https://github.com/DevoInc/genesys-ui/commit/a31e4cd159e803cc4604b9c8b4b048ebc3dc4905))
+* added removable functionality to Chip component. New default name 'Overview' for mdx based pages. Readonly state fixed for ColorPicker component. ([526d3ab](https://github.com/DevoInc/genesys-ui/commit/526d3ab0a41f7b42fdd2c9f00499e62c7cb6313b))
+* **table:** add aria label in editors ([f9e8cc6](https://github.com/DevoInc/genesys-ui/commit/f9e8cc6ebbf77515f432f50fc5ccbe04ae6f6c13))
+
+
+### Bug Fixes
+
+* filterDataByText with options columns ([5b2c6b4](https://github.com/DevoInc/genesys-ui/commit/5b2c6b4ec3d8de7b8c28e9b6184477ef5b624e0a))
+* Options in story of global text search in table ([8f97d56](https://github.com/DevoInc/genesys-ui/commit/8f97d56c16fce9841d489040ad35dfda1983bc83))
+
 ## [13.7.1](https://github.com/DevoInc/genesys-ui/compare/v13.7.0...v13.7.1) (2024-11-14)
 
 

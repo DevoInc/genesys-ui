@@ -50,7 +50,7 @@ const BulkExample = () => {
   ]);
   const dataOrdered = [...data].sort(orderDataByOrderStruct(orderStruct));
 
-  const { toggleAll, toggle, clear, headerBulkChecked } = useBulkSelectionById({
+  const { toggleAll, toggle, clear, headerBulkChecked, bulkSelection } = useBulkSelectionById({
     data: dataOrdered,
     initialSelection: [],
   });
@@ -93,6 +93,7 @@ const BulkExample = () => {
       </Flex.Item>
       <Flex.Item>
         <BasicTable
+          id={'tableBulkActionIdStorie'}
           onSort={(colDef: TColDef) => {
             onSort(colDef.id);
           }}
