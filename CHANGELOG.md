@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.1.0](https://github.com/DevoInc/genesys-ui/compare/v14.0.0...v14.1.0) (2024-12-02)
+
+### Features
+
+* added 'xxs' and 'xs' new size variants to Badge component. ([3f5468d](https://github.com/DevoInc/genesys-ui/commit/3f5468da7800501d888e4113e1e20b6fe6c5e397))
+* added padding prop to Panel components and improvements for several stories ([786b465](https://github.com/DevoInc/genesys-ui/commit/786b465760a192a1861345d788fe97efd67082ad))
+
 ## [14.0.0](https://github.com/DevoInc/genesys-ui/compare/v13.9.0...v14.0.0) (2024-12-02)
 
 ## [13.9.0](https://github.com/DevoInc/genesys-ui/compare/v13.8.0...v13.9.0) (2024-11-28)
