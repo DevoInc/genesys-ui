@@ -6,9 +6,11 @@ import { panelFooterContainerMixin } from '../../helpers';
 import { Flex, type FlexProps } from '../../../../../Flex';
 import { Box } from '../../../../../Box';
 import { mergeStyles } from '../../../../../../helpers';
+import type { IPanelSpaceAttrs } from '../../../../declarations';
 
 export interface PanelFooterContainerProps
   extends IPanelFooterAttrs,
+    IPanelSpaceAttrs,
     Pick<FlexProps, 'as' | 'style'> {
   /** If the content of the panel footer is custom and depends exclusively on
    * the user */
@@ -22,6 +24,11 @@ export const PanelFooterContainer: React.FC<PanelFooterContainerProps> = ({
   bordered,
   children,
   hasBackground,
+  padding,
+  paddingBottom,
+  paddingLeft,
+  paddingRight,
+  paddingTop,
   removeSpace,
   size = 'md',
   style,
@@ -35,6 +42,11 @@ export const PanelFooterContainer: React.FC<PanelFooterContainerProps> = ({
         bordered,
         hasBackground,
         hasBoxShadow,
+        padding,
+        paddingBottom,
+        paddingLeft,
+        paddingRight,
+        paddingTop,
         removeSpace,
         size,
         theme,

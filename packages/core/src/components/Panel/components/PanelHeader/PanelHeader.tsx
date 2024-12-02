@@ -1,6 +1,10 @@
 import * as React from 'react';
 
-import type { IPanelBaseAttrs, IPanelHelpAttrs } from '../../declarations';
+import type {
+  IPanelBaseAttrs,
+  IPanelHelpAttrs,
+  IPanelSpaceAttrs,
+} from '../../declarations';
 import type {
   IPanelCloseAttrs,
   IPanelCollapseAttrs,
@@ -22,13 +26,15 @@ export interface PanelHeaderProps
   extends IPanelBaseAttrs,
     IPanelHeaderAttrs,
     IPanelHelpAttrs,
-    IPanelHeadingAttrs {
+    IPanelHeadingAttrs,
+    IPanelSpaceAttrs {
   closeSettings?: IPanelCloseAttrs;
   collapseSettings?: IPanelCollapseAttrs;
 }
 
 export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
   actions,
+  appendContent,
   as = 'header',
   bordered,
   children,
@@ -39,6 +45,12 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
   helpUrl,
   icon,
   legend,
+  padding,
+  paddingBottom,
+  paddingLeft,
+  paddingRight,
+  paddingTop,
+  prependContent,
   removeSpace,
   size,
   style,
@@ -56,6 +68,11 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
       customContent={Boolean(children)}
       hasSubtitle={Boolean(subtitle)}
       removeSpace={removeSpace}
+      padding={padding}
+      paddingBottom={paddingBottom}
+      paddingLeft={paddingLeft}
+      paddingRight={paddingRight}
+      paddingTop={paddingTop}
       size={evalSize}
       style={style}
     >
@@ -77,6 +94,7 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
               tooltip={collapseSettings?.tooltip}
             />
           )}
+          {prependContent}
           {(title || subtitle || icon) && (
             <PanelHeaderHeading
               helpTooltip={helpTooltip}
@@ -89,6 +107,7 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
               titleTooltip={titleTooltip}
             />
           )}
+          {appendContent}
           {actions && <PanelHeaderActions actions={actions} size={evalSize} />}
           {closeSettings && (
             <PanelHeaderClose

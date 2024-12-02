@@ -2,7 +2,11 @@ import * as React from 'react';
 
 import { PanelContext } from '../../context';
 import type { IPanelFooterAttrs } from './declarations';
-import type { IPanelBaseAttrs, IPanelHelpAttrs } from '../../declarations';
+import type {
+  IPanelBaseAttrs,
+  IPanelHelpAttrs,
+  IPanelSpaceAttrs,
+} from '../../declarations';
 import {
   PanelFooterActions,
   PanelFooterContainer,
@@ -13,7 +17,8 @@ import { Typography } from '../../../Typography';
 export interface PanelFooterProps
   extends IPanelBaseAttrs,
     IPanelFooterAttrs,
-    IPanelHelpAttrs {}
+    IPanelHelpAttrs,
+    IPanelSpaceAttrs {}
 
 export const InternalPanelFooter: React.FC<PanelFooterProps> = ({
   actions,
@@ -24,6 +29,11 @@ export const InternalPanelFooter: React.FC<PanelFooterProps> = ({
   hasBoxShadow,
   helpTooltip = 'Go to Docs to get help',
   helpUrl,
+  padding,
+  paddingBottom,
+  paddingLeft,
+  paddingRight,
+  paddingTop,
   removeSpace,
   size,
   style,
@@ -37,6 +47,11 @@ export const InternalPanelFooter: React.FC<PanelFooterProps> = ({
       hasBoxShadow={hasBoxShadow ?? context.scrolledBodyContent}
       hasBackground={hasBackground}
       bordered={bordered}
+      padding={padding}
+      paddingBottom={paddingBottom}
+      paddingLeft={paddingLeft}
+      paddingRight={paddingRight}
+      paddingTop={paddingTop}
       removeSpace={removeSpace}
       style={style}
       size={evalSize}

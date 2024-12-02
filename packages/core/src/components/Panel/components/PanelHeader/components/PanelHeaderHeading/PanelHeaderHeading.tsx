@@ -77,22 +77,34 @@ export const PanelHeaderHeading: React.FC<PanelHeaderHeadingProps> = ({
                     tooltip={helpTooltip}
                   />
                 )}
-                {legend}
+                {legend && typeof legend === 'string' ? (
+                  <Typography.Paragraph
+                    colorScheme="weak"
+                    truncateLine={1}
+                    size={PANEL_HEADER_SIZES[size].subtitle.size}
+                  >
+                    {legend}
+                  </Typography.Paragraph>
+                ) : (
+                  legend
+                )}
               </Flex>
             )}
           </Flex>
         )}
-        <Typography.Paragraph
-          colorScheme="weak"
-          truncateLine={3}
-          size={PANEL_HEADER_SIZES[size].subtitle.size}
-          style={css`
-            margin-top: ${theme.cmp.panel.headerSubtitle.space.marginTop};
-            max-width: ${theme.cmp.panel.headerSubtitle.size.maxWidth};
-          `}
-        >
-          {subtitle}
-        </Typography.Paragraph>
+        {subtitle && (
+          <Typography.Paragraph
+            colorScheme="weak"
+            truncateLine={3}
+            size={PANEL_HEADER_SIZES[size].subtitle.size}
+            style={css`
+              margin-top: ${theme.cmp.panel.headerSubtitle.space.marginTop};
+              max-width: ${theme.cmp.panel.headerSubtitle.size.maxWidth};
+            `}
+          >
+            {subtitle}
+          </Typography.Paragraph>
+        )}
       </Flex.Item>
     </Flex>
   );

@@ -1,0 +1,81 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './PanelHeader.stories';
+
+<Meta title="Components/Layout/Panel/Components/PanelHeader/Overview" />
+
+# Panel.Header
+
+Header of the `Panel` component, defined with dot notation as `Panel.Header`. This component should be used only as a
+child of a `Panel` or `Panel` based component.
+
+## Basic usage
+
+<Canvas of={Stories.Playground} />
+
+The next one is an example with many configuration options defined: icon, subtitle, actions, close button... etc.
+
+<Canvas of={Stories.Complex} />
+
+## With actions
+
+Sometimes you need to add some actions for the `Panel` as copy, expand, more options menu... etc. so you only have to
+define an array of buttons (usually `IconButtons`), but you have to keep in mind some design patterns:
+
+- The 'colorScheme' value for the buttons should be 'quiet', reducing the noise and adding white space to the block.
+  In very specific cases, if you use a `Button` instead of an `IconButton`, then you might apply other 'colorScheme',
+  but only if it's needed due to the hierarchy.
+- The 'size' for the buttons should be one step less than of the `Panel`. E.g. if the `Panel` has a 'sm' value,
+  then the `IconButton` should have a 'xs' one.
+- If there is close button, this has to be the last of the actions block located on the right.
+
+<Canvas of={Stories.WithActions} />
+
+## Collapse
+
+This is a configuration prop which is usually used to controls if the `Panel.Body` content is collapsed or not.
+
+<Canvas of={Stories.Collapsable} />
+
+## With legend
+
+You can add a `ReactNode` block just to the right of the heading. If you add only plain text, it will be formatted
+automatically as a `Typography.Paragraph` with 'weak' styles, but you also add HTML, another component... etc.
+
+<Canvas of={Stories.WithLegend} />
+
+## Append and prepend content
+
+You can add a custom `ReactNode` block before of the heading ('prependContent' prop) or after it and before the actions
+('appendContent' prop).
+
+<Canvas of={Stories.AppendAndPrepend} />
+
+## Help link block
+
+You can add a help link just after the heading with the 'helpUrl' prop, and to it a tooltip with the 'helpTooltip' one.
+The design pattern defines that the hep link must be located at the left of the footer, but if there is no footer or
+the content of the footer doesn't allow to include this help block, then we can add it to the header.
+
+<Canvas of={Stories.Help} />
+
+## Custom content using children
+
+If you need a very specific content for the panel header, then you can add directly the content with children prop.
+Anyway, there are several internal components available for the header with the `_` prefix, which in fact are used
+internally in the `Panel.Header` component, so you can combine these with other components if you need. The `_` prefix
+in components means that they were not created only for composition, but they might be used eventually for that purpose,
+but only in very specific cases.
+
+- `Panel.Header._Actions`
+- `Panel.Header._Close`
+- `Panel.Header._CollapseButton`
+- `Panel.Header._Container`
+- `Panel.Header._Heading`
+- `Panel.Header._Icon`
+
+<Canvas of={Stories.Children} />
+
+## Props
+
+<ArgTypes of={Stories} />

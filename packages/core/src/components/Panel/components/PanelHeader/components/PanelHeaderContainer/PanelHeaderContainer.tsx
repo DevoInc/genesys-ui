@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import type { IPanelHeaderAttrs } from '../../declarations';
+import type { IPanelSpaceAttrs } from '../../../../declarations';
 import { panelHeaderContainerMixin } from '../../helpers';
 import { Flex, type FlexProps } from '../../../../../Flex';
 import { PanelContext } from '../../../../context';
@@ -10,6 +11,7 @@ import { mergeStyles } from '../../../../../../helpers';
 
 export interface PanelHeaderContainerProps
   extends Pick<FlexProps, 'as' | 'style'>,
+    IPanelSpaceAttrs,
     Omit<IPanelHeaderAttrs, 'actions'> {
   /** If the content of the panel header is custom and depends exclusively on
    * the user */
@@ -23,6 +25,11 @@ export const PanelHeaderContainer: React.FC<PanelHeaderContainerProps> = ({
   customContent,
   hasBoxShadow,
   hasSubtitle,
+  padding,
+  paddingBottom,
+  paddingLeft,
+  paddingRight,
+  paddingTop,
   removeSpace,
   size = 'md',
   style,
@@ -37,6 +44,11 @@ export const PanelHeaderContainer: React.FC<PanelHeaderContainerProps> = ({
       panelHeaderContainerMixin({
         bordered,
         hasBoxShadow: evalHasBoxShadow,
+        padding,
+        paddingBottom,
+        paddingLeft,
+        paddingRight,
+        paddingTop,
         removeSpace,
         size,
         theme,

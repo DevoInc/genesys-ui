@@ -1,12 +1,11 @@
 import styled, { css, CSSProp } from 'styled-components';
 
+import type { IChipContainerStyled } from './declarations';
+import { getPadding } from '../../helpers';
+import { getSpacingPropCss } from '../../../../helpers';
+import { pseudoElementOverlayMixin } from '../../../../styled/mixins/pseudoElement';
 import { disabledMixin } from '../../../../styled/mixins/state';
 import { btnResetMixin } from '../../../../styled/mixins/components';
-import { pseudoElementOverlayMixin } from '../../../../styled/mixins/pseudoElement';
-import { getPadding } from '../../helpers';
-import { type IChipContainerStyled } from './declarations';
-import { getSpacingPropCss } from '../../../../helpers';
-import { disabled } from 'happy-dom/lib/PropertySymbol';
 
 export interface StyledChipContainerProps extends IChipContainerStyled {
   // TODO: interface only for satisfy the type error with TS and inherit CSSProp

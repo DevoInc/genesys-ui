@@ -15,6 +15,10 @@ export interface IPanelHeaderAttrs extends IPanelContainerAttrs {
   hasSubtitle?: boolean;
   /** To remove the spacing in the header (usually padding) */
   removeSpace?: TPanelRemoveSpace;
+  /** Custom content after the heading and before the actions */
+  appendContent?: React.ReactNode;
+  /** Custom content before the heading */
+  prependContent?: React.ReactNode;
 }
 
 export interface IPanelCloseAttrs {

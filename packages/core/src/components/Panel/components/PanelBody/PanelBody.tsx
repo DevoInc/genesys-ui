@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import type { IPanelBaseAttrs, IPanelContainerAttrs } from '../../declarations';
+import type {
+  IPanelBaseAttrs,
+  IPanelContainerAttrs,
+  IPanelSpaceAttrs,
+} from '../../declarations';
 import type { IPanelBodyAttrs } from './declarations';
 import { PanelContext } from '../../context';
 import { panelBodyMixin } from './helpers';
@@ -11,11 +15,26 @@ import { mergeStyles } from '../../../../helpers';
 
 export interface PanelBodyProps
   extends IPanelBaseAttrs,
+    IPanelSpaceAttrs,
     IPanelBodyAttrs,
     Pick<IPanelContainerAttrs, 'size' | 'children'> {}
 
 export const PanelBody = React.forwardRef<HTMLElement, PanelBodyProps>(
-  ({ children, removeSpace, hasScrollSpacing, size, style }, ref) => {
+  (
+    {
+      children,
+      removeSpace,
+      hasScrollSpacing,
+      padding,
+      paddingBottom,
+      paddingLeft,
+      paddingRight,
+      paddingTop,
+      size,
+      style,
+    },
+    ref,
+  ) => {
     const theme = useTheme();
     const context = React.useContext(PanelContext);
     const evalSize = size || context.size || 'md';
@@ -31,6 +50,11 @@ export const PanelBody = React.forwardRef<HTMLElement, PanelBodyProps>(
         style={mergeStyles(
           panelBodyMixin({
             hasScrollSpacing: hasScrollSpacing ?? context.scrolledBodyContent,
+            padding,
+            paddingBottom,
+            paddingLeft,
+            paddingRight,
+            paddingTop,
             removeSpace: removeContentSpace,
             size: evalSize,
             theme,

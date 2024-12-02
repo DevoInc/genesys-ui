@@ -10,9 +10,11 @@ import {
 import { Panel } from './Panel';
 import { Button } from '../Button';
 import { IconButton } from '../IconButton';
-import { Typography } from '../Typography';
 import { TextBlock, TextBlockSM } from './__stories__/helpers';
-import { lorem, lorem2 } from '../../../stories/utils/fillerTexts';
+import { lorem } from '../../../stories/utils/fillerTexts';
+import { HFlex } from '../HFlex';
+import { Box } from '../Box';
+import { InputControl } from '../InputControl';
 
 const meta: Meta<typeof Panel> = {
   title: 'Components/Layout/Panel',
@@ -47,7 +49,8 @@ export const Playground: Story = {
   },
 };
 
-export const Playground2: Story = {
+export const Complex: Story = {
+  tags: ['isHidden'],
   args: {
     children: [
       <Panel.Header
@@ -73,24 +76,10 @@ export const Playground2: Story = {
         bordered
         helpUrl="https://docs.devo.com/"
         actions={[
-          <Button
-            key={1}
-            onClick={() => {
-              // eslint-disable-next-line no-alert
-              alert('Cancel click');
-            }}
-            colorScheme="quiet"
-          >
+          <Button key={1} colorScheme="quiet">
             Cancel
           </Button>,
-          <Button
-            key={2}
-            onClick={() => {
-              // eslint-disable-next-line no-alert
-              alert('Apply click');
-            }}
-            colorScheme="accent"
-          >
+          <Button key={2} colorScheme="accent">
             Apply
           </Button>,
         ]}
@@ -102,6 +91,7 @@ export const Playground2: Story = {
 };
 
 export const Closable: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [closed, setClosed] = React.useState(false);
@@ -113,54 +103,85 @@ export const Closable: Story = {
         <Panel width="36rem">
           <Panel.Header
             bordered
-            icon={<GIChartFlame />}
             title="Header tittle"
             closeSettings={{ onClick: () => setClosed(true) }}
           />
-          <Panel.Body>
-            <Typography.Paragraph gutterBottom="cmp-md">
-              {lorem}
-            </Typography.Paragraph>
-            <Typography.Paragraph gutterBottom="cmp-md">
-              {lorem2}
-            </Typography.Paragraph>
-          </Panel.Body>
+          <Panel.Body>{lorem}</Panel.Body>
         </Panel>
       );
     })(),
 };
 
-export const BackwardNavigation: Story = {
-  name: 'With backward navigation',
+export const Filterable: Story = {
+  tags: ['isHidden'],
   args: {
-    width: '36rem',
+    width: '48rem',
+    height: '40rem',
     children: [
       <Panel.Header
-        key="header-2"
-        bordered
-        icon={<GIChartFlame />}
+        key={1}
+        hasBoxShadow={false}
         title="Header tittle"
-        actions={[
-          <Button
-            key="btn-back"
-            hasBoldIcon
-            icon={<GIArrowLeft />}
-            colorScheme="quiet"
-            size="sm"
-          >
-            Previous
-          </Button>,
-        ]}
+        closeSettings={{ onClick: () => alert('Close') }}
       />,
-      <Panel.Body key="body-2">{TextBlockSM}</Panel.Body>,
+      <Panel.Header key={2} bordered as="div" paddingTop="0">
+        <InputControl
+          aria-label="Filter items"
+          type="search"
+          placeholder="Filter items..."
+        />
+      </Panel.Header>,
+      <Panel.Body key={3}>{TextBlock}</Panel.Body>,
     ],
   },
 };
 
+export const BackwardNavigation: Story = {
+  tags: ['isHidden'],
+  render: () =>
+    (() => {
+      return (
+        <HFlex>
+          <Panel>
+            <Panel.Header
+              bordered
+              title="Header tittle"
+              actions={[
+                <Button
+                  key="btn-back"
+                  hasBoldIcon
+                  icon={<GIArrowLeft />}
+                  colorScheme="quiet"
+                  size="sm"
+                >
+                  Previous
+                </Button>,
+              ]}
+            />
+            <Panel.Body>{TextBlockSM}</Panel.Body>,
+          </Panel>
+          <Panel>
+            <Panel.Header
+              bordered
+              prependContent={
+                <Box marginRight="cmp-xs">
+                  <IconButton size="sm" icon={<GIArrowLeft />} />
+                </Box>
+              }
+              title="Header tittle"
+            />
+            <Panel.Body>{TextBlockSM}</Panel.Body>,
+          </Panel>
+        </HFlex>
+      );
+    })(),
+};
+
 export const OnlyContent: Story = {
-  name: 'Without header and footer',
+  tags: ['isHidden'],
   args: {
     width: '36rem',
+    elevation: 'activated',
     children: [<Panel.Body key="body-3">{TextBlockSM}</Panel.Body>],
   },
 };

@@ -7,6 +7,7 @@ import type {
 import type { TGlobalSize } from '../../declarations/commonProps';
 import type { IGlobalAttrs, ILinkAttrs } from '../../declarations/htmlAttrs';
 import { PickUnion } from '../../typeFunctions';
+import type { FlexProps } from '../Flex';
 
 export type TPanelSize = PickUnion<TGlobalSize, 'xs' | 'sm' | 'md'>;
 export type TPanelRemoveSpace = boolean;
@@ -24,6 +25,12 @@ export interface IPanelHelpAttrs {
 export interface IPanelBaseAttrs
   extends IStyledPolymorphic,
     IStyledOverloadCss {}
+
+export interface IPanelSpaceAttrs
+  extends Pick<
+    FlexProps,
+    'padding' | 'paddingLeft' | 'paddingBottom' | 'paddingRight' | 'paddingTop'
+  > {}
 
 export interface IPanelContainerAttrs {
   /** Apply border at the top of the footer or bottom of the header */

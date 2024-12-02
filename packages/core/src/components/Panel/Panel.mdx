@@ -21,31 +21,68 @@ display titles, icons, or other relevant information.
 
 There are three pre-defined components to create a `Panel` with content:
 
-- `Panel.Header`: the header of the panel with the title, subtitle, icon,
-  actions, close button... etc.
-- `Panel.Body`: the scrollable wrapper for the panel content.
-- `Panel.Footer`: the optional content to be included at the end of the panel,
-  where usually are the main actions or the contextual help.
+- `Panel.Header`: the header of the panel with the title, subtitle, icon, actions, close button... etc.
+- `Panel.Body`: the scrollable wrapper for the panel content. If you only add plain text, it will be formatted
+  automatically as a `Typography.Paragraph`. But if you need more than one block or something else, then you have to use
+  specific components.
+- `Panel.Footer`: the optional content to be included at the end of the panel, where usually are the main actions
+  or the contextual help.
 
 <Canvas of={Stories.Playground} />
 
+The next one is an example with many configuration options defined: icon on the header, subtitle, actions,
+help and actions in the footer... etc.
+
+In addition, we can see how the component automatically adds some styles when there is scroll
+on the body: box shadow for header and footer and some extra space in the body area.
+
+<Canvas of={Stories.Complex} />
+
 ## Closable
 
-<Canvas of={Stories.Closable} />{' '}
+You can add a closable control at the end of the `Panel.Header` adding the `closeSettings` prop to that component.
+If you need more info about this prop you can find it in [PanelHeader story](?path=/story/components-layout-panel-components--header).
+
+<Canvas of={Stories.Closable} />
+
+## With filter
+
+A typical usage of a Panel is rendering a list which can be filtered form the header area. To do this we need to add two
+consecutive `Panel.Header` components: one which is actually the header and other which is the filter area and whose
+HTML tag therefore should not be a 'header' one.
+
+The second one with the filter has defined its 'paddingTop' to '0' to avoid too much space between both headers.
+In addition, we set 'bordered' to 'true' to get the separator between header and body, and we have to set 'hasBoxShadow'
+to 'false' in the first header to avoid get automatically the box shadow styles when there is scroll on the `Panel.Body`.
+
+<Canvas of={Stories.Filterable} />
 
 ## Backward navigation
+
+Sometimes the `Panel` is navigable, and we need a link to go back in the navigation or state. We can add the link/button
+to the right of the header if we don't have any other element, but usually is located in the left area.
 
 <Canvas of={Stories.BackwardNavigation} />
 
 ## Without header or footer
 
+For example, a panel which is used to create a floating panel, and has 'activated' elevation:
+
 <Canvas of={Stories.OnlyContent} />
 
 ## Components
 
-- [Header](?path=/story/components-layout-panel-components--header)
-- [Body](?path=/story/components-layout-panel-components--body)
-- [Footer](?path=/story/components-layout-panel-components--footer)
+### Internal
+
+- [Panel.Header](?path=/story/components-layout-panel-components--header)
+- [Panel.Body](?path=/story/components-layout-panel-components--body)
+- [Panel.Footer](?path=/story/components-layout-panel-components--footer)
+
+### Used in
+
+- [Popover](?path=/story/components-layout-popover--overview)
+- [InlineMessage](?path=/story/components-feedback-inlinemessage--overview)
+- [Modal](?path=/docs/components-layout-modal--overview)
 
 ## Props
 

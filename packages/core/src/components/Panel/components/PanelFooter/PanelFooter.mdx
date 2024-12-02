@@ -1,0 +1,39 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './PanelFooter.stories';
+
+<Meta title="Components/Layout/Panel/Components/PanelFooter/Overview" />
+
+# Panel.Footer
+
+Footer of the `Panel` component, defined with dot notation as `Panel.Footer`. This component should be used only as a
+child of a `Panel` or `Panel` based component.
+
+## Basic usage
+
+<Canvas of={Stories.Playground} />
+
+## With actions
+
+The actions of a footer always should be `Button` components and maintain the hierarchy order: the most emphasized
+should be located the last one, therefore most at the right.
+
+<Canvas of={Stories.WithActions} />
+
+## Custom content using children
+
+If you need a very specific content for the panel footer, then you can add directly the content with children prop.
+Anyway, there are several internal components available for the header with the `_` prefix, which in fact are used
+internally in the `Panel.Footer` component, so you can combine these with other components if you need. The `_` prefix
+in components means that they were not created only for composition, but they might be used eventually for that purpose,
+but only in very specific cases.
+
+- `Panel.Footer._Actions`
+- `Panel.Footer._Container`
+- `Panel.Footer._Help`
+
+<Canvas of={Stories.Children} />
+
+## Props
+
+<ArgTypes of={Stories} />

@@ -1,12 +1,17 @@
 import { css, DefaultTheme } from 'styled-components';
 
 import { scrollbars } from '../../../../styled';
-import type { IPanelContainerAttrs } from '../../declarations';
+import type {
+  IPanelContainerAttrs,
+  IPanelSpaceAttrs,
+} from '../../declarations';
 import type { IPanelBodyAttrs } from './declarations';
+import { getSpacingPropCss } from '../../../../helpers';
 
 export interface PanelBodyMixinProps
   extends Pick<IPanelContainerAttrs, 'size'>,
-    IPanelBodyAttrs {
+    IPanelBodyAttrs,
+    IPanelSpaceAttrs {
   theme: DefaultTheme;
 }
 
@@ -17,19 +22,32 @@ export interface PanelBodyMixinProps
  */
 export const panelBodyMixin = ({
   hasScrollSpacing,
+  padding,
+  paddingBottom,
+  paddingLeft,
+  paddingRight,
+  paddingTop,
   removeSpace,
   size = 'md',
   theme,
 }: PanelBodyMixinProps) => {
   const panelBodyTokens = theme.cmp.panel.content;
-  let padding = removeSpace ? 0 : panelBodyTokens.space.padding[size];
+  let evalPadding = padding
+    ? getSpacingPropCss(theme)(padding)
+    : removeSpace
+      ? '0'
+      : panelBodyTokens.space.padding[size];
   const margin = hasScrollSpacing
     ? panelBodyTokens.space.margin[size]
     : undefined;
 
   return css`
     ${scrollbars({ $trackRadius: !hasScrollSpacing && '0', theme })};
-    padding: ${padding};
+    padding: ${evalPadding};
+    padding-top: ${paddingTop && getSpacingPropCss(theme)(paddingTop)};
+    padding-right: ${paddingRight && getSpacingPropCss(theme)(paddingRight)};
+    padding-bottom: ${paddingBottom && getSpacingPropCss(theme)(paddingBottom)};
+    padding-left: ${paddingLeft && getSpacingPropCss(theme)(paddingLeft)};
     margin: ${margin};
   `;
 };
