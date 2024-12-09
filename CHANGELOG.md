@@ -1,5 +1,11 @@
 # Changelog
 
+## [14.1.2](https://github.com/DevoInc/genesys-ui/compare/v14.1.1...v14.1.2) (2024-12-09)
+
+### Bug Fixes
+
+* **core:** missing $ for styled custom prop ([17e3e7a](https://github.com/DevoInc/genesys-ui/commit/17e3e7a93e45d708fca4acec54a30acc372327a7))
+
 ## [14.1.1](https://github.com/DevoInc/genesys-ui/compare/v14.1.0...v14.1.1) (2024-12-09)
 
 ### Bug Fixes
