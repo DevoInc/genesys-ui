@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.1.1](https://github.com/DevoInc/genesys-ui/compare/v14.1.0...v14.1.1) (2024-12-09)
+
+### Bug Fixes
+
+* **color:** styled custom props with $ ([98f6cbe](https://github.com/DevoInc/genesys-ui/commit/98f6cbec2aef89b706c475c9fcb519e58b175a3c))
+* **table:** added missing fn options filter for multi options ([62f9a72](https://github.com/DevoInc/genesys-ui/commit/62f9a726be06fb9a66865c1e1abab29cbc95fbce))
+
 ## [14.1.0](https://github.com/DevoInc/genesys-ui/compare/v14.0.0...v14.1.0) (2024-12-02)
 
 ### Features
