@@ -80,7 +80,7 @@ export const TextareaControl: React.FC<TextareaControlProps> = ({
       required={contextBasedProps.required}
       rows={rows}
       $size={contextBasedProps.size}
-      status={contextBasedProps.status}
+      $status={contextBasedProps.status}
       title={tooltip}
     />
   );
