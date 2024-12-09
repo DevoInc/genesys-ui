@@ -33,22 +33,20 @@ export default meta;
 type Story = StoryObj<typeof ColorPicker>;
 
 export const Base: Story = {
-  render: (args) =>
-    ((props) => {
-      const [state, setState] = React.useState({ color: '#234567' });
-      return (
-        <ColorPicker
-          {...props}
-          readOnly
-          value={state.color}
-          presetColors={['rgba(143,36,36,1)', 'rgba(143,36,36,0.5)']}
-          onChange={(color) => {
-            setState({ color });
-            window.console.debug('Change color to:', color);
-          }}
-        />
-      );
-    })(args),
+  render: (props) => {
+    const [state, setState] = React.useState({ color: '#234567' });
+    return (
+      <ColorPicker
+        {...props}
+        value={state.color}
+        presetColors={['rgba(143,36,36,1)', 'rgba(143,36,36,0.5)']}
+        onChange={(color) => {
+          setState({ color });
+          window.console.debug('Change color to:', color);
+        }}
+      />
+    );
+  },
 };
 
 export const Disabled: Story = {
