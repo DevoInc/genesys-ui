@@ -23,8 +23,9 @@ export interface ColorPickerProps
   extends IDataAttrs,
     Pick<IGlobalAriaAttrs, 'aria-label'>,
     Omit<FieldProps, 'children' | 'hasWideControl' | 'role' | 'onClick'>,
-    Omit<DropdownPickerProps, 'expanded' | 'id'>,
-    Omit<StyledColorPickerProps, 'disabled' | 'size' | 'status'> {
+    Omit<DropdownPickerProps, 'expanded' | 'id'> {
+  colorIndicatorType?: StyledColorPickerProps['$colorIndicatorType'];
+  readOnly?: StyledColorPickerProps['$readOnly'];
   value?: string;
   defaultValue: string;
   /** The placement of the floating color picker. */
@@ -125,8 +126,8 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
             aria-controls={popoverId}
             aria-haspopup
             aria-expanded={isOpened}
-            colorIndicatorType={colorIndicatorType}
-            disabled={disabled}
+            $colorIndicatorType={colorIndicatorType}
+            $disabled={disabled}
             id={`${id}__trigger`}
             onClick={readOnly ? null : toggle}
             onMouseDown={onMouseDown}
@@ -135,9 +136,9 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
             onMouseOut={onMouseOut}
             onMouseOver={onMouseOver}
             onMouseUp={onMouseUp}
-            readOnly={readOnly}
-            size={size}
-            status={status}
+            $readOnly={readOnly}
+            $size={size}
+            $status={status}
           >
             <div
               className="color-indicator__sample"
