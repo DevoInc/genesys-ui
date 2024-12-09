@@ -31,10 +31,10 @@
   },
   "peerDependencies": {
     "@devoinc/genesys-ui": "^14.1.0",
-    "ahooks": "3.x.x",
-    "monaco-editor-core": "0.x.x",
-    "react": "16.x || 17.x || 18.x",
-    "styled-components": "5.x.x || 6.x.x"
+    "ahooks": "3.x",
+    "monaco-editor-core": "0.x",
+    "react": "^16.3.0 || 17.x || 18.x",
+    "styled-components": "5.x || 6.x"
   },
   "author": "",
   "license": "MIT",
