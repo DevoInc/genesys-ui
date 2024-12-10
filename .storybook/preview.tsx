@@ -70,32 +70,14 @@ const preview: Preview = {
       disable: true,
     },
     options: {
-      // storySort: (a: IndexEntry, b: IndexEntry) => {
-      storySort: (a, b) => {
-        const storySortOrder = [
-          'Overview',
-          'Playground',
-          'Cases',
-          'Hooks',
+      storySort: {
+        includeNames: true,
+        order: [
+          'Getting started',
+          ['Overview', 'Installation'],
           'Components',
-        ];
-
-        // Lower depth goes first
-        const aDepth = a.title.split('/').length;
-        const bDepth = b.title.split('/').length;
-
-        if (aDepth > bDepth) return 1;
-        if (aDepth < bDepth) return -1;
-
-        // Then sort by storySortOrder
-        const aMatch = storySortOrder.indexOf(a.name);
-        const bMatch = storySortOrder.indexOf(b.name);
-
-        const aPriority = aMatch === -1 ? Infinity : aMatch;
-        const bPriority = bMatch === -1 ? Infinity : bMatch;
-
-        if (aPriority < bPriority) return -1;
-        return 1;
+          ['Layout', 'Navigation', 'Media', 'Feedback'],
+        ],
       },
     },
   },
