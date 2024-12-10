@@ -1,5 +1,11 @@
 # Changelog
 
+## [14.1.3](https://github.com/DevoInc/genesys-ui/compare/v14.1.2...v14.1.3) (2024-12-10)
+
+### Bug Fixes
+
+* **core:** fix SplitLayout gutter size not subtracted from sizes ([6221f15](https://github.com/DevoInc/genesys-ui/commit/6221f15be43622a5514ad8fafed5aa49186df192))
+
 ## [14.1.2](https://github.com/DevoInc/genesys-ui/compare/v14.1.1...v14.1.2) (2024-12-09)
 
 ### Bug Fixes
