@@ -3,10 +3,8 @@ import styled, { css } from 'styled-components';
 import type {
   TActiveState,
   TBasicState,
-  IButtonAttrs,
   TExpandedState,
   TFeaturedState,
-  ILinkAttrs,
   TMouseState,
   TReadonlyState,
   TSelectedState,
@@ -21,15 +19,13 @@ import {
 import { menuItemBackdropMixin } from '../../helpers';
 import { menuItemSizeConfig } from '../../constants';
 
-export interface StyledMenuItemInnerProps
-  extends Pick<IButtonAttrs, 'tabIndex' | 'value'>,
-    ILinkAttrs {
+export interface StyledMenuItemInnerProps {
   /** If the menu item has a reserved left space for markers: icon, selection mark... etc. */
-  hasExtraLeftSpace?: boolean;
+  $hasExtraLeftSpace?: boolean;
   /** If the menu item has unlimited height, and it's added a vertical padding. */
-  unlimitedHeight?: boolean;
+  $unlimitedHeight?: boolean;
   /** State of the menu item */
-  state?:
+  $state?:
     | TBasicState
     | TActiveState
     | TMouseState
@@ -41,8 +37,8 @@ export interface StyledMenuItemInnerProps
 }
 
 export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
-  ${({ hasExtraLeftSpace, state = 'enabled', theme, unlimitedHeight }) => {
-    const stateForTokens = state === 'active' ? 'activated' : state;
+  ${({ $hasExtraLeftSpace, $state = 'enabled', theme, $unlimitedHeight }) => {
+    const stateForTokens = $state === 'active' ? 'activated' : $state;
     const tokens = theme.cmp.menu.item;
     const horPadding = menuItemSizeConfig(theme).horPadding;
     const iconSize = menuItemSizeConfig(theme).iconSize;
@@ -53,7 +49,7 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
       outline: none;
     `;
     return css`
-      ${state !== 'readonly' &&
+      ${$state !== 'readonly' &&
       css`
         ${btnResetMixin};
       `}
@@ -65,13 +61,13 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
       appearance: none;
       position: relative;
       transition: all ease-in-out ${tokens.mutation.transitionDuration};
-      height: ${unlimitedHeight ? 'auto' : tokens.size.minHeight};
-      padding: ${unlimitedHeight ? horPadding : `0 ${horPadding}`};
+      height: ${$unlimitedHeight ? 'auto' : tokens.size.minHeight};
+      padding: ${$unlimitedHeight ? horPadding : `0 ${horPadding}`};
       background-color: ${tokens.color.background[stateForTokens]};
       color: ${tokens.color.text[stateForTokens]};
       text-decoration: none;
 
-      ${hasExtraLeftSpace &&
+      ${$hasExtraLeftSpace &&
       css`
         padding-left: calc(${horPadding} + ${iconSize} + ${iconSpace});
       `}
@@ -83,8 +79,8 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
 
       // styles based pseudo-classes (not disabled)
 
-      ${state !== 'disabled' &&
-      state !== 'readonly' &&
+      ${$state !== 'disabled' &&
+      $state !== 'readonly' &&
       css`
         &::before {
           ${pseudoElementOverlayMixin()};
@@ -107,16 +103,16 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
           ${menuItemBackdropMixin({ tokens, state: 'pressed' })};
         }
 
-        ${(state === 'expanded' ||
-          state === 'hovered' ||
-          state === 'pressed') &&
+        ${($state === 'expanded' ||
+          $state === 'hovered' ||
+          $state === 'pressed') &&
         css`
           &&& {
             ${menuItemBackdropMixin({ tokens, state: stateForTokens })};
           }
         `}
 
-        ${state === 'focused' &&
+        ${$state === 'focused' &&
         css`
           &&& {
             ${focusedStyles};
@@ -125,7 +121,7 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
       `}
 
       // styles based in states
-      ${state === 'disabled' &&
+      ${$state === 'disabled' &&
       css`
         ${disabledMixin(theme)};
       `}

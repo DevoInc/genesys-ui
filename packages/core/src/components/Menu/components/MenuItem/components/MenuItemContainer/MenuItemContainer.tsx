@@ -34,8 +34,10 @@ export interface MenuItemContainerProps
     IFocusEventAttrs,
     IMouseEventAttrs,
     INavigationAriaAttrs,
-    Pick<IButtonAttrs, 'name' | 'value'>,
-    StyledMenuItemInnerProps {
+    Pick<IButtonAttrs, 'name' | 'value'> {
+  hasExtraLeftSpace?: StyledMenuItemInnerProps['$hasExtraLeftSpace'];
+  unlimitedHeight?: StyledMenuItemInnerProps['$unlimitedHeight'];
+  state?: StyledMenuItemInnerProps['$state'];
   children?: React.ReactNode;
   isItem?: boolean;
 }
@@ -43,17 +45,35 @@ export interface MenuItemContainerProps
 export const MenuItemContainer = React.forwardRef<
   HTMLButtonElement,
   MenuItemContainerProps
->(({ children, isItem = true, ...restMenuItemContainerProps }, ref) => {
-  const innerContent = (
-    <StyledMenuItemInner {...restMenuItemContainerProps} ref={ref}>
-      {children}
-    </StyledMenuItemInner>
-  );
-  return isItem ? (
-    <StyledMenuItem role="presentation">{innerContent}</StyledMenuItem>
-  ) : (
-    innerContent
-  );
-});
+>(
+  (
+    {
+      children,
+      isItem = true,
+      hasExtraLeftSpace,
+      unlimitedHeight,
+      state,
+      ...restMenuItemContainerProps
+    },
+    ref,
+  ) => {
+    const innerContent = (
+      <StyledMenuItemInner
+        {...restMenuItemContainerProps}
+        $hasExtraLeftSpace={hasExtraLeftSpace}
+        $unlimitedHeight={unlimitedHeight}
+        $state={state}
+        ref={ref}
+      >
+        {children}
+      </StyledMenuItemInner>
+    );
+    return isItem ? (
+      <StyledMenuItem role="presentation">{innerContent}</StyledMenuItem>
+    ) : (
+      innerContent
+    );
+  },
+);
 
 MenuItemContainer.displayName = 'MenuItemContainer';
