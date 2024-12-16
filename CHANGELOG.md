@@ -1,5 +1,11 @@
 # Changelog
 
+## [14.1.4](https://github.com/DevoInc/genesys-ui/compare/v14.1.3...v14.1.4) (2024-12-16)
+
+### Bug Fixes
+
+* **core:** menu item styled components custom prop error ([9b25eb4](https://github.com/DevoInc/genesys-ui/commit/9b25eb48159277f46a25eb98ea86d7952b6e8929))
+
 ## [14.1.3](https://github.com/DevoInc/genesys-ui/compare/v14.1.2...v14.1.3) (2024-12-10)
 
 ### Bug Fixes
