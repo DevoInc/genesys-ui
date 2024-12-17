@@ -9,9 +9,14 @@ export const ButtonGroupIconButton = React.forwardRef<
   HTMLElement,
   ButtonGroupIconButtonProps
 >(({ children, ...restIconButtonProps }, ref) => {
-  const context = React.useContext(ButtonGroupContext);
+  const { colorScheme, size } = React.useContext(ButtonGroupContext);
   return (
-    <IconButton {...context} {...restIconButtonProps} ref={ref}>
+    <IconButton
+      colorScheme={colorScheme}
+      size={size}
+      {...restIconButtonProps}
+      ref={ref}
+    >
       {children}
     </IconButton>
   );
