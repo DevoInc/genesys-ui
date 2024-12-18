@@ -1,5 +1,15 @@
 # Changelog
 
+## [14.2.0](https://github.com/DevoInc/genesys-ui/compare/v14.1.4...v14.2.0) (2024-12-18)
+
+### Features
+
+* added react 19 compatibility ([a7a7a93](https://github.com/DevoInc/genesys-ui/commit/a7a7a93754967eb7a658e0ba83e001840c895ef9))
+
+### Bug Fixes
+
+* **core:** styled-components custom property taken by error ([2a66c55](https://github.com/DevoInc/genesys-ui/commit/2a66c5506839757b6ee55f8c54c4880251428591))
+
 ## [14.1.4](https://github.com/DevoInc/genesys-ui/compare/v14.1.3...v14.1.4) (2024-12-16)
 
 ### Bug Fixes
