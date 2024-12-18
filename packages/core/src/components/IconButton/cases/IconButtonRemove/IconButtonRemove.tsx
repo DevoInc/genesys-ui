@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { GIExitClose } from '@devoinc/genesys-icons';
 
+import type { Resolve } from '../../../../typeFunctions';
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 import type {
   TBlendColorScheme,
@@ -38,30 +39,19 @@ export interface IconButtonRemoveProps
   state?: TButtonBasicState;
 }
 
-export const IconButtonRemove = React.forwardRef<
-  HTMLElement,
-  IconButtonRemoveProps
->(
-  (
-    {
-      colorScheme = 'blend-base',
-      size = 'md',
-      state = 'enabled',
-      ...restIconButtonProps
-    },
-    ref,
-  ) => (
-    <IconButton
-      {...restIconButtonProps}
-      colorScheme={colorScheme}
-      icon={<GIExitClose />}
-      circular
-      hasBoldIcon
-      ref={ref}
-      size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
-      state={state}
-    />
-  ),
+export const IconButtonRemove: React.FC<Resolve<IconButtonRemoveProps>> = ({
+  colorScheme = 'blend-base',
+  size = 'md',
+  state = 'enabled',
+  ...restIconButtonProps
+}) => (
+  <IconButton
+    {...restIconButtonProps}
+    colorScheme={colorScheme}
+    icon={<GIExitClose />}
+    circular
+    hasBoldIcon
+    size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
+    state={state}
+  />
 );
-
-IconButtonRemove.displayName = 'IconButtonRemove';

@@ -7,27 +7,30 @@ import { tabsMarkMixin } from './helpers';
 import { Box } from '../../../Box';
 import { TabsContext } from '../../context';
 import { mergeStyles } from '../../../../helpers';
+import type { Resolve } from '../../../../typeFunctions';
 
 export interface TabsMarkProps
   extends IStyledOverloadCss,
-    Pick<ITabs, 'colorScheme'> {}
+    Pick<ITabs, 'colorScheme'> {
+  ref?: React.Ref<HTMLDivElement>;
+}
 
-export const TabsMark = React.forwardRef<HTMLDivElement, TabsMarkProps>(
-  ({ colorScheme, style }, ref) => {
-    const theme = useTheme();
-    const context = React.useContext(TabsContext);
-    const evalColorScheme = colorScheme || context.colorScheme;
-    return (
-      <Box
-        ref={ref}
-        role="presentation"
-        style={mergeStyles(
-          tabsMarkMixin({ colorScheme: evalColorScheme, theme }),
-          style,
-        )}
-      />
-    );
-  },
-);
-
-TabsMark.displayName = 'TabsMark';
+export const TabsMark: React.FC<Resolve<TabsMarkProps>> = ({
+  colorScheme,
+  style,
+  ref,
+}) => {
+  const theme = useTheme();
+  const context = React.useContext(TabsContext);
+  const evalColorScheme = colorScheme || context.colorScheme;
+  return (
+    <Box
+      ref={ref}
+      role="presentation"
+      style={mergeStyles(
+        tabsMarkMixin({ colorScheme: evalColorScheme, theme }),
+        style,
+      )}
+    />
+  );
+};

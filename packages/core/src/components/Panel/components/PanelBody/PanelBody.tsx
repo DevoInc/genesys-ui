@@ -12,64 +12,63 @@ import { panelBodyMixin } from './helpers';
 import { Box } from '../../../Box';
 import { Typography } from '../../../Typography';
 import { mergeStyles } from '../../../../helpers';
+import type { Resolve } from '../../../../typeFunctions';
 
 export interface PanelBodyProps
   extends IPanelBaseAttrs,
     IPanelSpaceAttrs,
     IPanelBodyAttrs,
-    Pick<IPanelContainerAttrs, 'size' | 'children'> {}
+    Pick<IPanelContainerAttrs, 'size' | 'children'> {
+  ref?: React.Ref<HTMLDivElement>;
+}
 
-export const PanelBody = React.forwardRef<HTMLElement, PanelBodyProps>(
-  (
-    {
-      children,
-      removeSpace,
-      hasScrollSpacing,
-      padding,
-      paddingBottom,
-      paddingLeft,
-      paddingRight,
-      paddingTop,
-      size,
-      style,
-    },
-    ref,
-  ) => {
-    const theme = useTheme();
-    const context = React.useContext(PanelContext);
-    const evalSize = size || context.size || 'md';
-    const removeContentSpace =
-      removeSpace ?? context?.removeContentSpace ?? false;
+export const PanelBody: React.FC<Resolve<PanelBodyProps>> = ({
+  children,
+  removeSpace,
+  hasScrollSpacing,
+  padding,
+  paddingBottom,
+  paddingLeft,
+  paddingRight,
+  paddingTop,
+  size,
+  style,
+  ref,
+}) => {
+  const theme = useTheme();
+  const context = React.useContext(PanelContext);
+  const evalSize = size || context.size || 'md';
+  const removeContentSpace =
+    removeSpace ?? context?.removeContentSpace ?? false;
 
-    return (
-      <Box
-        position="relative"
-        flex="1 1 100%"
-        overflow="auto"
-        ref={ref || context.bodyRef}
-        style={mergeStyles(
-          panelBodyMixin({
-            hasScrollSpacing: hasScrollSpacing ?? context.scrolledBodyContent,
-            padding,
-            paddingBottom,
-            paddingLeft,
-            paddingRight,
-            paddingTop,
-            removeSpace: removeContentSpace,
-            size: evalSize,
-            theme,
-          }),
-          style,
-        )}
-      >
-        {typeof children === 'string' ? (
-          <Typography.Paragraph>{children}</Typography.Paragraph>
-        ) : (
-          children
-        )}
-      </Box>
-    );
-  },
-);
+  return (
+    <Box
+      position="relative"
+      flex="1 1 100%"
+      overflow="auto"
+      ref={ref || context.bodyRef}
+      style={mergeStyles(
+        panelBodyMixin({
+          hasScrollSpacing: hasScrollSpacing ?? context.scrolledBodyContent,
+          padding,
+          paddingBottom,
+          paddingLeft,
+          paddingRight,
+          paddingTop,
+          removeSpace: removeContentSpace,
+          size: evalSize,
+          theme,
+        }),
+        style,
+      )}
+    >
+      {typeof children === 'string' ? (
+        <Typography.Paragraph>{children}</Typography.Paragraph>
+      ) : (
+        children
+      )}
+    </Box>
+  );
+};
 
 PanelBody.displayName = 'PanelBody';

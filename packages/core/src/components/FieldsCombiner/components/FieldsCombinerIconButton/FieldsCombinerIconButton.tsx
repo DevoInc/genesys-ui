@@ -9,16 +9,16 @@ import {
   type FieldsCombinerItemProps,
 } from '../FieldsCombinerItem';
 import { mergeStyles } from '../../../../helpers';
+import type { Resolve } from '../../../../typeFunctions';
 
 export interface FieldsCombinerIconButtonProps
   extends Omit<IconButtonProps, 'size'> {
   width?: FieldsCombinerItemProps['width'];
 }
 
-export const FieldsCombinerIconButton = React.forwardRef<
-  HTMLButtonElement,
-  FieldsCombinerIconButtonProps
->(({ colorScheme, style, width, ...restIconButtonProps }, ref) => {
+export const FieldsCombinerIconButton: React.FC<
+  Resolve<FieldsCombinerIconButtonProps>
+> = ({ colorScheme, style, width, ...restIconButtonProps }) => {
   const { combinedButtons, order, size, status, theme } = React.useContext(
     FieldsCombinerElemContext,
   );
@@ -36,7 +36,6 @@ export const FieldsCombinerIconButton = React.forwardRef<
           colorScheme ||
           (status !== 'base' ? (status as TUIColorScheme) : 'neutral')
         }
-        ref={ref}
         style={mergeStyles(
           fieldsCombinerButtonMixin({
             combinedButtons,
@@ -50,6 +49,4 @@ export const FieldsCombinerIconButton = React.forwardRef<
       />
     </FieldsCombinerItem>
   );
-});
-
-FieldsCombinerIconButton.displayName = 'FieldsCombinerIconButton';
+};

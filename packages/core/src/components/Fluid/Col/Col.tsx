@@ -6,6 +6,7 @@ import {
 
 import type { TFluidAs } from '../declarations';
 import type { IGlobalAttrs } from '../../../declarations';
+import type { Resolve } from '../../../typeFunctions';
 
 export interface ColProps
   extends Omit<ReactGridColProps, 'component'>,
@@ -14,22 +15,23 @@ export interface ColProps
   as?: TFluidAs;
   alignSelf?: React.CSSProperties['alignSelf'];
   children?: React.ReactNode;
+  ref?: React.LegacyRef<ReactGridCol> & React.Ref<HTMLDivElement>;
 }
 
-export const Col = React.forwardRef<HTMLDivElement, ColProps>(
-  ({ as, alignSelf, children, style, tooltip, ...reactGridColProps }, ref) => (
-    <ReactGridCol
-      {...reactGridColProps}
-      component={as}
-      ref={
-        ref as React.LegacyRef<ReactGridCol> & React.LegacyRef<HTMLDivElement>
-      }
-      style={{ ...style, alignSelf: alignSelf }}
-      title={tooltip}
-    >
-      {children}
-    </ReactGridCol>
-  ),
+export const Col: React.FC<Resolve<ColProps>> = ({
+  as,
+  alignSelf,
+  children,
+  style,
+  tooltip,
+  ...reactGridColProps
+}) => (
+  <ReactGridCol
+    {...reactGridColProps}
+    component={as}
+    style={{ ...style, alignSelf: alignSelf }}
+    title={tooltip}
+  >
+    {children}
+  </ReactGridCol>
 );
-
-Col.displayName = 'Col';

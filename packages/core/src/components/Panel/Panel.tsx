@@ -18,6 +18,7 @@ import {
   type PanelHeaderProps,
 } from './components';
 import { mergeStyles } from '../../helpers';
+import type { Resolve } from '../../typeFunctions';
 
 export interface PanelProps
   extends BoxProps,
@@ -37,53 +38,47 @@ export interface PanelProps
   size?: TPanelSize;
 }
 
-const InternalPanel = React.forwardRef<HTMLElement, PanelProps>(
-  (
-    {
-      bordered,
-      colorScheme,
-      display,
-      elevation = 'raised',
-      style,
-      size = 'md',
-      children,
-      removeContentSpace,
-      ...restBoxProps
-    },
-    ref,
-  ) => {
-    const theme = useTheme();
-    const targetElRef = React.useRef<HTMLDivElement>(null);
-    const { hasScroll } = useIsOverflow(targetElRef);
-    return (
-      <Box
-        {...restBoxProps}
-        ref={ref}
-        elevation={elevation}
-        style={mergeStyles(
-          panelMixin(theme)({
-            bordered,
-            colorScheme,
-            display,
-            elevation,
-          }),
-          style,
-        )}
+const InternalPanel: React.FC<Resolve<PanelProps>> = ({
+  bordered,
+  colorScheme,
+  display,
+  elevation = 'raised',
+  style,
+  size = 'md',
+  children,
+  removeContentSpace,
+  ...restBoxProps
+}) => {
+  const theme = useTheme();
+  const targetElRef = React.useRef<HTMLDivElement>(null);
+  const { hasScroll } = useIsOverflow(targetElRef);
+  return (
+    <Box
+      {...restBoxProps}
+      elevation={elevation}
+      style={mergeStyles(
+        panelMixin(theme)({
+          bordered,
+          colorScheme,
+          display,
+          elevation,
+        }),
+        style,
+      )}
+    >
+      <PanelContext.Provider
+        value={{
+          scrolledBodyContent: hasScroll,
+          size,
+          bodyRef: targetElRef,
+          removeContentSpace,
+        }}
       >
-        <PanelContext.Provider
-          value={{
-            scrolledBodyContent: hasScroll,
-            size,
-            bodyRef: targetElRef,
-            removeContentSpace,
-          }}
-        >
-          {children}
-        </PanelContext.Provider>
-      </Box>
-    );
-  },
-);
+        {children}
+      </PanelContext.Provider>
+    </Box>
+  );
+};
 
 export const Panel = InternalPanel as typeof InternalPanel & {
   Header: typeof PanelHeader;
