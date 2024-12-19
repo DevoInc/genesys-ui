@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import type { PaginationProps } from './Pagination';
 import { DEFAULT_TEXTS } from './constants';
+import type { IPaginationCommonInterface } from './declarations';
 
 export interface ChipGroupContextProps {
-  size: PaginationProps['size'];
-  texts: PaginationProps['texts'];
+  size: IPaginationCommonInterface['size'];
+  texts: IPaginationCommonInterface['texts'];
 }
 
 export const PaginationContext = React.createContext<ChipGroupContextProps>({
