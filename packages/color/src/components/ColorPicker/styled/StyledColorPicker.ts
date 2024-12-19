@@ -8,30 +8,30 @@ import {
 } from '@devoinc/genesys-ui';
 
 export interface StyledColorPickerProps {
-  colorIndicatorType?: 'square' | 'circle';
-  disabled?: boolean;
-  readOnly?: boolean;
-  size?: TFieldSize;
-  status?: TFieldStatus;
+  $colorIndicatorType?: 'square' | 'circle';
+  $disabled?: boolean;
+  $readOnly?: boolean;
+  $size?: TFieldSize;
+  $status?: TFieldStatus;
 }
 
 export const StyledColorPicker = styled.button<StyledColorPickerProps>`
   ${({
-    disabled,
-    colorIndicatorType,
-    readOnly,
-    size,
-    status = 'base',
+    $disabled,
+    $colorIndicatorType,
+    $readOnly,
+    $size,
+    $status = 'base',
     theme,
   }) => {
-    const state = getFieldState({ $readOnly: readOnly });
+    const state = getFieldState({ $readOnly });
     const isSquare =
-      colorIndicatorType === 'square' || colorIndicatorType === 'circle';
-    const isCircle = colorIndicatorType === 'circle';
+      $colorIndicatorType === 'square' || $colorIndicatorType === 'circle';
+    const isCircle = $colorIndicatorType === 'circle';
     const colorPickerTokens = theme.cmp.colorPicker;
     const transitionDuration = colorPickerTokens.mutation.transitionDuration;
-    const height = colorPickerTokens.size.height[size];
-    const width = colorPickerTokens.size[isSquare ? 'height' : 'width'][size];
+    const height = colorPickerTokens.size.height[$size];
+    const width = colorPickerTokens.size[isSquare ? 'height' : 'width'][$size];
     const spacing = colorPickerTokens.space;
     const borderRadius =
       colorPickerTokens.shape.borderRadius[isCircle ? 'isCircle' : 'base'];
@@ -48,33 +48,33 @@ export const StyledColorPicker = styled.button<StyledColorPickerProps>`
         box-shadow ${transitionDuration} ease-in-out;
       border-width: ${colorPickerTokens.shape.borderSize};
       border-style: solid;
-      border-color: ${colorPickerTokens.color.border[status][state]};
+      border-color: ${colorPickerTokens.color.border[$status][state]};
       border-radius: ${borderRadius};
       background-color: ${colorPickerTokens.color.background.base[state]};
       width: ${width};
       height: ${height};
 
-      ${!disabled &&
-      !readOnly &&
+      ${!$disabled &&
+      !$readOnly &&
       css`
         cursor: pointer;
 
         &:hover {
-          border-color: ${colorPickerTokens.color.border[status].hovered};
+          border-color: ${colorPickerTokens.color.border[$status].hovered};
           color: ${colorPickerTokens.color.text.base.hovered};
         }
 
         &:focus,
         &:focus-visible {
-          //box-shadow: ${colorPickerTokens.elevation.boxShadow[status]
+          //box-shadow: ${colorPickerTokens.elevation.boxShadow[$status]
             .focused};
-          border-color: ${colorPickerTokens.color.border[status].focused};
+          border-color: ${colorPickerTokens.color.border[$status].focused};
           color: ${colorPickerTokens.color.text.base.focused};
           outline: none;
         }
       `}
 
-      ${disabled &&
+      ${$disabled &&
       css`
         ${disabledMixin(theme)};
       `}

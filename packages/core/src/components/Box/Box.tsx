@@ -2,94 +2,89 @@ import * as React from 'react';
 
 import type { IDataAttrs, ILayoutBox } from '../../declarations';
 import { StyledBox } from './StyledBox';
+import type { Resolve } from '../../typeFunctions';
 
-export interface BoxProps extends IDataAttrs, ILayoutBox {}
+export interface BoxProps extends IDataAttrs, ILayoutBox {
+  ref?: React.Ref<HTMLDivElement>;
+}
 
-export const Box = React.forwardRef<HTMLElement, BoxProps>(
-  (
-    {
-      alignSelf,
-      children,
-      cssTranslate,
-      display,
-      elevation,
-      flex,
-      height,
-      margin,
-      marginBottom,
-      marginLeft,
-      marginRight,
-      marginTop,
-      maxHeight,
-      maxWidth,
-      minHeight,
-      minWidth,
-      overflow,
-      overflowX,
-      overflowY,
-      opacity,
-      padding,
-      paddingBottom,
-      paddingLeft,
-      paddingRight,
-      paddingTop,
-      position,
-      positionBottom,
-      positionLeft,
-      positionRight,
-      positionTop,
-      style,
-      tooltip,
-      verticalAlign,
-      visibility,
-      width,
-      zIndex,
-      ...nativeProps
-    },
-    ref,
-  ) => (
-    <StyledBox
-      {...nativeProps}
-      $alignSelf={alignSelf}
-      css={style}
-      $cssTranslate={cssTranslate}
-      $display={display}
-      $elevation={elevation}
-      $flex={flex}
-      $height={height}
-      $margin={margin}
-      $marginBottom={marginBottom}
-      $marginLeft={marginLeft}
-      $marginRight={marginRight}
-      $marginTop={marginTop}
-      $maxHeight={maxHeight}
-      $maxWidth={maxWidth}
-      $minHeight={minHeight}
-      $minWidth={minWidth}
-      $opacity={opacity}
-      $overflow={overflow}
-      $overflowX={overflowX}
-      $overflowY={overflowY}
-      $padding={padding}
-      $paddingBottom={paddingBottom}
-      $paddingLeft={paddingLeft}
-      $paddingRight={paddingRight}
-      $paddingTop={paddingTop}
-      $position={position}
-      $positionBottom={positionBottom}
-      $positionLeft={positionLeft}
-      $positionRight={positionRight}
-      $positionTop={positionTop}
-      ref={ref}
-      title={tooltip}
-      $verticalAlign={verticalAlign}
-      $visibility={visibility}
-      $width={width}
-      $zIndex={zIndex}
-    >
-      {children}
-    </StyledBox>
-  ),
+export const Box: React.FC<Resolve<BoxProps>> = ({
+  alignSelf,
+  children,
+  cssTranslate,
+  display,
+  elevation,
+  flex,
+  height,
+  margin,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  marginTop,
+  maxHeight,
+  maxWidth,
+  minHeight,
+  minWidth,
+  overflow,
+  overflowX,
+  overflowY,
+  opacity,
+  padding,
+  paddingBottom,
+  paddingLeft,
+  paddingRight,
+  paddingTop,
+  position,
+  positionBottom,
+  positionLeft,
+  positionRight,
+  positionTop,
+  style,
+  tooltip,
+  verticalAlign,
+  visibility,
+  width,
+  zIndex,
+  ...nativeProps
+}) => (
+  <StyledBox
+    {...nativeProps}
+    $alignSelf={alignSelf}
+    css={style}
+    $cssTranslate={cssTranslate}
+    $display={display}
+    $elevation={elevation}
+    $flex={flex}
+    $height={height}
+    $margin={margin}
+    $marginBottom={marginBottom}
+    $marginLeft={marginLeft}
+    $marginRight={marginRight}
+    $marginTop={marginTop}
+    $maxHeight={maxHeight}
+    $maxWidth={maxWidth}
+    $minHeight={minHeight}
+    $minWidth={minWidth}
+    $opacity={opacity}
+    $overflow={overflow}
+    $overflowX={overflowX}
+    $overflowY={overflowY}
+    $padding={padding}
+    $paddingBottom={paddingBottom}
+    $paddingLeft={paddingLeft}
+    $paddingRight={paddingRight}
+    $paddingTop={paddingTop}
+    $position={position}
+    $positionBottom={positionBottom}
+    $positionLeft={positionLeft}
+    $positionRight={positionRight}
+    $positionTop={positionTop}
+    title={tooltip}
+    $verticalAlign={verticalAlign}
+    $visibility={visibility}
+    $width={width}
+    $zIndex={zIndex}
+  >
+    {children}
+  </StyledBox>
 );
-
-Box.displayName = 'Box';

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
+import type { Resolve } from '../../../../typeFunctions';
 import { ICON_BUTTON_REDUCED_SIZE_PROP_MAP } from '../../constants';
 import type { TButtonExpandableState } from '../../../Button';
 import type { TUIColorScheme } from '../../../../declarations';
@@ -33,38 +34,27 @@ export interface IconButtonStatusProps
   state?: TButtonExpandableState;
 }
 
-export const IconButtonStatus = React.forwardRef<
-  HTMLElement,
-  IconButtonStatusProps
->(
-  (
-    {
-      colorScheme = 'help',
-      icon,
-      size = 'md',
-      state = 'enabled',
-      style,
-      ...restIconButtonProps
-    },
-    ref,
-  ) => {
-    const theme = useTheme();
-    return (
-      <IconButton
-        {...restIconButtonProps}
-        colorScheme={colorScheme}
-        icon={icon || getIconButtonStatusIcon(colorScheme)}
-        circular
-        ref={ref}
-        size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
-        state={state}
-        style={mergeStyles(
-          iconButtonStatusMixin({ state, colorScheme, theme }),
-          style,
-        )}
-      />
-    );
-  },
-);
-
-IconButtonStatus.displayName = 'IconButtonStatus';
+export const IconButtonStatus: React.FC<Resolve<IconButtonStatusProps>> = ({
+  colorScheme = 'help',
+  icon,
+  size = 'md',
+  state = 'enabled',
+  style,
+  ...restIconButtonProps
+}) => {
+  const theme = useTheme();
+  return (
+    <IconButton
+      {...restIconButtonProps}
+      colorScheme={colorScheme}
+      icon={icon || getIconButtonStatusIcon(colorScheme)}
+      circular
+      size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
+      state={state}
+      style={mergeStyles(
+        iconButtonStatusMixin({ state, colorScheme, theme }),
+        style,
+      )}
+    />
+  );
+};

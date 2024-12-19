@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-upload",
-  "version": "14.0.0",
+  "version": "14.2.0",
   "description": "",
   "type": "module",
   "scripts": {
@@ -29,14 +29,14 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "@devoinc/genesys-icons": "4.x.x || 5.x.x || 6.x.x",
-    "@devoinc/genesys-ui": "^14.0.0",
-    "filepond-plugin-file-validate-size": "2.x.x",
-    "filepond-plugin-file-validate-type": "1.x.x",
-    "filepond-plugin-image-preview": "4.x.x",
-    "react": "16.x || 17.x || 18.x",
-    "react-filepond": "7.x.x",
-    "styled-components": "5.x.x || 6.x.x"
+    "@devoinc/genesys-icons": "4.x || 5.x || 6.x",
+    "@devoinc/genesys-ui": "^14.2.0",
+    "filepond-plugin-file-validate-size": "2.x",
+    "filepond-plugin-file-validate-type": "1.x",
+    "filepond-plugin-image-preview": "4.x",
+    "react": "^16.3.0 || 17.x || 18.x || 19.x",
+    "react-filepond": "7.x",
+    "styled-components": "5.x || 6.x"
   },
   "engine": {
     "node": ">=16",

@@ -20,12 +20,10 @@ export const colStyles = {
   border: '1px solid #a2b62a',
 } as object;
 
-export const StoryCol = React.forwardRef<HTMLDivElement, StoryColProps>(
-  ({ ...props }, ref) => (
-    <Col {...props} ref={ref} style={{ ...colStyles, ...props.style }}>
-      {props.children}
-    </Col>
-  ),
+export const StoryCol: React.FC<StoryColProps> = ({ ...props }) => (
+  <Col {...props} style={{ ...colStyles, ...props.style }}>
+    {props.children}
+  </Col>
 );
 
 StoryCol.displayName = 'Col';

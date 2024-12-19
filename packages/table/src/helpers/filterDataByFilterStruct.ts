@@ -5,6 +5,7 @@ import {
   TNumberFilterValue,
   type TOptionsFilterValue,
   TBooleanFilterValue,
+  TTextFilterValue,
 } from '../filters';
 import { TFilterColumn } from '../hooks/useFilterStruct/declarations';
 import {
@@ -35,7 +36,7 @@ export const filterDataByFilterStruct =
       }
 
       if (type === 'text') {
-        const res = textFilter(String(a[id]), value);
+        const res = textFilter(String(a[id]), value as TTextFilterValue);
         if (!res) {
           return false;
         }
@@ -55,7 +56,7 @@ export const filterDataByFilterStruct =
       }
       if (type === 'options') {
         const res = optionsFilter(
-          a[id] as string,
+          a[id] as string | string[],
           value as TOptionsFilterValue,
         );
         if (!res) {

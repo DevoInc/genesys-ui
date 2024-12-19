@@ -316,6 +316,7 @@ export const HiddenContent: Story = {
                 showDragGhost={false}
                 sizes={sizesInner}
                 onChange={onChangeInner}
+                hideGutter={!hasFooter}
               >
                 <Box
                   overflow="hidden"

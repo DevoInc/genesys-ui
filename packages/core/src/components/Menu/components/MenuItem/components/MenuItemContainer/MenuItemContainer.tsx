@@ -20,6 +20,7 @@ import {
   type StyledMenuItemInnerProps,
 } from './StyledMenuItemInner';
 import { StyledMenuItem } from './StyledMenuItem';
+import type { Resolve } from '../../../../../../typeFunctions';
 
 export interface MenuItemContainerProps
   extends IStyledPolymorphic,
@@ -34,18 +35,30 @@ export interface MenuItemContainerProps
     IFocusEventAttrs,
     IMouseEventAttrs,
     INavigationAriaAttrs,
-    Pick<IButtonAttrs, 'name' | 'value'>,
-    StyledMenuItemInnerProps {
+    Pick<IButtonAttrs, 'name' | 'value'> {
+  hasExtraLeftSpace?: StyledMenuItemInnerProps['$hasExtraLeftSpace'];
+  unlimitedHeight?: StyledMenuItemInnerProps['$unlimitedHeight'];
+  state?: StyledMenuItemInnerProps['$state'];
   children?: React.ReactNode;
   isItem?: boolean;
+  ref?: React.Ref<HTMLButtonElement>;
 }
 
-export const MenuItemContainer = React.forwardRef<
-  HTMLButtonElement,
-  MenuItemContainerProps
->(({ children, isItem = true, ...restMenuItemContainerProps }, ref) => {
+export const MenuItemContainer: React.FC<Resolve<MenuItemContainerProps>> = ({
+  children,
+  isItem = true,
+  hasExtraLeftSpace,
+  unlimitedHeight,
+  state,
+  ...restMenuItemContainerProps
+}) => {
   const innerContent = (
-    <StyledMenuItemInner {...restMenuItemContainerProps} ref={ref}>
+    <StyledMenuItemInner
+      {...restMenuItemContainerProps}
+      $hasExtraLeftSpace={hasExtraLeftSpace}
+      $unlimitedHeight={unlimitedHeight}
+      $state={state}
+    >
       {children}
     </StyledMenuItemInner>
   );
@@ -54,6 +67,4 @@ export const MenuItemContainer = React.forwardRef<
   ) : (
     innerContent
   );
-});
-
-MenuItemContainer.displayName = 'MenuItemContainer';
+};

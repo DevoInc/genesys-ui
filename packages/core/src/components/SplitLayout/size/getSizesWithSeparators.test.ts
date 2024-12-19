@@ -8,7 +8,12 @@ describe('components', () => {
     describe('size', () => {
       describe('getSizesWithSeparators', () => {
         const cases: [string, TSizes, number, number[]][] = [
-          ['[20, 250] & 10', [20, 250], 10, [20, 10, 250]],
+          [
+            '[20, 250] & 10 should be [15, 10, 245]',
+            [20, 250],
+            10,
+            [15, 10, 245],
+          ],
         ];
         test.each(cases)('%s', (_title, sizes, separatorSize, expected) => {
           expect(getSizesWithSeparators(sizes, separatorSize)).toStrictEqual(

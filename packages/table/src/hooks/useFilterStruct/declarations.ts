@@ -1,7 +1,7 @@
-import type { TTextFilterValue } from '../../filters';
+import { TFilterValue } from '../../declarations';
 
 export type TFilterColumn = {
   id: string;
-  value: TTextFilterValue;
+  value: TFilterValue;
   type: string;
 };

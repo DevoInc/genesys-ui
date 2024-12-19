@@ -23,22 +23,83 @@ import {
   type ContextOptions,
   type FilterContext,
   filterDataByFilterStruct,
+  filterDataByText,
+  updateColDefsWithFilterStruct,
   useFilterStruct,
-  filterColDefsByFilterStruct,
   BasicTable,
 } from '@devoinc/genesys-ui-table';
 
 const data = [
-  { text: 'Christine Jimenez', num: 60, bool: false, option: 'A' },
-  { text: 'Ina Osborne', num: 20, bool: true, option: 'B' },
-  { text: 'Jimmy Hogan', num: 20, bool: true, option: 'C' },
-  { text: 'Myra Bell', num: 57, bool: true, option: 'C' },
-  { text: 'Jane Padilla', num: 46, bool: false, option: 'B' },
-  { text: 'Isabelle Gardner', num: 31, bool: true, option: 'A' },
-  { text: 'Sean Parsons', num: 31, bool: true, option: 'A' },
-  { text: 'Alvin Castro', num: 55, bool: false, option: 'B' },
-  { text: 'Lawrence Holland', num: 56, bool: false, option: 'B' },
-  { text: 'Brandon Robertson', num: 41, bool: true, option: 'C' },
+  {
+    text: 'Christine Jimenez',
+    num: 60,
+    bool: false,
+    option: 'A',
+    multiple: ['M', 'N'],
+  },
+  {
+    text: 'Ina Osborne',
+    num: 20,
+    bool: true,
+    option: 'B',
+    multiple: ['N'],
+  },
+  {
+    text: 'Jimmy Hogan',
+    num: 20,
+    bool: true,
+    option: 'C',
+    multiple: ['M', 'O'],
+  },
+  {
+    text: 'Myra Bell',
+    num: 57,
+    bool: true,
+    option: 'C',
+    multiple: ['N', 'O'],
+  },
+  {
+    text: 'Jane Padilla',
+    num: 46,
+    bool: false,
+    option: 'B',
+    multiple: ['O'],
+  },
+  {
+    text: 'Isabelle Gardner',
+    num: 31,
+    bool: true,
+    option: 'A',
+    multiple: ['M'],
+  },
+  {
+    text: 'Sean Parsons',
+    num: 31,
+    bool: true,
+    option: 'A',
+    multiple: ['N', 'O'],
+  },
+  {
+    text: 'Alvin Castro',
+    num: 55,
+    bool: false,
+    option: 'B',
+    multiple: ['M', 'N', 'O'],
+  },
+  {
+    text: 'Lawrence Holland',
+    num: 56,
+    bool: false,
+    option: 'B',
+    multiple: ['O'],
+  },
+  {
+    text: 'Brandon Robertson',
+    num: 41,
+    bool: true,
+    option: 'C',
+    multiple: ['N'],
+  },
 ];
 
 const colDefs = [
@@ -73,21 +134,47 @@ const colDefs = [
       },
     } as ContextOptions,
   },
+  {
+    id: 'multiple',
+    headerName: 'multiple',
+    preset: 'options',
+    context: {
+      options: {
+        M: { label: 'M' },
+        N: { label: 'N' },
+        O: { label: 'O' },
+      },
+    } as TContextOptions,
+  },
 ];
 
 const FilterTable = () => {
+  const [ textFilter, setTextFilter ] = React.useState(undefined);
   const { filterStruct, onFilter } = useFilterStruct();
-  const dataFiltered = [...data].filter(filterDataByFilterStruct(filterStruct));
+  const dataFiltered = [...data]
+    .filter(filterDataByText(textFilter, colDefs))
+    .filter(filterDataByFilterStruct(filterStruct));
 
   return (
-    <BasicTable
-      showFilters
-      onFilter={(curColDef, value, type) => {
-        onFilter(curColDef.id, value, type);
-      }}
-      colDefs={filterColDefsByFilterStruct(colDefs, filterStruct)}
-      data={dataFiltered}
-    />
+    <>
+      <InputControl
+        aria-label="Contains text..."
+        placeholder="Contains text..."
+        type="search"
+        value={ textFilter }
+        onChange={(ev) => {
+          setTextFilter(ev.target.value);
+        }}
+      />
+      <BasicTable
+        showFilters
+        onFilter={(curColDef, value, type) => {
+          onFilter(curColDef.id, value, type);
+        }}
+        colDefs={updateColDefsWithFilterStruct(colDefs, filterStruct)}
+        data={dataFiltered}
+      />
+    </>
   );
 };
 `}
@@ -164,8 +251,42 @@ next function
   code={`
 <BasicTable
   ...
-  colDefs={filterColDefsByFilterStruct(colDefs, filterStruct)}
+  colDefs={updateColDefsWithFilterStruct(colDefs, filterStruct)}
   ...
 />
 `}
 />
+
+### 4. Filtering by all columns with one text
+
+It is possible to filter a text by all columns instead of by just one column.
+We can set our own text or allow the user to enter it with an `InputControl`.
+
+<Source
+  language="tsx"
+  code={`
+const [ textFilter, setTextFilter ] = React.useState(undefined);
+...
+<InputControl
+  aria-label="Contains text..."
+  placeholder="Contains text..."
+  type="search"
+  value={ textFilter }
+  onChange={(ev) => {
+    setTextFilter(ev.target.value);
+  }}
+/>
+`}
+/>
+
+Now we are ready to combine both column filters and global text filter.
+
+<Source
+  language="tsx"
+  code={`
+const dataFiltered = [...data]
+  .filter(filterDataByText(textFilter, colDefs))
+  .filter(filterDataByFilterStruct(filterStruct));
+`}
+/>
+

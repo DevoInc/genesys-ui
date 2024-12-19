@@ -36,6 +36,7 @@ const data = [
     date: new Date(2024, 9, 1, 0, 0, 0),
     bool: false,
     option: 'A',
+    multiple: ['M', 'N'],
   },
   {
     text: 'Ina Osborne',
@@ -43,6 +44,7 @@ const data = [
     date: new Date(2024, 9, 2, 0, 0, 0),
     bool: true,
     option: 'B',
+    multiple: ['N'],
   },
   {
     text: 'Jimmy Hogan',
@@ -50,6 +52,7 @@ const data = [
     date: new Date(2024, 9, 3, 0, 0, 0),
     bool: true,
     option: 'C',
+    multiple: ['M', 'O'],
   },
   {
     text: 'Myra Bell',
@@ -57,6 +60,7 @@ const data = [
     date: new Date(2024, 9, 4, 0, 0, 0),
     bool: true,
     option: 'C',
+    multiple: ['N', 'O'],
   },
   {
     text: 'Jane Padilla',
@@ -64,6 +68,7 @@ const data = [
     date: new Date(2024, 9, 5, 0, 0, 0),
     bool: false,
     option: 'B',
+    multiple: ['O'],
   },
   {
     text: 'Isabelle Gardner',
@@ -71,6 +76,7 @@ const data = [
     date: new Date(2024, 9, 6, 0, 0, 0),
     bool: true,
     option: 'A',
+    multiple: ['M'],
   },
   {
     text: 'Sean Parsons',
@@ -78,6 +84,7 @@ const data = [
     date: new Date(2024, 9, 7, 0, 0, 0),
     bool: true,
     option: 'A',
+    multiple: ['N', 'O'],
   },
   {
     text: 'Alvin Castro',
@@ -85,6 +92,7 @@ const data = [
     date: new Date(2024, 9, 8, 0, 0, 0),
     bool: false,
     option: 'B',
+    multiple: ['M', 'N', 'O'],
   },
   {
     text: 'Lawrence Holland',
@@ -92,6 +100,7 @@ const data = [
     date: new Date(2024, 9, 9, 0, 0, 0),
     bool: false,
     option: 'B',
+    multiple: ['O'],
   },
   {
     text: 'Brandon Robertson',
@@ -99,6 +108,7 @@ const data = [
     date: new Date(2024, 9, 10, 0, 0, 0),
     bool: true,
     option: 'C',
+    multiple: ['N'],
   },
 ];
 
@@ -144,21 +154,47 @@ const colDefs = [
       },
     } as TContextOptions,
   },
+  {
+    id: 'multiple',
+    headerName: 'Multiple',
+    preset: 'options',
+    context: {
+      options: {
+        M: { label: 'M' },
+        N: { label: 'N' },
+        O: { label: 'O' },
+      },
+    } as TContextOptions,
+  },
 ];
 
 const FilterTable = () => {
+  const [ textFilter, setTextFilter ] = React.useState(undefined);
   const { filterStruct, onFilter } = useFilterStruct();
-  const dataFiltered = [...data].filter(filterDataByFilterStruct(filterStruct));
+  const dataFiltered = [...data]
+    .filter(filterDataByText(textFilter, colDefs))
+    .filter(filterDataByFilterStruct(filterStruct));
 
   return (
-    <BasicTable
-      showFilters
-      onFilter={(curColDef, value, type) => {
-        onFilter(curColDef.id, value, type);
-      }}
-      colDefs={updateColDefsWithFilterStruct(colDefs, filterStruct)}
-      data={dataFiltered}
-    />
+    <>
+      <InputControl
+        aria-label="Contains text..."
+        placeholder="Contains text..."
+        type="search"
+        value={ textFilter }
+        onChange={(ev) => {
+          setTextFilter(ev.target.value);
+        }}
+      />
+      <BasicTable
+        showFilters
+        onFilter={(curColDef, value, type) => {
+          onFilter(curColDef.id, value, type);
+        }}
+        colDefs={updateColDefsWithFilterStruct(colDefs, filterStruct)}
+        data={dataFiltered}
+      />
+    </>
   );
 };
 

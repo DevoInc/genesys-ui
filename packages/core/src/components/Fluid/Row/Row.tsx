@@ -9,6 +9,7 @@ import type { IGlobalAttrs } from '../../../declarations';
 import type { TContainerSpacing, TFluidAs } from '../declarations';
 import { getSpacingPropCss } from '../../../helpers';
 import { getPxFromRem } from '../../../helpers';
+import type { Resolve } from '../../../typeFunctions';
 
 export interface RowProps
   extends Omit<ReactGridRowProps, 'component' | 'gutterWidth'>,
@@ -30,54 +31,44 @@ export interface RowProps
   paddingTop?: TContainerSpacing;
   /** Content of row */
   children?: React.ReactNode;
+  ref?: React.LegacyRef<ReactGridRow> & React.Ref<HTMLDivElement>;
 }
 
-export const Row = React.forwardRef<HTMLDivElement, RowProps>(
-  (
-    {
-      as,
-      children,
-      gutter,
-      marginBottom,
-      marginTop,
-      paddingBottom,
-      paddingTop,
-      style,
-      tooltip,
-      ...reactGridRowProps
-    },
-    ref,
-  ) => {
-    const theme = useTheme();
-    const layoutSpaceTokens = theme.alias.space.layout;
-    const gutterSizeNumber =
-      gutter === '0'
-        ? 0
-        : gutter &&
-          getPxFromRem(layoutSpaceTokens[gutter.replace('layout-', '')]);
+export const Row: React.FC<Resolve<RowProps>> = ({
+  as,
+  children,
+  gutter,
+  marginBottom,
+  marginTop,
+  paddingBottom,
+  paddingTop,
+  style,
+  tooltip,
+  ...reactGridRowProps
+}) => {
+  const theme = useTheme();
+  const layoutSpaceTokens = theme.alias.space.layout;
+  const gutterSizeNumber =
+    gutter === '0'
+      ? 0
+      : gutter &&
+        getPxFromRem(layoutSpaceTokens[gutter.replace('layout-', '')]);
 
-    return (
-      <ReactGridRow
-        {...reactGridRowProps}
-        component={as}
-        gutterWidth={gutter ? gutterSizeNumber : undefined}
-        ref={
-          ref as React.LegacyRef<ReactGridRow> & React.LegacyRef<HTMLDivElement>
-        }
-        style={{
-          ...style,
-          marginBottom: marginBottom && getSpacingPropCss(theme)(marginBottom),
-          marginTop: marginTop && getSpacingPropCss(theme)(marginTop),
-          paddingBottom:
-            paddingBottom && getSpacingPropCss(theme)(paddingBottom),
-          paddingTop: marginTop && getSpacingPropCss(theme)(paddingTop),
-        }}
-        title={tooltip}
-      >
-        {children}
-      </ReactGridRow>
-    );
-  },
-);
-
-Row.displayName = 'Row';
+  return (
+    <ReactGridRow
+      {...reactGridRowProps}
+      component={as}
+      gutterWidth={gutter ? gutterSizeNumber : undefined}
+      style={{
+        ...style,
+        marginBottom: marginBottom && getSpacingPropCss(theme)(marginBottom),
+        marginTop: marginTop && getSpacingPropCss(theme)(marginTop),
+        paddingBottom: paddingBottom && getSpacingPropCss(theme)(paddingBottom),
+        paddingTop: marginTop && getSpacingPropCss(theme)(paddingTop),
+      }}
+      title={tooltip}
+    >
+      {children}
+    </ReactGridRow>
+  );
+};

@@ -9,6 +9,7 @@ import type {
 } from '../../../../declarations';
 import { IconButton, type IconButtonProps } from '../../IconButton';
 import { mergeStyles } from '../../../../helpers';
+import type { Resolve } from '../../../../typeFunctions';
 
 export interface IconButtonCloseProps
   extends Omit<
@@ -38,32 +39,21 @@ export interface IconButtonCloseProps
   colorScheme?: TBlendColorScheme | TNeutralColorScheme;
 }
 
-export const IconButtonClose = React.forwardRef<
-  HTMLElement,
-  IconButtonCloseProps
->(
-  (
-    {
-      colorScheme = 'neutral',
-      size = 'md',
-      state = 'enabled',
-      style,
-      ...restIconButtonProps
-    },
-    ref,
-  ) => (
-    <IconButton
-      {...restIconButtonProps}
-      colorScheme={colorScheme}
-      icon={<GIExitClose />}
-      circular
-      hasBoldIcon
-      ref={ref}
-      size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
-      state={state}
-      style={mergeStyles({ backgroundColor: 'transparent' }, style)}
-    />
-  ),
+export const IconButtonClose: React.FC<Resolve<IconButtonCloseProps>> = ({
+  colorScheme = 'neutral',
+  size = 'md',
+  state = 'enabled',
+  style,
+  ...restIconButtonProps
+}) => (
+  <IconButton
+    {...restIconButtonProps}
+    colorScheme={colorScheme}
+    icon={<GIExitClose />}
+    circular
+    hasBoldIcon
+    size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
+    state={state}
+    style={mergeStyles({ backgroundColor: 'transparent' }, style)}
+  />
 );
-
-IconButtonClose.displayName = 'IconButtonClose';

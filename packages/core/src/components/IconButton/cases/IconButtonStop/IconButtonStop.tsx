@@ -7,6 +7,7 @@ import type { TButtonActionState } from '../../../Button';
 import { IconButton, type IconButtonProps } from '../../IconButton';
 import { iconButtonStopMixin } from './helpers';
 import { mergeStyles } from '../../../../helpers';
+import type { Resolve } from '../../../../typeFunctions';
 
 export interface IconButtonStopProps
   extends Omit<
@@ -34,10 +35,12 @@ export interface IconButtonStopProps
   state?: TButtonActionState;
 }
 
-export const IconButtonStop = React.forwardRef<
-  HTMLElement,
-  IconButtonStopProps
->(({ size = 'md', state = 'enabled', style, ...restIconButtonProps }, ref) => {
+export const IconButtonStop: React.FC<Resolve<IconButtonStopProps>> = ({
+  size = 'md',
+  state = 'enabled',
+  style,
+  ...restIconButtonProps
+}) => {
   const theme = useTheme();
   return (
     <IconButton
@@ -50,12 +53,9 @@ export const IconButtonStop = React.forwardRef<
           }
         />
       }
-      ref={ref}
       size={size}
       state={state}
       style={mergeStyles(iconButtonStopMixin({ size, state, theme }), style)}
     />
   );
-});
-
-IconButtonStop.displayName = 'IconButtonStop';
+};

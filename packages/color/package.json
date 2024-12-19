@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-color",
-  "version": "14.0.0",
+  "version": "14.2.0",
   "description": "",
   "type": "module",
   "scripts": {
@@ -29,11 +29,11 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "@devoinc/genesys-ui": "^14.0.0",
-    "polished": "4.x.x",
-    "react": "16.x || 17.x || 18.x",
-    "react-color": "2.x.x",
-    "styled-components": "5.x.x || 6.x.x"
+    "@devoinc/genesys-ui": "^14.2.0",
+    "polished": "4.x",
+    "react": "^16.3.0 || 17.x || 18.x || 19.x",
+    "react-color": "2.x",
+    "styled-components": "5.x || 6.x"
   },
   "engine": {
     "node": ">=16",

@@ -17,6 +17,7 @@ import type {
 import { Icon } from '../Icon';
 import { StyledEditableContent } from './StyledEditableContent';
 import { StyledEditableContentWrapper } from './StyledEditableContentWrapper';
+import type { Resolve } from '../../typeFunctions';
 
 export interface EditableContentProps
   extends IGlobalAttrs,
@@ -27,12 +28,16 @@ export interface EditableContentProps
     IStyledPolymorphic,
     IStyledOverloadCss {
   children?: React.ReactNode;
+  ref?: React.Ref<HTMLDivElement>;
 }
 
-export const EditableContent: React.FC<EditableContentProps> = React.forwardRef<
-  HTMLDivElement,
-  EditableContentProps
->(({ children, tooltip, style, ...nativeProps }, ref) => {
+export const EditableContent: React.FC<Resolve<EditableContentProps>> = ({
+  children,
+  tooltip,
+  style,
+  ref,
+  ...nativeProps
+}) => {
   const theme = useTheme();
   const iconTokens = theme.cmp.editableContent.icon;
   const iconSize = iconTokens.size.square.base;
@@ -64,6 +69,4 @@ export const EditableContent: React.FC<EditableContentProps> = React.forwardRef<
       )}
     </StyledEditableContentWrapper>
   );
-});
-
-EditableContent.displayName = 'EditableContent';
+};

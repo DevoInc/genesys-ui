@@ -5,7 +5,7 @@ import type { TPanelSize } from './declarations';
 export interface PanelContextProps {
   scrolledBodyContent?: boolean;
   size?: TPanelSize;
-  bodyRef?: React.RefObject<HTMLDivElement>;
+  bodyRef?: React.Ref<HTMLDivElement>;
   removeContentSpace?: boolean;
 }
 

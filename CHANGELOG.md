@@ -1,5 +1,47 @@
 # Changelog
 
+## [14.2.0](https://github.com/DevoInc/genesys-ui/compare/v14.1.4...v14.2.0) (2024-12-18)
+
+### Features
+
+* added react 19 compatibility ([a7a7a93](https://github.com/DevoInc/genesys-ui/commit/a7a7a93754967eb7a658e0ba83e001840c895ef9))
+
+### Bug Fixes
+
+* **core:** styled-components custom property taken by error ([2a66c55](https://github.com/DevoInc/genesys-ui/commit/2a66c5506839757b6ee55f8c54c4880251428591))
+
+## [14.1.4](https://github.com/DevoInc/genesys-ui/compare/v14.1.3...v14.1.4) (2024-12-16)
+
+### Bug Fixes
+
+* **core:** menu item styled components custom prop error ([9b25eb4](https://github.com/DevoInc/genesys-ui/commit/9b25eb48159277f46a25eb98ea86d7952b6e8929))
+
+## [14.1.3](https://github.com/DevoInc/genesys-ui/compare/v14.1.2...v14.1.3) (2024-12-10)
+
+### Bug Fixes
+
+* **core:** fix SplitLayout gutter size not subtracted from sizes ([6221f15](https://github.com/DevoInc/genesys-ui/commit/6221f15be43622a5514ad8fafed5aa49186df192))
+
+## [14.1.2](https://github.com/DevoInc/genesys-ui/compare/v14.1.1...v14.1.2) (2024-12-09)
+
+### Bug Fixes
+
+* **core:** missing $ for styled custom prop ([17e3e7a](https://github.com/DevoInc/genesys-ui/commit/17e3e7a93e45d708fca4acec54a30acc372327a7))
+
+## [14.1.1](https://github.com/DevoInc/genesys-ui/compare/v14.1.0...v14.1.1) (2024-12-09)
+
+### Bug Fixes
+
+* **color:** styled custom props with $ ([98f6cbe](https://github.com/DevoInc/genesys-ui/commit/98f6cbec2aef89b706c475c9fcb519e58b175a3c))
+* **table:** added missing fn options filter for multi options ([62f9a72](https://github.com/DevoInc/genesys-ui/commit/62f9a726be06fb9a66865c1e1abab29cbc95fbce))
+
+## [14.1.0](https://github.com/DevoInc/genesys-ui/compare/v14.0.0...v14.1.0) (2024-12-02)
+
+### Features
+
+* added 'xxs' and 'xs' new size variants to Badge component. ([3f5468d](https://github.com/DevoInc/genesys-ui/commit/3f5468da7800501d888e4113e1e20b6fe6c5e397))
+* added padding prop to Panel components and improvements for several stories ([786b465](https://github.com/DevoInc/genesys-ui/commit/786b465760a192a1861345d788fe97efd67082ad))
+
 ## [14.0.0](https://github.com/DevoInc/genesys-ui/compare/v13.9.0...v14.0.0) (2024-12-02)
 
 ## [13.9.0](https://github.com/DevoInc/genesys-ui/compare/v13.8.0...v13.9.0) (2024-11-28)
