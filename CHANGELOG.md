@@ -1,5 +1,11 @@
 # Changelog
 
+## [14.3.1](https://github.com/DevoInc/genesys-ui/compare/v14.3.0...v14.3.1) (2024-12-19)
+
+### Bug Fixes
+
+* upgrade genesys-icons with color fix ([6faa961](https://github.com/DevoInc/genesys-ui/commit/6faa961d3ad767adac38c3871e6c399085402616))
+
 ## [14.3.0](https://github.com/DevoInc/genesys-ui/compare/v14.2.0...v14.3.0) (2024-12-19)
 
 ### Features
