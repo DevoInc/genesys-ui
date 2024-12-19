@@ -7,10 +7,8 @@ import * as Stories from './CheckboxGroup.stories';
 # CheckboxGroup
 
 Component used to render a group of checkboxes with customizable properties.
-The component takes in a set of child Checkbox components as its children prop,
-and allows for additional customization through props like direction (which
-determines whether the checkboxes are arranged vertically or horizontally),
-legend (which provides a label for the group of checkboxes), or status.
+The component takes in a set of child Checkbox components,
+and allows for additional customization like direction, legend, or status.
 
 ## How to import
 
@@ -18,7 +16,32 @@ legend (which provides a label for the group of checkboxes), or status.
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
+
+## Required
+
+<Canvas of={Stories.Required} />
+
+## Disabled
+
+<Canvas of={Stories.Disabled} />
+
+## With helper and validation message
+
+Sometimes you need to give feedback to the user about the whole group, not only about one of the fields,
+using the 'helper' prop, but also so you can combine that 'helper' and set the 'status' to 'error'
+or any other non-base one to get a validation message.
+
+<Canvas of={Stories.WithHelper} />
+
+<Canvas of={Stories.WithValidation} />
+
+Sometimes, depending on the context, you might need to get a floating helper or validation message,
+because there is no space for docked one.
+
+<Canvas of={Stories.WithFloatingHelper} />
+
+<Canvas of={Stories.WithFloatingValidation} />
 
 ## Related components
 

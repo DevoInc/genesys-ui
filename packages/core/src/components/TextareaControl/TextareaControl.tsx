@@ -40,6 +40,7 @@ export const TextareaControl: React.FC<TextareaControlProps> = ({
   'aria-labelledby': ariaLabelledBy,
   disabled,
   id,
+  readOnly,
   required,
   rows = 4,
   size,
@@ -77,10 +78,11 @@ export const TextareaControl: React.FC<TextareaControlProps> = ({
       css={style}
       disabled={contextBasedProps.disabled}
       id={contextBasedProps.id}
+      readOnly={readOnly}
       required={contextBasedProps.required}
       rows={rows}
       $size={contextBasedProps.size}
-      status={contextBasedProps.status}
+      $status={contextBasedProps.status}
       title={tooltip}
     />
   );

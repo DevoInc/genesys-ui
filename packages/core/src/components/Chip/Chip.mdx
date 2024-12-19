@@ -6,8 +6,6 @@ import * as Stories from './Chip.stories';
 
 # Chip
 
-## Overview
-
 Chips are small, versatile components that can represent various types of input,
 characteristics, or activities. They enable users to enter data, select options,
 filter content, or trigger specific functions within an application.
@@ -20,9 +18,7 @@ filter content, or trigger specific functions within an application.
 
 <Canvas of={Stories.Playground} />
 
-## Cases
-
-### Multiple selection controlled
+## Multiple selection controlled
 
 In scenarios where multiple selections are allowed (using a form checkbox
 behavior), you can use a controlled Chip with a rendered form checkbox input as
@@ -30,7 +26,7 @@ HTML and its corresponding keyboard utility.
 
 <Canvas of={Stories.MultipleControlled} />
 
-### Multiple selection uncontrolled
+## Multiple selection uncontrolled
 
 If you need an uncontrolled behavior, you cannot use the onChange event handler
 and must use the native behavior of a checkbox.
@@ -41,7 +37,7 @@ depending on whether the internal checkbox is checked or not.
 
 <Canvas of={Stories.MultipleUncontrolled} />
 
-### Single selection controlled
+## Single selection controlled
 
 When a single selection is required (using a form radio behavior), you must add
 the selectionScheme prop and set it to 'single'.
@@ -50,7 +46,7 @@ and its corresponding keyboard utility.
 
 <Canvas of={Stories.SingleControlled} />
 
-### Single selection uncontrolled
+## Single selection uncontrolled
 
 If you need an uncontrolled behavior, you must assign the name prop with the
 same value for every Chip.
@@ -61,21 +57,46 @@ HTML and its corresponding keyboard utility.
 
 <Canvas of={Stories.SingleUncontrolled} />
 
-### Custom based in internal components
+## Readonly
 
-Sometimes you need something very specific, which is not possible using only the
-component and its props.
-In these cases, you can use its internal components (`_` notation) to define
-that specific usage.
-We don't recommend this usage, but anyway it's available for very specific
-needs.
+Sometimes you might need to have a Chip only for giving feedback, or it's removable but not interactive. In these cases
+you have to set the 'state' prop to 'readonly', and the `Chip` won't be selectable or clickable.
+
+<Canvas of={Stories.Readonly} />
+
+## Removable
+
+Sometimes you might need to have a `Chip` for filtering, so the applied filter is rendered as a chip which is removable.
+In this case, There are two props to be used: 'removable' and 'onRemove'.
+
+Setting the first one to true, a remove icon button is rendered to the right of the content, and the second one is
+to define the function which will be launched when that icon button is clicked.
+
+This type of `Chip` could be interactive or not, depending on the 'state' prop is set to 'readonly' or not.
+
+<Canvas of={Stories.Removable} />
+
+## Custom based in internal components
+
+Sometimes you need something very specific, which is not possible using only the component and its props.
+
+In these cases, you can use its internal components (`_` notation) to define that specific usage.
+
+We don't recommend this usage, but anyway it's available for very specific needs.
 
 <Canvas of={Stories.Custom} />
 
 ## Related components
 
-- [ChipGroup](?path=/docs/components-form-chipgroup--docs)
+### Internal
+
 - [Icon](?path=/docs/components-feedback-icon--docs)
+- [IconButtonRemove](?path=/docs/components-button-iconbuttonremove--overview)
+
+### Used in
+
+- [ChipGroup](?path=/docs/components-form-chipgroup--docs)
+- [SelectControl](?path=/story/components-form-selectcontrol-cases--multiple-basic)
 
 ## Props
 

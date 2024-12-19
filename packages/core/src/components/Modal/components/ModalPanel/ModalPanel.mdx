@@ -1,0 +1,24 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './ModalPanel.stories';
+
+<Meta title="Components/Layout/Modal/Components/ModalPanel/Overview" />
+
+# Modal.\_Panel
+
+Panel of the Modal component which wraps the header, body and footer blocks.
+
+## How to import
+
+<Source code={`import { Modal } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+Defined with dot notation as `Modal._Panel`, this is an internal component, that's because it has the `_` notation
+after the period. This kind of component should only be used in a very specific context when we need a customization.
+
+<Canvas of={Stories.Playground} />
+
+## Props
+
+<ArgTypes of={Stories} />

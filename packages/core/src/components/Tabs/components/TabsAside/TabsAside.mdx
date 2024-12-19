@@ -1,0 +1,25 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './TabsAside.stories';
+
+<Meta title="Components/Navigation/Tabs/Components/TabsAside/Overview" />
+
+# Tabs.Aside
+
+This component is used to add custom content to be placed before
+or/and after the tab list items block.
+
+## How to import
+
+<Source code={`import { Tabs } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+It's defined with dot notation as `Tabs.Aside`. This component should be used only as a
+child of a `Tabs` or `Tabs` based component.
+
+<Canvas of={Stories.Playground} />
+
+## Props
+
+<ArgTypes of={Stories} />

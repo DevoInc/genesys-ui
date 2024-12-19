@@ -1,16 +1,21 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import { PaginationLabel } from './PaginationLabel';
+import { DEFAULT_PAGE_SIZE } from '../../constants';
 
 const meta: Meta<typeof PaginationLabel> = {
-  title: 'Components/Navigation/Pagination/Components/Label',
+  title: 'Components/Navigation/Pagination/Components/PaginationLabel',
   component: PaginationLabel,
+  args: {
+    size: 'md',
+    pageSize: DEFAULT_PAGE_SIZE,
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof PaginationLabel>;
 
-const texts = {
+const customTexts = {
   infoTextFn: ({
     totalItems,
     pageSize,
@@ -26,31 +31,31 @@ const texts = {
       ? `${totalItems} elementos`
       : `${pageFirstItem} - ${pageLastItem} de ${totalItems} elementos`;
   },
-}
-
-export const BaseContent: Story = {
-  args: {
-    size: 'md',
-    content: '1 - 5 of 150 items',
-  },
 };
 
-export const BaseInfoText: Story = {
+export const Playground: Story = {
   args: {
-    size: 'md',
-    totalItems: 10,
-    pageSize: 3,
+    totalItems: 100,
     page: 0,
     lastPage: 4,
   },
 };
 
-export const BaseInfoTextCsutom: Story = {
+export const UsingCustomContent: Story = {
+  tags: ['isHidden'],
   args: {
-    size: 'lg',
-    texts: texts,
-    totalItems: 10,
-    pageSize: 3,
+    content: '1 - 5 of 150 items',
+    pageSize: undefined,
+  },
+};
+
+export const UsingCustomTexts: Story = {
+  tags: ['isHidden'],
+  args: {
+    totalItems: 200,
+    pageFirstItem: 0,
+    pageLastItem: 20,
+    texts: customTexts,
     page: 0,
     lastPage: 4,
     colorScheme: 'success',

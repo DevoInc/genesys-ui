@@ -3,7 +3,7 @@ import { HFlex, type HFlexProps } from '../../../HFlex';
 import { TBaseSize } from 'src/declarations';
 
 export interface PaginationContainerProps extends HFlexProps {
-  size: TBaseSize;
+  size?: TBaseSize;
 }
 
 export const PaginationContainer: React.FC<PaginationContainerProps> = ({

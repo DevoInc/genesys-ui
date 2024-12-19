@@ -1,0 +1,30 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './LoaderGradientContainer.stories';
+import * as LoaderStories from '../../Loader.stories';
+
+<Meta title="Components/Feedback/Loader/Components/LoaderGradientContainer/Overview" />
+
+# Loader.GradientContainer
+
+The gradient container overlay of the Loader component when we want a contextual loading transition, but related with
+hidden contents usually linked with scroll .
+
+## How to import
+
+<Source code={`import { Loader } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+Defined with dot notation as `Loader.GradientContainer`, this component should be used only as a child of a
+`Loader` or `Loader` based component.
+
+<Canvas of={Stories.Playground} />
+
+## Integrated with Loader
+
+<Canvas of={LoaderStories.ScrollProgress} />
+
+## Props
+
+<ArgTypes of={Stories} />

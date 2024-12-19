@@ -15,7 +15,7 @@ export type TProgressBarSize = 'sm' | 'md';
 export type TProgressBarType = 'standard' | 'circular';
 export type TProgressBarCustomInfo = {
   startInfo: string;
-  endInfo: string;
+  endInfo?: string;
 };
 
 export interface IBaseProgressBar {

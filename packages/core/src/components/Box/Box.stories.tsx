@@ -15,7 +15,7 @@ const meta: Meta<typeof Box> = {
 export default meta;
 type Story = StoryObj<typeof Box>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     children: (
       <StyledLayoutContentHelper>Box content</StyledLayoutContentHelper>

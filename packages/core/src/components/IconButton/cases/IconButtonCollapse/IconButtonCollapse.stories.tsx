@@ -16,7 +16,7 @@ const meta: Meta<typeof IconButtonCollapse> = {
 export default meta;
 type Story = StoryObj<typeof IconButtonCollapse>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: (args) =>
     ((props) => {
       const [expanded, setExpanded] = React.useState(false);
@@ -27,6 +27,7 @@ export const Base: Story = {
             setExpanded(!expanded);
           }}
           state={expanded ? 'expanded' : props.state}
+          tooltip={expanded ? 'Collapse this content' : 'Expand this content'}
         />
       );
     })(args),

@@ -6,13 +6,13 @@ import * as Stories from './Toast.stories';
 
 # Toast
 
-## Overview
+It is used to display non-intrusive, temporary messages to the
+user, such as notifications, success messages, or errors.
 
 The Toast component is a wrapper around the
 [react-toastify](https://fkhadra.github.io/react-toastify/introduction/)
 library's emitter that provides additional custom props to configure its styles
-and content. It is used to display non-intrusive, temporary messages to the
-user, such as notifications, success messages, or errors.
+and content.
 
 **Important**
 
@@ -20,6 +20,7 @@ It is important to note that the ToastContainer component must be rendered only
 once in the application tree to properly display the toasts.
 If it is unclear where to place it, rendering it at the application root is
 recommended.
+
 For more information on installation and usage, refer to the
 [react-toastify documentation](https://fkhadra.github.io/react-toastify/installation#the-gist).
 
@@ -29,7 +30,7 @@ For more information on installation and usage, refer to the
 
 ## Basic usage
 
-<Canvas of={Stories.Base} story={{ height: '24rem' }} />
+<Canvas of={Stories.Playground} story={{ height: '24rem' }} />
 
 ## Scrolled content
 
@@ -50,6 +51,14 @@ Toast panel.
 With the `collapsable` prop you can get the content collapsable, to get a more compact notification.
 
 <Canvas of={Stories.CollapsableContent} story={{ height: '34rem' }} />
+
+## Related components
+
+- [Panel](?path=/docs/components-layout-panel--overview)
+- [Icon](?path=/docs/components-feedback-icon--overview)
+- [Badge](?path=/docs/components-feedback-badge--overview)
+- [Flex](?path=/docs/components-layout-flex--overview)
+- [HFlex](?path=/docs/components-layout-hflex--overview)
 
 ## Props
 

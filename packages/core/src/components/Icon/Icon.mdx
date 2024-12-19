@@ -6,8 +6,6 @@ import * as Stories from './Icon.stories';
 
 # Icon
 
-## Overview
-
 Component used to display an icon associated with different states or actions.
 It can be used as a standalone component or as a child of another component.
 
@@ -20,7 +18,18 @@ It can be used as a standalone component or as a child of another component.
 You have to use the `Icon` component as a wrapper of a React component from
 `@devoinc/genesys-icons`, as `<GIActivity />`, `<GIAngleDown />`... etc.
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
+
+## Predefined Sizes
+
+<Canvas of={Stories.Sizes} />
+
+## Predefined color schemes and custom color
+
+The first group are examples of pre-defined 'colorScheme' prop values and the second one to the right is using
+the 'color' prop which allows to assign any desired color.
+
+<Canvas of={Stories.ColorSchemes} />
 
 ## Overwriting props
 

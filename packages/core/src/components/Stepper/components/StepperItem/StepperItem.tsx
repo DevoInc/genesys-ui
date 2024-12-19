@@ -23,12 +23,12 @@ export interface StepperItemProps
 
 export const InternalStepperItem: React.FC<StepperItemProps> = ({
   children,
-  hasDivider,
+  hasDivider = true,
   hiddenStatusText,
   size = 'md',
   status = 'pending',
   style,
-  stepNumberPos,
+  stepNumberPos = 0,
 }) => (
   <StepperItemContainer style={style}>
     {hasDivider && <StepperItemDivider />}

@@ -6,6 +6,7 @@ import {
   scrollbars,
   disabledMixin,
   getSpacingPropCss,
+  srOnlyMixin,
 } from '@devoinc/genesys-ui';
 
 import { FilePond, registerPlugin } from 'react-filepond';
@@ -414,6 +415,15 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
         right: 0.5625em;
       }
     }
+      
+    /* Legend - FilePond */
+      
+    &--data {
+      legend {
+          ${srOnlyMixin};
+      }
+    }
+  }
 
     /* Hopper - FilePond */
 

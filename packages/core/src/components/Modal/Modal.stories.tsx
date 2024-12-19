@@ -40,7 +40,29 @@ const meta: Meta<typeof Modal> = {
 export default meta;
 type Story = StoryObj<typeof Modal>;
 
-export const Base: Story = {
+export const Playground: Story = {
+  render: (args) =>
+    ((props) => {
+      return (
+        <Modal {...props}>
+          <Modal.Header title="Modal title" />
+          <Modal.Body>
+            <Typography.Paragraph gutterBottom="cmp-md">
+              A still more glorious dawn awaits finite but unbounded Hypatia
+              Cambrian explosion white dwarf the carbon in our apple pies.
+              Vanquish the impossible the sky calls to us Flatland two ghostly
+              white figures in coveralls and helmets are softly dancing are
+              creatures of the cosmos tendrils of gossamer clouds?
+            </Typography.Paragraph>
+            <Input label="Demo input" id="demo-input" />
+          </Modal.Body>
+        </Modal>
+      );
+    })(args),
+};
+
+export const OpenedByTrigger: Story = {
+  tags: ['isHidden'],
   render: (args) =>
     ((props) => {
       const [isOpen, setOpen] = React.useState<boolean>(false);
@@ -144,7 +166,7 @@ const ModalWithButtons = ({
 };
 
 export const Dialog: Story = {
-  name: 'As Dialog',
+  tags: ['isHidden'],
   render: () => (
     <ModalWithButtons
       status="error"
@@ -157,12 +179,12 @@ export const Dialog: Story = {
 };
 
 export const WithButtons: Story = {
-  name: 'With footer buttons',
+  tags: ['isHidden'],
   render: () => <ModalWithButtons />,
 };
 
 export const WithActions: Story = {
-  name: 'With header actions',
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [isOpen, setOpen] = React.useState<boolean>(false);
@@ -233,6 +255,7 @@ export const WithActions: Story = {
 };
 
 export const Animated: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [isOpen, setOpen] = React.useState<boolean>(false);
@@ -269,6 +292,7 @@ export const Animated: Story = {
 };
 
 export const Custom: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [isOpen, setOpen] = React.useState<boolean>(false);

@@ -6,7 +6,7 @@ import { HFlex } from './HFlex';
 import { StyledLayoutContentHelper } from '../../../stories/components/styled';
 
 const meta: Meta<typeof HFlex> = {
-  title: 'Components/Layout/Flex/HFlex',
+  title: 'Components/Layout/HFlex',
   component: HFlex,
   args: {
     alignItems: 'center',
@@ -19,8 +19,31 @@ const meta: Meta<typeof HFlex> = {
 export default meta;
 type Story = StoryObj<typeof HFlex>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
+    children: (
+      <>
+        <Flex.Item>
+          <StyledLayoutContentHelper>1. HFlex item</StyledLayoutContentHelper>
+        </Flex.Item>
+        <Flex.Item>
+          <StyledLayoutContentHelper>2. HFlex item</StyledLayoutContentHelper>
+        </Flex.Item>
+        <Flex.Item>
+          <StyledLayoutContentHelper>3. HFlex item</StyledLayoutContentHelper>
+        </Flex.Item>
+        <Flex.Item>
+          <StyledLayoutContentHelper>4. HFlex item</StyledLayoutContentHelper>
+        </Flex.Item>
+      </>
+    ),
+  },
+};
+
+export const ChildrenFitFullWidth: Story = {
+  tags: ['isHidden'],
+  args: {
+    childrenFitFullWidth: true,
     children: (
       <>
         <Flex.Item>
@@ -42,7 +65,6 @@ export const Base: Story = {
 
 export const HFlexAndHFlexItems: Story = {
   tags: ['isHidden'],
-  name: 'Using HFlex.Item',
   render: (args) =>
     ((args) => (
       <HFlex {...args}>

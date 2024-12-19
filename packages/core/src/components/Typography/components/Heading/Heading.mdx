@@ -1,0 +1,54 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Heading.stories';
+
+<Meta title="Components/Text/Typography/Components/Block/Heading/Overview" />
+
+# Typography.Heading
+
+This component generates HTML headings that serve as titles or
+subtitles for various components, such as Panel Header titles, BoxMessage
+titles, and Grouping titles in menus and forms.
+
+## How to import
+
+<Source code={`import { Typography } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+It's defined with dot notation as `Typography.Heading`, because this component belongs to `Typography` group.
+
+<Canvas of={Stories.Playground} />
+
+To use standard HTML headings (h1-h6) with Typography.Heading, set the type
+prop to any 'h-' value. By default, they render as an HTML div. However, it's
+possible to render them as any h1 to h6 element by using the 'as' prop. In this example
+we render a heading with HTML tag 'h5' instead of the default 'div'.
+
+<Canvas of={Stories.UsingAS} />
+
+## Sizes
+
+<Canvas of={Stories.Sizes} />
+
+## Hero
+
+For commercial or on-boarding contexts that require extra-large headings, we can
+use any 'hero-' value for the 'type' prop. Here's an example:
+
+<Canvas of={Stories.Hero} />
+
+## Overline
+
+For a subtle heading to group menu items, form fields, and similar items, we can
+use any `overline-` value for the 'type' prop.
+
+<Canvas of={Stories.Overline} />
+
+## Editable heading
+
+<Canvas of={Stories.HeadingEditable} />
+
+## Props
+
+<ArgTypes of={Stories} />

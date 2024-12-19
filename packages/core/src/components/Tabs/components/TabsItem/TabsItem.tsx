@@ -50,7 +50,7 @@ export const InternalTabsItem: React.FC<Resolve<TabsItemProps>> = ({
   onClose,
   onClick,
   rel,
-  size,
+  size = 'md',
   state = 'enabled',
   target,
   tooltip,
@@ -79,6 +79,7 @@ export const InternalTabsItem: React.FC<Resolve<TabsItemProps>> = ({
       </TabsItemLink>
       {onClose && (
         <TabsItemClose
+          size={evalSize}
           state={state}
           tooltip={closeTooltip}
           onClick={(e) => {
@@ -104,8 +105,8 @@ TabsItem._Container = TabsItemContainer;
 TabsItem._Icon = TabsItemIcon;
 TabsItem._Link = TabsItemLink;
 
-InternalTabsItem.displayName = 'Tabs.Item';
-TabsItem._Close.displayName = 'Tabs.Item._Close';
-TabsItem._Container.displayName = 'Tabs.Item._Container';
-TabsItem._Icon.displayName = 'Tabs.Item._Icon';
-TabsItem._Link.displayName = 'Tabs.Item._Link';
+InternalTabsItem.displayName = 'TabsItem';
+TabsItem._Close.displayName = 'TabsItem._Close';
+TabsItem._Container.displayName = 'TabsItem._Container';
+TabsItem._Icon.displayName = 'TabsItem._Icon';
+TabsItem._Link.displayName = 'TabsItem._Link';

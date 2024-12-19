@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Field } from './Field';
-import { StyledInputControl } from '../InputControl/components/InputControlInput/StyledInputControl';
 import { InputControl } from '../InputControl';
 
 const meta: Meta<typeof Field> = {
@@ -15,8 +14,6 @@ const meta: Meta<typeof Field> = {
   },
   argTypes: {
     helper: {
-      defaultValue:
-        'The sky calls to us a very small stage in a vast cosmic arena not a sunrise but a galaxyrise',
       control: {
         type: 'text',
       },
@@ -27,27 +24,16 @@ const meta: Meta<typeof Field> = {
 export default meta;
 type Story = StoryObj<typeof Field>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     id: 'story-id',
     label: 'Label for story',
-    children: (
-      <StyledInputControl
-        id="story-id"
-        readOnly
-        style={{
-          alignItems: 'center',
-          flex: '1 1 auto',
-          display: 'flex',
-          border: 'none',
-        }}
-      />
-    ),
+    children: <InputControl aria-label="Field label" />,
   },
 };
 
-export const BasicUsageWithHelper: Story = {
-  name: 'Using an InputControl as child',
+export const LabelAndHelper: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const label = 'Field label';
@@ -65,7 +51,7 @@ export const BasicUsageWithHelper: Story = {
     })(),
 };
 export const AdvancedUsage: Story = {
-  name: 'Custom based in internal components',
+  tags: ['isHidden'],
   render: () =>
     (() => (
       <Field._Container>

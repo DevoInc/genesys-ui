@@ -3,11 +3,12 @@ import { Meta, StoryObj } from '@storybook/react';
 import { ModalHeader } from '../../components';
 
 const meta: Meta<typeof ModalHeader> = {
-  title: 'Components/Layout/Modal/Components',
+  title: 'Components/Layout/Modal/Components/ModalHeader',
   component: ModalHeader,
   args: {
     actions: [],
     title: 'Modal title',
+    subtitle: 'Modal Subtitle',
     onRequestClose: () => alert('Close action!'),
   },
 };
@@ -15,6 +16,4 @@ const meta: Meta<typeof ModalHeader> = {
 export default meta;
 type Story = StoryObj<typeof ModalHeader>;
 
-export const Header: Story = {
-  name: 'Modal.Header',
-};
+export const Playground: Story = {};

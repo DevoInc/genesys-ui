@@ -1,0 +1,25 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Caption.stories';
+
+<Meta title="Components/Text/Typography/Components/Block/Caption/Overview" />
+
+# Typography.Caption
+
+This component is similar to Paragraph one, but it's intended to
+be used for short text blocks. Therefore, by default, it's limited to one line
+and the 'sm' size prop value.
+
+## How to import
+
+<Source code={`import { Typography } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+It's defined with dot notation as `Typography.Caption`, because this component belongs to `Typography` group.
+
+<Canvas of={Stories.Playground} />
+
+## Props
+
+<ArgTypes of={Stories} />

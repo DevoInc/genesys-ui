@@ -18,10 +18,10 @@ const meta: Meta<typeof Banner> = {
 export default meta;
 type Story = StoryObj<typeof Banner>;
 
-export const Base: Story = {};
+export const Playground: Story = {};
 
 export const Actions: Story = {
-  name: 'With actions',
+  tags: ['isHidden'],
   args: {
     actions: (
       <>
@@ -33,7 +33,7 @@ export const Actions: Story = {
 };
 
 export const Subtle: Story = {
-  name: 'Subtle variant',
+  tags: ['isHidden'],
   args: {
     status: 'success',
     content: 'The comment was created successfully.',
@@ -53,7 +53,7 @@ export const Subtle: Story = {
 
 const cookieId = 'genesys-ui-box-message-cookie-example';
 export const Cookie: Story = {
-  name: 'Removable based on cookies',
+  tags: ['isHidden'],
   args: {
     content: lorem,
     title: 'Cookie Example',
@@ -103,7 +103,7 @@ export const Cookie: Story = {
 };
 
 export const Custom: Story = {
-  name: 'Custom based in internal components',
+  tags: ['isHidden'],
   render: (args) =>
     ((args) => (
       <Banner {...args} status="error">

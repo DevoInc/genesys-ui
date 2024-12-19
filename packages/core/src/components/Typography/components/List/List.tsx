@@ -34,7 +34,7 @@ const InternalList: React.FC<ListProps> = ({
   as,
   children,
   colorScheme = 'base',
-  gutterBottom = 'cmp-md',
+  gutterBottom,
   listStyle = 'unordered',
   size = 'md',
   style,

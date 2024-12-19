@@ -11,9 +11,7 @@ It provides a range of customization options to control the appearance and
 behavior of the text area, as well as additional props for accessibility and
 guidance.
 
-Textarea is a wrapper over the
-[TextareaControl](?path=/docs/components-core-form-textareacontrol--docs)
-component, and uses the [Field](?path=/docs/components-core-form-field--docs)
+Textarea is a wrapper over the [TextareaControl](?path=/docs/components-core-form-textareacontrol--docs) component, and uses the [Field](?path=/docs/components-core-form-field--docs)
 component to provide additional functionality such as labeling, helper error
 messages, and validation.
 
@@ -23,7 +21,25 @@ messages, and validation.
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
+
+## Disabled and readonly
+
+<Canvas of={Stories.DisabledAndReadonly} />
+
+## Status
+
+<Canvas of={Stories.Status} />
+
+## Helper and validation
+
+<Canvas of={Stories.HelperAndValidation} />
+
+## With character counter
+
+It is possible to add a character counter to keep track of the text length and inform of a possible limit.
+
+<Canvas of={Stories.WithCharacterCounter} />
 
 ## Related components
 

@@ -45,7 +45,7 @@ const meta: Meta<typeof toast> = {
 export default meta;
 type Story = StoryObj<typeof toast>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: (args) =>
     ((props) => (
       <>
@@ -67,7 +67,7 @@ export const Base: Story = {
 };
 
 export const WithScroll: Story = {
-  name: 'Scrolled content',
+  tags: ['isHidden'],
   args: {
     content: (
       <>
@@ -85,7 +85,7 @@ export const WithScroll: Story = {
 };
 
 export const WithActions: Story = {
-  name: 'With actions',
+  tags: ['isHidden'],
   args: {
     actionApply: {
       label: 'Apply',
@@ -106,7 +106,7 @@ export const WithActions: Story = {
 };
 
 export const CollapsableContent: Story = {
-  name: 'Collapsable content',
+  tags: ['isHidden'],
   args: {
     collapsable: true,
     content: (

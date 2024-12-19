@@ -1,0 +1,29 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './ToolbarGroup.stories';
+
+<Meta title="Components/Layout/Toolbar/Components/ToolbarGroup/Overview" />
+
+# Toolbar.Group
+
+Container to group blocks in the Toolbar component.
+
+It's based on `Flex` component so its interface and usage is almost the same.
+
+## How to import
+
+<Source code={`import { Toolbar } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+Defined with dot notation as `Toolbar.Group`, it must be used only as a child of a `Toolbar` or `Toolbar` based component.
+
+<Canvas of={Stories.Playground} />
+
+## Related components
+
+- [Flex](?path=/docs/components-layout-flex--overview)
+
+## Props
+
+<ArgTypes of={Stories} />

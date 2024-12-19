@@ -1,0 +1,37 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Deleted.stories';
+
+<Meta title="Components/Text/Typography/Components/Inline/Deleted/Overview" />
+
+# Typography.Deleted
+
+This component renders an HTML `<del>` element, which represents a range
+of text that has been deleted from a document.
+
+## How to import
+
+<Source code={`import { Typography } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+<Canvas of={Stories.Playground} />
+
+This can be used when rendering "track changes" or source code diff information, for example.
+
+It's defined with dot notation as `Typography.Deleted`, because this component belongs to `Typography` group.
+
+## As children
+
+Inline typographic components are typically used within other typographic block
+components.
+
+They inherit the main text styles from those block components, but they also
+have their own inline-specific styles, such as text-decoration, font-weight, and
+vertical-align.
+
+<Canvas of={Stories.AsChildren} />
+
+## Props
+
+<ArgTypes of={Stories} />

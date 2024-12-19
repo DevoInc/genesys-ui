@@ -18,7 +18,7 @@ const meta: Meta<typeof Drawer> = {
 export default meta;
 type Story = StoryObj<typeof Drawer>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     children: (
       <VFlex padding="cmp-md cmp-lg">
@@ -42,7 +42,6 @@ export const Base: Story = {
 
 export const Closable: Story = {
   tags: ['isHidden'],
-  name: 'Closable using Panel component',
   render: () =>
     (() => {
       const [closed, setClosed] = React.useState(false);

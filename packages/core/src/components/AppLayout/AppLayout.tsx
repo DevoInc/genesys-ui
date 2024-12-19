@@ -3,23 +3,36 @@ import { useTheme } from 'styled-components';
 
 import { Grid } from '../Grid';
 import { AppLayoutBar, AppLayoutContent, AppLayoutLead } from './components';
+import type {
+  IStyledOverloadCss,
+  IStyledPolymorphic,
+} from '../../declarations';
+import { mergeStyles } from '../../helpers';
 
-export interface AppLayoutProps {
+export interface AppLayoutProps extends IStyledPolymorphic, IStyledOverloadCss {
   children: React.ReactNode;
 }
 
-export const InternalAppLayout: React.FC<AppLayoutProps> = ({ children }) => {
+export const InternalAppLayout: React.FC<AppLayoutProps> = ({
+  as,
+  children,
+  style,
+}) => {
   const theme = useTheme();
   return (
     <Grid
+      as={as}
       gridTemplateAreas='"app-bar" "app-lead" "app-content"'
       gridTemplateRows="auto auto 1fr"
-      style={{
-        width: theme.cmp.appLayout.size.width,
-        height: theme.cmp.appLayout.size.height,
-        backgroundColor: theme.cmp.appLayout.color.background,
-        overflow: 'hidden',
-      }}
+      style={mergeStyles(
+        {
+          width: theme.cmp.appLayout.size.width,
+          height: theme.cmp.appLayout.size.height,
+          backgroundColor: theme.cmp.appLayout.color.background,
+          overflow: 'hidden',
+        },
+        style,
+      )}
     >
       {children}
     </Grid>

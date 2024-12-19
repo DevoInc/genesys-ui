@@ -8,7 +8,7 @@ export interface TabsItemIconProps extends IconProps {}
 
 export const TabsItemIcon: React.FC<TabsItemIconProps> = ({
   children,
-  size,
+  size = 'md',
   style,
   ...restIconProps
 }) => {

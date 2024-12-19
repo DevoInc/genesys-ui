@@ -1,0 +1,37 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as ListStories from './List.stories';
+import * as ListItemStories from '../ListItem/ListItem.stories';
+
+<Meta title="Components/Text/Typography/Components/Block/List/Overview" />
+
+# Typography.List
+
+List component can render an unordered list (by default,
+represented as an HTML ul) or an ordered list (represented as an HTML
+'ol').
+
+## How to import
+
+<Source code={`import { Typography } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+These lists typically display items as bullets or numbered items.
+
+Each child component must be a `Typography.List.Item` which renders an HTML `<li>` element.
+
+They are defined with dot notation as `Typography.List` and `Typography.List.Item`, because these components
+belong to `Typography` group.
+
+<Canvas of={ListStories.Playground} />
+
+## Props
+
+### List
+
+<ArgTypes of={ListStories} />
+
+### List.Item
+
+<ArgTypes of={ListItemStories} />

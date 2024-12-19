@@ -6,8 +6,6 @@ import * as Stories from './Loader.stories';
 
 # Loader
 
-## Overview
-
 The `Loader` component serves to notify the user of a waiting period,
 temporarily halting their interaction with the application.
 
@@ -25,6 +23,7 @@ children.
 There are pre-defined components to be used as children of a `Loader`. They are
 wrappers of other basic components of the library as `Spinner`, `ProgressBar`
 and `DevoLogoSpinner` ones.
+
 We recommend to use these components as children, because of design patterns and
 because they are able to inherit some props (colorScheme, size... etc.)
 automatically from their parent by a React context:
@@ -36,7 +35,7 @@ automatically from their parent by a React context:
 - **Loader.DevoLogoSpinner**: it's the equivalent to the `DevoLogoSpinner`
   component. It's used as child in global usages.
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
 There are established usage patterns for the `Loader`, which fall into two
 categories: **global loading** and **contextual loading**.
@@ -96,12 +95,16 @@ entire page and utilizes an animated logo as the loading indicator.
 
 <Canvas of={Stories.Global} />
 
-## Props
-
-<ArgTypes of={Stories} />
-
 ## Related components
 
 - [Loader.Global](?path=/story/components-core-feedback-loader-globalloader--docs)
 - [Loader.Contextual](?path=/docs/components-core-feedback-loader-contextualloader--docs)
 - [Loader.ContextualScroll](?path=/docs/components-core-feedback-loader-contextualscrollloader--docs)
+- [Overlay](?path=/docs/components-feedback-overlay--overview)
+- [ProgressBar](?path=/docs/components-feedback-progressbar--overview)
+- [ProgressBar](?path=/docs/components-feedback-progressbar--overview)
+- [SpinnerLoader](?path=/docs/components-feedback-spinnerloader--overview)
+
+## Props
+
+<ArgTypes of={Stories} />

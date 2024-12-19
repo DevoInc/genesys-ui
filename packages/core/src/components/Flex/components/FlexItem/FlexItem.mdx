@@ -8,8 +8,6 @@ import * as FlexStories from '../../Flex.stories';
 
 # Flex.Item
 
-## Overview
-
 To achieve specific layout behaviors for individual child components in Flex
 container components such as Flex, HFlex, VFlex, and Wrap, you can use Flex.Item
 to wrap each child.
@@ -20,20 +18,22 @@ to wrap each child.
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+It's defined with dot notation as `Flex.Item`, because this component can be used to
+define the behavior of `Flex` children, and it should be used always as a child of a `Flex` or `Flex` based
+component.
+
+<Canvas of={Stories.Playground} />
 
 To apply spacing and flex styles such as flex, align-self, order, width, and
 margin, you can use Flex.Item props.
 
-<Canvas of={FlexStories.Base} />
+<Canvas of={FlexStories.Playground} />
 
 For more information on using Flex.Item components
 as children of Flex container components,
 refer to the Structure section in [Flex](?path=/docs/components-core-layout-flex-docs--docs).
 
-## Cases
-
-### Using the as property
+## Using the as property
 
 The `as` property allow these components to be rendered as any HTML tag:
 'div', 'li', 'section'... etc.
@@ -50,8 +50,6 @@ import { Flex } from '@devoinc/genesys-ui';
 
 const MyFlexCmp = () => (
 
-{' '}
-
 <Flex as={'ul'}>
   <Flex.Item as={'li'}>Child 1</Flex.Item>
   <Flex.Item as={'li'}>Child 2</Flex.Item>
@@ -59,14 +57,17 @@ const MyFlexCmp = () => (
 </Flex>
 ); `} />
 
+## Spacing props
+
 <Markdown>{spacingProps}</Markdown>
-
-## Props
-
-<ArgTypes of={Stories} />
 
 ## Related components
 
 - [Flex](?path=/docs/components-core-layout-flex-flex--docs)
 - [HFlex](?path=/docs/components-core-layout-flex-hflex--docs)
 - [VFlex](?path=/docs/components-core-layout-flex-vflex--docs)
+- [Wrap](?path=/docs/components-core-layout-flex-wrap--docs)
+
+## Props
+
+<ArgTypes of={Stories} />

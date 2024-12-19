@@ -23,7 +23,7 @@ const meta: Meta<typeof Overlay> = {
 export default meta;
 type Story = StoryObj<typeof Overlay>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: (args) => (
     <Box position="relative">
       <Typography.Paragraph gutterBottom="cmp-md">{lorem}</Typography.Paragraph>

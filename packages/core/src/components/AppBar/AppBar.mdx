@@ -6,8 +6,6 @@ import * as Stories from './AppBar.stories';
 
 # AppBar
 
-## Overview
-
 Component used for creating a navigation bar. It can be customized to fit
 various use cases.
 
@@ -50,11 +48,9 @@ Therefore, you have a lot of different ways of defining the content of the
 - A mix using props and pre-defined components.
 - ...
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
-## Cases
-
-### Compact
+## Compact
 
 Sometimes, your app or page has its own app bar, so in these cases you can use
 the `compact` variant with less height and spacing.
@@ -63,7 +59,7 @@ the `compact` variant with less height and spacing.
 
 <Canvas of={Stories.CompactWithAnotherToolbar} />
 
-### Custom content
+## Custom content
 
 You can create a custom `AppBar`content using the pre-defined components
 (`AppBar.Item`, `AppBar.Navigation`, `AppBar.Heading` and `AppBar.Divider`) or

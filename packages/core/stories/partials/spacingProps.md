@@ -1,10 +1,6 @@
-## Spacing props
-
-In a flex structure, we can apply spacing to margin or padding properties on any edge (top, right, bottom, and left).
-
-When assigning values to spacing props, such as 'spacing', 'vSpacing', or 'hSpacing' of flex
-container components or assigning layout style props to Flex.Item, Box,
-or any layout component, values must be selected from a predefined list.
+When assigning values to spacing props, such as 'spacing', margin, padding, gap... etc. of any layout component
+as Box, Flex, HFlex, Flex.Item... etc. the values must be selected from a predefined list. This predefined values
+are based in a design tokens brand, so they are equal in any Genesys context.
 
 This list includes values such as '0', 'auto', 'inherit', 'cmp-xxs', 'cmp-xs',
 'cmp-sm', 'cmp-md', 'cmp-lg', 'cmp-xl', 'cmp-xxl', 'cmp-xxxl', 'layout-xxs',

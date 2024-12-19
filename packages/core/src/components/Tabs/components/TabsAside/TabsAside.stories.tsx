@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Tabs } from '../../Tabs';
 
 const meta: Meta<typeof Tabs.Aside> = {
-  title: 'Components/Navigation/Tabs/Components',
+  title: 'Components/Navigation/Tabs/Components/TabsAside',
   component: Tabs.Aside,
 };
 
@@ -12,7 +12,7 @@ export default meta;
 
 type Story = StoryObj<typeof Tabs.Aside>;
 
-export const Aside: Story = {
+export const Playground: Story = {
   render: (args) =>
     ((args) => (
       <Tabs>

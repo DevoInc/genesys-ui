@@ -6,10 +6,9 @@ import * as Stories from './TagGroup.stories';
 
 # TagGroup
 
-## Overview
-
 The TagGroup component is used to group and display multiple
 Tag components together in a horizontal layout.
+
 It is useful when displaying multiple tags related to a certain item or
 category.
 
@@ -30,7 +29,7 @@ It is a simple wrapper of the `Tag` component which is able to inherit some
 props automatically from its parent by a React context: size, quiet,
 colorScheme... etc.
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
 We recommend to use this component, but anyway you can use also a `Tag`
 component.
@@ -61,6 +60,11 @@ prop value is type string, then automatically it's added as `aria-label` value
 to the group.
 
 <Canvas of={Stories.WithLabel} />
+
+## Related components
+
+- [Flex](?path=/docs/components-layout-flex--overview)
+- [Label](?path=/docs/components-form-label--overview)
 
 ## Props
 

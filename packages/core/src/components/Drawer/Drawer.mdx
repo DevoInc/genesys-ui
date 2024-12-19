@@ -6,13 +6,12 @@ import * as Stories from './Drawer.stories';
 
 # Drawer
 
-## Overview
-
-It's a component based on a panel which slides out from the edge of the screen.
+It's a component based on a resizable and closable panel which slides out from the edge of the screen.
 It can be useful when you need users to complete a task or view some details
 without leaving the current page.
-This panel is resizable, and it's very easy to make it closable too, using a
-Panel component.
+
+It's based in the [react-dock](https://www.npmjs.com/package/react-dock) library,
+and this is the [demo](https://alexkuz.github.io/react-dock/demo/).
 
 ## How to import
 
@@ -22,7 +21,7 @@ Panel component.
 
 As a wrapper of other contents which are its children.
 
-<Canvas of={Stories.Base} story={{ height: '60rem' }} />
+<Canvas of={Stories.Playground} story={{ height: '60rem' }} />
 
 ## Closable
 

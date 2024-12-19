@@ -15,7 +15,7 @@ const meta: Meta<typeof Grid> = {
 export default meta;
 type Story = StoryObj<typeof Grid>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     gridTemplateAreas: 'sidebar header sidebar main',
     gridTemplateColumns: '200px auto',

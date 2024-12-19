@@ -2,21 +2,31 @@ import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './PaginationLabel.stories';
 
-<Meta of={Stories} />
+<Meta title="Components/Navigation/Pagination/Components/PaginationLabel/Overview" />
 
-# Label
+# Pagination.Label
 
-The initial info of the `Pagination` component. Usually to show how many items
+The initial info of the Pagination component. Usually to show how many items
 are rendered.
 
 ## How to import
 
-You have to use the component as dot notation of the main component as
-`Pagination.Label`.
+<Source code={`import { Pagination } from '@devoinc/genesys-ui';`} />
 
-<Canvas of={Stories.BaseInfoText} />
+## Basic usage
 
-### Props
+You have to define the component as dot notation of the main component as `Pagination.Label`.
+
+<Canvas of={Stories.Playground} />
+
+## Custom content
+
+<Canvas of={Stories.UsingCustomContent} />
+
+## Custom texts and color scheme
+
+<Canvas of={Stories.UsingCustomTexts} />
+
+## Props
 
 <ArgTypes of={Stories} />
-

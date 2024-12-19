@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-
-import { StoryCol as Col } from '../__stories__';
+import { Box } from '../../Box';
+import { Col } from './Col';
+import { colStyles } from '../__stories__';
 
 const meta: Meta<typeof Col> = {
   title: 'Components/Layout/Fluid/Col',
@@ -11,10 +12,10 @@ const meta: Meta<typeof Col> = {
 export default meta;
 type Story = StoryObj<typeof Col>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     sm: 12,
-    children: 'Col',
+    children: <Box style={{ ...colStyles }}>Col</Box>,
   },
   render: (args) =>
     ((props) => {

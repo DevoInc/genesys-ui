@@ -26,7 +26,7 @@ const meta: Meta<typeof SplitLayout> = {
 export default meta;
 type Story = StoryObj<typeof SplitLayout>;
 
-export const Base: Story = {
+export const Playground: Story = {
   tags: ['noWrap'],
   args: {
     showDragGhost: false,

@@ -9,8 +9,8 @@ export interface LoaderProgressBarProps
   extends Omit<ProgressBarProps, 'showStatus' | 'type'> {}
 
 export const LoaderProgressBar: React.FC<LoaderProgressBarProps> = ({
-  colorScheme,
-  size,
+  colorScheme = 'dark',
+  size = 'md',
   ...restProgressBarProps
 }) => {
   const context = React.useContext(LoaderContext);

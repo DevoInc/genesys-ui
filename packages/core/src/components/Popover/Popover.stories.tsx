@@ -16,7 +16,7 @@ const meta: Meta<typeof Popover> = {
 export default meta;
 type Story = StoryObj<typeof Popover>;
 
-export const Base: Story = {
+export const Playground: Story = {
   parameters: {
     layout: 'centered',
   },
@@ -47,7 +47,7 @@ export const Base: Story = {
 };
 
 export const WithArrow: Story = {
-  name: 'With arrow',
+  tags: ['isHidden'],
   parameters: {
     layout: 'centered',
   },
@@ -89,7 +89,7 @@ export const WithArrow: Story = {
 };
 
 export const AsDropdownMenu: Story = {
-  name: 'As dropdown menu',
+  tags: ['isHidden'],
   render: () => {
     const popoverId = 'base';
     return (
@@ -118,6 +118,7 @@ export const AsDropdownMenu: Story = {
   },
 };
 export const Nested: Story = {
+  tags: ['isHidden'],
   render: () => {
     const popoverId = 'nested';
     return (
@@ -211,7 +212,7 @@ export const Nested: Story = {
 };
 
 export const AccessToStateFromContent: Story = {
-  name: 'Access to state from content',
+  tags: ['isHidden'],
   render: () => {
     const popoverId = 'access-to-state';
     return (
@@ -263,7 +264,7 @@ export const AccessToStateFromContent: Story = {
 };
 
 export const OnHover: Story = {
-  name: 'On hover',
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const popoverId = 'on-hover';
@@ -343,7 +344,7 @@ export const OnHover: Story = {
 };
 
 export const ComplexPanel: Story = {
-  name: 'Complex panel',
+  tags: ['isHidden'],
   render: () => {
     const popoverId = 'complex-panel';
     return (
@@ -381,7 +382,7 @@ export const ComplexPanel: Story = {
 };
 
 export const DisabledOutsideEvent: Story = {
-  name: 'Disabled outside event',
+  tags: ['isHidden'],
   render: () => {
     const popoverId = 'disabled-click';
     return (

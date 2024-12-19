@@ -12,7 +12,7 @@ const meta: Meta<typeof DecoratorBar> = {
 export default meta;
 type Story = StoryObj<typeof DecoratorBar>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: (args) => (
     <div style={{ height: '40px', width: '40px' }}>
       <DecoratorBar {...args} />

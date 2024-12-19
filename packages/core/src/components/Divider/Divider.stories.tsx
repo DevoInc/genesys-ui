@@ -1,6 +1,7 @@
+import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Divider } from '../';
+import { Divider, HFlex } from '../';
 
 const meta: Meta<typeof Divider> = {
   title: 'Components/Layout/Divider',
@@ -10,4 +11,22 @@ const meta: Meta<typeof Divider> = {
 export default meta;
 type Story = StoryObj<typeof Divider>;
 
-export const Base: Story = {};
+export const Playground: Story = {};
+
+export const CustomColor: Story = {
+  tags: ['isHidden'],
+  args: {
+    customColor: 'red',
+  },
+};
+
+export const Types: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <HFlex>
+        <Divider {...props} vertical />
+        <Divider {...props} width="200px" />
+      </HFlex>
+    ))(args),
+};

@@ -6,8 +6,6 @@ import * as Stories from './InputControl.stories';
 
 # InputControl
 
-## Overview
-
 The Input component provides a way for users to enter free-form text data.
 
 It's important to choose the appropriate text field `type` based on the type of
@@ -20,16 +18,49 @@ This ensures that the input is validated and processed correctly.
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
+
+## Disabled and readonly
+
+<Canvas of={Stories.DisabledAndReadonly} />
+
+## Status
+
+<Canvas of={Stories.Status} />
+
+## With addons
+
+<Canvas of={Stories.WithAddons} />
+
+## With icon
+
+<Canvas of={Stories.WithIcon} />
+
+## Search type
+
+We can hide the auto-rendered type search icon whe it might be redundant. E.g.
+when the `InputControl` is combined with an `IconButton` or a `Button` which
+they already have the usual search icon.
+
+<Canvas sourceState="shown" of={Stories.SearchType} />
+
+## Password type
+
+If we select the type password for the `InputControl`, then it's rendered an `IconButton`
+floating at the right of the field, which allows to show/hide the password value.
+
+<Canvas sourceState="shown" of={Stories.PasswordType} />
+
+## Other types
+
+These are the types which are not being used in other existing components (as checkbox, radio... etc.)
+and they are neither 'search' nor 'password' type, already treated previously.
+
+<Canvas of={Stories.Types} />
 
 ## Advanced usage
 
-We can get any case of the component using only `InputControl` and its props as
-in this example with addons and icon:
-
-<Canvas sourceState="shown" of={Stories.WithAddonsAndIcons} />
-
-But if we need a customization, or simply we want to use a specific piece of the
+If we need a customization, or simply we want to use a specific piece of the
 component we have its internal components available following dot notation.
 
 - `InputControl._Container`: the outermost container which distributes the
@@ -47,27 +78,11 @@ needs, usually because we need custom styles for some piece of the component.
 
 <Canvas sourceState="shown" of={Stories.AdvancedUsage} />
 
-## Search type
-
-We can hide the auto-rendered type search icon whe it might be redundant. E.g.
-when the `InputControl` is combined with an `IconButton` or a `Button` which
-they already have the usual search icon.
-
-<Canvas sourceState="shown" of={Stories.SearchType} />
-
-## Password type
-
-If we select the type password for the `InputControl`, then it's rendered an `IconButton`
-floating at the right of the field, which allows to show/hide the password value.
-
-<Canvas sourceState="shown" of={Stories.PasswordType} />
-
 ## Related components
 
 - [Input](?path=/docs/components-form-input--docs)
 - [Pagination](?path=/docs/components-core-navigation-pagination--docs)
-- [Month & Time](?path=/docs/components-datetime-datetimerange--docs): they are
-  used in DateTimeRange component.
+- [Month & Time](?path=/docs/components-datetime-datetimerange--docs)
 
 ## Props
 

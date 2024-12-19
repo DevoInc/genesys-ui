@@ -6,8 +6,6 @@ import * as Stories from './Banner.stories';
 
 # Banner
 
-## Overview
-
 Component designed to display a message or notification to the user, with
 customizable content, title, and status.
 
@@ -17,7 +15,7 @@ customizable content, title, and status.
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
 ## With actions
 
@@ -51,8 +49,10 @@ You can make the `Banner` removable, based on cookies, using the `close` prop.
 
 Sometimes you need something very specific, which is not possible using only the
 component and its props.
+
 In these cases, you can use its internal components (`_` notation) to define
 that specific usage.
+
 We don't recommend this usage, but anyway it's available for very specific
 needs.
 
@@ -60,6 +60,13 @@ The `Banner._Icon` and the `Banner._Actions` inherit automatically the `status`
 prop from its parent `Banner._Container` by context.
 
 <Canvas of={Stories.Custom} />
+
+## Related components
+
+- [InlineMessage.Banner](?path=/docs/components-feedback-inlinemessage--overview#banner)
+- [Icon](?path=/docs/components-feedback-icon--overview)
+- [Flex](?path=/docs/components-layout-flex--overview)
+- [HFlex](?path=/docs/components-layout-hflex--overview)
 
 ## Props
 

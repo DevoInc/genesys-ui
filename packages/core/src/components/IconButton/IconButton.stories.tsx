@@ -12,7 +12,7 @@ import {
   GITextStyleBold,
   GITimeEdit,
 } from '@devoinc/genesys-icons';
-import { Box, IconButton, SpinnerLoader } from '../..';
+import { Box, HFlex, IconButton, SpinnerLoader, VFlex } from '../..';
 
 const meta: Meta<typeof IconButton> = {
   title: 'Components/Button/IconButton',
@@ -27,15 +27,94 @@ const meta: Meta<typeof IconButton> = {
 export default meta;
 type Story = StoryObj<typeof IconButton>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     icon: <GIHeartFull />,
     tooltip: 'Favourite',
   },
 };
 
+export const Sizes: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <HFlex>
+        <IconButton {...props} size="xxs" icon={<GIHeartFull />} />
+        <IconButton {...props} size="xs" icon={<GIHeartFull />} />
+        <IconButton {...props} size="sm" icon={<GIHeartFull />} />
+        <IconButton {...props} size="md" icon={<GIHeartFull />} />
+        <IconButton {...props} size="lg" icon={<GIHeartFull />} />
+      </HFlex>
+    ))(args),
+};
+
+export const States: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <HFlex>
+        <IconButton {...props} icon={<GIHeartFull />} />
+        <IconButton {...props} state="disabled" icon={<GIHeartFull />} />
+        <IconButton {...props} state="expanded" icon={<GIHeartFull />} />
+        <IconButton {...props} state="selected" icon={<GIHeartFull />} />
+        <IconButton {...props} state="hovered" icon={<GIHeartFull />} />
+        <IconButton {...props} state="focused" icon={<GIHeartFull />} />
+        <IconButton {...props} state="pressed" icon={<GIHeartFull />} />
+        <IconButton {...props} state="loading" icon={<GIHeartFull />} />
+        <IconButton
+          {...props}
+          state="loading-error"
+          colorScheme="error"
+          icon={<GIHeartFull />}
+        />
+        <IconButton
+          {...props}
+          state="loading-success"
+          colorScheme="success"
+          icon={<GIHeartFull />}
+        />
+      </HFlex>
+    ))(args),
+};
+
+export const WithBadge: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <HFlex>
+        <IconButton {...props} icon={<GIHeartFull />} hasBadge />
+        <IconButton {...props} icon={<GIHeartFull />} hasBadge badgeText="8" />
+      </HFlex>
+    ))(args),
+};
+
+export const Wide: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <VFlex>
+        <VFlex.Item>
+          <IconButton {...props} icon={<GIHeartFull />} wide />
+        </VFlex.Item>
+        <HFlex>
+          <IconButton {...props} icon={<GIHeartFull />} wide />
+          <IconButton {...props} icon={<GIHeartFull />} wide />
+          <IconButton {...props} icon={<GIHeartFull />} wide />
+        </HFlex>
+      </VFlex>
+    ))(args),
+};
+
+export const Circular: Story = {
+  tags: ['isHidden'],
+  args: {
+    circular: true,
+    icon: <GIHeartFull />,
+  },
+};
+
 export const WithChildren: Story = {
-  name: 'With children',
+  tags: ['isHidden'],
   args: {
     circular: true,
     icon: <GIRealTime />,
@@ -48,7 +127,7 @@ export const WithChildren: Story = {
 };
 
 export const AsLink: Story = {
-  name: 'As link',
+  tags: ['isHidden'],
   args: {
     href: 'https://www.devo.com',
     target: '_blank',
@@ -58,7 +137,7 @@ export const AsLink: Story = {
 };
 
 export const WithDropdown: Story = {
-  name: 'With dropdown',
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [expanded, setExpanded] = React.useState(false);
@@ -74,7 +153,7 @@ export const WithDropdown: Story = {
 };
 
 export const Custom: Story = {
-  name: 'Custom based in internal components',
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [expanded, setExpanded] = React.useState(false);
@@ -93,7 +172,7 @@ export const Custom: Story = {
 };
 
 export const MultipleUncontrolled: Story = {
-  name: 'Multiple uncontrolled',
+  tags: ['isHidden'],
   args: {
     selectionScheme: 'multiple',
     value: 'option',
@@ -102,7 +181,7 @@ export const MultipleUncontrolled: Story = {
 };
 
 export const MultipleControlled: Story = {
-  name: 'Multiple controlled',
+  tags: ['isHidden'],
   args: {
     selectionScheme: 'multiple',
   },
@@ -121,7 +200,7 @@ export const MultipleControlled: Story = {
 };
 
 export const SingleUncontrolled: Story = {
-  name: 'Single uncontrolled',
+  tags: ['isHidden'],
   args: {
     selectionScheme: 'single',
     name: 'option',
@@ -131,7 +210,7 @@ export const SingleUncontrolled: Story = {
 };
 
 export const SingleControlled: Story = {
-  name: 'Single controlled',
+  tags: ['isHidden'],
   args: {
     selectionScheme: 'single',
     value: 'Option',

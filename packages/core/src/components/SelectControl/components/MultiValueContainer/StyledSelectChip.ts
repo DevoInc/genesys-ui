@@ -1,9 +1,12 @@
 import styled, { css } from 'styled-components';
 
+import type { TChipSize } from '../../../Chip/declarations';
 import { StyledButtonContainer } from '../../../Button/components/ButtonContainer/StyledButtonContainer';
 import { StyledChipContainer } from '../../../Chip/components/ChipContainer/StyledChipContainer';
 
-export const StyledSelectChip = styled(StyledChipContainer)`
+export const StyledSelectChip = styled(StyledChipContainer)<{
+  size?: TChipSize;
+}>`
   ${({ theme }) => {
     const selectTokens = theme.cmp.selectControl;
     const chipTokens = selectTokens.chip;

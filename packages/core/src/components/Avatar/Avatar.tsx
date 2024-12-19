@@ -102,7 +102,7 @@ export const InternalAvatar: React.FC<AvatarProps> = ({
         cssTranslate={variant === 'circle' ? '-75%,-75%' : '-50%,-50%'}
         zIndex={1}
       >
-        {badge({ size: AVATAR_SIZE_BADGE_MAP[size], colorScheme: 'info' })}
+        {badge({ size: AVATAR_SIZE_BADGE_MAP[size], colorScheme })}
       </Box>
     )}
   </AvatarContainer>

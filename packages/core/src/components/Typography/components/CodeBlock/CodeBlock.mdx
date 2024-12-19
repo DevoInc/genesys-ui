@@ -1,0 +1,24 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './CodeBlock.stories';
+
+<Meta title="Components/Text/Typography/Components/Block/CodeBlock/Overview" />
+
+# Typography.CodeBlock
+
+This component displays its contents styled in a fashion intended to
+indicate that the text is a fragment of computer code.
+
+## How to import
+
+<Source code={`import { Typography } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+It's defined with dot notation as `Typography.CodeBlock`, because this component belongs to `Typography` group.
+
+<Canvas of={Stories.Playground} />
+
+## Props
+
+<ArgTypes of={Stories} />

@@ -1,4 +1,4 @@
-import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
 
 import * as Stories from './Pagination.stories';
 
@@ -6,13 +6,21 @@ import * as Stories from './Pagination.stories';
 
 # Pagination
 
-## Overview
-
 Component that provides a set of controls to navigate through a large set of
 data that is divided into pages.
-There is a set of components which has to be used to create a `Pagination`
-component.
-These are the pre-defined components based on dot notation:
+
+## How to import
+
+<Source code={`import { Pagination } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+<Canvas of={Stories.Playground} />
+
+## Custom usage
+
+If you need a customization, or simply you want to show/hide some of the blocks: label, first-last buttons... etc.
+there are its internal components available following dot notation:
 
 - `Pagination.Label`: The initial info block. Usually to show how many items
   are rendered. E.g. '1 - 5 of 150 items'.
@@ -21,12 +29,16 @@ These are the pre-defined components based on dot notation:
 
 Depending on the space or other circumstances you can use all these components
 or only some of them. In the same way, the `Pagination.Nav` component has props
-to hide some parts.
+to hide some parts, as in this example where the first and last page buttons are hidden.
 
-## How to import
+<Canvas of={Stories.Custom} />
 
-<Source code={`import { Pagination } from '@devoinc/genesys-ui';`} />
+## Components
 
-## Basic usage
+- [Pagination.\_Label](?path=/docs/components-layout-modal-components--docs#modal_backdrop)
+- [Pagination.\_Range](?path=/docs/components-layout-modal-components--docs#modal_panel)
+- [Pagination.\_Nav](?path=/docs/components-layout-modal-components--docs#modalheader)
 
-<Canvas of={Stories.UsePagination} />
+## Props
+
+<ArgTypes of={Stories} />

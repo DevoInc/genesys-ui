@@ -6,11 +6,10 @@ import * as Stories from './ProgressBar.stories';
 
 # ProgressBar
 
-## Overview
-
-The `ProgressBar` component is used to display the progress of an ongoing task,
+This component is used to display the progress of an ongoing task,
 and to communicate either an undefined waiting time or the duration of a process
 to users.
+
 It is an important visual indicator that informs users about the status of
 long-running or complex tasks, and helps to improve the user experience by
 giving them a sense of how much time is left before the task is completed.
@@ -21,7 +20,7 @@ giving them a sense of how much time is left before the task is completed.
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
 ## Circular
 
@@ -34,6 +33,24 @@ giving them a sense of how much time is left before the task is completed.
 Or in linear mode with extra information.
 
 <Canvas of={Stories.WithCustomInfo} />
+
+## Sizes
+
+<Canvas of={Stories.Sizes} />
+
+## Status
+
+<Canvas of={Stories.Status} />
+
+## Indeterminate
+
+When you don't know the state of the process in every moment, then you can use this kind of progress bar.
+
+<Canvas of={Stories.Indeterminate} />
+
+## Animated
+
+<Canvas of={Stories.Animated} />
 
 ## With validation helper and accessible
 

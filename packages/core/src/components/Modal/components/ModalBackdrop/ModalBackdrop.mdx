@@ -1,0 +1,25 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './ModalBackdrop.stories';
+
+<Meta title="Components/Layout/Modal/Components/ModalBackdrop/Overview" />
+
+# Modal.\_Backdrop
+
+Backdrop of the Modal component which renders the overlay and is able to receive the click
+to close the Modal.
+
+## How to import
+
+<Source code={`import { Modal } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+Defined with dot notation as `Modal._Backdrop`, this is an internal component, that's because it has the `_` notation after the period.
+This kind of component should only be used in a very specific context when we need a customization.
+
+<Canvas of={Stories.Playground} story={{ height: '40rem' }} />
+
+## Props
+
+<ArgTypes of={Stories} />

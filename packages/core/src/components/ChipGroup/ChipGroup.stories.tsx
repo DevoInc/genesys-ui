@@ -29,7 +29,7 @@ const meta: Meta<typeof ChipGroup> = {
 export default meta;
 type Story = StoryObj<typeof ChipGroup>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     children: (
       <>
@@ -42,6 +42,7 @@ export const Base: Story = {
 };
 
 export const MultipleSelection: Story = {
+  tags: ['isHidden'],
   render: (args) =>
     ((props) => {
       const [selectedChips, setSelectedChips] = React.useState({
@@ -96,6 +97,7 @@ export const MultipleSelection: Story = {
 };
 
 export const SingleSelection: Story = {
+  tags: ['isHidden'],
   render: (args) =>
     ((props) => {
       const [selectedChip, setSelectedChip] = React.useState(0);

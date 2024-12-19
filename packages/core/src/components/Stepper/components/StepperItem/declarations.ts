@@ -8,6 +8,6 @@ export interface IStepperItem extends IStyledOverloadCss {
   hiddenStatusText?: string;
   children?: React.ReactNode;
   size?: TStepperSize;
-  status: TStepperStatus;
+  status?: TStepperStatus;
   stepNumberPos?: number;
 }

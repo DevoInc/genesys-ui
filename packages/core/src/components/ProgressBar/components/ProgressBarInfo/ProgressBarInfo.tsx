@@ -67,8 +67,9 @@ export const ProgressBarInfo: React.FC<ProgressBarInfoProps> = ({
         flexDirection || (evalType === 'circular' ? 'column' : 'row')
       }
       flexWrap={flexWrap}
+      gap="cmp-xs"
       justifyContent={
-        justifyContent || (evalType === 'circular' ? 'center' : 'space-between')
+        justifyContent || (evalType === 'circular' ? 'center' : 'flex-end')
       }
       marginLeft={marginLeft || (evalType === 'circular' ? '0' : 'cmp-md')}
       position={position || (evalType === 'circular' ? 'absolute' : 'relative')}

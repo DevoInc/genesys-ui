@@ -11,4 +11,4 @@ const meta: Meta<typeof DevoLogoSpinner> = {
 export default meta;
 type Story = StoryObj<typeof DevoLogoSpinner>;
 
-export const Base: Story = {};
+export const Playground: Story = {};

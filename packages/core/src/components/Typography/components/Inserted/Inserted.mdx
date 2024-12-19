@@ -1,0 +1,36 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Inserted.stories';
+
+<Meta title="Components/Text/Typography/Components/Inline/Inserted/Overview" />
+
+# Typography.Inserted
+
+This component renders an HTML `<ins>` element, which represents a range
+of text that has been inserted or added to a document. This can be used when
+rendering "track changes"or source code diff information, for example.
+
+## How to import
+
+<Source code={`import { Typography } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+<Canvas of={Stories.Playground} />
+
+It's defined with dot notation as `Typography.Inserted`, because this component belongs to `Typography` group.
+
+## As children
+
+Inline typographic components are typically used within other typographic block
+components.
+
+They inherit the main text styles from those block components, but they also
+have their own inline-specific styles, such as text-decoration, font-weight, and
+vertical-align.
+
+<Canvas of={Stories.AsChildren} />
+
+## Props
+
+<ArgTypes of={Stories} />

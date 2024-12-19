@@ -1,18 +1,27 @@
+import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Small } from './Small';
+import { Typography } from '../../Typography';
 
 const meta: Meta<typeof Small> = {
-  title: 'Components/Text/Typography/Inline',
+  title: 'Components/Text/Typography/Components/Inline/Small',
   component: Small,
+  args: {
+    children: 'Small text for big thoughts',
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Small>;
 
-export const BaseSmall: Story = {
+export const Playground: Story = {};
+
+export const AsChildren: Story = {
   tags: ['isHidden'],
-  args: {
-    children: 'Small text for big thoughts',
-  },
+  render: () => (
+    <Typography.Paragraph>
+      This is your <Typography.Small>small content</Typography.Small>
+    </Typography.Paragraph>
+  ),
 };

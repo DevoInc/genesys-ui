@@ -1,0 +1,28 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Lead.stories';
+
+<Meta title="Components/Text/Typography/Components/Block/Lead/Overview" />
+
+# Typography.Lead
+
+This component is designed to be used as a subtitle or summary block alongside a Heading component,
+usually for more commercial or feature contents.
+
+## How to import
+
+<Source code={`import { Typography } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+It's defined with dot notation as `Typography.Lead`, because this component belongs to `Typography` group.
+
+<Canvas of={Stories.Playground} />
+
+## As subtitle
+
+<Canvas of={Stories.AsSubtitle} />
+
+## Props
+
+<ArgTypes of={Stories} />

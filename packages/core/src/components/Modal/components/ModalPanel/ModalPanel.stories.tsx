@@ -5,15 +5,14 @@ import { ModalPanel } from './ModalPanel';
 import { Typography } from '../../../Typography';
 
 const meta: Meta<typeof ModalPanel> = {
-  title: 'Components/Layout/Modal/Components',
+  title: 'Components/Layout/Modal/Components/ModalPanel',
   component: ModalPanel,
 };
 
 export default meta;
 type Story = StoryObj<typeof ModalPanel>;
 
-export const Panel: Story = {
-  name: 'Modal._Panel',
+export const Playground: Story = {
   render: (args) =>
     ((props) => {
       return (

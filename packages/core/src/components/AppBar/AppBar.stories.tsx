@@ -18,7 +18,7 @@ const meta: Meta<typeof AppBar> = {
 export default meta;
 type Story = StoryObj<typeof AppBar>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     heading: 'AppBar heading',
     sticky: true,

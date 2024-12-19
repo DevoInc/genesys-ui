@@ -1,0 +1,35 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Small.stories';
+
+<Meta title="Components/Text/Typography/Components/Inline/Small/Overview" />
+
+# Typography.Small
+
+This component renders an HTML `<em>` element which marks text that has
+stress emphasis. It can be nested, with each level of nesting indicating a greater degree of emphasis.
+
+## How to import
+
+<Source code={`import { Typography } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+<Canvas of={Stories.Playground} />
+
+It's defined with dot notation as `Typography.Small`, because this component belongs to `Typography` group.
+
+## As children
+
+Inline typographic components are typically used within other typographic block
+components.
+
+They inherit the main text styles from those block components, but they also
+have their own inline-specific styles, such as text-decoration, font-weight, and
+vertical-align.
+
+<Canvas of={Stories.AsChildren} />
+
+## Props
+
+<ArgTypes of={Stories} />

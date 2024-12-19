@@ -34,7 +34,7 @@ const meta: Meta<typeof Avatar> = {
 export default meta;
 type Story = StoryObj<typeof Avatar>;
 
-export const Base: Story = {};
+export const Playground: Story = {};
 
 export const CustomUsage: Story = {
   tags: ['isHidden'],

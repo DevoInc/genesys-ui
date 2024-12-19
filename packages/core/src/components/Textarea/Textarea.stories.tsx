@@ -4,6 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Textarea } from './Textarea';
 import { HFlex } from '../HFlex';
 import { Typography } from '../Typography';
+import { Form } from '../Form';
 
 const meta: Meta<typeof Textarea> = {
   title: 'Components/Form/Textarea',
@@ -36,19 +37,88 @@ const meta: Meta<typeof Textarea> = {
 export default meta;
 type Story = StoryObj<typeof Textarea>;
 
-export const Base: Story = {};
+export const Playground: Story = {};
+
+export const DisabledAndReadonly: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <Form.Group>
+        <Textarea {...props} disabled label="Disabled" />
+        <Textarea {...props} readOnly label="Readonly" value="Readonly value" />
+      </Form.Group>
+    ))(args),
+};
+
+export const Status: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <Form.Group>
+        <Textarea {...props} label="Base" />
+        <Textarea {...props} label="Error" status="error" />
+        <Textarea {...props} label="Success" status="success" />
+        <Textarea {...props} label="Warning" status="warning" />
+      </Form.Group>
+    ))(args),
+};
+
+export const HelperAndValidation: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <Form.Group>
+        <Textarea
+          {...props}
+          helper="This is the Textarea component helper."
+          label="With helper"
+        />
+        <Textarea
+          {...props}
+          helper="This is the Textarea component validation message."
+          label="With validation message"
+          status="error"
+        />
+        <Textarea
+          {...props}
+          helper="This is the Textarea component helper."
+          label="With floating helper"
+          hasFloatingHelper
+        />
+        <Textarea
+          {...props}
+          helper="This is the Textarea component validation message."
+          label="With floating validation message"
+          status="error"
+          hasFloatingHelper
+        />
+        <Textarea
+          {...props}
+          hideLabel
+          helper="This is the Textarea component helper."
+          label="With floating helper"
+          hasFloatingHelper
+        />
+        <Textarea
+          {...props}
+          hideLabel
+          helper="This is the Textarea component validation message."
+          label="With floating validation message"
+          status="error"
+          hasFloatingHelper
+        />
+      </Form.Group>
+    ))(args),
+};
 
 export const WithCharacterCounter: Story = {
-  args: {
-    label:
-      'It is possible to add a character counter to keep track of the text length and inform of a possible limit',
-  },
+  tags: ['isHidden'],
   render: (args) =>
     ((props) => {
       const MAX_CHARACTERS = 10;
       const [counter, setCounter] = React.useState<number>(0);
       const errorMessage = `The max character length permitted is ${MAX_CHARACTERS}.`;
-      const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setCounter(event.target.value.length);
       };
 

@@ -5,7 +5,7 @@ import { ModalBackdrop } from './ModalBackdrop';
 import { Typography } from '../../../Typography';
 
 const meta: Meta<typeof ModalBackdrop> = {
-  title: 'Components/Layout/Modal/Components',
+  title: 'Components/Layout/Modal/Components/ModalBackdrop',
   component: ModalBackdrop,
   args: {
     children: (
@@ -19,6 +19,4 @@ const meta: Meta<typeof ModalBackdrop> = {
 export default meta;
 type Story = StoryObj<typeof ModalBackdrop>;
 
-export const Backdrop: Story = {
-  name: 'Modal._Backdrop',
-};
+export const Playground: Story = {};

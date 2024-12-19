@@ -1,0 +1,25 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './BlockQuote.stories';
+
+<Meta title="Components/Text/Typography/Components/Block/BlockQuote/Overview" />
+
+# Typography.BlockQuote
+
+This component renders an HTML Block Quotation Element. It indicates
+that the enclosed text is an extended quotation. A URL for the source of the
+quotation may be given using the 'cite' attribute.
+
+## How to import
+
+<Source code={`import { Typography } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+It's defined with dot notation as `Typography.BlockQuote`, because this component belongs to `Typography` group.
+
+<Canvas of={Stories.Playground} />
+
+## Props
+
+<ArgTypes of={Stories} />

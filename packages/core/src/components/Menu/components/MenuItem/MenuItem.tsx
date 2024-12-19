@@ -18,20 +18,27 @@ import { StyledMenuItemLabel } from './StyledMenuItemLabel';
 import { StyledHiddenInput } from '../../../../styled/';
 
 export interface MenuItemProps
-  extends MenuItemContainerProps,
+  extends Omit<MenuItemContainerProps, 'children' | 'isItem'>,
     IFieldEventAttrs {
+  /** Custom content to be rendered at the end all to the right of the item. */
   appendContent?: React.ReactNode;
+  /** Custom content to be rendered at the bottom of the item. */
   bottomContent?: React.ReactNode;
+  /** To get custom contents without using any pre-defined content prop. */
   children?: React.ReactNode;
+  /** If the menu item is expandable and can show/hide other sub-menus, showing an expand icon at the right. */
   expandable?: boolean;
+  /** The visual content to be rendered at the beginning of the item (usually and icon). */
   icon?: React.ReactNode;
+  /** The main text block of the item. */
   label?: React.ReactNode;
+  /** Custom content to be rendered at the beginning just after the Icon block of the item. */
   prependContent?: React.ReactNode;
-  //ref: React.Ref<HTMLElement>;
+  /** If it's multiple the item behaves as a checkbox and if it's single as a radio */
   selectionScheme?: TSelectionScheme;
   /** Shortcut text for the item. */
   shortcut?: string;
-  /** Component used as sub-menu child of the <li> element. */
+  /** Component used as sub-menu child of the `<li>` element. */
   subMenu?: React.ReactNode;
 }
 

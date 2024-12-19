@@ -1,0 +1,29 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './LoaderDevoLogoSpinner.stories';
+import * as LoaderStories from '../../Loader.stories';
+
+<Meta title="Components/Feedback/Loader/Components/LoaderDevoLogoSpinner/Overview" />
+
+# Loader.DevoLogoSpinner
+
+Devo Logo spinner of the Loader component when we want a global loading transition.
+
+## How to import
+
+<Source code={`import { Loader } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+Defined with dot notation as `Loader.DevoLogoSpinner`, this component should be used only as a child of a
+`Loader` or `Loader` based component.
+
+<Canvas of={Stories.Playground} />
+
+## Integrated with Loader
+
+<Canvas of={LoaderStories.Global} />
+
+## Props
+
+<ArgTypes of={Stories} />

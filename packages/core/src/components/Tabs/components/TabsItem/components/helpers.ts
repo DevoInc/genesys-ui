@@ -36,7 +36,6 @@ export const tabsLinkMixin = ({
   const tokens = theme.cmp.tabs.item;
   const borderRadius = tokens.shape.borderRadius;
   const paddingHor = tokens.space.padding;
-  const fontSize = typoMixin({ theme, $size: size });
   const closableButtonSquare = getTabsItemClosableButtonSquare(theme);
   const spaceToClosableButton = theme.cmp.tabs.item.space.margin.iconToText;
   return css`
@@ -53,16 +52,18 @@ export const tabsLinkMixin = ({
       : `${borderRadius}`};
     white-space: nowrap;
     color: ${tokens.color.text[state]};
-    ${fontSize}
+    ${typoMixin({ theme, $size: size })};
 
     &:hover,
     &:focus,
-    &:active {
-      color: ${tokens.color.text[state]};
+    &:active,
+    *:hover > & {
+      color: ${state !== 'disabled' && tokens.color.text[state]};
       text-decoration: none;
     }
 
-    &:hover {
+    &:hover,
+    *:hover > & {
       background-color: ${state !== 'disabled' &&
       tokens.color.background.hover};
     }
@@ -74,9 +75,17 @@ export const tabsLinkMixin = ({
  *
  * @return object with the css.
  */
-export const tabsClosableButtonMixin = ({ theme }: { theme: DefaultTheme }) => {
+export const tabsClosableButtonMixin = ({
+  size,
+  theme,
+}: {
+  size: ITabsLinkMixin['size'];
+  theme: DefaultTheme;
+}) => {
   return css`
     position: absolute;
     right: ${theme.cmp.tabs.item.space.padding};
+    bottom: ${size === 'sm' &&
+    `calc(${theme.cmp.tabs.item.space.padding} / 2)`};
   `;
 };

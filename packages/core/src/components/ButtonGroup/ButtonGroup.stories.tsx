@@ -26,7 +26,7 @@ const meta: Meta<typeof ButtonGroup> = {
 export default meta;
 type Story = StoryObj<typeof ButtonGroup>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: (args) =>
     ((props) => (
       <ButtonGroup {...props}>
@@ -80,7 +80,7 @@ export const SpecificChildPropValue: Story = {
 };
 
 export const Items: Story = {
-  name: 'Using Items for custom layout',
+  tags: ['isHidden'],
   render: (args) =>
     ((props) => (
       <ButtonGroup {...props} inline={false} justifyContent="flex-start">

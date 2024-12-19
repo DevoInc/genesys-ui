@@ -11,32 +11,52 @@ provides a range of customization options to control the appearance and behavior
 of the switch, as well as additional props for accessibility and guidance.
 
 It's important to choose the appropriate text field `type` based on the type of
-content that users are expected to enter.
-This ensures that the input is validated and processed correctly.
+content that users are expected to enter. This ensures that the input is validated and processed correctly.
 
-Input is a wrapper over the
-[InputControl](?path=/docs/components-core-form-inputcontrol--docs) component,
-and uses the [Field](?path=/docs/components-core-form-field--docs) component to
-provide additional functionality such as labelling, helper error messages, and
-validation.
+Input is a wrapper over the [InputControl](?path=/docs/components-core-form-inputcontrol--docs) component, and uses the [Field](?path=/docs/components-core-form-field--docs) component to
+provide additional functionality such as labelling, helper error messages, and validation.
 
 ## How to import
 
-<Source
-  code={`
-import { Input } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Input } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
-## Cases
+## Label position
 
-### Simple validation
+<Canvas of={Stories.LabelPosition} />
+
+## Disabled and readonly
+
+<Canvas of={Stories.DisabledAndReadonly} />
+
+## Status
+
+<Canvas of={Stories.Status} />
+
+## Types
+
+These are the types which are not being used in other existing components (as checkbox, radio... etc.).
+
+<Canvas of={Stories.Types} />
+
+## Helper and validation
+
+<Canvas of={Stories.HelperAndValidation} />
+
+## Real time validation
 
 <Canvas of={Stories.SimpleValidation} />
+
+## With addons
+
+<Canvas of={Stories.WithAddons} />
+
+## With icon
+
+<Canvas of={Stories.WithIcon} />
 
 ## Related components
 

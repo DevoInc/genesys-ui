@@ -8,10 +8,9 @@ import spacingProps from '../../../stories/partials/spacingProps.md?raw';
 
 # Box
 
-## Overview
-
 Box is a layout component designed to simplify the application of layout styles
 such as margin, position, padding, and overflow to a functional component.
+
 By wrapping another component with the Box component, you can easily pass layout
 styles via props, providing a shorthand approach to styling.
 
@@ -21,11 +20,9 @@ styles via props, providing a shorthand approach to styling.
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
-## Cases
-
-### as
+## Use of as
 
 Likewise, its `as` property allow this component to be rendered as any HTML tag:
 'div', 'li', 'section'... etc.
@@ -49,6 +46,8 @@ A group of `Paragraph` components wrapped by a `Box` with specific 'max-height'
 and 'overflow' to auto:
 
 <Canvas of={Stories.Scrolled} />
+
+## Spacing props
 
 <Markdown>{spacingProps}</Markdown>
 

@@ -5,14 +5,14 @@ import { GridItem } from './GridItem';
 import { StyledLayoutGridContent } from '../../../../../stories/components/styled';
 
 const meta: Meta<typeof GridItem> = {
-  title: 'Components/Layout/Grid/Components/Grid.Item',
+  title: 'Components/Layout/Grid/Components/GridItem',
   component: GridItem,
 };
 
 export default meta;
 type Story = StoryObj<typeof GridItem>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     alignSelf: 'center',
     justifySelf: 'center',

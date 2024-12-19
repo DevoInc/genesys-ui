@@ -7,11 +7,12 @@ import spacingProps from '../../../stories/partials/spacingProps.md?raw';
 
 # HFlex
 
-## Overview
-
-Use `HFlex` to create a stacked group of children components distributed
+Use this component to create a stacked group of child components distributed
 in a single row. Each child can be separated horizontally using the prop
-`spacing`.
+'spacing'.
+
+This component is based on `Flex` component, so it has almost the same interface or API
+then this last one.
 
 ## How to import
 
@@ -19,13 +20,16 @@ in a single row. Each child can be separated horizontally using the prop
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
 ## Using HFlex.Item
 
 We can use `HFlex.Item` component in a flex structure wrapping children to
 assign flex, order, and align-self CSS styles to each child component. It's only
 necessary when we need those specific styles for any child.
+
+This component is exactly the same as `Flex.Item` component, so if you need more information you only have to access
+to its [documentation page](?path=/docs/components-layout-flex-components-flexitem--overview).
 
 Here is an example that demonstrates different CSS flex and align-self
 settings for each child component of a Flex component:
@@ -37,12 +41,14 @@ settings for each child component of a Flex component:
 You can use prop `childrenFitFullWidth` to get the same width for each child and
 make them to fit the full width of the `HFlex` parent component:
 
+<Canvas of={Stories.ChildrenFitFullWidth} />
+
 ## Using the as property
 
 The `as` property allow these components to be rendered as any HTML tag:
 'div', 'li', 'section'... etc.
 
-If you want to use the `Flex` component rendered with a different HTML tag, you
+If you want to use the `HFlex` component rendered with a different HTML tag, you
 can use the `as` property. It allows these components to be rendered as any HTML
 tag, such as div, li, section, and so on.
 
@@ -53,19 +59,27 @@ import { HFlex } from '@devoinc/genesys-ui';
 
 const MyFlexCmp = () => (
 
-<HFlex as={'ul'}>
-<HFlex.Item as={'li'}>Child 1</Flex.Item>
-<HFlex.Item as={'li'}>Child 2</Flex.Item>
-<HFlex.Item as={'li'}>Child 3</Flex.Item>
-</Flex>
+  <HFlex as={'ul'}>
+    <HFlex.Item as={'li'}>Child 1</Flex.Item>
+    <HFlex.Item as={'li'}>Child 2</Flex.Item>
+    <HFlex.Item as={'li'}>Child 3</Flex.Item>
+  </HFlex>
 );`} />
 
+## Spacing props
+
 <Markdown>{spacingProps}</Markdown>
+
+## Related components
+
+- [Flex.Item](?path=/docs/components-layout-flex-components-flexitem--overview)
+- [AppBar](?path=/docs/components-navigation-appbar--overview)
+- [Helper](?path=/docs/components-feedback-helper--overview)
+- [Stepper](?path=/docs/components-navigation-stepper--overview)
+- [MonthSelector](?path=/docs/components-datetime-monthselector--overview)
+- [DateTimeRange](?path=/docs/components-datetime-datetimerange--overview)
+- [BasicTable](?path=/docs/components-layout-table-basic--overview)
 
 ## Props
 
 <ArgTypes of={Stories} />
-
-## Related components
-
-- [Flex.Item](?path=/docs/components-core-layout-flex-components--docs)

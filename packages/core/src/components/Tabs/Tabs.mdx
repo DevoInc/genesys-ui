@@ -7,10 +7,9 @@ import { tabsBasicUsageCode, tabsMarkCode } from './__stories__';
 
 # Tabs
 
-## Overview
-
 Navigation component that allows users to switch between different sections of
 content in a tabbed interface.
+
 It can be used to create a horizontal set of tabs, with each tab corresponding
 to a different section of content.
 
@@ -49,13 +48,22 @@ as this:
 </Tabs>
 ```
 
-In the other hand, to manage the active tab item and the movement of the active
-mark, we have to use the `UseActiveTab` hook [(More info)](#useactivetab) and
-integrate what it provides with our components.
+In the other hand, to manage the active tab item, the movement of the active mark and the keyboard support
+we have to combine a React.State (something as `const [activeTab, setActiveTab] = React.useState(0);`)
+with the usage of the `useTabsAccessibility` hook [(More info)](##usetabsaccessibility) and
+integrate what they provide with our components.
 
-<Canvas of={Stories.Base} sourceState="none" />
+<Canvas of={Stories.Playground} sourceState="none" />
 
 <Source code={tabsBasicUsageCode} />
+
+## Aside content
+
+<Canvas of={Stories.WithAsideContent} />
+
+## Closable
+
+<Canvas of={Stories.Closable} />
 
 ## Context
 
@@ -67,7 +75,7 @@ inherit some props:
 - `wide`.
 
 This way you only have to pass these props to the `Tabs` parent component and
-its children will inherit them automatically, as in this example:
+its children will inherit them automatically, as in this example inheriting the 'lg' size:
 
 <Canvas of={Stories.Context} />
 
@@ -112,7 +120,7 @@ Moves focus to the last tab and activates it.
 
 ### useTabsAccessibility
 
-Hook to manage the accessibility getting [keyboard support](#keyboard-support).
+Hook to manage the active tab and the accessibility getting [keyboard support](#keyboard-support).
 
 #### Parameters
 
@@ -142,10 +150,10 @@ This hook provides:
 - [Item](?path=/docs/components-core-navigation-tabs-components--docs)
 - [Aside](?path=/docs/components-core-navigation-tabs-components--docs)
 
-## Props
-
-<ArgTypes of={Stories} />
-
 ## Related components
 
 - [ContentSwitcher](?path=/docs/components-core-navigation-contentswitcher--docs)
+
+## Props
+
+<ArgTypes of={Stories} />

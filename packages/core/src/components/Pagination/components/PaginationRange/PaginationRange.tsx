@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 import type { IPaginationCommonInterface } from '../../declarations';
+import { DEFAULT_TEXTS } from '../../constants';
+import { PaginationContext } from '../../context';
 import { HFlex } from '../../../HFlex';
 import { Label } from '../../../Label';
 import { SelectControl } from '../../../SelectControl';
-import { DEFAULT_TEXTS } from '../../constants';
 
 export interface PaginationRangeProps extends IPaginationCommonInterface {}
 
@@ -17,7 +18,10 @@ export const PaginationRange: React.FC<PaginationRangeProps> = ({
   onPageSizeChange,
   texts,
 }) => {
-  const { rangeText } = { ...DEFAULT_TEXTS, ...texts };
+  const context = React.useContext(PaginationContext);
+  const evalSize = size || context.size;
+  const evalTexts = texts || context.texts;
+  const { rangeText } = { ...DEFAULT_TEXTS, ...evalTexts };
   return (
     <HFlex spacing="cmp-xxs" style={style} flex="0 0 auto">
       <SelectControl
@@ -30,10 +34,10 @@ export const PaginationRange: React.FC<PaginationRangeProps> = ({
           value: String(item),
           label: String(item),
         }))}
-        size={size}
+        size={evalSize}
         value={{ value: pageSize, label: String(pageSize) }}
       />
-      <Label size={size}>{rangeText}</Label>
+      <Label size={evalSize}>{rangeText}</Label>
     </HFlex>
   );
 };

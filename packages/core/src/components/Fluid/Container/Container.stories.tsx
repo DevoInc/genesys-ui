@@ -15,7 +15,7 @@ const meta: Meta<typeof Container> = {
 export default meta;
 type Story = StoryObj<typeof Container>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     children: (
       <Row>

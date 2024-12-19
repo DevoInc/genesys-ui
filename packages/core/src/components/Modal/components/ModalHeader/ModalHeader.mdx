@@ -1,0 +1,30 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './ModalHeader.stories';
+
+<Meta title="Components/Layout/Modal/Components/ModalHeader/Overview" />
+
+# Modal.Header
+
+Panel Header of the Modal component which renders the top content which usually are the heading, actions,
+closable button... etc.
+
+It's based on `Panel.Header` component and its interface and usage is almost the same.
+
+## How to import
+
+<Source code={`import { Modal } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+Defined with dot notation as `Modal.Header`, it must be used only as a child of a `Modal` or `Modal` based component.
+
+<Canvas of={Stories.Playground} />
+
+## Related components
+
+- [Panel.Header](?path=/docs/components-layout-panel-components-panelheader-overview--overview)
+
+## Props
+
+<ArgTypes of={Stories} />

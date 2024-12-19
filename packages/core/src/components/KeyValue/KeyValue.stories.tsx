@@ -24,7 +24,7 @@ const meta: Meta<typeof KeyValue> = {
 export default meta;
 type Story = StoryObj<typeof KeyValue>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     keyContent: 'Weekly new users',
     valueContent: '2440',
@@ -40,6 +40,7 @@ export const TitleDescription: Story = {
 };
 
 export const WithUnit: Story = {
+  tags: ['isHidden'],
   args: {
     keyContent: 'Monday',
     valueContent: '28',
@@ -49,6 +50,7 @@ export const WithUnit: Story = {
 };
 
 export const Formats: Story = {
+  tags: ['isHidden'],
   render: (args) =>
     ((args) => (
       <HFlex spacing="layout-md">
@@ -168,7 +170,7 @@ export const Custom: Story = {
 };
 
 export const DescriptionList: Story = {
-  name: 'Description list mode',
+  tags: ['isHidden'],
   render: () =>
     (() => (
       <VFlex width="50rem">

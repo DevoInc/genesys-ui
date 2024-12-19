@@ -6,8 +6,6 @@ import * as Stories from './Popover.stories';
 
 # Popover
 
-## Overview
-
 This Popover component allows users to expand hidden contents using a trigger,
 usually a button, link or menu item.
 
@@ -20,7 +18,7 @@ when there are multiple choices available.
 
 This component is based on [Popper JS library](https://popper.js.org/).
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
 ## How to import
 
@@ -46,28 +44,35 @@ built with forwardRef.
 - `setOpened`: function to force display or hide the Popover floating content.
 - `isOpened`: a boolean indicating if the Popover floating content is open.
 
-<Source
-  code={`
-  <Popover {...args} id={popoverId}>
-    {({ toggle, ref, isOpened }) => (
-      <Button
-        aria-controls={popoverId}
-        aria-expanded={isOpened}
-        aria-haspopup={true}
-        onClick={toggle}
-        ref={ref}
-        state={isOpened ? 'expanded' : undefined}
-      >
-        TriggerElement
-      </Button>
-    )}
-    <Popover.Panel padding="cmp-sm">
-      <Typography.Paragraph>
-        This is the content of the Popover.
-      </Typography.Paragraph>
-    </Popover.Panel>
-  </Popover>`}
-/>
+```jsx
+<Popover {...args} id={popoverId}>
+  {({ toggle, ref, isOpened }) => (
+    <Button
+      aria-controls={popoverId}
+      aria-expanded={isOpened}
+      aria-haspopup={true}
+      onClick={toggle}
+      ref={ref}
+      state={isOpened ? 'expanded' : undefined}
+    >
+      TriggerElement
+    </Button>
+  )}
+  <Popover.Panel padding="cmp-sm">
+    <Typography.Paragraph>
+      This is the content of the Popover.
+    </Typography.Paragraph>
+  </Popover.Panel>
+</Popover>
+```
+
+## Complex Panel
+
+<Canvas of={Stories.ComplexPanel} />
+
+## As dropdown menu
+
+<Canvas of={Stories.AsDropdownMenu} />
 
 ## Nested Popover
 
@@ -96,6 +101,10 @@ To do that we have to use the 'render-props' technique and include the content
 as a function instead of a node.
 
 <Canvas of={Stories.AccessToStateFromContent} />
+
+## On hover
+
+<Canvas of={Stories.OnHover} />
 
 ## Arrow
 
@@ -147,30 +156,31 @@ library directly in your code. You can refer to the documentation of
 
 Below is a brief example showcasing its use:
 
-<Source code={`
+```jsx
 import * as React from 'react';
 import { usePopper } from 'react-popper';
 
 const Example = () => {
-const [referenceElement, setReferenceElement] = React.useState(null);
-const [popperElement, setPopperElement] = React.useState(null);
-const [arrowElement, setArrowElement] = React.useState(null);
-const { styles, attributes } = usePopper(referenceElement, popperElement, {
-modifiers: [{ name: 'arrow', options: { element: arrowElement } }],
-});
+  const [referenceElement, setReferenceElement] = React.useState(null);
+  const [popperElement, setPopperElement] = React.useState(null);
+  const [arrowElement, setArrowElement] = React.useState(null);
+  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+    modifiers: [{ name: 'arrow', options: { element: arrowElement } }],
+  });
 
-return (
-
-<>
-  <button type="button" ref={setReferenceElement}>
-    Reference element
-  </button>
-  <div ref={setPopperElement} style={styles.popper} {...attributes.popper}>
-    Popper element
-    <div ref={setArrowElement} style={styles.arrow} />
-  </div>
-</>
-); }; `} />
+  return (
+    <>
+      <button type="button" ref={setReferenceElement}>
+        Reference element
+      </button>
+      <div ref={setPopperElement} style={styles.popper} {...attributes.popper}>
+        Popper element
+        <div ref={setArrowElement} style={styles.arrow} />
+      </div>
+    </>
+  );
+};
+```
 
 ## Props
 

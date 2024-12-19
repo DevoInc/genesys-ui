@@ -14,4 +14,8 @@ const meta: Meta<typeof IconButtonStop> = {
 export default meta;
 type Story = StoryObj<typeof IconButtonStop>;
 
-export const Base: Story = {};
+export const Playground: Story = {
+  args: {
+    tooltip: 'Stop the process',
+  },
+};

@@ -1,6 +1,9 @@
 import * as React from 'react';
 
 import type { IPaginationCommonInterface } from './declarations';
+import type { HFlexProps } from '../HFlex';
+
+import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_OPTIONS } from './constants';
 
 import {
   PaginationNav,
@@ -8,7 +11,7 @@ import {
   PaginationLabel,
   PaginationContainer,
 } from './components';
-import { type HFlexProps } from '../HFlex';
+import { PaginationContext } from './context';
 
 export interface PaginationProps
   extends IPaginationCommonInterface,
@@ -16,18 +19,17 @@ export interface PaginationProps
 
 export const InternalPagination: React.FC<PaginationProps> = ({
   as = 'nav',
+  children,
   justifyContent = 'flex-end',
   size = 'md',
   spacing,
   texts,
-
   totalItems,
   page = 0,
-  pageSize = 10,
-  pageSizeOptions = [5, 10, 15, 20],
+  pageSize = DEFAULT_PAGE_SIZE,
+  pageSizeOptions = DEFAULT_PAGE_SIZE_OPTIONS,
   onChange,
   onPageSizeChange,
-
   goToFirstPage,
   goToLastPage,
   goToNextPage,
@@ -35,7 +37,11 @@ export const InternalPagination: React.FC<PaginationProps> = ({
   goToPreviousPage,
   ...restHFlexProps
 }) => {
-  return (
+  return children ? (
+    <PaginationContext.Provider value={{ size, texts }}>
+      {children}
+    </PaginationContext.Provider>
+  ) : (
     <Pagination._Container
       {...restHFlexProps}
       as={as}

@@ -1,20 +1,9 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Stepper, type StepperProps } from './Stepper';
 import { Button } from '../Button';
 import { HFlex } from '../HFlex';
-
-const meta: Meta<typeof Stepper> = {
-  title: 'Components/Navigation/Stepper',
-  component: Stepper,
-  args: {
-    size: 'md',
-  },
-};
-
-export default meta;
-type Story = StoryObj<typeof Stepper>;
+import { Stepper, type StepperProps } from './Stepper';
 
 const initialSteps: StepperProps['steps'] = [
   { name: 'OPT_1', label: 'Option 1', status: 'pending' },
@@ -23,11 +12,23 @@ const initialSteps: StepperProps['steps'] = [
   { name: 'OPT_4', label: 'Option 4', status: 'disabled' },
 ];
 
-export const Base: Story = {
-  args: { steps: initialSteps, 'aria-label': 'Stepper aria-label' },
+const meta: Meta<typeof Stepper> = {
+  title: 'Components/Navigation/Stepper',
+  component: Stepper,
+  args: {
+    'aria-label': 'Stepper aria-label',
+    size: 'md',
+    steps: initialSteps,
+  },
 };
 
+export default meta;
+type Story = StoryObj<typeof Stepper>;
+
+export const Playground: Story = {};
+
 export const WithNavigation: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [steps, setSteps] = React.useState<StepperProps['steps']>([
@@ -67,6 +68,29 @@ export const WithNavigation: Story = {
             </Button>
           </HFlex>
         </>
+      );
+    })(),
+};
+
+export const AdvancedUsage: Story = {
+  tags: ['isHidden'],
+  render: () =>
+    (() => {
+      return (
+        <Stepper._Container>
+          <Stepper._Item status="current" hasDivider={false}>
+            Step one
+          </Stepper._Item>
+          <Stepper._Item stepNumberPos={1}>Step two</Stepper._Item>
+          <Stepper._Item stepNumberPos={2}>Step three</Stepper._Item>
+          <Stepper._Item._Container>
+            <Stepper._Item._Divider />
+            <Stepper._Item._Indicator stepNumberPos={3} status="pending" />
+            <Stepper._Item._Content status="pending">
+              Step four
+            </Stepper._Item._Content>
+          </Stepper._Item._Container>
+        </Stepper._Container>
       );
     })(),
 };

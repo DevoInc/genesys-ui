@@ -1,0 +1,56 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './FormGroup.stories';
+
+<Meta title="Components/Form/Form/Components/FormGroup/Overview" />
+
+# Form.Group
+
+Component to create an HTML fieldset and distribute the form groups and fields inside it.
+
+## Basic usage
+
+Defined with dot notation as `Form.Group`. This component should be used only as a
+child of a `Form` or `Form` based component.
+
+<Canvas of={Stories.Playground} />
+
+## Direction
+
+Using the 'direction' prop you can define if the distribution of the fields is as a 'column' or as a 'row'.
+Anyway, the main layout and flex props are also available, so you can use 'justifyContent', 'alignItems'... etc.
+if you need a very specific distribution for your fields.
+
+<Canvas of={Stories.Direction} />
+
+## Boxed
+
+If you need the group to be more prominent or differentiate it from other ones, you can set the 'boxed' prop to 'true'.
+
+<Canvas of={Stories.Boxed} />
+
+## Disabled
+
+You can disable the group, setting the 'disabled' prop to true. Then the children opacity is reduced to the
+'disabled' pre-defined value and the pointer events are disabled.
+
+<Canvas of={Stories.Disabled} />
+
+## Fieldset
+
+We get an HTML 'fieldset' as wrapper of the group if we set the 'asFieldset' prop to true. Then we can get the inherited
+behavior of this type of element. If we combine this prop with the 'disabled' one, then we get the disabled attribute
+for the fieldset HTML element.
+
+<Canvas of={Stories.AsFieldset} />
+
+## Collapsable
+
+Sometimes, if you want to reduce the noise of the form, not showing from the beginning al the fields,
+you can use the collapsable variant of the component.
+
+<Canvas of={Stories.Collapsable} />
+
+## Props
+
+<ArgTypes of={Stories} />

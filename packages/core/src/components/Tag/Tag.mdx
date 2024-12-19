@@ -6,12 +6,10 @@ import * as Stories from './Tag.stories';
 
 # Tag
 
-## Overview
-
 The Tag component is a small, visual element used to label, categorize, or
 organize items using keywords that describe them.
-Tags are typically displayed as text within a colored background and can be
-interactive or static.
+
+Tags are typically displayed as text within a colored background they are static.
 
 ## How to import
 
@@ -19,7 +17,53 @@ interactive or static.
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
+
+## With icon
+
+You can use our library [Genesys Icons](https://devoinc.github.io/genesys-icons/?path=/story/gallery--icons)
+to add an icon to the component, assigning directly the icon component to the 'icon' prop, but anyway you can use
+any other icon library based in React components.
+
+<Canvas of={Stories.WithIcon} />
+
+## Sizes
+
+<Canvas of={Stories.Sizes} />
+
+## Quiet
+
+Sometimes you might need the tag to be less prominent, so you can use the 'quiet' prop
+setting to true.
+
+<Canvas of={Stories.Quiet} />
+
+## Wide
+
+To get the Tag fills the whole space of its parent you can set the 'wide' prop to true.
+Sometimes it might be useful when you need all the tags to have the same width.
+
+<Canvas of={Stories.Wide} />
+
+## Color schemes
+
+There are several predefined color schemes for the component using the 'colorScheme' prop.
+
+<Canvas of={Stories.ColorSchemes} />
+
+Anyway you can also assign directly a color, although we don't recommend doing this unless
+you need a very specific customization. The color of the text is auto-generated depending on
+getting AA contrast, so if the color is dark, the text color tends to white and if the color
+is light, the text color tends to dark gray.
+
+<Canvas of={Stories.CustomColor} />
+
+## Related components
+
+- [Icon](?path=/docs/components-feedback-icon--overview)
+- [Badge](?path=/docs/components-feedback-badge--overview)
+- [Flex](?path=/docs/components-layout-flex--overview)
+- [Label](?path=/docs/components-form-label--overview)
 
 ## Props
 

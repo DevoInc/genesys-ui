@@ -12,21 +12,23 @@ inside UploadFiles component.
 
 ## How to import
 
-<Source
-  code={`
-import { UploadFiles } from '@devoinc/genesys-ui-upload';
-`}
-/>
+<Source code={`import { UploadFiles } from '@devoinc/genesys-ui-upload';`} />
 
 ## Basic usage
 
 Basic example allowing upload multiple files.
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
-## Cases
+## Disabled
 
-### Custom files extension
+<Canvas of={Stories.Disabled} />
+
+## Status
+
+<Canvas of={Stories.Status} />
+
+## Custom files extension
 
 To specify the extension file allowed to upload you should use
 `acceptedExtensions` property.
@@ -35,7 +37,7 @@ This property must be an array with the extension files allowed.
 
 _Note_: note that the extensions _must_ have the dot at the beginning.
 
-### Custom files size
+## Custom files size
 
 To limit the size of the files to be uploaded there exist following properties: `minFileSize`,
 `maxFileSize` and `maxTotalFileSize`. They are based on

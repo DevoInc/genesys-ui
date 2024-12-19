@@ -6,6 +6,7 @@ import {
   type SelectControlProps,
   type TSelectOption,
 } from '../SelectControl';
+import { hasStatus } from '../../utils';
 
 export interface ExtendedTSelectOption extends TSelectOption {
   isDisabled?: boolean;
@@ -57,6 +58,7 @@ export const Select: React.FC<SelectProps> = ({
     <SelectControl
       aria-label={ariaLabel}
       aria-invalid={ariaInvalid}
+      hideStatusIcon={helper && hasStatus(status)}
       {...props}
     />
   </Field>

@@ -18,7 +18,7 @@ const meta: Meta<typeof ContentSwitcher> = {
 export default meta;
 type Story = StoryObj<typeof ContentSwitcher>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: (args) =>
     ((props) => {
       const [selection, setSelection] = React.useState('first');

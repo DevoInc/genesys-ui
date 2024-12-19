@@ -48,7 +48,7 @@ const meta: Meta<typeof Collapse> = {
 export default meta;
 type Story = StoryObj<typeof Collapse>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: (args) =>
     ((props) => {
       const [expanded, setExpanded] = React.useState(props.expanded);
@@ -79,6 +79,7 @@ export const Base: Story = {
 };
 
 export const Disabled: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [expanded, setExpanded] = React.useState([false, false]);
@@ -245,7 +246,7 @@ const Item: React.FC<{
 
 const TOTAL_DRAGGABLE = 10;
 export const Draggable: StoryObj = {
-  // tags: ['isHidden'],
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [activeId, setActiveId] = React.useState(null);
@@ -310,7 +311,7 @@ export const Draggable: StoryObj = {
 };
 
 export const AppendContent: Story = {
-  // tags: ['isHidden'],
+  tags: ['isHidden'],
   args: {
     heading: 'Collapse heading with icons',
     appendContent: (

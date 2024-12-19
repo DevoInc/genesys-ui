@@ -14,7 +14,7 @@ const meta: Meta<typeof Label> = {
 export default meta;
 type Story = StoryObj<typeof Label>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     children: 'Example',
   },

@@ -6,7 +6,8 @@ import { VFlexItem } from './components';
 
 export interface VFlexProps
   extends Omit<FlexProps, 'flexDirection' | 'gap' | 'columnGap' | 'rowGap'> {
-  /** Vertical spacing between children items (row-gap). */
+  /** Vertical spacing between children items (row-gap).
+   * More info about spacing values in [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   spacing?: TGlobalSpacing;
   /** If the children fit full width of the VFlex parent*/
   childrenFitFullWidth?: boolean;

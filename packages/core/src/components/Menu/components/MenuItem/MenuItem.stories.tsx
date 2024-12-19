@@ -13,7 +13,7 @@ import { Box } from '../../../Box';
 import { Flex } from '../../../Flex';
 import { HFlex } from '../../../HFlex';
 import { Icon } from '../../../Icon';
-import { Menu } from '../../../Menu';
+import { Menu } from '../../Menu';
 import { ProgressBar } from '../../../ProgressBar';
 import { Tag } from '../../../Tag';
 import { Typography } from '../../../Typography';
@@ -21,22 +21,23 @@ import { VFlex } from '../../../VFlex';
 import { MenuItem } from './MenuItem';
 
 const meta: Meta<typeof Menu.Item> = {
-  title: 'Components/Navigation/Menu/Components/Item',
+  title: 'Components/Navigation/Menu/Components/MenuItem',
   component: Menu.Item,
 };
 
 export default meta;
 type Story = StoryObj<typeof Menu.Item>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     label: 'Menu item content',
     icon: <GITimeZone />,
+    expandable: true,
   },
 };
 
 export const WithAppendAndPrependContent: Story = {
-  name: 'With append and prepend content',
+  tags: ['isHidden'],
   args: {
     label: 'Menu item content',
     appendContent: (
@@ -60,7 +61,7 @@ export const WithAppendAndPrependContent: Story = {
 };
 
 export const WithAppendPrependAndBottomContent: Story = {
-  name: 'With append, prepend and bottom content',
+  tags: ['isHidden'],
   args: {
     label: 'Menu item content',
     unlimitedHeight: true,
@@ -90,7 +91,7 @@ export const WithAppendPrependAndBottomContent: Story = {
 };
 
 export const WithDescription: Story = {
-  name: 'With description',
+  tags: ['isHidden'],
   args: {
     icon: <GIEyeViewFilled />,
     label: 'Menu item title',
@@ -104,6 +105,7 @@ export const WithDescription: Story = {
 };
 
 export const Selectable: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [selected, setSelected] = React.useState(false);
@@ -120,37 +122,31 @@ export const Selectable: Story = {
 };
 
 export const ReadOnly: Story = {
-  render: () =>
-    (() => {
-      return (
-        <Menu.Item
-          label="rick.sanchez@devo.com"
-          prependContent={
-            <Badge
-              text="RS"
-              size="sm"
-              style="width: 2.4rem; height: 2.4rem; padding: 0;"
-            />
-          }
-          bottomContent={
-            <HFlex spacing="cmp-xxs" paddingLeft="cmp-xl">
-              <Icon size="xxs" colorScheme="weak">
-                <GIDiamondPrizeAwardJewelleryRing />
-              </Icon>
-              <Typography.Paragraph colorScheme="weak">
-                admin
-              </Typography.Paragraph>
-            </HFlex>
-          }
-          unlimitedHeight
-          state="readonly"
-        />
-      );
-    })(),
+  tags: ['isHidden'],
+  args: {
+    label: 'rick.sanchez@devo.com',
+    unlimitedHeight: true,
+    bottomContent: (
+      <HFlex spacing="cmp-xxs" paddingLeft="cmp-xl">
+        <Icon size="xxs" colorScheme="weak">
+          <GIDiamondPrizeAwardJewelleryRing />
+        </Icon>
+        <Typography.Paragraph colorScheme="weak">admin</Typography.Paragraph>
+      </HFlex>
+    ),
+    prependContent: (
+      <Badge
+        text="RS"
+        size="sm"
+        style="width: 2.4rem; height: 2.4rem; padding: 0;"
+      />
+    ),
+    state: 'readonly',
+  },
 };
 
 export const ActiveForNavigation: Story = {
-  name: 'Active for navigation',
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [active, setActive] = React.useState(false);
@@ -166,6 +162,7 @@ export const ActiveForNavigation: Story = {
 };
 
 export const CustomContent: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [selected, setSelected] = React.useState(false);

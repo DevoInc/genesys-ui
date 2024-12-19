@@ -25,7 +25,7 @@ const meta: Meta<typeof FieldsCombiner> = {
 export default meta;
 type Story = StoryObj<typeof FieldsCombiner>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     id: 'fields-1',
     label: 'Select and Button to right with status',
@@ -34,7 +34,7 @@ export const Base: Story = {
 };
 
 export const InputAndButton: Story = {
-  name: 'Input and Button',
+  tags: ['isHidden'],
   args: {
     id: 'fields-1',
     label: 'Input and Button to right',
@@ -43,7 +43,7 @@ export const InputAndButton: Story = {
 };
 
 export const InputAndIconButton: Story = {
-  name: 'Input and IconButton',
+  tags: ['isHidden'],
   args: {
     id: 'fields-1',
     label: 'Input and IconButton to right',
@@ -52,7 +52,7 @@ export const InputAndIconButton: Story = {
 };
 
 export const ButtonAndIconButton: Story = {
-  name: 'Button and IconButton',
+  tags: ['isHidden'],
   args: {
     id: 'fields-1',
     label: 'Button and IconButton to right',
@@ -61,7 +61,7 @@ export const ButtonAndIconButton: Story = {
 };
 
 export const ButtonAndPopover: Story = {
-  name: 'Button and Popover',
+  tags: ['isHidden'],
   args: {
     id: 'fields-1',
     label: 'Button and Popover to right',
@@ -70,7 +70,7 @@ export const ButtonAndPopover: Story = {
 };
 
 export const InputAndCheckbox: Story = {
-  name: 'Input and Checkbox',
+  tags: ['isHidden'],
   args: {
     id: 'fields-1',
     label: 'Input and Checkbox to right',
@@ -79,7 +79,7 @@ export const InputAndCheckbox: Story = {
 };
 
 export const SelectAndInput: Story = {
-  name: 'Select and Input',
+  tags: ['isHidden'],
   args: {
     id: 'fields-1',
     label: 'Select and Input to right',
@@ -88,7 +88,7 @@ export const SelectAndInput: Story = {
 };
 
 export const CustomWidths: Story = {
-  name: 'Custom widths',
+  tags: ['isHidden'],
   args: {
     id: 'fields-1',
     label: 'Custom widths for fields',
@@ -97,7 +97,7 @@ export const CustomWidths: Story = {
 };
 
 export const WithValidation: Story = {
-  name: 'With validation',
+  tags: ['isHidden'],
   render: () => {
     return (
       <FieldsCombiner

@@ -7,7 +7,7 @@ import type { TSpinnerColorScheme } from '../../../SpinnerLoader/declarations';
 
 export const LoaderSpinner: React.FC<SpinnerLoaderProps> = ({
   colorScheme,
-  size,
+  size = 'md',
   ...restSpinnerLoaderProps
 }) => {
   const context = React.useContext(LoaderContext);

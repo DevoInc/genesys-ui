@@ -1,0 +1,42 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Abbr.stories';
+
+<Meta title="Components/Text/Typography/Components/Inline/Abbr/Overview" />
+
+# Typography.Abbr
+
+This component renders an HTML Abbreviation element (`<abbr>`) which
+represents an abbreviation or acronym.
+
+## How to import
+
+<Source code={`import { Typography } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+It's defined with dot notation as `Typography.Abbr`, because this component belongs to `Typography` group.
+
+<Canvas of={Stories.Playground} />
+
+## Tooltip
+
+The optional 'tooltip' prop can provide an expansion or description for the abbreviation.
+If tooltip is present, it must contain this full description and nothing else.
+
+<Canvas of={Stories.WithTooltip} />
+
+## As children
+
+Inline typographic components are typically used within other typographic block
+components.
+
+They inherit the main text styles from those block components, but they also
+have their own inline-specific styles, such as text-decoration, font-weight, and
+vertical-align.
+
+<Canvas of={Stories.AsChildren} />
+
+## Props
+
+<ArgTypes of={Stories} />

@@ -6,8 +6,6 @@ import * as Stories from './Button.stories';
 
 # Button
 
-## Overview
-
 Buttons enable users to take actions or make choices with a single tap.
 They are typically placed throughout your UI, including in dialogs, modal
 windows, forms, cards, or toolbars.
@@ -18,7 +16,7 @@ windows, forms, cards, or toolbars.
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
 ## Button color schemes
 
@@ -77,6 +75,24 @@ always for secondary actions and in contexts with much density of contents.
 
 <Canvas of={Stories.Quiet} />
 
+## With icon
+
+You can use our library [Genesys Icons](https://devoinc.github.io/genesys-icons/?path=/story/gallery--icons)
+to add an icon to the component, assigning directly the icon component to the 'icon' prop, but anyway you can use
+any other icon library based in React components.
+
+The icon can be rendered to the left or to the right of the label through 'iconPosition' prop.
+
+<Canvas of={Stories.WithIcon} />
+
+## Sizes
+
+<Canvas of={Stories.Sizes} />
+
+## States
+
+<Canvas of={Stories.States} />
+
 ## As dropdown trigger
 
 The `Button` component can be used as a dropdown trigger.
@@ -89,6 +105,20 @@ It can also be used as a link. In this case, the `href` prop must be used
 instead of the `onClick` prop.
 
 <Canvas of={Stories.AsLink} />
+
+## Wide
+
+To get the Button fills the whole space of its parent you can set the 'wide' prop to true.
+Sometimes it might be useful when you need all the buttons to have the same width.
+
+<Canvas of={Stories.Wide} />
+
+## With badge
+
+It's possible to add a badge to the component: if you use only apply 'hasBadge' the badge is added without content,
+only as a marker, and if you also set 'badgeText', then the badge has content.
+
+<Canvas of={Stories.WithBadge} />
 
 ## Loading
 
@@ -168,12 +198,29 @@ radio.
 
 Sometimes you need something very specific, which is not possible using only the
 component and its props.
+
 In these cases, you can use its internal components (`_` notation) to define
-that specific usage.
+that specific usage:
+
+- `Button._Addon`
+- `Button._Badge`
+- `Button._Container`
+- `Button._DropdownIcon`
+- `Button._Icon`
+- `Button._Label`
+- `Button._Loader`
+- `Button._Selection`
+
 We don't recommend this usage, but anyway it's available for very specific
 needs.
 
 <Canvas of={Stories.Custom} />
+
+## Related components
+
+- [Icon](?path=/docs/components-feedback-icon--overview)
+- [Badge](?path=/docs/components-feedback-badge--overview)
+- [SpinnerLoader](?path=/docs/components-feedback-spinnerloader--overview)
 
 ## Props
 

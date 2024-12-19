@@ -1,0 +1,80 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './MenuItem.stories';
+
+<Meta title="Components/Navigation/Menu/Components/MenuItem/Overview" />
+
+# Menu.Item
+
+This component is used to define each interactive and actionable menu element.
+
+## How to import
+
+<Source code={`import { Menu } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+This component is defined with dot notation as `Menu.Item` and it should be a child of a `Menu` component.
+
+## Append, prepend and bottom content
+
+You can add at the beginning and at the end of the menu item custom content, in addition to the available
+icon and label blocks, with the `prependContent` and `appendContent`. In the same way, you can add custom content
+at the bottom of the menu item with the `bottomContent` prop, just below all the main content.
+
+<Canvas of={Stories.WithAppendAndPrependContent} />
+
+<Canvas of={Stories.WithAppendPrependAndBottomContent} />
+
+## With description
+
+As we said, you can add at the bottom of the menu item custom content with the `bottomContent`, so you can add
+a description text block this way.
+
+<Canvas of={Stories.WithDescription} />
+
+## Selectable
+
+The `Menu.Item` can be used as a selectable option. The role `menuitemcheckbox`
+or `menuitemradio` is added automatically based in the `selectionScheme` prop
+value. In addition, a checkbox or radio is rendered inside the item, but it's
+not visible, because its purpose is manage the selection behavior.
+
+<Canvas of={Stories.Selectable} />
+
+## Read only
+
+Sometimes you might need that the item not to be interactive, because it's only an informative block, or it only needs
+to give some feedback to the user. On those cases you can set the value 'readonly' to the 'state' prop, and the menu
+item won't be interactive neither selectable.
+
+<Canvas of={Stories.ReadOnly} />
+
+## Active for navigation
+
+If you need that the menu item get activated styles, but without the selectable behavior and icon, you can set the
+'state' prop to 'active'. This is often useful when we work with navigation menus.
+
+<Canvas of={Stories.ActiveForNavigation} />
+
+## Custom content
+
+You can add all the content of the `Menu.Item` by its prop `children`. You have
+to keep in mind that the content probably will weed some extra space, specially
+vertical one. This way the mouse events and selectable behavior still work.
+
+Also, there are several internal pre-defined components as
+`MenuItem._Container`, `MenuItem._Icon`... etc. so you can use them directly,
+just in case you need small visual adjustments.
+
+<Canvas of={Stories.CustomContent} />
+
+## Related components
+
+- [Icon](?path=/docs/components-feedback-icon--overview)
+- [Typography](?path=/docs/components-text-typography-block--overview)
+- [Flex](?path=/docs/components-layout-flex--overview)
+
+## Props
+
+<ArgTypes of={Stories} />

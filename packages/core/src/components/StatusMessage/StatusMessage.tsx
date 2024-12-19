@@ -13,7 +13,7 @@ import {
 } from './components';
 
 export interface StatusMessageProps
-  extends Omit<StatusMessageContainerProps, 'children'> {
+  extends Omit<StatusMessageContainerProps, 'children' | 'elevation'> {
   /** This property defines the font size of the icon */
   iconSize?: IconProps['size'];
   /** Title block of the status message */
@@ -22,7 +22,7 @@ export interface StatusMessageProps
   description?: React.ReactNode;
   /** Buttons of the status message */
   buttons: ButtonGroupProps['children'];
-  /** Icon for the top of the panel */
+  /** Icon or any symbol for the top of the panel */
   icon?: React.ReactNode;
   /** If it's true then the content box is not centered and it's scrollable */
   hasLongMessage?: boolean;

@@ -119,7 +119,7 @@ export const InternalPopover: React.FC<PopoverProps> = ({
   };
 
   const toggle = (ev: React.MouseEvent<HTMLElement>): void => {
-    const from = (ev?.target as HTMLElement).parentElement;
+    const from = (ev?.target as HTMLElement)?.parentElement;
     const to = ev?.relatedTarget as HTMLElement;
     const isChild = to instanceof Node && from?.contains(to);
 

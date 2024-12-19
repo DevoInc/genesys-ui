@@ -15,4 +15,8 @@ const meta: Meta<typeof IconButtonStatus> = {
 export default meta;
 type Story = StoryObj<typeof IconButtonStatus>;
 
-export const Base: Story = {};
+export const Playground: Story = {
+  args: {
+    tooltip: 'More info',
+  },
+};

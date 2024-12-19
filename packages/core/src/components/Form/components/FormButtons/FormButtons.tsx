@@ -6,6 +6,7 @@ import { Flex, type FlexProps } from '../../../Flex';
 import { FormDistributor } from '../FormDistributor/FormDistributor';
 import { formGroupSpacingMixin } from '../../helpers';
 import { useTheme } from 'styled-components';
+import { Typography } from '../../../Typography';
 
 export interface FormButtonsProps
   extends IGlobalAttrs,
@@ -49,7 +50,11 @@ export const FormButtons: React.FC<FormButtonsProps> = ({
           marginLeft={buttonsPosition === 'left' ? 'auto' : null}
           marginRight={buttonsPosition === 'right' ? 'auto' : null}
         >
-          {helper}
+          {typeof helper === 'string' ? (
+            <Typography.Paragraph>{helper}</Typography.Paragraph>
+          ) : (
+            helper
+          )}
         </Box>
       )}
       <FormDistributor itemsGap="xs" direction="row">

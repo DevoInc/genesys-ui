@@ -11,7 +11,7 @@ const meta: Meta<typeof Row> = {
 export default meta;
 type Story = StoryObj<typeof Row>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     children: (
       <>

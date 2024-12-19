@@ -7,15 +7,14 @@ import { IconButtonGoToDocs } from '../../../IconButton';
 import { Button } from '../../../Button';
 
 const meta: Meta<typeof ModalFooter> = {
-  title: 'Components/Layout/Modal/Components',
+  title: 'Components/Layout/Modal/Components/ModalFooter',
   component: ModalFooter,
 };
 
 export default meta;
 type Story = StoryObj<typeof ModalFooter>;
 
-export const Footer: Story = {
-  name: 'Modal.Footer',
+export const Playground: Story = {
   args: {
     children: (
       <>

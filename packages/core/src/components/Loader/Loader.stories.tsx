@@ -20,7 +20,7 @@ const meta: Meta<typeof Loader> = {
 export default meta;
 type Story = StoryObj<typeof Loader>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: (args) => (
     <Box position="relative">
       <Typography.Paragraph gutterBottom="cmp-md">{lorem}</Typography.Paragraph>
@@ -38,7 +38,6 @@ export const Base: Story = {
 };
 
 export const ContextualSpinner: Story = {
-  name: 'Contextual with spinner',
   render: (args) => (
     <Panel>
       <Panel.Header title="Panel loading" bordered />

@@ -24,9 +24,6 @@ const meta: Meta<typeof ChoiceGroup> = {
   component: ChoiceGroup,
   args: {
     colorScheme: 'quiet',
-    hasFloatingHelper: true,
-    hasLegendLabelFormat: true,
-    legendPosition: 'top',
     selectionScheme: 'multiple',
     size: 'md',
     status: 'base',
@@ -43,7 +40,7 @@ const meta: Meta<typeof ChoiceGroup> = {
 export default meta;
 type Story = StoryObj<typeof ChoiceGroup>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     children: (
       <>
@@ -102,6 +99,7 @@ export const UseOfIconButton: Story = {
 };
 
 export const MultipleSelectionControlled: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [selectedButtons, setSelectedButtons] = React.useState({
@@ -155,6 +153,7 @@ export const MultipleSelectionControlled: Story = {
 };
 
 export const MultipleSelectionUncontrolled: Story = {
+  tags: ['isHidden'],
   args: {
     children: (
       <>
@@ -166,6 +165,7 @@ export const MultipleSelectionUncontrolled: Story = {
 };
 
 export const SingleSelectionControlled: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [selectedButton, setSelectedButton] = React.useState(0);
@@ -209,6 +209,7 @@ export const SingleSelectionControlled: Story = {
 };
 
 export const SingleSelectionUncontrolled: Story = {
+  tags: ['isHidden'],
   args: {
     children: (
       <>

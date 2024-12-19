@@ -13,7 +13,7 @@ const meta: Meta<typeof Partitions> = {
 export default meta;
 type Story = StoryObj<typeof Partitions>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     data: [
       { value: 0.4, color: 'error', tooltip: 'Error: 40%' },

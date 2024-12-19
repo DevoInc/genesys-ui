@@ -1,23 +1,24 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { MenuItem } from '../MenuItem';
 import { MenuSeparator } from './MenuSeparator';
+import { Menu } from '../../Menu';
 
 const meta: Meta<typeof MenuSeparator> = {
-  title: 'Components/Navigation/Menu/Components',
+  title: 'Components/Navigation/Menu/Components/MenuSeparator',
   component: MenuSeparator,
 };
 
 export default meta;
 type Story = StoryObj<typeof MenuSeparator>;
 
-export const Separator: Story = {
+export const Playground: Story = {
+  tags: ['isHidden'],
   render: () => (
-    <>
-      <MenuItem label="Menu item one" />
-      <MenuSeparator />
-      <MenuItem label="Menu item two" />
-    </>
+    <Menu>
+      <Menu.Item label="Menu item one" />
+      <Menu.Separator />
+      <Menu.Item label="Menu item two" />
+    </Menu>
   ),
 };

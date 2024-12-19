@@ -35,6 +35,8 @@ export interface FormGroupProps
     Omit<IFieldAttrs, 'required'> {
   /** If the form group is boxed. */
   boxed?: StyledFormGroupProps['$boxed'];
+  /** If the children fit full width of the form group parent. */
+  childrenFitFullWidth?: boolean;
   /** If the form group is collapsable and this way the legend acts as a Collapse component which collapse/uncollapse
    * the fields. */
   collapsable?: boolean;
@@ -63,6 +65,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   asFieldset = false,
   boxed = false,
   children,
+  childrenFitFullWidth = true,
   collapsable,
   direction = 'column',
   disabled,
@@ -104,6 +107,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   return (
     <StyledFormGroupContainer
       {...restNativeAttrProps}
+      $childrenFitFullWidth={childrenFitFullWidth}
       css={style}
       form={asFieldset ? form : undefined}
       disabled={asFieldset ? disabled : undefined}
@@ -155,6 +159,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
         )}
         {((collapsable && expanded) || !collapsable) && (
           <FormDistributor
+            disabled={disabled}
             paddingTop={expanded ? 'cmp-sm' : null}
             alignItems={alignItems}
             direction={direction}

@@ -18,11 +18,10 @@ const meta: Meta<typeof Badge> = {
 export default meta;
 type Story = StoryObj<typeof Badge>;
 
-export const Base: Story = {};
+export const Playground: Story = {};
 
 export const InOtherComponents: Story = {
   tags: ['isHidden'],
-  name: 'As part of other component',
   render: () =>
     (() => (
       <Button hasBadge badgeText="12">
@@ -33,7 +32,6 @@ export const InOtherComponents: Story = {
 
 export const ContentSchemes: Story = {
   tags: ['isHidden'],
-  name: 'Content schemes',
   render: () =>
     (() => (
       <HFlex spacing="cmp-xs">

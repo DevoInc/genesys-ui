@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { PaginationRange } from './PaginationRange';
 
 const meta: Meta<typeof PaginationRange> = {
-  title: 'Components/Navigation/Pagination/Components/Range',
+  title: 'Components/Navigation/Pagination/Components/PaginationRange',
   component: PaginationRange,
   args: {
     size: 'md',
@@ -14,7 +14,7 @@ const meta: Meta<typeof PaginationRange> = {
 export default meta;
 type Story = StoryObj<typeof PaginationRange>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: () =>
     (() => {
       const [pageSize, setPageSize] = React.useState(10);

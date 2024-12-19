@@ -7,7 +7,7 @@ import type { FlexProps } from '../../../Flex';
 import { mergeStyles } from '../../../../helpers';
 
 export interface AppBarContainerProps
-  extends Omit<BoxProps, 'elevation' | 'position'>,
+  extends Omit<BoxProps, 'elevation'>,
     Pick<FlexProps, 'alignItems' | 'justifyContent'> {
   /** If the app bar has a bottom-border */
   bordered?: boolean;
@@ -26,6 +26,7 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
   justifyContent,
   paddingLeft = 'cmp-md',
   paddingRight = 'cmp-md',
+  position = 'relative',
   sticky = false,
   style,
   ...boxProps
@@ -41,7 +42,7 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
       id={id ? `${id}__container` : null}
       paddingLeft={paddingLeft}
       paddingRight={paddingRight}
-      position="relative"
+      position={position}
       style={mergeStyles(
         { backgroundColor: cmpTokens.color.background },
         bordered

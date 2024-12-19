@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { SwitchControl } from './SwitchControl';
+import { Form } from '../Form';
 
 const meta: Meta<typeof SwitchControl> = {
   title: 'Components/Form/SwitchControl',
@@ -9,7 +10,6 @@ const meta: Meta<typeof SwitchControl> = {
   args: {
     'aria-label': 'Story label',
     size: 'md',
-    autoFocus: true,
     status: 'base',
   },
   argTypes: {
@@ -32,6 +32,38 @@ export const Base: Story = {
           checked={checked}
           onChange={() => setChecked(!checked)}
         />
+      );
+    })(args),
+};
+
+export const Disabled: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => {
+      return (
+        <Form.Group childrenFitFullWidth={false}>
+          <SwitchControl {...props} disabled />
+          <SwitchControl {...props} defaultChecked disabled />
+        </Form.Group>
+      );
+    })(args),
+};
+
+export const Status: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => {
+      return (
+        <Form.Group childrenFitFullWidth={false}>
+          <SwitchControl {...props} />
+          <SwitchControl {...props} defaultChecked />
+          <SwitchControl {...props} status="error" />
+          <SwitchControl {...props} status="error" defaultChecked />
+          <SwitchControl {...props} status="success" />
+          <SwitchControl {...props} status="success" defaultChecked />
+          <SwitchControl {...props} status="warning" />
+          <SwitchControl {...props} status="warning" defaultChecked />
+        </Form.Group>
       );
     })(args),
 };

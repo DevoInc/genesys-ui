@@ -11,7 +11,7 @@ const meta: Meta<typeof FloatingHelper> = {
 export default meta;
 type Story = StoryObj<typeof FloatingHelper>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     message:
       "Zip Code must be in the format of '#####' or '#####-####', example: '32334' or '32334-0092'",

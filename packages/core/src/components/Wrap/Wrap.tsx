@@ -13,9 +13,11 @@ export interface WrapProps
   > {
   /** Number of children by row. This will generate a grid of child elements with same width columns.*/
   childrenByRow?: number;
-  /** Horizontal spacing between children items (column-gap). */
+  /** Horizontal spacing between children items (column-gap).
+   * More info about spacing values in [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   hSpacing?: TGlobalSpacing;
-  /** Vertical spacing between children items (row-gap). */
+  /** Vertical spacing between children items (row-gap).
+   * More info about spacing values in [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   vSpacing?: TGlobalSpacing;
 }
 

@@ -4,16 +4,14 @@ import { CodeBlock } from './CodeBlock';
 import { lorem } from '../../../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof CodeBlock> = {
-  title: 'Components/Text/Typography/Block',
+  title: 'Components/Text/Typography/Components/Block/CodeBlock',
   component: CodeBlock,
+  args: {
+    children: lorem,
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof CodeBlock>;
 
-export const BaseCodeBlock: Story = {
-  tags: ['isHidden'],
-  args: {
-    children: lorem,
-  },
-};
+export const Playground: Story = {};

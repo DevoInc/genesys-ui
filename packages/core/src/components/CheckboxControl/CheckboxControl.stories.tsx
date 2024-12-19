@@ -21,13 +21,15 @@ const meta: Meta<typeof CheckboxControl> = {
 export default meta;
 type Story = StoryObj<typeof CheckboxControl>;
 
-export const Base: Story = {};
+export const Playground: Story = {};
 
 export const Uncontrolled: Story = {
+  tags: ['isHidden'],
   args: { 'aria-label': 'checkbox' },
 };
 
 export const Controlled: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [checked, setChecked] = React.useState(false);
@@ -42,16 +44,10 @@ export const Controlled: Story = {
 };
 
 export const Indeterminate: Story = {
-  render: () =>
-    (() => {
-      const [checked, setChecked] = React.useState(false);
-      return (
-        <CheckboxControl
-          aria-label="checkbox"
-          checked={checked}
-          indeterminate
-          onChange={() => setChecked(!checked)}
-        />
-      );
-    })(),
+  tags: ['isHidden'],
+  args: {
+    'aria-label': 'checkbox',
+    checked: true,
+    indeterminate: true,
+  },
 };

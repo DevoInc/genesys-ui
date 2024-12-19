@@ -6,11 +6,11 @@ import * as Stories from './Menu.stories';
 
 # Menu
 
-## Overview
+A component which generally represents a grouping of common actions or functions that the
+user can invoke.
 
-A `Menu` generally represents a grouping of common actions or functions that the
-user can invoke. It can be also used to create navigation menu based in links,
-so in this case it's better to use the prop `cmpRole` to `nav`.
+It can be also used to create navigation menu based in links, so in this case it's better to use the prop
+`cmpRole` to `nav`.
 
 ## How to import
 
@@ -21,7 +21,7 @@ so in this case it's better to use the prop `cmpRole` to `nav`.
 The `Menu` is used as a container of a group of `Menu.Item` and these can be
 separated or grouped by `Menu.Heading` or `Menu.Separator`.
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
 ## Selectable options
 
@@ -40,8 +40,8 @@ it's implicit. In this case it's important that all the `Menu.Item` are links.
 
 The `Menu.Item` is rendered automatically as a link (`<a>`) if it has defined
 the `href` prop. In addition, as a link, the `Menu.Item` has no role because
-it's not allowed to have any of the pre-defined roles (menuitem,
-menuitemcheckbox and menuitemradio) if it's not a child of a `role="menu"`
+it's not allowed to have any of the pre-defined roles ('menuitem',
+'menuitemcheckbox' and 'menuitemradio') if it's not a child of a `role="menu"`
 component.
 
 <Canvas of={Stories.AsNavigation} />
@@ -52,13 +52,13 @@ We can use the `Menu` component as a dropdown menu if we integrate it with the
 `Popover` component. We even can nest menus using the `Menu.Item` components as
 triggers.
 
-<Canvas of={Stories.AsNavigation} />
+<Canvas of={Stories.AsDropdownMenu} />
 
 ## Components
 
-- [Item](?path=/story/components-core-navigation-menu-components-item--base)
-- [Heading](?path=/story/components-core-navigation-menu-components--heading)
-- [Separator](?path=/story/components-core-navigation-menu-components--separator)
+- [Item](?path=/docs/components-navigation-menu-components-menuitem-overview--overview)
+- [Heading](?path=/docs/components-navigation-menu-components-menuheading-overview--overview)
+- [Separator](?path=/docs/components-navigation-menu-components-menuseparator-overview--overview)
 
 ## Related components
 

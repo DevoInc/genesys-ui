@@ -15,8 +15,7 @@ const meta: Meta<typeof Typography> = {
 export default meta;
 type Story = StoryObj<typeof Typography>;
 
-export const Base: Story = {
-  tags: ['isHidden'],
+export const Playground: Story = {
   args: {
     children: 'Typography example',
   },

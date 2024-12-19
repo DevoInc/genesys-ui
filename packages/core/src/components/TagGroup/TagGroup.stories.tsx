@@ -16,7 +16,7 @@ const meta: Meta<typeof TagGroup> = {
 export default meta;
 type Story = StoryObj<typeof TagGroup>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: (args) =>
     ((args) => (
       <TagGroup {...args}>
@@ -29,7 +29,7 @@ export const Base: Story = {
 };
 
 export const AsLegend: Story = {
-  name: 'As legend',
+  tags: ['isHidden'],
   render: (args) =>
     ((args) => (
       <TagGroup {...args} quiet>
@@ -42,7 +42,6 @@ export const AsLegend: Story = {
 };
 
 export const UseOfTag: Story = {
-  name: 'Using Tag component instead of TagGroup.Tag',
   tags: ['isHidden'],
   render: (args) =>
     ((args) => (
@@ -56,7 +55,7 @@ export const UseOfTag: Story = {
 };
 
 export const WithLabel: Story = {
-  name: 'With label',
+  tags: ['isHidden'],
   render: (args) =>
     ((args) => (
       <TagGroup {...args} label="This is a label">

@@ -1,0 +1,30 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './LoaderSpinner.stories';
+import * as LoaderStories from '../../Loader.stories';
+
+<Meta title="Components/Feedback/Loader/Components/LoaderSpinner/Overview" />
+
+# Loader.Spinner
+
+Spinner of the Loader component when we want a contextual loading transition, and we don't know
+the state in every moment.
+
+## How to import
+
+<Source code={`import { Loader } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+Defined with dot notation as `Loader.Spinner`, this component should be used only as a child of a
+`Loader` or `Loader` based component.
+
+<Canvas of={Stories.Playground} />
+
+## Integrated with Loader
+
+<Canvas of={LoaderStories.ContextualSpinner} />
+
+## Props
+
+<ArgTypes of={Stories} />

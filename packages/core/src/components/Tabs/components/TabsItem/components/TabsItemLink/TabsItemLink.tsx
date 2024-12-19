@@ -16,8 +16,8 @@ export const TabsItemLink: React.FC<Resolve<TabsItemLinkProps>> = ({
   'aria-selected': ariaSelected,
   children,
   closable,
-  size,
-  state,
+  size = 'md',
+  state = 'enabled',
   style,
   tabIndex,
   ...restLinkProps
@@ -34,7 +34,7 @@ export const TabsItemLink: React.FC<Resolve<TabsItemLinkProps>> = ({
         tabsLinkMixin({ closable, theme, size, state }),
         style,
       )}
-      tabIndex={tabIndex || (state === 'selected' ? 0 : -1)}
+      tabIndex={tabIndex || (state === 'selected' ? -1 : 0)}
     >
       {children}
     </Link>

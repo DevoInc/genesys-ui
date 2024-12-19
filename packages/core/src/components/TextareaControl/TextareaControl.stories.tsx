@@ -3,6 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { TextareaControl } from './TextareaControl';
 import { VFlex } from '../VFlex';
+import { Form } from '../Form';
 
 const meta: Meta<typeof TextareaControl> = {
   title: 'Components/Form/TextareaControl',
@@ -22,7 +23,7 @@ const meta: Meta<typeof TextareaControl> = {
 export default meta;
 type Story = StoryObj<typeof TextareaControl>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: (args) =>
     ((props) => (
       <VFlex maxWidth="72rem">
@@ -32,4 +33,48 @@ export const Base: Story = {
   args: {
     value: 'Content of the textarea ...',
   },
+};
+
+export const DisabledAndReadonly: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <Form.Group>
+        <TextareaControl {...props} disabled aria-label="Disabled" />
+        <TextareaControl
+          {...props}
+          readOnly
+          aria-label="Readonly"
+          value="Readonly value"
+        />
+      </Form.Group>
+    ))(args),
+};
+
+export const Status: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <Form.Group>
+        <TextareaControl {...props} placeholder="Base" aria-label="Base" />
+        <TextareaControl
+          {...props}
+          placeholder="Error"
+          aria-label="Error"
+          status="error"
+        />
+        <TextareaControl
+          {...props}
+          placeholder="Success"
+          aria-label="Success"
+          status="success"
+        />
+        <TextareaControl
+          {...props}
+          placeholder="Warning"
+          aria-label="Warning"
+          status="warning"
+        />
+      </Form.Group>
+    ))(args),
 };

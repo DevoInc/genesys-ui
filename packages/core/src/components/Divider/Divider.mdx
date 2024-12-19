@@ -6,23 +6,32 @@ import * as Stories from './Divider.stories';
 
 # Divider
 
-## Overview
-
 Component designed to visually separate different components, content, or text
-blocks with a horizontal or vertical line. It translates to an HTML `<hr>`
-element.
+blocks with a horizontal or vertical line.
+
+It translates to an HTML `<hr>` element.
 
 ## How to import
 
-<Source
-  code={`
-import { Divider } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { Divider } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
+
+## Horizontal and vertical
+
+We have a default type which is the horizontal one, but if you assign the 'vertical' prop to true,
+then you get a vertical separator.
+
+<Canvas of={Stories.Types} />
+
+## Custom color
+
+You have a lot of pre-defined colors, using the 'colorScheme' prop, but if you need some very specific color,
+you can use the 'customColor' prop.
+
+<Canvas of={Stories.CustomColor} />
 
 ## Props
 

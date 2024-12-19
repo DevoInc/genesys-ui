@@ -21,6 +21,7 @@ import {
   goToNextPageFn,
   goToPreviousPageFn,
 } from '../../helpers';
+import { PaginationContext } from '../../context';
 
 export interface PaginationNavProps extends IPaginationCommonInterface {
   hideFirstLastButtons?: boolean;
@@ -46,6 +47,10 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
   onChange,
   ...dataProps
 }) => {
+  const context = React.useContext(PaginationContext);
+  const evalSize = size || context.size;
+  const evalTexts = texts || context.texts;
+
   const [isMenuOpen, setMenuOpen] = React.useState(false);
   const lastPage = getLastPage(totalItems, pageSize);
 
@@ -56,14 +61,14 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
     pageSelectorLabel,
     prevPageTooltipText,
     selectPageTooltipTextFn,
-  } = { ...DEFAULT_TEXTS, ...texts };
+  } = { ...DEFAULT_TEXTS, ...evalTexts };
 
   return (
     <Box as="nav" {...dataProps}>
       <HFlex
         as="ul"
         id={id ? `${id}__page-navigation` : null}
-        spacing={size === 'lg' ? 'cmp-sm' : 'cmp-xs'}
+        spacing={evalSize === 'lg' ? 'cmp-sm' : 'cmp-xs'}
         style={style}
       >
         {!hideFirstLastButtons && (
@@ -74,7 +79,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
               onClick={() => {
                 onChange(goToFirstPage({ totalItems, pageSize, page }));
               }}
-              size={size}
+              size={evalSize}
               state={page === 0 ? 'disabled' : 'enabled'}
               tooltip={firstPageTooltipText}
             />
@@ -88,7 +93,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
               onClick={() => {
                 onChange(goToPreviousPage({ totalItems, pageSize, page }));
               }}
-              size={size}
+              size={evalSize}
               state={page === 0 ? 'disabled' : 'enabled'}
               tooltip={prevPageTooltipText}
             />
@@ -117,7 +122,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
                 value: index,
                 label: `${index + 1}`,
               }))}
-              size={size}
+              size={evalSize}
               value={{ value: page, label: String(page + 1) }}
             />
           </Flex.Item>
@@ -131,7 +136,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
               onClick={() => {
                 onChange(goToNextPage({ totalItems, pageSize, page }));
               }}
-              size={size}
+              size={evalSize}
               state={page === lastPage ? 'disabled' : 'enabled'}
               tooltip={nextPageTooltipText}
             />
@@ -146,7 +151,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
               onClick={() => {
                 onChange(goToLastPage({ totalItems, pageSize, page }));
               }}
-              size={size}
+              size={evalSize}
               state={page === lastPage ? 'disabled' : 'enabled'}
               tooltip={lastPageTooltipText}
             />

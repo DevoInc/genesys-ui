@@ -20,7 +20,7 @@ const meta: Meta<typeof Tabs> = {
 export default meta;
 type Story = StoryObj<typeof Tabs>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: (args) =>
     ((args) => {
       const tabsRef = React.useRef<HTMLDivElement>();
@@ -58,7 +58,7 @@ export const Base: Story = {
 };
 
 export const WithAsideContent: Story = {
-  name: 'With aside content',
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const tabsRef = React.useRef<HTMLDivElement>();
@@ -105,14 +105,14 @@ export const WithAsideContent: Story = {
 };
 
 export const Closable: Story = {
-  name: 'Closable',
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const tabsRef = React.useRef<HTMLDivElement>();
       const [activeTab, setActiveTab] = React.useState(0);
       const [tabs, setTabs] = React.useState([
         { icon: <GIChart />, label: 'Tiny' },
-        { icon: <GICheckThick />, label: 'Tab with a very very long title' },
+        { icon: <GICheckThick />, label: 'Tab with long title' },
         { label: 'Normal tab' },
         { label: 'Disabled tab', disabled: true },
       ]);

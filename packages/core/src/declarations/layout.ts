@@ -34,13 +34,16 @@ export interface ILayoutBoxCss {
    * alias values used in the other margin types e.g. 'cmp-xs cmp-md' */
   margin?: string;
   /** Css margin-bottom. More info about spacing values in
-   * [Spacing tokens page](?path=/story/docs-design-tokens-spacing-tokens--page) */
+   * [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   marginBottom?: TGlobalSpacing;
-  /** Css margin-left */
+  /** Css margin-left. More info about spacing values in
+   * [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   marginLeft?: TGlobalSpacing;
-  /** Css margin-right */
+  /** Css margin-right. More info about spacing values in
+   * [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   marginRight?: TGlobalSpacing;
-  /** Css margin-top */
+  /** Css margin-top. More info about spacing values in
+   * [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   marginTop?: TGlobalSpacing;
   /** Css max-height */
   maxHeight?: React.CSSProperties['maxHeight'];
@@ -59,15 +62,20 @@ export interface ILayoutBoxCss {
   /** Css overflow-y */
   overflowY?: React.CSSProperties['overflowY'];
   /** Css padding. Use in the same way you assign padding in css, but using the
-   * alias values used in the other padding types e.g. 'cmp-xs cmp-md' */
+   * alias values used in the other padding types e.g. 'cmp-xs cmp-md'. More info about spacing values in
+   * [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   padding?: string;
-  /** Css padding-bottom */
+  /** Css padding-bottom. More info about spacing values in
+   * [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   paddingBottom?: TGlobalSpacing;
-  /** Css padding-left */
+  /** Css padding-left. More info about spacing values in
+   * [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   paddingLeft?: TGlobalSpacing;
-  /** Css padding-right */
+  /** Css padding-right. More info about spacing values in
+   * [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   paddingRight?: TGlobalSpacing;
-  /** Css padding-top */
+  /** Css padding-top. More info about spacing values in
+   * [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   paddingTop?: TGlobalSpacing;
   /** Css position */
   position?: React.CSSProperties['position'];
@@ -126,9 +134,11 @@ export interface ILayoutGridCss {
   alignContent?: React.CSSProperties['alignContent'];
   /** The CSS align-items property sets the align-self value on all direct children as a group. In Grid Layout, it controls the alignment of items on the Block Axis within their grid area.*/
   alignItems?: React.CSSProperties['alignItems'];
-  /** The column-gap CSS property sets the size of the gap (gutter) between an element's columns. Use in the same way you assign spacing props as padding, margin...etc. using the alias values e.g. 'cmp-sm, cmp-md...etc.'*/
+  /** The column-gap CSS property sets the size of the gap (gutter) between an element's columns. Use in the same way you assign spacing props as padding, margin...etc. using the alias values e.g. 'cmp-sm, cmp-md...etc.'
+   * More info about spacing values in [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   columnGap?: TGlobalSpacing;
-  /** The gap CSS property sets the gaps (gutters) between rows and columns. It is a shorthand for row-gap and column-gap. Use in the same way you assign spacing props padding, margin...etc. using the alias values e.g. 'cmp-sm, cmp-xs cmp-md...etc.' */
+  /** The gap CSS property sets the gaps (gutters) between rows and columns. It is a shorthand for row-gap and column-gap. Use in the same way you assign spacing props padding, margin...etc. using the alias values e.g. 'cmp-sm, cmp-xs cmp-md...etc.'
+   *   More info about spacing values in [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   gap?: string;
   /** The grid-auto-flow CSS property controls how the auto-placement algorithm works, specifying exactly how auto-placed items get flowed into the grid.*/
   gridAutoFlow?: React.CSSProperties['gridAutoFlow'];
@@ -144,7 +154,8 @@ export interface ILayoutGridCss {
   justifyContent?: React.CSSProperties['justifyContent'];
   /** The CSS justify-items property defines the default justify-self for all items of the box, giving them all a default way of justifying each box along the appropriate axis.*/
   justifyItems?: React.CSSProperties['justifyItems'];
-  /** The row-gap CSS property sets the size of the gap (gutter) between an element's rows. Use in the same way you assign spacing props as padding, margin...etc. using the alias values e.g. 'cmp-sm, cmp-md... etc.' */
+  /** The row-gap CSS property sets the size of the gap (gutter) between an element's rows. Use in the same way you assign spacing props as padding, margin...etc. using the alias values e.g. 'cmp-sm, cmp-md... etc.'
+   * More info about spacing values in [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   rowGap?: TGlobalSpacing;
 }
 

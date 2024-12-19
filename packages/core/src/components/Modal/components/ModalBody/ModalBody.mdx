@@ -1,0 +1,29 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './ModalBody.stories';
+
+<Meta title="Components/Layout/Modal/Components/ModalBody/Overview" />
+
+# Modal.Body
+
+Panel Body of the Modal component which renders the main content, and manage the scroll behavior.
+
+It's based on `Panel.Body` component and its interface and usage is almost the same.
+
+## How to import
+
+<Source code={`import { Modal } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+Defined with dot notation as `Modal.Body`, it must be used only as a child of a `Modal` or `Modal` based component.
+
+<Canvas of={Stories.Playground} />
+
+## Related components
+
+- [Panel.Body](?path=/docs/components-layout-panel-components-panelbody-overview--overview)
+
+## Props
+
+<ArgTypes of={Stories} />

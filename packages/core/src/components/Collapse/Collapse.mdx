@@ -6,8 +6,6 @@ import * as Stories from './Collapse.stories';
 
 # Collapse
 
-## Overview
-
 Collapsible container that hides or reveals its `children` on demand.
 
 ## How to import
@@ -20,7 +18,7 @@ You have to use the `Collapse` component as a trigger of other hidden component
 or block. Usually, we use a `React.useState` to manage if the content is hidden
 or not:
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
 ## Quiet
 
@@ -76,6 +74,8 @@ component and its props. In these cases, you can use its internal components (`_
 that specific usage. We don't recommend this usage, but anyway it's available for very specific
 needs, usually about styles.
 
+<Canvas of={Stories.Custom} />
+
 ## Accessibility
 
 You have to add the `aria-controls` prop to the `Collapse` component, and it has
@@ -84,7 +84,7 @@ to be equal to the `id` prop/attribute of the collapsed content. The
 added automatically based in the `expanded` prop.
 You can see it in this example:
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
 ## Props
 

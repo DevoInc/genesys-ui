@@ -7,6 +7,7 @@ import { Tabs, useTabsAccessibility } from '../Tabs';
 import { Panel } from '../Panel';
 import { Typography } from '../Typography';
 import { TabsCmp } from './__stories__';
+import { Flex } from '../Flex';
 
 const meta: Meta<typeof AppLayout> = {
   title: 'Components/Layout/AppLayout',
@@ -19,7 +20,36 @@ const meta: Meta<typeof AppLayout> = {
 export default meta;
 type Story = StoryObj<typeof AppLayout>;
 
-export const Base: Story = {
+export const PlaygroundBase: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((args) => (
+      <AppLayout
+        {...args}
+        style={{ backgroundColor: 'rgba(63, 187, 226, 0.2)', padding: '16px' }}
+      >
+        <AppLayout.Bar style={{ backgroundColor: 'rgba(51, 255, 159, 0.2)' }}>
+          <Flex alignItems="center" justifyContent="center" height="5rem">
+            AppLayout.Bar
+          </Flex>
+        </AppLayout.Bar>
+        <AppLayout.Lead style={{ backgroundColor: 'rgba(255, 104, 66, 0.2)' }}>
+          <Flex alignItems="center" justifyContent="center" height="5rem">
+            AppLayout.Lead
+          </Flex>
+        </AppLayout.Lead>
+        <AppLayout.Content
+          style={{ backgroundColor: 'rgba(182, 23, 226, 0.2)' }}
+        >
+          <Flex alignItems="center" justifyContent="center" height="5rem">
+            AppLayout.Content
+          </Flex>
+        </AppLayout.Content>
+      </AppLayout>
+    ))(args),
+};
+
+export const Playground: Story = {
   render: (args) =>
     ((args) => (
       <AppLayout {...args}>

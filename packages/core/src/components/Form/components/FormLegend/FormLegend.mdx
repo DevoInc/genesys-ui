@@ -1,0 +1,23 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as stories from './FormLegend.stories';
+
+<Meta title="Components/Form/Form/Components/FormLegend/Overview" />
+
+## Form.Legend
+
+Component that provides a legend to the form.
+
+### Basic usage
+
+Defined with dot notation as `Form.Legend`. This component should be used only as a
+child of a `Form` or `Form` based component.
+
+This component will rarely be used, because the `From.Group` has already a 'legend' prop which renders
+a `Form.Legend` at the beginning ogf the group.
+
+<Canvas of={stories.Playground} />
+
+### Props
+
+<ArgTypes of={stories} />

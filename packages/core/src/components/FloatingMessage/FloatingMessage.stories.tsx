@@ -28,10 +28,10 @@ const meta: Meta<typeof FloatingMessage> = {
 export default meta;
 type Story = StoryObj<typeof FloatingMessage>;
 
-export const Base: Story = {};
+export const Playground: Story = {};
 
 export const PositionedToItsParent: Story = {
-  name: 'Positioned related to its parent',
+  tags: ['isHidden'],
   render: (args) =>
     ((args) => (
       <Box position="relative">
@@ -42,7 +42,7 @@ export const PositionedToItsParent: Story = {
 };
 
 export const Position: Story = {
-  name: 'Position demo',
+  tags: ['isHidden'],
   render: (args) =>
     ((args) => (
       <Box
@@ -109,7 +109,7 @@ export const Position: Story = {
 };
 
 export const ShowHideButton: Story = {
-  name: 'Triggered by action with time out',
+  tags: ['isHidden'],
   render: (args) =>
     ((args) => {
       const [isVisible, setIsVisible] = React.useState(false);
@@ -139,6 +139,7 @@ export const ShowHideButton: Story = {
 };
 
 export const Animated: Story = {
+  tags: ['isHidden'],
   render: (args) =>
     ((args) => {
       const [isVisible, setIsVisible] = React.useState(false);

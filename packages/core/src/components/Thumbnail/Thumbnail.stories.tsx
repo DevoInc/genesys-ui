@@ -19,7 +19,7 @@ const meta: Meta<typeof Thumbnail> = {
 export default meta;
 type Story = StoryObj<typeof Thumbnail>;
 
-export const Base: Story = {};
+export const Playground: Story = {};
 
 export const CustomSize: Story = {
   tags: ['isHidden'],

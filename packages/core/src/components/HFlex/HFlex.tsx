@@ -11,7 +11,8 @@ export interface HFlexProps
   > {
   /** If the children fit full width of the HFlex parent*/
   childrenFitFullWidth?: boolean;
-  /** Horizontal spacing between children items (column-gap). */
+  /** Horizontal spacing between children items (column-gap).
+   * More info about spacing values in [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   spacing?: TGlobalSpacing;
 }
 

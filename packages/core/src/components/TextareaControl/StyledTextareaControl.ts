@@ -9,7 +9,7 @@ import {
 import { TFieldSize, TFieldStatus } from '../../declarations';
 
 export interface StyledTextareaControlProps {
-  $readOnly?: boolean;
+  readOnly?: boolean;
   $size?: TFieldSize;
   $status?: TFieldStatus;
   /** The number of visible text lines for the control. If it is specified, it
@@ -22,7 +22,7 @@ export interface StyledTextareaControlProps {
 }
 
 export const StyledTextareaControl = styled.textarea<StyledTextareaControlProps>`
-  ${({ disabled, $readOnly, $resize = 'both', $size, $status, theme }) => {
+  ${({ disabled, readOnly, $resize = 'both', $size, $status, theme }) => {
     const cmpTokens = theme.cmp.textareaControl;
     const fieldLineHeight = getLineHeight({ tokens: theme, $size });
 
@@ -32,13 +32,13 @@ export const StyledTextareaControl = styled.textarea<StyledTextareaControlProps>
     return css`
       ${commonInputControlMixin({
         disabled,
-        $readOnly,
+        $readOnly: readOnly,
         $size,
         $status,
         theme,
       })};
       ${scrollbars({ theme })};
-      resize: ${!(disabled || $readOnly) ? $resize : 'none'};
+      resize: ${!(disabled || readOnly) ? $resize : 'none'};
       height: ${cmpTokens.size.height.base};
       padding-top: ${verPadding};
       padding-bottom: ${verPadding};

@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { GICheckThick, GISearchFindZoom } from '@devoinc/genesys-icons';
-import { HFlex, IconButton, InputControl, VFlex } from '..';
+import {
+  GICheckThick,
+  GIMailPostCard,
+  GISearchFindZoom,
+} from '@devoinc/genesys-icons';
+import { Form, HFlex, IconButton, InputControl, VFlex } from '..';
 
 const meta: Meta<typeof InputControl> = {
   title: 'Components/Form/InputControl',
@@ -25,10 +29,100 @@ const meta: Meta<typeof InputControl> = {
 export default meta;
 type Story = StoryObj<typeof InputControl>;
 
-export const Base: Story = {};
+export const Playground: Story = {};
+
+export const DisabledAndReadonly: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <Form.Group>
+        <InputControl {...props} disabled aria-label="Disabled" />
+        <InputControl
+          {...props}
+          readOnly
+          aria-label="Readonly"
+          value="Readonly value"
+        />
+      </Form.Group>
+    ))(args),
+};
+
+export const Status: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <Form.Group>
+        <InputControl {...props} placeholder="Base" aria-label="Base" />
+        <InputControl
+          {...props}
+          placeholder="Error"
+          aria-label="Error"
+          status="error"
+        />
+        <InputControl
+          {...props}
+          placeholder="Success"
+          aria-label="Success"
+          status="success"
+        />
+        <InputControl
+          {...props}
+          placeholder="Warning"
+          aria-label="Warning"
+          status="warning"
+        />
+      </Form.Group>
+    ))(args),
+};
+
+export const WithIcon: Story = {
+  tags: ['isHidden'],
+  args: {
+    'aria-label': 'Address',
+    icon: <GIMailPostCard />,
+    placeholder: 'Address...',
+  },
+};
+
+export const WithAddons: Story = {
+  tags: ['isHidden'],
+  args: {
+    'aria-label': 'Web name',
+    addonToLeft: 'www.',
+    addonToRight: '.com',
+    placeholder: 'Web name...',
+  },
+};
+
+export const Types: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <Form.Group>
+        <InputControl {...props} aria-label="Color" type="color" />
+        <InputControl {...props} aria-label="Date" type="date" />
+        <InputControl
+          {...props}
+          aria-label="Datetime-local"
+          type="datetime-local"
+        />
+        <InputControl {...props} aria-label="Email" type="email" />
+        <InputControl {...props} aria-label="File" type="file" />
+        <InputControl {...props} aria-label="Hidden" type="hidden" />
+        <InputControl {...props} aria-label="Image" type="image" />
+        <InputControl {...props} aria-label="Month" type="month" />
+        <InputControl {...props} aria-label="Number" type="number" />
+        <InputControl {...props} aria-label="Range" type="range" />
+        <InputControl {...props} aria-label="Tel" type="tel" />
+        <InputControl {...props} aria-label="Time" type="time" />
+        <InputControl {...props} aria-label="Url" type="url" />
+        <InputControl {...props} aria-label="Week" type="week" />
+      </Form.Group>
+    ))(args),
+};
 
 export const AdvancedUsage: Story = {
-  name: 'Advanced usage',
+  tags: ['isHidden'],
   render: () =>
     (() => (
       <InputControl._Container>
@@ -55,7 +149,7 @@ export const AdvancedUsage: Story = {
 };
 
 export const SearchType: Story = {
-  name: 'Type search',
+  tags: ['isHidden'],
   render: () =>
     (() => (
       <VFlex>
@@ -78,18 +172,9 @@ export const SearchType: Story = {
 };
 
 export const PasswordType: Story = {
-  name: 'Type password',
+  tags: ['isHidden'],
   args: {
     type: 'password',
     defaultValue: '123456',
-  },
-};
-
-export const WithAddonsAndIcons: Story = {
-  name: 'With addons and icon',
-  args: {
-    addonToLeft: 'Addon to left',
-    addonToRight: 'Addon to right',
-    icon: <GICheckThick />,
   },
 };

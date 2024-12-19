@@ -1,0 +1,35 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './CodeInline.stories';
+
+<Meta title="Components/Text/Typography/Components/Inline/CodeInline/Overview" />
+
+# Typography.CodeInline
+
+This component displays its contents styled in a fashion intended to
+indicate that the text is a short (and inline) fragment of computer code.
+
+## How to import
+
+<Source code={`import { Typography } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+It's defined with dot notation as `Typography.CodeInline`, because this component belongs to `Typography` group.
+
+<Canvas of={Stories.Playground} />
+
+## As children
+
+Inline typographic components are typically used within other typographic block
+components.
+
+They inherit the main text styles from those block components, but they also
+have their own inline-specific styles, such as text-decoration, font-weight, and
+vertical-align.
+
+<Canvas of={Stories.AsChildren} />
+
+## Props
+
+<ArgTypes of={Stories} />

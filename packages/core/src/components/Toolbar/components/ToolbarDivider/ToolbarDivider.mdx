@@ -1,0 +1,29 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './ToolbarDivider.stories';
+
+<Meta title="Components/Layout/Toolbar/Components/ToolbarDivider/Overview" />
+
+# Toolbar.Divider
+
+Divider to separate blocks in the Toolbar component.
+
+It's based on `Divider` component so its interface and usage is almost the same.
+
+## How to import
+
+<Source code={`import { Toolbar } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+Defined with dot notation as `Toolbar.Divider`, it must be used only as a child of a `Toolbar` or `Toolbar` based component.
+
+<Canvas of={Stories.Playground} />
+
+## Related components
+
+- [Divider](?path=/docs/components-layout-divider--overview)
+
+## Props
+
+<ArgTypes of={Stories} />

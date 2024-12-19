@@ -6,22 +6,34 @@ import * as Stories from './StatusMessage.stories';
 
 # StatusMessage
 
-## Overview
+This component is used to provide feedback to the user in a status context, such as error, empty,
+warning, etc.
 
-The StatusMessage component is used to provide feedback to the user in a status context, such as error, empty, warning, etc.
 It is typically used within an area or block to communicate the state or outcome of a particular action or process.
 
 ## How to import
 
-<Source
-  code={`
-import { StatusMessage } from '@devoinc/genesys-ui';
-`}
-/>
+<Source code={`import { StatusMessage } from '@devoinc/genesys-ui';`} />
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
+
+## Status
+
+There are available different status which should be linked to specific icons or symbols.
+
+<Canvas of={Stories.Status} />
+
+## Bordered
+
+<Canvas of={Stories.Bordered} />
+
+## Using images and vectors
+
+You can use the 'icon' prop not only for adding icons from a library, but also images, SVGs... etc.
+
+<Canvas of={Stories.WithVector} />
 
 ## Props
 

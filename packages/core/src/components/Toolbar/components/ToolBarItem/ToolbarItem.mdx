@@ -1,0 +1,30 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './ToolBarItem.stories';
+
+<Meta title="Components/Layout/Toolbar/Components/ToolBarItem/Overview" />
+
+# ToolBar.Item
+
+The item for each block of the Toolbar component. It's not strictly necessary to use this component
+for each block of the Toolbar, but it's useful when you need some specific behavior.
+
+It's based on `Flex` component so its interface and usage is almost the same.
+
+## How to import
+
+<Source code={`import { Toolbar } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+Defined with dot notation as `Toolbar.Item`, it must be used only as a child of a `Toolbar` or `Toolbar` based component.
+
+<Canvas of={Stories.Playground} />
+
+## Related components
+
+- [Flex](?path=/docs/components-layout-flex--overview)
+
+## Props
+
+<ArgTypes of={Stories} />

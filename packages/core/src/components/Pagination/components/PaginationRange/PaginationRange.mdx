@@ -2,17 +2,22 @@ import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './PaginationRange.stories';
 
-<Meta of={Stories} />
+<Meta title="Components/Navigation/Pagination/Components/PaginationRange/Overview" />
 
-# Range
+# Pagination.Range
 
-The selector to define the range of items per page in the `Pagination`
-component.
+The selector to define the range of items per page in the Pagination component.
 
 ## How to import
 
-You have to use the component as dot notation of the main component as
-`Pagination.Range`.
+<Source code={`import { Pagination } from '@devoinc/genesys-ui';`} />
 
-<Canvas of={Stories.Base} />
+## Basic usage
 
+You have to use the component as dot notation of the main component as `Pagination.Range`.
+
+<Canvas of={Stories.Playground} />
+
+## Props
+
+<ArgTypes of={Stories} />

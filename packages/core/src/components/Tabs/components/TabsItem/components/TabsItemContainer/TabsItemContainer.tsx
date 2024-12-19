@@ -19,7 +19,7 @@ export const TabsItemContainer: React.FC<Resolve<TabsItemContainerProps>> = ({
   flex,
   height,
   margin,
-  size,
+  size = 'md',
   wide,
   ...restFlexProps
 }) => {

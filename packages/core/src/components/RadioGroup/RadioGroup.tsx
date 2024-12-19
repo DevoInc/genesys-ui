@@ -5,7 +5,10 @@ import { Form, type FormGroupProps } from '../Form';
 
 export interface RadioGroupProps
   extends WithRequired<
-    Omit<FormGroupProps, 'alignItems' | 'justifyContent' | 'itemsGap'>,
+    Omit<
+      FormGroupProps,
+      'alignItems' | 'asFieldset' | 'justifyContent' | 'itemsGap'
+    >,
     'legend'
   > {}
 

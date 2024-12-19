@@ -19,16 +19,15 @@ const meta: Meta<typeof PanelSection> = {
 export default meta;
 type Story = StoryObj<typeof PanelSection>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     children: <>{TextBlock}</>,
     title: 'PanelSection title',
   },
 };
 
-export let WithScroll: Story;
-WithScroll = {
-  name: 'With scroll and backward navigation',
+export let WithScroll: Story = {
+  tags: ['isHidden'],
   args: {
     title: 'Panel title',
     subtitle: 'Panel subtitle',
@@ -41,21 +40,10 @@ WithScroll = {
     },
     children: TextBlock,
   },
-  argTypes: {
-    title: {
-      type: 'string',
-    },
-    subtitle: {
-      type: 'string',
-    },
-    height: {
-      type: 'string',
-    },
-  },
 };
 
 export const RemovedSpaceAndScroll: Story = {
-  name: 'Scroll and removed space in the content',
+  tags: ['isHidden'],
   args: {
     title: 'Panel title',
     subtitle: 'Panel subtitle',
@@ -68,7 +56,7 @@ export const RemovedSpaceAndScroll: Story = {
 };
 
 export const WithHeaderActions: Story = {
-  name: 'With header actions',
+  tags: ['isHidden'],
   args: {
     title: 'Panel title',
     subtitle: 'Panel subtitle',
@@ -87,7 +75,7 @@ export const WithHeaderActions: Story = {
 };
 
 export const WithFooterActions: Story = {
-  name: 'With footer actions',
+  tags: ['isHidden'],
   args: {
     title: 'Panel title',
     subtitle: 'Panel subtitle',

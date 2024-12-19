@@ -2,16 +2,34 @@ import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './PaginationNav.stories';
 
-<Meta of={Stories} />
+<Meta title="Components/Navigation/Pagination/Components/PaginationNav/Overview" />
 
-# Nav
+# Pagination.Nav
 
-The page navigation in the `Pagination` component.
+The navigation between pages block in the Pagination component.
 
 ## How to import
 
-You have to use the component as dot notation of the main component as
-`Pagination.Nav`.
+<Source code={`import { Pagination } from '@devoinc/genesys-ui';`} />
 
-<Canvas of={Stories.Base} />
+## Basic usage
 
+You have to use the component as dot notation of the main component as `Pagination.Nav`.
+
+<Canvas of={Stories.Playground} />
+
+## Prev-next buttons hidden
+
+<Canvas of={Stories.HidePrevNextButtons} />
+
+## First-last buttons hidden
+
+<Canvas of={Stories.HideFirstLastButtons} />
+
+## Page selector hidden
+
+<Canvas of={Stories.HidePageSelector} />
+
+## Props
+
+<ArgTypes of={Stories} />

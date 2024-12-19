@@ -1,12 +1,18 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { GIDownloadCloudFileSync } from '@devoinc/genesys-icons';
+import {
+  GIArrowRight,
+  GIDownloadCloudFileSync,
+  GIReloadRefreshUpdate,
+} from '@devoinc/genesys-icons';
 
 import { Typography } from '../Typography';
 import { Button, type ButtonProps } from '../Button';
 import { Flex } from '../Flex';
 import { HFlex } from '../HFlex';
+import { VFlex } from '../VFlex';
+import { Wrap } from '../Wrap';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button/Button',
@@ -20,7 +26,7 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Base: Story = {};
+export const Playground: Story = {};
 
 export const AccentHigh: Story = {
   tags: ['isHidden'],
@@ -91,6 +97,120 @@ export const Quiet: Story = {
     colorScheme: 'quiet',
     children: 'Quiet',
   },
+};
+
+export const WithBadge: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <HFlex>
+        <Button {...props} hasBadge>
+          Badge as marker
+        </Button>
+        <Button {...props} hasBadge badgeText="8">
+          Badge with content
+        </Button>
+      </HFlex>
+    ))(args),
+};
+
+export const Wide: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <VFlex>
+        <VFlex.Item>
+          <Button {...props} wide>
+            Button wide
+          </Button>
+        </VFlex.Item>
+        <HFlex>
+          <Button {...props} wide>
+            Button wide one
+          </Button>
+          <Button {...props} wide>
+            Button wide two
+          </Button>
+          <Button {...props} wide>
+            Button wide one
+          </Button>
+        </HFlex>
+      </VFlex>
+    ))(args),
+};
+
+export const WithIcon: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <HFlex>
+        <Button {...props} icon={<GIReloadRefreshUpdate />}>
+          Icon to left
+        </Button>
+        <Button {...props} icon={<GIArrowRight />} iconPosition="right">
+          Icon to right
+        </Button>
+      </HFlex>
+    ))(args),
+};
+
+export const Sizes: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <HFlex>
+        <Button {...props} size="xxs">
+          Size xxs
+        </Button>
+        <Button {...props} size="xs">
+          Size xs
+        </Button>
+        <Button {...props} size="sm">
+          Size sm
+        </Button>
+        <Button {...props}>Size md</Button>
+        <Button {...props} size="lg">
+          Size lg
+        </Button>
+      </HFlex>
+    ))(args),
+};
+
+export const States: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <Wrap>
+        <Button {...props}>Enabled</Button>
+        <Button {...props} state="disabled">
+          Disabled
+        </Button>
+        <Button {...props} state="expanded">
+          Expanded
+        </Button>
+        <Button {...props} state="selected">
+          Selected
+        </Button>
+        <Button {...props} state="hovered">
+          Hovered
+        </Button>
+        <Button {...props} state="focused">
+          Focused
+        </Button>
+        <Button {...props} state="pressed">
+          Pressed
+        </Button>
+        <Button {...props} state="loading">
+          Loading
+        </Button>
+        <Button {...props} state="loading-error" colorScheme="error">
+          Loading error
+        </Button>
+        <Button {...props} state="loading-success" colorScheme="success">
+          Loading success
+        </Button>
+      </Wrap>
+    ))(args),
 };
 
 export const AsDropdown: Story = {

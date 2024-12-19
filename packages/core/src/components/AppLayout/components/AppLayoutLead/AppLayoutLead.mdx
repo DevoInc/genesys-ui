@@ -1,0 +1,24 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './AppLayoutLead.stories';
+
+<Meta title="Components/Layout/AppLayout/Components/AppLayoutLead/Overview" />
+
+# AppLayout.Lead
+
+The main content block of the AppLayout component.
+
+## How to import
+
+<Source code={`import { AppLayout } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+Defined with dot notation as `AppLayout.Lead`. This component should be used only as a
+child of a `AppLayout` or `AppLayout` based component.
+
+<Canvas of={Stories.Playground} />
+
+## Props
+
+<ArgTypes of={Stories} />

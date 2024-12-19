@@ -1,0 +1,66 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './TabsItem.stories';
+
+<Meta title="Components/Navigation/Tabs/Components/TabsItem/Overview" />
+
+# Tabs.Item
+
+This component is used to define each of the individual tabs.
+
+## How to import
+
+<Source code={`import { Tabs } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+It's defined with dot notation as `Tabs.Item`. This component should be used only as a
+child of a `Tabs` or `Tabs` based component.
+
+<Canvas of={Stories.Playground} />
+
+## With badge
+
+You can add a `Badge` to the content of the tab item, using a `Box` component with absolute position.
+
+<Canvas of={Stories.WithBadge} />
+
+## Closable
+
+When you need a closable tab, you only have to assign a function to 'onClose' prop. You can add a tooltip for this close
+button with the 'closeTooltip' prop.
+
+<Canvas of={Stories.Closable} />
+
+## Sizes
+
+<Canvas of={Stories.Sizes} />
+
+## Wide
+
+If you need the tab item occupies the whole space available of its parent.
+
+<Canvas of={Stories.Wide} />
+
+## States
+
+<Canvas of={Stories.States} />
+
+## Advanced usage
+
+If we need a customization, or simply we want to use a specific piece of the
+component we have its internal components available following dot notation.
+
+- `Tabs.Item._Container`: the outermost container which distributes the tab elements.
+- `Tabs.Item._Close`: close button to the right of the content.
+- `Tabs.Item._Icon`: the icon at the beginning og the tab.
+- `Tabs.Item._Link`: the clickable container of the content.
+
+We don't recommend this usage, but anyway it's available for very specific
+needs, usually because we need custom styles for some piece of the component.
+
+<Canvas of={Stories.AdvancedUsage} />
+
+## Props
+
+<ArgTypes of={Stories} />

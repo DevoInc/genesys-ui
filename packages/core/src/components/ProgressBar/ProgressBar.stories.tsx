@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { ProgressBar } from './ProgressBar';
+import { VFlex } from '../VFlex';
 
 const meta: Meta<typeof ProgressBar> = {
   title: 'Components/Feedback/ProgressBar',
@@ -18,9 +19,10 @@ const meta: Meta<typeof ProgressBar> = {
 export default meta;
 type Story = StoryObj<typeof ProgressBar>;
 
-export const Base: Story = {};
+export const Playground: Story = {};
 
 export const Circular: Story = {
+  tags: ['isHidden'],
   args: {
     percent: 75,
     type: 'circular',
@@ -30,7 +32,7 @@ export const Circular: Story = {
 };
 
 export const WithCustomInfo: Story = {
-  name: 'With custom info',
+  tags: ['isHidden'],
   args: {
     percent: 75,
     customInfo: {
@@ -42,7 +44,7 @@ export const WithCustomInfo: Story = {
 };
 
 export const AccessibleValidation: Story = {
-  name: 'Accessible and with validation',
+  tags: ['isHidden'],
   args: {
     status: 'error',
     id: 'story-validation-demo',
@@ -55,7 +57,7 @@ export const AccessibleValidation: Story = {
 };
 
 export const AccessibleFloatingValidation: Story = {
-  name: 'Accessible and with floating validation',
+  tags: ['isHidden'],
   args: {
     status: 'error',
     hasFloatingStatusHelper: true,
@@ -69,7 +71,7 @@ export const AccessibleFloatingValidation: Story = {
 };
 
 export const Custom: Story = {
-  name: 'Custom based in internal components',
+  tags: ['isHidden'],
   render: () =>
     (() => {
       return (
@@ -85,4 +87,65 @@ export const Custom: Story = {
         </ProgressBar._Container>
       );
     })(),
+};
+
+export const Sizes: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => {
+      return (
+        <VFlex>
+          <ProgressBar {...props} size="sm" />
+          <ProgressBar {...props} size="md" />
+        </VFlex>
+      );
+    })(args),
+};
+
+export const Status: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => {
+      return (
+        <VFlex>
+          <ProgressBar
+            {...props}
+            showStatus
+            customInfo={{ startInfo: 'Progressing status' }}
+          />
+          <ProgressBar
+            {...props}
+            status="error"
+            showStatus
+            customInfo={{ startInfo: 'Error status' }}
+          />
+          <ProgressBar
+            {...props}
+            status="complete"
+            showStatus
+            customInfo={{ startInfo: 'Complete status' }}
+          />
+          <ProgressBar
+            {...props}
+            status="warning"
+            showStatus
+            customInfo={{ startInfo: 'Warning status' }}
+          />
+        </VFlex>
+      );
+    })(args),
+};
+
+export const Indeterminate: Story = {
+  tags: ['isHidden'],
+  args: {
+    indeterminate: true,
+  },
+};
+
+export const Animated: Story = {
+  tags: ['isHidden'],
+  args: {
+    animated: true,
+  },
 };

@@ -13,7 +13,7 @@ const meta: Meta<typeof EditableContent> = {
 export default meta;
 type Story = StoryObj<typeof EditableContent>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: () =>
     (() => {
       const [editConfig, setEditConfig] = React.useState({

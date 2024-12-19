@@ -6,8 +6,6 @@ import * as Stories from './CheckboxControl.stories';
 
 # CheckboxControl
 
-## Overview
-
 Form element that allows users to make a binary choice, i.e. a choice between
 one of two possible mutually exclusive options.
 By default, when a checkbox is selected, it displays a checkmark or a tick
@@ -19,13 +17,17 @@ inside a square or a circle, indicating that the option has been chosen.
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
 ## Uncontrolled
+
+When the checked behavior depends solely on the HTML type checkbox input.
 
 <Canvas of={Stories.Uncontrolled} />
 
 ## Controlled
+
+When the checked behavior depends on a state.
 
 <Canvas of={Stories.Controlled} />
 
@@ -36,6 +38,8 @@ inside a square or a circle, indicating that the option has been chosen.
 ## Related components
 
 - [Checkbox](?path=/docs/components-form-checkbox--docs)
+- [SelectControl](?path=/story/components-form-selectcontrol-cases--multiple-subtle)
+- [Table bulk actions](?path=/docs/components-layout-table-actions-bulkactions-by-index--overview)
 
 ## Props
 

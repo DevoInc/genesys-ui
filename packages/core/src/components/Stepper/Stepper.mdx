@@ -6,10 +6,9 @@ import * as Stories from './Stepper.stories';
 
 # Stepper
 
-## Overview
-
 The purpose of the Stepper component is to provide a visual representation of a
-multi-step process.
+multistep process.
+
 The component can display the status of each step, indicating whether it is
 completed, in progress, or disabled, and allows the user to navigate between
 steps using buttons.
@@ -20,7 +19,7 @@ steps using buttons.
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
 ## Navigation between steps
 
@@ -29,6 +28,25 @@ managed by the parent component.
 It demonstrates how to handle navigation between steps.
 
 <Canvas of={Stories.WithNavigation} />
+
+## Advanced usage
+
+If we need a customization, or simply we want to use a specific piece of the
+component we have its internal components available following dot notation.
+
+- `Stepper._Container`: the outermost container which distributes the items.
+- `Stepper._Item`: each item for each step of the process.
+
+We don't recommend this usage, but anyway it's available for very specific
+needs, usually because we need custom styles for some piece of the component.
+
+<Canvas of={Stories.AdvancedUsage} />
+
+## Related components
+
+- [HFlex](?path=/docs/components-layout-flex-hflex--overview)
+- [Badge](?path=/docs/components-feedback-badge--overview)
+- [Icon](?path=/docs/components-feedback-icon--overview)
 
 ## Props
 

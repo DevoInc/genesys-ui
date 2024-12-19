@@ -6,24 +6,22 @@ import { EditableContent } from '../../../EditableContent';
 import { lorem } from '../../../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Paragraph> = {
-  title: 'Components/Text/Typography/Block',
+  title: 'Components/Text/Typography/Components/Block/Paragraph',
   component: Paragraph,
-};
-
-export default meta;
-type Story = StoryObj<typeof Paragraph>;
-
-export const BaseParagraph: Story = {
-  tags: ['isHidden'],
   args: {
     children: lorem,
   },
 };
 
+export default meta;
+type Story = StoryObj<typeof Paragraph>;
+
+export const Playground: Story = {};
+
 export const ParagraphEditable: Story = {
   tags: ['isHidden'],
-  render: () =>
-    (() => {
+  render: (args) =>
+    ((props) => {
       const [editConfig, setEditConfig] = React.useState({
         editing: false,
         content: lorem,
@@ -44,8 +42,8 @@ export const ParagraphEditable: Story = {
           }
           tooltip="Click to edit this paragraph"
         >
-          <Paragraph>{lorem}</Paragraph>
+          <Paragraph {...props}>{lorem}</Paragraph>
         </EditableContent>
       );
-    })(),
+    })(args),
 };

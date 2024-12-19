@@ -13,4 +13,8 @@ const meta: Meta<typeof IconButtonGoToDocs> = {
 export default meta;
 type Story = StoryObj<typeof IconButtonGoToDocs>;
 
-export const Base: Story = {};
+export const Playground: Story = {
+  args: {
+    tooltip: 'Go to docs',
+  },
+};

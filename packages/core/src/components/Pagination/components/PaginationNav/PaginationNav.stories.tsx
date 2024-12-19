@@ -3,60 +3,38 @@ import { Meta, StoryObj } from '@storybook/react';
 import { PaginationNav } from './PaginationNav';
 
 const meta: Meta<typeof PaginationNav> = {
-  title: 'Components/Navigation/Pagination/Components/Nav',
+  title: 'Components/Navigation/Pagination/Components/PaginationNav',
   component: PaginationNav,
   args: {
     size: 'md',
+    page: 1,
+    lastPage: 5,
+    goToPage: (page) => page,
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof PaginationNav>;
 
-export const Base: Story = {
-  args: {
-    size: 'md',
-    page: 1,
-    lastPage: 5,
-    goToPage: (page) => page,
-  },
-};
-
-export const Custom: Story = {
-  args: {
-    size: 'lg',
-    page: 1,
-    lastPage: 5,
-    goToPage: (page) => page,
-  },
-};
+export const Playground: Story = {};
 
 export const HidePrevNextButtons: Story = {
+  tags: ['isHidden'],
   args: {
-    size: 'md',
-    page: 1,
-    lastPage: 5,
     hidePrevNextButtons: true,
-    goToPage: (page) => page,
   },
 };
 
 export const HidePageSelector: Story = {
+  tags: ['isHidden'],
   args: {
-    size: 'md',
-    page: 1,
-    lastPage: 5,
     hidePageSelector: true,
-    goToPage: (page) => page,
   },
 };
 
 export const HideFirstLastButtons: Story = {
+  tags: ['isHidden'],
   args: {
-    size: 'md',
-    page: 1,
-    lastPage: 5,
     hideFirstLastButtons: true,
-    goToPage: (page) => page,
   },
 };

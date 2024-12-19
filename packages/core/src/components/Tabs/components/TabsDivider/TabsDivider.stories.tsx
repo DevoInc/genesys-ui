@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Tabs } from '../../Tabs';
 
 const meta: Meta<typeof Tabs.Divider> = {
-  title: 'Components/Navigation/Tabs/Components',
+  title: 'Components/Navigation/Tabs/Components/TabsDivider',
   component: Tabs.Divider,
 };
 
@@ -12,7 +12,7 @@ export default meta;
 
 type Story = StoryObj<typeof Tabs.Divider>;
 
-export const Divider: Story = {
+export const Playground: Story = {
   render: (args) =>
     ((args) => (
       <Tabs>

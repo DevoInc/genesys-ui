@@ -6,14 +6,10 @@ import * as Stories from './Field.stories';
 
 # Field
 
-## Overview
-
 Component designed to wrap form controls such as Input, Select, Checkbox, and
 Textarea, providing additional functionality such as labeling, helper messages,
-and validation messages.
-
-It also manages the layout and distribution of these elements within the field
-control.
+and validation messages. It also manages the layout and distribution of these
+elements within the field control.
 
 ## How to import
 
@@ -21,10 +17,14 @@ control.
 
 ## Basic usage
 
-The component as a wrapper of an element (usually field controls). In this
-example we use a non-specific block with similar styles to a readonly input:
+<Canvas of={Stories.Playground} />
 
-<Canvas of={Stories.Base} />
+This component is usually used internally by the form components as `Input`, `Select`, `Checkbox`... etc.
+so they are a composition of a `Field` component as parent with the field control as child (e.g. `InputControl`).
+Therefore, is not usual to use it, at least you need to create a new form field.
+
+The component is used as a wrapper of an element (usually field controls). We can get any case of the component
+using only `Field` and its props as in this example with an `InputControl` as child.
 
 ## Context
 
@@ -34,24 +34,23 @@ able to inherit som generic props used usually by field control components
 is integrated with the `Field` component wrapping its children. This way there
 are some generic props which can be inherited by its children:
 
-- **ariaErrorMessage**: it's the `helper` id prop when the status is error.
-- **ariaDescribedBy**: it's the `helper` id with any status.
-- **ariaLabelledBy**: it's the `label` id when the status is error.
-- **direction**.
-- **disabled**.
-- **hasWideControl**.
-- **id**.
-- **labelPosition**.
-- **required**.
-- **size**.
-- **status**.
+- ariaErrorMessage: it's the `helper` id prop when the status is error.
+- ariaDescribedBy: it's the `helper` id with any status.
+- ariaLabelledBy: it's the `label` id when the status is error.
+- direction.
+- disabled.
+- hasWideControl.
+- id.
+- labelPosition.
+- required.
+- size.
+- status.
 
-## With an InputControl
+## Required, label and helper
 
-We can get any case of the component using only `Field` and its props as in this
-example with an InputControl, label and helper:
+This example provides a required marker, helper and label to the field control.
 
-<Canvas sourceState="shown" of={Stories.BasicUsageWithHelper} />
+<Canvas sourceState="shown" of={Stories.LabelAndHelper} />
 
 ## Custom using internal components
 

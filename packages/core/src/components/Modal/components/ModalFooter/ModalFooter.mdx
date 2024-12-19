@@ -1,0 +1,29 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './ModalFooter.stories';
+
+<Meta title="Components/Layout/Modal/Components/ModalFooter/Overview" />
+
+# Modal.Footer
+
+Panel Footer of the Modal component which renders the bottom content which usually are actions and help.
+
+It's based on `Panel.Footer` component and its interface and usage is almost the same.
+
+## How to import
+
+<Source code={`import { Modal } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+Defined with dot notation as `Modal.Footer`, it must be used only as a child of a `Modal` or `Modal` based component.
+
+<Canvas of={Stories.Playground} />
+
+## Related components
+
+- [Panel.Footer](?path=/docs/components-layout-panel-components-panelfooter-overview--overview)
+
+## Props
+
+<ArgTypes of={Stories} />

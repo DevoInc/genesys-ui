@@ -30,7 +30,7 @@ const meta: Meta<typeof InlineMessage> = {
 export default meta;
 type Story = StoryObj<typeof InlineMessage>;
 
-export const Base: Story = {
+export const Playground: Story = {
   parameters: {
     layout: 'centered',
   },
@@ -44,6 +44,7 @@ export const Base: Story = {
 };
 
 export const WithPanel: Story = {
+  tags: ['isHidden'],
   render: () => {
     return (
       <InlineMessage id="with-panel">
@@ -96,7 +97,7 @@ export const WithPanel: Story = {
 };
 
 export const TriggerWithText: Story = {
-  name: 'Default trigger with text',
+  tags: ['isHidden'],
   render: (args) =>
     ((props) => {
       return (
@@ -122,6 +123,7 @@ export const TriggerWithText: Story = {
 };
 
 export const CustomTrigger: Story = {
+  tags: ['isHidden'],
   render: () => {
     return (
       <InlineMessage
@@ -145,6 +147,7 @@ export const CustomTrigger: Story = {
 };
 
 export const Banner: Story = {
+  tags: ['isHidden'],
   render: (args) =>
     ((props) => {
       return (

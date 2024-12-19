@@ -1,0 +1,28 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Paragraph.stories';
+
+<Meta title="Components/Text/Typography/Components/Block/Paragraph/Overview" />
+
+# Typography.Paragraph
+
+Paragraphs are usually represented in visual media as blocks of text separated from adjacent blocks by blank lines,
+although they can be any structural grouping of related content.
+
+## How to import
+
+<Source code={`import { Typography } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+It's defined with dot notation as `Typography.Paragraph`, because this component belongs to `Typography` group.
+
+<Canvas of={Stories.Playground} />
+
+## Editable
+
+<Canvas of={Stories.ParagraphEditable} />
+
+## Props
+
+<ArgTypes of={Stories} />

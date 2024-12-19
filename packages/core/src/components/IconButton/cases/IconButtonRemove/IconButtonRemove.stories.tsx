@@ -15,4 +15,8 @@ const meta: Meta<typeof IconButtonRemove> = {
 export default meta;
 type Story = StoryObj<typeof IconButtonRemove>;
 
-export const Base: Story = {};
+export const Playground: Story = {
+  args: {
+    tooltip: 'Remove this block',
+  },
+};

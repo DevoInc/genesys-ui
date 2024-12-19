@@ -1,19 +1,16 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Caption } from '../Caption';
-import { lorem } from '../../../../../stories/utils/fillerTexts';
+import { Caption } from './Caption';
 
 const meta: Meta<typeof Caption> = {
-  title: 'Components/Text/Typography/Block',
+  title: 'Components/Text/Typography/Components/Block/Caption',
   component: Caption,
+  args: {
+    children: 'This is the Caption content',
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Caption>;
 
-export const BaseCaption: Story = {
-  tags: ['isHidden'],
-  args: {
-    children: lorem,
-  },
-};
+export const Playground: Story = {};

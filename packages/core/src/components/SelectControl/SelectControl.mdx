@@ -1,20 +1,16 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
 
 import * as Stories from './SelectControl.stories';
-import * as CaseStories from './SelectControl.cases.stories';
 
-<Meta of={Stories} />
+<Meta of={Stories} tags={['multiple', 'single', 'simple', 'select', 'chips']} />
 
 # SelectControl
 
-## Overview
-
 The Select component provides a way for users to select an option from a
-dropdown list.
-It allows users to choose from a set of predefined options, which can be
+dropdown list. It allows users to choose from a set of predefined options, which can be
 customized to suit the needs of the application.
-The Select component is implemented using the
-[react-select](https://react-select.com/home) library, which provides a flexible
+
+The Select component is implemented using the [react-select](https://react-select.com/home) library, which provides a flexible
 and powerful API for creating customized dropdown menus.
 
 ## How to import
@@ -23,27 +19,27 @@ and powerful API for creating customized dropdown menus.
 
 ## Basic usage
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
-## Cases
+## Single selection
 
-### Single option
+<Canvas of={Stories.SingleOption} />
 
-<Canvas of={CaseStories.SingleOption} />
+<Canvas of={Stories.SingleOptionWithReset} />
 
-### Single with separator
+## Single with separator
 
-<Canvas of={CaseStories.SingleOptionWithSeparator} />
+<Canvas of={Stories.SingleOptionWithSeparator} />
 
-### Single with option groups
+## Single with option groups
 
-<Canvas of={CaseStories.SingleWithOptionsGroups} />
+<Canvas of={Stories.SingleWithOptionsGroups} />
 
-### Multiple basic
+## Multiple selection
 
-<Canvas of={CaseStories.MultipleBasic} />
+<Canvas of={Stories.MultipleBasic} />
 
-### Multiple subtle
+## Multiple subtle
 
 A variant of the multi value component with a 'subtle' look & feel and behavior:
 strings instead of chips for each selected value, lighter and less high menu
@@ -56,32 +52,32 @@ Don't forget you have to apply `closeMenuOnSelect={false}` and
 `hideSelectedOptions={false}` when you use the subtle variant to get the right
 behavior.
 
-<Canvas of={CaseStories.MultipleBasic} />
+<Canvas of={Stories.MultipleBasic} />
 
-### Multiple sortable
+## Multiple sortable
 
-<Canvas of={CaseStories.MultipleSortable} />
+<Canvas of={Stories.MultipleSortable} />
 
-### Multiple creatable (custom new options)
+## Multiple creatable (custom new options)
 
-<Canvas of={CaseStories.MultipleCreatable} />
+<Canvas of={Stories.MultipleCreatable} />
 
-### Multiple 'Select all' mode
+## Multiple 'Select all' mode
 
-<Canvas of={CaseStories.MultipleSelectAll} />
+<Canvas of={Stories.MultipleSelectAll} />
 
-### Multiple fixed options and sortable
+## Multiple fixed options and sortable
 
-<Canvas of={CaseStories.MultipleFixedOptions} />
+<Canvas of={Stories.MultipleFixedOptions} />
 
-### With options virtualization for large sets
+## With options virtualization for large sets
 
-<Canvas of={CaseStories.VirtualizedOptions} />
-
-## Props
-
-<ArgTypes of={Stories} />
+<Canvas of={Stories.VirtualizedOptions} />
 
 ## Related components
 
 - [Select](?path=/docs/components-form-select--docs)
+
+## Props
+
+<ArgTypes of={Stories} />

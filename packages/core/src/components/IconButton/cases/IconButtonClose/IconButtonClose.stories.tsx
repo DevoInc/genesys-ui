@@ -15,4 +15,8 @@ const meta: Meta<typeof IconButtonClose> = {
 export default meta;
 type Story = StoryObj<typeof IconButtonClose>;
 
-export const Base: Story = {};
+export const Playground: Story = {
+  args: {
+    tooltip: 'Close this block',
+  },
+};

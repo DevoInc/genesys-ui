@@ -22,9 +22,10 @@ const meta: Meta<typeof RadioControl> = {
 export default meta;
 type Story = StoryObj<typeof RadioControl>;
 
-export const Base: Story = {};
+export const Playground: Story = {};
 
 export const Uncontrolled: Story = {
+  tags: ['isHidden'],
   render: () => (
     <HFlex spacing="cmp-xs">
       <RadioControl name="radio" aria-label="radio one" defaultChecked />
@@ -34,6 +35,7 @@ export const Uncontrolled: Story = {
 };
 
 export const Controlled: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [selectedRadio, setSelectedRadio] = React.useState(2);

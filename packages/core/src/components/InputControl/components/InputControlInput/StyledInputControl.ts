@@ -12,6 +12,7 @@ import {
   commonInputControlMixin,
 } from '../../../../styled/mixins/components';
 import { IInputControlInput } from './declarations';
+import { ITextBoxAttrs } from '../../../../declarations';
 
 export interface StyledInputControlProps {
   /** If the Input has an addon to its left, so it needs special styles. */
@@ -30,7 +31,7 @@ export interface StyledInputControlProps {
   $size?: IInputControlInput['size'];
   /** This property defines the status color schema for the input */
   $status?: IInputControlInput['status'];
-  $readOnly?: boolean;
+  readOnly?: ITextBoxAttrs['readOnly'];
   // TODO: interface only for satisfy the type error with TS and inherit CSSProp
   css?: CSSProp;
 }
@@ -43,7 +44,7 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
     $hasIcon,
     $hasTypeIcon,
     $inputWidth,
-    $readOnly,
+    readOnly,
     $size = 'md',
     $status = 'base',
     theme,
@@ -83,7 +84,7 @@ export const StyledInputControl = styled.input<StyledInputControlProps>`
       ${commonInputControlMixin({
         disabled,
         $inputWidth,
-        $readOnly,
+        $readOnly: readOnly,
         $size,
         $status,
         theme,

@@ -6,8 +6,6 @@ import * as Stories from './KeyValue.stories';
 
 # KeyValue
 
-## Overview
-
 It's an easy way to represent any type of data: new alerts, new messages, number
 of visits, temperature... etc. with a key-value format.
 
@@ -22,13 +20,21 @@ a value or when we need to draw attention to some short info.
 
 This is an example of a canonical usage with data based in key-value format:
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
 But not always is strictly a key-value data. For instance, sometimes you want to
 use this component to represent a data with format title-description as in this
 info message:
 
 <Canvas of={Stories.TitleDescription} />
+
+## Formats
+
+<Canvas of={Stories.Formats} />
+
+## Description list
+
+<Canvas of={Stories.DescriptionList} />
 
 ## Supporting visual
 
@@ -86,8 +92,8 @@ anyway it's available for very specific needs.
 
 ## Related components
 
-- [Typography](?path=/docs/components-text-typography--docs)
-- [Flex](?path=/docs/components-layout-flex-flex--docs)
+- [Typography](?path=/docs/components-text-typography--overview)
+- [Flex](?path=/docs/components-layout-flex--overview)
 
 ## Props
 

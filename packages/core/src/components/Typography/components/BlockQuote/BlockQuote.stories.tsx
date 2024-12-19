@@ -4,16 +4,14 @@ import { BlockQuote } from './BlockQuote';
 import { lorem } from '../../../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof BlockQuote> = {
-  title: 'Components/Text/Typography/Block',
+  title: 'Components/Text/Typography/Components/Block/BlockQuote',
   component: BlockQuote,
+  args: {
+    children: lorem,
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof BlockQuote>;
 
-export const BaseBlockQuote: Story = {
-  tags: ['isHidden'],
-  args: {
-    children: lorem,
-  },
-};
+export const Playground: Story = {};

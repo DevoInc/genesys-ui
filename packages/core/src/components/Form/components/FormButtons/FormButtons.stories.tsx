@@ -5,7 +5,7 @@ import { Form } from '../../Form';
 import { Button } from '../../../Button';
 
 const meta: Meta<typeof Form.Buttons> = {
-  title: 'Components/Form/Form/Components',
+  title: 'Components/Form/Form/Components/FormButtons',
   component: Form.Buttons,
   args: {
     buttonsPosition: 'right',
@@ -16,13 +16,14 @@ const meta: Meta<typeof Form.Buttons> = {
 export default meta;
 type Story = StoryObj<typeof Form.Buttons>;
 
-export const Buttons: Story = {
+export const Playground: Story = {
   args: {
-    children: (
-      <>
-        <Button>Cancel</Button>
-        <Button colorScheme="accent">Cancel</Button>
-      </>
-    ),
+    helper: 'This is the helper',
+    children: [
+      <Button key={1}>Cancel</Button>,
+      <Button key={2} colorScheme="accent">
+        Save
+      </Button>,
+    ],
   },
 };

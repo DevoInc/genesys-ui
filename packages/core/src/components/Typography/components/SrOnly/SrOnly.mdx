@@ -1,0 +1,39 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './SrOnly.stories';
+
+<Meta title="Components/Text/Typography/Components/Inline/SrOnly/Overview" />
+
+# Typography.SrOnly
+
+This component renders a hidden, but accessible content, because it's hidden to all devices,
+except screen readers.
+
+## How to import
+
+<Source code={`import { Typography } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+It's defined with dot notation as `Typography.SrOnly`, because this component belongs to `Typography` group.
+
+The content is hidden, but accessible, because it's based in these styles:
+
+<Canvas of={Stories.Playground} />
+
+```css
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+```
+
+## Props
+
+<ArgTypes of={Stories} />

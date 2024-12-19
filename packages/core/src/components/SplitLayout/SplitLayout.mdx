@@ -6,10 +6,9 @@ import * as Stories from './SplitLayout.stories';
 
 # SplitLayout
 
-## Overview
-
 The SplitLayout component is a layout element that enables the division of the
-screen into multiple blocks that are resizables.
+screen into multiple blocks that are resizable.
+
 With SplitLayout, you can easily create a split view layout, allowing users to
 view multiple pieces of content simultaneously.
 
@@ -27,19 +26,21 @@ resizable area is automatically created. Usually we need to define a height for
 the parent container of the `SplitLayout` if we want a pre-defined height
 regardless of whether there is content or not.
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
 Contained areas are rescaled as indicated by the areas themselves, for example,
 in the next story we could see that
 
-<Source code={`...
+```jsx
+...
 <Box>
-  <SplitLayout ... >
-    <Box>Lorem ...</Box>
+  <SplitLayout>
+    <Box>Lorem...</Box>
     ...
   </SplitLayout>
 </Box>
-...`} />
+...
+```
 
 The container `Box` doesn't have `height` and the contained `Box` don't do
 anything special
@@ -48,14 +49,16 @@ anything special
 
 But if we do specify the `height`
 
-<Source code={`...
+```jsx
+...
 <Box height="20rem">
-  <SplitLayout ... >
+  <SplitLayout>
     <Box overflow="auto">Lorem ...</Box>
     ...
   </SplitLayout>
 </Box>
-...`} />
+...
+```
 
 And set the contained `Box` with an `overflow="auto"`, this lead to this
 behavior:
@@ -66,7 +69,7 @@ behavior:
 
 ### `useAsyncSplitResize`
 
-<Source code={`
+```jsx
 import { SplitLayout, useAsyncSplitResize } from '@devoinc/genesys-ui';
 ...
 const [sizes, setSizes] = React.useState<TSizes>(props?.sizes);
@@ -80,7 +83,8 @@ return (
     </SplitLayout>
   </Box>
 );
-...`} />
+...
+```
 
 <Canvas of={Stories.AsyncHook} />
 
@@ -90,7 +94,7 @@ Is like the previous hook but modify the size with each dragged mouse movement.
 There is a special property that we need to use with this hook: `showDragGhost:
 false`, or the user will have twice the distance of the movement
 
-<Canvas of={Stories.Base} />
+<Canvas of={Stories.Playground} />
 
 ## Min/Max size
 

@@ -31,7 +31,7 @@ const meta: Meta<typeof Menu> = {
 export default meta;
 type Story = StoryObj<typeof Menu>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     children: [
       <Menu.Item key={1} icon={<GIToBack />} label="Open in a new tab" />,
@@ -88,6 +88,7 @@ export const Base: Story = {
 };
 
 export const Selectable: Story = {
+  tags: ['isHidden'],
   render: () =>
     (() => {
       const [selected, setSelected] = React.useState('one');
@@ -129,7 +130,7 @@ export const Selectable: Story = {
 };
 
 export const AsNavigation: Story = {
-  name: 'As navigation',
+  tags: ['isHidden'],
   render: () => (
     <Menu cmpRole="nav">
       <Menu.Heading>Platform</Menu.Heading>
@@ -174,7 +175,7 @@ export const AsNavigation: Story = {
 };
 
 export const AsDropdownMenu: Story = {
-  name: 'As dropdown menu',
+  tags: ['isHidden'],
   render: () => {
     const popoverId = 'nested';
     return (
@@ -188,7 +189,7 @@ export const AsDropdownMenu: Story = {
             ref={ref}
             state={isOpened ? 'expanded' : undefined}
           >
-            TriggerElement
+            Show dropdown
           </Button>
         )}
         <Popover.Panel>

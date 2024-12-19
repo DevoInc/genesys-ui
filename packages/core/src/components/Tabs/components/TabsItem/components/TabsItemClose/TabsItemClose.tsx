@@ -8,17 +8,19 @@ import {
 } from '../../../../../IconButton';
 import type { Resolve } from '../../../../../../typeFunctions';
 import { TABS_ITEM_CLOSABLE_BUTTON_SIZE } from '../constants';
-import { tabsClosableButtonMixin } from '../helpers';
+import { ITabsLinkMixin, tabsClosableButtonMixin } from '../helpers';
 import { mergeStyles } from '../../../../../../helpers';
 
 export interface TabsItemCloseProps
-  extends Omit<IconButtonRemoveProps, 'state'> {
+  extends Omit<IconButtonRemoveProps, 'state' | 'size'>,
+    Pick<ITabsLinkMixin, 'size'> {
   /** Possible states */
   state?: TTabsItemState;
 }
 
 export const TabsItemClose: React.FC<Resolve<TabsItemCloseProps>> = ({
-  state,
+  size = 'md',
+  state = 'enabled',
   style,
   ...restIconButtonRemoveProps
 }) => {
@@ -28,7 +30,7 @@ export const TabsItemClose: React.FC<Resolve<TabsItemCloseProps>> = ({
       {...restIconButtonRemoveProps}
       size={TABS_ITEM_CLOSABLE_BUTTON_SIZE}
       state={state === 'selected' ? 'enabled' : state}
-      style={mergeStyles(tabsClosableButtonMixin({ theme }), style)}
+      style={mergeStyles(tabsClosableButtonMixin({ theme, size }), style)}
     />
   );
 };
