@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { BaseObject, CSSProp } from 'styled-components/dist/types';
 import ReactSelect, { MultiValue } from 'react-select';
 
 import { getFieldState, getTFieldStatus, getFieldControlTypo } from '../Field';
@@ -7,14 +8,12 @@ import { scrollbars } from '../../styled/mixins/scrollbars';
 import { TSelectOption } from './declarations';
 import { disabledMixin, truncateTypoMixin } from '../../styled';
 
-export const StyledSelectControl = styled(ReactSelect).attrs(
-  ({ className, classNamePrefix, tooltip, ...props }) => ({
-    classNamePrefix: classNamePrefix || 'react-select',
-    className: className || 'react-select__container',
-    title: tooltip,
-    ...props,
-  }),
-)`
+export const StyledSelectControl = styled<
+  ReactSelect,
+  BaseObject & { css: CSSProp }
+>(ReactSelect)`
+  flex: 1 1 auto;
+  min-width: 0;
   ${({
     addonToLeft,
     addonToRight,
@@ -59,9 +58,6 @@ export const StyledSelectControl = styled(ReactSelect).attrs(
     const minHeight = cmpTokens.size.height[size];
 
     return css`
-      flex: 1 1 auto;
-      min-width: 0;
-
       .${classNamePrefix} {
         // CONTROL ///////////////////////////////////////////////////////////
         &__control {
