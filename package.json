@@ -31,7 +31,7 @@
   "devDependencies": {
     "@devoinc/genesys-base-styles": "^2.0.1",
     "@devoinc/genesys-brand-devo": "^8.1.1",
-    "@devoinc/genesys-icons": "^6.3.1",
+    "@devoinc/genesys-icons": "^6.3.2",
     "@devoinc/genesys-tokens-types": "^7.7.1",
     "@devoinc/holo": "^2.0.1",
     "@release-it-plugins/workspaces": "^4.2.0",
@@ -83,6 +83,27 @@
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^2.1.8",
     "viz.js": "^2.1.2"
+  },
+  "overrides": {
+    "esbuild": "0.24.0",
+    "ahooks": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    },
+    "react-dock": {
+      "react": "$react"
+    },
+    "react-grid-system": {
+      "react": "$react"
+    },
+    "react-popper": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    },
+    "react-windowed-select": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
   },
   "workspaces": [
     "packages/core",
