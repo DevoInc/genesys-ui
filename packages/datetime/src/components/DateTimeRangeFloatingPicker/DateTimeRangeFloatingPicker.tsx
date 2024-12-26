@@ -47,8 +47,6 @@ export interface DateTimeRangeFloatingPickerProps
       | 'size'
       | 'status'
       | 'helper'
-      | 'wide'
-      | 'helper'
     >,
     ITime,
     Required<Pick<IGlobalAttrs, 'id'>>,
@@ -179,7 +177,11 @@ export const DateTimeRangeFloatingPicker: React.FC<
                 id={id ? `${id}-datetime-range` : null}
                 onChange={setTmpValue}
                 onChangePreset={onChangePreset}
-                value={tmpValue}
+                value={
+                  typeof tmpValue[0] === 'string'
+                    ? null
+                    : (tmpValue as (number | Date)[])
+                }
                 preset={preset}
                 presets={presets}
                 presetsPlaceholder={presetsPlaceholder}

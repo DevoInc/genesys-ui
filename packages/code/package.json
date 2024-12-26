@@ -10,23 +10,14 @@
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    },
-    "./style.css": {
-      "import": "./dist/style.css",
-      "require": "./dist/style.css"
     }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "compile": "tsc --project tsconfig.json",
-    "compile:watch": "npm run compile -- --watch",
-    "build": "vite build",
-    "build:watch": "vite build --watch",
+    "build": "tsup",
     "depcruise": "sh ../../depcruise.sh \"$npm_package_name\"",
-    "analyzer": "vite-bundle-visualizer -o 'dist/stats.html'",
-    "stryker": "npx stryker run",
     "dpdm": "dpdm --exit-code circular:1 ./src/index.ts"
   },
   "peerDependencies": {

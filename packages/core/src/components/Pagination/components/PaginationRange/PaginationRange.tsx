@@ -5,7 +5,7 @@ import { DEFAULT_TEXTS } from '../../constants';
 import { PaginationContext } from '../../context';
 import { HFlex } from '../../../HFlex';
 import { Label } from '../../../Label';
-import { SelectControl } from '../../../SelectControl';
+import { SelectControl, type TSelectOption } from '../../../SelectControl';
 
 export interface PaginationRangeProps extends IPaginationCommonInterface {}
 
@@ -27,7 +27,7 @@ export const PaginationRange: React.FC<PaginationRangeProps> = ({
       <SelectControl
         id={id ? `${id}__page-range-selector` : null}
         noOptionsMessage={() => ''}
-        onChange={(option) => {
+        onChange={(option: TSelectOption) => {
           onPageSizeChange(Number(option.value));
         }}
         options={pageSizeOptions.map((item) => ({

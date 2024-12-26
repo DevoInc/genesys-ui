@@ -4,14 +4,9 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "compile": "tsc --project tsconfig.json",
-    "compile:watch": "npm run compile -- --watch",
     "test": "vitest",
-    "build": "vite build",
-    "build:watch": "vite build --watch",
+    "build": "tsup",
     "depcruise": "sh ../../depcruise.sh \"$npm_package_name\"",
-    "analyzer": "vite-bundle-visualizer -o 'dist/stats.html'",
-    "stryker": "npx stryker run",
     "dpdm": "dpdm --exit-code circular:1 ./src/index.ts"
   },
   "main": "./dist/index.cjs",

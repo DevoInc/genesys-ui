@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components';
 
-import type { TGlobalSpacing } from 'src/declarations';
+import type { TGlobalSpacing } from '../../declarations';
 
 /**
  * Get the map with spacing prop alias values and prop css values (tokens)

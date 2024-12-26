@@ -59,8 +59,8 @@ export const WithArrow: Story = {
           {...props}
           id={popoverId}
           arrowConfig={{
-            component: ({ $placement, $size }) => (
-              <Popover.Arrow $placement={$placement} $size={$size} />
+            component: ({ placement, size }) => (
+              <Popover.Arrow placement={placement} size={size} />
             ),
           }}
         >

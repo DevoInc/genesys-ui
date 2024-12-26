@@ -31,14 +31,16 @@ export const valueFilter = (
 
   if (
     type === 'number' &&
-    numberTextFilter(value, { value: searchText } as TNumberFilterValue)
+    numberTextFilter(Number(value), { value: searchText } as TNumberFilterValue)
   ) {
     return true;
   }
 
   if (
     type === 'boolean' &&
-    booleanTextFilter(value, { value: searchText } as TBooleanFilterValue)
+    booleanTextFilter(Boolean(value), {
+      value: searchText,
+    } as TBooleanFilterValue)
   ) {
     return true;
   }
@@ -46,7 +48,7 @@ export const valueFilter = (
   if (
     type === 'options' &&
     optionsTextFilter(
-      value,
+      String(value),
       { value: searchText } as TOptionsFilterValue,
       colDef,
     )

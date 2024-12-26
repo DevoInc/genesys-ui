@@ -13,15 +13,8 @@
       "@testing-library/jest-dom"
     ],
     "resolveJsonModule": true,
-    "baseUrl": ".",
-    "jsx": "react",
     "strictBindCallApply": true,
     "noUncheckedIndexedAccess": true,
-    "paths": {
-      "test-utils": [
-        "./test/test-utils.tsx"
-      ]
-    },
-    "skipLibCheck": true,
-  },
+    "jsx": "react"
+  }
 }

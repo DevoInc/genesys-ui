@@ -8,9 +8,13 @@ import { scrollbars } from '../../styled/mixins/scrollbars';
 import { TSelectOption } from './declarations';
 import { disabledMixin, truncateTypoMixin } from '../../styled';
 
+export interface StyledSelectControlProps extends BaseObject {
+  css: CSSProp;
+}
+
 export const StyledSelectControl = styled<
   ReactSelect,
-  BaseObject & { css: CSSProp }
+  StyledSelectControlProps
 >(ReactSelect)`
   flex: 1 1 auto;
   min-width: 0;

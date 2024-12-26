@@ -4,7 +4,7 @@ import { Flex } from '../../../Flex';
 import { Typography } from '../../../Typography';
 import { Field, type FieldProps, type FieldLabelProps } from '../../../Field';
 import { StyledFormLegendContainer } from './StyledFormLegendContainer';
-import { IGlobalAttrs } from 'src/declarations';
+import { IGlobalAttrs } from '../../../../declarations';
 
 export interface FormLegendProps
   extends IGlobalAttrs,

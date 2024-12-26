@@ -200,7 +200,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
                     updateValue(tmpValue);
                     onChange(tmpValue);
                     setOpened(false);
-                    onApply();
+                    onApply(tmpValue);
                   }}
                 >
                   {i18n.apply}

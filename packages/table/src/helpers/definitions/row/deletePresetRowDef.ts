@@ -1,4 +1,4 @@
-import { TRowDef } from 'packages/table/src/declarations';
+import { TRowDef } from '../../../declarations';
 
 export const deletePresetRowDefs = (rowDefs: TRowDef[], id: string) => {
   return rowDefs?.map((row) => {

@@ -1,13 +1,14 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../common/tsconfig",
   "compilerOptions": {
-    "declaration": true,
-    "declarationMap": true,
-    "outDir": "./dist"
+    "paths": {
+      "@test": [
+        "../../test/test-utils.tsx"
+      ]
+    }
   },
   "include": [
     "src",
-    "stories",
-    "vite.config.ts"
-  ],
+    "stories"
+  ]
 }

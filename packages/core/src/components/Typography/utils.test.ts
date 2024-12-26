@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 import { getTypoVariantAndSizeFromFormat } from './utils';
 import { TTypoCategories, TTypographyFormat } from './declarations';
-import { TTypoSize } from 'src/declarations';
+import { TTypoSize } from '../../declarations';
 
 describe('Core', () => {
   describe('Components', () => {

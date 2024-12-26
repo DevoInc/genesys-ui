@@ -1,15 +1,12 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 import { useTheme } from 'styled-components';
 import { type PopperProps, StrictModifier, usePopper } from 'react-popper';
 import { ComputedPlacement, Padding } from '@popperjs/core';
 
 import { useOnEventOutside } from '../../hooks';
-import { PopoverPanel } from './components';
-import {
-  StyledPopoverArrow,
-  type StyledPopoverArrowProps,
-} from './StyledPopoverArrow';
+import { PopoverArrow, PopoverArrowProps, PopoverPanel } from './components';
+import { type StyledPopoverArrowProps } from './components/PopoverArrow/StyledPopoverArrow';
 
 type TTriggerProps = (props: {
   ref: React.Dispatch<React.SetStateAction<HTMLElement>>;
@@ -43,7 +40,7 @@ export interface PopoverProps
   isOpened?: boolean;
   /** The configuration for the popover arrow: used component, padding... etc. */
   arrowConfig?: {
-    component: (arrowProps: StyledPopoverArrowProps) => React.ReactNode;
+    component: (arrowProps: PopoverArrowProps) => React.ReactNode;
     padding?: Padding;
     size?: StyledPopoverArrowProps['$size'];
   };
@@ -159,8 +156,8 @@ export const InternalPopover: React.FC<PopoverProps> = ({
           }}
         >
           {arrowConfig.component({
-            $placement: (dynamicPlacement as ComputedPlacement) ?? undefined,
-            $size: arrowConfig.size ?? undefined,
+            placement: (dynamicPlacement as ComputedPlacement) ?? undefined,
+            size: arrowConfig.size ?? undefined,
           })}
         </div>
       )}
@@ -185,17 +182,17 @@ export const InternalPopover: React.FC<PopoverProps> = ({
       })}
       {opened &&
         referenceElement &&
-        (appendTo ? ReactDOM.createPortal(PopperCmp, appendTo) : PopperCmp)}
+        (appendTo ? createPortal(PopperCmp, appendTo) : PopperCmp)}
     </>
   );
 };
 
 export const Popover = InternalPopover as typeof InternalPopover & {
-  Arrow: typeof StyledPopoverArrow;
+  Arrow: typeof PopoverArrow;
   Panel: typeof PopoverPanel;
 };
 
-Popover.Arrow = StyledPopoverArrow;
+Popover.Arrow = PopoverArrow;
 Popover.Panel = PopoverPanel;
 
 InternalPopover.displayName = 'Popover';

@@ -10,7 +10,7 @@ import type { IStyledOverloadCss } from '../../../../declarations';
 import { IconButton, type IconButtonProps } from '../../../IconButton';
 import { StyledInputControlShowPassword } from './StyledInputControlShowPassword';
 import type { IInputControlShowPassword } from './declarations';
-import { type TButtonSize } from 'src/components/Button';
+import { type TButtonSize } from '../../../Button';
 
 export interface InputControlShowPasswordProps
   extends IInputControlShowPassword,

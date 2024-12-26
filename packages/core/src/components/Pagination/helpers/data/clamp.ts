@@ -1,2 +1,2 @@
-export const clamp = (max, value) =>
+export const clamp = (max: number, value: number) =>
   value < 0 ? 0 : value > max ? max : value;

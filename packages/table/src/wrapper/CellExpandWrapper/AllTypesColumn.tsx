@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TColDef } from '../../../src';
-import { ROW_HEIGHT_MD } from '../../../src/constants';
+import { ROW_HEIGHT_MD } from '../../constants';
 
 export const AllTypesColumn: TColDef[] = [
   {
