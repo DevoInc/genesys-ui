@@ -100,7 +100,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ github.sha }}
 
       - name: Run tests
-        run: npm run test:ci
+        run: npm run test -- --coverage
 
   release:
     needs: [lint, test]
