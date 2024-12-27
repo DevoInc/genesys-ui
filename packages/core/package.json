@@ -36,7 +36,7 @@
     "react-grid-system": "8.x",
     "react-popper": "2.x",
     "react-select": "5.x",
-    "react-toastify": ">=8.0",
+    "react-toastify": ">= 8.0 <= 10.0",
     "react-windowed-select": "5.1.0",
     "styled-components": ">=5.0"
   },
