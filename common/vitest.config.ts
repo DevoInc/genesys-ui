@@ -1,7 +1,7 @@
 import react from '@vitejs/plugin-react';
-import { defineConfig } from 'vitest/config';
+import { coverageConfigDefaults } from 'vitest/config';
 
-export const vitestConfig = defineConfig({
+export const vitestConfig = {
   // Here is the plugin for React that allow us to use the babel plugin for
   // styled-components and test the CSS prop output properly
   // https://styled-components.com/docs/tooling#babel-plugin
@@ -14,8 +14,8 @@ export const vitestConfig = defineConfig({
             {
               ssr: false,
               pure: true,
-              displayName: command !== 'build',
-              fileName: command !== 'build',
+              //displayName: command !== 'build',
+              //fileName: command !== 'build',
             },
           ],
         ],
@@ -28,6 +28,11 @@ export const vitestConfig = defineConfig({
     coverage: {
       provider: 'v8',
       include: ['{src,stories}/**/*'],
+      exclude: [
+        ...coverageConfigDefaults.exclude,
+        'storybook-static/**/*',
+        '**/*.stories.tsx',
+      ],
     },
   },
-});
+};
