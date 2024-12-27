@@ -79,7 +79,7 @@ const config: StorybookConfig = {
           'filepond-plugin-file-validate-size',
           '@devoinc/holo',
           '@tanstack/react-virtual',
-          'date-fns-tz',
+          '@date-fns/tz',
         ],
       },
     });
