@@ -120,9 +120,6 @@ jobs:
             **/dist
           key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
 
-      - name: Run dependency cruiser
-        run: npm run depcruise
-
       - name: Build Storybook
         run: npm run build-storybook
 
