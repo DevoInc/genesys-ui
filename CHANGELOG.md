@@ -1,5 +1,20 @@
 # Changelog
 
+## [15.0.0](https://github.com/DevoInc/genesys-ui/compare/v14.3.2...v15.0.0) (2024-12-27)
+
+### ⚠ BREAKING CHANGES
+
+* migrate to tsup
+
+### Features
+
+* migrate to tsup ([0741306](https://github.com/DevoInc/genesys-ui/commit/074130626d7de41a43cc5a426fca894767805ab1))
+
+### Bug Fixes
+
+* **core:** fixed Select types ([6d705e7](https://github.com/DevoInc/genesys-ui/commit/6d705e7737e5f3fceed9f6793096d591851021d5))
+* toastify version compatibility problem ([a1eb1c5](https://github.com/DevoInc/genesys-ui/commit/a1eb1c52346d7d8e8c1a7eadb11e6ff4fd166e12))
+
 ## [14.3.2](https://github.com/DevoInc/genesys-ui/compare/v14.3.1...v14.3.2) (2024-12-20)
 
 ## [14.3.1](https://github.com/DevoInc/genesys-ui/compare/v14.3.0...v14.3.1) (2024-12-19)
