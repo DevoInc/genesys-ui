@@ -6,7 +6,6 @@
   "scripts": {
     "test": "vitest",
     "build": "tsup",
-    "depcruise": "sh ../../depcruise.sh \"$npm_package_name\"",
     "dpdm": "dpdm --exit-code circular:1 ./src/index.ts"
   },
   "main": "./dist/index.cjs",
