@@ -57,7 +57,7 @@ export const ChipHiddenInput: React.FC<ChipHiddenInputProps> = ({
       onBlur={onBlur}
       onChange={onChange}
       onFocus={onFocus}
-      selectionScheme={selectionScheme}
+      type={selectionScheme === 'single' ? 'radio' : 'checkbox'}
       value={value}
     />
   ) : null;

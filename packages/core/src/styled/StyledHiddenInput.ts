@@ -7,7 +7,6 @@ import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
   IInputAttrs,
-  TSelectionScheme,
 } from '../declarations';
 
 import { srOnlyMixin } from './mixins/screenReader';
@@ -18,14 +17,8 @@ export interface StyledHiddenInputProps
     Pick<IFocusEventAttrs, 'onBlur' | 'onFocus'>,
     Pick<IFieldAttrs, 'disabled' | 'name'>,
     Pick<IInputAttrs, 'value'>,
-    ICheckAttrs {
-  selectionScheme?: TSelectionScheme;
-}
+    ICheckAttrs {}
 
-export const StyledHiddenInput = styled.input.attrs(
-  ({ selectionScheme }: StyledHiddenInputProps) => ({
-    type: selectionScheme === 'single' ? 'radio' : 'checkbox',
-  }),
-)<StyledHiddenInputProps>`
+export const StyledHiddenInput = styled.input<StyledHiddenInputProps>`
   ${srOnlyMixin}
 `;
