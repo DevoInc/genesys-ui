@@ -36,6 +36,8 @@ describe('Presets', () => {
           [new Date(2001, 1, 1), new Date(2000, 1, 2)],
           false,
         ],
+        ['not eq empty range with string', [], ['1', '2'], false],
+        ['not eq string with empty range', ['1', '2'], [], false],
       ];
 
       test.each(cases)('%s', (_title, a, b, expected) => {

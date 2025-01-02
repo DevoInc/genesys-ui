@@ -47,7 +47,7 @@ export const Default: Story = {
   tags: ['isHidden'],
   render: () =>
     (() => {
-      const [value, setValue] = React.useState('preset-1');
+      const [value, setValue] = React.useState<TDateRange>([]);
       return (
         <Box height="300px">
           <Presets

@@ -21,45 +21,38 @@ groups, with each group having a label.
 ## How to use
 
 The Presets component accepts a prop called `presets` shaped as an array of
-objects that defines the list of preset ranges that are displayed.
+objects that defines the list of preset ranges that are displayed. The value is
+an array of `number | string | Date`.
 
 The list can be either a one-level structure:
 
-<Source
-  code={`
+<Source code={`
 [
-  { value: 'last-30-seconds', label: 'Last 30 seconds' },
-  { value: 'last-minute', label: 'Last minute' },
+  { value: [1, 2], label: 'Range 1' },
+  { value: [2, 3], label: 'Range 2' },
 ],
-`}
-/>
+`} />
 
 Or multi-level if groups are required:
 
-<Source
-  code={`
+<Source code={`
 [
-  { label: 'Relative to' },
-  { value: 'last-30-seconds', label: 'Last 30 seconds' },
-  { value: 'last-minute', label: 'Last minute' },
-  { label: 'Snap to' },
-  { value: 'minute', label: 'Minute' },
+  { label: 'Group 1' },
+  { value: [1, 2], label: 'Range 1' },
+  { value: [2, 3], label: 'Range 2' },
+  { label: 'Group 2' },
+  { value: [3, 4], label: 'Range 3' },
 ]
-`}
-/>
+`} />
 
-The Presets component also accepts a prop called `value` which is an string
-representing the currently selected value.
+The Presets component also accepts a prop called `value` which is an array of
+`number | string | Date` representing the currently selected value.
 
 ## Defaults
 
-There is a default presets list that you can use from
+There is a default presets list that you can use:
 
 <Source code={`import { defaultPresets } from '@devoinc/genesys-ui-datetime';`} />
-
-And there is also a map for a range for each one of the preset
-
-<Source code={`import { presetsMapToRanges } from '@devoinc/genesys-ui-datetime';`} />
 
 So you can do as in the next example
 
