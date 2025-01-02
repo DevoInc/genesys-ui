@@ -17,7 +17,7 @@ const meta: Meta<typeof DateTimeFloatingPicker> = {
 export default meta;
 type Story = StoryObj<typeof DateTimeFloatingPicker>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: (args) =>
     ((props) => {
       const [value, setValue] = React.useState(props.value);

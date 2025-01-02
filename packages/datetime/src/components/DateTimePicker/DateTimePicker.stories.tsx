@@ -14,7 +14,7 @@ const meta: Meta<typeof DateTimePicker> = {
 export default meta;
 type Story = StoryObj<typeof DateTimePicker>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: (args) =>
     ((props) => {
       const [value, setValue] = React.useState(props.value);

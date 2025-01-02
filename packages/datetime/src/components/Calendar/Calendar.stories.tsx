@@ -17,7 +17,7 @@ const now = new Date(2024, 5, 1);
 const singleValue = [set(now, { date: 10 })];
 const rangeValue = [set(now, { date: 10 }), set(now, { date: 20 })];
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     monthDate: now,
     value: rangeValue,

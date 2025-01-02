@@ -33,7 +33,7 @@ const meta: Meta<typeof DateTimeRangeInput> = {
 export default meta;
 type Story = StoryObj<typeof DateTimeRangeInput>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: (args) =>
     ((props) => {
       const [value, setValue] = React.useState<(string | number | Date)[]>([

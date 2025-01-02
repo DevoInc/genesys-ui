@@ -13,7 +13,7 @@ const meta: Meta<typeof DateTimeRange> = {
 export default meta;
 type Story = StoryObj<typeof DateTimeRange>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: () =>
     ((args) => {
       const [value, setValue] = React.useState<(number | Date)[]>([]);

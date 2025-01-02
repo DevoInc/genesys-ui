@@ -10,6 +10,6 @@ const meta: Meta<typeof MonthSelector> = {
 export default meta;
 type Story = StoryObj<typeof MonthSelector>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {},
 };
