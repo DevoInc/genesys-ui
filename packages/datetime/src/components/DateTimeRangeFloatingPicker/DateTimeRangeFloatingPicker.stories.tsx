@@ -4,7 +4,6 @@ import { Meta, StoryObj } from '@storybook/react';
 import { subMonths } from 'date-fns';
 
 import { DateTimeRangeFloatingPicker } from './DateTimeRangeFloatingPicker';
-import { onApply } from './__stories__/utils';
 import { defaultPresets } from '../Presets';
 import { TRealtimeState } from '../RealTimeButton/declarations';
 
@@ -21,7 +20,7 @@ const meta: Meta<typeof DateTimeRangeFloatingPicker> = {
 export default meta;
 type Story = StoryObj<typeof DateTimeRangeFloatingPicker>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: (args) =>
     ((props) => {
       const [value, setValue] = React.useState(props.value);
@@ -45,21 +44,25 @@ export const Base: Story = {
 export const DefaultPresets: Story = {
   render: (args) =>
     ((props) => {
-      const [date, setDate] = React.useState(props.value);
+      const [daterange, setDaterange] = React.useState({
+        range: props.value,
+        realTime: false,
+      });
+      console.log(daterange);
 
       return (
         <DateTimeRangeFloatingPicker
           {...props}
-          value={date}
-          onApply={onApply(setDate)}
+          value={daterange.range}
           onChange={(range) => {
-            // eslint-disable-next-line no-console
-            console.log('something has changed', range);
+            console.log(range);
+            setDaterange((prev) => ({ ...prev, range }));
           }}
           onRealTimeClick={(event) => {
             // eslint-disable-next-line no-console
             console.log('RT button clicked', event);
           }}
+          realTime="selected"
           presets={defaultPresets}
           parseExpression={(exp) => {
             for (const word of ['now', 'today', 'yesterday']) {
@@ -132,7 +135,6 @@ export const CustomPresets: Story = {
         <DateTimeRangeFloatingPicker
           {...props}
           value={date}
-          onApply={onApply(setDate)}
           onChange={onChangeCallback}
           onRealTimeClick={realtimeCallback}
           presets={[

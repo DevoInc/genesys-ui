@@ -89,6 +89,8 @@ export const DateTimeRangeFloatingPicker: React.FC<
   presetsPlaceholder,
   onChangePreset = () => null,
   autoApply = false,
+  onRealTimeClick,
+
 }) => {
   const i18n = useMergeI18n(
     userI18n,
@@ -159,6 +161,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
             size={size}
             statuses={errors.map((e) => (e.length > 0 ? 'error' : 'base'))}
             helpers={errors.map((e) => (e.length > 0 ? e[0] : null))}
+            onRealTimeClick={onRealTimeClick}
           />
         </div>
       )}
