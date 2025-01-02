@@ -18,3 +18,5 @@ export interface IParseResult {
 }
 
 export type TParseDate = (dt: number | Date) => IParseResult;
+
+export type TDateRange = (number | string | Date)[];

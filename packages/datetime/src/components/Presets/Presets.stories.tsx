@@ -4,6 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Presets } from './Presets';
 import { Box } from '@devoinc/genesys-ui';
 import { defaultPresets } from './defaults';
+import type { TDateRange } from '../../declarations';
 
 const meta: Meta<typeof Presets> = {
   title: 'Components/Datetime/Presets',
@@ -16,20 +17,20 @@ const meta: Meta<typeof Presets> = {
 export default meta;
 type Story = StoryObj<typeof Presets>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: () =>
     (() => {
-      const [value, setValue] = React.useState('preset-1');
+      const [value, setValue] = React.useState<TDateRange>([1]);
       return (
         <Box height="300px">
           <Presets
             id={'presets'}
             presets={[
               { label: 'Group 1' },
-              { label: 'Preset 1', value: 'preset-1' },
-              { label: 'Preset 2', value: 'preset-2' },
+              { label: 'Preset 1', value: [1] },
+              { label: 'Preset 2', value: [2] },
               { label: 'Group 2' },
-              { label: 'Preset 3', value: 'preset-3' },
+              { label: 'Preset 3', value: [3] },
             ]}
             value={value}
             onChange={(newValue) => {
