@@ -13,7 +13,7 @@ import {
 import { parseStrDate } from '../../parsers';
 import { formatDate as formatDateHelper } from '../../helpers';
 
-import type { IParseResult, ITime } from '../../declarations';
+import type { IParseResult, ITime, TDateRange } from '../../declarations';
 import { DateTimeRange, type DateTimeRangeProps } from '../DateTimeRange';
 import {
   DateTimeRangeInput,
@@ -32,12 +32,7 @@ export interface DateTimeRangeFloatingPickerProps
     >,
     Pick<
       DateTimeRangeProps,
-      | 'monthDate'
-      | 'preset'
-      | 'presets'
-      | 'presetsPlaceholder'
-      | 'onChangePreset'
-      | 'weekDays'
+      'monthDate' | 'presets' | 'presetsPlaceholder' | 'weekDays'
     >,
     Pick<
       DateTimeRangeInputProps,
@@ -55,7 +50,7 @@ export interface DateTimeRangeFloatingPickerProps
   /** Internacionalization object */
   i18n?: TDateTimeRangeFloatingPickerI18n;
   /** Initial value for the input. */
-  value: (string | number | Date)[];
+  value: TDateRange;
   /** Enable or disable the Apply button.  */
   disableApplyButton: boolean;
   /** Function called when Cancel button is clicked. */
@@ -84,13 +79,10 @@ export const DateTimeRangeFloatingPicker: React.FC<
   placement,
   size = 'md',
   value,
-  preset,
   presets = defaultPresets,
   presetsPlaceholder,
-  onChangePreset = () => null,
   autoApply = false,
   onRealTimeClick,
-
 }) => {
   const i18n = useMergeI18n(
     userI18n,
@@ -179,13 +171,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
                 i18n={i18n}
                 id={id ? `${id}-datetime-range` : null}
                 onChange={setTmpValue}
-                onChangePreset={onChangePreset}
-                value={
-                  typeof tmpValue[0] === 'string'
-                    ? null
-                    : (tmpValue as (number | Date)[])
-                }
-                preset={preset}
+                value={tmpValue}
                 presets={presets}
                 presetsPlaceholder={presetsPlaceholder}
                 monthDate={monthDate}

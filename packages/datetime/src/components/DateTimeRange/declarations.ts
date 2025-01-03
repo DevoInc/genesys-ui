@@ -1,10 +1,11 @@
-import { TMonthSelectorI18n } from "../MonthSelector";
+import { TMonthSelectorI18n } from '../MonthSelector';
 
 export type TDateTimeRangeSource =
   | 'cal-left'
   | 'cal-right'
   | 'time-left'
-  | 'time-right';
+  | 'time-right'
+  | 'presets';
 
 export type TDateTimeRangeI18n = TMonthSelectorI18n & {
   /** The from month text */
