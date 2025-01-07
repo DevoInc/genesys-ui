@@ -38,17 +38,14 @@ const config: StorybookConfig = {
       // Add dependencies to pre-optimization
       optimizeDeps: {
         include: [
-          '@storybook/theming',
-          '@storybook/components',
           '@devoinc/genesys-brand-devo',
-          '@storybook/blocks',
-          '@devoinc/genesys-ui',
-          '@devoinc/genesys-ui-datetime',
-          '@devoinc/genesys-ui-table',
           '@storybook/addon-actions',
           '@storybook/addon-docs',
           '@storybook/addon-docs/blocks',
           '@storybook/addon-themes',
+          '@storybook/blocks',
+          '@storybook/theming',
+          '@storybook/components',
           'styled-components',
           'lodash',
           'js-cookie',
@@ -79,7 +76,7 @@ const config: StorybookConfig = {
           'filepond-plugin-file-validate-size',
           '@devoinc/holo',
           '@tanstack/react-virtual',
-          'date-fns-tz',
+          '@date-fns/tz',
         ],
       },
     });

@@ -10,7 +10,7 @@ export const useClosableTabs = ({
   tabsRef: React.MutableRefObject<HTMLDivElement>;
   tabsLength: number;
 }) => {
-  const itemsRef = React.useRef<NodeListOf<Element>>([]);
+  const itemsRef = React.useRef<NodeListOf<Element>>();
   React.useEffect(() => {
     // const removedItemIndex = Array.from(itemsRef.current).findIndex(
     //   (item) => !document.body.contains(item),

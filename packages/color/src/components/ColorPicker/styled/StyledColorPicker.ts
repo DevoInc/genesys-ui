@@ -16,6 +16,12 @@ export interface StyledColorPickerProps {
 }
 
 export const StyledColorPicker = styled.button<StyledColorPickerProps>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  padding: 0;
+  margin: 0;
   ${({
     $disabled,
     $colorIndicatorType,
@@ -37,12 +43,6 @@ export const StyledColorPicker = styled.button<StyledColorPickerProps>`
       colorPickerTokens.shape.borderRadius[isCircle ? 'isCircle' : 'base'];
 
     return css`
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      appearance: none;
-      padding: 0;
-      margin: 0;
       transition:
         border ${transitionDuration} ease-in-out,
         box-shadow ${transitionDuration} ease-in-out;
@@ -54,30 +54,28 @@ export const StyledColorPicker = styled.button<StyledColorPickerProps>`
       width: ${width};
       height: ${height};
 
-      ${!$disabled &&
-      !$readOnly &&
-      css`
-        cursor: pointer;
+      ${!$disabled && !$readOnly
+        ? `
+            cursor: pointer;
 
-        &:hover {
-          border-color: ${colorPickerTokens.color.border[$status].hovered};
-          color: ${colorPickerTokens.color.text.base.hovered};
-        }
+            &:hover {
+              border-color: ${colorPickerTokens.color.border[$status].hovered};
+              color: ${colorPickerTokens.color.text.base.hovered};
+            }
 
-        &:focus,
-        &:focus-visible {
-          //box-shadow: ${colorPickerTokens.elevation.boxShadow[$status]
-            .focused};
-          border-color: ${colorPickerTokens.color.border[$status].focused};
-          color: ${colorPickerTokens.color.text.base.focused};
-          outline: none;
-        }
-      `}
+            &:focus,
+            &:focus-visible {
+              //box-shadow: ${
+                colorPickerTokens.elevation.boxShadow[$status].focused
+              };
+              border-color: ${colorPickerTokens.color.border[$status].focused};
+              color: ${colorPickerTokens.color.text.base.focused};
+              outline: none;
+            }
+          `
+        : ''}
 
-      ${$disabled &&
-      css`
-        ${disabledMixin(theme)};
-      `}
+      ${$disabled ? disabledMixin(theme) : ''}
 
       .color-indicator__sample {
         width: calc(${width} - (${spacing} * 2));

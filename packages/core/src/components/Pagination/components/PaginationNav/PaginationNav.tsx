@@ -10,7 +10,7 @@ import {
 import type { IPaginationCommonInterface } from '../../declarations';
 import { HFlex } from '../../../HFlex';
 import { IconButton } from '../../../IconButton';
-import { SelectControl } from '../../../SelectControl';
+import { SelectControl, type TSelectOption } from '../../../SelectControl';
 import { Flex } from '../../../Flex';
 import { Box } from '../../../Box';
 import { DEFAULT_TEXTS } from '../../constants';
@@ -111,8 +111,8 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
               isDisabled={lastPage === 0}
               id={id ? `${id}-page-selector` : null}
               noOptionsMessage={() => ''}
-              onChange={(e) => {
-                onChange(clamp(lastPage, e.value));
+              onChange={(e: TSelectOption) => {
+                onChange(clamp(lastPage, e.value as number));
               }}
               onMenuClose={() => setMenuOpen(false)}
               onMenuOpen={() => {

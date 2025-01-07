@@ -17,7 +17,7 @@ import {
   type IStyledPolymorphic,
   type IDataAttrs,
 } from '@devoinc/genesys-ui';
-import type { IParseResult } from '../../declarations';
+import type { IParseResult, TDateRange } from '../../declarations';
 import { toTimestamp } from '../../helpers';
 import { parseAllDates } from '../../parsers';
 import { CalendarWeekDay, Cell, type CellProps } from './components';
@@ -50,7 +50,7 @@ export interface CalendarProps
    * One of `number` or `Date`. */
   hoverDay?: Date | number;
   /** Selected range. */
-  value?: (number | Date)[];
+  value?: TDateRange;
   /** Days of the week to show in the calendar. The first day of the week is Monday. */
   weekDays?: [string, string, string, string, string, string, string];
   weekStart?: number;

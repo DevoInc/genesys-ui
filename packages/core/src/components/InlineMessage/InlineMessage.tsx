@@ -70,7 +70,7 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
       id={id}
       placement={placement}
       arrowConfig={{
-        component: ({ $placement: innerPlacement, $size: size }) => (
+        component: ({ placement: innerPlacement, size }) => (
           <InlineMessage.Arrow
             placement={innerPlacement}
             size={size}

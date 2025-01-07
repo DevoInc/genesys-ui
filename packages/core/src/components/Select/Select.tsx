@@ -8,9 +8,9 @@ import {
 } from '../SelectControl';
 import { hasStatus } from '../../utils';
 
-export interface ExtendedTSelectOption extends TSelectOption {
+export type ExtendedTSelectOption = TSelectOption & {
   isDisabled?: boolean;
-}
+};
 
 export interface SelectProps
   extends Omit<FieldProps, 'children' | 'direction' | 'controlWidth'>,

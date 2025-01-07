@@ -1,46 +1,84 @@
 import { describe, test, expect } from 'vitest';
 
-import { filterPresets } from './filter';
-import { TPreset } from './declarations';
+import { filterPreset, removeEmptyGroups } from './filter';
+import type { TPreset } from './declarations';
 
-describe('filterPresets', () => {
-  const cases: [string, TPreset[], string, TPreset[]][] = [
-    [
-      'matching all',
-      [
-        { label: 'Group 1' },
-        { label: 'Preset 1', value: 'preset-1' },
-        { label: 'Preset 2', value: 'preset-2' },
-        { label: 'Group 2' },
-        { label: 'Preset 3', value: 'preset-3' },
-      ],
-      'preset',
-      [
-        { label: 'Group 1' },
-        { label: 'Preset 1', value: 'preset-1' },
-        { label: 'Preset 2', value: 'preset-2' },
-        { label: 'Group 2' },
-        { label: 'Preset 3', value: 'preset-3' },
-      ],
-    ],
-    [
-      'matching only one',
-      [
-        { label: 'Group 1' },
-        { label: 'Preset 1', value: 'preset-1' },
-        { label: 'Preset 2', value: 'preset-2' },
-        { label: 'Group 2' },
-        { label: 'Preset 3', value: 'preset-3' },
-      ],
-      '3',
-      [
-        { label: 'Group 2' },
-        { label: 'Preset 3', value: 'preset-3' },
-      ],
-    ],
-  ];
+describe('Presets', () => {
+  describe('filter', () => {
+    describe('filterPreset', () => {
+      const cases: [string, TPreset[], string, TPreset[]][] = [
+        [
+          'matching all',
+          [
+            { label: 'Group 1' },
+            { label: 'Preset 1', value: [] },
+            { label: 'Preset 2', value: [] },
+            { label: 'Group 2' },
+            { label: 'Preset 3', value: [] },
+          ],
+          'preset',
+          [
+            { label: 'Group 1' },
+            { label: 'Preset 1', value: [] },
+            { label: 'Preset 2', value: [] },
+            { label: 'Group 2' },
+            { label: 'Preset 3', value: [] },
+          ],
+        ],
+        [
+          'matching only one',
+          [
+            { label: 'Group 1' },
+            { label: 'Preset 1', value: [] },
+            { label: 'Preset 2', value: [] },
+            { label: 'Group 2' },
+            { label: 'Preset 3', value: [] },
+          ],
+          '3',
+          [
+            { label: 'Group 1' },
+            { label: 'Group 2' },
+            { label: 'Preset 3', value: [] },
+          ],
+        ],
+      ];
 
-  test.each(cases)('%s', (_title, presets, term, expected) => {
-    expect(filterPresets(presets, term)).toEqual(expected);
+      test.each(cases)('%s', (_title, presets, term, expected) => {
+        expect(presets.filter(filterPreset(term))).toEqual(expected);
+      });
+    });
+
+    describe('removeEmptyGroups', () => {
+      const cases: [string, TPreset[], TPreset[]][] = [
+        [
+          'remove empty groups',
+          [
+            { label: 'Group 1' },
+            { label: 'Group 2' },
+            { label: 'Preset 2', value: [] },
+          ],
+          [{ label: 'Group 2' }, { label: 'Preset 2', value: [] }],
+        ],
+        [
+          'nothing to remove',
+          [
+            { label: 'Group 1' },
+            { label: 'Preset 1', value: [] },
+            { label: 'Group 2' },
+            { label: 'Preset 2', value: [] },
+          ],
+          [
+            { label: 'Group 1' },
+            { label: 'Preset 1', value: [] },
+            { label: 'Group 2' },
+            { label: 'Preset 2', value: [] },
+          ],
+        ],
+      ];
+
+      test.each(cases)('%s', (_title, presets, expected) => {
+        expect(removeEmptyGroups(presets)).toEqual(expected);
+      });
+    });
   });
 });

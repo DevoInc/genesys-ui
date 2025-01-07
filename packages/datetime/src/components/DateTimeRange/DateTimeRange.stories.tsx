@@ -4,6 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { DateTimeRange } from './DateTimeRange';
 import { useTimeRangePreserve } from './hooks';
 import { defaultPresets } from '../Presets';
+import type { TDateRange } from '../../declarations';
 
 const meta: Meta<typeof DateTimeRange> = {
   title: 'Components/Datetime/DateTimeRange',
@@ -13,10 +14,10 @@ const meta: Meta<typeof DateTimeRange> = {
 export default meta;
 type Story = StoryObj<typeof DateTimeRange>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: () =>
     ((args) => {
-      const [value, setValue] = React.useState<(number | Date)[]>([]);
+      const [value, setValue] = React.useState<TDateRange>([]);
       const [monthDate, setMonthDate] = React.useState<number | Date>(
         new Date(),
       );
@@ -30,6 +31,7 @@ export const Base: Story = {
           onChangeMonthDate={(dt) => {
             setMonthDate(dt);
           }}
+          presets={defaultPresets}
         />
       );
     })(),
@@ -57,30 +59,4 @@ export const PreservingTime: Story = {
         />
       );
     })(),
-};
-
-export const WithPresets: Story = {
-  tags: ['isHidden'],
-  render: () => {
-    return ((args) => {
-      const [value, setValue] = React.useState<(number | Date)[]>([]);
-      const [monthDate, setMonthDate] = React.useState<number | Date>(
-        new Date(),
-      );
-      const { onChangeRange } = useTimeRangePreserve(setValue);
-
-      return (
-        <DateTimeRange
-          {...args}
-          value={value}
-          onChange={onChangeRange}
-          monthDate={monthDate}
-          onChangeMonthDate={(dt) => {
-            setMonthDate(dt);
-          }}
-          presets={defaultPresets}
-        />
-      );
-    })();
-  },
 };

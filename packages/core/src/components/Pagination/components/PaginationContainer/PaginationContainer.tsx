@@ -1,6 +1,7 @@
 import * as React from 'react';
+
 import { HFlex, type HFlexProps } from '../../../HFlex';
-import { TBaseSize } from 'src/declarations';
+import { TBaseSize } from '../../../../declarations';
 
 export interface PaginationContainerProps extends HFlexProps {
   size?: TBaseSize;

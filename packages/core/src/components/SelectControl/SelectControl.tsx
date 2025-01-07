@@ -127,19 +127,22 @@ export const SelectControl = <
 
   const handleCloseMenuOnScroll = React.useCallback(
     // To avoid closing of dropdown menu when the scroll is within itself
-    (ev) =>
+    (ev: WheelEvent) =>
       (menuAppendToBody || rest.closeMenuOnScroll) &&
       // Only return true when an open menu is detected, otherwise
       // react-select will be constantly changing the state and re-rendering
       // all the selects, even the closed ones.
       ev != null &&
-      ev?.srcElement?.classList != null &&
-      ev.srcElement.getElementsByClassName(
+      (ev?.target as HTMLDivElement)?.classList != null &&
+      (ev.target as HTMLDivElement).getElementsByClassName(
         `${rest.classNamePrefix}__control--menu-is-open`,
       ).length &&
-      !ev.srcElement.classList.contains(`${rest.classNamePrefix}__menu-list`),
+      !(ev.target as HTMLDivElement).classList.contains(
+        `${rest.classNamePrefix}__menu-list`,
+      ),
     [rest.classNamePrefix, rest.closeMenuOnScroll, menuAppendToBody],
   );
+
   const fieldContext = React.useContext(FieldContext);
   const contextBasedProps = getFieldContextProps({
     ariaDescribedBy,

@@ -1,5 +1,38 @@
 # Changelog
 
+## [15.0.0](https://github.com/DevoInc/genesys-ui/compare/v14.3.2...v15.0.0) (2024-12-27)
+
+### ⚠ BREAKING CHANGES
+
+* migrate to tsup
+
+### Features
+
+* migrate to tsup ([0741306](https://github.com/DevoInc/genesys-ui/commit/074130626d7de41a43cc5a426fca894767805ab1))
+
+### Bug Fixes
+
+* **core:** fixed Select types ([6d705e7](https://github.com/DevoInc/genesys-ui/commit/6d705e7737e5f3fceed9f6793096d591851021d5))
+* toastify version compatibility problem ([a1eb1c5](https://github.com/DevoInc/genesys-ui/commit/a1eb1c52346d7d8e8c1a7eadb11e6ff4fd166e12))
+
+## [14.3.2](https://github.com/DevoInc/genesys-ui/compare/v14.3.1...v14.3.2) (2024-12-20)
+
+## [14.3.1](https://github.com/DevoInc/genesys-ui/compare/v14.3.0...v14.3.1) (2024-12-19)
+
+### Bug Fixes
+
+* upgrade genesys-icons with color fix ([6faa961](https://github.com/DevoInc/genesys-ui/commit/6faa961d3ad767adac38c3871e6c399085402616))
+
+## [14.3.0](https://github.com/DevoInc/genesys-ui/compare/v14.2.0...v14.3.0) (2024-12-19)
+
+### Features
+
+* Improvements for stories and fixed some problems with form components. ([de579f6](https://github.com/DevoInc/genesys-ui/commit/de579f6e267a6af51af42fa0b0b9582753dc9647))
+
+### Bug Fixes
+
+* fixed circular dependency ([eca344f](https://github.com/DevoInc/genesys-ui/commit/eca344f9993c6c6da6a76cf1c8ed9922a1859663))
+
 ## [14.2.0](https://github.com/DevoInc/genesys-ui/compare/v14.1.4...v14.2.0) (2024-12-18)
 
 ### Features

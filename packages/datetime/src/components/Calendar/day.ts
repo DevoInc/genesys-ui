@@ -1,6 +1,6 @@
 import { set, getDate, getTime, format } from 'date-fns';
 
-import type { TParseDate } from '../../declarations';
+import type { TDateRange, TParseDate } from '../../declarations';
 import type {
   TCalendarI18n,
   TConditionFunction,
@@ -181,7 +181,7 @@ export const getClassNameFromProperties = (dayProps: TDayProperties) => [
   ...(dayProps.isRightHover ? ['rightmost'] : []),
 ];
 
-export const getFrom = (value: (number | Date)[]) => {
+export const getFrom = (value: TDateRange) => {
   if (value[0] && getTime(value[0]) > 0) {
     return getTime(
       set(value[0], { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 }),
@@ -190,7 +190,7 @@ export const getFrom = (value: (number | Date)[]) => {
   return 0;
 };
 
-export const getTo = (value: (number | Date)[]) => {
+export const getTo = (value: TDateRange) => {
   if (value[1] && getTime(value[1]) > 0) {
     return getTime(
       set(value[1], {

@@ -14,7 +14,7 @@ const meta: Meta<typeof RealTimeButton> = {
 export default meta;
 type Story = StoryObj<typeof RealTimeButton>;
 
-export const Base: Story = {};
+export const Playground: Story = {};
 
 export const Activated: Story = {
   tags: ['isHidden'],

@@ -1,27 +1,3 @@
 {
-  "compilerOptions": {
-    "lib": [
-      "dom",
-      "esnext"
-    ],
-    "esModuleInterop": true,
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "target": "ES6",
-    "types": [
-      "node",
-      "@testing-library/jest-dom"
-    ],
-    "resolveJsonModule": true,
-    "baseUrl": ".",
-    "jsx": "react",
-    "strictBindCallApply": true,
-    "noUncheckedIndexedAccess": true,
-    "paths": {
-      "test-utils": [
-        "./test/test-utils.tsx"
-      ]
-    },
-    "skipLibCheck": true,
-  },
+  "extends": "./common/tsconfig",
 }

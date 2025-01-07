@@ -11,7 +11,7 @@ const meta: Meta<typeof Time> = {
 export default meta;
 type Story = StoryObj<typeof Time>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     value: new Date(),
     hasMillis: true,

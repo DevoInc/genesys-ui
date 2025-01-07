@@ -24,22 +24,22 @@ export const InnerSelectControl = <
 >({
   style,
   componentStyles,
+  className,
+  classNamePrefix,
+  tooltip,
   ...props
-}: InnerSelectControlProps<Option, IsMulti, Group>): React.ReactElement => {
-  return props.creatable ? (
-    <StyledSelectControl
-      as={CreatableSelect<Option, IsMulti, Group>}
-      css={style}
-      tooltip={props.tooltip}
-      styles={componentStyles}
-      {...props}
-    />
-  ) : (
-    <StyledSelectControl
-      {...props}
-      css={style}
-      styles={componentStyles}
-      tooltip={props.tooltip}
-    />
-  );
-};
+}: InnerSelectControlProps<Option, IsMulti, Group>): React.ReactElement => (
+  <StyledSelectControl
+    {...(props.creatable
+      ? {
+          as: CreatableSelect<Option, IsMulti, Group>,
+        }
+      : {})}
+    css={style}
+    tooltip={tooltip}
+    styles={componentStyles}
+    className={className || 'react-select__container'}
+    classNamePrefix={classNamePrefix || 'react-select'}
+    {...props}
+  />
+);

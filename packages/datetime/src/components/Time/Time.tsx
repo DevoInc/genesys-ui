@@ -11,7 +11,7 @@ import {
   type IDataAttrs,
 } from '@devoinc/genesys-ui';
 
-import type { ITime } from '../../declarations';
+import type { ITime, TDate } from '../../declarations';
 import { getFormatTimeStr, formatDate } from '../../helpers';
 import { TTimeI18n } from './declarations';
 import { defaultTimeI18n } from './i18n';
@@ -28,7 +28,7 @@ export interface TimeProps
   /** The size of the Time, specially the input. */
   size?: TFieldSize;
   /** Initial value. One of `number` or `Date`. */
-  value?: Date | number;
+  value?: TDate;
   /** Diable the time field */
   disabled?: boolean;
   /** Internacionalization object */
@@ -43,7 +43,7 @@ export const Time: React.FC<TimeProps> = ({
   onChange,
   size = 'md',
   style,
-  value,
+  value = '',
   disabled = false,
   i18n: userI18n = defaultTimeI18n,
   minDate,

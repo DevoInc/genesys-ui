@@ -14,7 +14,7 @@ const meta: Meta<typeof DateTimeInput> = {
 export default meta;
 type Story = StoryObj<typeof DateTimeInput>;
 
-export const Base: Story = {
+export const Playground: Story = {
   render: (args) =>
     ((props) => {
       const [value, setValue] = React.useState<number | Date>(new Date());

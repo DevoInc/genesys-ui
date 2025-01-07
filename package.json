@@ -1,29 +1,22 @@
 {
   "name": "genesys-ui",
-  "version": "14.2.0",
+  "version": "15.0.0",
   "description": "",
   "type": "module",
   "private": true,
   "scripts": {
-    "compile": "npm run compile -ws --if-present",
-    "compile:watch": "npm run compile:watch -ws --if-present",
     "clean:cache": "rm -rf node_modules/.cache",
-    "clean": "rm -rf storybook-static coverage packages/*/dist",
+    "clean": "rm -rf storybook-static coverage packages/*/dist packages/*/coverage",
     "build": "npm run build -ws --if-present",
-    "build:watch": "npm run build:watch -ws --if-present",
-    "depcruise": "npm run depcruise -ws",
     "lint": "oxlint -c oxlintrc.json",
     "start": "npm run storybook",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "NODE_OPTIONS=\"--max_old_space_size=4096\" storybook build",
     "stryker": "npm run stryker -ws --if-present",
-    "analyzer": "npm run analyzer -ws --if-present",
     "test": "vitest",
-    "test:ci": "npm run test -ws --if-present -- --coverage --watch=false",
     "dpdm": "npm run dpdm -ws --if-present",
     "release": "release-it --dry-run",
-    "release:ci": "release-it --ci",
-    "postinstall": "scripts/post_install.sh"
+    "release:ci": "release-it --ci"
   },
   "keywords": [],
   "author": "Devo, Inc. Quvis Team (https://github.com/orgs/DevoInc/teams/quvis)",
@@ -31,7 +24,7 @@
   "devDependencies": {
     "@devoinc/genesys-base-styles": "^2.0.1",
     "@devoinc/genesys-brand-devo": "^8.1.1",
-    "@devoinc/genesys-icons": "^6.3.0",
+    "@devoinc/genesys-icons": "^6.3.2",
     "@devoinc/genesys-tokens-types": "^7.7.1",
     "@devoinc/holo": "^2.0.1",
     "@release-it-plugins/workspaces": "^4.2.0",
@@ -56,8 +49,8 @@
     "@vitejs/plugin-react": "^4.3.4",
     "@vitest/coverage-v8": "^2.1.8",
     "babel-plugin-styled-components": "^2.1.4",
-    "dependency-cruiser": "^16.8.0",
     "dpdm": "^3.14.0",
+    "esbuild-plugin-styled-components": "^3.0.1",
     "framer-motion": "^11.15.0",
     "happy-dom": "^15.11.7",
     "identity-obj-proxy": "^3.0.0",
@@ -74,15 +67,38 @@
     "sass": "^1.83.0",
     "semver": "^7.6.3",
     "storybook": "^8.4.7",
+    "terser": "^5.37.0",
     "tocbot": "^4.32.2",
     "ts-node": "^10.9.2",
+    "tsup": "^8.3.5",
     "typescript": "^5.7.2",
     "vite": "^6.0.3",
     "vite-bundle-visualizer": "^1.2.1",
+    "vite-plugin-babel-macros": "^1.0.6",
     "vite-plugin-dts": "^4.3.0",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^2.1.8",
     "viz.js": "^2.1.2"
+  },
+  "overrides": {
+    "ahooks": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    },
+    "react-dock": {
+      "react": "$react"
+    },
+    "react-grid-system": {
+      "react": "$react"
+    },
+    "react-popper": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    },
+    "react-windowed-select": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
   },
   "workspaces": [
     "packages/core",

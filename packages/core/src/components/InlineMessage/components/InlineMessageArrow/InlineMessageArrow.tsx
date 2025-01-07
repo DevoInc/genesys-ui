@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components';
 import type { ComputedPlacement } from '@popperjs/core';
 
 import type { TUIColorScheme } from '../../../../declarations/commonProps';
-import { StyledPopoverArrow } from '../../../Popover/StyledPopoverArrow';
+import { PopoverArrow } from '../../../Popover/components/';
 import { inlineMessageArrowMixin } from './helpers';
 
 export interface InlineMessageArrowProps {
@@ -19,10 +19,10 @@ export const InlineMessageArrow: React.FC<InlineMessageArrowProps> = ({
 }) => {
   const theme = useTheme();
   return (
-    <StyledPopoverArrow
-      $placement={placement}
-      $size={size}
-      css={inlineMessageArrowMixin({ placement, status, theme })}
+    <PopoverArrow
+      placement={placement}
+      size={size}
+      style={inlineMessageArrowMixin({ placement, status, theme })}
     />
   );
 };

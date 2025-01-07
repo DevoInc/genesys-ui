@@ -16,7 +16,7 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
-import type { TElevation } from 'src/declarations';
+import type { TElevation } from '../../declarations';
 import { elevationBoxShadowMixin } from '../../styled/mixins';
 import { lorem } from '../../../stories/utils/fillerTexts';
 

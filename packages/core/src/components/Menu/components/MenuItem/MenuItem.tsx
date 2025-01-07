@@ -125,7 +125,7 @@ export const InternalMenuItem: React.FC<Resolve<MenuItemProps>> = ({
           onBlur={onBlur}
           onChange={onChange}
           onFocus={onFocus}
-          selectionScheme={selectionScheme}
+          type={selectionScheme === 'single' ? 'radio' : 'checkbox'}
           value={value}
         />
       )}

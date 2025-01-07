@@ -26,9 +26,10 @@ import {
 } from './constants';
 import { defaultDateTimeRangeI18n } from './i18n';
 import { useMergeI18n } from '../../hooks';
+import type { TDateRange } from '../../declarations';
 
 export interface DateTimeRangeProps
-  extends Pick<CalendarProps, 'monthDate' | 'parseDate' | 'value' | 'weekDays'>,
+  extends Pick<CalendarProps, 'monthDate' | 'parseDate' | 'weekDays'>,
     Pick<TimeProps, 'hasMillis' | 'hasSeconds'>,
     Pick<PresetsProps, 'presets'>,
     Required<Pick<IGlobalAttrs, 'id'>>,
@@ -40,16 +41,13 @@ export interface DateTimeRangeProps
   /**  Show the time input HTML element. */
   hasTime?: boolean;
   /** Function called when clicking a cell or editing a time input HTML.  */
-  onChange?: (value: (number | Date)[], source: TDateTimeRangeSource) => void;
+  onChange?: (value: TDateRange, source: TDateTimeRangeSource) => void;
   /** Placeholder for the presets list */
   presetsPlaceholder?: PresetsProps['placeholder'];
   /** Function called when the displayed month is changed (the left one). One
    * of `number` or `Date`. */
   onChangeMonthDate?: (monthDate: number | Date) => void;
-  /** Function called when clicking an option from preset date list.  */
-  onChangePreset?: (preset: string) => void;
-  /** Selected preset */
-  preset?: string;
+  value?: TDateRange;
 }
 
 export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
@@ -67,8 +65,6 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   weekDays,
   presetsPlaceholder,
   presets,
-  preset,
-  onChangePreset = () => null,
   style,
   ...dataProps
 }) => {
@@ -92,6 +88,11 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
     setHoverDay(null);
   }, []);
 
+  const canCalendarRender = React.useMemo(
+    () => value.length > 0 && value.every((x) => typeof x !== 'string'),
+    [value],
+  );
+
   return (
     <HFlex as={as} alignItems={'flex-start'} style={style} {...dataProps}>
       <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
@@ -111,7 +112,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
             onClick={(dt) => {
               onChange(
                 rangeBehavior(
-                  value,
+                  value as (number | Date)[],
                   set(dt, {
                     hours: 0,
                     minutes: 0,
@@ -122,9 +123,9 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
                 DATE_TIME_RANGE_SOURCE_CAL_LEFT,
               );
             }}
-            value={value}
-            hasLeftHoverEffect={value.length === 1}
-            hasRightHoverEffect={value.length === 1}
+            value={canCalendarRender ? (value as (number | Date)[]) : []}
+            hasLeftHoverEffect={canCalendarRender ? value.length === 1 : false}
+            hasRightHoverEffect={canCalendarRender ? value.length === 1 : false}
             parseDate={parseDate}
             weekDays={weekDays}
             hoverDay={hoverDay}
@@ -153,8 +154,8 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
                 );
               }}
               size="sm"
-              value={value.length >= 2 ? value[0] : null}
-              disabled={value.length < 2}
+              value={canCalendarRender && value.length >= 2 ? value[0] : ''}
+              disabled={!canCalendarRender || value.length < 2}
             />
           </Flex>
         )}
@@ -187,9 +188,9 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
                 DATE_TIME_RANGE_SOURCE_CAL_RIGHT,
               );
             }}
-            value={value}
-            hasLeftHoverEffect={value.length === 1}
-            hasRightHoverEffect={value.length === 1}
+            value={canCalendarRender ? value : []}
+            hasLeftHoverEffect={canCalendarRender ? value.length === 1 : false}
+            hasRightHoverEffect={canCalendarRender ? value.length === 1 : false}
             parseDate={parseDate}
             weekDays={weekDays}
             hoverDay={hoverDay}
@@ -218,8 +219,8 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
                 );
               }}
               size="sm"
-              value={value.length >= 2 ? value[1] : null}
-              disabled={value.length < 2}
+              value={canCalendarRender && value.length >= 2 ? value[1] : ''}
+              disabled={!canCalendarRender || value.length < 2}
             />
           </Flex>
         )}
@@ -227,13 +228,13 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
       {presets && (
         <VFlex flex={'1 1 30%'} alignItems="stretch" minWidth="16rem">
           <Presets
-            value={preset}
+            value={canCalendarRender ? [] : value}
             id={`${id}-presets`}
             maxMenuHeight={224}
             placeholder={presetsPlaceholder}
             presets={presets}
-            onChange={(newPreset) => {
-              onChangePreset(newPreset);
+            onChange={(newValue) => {
+              onChange(newValue, 'presets');
             }}
           />
         </VFlex>
