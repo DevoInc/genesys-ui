@@ -1,14 +1,15 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 import remarkGfm from 'remark-gfm';
+import react from '@vitejs/plugin-react';
 
 const config: StorybookConfig = {
   stories: [
     '../stories/**/*.mdx',
     '../packages/*/@(src|stories)/**/*.@(stories.ts|stories.tsx|mdx)',
   ],
-  framework: {
-    name: '@storybook/react-vite',
-    options: {},
+  framework: '@storybook/react-vite',
+  core: {
+    builder: '@storybook/builder-vite',
   },
   addons: [
     '@storybook/addon-controls',
@@ -35,6 +36,21 @@ const config: StorybookConfig = {
     const { mergeConfig } = await import('vite');
     // Merge custom configuration into the default config
     return mergeConfig(config, {
+      plugins: [
+        react({
+          babel: {
+            plugins: [
+              [
+                'babel-plugin-styled-components',
+                {
+                  displayName: true,
+                  fileName: false,
+                },
+              ],
+            ],
+          },
+        }),
+      ],
       // Add dependencies to pre-optimization
       optimizeDeps: {
         include: [

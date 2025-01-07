@@ -1,7 +1,7 @@
 import react from '@vitejs/plugin-react';
-import { coverageConfigDefaults } from 'vitest/config';
+import { coverageConfigDefaults, ViteUserConfig } from 'vitest/config';
 
-export const vitestConfig = {
+export const vitestConfig: ViteUserConfig = {
   // Here is the plugin for React that allow us to use the babel plugin for
   // styled-components and test the CSS prop output properly
   // https://styled-components.com/docs/tooling#babel-plugin
