@@ -2,13 +2,14 @@ import * as React from 'react';
 import { useUpdateEffect } from 'ahooks';
 
 import {
-  Panel,
-  Button,
+  type IDataAttrs,
   type IGlobalAttrs,
   type IStyledOverloadCss,
   type IStyledPolymorphic,
-  Popover,
   type PopoverProps,
+  Button,
+  Panel,
+  Popover,
 } from '@devoinc/genesys-ui';
 
 import { DateTime, type DateTimeProps } from '../DateTime';
@@ -40,8 +41,9 @@ export interface DateTimeFloatingPickerProps
       'autoFocus' | 'placeholder' | 'size' | 'label' | 'helper'
     >,
     Pick<IGlobalAttrs, 'id'>,
-    Pick<IStyledOverloadCss, 'style'>,
-    Pick<IStyledPolymorphic, 'as'> {
+    IStyledOverloadCss,
+    IStyledPolymorphic,
+    IDataAttrs {
   /** i18n texts */
   i18n?: TDateTimeFloatingPickerI18n;
   /** Function called when Apply button is clicked. */
@@ -84,6 +86,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
   placeholder,
   size,
   label,
+  ...dataProps
 }) => {
   const i18n = useMergeI18n(
     userI18n,
@@ -122,7 +125,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
       onClose={onClose}
     >
       {({ ref, setOpened }) => (
-        <div ref={ref}>
+        <div ref={ref} {...dataProps}>
           <DateTimeInput
             autoFocus={autoFocus}
             placeholder={placeholder}

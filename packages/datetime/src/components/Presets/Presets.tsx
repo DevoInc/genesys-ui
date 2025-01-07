@@ -8,6 +8,7 @@ import {
   InputControl,
   VFlex,
   Box,
+  type IDataAttrs,
 } from '@devoinc/genesys-ui';
 
 import type { TPreset } from './declarations';
@@ -19,6 +20,7 @@ export interface PresetsProps
     Pick<IGlobalAttrs, 'tooltip'>,
     Partial<Pick<HTMLInputElement, 'placeholder'>>,
     Partial<Pick<SelectControlProps, 'maxMenuHeight' | 'size'>>,
+    IDataAttrs,
     IStyledOverloadCss {
   /** Function called when selected a preset. */
   onChange: (value: string) => void;
@@ -36,11 +38,12 @@ export const Presets: React.FC<PresetsProps> = ({
   value,
   onChange = () => null,
   size = 'sm',
+  ...dataProps
 }) => {
   const [term, setTerm] = React.useState('');
 
   return (
-    <VFlex id={id}>
+    <VFlex id={id} {...dataProps}>
       <InputControl
         placeholder={placeholder}
         size={size}

@@ -12,6 +12,7 @@ import {
 } from 'date-fns';
 
 import {
+  type IDataAttrs,
   type IStyledOverloadCss,
   type IStyledPolymorphic,
   VFlex,
@@ -33,7 +34,8 @@ export interface DateTimeProps
     >,
     Pick<ITime, 'hasMillis' | 'hasSeconds' | 'hasTime' | 'maxDate' | 'minDate'>,
     IStyledOverloadCss,
-    IStyledPolymorphic {
+    IStyledPolymorphic,
+    IDataAttrs {
   i18n?: TDateTimeI18n;
   /** Function called when clicking a cell or editing time input HTML.  */
   onChange?: (dt: Date | number) => void;
@@ -57,6 +59,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
   weekStart,
   onChangeMonthDate = () => null,
   value,
+  ...dataProps
 }) => {
   const i18n = useMergeI18n(userI18n, defaultDateTimeI18n) as TDateTimeI18n;
   const { onChangeMonth, onClickNextMonth, onClickPrevMonth } =
@@ -64,6 +67,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
   const theme = useTheme();
   return (
     <VFlex
+      {...dataProps}
       as={as}
       alignItems="stretch"
       minWidth={theme.cmp.calendar.size.minWidth}

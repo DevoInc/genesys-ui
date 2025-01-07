@@ -11,6 +11,7 @@ import type {
   IMouseEventAttrs,
   IStyledOverloadCss,
   IStyledPolymorphic,
+  IDataAttrs,
 } from '../../declarations';
 
 export type TFieldSize = TBaseSize;
@@ -34,6 +35,7 @@ export interface IField
   extends IMouseEventAttrs,
     IStyledOverloadCss,
     IStyledPolymorphic,
+    IDataAttrs,
     Pick<IGlobalAttrs, 'tooltip' | 'role'>,
     WithRequired<IGlobalAttrs, 'id'>,
     Pick<IFieldAttrs, 'disabled' | 'required'> {

@@ -7,6 +7,7 @@ import {
   type IGlobalAttrs,
   type IStyledOverloadCss,
   type IStyledPolymorphic,
+  type IDataAttrs,
 } from '@devoinc/genesys-ui';
 import { defaultDateTimeInputI18n } from './i18n';
 import { useMergeI18n } from '../..//hooks';
@@ -27,7 +28,8 @@ export interface DateTimeInputProps
     >,
     Pick<IGlobalAttrs, 'id'>,
     IStyledOverloadCss,
-    IStyledPolymorphic {
+    IStyledPolymorphic,
+    IDataAttrs {
   i18n?: TDateTimeInputI18n;
   /** Date representation value */
   value: string;
@@ -49,6 +51,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   size,
   value,
   status,
+  ...dataProps
 }) => {
   const i18n = useMergeI18n(
     userI18n,
@@ -56,6 +59,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   ) as TDateTimeInputI18n;
   return (
     <Input
+      {...dataProps}
       aria-label={i18n.input}
       autoFocus={autoFocus}
       helper={helper}

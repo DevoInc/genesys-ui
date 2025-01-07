@@ -15,6 +15,7 @@ import {
   Grid,
   type IStyledOverloadCss,
   type IStyledPolymorphic,
+  type IDataAttrs,
 } from '@devoinc/genesys-ui';
 import type { IParseResult } from '../../declarations';
 import { toTimestamp } from '../../helpers';
@@ -33,6 +34,7 @@ export interface CalendarProps
     IGlobalAttrs,
     IGlobalAriaAttrs,
     IStyledOverloadCss,
+    IDataAttrs,
     IStyledPolymorphic {
   /** The date for the month. One of `number` or `Date`. */
   monthDate?: Date | number;
@@ -95,6 +97,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
   maxDate,
   i18n: userI18n = defaultCalendarI18n,
   disabled = false,
+  ...dataProps
 }) => {
   const i18n = useMergeI18n(userI18n, defaultCalendarI18n) as TCalendarI18n;
   const theme = useTheme();
@@ -126,6 +129,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
 
   return (
     <Grid
+      {...dataProps}
       role={role}
       aria-describedby={ariaDescribedby}
       aria-details={ariaDetails}

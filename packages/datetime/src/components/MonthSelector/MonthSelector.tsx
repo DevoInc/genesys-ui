@@ -20,6 +20,7 @@ import {
   InputControl,
   type IStyledOverloadCss,
   type IStyledPolymorphic,
+  type IDataAttrs,
 } from '@devoinc/genesys-ui';
 
 import { toTimestamp } from '../../helpers';
@@ -30,6 +31,7 @@ import { TMonthSelectorI18n } from './declarations';
 
 export interface MonthSelectorProps
   extends Pick<IGlobalAttrs, 'id'>,
+    IDataAttrs,
     IStyledOverloadCss,
     IStyledPolymorphic {
   /** Internacionalization object */
@@ -68,6 +70,7 @@ export const MonthSelector: React.FC<MonthSelectorProps> = ({
   onClickNextMonth,
   size = 'md',
   style,
+  ...dataProps
 }) => {
   const i18n = useMergeI18n(
     userI18n,
@@ -104,7 +107,13 @@ export const MonthSelector: React.FC<MonthSelectorProps> = ({
   );
 
   return (
-    <HFlex as={as} justifyContent="space-between" spacing="0" style={style}>
+    <HFlex
+      as={as}
+      justifyContent="space-between"
+      spacing="0"
+      style={style}
+      {...dataProps}
+    >
       {hasPrevMonthButton && (
         <IconButton
           aria-label={i18n.prevMonth}

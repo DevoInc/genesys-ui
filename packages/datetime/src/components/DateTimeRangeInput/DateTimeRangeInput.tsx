@@ -16,6 +16,7 @@ import type {
   IStyledPolymorphic,
   ITriggerAriaAttrs,
   TControlWidth,
+  IDataAttrs,
 } from '@devoinc/genesys-ui';
 import { Field, InputControl } from '@devoinc/genesys-ui';
 
@@ -31,6 +32,7 @@ export interface DateTimeRangeInputProps
     Pick<ITriggerAriaAttrs, 'aria-controls'>,
     Pick<ICssDateTimeRangeInput, 'hasMillis' | 'hasSeconds' | 'hasTime'>,
     Pick<FieldProps, 'helper' | 'required' | 'controlWidth'>,
+    IDataAttrs,
     IStyledOverloadCss,
     IStyledPolymorphic {
   /** Set styles when is open a component */
@@ -94,6 +96,7 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
   controlWidth,
   innerControlsWidth,
   status = 'base',
+  ...dataProps
 }) => {
   const theme = useTheme();
 
@@ -105,6 +108,7 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
       status={status}
       required={required}
       controlWidth={controlWidth ?? 'auto'}
+      {...dataProps}
     >
       <StyledDateTimeRangeInput
         aria-controls={isOpen ? ariaControls : null}

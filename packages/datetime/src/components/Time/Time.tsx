@@ -8,6 +8,7 @@ import {
   type IGlobalAttrs,
   type IStyledOverloadCss,
   type IStyledPolymorphic,
+  type IDataAttrs,
 } from '@devoinc/genesys-ui';
 
 import type { ITime } from '../../declarations';
@@ -19,6 +20,7 @@ import { useMergeI18n } from '../../hooks';
 export interface TimeProps
   extends Pick<IGlobalAttrs, 'id'>,
     Pick<ITime, 'hasMillis' | 'hasSeconds' | 'minDate' | 'maxDate'>,
+    IDataAttrs,
     IStyledOverloadCss,
     IStyledPolymorphic {
   /** Function called when change the time value.  */
@@ -46,10 +48,11 @@ export const Time: React.FC<TimeProps> = ({
   i18n: userI18n = defaultTimeI18n,
   minDate,
   maxDate,
+  ...dataProps
 }) => {
   const i18n = useMergeI18n(userI18n, defaultTimeI18n) as TTimeI18n;
   return (
-    <Flex as={as} justifyContent="center" style={style}>
+    <Flex as={as} justifyContent="center" style={style} {...dataProps}>
       <Flex.Item
         flex="0 0 auto"
         minWidth={hasMillis ? '16rem' : hasSeconds ? '13rem' : '11rem'}

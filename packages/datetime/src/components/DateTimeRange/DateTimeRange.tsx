@@ -9,6 +9,7 @@ import {
   type IGlobalAttrs,
   type IStyledOverloadCss,
   type IStyledPolymorphic,
+  type IDataAttrs,
 } from '@devoinc/genesys-ui';
 
 import { Presets, type PresetsProps } from '../Presets';
@@ -31,6 +32,7 @@ export interface DateTimeRangeProps
     Pick<TimeProps, 'hasMillis' | 'hasSeconds'>,
     Pick<PresetsProps, 'presets'>,
     Required<Pick<IGlobalAttrs, 'id'>>,
+    IDataAttrs,
     IStyledOverloadCss,
     IStyledPolymorphic {
   /** Internacionalization object */
@@ -68,6 +70,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   preset,
   onChangePreset = () => null,
   style,
+  ...dataProps
 }) => {
   const i18n = useMergeI18n(
     userI18n,
@@ -90,7 +93,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   }, []);
 
   return (
-    <HFlex as={as} alignItems={'flex-start'} style={style}>
+    <HFlex as={as} alignItems={'flex-start'} style={style} {...dataProps}>
       <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
         <MonthSelector
           i18n={i18n}

@@ -28,6 +28,7 @@ export const Base: Story = {
       return (
         <DateTimeInput
           {...props}
+          data-popo={'popo'}
           value={inputValue}
           onChange={inputOnChange}
           helper={errors.length > 0 ? errors[0] : "I'm the helper"}

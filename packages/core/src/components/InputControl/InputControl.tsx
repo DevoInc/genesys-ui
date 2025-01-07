@@ -125,6 +125,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
   tooltip,
   type = 'text',
   value,
+  ...dataProps
 }) => {
   const fieldContext = React.useContext(FieldContext);
   const contextBasedProps = getFieldContextProps({
@@ -151,6 +152,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
 
   return (
     <InputControl._Container
+      {...dataProps}
       onClick={onClick}
       onMouseDown={onMouseDown}
       onMouseLeave={onMouseLeave}

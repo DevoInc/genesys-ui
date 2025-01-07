@@ -8,6 +8,7 @@ import {
   type IStyledPolymorphic,
   Popover,
   type PopoverProps,
+  type IDataAttrs,
 } from '@devoinc/genesys-ui';
 
 import { parseStrDate } from '../../parsers';
@@ -52,6 +53,7 @@ export interface DateTimeRangeFloatingPickerProps
     >,
     ITime,
     Required<Pick<IGlobalAttrs, 'id'>>,
+    IDataAttrs,
     IStyledOverloadCss,
     IStyledPolymorphic {
   /** Internacionalization object */
@@ -91,6 +93,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
   presetsPlaceholder,
   onChangePreset = () => null,
   autoApply = false,
+  ...dataProps
 }) => {
   const i18n = useMergeI18n(
     userI18n,
@@ -172,6 +175,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
             width="auto"
             id={`${id}-popover-panel`}
             maxWidth="70rem"
+            {...dataProps}
           >
             <Panel.Body>
               <DateTimeRange
