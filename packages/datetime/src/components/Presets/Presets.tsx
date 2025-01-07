@@ -1,29 +1,28 @@
 import * as React from 'react';
 
 import {
-  type IGlobalAttrs,
   type SelectControlProps,
   type IStyledOverloadCss,
   Menu,
   InputControl,
   VFlex,
   Box,
-  type IDataAttrs,
 } from '@devoinc/genesys-ui';
 
 import type { TPreset } from './declarations';
-import { WithRequired } from '../../typeFunctions';
 import { filterPreset, removeEmptyGroups } from './filter';
 import { arePresetValuesEqual } from './eq';
 import type { TDateRange } from '../../declarations';
 
 export interface PresetsProps
-  extends WithRequired<IGlobalAttrs, 'id'>,
-    Pick<IGlobalAttrs, 'tooltip'>,
-    Partial<Pick<HTMLInputElement, 'placeholder'>>,
-    Partial<Pick<SelectControlProps, 'maxMenuHeight' | 'size'>>,
-    IDataAttrs,
+  extends Partial<Pick<SelectControlProps, 'maxMenuHeight' | 'size'>>,
     IStyledOverloadCss {
+  /** A unique identifier for the element */
+  id: string;
+  /** Component tooltip */
+  tooltip?: string;
+  /** Input placeholder */
+  placeholder?: string;
   /** Function called when selected a preset. */
   onChange: (value: TDateRange) => void;
   /** Custom list of presets values. */
@@ -70,6 +69,7 @@ export const Presets: React.FC<PresetsProps> = ({
                       ? 'selected'
                       : 'enabled'
                   }
+                  aria-current={arePresetValuesEqual(value, preset.value)}
                   onClick={() => {
                     onChange(preset.value);
                   }}

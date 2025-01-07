@@ -2,14 +2,15 @@ import * as React from 'react';
 
 import type { IHookCommonReturnParams } from './declarations';
 import { rangeBehavior } from '../behaviors';
+import type { TCalendarDate, TCalendarDateRange } from '../../../declarations';
 
 export const useCalendarRange = (
-  initialRange: (Date | number)[] = [],
+  initialRange: TCalendarDateRange = [],
 ): IHookCommonReturnParams => {
   const [range, setRange] = React.useState(initialRange);
 
-  const handleNewDate = (dt: number | Date) => {
-    setRange((prev) => rangeBehavior(prev, dt));
+  const handleNewDate = (newDate: TCalendarDate) => {
+    setRange((prev) => rangeBehavior(prev, newDate));
   };
 
   return {

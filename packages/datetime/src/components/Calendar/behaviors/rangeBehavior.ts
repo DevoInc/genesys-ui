@@ -1,8 +1,8 @@
 import { compareDesc } from 'date-fns';
 
-import type { TDate, TDateRange } from '../../../declarations';
+import type { TCalendarDate, TCalendarDateRange } from '../../../declarations';
 
-export const rangeBehavior = (range: TDateRange, dt: TDate) =>
+export const rangeBehavior = (range: TCalendarDateRange, dt: TCalendarDate) =>
   range.length === 1
     ? compareDesc(dt, range[0]) < 0
       ? [range[0], dt]

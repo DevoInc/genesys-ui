@@ -1,14 +1,9 @@
-import type { TDateRange } from '../../declarations';
+import type { TDate, TDateRange } from '../../declarations';
+
+const normalize = (date: TDate) =>
+  date instanceof Date ? date.getTime() : date;
 
 export const arePresetValuesEqual = (a: TDateRange, b: TDateRange) =>
   a?.length === b?.length
-    ? a.every((item, index) =>
-        typeof item === typeof b[index]
-          ? typeof item === 'number' || typeof item === 'string'
-            ? item === b[index]
-            : item instanceof Date && b[index] instanceof Date
-              ? item.getTime() === b[index].getTime()
-              : false
-          : false,
-      )
+    ? a.every((item, index) => normalize(item) === normalize(b[index]))
     : false;

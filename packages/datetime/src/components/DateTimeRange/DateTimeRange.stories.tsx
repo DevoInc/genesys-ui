@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { DateTimeRange } from './DateTimeRange';
 import { useTimeRangePreserve } from './hooks';
-import { defaultPresets } from '../Presets';
+import { getDefaultPresets } from '../Presets';
 import type { TDateRange } from '../../declarations';
 
 const meta: Meta<typeof DateTimeRange> = {
@@ -31,7 +31,7 @@ export const Playground: Story = {
           onChangeMonthDate={(dt) => {
             setMonthDate(dt);
           }}
-          presets={defaultPresets}
+          presets={getDefaultPresets()}
         />
       );
     })(),

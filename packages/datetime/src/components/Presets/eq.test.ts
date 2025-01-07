@@ -31,6 +31,12 @@ describe('Presets', () => {
           false,
         ],
         [
+          'eq mix num & date',
+          [new Date(2001, 1, 1).getTime(), new Date(2000, 1, 2).getTime()],
+          [new Date(2001, 1, 1), new Date(2000, 1, 2)],
+          true,
+        ],
+        [
           'not eq mix string & date',
           ['1', '2'],
           [new Date(2001, 1, 1), new Date(2000, 1, 2)],

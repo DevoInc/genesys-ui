@@ -12,7 +12,7 @@ import {
 } from '@devoinc/genesys-ui';
 
 import { parseStrDate } from '../../parsers';
-import { formatDate as formatDateHelper } from '../../helpers';
+import { formatDate as formatDateHelper, tryParseDate } from '../../helpers';
 
 import type { IParseResult, ITime, TDateRange } from '../../declarations';
 import { DateTimeRange, type DateTimeRangeProps } from '../DateTimeRange';
@@ -24,7 +24,6 @@ import {
 import { TDateTimeRangeFloatingPickerI18n } from './declarations';
 import { useMergeI18n } from '../../hooks';
 import { defaultDateTimeRangeFloatingPickerI18n } from './i18n';
-import { defaultPresets } from '../Presets';
 
 export interface DateTimeRangeFloatingPickerProps
   extends Pick<
@@ -81,7 +80,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
   placement,
   size = 'md',
   value,
-  presets = defaultPresets,
+  presets,
   presetsPlaceholder,
   autoApply = false,
   onRealTimeClick,
@@ -98,31 +97,16 @@ export const DateTimeRangeFloatingPicker: React.FC<
   const [tmpValue, setTmpValue] =
     React.useState<(string | number | Date)[]>(value);
 
-  const [monthDate, setMonthDate] = React.useState<number | Date>(() => {
-    const from = value[0];
-    let dt: number | Date;
-    if (typeof from === 'string') {
-      const result = parseDate(from);
-      dt = result.value;
-    } else {
-      dt = from;
-    }
-    return dt;
-  });
+  const [monthDate, setMonthDate] = React.useState<number | Date>(() =>
+    tryParseDate(parseDate)(value[0]),
+  );
+
   const { inputValue, inputOnChange, errors, updateValue } =
     useDateTimeRangeInputValidation({
       value: tmpValue,
       // onChange: setValue,
       onChange: (range) => {
-        const from = range[0];
-        let dt: number | Date;
-        if (typeof from === 'string') {
-          const result = parseDate(from);
-          dt = result.value;
-        } else {
-          dt = from;
-        }
-        setMonthDate(dt);
+        setMonthDate(tryParseDate(parseDate)(range[0]));
         if (autoApply) {
           onChange(range);
         } else {
@@ -174,7 +158,10 @@ export const DateTimeRangeFloatingPicker: React.FC<
               <DateTimeRange
                 i18n={i18n}
                 id={id ? `${id}-datetime-range` : null}
-                onChange={setTmpValue}
+                onChange={(newRange) => {
+                  setTmpValue(newRange);
+                  updateValue(newRange);
+                }}
                 value={tmpValue}
                 presets={presets}
                 presetsPlaceholder={presetsPlaceholder}
@@ -192,8 +179,11 @@ export const DateTimeRangeFloatingPicker: React.FC<
                     key={'cancel'}
                     onClick={() => {
                       setTmpValue(value);
+                      updateValue(value);
                       setOpened(false);
-                      onCancel();
+                      if (onCancel) {
+                        onCancel();
+                      }
                     }}
                   >
                     {i18n.cancelButton}
@@ -204,7 +194,9 @@ export const DateTimeRangeFloatingPicker: React.FC<
                     onClick={() => {
                       updateValue(tmpValue);
                       setOpened(false);
-                      onChange(tmpValue);
+                      if (onChange) {
+                        onChange(tmpValue);
+                      }
                     }}
                     state={disableApplyButton ? 'disabled' : 'enabled'}
                   >

@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Presets } from './Presets';
 import { Box } from '@devoinc/genesys-ui';
-import { defaultPresets } from './defaults';
+import { getDefaultPresets } from './defaults';
 import type { TDateRange } from '../../declarations';
 
 const meta: Meta<typeof Presets> = {
@@ -43,6 +43,7 @@ export const Playground: Story = {
   args: {},
 };
 
+const now = new Date().getTime();
 export const Default: Story = {
   tags: ['isHidden'],
   render: () =>
@@ -52,7 +53,7 @@ export const Default: Story = {
         <Box height="300px">
           <Presets
             id={'presets'}
-            presets={defaultPresets}
+            presets={getDefaultPresets(now)}
             maxMenuHeight={250}
             value={value}
             onChange={(newValue) => {

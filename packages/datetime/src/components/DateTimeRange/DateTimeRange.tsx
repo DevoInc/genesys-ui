@@ -177,7 +177,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
             onClick={(dt) => {
               onChange(
                 rangeBehavior(
-                  value,
+                  value as (number | Date)[],
                   set(dt, {
                     hours: 23,
                     minutes: 59,
@@ -228,7 +228,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
       {presets && (
         <VFlex flex={'1 1 30%'} alignItems="stretch" minWidth="16rem">
           <Presets
-            value={canCalendarRender ? [] : value}
+            value={value}
             id={`${id}-presets`}
             maxMenuHeight={224}
             placeholder={presetsPlaceholder}

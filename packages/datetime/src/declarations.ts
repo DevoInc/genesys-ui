@@ -17,7 +17,10 @@ export interface IParseResult {
   errors: string[];
 }
 
-export type TParseDate = (dt: number | Date) => IParseResult;
-
 export type TDate = number | string | Date;
 export type TDateRange = TDate[];
+
+export type TCalendarDate = number | Date;
+export type TCalendarDateRange = TCalendarDate[];
+
+export type TParseDate = (date: TDate) => IParseResult;

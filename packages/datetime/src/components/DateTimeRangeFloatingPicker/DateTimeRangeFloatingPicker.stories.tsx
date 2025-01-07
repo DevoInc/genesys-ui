@@ -4,9 +4,11 @@ import { Meta, StoryObj } from '@storybook/react';
 import { subMonths } from 'date-fns';
 
 import { DateTimeRangeFloatingPicker } from './DateTimeRangeFloatingPicker';
-import { defaultPresets } from '../Presets';
+import { getDefaultPresets } from '../Presets';
 import { TRealtimeState } from '../RealTimeButton/declarations';
 
+const now = new Date().getTime();
+const presets = getDefaultPresets(now);
 const meta: Meta<typeof DateTimeRangeFloatingPicker> = {
   title: 'Components/Datetime/DateTimeRangeFloatingPicker',
   component: DateTimeRangeFloatingPicker,
@@ -14,6 +16,7 @@ const meta: Meta<typeof DateTimeRangeFloatingPicker> = {
     value: [subMonths(new Date(), 1).getTime(), new Date().getTime()],
     id: 'story-demo',
     size: 'md',
+    presets,
   },
 };
 
@@ -24,17 +27,12 @@ export const Playground: Story = {
   render: (args) =>
     ((props) => {
       const [value, setValue] = React.useState(props.value);
-
-      // TODO: Review and move the onApply to a hook
       return (
         <DateTimeRangeFloatingPicker
           {...props}
-          // onApply={onApply(setValue)}
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
-            // eslint-disable-next-line no-console
-            console.log('Has changed', newValue);
           }}
         />
       );
@@ -48,14 +46,12 @@ export const DefaultPresets: Story = {
         range: props.value,
         realTime: false,
       });
-      console.log(daterange);
 
       return (
         <DateTimeRangeFloatingPicker
           {...props}
           value={daterange.range}
           onChange={(range) => {
-            console.log(range);
             setDaterange((prev) => ({ ...prev, range }));
           }}
           onRealTimeClick={(event) => {
@@ -63,7 +59,7 @@ export const DefaultPresets: Story = {
             console.log('RT button clicked', event);
           }}
           realTime="selected"
-          presets={defaultPresets}
+          presets={getDefaultPresets()}
           parseExpression={(exp) => {
             for (const word of ['now', 'today', 'yesterday']) {
               if (typeof exp === 'string' && exp.includes(word))

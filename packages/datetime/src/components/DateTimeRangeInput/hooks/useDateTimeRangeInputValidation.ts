@@ -3,8 +3,11 @@ import * as React from 'react';
 import { IParseResult } from '../../../declarations';
 
 type Setter<T = string> = (arr: T[], index: number, newValue: T) => T[];
-const setter: Setter<string | number | Date | string[]> = (arr, index, newValue) =>
-  arr.map((x, idx) => (idx === index ? newValue : x));
+const setter: Setter<string | number | Date | string[]> = (
+  arr,
+  index,
+  newValue,
+) => arr.map((x, idx) => (idx === index ? newValue : x));
 
 export const useDateTimeRangeInputValidation = ({
   value,
@@ -22,21 +25,18 @@ export const useDateTimeRangeInputValidation = ({
     inputValue: value.map(reprDate),
     errors: value.map(() => []),
   });
+
+  // TODO: Review this
   const inputOnChange = (index: number, newValue: string) => {
     const result = parseDate(newValue);
     const newInputValue = setter(inputValue, index, newValue) as string[];
     if (result.isValid) {
       onChange(setter(value, index, result.value) as number[]);
-      setState({
-        inputValue: newInputValue,
-        errors: setter(errors, index, []) as string[][],
-      });
-    } else {
-      setState({
-        inputValue: newInputValue,
-        errors: setter(errors, index, result.errors) as string[][],
-      });
     }
+    setState({
+      inputValue: newInputValue,
+      errors: setter(errors, index, result.errors) as string[][],
+    });
   };
 
   const updateValue = (range: (string | number | Date)[]) => {
