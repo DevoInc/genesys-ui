@@ -21,7 +21,7 @@ export interface StatusMessageProps
   /** Description block of status message */
   description?: React.ReactNode;
   /** Buttons of the status message */
-  buttons: ButtonGroupProps['children'];
+  buttons?: ButtonGroupProps['children'];
   /** Icon or any symbol for the top of the panel */
   icon?: React.ReactNode;
   /** If it's true then the content box is not centered and it's scrollable */
