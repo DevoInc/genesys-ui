@@ -38,7 +38,12 @@ export const InnerSelectControl = <
     css={style}
     tooltip={tooltip}
     styles={componentStyles}
-    className={className || 'react-select__container'}
+    className={
+      className ||
+      (props.sortable
+        ? 'react-select__container react-select__container--sortable'
+        : 'react-select__container')
+    }
     classNamePrefix={classNamePrefix || 'react-select'}
     {...props}
   />

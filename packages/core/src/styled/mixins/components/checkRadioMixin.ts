@@ -36,7 +36,7 @@ export const checkRadioMixin = ({
     width: ${square};
     height: ${square};
     line-height: ${square};
-    border: solid ${tokens.shape.borderSize[$size]}
+    border: solid ${tokens.shape.borderSize}
       ${tokens.color.border[$status].enabled};
     background-color: ${tokens.color.background[$status].enabled};
     color: ${tokens.color.text[$status].enabled};

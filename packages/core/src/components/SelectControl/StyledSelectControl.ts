@@ -62,6 +62,18 @@ export const StyledSelectControl = styled<
     const minHeight = cmpTokens.size.height[size];
 
     return css`
+      // SORTABLE ///////////////////////////////////////////////////////////
+
+      &.${classNamePrefix}__container--sortable
+        .${classNamePrefix}__value-wrapper
+        .${classNamePrefix}__value-container.${classNamePrefix}__value-container--is-multi.${classNamePrefix}__value-container--has-value
+        > div:last-child {
+        display: inline-flex;
+        flex-wrap: nowrap;
+      }
+
+      ////////////////////////////////////////////////////////// END SORTABLE
+
       .${classNamePrefix} {
         // CONTROL ///////////////////////////////////////////////////////////
         &__control {
@@ -226,6 +238,7 @@ export const StyledSelectControl = styled<
             }
           }
         }
+
         ////////////////////////////////// END VALUE WRAPPER & VALUE CONTAINER
 
         // INPUT CONTAINER ///////////////////////////////////////////////////
