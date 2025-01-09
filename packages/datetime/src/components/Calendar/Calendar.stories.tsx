@@ -34,52 +34,50 @@ export const Single: Story = {
 
 export const ParseDate: Story = {
   tags: ['isHidden'],
-  render: () =>
-    (() => {
-      const { hasLeftHoverEffect, hasRightHoverEffect, range, handleNewDate } =
-        useCalendarRange(rangeValue);
-      return (
-        <Calendar
-          monthDate={now}
-          value={range}
-          hasLeftHoverEffect={hasLeftHoverEffect}
-          hasRightHoverEffect={hasRightHoverEffect}
-          onClick={handleNewDate}
-          parseDate={(dt: Date | number) => {
-            const weekend = isWeekend(dt);
-            const even = getDate(dt) % 2 === 0;
-            return {
-              isValid: !weekend && !even,
-              value: dt,
-              errors: [
-                ...(weekend ? ['Is weekend'] : []),
-                ...(even ? ['Is even'] : []),
-              ],
-            };
-          }}
-        />
-      );
-    })(),
+  render: () => {
+    const { hasLeftHoverEffect, hasRightHoverEffect, range, handleNewDate } =
+      useCalendarRange(rangeValue);
+    return (
+      <Calendar
+        monthDate={now}
+        value={range}
+        hasLeftHoverEffect={hasLeftHoverEffect}
+        hasRightHoverEffect={hasRightHoverEffect}
+        onClick={handleNewDate}
+        parseDate={(dt: Date | number) => {
+          const weekend = isWeekend(dt);
+          const even = getDate(dt) % 2 === 0;
+          return {
+            isValid: !weekend && !even,
+            value: dt,
+            errors: [
+              ...(weekend ? ['Is weekend'] : []),
+              ...(even ? ['Is even'] : []),
+            ],
+          };
+        }}
+      />
+    );
+  },
 };
 
 export const MinMaxDate: Story = {
   tags: ['isHidden'],
-  render: () =>
-    (() => {
-      const { hasLeftHoverEffect, hasRightHoverEffect, range, handleNewDate } =
-        useCalendarRange(rangeValue);
-      return (
-        <Calendar
-          monthDate={now}
-          value={range}
-          hasLeftHoverEffect={hasLeftHoverEffect}
-          hasRightHoverEffect={hasRightHoverEffect}
-          onClick={handleNewDate}
-          minDate={set(now, { date: 6 })}
-          maxDate={set(now, { date: 26 })}
-        />
-      );
-    })(),
+  render: () => {
+    const { hasLeftHoverEffect, hasRightHoverEffect, range, handleNewDate } =
+      useCalendarRange(rangeValue);
+    return (
+      <Calendar
+        monthDate={now}
+        value={range}
+        hasLeftHoverEffect={hasLeftHoverEffect}
+        hasRightHoverEffect={hasRightHoverEffect}
+        onClick={handleNewDate}
+        minDate={set(now, { date: 6 })}
+        maxDate={set(now, { date: 26 })}
+      />
+    );
+  },
 };
 
 export const Disabled: Story = {
@@ -107,34 +105,26 @@ export const I18n: Story = {
 
 export const SingleHook: Story = {
   tags: ['isHidden'],
-  render: () =>
-    (() => {
-      const { handleNewDate, range } = useCalendarSingle(singleValue);
-      return (
-        <Calendar
-          monthDate={now}
-          value={range}
-          onClick={handleNewDate}
-        />
-      );
-    })(),
+  render: () => {
+    const { handleNewDate, range } = useCalendarSingle(singleValue);
+    return <Calendar monthDate={now} value={range} onClick={handleNewDate} />;
+  },
 };
 
 export const RangeHook: Story = {
   tags: ['isHidden'],
-  render: () =>
-    (() => {
-      const { hasLeftHoverEffect, hasRightHoverEffect, range, handleNewDate } =
-        useCalendarRange(rangeValue);
+  render: () => {
+    const { hasLeftHoverEffect, hasRightHoverEffect, range, handleNewDate } =
+      useCalendarRange(rangeValue);
 
-      return (
-        <Calendar
-          monthDate={now}
-          value={range}
-          hasLeftHoverEffect={hasLeftHoverEffect}
-          hasRightHoverEffect={hasRightHoverEffect}
-          onClick={handleNewDate}
-        />
-      );
-    })(),
+    return (
+      <Calendar
+        monthDate={now}
+        value={range}
+        hasLeftHoverEffect={hasLeftHoverEffect}
+        hasRightHoverEffect={hasRightHoverEffect}
+        onClick={handleNewDate}
+      />
+    );
+  },
 };
