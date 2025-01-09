@@ -77,7 +77,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
   onClose: onCloseCallback,
   parseDate = parseStrDate,
   formatDate = formatDateHelper,
-  placement,
+  placement = 'bottom-start',
   size = 'md',
   value,
   presets,
@@ -113,7 +113,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
           setTmpValue(range);
         }
       },
-      reprDate: (ts: number) => formatDate(ts),
+      reprDate: formatDate,
       parseDate: parseStrDate,
     });
 
