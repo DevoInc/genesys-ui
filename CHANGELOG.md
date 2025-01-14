@@ -1,5 +1,12 @@
 # Changelog
 
+## [16.2.1](https://github.com/DevoInc/genesys-ui/compare/v16.2.0...v16.2.1) (2025-01-14)
+
+### Bug Fixes
+
+* **core:** aria-checked added to SwitchControl input, closes [#108](https://github.com/DevoInc/genesys-ui/issues/108) ([fbe97d2](https://github.com/DevoInc/genesys-ui/commit/fbe97d24e7d611a101932a6e9b430b1a2d6e5ad9))
+* wrong value on aria-selected attribute ([a8a9aaa](https://github.com/DevoInc/genesys-ui/commit/a8a9aaa1572dee98c3c1b6c08196a512aa63cc4d))
+
 ## [16.2.0](https://github.com/DevoInc/genesys-ui/compare/v16.1.0...v16.2.0) (2025-01-14)
 
 ### Features
