@@ -104,7 +104,6 @@ export const DateTimeRangeFloatingPicker: React.FC<
   const { inputValue, inputOnChange, errors, updateValue } =
     useDateTimeRangeInputValidation({
       value: tmpValue,
-      // onChange: setValue,
       onChange: (range) => {
         setMonthDate(tryParseDate(parseDate)(range[0]));
         if (autoApply) {
@@ -113,8 +112,9 @@ export const DateTimeRangeFloatingPicker: React.FC<
           setTmpValue(range);
         }
       },
-      reprDate: formatDate,
-      parseDate: parseStrDate,
+      //reprDate: formatDate,
+      reprDate: (ts: number) => formatDate(ts),
+      parseDate,
     });
 
   return (
@@ -124,7 +124,13 @@ export const DateTimeRangeFloatingPicker: React.FC<
       id={`${id}__popover`}
       isOpened={isOpened}
       placement={placement}
-      onClose={onCloseCallback}
+      onClose={() => {
+        setTmpValue(value);
+        updateValue(value);
+        if (onCloseCallback) {
+          onCloseCallback();
+        }
+      }}
     >
       {({ ref, setOpened }) => (
         <div ref={ref}>
@@ -191,6 +197,12 @@ export const DateTimeRangeFloatingPicker: React.FC<
                   <Button
                     colorScheme={'accent'}
                     key={'apply'}
+                    aria-disabled={tmpValue.length !== 2}
+                    state={
+                      tmpValue.length !== 2 || disableApplyButton
+                        ? 'disabled'
+                        : 'enabled'
+                    }
                     onClick={() => {
                       updateValue(tmpValue);
                       setOpened(false);
@@ -198,7 +210,6 @@ export const DateTimeRangeFloatingPicker: React.FC<
                         onChange(tmpValue);
                       }
                     }}
-                    state={disableApplyButton ? 'disabled' : 'enabled'}
                   >
                     {i18n.applyButton}
                   </Button>,

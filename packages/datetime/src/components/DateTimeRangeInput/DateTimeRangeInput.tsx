@@ -156,7 +156,7 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
             size={size}
             status={statuses[0]}
             style={cssDateTimeRangeInput({ size, status: statuses[0] })}
-            value={value[0]}
+            value={value[0] ?? ''}
           />
         </Field>
         <GIArrowRight
@@ -191,7 +191,7 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
             size={size}
             status={statuses[1]}
             style={cssDateTimeRangeInput({ size, status: statuses[1] })}
-            value={value[1]}
+            value={value[1] ?? ''}
           />
         </Field>
         {hasRealTime(realTime) && (

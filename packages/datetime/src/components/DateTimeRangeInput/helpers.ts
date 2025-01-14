@@ -21,10 +21,13 @@ export const cssDateTimeRangeInput = ({
         height: ${rangeControlInputTokens.size.height[size]};
         padding: ${rangeControlInputTokens.space.padding[size]};
 
-        &:focus {
-          box-shadow: inset
-            ${rangeControlTokens.elevation.boxShadow[status].focused};
-        }
+        ${hasStatus &&
+        css`
+          &:focus {
+            box-shadow: inset
+              ${rangeControlTokens.elevation.boxShadow[status].focused};
+          }
+        `}
       `;
     }};
   `;
