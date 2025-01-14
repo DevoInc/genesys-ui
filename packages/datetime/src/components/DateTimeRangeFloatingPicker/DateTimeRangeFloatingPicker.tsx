@@ -139,6 +139,14 @@ export const DateTimeRangeFloatingPicker: React.FC<
             value={inputValue}
             id={id ? `${id}-range-control` : null}
             isOpen={isOpened}
+            onKeyUp={(_, event) => {
+              if (event.key === 'Enter') {
+                updateValue(tmpValue);
+                if (onChange) {
+                  onChange(tmpValue);
+                }
+              }
+            }}
             onChange={inputOnChange}
             onClick={() => {
               setOpened(true);
