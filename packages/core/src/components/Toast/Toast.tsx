@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { toast as reactToastify } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import { TOAST_AUTO_CLOSE } from './constants';
 import { ToastPanel, type ToastPanelProps } from './components';
