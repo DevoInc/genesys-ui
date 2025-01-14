@@ -1,5 +1,11 @@
 # Changelog
 
+## [16.1.0](https://github.com/DevoInc/genesys-ui/compare/v16.0.0...v16.1.0) (2025-01-14)
+
+### Features
+
+* improve styles of table header ([9bf13f8](https://github.com/DevoInc/genesys-ui/commit/9bf13f8f1ce8074419cc783993f84a35ccde5cc5))
+
 ## [16.0.0](https://github.com/DevoInc/genesys-ui/compare/v15.0.0...v16.0.0) (2025-01-14)
 
 ### ⚠ BREAKING CHANGES
