@@ -1,5 +1,16 @@
 # Changelog
 
+## [16.2.0](https://github.com/DevoInc/genesys-ui/compare/v16.1.0...v16.2.0) (2025-01-14)
+
+### Features
+
+* **datetime:** set default placement on floating to bottom-start ([98ca187](https://github.com/DevoInc/genesys-ui/commit/98ca18774ca7deaf3665feeb1a8e19c2a2921544))
+* **datetime:** temporal values changes on input ([cdf3ff8](https://github.com/DevoInc/genesys-ui/commit/cdf3ff868fdd84803d5c434cd463e04c7952a4ad))
+
+### Bug Fixes
+
+* **core:** ref with undefined instead of null by default ([d14fa18](https://github.com/DevoInc/genesys-ui/commit/d14fa18987b8810af86e03534da35b31fbb06740))
+
 ## [16.1.0](https://github.com/DevoInc/genesys-ui/compare/v16.0.0...v16.1.0) (2025-01-14)
 
 ### Features
