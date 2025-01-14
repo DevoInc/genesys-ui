@@ -86,7 +86,7 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
   ...dataProps
 }) => {
   const theme = useTheme();
-  const targetElRef = React.useRef<HTMLDivElement>(null);
+  const targetElRef = React.useRef<HTMLDivElement>(undefined);
   const { hasScroll } = useIsOverflow(targetElRef);
   return (
     <Panel
