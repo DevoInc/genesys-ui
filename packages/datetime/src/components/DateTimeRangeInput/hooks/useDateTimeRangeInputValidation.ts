@@ -39,13 +39,18 @@ export const useDateTimeRangeInputValidation = ({
     });
   };
 
-  const updateValue = (range: (string | number | Date)[]) => {
+  const updateValue = (range: (string | number | Date)[], len: number = 2) => {
     const rangeStr = range.map((x) => reprDate(x));
-    if (rangeStr.some((x, idx) => x !== inputValue[idx])) {
+    if (
+      rangeStr.some((x, idx) => x !== inputValue[idx]) ||
+      rangeStr.length !== len
+    ) {
       const results = rangeStr.map((x) => parseDate(x));
       setState({
         inputValue: rangeStr,
-        errors: results.map((x) => x.errors),
+        errors: new Array({ length: len }).map(
+          (_, idx) => results[idx]?.errors ?? ['Empty field'],
+        ),
       });
     }
   };

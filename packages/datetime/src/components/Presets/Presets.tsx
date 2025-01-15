@@ -11,7 +11,7 @@ import {
 
 import type { TPreset } from './declarations';
 import { filterPreset, removeEmptyGroups } from './filter';
-import { arePresetValuesEqual } from './eq';
+import { areDateRangeEqual } from '../../helpers';
 import type { TDateRange } from '../../declarations';
 
 export interface PresetsProps
@@ -57,26 +57,25 @@ export const Presets: React.FC<PresetsProps> = ({
       <Box height={`${maxMenuHeight}px`} overflowY={'auto'}>
         <Menu>
           {removeEmptyGroups(presets.filter(filterPreset(term))).map(
-            (preset) =>
-              preset.value ? (
+            (preset) => {
+              const isEqualDateRange = areDateRangeEqual(value, preset.value);
+              const key = `${preset.value ? preset.value.map((x) => x.toString()).join('-') : 'group'}-${preset.label}`;
+              return preset.value ? (
                 <Menu.Item
-                  key={preset.label}
+                  key={key}
                   label={preset.label}
                   selectionScheme="single"
                   name={`presets-${id}`}
-                  state={
-                    arePresetValuesEqual(value, preset.value)
-                      ? 'selected'
-                      : 'enabled'
-                  }
-                  aria-current={arePresetValuesEqual(value, preset.value)}
+                  state={isEqualDateRange ? 'selected' : 'enabled'}
+                  aria-current={isEqualDateRange}
                   onClick={() => {
                     onChange(preset.value);
                   }}
                 />
               ) : (
                 <Menu.Heading key={preset.label}>{preset.label}</Menu.Heading>
-              ),
+              );
+            },
           )}
         </Menu>
       </Box>

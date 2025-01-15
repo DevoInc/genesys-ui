@@ -12,7 +12,11 @@ import {
 } from '@devoinc/genesys-ui';
 
 import { parseStrDate } from '../../parsers';
-import { formatDate as formatDateHelper, tryParseDate } from '../../helpers';
+import {
+  areDateRangeEqual,
+  formatDate as formatDateHelper,
+  tryParseDate,
+} from '../../helpers';
 
 import type { IParseResult, ITime, TDateRange } from '../../declarations';
 import { DateTimeRange, type DateTimeRangeProps } from '../DateTimeRange';
@@ -117,6 +121,13 @@ export const DateTimeRangeFloatingPicker: React.FC<
       parseDate,
     });
 
+  const isDisabledApplyButton =
+    tmpValue.length !== 2 || // Temporal range incomplete
+    areDateRangeEqual(tmpValue, value) || // Temporal range and value are equal
+    disableApplyButton // The button is disabe by property
+      ? true
+      : false;
+
   return (
     <Popover
       appendTo={appendTo}
@@ -139,12 +150,32 @@ export const DateTimeRangeFloatingPicker: React.FC<
             value={inputValue}
             id={id ? `${id}-range-control` : null}
             isOpen={isOpened}
-            onKeyUp={(_, event) => {
-              if (event.key === 'Enter') {
+            onKeyUp={(index, event) => {
+              if (event.key === 'Enter' && index === 0) {
+                const leftInput = event.target as HTMLInputElement;
+                const rightInput = (
+                  leftInput.parentElement.parentElement.parentElement
+                    .parentElement.lastChild as HTMLDivElement
+                ).querySelector('input') as HTMLInputElement;
+                rightInput.focus();
+              } else if (
+                event.key === 'Enter' &&
+                index === 1 &&
+                !isDisabledApplyButton
+              ) {
                 updateValue(tmpValue);
+                setOpened(false);
+                const rightInput = event.target as HTMLInputElement;
+                rightInput.blur();
                 if (onChange) {
                   onChange(tmpValue);
                 }
+              } else if (event.key === 'Escape') {
+                setTmpValue(value);
+                updateValue(value);
+                setOpened(false);
+                const input = event.target as HTMLInputElement;
+                input.blur();
               }
             }}
             onChange={inputOnChange}
@@ -205,12 +236,8 @@ export const DateTimeRangeFloatingPicker: React.FC<
                   <Button
                     colorScheme={'accent'}
                     key={'apply'}
-                    aria-disabled={tmpValue.length !== 2}
-                    state={
-                      tmpValue.length !== 2 || disableApplyButton
-                        ? 'disabled'
-                        : 'enabled'
-                    }
+                    aria-disabled={isDisabledApplyButton}
+                    state={isDisabledApplyButton ? 'disabled' : 'enabled'}
                     onClick={() => {
                       updateValue(tmpValue);
                       setOpened(false);
