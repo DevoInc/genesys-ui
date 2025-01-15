@@ -1,10 +1,10 @@
 import type { TDateRange } from '../../declarations';
-import { normalizeDateRange } from './norm';
+import { normalizeDate } from '../normalization';
 
 export const areDateRangeEqual = (a: TDateRange, b: TDateRange) =>
   a?.length === b?.length
     ? a.every(
         (item, index) =>
-          normalizeDateRange(item) === normalizeDateRange(b[index]),
+          normalizeDate(item) === normalizeDate(b[index]),
       )
     : false;

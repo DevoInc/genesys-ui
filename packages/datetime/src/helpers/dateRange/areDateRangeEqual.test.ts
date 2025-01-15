@@ -1,10 +1,10 @@
 import { describe, test, expect } from 'vitest';
 
-import { arePresetValuesEqual } from './eq';
+import { areDateRangeEqual } from './areDateRangeEqual';
 import type { TDateRange } from '../../declarations';
 
-describe('Presets', () => {
-  describe('eq', () => {
+describe('helpers', () => {
+  describe('dateRange', () => {
     describe('arePresetsEqual', () => {
       const cases: [string, TDateRange, TDateRange, boolean][] = [
         ['eq num', [1, 2], [1, 2], true],
@@ -47,7 +47,7 @@ describe('Presets', () => {
       ];
 
       test.each(cases)('%s', (_title, a, b, expected) => {
-        expect(arePresetValuesEqual(a, b)).toBe(expected);
+        expect(areDateRangeEqual(a, b)).toBe(expected);
       });
     });
   });

@@ -1,4 +1,4 @@
 import type { TDate } from '../../declarations';
 
-export const normalizeDateRange = (date: TDate) =>
+export const normalizeDate = (date: TDate) =>
   date instanceof Date ? date.getTime() : date;
