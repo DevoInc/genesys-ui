@@ -86,13 +86,16 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
   placeholder,
   size,
   label,
+  placement = 'bottom-start',
   ...dataProps
 }) => {
   const i18n = useMergeI18n(
     userI18n,
     defaultDateTimeFloatingPickerI18n,
   ) as TDateTimeFloatingPickerI18n;
+
   const [tmpValue, setTmpValue] = React.useState<number | Date>(value);
+
   const [monthDate, setMonthDate] = React.useState<number | Date>(
     initialMonthDate || value,
   );
@@ -122,6 +125,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
       appendTo={appendTo}
       id={id ? `${id}__popover` : null}
       isOpened={isOpened}
+      placement={placement}
       onClose={onClose}
     >
       {({ ref, setOpened }) => (

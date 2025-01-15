@@ -9,6 +9,7 @@ import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 import { light, dark } from '@devoinc/genesys-brand-devo';
 import '@devoinc/genesys-base-styles/dist/css/styles.css';
 import '@devoinc/genesys-icons/dist/gi-styles.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { BackToTop, TableOfContents } from './docs/blocks';
 import { StoryWrapper } from '../packages/core/stories/components/StoryWrapper';

@@ -48,11 +48,26 @@ Or multi-level if groups are required:
 The Presets component also accepts a prop called `value` which is an array of
 `number | string | Date` representing the currently selected value.
 
+The value is checked for mark as selected one of the options following the next
+rules:
+
+- `Date` JS native object is converted to number using `.getTime()`.
+- `Date` and `number` could be compared between them using the previous rule.
+- `string` can't be compared to `Date` or `number`, so if you would like to use
+a list of presets using string representation for the dates, use in the options
+the value array as dates using any parser (for example the one from `date-fns`:
+[parse](https://date-fns.org/v4.1.0/docs/parse)).
+
 ## Defaults
 
-There is a default presets list that you can use:
+There is a default presets list that you can use with the next function:
 
-<Source code={`import { defaultPresets } from '@devoinc/genesys-ui-datetime';`} />
+<Source code={`import { getDefaultPresets } from '@devoinc/genesys-ui-datetime';`} />
+
+That is composed of other two functions:
+
+- `getDefaultRelativeRanges`
+- `getDefaultSnapRanges`
 
 So you can do as in the next example
 

@@ -99,6 +99,7 @@ export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
         aria-labelledby={contextBasedProps.ariaLabelledBy}
         autoFocus={autoFocus}
         checked={onChange ? checked : undefined}
+        aria-checked={checked}
         disabled={evalDisabled}
         id={contextBasedProps.id}
         onChange={onChange}

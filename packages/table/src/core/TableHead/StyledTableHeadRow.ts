@@ -3,10 +3,12 @@ import type { TDensity } from '../../declarations';
 
 interface StyledTableHeadRowProps {
   $density: TDensity;
+  $compactHeader?: boolean;
 }
 
 export const StyledTableHeadRow = styled.tr<StyledTableHeadRowProps>`
   position: relative;
   display: flex;
-  height: ${({ theme, $density }) => theme.cmp.table.head.size.height[$density]};
+  height: ${({ theme, $density, $compactHeader = false }) =>
+    $compactHeader ? '2rem' : theme.cmp.table.head.size.height[$density]};
 `;

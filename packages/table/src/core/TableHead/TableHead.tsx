@@ -24,7 +24,7 @@ export const TableHead: React.FC<TableHeadProps> = ({
     React.useContext(TableContext);
   return (
     <StyledTableHead $scrolled={scrolled} $width={width} id={`${id}__head`}>
-      <StyledTableHeadRow $density={density}>
+      <StyledTableHeadRow $density={density} $compactHeader={showFilters}>
         {colDefs.map((colDef) => {
           const virtualColumn = items.find((item) => item.key === colDef.id);
           const headerCellDef = headerCellDefs.find(

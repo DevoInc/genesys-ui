@@ -55,7 +55,7 @@ export const Cell: React.FC<CellProps> = ({
         : CellWrapper;
   return (
     <StyledCell
-      aria-selected={cellDef?.isEditMode}
+      aria-selected={cellDef?.isSelected}
       css={mergeStyles(colDef?.style ?? '', cellDef?.style ?? '')}
       ref={cellRef}
       style={{

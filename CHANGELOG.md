@@ -1,5 +1,54 @@
 # Changelog
 
+## [16.2.1](https://github.com/DevoInc/genesys-ui/compare/v16.2.0...v16.2.1) (2025-01-14)
+
+### Bug Fixes
+
+* **core:** aria-checked added to SwitchControl input, closes [#108](https://github.com/DevoInc/genesys-ui/issues/108) ([fbe97d2](https://github.com/DevoInc/genesys-ui/commit/fbe97d24e7d611a101932a6e9b430b1a2d6e5ad9))
+* wrong value on aria-selected attribute ([a8a9aaa](https://github.com/DevoInc/genesys-ui/commit/a8a9aaa1572dee98c3c1b6c08196a512aa63cc4d))
+
+## [16.2.0](https://github.com/DevoInc/genesys-ui/compare/v16.1.0...v16.2.0) (2025-01-14)
+
+### Features
+
+* **datetime:** set default placement on floating to bottom-start ([98ca187](https://github.com/DevoInc/genesys-ui/commit/98ca18774ca7deaf3665feeb1a8e19c2a2921544))
+* **datetime:** temporal values changes on input ([cdf3ff8](https://github.com/DevoInc/genesys-ui/commit/cdf3ff868fdd84803d5c434cd463e04c7952a4ad))
+
+### Bug Fixes
+
+* **core:** ref with undefined instead of null by default ([d14fa18](https://github.com/DevoInc/genesys-ui/commit/d14fa18987b8810af86e03534da35b31fbb06740))
+
+## [16.1.0](https://github.com/DevoInc/genesys-ui/compare/v16.0.0...v16.1.0) (2025-01-14)
+
+### Features
+
+* improve styles of table header ([9bf13f8](https://github.com/DevoInc/genesys-ui/commit/9bf13f8f1ce8074419cc783993f84a35ccde5cc5))
+
+## [16.0.0](https://github.com/DevoInc/genesys-ui/compare/v15.0.0...v16.0.0) (2025-01-14)
+
+### ⚠ BREAKING CHANGES
+
+* **core:** remove redundant import of ReactToastify CSS from Toast components
+* **datetime:** make daterange type to use custom strings from presets
+* presets use directly the range values
+
+### Features
+
+* added data-... attributes interface to all DateTime components ([91dcc1b](https://github.com/DevoInc/genesys-ui/commit/91dcc1b3946a87f0aaa15840a304a9716e347302))
+* BooleanRenderer as Yes or No ([f62619a](https://github.com/DevoInc/genesys-ui/commit/f62619a05845bf2e0082247a507f48074a06282e))
+* **datetime:** added new constants ([ec58765](https://github.com/DevoInc/genesys-ui/commit/ec5876527906a81b6845fe5ff6c96610627b75d8))
+* **datetime:** make daterange type to use custom strings from presets ([b4dae51](https://github.com/DevoInc/genesys-ui/commit/b4dae510fb7a24257b9f6448c2212564146b915e))
+* presets use directly the range values ([6710601](https://github.com/DevoInc/genesys-ui/commit/67106018058f28983214db27e1b0cef6a2b3e955))
+
+### Bug Fixes
+
+* avoid React custom prop warning ([935a684](https://github.com/DevoInc/genesys-ui/commit/935a6846ef8426c0786d7761829aef08286a3855))
+* border width of CheckboxControl and distribution of elements inside of a SelectControl with sortable values ([feb538b](https://github.com/DevoInc/genesys-ui/commit/feb538bd0aaa77c8964f80a5ccb199a7ad3a99dd))
+* buttons on StatusMessage should be optional ([933c0f2](https://github.com/DevoInc/genesys-ui/commit/933c0f25b076ef367cb83fbb7fa8376769eec567))
+* **core:** remove redundant import of ReactToastify CSS from Toast components ([256c280](https://github.com/DevoInc/genesys-ui/commit/256c28075ba4a14c50dc07c18e1a568f1300c758))
+* **datetime:** added missing files for presets equality ([95010d7](https://github.com/DevoInc/genesys-ui/commit/95010d71ffdbbdb6dbfb744a9e058e373cb843d3))
+* **datetime:** DateTimeRangeFloatingPicker ([0ef4c25](https://github.com/DevoInc/genesys-ui/commit/0ef4c25fac96fa37b79150a11e6e1898ac3b48ae))
+
 ## [15.0.0](https://github.com/DevoInc/genesys-ui/compare/v14.3.2...v15.0.0) (2024-12-27)
 
 ### ⚠ BREAKING CHANGES
