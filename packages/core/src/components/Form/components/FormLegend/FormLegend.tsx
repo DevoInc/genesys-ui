@@ -41,6 +41,8 @@ export const FormLegend: React.FC<FormLegendProps> = ({
       role={!asLegend ? 'group' : null}
       as={asLegend ? 'legend' : null}
       margin="0"
+      childrenFlex="1 1 auto"
+      flex="1 1 auto"
     >
       {children ||
         (hasLabelFormat ? (
@@ -48,7 +50,7 @@ export const FormLegend: React.FC<FormLegendProps> = ({
             {text}
           </Field._Label>
         ) : (
-          <Typography.Heading as="span" size="h6" truncateLine={2}>
+          <Typography.Heading size="h6" truncateLine={2}>
             {requiredMark}
             {text}
             {helper}

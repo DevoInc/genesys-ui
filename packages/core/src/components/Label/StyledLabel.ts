@@ -9,7 +9,7 @@ import {
 } from '../../styled/mixins';
 
 export interface StyledLabelProps {
-  $htmlFor?: ILabel['htmlFor'];
+  htmlFor?: ILabel['htmlFor'];
   /** This property defines the color scheme for the Label.
    * There are predefined types: base, error... etc.
    * It's possible to use a custom color too.*/
@@ -31,14 +31,14 @@ export const StyledLabel = styled.span<StyledLabelProps>`
   ${({
     $colorScheme,
     $cursor,
-    $htmlFor,
+    htmlFor,
     $size,
     $srOnly,
     $textAlign,
     theme,
     $truncated,
   }) => css`
-    cursor: ${$cursor || ($htmlFor ? 'pointer' : 'default')};
+    cursor: ${$cursor || (htmlFor ? 'pointer' : 'default')};
 
     // to get text ellipsis
     ${$truncated && truncateTypoMixin()};

@@ -24,7 +24,7 @@ export const Playground: Story = {
   args: {
     asFieldset: true,
     disabled: true,
-    legend: 'pepe',
+    legend: 'FormGroup legend',
     children: [
       <InputControl key={1} aria-label="Input label" />,
       <InputControl key={2} aria-label="Input label" />,
