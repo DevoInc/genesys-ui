@@ -7,8 +7,10 @@ describe('helpers', () => {
   describe('range', () => {
     describe('norm', () => {
       describe('normalizeDateRange', () => {
+        const now = new Date();
+
         const cases: [string, TDate, string | number][] = [
-          ['norm Date', new Date(1982, 12, 20), 411865200000],
+          ['norm Date', now, now.getTime()],
           ['norm string', 'test', 'test'],
           ['norm number', 1, 1],
         ];
