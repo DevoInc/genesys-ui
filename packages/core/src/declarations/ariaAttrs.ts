@@ -28,6 +28,7 @@ export interface IGlobalAriaAttrs
 export interface ILayoutAriaAttrs
   extends Pick<
     AriaAttributes,
+    | 'aria-controls'
     | 'aria-expanded'
     | 'aria-live'
     | 'aria-modal'

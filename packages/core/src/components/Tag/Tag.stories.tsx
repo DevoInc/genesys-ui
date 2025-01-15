@@ -13,7 +13,7 @@ const meta: Meta<typeof Tag> = {
   component: Tag,
   args: {
     size: 'md',
-    colorScheme: 'neutral',
+    colorScheme: 'info',
   },
 };
 

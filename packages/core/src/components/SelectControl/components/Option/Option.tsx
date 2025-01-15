@@ -6,6 +6,7 @@ import { CheckboxControl } from '../../../CheckboxControl';
 import { HFlex } from '../../../HFlex';
 import { Icon } from '../../../Icon';
 import { Divider } from '../../../Divider';
+import { Typography } from '../../../Typography';
 
 export interface OptionProps<Option> extends RSOptionProps<Option> {}
 
@@ -22,13 +23,22 @@ export const Option = <Option extends TSelectOption>(
             onChange={() => true}
             checked={props.isSelected}
             aria-label="Selected option marker"
+            style={{ flex: '0 0 auto' }}
           />
         )}
-        <HFlex spacing="cmp-xxs">
-          {props.data.prependContent}
-          {props.data.icon && <Icon size="xs">{props.data.icon}</Icon>}
-          {props.data.label}
-        </HFlex>
+        {!props.data.icon && !props.data.prependContent ? (
+          <Typography.Paragraph as="div" truncateLine={1}>
+            {props.data.label}
+          </Typography.Paragraph>
+        ) : (
+          <HFlex spacing="cmp-xxs">
+            {props.data.prependContent}
+            {props.data.icon && <Icon size="xs">{props.data.icon}</Icon>}
+            <Typography.Paragraph as="div" truncateLine={1}>
+              {props.data.label}
+            </Typography.Paragraph>
+          </HFlex>
+        )}
       </HFlex>
     </components.Option>
   );

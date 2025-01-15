@@ -26,6 +26,7 @@ import { Flex } from '../Flex';
 import { ButtonGroup } from '../ButtonGroup';
 import { Box } from '../Box';
 import { ModalDemoContent } from './__stories__/components';
+import { SelectControl } from '../SelectControl';
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/Layout/Modal',
@@ -54,7 +55,27 @@ export const Playground: Story = {
               white figures in coveralls and helmets are softly dancing are
               creatures of the cosmos tendrils of gossamer clouds?
             </Typography.Paragraph>
+            <Typography.Paragraph gutterBottom="cmp-md">
+              A still more glorious dawn awaits finite but unbounded Hypatia
+              Cambrian explosion white dwarf the carbon in our apple pies.
+              Vanquish the impossible the sky calls to us Flatland two ghostly
+              white figures in coveralls and helmets are softly dancing are
+              creatures of the cosmos tendrils of gossamer clouds?
+            </Typography.Paragraph>
             <Input label="Demo input" id="demo-input" />
+            <SelectControl
+              menuAppendToBody
+              menuPlacement="auto"
+              options={[
+                { value: 1, label: 'pepe' },
+                { value: 1, label: 'pepe' },
+                { value: 1, label: 'pepe' },
+                { value: 1, label: 'pepe' },
+                { value: 1, label: 'pepe' },
+              ]}
+              aria-label="Demo input"
+              id="demo-input"
+            />
           </Modal.Body>
         </Modal>
       );

@@ -1,0 +1,40 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './UserInfoDetails.stories';
+
+<Meta title="Components/Feedback/UserInfo/Components/UserInfoDetails/Overview" />
+
+# UserInfo.Details
+
+The extended info of the 'UserInfo' component rendered with a list of an icon-key-value blocks.
+It's usually used to give information about the role, job-position, email, phone...
+
+## Basic usage
+
+Defined with dot notation as `UserInfo.Details`, it's usually used as a child of a `UserInfo`
+but only when accompanied by a `UserInfo.Avatar`, so you can use it also isolated.
+
+<Canvas of={Stories.Playground} />
+
+## Custom info
+
+There are several pre-defined info blocks which are the most often used ones, but you can add more custom blocks with
+the same icon-key-value format with the 'customInfo' prop.
+
+<Canvas of={Stories.CustomInfo} />
+
+## With keys
+
+Sometimes it might be useful adding keys to every info block, for instance when the icon and/or the value
+are not enough descriptive by themselves.
+
+<Canvas of={Stories.WithKeys} />
+
+## Related components
+
+- [KeyValue](?path=/docs/components-feedback-keyvalue--overview)
+- [VFlex](?path=/docs/components-layout-vflex--overview)
+
+## Props
+
+<ArgTypes of={Stories} />

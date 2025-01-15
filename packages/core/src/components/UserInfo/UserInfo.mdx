@@ -1,0 +1,71 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './UserInfo.stories';
+
+<Meta of={Stories} />
+
+# UserInfo
+
+It's an easy way to represent the info about a user: name, avatar, email, role... etc.
+with pre-defined and custom info blocks.
+
+## How to import
+
+<Source code={`import { UserInfo } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+<Canvas of={Stories.Playground} />
+
+This component is usually used to extend the info about a user, for example when you're hovering a table cell with
+a username and the complete info about the user is shown in a popover.
+
+The main component is only a wrapper which distributes the internal components. You can use any of these isolated
+without the main parent component.
+
+These are the two pre-defined components to create a `UserInfo` with content:
+
+- `UserInfo.Avatar`: the avatar block with the essential info: avatar, name and subtitle. Sometimes this component
+  can be used as the trigger to show the complete info, for instance with a popover.
+- `UserInfo.Details`: the details block with all the detailed info as role, email, job... etc. and another extra custom
+  blocks defined with the 'customInfo' prop.
+
+## UserInfo.Avatar
+
+You can get only the essential user info using the internal component `UserInfo.Avatar`.
+You can get more information about this component in [its own story](?path=/docs/components-feedback-userinfo-components-userinfoavatar-overview--overview).
+
+<Canvas of={Stories.Avatar} />
+
+## UserInfo.Details
+
+You can get the detailed user info using the internal component `UserInfo.Details`.
+You can get more information about this component in [its own story](?path=/docs/components-feedback-userinfo-components-userinfodetails-overview--overview).
+
+<Canvas of={Stories.Details} />
+
+## As Panel
+
+You can use the `UserInfo.Avatar` as the Header of the 'Panel' and the `UserInfo.Details` with the detailed user info
+as the content of the body. In addition, we can add a footer with an action related with the user.
+
+<Canvas of={Stories.AsPanel} />
+
+## As Popover
+
+You can use the `UserInfo.Avatar` as a trigger of a popover, which will show the detailed info in a 'Panel' as of the
+previous example.
+
+<Canvas of={Stories.AsPopover} />
+
+## Related components
+
+- [KeyValue](?path=/docs/components-feedback-keyvalue--overview)
+- [Avatar](?path=/docs/components-media-avatar--overview)
+- [Typography](?path=/docs/components-text-typography--overview)
+- [HFlex](?path=/docs/components-layout-hflex--overview)
+- [VFlex](?path=/docs/components-layout-vflex--overview)
+
+## Props
+
+<ArgTypes of={Stories} />

@@ -1,0 +1,63 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './UserInfoAvatar.stories';
+
+<Meta title="Components/Feedback/UserInfo/Components/UserInfoAvatar/Overview" />
+
+# UserInfo.Avatar
+
+Essential info of the 'UserInfo' component composed by an Avatar and text content.
+
+## Basic usage
+
+Defined with dot notation as `UserInfo.Avatar`, it's usually used as a child of a `UserInfo`
+but only when accompanied by a `UserInfo.Details`, so you can use it also isolated.
+
+<Canvas of={Stories.Playground} />
+
+This is the variant with the subtitle. We automatically get a greater size for the avatar to better adjustment,
+but anyway you can always set a specific size with the 'avatarSize' prop.
+
+<Canvas of={Stories.WithSubtitle} />
+
+## With avatar image
+
+The 'avatar' component gets the initials from the required 'name' prop, but anyway you can set an avatar image
+with the 'avatar' prop:
+
+<Canvas of={Stories.WithImage} />
+
+## Formats
+
+We have three different formats available which affects to the avatar size and typographic styles:
+
+<Canvas of={Stories.Formats} />
+
+Anyway, when the subtitle is set, then the format is automatically set to 'bold' variant:
+
+<Canvas of={Stories.WithSubtitle} />
+
+## Avatar sizes
+
+You can define a specific size for the avatar block in the same way it's defined for the `Avatar` component.
+
+<Canvas of={Stories.AvatarSizes} />
+
+## Avatar color schemes
+
+You can define a specific color scheme for the avatar block in the same way it's defined for the `Avatar` component.
+This should be useful when you have to display many different users and differentiate them.
+
+These are only three examples of this variant:
+
+<Canvas of={Stories.AvatarColorSchemes} />
+
+## Related components
+
+- [Avatar](?path=/docs/components-media-avatar--overview)
+- [Typography](?path=/docs/components-text-typography--overview)
+- [HFlex](?path=/docs/components-layout-hflex--overview)
+
+## Props
+
+<ArgTypes of={Stories} />

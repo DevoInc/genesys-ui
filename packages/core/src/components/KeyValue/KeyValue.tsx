@@ -9,6 +9,7 @@ import {
   KeyValueTextContainer,
   KeyValueUnit,
 } from './components';
+import { useTheme } from 'styled-components';
 
 export interface KeyValueProps
   extends IGlobalAttrs,
@@ -31,92 +32,96 @@ export const InternalKeyValue: React.FC<KeyValueProps> = ({
   valueContent,
   valueTruncateLine = 1,
   valueWidth,
-}) => (
-  <KeyValueContainer
-    format={format}
-    id={id}
-    role={role}
-    size={size}
-    tooltip={tooltip}
-  >
-    {supportingVisual && (
-      <KeyValueSupportingVisual
-        supportingVisualAlign={supportingVisualAlign}
-        format={format}
-      >
-        {supportingVisual}
-      </KeyValueSupportingVisual>
-    )}
-    <KeyValueTextContainer format={format} size={size}>
-      <KeyValueText
-        bold
-        order={
-          invertOrder && boldScheme === 'value'
-            ? 1
-            : boldScheme === 'value'
-              ? 2
-              : invertOrder
-                ? 2
-                : 1
-        }
-        truncateLine={
-          invertOrder && boldScheme === 'value'
-            ? keyTruncateLine
-            : boldScheme === 'value'
-              ? valueTruncateLine
-              : invertOrder
-                ? valueTruncateLine
-                : keyTruncateLine
-        }
-        width={
-          invertOrder && boldScheme === 'value'
-            ? keyWidth
-            : boldScheme === 'value'
-              ? valueWidth
-              : invertOrder
-                ? valueWidth
-                : keyWidth
-        }
-        size={size}
-      >
-        {boldScheme === 'key' ? keyContent : valueContent}
-      </KeyValueText>
-      <KeyValueText
-        order={
-          invertOrder && boldScheme === 'value'
-            ? 1
-            : boldScheme === 'value'
+}) => {
+  const visualMinHeight = useTheme().alias.typo.lineHeight.body[size];
+  return (
+    <KeyValueContainer
+      format={format}
+      id={id}
+      role={role}
+      size={size}
+      tooltip={tooltip}
+    >
+      {supportingVisual && (
+        <KeyValueSupportingVisual
+          supportingVisualAlign={supportingVisualAlign}
+          format={format}
+          minHeight={visualMinHeight}
+        >
+          {supportingVisual}
+        </KeyValueSupportingVisual>
+      )}
+      <KeyValueTextContainer format={format} size={size}>
+        <KeyValueText
+          bold
+          order={
+            invertOrder && boldScheme === 'value'
               ? 1
-              : invertOrder
-                ? 1
-                : 2
-        }
-        truncateLine={
-          invertOrder && boldScheme === 'value'
-            ? keyTruncateLine
-            : boldScheme === 'value'
+              : boldScheme === 'value'
+                ? 2
+                : invertOrder
+                  ? 2
+                  : 1
+          }
+          truncateLine={
+            invertOrder && boldScheme === 'value'
               ? keyTruncateLine
-              : invertOrder
-                ? keyTruncateLine
-                : valueTruncateLine
-        }
-        width={
-          invertOrder && boldScheme === 'value'
-            ? keyWidth
-            : boldScheme === 'value'
+              : boldScheme === 'value'
+                ? valueTruncateLine
+                : invertOrder
+                  ? valueTruncateLine
+                  : keyTruncateLine
+          }
+          width={
+            invertOrder && boldScheme === 'value'
               ? keyWidth
-              : invertOrder
+              : boldScheme === 'value'
+                ? valueWidth
+                : invertOrder
+                  ? valueWidth
+                  : keyWidth
+          }
+          size={size}
+        >
+          {boldScheme === 'key' ? keyContent : valueContent}
+        </KeyValueText>
+        <KeyValueText
+          order={
+            invertOrder && boldScheme === 'value'
+              ? 1
+              : boldScheme === 'value'
+                ? 1
+                : invertOrder
+                  ? 1
+                  : 2
+          }
+          truncateLine={
+            invertOrder && boldScheme === 'value'
+              ? keyTruncateLine
+              : boldScheme === 'value'
+                ? keyTruncateLine
+                : invertOrder
+                  ? keyTruncateLine
+                  : valueTruncateLine
+          }
+          width={
+            invertOrder && boldScheme === 'value'
+              ? keyWidth
+              : boldScheme === 'value'
                 ? keyWidth
-                : valueWidth
-        }
-        size={size}
-        unit={unit}
-      >
-        {boldScheme === 'value' ? keyContent : valueContent}
-      </KeyValueText>
-    </KeyValueTextContainer>
-  </KeyValueContainer>
-);
+                : invertOrder
+                  ? keyWidth
+                  : valueWidth
+          }
+          size={size}
+          unit={unit}
+        >
+          {boldScheme === 'value' ? keyContent : valueContent}
+        </KeyValueText>
+      </KeyValueTextContainer>
+    </KeyValueContainer>
+  );
+};
 
 export const KeyValue = InternalKeyValue as typeof InternalKeyValue & {
   _Container: typeof KeyValueContainer;
