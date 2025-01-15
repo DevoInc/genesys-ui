@@ -48,7 +48,7 @@ export const useDateTimeRangeInputValidation = ({
       const results = rangeStr.map((x) => parseDate(x));
       setState({
         inputValue: rangeStr,
-        errors: new Array({ length: len }).map(
+        errors: Array.from({ length: len }).map(
           (_, idx) => results[idx]?.errors ?? ['Empty field'],
         ),
       });
