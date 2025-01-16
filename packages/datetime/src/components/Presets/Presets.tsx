@@ -29,6 +29,8 @@ export interface PresetsProps
   presets: TPreset[];
   /** Default preset range value. */
   value?: TDateRange;
+  /** Allow to match the options using the value */
+  hasMatch?: boolean;
 }
 
 export const Presets: React.FC<PresetsProps> = ({
@@ -39,6 +41,7 @@ export const Presets: React.FC<PresetsProps> = ({
   value,
   onChange = () => null,
   size = 'sm',
+  hasMatch = false,
   ...dataProps
 }) => {
   const [term, setTerm] = React.useState('');
@@ -66,8 +69,8 @@ export const Presets: React.FC<PresetsProps> = ({
                   label={preset.label}
                   selectionScheme="single"
                   name={`presets-${id}`}
-                  state={isEqualDateRange ? 'selected' : 'enabled'}
-                  aria-current={isEqualDateRange}
+                  state={hasMatch && isEqualDateRange ? 'selected' : 'enabled'}
+                  aria-current={hasMatch && isEqualDateRange}
                   onClick={() => {
                     onChange(preset.value);
                   }}
