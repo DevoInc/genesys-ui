@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { TColDef, THeaderCellDef } from '../../declarations';
+import type { TColDef } from '../../declarations';
 import { TableContext } from '../../context/TableContext';
 
 import { OrderIndicator } from './OrderIndicator';
@@ -14,7 +14,6 @@ interface HeaderCellProps {
   children: React.ReactNode;
   title?: string;
   filter?: boolean;
-  headerCellDef?: THeaderCellDef;
 }
 
 export const HeaderCell: React.FC<HeaderCellProps> = ({
@@ -24,7 +23,6 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   children,
   title,
   filter,
-  headerCellDef,
 }) => {
   const {
     density,
@@ -42,8 +40,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
       $offsetX={offsetX}
       $density={density}
       title={title}
-      tabIndex={headerCellDef?.isSelected ? 0 : 1}
-      isSelected={headerCellDef?.isSelected}
+      tabIndex={0}
       onClick={() => {
         if (onHeaderCellClick) {
           onHeaderCellClick({ colDef, filter });

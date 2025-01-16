@@ -14,19 +14,12 @@ interface StyledHeaderCellProps
   $offsetX?: number;
   $density?: TDensity;
   sortable?: boolean;
-  isSelected?: boolean;
 }
 
 export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
   left: 0;
   height: 100%;
   ${({ theme }) => cellMixin({ theme })}
-  ${({ theme, isSelected }) =>
-    isSelected &&
-    css`
-      background-color: ${theme.cmp.table.cell.color.background.backdrop.hovered
-        .base};
-    `};
   justify-content: ${({ $horAlign }) =>
     $horAlign
       ? (CELL_ALIGN_MAP[$horAlign] as React.CSSProperties['justifyContent'])
@@ -35,6 +28,13 @@ export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
   transform: ${({ $offsetX }) => `translateX(${$offsetX}px)`};
   ${({ $width }) => $width && `width: ${$width};`}
   padding: ${({ theme, $density }) =>
-    `${theme.cmp.table.cell.space.padding.ver[$density].base} ${theme.cmp.table.cell.space.padding.hor[$density]}`};
+    `0 ${theme.cmp.table.cell.space.padding.hor[$density]}`};
   cursor: ${({ sortable }) => sortable && 'pointer'};
+
+  &:focus-visible {
+    box-shadow: ${({ theme }) =>
+        theme.cmp.table.cellClickableWrapper.elevation.boxShadow}
+      inset;
+    outline: none;
+  }
 `;
