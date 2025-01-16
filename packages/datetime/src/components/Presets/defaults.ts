@@ -11,6 +11,10 @@ import {
   subMonths,
   subSeconds,
   subYears,
+  endOfDay,
+  sub,
+  endOfWeek,
+  endOfMonth,
 } from 'date-fns';
 
 //export const defaultPresets = [
@@ -72,9 +76,30 @@ export const getDefaultSnapRanges = (now = new Date().getTime()) => [
   { value: [startOfMinute(now).getTime(), now], label: 'Minute' },
   { value: [startOfHour(now).getTime(), now], label: 'Hour' },
   { value: [startOfDay(now).getTime(), now], label: 'Day' },
-  { value: [startOfWeek(now), now], label: 'Week' },
-  { value: [startOfMonth(now), now], label: 'Month' },
-  { value: [startOfYear(now), now], label: 'Year' },
+  {
+    value: [
+      startOfDay(sub(now, { days: 1 })).getTime(),
+      endOfDay(sub(now, { days: 1 })).getTime(),
+    ],
+    label: 'Last day',
+  },
+  { value: [startOfWeek(now).getTime(), now], label: 'Week' },
+  {
+    value: [
+      startOfWeek(sub(now, { weeks: 1 })).getTime(),
+      endOfWeek(sub(now, { weeks: 1 })).getTime(),
+    ],
+    label: 'Last week',
+  },
+  { value: [startOfMonth(now).getTime(), now], label: 'Month' },
+  {
+    value: [
+      startOfMonth(sub(now, { months: 1 })).getTime(),
+      endOfMonth(sub(now, { months: 1 })).getTime(),
+    ],
+    label: 'Last month',
+  },
+  { value: [startOfYear(now).getTime(), now], label: 'Year' },
 ];
 
 export const getDefaultPresets = (now = new Date().getTime()) => [

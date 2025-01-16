@@ -1,5 +1,15 @@
 # Changelog
 
+## [16.3.0](https://github.com/DevoInc/genesys-ui/compare/v16.2.1...v16.3.0) (2025-01-15)
+
+### Features
+
+* New UserInfo component ([2a6ef8d](https://github.com/DevoInc/genesys-ui/commit/2a6ef8dc6357d8ec0135eea084891d2e69d5fd9a))
+
+### Bug Fixes
+
+* reduced the default size of FloatingHelper trigger, fixed cursor of Label and the FormLegend content fills all the parent avilable space. ([c5d0d42](https://github.com/DevoInc/genesys-ui/commit/c5d0d423379e6a2544e4630f6998122891e8a12c))
+
 ## [16.2.1](https://github.com/DevoInc/genesys-ui/compare/v16.2.0...v16.2.1) (2025-01-14)
 
 ### Bug Fixes
