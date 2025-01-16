@@ -28,6 +28,7 @@ import {
 import { TDateTimeRangeFloatingPickerI18n } from './declarations';
 import { useMergeI18n } from '../../hooks';
 import { defaultDateTimeRangeFloatingPickerI18n } from './i18n';
+import { getInputsFromInput } from '../DateTimeRangeInput/helpers';
 
 export interface DateTimeRangeFloatingPickerProps
   extends Pick<
@@ -153,11 +154,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
             onKeyUp={(index, event) => {
               if (event.key === 'Enter' && index === 0) {
                 const leftInput = event.target as HTMLInputElement;
-                const rightInput = (
-                  leftInput.parentElement.parentElement.parentElement
-                    .parentElement.lastChild as HTMLDivElement
-                ).querySelector('input') as HTMLInputElement;
-                rightInput.focus();
+                getInputsFromInput(leftInput).item(1).focus();
               } else if (
                 event.key === 'Enter' &&
                 index === 1 &&
