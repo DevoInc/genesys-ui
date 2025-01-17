@@ -1,5 +1,11 @@
 # Changelog
 
+## [16.6.0](https://github.com/DevoInc/genesys-ui/compare/v16.5.0...v16.6.0) (2025-01-17)
+
+### Features
+
+* added tooltip and description to the SelectControl option configuration. ([ef7a266](https://github.com/DevoInc/genesys-ui/commit/ef7a2666f02174becb7c8bf6161ab47dfc90d2cc))
+
 ## [16.5.0](https://github.com/DevoInc/genesys-ui/compare/v16.4.0...v16.5.0) (2025-01-17)
 
 ### Features
