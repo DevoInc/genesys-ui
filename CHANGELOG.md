@@ -1,5 +1,15 @@
 # Changelog
 
+## [16.5.0](https://github.com/DevoInc/genesys-ui/compare/v16.4.0...v16.5.0) (2025-01-17)
+
+### Features
+
+* **datetime:** expose several types ([796a819](https://github.com/DevoInc/genesys-ui/commit/796a819cf8a45acb5da7df1b43c1043164341c1d))
+
+### Bug Fixes
+
+* **datetime:** some transform mandatory fields on DTRFP moved to optional ([d1848da](https://github.com/DevoInc/genesys-ui/commit/d1848da1b70a4775b278e3b8e4e452ff045052d4))
+
 ## [16.4.0](https://github.com/DevoInc/genesys-ui/compare/v16.3.0...v16.4.0) (2025-01-16)
 
 ### Features
