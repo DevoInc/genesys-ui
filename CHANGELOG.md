@@ -1,5 +1,28 @@
 # Changelog
 
+## [16.5.0](https://github.com/DevoInc/genesys-ui/compare/v16.4.0...v16.5.0) (2025-01-17)
+
+### Features
+
+* **datetime:** expose several types ([796a819](https://github.com/DevoInc/genesys-ui/commit/796a819cf8a45acb5da7df1b43c1043164341c1d))
+
+### Bug Fixes
+
+* **datetime:** some transform mandatory fields on DTRFP moved to optional ([d1848da](https://github.com/DevoInc/genesys-ui/commit/d1848da1b70a4775b278e3b8e4e452ff045052d4))
+
+## [16.4.0](https://github.com/DevoInc/genesys-ui/compare/v16.3.0...v16.4.0) (2025-01-16)
+
+### Features
+
+* **datetime:** added enter action for update range value ([0a5b0dd](https://github.com/DevoInc/genesys-ui/commit/0a5b0dd98afe0629c7b69c788a4c2196b426e999))
+* **datetime:** if tmp value is equal to value disable apply ([23d297c](https://github.com/DevoInc/genesys-ui/commit/23d297c2acee3c6e5c7f1d1fe05c3b91c6ce5245))
+* **datetime:** make match presets optional and inactive by default ([6f1dc66](https://github.com/DevoInc/genesys-ui/commit/6f1dc669c4a7695f419dc85b4fee8b932a4afddb))
+
+### Bug Fixes
+
+* **datetime:** fixed missing tests ([dba5615](https://github.com/DevoInc/genesys-ui/commit/dba56158a3e7474eb66b4ab905e31ff08977374a))
+* fixed styles related with the interaction in table header cells. ([81695f2](https://github.com/DevoInc/genesys-ui/commit/81695f200dc3ca196b0afa96a0f13c129fb0a9b8))
+
 ## [16.3.0](https://github.com/DevoInc/genesys-ui/compare/v16.2.1...v16.3.0) (2025-01-15)
 
 ### Features
