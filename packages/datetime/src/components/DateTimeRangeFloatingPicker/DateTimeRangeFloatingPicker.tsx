@@ -58,9 +58,9 @@ export interface DateTimeRangeFloatingPickerProps
   /** Initial value for the input. */
   value: TDateRange;
   /** Enable or disable the Apply button.  */
-  disableApplyButton: boolean;
+  disableApplyButton?: boolean;
   /** Function called when Cancel button is clicked. */
-  onCancel: () => void;
+  onCancel?: () => void;
   parseDate?: (str: string) => IParseResult;
   formatDate?: (dt: string | Date | number) => string;
 

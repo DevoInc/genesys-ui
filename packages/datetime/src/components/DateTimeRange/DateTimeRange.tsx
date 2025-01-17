@@ -31,11 +31,12 @@ import type { TDateRange } from '../../declarations';
 export interface DateTimeRangeProps
   extends Pick<CalendarProps, 'monthDate' | 'parseDate' | 'weekDays'>,
     Pick<TimeProps, 'hasMillis' | 'hasSeconds'>,
-    Pick<PresetsProps, 'presets'>,
     Required<Pick<IGlobalAttrs, 'id'>>,
     IDataAttrs,
     IStyledOverloadCss,
     IStyledPolymorphic {
+  /** Custom list of presets values. */
+  presets?: PresetsProps['presets'];
   /** Internacionalization object */
   i18n?: TDateTimeRangeI18n;
   /**  Show the time input HTML element. */
