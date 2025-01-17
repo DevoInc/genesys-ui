@@ -108,13 +108,13 @@ export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`
         &__option {
           ${truncateTypoMixin()};
           position: relative;
-          display: block;
+          display: flex;
           transition:
             background-color ${fieldTransitionDuration},
             color ${fieldTransitionDuration};
           border-radius: ${optionTokens.shape.borderRadius};
           min-height: ${optionHeight};
-          padding: 0 ${optionHorSpacing};
+          padding: calc(${optionHorSpacing} / 2) ${optionHorSpacing};
           line-height: ${optionHeight};
           text-align: ${$alignOptions};
           cursor: pointer;

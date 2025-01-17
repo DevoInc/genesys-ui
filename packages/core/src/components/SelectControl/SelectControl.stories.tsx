@@ -223,6 +223,66 @@ export const SingleWithOptionsGroups: Story = {
     })(args),
 };
 
+export const SingleWithOptionsDesc: Story = {
+  tags: ['isHidden'],
+  args: {
+    multipleSubtle: true,
+  },
+  render: (args) =>
+    ((props) => {
+      const demoOptionsWithGroups: Props<TSelectOption>['options'] = [
+        {
+          value: 1,
+          label: 'Willie Morton',
+          description: 'willie.morton@devo.com',
+        },
+        {
+          value: 2,
+          label: 'Elmer Rose',
+          description: 'elmer.rose@devo.com',
+        },
+        {
+          value: 3,
+          label: 'Paul Mendoza',
+          description: 'paul.mendoza@devo.com',
+          isDisabled: true,
+        },
+        {
+          value: 4,
+          label: 'Hattie Flores',
+          description: 'hattie.flores@devo.com',
+        },
+        {
+          value: 5,
+          label: 'Esther Oliver',
+          description: 'esther.oliver@devo.com',
+        },
+        {
+          value: 6,
+          label: 'Birdie Hardy',
+          description: 'birdie.hardy@devo.com',
+        },
+        {
+          value: 7,
+          label: 'Maggie Clayton',
+          description: 'maggie.clayton@devo.com',
+        },
+      ];
+      const [value, setValue] = React.useState<PropsValue<TSelectOption>>({
+        value: 41,
+        label: 'Option four-one',
+      });
+      return (
+        <SelectControl
+          {...props}
+          onChange={(val) => setValue(val)}
+          options={demoOptionsWithGroups}
+          value={value}
+        />
+      );
+    })(args),
+};
+
 export const MultipleBasic: Story = {
   tags: ['isHidden'],
   render: (args) =>

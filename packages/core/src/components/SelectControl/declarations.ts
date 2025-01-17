@@ -12,21 +12,25 @@ export type TSelectOption =
       readonly isSeparator: boolean;
       readonly value?: never;
       readonly label?: never;
+      readonly description?: never;
       readonly icon?: never;
       readonly prependContent?: never;
       readonly bold?: never;
       readonly fixed?: never;
       readonly isDisabled?: never;
+      readonly tooltip?: never;
     }
   | {
       readonly isSeparator?: never;
       readonly value: string | number;
       readonly label: string;
+      readonly description?: React.ReactNode;
       readonly icon?: React.ReactNode;
       readonly prependContent?: React.ReactNode;
       readonly bold?: boolean;
       readonly fixed?: boolean;
       readonly isDisabled?: boolean;
+      readonly tooltip?: string;
     };
 
 export interface ICommonSelectCmps {
