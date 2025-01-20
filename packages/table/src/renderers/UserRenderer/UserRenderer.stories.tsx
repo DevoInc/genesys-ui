@@ -10,26 +10,28 @@ const meta: Meta<typeof UserRenderer> = {
 export default meta;
 type Story = StoryObj<typeof UserRenderer>;
 
-export const Base: Story = {
+export const Playground: Story = {
   args: {
     value: 'jhon.due@email.com',
-    colDef: {
-      id: 'id-1',
-      context: {},
-    },
   },
 };
 
 export const Detailed: Story = {
+  tags: ['isHidden'],
   args: {
-    value: 'Jhon Due',
+    value: 'key1',
     colDef: {
       id: 'id-2',
       context: {
-        subtitle: 'The subtitle here',
-        email: 'jhon.due@email.com',
-        job: 'Sotfware Engineer',
-        role: 'Team lead',
+        userMapping: {
+          key1: {
+            name: 'Jhon Due',
+            subtitle: 'The subtitle here',
+            email: 'jhon.due@email.com',
+            job: 'Sotfware Engineer',
+            role: 'Team lead',
+          },
+        },
       },
     },
   },

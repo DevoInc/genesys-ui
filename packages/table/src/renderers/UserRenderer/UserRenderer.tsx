@@ -10,10 +10,14 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextOptions>> = ({
   value,
 }) => {
   const context = colDef?.context ?? {};
+  const userInfo = context?.userMapping ?? {};
 
   const setOpenedInfo = React.useRef(null);
 
-  return context.email || context.job || context.role ? (
+  const user = userInfo[value];
+  const name = user?.name || value;
+
+  return user?.email || user?.job || user?.role ? (
     <Popover placement="bottom-start" id="story-userinfo">
       {({ toggle, ref, isOpened, setOpened }) => {
         setOpenedInfo.current = setOpened;
@@ -26,11 +30,11 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextOptions>> = ({
             ref={ref}
           >
             <UserInfo.Avatar
-              avatar={context.avatar}
-              avatarColorScheme={context?.colorScheme || 'info'}
+              avatar={user?.avatar}
+              avatarColorScheme={user?.colorScheme || 'info'}
               format="base"
-              name={value}
-              subtitle={context?.subtitle}
+              name={name}
+              subtitle={user?.subtitle}
             />
           </Box>
         );
@@ -38,29 +42,29 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextOptions>> = ({
       <Popover.Panel width="38rem" id="story-popover-panel">
         <Panel.Header bordered>
           <UserInfo.Avatar
-            avatar={context.avatar}
-            avatarColorScheme={context?.colorScheme || 'info'}
+            avatar={user?.avatar}
+            avatarColorScheme={user?.colorScheme || 'info'}
             format="base"
-            name={value}
-            subtitle={context?.subtitle}
+            name={name}
+            subtitle={user?.subtitle}
           />
         </Panel.Header>
         <Panel.Body>
           <UserInfo.Details
-            email={context.email}
-            job={context.job}
-            role={context.role}
+            email={user?.email}
+            job={user?.job}
+            role={user?.role}
           />
         </Panel.Body>
       </Popover.Panel>
     </Popover>
   ) : (
     <UserInfo.Avatar
-      avatar={context.avatar}
-      avatarColorScheme={context?.colorScheme || 'info'}
+      avatar={user?.avatar}
+      avatarColorScheme={user?.colorScheme || 'info'}
       format="base"
-      name={value}
-      subtitle={context?.subtitle}
+      name={name}
+      subtitle={user?.subtitle}
     />
   );
 };
