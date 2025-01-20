@@ -25,12 +25,14 @@ export type TStateRow =
 
 // Definitions
 
-export type TCoreDef = {
+export type TCoreDef<
+  TContext = {
+    [key: string]: unknown;
+  },
+> = {
   id: string;
   preset?: string;
-  context?: {
-    [key: string]: unknown;
-  };
+  context?: TContext;
 };
 
 export type TCellWrapper = {
@@ -45,64 +47,68 @@ export type TCellWrapper = {
   onCellDataChange: ({ colDef, value, rowIndex }) => void;
 };
 
-export type TColDef = TCoreDef & {
-  /** Id of the column */
-  headerName?: string;
+export type TColDef<TContext = { [key: string]: unknown }> =
+  TCoreDef<TContext> & {
+    /** Id of the column */
+    headerName?: string;
 
-  editable?: boolean;
-  isExpandable?: boolean;
-  cellEditor?:
-    | React.FC<TCellEditor>
-    | (({ value, onChange, colDef }: TCellEditor) => React.ReactNode);
+    editable?: boolean;
+    isExpandable?: boolean;
+    cellEditor?:
+      | React.FC<TCellEditor>
+      | (({ value, onChange, colDef }: TCellEditor) => React.ReactNode);
 
-  valueFormatter?: (value: unknown, context: DateContext) => void;
-  cellRenderer?:
-    | React.FC<TCellRenderer>
-    | (({
-        value,
-        colDef,
-        rowDef,
-        rowIndex,
-        row,
-      }: TCellRenderer) => React.ReactNode);
-  cellExpand?:
-    | React.FC<TCellRenderer>
-    | (({ value, colDef }: TCellRenderer) => React.ReactNode);
-  cellWrapper?:
-    | React.FC<TCellWrapper>
-    | (({
-        cellDef,
-        colDef,
-        rowIndex,
-        data,
-        row,
-      }: TCellWrapper) => React.ReactNode);
-  headerRenderer?:
-    | React.FC<THeaderRenderer>
-    | (({ colDef }: THeaderRenderer) => React.ReactNode);
+    valueFormatter?: (value: unknown, context: DateContext) => void;
+    cellRenderer?:
+      | React.FC<TCellRenderer<unknown, TContext>>
+      | (({
+          value,
+          colDef,
+          rowDef,
+          rowIndex,
+          row,
+        }: TCellRenderer<unknown, TContext>) => React.ReactNode);
+    cellExpand?:
+      | React.FC<TCellRenderer<unknown, TContext>>
+      | (({
+          value,
+          colDef,
+        }: TCellRenderer<unknown, TContext>) => React.ReactNode);
+    cellWrapper?:
+      | React.FC<TCellWrapper>
+      | (({
+          cellDef,
+          colDef,
+          rowIndex,
+          data,
+          row,
+        }: TCellWrapper) => React.ReactNode);
+    headerRenderer?:
+      | React.FC<THeaderRenderer>
+      | (({ colDef }: THeaderRenderer) => React.ReactNode);
 
-  cellFilter?: React.FC<TFilter> | (({ colDef }: TFilter) => React.ReactNode);
+    cellFilter?: React.FC<TFilter> | (({ colDef }: TFilter) => React.ReactNode);
 
-  sortable?: boolean;
-  sort?: 'asc' | 'desc';
-  sortIndex?: React.ReactNode;
+    sortable?: boolean;
+    sort?: 'asc' | 'desc';
+    sortIndex?: React.ReactNode;
 
-  tooltipField?: string;
-  resizable?: boolean;
-  minWidth?: number;
-  width?: number;
-  rowHeight?: number;
-  align?: TCellHorAlign;
-  verticalAlign?: TCellVerAlign;
-  textAlign?: React.CSSProperties['textAlign'];
-  /** Width of the column expressed in percentage over the width of the table */
-  truncateLine?: number;
-  toEdge?: boolean;
-  headerOnFilterPosition?: boolean;
-  hide?: boolean;
-  style?: CSSProp;
-  isHighlighted?: boolean;
-};
+    tooltipField?: string;
+    resizable?: boolean;
+    minWidth?: number;
+    width?: number;
+    rowHeight?: number;
+    align?: TCellHorAlign;
+    verticalAlign?: TCellVerAlign;
+    textAlign?: React.CSSProperties['textAlign'];
+    /** Width of the column expressed in percentage over the width of the table */
+    truncateLine?: number;
+    toEdge?: boolean;
+    headerOnFilterPosition?: boolean;
+    hide?: boolean;
+    style?: CSSProp;
+    isHighlighted?: boolean;
+  };
 
 export type TRowDef = {
   hide?: boolean;
@@ -111,14 +117,14 @@ export type TRowDef = {
   height?: number;
   minHeight?: number;
   cellRenderer?:
-    | React.FC<TCellRenderer>
+    | React.FC<TCellRenderer<unknown>>
     | (({
         value,
         colDef,
         rowIndex,
         row,
         rowDef,
-      }: TCellRenderer) => React.ReactNode);
+      }: TCellRenderer<unknown>) => React.ReactNode);
   style?:
     | CSSProp
     | (({
@@ -201,9 +207,12 @@ export type TFilterContext = {
   showReset: boolean;
 };
 
-export type TCellRenderer = {
-  value: unknown;
-  colDef: TColDef;
+export type TCellRenderer<
+  TValue = unknown,
+  TContext = { [key: string]: unknown },
+> = {
+  value: TValue;
+  colDef: TColDef<TContext>;
   rowIndex: number;
   row: TRow;
   rowDef?: TRowDef;

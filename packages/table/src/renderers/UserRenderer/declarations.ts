@@ -1,6 +1,6 @@
 import { UserInfoAvatarProps } from '@devoinc/genesys-ui';
 
-export type TContextOptions = {
+export type TContextUser = {
   userMapping?: {
     [key: string]: {
       name: string;

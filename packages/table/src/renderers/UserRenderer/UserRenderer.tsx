@@ -3,9 +3,9 @@ import * as React from 'react';
 import { UserInfo, Box, Popover, Panel } from '@devoinc/genesys-ui';
 
 import type { TCellRenderer } from '../../declarations';
-import { TContextOptions } from './declarations';
+import { TContextUser } from './declarations';
 
-export const UserRenderer: React.FC<TCellRenderer<string, TContextOptions>> = ({
+export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
   colDef,
   value,
 }) => {

@@ -22,6 +22,7 @@ export const Empty: Story = {
   render: () => (
     <>
       <Table
+        id="my-id"
         colDefs={Array(8)
           .fill(null)
           .map((_, idx) => ({
@@ -88,6 +89,7 @@ const PerformanceTable = () => {
 
   return (
     <Table
+      id="my-id-2"
       defaultColDef={{ editable: false }}
       colDefs={getColDefs(cols)}
       data={data}
