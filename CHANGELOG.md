@@ -1,5 +1,20 @@
 # Changelog
 
+## [16.7.0](https://github.com/DevoInc/genesys-ui/compare/v16.6.0...v16.7.0) (2025-01-20)
+
+### Features
+
+* improve UserRenderer table component ([4ff4825](https://github.com/DevoInc/genesys-ui/commit/4ff4825f3f582c2ad4e152208852af9647ab7548))
+* new MapTextsToColor function helper ([0a1b220](https://github.com/DevoInc/genesys-ui/commit/0a1b2202c6be03978f79887c7dce4fb665f4ac03))
+* User info render ([d12d513](https://github.com/DevoInc/genesys-ui/commit/d12d513f74c119d17858157242263492f64a401a))
+* user preset ([1088640](https://github.com/DevoInc/genesys-ui/commit/1088640b236f4e988b9c9b91c738294f3fdece23))
+* UserFilter table component ([ede8575](https://github.com/DevoInc/genesys-ui/commit/ede85756374b1a901ed4770838a0cb81c685bd6e))
+
+### Bug Fixes
+
+* types and text ([e65fc51](https://github.com/DevoInc/genesys-ui/commit/e65fc512f928da37ce1e799ad4a70749924a849f))
+* UserRender types ([a210f98](https://github.com/DevoInc/genesys-ui/commit/a210f98610416cc53f80c5dc0d70b15d683c7842))
+
 ## [16.6.0](https://github.com/DevoInc/genesys-ui/compare/v16.5.0...v16.6.0) (2025-01-17)
 
 ### Features
