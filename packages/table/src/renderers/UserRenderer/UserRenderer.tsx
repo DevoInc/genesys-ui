@@ -32,6 +32,7 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
             <UserInfo.Avatar
               avatar={user?.avatar}
               avatarColorScheme={user?.colorScheme || 'info'}
+              avatarSize="xs"
               format="base"
               name={name}
               subtitle={user?.subtitle}
@@ -44,6 +45,7 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
           <UserInfo.Avatar
             avatar={user?.avatar}
             avatarColorScheme={user?.colorScheme || 'info'}
+            avatarSize="xs"
             format="base"
             name={name}
             subtitle={user?.subtitle}
@@ -62,6 +64,7 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
     <UserInfo.Avatar
       avatar={user?.avatar}
       avatarColorScheme={user?.colorScheme || 'info'}
+      avatarSize="xs"
       format="base"
       name={name}
       subtitle={user?.subtitle}

@@ -47,17 +47,18 @@ export const UserInfoAvatar: React.FC<UserInfoAvatarProps> = ({
       />
       <VFlex minWidth="0" width="100%" spacing="0">
         {evalFormat === 'heading' ? (
-          <Typography.Heading>{name}</Typography.Heading>
+          <Typography.Heading truncateLine={1}>{name}</Typography.Heading>
         ) : (
           <Typography
             format={evalFormat === 'bold' ? 'action-md' : 'body-md'}
             colorScheme={evalFormat === 'bold' ? 'stronger' : 'base'}
+            truncateLine={1}
           >
             {name}
           </Typography>
         )}
         {subtitle && (
-          <Typography format="body-sm" colorScheme="weak">
+          <Typography format="body-sm" colorScheme="weak" truncateLine={1}>
             {subtitle}
           </Typography>
         )}
