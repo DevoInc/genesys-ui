@@ -14,10 +14,8 @@ export const Base: Story = {
   args: {
     value: 'jhon.due@email.com',
     colDef: {
-      id: 'p',
-      context: {
-        options: {},
-      },
+      id: 'id-1',
+      context: {},
     },
   },
 };
@@ -26,14 +24,12 @@ export const Detailed: Story = {
   args: {
     value: 'Jhon Due',
     colDef: {
-      id: 'p',
+      id: 'id-2',
       context: {
-        options: {
-          subtitle: 'The subtitle here',
-          email: 'jhon.due@email.com',
-          job: 'Sotfware Engineer',
-          role: 'Team lead',
-        },
+        subtitle: 'The subtitle here',
+        email: 'jhon.due@email.com',
+        job: 'Sotfware Engineer',
+        role: 'Team lead',
       },
     },
   },

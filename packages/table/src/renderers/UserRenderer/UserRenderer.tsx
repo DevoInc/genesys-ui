@@ -10,11 +10,10 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextOptions>> = ({
   value,
 }) => {
   const context = colDef?.context ?? {};
-  const options = context?.options ?? {};
 
   const setOpenedInfo = React.useRef(null);
 
-  return options.email || options.job || options.role ? (
+  return context.email || context.job || context.role ? (
     <Popover placement="bottom-start" id="story-userinfo">
       {({ toggle, ref, isOpened, setOpened }) => {
         setOpenedInfo.current = setOpened;
@@ -27,11 +26,11 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextOptions>> = ({
             ref={ref}
           >
             <UserInfo.Avatar
-              avatar={options.avatar}
-              avatarColorScheme={options?.colorScheme || 'info'}
+              avatar={context.avatar}
+              avatarColorScheme={context?.colorScheme || 'info'}
               format="base"
               name={value}
-              subtitle={options?.subtitle}
+              subtitle={context?.subtitle}
             />
           </Box>
         );
@@ -39,29 +38,29 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextOptions>> = ({
       <Popover.Panel width="38rem" id="story-popover-panel">
         <Panel.Header bordered>
           <UserInfo.Avatar
-            avatar={options.avatar}
-            avatarColorScheme={options?.colorScheme || 'info'}
+            avatar={context.avatar}
+            avatarColorScheme={context?.colorScheme || 'info'}
             format="base"
             name={value}
-            subtitle={options?.subtitle}
+            subtitle={context?.subtitle}
           />
         </Panel.Header>
         <Panel.Body>
           <UserInfo.Details
-            email={options.email}
-            job={options.job}
-            role={options.role}
+            email={context.email}
+            job={context.job}
+            role={context.role}
           />
         </Panel.Body>
       </Popover.Panel>
     </Popover>
   ) : (
     <UserInfo.Avatar
-      avatar={options.avatar}
-      avatarColorScheme={options?.colorScheme || 'info'}
+      avatar={context.avatar}
+      avatarColorScheme={context?.colorScheme || 'info'}
       format="base"
       name={value}
-      subtitle={options?.subtitle}
+      subtitle={context?.subtitle}
     />
   );
 };
