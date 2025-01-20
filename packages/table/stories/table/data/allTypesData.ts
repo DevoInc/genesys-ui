@@ -1,4 +1,5 @@
 import { Holo } from '@devoinc/holo';
+import { usersKeys } from './usersData';
 
 export const allTypesData = Holo.of()
   .addType('index', (args = {}) => args.index + 1)
@@ -6,7 +7,9 @@ export const allTypesData = Holo.of()
     id: 'index',
     menu: 'bool',
     booleanValue: 'bool',
-    name: 'name',
+    name: () => Holo.chance.pickone(usersKeys),
+    name2: () => Holo.chance.pickone(usersKeys),
+
     age: 'age',
     company: 'company',
     balance: 'euro',

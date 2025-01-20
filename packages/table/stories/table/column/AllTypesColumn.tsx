@@ -1,8 +1,11 @@
+import React from 'react';
+
 import { GIEyeViewFilled, GIPencilEdit } from '@devoinc/genesys-icons';
 import { Button, Menu, Popover } from '@devoinc/genesys-ui';
-import React from 'react';
+
 import { TActionContext, TColDef } from '../../../src';
 import { ROW_HEIGHT_MD } from '../../../src/constants';
+import { richBasicInfoUsers, richExtendedInfoUsers } from '../data/usersData';
 
 export const AllTypesColumn: TColDef[] = [
   {
@@ -50,10 +53,21 @@ export const AllTypesColumn: TColDef[] = [
   },
   {
     id: 'name',
-    headerName: 'Name',
-    preset: 'text',
-    editable: true,
+    headerName: 'User',
+    preset: 'user',
     sortable: true,
+    context: {
+      userMapping: richBasicInfoUsers,
+    },
+  },
+  {
+    id: 'name2',
+    headerName: 'User extended',
+    preset: 'user',
+    sortable: true,
+    context: {
+      userMapping: richExtendedInfoUsers,
+    },
   },
   {
     id: 'age',
