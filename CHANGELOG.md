@@ -1,5 +1,11 @@
 # Changelog
 
+## [16.8.0](https://github.com/DevoInc/genesys-ui/compare/v16.7.1...v16.8.0) (2025-01-21)
+
+### Features
+
+* improve UserFilter component ([8d9ff0d](https://github.com/DevoInc/genesys-ui/commit/8d9ff0df94dc2006f7489ac14dd40145e9d0a1cc))
+
 ## [16.7.1](https://github.com/DevoInc/genesys-ui/compare/v16.7.0...v16.7.1) (2025-01-21)
 
 ### Bug Fixes
