@@ -5,6 +5,7 @@ import { DateTimeRangeInput } from './DateTimeRangeInput';
 import { useDateTimeRangeInputValidation } from './hooks';
 import { formatDate, validateRange } from '../../helpers';
 import { getDefaultParseDate, getDefaultParseRange } from '../../parsers';
+import { TDateRange } from '../../declarations';
 
 const meta: Meta<typeof DateTimeRangeInput> = {
   title: 'Components/Datetime/DateTimeRangeInput',
@@ -69,20 +70,19 @@ export const RangeValidation: Story = {
   tags: ['isHidden'],
   render: (args) =>
     ((props) => {
-      const [value, setValue] = React.useState([
+      const [value, setValue] = React.useState<TDateRange>([
         new Date().getTime() - 3600000,
         new Date().getTime(),
       ]);
 
-      const { inputValue, inputOnChange, errors } =
+      const { inputValue, inputOnChange, errors, rangeErrors } =
         useDateTimeRangeInputValidation({
           value,
           onChange: setValue,
           reprDate: (ts: number) => formatDate(ts),
-          parseDate: getDefaultParseDate,
+          parseDate: getDefaultParseDate(),
+          parseRange: getDefaultParseRange(),
         });
-
-      const isValidRange = validateRange(value);
 
       return (
         <DateTimeRangeInput
@@ -91,8 +91,8 @@ export const RangeValidation: Story = {
           onChange={inputOnChange}
           statuses={errors.map((e) => (e.length > 0 ? 'error' : 'base'))}
           helpers={errors.map((e) => (e.length > 0 ? e[0] : null))}
-          status={isValidRange ? 'base' : 'error'}
-          helper={isValidRange ? null : 'Invalid range'}
+          status={rangeErrors.length > 0 ? 'error' : 'base'}
+          helper={rangeErrors.length > 0 ? rangeErrors[0] : null}
         />
       );
     })(args),
@@ -111,7 +111,6 @@ export const UsingExpressions: Story = {
         <DateTimeRangeInput
           {...props}
           value={value}
-          // onBlur={onBlurCallback}
           onChange={(index: number, newValue: string) => {
             const newRange = [...value];
             newRange[index] = newValue;
@@ -123,20 +122,5 @@ export const UsingExpressions: Story = {
     })(args),
   args: {
     value: ['15m - now()', 'now()'],
-    // parseExpression: (exp: string) => {
-    //   if (exp.includes('now')) {
-    //     return {
-    //       isValid: true,
-    //       value: new Date().getTime(),
-    //       errors: [],
-    //     };
-    //   } else {
-    //     return {
-    //       isValid: false,
-    //       value: null,
-    //       errors: ['Invalid expression'],
-    //     };
-    //   }
-    // },
   },
 };

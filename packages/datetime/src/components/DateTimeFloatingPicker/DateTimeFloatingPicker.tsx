@@ -75,7 +75,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
   onChange = () => null,
   autoApply = false,
   onClose = () => null,
-  parseDate = getDefaultParseDate,
+  parseDate = getDefaultParseDate(),
   style: customStyles,
   value = new Date().getTime(),
   helper,
