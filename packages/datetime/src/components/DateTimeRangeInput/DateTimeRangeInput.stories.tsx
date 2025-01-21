@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { DateTimeRangeInput } from './DateTimeRangeInput';
 import { useDateTimeRangeInputValidation } from './hooks';
 import { formatDate, validateRange } from '../../helpers';
-import { parseStrDate } from '../../parsers';
+import { getDefaultParseDate, getDefaultParseRange } from '../../parsers';
 
 const meta: Meta<typeof DateTimeRangeInput> = {
   title: 'Components/Datetime/DateTimeRangeInput',
@@ -46,7 +46,8 @@ export const Playground: Story = {
           value,
           onChange: setValue,
           reprDate: (ts: number) => formatDate(ts),
-          parseDate: parseStrDate,
+          parseDate: getDefaultParseDate(),
+          parseRange: getDefaultParseRange(),
         });
 
       return (
@@ -78,7 +79,7 @@ export const RangeValidation: Story = {
           value,
           onChange: setValue,
           reprDate: (ts: number) => formatDate(ts),
-          parseDate: parseStrDate,
+          parseDate: getDefaultParseDate,
         });
 
       const isValidRange = validateRange(value);

@@ -19,7 +19,7 @@ import {
   useDateTimeInputValidation,
 } from '../DateTimeInput';
 import { formatDate as formatDateHelper } from '../../helpers';
-import { parseStrDate } from '../../parsers';
+import { getDefaultParseDate } from '../../parsers';
 import type { IParseResult } from '../../declarations';
 import { TDateTimeFloatingPickerI18n } from './declarations';
 import { defaultDateTimeFloatingPickerI18n } from './i18n';
@@ -75,7 +75,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
   onChange = () => null,
   autoApply = false,
   onClose = () => null,
-  parseDate = parseStrDate,
+  parseDate = getDefaultParseDate,
   style: customStyles,
   value = new Date().getTime(),
   helper,
@@ -112,7 +112,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
         }
       },
       reprDate: formatDate,
-      parseDate,
+      parseDate: getDefaultParseDate(),
     });
 
   useUpdateEffect(() => {

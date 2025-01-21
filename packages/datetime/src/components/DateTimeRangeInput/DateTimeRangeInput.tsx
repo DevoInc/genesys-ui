@@ -104,7 +104,9 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
     <Field
       label={label}
       id={id}
+      hasFloatingHelper
       helper={helper}
+      hideLabel
       status={status}
       required={required}
       controlWidth={controlWidth ?? 'auto'}

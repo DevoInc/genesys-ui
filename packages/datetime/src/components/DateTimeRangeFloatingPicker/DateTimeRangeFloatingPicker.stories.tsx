@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { subMonths } from 'date-fns';
+import { subDays, subMonths } from 'date-fns';
 
 import { DateTimeRangeFloatingPicker } from './DateTimeRangeFloatingPicker';
 import { getDefaultPresets } from '../Presets';
-import { TRealtimeState } from '../RealTimeButton/declarations';
+import { TDate } from '../../declarations';
+import { formatDate, gt } from '../../helpers';
+import { getDefaultParseDate } from '../../parsers';
 
 const now = new Date().getTime();
 const presets = getDefaultPresets(now);
@@ -13,7 +15,6 @@ const meta: Meta<typeof DateTimeRangeFloatingPicker> = {
   title: 'Components/Datetime/DateTimeRangeFloatingPicker',
   component: DateTimeRangeFloatingPicker,
   args: {
-    value: [subMonths(new Date(), 1).getTime(), new Date().getTime()],
     id: 'story-demo',
     size: 'md',
     presets,
@@ -24,6 +25,9 @@ export default meta;
 type Story = StoryObj<typeof DateTimeRangeFloatingPicker>;
 
 export const Playground: Story = {
+  args: {
+    value: [subMonths(new Date(), 1).getTime(), new Date().getTime()],
+  },
   render: (args) =>
     ((props) => {
       const [value, setValue] = React.useState(props.value);
@@ -39,143 +43,109 @@ export const Playground: Story = {
     })(args),
 };
 
-export const DefaultPresets: Story = {
+const customTimeLanguagePresets = [
+  { label: 'Relative to' },
+  { value: ['now() - 30s', 'now()'], label: 'Last 30 seconds' },
+  { value: ['now() - 1m', 'now()'], label: 'Last minute' },
+  { value: ['now() - 5m', 'now()'], label: 'Last 5 minutes' },
+  { value: ['now() - 10m', 'now()'], label: 'Last 10 minutes' },
+  { value: ['now() - 15m', 'now()'], label: 'Last 15 minutes' },
+  { value: ['now() - 30m', 'now()'], label: 'Last 30 minutes' },
+  { value: ['now() - 45m', 'now()'], label: 'Last 45 minutes' },
+  { value: ['now() - 1h', 'now()'], label: 'Last hour' },
+  { value: ['now() - 3h', 'now()'], label: 'Last 3 hours' },
+  { value: ['now() - 6h', 'now()'], label: 'Last 6 hours' },
+  { value: ['now() - 12h', 'now()'], label: 'Last 12 hours' },
+  { value: ['now() - 1d', 'now()'], label: 'Last 1 day' },
+  { value: ['now() - 2d', 'now()'], label: 'Last 2 days' },
+  { value: ['now() - 7d', 'now()'], label: 'Last 7 days' },
+  { value: ['now() - 15d', 'now()'], label: 'Last 15 days' },
+  { value: ['now() - 30d', 'now()'], label: 'Last month' },
+  { value: ['now() - 60d', 'now()'], label: 'Last 2 months' },
+  { value: ['now() - 90d', 'now()'], label: 'Last 3 months' },
+  { value: ['now() - 180d', 'now()'], label: 'Last 6 months' },
+  { value: ['now() - 365d', 'now()'], label: 'Last year' },
+  { label: 'Snap to' },
+  { value: ['now() @ 1m', 'now()'], label: 'Minute' },
+  { value: ['now() @ 1h', 'now()'], label: 'Hour' },
+  { value: ['now() @ 1d', 'now()'], label: 'Day' },
+  { value: ['now() @ 1W', 'now()'], label: 'ISO week' },
+  { value: ['now() @ 1w', 'now()'], label: 'Week' },
+  { value: ['now() @ 1M', 'now()'], label: 'Month' },
+  { value: ['now() @ 1y', 'now()'], label: 'Year' },
+];
+
+export const CustomTimeLanguage: Story = {
+  tags: ['isHidden'],
+  args: {
+    value: ['now() - 5m', 'now()'],
+    presets: customTimeLanguagePresets,
+    parseDate: (date: TDate) => {
+      if (typeof date === 'string') {
+        const result = getDefaultParseDate()(date);
+        if (result.isValid) {
+          return result;
+        }
+      }
+      return {
+        isValid: true,
+        value: date,
+        errors: [],
+      };
+    },
+    parseRange: (range) => ({ isValid: true, value: range, errors: [] }),
+    formatDate: (date: TDate) => {
+      if (typeof date === 'string') {
+        return date;
+      }
+      return formatDate(date);
+    },
+  },
   render: (args) =>
     ((props) => {
-      const [daterange, setDaterange] = React.useState({
-        range: props.value,
-        realTime: false,
-      });
-
+      const [value, setValue] = React.useState(props.value);
       return (
         <DateTimeRangeFloatingPicker
           {...props}
-          value={daterange.range}
-          onChange={(range) => {
-            setDaterange((prev) => ({ ...prev, range }));
-          }}
-          onRealTimeClick={(event) => {
-            // eslint-disable-next-line no-console
-            console.log('RT button clicked', event);
-          }}
-          realTime="selected"
-          presets={getDefaultPresets()}
-          parseExpression={(exp) => {
-            for (const word of ['now', 'today', 'yesterday']) {
-              if (typeof exp === 'string' && exp.includes(word))
-                return {
-                  isValid: true,
-                  value: new Date().getTime(),
-                  errors: [],
-                };
-            }
-            return {
-              isValid: false,
-              value: null,
-              errors: ['expression no valid'],
-            };
+          value={value}
+          onChange={(newValue) => {
+            setValue(newValue);
           }}
         />
       );
     })(args),
 };
 
-export const CustomPresets: Story = {
+export const Limits: Story = {
+  tags: ['isHidden'],
+  args: {
+    value: [subDays(new Date(), 1).getTime(), new Date().getTime()],
+    parseDate: (date) => {
+      const result = getDefaultParseDate()(date);
+      if (result.isValid) {
+        const isFuture = gt(date, new Date().getTime() + 1000);
+        if (isFuture) {
+          return {
+            isValid: false,
+            value: date,
+            errors: ["Date can't be on the future."],
+          };
+        }
+      }
+      return result;
+    },
+  },
   render: (args) =>
     ((props) => {
-      const [date, setDate] = React.useState(props.value);
-      const [realtime, setRealtime] =
-        React.useState<TRealtimeState>('disabled');
-      const [btnDisabledApply, setBtnDisabledApply] = React.useState(
-        props.disableApplyButton,
-      );
-
-      const realtimeCallback = React.useCallback(() => {
-        if (realtime === 'inactive') {
-          setRealtime('activated');
-          setDate({ from: '', to: '' });
-        } else if (realtime === 'activated') {
-          setRealtime('inactive');
-          setDate(props.value);
-        }
-      }, [props.value, realtime]);
-
-      const onChangeCallback = React.useCallback(
-        (range: {
-          timestamp: { from: number; to: number };
-          preset: { from: string; to: string };
-        }) => {
-          // control Apply button
-          if (
-            (range.timestamp.from && !range.timestamp.to) ||
-            (range.timestamp.to && !range.timestamp.from) ||
-            (range.preset.from && !range.preset.to) ||
-            (range.preset.to && !range.preset.from)
-          ) {
-            setBtnDisabledApply(true);
-          } else {
-            setBtnDisabledApply(false);
-          }
-
-          // control realtime button
-          if (range.timestamp.from || range.timestamp.to) {
-            setRealtime('disabled');
-          } else {
-            setRealtime('inactive');
-          }
-        },
-        [],
-      );
-
+      const [value, setValue] = React.useState(props.value);
       return (
         <DateTimeRangeFloatingPicker
           {...props}
-          value={date}
-          onChange={onChangeCallback}
-          onRealTimeClick={realtimeCallback}
-          presets={[
-            {
-              label: 'Relative too',
-              options: [
-                {
-                  value: {
-                    from: 'now() - 30s',
-                    to: 'now()',
-                  },
-                  label: 'Last 30 seconds',
-                },
-                {
-                  value: {
-                    from: 'now() - 1m',
-                    to: 'now()',
-                  },
-                  label: 'Last minute',
-                },
-              ],
-            },
-          ]}
-          parseExpression={(exp) => {
-            for (const word of ['now', 'today', 'yesterday']) {
-              if (typeof exp === 'string' && exp.includes(word))
-                return {
-                  isValid: true,
-                  value: new Date().getTime(),
-                  errors: [],
-                };
-            }
-            return {
-              isValid: false,
-              value: null,
-              errors: ['expression no valid'],
-            };
+          value={value}
+          onChange={(newValue) => {
+            setValue(newValue);
           }}
-          realTime={realtime}
-          disableApplyButton={btnDisabledApply}
         />
       );
     })(args),
-  args: {
-    realTime: 'inactive',
-    showCalendarIcon: true,
-  },
 };

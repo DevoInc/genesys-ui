@@ -16,7 +16,7 @@ import { Presets, type PresetsProps } from '../Presets';
 import { MonthSelector, useMonthSelectorRange } from '../MonthSelector';
 import { Time, type TimeProps } from '../Time';
 import { Calendar, type CalendarProps, rangeBehavior } from '../Calendar';
-import { parseAllDates } from '../../parsers';
+import { tautologyParseDate } from '../../parsers';
 import { TDateTimeRangeI18n, TDateTimeRangeSource } from './declarations';
 import {
   DATE_TIME_RANGE_SOURCE_CAL_LEFT,
@@ -62,7 +62,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   id,
   onChange,
   value = [new Date(), new Date()],
-  parseDate = parseAllDates,
+  parseDate = tautologyParseDate,
   weekDays,
   presetsPlaceholder,
   presets,
