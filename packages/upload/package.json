@@ -34,8 +34,8 @@
     "filepond-plugin-file-validate-size": "2.x",
     "filepond-plugin-file-validate-type": "1.x",
     "filepond-plugin-image-preview": "4.x",
-    "react": ">=16.3",
-    "react-dom": ">=16.3",
+    "react": ">=19.0",
+    "react-dom": ">=19.0",
     "react-filepond": "7.x",
     "styled-components": ">=5.0"
   },

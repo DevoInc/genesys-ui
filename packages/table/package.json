@@ -36,8 +36,8 @@
     "@tanstack/react-virtual": "3.x",
     "date-fns": ">=4.0",
     "@date-fns/tz": ">=1.0",
-    "react": ">=16.3",
-    "react-dom": ">=16.3",
+    "react": ">=19.0",
+    "react-dom": ">=19.0",
     "styled-components": ">=5.0"
   },
   "engine": {
