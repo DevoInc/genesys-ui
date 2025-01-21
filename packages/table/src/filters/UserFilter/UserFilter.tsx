@@ -9,12 +9,16 @@ import { TContextUser } from '../../renderers';
 
 export const UserFilter: React.FC<TFilter> = ({ colDef, onChange }) => {
   const context = colDef?.context as TContextUser & TFilterContext;
-  const options = Object.values(context?.userMapping ?? {}).map((user) => {
-    return {
-      value: Object.values(user).join(' '),
-      label: user.name,
-    } as TSelectOption;
-  });
+  const keys = Object.keys(context?.userMapping ?? {});
+  const options = Object.values(context?.userMapping ?? {}).map(
+    (user, index) => {
+      return {
+        value: keys[index],
+        label: user.name,
+        description: user.subtitle,
+      } as TSelectOption;
+    },
+  );
   const filterValue = context?.filterValue as TUserFilterValue;
   const value = filterValue?.value ?? '';
   return (
