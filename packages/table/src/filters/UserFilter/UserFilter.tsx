@@ -6,10 +6,12 @@ import type { TFilterContext, TFilter } from '../../declarations';
 import type { TUserFilterValue } from './declarations';
 import { FilterContainer } from '../common';
 import { TContextUser } from '../../renderers';
+import { concatenateValues } from './util';
 
 export const UserFilter: React.FC<TFilter> = ({ colDef, onChange }) => {
   const context = colDef?.context as TContextUser & TFilterContext;
   const keys = Object.keys(context?.userMapping ?? {});
+  const concatedOptions = concatenateValues(context?.userMapping ?? {});
   const options = Object.values(context?.userMapping ?? {}).map(
     (user, index) => {
       return {
@@ -37,6 +39,12 @@ export const UserFilter: React.FC<TFilter> = ({ colDef, onChange }) => {
         defaultInputValue={colDef?.context?.defaultValue as string}
         options={options}
         value={value}
+        filterOption={(option, value) => {
+          const optionValue = option.value;
+          return concatedOptions[optionValue].includes(
+            String(value).toLowerCase(),
+          );
+        }}
       />
     </FilterContainer>
   );
