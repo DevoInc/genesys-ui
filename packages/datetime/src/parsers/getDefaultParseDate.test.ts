@@ -20,7 +20,7 @@ describe('helpers', () => {
         const result = defaultParseDate('invalid date');
         expect(result).toEqual({
           isValid: false,
-          value: null,
+          value: 'invalid date',
           errors: ['Invalid date'],
         });
       });
@@ -43,7 +43,7 @@ describe('helpers', () => {
         const result = getDefaultParseDate()('');
         expect(result).toEqual({
           isValid: false,
-          value: null,
+          value: '',
           errors: ['Invalid date'],
         });
       });

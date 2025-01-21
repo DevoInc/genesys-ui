@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { DateTimeRangeInput } from './DateTimeRangeInput';
 import { useDateTimeRangeInputValidation } from './hooks';
-import { formatDate, validateRange } from '../../helpers';
+import { formatDate } from '../../helpers';
 import { getDefaultParseDate, getDefaultParseRange } from '../../parsers';
 import { TDateRange } from '../../declarations';
 

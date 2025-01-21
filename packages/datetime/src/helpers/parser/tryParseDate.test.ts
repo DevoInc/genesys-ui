@@ -9,7 +9,7 @@ describe('helpers', () => {
       test('try parse date with parseStrDate default function', () => {
         const defaultParseDate = getDefaultParseDate();
         const tryParseDateFn = tryParseDate(defaultParseDate);
-        expect(tryParseDateFn('')).toBeNull();
+        expect(tryParseDateFn('')).toBeUndefined();
         expect(tryParseDateFn('2024-12-31 00:00:00')).toBe(
           defaultParseDate('2024-12-31 00:00:00').value,
         );
