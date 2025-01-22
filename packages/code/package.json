@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-code",
-  "version": "16.8.0",
+  "version": "17.0.0",
   "description": "",
   "type": "module",
   "types": "./dist/index.d.ts",
@@ -26,7 +26,7 @@
     "dpdm": "dpdm --exit-code circular:1 ./src/index.ts"
   },
   "peerDependencies": {
-    "@devoinc/genesys-ui": "^16.8.0",
+    "@devoinc/genesys-ui": "^17.0.0",
     "ahooks": ">=3.0",
     "monaco-editor-core": "0.x",
     "react": ">=19.0",

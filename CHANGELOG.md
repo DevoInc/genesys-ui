@@ -1,5 +1,21 @@
 # Changelog
 
+## [17.0.0](https://github.com/DevoInc/genesys-ui/compare/v16.8.0...v17.0.0) (2025-01-22)
+
+### ⚠ BREAKING CHANGES
+
+* use React 19 and above as minimal React version
+
+### Features
+
+* **datetime:** added DTRFP parseRange, and improvements on parsers ([5de5464](https://github.com/DevoInc/genesys-ui/commit/5de54640d0cd165a68140404ec63cdb053cbe208))
+* use React 19 and above as minimal React version ([f36efeb](https://github.com/DevoInc/genesys-ui/commit/f36efeb7902233e6a9723f2587bbc81cf07a1d17))
+
+### Bug Fixes
+
+* **datetime:** fix type on a hook ([f1d024b](https://github.com/DevoInc/genesys-ui/commit/f1d024b17b160f9593e848573a2fb0a44b11eca4))
+* **datetime:** missing parser defaults ([97a90ec](https://github.com/DevoInc/genesys-ui/commit/97a90ec62f39878943eec9cacf8b30bc823d4c3c))
+
 ## [16.8.0](https://github.com/DevoInc/genesys-ui/compare/v16.7.1...v16.8.0) (2025-01-21)
 
 ### Features
