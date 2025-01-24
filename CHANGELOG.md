@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.1.0](https://github.com/DevoInc/genesys-ui/compare/v17.0.0...v17.1.0) (2025-01-24)
+
+### Features
+
+* hide Select all text ([a77871c](https://github.com/DevoInc/genesys-ui/commit/a77871c4de777ad88d92d4e848b891cc1237e8b9))
+
 ## [17.0.0](https://github.com/DevoInc/genesys-ui/compare/v16.8.0...v17.0.0) (2025-01-22)
 
 ### ⚠ BREAKING CHANGES
