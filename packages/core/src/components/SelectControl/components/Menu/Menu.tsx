@@ -28,6 +28,22 @@ export const Menu = <Option extends TSelectOption>(
   const selectAllId = props.selectProps.id
     ? `${props.selectProps.id}__select-all`
     : null;
+
+  const hasFiltered = options.find(
+    (opt) =>
+      (opt.label &&
+        String(opt.label.toLowerCase()).includes(
+          String(props.selectProps.inputValue).toLowerCase(),
+        )) ||
+      // for userInfo render
+      // @ts-ignore
+      (opt.description &&
+        // @ts-ignore
+        String(opt.description.toLowerCase()).includes(
+          String(props.selectProps.inputValue)?.toLowerCase(),
+        )),
+  );
+
   return (
     showMenuAndDropDown<Option>(props.selectProps) &&
     components.Menu && (
@@ -47,38 +63,40 @@ export const Menu = <Option extends TSelectOption>(
         $multipleSubtle={props.selectProps.multipleSubtle}
       >
         <components.Menu {...props}>
-          {props.selectProps.isMulti && props.selectProps.selectAllBtn && (
-            <StyledSelectAll
-              $multipleSubtle={props.selectProps.multipleSubtle}
-              $size={props.selectProps.size}
-            >
-              {props.selectProps.multipleSubtle ? (
-                <Field
-                  id={selectAllId}
-                  label={selectAllLabel}
-                  labelPosition="right"
-                >
-                  <CheckboxControl
-                    aria-label={selectAllLabel}
+          {props.selectProps.isMulti &&
+            props.selectProps.selectAllBtn &&
+            hasFiltered && (
+              <StyledSelectAll
+                $multipleSubtle={props.selectProps.multipleSubtle}
+                $size={props.selectProps.size}
+              >
+                {props.selectProps.multipleSubtle ? (
+                  <Field
                     id={selectAllId}
-                    onChange={() => {
-                      handleSelectAll();
-                    }}
-                    checked={isAllSelected}
-                    indeterminate={values.length > 0 && !isAllSelected}
-                  />
-                </Field>
-              ) : (
-                <Button
-                  onClick={handleSelectAll}
-                  size={'sm'}
-                  colorScheme={'quiet'}
-                >
-                  Select all
-                </Button>
-              )}
-            </StyledSelectAll>
-          )}
+                    label={selectAllLabel}
+                    labelPosition="right"
+                  >
+                    <CheckboxControl
+                      aria-label={selectAllLabel}
+                      id={selectAllId}
+                      onChange={() => {
+                        handleSelectAll();
+                      }}
+                      checked={isAllSelected}
+                      indeterminate={values.length > 0 && !isAllSelected}
+                    />
+                  </Field>
+                ) : (
+                  <Button
+                    onClick={handleSelectAll}
+                    size={'sm'}
+                    colorScheme={'quiet'}
+                  >
+                    Select all
+                  </Button>
+                )}
+              </StyledSelectAll>
+            )}
           {props.children}
         </components.Menu>
       </StyledSelectMenu>
