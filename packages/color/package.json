@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-color",
-  "version": "17.1.0",
+  "version": "17.1.1",
   "description": "",
   "type": "module",
   "scripts": {
@@ -29,7 +29,7 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "@devoinc/genesys-ui": "^17.1.0",
+    "@devoinc/genesys-ui": "^17.1.1",
     "polished": ">=4.0",
     "react": ">=19.0",
     "react-dom": ">=19.0",

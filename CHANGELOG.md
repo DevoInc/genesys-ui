@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.1.1](https://github.com/DevoInc/genesys-ui/compare/v17.1.0...v17.1.1) (2025-01-24)
+
+### Bug Fixes
+
+* mapTextToColors ([b0106a6](https://github.com/DevoInc/genesys-ui/commit/b0106a6069bde17ec0e868a772466c2f0827e304))
+
 ## [17.1.0](https://github.com/DevoInc/genesys-ui/compare/v17.0.0...v17.1.0) (2025-01-24)
 
 ### Features
