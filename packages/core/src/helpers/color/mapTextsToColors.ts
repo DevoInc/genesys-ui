@@ -32,10 +32,41 @@ export const mapTextsToColors = (
 
   texts.forEach((text) => {
     if (!colorMap[text]) {
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
-      colorMap[text] = randomColor;
+      colorMap[text] = mapTextToColor(text, colors);
     }
   });
 
   return colorMap;
+};
+
+export const mapTextToColor = (
+  text: string,
+  colors: string[] = [
+    'blend-base',
+    'neutral',
+    'success',
+    'error',
+    'help',
+    'info',
+    'primary',
+    'secondary',
+    'data-blue',
+    'data-bronz,e,',
+    'data-dusk',
+    'data-green',
+    'data-indigo,',
+    'data-magent,a,',
+    'data-purple,',
+    'data-red',
+    'data-sky',
+    'data-slate',
+    'data-teal',
+  ],
+): string => {
+  let hash = 0;
+  for (let i = 0; i < text.length; i++) {
+    hash = text.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const index = Math.abs(hash) % colors.length;
+  return colors[index];
 };
