@@ -41,30 +41,38 @@ export interface MenuItemContainerProps
   state?: StyledMenuItemInnerProps['$state'];
   children?: React.ReactNode;
   isItem?: boolean;
-  ref?: React.Ref<HTMLButtonElement>;
 }
 
-export const MenuItemContainer: React.FC<Resolve<MenuItemContainerProps>> = ({
-  children,
-  isItem = true,
-  hasExtraLeftSpace,
-  unlimitedHeight,
-  state,
-  ...restMenuItemContainerProps
-}) => {
-  const innerContent = (
-    <StyledMenuItemInner
-      {...restMenuItemContainerProps}
-      $hasExtraLeftSpace={hasExtraLeftSpace}
-      $unlimitedHeight={unlimitedHeight}
-      $state={state}
-    >
-      {children}
-    </StyledMenuItemInner>
-  );
-  return isItem ? (
-    <StyledMenuItem role="presentation">{innerContent}</StyledMenuItem>
-  ) : (
-    innerContent
-  );
-};
+export const MenuItemContainer = React.forwardRef<
+  HTMLButtonElement,
+  Resolve<MenuItemContainerProps>
+>(
+  (
+    {
+      children,
+      isItem = true,
+      hasExtraLeftSpace,
+      unlimitedHeight,
+      state,
+      ...restMenuItemContainerProps
+    },
+    ref,
+  ) => {
+    const innerContent = (
+      <StyledMenuItemInner
+        {...restMenuItemContainerProps}
+        ref={ref}
+        $hasExtraLeftSpace={hasExtraLeftSpace}
+        $unlimitedHeight={unlimitedHeight}
+        $state={state}
+      >
+        {children}
+      </StyledMenuItemInner>
+    );
+    return isItem ? (
+      <StyledMenuItem role="presentation">{innerContent}</StyledMenuItem>
+    ) : (
+      innerContent
+    );
+  },
+);

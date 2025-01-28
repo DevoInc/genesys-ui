@@ -33,7 +33,7 @@
     "@devoinc/genesys-icons": "4.x || 5.x || 6.x",
     "@devoinc/genesys-ui": "^17.1.1",
     "date-fns": ">=4.0",
-    "react": ">=19.0",
+    "react": ">=17.0",
     "react-popper": "2.x",
     "styled-components": ">=5.0"
   },

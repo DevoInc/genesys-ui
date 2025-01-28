@@ -25,28 +25,32 @@ export interface TabsProps
     IStyledOverloadCss,
     ITabs {
   children?: React.ReactNode;
-  ref?: React.Ref<HTMLDivElement>;
 }
 
-const InternalTabs: React.FC<Resolve<TabsProps>> = ({
-  children = [],
-  colorScheme = 'base',
-  contained,
-  size = 'md',
-  wide,
-  ...nativeProps
-}) => (
-  <TabsContainer {...nativeProps} contained={contained} size={size}>
-    <TabsContext.Provider
-      value={{
-        colorScheme,
-        size,
-        wide,
-      }}
-    >
-      {children}
-    </TabsContext.Provider>
-  </TabsContainer>
+const InternalTabs = React.forwardRef<HTMLDivElement, Resolve<TabsProps>>(
+  (
+    {
+      children = [],
+      colorScheme = 'base',
+      contained,
+      size = 'md',
+      wide,
+      ...nativeProps
+    },
+    ref,
+  ) => (
+    <TabsContainer {...nativeProps} contained={contained} size={size} ref={ref}>
+      <TabsContext.Provider
+        value={{
+          colorScheme,
+          size,
+          wide,
+        }}
+      >
+        {children}
+      </TabsContext.Provider>
+    </TabsContainer>
+  ),
 );
 
 export const Tabs = InternalTabs as typeof InternalTabs & {

@@ -15,23 +15,20 @@ export interface ColProps
   as?: TFluidAs;
   alignSelf?: React.CSSProperties['alignSelf'];
   children?: React.ReactNode;
-  ref?: React.LegacyRef<ReactGridCol> & React.Ref<HTMLDivElement>;
 }
 
-export const Col: React.FC<Resolve<ColProps>> = ({
-  as,
-  alignSelf,
-  children,
-  style,
-  tooltip,
-  ...reactGridColProps
-}) => (
-  <ReactGridCol
-    {...reactGridColProps}
-    component={as}
-    style={{ ...style, alignSelf: alignSelf }}
-    title={tooltip}
-  >
-    {children}
-  </ReactGridCol>
+export const Col = React.forwardRef<HTMLDivElement, Resolve<ColProps>>(
+  ({ as, alignSelf, children, style, tooltip, ...reactGridColProps }, ref) => (
+    <ReactGridCol
+      {...reactGridColProps}
+      ref={
+        ref as React.LegacyRef<HTMLDivElement> & React.LegacyRef<ReactGridCol>
+      }
+      component={as}
+      style={{ ...style, alignSelf: alignSelf }}
+      title={tooltip}
+    >
+      {children}
+    </ReactGridCol>
+  ),
 );

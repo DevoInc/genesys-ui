@@ -34,27 +34,35 @@ export interface IconButtonStatusProps
   state?: TButtonExpandableState;
 }
 
-export const IconButtonStatus: React.FC<Resolve<IconButtonStatusProps>> = ({
-  colorScheme = 'help',
-  icon,
-  size = 'md',
-  state = 'enabled',
-  style,
-  ...restIconButtonProps
-}) => {
-  const theme = useTheme();
-  return (
-    <IconButton
-      {...restIconButtonProps}
-      colorScheme={colorScheme}
-      icon={icon || getIconButtonStatusIcon(colorScheme)}
-      circular
-      size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
-      state={state}
-      style={mergeStyles(
-        iconButtonStatusMixin({ state, colorScheme, theme }),
-        style,
-      )}
-    />
-  );
-};
+export const IconButtonStatus = React.forwardRef<
+  HTMLButtonElement,
+  Resolve<IconButtonStatusProps>
+>(
+  (
+    {
+      colorScheme = 'help',
+      icon,
+      size = 'md',
+      state = 'enabled',
+      style,
+      ...restIconButtonProps
+    },
+    ref,
+  ) => {
+    const theme = useTheme();
+    return (
+      <IconButton
+        {...restIconButtonProps}
+        colorScheme={colorScheme}
+        icon={icon || getIconButtonStatusIcon(colorScheme)}
+        circular
+        size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
+        state={state}
+        style={mergeStyles(
+          iconButtonStatusMixin({ state, colorScheme, theme }),
+          style,
+        )}
+      />
+    );
+  },
+);

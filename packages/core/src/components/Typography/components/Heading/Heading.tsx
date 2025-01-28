@@ -10,6 +10,7 @@ import type {
   IStyledPolymorphic,
 } from '../../../../declarations';
 import type { ITypographyHeading } from './declarations';
+import { Resolve } from '../../../../typeFunctions';
 
 export interface HeadingProps
   extends IStyledPolymorphic,
@@ -21,32 +22,35 @@ export interface HeadingProps
     ITypographyHeading {
   /** Content of the heading */
   children?: React.ReactNode;
-  forwardedRef?: React.Ref<HTMLElement> | null;
 }
 
-export const Heading: React.FC<HeadingProps> = ({
-  colorScheme = 'base',
-  forwardedRef,
-  gutterBottom = '0',
-  textAlign = 'left',
-  truncateLine,
-  size = 'h4',
-  children,
-  style,
-  tooltip,
-  ...nativeProps
-}) => (
-  <StyledHeading
-    {...nativeProps}
-    $colorScheme={colorScheme}
-    css={style}
-    $truncateLine={truncateLine}
-    $gutterBottom={gutterBottom}
-    ref={forwardedRef}
-    $size={size}
-    $textAlign={textAlign}
-    title={tooltip}
-  >
-    {children}
-  </StyledHeading>
+export const Heading = React.forwardRef<HTMLElement, Resolve<HeadingProps>>(
+  (
+    {
+      colorScheme = 'base',
+      gutterBottom = '0',
+      textAlign = 'left',
+      truncateLine,
+      size = 'h4',
+      children,
+      style,
+      tooltip,
+      ...nativeProps
+    },
+    ref,
+  ) => (
+    <StyledHeading
+      {...nativeProps}
+      $colorScheme={colorScheme}
+      css={style}
+      $truncateLine={truncateLine}
+      $gutterBottom={gutterBottom}
+      ref={ref}
+      $size={size}
+      $textAlign={textAlign}
+      title={tooltip}
+    >
+      {children}
+    </StyledHeading>
+  ),
 );

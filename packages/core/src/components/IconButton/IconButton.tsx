@@ -13,24 +13,31 @@ import { IconButtonContainer } from './components';
 export interface IconButtonProps
   extends Omit<ButtonProps, 'squared' | 'iconPosition'> {}
 
-export const InternalIconButton: React.FC<Resolve<IconButtonProps>> = ({
-  colorScheme = 'neutral',
-  children,
-  size = 'md',
-  state = 'enabled',
-  ref,
-  ...restButtonProps
-}) => (
-  <Button
-    {...restButtonProps}
-    ref={ref}
-    colorScheme={colorScheme}
-    size={size}
-    squared
-    state={state}
-  >
-    {children}
-  </Button>
+export const InternalIconButton = React.forwardRef<
+  HTMLButtonElement,
+  Resolve<IconButtonProps>
+>(
+  (
+    {
+      colorScheme = 'neutral',
+      children,
+      size = 'md',
+      state = 'enabled',
+      ...restButtonProps
+    },
+    ref,
+  ) => (
+    <Button
+      {...restButtonProps}
+      ref={ref}
+      colorScheme={colorScheme}
+      size={size}
+      squared
+      state={state}
+    >
+      {children}
+    </Button>
+  ),
 );
 
 export const IconButton = InternalIconButton as typeof InternalIconButton & {

@@ -31,8 +31,8 @@
   "peerDependencies": {
     "@devoinc/genesys-ui": "^17.1.1",
     "polished": ">=4.0",
-    "react": ">=19.0",
-    "react-dom": ">=19.0",
+    "react": ">=17.0",
+    "react-dom": ">=17.0",
     "react-color": "2.x",
     "styled-components": ">=5.0"
   },

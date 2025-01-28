@@ -38,6 +38,7 @@ import {
   ButtonContainer,
   type ButtonContainerProps,
 } from './components/ButtonContainer';
+import { Resolve } from '../../typeFunctions';
 
 export interface ButtonProps
   extends IDataAttrs,
@@ -64,143 +65,150 @@ export interface ButtonProps
   iconPosition?: TButtonIconPosition;
 }
 
-export const InternalButton: React.FC<ButtonProps> = ({
-  'aria-label': ariaLabel,
-  as,
-  badgeText,
-  children,
-  colorScheme = 'neutral',
-  hasBadge,
-  href,
-  icon,
-  iconPosition = 'left',
-  id,
-  circular,
-  hasDropdown,
-  hasBoldIcon,
-  squared,
-  wide,
-  name,
-  onBlur,
-  onChange,
-  onFocus,
-  selectionScheme,
-  size = 'md',
-  state = 'enabled',
-  style,
-  tooltip,
-  type = 'button',
-  value,
-  ref,
-  ...restNativeProps
-}) => {
-  const defIconPosition: TButtonIconPosition =
-    squared && !hasDropdown ? null : iconPosition;
-  const isLoading =
-    state === 'loading' ||
-    state === 'loading-success' ||
-    state === 'loading-error';
-  const isSelected = state === 'selected';
-  const addonHasSpace =
-    Boolean(!squared && iconPosition) ||
-    Boolean(!squared && isLoading) ||
-    Boolean(icon && squared && hasDropdown);
-  return (
-    <ButtonContainer
-      {...restNativeProps}
-      aria-label={ariaLabel}
-      as={as}
-      colorScheme={colorScheme}
-      squared={squared}
-      href={href}
-      icon={icon}
-      id={id}
-      circular={circular}
-      hasDropdown={hasDropdown}
-      wide={wide}
-      ref={ref}
-      selectionScheme={selectionScheme}
-      size={size}
-      state={state}
-      style={style}
-      tooltip={tooltip}
-      type={type}
-    >
-      {selectionScheme && (
-        <ButtonSelection
-          id={id}
-          disabled={state === 'disabled'}
-          checked={onChange ? isSelected : null}
-          label={ariaLabel || tooltip || String(children)}
-          name={name}
-          onBlur={onBlur}
-          onChange={onChange}
-          onFocus={onFocus}
-          selectionScheme={selectionScheme}
-          value={value}
-        />
-      )}
+export const InternalButton = React.forwardRef<
+  HTMLButtonElement,
+  Resolve<ButtonProps>
+>(
+  (
+    {
+      'aria-label': ariaLabel,
+      as,
+      badgeText,
+      children,
+      colorScheme = 'neutral',
+      hasBadge,
+      href,
+      icon,
+      iconPosition = 'left',
+      id,
+      circular,
+      hasDropdown,
+      hasBoldIcon,
+      squared,
+      wide,
+      name,
+      onBlur,
+      onChange,
+      onFocus,
+      selectionScheme,
+      size = 'md',
+      state = 'enabled',
+      style,
+      tooltip,
+      type = 'button',
+      value,
+      ...restNativeProps
+    },
+    ref,
+  ) => {
+    const defIconPosition: TButtonIconPosition =
+      squared && !hasDropdown ? null : iconPosition;
+    const isLoading =
+      state === 'loading' ||
+      state === 'loading-success' ||
+      state === 'loading-error';
+    const isSelected = state === 'selected';
+    const addonHasSpace =
+      Boolean(!squared && iconPosition) ||
+      Boolean(!squared && isLoading) ||
+      Boolean(icon && squared && hasDropdown);
+    return (
+      <ButtonContainer
+        {...restNativeProps}
+        aria-label={ariaLabel}
+        as={as}
+        colorScheme={colorScheme}
+        squared={squared}
+        href={href}
+        icon={icon}
+        id={id}
+        circular={circular}
+        hasDropdown={hasDropdown}
+        wide={wide}
+        ref={ref}
+        selectionScheme={selectionScheme}
+        size={size}
+        state={state}
+        style={style}
+        tooltip={tooltip}
+        type={type}
+      >
+        {selectionScheme && (
+          <ButtonSelection
+            id={id}
+            disabled={state === 'disabled'}
+            checked={onChange ? isSelected : null}
+            label={ariaLabel || tooltip || String(children)}
+            name={name}
+            onBlur={onBlur}
+            onChange={onChange}
+            onFocus={onFocus}
+            selectionScheme={selectionScheme}
+            value={value}
+          />
+        )}
 
-      {(icon || isLoading) && (
-        <ButtonAddon
-          hasSpace={addonHasSpace}
-          id={id}
-          position={defIconPosition}
-          size={size}
-        >
-          {isLoading ? (
-            <ButtonLoader
-              colorScheme={BUTTON_LOADER_COLOR_SCHEME_MAP[colorScheme]}
-              size={size}
-              state={state}
-            />
-          ) : (
-            icon && (
-              <ButtonIcon strong={hasBoldIcon} size={size}>
-                {icon}
-              </ButtonIcon>
-            )
-          )}
-        </ButtonAddon>
-      )}
+        {(icon || isLoading) && (
+          <ButtonAddon
+            hasSpace={addonHasSpace}
+            id={id}
+            position={defIconPosition}
+            size={size}
+          >
+            {isLoading ? (
+              <ButtonLoader
+                colorScheme={BUTTON_LOADER_COLOR_SCHEME_MAP[colorScheme]}
+                size={size}
+                state={state}
+              />
+            ) : (
+              icon && (
+                <ButtonIcon strong={hasBoldIcon} size={size}>
+                  {icon}
+                </ButtonIcon>
+              )
+            )}
+          </ButtonAddon>
+        )}
 
-      {children && squared ? (
-        children
-      ) : children ? (
-        <ButtonLabel>{children}</ButtonLabel>
-      ) : null}
+        {children && squared ? (
+          children
+        ) : children ? (
+          <ButtonLabel>{children}</ButtonLabel>
+        ) : null}
 
-      {hasBadge && (
-        <ButtonBadge
-          colorScheme={
-            colorScheme === 'accent-high'
-              ? 'primary'
-              : colorScheme === 'accent'
-                ? 'secondary'
-                : colorScheme === 'quiet'
-                  ? 'neutral'
-                  : (colorScheme as TUIColorScheme)
-          }
-          hasCircularParent={circular}
-          id={id}
-          size={BUTTON_BADGE_SIZE_MAP[size]}
-          text={badgeText}
-        />
-      )}
+        {hasBadge && (
+          <ButtonBadge
+            colorScheme={
+              colorScheme === 'accent-high'
+                ? 'primary'
+                : colorScheme === 'accent'
+                  ? 'secondary'
+                  : colorScheme === 'quiet'
+                    ? 'neutral'
+                    : (colorScheme as TUIColorScheme)
+            }
+            hasCircularParent={circular}
+            id={id}
+            size={BUTTON_BADGE_SIZE_MAP[size]}
+            text={badgeText}
+          />
+        )}
 
-      {hasDropdown && (
-        <ButtonAddon
-          hasSpace={addonHasSpace}
-          isDropdown
-          size={size}
-          position="right"
-        >
-          <ButtonDropdownIcon size={size} state={state} />
-        </ButtonAddon>
-      )}
-    </ButtonContainer>
-  );
-};
+        {hasDropdown && (
+          <ButtonAddon
+            hasSpace={addonHasSpace}
+            isDropdown
+            size={size}
+            position="right"
+          >
+            <ButtonDropdownIcon size={size} state={state} />
+          </ButtonAddon>
+        )}
+      </ButtonContainer>
+    );
+  },
+);
 
 export const Button = InternalButton as typeof InternalButton & {
   _Addon: typeof ButtonAddon;

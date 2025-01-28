@@ -4,16 +4,14 @@ import { css, useTheme } from 'styled-components';
 import { Flex, type FlexProps } from '../../../Flex';
 import type { ITabs } from '../../declarations';
 import { mergeStyles } from '../../../../helpers';
+import { Resolve } from '../../../../typeFunctions';
 
 export interface TabsContainerProps extends FlexProps, ITabs {}
 
-export const TabsContainer: React.FC<TabsContainerProps> = ({
-  children,
-  contained,
-  size,
-  style,
-  ...restFlexProps
-}) => {
+export const TabsContainer = React.forwardRef<
+  HTMLDivElement,
+  Resolve<TabsContainerProps>
+>(({ children, contained, size, style, ...restFlexProps }, ref) => {
   const tokens = useTheme().cmp.tabs.container;
   const baseStyles = css`
     ${contained &&
@@ -29,6 +27,7 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
   return (
     <Flex
       {...restFlexProps}
+      ref={ref}
       as="nav"
       position="relative"
       style={mergeStyles(baseStyles, style)}
@@ -36,4 +35,4 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
       {children}
     </Flex>
   );
-};
+});
