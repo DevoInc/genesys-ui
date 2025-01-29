@@ -17,6 +17,7 @@ export const StyledSelectChip = styled(StyledChipContainer)<{
       margin: ${chipTokens.space.margin};
       white-space: pre;
       cursor: default;
+      max-width: 100%;
 
       &:hover::before,
       &:focus::before {

@@ -4,6 +4,7 @@ import { type MultiValueProps as RSMultiValueProps } from 'react-select';
 import type { TSelectOption } from '../../declarations';
 import { getValueIconSize } from '../../utils';
 import { ValueIcon } from '../ValueIcon';
+import { Chip } from '../../../Chip';
 
 export interface MultiValueLabelProps<Option>
   extends RSMultiValueProps<Option> {}
@@ -28,7 +29,7 @@ export const MultiValueLabel = <Option extends TSelectOption>({
           {data.icon}
         </ValueIcon>
       )}
-      {data.label}
+      <Chip._Content>{data.label}</Chip._Content>
     </>
   );
 };

@@ -38,6 +38,7 @@ export const MultiValueContainer = <Option extends TSelectOption>({
   const style: React.CSSProperties = {
     transform: CSS.Transform.toString(transform && { ...transform, scaleY: 1 }),
     position: 'relative',
+    maxWidth: '100%',
   };
   const { values } = React.useContext(SelectControlContext);
   const lastValue = values.slice(-1)[0];

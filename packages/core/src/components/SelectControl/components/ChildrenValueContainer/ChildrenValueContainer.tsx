@@ -24,7 +24,11 @@ export const ChildrenValueContainer: React.FC<ChildrenValueContainer> = ({
   const cmpTokens = theme.cmp.selectControl;
   const square = cmpTokens.size.height[size];
   return (
-    <HFlex spacing="cmp-xxs" paddingLeft={values.length ? 'cmp-md' : undefined}>
+    <HFlex
+      maxWidth="100%"
+      spacing="cmp-xxs"
+      paddingLeft={values.length ? 'cmp-md' : undefined}
+    >
       {multipleSubtle && values.length > 0 && (
         <Typography.Caption
           colorScheme="weaker"
