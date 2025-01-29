@@ -35,7 +35,7 @@ export type TAvatarFit = React.CSSProperties['objectFit'];
 export type TAvatarPosition = React.CSSProperties['objectPosition'];
 
 export type TAvatarBadgeFn = (props: {
-  colorScheme: TBadgeColorScheme;
+  colorScheme: TBadgeColorScheme | React.CSSProperties['backgroundColor'];
   size: TBadgeSize;
 }) => React.ReactNode;
 
@@ -47,8 +47,11 @@ export interface IAvatar {
   badge?: TAvatarBadgeFn;
   /** If the Avatar has a border to differentiate it from the background. */
   bordered?: boolean;
-  /** Color scheme: background color, text color, badge color scheme... etc. */
-  colorScheme?: TAvatarColorScheme;
+  /** It defines the color schema for the background and text color.
+   * There are predefined types: primary, secondary... etc.
+   * It's possible to use a custom color used for the background color and
+   * auto-generated for the text based on this one to maintain AA accessible contrast.*/
+  colorScheme?: TAvatarColorScheme | React.CSSProperties['backgroundColor'];
   children: React.ReactNode;
   /** The custom size (width and height) defined by an object.
    * If the variable square is defined, then it's assigned that value to the

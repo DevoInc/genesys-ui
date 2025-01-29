@@ -5,7 +5,11 @@ import type { IAvatarStyled } from '../../declarations';
 import { getAvatarSizeConfig } from '../../utils';
 
 import { typoMixin } from '../../../../styled/';
-import { getTokenKeyFromColorScheme } from '../../../../helpers';
+import {
+  getAccTextColor,
+  getTokenKeyFromColorScheme,
+  isValidColor,
+} from '../../../../helpers';
 
 export interface StyledAvatarContainerProps
   extends Pick<
@@ -32,8 +36,16 @@ export const StyledAvatarContainer = styled.span<StyledAvatarContainerProps>`
   }) => {
     const colorSchemeForTokens = getTokenKeyFromColorScheme($colorScheme);
     const cmpTokens = theme.cmp.avatar;
-    const bgColor = cmpTokens.color.background[colorSchemeForTokens];
-    const color = cmpTokens.color.text[colorSchemeForTokens];
+    const bgColor = isValidColor($colorScheme)
+      ? $colorScheme
+      : cmpTokens.color.background[colorSchemeForTokens];
+    const color = isValidColor($colorScheme)
+      ? getAccTextColor(
+          $colorScheme,
+          '#fff',
+          theme.alias.color.text.body.strongest,
+        )
+      : cmpTokens.color.text[colorSchemeForTokens];
     const width = getAvatarSizeConfig({ $customSize, $size, theme }).width;
     const height = getAvatarSizeConfig({ $customSize, $size, theme }).height;
     const borderRadius =
