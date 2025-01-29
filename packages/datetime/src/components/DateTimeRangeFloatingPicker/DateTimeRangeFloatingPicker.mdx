@@ -32,9 +32,27 @@ Any change made to the `DateTimeRange` component triggers the `onChange` method.
 
 <Canvas of={Stories.Playground} />
 
-## Cases
+## `parseDate` & `formatDate`
 
-<Canvas of={Stories.CustomPresets} />
+If we need a custom time language we can use the properties `parseDate` &
+`formatDate`.
+
+- `parseDate`: Allow us to define the parser of the language, for example, our
+language could accept strings like `now() - 5m`, this is the place for parse
+this string and validate it, etc.
+- `formatDate`: Allow us to visualize our date in the form of the custom
+language if needed
+
+<Canvas of={Stories.CustomTimeLanguage} />
+
+## Limit the valid dates with `parseRange` and `parseDate`
+
+- `parseDate` also allow to check if a day is valid in the calendar and set a
+tooltip with the reason if not.
+- `parseRange` is the same as `parseDate` but for the range the main and default
+behavior is to avoid the user insert an inverted range.
+
+<Canvas of={Stories.Limits} />
 
 ## Props
 

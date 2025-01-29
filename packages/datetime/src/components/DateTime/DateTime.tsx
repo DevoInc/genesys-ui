@@ -22,7 +22,7 @@ import type { ITime } from '../../declarations';
 import { Calendar, type CalendarProps } from '../Calendar';
 import { Time } from '../Time';
 import { MonthSelector, useMonthSelector } from '../MonthSelector';
-import { parseAllDates } from '../../parsers';
+import { tautologyParseDate } from '../../parsers';
 import { TDateTimeI18n } from './declarations';
 import { defaultDateTimeI18n } from './i18n';
 import { useMergeI18n } from '../../hooks';
@@ -54,7 +54,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
   hasTime = true,
   onChange,
   style,
-  parseDate = parseAllDates,
+  parseDate = tautologyParseDate,
   weekDays,
   weekStart,
   onChangeMonthDate = () => null,

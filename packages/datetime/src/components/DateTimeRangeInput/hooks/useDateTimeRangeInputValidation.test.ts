@@ -20,6 +20,13 @@ describe('useDateTimeRangeInputValidation', () => {
             errors: !isValid ? ['Is not a number'] : [],
           };
         },
+        parseRange: (range) => {
+          return {
+            isValid: true,
+            value: range,
+            errors: [],
+          };
+        },
       }),
     );
     expect(fn).toBeCalledTimes(0);

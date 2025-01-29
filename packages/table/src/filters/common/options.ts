@@ -55,6 +55,6 @@ export const DATE_OPTIONS = [
 ];
 
 export const BOOLEAN_OPTIONS = [
-  { value: 'true', label: 'True' },
-  { value: 'false', label: 'False' },
+  { value: 'true', label: 'Yes' },
+  { value: 'false', label: 'No' },
 ];

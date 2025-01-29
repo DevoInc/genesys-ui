@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { DateTimeInput } from './DateTimeInput';
 import { useDateTimeInputValidation } from './hooks';
 import { formatDate } from '../../helpers';
-import { parseStrDate } from '../../parsers';
+import { getDefaultParseDate } from '../../parsers';
 
 const meta: Meta<typeof DateTimeInput> = {
   title: 'Components/Datetime/DateTimeInput',
@@ -22,7 +22,7 @@ export const Playground: Story = {
         value,
         onChange: setValue,
         reprDate: (ts: number) => formatDate(ts),
-        parseDate: parseStrDate,
+        parseDate: getDefaultParseDate(),
       });
 
       return (

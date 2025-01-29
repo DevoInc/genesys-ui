@@ -1,8 +1,8 @@
 import { compareDesc } from 'date-fns';
 
-import { IParseResult } from '../declarations';
+import type { IParseResult } from '../declarations';
 
-export const parseNoFutureDates = (dt: Date | number): IParseResult => {
+export const noFutureParseDates = (dt: Date | number): IParseResult => {
   const result = compareDesc(dt, new Date().getTime());
   const isValid = result >= 0;
   return {

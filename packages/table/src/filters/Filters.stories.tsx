@@ -16,6 +16,7 @@ import {
   BasicTable,
   TColDef,
   TNumberFilterValue,
+  TContextUser,
 } from '../../src';
 
 const meta: Meta<typeof BasicTable> = {
@@ -37,6 +38,7 @@ const data = [
     bool: false,
     option: 'A',
     multiple: ['M', 'N'],
+    user: 'christine@email.com',
   },
   {
     text: 'Ina Osborne',
@@ -45,6 +47,7 @@ const data = [
     bool: true,
     option: 'B',
     multiple: ['N'],
+    user: 'ina@email.com',
   },
   {
     text: 'Jimmy Hogan',
@@ -53,6 +56,7 @@ const data = [
     bool: true,
     option: 'C',
     multiple: ['M', 'O'],
+    user: 'jimmy@email.com',
   },
   {
     text: 'Myra Bell',
@@ -61,6 +65,7 @@ const data = [
     bool: true,
     option: 'C',
     multiple: ['N', 'O'],
+    user: 'myra@email.com',
   },
   {
     text: 'Jane Padilla',
@@ -69,6 +74,7 @@ const data = [
     bool: false,
     option: 'B',
     multiple: ['O'],
+    user: 'jane@email.com',
   },
   {
     text: 'Isabelle Gardner',
@@ -77,6 +83,7 @@ const data = [
     bool: true,
     option: 'A',
     multiple: ['M'],
+    user: 'isabelle@email.com',
   },
   {
     text: 'Sean Parsons',
@@ -85,6 +92,7 @@ const data = [
     bool: true,
     option: 'A',
     multiple: ['N', 'O'],
+    user: 'sean@email.com',
   },
   {
     text: 'Alvin Castro',
@@ -93,6 +101,7 @@ const data = [
     bool: false,
     option: 'B',
     multiple: ['M', 'N', 'O'],
+    user: 'alvin@email.com',
   },
   {
     text: 'Lawrence Holland',
@@ -101,6 +110,7 @@ const data = [
     bool: false,
     option: 'B',
     multiple: ['O'],
+    user: 'lawrence@email.com',
   },
   {
     text: 'Brandon Robertson',
@@ -109,6 +119,7 @@ const data = [
     bool: true,
     option: 'C',
     multiple: ['N'],
+    user: 'brandon@email.com',
   },
 ];
 
@@ -169,7 +180,7 @@ const colDefs = [
 ];
 
 const FilterTable = () => {
-  const [ textFilter, setTextFilter ] = React.useState(undefined);
+  const [textFilter, setTextFilter] = React.useState(undefined);
   const { filterStruct, onFilter } = useFilterStruct();
   const dataFiltered = [...data]
     .filter(filterDataByText(textFilter, colDefs))
@@ -181,7 +192,7 @@ const FilterTable = () => {
         aria-label="Contains text..."
         placeholder="Contains text..."
         type="search"
-        value={ textFilter }
+        value={textFilter}
         onChange={(ev) => {
           setTextFilter(ev.target.value);
         }}
@@ -281,9 +292,79 @@ const FilterAndBulkActionsTable = () => {
         },
       } as TContextOptions,
     },
+    {
+      id: 'user',
+      headerName: 'User',
+      preset: 'user',
+      context: {
+        userMapping: {
+          'christine@email.com': {
+            name: 'Christine',
+            email: 'christine@email.com',
+            subtitle: 'The subtitle',
+            job: 'My job',
+          },
+          'ina@email.com': {
+            name: 'Ina',
+            email: 'ina@email.com',
+            subtitle: 'The subtitle',
+            job: 'My job',
+          },
+          'jimmy@email.com': {
+            name: 'Jimmy',
+            email: 'jimmy@email.com',
+            subtitle: 'The subtitle',
+            job: 'My job',
+          },
+          'myra@email.com': {
+            name: 'Myra',
+            email: 'myra@email.com',
+            subtitle: 'The subtitle',
+            job: 'My job',
+          },
+          'jane@email.com': {
+            name: 'Jane',
+            email: 'jane@email.com',
+            subtitle: 'The subtitle',
+            job: 'My job',
+          },
+          'isabelle@email.com': {
+            name: 'Isabelle',
+            email: 'isabelle@email.com',
+            subtitle: 'The subtitle',
+            job: 'My job',
+          },
+          'sean@email.com': {
+            name: 'Sean',
+            email: 'sean@email.com',
+            subtitle: 'The subtitle',
+            job: 'My job',
+          },
+          'lawrence@email.com': {
+            name: 'Lawrence',
+            email: 'lawrence@email.com',
+            subtitle: 'The subtitle',
+            job: 'My job',
+          },
+          'alvin@email.com': {
+            name: 'Alvin',
+            email: 'alvin@email.com',
+            subtitle: 'The subtitle',
+            job: 'My job',
+          },
+          'brandon@email.com': {
+            name: 'Brandon',
+            email: 'brandon@email.com',
+            subtitle: 'The subtitle',
+            job: 'My job',
+          },
+        },
+      } as TContextUser,
+    },
   ];
 
   const { filterStruct, onFilter } = useFilterStruct();
+  // console.log('filtered', filterDataByFilterStruct(filterStruct));
   const dataFiltered = [...data].filter(filterDataByFilterStruct(filterStruct));
 
   return (
@@ -389,7 +470,7 @@ const dataGlobal = [
     text: 'Ina Osborne',
     num: 20,
     bool: true,
-    option:'B',
+    option: 'B',
   },
   {
     text: 'Jimmy Hogan',
@@ -404,33 +485,44 @@ const dataGlobal = [
     option: 'C',
   },
   {
-    text: 'Jane Padilla', num: 46, bool: false,
+    text: 'Jane Padilla',
+    num: 46,
+    bool: false,
     option: 'B',
   },
   {
-    text: 'Isabelle Gardner', num: 31, bool: true,
+    text: 'Isabelle Gardner',
+    num: 31,
+    bool: true,
     option: 'A',
   },
   {
-    text: 'Sean Parsons', num: 31, bool: true,
+    text: 'Sean Parsons',
+    num: 31,
+    bool: true,
     option: 'A',
   },
   {
-    text: 'Alvin Castro', num: 55, bool: false,
+    text: 'Alvin Castro',
+    num: 55,
+    bool: false,
     option: 'B',
   },
   {
-    text: 'Lawrence Holland', num: 56, bool: false,
+    text: 'Lawrence Holland',
+    num: 56,
+    bool: false,
     option: 'B',
   },
   {
-    text: 'Brandon Robertson', num: 41, bool: true,
+    text: 'Brandon Robertson',
+    num: 41,
+    bool: true,
     option: 'C',
   },
 ];
 
 const GlobalTextFilterTable = () => {
-
   const colDefs = [
     {
       id: 'text',
@@ -465,7 +557,7 @@ const GlobalTextFilterTable = () => {
     },
   ];
 
-  const [ textFilter, setTextFilter ] = React.useState(undefined);
+  const [textFilter, setTextFilter] = React.useState(undefined);
   const { filterStruct, onFilter } = useFilterStruct();
   const dataFiltered = [...dataGlobal]
     .filter(filterDataByText(textFilter, colDefs))
@@ -477,7 +569,7 @@ const GlobalTextFilterTable = () => {
         aria-label="Contains text..."
         placeholder="Contains text..."
         type="search"
-        value={ textFilter }
+        value={textFilter}
         onChange={(ev) => {
           setTextFilter(ev.target.value);
         }}
@@ -497,4 +589,3 @@ const GlobalTextFilterTable = () => {
 export const GlobalTextFilter: Story = {
   render: () => <GlobalTextFilterTable />,
 };
-

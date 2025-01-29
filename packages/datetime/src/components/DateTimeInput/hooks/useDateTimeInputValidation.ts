@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import type { IParseResult } from '../../../declarations';
+import type { IParseResult, TCalendarDate } from '../../../declarations';
 
 export const useDateTimeInputValidation = ({
   value,
@@ -31,7 +31,7 @@ export const useDateTimeInputValidation = ({
     const result = parseDate(newStrValue);
     setState({ inputValue: newStrValue, errors: result.errors });
     if (result.isValid) {
-      onChange(result.value);
+      onChange(result.value as TCalendarDate);
     }
   };
 

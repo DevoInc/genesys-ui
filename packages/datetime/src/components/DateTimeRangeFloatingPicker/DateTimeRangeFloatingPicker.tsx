@@ -11,14 +11,20 @@ import {
   type IDataAttrs,
 } from '@devoinc/genesys-ui';
 
-import { parseStrDate } from '../../parsers';
+import { getDefaultParseDate, getDefaultParseRange } from '../../parsers';
 import {
   areDateRangeEqual,
   formatDate as formatDateHelper,
-  tryParseDate,
+  tryParseDateForCalendar,
 } from '../../helpers';
-
-import type { IParseResult, ITime, TDateRange } from '../../declarations';
+import {
+  TCalendarDate,
+  TFormatDate,
+  TParseDate,
+  TParseRange,
+  type ITime,
+  type TDateRange,
+} from '../../declarations';
 import { DateTimeRange, type DateTimeRangeProps } from '../DateTimeRange';
 import {
   DateTimeRangeInput,
@@ -61,10 +67,11 @@ export interface DateTimeRangeFloatingPickerProps
   disableApplyButton?: boolean;
   /** Function called when Cancel button is clicked. */
   onCancel?: () => void;
-  parseDate?: (str: string) => IParseResult;
-  formatDate?: (dt: string | Date | number) => string;
+  parseDate?: TParseDate;
+  parseRange?: TParseRange;
+  formatDate?: TFormatDate;
 
-  onChange: (range: (string | number | Date)[]) => void;
+  onChange: (range: TDateRange) => void;
   autoApply?: boolean;
 }
 
@@ -80,7 +87,8 @@ export const DateTimeRangeFloatingPicker: React.FC<
   onCancel,
   onChange,
   onClose: onCloseCallback,
-  parseDate = parseStrDate,
+  parseDate = getDefaultParseDate(),
+  parseRange = getDefaultParseRange(),
   formatDate = formatDateHelper,
   placement = 'bottom-start',
   size = 'md',
@@ -102,24 +110,24 @@ export const DateTimeRangeFloatingPicker: React.FC<
   const [tmpValue, setTmpValue] =
     React.useState<(string | number | Date)[]>(value);
 
-  const [monthDate, setMonthDate] = React.useState<number | Date>(() =>
-    tryParseDate(parseDate)(value[0]),
+  const [monthDate, setMonthDate] = React.useState<TCalendarDate>(
+    tryParseDateForCalendar(parseDate)(value[0]),
   );
 
-  const { inputValue, inputOnChange, errors, updateValue } =
+  const { inputValue, inputOnChange, errors, rangeErrors, updateValue } =
     useDateTimeRangeInputValidation({
       value: tmpValue,
       onChange: (range) => {
-        setMonthDate(tryParseDate(parseDate)(range[0]));
+        setMonthDate(tryParseDateForCalendar(parseDate)(range[0]));
         if (autoApply) {
           onChange(range);
         } else {
           setTmpValue(range);
         }
       },
-      //reprDate: formatDate,
       reprDate: (ts: number) => formatDate(ts),
       parseDate,
+      parseRange,
     });
 
   const isDisabledApplyButton =
@@ -148,7 +156,9 @@ export const DateTimeRangeFloatingPicker: React.FC<
         <div ref={ref}>
           <DateTimeRangeInput
             aria-controls={`${id}-range-selector`}
-            value={inputValue}
+            value={Array.from({ length: 2 }).map(
+              (_, idx) => inputValue[idx] ?? '',
+            )}
             id={id ? `${id}-range-control` : null}
             isOpen={isOpened}
             onKeyUp={(index, event) => {
@@ -180,6 +190,8 @@ export const DateTimeRangeFloatingPicker: React.FC<
               setOpened(true);
             }}
             size={size}
+            status={rangeErrors.length > 0 ? 'error' : 'base'}
+            helper={rangeErrors.length > 0 ? rangeErrors[0] : null}
             statuses={errors.map((e) => (e.length > 0 ? 'error' : 'base'))}
             helpers={errors.map((e) => (e.length > 0 ? e[0] : null))}
             onRealTimeClick={onRealTimeClick}
@@ -208,6 +220,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
                 presets={presets}
                 presetsPlaceholder={presetsPlaceholder}
                 monthDate={monthDate}
+                parseDate={parseDate}
                 onChangeMonthDate={(dt) => {
                   setMonthDate(dt);
                 }}

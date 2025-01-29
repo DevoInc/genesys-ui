@@ -1,0 +1,29 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './UserRenderer.stories';
+
+<Meta of={Stories} />
+
+# UserRenderer
+
+The `UserRenderer` component is designed to display user information in a tabular context.
+Depending on the user data, it conditionally renders an interactive `Popover` with additional user details.
+
+## How to import
+
+<Source code={`import { UserRender } from '@devo/genesys-ui-table';`} />
+
+## Basic usage
+
+<Canvas of={Stories.Playground} />
+
+## Extended usage
+
+When additional information is give trough `userMapping` context value, a `Popover` component involve the information.
+`userMapping` map the object key with the `value` argument.
+
+<Canvas of={Stories.Detailed} />
+
+## Props
+
+<ArgTypes of={Stories} />

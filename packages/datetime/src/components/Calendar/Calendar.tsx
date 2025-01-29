@@ -17,9 +17,9 @@ import {
   type IStyledPolymorphic,
   type IDataAttrs,
 } from '@devoinc/genesys-ui';
-import type { IParseResult, TDateRange } from '../../declarations';
+import type { TDateRange, TParseCalendarDate } from '../../declarations';
 import { toTimestamp } from '../../helpers';
-import { parseAllDates } from '../../parsers';
+import { tautologyParseDate } from '../../parsers';
 import { CalendarWeekDay, Cell, type CellProps } from './components';
 import { rotateWeekDays, WEEK_DAYS } from '../../helpers';
 import { defaultDateRepr } from './day';
@@ -56,7 +56,7 @@ export interface CalendarProps
   weekStart?: number;
   tz?: string;
   /** Parse date for selectable dates.  */
-  parseDate?: (dt: Date | number) => IParseResult;
+  parseDate?: TParseCalendarDate;
   /** Max date allowed */
   minDate?: number | Date;
   /** Min date allowed */
@@ -76,7 +76,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
   onMouseEnter,
   onMouseLeave,
   value = [],
-  parseDate = parseAllDates,
+  parseDate = tautologyParseDate,
   weekDays = WEEK_DAYS,
   weekStart = 0,
   disableHoverDay = false,

@@ -1,5 +1,66 @@
 # Changelog
 
+## [17.1.1](https://github.com/DevoInc/genesys-ui/compare/v17.1.0...v17.1.1) (2025-01-24)
+
+### Bug Fixes
+
+* mapTextToColors ([b0106a6](https://github.com/DevoInc/genesys-ui/commit/b0106a6069bde17ec0e868a772466c2f0827e304))
+
+## [17.1.0](https://github.com/DevoInc/genesys-ui/compare/v17.0.0...v17.1.0) (2025-01-24)
+
+### Features
+
+* hide Select all text ([a77871c](https://github.com/DevoInc/genesys-ui/commit/a77871c4de777ad88d92d4e848b891cc1237e8b9))
+
+## [17.0.0](https://github.com/DevoInc/genesys-ui/compare/v16.8.0...v17.0.0) (2025-01-22)
+
+### ⚠ BREAKING CHANGES
+
+* use React 19 and above as minimal React version
+
+### Features
+
+* **datetime:** added DTRFP parseRange, and improvements on parsers ([5de5464](https://github.com/DevoInc/genesys-ui/commit/5de54640d0cd165a68140404ec63cdb053cbe208))
+* use React 19 and above as minimal React version ([f36efeb](https://github.com/DevoInc/genesys-ui/commit/f36efeb7902233e6a9723f2587bbc81cf07a1d17))
+
+### Bug Fixes
+
+* **datetime:** fix type on a hook ([f1d024b](https://github.com/DevoInc/genesys-ui/commit/f1d024b17b160f9593e848573a2fb0a44b11eca4))
+* **datetime:** missing parser defaults ([97a90ec](https://github.com/DevoInc/genesys-ui/commit/97a90ec62f39878943eec9cacf8b30bc823d4c3c))
+
+## [16.8.0](https://github.com/DevoInc/genesys-ui/compare/v16.7.1...v16.8.0) (2025-01-21)
+
+### Features
+
+* improve UserFilter component ([8d9ff0d](https://github.com/DevoInc/genesys-ui/commit/8d9ff0df94dc2006f7489ac14dd40145e9d0a1cc))
+
+## [16.7.1](https://github.com/DevoInc/genesys-ui/compare/v16.7.0...v16.7.1) (2025-01-21)
+
+### Bug Fixes
+
+* update UserFilter behaviour ([4d3101c](https://github.com/DevoInc/genesys-ui/commit/4d3101cab7a6a08ee971b9341421692af23778c6))
+
+## [16.7.0](https://github.com/DevoInc/genesys-ui/compare/v16.6.0...v16.7.0) (2025-01-20)
+
+### Features
+
+* improve UserRenderer table component ([4ff4825](https://github.com/DevoInc/genesys-ui/commit/4ff4825f3f582c2ad4e152208852af9647ab7548))
+* new MapTextsToColor function helper ([0a1b220](https://github.com/DevoInc/genesys-ui/commit/0a1b2202c6be03978f79887c7dce4fb665f4ac03))
+* User info render ([d12d513](https://github.com/DevoInc/genesys-ui/commit/d12d513f74c119d17858157242263492f64a401a))
+* user preset ([1088640](https://github.com/DevoInc/genesys-ui/commit/1088640b236f4e988b9c9b91c738294f3fdece23))
+* UserFilter table component ([ede8575](https://github.com/DevoInc/genesys-ui/commit/ede85756374b1a901ed4770838a0cb81c685bd6e))
+
+### Bug Fixes
+
+* types and text ([e65fc51](https://github.com/DevoInc/genesys-ui/commit/e65fc512f928da37ce1e799ad4a70749924a849f))
+* UserRender types ([a210f98](https://github.com/DevoInc/genesys-ui/commit/a210f98610416cc53f80c5dc0d70b15d683c7842))
+
+## [16.6.0](https://github.com/DevoInc/genesys-ui/compare/v16.5.0...v16.6.0) (2025-01-17)
+
+### Features
+
+* added tooltip and description to the SelectControl option configuration. ([ef7a266](https://github.com/DevoInc/genesys-ui/commit/ef7a2666f02174becb7c8bf6161ab47dfc90d2cc))
+
 ## [16.5.0](https://github.com/DevoInc/genesys-ui/compare/v16.4.0...v16.5.0) (2025-01-17)
 
 ### Features

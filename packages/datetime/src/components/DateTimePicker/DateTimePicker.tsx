@@ -8,7 +8,7 @@ import {
 } from '@devoinc/genesys-ui';
 
 import { formatDate as formatDateHelper } from '../../helpers';
-import { parseStrDate } from '../../parsers';
+import { getDefaultParseDate } from '../../parsers';
 import { DateTime, type DateTimeProps } from '../DateTime';
 import {
   DateTimeInput,
@@ -50,7 +50,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   formatDate = formatDateHelper,
   id,
   onChange = () => null,
-  parseDate = parseStrDate,
+  parseDate = getDefaultParseDate(),
   value,
   helper,
   monthDate: initialMonthDate,

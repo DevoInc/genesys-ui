@@ -8,3 +8,4 @@ export * from './number';
 export * from './options';
 export * from './rowGrouping';
 export * from './text';
+export * from './user';

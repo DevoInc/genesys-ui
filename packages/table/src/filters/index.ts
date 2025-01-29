@@ -3,3 +3,4 @@ export * from './DateFilter';
 export * from './TextFilter';
 export * from './NumberFilter';
 export * from './OptionsFilter';
+export * from './UserFilter';

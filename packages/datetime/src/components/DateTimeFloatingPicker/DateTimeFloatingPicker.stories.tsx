@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { isWeekend } from 'date-fns';
 
 import { DateTimeFloatingPicker } from './DateTimeFloatingPicker';
-import { parseStrDate } from '../../parsers';
+import { getDefaultParseDate } from '../../parsers';
 
 const meta: Meta<typeof DateTimeFloatingPicker> = {
   title: 'Components/Datetime/DateTimeFloatingPicker',
@@ -28,8 +28,6 @@ export const Playground: Story = {
           value={value}
           onChange={(ts) => {
             setValue(ts);
-            // eslint-disable-next-line no-console
-            console.log({ onChange: ts });
           }}
         />
       );
@@ -53,8 +51,6 @@ export const WithoutButtons: Story = {
           autoApply
           onChange={(ts) => {
             setValue(ts);
-            // eslint-disable-next-line no-console
-            console.log(`OnChange ${ts}`);
           }}
         />
       );
@@ -76,7 +72,7 @@ export const CustomParser: Story = {
           value={value}
           autoApply={true}
           parseDate={(str: string) => {
-            const result = parseStrDate(str);
+            const result = getDefaultParseDate()(str);
             if (result.isValid) {
               const check = !isWeekend(result.value);
               if (!check) {
@@ -88,8 +84,6 @@ export const CustomParser: Story = {
           }}
           onChange={(ts) => {
             setValue(ts);
-            // eslint-disable-next-line no-console
-            console.log(`OnChange ${ts}`);
           }}
         />
       );
