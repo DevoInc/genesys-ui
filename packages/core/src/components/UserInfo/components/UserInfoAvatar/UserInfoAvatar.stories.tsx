@@ -55,6 +55,114 @@ export const Formats: Story = {
     ))(args),
 };
 
+export const Sizes: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <VFlex>
+        <UserInfo.Avatar name={props.name} avatar={avatarImage} size="sm" />
+        <UserInfo.Avatar name={props.name} avatar={avatarImage} size="md" />
+        <UserInfo.Avatar name={props.name} avatar={avatarImage} size="lg" />
+        <UserInfo.Avatar
+          name={props.name}
+          avatar={avatarImage}
+          format="bold"
+          size="sm"
+        />
+        <UserInfo.Avatar
+          name={props.name}
+          avatar={avatarImage}
+          format="bold"
+          size="md"
+        />
+        <UserInfo.Avatar
+          name={props.name}
+          avatar={avatarImage}
+          format="bold"
+          size="lg"
+        />
+        <UserInfo.Avatar
+          name={props.name}
+          avatar={avatarImage}
+          format="heading"
+          size="sm"
+        />
+        <UserInfo.Avatar
+          name={props.name}
+          avatar={avatarImage}
+          format="heading"
+          size="md"
+        />
+        <UserInfo.Avatar
+          name={props.name}
+          avatar={avatarImage}
+          format="heading"
+          size="lg"
+        />
+        <UserInfo.Avatar
+          name={props.name}
+          avatar={avatarImage}
+          subtitle="This is a subtitle"
+          size="sm"
+        />
+        <UserInfo.Avatar
+          name={props.name}
+          avatar={avatarImage}
+          subtitle="This is a subtitle"
+          size="md"
+        />
+        <UserInfo.Avatar
+          name={props.name}
+          avatar={avatarImage}
+          subtitle="This is a subtitle"
+          size="lg"
+        />
+        <UserInfo.Avatar
+          name={props.name}
+          avatar={avatarImage}
+          format="bold"
+          size="sm"
+          subtitle="This is a subtitle"
+        />
+        <UserInfo.Avatar
+          name={props.name}
+          avatar={avatarImage}
+          format="bold"
+          size="md"
+          subtitle="This is a subtitle"
+        />
+        <UserInfo.Avatar
+          name={props.name}
+          avatar={avatarImage}
+          format="bold"
+          size="lg"
+          subtitle="This is a subtitle"
+        />
+        <UserInfo.Avatar
+          name={props.name}
+          avatar={avatarImage}
+          format="heading"
+          size="sm"
+          subtitle="This is a subtitle"
+        />
+        <UserInfo.Avatar
+          name={props.name}
+          avatar={avatarImage}
+          format="heading"
+          size="md"
+          subtitle="This is a subtitle"
+        />
+        <UserInfo.Avatar
+          name={props.name}
+          avatar={avatarImage}
+          format="heading"
+          size="lg"
+          subtitle="This is a subtitle"
+        />
+      </VFlex>
+    ))(args),
+};
+
 export const AvatarSizes: Story = {
   tags: ['isHidden'],
   render: (args) =>
