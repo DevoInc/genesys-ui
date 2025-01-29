@@ -12,11 +12,9 @@ type Story = StoryObj<typeof TableHead>;
 
 export const Base: Story = {
   args: {
-    colDefs: [
-      {
-        id: 'col1',
-        cellRenderer: ({ value }) => String(value),
-      },
-    ],
+    scrolled: false,
+    width: 200,
+    children: 'TableHead',
+    tableId: 'table-id',
   },
 };
