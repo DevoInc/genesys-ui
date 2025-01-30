@@ -19,6 +19,8 @@ export interface IPanelHeaderAttrs extends IPanelContainerAttrs {
   appendContent?: React.ReactNode;
   /** Custom content before the heading */
   prependContent?: React.ReactNode;
+  /** Custom content below all the header content */
+  bottomContent?: React.ReactNode;
 }
 
 export interface IPanelCloseAttrs {

@@ -71,4 +71,4 @@ export const PanelBody: React.FC<Resolve<PanelBodyProps>> = ({
   );
 };
 
-PanelBody.displayName = 'PanelBody';
+PanelBody.displayName = 'Panel.Body';

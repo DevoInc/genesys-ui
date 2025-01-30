@@ -13,6 +13,8 @@ import { Panel } from '../../Panel';
 import { VFlex } from '../../../VFlex';
 import { Tag } from '../../../Tag';
 import { HFlex } from '../../../HFlex';
+import { InputControl } from '../../../InputControl';
+import { Box } from '../../../Box';
 
 const meta: Meta<typeof PanelHeader> = {
   title: 'Components/Layout/Panel/Components/PanelHeader',
@@ -114,6 +116,34 @@ export const AppendAndPrepend: Story = {
     appendContent: <Tag size="sm" colorScheme="info" text="appendContent" />,
     prependContent: (
       <Tag size="sm" colorScheme="data-dusk" text="prependContent" />
+    ),
+  },
+};
+
+export const BottomContent: Story = {
+  tags: ['isHidden'],
+  args: {
+    actions: [
+      <IconButton colorScheme="quiet" size="sm" key={1} icon={<GICopy />} />,
+      <IconButton
+        colorScheme="quiet"
+        size="sm"
+        key={2}
+        icon={<GIExpandMoveWindowFullScreen />}
+      />,
+      <IconButton
+        colorScheme="quiet"
+        size="sm"
+        key={3}
+        icon={<GIMenuAltVertical />}
+      />,
+    ],
+    bordered: true,
+    title: 'Header title',
+    bottomContent: (
+      <Box paddingTop="cmp-sm">
+        <InputControl aria-label="Filter" placeholder="Filter..." />
+      </Box>
     ),
   },
 };

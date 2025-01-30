@@ -21,6 +21,8 @@ import {
   PanelHeaderClose,
   PanelHeaderIcon,
 } from './components';
+import { VFlex } from '../../../VFlex';
+import { HFlex } from '../../../HFlex';
 
 export interface PanelHeaderProps
   extends IPanelBaseAttrs,
@@ -37,6 +39,7 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
   appendContent,
   as = 'header',
   bordered,
+  bottomContent,
   children,
   closeSettings,
   collapseSettings,
@@ -65,8 +68,6 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
       as={as}
       hasBoxShadow={hasBoxShadow ?? context.scrolledBodyContent}
       bordered={bordered}
-      customContent={Boolean(children)}
-      hasSubtitle={Boolean(subtitle)}
       removeSpace={removeSpace}
       padding={padding}
       paddingBottom={paddingBottom}
@@ -85,39 +86,44 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
           children
         )
       ) : (
-        <>
-          {collapseSettings && (
-            <PanelHeaderCollapseButton
-              onClick={collapseSettings?.onClick}
-              size={evalSize}
-              state={collapseSettings.expanded ? 'expanded' : 'enabled'}
-              tooltip={collapseSettings?.tooltip}
-            />
-          )}
-          {prependContent}
-          {(title || subtitle || icon) && (
-            <PanelHeaderHeading
-              helpTooltip={helpTooltip}
-              helpUrl={helpUrl}
-              icon={icon}
-              legend={legend}
-              size={evalSize}
-              subtitle={subtitle}
-              title={title}
-              titleTooltip={titleTooltip}
-            />
-          )}
-          {appendContent}
-          {actions && <PanelHeaderActions actions={actions} size={evalSize} />}
-          {closeSettings && (
-            <PanelHeaderClose
-              cssTranslate={closeSettings.cssTranslate}
-              onClick={closeSettings.onClick}
-              size={evalSize}
-              tooltip={closeSettings.tooltip}
-            />
-          )}
-        </>
+        <VFlex spacing="0">
+          <HFlex spacing="0">
+            {collapseSettings && (
+              <PanelHeaderCollapseButton
+                onClick={collapseSettings?.onClick}
+                size={evalSize}
+                state={collapseSettings.expanded ? 'expanded' : 'enabled'}
+                tooltip={collapseSettings?.tooltip}
+              />
+            )}
+            {prependContent}
+            {(title || subtitle || icon) && (
+              <PanelHeaderHeading
+                helpTooltip={helpTooltip}
+                helpUrl={helpUrl}
+                icon={icon}
+                legend={legend}
+                size={evalSize}
+                subtitle={subtitle}
+                title={title}
+                titleTooltip={titleTooltip}
+              />
+            )}
+            {appendContent}
+            {actions && (
+              <PanelHeaderActions actions={actions} size={evalSize} />
+            )}
+            {closeSettings && (
+              <PanelHeaderClose
+                cssTranslate={closeSettings.cssTranslate}
+                onClick={closeSettings.onClick}
+                size={evalSize}
+                tooltip={closeSettings.tooltip}
+              />
+            )}
+          </HFlex>
+          {bottomContent}
+        </VFlex>
       )}
     </PanelHeaderContainer>
   );
@@ -139,10 +145,10 @@ PanelHeader._Container = PanelHeaderContainer;
 PanelHeader._Heading = PanelHeaderHeading;
 PanelHeader._Icon = PanelHeaderIcon;
 
-InternalPanelHeader.displayName = 'PanelHeader';
-PanelHeader._Actions.displayName = 'PanelHeader._Actions';
-PanelHeader._Close.displayName = 'PanelHeader._Close';
-PanelHeader._CollapseButton.displayName = 'PanelHeader._CollapseButton';
-PanelHeader._Container.displayName = 'PanelHeader._Container';
-PanelHeader._Heading.displayName = 'PanelHeader._Heading';
-PanelHeader._Icon.displayName = 'PanelHeader._Icon';
+InternalPanelHeader.displayName = 'Panel.Header';
+PanelHeader._Actions.displayName = 'Panel.Header._Actions';
+PanelHeader._Close.displayName = 'Panel.Header._Close';
+PanelHeader._CollapseButton.displayName = 'Panel.Header._CollapseButton';
+PanelHeader._Container.displayName = 'Panel.Header._Container';
+PanelHeader._Heading.displayName = 'Panel.Header._Heading';
+PanelHeader._Icon.displayName = 'Panel.Header._Icon';

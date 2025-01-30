@@ -90,7 +90,7 @@ PanelFooter._Container = PanelFooterContainer;
 PanelFooter._Help = PanelFooterHelp;
 PanelFooter._Actions = PanelFooterActions;
 
-InternalPanelFooter.displayName = 'PanelFooter';
-PanelFooter._Container.displayName = 'PanelFooter._Container';
-PanelFooter._Help.displayName = 'PanelFooter._Help';
-PanelFooter._Actions.displayName = 'PanelFooter._Actions';
+InternalPanelFooter.displayName = 'Panel.Footer';
+PanelFooter._Container.displayName = 'Panel.Footer._Container';
+PanelFooter._Help.displayName = 'Panel.Footer._Help';
+PanelFooter._Actions.displayName = 'Panel.Footer._Actions';
