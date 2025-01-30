@@ -82,7 +82,11 @@ export const TableWrapper: React.FC = () => {
           scrolled={rowVirtualizer.scrollOffset !== 0}
           width={width}
         >
-          <TableHeadRow density={density} showFilters={showFilters}>
+          <TableHeadRow
+            density={density}
+            showFilters={showFilters}
+            tableId={id}
+          >
             {colDefs.map((colDef) => {
               const virtualColumn = items.find(
                 (item) => item.key === colDef.id,
@@ -111,7 +115,7 @@ export const TableWrapper: React.FC = () => {
             })}
           </TableHeadRow>
           {showFilters ? (
-            <TableHeadRow density={density} showFilters={false}>
+            <TableHeadRow density={density} showFilters={false} tableId={id}>
               {colDefs.map((colDef) => {
                 const virtualColumn = items.find(
                   (item) => item.key === colDef.id,
@@ -125,6 +129,7 @@ export const TableWrapper: React.FC = () => {
                       width={virtualColumn ? `${virtualColumn.size}px` : 'auto'}
                       offsetX={virtualColumn ? virtualColumn.start : undefined}
                       filter={true}
+                      title={colDef.headerName}
                     >
                       {colDef?.headerOnFilterPosition ? (
                         colDef?.headerRenderer ? (
