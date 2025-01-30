@@ -10,50 +10,56 @@ import { mergeStyles } from '../../helpers';
 
 export interface FlexProps extends BoxProps, ILayoutFlexCss {}
 
-const InternalFlex: React.FC<Resolve<FlexProps>> = ({
-  alignContent,
-  alignItems,
-  childrenFlex,
-  columnGap,
-  display,
-  flex,
-  flexDirection,
-  flexWrap,
-  gap,
-  justifyContent,
-  inline = false,
-  rowGap,
-  children,
-  style,
-  ...restBoxProps
-}) => {
-  const theme = useTheme();
-  return (
-    <Box
-      {...restBoxProps}
-      style={mergeStyles(
-        flexMixin({
-          alignContent,
-          alignItems,
-          childrenFlex,
-          columnGap,
-          display,
-          flex,
-          flexDirection,
-          flexWrap,
-          gap,
-          justifyContent,
-          inline,
-          rowGap,
-          theme,
-        }),
-        style,
-      )}
-    >
-      {children}
-    </Box>
-  );
-};
+const InternalFlex = React.forwardRef<HTMLDivElement, Resolve<FlexProps>>(
+  (
+    {
+      alignContent,
+      alignItems,
+      childrenFlex,
+      columnGap,
+      display,
+      flex,
+      flexDirection,
+      flexWrap,
+      gap,
+      justifyContent,
+      inline = false,
+      rowGap,
+      children,
+      style,
+      ...restBoxProps
+    },
+    ref,
+  ) => {
+    const theme = useTheme();
+    return (
+      <Box
+        {...restBoxProps}
+        ref={ref}
+        style={mergeStyles(
+          flexMixin({
+            alignContent,
+            alignItems,
+            childrenFlex,
+            columnGap,
+            display,
+            flex,
+            flexDirection,
+            flexWrap,
+            gap,
+            justifyContent,
+            inline,
+            rowGap,
+            theme,
+          }),
+          style,
+        )}
+      >
+        {children}
+      </Box>
+    );
+  },
+);
 
 export const Flex = InternalFlex as typeof InternalFlex & {
   Item: typeof FlexItem;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import type { TDensity } from '../../declarations';
 
 interface StyledTableHeadRowProps {

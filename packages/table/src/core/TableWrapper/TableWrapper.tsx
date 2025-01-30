@@ -9,16 +9,34 @@ import {
   useTableVirtualizationRow,
 } from '../../hooks';
 import { TableContext } from '../../context';
-
+import type { TTextFilterValue } from '../../filters';
 import { TableHead } from '../TableHead';
+import { TableHeadRow } from '../TableHeadRow';
 import { TableBody } from '../TableBody';
+import { Row } from '../Row';
+import { HeaderCell } from '../HeaderCell';
+import { HeaderTextRenderer } from '../../headerRenderers';
 import { StyledTable } from './StyledTable';
 import { StyledTableWrapper } from './StyledTableWrapper';
+import { getCellDef, getRowDef } from '../../helpers';
+import type { TRowDef } from '../../declarations';
+import { Cell } from '../Cell';
 
 export const TableWrapper: React.FC = () => {
   const theme = useTheme();
-  const { maxHeight, data, showFilters, density, rowDefs, colDefs, id } =
-    React.useContext(TableContext);
+  const {
+    maxHeight,
+    data,
+    showFilters,
+    density,
+    cellDefs,
+    rowDefs,
+    colDefs,
+    id,
+    onFilter,
+    striped,
+    stripedFn,
+  } = React.useContext(TableContext);
 
   const ref = React.useRef<HTMLDivElement>();
   const size = useSize(ref);
@@ -43,6 +61,7 @@ export const TableWrapper: React.FC = () => {
     rowVirtualizer.measure();
   }, [rowDefs, data]);
 
+  const items = columnVirtualizer?.getVirtualItems() ?? [];
   return (
     <StyledTableWrapper
       ref={ref}
@@ -59,16 +78,150 @@ export const TableWrapper: React.FC = () => {
         id={id}
       >
         <TableHead
-          items={columnVirtualizer?.getVirtualItems() ?? []}
+          tableId={id}
           scrolled={rowVirtualizer.scrollOffset !== 0}
           width={width}
-        />
-        <TableBody
-          columnVirtualizer={columnVirtualizer}
-          rowVirtualizer={rowVirtualizer}
-          width={width}
-          height={height}
-        />
+        >
+          <TableHeadRow density={density} showFilters={showFilters}>
+            {colDefs.map((colDef) => {
+              const virtualColumn = items.find(
+                (item) => item.key === colDef.id,
+              );
+
+              const headerOnFilterPosition =
+                showFilters && (colDef?.headerOnFilterPosition ?? false);
+              return (
+                !headerOnFilterPosition &&
+                virtualColumn && (
+                  <HeaderCell
+                    key={`header-cell-${colDef.id}`}
+                    colDef={colDef}
+                    width={virtualColumn && `${virtualColumn.size}px`}
+                    offsetX={virtualColumn && virtualColumn.start}
+                    title={colDef.headerName}
+                  >
+                    {colDef?.headerRenderer ? (
+                      colDef.headerRenderer({ colDef })
+                    ) : (
+                      <HeaderTextRenderer colDef={colDef} />
+                    )}
+                  </HeaderCell>
+                )
+              );
+            })}
+          </TableHeadRow>
+          {showFilters ? (
+            <TableHeadRow density={density} showFilters={false}>
+              {colDefs.map((colDef) => {
+                const virtualColumn = items.find(
+                  (item) => item.key === colDef.id,
+                );
+                return (
+                  (colDef?.cellFilter || colDef?.headerOnFilterPosition) &&
+                  virtualColumn && (
+                    <HeaderCell
+                      key={`header-filter-cell-${colDef.id}`}
+                      colDef={colDef}
+                      width={virtualColumn ? `${virtualColumn.size}px` : 'auto'}
+                      offsetX={virtualColumn ? virtualColumn.start : undefined}
+                      filter={true}
+                    >
+                      {colDef?.headerOnFilterPosition ? (
+                        colDef?.headerRenderer ? (
+                          colDef.headerRenderer({ colDef })
+                        ) : (
+                          <HeaderTextRenderer colDef={colDef} />
+                        )
+                      ) : colDef.cellFilter ? (
+                        colDef.cellFilter({
+                          colDef,
+                          onChange: (value: TTextFilterValue, type: string) => {
+                            if (onFilter) {
+                              onFilter(colDef, value, type);
+                            }
+                          },
+                        })
+                      ) : null}
+                    </HeaderCell>
+                  )
+                );
+              })}
+            </TableHeadRow>
+          ) : null}
+        </TableHead>
+        <TableBody width={width} height={height} tableId={id}>
+          {rowVirtualizer.getVirtualItems().map((virtualRow) => {
+            const rowData = data[virtualRow.index];
+            const rowDef = (getRowDef(rowDefs, rowData.id as string) ??
+              {}) as TRowDef;
+            return (
+              <Row
+                key={'tb_' + virtualRow.key}
+                striped={striped}
+                stripe={
+                  striped && stripedFn(virtualRow.index, rowData)
+                    ? 'even'
+                    : 'odd'
+                }
+                rowDef={rowDef}
+                width={columnVirtualizer.getTotalSize()}
+                height={virtualRow.size}
+                start={virtualRow.start}
+                rowIndex={virtualRow.index}
+              >
+                {rowDef?.cellRenderer ? (
+                  <Cell
+                    cellDef={{
+                      colId: 'afterRow',
+                      rowId: rowDef.id,
+                    }}
+                    colDef={{
+                      id: 'afterRow',
+                      cellRenderer: rowDef.cellRenderer,
+                    }}
+                    colIndex={0}
+                    data={null}
+                    height={virtualRow.size}
+                    key={`cell-0`}
+                    offsetX={0}
+                    row={rowData}
+                    rowIndex={virtualRow.index}
+                    rowDef={rowDef}
+                    width={columnVirtualizer.getTotalSize()}
+                  />
+                ) : (
+                  colDefs.map((colDef, index) => {
+                    const cellDef = getCellDef(
+                      cellDefs,
+                      colDef.id,
+                      rowDef.id || String(virtualRow.index),
+                    );
+                    const virtualColumn = columnVirtualizer
+                      .getVirtualItems()
+                      .find((col) => col.key === colDef.id);
+                    return (
+                      virtualColumn && (
+                        <Cell
+                          cellDef={cellDef}
+                          colDef={colDef}
+                          data={rowData[colDef.id] ?? ''}
+                          height={virtualRow.size}
+                          key={`cell-${colDef.id}`}
+                          offsetX={virtualColumn?.start}
+                          row={rowData}
+                          rowIndex={virtualRow.index}
+                          colIndex={index}
+                          rowDef={rowDef}
+                          width={virtualColumn?.size}
+                        />
+                      )
+                    );
+                  })
+                )}
+              </Row>
+            );
+          })}
+        </TableBody>
       </StyledTable>
     </StyledTableWrapper>
   );

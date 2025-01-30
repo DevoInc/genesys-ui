@@ -6,9 +6,10 @@ import { IconButton, type IconButtonProps } from '../../../IconButton';
 
 export interface ButtonGroupIconButtonProps extends IconButtonProps {}
 
-export const ButtonGroupIconButton: React.FC<
+export const ButtonGroupIconButton = React.forwardRef<
+  HTMLButtonElement,
   Resolve<ButtonGroupIconButtonProps>
-> = ({ children, ref, ...restIconButtonProps }) => {
+>(({ children, ...restIconButtonProps }, ref) => {
   const { colorScheme, size } = React.useContext(ButtonGroupContext);
   return (
     <IconButton
@@ -20,4 +21,4 @@ export const ButtonGroupIconButton: React.FC<
       {children}
     </IconButton>
   );
-};
+});

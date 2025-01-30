@@ -29,10 +29,8 @@ export const StyledTableHead = styled.thead<StyledTableHeadProps>`
     `;
   }}
 
-  ${({ theme }) => {
-    return css`
-      z-index: ${getTableZIndexMap(theme).head};
-      background-color: ${theme.cmp.table.head.color.background};
-    `;
-  }}
+  ${({ theme }) => css`
+    z-index: ${getTableZIndexMap(theme).head};
+    background-color: ${theme.cmp.table.head.color.background};
+  `}}
 `;

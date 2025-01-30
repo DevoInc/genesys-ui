@@ -11,15 +11,12 @@ import type { Resolve } from '../../../../typeFunctions';
 
 export interface TabsMarkProps
   extends IStyledOverloadCss,
-    Pick<ITabs, 'colorScheme'> {
-  ref?: React.Ref<HTMLDivElement>;
-}
+    Pick<ITabs, 'colorScheme'> {}
 
-export const TabsMark: React.FC<Resolve<TabsMarkProps>> = ({
-  colorScheme,
-  style,
-  ref,
-}) => {
+export const TabsMark = React.forwardRef<
+  HTMLDivElement,
+  Resolve<TabsMarkProps>
+>(({ colorScheme, style }, ref) => {
   const theme = useTheme();
   const context = React.useContext(TabsContext);
   const evalColorScheme = colorScheme || context.colorScheme;
@@ -33,4 +30,4 @@ export const TabsMark: React.FC<Resolve<TabsMarkProps>> = ({
       )}
     />
   );
-};
+});
