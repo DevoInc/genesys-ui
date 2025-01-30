@@ -1,5 +1,17 @@
 # Changelog
 
+## [17.2.0](https://github.com/DevoInc/genesys-ui/compare/v17.1.1...v17.2.0) (2025-01-30)
+
+### Features
+
+* **Avatar:** the value of the colorScheme prop can also be any custom color string in addition to the pre-defined options which already exist. ([b0babe2](https://github.com/DevoInc/genesys-ui/commit/b0babe223a8fc31ff44a9a3f9ef20f2c3c1b1b51))
+* **SelectControl:** add text overflow ellipsis to multiple mode chips. ([1b20eb6](https://github.com/DevoInc/genesys-ui/commit/1b20eb6357ed4313db34874ff705353e64558167))
+* **UserInfo:** added size variants. ([fcf3c05](https://github.com/DevoInc/genesys-ui/commit/fcf3c05b956a5eb61a67b04c0394d5ef4283df4f))
+
+### Bug Fixes
+
+* revert React 19 minimal React version ([46cb5a9](https://github.com/DevoInc/genesys-ui/commit/46cb5a9c8233a08e9929b263029173bb1cde9b1a))
+
 ## [17.1.1](https://github.com/DevoInc/genesys-ui/compare/v17.1.0...v17.1.1) (2025-01-24)
 
 ### Bug Fixes
