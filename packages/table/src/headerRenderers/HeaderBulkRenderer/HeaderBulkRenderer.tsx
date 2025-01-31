@@ -46,7 +46,7 @@ export const HeaderBulkRenderer: React.FC<THeaderRenderer> = ({ colDef }) => {
             </IconButton>
           )}
           {({ setOpened, toggle, isOpened }) => (
-            <Popover.Panel>
+            <Popover.Panel padding="0">
               {context.headerBulkMenu({ setOpened, toggle, isOpened })}
             </Popover.Panel>
           )}

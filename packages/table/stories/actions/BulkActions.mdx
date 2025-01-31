@@ -1,4 +1,4 @@
-import { Meta, Story, Source, ArgTypes } from '@storybook/blocks';
+import { Meta, Story, Source } from '@storybook/blocks';
 
 import * as Stories from './BulkActions.stories';
 
@@ -26,6 +26,7 @@ const { bulkSelection, toggleAll, toggle, clear, headerBulkChecked } =
 />
 
 This hook needs:
+
 - the data length (row count) for check if is all selected or not
 - the initial selection if you want initialize the bulk selection with some rows
 - the bulk disabled that is an array with the index of the rows disable for
@@ -79,4 +80,3 @@ import {
 If the `bulkSelection` is not set then the `BulkRenderer` will look for a real column
 value, so you can manage the selection model by adding a real column with true
 or false to your data.
-./actions/BulkActions.stories

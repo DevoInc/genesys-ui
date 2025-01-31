@@ -53,6 +53,7 @@ export const IconButtonStatus = React.forwardRef<
     return (
       <IconButton
         {...restIconButtonProps}
+        ref={ref}
         colorScheme={colorScheme}
         icon={icon || getIconButtonStatusIcon(colorScheme)}
         circular

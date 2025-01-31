@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Button, Flex, Menu, Popover } from '@devoinc/genesys-ui';
+import {
+  Button,
+  Flex,
+  Menu,
+  Panel,
+  Popover,
+  Typography,
+} from '@devoinc/genesys-ui';
 
 import {
   TextRenderer,
@@ -50,10 +57,11 @@ const BulkExample = () => {
   ]);
   const dataOrdered = [...data].sort(orderDataByOrderStruct(orderStruct));
 
-  const { toggleAll, toggle, clear, headerBulkChecked, bulkSelection } = useBulkSelectionById({
-    data: dataOrdered,
-    initialSelection: [],
-  });
+  const { toggleAll, toggle, clear, headerBulkChecked, bulkSelection } =
+    useBulkSelectionById({
+      data: dataOrdered,
+      initialSelection: [],
+    });
 
   const rowDefs: TRowDef[] = dataOrdered.map((d) => {
     return (
@@ -107,58 +115,70 @@ const BulkExample = () => {
                   headerDisabled: data.length === 0,
                   headerBulkMenu: ({ setOpened }) => {
                     return (
-                      <Menu>
-                        <Menu.Heading>Bulk actions: Selected</Menu.Heading>
-                        <Menu.Separator />
-                        <Menu.Item
-                          onClick={() => {
-                            setOpened(false);
-                          }}
-                        >
-                          Dummy action
-                        </Menu.Item>
-                        <Menu.Item>Dummy action 2</Menu.Item>
-                        <Popover placement="right-start" id={popoverId}>
-                          {({ toggle, ref, isOpened, setOpened }) => (
+                      <>
+                        <Panel.Header
+                          bordered
+                          size="sm"
+                          title={'Bulk actions'}
+                          appendContent={
+                            <Typography.Caption>
+                              {bulkSelection.length} Selected
+                            </Typography.Caption>
+                          }
+                        />
+                        <Panel.Body size="xs">
+                          <Menu>
                             <Menu.Item
-                              aria-controls={popoverId}
-                              aria-haspopup="true"
-                              aria-expanded={isOpened}
-                              ref={ref}
                               onClick={() => {
-                                setOpened(true);
+                                setOpened(false);
                               }}
-                              onMouseLeave={toggle}
-                              onMouseOver={() => {
-                                setOpened(true);
-                              }}
-                              expandable
-                              state={isOpened ? 'expanded' : undefined}
                             >
-                              Danger actions
+                              Dummy action
                             </Menu.Item>
-                          )}
-                          <Popover.Panel>
-                            <Menu>
-                              <Menu.Item>Dummy action 1</Menu.Item>
-                              <Menu.Item>Dummy action 2</Menu.Item>
-                              <Menu.Item
-                                onClick={() => {
-                                  setData((prev) =>
-                                    prev.filter(
-                                      (_, index) =>
-                                        !bulkSelection.includes(index),
-                                    ),
-                                  );
-                                  clear();
-                                }}
-                              >
-                                Remove row(s)
-                              </Menu.Item>
-                            </Menu>
-                          </Popover.Panel>
-                        </Popover>
-                      </Menu>
+                            <Menu.Item>Dummy action 2</Menu.Item>
+                            <Popover placement="right-start" id={popoverId}>
+                              {({ toggle, ref, isOpened, setOpened }) => (
+                                <Menu.Item
+                                  aria-controls={popoverId}
+                                  aria-haspopup="true"
+                                  aria-expanded={isOpened}
+                                  ref={ref}
+                                  onClick={() => {
+                                    setOpened(true);
+                                  }}
+                                  onMouseLeave={toggle}
+                                  onMouseOver={() => {
+                                    setOpened(true);
+                                  }}
+                                  expandable
+                                  state={isOpened ? 'expanded' : undefined}
+                                >
+                                  Danger actions
+                                </Menu.Item>
+                              )}
+                              <Popover.Panel>
+                                <Menu>
+                                  <Menu.Item>Dummy action 1</Menu.Item>
+                                  <Menu.Item>Dummy action 2</Menu.Item>
+                                  <Menu.Item
+                                    onClick={() => {
+                                      setData((prev) =>
+                                        prev.filter(
+                                          (_, index) =>
+                                            !bulkSelection.includes(index),
+                                        ),
+                                      );
+                                      clear();
+                                    }}
+                                  >
+                                    Remove row(s)
+                                  </Menu.Item>
+                                </Menu>
+                              </Popover.Panel>
+                            </Popover>
+                          </Menu>
+                        </Panel.Body>
+                      </>
                     );
                   },
                   headerBulkChecked,

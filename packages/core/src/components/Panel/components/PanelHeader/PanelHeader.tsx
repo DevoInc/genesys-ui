@@ -85,7 +85,15 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
         ) : (
           children
         )
-      ) : (
+      ) : collapseSettings ||
+        prependContent ||
+        title ||
+        subtitle ||
+        icon ||
+        appendContent ||
+        actions ||
+        closeSettings ||
+        bottomContent ? (
         <VFlex spacing="0">
           <HFlex spacing="0">
             {collapseSettings && (
@@ -124,7 +132,7 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
           </HFlex>
           {bottomContent}
         </VFlex>
-      )}
+      ) : null}
     </PanelHeaderContainer>
   );
 };
