@@ -1,5 +1,16 @@
 # Changelog
 
+## [17.4.0](https://github.com/DevoInc/genesys-ui/compare/v17.3.0...v17.4.0) (2025-01-31)
+
+### Features
+
+* re-design of proposed bulk actions panel on Table component. ([e9af775](https://github.com/DevoInc/genesys-ui/commit/e9af775dd131d8c814f053d15311878114573f16))
+* **UserFilter:** add avatar rendering and separator option in user filter ([9f0309e](https://github.com/DevoInc/genesys-ui/commit/9f0309e0426f46f2c6bc7191f405a37af6973d66))
+
+### Bug Fixes
+
+* fixed test ([a97d562](https://github.com/DevoInc/genesys-ui/commit/a97d56209256c8209b0c4acfc7ee8286d3bc86c7))
+
 ## [17.3.0](https://github.com/DevoInc/genesys-ui/compare/v17.2.0...v17.3.0) (2025-01-30)
 
 ### Features
