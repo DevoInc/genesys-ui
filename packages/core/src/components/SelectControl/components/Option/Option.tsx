@@ -37,7 +37,7 @@ export const Option = <Option extends TSelectOption>(
           </HFlex>
         )}
         {!props.data.icon && !props.data.prependContent ? (
-          <VFlex spacing="0">
+          <VFlex spacing="0" minWidth="0">
             <Typography.Paragraph as="div" truncateLine={1}>
               {props.data.label}
             </Typography.Paragraph>
@@ -51,10 +51,10 @@ export const Option = <Option extends TSelectOption>(
             </Typography.Paragraph>
           </VFlex>
         ) : (
-          <HFlex spacing="cmp-xxs">
+          <HFlex spacing="cmp-xxs" minWidth="0">
             {props.data.prependContent}
             {props.data.icon && <Icon size="xs">{props.data.icon}</Icon>}
-            <VFlex spacing="0">
+            <VFlex spacing="0" minWidth="0">
               <Typography.Paragraph as="div" truncateLine={1}>
                 {props.data.label}
               </Typography.Paragraph>

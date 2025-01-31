@@ -4,11 +4,11 @@ import * as stories from './FormLegend.stories';
 
 <Meta title="Components/Form/Form/Components/FormLegend/Overview" />
 
-## Form.Legend
+# Form.Legend
 
 Component that provides a legend to the form.
 
-### Basic usage
+## Basic usage
 
 Defined with dot notation as `Form.Legend`. This component should be used only as a
 child of a `Form` or `Form` based component.
@@ -18,6 +18,29 @@ a `Form.Legend` at the beginning ogf the group.
 
 <Canvas of={stories.Playground} />
 
-### Props
+## Required mark
+
+You can add a required mark at the beginning of the legend, using the 'requiredMark' prop. You can add any
+node or component, but usually is used the `Form.RequiredMark` component.
+
+<Canvas of={stories.WithRequiredMark} />
+
+## Required mark
+
+If the FormGroup which heads this FormLegend needs some extra info to be filled, then you can add a floating helper
+to the component using the 'helper' prop. You can add any node or component, but usually is used
+the `Form.FloatingHelper` component.
+
+<Canvas of={stories.WithFloatingHelper} />
+
+## AppendContent
+
+Sometimes you might need to add a custom block at the right of the textual content, for instance, when you need
+an action to add more fields, or something similar. Then you can use the 'appendContent' prop, which accepts
+any node or component.
+
+<Canvas of={stories.WithAppendContent} />
+
+## Props
 
 <ArgTypes of={stories} />

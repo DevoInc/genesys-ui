@@ -9,6 +9,8 @@ import {
   FormGroup,
   FormLegend,
 } from './components';
+import { FormFloatingHelper } from './components/FormFloatingHelper';
+import { FormRequiredMark } from './components/FormRequiredMark';
 
 export interface FormProps
   extends IFormAttrs,
@@ -60,18 +62,24 @@ const PartForm: React.FC<FormProps> = ({
 
 export const Form = PartForm as typeof PartForm & {
   Buttons: typeof FormButtons;
+  FloatingHelper: typeof FormFloatingHelper;
   Group: typeof FormGroup;
   Item: typeof FlexItem;
   Legend: typeof FormLegend;
+  RequiredMark: typeof FormRequiredMark;
 };
 
 Form.Buttons = FormButtons;
+Form.FloatingHelper = FormFloatingHelper;
 Form.Group = FormGroup;
 Form.Item = FlexItem;
 Form.Legend = FormLegend;
+Form.RequiredMark = FormRequiredMark;
 
 PartForm.displayName = 'Form';
 Form.Buttons.displayName = 'Form.Buttons';
+Form.FloatingHelper.displayName = 'Form.FloatingHelper';
 Form.Group.displayName = 'Form.Group';
 Form.Item.displayName = 'Form.Item';
 Form.Legend.displayName = 'Form.Legend';
+Form.RequiredMark.displayName = 'Form.RequiredMark';

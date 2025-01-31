@@ -8,13 +8,8 @@ import type {
   IGlobalAttrs,
 } from '../../../../declarations/htmlAttrs';
 import type { TLegendPosition } from '../../declarations';
-import { Flex, type FlexProps } from '../../../Flex';
-import { Field } from '../../../Field';
-import { FloatingHelper } from '../../../FloatingHelper';
-import {
-  FormDistributor,
-  type FormDistributorProps,
-} from '../FormDistributor/FormDistributor';
+import { type FlexProps } from '../../../Flex';
+import { FormDistributor, type FormDistributorProps } from '../FormDistributor';
 import { FormLegend } from '../FormLegend';
 import { Helper } from '../../../Helper';
 import { hasStatus } from '../../../../utils/validations';
@@ -22,6 +17,8 @@ import { StyledFormGroup, type StyledFormGroupProps } from './StyledFormGroup';
 import { StyledFormGroupContainer } from './StyledFormGroupContainer';
 import { Collapse } from '../../../Collapse';
 import { formGroupCollapseMixin } from './helpers';
+import { FormFloatingHelper } from '../FormFloatingHelper';
+import { FormRequiredMark } from '../FormRequiredMark';
 
 export interface FormGroupProps
   extends IStyledOverloadCss,
@@ -88,20 +85,16 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   tooltip,
   ...restNativeAttrProps
 }) => {
-  // to get vertically aligned the label with the control block anyway
   const theme = useTheme();
-  const labelLineHeight = theme.cmp.field.labelHelper.size.minHeight.sm;
   const [expanded, setExpanded] = React.useState(false);
   const FloatingHelperBlock = (
-    <Flex inline height={labelLineHeight} marginLeft="cmp-xxs">
-      <FloatingHelper
-        message={helper}
-        status={hasStatus(status) ? status : 'help'}
-      />
-    </Flex>
+    <FormFloatingHelper
+      message={helper}
+      status={hasStatus(status) ? status : 'help'}
+    />
   );
   const RequiredMarkBlock = (
-    <Field._RequiredMark colorScheme={hasStatus(status) ? status : 'info'} />
+    <FormRequiredMark colorScheme={hasStatus(status) ? status : 'info'} />
   );
 
   return (

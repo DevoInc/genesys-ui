@@ -322,7 +322,7 @@ export const MultipleSubtle: Story = {
           .fill(null)
           .map((_el, idx) => ({
             value: `item${idx}`,
-            label: `Item ${idx}`,
+            label: `'Option three with a name much more large to get ellipsis  to see what happen', Item ${idx}`,
           }));
       };
       const [value, setValue] = React.useState<PropsValue<TSelectOption>>();

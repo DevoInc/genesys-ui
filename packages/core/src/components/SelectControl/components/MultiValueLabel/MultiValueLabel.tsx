@@ -29,7 +29,7 @@ export const MultiValueLabel = <Option extends TSelectOption>({
           {data.icon}
         </ValueIcon>
       )}
-      <Chip._Content>{data.label}</Chip._Content>
+      <Chip._Content style={{ flex: '0 0 auto' }}>{data.label}</Chip._Content>
     </>
   );
 };

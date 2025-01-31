@@ -10,6 +10,8 @@ export interface FormLegendProps
   extends IGlobalAttrs,
     Pick<FieldProps, 'helper'>,
     Pick<FieldLabelProps, 'requiredMark'> {
+  /** The custom content to be rendered at the end completely to the right of the text content. */
+  appendContent?: React.ReactNode;
   /** If it's rendered as a legend HTML tag. */
   asLegend?: boolean;
   /** If the form group legend has label format. Usually when the form group is
@@ -25,6 +27,7 @@ export interface FormLegendProps
 }
 
 export const FormLegend: React.FC<FormLegendProps> = ({
+  appendContent,
   asLegend,
   children,
   text,
@@ -38,24 +41,36 @@ export const FormLegend: React.FC<FormLegendProps> = ({
   <StyledFormLegendContainer {...styledProps} $srOnly={srOnly} title={tooltip}>
     <Flex
       alignItems="center"
+      justifyContent={appendContent ? 'space-between' : undefined}
       role={!asLegend ? 'group' : null}
       as={asLegend ? 'legend' : null}
       margin="0"
-      childrenFlex="1 1 auto"
       flex="1 1 auto"
     >
-      {children ||
-        (hasLabelFormat ? (
-          <Field._Label helper={helper} requiredMark={requiredMark}>
-            {text}
-          </Field._Label>
-        ) : (
-          <Typography.Heading size="h6" truncateLine={2}>
-            {requiredMark}
-            {text}
-            {helper}
-          </Typography.Heading>
-        ))}
+      {children || (
+        <>
+          {hasLabelFormat ? (
+            <Field._Label
+              style={{ flex: '1 1 auto' }}
+              helper={helper}
+              requiredMark={requiredMark}
+            >
+              {text}
+            </Field._Label>
+          ) : (
+            <Typography.Heading
+              style={{ flex: '1 1 auto' }}
+              size="h6"
+              truncateLine={2}
+            >
+              {requiredMark}
+              {text}
+              {helper}
+            </Typography.Heading>
+          )}
+          {appendContent}
+        </>
+      )}
     </Flex>
   </StyledFormLegendContainer>
 );

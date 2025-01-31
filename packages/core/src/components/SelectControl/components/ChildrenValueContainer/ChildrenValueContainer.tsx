@@ -43,6 +43,7 @@ export const ChildrenValueContainer: React.FC<ChildrenValueContainer> = ({
             padding: 0
               ${cmpTokens.multiValueContainer.space.padding.hor.isSubtle};
             background-color: ${cmpTokens.color.background[status].enabled};
+            z-index: 1;
           `}
         >
           ({values.length})
