@@ -16,7 +16,6 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
 
   const user = userInfo[value];
   const name = user?.name || value;
-
   return user?.email || user?.job || user?.role ? (
     <Popover placement="bottom-start" id="story-userinfo">
       {({ toggle, ref, isOpened, setOpened }) => {
@@ -32,10 +31,9 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
             <UserInfo.Avatar
               avatar={user?.avatar}
               avatarColorScheme={user?.colorScheme || 'info'}
-              avatarSize="xs"
+              avatarSize="xxxs"
               format="base"
               name={name}
-              subtitle={user?.subtitle}
             />
           </Box>
         );
@@ -45,10 +43,9 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
           <UserInfo.Avatar
             avatar={user?.avatar}
             avatarColorScheme={user?.colorScheme || 'info'}
-            avatarSize="xs"
+            avatarSize="xxxs"
             format="base"
             name={name}
-            subtitle={user?.subtitle}
           />
         </Panel.Header>
         <Panel.Body>
@@ -64,10 +61,9 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
     <UserInfo.Avatar
       avatar={user?.avatar}
       avatarColorScheme={user?.colorScheme || 'info'}
-      avatarSize="xs"
+      avatarSize="xxxs"
       format="base"
       name={name}
-      subtitle={user?.subtitle}
     />
   );
 };

@@ -13,6 +13,10 @@ import {
 import { ROW_HEIGHT_MD } from '../../src/constants';
 import { allTypesData } from './data/allTypesData';
 import { AllTypesColumn } from './column/AllTypesColumn';
+import { useFilterStruct } from '../../src/hooks/useFilterStruct';
+import { filterDataByFilterStruct } from '../../src/helpers/filterDataByFilterStruct';
+import { updateColDefsWithFilterStruct } from '../../src/helpers/updateColDefsWithFilterStruct';
+
 // import { Holo } from '@devoinc/holo';
 // import { performanceColumn } from './column/performanceColumn';
 // import { performanceData } from './data/performanceData';
@@ -31,9 +35,10 @@ type Story = StoryObj<typeof BasicTable>;
 const BasicCmp = ({ data, colDefs }) => {
   const [newData, setNewData] = React.useState(data);
   const { orderStruct, onSort } = useOrderStruct([{ id: 'id', sort: 'desc' }]);
-  React.useEffect(() => {
-    setNewData([...newData].sort(orderDataByOrderStruct(orderStruct)));
-  }, [onSort]);
+  const { filterStruct, onFilter } = useFilterStruct();
+
+  const newColDef = updateColDefsWithFilterStruct(colDefs, filterStruct);
+
   return (
     <Flex flexDirection="column" gap="cmp-md" height={'auto'}>
       <Flex.Item>
@@ -50,8 +55,13 @@ const BasicCmp = ({ data, colDefs }) => {
           textsCell={({ rowIndex }) =>
             rowIndex % 2 === 0 ? 'soy par' : 'soy impar'
           }
-          data={newData}
-          colDefs={updateColDefsWithOrderStruct(colDefs, orderStruct)}
+          onFilter={(curColDef, value, type) => {
+            onFilter(curColDef.id, value, type);
+          }}
+          data={[...newData]
+            .filter(filterDataByFilterStruct(filterStruct))
+            .sort(orderDataByOrderStruct(orderStruct))}
+          colDefs={updateColDefsWithOrderStruct(newColDef, orderStruct)}
           defaultColDef={{
             isExpandable: true,
           }}

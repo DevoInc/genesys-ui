@@ -24,6 +24,9 @@ export const Base: Story = {
             email: 'peter@email.com',
             colorScheme: 'error',
           },
+          'separator': {
+            isSeparator: true
+          },
           'test b': {
             name: 'John',
             email: 'john@email.com',
