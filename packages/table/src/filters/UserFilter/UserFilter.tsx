@@ -1,24 +1,43 @@
 import * as React from 'react';
 
-import { SelectControl, type TSelectOption } from '@devoinc/genesys-ui';
+import {
+  SelectControl,
+  type TSelectOption,
+  Avatar,
+} from '@devoinc/genesys-ui';
 
 import type { TFilterContext, TFilter } from '../../declarations';
 import type { TUserFilterValue } from './declarations';
 import { FilterContainer } from '../common';
 import { TContextUser } from '../../renderers';
-import { concatenateValues } from './util';
+//import { concatenateValues } from './util';
 
 export const UserFilter: React.FC<TFilter> = ({ colDef, onChange }) => {
   const context = colDef?.context as TContextUser & TFilterContext;
   const keys = Object.keys(context?.userMapping ?? {});
-  const concatedOptions = concatenateValues(context?.userMapping ?? {});
+  const AvatarCmp = ({ user }) => {
+    return (
+      <Avatar
+        imageSrc={user?.avatar}
+        colorScheme={user?.colorScheme || 'info'}
+        size="xxxs"
+        name={user?.name}
+      />
+    );
+  };
   const options = Object.values(context?.userMapping ?? {}).map(
     (user, index) => {
-      return {
-        value: keys[index],
-        label: user.name,
-        description: user.subtitle,
-      } as TSelectOption;
+      if (keys[index] === 'separator') {
+        return {
+          isSeparator: true,
+        } as TSelectOption;
+      } else {
+        return {
+          value: keys[index],
+          label: user.name,
+          icon: <AvatarCmp user={user} />,
+        } as TSelectOption;
+      }
     },
   );
   const filterValue = context?.filterValue as TUserFilterValue;
@@ -28,8 +47,8 @@ export const UserFilter: React.FC<TFilter> = ({ colDef, onChange }) => {
       <SelectControl
         isMulti
         size="sm"
-        multipleSubtle
         closeMenuOnSelect={false}
+        multipleSubtle
         selectAllBtn
         hideSelectedOptions={false}
         onChange={(val: TSelectOption[]) => {
@@ -39,12 +58,7 @@ export const UserFilter: React.FC<TFilter> = ({ colDef, onChange }) => {
         defaultInputValue={colDef?.context?.defaultValue as string}
         options={options}
         value={value}
-        filterOption={(option, value) => {
-          const optionValue = option.value;
-          return concatedOptions[optionValue].includes(
-            String(value).toLowerCase(),
-          );
-        }}
+        minMenuWidth={'24rem'}
       />
     </FilterContainer>
   );
