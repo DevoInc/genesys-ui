@@ -38,13 +38,12 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
           </Box>
         );
       }}
-      <Popover.Panel width="38rem" id="story-popover-panel">
+      <Popover.Panel width="20rem" id="story-popover-panel">
         <Panel.Header bordered>
           <UserInfo.Avatar
             avatar={user?.avatar}
             avatarColorScheme={user?.colorScheme || 'info'}
-            avatarSize="xxxs"
-            format="base"
+            format="heading"
             name={name}
           />
         </Panel.Header>
