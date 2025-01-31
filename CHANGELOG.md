@@ -1,5 +1,12 @@
 # Changelog
 
+## [17.3.0](https://github.com/DevoInc/genesys-ui/compare/v17.2.0...v17.3.0) (2025-01-30)
+
+### Features
+
+* **Panel:** added bottomContent prop to the PanelHeader component to render a custom content below all the header content. ([3ccc523](https://github.com/DevoInc/genesys-ui/commit/3ccc523314c23b00b394009c046d1cbcfce7ab5d))
+* **TableHeadRow:** add tableId prop for improved accessibility ([fe2e330](https://github.com/DevoInc/genesys-ui/commit/fe2e3302a0e605f2e2a863bd265d2c478d35552b))
+
 ## [17.2.0](https://github.com/DevoInc/genesys-ui/compare/v17.1.1...v17.2.0) (2025-01-30)
 
 ### Features
