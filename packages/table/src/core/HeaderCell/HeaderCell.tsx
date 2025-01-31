@@ -39,7 +39,6 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
       $horAlign={colDef?.align}
       $offsetX={offsetX}
       $density={density}
-      title={title}
       tabIndex={0}
       onClick={() => {
         if (onHeaderCellClick) {
