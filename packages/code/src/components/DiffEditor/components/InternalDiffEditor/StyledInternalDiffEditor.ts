@@ -6,14 +6,13 @@ import {
 
 export interface StyledInternalDiffEditorProps
   extends StyledInternalEditorProps {
-  readonly?: boolean;
   originalEditable?: boolean;
 }
 
 export const StyledInternalDiffEditor = styled(
   StyledInternalEditor,
 )<StyledInternalDiffEditorProps>`
-  ${({ bordered, originalEditable, readOnly, theme }) => {
+  ${({ $bordered, originalEditable, readOnly, theme }) => {
     const editorTokens = theme.cmp.editor;
     const diffTokens = theme.cmp.diffEditor;
     return css`
@@ -21,7 +20,7 @@ export const StyledInternalDiffEditor = styled(
       --inner-border-radius: ${diffTokens.shape.borderRadius.inner};
 
       .monaco-diff-editor.side-by-side {
-        ${bordered && 'border-radius: var(--border-radius);'}
+        ${$bordered && 'border-radius: var(--border-radius);'}
         // Left side of the diff editor
       .editor.original {
           box-shadow: none;
@@ -34,7 +33,7 @@ export const StyledInternalDiffEditor = styled(
             }
           `}
           .monaco-editor {
-            ${bordered &&
+            ${$bordered &&
             css`
               border-radius: var(--inner-border-radius) 0 0
                 var(--inner-border-radius);

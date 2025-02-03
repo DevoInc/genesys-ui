@@ -6,10 +6,7 @@ import {
   type StyledInternalDiffEditorProps,
 } from './StyledInternalDiffEditor';
 
-export interface InternalDiffEditorProps
-  extends IDataAttrs,
-    IUseDiffEditor,
-    Pick<StyledInternalDiffEditorProps, 'bordered'> {
+export interface InternalDiffEditorProps extends IDataAttrs, IUseDiffEditor {
   /**
    * Width of the editor wrapper
    */
@@ -18,6 +15,8 @@ export interface InternalDiffEditorProps
    * Height of the editor wrapper
    */
   height?: number | string;
+  /** Add border to the editor wrapper */
+  bordered?: boolean;
 }
 
 export const InternalDiffEditor: React.FC<InternalDiffEditorProps> = ({
@@ -51,7 +50,7 @@ export const InternalDiffEditor: React.FC<InternalDiffEditorProps> = ({
     <StyledInternalDiffEditor
       {...restDataProps}
       originalEditable={options?.originalEditable}
-      bordered={bordered}
+      $bordered={bordered}
       ref={containerRef}
       $height={height}
       $width={width}
