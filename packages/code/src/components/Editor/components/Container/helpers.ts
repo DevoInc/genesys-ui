@@ -1,8 +1,8 @@
 import { css, DefaultTheme } from 'styled-components';
 
 export interface ICodeContainerMixin {
-  readOnly?: boolean;
-  bordered?: boolean;
+  $readOnly?: boolean;
+  $bordered?: boolean;
   theme: DefaultTheme;
 }
 
@@ -12,8 +12,8 @@ export interface ICodeContainerMixin {
  * @return object with the css.
  */
 export const codeContainerMixin = ({
-  bordered,
-  readOnly,
+  $bordered,
+  $readOnly,
   theme,
 }: ICodeContainerMixin) => {
   const cmpTokens = theme.cmp.editor;
@@ -22,11 +22,11 @@ export const codeContainerMixin = ({
     width: 100%;
     height: 100%;
 
-    ${bordered &&
+    ${$bordered &&
     css`
       border-width: ${cmpTokens.shape.borderSize};
       border-style: solid;
-      border-color: ${readOnly
+      border-color: ${$readOnly
         ? cmpTokens.color.border.readOnly
         : cmpTokens.color.border.base};
       border-radius: ${cmpTokens.shape.borderRadius};
