@@ -5,8 +5,8 @@ import { Box, type BoxProps, mergeStyles } from '@devoinc/genesys-ui';
 import { codeContainerMixin, type ICodeContainerMixin } from './helpers';
 
 export interface ContainerProps extends BoxProps {
-  bordered: ICodeContainerMixin['$bordered'];
-  readOnly: ICodeContainerMixin['$readOnly'];
+  bordered?: ICodeContainerMixin['$bordered'];
+  readOnly?: ICodeContainerMixin['$readOnly'];
 }
 
 export const Container: React.FC<ContainerProps> = ({
