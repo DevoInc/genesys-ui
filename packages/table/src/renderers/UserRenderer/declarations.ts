@@ -10,6 +10,7 @@ export type TContextUser = {
       job?: string;
       role?: string;
       subtitle?: string;
+      initials?: string;
     };
   };
 };

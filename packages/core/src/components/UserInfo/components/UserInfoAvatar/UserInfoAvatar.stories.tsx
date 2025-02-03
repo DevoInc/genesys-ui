@@ -39,6 +39,17 @@ export const WithImage: Story = {
   },
 };
 
+export const WithInitials: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <VFlex>
+        <UserInfo.Avatar name={props.name} />
+        <UserInfo.Avatar name={props.name} initials="A" />
+      </VFlex>
+    ))(args),
+};
+
 export const Formats: Story = {
   tags: ['isHidden'],
   render: (args) =>

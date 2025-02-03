@@ -34,6 +34,7 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
               avatarSize="xxxs"
               format="base"
               name={name}
+              initials={user?.initials}
             />
           </Box>
         );
@@ -45,6 +46,7 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
             avatarColorScheme={user?.colorScheme || 'info'}
             format="heading"
             name={name}
+            initials={user?.initials}
           />
         </Panel.Header>
         <Panel.Body>
@@ -57,12 +59,14 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
       </Popover.Panel>
     </Popover>
   ) : (
-    <UserInfo.Avatar
-      avatar={user?.avatar}
-      avatarColorScheme={user?.colorScheme || 'info'}
-      avatarSize="xxxs"
-      format="base"
-      name={name}
-    />
+      <UserInfo.Avatar
+        avatar={user?.avatar}
+        avatarColorScheme={user?.colorScheme || 'info'}
+        avatarSize="xxxs"
+        format="base"
+        name={name}
+        tooltip={name}
+        initials={user?.initials}
+      />
   );
 };
