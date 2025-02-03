@@ -1,5 +1,20 @@
 # Changelog
 
+## [17.5.0](https://github.com/DevoInc/genesys-ui/compare/v17.4.0...v17.5.0) (2025-02-03)
+
+### Features
+
+* **core:** add support for initials and enhance format evaluation ([1aa73aa](https://github.com/DevoInc/genesys-ui/commit/1aa73aaff630f5e62d0d7699985116fbaa34a56d))
+* **Form:** added new form components and added appendContent prop to FormLegend. Adjustments for SelectControl option ellipsis. ([fd46729](https://github.com/DevoInc/genesys-ui/commit/fd46729eee4b87e7b434e047a687fb51f290ab73))
+
+### Bug Fixes
+
+* avoid pass non HTLM attributes to styles ([9a0f7cd](https://github.com/DevoInc/genesys-ui/commit/9a0f7cd206f5ef16c3fed5addde22c059dd5840f))
+* **HeaderCell:** remove unused title prop from HeaderCell component ([efb7f32](https://github.com/DevoInc/genesys-ui/commit/efb7f328fdc0a69611bb2ce68fac31fd6e88f3a8))
+* mark props as optional ([0f126db](https://github.com/DevoInc/genesys-ui/commit/0f126dbcbed8550820b00176480b70570939801e))
+* **table:** add tooltip to user options in UserFilter component ([0f6f0b8](https://github.com/DevoInc/genesys-ui/commit/0f6f0b8652b83853dea30a58e9734f233a4c4191))
+* **UserRenderer:** adjust Popover.Panel width and update Avatar format ([f9aa244](https://github.com/DevoInc/genesys-ui/commit/f9aa24437b7d0ef7fb8b324d45be86c153ac9303))
+
 ## [17.4.0](https://github.com/DevoInc/genesys-ui/compare/v17.3.0...v17.4.0) (2025-01-31)
 
 ### Features
