@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.5.1](https://github.com/DevoInc/genesys-ui/compare/v17.5.0...v17.5.1) (2025-02-03)
+
+### Bug Fixes
+
+* avoid pass non HTLM attrs props to styles ([1ef3437](https://github.com/DevoInc/genesys-ui/commit/1ef34371c1622e9a0806df86e07be1443ca4ffe5))
+
 ## [17.5.0](https://github.com/DevoInc/genesys-ui/compare/v17.4.0...v17.5.0) (2025-02-03)
 
 ### Features
