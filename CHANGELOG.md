@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.5.3](https://github.com/DevoInc/genesys-ui/compare/v17.5.2...v17.5.3) (2025-02-03)
+
+### Bug Fixes
+
+* **UserFilter:** add isCurrentUser flag to distinguish current user in dropdown ([219fcd8](https://github.com/DevoInc/genesys-ui/commit/219fcd856eaf58b023aae1b25343d4d094656ae0))
+
 ## [17.5.2](https://github.com/DevoInc/genesys-ui/compare/v17.5.1...v17.5.2) (2025-02-03)
 
 ### Bug Fixes
