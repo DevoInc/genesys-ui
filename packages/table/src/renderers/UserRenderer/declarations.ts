@@ -11,6 +11,7 @@ export type TContextUser = {
       role?: string;
       subtitle?: string;
       initials?: string;
+      isCurrentUser?: boolean;
     };
   };
 };

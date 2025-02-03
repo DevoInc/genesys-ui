@@ -1,10 +1,6 @@
 import * as React from 'react';
 
-import {
-  SelectControl,
-  type TSelectOption,
-  Avatar,
-} from '@devoinc/genesys-ui';
+import { SelectControl, type TSelectOption, Avatar } from '@devoinc/genesys-ui';
 
 import type { TFilterContext, TFilter } from '../../declarations';
 import type { TUserFilterValue } from './declarations';
@@ -35,7 +31,7 @@ export const UserFilter: React.FC<TFilter> = ({ colDef, onChange }) => {
       } else {
         return {
           value: keys[index],
-          label: user.name,
+          label: user.isCurrentUser ? 'Current user' : user.name,
           icon: <AvatarCmp user={user} />,
           tooltip: user.email,
         } as TSelectOption;
