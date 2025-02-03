@@ -36,6 +36,7 @@ export const UserFilter: React.FC<TFilter> = ({ colDef, onChange }) => {
           value: keys[index],
           label: user.name,
           icon: <AvatarCmp user={user} />,
+          tooltip: user.name,
         } as TSelectOption;
       }
     },
