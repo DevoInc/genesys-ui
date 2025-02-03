@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.5.2](https://github.com/DevoInc/genesys-ui/compare/v17.5.1...v17.5.2) (2025-02-03)
+
+### Bug Fixes
+
+* **UserFilter:** add initials to Avatar component and update tooltip to show email ([6a74575](https://github.com/DevoInc/genesys-ui/commit/6a745753819734cff0ec345cc97a800706dcb212))
+
 ## [17.5.1](https://github.com/DevoInc/genesys-ui/compare/v17.5.0...v17.5.1) (2025-02-03)
 
 ### Bug Fixes
