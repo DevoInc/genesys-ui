@@ -22,6 +22,7 @@ export const UserFilter: React.FC<TFilter> = ({ colDef, onChange }) => {
         colorScheme={user?.colorScheme || 'info'}
         size="xxxs"
         name={user?.name}
+        initials={user?.initials}
       />
     );
   };
@@ -36,7 +37,7 @@ export const UserFilter: React.FC<TFilter> = ({ colDef, onChange }) => {
           value: keys[index],
           label: user.name,
           icon: <AvatarCmp user={user} />,
-          tooltip: user.name,
+          tooltip: user.email,
         } as TSelectOption;
       }
     },
