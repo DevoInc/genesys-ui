@@ -1,3 +1,5 @@
+import { type TColDef } from '../../declarations';
+
 import type { TOptionsFilterValue } from '../../filters';
 
 export const optionsTextFilter = (
