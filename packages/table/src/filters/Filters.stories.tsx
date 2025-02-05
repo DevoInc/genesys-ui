@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import semver from 'semver';
 
-import { Menu, InputControl } from '@devoinc/genesys-ui';
+import { Menu, InputControl, VFlex } from '@devoinc/genesys-ui';
 
 import {
   type TContextOptions,
@@ -187,7 +187,7 @@ const FilterTable = () => {
     .filter(filterDataByFilterStruct(filterStruct));
 
   return (
-    <>
+    <VFlex>
       <InputControl
         aria-label="Contains text..."
         placeholder="Contains text..."
@@ -205,7 +205,7 @@ const FilterTable = () => {
         colDefs={updateColDefsWithFilterStruct(colDefs, filterStruct)}
         data={dataFiltered}
       />
-    </>
+    </VFlex>
   );
 };
 
