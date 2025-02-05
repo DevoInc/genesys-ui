@@ -1,13 +1,12 @@
+import type { TSelectOption } from '@devoinc/genesys-ui';
 import { type TColDef } from '../../declarations';
-
-import type { TOptionsFilterValue } from '../../filters';
 
 export const optionsTextFilter = (
   data: string,
-  { value }: TOptionsFilterValue,
+  value: TSelectOption,
   colDef: TColDef,
 ) =>
-  value === ''
+  value.value === ''
     ? true
     : String(data).toLowerCase().includes(String(value).toLowerCase())
       ? true
