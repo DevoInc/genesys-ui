@@ -13,7 +13,7 @@ describe('helpers', () => {
             'truth array of string',
             ['abc', 'def'],
             { value: [{ label: 'abc', value: 'abc' }] },
-            true,
+            false,
           ],
           [
             'falsy array of string',
