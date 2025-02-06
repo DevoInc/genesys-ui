@@ -45,6 +45,8 @@ export interface PopoverProps
     size?: StyledPopoverArrowProps['$size'];
   };
   modifiers?: StrictModifier[];
+  delayOnOpen?: number;
+  delayOnClose?: number;
   zIndex?: number;
   onClose?: () => void;
 }
@@ -60,6 +62,8 @@ export const InternalPopover: React.FC<PopoverProps> = ({
   id,
   isOpened = false,
   modifiers = [],
+  delayOnOpen = 0,
+  delayOnClose = 0,
   onClose,
   placement,
   strategy = 'fixed',
@@ -67,7 +71,24 @@ export const InternalPopover: React.FC<PopoverProps> = ({
 }) => {
   const theme = useTheme();
   const evalZIndex = zIndex || theme.cmp.popover.elevation.zIndex.base;
-  const [opened, setOpened] = React.useState<boolean>(isOpened);
+  const [opened, setActualOpened] = React.useState<boolean>(isOpened);
+  const delayedOpening = React.useRef(isOpened);
+
+  const setDelayedOpen = () => {
+    if (delayedOpening.current !== opened) {
+      setActualOpened(delayedOpening.current);
+    }
+  };
+
+  const setOpened = (state: boolean) => {
+    delayedOpening.current = state;
+    const delay = state ? delayOnOpen : delayOnClose;
+    if (delay <= 0) {
+      setActualOpened(state);
+    } else {
+      setTimeout(setDelayedOpen, delay);
+    }
+  };
 
   const [referenceElement, setReferenceElement] =
     React.useState<HTMLElement>(null);
@@ -122,7 +143,7 @@ export const InternalPopover: React.FC<PopoverProps> = ({
 
     if (!isChild) {
       ev.stopPropagation();
-      setOpened((prevState) => !prevState);
+      setOpened(!opened);
       opened && onClose?.();
     }
   };

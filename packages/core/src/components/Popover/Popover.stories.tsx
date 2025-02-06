@@ -3,10 +3,12 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { Popover } from './Popover';
 import { Button } from '../Button';
+import { ButtonGroup } from '../ButtonGroup';
+import { HFlex } from '../HFlex';
 import { Menu } from '../Menu';
 import { Panel } from '../Panel';
 import { Typography } from '../Typography';
-import { ButtonGroup } from '../ButtonGroup';
+import { VFlex } from '../VFlex';
 
 const meta: Meta<typeof Popover> = {
   title: 'Components/Layout/Popover',
@@ -340,6 +342,97 @@ export const OnHover: Story = {
           </Popover.Panel>
         </Popover>
       );
+    })(),
+};
+
+export const Delay: Story = {
+  tags: ['delay'],
+  render: () =>
+    (() => {
+      const popoverIdPrefix = 'with-delay-';
+
+      const [popoverOpen, setPopoverOpen] = React.useState({});
+
+      const texts = [{
+        id: 'first',
+        title: 'First chunk',
+        body: `He gazed at her and saw millions of stars reflected in those
+          eyes, dark as deep wells.`,
+      }, {
+        id: 'second',
+        title: 'Second chunk',
+        body: `The lights of the city, hundreds of kilometers away, were fading
+          as they breathed in the cold air of the mountaintop.`,
+      }, {
+        id: 'third',
+        title: 'Third chunk',
+        body: `He knew that it would not be good, but like the toad in the pot
+          staring mesmerized at the flame, he sat there letting time pass.`,
+      }];
+
+      const renderPopoverWithDelay = (idx, delayOnOpen, delayOnClose) => (
+        <VFlex>
+          <Typography.Paragraph>
+            delayOnOpen: {delayOnOpen} ms.
+          </Typography.Paragraph>
+          <Typography.Paragraph>
+            delayOnClose: {delayOnClose} ms.
+          </Typography.Paragraph>
+          {
+            texts.map(({id, title, body}) => {
+              const popid = popoverIdPrefix + idx + id;
+              return (
+                <Popover
+                  id={popid}
+                  key={popid}
+                  placement="left-start"
+                  delayOnOpen={delayOnOpen}
+                  delayOnClose={delayOnClose}
+                >
+                  {({ ref, isOpened, setOpened }) => {
+                    const r = React.useRef(null);
+                    r.current = setOpened;
+                    popoverOpen[popid] = r;
+                    setPopoverOpen(popoverOpen);
+
+                    return (
+                      <Button
+                        aria-controls={popid}
+                        aria-expanded={isOpened}
+                        aria-haspopup={true}
+                        onMouseOver={() => popoverOpen[popid].current(true)}
+                        onMouseOut={() => popoverOpen[popid].current(false)}
+                        ref={ref}
+                        state={isOpened ? 'expanded' : undefined}
+                      >
+                        { title }
+                      </Button>
+                    );
+                  }}
+                  <Popover.Panel>
+                    <Typography.Heading>
+                      { title }
+                    </Typography.Heading>
+                    <Typography.Paragraph>
+                      { body }
+                    </Typography.Paragraph>
+                  </Popover.Panel>
+                </Popover>
+              )
+            })
+          }
+        </VFlex>
+      );
+
+      return (
+        <HFlex
+          justifyContent='space-between'
+        >
+          { renderPopoverWithDelay(1, 0, 0) }
+          { renderPopoverWithDelay(2, 200, 200) }
+          { renderPopoverWithDelay(3, 1000, 0) }
+        </HFlex>
+      )
     })(),
 };
 
