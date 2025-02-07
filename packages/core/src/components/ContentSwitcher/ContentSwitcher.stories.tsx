@@ -6,12 +6,7 @@ import { ContentSwitcher } from './ContentSwitcher';
 import { Box } from '../Box';
 import { Typography } from '../Typography';
 import { VFlex } from '../VFlex';
-import {
-  GIBookmarkTagSolid,
-  GIGridView,
-  GILayersSlides,
-  GITextBulletsList,
-} from '@devoinc/genesys-icons';
+import { GIGridView, GITextBulletsList } from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof ContentSwitcher> = {
   title: 'Components/Navigation/ContentSwitcher',
