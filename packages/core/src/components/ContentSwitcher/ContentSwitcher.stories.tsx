@@ -6,6 +6,12 @@ import { ContentSwitcher } from './ContentSwitcher';
 import { Box } from '../Box';
 import { Typography } from '../Typography';
 import { VFlex } from '../VFlex';
+import {
+  GIBookmarkTagSolid,
+  GIGridView,
+  GILayersSlides,
+  GITextBulletsList,
+} from '@devoinc/genesys-icons';
 
 const meta: Meta<typeof ContentSwitcher> = {
   title: 'Components/Navigation/ContentSwitcher',
@@ -38,6 +44,37 @@ export const Playground: Story = {
               {option.label}
             </ContentSwitcher.Item>
           ))}
+        </ContentSwitcher>
+      );
+    })(args),
+};
+
+export const OnlyIcons: Story = {
+  render: (args) =>
+    ((props) => {
+      const [selection, setSelection] = React.useState('list-view');
+      return (
+        <ContentSwitcher {...props}>
+          <ContentSwitcher.Item
+            aria-controls="list-view-block"
+            id="list-view"
+            onChange={() => {
+              setSelection('list-view');
+            }}
+            state={selection === 'list-view' ? 'selected' : 'enabled'}
+            icon={<GITextBulletsList />}
+            tooltip="List view"
+          />
+          <ContentSwitcher.Item
+            aria-controls="grid-view-block"
+            id="grid-view"
+            onChange={() => {
+              setSelection('grid-view');
+            }}
+            state={selection === 'grid-view' ? 'selected' : 'enabled'}
+            icon={<GIGridView />}
+            tooltip="Grid view"
+          />
         </ContentSwitcher>
       );
     })(args),

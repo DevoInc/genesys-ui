@@ -3,9 +3,10 @@ import * as React from 'react';
 import type { PartitionsContainerProps } from './components';
 import { PartitionsContainer, PartitionsItem } from './components';
 
-export interface PartitionsProps extends PartitionsContainerProps {
+export interface PartitionsProps
+  extends Omit<PartitionsContainerProps, 'children'> {
   /** Data for the partitions: array of objects with value (0-1) and color. */
-  data: { value: number; color: string; tooltip: string }[];
+  data?: { value: number; color: string; tooltip: string }[];
 }
 
 const InternalPartitions: React.FC<PartitionsProps> = ({
