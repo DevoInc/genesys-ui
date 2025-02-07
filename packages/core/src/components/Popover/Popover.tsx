@@ -45,7 +45,9 @@ export interface PopoverProps
     size?: StyledPopoverArrowProps['$size'];
   };
   modifiers?: StrictModifier[];
+  /** Time in milliseconds before the popover opens after being triggered. */
   delayOnOpen?: number;
+  /** Time in milliseconds before the popover closes after being triggered. */
   delayOnClose?: number;
   zIndex?: number;
   onClose?: () => void;
@@ -72,7 +74,7 @@ export const InternalPopover: React.FC<PopoverProps> = ({
   const theme = useTheme();
   const evalZIndex = zIndex || theme.cmp.popover.elevation.zIndex.base;
   const [opened, setActualOpened] = React.useState<boolean>(isOpened);
-  const delayedOpening = React.useRef(isOpened);
+  const delayedOpening = React.useRef<boolean>(isOpened);
 
   const setDelayedOpen = () => {
     if (delayedOpening.current !== opened) {
