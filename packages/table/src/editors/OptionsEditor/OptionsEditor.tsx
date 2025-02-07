@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { SelectControl } from '@devoinc/genesys-ui';
+import { SelectControl, TSelectOption } from '@devoinc/genesys-ui';
 
 import { ROW_HEIGHT_MD } from '../../constants';
 import type { TCellEditor } from '../../declarations';
@@ -8,6 +8,7 @@ import { TableContext } from '../../context';
 import { getSelectOptions } from '../../helpers';
 import type { TContextOptions } from '../../renderers';
 import { TContextTextEditorParams } from '../TextEditor';
+import { TOptionsFilterValue } from '../../filters';
 
 export const OptionsEditor: React.FC<TCellEditor> = ({
   value,
@@ -21,8 +22,8 @@ export const OptionsEditor: React.FC<TCellEditor> = ({
     <SelectControl
       defaultMenuIsOpen
       hideSelectedOptions={!isMultiple}
-      onChange={(event) => {
-        onChange(event.value);
+      onChange={(val: TSelectOption[]) => {
+        onChange({ value: val } as TOptionsFilterValue);
       }}
       value={String(value)}
       creatable

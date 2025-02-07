@@ -39,11 +39,11 @@ export const DateEditor: React.FC<TCellEditor> = ({
           size={
             density === 'compact' && rowHeight <= ROW_HEIGHT_MD ? 'sm' : 'md'
           }
-          onChange={(event: React.FormEvent<HTMLInputElement>) =>
-            onChange(event.currentTarget.value)
+          onChange={(ts: number) =>
+            onChange(ts)
           }
           value={new Date(value as Date)}
-          autofocus={true}
+          label={''}
         />
       </Popover.Panel>
     </Popover>

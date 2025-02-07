@@ -8,10 +8,7 @@ import {
   type StyledInternalEditorProps,
 } from './StyledInternalEditor';
 
-export interface InternalEditorProps
-  extends IDataAttrs,
-    IUseEditor,
-    Pick<StyledInternalEditorProps, 'bordered'> {
+export interface InternalEditorProps extends IDataAttrs, IUseEditor {
   /** Width of the editor wrapper */
   width?: number | string;
   /** Height of the editor wrapper */
@@ -51,10 +48,10 @@ export const InternalEditor: React.FC<InternalEditorProps> = ({
       ref={containerRef}
       $height={height}
       $width={width}
-      bordered={bordered}
+      $bordered={bordered}
       lineNumbers={options?.lineNumbers}
       readOnly={options?.readOnly}
-      minimap={!!options?.minimap?.enabled}
+      $minimap={!!options?.minimap?.enabled}
     />
   );
 };

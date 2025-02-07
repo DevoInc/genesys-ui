@@ -6,8 +6,8 @@ export interface StyledInternalEditorProps extends IStyledOverloadCss {
   $height: string | number;
   $width: string | number;
   readOnly?: boolean;
-  bordered?: boolean;
-  minimap?: boolean;
+  $bordered?: boolean;
+  $minimap?: boolean;
   lineNumbers?: monaco.editor.IStandaloneEditorConstructionOptions['lineNumbers'];
 }
 
@@ -18,8 +18,8 @@ export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
     readOnly,
     $width,
     theme,
-    bordered,
-    minimap,
+    $bordered,
+    $minimap,
   }) => {
     const cmpTokens = theme.cmp.editor;
     return css`
@@ -44,12 +44,12 @@ export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
 
         // Bordered - Smart Editor -Style
       
-      ${bordered &&
+      ${$bordered &&
         css`
           border-radius: var(--border-radius);
         `}
       .overflow-guard {
-          ${bordered &&
+          ${$bordered &&
           css`
             // -1 fills the gap between the internal border and external border
             border-radius: calc(var(--border-radius) - 1px);
@@ -158,7 +158,7 @@ export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
 
         .decorationsOverviewRuler {
           width: ${cmpTokens.ruler.size.width} !important;
-          border-left: ${minimap &&
+          border-left: ${$minimap &&
           cmpTokens.ruler.shape.borderLeft.hasMiniMap};
         }
       }

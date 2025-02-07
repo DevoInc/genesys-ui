@@ -2,7 +2,6 @@ import type { TRow, TFilterValue, TColDef } from '../declarations';
 import { getColDef } from './definitions';
 import type {
   TNumberFilterValue,
-  TOptionsFilterValue,
   TBooleanFilterValue,
   TTextFilterValue,
 } from '../filters';
@@ -12,6 +11,7 @@ import {
   optionsTextFilter,
   textFilter,
 } from './filters';
+import { TSelectOption } from '@devoinc/genesys-ui';
 
 export const valueFilter = (
   colDef: TColDef,
@@ -49,7 +49,7 @@ export const valueFilter = (
     type === 'options' &&
     optionsTextFilter(
       String(value),
-      { value: searchText } as TOptionsFilterValue,
+      { value: searchText } as TSelectOption,
       colDef,
     )
   ) {
@@ -74,7 +74,7 @@ export const filterDataByText =
       const value = colDef.valueFormatter
         ? colDef.valueFormatter(a[colId], colDef.context)
         : a[colId];
-      if (valueFilter(colDef, searchText, value)) {
+      if (valueFilter(colDef, searchText, value as TFilterValue)) {
         return true;
       }
     }

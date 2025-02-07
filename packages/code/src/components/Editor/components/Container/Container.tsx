@@ -4,9 +4,10 @@ import { useTheme } from 'styled-components';
 import { Box, type BoxProps, mergeStyles } from '@devoinc/genesys-ui';
 import { codeContainerMixin, type ICodeContainerMixin } from './helpers';
 
-export interface ContainerProps
-  extends BoxProps,
-    Omit<ICodeContainerMixin, 'theme'> {}
+export interface ContainerProps extends BoxProps {
+  bordered?: ICodeContainerMixin['$bordered'];
+  readOnly?: ICodeContainerMixin['$readOnly'];
+}
 
 export const Container: React.FC<ContainerProps> = ({
   bordered,
@@ -20,7 +21,7 @@ export const Container: React.FC<ContainerProps> = ({
     <Box
       {...restBoxProps}
       style={mergeStyles(
-        codeContainerMixin({ bordered, readOnly, theme }),
+        codeContainerMixin({ $bordered: bordered, $readOnly: readOnly, theme }),
         style,
       )}
     >

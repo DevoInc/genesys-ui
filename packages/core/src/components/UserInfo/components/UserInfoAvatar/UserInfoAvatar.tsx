@@ -11,6 +11,8 @@ import { HFlex } from '../../../HFlex';
 import { Avatar } from '../../../Avatar';
 import { Typography } from '../../../Typography';
 import { VFlex } from '../../../VFlex';
+import { subtitleSize } from './utils';
+import { evalFormatFN } from './utils/evalFormat';
 
 export interface UserInfoAvatarProps
   extends Pick<
@@ -26,6 +28,7 @@ export interface UserInfoAvatarProps
     >,
     IDataAttrs {
   name: IUserInfo['name'];
+  initials?: string;
 }
 
 export const UserInfoAvatar: React.FC<UserInfoAvatarProps> = ({
@@ -38,18 +41,15 @@ export const UserInfoAvatar: React.FC<UserInfoAvatarProps> = ({
   size = 'md',
   subtitle,
   tooltip,
+  initials,
   ...dataAttrs
 }) => {
   const defaultAvatarSize = subtitle
-    ? size === 'sm'
-      ? 'xs'
-      : size === 'lg'
-        ? 'md'
-        : 'sm'
+    ? subtitleSize(size)
     : USER_INFO_SIZE_AVATAR_MAP[format][size];
   const evalAvatarSize = avatarSize || defaultAvatarSize;
   const evalSpacing = format === 'heading' ? 'cmp-sm' : 'cmp-xs';
-  const evalFormat = format !== 'base' ? format : subtitle ? 'bold' : 'base';
+  const evalFormat = evalFormatFN(format, subtitle);
   return (
     <HFlex {...dataAttrs} spacing={evalSpacing} id={id} tooltip={tooltip}>
       <Avatar
@@ -57,6 +57,7 @@ export const UserInfoAvatar: React.FC<UserInfoAvatarProps> = ({
         imageSrc={avatar}
         name={name}
         size={evalAvatarSize}
+        initials={initials}
       />
       <VFlex minWidth="0" width="100%" spacing="0">
         {evalFormat === 'heading' ? (

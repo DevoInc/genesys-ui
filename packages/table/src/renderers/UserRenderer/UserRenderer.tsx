@@ -34,18 +34,19 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
               avatarSize="xxxs"
               format="base"
               name={name}
+              initials={user?.initials}
             />
           </Box>
         );
       }}
-      <Popover.Panel width="38rem" id="story-popover-panel">
+      <Popover.Panel width="20rem" id="story-popover-panel">
         <Panel.Header bordered>
           <UserInfo.Avatar
             avatar={user?.avatar}
             avatarColorScheme={user?.colorScheme || 'info'}
-            avatarSize="xxxs"
-            format="base"
+            format="heading"
             name={name}
+            initials={user?.initials}
           />
         </Panel.Header>
         <Panel.Body>
@@ -58,12 +59,14 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
       </Popover.Panel>
     </Popover>
   ) : (
-    <UserInfo.Avatar
-      avatar={user?.avatar}
-      avatarColorScheme={user?.colorScheme || 'info'}
-      avatarSize="xxxs"
-      format="base"
-      name={name}
-    />
+      <UserInfo.Avatar
+        avatar={user?.avatar}
+        avatarColorScheme={user?.colorScheme || 'info'}
+        avatarSize="xxxs"
+        format="base"
+        name={name}
+        tooltip={name}
+        initials={user?.initials}
+      />
   );
 };

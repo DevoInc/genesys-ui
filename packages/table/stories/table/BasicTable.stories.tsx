@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Flex } from '@devoinc/genesys-ui';
-
 import {
   BasicTable,
   orderDataByOrderStruct,
-  TColDef,
+  type TColDef,
   updateColDefsWithOrderStruct,
   useOrderStruct,
 } from '../../src';
@@ -16,10 +14,6 @@ import { AllTypesColumn } from './column/AllTypesColumn';
 import { useFilterStruct } from '../../src/hooks/useFilterStruct';
 import { filterDataByFilterStruct } from '../../src/helpers/filterDataByFilterStruct';
 import { updateColDefsWithFilterStruct } from '../../src/helpers/updateColDefsWithFilterStruct';
-
-// import { Holo } from '@devoinc/holo';
-// import { performanceColumn } from './column/performanceColumn';
-// import { performanceData } from './data/performanceData';
 
 const meta: Meta<typeof BasicTable> = {
   title: 'Components/Layout/Table/Basic',
@@ -32,17 +26,24 @@ const meta: Meta<typeof BasicTable> = {
 export default meta;
 type Story = StoryObj<typeof BasicTable>;
 
-const BasicCmp = ({ data, colDefs }) => {
-  const [newData, setNewData] = React.useState(data);
-  const { orderStruct, onSort } = useOrderStruct([{ id: 'id', sort: 'desc' }]);
-  const { filterStruct, onFilter } = useFilterStruct();
+export const Basic: Story = {
+  args: {
+    data: allTypesData,
+    colDefs: AllTypesColumn,
+  },
+  render: ({ data, colDefs, ...props }) => {
+    const [newData, setNewData] = React.useState(data);
+    const { orderStruct, onSort } = useOrderStruct([
+      { id: 'id', sort: 'desc' },
+    ]);
+    const { filterStruct, onFilter } = useFilterStruct();
 
-  const newColDef = updateColDefsWithFilterStruct(colDefs, filterStruct);
+    const newColDef = updateColDefsWithFilterStruct(colDefs, filterStruct);
 
-  return (
-    <Flex flexDirection="column" gap="cmp-md" height={'auto'}>
-      <Flex.Item>
+    return (
+      <div style={{ overflowY: 'auto' }}>
         <BasicTable
+          {...props}
           id={'basicTableStorie'}
           onSort={(colDef: TColDef) => {
             onSort(colDef.id);
@@ -81,13 +82,9 @@ const BasicCmp = ({ data, colDefs }) => {
             );
           }}
         />
-      </Flex.Item>
-    </Flex>
-  );
-};
-
-export const Basic: Story = {
-  render: () => <BasicCmp data={allTypesData} colDefs={AllTypesColumn} />,
+      </div>
+    );
+  },
 };
 
 // const colDefs = performanceColumn;
