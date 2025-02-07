@@ -80,7 +80,14 @@ export const InternalPopover: React.FC<PopoverProps> = ({
     }
   };
 
-  const setOpened = (state: boolean) => {
+  const setOpened = (state: any) => {
+    if (typeof state === 'function') {
+      if (delayOnOpen <= 0 && delayOnClose <= 0) {
+        delayedOpening.current = state();
+        return setActualOpened(state);
+      }
+      return setOpened(state());
+    }
     delayedOpening.current = state;
     const delay = state ? delayOnOpen : delayOnClose;
     if (delay <= 0) {
@@ -143,7 +150,7 @@ export const InternalPopover: React.FC<PopoverProps> = ({
 
     if (!isChild) {
       ev.stopPropagation();
-      setOpened(!opened);
+      setOpened((prevState) => !prevState);
       opened && onClose?.();
     }
   };
