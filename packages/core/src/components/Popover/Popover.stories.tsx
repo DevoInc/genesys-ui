@@ -5,6 +5,7 @@ import { Popover } from './Popover';
 import { Button } from '../Button';
 import { ButtonGroup } from '../ButtonGroup';
 import { HFlex } from '../HFlex';
+import { Link } from '../Link';
 import { Menu } from '../Menu';
 import { Panel } from '../Panel';
 import { Typography } from '../Typography';
@@ -396,17 +397,13 @@ export const Delay: Story = {
                     setPopoverOpen(popoverOpen);
 
                     return (
-                      <Button
-                        aria-controls={popid}
-                        aria-expanded={isOpened}
-                        aria-haspopup={true}
+                      <Link
                         onMouseOver={() => popoverOpen[popid].current(true)}
                         onMouseOut={() => popoverOpen[popid].current(false)}
                         ref={ref}
-                        state={isOpened ? 'expanded' : undefined}
                       >
                         { title }
-                      </Button>
+                      </Link>
                     );
                   }}
                   <Popover.Panel>
