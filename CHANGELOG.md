@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.6.1](https://github.com/DevoInc/genesys-ui/compare/v17.6.0...v17.6.1) (2025-02-10)
+
+### Bug Fixes
+
+* **color:** clean up color array by removing duplicates and correcting typos ([0599112](https://github.com/DevoInc/genesys-ui/commit/0599112fb238946fb9f8cdae14098657f95a2b62))
+
 ## [17.6.0](https://github.com/DevoInc/genesys-ui/compare/v17.5.3...v17.6.0) (2025-02-10)
 
 ### Features
