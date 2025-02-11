@@ -1,5 +1,24 @@
 # Changelog
 
+## [17.6.1](https://github.com/DevoInc/genesys-ui/compare/v17.6.0...v17.6.1) (2025-02-10)
+
+### Bug Fixes
+
+* **color:** clean up color array by removing duplicates and correcting typos ([0599112](https://github.com/DevoInc/genesys-ui/commit/0599112fb238946fb9f8cdae14098657f95a2b62))
+
+## [17.6.0](https://github.com/DevoInc/genesys-ui/compare/v17.5.3...v17.6.0) (2025-02-10)
+
+### Features
+
+* Allow ContentSwitcher to have only icon based items and small adjustments for UserInfo interface and Partitions. ([ea2b52b](https://github.com/DevoInc/genesys-ui/commit/ea2b52be3ce16829deb38589a19a69d44077f4e3))
+
+### Bug Fixes
+
+* **datetime:** fix realTime & hasMillis problems ([aee029e](https://github.com/DevoInc/genesys-ui/commit/aee029e3b59509f555c6476ee35ae82dd8fcc1af))
+* **MenuItem:** Compatible with React less than 19 ([ffefb49](https://github.com/DevoInc/genesys-ui/commit/ffefb4905dc75c9fb35d013bc71172a90f4c514a))
+* **table:** refactor optionsFilter to improve array comparison logic ([32c6838](https://github.com/DevoInc/genesys-ui/commit/32c6838db3371ba29ff485abb508a1c82359d5b8))
+* **ui:** export declarations for improved component accessibility ([9ad8d94](https://github.com/DevoInc/genesys-ui/commit/9ad8d9454f01672519b6cb051fd65b39493cd5bb))
+
 ## [17.5.3](https://github.com/DevoInc/genesys-ui/compare/v17.5.2...v17.5.3) (2025-02-03)
 
 ### Bug Fixes
