@@ -2,17 +2,28 @@ import * as React from 'react';
 
 import type { IStyledOverloadCss } from '../../../../declarations';
 import { Panel } from '../../../Panel';
+import {
+  IPanelHelpAttrs,
+  IPanelContainerAttrs,
+  TPanelChildren,
+  TPanelActions,
+} from '../../../Panel/declarations';
+import type {
+  IPanelCloseAttrs,
+  IPanelHeadingAttrs,
+} from '../../../Panel/components/PanelHeader/declarations';
 
 interface InlineMessagePanelProps extends IStyledOverloadCss {
-  actions?: React.ReactElement[];
-  children?: React.ReactNode;
-  helpUrl?: string;
-  icon?: string;
+  actions?: TPanelActions;
+  children?: TPanelChildren;
+  helpUrl?: IPanelHelpAttrs['helpUrl'];
+  icon?: IPanelHeadingAttrs['icon'];
   id?: string;
-  onClose?: () => void;
-  onCloseTooltip?: string;
-  subtitle?: string;
-  title?: string;
+  onClose?: IPanelCloseAttrs['onClick'];
+  onCloseTooltip?: IPanelCloseAttrs['tooltip'];
+  size?: IPanelContainerAttrs['size'];
+  subtitle?: IPanelHeadingAttrs['subtitle'];
+  title?: IPanelHeadingAttrs['title'];
 }
 
 export const InlineMessagePanel: React.FC<InlineMessagePanelProps> = ({
@@ -23,26 +34,30 @@ export const InlineMessagePanel: React.FC<InlineMessagePanelProps> = ({
   id,
   onClose,
   onCloseTooltip,
+  size,
   subtitle,
   style,
   title,
-}) => (
-  <Panel
-    elevation={'ground'}
-    maxHeight="40rem"
-    id={id}
-    style={style}
-    width="fit-content"
-    minWidth="30rem"
-    maxWidth="40rem"
-    size="sm"
-  >
-    {
+}) => {
+  const hasSimpleContent =
+    typeof children === 'string' || typeof children === 'number';
+  return (
+    <Panel
+      elevation={'ground'}
+      maxHeight="40rem"
+      id={id}
+      style={style}
+      width="fit-content"
+      minWidth="30rem"
+      maxWidth="40rem"
+      size={size || (hasSimpleContent ? 'sm' : 'md')}
+    >
       <Panel.Header
+        bordered
         closeSettings={
           onClose
             ? {
-                cssTranslate: '0.6rem, -0.6rem',
+                cssTranslate: '0.6rem, -0.2rem',
                 onClick: onClose,
                 tooltip: onCloseTooltip,
               }
@@ -53,8 +68,8 @@ export const InlineMessagePanel: React.FC<InlineMessagePanelProps> = ({
         helpUrl={helpUrl}
         icon={icon}
       />
-    }
-    <Panel.Body>{children}</Panel.Body>
-    <Panel.Footer actions={actions} />
-  </Panel>
-);
+      <Panel.Body>{children}</Panel.Body>
+      <Panel.Footer actions={actions} bordered />
+    </Panel>
+  );
+};

@@ -36,9 +36,7 @@ export const Playground: Story = {
   },
   args: {
     children: (
-      <InlineMessage.Panel>
-        <Typography.Paragraph>This is an inline message</Typography.Paragraph>
-      </InlineMessage.Panel>
+      <InlineMessage.Panel>This is an inline message</InlineMessage.Panel>
     ),
   },
 };
@@ -63,7 +61,7 @@ export const WithPanel: Story = {
                 Cancel
               </Button>,
               <Button
-                colorScheme="neutral"
+                colorScheme="accent"
                 key="btn-2"
                 onClick={() => {
                   // eslint-disable-next-line no-alert
@@ -83,11 +81,13 @@ export const WithPanel: Story = {
                 colorScheme={'accent'}
                 onClick={() => {
                   // eslint-disable-next-line no-alert
-                  alert('Hello world!');
+                  alert('Close the panel');
                   setOpened(false);
                 }}
                 wide
-              />
+              >
+                Close the panel
+              </Button>
             </Box>
           </InlineMessage.Panel>
         )}
