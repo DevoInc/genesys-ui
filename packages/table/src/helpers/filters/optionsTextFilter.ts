@@ -13,5 +13,5 @@ export const optionsTextFilter = (
       : data && colDef?.context?.options[data]
         ? colDef.context.options[data].label
             .toLowerCase()
-            .includes(value.toLowerCase())
+            .includes(value.value.toLowerCase())
         : false;
