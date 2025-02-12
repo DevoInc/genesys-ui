@@ -245,6 +245,68 @@ export const MultipleBasic: Story = {
     })(args),
 };
 
+export const MultipleGroup: Story = {
+  name: 'Multiple selection group',
+  render: (args) =>
+    ((props) => {
+      const [value, setValue] = React.useState<PropsValue<TSelectOption>>();
+      return (
+        <SelectControl
+          {...props}
+          closeMenuOnSelect={false}
+          isMulti
+          onChange={(val) => setValue(val)}
+          options={[
+            {
+              label: 'ENTERPRISE',
+              options: [
+                {
+                  value: 'TA0040',
+                  label: 'Impact (TA0040)',
+                },
+                {
+                  value: 'TA0042',
+                  label: 'Resource Development (TA0042)',
+                },
+                {
+                  value: 'TA0011',
+                  label: 'Command and Control (TA0011)',
+                },
+                {
+                  value: 'TA0010',
+                  label: 'Exfiltration (TA0010)',
+                },
+                {
+                  value: 'TA0043',
+                  label: 'Reconnaissance (TA0043)',
+                },
+              ],
+            },
+            {
+              label: 'ICS',
+              options: [
+                {
+                  value: 'TA0103',
+                  label: 'Evasion (TA0103)',
+                },
+              ],
+            },
+            {
+              label: 'MOBILE',
+              options: [
+                {
+                  value: 'TA0031',
+                  label: 'Credential Access (TA0031)',
+                },
+              ],
+            },
+          ]}
+          value={value}
+        />
+      );
+    })(args),
+};
+
 export const MultipleSubtle: Story = {
   name: 'Multiple selection subtle variant',
   render: (args) =>

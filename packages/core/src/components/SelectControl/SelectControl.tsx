@@ -10,7 +10,8 @@ import {
 import { SelectComponents } from 'react-select/dist/declarations/src/components';
 
 import { CUSTOM_HEIGHT } from './constants';
-import { wrapperOnChange, findValue } from './utils';
+import { wrapperOnChange } from './utils';
+import { findValue } from './utils/findValue/findValue';
 import { getFieldContextProps } from '../Field';
 import { FieldContext } from '../Field/context';
 import * as defaultComponents from './components';
@@ -153,7 +154,6 @@ export const SelectControl = <
     status,
   });
   const evalStatus = contextBasedProps.status;
-
   return (
     <InnerSelectControl<Option, IsMulti, Group>
       {...rest}
