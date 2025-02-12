@@ -354,22 +354,26 @@ export const Delay: Story = {
 
       const [popoverOpen, setPopoverOpen] = React.useState({});
 
-      const texts = [{
-        id: 'first',
-        title: 'First chunk',
-        body: `He gazed at her and saw millions of stars reflected in those
+      const texts = [
+        {
+          id: 'first',
+          title: 'First chunk',
+          body: `He gazed at her and saw millions of stars reflected in those
           eyes, dark as deep wells.`,
-      }, {
-        id: 'second',
-        title: 'Second chunk',
-        body: `The lights of the city, hundreds of kilometers away, were fading
+        },
+        {
+          id: 'second',
+          title: 'Second chunk',
+          body: `The lights of the city, hundreds of kilometers away, were fading
           as they breathed in the cold air of the mountaintop.`,
-      }, {
-        id: 'third',
-        title: 'Third chunk',
-        body: `He knew that it would not be good, but like the toad in the pot
+        },
+        {
+          id: 'third',
+          title: 'Third chunk',
+          body: `He knew that it would not be good, but like the toad in the pot
           staring mesmerized at the flame, he sat there letting time pass.`,
-      }];
+        },
+      ];
 
       const renderPopoverWithDelay = (idx, delayOnOpen, delayOnClose) => (
         <VFlex>
@@ -379,58 +383,50 @@ export const Delay: Story = {
           <Typography.Paragraph>
             delayOnClose: {delayOnClose} ms.
           </Typography.Paragraph>
-          {
-            texts.map(({id, title, body}) => {
-              const popid = popoverIdPrefix + idx + id;
-              return (
-                <Popover
-                  id={popid}
-                  key={popid}
-                  placement="left-start"
-                  delayOnOpen={delayOnOpen}
-                  delayOnClose={delayOnClose}
-                >
-                  {({ ref, isOpened, setOpened }) => {
-                    const r = React.useRef(null);
-                    r.current = setOpened;
-                    popoverOpen[popid] = r;
-                    setPopoverOpen(popoverOpen);
+          {texts.map(({ id, title, body }) => {
+            const popid = popoverIdPrefix + idx + id;
+            return (
+              <Popover
+                id={popid}
+                key={popid}
+                placement='left-start'
+                delayOnOpen={delayOnOpen}
+                delayOnClose={delayOnClose}
+              >
+                {({ ref, setOpened }) => {
+                  const r = React.useRef(null);
+                  r.current = setOpened;
+                  popoverOpen[popid] = r;
+                  setPopoverOpen(popoverOpen);
 
-                    return (
-                      <Link
-                        onMouseOver={() => popoverOpen[popid].current(true)}
-                        onMouseMove={() => popoverOpen[popid].current(true)}
-                        onMouseOut={() => popoverOpen[popid].current(false)}
-                        ref={ref}
-                      >
-                        { title }
-                      </Link>
-                    );
-                  }}
-                  <Popover.Panel>
-                    <Typography.Heading>
-                      { title }
-                    </Typography.Heading>
-                    <Typography.Paragraph>
-                      { body }
-                    </Typography.Paragraph>
-                  </Popover.Panel>
-                </Popover>
-              )
-            })
-          }
+                  return (
+                    <Link
+                      onMouseOver={() => popoverOpen[popid].current(true)}
+                      onMouseMove={() => popoverOpen[popid].current(true)}
+                      onMouseOut={() => popoverOpen[popid].current(false)}
+                      ref={ref}
+                    >
+                      {title}
+                    </Link>
+                  );
+                }}
+                <Popover.Panel>
+                  <Typography.Heading>{title}</Typography.Heading>
+                  <Typography.Paragraph>{body}</Typography.Paragraph>
+                </Popover.Panel>
+              </Popover>
+            );
+          })}
         </VFlex>
       );
 
       return (
-        <HFlex
-          justifyContent='space-between'
-        >
-          { renderPopoverWithDelay(1, 0, 0) }
-          { renderPopoverWithDelay(2, 200, 200) }
-          { renderPopoverWithDelay(3, 1000, 0) }
+        <HFlex justifyContent='space-between'>
+          {renderPopoverWithDelay(1, 0, 0)}
+          {renderPopoverWithDelay(2, 200, 200)}
+          {renderPopoverWithDelay(3, 1000, 0)}
         </HFlex>
-      )
+      );
     })(),
 };
 
