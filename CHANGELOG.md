@@ -1,5 +1,15 @@
 # Changelog
 
+## [17.7.0](https://github.com/DevoInc/genesys-ui/compare/v17.6.1...v17.7.0) (2025-02-12)
+
+### Features
+
+* **InlineMessage:** get inline message panel size based in the content complexity. ([cd7c48a](https://github.com/DevoInc/genesys-ui/commit/cd7c48ae20a7b1a8d85c0614039e775fabc1634f))
+
+### Bug Fixes
+
+* **optionsTextFilter:** update value handling to support object input for filtering ([f608e2e](https://github.com/DevoInc/genesys-ui/commit/f608e2ee2f4cc5296e96b7d4d28ce4a472689f68))
+
 ## [17.6.1](https://github.com/DevoInc/genesys-ui/compare/v17.6.0...v17.6.1) (2025-02-10)
 
 ### Bug Fixes
