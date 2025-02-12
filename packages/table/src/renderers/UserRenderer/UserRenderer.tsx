@@ -17,7 +17,7 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
   const user = userInfo[value];
   const name = user?.name || value;
   return user?.email || user?.job || user?.role ? (
-    <Popover placement="bottom-start" id="story-userinfo">
+    <Popover placement="bottom-start" id="story-userinfo" delayOnOpen={500}>
       {({ toggle, ref, isOpened, setOpened }) => {
         setOpenedInfo.current = setOpened;
         return (
@@ -26,6 +26,7 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
             onClick={() => setOpenedInfo.current(!isOpened)}
             onMouseOut={toggle}
             onMouseOver={() => setOpenedInfo.current(true)}
+            onMouseMove={() => setOpenedInfo.current(true)}
             ref={ref}
           >
             <UserInfo.Avatar
@@ -59,14 +60,14 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
       </Popover.Panel>
     </Popover>
   ) : (
-      <UserInfo.Avatar
-        avatar={user?.avatar}
-        avatarColorScheme={user?.colorScheme || 'info'}
-        avatarSize="xxxs"
-        format="base"
-        name={name}
-        tooltip={name}
-        initials={user?.initials}
-      />
+    <UserInfo.Avatar
+      avatar={user?.avatar}
+      avatarColorScheme={user?.colorScheme || 'info'}
+      avatarSize="xxxs"
+      format="base"
+      name={name}
+      tooltip={name}
+      initials={user?.initials}
+    />
   );
 };
