@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.8.0](https://github.com/DevoInc/genesys-ui/compare/v17.7.0...v17.8.0) (2025-02-12)
+
+### Features
+
+* **Popover:** Delay when popover is opened or closed ([#112](https://github.com/DevoInc/genesys-ui/issues/112)) ([b2b1b45](https://github.com/DevoInc/genesys-ui/commit/b2b1b45734ea906b68aa4bc5b96ab41cf1afced0))
+
 ## [17.7.0](https://github.com/DevoInc/genesys-ui/compare/v17.6.1...v17.7.0) (2025-02-12)
 
 ### Features
