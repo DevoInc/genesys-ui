@@ -47,9 +47,9 @@ export const ContentSwitcherItem: React.FC<ContentSwitcherItemProps> = ({
     <Button
       {...restButtonProps}
       aria-selected={selected}
-      as="label"
       colorScheme="quiet"
       icon={icon}
+      squared={!children}
       id={id}
       onChange={onChange}
       onClick={onClick}

@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-datetime",
-  "version": "17.5.3",
+  "version": "17.6.1",
   "description": "",
   "type": "module",
   "scripts": {
@@ -27,11 +27,11 @@
     "dist"
   ],
   "keywords": [],
-  "author": "",
+  "author": "Devo, Inc. Quvis Team (https://github.com/orgs/DevoInc/teams/quvis)",
   "license": "MIT",
   "peerDependencies": {
     "@devoinc/genesys-icons": "4.x || 5.x || 6.x",
-    "@devoinc/genesys-ui": "^17.5.3",
+    "@devoinc/genesys-ui": "^17.6.1",
     "date-fns": ">=4.0",
     "react": ">=17.0",
     "react-popper": "2.x",

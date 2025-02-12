@@ -1,10 +1,7 @@
 import * as React from 'react';
 import type { IDataAttrs } from '@devoinc/genesys-ui';
 import { useDiffEditor, type IUseDiffEditor } from '../../hooks';
-import {
-  StyledInternalDiffEditor,
-  type StyledInternalDiffEditorProps,
-} from './StyledInternalDiffEditor';
+import { StyledInternalDiffEditor } from './StyledInternalDiffEditor';
 
 export interface InternalDiffEditorProps extends IDataAttrs, IUseDiffEditor {
   /**

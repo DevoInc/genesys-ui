@@ -96,6 +96,7 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
   controlWidth,
   innerControlsWidth,
   status = 'base',
+  hasMillis = false,
   ...dataProps
 }) => {
   const theme = useTheme();
@@ -133,7 +134,11 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
         <Field
           controlWidth={
             innerControlsWidth ??
-            theme.cmp.dateTimeRangeControl.input.size.width.withMillis[size]
+            (hasMillis
+              ? theme.cmp.dateTimeRangeControl.input.size.width.withMillis[size]
+              : theme.cmp.dateTimeRangeControl.input.size.width.withSeconds[
+                  size
+                ])
           }
           hasFloatingHelper
           helper={helpers[0]}
@@ -168,7 +173,11 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
         <Field
           controlWidth={
             innerControlsWidth ??
-            theme.cmp.dateTimeRangeControl.input.size.width.withMillis[size]
+            (hasMillis
+              ? theme.cmp.dateTimeRangeControl.input.size.width.withMillis[size]
+              : theme.cmp.dateTimeRangeControl.input.size.width.withSeconds[
+                  size
+                ])
           }
           hasFloatingHelper
           helper={helpers[1]}

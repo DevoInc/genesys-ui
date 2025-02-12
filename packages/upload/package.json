@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-upload",
-  "version": "17.5.3",
+  "version": "17.6.1",
   "description": "",
   "type": "module",
   "scripts": {
@@ -26,11 +26,11 @@
     "dist"
   ],
   "keywords": [],
-  "author": "",
+  "author": "Devo, Inc. Quvis Team (https://github.com/orgs/DevoInc/teams/quvis)",
   "license": "MIT",
   "peerDependencies": {
     "@devoinc/genesys-icons": "4.x || 5.x || 6.x",
-    "@devoinc/genesys-ui": "^17.5.3",
+    "@devoinc/genesys-ui": "^17.6.1",
     "filepond-plugin-file-validate-size": "2.x",
     "filepond-plugin-file-validate-type": "1.x",
     "filepond-plugin-image-preview": "4.x",

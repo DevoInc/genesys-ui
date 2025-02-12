@@ -27,16 +27,25 @@ type Story = StoryObj<typeof DateTimeRangeFloatingPicker>;
 export const Playground: Story = {
   args: {
     value: [subMonths(new Date(), 1).getTime(), new Date().getTime()],
+    realTime: 'inactive',
   },
   render: (args) =>
     ((props) => {
       const [value, setValue] = React.useState(props.value);
+      const [realTime, setRealTime] = React.useState(props.realTime);
       return (
         <DateTimeRangeFloatingPicker
           {...props}
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
+          }}
+          realTime={realTime}
+          onRealTimeClick={(event) => {
+            event.stopPropagation();
+            setRealTime((oldRealTime) =>
+              oldRealTime === 'inactive' ? 'activated' : 'inactive',
+            );
           }}
         />
       );

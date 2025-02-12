@@ -3,10 +3,7 @@ import type { IDataAttrs } from '@devoinc/genesys-ui';
 
 import type { IUseEditor } from '../../hooks/editor/declarations';
 import { useEditor } from '../../hooks';
-import {
-  StyledInternalEditor,
-  type StyledInternalEditorProps,
-} from './StyledInternalEditor';
+import { StyledInternalEditor } from './StyledInternalEditor';
 
 export interface InternalEditorProps extends IDataAttrs, IUseEditor {
   /** Width of the editor wrapper */

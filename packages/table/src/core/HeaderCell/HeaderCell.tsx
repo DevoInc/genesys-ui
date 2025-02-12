@@ -21,7 +21,6 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   width,
   offsetX,
   children,
-  title,
   filter,
 }) => {
   const {

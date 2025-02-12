@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import type { TAvatarColorScheme, TAvatarSize } from '../Avatar/declarations';
-import { IKeyValue } from '../KeyValue/declarations';
-import { IGlobalAttrs, TBaseSize } from '../../declarations';
+import type { IKeyValue } from '../KeyValue/declarations';
+import type { IGlobalAttrs, TBaseSize } from '../../declarations';
+import type { AvatarProps } from '../Avatar';
 
 export type TUserInfoSize = TBaseSize;
 export type TUserInfoFormat = 'base' | 'heading' | 'bold';
@@ -13,9 +13,9 @@ export interface IUserInfo extends Pick<IGlobalAttrs, 'id' | 'tooltip'> {
   /** The avatar image of the user. */
   avatar?: string;
   /** The pre-defined size of the Avatar which defines its width and height. */
-  avatarSize?: TAvatarSize;
+  avatarSize?: AvatarProps['size'];
   /** The color scheme (info, neutral... etc.) of the avatar which will be visible if it's not defined the avatar image. */
-  avatarColorScheme?: TAvatarColorScheme;
+  avatarColorScheme?: AvatarProps['colorScheme'];
   /** The custom info blocks for the user: address, gender, ID... etc. */
   customInfo?: {
     supportingVisual: IKeyValue['supportingVisual'];
