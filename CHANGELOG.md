@@ -1,5 +1,11 @@
 # Changelog
 
+## [13.10.0](https://github.com/DevoInc/genesys-ui/compare/v13.9.0...v13.10.0) (2025-02-12)
+
+### Features
+
+* **select-control:** add multiple selection group and refactor findValue utility ([fcc416a](https://github.com/DevoInc/genesys-ui/commit/fcc416a9aecef01a15e387e7dc16297948534668))
+
 ## [13.9.0](https://github.com/DevoInc/genesys-ui/compare/v13.8.0...v13.9.0) (2024-11-28)
 
 ### Features
