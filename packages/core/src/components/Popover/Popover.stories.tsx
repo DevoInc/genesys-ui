@@ -399,6 +399,7 @@ export const Delay: Story = {
                     return (
                       <Link
                         onMouseOver={() => popoverOpen[popid].current(true)}
+                        onMouseMove={() => popoverOpen[popid].current(true)}
                         onMouseOut={() => popoverOpen[popid].current(false)}
                         ref={ref}
                       >

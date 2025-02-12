@@ -75,27 +75,33 @@ export const InternalPopover: React.FC<PopoverProps> = ({
   const evalZIndex = zIndex || theme.cmp.popover.elevation.zIndex.base;
   const [opened, setActualOpened] = React.useState<boolean>(isOpened);
   const delayedOpening = React.useRef<boolean>(isOpened);
+  const delayedFn = React.useRef(null);
 
   const setDelayedOpen = () => {
     if (delayedOpening.current !== opened) {
       setActualOpened(delayedOpening.current);
     }
+    delayedFn.current = null;
   };
 
   const setOpened = (state: any) => {
     if (typeof state === 'function') {
+      const newState = state(delayedOpening.current);
       if (delayOnOpen <= 0 && delayOnClose <= 0) {
-        delayedOpening.current = state();
+        delayedOpening.current = newState;
         return setActualOpened(state);
       }
-      return setOpened(state());
+      return setOpened(newState);
+    }
+    if (delayedFn.current != null) {
+      clearTimeout(delayedFn.current);
     }
     delayedOpening.current = state;
     const delay = state ? delayOnOpen : delayOnClose;
     if (delay <= 0) {
       setActualOpened(state);
     } else {
-      setTimeout(setDelayedOpen, delay);
+      delayedFn.current = setTimeout(setDelayedOpen, delay);
     }
   };
 
