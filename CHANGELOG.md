@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.8.1](https://github.com/DevoInc/genesys-ui/compare/v17.8.0...v17.8.1) (2025-02-13)
+
+### Bug Fixes
+
+* **color:** conditionally render DropdownPicker based on disabled state ([e991ad9](https://github.com/DevoInc/genesys-ui/commit/e991ad9f539293151e9a1e59a5176c65cb8a2fe4))
+
 ## [17.8.0](https://github.com/DevoInc/genesys-ui/compare/v17.7.0...v17.8.0) (2025-02-12)
 
 ### Features
