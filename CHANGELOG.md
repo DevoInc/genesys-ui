@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.8.4](https://github.com/DevoInc/genesys-ui/compare/v17.8.3...v17.8.4) (2025-02-14)
+
+### Bug Fixes
+
+* **core:**  selectControl multiple and findValue logic ([1dabc83](https://github.com/DevoInc/genesys-ui/commit/1dabc83631df3f2a3dfb23b99503d45f66e8a00a))
+
 ## [17.8.3](https://github.com/DevoInc/genesys-ui/compare/v17.8.2...v17.8.3) (2025-02-14)
 
 ### Bug Fixes
