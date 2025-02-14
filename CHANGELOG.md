@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.8.3](https://github.com/DevoInc/genesys-ui/compare/v17.8.2...v17.8.3) (2025-02-14)
+
+### Bug Fixes
+
+* **color:** remove unnecessary className prop ([57a050d](https://github.com/DevoInc/genesys-ui/commit/57a050dfcf2125b7ab1615cbb1735b162d7e9712))
+
 ## [17.8.2](https://github.com/DevoInc/genesys-ui/compare/v17.8.1...v17.8.2) (2025-02-14)
 
 ### Bug Fixes
