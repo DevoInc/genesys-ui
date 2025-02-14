@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.8.2](https://github.com/DevoInc/genesys-ui/compare/v17.8.1...v17.8.2) (2025-02-14)
+
+### Bug Fixes
+
+* validate date expression with parseDate value ([719380b](https://github.com/DevoInc/genesys-ui/commit/719380b178b29f403e18d9029e76d56608fcf36d))
+
 ## [17.8.1](https://github.com/DevoInc/genesys-ui/compare/v17.8.0...v17.8.1) (2025-02-13)
 
 ### Bug Fixes
