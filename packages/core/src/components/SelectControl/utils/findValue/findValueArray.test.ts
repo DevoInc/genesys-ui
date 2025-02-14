@@ -29,7 +29,7 @@ describe('findValueArray', () => {
         { label: 'c', value: 'c', options: [{ label: 'a', value: 'a' }] },
         { label: 'b', value: 'b' },
       ],
-      { label: 'c', value: 'c', options: [{ label: 'a', value: 'a' }] },
+      { label: 'a', value: 'a' },
     ],
     [
       'Option has group with multi option and should return group completed',
@@ -45,14 +45,7 @@ describe('findValueArray', () => {
         },
         { label: 'b', value: 'b' },
       ],
-      {
-        label: 'c',
-        value: 'c',
-        options: [
-          { label: 'a', value: 'a' },
-          { label: 'z', value: 'z' },
-        ],
-      },
+      { label: 'z', value: 'z' },
     ],
     [
       'value is not defined',

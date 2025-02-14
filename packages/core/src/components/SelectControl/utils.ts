@@ -7,7 +7,6 @@ import {
 import type { TChipSize } from '../Chip/declarations';
 import type { TFieldSize } from '../../declarations';
 import type { TSelectOption } from './declarations';
-import type { InnerSelectControlProps } from './InnerSelectControl';
 
 /**
  * A function that takes an object with onChange and value properties as input

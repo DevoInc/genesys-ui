@@ -284,7 +284,6 @@ export const SingleWithOptionsDesc: Story = {
 };
 
 export const MultipleBasic: Story = {
-  tags: ['isHidden'],
   render: (args) =>
     ((props) => {
       const getOptions = (
@@ -303,8 +302,71 @@ export const MultipleBasic: Story = {
           {...props}
           closeMenuOnSelect={false}
           isMulti
+          sortable
           onChange={(val) => setValue(val)}
           options={getOptions(50)}
+          value={value}
+        />
+      );
+    })(args),
+};
+
+export const MultipleGroup: Story = {
+  render: (args) =>
+    ((props) => {
+      const [value, setValue] = React.useState<PropsValue<TSelectOption>>();
+      return (
+        <SelectControl
+          {...props}
+          closeMenuOnSelect={false}
+          isMulti
+          sortable
+          onChange={(val) => setValue(val)}
+          options={[
+            {
+              label: 'ENTERPRISE',
+              options: [
+                {
+                  value: 'TA0040',
+                  label: 'Impact (TA0040)',
+                },
+                {
+                  value: 'TA0042',
+                  label: 'Resource Development (TA0042)',
+                },
+                {
+                  value: 'TA0011',
+                  label: 'Command and Control (TA0011)',
+                },
+                {
+                  value: 'TA0010',
+                  label: 'Exfiltration (TA0010)',
+                },
+                {
+                  value: 'TA0043',
+                  label: 'Reconnaissance (TA0043)',
+                },
+              ],
+            },
+            {
+              label: 'ICS',
+              options: [
+                {
+                  value: 'TA0103',
+                  label: 'Evasion (TA0103)',
+                },
+              ],
+            },
+            {
+              label: 'MOBILE',
+              options: [
+                {
+                  value: 'TA0031',
+                  label: 'Credential Access (TA0031)',
+                },
+              ],
+            },
+          ]}
           value={value}
         />
       );

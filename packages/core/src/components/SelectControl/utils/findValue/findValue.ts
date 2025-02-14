@@ -39,8 +39,9 @@ export const findValue = <Option extends TSelectOption>(
     // ['value','value',...]
     if (isMulti && Array.isArray(value)) {
       return value
-        .map((val) => {
-          return findValueArray(val, options as Option[]) && val;
+        .map((val) => {    
+                
+          return findValueArray(val, options as Option[]);
         })
         .filter((el) => el !== undefined);
 
