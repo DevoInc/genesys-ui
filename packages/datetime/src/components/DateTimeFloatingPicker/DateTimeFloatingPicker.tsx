@@ -54,7 +54,9 @@ export interface DateTimeFloatingPickerProps
   onChange?: DateTimeProps['onChange'];
   /** Value of the DateTimeFloatingPicker */
   value?: Date | number;
+  /** Parses a date input, which can be of type number | Date | string, and returns an object implementing the IParseResult interface. Its main goal is to validate the input expression. */
   parseDate?: (str: string) => IParseResult;
+  /** Takes a Date | number as input and returns a formatted string representation of the date. */
   formatDate?: (dt: Date | number) => string;
   /** Apply change directly, without extra buttons (nor Apply or Cancel buttons) */
   autoApply?: boolean;
@@ -112,7 +114,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
         }
       },
       reprDate: formatDate,
-      parseDate: getDefaultParseDate(),
+      parseDate,
     });
 
   useUpdateEffect(() => {

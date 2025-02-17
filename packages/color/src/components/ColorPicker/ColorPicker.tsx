@@ -117,6 +117,11 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
         id={popoverId}
         isOpened={pickerOpenedByDefault}
         placement={pickerPlacement}
+        onClose={() => {
+          if (!liveUpdate) {
+            _onChange();
+          }
+        }}
       >
         {({ toggle, ref, isOpened }) => (
           <StyledColorPicker
@@ -146,14 +151,18 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
             />
           </StyledColorPicker>
         )}
-        <DropdownPicker
-          id={`${id}__picker`}
-          color={color}
-          disableAlpha={disableAlpha}
-          liveUpdate={liveUpdate}
-          onChange={internalOnChange}
-          presetColors={presetColors}
-        />
+        {disabled ? (
+          ''
+        ) : (
+          <DropdownPicker
+            id={`${id}__picker`}
+            color={color}
+            disableAlpha={disableAlpha}
+            liveUpdate={liveUpdate}
+            onChange={internalOnChange}
+            presetColors={presetColors}
+          />
+        )}
       </Popover>
     </Field>
   );

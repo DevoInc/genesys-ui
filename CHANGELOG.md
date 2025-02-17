@@ -1,5 +1,53 @@
 # Changelog
 
+## [17.8.6](https://github.com/DevoInc/genesys-ui/compare/v17.8.5...v17.8.6) (2025-02-17)
+
+### Bug Fixes
+
+* **color:** ensure onClose triggers _onChange when liveUpdate is false ([e78d734](https://github.com/DevoInc/genesys-ui/commit/e78d7347eb9d7f5cd253d0d1d8b2ef3b95dbe5b3))
+
+## [17.8.5](https://github.com/DevoInc/genesys-ui/compare/v17.8.4...v17.8.5) (2025-02-17)
+
+## [17.8.4](https://github.com/DevoInc/genesys-ui/compare/v17.8.3...v17.8.4) (2025-02-14)
+
+### Bug Fixes
+
+* **core:**  selectControl multiple and findValue logic ([1dabc83](https://github.com/DevoInc/genesys-ui/commit/1dabc83631df3f2a3dfb23b99503d45f66e8a00a))
+
+## [17.8.3](https://github.com/DevoInc/genesys-ui/compare/v17.8.2...v17.8.3) (2025-02-14)
+
+### Bug Fixes
+
+* **color:** remove unnecessary className prop ([57a050d](https://github.com/DevoInc/genesys-ui/commit/57a050dfcf2125b7ab1615cbb1735b162d7e9712))
+
+## [17.8.2](https://github.com/DevoInc/genesys-ui/compare/v17.8.1...v17.8.2) (2025-02-14)
+
+### Bug Fixes
+
+* validate date expression with parseDate value ([719380b](https://github.com/DevoInc/genesys-ui/commit/719380b178b29f403e18d9029e76d56608fcf36d))
+
+## [17.8.1](https://github.com/DevoInc/genesys-ui/compare/v17.8.0...v17.8.1) (2025-02-13)
+
+### Bug Fixes
+
+* **color:** conditionally render DropdownPicker based on disabled state ([e991ad9](https://github.com/DevoInc/genesys-ui/commit/e991ad9f539293151e9a1e59a5176c65cb8a2fe4))
+
+## [17.8.0](https://github.com/DevoInc/genesys-ui/compare/v17.7.0...v17.8.0) (2025-02-12)
+
+### Features
+
+* **Popover:** Delay when popover is opened or closed ([#112](https://github.com/DevoInc/genesys-ui/issues/112)) ([b2b1b45](https://github.com/DevoInc/genesys-ui/commit/b2b1b45734ea906b68aa4bc5b96ab41cf1afced0))
+
+## [17.7.0](https://github.com/DevoInc/genesys-ui/compare/v17.6.1...v17.7.0) (2025-02-12)
+
+### Features
+
+* **InlineMessage:** get inline message panel size based in the content complexity. ([cd7c48a](https://github.com/DevoInc/genesys-ui/commit/cd7c48ae20a7b1a8d85c0614039e775fabc1634f))
+
+### Bug Fixes
+
+* **optionsTextFilter:** update value handling to support object input for filtering ([f608e2e](https://github.com/DevoInc/genesys-ui/commit/f608e2ee2f4cc5296e96b7d4d28ce4a472689f68))
+
 ## [17.6.1](https://github.com/DevoInc/genesys-ui/compare/v17.6.0...v17.6.1) (2025-02-10)
 
 ### Bug Fixes

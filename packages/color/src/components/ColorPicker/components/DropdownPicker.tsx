@@ -32,7 +32,6 @@ export const DropdownPicker: React.FC<DropdownPickerProps> = ({
     presetColors={presetColors}
     onChangeComplete={liveUpdate ? onChange : null}
     onChange={!liveUpdate ? onChange : null}
-    className="color-picker"
     color={toColorString(color)}
   />
 );

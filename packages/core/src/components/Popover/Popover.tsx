@@ -45,6 +45,10 @@ export interface PopoverProps
     size?: StyledPopoverArrowProps['$size'];
   };
   modifiers?: StrictModifier[];
+  /** Time in milliseconds before the popover opens after being triggered. */
+  delayOnOpen?: number;
+  /** Time in milliseconds before the popover closes after being triggered. */
+  delayOnClose?: number;
   zIndex?: number;
   onClose?: () => void;
 }
@@ -60,6 +64,8 @@ export const InternalPopover: React.FC<PopoverProps> = ({
   id,
   isOpened = false,
   modifiers = [],
+  delayOnOpen = 0,
+  delayOnClose = 0,
   onClose,
   placement,
   strategy = 'fixed',
@@ -67,7 +73,37 @@ export const InternalPopover: React.FC<PopoverProps> = ({
 }) => {
   const theme = useTheme();
   const evalZIndex = zIndex || theme.cmp.popover.elevation.zIndex.base;
-  const [opened, setOpened] = React.useState<boolean>(isOpened);
+  const [opened, setActualOpened] = React.useState<boolean>(isOpened);
+  const delayedOpening = React.useRef<boolean>(isOpened);
+  const delayedFn = React.useRef(null);
+
+  const setDelayedOpen = () => {
+    if (delayedOpening.current !== opened) {
+      setActualOpened(delayedOpening.current);
+    }
+    delayedFn.current = null;
+  };
+
+  const setOpened = (state: any) => {
+    if (typeof state === 'function') {
+      const newState = state(delayedOpening.current);
+      if (delayOnOpen <= 0 && delayOnClose <= 0) {
+        delayedOpening.current = newState;
+        return setActualOpened(state);
+      }
+      return setOpened(newState);
+    }
+    if (delayedFn.current != null) {
+      clearTimeout(delayedFn.current);
+    }
+    delayedOpening.current = state;
+    const delay = state ? delayOnOpen : delayOnClose;
+    if (delay <= 0) {
+      setActualOpened(state);
+    } else {
+      delayedFn.current = setTimeout(setDelayedOpen, delay);
+    }
+  };
 
   const [referenceElement, setReferenceElement] =
     React.useState<HTMLElement>(null);
