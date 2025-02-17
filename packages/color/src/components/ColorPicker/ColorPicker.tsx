@@ -117,6 +117,11 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
         id={popoverId}
         isOpened={pickerOpenedByDefault}
         placement={pickerPlacement}
+        onClose={() => {
+          if (!liveUpdate) {
+            _onChange();
+          }
+        }}
       >
         {({ toggle, ref, isOpened }) => (
           <StyledColorPicker
