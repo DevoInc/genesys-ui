@@ -98,11 +98,7 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
       visibility={visibility}
     >
       {(onClickBackwardNav || title || headerActions || renderActions) && (
-        <Panel.Header._Container
-          bordered={!navigation}
-          hasBoxShadow={hasScroll}
-          style="padding: 0;"
-        >
+        <Panel.Header._Container bordered={!navigation} style="padding: 0;">
           <HFlex
             spacing="0"
             as="div"
@@ -128,7 +124,6 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
       )}
       <Panel.Body
         removeSpace={removeContentSpace}
-        ref={targetElRef}
         style={panelSectionBodyMixin({
           hasScroll: hasScroll,
           removeSpace: removeContentSpace,
@@ -141,7 +136,6 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
         <Panel.Footer
           actions={footerActions}
           hasBackground={footerHasBackground}
-          hasBoxShadow={hasScroll}
           bordered
           style={panelSectionFooterMixin({ theme })}
         >
