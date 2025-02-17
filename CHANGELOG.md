@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.8.6](https://github.com/DevoInc/genesys-ui/compare/v17.8.5...v17.8.6) (2025-02-17)
+
+### Bug Fixes
+
+* **color:** ensure onClose triggers _onChange when liveUpdate is false ([e78d734](https://github.com/DevoInc/genesys-ui/commit/e78d7347eb9d7f5cd253d0d1d8b2ef3b95dbe5b3))
+
 ## [17.8.5](https://github.com/DevoInc/genesys-ui/compare/v17.8.4...v17.8.5) (2025-02-17)
 
 ## [17.8.4](https://github.com/DevoInc/genesys-ui/compare/v17.8.3...v17.8.4) (2025-02-14)
