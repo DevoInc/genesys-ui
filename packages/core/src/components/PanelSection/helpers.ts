@@ -49,7 +49,6 @@ export const getPanelSectionBodySpacing = ({
 export const panelSectionHeaderMixin = ({ theme }: { theme: DefaultTheme }) => {
   const headerPadding = theme.cmp.panelSection.header.space.padding;
   return css`
-    flex: 1 1 auto;
     padding: ${headerPadding};
   `;
 };

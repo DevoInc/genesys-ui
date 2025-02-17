@@ -103,10 +103,9 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
           hasBoxShadow={hasScroll}
           style="padding: 0;"
         >
-          <Panel.Header._Container
+          <HFlex
+            spacing="0"
             as="div"
-            bordered={false}
-            hasBoxShadow={false}
             style={panelSectionHeaderMixin({ theme })}
           >
             {onClickBackwardNav &&
@@ -124,7 +123,7 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
             )}
             {headerActions && <Panel.Header._Actions actions={headerActions} />}
             {renderActions}
-          </Panel.Header._Container>
+          </HFlex>
         </Panel.Header._Container>
       )}
       <Panel.Body
