@@ -38,7 +38,7 @@ export const ChildrenValueContainer: React.FC<ChildrenValueContainer> = ({
             display: flex;
             justify-content: center;
             align-items: center;
-            min-width: ${square};
+            min-width: ${`calc(${square} - 0.4rem)`};
             height: ${square};
             padding: 0
               ${cmpTokens.multiValueContainer.space.padding.hor.isSubtle};
