@@ -1,5 +1,13 @@
 # Changelog
 
+## [17.8.7](https://github.com/DevoInc/genesys-ui/compare/v17.8.6...v17.8.7) (2025-02-18)
+
+### Bug Fixes
+
+* **PanelSection:** added HFlex component to the header children as a wrapper, because now the Panel.Header is not a display flex block. ([e21a2f1](https://github.com/DevoInc/genesys-ui/commit/e21a2f1a9fba170ab4ade2f926ff85c730e4629a))
+* **PanelSection:** removed unnecessary props which were generating scroll styles problems. ([02f8460](https://github.com/DevoInc/genesys-ui/commit/02f8460305f89b643061805a7d01fe04f1bfd289))
+* **SelectControl:** fixed reserved space for counter in multipleSubtle variant. ([50061fc](https://github.com/DevoInc/genesys-ui/commit/50061fc5f48c1bb6fd04337c488e8930a8761f73))
+
 ## [17.8.6](https://github.com/DevoInc/genesys-ui/compare/v17.8.5...v17.8.6) (2025-02-17)
 
 ### Bug Fixes
