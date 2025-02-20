@@ -1,5 +1,7 @@
 # Changelog
 
+## [17.8.8](https://github.com/DevoInc/genesys-ui/compare/v17.8.7...v17.8.8) (2025-02-20)
+
 ## [17.8.7](https://github.com/DevoInc/genesys-ui/compare/v17.8.6...v17.8.7) (2025-02-18)
 
 ### Bug Fixes
