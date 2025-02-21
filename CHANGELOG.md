@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.9.0](https://github.com/DevoInc/genesys-ui/compare/v17.8.8...v17.9.0) (2025-02-21)
+
+### Features
+
+* **Table:** added animation to deleted row preset variant. ([0fa56e1](https://github.com/DevoInc/genesys-ui/commit/0fa56e194fc5ebc2a49464af198a55111d534cfa))
+
 ## [17.8.8](https://github.com/DevoInc/genesys-ui/compare/v17.8.7...v17.8.8) (2025-02-20)
 
 ## [17.8.7](https://github.com/DevoInc/genesys-ui/compare/v17.8.6...v17.8.7) (2025-02-18)
