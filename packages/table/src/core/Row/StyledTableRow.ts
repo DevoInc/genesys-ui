@@ -40,6 +40,24 @@ export const StyledTableRow = styled.tr<StyledTableRowProps>`
           background-color: ${rowTokens.color.background[$even].highlighted};
         }
       }
+
+      @keyframes deletedBlink {
+        0% {
+          background-color: ${rowTokens.color.background[$even].base};
+        }
+        16% {
+          background-color: ${rowTokens.color.background[$even].deleted};
+        }
+        70% {
+          opacity: 1;
+          background-color: ${rowTokens.color.background[$even].deleted};
+        }
+        100% {
+          background-color: ${rowTokens.color.background[$even].deleted};
+          opacity: 0;
+        }
+      }
+
       transition: background-color ease ${transitionDuration.bgColor};
       border: none;
       background-color: ${() => rowTokens.color.background[$even].base};
