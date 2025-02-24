@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.9.1](https://github.com/DevoInc/genesys-ui/compare/v17.9.0...v17.9.1) (2025-02-24)
+
+### Bug Fixes
+
+* added word-wrap to 'break-word' to the Typography component. ([f43ee04](https://github.com/DevoInc/genesys-ui/commit/f43ee049022cf03f207f55ab653d849edfe50dec))
+
 ## [17.9.0](https://github.com/DevoInc/genesys-ui/compare/v17.8.8...v17.9.0) (2025-02-21)
 
 ### Features
