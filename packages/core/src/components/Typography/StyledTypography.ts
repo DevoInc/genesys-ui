@@ -28,6 +28,7 @@ export const StyledTypography = styled.div<StyledTypographyProps>`
     $truncateLine,
     $variant,
   }) => css`
+    word-wrap: break-word;
     margin-bottom: ${getSpacingPropCss(theme)($gutterBottom)};
     ${getTypoCss({
       $bold,
