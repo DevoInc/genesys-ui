@@ -67,6 +67,7 @@ export const AllTypesColumn: TColDef[] = [
     sortable: true,
     context: {
       userMapping: richExtendedInfoUsers,
+      panelWidth: '10rem',
     },
   },
   {

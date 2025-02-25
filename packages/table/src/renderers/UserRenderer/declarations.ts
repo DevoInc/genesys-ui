@@ -1,6 +1,7 @@
 import { UserInfoAvatarProps } from '@devoinc/genesys-ui';
 
 export type TContextUser = {
+  panelWidth?: string;
   userMapping?: {
     [key: string]: {
       name: string;
