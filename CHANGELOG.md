@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.10.0](https://github.com/DevoInc/genesys-ui/compare/v17.9.1...v17.10.0) (2025-02-25)
+
+### Features
+
+* **Table:** Wider user renderer panel by default, customizable with panelWidth ([0c02c45](https://github.com/DevoInc/genesys-ui/commit/0c02c4537641dcd03b3ca1d4aeaa58f7092f488e))
+
 ## [17.9.1](https://github.com/DevoInc/genesys-ui/compare/v17.9.0...v17.9.1) (2025-02-24)
 
 ### Bug Fixes
