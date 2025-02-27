@@ -466,6 +466,7 @@ const dataGlobal = [
     bool: false,
     option: 'A',
     user: 'cjimenez@email.com',
+    tags: ['senior','chief'],
   },
   {
     text: 'Ina Osborne',
@@ -501,6 +502,7 @@ const dataGlobal = [
     bool: true,
     option: 'A',
     user: 'isabelle@email.com',
+    tags: ['senior', 'chief', 'founder'],
   },
   {
     text: 'Sean Parsons',
@@ -522,6 +524,7 @@ const dataGlobal = [
     bool: false,
     option: 'B',
     user: 'lawrence@email.com',
+    tags: ['senior'],
   },
   {
     text: 'Brandon Robertson',
@@ -564,6 +567,19 @@ const GlobalTextFilterTable = () => {
           C: { label: 'Option C' },
         },
       } as TContextOptions,
+    },
+    {
+      id: 'tags',
+      headerName: 'Tags',
+      preset: 'options',
+      context: {
+        options: {
+          'founder': { label: 'Founder' },
+          'chief': { label: 'Chief' },
+          'senior': { label: 'Senior' },
+        },
+      } as TContextOptions,
+      valueFormatter: (value) => value || [],
     },
     {
       id: 'user',
@@ -648,6 +664,7 @@ const GlobalTextFilterTable = () => {
           onFilter(curColDef.id, value, type);
         }}
         colDefs={updateColDefsWithFilterStruct(colDefs, filterStruct)}
+        texts={{ cell: { editTooltip: '' } }}
         data={dataFiltered}
       />
     </>

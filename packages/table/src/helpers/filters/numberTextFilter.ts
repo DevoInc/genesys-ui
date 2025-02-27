@@ -1,12 +1,4 @@
 import { TNumberFilterValue } from '../../filters';
 
-export const numberTextFilter = (
-  data: number,
-  { value }: TNumberFilterValue,
-) =>
-  value === ''
-    ? true
-    : isNaN(String(value))
-      ? false
-      : String(data).includes(String(value));
-
+export const numberTextFilter = (data: number, search: string) =>
+  search === '' ? true : isNaN(search) ? false : String(data).includes(search);
