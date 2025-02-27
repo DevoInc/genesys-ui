@@ -1,4 +1,3 @@
-import type { TSelectOption } from '@devoinc/genesys-ui';
 import { type TColDef } from '../../declarations';
 
 const optionHasText = (option, text: string, context?: TContextOptions) =>
@@ -7,7 +6,7 @@ const optionHasText = (option, text: string, context?: TContextOptions) =>
     : false;
 
 export const optionsTextFilter = (
-  data: string,
+  data: unknown,
   search: string,
   colDef: TColDef
 ) =>

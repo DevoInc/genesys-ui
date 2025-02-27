@@ -467,6 +467,7 @@ const dataGlobal = [
     option: 'A',
     user: 'cjimenez@email.com',
     tags: ['senior','chief'],
+    date: Date.now() - 1000*3600*24*365*3,
   },
   {
     text: 'Ina Osborne',
@@ -474,6 +475,7 @@ const dataGlobal = [
     bool: true,
     option: 'B',
     user: 'ina@email.com',
+    date: Date.now() - 1000*3600*24*145,
   },
   {
     text: 'Jimmy Hogan',
@@ -481,6 +483,7 @@ const dataGlobal = [
     bool: true,
     option: 'C',
     user: 'jimmy@email.com',
+    date: Date.now() - 1000*3600*24*365*2,
   },
   {
     text: 'Myra Bell',
@@ -488,6 +491,7 @@ const dataGlobal = [
     bool: true,
     option: 'C',
     user: 'myra@email.com',
+    date: Date.now() - 1000*3600*24*150,
   },
   {
     text: 'Jane Padilla',
@@ -495,6 +499,7 @@ const dataGlobal = [
     bool: false,
     option: 'B',
     user: 'jane@email.com',
+    date: Date.now() - 1000*3600*24*120,
   },
   {
     text: 'Isabelle Gardner',
@@ -503,6 +508,7 @@ const dataGlobal = [
     option: 'A',
     user: 'isabelle@email.com',
     tags: ['senior', 'chief', 'founder'],
+    date: Date.now() - 1000*3600*24*365*10,
   },
   {
     text: 'Sean Parsons',
@@ -510,6 +516,7 @@ const dataGlobal = [
     bool: true,
     option: 'A',
     user: 'sean@email.com',
+    date: Date.now() - 1000*3600*24*180,
   },
   {
     text: 'Alvin Castro',
@@ -517,6 +524,7 @@ const dataGlobal = [
     bool: false,
     option: 'B',
     user: 'alvin@email.com',
+    date: Date.now() - 1000*3600*24*15,
   },
   {
     text: 'Lawrence Holland',
@@ -525,6 +533,7 @@ const dataGlobal = [
     option: 'B',
     user: 'lawrence@email.com',
     tags: ['senior'],
+    date: Date.now() - 1000*3600*24*365*6,
   },
   {
     text: 'Brandon Robertson',
@@ -555,6 +564,11 @@ const GlobalTextFilterTable = () => {
       id: 'bool',
       headerName: 'Boolean',
       preset: 'boolean',
+    },
+    {
+      id: 'date',
+      headerName: 'Date',
+      preset: 'date',
     },
     {
       id: 'option',

@@ -1,20 +1,16 @@
 import type { TRow, TFilterValue, TColDef } from '../declarations';
 import { getColDef } from './definitions';
-import type {
-  TNumberFilterValue,
-  TBooleanFilterValue,
-  TTextFilterValue,
-} from '../filters';
+import type { TTextFilterValue } from '../filters';
 import {
   booleanTextFilter,
+  dateTextFilter,
   numberTextFilter,
   optionsTextFilter,
   textFilter,
   userTextFilter,
 } from './filters';
-import { TSelectOption } from '@devoinc/genesys-ui';
 
-export const valueFilter = (
+const valueFilter = (
   colDef: TColDef,
   searchText: string,
   value: TFilterValue
@@ -35,6 +31,10 @@ export const valueFilter = (
   }
 
   if (type === 'boolean' && booleanTextFilter(Boolean(value), searchText)) {
+    return true;
+  }
+
+  if (type === 'date' && dateTextFilter(value, searchText, colDef)) {
     return true;
   }
 

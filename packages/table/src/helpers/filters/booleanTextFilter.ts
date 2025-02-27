@@ -1,5 +1,3 @@
-import { TBooleanFilterValue } from '../../filters';
-
 export const booleanTextFilter = (data: boolean, search: string) =>
   search === '' ||
   (search.toLowerCase() === 'true' && data === true) ||
