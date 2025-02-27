@@ -465,60 +465,70 @@ const dataGlobal = [
     num: 60,
     bool: false,
     option: 'A',
+    user: 'cjimenez@email.com',
   },
   {
     text: 'Ina Osborne',
     num: 20,
     bool: true,
     option: 'B',
+    user: 'ina@email.com',
   },
   {
     text: 'Jimmy Hogan',
     num: 20,
     bool: true,
     option: 'C',
+    user: 'jimmy@email.com',
   },
   {
     text: 'Myra Bell',
     num: 57,
     bool: true,
     option: 'C',
+    user: 'myra@email.com',
   },
   {
     text: 'Jane Padilla',
     num: 46,
     bool: false,
     option: 'B',
+    user: 'jane@email.com',
   },
   {
     text: 'Isabelle Gardner',
     num: 31,
     bool: true,
     option: 'A',
+    user: 'isabelle@email.com',
   },
   {
     text: 'Sean Parsons',
     num: 31,
     bool: true,
     option: 'A',
+    user: 'sean@email.com',
   },
   {
     text: 'Alvin Castro',
     num: 55,
     bool: false,
     option: 'B',
+    user: 'alvin@email.com',
   },
   {
     text: 'Lawrence Holland',
     num: 56,
     bool: false,
     option: 'B',
+    user: 'lawrence@email.com',
   },
   {
     text: 'Brandon Robertson',
     num: 41,
     bool: true,
     option: 'C',
+    user: 'brandon@email.com',
   },
 ];
 
@@ -554,6 +564,64 @@ const GlobalTextFilterTable = () => {
           C: { label: 'Option C' },
         },
       } as TContextOptions,
+    },
+    {
+      id: 'user',
+      headerName: 'User',
+      preset: 'user',
+      context: {
+        userMapping: {
+          'cjimenez@email.com': {
+            name: 'Cristina Jimenez',
+            email: 'cjimenez@email.com',
+            role: 'CTO',
+          },
+          'ina@email.com': {
+            name: 'Ina',
+            email: 'ina@email.com',
+            role: 'Accounting manager',
+          },
+          'jimmy@email.com': {
+            name: 'Jimmy',
+            email: 'jimmy@email.com',
+            role: 'IT Scholarship',
+          },
+          'myra@email.com': {
+            name: 'Myra',
+            email: 'myra@email.com',
+          },
+          'jane@email.com': {
+            name: 'Jane',
+            email: 'jane@email.com',
+            role: 'IT crowd leader',
+          },
+          'isabelle@email.com': {
+            name: 'Isabelle',
+            email: 'isabelle@email.com',
+            role: 'CEO',
+          },
+          'sean@email.com': {
+            name: 'Sean Parsons',
+            email: 'sean@email.com',
+            role: 'Customer support',
+          },
+          'lawrence@email.com': {
+            name: 'Lawrence',
+            email: 'lawrence@email.com',
+            role: 'Administrative',
+          },
+          'alvin@email.com': {
+            name: 'Alvin Castro',
+            email: 'alvin@email.com',
+            job: 'Singer',
+          },
+          'brandon@email.com': {
+            name: 'Brandon',
+            email: 'brandon@email.com',
+            job: 'The crow',
+          },
+        },
+      } as TContextUser,
     },
   ];
 

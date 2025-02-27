@@ -10,6 +10,7 @@ import {
   numberTextFilter,
   optionsTextFilter,
   textFilter,
+  userTextFilter,
 } from './filters';
 import { TSelectOption } from '@devoinc/genesys-ui';
 
@@ -53,6 +54,10 @@ export const valueFilter = (
       colDef,
     )
   ) {
+    return true;
+  }
+
+  if (type === 'user' && userTextFilter(String(value), searchText, colDef)) {
     return true;
   }
 
