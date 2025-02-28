@@ -1,17 +1,17 @@
-import type { TSelectOption } from '@devoinc/genesys-ui';
 import { type TColDef } from '../../declarations';
 
+const optionHasText = (option, text: string, context?: TContextOptions) =>
+  option && context?.options[option]
+    ? context.options[option].label.toLowerCase().includes(text.toLowerCase())
+    : false;
+
 export const optionsTextFilter = (
-  data: string,
-  value: TSelectOption,
-  colDef: TColDef,
+  data: unknown,
+  search: string,
+  colDef: TColDef
 ) =>
-  value.value === ''
+  search === ''
     ? true
-    : String(data).toLowerCase().includes(String(value).toLowerCase())
-      ? true
-      : data && colDef?.context?.options[data]
-        ? colDef.context.options[data].label
-            .toLowerCase()
-            .includes(value.value.toLowerCase())
-        : false;
+    : Array.isArray(data)
+      ? data.some((option) => optionHasText(option, search, colDef?.context))
+      : optionHasText(data, search, colDef?.context);

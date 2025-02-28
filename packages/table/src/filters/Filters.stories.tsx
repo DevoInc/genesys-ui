@@ -465,60 +465,82 @@ const dataGlobal = [
     num: 60,
     bool: false,
     option: 'A',
+    user: 'cjimenez@email.com',
+    tags: ['senior','chief'],
+    date: Date.now() - 1000*3600*24*365*3,
   },
   {
     text: 'Ina Osborne',
     num: 20,
     bool: true,
     option: 'B',
+    user: 'ina@email.com',
+    date: Date.now() - 1000*3600*24*145,
   },
   {
     text: 'Jimmy Hogan',
     num: 20,
     bool: true,
     option: 'C',
+    user: 'jimmy@email.com',
+    date: Date.now() - 1000*3600*24*365*2,
   },
   {
     text: 'Myra Bell',
     num: 57,
     bool: true,
     option: 'C',
+    user: 'myra@email.com',
+    date: Date.now() - 1000*3600*24*150,
   },
   {
     text: 'Jane Padilla',
     num: 46,
     bool: false,
     option: 'B',
+    user: 'jane@email.com',
+    date: Date.now() - 1000*3600*24*120,
   },
   {
     text: 'Isabelle Gardner',
     num: 31,
     bool: true,
     option: 'A',
+    user: 'isabelle@email.com',
+    tags: ['senior', 'chief', 'founder'],
+    date: Date.now() - 1000*3600*24*365*10,
   },
   {
     text: 'Sean Parsons',
     num: 31,
     bool: true,
     option: 'A',
+    user: 'sean@email.com',
+    date: Date.now() - 1000*3600*24*180,
   },
   {
     text: 'Alvin Castro',
     num: 55,
     bool: false,
     option: 'B',
+    user: 'alvin@email.com',
+    date: Date.now() - 1000*3600*24*15,
   },
   {
     text: 'Lawrence Holland',
     num: 56,
     bool: false,
     option: 'B',
+    user: 'lawrence@email.com',
+    tags: ['senior'],
+    date: Date.now() - 1000*3600*24*365*6,
   },
   {
     text: 'Brandon Robertson',
     num: 41,
     bool: true,
     option: 'C',
+    user: 'brandon@email.com',
   },
 ];
 
@@ -544,6 +566,11 @@ const GlobalTextFilterTable = () => {
       preset: 'boolean',
     },
     {
+      id: 'date',
+      headerName: 'Date',
+      preset: 'date',
+    },
+    {
       id: 'option',
       headerName: 'Options',
       preset: 'options',
@@ -554,6 +581,77 @@ const GlobalTextFilterTable = () => {
           C: { label: 'Option C' },
         },
       } as TContextOptions,
+    },
+    {
+      id: 'tags',
+      headerName: 'Tags',
+      preset: 'options',
+      context: {
+        options: {
+          'founder': { label: 'Founder' },
+          'chief': { label: 'Chief' },
+          'senior': { label: 'Senior' },
+        },
+      } as TContextOptions,
+      valueFormatter: (value) => value || [],
+    },
+    {
+      id: 'user',
+      headerName: 'User',
+      preset: 'user',
+      context: {
+        userMapping: {
+          'cjimenez@email.com': {
+            name: 'Cristina Jimenez',
+            email: 'cjimenez@email.com',
+            role: 'CTO',
+          },
+          'ina@email.com': {
+            name: 'Ina',
+            email: 'ina@email.com',
+            role: 'Accounting manager',
+          },
+          'jimmy@email.com': {
+            name: 'Jimmy',
+            email: 'jimmy@email.com',
+            role: 'IT Scholarship',
+          },
+          'myra@email.com': {
+            name: 'Myra',
+            email: 'myra@email.com',
+          },
+          'jane@email.com': {
+            name: 'Jane',
+            email: 'jane@email.com',
+            role: 'IT crowd leader',
+          },
+          'isabelle@email.com': {
+            name: 'Isabelle',
+            email: 'isabelle@email.com',
+            role: 'CEO',
+          },
+          'sean@email.com': {
+            name: 'Sean Parsons',
+            email: 'sean@email.com',
+            role: 'Customer support',
+          },
+          'lawrence@email.com': {
+            name: 'Lawrence',
+            email: 'lawrence@email.com',
+            role: 'Administrative',
+          },
+          'alvin@email.com': {
+            name: 'Alvin Castro',
+            email: 'alvin@email.com',
+            job: 'Singer',
+          },
+          'brandon@email.com': {
+            name: 'Brandon',
+            email: 'brandon@email.com',
+            job: 'The crow',
+          },
+        },
+      } as TContextUser,
     },
   ];
 
@@ -580,6 +678,7 @@ const GlobalTextFilterTable = () => {
           onFilter(curColDef.id, value, type);
         }}
         colDefs={updateColDefsWithFilterStruct(colDefs, filterStruct)}
+        texts={{ cell: { editTooltip: '' } }}
         data={dataFiltered}
       />
     </>

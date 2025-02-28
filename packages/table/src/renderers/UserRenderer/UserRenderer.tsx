@@ -10,6 +10,7 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
   value,
 }) => {
   const context = colDef?.context ?? {};
+  const panelWidth = context.panelWidth || '40rem';
   const userInfo = context?.userMapping ?? {};
 
   const setOpenedInfo = React.useRef(null);
@@ -40,7 +41,7 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
           </Box>
         );
       }}
-      <Popover.Panel width="20rem" id="story-popover-panel">
+      <Popover.Panel width={panelWidth} id="story-popover-panel">
         <Panel.Header bordered>
           <UserInfo.Avatar
             avatar={user?.avatar}

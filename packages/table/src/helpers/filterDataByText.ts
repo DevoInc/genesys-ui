@@ -1,22 +1,19 @@
 import type { TRow, TFilterValue, TColDef } from '../declarations';
 import { getColDef } from './definitions';
-import type {
-  TNumberFilterValue,
-  TBooleanFilterValue,
-  TTextFilterValue,
-} from '../filters';
+import type { TTextFilterValue } from '../filters';
 import {
   booleanTextFilter,
+  dateTextFilter,
   numberTextFilter,
   optionsTextFilter,
   textFilter,
+  userTextFilter,
 } from './filters';
-import { TSelectOption } from '@devoinc/genesys-ui';
 
-export const valueFilter = (
+const valueFilter = (
   colDef: TColDef,
   searchText: string,
-  value: TFilterValue,
+  value: TFilterValue
 ) => {
   const type = colDef?.preset || 'text';
   if (
@@ -29,30 +26,23 @@ export const valueFilter = (
     return true;
   }
 
-  if (
-    type === 'number' &&
-    numberTextFilter(Number(value), { value: searchText } as TNumberFilterValue)
-  ) {
+  if (type === 'number' && numberTextFilter(Number(value), searchText)) {
     return true;
   }
 
-  if (
-    type === 'boolean' &&
-    booleanTextFilter(Boolean(value), {
-      value: searchText,
-    } as TBooleanFilterValue)
-  ) {
+  if (type === 'boolean' && booleanTextFilter(Boolean(value), searchText)) {
     return true;
   }
 
-  if (
-    type === 'options' &&
-    optionsTextFilter(
-      String(value),
-      { value: searchText } as TSelectOption,
-      colDef,
-    )
-  ) {
+  if (type === 'date' && dateTextFilter(value, searchText, colDef)) {
+    return true;
+  }
+
+  if (type === 'options' && optionsTextFilter(value, searchText, colDef)) {
+    return true;
+  }
+
+  if (type === 'user' && userTextFilter(String(value), searchText, colDef)) {
     return true;
   }
 
@@ -63,7 +53,7 @@ export const filterDataByText =
   (
     searchText: string,
     colDefs: TColDef[],
-    restrictedColumns: string[] = colDefs.map((colDef) => colDef.id),
+    restrictedColumns: string[] = colDefs.map((colDef) => colDef.id)
   ) =>
   (a: TRow) => {
     if (!searchText) {

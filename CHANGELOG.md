@@ -1,5 +1,23 @@
 # Changelog
 
+## [17.10.1](https://github.com/DevoInc/genesys-ui/compare/v17.10.0...v17.10.1) (2025-02-28)
+
+### Bug Fixes
+
+* circular dependency ([0aa3049](https://github.com/DevoInc/genesys-ui/commit/0aa30493111a9a036750cd4bd37a3cd8d13c887d))
+
+## [17.10.0](https://github.com/DevoInc/genesys-ui/compare/v17.9.1...v17.10.0) (2025-02-25)
+
+### Features
+
+* **Table:** Wider user renderer panel by default, customizable with panelWidth ([0c02c45](https://github.com/DevoInc/genesys-ui/commit/0c02c4537641dcd03b3ca1d4aeaa58f7092f488e))
+
+## [17.9.1](https://github.com/DevoInc/genesys-ui/compare/v17.9.0...v17.9.1) (2025-02-24)
+
+### Bug Fixes
+
+* added word-wrap to 'break-word' to the Typography component. ([f43ee04](https://github.com/DevoInc/genesys-ui/commit/f43ee049022cf03f207f55ab653d849edfe50dec))
+
 ## [17.9.0](https://github.com/DevoInc/genesys-ui/compare/v17.8.8...v17.9.0) (2025-02-21)
 
 ### Features
