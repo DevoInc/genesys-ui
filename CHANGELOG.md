@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.10.1](https://github.com/DevoInc/genesys-ui/compare/v17.10.0...v17.10.1) (2025-02-28)
+
+### Bug Fixes
+
+* circular dependency ([0aa3049](https://github.com/DevoInc/genesys-ui/commit/0aa30493111a9a036750cd4bd37a3cd8d13c887d))
+
 ## [17.10.0](https://github.com/DevoInc/genesys-ui/compare/v17.9.1...v17.10.0) (2025-02-25)
 
 ### Features
