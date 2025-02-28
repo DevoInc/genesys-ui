@@ -76,7 +76,7 @@ export const InternalAvatar: React.FC<AvatarProps> = ({
     onClick={onClick}
     role={role || (onClick ? 'button' : imageSrc ? 'img' : undefined)}
     size={size}
-    tooltip={tooltip || name}
+    tooltip={tooltip !== undefined ? tooltip : name}
     variant={variant}
   >
     {imageSrc ? (

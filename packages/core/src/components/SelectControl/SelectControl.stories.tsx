@@ -384,7 +384,7 @@ export const MultipleSubtle: Story = {
           .fill(null)
           .map((_el, idx) => ({
             value: `item${idx}`,
-            label: `'Option three with a name much more large to get ellipsis  to see what happen', Item ${idx}`,
+            label: `Option ${idx}`,
           }));
       };
       const [value, setValue] = React.useState<PropsValue<TSelectOption>>();
@@ -393,7 +393,6 @@ export const MultipleSubtle: Story = {
           {...props}
           isMulti
           multipleSubtle
-          //menuIsOpen
           closeMenuOnSelect={false}
           selectAllBtn
           hideSelectedOptions={false}

@@ -115,7 +115,6 @@ export const StyledSelectMenu = styled.div<StyledSelectMenuProps>`
           border-radius: ${optionTokens.shape.borderRadius};
           min-height: ${optionHeight};
           padding: calc(${optionHorSpacing} / 2) ${optionHorSpacing};
-          line-height: ${optionHeight};
           text-align: ${$alignOptions};
           cursor: pointer;
 

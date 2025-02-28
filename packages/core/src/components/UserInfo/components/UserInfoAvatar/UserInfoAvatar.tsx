@@ -58,10 +58,14 @@ export const UserInfoAvatar: React.FC<UserInfoAvatarProps> = ({
         name={name}
         size={evalAvatarSize}
         initials={initials}
+        tooltip={null}
       />
       <VFlex minWidth="0" width="100%" spacing="0">
         {evalFormat === 'heading' ? (
-          <Typography format={USER_INFO_SIZE_HEADING_FORMAT_MAP[size]} truncateLine={1}>
+          <Typography
+            format={USER_INFO_SIZE_HEADING_FORMAT_MAP[size]}
+            truncateLine={1}
+          >
             {name}
           </Typography>
         ) : (
