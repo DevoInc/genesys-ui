@@ -5,10 +5,10 @@ import type { TSelectOption } from '../../declarations';
 import { showMenuAndDropDown } from '../../utils';
 import { SelectControlContext } from '../../context';
 import { Button } from '../../../Button';
-import { CheckboxControl } from '../../../CheckboxControl';
-import { Field } from '../../../Field';
 import { StyledSelectMenu } from './StyledSelectMenu';
 import { StyledSelectAll } from './StyledSelectAll';
+import { Checkbox } from '../../../Checkbox';
+import { Box } from '../../../Box';
 
 export interface MenuProps<Option> extends RSMenuProps<Option> {}
 
@@ -25,9 +25,6 @@ export const Menu = <Option extends TSelectOption>(
     );
   }, [options, values]);
   const selectAllLabel = '(Select all)';
-  const selectAllId = props.selectProps.id
-    ? `${props.selectProps.id}__select-all`
-    : null;
 
   const hasFiltered = options.find(
     (opt) =>
@@ -71,21 +68,21 @@ export const Menu = <Option extends TSelectOption>(
                 $size={props.selectProps.size}
               >
                 {props.selectProps.multipleSubtle ? (
-                  <Field
-                    id={selectAllId}
-                    label={selectAllLabel}
-                    labelPosition="right"
+                  <Box
+                    onClick={() => {
+                      handleSelectAll();
+                    }}
                   >
-                    <CheckboxControl
-                      aria-label={selectAllLabel}
-                      id={selectAllId}
+                    <Checkbox
+                      id={null}
+                      label={selectAllLabel}
                       onChange={() => {
                         handleSelectAll();
                       }}
                       checked={isAllSelected}
                       indeterminate={values.length > 0 && !isAllSelected}
                     />
-                  </Field>
+                  </Box>
                 ) : (
                   <Button
                     onClick={handleSelectAll}

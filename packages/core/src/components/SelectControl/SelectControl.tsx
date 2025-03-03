@@ -165,6 +165,7 @@ export const SelectControl = <
         evalStatus === 'error' ? contextBasedProps.ariaErrorMessage : undefined
       }
       aria-labelledby={contextBasedProps.ariaLabelledBy}
+      id={contextBasedProps.id}
       isDisabled={contextBasedProps.disabled}
       menuAppendToBody={menuAppendToBody}
       menuPlacement={menuPlacement}
