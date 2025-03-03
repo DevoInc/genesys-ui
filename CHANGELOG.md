@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.11.0](https://github.com/DevoInc/genesys-ui/compare/v17.10.1...v17.11.0) (2025-03-03)
+
+### Features
+
+* improvements for UserInfo.Avatar and the Select menu options. ([40425a8](https://github.com/DevoInc/genesys-ui/commit/40425a8ea3203f416499090db8cbcf7065e7f405))
+
 ## [17.10.1](https://github.com/DevoInc/genesys-ui/compare/v17.10.0...v17.10.1) (2025-02-28)
 
 ### Bug Fixes
