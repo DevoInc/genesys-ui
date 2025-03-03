@@ -1,5 +1,12 @@
 # Changelog
 
+## [17.11.1](https://github.com/DevoInc/genesys-ui/compare/v17.11.0...v17.11.1) (2025-03-03)
+
+### Bug Fixes
+
+* **datetime:** Time formatDate fixed ([4aeb8df](https://github.com/DevoInc/genesys-ui/commit/4aeb8df3149a4ba8ec1408fd39527ceb67d34ee7))
+* **Select:** allow to select all options in dropdown menu on subtle variant when you click on the text of 'Select all' checkbox. ([85a3b00](https://github.com/DevoInc/genesys-ui/commit/85a3b00d66ff493fb6a9d2c7cf019705b347418c))
+
 ## [17.11.0](https://github.com/DevoInc/genesys-ui/compare/v17.10.1...v17.11.0) (2025-03-03)
 
 ### Features
