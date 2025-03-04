@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.11.3](https://github.com/DevoInc/genesys-ui/compare/v17.11.2...v17.11.3) (2025-03-04)
+
+### Bug Fixes
+
+* **datetime:** remove presets selectionScheme ([48d8953](https://github.com/DevoInc/genesys-ui/commit/48d8953d7c50034163b8d642061773b3b838dbad))
+
 ## [17.11.2](https://github.com/DevoInc/genesys-ui/compare/v17.11.1...v17.11.2) (2025-03-04)
 
 ### Bug Fixes
