@@ -16,6 +16,7 @@ import { getFormatTimeStr, formatDate } from '../../helpers';
 import { TTimeI18n } from './declarations';
 import { defaultTimeI18n } from './i18n';
 import { useMergeI18n } from '../../hooks';
+import { durationToTime } from './durationToTime';
 
 export interface TimeProps
   extends Pick<IGlobalAttrs, 'id'>,
@@ -61,26 +62,10 @@ export const Time: React.FC<TimeProps> = ({
           aria-label={i18n.time}
           id={id}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            const target = event.target;
-
-            const currentValue = target.value.split(':');
-
-            const time = {
-              hours: Number(currentValue[0]),
-              minutes: Number(currentValue[1]),
-              seconds: 0,
-              milliseconds: 0,
-            };
-
-            if (hasSeconds && currentValue[2]) {
-              const secs = currentValue[2].split('.');
-              time.seconds = Number(secs[0]);
-              if (hasMillis) {
-                time.milliseconds = Number(secs[1]);
-              }
+            if (event.target.value !== '') {
+              const time = durationToTime(event.target.valueAsNumber);
+              onChange(set(value, time).getTime());
             }
-
-            onChange(set(new Date(value), time).getTime());
           }}
           size={size}
           step={hasMillis ? '0.001' : hasSeconds ? '1' : null}
