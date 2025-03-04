@@ -67,7 +67,6 @@ export const Presets: React.FC<PresetsProps> = ({
                 <Menu.Item
                   key={key}
                   label={preset.label}
-                  selectionScheme="single"
                   name={`presets-${id}`}
                   state={hasMatch && isEqualDateRange ? 'selected' : 'enabled'}
                   aria-current={hasMatch && isEqualDateRange}
