@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.11.2](https://github.com/DevoInc/genesys-ui/compare/v17.11.1...v17.11.2) (2025-03-04)
+
+### Bug Fixes
+
+* **datetime:** avoid broken time when backspace key is pressed ([2ac1022](https://github.com/DevoInc/genesys-ui/commit/2ac1022269bbcde650fd6bd071a49c71ab461cdc))
+
 ## [17.11.1](https://github.com/DevoInc/genesys-ui/compare/v17.11.0...v17.11.1) (2025-03-03)
 
 ### Bug Fixes
