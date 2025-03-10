@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.13.0](https://github.com/DevoInc/genesys-ui/compare/v17.12.0...v17.13.0) (2025-03-10)
+
+### Features
+
+* **datetime:** add mode prop to DateTimeRange for calendar and presets display ([b62932f](https://github.com/DevoInc/genesys-ui/commit/b62932f979b05d7abe094e8e3c6ac2cbe6791a26))
+
 ## [17.12.0](https://github.com/DevoInc/genesys-ui/compare/v17.11.3...v17.12.0) (2025-03-10)
 
 ### Features
