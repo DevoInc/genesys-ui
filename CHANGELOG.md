@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.12.0](https://github.com/DevoInc/genesys-ui/compare/v17.11.3...v17.12.0) (2025-03-10)
+
+### Features
+
+* **datetime:** add new components for range selection and month navigation ([1465b8f](https://github.com/DevoInc/genesys-ui/commit/1465b8f621ce1f92d42de21351cf8fc84cf2d301))
+
 ## [17.11.3](https://github.com/DevoInc/genesys-ui/compare/v17.11.2...v17.11.3) (2025-03-04)
 
 ### Bug Fixes
