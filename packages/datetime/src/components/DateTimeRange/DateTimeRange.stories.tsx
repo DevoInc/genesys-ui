@@ -31,6 +31,7 @@ export const Playground: Story = {
           onChangeMonthDate={(dt) => {
             setMonthDate(dt);
           }}
+          mode='both'
           presets={getDefaultPresets()}
         />
       );
