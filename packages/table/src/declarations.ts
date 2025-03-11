@@ -44,6 +44,8 @@ export type TCellWrapper = {
   context?: {
     [key: string]: unknown;
   };
+  height?: number;
+  width?: number;
   onCellDataChange: ({ colDef, value, rowIndex }) => void;
 };
 
@@ -216,6 +218,9 @@ export type TCellRenderer<
   rowIndex: number;
   row: TRow;
   rowDef?: TRowDef;
+  height?: number;
+  width?: number;
+  cellDef?: TCellDef;
 };
 
 export type THeaderRenderer = {

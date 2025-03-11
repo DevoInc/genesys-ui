@@ -98,12 +98,14 @@ export const Cell: React.FC<CellProps> = ({
       $isSelected={cellDef?.isSelected}
     >
       <Wrapper
+        cellDef={cellDef}
         colDef={colDef}
         rowIndex={rowIndex}
         data={data}
+        height={height}
         row={row}
-        cellDef={cellDef}
         onCellDataChange={onCellDataChange}
+        width={width}
       />
     </StyledCell>
   );

@@ -16,15 +16,18 @@ export const CellExpandWrapper: React.FC<TCellWrapper> = ({
   data,
   row,
   rowIndex,
+  width,
+  height,
 }) => {
   const { density, onCellClickAway } = React.useContext(TableContext);
   const CellRenderer = colDef.cellRenderer;
   const CellExpand = colDef?.cellExpand ?? CellRenderer;
+  const isExpanded = cellDef?.isExpanded;
 
   const ref = React.useRef<HTMLButtonElement>(null);
 
   useClickAway(() => {
-    if (cellDef?.isExpanded) {
+    if (isExpanded) {
       onCellClickAway('isExpanded');
     }
   }, ref);
@@ -48,6 +51,7 @@ export const CellExpandWrapper: React.FC<TCellWrapper> = ({
                     ? colDef.valueFormatter(data, colDef.context)
                     : data
                 }
+                cellDef={cellDef}
                 colDef={colDef}
                 rowIndex={rowIndex}
                 row={row}
@@ -63,8 +67,11 @@ export const CellExpandWrapper: React.FC<TCellWrapper> = ({
               : data
           }
           colDef={colDef}
+          cellDef={cellDef}
           rowIndex={rowIndex}
           row={row}
+          width={width}
+          height={height}
         />
       )}
       <StyledCellMarker>

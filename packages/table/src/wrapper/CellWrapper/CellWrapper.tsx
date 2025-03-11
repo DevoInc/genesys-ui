@@ -6,13 +6,17 @@ import type { TCellWrapper } from '../../declarations';
 import { TextRenderer } from '../../renderers';
 
 export const CellWrapper: React.FC<TCellWrapper> = ({
+  cellDef,
   colDef,
-  rowIndex,
   data,
+  height,
   row,
+  rowIndex,
+  width,
 }) => {
   const { density, texts } = React.useContext(TableContext);
   const CellRenderer = colDef?.cellRenderer ?? TextRenderer;
+
   return (
     <StyledCellWrapper
       $density={density}
@@ -27,9 +31,12 @@ export const CellWrapper: React.FC<TCellWrapper> = ({
             ? colDef.valueFormatter(data, colDef.context)
             : data
         }
+        cellDef={cellDef}
         colDef={colDef}
+        height={height}
         rowIndex={rowIndex}
         row={row}
+        width={width}
       />
     </StyledCellWrapper>
   );

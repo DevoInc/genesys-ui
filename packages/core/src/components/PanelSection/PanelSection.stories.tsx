@@ -4,6 +4,40 @@ import { Meta, StoryObj } from '@storybook/react';
 import { PanelSection } from './PanelSection';
 import { Button } from '../Button';
 import { TextBlock } from '../Panel/__stories__/helpers';
+import { Tabs, useTabsAccessibility } from '../Tabs';
+
+export const TabsCmp = () => {
+  const tabsRef = React.useRef<HTMLDivElement>();
+  const [activeTab, setActiveTab] = React.useState(0);
+  useTabsAccessibility({ activeTab, tabsRef });
+  return (
+    <Tabs contained size="sm">
+      <Tabs.List activeTabIndex={activeTab} ref={tabsRef} padding="0 cmp-xs">
+        <Tabs.Item
+          key="1"
+          label="Item 1"
+          onClick={() => setActiveTab(0)}
+          size="sm"
+          state={activeTab === 0 ? 'selected' : undefined}
+        />
+        <Tabs.Item
+          key="2"
+          onClick={() => setActiveTab(1)}
+          state={activeTab === 1 ? 'selected' : undefined}
+          size="sm"
+          label="Item 2"
+        />
+        <Tabs.Item
+          key="3"
+          onClick={() => setActiveTab(2)}
+          state={activeTab === 2 ? 'selected' : undefined}
+          size="sm"
+          label="Item 3"
+        />
+      </Tabs.List>
+    </Tabs>
+  );
+};
 
 const meta: Meta<typeof PanelSection> = {
   title: 'Components/Layout/PanelSection',
@@ -39,6 +73,19 @@ export let WithScroll: Story = {
       alert('Going back!');
     },
     children: TextBlock,
+  },
+};
+
+export let WithNavigation: Story = {
+  tags: ['isHidden'],
+  args: {
+    title: 'Panel title',
+    subtitle: 'Panel subtitle',
+    helpUrl: 'https://www.devo.com/',
+    helpTooltip: 'Go to docs',
+    height: '300px',
+    children: TextBlock,
+    navigation: <TabsCmp />,
   },
 };
 

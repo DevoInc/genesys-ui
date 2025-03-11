@@ -16,6 +16,8 @@ export const CellEditModeWrapper: React.FC<TCellWrapper> = ({
   rowIndex,
   data,
   onCellDataChange,
+  width,
+  height,
 }) => {
   const { density, onCellClickAway } = React.useContext(TableContext);
   const CellRenderer: React.FC<TCellRenderer> = colDef.cellRenderer;
@@ -57,6 +59,8 @@ export const CellEditModeWrapper: React.FC<TCellWrapper> = ({
           colDef={colDef}
           rowIndex={rowIndex}
           row={row}
+          width={width}
+          height={height}
         />
       )}
       {colDef.editable && !cellDef?.isEditMode && (

@@ -120,6 +120,7 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
             {headerActions && <Panel.Header._Actions actions={headerActions} />}
             {renderActions}
           </HFlex>
+          {navigation}
         </Panel.Header._Container>
       )}
       <Panel.Body

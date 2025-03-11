@@ -11,6 +11,7 @@ export const date: TColDef = {
   cellRenderer: TextRenderer,
   valueFormatter: dateFormatter,
   cellEditor: DateEditor,
+  truncateLine: 1,
   context: {
     formatDate: 'yyyy-MM-dd HH:mm:ss',
     tz: 'Europe/Madrid',
