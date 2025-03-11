@@ -1,5 +1,36 @@
 # Changelog
 
+## [17.13.0](https://github.com/DevoInc/genesys-ui/compare/v17.12.0...v17.13.0) (2025-03-10)
+
+### Features
+
+* **datetime:** add mode prop to DateTimeRange for calendar and presets display ([b62932f](https://github.com/DevoInc/genesys-ui/commit/b62932f979b05d7abe094e8e3c6ac2cbe6791a26))
+
+## [17.12.0](https://github.com/DevoInc/genesys-ui/compare/v17.11.3...v17.12.0) (2025-03-10)
+
+### Features
+
+* **datetime:** add new components for range selection and month navigation ([1465b8f](https://github.com/DevoInc/genesys-ui/commit/1465b8f621ce1f92d42de21351cf8fc84cf2d301))
+
+## [17.11.3](https://github.com/DevoInc/genesys-ui/compare/v17.11.2...v17.11.3) (2025-03-04)
+
+### Bug Fixes
+
+* **datetime:** remove presets selectionScheme ([48d8953](https://github.com/DevoInc/genesys-ui/commit/48d8953d7c50034163b8d642061773b3b838dbad))
+
+## [17.11.2](https://github.com/DevoInc/genesys-ui/compare/v17.11.1...v17.11.2) (2025-03-04)
+
+### Bug Fixes
+
+* **datetime:** avoid broken time when backspace key is pressed ([2ac1022](https://github.com/DevoInc/genesys-ui/commit/2ac1022269bbcde650fd6bd071a49c71ab461cdc))
+
+## [17.11.1](https://github.com/DevoInc/genesys-ui/compare/v17.11.0...v17.11.1) (2025-03-03)
+
+### Bug Fixes
+
+* **datetime:** Time formatDate fixed ([4aeb8df](https://github.com/DevoInc/genesys-ui/commit/4aeb8df3149a4ba8ec1408fd39527ceb67d34ee7))
+* **Select:** allow to select all options in dropdown menu on subtle variant when you click on the text of 'Select all' checkbox. ([85a3b00](https://github.com/DevoInc/genesys-ui/commit/85a3b00d66ff493fb6a9d2c7cf019705b347418c))
+
 ## [17.11.0](https://github.com/DevoInc/genesys-ui/compare/v17.10.1...v17.11.0) (2025-03-03)
 
 ### Features

@@ -17,6 +17,11 @@ describe('helpers', () => {
         );
         expect(result).toBe('2024-04-15');
       });
+
+      test('invalid date', () => {
+        const result = formatDate(undefined, 'yyyy-MM-dd');
+        expect(result).toBe('Invalid time value');
+      });
     });
   });
 });

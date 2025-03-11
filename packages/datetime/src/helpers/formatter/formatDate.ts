@@ -6,4 +6,10 @@ import { format as formatFNS } from 'date-fns';
 export const formatDate = (
   dt: string | number | Date,
   format: string = 'yyyy-MM-dd HH:mm:ss',
-): string => (typeof dt === 'string' ? dt : formatFNS(dt, format));
+): string => {
+  try {
+    return typeof dt === 'string' ? dt : formatFNS(dt, format);
+  } catch (error) {
+    return error.message;
+  }
+};

@@ -41,6 +41,8 @@ export interface DateTimeRangeProps
   i18n?: TDateTimeRangeI18n;
   /**  Show the time input HTML element. */
   hasTime?: boolean;
+  /**  Calendar for absolute dates, presets for relative dates or both. */
+  mode?: 'calendar' | 'presets' | 'both';
   /** Function called when clicking a cell or editing a time input HTML.  */
   onChange?: (value: TDateRange, source: TDateTimeRangeSource) => void;
   /** Placeholder for the presets list */
@@ -60,12 +62,13 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   hasSeconds = true,
   hasTime = true,
   id,
+  mode = 'calendar',
   onChange,
   value = [new Date(), new Date()],
   parseDate = tautologyParseDate,
   weekDays,
   presetsPlaceholder,
-  presets,
+  presets = [],
   style,
   ...dataProps
 }) => {
@@ -96,137 +99,149 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
 
   return (
     <HFlex as={as} alignItems={'flex-start'} style={style} {...dataProps}>
-      <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
-        <MonthSelector
-          i18n={i18n}
-          hasNextMonthButton={false}
-          id={`${id}-month-from`}
-          onChange={onChangeMonthLeft}
-          onClickPrevMonth={onClickPrevMonth}
-          size="sm"
-          value={monthDate}
-        />
-        <Box height={'165px'}>
-          <Calendar
-            monthDate={monthDate}
-            disableHoverDay={true}
-            onClick={(dt) => {
-              onChange(
-                rangeBehavior(
-                  value as (number | Date)[],
-                  set(dt, {
-                    hours: 0,
-                    minutes: 0,
-                    seconds: 0,
-                    milliseconds: 0,
-                  }),
-                ),
-                DATE_TIME_RANGE_SOURCE_CAL_LEFT,
-              );
-            }}
-            value={canCalendarRender ? (value as (number | Date)[]) : []}
-            hasLeftHoverEffect={canCalendarRender ? value.length === 1 : false}
-            hasRightHoverEffect={canCalendarRender ? value.length === 1 : false}
-            parseDate={parseDate}
-            weekDays={weekDays}
-            hoverDay={hoverDay}
-            onMouseEnter={onMouseEnterCallback}
-            onMouseLeave={onMouseLeaveCallback}
+      {(mode === 'calendar' || mode === 'both') && (
+        <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
+          <MonthSelector
+            i18n={i18n}
+            hasNextMonthButton={false}
+            id={`${id}-month-from`}
+            onChange={onChangeMonthLeft}
+            onClickPrevMonth={onClickPrevMonth}
+            size="sm"
+            value={monthDate}
           />
-        </Box>
-        {hasTime && (
-          <Flex justifyContent={'flex-end'}>
-            <Time
-              aria-label={i18n.fromTime}
-              hasMillis={hasMillis}
-              hasSeconds={hasSeconds}
-              id={`${id}-time-from`}
-              onChange={(dt) => {
+          <Box height={'165px'}>
+            <Calendar
+              monthDate={monthDate}
+              disableHoverDay={true}
+              onClick={(dt) => {
                 onChange(
-                  [
+                  rangeBehavior(
+                    value as (number | Date)[],
                     set(dt, {
-                      year: getYear(value[0]),
-                      month: getMonth(value[0]),
-                      date: getDate(value[0]),
+                      hours: 0,
+                      minutes: 0,
+                      seconds: 0,
+                      milliseconds: 0,
                     }),
-                    value[1],
-                  ],
-                  DATE_TIME_RANGE_SOURCE_TIME_LEFT,
+                  ),
+                  DATE_TIME_RANGE_SOURCE_CAL_LEFT,
                 );
               }}
-              size="sm"
-              value={canCalendarRender && value.length >= 2 ? value[0] : ''}
-              disabled={!canCalendarRender || value.length < 2}
+              value={canCalendarRender ? (value as (number | Date)[]) : []}
+              hasLeftHoverEffect={
+                canCalendarRender ? value.length === 1 : false
+              }
+              hasRightHoverEffect={
+                canCalendarRender ? value.length === 1 : false
+              }
+              parseDate={parseDate}
+              weekDays={weekDays}
+              hoverDay={hoverDay}
+              onMouseEnter={onMouseEnterCallback}
+              onMouseLeave={onMouseLeaveCallback}
             />
-          </Flex>
-        )}
-      </VFlex>
-      <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
-        <MonthSelector
-          i18n={i18n}
-          hasPrevMonthButton={false}
-          id={`${id}-month-to`}
-          onChange={onChangeMonthRight}
-          onClickNextMonth={onClickNextMonth}
-          size="sm"
-          value={addMonths(monthDate, 1)}
-        />
-        <Box height={'165px'}>
-          <Calendar
-            monthDate={addMonths(monthDate, 1)}
-            disableHoverDay={true}
-            onClick={(dt) => {
-              onChange(
-                rangeBehavior(
-                  value as (number | Date)[],
-                  set(dt, {
-                    hours: 23,
-                    minutes: 59,
-                    seconds: 59,
-                    milliseconds: 999,
-                  }),
-                ),
-                DATE_TIME_RANGE_SOURCE_CAL_RIGHT,
-              );
-            }}
-            value={canCalendarRender ? value : []}
-            hasLeftHoverEffect={canCalendarRender ? value.length === 1 : false}
-            hasRightHoverEffect={canCalendarRender ? value.length === 1 : false}
-            parseDate={parseDate}
-            weekDays={weekDays}
-            hoverDay={hoverDay}
-            onMouseEnter={onMouseEnterCallback}
-            onMouseLeave={onMouseLeaveCallback}
+          </Box>
+          {hasTime && (
+            <Flex justifyContent={'flex-end'}>
+              <Time
+                aria-label={i18n.fromTime}
+                hasMillis={hasMillis}
+                hasSeconds={hasSeconds}
+                id={`${id}-time-from`}
+                onChange={(dt) => {
+                  onChange(
+                    [
+                      set(dt, {
+                        year: getYear(value[0]),
+                        month: getMonth(value[0]),
+                        date: getDate(value[0]),
+                      }),
+                      value[1],
+                    ],
+                    DATE_TIME_RANGE_SOURCE_TIME_LEFT,
+                  );
+                }}
+                size="sm"
+                value={canCalendarRender && value.length >= 2 ? value[0] : ''}
+                disabled={!canCalendarRender || value.length < 2}
+              />
+            </Flex>
+          )}
+        </VFlex>
+      )}
+      {(mode === 'calendar' || mode === 'both') && (
+        <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
+          <MonthSelector
+            i18n={i18n}
+            hasPrevMonthButton={false}
+            id={`${id}-month-to`}
+            onChange={onChangeMonthRight}
+            onClickNextMonth={onClickNextMonth}
+            size="sm"
+            value={addMonths(monthDate, 1)}
           />
-        </Box>
-        {hasTime && (
-          <Flex>
-            <Time
-              aria-label={i18n.toTime}
-              hasMillis={hasMillis}
-              hasSeconds={hasSeconds}
-              id={`${id}-time-to`}
-              onChange={(dt) => {
+          <Box height={'165px'}>
+            <Calendar
+              monthDate={addMonths(monthDate, 1)}
+              disableHoverDay={true}
+              onClick={(dt) => {
                 onChange(
-                  [
-                    value[0],
+                  rangeBehavior(
+                    value as (number | Date)[],
                     set(dt, {
-                      year: getYear(value[1]),
-                      month: getMonth(value[1]),
-                      date: getDate(value[1]),
+                      hours: 23,
+                      minutes: 59,
+                      seconds: 59,
+                      milliseconds: 999,
                     }),
-                  ],
-                  DATE_TIME_RANGE_SOURCE_TIME_RIGHT,
+                  ),
+                  DATE_TIME_RANGE_SOURCE_CAL_RIGHT,
                 );
               }}
-              size="sm"
-              value={canCalendarRender && value.length >= 2 ? value[1] : ''}
-              disabled={!canCalendarRender || value.length < 2}
+              value={canCalendarRender ? value : []}
+              hasLeftHoverEffect={
+                canCalendarRender ? value.length === 1 : false
+              }
+              hasRightHoverEffect={
+                canCalendarRender ? value.length === 1 : false
+              }
+              parseDate={parseDate}
+              weekDays={weekDays}
+              hoverDay={hoverDay}
+              onMouseEnter={onMouseEnterCallback}
+              onMouseLeave={onMouseLeaveCallback}
             />
-          </Flex>
-        )}
-      </VFlex>
-      {presets && (
+          </Box>
+          {hasTime && (
+            <Flex>
+              <Time
+                aria-label={i18n.toTime}
+                hasMillis={hasMillis}
+                hasSeconds={hasSeconds}
+                id={`${id}-time-to`}
+                onChange={(dt) => {
+                  onChange(
+                    [
+                      value[0],
+                      set(dt, {
+                        year: getYear(value[1]),
+                        month: getMonth(value[1]),
+                        date: getDate(value[1]),
+                      }),
+                    ],
+                    DATE_TIME_RANGE_SOURCE_TIME_RIGHT,
+                  );
+                }}
+                size="sm"
+                value={canCalendarRender && value.length >= 2 ? value[1] : ''}
+                disabled={!canCalendarRender || value.length < 2}
+              />
+            </Flex>
+          )}
+        </VFlex>
+      )}
+      {(mode === 'presets' || mode === 'both') && (
         <VFlex flex={'1 1 30%'} alignItems="stretch" minWidth="16rem">
           <Presets
             value={value}

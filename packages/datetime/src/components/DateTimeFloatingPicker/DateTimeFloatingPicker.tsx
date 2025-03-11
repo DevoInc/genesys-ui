@@ -50,15 +50,19 @@ export interface DateTimeFloatingPickerProps
   onApply?: (dt: Date | number) => void;
   /** Function called when Cancel button is clicked. */
   onCancel?: () => void;
-  /** Function called when any enabled calendar cell is clicked or the time input changed. */
+  /** Function called when any enabled calendar cell is clicked or the time
+   * input changed. */
   onChange?: DateTimeProps['onChange'];
   /** Value of the DateTimeFloatingPicker */
   value?: Date | number;
-  /** Parses a date input, which can be of type number | Date | string, and returns an object implementing the IParseResult interface. Its main goal is to validate the input expression. */
+  /** Parses a date input, which can be of type number | Date | string, and
+   * returns an object implementing the IParseResult interface. Its main goal is to validate the input expression. */
   parseDate?: (str: string) => IParseResult;
-  /** Takes a Date | number as input and returns a formatted string representation of the date. */
+  /** Takes a Date | number as input and returns a formatted string
+   * representation of the date. */
   formatDate?: (dt: Date | number) => string;
-  /** Apply change directly, without extra buttons (nor Apply or Cancel buttons) */
+  /** Apply change directly, without extra buttons (nor Apply or Cancel
+   * buttons) */
   autoApply?: boolean;
 }
 
