@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.14.0](https://github.com/DevoInc/genesys-ui/compare/v17.13.0...v17.14.0) (2025-03-11)
+
+### Features
+
+* Added ellipsis marker to options type table cell and fixed navigation prop for PanelSection. ([48c1f1d](https://github.com/DevoInc/genesys-ui/commit/48c1f1d7621e184e70b2bc22a79a0104dd82d6ad))
+
 ## [17.13.0](https://github.com/DevoInc/genesys-ui/compare/v17.12.0...v17.13.0) (2025-03-10)
 
 ### Features
