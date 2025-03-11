@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.15.0](https://github.com/DevoInc/genesys-ui/compare/v17.14.0...v17.15.0) (2025-03-11)
+
+### Features
+
+* **datetime:** add modeDateTimeRange prop to DateTimeRangeFloatingPicker for flexible display options ([cda6794](https://github.com/DevoInc/genesys-ui/commit/cda6794d1bf657c45c2a941110ee5422a54f98aa))
+
 ## [17.14.0](https://github.com/DevoInc/genesys-ui/compare/v17.13.0...v17.14.0) (2025-03-11)
 
 ### Features
