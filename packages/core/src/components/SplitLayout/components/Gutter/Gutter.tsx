@@ -15,6 +15,7 @@ export interface GutterProps {
   index: number;
   showDragGhost?: boolean;
   hide?: boolean;
+  quiet?: boolean;
 }
 
 export const Gutter: React.FC<GutterProps> = ({
@@ -22,6 +23,7 @@ export const Gutter: React.FC<GutterProps> = ({
   size,
   id,
   disabled = false,
+  quiet,
   index,
   showDragGhost = true,
   hide = false,
@@ -39,6 +41,7 @@ export const Gutter: React.FC<GutterProps> = ({
   return (
     <StyledGutter
       role="separator"
+      $quiet={quiet}
       $isDragging={isDragging}
       $direction={direction}
       $size={size}

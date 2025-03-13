@@ -25,6 +25,8 @@ export interface SplitLayoutProps extends IDataAttrs {
   sizes?: TSizes;
   /** Gutter size in pixels */
   gutterSize?: number;
+  /** Apply less prominent styles: remove background-color, border... etc. */
+  quiet?: boolean;
   onChange?: TOnChangeFn;
   disabled?: boolean;
   showDragGhost?: boolean;
@@ -40,6 +42,7 @@ export const SplitLayout: React.FC<SplitLayoutProps> = ({
   disabled = false,
   showDragGhost = true,
   hideGutter = false,
+  quiet,
 }) => (
   <DndContext
     modifiers={[
@@ -60,6 +63,7 @@ export const SplitLayout: React.FC<SplitLayoutProps> = ({
             <Gutter
               key={`separator${idx}`}
               id={`separator${idx}`}
+              quiet={quiet}
               index={idx}
               direction={direction}
               size={gutterSize}
