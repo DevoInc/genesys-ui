@@ -22,6 +22,7 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
   bordered,
   children,
   compact,
+  height,
   id,
   justifyContent,
   paddingLeft = 'cmp-md',
@@ -29,7 +30,7 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
   position = 'relative',
   sticky = false,
   style,
-  ...boxProps
+  ...restBoxProps
 }) => {
   const cmpTokens = useTheme().cmp.appBar;
   const elevation = sticky ? 'stickyBottom' : 'ground';
@@ -37,7 +38,7 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
 
   return (
     <Box
-      {...boxProps}
+      {...restBoxProps}
       elevation={elevation}
       id={id ? `${id}__container` : null}
       paddingLeft={paddingLeft}
@@ -56,9 +57,10 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
       <HFlex
         alignItems={alignItems}
         height={
-          compact
+          height ||
+          (compact
             ? `calc(${tabsContainerTokens.size.height.lg} - 2rem)`
-            : tabsContainerTokens.size.height.lg
+            : tabsContainerTokens.size.height.lg)
         }
         justifyContent={justifyContent}
       >
