@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { set, getYear, getMonth, getDate, addMonths } from 'date-fns';
+import {
+  set,
+  getYear,
+  getMonth,
+  getDate,
+  addMonths,
+  subMonths,
+} from 'date-fns';
 
 import {
   Box,
@@ -13,7 +20,6 @@ import {
 } from '@devoinc/genesys-ui';
 
 import { Presets, type PresetsProps } from '../Presets';
-import { MonthSelector, useMonthSelectorRange } from '../MonthSelector';
 import { Time, type TimeProps } from '../Time';
 import { Calendar, type CalendarProps, rangeBehavior } from '../Calendar';
 import { tautologyParseDate } from '../../parsers';
@@ -27,6 +33,7 @@ import {
 import { defaultDateTimeRangeI18n } from './i18n';
 import { useMergeI18n } from '../../hooks';
 import type { TDateRange } from '../../declarations';
+import { MonthFloatingPicker } from '../MonthFloatingPicker';
 
 export interface DateTimeRangeProps
   extends Pick<CalendarProps, 'monthDate' | 'parseDate' | 'weekDays'>,
@@ -76,12 +83,6 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
     userI18n,
     defaultDateTimeRangeI18n,
   ) as TDateTimeRangeI18n;
-  const {
-    onClickNextMonth,
-    onClickPrevMonth,
-    onChangeMonthLeft,
-    onChangeMonthRight,
-  } = useMonthSelectorRange({ monthDate, onChangeMonthDate });
   const [hoverDay, setHoverDay] = React.useState<number>(null);
 
   const onMouseEnterCallback = React.useCallback((ts: number) => {
@@ -101,14 +102,19 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
     <HFlex as={as} alignItems={'flex-start'} style={style} {...dataProps}>
       {(mode === 'calendar' || mode === 'both') && (
         <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
-          <MonthSelector
+          <MonthFloatingPicker
             i18n={i18n}
+            appendTo={null}
+            yearSelectorInline
             hasNextMonthButton={false}
+            placement={'bottom-end'}
             id={`${id}-month-from`}
-            onChange={onChangeMonthLeft}
-            onClickPrevMonth={onClickPrevMonth}
+            onChange={(newMonthDate) => {
+              onChangeMonthDate(newMonthDate);
+            }}
             size="sm"
             value={monthDate}
+            closeAfterSelect={false}
           />
           <Box height={'165px'}>
             <Calendar
@@ -172,14 +178,18 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
       )}
       {(mode === 'calendar' || mode === 'both') && (
         <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
-          <MonthSelector
+          <MonthFloatingPicker
             i18n={i18n}
+            appendTo={null}
+            yearSelectorInline
             hasPrevMonthButton={false}
             id={`${id}-month-to`}
-            onChange={onChangeMonthRight}
-            onClickNextMonth={onClickNextMonth}
+            onChange={(newMonthDate) => {
+              onChangeMonthDate(subMonths(newMonthDate, 1));
+            }}
             size="sm"
             value={addMonths(monthDate, 1)}
+            closeAfterSelect={false}
           />
           <Box height={'165px'}>
             <Calendar

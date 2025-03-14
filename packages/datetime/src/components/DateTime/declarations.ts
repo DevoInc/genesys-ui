@@ -1,4 +1,4 @@
-import { TMonthSelectorI18n } from '../MonthSelector';
+import { TMonthFloatingPickerI18n } from '../MonthFloatingPicker';
 import { TTimeI18n } from '../Time/declarations';
 
-export type TDateTimeI18n = TMonthSelectorI18n & TTimeI18n;
+export type TDateTimeI18n = TMonthFloatingPickerI18n & TTimeI18n;

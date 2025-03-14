@@ -21,7 +21,7 @@ import {
 import type { ITime } from '../../declarations';
 import { Calendar, type CalendarProps } from '../Calendar';
 import { Time } from '../Time';
-import { MonthSelector, useMonthSelector } from '../MonthSelector';
+import { MonthFloatingPicker } from '../MonthFloatingPicker';
 import { tautologyParseDate } from '../../parsers';
 import { TDateTimeI18n } from './declarations';
 import { defaultDateTimeI18n } from './i18n';
@@ -62,8 +62,6 @@ export const DateTime: React.FC<DateTimeProps> = ({
   ...dataProps
 }) => {
   const i18n = useMergeI18n(userI18n, defaultDateTimeI18n) as TDateTimeI18n;
-  const { onChangeMonth, onClickNextMonth, onClickPrevMonth } =
-    useMonthSelector({ monthDate, onChangeMonthDate });
   const theme = useTheme();
   return (
     <VFlex
@@ -73,15 +71,16 @@ export const DateTime: React.FC<DateTimeProps> = ({
       minWidth={theme.cmp.calendar.size.minWidth}
       style={style}
     >
-      <MonthSelector
+      <MonthFloatingPicker
         i18n={i18n}
+        appendTo={null}
+        yearSelectorInline
         hasNextMonthButton
         hasPrevMonthButton
-        onChange={onChangeMonth}
-        onClickPrevMonth={onClickPrevMonth}
-        onClickNextMonth={onClickNextMonth}
+        onChange={onChangeMonthDate}
         size="sm"
         value={monthDate}
+        closeAfterSelect={false}
       />
       <Calendar
         monthDate={monthDate}
