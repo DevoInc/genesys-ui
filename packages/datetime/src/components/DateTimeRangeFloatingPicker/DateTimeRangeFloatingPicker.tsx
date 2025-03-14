@@ -73,6 +73,7 @@ export interface DateTimeRangeFloatingPickerProps
 
   onChange: (range: TDateRange) => void;
   autoApply?: boolean;
+  modeDateTimeRange?: 'calendar' | 'presets' | 'both';
 }
 
 export const DateTimeRangeFloatingPicker: React.FC<
@@ -99,6 +100,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
   onRealTimeClick,
   realTime,
   hasMillis = false,
+  modeDateTimeRange,
   ...dataProps
 }) => {
   const i18n = useMergeI18n(
@@ -225,6 +227,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
                 presetsPlaceholder={presetsPlaceholder}
                 monthDate={monthDate}
                 parseDate={parseDate}
+                mode={modeDateTimeRange}
                 onChangeMonthDate={(dt) => {
                   setMonthDate(dt);
                 }}
