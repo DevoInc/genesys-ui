@@ -5,11 +5,12 @@ import { MODAL_WINDOW_SIZE_MAP } from '../../constants';
 import type { IDataAttrs } from '../../../../declarations';
 import type { IModal } from '../../declarations';
 import { modalPanelMixin } from './mixins';
-import { Panel } from '../../../Panel';
+import { Panel, type PanelProps } from '../../../Panel';
 import { mergeStyles } from '../../../../helpers';
 
 export interface ModalPanelProps
   extends IDataAttrs,
+    Pick<PanelProps, 'maxHeight' | 'minHeight' | 'maxWidth' | 'minWidth'>,
     Pick<
       IModal,
       | 'aria-describedby'
@@ -32,6 +33,10 @@ export const ModalPanel: React.FC<ModalPanelProps> = ({
   children,
   height,
   id,
+  maxHeight,
+  maxWidth,
+  minHeight,
+  minWidth,
   status,
   style,
   width,
@@ -52,20 +57,22 @@ export const ModalPanel: React.FC<ModalPanelProps> = ({
       display="inline-flex"
       elevation="overlay"
       id={id}
-      maxHeight={tokensModal.size.maxHeight}
+      maxHeight={maxHeight || tokensModal.size.maxHeight}
       maxWidth={
-        status && status !== 'base'
+        maxWidth ||
+        (status && status !== 'base'
           ? tokensDialog.size.maxWidth
           : width ||
-            tokensModal.size.maxWidth[MODAL_WINDOW_SIZE_MAP[windowSize]]
+            tokensModal.size.maxWidth[MODAL_WINDOW_SIZE_MAP[windowSize]])
       }
       minHeight={
-        status && status !== 'base'
+        minHeight ||
+        (status && status !== 'base'
           ? tokensDialog.size.minHeight
           : height ||
-            tokensModal.size.minHeight[MODAL_WINDOW_SIZE_MAP[windowSize]]
+            tokensModal.size.minHeight[MODAL_WINDOW_SIZE_MAP[windowSize]])
       }
-      minWidth={tokensModal.size.minWidth}
+      minWidth={minWidth || tokensModal.size.minWidth}
       onClick={(event) => {
         // For avoid click inside close overlay
         event.stopPropagation();

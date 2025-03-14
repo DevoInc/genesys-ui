@@ -50,7 +50,7 @@ export const InternalTabsItem: React.FC<Resolve<TabsItemProps>> = ({
   onClose,
   onClick,
   rel,
-  size = 'md',
+  size,
   state = 'enabled',
   target,
   tooltip,
@@ -59,8 +59,8 @@ export const InternalTabsItem: React.FC<Resolve<TabsItemProps>> = ({
 }) => {
   const context = React.useContext(TabsContext);
   const evalWide = wide || context.wide;
-  const evalSize = size || context.size;
-
+  const evalSize = size || context.size || 'md';
+  console.info(evalSize);
   return (
     <TabsItemContainer as={as} size={evalSize} wide={evalWide}>
       <TabsItemLink

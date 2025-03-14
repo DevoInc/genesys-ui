@@ -36,6 +36,7 @@ export const FieldsCombinerInput: React.FC<FieldsCombinerInputProps> = ({
       <InputControl._Input
         {...restInputControlProps}
         aria-label={ariaLabel}
+        size={size}
         status={status}
         style={mergeStyles(
           fieldsCombinerInputAndSelectMixin({

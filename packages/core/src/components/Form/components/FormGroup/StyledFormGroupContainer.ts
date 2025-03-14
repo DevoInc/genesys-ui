@@ -22,10 +22,6 @@ export const StyledFormGroupContainer = styled.div<StyledFormGroupContainerProps
   display: flex;
   position: relative;
 
-  &:first-child {
-    margin-top: 0;
-  }
-
   ${({
     $asFieldset,
     $childrenFitFullWidth,
@@ -42,9 +38,17 @@ export const StyledFormGroupContainer = styled.div<StyledFormGroupContainerProps
           ? 'stretch'
           : 'flex-start'};
       gap: ${getSpacingPropCss(theme)('cmp-xs')};
+
+      &:first-child {
+        margin-top: 0;
+      }
+
       ${$marginTop
         ? css`
-            margin-top: ${$marginTop};
+            &,
+            &:first-child {
+              margin-top: ${getSpacingPropCss(theme)($marginTop)};
+            }
           `
         : formGroupSpacingMixin(theme)};
       margin-left: ${$marginLeft && getSpacingPropCss(theme)($marginLeft)};

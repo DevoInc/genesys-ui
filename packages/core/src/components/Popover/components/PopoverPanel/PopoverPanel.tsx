@@ -8,7 +8,7 @@ export const PopoverPanel: React.FC<PopoverPanelProps> = ({
   children,
   padding,
   minWidth = '22rem',
-  maxWidth = '40rem',
+  maxWidth,
   ...restPanelProps
 }) => {
   const hasComplexPanel = React.useMemo(() => {

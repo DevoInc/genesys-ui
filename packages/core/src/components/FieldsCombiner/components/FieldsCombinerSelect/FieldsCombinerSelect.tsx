@@ -32,6 +32,7 @@ export const FieldsCombinerSelect: React.FC<FieldsCombinerSelectProps> = ({
     >
       <SelectControl
         {...restSelectControlProps}
+        size={size}
         status={status}
         style={mergeStyles(
           fieldsCombinerInputAndSelectMixin({

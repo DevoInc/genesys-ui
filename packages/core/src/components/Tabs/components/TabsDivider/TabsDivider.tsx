@@ -8,18 +8,20 @@ import { mergeStyles } from '../../../../helpers';
 export interface TabsDividerProps extends Omit<DividerProps, 'vertical'> {}
 
 export const TabsDivider: React.FC<TabsDividerProps> = ({
+  margin,
   style,
   ...dividerProps
 }) => {
   const tokens = useTheme().cmp.tabs.divider;
   const baseStyles = `
-      margin: 0 ${tokens.space.margin};
+      margin: ${!margin && `0 ${tokens.space.margin}`};
       background: ${tokens.color.background};
     `;
   return (
     <Flex.Item alignSelf="center" role="presentation">
       <Divider
         {...dividerProps}
+        margin={margin}
         vertical
         style={mergeStyles(baseStyles, style)}
       />

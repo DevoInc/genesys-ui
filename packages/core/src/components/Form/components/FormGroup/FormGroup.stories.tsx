@@ -15,6 +15,13 @@ const meta: Meta<typeof Form.Group> = {
   args: {
     direction: 'column',
   },
+  argTypes: {
+    helper: {
+      control: {
+        type: 'text',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -23,7 +30,6 @@ type Story = StoryObj<typeof Form.Group>;
 export const Playground: Story = {
   args: {
     asFieldset: true,
-    disabled: true,
     legend: 'FormGroup legend',
     children: [
       <InputControl key={1} aria-label="Input label" />,

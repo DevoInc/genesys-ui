@@ -10,6 +10,6 @@ export const MenuItemShortCut: React.FC<MenuItemShortCutProps> = ({
   children,
 }) => (
   <Flex marginLeft="auto" alignItems="center" as="span">
-    <Typography.Caption colorScheme="weak">{children}</Typography.Caption>
+    <Typography.Caption colorScheme="weaker">{children}</Typography.Caption>
   </Flex>
 );

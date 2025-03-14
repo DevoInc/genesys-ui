@@ -160,7 +160,9 @@ export const InternalMenuItem = React.forwardRef<
                 )}
                 {prependContent}
                 <MenuItem._Label>{label}</MenuItem._Label>
-                {shortcut && <MenuItem._ShortCut />}
+                {shortcut && (
+                  <MenuItem._ShortCut>{shortcut}</MenuItem._ShortCut>
+                )}
                 {appendContent}
               </HFlex>
               {bottomContent}

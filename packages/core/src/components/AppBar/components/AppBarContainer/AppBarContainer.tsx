@@ -25,8 +25,7 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
   height,
   id,
   justifyContent,
-  paddingLeft = 'cmp-md',
-  paddingRight = 'cmp-md',
+  padding = '0 cmp-md',
   position = 'relative',
   sticky = false,
   style,
@@ -41,8 +40,7 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
       {...restBoxProps}
       elevation={elevation}
       id={id ? `${id}__container` : null}
-      paddingLeft={paddingLeft}
-      paddingRight={paddingRight}
+      padding={padding}
       position={position}
       style={mergeStyles(
         { backgroundColor: cmpTokens.color.background },

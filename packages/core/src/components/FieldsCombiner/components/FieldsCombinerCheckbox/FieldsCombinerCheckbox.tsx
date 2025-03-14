@@ -32,6 +32,7 @@ export const FieldsCombinerCheckbox: React.FC<FieldsCombinerCheckboxProps> = ({
       <CheckboxControl
         {...restCheckboxControlProps}
         aria-label={ariaLabel}
+        size={size}
         status={status}
       />
     </FieldsCombinerItem>

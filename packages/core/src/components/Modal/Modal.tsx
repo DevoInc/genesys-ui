@@ -9,15 +9,10 @@ import {
   ModalIcon,
 } from './components';
 import type { TGlobalStatus } from '../../declarations/commonProps';
-import {
-  ModalBackdrop,
-  type ModalBackdropProps,
-} from './components/ModalBackdrop';
+import { ModalBackdrop } from './components/ModalBackdrop';
 import { ModalContext } from './context';
 
-export interface ModalProps
-  extends Omit<ModalBackdropProps, 'children'>,
-    ModalPanelProps {
+export interface ModalProps extends ModalPanelProps {
   /** Function that will be called right after the modal is open */
   onAfterOpen?: () => void;
   /** Manages dialog status **/
