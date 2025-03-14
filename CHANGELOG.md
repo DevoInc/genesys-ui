@@ -1,5 +1,17 @@
 # Changelog
 
+## [17.16.0](https://github.com/DevoInc/genesys-ui/compare/v17.15.0...v17.16.0) (2025-03-14)
+
+### Features
+
+* several improvements for AppBar, FieldsCombiner, FormGroup, MenuItem, Popover, Modal and Tabs. ([a83102b](https://github.com/DevoInc/genesys-ui/commit/a83102bfd38763ace6cd8952acd61a83f70292c4))
+* **SplitLayout:** added prop to remove the styles: background, border... etc. when we need something less prominent or it's needed by the context , when there is border radius for instance. ([782f3c6](https://github.com/DevoInc/genesys-ui/commit/782f3c67bf3e7da1b27ce81f521096691ed16e38))
+
+### Bug Fixes
+
+* **AppBar:** The component now applies the prop height to the styles. ([a4f669b](https://github.com/DevoInc/genesys-ui/commit/a4f669b2bf3d18485abfe8e91d25e4e60da6dcab))
+* **table:** Multiple options filter ([7859ec1](https://github.com/DevoInc/genesys-ui/commit/7859ec1e9905d57f6672a63c696f1ea13dd76126))
+
 ## [17.15.0](https://github.com/DevoInc/genesys-ui/compare/v17.14.0...v17.15.0) (2025-03-11)
 
 ### Features
