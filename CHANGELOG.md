@@ -1,5 +1,14 @@
 # Changelog
 
+## [17.17.0](https://github.com/DevoInc/genesys-ui/compare/v17.16.0...v17.17.0) (2025-03-17)
+
+### Features
+
+* added ref to Grid component and label managing for DateTimeRangeFloatingPicker. ([ae36809](https://github.com/DevoInc/genesys-ui/commit/ae36809203bfaef19e23254a59614c7c72e09d3e))
+* **Avatar:** better position for Badge. ([89cf7c7](https://github.com/DevoInc/genesys-ui/commit/89cf7c7cbad00d8c9ccc26bae2008af51fec6d65))
+* **datetime:** changed MonthSelector by MonthFloatingPicker ([a6df054](https://github.com/DevoInc/genesys-ui/commit/a6df054406f1fd64f101e3dc1e2a6ab7d3356577))
+* The box-shadow of Table cells and form controls turns to be inset to avoid problems with overflow hidden parents. ([5d1f59f](https://github.com/DevoInc/genesys-ui/commit/5d1f59f7fd5c5351616c2710f527c68419bccbd5))
+
 ## [17.16.0](https://github.com/DevoInc/genesys-ui/compare/v17.15.0...v17.16.0) (2025-03-14)
 
 ### Features
