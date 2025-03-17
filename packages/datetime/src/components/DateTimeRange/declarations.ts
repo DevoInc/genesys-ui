@@ -1,4 +1,4 @@
-import { TMonthSelectorI18n } from '../MonthSelector';
+import { TMonthFloatingPickerI18n } from '../MonthFloatingPicker';
 
 export type TDateTimeRangeSource =
   | 'cal-left'
@@ -7,7 +7,7 @@ export type TDateTimeRangeSource =
   | 'time-right'
   | 'presets';
 
-export type TDateTimeRangeI18n = TMonthSelectorI18n & {
+export type TDateTimeRangeI18n = TMonthFloatingPickerI18n & {
   /** The from month text */
   fromMonth: string;
   /** The from time text */

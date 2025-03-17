@@ -1,0 +1,26 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './MonthPicker.stories';
+
+<Meta of={Stories} />
+
+# `MonthPicker`
+
+This is a simplify version of the `MonthFloatingPicker`
+
+## How to import
+
+<Source code={`import { MonthFloatingPicker } from '@devo/genesys-ui-datetime';`} />
+
+## Basic usage
+
+<Canvas of={Stories.Playground} />
+
+## I18n
+
+- `i18n.nextYear`: Text for tooltip of the button to go to the next year
+- `i18n.prevYear`: Text for tooltip of the button to go to the previous year
+
+## Props
+
+<ArgTypes of={Stories} />

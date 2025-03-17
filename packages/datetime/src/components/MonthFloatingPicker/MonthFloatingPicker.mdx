@@ -1,0 +1,35 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './MonthFloatingPicker.stories';
+
+<Meta of={Stories} />
+
+# `MonthFloatingPicker`
+
+## How to import
+
+<Source code={`import { MonthFloatingPicker } from '@devo/genesys-ui-datetime';`} />
+
+## Basic usage
+
+<Canvas of={Stories.Playground} />
+
+## Include year selector on month selection
+
+Using the property `yearSelectorInline` as `true` the year selector will be
+included in the month selection. This way if the changes of year is not so
+relevant as in a birth date for example, you could apply this property.
+
+<Canvas of={Stories.YearSelectionInline} />
+
+## I18n
+
+- `i18n.nextYear`: Text for tooltip of the button to go to the next year
+- `i18n.prevYear`: Text for tooltip of the button to go to the previous year
+- `i18n.nextMonth`: Text for tooltip of the button to go to the next month
+- `i18n.prevMonth`: Text for tooltip of the button to go to the previous month
+- `i18n.inputMonth`: Text for tooltip of the button to select the month
+
+## Props
+
+<ArgTypes of={Stories} />
