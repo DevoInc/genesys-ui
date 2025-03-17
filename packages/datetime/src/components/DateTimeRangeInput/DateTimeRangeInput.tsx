@@ -43,6 +43,8 @@ export interface DateTimeRangeInputProps
   value?: string[];
   /** Value for label prop */
   label?: FieldProps['label'];
+  /** If the label is hidden, but still accessible */
+  hideLabel?: FieldProps['hideLabel'];
   /** Floating status message or helper for input fields */
   helpers?: string[];
   /** Handler method after either 'from' or 'to' inputs field cliked  */
@@ -76,8 +78,9 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
   ariaLabel = ['from', 'to'],
   as,
   value,
-  helper = '',
-  label = '',
+  helper,
+  hideLabel,
+  label,
   helpers = [null, null],
   id,
   onChange = () => null,
@@ -107,7 +110,7 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
       id={id}
       hasFloatingHelper
       helper={helper}
-      hideLabel
+      hideLabel={hideLabel}
       status={status}
       required={required}
       controlWidth={controlWidth ?? 'auto'}

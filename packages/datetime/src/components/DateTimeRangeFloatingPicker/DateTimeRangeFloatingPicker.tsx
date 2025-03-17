@@ -71,6 +71,10 @@ export interface DateTimeRangeFloatingPickerProps
   parseRange?: TParseRange;
   formatDate?: TFormatDate;
 
+  inputAriaLabel?: DateTimeRangeInputProps['ariaLabel'];
+  inputHideLabel?: DateTimeRangeInputProps['hideLabel'];
+  inputLabel?: DateTimeRangeInputProps['label'];
+
   onChange: (range: TDateRange) => void;
   autoApply?: boolean;
   modeDateTimeRange?: 'calendar' | 'presets' | 'both';
@@ -85,6 +89,9 @@ export const DateTimeRangeFloatingPicker: React.FC<
   disableOutsideEvent = false,
   isOpened,
   id,
+  inputAriaLabel,
+  inputHideLabel = true,
+  inputLabel,
   onCancel,
   onChange,
   onClose: onCloseCallback,
@@ -159,12 +166,15 @@ export const DateTimeRangeFloatingPicker: React.FC<
       {({ ref, setOpened }) => (
         <div ref={ref}>
           <DateTimeRangeInput
+            ariaLabel={inputAriaLabel}
             aria-controls={`${id}-range-selector`}
             value={Array.from({ length: 2 }).map(
               (_, idx) => inputValue[idx] ?? '',
             )}
             id={id ? `${id}-range-control` : null}
             isOpen={isOpened}
+            hideLabel={inputHideLabel}
+            label={inputLabel}
             onKeyUp={(index, event) => {
               if (event.key === 'Enter' && index === 0) {
                 const leftInput = event.target as HTMLInputElement;

@@ -14,6 +14,13 @@ const presets = getDefaultPresets(now);
 const meta: Meta<typeof DateTimeRangeFloatingPicker> = {
   title: 'Components/Datetime/DateTimeRangeFloatingPicker',
   component: DateTimeRangeFloatingPicker,
+  argTypes: {
+    helper: {
+      control: {
+        type: 'text',
+      },
+    },
+  },
   args: {
     id: 'story-demo',
     size: 'md',
