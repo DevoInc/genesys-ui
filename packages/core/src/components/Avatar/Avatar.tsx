@@ -5,6 +5,7 @@ import {
   AVATAR_IMAGE_FIT_DEFAULT_VALUE,
   AVATAR_IMAGE_POSITION_DEFAULT_VALUE,
   AVATAR_SIZE_BADGE_MAP,
+  AVATAR_SIZE_BADGE_POSITION_MAP,
   AVATAR_SIZE_DEFAULT_VALUE,
   AVATAR_VARIANT_DEFAULT_VALUE,
 } from './constants';
@@ -22,6 +23,7 @@ import {
 } from './components';
 
 import { Box } from '../Box';
+import { useTheme } from 'styled-components';
 
 export interface AvatarProps
   extends IDataAttrs,
@@ -60,53 +62,59 @@ export const InternalAvatar: React.FC<AvatarProps> = ({
   tooltip,
   variant = AVATAR_VARIANT_DEFAULT_VALUE,
   ...restContainerProps
-}) => (
-  <AvatarContainer
-    {...restContainerProps}
-    aria-label={name}
-    as={as || (href ? 'a' : onClick ? 'button' : 'span')}
-    bordered={bordered}
-    colorScheme={colorScheme}
-    customSize={customSize}
-    disabled={disabled}
-    href={href}
-    imageFit={imageFit}
-    imagePosition={imagePosition}
-    imageSrc={imageSrc}
-    onClick={onClick}
-    role={role || (onClick ? 'button' : imageSrc ? 'img' : undefined)}
-    size={size}
-    tooltip={tooltip !== undefined ? tooltip : name}
-    variant={variant}
-  >
-    {imageSrc ? (
-      <AvatarImage
-        alt={name}
-        customSize={customSize}
-        imageSrc={imageSrc}
-        size={size}
-        variant={variant}
-        imageFit={imageFit}
-        imagePosition={imagePosition}
-      />
-    ) : (
-      <AvatarInitials name={name} initials={initials} />
-    )}
-    <AvatarSROnly>{name}</AvatarSROnly>
-    {badge && (
-      <Box
-        as="span"
-        position="absolute"
-        positionLeft="100%"
-        positionTop="100%"
-        cssTranslate={variant === 'circle' ? '-75%,-75%' : '-50%,-50%'}
-        zIndex={1}
-      >
-        {badge({ size: AVATAR_SIZE_BADGE_MAP[size], colorScheme })}
-      </Box>
-    )}
-  </AvatarContainer>
-);
+}) => {
+  const theme = useTheme();
+  const badgePositionBottom = AVATAR_SIZE_BADGE_POSITION_MAP[size].bottom;
+  const badgePositionLeft = `calc(100% - ${theme.cmp.badge.size.square.hasContent[AVATAR_SIZE_BADGE_POSITION_MAP[size].badgeSize]} + ${AVATAR_SIZE_BADGE_POSITION_MAP[size].leftOffset})`;
+
+  return (
+    <AvatarContainer
+      {...restContainerProps}
+      aria-label={name}
+      as={as || (href ? 'a' : onClick ? 'button' : 'span')}
+      bordered={bordered}
+      colorScheme={colorScheme}
+      customSize={customSize}
+      disabled={disabled}
+      href={href}
+      imageFit={imageFit}
+      imagePosition={imagePosition}
+      imageSrc={imageSrc}
+      onClick={onClick}
+      role={role || (onClick ? 'button' : imageSrc ? 'img' : undefined)}
+      size={size}
+      tooltip={tooltip !== undefined ? tooltip : name}
+      variant={variant}
+    >
+      {imageSrc ? (
+        <AvatarImage
+          alt={name}
+          customSize={customSize}
+          imageSrc={imageSrc}
+          size={size}
+          variant={variant}
+          imageFit={imageFit}
+          imagePosition={imagePosition}
+        />
+      ) : (
+        <AvatarInitials name={name} initials={initials} />
+      )}
+      <AvatarSROnly>{name}</AvatarSROnly>
+      {badge && (
+        <Box
+          as="span"
+          position="absolute"
+          positionBottom={badgePositionBottom}
+          positionLeft={badgePositionLeft}
+          //cssTranslate="-50%,0"
+          zIndex={1}
+        >
+          {badge({ size: AVATAR_SIZE_BADGE_MAP[size], colorScheme })}
+        </Box>
+      )}
+    </AvatarContainer>
+  );
+};
 
 export const Avatar = InternalAvatar as typeof InternalAvatar & {
   _Container: typeof AvatarContainer;
