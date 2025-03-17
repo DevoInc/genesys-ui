@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.18.0](https://github.com/DevoInc/genesys-ui/compare/v17.17.0...v17.18.0) (2025-03-17)
+
+### Features
+
+* **Avatar:** Updated to the last version of genesys-brand-devo to get stronger text for Avatar component initials. ([9815e8c](https://github.com/DevoInc/genesys-ui/commit/9815e8cde8ca49829705c6f609cf0b27fe30fb65))
+
 ## [17.17.0](https://github.com/DevoInc/genesys-ui/compare/v17.16.0...v17.17.0) (2025-03-17)
 
 ### Features
