@@ -23,7 +23,7 @@ export const StyledTableHead = styled.thead<StyledTableHeadProps>`
       ${$scrolled
         ? elevationMixin(theme)('stickyBottom')
         : css`
-            box-shadow: 0 0 0 ${tableHeadRowTokens.shape.borderSize.md}
+            border-bottom: solid ${tableHeadRowTokens.shape.borderSize.md}
               ${tableHeadRowTokens.color.background.after.base};
           `};
     `;
