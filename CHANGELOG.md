@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.18.1](https://github.com/DevoInc/genesys-ui/compare/v17.18.0...v17.18.1) (2025-03-18)
+
+### Bug Fixes
+
+* **datetime:** default mode dateTimeRange to both ([44ecf55](https://github.com/DevoInc/genesys-ui/commit/44ecf5592521203cc770b45fc943b1c91a174678))
+
 ## [17.18.0](https://github.com/DevoInc/genesys-ui/compare/v17.17.0...v17.18.0) (2025-03-17)
 
 ### Features
