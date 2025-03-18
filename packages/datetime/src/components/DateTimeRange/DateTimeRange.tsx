@@ -69,7 +69,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   hasSeconds = true,
   hasTime = true,
   id,
-  mode = 'calendar',
+  mode = 'both',
   onChange,
   value = [new Date(), new Date()],
   parseDate = tautologyParseDate,
