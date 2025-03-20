@@ -4,11 +4,16 @@ import * as Stories from './MonthFloatingPicker.stories';
 
 <Meta of={Stories} />
 
-# `MonthFloatingPicker`
+# MonthFloatingPicker
+
+Component used for selecting a combination of month-year values. It's composed of two main blocks:
+A trigger which renders the selection and also opens a floating panel with the month-year selectors.
 
 ## How to import
 
-<Source code={`import { MonthFloatingPicker } from '@devo/genesys-ui-datetime';`} />
+<Source
+  code={`import { MonthFloatingPicker } from '@devo/genesys-ui-datetime';`}
+/>
 
 ## Basic usage
 
@@ -18,7 +23,7 @@ import * as Stories from './MonthFloatingPicker.stories';
 
 Using the property `yearSelectorInline` as `true` the year selector will be
 included in the month selection. This way if the changes of year is not so
-relevant as in a birth date for example, you could apply this property.
+relevant as in a birthdate for example, you could apply this property.
 
 <Canvas of={Stories.YearSelectionInline} />
 

@@ -6,6 +6,10 @@ import * as Stories from './DateTimeRangeFloatingPicker.stories';
 
 # DateTimeRangeFloatingPicker
 
+Component used for selecting a range of date-time values. The component provides options
+for specifying the format of the range, including real-time control and shift modifiers.
+The calendar and preset selections are rendered in a floating panel.
+
 The `DateTimeRangeFloatingPicker` component is an combination of the `DateTimeRange`
 component and `DateTimeRangeInput` component.
 
@@ -32,25 +36,25 @@ Any change made to the `DateTimeRange` component triggers the `onChange` method.
 
 <Canvas of={Stories.Playground} />
 
-## `parseDate` & `formatDate`
+## parseDate & formatDate
 
 If we need a custom time language we can use the properties `parseDate` &
 `formatDate`.
 
 - `parseDate`: Allow us to define the parser of the language, for example, our
-language could accept strings like `now() - 5m`, this is the place for parse
-this string and validate it, etc.
+  language could accept strings like `now() - 5m`, this is the place for parse
+  this string and validate it, etc.
 - `formatDate`: Allow us to visualize our date in the form of the custom
-language if needed
+  language if needed
 
 <Canvas of={Stories.CustomTimeLanguage} />
 
-## Limit the valid dates with `parseRange` and `parseDate`
+## Limit the valid dates with parseRange and parseDate
 
 - `parseDate` also allow to check if a day is valid in the calendar and set a
-tooltip with the reason if not.
+  tooltip with the reason if not.
 - `parseRange` is the same as `parseDate` but for the range the main and default
-behavior is to avoid the user insert an inverted range.
+  behavior is to avoid the user insert an inverted range.
 
 <Canvas of={Stories.Limits} />
 
