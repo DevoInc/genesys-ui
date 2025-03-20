@@ -9,6 +9,7 @@ import {
   Popover,
   type PopoverProps,
   type IDataAttrs,
+  Flex,
 } from '@devoinc/genesys-ui';
 
 import { getDefaultParseDate, getDefaultParseRange } from '../../parsers';
@@ -164,7 +165,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
       }}
     >
       {({ ref, setOpened }) => (
-        <div ref={ref}>
+        <Flex inline ref={ref}>
           <DateTimeRangeInput
             ariaLabel={inputAriaLabel}
             aria-controls={`${id}-range-selector`}
@@ -212,7 +213,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
             realTime={realTime}
             hasMillis={hasMillis}
           />
-        </div>
+        </Flex>
       )}
       {({ setOpened }) => {
         setOpenendRef.current = setOpened;
