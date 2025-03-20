@@ -21,6 +21,7 @@ export const ChildrenValueContainer: React.FC<ChildrenValueContainer> = ({
   status,
 }) => {
   const theme = useTheme();
+  const aliasTokens = theme.alias;
   const cmpTokens = theme.cmp.selectControl;
   const square = cmpTokens.size.height[size];
   return (
@@ -44,6 +45,17 @@ export const ChildrenValueContainer: React.FC<ChildrenValueContainer> = ({
               ${cmpTokens.multiValueContainer.space.padding.hor.isSubtle};
             background-color: ${cmpTokens.color.background[status].enabled};
             z-index: 1;
+            transition: border ${cmpTokens.mutation.transitionDuration} ease;
+
+            // to avoid overlapping with the inset box-shadow on focus
+            [class*='--is-focused'] & {
+              border-left: solid 0.2rem
+                ${aliasTokens.color.shadow[status].focused};
+              padding-left: calc(
+                ${cmpTokens.multiValueContainer.space.padding.hor.isSubtle} -
+                  0.2rem
+              );
+            }
           `}
         >
           ({values.length})
