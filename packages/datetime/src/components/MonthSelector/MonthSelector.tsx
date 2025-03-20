@@ -7,10 +7,10 @@ import {
   setMonth,
 } from 'date-fns';
 
-import { Button } from '@devoinc/genesys-ui';
+import { Button, TButtonSize } from '@devoinc/genesys-ui';
 
 export interface MonthSelectorProps {
-  /** Function called when change the currently month date. */
+  /** Function called when change the current month date. */
   onChange?: (ts: number) => void;
   /** Value. One of `number` or `Date`. */
   value?: Date | number;
@@ -18,6 +18,8 @@ export interface MonthSelectorProps {
   maxDate?: number | Date;
   /** The earliest month to accept. One of `number` or `Date`. */
   minDate?: number | Date;
+  /** The size for each selection button of the list. */
+  size?: TButtonSize;
 }
 
 export const MonthSelector: React.FC<MonthSelectorProps> = ({
@@ -25,6 +27,7 @@ export const MonthSelector: React.FC<MonthSelectorProps> = ({
   minDate,
   maxDate,
   onChange,
+  size = 'sm',
 }) =>
   eachMonthOfInterval({
     start: setMonth(value, 0),
@@ -46,6 +49,7 @@ export const MonthSelector: React.FC<MonthSelectorProps> = ({
       onClick={() => {
         onChange(month.valueOf());
       }}
+      size={size}
     >
       {format(month, 'MMM')}
     </Button>

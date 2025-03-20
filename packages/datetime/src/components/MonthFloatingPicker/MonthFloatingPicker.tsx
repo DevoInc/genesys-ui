@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 import {
   addMonths,
   format,
@@ -23,20 +24,25 @@ import {
   PopoverProps,
 } from '@devoinc/genesys-ui';
 
-import { GIAngleLeft, GIAngleRight } from '@devoinc/genesys-icons';
 import { defaultMonthFloatingPickerI18n } from './i18n';
-import { useMergeI18n } from '../../hooks';
 import { TMonthFloatingPickerI18n } from './declarations';
+import { useMergeI18n } from '../../hooks';
+
+import { GIAngleLeft, GIAngleRight } from '@devoinc/genesys-icons';
 import { YearSelector } from '../YearSelector';
 import { YearSelectorInline } from '../YearSelectorInline';
 import { MonthSelector } from '../MonthSelector';
+import {
+  MONTH_YEAR_SELECTORS_SIZE_MAP,
+  PANEL_HEIGHT_SIZE_MAP,
+  PANEL_WIDTH_SIZE_MAP,
+} from './constants';
 
 export interface MonthFloatingPickerProps
   extends Pick<
       PopoverProps,
       'appendTo' | 'isOpened' | 'placement' | 'onClose' | 'disableOutsideEvent'
     >,
-    Pick<IGlobalAttrs, 'id'>,
     IDataAttrs,
     IStyledOverloadCss,
     IStyledPolymorphic {
@@ -46,7 +52,9 @@ export interface MonthFloatingPickerProps
   hasPrevMonthButton?: boolean;
   /** Show the next month button. */
   hasNextMonthButton?: boolean;
-  /** Function called when change the currently month date. */
+  /** ID for the component which is used to define the relation between the trigger and popover. */
+  id: IGlobalAttrs['id'];
+  /** Function called when change the current month date. */
   onChange?: (ts: number) => void;
   /** The size of the different elements of the Month: inputs, buttons... etc. */
   size?: TFieldSize;
@@ -63,24 +71,24 @@ export interface MonthFloatingPickerProps
 const nowDate = new Date();
 
 export const MonthFloatingPicker: React.FC<MonthFloatingPickerProps> = ({
-  i18n: userI18n = defaultMonthFloatingPickerI18n,
-  as,
   appendTo,
-  isOpened,
+  as,
+  closeAfterSelect = true,
   disableOutsideEvent = false,
-  placement = 'bottom-start',
-  onClose,
-  hasPrevMonthButton = true,
   hasNextMonthButton = true,
+  hasPrevMonthButton = true,
+  i18n: userI18n = defaultMonthFloatingPickerI18n,
   id,
+  isOpened,
   maxDate = endOfMonth(nowDate),
   minDate = startOfMonth(subMonths(nowDate, 24)),
-  value = nowDate,
   onChange = () => null,
+  onClose,
+  placement = 'bottom-start',
   size = 'md',
-  yearSelectorInline = false,
-  closeAfterSelect = true,
   style,
+  value = nowDate,
+  yearSelectorInline = false,
   ...dataProps
 }) => {
   const i18n = useMergeI18n(
@@ -92,6 +100,8 @@ export const MonthFloatingPicker: React.FC<MonthFloatingPickerProps> = ({
   const valueDate = new Date(value);
   const valuePrevMonth = subMonths(value, 1);
   const valueNextMonth = addMonths(value, 1);
+  const popoverId = `${id}__popover`;
+  const theme = useTheme();
 
   return (
     <HFlex
@@ -131,32 +141,42 @@ export const MonthFloatingPicker: React.FC<MonthFloatingPickerProps> = ({
           }
         }}
       >
-        {({ ref, setOpened }) => (
+        {({ ref, isOpened, setOpened }) => (
           <Button
             ref={ref}
+            aria-controls={popoverId}
+            aria-expanded={isOpened}
             aria-label={i18n.inputMonth}
-            id={id}
+            id={`${id}__trigger`}
             colorScheme={'quiet'}
             onClick={() => {
               setState(yearSelectorInline ? 'month' : 'year');
               setOpened(true);
             }}
+            size={size}
+            state={isOpened ? 'expanded' : undefined}
           >
             {format(value, 'MMM yyyy')}
           </Button>
         )}
         {({ setOpened }) =>
           state !== 'idle' && (
-            <Panel
-              width={'210px'}
-              height={yearSelectorInline ? '200px' : '160px'}
+            <Popover.Panel
+              maxWidth={null}
+              minWidth={null}
+              padding="0"
+              width={!yearSelectorInline && PANEL_WIDTH_SIZE_MAP[size]}
+              maxHeight={!yearSelectorInline && PANEL_HEIGHT_SIZE_MAP[size]}
             >
               <Panel.Body
+                padding="cmp-xs"
                 removeSpace={true}
                 hasScrollSpacing={false}
-                padding={'cmp-xs'}
               >
-                <Grid gridTemplateColumns={'1fr 1fr 1fr'} gap={'1rem'}>
+                <Grid
+                  gridTemplateColumns={'1fr 1fr 1fr'}
+                  gap={theme.alias.space.cmp.xs}
+                >
                   {state === 'year' ? (
                     <YearSelector
                       minDate={minDate}
@@ -166,6 +186,7 @@ export const MonthFloatingPicker: React.FC<MonthFloatingPickerProps> = ({
                         onChange(newValue);
                         setState('month');
                       }}
+                      size={MONTH_YEAR_SELECTORS_SIZE_MAP[size]}
                     />
                   ) : (
                     <>
@@ -179,6 +200,7 @@ export const MonthFloatingPicker: React.FC<MonthFloatingPickerProps> = ({
                             }}
                             minDate={minDate}
                             maxDate={maxDate}
+                            size={size}
                           />
                         </Grid.Item>
                       )}
@@ -193,12 +215,13 @@ export const MonthFloatingPicker: React.FC<MonthFloatingPickerProps> = ({
                             setOpened(false);
                           }
                         }}
+                        size={MONTH_YEAR_SELECTORS_SIZE_MAP[size]}
                       />
                     </>
                   )}
                 </Grid>
               </Panel.Body>
-            </Panel>
+            </Popover.Panel>
           )
         }
       </Popover>

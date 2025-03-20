@@ -2,8 +2,11 @@ import * as React from 'react';
 import { addYears, clamp, getYear, isWithinInterval, subYears } from 'date-fns';
 
 import { GIAngleLeft, GIAngleRight } from '@devoinc/genesys-icons';
-import { HFlex, IconButton } from '@devoinc/genesys-ui';
-import type { TYearSelectorInlineI18n } from './declarations';
+import { HFlex, IconButton, Typography } from '@devoinc/genesys-ui';
+import {
+  TYearSelectorInlineI18n,
+  TYearSelectorInlineSize,
+} from './declarations';
 
 export interface YearSelectorInlineProps {
   /** Value. One of `number` or `Date`. */
@@ -16,6 +19,8 @@ export interface YearSelectorInlineProps {
   onChange?: (ts: number) => void;
   /** Internacionalization object */
   i18n?: TYearSelectorInlineI18n;
+  /** The size for each prev/next icon button and the year text. */
+  size?: TYearSelectorInlineSize;
 }
 
 export const YearSelectorInline: React.FC<YearSelectorInlineProps> = ({
@@ -24,6 +29,7 @@ export const YearSelectorInline: React.FC<YearSelectorInlineProps> = ({
   onChange,
   minDate,
   maxDate,
+  size = 'md',
 }) => (
   <HFlex justifyContent="center" spacing="cmp-sm">
     <IconButton
@@ -36,7 +42,7 @@ export const YearSelectorInline: React.FC<YearSelectorInlineProps> = ({
           clamp(subYears(value, 1), { start: minDate, end: maxDate }).valueOf(),
         );
       }}
-      size={'md'}
+      size={size}
       state={
         isWithinInterval(
           clamp(subYears(value, 1), { start: minDate, end: maxDate }),
@@ -50,7 +56,9 @@ export const YearSelectorInline: React.FC<YearSelectorInlineProps> = ({
       }
       tooltip={i18n.prevYear}
     />
-    {getYear(value)}
+    <Typography.Paragraph size={size} colorScheme="strong">
+      {getYear(value)}
+    </Typography.Paragraph>
     <IconButton
       aria-label={i18n.nextYear}
       colorScheme={'quiet'}
@@ -61,7 +69,7 @@ export const YearSelectorInline: React.FC<YearSelectorInlineProps> = ({
           clamp(addYears(value, 1), { start: minDate, end: maxDate }).valueOf(),
         );
       }}
-      size={'md'}
+      size={size}
       state={
         isWithinInterval(
           clamp(addYears(value, 1), { start: minDate, end: maxDate }),

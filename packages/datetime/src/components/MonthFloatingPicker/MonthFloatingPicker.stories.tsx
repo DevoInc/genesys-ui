@@ -4,15 +4,28 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { MonthFloatingPicker } from './MonthFloatingPicker';
 
+const nowDate = new Date();
+
 const meta: Meta<typeof MonthFloatingPicker> = {
   title: 'Components/Datetime/MonthFloatingPicker',
   component: MonthFloatingPicker,
+  args: {
+    closeAfterSelect: true,
+    disableOutsideEvent: false,
+    hasPrevMonthButton: true,
+    hasNextMonthButton: true,
+    maxDate: endOfMonth(nowDate),
+    minDate: startOfMonth(subMonths(nowDate, 24)),
+    onChange: () => null,
+    placement: 'bottom-start',
+    size: 'md',
+    value: nowDate,
+    yearSelectorInline: false,
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof MonthFloatingPicker>;
-
-const nowDate = new Date();
 
 export const Playground: Story = {
   args: {
