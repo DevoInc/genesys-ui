@@ -43,17 +43,16 @@ export interface MonthFloatingPickerProps
       PopoverProps,
       'appendTo' | 'isOpened' | 'placement' | 'onClose' | 'disableOutsideEvent'
     >,
+    Pick<IGlobalAttrs, 'id'>,
     IDataAttrs,
     IStyledOverloadCss,
     IStyledPolymorphic {
-  /** Internacionalization object */
+  /** Internationalization object */
   i18n?: TMonthFloatingPickerI18n;
   /** Show the prev month button. */
   hasPrevMonthButton?: boolean;
   /** Show the next month button. */
   hasNextMonthButton?: boolean;
-  /** ID for the component which is used to define the relation between the trigger and popover. */
-  id: IGlobalAttrs['id'];
   /** Function called when change the current month date. */
   onChange?: (ts: number) => void;
   /** The size of the different elements of the Month: inputs, buttons... etc. */
@@ -100,7 +99,7 @@ export const MonthFloatingPicker: React.FC<MonthFloatingPickerProps> = ({
   const valueDate = new Date(value);
   const valuePrevMonth = subMonths(value, 1);
   const valueNextMonth = addMonths(value, 1);
-  const popoverId = `${id}__popover`;
+  const popoverId = id ? `${id}__popover` : null;
   const theme = useTheme();
 
   return (
@@ -132,7 +131,7 @@ export const MonthFloatingPicker: React.FC<MonthFloatingPickerProps> = ({
       <Popover
         appendTo={appendTo}
         disableOutsideEvent={disableOutsideEvent}
-        id={`${id}__popover`}
+        id={popoverId}
         isOpened={isOpened}
         placement={placement}
         onClose={() => {
@@ -147,7 +146,7 @@ export const MonthFloatingPicker: React.FC<MonthFloatingPickerProps> = ({
             aria-controls={popoverId}
             aria-expanded={isOpened}
             aria-label={i18n.inputMonth}
-            id={`${id}__trigger`}
+            id={id ? `${id}__trigger` : null}
             colorScheme={'quiet'}
             onClick={() => {
               setState(yearSelectorInline ? 'month' : 'year');
