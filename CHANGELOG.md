@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.19.1](https://github.com/DevoInc/genesys-ui/compare/v17.19.0...v17.19.1) (2025-03-24)
+
+### Bug Fixes
+
+* **datetime:** update parseRange calls to use parsed date results ([5186e5c](https://github.com/DevoInc/genesys-ui/commit/5186e5c518aa9ce243942fc09b11c8eca7491a99))
+
 ## [17.19.0](https://github.com/DevoInc/genesys-ui/compare/v17.18.1...v17.19.0) (2025-03-21)
 
 ### Features
