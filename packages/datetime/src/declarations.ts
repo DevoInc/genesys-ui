@@ -31,7 +31,7 @@ export interface IParseRangeResult {
 
 export type TParseDate = (date: TDate) => IParseResult;
 export type TParseCalendarDate = (date: TCalendarDate) => IParseResult;
-export type TParseRange = (range: TDateRange) => IParseRangeResult;
+export type TParseRange = (range: IParseResult[]) => IParseRangeResult;
 // TODO: use TFormatDate
 export type TReprDate = (date: TDate) => string;
 export type TFormatDate = (date: TDate) => string;
