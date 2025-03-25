@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { lastDayOfMonth as lastDayOfMonthFNS } from 'date-fns';
+import { tz as tzFn } from '@date-fns/tz';
 
 import {
   getClassNameFromProperties,
@@ -91,6 +92,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
   'aria-label': ariaLabel,
   'aria-labelledby': ariaLabelledby,
   as,
+  tz = Intl.DateTimeFormat().resolvedOptions().timeZone,
   dateRepr = defaultDateRepr,
   errorsRepr = defaultErrorsRepr,
   minDate,
@@ -101,8 +103,29 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
 }) => {
   const i18n = useMergeI18n(userI18n, defaultCalendarI18n) as TCalendarI18n;
   const theme = useTheme();
-  const customHoverDay = toTimestamp(mouseHoverDay);
-  const lastDayOfMonth = lastDayOfMonthFNS(monthDate).getTime();
+  const customHoverDay = React.useMemo(
+    () => toTimestamp(mouseHoverDay),
+    [mouseHoverDay],
+  );
+  const lastDayOfMonth = React.useMemo(
+    () =>
+      lastDayOfMonthFNS(monthDate, {
+        in: tzFn(tz),
+      }).getTime(),
+    ['monthDate'],
+  );
+  const rotatedWeekDays = React.useMemo(
+    () => rotateWeekDays(weekDays, weekStart),
+    [weekDays, weekStart],
+  );
+  const prevDays = React.useMemo(
+    () => Array(getPrevDays(monthDate, weekStart, tz)).fill(null),
+    [monthDate, weekStart, tz],
+  );
+  const monthDays = React.useMemo(
+    () => getMonthDays(monthDate, tz),
+    [monthDate, tz],
+  );
 
   const [hoverDay, setHoverDay] = React.useState<number>(null);
 
@@ -146,15 +169,13 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
       minWidth={theme.cmp.calendar.size.minWidth}
       style={style}
     >
-      {rotateWeekDays(weekDays, weekStart).map((day) => (
+      {rotatedWeekDays.map((day) => (
         <CalendarWeekDay key={day} value={day} />
       ))}
-      {Array(getPrevDays(monthDate, weekStart))
-        .fill(null)
-        .map((_, idx) => (
-          <div key={`prev${idx}`} />
-        ))}
-      {getMonthDays(monthDate)
+      {prevDays.map((_, idx) => (
+        <div key={`prev${idx}`} />
+      ))}
+      {monthDays
         .map(
           getDayProperties(
             getFrom(value),
@@ -173,6 +194,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
           const classes = getClassNameFromProperties(dayProps);
           return (
             <Cell
+              selected={classes['selected'] ?? false}
               key={`day${dayProps.ts}`}
               className={`dayName ${classes.join(' ')}`}
               onClick={onClick}

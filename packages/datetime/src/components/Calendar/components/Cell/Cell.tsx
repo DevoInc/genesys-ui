@@ -19,6 +19,7 @@ export interface CellProps {
   tooltip?: string;
   disabled?: boolean;
   label: string;
+  selected?: boolean;
 }
 
 export const Cell: React.FC<CellProps> = ({
@@ -31,6 +32,7 @@ export const Cell: React.FC<CellProps> = ({
   tooltip,
   disabled = false,
   label,
+  selected = false,
 }) => (
   <StyledCalendarCell
     onClick={
@@ -55,7 +57,7 @@ export const Cell: React.FC<CellProps> = ({
         : null
     }
     aria-label={label}
-    aria-selected={className && className.includes('selected') ? true : null}
+    aria-selected={selected}
     aria-disabled={disabled}
     className={`day ${className}`}
     data-cell={value}

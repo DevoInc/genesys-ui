@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { isWeekend, getDate, set } from 'date-fns';
+import { tz as tzFn, TZDate } from '@date-fns/tz';
 
 import { Calendar } from './Calendar';
 import { useCalendarRange, useCalendarSingle } from './hooks';
@@ -13,7 +14,7 @@ const meta: Meta<typeof Calendar> = {
 export default meta;
 type Story = StoryObj<typeof Calendar>;
 
-const now = new Date(2024, 5, 1);
+const now = new TZDate(2024, 5, 1);
 const singleValue = [set(now, { date: 10 })];
 const rangeValue = [set(now, { date: 10 }), set(now, { date: 20 })];
 
@@ -21,6 +22,21 @@ export const Playground: Story = {
   args: {
     monthDate: now,
     value: rangeValue,
+  },
+};
+
+const tz = 'UTC-10:00';
+const nowTZ = new TZDate(2024, 5, 1, tz);
+const rangeValueTZ = [
+  set(nowTZ, { date: 10 }, { in: tzFn(tz) }),
+  set(nowTZ, { date: 20 }, { in: tzFn(tz) }),
+];
+export const Timezone: Story = {
+  tags: ['isHidden'],
+  args: {
+    monthDate: nowTZ,
+    value: rangeValueTZ,
+    tz,
   },
 };
 
@@ -34,11 +50,12 @@ export const Single: Story = {
 
 export const ParseDate: Story = {
   tags: ['isHidden'],
-  render: () => {
+  render: (props) => {
     const { hasLeftHoverEffect, hasRightHoverEffect, range, handleNewDate } =
       useCalendarRange(rangeValue);
     return (
       <Calendar
+        {...props}
         monthDate={now}
         value={range}
         hasLeftHoverEffect={hasLeftHoverEffect}
@@ -63,11 +80,12 @@ export const ParseDate: Story = {
 
 export const MinMaxDate: Story = {
   tags: ['isHidden'],
-  render: () => {
+  render: (props) => {
     const { hasLeftHoverEffect, hasRightHoverEffect, range, handleNewDate } =
       useCalendarRange(rangeValue);
     return (
       <Calendar
+        {...props}
         monthDate={now}
         value={range}
         hasLeftHoverEffect={hasLeftHoverEffect}
