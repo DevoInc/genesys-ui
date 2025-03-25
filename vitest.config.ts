@@ -1,10 +1,9 @@
 import react from '@vitejs/plugin-react';
-import { coverageConfigDefaults, ViteUserConfig } from 'vitest/config';
+import { defineConfig } from 'vitest/config';
+import { coverageConfigDefaults } from 'vitest/config';
+import { resolve } from 'node:path';
 
-export const vitestConfig: ViteUserConfig = {
-  // Here is the plugin for React that allow us to use the babel plugin for
-  // styled-components and test the CSS prop output properly
-  // https://styled-components.com/docs/tooling#babel-plugin
+export default defineConfig({
   plugins: [
     react({
       babel: {
@@ -23,8 +22,6 @@ export const vitestConfig: ViteUserConfig = {
     }),
   ],
   test: {
-    environment: 'happy-dom',
-    include: ['{src,stories}/**/*.test.ts?(x)'],
     coverage: {
       provider: 'v8',
       include: ['{src,stories}/**/*'],
@@ -34,5 +31,12 @@ export const vitestConfig: ViteUserConfig = {
         '**/*.stories.tsx',
       ],
     },
+    include: ['{src,stories}/**/*.test.ts?(x)'],
+    name: 'datetime',
+    root: 'packages/datetime',
+    environment: 'happy-dom',
+    alias: {
+      '@test': resolve(__dirname, './test/test-utils.tsx'),
+    },
   },
-};
+});

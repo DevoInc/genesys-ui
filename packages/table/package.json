@@ -4,7 +4,6 @@
   "description": "Genesys composable table",
   "type": "module",
   "scripts": {
-    "test": "vitest",
     "build": "tsup",
     "dpdm": "dpdm --exit-code circular:1 ./src/index.ts"
   },
