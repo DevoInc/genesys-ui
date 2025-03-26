@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { addYears, clamp, getYear, isWithinInterval, subYears } from 'date-fns';
+import { addYears, clamp, getYear, subYears } from 'date-fns';
 
 import { GIAngleLeft, GIAngleRight } from '@devoinc/genesys-icons';
 import { HFlex, IconButton, Typography } from '@devoinc/genesys-ui';
@@ -44,13 +44,7 @@ export const YearSelectorInline: React.FC<YearSelectorInlineProps> = ({
       }}
       size={size}
       state={
-        isWithinInterval(
-          clamp(subYears(value, 1), { start: minDate, end: maxDate }),
-          {
-            start: minDate,
-            end: maxDate,
-          },
-        )
+        subYears(value, 1).getFullYear() >= getYear(minDate)
           ? 'enabled'
           : 'disabled'
       }
@@ -71,13 +65,7 @@ export const YearSelectorInline: React.FC<YearSelectorInlineProps> = ({
       }}
       size={size}
       state={
-        isWithinInterval(
-          clamp(addYears(value, 1), { start: minDate, end: maxDate }),
-          {
-            start: minDate,
-            end: maxDate,
-          },
-        )
+        addYears(value, 1).getFullYear() <= getYear(maxDate)
           ? 'enabled'
           : 'disabled'
       }
