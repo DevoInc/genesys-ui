@@ -45,7 +45,7 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
     const iconSpace = menuItemSizeConfig(theme).iconSpace;
     const focusedStyles = css`
       ${menuItemBackdropMixin({ tokens, state: 'focused' })};
-      box-shadow: inset ${tokens.elevation.boxShadow.focused};
+      box-shadow: ${tokens.elevation.boxShadow.focused};
       outline: none;
     `;
     return css`

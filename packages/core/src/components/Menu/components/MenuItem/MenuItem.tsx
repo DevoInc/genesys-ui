@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import type {
+  IDragDropEventAttrs,
   IFieldEventAttrs,
   TSelectionScheme,
 } from '../../../../declarations';
@@ -19,7 +20,8 @@ import { StyledHiddenInput } from '../../../../styled/';
 
 export interface MenuItemProps
   extends Omit<MenuItemContainerProps, 'children' | 'isItem'>,
-    IFieldEventAttrs {
+    IFieldEventAttrs,
+    IDragDropEventAttrs {
   /** Custom content to be rendered at the end all to the right of the item. */
   appendContent?: React.ReactNode;
   /** Custom content to be rendered at the bottom of the item. */
@@ -139,20 +141,13 @@ export const InternalMenuItem = React.forwardRef<
         {children || (
           <>
             <VFlex
-              as="span"
               flex="1"
               justifyContent="center"
               childrenFitFullWidth
               spacing="0"
               minWidth="0"
             >
-              <HFlex
-                as="span"
-                flex="1"
-                alignItems="center"
-                minWidth="0"
-                spacing="cmp-xs"
-              >
+              <HFlex flex="1" alignItems="center" minWidth="0" spacing="cmp-xs">
                 {(icon || isSelected) && getHasExtraLeftSpace() && (
                   <MenuItem._Icon>
                     {isSelected ? <GICheckThick /> : icon}

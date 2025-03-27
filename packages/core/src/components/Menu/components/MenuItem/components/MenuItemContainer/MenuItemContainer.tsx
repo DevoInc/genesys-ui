@@ -54,6 +54,7 @@ export const MenuItemContainer = React.forwardRef<
       hasExtraLeftSpace,
       unlimitedHeight,
       state,
+      style,
       ...restMenuItemContainerProps
     },
     ref,
@@ -65,6 +66,7 @@ export const MenuItemContainer = React.forwardRef<
         $hasExtraLeftSpace={hasExtraLeftSpace}
         $unlimitedHeight={unlimitedHeight}
         $state={state}
+        css={style}
       >
         {children}
       </StyledMenuItemInner>
