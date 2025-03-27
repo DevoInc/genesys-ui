@@ -180,13 +180,11 @@ export const InternalButton = React.forwardRef<
         {hasBadge && (
           <ButtonBadge
             colorScheme={
-              colorScheme === 'accent-high'
-                ? 'primary'
-                : colorScheme === 'accent'
-                  ? 'secondary'
-                  : colorScheme === 'quiet'
-                    ? 'neutral'
-                    : (colorScheme as TUIColorScheme)
+              colorScheme === 'accent-high' ||
+              colorScheme === 'accent' ||
+              colorScheme === 'quiet'
+                ? 'neutral'
+                : (colorScheme as TUIColorScheme)
             }
             hasCircularParent={circular}
             id={id}
