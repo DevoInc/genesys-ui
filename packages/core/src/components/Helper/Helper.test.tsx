@@ -12,7 +12,7 @@ const TEST_ID = 'helper';
 describe('Helper', () => {
   test('Passing a string as message', () => {
     render(<Helper data-testid={TEST_ID} message={MESSAGE_STRING} />);
-    expect(screen.getAllByTestId(TEST_ID)[0].children[0].tagName).toBe('P');
+    expect(screen.getAllByTestId(TEST_ID)[0].children[0].tagName).toBe('DIV');
     expect(screen.getAllByTestId(TEST_ID)[0].children[0].innerHTML).toBe(
       MESSAGE_STRING,
     );
@@ -27,7 +27,7 @@ describe('Helper', () => {
 
   test('Passing null as message', () => {
     render(<Helper data-testid={TEST_ID} message={null} />);
-    expect(screen.getAllByTestId(TEST_ID)[0].children[0].tagName).toBe('P');
+    expect(screen.getAllByTestId(TEST_ID)[0].children[0].tagName).toBe('DIV');
     expect(screen.getAllByTestId(TEST_ID)[0].children[0].innerHTML).toBe('');
   });
 

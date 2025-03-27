@@ -1,5 +1,23 @@
 # Changelog
 
+## [17.19.1](https://github.com/DevoInc/genesys-ui/compare/v17.19.0...v17.19.1) (2025-03-24)
+
+### Bug Fixes
+
+* **datetime:** update parseRange calls to use parsed date results ([5186e5c](https://github.com/DevoInc/genesys-ui/commit/5186e5c518aa9ce243942fc09b11c8eca7491a99))
+
+## [17.19.0](https://github.com/DevoInc/genesys-ui/compare/v17.18.1...v17.19.0) (2025-03-21)
+
+### Features
+
+* **MonthFloatingPicker:** Visual and a11y adjustments for the component and its internal ones. ([cf0b719](https://github.com/DevoInc/genesys-ui/commit/cf0b7199a5c575e029928a27c9b3ad20f0afc188))
+
+### Bug Fixes
+
+* **DateTimeRangeFloatingPicker:** The clickable area for closing the dropdown is now reduced only to the Input. ([ed20df5](https://github.com/DevoInc/genesys-ui/commit/ed20df5e46ae200e8a5372d97e9e0e611fe84281))
+* **MonthFloatingPicker:** prop id not required. ([6dd6735](https://github.com/DevoInc/genesys-ui/commit/6dd6735d412c5b6fa9ebb66fce7be02a81635bd6))
+* **SelectControl:** Avoid overlapping of the selection counter with the inset focused box-shadow in subtle variant. ([c2f1c92](https://github.com/DevoInc/genesys-ui/commit/c2f1c92176c84d9b879a064ac3a3ef6596eadce2))
+
 ## [17.18.1](https://github.com/DevoInc/genesys-ui/compare/v17.18.0...v17.18.1) (2025-03-18)
 
 ### Bug Fixes

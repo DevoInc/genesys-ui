@@ -11,10 +11,17 @@ describe('rotateWeekDays', () => {
       ['3', '4', '1', '2'],
     ],
     [
-      'arrar of four elements rotated to 0 position',
+      'array of four elements rotated to 0 position',
       ['1', '2', '3', '4'],
       0,
       ['1', '2', '3', '4'],
+    ],
+    ['empty array rotated 3 position', [], 3, []],
+    [
+      'array of four elements rotated to -1 position',
+      ['1', '2', '3', '4'],
+      -1,
+      ['4', '1', '2', '3'],
     ],
   ];
 

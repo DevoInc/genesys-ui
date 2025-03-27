@@ -7,7 +7,7 @@ import { BannerContent } from './BannerContent';
 describe('BannerContent', () => {
   test('Simple render with children being text', () => {
     const { container } = render(<BannerContent>{'Hello'}</BannerContent>);
-    expect(container.getElementsByTagName('p')[0]).toBeInTheDocument();
+    expect(container.getElementsByTagName('div')[0]).toBeInTheDocument();
   });
 
   test('Simple render with children being a React element', () => {

@@ -1,10 +1,9 @@
 {
   "name": "@devoinc/genesys-ui-datetime",
-  "version": "17.18.1",
+  "version": "17.19.1",
   "description": "",
   "type": "module",
   "scripts": {
-    "test": "vitest",
     "build": "tsup",
     "dpdm": "dpdm --exit-code circular:1 ./src/index.ts"
   },
@@ -31,7 +30,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@devoinc/genesys-icons": "4.x || 5.x || 6.x",
-    "@devoinc/genesys-ui": "^17.18.1",
+    "@devoinc/genesys-ui": "^17.19.1",
     "date-fns": ">=4.0",
     "react": ">=17.0",
     "react-popper": "2.x",

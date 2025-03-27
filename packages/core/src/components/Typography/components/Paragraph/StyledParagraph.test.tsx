@@ -8,7 +8,7 @@ describe('StyledTypography', () => {
   test('StyledParagraph renders with default styles', () => {
     const { container } = render(<StyledParagraph>{'Hello'}</StyledParagraph>);
 
-    expect(container.getElementsByTagName('p')[0]).toHaveStyle(`
+    expect(container.getElementsByTagName('div')[0]).toHaveStyle(`
         display: block;
     `);
   });

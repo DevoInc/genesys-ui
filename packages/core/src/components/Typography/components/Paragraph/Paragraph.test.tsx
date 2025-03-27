@@ -10,7 +10,7 @@ describe('components', () => {
       const { container } = render(
         <Paragraph tooltip={'tooltip'}>{'Hello'}</Paragraph>,
       );
-      expect(container.getElementsByTagName('p')[0]).toBeInTheDocument();
+      expect(container.getElementsByTagName('div')[0]).toBeInTheDocument();
       expect(screen.getByTitle('tooltip')).toBeInTheDocument();
     });
   });

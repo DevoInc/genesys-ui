@@ -37,7 +37,7 @@ export const useDateTimeRangeInputValidation = ({
 }) => {
   const [{ inputValue, errors, rangeErrors }, setState] = React.useState(() => {
     const parseDatesResult = value.map((x) => parseDate(x));
-    const parseRangeResult = parseRange(value);
+    const parseRangeResult = parseRange(parseDatesResult);
     return {
       inputValue: parseDatesResult.map((x) => reprDate(x.value)),
       errors: parseDatesResult.map((x) => x.errors),
@@ -49,7 +49,10 @@ export const useDateTimeRangeInputValidation = ({
     const result = parseDate(newValue);
     const newInputValue = setter(inputValue, index, newValue) as string[];
     const newRange = setter(value, index, result.value) as number[];
-    const parseRangeResult = parseRange(newRange);
+    const parseRangeResult = parseRange([
+      parseDate(newRange[0]),
+      parseDate(newRange[1]),
+    ]);
     if (result.isValid && parseRangeResult.isValid) {
       onChange(newRange);
     }
@@ -67,7 +70,7 @@ export const useDateTimeRangeInputValidation = ({
       rangeStr.length !== len
     ) {
       const results = range.map((x) => parseDate(x));
-      const parseRangeResult = parseRange(range);
+      const parseRangeResult = parseRange(results);
       setState({
         inputValue: rangeStr,
         errors: Array.from({ length: len }).map(

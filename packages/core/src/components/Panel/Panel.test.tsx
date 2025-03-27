@@ -24,7 +24,7 @@ describe('Panel', () => {
     );
     const panelContainer = container.getElementsByTagName('div')[0];
     expect(panelContainer.getElementsByTagName('header')).toHaveLength(1);
-    expect(panelContainer.getElementsByTagName('div')).toHaveLength(1);
+    expect(panelContainer.getElementsByTagName('div')).toHaveLength(2);
     expect(panelContainer.getElementsByTagName('footer')).toHaveLength(1);
   });
 });

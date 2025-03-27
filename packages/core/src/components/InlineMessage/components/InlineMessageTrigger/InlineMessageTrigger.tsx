@@ -21,10 +21,7 @@ import type {
   IDataAttrs,
   IGlobalAttrs,
 } from '../../../../declarations/htmlAttrs';
-import type {
-  IMouseEventAttrs,
-  ITriggerEventAttrs,
-} from '../../../../declarations/htmlEventAttrs';
+import type { IMouseEventAttrs } from '../../../../declarations/htmlEventAttrs';
 import {
   inlineMessageTriggerMixin,
   inlineMessageTriggerParagraphMixin,
