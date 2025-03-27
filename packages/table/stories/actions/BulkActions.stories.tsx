@@ -3,11 +3,12 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import {
   Button,
-  Flex,
+  ButtonGroup,
   Menu,
   Panel,
   Popover,
   Typography,
+  VFlex,
 } from '@devoinc/genesys-ui';
 
 import {
@@ -59,8 +60,8 @@ const BulkExample = () => {
 
   const popoverId = 'bulk-actions-menu-nested';
   return (
-    <Flex flexDirection="column" gap="cmp-md">
-      <Flex.Item>
+    <VFlex>
+      <ButtonGroup alignSelf="flex-start">
         <Button
           onClick={() => {
             setData((prev) => [
@@ -84,67 +85,70 @@ const BulkExample = () => {
         >
           Empty data
         </Button>
-      </Flex.Item>
-      <Flex.Item>
-        <BasicTable
-          id={'tableBUlkActionStorie'}
-          data={data}
-          colDefs={[
-            {
-              id: 'bulk',
-              preset: 'bulk',
-              context: {
-                headerDisabled: data.length === 0,
-                headerBulkMenu:
-                  bulkSelection.length > 0
-                    ? ({ setOpened }) => {
-                        return (
-                          <>
-                            <Panel.Header
-                              bordered
-                              size="sm"
-                              title={'Bulk actions'}
-                              appendContent={
-                                <Typography.Caption>
-                                  {bulkSelection.length} Selected
-                                </Typography.Caption>
-                              }
-                            />
-                            <Panel.Body size="xs">
-                              <Menu>
-                                <Menu.Item
-                                  onClick={() => {
-                                    setOpened(false);
-                                  }}
-                                >
-                                  Dummy action
-                                </Menu.Item>
-                                <Menu.Item>Dummy action 2</Menu.Item>
-                                <Popover placement="right-start" id={popoverId}>
-                                  {({ toggle, ref, isOpened, setOpened }) => (
-                                    <Menu.Item
-                                      aria-controls={popoverId}
-                                      aria-haspopup="true"
-                                      aria-expanded={isOpened}
-                                      ref={ref}
-                                      onClick={() => {
-                                        setOpened(true);
-                                      }}
-                                      onMouseLeave={toggle}
-                                      onMouseOver={() => {
-                                        setOpened(true);
-                                      }}
-                                      expandable
-                                      state={isOpened ? 'expanded' : undefined}
-                                    >
-                                      Danger actions
-                                    </Menu.Item>
-                                  )}
-                                  <Popover.Panel>
+      </ButtonGroup>
+      <BasicTable
+        id={'tableBUlkActionStorie'}
+        data={data}
+        showFilters={true}
+        colDefs={[
+          {
+            id: 'bulk',
+            preset: 'bulk',
+            context: {
+              headerDisabled: data.length === 0,
+              headerBulkMenu:
+                bulkSelection.length > 0
+                  ? ({ setOpened }) => {
+                      return (
+                        <>
+                          <Panel.Header
+                            bordered
+                            size="sm"
+                            title={'Bulk actions'}
+                            appendContent={
+                              <Typography.Caption>
+                                {bulkSelection.length} Selected
+                              </Typography.Caption>
+                            }
+                          />
+                          <Panel.Body size="xs">
+                            <Menu>
+                              <Menu.Item
+                                onClick={() => {
+                                  setOpened(false);
+                                }}
+                                label="Dummy action"
+                              />
+                              <Menu.Item label="Dummy action 2" />
+                              <Popover placement="right-start" id={popoverId}>
+                                {({ toggle, ref, isOpened, setOpened }) => (
+                                  <Menu.Item
+                                    aria-controls={popoverId}
+                                    aria-haspopup="true"
+                                    aria-expanded={isOpened}
+                                    ref={ref}
+                                    label="Danger actions"
+                                    onClick={() => {
+                                      setOpened(true);
+                                    }}
+                                    onMouseLeave={toggle}
+                                    onMouseOver={() => {
+                                      setOpened(true);
+                                    }}
+                                    expandable
+                                    state={isOpened ? 'expanded' : undefined}
+                                  />
+                                )}
+                                {({ setOpened }) => (
+                                  <Popover.Panel
+                                    onMouseLeave={() => setOpened(false)}
+                                    onMouseOver={() => setOpened(true)}
+                                  >
                                     <Menu>
-                                      <Menu.Item>Dummy action 1</Menu.Item>
-                                      <Menu.Item>Dummy action 2</Menu.Item>
+                                      <Menu.Item label="Dummy action 1" />
+                                      <Menu.Item label="Dummy action 2" />
                                       <Menu.Item
+                                        label="Remove row(s)"
                                         onClick={() => {
                                           setData((prev) =>
                                             prev.filter(
@@ -154,37 +158,35 @@ const BulkExample = () => {
                                           );
                                           clear();
                                         }}
-                                      >
-                                        Remove row(s)
-                                      </Menu.Item>
+                                      />
                                     </Menu>
                                   </Popover.Panel>
-                                </Popover>
-                              </Menu>
-                            </Panel.Body>
-                          </>
-                        );
-                      }
-                    : undefined,
-                bulkSelection,
-                bulkDisabled,
-                headerBulkChecked,
-                onBulkCheckboxChange: (rowIndex) => {
-                  toggle(rowIndex);
-                },
-                onHeaderBulkCheckboxChange: () => {
-                  toggleAll();
-                },
-              } as TBulkContext,
-            },
-            { id: 'text', cellRenderer: TextRenderer, headerName: 'Text' },
-            { id: 'num', cellRenderer: TextRenderer, headerName: 'Num' },
-            { id: 'bool', cellRenderer: BooleanRenderer, headerName: 'Bool' },
-            { id: 'text2', cellRenderer: TextRenderer, headerName: 'Text 2' },
-          ]}
-        />
-      </Flex.Item>
-    </Flex>
+                                )}
+                              </Popover>
+                            </Menu>
+                          </Panel.Body>
+                        </>
+                      );
+                    }
+                  : undefined,
+              bulkSelection,
+              bulkDisabled,
+              headerBulkChecked,
+              onBulkCheckboxChange: (rowIndex) => {
+                toggle(rowIndex);
+              },
+              onHeaderBulkCheckboxChange: () => {
+                toggleAll();
+              },
+            } as TBulkContext,
+          },
+          { id: 'text', cellRenderer: TextRenderer, headerName: 'Text' },
+          { id: 'num', cellRenderer: TextRenderer, headerName: 'Num' },
+          { id: 'bool', cellRenderer: BooleanRenderer, headerName: 'Bool' },
+          { id: 'text2', cellRenderer: TextRenderer, headerName: 'Text 2' },
+        ]}
+      />
+    </VFlex>
   );
 };
 

@@ -132,17 +132,16 @@ const BulkExample = () => {
                               onClick={() => {
                                 setOpened(false);
                               }}
-                            >
-                              Dummy action
-                            </Menu.Item>
-                            <Menu.Item>Dummy action 2</Menu.Item>
+                              label="Dummy action"
+                            />
+                            <Menu.Item label="Dummy action 2" />
                             <Popover placement="right-start" id={popoverId}>
                               {({ toggle, ref, isOpened, setOpened }) => (
                                 <Menu.Item
                                   aria-controls={popoverId}
                                   aria-haspopup="true"
-                                  aria-expanded={isOpened}
                                   ref={ref}
+                                  label="Danger actions"
                                   onClick={() => {
                                     setOpened(true);
                                   }}
@@ -152,29 +151,31 @@ const BulkExample = () => {
                                   }}
                                   expandable
                                   state={isOpened ? 'expanded' : undefined}
-                                >
-                                  Danger actions
-                                </Menu.Item>
+                                />
                               )}
-                              <Popover.Panel>
-                                <Menu>
-                                  <Menu.Item>Dummy action 1</Menu.Item>
-                                  <Menu.Item>Dummy action 2</Menu.Item>
-                                  <Menu.Item
-                                    onClick={() => {
-                                      setData((prev) =>
-                                        prev.filter(
-                                          (_, index) =>
-                                            !bulkSelection.includes(index),
-                                        ),
-                                      );
-                                      clear();
-                                    }}
-                                  >
-                                    Remove row(s)
-                                  </Menu.Item>
-                                </Menu>
-                              </Popover.Panel>
+                              {({ setOpened }) => (
+                                <Popover.Panel
+                                  onMouseLeave={() => setOpened(false)}
+                                  onMouseOver={() => setOpened(true)}
+                                >
+                                  <Menu>
+                                    <Menu.Item label="Dummy action 1" />
+                                    <Menu.Item label="Dummy action 2" />
+                                    <Menu.Item
+                                      label="Remove row(s)"
+                                      onClick={() => {
+                                        setData((prev) =>
+                                          prev.filter(
+                                            (_, index) =>
+                                              !bulkSelection.includes(index),
+                                          ),
+                                        );
+                                        clear();
+                                      }}
+                                    />
+                                  </Menu>
+                                </Popover.Panel>
+                              )}
                             </Popover>
                           </Menu>
                         </Panel.Body>
