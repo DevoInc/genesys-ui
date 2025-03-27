@@ -172,7 +172,7 @@ export const TableWrapper: React.FC = () => {
                 width={columnVirtualizer.getTotalSize()}
                 height={virtualRow.size}
                 start={virtualRow.start}
-                rowIndex={virtualRow.index + 1}
+                rowIndex={virtualRow.index}
               >
                 {rowDef?.cellRenderer ? (
                   <Cell
@@ -184,13 +184,13 @@ export const TableWrapper: React.FC = () => {
                       id: 'afterRow',
                       cellRenderer: rowDef.cellRenderer,
                     }}
-                    colIndex={1}
+                    colIndex={0}
                     data={null}
                     height={virtualRow.size}
                     key={`cell-0`}
                     offsetX={0}
                     row={rowData}
-                    rowIndex={virtualRow.index + 1}
+                    rowIndex={virtualRow.index}
                     rowDef={rowDef}
                     width={columnVirtualizer.getTotalSize()}
                   />
@@ -214,8 +214,8 @@ export const TableWrapper: React.FC = () => {
                           key={`cell-${colDef.id}`}
                           offsetX={virtualColumn?.start}
                           row={rowData}
-                          rowIndex={virtualRow.index + 1}
-                          colIndex={index + 1}
+                          rowIndex={virtualRow.index}
+                          colIndex={index}
                           rowDef={rowDef}
                           width={virtualColumn?.size}
                         />
