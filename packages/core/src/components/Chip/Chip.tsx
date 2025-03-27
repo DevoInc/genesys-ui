@@ -15,6 +15,7 @@ import {
   ChipContent,
   type ChipContentProps,
 } from './components/ChipContent/ChipContent';
+import { CHIP_ICON_SIZE_MAP } from './constants';
 
 export interface ChipProps
   extends IDataAttrs,
@@ -131,7 +132,7 @@ export const InternalChip: React.FC<ChipProps> = ({
         value={value}
       />
       {icon && (
-        <Chip._Icon strong={hasBoldIcon} size={size}>
+        <Chip._Icon strong={hasBoldIcon} size={CHIP_ICON_SIZE_MAP[size]}>
           {evalIcon}
         </Chip._Icon>
       )}

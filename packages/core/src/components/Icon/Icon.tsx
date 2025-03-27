@@ -2,11 +2,8 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { IconContext } from '@devoinc/genesys-icons';
 
-import type {
-  TAllColorScheme,
-  IGlobalAttrs,
-  TGlobalSize,
-} from '../../declarations';
+import type { TAllColorScheme, IGlobalAttrs } from '../../declarations';
+import type { TIconSize } from './declarations';
 
 import { getIconColor, getIconSize } from '../../helpers';
 
@@ -19,7 +16,7 @@ export interface IconProps extends Pick<IGlobalAttrs, 'tooltip'> {
    * one to maintain AA accessible contrast.*/
   colorScheme?: TAllColorScheme;
   /** This property defines the custom icon font size */
-  size?: string | TGlobalSize;
+  size?: TIconSize;
   /** If the icon has this property its font-weight changes to bold */
   strong?: boolean;
   /** Sometimes you don't want to create an extra component just to apply a bit
