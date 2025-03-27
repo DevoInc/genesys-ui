@@ -12,8 +12,25 @@ import type {
   IPanelCloseAttrs,
   IPanelHeadingAttrs,
 } from '../../../Panel/components/PanelHeader/declarations';
+import { BoxProps } from '../../../Box';
 
-interface InlineMessagePanelProps extends IStyledOverloadCss {
+interface InlineMessagePanelProps
+  extends IStyledOverloadCss,
+    Pick<
+      BoxProps,
+      | 'height'
+      | 'maxHeight'
+      | 'minHeight'
+      | 'maxWidth'
+      | 'minWidth'
+      | 'width'
+      | 'onMouseDown'
+      | 'onMouseLeave'
+      | 'onMouseMove'
+      | 'onMouseOut'
+      | 'onMouseOver'
+      | 'onMouseUp'
+    > {
   actions?: TPanelActions;
   children?: TPanelChildren;
   helpUrl?: IPanelHelpAttrs['helpUrl'];
@@ -29,28 +46,36 @@ interface InlineMessagePanelProps extends IStyledOverloadCss {
 export const InlineMessagePanel: React.FC<InlineMessagePanelProps> = ({
   actions,
   children,
+  height,
   helpUrl,
   icon,
   id,
+  maxHeight = '40rem',
+  maxWidth = '40rem',
+  minHeight,
+  minWidth = '30rem',
   onClose,
   onCloseTooltip,
   size,
   subtitle,
   style,
   title,
+  width = 'fit-content',
 }) => {
   const hasSimpleContent =
     typeof children === 'string' || typeof children === 'number';
   return (
     <Panel
       elevation={'ground'}
-      maxHeight="40rem"
+      height={height}
       id={id}
-      style={style}
-      width="fit-content"
-      minWidth="30rem"
-      maxWidth="40rem"
+      maxHeight={maxHeight}
+      maxWidth={maxWidth}
+      minHeight={minHeight}
+      minWidth={minWidth}
       size={size || (hasSimpleContent ? 'sm' : 'md')}
+      style={style}
+      width={width}
     >
       <Panel.Header
         bordered

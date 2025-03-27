@@ -21,7 +21,10 @@ import type {
   IDataAttrs,
   IGlobalAttrs,
 } from '../../../../declarations/htmlAttrs';
-import type { ITriggerEventAttrs } from '../../../../declarations/htmlEventAttrs';
+import type {
+  IMouseEventAttrs,
+  ITriggerEventAttrs,
+} from '../../../../declarations/htmlEventAttrs';
 import {
   inlineMessageTriggerMixin,
   inlineMessageTriggerParagraphMixin,
@@ -36,9 +39,9 @@ export interface InlineMessageTriggerProps
     Pick<
       ITriggerAriaAttrs,
       'aria-expanded' | 'aria-controls' | 'aria-haspopup'
-    > {
+    >,
+    IMouseEventAttrs {
   icon?: React.ReactNode;
-  onClick?: ITriggerEventAttrs['onClick'];
   size?: TButtonSize;
   state: TButtonExpandableState;
   status?: IconButtonStatusProps['colorScheme'];
@@ -61,6 +64,12 @@ export const InlineMessageTrigger = React.forwardRef<
       icon,
       id,
       onClick,
+      onMouseDown,
+      onMouseLeave,
+      onMouseMove,
+      onMouseOut,
+      onMouseOver,
+      onMouseUp,
       size = 'md',
       state = 'enabled',
       status,
@@ -78,6 +87,12 @@ export const InlineMessageTrigger = React.forwardRef<
       'aria-haspopup': ariaHasPopup,
       id,
       onClick: onClick,
+      onMouseDown: onMouseDown,
+      onMouseLeave: onMouseLeave,
+      onMouseMove: onMouseMove,
+      onMouseOut: onMouseOut,
+      onMouseOver: onMouseOver,
+      onMouseUp: onMouseUp,
       ref: ref,
       size: size,
       state,
@@ -95,6 +110,12 @@ export const InlineMessageTrigger = React.forwardRef<
           aria-haspopup={ariaHasPopup}
           id={id}
           onClick={onClick}
+          onMouseDown={onMouseDown}
+          onMouseLeave={onMouseLeave}
+          onMouseMove={onMouseMove}
+          onMouseOut={onMouseOut}
+          onMouseOver={onMouseOver}
+          onMouseUp={onMouseUp}
           ref={ref}
           state={state}
           type="button"
@@ -150,6 +171,12 @@ export const InlineMessageTrigger = React.forwardRef<
         icon={icon}
         id={id}
         onClick={onClick}
+        onMouseDown={onMouseDown}
+        onMouseLeave={onMouseLeave}
+        onMouseMove={onMouseMove}
+        onMouseOut={onMouseOut}
+        onMouseOver={onMouseOver}
+        onMouseUp={onMouseUp}
         ref={ref}
         size={size}
         state={state}
