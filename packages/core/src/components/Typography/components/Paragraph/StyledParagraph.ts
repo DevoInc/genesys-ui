@@ -13,7 +13,7 @@ export interface StyledParagraphProps {
   $size?: ITypography['bodySize'];
 }
 
-export const StyledParagraph = styled.p<StyledParagraphProps>`
+export const StyledParagraph = styled.div<StyledParagraphProps>`
   ${({
     $colorScheme,
     $gutterBottom,
