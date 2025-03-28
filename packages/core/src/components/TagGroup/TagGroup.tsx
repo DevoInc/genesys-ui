@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Resolve } from '../../typeFunctions';
 
 import {
   TagGroupContainer,
@@ -15,35 +16,44 @@ export interface TagGroupProps
   label?: React.ReactNode;
 }
 
-export const InternalTagGroup: React.FC<TagGroupProps> = ({
-  'aria-label': ariaLabel,
-  children,
-  colorScheme,
-  flexWrap = 'wrap',
-  labelPosition = 'left',
-  label,
-  quiet,
-  size = 'md',
-  style,
-  ...restProps
-}) => (
-  <TagGroupContainer
-    {...restProps}
-    colorScheme={colorScheme}
-    labelPosition={labelPosition}
-    quiet={quiet}
-    size={size}
-    style={style}
-  >
-    {label && <TagGroupLabel size={size}>{label}</TagGroupLabel>}
-    <TagGroupList
-      aria-label={typeof label === 'string' ? label : ariaLabel}
-      flexWrap={flexWrap}
+export const InternalTagGroup = React.forwardRef<
+  HTMLDivElement,
+  Resolve<TagGroupProps>
+>(
+  (
+    {
+      'aria-label': ariaLabel,
+      children,
+      colorScheme,
+      flexWrap = 'wrap',
+      labelPosition = 'left',
+      label,
+      quiet,
+      size = 'md',
+      style,
+      ...restProps
+    },
+    ref,
+  ) => (
+    <TagGroupContainer
+      {...restProps}
+      ref={ref}
+      colorScheme={colorScheme}
+      labelPosition={labelPosition}
+      quiet={quiet}
       size={size}
+      style={style}
     >
-      {children}
-    </TagGroupList>
-  </TagGroupContainer>
+      {label && <TagGroupLabel size={size}>{label}</TagGroupLabel>}
+      <TagGroupList
+        aria-label={typeof label === 'string' ? label : ariaLabel}
+        flexWrap={flexWrap}
+        size={size}
+      >
+        {children}
+      </TagGroupList>
+    </TagGroupContainer>
+  ),
 );
 
 export const TagGroup = InternalTagGroup as typeof InternalTagGroup & {

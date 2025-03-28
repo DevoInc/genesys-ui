@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Resolve } from '../../../../typeFunctions';
 
 import type { ITagGroup } from '../../declarations';
 import type { TagProps } from '../../../Tag';
@@ -11,22 +12,31 @@ export interface TagGroupContainerProps
   children: React.ReactElement<TagProps>[];
 }
 
-export const TagGroupContainer: React.FC<TagGroupContainerProps> = ({
-  children,
-  colorScheme,
-  labelPosition = 'left',
-  quiet,
-  size,
-  ...flexProps
-}) => (
-  <Flex
-    {...flexProps}
-    alignItems={labelPosition === 'left' ? 'center' : null}
-    inline
-    flexDirection={labelPosition === 'left' ? 'row' : 'column'}
-  >
-    <TagGroupContext.Provider value={{ colorScheme, quiet, size }}>
-      {children}
-    </TagGroupContext.Provider>
-  </Flex>
+export const TagGroupContainer = React.forwardRef<
+  HTMLDivElement,
+  Resolve<TagGroupContainerProps>
+>(
+  (
+    {
+      children,
+      colorScheme,
+      labelPosition = 'left',
+      quiet,
+      size,
+      ...flexProps
+    },
+    ref,
+  ) => (
+    <Flex
+      {...flexProps}
+      ref={ref}
+      alignItems={labelPosition === 'left' ? 'center' : null}
+      inline
+      flexDirection={labelPosition === 'left' ? 'row' : 'column'}
+    >
+      <TagGroupContext.Provider value={{ colorScheme, quiet, size }}>
+        {children}
+      </TagGroupContext.Provider>
+    </Flex>
+  ),
 );
