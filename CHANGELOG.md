@@ -1,5 +1,23 @@
 # Changelog
 
+## [17.20.0](https://github.com/DevoInc/genesys-ui/compare/v17.19.1...v17.20.0) (2025-03-28)
+
+### Features
+
+* **Button:** Better colorScheme assignment for the badge. ([52dacf5](https://github.com/DevoInc/genesys-ui/commit/52dacf50eeb67dea090bf7f29f0cd224639ce9f6))
+* **Chip:** adjustments for the Chip icon size to get smaller than before, because in smallest sizes it was too much big. ([9758a92](https://github.com/DevoInc/genesys-ui/commit/9758a924092c64e531b764fcdab0f4f0ca32c773))
+* **datetime:** added TZ to Calendar ([7d7a0a3](https://github.com/DevoInc/genesys-ui/commit/7d7a0a34e154f56b2c08ad128ed7eb99377ae7f5))
+* **InlineMessage:** Improvements to get more options for opening/closing. ([fa459f1](https://github.com/DevoInc/genesys-ui/commit/fa459f1fa355e3b9ad0a47f8b6d376d454ba0678))
+* **MenuItem:** improvements to get more stable HTML structure, added drag & drop events and fixed some problems. ([4313af2](https://github.com/DevoInc/genesys-ui/commit/4313af2a152d3d2e6d63194144676a83359025ec))
+* **Paragraph:** It renders by default a 'div' instead of a 'p' HTML tag to avoid HTML nested validation problems. ([e9af2dc](https://github.com/DevoInc/genesys-ui/commit/e9af2dcdf74c91dbabb5592edf0c63e4e524321d))
+* **Table:** fixed rowIndex and colIndex, because their aria-attributes don't accept the '0' value, so they have to start in '1'. Also we've introduced improvements for bulk actions menu story. ([d0a9421](https://github.com/DevoInc/genesys-ui/commit/d0a9421b3d59777760b596958f9884de9c42ba53))
+
+### Bug Fixes
+
+* Added forwardRef to TagGroup and TagGroupContainer. ([980a0ff](https://github.com/DevoInc/genesys-ui/commit/980a0ff845eee44b4ae0b67b9b8666674f5f4571))
+* **Table:** Fixed problem with flickering by detecting overflow in the options cell with a useEffect instead of pure css. ([11ca3b1](https://github.com/DevoInc/genesys-ui/commit/11ca3b13c950c0c7bfb1ce577fa2d013a629c1c7))
+* **Table:** Removed previous changes, because of not desired colateral effects. ([58666ee](https://github.com/DevoInc/genesys-ui/commit/58666ee6790f2f3442540360fef6bf5480fe958c))
+
 ## [17.19.1](https://github.com/DevoInc/genesys-ui/compare/v17.19.0...v17.19.1) (2025-03-24)
 
 ### Bug Fixes
