@@ -8,7 +8,7 @@ export interface CalendarWeekDayProps {
 }
 
 export const CalendarWeekDay: React.FC<CalendarWeekDayProps> = ({ value }) => (
-  <StyledCalendarWeekDay aria-label={value}>
+  <StyledCalendarWeekDay aria-label={value} role="columnheader">
     <span>{value}</span>
   </StyledCalendarWeekDay>
 );

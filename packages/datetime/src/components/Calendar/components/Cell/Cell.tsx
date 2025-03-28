@@ -57,11 +57,12 @@ export const Cell: React.FC<CellProps> = ({
         : null
     }
     aria-label={label}
-    aria-selected={selected}
+    aria-selected={selected ? true : null}
     aria-disabled={disabled}
     className={`day ${className}`}
     data-cell={value}
     data-ts={ts}
+    role="gridcell"
     title={tooltip}
   >
     <span>{value}</span>
