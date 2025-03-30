@@ -117,7 +117,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
           setTmpValue(dt);
         }
       },
-      reprDate: formatDate,
+      formatDate,
       parseDate,
     });
 

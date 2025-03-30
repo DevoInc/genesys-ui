@@ -5,12 +5,12 @@ import type { IParseResult, TCalendarDate } from '../../../declarations';
 export const useDateTimeInputValidation = ({
   value,
   onChange,
-  reprDate,
+  formatDate,
   parseDate,
 }: {
   value: Date | number;
   onChange: (value: Date | number) => void;
-  reprDate: (value: Date | number) => string;
+  formatDate: (value: Date | number) => string;
   parseDate: (str: string) => IParseResult;
 }): {
   inputValue: string;
@@ -22,7 +22,7 @@ export const useDateTimeInputValidation = ({
     inputValue: string;
     errors: string[];
   }>(() => {
-    const valueStr = reprDate(value);
+    const valueStr = formatDate(value);
     const result = parseDate(valueStr);
     return { inputValue: valueStr, errors: result.errors };
   });
@@ -36,7 +36,7 @@ export const useDateTimeInputValidation = ({
   };
 
   const updateValue = (dt: number | Date) => {
-    const valueStr = reprDate(dt);
+    const valueStr = formatDate(dt);
     if (valueStr !== inputValue) {
       const result = parseDate(valueStr);
       setState({ inputValue: valueStr, errors: result.errors });

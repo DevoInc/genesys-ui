@@ -72,7 +72,7 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
         setMonthDate(dt);
         onChange(dt);
       },
-      reprDate: formatDate,
+      formatDate,
       parseDate,
     });
 

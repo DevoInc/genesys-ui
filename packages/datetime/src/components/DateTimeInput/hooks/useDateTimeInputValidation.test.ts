@@ -10,7 +10,7 @@ describe('useDateTimeInputValidation', () => {
       useDateTimeInputValidation({
         value: 0,
         onChange: fn,
-        reprDate: (num) => String(num),
+        formatDate: (num) => String(num),
         parseDate: (str) => {
           const res = parseInt(str);
           const isValid = !isNaN(res);
@@ -59,7 +59,7 @@ describe('useDateTimeInputValidation', () => {
       useDateTimeInputValidation({
         value: -12,
         onChange: fn,
-        reprDate: (num) => String(num),
+        formatDate: (num) => String(num),
         parseDate: (str) => {
           const res = Number(str);
           const isValid = !isNaN(res) && res >= 0;
