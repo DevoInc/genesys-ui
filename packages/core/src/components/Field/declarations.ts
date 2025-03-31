@@ -47,6 +47,8 @@ export interface IField
   /** The direction of the field based in the desired label position: to the
    * left (row), to the top (column... etc.)*/
   direction?: TFieldDirection;
+  /** The tooltip for the FloatingHelper trigger. */
+  floatingHelperTooltip?: IGlobalAttrs['tooltip'];
   /** If the Helper is rendered as a floating element displayed by clicking a
    * trigger. */
   hasFloatingHelper?: boolean;

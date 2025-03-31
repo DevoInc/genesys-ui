@@ -48,6 +48,7 @@ export interface DateTimeRangeFloatingPickerProps
     >,
     Pick<
       DateTimeRangeInputProps,
+      | 'floatingHelperTooltip'
       | 'onRealTimeClick'
       | 'realTime'
       | 'showCalendarIcon'
@@ -88,6 +89,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
   appendTo,
   disableApplyButton = false,
   disableOutsideEvent = false,
+  floatingHelperTooltip,
   isOpened,
   id,
   inputAriaLabel,
@@ -174,6 +176,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
             )}
             id={id ? `${id}-range-control` : null}
             isOpen={isOpened}
+            floatingHelperTooltip={floatingHelperTooltip}
             hideLabel={inputHideLabel}
             label={inputLabel}
             onKeyUp={(index, event) => {

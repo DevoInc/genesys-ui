@@ -24,7 +24,7 @@ export interface ButtonContainerProps
     IStyledOverloadCss,
     IGlobalAttrs,
     IGlobalAriaAttrs,
-    ITriggerAriaAttrs,
+    Omit<ITriggerAriaAttrs, 'aria-selected'>,
     IFocusEventAttrs,
     IMouseEventAttrs,
     ITriggerEventAttrs,
@@ -43,7 +43,6 @@ export const ButtonContainer = React.forwardRef<
     {
       'aria-expanded': ariaExpanded,
       'aria-label': ariaLabel,
-      'aria-selected': ariaSelected,
       as,
       children,
       colorScheme = 'neutral',
@@ -69,7 +68,6 @@ export const ButtonContainer = React.forwardRef<
       {...restNativeProps}
       aria-expanded={state === 'expanded' || ariaExpanded}
       aria-label={tooltip || ariaLabel}
-      aria-selected={state === 'selected' || ariaSelected}
       as={as || (selectionScheme && 'label') || (href && 'a')}
       $colorScheme={colorScheme}
       data-squared={squared}

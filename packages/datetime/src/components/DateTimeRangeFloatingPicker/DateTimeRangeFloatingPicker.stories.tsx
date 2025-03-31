@@ -35,6 +35,7 @@ export const Playground: Story = {
   args: {
     value: [subMonths(new Date(), 1).getTime(), new Date().getTime()],
     realTime: 'inactive',
+    floatingHelperTooltip: 'Show the hel messages',
   },
   render: (args) =>
     ((props) => {

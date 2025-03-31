@@ -186,15 +186,16 @@ export const StyledButtonContainer = styled.button<StyledButtonContainerProps>`
         }
       `}
 
-      // get the selected and activated styles in uncontrolled way too
-      &&&:has(:checked) {
-        background-color: ${bgColorTokens[
-          $selectionScheme === 'single' ? 'activated' : 'selected'
-        ]};
-        color: ${textColorTokens[
-          $selectionScheme === 'single' ? 'activated' : 'selected'
-        ]};
-      }
+      // get the selected styles in uncontrolled way too
+      ${$state !== 'disabled' &&
+      $state !== 'loading' &&
+      $state !== 'selected' &&
+      css`
+        &&&:has(:checked) {
+          background-color: ${bgColorTokens.selected};
+          color: ${textColorTokens.selected};
+        }
+      `}
     `;
   }}
 `;

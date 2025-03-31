@@ -46,7 +46,7 @@ export interface ButtonProps
     IStyledOverloadCss,
     IGlobalAttrs,
     IGlobalAriaAttrs,
-    ITriggerAriaAttrs,
+    Omit<ITriggerAriaAttrs, 'aria-selected'>,
     IFocusEventAttrs,
     IMouseEventAttrs,
     ITriggerEventAttrs,
@@ -95,7 +95,7 @@ export const InternalButton = React.forwardRef<
       state = 'enabled',
       style,
       tooltip,
-      type = 'button',
+      type,
       value,
       ...restNativeProps
     },
@@ -131,7 +131,7 @@ export const InternalButton = React.forwardRef<
         state={state}
         style={style}
         tooltip={tooltip}
-        type={type}
+        type={type || (selectionScheme ? null : 'button')}
       >
         {selectionScheme && (
           <ButtonSelection

@@ -369,7 +369,7 @@ export const SingleUncontrolled: Story = {
     selectionScheme: 'single',
     value: 'option',
     children: 'Option',
-    name: 'option',
+    name: 'option-uncontrolled',
   },
 };
 
@@ -379,7 +379,7 @@ export const SingleControlled: Story = {
     selectionScheme: 'single',
     value: 'Option',
     children: 'Option',
-    name: 'option',
+    name: 'option-controlled',
   },
   render: (args) =>
     ((props) => {

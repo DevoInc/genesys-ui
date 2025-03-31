@@ -31,7 +31,10 @@ export interface DateTimeRangeInputProps
   extends Required<Pick<IGlobalAttrs, 'id'>>,
     Pick<ITriggerAriaAttrs, 'aria-controls'>,
     Pick<ICssDateTimeRangeInput, 'hasMillis' | 'hasSeconds' | 'hasTime'>,
-    Pick<FieldProps, 'helper' | 'required' | 'controlWidth'>,
+    Pick<
+      FieldProps,
+      'floatingHelperTooltip' | 'helper' | 'required' | 'controlWidth'
+    >,
     IDataAttrs,
     IStyledOverloadCss,
     IStyledPolymorphic {
@@ -77,6 +80,7 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
   'aria-controls': ariaControls,
   ariaLabel = ['from', 'to'],
   as,
+  floatingHelperTooltip,
   value,
   helper,
   hideLabel,
@@ -108,6 +112,7 @@ export const DateTimeRangeInput: React.FC<DateTimeRangeInputProps> = ({
     <Field
       label={label}
       id={id}
+      floatingHelperTooltip={floatingHelperTooltip}
       hasFloatingHelper
       helper={helper}
       hideLabel={hideLabel}

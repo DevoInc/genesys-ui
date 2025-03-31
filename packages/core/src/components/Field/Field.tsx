@@ -40,6 +40,7 @@ export const InternalField: React.FC<FieldProps> = ({
   status = 'base',
   style,
   tooltip,
+  floatingHelperTooltip,
   ...mouseEventAttrProps
 }) => {
   const helperId = helper ? `${id}-helper` : undefined;
@@ -58,6 +59,7 @@ export const InternalField: React.FC<FieldProps> = ({
       message={helper}
       id={helperId}
       status={hasStatus(status) ? status : 'help'}
+      tooltip={floatingHelperTooltip}
     />
   );
   return (
