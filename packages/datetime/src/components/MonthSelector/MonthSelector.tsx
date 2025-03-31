@@ -45,10 +45,12 @@ export const MonthSelector: React.FC<MonthSelectorProps> = ({
             ? 'selected'
             : 'enabled'
       }
+      name="month-selector"
       key={month.getMonth()}
-      onClick={() => {
+      onChange={() => {
         onChange(month.valueOf());
       }}
+      selectionScheme="single"
       size={size}
     >
       {format(month, 'MMM')}
