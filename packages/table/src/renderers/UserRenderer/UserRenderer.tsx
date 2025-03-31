@@ -24,6 +24,7 @@ export const UserRenderer: React.FC<TCellRenderer<string, TContextUser>> = ({
         return (
           <Box
             aria-controls="story-popover-panel"
+            minWidth="0"
             onClick={() => setOpenedInfo.current(!isOpened)}
             onMouseOut={toggle}
             onMouseOver={() => setOpenedInfo.current(true)}
