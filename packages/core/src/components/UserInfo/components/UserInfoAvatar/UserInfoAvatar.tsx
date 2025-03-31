@@ -51,7 +51,13 @@ export const UserInfoAvatar: React.FC<UserInfoAvatarProps> = ({
   const evalSpacing = format === 'heading' ? 'cmp-sm' : 'cmp-xs';
   const evalFormat = evalFormatFN(format, subtitle);
   return (
-    <HFlex {...dataAttrs} spacing={evalSpacing} id={id} tooltip={tooltip}>
+    <HFlex
+      {...dataAttrs}
+      spacing={evalSpacing}
+      id={id}
+      tooltip={tooltip}
+      minWidth="0"
+    >
       <Avatar
         colorScheme={avatarColorScheme}
         imageSrc={avatar}

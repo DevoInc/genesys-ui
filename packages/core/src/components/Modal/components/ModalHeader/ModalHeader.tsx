@@ -56,9 +56,9 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
     >
       {children || (
         <Flex alignItems="center">
-          <Flex alignItems="inherit">
+          <Flex alignItems="inherit" minWidth="0">
             <ModalIcon status={evalStatus} />
-            <VFlex spacing="cmp-xxs">
+            <VFlex spacing="cmp-xxs" minWidth="0">
               {title && (
                 <Heading
                   size={evalStatus === 'base' ? 'h4' : 'h5'}
