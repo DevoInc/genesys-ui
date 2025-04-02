@@ -1,5 +1,15 @@
 # Changelog
 
+## [17.21.0](https://github.com/DevoInc/genesys-ui/compare/v17.20.1...v17.21.0) (2025-04-02)
+
+### Features
+
+* **Table:** Use of pure css to detect scroll and add ellipsis symbol on Tags column. ([f85fbe5](https://github.com/DevoInc/genesys-ui/commit/f85fbe527668c1c2a36ba3aa1fc9d658800f99b7))
+
+### Bug Fixes
+
+* **Panel:** get border with prop bordered to true, even when its elevation is ground. ([6520d50](https://github.com/DevoInc/genesys-ui/commit/6520d5026350908d28c6ab732b50ee21ed735179))
+
 ## [17.20.1](https://github.com/DevoInc/genesys-ui/compare/v17.20.0...v17.20.1) (2025-04-02)
 
 ### Bug Fixes
