@@ -1,5 +1,16 @@
 # Changelog
 
+## [17.20.1](https://github.com/DevoInc/genesys-ui/compare/v17.20.0...v17.20.1) (2025-04-02)
+
+### Bug Fixes
+
+* Accessibility issues: avoid using not valid aria attribute 'aria-selected' for Button and added prop to define the tooltip for the floating helper in DateTime components. ([e92ac6f](https://github.com/DevoInc/genesys-ui/commit/e92ac6f26a38fadf7e74b383d058bf2de854a547))
+* Allow truncated line for Modal headings and UserInfoAvatar text block. ([c46c7eb](https://github.com/DevoInc/genesys-ui/commit/c46c7ebc0ee0ba679a99e55b9c69d590018fe131))
+* Allow truncated line for UserInfo table cell. ([661da56](https://github.com/DevoInc/genesys-ui/commit/661da56aeb6ca8166b30319f675e96dc957b747e))
+* **Calendar:** Refactor of the HTML structure to be AA a11y compliant. ([935e491](https://github.com/DevoInc/genesys-ui/commit/935e491c6a4bbe0d5926abf92d6a88e42278100f))
+* **Select:** allow numbers in Select label option ([5588501](https://github.com/DevoInc/genesys-ui/commit/558850146afda101c3956170f3519818ebbe146b))
+* use of selection variant Button in MonthSelector. ([b222c19](https://github.com/DevoInc/genesys-ui/commit/b222c19dbda57659d9cca8fc6197298bfb129f99))
+
 ## [17.20.0](https://github.com/DevoInc/genesys-ui/compare/v17.19.1...v17.20.0) (2025-03-28)
 
 ### Features
