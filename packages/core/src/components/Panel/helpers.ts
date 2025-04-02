@@ -19,15 +19,18 @@ export interface PanelMixinProps
 export const panelMixin =
   (theme: DefaultTheme) =>
   ({ bordered, colorScheme, display, elevation }: PanelMixinProps) => {
-    const elevationForTokens = getTokenKeyFromColorScheme(elevation);
+    const elevationForTokens = bordered
+      ? 'activated'
+      : getTokenKeyFromColorScheme(elevation);
     const tokens = theme.cmp.panel;
     const borderColor = tokens.color.border[elevationForTokens];
     const borderWidth = tokens.shape.borderSize;
     const borderRadius =
-      elevation &&
-      elevation !== 'ground' &&
-      !elevation.includes('sticky') &&
-      tokens.shape.borderRadius;
+      bordered ||
+      (elevation && elevation !== 'ground' && !elevation.includes('sticky'))
+        ? tokens.shape.borderRadius
+        : null;
+
     return css`
       position: relative;
       ${display !== 'none' &&
@@ -36,6 +39,7 @@ export const panelMixin =
         flex-direction: column;
         justify-content: space-between;
       `};
+      border-radius: ${borderRadius};
       border: ${elevation === 'ground' &&
       bordered &&
       `solid ${borderWidth} ${borderColor}`};
