@@ -29,9 +29,9 @@ export const Menu = <Option extends TSelectOption>(
   const hasFiltered = options.find(
     (opt) =>
       (opt.label &&
-        String(opt.label.toLowerCase()).includes(
-          String(props.selectProps.inputValue).toLowerCase(),
-        )) ||
+        String(opt.label)
+          .toLowerCase()
+          .includes(String(props.selectProps.inputValue).toLowerCase())) ||
       // for userInfo render
       // @ts-ignore
       (opt.description &&
