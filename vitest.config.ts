@@ -32,8 +32,6 @@ export default defineConfig({
       ],
     },
     include: ['{src,stories}/**/*.test.ts?(x)'],
-    name: 'datetime',
-    root: 'packages/datetime',
     environment: 'happy-dom',
     alias: {
       '@test': resolve(__dirname, './test/test-utils.tsx'),
