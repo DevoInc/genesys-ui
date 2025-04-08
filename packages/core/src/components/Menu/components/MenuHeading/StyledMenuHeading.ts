@@ -8,9 +8,9 @@ export const StyledMenuHeading = styled.li`
       ${theme.cmp.menu.heading.space.paddingRight}
       ${theme.cmp.menu.heading.space.paddingBottom}
       ${theme.cmp.menu.heading.space.paddingLeft};
-
-    &:first-of-type {
-      padding-top: 0;
-    }
   `}
+
+  &:first-of-type {
+    padding-top: 0;
+  }
 `;

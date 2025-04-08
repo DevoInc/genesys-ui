@@ -10,6 +10,6 @@ export interface MenuHeadingProps {
 
 export const MenuHeading: React.FC<MenuHeadingProps> = ({ children }) => (
   <StyledMenuHeading role="presentation">
-    <Typography.Heading size="overline-md">{children}</Typography.Heading>
+    <Typography.Paragraph colorScheme="weaker">{children}</Typography.Paragraph>
   </StyledMenuHeading>
 );
