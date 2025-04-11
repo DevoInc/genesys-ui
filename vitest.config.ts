@@ -11,10 +11,9 @@ export default defineConfig({
           [
             'babel-plugin-styled-components',
             {
-              ssr: false,
+              displayName: true,
+              fileName: false,
               pure: true,
-              //displayName: command !== 'build',
-              //fileName: command !== 'build',
             },
           ],
         ],
