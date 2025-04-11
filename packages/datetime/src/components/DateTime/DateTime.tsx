@@ -10,6 +10,7 @@ import {
   getSeconds,
   getMilliseconds,
 } from 'date-fns';
+import { tz as tzFn } from '@date-fns/tz';
 
 import {
   type IDataAttrs,
@@ -43,10 +44,12 @@ export interface DateTimeProps
    * `Date`. */
   onChangeMonthDate: (dt: Date | number) => void;
   value: Date | number;
+  tz?: string;
 }
 
 export const DateTime: React.FC<DateTimeProps> = ({
   i18n: userI18n = defaultDateTimeI18n,
+  tz = Intl.DateTimeFormat().resolvedOptions().timeZone,
   as,
   monthDate = new Date().getTime(),
   hasMillis = false,
@@ -88,18 +91,23 @@ export const DateTime: React.FC<DateTimeProps> = ({
         hasRightHoverEffect={false}
         onClick={(ts) => {
           onChange(
-            set(ts, {
-              hours: getHours(value),
-              minutes: getMinutes(value),
-              seconds: getSeconds(value),
-              milliseconds: getMilliseconds(value),
-            }),
+            set(
+              ts,
+              {
+                hours: getHours(value),
+                minutes: getMinutes(value),
+                seconds: getSeconds(value),
+                milliseconds: getMilliseconds(value),
+              },
+              { in: tzFn(tz) },
+            ).valueOf(),
           );
         }}
         value={[value]}
         parseDate={parseDate}
         weekDays={weekDays}
         weekStart={weekStart}
+        tz={tz}
       />
       {hasTime && (
         <Time
@@ -108,11 +116,15 @@ export const DateTime: React.FC<DateTimeProps> = ({
           hasSeconds={hasSeconds}
           onChange={(ts) => {
             onChange(
-              set(ts, {
-                year: getYear(value),
-                month: getMonth(value),
-                date: getDate(value),
-              }),
+              set(
+                ts,
+                {
+                  year: getYear(value),
+                  month: getMonth(value),
+                  date: getDate(value),
+                },
+                { in: tzFn(tz) },
+              ).valueOf(),
             );
           }}
           size="sm"
