@@ -1,5 +1,7 @@
 # Changelog
 
+## [17.22.1](https://github.com/DevoInc/genesys-ui/compare/v17.22.0...v17.22.1) (2025-04-11)
+
 ## [17.22.0](https://github.com/DevoInc/genesys-ui/compare/v17.21.0...v17.22.0) (2025-04-11)
 
 ### Features
