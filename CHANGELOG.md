@@ -1,5 +1,16 @@
 # Changelog
 
+## [17.22.0](https://github.com/DevoInc/genesys-ui/compare/v17.21.0...v17.22.0) (2025-04-11)
+
+### Features
+
+* Improvements for InlineMessage component to get the draggable variant, add status icon to the Panel header and spacing adjustments. Added some Modal stories and docs. ([74616f0](https://github.com/DevoInc/genesys-ui/commit/74616f0ea5763ea19b3dc807f6ce884dfbed8aa8))
+* **Menu:** Reduced the spacing for menu separators and different look & feel for menu headings. ([3bf5071](https://github.com/DevoInc/genesys-ui/commit/3bf507157f59bcbe60f692a5d79ff48884c11d66))
+
+### Bug Fixes
+
+* Fixed some type problems. ([dbab6e8](https://github.com/DevoInc/genesys-ui/commit/dbab6e8ca75c24a719c8e5bb6f9b2f5d7cd47497))
+
 ## [17.21.0](https://github.com/DevoInc/genesys-ui/compare/v17.20.1...v17.21.0) (2025-04-02)
 
 ### Features
