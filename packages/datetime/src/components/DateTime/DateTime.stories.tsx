@@ -57,13 +57,11 @@ export const Timezone: Story = {
   }) => {
     const [value, setValue] = React.useState(originalValue);
     const [monthDate, setMonthDate] = React.useState(originalMonthDate);
-    console.log(value);
     return (
       <VFlex>
         <DateTime
           {...props}
           onChange={(ts) => {
-            console.log('UPDATE');
             setValue(ts);
           }}
           monthDate={monthDate}
