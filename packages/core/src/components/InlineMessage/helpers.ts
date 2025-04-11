@@ -1,16 +1,24 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import { getBorderPlacement } from './utils';
-import type { IconButtonStatusProps } from '../IconButton';
+import type { TInlineMessageColorScheme } from './declarations';
 import type { PopoverProps } from '../Popover';
+import { getBorderPlacement } from './utils';
+
+/**
+ * Get the InlineMessageContainer custom styles (border color... etc.) applied to a Popover.Panel component.
+ *
+ * @return object with the css.
+ */
 
 export const inlineMessageContainerMixin = ({
+  draggable,
   placement,
   status = 'help',
   theme,
 }: {
+  draggable: boolean;
   placement: PopoverProps['placement'];
-  status: IconButtonStatusProps['colorScheme'];
+  status: TInlineMessageColorScheme;
   theme: DefaultTheme;
 }) => {
   const tokens = theme.cmp.inlineMessage;
@@ -18,6 +26,7 @@ export const inlineMessageContainerMixin = ({
     position: relative;
     background-color: ${tokens.color.background};
     overflow: hidden;
+    cursor: ${draggable ? 'move' : 'default'};
 
     ${status &&
     css`

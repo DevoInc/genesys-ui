@@ -190,7 +190,7 @@ export const Dialog: Story = {
   tags: ['isHidden'],
   render: () => (
     <ModalWithButtons
-      status="error"
+      status="warning"
       title="Delete entity"
       applyText="Delete"
       content="You are going to delete this entity. This action can not be undone."

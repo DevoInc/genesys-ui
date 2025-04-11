@@ -1,13 +1,10 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { GIRocketSpaceNasa } from '@devoinc/genesys-icons';
-
 import { Box } from '../Box';
 import { Button } from '../Button';
 import { InlineMessage } from '../InlineMessage';
 import { Typography } from '../Typography';
-import { inlineMessageContentFS } from './__stories__/utils';
 import { lorem, lorem2, lorem3 } from '../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof InlineMessage> = {
@@ -75,20 +72,7 @@ export const WithPanel: Story = {
             onClose={() => setOpened(false)}
             title="This is a title"
           >
-            {inlineMessageContentFS}
-            <Box marginTop="cmp-md">
-              <Button
-                colorScheme={'accent'}
-                onClick={() => {
-                  // eslint-disable-next-line no-alert
-                  alert('Close the panel');
-                  setOpened(false);
-                }}
-                wide
-              >
-                Close the panel
-              </Button>
-            </Box>
+            {lorem}
           </InlineMessage.Panel>
         )}
       </InlineMessage>
@@ -104,7 +88,6 @@ export const TriggerWithText: Story = {
         <InlineMessage
           {...props}
           trigger={{
-            icon: <GIRocketSpaceNasa />,
             text: 'Text',
             secondaryText: 'secondary text',
           }}

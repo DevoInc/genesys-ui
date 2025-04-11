@@ -85,6 +85,14 @@ The Modal component can also be used to display a header with actions.
 
 <Canvas of={Stories.WithActions} story={{ height: '40rem' }} />
 
+## Dialog
+
+Sometimes the modal requires user interaction to provide critical information, gather input, or confirm actions,
+and typically blocks interaction with the main application until dismissed or an action is taken. For instance,
+when the user is about to delete some important entity.
+
+<Canvas of={Stories.Dialog} story={{ height: '40rem' }} />
+
 ## Adding animations
 
 If you want to add animations to your Modal component, you can use a

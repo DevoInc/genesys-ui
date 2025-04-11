@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import {
-  IconButtonStatus,
-  type IconButtonStatusProps,
-} from '../../../IconButton';
+import type { Resolve } from '../../../../typeFunctions';
+import { IconButtonStatus } from '../../../IconButton';
 import { Typography } from '../../../Typography';
 import { useAddPropsToChildren } from '../../../../hooks';
 import {
@@ -26,7 +24,7 @@ import {
   inlineMessageTriggerMixin,
   inlineMessageTriggerParagraphMixin,
 } from './helpers';
-import type { Resolve } from '../../../../typeFunctions';
+import type { TInlineMessageColorScheme } from '../../declarations';
 
 export interface InlineMessageTriggerProps
   extends IDataAttrs,
@@ -41,7 +39,7 @@ export interface InlineMessageTriggerProps
   icon?: React.ReactNode;
   size?: TButtonSize;
   state: TButtonExpandableState;
-  status?: IconButtonStatusProps['colorScheme'];
+  status?: TInlineMessageColorScheme;
   secondaryText?: string;
   text?: string;
   title?: string;
@@ -97,6 +95,7 @@ export const InlineMessageTrigger = React.forwardRef<
       type: 'button',
     });
     const theme = useTheme();
+    const evalStatus = status === 'base' ? 'help' : status;
     if (text || secondaryText) {
       return (
         <Button
@@ -120,7 +119,7 @@ export const InlineMessageTrigger = React.forwardRef<
         >
           {Trigger || (
             <IconButtonStatus
-              colorScheme={status}
+              colorScheme={evalStatus}
               as="span"
               icon={icon}
               state={state}
@@ -164,7 +163,7 @@ export const InlineMessageTrigger = React.forwardRef<
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
         aria-haspopup={ariaHasPopup}
-        colorScheme={status}
+        colorScheme={evalStatus}
         icon={icon}
         id={id}
         onClick={onClick}

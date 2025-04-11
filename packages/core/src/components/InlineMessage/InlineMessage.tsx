@@ -6,18 +6,22 @@ import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../declarations/styled';
-import { WithRequired } from '../../typeFunctions';
-import { inlineMessageContainerMixin } from './helpers';
-import { Popover, type PopoverProps } from '../Popover';
-import type { IconButtonStatusProps } from '../IconButton';
+import type {
+  TInlineMessageColorScheme,
+  TInlineMessageSize,
+} from './declarations';
 import type { TButtonExpandableState, TButtonSize } from '../Button';
+import { WithRequired } from '../../typeFunctions';
+import { mergeStyles } from '../../helpers';
+import { inlineMessageContainerMixin } from './helpers';
+import { InlineMessageContext } from './context';
+import { Popover, type PopoverProps } from '../Popover';
 import {
   InlineMessageArrow,
   InlineMessageBanner,
   InlineMessagePanel,
   InlineMessageTrigger,
 } from './components';
-import { mergeStyles } from '../../helpers';
 
 export interface InlineMessageProps
   extends IDataAttrs,
@@ -31,12 +35,16 @@ export interface InlineMessageProps
         toggle: (ev: React.MouseEvent<HTMLElement>) => void;
         isOpened: boolean;
         setOpened: React.Dispatch<React.SetStateAction<boolean>>;
+        colorScheme: TInlineMessageColorScheme;
+        size: TInlineMessageSize;
       }) => React.ReactNode);
   disabled?: boolean;
+  draggable?: boolean;
   focused?: boolean;
   hovered?: boolean;
+  size?: TInlineMessageSize;
   state?: TButtonExpandableState;
-  status?: IconButtonStatusProps['colorScheme'];
+  status?: TInlineMessageColorScheme;
   tooltip?: string;
   trigger?: {
     Component?: React.ReactNode;
@@ -51,12 +59,14 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
   appendTo,
   as,
   children,
+  draggable,
   id,
   isOpened,
   placement = 'right',
   state = 'enabled',
   status = 'help',
   strategy = 'fixed',
+  size = 'md',
   style,
   tooltip,
   trigger,
@@ -69,16 +79,32 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
       appendTo={appendTo}
       id={id}
       placement={placement}
-      arrowConfig={{
-        component: ({ placement: innerPlacement, size }) => (
-          <InlineMessage.Arrow
-            placement={innerPlacement}
-            size={size}
-            status={status}
-          />
-        ),
-        size: 6,
-      }}
+      arrowConfig={
+        draggable
+          ? null
+          : {
+              component: ({ placement: innerPlacement, size }) => (
+                <InlineMessage.Arrow
+                  placement={innerPlacement}
+                  size={size}
+                  status={status}
+                />
+              ),
+              size: 6,
+            }
+      }
+      modifiers={
+        draggable
+          ? [
+              {
+                name: 'offset',
+                options: {
+                  offset: [0, 4],
+                },
+              },
+            ]
+          : []
+      }
       isOpened={isOpened}
       strategy={strategy}
       zIndex={zIndex}
@@ -111,11 +137,13 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
       }) => (
         <Popover.Panel
           as={as}
+          draggable={draggable}
           id={`${id}__content`}
           padding="0"
           role={status === 'error' ? 'alert' : null}
           style={mergeStyles(
             ...inlineMessageContainerMixin({
+              draggable,
               placement: innerPlacement,
               status,
               theme,
@@ -124,13 +152,17 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
           )}
           width="auto"
         >
-          {typeof children === 'function'
-            ? children({
-                toggle,
-                isOpened: innerIsOpened,
-                setOpened,
-              })
-            : children}
+          <InlineMessageContext.Provider value={{ colorScheme: status, size }}>
+            {typeof children === 'function'
+              ? children({
+                  toggle,
+                  isOpened: innerIsOpened,
+                  setOpened,
+                  colorScheme: status,
+                  size,
+                })
+              : children}
+          </InlineMessageContext.Provider>
         </Popover.Panel>
       )}
     </Popover>

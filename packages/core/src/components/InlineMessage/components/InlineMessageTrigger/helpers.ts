@@ -3,6 +3,11 @@ import { css, DefaultTheme } from 'styled-components';
 import type { TButtonExpandableState } from '../../../Button';
 import { getSpacingPropCss } from '../../../../helpers/spacing';
 
+/**
+ * Get the InlineMessageTrigger custom styles applied to a Button component when it's used the textual trigger mode.
+ *
+ * @return object with the css.
+ */
 export const inlineMessageTriggerMixin = ({
   theme,
 }: {
@@ -29,6 +34,11 @@ export const inlineMessageTriggerMixin = ({
   }
 `;
 
+/**
+ * Get the InlineMessageTrigger custom styles applied to the Button textual content.
+ *
+ * @return object with the css.
+ */
 export const inlineMessageTriggerParagraphMixin = ({
   last = false,
   state,

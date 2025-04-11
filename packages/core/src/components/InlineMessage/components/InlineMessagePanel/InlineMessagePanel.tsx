@@ -1,10 +1,12 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
+import { InlineMessageContext } from '../../context';
 import type { IStyledOverloadCss } from '../../../../declarations';
-import { Panel } from '../../../Panel';
-import {
+import type { BoxProps } from '../../../Box';
+import type { TInlineMessageSize } from '../../declarations';
+import type {
   IPanelHelpAttrs,
-  IPanelContainerAttrs,
   TPanelChildren,
   TPanelActions,
 } from '../../../Panel/declarations';
@@ -12,7 +14,8 @@ import type {
   IPanelCloseAttrs,
   IPanelHeadingAttrs,
 } from '../../../Panel/components/PanelHeader/declarations';
-import { BoxProps } from '../../../Box';
+import { getStatusIcon } from './helpers';
+import { Panel } from '../../../Panel';
 
 interface InlineMessagePanelProps
   extends IStyledOverloadCss,
@@ -38,7 +41,8 @@ interface InlineMessagePanelProps
   id?: string;
   onClose?: IPanelCloseAttrs['onClick'];
   onCloseTooltip?: IPanelCloseAttrs['tooltip'];
-  size?: IPanelContainerAttrs['size'];
+  showIcon?: boolean;
+  size?: TInlineMessageSize;
   subtitle?: IPanelHeadingAttrs['subtitle'];
   title?: IPanelHeadingAttrs['title'];
 }
@@ -56,14 +60,16 @@ export const InlineMessagePanel: React.FC<InlineMessagePanelProps> = ({
   minWidth = '30rem',
   onClose,
   onCloseTooltip,
+  showIcon,
   size,
   subtitle,
   style,
   title,
   width = 'fit-content',
 }) => {
-  const hasSimpleContent =
-    typeof children === 'string' || typeof children === 'number';
+  const theme = useTheme();
+  const context = React.useContext(InlineMessageContext);
+
   return (
     <Panel
       elevation={'ground'}
@@ -73,7 +79,7 @@ export const InlineMessagePanel: React.FC<InlineMessagePanelProps> = ({
       maxWidth={maxWidth}
       minHeight={minHeight}
       minWidth={minWidth}
-      size={size || (hasSimpleContent ? 'sm' : 'md')}
+      size={size || context.size}
       style={style}
       width={width}
     >
@@ -91,7 +97,11 @@ export const InlineMessagePanel: React.FC<InlineMessagePanelProps> = ({
         subtitle={subtitle}
         title={title}
         helpUrl={helpUrl}
-        icon={icon}
+        icon={
+          showIcon
+            ? icon || (title && getStatusIcon(theme)[context.colorScheme])
+            : undefined
+        }
       />
       <Panel.Body>{children}</Panel.Body>
       <Panel.Footer actions={actions} bordered />
