@@ -12,6 +12,7 @@ import { FloatingHelper } from '../../../FloatingHelper';
 import { Icon, type IconProps } from '../../../Icon';
 import { Typography } from '../../../Typography';
 import { ProgressBarContext } from '../../context';
+import { TFloatingHelperStatus } from '../../../FloatingHelper/declarations';
 
 export interface ProgressBarInfoProps
   extends FlexProps,
@@ -141,7 +142,7 @@ export const ProgressBarInfo: React.FC<ProgressBarInfoProps> = ({
               <FloatingHelper
                 id={floatingStatusHelperId}
                 message={statusHelper}
-                status={colorSchemeEval}
+                status={colorSchemeEval as TFloatingHelperStatus}
                 size={evalSize}
                 tooltip={floatingStatusHelperTooltip}
               />

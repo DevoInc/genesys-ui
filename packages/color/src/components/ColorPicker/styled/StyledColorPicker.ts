@@ -6,9 +6,11 @@ import {
   TFieldSize,
   TFieldStatus,
 } from '@devoinc/genesys-ui';
+import { RgbaColor } from 'polished/lib/types/color';
 
 export interface StyledColorPickerProps {
   $colorIndicatorType?: 'square' | 'circle';
+  color?: RgbaColor;
   $disabled?: boolean;
   $readOnly?: boolean;
   $size?: TFieldSize;
