@@ -2,8 +2,9 @@ import { describe, test, expect, afterEach } from 'vitest';
 import * as React from 'react';
 import { cleanup } from '@testing-library/react';
 
+import { VFlex } from '@devoinc/genesys-ui';
+
 import { render, screen } from '@test';
-import { VFlex } from './VFlex';
 
 describe('VFlex', () => {
   test('render', () => {

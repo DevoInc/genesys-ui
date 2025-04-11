@@ -1,8 +1,9 @@
 import { describe, test, expect } from 'vitest';
 import * as React from 'react';
 
+import { Divider } from '@devoinc/genesys-ui';
+
 import { render } from '@test';
-import { Divider } from './Divider';
 
 describe('Divider', () => {
   test('Simple render', () => {

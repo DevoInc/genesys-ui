@@ -2,9 +2,9 @@ import * as React from 'react';
 import { describe, test, expect } from 'vitest';
 
 import { GICheckThick } from '@devoinc/genesys-icons';
+import { Badge } from '@devoinc/genesys-ui';
 
 import { render, screen } from '@test';
-import { Badge } from './Badge';
 
 describe('components', () => {
   describe('Badge', () => {

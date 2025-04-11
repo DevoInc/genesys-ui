@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { describe, test, expect } from 'vitest';
 
+import { AppBar, Tabs } from '@devoinc/genesys-ui';
+
 import { render, screen } from '@test';
-import { AppBar } from './AppBar';
-import { Tabs } from '../Tabs';
 
 describe('components', () => {
   describe('AppBar', () => {

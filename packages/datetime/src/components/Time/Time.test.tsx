@@ -2,8 +2,9 @@ import * as React from 'react';
 import { describe, test, expect, vi } from 'vitest';
 import { userEvent } from '@testing-library/user-event';
 
+import { Time } from '@devoinc/genesys-ui-datetime';
+
 import { render, screen } from '@test';
-import { Time } from './Time';
 
 describe('components', () => {
   describe('Time', () => {

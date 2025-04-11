@@ -1,8 +1,9 @@
 import { describe, test, expect } from 'vitest';
 import * as React from 'react';
 
+import { Flex } from '@devoinc/genesys-ui';
+
 import { render, screen } from '@test';
-import { Flex } from './Flex';
 
 describe('Flex', () => {
   test('render', () => {
