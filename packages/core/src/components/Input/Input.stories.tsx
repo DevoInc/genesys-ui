@@ -23,6 +23,7 @@ const meta: Meta<typeof Input> = {
     // Meant for the story
     id: 'input-id',
     label: 'Label for story',
+    placeholder: 'Placeholder...',
   },
   argTypes: {
     helper: {
