@@ -51,7 +51,7 @@ export const Table: React.FC<TableProps> = ({
   id,
   resizableColumns = false,
   rowHeight = ROW_HEIGHT_MD,
-  texts = { cell: { editTooltip: 'editcell'}},
+  texts,
   textsCell,
   onCellClickAway
 }) => {
