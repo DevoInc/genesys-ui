@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.23.1](https://github.com/DevoInc/genesys-ui/compare/v17.23.0...v17.23.1) (2025-04-15)
+
+### Bug Fixes
+
+* **table:** add selectAllBtn option to filter context and update OptionsFilter component ([b84fb79](https://github.com/DevoInc/genesys-ui/commit/b84fb79865a42d6b42d5975acba1f3197bd2b7b4))
+
 ## [17.23.0](https://github.com/DevoInc/genesys-ui/compare/v17.22.1...v17.23.0) (2025-04-14)
 
 ### Features
