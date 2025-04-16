@@ -20,7 +20,7 @@ export const OptionsFilter: React.FC<TFilter> = ({ colDef, onChange }) => {
         size="sm"
         multipleSubtle
         closeMenuOnSelect={false}
-        selectAllBtn
+        selectAllBtn={context.selectAllBtn ?? true}
         hideSelectedOptions={false}
         onChange={(val: TSelectOption[]) => {
           onChange({ value: val } as TOptionsFilterValue, 'options');

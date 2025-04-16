@@ -1,8 +1,9 @@
 import { describe, test, expect } from 'vitest';
 import * as React from 'react';
 
+import { Toolbar } from '@devoinc/genesys-ui';
+
 import { render, screen } from '@test';
-import { Toolbar } from './Toolbar';
 
 const CONTENT_STRING = 'This is a test text';
 const TEST_ID = 'toolbar';

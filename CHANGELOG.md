@@ -1,5 +1,24 @@
 # Changelog
 
+## [17.23.1](https://github.com/DevoInc/genesys-ui/compare/v17.23.0...v17.23.1) (2025-04-15)
+
+### Bug Fixes
+
+* **table:** add selectAllBtn option to filter context and update OptionsFilter component ([b84fb79](https://github.com/DevoInc/genesys-ui/commit/b84fb79865a42d6b42d5975acba1f3197bd2b7b4))
+
+## [17.23.0](https://github.com/DevoInc/genesys-ui/compare/v17.22.1...v17.23.0) (2025-04-14)
+
+### Features
+
+* **datetime:** added TZ to formatDate helper ([6f6327a](https://github.com/DevoInc/genesys-ui/commit/6f6327aee8c5e8b2cbf0b7f74d8340e58242e809))
+* Updated to the last version of genesys-brand-devo to get the same color for form control placeholders in any status. ([4f8d79f](https://github.com/DevoInc/genesys-ui/commit/4f8d79f99026afd66bcdd67eb6ded71c7534f9df))
+
+### Bug Fixes
+
+* build cjs problem with styled-components ([9ea6cac](https://github.com/DevoInc/genesys-ui/commit/9ea6cacf9b651a24ce3dfd5f2eba54719b57b06f))
+* **datetime:** MonthFloatingPicker don't allow years out of the interval ([fb2f5c8](https://github.com/DevoInc/genesys-ui/commit/fb2f5c8cb934c40e5088f91994c58a3a52eaaf17))
+* **table:** update default texts prop in Table component ([f696518](https://github.com/DevoInc/genesys-ui/commit/f696518e7d1803075e3762f22dd757a33dbe1ea2))
+
 ## [17.22.1](https://github.com/DevoInc/genesys-ui/compare/v17.22.0...v17.22.1) (2025-04-11)
 
 ## [17.22.0](https://github.com/DevoInc/genesys-ui/compare/v17.21.0...v17.22.0) (2025-04-11)

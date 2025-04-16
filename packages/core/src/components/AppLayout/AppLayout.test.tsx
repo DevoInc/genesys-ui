@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { describe, test, expect } from 'vitest';
 
+import { AppLayout } from '@devoinc/genesys-ui';
+
 import { render, screen } from '@test';
-import { AppLayout } from './AppLayout';
 
 describe('components', () => {
   describe('AppLayout', () => {

@@ -53,7 +53,6 @@ export const YearSelectionInline: Story = {
     maxDate: endOfMonth(nowDate),
     minDate: startOfMonth(subMonths(nowDate, 240)),
     yearSelectorInline: true,
-    closeAfterSelect: false,
   },
   render: (props) => {
     const [value, setValue] = React.useState(props.value);

@@ -2,8 +2,9 @@ import { describe, test, expect, afterEach } from 'vitest';
 import * as React from 'react';
 import { cleanup } from '@testing-library/react';
 
+import { Grid } from '@devoinc/genesys-ui';
+
 import { render, screen } from '@test';
-import { Grid } from './Grid';
 
 describe('GridItem', () => {
   test('render', () => {

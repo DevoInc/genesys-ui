@@ -1,5 +1,5 @@
 {
-  "extends": "../../common/tsconfig",
+  "extends": "../../tsconfig",
   "compilerOptions": {
     "paths": {
       "@test": [

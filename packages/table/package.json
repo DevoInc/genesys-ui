@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-table",
-  "version": "17.22.1",
+  "version": "17.23.1",
   "description": "Genesys composable table",
   "type": "module",
   "scripts": {
@@ -30,8 +30,8 @@
   "license": "MIT",
   "peerDependencies": {
     "@devoinc/genesys-icons": "4.x || 5.x || 6.x",
-    "@devoinc/genesys-ui": "^17.22.1",
-    "@devoinc/genesys-ui-datetime": "^17.22.1",
+    "@devoinc/genesys-ui": "^17.23.1",
+    "@devoinc/genesys-ui-datetime": "^17.23.1",
     "@tanstack/react-virtual": "3.x",
     "date-fns": ">=4.0",
     "@date-fns/tz": ">=1.0",

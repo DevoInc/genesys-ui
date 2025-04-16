@@ -2,8 +2,9 @@ import { describe, it, expect, afterEach } from 'vitest';
 import * as React from 'react';
 import { cleanup } from '@testing-library/react';
 
+import { Wrap } from '@devoinc/genesys-ui';
+
 import { render, screen } from '@test';
-import { Wrap } from './Wrap';
 
 describe('Wrap', () => {
   it('default render', () => {

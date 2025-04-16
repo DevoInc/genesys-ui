@@ -27,3 +27,22 @@ export const Base: Story = {
     },
   },
 };
+
+export const WhitOutSelectAll: Story = {
+  args: {
+    data: [{ col0: 'test b' }, { col0: 'test a' }, { col0: 'test c' }],
+    // eslint-disable-next-line no-console
+    onChange: console.log,
+    colDef: {
+      id: 'col0',
+      context: {
+        options: {
+          'test a': { colorScheme: 'error' },
+          'test b': { colorScheme: 'success', label: 'Success' },
+          'test c': { colorScheme: 'warning' },
+        },
+        selectAllBtn: false,
+      },
+    },
+  },
+};

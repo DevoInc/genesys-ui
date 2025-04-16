@@ -2,8 +2,9 @@ import { describe, test, expect, afterEach } from 'vitest';
 import * as React from 'react';
 import { cleanup } from '@testing-library/react';
 
+import { Helper } from '@devoinc/genesys-ui';
+
 import { render, screen } from '@test';
-import { Helper } from './Helper';
 
 const MESSAGE_STRING = 'This is a test message';
 const MESSAGE_REACT = <span>{MESSAGE_STRING}</span>;

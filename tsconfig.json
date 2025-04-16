@@ -1,3 +1,20 @@
 {
-  "extends": "./common/tsconfig",
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "target": "ES6",
+    "types": [
+      "node",
+      "@testing-library/jest-dom"
+    ],
+    "resolveJsonModule": true,
+    "strictBindCallApply": true,
+    "noUncheckedIndexedAccess": true,
+    "jsx": "react"
+  }
 }

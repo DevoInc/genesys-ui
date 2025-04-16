@@ -114,7 +114,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
             }}
             size="sm"
             value={monthDate}
-            closeAfterSelect={false}
+            closeAfterSelect
           />
           <Box height={'165px'}>
             <Calendar
@@ -189,7 +189,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
             }}
             size="sm"
             value={addMonths(monthDate, 1)}
-            closeAfterSelect={false}
+            closeAfterSelect
           />
           <Box height={'165px'}>
             <Calendar

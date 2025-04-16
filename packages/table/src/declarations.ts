@@ -207,6 +207,7 @@ export type TFilterContext = {
   filterValue: TFilterValue;
   showAdvancedFilter: boolean;
   showReset: boolean;
+  selectAllBtn: boolean;
 };
 
 export type TCellRenderer<

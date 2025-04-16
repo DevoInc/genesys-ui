@@ -2,9 +2,10 @@ import { describe, test, expect, afterEach } from 'vitest';
 import * as React from 'react';
 import { cleanup } from '@testing-library/react';
 
-import { render, screen } from '@test';
-import { Button } from './Button';
 import { GIHeartFull } from '@devoinc/genesys-icons';
+import { Button } from '@devoinc/genesys-ui';
+
+import { render, screen } from '@test';
 
 describe('BaseButton', () => {
   describe('Elements', () => {

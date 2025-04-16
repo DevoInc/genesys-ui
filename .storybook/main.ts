@@ -45,6 +45,7 @@ const config: StorybookConfig = {
                 {
                   displayName: true,
                   fileName: false,
+                  pure: true,
                 },
               ],
             ],

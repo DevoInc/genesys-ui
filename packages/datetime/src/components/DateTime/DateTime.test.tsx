@@ -4,18 +4,19 @@ import { set } from 'date-fns';
 import { TZDate, tz as tzFn } from '@date-fns/tz';
 import { userEvent } from '@testing-library/user-event';
 
-import { Calendar } from '@devoinc/genesys-ui-datetime';
+import { DateTime } from '@devoinc/genesys-ui-datetime';
 
 import { cleanup, render, screen } from '@test';
 
 describe('components', () => {
-  describe('Calendar', () => {
+  describe('DateTime', () => {
     test('render with one selection', async () => {
       const monthDate = new Date(2025, 2, 21);
       render(
-        <Calendar
-          value={[set(monthDate, { date: 10 })]}
+        <DateTime
+          value={set(monthDate, { date: 10 })}
           monthDate={monthDate}
+          onChangeMonthDate={() => null}
         />,
       );
       const div = screen.getByText('10').parentNode as HTMLDivElement;
@@ -23,21 +24,22 @@ describe('components', () => {
     });
 
     test('render with TZ and select a value', async () => {
-      const onClick = vi.fn();
+      const onChange = vi.fn();
       const user = userEvent.setup();
       const tz = 'UTC-10:00';
       const monthDate = new TZDate(2025, 1, 20, tz);
       render(
-        <Calendar
-          value={[set(monthDate, { date: 10 }, { in: tzFn(tz) })]}
+        <DateTime
+          value={set(monthDate, { date: 10 }, { in: tzFn(tz) })}
           monthDate={monthDate}
+          onChangeMonthDate={() => null}
           tz={tz}
-          onClick={onClick}
+          onChange={onChange}
         />,
       );
       const div = screen.getByText('11').parentNode as HTMLDivElement;
       await user.click(div);
-      expect(onClick).toBeCalledWith(new TZDate(2025, 1, 11, tz).valueOf());
+      expect(onChange).toBeCalledWith(new TZDate(2025, 1, 11, tz).valueOf());
     });
 
     afterEach(() => {

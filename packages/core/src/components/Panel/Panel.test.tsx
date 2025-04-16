@@ -1,8 +1,9 @@
 import { describe, test, expect } from 'vitest';
 import * as React from 'react';
 
+import { Panel } from '@devoinc/genesys-ui';
+
 import { render } from '@test';
-import { Panel } from './Panel';
 
 describe('Panel', () => {
   test('Simple render', () => {
