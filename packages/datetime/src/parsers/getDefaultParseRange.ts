@@ -22,8 +22,8 @@ export const getDefaultParseRange: (
         if (index > 0) {
           if (
             lte(
-              arr[index - 1].value as TCalendarDate,
-              curr.value as TCalendarDate,
+              arr[index - 1].value.value as TCalendarDate,
+              curr.value.value as TCalendarDate,
             )
           ) {
             return prev;
