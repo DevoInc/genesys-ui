@@ -1,5 +1,12 @@
 # Changelog
 
+## [17.24.1](https://github.com/DevoInc/genesys-ui/compare/v17.24.0...v17.24.1) (2025-04-21)
+
+### Bug Fixes
+
+* **datetime:** correct value access in date comparison logic ([50d2501](https://github.com/DevoInc/genesys-ui/commit/50d25010f63e00445ee45dd316a134576e4d6a01))
+* **Editor:** Modified styles to not get focus styles even when it's not being focused. ([0d74cf0](https://github.com/DevoInc/genesys-ui/commit/0d74cf0a392e4d25a4584140eb49955d38fdf9e9))
+
 ## [17.24.0](https://github.com/DevoInc/genesys-ui/compare/v17.23.1...v17.24.0) (2025-04-16)
 
 ### Features
