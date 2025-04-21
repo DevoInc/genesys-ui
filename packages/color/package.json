@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/genesys-ui-color",
-  "version": "17.23.1",
+  "version": "17.24.0",
   "description": "",
   "type": "module",
   "scripts": {
@@ -29,7 +29,7 @@
   "author": "Devo, Inc. Quvis Team (https://github.com/orgs/DevoInc/teams/quvis)",
   "license": "MIT",
   "peerDependencies": {
-    "@devoinc/genesys-ui": "^17.23.1",
+    "@devoinc/genesys-ui": "^17.24.0",
     "polished": ">=4.0",
     "react": ">=17.0",
     "react-dom": ">=17.0",

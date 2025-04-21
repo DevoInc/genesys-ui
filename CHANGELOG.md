@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.24.0](https://github.com/DevoInc/genesys-ui/compare/v17.23.1...v17.24.0) (2025-04-16)
+
+### Features
+
+* **InlineMessage:** Added forwardRef to the InlineMessage.Panel component. ([d9fe0e5](https://github.com/DevoInc/genesys-ui/commit/d9fe0e5e7731087888135598526ec8112568b47f))
+
 ## [17.23.1](https://github.com/DevoInc/genesys-ui/compare/v17.23.0...v17.23.1) (2025-04-15)
 
 ### Bug Fixes
