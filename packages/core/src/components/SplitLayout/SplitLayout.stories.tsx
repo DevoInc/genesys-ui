@@ -52,6 +52,33 @@ export const Playground: Story = {
     })(args),
 };
 
+export const Quiet: Story = {
+  tags: ['isHidden', 'noWrap'],
+  args: {
+    showDragGhost: false,
+    quiet: true,
+  },
+  render: (args) =>
+    ((props) => {
+      const [sizes, setSizes] = React.useState<TSizes>(props?.sizes);
+      const { onChange } = useSyncSplitResize({ setSizes });
+      return (
+        <Box height="20rem">
+          <SplitLayout {...props} sizes={sizes} onChange={onChange}>
+            <Box overflow="hidden">
+              <Box padding="cmp-md">
+                <Typography.Paragraph>Left</Typography.Paragraph>
+              </Box>
+            </Box>
+            <Box padding="cmp-md" overflow="hidden">
+              <Typography.Paragraph>Right</Typography.Paragraph>
+            </Box>
+          </SplitLayout>
+        </Box>
+      );
+    })(args),
+};
+
 export const BaseWithoutHeight: Story = {
   tags: ['isHidden', 'noWrap'],
   render: (args) =>

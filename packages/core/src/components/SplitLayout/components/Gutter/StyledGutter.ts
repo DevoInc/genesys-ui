@@ -22,35 +22,32 @@ export const StyledGutter = styled.div<StyledGutterProps>`
     return css`
       ${!$quiet &&
       css`
-        transition: background ease
-          ${({ theme }) => theme.cmp.splitLayout.mutation.transitionDuration};
         background: ${({ theme }) =>
           theme.cmp.splitLayout.color.background.base};
-
-        &::before {
-          ${pseudoElementOverlayMixin()};
-        }
-
-        &:hover {
-          &::before {
-            background-color: ${theme.cmp.splitLayout.color.background.hovered};
-          }
-        }
-
-        &:active {
-          &::before {
-            background-color: ${theme.cmp.splitLayout.color.background.pressed};
-          }
-        }
-
-        ${$isDragging &&
-        css`
-          &::before {
-            background-color: ${theme.cmp.splitLayout.color.background
-              .dragging};
-          }
-        `};
       `}
+
+      &::before {
+        ${pseudoElementOverlayMixin()};
+      }
+
+      &:hover {
+        &::before {
+          background-color: ${theme.cmp.splitLayout.color.background.hovered};
+        }
+      }
+
+      &:active {
+        &::before {
+          background-color: ${theme.cmp.splitLayout.color.background.pressed};
+        }
+      }
+
+      ${$isDragging &&
+      css`
+        &::before {
+          background-color: ${theme.cmp.splitLayout.color.background.dragging};
+        }
+      `};
 
       ${$direction === 'horizontal' &&
       css`
