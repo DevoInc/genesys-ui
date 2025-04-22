@@ -1,5 +1,15 @@
 # Changelog
 
+## [17.25.0](https://github.com/DevoInc/genesys-ui/compare/v17.24.1...v17.25.0) (2025-04-22)
+
+### Features
+
+* **SplitLayout:** Removed unnecessary transition for the gutter and apply hover styles even when the quiet prop is set to true. ([fd0b076](https://github.com/DevoInc/genesys-ui/commit/fd0b07603d1caabac5e016ccb96e263580d80539))
+
+### Bug Fixes
+
+* **ButtonGroup:** The negative offset of quiet buttons is not applied to the first one of the list. ([0d3ae14](https://github.com/DevoInc/genesys-ui/commit/0d3ae14d9efcab3285624a7bb532adc4d70f1448))
+
 ## [17.24.1](https://github.com/DevoInc/genesys-ui/compare/v17.24.0...v17.24.1) (2025-04-21)
 
 ### Bug Fixes
