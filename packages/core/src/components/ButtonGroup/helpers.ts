@@ -65,8 +65,10 @@ export const buttonGroupItemMixin = ({
     list-style: none;
     // to reduce the long distance optical effect when the buttons are quiet
     // colorScheme
-    margin-left: ${hasQuietButton
-      ? `calc((${spacingBetweenButtons} / 2) * -1)`
-      : null};
+    &:not(:first-child) {
+      margin-left: ${hasQuietButton
+        ? `calc((${spacingBetweenButtons} / 2) * -1)`
+        : null};
+    }
   `;
 };
