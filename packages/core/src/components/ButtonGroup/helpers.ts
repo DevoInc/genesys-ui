@@ -63,8 +63,7 @@ export const buttonGroupItemMixin = ({
   const spacingBetweenButtons = getButtonGroupSpacingSize(size, theme);
   return css`
     list-style: none;
-    // to reduce the long distance optical effect when the buttons are quiet
-    // colorScheme
+    // to reduce the long distance optical effect when the buttons are quiet colorScheme
     &:not(:first-child) {
       margin-left: ${hasQuietButton
         ? `calc((${spacingBetweenButtons} / 2) * -1)`
