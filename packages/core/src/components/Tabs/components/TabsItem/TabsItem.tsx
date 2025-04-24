@@ -113,7 +113,6 @@ export const InternalTabsItem = React.forwardRef<
         {onClose && (
           <TabsItemClose
             align={evalAlign}
-            size={evalSize}
             state={state}
             tooltip={closeTooltip}
             onClick={(e) => {
