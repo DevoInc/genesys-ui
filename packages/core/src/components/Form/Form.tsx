@@ -11,11 +11,31 @@ import {
 } from './components';
 import { FormFloatingHelper } from './components/FormFloatingHelper';
 import { FormRequiredMark } from './components/FormRequiredMark';
+import { StyledForm } from './StyledForm';
 
 export interface FormProps
   extends IFormAttrs,
     IFormEventAttrs,
-    FormDistributorProps {
+    Omit<
+      FormDistributorProps,
+      | 'cssTranslate'
+      | 'display'
+      | 'elevation'
+      | 'opacity'
+      | 'padding'
+      | 'paddingBottom'
+      | 'paddingLeft'
+      | 'paddingRight'
+      | 'paddingTop'
+      | 'position'
+      | 'positionBottom'
+      | 'positionLeft'
+      | 'positionRight'
+      | 'positionTop'
+      | 'verticalAlign'
+      | 'visibility'
+      | 'zIndex'
+    > {
   /** Text as heading for the form. */
   heading?: string;
 }
@@ -23,26 +43,53 @@ export interface FormProps
 const PartForm: React.FC<FormProps> = ({
   acceptCharset,
   action,
+  alignContent,
+  alignItems,
   autoComplete,
   children,
+  direction = 'column',
   encType,
+  flexWrap,
+  heading,
+  height,
+  itemsGap = 'md',
+  justifyContent,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  marginTop,
+  maxHeight,
+  maxWidth,
   method,
+  minHeight,
+  minWidth,
   name,
   noValidate,
   onReset,
   onSubmit,
   rel,
+  style,
   target,
-  direction = 'column',
-  heading,
-  itemsGap = 'md',
   tooltip,
-  ...flexProps
+  width,
+  ...restNativeProps
 }) => (
-  <form
+  <StyledForm
+    {...restNativeProps}
+    $height={height}
+    $marginBottom={marginBottom}
+    $marginLeft={marginLeft}
+    $marginRight={marginRight}
+    $marginTop={marginTop}
+    $maxHeight={maxHeight}
+    $maxWidth={maxWidth}
+    $minHeight={minHeight}
+    $minWidth={minWidth}
+    $width={width}
     acceptCharset={acceptCharset}
     action={action}
     autoComplete={autoComplete}
+    css={style}
     encType={encType}
     method={method}
     name={name}
@@ -54,10 +101,17 @@ const PartForm: React.FC<FormProps> = ({
     title={tooltip}
   >
     {heading && <FormLegend text={heading} />}
-    <FormDistributor {...flexProps} direction={direction} itemsGap={itemsGap}>
+    <FormDistributor
+      alignContent={alignContent}
+      alignItems={alignItems}
+      direction={direction}
+      flexWrap={flexWrap}
+      itemsGap={itemsGap}
+      justifyContent={justifyContent}
+    >
       {children}
     </FormDistributor>
-  </form>
+  </StyledForm>
 );
 
 export const Form = PartForm as typeof PartForm & {

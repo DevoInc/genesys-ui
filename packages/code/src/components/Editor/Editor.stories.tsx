@@ -3,7 +3,13 @@ import { type Meta, type StoryObj } from '@storybook/react';
 import * as monaco from 'monaco-editor-core';
 import { saveAs } from 'file-saver';
 
-import { Button, ButtonGroup, Flex, IconButton } from '@devoinc/genesys-ui';
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Flex,
+  IconButton,
+} from '@devoinc/genesys-ui';
 import {
   GIDocumentsFilesPaperTextArchiveCopy,
   GIPasteClipboard,
@@ -25,7 +31,7 @@ const meta: Meta<typeof Editor> = {
   args: {
     bordered: true,
     value: 'Hey there!, I am a code editor',
-    height: '300px',
+    height: '20rem',
   },
 };
 
@@ -36,6 +42,32 @@ export const Base: Story = {
   args: {
     value: originalValue.concat(originalValue).concat(originalValue),
   },
+};
+
+export const NoHeight: Story = {
+  tags: ['isHidden'],
+  args: {
+    value: originalValue.concat(originalValue).concat(originalValue),
+  },
+  render: (args) =>
+    (({ ...props }: Partial<EditorProps>) => {
+      return <Editor {...props} height={undefined} />;
+    })(args),
+};
+
+export const ParentHeight: Story = {
+  tags: ['isHidden'],
+  args: {
+    value: originalValue.concat(originalValue).concat(originalValue),
+  },
+  render: (args) =>
+    (({ ...props }: Partial<EditorProps>) => {
+      return (
+        <Box height="20rem">
+          <Editor {...props} height={undefined} />
+        </Box>
+      );
+    })(args),
 };
 
 export const ReadonlyMode: Story = {
@@ -345,10 +377,9 @@ export const CustomTheme: Story = {
       };
 
       return (
-        <Editor.Container bordered={true}>
+        <Editor.Container bordered={true} height="300px">
           <Editor.Editor
             {...props}
-            height="300px"
             bordered={true}
             theme={customEditorTheme}
             value="I'm being built from my inner parts"

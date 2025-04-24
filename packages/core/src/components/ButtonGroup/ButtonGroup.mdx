@@ -36,6 +36,8 @@ and `Flex.Item` ones. We recommend to use these components as children:
   As the same way of `Flex` contexts, we only have to use this component as
   container of `ButtonGroup.Button` and `ButtonGroup.IconButton` when we need to
   apply some specific layout behavior: flex, width, align... etc.
+- **ButtonGroup.Divider**: it's the equivalent to the `Divider` component, but
+  it has a default height with the same value as the buttons in the group.
 
 With `ButtonGroup.IconButtons`:
 
@@ -71,6 +73,12 @@ children, as when we have quiet buttons, and it reduces automatically the gap
 between elements to reduce the distance optical effect.
 
 <Canvas of={Stories.ItemsWithQuiet} />
+
+## Using dividers
+
+We can use the `ButtonGroup.Divider` component to separate buttons.
+
+<Canvas of={Stories.WithDivider} />
 
 ## Using not pre-defined ButtonGroup components
 

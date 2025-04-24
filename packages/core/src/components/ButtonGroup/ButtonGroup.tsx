@@ -15,6 +15,7 @@ import {
   ButtonGroupItem,
 } from './components';
 import { mergeStyles } from '../../helpers';
+import { ButtonGroupDivider } from './components/ButtonGroupDivider';
 
 export interface ButtonGroupProps
   extends Omit<FlexProps, 'children'>,
@@ -74,6 +75,7 @@ export const InternalButtonGroup: React.FC<ButtonGroupProps> = ({
         ) : (
           <ButtonGroup.Item
             key={idx}
+            display="inline-flex"
             hasQuietButton={
               child.props?.colorScheme === 'quiet' || colorScheme === 'quiet'
             }
@@ -89,15 +91,18 @@ export const InternalButtonGroup: React.FC<ButtonGroupProps> = ({
 
 export const ButtonGroup = InternalButtonGroup as typeof InternalButtonGroup & {
   Button: typeof ButtonGroupButton;
+  Divider: typeof ButtonGroupDivider;
   IconButton: typeof ButtonGroupIconButton;
   Item: typeof ButtonGroupItem;
 };
 
 ButtonGroup.Button = ButtonGroupButton;
+ButtonGroup.Divider = ButtonGroupDivider;
 ButtonGroup.IconButton = ButtonGroupIconButton;
 ButtonGroup.Item = ButtonGroupItem;
 
 InternalButtonGroup.displayName = 'ButtonGroup';
+ButtonGroup.Divider.displayName = 'ButtonGroup.Divider';
 ButtonGroup.Button.displayName = 'ButtonGroup.Button';
 ButtonGroup.IconButton.displayName = 'ButtonGroup.IconButton';
 ButtonGroup.Item.displayName = 'ButtonGroup.Item';

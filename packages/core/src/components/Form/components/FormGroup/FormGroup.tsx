@@ -24,7 +24,7 @@ export interface FormGroupProps
   extends IStyledOverloadCss,
     IGlobalAttrs,
     Pick<FieldProps, 'helper' | 'hasFloatingHelper' | 'status'>,
-    Pick<FlexProps, 'marginLeft' | 'marginTop'>,
+    Pick<FlexProps, 'marginLeft' | 'marginTop' | 'marginBottom'>,
     Pick<
       FormDistributorProps,
       'alignItems' | 'direction' | 'flexWrap' | 'itemsGap' | 'justifyContent'
@@ -77,6 +77,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   justifyContent,
   legend,
   legendPosition = 'top',
+  marginBottom,
   marginLeft,
   marginTop,
   name,
@@ -107,6 +108,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
       name={asFieldset ? name : undefined}
       as={asFieldset ? 'fieldset' : 'div'}
       $legendPosition={legendPosition}
+      $marginBottom={marginBottom}
       $marginLeft={marginLeft}
       $marginTop={marginTop}
       title={tooltip}

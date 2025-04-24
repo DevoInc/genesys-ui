@@ -1,13 +1,13 @@
 import { css, DefaultTheme } from 'styled-components';
 
 import { TABS_ITEM_CLOSABLE_BUTTON_SIZE } from './constants';
-import type { TTabsItemState, TTabsSize } from '../../../declarations';
+import type { ITabs, TTabsItemState, TTabsSize } from '../../../declarations';
 import { typoMixin } from '../../../../../styled';
 
 export const getTabsItemClosableButtonSquare = (theme: DefaultTheme) =>
   theme.cmp.button.size.square[TABS_ITEM_CLOSABLE_BUTTON_SIZE];
 
-export interface ITabsLinkMixin {
+export interface ITabsLinkMixin extends Pick<ITabs, 'align'> {
   /** If the Tab item link has a closable button as sibling, so it needs specific styles. */
   closable?: boolean;
   /** The size of the component: font-size, height... etc. */
@@ -22,12 +22,14 @@ export interface ITabsLinkMixin {
  * Get the custom link styles when it's used as a Tab inner.
  *
  * @param props The object param
+ * @param props.align The align of the element
  * @param props.size The size of the element
  * @param props.state The state of the component: enabled, disabled... etc.
  * @param props.theme The common theme object with all the tokens
  * @return object with the css.
  */
 export const tabsLinkMixin = ({
+  align = 'middle',
   closable = false,
   size = 'md',
   state = 'enabled',
@@ -47,9 +49,11 @@ export const tabsLinkMixin = ({
     padding: ${closable
       ? `0 calc(${closableButtonSquare} + ${spaceToClosableButton} + ${paddingHor}) 0 ${paddingHor}`
       : `0 ${paddingHor}`};
-    border-radius: ${size === 'sm'
+    border-radius: ${align === 'bottom'
       ? `${borderRadius} ${borderRadius} 0 0`
-      : `${borderRadius}`};
+      : align === 'top'
+        ? `0 0 ${borderRadius} ${borderRadius}`
+        : `${borderRadius}`};
     white-space: nowrap;
     color: ${tokens.color.text[state]};
     ${typoMixin({ theme, $size: size })};
@@ -76,16 +80,20 @@ export const tabsLinkMixin = ({
  * @return object with the css.
  */
 export const tabsClosableButtonMixin = ({
-  size,
+  align,
+  state,
   theme,
 }: {
-  size: ITabsLinkMixin['size'];
+  align: ITabsLinkMixin['align'];
+  state: ITabsLinkMixin['state'];
   theme: DefaultTheme;
 }) => {
   return css`
     position: absolute;
+    background-color: ${state !== 'selected' && 'transparent'};
     right: ${theme.cmp.tabs.item.space.padding};
-    bottom: ${size === 'sm' &&
+    bottom: ${align === 'bottom' &&
     `calc(${theme.cmp.tabs.item.space.padding} / 2)`};
+    top: ${align === 'top' && `calc(${theme.cmp.tabs.item.space.padding} / 2)`};
   `;
 };

@@ -13,7 +13,7 @@ interface StyledHeaderCellProps
   $width: React.CSSProperties['width'];
   $offsetX?: number;
   $density?: TDensity;
-  sortable?: boolean;
+  $sortable?: boolean;
 }
 
 export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
@@ -29,7 +29,7 @@ export const StyledHeaderCell = styled.th<StyledHeaderCellProps>`
   ${({ $width }) => $width && `width: ${$width};`}
   padding: ${({ theme, $density }) =>
     `0 ${theme.cmp.table.cell.space.padding.hor[$density]}`};
-  cursor: ${({ sortable }) => sortable && 'pointer'};
+  cursor: ${({ $sortable }) => $sortable && 'pointer'};
 
   &:focus-visible {
     box-shadow: ${({ theme }) =>

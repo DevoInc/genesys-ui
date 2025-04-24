@@ -76,6 +76,8 @@ export interface IMouseEventAttrs<T = Element> {
   onMouseOver?: DOMAttributes<T>['onMouseOver'];
   /** A function that is called when the mouse button is released on the element */
   onMouseUp?: DOMAttributes<T>['onMouseUp'];
+  /** A function that is called when the mouse pointer enters on the element */
+  onMouseEnter?: DOMAttributes<T>['onMouseEnter'];
 }
 
 /** ---------------------------------------------

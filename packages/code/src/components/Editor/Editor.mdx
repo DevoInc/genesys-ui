@@ -31,6 +31,24 @@ export const MyEditor = () => <Editor value="I'm smart!" />
 `}
 />
 
+## Defining height
+
+There are two ways of defining the height for the component: you can define directly the 'height' prop or delegate this
+to any parent height, because the Editor always will try to fill the whole space available of its container,
+but anyway we need that parent to be defined an specific height.
+
+### Not defined height
+
+<Canvas of={Stories.NoHeight} />
+
+### height prop
+
+<Canvas of={Stories.Base} />
+
+### Parent height
+
+<Canvas of={Stories.ParentHeight} />
+
 ## Advanced usage
 
 For more specific customizations, the Editor can also be constructed from its
@@ -46,21 +64,20 @@ import { Editor, useEditorTheme } from '@devoinc/genesys-ui-code';
 export const CustomThemed = () => {
   const editorTheme = useEditorTheme();
 
-  return (
-    <Editor.Container bordered={true}>
-      <Editor.Editor
-        height="300px"
-        bordered={true}
-        theme={editorTheme}
-        value="I'm being built from my inner parts"
-      />
-      <Editor.ActionsContainer>
-        <IconButton icon="gi-heart_full" />
-      </Editor.ActionsContainer>
-    </Editor.Container>
-  );
-};
-`} />
+return (
+
+<Editor.Container bordered={true}>
+  <Editor.Editor
+    height="300px"
+    bordered={true}
+    theme={editorTheme}
+    value="I'm being built from my inner parts"
+  />
+  <Editor.ActionsContainer>
+    <IconButton icon="gi-heart_full" />
+  </Editor.ActionsContainer>
+</Editor.Container>
+); }; `} />
 
 ## Registering a custom language
 
@@ -87,41 +104,41 @@ import { Editor, registerLanguage } from '@devoinc/genesys-ui-code';
 const languageId = 'myLang';
 
 const language = {
-  keywords: ['"keyword"'],
-  tokenizer: {
-    root: [
-      [
-        /"[A-Za-z0-9_]_"/,
-        {
-          cases: {
-            '@keywords': 'keyword',
-            '@default': 'default',
-          },
-        },
-      ],
-      [/:\\s"((.|-|\\n|\\r)_)"/, 'value'],
-    ],
-  },
+keywords: ['"keyword"'],
+tokenizer: {
+root: [
+[
+/"[A-Za-z0-9_]_"/,
+{
+cases: {
+'@keywords': 'keyword',
+'@default': 'default',
+},
+},
+],
+[/:\\s"((.|-|\\n|\\r)_)"/, 'value'],
+],
+},
 };
 
 const completionProvider = {
-  provideCompletionItems: (model, position) => {
-    const word = model.getWordUntilPosition(position);
-    const suggestions = [
-      {
-        label: 'keyword',
-        kind: monaco.languages.CompletionItemKind.Field,
-        insertText: '"keyword"',
-        range: {
-          startLineNumber: position.lineNumber,
-          endLineNumber: position.lineNumber,
-          startColumn: word.startColumn,
-          endColumn: word.endColumn,
-        },
-      },
-    ];
-    return { suggestions: suggestions };
-  },
+provideCompletionItems: (model, position) => {
+const word = model.getWordUntilPosition(position);
+const suggestions = [
+{
+label: 'keyword',
+kind: monaco.languages.CompletionItemKind.Field,
+insertText: '"keyword"',
+range: {
+startLineNumber: position.lineNumber,
+endLineNumber: position.lineNumber,
+startColumn: word.startColumn,
+endColumn: word.endColumn,
+},
+},
+];
+return { suggestions: suggestions };
+},
 };
 
 export const CustomLang = () => {
@@ -133,17 +150,16 @@ export const CustomLang = () => {
       .registerCompletionProvider(completionProvider);
   };
 
-  return (
-    <Editor
-      height="300px"
-      language={languageId}
-      bordered={true}
-      value={'{ "keyword": true, "not_keyword": 123 }'}
-      beforeMount={registerLanguageProviders}
-    />
-  );
-};
-`} />
+return (
+
+<Editor
+  height="300px"
+  language={languageId}
+  bordered={true}
+  value={'{ "keyword": true, "not_keyword": 123 }'}
+  beforeMount={registerLanguageProviders}
+/>
+); }; `} />
 
 ## Hooks
 
@@ -164,27 +180,28 @@ import {
 export const CustomThemed = () => {
   const editorTheme = useEditorTheme();
 
-  const { containerRef } = useEditor({
-    originalValue: 'Hey there!',
-    modifiedValue: 'Hey hey!',
-    theme: editorTheme,
-    language: '',
-    beforeMount: () => console.log('beforeMount'),
-    onMount: () => console.log('onMount'),
-    onChange: () => console.log('onChange'),
-    onValidate: () => console.log('onValidate'),
-    options: {},
-  });
+const { containerRef } = useEditor({
+originalValue: 'Hey there!',
+modifiedValue: 'Hey hey!',
+theme: editorTheme,
+language: '',
+beforeMount: () => console.log('beforeMount'),
+onMount: () => console.log('onMount'),
+onChange: () => console.log('onChange'),
+onValidate: () => console.log('onValidate'),
+options: {},
+});
 
-  return (
-    <Editor.Container>
-      <Box ref={containerRef} height="100%" />
-        <Editor.ActionsContainer>
-          <IconButton icon="gi-heart_full" />
-        </Editor.ActionsContainer>
-      </Box>
-    </Editor.Container>
-  );
+return (
+
+<Editor.Container>
+<Box ref={containerRef} height="100%" />
+<Editor.ActionsContainer>
+<IconButton icon="gi-heart_full" />
+</Editor.ActionsContainer>
+</Box>
+</Editor.Container>
+);
 };
 `} />
 
@@ -216,21 +233,20 @@ export const CustomThemed = () => {
     },
   };
 
-  return (
-    <Editor.Container bordered={true}>
-      <Editor.Editor
-        height="300px"
-        bordered={true}
-        theme={customEditorTheme}
-        value="I'm being built from my inner parts"
-      />
-      <Editor.ActionsContainer>
-        <IconButton icon="gi-heart_full" />
-      </Editor.ActionsContainer>
-    </Editor.Container>
-  );
-};
-`} />
+return (
+
+<Editor.Container bordered={true}>
+  <Editor.Editor
+    height="300px"
+    bordered={true}
+    theme={customEditorTheme}
+    value="I'm being built from my inner parts"
+  />
+  <Editor.ActionsContainer>
+    <IconButton icon="gi-heart_full" />
+  </Editor.ActionsContainer>
+</Editor.Container>
+); }; `} />
 
 ## Custom Configurations
 

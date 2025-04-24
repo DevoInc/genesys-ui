@@ -9,9 +9,7 @@ import { InternalEditor, type InternalEditorProps } from './components';
 export interface EditorProps
   extends IDataAttrs,
     Omit<InternalEditorProps, 'theme'> {
-  /**
-   * Array of actions to be added to the editor
-   */
+  /** Array of actions to be added to the editor. */
   actions?: React.ReactNode;
 }
 
@@ -27,19 +25,22 @@ const BaseEditor: React.FC<EditorProps> = ({
   onValidate,
   actions,
   options = {},
-  ...restDataProps
+  ...restNativeProps
 }) => {
   const editorTheme = useEditorTheme();
 
   return (
-    <Container bordered={bordered} readOnly={options.readOnly}>
+    <Container
+      bordered={bordered}
+      readOnly={options.readOnly}
+      height={height}
+      width={width}
+    >
       <InternalEditor
-        {...restDataProps}
+        {...restNativeProps}
         value={value}
         theme={editorTheme}
         language={language}
-        height={height}
-        width={width}
         beforeMount={beforeMount}
         onMount={onMount}
         onChange={onChange}

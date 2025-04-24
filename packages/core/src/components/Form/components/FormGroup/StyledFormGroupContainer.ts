@@ -5,6 +5,7 @@ import { getSpacingPropCss } from '../../../../helpers';
 import { formGroupSpacingMixin } from '../../helpers';
 
 export interface StyledFormGroupContainerProps {
+  $marginBottom?: FlexProps['marginBottom'];
   $marginLeft?: FlexProps['marginLeft'];
   $marginTop?: FlexProps['marginTop'];
   /** It defines if the group is rendered as a fieldset, and therefore it can
@@ -26,6 +27,7 @@ export const StyledFormGroupContainer = styled.div<StyledFormGroupContainerProps
     $asFieldset,
     $childrenFitFullWidth,
     $legendPosition,
+    $marginBottom,
     $marginLeft,
     $marginTop,
     theme,
@@ -52,6 +54,9 @@ export const StyledFormGroupContainer = styled.div<StyledFormGroupContainerProps
           `
         : formGroupSpacingMixin(theme)};
       margin-left: ${$marginLeft && getSpacingPropCss(theme)($marginLeft)};
+      margin-bottom: ${$marginBottom &&
+      getSpacingPropCss(theme)($marginBottom)};
+
       ${$asFieldset &&
       css`
         min-width: 0;
