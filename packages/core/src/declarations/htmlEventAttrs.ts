@@ -78,6 +78,8 @@ export interface IMouseEventAttrs<T = Element> {
   onMouseUp?: DOMAttributes<T>['onMouseUp'];
   /** A function that is called when the mouse pointer enters on the element */
   onMouseEnter?: DOMAttributes<T>['onMouseEnter'];
+  /** A function that is called when the right mouse button is clicked on the element */
+  onContextMenu?: DOMAttributes<T>['onContextMenu'];
 }
 
 /** ---------------------------------------------

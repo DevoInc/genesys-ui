@@ -19,13 +19,13 @@ describe('components', () => {
       );
       const item1 = screen.getByText('Item 1');
       expect(item1).toBeInTheDocument();
-      expect(item1).toHaveAttribute('aria-selected', 'true');
+      expect(item1.parentElement).toHaveAttribute('aria-selected', 'true');
       const item2 = screen.getByText('Item 2');
       expect(item2).toBeInTheDocument();
-      expect(item2).toHaveAttribute('aria-selected', 'false');
+      expect(item2.parentElement).toHaveAttribute('aria-selected', 'false');
       const item3 = screen.getByText('Item 3');
       expect(item3).toBeInTheDocument();
-      expect(item3).toHaveAttribute('aria-selected', 'false');
+      expect(item3.parentElement).toHaveAttribute('aria-selected', 'false');
     });
   });
 });

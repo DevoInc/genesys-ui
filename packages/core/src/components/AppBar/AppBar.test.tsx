@@ -25,7 +25,7 @@ describe('components', () => {
       );
       expect(screen.getByText('test')).toBeInTheDocument();
       expect(screen.getByText('Item 1')).toBeInTheDocument();
-      expect(screen.getByText('Item 1')).toHaveAttribute(
+      expect(screen.getByText('Item 1').parentElement).toHaveAttribute(
         'aria-selected',
         'true',
       );
