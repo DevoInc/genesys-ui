@@ -37,6 +37,19 @@ export const Playground: Story = {
     ))(args),
 };
 
+export const WithDivider: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => (
+      <ButtonGroup {...props}>
+        <ButtonGroup.IconButton icon={<GICustomDate />} />
+        <ButtonGroup.IconButton icon={<GIReloadRefreshUpdate />} />
+        <ButtonGroup.Divider />
+        <ButtonGroup.IconButton icon={<GIPinBookmark />} />
+      </ButtonGroup>
+    ))(args),
+};
+
 export const WithButtons: Story = {
   tags: ['isHidden'],
   render: (args) =>

@@ -12,6 +12,7 @@ const meta: Meta<typeof Tabs> = {
   title: 'Components/Navigation/Tabs',
   component: Tabs,
   args: {
+    align: 'middle',
     colorScheme: 'base',
     size: 'md',
   },
@@ -119,9 +120,8 @@ export const Closable: Story = {
       useTabsAccessibility({ activeTab, tabsRef });
       //useClosableTabs({ activeTab, tabsRef, tabsLength: tabs.length });
       // eslint-disable-next-line no-console
-      console.log(activeTab);
       return (
-        <Tabs aria-label="Demo tabs" contained>
+        <Tabs aria-label="Demo tabs" contained size={'md'}>
           <Tabs.Aside marginLeft="0" marginRight="cmp-sm">
             <Button
               size="sm"
@@ -157,7 +157,7 @@ export const Closable: Story = {
               />
             ))}
           </Tabs.List>
-          <Tabs.Aside>
+          <Tabs.Aside margin="0 cmp-lg">
             <Tabs.Divider />
             <IconButtonRemove
               size="sm"

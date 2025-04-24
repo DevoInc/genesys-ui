@@ -8,6 +8,7 @@ import type {
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../../../declarations';
+import type { FlexProps } from '../../../Flex';
 import type { LinkProps } from '../../../Link';
 import type { ITabs, TTabsItemState } from '../../declarations';
 import type { IconProps } from '../../../Icon';
@@ -19,6 +20,7 @@ import {
   TabsItemIcon,
   TabsItemLink,
 } from './components';
+import { StyledTabsItemLabel } from './StyledTabsItemLabel';
 
 export interface TabsItemProps
   extends IGlobalAttrs,
@@ -27,8 +29,17 @@ export interface TabsItemProps
     IStyledOverloadCss,
     IStyledPolymorphic,
     IMouseEventAttrs,
-    Pick<LinkProps, 'href' | 'target' | 'rel'>,
-    Pick<ITabs, 'size' | 'wide'> {
+    Pick<FlexProps, 'maxWidth' | 'minWidth' | 'width'>,
+    Pick<
+      LinkProps,
+      | 'aria-controls'
+      | 'aria-expanded'
+      | 'aria-haspopup'
+      | 'href'
+      | 'target'
+      | 'rel'
+    >,
+    Pick<ITabs, 'align' | 'size' | 'wide'> {
   /** A title or description of the element, typically displayed as a tooltip when hovering over the element */
   closeTooltip?: IGlobalAttrs['tooltip'];
   /** This property defines the icon type */
@@ -41,57 +52,81 @@ export interface TabsItemProps
   state?: TTabsItemState;
 }
 
-export const InternalTabsItem: React.FC<Resolve<TabsItemProps>> = ({
-  as,
-  closeTooltip,
-  href,
-  icon,
-  label,
-  onClose,
-  onClick,
-  rel,
-  size,
-  state = 'enabled',
-  target,
-  tooltip,
-  wide,
-  ...dataProps
-}) => {
-  const context = React.useContext(TabsContext);
-  const evalWide = wide || context.wide;
-  const evalSize = size || context.size || 'md';
+export const InternalTabsItem = React.forwardRef<
+  HTMLDivElement,
+  Resolve<TabsItemProps>
+>(
+  (
+    {
+      align,
+      as,
+      closeTooltip,
+      href,
+      icon,
+      label,
+      maxWidth,
+      minWidth,
+      onClose,
+      onClick,
+      rel,
+      size,
+      state = 'enabled',
+      target,
+      tooltip,
+      wide,
+      width,
+      ...restProps
+    },
+    ref,
+  ) => {
+    const context = React.useContext(TabsContext);
+    const evalWide = wide || context.wide;
+    const evalSize = size || context.size || 'md';
+    const evalAlign = align || context.align || 'middle';
 
-  return (
-    <TabsItemContainer as={as} size={evalSize} wide={evalWide}>
-      <TabsItemLink
-        {...dataProps}
-        state={state}
+    return (
+      <TabsItemContainer
+        ref={ref}
+        align={evalAlign}
+        as={as}
+        maxWidth={maxWidth}
+        minWidth={minWidth}
         size={evalSize}
-        onClick={state === 'disabled' ? undefined : onClick}
-        closable={Boolean(onClose)}
-        href={href}
-        rel={rel}
-        target={target}
-        tooltip={tooltip}
+        wide={evalWide}
+        width={width}
       >
-        {icon && <TabsItemIcon size={evalSize}>{icon}</TabsItemIcon>}
-        {label}
-      </TabsItemLink>
-      {onClose && (
-        <TabsItemClose
-          size={evalSize}
+        <TabsItemLink
+          {...restProps}
+          align={evalAlign}
           state={state}
-          tooltip={closeTooltip}
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            onClose();
-          }}
-        />
-      )}
-    </TabsItemContainer>
-  );
-};
+          size={evalSize}
+          onClick={state === 'disabled' ? undefined : onClick}
+          closable={Boolean(onClose)}
+          href={href}
+          rel={rel}
+          target={target}
+          tooltip={tooltip}
+        >
+          {icon && <TabsItemIcon size={evalSize}>{icon}</TabsItemIcon>}
+          <StyledTabsItemLabel>{label}</StyledTabsItemLabel>
+        </TabsItemLink>
+        {onClose && (
+          <TabsItemClose
+            align={evalAlign}
+            size={evalSize}
+            state={state}
+            tooltip={closeTooltip}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onClose();
+            }}
+          />
+        )}
+      </TabsItemContainer>
+    );
+  },
+);
 
 export const TabsItem = InternalTabsItem as typeof InternalTabsItem & {
   _Close: typeof TabsItemClose;

@@ -12,31 +12,42 @@ export interface TabsItemLinkProps
   children?: React.ReactNode;
 }
 
-export const TabsItemLink: React.FC<Resolve<TabsItemLinkProps>> = ({
-  'aria-selected': ariaSelected,
-  children,
-  closable,
-  size = 'md',
-  state = 'enabled',
-  style,
-  tabIndex,
-  ...restLinkProps
-}) => {
-  const theme = useTheme();
-  return (
-    <Link
-      {...restLinkProps}
-      aria-selected={ariaSelected || state === 'selected'}
-      aria-disabled={state === 'disabled' ? true : undefined}
-      role="tab"
-      state={state === 'selected' ? 'enabled' : state}
-      style={mergeStyles(
-        tabsLinkMixin({ closable, theme, size, state }),
-        style,
-      )}
-      tabIndex={tabIndex || (state === 'selected' ? -1 : 0)}
-    >
-      {children}
-    </Link>
-  );
-};
+export const TabsItemLink = React.forwardRef<
+  HTMLAnchorElement,
+  Resolve<TabsItemLinkProps>
+>(
+  (
+    {
+      align,
+      'aria-selected': ariaSelected,
+      children,
+      closable,
+      size = 'md',
+      state = 'enabled',
+      style,
+      tabIndex,
+      ...restLinkProps
+    },
+    ref,
+  ) => {
+    const theme = useTheme();
+    return (
+      <Link
+        {...restLinkProps}
+        ref={ref}
+        aria-selected={ariaSelected || state === 'selected'}
+        aria-disabled={state === 'disabled' ? true : undefined}
+        role="tab"
+        lineClamp={1}
+        state={state === 'selected' ? 'enabled' : state}
+        style={mergeStyles(
+          tabsLinkMixin({ align, closable, theme, size, state }),
+          style,
+        )}
+        tabIndex={tabIndex || (state === 'selected' ? -1 : 0)}
+      >
+        {children}
+      </Link>
+    );
+  },
+);

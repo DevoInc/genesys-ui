@@ -18,6 +18,7 @@ export const TabsItemIcon: React.FC<TabsItemIconProps> = ({
       {...restIconProps}
       size={TABS_ITEM_ICON_SIZE_MAP[size]}
       style={{
+        flex: '0 0 auto',
         marginRight: tokens.cmp.tabs.item.space.margin.iconToText,
         ...style,
       }}

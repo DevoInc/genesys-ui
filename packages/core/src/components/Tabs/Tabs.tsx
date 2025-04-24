@@ -30,6 +30,7 @@ export interface TabsProps
 const InternalTabs = React.forwardRef<HTMLDivElement, Resolve<TabsProps>>(
   (
     {
+      align = 'middle',
       children = [],
       colorScheme = 'base',
       contained,
@@ -42,6 +43,7 @@ const InternalTabs = React.forwardRef<HTMLDivElement, Resolve<TabsProps>>(
     <TabsContainer {...nativeProps} contained={contained} size={size} ref={ref}>
       <TabsContext.Provider
         value={{
+          align,
           colorScheme,
           size,
           wide,

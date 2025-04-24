@@ -19,9 +19,6 @@ export const codeContainerMixin = ({
   const cmpTokens = theme.cmp.editor;
   return css`
     position: relative;
-    width: 100%;
-    height: 100%;
-
     ${$bordered &&
     css`
       border-width: ${cmpTokens.shape.borderSize};

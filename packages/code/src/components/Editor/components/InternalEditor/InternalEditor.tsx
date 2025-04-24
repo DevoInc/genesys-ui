@@ -1,21 +1,12 @@
 import * as React from 'react';
-import type { IDataAttrs } from '@devoinc/genesys-ui';
-
-import type { IUseEditor } from '../../hooks/editor/declarations';
 import { useEditor } from '../../hooks';
 import { StyledInternalEditor } from './StyledInternalEditor';
+import type { IEditor } from '../../declarations';
 
-export interface InternalEditorProps extends IDataAttrs, IUseEditor {
-  /** Width of the editor wrapper */
-  width?: number | string;
-  /** Height of the editor wrapper */
-  height?: number | string;
-  /** Add border to the editor wrapper */
-  bordered?: boolean;
-}
+export interface InternalEditorProps extends IEditor {}
 
 export const InternalEditor: React.FC<InternalEditorProps> = ({
-  width = 'auto',
+  width = '100%',
   height = '100%',
   bordered,
   value,
@@ -26,7 +17,7 @@ export const InternalEditor: React.FC<InternalEditorProps> = ({
   onChange,
   onValidate,
   options,
-  ...restDataProps
+  ...restNativeProps
 }) => {
   const { containerRef } = useEditor({
     value,
@@ -41,7 +32,7 @@ export const InternalEditor: React.FC<InternalEditorProps> = ({
 
   return (
     <StyledInternalEditor
-      {...restDataProps}
+      {...restNativeProps}
       ref={containerRef}
       $height={height}
       $width={width}

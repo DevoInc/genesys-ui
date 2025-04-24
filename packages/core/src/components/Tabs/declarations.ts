@@ -5,10 +5,13 @@ import type {
 } from '../../declarations/commonProps';
 
 export type TTabsColorScheme = 'base' | 'primary';
+export type TTabsAlign = 'middle' | 'bottom' | 'top';
 export type TTabsSize = TBaseSize;
 export type TTabsItemState = TBasicState | TSelectedState;
 
 export interface ITabs {
+  /** The vertical alignment for the tabs. */
+  align?: TTabsAlign;
   /** Adjust the appearance of the TabsContainer to be boxed. */
   contained?: boolean;
   /** The size which defines height, padding, font-size, line-height... etc. */

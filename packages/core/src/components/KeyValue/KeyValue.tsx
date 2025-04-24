@@ -1,6 +1,10 @@
 import * as React from 'react';
 
-import type { IGlobalAttrs } from '../../declarations';
+import type {
+  IGlobalAttrs,
+  IStyledOverloadCss,
+  IStyledPolymorphic,
+} from '../../declarations';
 import type { IKeyValue } from './declarations';
 import {
   KeyValueContainer,
@@ -13,9 +17,12 @@ import { useTheme } from 'styled-components';
 
 export interface KeyValueProps
   extends IGlobalAttrs,
+    IStyledOverloadCss,
+    IStyledPolymorphic,
     Omit<IKeyValue, 'children'> {}
 
 export const InternalKeyValue: React.FC<KeyValueProps> = ({
+  as,
   boldScheme = 'key',
   format = 'base',
   id,
@@ -25,6 +32,7 @@ export const InternalKeyValue: React.FC<KeyValueProps> = ({
   keyWidth,
   role,
   size = 'md',
+  style,
   supportingVisual,
   supportingVisualAlign,
   tooltip,
@@ -36,10 +44,12 @@ export const InternalKeyValue: React.FC<KeyValueProps> = ({
   const visualMinHeight = useTheme().alias.typo.lineHeight.body[size];
   return (
     <KeyValueContainer
+      as={as}
       format={format}
       id={id}
       role={role}
       size={size}
+      style={style}
       tooltip={tooltip}
     >
       {supportingVisual && (

@@ -13,17 +13,21 @@ export const TabsDivider: React.FC<TabsDividerProps> = ({
   ...dividerProps
 }) => {
   const tokens = useTheme().cmp.tabs.divider;
-  const baseStyles = `
-      margin: ${!margin && `0 ${tokens.space.margin}`};
+  const bgStyles = `
       background: ${tokens.color.background};
     `;
+  const marginStyles = margin
+    ? null
+    : `
+      margin: ${!margin ? `0 ${tokens.space.margin}` : undefined};
+    `;
   return (
-    <Flex.Item alignSelf="center" role="presentation">
+    <Flex.Item alignSelf="center" role="presentation" display="inline-flex">
       <Divider
         {...dividerProps}
         margin={margin}
         vertical
-        style={mergeStyles(baseStyles, style)}
+        style={mergeStyles(bgStyles, marginStyles, style)}
       />
     </Flex.Item>
   );
