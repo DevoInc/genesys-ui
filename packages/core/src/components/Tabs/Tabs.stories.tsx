@@ -71,6 +71,7 @@ export const Playground: Story = {
 };
 
 export const WithScroll: Story = {
+  tags: ['isHidden'],
   render: (args) =>
     ((args) => {
       const tabsRef = React.useRef<HTMLDivElement>();
