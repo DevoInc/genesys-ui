@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { IDataAttrs } from '@devoinc/genesys-ui';
 
 import { useEditorTheme } from './hooks';
-import { ActionsContainer } from './components/Actions';
+import { ActionsContainer, ActionsContainerItem } from './components/Actions';
 import { Container } from './components/Container/Container';
 import { InternalEditor, type InternalEditorProps } from './components';
 
@@ -10,7 +10,7 @@ export interface EditorProps
   extends IDataAttrs,
     Omit<InternalEditorProps, 'theme'> {
   /** Array of actions to be added to the editor. */
-  actions?: React.ReactNode;
+  actions?: React.ReactNode | React.ReactNode[];
 }
 
 const BaseEditor: React.FC<EditorProps> = ({
@@ -57,13 +57,16 @@ export const Editor = BaseEditor as typeof BaseEditor & {
   Container: typeof Container;
   Editor: typeof InternalEditor;
   ActionsContainer: typeof ActionsContainer;
+  ActionsContainerItem: typeof ActionsContainerItem;
 };
 
 Editor.Container = Container;
 Editor.Editor = InternalEditor;
 Editor.ActionsContainer = ActionsContainer;
+Editor.ActionsContainerItem = ActionsContainerItem;
 
 InternalEditor.displayName = 'Editor';
 Container.displayName = 'Editor.Container';
 InternalEditor.displayName = 'Editor.Editor';
 ActionsContainer.displayName = 'Editor.ActionsContainer';
+ActionsContainerItem.displayName = 'Editor.ActionsContainerItem';

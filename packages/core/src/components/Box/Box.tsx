@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import type { IDataAttrs, ILayoutBox } from '../../declarations';
-import { StyledBox } from './StyledBox';
 import type { Resolve } from '../../typeFunctions';
+import { StyledBox } from './StyledBox';
 
 export interface BoxProps extends IDataAttrs, ILayoutBox {}
 

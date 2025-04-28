@@ -55,6 +55,7 @@ export const MenuItemContainer = React.forwardRef<
       unlimitedHeight,
       state,
       style,
+      tooltip,
       ...restMenuItemContainerProps
     },
     ref,
@@ -66,6 +67,7 @@ export const MenuItemContainer = React.forwardRef<
         $hasExtraLeftSpace={hasExtraLeftSpace}
         $unlimitedHeight={unlimitedHeight}
         $state={state}
+        title={tooltip}
         css={style}
       >
         {children}

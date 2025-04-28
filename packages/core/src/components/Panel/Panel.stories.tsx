@@ -15,6 +15,7 @@ import { lorem } from '../../../stories/utils/fillerTexts';
 import { HFlex } from '../HFlex';
 import { Box } from '../Box';
 import { InputControl } from '../InputControl';
+import { Tabs, useTabsAccessibility } from '../Tabs';
 
 const meta: Meta<typeof Panel> = {
   title: 'Components/Layout/Panel',
@@ -110,6 +111,63 @@ export const Closable: Story = {
         </Panel>
       );
     })(),
+};
+
+export const WithNavigationContent: Story = {
+  args: {
+    children: [
+      <Panel.Header
+        key="header-1"
+        title="Header tittle"
+        navigationContent={() => {
+          const tabsRef = React.useRef<HTMLDivElement>();
+          const [activeTab, setActiveTab] = React.useState(0);
+          useTabsAccessibility({ activeTab, tabsRef });
+          return (
+            <Box marginTop="cmp-sm">
+              <Tabs size="sm" contained align="bottom">
+                <Tabs.List activeTabIndex={activeTab} ref={tabsRef}>
+                  <Tabs.Item
+                    label="Lookups"
+                    onClick={() => setActiveTab(0)}
+                    state={activeTab === 0 ? 'selected' : undefined}
+                  />
+                  <Tabs.Item
+                    label="Aggregation tasks"
+                    onClick={() => setActiveTab(1)}
+                    state={activeTab === 1 ? 'selected' : undefined}
+                  />
+                  <Tabs.Item
+                    label="Aggregations"
+                    onClick={() => setActiveTab(2)}
+                    state={activeTab === 2 ? 'selected' : undefined}
+                  />
+                  <Tabs.Item
+                    label="Injections"
+                    onClick={() => setActiveTab(3)}
+                    state={activeTab === 3 ? 'selected' : undefined}
+                  />
+                </Tabs.List>
+              </Tabs>
+            </Box>
+          );
+        }}
+      />,
+      <Panel.Body key="body-1">{lorem}</Panel.Body>,
+      <Panel.Footer
+        key="footer-1"
+        bordered
+        actions={[
+          <Button key={1} colorScheme="quiet">
+            Cancel
+          </Button>,
+          <Button key={2} colorScheme="accent">
+            Apply
+          </Button>,
+        ]}
+      />,
+    ],
+  },
 };
 
 export const Filterable: Story = {

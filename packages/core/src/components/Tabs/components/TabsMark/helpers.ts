@@ -1,8 +1,8 @@
 import { css, DefaultTheme } from 'styled-components';
 
-import type { TTabsColorScheme } from '../../declarations';
+import type { ITabs, TTabsColorScheme } from '../../declarations';
 
-export interface ITabsMarkMixin {
+export interface ITabsMarkMixin extends Pick<ITabs, 'align'> {
   /** The color scheme of the tabs mark. */
   colorScheme?: TTabsColorScheme;
   /** The common theme object with all the tokens. */
@@ -14,12 +14,16 @@ export interface ITabsMarkMixin {
  *
  * @return object with the css.
  */
-export const tabsMarkMixin = ({ colorScheme, theme }: ITabsMarkMixin) => {
+export const tabsMarkMixin = ({
+  align,
+  colorScheme,
+  theme,
+}: ITabsMarkMixin) => {
   const tokens = theme.cmp.tabs.mark;
   const ColorSchemeForTokens = colorScheme === 'base' ? 'default' : colorScheme;
   return css`
     position: absolute;
-    bottom: 0;
+    inset: ${align === 'top' ? '0 auto auto auto' : 'auto auto 0 auto'};
     transition: all ease-in-out ${tokens.mutation.transitionDuration};
     padding: 0 ${tokens.space.padding};
 

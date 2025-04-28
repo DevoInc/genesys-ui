@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { Flex, type FlexProps } from '../Flex';
 import type { TGlobalSpacing } from '../../declarations';
+import { Resolve } from '../../typeFunctions';
 import { getChildrenByRowFlex } from './helpers';
+import { Flex, type FlexProps } from '../Flex';
 import { WrapItem } from './components';
 
 export interface WrapProps
@@ -21,31 +22,40 @@ export interface WrapProps
   vSpacing?: TGlobalSpacing;
 }
 
-export const InternalWrap: React.FC<WrapProps> = ({
-  alignContent = 'flex-start',
-  alignItems = 'flex-start',
-  children,
-  childrenByRow,
-  hSpacing = 'cmp-md',
-  vSpacing = 'cmp-md',
-  ...flexProps
-}) => {
-  const theme = useTheme();
-  return (
-    <Flex
-      {...flexProps}
-      alignContent={alignContent}
-      alignItems={alignItems}
-      childrenFlex={getChildrenByRowFlex({ childrenByRow, hSpacing, theme })}
-      columnGap={hSpacing}
-      flexDirection="row"
-      flexWrap="wrap"
-      rowGap={vSpacing}
-    >
-      {children}
-    </Flex>
-  );
-};
+export const InternalWrap = React.forwardRef<
+  HTMLDivElement,
+  Resolve<WrapProps>
+>(
+  (
+    {
+      alignContent = 'flex-start',
+      alignItems = 'flex-start',
+      children,
+      childrenByRow,
+      hSpacing = 'cmp-md',
+      vSpacing = 'cmp-md',
+      ...flexProps
+    },
+    ref,
+  ) => {
+    const theme = useTheme();
+    return (
+      <Flex
+        {...flexProps}
+        ref={ref}
+        alignContent={alignContent}
+        alignItems={alignItems}
+        childrenFlex={getChildrenByRowFlex({ childrenByRow, hSpacing, theme })}
+        columnGap={hSpacing}
+        flexDirection="row"
+        flexWrap="wrap"
+        rowGap={vSpacing}
+      >
+        {children}
+      </Flex>
+    );
+  },
+);
 
 export const Wrap = InternalWrap as typeof InternalWrap & {
   Item: typeof WrapItem;

@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import type { TGlobalSpacing } from '../../declarations';
+import { Resolve } from '../../typeFunctions';
 import { Flex, type FlexProps } from '../Flex';
 import { HFlexItem } from './components';
 
@@ -16,23 +17,29 @@ export interface HFlexProps
   spacing?: TGlobalSpacing;
 }
 
-const InternalHFlex: React.FC<HFlexProps> = ({
-  alignItems = 'center',
-  children,
-  childrenFitFullWidth = false,
-  spacing = 'cmp-md',
-  ...flexProps
-}) => (
-  <Flex
-    {...flexProps}
-    alignItems={alignItems}
-    childrenFlex={childrenFitFullWidth && '1'}
-    columnGap={spacing}
-    flexDirection="row"
-    flexWrap="nowrap"
-  >
-    {children}
-  </Flex>
+const InternalHFlex = React.forwardRef<HTMLDivElement, Resolve<HFlexProps>>(
+  (
+    {
+      alignItems = 'center',
+      children,
+      childrenFitFullWidth = false,
+      spacing = 'cmp-md',
+      ...flexProps
+    },
+    ref,
+  ) => (
+    <Flex
+      {...flexProps}
+      ref={ref}
+      alignItems={alignItems}
+      childrenFlex={childrenFitFullWidth && '1'}
+      columnGap={spacing}
+      flexDirection="row"
+      flexWrap="nowrap"
+    >
+      {children}
+    </Flex>
+  ),
 );
 
 export const HFlex = InternalHFlex as typeof InternalHFlex & {

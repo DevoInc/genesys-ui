@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import type { TGlobalSpacing } from '../../declarations';
+import { Resolve } from '../../typeFunctions';
 import { Flex, type FlexProps } from '../Flex';
 import { VFlexItem } from './components';
 
@@ -16,26 +17,34 @@ export interface VFlexProps
   childrenFitFullHeight?: boolean;
 }
 
-const InternalVFlex: React.FC<VFlexProps> = ({
-  alignItems,
-  children,
-  childrenFlex,
-  childrenFitFullHeight = false,
-  childrenFitFullWidth = true,
-  justifyContent = 'flex-start',
-  spacing = 'cmp-md',
-  ...flexProps
-}) => (
-  <Flex
-    {...flexProps}
-    alignItems={alignItems || (childrenFitFullWidth ? 'stretch' : 'flex-start')}
-    childrenFlex={childrenFlex || (childrenFitFullHeight ? '1' : undefined)}
-    flexDirection="column"
-    justifyContent={justifyContent}
-    rowGap={spacing}
-  >
-    {children}
-  </Flex>
+const InternalVFlex = React.forwardRef<HTMLDivElement, Resolve<VFlexProps>>(
+  (
+    {
+      alignItems,
+      children,
+      childrenFlex,
+      childrenFitFullHeight = false,
+      childrenFitFullWidth = true,
+      justifyContent = 'flex-start',
+      spacing = 'cmp-md',
+      ...flexProps
+    },
+    ref,
+  ) => (
+    <Flex
+      {...flexProps}
+      ref={ref}
+      alignItems={
+        alignItems || (childrenFitFullWidth ? 'stretch' : 'flex-start')
+      }
+      childrenFlex={childrenFlex || (childrenFitFullHeight ? '1' : undefined)}
+      flexDirection="column"
+      justifyContent={justifyContent}
+      rowGap={spacing}
+    >
+      {children}
+    </Flex>
+  ),
 );
 
 export const VFlex = InternalVFlex as typeof InternalVFlex & {

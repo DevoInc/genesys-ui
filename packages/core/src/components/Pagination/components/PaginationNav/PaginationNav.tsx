@@ -103,7 +103,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
           <Flex.Item as="li" flex="0 0 auto" minWidth="4.8rem">
             <SelectControl
               aria-label={pageSelectorLabel}
-              data-tip={
+              tooltip={
                 isMenuOpen
                   ? ''
                   : selectPageTooltipTextFn({ page, pageSize, totalItems })

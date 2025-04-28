@@ -37,7 +37,6 @@ export const panelMixin =
       css`
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
       `};
       border-radius: ${borderRadius};
       border: ${elevation === 'ground' &&

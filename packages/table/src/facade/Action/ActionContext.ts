@@ -8,6 +8,7 @@ export type TActionMenuEntry = {
   text?: string;
   children?: TActionMenuEntry[];
   component?: 'separator';
+  tooltip?: string;
 };
 
 export type TQuickActionMenuEntry = {
@@ -15,6 +16,7 @@ export type TQuickActionMenuEntry = {
   hasBadge?: IconButtonProps['hasBadge'];
   Icon?: React.ReactNode;
   onClick?: (rowIndex: number, event: React.MouseEvent) => void;
+  tooltip?: string;
 };
 
 export type TActionContext = {

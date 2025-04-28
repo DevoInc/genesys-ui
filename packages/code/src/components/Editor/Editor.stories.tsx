@@ -263,22 +263,22 @@ export const WithActions: Story = {
           bordered={true}
           value={'Copy me!\n'}
           onMount={handleEditorDidMount}
-          actions={
-            <ButtonGroup>
-              <IconButton
-                key="copy"
-                icon={<GIDocumentsFilesPaperTextArchiveCopy />} // copy
-                onClick={handleCopyToClipboard}
-                tooltip="Copy to clipboard"
-              />
-              <IconButton
-                key="paste"
-                icon={<GIPasteClipboard />}
-                onClick={handlePasteToEditor}
-                tooltip="Paste to editor"
-              />
-            </ButtonGroup>
-          }
+          actions={[
+            <IconButton
+              key="copy"
+              icon={<GIDocumentsFilesPaperTextArchiveCopy />} // copy
+              onClick={handleCopyToClipboard}
+              size="sm"
+              tooltip="Copy to clipboard"
+            />,
+            <IconButton
+              key="paste"
+              icon={<GIPasteClipboard />}
+              onClick={handlePasteToEditor}
+              size="sm"
+              tooltip="Paste to editor"
+            />,
+          ]}
         />
       );
     })(args),
@@ -385,7 +385,12 @@ export const CustomTheme: Story = {
             value="I'm being built from my inner parts"
           />
           <Editor.ActionsContainer>
-            <IconButton icon={<GIHeartFull />} />
+            <Editor.ActionsContainerItem>
+              <IconButton icon={<GIHeartFull />} />
+            </Editor.ActionsContainerItem>
+            <Editor.ActionsContainerItem>
+              <IconButton icon={<GIPasteClipboard />} />
+            </Editor.ActionsContainerItem>
           </Editor.ActionsContainer>
         </Editor.Container>
       );

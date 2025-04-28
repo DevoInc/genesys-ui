@@ -2,48 +2,42 @@ import * as React from 'react';
 import { useTheme } from 'styled-components';
 
 import type { IPanelHeaderAttrs } from '../../declarations';
-import type { IPanelSpaceAttrs } from '../../../../declarations';
-import { panelHeaderContainerMixin } from '../../helpers';
+import {
+  IPanelHeaderNavigationMixin,
+  panelHeaderNavigationMixin,
+} from '../../helpers';
 import { mergeStyles } from '../../../../../../helpers';
 import { PanelContext } from '../../../../context';
 import { Box, type BoxProps } from '../../../../../Box';
 
-export interface PanelHeaderContainerProps
+export interface PanelHeaderNavigationProps
   extends Pick<BoxProps, 'as' | 'style'>,
-    IPanelSpaceAttrs,
-    Omit<IPanelHeaderAttrs, 'actions' | 'hasSubtitle'> {}
+    Omit<IPanelHeaderNavigationMixin, 'theme'> {
+  children: IPanelHeaderAttrs['navigationContent'];
+}
 
-export const PanelHeaderContainer: React.FC<PanelHeaderContainerProps> = ({
-  as = 'header',
-  bordered,
+export const PanelHeaderNavigation: React.FC<PanelHeaderNavigationProps> = ({
+  as,
   children,
-  hasBoxShadow,
   padding,
-  paddingBottom,
   paddingLeft,
   paddingRight,
-  paddingTop,
   removeSpace,
   size,
   style,
 }) => {
   const theme = useTheme();
   const context = React.useContext(PanelContext);
-  const evalHasBoxShadow = hasBoxShadow ?? context.scrolledBodyContent;
   const evalSize = size || context.size || 'md';
   return (
     <Box
       as={as}
       flex="0 0 auto"
       style={mergeStyles(
-        panelHeaderContainerMixin({
-          bordered,
-          hasBoxShadow: evalHasBoxShadow,
+        panelHeaderNavigationMixin({
           padding,
-          paddingBottom,
           paddingLeft,
           paddingRight,
-          paddingTop,
           removeSpace,
           size: evalSize,
           theme,
@@ -52,7 +46,7 @@ export const PanelHeaderContainer: React.FC<PanelHeaderContainerProps> = ({
       )}
       zIndex={1}
     >
-      {children}
+      {typeof children === 'function' ? children() : children}
     </Box>
   );
 };

@@ -32,7 +32,7 @@ export const ActionRenderer: React.FC<TCellRenderer> = ({
   return (
     <HFlex spacing="cmp-xxs" alignItems="end">
       {(context?.quickActions ?? []).map(
-        ({ badgeText, hasBadge, Icon, onClick }, idx) => (
+        ({ badgeText, hasBadge, Icon, onClick, tooltip }, idx) => (
           <IconButton
             badgeText={badgeText}
             hasBadge={hasBadge}
@@ -46,6 +46,7 @@ export const ActionRenderer: React.FC<TCellRenderer> = ({
               }
             }}
             style={rowHoverStyles}
+            tooltip={tooltip}
           />
         ),
       )}
@@ -56,7 +57,7 @@ export const ActionRenderer: React.FC<TCellRenderer> = ({
               icon={<GIMenuAltVertical />}
               aria-controls={popoverId}
               aria-haspopup="true"
-              aria-label="Open the bulk actions menu"
+              aria-label="Open the actions menu"
               aria-expanded={isOpened}
               size={iconButtonSize}
               colorScheme={iconButtonColorScheme}
@@ -64,6 +65,7 @@ export const ActionRenderer: React.FC<TCellRenderer> = ({
               ref={ref}
               state={isOpened ? 'expanded' : undefined}
               style={rowHoverStyles}
+              tooltip="Open the actions menu"
             />
           )}
           {({ setOpened }) => {

@@ -20,6 +20,7 @@ import {
   PanelHeaderCollapseButton,
   PanelHeaderClose,
   PanelHeaderIcon,
+  PanelHeaderNavigation,
 } from './components';
 import { VFlex } from '../../../VFlex';
 import { HFlex } from '../../../HFlex';
@@ -48,6 +49,7 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
   helpUrl,
   icon,
   legend,
+  navigationContent,
   padding,
   paddingBottom,
   paddingLeft,
@@ -131,6 +133,18 @@ export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
             )}
           </HFlex>
           {bottomContent}
+          {navigationContent && (
+            <PanelHeaderNavigation
+              removeSpace={removeSpace}
+              padding={padding}
+              paddingLeft={paddingLeft}
+              paddingRight={paddingRight}
+              size={evalSize}
+              style={style}
+            >
+              {navigationContent}
+            </PanelHeaderNavigation>
+          )}
         </VFlex>
       ) : null}
     </PanelHeaderContainer>
@@ -144,6 +158,7 @@ export const PanelHeader = InternalPanelHeader as typeof InternalPanelHeader & {
   _Container: typeof PanelHeaderContainer;
   _Heading: typeof PanelHeaderHeading;
   _Icon: typeof PanelHeaderIcon;
+  _Navigation: typeof PanelHeaderNavigation;
 };
 
 PanelHeader._Actions = PanelHeaderActions;
@@ -152,6 +167,7 @@ PanelHeader._CollapseButton = PanelHeaderCollapseButton;
 PanelHeader._Container = PanelHeaderContainer;
 PanelHeader._Heading = PanelHeaderHeading;
 PanelHeader._Icon = PanelHeaderIcon;
+PanelHeader._Navigation = PanelHeaderNavigation;
 
 InternalPanelHeader.displayName = 'Panel.Header';
 PanelHeader._Actions.displayName = 'Panel.Header._Actions';
@@ -160,3 +176,4 @@ PanelHeader._CollapseButton.displayName = 'Panel.Header._CollapseButton';
 PanelHeader._Container.displayName = 'Panel.Header._Container';
 PanelHeader._Heading.displayName = 'Panel.Header._Heading';
 PanelHeader._Icon.displayName = 'Panel.Header._Icon';
+PanelHeader._Navigation.displayName = 'Panel.Header._Navigation';

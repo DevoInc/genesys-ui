@@ -28,6 +28,7 @@ export const Base: Story = {
             },
             hasBadge: true,
             badgeText: 8,
+            tooltip: 'Open this entity',
           },
           {
             Icon: <GIPencilEdit />,
@@ -35,6 +36,7 @@ export const Base: Story = {
               // eslint-disable-next-line no-console
               console.debug('Quick action 2');
             },
+            tooltip: 'Edit this entity',
           },
         ],
         actionMenu: [

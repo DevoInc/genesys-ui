@@ -21,6 +21,8 @@ export interface IPanelHeaderAttrs extends IPanelContainerAttrs {
   prependContent?: React.ReactNode;
   /** Custom content below all the header content */
   bottomContent?: React.ReactNode;
+  /** Custom content below all the header, which fills the whole space and is not affected by the parent container padding. Usually it's a navigation component: Tabs, Steps... etc. */
+  navigationContent?: React.ReactNode | (() => React.ReactNode);
 }
 
 export interface IPanelCloseAttrs {

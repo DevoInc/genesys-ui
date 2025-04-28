@@ -7,6 +7,7 @@ import { TabsContext } from '../../context';
 import { TabsMark } from '../TabsMark';
 import { Flex, type FlexProps } from '../../../Flex';
 import { Resolve } from '../../../../typeFunctions';
+import { Box } from '../../../Box';
 
 export interface TabsListProps extends FlexProps, Pick<ITabs, 'colorScheme'> {
   /** The active tab item index. */
@@ -37,7 +38,13 @@ export const TabsList = React.forwardRef<
     });
 
     return (
-      <div style={{ position: 'relative', flex: '1' }} ref={ref}>
+      <Box
+        position="relative"
+        flex="1"
+        overflow="auto"
+        ref={ref}
+        style={`&::-webkit-scrollbar {display: none;}`}
+      >
         <Flex {...restFlexProps} role="tablist" width={width}>
           {children}
         </Flex>
@@ -46,7 +53,7 @@ export const TabsList = React.forwardRef<
           colorScheme={colorScheme || context.colorScheme}
           style={customMarkStyles}
         />
-      </div>
+      </Box>
     );
   },
 );

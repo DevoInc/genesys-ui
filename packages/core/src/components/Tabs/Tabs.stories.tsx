@@ -7,6 +7,38 @@ import { Tabs } from './Tabs';
 import { Button } from '../Button';
 import { IconButtonRemove } from '../IconButton';
 import { useTabsAccessibility } from './hooks';
+import { Box } from '../Box';
+
+const BaseTabsCmp = ({ tabsRef, activeTab, setActiveTab, ...props }) => {
+  return (
+    <Tabs {...props}>
+      <Tabs.List activeTabIndex={activeTab} ref={tabsRef}>
+        <Tabs.Item
+          icon={<GIChart />}
+          label="Tiny"
+          onClick={() => setActiveTab(0)}
+          state={activeTab === 0 ? 'selected' : undefined}
+        />
+        <Tabs.Item
+          icon={<GICheckThick />}
+          label="Tab with a very long label"
+          onClick={() => setActiveTab(1)}
+          state={activeTab === 1 ? 'selected' : undefined}
+        />
+        <Tabs.Item
+          label="Normal tab"
+          onClick={() => setActiveTab(2)}
+          state={activeTab === 2 ? 'selected' : undefined}
+        />
+        <Tabs.Item
+          label="Disabled tab"
+          onClick={() => setActiveTab(3)}
+          state="disabled"
+        />
+      </Tabs.List>
+    </Tabs>
+  );
+};
 
 const meta: Meta<typeof Tabs> = {
   title: 'Components/Navigation/Tabs',
@@ -28,32 +60,31 @@ export const Playground: Story = {
       const [activeTab, setActiveTab] = React.useState(0);
       useTabsAccessibility({ activeTab, tabsRef });
       return (
-        <Tabs {...args}>
-          <Tabs.List activeTabIndex={activeTab} ref={tabsRef}>
-            <Tabs.Item
-              icon={<GIChart />}
-              label="Tiny"
-              onClick={() => setActiveTab(0)}
-              state={activeTab === 0 ? 'selected' : undefined}
-            />
-            <Tabs.Item
-              icon={<GICheckThick />}
-              label="Tab with a very long label"
-              onClick={() => setActiveTab(1)}
-              state={activeTab === 1 ? 'selected' : undefined}
-            />
-            <Tabs.Item
-              label="Normal tab"
-              onClick={() => setActiveTab(2)}
-              state={activeTab === 2 ? 'selected' : undefined}
-            />
-            <Tabs.Item
-              label="Disabled tab"
-              onClick={() => setActiveTab(3)}
-              state="disabled"
-            />
-          </Tabs.List>
-        </Tabs>
+        <BaseTabsCmp
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          tabsRef={tabsRef}
+          {...args}
+        />
+      );
+    })(args),
+};
+
+export const WithScroll: Story = {
+  render: (args) =>
+    ((args) => {
+      const tabsRef = React.useRef<HTMLDivElement>();
+      const [activeTab, setActiveTab] = React.useState(0);
+      useTabsAccessibility({ activeTab, tabsRef });
+      return (
+        <Box maxWidth="29rem">
+          <BaseTabsCmp
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            tabsRef={tabsRef}
+            {...args}
+          />
+        </Box>
       );
     })(args),
 };

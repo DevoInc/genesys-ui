@@ -184,6 +184,7 @@ export const AllTypesColumn: TColDef[] = [
             // eslint-disable-next-line no-console
             console.log(`Action 1 on row ${rowIndex}`);
           },
+          tooltip: 'Open this entity',
         },
         {
           Icon: <GIPencilEdit />,
@@ -191,6 +192,7 @@ export const AllTypesColumn: TColDef[] = [
             // eslint-disable-next-line no-console
             console.log(`Action 2 on row ${rowIndex}`);
           },
+          tooltip: 'Edit this entity',
         },
       ],
     } as TActionContext,

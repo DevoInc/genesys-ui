@@ -11,21 +11,26 @@ import type { Resolve } from '../../../../typeFunctions';
 
 export interface TabsMarkProps
   extends IStyledOverloadCss,
-    Pick<ITabs, 'colorScheme'> {}
+    Pick<ITabs, 'align' | 'colorScheme'> {}
 
 export const TabsMark = React.forwardRef<
   HTMLDivElement,
   Resolve<TabsMarkProps>
->(({ colorScheme, style }, ref) => {
+>(({ align, colorScheme, style }, ref) => {
   const theme = useTheme();
   const context = React.useContext(TabsContext);
   const evalColorScheme = colorScheme || context.colorScheme;
+  const evalAlign = align || context.align;
   return (
     <Box
       ref={ref}
       role="presentation"
       style={mergeStyles(
-        tabsMarkMixin({ colorScheme: evalColorScheme, theme }),
+        tabsMarkMixin({
+          align: evalAlign,
+          colorScheme: evalColorScheme,
+          theme,
+        }),
         style,
       )}
     />

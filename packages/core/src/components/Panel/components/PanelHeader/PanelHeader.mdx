@@ -58,6 +58,13 @@ of the panel content.
 
 <Canvas of={Stories.BottomContent} />
 
+## Navigation content
+
+You can add a custom `ReactNode` block or function that returns that, below all the header, which fills the whole space
+and is not affected by the parent container padding. Usually it's a navigation component: Tabs, Steps... etc.
+
+<Canvas of={Stories.NavigationContent} />
+
 ## Help link block
 
 You can add a help link just after the heading with the 'helpUrl' prop, and to it a tooltip with the 'helpTooltip' one.
@@ -80,6 +87,7 @@ but only in very specific cases.
 - `Panel.Header._Container`
 - `Panel.Header._Heading`
 - `Panel.Header._Icon`
+- `Panel.Header._Navigation`
 
 <Canvas of={Stories.Children} />
 

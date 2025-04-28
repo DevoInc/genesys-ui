@@ -53,6 +53,7 @@ export const Base: Story = {
                 // eslint-disable-next-line no-console
                 console.log(`Quick action 1 on row ${rowIndex}`);
               },
+              tooltip: 'Open this entity',
             },
             {
               Icon: <GIPencilEdit />,
@@ -60,6 +61,7 @@ export const Base: Story = {
                 // eslint-disable-next-line no-console
                 console.log(`Quick action 2 on row ${rowIndex}`);
               },
+              tooltip: 'Edit this entity',
             },
           ],
           actionMenu: [

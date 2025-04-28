@@ -57,6 +57,13 @@ to 'false' in the first header to avoid get automatically the box shadow styles 
 
 <Canvas of={Stories.Filterable} />
 
+## Navigation content
+
+You can add a custom `ReactNode` block or function that returns that, below all the header, which fills the whole space
+and is not affected by the parent container padding. Usually it's a navigation component: Tabs, Steps... etc.
+
+<Canvas of={Stories.WithNavigationContent} />
+
 ## Backward navigation
 
 Sometimes the `Panel` is navigable, and we need a link to go back in the navigation or state. We can add the link/button

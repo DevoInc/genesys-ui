@@ -38,6 +38,7 @@ export const MenuEntry: React.FC<Props> = ({
             ref={ref}
             expandable
             state={isOpened ? 'expanded' : undefined}
+            tooltip={entry?.tooltip}
           />
         )}
         <Popover.Panel>
@@ -69,6 +70,7 @@ export const MenuEntry: React.FC<Props> = ({
       }}
       icon={entry?.Icon}
       label={entry?.text}
+      tooltip={entry?.tooltip}
     />
   );
 };

@@ -62,7 +62,7 @@ export const ContentSwitcherItem: React.FC<ContentSwitcherItemProps> = ({
         style,
       )}
       tooltip={tooltip}
-      wide={context.wide || wide}
+      wide={wide || context.wide}
     >
       {children}
     </Button>

@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import type { TFeedbackColorScheme, TFeedbackSize } from '../../declarations';
 
+export type TTagSize = TFeedbackSize | 'xs';
+
 export interface ITag {
   /** It defines the color scheme for the background and text color.
    * There are predefined types: primary, secondary... etc.
@@ -15,5 +17,5 @@ export interface ITag {
   /** It Defines if the tag spans the full width of its parent */
   wide?: boolean;
   /** Size to define padding, line-height, font-size... etc. of the Tag. */
-  size?: TFeedbackSize;
+  size?: TTagSize;
 }
