@@ -1,5 +1,15 @@
 # Changelog
 
+## [18.0.0](https://github.com/DevoInc/genesys-ui/compare/v17.25.0...v18.0.0) (2025-04-24)
+
+### ⚠ BREAKING CHANGES
+
+* Now the size 'sm' for the Tabs component doesn't align to bottom the items. To do that, you need to use the new prop align to 'bottom'.
+
+### Features
+
+* Several improvements and fixes for these components: Editor, ButtonGroup, Form, FormGroup, KeyValue, Tabs and HeaderCell. ([17654f2](https://github.com/DevoInc/genesys-ui/commit/17654f2f59023a34c646de3d224a4d62b52fcf0c))
+
 ## [17.25.0](https://github.com/DevoInc/genesys-ui/compare/v17.24.1...v17.25.0) (2025-04-22)
 
 ### Features
