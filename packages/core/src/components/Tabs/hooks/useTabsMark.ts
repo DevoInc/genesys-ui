@@ -23,13 +23,17 @@ export const useTabsMark = ({
     const { left: navContainerLeft } =
       tabsRef?.current?.getBoundingClientRect() ?? {};
 
+    // For calibrate when the container has scroll
+    const navContainerHScroll = tabsRef?.current?.scrollLeft;
+
     const { left: activeTabLeft, width: activeTabWidth } =
       activeTab?.getBoundingClientRect() ?? {};
 
     if (markRef.current) {
       markRef.current.style.width = `${Math.ceil(activeTabWidth)}px`;
+      // Adjust the mark position based the container postion and scroll
       markRef.current.style.left = `${Math.ceil(
-        activeTabLeft - navContainerLeft,
+        activeTabLeft - navContainerLeft + navContainerHScroll,
       )}px`;
     }
   }, [activeTabIndex, containerWidth]);
