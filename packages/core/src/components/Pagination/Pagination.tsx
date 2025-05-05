@@ -14,7 +14,23 @@ import {
 import { PaginationContext } from './context';
 
 export interface PaginationProps
-  extends IPaginationCommonInterface,
+  extends Pick<
+      IPaginationCommonInterface,
+      | 'id'
+      | 'goToFirstPage'
+      | 'goToLastPage'
+      | 'goToNextPage'
+      | 'goToPreviousPage'
+      | 'page'
+      | 'pageSize'
+      | 'pageSizeOptions'
+      | 'onChange'
+      | 'onPageSizeChange'
+      | 'size'
+      | 'style'
+      | 'totalItems'
+      | 'texts'
+    >,
     Omit<HFlexProps, 'onChange'> {}
 
 export const InternalPagination: React.FC<PaginationProps> = ({
@@ -33,7 +49,6 @@ export const InternalPagination: React.FC<PaginationProps> = ({
   goToFirstPage,
   goToLastPage,
   goToNextPage,
-  goToPage,
   goToPreviousPage,
   ...restHFlexProps
 }) => {
@@ -72,7 +87,6 @@ export const InternalPagination: React.FC<PaginationProps> = ({
         goToFirstPage={goToFirstPage}
         goToLastPage={goToLastPage}
         goToNextPage={goToNextPage}
-        goToPage={goToPage}
         goToPreviousPage={goToPreviousPage}
         onChange={onChange}
       />

@@ -7,7 +7,17 @@ import { HFlex } from '../../../HFlex';
 import { Label } from '../../../Label';
 import { SelectControl, type TSelectOption } from '../../../SelectControl';
 
-export interface PaginationRangeProps extends IPaginationCommonInterface {}
+export interface PaginationRangeProps
+  extends Pick<
+    IPaginationCommonInterface,
+    | 'id'
+    | 'size'
+    | 'style'
+    | 'pageSize'
+    | 'pageSizeOptions'
+    | 'onPageSizeChange'
+    | 'texts'
+  > {}
 
 export const PaginationRange: React.FC<PaginationRangeProps> = ({
   id,

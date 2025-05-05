@@ -148,8 +148,8 @@ KeyValue._TextContainer = KeyValueTextContainer;
 KeyValue._Unit = KeyValueUnit;
 
 InternalKeyValue.displayName = 'KeyValue';
-KeyValue._Container.displayName = 'KeyValue.Container';
-KeyValue._SupportingVisual.displayName = 'KeyValue.SupportingVisual';
-KeyValue._Text.displayName = 'KeyValue.Text';
-KeyValue._TextContainer.displayName = 'KeyValue.TextContainer';
-KeyValue._Unit.displayName = 'KeyValue.Unit';
+KeyValue._Container.displayName = 'KeyValue._Container';
+KeyValue._SupportingVisual.displayName = 'KeyValue._SupportingVisual';
+KeyValue._Text.displayName = 'KeyValue._Text';
+KeyValue._TextContainer.displayName = 'KeyValue._TextContainer';
+KeyValue._Unit.displayName = 'KeyValue._Unit';

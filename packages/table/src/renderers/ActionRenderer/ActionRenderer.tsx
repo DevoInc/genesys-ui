@@ -34,6 +34,7 @@ export const ActionRenderer: React.FC<TCellRenderer> = ({
       {(context?.quickActions ?? []).map(
         ({ badgeText, hasBadge, Icon, onClick, tooltip }, idx) => (
           <IconButton
+            aria-label={tooltip}
             badgeText={badgeText}
             hasBadge={hasBadge}
             icon={Icon}

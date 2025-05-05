@@ -1,18 +1,6 @@
 import * as React from 'react';
 
-import {
-  GIAngleDoubleLeft,
-  GIAngleDoubleRight,
-  GIAngleLeft,
-  GIAngleRight,
-} from '@devoinc/genesys-icons';
-
 import type { IPaginationCommonInterface } from '../../declarations';
-import { HFlex } from '../../../HFlex';
-import { IconButton } from '../../../IconButton';
-import { SelectControl, type TSelectOption } from '../../../SelectControl';
-import { Flex } from '../../../Flex';
-import { Box } from '../../../Box';
 import { DEFAULT_TEXTS } from '../../constants';
 import {
   clamp,
@@ -22,8 +10,36 @@ import {
   goToPreviousPageFn,
 } from '../../helpers';
 import { PaginationContext } from '../../context';
+import {
+  GIAngleDoubleLeft,
+  GIAngleDoubleRight,
+  GIAngleLeft,
+  GIAngleRight,
+} from '@devoinc/genesys-icons';
+import { HFlex } from '../../../HFlex';
+import { IconButton } from '../../../IconButton';
+import { SelectControl, type TSelectOption } from '../../../SelectControl';
+import { Flex } from '../../../Flex';
+import { Box } from '../../../Box';
 
-export interface PaginationNavProps extends IPaginationCommonInterface {
+export interface PaginationNavProps
+  extends Pick<
+    IPaginationCommonInterface,
+    | 'id'
+    | 'goToFirstPage'
+    | 'goToLastPage'
+    | 'goToNextPage'
+    | 'goToPreviousPage'
+    | 'page'
+    | 'pageSize'
+    | 'pageSizeOptions'
+    | 'onChange'
+    | 'onPageSizeChange'
+    | 'size'
+    | 'style'
+    | 'totalItems'
+    | 'texts'
+  > {
   hideFirstLastButtons?: boolean;
   hidePrevNextButtons?: boolean;
   hidePageSelector?: boolean;
@@ -124,6 +140,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
               }))}
               size={evalSize}
               value={{ value: page, label: String(page + 1) }}
+              minMenuWidth="6rem"
             />
           </Flex.Item>
         )}

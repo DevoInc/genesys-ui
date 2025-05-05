@@ -22,34 +22,20 @@ export interface IPaginationCommonInterface
   size?: TBaseSize;
   /** Texts for tooltips and accessibility: aria-labels... etc. */
   texts?: TTextProps;
-
   pageSize?: number;
   pageSizeOptions?: number[];
-
   goToFirstPage?: TGoToFn;
   goToLastPage?: TGoToFn;
   goToNextPage?: TGoToFn;
   goToPreviousPage?: TGoToFn;
   goToPage?: (pageNumber: number) => void;
-
   setPageSize?: (newPageSize: number) => void;
   setPage?: (page: number) => void;
   onChange?: (page: number) => void;
   onPageSizeChange?: (page: number) => void;
-
   page?: number;
   lastPage?: number;
-
   totalItems?: number;
-
-  labelContent?: string;
-  rangeText?: string;
-  firstPageTooltipText?: string;
-  lastPageTooltipText?: string;
-  nextPageTooltipText?: string;
-  pageSelectorLabel?: string;
-  prevPageTooltipText?: string;
-  pageTooltip?: string;
 }
 
 type TSelectPageTooltipTextFnParams = {
