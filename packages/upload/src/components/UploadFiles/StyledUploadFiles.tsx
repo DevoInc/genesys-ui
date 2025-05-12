@@ -672,6 +672,26 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
     }
   }
 
+  .filepond--progress-indicator {
+      position: static;
+      width: 1.625em;
+      height: 1.625em;
+      color: ${cmpTokens.panelProgress.color.text.base};
+      margin: 0;
+      pointer-events: none;
+      will-change: transform, opacity;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      path {
+        fill: none;
+        stroke: currentColor;
+      }
+    }
+
   /* -----------------------------------------------------------------------------
                                  DATA - FILEPOND
 ----------------------------------------------------------------------------- */
