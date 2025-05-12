@@ -1,5 +1,17 @@
 # Changelog
 
+## [18.1.0](https://github.com/DevoInc/genesys-ui/compare/v18.0.0...v18.1.0) (2025-05-12)
+
+### Features
+
+* Several fixes and improvements for Editor, Box, ContentSwitcher, FlexItem, Panel, PopoverPanel, Tabs, Tag, VFlex, Wrap and Table actions. ([7ed2c40](https://github.com/DevoInc/genesys-ui/commit/7ed2c40717946b03bc68bd0d8a2b676e49ce368c))
+* Several improvements for Pagination i18n, KeyValue component naming and added aria-label to Table row actions. ([aeb8c32](https://github.com/DevoInc/genesys-ui/commit/aeb8c32adb5c31a8bd99877a0613f60ac55fe452))
+
+### Bug Fixes
+
+* **core:** tabsMark take scroll into account ([3890d3f](https://github.com/DevoInc/genesys-ui/commit/3890d3f9e06448c2ccfdc731c1383f9b1aec2c66))
+* **UploadFiles:**  fix styles ([3537398](https://github.com/DevoInc/genesys-ui/commit/353739886e05242d4f360a11a9c622b68129c401))
+
 ## [18.0.0](https://github.com/DevoInc/genesys-ui/compare/v17.25.0...v18.0.0) (2025-04-24)
 
 ### ⚠ BREAKING CHANGES
