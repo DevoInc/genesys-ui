@@ -1,5 +1,12 @@
 # Changelog
 
+## [18.1.1](https://github.com/DevoInc/genesys-ui/compare/v18.1.0...v18.1.1) (2025-05-14)
+
+### Bug Fixes
+
+* **StyledUploadFiles:** remove extra brace ([15d10eb](https://github.com/DevoInc/genesys-ui/commit/15d10eb55d0a665eb41e4cefd87b34784752ed44))
+* **UploadFiles:** Updated to the last version of genesys-brand-devo to get the fixed item panel background color. ([4e38470](https://github.com/DevoInc/genesys-ui/commit/4e3847005fb909aa5185320b6d55fd2f4495e985))
+
 ## [18.1.0](https://github.com/DevoInc/genesys-ui/compare/v18.0.0...v18.1.0) (2025-05-12)
 
 ### Features
