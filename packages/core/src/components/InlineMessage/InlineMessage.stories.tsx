@@ -36,6 +36,9 @@ export const Playground: Story = {
       <InlineMessage.Panel>This is an inline message</InlineMessage.Panel>
     ),
   },
+  render: (props) => {
+    return <>pushiiiiiiiiiiiiiiiiiiiiiiiiiiiiiing<InlineMessage {...props} /></>;
+  },
 };
 
 export const WithPanel: Story = {
