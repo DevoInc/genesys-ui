@@ -41,6 +41,7 @@
     "react-dom": ">=17.0",
     "react-grid-system": "8.x",
     "react-popper": "2.x",
+    "@floating-ui/react": ">=0.27",
     "react-select": "5.x",
     "react-toastify": ">= 8.0 <= 10.0",
     "react-windowed-select": "5.1.0",

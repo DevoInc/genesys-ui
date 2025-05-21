@@ -17,6 +17,7 @@ import type {
 import { getStatusIcon } from './helpers';
 import type { Resolve } from '../../../../typeFunctions';
 import { Panel } from '../../../Panel';
+import { mergeStyles } from '../../../../helpers';
 
 interface InlineMessagePanelProps
   extends IStyledOverloadCss,
@@ -89,7 +90,12 @@ export const InlineMessagePanel = React.forwardRef<
         minHeight={minHeight}
         minWidth={minWidth}
         size={size || context.size}
-        style={style}
+        style={mergeStyles(
+          {
+            borderRadius: theme.cmp.panel.shape.borderRadius,
+          },
+          style,
+        )}
         width={width}
       >
         <Panel.Header

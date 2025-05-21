@@ -1,7 +1,8 @@
-import { css } from 'styled-components';
+import { css, type DefaultTheme } from 'styled-components';
 
-export const getBorderPlacement = (position: string) => {
+export const getBorderPlacement = (position: string, theme: DefaultTheme) => {
   const borderSize = '0.6rem';
+  const borderRadius = theme.cmp.panel.shape.borderRadius;
 
   if (position?.includes('top')) {
     return css`
@@ -11,6 +12,7 @@ export const getBorderPlacement = (position: string) => {
         bottom: 0;
         width: 100%;
         height: ${borderSize};
+        border-radius: 0 0 ${borderRadius} ${borderRadius};
       }
     `;
   }
@@ -22,6 +24,7 @@ export const getBorderPlacement = (position: string) => {
         left: 0;
         width: ${borderSize};
         height: 100%;
+        border-radius: ${borderRadius} 0 0 ${borderRadius};
       }
     `;
   }
@@ -33,6 +36,7 @@ export const getBorderPlacement = (position: string) => {
         top: 0;
         width: 100%;
         height: ${borderSize};
+        border-radius: ${borderRadius} ${borderRadius} 0 0;
       }
     `;
   }
@@ -45,6 +49,7 @@ export const getBorderPlacement = (position: string) => {
         width: ${borderSize};
         width: ${borderSize};
         height: 100%;
+        border-radius: 0 ${borderRadius} ${borderRadius} 0;
       }
     `;
   }

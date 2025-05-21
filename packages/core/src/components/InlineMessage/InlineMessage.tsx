@@ -1,5 +1,10 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
+import {
+  type Placement,
+  type Strategy,
+  FloatingArrow,
+} from '@floating-ui/react';
 
 import type { IDataAttrs, IGlobalAttrs } from '../../declarations/htmlAttrs';
 import type {
@@ -12,23 +17,22 @@ import type {
 } from './declarations';
 import type { TButtonExpandableState, TButtonSize } from '../Button';
 import { WithRequired } from '../../typeFunctions';
-import { mergeStyles } from '../../helpers';
-import { inlineMessageContainerMixin } from './helpers';
-import { InlineMessageContext } from './context';
-import { Popover, type PopoverProps } from '../Popover';
 import {
   InlineMessageArrow,
   InlineMessageBanner,
   InlineMessagePanel,
   InlineMessageTrigger,
 } from './components';
+import { InlineMessageFloatingElement } from './InlineMessageFloatingElement';
+import { InlineMessagePortal } from './InlineMessagePortal';
+import { InlineMessageContext } from './context';
+import { useFloatingInlineMessage } from './useFloatingInlineMessage';
 
 export interface InlineMessageProps
   extends IDataAttrs,
     WithRequired<Omit<IGlobalAttrs, 'title'>, 'id'>,
     IStyledOverloadCss,
-    IStyledPolymorphic,
-    Omit<PopoverProps, 'children'> {
+    IStyledPolymorphic {
   children?:
     | React.ReactNode
     | ((props: {
@@ -54,14 +58,22 @@ export interface InlineMessageProps
     text?: string;
     tooltip?: string;
   };
+  isOpened?: boolean;
+  placement?: Placement;
+  strategy?: Strategy;
+  zIndex?: number;
+  /** Append to another `HTMLElement`, `null` for relative to its trigger and
+   * `undefined` for appent to `body` */
+  appendTo?: HTMLElement | null;
 }
+
 const PartInlineMessage: React.FC<InlineMessageProps> = ({
   appendTo,
   as,
   children,
   draggable,
   id,
-  isOpened,
+  isOpened = false,
   placement = 'right',
   state = 'enabled',
   status = 'help',
@@ -74,98 +86,75 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
   ...restDataProps
 }) => {
   const theme = useTheme();
+
+  const {
+    getReferenceProps,
+    getFloatingProps,
+    refs,
+    floatingStyles,
+    middlewareData,
+    context,
+    isOpen,
+    arrowRef,
+    setIsOpen,
+  } = useFloatingInlineMessage({ isOpened, placement, strategy });
+
   return (
-    <Popover
-      appendTo={appendTo}
-      id={id}
-      placement={placement}
-      arrowConfig={
-        draggable
-          ? null
-          : {
-              component: ({ placement: innerPlacement, size }) => (
-                <InlineMessage.Arrow
-                  placement={innerPlacement}
-                  size={size}
-                  status={status}
-                />
-              ),
-              size: 6,
-            }
-      }
-      modifiers={
-        draggable
-          ? [
-              {
-                name: 'offset',
-                options: {
-                  offset: [0, 4],
-                },
-              },
-            ]
-          : []
-      }
-      isOpened={isOpened}
-      strategy={strategy}
-      zIndex={zIndex}
-    >
-      {({ toggle, ref, isOpened: innerIsOpened }) => (
-        <InlineMessage.Trigger
-          {...restDataProps}
-          ref={ref}
-          onClick={toggle}
-          aria-activedescendant={id}
-          aria-expanded={innerIsOpened}
-          aria-controls={id}
-          aria-haspopup="true"
-          icon={trigger?.icon}
-          id={`${id}__trigger`}
-          size={trigger?.size}
-          state={innerIsOpened ? 'expanded' : state}
-          status={status}
-          secondaryText={trigger?.secondaryText}
-          text={trigger?.text}
-          tooltip={trigger?.tooltip || tooltip}
-          Trigger={trigger?.Component}
-        />
+    <>
+      <InlineMessage.Trigger
+        {...restDataProps}
+        ref={refs.setReference}
+        {...getReferenceProps()}
+        aria-activedescendant={id}
+        aria-expanded={isOpen}
+        aria-controls={id}
+        aria-haspopup="true"
+        icon={trigger?.icon}
+        id={`${id}__trigger`}
+        size={trigger?.size}
+        state={isOpen ? 'expanded' : state}
+        status={status}
+        secondaryText={trigger?.secondaryText}
+        text={trigger?.text}
+        tooltip={trigger?.tooltip || tooltip}
+        Trigger={trigger?.Component}
+      />
+      {isOpen && (
+        <InlineMessagePortal appendTo={appendTo}>
+          <InlineMessageFloatingElement
+            setFloating={refs.setFloating}
+            getFloatingProps={getFloatingProps}
+            floatingStyles={floatingStyles}
+            zIndex={zIndex}
+            as={as}
+            draggable={draggable}
+            id={id}
+            status={status}
+            middlewareData={middlewareData}
+            style={style}
+          >
+            <FloatingArrow
+              ref={arrowRef}
+              context={context}
+              fill={theme.cmp.inlineMessage.color.border[status]}
+            />
+            <InlineMessageContext.Provider
+              value={{ colorScheme: status, size }}
+            >
+              {typeof children === 'function'
+                ? children({
+                    toggle: () => setIsOpen((old) => !old),
+                    isOpened: isOpen,
+                    setOpened: setIsOpen,
+                    colorScheme: status,
+                    size,
+                  })
+                : children}
+            </InlineMessageContext.Provider>
+          </InlineMessageFloatingElement>
+        </InlineMessagePortal>
       )}
-      {({
-        toggle,
-        isOpened: innerIsOpened,
-        placement: innerPlacement,
-        setOpened,
-      }) => (
-        <Popover.Panel
-          as={as}
-          draggable={draggable}
-          id={`${id}__content`}
-          padding="0"
-          role={status === 'error' ? 'alert' : null}
-          style={mergeStyles(
-            ...inlineMessageContainerMixin({
-              draggable,
-              placement: innerPlacement,
-              status,
-              theme,
-            }),
-            style,
-          )}
-          width="auto"
-        >
-          <InlineMessageContext.Provider value={{ colorScheme: status, size }}>
-            {typeof children === 'function'
-              ? children({
-                  toggle,
-                  isOpened: innerIsOpened,
-                  setOpened,
-                  colorScheme: status,
-                  size,
-                })
-              : children}
-          </InlineMessageContext.Provider>
-        </Popover.Panel>
-      )}
-    </Popover>
+    </>
   );
 };
 
