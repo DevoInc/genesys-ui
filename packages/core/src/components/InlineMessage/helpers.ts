@@ -25,7 +25,7 @@ export const inlineMessageContainerMixin = ({
   return css`
     position: relative;
     background-color: ${tokens.color.background};
-    overflow: hidden;
+    // overflow: hidden;
     cursor: ${draggable ? 'move' : 'default'};
 
     ${status &&
@@ -36,7 +36,7 @@ export const inlineMessageContainerMixin = ({
         background-color: ${tokens.color.border[status]};
       }
 
-      ${getBorderPlacement(placement || '')};
+      ${getBorderPlacement(placement || '', theme)};
     `};
   `;
 };
