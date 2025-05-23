@@ -1,0 +1,58 @@
+import { Meta, Canvas, Source, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './AppMenu.stories';
+
+<Meta of={Stories} />
+
+# AppMenu
+
+An App Menu or main navigation menu is a sidebar, typically positioned
+on the left, that provides quick access to the core sections of an application.
+It serves as a consistent entry point for navigating key features and content.
+
+## How to import
+
+<Source code={`import { AppMenu } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+The `AppMenu` is used as a container of a Header-Body-Footer structure. The components for navigation items, headings,
+separators and popover navigation items should be placed inside the AppMenu.Body component.
+
+- AppMenu.Header
+- AppMenu.Body
+  - AppMenu.Item
+  - AppMenu.Heading
+  - AppMenu.Separator
+  - AppMenu.PopoverItem \*
+- AppMenu.Footer
+
+<small>
+  \* When we need a popover with a submenu, then we have available the
+  `AppMenu.PopoverItem` component. It has specific props to render a featured
+  icon, a description...etc. and it has an actions block which is only visible
+  while hovering.
+</small>
+
+<Canvas of={Stories.Playground} />
+
+## Components
+
+- [Header](?path=/docs/components-navigation-menu-components-menuheader-overview--overview): This component is used to define the menu header of the AppMenu component, where it's usually located the app logo.
+- [Body](?path=/docs/components-navigation-menu-components-menubody-overview--overview): This component is used to define the menu body of the AppMenu component, where it's usually located the navigation (items, headings and separators).
+  - [Item](?path=/docs/components-navigation-menu-components-menuitem-overview--overview): This component is used to define each interactive and actionable AppMenu item.
+  - [Heading](?path=/docs/components-navigation-menu-components-menuheading-overview--overview): This component is used to define a menu heading to group app menu items.
+  - [Separator](?path=/docs/components-navigation-menu-components-menuseparator-overview--overview): This component is used to define a separator between app menu items.
+- [Footer](?path=/docs/components-navigation-menu-components-menufooter-overview--overview): This component is used to define the menu footer of the AppMenu component, where it's usually located the expand/collapse trigger.
+- [PopoverItem](?path=/docs/components-navigation-appmenu-components-appmenupopoveritem-overview--overview): This component is used to define the AppMenu popover submenu items.
+
+## Related components
+
+- [Menu](?path=/docs/components-navigation-menu--overview)
+- [Menu.Item](?path=/docs/components-navigation-menu-components-menuitem-overview--overview)
+- [Menu.Heading](?path=/docs/components-navigation-menu-components-menuheading-overview--overview)
+- [Menu.Separator](?path=/docs/components-navigation-menu-components-menuseparator-overview--overview)
+
+## Props
+
+<ArgTypes of={Stories} />

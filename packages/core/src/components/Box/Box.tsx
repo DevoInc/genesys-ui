@@ -16,6 +16,7 @@ export const Box = React.forwardRef<HTMLDivElement, Resolve<BoxProps>>(
       elevation,
       flex,
       height,
+      inset,
       margin,
       marginBottom,
       marginLeft,
@@ -59,6 +60,7 @@ export const Box = React.forwardRef<HTMLDivElement, Resolve<BoxProps>>(
       $elevation={elevation}
       $flex={flex}
       $height={height}
+      $inset={inset}
       $margin={margin}
       $marginBottom={marginBottom}
       $marginLeft={marginLeft}

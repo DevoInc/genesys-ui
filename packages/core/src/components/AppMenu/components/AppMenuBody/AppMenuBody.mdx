@@ -1,0 +1,26 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './AppMenuBody.stories';
+
+<Meta title="Components/Navigation/AppMenu/Components/AppMenuBody/Overview" />
+
+# AppMenu.Body
+
+This component is used to define the menu body of the AppMenu component,
+where it's located the menu items, headings, separators... in short: the navigation.
+
+## How to import
+
+<Source code={`import { AppMenu } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+This component is defined with dot notation as `AppMenu.Body` and it should be a child of a `AppMenu` component.
+It's oriented to receive children of `AppMenu.Item`, `AppMenu.Headinig` and `AppMenu.Separator` types, but it can
+receive also `Popover`, `AppMenu.PopoverItem`... etc.
+
+<Canvas of={Stories.Playground} />
+
+## Props
+
+<ArgTypes of={Stories} />} />

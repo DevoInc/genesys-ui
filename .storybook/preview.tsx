@@ -32,6 +32,7 @@ const customTheme = create({
 
 const preview: Preview = {
   parameters: {
+    layout: 'fullscreen',
     a11y: {
       manual: false,
     },
@@ -141,7 +142,8 @@ const preview: Preview = {
           display={
             parameters.parameters.layout === 'centered' ? 'flex' : undefined
           }
-          padding={'cmp-md'}
+          bgMode={parameters.parameters.bgMode || 'surface'}
+          padding={parameters.parameters.padding || 'cmp-md'}
           position="relative"
           height={
             parameters.parameters.layout === 'centered' ? '100%' : undefined

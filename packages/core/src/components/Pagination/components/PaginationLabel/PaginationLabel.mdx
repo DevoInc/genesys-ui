@@ -4,10 +4,17 @@ import * as Stories from './PaginationLabel.stories';
 
 <Meta title="Components/Navigation/Pagination/Components/PaginationLabel/Overview" />
 
-# Pagination.Label
+# Pagination.\_Label
 
 The initial info of the Pagination component. Usually to show how many items
 are rendered.
+
+Sometimes you need something very specific, which is not possible using only
+the main component `Pagination` and its props.
+
+In these cases, you can use this Internal component (\_ notation) to define that specific usage.
+
+We don't recommend this usage, but anyway, it's available for very specific needs.
 
 ## How to import
 
@@ -15,7 +22,7 @@ are rendered.
 
 ## Basic usage
 
-You have to define the component as dot notation of the main component as `Pagination.Label`.
+You have to define the component as dot notation of the main one as `Pagination._Label`.
 
 <Canvas of={Stories.Playground} />
 

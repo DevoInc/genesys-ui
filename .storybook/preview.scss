@@ -75,6 +75,10 @@ body {
   > ul li {
     font-size: 1.6rem !important;
     line-height: 2.8rem !important;
+
+    ul {
+      margin-top: 1rem !important;
+    }
   }
 
   > ul li + li,

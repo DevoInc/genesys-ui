@@ -292,3 +292,16 @@ export interface IContentEditableAttrs<T = Element> {
 export interface IDataAttrs {
   [key: `data-${string}`]: unknown;
 }
+
+/** ---------------------------------------------
+ * Common declarations for content editable components (usually typographic components)
+ * - Heading
+ * - Paragraph
+ * - ...
+ * --------------------------------------------- */
+export interface IContentEditableAttrs<T = Element> {
+  /** The contenteditable global attribute is an enumerated attribute indicating if the element should be editable by the user. If so, the browser modifies its widget to allow editing.*/
+  contentEditable?: AllHTMLAttributes<T>['contentEditable'];
+  /** A function that is called when the element is changed */
+  onChange?: DOMAttributes<T>['onChange'];
+}

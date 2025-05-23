@@ -25,6 +25,7 @@ export const boxMixin =
     $flex,
     $elevation,
     $height,
+    $inset,
     $margin,
     $marginBottom,
     $marginLeft,
@@ -76,6 +77,7 @@ export const boxMixin =
       right: ${$positionRight};
       bottom: ${$positionBottom};
       left: ${$positionLeft};
+      inset: ${$inset};
       z-index: ${$zIndex || elevationTokens.zIndex?.depth[$elevation]};
       flex: ${$flex};
 

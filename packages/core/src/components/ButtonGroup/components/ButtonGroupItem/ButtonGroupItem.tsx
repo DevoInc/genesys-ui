@@ -11,7 +11,7 @@ import { ButtonGroupContext } from '../../context';
 export interface ButtonGroupItemProps
   extends Omit<FlexItemProps, 'children'>,
     Omit<ButtonGroupItemMixinProps, 'theme'> {
-  children: React.ReactElement<any>;
+  children: React.ReactNode;
 }
 
 export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({

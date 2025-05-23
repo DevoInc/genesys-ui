@@ -19,7 +19,7 @@ import { StyledMenuItemLabel } from './StyledMenuItemLabel';
 import { StyledHiddenInput } from '../../../../styled/';
 
 export interface MenuItemProps
-  extends Omit<MenuItemContainerProps, 'children' | 'isItem'>,
+  extends Omit<MenuItemContainerProps, 'children'>,
     IFieldEventAttrs,
     IDragDropEventAttrs {
   /** Custom content to be rendered at the end all to the right of the item. */
@@ -61,6 +61,7 @@ export const InternalMenuItem = React.forwardRef<
       hasExtraLeftSpace,
       icon,
       id,
+      isItem,
       label,
       name,
       onBlur,
@@ -68,6 +69,7 @@ export const InternalMenuItem = React.forwardRef<
       onFocus,
       prependContent,
       rel,
+      role,
       selectionScheme,
       shortcut,
       state = 'enabled',
@@ -86,11 +88,15 @@ export const InternalMenuItem = React.forwardRef<
     const isSelected = state === 'selected';
     const isReadonly = state === 'readonly';
     const roleEval =
-      selectionScheme === 'single'
-        ? 'menuitemradio'
-        : selectionScheme === 'multiple'
-          ? 'menuitemcheckbox'
-          : 'menuitem';
+      role !== undefined
+        ? role
+        : selectionScheme === 'single'
+          ? 'menuitemradio'
+          : selectionScheme === 'multiple'
+            ? 'menuitemcheckbox'
+            : isLink
+              ? null
+              : 'menuitem';
     const getHasExtraLeftSpace = () => {
       if (hasExtraLeftSpace === false) return false;
       if (Boolean(children) && hasExtraLeftSpace) return true;
@@ -114,6 +120,7 @@ export const InternalMenuItem = React.forwardRef<
         hasExtraLeftSpace={getHasExtraLeftSpace()}
         href={isDisabled ? null : href}
         id={id}
+        isItem={isItem}
         name={isSelectable ? null : name}
         ref={ref}
         rel={rel}

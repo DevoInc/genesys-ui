@@ -1,5 +1,6 @@
 export * from './AppBar';
 export * from './AppLayout';
+export * from './AppMenu';
 export * from './Avatar';
 export * from './Badge';
 export * from './Box';

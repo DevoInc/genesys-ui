@@ -1,0 +1,31 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './AppMenuFooter.stories';
+
+<Meta title="Components/Navigation/AppMenu/Components/AppMenuFooter/Overview" />
+
+# AppMenu.Footer
+
+This component is used to define the menu footer of the AppMenu component,
+where it's usually located the collapse trigger.
+
+## How to import
+
+<Source code={`import { AppMenu } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+This component is defined with dot notation as `AppMenu.Footer` and it should be a child of a `AppMenu` component.
+
+<Canvas of={Stories.Playground} />
+
+## Custom content
+
+If you define the 'children' prop for the component, then the content only depends on that prop,
+so you can totally control the rendered components.
+
+<Canvas of={Stories.CustomContent} />
+
+## Props
+
+<ArgTypes of={Stories} />

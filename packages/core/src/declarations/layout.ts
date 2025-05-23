@@ -87,6 +87,8 @@ export interface ILayoutBoxCss {
   positionBottom?: React.CSSProperties['bottom'];
   /** Position coordinates: left */
   positionLeft?: React.CSSProperties['left'];
+  /** The inset CSS property is a shorthand that corresponds to the top, right, bottom, and/or left properties. It has the same multi-value syntax of the margin shorthand. */
+  inset?: React.CSSProperties['inset'];
   /** Css translate transformation. Only the part inside the parentheses of the 'translate(${translate})' expression. E.g. '0, 50%'*/
   cssTranslate?: string;
   /** Css vertical alignment */
@@ -203,6 +205,7 @@ export interface ILayoutBoxStyled {
   $flex?: ILayoutBoxCss['flex'];
   $elevation?: ILayoutBoxCss['elevation'];
   $height?: ILayoutBoxCss['height'];
+  $inset?: ILayoutBoxCss['inset'];
   $margin?: ILayoutBoxCss['margin'];
   $marginBottom?: ILayoutBoxCss['marginBottom'];
   $marginLeft?: ILayoutBoxCss['marginLeft'];

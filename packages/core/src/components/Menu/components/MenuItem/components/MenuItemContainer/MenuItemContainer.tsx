@@ -74,7 +74,7 @@ export const MenuItemContainer = React.forwardRef<
       </StyledMenuItemInner>
     );
     return isItem ? (
-      <StyledMenuItem role="presentation">{innerContent}</StyledMenuItem>
+      <StyledMenuItem>{innerContent}</StyledMenuItem>
     ) : (
       innerContent
     );

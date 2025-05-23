@@ -5,7 +5,7 @@ import type { IStyledOverloadCss } from '../../../../declarations/styled';
 import { StyledBadgeText } from './StyledBadgeText';
 
 export interface BadgeTextProps extends IStyledOverloadCss {
-  children: string;
+  children: string | number;
   color?: string;
 }
 

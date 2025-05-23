@@ -17,7 +17,6 @@ export const StyledHeading = styled.div<StyledHeadingProps>`
     $truncateLine,
   }) => css`
     margin-bottom: ${getSpacingPropCss(theme)($gutterBottom)};
-    margin-right: ${getSpacingPropCss(theme)('cmp-xs')};
     ${getTypoCss({
       $variant: getCategory($size),
       $colorScheme,

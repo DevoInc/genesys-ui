@@ -1,0 +1,43 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './AppMenuPopoverItem.stories';
+
+<Meta title="Components/Navigation/AppMenu/Components/AppMenuPopoverItem/Overview" />
+
+# AppMenu.PopoverItem
+
+This component is used to define the AppMenu popover submenu items. This menu
+item has specific props to render a featured icon, a description...etc. and
+it has an actions block which is only visible while hovering.
+
+This is a component based on the [Menu.Item](?path=/docs/components-navigation-menu-components-menuitem-overview--overview&globals=theme:light)
+component, so it has almost the same props as it.
+
+## How to import
+
+<Source code={`import { AppMenu } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+This component is defined with dot notation as `AppMenu.PopoverItem` and it should be a child of a `AppMenu` component.
+
+<Canvas of={Stories.Playground} />
+
+## Simple with actions
+
+This is an example of the component with a label and a block of actions, in this case only one. This actions block is
+only rendered while hovering to reduce the noise if there are many similar items in the group.
+
+<Canvas of={Stories.SimpleWithActions} />
+
+## With description and featured icon
+
+<Canvas of={Stories.WithDescription} />
+
+## Related components
+
+- [Menu.Item](?path=/docs/components-navigation-menu-components-menuitem-overview--overview)
+
+## Props
+
+<ArgTypes of={Stories} />

@@ -1,0 +1,61 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './AppMenuHeader.stories';
+
+<Meta title="Components/Navigation/AppMenu/Components/AppMenuHeader/Overview" />
+
+# AppMenu.Header
+
+This component is used to define the menu header of the AppMenu component, where it's usually located the app logo.
+
+## How to import
+
+<Source code={`import { AppMenu } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+This component is defined with dot notation as `AppMenu._Header` and it should be a child of a `AppMenu` component.
+
+<Canvas of={Stories.Playground} />
+
+## Logo depending on theme scheme
+
+Usually you will need a different version of the App logo depending on the theme scheme: light, dark... etc. So you can
+define a value for the 'logo' and 'collapsedLogo' based in the theme scheme value. You can switch the theme scheme in
+the Storybook toolbar and check how the logo changes.
+
+<Canvas of={Stories.LogoDependingOnScheme} sourceState="none" />
+
+<Source
+  code={`
+    export const Component = (props) => {
+      const theme = useTheme();
+      return (
+        <AppMenu.Header
+          {...props}
+          logo={
+            theme.meta.scheme === 'dark'
+              ? '../../../../../../../.storybook/assets/images/devo-logo.svg'
+              : '../../../../../../../.storybook/assets/images/devo-logo-dark.svg'
+          }
+          collapsedLogo={
+            theme.meta.scheme === 'dark'
+              ? '../../../../../../../.storybook/assets/images/devo-logo-symbol.svg'
+              : '../../../../../../../.storybook/assets/images/devo-logo-symbol-dark.svg'
+          }
+        />
+      )
+    };
+    `}
+/>
+
+## Custom content
+
+If you define the 'children' prop for the component, then the content only depends on that prop,
+so you can totally control the rendered components.
+
+<Canvas of={Stories.CustomContent} />
+
+## Props
+
+<ArgTypes of={Stories} />

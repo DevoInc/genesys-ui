@@ -9,7 +9,7 @@ export interface MenuHeadingProps {
 }
 
 export const MenuHeading: React.FC<MenuHeadingProps> = ({ children }) => (
-  <StyledMenuHeading role="presentation">
+  <StyledMenuHeading>
     <Typography.Paragraph colorScheme="weaker">{children}</Typography.Paragraph>
   </StyledMenuHeading>
 );

@@ -26,7 +26,7 @@ export interface BadgeProps
   /** Defines if the Badge icon is bold */
   hasBoldIcon?: boolean;
   /** Text for the Badge (it shouldn't be longer than 2 characters) */
-  text?: string;
+  text?: string | number;
   /** Tooltip on Badge hover.*/
   tooltip?: string;
   /** Icon as content of the badge.*/

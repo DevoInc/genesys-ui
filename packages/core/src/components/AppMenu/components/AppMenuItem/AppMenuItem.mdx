@@ -1,0 +1,64 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/blocks';
+
+import * as Stories from './AppMenuItem.stories';
+
+<Meta title="Components/Navigation/AppMenu/Components/AppMenuItem/Overview" />
+
+# AppMenu.Item
+
+This component is used to define each interactive and actionable AppMenu item.
+
+This is a component based on the [Menu.Item](?path=/docs/components-navigation-menu-components-menuitem-overview--overview&globals=theme:light)
+component, so it has almost the same props as it. Anyway, it adds some new props as 'counter', 'isBeta'... etc.
+which we will see below.
+
+## How to import
+
+<Source code={`import { AppMenu } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+This component is defined with dot notation as `AppMenu.Item` and it should be a child of a `AppMenu` component.
+
+<Canvas of={Stories.Playground} />
+
+## Expandable
+
+In this component, the expandable mark is different from the MenuItem component.
+
+<Canvas of={Stories.Expandable} />
+
+## Counter
+
+In this component, we can add a counter badge to be added next to the icon.
+
+<Canvas of={Stories.WithCounter} />
+
+## Beta
+
+In this component, we have a specific prop to add a 'beta' mark.
+
+<Canvas of={Stories.IsBeta} />
+
+## Active
+
+The state prop, in this case, is used to mark the current section ('active') or the expanded one ('expanded').
+The rest of the available values of this prop are less common in this context.
+
+<Canvas of={Stories.Active} />
+
+## Tooltip
+
+If you define the 'tooltip' prop, its behavior here is different from the MenuItem component, so it's only visible
+when the component is collapsed and while hovering, and it has a more prominent look & feel.
+
+<Canvas of={Stories.Tooltip} />
+
+## Related components
+
+- [Menu.Item](?path=/docs/components-navigation-menu-components-menuitem-overview--overview)
+- [Badge](?path=/docs/components-feedback-badge--overview)
+
+## Props
+
+<ArgTypes of={Stories} />

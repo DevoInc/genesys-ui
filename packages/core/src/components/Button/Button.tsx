@@ -131,7 +131,7 @@ export const InternalButton = React.forwardRef<
         state={state}
         style={style}
         tooltip={tooltip}
-        type={type || (selectionScheme ? null : 'button')}
+        type={type || (selectionScheme || href ? null : 'button')}
       >
         {selectionScheme && (
           <ButtonSelection
