@@ -250,7 +250,6 @@ export const StyledUploadFiles = styled(FilePond)<StyledUploadFilesProps>`
       font-size: 1em;
       font-family: inherit;
       line-height: inherit;
-      //background-color: ${buttonTokens.color.background.blendBase.enabled};
       background-image: none;
       outline: none;
       border: none;
