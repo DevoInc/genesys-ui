@@ -1,5 +1,16 @@
 # Changelog
 
+## [18.2.0](https://github.com/DevoInc/genesys-ui/compare/v18.1.1...v18.2.0) (2025-05-23)
+
+### Features
+
+* **core:** InlineMessage with floating-ui ([#117](https://github.com/DevoInc/genesys-ui/issues/117)) ([58938ec](https://github.com/DevoInc/genesys-ui/commit/58938ecfe14b258de7fcd5b673975bbe5084ee8b))
+* New component AppMenu which can be used as the main navigation of an App. ([fd7bfc4](https://github.com/DevoInc/genesys-ui/commit/fd7bfc47a3d834d2c4af96fbdd8d48ecb6aa1f08))
+
+### Bug Fixes
+
+* Minor change ([5110652](https://github.com/DevoInc/genesys-ui/commit/511065295f28a50f81410620a93a20f36db9bacb))
+
 ## [18.1.1](https://github.com/DevoInc/genesys-ui/compare/v18.1.0...v18.1.1) (2025-05-14)
 
 ### Bug Fixes
