@@ -11,7 +11,7 @@ export interface TabsContainerProps extends FlexProps, ITabs {}
 export const TabsContainer = React.forwardRef<
   HTMLDivElement,
   Resolve<TabsContainerProps>
->(({ children, contained, size, style, ...restFlexProps }, ref) => {
+>(({ children, contained, style, ...restFlexProps }, ref) => {
   const tokens = useTheme().cmp.tabs.container;
   const baseStyles = css`
     ${contained &&
