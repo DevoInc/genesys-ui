@@ -1,15 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import type {
-  TActiveState,
-  TBasicState,
-  TExpandedState,
-  TFeaturedState,
-  TMouseState,
-  TReadonlyState,
-  TSelectedState,
-  TUIState,
-} from '../../../../../../declarations';
+import type { IMenuItem } from '../../declarations';
 import {
   btnResetMixin,
   disabledMixin,
@@ -21,23 +12,23 @@ import { menuItemSizeConfig } from '../../constants';
 
 export interface StyledMenuItemInnerProps {
   /** If the menu item has a reserved left space for markers: icon, selection mark... etc. */
-  $hasExtraLeftSpace?: boolean;
+  $hasExtraLeftSpace?: IMenuItem['hasExtraLeftSpace'];
+  /** If it's true, the menu item has no background. */
+  $quiet?: IMenuItem['quiet'];
   /** If the menu item has unlimited height, and it's added a vertical padding. */
-  $unlimitedHeight?: boolean;
+  $unlimitedHeight?: IMenuItem['unlimitedHeight'];
   /** State of the menu item */
-  $state?:
-    | TBasicState
-    | TActiveState
-    | TMouseState
-    | TFeaturedState
-    | TReadonlyState
-    | TSelectedState
-    | TExpandedState
-    | TUIState;
+  $state?: IMenuItem['state'];
 }
 
 export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
-  ${({ $hasExtraLeftSpace, $state = 'enabled', theme, $unlimitedHeight }) => {
+  ${({
+    $hasExtraLeftSpace,
+    $quiet,
+    $state = 'enabled',
+    theme,
+    $unlimitedHeight,
+  }) => {
     const stateForTokens = $state === 'active' ? 'activated' : $state;
     const tokens = theme.cmp.menu.item;
     const horPadding = menuItemSizeConfig(theme).horPadding;
@@ -63,8 +54,10 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
       transition: all ease-in-out ${tokens.mutation.transitionDuration};
       height: ${$unlimitedHeight ? 'auto' : tokens.size.minHeight};
       padding: ${$unlimitedHeight ? horPadding : `0 ${horPadding}`};
-      background-color: ${tokens.color.background[stateForTokens]};
-      color: ${tokens.color.text[stateForTokens]};
+      background-color: ${$quiet
+        ? 'transparent'
+        : tokens.color.background[stateForTokens]};
+      color: #1f282e;
       text-decoration: none;
 
       ${$hasExtraLeftSpace &&

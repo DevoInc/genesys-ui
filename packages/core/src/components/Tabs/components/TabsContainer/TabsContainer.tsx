@@ -16,7 +16,6 @@ export const TabsContainer = React.forwardRef<
   const baseStyles = css`
     ${contained &&
     css`
-      min-height: ${tokens.size.height[size]};
       padding: 0 ${tokens.space.padding};
       background: ${tokens.color.background};
       box-shadow:

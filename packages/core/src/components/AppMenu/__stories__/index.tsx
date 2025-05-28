@@ -123,7 +123,6 @@ export const appMenuData = [
   {
     isHeading: true,
     text: 'Monitoring',
-    collapsedText: null,
   },
   {
     id: 'usage',
@@ -138,7 +137,6 @@ export const appMenuData = [
   {
     isHeading: true,
     text: 'Apps',
-    collapsedText: null,
   },
   {
     id: 'apps',
@@ -225,7 +223,6 @@ export const appMenuData = [
   {
     isHeading: true,
     text: 'Administration',
-    collapsedText: null,
   },
   {
     id: 'access',
