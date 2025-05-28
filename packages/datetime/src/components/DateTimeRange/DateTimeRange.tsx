@@ -7,6 +7,7 @@ import {
   addMonths,
   subMonths,
 } from 'date-fns';
+import { tz as tzFn } from '@date-fns/tz';
 
 import {
   Box,
@@ -44,6 +45,8 @@ export interface DateTimeRangeProps
     IStyledPolymorphic {
   /** Custom list of presets values. */
   presets?: PresetsProps['presets'];
+  /** Timezone */
+  tz?: string;
   /** Internacionalization object */
   i18n?: TDateTimeRangeI18n;
   /**  Show the time input HTML element. */
@@ -61,7 +64,8 @@ export interface DateTimeRangeProps
 }
 
 export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
-  i18n: userI18n = defaultDateTimeRangeI18n,
+  i18n: userI18n = {},
+  tz = Intl.DateTimeFormat().resolvedOptions().timeZone,
   as,
   monthDate = new Date(),
   onChangeMonthDate,
@@ -124,12 +128,16 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
                 onChange(
                   rangeBehavior(
                     value as (number | Date)[],
-                    set(dt, {
-                      hours: 0,
-                      minutes: 0,
-                      seconds: 0,
-                      milliseconds: 0,
-                    }),
+                    set(
+                      dt,
+                      {
+                        hours: 0,
+                        minutes: 0,
+                        seconds: 0,
+                        milliseconds: 0,
+                      },
+                      { in: tzFn(tz) },
+                    ),
                   ),
                   DATE_TIME_RANGE_SOURCE_CAL_LEFT,
                 );
@@ -146,6 +154,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
               hoverDay={hoverDay}
               onMouseEnter={onMouseEnterCallback}
               onMouseLeave={onMouseLeaveCallback}
+              tz={tz}
             />
           </Box>
           {hasTime && (
@@ -193,18 +202,22 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
           />
           <Box height={'165px'}>
             <Calendar
-              monthDate={addMonths(monthDate, 1)}
+              monthDate={addMonths(monthDate, 1, { in: tzFn(tz) })}
               disableHoverDay={true}
               onClick={(dt) => {
                 onChange(
                   rangeBehavior(
                     value as (number | Date)[],
-                    set(dt, {
-                      hours: 23,
-                      minutes: 59,
-                      seconds: 59,
-                      milliseconds: 999,
-                    }),
+                    set(
+                      dt,
+                      {
+                        hours: 23,
+                        minutes: 59,
+                        seconds: 59,
+                        milliseconds: 999,
+                      },
+                      { in: tzFn(tz) },
+                    ),
                   ),
                   DATE_TIME_RANGE_SOURCE_CAL_RIGHT,
                 );
@@ -221,6 +234,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
               hoverDay={hoverDay}
               onMouseEnter={onMouseEnterCallback}
               onMouseLeave={onMouseLeaveCallback}
+              tz={tz}
             />
           </Box>
           {hasTime && (
