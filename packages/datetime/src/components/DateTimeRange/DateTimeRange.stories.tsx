@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
+import { expect } from 'storybook/test';
 
 import { DateTimeRange } from './DateTimeRange';
 import { useTimeRangePreserve } from './hooks';
@@ -34,6 +35,16 @@ export const Playground: Story = {
           setMonthDate(dt);
         }}
       />
+    );
+  },
+  play: async ({ canvas, userEvent }) => {
+    await userEvent.click(canvas.getAllByText('15')[0]);
+    await userEvent.click(canvas.getAllByText('15')[1]);
+    await expect(canvas.getAllByText('15')[0].parentElement).toHaveClass(
+      'selected',
+    );
+    await expect(canvas.getAllByText('15')[1].parentElement).toHaveClass(
+      'selected',
     );
   },
 };
