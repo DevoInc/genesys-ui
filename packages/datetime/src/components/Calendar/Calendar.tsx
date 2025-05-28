@@ -56,6 +56,7 @@ export interface CalendarProps
   /** Days of the week to show in the calendar. The first day of the week is Monday. */
   weekDays?: [string, string, string, string, string, string, string];
   weekStart?: number;
+  /** Timezone */
   tz?: string;
   /** Parse date for selectable dates.  */
   parseDate?: TParseCalendarDate;
