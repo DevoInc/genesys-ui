@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { ToolbarGroup } from './ToolbarGroup';
 import { Toolbar } from '../../Toolbar';
 import { Typography } from '../../../Typography';

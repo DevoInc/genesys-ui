@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { BasicTable } from '../../src/recipes/BasicTable';
 import { useOrderStruct } from '../../src/hooks';

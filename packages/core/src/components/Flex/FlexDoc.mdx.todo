@@ -1,4 +1,4 @@
-import { Meta, Canvas, Source, Markdown } from '@storybook/blocks';
+import { Meta, Canvas, Source, Markdown } from '@storybook/addon-docs/blocks';
 
 import spacingProps from '../../../../stories/partials/spacingProps.md?raw';
 

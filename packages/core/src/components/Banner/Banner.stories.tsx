@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Banner, Button, Flex, VFlex } from '../';
 import { lorem } from '../../../stories/utils/fillerTexts';

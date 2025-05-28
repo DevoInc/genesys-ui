@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { useTheme } from 'styled-components';
 
 import { GIUeba } from '@devoinc/genesys-icons';

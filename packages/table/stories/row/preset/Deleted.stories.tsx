@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { Holo } from '@devoinc/holo';
 import { BasicTable, TColDef, TData, TRowDef } from '../../../src';
 

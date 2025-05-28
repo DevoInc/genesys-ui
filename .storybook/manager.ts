@@ -1,5 +1,5 @@
-import { addons } from '@storybook/manager-api';
-import { create } from '@storybook/theming/create';
+import { addons } from 'storybook/manager-api';
+import { create } from 'storybook/theming';
 
 const iconMap = {
   Components: '',
@@ -16,7 +16,7 @@ addons.setConfig({
     brandImage: 'logo.png',
   }),
   sidebar: {
-    renderLabel: ({ name, type, ...props }) => {
+    renderLabel: ({ name, type }) => {
       return type === 'root'
         ? `${iconMap[name] ? iconMap[name] : ''} ${name}`
         : name;

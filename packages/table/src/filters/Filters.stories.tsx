@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import semver from 'semver';
 
 import { Menu, InputControl, VFlex } from '@devoinc/genesys-ui';

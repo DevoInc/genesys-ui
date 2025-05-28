@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { UserInfoAvatar } from './UserInfoAvatar';
 import { UserInfo } from '../../UserInfo';
 import { VFlex } from '../../../VFlex';

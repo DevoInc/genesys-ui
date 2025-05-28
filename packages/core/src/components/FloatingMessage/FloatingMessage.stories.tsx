@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { GICopy } from '@devoinc/genesys-icons';

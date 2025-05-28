@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Badge } from '@storybook/components';
+import { Badge } from 'storybook/internal/components';
 
 export interface ShieldsProps {
   badges: { link: string; title: string }[];

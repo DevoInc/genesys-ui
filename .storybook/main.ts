@@ -1,22 +1,24 @@
+import { createRequire } from 'node:module';
+import { dirname, join } from 'node:path';
 import type { StorybookConfig } from '@storybook/react-vite';
 import remarkGfm from 'remark-gfm';
 import react from '@vitejs/plugin-react';
+
+const require = createRequire(import.meta.url);
 
 const config: StorybookConfig = {
   stories: [
     '../stories/**/*.mdx',
     '../packages/*/@(src|stories)/**/*.@(stories.ts|stories.tsx|mdx)',
   ],
-  framework: '@storybook/react-vite',
+  framework: getAbsolutePath('@storybook/react-vite'),
   core: {
-    builder: '@storybook/builder-vite',
+    builder: getAbsolutePath('@storybook/builder-vite'),
   },
   addons: [
-    '@storybook/addon-controls',
-    '@storybook/addon-links',
-    '@storybook/addon-actions',
+    getAbsolutePath('@storybook/addon-links'),
     {
-      name: '@storybook/addon-docs',
+      name: getAbsolutePath('@storybook/addon-docs'),
       options: {
         mdxPluginOptions: {
           mdxCompileOptions: {
@@ -25,9 +27,9 @@ const config: StorybookConfig = {
         },
       },
     },
-    '@storybook/addon-a11y',
-    '@storybook/addon-themes',
-    '@storybook/preset-scss',
+    getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('@storybook/addon-themes'),
+    getAbsolutePath('@storybook/preset-scss'),
   ],
   docs: {
     defaultName: 'Overview',
@@ -56,13 +58,13 @@ const config: StorybookConfig = {
       optimizeDeps: {
         include: [
           '@devoinc/genesys-brand-devo',
-          '@storybook/addon-actions',
+          'storybook/actions',
           '@storybook/addon-docs',
           '@storybook/addon-docs/blocks',
           '@storybook/addon-themes',
           '@storybook/blocks',
-          '@storybook/theming',
-          '@storybook/components',
+          'storybook/theming',
+          'storybook/internal/components',
           'styled-components',
           'lodash',
           'js-cookie',
@@ -99,9 +101,9 @@ const config: StorybookConfig = {
     });
   },
   typescript: {
-    // @ts-ignore
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
+      EXPERIMENTAL_useWatchProgram: true,
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
       savePropValueAsString: true,
@@ -116,3 +118,7 @@ const config: StorybookConfig = {
 };
 
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, 'package.json')));
+}
