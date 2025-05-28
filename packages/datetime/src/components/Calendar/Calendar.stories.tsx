@@ -25,21 +25,6 @@ export const Playground: Story = {
   },
 };
 
-const tz = 'UTC-10:00';
-const nowTZ = new TZDate(2024, 5, 1, tz);
-const rangeValueTZ = [
-  set(nowTZ, { date: 10 }, { in: tzFn(tz) }),
-  set(nowTZ, { date: 20 }, { in: tzFn(tz) }),
-];
-export const Timezone: Story = {
-  tags: ['isHidden'],
-  args: {
-    monthDate: nowTZ,
-    value: rangeValueTZ,
-    tz,
-  },
-};
-
 export const Single: Story = {
   tags: ['isHidden'],
   args: {
@@ -144,5 +129,21 @@ export const RangeHook: Story = {
         onClick={handleNewDate}
       />
     );
+  },
+};
+
+const tz = 'UTC-10:00';
+const nowTZ = new TZDate(2025, 6, 1, tz);
+const rangeValueTZ = [
+  set(nowTZ, { date: 10 }, { in: tzFn(tz) }),
+  set(nowTZ, { date: 20 }, { in: tzFn(tz) }),
+];
+
+export const Timezone: Story = {
+  tags: ['isHidden'],
+  args: {
+    monthDate: nowTZ,
+    value: rangeValueTZ,
+    tz,
   },
 };
