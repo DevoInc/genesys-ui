@@ -10,8 +10,8 @@ export const getMonthDays = (
 ) =>
   eachDayOfInterval(
     {
-      start: startOfMonth(dt),
-      end: endOfMonth(dt),
+      start: startOfMonth(dt, { in: tzFn(tz) }),
+      end: endOfMonth(dt, { in: tzFn(tz) }),
     },
     { in: tzFn(tz) },
   );
