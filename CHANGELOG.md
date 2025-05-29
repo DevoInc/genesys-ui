@@ -1,5 +1,17 @@
 # Changelog
 
+## [18.3.0](https://github.com/DevoInc/genesys-ui/compare/v18.2.0...v18.3.0) (2025-05-29)
+
+### Features
+
+* Adjustments for new design token values, AppMenu, Menu interfaces and height of the Tabs. ([58baf1b](https://github.com/DevoInc/genesys-ui/commit/58baf1b7db2f47cb6eba75915deacc845ab8496b))
+* **datetime:** added timezone to DateTime component ([33f1ebb](https://github.com/DevoInc/genesys-ui/commit/33f1ebb4a2d80cb34f131f24a10b0f8cb7cb7438))
+* **DateTime:** Calendar month explicit TZ ([425e14c](https://github.com/DevoInc/genesys-ui/commit/425e14c4fabe09123cf9dc26c0cb469ff0f6a703))
+
+### Bug Fixes
+
+* **datetime:** fix range behavior on calendar ranges ([bf94cc7](https://github.com/DevoInc/genesys-ui/commit/bf94cc7b40cf6f3c6b9e6eb3c7ff6b856677649f))
+
 ## [18.2.0](https://github.com/DevoInc/genesys-ui/compare/v18.1.1...v18.2.0) (2025-05-23)
 
 ### Features
