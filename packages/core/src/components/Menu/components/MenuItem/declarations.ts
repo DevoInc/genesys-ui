@@ -56,6 +56,8 @@ export interface IMenuItem {
   isItem?: boolean;
   /** The main text block of the item. */
   label?: React.ReactNode;
+  /** If it's true, the menu item has the same styles as a Link component (the icon and label block). */
+  linkStyled?: boolean;
   /** Custom content to be rendered at the beginning just after the Icon block of the item. */
   prependContent?: React.ReactNode;
   /** If it's true, the menu item has no background. */

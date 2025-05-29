@@ -12,6 +12,7 @@ export interface MenuItemContainerProps
       | 'children'
       | 'hasExtraLeftSpace'
       | 'isItem'
+      | 'linkStyled'
       | 'quiet'
       | 'state'
       | 'unlimitedHeight'
@@ -26,6 +27,7 @@ export const MenuItemContainer = React.forwardRef<
       children,
       isItem = true,
       hasExtraLeftSpace,
+      linkStyled,
       quiet,
       unlimitedHeight,
       state,
@@ -40,6 +42,7 @@ export const MenuItemContainer = React.forwardRef<
         {...restMenuItemContainerProps}
         ref={ref}
         $hasExtraLeftSpace={hasExtraLeftSpace}
+        $linkStyled={linkStyled}
         $quiet={quiet}
         $unlimitedHeight={unlimitedHeight}
         $state={state}

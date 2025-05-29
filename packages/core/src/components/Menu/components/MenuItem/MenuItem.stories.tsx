@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+import { useTheme } from 'styled-components';
 
 import {
   GIDiamondPrizeAwardJewelleryRing,
@@ -143,6 +144,27 @@ export const ReadOnly: Story = {
     ),
     state: 'readonly',
   },
+};
+
+export const VisualAdjustments: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((props) => {
+      const theme = useTheme();
+      return (
+        <HFlex>
+          <HFlex.Item
+            padding="cmp-xs"
+            style={{
+              backgroundColor: theme.alias.color.background.surface.base.raised,
+            }}
+          >
+            <Menu.Item {...props} quiet label="Quiet menu item" />
+          </HFlex.Item>
+          <Menu.Item {...props} linkStyled label="Link styled menu item" />
+        </HFlex>
+      );
+    })(args),
 };
 
 export const ActiveForNavigation: Story = {

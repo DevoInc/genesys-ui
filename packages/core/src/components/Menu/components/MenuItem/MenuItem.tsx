@@ -42,6 +42,7 @@ export const InternalMenuItem = React.forwardRef<
       id,
       isItem,
       label,
+      linkStyled,
       name,
       onBlur,
       onChange,
@@ -100,6 +101,7 @@ export const InternalMenuItem = React.forwardRef<
         href={isDisabled ? null : href}
         id={id}
         isItem={isItem}
+        linkStyled={linkStyled}
         name={isSelectable ? null : name}
         ref={ref}
         rel={rel}

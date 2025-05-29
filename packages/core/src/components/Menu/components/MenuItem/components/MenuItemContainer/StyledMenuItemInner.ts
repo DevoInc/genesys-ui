@@ -13,6 +13,8 @@ import { menuItemSizeConfig } from '../../constants';
 export interface StyledMenuItemInnerProps {
   /** If the menu item has a reserved left space for markers: icon, selection mark... etc. */
   $hasExtraLeftSpace?: IMenuItem['hasExtraLeftSpace'];
+  /** If it's true, the menu item has the same styles as a Link component (the icon and label block). */
+  $linkStyled?: IMenuItem['linkStyled'];
   /** If it's true, the menu item has no background. */
   $quiet?: IMenuItem['quiet'];
   /** If the menu item has unlimited height, and it's added a vertical padding. */
@@ -24,6 +26,7 @@ export interface StyledMenuItemInnerProps {
 export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
   ${({
     $hasExtraLeftSpace,
+    $linkStyled,
     $quiet,
     $state = 'enabled',
     theme,
@@ -57,8 +60,11 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
       background-color: ${$quiet
         ? 'transparent'
         : tokens.color.background[stateForTokens]};
-      color: #1f282e;
+      color: ${$linkStyled
+        ? theme.cmp.link.color.text.base
+        : tokens.color.text[stateForTokens]};
       text-decoration: none;
+      font-weight: ${$linkStyled && 'bold'};
 
       ${$hasExtraLeftSpace &&
       css`
