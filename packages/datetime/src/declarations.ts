@@ -35,3 +35,10 @@ export type TParseRange = (range: IParseResult[]) => IParseRangeResult;
 // TODO: use TFormatDate
 export type TReprDate = (date: TDate) => string;
 export type TFormatDate = (date: TDate) => string;
+
+export interface IEndPointRangeTime {
+  hours: number;
+  minutes: number;
+  seconds: number;
+  milliseconds: number;
+}

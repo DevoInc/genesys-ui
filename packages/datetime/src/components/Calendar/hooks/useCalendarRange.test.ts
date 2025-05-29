@@ -2,6 +2,7 @@ import { describe, test, expect } from 'vitest';
 import { act, renderHook } from '@testing-library/react';
 
 import { useCalendarRange } from './useCalendarRange';
+import { set } from 'date-fns';
 
 describe('Calendar', () => {
   describe('hooks', () => {
@@ -68,13 +69,21 @@ describe('Calendar', () => {
         expect(result.current.hasLeftHoverEffect).toBe(true);
         expect(result.current.hasRightHoverEffect).toBe(true);
 
-        const nextDate = new Date(2022, 8, 11);
+        const nextDate = set(new Date(2022, 8, 11), {
+          hours: 23,
+          minutes: 59,
+          seconds: 59,
+          milliseconds: 999,
+        });
 
         act(() => {
           result.current.handleNewDate(nextDate);
         });
 
-        expect(result.current.range).toStrictEqual([range[0], nextDate]);
+        expect(result.current.range).toStrictEqual([
+          range[0].valueOf(),
+          nextDate.valueOf(),
+        ]);
         expect(result.current.hasLeftHoverEffect).toBe(false);
         expect(result.current.hasRightHoverEffect).toBe(false);
       });

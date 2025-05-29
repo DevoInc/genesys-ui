@@ -1,6 +1,10 @@
 import * as React from 'react';
+<<<<<<< HEAD
 import { Meta, StoryObj } from '@storybook/react';
 import { useTheme } from 'styled-components';
+=======
+import { Meta, StoryObj } from '@storybook/react-vite';
+>>>>>>> 619c0b6a4685fba2c337e6b2d78a199889de0c7d
 
 import {
   GIDiamondPrizeAwardJewelleryRing,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Holo } from '@devoinc/holo';
 import { GIEyeViewFilled, GIPencilEdit } from '@devoinc/genesys-icons';

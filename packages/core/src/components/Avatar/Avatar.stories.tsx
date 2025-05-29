@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import {
   AVATAR_COLOR_SCHEME_DEFAULT_VALUE,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { Box } from '../../Box';
 import { Col } from './Col';
 import { colStyles } from '../__stories__';

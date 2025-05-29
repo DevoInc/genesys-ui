@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { AppMenu } from '../../AppMenu';
 
 const meta: Meta<typeof AppMenu.Heading> = {

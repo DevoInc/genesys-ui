@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { StrictMode } from 'react';
-import { Preview } from '@storybook/react';
+import { Preview } from '@storybook/react-vite';
 import { DocsContainer, DocsContainerProps } from '@storybook/addon-docs';
-import { create } from '@storybook/theming';
+import { create } from 'storybook/theming';
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 
 import { light, dark } from '@devoinc/genesys-brand-devo';
@@ -45,6 +45,7 @@ const preview: Preview = {
       },
     },
     docs: {
+      codePanel: true,
       container: ({
         children,
         ...rest

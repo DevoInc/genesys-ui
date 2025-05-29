@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { isWeekend, getDate, set } from 'date-fns';
 import { tz as tzFn, TZDate } from '@date-fns/tz';
 

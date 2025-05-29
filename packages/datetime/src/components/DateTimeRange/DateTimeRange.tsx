@@ -24,7 +24,7 @@ import { Presets, type PresetsProps } from '../Presets';
 import { Time, type TimeProps } from '../Time';
 import { Calendar, type CalendarProps, rangeBehavior } from '../Calendar';
 import { tautologyParseDate } from '../../parsers';
-import { TDateTimeRangeI18n, TDateTimeRangeSource } from './declarations';
+import type { TDateTimeRangeI18n, TDateTimeRangeSource } from './declarations';
 import {
   DATE_TIME_RANGE_SOURCE_CAL_LEFT,
   DATE_TIME_RANGE_SOURCE_CAL_RIGHT,
@@ -33,7 +33,7 @@ import {
 } from './constants';
 import { defaultDateTimeRangeI18n } from './i18n';
 import { useMergeI18n } from '../../hooks';
-import type { TDateRange } from '../../declarations';
+import type { TDateRange, IEndPointRangeTime } from '../../declarations';
 import { MonthFloatingPicker } from '../MonthFloatingPicker';
 
 export interface DateTimeRangeProps
@@ -61,6 +61,10 @@ export interface DateTimeRangeProps
    * of `number` or `Date`. */
   onChangeMonthDate?: (monthDate: number | Date) => void;
   value?: TDateRange;
+  /** Default values for the time at the start of the range */
+  startRangeDefault?: IEndPointRangeTime;
+  /** Default values for the time at the end of the range */
+  endRangeDefault?: IEndPointRangeTime;
 }
 
 export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
@@ -80,6 +84,8 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   weekDays,
   presetsPlaceholder,
   presets = [],
+  startRangeDefault = { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 },
+  endRangeDefault = { hours: 23, minutes: 59, seconds: 59, milliseconds: 999 },
   style,
   ...dataProps
 }) => {
@@ -126,19 +132,13 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
               disableHoverDay={true}
               onClick={(dt) => {
                 onChange(
-                  rangeBehavior(
-                    value as (number | Date)[],
-                    set(
-                      dt,
-                      {
-                        hours: 0,
-                        minutes: 0,
-                        seconds: 0,
-                        milliseconds: 0,
-                      },
-                      { in: tzFn(tz) },
-                    ),
-                  ),
+                  rangeBehavior({
+                    range: value as (number | Date)[],
+                    dt,
+                    tz,
+                    startRange: startRangeDefault,
+                    endRange: endRangeDefault,
+                  }),
                   DATE_TIME_RANGE_SOURCE_CAL_LEFT,
                 );
               }}
@@ -206,19 +206,13 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
               disableHoverDay={true}
               onClick={(dt) => {
                 onChange(
-                  rangeBehavior(
-                    value as (number | Date)[],
-                    set(
-                      dt,
-                      {
-                        hours: 23,
-                        minutes: 59,
-                        seconds: 59,
-                        milliseconds: 999,
-                      },
-                      { in: tzFn(tz) },
-                    ),
-                  ),
+                  rangeBehavior({
+                    range: value as (number | Date)[],
+                    dt,
+                    tz,
+                    startRange: startRangeDefault,
+                    endRange: endRangeDefault,
+                  }),
                   DATE_TIME_RANGE_SOURCE_CAL_RIGHT,
                 );
               }}

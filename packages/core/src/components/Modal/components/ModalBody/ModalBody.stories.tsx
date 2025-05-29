@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { ModalBody } from './ModalBody';
 import { lorem } from '../../../../../stories/utils/fillerTexts';

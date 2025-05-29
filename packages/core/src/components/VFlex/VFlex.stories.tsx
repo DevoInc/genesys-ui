@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { VFlex } from './VFlex';
 import { StyledLayoutContentHelper } from '../../../stories/components/styled';

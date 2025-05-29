@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { GIDevoIcon } from '@devoinc/genesys-icons';
 import { HFlex } from '../../../HFlex';

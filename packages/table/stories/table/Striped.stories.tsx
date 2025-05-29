@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { BasicTable, TColDef, TData } from '../../src';
 import { ROW_HEIGHT_MD } from '../../src/constants';

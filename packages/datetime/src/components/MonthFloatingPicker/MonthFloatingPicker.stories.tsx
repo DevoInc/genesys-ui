@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { endOfMonth, startOfMonth, subMonths } from 'date-fns';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { MonthFloatingPicker } from './MonthFloatingPicker';
 
