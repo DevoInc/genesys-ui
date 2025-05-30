@@ -98,7 +98,7 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
     arrowRef,
     setIsOpen,
   } = useFloatingInlineMessage({ isOpened, placement, strategy });
-
+  const evalZIndex = zIndex || theme.cmp.popover.elevation.zIndex.base;
   return (
     <>
       <InlineMessage.Trigger
@@ -125,7 +125,7 @@ const PartInlineMessage: React.FC<InlineMessageProps> = ({
             setFloating={refs.setFloating}
             getFloatingProps={getFloatingProps}
             floatingStyles={floatingStyles}
-            zIndex={zIndex}
+            zIndex={evalZIndex}
             as={as}
             draggable={draggable}
             id={id}
