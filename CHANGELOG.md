@@ -1,5 +1,15 @@
 # Changelog
 
+## [18.5.0](https://github.com/DevoInc/genesys-ui/compare/v18.4.0...v18.5.0) (2025-05-30)
+
+### Features
+
+* Exposed the internal component interfaces of Menu and AppMenu. ([3225823](https://github.com/DevoInc/genesys-ui/commit/3225823212bd9b6ab6a77d5ba86872029b0adf34))
+
+### Bug Fixes
+
+* **InlineMessage:** Added z-index by default. ([dd4e14e](https://github.com/DevoInc/genesys-ui/commit/dd4e14ea18dd119c06a5fcc0ce3b039c407774b6))
+
 ## [18.4.0](https://github.com/DevoInc/genesys-ui/compare/v18.3.0...v18.4.0) (2025-05-29)
 
 ### Features
