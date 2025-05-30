@@ -1,5 +1,11 @@
 # Changelog
 
+## [18.4.0](https://github.com/DevoInc/genesys-ui/compare/v18.3.0...v18.4.0) (2025-05-29)
+
+### Features
+
+* **MenuItem:** Added new prop 'linkStyled' which applies Link component styles if it's set to true. ([41f364b](https://github.com/DevoInc/genesys-ui/commit/41f364b248ca2f1f8ef55f4f4a6f0f4c49233ba6))
+
 ## [18.3.0](https://github.com/DevoInc/genesys-ui/compare/v18.2.0...v18.3.0) (2025-05-29)
 
 ### Features
