@@ -1,5 +1,11 @@
 # Changelog
 
+## [18.6.0](https://github.com/DevoInc/genesys-ui/compare/v18.5.1...v18.6.0) (2025-06-03)
+
+### Features
+
+* **TextareaControl:** Added resize prop. ([2014562](https://github.com/DevoInc/genesys-ui/commit/20145625fba0aea3e273755a2ffefbb5a5324464))
+
 ## [18.5.1](https://github.com/DevoInc/genesys-ui/compare/v18.5.0...v18.5.1) (2025-06-03)
 
 ### Bug Fixes
