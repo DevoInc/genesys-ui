@@ -1,6 +1,6 @@
+import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import type { TTextareaResize } from './declarations';
 import {
   commonInputControlMixin,
   getLineHeight,
@@ -18,7 +18,7 @@ export interface StyledTextareaControlProps {
   $rows?: HTMLTextAreaElement['rows'];
   /** The resize CSS property sets whether an element is resizable, and if so,
    * in which directions.*/
-  $resize?: TTextareaResize;
+  $resize?: React.CSSProperties['resize'];
 }
 
 export const StyledTextareaControl = styled.textarea<StyledTextareaControlProps>`

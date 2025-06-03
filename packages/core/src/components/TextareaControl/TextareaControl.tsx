@@ -27,6 +27,7 @@ interface CommonTextareaControlProps
   /** The size for the textarea. It affects to its padding, font-size... etc. */
   size?: TFieldSize;
   status?: TFieldStatus;
+  resize?: React.CSSProperties['resize'];
 }
 
 export type TextareaControlProps =
@@ -42,6 +43,7 @@ export const TextareaControl: React.FC<TextareaControlProps> = ({
   id,
   readOnly,
   required,
+  resize,
   rows = 4,
   size,
   status,
@@ -80,6 +82,7 @@ export const TextareaControl: React.FC<TextareaControlProps> = ({
       id={contextBasedProps.id}
       readOnly={readOnly}
       required={contextBasedProps.required}
+      $resize={resize}
       rows={rows}
       $size={contextBasedProps.size}
       $status={contextBasedProps.status}

@@ -1,5 +1,5 @@
 export * from './Menu';
-export {
+export type {
   MenuItemProps,
   MenuSeparatorProps,
   MenuHeadingProps,

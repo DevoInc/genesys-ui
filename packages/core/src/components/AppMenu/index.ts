@@ -1,6 +1,6 @@
 export * from './AppMenu';
 export * from './declarations';
-export {
+export type {
   AppMenuBodyProps,
   AppMenuFooterProps,
   AppMenuHeaderProps,
