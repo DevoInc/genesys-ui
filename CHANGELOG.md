@@ -1,5 +1,11 @@
 # Changelog
 
+## [18.5.1](https://github.com/DevoInc/genesys-ui/compare/v18.5.0...v18.5.1) (2025-06-03)
+
+### Bug Fixes
+
+* **UploadFiles:** Use 'sentence case' format for some i18n labels. ([1664680](https://github.com/DevoInc/genesys-ui/commit/166468013a115b56185a8c5094ccbe5fd989bdc3))
+
 ## [18.5.0](https://github.com/DevoInc/genesys-ui/compare/v18.4.0...v18.5.0) (2025-05-30)
 
 ### Features
