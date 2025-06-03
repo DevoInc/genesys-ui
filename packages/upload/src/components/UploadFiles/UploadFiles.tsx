@@ -42,6 +42,9 @@ export interface UploadFilesProps
         | 'imagePreviewMaxHeight'
         | 'imagePreviewMinHeight'
         | 'imagePreviewTransparencyIndicator'
+        | 'labelTapToCancel'
+        | 'labelTapToRetry'
+        | 'labelTapToUndo'
         | 'maxFileSize'
         | 'maxTotalFileSize'
         | 'minFileSize'
@@ -62,6 +65,9 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
     id,
     label,
     labelPosition = 'top',
+    labelTapToCancel = 'Tap to cancel',
+    labelTapToRetry = 'Tap to retry',
+    labelTapToUndo = 'Tap to undo',
     name,
     onClick,
     onMouseDown,
@@ -169,6 +175,9 @@ export const UploadFiles: React.FC<UploadFilesProps> = (props) => {
           labelButtonAbortItemProcessing={iconRemoveStaticMarkup}
           labelButtonRemoveItem=""
           labelButtonRetryItemProcessing=""
+          labelTapToCancel={labelTapToCancel}
+          labelTapToRetry={labelTapToRetry}
+          labelTapToUndo={labelTapToUndo}
           maxFileSize={maxFileSize}
           maxHeight={maxHeight}
           maxTotalFileSize={maxTotalFileSize}
