@@ -1,5 +1,11 @@
 # Changelog
 
+## [18.7.0](https://github.com/DevoInc/genesys-ui/compare/v18.6.0...v18.7.0) (2025-06-06)
+
+### Features
+
+* Added 'quiet-blend' to the Button colorScheme type. ([cf68975](https://github.com/DevoInc/genesys-ui/commit/cf68975a97904dd6af5e473e453480dd87cca04d))
+
 ## [18.6.0](https://github.com/DevoInc/genesys-ui/compare/v18.5.1...v18.6.0) (2025-06-03)
 
 ### Features
