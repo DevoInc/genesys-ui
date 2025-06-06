@@ -1,5 +1,11 @@
 # Changelog
 
+## [18.8.0](https://github.com/DevoInc/genesys-ui/compare/v18.7.0...v18.8.0) (2025-06-06)
+
+### Features
+
+* Several improvements and fixes for Badge (inverse variant, docs... etc.), FloatingMessage (added position 'custom') and update to the last genesys-brand-devo version. ([7866d0f](https://github.com/DevoInc/genesys-ui/commit/7866d0fdd3e5c6d0f9f799aa62ed7835e0720157))
+
 ## [18.7.0](https://github.com/DevoInc/genesys-ui/compare/v18.6.0...v18.7.0) (2025-06-06)
 
 ### Features
