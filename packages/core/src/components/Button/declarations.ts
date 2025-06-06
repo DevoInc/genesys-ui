@@ -13,7 +13,8 @@ export type TButtonColorScheme =
   | TUIColorScheme
   | 'accent'
   | 'accent-high'
-  | 'quiet';
+  | 'quiet'
+  | 'quiet-blend';
 
 export type TButtonBasicState =
   | 'disabled'
