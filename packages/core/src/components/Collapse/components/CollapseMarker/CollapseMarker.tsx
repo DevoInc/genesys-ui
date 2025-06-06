@@ -21,6 +21,7 @@ export const CollapseMarker: React.FC<CollapseMarkerProps> = ({
   const evalExpanded = expanded || context.expanded;
   return (
     <IconButtonCollapse
+      as="div"
       tabIndex={-1}
       state={evalExpanded ? 'expanded' : 'enabled'}
       size={size}

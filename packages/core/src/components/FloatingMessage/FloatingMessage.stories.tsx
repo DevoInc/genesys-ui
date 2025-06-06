@@ -41,77 +41,99 @@ export const PositionedToItsParent: Story = {
     ))(args),
 };
 
+export const CustomPosition: Story = {
+  tags: ['isHidden'],
+  render: (args) =>
+    ((args) => (
+      <Box position="relative">
+        <Typography.CodeBlock>{lorem2}</Typography.CodeBlock>
+        <Box position="absolute" positionTop="-12px" positionRight="-12px">
+          <FloatingMessage {...args} position="custom" />
+        </Box>
+      </Box>
+    ))(args),
+};
+
 export const Position: Story = {
   tags: ['isHidden'],
   render: (args) =>
     ((args) => (
-      <Box
-        position="relative"
-        height="16rem"
-        style="background-color: #f7f7f7; border-radius: 0.6rem;"
-      >
+      <>
         <FloatingMessage
           {...args}
           status="info"
-          message="left-top"
-          position="left-top"
+          message="custom"
+          position="custom"
         />
-        <FloatingMessage
-          {...args}
-          status="info"
-          message="left-center"
-          position="left-center"
-        />
-        <FloatingMessage
-          {...args}
-          status="info"
-          message="left-bottom"
-          position="left-bottom"
-        />
-        <FloatingMessage
-          {...args}
-          status="info"
-          message="center-top"
-          position="center-top"
-        />
-        <FloatingMessage
-          {...args}
-          status="info"
-          message="center-center"
-          position="center-center"
-        />
-        <FloatingMessage
-          {...args}
-          status="info"
-          message="center-bottom"
-          position="center-bottom"
-        />
-        <FloatingMessage
-          {...args}
-          status="info"
-          message="right-top"
-          position="right-top"
-        />
-        <FloatingMessage
-          {...args}
-          status="info"
-          message="right-center"
-          position="right-center"
-        />
-        <FloatingMessage
-          {...args}
-          status="info"
-          message="right-bottom"
-          position="right-bottom"
-        />
-      </Box>
+        <Box
+          position="relative"
+          height="16rem"
+          style="background-color: #f7f7f7; border-radius: 0.6rem;"
+          padding="cmp-xl cmp-sm"
+        >
+          <FloatingMessage
+            {...args}
+            status="info"
+            message="left-top"
+            position="left-top"
+          />
+          <FloatingMessage
+            {...args}
+            status="info"
+            message="left-center"
+            position="left-center"
+          />
+          <FloatingMessage
+            {...args}
+            status="info"
+            message="left-bottom"
+            position="left-bottom"
+          />
+          <FloatingMessage
+            {...args}
+            status="info"
+            message="center-top"
+            position="center-top"
+          />
+          <FloatingMessage
+            {...args}
+            status="info"
+            message="center-center"
+            position="center-center"
+          />
+          <FloatingMessage
+            {...args}
+            status="info"
+            message="center-bottom"
+            position="center-bottom"
+          />
+          <FloatingMessage
+            {...args}
+            status="info"
+            message="right-top"
+            position="right-top"
+          />
+          <FloatingMessage
+            {...args}
+            status="info"
+            message="right-center"
+            position="right-center"
+          />
+          <FloatingMessage
+            {...args}
+            status="info"
+            message="right-bottom"
+            position="right-bottom"
+          />
+        </Box>
+      </>
     ))(args),
 };
 
 export const ShowHideButton: Story = {
   tags: ['isHidden'],
-  render: (args) =>
-    ((args) => {
+  render: () =>
+    ((props) => {
       const [isVisible, setIsVisible] = React.useState(false);
       React.useEffect(() => {
         setTimeout(() => {
@@ -132,16 +154,16 @@ export const ShowHideButton: Story = {
               tooltip="Copy to Clipboard"
             />
           </HFlex>
-          {isVisible && <FloatingMessage {...args} />}
+          {isVisible && <FloatingMessage {...props} />}
         </VFlex>
       );
-    })(args),
+    })(),
 };
 
 export const Animated: Story = {
   tags: ['isHidden'],
-  render: (args) =>
-    ((args) => {
+  render: () =>
+    ((props) => {
       const [isVisible, setIsVisible] = React.useState(false);
       React.useEffect(() => {
         setTimeout(() => {
@@ -174,11 +196,11 @@ export const Animated: Story = {
                 transition={{ duration: 2, opacity: 1, width: '100%' }}
                 exit={{ opacity: 0, width: 0 }}
               >
-                <FloatingMessage {...args} />
+                <FloatingMessage {...props} />
               </motion.div>
             )}
           </AnimatePresence>
         </VFlex>
       );
-    })(args),
+    })(),
 };

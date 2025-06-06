@@ -37,6 +37,23 @@ the text is rendered.
 
 <Canvas of={Stories.ContentSchemes} />
 
+## Color schemes
+
+There are several predefined color schemes for the component using the 'colorScheme' prop.
+
+<Canvas of={Stories.ColorSchemes} />
+
+Anyway, you can also directly assign a color, although we don't recommend doing this unless
+you need very specific customization. The color of the text is auto-generated depending on
+getting AA contrast, so if the color is dark, the text color tends to be white, and if the color
+is light, the text color tends to dark gray.
+
+<Canvas of={Stories.CustomColor} />
+
+## Sizes
+
+<Canvas of={Stories.Sizes} />
+
 ## Custom usage
 
 Sometimes you need something very specific, which is not possible using only the
@@ -53,6 +70,9 @@ for very specific needs.
 - [Avatar](?path=/docs/components-media-avatar--overview)
 - [Stepper](?path=/docs/components-navigation-stepper--overview)
 - [Toast](?path=/docs/components-feedback-toast--overview)
+- [Icon](?path=/docs/components-feedback-icon--overview)
+- [Button](?path=/docs/components-button-button--overview)
+- [IconButton](?path=/docs/components-button-iconbutton--overview)
 
 ## Props
 

@@ -39,7 +39,7 @@ export const StyledTagContainer = styled.span<StyledTagContainerProps>`
       ? $colorScheme
       : cmpTokens.color.background[colorBackground];
     const textColor = isValidColor($colorScheme)
-      ? getAccTextColor($colorScheme, '#fff', cmpTokens.color.text.help)
+      ? getAccTextColor($colorScheme, '#fff', '#222')
       : cmpTokens.color.text[colorText];
     return css`
       ${typoMixin({ $bold, theme, $size })};

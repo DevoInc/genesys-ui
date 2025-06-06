@@ -13,19 +13,20 @@ import type {
 import { floatingNotificationMixin } from './mixins';
 
 import { Helper, type HelperProps } from '../Helper';
-import { Panel } from '../Panel';
+import { Panel, type PanelProps } from '../Panel';
 import { mergeStyles } from '../../helpers';
 
 export interface FloatingMessageProps
   extends IDataAttrs,
-    Omit<HelperProps, 'size'> {
+    Omit<HelperProps, 'size'>,
+    Pick<PanelProps, 'zIndex'> {
   /** The offset in pixels for the position of the notification. It's defined
    * in an array of two values in which the first one is for the axis-x and the
    * second one for the axis-y. */
   offset?: TFloatingMessageOffset;
   /** The position of the notification relative to its parent container (it
    * should have position relative or absolute). It's positioned absolutely
-   * over the sibling and the prop defines the location by main side positions:
+   * over the sibling, and the prop defines the location by main side positions:
    * left-top, left-center, center-center... etc.*/
   position?: TFloatingMessagePosition;
 }
@@ -36,17 +37,23 @@ export const FloatingMessage: React.FC<FloatingMessageProps> = ({
   role,
   status = FN_STATUS_DEFAULT_VALUE,
   style,
+  zIndex,
   ...restProps
 }) => {
-  const evalOffset = offset || FN_POSITION_DEFAULT_OFFSET_MAP[position];
+  const evalOffset =
+    position === 'custom'
+      ? null
+      : offset || FN_POSITION_DEFAULT_OFFSET_MAP[position];
   return (
     <Panel
       elevation="popOut"
       size="xs"
       style={mergeStyles(
-        floatingNotificationMixin({ offset: evalOffset, position }),
+        position !== 'custom' &&
+          floatingNotificationMixin({ offset: evalOffset, position }),
         style,
       )}
+      zIndex={zIndex}
     >
       <Panel.Body>
         <Helper

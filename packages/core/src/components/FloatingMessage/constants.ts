@@ -9,6 +9,7 @@ export const FN_POSITION_DEFAULT_VALUE: TFloatingMessagePosition = 'right-top';
 export const FN_POSITION_DEFAULT_OFFSET_MAP: {
   [key in TFloatingMessagePosition]: TFloatingMessageOffset;
 } = {
+  custom: null,
   'left-top': [10, 10],
   'left-center': [10, 0],
   'left-bottom': [10, 10],

@@ -39,8 +39,9 @@ export const StyledBadgeContainer = styled.span<StyledBadgeContainerProps>`
       ? $colorScheme
       : cmpTokens.color.background[contentType][colorSchemeForTokens];
     const textColor = isValidColor($colorScheme)
-      ? getAccTextColor($colorScheme, '#fff', cmpTokens.color.text.help)
+      ? getAccTextColor($colorScheme, '#fff', '#222')
       : cmpTokens.color.text[colorSchemeForTokens];
+
     return css`
       position: relative;
       flex: 0 0 auto;
@@ -72,8 +73,11 @@ export const StyledBadgeContainer = styled.span<StyledBadgeContainerProps>`
         ? getBadgeInverseModeColor({
             colorScheme: $colorScheme,
             textColor: bgColor,
+            theme,
           })
-        : textColor};
+        : $inverse
+          ? bgColor
+          : textColor};
     `;
   }}
 `;

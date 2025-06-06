@@ -31,10 +31,19 @@ needed a parent container with position relative or absolute. This is an example
 with a position relative parent container and with a code block as sibling of
 the component.
 
-The floating message is positioned in an absolute way, but relative to this
+The floating message is positioned absolutely, but relative to this
 sibling thanks to the common parent with position relative:
 
 <Canvas of={Stories.PositionedToItsParent} />
+
+## Custom position
+
+Anyway, if you need to manage the position, offset... etc. of the component, you
+can use the position prop with 'custom' value, so the component will be free of
+all the position and offset styles. This way you have total control for its
+styles:
+
+<Canvas of={Stories.CustomPosition} />
 
 ## Position demo
 
