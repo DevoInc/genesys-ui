@@ -7,6 +7,7 @@ import {
   GIDiamondPrizeAwardJewelleryRing,
   GIEyeViewFilled,
   GIIdea,
+  GITagPriceSale,
   GITimeZone,
 } from '@devoinc/genesys-icons';
 
@@ -21,22 +22,21 @@ import { Tag } from '../../../Tag';
 import { Typography } from '../../../Typography';
 import { VFlex } from '../../../VFlex';
 import { MenuItem } from './MenuItem';
+import { ButtonGroup } from '../../../ButtonGroup';
 
 const meta: Meta<typeof Menu.Item> = {
   title: 'Components/Navigation/Menu/Components/MenuItem',
   component: Menu.Item,
+  args: {
+    label: 'Menu item content',
+    icon: <GITimeZone />,
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Menu.Item>;
 
-export const Playground: Story = {
-  args: {
-    label: 'Menu item content',
-    icon: <GITimeZone />,
-    expandable: true,
-  },
-};
+export const Playground: Story = {};
 
 export const WithAppendAndPrependContent: Story = {
   tags: ['isHidden'],
@@ -92,6 +92,24 @@ export const WithAppendPrependAndBottomContent: Story = {
   },
 };
 
+export const WithInteractiveContent: Story = {
+  args: {
+    interactiveContent: (
+      <ButtonGroup size="sm" colorScheme="quiet-blend">
+        <ButtonGroup.IconButton
+          onClick={() => alert('onClick on BUTTON')}
+          icon={<GIIdea />}
+        />
+        <ButtonGroup.IconButton
+          onClick={() => alert('onClick on BUTTON')}
+          icon={<GITagPriceSale />}
+        />
+      </ButtonGroup>
+    ),
+    onClick: () => alert('onClick'),
+  },
+};
+
 export const WithDescription: Story = {
   tags: ['isHidden'],
   args: {
@@ -111,12 +129,11 @@ export const Selectable: Story = {
   render: () =>
     (() => {
       const [selected, setSelected] = React.useState(false);
-      const onOptionChange = () => setSelected(!selected);
       return (
         <Menu.Item
           label="Option one"
           selectionScheme="multiple"
-          onChange={onOptionChange}
+          onClick={() => setSelected(!selected)}
           state={selected ? 'selected' : 'enabled'}
         />
       );
@@ -189,11 +206,10 @@ export const CustomContent: Story = {
   render: () =>
     (() => {
       const [selected, setSelected] = React.useState(false);
-      const onOptionChange = () => setSelected(!selected);
       return (
         <Menu.Item
           selectionScheme="multiple"
-          onChange={onOptionChange}
+          onClick={() => setSelected(!selected)}
           state={selected ? 'selected' : 'enabled'}
           unlimitedHeight
           hasExtraLeftSpace

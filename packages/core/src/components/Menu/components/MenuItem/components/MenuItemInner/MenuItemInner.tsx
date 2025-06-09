@@ -3,47 +3,41 @@ import * as React from 'react';
 import type { IMenuItem, IMenuItemBasic } from '../../declarations';
 import type { Resolve } from '../../../../../../typeFunctions';
 import { StyledMenuItemInner } from './StyledMenuItemInner';
-import { StyledMenuItem } from './StyledMenuItem';
 
-export interface MenuItemContainerProps
+export interface MenuItemInnerProps
   extends IMenuItemBasic,
     Pick<
       IMenuItem,
       | 'children'
       | 'hasExtraLeftSpace'
-      | 'isItem'
       | 'linkStyled'
-      | 'quiet'
       | 'state'
       | 'unlimitedHeight'
     > {}
 
-export const MenuItemContainer = React.forwardRef<
+export const MenuItemInner = React.forwardRef<
   HTMLButtonElement,
-  Resolve<MenuItemContainerProps>
+  Resolve<MenuItemInnerProps>
 >(
   (
     {
       children,
-      isItem = true,
       hasExtraLeftSpace,
       linkStyled,
-      quiet,
       unlimitedHeight,
       state,
       style,
       tooltip,
-      ...restMenuItemContainerProps
+      ...restMenuItemInnerProps
     },
     ref,
   ) => {
-    const innerContent = (
+    return (
       <StyledMenuItemInner
-        {...restMenuItemContainerProps}
+        {...restMenuItemInnerProps}
         ref={ref}
         $hasExtraLeftSpace={hasExtraLeftSpace}
         $linkStyled={linkStyled}
-        $quiet={quiet}
         $unlimitedHeight={unlimitedHeight}
         $state={state}
         title={tooltip}
@@ -51,11 +45,6 @@ export const MenuItemContainer = React.forwardRef<
       >
         {children}
       </StyledMenuItemInner>
-    );
-    return isItem ? (
-      <StyledMenuItem>{innerContent}</StyledMenuItem>
-    ) : (
-      innerContent
     );
   },
 );

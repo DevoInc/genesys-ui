@@ -27,10 +27,21 @@ separated or grouped by `Menu.Heading` or `Menu.Separator`.
 
 The menu items can be used as selectable options. The role `menuitemcheckbox`
 or `menuitemradio` is added automatically based in the `selectionScheme` prop
-value. In addition, a checkbox or radio is rendered inside the menu item, but
-it's not visible, its purpose is manage the selection behavior.
+value. In addition, the 'aria-checked' attribute is set to true when the `Menu.Item`
+has the 'state' prop value to 'selected.' The selection is totally controlled,
+so you have to manage a React state to get the option selected.
+
+### Single selection
 
 <Canvas of={Stories.Selectable} />
+
+Remember to set 'selectionScheme' to 'single' to get the correct 'menuitemradio' role.
+
+### Multiple selection
+
+Remember to set 'selectionScheme' to 'multiple' to get the correct 'menuitemcheckbox' role.
+
+<Canvas of={Stories.SelectableMultiple} />
 
 ## As navigation
 

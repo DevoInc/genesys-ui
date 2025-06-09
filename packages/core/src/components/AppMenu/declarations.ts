@@ -16,8 +16,7 @@ export type TAppMenuIsBeta = boolean;
 export type TAppMenuState = TBasicState | TActiveState | TExpandedState;
 export type TAppMenuTooltip = string;
 
-export interface IAppMenu
-  extends Omit<MenuProps, 'cmpRole' | 'spacing' | 'children'> {
+export interface IAppMenu extends Omit<MenuProps, 'spacing' | 'children'> {
   children?: React.ReactNode;
   // If the menu is collapsed
   collapsed?: TAppMenuCollapsed;
@@ -33,8 +32,6 @@ export interface IAppMenu
   logo: string;
   // The alt attribute for the logo image
   logoAlt: IImageAttrs['alt'];
-  // If the menu has a menu role or a nav one with an HTML 'nav' wrapper, usually when the menu items are links.
-  menuRole?: MenuProps['cmpRole'];
   // The function to be launched when the menu is collapsed
   onCollapse?: () => void;
   // The function to be launched when the menu is opened

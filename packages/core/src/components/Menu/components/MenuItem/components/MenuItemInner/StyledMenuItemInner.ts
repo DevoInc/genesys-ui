@@ -1,12 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import type { IMenuItem } from '../../declarations';
-import {
-  btnResetMixin,
-  disabledMixin,
-  pseudoElementOverlayMixin,
-  typoMixin,
-} from '../../../../../../styled';
+import { btnResetMixin, typoMixin } from '../../../../../../styled';
 import { menuItemBackdropMixin } from '../../helpers';
 import { menuItemSizeConfig } from '../../constants';
 
@@ -15,8 +10,6 @@ export interface StyledMenuItemInnerProps {
   $hasExtraLeftSpace?: IMenuItem['hasExtraLeftSpace'];
   /** If it's true, the menu item has the same styles as a Link component (the icon and label block). */
   $linkStyled?: IMenuItem['linkStyled'];
-  /** If it's true, the menu item has no background. */
-  $quiet?: IMenuItem['quiet'];
   /** If the menu item has unlimited height, and it's added a vertical padding. */
   $unlimitedHeight?: IMenuItem['unlimitedHeight'];
   /** State of the menu item */
@@ -27,7 +20,6 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
   ${({
     $hasExtraLeftSpace,
     $linkStyled,
-    $quiet,
     $state = 'enabled',
     theme,
     $unlimitedHeight,
@@ -57,9 +49,6 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
       transition: all ease-in-out ${tokens.mutation.transitionDuration};
       height: ${$unlimitedHeight ? 'auto' : tokens.size.minHeight};
       padding: ${$unlimitedHeight ? horPadding : `0 ${horPadding}`};
-      background-color: ${$quiet
-        ? 'transparent'
-        : tokens.color.background[stateForTokens]};
       color: ${$linkStyled
         ? theme.cmp.link.color.text.base
         : tokens.color.text[stateForTokens]};
@@ -81,35 +70,9 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
       ${$state !== 'disabled' &&
       $state !== 'readonly' &&
       css`
-        &::before {
-          ${pseudoElementOverlayMixin()};
-        }
-
-        &:hover {
-          ${menuItemBackdropMixin({ tokens, state: 'hovered' })};
-        }
-
-        &:active {
-          ${menuItemBackdropMixin({ tokens, state: 'pressed' })};
-        }
-
-        &:focus-visible,
-        &:focus-within {
+        &:focus-visible {
           ${focusedStyles};
         }
-
-        &:active {
-          ${menuItemBackdropMixin({ tokens, state: 'pressed' })};
-        }
-
-        ${($state === 'expanded' ||
-          $state === 'hovered' ||
-          $state === 'pressed') &&
-        css`
-          &&& {
-            ${menuItemBackdropMixin({ tokens, state: stateForTokens })};
-          }
-        `}
 
         ${$state === 'focused' &&
         css`
@@ -118,18 +81,6 @@ export const StyledMenuItemInner = styled.button<StyledMenuItemInnerProps>`
           }
         `}
       `}
-
-      // styles based in states
-      ${$state === 'disabled' &&
-      css`
-        ${disabledMixin(theme)};
-      `}
-
-        // get the selected and activated styles in uncontrolled way too
-      &&&:has(:checked) {
-        background-color: ${tokens.color.background.selected};
-        color: ${tokens.color.text.selected};
-      }
     `;
   }}
 `;

@@ -54,6 +54,8 @@ export interface IMenuItem {
   icon?: React.ReactNode;
   /** If it's true, the menu item has an HTML 'li' wrapper. */
   isItem?: boolean;
+  /** Custom interactive content (button, link, form control... etc.) to be rendered at the right of the item, and not as a child, but as a sibling, to avoid accessibility problems. */
+  interactiveContent?: React.ReactNode;
   /** The main text block of the item. */
   label?: React.ReactNode;
   /** If it's true, the menu item has the same styles as a Link component (the icon and label block). */

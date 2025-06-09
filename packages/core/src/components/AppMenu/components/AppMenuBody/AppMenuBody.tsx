@@ -1,16 +1,13 @@
 import * as React from 'react';
 
-import type { IAppMenu } from '../../declarations';
 import { AppMenuContext } from '../../context';
 import { Box } from '../../../Box';
 import { Menu, type MenuProps } from '../../../Menu';
 
-export interface AppMenuBodyProps
-  extends Omit<MenuProps, 'cmpRole' | 'spacing'>,
-    Pick<IAppMenu, 'menuRole'> {}
+export interface AppMenuBodyProps extends Omit<MenuProps, 'spacing'> {}
 
 export const AppMenuBody = React.forwardRef<HTMLDivElement, AppMenuBodyProps>(
-  ({ children, menuRole = 'nav', ...appMenuBodyProps }, ref) => {
+  ({ children, ...appMenuBodyProps }, ref) => {
     const context = React.useContext(AppMenuContext);
     return (
       <Box
@@ -21,11 +18,7 @@ export const AppMenuBody = React.forwardRef<HTMLDivElement, AppMenuBodyProps>(
         paddingTop="cmp-xs"
         style={`&::-webkit-scrollbar { display: none; }`}
       >
-        <Menu
-          {...appMenuBodyProps}
-          cmpRole={menuRole || context.menuRole}
-          spacing="cmp-xs"
-        >
+        <Menu {...appMenuBodyProps} spacing="cmp-xs">
           {children}
         </Menu>
       </Box>

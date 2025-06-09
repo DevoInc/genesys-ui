@@ -1,26 +1,25 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
-import type {
-  IDragDropEventAttrs,
-  IFieldEventAttrs,
-} from '../../../../declarations';
+import type { IDragDropEventAttrs } from '../../../../declarations';
+import type { IMenuItem, IMenuItemBasic } from './declarations';
+import { mergeStyles } from '../../../../helpers';
 import { GICheckThick } from '@devoinc/genesys-icons';
 import { VFlex } from '../../../VFlex';
 import { HFlex } from '../../../HFlex';
 import {
-  MenuItemContainer,
   MenuItemExpandableMark,
   MenuItemIcon,
+  MenuItemInner,
+  MenuItemInteractiveWrapper,
   MenuItemShortCut,
+  MenuItemWrapper,
 } from './components';
 import { StyledMenuItemLabel } from './StyledMenuItemLabel';
-import { StyledHiddenInput } from '../../../../styled/';
-import type { IMenuItem, IMenuItemBasic } from './declarations';
 
 export interface MenuItemProps
   extends IMenuItemBasic,
     IMenuItem,
-    IFieldEventAttrs,
     IDragDropEventAttrs {}
 
 export const InternalMenuItem = React.forwardRef<
@@ -40,22 +39,25 @@ export const InternalMenuItem = React.forwardRef<
       hasExtraLeftSpace,
       icon,
       id,
+      interactiveContent,
       isItem,
       label,
       linkStyled,
       name,
       onBlur,
-      onChange,
       onFocus,
       prependContent,
+      quiet,
       rel,
       role,
       selectionScheme,
       shortcut,
       state = 'enabled',
+      style,
       tabIndex,
       target,
       tooltip,
+      unlimitedHeight,
       value,
       ...restNativeProps
     },
@@ -83,95 +85,136 @@ export const InternalMenuItem = React.forwardRef<
       return (hasExtraLeftSpace || Boolean(icon) || isSelectable) && !children;
     };
     const isLabelString = typeof label === 'string';
-    const evalAs =
-      as ||
-      (isReadonly ? 'div' : isLink ? 'a' : isSelectable ? 'label' : 'button');
+    const evalAs = as || (isReadonly ? 'div' : isLink ? 'a' : 'button');
+    const interactiveRef = React.useRef(null);
+    const [interactiveBlockWidth, setInteractiveBlockWidth] = React.useState(0);
+
+    React.useLayoutEffect(() => {
+      if (interactiveRef.current) {
+        setInteractiveBlockWidth(interactiveRef.current.offsetWidth);
+      }
+    }, []);
+
+    React.useEffect(() => {
+      const element = interactiveRef.current;
+      if (!element) return;
+
+      const observer = new ResizeObserver((entries) => {
+        for (let entry of entries) {
+          setInteractiveBlockWidth(entry.contentRect.width);
+        }
+      });
+
+      observer.observe(element);
+
+      return () => observer.disconnect();
+    }, []);
+
+    const theme = useTheme();
+    const interactiveBlockWidthCss = `${interactiveBlockWidth.toFixed(2)}px`;
+    const paddingRightForInteractiveBlock = `calc(${interactiveBlockWidthCss} + ${theme.cmp.menu.item.space.paddingHor} * 2)`;
 
     return (
-      <MenuItem._Container
-        {...restNativeProps}
-        aria-keyshortcuts={shortcut}
-        aria-expanded={isExpanded || null}
-        aria-label={ariaLabel || (isLabelString ? label : null)}
-        aria-checked={(Boolean(selectionScheme) && isSelected) || null}
-        as={evalAs}
-        disabled={!isLink && !isSelectable && isDisabled}
-        download={download}
-        hasExtraLeftSpace={getHasExtraLeftSpace()}
-        href={isDisabled ? null : href}
-        id={id}
-        isItem={isItem}
-        linkStyled={linkStyled}
-        name={isSelectable ? null : name}
-        ref={ref}
-        rel={rel}
-        role={roleEval}
+      <MenuItem._Wrapper
+        as={isItem ? 'li' : undefined}
         state={state}
-        tooltip={tooltip}
-        tabIndex={tabIndex}
-        target={target}
-        value={isSelectable ? null : value}
+        quiet={quiet}
       >
-        {isSelectable && (
-          <MenuItem._HiddenInput
-            aria-label={ariaLabel || (isLabelString ? label : null)}
-            checked={onChange ? isSelected : null}
-            disabled={isDisabled}
-            id={id ? `menu-item-input-${id}` : null}
-            name={name}
-            onBlur={onBlur}
-            onChange={onChange}
-            onFocus={onFocus}
-            type={selectionScheme === 'single' ? 'radio' : 'checkbox'}
-            value={value}
-          />
+        <MenuItem._Inner
+          {...restNativeProps}
+          ref={ref}
+          aria-keyshortcuts={shortcut}
+          aria-expanded={isExpanded || null}
+          aria-label={ariaLabel || (isLabelString ? label : null)}
+          aria-checked={
+            (isSelectable && isSelected) || (isSelectable ? false : null)
+          }
+          as={evalAs}
+          disabled={!isLink && !isSelectable && isDisabled}
+          download={download}
+          hasExtraLeftSpace={getHasExtraLeftSpace()}
+          href={isDisabled ? null : href}
+          id={id}
+          rel={rel}
+          role={roleEval}
+          tabIndex={tabIndex}
+          target={target}
+          value={value}
+          name={name}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          linkStyled={linkStyled}
+          unlimitedHeight={unlimitedHeight}
+          state={state}
+          tooltip={tooltip}
+          style={mergeStyles(
+            { paddingRight: paddingRightForInteractiveBlock },
+            style,
+          )}
+        >
+          {children || (
+            <>
+              <VFlex
+                flex="1"
+                justifyContent="center"
+                childrenFitFullWidth
+                spacing="0"
+                minWidth="0"
+              >
+                <HFlex
+                  flex="1"
+                  alignItems="center"
+                  minWidth="0"
+                  spacing="cmp-xs"
+                >
+                  {(icon || isSelected) && getHasExtraLeftSpace() && (
+                    <MenuItem._Icon>
+                      {isSelected ? <GICheckThick /> : icon}
+                    </MenuItem._Icon>
+                  )}
+                  {prependContent}
+                  <MenuItem._Label>{label}</MenuItem._Label>
+                  {shortcut && (
+                    <MenuItem._ShortCut>{shortcut}</MenuItem._ShortCut>
+                  )}
+                  {appendContent}
+                </HFlex>
+                {bottomContent}
+              </VFlex>
+              {expandable && <MenuItem._ExpandableMark />}
+            </>
+          )}
+        </MenuItem._Inner>
+        {interactiveContent && (
+          <MenuItemInteractiveWrapper ref={interactiveRef}>
+            {interactiveContent}
+          </MenuItemInteractiveWrapper>
         )}
-        {children || (
-          <>
-            <VFlex
-              flex="1"
-              justifyContent="center"
-              childrenFitFullWidth
-              spacing="0"
-              minWidth="0"
-            >
-              <HFlex flex="1" alignItems="center" minWidth="0" spacing="cmp-xs">
-                {(icon || isSelected) && getHasExtraLeftSpace() && (
-                  <MenuItem._Icon>
-                    {isSelected ? <GICheckThick /> : icon}
-                  </MenuItem._Icon>
-                )}
-                {prependContent}
-                <MenuItem._Label>{label}</MenuItem._Label>
-                {shortcut && (
-                  <MenuItem._ShortCut>{shortcut}</MenuItem._ShortCut>
-                )}
-                {appendContent}
-              </HFlex>
-              {bottomContent}
-            </VFlex>
-            {expandable && <MenuItem._ExpandableMark />}
-          </>
-        )}
-      </MenuItem._Container>
+      </MenuItem._Wrapper>
     );
   },
 );
 
 export const MenuItem = InternalMenuItem as typeof InternalMenuItem & {
-  _Container: typeof MenuItemContainer;
+  _Inner: typeof MenuItemInner;
+  _Wrapper: typeof MenuItemWrapper;
   _ExpandableMark: typeof MenuItemExpandableMark;
-  _HiddenInput: typeof StyledHiddenInput;
   _Icon: typeof MenuItemIcon;
   _Label: typeof StyledMenuItemLabel;
   _ShortCut: typeof MenuItemShortCut;
 };
 
-MenuItem._Container = MenuItemContainer;
+MenuItem._Wrapper = MenuItemWrapper;
+MenuItem._Inner = MenuItemInner;
 MenuItem._ExpandableMark = MenuItemExpandableMark;
-MenuItem._HiddenInput = StyledHiddenInput;
 MenuItem._Icon = MenuItemIcon;
 MenuItem._Label = StyledMenuItemLabel;
 MenuItem._ShortCut = MenuItemShortCut;
 
-InternalMenuItem.displayName = 'MenuItem';
+InternalMenuItem.displayName = 'Menu.Item';
+MenuItem._Wrapper.displayName = 'Menu.Item._Wrapper';
+MenuItem._Inner.displayName = 'Menu.Item._Inner';
+MenuItem._ExpandableMark['displayName'] = 'Menu.Item._ExpandableMark';
+MenuItem._Icon.displayName = 'Menu.Item._Icon';
+MenuItem._Label.displayName = 'Menu.Item._Label';
+MenuItem._ShortCut.displayName = 'Menu.Item._ShortCut';

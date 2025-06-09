@@ -20,20 +20,13 @@ import {
 export interface AppMenuProps
   extends Pick<
     IAppMenu,
-    | 'children'
-    | 'collapsed'
-    | 'height'
-    | 'menuRole'
-    | 'onCollapse'
-    | 'onOpen'
-    | 'style'
+    'children' | 'collapsed' | 'height' | 'onCollapse' | 'onOpen' | 'style'
   > {}
 
 const InternalAppMenu: React.FC<AppMenuProps> = ({
   children,
   collapsed,
   height,
-  menuRole = 'nav',
   onCollapse,
   onOpen,
   style,
@@ -60,7 +53,6 @@ const InternalAppMenu: React.FC<AppMenuProps> = ({
           scrolledBodyContent: hasScroll,
           collapsed: evalCollapsed,
           bodyRef: targetBodyRef,
-          menuRole,
           onChange: () => {
             setIntCollapsed(!evalCollapsed);
             if (evalCollapsed) {
