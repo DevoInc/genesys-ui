@@ -1,0 +1,59 @@
+import { Meta, Canvas, ArgTypes, Source } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './EmptyState.stories';
+
+<Meta of={Stories} />
+
+# EmptyState
+
+This component is used to display informative messages when there is no content to show—such as empty search
+results, empty lists, or load errors. It provides a reusable and flexible way to communicate
+"no data" states to the user.
+
+The component accepts customizable props for setting the main message (title), a secondary description (description),
+and the visual style (format). It supports three visual formats that define how the message is rendered—from simple text
+to a more prominent layout with icons and enhanced styling.
+
+## How to import
+
+<Source code={`import { EmptyState } from '@devoinc/genesys-ui';`} />
+
+## Basic usage
+
+<Canvas of={Stories.Playground} />
+
+## Format text
+
+The default format. This example uses also the 'secondaryText' prop.
+
+<Canvas of={Stories.TextFormat} />
+
+## Format icon
+
+This format renders a 'KeyValue' component.
+
+<Canvas of={Stories.IconFormat} />
+
+## Format featured
+
+This format renders a 'StatusMessage' component.
+
+<Canvas of={Stories.FeaturedFormat} />
+
+## Actions
+
+It's possible to add an 'actions' block to the component which is rendered at the end of the parent. It's usually used
+for the usual actions as 'Create a new one', 'Reload'... etc., but you can add any content of another type.
+
+<Canvas of={Stories.WithActions} />
+
+## Related components
+
+- [StatusMessage](?path=/docs/components-feedback-statusmessage--overview)
+- [KeyValue](?path=/docs/components-feedback-keyvalue--overview)
+- [Icon](?path=/docs/components-feedback-icon--overview)
+- [Typography.Paragraph](?path=/docs/components-text-typography-components-block-paragraph-overview--overview)
+
+## Props
+
+<ArgTypes of={Stories} />

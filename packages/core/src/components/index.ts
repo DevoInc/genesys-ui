@@ -20,6 +20,7 @@ export * from './DevoLogoSpinner';
 export * from './Divider';
 export * from './Drawer';
 export * from './EditableContent';
+export * from './EmptyState';
 export * from './Field';
 export * from './FieldsCombiner';
 export * from './Flex';
