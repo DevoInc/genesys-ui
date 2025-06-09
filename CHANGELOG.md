@@ -1,5 +1,11 @@
 # Changelog
 
+## [18.9.0](https://github.com/DevoInc/genesys-ui/compare/v18.8.0...v18.9.0) (2025-06-09)
+
+### Features
+
+* New 'EmptyState' component. ([dde3eee](https://github.com/DevoInc/genesys-ui/commit/dde3eee86e983246f39fe7511c589316d7f71a07))
+
 ## [18.8.0](https://github.com/DevoInc/genesys-ui/compare/v18.7.0...v18.8.0) (2025-06-06)
 
 ### Features
