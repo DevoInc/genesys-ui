@@ -1,23 +1,34 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import { lastDayOfMonth as lastDayOfMonthFNS } from 'date-fns';
-import { tz as tzFn } from '@date-fns/tz';
+import {
+  lastDayOfMonth as lastDayOfMonthFNS,
+  isSameDay,
+  getTime,
+  set,
+  getDate,
+} from 'date-fns';
+import { TZDate, tz as tzFn } from '@date-fns/tz';
 
-import type { TDateRange, TParseCalendarDate } from '../../declarations';
+import type {
+  TCalendarDateRange,
+  TParseCalendarDate,
+} from '../../declarations';
 import { TCalendarI18n } from './declarations';
 import { useMergeI18n } from '../../hooks';
 import { toTimestamp } from '../../helpers';
 import { rotateWeekDays, WEEK_DAYS } from '../../helpers';
 import { defaultErrorsRepr } from './errors';
 import { tautologyParseDate } from '../../parsers';
-import { defaultDateRepr } from './day';
-import { defaultCalendarI18n } from './i18n';
 import {
-  getClassNameFromProperties,
-  getDayProperties,
-  getTo,
-  getFrom,
+  defaultDateRepr,
+  hasBoxShadowLeft,
+  hasBoxShadowRight,
+  hasNextBoxShadow,
+  hasPrevBoxShadow,
+  rightHover,
 } from './day';
+import { defaultCalendarI18n } from './i18n';
+import { getTo, getFrom } from './day';
 import { getMonthDays, getPrevDays } from './month';
 import {
   type IGlobalAriaAttrs,
@@ -29,6 +40,10 @@ import {
   Box,
 } from '@devoinc/genesys-ui';
 import { CalendarWeekDay, Cell, type CellProps } from './components';
+import {
+  isStrictlyWithinCalendarInterval,
+  isWithinCalendarInterval,
+} from './helpers';
 
 export interface CalendarProps
   extends Pick<CellProps, 'onClick' | 'onMouseEnter' | 'onMouseLeave'>,
@@ -52,7 +67,7 @@ export interface CalendarProps
    * One of `number` or `Date`. */
   hoverDay?: Date | number;
   /** Selected range. */
-  value?: TDateRange;
+  value?: TCalendarDateRange;
   /** Days of the week to show in the calendar. The first day of the week is Monday. */
   weekDays?: [string, string, string, string, string, string, string];
   weekStart?: number;
@@ -113,7 +128,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
     () =>
       lastDayOfMonthFNS(monthDate, {
         in: tzFn(tz),
-      }).getTime(),
+      }),
     ['monthDate'],
   );
   const rotatedWeekDays = React.useMemo(
@@ -156,44 +171,117 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
     <div key={`prev${idx}`} role="gridcell" />
   ));
 
-  const monthDaysCmpArr = monthDays
-    .map((day: Date) =>
-      getDayProperties(
+  const rangeDates = React.useMemo(
+    () => value.map((x) => (typeof x === 'number' ? new TZDate(x, tz) : x)),
+    [value],
+  );
+
+  const monthDaysCmpArr = monthDays.map((day) => {
+    const isSelected = rangeDates.some((x) =>
+      isSameDay(day, x, { in: tzFn(tz) }),
+    );
+    const isFrom =
+      rangeDates.length > 0
+        ? isSameDay(day, rangeDates[0], { in: tzFn(tz) })
+        : false;
+    const isTo =
+      rangeDates.length > 1
+        ? isSameDay(day, rangeDates[1], { in: tzFn(tz) })
+        : false;
+    const isLastDayOfMonth = isSameDay(day, lastDayOfMonth, { in: tzFn(tz) });
+    const isInsideSelection = isStrictlyWithinCalendarInterval(
+      day,
+      {
+        start: rangeDates[0],
+        end: rangeDates[1],
+      },
+      tz,
+    );
+    const ts = getTime(
+      set(
         day,
-        getFrom(value),
-        getTo(value),
-        lastDayOfMonth,
-        parseDate,
-        hoverDay,
-        hasRightHoverEffect,
-        hasLeftHoverEffect,
-        minDate,
-        maxDate,
-        i18n,
+        { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 },
+        { in: tzFn(tz) },
       ),
-    )
-    .map((dayProps) => {
-      const classes = getClassNameFromProperties(dayProps);
-      return (
-        <Cell
-          selected={classes['selected'] ?? false}
-          key={`day${dayProps.ts}`}
-          className={`dayName ${classes.join(' ')}`}
-          onClick={onClick}
-          onMouseEnter={onMouseEnterCallback}
-          onMouseLeave={onMouseLeaveCallback}
-          ts={dayProps.ts}
-          value={String(dayProps.monthDay)}
-          disabled={disabled || dayProps.isDisabled}
-          label={dateRepr(dayProps.ts)}
-          tooltip={
-            dayProps.isDisabled
-              ? errorsRepr(dayProps.errors)
-              : dateRepr(dayProps.ts)
-          }
-        />
-      );
+    );
+    const monthDay = getDate(day);
+    const label = dateRepr(ts);
+
+    const result = parseDate(day);
+    const isInsideRange = isWithinCalendarInterval(
+      day,
+      { start: minDate, end: maxDate },
+      tz,
+    );
+    const isValid = isInsideRange && result.isValid;
+    const isDisabled = !isValid;
+    const errors = !isInsideRange
+      ? [i18n.outOfRange].concat(result.errors)
+      : result.errors;
+
+    const from = getFrom(value);
+    const to = getTo(value);
+    const hover = hoverDay;
+
+    const isBoxShadowRight = hasBoxShadowRight({
+      hover,
+      from,
+      to,
+      ts,
+      hasRightHoverEffect,
     });
+    const isBoxShadowLeft = hasBoxShadowLeft({
+      hover,
+      from,
+      to,
+      ts,
+      hasLeftHoverEffect,
+    });
+    const isNextBoxShadow = hasNextBoxShadow({
+      hover,
+      from,
+      to,
+      ts,
+      hasRightHoverEffect,
+    });
+    const isPrevBoxShadow = hasPrevBoxShadow({
+      hover,
+      from,
+      to,
+      ts,
+      hasLeftHoverEffect,
+    });
+    const isRightHover = rightHover({ hover, from, to, ts });
+
+    return (
+      <Cell
+        selected={isSelected}
+        key={`day${ts}`}
+        className={[
+          'dayName',
+          isDisabled ? 'disabled' : '',
+          isSelected ? 'selected' : '',
+          isFrom ? 'from-selected' : '',
+          isTo ? 'to-selected' : '',
+          monthDay === 1 ? 'month-first-day' : '',
+          isLastDayOfMonth ? 'month-last-day' : '',
+          isInsideSelection ? 'highlight' : '',
+          isBoxShadowLeft || isBoxShadowRight ? 'box-shadow' : '',
+          isNextBoxShadow ? 'next-box-shadow' : '',
+          isPrevBoxShadow ? 'prev-box-shadow' : '',
+          isRightHover ? 'rightmost' : '',
+        ].join(' ')}
+        onClick={onClick}
+        onMouseEnter={onMouseEnterCallback}
+        onMouseLeave={onMouseLeaveCallback}
+        ts={ts}
+        value={String(monthDay)}
+        disabled={disabled || isDisabled}
+        label={label}
+        tooltip={isDisabled ? errorsRepr(errors) : label}
+      />
+    );
+  });
 
   const evalTotalLastDays = 42 - prevDaysCmpArr.concat(monthDaysCmpArr).length;
   const lastDaysLength =

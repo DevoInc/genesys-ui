@@ -32,7 +32,7 @@ import {
   useDateTimeRangeInputValidation,
   type DateTimeRangeInputProps,
 } from '../DateTimeRangeInput';
-import { TDateTimeRangeFloatingPickerI18n } from './declarations';
+import type { TDateTimeRangeFloatingPickerI18n } from './declarations';
 import { useMergeI18n } from '../../hooks';
 import { defaultDateTimeRangeFloatingPickerI18n } from './i18n';
 import { getInputsFromInput } from '../DateTimeRangeInput/helpers';
@@ -63,6 +63,8 @@ export interface DateTimeRangeFloatingPickerProps
     IStyledPolymorphic {
   /** Internacionalization object */
   i18n?: TDateTimeRangeFloatingPickerI18n;
+  /** Timezone */
+  tz?: string;
   /** Initial value for the input. */
   value: TDateRange;
   /** Enable or disable the Apply button.  */
@@ -86,6 +88,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
   DateTimeRangeFloatingPickerProps
 > = ({
   i18n: userI18n = {},
+  tz = Intl.DateTimeFormat().resolvedOptions().timeZone,
   appendTo,
   disableApplyButton = false,
   disableOutsideEvent = false,
@@ -245,6 +248,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
                 onChangeMonthDate={(dt) => {
                   setMonthDate(dt);
                 }}
+                tz={tz}
               />
             </Panel.Body>
             {!autoApply && (

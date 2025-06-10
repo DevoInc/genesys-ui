@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { describe, test, expect, vi, afterEach } from 'vitest';
-import { set } from 'date-fns';
-import { TZDate, tz as tzFn } from '@date-fns/tz';
+import { TZDate } from '@date-fns/tz';
 import { userEvent } from '@testing-library/user-event';
 
 import { DateTimeRange, getDefaultPresets } from '@devoinc/genesys-ui-datetime';

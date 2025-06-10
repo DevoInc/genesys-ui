@@ -21,7 +21,8 @@ const rangeValue = [set(now, { date: 10 }), set(now, { date: 20 })];
 export const Playground: Story = {
   args: {
     monthDate: now,
-    value: rangeValue,
+    // value: rangeValue,
+    value: [],
   },
 };
 

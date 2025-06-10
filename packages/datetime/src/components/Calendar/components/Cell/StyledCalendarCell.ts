@@ -231,13 +231,6 @@ export const StyledCalendarCell = styled.div`
     }
   }
 
-  &.selected.prev-box-shadow {
-    &::after {
-      width: 50%;
-      left: 0;
-    }
-  }
-
   &.box-shadow {
     + .selected,
     .selected.prev-box-shadow {
@@ -245,13 +238,6 @@ export const StyledCalendarCell = styled.div`
         width: 50%;
         left: 0;
       }
-    }
-  }
-
-  &.selected.box-shadow {
-    &::after {
-      width: 50%;
-      right: 0;
     }
   }
 

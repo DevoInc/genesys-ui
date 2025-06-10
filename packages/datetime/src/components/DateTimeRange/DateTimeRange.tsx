@@ -33,7 +33,11 @@ import {
 } from './constants';
 import { defaultDateTimeRangeI18n } from './i18n';
 import { useMergeI18n } from '../../hooks';
-import type { TDateRange, IEndPointRangeTime } from '../../declarations';
+import type {
+  TDateRange,
+  IEndPointRangeTime,
+  TCalendarDateRange,
+} from '../../declarations';
 import { MonthFloatingPicker } from '../MonthFloatingPicker';
 import { isCalendarRange } from '../Calendar/helpers';
 
@@ -143,7 +147,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
                   DATE_TIME_RANGE_SOURCE_CAL_LEFT,
                 );
               }}
-              value={canCalendarRender ? (value as (number | Date)[]) : []}
+              value={canCalendarRender ? (value as TCalendarDateRange) : []}
               hasLeftHoverEffect={
                 canCalendarRender ? value.length === 1 : false
               }
