@@ -41,13 +41,13 @@ This is an example of single selected date:
 
 For disable days we can use two mechanism:
 
-### `minDate` and `maxDate`
+### minDate and maxDate
 
 Are properties that let us define limits for the selectable days
 
 <Canvas of={Stories.MinMaxDate} />
 
-### `parseDate`
+### parseDate
 
 Is a function that resolve into a parse result object, that take each calendar
 day and use this function to know if the day is available or not. An example
@@ -71,7 +71,7 @@ weekend days:
 
 <Canvas of={Stories.ParseDate} />
 
-### `disabled`
+### disabled
 
 Is property for disable all the calendar
 
@@ -113,14 +113,14 @@ Here is an example of the *Spanish* calendar version:
 These hooks helps to apply the two main line of action with the calendar, the
 single selection or the range selection.
 
-### `useCalendarSingle`
+### useCalendarSingle
 
 Defines a single day selection in the calendar.
 Accepts a `number` or `Date` with the selected day.
 
 <Canvas of={Stories.SingleHook} />
 
-### `useCalendarRange`
+### useCalendarRange
 
 Defines a way to select a range of days. The hook use the first click as one
 point of the range (could be the start or the end), and a second click with the
@@ -129,7 +129,7 @@ start and witch point is the end of the range
 
 <Canvas of={Stories.RangeHook} />
 
-## `rangeBehavior` helper
+## rangeBehavior helper
 
 If you would like to build your own hooks you can use the main behavior of the
 `useCalendarRange`, this is the next helper function:

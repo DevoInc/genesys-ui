@@ -1,2 +1,1 @@
-export * from './isCalendarDate';
 export * from './isCalendarRange';

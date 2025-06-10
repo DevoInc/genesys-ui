@@ -35,6 +35,7 @@ import { defaultDateTimeRangeI18n } from './i18n';
 import { useMergeI18n } from '../../hooks';
 import type { TDateRange, IEndPointRangeTime } from '../../declarations';
 import { MonthFloatingPicker } from '../MonthFloatingPicker';
+import { isCalendarRange } from '../Calendar/helpers';
 
 export interface DateTimeRangeProps
   extends Pick<CalendarProps, 'monthDate' | 'parseDate' | 'weekDays'>,
@@ -104,7 +105,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   }, []);
 
   const canCalendarRender = React.useMemo(
-    () => value.length > 0 && value.every((x) => typeof x !== 'string'),
+    () => isCalendarRange(value),
     [value],
   );
 
@@ -130,11 +131,11 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
             <Calendar
               monthDate={monthDate}
               disableHoverDay={true}
-              onClick={(dt) => {
+              onClick={(ts) => {
                 onChange(
                   rangeBehavior({
                     range: value as (number | Date)[],
-                    dt,
+                    ts,
                     tz,
                     startRange: startRangeDefault,
                     endRange: endRangeDefault,
@@ -204,11 +205,11 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
             <Calendar
               monthDate={addMonths(monthDate, 1, { in: tzFn(tz) })}
               disableHoverDay={true}
-              onClick={(dt) => {
+              onClick={(ts) => {
                 onChange(
                   rangeBehavior({
                     range: value as (number | Date)[],
-                    dt,
+                    ts,
                     tz,
                     startRange: startRangeDefault,
                     endRange: endRangeDefault,

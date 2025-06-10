@@ -1,3 +1,4 @@
+/* Time interface */
 export interface ITime {
   /** If hasTime, allow to show the milliseconds. */
   hasMillis?: boolean;
@@ -11,9 +12,11 @@ export interface ITime {
   minDate?: number | Date;
 }
 
+/* Date representation, include string for dates that could be parsed */
 export type TDate = number | string | Date;
 export type TDateRange = TDate[];
 
+/* Only calendar date format (number or Date) */
 export type TCalendarDate = number | Date;
 export type TCalendarDateRange = TCalendarDate[];
 
