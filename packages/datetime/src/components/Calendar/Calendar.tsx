@@ -157,8 +157,9 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
   ));
 
   const monthDaysCmpArr = monthDays
-    .map(
+    .map((day: Date) =>
       getDayProperties(
+        day,
         getFrom(value),
         getTo(value),
         lastDayOfMonth,

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import { subDays, subMonths } from 'date-fns';
+import { isAfter, subDays, subMonths } from 'date-fns';
 
 import { DateTimeRangeFloatingPicker } from './DateTimeRangeFloatingPicker';
 import { getDefaultPresets } from '../Presets';
 import { TDate } from '../../declarations';
-import { formatDate, gt } from '../../helpers';
+import { formatDate } from '../../helpers';
 import { getDefaultParseDate } from '../../parsers';
 
 const now = new Date().getTime();
@@ -140,7 +140,7 @@ export const Limits: Story = {
     parseDate: (date) => {
       const result = getDefaultParseDate()(date);
       if (result.isValid) {
-        const isFuture = gt(date, new Date().getTime() + 1000);
+        const isFuture = isAfter(date, new Date().getTime() + 1000);
         if (isFuture) {
           return {
             isValid: false,

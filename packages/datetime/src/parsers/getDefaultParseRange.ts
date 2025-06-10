@@ -1,5 +1,5 @@
+import { isBefore } from 'date-fns';
 import type { TCalendarDate, TParseRange } from '../declarations';
-import { lte } from '../helpers';
 import type { IParseRangeParams } from './declarations';
 import { defaultParseDateParams, defaultParseRangeParams } from './defaults';
 import { getDefaultParseDate } from './getDefaultParseDate';
@@ -21,7 +21,7 @@ export const getDefaultParseRange: (
       (prev, curr, index, arr) => {
         if (index > 0) {
           if (
-            lte(
+            isBefore(
               arr[index - 1].value.value as TCalendarDate,
               curr.value.value as TCalendarDate,
             )

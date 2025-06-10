@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
+import { isAfter } from 'date-fns';
 
 import { getDayProperties, getClassNameFromProperties } from './day';
-import { gt } from '../../helpers';
 
 describe('Calendar', () => {
   describe('day', () => {
@@ -13,7 +13,7 @@ describe('Calendar', () => {
             new Date(2022, 11, 6).getTime(),
             30,
             (dt) => {
-              const isValid = !gt(dt, new Date(2022, 12, 14));
+              const isValid = !isAfter(dt, new Date(2022, 12, 14));
               return {
                 isValid,
                 value: dt,

@@ -28,7 +28,13 @@ export const useCalendarRange = (
 
   const handleNewDate = (newDate: TCalendarDate) => {
     setRange((prev) =>
-      rangeBehavior({ range: prev, dt: newDate, tz, startRange, endRange }),
+      rangeBehavior({
+        range: prev,
+        ts: newDate as number,
+        tz,
+        startRange,
+        endRange,
+      }),
     );
   };
 

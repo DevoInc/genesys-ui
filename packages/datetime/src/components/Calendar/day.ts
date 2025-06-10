@@ -1,12 +1,11 @@
-import { set, getDate, getTime, format } from 'date-fns';
+import { set, getDate, getTime, format, isAfter, isBefore } from 'date-fns';
 
-import type { TDateRange, TParseDate } from '../../declarations';
+import type { TCalendarDateRange, TParseDate } from '../../declarations';
 import type {
   TCalendarI18n,
   TConditionFunction,
   TDayProperties,
 } from './declarations';
-import { gt, lt } from '../../helpers';
 
 export const defaultDateRepr = (ts: number) => format(ts, 'PPPP');
 
@@ -95,73 +94,73 @@ const hasPrevBoxShadow: TConditionFunction = ({
 /**
  * Get day properties
  */
-export const getDayProperties =
-  (
-    from: number,
-    to: number,
-    lastDayOfMonth: number,
-    parse: TParseDate,
-    hover: number,
-    hasRightHoverEffect: boolean,
-    hasLeftHoverEffect: boolean,
-    minDate: number | Date = -8640000000000000,
-    maxDate: number | Date = 8640000000000000,
-    i18n: TCalendarI18n,
-  ) =>
-  (day: Date): TDayProperties => {
-    const ts = getTime(
-      set(day, { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 }),
-    );
-    const monthDay = getDate(day);
-    const result = parse(day);
-    const isValid = gt(ts, minDate) && lt(ts, maxDate) && result.isValid;
-    const errors =
-      lt(ts, minDate) || gt(ts, maxDate)
-        ? [i18n.outOfRange].concat(result.errors)
-        : result.errors;
+export const getDayProperties = (
+  day: Date,
+  from: number,
+  to: number,
+  lastDayOfMonth: number,
+  parse: TParseDate,
+  hover: number,
+  hasRightHoverEffect: boolean,
+  hasLeftHoverEffect: boolean,
+  minDate: number | Date = -8640000000000000,
+  maxDate: number | Date = 8640000000000000,
+  i18n: TCalendarI18n,
+) => {
+  const ts = getTime(
+    set(day, { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 }),
+  );
+  const monthDay = getDate(day);
+  const result = parse(day);
+  const isValid =
+    isAfter(ts, minDate) && isBefore(ts, maxDate) && result.isValid;
+  const errors =
+    isBefore(ts, minDate) || isAfter(ts, maxDate)
+      ? [i18n.outOfRange].concat(result.errors)
+      : result.errors;
 
-    return {
+  return {
+    ts,
+    monthDay,
+    isValid,
+    errors,
+    isDisabled: !isValid,
+    isSelected: ts === from || ts === to,
+    isFrom: ts === from && !!to,
+    isTo: ts === to && !!from,
+    isLastDayOfMonth: ts === lastDayOfMonth,
+    isInsideSelection: ts >= from && ts <= to,
+    isBoxShadowRight: hasBoxShadowRight({
+      hover,
+      from,
+      to,
       ts,
-      monthDay,
-      isValid,
-      errors,
-      isDisabled: !isValid,
-      isSelected: ts === from || ts === to,
-      isFrom: ts === from && !!to,
-      isTo: ts === to && !!from,
-      isLastDayOfMonth: ts === lastDayOfMonth,
-      isInsideSelection: ts >= from && ts <= to,
-      isBoxShadowRight: hasBoxShadowRight({
-        hover,
-        from,
-        to,
-        ts,
-        hasRightHoverEffect,
-      }),
-      isBoxShadowLeft: hasBoxShadowLeft({
-        hover,
-        from,
-        to,
-        ts,
-        hasLeftHoverEffect,
-      }),
-      isNextBoxShadow: hasNextBoxShadow({
-        hover,
-        from,
-        to,
-        ts,
-        hasRightHoverEffect,
-      }),
-      isPrevBoxShadow: hasPrevBoxShadow({
-        hover,
-        from,
-        to,
-        ts,
-        hasLeftHoverEffect,
-      }),
-      isRightHover: rightHover({ hover, from, to, ts }),
-    };
+      hasRightHoverEffect,
+    }),
+    isBoxShadowLeft: hasBoxShadowLeft({
+      hover,
+      from,
+      to,
+      ts,
+      hasLeftHoverEffect,
+    }),
+    isNextBoxShadow: hasNextBoxShadow({
+      hover,
+      from,
+      to,
+      ts,
+      hasRightHoverEffect,
+    }),
+    isPrevBoxShadow: hasPrevBoxShadow({
+      hover,
+      from,
+      to,
+      ts,
+      hasLeftHoverEffect,
+    }),
+    isRightHover: rightHover({ hover, from, to, ts }),
   };
+};
 
 /**
  * Given day properties return a className
@@ -181,7 +180,7 @@ export const getClassNameFromProperties = (dayProps: TDayProperties) => [
   ...(dayProps.isRightHover ? ['rightmost'] : []),
 ];
 
-export const getFrom = (value: TDateRange) => {
+export const getFrom = (value: TCalendarDateRange) => {
   if (value[0] && getTime(value[0]) > 0) {
     return getTime(
       set(value[0], { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 }),
@@ -190,7 +189,7 @@ export const getFrom = (value: TDateRange) => {
   return 0;
 };
 
-export const getTo = (value: TDateRange) => {
+export const getTo = (value: TCalendarDateRange) => {
   if (value[1] && getTime(value[1]) > 0) {
     return getTime(
       set(value[1], {
