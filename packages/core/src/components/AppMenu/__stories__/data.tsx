@@ -25,7 +25,6 @@ import { AppMenu } from '../AppMenu';
 import { Divider } from '../../Divider';
 import { Typography } from '../../Typography';
 import { InputControl } from '../../InputControl';
-import { Popover } from '../../Popover';
 import { IconButton } from '../../IconButton';
 
 const popoverItemActions = [
@@ -145,69 +144,67 @@ export const appMenuData = [
     tooltip: 'Installed apps (expand)',
     expandable: true,
     popoverContent: (
-      <Popover.Panel size="sm" width="38rem" padding="0">
-        <Panel.Body>
-          <Typography.Heading gutterBottom="cmp-xs" size="h6">
-            Devo suite
-          </Typography.Heading>
-          <Menu>
-            <AppMenu.PopoverItem
-              featuredIcon
-              icon={<GIFlow />}
-              label="Flow Editor"
-              description="Correlation engine for real-time data processing."
-              actions={popoverItemActions}
-            />
-            <AppMenu.PopoverItem
-              featuredIcon
-              icon={<GIMachineLearningModels />}
-              label="Machine learning models"
-              description="Autonomous alert investigations and threat hunting."
-              actions={popoverItemActions}
-            />
-          </Menu>
-          <Divider margin="cmp-xs 0" />
-          <Typography.Heading gutterBottom="cmp-xs" size="h6">
-            All apps
-          </Typography.Heading>
-          <InputControl
-            type="search"
-            aria-label="Search app"
-            placeholder="Search app..."
+      <Panel.Body>
+        <Typography.Heading gutterBottom="cmp-xs" size="h6">
+          Devo suite
+        </Typography.Heading>
+        <Menu>
+          <AppMenu.PopoverItem
+            featuredIcon
+            icon={<GIFlow />}
+            label="Flow Editor"
+            description="Correlation engine for real-time data processing."
+            actions={popoverItemActions}
           />
-          <Menu marginTop="cmp-sm" height="20rem" overflow="auto">
-            <AppMenu.PopoverItem
-              label="Behaviour analytics"
-              actions={popoverItemActions}
-              href="#"
-            />
-            <AppMenu.PopoverItem
-              label="Firewall report"
-              actions={popoverItemActions}
-            />
-            <AppMenu.PopoverItem
-              label="Firewall Sentinel"
-              actions={popoverItemActions}
-            />
-            <AppMenu.PopoverItem
-              label="MITRE Attack adviser"
-              actions={popoverItemActions}
-            />
-            <AppMenu.PopoverItem
-              label="MysticGuard Security monitor"
-              actions={popoverItemActions}
-            />
-            <AppMenu.PopoverItem
-              label="Production deployments"
-              actions={popoverItemActions}
-            />
-            <AppMenu.PopoverItem
-              label="Security insights"
-              actions={popoverItemActions}
-            />
-          </Menu>
-        </Panel.Body>
-      </Popover.Panel>
+          <AppMenu.PopoverItem
+            featuredIcon
+            icon={<GIMachineLearningModels />}
+            label="Machine learning models"
+            description="Autonomous alert investigations and threat hunting."
+            actions={popoverItemActions}
+          />
+        </Menu>
+        <Divider margin="cmp-xs 0" />
+        <Typography.Heading gutterBottom="cmp-xs" size="h6">
+          All apps
+        </Typography.Heading>
+        <InputControl
+          type="search"
+          aria-label="Search app"
+          placeholder="Search app..."
+        />
+        <Menu marginTop="cmp-sm" height="20rem" overflow="auto">
+          <AppMenu.PopoverItem
+            label="Behaviour analytics"
+            actions={popoverItemActions}
+            href="#"
+          />
+          <AppMenu.PopoverItem
+            label="Firewall report"
+            actions={popoverItemActions}
+          />
+          <AppMenu.PopoverItem
+            label="Firewall Sentinel"
+            actions={popoverItemActions}
+          />
+          <AppMenu.PopoverItem
+            label="MITRE Attack adviser"
+            actions={popoverItemActions}
+          />
+          <AppMenu.PopoverItem
+            label="MysticGuard Security monitor"
+            actions={popoverItemActions}
+          />
+          <AppMenu.PopoverItem
+            label="Production deployments"
+            actions={popoverItemActions}
+          />
+          <AppMenu.PopoverItem
+            label="Security insights"
+            actions={popoverItemActions}
+          />
+        </Menu>
+      </Panel.Body>
     ),
   },
   {

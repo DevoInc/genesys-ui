@@ -40,7 +40,7 @@ export const InternalChipGroup: React.FC<ChipGroupProps> = ({
   legend,
   legendPosition = 'left',
   marginLeft,
-  marginTop,
+  marginTop = '0',
   name,
   size = 'md',
   status = 'base',
