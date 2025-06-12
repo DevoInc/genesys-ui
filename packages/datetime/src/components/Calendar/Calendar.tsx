@@ -6,6 +6,8 @@ import {
   getTime,
   set,
   getDate,
+  isAfter,
+  isBefore,
 } from 'date-fns';
 import { TZDate, tz as tzFn } from '@date-fns/tz';
 
@@ -19,16 +21,7 @@ import { toTimestamp } from '../../helpers';
 import { rotateWeekDays, WEEK_DAYS } from '../../helpers';
 import { defaultErrorsRepr } from './errors';
 import { tautologyParseDate } from '../../parsers';
-import {
-  defaultDateRepr,
-  hasBoxShadowLeft,
-  hasBoxShadowRight,
-  hasNextBoxShadow,
-  hasPrevBoxShadow,
-  rightHover,
-} from './day';
 import { defaultCalendarI18n } from './i18n';
-import { getTo, getFrom } from './day';
 import { getMonthDays, getPrevDays } from './month';
 import {
   type IGlobalAriaAttrs,
@@ -43,6 +36,8 @@ import { CalendarWeekDay, Cell, type CellProps } from './components';
 import {
   isStrictlyWithinCalendarInterval,
   isWithinCalendarInterval,
+  orderCalendarInterval,
+  defaultDateRepr,
 } from './helpers';
 
 export interface CalendarProps
@@ -88,8 +83,6 @@ export interface CalendarProps
 
 export const InternalCalendar: React.FC<CalendarProps> = ({
   monthDate = new Date(),
-  hasLeftHoverEffect = false,
-  hasRightHoverEffect = false,
   onClick,
   onMouseEnter,
   onMouseLeave,
@@ -110,7 +103,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
   'aria-labelledby': ariaLabelledby,
   as,
   tz = Intl.DateTimeFormat().resolvedOptions().timeZone,
-  dateRepr = defaultDateRepr,
+  dateRepr = defaultDateRepr(tz),
   errorsRepr = defaultErrorsRepr,
   minDate,
   maxDate,
@@ -176,6 +169,11 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
     [value],
   );
 
+  const hoverDate = React.useMemo(
+    () => (typeof hoverDay === 'number' ? new TZDate(hoverDay, tz) : hoverDay),
+    [hoverDay],
+  );
+
   const monthDaysCmpArr = monthDays.map((day) => {
     const isSelected = rangeDates.some((x) =>
       isSameDay(day, x, { in: tzFn(tz) }),
@@ -191,10 +189,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
     const isLastDayOfMonth = isSameDay(day, lastDayOfMonth, { in: tzFn(tz) });
     const isInsideSelection = isStrictlyWithinCalendarInterval(
       day,
-      {
-        start: rangeDates[0],
-        end: rangeDates[1],
-      },
+      { start: rangeDates[0], end: rangeDates[1] },
       tz,
     );
     const ts = getTime(
@@ -219,39 +214,24 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
       ? [i18n.outOfRange].concat(result.errors)
       : result.errors;
 
-    const from = getFrom(value);
-    const to = getTo(value);
-    const hover = hoverDay;
+    const isInsideHover =
+      rangeDates.length === 1 &&
+      !isSameDay(hoverDate, rangeDates[0], { in: tzFn(tz) }) &&
+      isWithinCalendarInterval(
+        day,
+        orderCalendarInterval(rangeDates[0], hoverDate),
+        tz,
+      );
 
-    const isBoxShadowRight = hasBoxShadowRight({
-      hover,
-      from,
-      to,
-      ts,
-      hasRightHoverEffect,
-    });
-    const isBoxShadowLeft = hasBoxShadowLeft({
-      hover,
-      from,
-      to,
-      ts,
-      hasLeftHoverEffect,
-    });
-    const isNextBoxShadow = hasNextBoxShadow({
-      hover,
-      from,
-      to,
-      ts,
-      hasRightHoverEffect,
-    });
-    const isPrevBoxShadow = hasPrevBoxShadow({
-      hover,
-      from,
-      to,
-      ts,
-      hasLeftHoverEffect,
-    });
-    const isRightHover = rightHover({ hover, from, to, ts });
+    const isRightHover =
+      hoverDate &&
+      isAfter(hoverDate, rangeDates[0]) &&
+      isSameDay(day, hoverDate);
+
+    const isLeftHover =
+      hoverDate &&
+      isBefore(hoverDate, rangeDates[0]) &&
+      isSameDay(day, hoverDate);
 
     return (
       <Cell
@@ -266,13 +246,9 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
           monthDay === 1 ? 'month-first-day' : '',
           isLastDayOfMonth ? 'month-last-day' : '',
           isInsideSelection ? 'range-selected' : '',
-          isBoxShadowLeft ||
-          isBoxShadowRight ||
-          isNextBoxShadow ||
-          isPrevBoxShadow
-            ? 'range-hovered'
-            : '',
+          isInsideHover ? 'range-hovered' : '',
           isRightHover ? 'rightmost' : '',
+          isLeftHover ? 'leftmost' : '',
         ].join(' ')}
         onClick={onClick}
         onMouseEnter={onMouseEnterCallback}
