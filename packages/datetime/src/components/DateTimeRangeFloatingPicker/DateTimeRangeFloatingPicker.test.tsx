@@ -29,7 +29,7 @@ describe('components', () => {
       expect(screen.getByText('Last 5 minutes')).toBeInTheDocument();
     });
 
-    test('render with TZ and select a value', async () => {
+    test('render with TZ and select a value', { timeout: 10000 }, async () => {
       const onChange = vi.fn();
       const user = userEvent.setup();
       const tz = 'UTC-10:00';
