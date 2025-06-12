@@ -46,7 +46,7 @@ export const Playground: Story = {
         useDateTimeRangeInputValidation({
           value,
           onChange: setValue,
-          reprDate: (ts: number) => formatDate(ts),
+          reprDate: (ts: number) => formatDate()(ts),
           parseDate: getDefaultParseDate(),
           parseRange: getDefaultParseRange(),
         });
@@ -79,7 +79,7 @@ export const RangeValidation: Story = {
         useDateTimeRangeInputValidation({
           value,
           onChange: setValue,
-          reprDate: (ts: number) => formatDate(ts),
+          reprDate: (ts: number) => formatDate()(ts),
           parseDate: getDefaultParseDate(),
           parseRange: getDefaultParseRange(),
         });

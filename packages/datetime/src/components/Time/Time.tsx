@@ -71,16 +71,23 @@ export const Time: React.FC<TimeProps> = ({
           step={hasMillis ? '0.001' : hasSeconds ? '1' : null}
           type={'time'}
           value={
-            value && formatDate(value, getFormatTimeStr(hasSeconds, hasMillis))
+            value &&
+            formatDate({ format: getFormatTimeStr(hasSeconds, hasMillis) })(
+              value,
+            )
           }
           disabled={disabled}
           min={
             minDate &&
-            formatDate(minDate, getFormatTimeStr(hasSeconds, hasMillis))
+            formatDate({ format: getFormatTimeStr(hasSeconds, hasMillis) })(
+              minDate,
+            )
           }
           max={
             maxDate &&
-            formatDate(maxDate, getFormatTimeStr(hasSeconds, hasMillis))
+            formatDate({ format: getFormatTimeStr(hasSeconds, hasMillis) })(
+              maxDate,
+            )
           }
         />
       </Flex.Item>

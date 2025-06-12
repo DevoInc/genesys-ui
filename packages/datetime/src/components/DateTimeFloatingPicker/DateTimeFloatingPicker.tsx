@@ -18,7 +18,10 @@ import {
   DateTimeInputProps,
   useDateTimeInputValidation,
 } from '../DateTimeInput';
-import { formatDate as formatDateHelper } from '../../helpers';
+import {
+  formatDate as formatDateHelper,
+  getFormatDateTimeStr,
+} from '../../helpers';
 import { getDefaultParseDate } from '../../parsers';
 import type { IParseResult } from '../../declarations';
 import { TDateTimeFloatingPickerI18n } from './declarations';
@@ -64,15 +67,21 @@ export interface DateTimeFloatingPickerProps
   /** Apply change directly, without extra buttons (nor Apply or Cancel
    * buttons) */
   autoApply?: boolean;
+  /** Timezone */
+  tz?: string;
 }
 
 export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
   appendTo,
   i18n: userI18n = defaultDateTimeFloatingPickerI18n,
   as,
-  formatDate = formatDateHelper,
+  tz = Intl.DateTimeFormat().resolvedOptions().timeZone,
   hasMillis = false,
   hasSeconds = true,
+  formatDate = formatDateHelper({
+    tz,
+    format: getFormatDateTimeStr(hasSeconds, hasMillis),
+  }),
   hasTime = true,
   id,
   isOpened,

@@ -103,7 +103,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
   onClose: onCloseCallback,
   parseDate = getDefaultParseDate(),
   parseRange = getDefaultParseRange(),
-  formatDate = formatDateHelper,
+  formatDate = formatDateHelper({ tz }),
   placement = 'bottom-start',
   size = 'md',
   value,
@@ -114,6 +114,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
   realTime,
   hasMillis = false,
   modeDateTimeRange,
+  monthDate: userMonthDate,
   ...dataProps
 }) => {
   const i18n = useMergeI18n(
@@ -128,7 +129,7 @@ export const DateTimeRangeFloatingPicker: React.FC<
     React.useState<(string | number | Date)[]>(value);
 
   const [monthDate, setMonthDate] = React.useState<TCalendarDate>(
-    tryParseDateForCalendar(parseDate)(value[0]),
+    tryParseDateForCalendar(parseDate)(userMonthDate ?? value[0]),
   );
 
   const { inputValue, inputOnChange, errors, rangeErrors, updateValue } =

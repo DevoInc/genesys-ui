@@ -7,7 +7,11 @@ import {
   VFlex,
 } from '@devoinc/genesys-ui';
 
-import { formatDate as formatDateHelper } from '../../helpers';
+import {
+  formatDate as formatDateHelper,
+  getFormatDateStr,
+  getFormatDateTimeStr,
+} from '../../helpers';
 import { getDefaultParseDate } from '../../parsers';
 import { DateTime, type DateTimeProps } from '../DateTime';
 import {
@@ -39,6 +43,8 @@ export interface DateTimePickerProps
   /** Value of the DateTimePicker */
   value?: Date | number;
   parseDate?: (str: string) => IParseResult;
+  /** Timezone */
+  tz?: string;
   formatDate?: (dt: Date | number) => string;
 }
 
@@ -47,7 +53,13 @@ export const DateTimePicker: React.FC<DateTimePickerProps> = ({
   hasMillis = false,
   hasSeconds = true,
   hasTime = true,
-  formatDate = formatDateHelper,
+  tz = Intl.DateTimeFormat().resolvedOptions().timeZone,
+  formatDate = formatDateHelper({
+    tz,
+    format: hasTime
+      ? getFormatDateTimeStr(hasSeconds, hasMillis)
+      : getFormatDateStr(),
+  }),
   id,
   onChange = () => null,
   parseDate = getDefaultParseDate(),

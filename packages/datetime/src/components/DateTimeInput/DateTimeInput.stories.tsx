@@ -21,7 +21,7 @@ export const Playground: Story = {
       const { inputValue, inputOnChange, errors } = useDateTimeInputValidation({
         value,
         onChange: setValue,
-        formatDate: (ts: number) => formatDate(ts),
+        formatDate: (ts: number) => formatDate()(ts),
         parseDate: getDefaultParseDate(),
       });
 

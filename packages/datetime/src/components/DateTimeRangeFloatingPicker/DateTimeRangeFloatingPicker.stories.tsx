@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react-vite';
+import { TZDate } from '@date-fns/tz';
 
 import { isAfter, subDays, subMonths } from 'date-fns';
 
@@ -115,7 +116,7 @@ export const CustomTimeLanguage: Story = {
       if (typeof date === 'string') {
         return date;
       }
-      return formatDate(date);
+      return formatDate()(date);
     },
   },
   render: (args) =>
@@ -165,4 +166,40 @@ export const Limits: Story = {
         />
       );
     })(args),
+};
+
+const tz = 'UTC-10:00';
+const monthDate = new TZDate(2025, 5, 10, tz);
+export const Timezone: Story = {
+  tags: ['isHidden'],
+  args: {
+    value: [subDays(monthDate, 1).getTime(), monthDate.getTime()],
+    parseDate: (date) => {
+      const result = getDefaultParseDate()(date);
+      if (result.isValid) {
+        const isFuture = isAfter(date, new Date().getTime() + 1000);
+        if (isFuture) {
+          return {
+            isValid: false,
+            value: date,
+            errors: ["Date can't be on the future."],
+          };
+        }
+      }
+      return result;
+    },
+    tz,
+  },
+  render: (props) => {
+    const [value, setValue] = React.useState(props.value);
+    return (
+      <DateTimeRangeFloatingPicker
+        {...props}
+        value={value}
+        onChange={(newValue) => {
+          setValue(newValue);
+        }}
+      />
+    );
+  },
 };
