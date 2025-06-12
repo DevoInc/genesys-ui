@@ -53,10 +53,6 @@ export interface CalendarProps
   /** Disable hover effect. It could be combined with hoverDay, onMouseEnter
    * and onMouseLeave properties for custom control. */
   disableHoverDay?: boolean;
-  /** Allow hover efect when mouse is left of a selected cell. */
-  hasLeftHoverEffect?: boolean;
-  /** Allow hover efect when mouse is right of a selected cell. */
-  hasRightHoverEffect?: boolean;
   /** Set custom day to simulate the hover effect. It could be combined with
    * hoverDay, onMouseEnter and onMouseLeave properties for custom control.
    * One of `number` or `Date`. */

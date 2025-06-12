@@ -148,12 +148,6 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
                 );
               }}
               value={canCalendarRender ? (value as TCalendarDateRange) : []}
-              hasLeftHoverEffect={
-                canCalendarRender ? value.length === 1 : false
-              }
-              hasRightHoverEffect={
-                canCalendarRender ? value.length === 1 : false
-              }
               parseDate={parseDate}
               weekDays={weekDays}
               hoverDay={hoverDay}
@@ -222,12 +216,6 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
                 );
               }}
               value={canCalendarRender ? (value as TCalendarDateRange) : []}
-              hasLeftHoverEffect={
-                canCalendarRender ? value.length === 1 : false
-              }
-              hasRightHoverEffect={
-                canCalendarRender ? value.length === 1 : false
-              }
               parseDate={parseDate}
               weekDays={weekDays}
               hoverDay={hoverDay}

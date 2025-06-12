@@ -36,15 +36,12 @@ export const Single: Story = {
 export const ParseDate: Story = {
   tags: ['isHidden'],
   render: (props) => {
-    const { hasLeftHoverEffect, hasRightHoverEffect, range, handleNewDate } =
-      useCalendarRange(rangeValue);
+    const { range, handleNewDate } = useCalendarRange(rangeValue);
     return (
       <Calendar
         {...props}
         monthDate={now}
         value={range}
-        hasLeftHoverEffect={hasLeftHoverEffect}
-        hasRightHoverEffect={hasRightHoverEffect}
         onClick={handleNewDate}
         parseDate={(dt: Date | number) => {
           const weekend = isWeekend(dt);
@@ -66,15 +63,12 @@ export const ParseDate: Story = {
 export const MinMaxDate: Story = {
   tags: ['isHidden'],
   render: (props) => {
-    const { hasLeftHoverEffect, hasRightHoverEffect, range, handleNewDate } =
-      useCalendarRange(rangeValue);
+    const { range, handleNewDate } = useCalendarRange(rangeValue);
     return (
       <Calendar
         {...props}
         monthDate={now}
         value={range}
-        hasLeftHoverEffect={hasLeftHoverEffect}
-        hasRightHoverEffect={hasRightHoverEffect}
         onClick={handleNewDate}
         minDate={set(now, { date: 6 })}
         maxDate={set(now, { date: 26 })}
@@ -117,18 +111,8 @@ export const SingleHook: Story = {
 export const RangeHook: Story = {
   tags: ['isHidden'],
   render: () => {
-    const { hasLeftHoverEffect, hasRightHoverEffect, range, handleNewDate } =
-      useCalendarRange(rangeValue);
-
-    return (
-      <Calendar
-        monthDate={now}
-        value={range}
-        hasLeftHoverEffect={hasLeftHoverEffect}
-        hasRightHoverEffect={hasRightHoverEffect}
-        onClick={handleNewDate}
-      />
-    );
+    const { range, handleNewDate } = useCalendarRange(rangeValue);
+    return <Calendar monthDate={now} value={range} onClick={handleNewDate} />;
   },
 };
 

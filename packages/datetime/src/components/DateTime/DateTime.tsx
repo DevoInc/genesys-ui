@@ -87,8 +87,6 @@ export const DateTime: React.FC<DateTimeProps> = ({
       />
       <Calendar
         monthDate={monthDate}
-        hasLeftHoverEffect={false}
-        hasRightHoverEffect={false}
         onClick={(ts) => {
           onChange(
             set(

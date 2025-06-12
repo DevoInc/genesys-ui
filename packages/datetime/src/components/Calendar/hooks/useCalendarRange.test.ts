@@ -12,8 +12,6 @@ describe('Calendar', () => {
 
         const { result } = renderHook(() => useCalendarRange(range));
         expect(result.current.range).toStrictEqual(range);
-        expect(result.current.hasLeftHoverEffect).toBe(false);
-        expect(result.current.hasRightHoverEffect).toBe(false);
 
         const nextDate = new Date(2022, 8, 11);
 
@@ -22,8 +20,6 @@ describe('Calendar', () => {
         });
 
         expect(result.current.range).toStrictEqual([nextDate]);
-        expect(result.current.hasLeftHoverEffect).toBe(true);
-        expect(result.current.hasRightHoverEffect).toBe(true);
       });
 
       test('Initial behaviour forward', () => {
@@ -31,8 +27,6 @@ describe('Calendar', () => {
 
         const { result } = renderHook(() => useCalendarRange(range));
         expect(result.current.range).toStrictEqual(range);
-        expect(result.current.hasLeftHoverEffect).toBe(false);
-        expect(result.current.hasRightHoverEffect).toBe(false);
 
         const nextDate = new Date(2022, 8, 11);
 
@@ -41,15 +35,11 @@ describe('Calendar', () => {
         });
 
         expect(result.current.range).toStrictEqual([nextDate]);
-        expect(result.current.hasLeftHoverEffect).toBe(true);
-        expect(result.current.hasRightHoverEffect).toBe(true);
       });
 
       test('Initial without dates', () => {
         const { result } = renderHook(() => useCalendarRange());
         expect(result.current.range).toStrictEqual([]);
-        expect(result.current.hasLeftHoverEffect).toBe(false);
-        expect(result.current.hasRightHoverEffect).toBe(false);
 
         const nextDate = new Date(2022, 8, 11);
 
@@ -58,16 +48,12 @@ describe('Calendar', () => {
         });
 
         expect(result.current.range).toStrictEqual([nextDate]);
-        expect(result.current.hasLeftHoverEffect).toBe(true);
-        expect(result.current.hasRightHoverEffect).toBe(true);
       });
 
       test('Initial without to', () => {
         const range = [new Date(2022, 8, 0)];
         const { result } = renderHook(() => useCalendarRange(range));
         expect(result.current.range).toStrictEqual(range);
-        expect(result.current.hasLeftHoverEffect).toBe(true);
-        expect(result.current.hasRightHoverEffect).toBe(true);
 
         const nextDate = set(new Date(2022, 8, 11), {
           hours: 23,
@@ -84,8 +70,6 @@ describe('Calendar', () => {
           range[0].valueOf(),
           nextDate.valueOf(),
         ]);
-        expect(result.current.hasLeftHoverEffect).toBe(false);
-        expect(result.current.hasRightHoverEffect).toBe(false);
       });
     });
   });

@@ -1,56 +1,39 @@
-import { TZDate } from '@date-fns/tz';
 import { describe, test, expect } from 'vitest';
 
 import { orderCalendarInterval } from './orderCalendarInterval';
+import { TCalendarDate } from '../../../../declarations';
 
-const tz = 'UTC';
+let a: Date;
+let b: Date;
 
 describe('isWithinCalendarInterval', () => {
-  const cases: [string, Date, Date, Date, string, boolean][] = [
+  const cases: [
+    string,
+    TCalendarDate,
+    TCalendarDate,
+    { start: TCalendarDate; end: TCalendarDate },
+  ][] = [
     [
-      'left out',
-      new TZDate(2025, 6, 10, tz),
-      new TZDate(2025, 6, 12, tz),
-      new TZDate(2025, 6, 15, tz),
-      tz,
-      false,
+      'a as start, b as end',
+      (a = new Date(2025, 6, 10)),
+      (b = new Date(2025, 6, 12)),
+      { start: a, end: b },
     ],
     [
-      'right out',
-      new TZDate(2025, 6, 16, tz),
-      new TZDate(2025, 6, 12, tz),
-      new TZDate(2025, 6, 15, tz),
-      tz,
-      false,
+      'a as end, b as start',
+      (a = new Date(2025, 6, 16)),
+      (b = new Date(2025, 6, 12)),
+      { start: b, end: a },
     ],
     [
-      'match left limit',
-      new TZDate(2025, 6, 12, 0, 0, 0, 'UTC'),
-      new TZDate(2025, 6, 12, 17, 0, 0, 'UTC'),
-      new TZDate(2025, 6, 15, 'UTC'),
-      tz,
-      true,
+      'same date',
+      (a = new Date(2025, 6, 12, 0, 0, 0)),
+      a,
+      { start: a, end: a },
     ],
-    [
-      'match right limit',
-      new TZDate(2025, 6, 15, 23, 59, 59, tz),
-      new TZDate(2025, 6, 12, tz),
-      new TZDate(2025, 6, 15, 17, 0, 0, tz),
-      tz,
-      true,
-    ],
-    [
-      'inside the range',
-      new TZDate(2025, 6, 13, tz),
-      new TZDate(2025, 6, 12, tz),
-      new TZDate(2025, 6, 15, tz),
-      tz,
-      true,
-    ],
-    ['no range', new TZDate(2025, 6, 13, tz), undefined, undefined, tz, true],
   ];
 
-  test.each(cases)('%s', (_title, value, start, end, tz, expected) => {
-    expect(orderCalendarInterval(value, { start, end }, tz)).toEqual(expected);
+  test.each(cases)('%s', (_title, a, b, expected) => {
+    expect(orderCalendarInterval(a, b)).toEqual(expected);
   });
 });

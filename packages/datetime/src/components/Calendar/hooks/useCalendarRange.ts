@@ -41,7 +41,5 @@ export const useCalendarRange = (
   return {
     range,
     handleNewDate,
-    hasLeftHoverEffect: range.length === 1,
-    hasRightHoverEffect: range.length === 1,
   };
 };
