@@ -7,7 +7,8 @@ export const StyledCalendarCell = styled.div`
   position: relative;
   font-weight: 300;
 
-  // day container
+  // Day container
+
   span {
     width: ${({ theme }) => theme.cmp.calendar.day.size.square};
     height: ${({ theme }) => theme.cmp.calendar.day.size.square};
@@ -29,10 +30,8 @@ export const StyledCalendarCell = styled.div`
         : 'pointer'};
   }
 
-  /* Highlight & Shadow Area ------------------------------------------------ */
-  /* ------------------------------------------------------------------------ */
+  // Border radius adjustment for the start and the end of the week
 
-  // range marker
   &:nth-child(7n),
   &:last-child {
     &::before {
@@ -53,6 +52,8 @@ export const StyledCalendarCell = styled.div`
     }
   }
 
+  // Definition of the hovered and selected range markers
+
   &.range-selected,
   &.range-hovered,
   &.range-start,
@@ -69,8 +70,7 @@ export const StyledCalendarCell = styled.div`
 
   color: ${({ theme }) => theme.cmp.calendar.day.color.text.base};
 
-  /* Week days name */
-  /* -------------------------------------------------------------------- */
+  // Week day names
 
   &.weekDayName {
     ${({ theme }) => typoMixin({ theme, $size: 'xs' })};
@@ -100,14 +100,12 @@ export const StyledCalendarCell = styled.div`
     }
   }
 
-  /* Disabled days */
-  /* -------------------------------------------------------------------- */
+  // Disabled days
 
   opacity: ${({ 'aria-disabled': ariaDisabled }) =>
     ariaDisabled ? '0.4' : '1'};
 
-  /* First and last selected days */
-  /* -------------------------------------------------------------------- */
+  // Selected day
 
   span {
     transition:
@@ -125,14 +123,7 @@ export const StyledCalendarCell = styled.div`
     }
   }
 
-  &.range-selected {
-    + .range-selected.selected {
-      &::before {
-        width: 50%;
-        left: 0;
-      }
-    }
-  }
+  // Adjustment to mark only one of the sides of the selected day
 
   &.selected.range-start {
     &::before {
@@ -154,6 +145,8 @@ export const StyledCalendarCell = styled.div`
     }
   }
 
+  // hover on days outside the range
+
   &:not(.selected):not(.range-selected):not(.range-hovered):hover {
     span {
       color: ${({ theme }) => theme.cmp.calendar.day.color.text.hovered};
@@ -161,6 +154,8 @@ export const StyledCalendarCell = styled.div`
         theme.cmp.calendar.day.color.background.hovered};
     }
   }
+
+  // hover on days inside the range
 
   &.selected:hover,
   &.range-selected:hover,
@@ -172,30 +167,18 @@ export const StyledCalendarCell = styled.div`
     }
   }
 
-  /* Hover effects */
-  /* -------------------------------------------------------------------- */
-
-  // &.dayName:hover:has(~ &.range-start) {
-  //   background: red;
-  // }
-  //
-  // &.dayName:hover ~ &.dayName:has(~ &.range-start) {
-  //   background: red;
-  // }
-
-  /* Selected range days */
-  /* -------------------------------------------------------------------- */
+  // Selected range color styles
 
   &.range-selected {
     color: ${({ theme }) => theme.cmp.calendar.interval.color.text.selected};
+
     &::before {
       background: ${({ theme }) =>
         theme.cmp.calendar.interval.color.background.selected};
     }
   }
 
-  /* Shadow ------------------------------------------------------------- */
-  /* -------------------------------------------------------------------- */
+  // Hovered range color styles
 
   &.range-hovered {
     color: ${({ theme }) => theme.cmp.calendar.interval.color.text.activated};
@@ -239,11 +222,8 @@ export const StyledCalendarCell = styled.div`
     }
   }
 
-  /* Shadow within an interval ------------------------------------------ */
-  /* -------------------------------------------------------------------- */
+  // gradient for the first and the last day of the month in hovered range
 
-  // Esto parece ser para el sombreado del primer y ultimo dia del mes cuando
-  // esta por seleccionar
   &.range-hovered {
     &.month-first-day {
       &::before {
@@ -275,8 +255,7 @@ export const StyledCalendarCell = styled.div`
     }
   }
 
-  // Esto parece ser para el sombreado del primer y ultimo dia del mes cuando
-  // hay rango
+  // gradient for the first and the last day of the month in selected range
   &.range-selected {
     &.month-first-day {
       &::before {
@@ -292,18 +271,6 @@ export const StyledCalendarCell = styled.div`
             100%
         );
       }
-      &.range-hovered {
-        &::before {
-          background: linear-gradient(
-            to right,
-            transparent 0%,
-            ${({ theme }) => theme.cmp.calendar.interval.color.background.mixed}
-              65%,
-            ${({ theme }) => theme.cmp.calendar.interval.color.background.mixed}
-              100%
-          );
-        }
-      }
     }
     &.month-last-day {
       &:before {
@@ -317,18 +284,6 @@ export const StyledCalendarCell = styled.div`
             35%,
           transparent 100%
         );
-      }
-      &.range-hovered {
-        &::before {
-          background: linear-gradient(
-            to right,
-            ${({ theme }) => theme.cmp.calendar.interval.color.background.mixed}
-              0%,
-            ${({ theme }) => theme.cmp.calendar.interval.color.background.mixed}
-              35%,
-            transparent 100%
-          );
-        }
       }
     }
   }
