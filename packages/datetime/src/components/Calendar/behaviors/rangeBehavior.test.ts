@@ -3,7 +3,6 @@ import { describe, test, expect } from 'vitest';
 import { rangeBehavior } from './rangeBehavior';
 import type {
   IEndPointRangeTime,
-  TCalendarDate,
   TCalendarDateRange,
 } from '../../../declarations';
 
