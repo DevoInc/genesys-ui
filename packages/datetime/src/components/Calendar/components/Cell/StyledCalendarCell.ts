@@ -41,12 +41,6 @@ export const StyledCalendarCell = styled.div`
       border-bottom-right-radius: ${({ theme }) =>
         theme.cmp.calendar.day.shape.borderRadius.corners};
     }
-    &::after {
-      border-top-right-radius: ${({ theme }) =>
-        theme.cmp.calendar.day.shape.borderRadius.corners};
-      border-bottom-right-radius: ${({ theme }) =>
-        theme.cmp.calendar.day.shape.borderRadius.corners};
-    }
   }
 
   &:nth-child(7n + 1),
@@ -57,30 +51,13 @@ export const StyledCalendarCell = styled.div`
       border-bottom-left-radius: ${({ theme }) =>
         theme.cmp.calendar.day.shape.borderRadius.corners};
     }
-    &::after {
-      border-top-left-radius: ${({ theme }) =>
-        theme.cmp.calendar.day.shape.borderRadius.corners};
-      border-bottom-left-radius: ${({ theme }) =>
-        theme.cmp.calendar.day.shape.borderRadius.corners};
-    }
   }
 
-  &.highlight,
-  &.box-shadow {
+  &.range-selected,
+  &.range-hovered,
+  &.range-start,
+  &.range-end {
     &::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      transform: translate(0, -50%);
-      width: 100%;
-      height: ${({ theme }) => theme.cmp.calendar.interval.size.height};
-    }
-  }
-
-  &.box-shadow,
-  &.next-box-shadow,
-  &.prev-box-shadow {
-    &::after {
       content: '';
       position: absolute;
       top: 50%;
@@ -106,7 +83,7 @@ export const StyledCalendarCell = styled.div`
       color: inherit;
     }
 
-    &:not(.selected):not(.highlight):not(.box-shadow) {
+    &:not(.selected):not(.range-selected):not(.range-hovered) {
       &:hover,
       &:focus,
       &:active {
@@ -148,8 +125,8 @@ export const StyledCalendarCell = styled.div`
     }
   }
 
-  &.highlight {
-    + .highlight.selected {
+  &.range-selected {
+    + .range-selected.selected {
       &::before {
         width: 50%;
         left: 0;
@@ -157,27 +134,27 @@ export const StyledCalendarCell = styled.div`
     }
   }
 
-  &.selected.from-selected {
+  &.selected.range-start {
     &::before {
       width: 50%;
       right: 0;
     }
   }
 
-  &.selected.to-selected {
+  &.selected.range-end {
     &::before {
       width: 50%;
       left: 0;
     }
   }
 
-  &.selected.from-selected.to-selected {
+  &.selected.range-start.range-end {
     &::before {
       width: 0;
     }
   }
 
-  &:not(.selected):not(.highlight):not(.box-shadow):hover {
+  &:not(.selected):not(.range-selected):not(.range-hovered):hover {
     span {
       color: ${({ theme }) => theme.cmp.calendar.day.color.text.hovered};
       background-color: ${({ theme }) =>
@@ -186,8 +163,8 @@ export const StyledCalendarCell = styled.div`
   }
 
   &.selected:hover,
-  &.highlight:hover,
-  &.box-shadow:hover {
+  &.range-selected:hover,
+  &.range-hovered:hover {
     span {
       color: ${({ theme }) => theme.cmp.calendar.day.color.text.selected};
       background-color: ${({ theme }) =>
@@ -198,18 +175,18 @@ export const StyledCalendarCell = styled.div`
   /* Hover effects */
   /* -------------------------------------------------------------------- */
 
-  // &.dayName:hover:has(~ &.from-selected) {
+  // &.dayName:hover:has(~ &.range-start) {
   //   background: red;
   // }
   //
-  // &.dayName:hover ~ &.dayName:has(~ &.from-selected) {
+  // &.dayName:hover ~ &.dayName:has(~ &.range-start) {
   //   background: red;
   // }
 
   /* Selected range days */
   /* -------------------------------------------------------------------- */
 
-  &.highlight {
+  &.range-selected {
     color: ${({ theme }) => theme.cmp.calendar.interval.color.text.selected};
     &::before {
       background: ${({ theme }) =>
@@ -220,44 +197,42 @@ export const StyledCalendarCell = styled.div`
   /* Shadow ------------------------------------------------------------- */
   /* -------------------------------------------------------------------- */
 
-  &.box-shadow,
-  &.next-box-shadow {
+  &.range-hovered {
     color: ${({ theme }) => theme.cmp.calendar.interval.color.text.activated};
 
-    &::after {
+    &::before {
       background: ${({ theme }) =>
         theme.cmp.calendar.interval.color.background.activated};
       width: 100%;
     }
   }
 
-  &.box-shadow {
-    + .selected,
-    .selected.prev-box-shadow {
-      &::after {
+  &.range-hovered {
+    + .selected {
+      &::before {
         width: 50%;
         left: 0;
       }
     }
   }
 
-  &.rightmost.box-shadow {
-    &::after {
-      width: 50%;
-      left: 0;
-    }
-  }
-
-  &.selected.highlight.next-box-shadow {
-    &::after {
+  &.range-start.selected {
+    &::before {
       width: 50%;
       right: 0;
     }
   }
 
-  &:not(.box-shadow, .highlight) {
-    + .box-shadow:hover {
-      &::after {
+  &.rightmost.range-hovered {
+    &::before {
+      width: 50%;
+      left: 0;
+    }
+  }
+
+  &:not(.range-hovered, .range-selected) {
+    + .range-hovered:hover {
+      &::before {
         width: 50%;
         right: 0;
       }
@@ -269,8 +244,8 @@ export const StyledCalendarCell = styled.div`
 
   // Esto parece ser para el sombreado del primer y ultimo dia del mes cuando
   // esta por seleccionar
-  &.box-shadow:not(.selected) {
-    &[data-cell='1'] {
+  &.range-hovered {
+    &.month-first-day {
       &::before {
         background: linear-gradient(
           to right,
@@ -283,12 +258,9 @@ export const StyledCalendarCell = styled.div`
             100%
         );
       }
-      &::after {
-        content: none;
-      }
     }
     &.month-last-day {
-      &::after {
+      &::before {
         background: linear-gradient(
           to right,
           ${({ theme }) =>
@@ -305,8 +277,8 @@ export const StyledCalendarCell = styled.div`
 
   // Esto parece ser para el sombreado del primer y ultimo dia del mes cuando
   // hay rango
-  &.highlight {
-    &[data-cell='1'] {
+  &.range-selected {
+    &.month-first-day {
       &::before {
         border-radius: 0;
         background: linear-gradient(
@@ -320,7 +292,7 @@ export const StyledCalendarCell = styled.div`
             100%
         );
       }
-      &.box-shadow {
+      &.range-hovered {
         &::before {
           background: linear-gradient(
             to right,
@@ -346,7 +318,7 @@ export const StyledCalendarCell = styled.div`
           transparent 100%
         );
       }
-      &.box-shadow {
+      &.range-hovered {
         &::before {
           background: linear-gradient(
             to right,

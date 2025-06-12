@@ -261,14 +261,17 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
           'dayName',
           isDisabled ? 'disabled' : '',
           isSelected ? 'selected' : '',
-          isFrom ? 'from-selected' : '',
-          isTo ? 'to-selected' : '',
+          isFrom ? 'range-start' : '',
+          isTo ? 'range-end' : '',
           monthDay === 1 ? 'month-first-day' : '',
           isLastDayOfMonth ? 'month-last-day' : '',
-          isInsideSelection ? 'highlight' : '',
-          isBoxShadowLeft || isBoxShadowRight ? 'box-shadow' : '',
-          isNextBoxShadow ? 'next-box-shadow' : '',
-          isPrevBoxShadow ? 'prev-box-shadow' : '',
+          isInsideSelection ? 'range-selected' : '',
+          isBoxShadowLeft ||
+          isBoxShadowRight ||
+          isNextBoxShadow ||
+          isPrevBoxShadow
+            ? 'range-hovered'
+            : '',
           isRightHover ? 'rightmost' : '',
         ].join(' ')}
         onClick={onClick}
@@ -315,20 +318,14 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
       as={as}
       id={id}
       tooltip={tooltip}
-      alignItems="center"
       gridTemplateColumns="repeat(1, 1fr)"
-      justifyContent="center"
-      rowGap="cmp-xxs"
       minWidth={theme.cmp.calendar.size.minWidth}
       style={style}
     >
       <Box role="rowgroup">
         <Grid
           role="row"
-          alignItems="center"
           gridTemplateColumns="repeat(7, 1fr)"
-          justifyContent="center"
-          rowGap="cmp-xxs"
           minWidth={theme.cmp.calendar.size.minWidth}
         >
           {rotatedWeekDays.map((day) => (
