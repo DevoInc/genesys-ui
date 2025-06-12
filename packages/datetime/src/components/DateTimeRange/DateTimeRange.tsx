@@ -221,7 +221,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
                   DATE_TIME_RANGE_SOURCE_CAL_RIGHT,
                 );
               }}
-              value={canCalendarRender ? value : []}
+              value={canCalendarRender ? (value as TCalendarDateRange) : []}
               hasLeftHoverEffect={
                 canCalendarRender ? value.length === 1 : false
               }
