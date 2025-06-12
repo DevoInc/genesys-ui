@@ -24,7 +24,9 @@ const meta: Meta<typeof Menu> = {
   title: 'Components/Navigation/Menu',
   component: Menu,
   args: {
-    cmpRole: 'menu',
+    as: 'nav',
+    childrenFitFullWidth: true,
+    spacing: '0',
   },
 };
 
@@ -92,18 +94,12 @@ export const Selectable: Story = {
   render: () =>
     (() => {
       const [selected, setSelected] = React.useState('one');
-      const onOptionChange = (e) => {
-        const target = e.target;
-        if (target.checked) {
-          setSelected(target.value);
-        }
-      };
       return (
         <Menu>
           <Menu.Item
             label="Option one"
             selectionScheme="single"
-            onChange={onOptionChange}
+            onClick={() => setSelected('one')}
             state={selected === 'one' ? 'selected' : 'enabled'}
             name="options"
             value="one"
@@ -111,7 +107,7 @@ export const Selectable: Story = {
           <Menu.Item
             label="Option two"
             selectionScheme="single"
-            onChange={onOptionChange}
+            onClick={() => setSelected('two')}
             state={selected === 'two' ? 'selected' : 'enabled'}
             name="options"
             value="two"
@@ -119,9 +115,49 @@ export const Selectable: Story = {
           <Menu.Item
             label="Option three"
             selectionScheme="single"
-            onChange={onOptionChange}
+            onClick={() => setSelected('three')}
             state={selected === 'three' ? 'selected' : 'enabled'}
             name="options"
+            value="three"
+          />
+        </Menu>
+      );
+    })(),
+};
+
+export const SelectableMultiple: Story = {
+  tags: ['isHidden'],
+  render: () =>
+    (() => {
+      const [selected, setSelected] = React.useState(['one']);
+      const toggleSelected = (value) => {
+        setSelected((prev) =>
+          prev.includes(value)
+            ? prev.filter((item) => item !== value)
+            : [...prev, value],
+        );
+      };
+      return (
+        <Menu>
+          <Menu.Item
+            label="Option one"
+            selectionScheme="multiple"
+            onClick={() => toggleSelected('one')}
+            state={selected.includes('one') ? 'selected' : 'enabled'}
+            value="one"
+          />
+          <Menu.Item
+            label="Option two"
+            selectionScheme="multiple"
+            onClick={() => toggleSelected('two')}
+            state={selected.includes('two') ? 'selected' : 'enabled'}
+            value="two"
+          />
+          <Menu.Item
+            label="Option three"
+            selectionScheme="multiple"
+            onClick={() => toggleSelected('three')}
+            state={selected.includes('three') ? 'selected' : 'enabled'}
             value="three"
           />
         </Menu>
@@ -132,7 +168,7 @@ export const Selectable: Story = {
 export const AsNavigation: Story = {
   tags: ['isHidden'],
   render: () => (
-    <Menu cmpRole="nav">
+    <Menu>
       <Menu.Heading>Platform</Menu.Heading>
       <Menu.Item
         href="https://www.devo.com/applications/cloud-siem/"

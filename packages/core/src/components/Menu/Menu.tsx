@@ -3,40 +3,31 @@ import * as React from 'react';
 import { VFlex, type VFlexProps } from '../VFlex';
 import { MenuHeading, MenuItem, MenuSeparator } from './components';
 
-export interface MenuProps extends Omit<VFlexProps, 'role'> {
-  cmpRole?: 'menu' | 'nav';
-}
+export interface MenuProps extends VFlexProps {}
 
 const InternalMenu: React.FC<MenuProps> = ({
-  as,
+  as = 'nav',
   children,
   childrenFitFullWidth = true,
-  cmpRole = 'menu',
   spacing = '0',
   ...restVFlexProps
-}) =>
-  cmpRole === 'nav' ? (
+}) => (
+  <VFlex
+    {...restVFlexProps}
+    as={as}
+    childrenFitFullWidth={childrenFitFullWidth}
+    spacing="0"
+  >
     <VFlex
-      {...restVFlexProps}
-      as={as || 'nav'}
-      spacing={spacing}
-      childrenFitFullWidth={childrenFitFullWidth}
-    >
-      <VFlex as="ul" spacing={spacing} childrenFitFullWidth>
-        {children}
-      </VFlex>
-    </VFlex>
-  ) : (
-    <VFlex
-      {...restVFlexProps}
-      as={as || 'ul'}
+      as="ul"
       role="menu"
       spacing={spacing}
       childrenFitFullWidth={childrenFitFullWidth}
     >
       {children}
     </VFlex>
-  );
+  </VFlex>
+);
 
 export const Menu = InternalMenu as typeof InternalMenu & {
   Heading: typeof MenuHeading;

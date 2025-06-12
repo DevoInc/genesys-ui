@@ -37,15 +37,39 @@ a description text block this way.
 
 The `Menu.Item` can be used as a selectable option. The role `menuitemcheckbox`
 or `menuitemradio` is added automatically based in the `selectionScheme` prop
-value. In addition, a checkbox or radio is rendered inside the item, but it's
-not visible, because its purpose is manage the selection behavior.
+value. In addition, the 'aria-checked' attribute is set to true when it
+has the 'state' prop value to 'selected.' The selection is totally controlled,
+so you have to manage a React state to get the option selected.
 
 <Canvas of={Stories.Selectable} />
 
-## Read only
+## Interactive content
+
+The `Menu.Item` usually is based in a `<button>` or `<a>` HTML element. This way, if we use as a child
+of the item an interactive/focusable element (`<button>`, `<a>`, `<input>`... etc.) it is a critical
+error to get AA standard of accessibility.
+
+This way, we have available the 'interactiveContent' prop which allow us to insert interactive content
+at the end of the wrapper as a sibling of the main interactive content.
+
+<Source
+  code={`
+  <li>
+    <button>Menu item content</button>
+    <div><button>Interactive content</button></div>
+  </li>
+`}
+/>
+
+<Canvas of={Stories.WithInteractiveContent} />
+
+The block is positioned in absolute way and vertically aligned to the center. The width of this block
+is assigned automatically to the padding-right of the main interactive content so it won't be overlapped.
+
+## Readonly
 
 Sometimes you might need that the item not to be interactive, because it's only an informative block, or it only needs
-to give some feedback to the user. On those cases you can set the value 'readonly' to the 'state' prop, and the menu
+to give some feedback to the user. In those cases, you can set the value 'readonly' to the 'state' prop, and the menu
 item won't be interactive neither selectable.
 
 <Canvas of={Stories.ReadOnly} />
