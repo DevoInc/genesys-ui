@@ -1,12 +1,7 @@
 import * as React from 'react';
 
 import { DateTimeFloatingPicker } from '@devoinc/genesys-ui-datetime';
-import {
-  HFlex,
-  IconButton,
-  Menu,
-  Popover,
-} from '@devoinc/genesys-ui';
+import { HFlex, IconButton, Menu, Popover } from '@devoinc/genesys-ui';
 import { GIExitClose, GIFilter } from '@devoinc/genesys-icons';
 
 import { DATE_OPTIONS, FilterContainer } from '../common';
@@ -102,7 +97,7 @@ export const DateFilter: React.FC<TFilter> = ({ colDef, onChange }) => {
                   {DATE_OPTIONS.map((option) => (
                     <Menu.Item
                       selectionScheme="single"
-                      onChange={() => {
+                      onClick={() => {
                         onChange(
                           {
                             value,

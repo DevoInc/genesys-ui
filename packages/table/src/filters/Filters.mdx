@@ -30,152 +30,152 @@ import {
 } from '@devoinc/genesys-ui-table';
 
 const data = [
-  {
-    text: 'Christine Jimenez',
-    num: 60,
-    bool: false,
-    option: 'A',
-    multiple: ['M', 'N'],
-  },
-  {
-    text: 'Ina Osborne',
-    num: 20,
-    bool: true,
-    option: 'B',
-    multiple: ['N'],
-  },
-  {
-    text: 'Jimmy Hogan',
-    num: 20,
-    bool: true,
-    option: 'C',
-    multiple: ['M', 'O'],
-  },
-  {
-    text: 'Myra Bell',
-    num: 57,
-    bool: true,
-    option: 'C',
-    multiple: ['N', 'O'],
-  },
-  {
-    text: 'Jane Padilla',
-    num: 46,
-    bool: false,
-    option: 'B',
-    multiple: ['O'],
-  },
-  {
-    text: 'Isabelle Gardner',
-    num: 31,
-    bool: true,
-    option: 'A',
-    multiple: ['M'],
-  },
-  {
-    text: 'Sean Parsons',
-    num: 31,
-    bool: true,
-    option: 'A',
-    multiple: ['N', 'O'],
-  },
-  {
-    text: 'Alvin Castro',
-    num: 55,
-    bool: false,
-    option: 'B',
-    multiple: ['M', 'N', 'O'],
-  },
-  {
-    text: 'Lawrence Holland',
-    num: 56,
-    bool: false,
-    option: 'B',
-    multiple: ['O'],
-  },
-  {
-    text: 'Brandon Robertson',
-    num: 41,
-    bool: true,
-    option: 'C',
-    multiple: ['N'],
-  },
+{
+text: 'Christine Jimenez',
+num: 60,
+bool: false,
+option: 'A',
+multiple: ['M', 'N'],
+},
+{
+text: 'Ina Osborne',
+num: 20,
+bool: true,
+option: 'B',
+multiple: ['N'],
+},
+{
+text: 'Jimmy Hogan',
+num: 20,
+bool: true,
+option: 'C',
+multiple: ['M', 'O'],
+},
+{
+text: 'Myra Bell',
+num: 57,
+bool: true,
+option: 'C',
+multiple: ['N', 'O'],
+},
+{
+text: 'Jane Padilla',
+num: 46,
+bool: false,
+option: 'B',
+multiple: ['O'],
+},
+{
+text: 'Isabelle Gardner',
+num: 31,
+bool: true,
+option: 'A',
+multiple: ['M'],
+},
+{
+text: 'Sean Parsons',
+num: 31,
+bool: true,
+option: 'A',
+multiple: ['N', 'O'],
+},
+{
+text: 'Alvin Castro',
+num: 55,
+bool: false,
+option: 'B',
+multiple: ['M', 'N', 'O'],
+},
+{
+text: 'Lawrence Holland',
+num: 56,
+bool: false,
+option: 'B',
+multiple: ['O'],
+},
+{
+text: 'Brandon Robertson',
+num: 41,
+bool: true,
+option: 'C',
+multiple: ['N'],
+},
 ];
 
 const colDefs = [
-  {
-    id: 'text',
-    headerName: 'Text',
-    preset: 'text',
-  },
-  {
-    id: 'num',
-    headerName: 'Number',
-    preset: 'number',
-    context: {
-      showAdvancedFilter: true,
-      showReset: true,
-    } as FilterContext,
-  },
-  {
-    id: 'bool',
-    headerName: 'Boolean',
-    preset: 'boolean',
-  },
-  {
-    id: 'option',
-    headerName: 'Options',
-    preset: 'options',
-    context: {
-      options: {
-        A: { label: 'Option A' },
-        B: { label: 'Option B' },
-        C: { label: 'Option C' },
-      },
-    } as ContextOptions,
-  },
-  {
-    id: 'multiple',
-    headerName: 'multiple',
-    preset: 'options',
-    context: {
-      options: {
-        M: { label: 'M' },
-        N: { label: 'N' },
-        O: { label: 'O' },
-      },
-    } as TContextOptions,
-  },
+{
+id: 'text',
+headerName: 'Text',
+preset: 'text',
+},
+{
+id: 'num',
+headerName: 'Number',
+preset: 'number',
+context: {
+showAdvancedFilter: true,
+showReset: true,
+} as FilterContext,
+},
+{
+id: 'bool',
+headerName: 'Boolean',
+preset: 'boolean',
+},
+{
+id: 'option',
+headerName: 'Options',
+preset: 'options',
+context: {
+options: {
+A: { label: 'Option A' },
+B: { label: 'Option B' },
+C: { label: 'Option C' },
+},
+} as ContextOptions,
+},
+{
+id: 'multiple',
+headerName: 'multiple',
+preset: 'options',
+context: {
+options: {
+M: { label: 'M' },
+N: { label: 'N' },
+O: { label: 'O' },
+},
+} as TContextOptions,
+},
 ];
 
 const FilterTable = () => {
-  const [ textFilter, setTextFilter ] = React.useState(undefined);
-  const { filterStruct, onFilter } = useFilterStruct();
-  const dataFiltered = [...data]
-    .filter(filterDataByText(textFilter, colDefs))
-    .filter(filterDataByFilterStruct(filterStruct));
+const [ textFilter, setTextFilter ] = React.useState(undefined);
+const { filterStruct, onFilter } = useFilterStruct();
+const dataFiltered = [...data]
+.filter(filterDataByText(textFilter, colDefs))
+.filter(filterDataByFilterStruct(filterStruct));
 
-  return (
-    <>
-      <InputControl
-        aria-label="Contains text..."
-        placeholder="Contains text..."
-        type="search"
-        value={ textFilter }
-        onChange={(ev) => {
-          setTextFilter(ev.target.value);
-        }}
-      />
-      <BasicTable
-        showFilters
-        onFilter={(curColDef, value, type) => {
-          onFilter(curColDef.id, value, type);
-        }}
-        colDefs={updateColDefsWithFilterStruct(colDefs, filterStruct)}
-        data={dataFiltered}
-      />
-    </>
-  );
+return (
+<>
+<InputControl
+aria-label="Contains text..."
+placeholder="Contains text..."
+type="search"
+value={ textFilter }
+onChange={(ev) => {
+setTextFilter(ev.target.value);
+}}
+/>
+<BasicTable
+showFilters
+onFilter={(curColDef, value, type) => {
+onFilter(curColDef.id, value, type);
+}}
+colDefs={updateColDefsWithFilterStruct(colDefs, filterStruct)}
+data={dataFiltered}
+/>
+</>
+);
 };
 `}
 />
@@ -183,8 +183,8 @@ const FilterTable = () => {
 ## How to implement filters?.
 
 > The steps described below are the implementation steps. They are **functions that
-the package provides as a minimum base**. However given the nature of the project
-any of **these steps can be substituted with custom functions as needed**.
+> the package provides as a minimum base**. However given the nature of the project
+> any of **these steps can be substituted with custom functions as needed**.
 
 ### 1. Filter state `useFilterStruct`.
 
@@ -289,4 +289,3 @@ const dataFiltered = [...data]
   .filter(filterDataByFilterStruct(filterStruct));
 `}
 />
-

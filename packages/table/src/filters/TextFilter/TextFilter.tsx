@@ -87,7 +87,7 @@ export const TextFilter: React.FC<TFilter> = ({ onChange, colDef }) => {
                   {TEXT_OPTIONS.map((option) => (
                     <Menu.Item
                       selectionScheme="single"
-                      onChange={() => {
+                      onClick={() => {
                         onChange(
                           {
                             value,

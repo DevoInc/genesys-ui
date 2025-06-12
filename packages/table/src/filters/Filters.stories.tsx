@@ -466,8 +466,8 @@ const dataGlobal = [
     bool: false,
     option: 'A',
     user: 'cjimenez@email.com',
-    tags: ['senior','chief'],
-    date: Date.now() - 1000*3600*24*365*3,
+    tags: ['senior', 'chief'],
+    date: Date.now() - 1000 * 3600 * 24 * 365 * 3,
   },
   {
     text: 'Ina Osborne',
@@ -475,7 +475,7 @@ const dataGlobal = [
     bool: true,
     option: 'B',
     user: 'ina@email.com',
-    date: Date.now() - 1000*3600*24*145,
+    date: Date.now() - 1000 * 3600 * 24 * 145,
   },
   {
     text: 'Jimmy Hogan',
@@ -483,7 +483,7 @@ const dataGlobal = [
     bool: true,
     option: 'C',
     user: 'jimmy@email.com',
-    date: Date.now() - 1000*3600*24*365*2,
+    date: Date.now() - 1000 * 3600 * 24 * 365 * 2,
   },
   {
     text: 'Myra Bell',
@@ -491,7 +491,7 @@ const dataGlobal = [
     bool: true,
     option: 'C',
     user: 'myra@email.com',
-    date: Date.now() - 1000*3600*24*150,
+    date: Date.now() - 1000 * 3600 * 24 * 150,
   },
   {
     text: 'Jane Padilla',
@@ -499,7 +499,7 @@ const dataGlobal = [
     bool: false,
     option: 'B',
     user: 'jane@email.com',
-    date: Date.now() - 1000*3600*24*120,
+    date: Date.now() - 1000 * 3600 * 24 * 120,
   },
   {
     text: 'Isabelle Gardner',
@@ -508,7 +508,7 @@ const dataGlobal = [
     option: 'A',
     user: 'isabelle@email.com',
     tags: ['senior', 'chief', 'founder'],
-    date: Date.now() - 1000*3600*24*365*10,
+    date: Date.now() - 1000 * 3600 * 24 * 365 * 10,
   },
   {
     text: 'Sean Parsons',
@@ -516,7 +516,7 @@ const dataGlobal = [
     bool: true,
     option: 'A',
     user: 'sean@email.com',
-    date: Date.now() - 1000*3600*24*180,
+    date: Date.now() - 1000 * 3600 * 24 * 180,
   },
   {
     text: 'Alvin Castro',
@@ -524,7 +524,7 @@ const dataGlobal = [
     bool: false,
     option: 'B',
     user: 'alvin@email.com',
-    date: Date.now() - 1000*3600*24*15,
+    date: Date.now() - 1000 * 3600 * 24 * 15,
   },
   {
     text: 'Lawrence Holland',
@@ -533,7 +533,7 @@ const dataGlobal = [
     option: 'B',
     user: 'lawrence@email.com',
     tags: ['senior'],
-    date: Date.now() - 1000*3600*24*365*6,
+    date: Date.now() - 1000 * 3600 * 24 * 365 * 6,
   },
   {
     text: 'Brandon Robertson',
@@ -588,9 +588,9 @@ const GlobalTextFilterTable = () => {
       preset: 'options',
       context: {
         options: {
-          'founder': { label: 'Founder' },
-          'chief': { label: 'Chief' },
-          'senior': { label: 'Senior' },
+          founder: { label: 'Founder' },
+          chief: { label: 'Chief' },
+          senior: { label: 'Senior' },
         },
       } as TContextOptions,
       valueFormatter: (value) => value || [],

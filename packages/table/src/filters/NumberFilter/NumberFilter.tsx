@@ -105,7 +105,7 @@ export const NumberFilter: React.FC<TFilter> = ({ colDef, onChange }) => {
                   {NUMBER_OPTIONS.map((option) => (
                     <Menu.Item
                       selectionScheme="single"
-                      onChange={() => {
+                      onClick={() => {
                         onChange(
                           {
                             value,
