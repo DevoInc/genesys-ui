@@ -1,7 +1,11 @@
 import { describe, test, expect } from 'vitest';
 
 import { rangeBehavior } from './rangeBehavior';
-import type { IEndPointRangeTime, TCalendarDate, TCalendarDateRange } from '../../../declarations';
+import type {
+  IEndPointRangeTime,
+  TCalendarDate,
+  TCalendarDateRange,
+} from '../../../declarations';
 
 const mayTwentyEight = new Date('2025-05-28T14:30:00').getTime();
 const mayTwentyNine = new Date('2025-05-29T14:30:00').getTime();
@@ -26,43 +30,49 @@ describe('components', () => {
       const cases: [
         string,
         TCalendarDateRange,
-        TCalendarDate,
+        number,
         string,
         IEndPointRangeTime,
         IEndPointRangeTime,
-        TCalendarDateRange
+        TCalendarDateRange,
       ][] = [
-        ['range is empty',
+        [
+          'range is empty',
           [],
           mayTwentyEight,
           'UTC+02:00',
           startRange,
           endRange,
-          [mayTwentyEight]
+          [mayTwentyEight],
         ],
-        ['range contains older date',
+        [
+          'range contains older date',
           [mayTwentyNine],
           mayTwentyEight,
           'UTC+02:00',
           startRange,
           endRange,
-          [mayTwentyEightStart, mayTwentyNineEnd]
+          [mayTwentyEightStart, mayTwentyNineEnd],
         ],
-        ['range contains newer date',
+        [
+          'range contains newer date',
           [mayTwentyEight],
           mayTwentyNine,
           'UTC+02:00',
           startRange,
           endRange,
-          [mayTwentyEightStart, mayTwentyNineEnd]
-        ]
+          [mayTwentyEightStart, mayTwentyNineEnd],
+        ],
       ];
 
-      test.each(cases)('%s', (
-        _title, range, dt, tz,
-        startRange, endRange, expected) => {
-        expect(rangeBehavior({range, dt, tz, startRange, endRange})).toEqual(expected);
-      });
+      test.each(cases)(
+        '%s',
+        (_title, range, ts, tz, startRange, endRange, expected) => {
+          expect(
+            rangeBehavior({ range, ts, tz, startRange, endRange }),
+          ).toEqual(expected);
+        },
+      );
     });
   });
 });

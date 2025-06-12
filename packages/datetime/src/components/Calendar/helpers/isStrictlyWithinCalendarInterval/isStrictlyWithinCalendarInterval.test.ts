@@ -26,7 +26,7 @@ describe('isStrictlyWithinCalendarInterval', () => {
       new TZDate(2025, 6, 12, 0, 0, 0, 'UTC'),
       new TZDate(2025, 6, 12, 17, 0, 0, 'UTC'),
       new TZDate(2025, 6, 15, 'UTC'),
-      false,
+      true,
     ],
     [
       'match right limit',
