@@ -41,6 +41,7 @@ export const ParseDate: Story = {
       <Calendar
         {...props}
         monthDate={now}
+        selectionLength={2}
         value={range}
         onClick={handleNewDate}
         parseDate={(dt: Date | number) => {
@@ -69,6 +70,7 @@ export const MinMaxDate: Story = {
         {...props}
         monthDate={now}
         value={range}
+        selectionLength={2}
         onClick={handleNewDate}
         minDate={set(now, { date: 6 })}
         maxDate={set(now, { date: 26 })}
@@ -112,7 +114,14 @@ export const RangeHook: Story = {
   tags: ['isHidden'],
   render: () => {
     const { range, handleNewDate } = useCalendarRange(rangeValue);
-    return <Calendar monthDate={now} value={range} onClick={handleNewDate} />;
+    return (
+      <Calendar
+        monthDate={now}
+        value={range}
+        selectionLength={2}
+        onClick={handleNewDate}
+      />
+    );
   },
 };
 

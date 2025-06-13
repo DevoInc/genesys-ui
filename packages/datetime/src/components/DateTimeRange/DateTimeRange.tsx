@@ -148,6 +148,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
                 );
               }}
               value={canCalendarRender ? (value as TCalendarDateRange) : []}
+              selectionLength={2}
               parseDate={parseDate}
               weekDays={weekDays}
               hoverDay={hoverDay}
@@ -216,6 +217,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
                 );
               }}
               value={canCalendarRender ? (value as TCalendarDateRange) : []}
+              selectionLength={2}
               parseDate={parseDate}
               weekDays={weekDays}
               hoverDay={hoverDay}

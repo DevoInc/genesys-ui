@@ -75,6 +75,9 @@ export interface CalendarProps
   /** Internationalization object */
   i18n?: TCalendarI18n;
   disabled?: boolean;
+  /** The number of element of one selection, 1 for a single selection, 2 for a
+   * range selection */
+  selectionLength?: number;
 }
 
 export const InternalCalendar: React.FC<CalendarProps> = ({
@@ -105,6 +108,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
   maxDate,
   i18n: userI18n = defaultCalendarI18n,
   disabled = false,
+  selectionLength = 1,
   ...dataProps
 }) => {
   const i18n = useMergeI18n(userI18n, defaultCalendarI18n) as TCalendarI18n;
@@ -211,6 +215,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
       : result.errors;
 
     const isInsideHover =
+      selectionLength > 1 &&
       rangeDates.length === 1 &&
       !isSameDay(hoverDate, rangeDates[0], { in: tzFn(tz) }) &&
       isWithinCalendarInterval(
@@ -220,11 +225,13 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
       );
 
     const isRightHover =
+      selectionLength > 1 &&
       hoverDate &&
       isAfter(hoverDate, rangeDates[0]) &&
       isSameDay(day, hoverDate);
 
     const isLeftHover =
+      selectionLength > 1 &&
       hoverDate &&
       isBefore(hoverDate, rangeDates[0]) &&
       isSameDay(day, hoverDate);
