@@ -243,8 +243,8 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
           isLastDayOfMonth ? 'month-last-day' : '',
           isInsideSelection ? 'range-selected' : '',
           isInsideHover ? 'range-hovered' : '',
-          isRightHover ? 'rightmost' : '',
-          isLeftHover ? 'leftmost' : '',
+          isRightHover ? 'range-hovered-right-edge' : '',
+          isLeftHover ? 'range-hovered-left-edge' : '',
         ].join(' ')}
         onClick={onClick}
         onMouseEnter={onMouseEnterCallback}

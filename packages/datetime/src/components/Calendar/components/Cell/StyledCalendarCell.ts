@@ -206,10 +206,17 @@ export const StyledCalendarCell = styled.div`
     }
   }
 
-  &.rightmost.range-hovered {
+  &.range-hovered-right-edge.range-hovered {
     &::before {
       width: 50%;
       left: 0;
+    }
+  }
+
+  &.range-hovered-left-edge.range-hovered {
+    &::before {
+      width: 50%;
+      right: 0;
     }
   }
 
