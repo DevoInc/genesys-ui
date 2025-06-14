@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 import { act, renderHook } from '@testing-library/react';
 
-import { useCalendarRange } from './useCalendarRange';
+import { useCalendarRange } from '../useCalendarRange/useCalendarRange';
 import { set } from 'date-fns';
 
 describe('Calendar', () => {

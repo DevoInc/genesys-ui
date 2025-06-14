@@ -1,7 +1,7 @@
 import { set, isAfter } from 'date-fns';
 import { tz as tzFn } from '@date-fns/tz';
 
-import type { IEndPointRangeTime } from '../../../declarations';
+import type { IEndPointRangeTime } from '../../../../declarations';
 
 export const rangeBehavior = ({
   range,

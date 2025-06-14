@@ -1,14 +1,6 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import {
-  lastDayOfMonth as lastDayOfMonthFNS,
-  isSameDay,
-  getTime,
-  set,
-  getDate,
-  isAfter,
-  isBefore,
-} from 'date-fns';
+import { startOfMonth, endOfMonth } from 'date-fns';
 import { TZDate, tz as tzFn } from '@date-fns/tz';
 
 import type {
@@ -17,12 +9,9 @@ import type {
 } from '../../declarations';
 import { TCalendarI18n } from './declarations';
 import { useMergeI18n } from '../../hooks';
-import { toTimestamp } from '../../helpers';
 import { rotateWeekDays, WEEK_DAYS } from '../../helpers';
-import { defaultErrorsRepr } from './errors';
 import { tautologyParseDate } from '../../parsers';
 import { defaultCalendarI18n } from './i18n';
-import { getMonthDays, getPrevDays } from './month';
 import {
   type IGlobalAriaAttrs,
   type IGlobalAttrs,
@@ -34,29 +23,27 @@ import {
 } from '@devoinc/genesys-ui';
 import { CalendarWeekDay, Cell, type CellProps } from './components';
 import {
-  isStrictlyWithinCalendarInterval,
-  isWithinCalendarInterval,
-  orderCalendarInterval,
   defaultDateRepr,
+  getCellData as getCellDataFn,
+  defaultErrorsRepr,
+  getCalendarDay,
 } from './helpers';
+import { useCalendarRows } from './hooks';
+import { clearHover, setRangeHovered, setRangeHoveredEdge } from './dom';
+import { CalendarContext, CalendarContextProvider } from './contexts';
 
 export interface CalendarProps
-  extends Pick<CellProps, 'onClick' | 'onMouseEnter' | 'onMouseLeave'>,
+  extends Pick<CellProps, 'onClick'>,
     //native
     IGlobalAttrs,
     IGlobalAriaAttrs,
     IStyledOverloadCss,
     IDataAttrs,
     IStyledPolymorphic {
+  onMouseEnter?: (ts: number) => void;
+  onMouseLeave?: (ts: number) => void;
   /** The date for the month. One of `number` or `Date`. */
   monthDate?: Date | number;
-  /** Disable hover effect. It could be combined with hoverDay, onMouseEnter
-   * and onMouseLeave properties for custom control. */
-  disableHoverDay?: boolean;
-  /** Set custom day to simulate the hover effect. It could be combined with
-   * hoverDay, onMouseEnter and onMouseLeave properties for custom control.
-   * One of `number` or `Date`. */
-  hoverDay?: Date | number;
   /** Selected range. */
   value?: TCalendarDateRange;
   /** Days of the week to show in the calendar. The first day of the week is Monday. */
@@ -89,8 +76,6 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
   parseDate = tautologyParseDate,
   weekDays = WEEK_DAYS,
   weekStart = 0,
-  disableHoverDay = false,
-  hoverDay: mouseHoverDay,
   style,
   id,
   tooltip,
@@ -113,176 +98,48 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
 }) => {
   const i18n = useMergeI18n(userI18n, defaultCalendarI18n) as TCalendarI18n;
   const theme = useTheme();
-  const customHoverDay = React.useMemo(
-    () => toTimestamp(mouseHoverDay),
-    [mouseHoverDay],
-  );
-  const lastDayOfMonth = React.useMemo(
+
+  const { cellRefs } = React.useContext(CalendarContext);
+
+  const interval = React.useMemo(() => {
+    return {
+      start: startOfMonth(monthDate, { in: tzFn(tz) }),
+      end: endOfMonth(monthDate, { in: tzFn(tz) }),
+    };
+  }, [monthDate, tz]);
+
+  const getCellData = React.useMemo(
     () =>
-      lastDayOfMonthFNS(monthDate, {
-        in: tzFn(tz),
+      getCellDataFn({
+        interval,
+        tz,
+        dateRepr,
+        parseDate,
+        minDate,
+        maxDate,
+        i18n,
       }),
-    ['monthDate'],
+    [interval, tz, dateRepr, parseDate, minDate, maxDate, i18n],
   );
+
+  const rows = useCalendarRows({
+    interval,
+    tz,
+    weekStart,
+    getCellData,
+  });
+
   const rotatedWeekDays = React.useMemo(
     () => rotateWeekDays(weekDays, weekStart),
     [weekDays, weekStart],
   );
-  const prevDays = React.useMemo(
-    () => Array(getPrevDays(monthDate, weekStart, tz)).fill(null),
-    [monthDate, weekStart, tz],
-  );
-  const monthDays = React.useMemo(
-    () => getMonthDays(monthDate, tz),
-    [monthDate, tz],
-  );
 
-  const [hoverDay, setHoverDay] = React.useState<number>(null);
-
-  const onMouseEnterCallback = React.useCallback(
-    (ts: number) => {
-      if (!disableHoverDay) {
-        setHoverDay(ts);
-      }
-      onMouseEnter?.(ts);
-    },
-    [disableHoverDay, onMouseEnter],
-  );
-
-  const onMouseLeaveCallback = React.useCallback(() => {
-    if (!disableHoverDay) {
-      setHoverDay(null);
-    }
-    onMouseLeave?.();
-  }, [disableHoverDay, onMouseLeave]);
-
-  React.useEffect(() => {
-    setHoverDay(customHoverDay);
-  }, [customHoverDay]);
-
-  const prevDaysCmpArr = prevDays.map((_, idx) => (
-    <div key={`prev${idx}`} role="gridcell" />
-  ));
-
-  const rangeDates = React.useMemo(
-    () => value.map((x) => (typeof x === 'number' ? new TZDate(x, tz) : x)),
-    [value],
-  );
-
-  const hoverDate = React.useMemo(
-    () => (typeof hoverDay === 'number' ? new TZDate(hoverDay, tz) : hoverDay),
-    [hoverDay],
-  );
-
-  const monthDaysCmpArr = monthDays.map((day) => {
-    const isSelected = rangeDates.some((x) =>
-      isSameDay(day, x, { in: tzFn(tz) }),
-    );
-    const isFrom =
-      rangeDates.length > 0
-        ? isSameDay(day, rangeDates[0], { in: tzFn(tz) })
-        : false;
-    const isTo =
-      rangeDates.length > 1
-        ? isSameDay(day, rangeDates[1], { in: tzFn(tz) })
-        : false;
-    const isLastDayOfMonth = isSameDay(day, lastDayOfMonth, { in: tzFn(tz) });
-    const isInsideSelection = isStrictlyWithinCalendarInterval(
-      day,
-      { start: rangeDates[0], end: rangeDates[1] },
-      tz,
-    );
-    const ts = getTime(
-      set(
-        day,
-        { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 },
-        { in: tzFn(tz) },
+  const rangeDays = React.useMemo(
+    () =>
+      value.map((x) =>
+        getCalendarDay(typeof x === 'number' ? new TZDate(x, tz) : x, tz),
       ),
-    );
-    const monthDay = getDate(day);
-    const label = dateRepr(ts);
-
-    const result = parseDate(day);
-    const isInsideRange = isWithinCalendarInterval(
-      day,
-      { start: minDate, end: maxDate },
-      tz,
-    );
-    const isValid = isInsideRange && result.isValid;
-    const isDisabled = !isValid;
-    const errors = !isInsideRange
-      ? [i18n.outOfRange].concat(result.errors)
-      : result.errors;
-
-    const isInsideHover =
-      selectionLength > 1 &&
-      rangeDates.length === 1 &&
-      !isSameDay(hoverDate, rangeDates[0], { in: tzFn(tz) }) &&
-      isWithinCalendarInterval(
-        day,
-        orderCalendarInterval(rangeDates[0], hoverDate),
-        tz,
-      );
-
-    const isRightHover =
-      selectionLength > 1 &&
-      hoverDate &&
-      isAfter(hoverDate, rangeDates[0]) &&
-      isSameDay(day, hoverDate);
-
-    const isLeftHover =
-      selectionLength > 1 &&
-      hoverDate &&
-      isBefore(hoverDate, rangeDates[0]) &&
-      isSameDay(day, hoverDate);
-
-    return (
-      <Cell
-        selected={isSelected}
-        key={`day${ts}`}
-        className={[
-          'dayName',
-          isDisabled ? 'disabled' : '',
-          isSelected ? 'selected' : '',
-          isFrom ? 'range-start' : '',
-          isTo ? 'range-end' : '',
-          monthDay === 1 ? 'month-first-day' : '',
-          isLastDayOfMonth ? 'month-last-day' : '',
-          isInsideSelection ? 'range-selected' : '',
-          isInsideHover ? 'range-hovered' : '',
-          isRightHover ? 'range-hovered-right-edge' : '',
-          isLeftHover ? 'range-hovered-left-edge' : '',
-        ].join(' ')}
-        onClick={onClick}
-        onMouseEnter={onMouseEnterCallback}
-        onMouseLeave={onMouseLeaveCallback}
-        ts={ts}
-        value={String(monthDay)}
-        disabled={disabled || isDisabled}
-        label={label}
-        tooltip={isDisabled ? errorsRepr(errors) : label}
-      />
-    );
-  });
-
-  const evalTotalLastDays = 42 - prevDaysCmpArr.concat(monthDaysCmpArr).length;
-  const lastDaysLength =
-    evalTotalLastDays < 7 ? evalTotalLastDays : evalTotalLastDays - 7;
-
-  const lastDaysCmpArr = prevDays
-    .filter((_, idx) => idx < lastDaysLength)
-    .map((_, idx) => <div key={`last${idx}`} role="gridcell" />);
-
-  const groupDaysByRow = (daysArray: React.JSX.Element[]) => {
-    let grouped = [];
-    for (let i = 0; i < daysArray.length; i += 7) {
-      grouped.push(daysArray.slice(i, i + 7));
-    }
-    return grouped;
-  };
-
-  const groupedDaysCmpByRow = groupDaysByRow(
-    prevDaysCmpArr.concat(monthDaysCmpArr).concat(lastDaysCmpArr),
+    [value],
   );
 
   return (
@@ -313,7 +170,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
         </Grid>
       </Box>
       <Box role="rowgroup">
-        {groupedDaysCmpByRow.map((row, idx) => (
+        {rows.map((row, idx) => (
           <Grid
             key={idx}
             role="row"
@@ -322,8 +179,104 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
             justifyContent="center"
             rowGap="cmp-xxs"
             minWidth={theme.cmp.calendar.size.minWidth}
+            onMouseLeave={() => {
+              if (selectionLength > 1 && rangeDays.length === 1) {
+                cellRefs.current.forEach(([cell]) => {
+                  if (cell) {
+                    clearHover(cell);
+                  }
+                });
+              }
+            }}
           >
-            {row.map((day: React.JSX.Element) => day)}
+            {row.map((day, idx) => {
+              if (day) {
+                const {
+                  ts,
+                  isDisabled,
+                  calendarDay,
+                  label,
+                  isLastDayOfMonth,
+                  errors,
+                } = day;
+
+                const isStart = rangeDays?.[0]?.value === calendarDay?.value;
+                const isEnd = rangeDays?.[1]?.value === calendarDay?.value;
+                const isInsideSelection =
+                  calendarDay?.value >= rangeDays?.[0]?.value &&
+                  calendarDay?.value <= rangeDays?.[1]?.value;
+
+                return (
+                  <Cell
+                    isSelectedStart={isStart}
+                    isSelectedEnd={isEnd}
+                    isInsideSelection={isInsideSelection}
+                    ref={(el) => cellRefs.current.push([el, calendarDay])}
+                    key={`day${ts}`}
+                    className={[
+                      'dayName',
+                      isDisabled ? 'disabled' : '',
+                      calendarDay.day === 1 ? 'month-first-day' : '',
+                      isLastDayOfMonth ? 'month-last-day' : '',
+                    ].join(' ')}
+                    onClick={onClick}
+                    onMouseEnter={() => {
+                      // If it is the hover moment
+                      if (selectionLength > 1 && rangeDays.length === 1) {
+                        const side =
+                          calendarDay.value > rangeDays[0].value
+                            ? 'right'
+                            : 'left';
+                        const range =
+                          side === 'right'
+                            ? [rangeDays[0], calendarDay]
+                            : [calendarDay, rangeDays[0]];
+
+                        cellRefs.current.forEach(([cell, currDay]) => {
+                          if (cell) {
+                            setRangeHovered([cell, currDay], range);
+                            setRangeHoveredEdge(
+                              [cell, currDay],
+                              calendarDay,
+                              side,
+                            );
+                          }
+                        });
+                      }
+                      onMouseEnter?.(ts);
+                    }}
+                    onMouseLeave={() => {
+                      onMouseLeave?.(ts);
+                    }}
+                    ts={ts}
+                    value={String(calendarDay.day)}
+                    disabled={disabled || isDisabled}
+                    label={label}
+                    tooltip={isDisabled ? errorsRepr(errors) : label}
+                  />
+                );
+              }
+
+              return (
+                <div
+                  key={`outter${idx}`}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                  }}
+                  role="gridcell"
+                  onMouseEnter={() => {
+                    if (selectionLength > 1 && rangeDays.length === 1) {
+                      cellRefs.current.forEach(([cell]) => {
+                        if (cell) {
+                          clearHover(cell);
+                        }
+                      });
+                    }
+                  }}
+                />
+              );
+            })}
           </Grid>
         ))}
       </Box>
@@ -331,7 +284,13 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
   );
 };
 
-export const Calendar = InternalCalendar as typeof InternalCalendar & {
+const CalendarWithContext: React.FC<CalendarProps> = (props) => (
+  <CalendarContextProvider>
+    <InternalCalendar {...props} />
+  </CalendarContextProvider>
+);
+
+export const Calendar = CalendarWithContext as typeof InternalCalendar & {
   Cell: typeof Cell;
 };
 

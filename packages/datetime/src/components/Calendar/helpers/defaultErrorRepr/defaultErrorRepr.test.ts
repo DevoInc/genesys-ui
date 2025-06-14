@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 
-import { defaultErrorsRepr } from './errors';
+import { defaultErrorsRepr } from './defaultErrorRepr';
 
 describe('components', () => {
   describe('Calendar', () => {

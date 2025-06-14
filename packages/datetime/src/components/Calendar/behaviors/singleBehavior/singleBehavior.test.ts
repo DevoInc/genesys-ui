@@ -2,21 +2,14 @@ import { describe, test, expect } from 'vitest';
 
 import { singleBehavior } from './singleBehavior';
 
-const HOUR = 60 * 60 * 1000;
 const now = new Date().getTime();
 
 describe('forwardBehavior', () => {
   const cases: [string, (number | Date)[], number | Date, (number | Date)[]][] =
     [
-      ['point before complete range', [now, now], now - HOUR, [now - HOUR]],
-      ['point before range with single point', [now], now - HOUR, [now - HOUR]],
-      [
-        'point after range with single point',
-        [now],
-        now + HOUR,
-        [now, now + HOUR],
-      ],
-      ['point after complete range', [now, now], now + HOUR, [now, now + HOUR]],
+      ['range with one value', [now], now + 1, [now + 1]],
+      ['range with two values', [now, now], now + 1, [now + 1]],
+      ['empty selection', [], now, [now]],
     ];
 
   test.each(cases)('%s', (_title, range, dt, expected) => {

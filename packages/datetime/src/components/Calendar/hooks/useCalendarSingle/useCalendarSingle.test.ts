@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 import { act, renderHook } from '@testing-library/react';
 
-import { useCalendarSingle } from './useCalendarSingle';
+import { useCalendarSingle } from '../useCalendarSingle/useCalendarSingle';
 
 describe('useCalendarSingleDay', () => {
   test('with day', () => {

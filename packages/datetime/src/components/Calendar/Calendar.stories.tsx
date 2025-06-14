@@ -19,9 +19,27 @@ const singleValue = [set(now, { date: 10 })];
 const rangeValue = [set(now, { date: 10 }), set(now, { date: 20 })];
 
 export const Playground: Story = {
+  tags: ['isHidden'],
   args: {
     monthDate: now,
     value: rangeValue,
+    selectionLength: 2,
+    parseDate: (dt: Date | number) => {
+      const weekend = isWeekend(dt);
+      const even = getDate(dt) % 2 === 0;
+      return {
+        isValid: !weekend && !even,
+        value: dt,
+        errors: [
+          ...(weekend ? ['Is weekend'] : []),
+          ...(even ? ['Is even'] : []),
+        ],
+      };
+    },
+  },
+  render: (props) => {
+    const { range, handleNewDate } = useCalendarRange(props.value);
+    return <Calendar {...props} value={range} onClick={handleNewDate} />;
   },
 };
 

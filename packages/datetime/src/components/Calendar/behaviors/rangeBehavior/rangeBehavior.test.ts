@@ -1,10 +1,10 @@
 import { describe, test, expect } from 'vitest';
 
-import { rangeBehavior } from './rangeBehavior';
+import { rangeBehavior } from '../rangeBehavior/rangeBehavior';
 import type {
   IEndPointRangeTime,
   TCalendarDateRange,
-} from '../../../declarations';
+} from '../../../../declarations';
 
 const mayTwentyEight = new Date('2025-05-28T14:30:00').getTime();
 const mayTwentyNine = new Date('2025-05-29T14:30:00').getTime();

@@ -1,3 +1,3 @@
-export * from './Calendar';
-export * from './hooks';
+export { Calendar, type CalendarProps } from './Calendar';
+export { useCalendarRange, useCalendarSingle } from './hooks';
 export * from './behaviors';

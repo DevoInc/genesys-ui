@@ -9,9 +9,9 @@ export interface CellProps {
   /** Event fired when selected days change */
   onClick?: (ts: number) => void;
   /** Event fired when mouse enter a cell area */
-  onMouseEnter?: (ts: number) => void;
+  onMouseEnter?: React.DOMAttributes<HTMLDivElement>['onMouseEnter'];
   /** Event fired when mouse leave a cell area */
-  onMouseLeave?: () => void;
+  onMouseLeave?: React.DOMAttributes<HTMLDivElement>['onMouseLeave'];
   /** Value to show into option */
   value?: number | string;
   /** Timestamp value */
@@ -19,52 +19,62 @@ export interface CellProps {
   tooltip?: string;
   disabled?: boolean;
   label: string;
-  selected?: boolean;
+  isSelectedStart?: boolean;
+  isSelectedEnd?: boolean;
+  isInsideSelection?: boolean;
 }
 
-export const Cell: React.FC<CellProps> = ({
-  className,
-  onClick,
-  onMouseEnter,
-  onMouseLeave,
-  value,
-  ts,
-  tooltip,
-  disabled = false,
-  label,
-  selected = false,
-}) => (
-  <StyledCalendarCell
-    onClick={
-      !disabled && onClick && value
-        ? () => {
-            onClick(ts);
-          }
-        : null
-    }
-    onMouseEnter={
-      !disabled && onMouseEnter && value
-        ? () => {
-            onMouseEnter(ts);
-          }
-        : null
-    }
-    onMouseLeave={
-      !disabled && onMouseLeave && value
-        ? () => {
-            onMouseLeave();
-          }
-        : null
-    }
-    aria-label={label}
-    aria-selected={selected ? true : null}
-    aria-disabled={disabled}
-    className={`day ${className}`}
-    data-cell={value}
-    data-ts={ts}
-    role="gridcell"
-    title={tooltip}
-  >
-    <span>{value}</span>
-  </StyledCalendarCell>
+export const Cell = React.forwardRef<HTMLDivElement, CellProps>(
+  (
+    {
+      className,
+      onClick,
+      onMouseEnter = () => {},
+      onMouseLeave = () => {},
+      value,
+      ts,
+      tooltip,
+      disabled = false,
+      label,
+      isSelectedStart = false,
+      isSelectedEnd = false,
+      isInsideSelection = false,
+    },
+    ref,
+  ) => {
+    const onMouseEnterCallback =
+      disabled || !value || !onMouseEnter ? undefined : onMouseEnter;
+    const onMouseLeaveCallback =
+      disabled || !value || !onMouseLeave ? undefined : onMouseEnter;
+    return (
+      <StyledCalendarCell
+        ref={ref}
+        onClick={
+          !disabled && onClick && value
+            ? () => {
+                onClick(ts);
+              }
+            : null
+        }
+        onMouseEnter={onMouseEnterCallback}
+        onMouseLeave={onMouseLeaveCallback}
+        aria-label={label}
+        aria-selected={isSelectedStart || isSelectedEnd ? true : null}
+        aria-disabled={disabled}
+        className={[
+          'day',
+          className,
+          isSelectedStart ? 'selected range-start' : '',
+          isSelectedEnd ? 'selected range-end' : '',
+          isInsideSelection ? 'range-selected' : '',
+        ].join(' ')}
+        data-cell={value}
+        data-ts={ts}
+        role="gridcell"
+        title={tooltip}
+      >
+        <span>{value}</span>
+      </StyledCalendarCell>
+    );
+  },
 );

@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import type { IHookCommonReturnParams } from './declarations';
-import { rangeBehavior } from '../behaviors';
+import type { IHookCommonReturnParams } from '../declarations';
+import { rangeBehavior } from '../../behaviors';
 import type {
   IEndPointRangeTime,
   TCalendarDate,
   TCalendarDateRange,
-} from '../../../declarations';
+} from '../../../../declarations';
 
 export const useCalendarRange = (
   initialRange: TCalendarDateRange = [],
