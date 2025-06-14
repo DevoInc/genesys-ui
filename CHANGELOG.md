@@ -1,5 +1,21 @@
 # Changelog
 
+## [19.0.0](https://github.com/DevoInc/genesys-ui/compare/v18.9.0...v19.0.0) (2025-06-14)
+
+### ⚠ BREAKING CHANGES
+
+* In MenuItem to manage the selection, we use now 'onClick' event instead of 'onChange' one, because we don't render a hidden input as a child anymore due to accessibility reasons. Now the selections is totally controlled and it's based in 'onClick' event, 'selectionScheme' prop to define if it's single or multiple selection, and 'state' prop which set 'aria-checked' to true if its value is 'selected'.
+
+### Features
+
+* **datetime:** added TZ to DateTimeRangeFloatingPicker ([c025ce0](https://github.com/DevoInc/genesys-ui/commit/c025ce089343dc76ff26bd195ca6a47ae6d90614))
+* **datetime:** removed inequalities in favor of date-fns isAfter & isBefore ([68105b1](https://github.com/DevoInc/genesys-ui/commit/68105b152f631440c556cc963c5808a967de2b8e))
+* Improvements for MenuItem and AppMenu. ([17bf39b](https://github.com/DevoInc/genesys-ui/commit/17bf39b3551693aeef84b82b65c959891b6e75d9))
+
+### Bug Fixes
+
+* Removed the usage of 'onChange' prop in MenuItem components. ([bd7a4c5](https://github.com/DevoInc/genesys-ui/commit/bd7a4c55b016d27429134666cf809d239eee9dab))
+
 ## [18.9.0](https://github.com/DevoInc/genesys-ui/compare/v18.8.0...v18.9.0) (2025-06-09)
 
 ### Features
