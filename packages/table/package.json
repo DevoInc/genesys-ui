@@ -29,7 +29,7 @@
   "author": "Devo, Inc. Quvis Team (https://github.com/orgs/DevoInc/teams/quvis)",
   "license": "MIT",
   "peerDependencies": {
-    "@devoinc/genesys-icons": "4.x || 5.x || 6.x || 7.x",
+    "@devoinc/genesys-icons": "4.x || 5.x || 6.x || 7.x || 8.x",
     "@devoinc/genesys-ui": "^18.9.0",
     "@devoinc/genesys-ui-datetime": "^18.9.0",
     "@tanstack/react-virtual": "3.x",
