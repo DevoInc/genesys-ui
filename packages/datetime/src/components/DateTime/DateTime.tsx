@@ -20,13 +20,15 @@ import {
 } from '@devoinc/genesys-ui';
 
 import type { ITime } from '../../declarations';
-import { Calendar, type CalendarProps } from '../Calendar';
+import { type CalendarProps } from '../Calendar';
 import { Time } from '../Time';
 import { MonthFloatingPicker } from '../MonthFloatingPicker';
 import { tautologyParseDate } from '../../parsers';
 import { TDateTimeI18n } from './declarations';
 import { defaultDateTimeI18n } from './i18n';
 import { useMergeI18n } from '../../hooks';
+import { CalendarContext, CalendarContextProvider } from '../Calendar/contexts';
+import { InternalCalendar } from '../Calendar/Calendar';
 
 export interface DateTimeProps
   extends Pick<
@@ -47,7 +49,7 @@ export interface DateTimeProps
   tz?: string;
 }
 
-export const DateTime: React.FC<DateTimeProps> = ({
+const InternalDateTime: React.FC<DateTimeProps> = ({
   i18n: userI18n = defaultDateTimeI18n,
   tz = Intl.DateTimeFormat().resolvedOptions().timeZone,
   as,
@@ -66,6 +68,7 @@ export const DateTime: React.FC<DateTimeProps> = ({
 }) => {
   const i18n = useMergeI18n(userI18n, defaultDateTimeI18n) as TDateTimeI18n;
   const theme = useTheme();
+  const { cellRefs } = React.useContext(CalendarContext);
   return (
     <VFlex
       {...dataProps}
@@ -80,12 +83,15 @@ export const DateTime: React.FC<DateTimeProps> = ({
         yearSelectorInline
         hasNextMonthButton
         hasPrevMonthButton
-        onChange={onChangeMonthDate}
+        onChange={(newMonthDate) => {
+          cellRefs.current.clear();
+          onChangeMonthDate(newMonthDate);
+        }}
         size="sm"
         value={monthDate}
         closeAfterSelect={false}
       />
-      <Calendar
+      <InternalCalendar
         monthDate={monthDate}
         onClick={(ts) => {
           onChange(
@@ -132,3 +138,9 @@ export const DateTime: React.FC<DateTimeProps> = ({
     </VFlex>
   );
 };
+
+export const DateTime: React.FC<DateTimeProps> = (props) => (
+  <CalendarContextProvider>
+    <InternalDateTime {...props} />
+  </CalendarContextProvider>
+);

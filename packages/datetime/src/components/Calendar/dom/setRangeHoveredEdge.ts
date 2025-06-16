@@ -1,11 +1,12 @@
 import { ICalendarDay } from '../declarations';
 
 export const setRangeHoveredEdge = (
-  [cell, day]: [HTMLDivElement, ICalendarDay],
+  cell: HTMLDivElement,
+  index: number,
   cursorDay: ICalendarDay,
   side: 'left' | 'right',
 ) => {
-  if (cursorDay.value === day.value) {
+  if (cursorDay.value === index) {
     cell.classList.add(
       side === 'right' ? 'range-hovered-right-edge' : 'range-hovered-left-edge',
     );

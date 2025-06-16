@@ -41,7 +41,7 @@ import type {
 import { MonthFloatingPicker } from '../MonthFloatingPicker';
 import { isCalendarRange } from '../Calendar/helpers';
 import { InternalCalendar } from '../Calendar/Calendar';
-import { CalendarContextProvider } from '../Calendar/contexts';
+import { CalendarContext, CalendarContextProvider } from '../Calendar/contexts';
 
 export interface DateTimeRangeProps
   extends Pick<CalendarProps, 'monthDate' | 'parseDate' | 'weekDays'>,
@@ -74,7 +74,7 @@ export interface DateTimeRangeProps
   endRangeDefault?: IEndPointRangeTime;
 }
 
-export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
+const InternalDateTimeRange: React.FC<DateTimeRangeProps> = ({
   i18n: userI18n = {},
   tz = Intl.DateTimeFormat().resolvedOptions().timeZone,
   as,
@@ -100,6 +100,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
     userI18n,
     defaultDateTimeRangeI18n,
   ) as TDateTimeRangeI18n;
+  const { cellRefs } = React.useContext(CalendarContext);
 
   const canCalendarRender = React.useMemo(
     () => isCalendarRange(value),
@@ -107,154 +108,160 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   );
 
   return (
-    <CalendarContextProvider>
-      <HFlex as={as} alignItems={'flex-start'} style={style} {...dataProps}>
-        {(mode === 'calendar' || mode === 'both') && (
-          <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
-            <MonthFloatingPicker
-              i18n={i18n}
-              appendTo={null}
-              yearSelectorInline
-              hasNextMonthButton={false}
-              placement={'bottom-end'}
-              id={`${id}-month-from`}
-              onChange={(newMonthDate) => {
-                onChangeMonthDate(newMonthDate);
+    <HFlex as={as} alignItems={'flex-start'} style={style} {...dataProps}>
+      {(mode === 'calendar' || mode === 'both') && (
+        <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
+          <MonthFloatingPicker
+            i18n={i18n}
+            appendTo={null}
+            yearSelectorInline
+            hasNextMonthButton={false}
+            placement={'bottom-end'}
+            id={`${id}-month-from`}
+            onChange={(newMonthDate) => {
+              cellRefs.current.clear();
+              onChangeMonthDate(newMonthDate);
+            }}
+            size="sm"
+            value={monthDate}
+            closeAfterSelect
+          />
+          <Box height={'165px'}>
+            <InternalCalendar
+              monthDate={monthDate}
+              onClick={(ts) => {
+                onChange(
+                  rangeBehavior({
+                    range: value as (number | Date)[],
+                    ts,
+                    tz,
+                    startRange: startRangeDefault,
+                    endRange: endRangeDefault,
+                  }),
+                  DATE_TIME_RANGE_SOURCE_CAL_LEFT,
+                );
               }}
-              size="sm"
-              value={monthDate}
-              closeAfterSelect
+              value={canCalendarRender ? (value as TCalendarDateRange) : []}
+              selectionLength={2}
+              parseDate={parseDate}
+              weekDays={weekDays}
+              tz={tz}
             />
-            <Box height={'165px'}>
-              <InternalCalendar
-                monthDate={monthDate}
-                onClick={(ts) => {
+          </Box>
+          {hasTime && (
+            <Flex justifyContent={'flex-end'}>
+              <Time
+                aria-label={i18n.fromTime}
+                hasMillis={hasMillis}
+                hasSeconds={hasSeconds}
+                id={`${id}-time-from`}
+                onChange={(dt) => {
                   onChange(
-                    rangeBehavior({
-                      range: value as (number | Date)[],
-                      ts,
-                      tz,
-                      startRange: startRangeDefault,
-                      endRange: endRangeDefault,
-                    }),
-                    DATE_TIME_RANGE_SOURCE_CAL_LEFT,
+                    [
+                      set(dt, {
+                        year: getYear(value[0]),
+                        month: getMonth(value[0]),
+                        date: getDate(value[0]),
+                      }),
+                      value[1],
+                    ],
+                    DATE_TIME_RANGE_SOURCE_TIME_LEFT,
                   );
                 }}
-                value={canCalendarRender ? (value as TCalendarDateRange) : []}
-                selectionLength={2}
-                parseDate={parseDate}
-                weekDays={weekDays}
-                tz={tz}
+                size="sm"
+                value={canCalendarRender && value.length >= 2 ? value[0] : ''}
+                disabled={!canCalendarRender || value.length < 2}
               />
-            </Box>
-            {hasTime && (
-              <Flex justifyContent={'flex-end'}>
-                <Time
-                  aria-label={i18n.fromTime}
-                  hasMillis={hasMillis}
-                  hasSeconds={hasSeconds}
-                  id={`${id}-time-from`}
-                  onChange={(dt) => {
-                    onChange(
-                      [
-                        set(dt, {
-                          year: getYear(value[0]),
-                          month: getMonth(value[0]),
-                          date: getDate(value[0]),
-                        }),
-                        value[1],
-                      ],
-                      DATE_TIME_RANGE_SOURCE_TIME_LEFT,
-                    );
-                  }}
-                  size="sm"
-                  value={canCalendarRender && value.length >= 2 ? value[0] : ''}
-                  disabled={!canCalendarRender || value.length < 2}
-                />
-              </Flex>
-            )}
-          </VFlex>
-        )}
-        {(mode === 'calendar' || mode === 'both') && (
-          <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
-            <MonthFloatingPicker
-              i18n={i18n}
-              appendTo={null}
-              yearSelectorInline
-              hasPrevMonthButton={false}
-              id={`${id}-month-to`}
-              onChange={(newMonthDate) => {
-                onChangeMonthDate(subMonths(newMonthDate, 1));
+            </Flex>
+          )}
+        </VFlex>
+      )}
+      {(mode === 'calendar' || mode === 'both') && (
+        <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
+          <MonthFloatingPicker
+            i18n={i18n}
+            appendTo={null}
+            yearSelectorInline
+            hasPrevMonthButton={false}
+            id={`${id}-month-to`}
+            onChange={(newMonthDate) => {
+              cellRefs.current.clear();
+              onChangeMonthDate(subMonths(newMonthDate, 1));
+            }}
+            size="sm"
+            value={addMonths(monthDate, 1)}
+            closeAfterSelect
+          />
+          <Box height={'165px'}>
+            <InternalCalendar
+              monthDate={addMonths(monthDate, 1, { in: tzFn(tz) })}
+              onClick={(ts) => {
+                onChange(
+                  rangeBehavior({
+                    range: value as (number | Date)[],
+                    ts,
+                    tz,
+                    startRange: startRangeDefault,
+                    endRange: endRangeDefault,
+                  }),
+                  DATE_TIME_RANGE_SOURCE_CAL_RIGHT,
+                );
               }}
-              size="sm"
-              value={addMonths(monthDate, 1)}
-              closeAfterSelect
+              value={canCalendarRender ? (value as TCalendarDateRange) : []}
+              selectionLength={2}
+              parseDate={parseDate}
+              weekDays={weekDays}
+              tz={tz}
             />
-            <Box height={'165px'}>
-              <InternalCalendar
-                monthDate={addMonths(monthDate, 1, { in: tzFn(tz) })}
-                onClick={(ts) => {
+          </Box>
+          {hasTime && (
+            <Flex>
+              <Time
+                aria-label={i18n.toTime}
+                hasMillis={hasMillis}
+                hasSeconds={hasSeconds}
+                id={`${id}-time-to`}
+                onChange={(dt) => {
                   onChange(
-                    rangeBehavior({
-                      range: value as (number | Date)[],
-                      ts,
-                      tz,
-                      startRange: startRangeDefault,
-                      endRange: endRangeDefault,
-                    }),
-                    DATE_TIME_RANGE_SOURCE_CAL_RIGHT,
+                    [
+                      value[0],
+                      set(dt, {
+                        year: getYear(value[1]),
+                        month: getMonth(value[1]),
+                        date: getDate(value[1]),
+                      }),
+                    ],
+                    DATE_TIME_RANGE_SOURCE_TIME_RIGHT,
                   );
                 }}
-                value={canCalendarRender ? (value as TCalendarDateRange) : []}
-                selectionLength={2}
-                parseDate={parseDate}
-                weekDays={weekDays}
-                tz={tz}
+                size="sm"
+                value={canCalendarRender && value.length >= 2 ? value[1] : ''}
+                disabled={!canCalendarRender || value.length < 2}
               />
-            </Box>
-            {hasTime && (
-              <Flex>
-                <Time
-                  aria-label={i18n.toTime}
-                  hasMillis={hasMillis}
-                  hasSeconds={hasSeconds}
-                  id={`${id}-time-to`}
-                  onChange={(dt) => {
-                    onChange(
-                      [
-                        value[0],
-                        set(dt, {
-                          year: getYear(value[1]),
-                          month: getMonth(value[1]),
-                          date: getDate(value[1]),
-                        }),
-                      ],
-                      DATE_TIME_RANGE_SOURCE_TIME_RIGHT,
-                    );
-                  }}
-                  size="sm"
-                  value={canCalendarRender && value.length >= 2 ? value[1] : ''}
-                  disabled={!canCalendarRender || value.length < 2}
-                />
-              </Flex>
-            )}
-          </VFlex>
-        )}
-        {(mode === 'presets' || mode === 'both') && (
-          <VFlex flex={'1 1 30%'} alignItems="stretch" minWidth="16rem">
-            <Presets
-              value={value}
-              id={`${id}-presets`}
-              maxMenuHeight={224}
-              placeholder={presetsPlaceholder}
-              presets={presets}
-              onChange={(newValue) => {
-                onChange(newValue, 'presets');
-              }}
-            />
-          </VFlex>
-        )}
-      </HFlex>
-    </CalendarContextProvider>
+            </Flex>
+          )}
+        </VFlex>
+      )}
+      {(mode === 'presets' || mode === 'both') && (
+        <VFlex flex={'1 1 30%'} alignItems="stretch" minWidth="16rem">
+          <Presets
+            value={value}
+            id={`${id}-presets`}
+            maxMenuHeight={224}
+            placeholder={presetsPlaceholder}
+            presets={presets}
+            onChange={(newValue) => {
+              onChange(newValue, 'presets');
+            }}
+          />
+        </VFlex>
+      )}
+    </HFlex>
   );
 };
+
+export const DateTimeRange: React.FC<DateTimeRangeProps> = (props) => (
+  <CalendarContextProvider>
+    <InternalDateTimeRange {...props} />
+  </CalendarContextProvider>
+);

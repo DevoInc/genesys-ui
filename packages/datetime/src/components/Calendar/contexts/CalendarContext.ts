@@ -1,11 +1,9 @@
 import * as React from 'react';
 
-import type { ICalendarDay } from '../declarations';
-
 interface Props {
-  cellRefs: React.MutableRefObject<[HTMLDivElement, ICalendarDay][]>;
+  cellRefs: React.MutableRefObject<Map<number, HTMLDivElement>>;
 }
 
 export const CalendarContext = React.createContext<Props>({
-  cellRefs: { current: [] },
+  cellRefs: { current: new Map() },
 });

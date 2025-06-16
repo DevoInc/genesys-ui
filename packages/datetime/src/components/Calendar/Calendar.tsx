@@ -181,7 +181,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
             minWidth={theme.cmp.calendar.size.minWidth}
             onMouseLeave={() => {
               if (selectionLength > 1 && rangeDays.length === 1) {
-                cellRefs.current.forEach(([cell]) => {
+                cellRefs.current.forEach((cell) => {
                   if (cell) {
                     clearHover(cell);
                   }
@@ -211,7 +211,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
                     isSelectedStart={isStart}
                     isSelectedEnd={isEnd}
                     isInsideSelection={isInsideSelection}
-                    ref={(el) => cellRefs.current.push([el, calendarDay])}
+                    ref={(el) => cellRefs.current.set(calendarDay.value, el)}
                     key={`day${ts}`}
                     className={[
                       'dayName',
@@ -232,14 +232,10 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
                             ? [rangeDays[0], calendarDay]
                             : [calendarDay, rangeDays[0]];
 
-                        cellRefs.current.forEach(([cell, currDay]) => {
+                        cellRefs.current.forEach((cell, index) => {
                           if (cell) {
-                            setRangeHovered([cell, currDay], range);
-                            setRangeHoveredEdge(
-                              [cell, currDay],
-                              calendarDay,
-                              side,
-                            );
+                            setRangeHovered(cell, index, range);
+                            setRangeHoveredEdge(cell, index, calendarDay, side);
                           }
                         });
                       }
@@ -267,7 +263,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
                   role="gridcell"
                   onMouseEnter={() => {
                     if (selectionLength > 1 && rangeDays.length === 1) {
-                      cellRefs.current.forEach(([cell]) => {
+                      cellRefs.current.forEach((cell) => {
                         if (cell) {
                           clearHover(cell);
                         }
