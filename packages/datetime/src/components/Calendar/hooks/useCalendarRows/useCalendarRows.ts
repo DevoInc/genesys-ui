@@ -31,7 +31,7 @@ export const useCalendarRows = ({
     });
 
     return groupInRows(beforeDays.concat(monthDays, afterDays));
-  }, [interval, tz, weekStart]);
+  }, [interval, tz, weekStart, getCellData]);
 
   return rows;
 };
