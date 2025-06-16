@@ -131,6 +131,7 @@ const InternalDateTime: React.FC<DateTimeProps> = ({
               ).valueOf(),
             );
           }}
+          tz={tz}
           size="sm"
           value={value}
         />

@@ -155,6 +155,7 @@ const InternalDateTimeRange: React.FC<DateTimeRangeProps> = ({
                 hasMillis={hasMillis}
                 hasSeconds={hasSeconds}
                 id={`${id}-time-from`}
+                tz={tz}
                 onChange={(dt) => {
                   onChange(
                     [
@@ -221,6 +222,7 @@ const InternalDateTimeRange: React.FC<DateTimeRangeProps> = ({
                 hasMillis={hasMillis}
                 hasSeconds={hasSeconds}
                 id={`${id}-time-to`}
+                tz={tz}
                 onChange={(dt) => {
                   onChange(
                     [
