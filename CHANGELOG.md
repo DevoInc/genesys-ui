@@ -1,5 +1,16 @@
 # Changelog
 
+## [20.0.0](https://github.com/DevoInc/genesys-ui/compare/v19.0.0...v20.0.0) (2025-06-16)
+
+### ⚠ BREAKING CHANGES
+
+* **datetime:** revert the end range default to 0H0m0s0SSS
+
+### Bug Fixes
+
+* **datetime:** missing dependency about the function for Calendar cell data ([6abb78f](https://github.com/DevoInc/genesys-ui/commit/6abb78fd7010a7458c96257beb4a055beb95bccf))
+* **datetime:** revert the end range default to 0H0m0s0SSS ([5b26ec2](https://github.com/DevoInc/genesys-ui/commit/5b26ec20b15d46aa44c5237c523010082a712f3b))
+
 ## [19.0.0](https://github.com/DevoInc/genesys-ui/compare/v18.9.0...v19.0.0) (2025-06-14)
 
 ### ⚠ BREAKING CHANGES
