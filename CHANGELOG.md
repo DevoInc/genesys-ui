@@ -1,5 +1,12 @@
 # Changelog
 
+## [20.0.1](https://github.com/DevoInc/genesys-ui/compare/v20.0.0...v20.0.1) (2025-06-16)
+
+### Bug Fixes
+
+* **datetime:** Time missing the tz when onChange ([0d13b80](https://github.com/DevoInc/genesys-ui/commit/0d13b80bcb7bab2f957915852ac91b2d37849657))
+* **datetime:** Timezone on Time selector ([06241cc](https://github.com/DevoInc/genesys-ui/commit/06241cc45609d38b99ec27a005035dc1bf668d35))
+
 ## [20.0.0](https://github.com/DevoInc/genesys-ui/compare/v19.0.0...v20.0.0) (2025-06-16)
 
 ### ⚠ BREAKING CHANGES
