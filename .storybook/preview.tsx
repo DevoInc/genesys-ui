@@ -2,7 +2,10 @@ import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { StrictMode } from 'react';
 import { Preview } from '@storybook/react-vite';
-import { DocsContainer, DocsContainerProps } from '@storybook/addon-docs';
+import {
+  DocsContainer,
+  DocsContainerProps,
+} from '@storybook/addon-docs/blocks';
 import { create } from 'storybook/theming';
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 
