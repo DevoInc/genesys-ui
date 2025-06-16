@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { set } from 'date-fns';
+import { tz as tzFn } from '@date-fns/tz';
 
 import {
   Flex,
@@ -67,7 +68,7 @@ export const Time: React.FC<TimeProps> = ({
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             if (event.target.value !== '') {
               const time = durationToTime(event.target.valueAsNumber);
-              onChange(set(value, time).getTime());
+              onChange(set(value, time, { in: tzFn(tz) }).getTime());
             }
           }}
           size={size}
