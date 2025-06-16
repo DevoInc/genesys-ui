@@ -92,7 +92,7 @@ export const DateTimeRange: React.FC<DateTimeRangeProps> = ({
   presetsPlaceholder,
   presets = [],
   startRangeDefault = { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 },
-  endRangeDefault = { hours: 23, minutes: 59, seconds: 59, milliseconds: 999 },
+  endRangeDefault = { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 },
   style,
   ...dataProps
 }) => {
