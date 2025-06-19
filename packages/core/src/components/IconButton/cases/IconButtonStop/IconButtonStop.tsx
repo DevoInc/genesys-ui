@@ -35,16 +35,15 @@ export interface IconButtonStopProps
   state?: TButtonActionState;
 }
 
-export const IconButtonStop: React.FC<Resolve<IconButtonStopProps>> = ({
-  size = 'md',
-  state = 'enabled',
-  style,
-  ...restIconButtonProps
-}) => {
+export const IconButtonStop = React.forwardRef<
+  HTMLButtonElement,
+  Resolve<IconButtonStopProps>
+>(({ size = 'md', state = 'enabled', style, ...restIconButtonProps }, ref) => {
   const theme = useTheme();
   return (
     <IconButton
       {...restIconButtonProps}
+      ref={ref}
       colorScheme="neutral"
       icon={
         <GIStopSquare
@@ -58,4 +57,4 @@ export const IconButtonStop: React.FC<Resolve<IconButtonStopProps>> = ({
       style={mergeStyles(iconButtonStopMixin({ size, state, theme }), style)}
     />
   );
-};
+});

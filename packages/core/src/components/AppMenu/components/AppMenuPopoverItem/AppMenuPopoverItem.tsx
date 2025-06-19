@@ -8,6 +8,7 @@ import { Typography } from '../../../Typography';
 import { ButtonGroup } from '../../../ButtonGroup';
 import { StyledAppMenuPopoverItemIcon } from './StyledAppMenuPopoverItemIcon';
 import { StyledAppMenuPopoverItemActions } from './StyledAppMenuPopoverItemActions';
+import { useMenuItemPadding } from '../../../Menu/components/MenuItem/useMenuItemPadding';
 
 export interface AppMenuPopoverItemProps
   extends Omit<
@@ -33,56 +34,62 @@ export const AppMenuPopoverItem: React.FC<AppMenuPopoverItemProps> = ({
 }) => {
   const hasTitleAndDesc = Boolean(label && description);
   const isFeatured = hasTitleAndDesc || featuredIcon;
+
+  const interactiveRef = React.useRef(null);
+  const innerRef = React.useRef<HTMLButtonElement>(null);
+  useMenuItemPadding(interactiveRef, innerRef);
   return (
-    <Menu.Item
-      {...restMenuItemProps}
-      unlimitedHeight={unlimitedHeight || isFeatured}
-    >
-      <HFlex
-        alignItems={hasTitleAndDesc ? 'flex-start' : 'center'}
-        flex="1 1 auto"
-        spacing="cmp-xs"
+    <Menu.Item._Wrapper {...restMenuItemProps}>
+      <Menu.Item._Inner
+        unlimitedHeight={unlimitedHeight || isFeatured}
+        ref={innerRef}
       >
-        {featuredIcon ? (
-          <StyledAppMenuPopoverItemIcon>
+        <HFlex
+          alignItems={hasTitleAndDesc ? 'flex-start' : 'center'}
+          flex="1 1 auto"
+          spacing="cmp-xs"
+        >
+          {featuredIcon ? (
+            <StyledAppMenuPopoverItemIcon>
+              <Icon size="sm" colorScheme="strong">
+                {icon}
+              </Icon>
+            </StyledAppMenuPopoverItemIcon>
+          ) : (
             <Icon size="sm" colorScheme="strong">
               {icon}
             </Icon>
-          </StyledAppMenuPopoverItemIcon>
-        ) : (
-          <Icon size="sm" colorScheme="strong">
-            {icon}
-          </Icon>
-        )}
-        <HFlex.Item flex="1 1 auto">
-          {label && (
-            <Typography
-              colorScheme={hasTitleAndDesc ? 'stronger' : 'strong'}
-              format={hasTitleAndDesc ? 'action-sm' : 'body-sm'}
-            >
-              {label}
-            </Typography>
           )}
-          {description && (
-            <Typography.Paragraph colorScheme="weak" size="sm">
-              {description}
-            </Typography.Paragraph>
-          )}
-        </HFlex.Item>
-        {actions && (
-          <StyledAppMenuPopoverItemActions>
-            {Array.isArray(actions) ? (
-              <ButtonGroup>
-                {actions.map((action, idx) => (
-                  <ButtonGroup.Item key={idx}>{action}</ButtonGroup.Item>
-                ))}
-              </ButtonGroup>
-            ) : (
-              actions
+          <HFlex.Item flex="1 1 auto">
+            {label && (
+              <Typography
+                colorScheme={hasTitleAndDesc ? 'stronger' : 'strong'}
+                format={hasTitleAndDesc ? 'action-sm' : 'body-sm'}
+              >
+                {label}
+              </Typography>
             )}
-          </StyledAppMenuPopoverItemActions>
-        )}
-      </HFlex>
-    </Menu.Item>
+            {description && (
+              <Typography.Paragraph colorScheme="weak" size="sm">
+                {description}
+              </Typography.Paragraph>
+            )}
+          </HFlex.Item>
+        </HFlex>
+      </Menu.Item._Inner>
+      {actions && (
+        <StyledAppMenuPopoverItemActions ref={interactiveRef}>
+          {Array.isArray(actions) ? (
+            <ButtonGroup>
+              {actions.map((action, idx) => (
+                <ButtonGroup.Item key={idx}>{action}</ButtonGroup.Item>
+              ))}
+            </ButtonGroup>
+          ) : (
+            actions
+          )}
+        </StyledAppMenuPopoverItemActions>
+      )}
+    </Menu.Item._Wrapper>
   );
 };

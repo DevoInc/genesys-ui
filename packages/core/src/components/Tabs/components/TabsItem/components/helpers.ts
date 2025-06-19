@@ -26,7 +26,7 @@ export interface ITabsLinkMixin extends Pick<ITabs, 'align'> {
  * @param props.size The size of the element
  * @param props.state The state of the component: enabled, disabled... etc.
  * @param props.theme The common theme object with all the tokens
- * @return object with the css.
+ * @return object with the CSS.
  */
 export const tabsLinkMixin = ({
   align = 'middle',
@@ -62,7 +62,7 @@ export const tabsLinkMixin = ({
     &:focus,
     &:active,
     *:hover > & {
-      color: ${state !== 'disabled' && tokens.color.text[state]};
+      color: ${state !== 'disabled' && tokens.color.text.hovered};
       text-decoration: none;
     }
 
@@ -77,7 +77,7 @@ export const tabsLinkMixin = ({
 /**
  * Get the custom styles for IconButtonRemove when it's used as a TabsItemClose.
  *
- * @return object with the css.
+ * @return object with the CSS.
  */
 export const tabsClosableButtonMixin = ({
   align,

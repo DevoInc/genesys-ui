@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import type { IDragDropEventAttrs } from '../../../../declarations';
 import type { IMenuItem, IMenuItemBasic } from './declarations';
-import { mergeStyles } from '../../../../helpers';
+import { useMenuItemPadding } from './useMenuItemPadding';
 import { GICheckThick } from '@devoinc/genesys-icons';
 import { VFlex } from '../../../VFlex';
 import { HFlex } from '../../../HFlex';
@@ -79,40 +78,21 @@ export const InternalMenuItem = React.forwardRef<
             : isLink
               ? null
               : 'menuitem';
+
     const getHasExtraLeftSpace = () => {
       if (hasExtraLeftSpace === false) return false;
       if (Boolean(children) && hasExtraLeftSpace) return true;
       return (hasExtraLeftSpace || Boolean(icon) || isSelectable) && !children;
     };
+
     const isLabelString = typeof label === 'string';
     const evalAs = as || (isReadonly ? 'div' : isLink ? 'a' : 'button');
+
     const interactiveRef = React.useRef(null);
-    const [interactiveBlockWidth, setInteractiveBlockWidth] = React.useState(0);
+    const innerRef = React.useRef<HTMLButtonElement>(null);
+    React.useImperativeHandle(ref, () => innerRef.current!);
 
-    React.useLayoutEffect(() => {
-      if (interactiveRef.current) {
-        setInteractiveBlockWidth(interactiveRef.current.offsetWidth);
-      }
-    }, []);
-
-    React.useEffect(() => {
-      const element = interactiveRef.current;
-      if (!element) return;
-
-      const observer = new ResizeObserver((entries) => {
-        for (let entry of entries) {
-          setInteractiveBlockWidth(entry.contentRect.width);
-        }
-      });
-
-      observer.observe(element);
-
-      return () => observer.disconnect();
-    }, []);
-
-    const theme = useTheme();
-    const interactiveBlockWidthCss = `${interactiveBlockWidth.toFixed(2)}px`;
-    const paddingRightForInteractiveBlock = `calc(${interactiveBlockWidthCss} + ${theme.cmp.menu.item.space.paddingHor} * 2)`;
+    useMenuItemPadding(interactiveRef, innerRef);
 
     return (
       <MenuItem._Wrapper
@@ -122,7 +102,7 @@ export const InternalMenuItem = React.forwardRef<
       >
         <MenuItem._Inner
           {...restNativeProps}
-          ref={ref}
+          ref={innerRef}
           aria-keyshortcuts={shortcut}
           aria-expanded={isExpanded || null}
           aria-label={ariaLabel || (isLabelString ? label : null)}
@@ -147,10 +127,7 @@ export const InternalMenuItem = React.forwardRef<
           unlimitedHeight={unlimitedHeight}
           state={state}
           tooltip={tooltip}
-          style={mergeStyles(
-            { paddingRight: paddingRightForInteractiveBlock },
-            style,
-          )}
+          style={style}
         >
           {children || (
             <>
@@ -196,8 +173,9 @@ export const InternalMenuItem = React.forwardRef<
 );
 
 export const MenuItem = InternalMenuItem as typeof InternalMenuItem & {
-  _Inner: typeof MenuItemInner;
   _Wrapper: typeof MenuItemWrapper;
+  _Inner: typeof MenuItemInner;
+  _InteractiveWrapper: typeof MenuItemInteractiveWrapper;
   _ExpandableMark: typeof MenuItemExpandableMark;
   _Icon: typeof MenuItemIcon;
   _Label: typeof StyledMenuItemLabel;
@@ -206,6 +184,7 @@ export const MenuItem = InternalMenuItem as typeof InternalMenuItem & {
 
 MenuItem._Wrapper = MenuItemWrapper;
 MenuItem._Inner = MenuItemInner;
+MenuItem._InteractiveWrapper = MenuItemInteractiveWrapper;
 MenuItem._ExpandableMark = MenuItemExpandableMark;
 MenuItem._Icon = MenuItemIcon;
 MenuItem._Label = StyledMenuItemLabel;
@@ -214,6 +193,7 @@ MenuItem._ShortCut = MenuItemShortCut;
 InternalMenuItem.displayName = 'Menu.Item';
 MenuItem._Wrapper.displayName = 'Menu.Item._Wrapper';
 MenuItem._Inner.displayName = 'Menu.Item._Inner';
+MenuItem._InteractiveWrapper.displayName = 'Menu.Item._InteractiveWrapper';
 MenuItem._ExpandableMark['displayName'] = 'Menu.Item._ExpandableMark';
 MenuItem._Icon.displayName = 'Menu.Item._Icon';
 MenuItem._Label.displayName = 'Menu.Item._Label';

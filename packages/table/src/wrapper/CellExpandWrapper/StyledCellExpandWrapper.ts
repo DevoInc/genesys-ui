@@ -9,11 +9,14 @@ import {
   TColDef,
   TDensity,
 } from '../../declarations';
+import { tableActionsOpacityMixin } from '../helpers';
 
 export interface StyledCellExpandWrapperProps extends Omit<TColDef, 'id'> {
   $clickable?: boolean;
+  $hasActions?: boolean;
   $horAlign?: TCellHorAlign;
   $isEditMode?: boolean;
+  $isExpanded?: boolean;
   $verAlign?: TCellVerAlign;
   $density?: TDensity;
   $toEdge?: boolean;
@@ -21,9 +24,9 @@ export interface StyledCellExpandWrapperProps extends Omit<TColDef, 'id'> {
 
 export const StyledCellExpandWrapper = styled.button<StyledCellExpandWrapperProps>`
   ${btnResetMixin};
-  user-select: auto;
+  user-select: text;
   outline: none;
-  cursor: pointer;
+  cursor: ${({ $isExpanded }) => ($isExpanded ? 'auto' : 'pointer')};
   transition: background-color ease
     ${({ theme }) =>
       theme.cmp.table.cellClickableWrapper.mutation.transitionDuration};
@@ -70,4 +73,6 @@ export const StyledCellExpandWrapper = styled.button<StyledCellExpandWrapperProp
     $toEdge
       ? '0'
       : `${theme.cmp.table.cell.space.padding.ver[$density].base} ${theme.cmp.table.cell.space.padding.hor[$density]}`};
+  ${({ theme, $hasActions }) =>
+    $hasActions && tableActionsOpacityMixin({ theme })};
 `;

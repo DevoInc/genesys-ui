@@ -11,7 +11,7 @@ import { GridItem } from './components';
 
 export interface GridProps extends ILayoutGridCss, BoxProps {}
 
-const InternalGrid = React.forwardRef<HTMLDivElement, Resolve<GridProps>>(
+const InternalGrid = React.forwardRef<HTMLElement, Resolve<GridProps>>(
   (
     {
       alignContent,

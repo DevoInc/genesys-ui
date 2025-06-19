@@ -35,121 +35,130 @@ export interface PanelHeaderProps
   collapseSettings?: IPanelCollapseAttrs;
 }
 
-export const InternalPanelHeader: React.FC<PanelHeaderProps> = ({
-  actions,
-  appendContent,
-  as = 'header',
-  bordered,
-  bottomContent,
-  children,
-  closeSettings,
-  collapseSettings,
-  hasBoxShadow,
-  helpTooltip,
-  helpUrl,
-  icon,
-  legend,
-  navigationContent,
-  padding,
-  paddingBottom,
-  paddingLeft,
-  paddingRight,
-  paddingTop,
-  prependContent,
-  removeSpace,
-  size,
-  style,
-  subtitle,
-  title,
-  titleTooltip,
-}) => {
-  const context = React.useContext(PanelContext);
-  const evalSize = size || context.size || 'md';
-  return (
-    <PanelHeaderContainer
-      as={as}
-      hasBoxShadow={hasBoxShadow ?? context.scrolledBodyContent}
-      bordered={bordered}
-      removeSpace={removeSpace}
-      padding={padding}
-      paddingBottom={paddingBottom}
-      paddingLeft={paddingLeft}
-      paddingRight={paddingRight}
-      paddingTop={paddingTop}
-      size={evalSize}
-      style={style}
-    >
-      {children ? (
-        typeof children === 'string' ? (
-          <Typography.Paragraph size={evalSize}>
-            {children}
-          </Typography.Paragraph>
-        ) : (
-          children
-        )
-      ) : collapseSettings ||
-        prependContent ||
-        title ||
-        subtitle ||
-        icon ||
-        appendContent ||
-        actions ||
-        closeSettings ||
-        bottomContent ? (
-        <VFlex spacing="0">
-          <HFlex spacing="0">
-            {collapseSettings && (
-              <PanelHeaderCollapseButton
-                onClick={collapseSettings?.onClick}
+export const InternalPanelHeader = React.forwardRef<
+  HTMLElement,
+  PanelHeaderProps
+>(
+  (
+    {
+      actions,
+      appendContent,
+      as = 'header',
+      bordered,
+      bottomContent,
+      children,
+      closeSettings,
+      collapseSettings,
+      hasBoxShadow,
+      helpTooltip,
+      helpUrl,
+      icon,
+      legend,
+      navigationContent,
+      padding,
+      paddingBottom,
+      paddingLeft,
+      paddingRight,
+      paddingTop,
+      prependContent,
+      removeSpace,
+      size,
+      style,
+      subtitle,
+      title,
+      titleTooltip,
+    },
+    ref,
+  ) => {
+    const context = React.useContext(PanelContext);
+    const evalSize = size || context.size || 'md';
+    return (
+      <PanelHeaderContainer
+        ref={ref}
+        as={as}
+        hasBoxShadow={hasBoxShadow ?? context.scrolledBodyContent}
+        bordered={bordered}
+        removeSpace={removeSpace}
+        padding={padding}
+        paddingBottom={paddingBottom}
+        paddingLeft={paddingLeft}
+        paddingRight={paddingRight}
+        paddingTop={paddingTop}
+        size={evalSize}
+        style={style}
+      >
+        {children ? (
+          typeof children === 'string' ? (
+            <Typography.Paragraph size={evalSize}>
+              {children}
+            </Typography.Paragraph>
+          ) : (
+            children
+          )
+        ) : collapseSettings ||
+          prependContent ||
+          title ||
+          subtitle ||
+          icon ||
+          appendContent ||
+          actions ||
+          closeSettings ||
+          bottomContent ? (
+          <VFlex spacing="0">
+            <HFlex spacing="0">
+              {collapseSettings && (
+                <PanelHeaderCollapseButton
+                  onClick={collapseSettings?.onClick}
+                  size={evalSize}
+                  state={collapseSettings.expanded ? 'expanded' : 'enabled'}
+                  tooltip={collapseSettings?.tooltip}
+                />
+              )}
+              {prependContent}
+              {(title || subtitle || icon) && (
+                <PanelHeaderHeading
+                  helpTooltip={helpTooltip}
+                  helpUrl={helpUrl}
+                  icon={icon}
+                  legend={legend}
+                  size={evalSize}
+                  subtitle={subtitle}
+                  title={title}
+                  titleTooltip={titleTooltip}
+                />
+              )}
+              {appendContent}
+              {actions && (
+                <PanelHeaderActions actions={actions} size={evalSize} />
+              )}
+              {closeSettings && (
+                <PanelHeaderClose
+                  cssTranslate={closeSettings.cssTranslate}
+                  onClick={closeSettings.onClick}
+                  size={evalSize}
+                  tooltip={closeSettings.tooltip}
+                />
+              )}
+            </HFlex>
+            {bottomContent}
+            {navigationContent && (
+              <PanelHeaderNavigation
+                removeSpace={removeSpace}
+                padding={padding}
+                paddingLeft={paddingLeft}
+                paddingRight={paddingRight}
                 size={evalSize}
-                state={collapseSettings.expanded ? 'expanded' : 'enabled'}
-                tooltip={collapseSettings?.tooltip}
-              />
+                style={style}
+              >
+                {navigationContent}
+              </PanelHeaderNavigation>
             )}
-            {prependContent}
-            {(title || subtitle || icon) && (
-              <PanelHeaderHeading
-                helpTooltip={helpTooltip}
-                helpUrl={helpUrl}
-                icon={icon}
-                legend={legend}
-                size={evalSize}
-                subtitle={subtitle}
-                title={title}
-                titleTooltip={titleTooltip}
-              />
-            )}
-            {appendContent}
-            {actions && (
-              <PanelHeaderActions actions={actions} size={evalSize} />
-            )}
-            {closeSettings && (
-              <PanelHeaderClose
-                cssTranslate={closeSettings.cssTranslate}
-                onClick={closeSettings.onClick}
-                size={evalSize}
-                tooltip={closeSettings.tooltip}
-              />
-            )}
-          </HFlex>
-          {bottomContent}
-          {navigationContent && (
-            <PanelHeaderNavigation
-              removeSpace={removeSpace}
-              padding={padding}
-              paddingLeft={paddingLeft}
-              paddingRight={paddingRight}
-              size={evalSize}
-              style={style}
-            >
-              {navigationContent}
-            </PanelHeaderNavigation>
-          )}
-        </VFlex>
-      ) : null}
-    </PanelHeaderContainer>
-  );
-};
+          </VFlex>
+        ) : null}
+      </PanelHeaderContainer>
+    );
+  },
+);
 
 export const PanelHeader = InternalPanelHeader as typeof InternalPanelHeader & {
   _Actions: typeof PanelHeaderActions;

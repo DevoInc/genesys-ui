@@ -39,7 +39,8 @@ export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
 
         ${readOnly &&
         css`
-          .monaco-editor-background {
+          .monaco-editor-background,
+          .sticky-widget {
             background-color: var(--read-only-bg-color);
           }
         `}

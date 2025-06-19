@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Pagination } from '../Pagination';
+import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE_OPTIONS } from './constants';
+import { Pagination } from './Pagination';
 import { dataRangePagination } from './helpers';
 import { VFlex } from '../VFlex';
 
@@ -18,15 +19,22 @@ const itemStyle: React.CSSProperties = {
 const meta: Meta<typeof Pagination> = {
   title: 'Components/Navigation/Pagination',
   component: Pagination,
-  args: {},
+  args: {
+    as: 'nav',
+    justifyContent: 'flex-end',
+    size: 'md',
+    page: 0,
+    pageSize: DEFAULT_PAGE_SIZE,
+    pageSizeOptions: DEFAULT_PAGE_SIZE_OPTIONS,
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Pagination>;
 
 export const Playground: Story = {
-  render: () =>
-    (() => {
+  render: (args) =>
+    ((props) => {
       const list = React.useMemo(() => [...Array(20).keys()], []);
       const [page, setPage] = React.useState(0);
       const [pageSize, setPageSize] = React.useState(10);
@@ -34,6 +42,7 @@ export const Playground: Story = {
       return (
         <VFlex>
           <Pagination
+            {...props}
             totalItems={list.length}
             page={page}
             pageSize={pageSize}
@@ -54,8 +63,7 @@ export const Playground: Story = {
           </ul>
         </VFlex>
       );
-    })(),
-  parameters: { controls: false },
+    })(args),
 };
 
 export const Custom: Story = {

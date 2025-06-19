@@ -11,8 +11,11 @@ import {
 import type { TGlobalStatus } from '../../declarations/commonProps';
 import { ModalBackdrop } from './components/ModalBackdrop';
 import { ModalContext } from './context';
+import { IModal } from './declarations';
 
-export interface ModalProps extends ModalPanelProps {
+export interface ModalProps
+  extends ModalPanelProps,
+    Pick<IModal, 'onRequestClose'> {
   /** Function that will be called right after the modal is open */
   onAfterOpen?: () => void;
   /** Manages dialog status **/
@@ -44,12 +47,10 @@ export const InternalModal: React.FC<ModalProps> = ({
       {...dataProps}
       aria-describedby={ariaDescribedBy}
       aria-labelledby={ariaLabelledBy}
-      disableCloseOnOverlayClick={disableCloseOnOverlayClick}
       id={id}
       height={height}
       width={width}
       windowSize={windowSize || 'md'}
-      onRequestClose={onRequestClose}
       zIndex={zIndex}
       status={status}
     >

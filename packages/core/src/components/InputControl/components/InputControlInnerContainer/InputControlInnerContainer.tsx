@@ -8,11 +8,11 @@ import type {
 } from '../../../../declarations';
 
 export interface InputControlInnerContainerProps extends IStyledOverloadCss {
+  children: React.ReactNode;
   /** Width of the input control based in predefined values as 'xxs', 'xs',
-   * 'sm'... etc. or directly in a css value. It should reflect the length of
+   * 'sm'... etc. or directly in a CSS value. It should reflect the length of
    * the content you expect the user to enter. */
   inputWidth?: TControlWidth;
-  children: React.ReactNode;
 }
 
 export const InputControlInnerContainer: React.FC<

@@ -33,7 +33,7 @@ export interface RowProps
   children?: React.ReactNode;
 }
 
-export const Row = React.forwardRef<HTMLDivElement, Resolve<RowProps>>(
+export const Row = React.forwardRef<HTMLElement, Resolve<RowProps>>(
   (
     {
       as,

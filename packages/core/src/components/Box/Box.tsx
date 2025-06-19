@@ -6,7 +6,7 @@ import { StyledBox } from './StyledBox';
 
 export interface BoxProps extends IDataAttrs, ILayoutBox {}
 
-export const Box = React.forwardRef<HTMLDivElement, Resolve<BoxProps>>(
+export const Box = React.forwardRef<HTMLElement, Resolve<BoxProps>>(
   (
     {
       alignSelf,

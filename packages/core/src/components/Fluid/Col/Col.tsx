@@ -17,7 +17,7 @@ export interface ColProps
   children?: React.ReactNode;
 }
 
-export const Col = React.forwardRef<HTMLDivElement, Resolve<ColProps>>(
+export const Col = React.forwardRef<HTMLElement, Resolve<ColProps>>(
   ({ as, alignSelf, children, style, tooltip, ...reactGridColProps }, ref) => (
     <ReactGridCol
       {...reactGridColProps}

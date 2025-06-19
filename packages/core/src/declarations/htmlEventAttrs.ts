@@ -80,6 +80,8 @@ export interface IMouseEventAttrs<T = Element> {
   onMouseEnter?: DOMAttributes<T>['onMouseEnter'];
   /** A function that is called when the right mouse button is clicked on the element */
   onContextMenu?: DOMAttributes<T>['onContextMenu'];
+  /** A function that is called when a non-primary pointing device button (any mouse button other than the primary—usually leftmost—button) has been pressed and released both within the same element. */
+  onAuxClick?: DOMAttributes<T>['onAuxClick'];
 }
 
 /** ---------------------------------------------

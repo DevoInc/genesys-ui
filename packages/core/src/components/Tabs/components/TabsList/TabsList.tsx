@@ -8,6 +8,7 @@ import { TabsMark } from '../TabsMark';
 import { Flex, type FlexProps } from '../../../Flex';
 import { Resolve } from '../../../../typeFunctions';
 import { Box } from '../../../Box';
+import { mergeStyles } from '../../../../helpers';
 
 export interface TabsListProps extends FlexProps, Pick<ITabs, 'colorScheme'> {
   /** The active tab item index. */
@@ -23,11 +24,26 @@ export const TabsList = React.forwardRef<
   (
     {
       activeTabIndex,
+      alignContent,
+      alignItems = 'center',
       children,
+      childrenFlex,
       colorScheme,
+      columnGap,
       customMarkStyles,
+      flex = '1',
+      flexDirection,
+      flexWrap,
+      gap,
+      height = '100%',
+      inline,
+      justifyContent,
+      overflow = 'auto',
+      position = 'relative',
+      rowGap,
+      style,
       width = '100%',
-      ...restFlexProps
+      ...restProps
     },
     ref,
   ) => {
@@ -39,13 +55,30 @@ export const TabsList = React.forwardRef<
 
     return (
       <Box
-        position="relative"
-        flex="1"
-        overflow="auto"
+        {...restProps}
+        position={position}
+        flex={flex}
+        height={height}
+        overflow={overflow}
         ref={ref}
-        style={`&::-webkit-scrollbar {display: none;}`}
+        style={mergeStyles(`&::-webkit-scrollbar {display: none;}`, style)}
+        width={width}
       >
-        <Flex {...restFlexProps} role="tablist" width={width}>
+        <Flex
+          alignContent={alignContent}
+          alignItems={alignItems}
+          childrenFlex={childrenFlex}
+          columnGap={columnGap}
+          flexDirection={flexDirection}
+          flexWrap={flexWrap}
+          gap={gap}
+          height="100%"
+          inline={inline}
+          justifyContent={justifyContent}
+          role="tablist"
+          rowGap={rowGap}
+          width="100%"
+        >
           {children}
         </Flex>
         <TabsMark

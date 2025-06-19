@@ -17,7 +17,7 @@ export interface VFlexProps
   childrenFitFullHeight?: boolean;
 }
 
-const InternalVFlex = React.forwardRef<HTMLDivElement, Resolve<VFlexProps>>(
+const InternalVFlex = React.forwardRef<HTMLElement, Resolve<VFlexProps>>(
   (
     {
       alignItems,

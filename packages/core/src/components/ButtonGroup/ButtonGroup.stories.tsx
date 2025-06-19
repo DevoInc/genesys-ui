@@ -33,6 +33,7 @@ export const Playground: Story = {
         <ButtonGroup.IconButton icon={<GICustomDate />} />
         <ButtonGroup.IconButton icon={<GIReloadRefreshUpdate />} />
         <ButtonGroup.IconButton icon={<GIPinBookmark />} />
+        <ButtonGroup.IconButtonClose />
       </ButtonGroup>
     ))(args),
 };

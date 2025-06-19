@@ -23,6 +23,8 @@ import { Typography } from '../../../Typography';
 import { VFlex } from '../../../VFlex';
 import { MenuItem } from './MenuItem';
 import { ButtonGroup } from '../../../ButtonGroup';
+import { useMenuItemPadding } from './useMenuItemPadding';
+import { lorem } from '../../../../../stories/utils/fillerTexts';
 
 const meta: Meta<typeof Menu.Item> = {
   title: 'Components/Navigation/Menu/Components/MenuItem',
@@ -93,6 +95,7 @@ export const WithAppendPrependAndBottomContent: Story = {
 };
 
 export const WithInteractiveContent: Story = {
+  tags: ['isHidden'],
   args: {
     interactiveContent: (
       <ButtonGroup size="sm" colorScheme="quiet-blend">
@@ -108,6 +111,30 @@ export const WithInteractiveContent: Story = {
     ),
     onClick: () => alert('onClick'),
   },
+};
+
+export const WithInteractiveContentAndChildren: Story = {
+  tags: ['isHidden'],
+  render: () =>
+    (() => {
+      const interactiveRef = React.useRef(null);
+      const innerRef = React.useRef<HTMLButtonElement>(null);
+      useMenuItemPadding(interactiveRef, innerRef);
+      return (
+        <Menu.Item._Wrapper>
+          <Menu.Item._Inner ref={innerRef}>
+            <Typography.Paragraph truncateLine={1}>
+              {lorem}
+            </Typography.Paragraph>
+          </Menu.Item._Inner>
+          <Menu.Item._InteractiveWrapper ref={interactiveRef}>
+            <ButtonGroup size="sm">
+              <ButtonGroup.Button>Interactive content</ButtonGroup.Button>
+            </ButtonGroup>
+          </Menu.Item._InteractiveWrapper>
+        </Menu.Item._Wrapper>
+      );
+    })(),
 };
 
 export const WithDescription: Story = {

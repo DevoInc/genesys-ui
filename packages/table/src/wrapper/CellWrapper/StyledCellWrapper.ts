@@ -8,9 +8,11 @@ import {
   TDensity,
 } from '../../declarations';
 import { CELL_ALIGN_MAP } from '../../constants';
+import { tableActionsOpacityMixin } from '../helpers';
 
 export interface StyledCellWrapperProps extends Omit<TColDef, 'id'> {
   $clickable?: boolean;
+  $hasActions?: boolean;
   $horAlign?: TCellHorAlign;
   $isEditMode?: boolean;
   $verAlign?: TCellVerAlign;
@@ -37,4 +39,6 @@ export const StyledCellWrapper = styled.div<StyledCellWrapperProps>`
     $toEdge
       ? '0'
       : `${theme.cmp.table.cell.space.padding.ver[$density].base} ${theme.cmp.table.cell.space.padding.hor[$density]}`};
+  ${({ theme, $hasActions }) =>
+    $hasActions && tableActionsOpacityMixin({ theme })};
 `;

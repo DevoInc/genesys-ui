@@ -36,18 +36,27 @@ export interface IconButtonCollapseProps
   colorScheme?: TBlendColorScheme | TNeutralColorScheme;
 }
 
-export const IconButtonCollapse: React.FC<Resolve<IconButtonCollapseProps>> = ({
-  colorScheme = 'blend-base',
-  size = 'md',
-  state = 'enabled',
-  ...restIconButtonProps
-}) => (
-  <IconButton
-    {...restIconButtonProps}
-    colorScheme={colorScheme}
-    circular
-    hasDropdown
-    size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
-    state={state}
-  />
+export const IconButtonCollapse = React.forwardRef<
+  HTMLButtonElement,
+  Resolve<IconButtonCollapseProps>
+>(
+  (
+    {
+      colorScheme = 'blend-base',
+      size = 'md',
+      state = 'enabled',
+      ...restIconButtonProps
+    },
+    ref,
+  ) => (
+    <IconButton
+      {...restIconButtonProps}
+      ref={ref}
+      colorScheme={colorScheme}
+      circular
+      hasDropdown
+      size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
+      state={state}
+    />
+  ),
 );

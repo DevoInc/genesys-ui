@@ -140,7 +140,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
               }))}
               size={evalSize}
               value={{ value: page, label: String(page + 1) }}
-              minMenuWidth="6rem"
+              minMenuWidth="max-content"
             />
           </Flex.Item>
         )}

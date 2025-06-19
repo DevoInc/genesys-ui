@@ -39,21 +39,30 @@ export interface IconButtonCloseProps
   colorScheme?: TBlendColorScheme | TNeutralColorScheme;
 }
 
-export const IconButtonClose: React.FC<Resolve<IconButtonCloseProps>> = ({
-  colorScheme = 'neutral',
-  size = 'md',
-  state = 'enabled',
-  style,
-  ...restIconButtonProps
-}) => (
-  <IconButton
-    {...restIconButtonProps}
-    colorScheme={colorScheme}
-    icon={<GIExitClose />}
-    circular
-    hasBoldIcon
-    size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
-    state={state}
-    style={mergeStyles({ backgroundColor: 'transparent' }, style)}
-  />
+export const IconButtonClose = React.forwardRef<
+  HTMLButtonElement,
+  Resolve<IconButtonCloseProps>
+>(
+  (
+    {
+      colorScheme = 'neutral',
+      size = 'md',
+      state = 'enabled',
+      style,
+      ...restIconButtonProps
+    },
+    ref,
+  ) => (
+    <IconButton
+      {...restIconButtonProps}
+      ref={ref}
+      colorScheme={colorScheme}
+      icon={<GIExitClose />}
+      circular
+      hasBoldIcon
+      size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
+      state={state}
+      style={mergeStyles({ backgroundColor: 'transparent' }, style)}
+    />
+  ),
 );

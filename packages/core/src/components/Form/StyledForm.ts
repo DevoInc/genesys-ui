@@ -17,6 +17,9 @@ export interface StyledFormProps {
 }
 
 export const StyledForm = styled.form<StyledFormProps>`
+  display: flex;
+  flex-direction: column;
+
   ${({
     $flex,
     $height,

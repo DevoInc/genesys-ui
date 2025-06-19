@@ -55,16 +55,17 @@ type Story = StoryObj<typeof Tabs>;
 
 export const Playground: Story = {
   render: (args) =>
-    ((args) => {
+    ((props) => {
       const tabsRef = React.useRef<HTMLDivElement>();
       const [activeTab, setActiveTab] = React.useState(0);
       useTabsAccessibility({ activeTab, tabsRef });
       return (
         <BaseTabsCmp
+          {...props}
+          height={'5rem'}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
           tabsRef={tabsRef}
-          {...args}
         />
       );
     })(args),

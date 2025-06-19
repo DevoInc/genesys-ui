@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const StyledAppMenuPopoverItemActions = styled.span`
-  flex: 0 0 auto;
-  margin-left: auto;
+  position: absolute;
   opacity: 0;
+  right: ${({ theme }) => theme.cmp.menu.item.space.paddingHor};
   transition: ${({ theme }) =>
     `opacity ${theme.cmp.appMenu.popoverItemActions.mutation.transitionDuration.opacity} ease-in-out`};
 
-  *:enabled:hover &,
-  *:link:hover & {
+  [role='presentation']:hover > &,
+  [role='presentation']:hover > & {
     opacity: 1;
   }
 `;

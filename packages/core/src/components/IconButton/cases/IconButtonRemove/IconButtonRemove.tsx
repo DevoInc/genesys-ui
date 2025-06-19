@@ -39,19 +39,28 @@ export interface IconButtonRemoveProps
   state?: TButtonBasicState;
 }
 
-export const IconButtonRemove: React.FC<Resolve<IconButtonRemoveProps>> = ({
-  colorScheme = 'blend-base',
-  size = 'md',
-  state = 'enabled',
-  ...restIconButtonProps
-}) => (
-  <IconButton
-    {...restIconButtonProps}
-    colorScheme={colorScheme}
-    icon={<GIExitClose />}
-    circular
-    hasBoldIcon
-    size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
-    state={state}
-  />
+export const IconButtonRemove = React.forwardRef<
+  HTMLButtonElement,
+  Resolve<IconButtonRemoveProps>
+>(
+  (
+    {
+      colorScheme = 'blend-base',
+      size = 'md',
+      state = 'enabled',
+      ...restIconButtonProps
+    },
+    ref,
+  ) => (
+    <IconButton
+      {...restIconButtonProps}
+      ref={ref}
+      colorScheme={colorScheme}
+      icon={<GIExitClose />}
+      circular
+      hasBoldIcon
+      size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
+      state={state}
+    />
+  ),
 );

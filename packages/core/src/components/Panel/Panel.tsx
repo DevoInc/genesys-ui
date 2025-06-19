@@ -38,7 +38,7 @@ export interface PanelProps
   size?: TPanelSize;
 }
 
-const InternalPanel = React.forwardRef<HTMLDivElement, Resolve<PanelProps>>(
+const InternalPanel = React.forwardRef<HTMLElement, Resolve<PanelProps>>(
   (
     {
       bordered,

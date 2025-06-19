@@ -20,6 +20,7 @@ export const CellWrapper: React.FC<TCellWrapper> = ({
   return (
     <StyledCellWrapper
       $density={density}
+      $hasActions={colDef.preset === 'actions'}
       $horAlign={colDef?.align}
       $toEdge={colDef?.toEdge}
       $verAlign={colDef?.verticalAlign}

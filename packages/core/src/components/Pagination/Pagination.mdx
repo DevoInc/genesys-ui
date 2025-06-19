@@ -17,6 +17,80 @@ data that is divided into pages.
 
 <Canvas of={Stories.Playground} />
 
+## I18n
+
+There are multiple pre-defined texts for the component as labels, messages, tooltips... etc.
+To manage then we have a 'texts' prop, which is an object with every text to define. There are
+default values, so the initial definition is based on this object and functions:
+
+<Source code={`
+export const infoTextFn = ({
+  totalItems,
+  pageSize,
+  page,
+}: {
+  totalItems: number;
+  pageSize: number;
+  page: number;
+}) => {
+  const pageFirstItem = page * pageSize + 1;
+  const pageLastItem =
+    page === getLastPage(totalItems, pageSize)
+      ? totalItems
+      : page * pageSize + pageSize - 1 + 1;
+
+return pageSize > totalItems
+? \`\${totalItems} items\`
+: \`\${pageFirstItem} - \${pageLastItem} of \${totalItems} items\`;
+};
+
+export const selectPageTooltipTextFn = ({
+  page,
+  pageSize,
+  totalItems,
+}: {
+  totalItems: number;
+  pageSize: number;
+  page: number;
+}) => \`Page \${page + 1} of \${getLastPage(totalItems, pageSize) + 1}\`;
+
+export const DEFAULT_TEXTS = {
+    firstPageTooltipText: 'First page',
+    infoTextFn: infoTextFn,
+    lastPageTooltipText: 'Last page',
+    nextPageTooltipText: 'Next page',
+    pageSelectorLabel: 'Page selector',
+    prevPageTooltipText: 'Previous page',
+    rangeLabel: 'Items per page selector',
+    rangeText: 'items per page',
+    selectPageTooltipTextFn: selectPageTooltipTextFn,
+  };
+`} />
+
+These are the different texts:
+
+- 'firstPageTooltipText': The title attribute for the 'Go to the first page' icon buton.
+- 'infoTextFn': The message with the visible range of items.
+- 'lastPageTooltipText': The title attribute for the 'Go to the last page' icon buton.
+- 'nextPageTooltipText': The title attribute for the 'Go to the next page' icon buton.
+- 'pageSelectorLabel': The label ('aria-label') for the page selector.
+- 'prevPageTooltipText': The title attribute for the 'Go to the previous page' icon buton.
+- 'rangeLabel': The label ('aria-label') for the range selector.
+- 'selectPageTooltipTextFn': The title attribute for the page selector.
+
+If you need to change only one of the texts, you can do it, only passing the object with that variable:
+
+<Source
+  code={`
+export const CUSTOM_TEXTS = {
+    firstPageTooltipText: 'Go to First page',
+  };
+`}
+/>
+
+You have to keep in mind that most of the texts are crucial for accessibility reasons, so be careful
+and don't remove any of them.
+
 ## Custom usage
 
 If you need customization, or simply you want to show/hide some blocks: label, first-last buttons... etc.

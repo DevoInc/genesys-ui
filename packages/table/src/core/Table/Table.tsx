@@ -44,7 +44,7 @@ export const Table: React.FC<TableProps> = ({
   onRowKeyUp,
   onRowKeyDown,
 
-  highlightRowOnHover,
+  highlightRowOnHover = true,
   highlightRowOnHoverFn,
   onCellDataChange,
   data,
@@ -53,7 +53,7 @@ export const Table: React.FC<TableProps> = ({
   rowHeight = ROW_HEIGHT_MD,
   texts,
   textsCell,
-  onCellClickAway
+  onCellClickAway,
 }) => {
   const mergedColDefs: TColDef[] = React.useMemo(
     mergePresets(colDefs, columnPresets, defaultColDef),

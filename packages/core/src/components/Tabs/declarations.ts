@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type {
   TBaseSize,
   TBasicState,
@@ -16,8 +17,9 @@ export interface ITabs {
   contained?: boolean;
   /** The size which defines height, padding, font-size, line-height... etc. */
   size?: TTabsSize;
-  /** The color scheme which defines the color of some elements of the Tabs. */
+  /** The color scheme which defines the color of some Tabs elements. */
   colorScheme?: TTabsColorScheme;
   /** Distribute the whole container width between tab items. */
   wide?: boolean;
+  height?: React.CSSProperties['height'];
 }

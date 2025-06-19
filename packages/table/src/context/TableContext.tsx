@@ -10,4 +10,5 @@ export const TableContext = React.createContext<ITableContext>({
   data: [],
   striped: false,
   resizableColumns: false,
+  highlightRowOnHover: true,
 });

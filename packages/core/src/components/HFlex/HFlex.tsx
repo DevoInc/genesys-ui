@@ -17,7 +17,7 @@ export interface HFlexProps
   spacing?: TGlobalSpacing;
 }
 
-const InternalHFlex = React.forwardRef<HTMLDivElement, Resolve<HFlexProps>>(
+const InternalHFlex = React.forwardRef<HTMLElement, Resolve<HFlexProps>>(
   (
     {
       alignItems = 'center',

@@ -22,10 +22,7 @@ export interface WrapProps
   vSpacing?: TGlobalSpacing;
 }
 
-export const InternalWrap = React.forwardRef<
-  HTMLDivElement,
-  Resolve<WrapProps>
->(
+export const InternalWrap = React.forwardRef<HTMLElement, Resolve<WrapProps>>(
   (
     {
       alignContent = 'flex-start',

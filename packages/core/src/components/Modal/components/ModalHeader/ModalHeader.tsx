@@ -26,6 +26,7 @@ export interface ModalHeaderProps
     | 'title'
     | 'titleTooltip'
   > {
+  closeTooltip?: string;
   status?: TModalStatus;
   onRequestClose?: IModal['onRequestClose'];
 }
@@ -34,6 +35,7 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
   actions = [],
   bordered,
   children,
+  closeTooltip = 'Close modal',
   onRequestClose,
   removeSpace,
   status,
@@ -85,7 +87,7 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
                   size="md"
                   key="close"
                   onClick={onRequestClose || context.onRequestClose}
-                  tooltip="Close"
+                  tooltip={closeTooltip}
                 />,
               ]}
             </ButtonGroup>

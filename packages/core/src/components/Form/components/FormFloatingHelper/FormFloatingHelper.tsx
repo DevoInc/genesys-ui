@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 
-import { Flex } from '../../../Flex';
+import { Box } from '../../../Box';
 import {
   FloatingHelper,
   type FloatingHelperProps,
@@ -15,8 +15,13 @@ export const FormFloatingHelper: React.FC<FormFloatingHelperProps> = (
   const theme = useTheme();
   const labelLineHeight = theme.cmp.field.labelHelper.size.minHeight.sm;
   return (
-    <Flex inline height={labelLineHeight} marginLeft="cmp-xxs">
+    <Box
+      display="inline"
+      verticalAlign="middle"
+      height={labelLineHeight}
+      marginLeft="cmp-xxs"
+    >
       <FloatingHelper {...floatingHelperProps} />
-    </Flex>
+    </Box>
   );
 };

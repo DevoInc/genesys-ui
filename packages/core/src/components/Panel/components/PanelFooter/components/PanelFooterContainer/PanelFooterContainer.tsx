@@ -17,49 +17,54 @@ export interface PanelFooterContainerProps
   customContent?: boolean;
 }
 
-export const PanelFooterContainer: React.FC<PanelFooterContainerProps> = ({
-  as = 'footer',
-  customContent,
-  hasBoxShadow,
-  bordered,
-  children,
-  hasBackground,
-  padding,
-  paddingBottom,
-  paddingLeft,
-  paddingRight,
-  paddingTop,
-  removeSpace,
-  size = 'md',
-  style,
-}) => {
-  const theme = useTheme();
-  const commonProps = {
-    as,
-    flex: '0 0 auto',
-    style: mergeStyles(
-      panelFooterContainerMixin({
-        bordered,
-        hasBackground,
-        hasBoxShadow,
-        padding,
-        paddingBottom,
-        paddingLeft,
-        paddingRight,
-        paddingTop,
-        removeSpace,
-        size,
-        theme,
-      }),
-      style,
-    ),
-    zIndex: 1,
-  };
-  return customContent ? (
-    <Box {...commonProps}>{children}</Box>
-  ) : (
-    <Flex {...commonProps} alignItems="center">
-      {children}
-    </Flex>
-  );
-};
+export const PanelFooterContainer = React.forwardRef<
+  HTMLElement,
+  PanelFooterContainerProps
+>(
+  ({
+    as = 'footer',
+    customContent,
+    hasBoxShadow,
+    bordered,
+    children,
+    hasBackground,
+    padding,
+    paddingBottom,
+    paddingLeft,
+    paddingRight,
+    paddingTop,
+    removeSpace,
+    size = 'md',
+    style,
+  }) => {
+    const theme = useTheme();
+    const commonProps = {
+      as,
+      flex: '0 0 auto',
+      style: mergeStyles(
+        panelFooterContainerMixin({
+          bordered,
+          hasBackground,
+          hasBoxShadow,
+          padding,
+          paddingBottom,
+          paddingLeft,
+          paddingRight,
+          paddingTop,
+          removeSpace,
+          size,
+          theme,
+        }),
+        style,
+      ),
+      zIndex: 1,
+    };
+    return customContent ? (
+      <Box {...commonProps}>{children}</Box>
+    ) : (
+      <Flex {...commonProps} alignItems="center">
+        {children}
+      </Flex>
+    );
+  },
+);

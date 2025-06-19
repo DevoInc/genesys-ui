@@ -43,10 +43,7 @@ export interface ContainerProps
   ref?: React.LegacyRef<ReactGridContainer> & React.Ref<HTMLDivElement>;
 }
 
-export const Container = React.forwardRef<
-  HTMLDivElement,
-  Resolve<ContainerProps>
->(
+export const Container = React.forwardRef<HTMLElement, Resolve<ContainerProps>>(
   (
     {
       children,

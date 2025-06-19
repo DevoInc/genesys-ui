@@ -35,8 +35,10 @@ export const CellExpandWrapper: React.FC<TCellWrapper> = ({
   return (
     <StyledCellExpandWrapper
       $density={density}
+      $hasActions={colDef.preset === 'actions'}
       $horAlign={colDef?.align}
       $isEditMode={cellDef?.isEditMode}
+      $isExpanded={cellDef?.isExpanded}
       $toEdge={colDef?.toEdge}
       $verAlign={colDef?.verticalAlign}
       ref={ref}

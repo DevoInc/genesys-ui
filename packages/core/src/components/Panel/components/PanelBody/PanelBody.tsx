@@ -20,12 +20,10 @@ export interface PanelBodyProps
     IPanelBodyAttrs,
     Pick<IPanelContainerAttrs, 'size' | 'children'> {}
 
-export const PanelBody = React.forwardRef<
-  HTMLDivElement,
-  Resolve<PanelBodyProps>
->(
+export const PanelBody = React.forwardRef<HTMLElement, Resolve<PanelBodyProps>>(
   (
     {
+      as,
       children,
       removeSpace,
       hasScrollSpacing,
@@ -47,6 +45,7 @@ export const PanelBody = React.forwardRef<
 
     return (
       <Box
+        as={as}
         position="relative"
         flex="1 1 100%"
         overflow="auto"

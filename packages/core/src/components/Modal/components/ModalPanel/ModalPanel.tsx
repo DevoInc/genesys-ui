@@ -19,7 +19,6 @@ export interface ModalPanelProps
       | 'disableCloseOnOverlayClick'
       | 'height'
       | 'id'
-      | 'onRequestClose'
       | 'status'
       | 'style'
       | 'width'

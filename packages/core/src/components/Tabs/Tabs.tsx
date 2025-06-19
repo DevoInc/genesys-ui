@@ -34,13 +34,20 @@ const InternalTabs = React.forwardRef<HTMLDivElement, Resolve<TabsProps>>(
       children = [],
       colorScheme = 'base',
       contained,
+      height,
       size = 'md',
       wide,
       ...nativeProps
     },
     ref,
   ) => (
-    <TabsContainer {...nativeProps} contained={contained} size={size} ref={ref}>
+    <TabsContainer
+      {...nativeProps}
+      contained={contained}
+      height={height}
+      size={size}
+      ref={ref}
+    >
       <TabsContext.Provider
         value={{
           align,

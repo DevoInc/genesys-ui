@@ -54,6 +54,7 @@ export const SelectControl = <
   'aria-errormessage': ariaErrorMessage,
   'aria-describedby': ariaDescribedBy,
   'aria-labelledby': ariaLabelledBy,
+  'aria-label': ariaLabel,
   captureMenuScroll,
   components,
   isDisabled,
@@ -164,6 +165,7 @@ export const SelectControl = <
       aria-errormessage={
         evalStatus === 'error' ? contextBasedProps.ariaErrorMessage : undefined
       }
+      aria-label={ariaLabel}
       aria-labelledby={contextBasedProps.ariaLabelledBy}
       id={contextBasedProps.id}
       isDisabled={contextBasedProps.disabled}

@@ -34,6 +34,7 @@ export interface PaginationProps
     Omit<HFlexProps, 'onChange'> {}
 
 export const InternalPagination: React.FC<PaginationProps> = ({
+  'aria-label': ariaLabel = 'Pagination',
   as = 'nav',
   children,
   justifyContent = 'flex-end',
@@ -59,6 +60,7 @@ export const InternalPagination: React.FC<PaginationProps> = ({
   ) : (
     <Pagination._Container
       {...restHFlexProps}
+      aria-label={ariaLabel}
       as={as}
       size={size}
       justifyContent={justifyContent}

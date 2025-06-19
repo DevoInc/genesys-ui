@@ -11,6 +11,7 @@ export const DEFAULT_TEXTS = {
   nextPageTooltipText: 'Next page',
   pageSelectorLabel: 'Page selector',
   prevPageTooltipText: 'Previous page',
+  rangeLabel: 'Items per page selector',
   rangeText: 'items per page',
   selectPageTooltipTextFn: selectPageTooltipTextFn,
 };

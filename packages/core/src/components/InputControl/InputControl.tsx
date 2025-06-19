@@ -154,6 +154,7 @@ const InternalInputControl: React.FC<InputControlProps> = ({
     <InputControl._Container
       {...dataProps}
       onClick={onClick}
+      inputWidth={inputWidth}
       onMouseDown={onMouseDown}
       onMouseLeave={onMouseLeave}
       onMouseMove={onMouseMove}

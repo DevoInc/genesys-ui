@@ -39,6 +39,12 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
     <Box
       {...restBoxProps}
       elevation={elevation}
+      height={
+        height ||
+        (compact
+          ? `calc(${tabsContainerTokens.size.height.lg} - 2rem)`
+          : tabsContainerTokens.size.height.lg)
+      }
       id={id ? `${id}__container` : null}
       padding={padding}
       position={position}
@@ -54,13 +60,8 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
     >
       <HFlex
         alignItems={alignItems}
-        height={
-          height ||
-          (compact
-            ? `calc(${tabsContainerTokens.size.height.lg} - 2rem)`
-            : tabsContainerTokens.size.height.lg)
-        }
         justifyContent={justifyContent}
+        height="100%"
       >
         {children}
       </HFlex>

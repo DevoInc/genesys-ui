@@ -1,5 +1,6 @@
 import { Meta, Canvas, ArgTypes, Source } from '@storybook/addon-docs/blocks';
 
+import { SOURCE_CODE_INTERACTIVE_WITH_CHILDREN } from './__stories__';
 import * as Stories from './MenuItem.stories';
 
 <Meta title="Components/Navigation/Menu/Components/MenuItem/Overview" />
@@ -65,6 +66,21 @@ at the end of the wrapper as a sibling of the main interactive content.
 
 The block is positioned in absolute way and vertically aligned to the center. The width of this block
 is assigned automatically to the padding-right of the main interactive content so it won't be overlapped.
+
+### With children
+
+If you create a case of the MenuItem, but using the children instead of the content props,
+and you have interactive content, then you have to use the `Menu.Item._Wrapper` and the
+`Menu.Item._Inner` to create your content. After that you have to include your interactive content
+after the 'inner' and inside the 'wrapper' block.
+
+In addition, you can use the `useMenuItemPadding` to apply the necessary padding-right to the MenuItem
+based in the width of your custom interactive block. You only have to pass as hook arguments the reference of
+your MenuItem and your interactive block.
+
+<Source code={SOURCE_CODE_INTERACTIVE_WITH_CHILDREN} />
+
+<Canvas of={Stories.WithInteractiveContentAndChildren} />
 
 ## Readonly
 

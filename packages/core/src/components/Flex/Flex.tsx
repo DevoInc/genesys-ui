@@ -10,7 +10,7 @@ import { mergeStyles } from '../../helpers';
 
 export interface FlexProps extends BoxProps, ILayoutFlexCss {}
 
-const InternalFlex = React.forwardRef<HTMLDivElement, Resolve<FlexProps>>(
+const InternalFlex = React.forwardRef<HTMLElement, Resolve<FlexProps>>(
   (
     {
       alignContent,
