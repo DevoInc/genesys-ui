@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { set } from 'date-fns';
+import { tz as tzFn } from '@date-fns/tz';
 
 import {
   Flex,
@@ -34,6 +35,8 @@ export interface TimeProps
   disabled?: boolean;
   /** Internacionalization object */
   i18n?: TTimeI18n;
+  /** Timezone */
+  tz?: string;
 }
 
 export const Time: React.FC<TimeProps> = ({
@@ -49,6 +52,7 @@ export const Time: React.FC<TimeProps> = ({
   i18n: userI18n = defaultTimeI18n,
   minDate,
   maxDate,
+  tz = Intl.DateTimeFormat().resolvedOptions().timeZone,
   ...dataProps
 }) => {
   const i18n = useMergeI18n(userI18n, defaultTimeI18n) as TTimeI18n;
@@ -64,7 +68,7 @@ export const Time: React.FC<TimeProps> = ({
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             if (event.target.value !== '') {
               const time = durationToTime(event.target.valueAsNumber);
-              onChange(set(value, time).getTime());
+              onChange(set(value, time, { in: tzFn(tz) }).getTime());
             }
           }}
           size={size}
@@ -72,20 +76,20 @@ export const Time: React.FC<TimeProps> = ({
           type={'time'}
           value={
             value &&
-            formatDate({ format: getFormatTimeStr(hasSeconds, hasMillis) })(
+            formatDate({ format: getFormatTimeStr(hasSeconds, hasMillis), tz })(
               value,
             )
           }
           disabled={disabled}
           min={
             minDate &&
-            formatDate({ format: getFormatTimeStr(hasSeconds, hasMillis) })(
+            formatDate({ format: getFormatTimeStr(hasSeconds, hasMillis), tz })(
               minDate,
             )
           }
           max={
             maxDate &&
-            formatDate({ format: getFormatTimeStr(hasSeconds, hasMillis) })(
+            formatDate({ format: getFormatTimeStr(hasSeconds, hasMillis), tz })(
               maxDate,
             )
           }

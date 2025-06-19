@@ -55,7 +55,7 @@ describe('components', () => {
 
       expect(onChange).toHaveBeenCalledWith([
         new TZDate(2025, 4, 15, tz).valueOf(),
-        new TZDate(2025, 5, 15, 23, 59, 59, 999, tz).valueOf(),
+        new TZDate(2025, 5, 15, tz).valueOf(),
       ]);
     });
 

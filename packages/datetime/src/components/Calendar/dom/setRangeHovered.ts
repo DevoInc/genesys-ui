@@ -1,10 +1,11 @@
 import type { ICalendarDay } from '../declarations';
 
 export const setRangeHovered = (
-  [cell, day]: [HTMLDivElement, ICalendarDay],
+  cell: HTMLDivElement,
+  index: number,
   range: ICalendarDay[],
 ) => {
-  if (day.value >= range[0].value && day.value <= range[1].value) {
+  if (index >= range[0].value && index <= range[1].value) {
     cell.classList.add('range-hovered');
   } else {
     cell.classList.remove('range-hovered');

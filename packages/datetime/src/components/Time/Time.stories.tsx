@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react-vite';
+import { TZDate } from '@date-fns/tz';
 
 import { Time } from './Time';
 
@@ -49,4 +50,27 @@ export const Limits: Story = {
         />
       );
     })(),
+};
+
+const tz = 'UTC-06:00';
+const nowTZ = new TZDate(2025, 6, 15, 10, 30, 15, 300, tz);
+export const Timezone: Story = {
+  tags: ['isHidden'],
+  args: {
+    tz,
+    minDate: new TZDate(2025, 6, 10, 9, 0, 0, tz),
+    maxDate: new TZDate(2025, 6, 20, 9, 0, 0, tz),
+  },
+  render: (props) => {
+    const [value, setValue] = React.useState<number | Date>(nowTZ);
+    return (
+      <Time
+        {...props}
+        value={value}
+        onChange={(ts: number) => {
+          setValue(ts);
+        }}
+      />
+    );
+  },
 };

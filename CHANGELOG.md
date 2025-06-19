@@ -1,5 +1,23 @@
 # Changelog
 
+## [20.0.1](https://github.com/DevoInc/genesys-ui/compare/v20.0.0...v20.0.1) (2025-06-16)
+
+### Bug Fixes
+
+* **datetime:** Time missing the tz when onChange ([0d13b80](https://github.com/DevoInc/genesys-ui/commit/0d13b80bcb7bab2f957915852ac91b2d37849657))
+* **datetime:** Timezone on Time selector ([06241cc](https://github.com/DevoInc/genesys-ui/commit/06241cc45609d38b99ec27a005035dc1bf668d35))
+
+## [20.0.0](https://github.com/DevoInc/genesys-ui/compare/v19.0.0...v20.0.0) (2025-06-16)
+
+### ⚠ BREAKING CHANGES
+
+* **datetime:** revert the end range default to 0H0m0s0SSS
+
+### Bug Fixes
+
+* **datetime:** missing dependency about the function for Calendar cell data ([6abb78f](https://github.com/DevoInc/genesys-ui/commit/6abb78fd7010a7458c96257beb4a055beb95bccf))
+* **datetime:** revert the end range default to 0H0m0s0SSS ([5b26ec2](https://github.com/DevoInc/genesys-ui/commit/5b26ec20b15d46aa44c5237c523010082a712f3b))
+
 ## [19.0.0](https://github.com/DevoInc/genesys-ui/compare/v18.9.0...v19.0.0) (2025-06-14)
 
 ### ⚠ BREAKING CHANGES
