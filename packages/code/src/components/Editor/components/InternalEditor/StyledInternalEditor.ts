@@ -1,6 +1,6 @@
 import type * as monaco from 'monaco-editor-core';
-import { type IStyledOverloadCss } from '@devoinc/genesys-ui';
 import styled, { css } from 'styled-components';
+import { type IStyledOverloadCss } from '@devoinc/genesys-ui';
 
 export interface StyledInternalEditorProps extends IStyledOverloadCss {
   $height: string | number;
@@ -35,6 +35,24 @@ export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
       width: ${$width};
 
       .monaco-editor {
+        // Find widget
+        .find-widget {
+          background-color: ${theme.alias.color.background.surface.base
+            .raised} !important;
+          color: ${theme.alias.color.text.body.base} !important;
+          box-shadow: ${theme.alias.elevation.boxShadow.depth
+            .activated} !important;
+
+          .monaco-sash {
+            background-color: ${theme.alias.color.background.surface.base
+              .raised} !important;
+          }
+
+          .button {
+            color: ${theme.alias.color.text.action.quiet.enabled} !important;
+          }
+        }
+
         // Readonly - Smart Editor -Style
 
         ${readOnly &&
@@ -89,6 +107,10 @@ export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
         // Line numbers - Smart Editor - Style
         ${lineNumbers &&
         css`
+          .line-numbers {
+            color: ${theme.alias.color.text.body.base} !important;
+          }
+
           .margin-view-overlays {
             background-color: ${cmpTokens.line.color.background.base};
           }
