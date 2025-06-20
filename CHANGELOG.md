@@ -1,5 +1,11 @@
 # Changelog
 
+## [20.1.0](https://github.com/DevoInc/genesys-ui/compare/v20.0.1...v20.1.0) (2025-06-19)
+
+### Features
+
+* QUV-3514 Improvements for several components. ([3c0c579](https://github.com/DevoInc/genesys-ui/commit/3c0c579d8a9cc135927e49abb71ec91528ed8d8f))
+
 ## [20.0.1](https://github.com/DevoInc/genesys-ui/compare/v20.0.0...v20.0.1) (2025-06-16)
 
 ### Bug Fixes
