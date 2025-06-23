@@ -1,5 +1,11 @@
 # Changelog
 
+## [20.1.2](https://github.com/DevoInc/genesys-ui/compare/v20.1.1...v20.1.2) (2025-06-23)
+
+### Bug Fixes
+
+* QUV-1666 Override styles from external CSS libraries in Editor component. ([0d6645a](https://github.com/DevoInc/genesys-ui/commit/0d6645ab1062d64de1a162f5276d1dc97f0a0a85))
+
 ## [20.1.1](https://github.com/DevoInc/genesys-ui/compare/v20.1.0...v20.1.1) (2025-06-23)
 
 ### Bug Fixes
