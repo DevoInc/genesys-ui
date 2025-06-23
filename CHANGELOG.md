@@ -1,5 +1,11 @@
 # Changelog
 
+## [20.1.1](https://github.com/DevoInc/genesys-ui/compare/v20.1.0...v20.1.1) (2025-06-23)
+
+### Bug Fixes
+
+* **Editor:** QUV-3578 Adapt the find-widget styles to dark scheme. ([d1549ac](https://github.com/DevoInc/genesys-ui/commit/d1549ac46f848052e4303ec7094b984894610ea1))
+
 ## [20.1.0](https://github.com/DevoInc/genesys-ui/compare/v20.0.1...v20.1.0) (2025-06-19)
 
 ### Features
