@@ -35,7 +35,9 @@ export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
       width: ${$width};
 
       .monaco-editor {
+        //
         // Find widget
+
         .find-widget {
           background-color: ${theme.alias.color.background.surface.base
             .raised} !important;
@@ -48,8 +50,47 @@ export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
               .raised} !important;
           }
 
+          > .find-part .monaco-inputbox,
+          > .replace-part .monaco-inputbox {
+            border-radius: ${theme.alias.fields.shape.borderRadius};
+
+            &.synthetic-focus {
+              outline: 0 !important;
+              box-shadow: ${theme.alias.fields.elevation.boxShadow.base
+                .focused};
+            }
+          }
+
           .button {
             color: ${theme.alias.color.text.action.quiet.enabled} !important;
+
+            // to avoid overrides from css libraries which use the same '.button' selector
+            min-width: 0;
+            padding: 0;
+            background-color: transparent;
+
+            &.disabled {
+              opacity: ${theme.alias.shape.opacity.disabled} !important;
+            }
+
+            &:not(.disabled):hover,
+            &:not(.disabled):focus,
+            &:not(.disabled):active {
+              background-color: ${theme.cmp.button.color.background.quiet
+                .hovered};
+            }
+
+            &::before {
+              position: relative;
+              width: auto;
+              height: auto;
+            }
+          }
+
+          // to avoid overrides from css libraries
+
+          textarea:focus {
+            box-shadow: none;
           }
         }
 
