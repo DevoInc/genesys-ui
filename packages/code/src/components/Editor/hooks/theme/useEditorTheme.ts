@@ -170,6 +170,36 @@ export const useEditorTheme = (): {
         'editorOverviewRuler.background': convertRGBAToHexA(
           theme.cmp.diffEditor.color.background.editorOverviewRuler,
         ),
+        'input.background': convertRGBAToHexA(
+          theme.cmp.inputControl.color.background.base.enabled,
+        ),
+        'input.foreground': convertRGBAToHexA(
+          theme.cmp.inputControl.color.text.base.enabled,
+        ),
+        'input.border': convertRGBAToHexA(
+          theme.cmp.inputControl.color.border.base.enabled,
+        ),
+        'input.placeholderForeground': convertRGBAToHexA(
+          theme.cmp.inputControl.color.text.base.placeholder,
+        ),
+        'inputValidation.infoBackground': convertRGBAToHexA(
+          theme.cmp.boxMessage.color.background.info,
+        ),
+        'inputValidation.infoBorder': convertRGBAToHexA(
+          theme.cmp.boxMessage.color.border.info,
+        ),
+        'inputValidation.warningBackground': convertRGBAToHexA(
+          theme.cmp.boxMessage.color.background.warning,
+        ),
+        'inputValidation.warningBorder': convertRGBAToHexA(
+          theme.cmp.boxMessage.color.border.warning,
+        ),
+        'inputValidation.errorBackground': convertRGBAToHexA(
+          theme.cmp.boxMessage.color.background.error,
+        ),
+        'inputValidation.errorBorder': convertRGBAToHexA(
+          theme.cmp.boxMessage.color.border.error,
+        ),
       },
     },
   };
