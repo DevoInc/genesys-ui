@@ -21,22 +21,25 @@ export const PanelFooterContainer = React.forwardRef<
   HTMLElement,
   PanelFooterContainerProps
 >(
-  ({
-    as = 'footer',
-    customContent,
-    hasBoxShadow,
-    bordered,
-    children,
-    hasBackground,
-    padding,
-    paddingBottom,
-    paddingLeft,
-    paddingRight,
-    paddingTop,
-    removeSpace,
-    size = 'md',
-    style,
-  }) => {
+  (
+    {
+      as = 'footer',
+      customContent,
+      hasBoxShadow,
+      bordered,
+      children,
+      hasBackground,
+      padding,
+      paddingBottom,
+      paddingLeft,
+      paddingRight,
+      paddingTop,
+      removeSpace,
+      size = 'md',
+      style,
+    },
+    ref,
+  ) => {
     const theme = useTheme();
     const commonProps = {
       as,
@@ -60,7 +63,9 @@ export const PanelFooterContainer = React.forwardRef<
       zIndex: 1,
     };
     return customContent ? (
-      <Box {...commonProps}>{children}</Box>
+      <Box {...commonProps} ref={ref}>
+        {children}
+      </Box>
     ) : (
       <Flex {...commonProps} alignItems="center">
         {children}

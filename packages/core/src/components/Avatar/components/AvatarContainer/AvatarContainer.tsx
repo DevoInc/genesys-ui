@@ -73,6 +73,7 @@ export const AvatarContainer: React.FC<AvatarContainerProps> = ({
   return (
     <StyledAvatarContainer
       {...restProps}
+      as={as}
       $bordered={bordered}
       css={style}
       $colorScheme={colorScheme}
