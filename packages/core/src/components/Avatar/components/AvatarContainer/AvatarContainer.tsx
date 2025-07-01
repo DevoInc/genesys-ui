@@ -50,6 +50,7 @@ export interface AvatarContainerProps
     > {}
 
 export const AvatarContainer: React.FC<AvatarContainerProps> = ({
+  as,
   bordered,
   children,
   colorScheme = AVATAR_COLOR_SCHEME_DEFAULT_VALUE,
