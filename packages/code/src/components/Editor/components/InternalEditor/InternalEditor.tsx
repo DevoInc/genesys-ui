@@ -37,8 +37,8 @@ export const InternalEditor: React.FC<InternalEditorProps> = ({
       $height={height}
       $width={width}
       $bordered={bordered}
-      lineNumbers={options?.lineNumbers}
-      readOnly={options?.readOnly}
+      $lineNumbers={options?.lineNumbers}
+      $readOnly={options?.readOnly}
       $minimap={!!options?.minimap?.enabled}
     />
   );

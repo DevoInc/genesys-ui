@@ -5,17 +5,17 @@ import { type IStyledOverloadCss } from '@devoinc/genesys-ui';
 export interface StyledInternalEditorProps extends IStyledOverloadCss {
   $height: string | number;
   $width: string | number;
-  readOnly?: boolean;
+  $readOnly?: boolean;
   $bordered?: boolean;
   $minimap?: boolean;
-  lineNumbers?: monaco.editor.IStandaloneEditorConstructionOptions['lineNumbers'];
+  $lineNumbers?: monaco.editor.IStandaloneEditorConstructionOptions['lineNumbers'];
 }
 
 export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
   ${({
     $height,
-    lineNumbers = true,
-    readOnly,
+    $lineNumbers = true,
+    $readOnly,
     $width,
     theme,
     $bordered,
@@ -96,7 +96,7 @@ export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
 
         // Readonly - Smart Editor -Style
 
-        ${readOnly &&
+        ${$readOnly &&
         css`
           .monaco-editor-background,
           .sticky-widget {
@@ -146,7 +146,7 @@ export const StyledInternalEditor = styled.div<StyledInternalEditorProps>`
         }
 
         // Line numbers - Smart Editor - Style
-        ${lineNumbers &&
+        ${$lineNumbers &&
         css`
           .line-numbers {
             color: ${theme.alias.color.text.body.base} !important;

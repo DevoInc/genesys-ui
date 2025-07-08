@@ -51,8 +51,8 @@ export const InternalDiffEditor: React.FC<InternalDiffEditorProps> = ({
       ref={containerRef}
       $height={height}
       $width={width}
-      lineNumbers={options?.lineNumbers}
-      readOnly={options?.readOnly}
+      $lineNumbers={options?.lineNumbers}
+      $readOnly={options?.readOnly}
     />
   );
 };
