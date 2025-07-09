@@ -1,14 +1,9 @@
 import * as React from 'react';
 
 import { Grid } from '../../../Grid';
-import {
-  IStyledOverloadCss,
-  IStyledPolymorphic,
-} from '../../../../declarations';
+import type { IStyleAttr, IStyledPolymorphic } from '../../../../declarations';
 
-export interface AppLayoutLeadProps
-  extends IStyledOverloadCss,
-    IStyledPolymorphic {
+export interface AppLayoutLeadProps extends IStyleAttr, IStyledPolymorphic {
   children: React.ReactNode;
 }
 

@@ -3,23 +3,27 @@ import * as React from 'react';
 import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
-  IStyledOverloadCss,
-  IStyledPolymorphic,
+  IStyleAttr,
+  IPolymorphic,
 } from '../../../../declarations';
 import type { ITag } from '../../declarations';
-import { StyledTagContainer } from './StyledTagContainer';
+import { TAG_CLASS_NAME_BASE } from '../../constants';
+import { getAccTextColor, isValidColor } from '../../../../helpers';
 
 export interface TagContainerProps
-  extends IStyledPolymorphic,
-    IStyledOverloadCss,
+  extends IPolymorphic,
+    IStyleAttr,
     IGlobalAttrs,
     IGlobalAriaAttrs,
     ITag {
   children?: React.ReactNode;
+  className?: React.HTMLAttributes<HTMLElement>['className'];
 }
 
 export const TagContainer: React.FC<TagContainerProps> = ({
+  as: Component = 'span',
   children,
+  className,
   colorScheme = 'neutral',
   bold,
   quiet,
@@ -28,17 +32,36 @@ export const TagContainer: React.FC<TagContainerProps> = ({
   style,
   tooltip,
   ...restNativeProps
-}) => (
-  <StyledTagContainer
-    {...restNativeProps}
-    $colorScheme={colorScheme}
-    css={style}
-    $bold={bold}
-    $quiet={quiet}
-    $wide={wide}
-    $size={size}
-    title={tooltip}
-  >
-    {children}
-  </StyledTagContainer>
-);
+}) => {
+  const classNameBase = TAG_CLASS_NAME_BASE;
+  const customColorStyles = isValidColor(colorScheme)
+    ? {
+        backgroundColor: colorScheme,
+        color: getAccTextColor(colorScheme, '#fff', '#222'),
+      }
+    : null;
+  const classNames = [
+    `${classNameBase} `,
+    `${classNameBase}--${size} `,
+    `${classNameBase}--${isValidColor(colorScheme) ? 'custom-color' : colorScheme} `,
+    `${bold ? `${classNameBase}--bold ` : ''}`,
+    `${quiet ? `${classNameBase}--quiet ` : ''}`,
+    `${wide ? `${classNameBase}--wide ` : ''}`,
+    `${className} `,
+  ]
+    .join('')
+    .trim();
+  return (
+    <Component
+      {...restNativeProps}
+      className={classNames}
+      title={tooltip}
+      style={{
+        ...customColorStyles,
+        ...style,
+      }}
+    >
+      {children}
+    </Component>
+  );
+};

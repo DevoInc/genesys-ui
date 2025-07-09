@@ -16,7 +16,7 @@ export const StoryWrapper: React.FC<StoryWrapperProps> = ({
   display = 'block',
   height = '100%',
   justifyContent,
-  padding = '2rem 4rem',
+  padding = 'cmp-md cmp-xl',
   width = '100%',
   ...props
 }) => {

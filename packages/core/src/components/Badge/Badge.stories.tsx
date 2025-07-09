@@ -13,6 +13,7 @@ const meta: Meta<typeof Badge> = {
   args: {
     size: 'md',
     colorScheme: 'neutral',
+    as: 'span',
   },
 };
 
@@ -131,7 +132,7 @@ export const Custom: Story = {
     ((props) => (
       <HFlex spacing="cmp-xs">
         <Badge._Container {...props} style={{ backgroundColor: 'darkblue' }}>
-          <Badge._Text color="white" style={{ fontStyle: 'italic' }}>
+          <Badge._Text style={{ fontStyle: 'italic', color: '#fff' }}>
             Custom
           </Badge._Text>
         </Badge._Container>

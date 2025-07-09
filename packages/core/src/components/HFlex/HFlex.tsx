@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import type { TGlobalSpacing } from '../../declarations';
-import { Resolve } from '../../typeFunctions';
+import { H_FLEX_CLASS_NAME_BASE } from './constants';
 import { Flex, type FlexProps } from '../Flex';
 import { HFlexItem } from './components';
 
@@ -10,19 +10,20 @@ export interface HFlexProps
     FlexProps,
     'flexDirection' | 'flexWrap' | 'gap' | 'columnGap' | 'rowGap'
   > {
-  /** If the children fit full width of the HFlex parent*/
+  /** If the children fit the full width of the HFlex parent*/
   childrenFitFullWidth?: boolean;
   /** Horizontal spacing between children items (column-gap).
    * More info about spacing values in [Predefined spacing values](?path=/docs/components-layout-box--overview#spacing-props) */
   spacing?: TGlobalSpacing;
 }
 
-const InternalHFlex = React.forwardRef<HTMLElement, Resolve<HFlexProps>>(
+const InternalHFlex = React.forwardRef<HTMLElement, HFlexProps>(
   (
     {
       alignItems = 'center',
       children,
       childrenFitFullWidth = false,
+      className,
       spacing = 'cmp-md',
       ...flexProps
     },
@@ -33,6 +34,12 @@ const InternalHFlex = React.forwardRef<HTMLElement, Resolve<HFlexProps>>(
       ref={ref}
       alignItems={alignItems}
       childrenFlex={childrenFitFullWidth && '1'}
+      className={[
+        `${H_FLEX_CLASS_NAME_BASE} `,
+        className ? `${className} ` : '',
+      ]
+        .join('')
+        .trim()}
       columnGap={spacing}
       flexDirection="row"
       flexWrap="nowrap"

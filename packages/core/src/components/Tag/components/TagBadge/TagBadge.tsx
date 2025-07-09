@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { Badge, type BadgeProps } from '../../../Badge';
-import { mergeStyles } from '../../../../helpers';
 
 export interface TagBadgeProps extends BadgeProps {}
 
@@ -12,13 +10,15 @@ export const TagBadge: React.FC<TagBadgeProps> = ({
   style,
   ...restBadgeProps
 }) => {
-  const marginRight = useTheme().cmp.tag.badge.space.marginRight[size];
   return (
     <Badge
       {...restBadgeProps}
       colorScheme={colorScheme}
       size={size}
-      style={mergeStyles(`margin-right: ${marginRight}`, style)}
+      style={{
+        marginRight: `var(--cmp-tag-badge-space-margin-right-${size})`,
+        ...style,
+      }}
     />
   );
 };

@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { FlexItem } from '../../components';
-import { StyledLayoutContentHelper } from '../../../../../stories/components/styled';
 import { Flex } from '../../Flex';
+import { LayoutContentHelper } from '../../../../../stories/components';
 
 const meta: Meta<typeof FlexItem> = {
   title: 'Components/Layout/Flex/Components/FlexItem',
@@ -17,7 +17,7 @@ export const Playground: Story = {
   render: (args) =>
     ((props) => (
       <Flex.Item {...props}>
-        <StyledLayoutContentHelper>Flex.Item content</StyledLayoutContentHelper>
+        <LayoutContentHelper>Flex.Item content</LayoutContentHelper>
       </Flex.Item>
     ))(args),
 };

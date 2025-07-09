@@ -7,7 +7,9 @@ import type { TIconSize } from './declarations';
 
 import { getIconColor, getIconSize } from '../../helpers';
 
-export interface IconProps extends Pick<IGlobalAttrs, 'tooltip'> {
+export interface IconProps
+  extends Pick<IGlobalAttrs, 'tooltip'>,
+    Pick<React.SVGAttributes<HTMLElement>, 'className'> {
   children?: React.ReactNode;
   /** This property defines the custom icon color */
   color?: string;
@@ -28,6 +30,7 @@ export interface IconProps extends Pick<IGlobalAttrs, 'tooltip'> {
 export const Icon: React.FC<IconProps> = ({
   color,
   colorScheme,
+  className,
   children,
   size,
   strong,
@@ -38,6 +41,7 @@ export const Icon: React.FC<IconProps> = ({
   return (
     <IconContext.Provider
       value={{
+        className,
         color: getIconColor(theme)({
           color,
           colorScheme,

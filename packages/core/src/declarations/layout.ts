@@ -14,7 +14,7 @@ import type {
   ILayoutAriaAttrs,
   ITriggerAriaAttrs,
 } from './ariaAttrs';
-import type { IStyledOverloadCss, IStyledPolymorphic } from './styled';
+import type { IStyleAttr, IStyledPolymorphic } from './styled';
 
 export interface ILayoutBoxCss {
   /** The align-self CSS property overrides a flex item's align-items value. In Flexbox, it aligns the item on the cross axis.*/
@@ -184,7 +184,7 @@ export interface ILayoutGridItemCss {
 
 export interface ILayoutBox
   extends IStyledPolymorphic,
-    IStyledOverloadCss,
+    IStyleAttr,
     IGlobalAttrs,
     IGlobalAriaAttrs,
     IDragAndDropAriaAttrs,

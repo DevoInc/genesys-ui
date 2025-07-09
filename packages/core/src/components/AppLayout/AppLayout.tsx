@@ -1,15 +1,10 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { Grid } from '../Grid';
 import { AppLayoutBar, AppLayoutContent, AppLayoutLead } from './components';
-import type {
-  IStyledOverloadCss,
-  IStyledPolymorphic,
-} from '../../declarations';
-import { mergeStyles } from '../../helpers';
+import type { IStyleAttr, IStyledPolymorphic } from '../../declarations';
 
-export interface AppLayoutProps extends IStyledPolymorphic, IStyledOverloadCss {
+export interface AppLayoutProps extends IStyledPolymorphic, IStyleAttr {
   children: React.ReactNode;
 }
 
@@ -18,21 +13,18 @@ export const InternalAppLayout: React.FC<AppLayoutProps> = ({
   children,
   style,
 }) => {
-  const theme = useTheme();
   return (
     <Grid
       as={as}
       gridTemplateAreas='"app-bar" "app-lead" "app-content"'
       gridTemplateRows="auto auto 1fr"
-      style={mergeStyles(
-        {
-          width: theme.cmp.appLayout.size.width,
-          height: theme.cmp.appLayout.size.height,
-          backgroundColor: theme.cmp.appLayout.color.background,
-          overflow: 'hidden',
-        },
-        style,
-      )}
+      style={{
+        width: 'var(--cmp-app-layout-size-width)',
+        height: 'var(--cmp-app-layout-size-height)',
+        backgroundColor: 'var(--cmp-app-layout-color-background)',
+        overflow: 'hidden',
+        ...style,
+      }}
     >
       {children}
     </Grid>

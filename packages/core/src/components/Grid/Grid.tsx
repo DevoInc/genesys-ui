@@ -1,21 +1,29 @@
 import * as React from 'react';
 
+import {
+  FLEX_PROPS_CLASS_NAMES_MAP,
+  GRID_PROPS_CLASS_NAMES_MAP,
+} from '../../constants';
+import { GRID_CLASS_NAME_BASE } from './constants';
 import type { ILayoutGridCss } from '../../declarations';
-
-import { Resolve } from '../../typeFunctions';
-import { mergeStyles } from '../../helpers';
-import { gridMixin } from './mixins';
-
+import {
+  getBasedCssVariablesStyle,
+  getMappedClassNames,
+  getSpacingClassNames,
+  getVariableBasedClassNames,
+} from '../../helpers';
 import { Box, type BoxProps } from '../Box';
 import { GridItem } from './components';
 
 export interface GridProps extends ILayoutGridCss, BoxProps {}
 
-const InternalGrid = React.forwardRef<HTMLElement, Resolve<GridProps>>(
+const InternalGrid = React.forwardRef<HTMLElement, GridProps>(
   (
     {
       alignContent,
       alignItems,
+      className,
+      display,
       gridTemplateAreas,
       gridTemplateColumns,
       gridAutoFlow,
@@ -31,31 +39,55 @@ const InternalGrid = React.forwardRef<HTMLElement, Resolve<GridProps>>(
       ...restBoxProps
     },
     ref,
-  ) => (
-    <Box
-      {...restBoxProps}
-      ref={ref}
-      style={mergeStyles(
-        gridMixin({
+  ) => {
+    const classNames = [
+      `${GRID_CLASS_NAME_BASE} `,
+      ...getSpacingClassNames({
+        columnGap,
+        gap,
+        rowGap,
+      }),
+      ...getMappedClassNames(
+        {
           alignContent,
           alignItems,
-          gridTemplateAreas,
-          gridTemplateColumns,
-          gridAutoFlow,
-          gap,
-          columnGap,
-          inline,
           justifyContent,
           justifyItems,
-          gridTemplateRows,
-          rowGap,
-        }),
-        style,
-      )}
-    >
-      {children}
-    </Box>
-  ),
+        },
+        FLEX_PROPS_CLASS_NAMES_MAP,
+      ),
+      ...getMappedClassNames(
+        {
+          gridAutoFlow,
+        },
+        GRID_PROPS_CLASS_NAMES_MAP,
+      ),
+      ...getVariableBasedClassNames({
+        gridTemplateAreas,
+        gridTemplateColumns,
+        gridTemplateRows,
+      }),
+      className && `${className} `,
+    ]
+      .join('')
+      .trim();
+    const basedCssVariablesStyle = getBasedCssVariablesStyle({
+      gridTemplateAreas,
+      gridTemplateColumns,
+      gridTemplateRows,
+    });
+    return (
+      <Box
+        {...restBoxProps}
+        ref={ref}
+        className={classNames}
+        display={display || (inline ? 'inline-grid' : 'grid')}
+        style={{ ...basedCssVariablesStyle, ...style }}
+      >
+        {children}
+      </Box>
+    );
+  },
 );
 
 export const Grid = InternalGrid as typeof InternalGrid & {

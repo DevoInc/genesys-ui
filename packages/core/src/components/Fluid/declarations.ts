@@ -1,6 +1,4 @@
-import { TGlobalSpacing, HTMLTag, TLayoutSpacing } from '../../declarations';
-import { PickUnion } from '../../typeFunctions';
+import type { TGlobalSpacing, HTMLTag } from '../../declarations';
 
-export type TContainerSpacing = PickUnion<TGlobalSpacing, '0'> | TLayoutSpacing;
-
+export type TContainerSpacing = TGlobalSpacing;
 export type TFluidAs = HTMLTag;

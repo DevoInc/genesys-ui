@@ -23,8 +23,9 @@
   "license": "MIT",
   "devDependencies": {
     "@devoinc/genesys-base-styles": "^2.1.0",
-    "@devoinc/genesys-brand-devo": "^8.11.0",
+    "@devoinc/genesys-brand-devo": "^8.12.0",
     "@devoinc/genesys-icons": "^8.0.0",
+    "@devoinc/genesys-styles": "^2.9.0",
     "@devoinc/genesys-tokens-types": "^7.16.0",
     "@devoinc/holo": "^2.0.1",
     "@release-it-plugins/workspaces": "^4.2.0",
@@ -99,12 +100,7 @@
     }
   },
   "workspaces": [
-    "packages/core",
-    "packages/code",
-    "packages/datetime",
-    "packages/color",
-    "packages/upload",
-    "packages/table"
+    "packages/core"
   ],
   "engines": {
     "node": ">=18",

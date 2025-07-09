@@ -1,16 +1,31 @@
 import * as React from 'react';
 
 import type { IDataAttrs, ILayoutBox } from '../../declarations';
-import type { Resolve } from '../../typeFunctions';
-import { StyledBox } from './StyledBox';
+import {
+  FLEX_PROPS_CLASS_NAMES_MAP,
+  LAYOUT_PROPS_CLASS_NAMES_MAP,
+} from '../../constants';
+import { BOX_CLASS_NAME_BASE } from './constants';
+import { camelToKebab } from '../../utils';
+import {
+  getBasedCssVariablesStyle,
+  getSpacingClassNames,
+  getVariableBasedClassNames,
+} from '../../helpers';
+import { getMappedClassNames } from '../../helpers';
 
-export interface BoxProps extends IDataAttrs, ILayoutBox {}
+export interface BoxProps
+  extends IDataAttrs,
+    ILayoutBox,
+    Pick<React.HTMLAttributes<HTMLElement>, 'className'> {}
 
-export const Box = React.forwardRef<HTMLElement, Resolve<BoxProps>>(
+export const Box = React.forwardRef<HTMLElement, BoxProps>(
   (
     {
       alignSelf,
+      as: Component = 'div',
       children,
+      className,
       cssTranslate,
       display,
       elevation,
@@ -49,48 +64,87 @@ export const Box = React.forwardRef<HTMLElement, Resolve<BoxProps>>(
       ...nativeProps
     },
     ref,
-  ) => (
-    <StyledBox
-      {...nativeProps}
-      ref={ref}
-      $alignSelf={alignSelf}
-      css={style}
-      $cssTranslate={cssTranslate}
-      $display={display}
-      $elevation={elevation}
-      $flex={flex}
-      $height={height}
-      $inset={inset}
-      $margin={margin}
-      $marginBottom={marginBottom}
-      $marginLeft={marginLeft}
-      $marginRight={marginRight}
-      $marginTop={marginTop}
-      $maxHeight={maxHeight}
-      $maxWidth={maxWidth}
-      $minHeight={minHeight}
-      $minWidth={minWidth}
-      $opacity={opacity}
-      $overflow={overflow}
-      $overflowX={overflowX}
-      $overflowY={overflowY}
-      $padding={padding}
-      $paddingBottom={paddingBottom}
-      $paddingLeft={paddingLeft}
-      $paddingRight={paddingRight}
-      $paddingTop={paddingTop}
-      $position={position}
-      $positionBottom={positionBottom}
-      $positionLeft={positionLeft}
-      $positionRight={positionRight}
-      $positionTop={positionTop}
-      title={tooltip}
-      $verticalAlign={verticalAlign}
-      $visibility={visibility}
-      $width={width}
-      $zIndex={zIndex}
-    >
-      {children}
-    </StyledBox>
-  ),
+  ) => {
+    const elevationClassName = elevation
+      ? `elevation--${camelToKebab(elevation)} `
+      : '';
+    const classNames = [
+      `${BOX_CLASS_NAME_BASE} `,
+      ...getSpacingClassNames({
+        margin,
+        marginBottom,
+        marginLeft,
+        marginRight,
+        marginTop,
+        padding,
+        paddingBottom,
+        paddingLeft,
+        paddingRight,
+        paddingTop,
+      }),
+      ...getMappedClassNames({ alignSelf }, FLEX_PROPS_CLASS_NAMES_MAP),
+      ...getMappedClassNames(
+        {
+          display,
+          overflow,
+          overflowX,
+          overflowY,
+          position,
+          verticalAlign,
+          visibility,
+        },
+        LAYOUT_PROPS_CLASS_NAMES_MAP,
+      ),
+      ...getVariableBasedClassNames({
+        cssTranslate,
+        flex,
+        height,
+        inset,
+        maxHeight,
+        maxWidth,
+        minHeight,
+        minWidth,
+        opacity,
+        positionBottom,
+        positionLeft,
+        positionRight,
+        positionTop,
+        width,
+        zIndex,
+      }),
+      elevationClassName,
+      className && `${className}`,
+    ]
+      .join('')
+      .trim();
+    const basedCssVariablesStyle = getBasedCssVariablesStyle({
+      positionBottom,
+      flex,
+      height,
+      inset,
+      positionLeft,
+      maxHeight,
+      maxWidth,
+      minHeight,
+      minWidth,
+      opacity,
+      positionRight,
+      positionTop,
+      cssTranslate,
+      width,
+      zIndex,
+    });
+
+    return (
+      <Component
+        ref={ref}
+        {...nativeProps}
+        className={classNames}
+        style={{ ...basedCssVariablesStyle, ...style }}
+        title={tooltip}
+      >
+        {children}
+      </Component>
+    );
+  },
 );

@@ -1,15 +1,9 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { Grid } from '../../../Grid';
-import type {
-  IStyledOverloadCss,
-  IStyledPolymorphic,
-} from '../../../../declarations';
+import type { IStyleAttr, IStyledPolymorphic } from '../../../../declarations';
 
-export interface AppLayoutBarProps
-  extends IStyledOverloadCss,
-    IStyledPolymorphic {
+export interface AppLayoutBarProps extends IStyleAttr, IStyledPolymorphic {
   children: React.ReactNode;
 }
 
@@ -18,13 +12,12 @@ export const AppLayoutBar: React.FC<AppLayoutBarProps> = ({
   children,
   style,
 }) => {
-  const theme = useTheme();
   return (
     <Grid.Item
       as={as}
       gridArea="app-bar"
       style={style}
-      zIndex={theme.cmp.appLayout.bar.elevation.zIndex}
+      zIndex="var(--cmp-app-layout-bar-elevation-z-index)"
     >
       {children}
     </Grid.Item>

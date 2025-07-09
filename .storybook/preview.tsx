@@ -10,7 +10,6 @@ import { create } from 'storybook/theming';
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 
 import { light, dark } from '@devoinc/genesys-brand-devo';
-import '@devoinc/genesys-base-styles/dist/css/styles.css';
 import '@devoinc/genesys-icons/dist/gi-styles.css';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -21,6 +20,7 @@ import { StoryWrapper } from '../packages/core/stories/components/StoryWrapper';
 // import './assets/styles/preview/preview.scss'; // This styles should only apply in the documentation
 // import { DocsContainerDefault } from '../components/DocsContainer';
 import './preview.scss';
+import '../packages/core/src/styles.css';
 
 // Ad-hoc styles for SB documentation
 const customTheme = create({

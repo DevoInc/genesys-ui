@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Grid } from './Grid';
-import { StyledLayoutGridContent } from '../../../stories/components/styled';
+import { LayoutGridContentHelper } from '../../../stories/components';
 
 const meta: Meta<typeof Grid> = {
   title: 'Components/Layout/Grid',
@@ -28,7 +28,7 @@ export const Playground: Story = {
           gridColumn="2 / 3"
           gridRow="1 / 2"
         >
-          <StyledLayoutGridContent>Header</StyledLayoutGridContent>
+          <LayoutGridContentHelper>Header</LayoutGridContentHelper>
         </Grid.Item>
         <Grid.Item
           gridArea="sidebar"
@@ -36,10 +36,10 @@ export const Playground: Story = {
           gridColumn="1 / 2"
           gridRow="1 / 3"
         >
-          <StyledLayoutGridContent>Sidebar</StyledLayoutGridContent>
+          <LayoutGridContentHelper>Sidebar</LayoutGridContentHelper>
         </Grid.Item>
         <Grid.Item gridArea="main" as="main" gridColumn="2 / 3" gridRow="2 / 3">
-          <StyledLayoutGridContent>Main</StyledLayoutGridContent>
+          <LayoutGridContentHelper>Main</LayoutGridContentHelper>
         </Grid.Item>
       </>
     ),

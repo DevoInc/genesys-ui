@@ -5,7 +5,7 @@ import { Box } from './Box';
 import { Button } from '../Button';
 import { Badge } from '../Badge';
 import { Typography } from '../Typography';
-import { StyledLayoutContentHelper } from '../../../stories/components/styled';
+import { LayoutContentHelper } from '../../../stories/components';
 
 const meta: Meta<typeof Box> = {
   title: 'Components/Layout/Box',
@@ -17,9 +17,7 @@ type Story = StoryObj<typeof Box>;
 
 export const Playground: Story = {
   args: {
-    children: (
-      <StyledLayoutContentHelper>Box content</StyledLayoutContentHelper>
-    ),
+    children: <LayoutContentHelper>Box content</LayoutContentHelper>,
   },
 };
 

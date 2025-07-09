@@ -9,22 +9,31 @@ import type {
 import type { IPanelBodyAttrs } from './declarations';
 import { PanelContext } from '../../context';
 import { panelBodyMixin } from './helpers';
-import { Box } from '../../../Box';
+import { Box, BoxProps } from '../../../Box';
 import { Typography } from '../../../Typography';
-import { mergeStyles } from '../../../../helpers';
+import {
+  getBasedCssVariablesStyle,
+  getSpacingClassNames,
+  getSpacingPropCss,
+  getVariableBasedClassNames,
+  mergeStyles,
+} from '../../../../helpers';
 import type { Resolve } from '../../../../typeFunctions';
+import { PANEL_BODY_CLASS_NAME_BASE } from '../../constants';
 
 export interface PanelBodyProps
   extends IPanelBaseAttrs,
     IPanelSpaceAttrs,
     IPanelBodyAttrs,
-    Pick<IPanelContainerAttrs, 'size' | 'children'> {}
+    Pick<IPanelContainerAttrs, 'size' | 'children'>,
+    Pick<BoxProps, 'className'> {}
 
 export const PanelBody = React.forwardRef<HTMLElement, Resolve<PanelBodyProps>>(
   (
     {
       as,
       children,
+      className,
       removeSpace,
       hasScrollSpacing,
       padding,
@@ -42,28 +51,47 @@ export const PanelBody = React.forwardRef<HTMLElement, Resolve<PanelBodyProps>>(
     const evalSize = size || context.size || 'md';
     const removeContentSpace =
       removeSpace ?? context?.removeContentSpace ?? false;
-
+    const classNames = [
+      `${PANEL_BODY_CLASS_NAME_BASE} `,
+      ...getSpacingClassNames({
+        padding: removeSpace ? '0' : padding,
+        paddingBottom,
+        paddingLeft,
+        paddingRight,
+        paddingTop,
+      }),
+      ...getVariableBasedClassNames({
+        padding,
+      }),
+      className && `${className} `,
+    ]
+      .join('')
+      .trim();
+    const basedCssVariablesStyle = getBasedCssVariablesStyle({
+      padding,
+    });
     return (
       <Box
         as={as}
+        className={classNames}
         position="relative"
         flex="1 1 100%"
         overflow="auto"
         ref={ref || context.bodyRef}
-        style={mergeStyles(
-          panelBodyMixin({
-            hasScrollSpacing: hasScrollSpacing ?? context.scrolledBodyContent,
-            padding,
-            paddingBottom,
-            paddingLeft,
-            paddingRight,
-            paddingTop,
-            removeSpace: removeContentSpace,
-            size: evalSize,
-            theme,
-          }),
-          style,
-        )}
+        // style={mergeStyles(
+        //   panelBodyMixin({
+        //     hasScrollSpacing: hasScrollSpacing ?? context.scrolledBodyContent,
+        //     padding,
+        //     paddingBottom,
+        //     paddingLeft,
+        //     paddingRight,
+        //     paddingTop,
+        //     removeSpace: removeContentSpace,
+        //     size: evalSize,
+        //     theme,
+        //   }),
+        //   style,
+        // )}
       >
         {typeof children === 'string' ? (
           <Typography.Paragraph>{children}</Typography.Paragraph>

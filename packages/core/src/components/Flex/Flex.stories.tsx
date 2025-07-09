@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Flex } from './Flex';
-import { StyledLayoutContentHelper } from '../../../stories/components/styled';
+import { LayoutContentHelper } from '../../../stories/components';
 
 const meta: Meta<typeof Flex> = {
   title: 'Components/Layout/Flex',
@@ -19,16 +19,14 @@ export const Playground: Story = {
   args: {
     children: (
       <>
-        <StyledLayoutContentHelper>
-          1. Rogue from which.
-        </StyledLayoutContentHelper>
-        <StyledLayoutContentHelper>
+        <LayoutContentHelper>1. Rogue from which.</LayoutContentHelper>
+        <LayoutContentHelper>
           2. Rogue from which we spring.
-        </StyledLayoutContentHelper>
-        <StyledLayoutContentHelper>
+        </LayoutContentHelper>
+        <LayoutContentHelper>
           3. Rogue from which we spring galaxies.
-        </StyledLayoutContentHelper>
-        <StyledLayoutContentHelper>4. Rogue.</StyledLayoutContentHelper>
+        </LayoutContentHelper>
+        <LayoutContentHelper>4. Rogue.</LayoutContentHelper>
       </>
     ),
   },
@@ -40,22 +38,20 @@ export const FlexAndFlexItems: Story = {
     ((args) => (
       <Flex {...args}>
         <Flex.Item flex={'1 1 50%'}>
-          <StyledLayoutContentHelper>
-            1. Rogue from which.
-          </StyledLayoutContentHelper>
+          <LayoutContentHelper>1. Rogue from which.</LayoutContentHelper>
         </Flex.Item>
         <Flex.Item paddingLeft={'cmp-md'} flex={'1 1 25%'}>
-          <StyledLayoutContentHelper>
+          <LayoutContentHelper>
             2. Rogue from which we spring.
-          </StyledLayoutContentHelper>
+          </LayoutContentHelper>
         </Flex.Item>
         <Flex.Item paddingLeft={'cmp-md'} flex={'1 1 25%'}>
-          <StyledLayoutContentHelper>
+          <LayoutContentHelper>
             3. Rogue from which we spring galaxies.
-          </StyledLayoutContentHelper>
+          </LayoutContentHelper>
         </Flex.Item>
         <Flex.Item paddingLeft={'cmp-md'} flex={'0'} alignSelf={'flex-end'}>
-          <StyledLayoutContentHelper>4. Rogue.</StyledLayoutContentHelper>
+          <LayoutContentHelper>4. Rogue.</LayoutContentHelper>
         </Flex.Item>
       </Flex>
     ))(args),
