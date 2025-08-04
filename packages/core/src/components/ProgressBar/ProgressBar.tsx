@@ -81,7 +81,7 @@ const InternalProgressBar: React.FC<ProgressBarProps> = ({
       percent={evalPercent}
       size={size}
       status={evalStatus}
-      style={style}
+      //style={style}
       type={type}
       withCustomInfo={withCustomInfo}
     >

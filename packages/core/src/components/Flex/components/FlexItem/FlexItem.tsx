@@ -1,22 +1,33 @@
 import * as React from 'react';
 
 import type { ILayoutFlexItem } from '../../../../declarations';
-import type { Resolve } from '../../../../typeFunctions';
+import { getBasedCssVariablesStyle } from '../../../../helpers';
 import { Box, type BoxProps } from '../../../Box';
-import { mergeStyles } from '../../../../helpers';
+import { FLEX_ITEM_CLASS_NAME_BASE } from '../../constants';
 
 export interface FlexItemProps extends BoxProps, ILayoutFlexItem {}
 
-export const FlexItem: React.FC<Resolve<FlexItemProps>> = ({
+export const FlexItem: React.FC<FlexItemProps> = ({
   children,
+  className,
   style,
   order,
   ...restBoxProps
 }) => {
+  const basedCssVariablesStyle = getBasedCssVariablesStyle({
+    order,
+  });
+  const classNames = [
+    `${FLEX_ITEM_CLASS_NAME_BASE} `,
+    className && `${className} `,
+  ]
+    .join('')
+    .trim();
   return (
     <Box
       {...restBoxProps}
-      style={mergeStyles(order ? `order: ${order};` : [], style)}
+      className={classNames}
+      style={{ ...basedCssVariablesStyle, ...style }}
     >
       {children}
     </Box>

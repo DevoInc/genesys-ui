@@ -46,7 +46,7 @@ export const RealTimeButton: React.FC<RealTimeButtonProps> = ({
       visibility={state === 'hidden' ? 'hidden' : undefined}
     >
       {state === 'activated' && (
-        <Box position="absolute" zIndex={1} style="pointer-events: none">
+        <Box position="absolute" zIndex={1} style={{ pointerEvents: 'none' }}>
           <SpinnerLoader
             colorScheme={themeScheme === 'dark' ? 'lightTrans' : 'darkTrans'}
             style={cssRealTimeButtonSpinner}

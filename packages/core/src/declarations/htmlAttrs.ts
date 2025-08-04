@@ -305,3 +305,11 @@ export interface IContentEditableAttrs<T = Element> {
   /** A function that is called when the element is changed */
   onChange?: DOMAttributes<T>['onChange'];
 }
+
+/** ---------------------------------------------
+ * Declaration of the className attribute
+ * --------------------------------------------- */
+export interface IClassName<T = Element> {
+  /** The class name attribute to be used as a selector for styles or JS.*/
+  className?: AllHTMLAttributes<T>['className'];
+}

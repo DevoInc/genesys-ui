@@ -23,7 +23,10 @@ export const ProgressBarHelper: React.FC<ProgressBarHelperProps> = ({
   style,
   ...nativeProps
 }) => (
-  <Flex justifyContent="center" style={style}>
+  <Flex
+    justifyContent="center"
+    //style={style}
+  >
     <Helper
       {...nativeProps}
       message={statusHelper}

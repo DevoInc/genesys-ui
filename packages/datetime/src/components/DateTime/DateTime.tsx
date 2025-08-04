@@ -75,7 +75,7 @@ const InternalDateTime: React.FC<DateTimeProps> = ({
       as={as}
       alignItems="stretch"
       minWidth={theme.cmp.calendar.size.minWidth}
-      style={style}
+      //style={style}
     >
       <MonthFloatingPicker
         i18n={i18n}

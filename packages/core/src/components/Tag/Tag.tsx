@@ -3,8 +3,9 @@ import * as React from 'react';
 import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
-  IStyledOverloadCss,
-  IStyledPolymorphic,
+  IStyleAttr,
+  IPolymorphic,
+  IClassName,
 } from '../../declarations';
 import {
   TagBadge,
@@ -15,8 +16,9 @@ import {
 } from './components';
 
 export interface TagProps
-  extends IStyledPolymorphic,
-    IStyledOverloadCss,
+  extends IPolymorphic,
+    IClassName,
+    IStyleAttr,
     IGlobalAttrs,
     IGlobalAriaAttrs,
     TagContainerProps {
@@ -37,26 +39,37 @@ export const InternalTag: React.FC<TagProps> = ({
   text,
   tooltip,
   ...restNativeProps
-}) => (
-  <TagContainer
-    {...restNativeProps}
-    colorScheme={colorScheme}
-    bold={bold}
-    quiet={quiet}
-    wide={wide}
-    size={size}
-    style={style}
-    tooltip={tooltip}
-  >
-    {quiet && <TagBadge colorScheme={colorScheme} icon={icon} size={size} />}
-    {text && icon && !quiet && (
-      <TagIcon strong={bold} size={size}>
-        {icon}
-      </TagIcon>
-    )}
-    {text && <TagLabel>{text}</TagLabel>}
-  </TagContainer>
-);
+}) => {
+  const iconSquareSize = `var(--cmp-tag-icon-size-square-${size})`;
+  const marginRight = `var(--cmp-tag-icon-space-margin-right-${size})`;
+  return (
+    <Tag._Container
+      {...restNativeProps}
+      colorScheme={colorScheme}
+      bold={bold}
+      quiet={quiet}
+      wide={wide}
+      size={size}
+      style={style}
+      tooltip={tooltip}
+    >
+      {quiet && <TagBadge colorScheme={colorScheme} icon={icon} size={size} />}
+      {text && icon && !quiet && (
+        <Tag._Icon
+          strong={bold}
+          style={{
+            marginRight: marginRight,
+            width: iconSquareSize,
+            height: iconSquareSize,
+          }}
+        >
+          {icon}
+        </Tag._Icon>
+      )}
+      {text && <Tag._Label>{text}</Tag._Label>}
+    </Tag._Container>
+  );
+};
 
 export const Tag = InternalTag as typeof InternalTag & {
   _Badge: typeof TagBadge;

@@ -20,10 +20,10 @@ export const Container: React.FC<ContainerProps> = ({
   return (
     <Box
       {...restBoxProps}
-      style={mergeStyles(
-        codeContainerMixin({ $bordered: bordered, $readOnly: readOnly, theme }),
-        style,
-      )}
+      // style={mergeStyles(
+      //   codeContainerMixin({ $bordered: bordered, $readOnly: readOnly, theme }),
+      //   style,
+      // )}
     >
       {children}
     </Box>

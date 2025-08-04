@@ -60,7 +60,7 @@ const InternalContentSwitcher: React.FC<ContentSwitcherProps> = ({
       role="tablist"
       inline={inline || !wide}
       width={wide ? '100%' : width}
-      style={mergeStyles(contentSwitcherContainerMixin({ size, theme }), style)}
+      //style={mergeStyles(contentSwitcherContainerMixin({ size, theme }), style)}
     >
       <ContentSwitcherContext.Provider value={{ size, wide }}>
         {children}

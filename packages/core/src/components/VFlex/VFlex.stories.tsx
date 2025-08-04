@@ -2,14 +2,14 @@ import * as React from 'react';
 import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { VFlex } from './VFlex';
-import { StyledLayoutContentHelper } from '../../../stories/components/styled';
+import { LayoutContentHelper } from '../../../stories/components';
 
 const meta: Meta<typeof VFlex> = {
   title: 'Components/Layout/Flex/VFlex',
   component: VFlex,
   args: {
-    alignItems: 'stretch',
     childrenFitFullHeight: false,
+    childrenFitFullWidth: true,
     inline: false,
     justifyContent: 'flex-start',
     spacing: 'cmp-md',
@@ -23,16 +23,14 @@ export const Base: Story = {
   render: (args) =>
     ((args) => (
       <VFlex {...args}>
-        <StyledLayoutContentHelper>
-          1. Rogue from which.
-        </StyledLayoutContentHelper>
-        <StyledLayoutContentHelper>
+        <LayoutContentHelper>1. Rogue from which.</LayoutContentHelper>
+        <LayoutContentHelper>
           2. Rogue from which we spring.
-        </StyledLayoutContentHelper>
-        <StyledLayoutContentHelper>
+        </LayoutContentHelper>
+        <LayoutContentHelper>
           3. Rogue from which we spring galaxies.
-        </StyledLayoutContentHelper>
-        <StyledLayoutContentHelper>4. Rogue.</StyledLayoutContentHelper>
+        </LayoutContentHelper>
+        <LayoutContentHelper>4. Rogue.</LayoutContentHelper>
       </VFlex>
     ))(args),
 };
@@ -43,22 +41,20 @@ export const VFlexAndVFlexItems: Story = {
     ((args) => (
       <VFlex {...args}>
         <VFlex.Item>
-          <StyledLayoutContentHelper>
-            1. Rogue from which.
-          </StyledLayoutContentHelper>
+          <LayoutContentHelper>1. Rogue from which.</LayoutContentHelper>
         </VFlex.Item>
         <VFlex.Item paddingTop={'cmp-xl'}>
-          <StyledLayoutContentHelper>
+          <LayoutContentHelper>
             2. Rogue from which we spring.
-          </StyledLayoutContentHelper>
+          </LayoutContentHelper>
         </VFlex.Item>
         <VFlex.Item width="50%">
-          <StyledLayoutContentHelper>
+          <LayoutContentHelper>
             3. Rogue from which we spring galaxies.
-          </StyledLayoutContentHelper>
+          </LayoutContentHelper>
         </VFlex.Item>
         <VFlex.Item flex={'0'} alignSelf={'flex-end'}>
-          <StyledLayoutContentHelper>4. Rogue.</StyledLayoutContentHelper>
+          <LayoutContentHelper>4. Rogue.</LayoutContentHelper>
         </VFlex.Item>
       </VFlex>
     ))(args),

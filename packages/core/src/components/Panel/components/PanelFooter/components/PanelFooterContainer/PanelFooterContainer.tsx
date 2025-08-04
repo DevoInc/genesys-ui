@@ -1,17 +1,16 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import type { IPanelFooterAttrs } from '../../declarations';
-import { panelFooterContainerMixin } from '../../helpers';
+import type { IPanelSpaceAttrs } from '../../../../declarations';
+import { PANEL_FOOTER_CLASS_NAME_BASE } from '../../../../constants';
+import { getSpacingClassNames } from '../../../../../../helpers';
 import { Flex, type FlexProps } from '../../../../../Flex';
 import { Box } from '../../../../../Box';
-import { mergeStyles } from '../../../../../../helpers';
-import type { IPanelSpaceAttrs } from '../../../../declarations';
 
 export interface PanelFooterContainerProps
   extends IPanelFooterAttrs,
     IPanelSpaceAttrs,
-    Pick<FlexProps, 'as' | 'style'> {
+    Pick<FlexProps, 'as' | 'style' | 'className'> {
   /** If the content of the panel footer is custom and depends exclusively on
    * the user */
   customContent?: boolean;
@@ -24,6 +23,7 @@ export const PanelFooterContainer = React.forwardRef<
   (
     {
       as = 'footer',
+      className,
       customContent,
       hasBoxShadow,
       bordered,
@@ -36,38 +36,38 @@ export const PanelFooterContainer = React.forwardRef<
       paddingTop,
       removeSpace,
       size = 'md',
-      style,
     },
     ref,
   ) => {
-    const theme = useTheme();
     const commonProps = {
       as,
       flex: '0 0 auto',
-      style: mergeStyles(
-        panelFooterContainerMixin({
-          bordered,
-          hasBackground,
-          hasBoxShadow,
-          padding,
-          paddingBottom,
-          paddingLeft,
-          paddingRight,
-          paddingTop,
-          removeSpace,
-          size,
-          theme,
-        }),
-        style,
-      ),
       zIndex: 1,
     };
+    const classNameBase = PANEL_FOOTER_CLASS_NAME_BASE;
+    const classNames = [
+      `${classNameBase} `,
+      `${classNameBase}--${bordered ? 'bordered' : 'no-border'} `,
+      hasBoxShadow ? `${classNameBase}--shadowed ` : '',
+      hasBackground ? `${classNameBase}--has-background ` : '',
+      size ? `${classNameBase}--${size} ` : '',
+      ...getSpacingClassNames({
+        padding: removeSpace ? '0' : padding,
+        paddingBottom,
+        paddingLeft,
+        paddingRight,
+        paddingTop,
+      }),
+      className && `${className} `,
+    ]
+      .join('')
+      .trim();
     return customContent ? (
-      <Box {...commonProps} ref={ref}>
+      <Box {...commonProps} ref={ref} className={classNames}>
         {children}
       </Box>
     ) : (
-      <Flex {...commonProps} alignItems="center">
+      <Flex {...commonProps} alignItems="center" className={classNames}>
         {children}
       </Flex>
     );

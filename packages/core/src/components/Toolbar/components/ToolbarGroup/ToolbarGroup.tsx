@@ -23,12 +23,12 @@ export const ToolbarGroup: React.FC<ToolbarGroupProps> = ({
       alignSelf={alignSelf}
       flex={flex}
       role={role}
-      style={mergeStyles(
-        {
-          background: theme.cmp.toolbar.group.color.background.base,
-        },
-        style,
-      )}
+      // style={mergeStyles(
+      //   {
+      //     background: theme.cmp.toolbar.group.color.background.base,
+      //   },
+      //   style,
+      // )}
     >
       {children}
     </Flex>

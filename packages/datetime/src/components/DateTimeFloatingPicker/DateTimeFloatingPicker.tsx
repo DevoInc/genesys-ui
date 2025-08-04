@@ -176,7 +176,7 @@ export const DateTimeFloatingPicker: React.FC<DateTimeFloatingPickerProps> = ({
       {({ setOpened }) => (
         <Popover.Panel
           as={as}
-          style={customStyles}
+          //style={customStyles}
           width="auto"
           id={id ? `${id}__popover-panel` : null}
         >

@@ -55,7 +55,7 @@ export const InputControlContainer: React.FC<InputControlContainerProps> = ({
     onMouseOver={onMouseOver}
     onMouseUp={onMouseUp}
     position="relative"
-    style={style}
+    //style={style}
     tooltip={tooltip}
   >
     {children}

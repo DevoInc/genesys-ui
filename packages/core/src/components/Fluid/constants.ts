@@ -1,3 +1,6 @@
+export const COL_CLASS_NAME_BASE = 'gui-col';
+export const CONTAINER_CLASS_NAME_BASE = 'gui-container';
+export const ROW_CLASS_NAME_BASE = 'gui-row';
 export const BREAKPOINTS_DEFAULT_VALUES = {
   sm: 576,
   md: 768,

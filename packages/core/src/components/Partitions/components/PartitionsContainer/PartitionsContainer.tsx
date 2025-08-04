@@ -33,10 +33,10 @@ export const PartitionsContainer: React.FC<PartitionsContainerProps> = ({
       as="ul"
       overflow="hidden"
       position="relative"
-      style={mergeStyles(
-        partitionsContainerMixin({ hasSeparators, size, theme }),
-        style,
-      )}
+      // style={mergeStyles(
+      //   partitionsContainerMixin({ hasSeparators, size, theme }),
+      //   style,
+      // )}
       width="100%"
     >
       {children}

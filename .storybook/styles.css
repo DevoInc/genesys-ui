@@ -1,0 +1,4 @@
+@import '@devoinc/genesys-base-styles/dist/css/styles.css' layer(reset);
+@import '@devoinc/genesys-brand-devo/dist/light/css/tokens.css.alias.css' layer(base);
+@import '@devoinc/genesys-brand-devo/dist/light/css/tokens.css.cmp.css' layer(base);
+@import "@devoinc/genesys-styles/dist/css/styles.css" layer(components);

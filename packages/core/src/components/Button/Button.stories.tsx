@@ -26,7 +26,23 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Playground: Story = {};
+export const Playground: Story = {
+  args: {
+    colorScheme: 'accent',
+  },
+  render: (props) => (
+    <HFlex spacing="cmp-md">
+      <Flex.Item flex="1 1 50%">
+        <Button {...props}>Blend base</Button>
+      </Flex.Item>
+      <Flex.Item flex="1 1 50%">
+        <button className="button button--accent">
+          <span className="button__text">Blend base</span>
+        </button>
+      </Flex.Item>
+    </HFlex>
+  ),
+};
 
 export const AccentHigh: Story = {
   tags: ['isHidden'],

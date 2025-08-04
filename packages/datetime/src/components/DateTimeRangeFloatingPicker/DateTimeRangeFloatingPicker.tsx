@@ -59,7 +59,7 @@ export interface DateTimeRangeFloatingPickerProps
     ITime,
     Required<Pick<IGlobalAttrs, 'id'>>,
     IDataAttrs,
-    IStyledOverloadCss,
+    //IStyledOverloadCss,
     IStyledPolymorphic {
   /** Internacionalization object */
   i18n?: TDateTimeRangeFloatingPickerI18n;

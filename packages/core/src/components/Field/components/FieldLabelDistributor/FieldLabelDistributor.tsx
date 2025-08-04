@@ -21,7 +21,7 @@ export const FieldLabelDistributor: React.FC<FieldLabelDistributorProps> = ({
       flexDirection={FIELD_FLEX_CONFIG[directionUpper].FD}
       gap={FIELD_FLEX_CONFIG[directionUpper].GAP}
       justifyContent={FIELD_FLEX_CONFIG[directionUpper].JC}
-      style={style}
+      //style={style}
     >
       {children}
     </Flex>

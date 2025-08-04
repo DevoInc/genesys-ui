@@ -27,7 +27,7 @@ export interface PaginationProps
       | 'onChange'
       | 'onPageSizeChange'
       | 'size'
-      | 'style'
+      //| 'style'
       | 'totalItems'
       | 'texts'
     >,

@@ -23,10 +23,10 @@ export const AppMenuSeparator: React.FC<AppMenuSeparatorProps> = ({
   const evalCollapsed = collapsed ?? context.collapsed;
   return (
     <MenuSeparator
-      style={mergeStyles(
-        appMenuSeparatorMixin({ collapsed: evalCollapsed, theme }),
-        style,
-      )}
+    // style={mergeStyles(
+    //   appMenuSeparatorMixin({ collapsed: evalCollapsed, theme }),
+    //   style,
+    // )}
     />
   );
 };

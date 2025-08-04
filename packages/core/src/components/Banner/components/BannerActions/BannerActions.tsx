@@ -17,7 +17,7 @@ export const BannerActions: React.FC<BannerActionsProps> = ({
     flex="0 0 auto"
     justifyContent="flex-end"
     spacing="cmp-xs"
-    style={style}
+    //style={style}
   >
     {children}
   </HFlex>

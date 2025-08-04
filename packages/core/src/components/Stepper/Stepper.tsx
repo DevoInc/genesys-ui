@@ -45,7 +45,7 @@ export const InternalStepper: React.FC<StepperProps> = ({
     padding={padding}
     size={size}
     tooltip={tooltip}
-    style={style}
+    //style={style}
   >
     {steps.map((el, idx) => (
       <StepperItem

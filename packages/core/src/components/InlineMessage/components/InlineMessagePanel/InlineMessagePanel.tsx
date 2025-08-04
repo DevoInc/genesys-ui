@@ -90,12 +90,12 @@ export const InlineMessagePanel = React.forwardRef<
         minHeight={minHeight}
         minWidth={minWidth}
         size={size || context.size}
-        style={mergeStyles(
-          {
-            borderRadius: theme.cmp.panel.shape.borderRadius,
-          },
-          style,
-        )}
+        // style={mergeStyles(
+        //   {
+        //     borderRadius: theme.cmp.panel.shape.borderRadius,
+        //   },
+        //   style,
+        // )}
         width={width}
       >
         <Panel.Header

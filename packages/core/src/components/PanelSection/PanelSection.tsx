@@ -79,7 +79,7 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
   onClickBackwardNav,
   removeContentSpace = false,
   renderActions,
-  style,
+  //style,
   subtitle,
   title,
   visibility,
@@ -94,15 +94,18 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
       display={display}
       id={id}
       height={height}
-      style={style}
+      //style={style}
       visibility={visibility}
     >
       {(onClickBackwardNav || title || headerActions || renderActions) && (
-        <Panel.Header._Container bordered={!navigation} style="padding: 0;">
+        <Panel.Header._Container
+          bordered={!navigation}
+          //style="padding: 0;"
+        >
           <HFlex
             spacing="0"
             as="div"
-            style={panelSectionHeaderMixin({ theme })}
+            //style={panelSectionHeaderMixin({ theme })}
           >
             {onClickBackwardNav &&
               renderBackwardNavigation({
@@ -125,11 +128,11 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
       )}
       <Panel.Body
         removeSpace={removeContentSpace}
-        style={panelSectionBodyMixin({
-          hasScroll: hasScroll,
-          removeSpace: removeContentSpace,
-          theme,
-        })}
+        // style={panelSectionBodyMixin({
+        //   hasScroll: hasScroll,
+        //   removeSpace: removeContentSpace,
+        //   theme,
+        // })}
       >
         {children}
       </Panel.Body>
@@ -138,7 +141,7 @@ export const PanelSection: React.FC<PanelSectionProps> = ({
           actions={footerActions}
           hasBackground={footerHasBackground}
           bordered
-          style={panelSectionFooterMixin({ theme })}
+          //style={panelSectionFooterMixin({ theme })}
         >
           {footerContent}
         </Panel.Footer>

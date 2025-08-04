@@ -33,7 +33,11 @@ export const PaginationRange: React.FC<PaginationRangeProps> = ({
   const evalTexts = texts || context.texts;
   const { rangeText, rangeLabel } = { ...DEFAULT_TEXTS, ...evalTexts };
   return (
-    <HFlex spacing="cmp-xxs" style={style} flex="0 0 auto">
+    <HFlex
+      spacing="cmp-xxs"
+      //style={style}
+      flex="0 0 auto"
+    >
       <SelectControl
         aria-label={rangeLabel}
         id={id ? `${id}__page-range-selector` : null}

@@ -20,14 +20,14 @@ export const ModalBody: React.FC<ModalBodyProps> = ({
   const context = React.useContext(PanelContext);
   return (
     <Panel.Body
-      style={mergeStyles(
-        modalBodyMixin({
-          theme,
-          padding,
-          scrolledBodyContent: context.scrolledBodyContent,
-        }),
-        style,
-      )}
+    // style={mergeStyles(
+    //   modalBodyMixin({
+    //     theme,
+    //     padding,
+    //     scrolledBodyContent: context.scrolledBodyContent,
+    //   }),
+    //   style,
+    // )}
     >
       {children}
     </Panel.Body>

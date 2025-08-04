@@ -1,14 +1,12 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
+import { PANEL_ACTIONS_CLASS_NAME_BASE } from '../../../../constants';
 import {
   TPanelActions,
   IPanelBaseAttrs,
   IPanelContainerAttrs,
 } from '../../../../declarations';
-import { panelHeaderAppendMixin } from '../../helpers';
 import { ButtonGroup } from '../../../../../ButtonGroup';
-import { mergeStyles } from '../../../../../../helpers';
 
 export interface PanelHeaderActionsProps
   extends IPanelBaseAttrs,
@@ -19,6 +17,7 @@ export interface PanelHeaderActionsProps
 export const PanelHeaderActions: React.FC<PanelHeaderActionsProps> = ({
   actions,
   as,
+  className,
   size = 'md',
   style,
 }) => {
@@ -26,14 +25,21 @@ export const PanelHeaderActions: React.FC<PanelHeaderActionsProps> = ({
     () => (actions ? actions.filter((action) => !!action) : []),
     [actions],
   );
-  const theme = useTheme();
-  const baseStyles = panelHeaderAppendMixin({ size, theme });
+  const classNameBase = PANEL_ACTIONS_CLASS_NAME_BASE;
+  const classNames = [
+    `${classNameBase} `,
+    size ? `${classNameBase}--${size} ` : '',
+    className && `${className} `,
+  ]
+    .join('')
+    .trim();
   return (
     <ButtonGroup
       as={as}
+      className={classNames}
       alignItems="flex-start"
       alignSelf="stretch"
-      style={mergeStyles(baseStyles, style)}
+      style={style}
       flex="0 0 auto"
       marginLeft="auto"
     >

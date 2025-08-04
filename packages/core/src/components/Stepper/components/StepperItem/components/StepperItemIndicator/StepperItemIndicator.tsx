@@ -34,7 +34,7 @@ export const StepperItemIndicator: React.FC<StepperItemIndicatorProps> = ({
       icon={isCompletedStep ? <GICheckThick /> : icon}
       inverse={inverse || status === 'current'}
       size={size}
-      style={mergeStyles(baseStyles, style)}
+      //style={mergeStyles(baseStyles, style)}
       text={!isCompletedStep ? (stepNumberPos + 1).toString() : text}
     />
   );

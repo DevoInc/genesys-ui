@@ -9,7 +9,8 @@ import { StyledSwitchControlTextUnchecked } from './StyledSwitchControlTextUnche
 
 export interface SwitchControlTextProps
   extends FlexProps,
-    Pick<ISwitch, 'checked' | 'style'> {
+    //Pick<ISwitch, 'checked' | 'style'>,
+    Pick<ISwitch, 'checked'> {
   /** Optional content to be included inside the switch track when it's
    * checked */
   checkedContent?: ISwitch['checkedContent'];
@@ -26,7 +27,7 @@ export const SwitchControlText: React.FC<SwitchControlTextProps> = ({
   margin,
   overflow = 'hidden',
   position = 'relative',
-  style,
+  //style,
   uncheckedContent,
   ...restFlexProps
 }) => {
@@ -58,7 +59,7 @@ export const SwitchControlText: React.FC<SwitchControlTextProps> = ({
           ? `0 ${spaceToHandler} 0 ${spaceToEdge}`
           : `0 ${spaceToEdge} 0 ${spaceToHandler}`)
       }
-      style={style}
+      //style={style}
       width={`${widthPx}px`}
     >
       <StyledSwitchControlTextUnchecked $checked={checked} ref={refUnchecked}>

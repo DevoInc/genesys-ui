@@ -1,14 +1,13 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
-import { useIsOverflow } from '../../hooks';
 import type { TPanelSize } from './declarations';
-import type {
-  IStyledOverloadCss,
-  IStyledPolymorphic,
-} from '../../declarations';
+import { PANEL_CLASS_NAME_BASE } from './constants';
+import { useIsOverflow } from '../../hooks';
 import { PanelContext } from './context';
-import { panelMixin, type PanelMixinProps } from './helpers';
+import {
+  getBasedCssVariablesStyle,
+  getVariableBasedClassNames,
+} from '../../helpers';
 import { Box, type BoxProps } from '../Box';
 import {
   PanelBody,
@@ -17,14 +16,9 @@ import {
   type PanelFooterProps,
   type PanelHeaderProps,
 } from './components';
-import { mergeStyles } from '../../helpers';
-import type { Resolve } from '../../typeFunctions';
 
-export interface PanelProps
-  extends BoxProps,
-    IStyledOverloadCss,
-    IStyledPolymorphic,
-    Omit<PanelMixinProps, 'theme'> {
+export interface PanelProps extends BoxProps {
+  bordered?: boolean;
   children?:
     | [
         React.ReactElement<PanelHeaderProps>,
@@ -33,43 +27,56 @@ export interface PanelProps
       ]
     | [React.ReactElement<PanelHeaderProps>, React.ReactNode]
     | React.ReactNode;
+  colorScheme?: React.CSSProperties['backgroundColor'];
   removeContentSpace?: boolean;
   /** Set size for Panel components */
   size?: TPanelSize;
 }
 
-const InternalPanel = React.forwardRef<HTMLElement, Resolve<PanelProps>>(
+const InternalPanel = React.forwardRef<HTMLElement, PanelProps>(
   (
     {
       bordered,
+      className,
       colorScheme,
       display,
       elevation = 'raised',
-      style,
       size = 'md',
       children,
       removeContentSpace,
+      style,
       ...restBoxProps
     },
     ref,
   ) => {
-    const theme = useTheme();
     const targetElRef = React.useRef<HTMLDivElement>(null);
     const { hasScroll } = useIsOverflow(targetElRef);
+    const classNameBase = PANEL_CLASS_NAME_BASE;
+    const classNames = [
+      `${classNameBase} `,
+      bordered ? `${classNameBase}--bordered ` : '',
+      elevation ? `${classNameBase}--${elevation} ` : '',
+      size ? `${classNameBase}--${size} ` : '',
+      className ? `${className} ` : '',
+      ...getVariableBasedClassNames(
+        {
+          backgroundColor: colorScheme,
+        },
+        'before',
+      ),
+    ]
+      .join('')
+      .trim();
+    const basedCssVariablesStyle = getBasedCssVariablesStyle({
+      backgroundColor: colorScheme,
+    });
     return (
       <Box
         {...restBoxProps}
         ref={ref}
+        className={classNames}
         elevation={elevation}
-        style={mergeStyles(
-          panelMixin(theme)({
-            bordered,
-            colorScheme,
-            display,
-            elevation,
-          }),
-          style,
-        )}
+        style={{ ...basedCssVariablesStyle, ...style }}
       >
         <PanelContext.Provider
           value={{

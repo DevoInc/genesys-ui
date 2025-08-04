@@ -1,19 +1,27 @@
 import * as React from 'react';
-import { css, useTheme } from 'styled-components';
 
-import { PANEL_HEADER_SIZES } from '../constants';
+import { PANEL_HEADER_FORMATS } from '../constants';
 
-import { IPanelHeadingAttrs } from '../../declarations';
+import type { IPanelHeadingAttrs } from '../../declarations';
+import type {
+  IPanelContainerAttrs,
+  IPanelBaseAttrs,
+  IPanelHelpAttrs,
+} from '../../../../declarations';
+import {
+  PANEL_HEADING_CLASS_NAME_BASE,
+  PANEL_HEADING_WRAPPER_CLASS_NAME_BASE,
+  PANEL_LEGEND_CLASS_NAME_BASE,
+  PANEL_LEGEND_TEXT_CLASS_NAME_BASE,
+  PANEL_SUBTITLE_CLASS_NAME_BASE,
+  PANEL_TITLE_CLASS_NAME_BASE,
+  PANEL_TITLE_TEXT_CLASS_NAME_BASE,
+} from '../../../../constants';
 
 import { Typography } from '../../../../../Typography';
 import { Flex } from '../../../../../Flex';
 import { IconButtonGoToDocs } from '../../../../../IconButton';
 import { PanelHeaderIcon } from '../PanelHeaderIcon';
-import {
-  IPanelContainerAttrs,
-  IPanelBaseAttrs,
-  IPanelHelpAttrs,
-} from '../../../../declarations';
 
 export interface PanelHeaderHeadingProps
   extends IPanelBaseAttrs,
@@ -23,6 +31,7 @@ export interface PanelHeaderHeadingProps
 
 export const PanelHeaderHeading: React.FC<PanelHeaderHeadingProps> = ({
   as,
+  className,
   size = 'md',
   helpUrl,
   icon,
@@ -33,16 +42,15 @@ export const PanelHeaderHeading: React.FC<PanelHeaderHeadingProps> = ({
   title,
   titleTooltip,
 }) => {
-  const theme = useTheme();
-  const legendStyles = css`
-    margin-left: ${theme.cmp.panel.headerLegend.space.marginLeft[size]};
-    height: ${theme.cmp.panel.headerLegend.size.height[size]};
-  `;
-  const headingStyles = css`
-    max-width: ${theme.cmp.panel.headerTitle.size.maxWidth};
-  `;
+  const classNames = [
+    `${PANEL_HEADING_CLASS_NAME_BASE} `,
+    className && `${className} `,
+  ]
+    .join('')
+    .trim();
   return (
     <Flex
+      className={classNames}
       as={as}
       alignItems="center"
       flex="1 1 auto"
@@ -50,26 +58,35 @@ export const PanelHeaderHeading: React.FC<PanelHeaderHeadingProps> = ({
       style={style}
     >
       {icon && <PanelHeaderIcon icon={icon} size={size} />}
-      <Flex.Item minWidth="0">
+      <Flex.Item minWidth="0" className={PANEL_HEADING_WRAPPER_CLASS_NAME_BASE}>
         {!helpUrl && !legend ? (
-          <Typography.Heading
+          <Typography
+            className={PANEL_TITLE_TEXT_CLASS_NAME_BASE}
             truncateLine={2}
-            size={PANEL_HEADER_SIZES[size].title}
-            style={headingStyles}
+            format={PANEL_HEADER_FORMATS[size].title}
           >
             {title}
-          </Typography.Heading>
+          </Typography>
         ) : (
-          <Flex alignItems="center" inline width="100%">
-            <Typography.Heading
+          <Flex
+            alignItems="center"
+            inline
+            width="100%"
+            className={PANEL_TITLE_CLASS_NAME_BASE}
+          >
+            <Typography
+              className={PANEL_TITLE_TEXT_CLASS_NAME_BASE}
               truncateLine={2}
-              size={PANEL_HEADER_SIZES[size].title}
+              format={PANEL_HEADER_FORMATS[size].title}
               tooltip={titleTooltip}
             >
               {title}
-            </Typography.Heading>
+            </Typography>
             {(helpUrl || legend) && (
-              <Flex alignItems="center" style={legendStyles}>
+              <Flex
+                alignItems="center"
+                className={PANEL_LEGEND_CLASS_NAME_BASE}
+              >
                 {helpUrl && (
                   <IconButtonGoToDocs
                     href={helpUrl}
@@ -78,13 +95,14 @@ export const PanelHeaderHeading: React.FC<PanelHeaderHeadingProps> = ({
                   />
                 )}
                 {legend && typeof legend === 'string' ? (
-                  <Typography.Paragraph
+                  <Typography
+                    className={PANEL_LEGEND_TEXT_CLASS_NAME_BASE}
                     colorScheme="weak"
                     truncateLine={1}
-                    size={PANEL_HEADER_SIZES[size].subtitle.size}
+                    format={PANEL_HEADER_FORMATS[size].subtitle.size}
                   >
                     {legend}
-                  </Typography.Paragraph>
+                  </Typography>
                 ) : (
                   legend
                 )}
@@ -93,17 +111,14 @@ export const PanelHeaderHeading: React.FC<PanelHeaderHeadingProps> = ({
           </Flex>
         )}
         {subtitle && (
-          <Typography.Paragraph
+          <Typography
+            className={PANEL_SUBTITLE_CLASS_NAME_BASE}
             colorScheme="weak"
             truncateLine={3}
-            size={PANEL_HEADER_SIZES[size].subtitle.size}
-            style={css`
-              margin-top: ${theme.cmp.panel.headerSubtitle.space.marginTop};
-              max-width: ${theme.cmp.panel.headerSubtitle.size.maxWidth};
-            `}
+            format={PANEL_HEADER_FORMATS[size].subtitle.size}
           >
             {subtitle}
-          </Typography.Paragraph>
+          </Typography>
         )}
       </Flex.Item>
     </Flex>

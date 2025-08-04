@@ -22,7 +22,7 @@ export const Playground: Story = {
   args: {
     heading: 'AppBar heading',
     sticky: true,
-    tabs: <TabsCmp />,
+    //tabs: <TabsCmp />,
   },
 };
 

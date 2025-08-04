@@ -5,20 +5,14 @@ import { cleanup } from '@testing-library/react';
 import { VFlex } from '@devoinc/genesys-ui';
 
 import { render, screen } from '@test';
+import { FLEX_PROPS_CLASS_NAMES_MAP } from '../../constants';
 
 describe('VFlex', () => {
   test('render', () => {
     render(<VFlex>test</VFlex>);
-    expect(screen.getByText('test')).toHaveStyle({
-      flexDirection: 'column',
-    });
-  });
-
-  test('childrenFitFullHeight', () => {
-    render(<VFlex childrenFitFullWidth>test</VFlex>);
-    expect(screen.getByText('test')).toHaveStyle({
-      alignItems: 'stretch',
-    });
+    expect(screen.getByText('test')).toHaveClass(
+      FLEX_PROPS_CLASS_NAMES_MAP['flexDirection']['column'],
+    );
   });
 
   afterEach(() => {

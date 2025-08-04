@@ -6,6 +6,9 @@ import { PanelBody } from './PanelBody';
 const meta: Meta<typeof PanelBody> = {
   title: 'Components/Layout/Panel/Components/PanelBody',
   component: PanelBody,
+  args: {
+    size: 'md',
+  },
 };
 
 export default meta;

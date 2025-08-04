@@ -30,10 +30,10 @@ export const StepperContainer: React.FC<StepperContainerProps> = ({
       as={as}
       spacing="cmp-md"
       height={height || containerTokens.size.height[size]}
-      style={mergeStyles(
-        stepperContainerMixin({ size, padding, theme }),
-        style,
-      )}
+      // style={mergeStyles(
+      //   stepperContainerMixin({ size, padding, theme }),
+      //   style,
+      // )}
     >
       {children}
     </HFlex>

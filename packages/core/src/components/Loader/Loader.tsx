@@ -75,7 +75,7 @@ const InternalLoader: React.FC<LoaderProps> = ({
       opacity={opaque ? 1 : 0.8}
       padding={String(padding) || evalDefaultPadding}
       role={role}
-      style={style}
+      //style={style}
       tooltip={tooltip}
       zIndex={zIndex || (fixed ? 99999 : undefined)}
     >

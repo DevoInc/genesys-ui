@@ -44,3 +44,10 @@ export interface IPanelHeadingAttrs {
   subtitle?: React.ReactNode;
   titleTooltip?: string;
 }
+
+export type TPanelHeaderSpacing = {
+  paddingRight: string;
+  paddingLeft: string;
+  paddingBottom: string;
+  paddingTop: string;
+};

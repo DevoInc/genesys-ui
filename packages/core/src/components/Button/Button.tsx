@@ -10,15 +10,6 @@ import {
 import type {
   IButtonAttrs,
   IDataAttrs,
-  IFocusEventAttrs,
-  IGlobalAriaAttrs,
-  IGlobalAttrs,
-  ILinkAttrs,
-  IMouseEventAttrs,
-  IStyledOverloadCss,
-  IStyledPolymorphic,
-  ITriggerAriaAttrs,
-  ITriggerEventAttrs,
   TUIColorScheme,
 } from '../../declarations';
 import type { TButtonIconPosition } from './declarations';
@@ -38,20 +29,10 @@ import {
   ButtonContainer,
   type ButtonContainerProps,
 } from './components/ButtonContainer';
-import { Resolve } from '../../typeFunctions';
 
 export interface ButtonProps
   extends IDataAttrs,
-    IStyledPolymorphic,
-    IStyledOverloadCss,
-    IGlobalAttrs,
-    IGlobalAriaAttrs,
-    Omit<ITriggerAriaAttrs, 'aria-selected'>,
-    IFocusEventAttrs,
-    IMouseEventAttrs,
-    ITriggerEventAttrs,
-    ILinkAttrs,
-    Omit<IButtonAttrs, 'disabled'>,
+    Pick<IButtonAttrs, 'name'>,
     ButtonContainerProps {
   /** Content of the badge */
   badgeText?: string;
@@ -65,10 +46,7 @@ export interface ButtonProps
   iconPosition?: TButtonIconPosition;
 }
 
-export const InternalButton = React.forwardRef<
-  HTMLButtonElement,
-  Resolve<ButtonProps>
->(
+export const InternalButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       'aria-label': ariaLabel,

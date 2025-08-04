@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
-import { Flex } from '../../../../../Flex';
-import { Icon, IconProps } from '../../../../../Icon';
-import { IPanelContainerAttrs } from '../../../../declarations';
+import type { IPanelContainerAttrs } from '../../../../declarations';
+import { PANEL_ICON_CLASS_NAME_BASE } from '../../../../constants';
+import { Icon, type IconProps } from '../../../../../Icon';
 
 export interface PanelHeaderIconProps
   extends Omit<IconProps, 'iconId' | 'size'>,
@@ -12,32 +11,21 @@ export interface PanelHeaderIconProps
 }
 
 export const PanelHeaderIcon: React.FC<PanelHeaderIconProps> = ({
+  className,
   icon,
   size = 'md',
   style,
   ...restIconProps
 }) => {
-  const iconTokens = useTheme().cmp.panel.headerIcon;
+  const classNames = [
+    `${PANEL_ICON_CLASS_NAME_BASE} `,
+    className && `${className} `,
+  ]
+    .join('')
+    .trim();
   return (
-    <Flex
-      alignSelf="flex-start"
-      alignItems="center"
-      justifyContent="center"
-      inline
-      style={{
-        marginRight: iconTokens.space.marginRight[size],
-        ...style,
-      }}
-      flex="0 0 auto"
-      height={iconTokens.size.height[size]}
-    >
-      <Icon
-        {...restIconProps}
-        color={iconTokens.color.text}
-        size={iconTokens.typo.fontSize[size]}
-      >
-        {icon}
-      </Icon>
-    </Flex>
+    <Icon {...restIconProps} className={classNames} style={style}>
+      {icon}
+    </Icon>
   );
 };

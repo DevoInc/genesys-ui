@@ -1,17 +1,19 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import type { IPanelHeaderAttrs } from '../../declarations';
 import type { IPanelSpaceAttrs } from '../../../../declarations';
-import { panelHeaderContainerMixin } from '../../helpers';
-import { mergeStyles } from '../../../../../../helpers';
+import { PANEL_HEADER_CLASS_NAME_BASE } from '../../../../constants';
+import { getSpacingClassNames } from '../../../../../../helpers';
 import { PanelContext } from '../../../../context';
 import { Box, type BoxProps } from '../../../../../Box';
 
 export interface PanelHeaderContainerProps
-  extends Pick<BoxProps, 'as' | 'style'>,
+  extends Pick<BoxProps, 'as' | 'style' | 'className'>,
     IPanelSpaceAttrs,
-    Omit<IPanelHeaderAttrs, 'actions' | 'hasSubtitle'> {}
+    Omit<
+      IPanelHeaderAttrs,
+      'appendContent' | 'bottomContent' | 'navigationContent' | 'prependContent'
+    > {}
 
 export const PanelHeaderContainer = React.forwardRef<
   HTMLElement,
@@ -19,10 +21,13 @@ export const PanelHeaderContainer = React.forwardRef<
 >(
   (
     {
+      actions,
       as = 'header',
       bordered,
       children,
+      className,
       hasBoxShadow,
+      hasSubtitle,
       padding,
       paddingBottom,
       paddingLeft,
@@ -34,30 +39,35 @@ export const PanelHeaderContainer = React.forwardRef<
     },
     ref,
   ) => {
-    const theme = useTheme();
     const context = React.useContext(PanelContext);
     const evalHasBoxShadow = hasBoxShadow ?? context.scrolledBodyContent;
     const evalSize = size || context.size || 'md';
+    const classNameBase = PANEL_HEADER_CLASS_NAME_BASE;
+    const classNames = [
+      `${classNameBase} `,
+      `${classNameBase}--${bordered ? 'bordered' : 'no-border'} `,
+      evalHasBoxShadow ? `${classNameBase}--shadowed ` : '',
+      //!hasSubtitle ? `${classNameBase}--no-subtitle ` : '',
+      actions ? `${classNameBase}--has-actions ` : '',
+      size ? `${classNameBase}--${evalSize} ` : '',
+      ...getSpacingClassNames({
+        padding: removeSpace ? '0' : padding,
+        paddingBottom,
+        paddingLeft,
+        paddingRight,
+        paddingTop,
+      }),
+      className && `${className} `,
+    ]
+      .join('')
+      .trim();
     return (
       <Box
         ref={ref}
+        className={classNames}
         as={as}
         flex="0 0 auto"
-        style={mergeStyles(
-          panelHeaderContainerMixin({
-            bordered,
-            hasBoxShadow: evalHasBoxShadow,
-            padding,
-            paddingBottom,
-            paddingLeft,
-            paddingRight,
-            paddingTop,
-            removeSpace,
-            size: evalSize,
-            theme,
-          }),
-          style,
-        )}
+        style={style}
         zIndex={1}
       >
         {children}

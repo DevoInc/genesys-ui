@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import type { TGlobalSpacing } from '../../declarations';
-import { Resolve } from '../../typeFunctions';
-import { getChildrenByRowFlex } from './helpers';
+import { WRAP_CLASS_NAME_BASE } from './constants';
 import { Flex, type FlexProps } from '../Flex';
+import { Grid } from '../Grid';
 import { WrapItem } from './components';
 
 export interface WrapProps
@@ -22,27 +21,48 @@ export interface WrapProps
   vSpacing?: TGlobalSpacing;
 }
 
-export const InternalWrap = React.forwardRef<HTMLElement, Resolve<WrapProps>>(
+export const InternalWrap = React.forwardRef<HTMLElement, WrapProps>(
   (
     {
       alignContent = 'flex-start',
       alignItems = 'flex-start',
       children,
       childrenByRow,
+      className,
       hSpacing = 'cmp-md',
       vSpacing = 'cmp-md',
-      ...flexProps
+      ...restProps
     },
     ref,
   ) => {
-    const theme = useTheme();
-    return (
+    const classNames = [
+      `${WRAP_CLASS_NAME_BASE} `,
+      className ? `${className} ` : '',
+    ]
+      .join('')
+      .trim();
+    return childrenByRow ? (
+      <Grid
+        {...restProps}
+        ref={ref}
+        alignItems={alignItems}
+        alignContent={alignContent}
+        className={classNames}
+        columnGap={hSpacing}
+        gridTemplateColumns={
+          childrenByRow ? `repeat(${childrenByRow}, 1fr)` : undefined
+        }
+        rowGap={vSpacing}
+      >
+        {children}
+      </Grid>
+    ) : (
       <Flex
-        {...flexProps}
+        {...restProps}
         ref={ref}
         alignContent={alignContent}
         alignItems={alignItems}
-        childrenFlex={getChildrenByRowFlex({ childrenByRow, hSpacing, theme })}
+        className={classNames}
         columnGap={hSpacing}
         flexDirection="row"
         flexWrap="wrap"

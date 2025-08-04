@@ -1,7 +1,9 @@
 import * as React from 'react';
 import type {
+  IClassName,
   IGlobalAriaAttrs,
   IGlobalAttrs,
+  IStyleAttr,
   IStyledOverloadCss,
   IStyledPolymorphic,
 } from '../../declarations';
@@ -44,7 +46,9 @@ export interface TypographyProps
       | 'truncateLine'
     >,
     IStyledPolymorphic,
-    IStyledOverloadCss,
+    //IStyledOverloadCss,
+    IClassName,
+    IStyleAttr,
     IGlobalAttrs,
     IGlobalAriaAttrs {
   /** Content of the typographic component */

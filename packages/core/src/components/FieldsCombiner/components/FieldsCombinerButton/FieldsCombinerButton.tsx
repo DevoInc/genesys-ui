@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import { Button, type ButtonProps } from '../../../Button';
 import type { TUIColorScheme } from '../../../../declarations';
-import { fieldsCombinerButtonMixin } from '../../helpers';
+//import { fieldsCombinerButtonMixin } from '../../helpers';
 import { FieldsCombinerElemContext } from '../../context';
 import {
   FieldsCombinerItem,
   type FieldsCombinerItemProps,
 } from '../FieldsCombinerItem';
-import { mergeStyles } from '../../../../helpers';
+//import { mergeStyles } from '../../../../helpers';
 import type { Resolve } from '../../../../typeFunctions';
 
 export interface FieldsCombinerButtonProps extends Omit<ButtonProps, 'size'> {
@@ -35,16 +35,16 @@ export const FieldsCombinerButton: React.FC<
           colorScheme ||
           (status !== 'base' ? (status as TUIColorScheme) : 'neutral')
         }
-        style={mergeStyles(
-          fieldsCombinerButtonMixin({
-            combinedButtons,
-            order,
-            size,
-            status,
-            theme,
-          }),
-          style,
-        )}
+        // style={mergeStyles(
+        //   fieldsCombinerButtonMixin({
+        //     combinedButtons,
+        //     order,
+        //     size,
+        //     status,
+        //     theme,
+        //   }),
+        //   style,
+        // )}
       />
     </FieldsCombinerItem>
   );

@@ -21,8 +21,8 @@ import { Typography } from '../Typography';
 export interface HelperProps
   extends IGlobalAttrs,
     IDataAttrs,
-    IStyledPolymorphic,
-    IStyledOverloadCss {
+    //IStyledOverloadCss,
+    IStyledPolymorphic {
   /** Content of the helper message. */
   message: string | React.ReactNode;
   /** Size of the helper: spacing, font-size... etc. */

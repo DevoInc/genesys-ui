@@ -39,7 +39,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
         title={primaryText}
         description={secondaryText}
         icon={<GINoData />}
-        style={style}
+        //style={style}
       />
     ) : format === 'icon' ? (
       <KeyValue

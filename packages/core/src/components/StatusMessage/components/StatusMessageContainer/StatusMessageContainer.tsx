@@ -28,7 +28,7 @@ export const StatusMessageContainer: React.FC<StatusMessageContainerProps> = ({
       childrenFitFullWidth={false}
       justifyContent={justifyContent}
       padding={padding}
-      style={mergeStyles(statusMessageMixin({ bordered, theme }), style)}
+      //style={mergeStyles(statusMessageMixin({ bordered, theme }), style)}
     >
       {children}
     </VFlex>

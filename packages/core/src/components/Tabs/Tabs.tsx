@@ -22,7 +22,7 @@ export interface TabsProps
   extends IGlobalAttrs,
     IGlobalAriaAttrs,
     IDataAttrs,
-    IStyledOverloadCss,
+    //IStyledOverloadCss,
     ITabs {
   children?: React.ReactNode;
 }

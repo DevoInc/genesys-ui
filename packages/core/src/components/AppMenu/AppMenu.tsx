@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import type { IAppMenu } from './declarations';
+import { APP_MENU_CLASS_NAME_BASE } from './constants';
 import { useIsOverflow } from './hooks';
 import { AppMenuContext } from './context';
-import { mergeStyles } from '../../helpers';
-import { appMenuMixin } from './helpers';
+import {
+  getBasedCssVariablesStyle,
+  getVariableBasedClassNames,
+} from '../../helpers';
 import { VFlex } from '../VFlex';
 import {
   AppMenuBody,
@@ -20,33 +22,44 @@ import {
 export interface AppMenuProps
   extends Pick<
     IAppMenu,
-    'children' | 'collapsed' | 'height' | 'onCollapse' | 'onOpen' | 'style'
+    | 'children'
+    | 'className'
+    | 'collapsed'
+    | 'height'
+    | 'onCollapse'
+    | 'onOpen'
+    | 'style'
   > {}
 
 const InternalAppMenu: React.FC<AppMenuProps> = ({
   children,
+  className,
   collapsed,
   height,
   onCollapse,
   onOpen,
   style,
 }) => {
-  const theme = useTheme();
   const targetBodyRef = React.useRef<HTMLDivElement>(null);
   const { hasScroll } = useIsOverflow(targetBodyRef);
   const [intCollapsed, setIntCollapsed] = React.useState(true);
   const evalCollapsed = collapsed ?? intCollapsed;
-  const evalHeight = height || theme.cmp.appMenu.size.height;
+  const classNameBase = APP_MENU_CLASS_NAME_BASE;
+  const classNames = [
+    `${classNameBase} `,
+    evalCollapsed ? `${classNameBase}--collapsed ` : '',
+    className ? `${className} ` : '',
+  ]
+    .join('')
+    .trim();
   return (
     <VFlex
+      className={classNames}
       overflowX="hidden"
       childrenFitFullWidth
-      height={evalHeight}
+      height={height}
       spacing="0"
-      style={mergeStyles(
-        appMenuMixin({ theme, collapsed: evalCollapsed }),
-        style,
-      )}
+      style={style}
     >
       <AppMenuContext.Provider
         value={{

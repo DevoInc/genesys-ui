@@ -27,7 +27,7 @@ export const TabsDivider: React.FC<TabsDividerProps> = ({
         {...dividerProps}
         margin={margin}
         vertical
-        style={mergeStyles(bgStyles, marginStyles, style)}
+        //style={mergeStyles(bgStyles, marginStyles, style)}
       />
     </Flex.Item>
   );

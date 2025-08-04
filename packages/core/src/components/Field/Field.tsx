@@ -67,7 +67,7 @@ export const InternalField: React.FC<FieldProps> = ({
       {...mouseEventAttrProps}
       as={as}
       role={role}
-      style={style}
+      //style={style}
       tooltip={tooltip}
     >
       <Field._LabelDistributor direction={direction}>

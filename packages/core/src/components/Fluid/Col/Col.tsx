@@ -7,6 +7,7 @@ import {
 import type { TFluidAs } from '../declarations';
 import type { IGlobalAttrs } from '../../../declarations';
 import type { Resolve } from '../../../typeFunctions';
+import { COL_CLASS_NAME_BASE } from '../constants';
 
 export interface ColProps
   extends Omit<ReactGridColProps, 'component'>,
@@ -18,9 +19,23 @@ export interface ColProps
 }
 
 export const Col = React.forwardRef<HTMLElement, Resolve<ColProps>>(
-  ({ as, alignSelf, children, style, tooltip, ...reactGridColProps }, ref) => (
+  (
+    {
+      as,
+      alignSelf,
+      children,
+      className,
+      style,
+      tooltip,
+      ...reactGridColProps
+    },
+    ref,
+  ) => (
     <ReactGridCol
       {...reactGridColProps}
+      className={[`${COL_CLASS_NAME_BASE} `, className ? `${className} ` : '']
+        .join('')
+        .trim()}
       ref={
         ref as React.LegacyRef<HTMLDivElement> & React.LegacyRef<ReactGridCol>
       }

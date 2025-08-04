@@ -5,6 +5,12 @@ import type {
   TSpinnerSize,
 } from '../SpinnerLoader/declarations';
 
+export const BUTTON_SIZE_DEFAULT = 'md';
+export const BUTTON_STATE_DEFAULT = 'enabled';
+export const BUTTON_COLOR_SCHEME_DEFAULT = 'neutral';
+export const BUTTON_CLASS_NAME_BASE = 'button';
+export const BUTTON_TEXT_CLASS_NAME_BASE = `${BUTTON_CLASS_NAME_BASE}__text`;
+
 export const BUTTON_BADGE_SIZE_MAP: { [key in TButtonSize]: TBadgeSize } = {
   xxs: 'sm',
   xs: 'sm',
@@ -32,6 +38,7 @@ export const BUTTON_LOADER_COLOR_SCHEME_MAP: {
   help: 'darkTrans',
   info: 'darkTrans',
   quiet: 'darkTrans',
+  'quiet-blend': 'darkTrans',
   neutral: 'darkTrans',
   success: 'darkTrans',
   warning: 'darkTrans',

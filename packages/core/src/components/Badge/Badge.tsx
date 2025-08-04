@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 import { GICheckThick } from '@devoinc/genesys-icons';
 
 import type {
   IGlobalAriaAttrs,
   IGlobalAttrs,
-  IStyledOverloadCss,
-  IStyledPolymorphic,
+  IPolymorphic,
+  IStyleAttr,
 } from '../../declarations';
 
 import {
@@ -15,11 +14,10 @@ import {
   BadgeIcon,
   BadgeText,
 } from './components';
-import { Icon } from '../Icon';
 
 export interface BadgeProps
-  extends IStyledPolymorphic,
-    IStyledOverloadCss,
+  extends IPolymorphic,
+    IStyleAttr,
     IGlobalAttrs,
     IGlobalAriaAttrs,
     BadgeContainerProps {
@@ -34,35 +32,35 @@ export interface BadgeProps
 }
 
 export const InternalBadge: React.FC<BadgeProps> = ({
+  as = 'span',
   colorScheme = 'neutral',
-  hasAbsolutePosition = false,
-  hasBoldIcon = false,
+  hasAbsolutePosition,
+  hasBoldIcon,
   icon,
-  inverse = false,
+  inverse,
   size = 'md',
   text,
   tooltip,
   style,
   ...nativeProps
 }) => {
-  const theme = useTheme();
+  const iconSquareSize = `var(--cmp-badge-icon-size-square-${size})`;
   return (
     <BadgeContainer
       {...nativeProps}
+      as={as}
       colorScheme={colorScheme}
       hasAbsolutePosition={hasAbsolutePosition}
+      hasIcon={Boolean(icon)}
       inverse={inverse}
       size={size}
       style={style}
       tooltip={tooltip}
     >
       {!text && icon && (
-        <Icon
-          strong={hasBoldIcon}
-          size={theme.cmp.badge.icon.size.square[size]}
-        >
+        <Badge._Icon strong={hasBoldIcon} size={iconSquareSize}>
           {icon || <GICheckThick />}
-        </Icon>
+        </Badge._Icon>
       )}
       {text && <Badge._Text>{text}</Badge._Text>}
     </BadgeContainer>

@@ -1,29 +1,31 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import { Icon, type IconProps } from '../../../Icon';
+import { TAG_ICON_CLASS_NAME_BASE } from '../../constants';
 
 export interface TagIconProps extends IconProps {}
 
 export const TagIcon: React.FC<TagIconProps> = ({
   children,
-  colorScheme = 'neutral',
-  size = 'md',
+  className,
+  colorScheme,
+  size,
   style,
   ...restIconProps
 }) => {
-  const cmpTokens = useTheme().cmp.tag.icon;
-  const square = cmpTokens.size.square[size];
-  const marginRight = cmpTokens.space.marginRight[size];
+  const classNames = [
+    `${TAG_ICON_CLASS_NAME_BASE} `,
+    className && `${className}`,
+  ]
+    .join('')
+    .trim();
   return (
     <Icon
       {...restIconProps}
       colorScheme={colorScheme}
-      size={square}
-      style={{
-        marginRight: marginRight,
-        ...style,
-      }}
+      size={size}
+      style={style}
+      className={classNames}
     >
       {children}
     </Icon>

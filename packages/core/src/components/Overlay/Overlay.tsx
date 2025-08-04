@@ -43,18 +43,18 @@ export const Overlay: React.FC<OverlayProps> = ({
       flexWrap={flexWrap}
       justifyContent={justifyContent}
       padding={padding}
-      style={mergeStyles(
-        overlayMixin({
-          bgColor,
-          bgColorScheme,
-          bgGradient,
-          fixed,
-          hasInteractionBehind,
-          opacity: opacity > 1 ? 1 : opacity,
-          theme,
-        }),
-        style,
-      )}
+      // style={mergeStyles(
+      //   overlayMixin({
+      //     bgColor,
+      //     bgColorScheme,
+      //     bgGradient,
+      //     fixed,
+      //     hasInteractionBehind,
+      //     opacity: opacity > 1 ? 1 : opacity,
+      //     theme,
+      //   }),
+      //   style,
+      //)}
       tooltip={tooltip}
       zIndex={zIndex}
     >

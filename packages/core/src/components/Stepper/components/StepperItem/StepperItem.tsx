@@ -30,7 +30,9 @@ export const InternalStepperItem: React.FC<StepperItemProps> = ({
   style,
   stepNumberPos = 0,
 }) => (
-  <StepperItemContainer style={style}>
+  <StepperItemContainer
+  //style={style}
+  >
     {hasDivider && <StepperItemDivider />}
     <StepperItemIndicator
       stepNumberPos={stepNumberPos}

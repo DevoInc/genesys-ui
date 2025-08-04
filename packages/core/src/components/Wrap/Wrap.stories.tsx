@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Wrap } from './Wrap';
 import { WrapStoryContent } from './__stories__';
-import { StyledLayoutContentHelper } from '../../../stories/components/styled';
+import { LayoutContentHelper } from '../../../stories/components';
 
 const meta: Meta<typeof Wrap> = {
   title: 'Components/Layout/Flex/Wrap',
@@ -40,22 +40,20 @@ export const WrapAndWrapItems: Story = {
     ((args) => (
       <Wrap {...args}>
         <Wrap.Item order={4}>
-          <StyledLayoutContentHelper>
-            1. Rogue from which.
-          </StyledLayoutContentHelper>
+          <LayoutContentHelper>1. Rogue from which.</LayoutContentHelper>
         </Wrap.Item>
         <Wrap.Item paddingLeft={'cmp-xl'} order={3}>
-          <StyledLayoutContentHelper>
+          <LayoutContentHelper>
             2. Rogue from which we spring.
-          </StyledLayoutContentHelper>
+          </LayoutContentHelper>
         </Wrap.Item>
         <Wrap.Item width="50%" order={2}>
-          <StyledLayoutContentHelper>
+          <LayoutContentHelper>
             3. Rogue from which we spring galaxies.
-          </StyledLayoutContentHelper>
+          </LayoutContentHelper>
         </Wrap.Item>
         <Wrap.Item order={1}>
-          <StyledLayoutContentHelper>4. Rogue.</StyledLayoutContentHelper>
+          <LayoutContentHelper>4. Rogue.</LayoutContentHelper>
         </Wrap.Item>
       </Wrap>
     ))(args),

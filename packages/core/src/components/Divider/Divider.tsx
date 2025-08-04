@@ -1,28 +1,51 @@
 import * as React from 'react';
 
-import { StyledDivider } from './StyledDivider';
-import type { IStyledOverloadCss } from '../../declarations';
-import { IDivider } from './declarations';
+import type { IClassName, IStyleAttr } from '../../declarations';
+import type { IDivider } from './declarations';
+import { DIVIDER_CLASS_NAME_BASE } from './constants';
+import {
+  getBasedCssVariablesStyle,
+  getVariableBasedClassNames,
+} from '../../helpers';
 
-export interface DividerProps extends IDivider, IStyledOverloadCss {}
+export interface DividerProps extends IDivider, IStyleAttr, IClassName {}
 
 export const Divider: React.FC<DividerProps> = ({
+  className,
   colorScheme = 'base',
   customColor,
   height,
   margin,
   style,
-  vertical = false,
+  vertical,
   width,
-}) => (
-  <StyledDivider
-    role={'separator'}
-    $colorScheme={colorScheme}
-    css={style}
-    $customColor={customColor}
-    $height={height}
-    $margin={margin}
-    $vertical={vertical}
-    $width={width}
-  />
-);
+}) => {
+  const classNameBase = DIVIDER_CLASS_NAME_BASE;
+  const classNames = [
+    `${classNameBase} `,
+    `${classNameBase}--${vertical ? 'ver' : 'hor'} `,
+    margin ? `${classNameBase}--spacing-${margin} ` : '',
+    colorScheme ? `${classNameBase}--${colorScheme} ` : '',
+    ...getVariableBasedClassNames({
+      backgroundColor: customColor,
+      height,
+      width,
+    }),
+    className && `${className} `,
+  ]
+    .join('')
+    .trim();
+  return (
+    <hr
+      className={classNames}
+      style={{
+        ...getBasedCssVariablesStyle({
+          backgroundColor: customColor,
+          width,
+          height,
+        }),
+        ...style,
+      }}
+    />
+  );
+};

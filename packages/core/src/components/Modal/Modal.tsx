@@ -40,7 +40,7 @@ export const InternalModal: React.FC<ModalProps> = ({
   <ModalBackdrop
     disableCloseOnOverlayClick={disableCloseOnOverlayClick}
     onRequestClose={onRequestClose}
-    style={style}
+    //style={style}
     zIndex={zIndex}
   >
     <ModalPanel

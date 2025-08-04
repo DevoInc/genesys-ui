@@ -85,7 +85,7 @@ export const PaginationNav: React.FC<PaginationNavProps> = ({
         as="ul"
         id={id ? `${id}__page-navigation` : null}
         spacing={evalSize === 'lg' ? 'cmp-sm' : 'cmp-xs'}
-        style={style}
+        //style={style}
       >
         {!hideFirstLastButtons && (
           <Flex.Item as="li">

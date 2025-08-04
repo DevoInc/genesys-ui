@@ -36,7 +36,7 @@ export const FloatingMessage: React.FC<FloatingMessageProps> = ({
   position = FN_POSITION_DEFAULT_VALUE,
   role,
   status = FN_STATUS_DEFAULT_VALUE,
-  style,
+  //style,
   zIndex,
   ...restProps
 }) => {
@@ -48,11 +48,11 @@ export const FloatingMessage: React.FC<FloatingMessageProps> = ({
     <Panel
       elevation="popOut"
       size="xs"
-      style={mergeStyles(
-        position !== 'custom' &&
-          floatingNotificationMixin({ offset: evalOffset, position }),
-        style,
-      )}
+      // style={mergeStyles(
+      //   position !== 'custom' &&
+      //     floatingNotificationMixin({ offset: evalOffset, position }),
+      //   style,
+      // )}
       zIndex={zIndex}
     >
       <Panel.Body>

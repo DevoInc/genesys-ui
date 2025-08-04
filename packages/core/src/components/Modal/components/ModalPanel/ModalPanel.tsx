@@ -78,7 +78,7 @@ export const ModalPanel: React.FC<ModalPanelProps> = ({
       }}
       overflow="hidden"
       role="dialog"
-      style={mergeStyles(modalPanelMixin({ theme }), style)}
+      //style={mergeStyles(modalPanelMixin({ theme }), style)}
       width={width || tokensModal.size.width}
       zIndex={
         zIndex

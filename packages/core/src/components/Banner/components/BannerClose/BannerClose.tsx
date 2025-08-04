@@ -36,7 +36,7 @@ export const BannerClose: React.FC<BannerCloseProps> = ({
       positionTop={
         evalSubtle ? undefined : theme.cmp.boxMessage.close.space.offset.top
       }
-      style={style}
+      //style={style}
     >
       <IconButtonRemove
         onClick={onClick}

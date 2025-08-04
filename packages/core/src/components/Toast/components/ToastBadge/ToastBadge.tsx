@@ -31,7 +31,7 @@ export const ToastBadge: React.FC<ToastBadgeProps> = ({
         hasAbsolutePosition
         colorScheme={colorScheme || status}
         text={text || updates.toString()}
-        style={mergeStyles(baseStyles, style)}
+        //style={mergeStyles(baseStyles, style)}
       />
     )
   );

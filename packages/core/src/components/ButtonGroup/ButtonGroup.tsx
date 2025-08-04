@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
-import { FLEX_SPACING_SIZE_MAP } from './constants';
+import {
+  BUTTON_GROUP_CLASS_NAME_BASE,
+  FLEX_SPACING_SIZE_MAP,
+} from './constants';
 
 import type { TButtonGroupSize } from './declarations';
 import type { TButtonColorScheme } from '../Button';
 import { ButtonGroupContext } from './context';
-import { buttonGroupMixin, type ButtonGroupMixinProps } from './helpers';
 
 import { Flex, type FlexProps } from '../Flex';
 import {
@@ -14,7 +15,6 @@ import {
   ButtonGroupIconButton,
   ButtonGroupItem,
 } from './components';
-import { mergeStyles } from '../../helpers';
 import { ButtonGroupDivider } from './components/ButtonGroupDivider';
 import { ButtonGroupIconButtonClose } from './components/ButtonGroupIconButtonClose';
 import { ButtonGroupIconButtonCollapse } from './components/ButtonGroupIconButtonCollapse';
@@ -23,14 +23,14 @@ import { ButtonGroupIconButtonGoToDocs } from './components/ButtonGroupIconButto
 import { ButtonGroupIconButtonStatus } from './components/ButtonGroupIconButtonStatus';
 import { ButtonGroupIconButtonStop } from './components/ButtonGroupIconButtonStop';
 
-export interface ButtonGroupProps
-  extends Omit<FlexProps, 'children'>,
-    Omit<ButtonGroupMixinProps, 'theme'> {
+export interface ButtonGroupProps extends Omit<FlexProps, 'children'> {
   children: React.ReactElement | React.ReactElement[];
   /** The size for the children buttons */
   size?: TButtonGroupSize;
   /** The color scheme for the children buttons */
   colorScheme?: TButtonColorScheme;
+  /** If there is a parent with the 'visibility-trigger' which makes actions visible only when it's hovered, focused... etc. */
+  visibilityTriggered?: boolean;
 }
 
 export const InternalButtonGroup = React.forwardRef<
@@ -41,6 +41,7 @@ export const InternalButtonGroup = React.forwardRef<
     {
       alignItems = 'center',
       as = 'ul',
+      className,
       colorScheme,
       children,
       flexWrap = 'wrap',
@@ -50,26 +51,33 @@ export const InternalButtonGroup = React.forwardRef<
       justifyContent = 'center',
       size = 'md',
       style,
-      visibilityTrigger,
+      visibilityTriggered,
       ...restFlexProps
     },
     ref,
   ) => {
-    const theme = useTheme();
+    const classNameBase = BUTTON_GROUP_CLASS_NAME_BASE;
+    const classNames = [
+      `${classNameBase} `,
+      `${classNameBase}--${size} `,
+      visibilityTriggered ? `${classNameBase}--visibility-triggered ` : '',
+      hidden ? `${classNameBase}--hidden ` : '',
+      className && `${className} `,
+    ]
+      .join('')
+      .trim();
     return (
       <Flex
         {...restFlexProps}
         ref={ref}
+        className={classNames}
         alignItems={alignItems}
         as={as}
         flexWrap={flexWrap}
         gap={gap || `cmp-${FLEX_SPACING_SIZE_MAP[size]}`}
         justifyContent={justifyContent}
         inline={inline}
-        style={mergeStyles(
-          buttonGroupMixin({ hidden, theme, visibilityTrigger }),
-          style,
-        )}
+        style={style}
       >
         {React.Children.map(children, (child, idx) => {
           const baseChild = (

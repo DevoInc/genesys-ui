@@ -6,6 +6,9 @@ import { Divider, HFlex } from '../';
 const meta: Meta<typeof Divider> = {
   title: 'Components/Layout/Divider',
   component: Divider,
+  args: {
+    colorScheme: 'base',
+  },
 };
 
 export default meta;

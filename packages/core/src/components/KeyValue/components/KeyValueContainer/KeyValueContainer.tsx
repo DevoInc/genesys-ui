@@ -42,7 +42,7 @@ export const KeyValueContainer: React.FC<KeyValueContainerProps> = ({
       alignItems="center"
       gap={format === 'base' || format === 'row' ? 'cmp-xs' : 'cmp-xxs'}
       role={role}
-      style={style}
+      //style={style}
       tooltip={tooltip}
       width="100%"
     >

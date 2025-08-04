@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
+import { APP_BAR_CLASS_NAME_BASE } from '../../constants';
 import { Box, type BoxProps } from '../../../Box';
 import { HFlex } from '../../../HFlex';
 import type { FlexProps } from '../../../Flex';
-import { mergeStyles } from '../../../../helpers';
 
 export interface AppBarContainerProps
   extends Omit<BoxProps, 'elevation'>,
@@ -21,6 +20,7 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
   alignItems = 'center',
   bordered,
   children,
+  className,
   compact,
   height,
   id,
@@ -31,32 +31,25 @@ export const AppBarContainer: React.FC<AppBarContainerProps> = ({
   style,
   ...restBoxProps
 }) => {
-  const cmpTokens = useTheme().cmp.appBar;
   const elevation = sticky ? 'stickyBottom' : 'ground';
-  const tabsContainerTokens = useTheme().cmp.tabs.container;
-
+  const classNameBase = APP_BAR_CLASS_NAME_BASE;
+  const classNames = [
+    `${classNameBase} `,
+    sticky ? `${classNameBase}--sticky ` : '',
+    compact ? `${classNameBase}--compact ` : '',
+    className ? `${className} ` : '',
+  ]
+    .join('')
+    .trim();
   return (
     <Box
       {...restBoxProps}
+      className={classNames}
       elevation={elevation}
-      height={
-        height ||
-        (compact
-          ? `calc(${tabsContainerTokens.size.height.lg} - 2rem)`
-          : tabsContainerTokens.size.height.lg)
-      }
+      height={height}
       id={id ? `${id}__container` : null}
       padding={padding}
       position={position}
-      style={mergeStyles(
-        { backgroundColor: cmpTokens.color.background },
-        bordered
-          ? {
-              borderBottom: `solid ${cmpTokens.shape.borderSize} ${cmpTokens.color.border}`,
-            }
-          : undefined,
-        style,
-      )}
     >
       <HFlex
         alignItems={alignItems}

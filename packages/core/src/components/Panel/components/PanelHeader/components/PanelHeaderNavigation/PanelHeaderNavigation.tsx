@@ -1,49 +1,47 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import type { IPanelHeaderAttrs } from '../../declarations';
+import type { IStyleAttr } from '../../../../../../declarations';
 import {
-  IPanelHeaderNavigationMixin,
-  panelHeaderNavigationMixin,
-} from '../../helpers';
-import { mergeStyles } from '../../../../../../helpers';
-import { PanelContext } from '../../../../context';
+  getBasedCssVariablesStyle,
+  getVariableBasedClassNames,
+} from '../../../../../../helpers';
 import { Box, type BoxProps } from '../../../../../Box';
+import { PANEL_NAVIGATION_CLASS_NAME_BASE } from '../../../../constants';
 
-export interface PanelHeaderNavigationProps
-  extends Pick<BoxProps, 'as' | 'style'>,
-    Omit<IPanelHeaderNavigationMixin, 'theme'> {
+export interface PanelHeaderNavigationProps extends Omit<BoxProps, 'children'> {
   children: IPanelHeaderAttrs['navigationContent'];
+  parentPadding?: IStyleAttr['style'];
 }
 
 export const PanelHeaderNavigation: React.FC<PanelHeaderNavigationProps> = ({
   as,
   children,
-  padding,
-  paddingLeft,
-  paddingRight,
-  removeSpace,
-  size,
+  className,
+  parentPadding,
   style,
+  ...restBoxProps
 }) => {
-  const theme = useTheme();
-  const context = React.useContext(PanelContext);
-  const evalSize = size || context.size || 'md';
+  const negativeSpacing = {
+    marginLeft: `calc(${parentPadding?.paddingLeft} * -1)`,
+    marginRight: `calc(${parentPadding?.paddingRight} * -1)`,
+    marginBottom: `calc(${parentPadding?.paddingBottom} * -1)`,
+  };
+  const basedCssVariablesStyle = getBasedCssVariablesStyle(negativeSpacing);
+  const classNames = [
+    `${PANEL_NAVIGATION_CLASS_NAME_BASE} `,
+    ...getVariableBasedClassNames(negativeSpacing),
+    className && `${className} `,
+  ]
+    .join('')
+    .trim();
   return (
     <Box
+      {...restBoxProps}
       as={as}
+      className={classNames}
       flex="0 0 auto"
-      style={mergeStyles(
-        panelHeaderNavigationMixin({
-          padding,
-          paddingLeft,
-          paddingRight,
-          removeSpace,
-          size: evalSize,
-          theme,
-        }),
-        style,
-      )}
+      style={{ ...basedCssVariablesStyle, ...style }}
       zIndex={1}
     >
       {typeof children === 'function' ? children() : children}

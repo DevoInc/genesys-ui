@@ -1,13 +1,10 @@
 import * as React from 'react';
 
 import { Grid } from '../../../Grid';
-import type {
-  IStyledOverloadCss,
-  IStyledPolymorphic,
-} from '../../../../declarations';
+import type { IStyleAttr, IStyledPolymorphic } from '../../../../declarations';
 
 export interface AppLayoutContentProps
-  extends IStyledOverloadCss,
+  extends IStyleAttr,
     IStyledPolymorphic,
     Pick<
       React.ComponentProps<typeof Grid.Item>,

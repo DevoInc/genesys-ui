@@ -2,13 +2,14 @@ import * as React from 'react';
 
 import type {
   IButtonAttrs,
+  IClassName,
   IDataAttrs,
   IFocusEventAttrs,
   IGlobalAriaAttrs,
   IGlobalAttrs,
   ILinkAttrs,
   IMouseEventAttrs,
-  IStyledOverloadCss,
+  IStyleAttr,
   IStyledPolymorphic,
   ITriggerAriaAttrs,
   ITriggerEventAttrs,
@@ -17,11 +18,20 @@ import type {
 import { StyledButtonContainer } from './StyledButtonContainer';
 import type { IButtonContainer } from './declarations';
 import { Resolve } from '../../../../typeFunctions';
+import { PANEL_HEADER_CLASS_NAME_BASE } from '../../../Panel/constants';
+import { getSpacingClassNames } from '../../../../helpers';
+import {
+  BUTTON_CLASS_NAME_BASE,
+  BUTTON_COLOR_SCHEME_DEFAULT,
+  BUTTON_SIZE_DEFAULT,
+  BUTTON_STATE_DEFAULT,
+} from '../../constants';
 
 export interface ButtonContainerProps
   extends IDataAttrs,
     IStyledPolymorphic,
-    IStyledOverloadCss,
+    IStyleAttr,
+    IClassName,
     IGlobalAttrs,
     IGlobalAriaAttrs,
     Omit<ITriggerAriaAttrs, 'aria-selected'>,
@@ -43,9 +53,10 @@ export const ButtonContainer = React.forwardRef<
     {
       'aria-expanded': ariaExpanded,
       'aria-label': ariaLabel,
-      as,
+      as: Component,
       children,
-      colorScheme = 'neutral',
+      className,
+      colorScheme = BUTTON_COLOR_SCHEME_DEFAULT,
       hasDropdown,
       href,
       icon,
@@ -56,39 +67,51 @@ export const ButtonContainer = React.forwardRef<
       onBlur,
       onFocus,
       selectionScheme,
-      size = 'md',
-      state = 'enabled',
+      size = BUTTON_SIZE_DEFAULT,
+      state = BUTTON_STATE_DEFAULT,
       style,
       tooltip,
       ...restNativeProps
     },
     ref,
-  ) => (
-    <StyledButtonContainer
-      {...restNativeProps}
-      aria-expanded={state === 'expanded' || ariaExpanded}
-      aria-label={tooltip || ariaLabel}
-      as={as || (selectionScheme && 'label') || (href && 'a')}
-      $colorScheme={colorScheme}
-      data-squared={squared}
-      disabled={state === 'disabled' || state === 'loading'}
-      $squared={squared}
-      href={href}
-      $icon={icon}
-      id={id}
-      $circular={circular}
-      $hasDropdown={hasDropdown}
-      $wide={wide}
-      onFocus={selectionScheme ? null : onFocus}
-      onBlur={selectionScheme ? null : onBlur}
-      ref={ref}
-      $selectionScheme={selectionScheme}
-      $size={size}
-      $state={state}
-      css={style}
-      title={tooltip}
-    >
-      {children}
-    </StyledButtonContainer>
-  ),
+  ) => {
+    const classNameBase = BUTTON_CLASS_NAME_BASE;
+    const classNames = [
+      `${classNameBase} `,
+      hasDropdown ? `${classNameBase}--has-dropdown ` : '',
+      colorScheme !== BUTTON_COLOR_SCHEME_DEFAULT
+        ? `${classNameBase}--${colorScheme} `
+        : '',
+      state !== BUTTON_STATE_DEFAULT ? `${classNameBase}--${state} ` : '',
+      size !== BUTTON_SIZE_DEFAULT ? `${classNameBase}--${size} ` : '',
+      squared ? `${classNameBase}--squared ` : '',
+      circular ? `${classNameBase}--circular ` : '',
+      wide ? `${classNameBase}--wide ` : '',
+      className && `${className} `,
+    ]
+      .join('')
+      .trim();
+    const EvalComponent =
+      Component || (selectionScheme ? 'label' : href ? 'a' : 'button');
+    return (
+      <EvalComponent
+        {...restNativeProps}
+        className={classNames}
+        aria-expanded={state === 'expanded' || ariaExpanded}
+        aria-label={tooltip || ariaLabel}
+        data-squared={squared}
+        disabled={state === 'disabled' || state === 'loading'}
+        href={href}
+        id={id}
+        onFocus={selectionScheme ? null : onFocus}
+        onBlur={selectionScheme ? null : onBlur}
+        ref={ref}
+        $selectionScheme={selectionScheme}
+        style={style}
+        title={tooltip}
+      >
+        {children}
+      </EvalComponent>
+    );
+  },
 );

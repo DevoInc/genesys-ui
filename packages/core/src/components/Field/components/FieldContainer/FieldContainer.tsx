@@ -14,7 +14,7 @@ export interface FieldContainerProps
     | 'onMouseOver'
     | 'onMouseUp'
     | 'role'
-    | 'style'
+    //| 'style'
     | 'tooltip'
   > {
   children?: React.ReactNode;

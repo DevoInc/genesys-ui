@@ -64,15 +64,15 @@ export const ToastPanel: React.FC<ToastPanelProps> = ({
         colorScheme={backgroundColor}
         elevation={TOAST_ELEVATION_LEVEL}
         maxHeight={maxHeight}
-        style={mergeStyles(
-          toastPanelMixin({
-            accent,
-            showProgressBar,
-            status,
-            theme,
-          }),
-          style,
-        )}
+        // style={mergeStyles(
+        //   toastPanelMixin({
+        //     accent,
+        //     showProgressBar,
+        //     status,
+        //     theme,
+        //   }),
+        //   style,
+        // )}
       >
         <ToastHeader
           closeToast={closeToast}

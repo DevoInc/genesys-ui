@@ -80,6 +80,15 @@ We can use the `ButtonGroup.Divider` component to separate buttons.
 
 <Canvas of={Stories.WithDivider} />
 
+## Visibility trigger
+
+Sometimes you might need to make the component visible only when a parent is
+hovered or focused. In this case, you only have to add the
+'visibilityTriggered' prop to the component and add the 'visibility-trigger'
+class name attribute to the parent which we want to act as a trigger.
+
+<Canvas of={Stories.WithDivider} />
+
 ## Using not pre-defined ButtonGroup components
 
 You can use other components which are not the pre-defined ones

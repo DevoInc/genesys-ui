@@ -30,11 +30,11 @@ export const FormDistributor: React.FC<FormDistributorProps> = ({
       flexDirection={direction}
       gap={`cmp-${itemsGap}`}
       role="group"
-      style={
-        disabled
-          ? `opacity: ${theme.alias.shape.opacity.disabled}; pointer-events: none;`
-          : undefined
-      }
+      // style={
+      //   disabled
+      //     ? `opacity: ${theme.alias.shape.opacity.disabled}; pointer-events: none;`
+      //     : undefined
+      // }
     >
       {children}
     </Flex>

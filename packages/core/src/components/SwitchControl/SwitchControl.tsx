@@ -81,7 +81,7 @@ export const InternalSwitchControl: React.FC<SwitchControlProps> = ({
       onMouseUp={onMouseUp}
       size={evalSize}
       status={evalStatus}
-      style={style}
+      //style={style}
       tooltip={tooltip}
     >
       <SwitchControlInput

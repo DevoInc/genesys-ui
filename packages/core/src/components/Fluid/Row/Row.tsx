@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 import {
   Row as ReactGridRow,
   RowProps as ReactGridRowProps,
@@ -7,9 +6,8 @@ import {
 
 import type { IGlobalAttrs } from '../../../declarations';
 import type { TContainerSpacing, TFluidAs } from '../declarations';
-import { getSpacingPropCss } from '../../../helpers';
-import { getPxFromRem } from '../../../helpers';
-import type { Resolve } from '../../../typeFunctions';
+import { ROW_CLASS_NAME_BASE } from '../constants';
+import { getSpacingClassNames } from '../../../helpers';
 
 export interface RowProps
   extends Omit<ReactGridRowProps, 'component' | 'gutterWidth'>,
@@ -33,44 +31,42 @@ export interface RowProps
   children?: React.ReactNode;
 }
 
-export const Row = React.forwardRef<HTMLElement, Resolve<RowProps>>(
+export const Row = React.forwardRef<HTMLElement, RowProps>(
   (
     {
       as,
       children,
+      className,
       gutter,
       marginBottom,
       marginTop,
       paddingBottom,
       paddingTop,
-      style,
       tooltip,
       ...reactGridRowProps
     },
     ref,
   ) => {
-    const theme = useTheme();
-    const layoutSpaceTokens = theme.alias.space.layout;
-    const gutterSizeNumber =
-      gutter === '0'
-        ? 0
-        : gutter &&
-          getPxFromRem(layoutSpaceTokens[gutter.replace('layout-', '')]);
-
+    const classNames = [
+      `${ROW_CLASS_NAME_BASE} `,
+      ...getSpacingClassNames({
+        gap: gutter,
+        marginBottom,
+        marginTop,
+        paddingBottom,
+        paddingTop,
+      }),
+      className && `${className} `,
+    ]
+      .join('')
+      .trim();
     return (
       <ReactGridRow
         {...reactGridRowProps}
         ref={ref as React.LegacyRef<ReactGridRow> & React.Ref<HTMLDivElement>}
         component={as}
-        gutterWidth={gutter ? gutterSizeNumber : undefined}
-        style={{
-          ...style,
-          marginBottom: marginBottom && getSpacingPropCss(theme)(marginBottom),
-          marginTop: marginTop && getSpacingPropCss(theme)(marginTop),
-          paddingBottom:
-            paddingBottom && getSpacingPropCss(theme)(paddingBottom),
-          paddingTop: marginTop && getSpacingPropCss(theme)(paddingTop),
-        }}
+        className={classNames}
+        //gutterWidth={gutter ? gutterSizeNumber : undefined}
         title={tooltip}
       >
         {children}

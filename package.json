@@ -25,6 +25,7 @@
     "@devoinc/genesys-base-styles": "^2.1.0",
     "@devoinc/genesys-brand-devo": "^8.11.0",
     "@devoinc/genesys-icons": "^8.0.0",
+    "@devoinc/genesys-styles": "^4.0.0",
     "@devoinc/genesys-tokens-types": "^7.16.0",
     "@devoinc/holo": "^2.0.1",
     "@release-it-plugins/workspaces": "^4.2.0",

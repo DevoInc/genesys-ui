@@ -61,7 +61,7 @@ export const TabsList = React.forwardRef<
         height={height}
         overflow={overflow}
         ref={ref}
-        style={mergeStyles(`&::-webkit-scrollbar {display: none;}`, style)}
+        //style={mergeStyles(`&::-webkit-scrollbar {display: none;}`, style)}
         width={width}
       >
         <Flex

@@ -156,7 +156,7 @@ export const InternalCalendar: React.FC<CalendarProps> = ({
       tooltip={tooltip}
       gridTemplateColumns="repeat(1, 1fr)"
       minWidth={theme.cmp.calendar.size.minWidth}
-      style={style}
+      //style={style}
     >
       <Box role="rowgroup">
         <Grid

@@ -1,15 +1,14 @@
 import * as React from 'react';
 
+import type { IStyleAttr, IStyledPolymorphic } from '../../declarations/styled';
 import type {
-  IStyledOverloadCss,
-  IStyledPolymorphic,
-} from '../../declarations/styled';
-import type { TGlobalSize } from '../../declarations/commonProps';
-import type { IGlobalAttrs, ILinkAttrs } from '../../declarations/htmlAttrs';
-import { PickUnion } from '../../typeFunctions';
+  IClassName,
+  IGlobalAttrs,
+  ILinkAttrs,
+} from '../../declarations/htmlAttrs';
 import type { FlexProps } from '../Flex';
 
-export type TPanelSize = PickUnion<TGlobalSize, 'xs' | 'sm' | 'md'>;
+export type TPanelSize = 'xs' | 'sm' | 'md';
 export type TPanelRemoveSpace = boolean;
 export type TPanelBordered = boolean;
 export type TPanelBoxShadow = boolean;
@@ -24,7 +23,8 @@ export interface IPanelHelpAttrs {
 
 export interface IPanelBaseAttrs
   extends IStyledPolymorphic,
-    IStyledOverloadCss {}
+    IStyleAttr,
+    IClassName {}
 
 export interface IPanelSpaceAttrs
   extends Pick<

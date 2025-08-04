@@ -1,0 +1,5 @@
+export const APP_BAR_CLASS_NAME_BASE = 'app-bar';
+export const APP_BAR_DIVIDER_CLASS_NAME_BASE = `${APP_BAR_CLASS_NAME_BASE}__divider`;
+export const APP_BAR_HEADING_CLASS_NAME_BASE = `${APP_BAR_CLASS_NAME_BASE}__heading`;
+export const APP_BAR_ITEM_CLASS_NAME_BASE = `${APP_BAR_CLASS_NAME_BASE}__item`;
+export const APP_BAR_NAVIGATION_CLASS_NAME_BASE = `${APP_BAR_CLASS_NAME_BASE}__navigation`;

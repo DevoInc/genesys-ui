@@ -25,7 +25,7 @@ export const TagGroupList: React.FC<TagGroupListProps> = ({
       alignItems={alignItems}
       inline={inline}
       role="group"
-      style={mergeStyles(tagGroupFlexSpacingMixin({ size, theme }), style)}
+      //style={mergeStyles(tagGroupFlexSpacingMixin({ size, theme }), style)}
     >
       {children}
     </Flex>

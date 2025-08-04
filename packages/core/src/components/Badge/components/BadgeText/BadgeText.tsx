@@ -1,20 +1,26 @@
 import * as React from 'react';
 
-import type { IStyledOverloadCss } from '../../../../declarations/styled';
+import type { IClassName, IStyleAttr } from '../../../../declarations';
+import { BADGE_TEXT_CLASS_NAME_BASE } from '../../constants';
 
-import { StyledBadgeText } from './StyledBadgeText';
-
-export interface BadgeTextProps extends IStyledOverloadCss {
+export interface BadgeTextProps extends IStyleAttr, IClassName {
   children: string | number;
-  color?: string;
 }
 
 export const BadgeText: React.FC<BadgeTextProps> = ({
   children,
-  color,
+  className,
   style,
-}) => (
-  <StyledBadgeText color={color} css={style}>
-    {children}
-  </StyledBadgeText>
-);
+}) => {
+  const classNames = [
+    `${BADGE_TEXT_CLASS_NAME_BASE} `,
+    className && `${className}`,
+  ]
+    .join('')
+    .trim();
+  return (
+    <span className={classNames} style={style}>
+      {children}
+    </span>
+  );
+};

@@ -23,7 +23,7 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({
     <Panel.Footer
       {...restPanelFooterProps}
       hasBackground={status === 'base' ? hasBackground : undefined}
-      style={mergeStyles(modalFooterMixin({ status, theme }), style)}
+      //style={mergeStyles(modalFooterMixin({ status, theme }), style)}
     >
       {children && <Flex alignItems="center">{children}</Flex>}
     </Panel.Footer>

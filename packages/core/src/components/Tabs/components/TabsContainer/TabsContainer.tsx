@@ -34,7 +34,7 @@ export const TabsContainer = React.forwardRef<
         ref={ref}
         as="nav"
         position="relative"
-        style={mergeStyles(baseStyles, style)}
+        //style={mergeStyles(baseStyles, style)}
       >
         {children}
       </Flex>

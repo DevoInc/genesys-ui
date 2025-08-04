@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import { IconButton, type IconButtonProps } from '../../../IconButton';
 import type { TUIColorScheme } from '../../../../declarations';
-import { fieldsCombinerButtonMixin } from '../../helpers';
+//import { fieldsCombinerButtonMixin } from '../../helpers';
 import { FieldsCombinerElemContext } from '../../context';
 import {
   FieldsCombinerItem,
   type FieldsCombinerItemProps,
 } from '../FieldsCombinerItem';
-import { mergeStyles } from '../../../../helpers';
+//import { mergeStyles } from '../../../../helpers';
 import type { Resolve } from '../../../../typeFunctions';
 
 export interface FieldsCombinerIconButtonProps
@@ -36,16 +36,16 @@ export const FieldsCombinerIconButton: React.FC<
           colorScheme ||
           (status !== 'base' ? (status as TUIColorScheme) : 'neutral')
         }
-        style={mergeStyles(
-          fieldsCombinerButtonMixin({
-            combinedButtons,
-            order,
-            size,
-            status,
-            theme,
-          }),
-          style,
-        )}
+        // style={mergeStyles(
+        //   fieldsCombinerButtonMixin({
+        //     combinedButtons,
+        //     order,
+        //     size,
+        //     status,
+        //     theme,
+        //   }),
+        //   style,
+        // )}
       />
     </FieldsCombinerItem>
   );

@@ -37,7 +37,7 @@ const InternalToolbar: React.FC<ToolbarProps> = ({
       height={height || theme.cmp.toolbar.size.height[size]}
       padding={padding}
       role={role}
-      style={mergeStyles(toolbarContainerMixin({ theme }), style)}
+      //style={mergeStyles(toolbarContainerMixin({ theme }), style)}
     >
       {children}
     </Flex>

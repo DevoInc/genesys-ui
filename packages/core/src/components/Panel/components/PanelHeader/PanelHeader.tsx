@@ -5,11 +5,12 @@ import type {
   IPanelHelpAttrs,
   IPanelSpaceAttrs,
 } from '../../declarations';
-import type {
+import {
   IPanelCloseAttrs,
   IPanelCollapseAttrs,
   IPanelHeaderAttrs,
   IPanelHeadingAttrs,
+  TPanelHeaderSpacing,
 } from './declarations';
 import { PanelContext } from '../../context';
 import { Typography } from '../../../Typography';
@@ -47,6 +48,7 @@ export const InternalPanelHeader = React.forwardRef<
       bordered,
       bottomContent,
       children,
+      className,
       closeSettings,
       collapseSettings,
       hasBoxShadow,
@@ -72,11 +74,27 @@ export const InternalPanelHeader = React.forwardRef<
   ) => {
     const context = React.useContext(PanelContext);
     const evalSize = size || context.size || 'md';
+    const elemRef = React.useRef(null);
+    const [paddingStyles, setPaddingStyles] =
+      React.useState<TPanelHeaderSpacing>();
+    React.useEffect(() => {
+      if (elemRef.current) {
+        const styles: TPanelHeaderSpacing = getComputedStyle(elemRef.current);
+        setPaddingStyles({
+          paddingRight: styles.paddingRight,
+          paddingBottom: styles.paddingBottom,
+          paddingLeft: styles.paddingLeft,
+          paddingTop: styles.paddingTop,
+        });
+      }
+    }, []);
     return (
       <PanelHeaderContainer
-        ref={ref}
+        ref={elemRef}
         as={as}
+        className={className}
         hasBoxShadow={hasBoxShadow ?? context.scrolledBodyContent}
+        hasSubtitle={Boolean(subtitle)}
         bordered={bordered}
         removeSpace={removeSpace}
         padding={padding}
@@ -142,14 +160,7 @@ export const InternalPanelHeader = React.forwardRef<
             </HFlex>
             {bottomContent}
             {navigationContent && (
-              <PanelHeaderNavigation
-                removeSpace={removeSpace}
-                padding={padding}
-                paddingLeft={paddingLeft}
-                paddingRight={paddingRight}
-                size={evalSize}
-                style={style}
-              >
+              <PanelHeaderNavigation parentPadding={paddingStyles}>
                 {navigationContent}
               </PanelHeaderNavigation>
             )}

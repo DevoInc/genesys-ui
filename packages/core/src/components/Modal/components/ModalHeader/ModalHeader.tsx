@@ -51,10 +51,10 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
   return (
     <Panel.Header
       bordered={bordered ?? evalStatus === 'base'}
-      style={mergeStyles(
-        modalHeaderMixin({ removeSpace, status: evalStatus, theme }),
-        style,
-      )}
+      // style={mergeStyles(
+      //   modalHeaderMixin({ removeSpace, status: evalStatus, theme }),
+      //   style,
+      // )}
     >
       {children || (
         <Flex alignItems="center">

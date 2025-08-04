@@ -35,7 +35,7 @@ export const ProgressBarCustomInfo: React.FC<ProgressBarCustomInfoProps> = ({
     <Flex
       as={as}
       justifyContent={!startInfo ? 'flex-end' : 'space-between'}
-      style={style}
+      //style={style}
     >
       {children ? (
         typeof children === 'string' ? (

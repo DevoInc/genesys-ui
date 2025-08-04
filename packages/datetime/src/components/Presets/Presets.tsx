@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import {
+  type IStyleAttr,
   type SelectControlProps,
-  type IStyledOverloadCss,
   Menu,
   InputControl,
   VFlex,
@@ -16,7 +16,7 @@ import type { TDateRange } from '../../declarations';
 
 export interface PresetsProps
   extends Partial<Pick<SelectControlProps, 'maxMenuHeight' | 'size'>>,
-    IStyledOverloadCss {
+    IStyleAttr {
   /** A unique identifier for the element */
   id: string;
   /** Component tooltip */

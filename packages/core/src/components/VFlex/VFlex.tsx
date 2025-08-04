@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import type { TGlobalSpacing } from '../../declarations';
-import { Resolve } from '../../typeFunctions';
+import { V_FLEX_CLASS_NAME_BASE } from './constants';
 import { Flex, type FlexProps } from '../Flex';
 import { VFlexItem } from './components';
 
@@ -17,7 +17,7 @@ export interface VFlexProps
   childrenFitFullHeight?: boolean;
 }
 
-const InternalVFlex = React.forwardRef<HTMLElement, Resolve<VFlexProps>>(
+const InternalVFlex = React.forwardRef<HTMLElement, VFlexProps>(
   (
     {
       alignItems,
@@ -25,6 +25,7 @@ const InternalVFlex = React.forwardRef<HTMLElement, Resolve<VFlexProps>>(
       childrenFlex,
       childrenFitFullHeight = false,
       childrenFitFullWidth = true,
+      className,
       justifyContent = 'flex-start',
       spacing = 'cmp-md',
       ...flexProps
@@ -37,6 +38,12 @@ const InternalVFlex = React.forwardRef<HTMLElement, Resolve<VFlexProps>>(
       alignItems={
         alignItems || (childrenFitFullWidth ? 'stretch' : 'flex-start')
       }
+      className={[
+        `${V_FLEX_CLASS_NAME_BASE} `,
+        className ? `${className} ` : '',
+      ]
+        .join('')
+        .trim()}
       childrenFlex={childrenFlex || (childrenFitFullHeight ? '1' : undefined)}
       flexDirection="column"
       justifyContent={justifyContent}

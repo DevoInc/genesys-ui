@@ -8,6 +8,8 @@ export interface IBadgeContainer {
   /** If the badge is used with position absolute inside another component
    * as a marker */
   hasAbsolutePosition?: boolean;
+  /** If the component has an icon as content.*/
+  hasIcon?: boolean;
   /** It defines the color schema for the background and text color.
    * There are predefined types: primary, secondary... etc.
    * It's possible to use a custom color used for the background color and

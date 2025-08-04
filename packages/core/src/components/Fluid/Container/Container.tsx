@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 
 import {
   Container as ReactGridContainer,
@@ -10,15 +9,14 @@ import {
 
 import {
   BREAKPOINTS_DEFAULT_VALUES,
+  CONTAINER_CLASS_NAME_BASE,
   CONTAINER_WIDTH_DEFAULT_VALUES,
 } from '../constants';
-import { TContainerSpacing } from '../declarations';
-import { IGlobalAttrs } from '../../../declarations';
+import type { TContainerSpacing } from '../declarations';
+import type { IGlobalAttrs } from '../../../declarations';
+import type { RowProps } from '../Row';
 
-import { getSpacingPropCss } from '../../../helpers';
-import { getPxFromRem } from '../../../helpers';
-import { RowProps } from '../Row';
-import type { Resolve } from '../../../typeFunctions';
+import { getSpacingClassNames } from '../../../helpers';
 
 export interface ContainerProps
   extends Omit<ReactGridContainerProps, 'component'>,
@@ -43,35 +41,41 @@ export interface ContainerProps
   ref?: React.LegacyRef<ReactGridContainer> & React.Ref<HTMLDivElement>;
 }
 
-export const Container = React.forwardRef<HTMLElement, Resolve<ContainerProps>>(
+export const Container = React.forwardRef<HTMLElement, ContainerProps>(
   (
     {
       children,
+      className,
       gutter = 'layout-sm',
       marginBottom,
       marginTop,
       maxScreen = 'xxl',
       paddingBottom,
       paddingTop,
-      style,
       tooltip,
       ...reactGridContainerProps
     },
     ref,
   ) => {
-    const theme = useTheme();
-    const layoutSpaceTokens = theme.alias.space.layout;
-    const gutterSizeNumber =
-      gutter === '0'
-        ? 0
-        : getPxFromRem(layoutSpaceTokens[gutter.replace('layout-', '')]);
-
     setConfiguration({
       breakpoints: Object.values(BREAKPOINTS_DEFAULT_VALUES),
       containerWidths: Object.values(CONTAINER_WIDTH_DEFAULT_VALUES),
       gridColumns: 12,
       maxScreenClass: maxScreen,
     });
+    const classNames = [
+      `${CONTAINER_CLASS_NAME_BASE} `,
+      ...getSpacingClassNames({
+        gap: gutter,
+        marginBottom,
+        marginTop,
+        paddingBottom,
+        paddingTop,
+      }),
+      className && `${className} `,
+    ]
+      .join('')
+      .trim();
     return (
       <ReactGridContainer
         {...reactGridContainerProps}
@@ -79,16 +83,7 @@ export const Container = React.forwardRef<HTMLElement, Resolve<ContainerProps>>(
           ref as React.LegacyRef<HTMLDivElement> &
             React.LegacyRef<ReactGridContainer>
         }
-        style={{
-          ...style,
-          marginBottom: marginBottom && getSpacingPropCss(theme)(marginBottom),
-          marginTop: marginTop && getSpacingPropCss(theme)(marginTop),
-          paddingBottom:
-            paddingBottom && getSpacingPropCss(theme)(paddingBottom),
-          paddingLeft: `${gutterSizeNumber / 2}px`,
-          paddingRight: `${gutterSizeNumber / 2}px`,
-          paddingTop: marginTop && getSpacingPropCss(theme)(paddingTop),
-        }}
+        className={classNames}
         title={tooltip}
       >
         {React.Children.map(children, (child, idx) => {

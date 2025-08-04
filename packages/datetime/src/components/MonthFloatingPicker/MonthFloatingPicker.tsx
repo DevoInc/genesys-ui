@@ -107,7 +107,7 @@ export const MonthFloatingPicker: React.FC<MonthFloatingPickerProps> = ({
       as={as}
       justifyContent="space-between"
       spacing="0"
-      style={style}
+      //style={style}
       {...dataProps}
     >
       {hasPrevMonthButton && (

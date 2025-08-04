@@ -108,7 +108,12 @@ const InternalDateTimeRange: React.FC<DateTimeRangeProps> = ({
   );
 
   return (
-    <HFlex as={as} alignItems={'flex-start'} style={style} {...dataProps}>
+    <HFlex
+      as={as}
+      alignItems={'flex-start'}
+      //style={style}
+      {...dataProps}
+    >
       {(mode === 'calendar' || mode === 'both') && (
         <VFlex flex={`1 1 ${presets ? '35%' : '50%'}`} alignItems="stretch">
           <MonthFloatingPicker

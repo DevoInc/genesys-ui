@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from 'styled-components';
 import { Dock } from 'react-dock';
 
 import { Box, type BoxProps } from '../Box';
@@ -68,7 +67,6 @@ export const Drawer: React.FC<DrawerProps> = ({
   width,
   ...restBoxProps
 }) => {
-  const theme = useTheme();
   return (
     <Box {...restBoxProps}>
       <Dock
@@ -77,7 +75,7 @@ export const Drawer: React.FC<DrawerProps> = ({
         dimStyle={dimStyle}
         dockHiddenStyle={dockHiddenStyle}
         dockStyle={{
-          background: theme.cmp.drawer.color.background.base,
+          background: 'var(--cmp-drawer-color-background-base)',
           height: height,
           maxHeight: maxHeight,
           maxWidth: maxWidth,

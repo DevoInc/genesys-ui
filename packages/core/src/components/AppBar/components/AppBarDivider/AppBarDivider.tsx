@@ -16,13 +16,13 @@ export const AppBarDivider: React.FC<AppBarDividerProps> = ({
   const appBarDividerTokens = useTheme().cmp.appBar.divider;
   return (
     <Divider
-      style={style}
       colorScheme={colorScheme}
       vertical
       customColor={customColor || appBarDividerTokens.color.border}
       height={height || appBarDividerTokens.size.height}
       width={width}
       margin={margin}
+      style={style}
     />
   );
 };

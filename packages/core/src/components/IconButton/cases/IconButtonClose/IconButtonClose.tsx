@@ -52,17 +52,19 @@ export const IconButtonClose = React.forwardRef<
       ...restIconButtonProps
     },
     ref,
-  ) => (
-    <IconButton
-      {...restIconButtonProps}
-      ref={ref}
-      colorScheme={colorScheme}
-      icon={<GIExitClose />}
-      circular
-      hasBoldIcon
-      size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
-      state={state}
-      style={mergeStyles({ backgroundColor: 'transparent' }, style)}
-    />
-  ),
+  ) => {
+    return (
+      <IconButton
+        {...restIconButtonProps}
+        ref={ref}
+        colorScheme={colorScheme}
+        icon={<GIExitClose />}
+        circular
+        hasBoldIcon
+        size={ICON_BUTTON_REDUCED_SIZE_PROP_MAP[size]}
+        state={state}
+        style={mergeStyles({ backgroundColor: 'transparent' }, style)}
+      />
+    );
+  },
 );

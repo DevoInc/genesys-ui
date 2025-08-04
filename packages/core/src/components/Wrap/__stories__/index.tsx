@@ -1,42 +1,30 @@
 import * as React from 'react';
-import { StyledLayoutContentHelper } from '../../../../stories/components/styled';
+import { LayoutContentHelper } from '../../../../stories/components';
 
 export const WrapStoryContent = (
   <>
-    <StyledLayoutContentHelper>1. Rogue from which.</StyledLayoutContentHelper>
-    <StyledLayoutContentHelper>
-      2. Rogue from which we spring.
-    </StyledLayoutContentHelper>
-    <StyledLayoutContentHelper>
+    <LayoutContentHelper>1. Rogue from which.</LayoutContentHelper>
+    <LayoutContentHelper>2. Rogue from which we spring.</LayoutContentHelper>
+    <LayoutContentHelper>
       3. Rogue from which we spring galaxies.
-    </StyledLayoutContentHelper>
-    <StyledLayoutContentHelper>4. Rogue.</StyledLayoutContentHelper>
-    <StyledLayoutContentHelper>
-      5. Rogue from which we.
-    </StyledLayoutContentHelper>
-    <StyledLayoutContentHelper>6. Rogue from.</StyledLayoutContentHelper>
-    <StyledLayoutContentHelper>
+    </LayoutContentHelper>
+    <LayoutContentHelper>4. Rogue.</LayoutContentHelper>
+    <LayoutContentHelper>5. Rogue from which we.</LayoutContentHelper>
+    <LayoutContentHelper>6. Rogue from.</LayoutContentHelper>
+    <LayoutContentHelper>
       7. Rogue from which we spring galaxies.
-    </StyledLayoutContentHelper>
-    <StyledLayoutContentHelper>
-      8. Rogue from which we spring.
-    </StyledLayoutContentHelper>
-    <StyledLayoutContentHelper>
+    </LayoutContentHelper>
+    <LayoutContentHelper>8. Rogue from which we spring.</LayoutContentHelper>
+    <LayoutContentHelper>
       9. Rogue from which we spring galaxies.
-    </StyledLayoutContentHelper>
-    <StyledLayoutContentHelper>10. Rogue.</StyledLayoutContentHelper>
-    <StyledLayoutContentHelper>
-      11. Rogue from which we.
-    </StyledLayoutContentHelper>
-    <StyledLayoutContentHelper>
-      12. Rogue from which we.
-    </StyledLayoutContentHelper>
-    <StyledLayoutContentHelper>13. Rogue from.</StyledLayoutContentHelper>
-    <StyledLayoutContentHelper>
+    </LayoutContentHelper>
+    <LayoutContentHelper>10. Rogue.</LayoutContentHelper>
+    <LayoutContentHelper>11. Rogue from which we.</LayoutContentHelper>
+    <LayoutContentHelper>12. Rogue from which we.</LayoutContentHelper>
+    <LayoutContentHelper>13. Rogue from.</LayoutContentHelper>
+    <LayoutContentHelper>
       14. Rogue from which we spring galaxies.
-    </StyledLayoutContentHelper>
-    <StyledLayoutContentHelper>
-      15. Rogue from which we spring.
-    </StyledLayoutContentHelper>
+    </LayoutContentHelper>
+    <LayoutContentHelper>15. Rogue from which we spring.</LayoutContentHelper>
   </>
 );

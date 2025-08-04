@@ -25,14 +25,14 @@ export const TabsMark = React.forwardRef<
     <Box
       ref={ref}
       role="presentation"
-      style={mergeStyles(
-        tabsMarkMixin({
-          align: evalAlign,
-          colorScheme: evalColorScheme,
-          theme,
-        }),
-        style,
-      )}
+      // style={mergeStyles(
+      //   tabsMarkMixin({
+      //     align: evalAlign,
+      //     colorScheme: evalColorScheme,
+      //     theme,
+      //   }),
+      //   style,
+      // )}
     />
   );
 });

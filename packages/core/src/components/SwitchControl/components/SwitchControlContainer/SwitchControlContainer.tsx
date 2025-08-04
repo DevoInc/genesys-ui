@@ -57,16 +57,16 @@ export const SwitchControlContainer: React.FC<SwitchControlContainerProps> = ({
         (checked ? `0 ${spaceForHandler}px 0 0` : `0 0 0 ${spaceForHandler}px`)
       }
       position={position}
-      style={mergeStyles(
-        switchControlContainerMixin({
-          checked,
-          disabled,
-          handleDiameter,
-          status,
-          theme,
-        }),
-        style,
-      )}
+      // style={mergeStyles(
+      //   switchControlContainerMixin({
+      //     checked,
+      //     disabled,
+      //     handleDiameter,
+      //     status,
+      //     theme,
+      //   }),
+      //   style,
+      // )}
     >
       {children}
     </Flex>

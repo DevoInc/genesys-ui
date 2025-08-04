@@ -57,7 +57,12 @@ export const Time: React.FC<TimeProps> = ({
 }) => {
   const i18n = useMergeI18n(userI18n, defaultTimeI18n) as TTimeI18n;
   return (
-    <Flex as={as} justifyContent="center" style={style} {...dataProps}>
+    <Flex
+      as={as}
+      justifyContent="center"
+      //style={style}
+      {...dataProps}
+    >
       <Flex.Item
         flex="0 0 auto"
         minWidth={hasMillis ? '16rem' : hasSeconds ? '13rem' : '11rem'}

@@ -24,7 +24,7 @@ export const InputControlInnerContainer: React.FC<
     <Flex
       flex={inputWidth ? `0 1 ${inputWidthEval}` : '1 1 100%'}
       position="relative"
-      style={style}
+      //style={style}
       width={inputWidthEval || '100%'}
     >
       {children}

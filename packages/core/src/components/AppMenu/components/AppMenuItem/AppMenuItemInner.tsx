@@ -58,9 +58,9 @@ export const AppMenuItemInner = React.forwardRef<
           <Flex as="span" inline marginLeft="cmp-xs">
             <Badge
               size="sm"
-              style={`background-color: ${
-                theme.cmp.appMenu.betaBadge.color.background
-              }; color: ${theme.cmp.appMenu.betaBadge.color.text}`}
+              // style={`background-color: ${
+              //   theme.cmp.appMenu.betaBadge.color.background
+              // }; color: ${theme.cmp.appMenu.betaBadge.color.text}`}
               text="Beta"
             />
           </Flex>
@@ -95,10 +95,10 @@ export const AppMenuItemInner = React.forwardRef<
         label={
           <HFlex
             spacing="0"
-            style={appMenuItemLabelMixin({
-              collapsed: evalCollapsed,
-              theme,
-            })}
+            // style={appMenuItemLabelMixin({
+            //   collapsed: evalCollapsed,
+            //   theme,
+            // })}
           >
             {label}
             {labelAppend}
