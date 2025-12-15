@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Cache node modules
         id: cache-npm
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         env:
           cache-name: cache-node-modules
         with:
@@ -55,7 +55,7 @@ jobs:
 
       - name: Use node modules cache
         id: cache-npm
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         env:
           cache-name: cache-node-modules
         with:
@@ -78,7 +78,7 @@ jobs:
 
       - name: Use node modules cache
         id: cache-npm
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         env:
           cache-name: cache-node-modules
         with:
@@ -110,7 +110,7 @@ jobs:
 
       - name: Use node modules cache
         id: cache-npm
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         env:
           cache-name: cache-node-modules
         with:
